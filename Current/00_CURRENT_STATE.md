@@ -84,8 +84,28 @@ No local repository clone or local PowerShell build chain is required.
 
 ## Binding next stage
 
-**S1.42A Interior Config Seed**
+**S1.42A runtime config-generation seed test**
 
-Add the eight binding interior packages without speculative deep tuning, generate their real runtime configs/IDs, upload complete config/log evidence, then tune S1.42.
+S1.42A is now built and automation-verified:
+
+`Profiles/LC V1 S1.42A Interior Config Seed.r2z`
+
+SHA-256:
+
+`70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
+
+Automated QC:
+- 188 Thunderstore entries;
+- 183 enabled / 5 disabled;
+- exact eight binding interior packages added;
+- DULL hard dependency LethalModDataLib 1.2.2 added;
+- only `export.r2x` differs from accepted S1.41;
+- no config/DLL/archive-member collateral changes;
+- Boom_Scraps intentionally not added;
+- readable snapshot at `ProfileSources/S1.42A/`.
+
+S1.42A is **not runtime-accepted yet**. The accepted gameplay baseline remains S1.41.
+
+Next: import S1.42A with Gale **Advanced options -> Import all files**, reach Main Menu, host/load, land on a normal moon, allow a dungeon to generate, exit, then upload complete `BepInEx/config/` ZIP + `LogOutput.log` to `RuntimeInbox/Current/`.
 
 See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `Current/12_HANDOVER_S1.41_TO_S1.42A.md`, and `BuildSpecs/S1.42A_PLAN.md`.
