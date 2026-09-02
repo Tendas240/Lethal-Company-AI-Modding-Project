@@ -62,7 +62,8 @@
     "source_path": "Patches/S139CompatibilityFixes/",
     "embedded_dll": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
     "gale_import_requirement": "Advanced options -> Import all files",
-    "runtime_load_marker": "S1.39 Compatibility Fixes loaded."
+    "runtime_load_marker": "S1.39 Compatibility Fixes loaded.",
+    "runtime_confirmed_s141": true
   },
   "repository_first_automation": {
     "migration_complete": true,
@@ -83,7 +84,7 @@
     "observer": "disabled",
     "dont_touch_me": "disabled",
     "ajb_ship_door": "disabled while local failsafe active",
-    "bcmer": "exact 1.71.0 active in S1.41; do not upgrade to 2.0.0 during this stage",
+    "bcmer": "exact 1.71.0 is the accepted baseline; do not upgrade to 2.0.0 without an explicit isolated migration stage",
     "coderebirthlib": "hard do-not-install",
     "lethalmoddatalib": "not permanently banned; isolated reintroduction allowed if DULL requires it",
     "leaf_boy": "remain in LethalMin Attack Blacklist",
@@ -103,6 +104,13 @@
       "observation": "Player clipped through Mineshaft elevator floor while descending with many Pikmin and died from fall damage.",
       "evidence": "NavMesh agent creation failures near elevator/death window; gravity/fall death recorded.",
       "causality": "Not proven. Do not attribute to BCMER without additional evidence."
+    },
+    {
+      "id": "pikmin_outdoor_sprout_density_monitor",
+      "status": "monitor_only",
+      "observation": "User felt outdoor Pikmin Sprouts may have become less common after CodeRebirth.",
+      "current_interpretation": "No strong evidence of a CodeRebirth-caused reduction; recent Offense counts were broadly consistent with configured spawn chance. More types/spatial distribution may change perception.",
+      "action": "Collect additional counts only if the concern persists; do not rebalance from this impression alone."
     }
   ],
   "handover": {
