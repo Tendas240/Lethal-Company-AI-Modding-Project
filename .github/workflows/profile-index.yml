@@ -35,20 +35,26 @@ jobs:
       - name: Find and index changed profiles
         shell: bash
         run: |
-          mapfile -t FILES < <(git diff --name-only HEAD^ HEAD -- 'Profiles/*.r2z')
-          if [ "\${#FILES[@]}" -eq 0 ]; then
-            echo "No changed .r2z profiles in this commit."
-            exit 0
-          fi
-          printf 'Indexing: %s\n' "\${FILES[@]}"
-          python BuildSystem/index_profile.py "\${FILES[@]}"
+          python - <<'PY'
+          import subprocess
+          files = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD", "--", "Profiles"],
+              text=True,
+          ).splitlines()
+          files = [path for path in files if path.lower().endswith(".r2z")]
+          if not files:
+              print("No changed .r2z profiles in this commit.")
+          else:
+              print("Indexing:", files)
+              subprocess.run(["python", "BuildSystem/index_profile.py", *files], check=True)
+          PY
 
       - name: Commit readable profile snapshots
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A -- ProfileSources
+          git add -A
           if git diff --cached --quiet; then
             echo "No profile snapshot changes to commit."
           else
