@@ -1,0 +1,208 @@
+name: Retain S1.34 runtime reference
+on:
+  push:
+    branches:
+      - handover-s136-reference
+    paths:
+      - .github/workflows/retain-s134-reference.yml
+
+permissions:
+  contents: write
+
+jobs:
+  retain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: handover-s136-reference
+          fetch-depth: 0
+
+      - name: Fetch S1.33 source
+        run: git fetch origin chatgpt-s133-build:refs/remotes/origin/chatgpt-s133-build
+
+      - name: Rebuild exact S1.34 runtime-tested profile and refresh metadata
+        shell: python
+        run: |
+          import hashlib
+          import os
+          import subprocess
+          import zipfile
+
+          temp_workflow = ".github/workflows/retain-s134-reference.yml"
+          s133 = "/tmp/s133.r2z"
+          s134 = "Profiles/LC V1 S1.34 Malfunctions Disabled.r2z"
+          s136 = "Profiles/LC V1 S1.36 Handover Clean Baseline.r2z"
+          patch_zip = "Patches/S135CompatibilityFixes/Tendas-S135CompatibilityFixes-1.0.0.zip"
+
+          data = subprocess.check_output([
+              "git", "show",
+              "origin/chatgpt-s133-build:Profiles/LC V1 S1.33 Ship Door Failsafe.r2z"
+          ])
+          with open(s133, "wb") as f:
+              f.write(data)
+
+          tmp = s134 + ".tmp"
+          with zipfile.ZipFile(s133, "r") as zin, zipfile.ZipFile(tmp, "w") as zout:
+              for info in zin.infolist():
+                  payload = zin.read(info.filename)
+                  out = payload
+                  if info.filename == "export.r2x":
+                      text = payload.decode("utf-8-sig")
+                      lines = text.splitlines()
+                      lines[0] = "profileName: LC V1 S1.34 Malfunctions Disabled"
+                      current = None
+                      changed = False
+                      for i, line in enumerate(lines):
+                          if line.startswith("- name: "):
+                              current = line[len("- name: "):].strip()
+                              continue
+                          if current == "zealsprince-Malfunctions" and line.strip().startswith("enabled:"):
+                              if line.strip() != "enabled: true":
+                                  raise RuntimeError("Unexpected S1.33 Malfunctions state")
+                              indent = line[:len(line) - len(line.lstrip())]
+                              lines[i] = indent + "enabled: false"
+                              current = None
+                              changed = True
+                      if not changed:
+                          raise RuntimeError("Malfunctions entry was not changed")
+                      out = ("\n".join(lines) + "\n").encode("utf-8")
+                  zout.writestr(info, out)
+          os.replace(tmp, s134)
+
+          def sha256(path):
+              h = hashlib.sha256()
+              with open(path, "rb") as f:
+                  for chunk in iter(lambda: f.read(1024 * 1024), b""):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          s134_sha = sha256(s134)
+          expected_s134_sha = "54e7f18cc1c62f327f25b65d4ed95b8fde82aa90f8713b91fe8069a1f3b3f0a2"
+          if s134_sha != expected_s134_sha:
+              raise RuntimeError("Rebuilt S1.34 does not match the runtime-tested S1.34 hash")
+
+          with zipfile.ZipFile(s133, "r") as a, zipfile.ZipFile(s134, "r") as b:
+              if a.namelist() != b.namelist():
+                  raise RuntimeError("S1.34 archive members differ from S1.33")
+              changed_members = [n for n in a.namelist() if a.read(n) != b.read(n)]
+              if changed_members != ["export.r2x"]:
+                  raise RuntimeError("Unexpected S1.34 delta: " + repr(changed_members))
+
+          os.makedirs("Archive/S1.34", exist_ok=True)
+          report = [
+              "S1.34 RUNTIME-TESTED PROFILE REFERENCE",
+              "Reconstructed and hash-verified during S1.36 handover: 2026-09-02",
+              "",
+              "Profile: Profiles/LC V1 S1.34 Malfunctions Disabled.r2z",
+              "SHA-256: " + s134_sha,
+              "",
+              "Exact delta from S1.33:",
+              "- profileName -> LC V1 S1.34 Malfunctions Disabled",
+              "- zealsprince-Malfunctions enabled:true -> enabled:false",
+              "- no other archive member changed",
+              "",
+              "This is the latest profile actually runtime-tested before the S1.36 handover.",
+              "Runtime findings are summarized in Logs/S1.34_Run_Auswertung_2026-09-02.txt.",
+          ]
+          with open("Archive/S1.34/S1.34_BUILD_VERIFICATION.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(report) + "\n")
+
+          s136_sha = sha256(s136)
+          patch_sha = sha256(patch_zip)
+          verify = [
+              "LETHAL COMPANY REPOSITORY VERIFICATION - S1.36",
+              "Generated: 2026-09-02",
+              "",
+              "Canonical handover/test candidate:",
+              "- " + s136,
+              "- SHA-256: " + s136_sha,
+              "- Build/archive/diff verified; not yet runtime-tested.",
+              "",
+              "Latest runtime-tested reference retained in repository:",
+              "- " + s134,
+              "- SHA-256: " + s134_sha,
+              "",
+              "S1.36 manifest verification:",
+              "- 176 total Thunderstore entries",
+              "- 170 active",
+              "- 6 disabled",
+              "- disabled: AJB-Keep_hangar_ship_door_closed; zealsprince-Malfunctions; Reiko88-Observer; ProjectSCP-SCP999; Kittenji-Dont_Touch_Me; SoftDiamond-BrutalCompanyMinusExtraReborn",
+              "",
+              "Local compatibility patch:",
+              "- Patches/S135CompatibilityFixes/",
+              "- fallback ZIP SHA-256: " + patch_sha,
+              "- Gale import requires Advanced options -> Import all files",
+              "- runtime load must be confirmed before testing door/EnemyScan behavior",
+              "",
+              "Carried-forward checks:",
+              "- Leaf boy remains in LethalMin Attack Blacklist",
+              "- Mirage neverDeleteRecordings=true",
+              "- Malfunctions disabled",
+              "- SCP999 disabled",
+              "- AJB disabled",
+              "- S135CompatibilityFixes.dll embedded in S1.36",
+              "",
+              "Repository cleanup:",
+              "- stale S1.31 Current metadata archived under Archive/S1.31/CurrentMetadata/",
+              "- S1.31 HumanReadable DOCX/PDF archived under Archive/S1.31/HumanReadable/",
+              "- S1.34 retained as latest runtime-tested profile reference",
+              "- S1.32/S1.33/S1.35 intermediate profiles not promoted to main",
+              "",
+              "Runtime acceptance tests remain open; see Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md.",
+          ]
+          with open("Current/VERIFIKATION_S1.36.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(verify) + "\n")
+
+          inventory_exclude = {
+              "Current/DATEIINVENTAR_S1.36.txt",
+              "Current/SHA256SUMS_S1.36.txt",
+              temp_workflow,
+          }
+
+          def files(exclude):
+              out = []
+              for root, dirs, names in os.walk("."):
+                  dirs[:] = [d for d in dirs if d != ".git"]
+                  for name in names:
+                      rel = os.path.join(root, name).replace("\\", "/")
+                      if rel.startswith("./"):
+                          rel = rel[2:]
+                      if rel not in exclude:
+                          out.append(rel)
+              return sorted(out)
+
+          inv = [
+              "LETHAL COMPANY REPOSITORY FILE INVENTORY - S1.36",
+              "Generated: 2026-09-02",
+              "",
+              "Excludes: .git, temporary S1.34-retention workflow, this inventory file and SHA256SUMS_S1.36.txt.",
+              "",
+          ]
+          for path in files(inventory_exclude):
+              inv.append(str(os.path.getsize(path)).rjust(12) + "  " + path)
+          with open("Current/DATEIINVENTAR_S1.36.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(inv) + "\n")
+
+          hash_exclude = {"Current/SHA256SUMS_S1.36.txt", temp_workflow}
+          hashes = [
+              "LETHAL COMPANY REPOSITORY SHA256 - S1.36",
+              "Generated: 2026-09-02",
+              "",
+              "Excludes: .git, temporary S1.34-retention workflow and this hash file itself.",
+              "",
+          ]
+          for path in files(hash_exclude):
+              hashes.append(sha256(path) + "  " + path)
+          with open("Current/SHA256SUMS_S1.36.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(hashes) + "\n")
+
+          print("S1.34 retained with verified SHA-256 " + s134_sha)
+
+      - name: Commit reference and refreshed metadata
+        run: |
+          git config user.name "chatgpt-handover"
+          git config user.email "chatgpt-handover@users.noreply.github.com"
+          git add "Profiles/LC V1 S1.34 Malfunctions Disabled.r2z" Archive/S1.34/S1.34_BUILD_VERIFICATION.txt Current/VERIFIKATION_S1.36.txt Current/DATEIINVENTAR_S1.36.txt Current/SHA256SUMS_S1.36.txt
+          git commit -m "Retain S1.34 runtime-tested profile reference"
+          git push origin handover-s136-reference
