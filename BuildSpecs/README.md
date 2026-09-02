@@ -27,3 +27,16 @@ This directory is the online control plane for profile builds.
 - `text_assertions`: post-build verification.
 
 Never point a gameplay build at a diagnostic-only profile.
+
+## Supported automated changes
+
+The current builder supports:
+- `mod_state_changes`: enable/disable an existing exact package version;
+- `mod_additions`: add an exact Thunderstore package/version to the Gale export;
+- `mod_removals`: remove an exact package/version;
+- `config_patches`: change or create BepInEx section/key values;
+- `file_injections`: inject a repository-hosted binary/text file into the profile;
+- `local_plugin_builds`: compile a repository-hosted .NET project on GitHub Actions and inject its output;
+- `text_assertions`: verify required/forbidden output text.
+
+For new Thunderstore content, ChatGPT should research and pin the intended package plus any dependencies required by the chosen build architecture. The user should not have to install those packages manually before the profile is built.
