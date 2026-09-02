@@ -1,0 +1,28 @@
+S1.36 handover baseline verification
+Generated: 2026-09-02
+Source: S1.35 profile from chatgpt-s135-build
+Output: Profiles/LC V1 S1.36 Handover Clean Baseline.r2z
+
+Intended delta from S1.35:
+- profileName updated to LC V1 S1.36 Handover Clean Baseline
+- ProjectSCP-SCP999 set enabled: false
+- no other archive member changed
+
+Verified carried-forward state:
+- 176 manifest entries / 170 active / 6 disabled
+- AJB-Keep_hangar_ship_door_closed disabled
+- zealsprince-Malfunctions disabled
+- ProjectSCP-SCP999 disabled
+- Reiko88-Observer disabled
+- Kittenji-Dont_Touch_Me disabled
+- SoftDiamond-BrutalCompanyMinusExtraReborn disabled
+- Leaf boy remains in LethalMin Attack Blacklist
+- Mirage neverDeleteRecordings remains true
+- S135CompatibilityFixes.dll remains embedded
+
+Gale import requirement:
+- Use Advanced options -> Import all files, otherwise the embedded local DLL may be skipped.
+- Fallback local-mod ZIP is stored under Patches/S135CompatibilityFixes/.
+
+Profile SHA-256: e8f63f37e7e565512399c08c7afc24c008fb7a0080bf62a58144d4a8f0e90c7c
+Local patch ZIP SHA-256: 47de288de023fcafa541640f3780c1124745d9fd7b1ffcc6d63242d4ee42f7f8

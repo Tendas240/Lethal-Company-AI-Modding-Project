@@ -1,0 +1,10 @@
+{
+  "name": "S135CompatibilityFixes",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/Tendas240/Lethal-Company-AI-Modding-Project",
+  "description": "Project-local S1.35 fixes for ship-door lockout prevention and complete EnemyScan output.",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2100",
+    "299792458-ScanForEnemies-1.2.1"
+  ]
+}
