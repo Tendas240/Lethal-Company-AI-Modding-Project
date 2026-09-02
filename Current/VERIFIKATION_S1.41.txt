@@ -17,6 +17,7 @@ PASS  SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 enabled.
 PASS  BCMER 2.0.0 not used.
 
 RUNTIME ACCEPTANCE
+PASS  S1.39 local compatibility DLL loaded and emitted its final marker.
 PASS  Runtime evidence persisted at RuntimeEvidence/S1.41/20260902T215804Z/.
 PASS  BrutalCompanyMinusExtraReborn 1.71.0 loaded and finished patching.
 PASS  Normal BCMER events ran.
