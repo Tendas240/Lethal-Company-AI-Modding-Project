@@ -1,14 +1,27 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AWAITING_S1.42A_RUNTIME_SEED",
+  "enabled": true,
+  "build_id": "S1.42B",
   "base_profile": "Profiles/LC V1 S1.42A Interior Config Seed.r2z",
   "base_sha256": "70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42B LMDL NRE Guard.r2z",
+  "profile_name": "LC V1 S1.42B LMDL NRE Guard",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
   "config_patches": [],
-  "text_assertions": []
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S139CompatibilityFixes/bin/Release/netstandard2.1/S139CompatibilityFixes.dll",
+      "archive_path": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "export.r2x",
+      "contains": "profileName: LC V1 S1.42B LMDL NRE Guard"
+    }
+  ]
 }
