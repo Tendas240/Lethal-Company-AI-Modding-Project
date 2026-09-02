@@ -14,15 +14,15 @@ Do not collapse these phases together. Isolation is intentional so regressions c
 
 ## Version rule
 
-Current profile contains:
+Current accepted S1.41 profile contains:
 
 `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`
 
-disabled.
+**enabled**.
 
-S1.41 uses **exact existing 1.71.0** and has passed runtime acceptance.
+S1.41 uses exact 1.71.0 and has passed runtime acceptance.
 
-Do **not** upgrade to BCMER 2.0.0 during this stage. The 2.0 branch is a major compatibility change and should be a separate future migration only.
+Do **not** silently upgrade to BCMER 2.0.0. The 2.0 branch is a major compatibility change and must be a separate explicit future migration, if ever desired.
 
 ## Client requirement
 
@@ -55,7 +55,7 @@ BCMER source config generation uses event section `e.Name()` and key:
 
 Setting false prevents that event from occurring.
 
-Expected configuration shape, **but verify exact 1.71.0 generated file paths/keys before final build**:
+Accepted S1.41 configuration shape, verified again in post-run runtime configs:
 
 `BrutalCompanyMinusExtraReborn/VanillaEvents.cfg`
 
@@ -93,24 +93,28 @@ Natural vanilla Lethal Company `Rainy` weather remains allowed. Requirement is s
 
 BCMER must not silently become the permanent owner of the project's established spawn architecture outside its events.
 
-Before S1.41 finalization, inspect actual **1.71.0-generated** config names for settings conceptually documented as:
-- `Experimental dont handle spawn chance`
-- `Let Brutal handle properties outside of events?`
+Accepted S1.41 uses the actual 1.71.0-generated keys:
+- `Experimental Dont Handle Power? = true`
+- `Experimental Dont Handle Spawn Chance? = true`
+- `Let Brutal handle properties outside of events? = false`
+- `Enable Randomizer? = false`
 
-Use the real 1.71.0 section/key names, not guesses from BCMER 2.0 documentation.
-
-Goal:
+Goal remains:
 - BCMER may change things as part of its events;
 - outside events, existing project spawn weights/power/ownership should remain authoritative unless user explicitly chooses otherwise;
 - Randomizer behavior should remain disabled unless explicitly wanted.
 
-## Compatibility checks for S1.41
+## S1.41 compatibility result / carry-forward warnings
 
-Audit:
-- GeneralImprovements compatibility. BCMER has documented issues around intro skip; verify our current GeneralImprovements intro/launch settings before reactivation.
-- DawnLib compatibility. Generally usable, but some custom hazards may not be fully handled.
-- Black Mesa Half Life Moon Interior: BCMER custom hazards such as barnacles/trip mines may have limited support.
-- BCMER config generation may require loading/landing on a moon and/or pulling the lever before all config files exist.
+Confirmed for acceptance:
+- GeneralImprovements compatibility requirement was handled with `SpeakerPlaysIntroVoice=true`.
+- BCMER 1.71.0 loaded and normal events ran.
+- post-run config generation was complete enough to verify ownership/rain guards.
+
+Carry forward as monitor-only unless user-facing breakage appears:
+- DawnLib/custom hazard compatibility can still be incomplete in edge cases.
+- Black Mesa Half Life Moon Interior may have limited support for some BCMER custom hazards such as barnacles/trip mines.
+- S1.41 emitted a ButlerSword missing-script warning without blocking the run.
 
 Do not retroactively combine interior additions with S1.41. S1.41 is accepted and frozen as the BCMER reactivation baseline.
 
@@ -118,7 +122,7 @@ Do not retroactively combine interior additions with S1.41. S1.41 is accepted an
 
 # S1.42A — Interior Config Seed
 
-After S1.41 is runtime-accepted, install all binding interior packages **without speculative deep tuning**.
+Now that S1.41 is runtime-accepted, the next isolated build is S1.42A. Add all binding interior packages **without speculative deep tuning**.
 
 Purpose:
 - allow LLL/JLL/DawnLib/content mods to generate their real config sections;
