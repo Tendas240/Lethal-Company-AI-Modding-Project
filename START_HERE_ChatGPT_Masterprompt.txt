@@ -48,8 +48,9 @@ PHASE A – PROJEKT AUS DEM REPOSITORY ÜBERNEHMEN
 
 3. Ermittle aus README.md und den Dateinamen den aktuellsten dokumentierten Projektstand.
    Der aktuellste chronologisch bestätigte Stand ist verbindlich.
-   Falls das Repository inzwischen neuer als S1.31 ist, hat der neuere Stand Vorrang.
-   S1.31 ist nur ein historischer Fallback und darf einen neueren Stand niemals überschreiben.
+   Verlasse dich nie auf eine fest im Prompt genannte historische Versionsnummer.
+   README.md und Current/ müssen den aktuellen kanonischen Stand eindeutig ausweisen.
+   Ein neuer Build kann kanonischer Testkandidat sein, obwohl ein älterer Stand der letzte tatsächlich runtime-getestete Stand ist; diese beiden Zustände sind getrennt zu dokumentieren.
 
 4. Lies anschließend zuerst die in README.md unter „ChatGPT — read first“ aufgeführten Markdown/TXT/JSON-Dateien. PDF/DOCX sind sekundär.
    Mindestens zu prüfen sind, sofern vorhanden:
@@ -66,6 +67,7 @@ PHASE A – PROJEKT AUS DEM REPOSITORY ÜBERNEHMEN
 
 5. Prüfe danach die aktuell relevanten technischen Dateien:
    - Profiles/
+   - Patches/ sofern vorhanden
    - Logs/
    - References/
    - Archive/ nur bei Bedarf
@@ -73,6 +75,7 @@ PHASE A – PROJEKT AUS DEM REPOSITORY ÜBERNEHMEN
 6. Behandle die Ordner wie folgt:
    - Current/ = aktueller verbindlicher Projektstand
    - Profiles/ = aktuelle und noch relevante Gale/r2modman-.r2z-Profile
+   - Patches/ = projektlokale Kompatibilitäts-Patches, Quellcode und installierbare lokale Mod-Pakete
    - Logs/ = aktuelle beziehungsweise diagnostisch relevante Runtime-Logs/Auswertungen
    - References/ = verbindliche Referenzbilder, Spawn-Rates, Referenzwerte und andere Primärquellen
    - Archive/ = historische Primärquellen; wichtig für Rekonstruktion, aber nicht automatisch aktuell
@@ -131,6 +134,10 @@ PHASE B – REGELN FÜR DIE LAUFENDE ARBEIT
    - .r2z-Archivintegrität prüfen,
    - Profilname und Versionsbezeichnung kontrollieren,
    - unbeabsichtigte Configänderungen ausschließen.
+   - Falls eine projektlokale DLL oder ein anderes zusätzliches ausführbares File in einem .r2z steckt, zusätzlich dokumentieren, wie Gale dieses File tatsächlich importiert.
+   - Für Gale-Profile mit projektlokalen DLLs ist standardmäßig „Advanced options -> Import all files“ zu verlangen, sofern der konkrete Importpfad dies benötigt.
+   - Nach dem ersten Runtime-Start müssen eindeutige Plugin-Load-Marker im Log geprüft werden. Fehlen sie, darf das Verhalten des Patches nicht als getestet gelten.
+   - Wenn sinnvoll, zusätzlich ein separates lokales Mod-Paket als Fallback unter Patches/ bereitstellen.
 
 4. Bei neuen Logs:
    - nicht nur einzelne sichtbare Ausschnitte betrachten,
@@ -268,6 +275,7 @@ Prüfe insbesondere:
 - neuestes Gameplay-.r2z
 - relevante vorherige Basisprofile
 - relevante Diagnoseprofile
+- projektlokale Patch-Quellen / lokale Mod-Pakete unter Patches/
 - neue Runtime-Logs
 - neue Diagnoseauswertungen
 - verbindliche Referenzbilder
@@ -289,6 +297,7 @@ Grundstruktur:
 ├─ START_HERE_ChatGPT_Masterprompt.txt
 ├─ Current/
 ├─ Profiles/
+├─ Patches/ (falls projektlokale Patches existieren)
 ├─ Logs/
 ├─ References/
 └─ Archive/
@@ -297,6 +306,7 @@ Regeln:
 
 - Current/ enthält den aktuellen maschinenlesbaren Einstiegspunkt und aktuelle Dokumentation; Current/HumanReadable/ enthält die sekundären PDF/DOCX-Fassungen.
 - Profiles/ enthält aktuelle sowie noch relevante Basis-/Diagnoseprofile.
+- Patches/ enthält projektlokale Kompatibilitäts-Patches, Quellcode und installierbare lokale Mod-Pakete.
 - Logs/ enthält aktuelle beziehungsweise diagnostisch relevante Logs/Auswertungen.
 - References/ enthält verbindliche Primärreferenzen.
 - Archive/ enthält historische Primärquellen mit fortbestehendem Erkenntniswert.
@@ -308,6 +318,7 @@ README.md muss eindeutig nennen:
 - Prioritätsregel „neuere bestätigte Information schlägt ältere“,
 - Hinweis, dass Archive/ historisch ist,
 - Hinweis auf diesen Master-Prompt.
+- falls der aktuelle Stand projektlokale DLLs benötigt: die konkrete Gale-Importregel und die erwarteten Runtime-Load-Marker.
 
 ======================================================================
 PHASE G – QUALITÄTSKONTROLLE VOR DER ÜBERGABE
@@ -329,6 +340,7 @@ Vor Auslieferung prüfen:
    - korrekte Versionsbezeichnung
    - keine unbeabsichtigten Zusatz-/Fehl-Dateien
    - Diff gegen korrektes Basisprofil
+   - bei eingebetteten projektlokalen DLLs: DLL tatsächlich vorhanden, separates Fallback-Paket vorhanden falls vorgesehen, Gale-Importregel dokumentiert und Runtime-Load-Marker für den nächsten Test festgelegt
 
 3. Logs
    - korrekter Versionsbezug
@@ -430,6 +442,7 @@ KRITISCHE GRUNDREGELN
 - Diagnosehistorie und Gründe für Entscheidungen erhalten.
 - Vor jeder Profiländerung korrekte Basis sicherstellen.
 - Nach jeder Profiländerung Diff und Archivintegrität prüfen.
+- Eingebettete projektlokale DLLs gelten erst als runtime-getestet, wenn ihr tatsächlicher Load im neuen Profil-Log bestätigt ist.
 - Keine erfundenen Werte, wenn Logs/Dateien sie nicht belegen.
 - Fehlende Informationen klar benennen statt raten.
 - Wichtige Projektdateien für GitHub einzeln bereitstellen.
