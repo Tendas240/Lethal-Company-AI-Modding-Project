@@ -9,6 +9,34 @@ Dieser Prompt ist als dauerhafter Einstiegspunkt für neue ChatGPT-Chats gedacht
 Er soll sowohl die initiale Projektübernahme aus dem GitHub-Repository als auch die spätere Aktualisierung des Repositories am Ende eines Arbeitsabschnitts steuern.
 Das Repository ist die kanonische Übergabequelle. Eine ZIP-Datei ist nur optionales Backup und niemals die einzige Quelle.
 
+
+======================================================================
+MARKDOWN-FIRST / RAW-GITHUB RULE — CRITICAL
+======================================================================
+
+The repository uses machine-readable text as the primary ChatGPT handover format.
+
+Read `.md`, `.txt`, and `.json` files before PDF/DOCX.
+
+Preferred current read order:
+1. `Current/00_CURRENT_STATE.md`
+2. `Current/01_HANDOVER_CORE.md`
+3. `Current/02_TECHNICAL_BASELINE.md`
+4. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+5. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+6. `Current/03_PROJECT_CHRONOLOGY.md`
+7. current JSON/TXT metadata
+
+`Current/HumanReadable/` contains PDF/DOCX secondary versions for human readability and visual verification. A GitHub PDF preview/viewer failure is not a blocking error if equivalent machine-readable current documentation exists.
+
+When a normal GitHub page returns a viewer instead of file content, prefer the raw form for text files:
+`https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/<PATH>`
+
+Do not waste time trying to screenshot GitHub's PDF viewer merely to recover information that already exists in Markdown/TXT/JSON.
+
+When updating the repository, keep the machine-readable current files synchronized with the newest confirmed project state. Human-readable PDF/DOCX documents are secondary and must not become the only source for critical facts.
+
+
 ======================================================================
 PHASE A – PROJEKT AUS DEM REPOSITORY ÜBERNEHMEN
 ======================================================================
@@ -23,7 +51,7 @@ PHASE A – PROJEKT AUS DEM REPOSITORY ÜBERNEHMEN
    Falls das Repository inzwischen neuer als S1.31 ist, hat der neuere Stand Vorrang.
    S1.31 ist nur ein historischer Fallback und darf einen neueren Stand niemals überschreiben.
 
-4. Lies anschließend die in README.md unter „Read first“ beziehungsweise als aktuell markierten Dateien.
+4. Lies anschließend zuerst die in README.md unter „ChatGPT — read first“ aufgeführten Markdown/TXT/JSON-Dateien. PDF/DOCX sind sekundär.
    Mindestens zu prüfen sind, sofern vorhanden:
    - Current/Handover-Prompt_*_Aktueller-Kern.*
    - Current/Handover-Prompt_Lethal-Company_bis_*.*
@@ -267,7 +295,7 @@ Grundstruktur:
 
 Regeln:
 
-- Current/ enthält nur den aktuellen Einstiegspunkt und aktuelle Dokumentation.
+- Current/ enthält den aktuellen maschinenlesbaren Einstiegspunkt und aktuelle Dokumentation; Current/HumanReadable/ enthält die sekundären PDF/DOCX-Fassungen.
 - Profiles/ enthält aktuelle sowie noch relevante Basis-/Diagnoseprofile.
 - Logs/ enthält aktuelle beziehungsweise diagnostisch relevante Logs/Auswertungen.
 - References/ enthält verbindliche Primärreferenzen.

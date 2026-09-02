@@ -1,38 +1,9 @@
-LETHAL COMPANY HANDOVER S1.31 - VERIFIKATION
-Stand: 2026-09-02
+﻿LETHAL COMPANY REPOSITORY VERIFICATION - S1.31
+Generated: 2026-09-02 10:18:01
 
-PROFIL-INTEGRITAET
-- Aktueller Build: Profile/LC V1 S1.31 Indoor Power Trim -4.r2z
-- Interner Name: profileName: LC V1 S1.31 Indoor Power Trim -4
-- Archiveintraege getestet/Handoverskopie: 379 / 379
-- Gleiche Eintragsnamen und Reihenfolge: True
-- Inhaltliche Unterschiede zum getesteten S1.31-Profil: export.r2x
-- Erwartet ist ausschließlich export.r2x wegen der Korrektur des profileName von S1.30 auf S1.31.
-- unzip -t: ohne Fehler.
-
-MOD-MANIFEST
-- Gesamt: 176
-- Aktiv: 173
-- Deaktiviert: Kittenji-Dont_Touch_Me, Reiko88-Observer, SoftDiamond-BrutalCompanyMinusExtraReborn
-
-DOKUMENT-QA
-- DOCX: Dokumentation/Handover-Prompt_Lethal-Company_bis_S1.31.docx | Render-QA: 33 Seiten | 71219 Bytes
-- DOCX: Dokumentation/Handover-Prompt_S1.31_Aktueller-Kern.docx | Render-QA: 13 Seiten | 52224 Bytes
-- DOCX: Dokumentation/Lethal-Company_Chatverlauf_Handover_bis_S1.31.docx | Render-QA: 14 Seiten | 53465 Bytes
-- DOCX: Dokumentation/Lethal-Company_Projektchronik_Kompakt_bis_S1.31.docx | Render-QA: 14 Seiten | 53465 Bytes
-- PDF:  Dokumentation/Handover-Prompt_Lethal-Company_bis_S1.31.pdf | pdfinfo: 33 Seiten | 609585 Bytes
-- PDF:  Dokumentation/Handover-Prompt_S1.31_Aktueller-Kern.pdf | pdfinfo: 13 Seiten | 264401 Bytes
-- PDF:  Dokumentation/Lethal-Company_Chatverlauf_Handover_bis_S1.31.pdf | pdfinfo: 276 Seiten | 11155315 Bytes
-- PDF:  Dokumentation/Lethal-Company_Projektchronik_Kompakt_bis_S1.31.pdf | pdfinfo: 14 Seiten | 293790 Bytes
-
-PDF-/DOCX-HINWEIS
-- Die finalen DOCX-Dateien wurden mit dem kanonischen DOCX-Renderer in Seitenbilder gerendert und layoutgeprüft.
-- Die finalen PDFs wurden ebenfalls gerendert/visuell geprüft; pdfinfo kann alle Dateien lesen.
-- qpdf ist in dieser Laufzeit nicht installiert; deshalb wurde kein qpdf --check ausgeführt.
-
-LOG-HINWEIS
-- Der rohe S1.29D-Audit-Log ist enthalten.
-- Der rohe S1.30-Test-Log war im Chat verfügbar, konnte aber nicht erneut materialisiert werden. Seine belegte Auswertung ist als Diagnose/S1.30_Run_Auswertung_2026-09-02.txt enthalten.
-
-PRIORITAET
-- Chronologisch neueste bestätigte Runtime-/Profilfakten schlagen ältere Annahmen und historische Anhänge.
+- Markdown-first current handover files installed.
+- Current PDF/DOCX documents moved to Current/HumanReadable/.
+- Profiles, Logs, References and Archive preserved.
+- Current gameplay profile remains: Profiles/LC V1 S1.31 Indoor Power Trim -4.r2z
+- No gameplay profile/config was modified by this repository-layout upgrade.
+- SHA256SUMS_S1.31.txt is regenerated below from the final repository files (excluding .git and the hash file itself).
