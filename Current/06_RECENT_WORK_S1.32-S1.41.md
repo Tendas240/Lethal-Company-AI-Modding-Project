@@ -134,7 +134,9 @@ Historical note: `ab894ead...` was an earlier pre-correction S1.40A archive vari
 
 Acceptance requires a valid Gale all-files import, no natural Currency, no natural Flash Turret, and post-run confirmation that the config values remain intact.
 
-## 2026-09-02 handover closure
+## Historical 2026-09-02 S1.40A handover checkpoint — superseded
+
+The following bullets describe what was believed/current **at that earlier checkpoint**. They are preserved for chronology only and are superseded by the S1.40B/S1.41 sections below.
 
 Repository handover was refreshed after the S1.40A build.
 
