@@ -25,7 +25,8 @@ Do not reintroduce these without new technical evidence or explicit user instruc
 | EnemyScan 1.2.1 original scan-node-filtered list as complete census | Incomplete by design; project-local patch replaces list-building output. |
 | S1.37 normal-scrap Currency filter as complete solution | Insufficient: CodeRebirth also has a separate DawnLib map-object path. |
 | S1.39 late `RoundManager/SelectableLevel` map-object Currency filter as complete solution | Runtime disproved it; natural Coins/Wallets still appeared while plugin load was confirmed. |
-| S1.40 sparse `CodeRebirth.cfg` without disabling config cleanup | Runtime disproved it; post-run config restored `Clean Unusued Configs=true`, Flash Turret inside-hazard=true and positive Currency moon curves. S1.40A adds cleanup retention control. |
+| S1.40 sparse `CodeRebirth.cfg` without disabling config cleanup | Runtime disproved it; post-run config restored `Clean Unusued Configs=true`, Flash Turret inside-hazard=true and positive Currency moon curves. |
+| S1.40A cleanup-retention-only fix as complete solution | Runtime disproved it. `Clean Unusued Configs=false` survived, but DawnLib per-content `Allow Editing Config=false` still restored author defaults. S1.40B opened only the relevant edit gates and passed. |
 | Assuming LethalMin `Crane Targets/Squishes Pikmin=false` prevents every crane kill | Runtime disproved it; S1.39 direct CodeRebirth utility-kill guard exists for this gap. |
 | Enabling all Lethal Resonance groups | Not desired. Design is Old-Bird-only. |
 | Using S1.29D as gameplay base | Forbidden; diagnostic-only power audit derivative. |
@@ -55,15 +56,22 @@ If `Dungeons_Ultimately_Lacking_Liveliness` requires `MaxWasUnavailable-LethalMo
 Disabled from S1.34 onward by explicit user decision. Do not re-enable unless the user explicitly asks.
 
 ### BCMER
-`SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0` is parked, not banned.
+`SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0` is no longer parked.
 
-Reactivation is binding only **after S1.40A acceptance** and must be isolated as S1.41. See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`.
+It was reactivated in isolated S1.41 and **runtime accepted**.
+
+Current rule:
+- keep exact 1.71.0 as the accepted baseline;
+- do not silently upgrade to 2.0.0;
+- any future 2.0 migration must be an explicit isolated compatibility stage.
+
+See `Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md` and `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`.
 
 ## General anti-regression rule
 
 Before proposing an old mod/config/patch as a fix, search:
 - this file;
-- `Current/06_RECENT_WORK_S1.32-S1.40A.md`;
+- `Current/06_RECENT_WORK_S1.32-S1.41.md`;
 - `Current/03_PROJECT_CHRONOLOGY.md`;
 - `Logs/`;
 - `Archive/` only when historical reconstruction is actually needed.
