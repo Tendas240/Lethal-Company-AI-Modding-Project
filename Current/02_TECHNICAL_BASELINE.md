@@ -1,37 +1,74 @@
 # 02 — Technical Baseline
 
-## Current manifest
+## Current manifest: S1.36
 
-S1.31 export:
+Profile:
 
-- 176 manifest entries
-- 173 active
-- 3 explicitly disabled
+Profiles/LC V1 S1.36 Handover Clean Baseline.r2z
+
+- 176 Thunderstore manifest entries
+- 170 active
+- 6 explicitly disabled
+- plus one required project-local compatibility plugin embedded in the archive and available separately under Patches/
 
 Explicitly disabled:
 
-- `Kittenji-Dont_Touch_Me`
-- `Reiko88-Observer`
-- `SoftDiamond-BrutalCompanyMinusExtraReborn`
+- AJB-Keep_hangar_ship_door_closed 1.0.0
+- zealsprince-Malfunctions 1.10.3
+- Reiko88-Observer 2.0.1
+- ProjectSCP-SCP999 2.4.0
+- Kittenji-Dont_Touch_Me 1.2.8
+- SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0
 
-Relevant active versions include:
+The full package list is in Current/Aktive_Modliste_S1.36.txt.
 
-- CodeRebirth 1.6.9
-- DawnLib 0.9.25
-- CompanyBuildingEnhancements 2.6.0
-- LethalLevelLoader 1.7.12
-- Spawn Cycle Fixes 1.2.2
-- LethalMinNightly 1.1.108
-- RandomEnemiesSize 1.1.20
-- RollingGiant 2.6.3
-- SirenHead 2.0.7
-- Scopophobia 1.3.4
-- GeneralImprovements 1.5.5
-- ImmortalSnailFork 0.1.1
+## Required local plugin
 
-The full list is in `Current/Aktive_Modliste_S1.31.txt`.
+Patches/S135CompatibilityFixes/
 
-## S1.31 vanilla indoor power caps
+Package:
+
+Patches/S135CompatibilityFixes/Tendas-S135CompatibilityFixes-1.0.0.zip
+
+Embedded DLL inside S1.36:
+
+BepInEx/plugins/Tendas-S135CompatibilityFixes/S135CompatibilityFixes.dll
+
+Functions:
+
+1. ship-door anti-lockout behavior,
+2. door audit logging,
+3. EnemyScan complete-list patch.
+
+### Gale import requirement
+
+Use **Advanced options → Import all files** when importing S1.36.
+
+If BepInEx does not log S1.35 Compatibility Fixes loaded, import the local-mod ZIP manually into the same profile.
+
+## Package versions vs runtime plugin versions
+
+The export lists Thunderstore package versions. Current logs prove that some packages contain assemblies whose internal plugin versions differ.
+
+For code/error analysis, prefer the newest runtime log over the manifest when they disagree.
+
+Examples from current runs:
+
+- SirenHead package 2.0.7 → runtime plugin 2.0.3
+- ImmortalSnailFork package 0.1.1 → runtime plugin 0.1.0
+- Black Mesa package 3.4.4 → runtime plugin 3.4.1
+- Coroner package 2.4.1 → runtime plugin 2.3.0
+- darmuhsTerminalStuff package 3.10.2 → runtime plugin 3.10.1
+- Lethal Doors Fixed package 1.2.1 → runtime plugin 1.2.0
+- FairAI package 1.6.1 → runtime plugin 1.6.0
+
+Do not silently treat these as package corruption; package version and assembly/plugin version can legitimately differ. Always state which source is being used.
+
+## Indoor power caps
+
+Unchanged from S1.31.
+
+### Vanilla
 
 | Moon | Indoor Power |
 |---|---:|
@@ -49,9 +86,9 @@ The full list is in `Current/Aktive_Modliste_S1.31.txt`.
 | Titan | 32 |
 | Gordion / Company | 0 |
 
-The user explicitly requested S1.30 values “minus 4”. This preserves ordering and absolute differences, but not exact mathematical ratios.
+These came from the explicit S1.30-values-minus-4 decision. Do not rebalance them while testing unrelated fixes.
 
-## S1.31 custom/external indoor power caps
+### Custom/external
 
 | Moon | Indoor Power |
 |---|---:|
@@ -72,9 +109,9 @@ The user explicitly requested S1.30 values “minus 4”. This preserves orderin
 | Spectralis | 22 |
 | The Iris | 36 |
 | Black Mesa | 28 |
-| Oxyde | not separately controllable in the current export |
+| Oxyde | not separately controllable in current export |
 
-Do not guess an Oxyde value unless the relevant external configuration/source becomes available.
+Do not guess an Oxyde value.
 
 ## 26 equal-weight interiors
 
@@ -109,6 +146,93 @@ All intended at Weight 100 on normal moons:
 
 Runtime previously confirmed all 26 viable at Weight 100 with an empty unviable list.
 
+Black Mesa uses its own DawnLib/config path; do not double-register through LLL.
+
+## LethalMin baseline
+
+Core Pikmin settings:
+
+- No Knock Back = true
+- Invinceable Pikmin = true
+- Pikmin Die In Player Death Zones = false
+
+Current S1.36 Attack Blacklist line:
+
+Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy
+
+Do not replace this with an older shorter list. S1.32 appended Leaf boy to the existing current list.
+
+## Mirage baseline
+
+S1.36 carries:
+
+localPlayerVolume=0.5  
+neverDeleteRecordings=true  
+allowRecordVoice=true  
+muteVoiceMimic=false
+
+Mirage paths:
+
+- settings: <Lethal Company installation folder>/Mirage/settings.json
+- recordings: <Lethal Company installation folder>/Mirage/Recording
+
+neverDeleteRecordings=true is intentional and must remain unless the user asks otherwise.
+
+## Ship-door compatibility patch
+
+The S1.35/S1.36 local plugin patches HangarShipDoor.Update() with a late postfix.
+
+Behavior only while landed and hangar closed:
+
+- living player inside ship → doorPower forced back to 1f after vanilla Update, so power stays 100%;
+- living players exist but all are outside → no refill, vanilla hydraulic drain continues and opens the door at zero;
+- no living controlled players, ship leaving/orbit/ship phase, or open door → no intervention.
+
+Inside detection uses both:
+
+- player.isInHangarShipRoom
+- StartOfRound.shipInnerRoomBounds.bounds.Contains(player.transform.position) fallback
+
+Diagnostics:
+
+- [DoorAudit]
+- [DoorFailsafe]
+
+The patch also logs stack traces for SetDoorClosed, SetDoorOpen, PlayDoorAnimation and Start/Stop ship-door button interactions.
+
+AJB-Keep_hangar_ship_door_closed is disabled to avoid competing postfixes.
+
+## EnemyScan complete-list patch
+
+Original EnemyScan 1.2.1 only listed EnemyAI that had a ScanNodeProperties child.
+
+S1.35/S1.36 patches only BuildEnemyCountString() so that it groups every active EnemyAI with a valid EnemyType by enemyType.enemyName.
+
+It does not modify:
+
+- spawn weights,
+- spawn caps,
+- PowerLevels,
+- AI,
+- ScanNodes,
+- bestiary registration.
+
+## Coin / CodeRebirth currency
+
+Coin is CodeRebirth content, namespaced as code_rebirth:coin.
+
+CodeRebirth Money.TryCollectCoin():
+
+- requires a MoneyCounter supplied by the Denomination Analyzer;
+- without it, displays a hint telling the player to buy the analyzer from the ship terminal;
+- with it, adds the coin value to stored CodeRebirth currency and destroys/despawns the coin.
+
+The stored currency is used by CodeRebirth merchant/vending systems.
+
+## Puma / Feiopar
+
+PumaAI is the internal vanilla AI class for the V80+ enemy Feiopar. Puma log lines do not imply a Puma mod is installed.
+
 ## SpawnCycleFixes
 
 Spawn Cycle Fixes 1.2.2 remains active.
@@ -125,49 +249,28 @@ Approximate consistent spawn waves historically identified:
 - 21:00
 - 23:00
 
-Do not disable it blindly. If enemies still feel too late, investigate probability/amount curves rather than merely removing SpawnCycleFixes.
+Do not disable it blindly. If enemies feel too late, investigate probability/amount curves rather than simply removing SpawnCycleFixes.
 
-## Beehives / Red Locust Bees
+## Known current warnings/issues
 
-Offense is not a normal vanilla Bee/Beehive moon, so the absence of Beehives there is not evidence of a bug.
+### SCP999 startup NRE
 
-The raw vanilla Bee weights on the actual bee moons were not intentionally reduced.
+S1.31–S1.34 logs showed Loading [SCP999 2.4.0], immediately followed by NullReferenceException in SCP999.Plugin.Awake().
 
-Because additional daytime enemies such as GiantKiwi enlarge the pool, effective Bee percentages can be somewhat lower than vanilla.
+S1.36 disables the package. Next runtime must verify the load/NRE is gone.
 
-Approximate documented comparison:
+### SellMyScrap
 
-| Moon | Before added GiantKiwi | Extended pool |
-|---|---:|---:|
-| Experimentation | 14.9% | 13.7% |
-| Assurance | 22.4% | 20.5% |
-| Vow | 20.1% | 15.4% |
-| March | 36.3% | 30.8% |
-| Adamance | 10.9% | 10.0% |
-| Artifice | 15.6% | 14.4% |
+Current logs show warnings because several methods cannot load ShipInventoryUpdated, Version=2.0.0.0. SellMyScrap otherwise continues loading. Investigate only if related functionality is broken.
 
-Only compensate Bee chance if several runs on actual Bee moons show a reproducible problem.
+### InjectionLibrary native DLL warnings
 
-## Dungeon music candidates
+Mirage/Opus native DLLs are skipped as non-.NET assemblies by InjectionLibrary. Those scanner warnings alone are not a failure.
 
-### Haunted Harpist / Phantom Piper
+### CodeRebirth Weather Registry
 
-Musical enemy source. Can sound like a “theme song” from several rooms away.
+Weather Registry not found, skipping weather content registration appears while CodeRebirth otherwise continues loading. Treat as an open compatibility warning, not a proven blocker.
 
-A spatial/directional song during normal exploration points more strongly toward this source.
+### NavMeshInCompany
 
-### PizzaTowerEscapeMusic
-
-Event/escape music source. Apparatus removal is a strong suspected trigger in the current configuration.
-
-A global song beginning at/after Apparatus removal points more strongly toward this source.
-
-The exact source of the user's observed theme song is not yet proven.
-
-## Vanilla Turret observation
-
-One disabled vanilla Turret was found during the latest documented run.
-
-No log evidence proves a global Turret defect.
-
-Legitimate disable paths exist, including terminal/hacking mechanisms. Do not modify Turret logic unless this repeats with player interaction ruled out.
+Missing NodeHelper script warnings remain known. Reassess only if Company navigation is actually broken.
