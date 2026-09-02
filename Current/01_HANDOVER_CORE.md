@@ -142,11 +142,20 @@ Confirmed:
 New separate issue: Mineshaft elevator + large Pikmin group may trigger NavMesh/collision instability and a player fall-through. Track independently; do not attribute to BCMER without evidence.
 
 
-## New-chat takeover
+## New-chat takeover / current progress
 
 Repository handover was refreshed on 2026-09-03.
 
-The next chat should not retest S1.41 by default. It should take accepted S1.41 as the exact base and prepare S1.42A through GitHub Actions after fresh package/dependency audit.
+Accepted S1.41 remains the canonical gameplay baseline and should not be retested by default.
+
+The repository-first S1.42A build step has now been completed:
+- profile: `Profiles/LC V1 S1.42A Interior Config Seed.r2z`
+- SHA-256: `70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
+- automated member delta: only `export.r2x`
+- manifest: 188 total / 183 enabled / 5 disabled
+- `RuntimeInbox/ACTIVE_BUILD.txt` = `S1.42A`
+
+Do **not** rebuild S1.42A by default. The immediate next task is the runtime config-generation seed procedure and evidence upload described in `BuildSpecs/S1.42A_PLAN.md`.
 
 Start prompt:
 `Current/NEXT_CHAT_START_PROMPT_S1.41.txt`
