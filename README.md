@@ -53,6 +53,8 @@ BCMER is accepted at exact **1.71.0**. Do not silently update it to 2.0.0; a 2.0
 17. `ProfileSources/S1.41/PROFILE_INDEX_RESULT.json`
 18. `BuildSpecs/current.json`
 19. `BuildSpecs/S1.42A_PLAN.md`
+20. `Current/AUTO_BUILD_RESULT.json`
+21. `ProfileSources/S1.42A/FILE_INDEX.json`
 
 Then inspect `Profiles/`, `ProfileSources/`, `Patches/`, `RuntimeEvidence/`, `Logs/`, `References/` and `Archive/` according to the task.
 
