@@ -3,7 +3,7 @@
 **Canonical project state:** S1.36  
 **Date:** 2026-09-02  
 **Current gameplay/test profile:** Profiles/LC V1 S1.36 Handover Clean Baseline.r2z  
-**Latest runtime-tested profile:** S1.34 — LC V1 S1.34 Malfunctions Disabled  
+**Latest runtime-tested profile:** Profiles/LC V1 S1.34 Malfunctions Disabled.r2z  
 **Game:** Lethal Company V81  
 **Repository:** https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
