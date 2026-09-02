@@ -20,7 +20,7 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.1.0";
+        public const string PluginVersion = "1.2.0";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
@@ -37,11 +37,13 @@ namespace S139CompatibilityFixes
             PatchEnemyScan();
             PatchCodeRebirthPikminKillShield();
             PatchLethalModDataLibNullPluginGuard();
+            PatchPufferSmokePikminEffectGuard();
 
             Logger.LogInfo(
                 "S1.39 Compatibility Fixes loaded. Ship-door anti-lockout, complete EnemyScan output, " +
                 "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, " +
-                "CodeRebirth kill-RPC Pikmin protection, and the optional LethalModDataLib null-plugin guard are active.");
+                "CodeRebirth kill-RPC Pikmin protection, the optional LethalModDataLib null-plugin guard, " +
+                "and the Puffer smoke Pikmin-effect guard are active.");
         }
 
         private void PatchEnemyScan()
@@ -99,6 +101,26 @@ namespace S139CompatibilityFixes
                 "This provides a direct failsafe for Autonomous Crane squish kills even when LethalMin's crane toggles are already false.");
         }
 
+        private void PatchPufferSmokePikminEffectGuard()
+        {
+            MethodInfo pufferStart = AccessTools.Method(typeof(PufferAI), "Start");
+            if (pufferStart == null)
+            {
+                Logger.LogError("[PufferPikminGuard] Could not locate PufferAI.Start; smoke-effect guard was not applied.");
+                return;
+            }
+
+            Harmony.Patch(
+                pufferStart,
+                postfix: new HarmonyMethod(typeof(PufferSmokePikminEffectGuard), nameof(PufferSmokePikminEffectGuard.Postfix))
+                {
+                    priority = Priority.Last
+                });
+
+            Logger.LogInfo(
+                "[PufferPikminGuard] Patched PufferAI.Start to remove LethalMin-injected Pikmin effect-trigger components from Puffer smoke only.");
+        }
+
         private void PatchLethalModDataLibNullPluginGuard()
         {
             Type collectorType = AccessTools.TypeByName("LethalModDataLib.Features.ModDataAttributeCollector");
@@ -132,6 +154,108 @@ namespace S139CompatibilityFixes
 
             Logger.LogInfo(
                 "[LMDLGuard] Patched LethalModDataLib bulk ModDataAttribute registration to skip Chainloader PluginInfo entries with null Instance while preserving registration for valid plugins.");
+        }
+    }
+
+    internal static class PufferSmokePikminEffectGuard
+    {
+        public static void Postfix(PufferAI __instance)
+        {
+            if (__instance == null)
+                return;
+
+            int removed = 0;
+            HashSet<GameObject> candidates = new HashSet<GameObject>();
+
+            // The nightly LethalMin build injects a Pikmin effect trigger into the
+            // Puffer's smoke prefab. Inspect smoke-named GameObject/Component fields
+            // plus smoke-named children so this stays resilient to field-name changes.
+            foreach (FieldInfo field in typeof(PufferAI).GetFields(
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
+            {
+                string fieldName = field.Name ?? string.Empty;
+                if (fieldName.IndexOf("smoke", StringComparison.OrdinalIgnoreCase) < 0 &&
+                    fieldName.IndexOf("puff", StringComparison.OrdinalIgnoreCase) < 0)
+                    continue;
+
+                object value;
+                try
+                {
+                    value = field.GetValue(__instance);
+                }
+                catch
+                {
+                    continue;
+                }
+
+                if (value is GameObject go && go != null)
+                    candidates.Add(go);
+                else if (value is Component component && component != null)
+                    candidates.Add(component.gameObject);
+            }
+
+            foreach (Transform child in __instance.GetComponentsInChildren<Transform>(true))
+            {
+                if (child == null || child.gameObject == null)
+                    continue;
+
+                string name = child.name ?? string.Empty;
+                if (name.IndexOf("smoke", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    name.IndexOf("puff", StringComparison.OrdinalIgnoreCase) >= 0)
+                    candidates.Add(child.gameObject);
+            }
+
+            foreach (GameObject candidate in candidates)
+                removed += StripLethalMinEffectTriggers(candidate);
+
+            if (removed > 0)
+            {
+                Plugin.Log.LogInfo(
+                    $"[PufferPikminGuard] Removed {removed} LethalMin Pikmin effect-trigger component(s) from Puffer smoke. Player/vanilla Puffer behavior remains intact.");
+            }
+            else
+            {
+                Plugin.Log.LogWarning(
+                    "[PufferPikminGuard] No LethalMin Pikmin effect-trigger component was found on Puffer smoke. " +
+                    "If Pikmin are still affected, capture a fresh log for a narrower runtime patch.");
+            }
+        }
+
+        private static int StripLethalMinEffectTriggers(GameObject root)
+        {
+            if (root == null)
+                return 0;
+
+            int removed = 0;
+            MonoBehaviour[] behaviours = root.GetComponentsInChildren<MonoBehaviour>(true);
+            foreach (MonoBehaviour behaviour in behaviours)
+            {
+                if (behaviour == null)
+                    continue;
+
+                Type type = behaviour.GetType();
+                string fullName = type.FullName ?? type.Name ?? string.Empty;
+                string assemblyName = type.Assembly.GetName().Name ?? string.Empty;
+
+                bool belongsToLethalMin =
+                    fullName.IndexOf("LethalMin", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    assemblyName.IndexOf("LethalMin", StringComparison.OrdinalIgnoreCase) >= 0;
+
+                bool isEffectTrigger =
+                    fullName.IndexOf("Effect", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    fullName.IndexOf("Trigger", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    fullName.IndexOf("Hazard", StringComparison.OrdinalIgnoreCase) >= 0;
+
+                if (!belongsToLethalMin || !isEffectTrigger)
+                    continue;
+
+                Plugin.Log.LogInfo(
+                    $"[PufferPikminGuard] Removing {fullName} from smoke object '{behaviour.gameObject.name}'.");
+                UnityEngine.Object.Destroy(behaviour);
+                removed++;
+            }
+
+            return removed;
         }
     }
 
