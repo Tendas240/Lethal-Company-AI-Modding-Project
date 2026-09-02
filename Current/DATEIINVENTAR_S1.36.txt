@@ -1,0 +1,69 @@
+LETHAL COMPANY REPOSITORY FILE INVENTORY - S1.36
+Generated: 2026-09-02
+
+Excludes: .git, temporary metadata workflow, this inventory file and SHA256SUMS_S1.36.txt.
+
+    39270843  Archive/S1.24/Diagnose/LogOutput_S1.23_LastTest.log
+       52871  Archive/S1.24/Dokumentation/Handover-Prompt_Lethal-Company_bis_S1.24.docx
+    10955356  Archive/S1.24/Dokumentation/Lethal-Company_Chatverlauf_Handover_bis_S1.24.pdf
+        4092  Archive/S1.24/Dokumentation/README_Handover_S1.24.txt
+      524868  Archive/S1.24/Profile/LC V1 S1.23 All Pikmin Water Resistant.r2z
+      524842  Archive/S1.24/Profile/LC V1 S1.24 Enemy Restore.r2z
+      446258  Archive/S1.24/Referenz/Offense_Referenz_Spawn-Rates.png
+        1180  Archive/S1.29D/DATEIINVENTAR.txt
+       41149  Archive/S1.29D/Handover-Prompt_Lethal-Company_bis_S1.29D.docx
+      213035  Archive/S1.29D/Lethal-Company_Chatverlauf_Handover_bis_S1.29D.pdf
+        3812  Archive/S1.29D/README_Handover_S1.29D.txt
+        9392  Archive/S1.31/CurrentMetadata/Aktive_Modliste_S1.31.txt
+        2934  Archive/S1.31/CurrentMetadata/DATEIINVENTAR_S1.31.txt
+        1613  Archive/S1.31/CurrentMetadata/Projektstatus_S1.31.json
+         695  Archive/S1.31/CurrentMetadata/README_Handover_S1.31.txt
+        5416  Archive/S1.31/CurrentMetadata/SHA256SUMS_S1.31.txt
+         525  Archive/S1.31/CurrentMetadata/VERIFIKATION_S1.31.txt
+       71219  Archive/S1.31/HumanReadable/Handover-Prompt_Lethal-Company_bis_S1.31.docx
+      609585  Archive/S1.31/HumanReadable/Handover-Prompt_Lethal-Company_bis_S1.31.pdf
+       52224  Archive/S1.31/HumanReadable/Handover-Prompt_S1.31_Aktueller-Kern.docx
+      264401  Archive/S1.31/HumanReadable/Handover-Prompt_S1.31_Aktueller-Kern.pdf
+       53465  Archive/S1.31/HumanReadable/Lethal-Company_Chatverlauf_Handover_bis_S1.31.docx
+    11155315  Archive/S1.31/HumanReadable/Lethal-Company_Chatverlauf_Handover_bis_S1.31.pdf
+       53465  Archive/S1.31/HumanReadable/Lethal-Company_Projektchronik_Kompakt_bis_S1.31.docx
+      293790  Archive/S1.31/HumanReadable/Lethal-Company_Projektchronik_Kompakt_bis_S1.31.pdf
+        5887  Current/00_CURRENT_STATE.md
+        8502  Current/01_HANDOVER_CORE.md
+        7582  Current/02_TECHNICAL_BASELINE.md
+        9529  Current/03_PROJECT_CHRONOLOGY.md
+        5055  Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+        3411  Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
+        7075  Current/06_RECENT_WORK_S1.32-S1.36.md
+        9891  Current/Aktive_Modliste_S1.36.txt
+        4212  Current/Projektstatus_S1.36.json
+        1764  Current/README_Handover_S1.36.txt
+        1135  Current/S1.36_BUILD_VERIFICATION.txt
+        1527  Current/VERIFIKATION_S1.36.txt
+     2435082  Logs/LogOutput_S1.29D_EnemyPowerAudit_2026-09-01.log
+        1418  Logs/S1.30_Run_Auswertung_2026-09-02.txt
+        1247  Logs/S1.31_LeafBoy_Mirage_Auswertung_2026-09-02.txt
+        1423  Logs/S1.32_ShipDoor_Auswertung_2026-09-02.txt
+        2132  Logs/S1.34_Run_Auswertung_2026-09-02.txt
+         271  Patches/S135CompatibilityFixes/NuGet.Config
+        9836  Patches/S135CompatibilityFixes/Plugin.cs
+         716  Patches/S135CompatibilityFixes/README.md
+         563  Patches/S135CompatibilityFixes/S135CompatibilityFixes.csproj
+        7095  Patches/S135CompatibilityFixes/Tendas-S135CompatibilityFixes-1.0.0.zip
+         359  Patches/S135CompatibilityFixes/manifest.json
+      544759  Profiles/LC V1 S1.28 Equal Interiors Black Mesa.r2z
+      516011  Profiles/LC V1 S1.29 CodeRebirth Runtime Test.r2z
+      516631  Profiles/LC V1 S1.29D Enemy Power Audit.r2z
+      540412  Profiles/LC V1 S1.30 Power Caps Mimicless Pikmin Shield.r2z
+      538788  Profiles/LC V1 S1.31 Indoor Power Trim -4.r2z
+      552554  Profiles/LC V1 S1.36 Handover Clean Baseline.r2z
+        3987  README.md
+      504720  References/Spawn-Rates/Adamance.png
+      722094  References/Spawn-Rates/Assurance.png
+      735170  References/Spawn-Rates/Experimentation.png
+      730857  References/Spawn-Rates/March.png
+      446258  References/Spawn-Rates/Offense.png
+      697402  References/Spawn-Rates/Titan.png
+      720562  References/Spawn-Rates/Vow.png
+        1205  References/juijui_Referenzwerte.txt
+       18775  START_HERE_ChatGPT_Masterprompt.txt
