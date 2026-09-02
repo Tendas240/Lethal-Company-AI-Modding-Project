@@ -3,9 +3,9 @@
   "canonical_state": "S1.41",
   "current_profile": "LC V1 S1.41 BCMER Reactivation.r2z",
   "current_profile_sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
-  "current_profile_runtime_tested": false,
-  "latest_runtime_tested_state": "S1.40B",
-  "latest_runtime_tested_profile": "LC V1 S1.40B CodeRebirth Editing Gate Fix.r2z",
+  "current_profile_runtime_tested": true,
+  "latest_runtime_tested_state": "S1.41",
+  "latest_runtime_tested_profile": "LC V1 S1.41 BCMER Reactivation.r2z",
   "latest_runtime_test_result": "accepted",
   "game": "Lethal Company V81",
   "manifest_total": 179,
@@ -26,7 +26,7 @@
     "natural_flash_turret_observed": false
   },
   "s141": {
-    "status": "runtime pending",
+    "status": "accepted",
     "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn",
     "bcmer_version": "1.71.0",
     "bcmer_enabled": true,
@@ -45,7 +45,16 @@
     ],
     "zip_entries": 330,
     "profile_online": true,
-    "profile_indexed": true
+    "profile_indexed": true,
+    "runtime_evidence_path": "RuntimeEvidence/S1.41/20260902T215804Z",
+    "runtime_event_sample": [
+      "Arachnophobia",
+      "ScarceOutsideScrap",
+      "LeaflessTrees"
+    ],
+    "postrun_ownership_guard_retained": true,
+    "postrun_rain_events_disabled": true,
+    "coderebirth_regression_guard_retained": true
   },
   "local_patch": {
     "name": "S139CompatibilityFixes",
@@ -81,11 +90,19 @@
     "unknown_powerlevels": "never guess"
   },
   "roadmap": [
-    "Test S1.41",
-    "If accepted, build S1.42A with eight binding interior packages for config generation only",
+    "Build S1.42A with eight binding interior packages for config generation only",
     "Run Main Menu -> host/load -> land -> generate dungeon -> exit",
     "Upload complete config/runtime evidence through RuntimeInbox/Current",
     "Tune actual generated IDs/configs",
     "Build/test S1.42"
+  ],
+  "open_issues": [
+    {
+      "id": "mineshaft_elevator_pikmin_crowding",
+      "status": "open_nonblocking",
+      "observation": "Player clipped through Mineshaft elevator floor while descending with many Pikmin and died from fall damage.",
+      "evidence": "NavMesh agent creation failures near elevator/death window; gravity/fall death recorded.",
+      "causality": "Not proven. Do not attribute to BCMER without additional evidence."
+    }
   ]
 }
