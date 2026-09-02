@@ -52,3 +52,12 @@ Do not deep-tune guessed IDs/config sections before runtime seed generation.
 
 HANDOVER STATUS
 PASS — repository ready for new ChatGPT chat.
+
+
+FINAL HANDOVER QC
+PASS  Every README "ChatGPT — read first" path was checked and exists.
+PASS  Current/ contains only the S1.41 current metadata set plus intentionally retained historical runtime-evidence documents.
+PASS  Stale S1.40A handover helpers were archived out of Current/.
+PASS  Generated Python bytecode was removed and is ignored.
+PASS  BuildSpecs/current.json is disabled/idle with exact accepted S1.41 base/hash.
+PASS  Latest canonical-profile workflow run after the idle-spec update completed successfully.
