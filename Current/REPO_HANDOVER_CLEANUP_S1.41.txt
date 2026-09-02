@@ -77,3 +77,11 @@ FINAL CHECK
 - .gitignore now prevents Python bytecode from returning.
 - Canonical S1.41 runtime evidence remains preserved.
 - No gameplay/diagnostic profile was deleted during handover cleanup.
+
+
+S1.42A BUILDER READINESS
+- Audited automated mod_additions against the real S1.41 Gale export layout.
+- Fixed list indentation serialization in BuildSystem/profile_builder.py.
+- Added BuildSystem/test_profile_builder.py.
+- Added mandatory self-test step to .github/workflows/profile-build.yml.
+- GitHub Actions runs 33689500490 and 33689524364 completed successfully after the self-test was enabled/documented.
