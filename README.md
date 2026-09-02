@@ -2,7 +2,7 @@
 
 Current canonical project state: **S1.41**
 
-Current gameplay/test candidate:
+Current accepted gameplay baseline:
 
 `Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
 
@@ -14,7 +14,7 @@ Latest runtime-tested state: **S1.41 — accepted**.
 
 S1.40B fixed the CodeRebirth/DawnLib editing gate for natural Currency and Flash Turret suppression. S1.41 reactivated BCMER 1.71.0 under the ownership/rain-event guard and is runtime-accepted.
 
-## Critical S1.41 import requirement
+## Critical import requirement
 
 Use Gale:
 
@@ -24,7 +24,7 @@ Expected project-local patch marker:
 
 `S1.39 Compatibility Fixes loaded.`
 
-BCMER must load as exact **1.71.0**. Do not update it to 2.0.0 during this stage.
+BCMER is accepted at exact **1.71.0**. Do not silently update it to 2.0.0; a 2.0 migration would be a separate explicit compatibility stage.
 
 ## ChatGPT — read first
 
@@ -34,14 +34,19 @@ BCMER must load as exact **1.71.0**. Do not update it to 2.0.0 during this stage
 4. `Current/02_TECHNICAL_BASELINE.md`
 5. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
 6. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-7. `Current/06_RECENT_WORK_S1.32-S1.40A.md`
+7. `Current/06_RECENT_WORK_S1.32-S1.41.md`
 8. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-9. `Current/08_RUNTIME_EVIDENCE_S1.40_CODE_REBIRTH.md`
-10. `Current/10_RUNTIME_EVIDENCE_S1.40B_CODE_REBIRTH.md`
-11. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+9. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+10. `Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md`
+11. `Current/12_HANDOVER_S1.41_TO_S1.42A.md`
 12. `Current/03_PROJECT_CHRONOLOGY.md`
 13. `Current/Projektstatus_S1.41.json`
-14. `ProfileSources/S1.41/PROFILE_INDEX_RESULT.json`
+14. `Current/Aktive_Modliste_S1.41.txt`
+15. `Current/README_Handover_S1.41.txt`
+16. `Current/VERIFIKATION_S1.41.txt`
+17. `ProfileSources/S1.41/PROFILE_INDEX_RESULT.json`
+18. `BuildSpecs/current.json`
+19. `BuildSpecs/S1.42A_PLAN.md`
 
 Then inspect `Profiles/`, `ProfileSources/`, `Patches/`, `RuntimeEvidence/`, `Logs/`, `References/` and `Archive/` according to the task.
 
@@ -114,7 +119,7 @@ Do not require a local repository clone or local PowerShell profile-build script
 - Malfunctions disabled until explicit user request.
 - ProjectSCP-SCP999 disabled.
 - AJB Keep hangar ship door closed disabled while the local failsafe is active.
-- BCMER pinned to 1.71.0 for S1.41; do not upgrade to 2.0.0 as part of this stage.
+- BCMER 1.71.0 is the accepted baseline; do not upgrade to 2.0.0 without an explicit isolated migration stage.
 - Observer disabled.
 - Don't Touch Me disabled.
 - CodeRebirthLib must not return.
@@ -126,3 +131,12 @@ Do not require a local repository clone or local PowerShell profile-build script
 ## Priority rule
 
 Chronologically newer confirmed information overrides older assumptions. Runtime evidence overrides package/config assumptions. `Archive/` is historical reference material and must not override the current machine-readable files unless explicitly referenced.
+
+
+## Handover checkpoint
+
+Repository handover refreshed on **2026-09-03**.
+
+S1.41 is frozen as the accepted baseline. The next binding task is **S1.42A Interior Config Seed**, planned in `BuildSpecs/S1.42A_PLAN.md`.
+
+No local repository clone and no local PowerShell profile build is required.
