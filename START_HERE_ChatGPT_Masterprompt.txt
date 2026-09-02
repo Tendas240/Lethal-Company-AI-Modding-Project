@@ -19,14 +19,23 @@ The repository uses machine-readable text as the primary ChatGPT handover format
 Read `.md`, `.txt`, and `.json` files before PDF/DOCX.
 
 Preferred current read order:
-1. `Current/00_CURRENT_STATE.md`
-2. `Current/01_HANDOVER_CORE.md`
-3. `Current/02_TECHNICAL_BASELINE.md`
-4. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-5. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-6. `Current/03_PROJECT_CHRONOLOGY.md`
-7. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-8. current JSON/TXT metadata
+1. `README.md`
+2. `Current/00_CURRENT_STATE.md`
+3. `Current/01_HANDOVER_CORE.md`
+4. `Current/02_TECHNICAL_BASELINE.md`
+5. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+6. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+7. newest `Current/06_RECENT_WORK_*.md`
+8. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md` when present
+9. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+10. newest relevant `Current/*RUNTIME_EVIDENCE*.md`
+11. newest dedicated `Current/*HANDOVER*.md`
+12. `Current/03_PROJECT_CHRONOLOGY.md`
+13. newest `Current/Projektstatus_*.json`
+14. newest `Current/Aktive_Modliste_*.txt`
+15. newest `Current/VERIFIKATION_*.txt`
+16. readable snapshot for the canonical profile under `ProfileSources/<build_id>/`
+17. `BuildSpecs/current.json` and any next-stage plan under `BuildSpecs/`
 
 `Current/HumanReadable/` contains PDF/DOCX secondary versions for human readability and visual verification. A GitHub PDF preview/viewer failure is not a blocking error if equivalent machine-readable current documentation exists.
 
@@ -68,7 +77,12 @@ PHASE A – PROJEKT AUS DEM REPOSITORY ÜBERNEHMEN
 
 5. Prüfe danach die aktuell relevanten technischen Dateien:
    - Profiles/
+   - ProfileSources/ für das kanonische Profil
+   - BuildSpecs/
+   - BuildSystem/
    - Patches/ sofern vorhanden
+   - RuntimeEvidence/ für die neuesten akzeptanzrelevanten Läufe
+   - RuntimeInbox/ACTIVE_BUILD.txt
    - Logs/
    - References/
    - Archive/ nur bei Bedarf
@@ -76,8 +90,13 @@ PHASE A – PROJEKT AUS DEM REPOSITORY ÜBERNEHMEN
 6. Behandle die Ordner wie folgt:
    - Current/ = aktueller verbindlicher Projektstand
    - Profiles/ = aktuelle und noch relevante Gale/r2modman-.r2z-Profile
+   - ProfileSources/ = aus .r2z extrahierte, für ChatGPT direkt lesbare Text/Config-Snapshots
+   - BuildSpecs/ = aktuelle/kommende Buildanforderungen
+   - BuildSystem/ = GitHub-native Build-/Index-/Ingest-Logik
+   - RuntimeEvidence/ = persistierte Runtime-Primärevidenz; bei Akzeptanzfragen besonders wichtig
+   - RuntimeInbox/ = temporärer Upload-Eingang für lokal erzeugte Runtime-Dateien
    - Patches/ = projektlokale Kompatibilitäts-Patches, Quellcode und installierbare lokale Mod-Pakete
-   - Logs/ = aktuelle beziehungsweise diagnostisch relevante Runtime-Logs/Auswertungen
+   - Logs/ = ältere beziehungsweise diagnostisch relevante Runtime-Logs/Auswertungen
    - References/ = verbindliche Referenzbilder, Spawn-Rates, Referenzwerte und andere Primärquellen
    - Archive/ = historische Primärquellen; wichtig für Rekonstruktion, aber nicht automatisch aktuell
 
@@ -471,6 +490,8 @@ KRITISCHE GRUNDREGELN
 - Keine erfundenen Werte, wenn Logs/Dateien sie nicht belegen.
 - Fehlende Informationen klar benennen statt raten.
 - GitHub ist der kanonische Build- und Übergabearbeitsbereich; ChatGPT pflegt ihn direkt.
+- Wenn der GitHub-Connector/Plugin verfügbar ist, soll ChatGPT Repository-Dateien und Commits darüber direkt lesen/schreiben, statt den Benutzer als manuellen Datei-Transport zu benutzen.
+- Nach einem erfolgreichen Runtime-Ingest gilt die persistierte Fassung unter RuntimeEvidence/ als kanonische Online-Evidenz; RuntimeInbox/Current/ darf anschließend wieder leer sein.
 - Lokale Repo-Clones und lokale PowerShell-Buildketten sind nicht der Standard.
 - Binäre .r2z/.zip/.dll-Dateien werden auf GitHub Actions verarbeitet; zusätzlich sind lesbare ProfileSources-Snapshots zu erzeugen.
 - Runtime-Evidenz wird über RuntimeInbox/Current/ nach GitHub überführt und dort automatisiert persistiert/entpackt.
