@@ -16,6 +16,16 @@ Ingested files:
 
 The BCMER ZIP was extracted online and contains all 11 runtime-generated BCMER config files.
 
+## Local compatibility plugin runtime
+
+The S1.41 log confirms:
+- `S1.39 Compatibility Fixes 1.0.0` loaded;
+- `[EnemyScanFix]` patch marker appeared;
+- `[PikminCraneShield]` patch marker appeared;
+- final marker: `S1.39 Compatibility Fixes loaded.`
+
+Therefore the embedded project-local DLL was actually imported and active in the accepted S1.41 run.
+
 ## BCMER runtime
 
 Exact `BrutalCompanyMinusExtraReborn 1.71.0` loaded and finished patching.
