@@ -2,115 +2,139 @@
 
 ## Binding state
 
-- Canonical candidate: **S1.40A**
-- Profile: `Profiles/LC V1 S1.40A CodeRebirth Config Cleanup Fix.r2z`
-- SHA-256: `ab894ead158941d6f9d6c3463baab51c65486ebf6d40df8b2325fca626d966a5`
-- Latest runtime-tested state: **S1.40**
-- S1.40 status: **failed acceptance**
-- S1.40A status: build/archive/config verified; runtime pending
+- Canonical candidate: **S1.41**
+- Profile: `Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
+- SHA-256: `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
+- Latest runtime-tested state: **S1.40B**
+- S1.40B status: **accepted**
+- S1.41 status: build/hash/archive/index verified; runtime pending
 - Game: Lethal Company V81
 
-## Critical lineage
-
-### S1.36
-Accepted clean baseline for:
-- ship-door anti-lockout behavior;
-- complete EnemyScan output;
-- CodeRebirth microwave/Pikmin protection.
-
-### S1.37
-Added normal-scrap Currency filtering. Later proved insufficient for CodeRebirth's separate DawnLib map-object path.
-
-### S1.38
-Added fixed 2560x1440 FixCameraResolution and Old-Bird-only Lethal Resonance. Mirage retention required manual setting after import.
+## Critical recent lineage
 
 ### S1.39
-Added broader late map-object Currency/Flash Turret filtering, Ogopogo/Vermin disablement, recharge-station config carry-forward and direct CodeRebirth utility-kill Pikmin/Puffmin shield. The local plugin loaded in runtime, but Currency still naturally spawned. Therefore late `RoundManager/SelectableLevel` filtering is a confirmed insufficient primary solution.
+The cumulative local compatibility DLL loaded correctly, but late `RoundManager/SelectableLevel` Currency filtering did not catch the actual DawnLib natural spawn path.
 
 ### S1.40
-Moved Currency/Flash Turret suppression into `CodeRebirth.cfg`. Runtime testing still produced a Flash Turret and the post-run config proved CodeRebirth cleanup/default generation had restored the relevant values.
+Moved Currency/Flash Turret suppression into `CodeRebirth.cfg`. Runtime failed because CodeRebirth/DawnLib restored defaults.
 
 ### S1.40A
-Keeps S1.40 suppression values and additionally sets:
+Set `Clean Unusued Configs = false`. Runtime still failed: the individual relevant content definitions had `Allow Editing Config = false`, so DawnLib continued enforcing author defaults.
 
-`Clean Unusued Configs = false`
+### S1.40B
+Opened the relevant DawnLib editing gates:
+- Coin `Allow Editing Config = true`
+- Crisp Dollar Bill `Allow Editing Config = true`
+- Wallet `Allow Editing Config = true`
+- Flash Turret `Allow Editing Config = true`
 
-This is intentionally a minimal isolation build. The local DLL is unchanged.
+Currency inside weights remained blank and Flash Turret remained `Is Inside Hazard = false`.
 
-## Exact S1.40A CodeRebirth config intent
+Post-run values survived and the evaluated test did not show the previous natural Currency/Flash-Turret behavior. **S1.40B accepted.**
+
+### S1.41
+Reactivates exact BCMER 1.71.0 without changing the accepted S1.40B CodeRebirth solution.
+
+Manifest:
+- 179 total
+- 174 enabled
+- 5 disabled
+
+BCMER 2.0.0 is not used.
+
+## S1.41 BCMER configuration
 
 ```ini
-[General]
+[Events Features]
+Disable all events? = false
 
-Clean Unusued Configs = false
+[Mod Compatibility]
+Experimental Dont Handle Power? = true
+Experimental Dont Handle Spawn Chance? = true
+Let Brutal handle properties outside of events? = false
 
-[Merchant Options]
-
-Coin | Inside Moon Spawn Weights =
-Coin | Inside Interior Spawn Weights =
-Crisp Dollar Bill | Inside Moon Spawn Weights =
-Crisp Dollar Bill | Inside Interior Spawn Weights =
-Wallet | Inside Moon Spawn Weights =
-Wallet | Inside Interior Spawn Weights =
-
-[FlashTurret Options]
-
-Flash Turret | Is Inside Hazard = false
-Flash Turret | Inside Moon Spawn Weights =
-Flash Turret | Inside Interior Spawn Weights =
+[Randomizer]
+Enable Randomizer? = false
 ```
 
-Do not alter `Money | Enemy Drop Rates` as part of this fix.
+Disabled BCMER event routes:
 
-## Required local plugin
+```ini
+[Raining]
+Event Enabled? = false
 
-Source/package:
+[HeavyRain]
+Event Enabled? = false
 
+[AllWeather]
+Event Enabled? = false
+
+[Hurricane]
+Event Enabled? = false
+```
+
+GeneralImprovements `SpeakerPlaysIntroVoice = true` is compatible with the BCMER reactivation requirement and was already present, so it did not require a build delta.
+
+## Required local compatibility plugin
+
+Source:
 `Patches/S139CompatibilityFixes/`
 
-Fallback ZIP:
-
-`Patches/S139CompatibilityFixes/Tendas-S139CompatibilityFixes-1.0.0.zip`
-
-Fallback ZIP SHA-256:
-
-`ec02f79c56f2f3ce24c8f625be3b51cea68b5a71a2a24d3ac8b4996f02c055c1`
-
 Embedded DLL:
-
 `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`
 
 Expected marker:
-
 `S1.39 Compatibility Fixes loaded.`
 
-Gale must use **Advanced options -> Import all files**.
+Gale profile imports that depend on the local DLL must use:
+
+**Advanced options -> Import all files**
 
 ## Persistent project rules
 
 - S1.29D is diagnostic only.
 - Malfunctions stays disabled until explicit user request.
 - SCP999 stays disabled.
-- BCMER remains disabled until S1.40A passes.
+- Observer stays disabled.
+- Don't Touch Me stays disabled.
 - AJB ship-door mod stays disabled while the local failsafe exists.
+- BCMER reactivation is pinned to exact 1.71.0; do not upgrade to 2.0.0 as part of S1.41.
 - CodeRebirthLib must not return.
 - LethalModDataLib is not a hard ban; reintroduce only if DULL requires it, in the isolated interior stage.
 - Unknown Enemy PowerLevels are never guessed.
 - Prefer one positive spawn owner per enemy.
-- Rolling Giant, Shy Guy/Scopophobia and Siren Head remain native-owned unless new evidence says otherwise.
-- Leaf Boy stays in LethalMin Attack Blacklist.
-- Natural vanilla Rainy weather is allowed; later BCMER rain suppression applies only to BCMER event routes.
+- Leaf Boy stays in the LethalMin Attack Blacklist.
+- Natural vanilla Rainy weather is allowed; the four disabled rain routes are BCMER events only.
+
+## Repository-first workflow
+
+GitHub is the canonical build workspace.
+
+Do not ask the user to run local profile-build PowerShell scripts or maintain a local repository clone when the base profile is already online.
+
+Use:
+- `BuildSpecs/current.json`
+- `BuildSystem/profile_builder.py`
+- `.github/workflows/profile-build.yml`
+- `ProfileSources/<build_id>/`
+- `RuntimeInbox/Current/`
+- `RuntimeEvidence/`
+
+Binding policy: `Current/09_REPOSITORY_FIRST_AUTOMATION.md`.
 
 ## Binding roadmap
 
-**S1.40A test -> S1.41 BCMER 1.71.0 -> S1.41 test -> S1.42A interior config seed -> runtime config generation -> config/log collection -> S1.42 tuned interior candidate.**
+**S1.41 runtime test -> S1.42A interior config seed -> runtime config generation -> config/log collection -> S1.42 tuned interior candidate.**
 
-See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md` before changing BCMER or interiors.
+See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`.
 
 ## Current acceptance gate
 
-S1.40A is accepted only after:
-- no natural Coin / Crisp Dollar Bill / Wallet;
-- no natural Flash Turret;
-- post-run CodeRebirth config retains the S1.40A values;
-- full runtime log is preserved.
+S1.41 acceptance requires:
+- exact BCMER 1.71.0 loads;
+- BCMER 2.0.0 absent;
+- no severe startup/event regression;
+- four rain-event routes stay disabled;
+- BCMER ownership guard values survive runtime;
+- no regression of S1.40B Currency/Flash-Turret suppression;
+- full runtime evidence preserved online.
