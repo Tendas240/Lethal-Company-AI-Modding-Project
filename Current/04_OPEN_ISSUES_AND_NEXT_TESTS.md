@@ -120,3 +120,48 @@ DULL content registered, but save/mod-data behavior is not cleanly validated. Re
 - BCMER EventType distribution must be converted to fixed global user-selected percentages; exact values pending.
 
 See `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`.
+
+
+## Binding architecture — equal interior probability everywhere
+
+User requirement:
+- every registered interior should have the same effective selection probability as every other interior on every moon;
+- future interior additions must be normalized into this architecture automatically;
+- use common Weight 100 where the owning system supports it;
+- package defaults/thematic preferences are not desired rarity rules.
+
+Explicit hard blocks are compatibility questions, not desired balancing exceptions. Shatteredrooms' Experimentation/Embrion block remains protected until its technical necessity is understood and tested.
+
+## Visual tuning — Melanie Mausoleum fog
+
+Observed in S1.42A:
+- `Mausoleum (MelanieMausoleum)` generated successfully;
+- indoor fog was far too dense for the user; visibility was severely reduced.
+
+Requirement:
+- reduce fog **specifically inside MelanieMausoleum**;
+- preserve some atmosphere if practical, but gameplay visibility takes priority;
+- do not globally reduce fog in every interior.
+
+The generated `MelanieMelicious.interior0.cfg` exposes interior/item toggles and values but no fog-density setting. Expect a targeted runtime/HDRP-volume compatibility patch or another interior-specific mechanism rather than a simple Melanie config edit. Investigate after the LethalModDataLib blocker.
+
+## BCMER fixed EventType distribution
+
+User selected a completely even global EventType distribution:
+- Insane = 12.5
+- VeryBad = 12.5
+- Bad = 12.5
+- Neutral = 12.5
+- Good = 12.5
+- VeryGood = 12.5
+- Rare = 12.5
+- Remove = 12.5
+
+Keep `Use custom weights? = false`.
+
+Use constant scales:
+`12.5, 0, 12.5, 12.5`
+
+for all eight EventTypes.
+
+This removes difficulty/moon/day-based drift from the EventType base distribution. Event-specific eligibility, disabled events, incompatibilities, and mutual exclusions can still alter the effective pool in a particular run.
