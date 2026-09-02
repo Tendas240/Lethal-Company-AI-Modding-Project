@@ -1,0 +1,35 @@
+S1.31 LEAF BOY / MIRAGE AUSWERTUNG
+Datum: 2026-09-02
+Quelle: S1.31 Runtime-Log aus dem Testabschnitt
+
+LEAF BOY
+- LethalMin registrierte "Leaf boy" als Pikmin Enemy.
+- LethalMin besitzt die Config "LethalMin/Pikmin Behavior/Attack Blacklist".
+- Runtime zeigte wiederholte Pikmin-Hits gegen LeafBoi(Clone) und echte Damage-Aggregation.
+- Die Interaktion lief ueber mehrere Minuten weiter.
+- Bestehende laengere Attack Blacklist durfte nicht durch eine historische kuerzere Liste ersetzt werden.
+
+ENTSCHEIDUNG / FIX
+S1.32 fuegte exakt "Leaf boy" an die bestehende Attack Blacklist an.
+Keine Spawnrate-, HP- oder sonstige Leaf-Boy-Aenderung.
+
+MIRAGE
+Beobachtete Einstellungen vor S1.32:
+- localPlayerVolume=0.5
+- neverDeleteRecordings=false
+- allowRecordVoice=true
+- muteVoiceMimic=false
+
+Geklaerte Speicherorte:
+- <Lethal Company>/Mirage/settings.json
+- <Lethal Company>/Mirage/Recording
+
+ENTSCHEIDUNG / FIX
+S1.32 setzt neverDeleteRecordings=true und behaelt die anderen beobachteten Werte bei.
+
+ZUSAETZLICHE WICHTIGE RUNTIME-REGRESSION
+Der S1.31-Log zeigte entgegen der damaligen Dokumentation:
+- Loading [SCP999 2.4.0]
+- NullReferenceException in SCP999.Plugin.Awake()
+
+Diese Regression wurde erst beim S1.36-Handover final im Manifest korrigiert.
