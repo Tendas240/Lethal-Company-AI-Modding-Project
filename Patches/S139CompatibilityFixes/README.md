@@ -12,6 +12,7 @@ Functions:
 - Filters CodeRebirth currency map objects and the CodeRebirth Flash Turret from normal `SpawnMapObjects` indoor hazard generation. V81 `IndoorMapHazard[]` and the legacy `SpawnableMapObject[]` path are both covered.
 - Adds a direct failsafe around CodeRebirth's utility kill RPC: Pikmin and Puffmin are prevented from reaching `EnemyAI.KillEnemyOnOwnerClient` while that CodeRebirth kill context is active. This specifically closes the observed Autonomous Crane kill gap despite LethalMin's crane interaction toggles already being false.
 - When LethalModDataLib 1.2.2 is present, replaces its unsafe bulk `ModDataAttribute` scan with a null-safe scan that skips `Chainloader.PluginInfo` entries whose `Instance` is null, while preserving per-type registration for all valid plugin instances. This targets the S1.42A initialization NRE without disabling LethalModDataLib save/load behavior.
+- Removes only LethalMin-injected Pikmin effect-trigger components from vanilla Puffer smoke after `PufferAI.Start`. Vanilla Puffer/player behavior remains intact; the purpose is to make Puffer smoke/attack unable to apply LethalMin Pikmin status effects even though the nightly config already has `Puffer Can Poison Pikmin = false`.
 
 Gale import rule:
 
@@ -28,4 +29,4 @@ When LethalModDataLib is present:
 
 The next validation must also confirm LethalModDataLib continues past registration and logs its normal save/load-hook initialization.
 
-Build status: compiled and archive-verified. S1.39 runtime acceptance is still pending.
+Build status: cumulative compatibility plugin; every version bump must be compiled by the repository-first profile workflow and runtime-validated in the corresponding candidate.
