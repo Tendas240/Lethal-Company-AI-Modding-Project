@@ -109,3 +109,24 @@ S1.42A is **not runtime-accepted yet**. The accepted gameplay baseline remains S
 Next: import S1.42A with Gale **Advanced options -> Import all files**, reach Main Menu, host/load, land on a normal moon, allow a dungeon to generate, exit, then upload complete `BepInEx/config/` ZIP + `LogOutput.log` to `RuntimeInbox/Current/`.
 
 See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `Current/12_HANDOVER_S1.41_TO_S1.42A.md`, and `BuildSpecs/S1.42A_PLAN.md`.
+
+
+## S1.42A runtime seed result
+
+Runtime evidence has been ingested at:
+
+`RuntimeEvidence/S1.42A/20260902T224318Z/`
+
+Result:
+- seed/config-generation objective succeeded;
+- 52 ExtendedDungeonFlows registered versus 26 in S1.41;
+- 26 new flow IDs are now known;
+- Mausoleum generated successfully on Offense;
+- CullFactory IDs `junkrooms` and `shatteredrooms` are confirmed;
+- generated weights are not yet normalized;
+- **LethalModDataLib 1.2.2 throws a new initialization NullReferenceException** and blocks clean S1.42 acceptance;
+- S1.41 remains the accepted gameplay baseline.
+
+Detailed evidence: `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`.
+
+New BCMER requirement: final tuning should use fixed global EventType weights independent of difficulty. Exact user percentages are pending.
