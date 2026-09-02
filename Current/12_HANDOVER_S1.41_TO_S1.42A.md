@@ -169,6 +169,10 @@ For S1.42A:
 5. verify the generated `ProfileSources/S1.42A/`;
 6. then set `RuntimeInbox/ACTIVE_BUILD.txt` to `S1.42A` before asking for runtime evidence.
 
+### Build-system readiness
+
+S1.42A depends on automated `mod_additions`. During handover QC, the builder's Gale `export.r2x` list-indentation handling was corrected and a self-test was added. GitHub Actions successfully passed the self-test. Do not bypass it.
+
 ## 6. Immediate next build — S1.42A Interior Config Seed
 
 Do NOT deep-tune interiors yet.
