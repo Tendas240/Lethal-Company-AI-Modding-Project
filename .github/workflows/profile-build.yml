@@ -1,0 +1,79 @@
+name: Build canonical profile
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "BuildSpecs/current.json"
+      - "BuildSystem/**"
+      - ".github/workflows/profile-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: canonical-profile-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Build and verify profile
+        run: python BuildSystem/profile_builder.py BuildSpecs/current.json
+
+      - name: Read build request
+        id: request
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          spec = json.loads(Path("BuildSpecs/current.json").read_text(encoding="utf-8"))
+          print(f"enabled={'true' if spec.get('enabled', False) else 'false'}")
+          print(f"build_id={spec.get('build_id', 'disabled')}")
+          print(f"output_profile={spec.get('output_profile', '')}")
+          PY
+
+      - name: Commit generated profile, snapshots, and result
+        if: steps.request.outputs.enabled == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- Profiles ProfileSources Current/AUTO_BUILD_RESULT.json Current/AUTO_BUILD_RESULT.md
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit."
+          else
+            git commit -m "Build profile: \${{ steps.request.outputs.build_id }} [skip ci]"
+            git push
+          fi
+
+      - name: Upload generated build artifact
+        if: steps.request.outputs.enabled == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: \${{ steps.request.outputs.build_id }}
+          if-no-files-found: error
+          path: |
+            \${{ steps.request.outputs.output_profile }}
+            Current/AUTO_BUILD_RESULT.json
+            Current/AUTO_BUILD_RESULT.md
