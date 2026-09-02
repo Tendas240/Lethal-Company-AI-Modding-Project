@@ -4,7 +4,7 @@ This file is binding unless the user later changes the plan.
 
 ## Required sequence
 
-**S1.40B accepted -> S1.41 BCMER 1.71.0 built -> S1.41 runtime test -> if accepted -> S1.42A Interior Config Seed -> runtime config generation -> collect full config + LogOutput -> analyze/tune -> S1.42 final interior build -> S1.42 test.**
+**S1.40B accepted -> S1.41 BCMER 1.71.0 accepted -> S1.42A Interior Config Seed -> runtime config generation -> collect full config + LogOutput -> analyze/tune -> S1.42 final interior build -> S1.42 test.**
 
 Do not collapse these phases together. Isolation is intentional so regressions can be attributed.
 
@@ -20,7 +20,7 @@ Current profile contains:
 
 disabled.
 
-S1.41 uses **exact existing 1.71.0** and is now the canonical runtime-test candidate.
+S1.41 uses **exact existing 1.71.0** and has passed runtime acceptance.
 
 Do **not** upgrade to BCMER 2.0.0 during this stage. The 2.0 branch is a major compatibility change and should be a separate future migration only.
 
@@ -112,7 +112,7 @@ Audit:
 - Black Mesa Half Life Moon Interior: BCMER custom hazards such as barnacles/trip mines may have limited support.
 - BCMER config generation may require loading/landing on a moon and/or pulling the lever before all config files exist.
 
-Do not combine any interior additions with S1.41. S1.41 is already built and hash-verified; only runtime acceptance remains.
+Do not retroactively combine interior additions with S1.41. S1.41 is accepted and frozen as the BCMER reactivation baseline.
 
 ---
 
