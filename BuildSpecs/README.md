@@ -13,7 +13,7 @@ This directory is the online control plane for profile builds.
 5. The workflow commits the generated profile to `Profiles/`, a readable text snapshot to `ProfileSources/<build_id>/`, and machine-readable results to `Current/AUTO_BUILD_RESULT.*`.
 6. ChatGPT reads the result and continues without a local repository copy or local build script.
 
-`enabled: false` means no build is requested. This is intentional during the one-time migration of the current S1.41 binary into GitHub.
+`enabled: false` means no build is requested. The repository migration is complete; the current idle spec preserves accepted S1.41 as the exact next-build base until ChatGPT prepares S1.42A.
 
 ## Spec fields
 
@@ -40,3 +40,8 @@ The current builder supports:
 - `text_assertions`: verify required/forbidden output text.
 
 For new Thunderstore content, ChatGPT should research and pin the intended package plus any dependencies required by the chosen build architecture. The user should not have to install those packages manually before the profile is built.
+
+
+## Current planned next stage
+
+`S1.42A_PLAN.md` documents the binding next build intent. It is a planning document only; exact package slugs/versions/dependencies must still be freshly audited before `current.json` is enabled.
