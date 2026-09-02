@@ -154,16 +154,34 @@ def patch_export(text: str, spec: dict) -> str:
 
     additions = spec.get("mod_additions", [])
     if additions:
-        existing = {b[3] for b in item_blocks(data)}
+        blocks = item_blocks(data)
+        existing = {b[3] for b in blocks}
         mods_line = next((i for i, x in enumerate(data) if re.match(r"^mods\s*:\s*$", x)), -1)
         if mods_line < 0:
             raise RuntimeError("export.r2x has no top-level mods:")
 
-        insert_at = len(data)
-        for i in range(mods_line + 1, len(data)):
-            if data[i] and not data[i][0].isspace() and not data[i].lstrip().startswith("#"):
-                insert_at = i
-                break
+        # Gale's export.r2x currently serializes the mods sequence with the
+        # list marker at the same indentation level as "mods:":
+        #
+        # mods:
+        # - name: Example-Package
+        #   version:
+        #     major: 1
+        #
+        # Never hard-code a different indentation. Mirror the first existing
+        # mod block so additions remain valid for the exact Gale export style.
+        mod_blocks = [b for b in blocks if b[0] > mods_line]
+        if mod_blocks:
+            insert_at = mod_blocks[0][0]
+            item_indent = mod_blocks[0][2]
+        else:
+            # Empty lists are not expected for this project, but keep a safe
+            # fallback matching Gale's current top-level sequence style.
+            insert_at = mods_line + 1
+            item_indent = ""
+
+        field_indent = item_indent + "  "
+        nested_indent = field_indent + "  "
 
         new_lines: list[str] = []
         for add in additions:
@@ -175,15 +193,15 @@ def patch_export(text: str, spec: dict) -> str:
                 raise RuntimeError(f"Invalid semantic version for {name}: {add['version']}")
             major, minor, patch = parts
             new_lines.extend([
-                f"  - name: {name}",
-                "    version:",
-                f"      major: {major}",
-                f"      minor: {minor}",
-                f"      patch: {patch}",
-                f"    enabled: {'true' if add.get('enabled', True) else 'false'}",
+                f"{item_indent}- name: {name}",
+                f"{field_indent}version:",
+                f"{nested_indent}major: {major}",
+                f"{nested_indent}minor: {minor}",
+                f"{nested_indent}patch: {patch}",
+                f"{field_indent}enabled: {'true' if add.get('enabled', True) else 'false'}",
             ])
             if add.get("source"):
-                new_lines.append(f"    source: {add['source']}")
+                new_lines.append(f"{field_indent}source: {add['source']}")
             existing.add(name)
         data[insert_at:insert_at] = new_lines
 
