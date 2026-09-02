@@ -10,14 +10,28 @@ Because `.r2z` is binary, GitHub Actions also generates a readable mirror under 
 
 Directly uploaded profiles are hash-checked/indexed by `.github/workflows/profile-index.yml` when their path is registered in `EXPECTED_HASHES.json`.
 
-## One-time S1.41 migration
-
-The exact locally built S1.41 still needs to be uploaded once:
+## Current canonical profile
 
 `LC V1 S1.41 BCMER Reactivation.r2z`
 
-Expected SHA-256:
+SHA-256:
 
 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-After that profile exists here and the index workflow passes, it becomes available as an online base for future automated builds.
+Status:
+
+**runtime accepted**
+
+Readable snapshot:
+
+`ProfileSources/S1.41/`
+
+The one-time repository migration is complete. Exact S1.40B and S1.41 binaries are online, hash-verified and indexed.
+
+## Next build
+
+Use accepted S1.41 as the exact base for the planned S1.42A Interior Config Seed.
+
+See:
+
+`BuildSpecs/S1.42A_PLAN.md`
