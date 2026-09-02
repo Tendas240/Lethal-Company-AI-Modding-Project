@@ -1,17 +1,23 @@
 # 04 — Open Issues and Next Tests
 
-## Highest priority — S1.42A Interior Config Seed
+## Highest priority — S1.42A runtime config-generation seed
 
-S1.41 is accepted.
+S1.41 is accepted and remains the canonical gameplay baseline.
+
+S1.42A has been built and automation-verified:
+- `Profiles/LC V1 S1.42A Interior Config Seed.r2z`
+- SHA-256 `70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
+- 188 total / 183 enabled / 5 disabled packages
+- only `export.r2x` changed versus S1.41
 
 Next isolated stage:
-**S1.42A Interior Config Seed**
+**run S1.42A to generate its real configs/registrations.**
 
 Purpose:
-- install the eight binding interior packages;
-- avoid speculative deep tuning;
 - allow LLL/JLL/DawnLib/content mods to generate their real config sections and IDs;
-- collect actual CullFactory identifiers and dependency/runtime behavior.
+- collect actual CullFactory identifiers and dependency/runtime behavior;
+- regression-check the isolated LethalModDataLib reintroduction;
+- avoid speculative deep tuning before that evidence exists.
 
 Use the exact binding package list and rules in:
 `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
