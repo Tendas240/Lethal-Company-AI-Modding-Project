@@ -1,46 +1,69 @@
-# 05 - Failed, Obsolete, or Deliberately Parked Approaches
+# 05 — Failed, Obsolete, Parked, or Misclassified Approaches
 
-Do **not** reintroduce these without new technical evidence or explicit user instruction.
+Do not reintroduce these without new technical evidence or explicit user instruction.
 
 | Component / approach | Status / reason |
 |---|---|
-| LethalCompanyVariables / EnemyRarityConfig | Historically removed; do not restore as the spawn solution. |
+| LethalCompanyVariables / EnemyRarityConfig | Historically removed; do not restore as spawn authority. |
 | LethalQuantities 1.2.9 as global enemy owner | Examined enemy-control sections were not the active source of truth. |
-| AutoCompanyBuilding 1.2.1 | Loaded but routing was unreliable on V81. |
-| AutoCompanyBuilding 1.1.3 | Routing could work, automatic landing did not. |
-| RandomMoonFX 1.4.4 for Company automation | Active state interfered with manual moon selection; disabled state lacked the needed behavior. |
+| AutoCompanyBuilding 1.2.1 | Loaded but routing unreliable on V81. |
+| AutoCompanyBuilding 1.1.3 | Routing could work; automatic landing did not. |
+| RandomMoonFX 1.4.4 for Company automation | Active state interfered with manual moon selection; disabled state lacked needed behavior. |
 | Old Hold_Scan_Button | Replaced by working LethalHUD Hold-to-Scan. |
-| Peepers enemy/hazard mod | Removed; do not confuse with Peeper tool. |
-| CodeRebirthLib | Deprecated/unwanted; do not install. |
-| ProjectSCP-SCP999 | Keep disabled; S1.31-S1.34 logs proved startup NRE in `SCP999.Plugin.Awake()`. |
-| Gnomes | Caused V81 PlayerIsTargetable MissingMethod spam; removed. |
+| Peepers enemy/hazard | Removed. Do not confuse with Peeper tool. |
+| CodeRebirthLib | Hard project rule: do not reinstall. Modern stack uses DawnLib. |
+| ProjectSCP-SCP999 | Keep disabled; S1.31-S1.34 runtime logs proved startup NRE in `SCP999.Plugin.Awake()`. |
+| Gnomes | Removed after V81 `PlayerIsTargetable` MissingMethod spam. |
 | FacilityMeltdown | Fully removed. |
-| ASTeam Racist Hoarding Bugs sound replacer | Removed. |
+| ASTeam Racist Hoarding Bugs replacer | Removed. |
 | FearOverhauled | Removed. |
-| LethalModDataLib | Removed after ShipWindows update; old NRE disappeared. |
 | LethalPlaytime Boxy Boo / Huggy Wuggy / Miss Delight | Do not reactivate on V81 due to AI/collision problems. |
 | MirageClipLimiter.dll | Unrealized plan; DLL does not exist. |
 | Forcing Rolling Giant / Shy Guy / Siren Head positive weights through LLL | Native ownership is the reliable architecture. |
-| AJB-Keep_hangar_ship_door_closed | Its unconditional refill can turn an ordinary close into permanent outside lockout. Replaced by narrower local failsafe. |
-| Treating S1.34 door countdown as a failed custom algorithm | Invalid: the custom DLL never loaded; observed behavior was vanilla. |
-| EnemyScan 1.2.1 original scan-node-filtered list as complete census | Incomplete by design; local patch replaces only list-building output. |
-| S1.35 or S1.36 as current canonical candidate | Superseded by later builds. S1.36 remains the deterministic baseline/source profile, not the current test candidate. |
-| S1.37 scrap-only currency filter as complete natural-currency solution | Insufficient alone: S1.38 still produced Coin through the map-object/hazard path. S1.39 adds SpawnMapObjects filtering. |
-| Assuming LethalMin `Crane Targets/Squishes Pikmin=false` alone prevents all crane kills | Runtime disproved this. S1.39 adds direct CodeRebirth utility-kill protection. |
-| Enabling all of Lethal Resonance | Not desired. Current design is Old-Bird-only. |
+| AJB-Keep_hangar_ship_door_closed | Unconditional refill can turn an ordinary close into permanent outside lockout. Replaced by narrower local failsafe. |
+| Treating S1.34 hydraulic countdown as a failed custom algorithm | Invalid conclusion: local DLL had not loaded; observed behavior was vanilla. |
+| EnemyScan 1.2.1 original scan-node-filtered list as complete census | Incomplete by design; project-local patch replaces list-building output. |
+| S1.37 normal-scrap Currency filter as complete solution | Insufficient: CodeRebirth also has a separate DawnLib map-object path. |
+| S1.39 late `RoundManager/SelectableLevel` map-object Currency filter as complete solution | Runtime disproved it; natural Coins/Wallets still appeared while plugin load was confirmed. |
+| S1.40 sparse `CodeRebirth.cfg` without disabling config cleanup | Runtime disproved it; post-run config restored `Clean Unusued Configs=true`, Flash Turret inside-hazard=true and positive Currency moon curves. S1.40A adds cleanup retention control. |
+| Assuming LethalMin `Crane Targets/Squishes Pikmin=false` prevents every crane kill | Runtime disproved it; S1.39 direct CodeRebirth utility-kill guard exists for this gap. |
+| Enabling all Lethal Resonance groups | Not desired. Design is Old-Bird-only. |
+| Using S1.29D as gameplay base | Forbidden; diagnostic-only power audit derivative. |
+| Upgrading BCMER to 2.0.0 as part of first reactivation | Do not do this. BCMER 2.0.0 is a major compatibility break from prior versions. First reactivation must use exact existing 1.71.0. |
+| Pre-writing all future interior configs before content has generated real sections/IDs | Avoid. Binding workflow uses S1.42A seed first, then real generated configs are collected and tuned. |
 
-## Deliberately disabled / parked, not permanently obsolete
+## Important correction — LethalModDataLib
+
+Older project wording was too categorical.
+
+Correct status:
+- LethalModDataLib used to be present.
+- An old NRE occurred in the ShipWindows/save/mod-data context.
+- After a ShipWindows update, LethalModDataLib was removed and the old NRE disappeared.
+- No surviving mod required it, so there was no reason to reintroduce it.
+- This chronology does **not** prove LethalModDataLib alone was the root cause.
+- It may have been an interaction among old ShipWindows + LethalModDataLib + V81.
+- No complete old stack trace has been rediscovered in current evidence.
+
+Therefore LethalModDataLib is **not** a hard ban like CodeRebirthLib.
+
+If `Dungeons_Ultimately_Lacking_Liveliness` requires `MaxWasUnavailable-LethalModDataLib 1.2.2`, it may be reintroduced only in the isolated S1.42A interior stage and must be regression-tested around save/mod-data/netcode behavior.
+
+## Deliberately parked, not obsolete
 
 ### Malfunctions
-
-Disabled from S1.34 onward by explicit user decision. **Do not re-enable unless the user explicitly asks.**
+Disabled from S1.34 onward by explicit user decision. Do not re-enable unless the user explicitly asks.
 
 ### BCMER
+`SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0` is parked, not banned.
 
-SoftDiamond-BrutalCompanyMinusExtraReborn remains disabled in S1.39. It is not permanently forbidden.
-
-If the user wants it back, do a new isolated compatibility/config audit after S1.39 acceptance. Do not let BCMER silently override established spawn power/chance ownership.
+Reactivation is binding only **after S1.40A acceptance** and must be isolated as S1.41. See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`.
 
 ## General anti-regression rule
 
-Before proposing an old mod or configuration as a fix, search this file, `06_RECENT_WORK_S1.32-S1.39.md`, and the chronology first.
+Before proposing an old mod/config/patch as a fix, search:
+- this file;
+- `Current/06_RECENT_WORK_S1.32-S1.40A.md`;
+- `Current/03_PROJECT_CHRONOLOGY.md`;
+- `Logs/`;
+- `Archive/` only when historical reconstruction is actually needed.

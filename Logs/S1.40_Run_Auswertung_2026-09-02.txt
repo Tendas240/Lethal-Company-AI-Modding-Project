@@ -1,23 +1,71 @@
-S1.40 RUNTIME AUSWERTUNG - 2026-09-02
+S1.40 RUNTIME AUSWERTUNG — 2026-09-02
 
-Profile:
+PROFILE
 LC V1 S1.40 Native Currency Flash Turret Cleanup
 
-Result:
+SHA-256
+f117cd1c6e234ed280ce8a55ca696ce26d3e14c8b20357ee3714919c5ebbac78
+
+RESULT
 FAILED ACCEPTANCE.
 
-Observed by user:
-- Earlier run: Wallet and Flash Turret found.
-- Later additional runs: Flash Turret found; Coins/Wallets not visually found in those runs.
+USER OBSERVATIONS
+1. Earlier S1.40 run:
+   - Wallet found
+   - Flash Turret found
 
-Runtime evidence:
-- S1.39 Compatibility Fixes loaded, so the embedded local DLL was active.
-- CodeRebirth logged "Cleaning config".
-- Currency clone instances (Coin/DollarBill/Wallet) were present in runtime logs, so visual absence alone cannot prove suppression.
-- Post-run CodeRebirth.cfg showed:
-  Clean Unusued Configs = true
-  Flash Turret | Is Inside Hazard = true
-  positive Coin/Crisp Dollar Bill/Wallet inside moon curves
+2. User later suspected the earlier Gale import may have omitted:
+   Advanced options -> Import all files
 
-Conclusion:
-The intended S1.40 sparse config overrides did not survive startup/config cleanup. S1.40 is not accepted. The next isolated fix is S1.40A: keep all suppression values and set Clean Unusued Configs=false. Do not reactivate BCMER until S1.40A passes.
+3. Additional S1.40 runs:
+   - no Coins/Wallets visually found
+   - Flash Turret still observed
+
+Because the later run still produced a Flash Turret, S1.40 cannot be accepted even if the first import was incomplete.
+
+RUNTIME PLUGIN EVIDENCE
+The cumulative project-local plugin loaded:
+S1.39 Compatibility Fixes loaded.
+
+Therefore the embedded local DLL was active in the analyzed runtime.
+
+RUNTIME CURRENCY EVIDENCE
+Runtime logs contained instantiated CodeRebirth Currency objects including:
+- NewCoinPrefab(Clone)
+- DollaBill(Clone)
+- Wallet(Clone)
+
+This means visual non-discovery is not deterministic proof that Currency cannot spawn.
+
+DECISIVE POST-RUN CODEREBIRTH CONFIG
+The user supplied the CodeRebirth.cfg after the runs.
+
+It showed:
+- CodeRebirth v1.6.9
+- Clean Unusued Configs = true
+- Flash Turret | Is Inside Hazard = true
+- Coin/Crisp Dollar Bill/Wallet Inside Moon Spawn Weights restored to positive/non-empty curves
+- relevant Currency map objects use Moon-priority behavior
+
+This directly contradicted the intended S1.40 sparse suppression values.
+
+CONCLUSION
+S1.40 sparse preseeded config entries did not survive CodeRebirth startup/config cleanup/default binding.
+
+S1.40 is a confirmed failed acceptance candidate.
+
+NEXT ISOLATED FIX
+S1.40A:
+- exact S1.40 base
+- only BepInEx/config/CodeRebirth.cfg replaced
+- Clean Unusued Configs = false
+- Currency inside weights blank
+- Flash Turret Is Inside Hazard=false
+- Flash Turret inside weights blank
+- local DLL unchanged
+- manifest unchanged
+
+Do not reactivate BCMER until S1.40A passes.
+
+DURABLE CONFIG EXTRACT
+References/Runtime-Configs/S1.40_CodeRebirth_postrun_relevant.txt

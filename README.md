@@ -6,19 +6,27 @@ Current gameplay/test candidate:
 
 `Profiles/LC V1 S1.40A CodeRebirth Config Cleanup Fix.r2z`
 
-Latest runtime-tested reference: **S1.40** - `Profiles/LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z`.
+SHA-256:
 
-S1.40 was run in game on 2026-09-02 and failed acceptance. The cumulative S1.39 compatibility DLL loaded, but a Flash Turret was still observed. The post-run `CodeRebirth.cfg` proved the intended S1.40 overrides did not survive startup: `Clean Unusued Configs = true`, `Flash Turret | Is Inside Hazard = true`, and Currency moon curves had returned to positive defaults.
+`ab894ead158941d6f9d6c3463baab51c65486ebf6d40df8b2325fca626d966a5`
 
-S1.40A is an isolated config-retention fix. It keeps the exact S1.40 package/mod architecture and changes only the existing `BepInEx/config/CodeRebirth.cfg`.
+Latest runtime-tested state: **S1.40 — failed acceptance**.
+
+S1.40 was actually run in game on 2026-09-02. The cumulative project-local compatibility DLL loaded, but Flash Turret suppression was not reliable and the post-run `CodeRebirth.cfg` proved that the intended sparse CodeRebirth/DawnLib overrides did not survive startup/config cleanup. S1.40A is the isolated retention fix.
 
 ## Critical S1.40A import requirement
 
-Use Gale **Advanced options -> Import all files**.
+Use Gale:
 
-Expected marker: `S1.39 Compatibility Fixes loaded.`
+**Advanced options -> Import all files**
 
-## ChatGPT - read first
+Expected BepInEx marker:
+
+`S1.39 Compatibility Fixes loaded.`
+
+If the marker is absent, the cumulative local patch was not imported and the run is invalid for patch-dependent acceptance.
+
+## ChatGPT — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
 2. `Current/00_CURRENT_STATE.md`
@@ -27,21 +35,25 @@ Expected marker: `S1.39 Compatibility Fixes loaded.`
 5. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
 6. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
 7. `Current/06_RECENT_WORK_S1.32-S1.40A.md`
-8. `Current/03_PROJECT_CHRONOLOGY.md`
-9. `Current/Projektstatus_S1.40A.json`
-10. `Current/Aktive_Modliste_S1.40A.txt`
-11. `Current/S1.40A_BUILD_VERIFICATION.txt`
-12. `Current/VERIFIKATION_S1.40A.txt`
-13. `Current/DATEIINVENTAR_S1.40A.txt`
-14. `Current/SHA256SUMS_S1.40A.txt`
+8. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+9. `Current/08_RUNTIME_EVIDENCE_S1.40_CODE_REBIRTH.md`
+10. `Current/03_PROJECT_CHRONOLOGY.md`
+11. `Current/Projektstatus_S1.40A.json`
+12. `Current/Aktive_Modliste_S1.40A.txt`
+13. `Current/S1.40A_BUILD_VERIFICATION.txt`
+14. `Current/VERIFIKATION_S1.40A.txt`
+15. `Current/DATEIINVENTAR_S1.40A.txt`
+16. `Current/SHA256SUMS_S1.40A.txt`
+
+Then inspect `Profiles/`, `Patches/`, `Logs/`, `References/` and `Archive/` according to the task.
 
 ## Exact S1.40A delta
 
-Base: `Profiles/LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z`
-
-Exactly one existing ZIP member is replaced:
+S1.40A is based on exact S1.40 and replaces only:
 
 `BepInEx/config/CodeRebirth.cfg`
+
+Critical values:
 
 ```ini
 [General]
@@ -64,20 +76,30 @@ Flash Turret | Inside Moon Spawn Weights =
 Flash Turret | Inside Interior Spawn Weights =
 ```
 
-Do not change `Money | Enemy Drop Rates`.
+Do **not** change `Money | Enemy Drop Rates` unless the user explicitly requests it. Intended CodeRebirth Merchant/Denomination Analyzer/vending/enemy-drop currency systems remain desired.
+
+## Binding roadmap
+
+**S1.40A runtime test -> if Currency + Flash Turret pass -> S1.41 with exact existing BCMER 1.71.0 -> S1.41 runtime test -> S1.42A Interior Config Seed -> run/host/land/generate -> collect full config + LogOutput -> tune -> S1.42 final interior build.**
+
+Do not skip directly to BCMER or interiors while S1.40A remains unaccepted.
 
 ## Persistent decisions
 
-- Malfunctions stays disabled until explicitly requested.
-- ProjectSCP-SCP999 stays disabled.
-- AJB Keep hangar ship door closed stays disabled while the local failsafe is active.
-- BCMER 1.71.0 stays disabled until S1.40A passes; do not upgrade to BCMER 2.0.0 during planned reactivation.
-- Observer and Don't Touch Me stay disabled.
+- Malfunctions disabled until explicit user request.
+- ProjectSCP-SCP999 disabled.
+- AJB Keep hangar ship door closed disabled while the local failsafe is active.
+- BCMER 1.71.0 parked until S1.40A acceptance. Do not upgrade to BCMER 2.0.0 as part of reactivation.
+- Observer disabled.
+- Don't Touch Me disabled.
 - CodeRebirthLib must not return.
-- Unknown Enemy PowerLevels are never guessed.
+- LethalModDataLib is **not** permanently banned; if DULL requires it, reintroduce only in the isolated interior stage and regression-test it.
+- Unknown Enemy PowerLevels must never be guessed.
+- Leaf Boy remains on the LethalMin attack blacklist.
+- S1.29D is diagnostic only and never a gameplay base.
 
-## Roadmap
+## Priority rule
 
-**S1.40A test -> if Currency + Flash Turret pass -> S1.41 BCMER 1.71.0 isolated reactivation -> S1.41 test -> S1.42A interior config seed -> collect generated config/log -> S1.42 tuned interior build.**
+Chronologically newer confirmed information overrides older assumptions. Runtime evidence overrides package/config assumptions. `Archive/` is historical reference material and must not override the current machine-readable files unless explicitly referenced.
 
-Newest confirmed runtime evidence overrides older assumptions. `Archive/` is historical only.
+`Current/HumanReadable/` is secondary. Outdated S1.39 DOCX/PDF handover files were archived so they cannot be mistaken for the current state.

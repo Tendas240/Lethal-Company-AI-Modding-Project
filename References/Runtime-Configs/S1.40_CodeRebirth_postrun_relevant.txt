@@ -1,0 +1,63 @@
+S1.40 CODEREBIRTH POST-RUN CONFIG — RELEVANT EXTRACT
+Source: user-supplied CodeRebirth.cfg/CodeRebirth.txt after S1.40 runtime runs
+Plugin: CodeRebirth v1.6.9
+Date captured in project: 2026-09-02
+
+NOTE
+This repository file is a durable extraction of the fields relevant to the S1.40 failure. The complete user-supplied config was much larger and contained all CodeRebirth settings.
+
+[General]
+
+## Whether CodeRebirth should delete old confing information that are unused.
+# Setting type: Boolean
+# Default value: true
+Clean Unusued Configs = true
+
+INTERPRETATION
+The spelling "Unusued" is the actual config key. S1.40 did not set this false, so the sparse preseeded entries were not retained.
+
+[FlashTurret Options]
+
+Enabled = true
+Flash Turret | Allow Editing Config = false
+Flash Turret | Is Inside Hazard = true
+Flash Turret | Is Outside Hazard = false
+Flash Turret | Volume = 1
+
+INTERPRETATION
+S1.40 intended:
+Flash Turret | Is Inside Hazard = false
+
+The post-run config had restored true.
+
+[Merchant Options] — relevant behavior
+
+Coin:
+- inside spawning prioritises Moon curves
+- post-run Inside Moon Spawn Weights were non-empty / positive again
+- Inside Interior Spawn Weights could be blank, but Moon priority means that alone does not suppress spawning
+
+Crisp Dollar Bill:
+- post-run Inside Moon Spawn Weights were non-empty / positive again
+- Inside Interior Spawn Weights = blank
+- inside spawning uses Moon-priority behavior
+
+Wallet:
+- Wallet | Inside Spawn Prioritise Moon = true
+- post-run Inside Moon Spawn Weights were non-empty / positive again
+- Inside Interior Spawn Weights = blank
+
+OTHER CURRENCY SYSTEMS
+Money | Enemy Drop Rates was not targeted for removal and should remain available unless the user explicitly requests otherwise.
+
+CONCLUSION
+The intended S1.40 sparse CodeRebirth/DawnLib overrides were not retained. S1.40A therefore sets:
+
+[General]
+Clean Unusued Configs = false
+
+and retains blank Currency inside weights plus Flash Turret Is Inside Hazard=false.
+
+See:
+- Current/08_RUNTIME_EVIDENCE_S1.40_CODE_REBIRTH.md
+- Logs/S1.40_Run_Auswertung_2026-09-02.txt

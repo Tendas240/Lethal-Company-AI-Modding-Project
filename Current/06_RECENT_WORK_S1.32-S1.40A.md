@@ -131,3 +131,15 @@ S1.40A profile: `Profiles/LC V1 S1.40A CodeRebirth Config Cleanup Fix.r2z`
 SHA-256: `ab894ead158941d6f9d6c3463baab51c65486ebf6d40df8b2325fca626d966a5`
 
 Acceptance requires a valid Gale all-files import, no natural Currency, no natural Flash Turret, and post-run confirmation that the config values remain intact.
+
+## 2026-09-02 handover closure
+
+Repository handover was refreshed after the S1.40A build.
+
+Binding current interpretation:
+- S1.40 is the newest profile actually run and it failed acceptance.
+- S1.40A is canonical but not yet runtime-tested.
+- S1.40A must be tested before any BCMER/interior work.
+- The next-chat workflow is now explicitly staged: S1.40A test -> S1.41 BCMER 1.71.0 -> S1.41 test -> S1.42A interior config seed -> collect generated config/log -> S1.42 tuned build.
+- Old S1.39/S1.40 versioned Current files and S1.39 human-readable handover documents are historical and should live under Archive rather than Current.
+- No unique diagnostic evidence should be hard-deleted during cleanup.
