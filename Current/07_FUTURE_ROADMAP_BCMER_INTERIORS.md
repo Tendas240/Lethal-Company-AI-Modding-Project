@@ -193,14 +193,28 @@ Only after this should exact config tuning happen.
 
 Use the actual generated configs/IDs.
 
-## General tuning rule
+## Global equal-interior probability invariant
 
-For ordinary new interiors:
-- normalize to Weight 100 where technically supported and consistent with the project architecture;
-- respect author-defined safety restrictions;
+This is a **binding long-term architecture rule**, including all future interior additions:
+
+- every registered interior should have the **same selection probability as every other interior on every moon**;
+- use a common project weight (normally Weight 100) for every interior/moon pairing when LethalLevelLoader or the native owner permits direct weighting;
+- no interior should be made rarer or more common merely for theme, moon preference, package defaults, or author balancing recommendations;
+- whenever a future mod adds one or more interiors, normalize those new interiors into this equal-probability architecture before final acceptance;
+- package count is irrelevant: a package that adds six interiors contributes six independently equal-weight interiors, not one package-level share;
+- Black Mesa/native-owner content must reach the same effective probability without duplicate registration.
+
+**Technical restriction handling:**
+- the user's target is still equality on *all* moons;
+- if an author hard-blocks an interior on a moon, or forcing it would create a crash/generation/geometry incompatibility, treat that as a compatibility issue to investigate rather than a desired balancing exception;
+- do not blindly override an explicit hard block until its technical reason is understood and runtime-tested;
+- any unavoidable exception must be documented explicitly and must be technical, not a rarity/balancing choice.
+
+Current example: Shatteredrooms explicitly excludes Experimentation and Embrion. That remains temporarily preserved until we determine whether the restriction is technically required. The desired final architecture is still equal availability/probability everywhere if safely achievable.
+
+Also:
 - do not fabricate IDs;
-- do not double-register content;
-- do not automatically override special moon restrictions.
+- do not double-register content.
 
 The final interior count will be **more than +8**, because some packages contain multiple interiors. Count actual registered interiors before updating the architecture documentation.
 
