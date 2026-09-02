@@ -4,10 +4,13 @@ The current project handover is intentionally **Markdown/TXT/JSON-first**.
 
 Canonical current files are listed in the repository root `README.md` under **ChatGPT — read first**.
 
-The previously present S1.39 DOCX/PDF handover documents were moved to:
+The current canonical/runtime-accepted state is **S1.41**. The next binding stage is **S1.42A Interior Config Seed**.
 
-`Archive/S1.39/HumanReadable/`
+Primary current handover:
+- `Current/12_HANDOVER_S1.41_TO_S1.42A.md`
+- `Current/README_Handover_S1.41.txt`
+- `Current/Projektstatus_S1.41.json`
 
-They are preserved for historical reconstruction but are not current and must not override S1.40A machine-readable documentation.
+Older DOCX/PDF handover documents are historical and remain under `Archive/` where applicable.
 
-No new S1.40A DOCX/PDF was generated during this handover because the machine-readable repository files are the canonical source and contain the complete current state, runtime evidence, failed approaches and binding future roadmap.
+No new S1.41 DOCX/PDF is required for project continuity because the GitHub repository itself is the canonical source and the machine-readable current files contain the complete accepted state, runtime evidence, failed approaches, build automation rules, and binding roadmap.
