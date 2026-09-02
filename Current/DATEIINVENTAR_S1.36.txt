@@ -1,7 +1,7 @@
 LETHAL COMPANY REPOSITORY FILE INVENTORY - S1.36
 Generated: 2026-09-02
 
-Excludes: .git, temporary metadata workflow, this inventory file and SHA256SUMS_S1.36.txt.
+Excludes: .git, temporary S1.34-retention workflow, this inventory file and SHA256SUMS_S1.36.txt.
 
     39270843  Archive/S1.24/Diagnose/LogOutput_S1.23_LastTest.log
        52871  Archive/S1.24/Dokumentation/Handover-Prompt_Lethal-Company_bis_S1.24.docx
@@ -28,7 +28,8 @@ Excludes: .git, temporary metadata workflow, this inventory file and SHA256SUMS_
     11155315  Archive/S1.31/HumanReadable/Lethal-Company_Chatverlauf_Handover_bis_S1.31.pdf
        53465  Archive/S1.31/HumanReadable/Lethal-Company_Projektchronik_Kompakt_bis_S1.31.docx
       293790  Archive/S1.31/HumanReadable/Lethal-Company_Projektchronik_Kompakt_bis_S1.31.pdf
-        5887  Current/00_CURRENT_STATE.md
+         559  Archive/S1.34/S1.34_BUILD_VERIFICATION.txt
+        5890  Current/00_CURRENT_STATE.md
         8502  Current/01_HANDOVER_CORE.md
         7582  Current/02_TECHNICAL_BASELINE.md
         9529  Current/03_PROJECT_CHRONOLOGY.md
@@ -39,7 +40,7 @@ Excludes: .git, temporary metadata workflow, this inventory file and SHA256SUMS_
         4212  Current/Projektstatus_S1.36.json
         1764  Current/README_Handover_S1.36.txt
         1135  Current/S1.36_BUILD_VERIFICATION.txt
-        1527  Current/VERIFIKATION_S1.36.txt
+        1611  Current/VERIFIKATION_S1.36.txt
      2435082  Logs/LogOutput_S1.29D_EnemyPowerAudit_2026-09-01.log
         1418  Logs/S1.30_Run_Auswertung_2026-09-02.txt
         1247  Logs/S1.31_LeafBoy_Mirage_Auswertung_2026-09-02.txt
@@ -56,8 +57,9 @@ Excludes: .git, temporary metadata workflow, this inventory file and SHA256SUMS_
       516631  Profiles/LC V1 S1.29D Enemy Power Audit.r2z
       540412  Profiles/LC V1 S1.30 Power Caps Mimicless Pikmin Shield.r2z
       538788  Profiles/LC V1 S1.31 Indoor Power Trim -4.r2z
+      549464  Profiles/LC V1 S1.34 Malfunctions Disabled.r2z
       552554  Profiles/LC V1 S1.36 Handover Clean Baseline.r2z
-        3987  README.md
+        4002  README.md
       504720  References/Spawn-Rates/Adamance.png
       722094  References/Spawn-Rates/Assurance.png
       735170  References/Spawn-Rates/Experimentation.png

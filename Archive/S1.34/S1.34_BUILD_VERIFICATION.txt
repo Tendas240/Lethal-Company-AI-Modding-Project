@@ -1,0 +1,13 @@
+S1.34 RUNTIME-TESTED PROFILE REFERENCE
+Reconstructed and hash-verified during S1.36 handover: 2026-09-02
+
+Profile: Profiles/LC V1 S1.34 Malfunctions Disabled.r2z
+SHA-256: 54e7f18cc1c62f327f25b65d4ed95b8fde82aa90f8713b91fe8069a1f3b3f0a2
+
+Exact delta from S1.33:
+- profileName -> LC V1 S1.34 Malfunctions Disabled
+- zealsprince-Malfunctions enabled:true -> enabled:false
+- no other archive member changed
+
+This is the latest profile actually runtime-tested before the S1.36 handover.
+Runtime findings are summarized in Logs/S1.34_Run_Auswertung_2026-09-02.txt.
