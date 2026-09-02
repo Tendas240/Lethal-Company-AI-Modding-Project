@@ -1,0 +1,15 @@
+{
+  "Profiles/LC V1 S1.40A CodeRebirth Config Cleanup Fix.r2z": {
+    "build_id": "S1.40A",
+    "sha256": "0245e0c5551d77cab7f90eacf7f1627b0a6df62553260533a4e903d2a6426f27",
+    "note": "Corrected internal Gale profile-name variant; differs from the older pre-correction repository artifact."
+  },
+  "Profiles/LC V1 S1.40B CodeRebirth Editing Gate Fix.r2z": {
+    "build_id": "S1.40B",
+    "sha256": "fd303f73f0f2223a6375fcf2b7ed209dae77e1934e3b4e8139932a89e7de7eb9"
+  },
+  "Profiles/LC V1 S1.41 BCMER Reactivation.r2z": {
+    "build_id": "S1.41",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b"
+  }
+}
