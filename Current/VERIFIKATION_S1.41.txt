@@ -61,3 +61,11 @@ PASS  Stale S1.40A handover helpers were archived out of Current/.
 PASS  Generated Python bytecode was removed and is ignored.
 PASS  BuildSpecs/current.json is disabled/idle with exact accepted S1.41 base/hash.
 PASS  Latest canonical-profile workflow run after the idle-spec update completed successfully.
+
+
+BUILD-SYSTEM PRE-S1.42A CHECK
+PASS  BuildSystem/profile_builder.py mod_additions serialization was audited against the real S1.41 Gale export format.
+PASS  Package additions now mirror Gale's existing list indentation instead of hard-coding a conflicting indentation.
+PASS  BuildSystem/test_profile_builder.py was added.
+PASS  .github/workflows/profile-build.yml now runs the self-test before every profile build.
+PASS  GitHub Actions run 33689500490 completed successfully with the self-test enabled.
