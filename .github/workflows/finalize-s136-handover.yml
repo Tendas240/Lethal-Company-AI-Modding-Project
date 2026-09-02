@@ -1,0 +1,245 @@
+name: Finalize S1.36 handover
+on:
+  push:
+    branches: [handover-s136]
+    paths:
+      - ".github/workflows/finalize-s136-handover.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: handover-s136
+
+      - name: Archive S1.31 current files and generate S1.36 metadata
+        shell: python
+        run: |
+          import hashlib
+          import os
+          import shutil
+          import zipfile
+
+          # Archive stale S1.31 current metadata/human-readable docs rather than deleting them.
+          os.makedirs("Archive/S1.31/CurrentMetadata", exist_ok=True)
+          os.makedirs("Archive/S1.31/HumanReadable", exist_ok=True)
+
+          old_meta = [
+              "Aktive_Modliste_S1.31.txt",
+              "Projektstatus_S1.31.json",
+              "README_Handover_S1.31.txt",
+              "VERIFIKATION_S1.31.txt",
+              "DATEIINVENTAR_S1.31.txt",
+              "SHA256SUMS_S1.31.txt",
+          ]
+          for name in old_meta:
+              src = os.path.join("Current", name)
+              dst = os.path.join("Archive/S1.31/CurrentMetadata", name)
+              if os.path.exists(src):
+                  shutil.move(src, dst)
+
+          hr_dir = "Current/HumanReadable"
+          if os.path.isdir(hr_dir):
+              for name in os.listdir(hr_dir):
+                  src = os.path.join(hr_dir, name)
+                  if os.path.isfile(src):
+                      shutil.move(src, os.path.join("Archive/S1.31/HumanReadable", name))
+              try:
+                  os.rmdir(hr_dir)
+              except OSError:
+                  pass
+
+          profile = "Profiles/LC V1 S1.36 Handover Clean Baseline.r2z"
+          patch_zip = "Patches/S135CompatibilityFixes/Tendas-S135CompatibilityFixes-1.0.0.zip"
+
+          # Generate the S1.36 package list from export.r2x.
+          with zipfile.ZipFile(profile, "r") as z:
+              export = z.read("export.r2x").decode("utf-8-sig")
+
+          mods = []
+          current = None
+          version = {}
+          in_version = False
+          for line in export.splitlines():
+              if line.startswith("- name: "):
+                  if current is not None:
+                      current["version"] = f'{version.get("major",0)}.{version.get("minor",0)}.{version.get("patch",0)}'
+                      mods.append(current)
+                  current = {"name": line[len("- name: "):].strip(), "enabled": None, "source": ""}
+                  version = {}
+                  in_version = False
+              elif current is not None and line.strip() == "version:":
+                  in_version = True
+              elif current is not None and in_version and line.strip().startswith(("major:", "minor:", "patch:")):
+                  k, v = line.strip().split(":", 1)
+                  version[k] = int(v.strip())
+              elif current is not None and line.strip().startswith("enabled:"):
+                  current["enabled"] = line.strip().split(":", 1)[1].strip().lower() == "true"
+                  in_version = False
+              elif current is not None and line.strip().startswith("source:"):
+                  current["source"] = line.strip().split(":", 1)[1].strip()
+                  in_version = False
+          if current is not None:
+              current["version"] = f'{version.get("major",0)}.{version.get("minor",0)}.{version.get("patch",0)}'
+              mods.append(current)
+
+          if len(mods) != 176:
+              raise RuntimeError(f"Expected 176 manifest entries, found {len(mods)}")
+          active = sum(1 for m in mods if m["enabled"])
+          disabled = [m for m in mods if not m["enabled"]]
+          if active != 170 or len(disabled) != 6:
+              raise RuntimeError(f"Unexpected active/disabled counts: active={active}, disabled={len(disabled)}")
+
+          lines = [
+              "LC V1 S1.36 - vollständige Export-Modliste",
+              "Erstellt: 2026-09-02",
+              "Profilname intern: LC V1 S1.36 Handover Clean Baseline",
+              f"Gesamt: {len(mods)} | aktiv: {active} | deaktiviert: {len(disabled)}",
+              "",
+              "Hinweis: Diese Liste zeigt Thunderstore-Paketversionen aus export.r2x.",
+              "Runtime-Assembly-Versionen können davon abweichen; für Code-/Fehleranalyse gilt der neueste Runtime-Log.",
+              "",
+          ]
+          for m in sorted(mods, key=lambda x: x["name"].lower()):
+              flag = "ON " if m["enabled"] else "OFF"
+              lines.append(f'[{flag}] {m["name"]} {m["version"]} ({m["source"]})')
+          lines += [
+              "",
+              "[LOCAL PATCH - nicht Teil der 176 Thunderstore-Manifest-Einträge]",
+              "[ON ] Tendas-S135CompatibilityFixes 1.0.0 (project-local; runtime load must be verified)",
+              "Source: Patches/S135CompatibilityFixes/",
+              "Fallback package: Patches/S135CompatibilityFixes/Tendas-S135CompatibilityFixes-1.0.0.zip",
+              "Gale import: Advanced options -> Import all files",
+          ]
+          with open("Current/Aktive_Modliste_S1.36.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(lines) + "\n")
+
+          def sha256(path):
+              h = hashlib.sha256()
+              with open(path, "rb") as f:
+                  for chunk in iter(lambda: f.read(1024 * 1024), b""):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          profile_sha = sha256(profile)
+          patch_sha = sha256(patch_zip)
+
+          verification = f"""LETHAL COMPANY REPOSITORY VERIFICATION - S1.36
+Generated: 2026-09-02
+
+Canonical handover/test candidate:
+- {profile}
+- SHA-256: {profile_sha}
+- Build/archive/diff verified; not yet runtime-tested.
+
+Latest runtime-tested state:
+- S1.34 - LC V1 S1.34 Malfunctions Disabled
+
+Manifest verification:
+- 176 total Thunderstore entries
+- 170 active
+- 6 disabled
+- disabled: AJB-Keep_hangar_ship_door_closed; zealsprince-Malfunctions; Reiko88-Observer; ProjectSCP-SCP999; Kittenji-Dont_Touch_Me; SoftDiamond-BrutalCompanyMinusExtraReborn
+
+Local compatibility patch:
+- Patches/S135CompatibilityFixes/
+- fallback ZIP SHA-256: {patch_sha}
+- Gale import requires Advanced options -> Import all files
+- runtime load must be confirmed before testing door/EnemyScan behavior
+
+Carried-forward regression checks:
+- Leaf boy remains in LethalMin Attack Blacklist
+- Mirage neverDeleteRecordings=true
+- Malfunctions disabled
+- SCP999 disabled
+- AJB disabled
+- S135CompatibilityFixes.dll embedded in profile
+
+Repository cleanup:
+- stale S1.31 Current metadata archived under Archive/S1.31/CurrentMetadata/
+- S1.31 HumanReadable DOCX/PDF archived under Archive/S1.31/HumanReadable/
+- historical Profiles/, Logs/, References/ and older Archive sources preserved
+- no S1.32/S1.33/S1.35 intermediate profile promoted to main
+- temporary build workflows are excluded from final inventory/hash and are removed before merge
+
+Runtime acceptance tests remain open; see Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md.
+"""
+          with open("Current/VERIFIKATION_S1.36.txt", "w", encoding="utf-8") as f:
+              f.write(verification)
+
+          # Final inventory excludes itself, SHA file and temporary handover workflows.
+          exclude_exact = {
+              "Current/DATEIINVENTAR_S1.36.txt",
+              "Current/SHA256SUMS_S1.36.txt",
+              ".github/workflows/build-s136-handover.yml",
+              ".github/workflows/finalize-s136-handover.yml",
+          }
+
+          def repo_files():
+              result = []
+              for root, dirs, files in os.walk("."):
+                  dirs[:] = [d for d in dirs if d != ".git"]
+                  for name in files:
+                      rel = os.path.join(root, name).replace("\\", "/")
+                      if rel.startswith("./"):
+                          rel = rel[2:]
+                      if rel in exclude_exact:
+                          continue
+                      result.append(rel)
+              return sorted(result)
+
+          inventory_lines = [
+              "LETHAL COMPANY REPOSITORY FILE INVENTORY - S1.36",
+              "Generated: 2026-09-02",
+              "",
+              "Excludes: .git, temporary S1.36 workflow files, this inventory file and SHA256SUMS_S1.36.txt.",
+              "",
+          ]
+          for path in repo_files():
+              inventory_lines.append(f"{os.path.getsize(path):12d}  {path}")
+          with open("Current/DATEIINVENTAR_S1.36.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(inventory_lines) + "\n")
+
+          # SHA list includes the final inventory, but excludes itself and temporary workflow files.
+          hash_exclude = {
+              "Current/SHA256SUMS_S1.36.txt",
+              ".github/workflows/build-s136-handover.yml",
+              ".github/workflows/finalize-s136-handover.yml",
+          }
+          hash_files = []
+          for root, dirs, files in os.walk("."):
+              dirs[:] = [d for d in dirs if d != ".git"]
+              for name in files:
+                  rel = os.path.join(root, name).replace("\\", "/")
+                  if rel.startswith("./"):
+                      rel = rel[2:]
+                  if rel not in hash_exclude:
+                      hash_files.append(rel)
+          hash_files.sort()
+
+          hash_lines = [
+              "LETHAL COMPANY REPOSITORY SHA256 - S1.36",
+              "Generated: 2026-09-02",
+              "",
+              "Excludes: .git, temporary S1.36 workflow files and this hash file itself.",
+              "",
+          ]
+          for path in hash_files:
+              hash_lines.append(f"{sha256(path)}  {path}")
+          with open("Current/SHA256SUMS_S1.36.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(hash_lines) + "\n")
+
+          print(f"Finalized S1.36: {len(mods)} manifest entries, {active} active, {len(disabled)} disabled")
+          print(f"Profile SHA-256: {profile_sha}")
+
+      - name: Commit final S1.36 handover metadata
+        run: |
+          git config user.name "chatgpt-handover"
+          git config user.email "chatgpt-handover@users.noreply.github.com"
+          git add -A
+          git commit -m "Finalize S1.36 handover metadata and archive S1.31 current files"
+          git push origin handover-s136
