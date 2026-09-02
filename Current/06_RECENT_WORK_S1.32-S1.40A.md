@@ -143,3 +143,61 @@ Binding current interpretation:
 - The next-chat workflow is now explicitly staged: S1.40A test -> S1.41 BCMER 1.71.0 -> S1.41 test -> S1.42A interior config seed -> collect generated config/log -> S1.42 tuned build.
 - Old S1.39/S1.40 versioned Current files and S1.39 human-readable handover documents are historical and should live under Archive rather than Current.
 - No unique diagnostic evidence should be hard-deleted during cleanup.
+
+
+## S1.40B — DawnLib editing gate fix
+
+S1.40A runtime testing showed that `Clean Unusued Configs = false` survived, but the individual Coin/Crisp Dollar Bill/Wallet/Flash Turret content definitions still had `Allow Editing Config = false`. DawnLib therefore continued to enforce mod-author defaults.
+
+S1.40B set the relevant editing gates to true while preserving:
+- blank Currency inside moon/interior weights;
+- Flash Turret `Is Inside Hazard = false`;
+- blank Flash Turret inside weights;
+- `Clean Unusued Configs = false`.
+
+Runtime acceptance:
+- the user did not encounter natural Coin/Wallet/Flash Turret;
+- the evaluated log did not show the previous natural Currency clone signatures;
+- the post-run config retained the intended values.
+
+S1.40B profile:
+`Profiles/LC V1 S1.40B CodeRebirth Editing Gate Fix.r2z`
+
+SHA-256:
+`fd303f73f0f2223a6375fcf2b7ed209dae77e1934e3b4e8139932a89e7de7eb9`
+
+Status: **accepted**.
+
+## S1.41 — BCMER 1.71.0 reactivation
+
+S1.41 was built from accepted S1.40B.
+
+Exact BCMER 1.71.0 was re-enabled. BCMER 2.0.0 was not adopted.
+
+The ownership guard is:
+- `Experimental Dont Handle Power? = true`
+- `Experimental Dont Handle Spawn Chance? = true`
+- `Let Brutal handle properties outside of events? = false`
+- `Enable Randomizer? = false`
+
+Rain-event routes disabled:
+- Raining
+- HeavyRain
+- AllWeather
+- Hurricane
+
+S1.41 profile:
+`Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
+
+SHA-256:
+`d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
+
+GitHub Actions has hash-verified and indexed the uploaded canonical S1.41 profile. Runtime acceptance is pending.
+
+## Repository-first migration
+
+The project build workflow was migrated to GitHub.
+
+Future builds use `BuildSpecs/current.json`, `BuildSystem/profile_builder.py`, and GitHub Actions. Generated profiles remain under `Profiles/` and readable snapshots under `ProfileSources/`.
+
+The exact S1.40B and S1.41 binaries were uploaded once to close the local-only gap. Future profile builds should not require a local repo clone or PowerShell build script.
