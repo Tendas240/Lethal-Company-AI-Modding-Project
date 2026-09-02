@@ -78,34 +78,140 @@ The decisive post-run config showed the sparse overrides did not survive startup
 
 S1.40 is therefore a failed acceptance candidate.
 
-## S1.40A — CodeRebirth config cleanup retention fix
-Built from exact S1.40. Exactly one existing ZIP member replaced:
+## S1.40A — cleanup retention only; still failed
 
-`BepInEx/config/CodeRebirth.cfg`
-
-Adds:
+S1.40A added:
 
 `Clean Unusued Configs=false`
 
 while retaining blank Currency inside weights and Flash Turret suppression.
 
-No manifest/package/local-DLL changes.
+Corrected migrated profile:
 
-Profile:
 `Profiles/LC V1 S1.40A CodeRebirth Config Cleanup Fix.r2z`
 
 SHA-256:
-`ab894ead158941d6f9d6c3463baab51c65486ebf6d40df8b2325fca626d966a5`
 
-**Current status:** S1.40A is canonical and untested. S1.40 is latest runtime-tested and failed acceptance.
+`0245e0c5551d77cab7f90eacf7f1627b0a6df62553260533a4e903d2a6426f27`
 
-## Binding future sequence
-1. Test S1.40A.
-2. Only if Currency + Flash Turret pass, build S1.41 with exact BCMER 1.71.0.
-3. Test S1.41.
-4. Build S1.42A Interior Config Seed with all eight binding interior packages.
-5. Run/host/land/generate, then collect full config directory + log.
-6. Analyze real generated IDs/config sections.
-7. Build tuned S1.42.
+Historical note: an earlier pre-correction S1.40A archive variant had a different hash and should not be treated as the canonical migrated binary.
 
-See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`.
+Runtime showed:
+- `Clean Unusued Configs=false` now survived;
+- but Coin/Bill/Wallet/Flash Turret still had per-content `Allow Editing Config=false`;
+- DawnLib therefore continued to enforce author defaults;
+- Currency/Flash Turret still appeared.
+
+S1.40A failed acceptance.
+
+## S1.40B — DawnLib per-content editing gate fix
+
+S1.40B opened the relevant editing gates while retaining the natural-spawn suppression:
+
+- Coin `Allow Editing Config=true`
+- Crisp Dollar Bill `Allow Editing Config=true`
+- Wallet `Allow Editing Config=true`
+- Flash Turret `Allow Editing Config=true`
+- Currency inside moon/interior weights blank
+- Flash Turret `Is Inside Hazard=false`
+- Flash Turret inside moon/interior weights blank
+- `Clean Unusued Configs=false`
+
+Profile:
+
+`Profiles/LC V1 S1.40B CodeRebirth Editing Gate Fix.r2z`
+
+SHA-256:
+
+`fd303f73f0f2223a6375fcf2b7ed209dae77e1934e3b4e8139932a89e7de7eb9`
+
+Runtime:
+- user did not encounter the unwanted natural Currency/Flash Turret;
+- prior natural Currency clone signatures were absent in the evaluated log;
+- intended post-run config values survived.
+
+**S1.40B accepted.**
+
+## Repository-first migration
+
+During the S1.40B/S1.41 transition, the project moved from user-run local PowerShell profile builds to a GitHub-first build architecture.
+
+Added:
+- `BuildSpecs/`
+- `BuildSystem/`
+- `.github/workflows/profile-build.yml`
+- `.github/workflows/profile-index.yml`
+- `.github/workflows/runtime-ingest.yml`
+- `ProfileSources/`
+- `RuntimeInbox/`
+- `RuntimeEvidence/`
+
+Exact S1.40B and S1.41 binaries were uploaded once, hash-verified and indexed. Future profile builds should occur in GitHub Actions rather than through a local repository clone.
+
+## S1.41 — BCMER 1.71.0 reactivation
+
+Built from accepted S1.40B.
+
+Exact:
+
+`SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`
+
+was enabled.
+
+BCMER 2.0.0 was deliberately not adopted.
+
+Ownership guard:
+
+```ini
+Experimental Dont Handle Power? = true
+Experimental Dont Handle Spawn Chance? = true
+Let Brutal handle properties outside of events? = false
+Enable Randomizer? = false
+```
+
+Disabled BCMER rain-event routes:
+- Raining
+- HeavyRain
+- AllWeather
+- Hurricane
+
+Profile:
+
+`Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
+
+SHA-256:
+
+`d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
+
+Runtime on 2026-09-02:
+- exact BCMER 1.71.0 loaded and finished patching;
+- ordinary events ran;
+- ownership guard survived post-run;
+- all four BCMER rain routes stayed disabled;
+- S1.40B CodeRebirth natural Currency/Flash-Turret suppression survived;
+- no severe BCMER regression was observed.
+
+Evidence:
+
+`RuntimeEvidence/S1.41/20260902T215804Z/`
+
+**S1.41 accepted.**
+
+A separate non-blocking incident occurred in the Mineshaft elevator: the player clipped through the floor while descending with many Pikmin and died from fall damage. Nearby logs contained heavy NavMesh-agent creation failures. Causality remains unproven and BCMER is not implicated.
+
+## Current binding sequence
+
+1. Freeze accepted S1.41 as the current gameplay baseline.
+2. Fresh-audit the eight planned interior packages and dependencies.
+3. Build S1.42A Interior Config Seed through GitHub Actions.
+4. Import with Gale `Advanced options -> Import all files`.
+5. Main Menu -> host/load -> land -> let a dungeon generate -> exit.
+6. Upload full `BepInEx/config/` ZIP + `LogOutput.log` to `RuntimeInbox/Current/`.
+7. Analyze actual generated IDs/config sections and CullFactory identifiers.
+8. Build tuned S1.42.
+9. Runtime-test S1.42.
+
+See:
+- `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+- `Current/12_HANDOVER_S1.41_TO_S1.42A.md`
+- `BuildSpecs/S1.42A_PLAN.md`
