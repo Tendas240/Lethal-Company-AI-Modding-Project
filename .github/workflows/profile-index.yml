@@ -1,0 +1,57 @@
+name: Index uploaded profile
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Profiles/*.r2z"
+      - "BuildSystem/index_profile.py"
+      - ".github/workflows/profile-index.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-index
+  cancel-in-progress: false
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Find and index changed profiles
+        shell: bash
+        run: |
+          mapfile -t FILES < <(git diff --name-only HEAD^ HEAD -- 'Profiles/*.r2z')
+          if [ "\${#FILES[@]}" -eq 0 ]; then
+            echo "No changed .r2z profiles in this commit."
+            exit 0
+          fi
+          printf 'Indexing: %s\n' "\${FILES[@]}"
+          python BuildSystem/index_profile.py "\${FILES[@]}"
+
+      - name: Commit readable profile snapshots
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- ProfileSources
+          if git diff --cached --quiet; then
+            echo "No profile snapshot changes to commit."
+          else
+            git commit -m "Index uploaded profile [skip ci]"
+            git push
+          fi
