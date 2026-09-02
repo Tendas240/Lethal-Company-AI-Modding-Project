@@ -102,13 +102,16 @@ During S1.42A:
 - do not mix unrelated gameplay balancing into the config-seed build.
 
 
-## Blocking — LethalModDataLib S1.42A initialization NRE
+## Resolved in S1.42B — LethalModDataLib initialization NRE
 
-S1.42A runtime evidence reproduced a direct LethalModDataLib 1.2.2 initialization failure:
+S1.42B runtime-confirmed the project-local null-instance guard.
 
-`NullReferenceException` in `ModDataAttributeCollector.RegisterModDataAttributes()`.
+The upstream crash path was triggered by:
+`MW.MagicWesleyInteriors` having a Chainloader `PluginInfo` with `Instance == null`.
 
-DULL content registered, but save/mod-data behavior is not cleanly validated. Resolve this before S1.42 final acceptance.
+The guard skipped that entry, scanned all valid plugins, and LethalModDataLib continued through `ModDataHandler initialised!` plus moddata load/save.
+
+Keep the guard as a regression requirement while LethalModDataLib 1.2.2 remains present.
 
 ## S1.42 tuning inputs now available
 
@@ -165,3 +168,31 @@ Use constant scales:
 for all eight EventTypes.
 
 This removes difficulty/moon/day-based drift from the EventType base distribution. Event-specific eligibility, disabled events, incompatibilities, and mutual exclusions can still alter the effective pool in a particular run.
+
+
+## Highest immediate runtime test — S1.42C Pikmin enemy guard
+
+Candidate:
+`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
+
+SHA-256:
+`22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
+
+Validate deliberately:
+
+**Thumper / Crawler**
+- Pikmin do not attack/latch Crawler;
+- Crawler does not grab/bite Pikmin;
+- no `Grabbed by enemy` sequence from Thumper;
+- no resulting `Leader is null when following` error spam.
+
+**Puffer**
+- Puffer smoke/attack does not affect Pikmin;
+- expected compatibility marker begins `[PufferPikminGuard]`;
+- vanilla Puffer/player behavior remains normal.
+
+**Regression**
+- LMDL safe-scan marker remains present;
+- `ModDataHandler initialised!` remains present.
+
+Return full `LogOutput.log`.
