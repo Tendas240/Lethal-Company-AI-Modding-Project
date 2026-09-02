@@ -37,6 +37,9 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
+      - name: Self-test profile builder
+        run: python BuildSystem/test_profile_builder.py
+
       - name: Build and verify profile
         run: python BuildSystem/profile_builder.py BuildSpecs/current.json
 
