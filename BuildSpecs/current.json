@@ -1,15 +1,58 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AWAITING_S1.42B_RUNTIME_NRE_TEST",
+  "enabled": true,
+  "build_id": "S1.42C",
   "base_profile": "Profiles/LC V1 S1.42B LMDL NRE Guard.r2z",
   "base_sha256": "8523754926e3f67c0ccef5aee976cbe72ab976f997876c59b51fedcfb293befe",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
+  "profile_name": "LC V1 S1.42C Pikmin Enemy Guard",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "config_patches": [],
-  "local_plugin_builds": [],
-  "text_assertions": []
+  "config_patches": [
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "section": "Enemy Behavior",
+      "key": "Thumper Bite Limit",
+      "value": "0"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "section": "Enemy Behavior",
+      "key": "Puffer Can Poison Pikmin",
+      "value": "false"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "section": "Pikmin Behavior",
+      "key": "Attack Blacklist",
+      "value": "Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy,Crawler"
+    }
+  ],
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S139CompatibilityFixes/bin/Release/netstandard2.1/S139CompatibilityFixes.dll",
+      "archive_path": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "export.r2x",
+      "contains": "profileName: LC V1 S1.42C Pikmin Enemy Guard"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Thumper Bite Limit = 0"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Puffer Can Poison Pikmin = false"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Leaf boy,Crawler"
+    }
+  ]
 }
