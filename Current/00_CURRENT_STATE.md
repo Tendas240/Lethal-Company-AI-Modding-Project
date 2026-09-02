@@ -130,3 +130,31 @@ Result:
 Detailed evidence: `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`.
 
 New BCMER requirement: final tuning should use fixed global EventType weights independent of difficulty. Exact user percentages are pending.
+
+
+## S1.42B isolated LMDL guard candidate
+
+Built and automation-verified:
+
+`Profiles/LC V1 S1.42B LMDL NRE Guard.r2z`
+
+SHA-256:
+
+`8523754926e3f67c0ccef5aee976cbe72ab976f997876c59b51fedcfb293befe`
+
+Purpose: isolate the LethalModDataLib 1.2.2 initialization NRE fix before S1.42 balancing/visual changes.
+
+Archive delta versus S1.42A:
+- compatibility DLL replaced with project plugin v1.1.0;
+- `export.r2x` renamed profile;
+- no other members changed.
+
+Next binding test: import S1.42B with Gale **Advanced options -> Import all files**, host/load, generate a dungeon, exit normally, then upload `LogOutput.log` to `RuntimeInbox/Current/`.
+
+Required success markers:
+- `[LMDLGuard] Safe ModDataAttribute scan completed:`
+- LethalModDataLib `Hooking up save, load and delete events...`
+- LethalModDataLib `ModDataHandler initialised!`
+- no LethalModDataLib initialization NRE.
+
+Accepted gameplay baseline remains S1.41 until later final acceptance.
