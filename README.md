@@ -1,30 +1,22 @@
 # Lethal Company AI Modding Project
 
-Current canonical project state: **S1.40**
+Current canonical project state: **S1.40A**
 
 Current gameplay/test candidate:
 
-`Profiles/LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z`
+`Profiles/LC V1 S1.40A CodeRebirth Config Cleanup Fix.r2z`
 
-Latest runtime-tested reference: **S1.39** - `Profiles/LC V1 S1.39 Cleanup Health Pikmin Shield.r2z`.
+Latest runtime-tested reference: **S1.40** - `Profiles/LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z`.
 
-S1.39 was run in game on 2026-09-02. The S1.39 compatibility DLL loaded correctly, but natural CodeRebirth Coins and Wallets still spawned in the dungeon. No Flash Turret was observed by the user in that run, which is positive but not sufficient to prove deterministic suppression. S1.40 changes the spawn authority directly at CodeRebirth/DawnLib config level.
+S1.40 was run in game on 2026-09-02 and failed acceptance. The cumulative S1.39 compatibility DLL loaded, but a Flash Turret was still observed. The post-run `CodeRebirth.cfg` proved the intended S1.40 overrides did not survive startup: `Clean Unusued Configs = true`, `Flash Turret | Is Inside Hazard = true`, and Currency moon curves had returned to positive defaults.
 
-## Critical S1.40 import requirement
+S1.40A is an isolated config-retention fix. It keeps the exact S1.40 package/mod architecture and changes only the existing `BepInEx/config/CodeRebirth.cfg`.
 
-S1.40 still embeds the cumulative project-local S1.39 compatibility DLL. When importing the `.r2z` in Gale, enable:
+## Critical S1.40A import requirement
 
-**Advanced options -> Import all files**
+Use Gale **Advanced options -> Import all files**.
 
-Expected BepInEx marker:
-
-- `S1.39 Compatibility Fixes loaded.`
-
-If that marker is absent, import this local mod separately:
-
-`Patches/S139CompatibilityFixes/Tendas-S139CompatibilityFixes-1.0.0.zip`
-
-The local DLL is unchanged in S1.40; the S1.40 delta is config-only.
+Expected marker: `S1.39 Compatibility Fixes loaded.`
 
 ## ChatGPT - read first
 
@@ -34,58 +26,58 @@ The local DLL is unchanged in S1.40; the S1.40 delta is config-only.
 4. `Current/02_TECHNICAL_BASELINE.md`
 5. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
 6. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-7. `Current/06_RECENT_WORK_S1.32-S1.40.md`
+7. `Current/06_RECENT_WORK_S1.32-S1.40A.md`
 8. `Current/03_PROJECT_CHRONOLOGY.md`
-9. `Current/Projektstatus_S1.40.json`
-10. `Current/Aktive_Modliste_S1.40.txt`
-11. `Current/S1.40_BUILD_VERIFICATION.txt`
-12. `Current/VERIFIKATION_S1.40.txt`
-13. `Current/DATEIINVENTAR_S1.40.txt`
-14. `Current/SHA256SUMS_S1.40.txt`
+9. `Current/Projektstatus_S1.40A.json`
+10. `Current/Aktive_Modliste_S1.40A.txt`
+11. `Current/S1.40A_BUILD_VERIFICATION.txt`
+12. `Current/VERIFIKATION_S1.40A.txt`
+13. `Current/DATEIINVENTAR_S1.40A.txt`
+14. `Current/SHA256SUMS_S1.40A.txt`
 
-Then inspect `Profiles/`, `Patches/`, `Logs/`, `References/`, and `Current/HumanReadable/` according to the task.
+## Exact S1.40A delta
 
-## What S1.40 changes
+Base: `Profiles/LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z`
 
-S1.40 is built directly from the verified S1.39 archive and adds exactly one profile member:
+Exactly one existing ZIP member is replaced:
 
 `BepInEx/config/CodeRebirth.cfg`
 
-Native DawnLib/CodeRebirth inside spawning is disabled for:
+```ini
+[General]
 
-- Coin
-- Crisp Dollar Bill
-- Wallet
-- Flash Turret
+Clean Unusued Configs = false
 
-Currency items remain registered. The existing CodeRebirth merchant, denomination analyzer, vending and enemy-drop systems are not intentionally removed. Flash Turret is disabled as an inside hazard at the native config source.
+[Merchant Options]
 
-The S1.39 compatibility plugin remains unchanged and continues to provide ship-door anti-lockout, complete EnemyScan output, older currency/map-object defensive filters, Flash Turret defensive filtering and the CodeRebirth utility-kill Pikmin/Puffmin shield.
+Coin | Inside Moon Spawn Weights =
+Coin | Inside Interior Spawn Weights =
+Crisp Dollar Bill | Inside Moon Spawn Weights =
+Crisp Dollar Bill | Inside Interior Spawn Weights =
+Wallet | Inside Moon Spawn Weights =
+Wallet | Inside Interior Spawn Weights =
+
+[FlashTurret Options]
+
+Flash Turret | Is Inside Hazard = false
+Flash Turret | Inside Moon Spawn Weights =
+Flash Turret | Inside Interior Spawn Weights =
+```
+
+Do not change `Money | Enemy Drop Rates`.
 
 ## Persistent decisions
 
-- **Malfunctions stays disabled** until the user explicitly requests reactivation.
-- **ProjectSCP-SCP999 stays disabled.**
-- AJB-Keep_hangar_ship_door_closed stays disabled while the local door failsafe is used.
-- **BCMER stays disabled during S1.40 acceptance.** Reactivation remains a later isolated audit.
+- Malfunctions stays disabled until explicitly requested.
+- ProjectSCP-SCP999 stays disabled.
+- AJB Keep hangar ship door closed stays disabled while the local failsafe is active.
+- BCMER 1.71.0 stays disabled until S1.40A passes; do not upgrade to BCMER 2.0.0 during planned reactivation.
 - Observer and Don't Touch Me stay disabled.
-- Leaf Boy remains in the LethalMin Attack Blacklist.
-- Mirage `neverDeleteRecordings=true` remains desired; profile import of this game-root setting is not considered reliable.
-- Unknown enemy PowerLevels must never be guessed.
-- CodeRebirthLib must not be reintroduced.
+- CodeRebirthLib must not return.
+- Unknown Enemy PowerLevels are never guessed.
 
-## Runtime distinction
+## Roadmap
 
-**Runtime-tested:** S1.39.
+**S1.40A test -> if Currency + Flash Turret pass -> S1.41 BCMER 1.71.0 isolated reactivation -> S1.41 test -> S1.42A interior config seed -> collect generated config/log -> S1.42 tuned interior build.**
 
-Confirmed: S1.39 compatibility plugin loaded. Natural Coins and Wallets were still present, so the S1.39 currency cleanup is a confirmed failed approach for the natural DawnLib map-object path. Flash Turrets were not observed in the user run but require deterministic retest.
-
-**Build-tested only:** S1.40.
-
-S1.40 archive structure and critical config delta are verified. Runtime acceptance remains open.
-
-## Priority rule
-
-The chronologically newest confirmed information overrides older assumptions. Runtime evidence overrides package-manifest assumptions when they disagree.
-
-`Archive/` is historical reference material and must not override a newer confirmed state unless current documentation explicitly points back to it.
+Newest confirmed runtime evidence overrides older assumptions. `Archive/` is historical only.

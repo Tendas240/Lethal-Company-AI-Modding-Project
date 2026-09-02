@@ -1,0 +1,23 @@
+S1.40 RUNTIME AUSWERTUNG - 2026-09-02
+
+Profile:
+LC V1 S1.40 Native Currency Flash Turret Cleanup
+
+Result:
+FAILED ACCEPTANCE.
+
+Observed by user:
+- Earlier run: Wallet and Flash Turret found.
+- Later additional runs: Flash Turret found; Coins/Wallets not visually found in those runs.
+
+Runtime evidence:
+- S1.39 Compatibility Fixes loaded, so the embedded local DLL was active.
+- CodeRebirth logged "Cleaning config".
+- Currency clone instances (Coin/DollarBill/Wallet) were present in runtime logs, so visual absence alone cannot prove suppression.
+- Post-run CodeRebirth.cfg showed:
+  Clean Unusued Configs = true
+  Flash Turret | Is Inside Hazard = true
+  positive Coin/Crisp Dollar Bill/Wallet inside moon curves
+
+Conclusion:
+The intended S1.40 sparse config overrides did not survive startup/config cleanup. S1.40 is not accepted. The next isolated fix is S1.40A: keep all suppression values and set Clean Unusued Configs=false. Do not reactivate BCMER until S1.40A passes.

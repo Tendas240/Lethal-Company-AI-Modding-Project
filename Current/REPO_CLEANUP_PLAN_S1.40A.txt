@@ -1,0 +1,35 @@
+REPO CLEANUP PLAN S1.40A
+Stand: 2026-09-02
+
+KEEP
+- S1.40 profile as latest runtime-tested failed reference.
+- S1.39 profile and diagnostic history.
+- S139CompatibilityFixes source/package unchanged.
+- Existing Logs/ and References/ with diagnostic value.
+- Historical versioned S1.40 Current files.
+
+UPDATE
+- README.md
+- Current/00_CURRENT_STATE.md
+- Current/01_HANDOVER_CORE.md
+- Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+
+ADD
+- Profiles/LC V1 S1.40A CodeRebirth Config Cleanup Fix.r2z
+- Current/06_RECENT_WORK_S1.32-S1.40A.md
+- Current/Projektstatus_S1.40A.json
+- Current/Aktive_Modliste_S1.40A.txt
+- Current/S1.40A_BUILD_VERIFICATION.txt
+- Current/VERIFIKATION_S1.40A.txt
+- Current/DATEIINVENTAR_S1.40A.txt
+- Current/SHA256SUMS_S1.40A.txt
+- Current/NEXT_CHAT_START_PROMPT_S1.40A.txt
+- Current/README_Handover_S1.40A.txt
+- Current/REPO_CLEANUP_PLAN_S1.40A.txt
+- Logs/S1.40_Run_Auswertung_2026-09-02.txt
+
+ARCHIVE
+- None required.
+
+DELETE
+- None.

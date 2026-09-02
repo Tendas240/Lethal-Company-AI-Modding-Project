@@ -1,0 +1,21 @@
+VERIFIKATION S1.40A
+Stand: 2026-09-02
+
+[PASS] Build derives from exact S1.40 profile SHA f117cd1c6e234ed280ce8a55ca696ce26d3e14c8b20357ee3714919c5ebbac78.
+[PASS] ZIP entry count remains 330.
+[PASS] Only BepInEx/config/CodeRebirth.cfg is intentionally replaced.
+[PASS] Clean Unusued Configs=false is present.
+[PASS] Currency inside moon/interior weights remain blank.
+[PASS] Flash Turret Is Inside Hazard=false and inside weights remain blank.
+[PASS] S139CompatibilityFixes unchanged.
+[PASS] Thunderstore manifest unchanged: 179 / 173 active / 6 disabled.
+[PASS] Profile SHA-256: ab894ead158941d6f9d6c3463baab51c65486ebf6d40df8b2325fca626d966a5
+
+[RUNTIME PENDING]
+- valid Gale all-files import;
+- no natural Coin / Crisp Dollar Bill / Wallet;
+- no natural Flash Turret;
+- post-run config still contains S1.40A values;
+- preserve full LogOutput.log.
+
+Latest runtime-tested state: S1.40 (failed acceptance).

@@ -1,34 +1,36 @@
 # 04 — Open Issues and Next Tests
 
-## Highest priority — S1.40 runtime acceptance
+## Highest priority — S1.40A runtime acceptance
 
-### 1. Plugin carry-forward
-Confirm startup contains `S1.39 Compatibility Fixes loaded.`. If missing, the import is invalid for the cumulative DLL features.
+### 1. Valid import
+Use Gale **Advanced options -> Import all files** and confirm:
+`S1.39 Compatibility Fixes loaded.`
 
-### 2. Native currency cleanup
-Primary S1.40 acceptance test:
-- no naturally generated Coin in dungeon;
-- no naturally generated Crisp Dollar Bill in dungeon;
-- no naturally generated Wallet in dungeon.
-
-Currency obtained through intended CodeRebirth systems is not automatically a failure. The target is natural inside map-object generation.
+### 2. Currency
+No naturally generated Coin, Crisp Dollar Bill or Wallet inside the dungeon. Currency from intended CodeRebirth enemy-drop/merchant/vending systems is not automatically a failure.
 
 ### 3. Flash Turret
-Confirm no naturally generated Flash Turret. S1.39 had no user-observed Flash Turret, but one run was not enough to prove suppression.
+No naturally generated Flash Turret.
 
-### 4. Other S1.39 checks still open
+### 4. Post-run config retention
+After exiting the test, inspect `BepInEx/config/CodeRebirth.cfg`. It must still contain:
+- `Clean Unusued Configs = false`
+- blank Coin/Bill/Wallet inside moon/interior weights
+- `Flash Turret | Is Inside Hazard = false`
+- blank Flash Turret inside weights
+
+If these values survive but objects still naturally spawn, stop config iteration and patch the real DawnLib runtime spawn path instead.
+
+## Other carry-forward checks
+
 - Ogopogo absent.
-- Vermin companion mechanic absent.
-- Autonomous Crane cannot kill Pikmin/Puffmin through the CodeRebirth utility-kill RPC path.
+- Vermin absent.
+- Autonomous Crane cannot kill Pikmin/Puffmin through the CodeRebirth utility-kill path.
 - GeneralImprovements recharge station performs desired full heal.
-- 2560x1440 carry-forward remains correct.
-- Old Bird Lethal Resonance can be validated during a real encounter.
-- Mirage `neverDeleteRecordings=true` should be checked after import and set manually in Main Menu/LethalConfig if it reverted.
+- FixCameraResolution 2560x1440 remains correct.
+- Old Bird Resonance encounter validation remains open.
+- Mirage `neverDeleteRecordings=true` may require manual Main Menu/LethalConfig check.
 
-## Confirmed failed approach
+## After S1.40A acceptance
 
-S1.39 filtering of `SelectableLevel.indoorMapHazards` / legacy `spawnableMapObjects` around `RoundManager.SpawnMapObjects` did not stop natural CodeRebirth Coins/Wallets even though the plugin loaded. Do not treat additional naming heuristics in that same late filter as the preferred next fix.
-
-## After S1.40 acceptance
-
-BCMER may be reintroduced only as a separate isolated build/re-audit. Do not combine BCMER reactivation with S1.40 acceptance.
+Build **S1.41** with exact existing BCMER 1.71.0, all four BCMER rain-related events disabled and spawn ownership constrained.
