@@ -1,98 +1,80 @@
 # 04 — Open Issues and Next Tests
 
-## Highest priority — S1.41 runtime acceptance
+## Highest priority — S1.42A Interior Config Seed
 
-### 1. Valid import
+S1.41 is accepted.
 
-Import:
+Next isolated stage:
+**S1.42A Interior Config Seed**
 
-`Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
+Purpose:
+- install the eight binding interior packages;
+- avoid speculative deep tuning;
+- allow LLL/JLL/DawnLib/content mods to generate their real config sections and IDs;
+- collect actual CullFactory identifiers and dependency/runtime behavior.
 
-SHA-256:
+Use the exact binding package list and rules in:
+`Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
 
-`d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
+## S1.42A runtime procedure
 
-Use Gale:
+After importing the generated S1.42A profile with Gale:
 
 **Advanced options -> Import all files**
 
-Confirm:
-- `S1.39 Compatibility Fixes loaded.`
-- BCMER exact version 1.71.0 loads.
+then:
+1. reach Main Menu;
+2. host/load a save;
+3. land on at least one normal moon;
+4. allow a dungeon to actually generate;
+5. exit game.
 
-### 2. BCMER version and event operation
-
-Expected:
-- `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0` active;
-- BCMER 2.0.0 absent;
-- ordinary BCMER events may occur;
-- no severe startup, landing, lever-pull, event-selection or networking regression.
-
-### 3. Spawn/power ownership
-
-Post-run `CoreProperties.cfg` must retain:
-
-```ini
-Experimental Dont Handle Power? = true
-Experimental Dont Handle Spawn Chance? = true
-Let Brutal handle properties outside of events? = false
-Enable Randomizer? = false
-```
-
-BCMER may modify gameplay as part of an event. It must not silently become the permanent owner of established spawn/power architecture outside events.
-
-### 4. Rain-event suppression
-
-The following BCMER event sections must remain disabled after runtime:
-- `Raining`
-- `HeavyRain`
-- `AllWeather`
-- `Hurricane`
-
-This does not disable vanilla Rainy weather.
-
-### 5. S1.40B regression guard
-
-Continue checking:
-- no natural Coin / Crisp Dollar Bill / Wallet in the dungeon;
-- no natural Flash Turret;
-- CodeRebirth post-run editing-gate/suppression values remain intact.
-
-### 6. Runtime evidence upload
-
-After the S1.41 test, upload runtime evidence through GitHub:
-
+Then upload to:
 `RuntimeInbox/Current/`
 
-Preferred:
+Preferred evidence:
+- complete `BepInEx/config/` directory as ZIP;
 - full `LogOutput.log`;
-- complete `BepInEx/config/BrutalCompanyMinusExtraReborn/` as ZIP;
-- `CodeRebirth.cfg` if a Currency/Flash-Turret regression is suspected;
-- screenshots only when they document a meaningful runtime observation.
+- screenshots only for meaningful visual/runtime failures.
 
-The ingestion workflow will hash, preserve and extract the evidence under `RuntimeEvidence/S1.41/<timestamp>/`.
+## New open issue — Mineshaft elevator + Pikmin crowding
 
-## Other carry-forward checks
+Observed once in S1.41:
+- many Pikmin were in the Mineshaft elevator with the player;
+- player clipped through the elevator floor while descending;
+- player died from fall damage;
+- nearby log window contains many NavMesh-agent creation failures.
 
-When naturally encountered:
-- Ogopogo absent.
-- Vermin absent.
-- Autonomous Crane cannot kill Pikmin/Puffmin through CodeRebirth utility-kill path.
-- GeneralImprovements recharge station performs desired full heal.
-- Old Bird Resonance replacement set works in a real encounter.
+Current interpretation:
+- real runtime issue worth tracking;
+- not yet reproducible/proven;
+- no evidence BCMER caused it;
+- no proof yet that Pikmin collision physically pushed the player through the floor.
+
+During future interior/elevator tests, specifically watch:
+- large Pikmin groups entering moving elevators;
+- player floor clipping;
+- Pikmin NavMesh/agent failures during elevator movement.
+
+## Carry-forward regression guards
+
+Continue checking when naturally encountered:
+- no natural Coin / Crisp Dollar Bill / Wallet;
+- no natural Flash Turret;
+- BCMER 1.71.0 stays pinned until a deliberate future migration;
+- BCMER rain routes remain disabled;
+- Ogopogo absent;
+- Vermin absent;
+- Autonomous Crane cannot kill Pikmin/Puffmin through CodeRebirth utility-kill path;
+- GeneralImprovements recharge station performs desired full heal;
+- Old Bird Resonance replacement works in a real encounter;
 - Mirage `neverDeleteRecordings=true` remains active after import.
 
 ## Do not do yet
 
-Until S1.41 passes:
-- do not start the interior expansion;
+During S1.42A:
 - do not upgrade BCMER to 2.0.0;
-- do not fabricate interior config IDs/sections in advance.
-
-## After S1.41 acceptance
-
-Follow exactly:
-
-**S1.42A Interior Config Seed -> run/host/land/generate -> collect config + log -> tune -> S1.42.**
-
-Details: `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`.
+- do not fabricate interior IDs;
+- do not normalize/tune guessed interior weights before generated configs exist;
+- do not guess CullFactory identifiers;
+- do not mix unrelated gameplay balancing into the config-seed build.
