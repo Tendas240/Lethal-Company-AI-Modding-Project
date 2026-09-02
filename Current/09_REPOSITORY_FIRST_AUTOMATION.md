@@ -63,18 +63,18 @@ Binary `.r2z`, `.zip`, and `.dll` artifacts may not be directly UTF-8-readable t
 
 Binary manipulation should happen inside GitHub Actions, where repository checkout provides byte-accurate access.
 
-## One-time migration
+## One-time migration — complete
 
-At the time this policy was introduced, the exact accepted S1.40B and newly built S1.41 binaries existed only on the user's PC.
+The local-only gap has been closed.
 
-A one-time upload of the exact current S1.41 profile into `Profiles/` is required before the repository-only build chain can become fully self-contained.
+Exact accepted S1.40B and canonical S1.41 were uploaded to `Profiles/` and automatically verified/indexed by GitHub Actions.
 
-Current expected S1.41 file:
+Verified online profiles:
+- `Profiles/LC V1 S1.40B CodeRebirth Editing Gate Fix.r2z` — SHA-256 `fd303f73f0f2223a6375fcf2b7ed209dae77e1934e3b4e8139932a89e7de7eb9`
+- `Profiles/LC V1 S1.41 BCMER Reactivation.r2z` — SHA-256 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-`Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
+Readable snapshots:
+- `ProfileSources/S1.40B/`
+- `ProfileSources/S1.41/`
 
-Expected SHA-256:
-
-`d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
-
-After this one-time migration, future build generation must default to GitHub-only automation.
+Future profile generation must default to GitHub-only automation. A local build chain is no longer required.
