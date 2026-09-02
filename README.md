@@ -41,7 +41,18 @@ A new ChatGPT conversation should use the machine-readable repository content in
 11. Current/S1.36_BUILD_VERIFICATION.txt
 12. Current/VERIFIKATION_S1.36.txt
 
-Then inspect Profiles/, Patches/, Logs/, and References/ according to the task.
+Then inspect Profiles/, Patches/, Logs/, References/, and Current/HumanReadable/ according to the task.
+
+## Human-readable S1.36 handover
+
+Current/HumanReadable/ contains secondary DOCX/PDF versions for human reading:
+
+- Handover-Prompt_Lethal-Company_bis_S1.36
+- Handover-Prompt_S1.36_Aktueller-Kern
+- Lethal-Company_Chatverlauf_Handover_bis_S1.36
+- Lethal-Company_Projektchronik_Kompakt_bis_S1.36
+
+These are convenience copies. The Markdown/TXT/JSON files under Current/ remain the primary machine-readable sources for ChatGPT.
 
 ## Current key decisions
 
@@ -57,7 +68,7 @@ Then inspect Profiles/, Patches/, Logs/, and References/ according to the task.
 
 .md, .txt, and .json files are the **primary machine-readable handover sources**.
 
-Historical S1.31 PDF/DOCX documents are archived under Archive/S1.31/HumanReadable/ instead of being left under Current/.
+Historical S1.31 PDF/DOCX documents are archived under Archive/S1.31/HumanReadable/.
 
 A GitHub PDF viewer failure must not block project takeover when equivalent machine-readable sources exist.
 
@@ -67,7 +78,7 @@ https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/ma
 
 ## Repository structure
 
-- Current/ — current machine-readable state and metadata
+- Current/ — current machine-readable state, metadata, and secondary HumanReadable documents
 - Profiles/ — current and still-relevant Gale/r2modman .r2z profiles
 - Patches/ — project-local compatibility source and installable local-mod packages
 - Logs/ — runtime logs and diagnostic summaries

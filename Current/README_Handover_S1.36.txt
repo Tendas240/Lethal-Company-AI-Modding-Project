@@ -48,3 +48,12 @@ PERSISTENTE ENTSCHEIDUNGEN
 
 ARCHIV
 Die vorherigen S1.31-Current-Metadaten und HumanReadable-Dokumente liegen unter Archive/S1.31/.
+
+HUMAN-READABLE S1.36
+Current/HumanReadable/ enthaelt aktuelle DOCX/PDF-Komfortfassungen:
+- Handover-Prompt_Lethal-Company_bis_S1.36
+- Handover-Prompt_S1.36_Aktueller-Kern
+- Lethal-Company_Chatverlauf_Handover_bis_S1.36
+- Lethal-Company_Projektchronik_Kompakt_bis_S1.36
+
+Diese Dateien sind sekundaer. Primaer fuer ChatGPT bleiben die Markdown/TXT/JSON-Dateien unter Current/.

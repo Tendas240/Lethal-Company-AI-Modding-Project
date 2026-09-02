@@ -1,7 +1,7 @@
 LETHAL COMPANY REPOSITORY FILE INVENTORY - S1.36
 Generated: 2026-09-02
 
-Excludes: .git, temporary S1.34-retention workflow, this inventory file and SHA256SUMS_S1.36.txt.
+Excludes: .git, temporary S1.36 human-readable generation files, this inventory file and SHA256SUMS_S1.36.txt.
 
     39270843  Archive/S1.24/Diagnose/LogOutput_S1.23_LastTest.log
        52871  Archive/S1.24/Dokumentation/Handover-Prompt_Lethal-Company_bis_S1.24.docx
@@ -37,8 +37,16 @@ Excludes: .git, temporary S1.34-retention workflow, this inventory file and SHA2
         3411  Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
         7075  Current/06_RECENT_WORK_S1.32-S1.36.md
         9891  Current/Aktive_Modliste_S1.36.txt
+       57885  Current/HumanReadable/Handover-Prompt_Lethal-Company_bis_S1.36.docx
+      447193  Current/HumanReadable/Handover-Prompt_Lethal-Company_bis_S1.36.pdf
+       45741  Current/HumanReadable/Handover-Prompt_S1.36_Aktueller-Kern.docx
+      205373  Current/HumanReadable/Handover-Prompt_S1.36_Aktueller-Kern.pdf
+       45186  Current/HumanReadable/Lethal-Company_Chatverlauf_Handover_bis_S1.36.docx
+      173905  Current/HumanReadable/Lethal-Company_Chatverlauf_Handover_bis_S1.36.pdf
+       41823  Current/HumanReadable/Lethal-Company_Projektchronik_Kompakt_bis_S1.36.docx
+      102868  Current/HumanReadable/Lethal-Company_Projektchronik_Kompakt_bis_S1.36.pdf
         4212  Current/Projektstatus_S1.36.json
-        1764  Current/README_Handover_S1.36.txt
+        2140  Current/README_Handover_S1.36.txt
         1135  Current/S1.36_BUILD_VERIFICATION.txt
         1611  Current/VERIFIKATION_S1.36.txt
      2435082  Logs/LogOutput_S1.29D_EnemyPowerAudit_2026-09-01.log
@@ -59,7 +67,7 @@ Excludes: .git, temporary S1.34-retention workflow, this inventory file and SHA2
       538788  Profiles/LC V1 S1.31 Indoor Power Trim -4.r2z
       549464  Profiles/LC V1 S1.34 Malfunctions Disabled.r2z
       552554  Profiles/LC V1 S1.36 Handover Clean Baseline.r2z
-        4002  README.md
+        4451  README.md
       504720  References/Spawn-Rates/Adamance.png
       722094  References/Spawn-Rates/Assurance.png
       735170  References/Spawn-Rates/Experimentation.png
