@@ -1,0 +1,193 @@
+name: Build S1.36 handover baseline
+on:
+  push:
+    branches: [handover-s136]
+    paths:
+      - ".github/workflows/build-s136-handover.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: handover-s136
+          fetch-depth: 0
+
+      - name: Fetch S1.35 build source
+        run: |
+          git fetch origin chatgpt-s135-build:refs/remotes/origin/chatgpt-s135-build
+
+      - name: Materialize S1.36 profile and permanent patch package
+        shell: python
+        run: |
+          import hashlib
+          import json
+          import os
+          import subprocess
+          import zipfile
+
+          def git_show(path, binary=False):
+              data = subprocess.check_output(["git", "show", f"origin/chatgpt-s135-build:{path}"])
+              return data if binary else data.decode("utf-8")
+
+          src = "/tmp/s135.r2z"
+          dst = "Profiles/LC V1 S1.36 Handover Clean Baseline.r2z"
+          os.makedirs("Profiles", exist_ok=True)
+
+          with open(src, "wb") as f:
+              f.write(git_show("Profiles/LC V1 S1.35 Door + Complete Enemy Scan.r2z", binary=True))
+
+          tmp = dst + ".tmp"
+          changed = []
+          with zipfile.ZipFile(src, "r") as zin, zipfile.ZipFile(tmp, "w") as zout:
+              for info in zin.infolist():
+                  data = zin.read(info.filename)
+                  new_data = data
+                  if info.filename == "export.r2x":
+                      text = data.decode("utf-8-sig")
+                      lines = text.splitlines()
+                      if not lines or not lines[0].startswith("profileName:"):
+                          raise RuntimeError("Unexpected export.r2x profileName layout")
+                      lines[0] = "profileName: LC V1 S1.36 Handover Clean Baseline"
+
+                      current = None
+                      found = False
+                      for i, line in enumerate(lines):
+                          if line.startswith("- name: "):
+                              current = line[len("- name: "):].strip()
+                              continue
+                          if current == "ProjectSCP-SCP999" and line.strip().startswith("enabled:"):
+                              indent = line[:len(line) - len(line.lstrip())]
+                              lines[i] = indent + "enabled: false"
+                              found = True
+                              current = None
+
+                      if not found:
+                          raise RuntimeError("ProjectSCP-SCP999 manifest entry not found")
+
+                      new_data = ("\n".join(lines) + "\n").encode("utf-8")
+                      changed.append(info.filename)
+
+                  zout.writestr(info, new_data)
+
+          os.replace(tmp, dst)
+
+          # Copy the S1.35/S1.36 local patch source/package into a permanent repo location.
+          patch_dir = "Patches/S135CompatibilityFixes"
+          os.makedirs(patch_dir, exist_ok=True)
+          source_files = [
+              "NuGet.Config",
+              "Plugin.cs",
+              "README.md",
+              "S135CompatibilityFixes.csproj",
+              "manifest.json",
+          ]
+          for name in source_files:
+              text = git_show(f"S135CompatibilityFixes/{name}")
+              with open(os.path.join(patch_dir, name), "w", encoding="utf-8", newline="") as f:
+                  f.write(text)
+
+          patch_zip = os.path.join(patch_dir, "Tendas-S135CompatibilityFixes-1.0.0.zip")
+          with open(patch_zip, "wb") as f:
+              f.write(git_show("Tendas-S135CompatibilityFixes-1.0.0.zip", binary=True))
+
+          # Validate profile content and exact intended delta.
+          with zipfile.ZipFile(src, "r") as a, zipfile.ZipFile(dst, "r") as b:
+              if a.namelist() != b.namelist():
+                  raise RuntimeError("Archive member list changed")
+              for name in a.namelist():
+                  if name != "export.r2x" and a.read(name) != b.read(name):
+                      raise RuntimeError(f"Unexpected archive member change: {name}")
+
+              export_text = b.read("export.r2x").decode("utf-8-sig")
+              if not export_text.startswith("profileName: LC V1 S1.36 Handover Clean Baseline\n"):
+                  raise RuntimeError("Profile name verification failed")
+
+              # Minimal YAML-like manifest parsing without third-party dependencies.
+              mods = []
+              current = None
+              for line in export_text.splitlines():
+                  if line.startswith("- name: "):
+                      if current is not None:
+                          mods.append(current)
+                      current = {"name": line[len("- name: "):].strip()}
+                  elif current is not None and line.strip().startswith("enabled:"):
+                      current["enabled"] = line.strip().split(":", 1)[1].strip().lower() == "true"
+              if current is not None:
+                  mods.append(current)
+
+              disabled = [m["name"] for m in mods if not m.get("enabled", False)]
+              expected_disabled = {
+                  "AJB-Keep_hangar_ship_door_closed",
+                  "zealsprince-Malfunctions",
+                  "Reiko88-Observer",
+                  "ProjectSCP-SCP999",
+                  "Kittenji-Dont_Touch_Me",
+                  "SoftDiamond-BrutalCompanyMinusExtraReborn",
+              }
+              if len(mods) != 176 or sum(1 for m in mods if m.get("enabled")) != 170 or set(disabled) != expected_disabled:
+                  raise RuntimeError(f"Unexpected manifest state: total={len(mods)}, active={sum(1 for m in mods if m.get('enabled'))}, disabled={disabled}")
+
+              lm = b.read("BepInEx/config/NoteBoxz.LethalMin.cfg").decode("utf-8-sig")
+              attack_line = next((x for x in lm.splitlines() if x.strip().lower().startswith("attack blacklist")), "")
+              if "leaf boy" not in attack_line.lower():
+                  raise RuntimeError("Leaf boy blacklist regression")
+
+              mirage = json.loads(b.read("Mirage/settings.json").decode("utf-8"))
+              if mirage.get("neverDeleteRecordings") is not True:
+                  raise RuntimeError("Mirage neverDeleteRecordings regression")
+
+              plugin_path = "BepInEx/plugins/Tendas-S135CompatibilityFixes/S135CompatibilityFixes.dll"
+              if plugin_path not in b.namelist():
+                  raise RuntimeError("S135 compatibility DLL missing from S1.36")
+
+          profile_sha = hashlib.sha256(open(dst, "rb").read()).hexdigest()
+          patch_sha = hashlib.sha256(open(patch_zip, "rb").read()).hexdigest()
+
+          report = [
+              "S1.36 handover baseline verification",
+              "Generated: 2026-09-02",
+              f"Source: S1.35 profile from chatgpt-s135-build",
+              f"Output: {dst}",
+              "",
+              "Intended delta from S1.35:",
+              "- profileName updated to LC V1 S1.36 Handover Clean Baseline",
+              "- ProjectSCP-SCP999 set enabled: false",
+              "- no other archive member changed",
+              "",
+              "Verified carried-forward state:",
+              "- 176 manifest entries / 170 active / 6 disabled",
+              "- AJB-Keep_hangar_ship_door_closed disabled",
+              "- zealsprince-Malfunctions disabled",
+              "- ProjectSCP-SCP999 disabled",
+              "- Reiko88-Observer disabled",
+              "- Kittenji-Dont_Touch_Me disabled",
+              "- SoftDiamond-BrutalCompanyMinusExtraReborn disabled",
+              "- Leaf boy remains in LethalMin Attack Blacklist",
+              "- Mirage neverDeleteRecordings remains true",
+              "- S135CompatibilityFixes.dll remains embedded",
+              "",
+              "Gale import requirement:",
+              "- Use Advanced options -> Import all files, otherwise the embedded local DLL may be skipped.",
+              "- Fallback local-mod ZIP is stored under Patches/S135CompatibilityFixes/.",
+              "",
+              f"Profile SHA-256: {profile_sha}",
+              f"Local patch ZIP SHA-256: {patch_sha}",
+          ]
+          os.makedirs("Current", exist_ok=True)
+          with open("Current/S1.36_BUILD_VERIFICATION.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(report) + "\n")
+
+          print("\n".join(report))
+
+      - name: Commit generated handover artifacts
+        run: |
+          git config user.name "chatgpt-handover"
+          git config user.email "chatgpt-handover@users.noreply.github.com"
+          git add "Profiles/LC V1 S1.36 Handover Clean Baseline.r2z" Patches/S135CompatibilityFixes Current/S1.36_BUILD_VERIFICATION.txt
+          git commit -m "Add S1.36 handover baseline and compatibility patch"
+          git push origin handover-s136
