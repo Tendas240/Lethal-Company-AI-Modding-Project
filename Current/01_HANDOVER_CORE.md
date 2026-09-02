@@ -5,9 +5,9 @@
 - Canonical candidate: **S1.41**
 - Profile: `Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
 - SHA-256: `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
-- Latest runtime-tested state: **S1.40B**
+- Latest runtime-tested state: **S1.41**
 - S1.40B status: **accepted**
-- S1.41 status: build/hash/archive/index verified; runtime pending
+- S1.41 status: **accepted**
 - Game: Lethal Company V81
 
 ## Critical recent lineage
@@ -124,17 +124,19 @@ Binding policy: `Current/09_REPOSITORY_FIRST_AUTOMATION.md`.
 
 ## Binding roadmap
 
-**S1.41 runtime test -> S1.42A interior config seed -> runtime config generation -> config/log collection -> S1.42 tuned interior candidate.**
+**S1.41 accepted -> S1.42A interior config seed -> runtime config generation -> config/log collection -> S1.42 tuned interior candidate.**
 
 See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`.
 
-## Current acceptance gate
+## S1.41 acceptance result
 
-S1.41 acceptance requires:
-- exact BCMER 1.71.0 loads;
-- BCMER 2.0.0 absent;
-- no severe startup/event regression;
-- four rain-event routes stay disabled;
-- BCMER ownership guard values survive runtime;
-- no regression of S1.40B Currency/Flash-Turret suppression;
-- full runtime evidence preserved online.
+Accepted. Runtime evidence is persisted under `RuntimeEvidence/S1.41/20260902T215804Z/`.
+
+Confirmed:
+- exact BCMER 1.71.0 loaded and ran events;
+- four BCMER rain routes remained disabled post-run;
+- ownership-guard values survived post-run;
+- S1.40B CodeRebirth Currency/Flash-Turret suppression survived;
+- no severe BCMER regression was observed.
+
+New separate issue: Mineshaft elevator + large Pikmin group may trigger NavMesh/collision instability and a player fall-through. Track independently; do not attribute to BCMER without evidence.
