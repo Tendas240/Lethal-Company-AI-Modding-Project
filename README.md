@@ -14,6 +14,12 @@ Latest runtime-tested state: **S1.41 — accepted**.
 
 S1.40B fixed the CodeRebirth/DawnLib editing gate for natural Currency and Flash Turret suppression. S1.41 reactivated BCMER 1.71.0 under the ownership/rain-event guard and is runtime-accepted.
 
+S1.42A candidate build:
+- `Profiles/LC V1 S1.42A Interior Config Seed.r2z`
+- SHA-256 `70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
+- GitHub-Actions build verified
+- **not runtime-accepted yet**; accepted gameplay baseline remains S1.41
+
 ## Critical import requirement
 
 Use Gale:
@@ -90,7 +96,7 @@ Natural vanilla Rainy weather remains allowed.
 
 **S1.41 accepted -> S1.42A Interior Config Seed -> run/host/land/generate -> collect generated config + LogOutput through RuntimeInbox -> tune -> S1.42 final interior build.**
 
-S1.41 has passed; the next isolated stage is S1.42A.
+S1.42A has now passed automated build QC. The immediate next isolated gate is its runtime config-generation seed run; S1.41 remains the accepted gameplay baseline until that evidence is evaluated.
 
 ## Repository-first automation
 
@@ -137,6 +143,6 @@ Chronologically newer confirmed information overrides older assumptions. Runtime
 
 Repository handover refreshed on **2026-09-03**.
 
-S1.41 is frozen as the accepted baseline. The next binding task is **S1.42A Interior Config Seed**, planned in `BuildSpecs/S1.42A_PLAN.md`.
+S1.41 remains frozen as the accepted baseline. **S1.42A Interior Config Seed is built and automation-verified**; the next binding task is its runtime config-generation seed run, documented in `BuildSpecs/S1.42A_PLAN.md`.
 
 No local repository clone and no local PowerShell profile build is required.
