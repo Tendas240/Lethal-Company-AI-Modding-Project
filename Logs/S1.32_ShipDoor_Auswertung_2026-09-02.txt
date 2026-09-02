@@ -1,0 +1,30 @@
+S1.32 SHIP-DOOR AUSWERTUNG
+Datum: 2026-09-02
+
+BEOBACHTUNG
+Der einzige Spieler verliess das Schiff, ging zum Dungeon und fand bei der Rueckkehr die Hangartuer geschlossen.
+Der Spieler war ausgesperrt.
+
+URSACHE DES PERMANENTEN LOCKOUTS
+AJB-Keep_hangar_ship_door_closed hielt doorPower dauerhaft voll.
+Dadurch konnte nach einem externen/normalen Close die Vanilla-Hydraulik nicht bis 0 herunterzaehlen und die Tuer nicht automatisch wieder oeffnen.
+
+URSACHE DES URSPRUENGLICHEN CLOSE
+Nicht abschliessend bewiesen.
+
+AUSGESCHLOSSEN / NICHT BELEGT
+- BCMER war deaktiviert.
+- Malfunctions zeigte im analysierten Run keinen erfolgreichen relevanten Door-Malfunction.
+- Ein MaskedPlayerEnemy war zeitlich in Schiffnaehe, aber Vanilla-MaskedPlayerEnemy besitzt keine Interaktion mit StartButton, StopButton oder HangarShipDoor.
+- Poltergeist kann tote Spieler/Geister Schiffstuer-Buttons bedienen lassen; das ist eine getrennte Mechanik und kein Masked-Verhalten.
+
+FOLGEENTSCHEIDUNG
+AJB sollte nicht weiter als alleinige permanente Door-Power-Loesung verwendet werden.
+S1.33 begann einen engeren Failsafe:
+- Spieler lebend im Schiff -> Power bei 100%
+- alle lebenden Spieler draussen -> Vanilla-Drain darf laufen
+- DoorAudit fuer kuenftige Attribution
+
+SPAETERE KORREKTUR
+S1.34 bewies, dass die S1.33-Custom-DLL beim normalen Gale-Import gar nicht geladen worden war.
+Die S1.33-Algorithmusidee war daher noch nicht runtime-getestet.

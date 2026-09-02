@@ -1,0 +1,60 @@
+S1.34 RUNTIME-AUSWERTUNG
+Datum: 2026-09-02
+Profil: LC V1 S1.34 Malfunctions Disabled
+
+MALFUNCTIONS
+- Im Profil deaktiviert.
+- Persistente Benutzerentscheidung: deaktiviert lassen, bis der Benutzer explizit Reaktivierung verlangt.
+
+SHIP DOOR
+Test:
+- einziger Spieler im gelandeten Schiff
+- Hangartuer von innen geschlossen
+- Energie sank
+- bei 0% oeffnete die Tuer
+
+Log:
+- kein Load-Eintrag fuer S1.33 Ship Door Failsafe
+- keine [DoorAudit]-Zeilen
+- keine [DoorFailsafe]-Zeilen
+
+Schluss:
+Das war Vanilla-Hangartuerverhalten, weil die eingebettete Custom-DLL beim normalen Gale-Import nicht installiert/geladen wurde und AJB gleichzeitig deaktiviert war.
+Der S1.33-Algorithmus war damit nicht getestet.
+
+Neue Importregel:
+Bei Profilen mit projektlokaler DLL in Gale "Advanced options -> Import all files" aktivieren.
+Wenn Load-Marker fehlen, separates lokales Mod-ZIP installieren.
+
+ENEMYSCAN
+EnemyScan 1.2.1 war aktiv.
+Quellcodepruefung zeigte, dass BuildEnemyCountString() nur EnemyAI mit ScanNodeProperties einbezieht.
+Damit ist der originale "enemies"-Befehl kein vollstaendiger Census aller aktiven EnemyAI.
+
+S1.35/S1.36 patcht nur die Terminal-Ausgabe, damit alle aktiven EnemyAI mit gueltigem EnemyType gelistet werden.
+
+PUMA
+Puma/PumaAI ist der interne Vanilla-Name/die Vanilla-AI fuer Feiopar (V80+), kein eigener Puma-Mod.
+
+COIN
+Coin ist CodeRebirth-Content (code_rebirth:coin).
+Er gehoert zum CodeRebirth-Waehrungssystem:
+- Denomination Analyzer stellt den MoneyCounter bereit
+- Coin-Aktivierung sammelt die Waehrung
+- gespeicherte Waehrung wird in CodeRebirth Merchant/Vending-Systemen genutzt
+
+SCP999
+Trotz alter Dokumentation lud:
+- SCP999 2.4.0
+und warf direkt:
+- NullReferenceException in SCP999.Plugin.Awake()
+
+S1.36 deaktiviert ProjectSCP-SCP999 wieder explizit.
+
+WEITERE WARNUNGEN
+- SellMyScrap: mehrere Method-Processing-Warnungen wegen fehlendem ShipInventoryUpdated 2.0.0.0
+- InjectionLibrary: native Mirage/Opus-DLLs als nicht-.NET uebersprungen
+- CodeRebirth: Weather Registry not found
+- NavMeshInCompany: fehlendes NodeHelper-Script
+
+Diese Warnungen allein rechtfertigen noch keine weitere Profil-Aenderung.
