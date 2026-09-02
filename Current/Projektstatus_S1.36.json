@@ -1,0 +1,128 @@
+{
+  "date": "2026-09-02",
+  "canonical_state": "S1.36",
+  "current_profile": "LC V1 S1.36 Handover Clean Baseline.r2z",
+  "current_profile_runtime_tested": false,
+  "latest_runtime_tested_state": "S1.34",
+  "latest_runtime_tested_profile": "LC V1 S1.34 Malfunctions Disabled",
+  "game": "Lethal Company V81",
+  "manifest_total": 176,
+  "manifest_active": 170,
+  "manifest_disabled": [
+    "AJB-Keep_hangar_ship_door_closed",
+    "zealsprince-Malfunctions",
+    "Reiko88-Observer",
+    "ProjectSCP-SCP999",
+    "Kittenji-Dont_Touch_Me",
+    "SoftDiamond-BrutalCompanyMinusExtraReborn"
+  ],
+  "persistent_user_decisions": {
+    "malfunctions": "disabled until user explicitly requests re-enable",
+    "scp999": "disabled",
+    "bcmer": "disabled, not permanently obsolete",
+    "observer": "disabled",
+    "dont_touch_me": "disabled"
+  },
+  "local_patch": {
+    "name": "S135CompatibilityFixes",
+    "version": "1.0.0",
+    "source_path": "Patches/S135CompatibilityFixes/",
+    "fallback_package": "Patches/S135CompatibilityFixes/Tendas-S135CompatibilityFixes-1.0.0.zip",
+    "embedded_dll": "BepInEx/plugins/Tendas-S135CompatibilityFixes/S135CompatibilityFixes.dll",
+    "gale_import_requirement": "Advanced options -> Import all files",
+    "runtime_load_markers": [
+      "S1.35 Compatibility Fixes loaded",
+      "[EnemyScanFix] Patched EnemyScan to list every active EnemyAI"
+    ],
+    "functions": [
+      "hangar door power stays at 100 percent while a living player is inside the landed ship",
+      "vanilla hangar hydraulic drain is allowed when all living players are outside",
+      "DoorAudit/DoorFailsafe diagnostic logging",
+      "EnemyScan terminal output lists all active EnemyAI regardless of ScanNodeProperties"
+    ]
+  },
+  "mirage": {
+    "localPlayerVolume": 0.5,
+    "neverDeleteRecordings": true,
+    "allowRecordVoice": true,
+    "muteVoiceMimic": false,
+    "settings_path": "<Lethal Company>/Mirage/settings.json",
+    "recording_path": "<Lethal Company>/Mirage/Recording"
+  },
+  "lethalmin": {
+    "leaf_boy_attack_blacklisted": true,
+    "attack_blacklist_append_value": "Leaf boy",
+    "no_knock_back": true,
+    "invinceable_pikmin": true,
+    "pikmin_die_in_player_death_zones": false
+  },
+  "vanilla_indoor_caps": {
+    "Experimentation": 4,
+    "Assurance": 8,
+    "Vow": 10,
+    "Embrion": 12,
+    "Rend": 16,
+    "Dine": 16,
+    "Offense": 20,
+    "Adamance": 22,
+    "Artifice": 22,
+    "Liquidation": 22,
+    "March": 24,
+    "Titan": 32,
+    "Gordion/Company": 0
+  },
+  "custom_indoor_caps": {
+    "EGypt": 20,
+    "PsychSanctum": 18,
+    "Abaddon": 36,
+    "Cabal": 20,
+    "Arcadia": 16,
+    "Argent": 18,
+    "Zenit": 18,
+    "Lament": 10,
+    "Flicker": 14,
+    "Shutter": 0,
+    "Pareidolia": 36,
+    "Vigilance": 18,
+    "Bozoros": 32,
+    "Sanguine": 20,
+    "Spectralis": 22,
+    "The Iris": 36,
+    "Black Mesa": 28,
+    "Oxyde": "not separately controllable in current export"
+  },
+  "confirmed_stable": [
+    "Hold-to-Scan",
+    "Pikmin water resistance",
+    "Company routing and automatic landing",
+    "26 interiors at Weight100",
+    "Flash Turret Pikmin immunity",
+    "Mimics removal",
+    "native spawn ownership for Rolling Giant / Shy Guy / Siren Head"
+  ],
+  "recent_confirmed_facts": [
+    "EnemyScan 1.2.1 original output excludes EnemyAI without ScanNodeProperties",
+    "Puma/PumaAI is vanilla Feiopar",
+    "Coin is CodeRebirth currency collected via Denomination Analyzer",
+    "S1.34 door countdown was vanilla because custom S1.33 DLL never loaded",
+    "SCP999 was accidentally active in current profiles and threw startup NRE; S1.36 disables it"
+  ],
+  "open_powerlevels": [
+    "Rolling Giant",
+    "Siren Head",
+    "Immortal Snail",
+    "Herobrine",
+    "Football",
+    "Faceless Stalker",
+    "CodeRebirth Debt Collector/Boogey Man"
+  ],
+  "next_tests": [
+    "verify S135CompatibilityFixes loads in S1.36",
+    "ship door stays at 100 percent with living player inside",
+    "ship door vanilla drain/open works when all living players are outside",
+    "EnemyScan lists all active EnemyAI",
+    "SCP999 no longer loads or throws NRE",
+    "Leaf boy attack blacklist runtime verification",
+    "Microwave burn immunity for Pikmins"
+  ]
+}
