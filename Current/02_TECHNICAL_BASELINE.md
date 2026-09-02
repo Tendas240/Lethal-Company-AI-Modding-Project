@@ -1,19 +1,23 @@
 # 02 — Technical Baseline
 
-## Current manifest: S1.40A
+## Current canonical manifest: S1.41
 
 Profile:
 
-`Profiles/LC V1 S1.40A CodeRebirth Config Cleanup Fix.r2z`
+`Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
 
 SHA-256:
 
-`ab894ead158941d6f9d6c3463baab51c65486ebf6d40df8b2325fca626d966a5`
+`d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
+
+Status:
+
+**runtime accepted**
 
 Manifest:
 - 179 Thunderstore entries
-- 173 active
-- 6 explicitly disabled
+- 174 enabled
+- 5 explicitly disabled
 - plus one project-local cumulative compatibility plugin
 
 Explicitly disabled:
@@ -22,13 +26,18 @@ Explicitly disabled:
 - Reiko88-Observer 2.0.1
 - ProjectSCP-SCP999 2.4.0
 - Kittenji-Dont_Touch_Me 1.2.8
-- SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0
 
 Exact package list:
 
-`Current/Aktive_Modliste_S1.40A.txt`
+`Current/Aktive_Modliste_S1.41.txt`
 
-## Required local plugin
+Readable exact profile contents:
+
+`ProfileSources/S1.41/`
+
+## Required project-local plugin
+
+Source:
 
 `Patches/S139CompatibilityFixes/`
 
@@ -36,15 +45,11 @@ Fallback package:
 
 `Patches/S139CompatibilityFixes/Tendas-S139CompatibilityFixes-1.0.0.zip`
 
-Fallback package SHA-256:
-
-`ec02f79c56f2f3ce24c8f625be3b51cea68b5a71a2a24d3ac8b4996f02c055c1`
-
 Embedded DLL:
 
 `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`
 
-Expected marker:
+Expected runtime marker:
 
 `S1.39 Compatibility Fixes loaded.`
 
@@ -57,21 +62,84 @@ Functions:
 6. defensive Flash Turret filtering;
 7. direct CodeRebirth utility-kill Pikmin/Puffmin guard.
 
-The late map-object filtering remains only a defense-in-depth layer; S1.39 proved it is not sufficient as the primary DawnLib Currency control.
+The late map-object Currency filter is defense-in-depth only. S1.39 runtime proved it cannot replace the DawnLib-native config control.
 
 ### Gale import
 
 Use **Advanced options -> Import all files**.
 
-## S1.40A native CodeRebirth control
+## Accepted CodeRebirth/DawnLib natural-spawn control
 
-Critical config:
-- `Clean Unusued Configs = false`
-- Coin / Crisp Dollar Bill / Wallet Inside Moon + Interior Spawn Weights blank
-- Flash Turret `Is Inside Hazard = false`
-- Flash Turret Inside Moon + Interior Spawn Weights blank
+Critical post-run-retained values in S1.41:
 
-Do not touch `Money | Enemy Drop Rates` unless explicitly requested.
+```ini
+[General]
+Clean Unusued Configs = false
+
+[Merchant Options]
+Coin | Allow Editing Config = true
+Coin | Inside Moon Spawn Weights =
+Coin | Inside Interior Spawn Weights =
+
+Crisp Dollar Bill | Allow Editing Config = true
+Crisp Dollar Bill | Inside Moon Spawn Weights =
+Crisp Dollar Bill | Inside Interior Spawn Weights =
+
+Wallet | Allow Editing Config = true
+Wallet | Inside Moon Spawn Weights =
+Wallet | Inside Interior Spawn Weights =
+
+[FlashTurret Options]
+Flash Turret | Allow Editing Config = true
+Flash Turret | Is Inside Hazard = false
+Flash Turret | Inside Moon Spawn Weights =
+Flash Turret | Inside Interior Spawn Weights =
+```
+
+Do not blank or otherwise alter `Money | Enemy Drop Rates` as collateral damage. The project requirement concerns natural dungeon generation, not dedicated CodeRebirth money-drop systems.
+
+Historical root cause:
+- S1.40 failed because CodeRebirth regenerated defaults.
+- S1.40A made `Clean Unusued Configs=false` survive, but per-content `Allow Editing Config=false` still caused author defaults to win.
+- S1.40B opened only the relevant edit gates and passed.
+- S1.41 post-run evidence confirmed the S1.40B fix survives with BCMER enabled.
+
+## Accepted BCMER baseline
+
+Exact package:
+
+`SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`
+
+Do not silently upgrade to 2.0.0. A 2.0 migration, if ever desired, is a separate future stage.
+
+Post-run-retained guard:
+
+```ini
+[Events Features]
+Disable all events? = false
+
+[Mod Compatibility]
+Experimental Dont Handle Power? = true
+Experimental Dont Handle Spawn Chance? = true
+Let Brutal handle properties outside of events? = false
+
+[Randomizer]
+Enable Randomizer? = false
+```
+
+Disabled BCMER rain-event routes:
+- Raining
+- HeavyRain
+- AllWeather
+- Hurricane
+
+Natural vanilla Rainy weather remains allowed.
+
+S1.41 runtime selected ordinary BCMER events and did not expose a severe startup/event regression.
+
+Runtime evidence:
+
+`RuntimeEvidence/S1.41/20260902T215804Z/`
 
 ## Stable gameplay/config decisions
 
@@ -83,7 +151,7 @@ Do not touch `Money | Enemy Drop Rates` unless explicitly requested.
 - `AddHealthRechargeStation=true`
 - desired behavior: ship recharge station fully heals player
 - runtime acceptance of the full-heal behavior still pending
-- GeneralImprovements intro-skip behavior must be audited before BCMER reactivation because BCMER documents compatibility concerns around intro skipping.
+- `SpeakerPlaysIntroVoice=true` is compatible with the accepted BCMER 1.71.0 reactivation baseline.
 
 ### FixCameraResolution
 Accepted visual configuration:
@@ -183,7 +251,7 @@ S1.36 confirmed microwaves no longer affect Pikmin. S1.39 added the direct kill 
 
 Never guess an Oxyde value.
 
-## Current equal-weight interior architecture
+## Current equal-weight interior architecture before S1.42A
 
 26 current interiors, intended Weight 100 on normal moons:
 
@@ -251,3 +319,33 @@ The four-legged Jester-like indoor enemy is **Cabinet** from `Cabinet_crew-TheCa
 - InjectionLibrary native Mirage/Opus scan warnings: expected non-.NET scanner noise.
 - CodeRebirth Weather Registry unavailable: compatibility warning unless missing weather content matters.
 - NavMeshInCompany NodeHelper warnings: investigate only if Company navigation is actually broken.
+
+
+## Repository-first build baseline
+
+GitHub is the canonical build workspace.
+
+Use:
+- `BuildSpecs/current.json`
+- `BuildSystem/profile_builder.py`
+- `.github/workflows/profile-build.yml`
+- `ProfileSources/<build_id>/`
+- `RuntimeInbox/Current/`
+- `RuntimeEvidence/`
+
+Do not ask the user to run local PowerShell profile-build scripts or maintain a local repository clone while the required base profile is online.
+
+Current next build plan:
+
+`BuildSpecs/S1.42A_PLAN.md`
+
+## New non-blocking regression surface
+
+Mineshaft elevator + large Pikmin group:
+- player clipped through moving elevator floor once in S1.41;
+- died from fall/gravity damage;
+- many NavMesh-agent creation failures appeared around the event;
+- causality is not proven;
+- BCMER is not implicated by current evidence.
+
+Track during future interior/elevator tests without blocking the accepted S1.41 baseline.
