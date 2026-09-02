@@ -1,114 +1,14 @@
 {
-  "enabled": true,
-  "build_id": "S1.42A",
-  "base_profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
-  "base_sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
-  "output_profile": "Profiles/LC V1 S1.42A Interior Config Seed.r2z",
-  "profile_name": "LC V1 S1.42A Interior Config Seed",
+  "enabled": false,
+  "build_id": "IDLE_AWAITING_S1.42A_RUNTIME_SEED",
+  "base_profile": "Profiles/LC V1 S1.42A Interior Config Seed.r2z",
+  "base_sha256": "70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe",
+  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
+  "profile_name": "DO_NOT_BUILD",
   "overwrite": false,
   "mod_state_changes": [],
-  "mod_additions": [
-    {
-      "name": "Beaniebe-Liminal_House",
-      "version": "1.1.6",
-      "enabled": true,
-      "source": "Thunderstore"
-    },
-    {
-      "name": "MelanieMelicious-Melanie_Interiors_MelanieMelicious",
-      "version": "1.2.1",
-      "enabled": true,
-      "source": "Thunderstore"
-    },
-    {
-      "name": "Beaniebe-Deepcore_Mines",
-      "version": "1.0.9",
-      "enabled": true,
-      "source": "Thunderstore"
-    },
-    {
-      "name": "MrKixcat-Junkrooms",
-      "version": "4.0.2",
-      "enabled": true,
-      "source": "Thunderstore"
-    },
-    {
-      "name": "Beaniebe-Super_Market",
-      "version": "1.0.3",
-      "enabled": true,
-      "source": "Thunderstore"
-    },
-    {
-      "name": "MrKixcat-Shatteredrooms",
-      "version": "2.1.6",
-      "enabled": true,
-      "source": "Thunderstore"
-    },
-    {
-      "name": "BLB_Thunderstore_Mods_LOL-Lead_Interiors",
-      "version": "0.0.7",
-      "enabled": true,
-      "source": "Thunderstore"
-    },
-    {
-      "name": "DemonMae-Dungeons_Ultimately_Lacking_Liveliness",
-      "version": "1.8.8",
-      "enabled": true,
-      "source": "Thunderstore"
-    },
-    {
-      "name": "MaxWasUnavailable-LethalModDataLib",
-      "version": "1.2.2",
-      "enabled": true,
-      "source": "Thunderstore"
-    }
-  ],
+  "mod_additions": [],
   "mod_removals": [],
   "config_patches": [],
-  "text_assertions": [
-    {
-      "path": "export.r2x",
-      "contains": "profileName: LC V1 S1.42A Interior Config Seed"
-    },
-    {
-      "path": "export.r2x",
-      "contains": "- name: Beaniebe-Liminal_House"
-    },
-    {
-      "path": "export.r2x",
-      "contains": "- name: MelanieMelicious-Melanie_Interiors_MelanieMelicious"
-    },
-    {
-      "path": "export.r2x",
-      "contains": "- name: Beaniebe-Deepcore_Mines"
-    },
-    {
-      "path": "export.r2x",
-      "contains": "- name: MrKixcat-Junkrooms"
-    },
-    {
-      "path": "export.r2x",
-      "contains": "- name: Beaniebe-Super_Market"
-    },
-    {
-      "path": "export.r2x",
-      "contains": "- name: MrKixcat-Shatteredrooms"
-    },
-    {
-      "path": "export.r2x",
-      "contains": "- name: BLB_Thunderstore_Mods_LOL-Lead_Interiors"
-    },
-    {
-      "path": "export.r2x",
-      "contains": "- name: DemonMae-Dungeons_Ultimately_Lacking_Liveliness"
-    },
-    {
-      "path": "export.r2x",
-      "contains": "- name: MaxWasUnavailable-LethalModDataLib"
-    },
-    {
-      "path": "export.r2x",
-      "not_contains": "- name: BLB_Thunderstore_Mods_LOL-Boom_Scraps"
-    }
-  ]
+  "text_assertions": []
 }
