@@ -100,3 +100,23 @@ During S1.42A:
 - do not normalize/tune guessed interior weights before generated configs exist;
 - do not guess CullFactory identifiers;
 - do not mix unrelated gameplay balancing into the config-seed build.
+
+
+## Blocking — LethalModDataLib S1.42A initialization NRE
+
+S1.42A runtime evidence reproduced a direct LethalModDataLib 1.2.2 initialization failure:
+
+`NullReferenceException` in `ModDataAttributeCollector.RegisterModDataAttributes()`.
+
+DULL content registered, but save/mod-data behavior is not cleanly validated. Resolve this before S1.42 final acceptance.
+
+## S1.42 tuning inputs now available
+
+- 26 new dungeon flow IDs captured.
+- Total registered ExtendedDungeonFlows: 52.
+- Exact CullFactory exception IDs: `junkrooms`, `shatteredrooms`.
+- Generated LLL weights are available and need normalization where appropriate.
+- Preserve explicit author restrictions, especially Shatteredrooms Experimentation/Embrion = 0.
+- BCMER EventType distribution must be converted to fixed global user-selected percentages; exact values pending.
+
+See `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`.
