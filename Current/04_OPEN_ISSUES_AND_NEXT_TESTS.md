@@ -56,6 +56,22 @@ During future interior/elevator tests, specifically watch:
 - player floor clipping;
 - Pikmin NavMesh/agent failures during elevator movement.
 
+## Monitor-only — outdoor Pikmin Sprout density
+
+User reported a subjective impression that fewer outdoor Pikmin Sprouts may appear since CodeRebirth.
+
+Current evidence does not support an immediate balance change:
+- recent Offense runs were broadly consistent with the configured spawn chance;
+- more Pikmin types and wider spatial distribution can make the same total feel sparser.
+
+Only investigate statistically if the concern persists. Do not change spawn values from the impression alone.
+
+## Monitor-only warning — BCMER ButlerSword
+
+S1.41 emitted a ButlerSword missing-script warning. It did not prevent BCMER 1.71.0 from loading, selecting events, or passing the intended acceptance gate.
+
+Only escalate if a Butler/ButlerSword-related event produces an actual gameplay failure.
+
 ## Carry-forward regression guards
 
 Continue checking when naturally encountered:
