@@ -1,0 +1,36 @@
+{
+  "build_id": "S1.41",
+  "ingested_utc": "20260902T215804Z",
+  "files": [
+    {
+      "name": "BrutalCompanyMinusExtraReborn.zip",
+      "size": 55388,
+      "sha256": "f22e390ae17f2d117db5c69bcc16096bdc5432fb0cd3454e53da1d4d9bbf8fb5",
+      "extracted": [
+        "BrutalCompanyMinusExtraReborn/AllEnemies.cfg",
+        "BrutalCompanyMinusExtraReborn/CoreProperties.cfg",
+        "BrutalCompanyMinusExtraReborn/CustomEvents.cfg",
+        "BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
+        "BrutalCompanyMinusExtraReborn/Enemy_Scrap_Weights_Settings.cfg",
+        "BrutalCompanyMinusExtraReborn/Language.cfg",
+        "BrutalCompanyMinusExtraReborn/LevelProperties.cfg",
+        "BrutalCompanyMinusExtraReborn/ModdedEvents.cfg",
+        "BrutalCompanyMinusExtraReborn/UI_Settings.cfg",
+        "BrutalCompanyMinusExtraReborn/VanillaEvents.cfg",
+        "BrutalCompanyMinusExtraReborn/Weather_Settings.cfg"
+      ]
+    },
+    {
+      "name": "CodeRebirth.cfg",
+      "size": 342066,
+      "sha256": "51e269a79824eb177b1726ee4442ce59f086f75103a2cdb4b6e7829bff08e084",
+      "extracted": []
+    },
+    {
+      "name": "LogOutput.log",
+      "size": 10260782,
+      "sha256": "f0184428806955d88935f437f4f106104c7b5d9a14f97dfa2763d5215f199a8d",
+      "extracted": []
+    }
+  ]
+}
