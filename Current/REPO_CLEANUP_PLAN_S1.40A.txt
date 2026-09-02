@@ -1,35 +1,79 @@
-REPO CLEANUP PLAN S1.40A
+REPO CLEANUP PLAN S1.40A HANDOVER
 Stand: 2026-09-02
+Ziel: maximal vollständige, eindeutige Übergabe an einen neuen Chat bei minimaler Verwechslungsgefahr in Current/.
 
 KEEP
-- S1.40 profile as latest runtime-tested failed reference.
-- S1.39 profile and diagnostic history.
-- S139CompatibilityFixes source/package unchanged.
-- Existing Logs/ and References/ with diagnostic value.
-- Historical versioned S1.40 Current files.
+- START_HERE_ChatGPT_Masterprompt.txt (Workflow unverändert).
+- Profiles/LC V1 S1.40A CodeRebirth Config Cleanup Fix.r2z als kanonischer ungetesteter Kandidat.
+- Profiles/LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z als neuester runtime-getesteter, fehlgeschlagener Referenzstand.
+- S1.39/S1.38/S1.36 und diagnostisch relevante ältere Profile.
+- Patches/S139CompatibilityFixes/ einschließlich Fallback-Paket.
+- alle diagnostisch relevanten Logs und References.
+- aktuelle S1.40A Modliste/Build-Verifikation/Hashes.
 
 UPDATE
 - README.md
 - Current/00_CURRENT_STATE.md
 - Current/01_HANDOVER_CORE.md
+- Current/02_TECHNICAL_BASELINE.md
+- Current/03_PROJECT_CHRONOLOGY.md
 - Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-
-ADD
-- Profiles/LC V1 S1.40A CodeRebirth Config Cleanup Fix.r2z
+- Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
 - Current/06_RECENT_WORK_S1.32-S1.40A.md
 - Current/Projektstatus_S1.40A.json
-- Current/Aktive_Modliste_S1.40A.txt
-- Current/S1.40A_BUILD_VERIFICATION.txt
-- Current/VERIFIKATION_S1.40A.txt
 - Current/DATEIINVENTAR_S1.40A.txt
 - Current/SHA256SUMS_S1.40A.txt
 - Current/NEXT_CHAT_START_PROMPT_S1.40A.txt
 - Current/README_Handover_S1.40A.txt
-- Current/REPO_CLEANUP_PLAN_S1.40A.txt
-- Logs/S1.40_Run_Auswertung_2026-09-02.txt
+- Current/VERIFIKATION_S1.40A.txt
+- Current/S1.40A_BUILD_VERIFICATION.txt
+
+ADD
+- Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
+- Current/08_RUNTIME_EVIDENCE_S1.40_CODE_REBIRTH.md
+- Current/HumanReadable/README.md
+- References/Runtime-Configs/S1.40_CodeRebirth_postrun_relevant.txt
+- ausführlichere S1.40-Handover-Auswertung unter Logs/ falls nötig.
 
 ARCHIVE
-- None required.
+Aus Current/ nach Archive/S1.39/Current/:
+- 06_RECENT_WORK_S1.32-S1.39.md
+- Aktive_Modliste_S1.39.txt
+- DATEIINVENTAR_S1.39.txt
+- NEXT_CHAT_START_PROMPT_S1.39.txt
+- Projektstatus_S1.39.json
+- README_Handover_S1.39.txt
+- REPO_CLEANUP_PLAN_S1.39.txt
+- S1.39_BUILD_VERIFICATION.txt
+- SHA256SUMS_S1.39.txt
+- VERIFIKATION_S1.39.txt
+
+Aus Current/ nach Archive/S1.40/Current/:
+- 06_RECENT_WORK_S1.32-S1.40.md
+- Aktive_Modliste_S1.40.txt
+- DATEIINVENTAR_S1.40.txt
+- NEXT_CHAT_START_PROMPT_S1.40.txt
+- Projektstatus_S1.40.json
+- README_Handover_S1.40.txt
+- REPO_CLEANUP_PLAN_S1.40.txt
+- S1.40_BUILD_VERIFICATION.txt
+- SHA256SUMS_S1.40.txt
+- VERIFIKATION_S1.40.txt
+
+Aus Current/HumanReadable/ nach Archive/S1.39/HumanReadable/:
+- alle acht derzeit vorhandenen S1.39 DOCX/PDF-Dateien.
+Danach bleibt in Current/HumanReadable nur ein README-Hinweis auf die maschinenlesbare aktuelle Übergabe und das Archiv.
 
 DELETE
-- None.
+- Keine einzigartige Datei wird dauerhaft gelöscht.
+- Die oben genannten Current-Dateien werden technisch am alten Pfad entfernt, aber identisch unter Archive/ erhalten.
+
+KRITISCHE INHALTE DER NEUEN ÜBERGABE
+- S1.40A kanonisch, noch nicht runtime-getestet.
+- S1.40 neuester Runtime-Stand, Acceptance fehlgeschlagen.
+- post-run CodeRebirth.cfg beweist Clean Unusued Configs=true, Flash Turret Is Inside Hazard=true und wiederhergestellte positive Currency-Moon-Curves.
+- S1.40A setzt Clean Unusued Configs=false und behält die Suppression-Werte.
+- BCMER bleibt bis S1.40A-Abnahme deaktiviert.
+- danach S1.41: exakt BCMER 1.71.0, vier rain-related Events aus, Spawn-Ownership auditieren; kein Upgrade auf 2.0.0.
+- danach S1.42A Interior Config Seed, Runtime-Config-Generierung, erst anschließend S1.42-Tuning.
+- acht geplante Interior-Pakete inklusive CullFactory-/LethalModDataLib-/Boom_Scraps-Risiken vollständig dokumentieren.
