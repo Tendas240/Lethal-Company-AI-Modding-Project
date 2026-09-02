@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-02",
+  "date": "2026-09-03",
   "canonical_state": "S1.41",
   "current_profile": "LC V1 S1.41 BCMER Reactivation.r2z",
   "current_profile_sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
@@ -104,5 +104,22 @@
       "evidence": "NavMesh agent creation failures near elevator/death window; gravity/fall death recorded.",
       "causality": "Not proven. Do not attribute to BCMER without additional evidence."
     }
-  ]
+  ],
+  "handover": {
+    "refreshed": true,
+    "handover_file": "Current/12_HANDOVER_S1.41_TO_S1.42A.md",
+    "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.41.txt",
+    "verification": "Current/VERIFIKATION_S1.41.txt",
+    "inventory": "Current/DATEIINVENTAR_S1.41.txt",
+    "hashes": "Current/SHA256SUMS_S1.41.txt"
+  },
+  "next_stage": {
+    "build_id": "S1.42A",
+    "name": "Interior Config Seed",
+    "plan": "BuildSpecs/S1.42A_PLAN.md",
+    "base_profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "base_sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "build_method": "GitHub Actions repository-first",
+    "runtime_inbox_active_build_note": "RuntimeInbox/ACTIVE_BUILD.txt is still S1.41; change it to S1.42A only after the S1.42A candidate exists."
+  }
 }
