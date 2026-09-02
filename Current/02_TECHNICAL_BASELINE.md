@@ -335,7 +335,15 @@ Use:
 
 Do not ask the user to run local PowerShell profile-build scripts or maintain a local repository clone while the required base profile is online.
 
-Current next build plan:
+Current S1.42A candidate:
+
+`Profiles/LC V1 S1.42A Interior Config Seed.r2z`
+
+SHA-256: `70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
+
+Status: GitHub-Actions build verified; runtime config-generation seed test pending. S1.41 remains the accepted gameplay baseline.
+
+Plan / runtime procedure:
 
 `BuildSpecs/S1.42A_PLAN.md`
 
