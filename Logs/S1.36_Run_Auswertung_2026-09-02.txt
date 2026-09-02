@@ -1,0 +1,18 @@
+S1.36 RUNTIME SUMMARY - 2026-09-02
+Source: full LogOutput.log uploaded in the working ChatGPT conversation plus explicit user test observations.
+Profile: LC V1 S1.36 Handover Clean Baseline
+
+CONFIRMED
+- Gale import used Advanced options -> Import all files.
+- S1.35 Compatibility Fixes loaded.
+- [EnemyScanFix] Patched EnemyScan to list every active EnemyAI regardless of ScanNodeProperties.
+- Ship-door failsafe behavior worked as intended in the user's in-game test.
+- The terminal `enemies` output around 7pm was cross-checked against runtime spawns/active EnemyAI and the displayed counts matched.
+- The user explicitly confirmed Pikmins were no longer affected by CodeRebirth microwaves. Treat microwave protection as accepted unless a later regression appears.
+
+IMPORTANT DISTINCTION
+- This acceptance applies to the S1.35 compatibility behavior embedded in the S1.36 profile.
+- It does not automatically validate later S1.37/S1.39 filtering or crane-kill changes.
+
+NOTE
+This file is a technical summary, not a replacement for the full raw log. If exact timestamps/stacks are needed, use the original S1.36 LogOutput.log from the prior chat/export.

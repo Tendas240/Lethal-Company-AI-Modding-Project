@@ -1,158 +1,106 @@
-# 04 — Open Issues and Next Tests
+# 04 - Open Issues and Next Tests
 
-## Priority 0 — Verify S1.36 import
+## Priority 0 - verify S1.39 local plugin import
 
-S1.36 is structurally verified but not runtime-tested.
+Import S1.39 in Gale with **Advanced options -> Import all files**.
 
-When importing in Gale, enable:
+Required marker:
 
-**Advanced options → Import all files**
+- `S1.39 Compatibility Fixes loaded.`
 
-Then check LogOutput.log for:
+Also expect the cumulative EnemyScan marker.
 
-- S1.35 Compatibility Fixes loaded
-- [EnemyScanFix] Patched EnemyScan to list every active EnemyAI ...
+If the S1.39 marker is absent, import `Patches/S139CompatibilityFixes/Tendas-S139CompatibilityFixes-1.0.0.zip` into the same profile and relaunch.
 
-If missing, import:
+Do not judge S1.39 map-object filtering or Pikmin kill protection before this is confirmed.
 
-Patches/S135CompatibilityFixes/Tendas-S135CompatibilityFixes-1.0.0.zip
+## Priority 1 - natural CodeRebirth currency cleanup
 
-into the S1.36 profile.
+S1.37 filtered normal scrap rolls but S1.38 still showed `NewCoinPrefab(Clone)` instances through the map-object/hazard path.
 
-Do not evaluate door/EnemyScan behavior until this load requirement is satisfied.
+S1.39 additionally filters indoor map-object generation.
 
-## Priority 1 — Ship-door behavior
+Test several moons/interiors and confirm:
 
-### Test A — living player inside ship
+- no naturally generated Coin;
+- no naturally generated Crisp Dollar Bill;
+- no naturally generated Wayfarer's Wallet;
+- no normal natural Credit Pad variants if they use the covered generation paths;
+- dedicated CodeRebirth merchant/vending/enemy-drop currency mechanics still work when encountered.
 
-As the only living player, stand clearly inside the landed ship and close the hangar door.
+When filtering activates, preserve `[MapObjectFilter]` log lines.
 
-Expected:
+## Priority 2 - Flash Turret suppression
 
-- door closes;
-- energy remains at 100%;
-- door stays closed indefinitely until intentionally opened or another legitimate game transition occurs.
+Confirm CodeRebirth Flash Turret no longer appears as a normal natural indoor hazard.
 
-Log should show DoorAudit and livingInsideShip=1.
+This is spawn suppression, not merely Pikmin immunity.
 
-### Test B — all living players outside
+## Priority 3 - Ogopogo / Vermin disabled
 
-With all living players outside, reproduce a closed hangar door.
+Verify Biodiversity does not spawn Ogopogo and does not activate the related Vermin mechanic.
 
-Expected:
+Config assertions passed; gameplay acceptance is pending.
 
-- local patch does not refill energy;
-- vanilla hydraulic countdown runs;
-- door opens at zero;
-- permanent outside lockout cannot occur.
+## Priority 4 - CodeRebirth Autonomous Crane vs Pikmin/Puffmin
 
-Log should show DoorFailsafe saying all living players are outside.
+S1.38 runtime showed the crane could kill Pikmin despite:
 
-If the door closes unexpectedly again, preserve the new audit stack because it may identify the calling method/mod.
+- `Crane Targets Pikmin=false`
+- `Crane Squishes Pikmin=false`
+- Pikmin invincibility
 
-## Priority 2 — Complete enemies output
-
-EnemyScan 1.2.1 originally excluded EnemyAI without ScanNodeProperties.
-
-S1.36 patches only this listing behavior.
-
-Test while several known enemies are active, ideally including a modded or scanless case.
-
-Compare:
-
-- visible enemies,
-- runtime spawn/AI lines,
-- enemies terminal output.
-
-Goal: every active EnemyAI appears and counts update correctly.
-
-## Priority 3 — Verify SCP999 is truly gone
-
-Latest S1.31–S1.34 logs showed SCP999 2.4.0 loading and immediately throwing a startup NRE.
-
-S1.36 disables ProjectSCP-SCP999.
+S1.39 adds a direct CodeRebirth utility-kill guard.
 
 Expected:
 
-- no Loading [SCP999 ...];
-- no SCP999.Plugin.Awake NRE;
-- no later [SCP999] Max health ... debug lines.
+- crane may not kill Pikmin/Puffmin;
+- if CodeRebirth attempts the guarded kill path, `[PikminCraneShield]` should log a block;
+- normal enemy kills outside that CodeRebirth utility context must not be globally disabled.
 
-If it still loads, investigate whether Gale ignored the disabled state or another copy exists outside the profile.
+## Priority 5 - health recharge station
 
-## Priority 4 — Leaf Boy blacklist verification
+`AddHealthRechargeStation=true` is already present and was explicitly verified in the profile.
 
-S1.32+ appends Leaf boy to the LethalMin Attack Blacklist.
+Test:
 
-Original issue: multi-minute Pikmin attack loop against LeafBoi(Clone).
+1. take known damage;
+2. use the ship health recharge station;
+3. confirm it restores health to the desired full value and does not produce errors.
 
-Confirm:
+## Priority 6 - 2560x1440 camera carry-forward
 
-- Pikmins do not start attacks on Leaf Boy;
-- no repeated LethalMin hit loop occurs;
-- Leaf Boy otherwise behaves normally.
+S1.38 loaded FixCameraResolutions successfully. Confirm S1.39 still renders sharply at the intended 2560x1440 internal target and has not regressed because of profile import behavior.
 
-Do not alter Leaf Boy spawn rate/health to solve targeting.
+## Priority 7 - Old Bird Lethal Resonance encounter validation
 
-## Priority 5 — CodeRebirth Microwave vs Pikmins
+Plugin/config build validation exists, but a clean Old Bird encounter is still needed.
 
-Microwave Knockbacks Pikmin=false does not prove burn/cook immunity.
+When an Old Bird appears, verify replacement audio for:
 
-Still unproven:
+- main/mechanical/weapon group;
+- footsteps;
+- loudspeaker/voice group.
 
-- burn immunity;
-- cook/status immunity;
-- prevention of permanent burning while Pikmins are immortal.
+Also verify non-Old-Bird Lethal Resonance groups stay disabled.
 
-If persistent burning occurs, config is insufficient and a targeted compatibility patch is required.
+## Priority 8 - Mirage retention
 
-## Priority 6 — Enemy targeting of immortal Pikmins
+The user had to set `neverDeleteRecordings=true` manually in the Main Menu/LethalConfig after profile import. The later S1.38 log confirmed that manual value at runtime.
 
-Immortality does not prove enemies stop selecting Pikmins as targets.
+After importing S1.39, check the setting again. If it reverted, set it manually; do not treat `.r2z` import as authoritative for this game-root per-player setting.
 
-Watch for enemies remaining occupied with unkillable Pikmins.
+## Confirmed behavior - CodeRebirth microwave vs Pikmins
 
-If reproducible, prefer a small target-filter compatibility patch over disabling enemies.
+S1.36 runtime testing produced an explicit user confirmation that Pikmins were no longer affected by the CodeRebirth microwaves. Treat this as accepted and **do not spend another build on it unless a later run shows a regression**.
 
-## Priority 7 — Other CodeRebirth hazards
+## Priority 9 - enemy target selection against immortal Pikmins
 
-Flash Turret is confirmed safe.
+Immortal Pikmins can still waste enemy AI if enemies select them as targets. If reproducible, prefer a small target-filter compatibility patch rather than disabling enemies.
 
-Still test when encountered:
+## Priority 10 - exact enemy PowerLevels
 
-- ACU
-- Crane
-- Fan
-- Laser Turret
-- Tornado
-- Compactor
-
-## Priority 8 — SellMyScrap warnings
-
-Current logs contain warnings that some SellMyScrap methods cannot load ShipInventoryUpdated 2.0.0.
-
-Do not change anything solely because of the warning. First determine whether user-facing SellMyScrap functionality is actually broken.
-
-## Priority 9 — Beehives
-
-Do not use Offense as the bee baseline.
-
-Prefer Assurance or March.
-
-Only compensate Bee chance if several runs on actual vanilla Bee moons show a reproducible problem.
-
-## Priority 10 — Dungeon theme song
-
-Main candidates:
-
-1. Haunted Harpist / Phantom Piper — spatial enemy music.
-2. PizzaTowerEscapeMusic — event/escape music, likely tied to Apparatus behavior.
-
-Record moon, interior, time, Apparatus state, directionality and enemies output when it occurs.
-
-## Priority 11 — Exact enemy PowerLevels
-
-Still unresolved:
+Still unresolved and must not be guessed:
 
 - Rolling Giant
 - Siren Head
@@ -162,24 +110,35 @@ Still unresolved:
 - Faceless Stalker
 - CodeRebirth Debt Collector / Boogey Man
 
-Do not guess. Use runtime or binary/asset analysis.
+Use runtime, binary or asset analysis.
 
-## Lower-priority observations
+## Later phase - BCMER reactivation
 
-- One disabled vanilla Turret was observed historically. Investigate only if repeated with player/terminal/hacking actions ruled out.
-- CodeRebirth logs Weather Registry not found; investigate only if missing weather content matters.
-- NavMeshInCompany missing NodeHelper warnings are known; investigate if navigation is actually broken.
+BCMER remains disabled in S1.39. Do not fold it into the S1.39 acceptance test.
+
+After S1.39 is accepted, the logical next isolated build is a BCMER re-audit/reactivation against the accepted gameplay base, with special attention to spawn power/chance ownership.
+
+## Known warnings to leave alone unless functionality breaks
+
+- SellMyScrap / ShipInventoryUpdated warnings.
+- InjectionLibrary skipping Mirage/Opus native DLLs as non-.NET.
+- CodeRebirth Weather Registry unavailable warning.
+- NavMeshInCompany NodeHelper warnings.
 
 ## After every meaningful run
 
-Preserve the full LogOutput.log and compare at least:
+Preserve the full `LogOutput.log` and compare:
 
 - exceptions/NREs;
 - plugin load list;
+- S1.39 compatibility marker;
 - DoorAudit / DoorFailsafe;
 - EnemyScanFix;
+- `[MapObjectFilter]` / `[PikminCraneShield]`;
 - SCP999 absence;
+- Ogopogo/Vermin absence;
+- currency/Flash Turret natural-spawn evidence;
 - Pikmin hazard interactions;
-- LethalMin work-state warning volume;
-- interior viability/weights;
-- load/landing anomalies.
+- FixCameraResolution load/status;
+- Lethal Resonance/SoundAPI load status;
+- Mirage loaded settings.

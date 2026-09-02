@@ -1,0 +1,53 @@
+LETHAL COMPANY REPOSITORY CLEANUP PLAN - S1.39
+Generated: 2026-09-02
+
+KEEP
+- START_HERE_ChatGPT_Masterprompt.txt unchanged; the handover workflow itself did not change.
+- References/ including all seven binding spawn-rate screenshots and juijui reference values.
+- Existing historical Archive/ material.
+- Existing diagnostic Logs/ with unique runtime evidence.
+- Profiles/LC V1 S1.36 Handover Clean Baseline.r2z as deterministic source/baseline for later builds.
+- S1.29D diagnostic profile and older still-useful profile references currently retained under Profiles/.
+
+UPDATE
+- README.md -> S1.39 canonical project state and S1.38 latest runtime reference.
+- Current/00_CURRENT_STATE.md
+- Current/01_HANDOVER_CORE.md
+- Current/02_TECHNICAL_BASELINE.md
+- Current/03_PROJECT_CHRONOLOGY.md
+- Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+- Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
+- Replace the previous S1.36 recent-work/current metadata set with S1.39 versions.
+
+ADD
+- Current/06_RECENT_WORK_S1.32-S1.39.md
+- Current/Aktive_Modliste_S1.39.txt
+- Current/Projektstatus_S1.39.json
+- Current/README_Handover_S1.39.txt
+- Current/S1.39_BUILD_VERIFICATION.txt
+- Current/VERIFIKATION_S1.39.txt
+- Current/DATEIINVENTAR_S1.39.txt
+- Current/SHA256SUMS_S1.39.txt
+- Current/NEXT_CHAT_START_PROMPT_S1.39.txt
+- Current/REPO_CLEANUP_PLAN_S1.39.txt
+- Current/HumanReadable/*S1.39*.docx and *.pdf
+- Profiles/LC V1 S1.38 1440p Old Bird Resonance.r2z
+- Profiles/LC V1 S1.39 Cleanup Health Pikmin Shield.r2z
+- Patches/S139CompatibilityFixes/ complete source, compiled DLL and fallback ZIP.
+- Logs/S1.36_Run_Auswertung_2026-09-02.txt
+- Logs/S1.38_Run_Auswertung_2026-09-02.txt
+- Archive/S1.37/S1.37_BUILD_VERIFICATION.txt
+- Archive/S1.38/S1.38_BUILD_VERIFICATION.txt
+
+ARCHIVE
+- Previous Current/ S1.36 snapshot -> Archive/S1.36/CurrentSnapshot/.
+- Previous root README.md -> Archive/S1.36/README.md before replacement.
+- Superseded Patches/S135CompatibilityFixes/ -> Archive/S1.35/Patches/S135CompatibilityFixes/.
+- Former latest-runtime profile LC V1 S1.34 Malfunctions Disabled.r2z -> Archive/S1.34/Profile/.
+
+DELETE
+- No historical or diagnostic project material is deleted.
+- Temporary ChatGPT build/inspection GitHub Actions workflows and work branches are build infrastructure only and are intentionally excluded from the final repository handover payload rather than promoted to main.
+
+RATIONALE
+The cleanup follows the project rule 'archive when in doubt'. S1.39 becomes the canonical test candidate, while S1.38 remains the newest runtime evidence reference and S1.36 remains the deterministic clean baseline used to construct later builds.

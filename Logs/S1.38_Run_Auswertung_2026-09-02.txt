@@ -1,0 +1,27 @@
+S1.38 RUNTIME SUMMARY - 2026-09-02
+Source: full LogOutput.log uploaded in the working ChatGPT conversation.
+Profile: LC V1 S1.38 1440p Old Bird Resonance
+
+CONFIRMED IN LATEST S1.38 LOG
+- S1.37 Compatibility Fixes loaded.
+- [EnemyScanFix] patch marker present.
+- FixCameraResolutions 1.5.3 loaded and registered its resolution/HUD/HDRP/visor settings.
+- loaforc SoundAPI load pipeline completed.
+- Mirage loaded settings with:
+  localPlayerVolume=0.5
+  neverDeleteRecordings=true
+  allowRecordVoice=true
+  muteVoiceMimic=false
+  IMPORTANT: the user had to set neverDeleteRecordings=true manually in the Main Menu/LethalConfig first; the profile import did not reliably apply this per-player game-root setting.
+
+RUNTIME/TEST PHASE FINDINGS THAT LED TO S1.39
+- NewCoinPrefab(Clone) / CodeRebirth Coin still appeared through a path not eliminated by S1.37's SpawnScrapInLevel-only filter.
+- Flash Turret natural spawning was no longer desired.
+- Ogopogo/Vermin should be disabled.
+- CodeRebirth Autonomous Crane could kill Pikmin despite LethalMin Crane Targets Pikmin=false and Crane Squishes Pikmin=false; direct runtime kill protection was required.
+- Old Bird Lethal Resonance was not cleanly encounter-validated in this test.
+- User visually confirmed FixCameraResolution worked as intended at the configured 2560x1440 target.
+- The four-legged Jester-like indoor enemy was identified from the runtime log as Cabinet from Cabinet_crew-TheCabinet 1.12.1 (`Spawning Cabinet from vent`).
+
+NOTE
+This file is a technical summary, not a replacement for the full raw log. If a future diagnosis needs exact timestamps/stacks beyond the preserved facts, use the original S1.38 LogOutput.log if available from the prior chat/export.

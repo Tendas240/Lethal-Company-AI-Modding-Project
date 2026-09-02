@@ -1,0 +1,73 @@
+S1.38 build verification
+Generated from canonical S1.36 baseline while carrying forward all S1.37 local compatibility fixes.
+
+Output: LC V1 S1.38 1440p Old Bird Resonance.r2z
+
+Thunderstore additions:
+- Rumi-FixCameraResolution 1.5.3
+- LethalResonance-LETHALRESONANCE 4.7.8
+- loaforc-loaforcsSoundAPI_LethalCompany 1.0.2
+
+Existing compatible dependencies kept (no downgrade):
+- loaforc-loaforcsSoundAPI 2.0.12
+- ButteryStancakes-EnemySoundFixes 1.9.14
+- Hardy-LCMaxSoundsFix 1.2.0
+- BepInEx-BepInExPack 5.4.2305
+
+FixCameraResolution configuration:
+- internal render target: 2560x1440
+- Auto Size: false
+- Check Resolution Every Frame: false
+- HUD fixed aspect ratio: true
+- HDRP fog/bloom/shadow/post-processing/vignette: Vanilla
+- Antialiasing: None
+- Visor: preserved
+
+Lethal Resonance configuration:
+- ONLY EnabledSounds:old_bird = true
+- ONLY EnabledSounds:old_bird_footsteps = true
+- ONLY EnabledSounds:old_bird_speaker = true
+- all other 56 Lethal Resonance sound/config toggles = false
+- Old Bird replacer config references verified against package JSON
+
+S1.37 compatibility carry-forward:
+- ship-door anti-lockout
+- complete EnemyScan output
+- natural CodeRebirth currency/credit scrap filtering
+
+Mirage note:
+- embedded Mirage/settings.json still contains neverDeleteRecordings=true
+- this is per-player state and must be runtime-checked after Gale import; prior import did not reliably apply it
+
+Profile mod counts:
+- 179 total
+- 173 enabled
+- 6 disabled
+
+Removed archive member: BepInEx/plugins/Tendas-S135CompatibilityFixes/S135CompatibilityFixes.dll
+Added archive members:
+- BepInEx/config/Rumi.FixCameraResolutions.cfg
+- BepInEx/config/soundpack.LethalResonance.cfg
+- BepInEx/plugins/Tendas-S137CompatibilityFixes/S137CompatibilityFixes.dll
+Changed archive member: export.r2x
+
+Gale import requirement:
+- Advanced options -> Import all files
+
+Runtime checks:
+- S1.37 Compatibility Fixes loaded
+- [EnemyScanFix] patch marker present
+- FixCameraResolutions 1.5.3 loads without errors
+- verify internal game render appears native/sharp at 2560x1440
+- loaforcsSoundAPI_LethalCompany 1.0.2 loads
+- Lethal Resonance loads without errors
+- Old Bird mechanical/weapon/footstep/loudspeaker audio replaced
+- non-Old-Bird Lethal Resonance groups remain disabled
+- neverDeleteRecordings manually/runtime-confirmed true
+
+Profile SHA-256: a6ec9e716759708bfb375e69cd4405795892957540ec954406584df79c6ce5f0
+
+Archive CRC: PASS
+Member delta: PASS
+Thunderstore package manifest validation: PASS
+Lethal Resonance Old Bird-only config validation: PASS

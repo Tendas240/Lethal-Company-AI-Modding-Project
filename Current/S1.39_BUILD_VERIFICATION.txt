@@ -1,0 +1,57 @@
+S1.39 build verification
+Generated from canonical S1.36 baseline with S1.37/S1.38 behavior carried forward.
+
+Output: LC V1 S1.39 Cleanup Health Pikmin Shield.r2z
+
+S1.39 changes:
+- Biodiversity Ogopogo: OgopogoEnabled=false
+- Biodiversity Vermin companion mechanic: EnableVermin=false
+- CodeRebirth Flash Turret: blocked from natural SpawnMapObjects generation by cumulative compatibility DLL
+- CodeRebirth natural currency map objects (Coin / Crisp Dollar Bill / Wayfarer's Wallet / credit pads): blocked from natural SpawnMapObjects generation
+- existing natural scrap currency filter retained
+- LethalMin CodeRebirth Pikmin interaction toggles verified false, including Crane Targets Pikmin and Crane Squishes Pikmin
+- direct CodeRebirth kill-RPC Pikmin/Puffmin failsafe added for crane squish/runtime gaps
+- GeneralImprovements AddHealthRechargeStation verified true (already true in canonical baseline; preserved)
+- BCMER remains disabled
+
+S1.38 carry-forward:
+- FixCameraResolution 1.5.3, fixed 2560x1440 render target
+- Lethal Resonance 4.7.8
+- only Old Bird / Old Bird footsteps / Old Bird speaker groups enabled
+- loaforcsSoundAPI_LethalCompany 1.0.2 binding
+
+Cumulative local compatibility DLL:
+- ship-door anti-lockout
+- complete EnemyScan output
+- natural currency scrap filter
+- natural currency map-object filter
+- Flash Turret natural spawn suppression
+- CodeRebirth kill-RPC Pikmin/Puffmin protection
+
+Profile mod counts:
+- 179 total
+- 173 enabled
+- 6 disabled
+
+Gale import requirement:
+- Advanced options -> Import all files
+
+Runtime checks:
+- 'S1.39 Compatibility Fixes loaded' marker
+- '[MapObjectFilter]' appears on a moon where blocked objects would otherwise be present
+- no natural Coin / Crisp Dollar Bill / Wayfarer's Wallet dungeon map-object spawns
+- no Flash Turret natural dungeon spawns
+- Ogopogo/Vermin do not spawn
+- CodeRebirth crane cannot kill Pikmin/Puffmin
+- ship health recharge station heals player to full
+- FixCameraResolution remains correct at 2560x1440
+- Old Bird Lethal Resonance still pending encounter validation
+- Mirage neverDeleteRecordings: user manually set true in Main Menu/LethalConfig; subsequent S1.38 log confirmed true. Profile import alone is not trusted for this per-player setting
+
+Profile SHA-256: b510e519b4af8b683e9b9e9f4e18035f90910d2e8782f2b9e6ded5e4ecef95fe
+
+Archive CRC: PASS
+Member delta: PASS
+Thunderstore package manifest validation: PASS
+S1.39 config assertions: PASS
+S1.39 compatibility DLL compiled: PASS

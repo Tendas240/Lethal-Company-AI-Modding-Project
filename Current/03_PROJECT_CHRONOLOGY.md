@@ -1,255 +1,90 @@
-# 03 — Project Chronology
+# 03 - Project Chronology
 
-This is a technical reconstruction of the confirmed project history. It is not claimed to be a verbatim transcript.
+This is a technical reconstruction of the confirmed project history, not a verbatim chat transcript.
 
-## S1.2 — Profilname/Path-Length-Stabilisierung
+## S1.2 - profile/path-length stabilization
+Long Gale profile names caused Windows/BepInEx path trouble. Permanent rule: keep profile names reasonably short.
 
-Ein zu langer Gale-Profilname führte zu Windows-/BepInEx-Pfadproblemen. Profilname verkürzt; Coroner/Logging stabilisiert.
+## S1.3-S1.10 - early cleanup, Pikmin and ownership work
+Wild Pikmin/falloff, stamina, batteries, facility distribution and several obsolete/broken mods were cleaned up. Gnomes were identified as a V81 `PlayerIsTargetable` MissingMethod spam source and removed. Peepers enemy/hazard was removed. LLL was proven not to be the only spawn authority.
 
-**Result / significance:** Dauerregel: Profilnamen kurz halten.
+## S1.11-S1.14 - spawn-owner isolation
+A central LLL-only approach was tested and failed for some enemies. Rolling Giant, Shy Guy/Scopophobia and Siren Head returned to their native spawn configuration. Persistent rule: prefer one positive spawn owner per enemy.
 
-## S1.3 — Frühe Gameplay-/Pikmin-/Enemy-Bereinigung
+## S1.15-S1.23 - gameplay stabilization
+Rolling Giant movement tuned, RandomEnemiesSize added, Company automation went through failed AutoCompanyBuilding/RandomMoonFX attempts, and the confirmed solution became CompanyBuildingEnhancements 2.6.0. LethalHUD Hold-to-Scan replaced old Hold_Scan_Button. Pikmin water resistance was confirmed.
 
-Wild-Pikmin-Falloff und unerwünschte Skalierung neutralisiert; Stamina angepasst; Football-Spawns über eigene Rarities auf 0; BCMER deaktiviert.
+## S1.24-S1.28 - roster, balance and interiors
+Enemy roster was restored, reference spawn-rate screenshots became binding, Immortal Snail max was set to 2, and 26 intended interiors were established at equal Weight 100. Black Mesa was integrated through its own DawnLib/config path.
 
-**Result / significance:** Mehrere Spawn-Systeme als konkurrierende Owner erkannt.
+## S1.29 / S1.29D - CodeRebirth and Power audit
+CodeRebirth 1.6.9 integrated. S1.29D was a diagnostic-only RedPill enemy-power audit derivative; it must never become a gameplay base.
 
-## S1.4–S1.5 — Audio-/Kompatibilitätsdiagnose
+## S1.30 - caps, Mimicless, Pikmin shield
+Mimics/CoronerMimics removed; CodeRebirth/Pikmin compatibility switches set false; indoor caps raised, then judged somewhat dense.
 
-Mirage-/Voice-Mimicking untersucht. Geplanter 20-Sekunden-MirageClipLimiter konnte nicht gebaut werden.
+## S1.31 - indoor power trim -4
+All controllable indoor power caps reduced by 4 without changing weights/interiors/Pikmin behavior. Runtime then exposed the Leaf Boy/Pikmin endless attack loop and SCP999 startup NRE regression.
 
-**Result / significance:** MirageClipLimiter.dll existiert nicht.
+## S1.32 - Leaf Boy blacklist + Mirage retention
+`Leaf boy` appended to the current LethalMin Attack Blacklist. Mirage `neverDeleteRecordings=true` requested. A closed-ship-door lockout was observed; the original close trigger was not conclusively identified, but AJB's unconditional power refill caused the permanent lockout.
 
-## S1.6 — Pikmin- und Battery-Tuning
+## S1.33 - first ship-door failsafe
+AJB disabled. Custom door failsafe designed to keep 100% hydraulic power only while a living player is inside and allow vanilla drain when everyone is outside. Later discovered Gale had not imported the DLL, so this version did not runtime-test the algorithm.
 
-Indoor Pikmin 0.08→0.12; historische Battery-Anpassungen; BCMER weiter aus.
+## S1.34 - Malfunctions disabled / diagnosis
+Malfunctions disabled by explicit user policy. Runtime proved S1.33 custom DLL had not loaded, confirmed EnemyScan's scan-node filter, identified Puma as vanilla Feiopar, and confirmed CodeRebirth Coin semantics. SCP999 still loaded and threw startup NRE.
 
-**Result / significance:** Battery-Lösung später ersetzt.
+## S1.35 - rebuilt local compatibility plugin
+V81 local plugin compiled for door anti-lockout + DoorAudit + complete EnemyScan. Standalone fallback package created. Structurally verified.
 
-## S1.7 — Facility-/Performance-Phase
+## S1.36 - clean canonical baseline and first successful local-patch runtime acceptance
+S1.35 plus ProjectSCP-SCP999 disabled. 176 manifest entries / 170 active / 6 disabled. This profile became the deterministic source baseline for later builds.
 
-Stamina testweise 2×; Facility-Verteilung; FacilityMeltdown entfernt; Rolling Giant temporär wegen Spam-Verdacht deaktiviert.
+The subsequent runtime test confirmed the local S1.35 compatibility DLL actually loaded under Gale with `Import all files`. The user's ship-door test behaved as intended, and the `enemies` terminal output was cross-checked against the runtime log and matched the active enemy population. The user also confirmed Pikmins were no longer affected by CodeRebirth microwaves. These three behaviors are accepted and should not be reopened without a regression.
 
-**Result / significance:** Rolling Giant war nicht die eigentliche Spam-Ursache.
+## S1.37 - CodeRebirth natural currency scrap filter
+Cumulative local plugin replaced S135 with S137. During normal `RoundManager.SpawnScrapInLevel`, Coin, Crisp Dollar Bill, Wayfarer's Wallet and Credit Pad 100/500/1000cc are temporarily removed from the natural scrap pool and restored afterward so dedicated CodeRebirth systems remain usable.
 
-## S1.8 — Gnome-Ursache isoliert
+Build verification passed. Later runtime logs confirmed `S1.37 Compatibility Fixes loaded` and the EnemyScan patch marker.
 
-Gnomes als V81 PlayerIsTargetable MissingMethod-Spamquelle entfernt. Rolling Giant zurück. Stamina ~1.5× finalisiert. MoreBattery eingeführt.
+## S1.38 - 1440p + Old-Bird-only Lethal Resonance
+Added:
 
-**Result / significance:** Gnomes nicht wieder hinzufügen.
+- FixCameraResolution 1.5.3 with fixed 2560x1440 internal target;
+- Lethal Resonance 4.7.8;
+- loaforcsSoundAPI_LethalCompany 1.0.2.
 
-## S1.9 — Pikmin/Peepers Cleanup
+Lethal Resonance was configured so only Old Bird, Old Bird footsteps and Old Bird speaker groups are enabled.
 
-Indoor Pikmin 0.12→0.11; Peepers vollständig entfernt.
+S1.38 was actually run in game and is the latest runtime-tested reference. Confirmed from the latest log:
 
-**Result / significance:** Peeper-Tool ist davon getrennt.
+- S1.37 compatibility plugin loaded;
+- EnemyScanFix marker present;
+- FixCameraResolutions 1.5.3 loaded;
+- SoundAPI load pipeline completed;
+- after the user manually set Mirage retention in the Main Menu/LethalConfig, the log loaded `neverDeleteRecordings=true` (profile import alone had not reliably applied it).
 
-## S1.10 — Spawn-Autoritäten-Audit
+The test phase also exposed that normal generated CodeRebirth Coin objects were still appearing through a map-object/hazard path not covered by S1.37's scrap-only filter. The user also wanted Flash Turret natural spawns removed, Ogopogo/Vermin disabled, and reported the CodeRebirth Autonomous Crane could still kill Pikmin even though LethalMin's crane toggles were false. A four-legged Jester-like enemy seen indoors was identified from the same runtime log as `Cabinet` from `Cabinet_crew-TheCabinet 1.12.1` (`Spawning Cabinet from vent`).
 
-Indoor Pikmin 0.10; weitere Bereinigung; LLL als nicht alleinige Source of Truth erkannt.
+Old Bird replacement audio still lacked a clean encounter-based acceptance test.
 
-**Result / significance:** Grundsatz: möglichst ein positiver Spawn-Owner pro Enemy.
+## S1.39 - cleanup + health + Pikmin kill shield
+Built from the canonical S1.36 baseline while carrying forward S1.37/S1.38 behavior.
 
-## S1.11 — Erster Single-Owner-Versuch über LLL
+Changes:
 
-Mehrere Enemies sollten zentral über LLL kontrolliert werden.
+- Biodiversity `OgopogoEnabled=false`;
+- Biodiversity `EnableVermin=false`;
+- natural Flash Turret suppressed during `SpawnMapObjects`;
+- natural CodeRebirth currency map objects suppressed during `SpawnMapObjects` in both V81 `IndoorMapHazard[]` and legacy paths;
+- S1.37 natural scrap currency filter retained;
+- all relevant LethalMin CodeRebirth/Pikmin interaction toggles verified false;
+- direct CodeRebirth utility-kill guard added for Pikmin/Puffmin, closing the observed crane-kill gap;
+- GeneralImprovements `AddHealthRechargeStation=true` explicitly verified and preserved;
+- S1.38 2560x1440 and Old-Bird-only Lethal Resonance carried forward;
+- BCMER still disabled.
 
-**Result / significance:** Für Rolling Giant/Siren Head später als unzuverlässig verworfen.
+Build/CRC/member-delta/package/config/DLL-compilation checks all passed.
 
-## S1.12 — Vier-Enemy-Offense-Test
-
-Nur Rolling Giant, Shy Guy, Locker innen und Siren Head draußen vorgesehen.
-
-**Result / significance:** Observer leakte über zusätzliche Match-Regeln.
-
-## S1.13 — Runtime-Identifier/EnemyScan
-
-Locker/Observer hart deaktiviert; Runtime-Namen getestet; EnemyScan installiert.
-
-**Result / significance:** Don't Touch Me leakte; Rolling Giant Runtime-Weight 0; LLL-Ownership verworfen.
-
-## S1.14 — Native Spawn-Ownership
-
-Rolling Giant20, Shy Guy7, SirenHead30 wieder native; konkurrierende LLL-Entries entfernt.
-
-**Result / significance:** Praktisch bestätigt und weiterhin maßgeblich.
-
-## S1.15 — Rolling Giant juijui-Verhalten
-
-RandomlyMoveWhileLooking, MoveSpeed2, Acceleration1 etc.
-
-**Result / significance:** Bewährte Bewegungskonfiguration.
-
-## S1.16 — Random Enemy Sizes
-
-RandomEnemiesSize 1.1.20 integriert.
-
-**Result / significance:** Praktisch bestätigt.
-
-## S1.17 — Mirage/ShipWindows/Company-Vorbereitung
-
-FearOverhauled entfernt; AutoCompanyBuilding 1.2.1; ShipWindows 2.11.1; LethalModDataLib entfernt.
-
-**Result / significance:** AutoCompany später verworfen.
-
-## S1.18 — Company-Automation Test 1
-
-AutoCompanyBuilding 1.2.1 beibehalten.
-
-**Result / significance:** Auto-Routing nicht zuverlässig.
-
-## S1.19 — RandomMoonFX-Alternative
-
-AutoCompanyBuilding entfernt; RandomMoonFX getestet.
-
-**Result / significance:** Ungeeignet; nicht wiederverwenden.
-
-## S1.20 — AutoCompanyBuilding 1.1.3
-
-Ältere Version getestet.
-
-**Result / significance:** Routing teils möglich, Auto-Landung nicht; verworfen.
-
-## S1.21 — Pikmin Water Avoidance
-
-Water Avoidance aktiviert; Company noch offen.
-
-**Result / significance:** Löste Wasserproblem nicht.
-
-## S1.22 — CompanyBuildingEnhancements + Hold Scan
-
-CompanyBuildingEnhancements 2.6.0 und LethalHUD Hold-to-Scan eingeführt.
-
-**Result / significance:** In S1.23 bestätigt.
-
-## S1.23 — Pikmin Water Resistance + Company bestätigt
-
-Alle Pikmin-Typen wasserresistent; Water Avoidance false; Deadline0→Gordion→Auto-Landung bestätigt.
-
-**Result / significance:** Stabile Lösung.
-
-## S1.24 — Enemy Restore / breite Spawn-Basis
-
-Breiter Enemy-Roster; Pikmin Speed1.3; Referenzverhältnisse etabliert.
-
-**Result / significance:** Letzter extrem ausführlich dokumentierter Altstand.
-
-## S1.25 — SCP-999 Isolation
-
-SCP-999 sollte nach der massiven SCP999AI/SnowyLib-NRE-Flut deaktiviert bleiben.
-
-**Result / significance:** Zielzustand war SCP999 aus. Aktuelle S1.31–S1.34 Runtime-Logs zeigten später jedoch, dass dieser Zustand unbemerkt regressiert war; S1.36 korrigiert das erneut.
-
-## S1.26 — Spawn Balance
-
-Immortal Snail max2; Screenshot-Verhältnisse bindend; Giant Sapsucker globaler Daytime-Ansatz.
-
-**Result / significance:** Regeln für spätere Builds.
-
-## S1.27 — Equal Interior Rotation
-
-Normale Interiors auf gleiche Baseline.
-
-**Result / significance:** Vorbereitung 26er-Rotation.
-
-## S1.28 — Black Mesa Equal Rotation
-
-Black Mesa über eigene DawnLib/Mod-Config Weight100 eingebunden.
-
-**Result / significance:** Runtime: 26 viable, alle Weight100.
-
-## S1.29 — CodeRebirth Runtime Test
-
-CodeRebirth1.6.9 + Abhängigkeiten integriert.
-
-**Result / significance:** Normale Gameplay-Basis hinter S1.30.
-
-## S1.29D — Enemy Power Audit
-
-S1.29 + RedPillEnemySpawn Diagnosemod.
-
-**Result / significance:** Plugin lud, vollständige Runtime-Power-Tabelle blieb aus.
-
-## S1.30 — Power Caps / Mimicless / Pikmin Shield
-
-Mimics+CoronerMimics entfernt; CR-Pikmin-Schalter false; höhere Indoor-Caps.
-
-**Result / significance:** Flash Turret Schutz bestätigt; Indoor subjektiv etwas zu dicht.
-
-## S1.31 — Indoor Power Trim -4
-
-Alle steuerbaren Indoor-Caps um4 reduziert; keine Weight-/Interior-/Pikmin-Änderungen.
-
-Späterer S1.31-Test zeigte einen mehrminütigen Pikmin-Angriff auf LeafBoi(Clone). Derselbe Runtime-Stand zeigte außerdem überraschend wieder SCP999 2.4.0 plus Startup-NRE.
-
-**Result / significance:** Letzte unveränderte Power-Cap-Basis, aber nicht mehr aktueller Gameplay-Stand.
-
-
-## S1.32 — Leaf Boy Blacklist + Mirage Keep Recordings
-
-Auf Basis S1.31:
-
-- Leaf boy an die bestehende LethalMin Attack Blacklist angehängt; die längere bestehende Liste blieb erhalten.
-- Mirage neverDeleteRecordings=true gesetzt; andere beobachtete Mirage-Werte beibehalten.
-- Mirage-Pfade geklärt: <Lethal Company>/Mirage/settings.json und <Lethal Company>/Mirage/Recording.
-
-Runtime-Test: Beim Rückweg vom Dungeon war die Schiffshangartür geschlossen. Mit dem damaligen AJB-Mod sank die Türenergie nicht, sodass der einzige Spieler draußen dauerhaft ausgesperrt war.
-
-Die konkrete ursprüngliche Close-Ursache wurde nicht bewiesen. Malfunctions zeigte keinen erfolgreichen relevanten Door-Event; BCMER war deaktiviert; ein Masked war zwar beim Schiff, aber Vanilla-Masked besitzt keine Hangar-Button-Interaktion.
-
-**Result / significance:** Leaf/Mirage-Fix beibehalten. Ship-door-Lockout brauchte einen engeren Failsafe.
-
-## S1.33 — Erster Ship Door Failsafe
-
-AJB-Keep_hangar_ship_door_closed deaktiviert. Eigene DLL sollte:
-
-- bei lebendem Spieler im Schiff Türenergie auf 100% halten,
-- bei allen lebenden Spielern draußen Vanilla-Drain erlauben,
-- DoorAudit-Stacks loggen.
-
-**Result / significance:** Später stellte sich heraus, dass die Custom-DLL beim normalen Gale-Import nicht übernommen/geladen worden war. Das Design war daher noch nicht runtime-getestet.
-
-## S1.34 — Malfunctions Disabled / Runtime-Test
-
-zealsprince-Malfunctions auf ausdrücklichen Benutzerwunsch deaktiviert. Entscheidung: bleibt aus, bis der Benutzer irgendwann explizit Reaktivierung verlangt.
-
-Runtime-Test:
-
-- kein Custom-Door-Plugin Load-Eintrag,
-- keine DoorAudit/DoorFailsafe-Zeilen,
-- als einziger Spieler im gelandeten Schiff Tür geschlossen → Prozent sank und Tür öffnete bei 0%: reines Vanilla-Verhalten,
-- enemies schien nicht alle tatsächlich gespawnten Enemies zu zeigen,
-- Quellcodeprüfung von EnemyScan 1.2.1 bestätigte den ScanNode-Filter als Ursache,
-- Puma identifiziert als Vanilla-Feiopar/PumaAI,
-- Coin identifiziert als CodeRebirth-Währung für Denomination Analyzer / Merchant / Vending,
-- SCP999 lud weiterhin und warf Startup-NRE.
-
-**Result / significance:** Neuaufbau des lokalen Patches erforderlich; SCP999-Manifestregression erkannt.
-
-## S1.35 — Door + Complete Enemy Scan
-
-Neue lokale S135CompatibilityFixes.dll gegen V81 GameLibs gebaut.
-
-Enthält:
-
-- robustere In-Ship-Erkennung über Vanilla-Flag plus shipInnerRoomBounds,
-- Anti-Lockout-Failsafe über Vanilla-Hydraulik statt Force-Open-RPC,
-- DoorAudit-Logging,
-- EnemyScan-Patch ohne ScanNode-Voraussetzung für die Terminalanzeige,
-- Malfunctions weiter deaktiviert,
-- AJB weiter deaktiviert,
-- Fallback local-mod ZIP.
-
-**Result / significance:** Build/Archiv/Diff erfolgreich, aber noch kein Runtime-Test. Beim Handover-Audit wurde erkannt, dass SCP999 im Manifest noch aktiv war.
-
-## S1.36 — Handover Clean Baseline
-
-S1.35 plus exakt eine Profilbereinigung:
-
-- ProjectSCP-SCP999 von enabled auf disabled.
-
-Kein anderer S1.35-Archivmember wurde geändert.
-
-Manifest: 176 total / 170 active / 6 disabled.
-
-**Result / significance:** Neuer kanonischer Übergabe-/Testkandidat. Erster nächster Test muss zuerst bestätigen, dass S135CompatibilityFixes.dll durch Gale tatsächlich importiert und von BepInEx geladen wird.
+**Current status:** S1.39 is the canonical test candidate but is not yet runtime-accepted. S1.38 remains the latest runtime-tested reference.

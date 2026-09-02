@@ -1,15 +1,15 @@
-# 02 — Technical Baseline
+# 02 - Technical Baseline
 
-## Current manifest: S1.36
+## Current manifest: S1.39
 
 Profile:
 
-Profiles/LC V1 S1.36 Handover Clean Baseline.r2z
+`Profiles/LC V1 S1.39 Cleanup Health Pikmin Shield.r2z`
 
-- 176 Thunderstore manifest entries
-- 170 active
+- 179 Thunderstore manifest entries
+- 173 active
 - 6 explicitly disabled
-- plus one required project-local compatibility plugin embedded in the archive and available separately under Patches/
+- plus one project-local cumulative compatibility plugin embedded in the archive and available separately under `Patches/`
 
 Explicitly disabled:
 
@@ -20,53 +20,107 @@ Explicitly disabled:
 - Kittenji-Dont_Touch_Me 1.2.8
 - SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0
 
-The full package list is in Current/Aktive_Modliste_S1.36.txt.
+The exact package list is in `Current/Aktive_Modliste_S1.39.txt`.
+
+## S1.38 package additions carried into S1.39
+
+- Rumi-FixCameraResolution 1.5.3
+- LethalResonance-LETHALRESONANCE 4.7.8
+- loaforc-loaforcsSoundAPI_LethalCompany 1.0.2
+
+Existing compatible dependencies were intentionally kept without downgrade, including loaforc-loaforcsSoundAPI 2.0.12, ButteryStancakes-EnemySoundFixes 1.9.14, Hardy-LCMaxSoundsFix 1.2.0 and BepInExPack 5.4.2305.
 
 ## Required local plugin
 
-Patches/S135CompatibilityFixes/
+`Patches/S139CompatibilityFixes/`
 
-Package:
+Fallback package:
 
-Patches/S135CompatibilityFixes/Tendas-S135CompatibilityFixes-1.0.0.zip
+`Patches/S139CompatibilityFixes/Tendas-S139CompatibilityFixes-1.0.0.zip`
 
-Embedded DLL inside S1.36:
+Embedded DLL:
 
-BepInEx/plugins/Tendas-S135CompatibilityFixes/S135CompatibilityFixes.dll
+`BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`
 
-Functions:
+Expected runtime marker:
 
-1. ship-door anti-lockout behavior,
-2. door audit logging,
-3. EnemyScan complete-list patch.
+`S1.39 Compatibility Fixes loaded.`
+
+### Functions
+
+1. ship-door anti-lockout behavior;
+2. DoorAudit / DoorFailsafe diagnostics;
+3. complete EnemyScan terminal listing;
+4. natural CodeRebirth currency/credit filtering from normal scrap generation;
+5. natural CodeRebirth currency map-object filtering from indoor hazard generation;
+6. natural CodeRebirth Flash Turret suppression;
+7. CodeRebirth utility-kill Pikmin/Puffmin guard, intended to close the observed Autonomous Crane kill path.
 
 ### Gale import requirement
 
-Use **Advanced options → Import all files** when importing S1.36.
+Use **Advanced options -> Import all files**. If the marker is absent, import the local-mod ZIP manually.
 
-If BepInEx does not log S1.35 Compatibility Fixes loaded, import the local-mod ZIP manually into the same profile.
+## S1.39 targeted config values
 
-## Package versions vs runtime plugin versions
+### Biodiversity Ogopogo
 
-The export lists Thunderstore package versions. Current logs prove that some packages contain assemblies whose internal plugin versions differ.
+- `OgopogoEnabled = false`
+- `EnableVermin = false`
 
-For code/error analysis, prefer the newest runtime log over the manifest when they disagree.
+No other Biodiversity component was deliberately disabled by this change.
 
-Examples from current runs:
+### GeneralImprovements
 
-- SirenHead package 2.0.7 → runtime plugin 2.0.3
-- ImmortalSnailFork package 0.1.1 → runtime plugin 0.1.0
-- Black Mesa package 3.4.4 → runtime plugin 3.4.1
-- Coroner package 2.4.1 → runtime plugin 2.3.0
-- darmuhsTerminalStuff package 3.10.2 → runtime plugin 3.10.1
-- Lethal Doors Fixed package 1.2.1 → runtime plugin 1.2.0
-- FairAI package 1.6.1 → runtime plugin 1.6.0
+- `AddHealthRechargeStation = true`
 
-Do not silently treat these as package corruption; package version and assembly/plugin version can legitimately differ. Always state which source is being used.
+This value was already true in the canonical S1.36 baseline. S1.39 preserves and explicitly verifies it. Runtime full-heal acceptance remains pending.
+
+### LethalMin CodeRebirth compatibility
+
+All of these are asserted false in the S1.39 build:
+
+- ACU Targets Winged Pikmin
+- ACU Bullet Knockbacks Pikmin
+- Crane Targets Pikmin
+- Crane Squishes Pikmin
+- Fan Knockbacks Pikmin
+- Microwave Knockbacks Pikmin
+- Flash Turret Knockbacks Pikmin
+- Laser Turret Kills Pikmin
+- Tornado Pulls Pikmin
+- Compactor Squishes Pikmin
+
+The direct S1.39 kill guard exists because the CodeRebirth Autonomous Crane still killed a Pikmin in runtime even with the crane settings false. Separately, S1.36 runtime testing confirmed the microwave interaction no longer affected Pikmins; this is an accepted behavior unless a regression is observed.
+
+## FixCameraResolution baseline
+
+S1.38/S1.39 intended settings:
+
+- internal render target: 2560x1440
+- `Auto Size = false`
+- `Check Resolution Every Frame = false`
+- HUD fixed aspect ratio: true
+- HDRP Bloom/Fog/Shadow/Post Processing/Vignette: Vanilla
+- Antialiasing: None
+- Visor: preserved
+
+S1.38 runtime log confirms FixCameraResolutions 1.5.3 loaded, and the user explicitly reported the result worked as intended. Keep the fixed 2560x1440 configuration unless the display setup changes.
+
+## Lethal Resonance baseline
+
+Only these three groups are enabled:
+
+- `EnabledSounds:old_bird`
+- `EnabledSounds:old_bird_footsteps`
+- `EnabledSounds:old_bird_speaker`
+
+All other Lethal Resonance sound/config toggles are false.
+
+Runtime plugin/SoundAPI loading occurred in S1.38, but an actual Old Bird encounter validating the intended replacement set is still pending.
 
 ## Indoor power caps
 
-Unchanged from S1.31.
+Unchanged from S1.31. Do not rebalance while testing unrelated S1.39 fixes.
 
 ### Vanilla
 
@@ -85,8 +139,6 @@ Unchanged from S1.31.
 | March | 24 |
 | Titan | 32 |
 | Gordion / Company | 0 |
-
-These came from the explicit S1.30-values-minus-4 decision. Do not rebalance them while testing unrelated fixes.
 
 ### Custom/external
 
@@ -144,8 +196,6 @@ All intended at Weight 100 on normal moons:
 25. Toy Store
 26. Black Mesa
 
-Runtime previously confirmed all 26 viable at Weight 100 with an empty unviable list.
-
 Black Mesa uses its own DawnLib/config path; do not double-register through LLL.
 
 ## LethalMin baseline
@@ -156,121 +206,35 @@ Core Pikmin settings:
 - Invinceable Pikmin = true
 - Pikmin Die In Player Death Zones = false
 
-Current S1.36 Attack Blacklist line:
-
-Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy
-
-Do not replace this with an older shorter list. S1.32 appended Leaf boy to the existing current list.
+Attack Blacklist must retain the current longer list plus `Leaf boy`; do not replace it with older shorter handover values.
 
 ## Mirage baseline
 
-S1.36 carries:
+Desired/current latest-runtime-confirmed after **manual user setting**:
 
-localPlayerVolume=0.5  
-neverDeleteRecordings=true  
-allowRecordVoice=true  
-muteVoiceMimic=false
+- localPlayerVolume=0.5
+- neverDeleteRecordings=true
+- allowRecordVoice=true
+- muteVoiceMimic=false
 
-Mirage paths:
+The user had to set `neverDeleteRecordings=true` manually in the Main Menu/LethalConfig; the profile import did not reliably apply it. The later S1.38 log confirmed the manual value was active. Do not treat the embedded/profile copy as sufficient proof.
 
-- settings: <Lethal Company installation folder>/Mirage/settings.json
-- recordings: <Lethal Company installation folder>/Mirage/Recording
+Paths:
 
-neverDeleteRecordings=true is intentional and must remain unless the user asks otherwise.
+- settings: `<Lethal Company>/Mirage/settings.json`
+- recordings: `<Lethal Company>/Mirage/Recording`
 
-## Ship-door compatibility patch
+## Identified S1.38 enemy: The Cabinet
 
-The S1.35/S1.36 local plugin patches HangarShipDoor.Update() with a late postfix.
-
-Behavior only while landed and hangar closed:
-
-- living player inside ship → doorPower forced back to 1f after vanilla Update, so power stays 100%;
-- living players exist but all are outside → no refill, vanilla hydraulic drain continues and opens the door at zero;
-- no living controlled players, ship leaving/orbit/ship phase, or open door → no intervention.
-
-Inside detection uses both:
-
-- player.isInHangarShipRoom
-- StartOfRound.shipInnerRoomBounds.bounds.Contains(player.transform.position) fallback
-
-Diagnostics:
-
-- [DoorAudit]
-- [DoorFailsafe]
-
-The patch also logs stack traces for SetDoorClosed, SetDoorOpen, PlayDoorAnimation and Start/Stop ship-door button interactions.
-
-AJB-Keep_hangar_ship_door_closed is disabled to avoid competing postfixes.
-
-## EnemyScan complete-list patch
-
-Original EnemyScan 1.2.1 only listed EnemyAI that had a ScanNodeProperties child.
-
-S1.35/S1.36 patches only BuildEnemyCountString() so that it groups every active EnemyAI with a valid EnemyType by enemyType.enemyName.
-
-It does not modify:
-
-- spawn weights,
-- spawn caps,
-- PowerLevels,
-- AI,
-- ScanNodes,
-- bestiary registration.
-
-## Coin / CodeRebirth currency
-
-Coin is CodeRebirth content, namespaced as code_rebirth:coin.
-
-CodeRebirth Money.TryCollectCoin():
-
-- requires a MoneyCounter supplied by the Denomination Analyzer;
-- without it, displays a hint telling the player to buy the analyzer from the ship terminal;
-- with it, adds the coin value to stored CodeRebirth currency and destroys/despawns the coin.
-
-The stored currency is used by CodeRebirth merchant/vending systems.
-
-## Puma / Feiopar
-
-PumaAI is the internal vanilla AI class for the V80+ enemy Feiopar. Puma log lines do not imply a Puma mod is installed.
+The user's four-legged Jester-like indoor enemy was identified as **Cabinet** from `Cabinet_crew-TheCabinet 1.12.1`. The S1.38 runtime log explicitly recorded `Spawning Cabinet from vent` followed by `TheCabinet` debug output. This is an identification fact, not a request to disable the enemy.
 
 ## SpawnCycleFixes
 
-Spawn Cycle Fixes 1.2.2 remains active.
+Spawn Cycle Fixes 1.2.2 remains active. Do not disable it blindly if enemies feel late; inspect spawn probability/amount curves first.
 
-Approximate consistent spawn waves historically identified:
+## Known warnings / issues not to overreact to
 
-- 07:39
-- 09:00
-- 11:00
-- 13:00
-- 15:00
-- 17:00
-- 19:00
-- 21:00
-- 23:00
-
-Do not disable it blindly. If enemies feel too late, investigate probability/amount curves rather than simply removing SpawnCycleFixes.
-
-## Known current warnings/issues
-
-### SCP999 startup NRE
-
-S1.31–S1.34 logs showed Loading [SCP999 2.4.0], immediately followed by NullReferenceException in SCP999.Plugin.Awake().
-
-S1.36 disables the package. Next runtime must verify the load/NRE is gone.
-
-### SellMyScrap
-
-Current logs show warnings because several methods cannot load ShipInventoryUpdated, Version=2.0.0.0. SellMyScrap otherwise continues loading. Investigate only if related functionality is broken.
-
-### InjectionLibrary native DLL warnings
-
-Mirage/Opus native DLLs are skipped as non-.NET assemblies by InjectionLibrary. Those scanner warnings alone are not a failure.
-
-### CodeRebirth Weather Registry
-
-Weather Registry not found, skipping weather content registration appears while CodeRebirth otherwise continues loading. Treat as an open compatibility warning, not a proven blocker.
-
-### NavMeshInCompany
-
-Missing NodeHelper script warnings remain known. Reassess only if Company navigation is actually broken.
+- SellMyScrap warnings about ShipInventoryUpdated should only be acted on if user-facing functionality is actually broken.
+- InjectionLibrary warnings for Mirage/Opus native DLLs are expected scanner noise for non-.NET binaries.
+- CodeRebirth can log Weather Registry unavailable while continuing to load; treat as compatibility warning unless missing weather content matters.
+- NavMeshInCompany NodeHelper warnings remain known; investigate only if Company navigation is actually broken.

@@ -1,170 +1,75 @@
-# 01 — Handover Core
+# 01 - Handover Core
 
 ## Working rules for the next ChatGPT conversation
 
-1. Treat **S1.36** as the current canonical handover/test candidate unless the repository contains a newer confirmed state.
-2. Treat **S1.34** as the latest runtime-tested profile until S1.36 is actually run.
-3. Never treat S1.29D as a normal gameplay base; it existed only for the RedPill enemy-power audit.
-4. Before changing enemy spawning, determine the actual spawn owner for the enemy.
-5. Do not independently distort the binding screenshot reference ratios.
-6. Do not modify the confirmed 26×Weight100 interior architecture without a concrete runtime reason.
+1. Treat **S1.39** as the current canonical build/test candidate unless the repository contains a newer confirmed state.
+2. Treat **S1.38** as the latest runtime-tested reference until S1.39 is actually run.
+3. S1.29D is diagnostic only and must never become the gameplay base.
+4. Before changing enemy spawning, identify the actual spawn owner. Prefer one positive owner per enemy.
+5. Preserve the binding spawn-rate screenshot ratios for the enemies shown on Experimentation, Assurance, Vow, Offense, March, Adamance and Titan.
+6. Do not modify the confirmed 26xWeight100 interior architecture without a concrete runtime reason.
 7. Unknown enemy PowerLevels must not be guessed.
-8. Do not reintroduce solutions listed in 05_FAILED_AND_OBSOLETE_APPROACHES.md without new evidence.
-9. **Malfunctions remains disabled until the user explicitly requests re-enabling it.**
-10. **ProjectSCP-SCP999 remains disabled.** Current logs proved it was accidentally active and throwing a startup NRE.
-11. Do not enable AJB-Keep_hangar_ship_door_closed alongside the S1.35/S1.36 local patch.
-12. For S1.36, verify the local plugin actually loads before judging door or EnemyScan behavior.
+8. Search `05_FAILED_AND_OBSOLETE_APPROACHES.md` before reviving old solutions.
+9. **Malfunctions remains disabled until the user explicitly requests reactivation.**
+10. **ProjectSCP-SCP999 remains disabled.** Earlier logs proved a startup NRE.
+11. **BCMER remains disabled in S1.39.** It is a later isolated project, not part of this acceptance test.
+12. AJB-Keep_hangar_ship_door_closed must stay disabled while the project-local door failsafe is active.
+13. CodeRebirthLib must not be installed.
+14. For Gale imports containing project-local DLLs, use **Advanced options -> Import all files** and verify the plugin load marker before judging behavior.
+15. Distinguish build verification from runtime acceptance. S1.39 is structurally verified, not gameplay-approved yet.
 
-## Critical S1.36 import/install rule
+## Current profile distinction
 
-The current profile embeds S135CompatibilityFixes.dll. Gale can skip extra arbitrary files on a normal profile import.
+### Canonical test candidate
 
-Use **Advanced options → Import all files**.
+`Profiles/LC V1 S1.39 Cleanup Health Pikmin Shield.r2z`
 
-If the plugin does not appear in the BepInEx startup log, import this local mod separately into the same profile:
+SHA-256: `b510e519b4af8b683e9b9e9f4e18035f90910d2e8782f2b9e6ded5e4ecef95fe`
 
-Patches/S135CompatibilityFixes/Tendas-S135CompatibilityFixes-1.0.0.zip
+### Latest runtime-tested reference
 
-Expected startup evidence:
+`Profiles/LC V1 S1.38 1440p Old Bird Resonance.r2z`
 
-- S1.35 Compatibility Fixes loaded
-- [EnemyScanFix] Patched EnemyScan to list every active EnemyAI regardless of ScanNodeProperties.
+S1.38 runtime evidence confirms the new camera-resolution plugin and S1.37 compatibility plugin loaded; the user explicitly accepted the 2560x1440 visual result. Mirage retention required manual intervention: the user set `neverDeleteRecordings=true` in the Main Menu/LethalConfig, and the subsequent S1.38 log confirmed the value. S1.38 nevertheless exposed issues now targeted by S1.39 and is therefore a reference, not the final desired endpoint.
 
-Absence of those messages means the fix is not installed.
+## S1.39 targeted changes
 
-## Gameplay-base lineage
+- Biodiversity `OgopogoEnabled=false`.
+- Biodiversity `EnableVermin=false`.
+- Natural CodeRebirth Flash Turret generation is suppressed during `RoundManager.SpawnMapObjects`.
+- Natural CodeRebirth currency map objects are suppressed during `SpawnMapObjects`; the S1.37 normal `SpawnScrapInLevel` currency filter remains.
+- LethalMin CodeRebirth/Pikmin interaction toggles remain false, including `Crane Targets Pikmin=false` and `Crane Squishes Pikmin=false`.
+- Because the crane still killed Pikmin in runtime despite those values, the S1.39 local plugin directly guards the CodeRebirth utility kill RPC and blocks Pikmin/Puffmin from `EnemyAI.KillEnemyOnOwnerClient` in that context.
+- GeneralImprovements `AddHealthRechargeStation=true` is verified and preserved. Actual full-heal behavior still needs S1.39 runtime validation.
+- S1.38's fixed 2560x1440 rendering and Old-Bird-only Lethal Resonance settings are carried forward.
 
-### S1.29
-LC V1 S1.29 CodeRebirth Runtime Test.r2z
-
-Normal gameplay base with CodeRebirth 1.6.9.
-
-### S1.29D
-LC V1 S1.29D Enemy Power Audit.r2z
-
-Diagnostic only. Never use as a gameplay base.
-
-### S1.30
-LC V1 S1.30 Power Caps Mimicless Pikmin Shield.r2z
-
-Built from S1.29, not S1.29D.
-
-Major changes:
-
-- x753-Mimics removed.
-- CoronerMimics removed.
-- CodeRebirth↔Pikmin hazard switches set false.
-- Indoor caps set to the then-selected higher values.
-- Enemy weights and 26-interior rotation preserved.
-
-### S1.31
-LC V1 S1.31 Indoor Power Trim -4.r2z
-
-All controllable indoor power caps reduced by 4. No intended weight/interior/Pikmin-protection changes.
-
-### S1.32
-LC V1 S1.32 Leaf Boy Blacklist + Mirage Keep Recordings.r2z
-
-Changes:
-
-- appended Leaf boy to the existing LethalMin Attack Blacklist;
-- added Mirage game-root settings with neverDeleteRecordings=true while preserving the other observed Mirage values.
-
-Runtime finding: the player returned from the dungeon to a closed ship hangar door and could be locked out indefinitely because the old AJB mod prevented the hydraulic countdown from recovering the door.
-
-### S1.33
-LC V1 S1.33 Ship Door Failsafe.r2z
-
-First custom replacement for AJB:
-
-- AJB disabled;
-- custom DLL intended to freeze power only while a living player was inside;
-- vanilla drain intended to resume when all living players were outside;
-- DoorAudit logging added.
-
-Later runtime evidence showed this DLL was not imported/loaded by Gale, so the algorithm was not actually tested.
-
-### S1.34
-LC V1 S1.34 Malfunctions Disabled
-
-Latest runtime-tested profile.
-
-Change: zealsprince-Malfunctions disabled by explicit user decision and intended to stay disabled until the user explicitly asks otherwise.
-
-Runtime findings:
-
-- custom S1.33 door plugin did not load;
-- no DoorAudit/DoorFailsafe output;
-- door energy drained and reopened at zero = vanilla behavior;
-- EnemyScan omitted some spawned enemies;
-- Puma was active and is vanilla Feiopar;
-- Coin came from CodeRebirth;
-- SCP999 still loaded and threw a startup NRE.
-
-### S1.35
-LC V1 S1.35 Door + Complete Enemy Scan.r2z
-
-Structurally verified but not runtime-tested.
-
-Rebuilt local patch:
-
-- ship-inside detection using isInHangarShipRoom plus shipInnerRoomBounds fallback;
-- door audit logging;
-- anti-lockout behavior that allows vanilla drain only when all living players are outside;
-- EnemyScan output patch that lists all active EnemyAI rather than requiring ScanNodeProperties.
-
-### S1.36
-LC V1 S1.36 Handover Clean Baseline.r2z
-
-Current canonical candidate.
-
-Exact intended delta from S1.35:
-
-- profile name updated;
-- ProjectSCP-SCP999 set enabled:false;
-- no other archive member changed.
-
-S1.36 carries all S1.35 fixes plus the S1.34 Malfunctions-disabled policy.
-
-## Stable architecture
-
-### Spawn ownership
-
-Use one positive spawn owner per enemy wherever practical.
+## Stable spawn ownership
 
 Especially:
 
-- Rolling Giant → native mod configuration.
-- Shy Guy / Scopophobia → native mod configuration.
-- Siren Head → native mod configuration.
+- Rolling Giant -> native mod configuration.
+- Shy Guy / Scopophobia -> native mod configuration.
+- Siren Head -> native mod configuration.
 
 Do not force them positive through LethalLevelLoader again without new evidence.
 
-### Binding enemy-weight references
+## Binding enemy-weight references
 
-The seven screenshots under References/Spawn-Rates/ are binding for relative ratios among the enemies shown on Experimentation, Assurance, Vow, Offense, March, Adamance and Titan.
+The seven screenshots under `References/Spawn-Rates/` are binding for relative ratios among the enemies shown. New enemies may enlarge the total pool, but reference enemies must not be independently rebalanced against one another without a deliberate new decision.
 
-New enemies may enlarge the total pool, but reference enemies must not be independently rebalanced against each other without a deliberate new decision.
+## Interiors
 
-### Interiors
+26 normal dungeon flows rotate at Weight 100. Black Mesa uses its own DawnLib/config path and must not be double-registered through LLL.
 
-26 normal dungeon flows rotate equally at Weight 100. Black Mesa uses its own DawnLib/config path and must not be double-registered through LLL.
-
-### Company automation
-
-Confirmed solution: CompanyBuildingEnhancements 2.6.0.
-
-Do not return to AutoCompanyBuilding or RandomMoonFX for this purpose.
-
-## Pikmin protection
+## Pikmin protection policy
 
 Core settings:
 
-- No Knock Back = true
-- Invinceable Pikmin = true
-- Pikmin Die In Player Death Zones = false
+- `No Knock Back = true`
+- `Invinceable Pikmin = true`
+- `Pikmin Die In Player Death Zones = false`
 
-S1.30 CodeRebirth compatibility switches false:
+CodeRebirth switches must remain false:
 
 - ACU Targets Winged Pikmin
 - ACU Bullet Knockbacks Pikmin
@@ -177,62 +82,47 @@ S1.30 CodeRebirth compatibility switches false:
 - Tornado Pulls Pikmin
 - Compactor Squishes Pikmin
 
-Confirmed: Flash Turret protection works.
+Confirmed historically: Flash Turret protection against direct Pikmin interaction worked. S1.39 additionally removes natural Flash Turret spawning. In the S1.36 runtime test, the user also confirmed Pikmins were no longer affected by CodeRebirth microwaves; treat microwave protection as accepted unless a later regression is observed.
 
-S1.31 Leaf Boy issue: Pikmins attacked LeafBoi(Clone) continuously for several minutes. S1.32+ appends Leaf boy to the current Attack Blacklist.
+Still open despite immortality/config switches:
 
-Still unconfirmed:
-
-- Microwave burn/cook immunity;
-- complete enemy-AI target exclusion for immortal Pikmins;
-- remaining CodeRebirth hazards;
-- runtime confirmation that the Leaf Boy blacklist fully stops the loop.
+- enemy AI wasting target selection on immortal Pikmins;
+- runtime validation of the new crane kill shield;
+- remaining CodeRebirth hazard edge cases.
 
 ## Ship-door facts
 
-- The original S1.32 close trigger was not conclusively identified.
-- Malfunctions did not show a successful relevant door malfunction in the analyzed run.
-- BCMER was disabled.
-- A Masked enemy was nearby, but vanilla MaskedPlayerEnemy has no StartButton/StopButton/HangarShipDoor interaction.
-- Poltergeist can allow dead players/ghosts to interact with ship-door buttons; this is distinct from Masked AI.
-- Permanent lockout came from a close action combined with unconditional AJB door-power refill.
-- S1.35/S1.36 replaces AJB with a narrower failsafe and reuses vanilla hydraulic drain/open logic when everyone living is outside.
+The permanent lockout was caused by an ordinary/external close combined with AJB's unconditional power refill. The local cumulative plugin keeps power at 100% only when a living player is actually inside the landed ship, and leaves vanilla hydraulic drain intact when all living players are outside.
+
+S1.36 runtime testing confirmed the local plugin loaded, produced DoorAudit markers, and the ship-door behavior worked as intended in the user's test. Keep AJB disabled.
 
 ## EnemyScan facts
 
-EnemyScan 1.2.1 originally used a ScanNodeProperties filter in BuildEnemyCountString(), so spawned enemies without a scan node could be omitted from enemies.
-
-S1.35/S1.36 patches only that list-building output. It does not change spawn rates, PowerLevels, AI, scan nodes, or bestiary data.
+EnemyScan 1.2.1 originally filtered the terminal list to EnemyAI that had a ScanNodeProperties child. The local plugin replaces only the output-building method so all active EnemyAI with EnemyType can be listed. In S1.36 the user's ~7pm terminal screenshot was cross-checked against the runtime log and the counts matched, so the complete-list fix is accepted. It does not change spawning, PowerLevels, AI, scan nodes or bestiary data.
 
 ## Mirage facts
 
-Current settings:
+Desired settings:
 
-- localPlayerVolume = 0.5
-- neverDeleteRecordings = true
-- allowRecordVoice = true
-- muteVoiceMimic = false
+- `localPlayerVolume = 0.5`
+- `neverDeleteRecordings = true`
+- `allowRecordVoice = true`
+- `muteVoiceMimic = false`
 
-Mirage stores:
+Storage is game-root, not BepInEx/config. The user had to set `neverDeleteRecordings=true` manually in the Main Menu/LethalConfig after an import; the later S1.38 log then confirmed it was true. Continue checking it after major profile imports and do not claim the `.r2z` alone guarantees this per-player setting.
 
-- settings: <Lethal Company installation folder>/Mirage/settings.json
-- recordings: <Lethal Company installation folder>/Mirage/Recording
+## Important disabled/parked systems
 
-This is game-root storage, not BepInEx/config.
-
-## Important enemy/system decisions
-
-- SCP-999 stays disabled.
+- SCP999 stays disabled.
 - Malfunctions stays disabled until explicit user instruction.
 - Immortal Snail maximum: 2 simultaneously.
-- Observer remains disabled.
-- Don't Touch Me remains disabled.
-- BCMER remains disabled but is not permanently obsolete.
-- CodeRebirthLib must not be installed.
-- Peepers enemy/hazard remains removed; do not confuse it with the Peeper tool.
+- Observer stays disabled.
+- Don't Touch Me stays disabled.
+- BCMER stays disabled for S1.39; reactivation is a later isolated build.
+- Peepers enemy/hazard stays removed; do not confuse with the Peeper tool.
 - LethalPlaytime Boxy Boo / Huggy Wuggy / Miss Delight should not be reactivated on V81.
 
-## Current unresolved enemy PowerLevels
+## Unresolved Enemy PowerLevels
 
 Do not invent values for:
 

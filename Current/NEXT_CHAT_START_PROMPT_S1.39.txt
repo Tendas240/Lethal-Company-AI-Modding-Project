@@ -1,0 +1,9 @@
+Nutze dieses Repository als vollständige Projektübergabe:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+Lies zuerst START_HERE_ChatGPT_Masterprompt.txt und anschließend die dort/README.md unter "ChatGPT - read first" genannten Dateien vollständig. Der chronologisch neueste bestätigte Stand ist verbindlich.
+
+Aktueller kanonischer Build-/Testkandidat: S1.39 - "LC V1 S1.39 Cleanup Health Pikmin Shield".
+Letzter tatsächlich runtime-getesteter Referenzstand: S1.38 - "LC V1 S1.38 1440p Old Bird Resonance".
+
+Wichtig: S1.39 ist build-/archiv-/diff-/config-verifiziert, aber noch nicht runtime-akzeptiert. Beginne mit den Tests aus Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md und behandle S1.38 als letzte Runtime-Evidenz.

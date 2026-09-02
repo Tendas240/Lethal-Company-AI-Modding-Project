@@ -1,0 +1,123 @@
+{
+  "date": "2026-09-02",
+  "canonical_state": "S1.39",
+  "current_profile": "LC V1 S1.39 Cleanup Health Pikmin Shield.r2z",
+  "current_profile_runtime_tested": false,
+  "latest_runtime_tested_state": "S1.38",
+  "latest_runtime_tested_profile": "LC V1 S1.38 1440p Old Bird Resonance.r2z",
+  "game": "Lethal Company V81",
+  "manifest_total": 179,
+  "manifest_active": 173,
+  "manifest_disabled": [
+    "AJB-Keep_hangar_ship_door_closed",
+    "zealsprince-Malfunctions",
+    "Reiko88-Observer",
+    "ProjectSCP-SCP999",
+    "Kittenji-Dont_Touch_Me",
+    "SoftDiamond-BrutalCompanyMinusExtraReborn"
+  ],
+  "persistent_user_decisions": {
+    "malfunctions": "disabled until user explicitly requests re-enable",
+    "scp999": "disabled",
+    "bcmer": "disabled for S1.39; later isolated re-audit allowed",
+    "observer": "disabled",
+    "dont_touch_me": "disabled",
+    "coderebirthlib": "do not install"
+  },
+  "local_patch": {
+    "name": "S139CompatibilityFixes",
+    "version": "1.0.0",
+    "source_path": "Patches/S139CompatibilityFixes/",
+    "fallback_package": "Patches/S139CompatibilityFixes/Tendas-S139CompatibilityFixes-1.0.0.zip",
+    "embedded_dll": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+    "gale_import_requirement": "Advanced options -> Import all files",
+    "runtime_load_markers": [
+      "S1.39 Compatibility Fixes loaded",
+      "[EnemyScanFix] Patched EnemyScan to list every active EnemyAI"
+    ],
+    "functions": [
+      "ship-door anti-lockout",
+      "DoorAudit/DoorFailsafe logging",
+      "complete EnemyScan output",
+      "natural CodeRebirth currency scrap filtering",
+      "natural CodeRebirth currency map-object filtering",
+      "Flash Turret natural spawn suppression",
+      "CodeRebirth utility-kill Pikmin/Puffmin protection"
+    ]
+  },
+  "s138_additions": {
+    "fix_camera_resolution": "1.5.3 fixed 2560x1440",
+    "lethal_resonance": "4.7.8 Old Bird only",
+    "soundapi_lc_binding": "1.0.2"
+  },
+  "s139_config": {
+    "ogopogo_enabled": false,
+    "vermin_enabled": false,
+    "general_improvements_health_recharge_station": true
+  },
+  "mirage": {
+    "localPlayerVolume": 0.5,
+    "neverDeleteRecordings": true,
+    "allowRecordVoice": true,
+    "muteVoiceMimic": false,
+    "runtime_confirmed_state": "S1.38 after manual user setting",
+    "settings_path": "<Lethal Company>/Mirage/settings.json",
+    "recording_path": "<Lethal Company>/Mirage/Recording",
+    "profile_import_reliable": false,
+    "manual_action": "User had to set neverDeleteRecordings=true in Main Menu/LethalConfig; subsequent S1.38 log confirmed true."
+  },
+  "lethalmin": {
+    "leaf_boy_attack_blacklisted": true,
+    "no_knock_back": true,
+    "invinceable_pikmin": true,
+    "pikmin_die_in_player_death_zones": false,
+    "coderebirth_interaction_switches": "all relevant switches asserted false in S1.39",
+    "microwave_runtime_status": "S1.36 user-confirmed: Pikmins no longer affected by CodeRebirth microwaves; regression-only retest."
+  },
+  "profile_sha256": {
+    "S1.36": "e8f63f37e7e565512399c08c7afc24c008fb7a0080bf62a58144d4a8f0e90c7c",
+    "S1.37": "2fe3b50d086cdd1111503128db70c630923e940963fe06c6a2d525b94c75b4af",
+    "S1.38": "a6ec9e716759708bfb375e69cd4405795892957540ec954406584df79c6ce5f0",
+    "S1.39": "b510e519b4af8b683e9b9e9f4e18035f90910d2e8782f2b9e6ded5e4ecef95fe"
+  },
+  "open_powerlevels": [
+    "Rolling Giant",
+    "Siren Head",
+    "Immortal Snail",
+    "Herobrine",
+    "Football",
+    "Faceless Stalker",
+    "CodeRebirth Debt Collector/Boogey Man"
+  ],
+  "next_tests": [
+    "verify S139CompatibilityFixes loads",
+    "verify natural currency map objects absent",
+    "verify Flash Turret natural spawn absent",
+    "verify Ogopogo/Vermin absent",
+    "verify CodeRebirth crane cannot kill Pikmin/Puffmin",
+    "verify health recharge station full-heal behavior",
+    "verify 2560x1440 carry-forward",
+    "validate Old Bird Lethal Resonance during encounter",
+    "check Mirage neverDeleteRecordings after import; set manually in Main Menu/LethalConfig if reverted",
+    "preserve full LogOutput.log"
+  ],
+  "next_major_phase": "after S1.39 acceptance, isolated BCMER reactivation/re-audit",
+  "recent_runtime_confirmed": {
+    "S1.36": [
+      "S1.35 compatibility plugin loaded with EnemyScanFix marker",
+      "ship-door failsafe behaved as intended in user test",
+      "terminal enemies output matched runtime active-enemy state",
+      "Pikmins no longer affected by CodeRebirth microwaves (user-confirmed)"
+    ],
+    "S1.38": [
+      "FixCameraResolution 1.5.3 loaded and user visually accepted 2560x1440 result",
+      "S1.37 compatibility plugin loaded with EnemyScanFix marker",
+      "SoundAPI load pipeline completed",
+      "Mirage neverDeleteRecordings=true confirmed only after user manually set it",
+      "Cabinet spawned from vent; identifies four-legged Jester-like enemy as TheCabinet"
+    ]
+  },
+  "identified_enemies": {
+    "four_legged_jester_like": "Cabinet - Cabinet_crew-TheCabinet 1.12.1"
+  }
+}

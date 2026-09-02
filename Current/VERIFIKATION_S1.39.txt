@@ -1,0 +1,40 @@
+LETHAL COMPANY REPOSITORY VERIFICATION - S1.39
+Generated: 2026-09-02
+
+Canonical build/test candidate:
+- Profiles/LC V1 S1.39 Cleanup Health Pikmin Shield.r2z
+- SHA-256: b510e519b4af8b683e9b9e9f4e18035f90910d2e8782f2b9e6ded5e4ecef95fe
+- Build/archive/diff/config verified; runtime acceptance pending.
+
+Latest runtime-tested reference:
+- Profiles/LC V1 S1.38 1440p Old Bird Resonance.r2z
+- SHA-256: a6ec9e716759708bfb375e69cd4405795892957540ec954406584df79c6ce5f0
+
+S1.38 runtime facts preserved in handover:
+- S1.37 Compatibility Fixes loaded
+- EnemyScanFix marker present
+- FixCameraResolutions 1.5.3 loaded
+- SoundAPI pipeline completed
+- after the user manually set Mirage retention in Main Menu/LethalConfig, Mirage loaded neverDeleteRecordings=true; profile import alone was not reliable
+
+S1.39 manifest verification:
+- 179 total Thunderstore entries
+- 173 active
+- 6 disabled
+- disabled: AJB-Keep_hangar_ship_door_closed; zealsprince-Malfunctions; Reiko88-Observer; ProjectSCP-SCP999; Kittenji-Dont_Touch_Me; SoftDiamond-BrutalCompanyMinusExtraReborn
+
+S1.39 local compatibility patch:
+- Patches/S139CompatibilityFixes/
+- fallback ZIP SHA-256: ec02f79c56f2f3ce24c8f625be3b51cea68b5a71a2a24d3ac8b4996f02c055c1
+- Gale import requires Advanced options -> Import all files
+- runtime marker: S1.39 Compatibility Fixes loaded.
+
+Build assertions passed:
+- Archive CRC: PASS
+- Member delta: PASS
+- Thunderstore package manifest validation: PASS
+- S1.39 config assertions: PASS
+- S1.39 compatibility DLL compiled: PASS
+
+Important distinction:
+- S1.39 protection/filter behavior is not called runtime-confirmed until a new S1.39 LogOutput.log proves the plugin loaded and the acceptance tests pass.

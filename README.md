@@ -1,114 +1,96 @@
 # Lethal Company AI Modding Project
 
-Current canonical project state: **S1.36**
+Current canonical project state: **S1.39**
 
-Current gameplay/test profile:
+Current gameplay/test candidate:
 
-Profiles/LC V1 S1.36 Handover Clean Baseline.r2z
+`Profiles/LC V1 S1.39 Cleanup Health Pikmin Shield.r2z`
 
-Latest runtime-tested state: **S1.34** — `Profiles/LC V1 S1.34 Malfunctions Disabled.r2z`.
+Latest runtime-tested reference: **S1.38** - `Profiles/LC V1 S1.38 1440p Old Bird Resonance.r2z`.
 
-S1.36 is build/diff/archive verified but **not yet runtime-tested**.
+S1.39 is build/diff/archive verified but **not yet runtime-tested**. S1.38 was run in game and is the newest runtime evidence source, but the run exposed issues that S1.39 is designed to correct.
 
-## Critical S1.36 import requirement
+## Critical S1.39 import requirement
 
-S1.36 contains a project-local compatibility DLL for the ship-door failsafe and complete EnemyScan output.
+S1.39 contains a project-local cumulative compatibility DLL.
 
-When importing the .r2z in Gale, enable:
+When importing the `.r2z` in Gale, enable:
 
-**Advanced options → Import all files**
+**Advanced options -> Import all files**
 
-If BepInEx does not log S1.35 Compatibility Fixes loaded, import this local mod separately into the S1.36 profile:
+Expected BepInEx marker:
 
-Patches/S135CompatibilityFixes/Tendas-S135CompatibilityFixes-1.0.0.zip
+- `S1.39 Compatibility Fixes loaded.`
 
-Do not evaluate the door/EnemyScan fixes unless the local plugin load is confirmed.
+If that marker is absent, import this local mod separately:
 
-## ChatGPT — read first
+`Patches/S139CompatibilityFixes/Tendas-S139CompatibilityFixes-1.0.0.zip`
+
+Do not evaluate S1.39's map-object filtering or Pikmin kill protection unless the local plugin load is confirmed.
+
+## ChatGPT - read first
 
 A new ChatGPT conversation should use the machine-readable repository content in this order:
 
-1. START_HERE_ChatGPT_Masterprompt.txt
-2. Current/00_CURRENT_STATE.md
-3. Current/01_HANDOVER_CORE.md
-4. Current/02_TECHNICAL_BASELINE.md
-5. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-6. Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
-7. Current/06_RECENT_WORK_S1.32-S1.36.md
-8. Current/03_PROJECT_CHRONOLOGY.md
-9. Current/Projektstatus_S1.36.json
-10. Current/Aktive_Modliste_S1.36.txt
-11. Current/S1.36_BUILD_VERIFICATION.txt
-12. Current/VERIFIKATION_S1.36.txt
+1. `START_HERE_ChatGPT_Masterprompt.txt`
+2. `Current/00_CURRENT_STATE.md`
+3. `Current/01_HANDOVER_CORE.md`
+4. `Current/02_TECHNICAL_BASELINE.md`
+5. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+6. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+7. `Current/06_RECENT_WORK_S1.32-S1.39.md`
+8. `Current/03_PROJECT_CHRONOLOGY.md`
+9. `Current/Projektstatus_S1.39.json`
+10. `Current/Aktive_Modliste_S1.39.txt`
+11. `Current/S1.39_BUILD_VERIFICATION.txt`
+12. `Current/VERIFIKATION_S1.39.txt`
+13. `Current/DATEIINVENTAR_S1.39.txt`
+14. `Current/SHA256SUMS_S1.39.txt`
 
-Then inspect Profiles/, Patches/, Logs/, References/, and Current/HumanReadable/ according to the task.
-
-## Human-readable S1.36 handover
-
-Current/HumanReadable/ contains secondary DOCX/PDF versions for human reading:
-
-- Handover-Prompt_Lethal-Company_bis_S1.36
-- Handover-Prompt_S1.36_Aktueller-Kern
-- Lethal-Company_Chatverlauf_Handover_bis_S1.36
-- Lethal-Company_Projektchronik_Kompakt_bis_S1.36
-
-These are convenience copies. The Markdown/TXT/JSON files under Current/ remain the primary machine-readable sources for ChatGPT.
+Then inspect `Profiles/`, `Patches/`, `Logs/`, `References/`, and `Current/HumanReadable/` according to the task.
 
 ## Current key decisions
 
-- **Malfunctions stays disabled** until the user explicitly asks to re-enable it.
-- **ProjectSCP-SCP999 stays disabled.** Current runtime logs proved it had accidentally remained active and was throwing a startup NRE; S1.36 corrects the manifest.
-- AJB-Keep_hangar_ship_door_closed stays disabled while the S1.35/S1.36 local door patch is used.
-- BCMER, Observer and Don't Touch Me remain disabled.
+- **Malfunctions stays disabled** until the user explicitly requests reactivation.
+- **ProjectSCP-SCP999 stays disabled.** Earlier runtime logs proved its startup NRE.
+- AJB-Keep_hangar_ship_door_closed stays disabled while the local door failsafe is used.
+- **BCMER stays disabled for S1.39.** It is intentionally parked, not permanently banned. Its reactivation should be isolated in a later build after S1.39 is accepted.
+- Observer and Don't Touch Me stay disabled.
 - Leaf Boy remains in the LethalMin Attack Blacklist.
-- Mirage neverDeleteRecordings=true remains enabled.
-- Unknown PowerLevels must not be guessed.
+- Mirage `neverDeleteRecordings=true` is desired. The user had to set it manually in the Main Menu/LethalConfig after profile import; the latest S1.38 log then confirmed the value was actually `true`. Do not assume the profile import applies this per-player game-root setting.
+- Unknown enemy PowerLevels must never be guessed.
+- CodeRebirthLib must not be reintroduced.
 
-## Markdown-first rule
+## What S1.39 changes
 
-.md, .txt, and .json files are the **primary machine-readable handover sources**.
+- Biodiversity Ogopogo disabled.
+- Biodiversity Vermin companion mechanic disabled.
+- Natural CodeRebirth Flash Turret spawning suppressed.
+- Natural CodeRebirth currency map-object spawning suppressed; the earlier natural scrap currency filter remains.
+- Direct CodeRebirth utility-kill protection for Pikmin/Puffmin added, closing the observed Autonomous Crane kill gap.
+- GeneralImprovements health recharge station is explicitly verified enabled in the profile; full-heal behavior still needs runtime acceptance.
+- S1.38 2560x1440 FixCameraResolution and Old-Bird-only Lethal Resonance configuration are carried forward unchanged.
 
-Historical S1.31 PDF/DOCX documents are archived under Archive/S1.31/HumanReadable/.
+## Runtime distinction
 
-A GitHub PDF viewer failure must not block project takeover when equivalent machine-readable sources exist.
+**Runtime-tested:** S1.38.
 
-For GitHub text files, ChatGPT may prefer raw content:
+Confirmed in the S1.38 phase: FixCameraResolution loaded and was visually accepted by the user at 2560x1440; the S1.37 compatibility plugin loaded; after the user manually set Mirage retention in the Main Menu/LethalConfig, the log showed `neverDeleteRecordings=true`. The same run still showed natural CodeRebirth coins and led to the observed crane/Pikmin and cleanup requests that S1.39 addresses. Earlier S1.36 runtime testing had already accepted the ship-door failsafe, complete `enemies` output, and Pikmin immunity to the CodeRebirth microwave interaction.
 
-https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/<PATH>
+**Build-tested only:** S1.39.
 
-## Repository structure
-
-- Current/ — current machine-readable state, metadata, and secondary HumanReadable documents
-- Profiles/ — current and still-relevant Gale/r2modman .r2z profiles
-- Patches/ — project-local compatibility source and installable local-mod packages
-- Logs/ — runtime logs and diagnostic summaries
-- References/ — binding screenshots and reference values
-- Archive/ — older primary sources retained for historical diagnosis
+S1.39 has passed compilation, profile CRC, member-delta, package-manifest and config assertions. Its gameplay acceptance tests remain open.
 
 ## Priority rule
 
-The chronologically newest confirmed information overrides older assumptions.
+The chronologically newest confirmed information overrides older assumptions. Runtime evidence overrides package-manifest assumptions when they disagree about what actually loaded.
 
-Runtime evidence overrides package-manifest assumptions when they disagree about what actually loaded.
-
-Files under Archive/ are historical references and must not override a newer confirmed project state unless current documentation explicitly points back to them.
+`Archive/` is historical reference material and must not override a newer confirmed state unless current documentation explicitly points back to it.
 
 Do not repeat solutions documented as failed or obsolete without new evidence.
 
-## Current first test
-
-Import S1.36 with **Import all files**, launch once, and verify:
-
-- S1.35 Compatibility Fixes loaded
-- [EnemyScanFix] ...
-- no Loading [SCP999 ...]
-
-Then perform the controlled inside/outside hangar-door tests and compare enemies output against known active enemies.
-
-See Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md for the exact test sequence.
-
 ## Handover master prompt
 
-The durable repository workflow and takeover instructions are in START_HERE_ChatGPT_Masterprompt.txt.
+The durable repository workflow and takeover instructions are in `START_HERE_ChatGPT_Masterprompt.txt`.
 
 The repository is the canonical handover source. A ZIP backup is optional, not required.
