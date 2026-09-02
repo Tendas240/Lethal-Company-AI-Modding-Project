@@ -1,7 +1,7 @@
 # 00 — Current State
 
 **Canonical project state:** S1.41  
-**Date:** 2026-09-02  
+**Handover refreshed:** 2026-09-03  
 **Current gameplay profile:** `Profiles/LC V1 S1.41 BCMER Reactivation.r2z`  
 **Current profile SHA-256:** `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`  
 **Latest runtime-tested profile:** `Profiles/LC V1 S1.41 BCMER Reactivation.r2z`  
@@ -88,4 +88,4 @@ No local repository clone or local PowerShell build chain is required.
 
 Add the eight binding interior packages without speculative deep tuning, generate their real runtime configs/IDs, upload complete config/log evidence, then tune S1.42.
 
-See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`.
+See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `Current/12_HANDOVER_S1.41_TO_S1.42A.md`, and `BuildSpecs/S1.42A_PLAN.md`.
