@@ -7,7 +7,7 @@ https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 WICHTIG:
 Dieser Prompt ist als dauerhafter Einstiegspunkt für neue ChatGPT-Chats gedacht.
 Er soll sowohl die initiale Projektübernahme aus dem GitHub-Repository als auch die spätere Aktualisierung des Repositories am Ende eines Arbeitsabschnitts steuern.
-Das Repository ist die kanonische Übergabequelle. Eine ZIP-Datei ist nur optionales Backup und niemals die einzige Quelle.
+Das Repository ist die kanonische Übergabequelle UND der kanonische Build-Arbeitsbereich. Eine ZIP-Datei ist nur optionales Backup und niemals die einzige Quelle. Ein lokaler Repository-Clone auf dem Rechner des Benutzers ist für ChatGPT-Arbeit nicht vorgesehen. Profil-Builds, Verifikation, lokale Patch-Kompilierung und Repo-Pflege sollen standardmäßig direkt über GitHub/GitHub Actions erfolgen.
 
 
 ======================================================================
@@ -25,7 +25,8 @@ Preferred current read order:
 4. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
 5. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
 6. `Current/03_PROJECT_CHRONOLOGY.md`
-7. current JSON/TXT metadata
+7. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+8. current JSON/TXT metadata
 
 `Current/HumanReadable/` contains PDF/DOCX secondary versions for human readability and visual verification. A GitHub PDF preview/viewer failure is not a blocking error if equivalent machine-readable current documentation exists.
 
@@ -138,6 +139,14 @@ PHASE B – REGELN FÜR DIE LAUFENDE ARBEIT
    - Für Gale-Profile mit projektlokalen DLLs ist standardmäßig „Advanced options -> Import all files“ zu verlangen, sofern der konkrete Importpfad dies benötigt.
    - Nach dem ersten Runtime-Start müssen eindeutige Plugin-Load-Marker im Log geprüft werden. Fehlen sie, darf das Verhalten des Patches nicht als getestet gelten.
    - Wenn sinnvoll, zusätzlich ein separates lokales Mod-Paket als Fallback unter Patches/ bereitstellen.
+
+   REPOSITORY-FIRST REGEL:
+   - Liegt das erforderliche Basisprofil bereits unter Profiles/ auf GitHub, darf der Benutzer nicht zum lokalen Entpacken, Patchen, Hashen oder Repacken aufgefordert werden.
+   - ChatGPT aktualisiert BuildSpecs/current.json direkt im Repository.
+   - .github/workflows/profile-build.yml führt den Build bytegenau auf GitHub aus.
+   - BuildSystem/profile_builder.py übernimmt Profilname, Modzustände, Mod-Ergänzungen/-Entfernungen, Config-Patches, lokale Patch-Builds, Datei-Injektion, Hash-/Delta-Prüfung und erzeugt ProfileSources/<build_id>/ als lesbaren Snapshot.
+   - Current/AUTO_BUILD_RESULT.json und .md sind nach einem automatisierten Build zu prüfen.
+   - Lokale PowerShell-Buildskripte sind nur noch Notfall-Fallback, wenn ein zwingend benötigtes Basisartefakt nachweislich noch nicht online im Repository vorhanden ist.
 
 4. Bei neuen Logs:
    - nicht nur einzelne sichtbare Ausschnitte betrachten,
@@ -295,8 +304,14 @@ Grundstruktur:
 /
 ├─ README.md
 ├─ START_HERE_ChatGPT_Masterprompt.txt
+├─ .github/workflows/
+├─ BuildSpecs/
+├─ BuildSystem/
 ├─ Current/
 ├─ Profiles/
+├─ ProfileSources/
+├─ RuntimeInbox/
+├─ RuntimeEvidence/
 ├─ Patches/ (falls projektlokale Patches existieren)
 ├─ Logs/
 ├─ References/
@@ -305,6 +320,9 @@ Grundstruktur:
 Regeln:
 
 - Current/ enthält den aktuellen maschinenlesbaren Einstiegspunkt und aktuelle Dokumentation; Current/HumanReadable/ enthält die sekundären PDF/DOCX-Fassungen.
+- BuildSpecs/ und BuildSystem/ bilden den GitHub-nativen Profil-Buildpfad.
+- ProfileSources/ enthält für ChatGPT direkt lesbare Text-/Config-Snapshots generierter .r2z-Profile.
+- RuntimeInbox/Current/ ist die einzige vorgesehene Upload-Ablage für unvermeidbar lokal erzeugte Runtime-Evidenz; RuntimeEvidence/ enthält die automatisch persistierte/entpackte Fassung.
 - Profiles/ enthält aktuelle sowie noch relevante Basis-/Diagnoseprofile.
 - Patches/ enthält projektlokale Kompatibilitäts-Patches, Quellcode und installierbare lokale Mod-Pakete.
 - Logs/ enthält aktuelle beziehungsweise diagnostisch relevante Logs/Auswertungen.
@@ -364,38 +382,45 @@ PHASE H – DATEIEN FÜR DEN BENUTZER BEREITSTELLEN
 1. Wichtige Dateien einzeln bereitstellen.
 2. Keine ZIP-only-Lösung.
 3. Optional zusätzlich ein vollständiges Backup-ZIP erzeugen.
-4. Der Benutzer muss die relevanten Einzeldateien direkt ins Repository übernehmen können.
+4. Profil-Builds und Repo-Dateiänderungen werden von ChatGPT direkt im GitHub-Repository vorgenommen, sofern die erforderlichen Basen dort vorhanden sind.
+5. Für Runtime-Dateien, die ausschließlich durch einen lokalen Spielstart entstehen können, nutzt der Benutzer GitHubs Web-Upload nach RuntimeInbox/Current/. Danach übernimmt die Runtime-Ingest-Automation.
 
 ======================================================================
-PHASE I – EXAKTE POWERSHELL-BEFEHLE FÜR DAS REPO
+PHASE I – GITHUB-NATIVE AUTOMATION / LOKALE FALLBACKS
 ======================================================================
 
-Nachdem die finalen Dateien erzeugt wurden, gib konkrete PowerShell-Schritte.
+Standardfall:
 
-Lokales Repository standardmäßig:
+- KEIN lokaler Repository-Clone.
+- KEINE manuellen PowerShell-Profilbuilds.
+- KEIN manuelles Entpacken/Repacken von .r2z durch den Benutzer.
+- KEIN manuelles Kopieren erzeugter Build-Dateien ins Repository.
 
-"$HOME\Desktop\Lethal-Company-AI-Modding-Project"
+Stattdessen:
 
-Die Befehle sollen in kleinen, kontrollierbaren Schritten:
+1. ChatGPT prüft das exakte Basisprofil unter Profiles/ und den dokumentierten SHA-256.
+2. ChatGPT aktualisiert BuildSpecs/current.json direkt auf GitHub.
+3. Der Push triggert .github/workflows/profile-build.yml.
+4. GitHub Actions baut und verifiziert das Profil.
+5. Der Workflow committed:
+   - das neue Profiles/*.r2z,
+   - ProfileSources/<build_id>/,
+   - Current/AUTO_BUILD_RESULT.json,
+   - Current/AUTO_BUILD_RESULT.md.
+6. ChatGPT prüft Workflow-Status, Logs, Delta und Hash selbst.
+7. Der Benutzer lädt anschließend nur das fertige Profil aus GitHub/Gale für den tatsächlichen Runtime-Test.
 
-1. ins Repo wechseln
-2. git status anzeigen
-3. git pull ausführen
-4. konkret identifizierte DELETE-Dateien entfernen
-5. konkret identifizierte ARCHIVE-Dateien verschieben
-6. neue/aktualisierte Dateien an exakt richtige Orte kopieren
-7. tree /F oder geeignete Kontrollbefehle ausführen
-8. git status anzeigen
-9. git add .
-10. git status erneut anzeigen
-11. sinnvollen Commit mit aktuellem Versionsstand erstellen
-12. git push ausführen
-13. optional abschließend git status prüfen
+Lokale Benutzeraktion ist nur zulässig, wenn technisch unvermeidbar:
+- tatsächliches Starten/Testen von Lethal Company;
+- einmalige Migration eines noch ausschließlich lokal vorhandenen kanonischen Basisartefakts;
+- Upload von lokal erzeugtem Log/config/runtime evidence nach RuntimeInbox/Current/.
 
-Verwende konkrete Dateinamen und Pfade.
-Keine Platzhalter, sobald der aktuelle Stand feststeht.
+Wenn ein zwingend benötigtes Basisprofil noch ausschließlich lokal existiert:
+- exakt benennen, welche Datei einmalig nach Profiles/ hochgeladen werden muss;
+- danach sofort wieder auf den GitHub-nativen Workflow wechseln;
+- keinen dauerhaften lokalen Repo-Workflow etablieren.
 
-Falls Dateien im Downloads-Ordner liegen, verwende nach Möglichkeit robuste PowerShell-Befehle mit $HOME und vollständig quotierten Pfaden.
+PowerShell-Befehle nur noch als ausdrücklich gekennzeichneten Notfall-Fallback liefern, nicht als Standardprozess.
 
 ======================================================================
 PHASE J – ABSCHLUSSBERICHT
@@ -445,7 +470,9 @@ KRITISCHE GRUNDREGELN
 - Eingebettete projektlokale DLLs gelten erst als runtime-getestet, wenn ihr tatsächlicher Load im neuen Profil-Log bestätigt ist.
 - Keine erfundenen Werte, wenn Logs/Dateien sie nicht belegen.
 - Fehlende Informationen klar benennen statt raten.
-- Wichtige Projektdateien für GitHub einzeln bereitstellen.
-- PowerShell-Befehle konkret, reproduzierbar und in kontrollierbaren Schritten liefern.
+- GitHub ist der kanonische Build- und Übergabearbeitsbereich; ChatGPT pflegt ihn direkt.
+- Lokale Repo-Clones und lokale PowerShell-Buildketten sind nicht der Standard.
+- Binäre .r2z/.zip/.dll-Dateien werden auf GitHub Actions verarbeitet; zusätzlich sind lesbare ProfileSources-Snapshots zu erzeugen.
+- Runtime-Evidenz wird über RuntimeInbox/Current/ nach GitHub überführt und dort automatisiert persistiert/entpackt.
 
 ENDE DES MASTER-PROMPTS
