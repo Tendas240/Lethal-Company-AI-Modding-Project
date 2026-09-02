@@ -1,0 +1,97 @@
+name: Build S1.36 human-readable docs
+on:
+  push:
+    branches:
+      - handover-s136-human-readable
+    paths:
+      - .github/workflows/build-s136-human-readable.yml
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: handover-s136-human-readable
+
+      - name: Install document tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install python-docx
+          sudo apt-get update
+          sudo apt-get install -y libreoffice-writer
+
+      - name: Build DOCX and PDF
+        run: |
+          python .github/scripts/build_s136_human_docs.py
+          mkdir -p /tmp/s136-pdf
+          for f in Current/HumanReadable/*.docx; do
+            libreoffice --headless --convert-to pdf --outdir /tmp/s136-pdf "$f"
+          done
+          cp /tmp/s136-pdf/*.pdf Current/HumanReadable/
+
+      - name: Update inventory and hashes
+        shell: python
+        run: |
+          import hashlib
+          import os
+
+          temp_paths = {
+              ".github/workflows/build-s136-human-readable.yml",
+              ".github/scripts/build_s136_human_docs.py",
+          }
+
+          def sha256(path):
+              h=hashlib.sha256()
+              with open(path,"rb") as f:
+                  for chunk in iter(lambda:f.read(1024*1024),b""):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          def files(exclude):
+              out=[]
+              for root,dirs,names in os.walk("."):
+                  dirs[:]=[d for d in dirs if d!=".git"]
+                  for name in names:
+                      p=os.path.join(root,name).replace("\\","/")
+                      if p.startswith("./"): p=p[2:]
+                      if p not in exclude: out.append(p)
+              return sorted(out)
+
+          inventory_exclude=set(temp_paths)|{
+              "Current/DATEIINVENTAR_S1.36.txt",
+              "Current/SHA256SUMS_S1.36.txt",
+          }
+          inv=[
+              "LETHAL COMPANY REPOSITORY FILE INVENTORY - S1.36",
+              "Generated: 2026-09-02",
+              "",
+              "Excludes: .git, temporary S1.36 human-readable generation files, this inventory file and SHA256SUMS_S1.36.txt.",
+              "",
+          ]
+          for p in files(inventory_exclude):
+              inv.append(str(os.path.getsize(p)).rjust(12)+"  "+p)
+          open("Current/DATEIINVENTAR_S1.36.txt","w",encoding="utf-8").write("\n".join(inv)+"\n")
+
+          hash_exclude=set(temp_paths)|{"Current/SHA256SUMS_S1.36.txt"}
+          hs=[
+              "LETHAL COMPANY REPOSITORY SHA256 - S1.36",
+              "Generated: 2026-09-02",
+              "",
+              "Excludes: .git, temporary S1.36 human-readable generation files and this hash file itself.",
+              "",
+          ]
+          for p in files(hash_exclude):
+              hs.append(sha256(p)+"  "+p)
+          open("Current/SHA256SUMS_S1.36.txt","w",encoding="utf-8").write("\n".join(hs)+"\n")
+
+      - name: Commit generated handover docs
+        run: |
+          git config user.name "chatgpt-handover"
+          git config user.email "chatgpt-handover@users.noreply.github.com"
+          git add Current/HumanReadable Current/DATEIINVENTAR_S1.36.txt Current/SHA256SUMS_S1.36.txt
+          git commit -m "Add current S1.36 human-readable handover documents"
+          git push origin handover-s136-human-readable
