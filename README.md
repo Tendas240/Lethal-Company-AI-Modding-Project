@@ -10,9 +10,9 @@ SHA-256:
 
 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-Latest runtime-tested state: **S1.40B — accepted**.
+Latest runtime-tested state: **S1.41 — accepted**.
 
-S1.40B fixed the CodeRebirth/DawnLib editing gate for natural Currency and Flash Turret suppression. S1.41 is the isolated BCMER 1.71.0 reactivation candidate and is not yet runtime-accepted.
+S1.40B fixed the CodeRebirth/DawnLib editing gate for natural Currency and Flash Turret suppression. S1.41 reactivated BCMER 1.71.0 under the ownership/rain-event guard and is runtime-accepted.
 
 ## Critical S1.41 import requirement
 
@@ -83,9 +83,9 @@ Natural vanilla Rainy weather remains allowed.
 
 ## Binding roadmap
 
-**S1.41 runtime test -> if accepted -> S1.42A Interior Config Seed -> run/host/land/generate -> collect generated config + LogOutput through RuntimeInbox -> tune -> S1.42 final interior build.**
+**S1.41 accepted -> S1.42A Interior Config Seed -> run/host/land/generate -> collect generated config + LogOutput through RuntimeInbox -> tune -> S1.42 final interior build.**
 
-Do not start the interior wave until S1.41 passes.
+S1.41 has passed; the next isolated stage is S1.42A.
 
 ## Repository-first automation
 
