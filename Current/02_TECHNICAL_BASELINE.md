@@ -251,9 +251,15 @@ S1.36 confirmed microwaves no longer affect Pikmin. S1.39 added the direct kill 
 
 Never guess an Oxyde value.
 
-## Current equal-weight interior architecture before S1.42A
+## Global equal-weight interior architecture
 
-26 current interiors, intended Weight 100 on normal moons:
+**Binding invariant:** every registered interior is intended to have the same effective selection probability as every other interior on every moon, including interiors added in future builds. The common project target is Weight 100 per interior/moon pairing where the owning system supports direct weighting.
+
+This is not merely a rule for "normal moons" or for the current 26 interiors. New interiors must be normalized into the same architecture before final acceptance. Package defaults and thematic moon preferences do not override this project rule.
+
+If an interior is explicitly hard-blocked by its author or proves technically unsafe on a moon, treat that as a compatibility issue to investigate. Do not silently convert such a block into a permanent balancing exception. Until technically validated, explicit hard blocks remain protected in test builds.
+
+26 pre-S1.42A interiors:
 
 1. Facility
 2. Haunted Mansion
