@@ -1,0 +1,72 @@
+{
+  "date": "2026-09-02",
+  "current_profile": "LC V1 S1.31 Indoor Power Trim -4.r2z",
+  "manifest_total": 176,
+  "manifest_active": 173,
+  "manifest_disabled": [
+    "Kittenji-Dont_Touch_Me",
+    "Reiko88-Observer",
+    "SoftDiamond-BrutalCompanyMinusExtraReborn"
+  ],
+  "vanilla_indoor_caps": {
+    "Experimentation": 4,
+    "Assurance": 8,
+    "Vow": 10,
+    "Embrion": 12,
+    "Rend": 16,
+    "Dine": 16,
+    "Offense": 20,
+    "Adamance": 22,
+    "Artifice": 22,
+    "Liquidation": 22,
+    "March": 24,
+    "Titan": 32,
+    "Gordion/Company": 0
+  },
+  "custom_indoor_caps": {
+    "EGypt": 20,
+    "PsychSanctum": 18,
+    "Abaddon": 36,
+    "Cabal": 20,
+    "Arcadia": 16,
+    "Argent": 18,
+    "Zenit": 18,
+    "Lament": 10,
+    "Flicker": 14,
+    "Shutter": 0,
+    "Pareidolia": 36,
+    "Vigilance": 18,
+    "Bozoros": 32,
+    "Sanguine": 20,
+    "Spectralis": 22,
+    "The Iris": 36,
+    "Black Mesa": 28,
+    "Oxyde": "nicht im Export steuerbar"
+  },
+  "open_powerlevels": [
+    "Rolling Giant",
+    "Siren Head",
+    "Immortal Snail",
+    "Herobrine",
+    "Football",
+    "Faceless Stalker",
+    "CodeRebirth Debt Collector/Boogey Man"
+  ],
+  "confirmed": [
+    "Hold-to-Scan",
+    "Pikmin water resistance",
+    "Company routing+landing",
+    "26 interiors x100",
+    "SCP-999 disabled",
+    "Flash Turret Pikmin immunity"
+  ],
+  "open": [
+    "Microwave burn immunity",
+    "Enemy AI target exclusion for Pikmins",
+    "other CodeRebirth hazard tests",
+    "Beehive effective chance on bee moons",
+    "theme song source",
+    "disabled vanilla turret if reproducible",
+    "S1.31 indoor density"
+  ]
+}

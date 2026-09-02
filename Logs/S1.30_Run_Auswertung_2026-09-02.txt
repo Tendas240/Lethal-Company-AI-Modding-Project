@@ -1,0 +1,21 @@
+S1.30 Test-Run - konsolidierte Auswertung
+Stand: 2026-09-02
+
+Originaler LogOutput.log wurde im aktuellen Chat hochgeladen. In dieser Artefakt-Laufzeit konnte die hochgeladene Rohdatei nicht erneut als Containerdatei materialisiert werden; deshalb liegt hier die belegte Auswertung statt einer Kopie des Rohlogs.
+
+Bestätigt / beobachtet:
+- Profil: LC V1 S1.30 Power Caps Mimicless Pikmin Shield
+- Moon: Offense
+- Interior: Deep Sewers
+- LethalLevelLoader meldete erneut alle 26 Dungeon-Flows als viable mit Weight 100.
+- CodeRebirth Flash Turret beeinflusst Pikmins nach S1.30-Einstellungen praktisch nicht mehr.
+- Keine Beehives auf Offense: kein Beweis für Bug, da Offense vanilla kein normaler Red-Locust-Bees/Beehive-Mond ist.
+- Eine deaktivierte Vanilla-Turret wurde gesehen; Log liefert keine eindeutige Ursache. Keine Änderung daraus ableiten, solange es sich nicht reproduziert.
+- Gelegentlicher Dungeon-Theme-Song: stärkste Kandidaten Haunted Harpist/Phantom Piper (räumliche Enemy-Musik) vs PizzaTowerEscapeMusic (globalere Ereignis-/Escape-Musik). Noch nicht bewiesen.
+- Indoor-Dichte subjektiv etwas hoch -> S1.31 setzt sämtliche steuerbaren Indoor-Caps aus S1.30 um 4 herunter.
+
+Nächste Tests:
+- Assurance/March für echte Beehive-Beobachtung.
+- Microwave mit Pikmins.
+- Theme Song gegen Apparatus/EnemyScan korrelieren.
+- Vanilla-Turret nur bei reproduzierter unerklärter Deaktivierung verfolgen.

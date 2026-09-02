@@ -1,0 +1,44 @@
+LETHAL COMPANY HANDOVER S1.31 - DATEIINVENTAR
+Stand: 2026-09-02
+Dateien (ohne Inventar/Hashdatei): 38
+Gesamtgroesse (ohne Inventar/Hashdatei): 74380654 Bytes
+
+Pfad | Bytes
+Aktive_Modliste_S1.31.txt | 9392
+Archiv/S1.24/Diagnose/LogOutput_S1.23_LastTest.log | 39367177
+Archiv/S1.24/Dokumentation/Handover-Prompt_Lethal-Company_bis_S1.24.docx | 52871
+Archiv/S1.24/Dokumentation/Lethal-Company_Chatverlauf_Handover_bis_S1.24.pdf | 10955356
+Archiv/S1.24/Dokumentation/README_Handover_S1.24.txt | 4092
+Archiv/S1.24/Profile/LC V1 S1.23 All Pikmin Water Resistant.r2z | 524868
+Archiv/S1.24/Profile/LC V1 S1.24 Enemy Restore.r2z | 524842
+Archiv/S1.24/Referenz/Offense_Referenz_Spawn-Rates.png | 446258
+Archiv/S1.29D/DATEIINVENTAR.txt | 1180
+Archiv/S1.29D/Handover-Prompt_Lethal-Company_bis_S1.29D.docx | 41149
+Archiv/S1.29D/Lethal-Company_Chatverlauf_Handover_bis_S1.29D.pdf | 213035
+Archiv/S1.29D/README_Handover_S1.29D.txt | 3812
+Diagnose/LogOutput_S1.29D_EnemyPowerAudit_2026-09-01.log | 2459905
+Diagnose/S1.30_Run_Auswertung_2026-09-02.txt | 1418
+Dokumentation/Handover-Prompt_Lethal-Company_bis_S1.31.docx | 71219
+Dokumentation/Handover-Prompt_Lethal-Company_bis_S1.31.pdf | 609585
+Dokumentation/Handover-Prompt_S1.31_Aktueller-Kern.docx | 52224
+Dokumentation/Handover-Prompt_S1.31_Aktueller-Kern.pdf | 264401
+Dokumentation/Lethal-Company_Chatverlauf_Handover_bis_S1.31.docx | 53465
+Dokumentation/Lethal-Company_Chatverlauf_Handover_bis_S1.31.pdf | 11155315
+Dokumentation/Lethal-Company_Projektchronik_Kompakt_bis_S1.31.docx | 53465
+Dokumentation/Lethal-Company_Projektchronik_Kompakt_bis_S1.31.pdf | 293790
+Profile/LC V1 S1.28 Equal Interiors Black Mesa.r2z | 544759
+Profile/LC V1 S1.29 CodeRebirth Runtime Test.r2z | 516011
+Profile/LC V1 S1.29D Enemy Power Audit.r2z | 516631
+Profile/LC V1 S1.30 Power Caps Mimicless Pikmin Shield.r2z | 540412
+Profile/LC V1 S1.31 Indoor Power Trim -4.r2z | 538788
+Projektstatus_S1.31.json | 1613
+README_Handover_S1.31.txt | 3160
+Referenz/juijui_Referenzwerte.txt | 1205
+Referenz/Spawn-Rates/Adamance.png | 504720
+Referenz/Spawn-Rates/Assurance.png | 722094
+Referenz/Spawn-Rates/Experimentation.png | 735170
+Referenz/Spawn-Rates/March.png | 730857
+Referenz/Spawn-Rates/Offense.png | 446258
+Referenz/Spawn-Rates/Titan.png | 697402
+Referenz/Spawn-Rates/Vow.png | 720562
+VERIFIKATION_S1.31.txt | 2193
