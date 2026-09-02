@@ -158,3 +158,44 @@ Required success markers:
 - no LethalModDataLib initialization NRE.
 
 Accepted gameplay baseline remains S1.41 until later final acceptance.
+
+
+## S1.42B runtime result — LMDL FIX CONFIRMED
+
+Evidence:
+`RuntimeEvidence/S1.42B/20260902T231959Z/`
+
+The project-local LethalModDataLib null-instance guard is runtime-confirmed:
+- offending null Chainloader entry: `MW.MagicWesleyInteriors`;
+- guard skipped exactly one null instance;
+- LMDL continued to `Hooking up save, load and delete events...`;
+- `ModDataHandler initialised!`;
+- LMDL loaded/saved moddata;
+- original S1.42A LMDL initialization NRE is resolved.
+
+Detailed evidence:
+`Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`.
+
+
+## S1.42C isolated Pikmin enemy guard candidate
+
+Built and automation-verified:
+
+`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
+
+SHA-256:
+`22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
+
+Purpose:
+- make Thumper/Crawler and Pikmin ignore each other in both directions;
+- prevent Puffer smoke/attack from applying LethalMin Pikmin effects;
+- retain the confirmed S1.42B LMDL fix.
+
+Exact archive delta versus S1.42B:
+- `BepInEx/config/NoteBoxz.LethalMin.cfg`
+- cumulative compatibility DLL
+- `export.r2x`
+
+No other changes.
+
+Next binding test: deliberate Thumper + Puffer interaction test, then upload full `LogOutput.log` to `RuntimeInbox/Current/`.
