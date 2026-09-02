@@ -6,6 +6,7 @@ ROOT
 - START_HERE_ChatGPT_Masterprompt.txt
 - .gitattributes
 - .gitignore
+- .gitignore
 
 CURRENT — binding handover/state
 - Current/00_CURRENT_STATE.md
@@ -49,6 +50,7 @@ BUILD AUTOMATION
 - BuildSpecs/S1.42A_PLAN.md
 - BuildSpecs/README.md
 - BuildSystem/profile_builder.py
+- BuildSystem/test_profile_builder.py
 - BuildSystem/index_profile.py
 - BuildSystem/runtime_ingest.py
 - BuildSystem/README.md
