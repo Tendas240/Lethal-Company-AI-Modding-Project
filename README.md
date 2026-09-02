@@ -44,6 +44,7 @@ If the marker is absent, the cumulative local patch was not imported and the run
 14. `Current/VERIFIKATION_S1.40A.txt`
 15. `Current/DATEIINVENTAR_S1.40A.txt`
 16. `Current/SHA256SUMS_S1.40A.txt`
+17. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
 
 Then inspect `Profiles/`, `Patches/`, `Logs/`, `References/` and `Archive/` according to the task.
 
@@ -103,3 +104,24 @@ Do not skip directly to BCMER or interiors while S1.40A remains unaccepted.
 Chronologically newer confirmed information overrides older assumptions. Runtime evidence overrides package/config assumptions. `Archive/` is historical reference material and must not override the current machine-readable files unless explicitly referenced.
 
 `Current/HumanReadable/` is secondary. Outdated S1.39 DOCX/PDF handover files were archived so they cannot be mistaken for the current state.
+
+## Repository-first automation
+
+Future project work is **GitHub-first**. The repository is not only the handover source; it is also the canonical build workspace.
+
+Binding workflow policy:
+
+`Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+
+Key locations:
+- `BuildSpecs/current.json` — build request edited by ChatGPT;
+- `BuildSystem/profile_builder.py` — deterministic profile builder;
+- `.github/workflows/profile-build.yml` — GitHub-native build/verification;
+- `ProfileSources/<build_id>/` — readable snapshots of generated profile text/configs;
+- `RuntimeInbox/Current/` — browser-upload inbox for unavoidable runtime-generated local evidence;
+- `RuntimeEvidence/` — automatically persisted/extracted runtime evidence.
+
+Do not require the user to maintain a local repository clone or run local PowerShell profile-build scripts when the required base profile already exists on GitHub. Binary manipulation belongs in GitHub Actions; text/config snapshots must be committed so ChatGPT can inspect them through GitHub.
+
+A one-time migration of the exact locally built S1.41 binary is still required before the online chain is fully self-contained.
+
