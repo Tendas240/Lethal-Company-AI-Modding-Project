@@ -122,7 +122,15 @@ Do not retroactively combine interior additions with S1.41. S1.41 is accepted an
 
 # S1.42A — Interior Config Seed
 
-Now that S1.41 is runtime-accepted, the next isolated build is S1.42A. Add all binding interior packages **without speculative deep tuning**.
+S1.42A was built through the repository-first GitHub Actions workflow on 2026-09-03 and passed automated QC. Do not rebuild it by default.
+
+Candidate:
+`Profiles/LC V1 S1.42A Interior Config Seed.r2z`
+
+SHA-256:
+`70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
+
+Accepted gameplay baseline remains S1.41 until runtime evidence is evaluated. The immediate next action is to run this S1.42A candidate to generate the real config sections/IDs.
 
 Purpose:
 - allow LLL/JLL/DawnLib/content mods to generate their real config sections;
