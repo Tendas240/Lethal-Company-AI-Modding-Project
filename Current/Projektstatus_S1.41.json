@@ -1,0 +1,91 @@
+{
+  "date": "2026-09-02",
+  "canonical_state": "S1.41",
+  "current_profile": "LC V1 S1.41 BCMER Reactivation.r2z",
+  "current_profile_sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+  "current_profile_runtime_tested": false,
+  "latest_runtime_tested_state": "S1.40B",
+  "latest_runtime_tested_profile": "LC V1 S1.40B CodeRebirth Editing Gate Fix.r2z",
+  "latest_runtime_test_result": "accepted",
+  "game": "Lethal Company V81",
+  "manifest_total": 179,
+  "manifest_active": 174,
+  "manifest_disabled": [
+    "AJB-Keep_hangar_ship_door_closed 1.0.0",
+    "zealsprince-Malfunctions 1.10.3",
+    "Reiko88-Observer 2.0.1",
+    "ProjectSCP-SCP999 2.4.0",
+    "Kittenji-Dont_Touch_Me 1.2.8"
+  ],
+  "s140b": {
+    "status": "accepted",
+    "sha256": "fd303f73f0f2223a6375fcf2b7ed209dae77e1934e3b4e8139932a89e7de7eb9",
+    "coderebirth_editing_gate_fix": true,
+    "postrun_config_retained": true,
+    "natural_currency_observed": false,
+    "natural_flash_turret_observed": false
+  },
+  "s141": {
+    "status": "runtime pending",
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+    "bcmer_version": "1.71.0",
+    "bcmer_enabled": true,
+    "bcmer_2_0_used": false,
+    "ownership_guard": {
+      "Experimental Dont Handle Power?": true,
+      "Experimental Dont Handle Spawn Chance?": true,
+      "Let Brutal handle properties outside of events?": false,
+      "Enable Randomizer?": false
+    },
+    "disabled_bcmer_rain_events": [
+      "Raining",
+      "HeavyRain",
+      "AllWeather",
+      "Hurricane"
+    ],
+    "zip_entries": 330,
+    "profile_online": true,
+    "profile_indexed": true
+  },
+  "local_patch": {
+    "name": "S139CompatibilityFixes",
+    "version": "1.0.0",
+    "source_path": "Patches/S139CompatibilityFixes/",
+    "embedded_dll": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+    "gale_import_requirement": "Advanced options -> Import all files",
+    "runtime_load_marker": "S1.39 Compatibility Fixes loaded."
+  },
+  "repository_first_automation": {
+    "migration_complete": true,
+    "build_spec": "BuildSpecs/current.json",
+    "profile_builder": "BuildSystem/profile_builder.py",
+    "profile_build_workflow": ".github/workflows/profile-build.yml",
+    "profile_index_workflow": ".github/workflows/profile-index.yml",
+    "runtime_ingest_workflow": ".github/workflows/runtime-ingest.yml",
+    "profile_sources": "ProfileSources/",
+    "runtime_inbox": "RuntimeInbox/Current/",
+    "runtime_evidence": "RuntimeEvidence/",
+    "local_repository_clone_required": false,
+    "local_powershell_profile_build_required": false
+  },
+  "persistent_user_decisions": {
+    "malfunctions": "disabled until explicit user request",
+    "scp999": "disabled",
+    "observer": "disabled",
+    "dont_touch_me": "disabled",
+    "ajb_ship_door": "disabled while local failsafe active",
+    "bcmer": "exact 1.71.0 active in S1.41; do not upgrade to 2.0.0 during this stage",
+    "coderebirthlib": "hard do-not-install",
+    "lethalmoddatalib": "not permanently banned; isolated reintroduction allowed if DULL requires it",
+    "leaf_boy": "remain in LethalMin Attack Blacklist",
+    "unknown_powerlevels": "never guess"
+  },
+  "roadmap": [
+    "Test S1.41",
+    "If accepted, build S1.42A with eight binding interior packages for config generation only",
+    "Run Main Menu -> host/load -> land -> generate dungeon -> exit",
+    "Upload complete config/runtime evidence through RuntimeInbox/Current",
+    "Tune actual generated IDs/configs",
+    "Build/test S1.42"
+  ]
+}
