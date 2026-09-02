@@ -2,7 +2,7 @@
 
 ## Binding state
 
-- Canonical candidate: **S1.41**
+- Canonical accepted state: **S1.41**
 - Profile: `Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
 - SHA-256: `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 - Latest runtime-tested state: **S1.41**
@@ -98,7 +98,7 @@ Gale profile imports that depend on the local DLL must use:
 - Observer stays disabled.
 - Don't Touch Me stays disabled.
 - AJB ship-door mod stays disabled while the local failsafe exists.
-- BCMER reactivation is pinned to exact 1.71.0; do not upgrade to 2.0.0 as part of S1.41.
+- BCMER exact 1.71.0 is the accepted baseline; any 2.0 migration must be explicit and isolated.
 - CodeRebirthLib must not return.
 - LethalModDataLib is not a hard ban; reintroduce only if DULL requires it, in the isolated interior stage.
 - Unknown Enemy PowerLevels are never guessed.
@@ -126,7 +126,7 @@ Binding policy: `Current/09_REPOSITORY_FIRST_AUTOMATION.md`.
 
 **S1.41 accepted -> S1.42A interior config seed -> runtime config generation -> config/log collection -> S1.42 tuned interior candidate.**
 
-See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`.
+See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `Current/12_HANDOVER_S1.41_TO_S1.42A.md`, and `BuildSpecs/S1.42A_PLAN.md`.
 
 ## S1.41 acceptance result
 
@@ -140,3 +140,13 @@ Confirmed:
 - no severe BCMER regression was observed.
 
 New separate issue: Mineshaft elevator + large Pikmin group may trigger NavMesh/collision instability and a player fall-through. Track independently; do not attribute to BCMER without evidence.
+
+
+## New-chat takeover
+
+Repository handover was refreshed on 2026-09-03.
+
+The next chat should not retest S1.41 by default. It should take accepted S1.41 as the exact base and prepare S1.42A through GitHub Actions after fresh package/dependency audit.
+
+Start prompt:
+`Current/NEXT_CHAT_START_PROMPT_S1.41.txt`
