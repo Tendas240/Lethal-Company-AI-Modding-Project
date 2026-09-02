@@ -1,5 +1,8 @@
 # 12 — Handover: S1.41 accepted -> S1.42A Interior Config Seed
 
+> **Progress update 2026-09-03:** This handover has been consumed. S1.42A was built via GitHub Actions as `Profiles/LC V1 S1.42A Interior Config Seed.r2z` with SHA-256 `70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe` and passed automated member-delta QC. Do not rebuild it by default. Immediate next step: runtime config-generation seed run and upload to `RuntimeInbox/Current/`. S1.41 remains the runtime-accepted baseline.
+
+
 **Handover date:** 2026-09-03  
 **Canonical state:** S1.41 — runtime accepted  
 **Game:** Lethal Company V81
