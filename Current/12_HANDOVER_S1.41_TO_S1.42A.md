@@ -124,7 +124,7 @@ Embedded DLL path inside profile:
 
 `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`
 
-Expected runtime marker:
+Expected and S1.41-confirmed runtime marker:
 
 `S1.39 Compatibility Fixes loaded.`
 
