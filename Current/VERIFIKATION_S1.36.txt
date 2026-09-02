@@ -6,10 +6,11 @@ Canonical handover/test candidate:
 - SHA-256: e8f63f37e7e565512399c08c7afc24c008fb7a0080bf62a58144d4a8f0e90c7c
 - Build/archive/diff verified; not yet runtime-tested.
 
-Latest runtime-tested state:
-- S1.34 - LC V1 S1.34 Malfunctions Disabled
+Latest runtime-tested reference retained in repository:
+- Profiles/LC V1 S1.34 Malfunctions Disabled.r2z
+- SHA-256: 54e7f18cc1c62f327f25b65d4ed95b8fde82aa90f8713b91fe8069a1f3b3f0a2
 
-Manifest verification:
+S1.36 manifest verification:
 - 176 total Thunderstore entries
 - 170 active
 - 6 disabled
@@ -21,18 +22,18 @@ Local compatibility patch:
 - Gale import requires Advanced options -> Import all files
 - runtime load must be confirmed before testing door/EnemyScan behavior
 
-Carried-forward regression checks:
+Carried-forward checks:
 - Leaf boy remains in LethalMin Attack Blacklist
 - Mirage neverDeleteRecordings=true
 - Malfunctions disabled
 - SCP999 disabled
 - AJB disabled
-- S135CompatibilityFixes.dll embedded in profile
+- S135CompatibilityFixes.dll embedded in S1.36
 
 Repository cleanup:
 - stale S1.31 Current metadata archived under Archive/S1.31/CurrentMetadata/
 - S1.31 HumanReadable DOCX/PDF archived under Archive/S1.31/HumanReadable/
-- historical Profiles/, Logs/, References/ and older Archive sources preserved
-- no S1.32/S1.33/S1.35 intermediate profile promoted to main
+- S1.34 retained as latest runtime-tested profile reference
+- S1.32/S1.33/S1.35 intermediate profiles not promoted to main
 
 Runtime acceptance tests remain open; see Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md.
