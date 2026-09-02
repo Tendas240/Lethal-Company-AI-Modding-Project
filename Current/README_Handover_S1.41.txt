@@ -29,7 +29,11 @@ S1.41 acceptance:
 - Runtime evidence is persisted online under RuntimeEvidence/S1.41/20260902T215804Z/.
 
 Next binding stage:
-S1.42A Interior Config Seed.
+S1.42A candidate is already built and automation-verified.
+Profile: Profiles/LC V1 S1.42A Interior Config Seed.r2z
+SHA-256: 70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe
+Immediate next step: runtime config-generation seed test + RuntimeInbox evidence upload.
+S1.41 remains the accepted gameplay baseline until that evidence is evaluated.
 
 Repository-first rule:
 Build on GitHub using BuildSpecs/current.json + BuildSystem/profile_builder.py + GitHub Actions. No local repo clone or local PowerShell profile build is required.
