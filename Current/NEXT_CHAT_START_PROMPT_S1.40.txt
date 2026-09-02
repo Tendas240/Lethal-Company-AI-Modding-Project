@@ -1,0 +1,9 @@
+Nutze dieses Repository als vollständige Projektübergabe:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+Lies zuerst START_HERE_ChatGPT_Masterprompt.txt und anschließend die dort/README.md unter "ChatGPT - read first" genannten Dateien vollständig. Der chronologisch neueste bestätigte Stand ist verbindlich.
+
+Aktueller kanonischer Build-/Testkandidat: S1.40 - "LC V1 S1.40 Native Currency Flash Turret Cleanup".
+Letzter tatsächlich runtime-getesteter Referenzstand: S1.39 - "LC V1 S1.39 Cleanup Health Pikmin Shield".
+
+Wichtig: S1.39 lud den lokalen Patch korrekt, aber Coins und Wallets spawnten weiterhin natürlich im Dungeon. S1.40 verlegt den Fix deshalb auf die native CodeRebirth/DawnLib-Config-Ebene. S1.40 ist build-/archiv-/config-verifiziert, aber noch nicht runtime-akzeptiert.

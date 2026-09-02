@@ -1,0 +1,21 @@
+VERIFIKATION S1.40
+Stand: 2026-09-02
+
+[PASS] Build derives from canonical S1.39 profile.
+[PASS] S1.40 archive has 330 entries versus 329 in S1.39.
+[PASS] Only intended new member is BepInEx/config/CodeRebirth.cfg.
+[PASS] S1.39 compatibility DLL is retained unchanged.
+[PASS] Thunderstore manifest count remains 179 / 173 active / 6 disabled.
+[PASS] Native Coin/Crisp Dollar Bill/Wallet inside weights are blank.
+[PASS] Flash Turret is natively disabled as an inside hazard and has blank inside weights.
+[PASS] Profile SHA-256 recorded: f117cd1c6e234ed280ce8a55ca696ce26d3e14c8b20357ee3714919c5ebbac78
+
+[RUNTIME PENDING]
+- no natural Coin/Wallet/Bill inside spawns;
+- no natural Flash Turret;
+- Ogopogo/Vermin remain absent;
+- crane/Pikmin shield regression check;
+- health recharge station full-heal;
+- preserve LogOutput.log.
+
+Latest runtime-tested state: S1.39.

@@ -1,0 +1,25 @@
+REPO CLEANUP PLAN S1.40
+Stand: 2026-09-02
+
+KEEP
+- S1.39 profile as latest runtime-tested reference.
+- S139CompatibilityFixes source, DLL/package and historical S1.39 documentation.
+- Existing Logs/ and References/ with diagnostic value.
+
+ADD
+- Profiles/LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z
+- Current S1.40 versioned metadata/verification files.
+- Current/06_RECENT_WORK_S1.32-S1.40.md
+- Logs/S1.39_Run_Auswertung_2026-09-02_2.txt
+
+UPDATE
+- README.md
+- Current/00_CURRENT_STATE.md
+- Current/01_HANDOVER_CORE.md
+- Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+
+ARCHIVE
+- None required for this build-only update. Older S1.39 Current files may remain as historical/versioned evidence.
+
+DELETE
+- None.

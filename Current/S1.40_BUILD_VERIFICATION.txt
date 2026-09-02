@@ -1,0 +1,47 @@
+S1.40 BUILD VERIFICATION
+Date: 2026-09-02
+
+Candidate:
+Profiles/LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z
+
+Base:
+Profiles/LC V1 S1.39 Cleanup Health Pikmin Shield.r2z
+Base SHA-256: b510e519b4af8b683e9b9e9f4e18035f90910d2e8782f2b9e6ded5e4ecef95fe
+Base size: 519909 bytes
+Base ZIP entries: 329
+
+S1.40:
+SHA-256: f117cd1c6e234ed280ce8a55ca696ce26d3e14c8b20357ee3714919c5ebbac78
+Size: 520471 bytes
+ZIP entries: 330
+
+EXPECTED MEMBER DELTA
+PASS - exactly one new archive member:
+BepInEx/config/CodeRebirth.cfg
+
+No existing S1.39 member was intentionally replaced.
+The embedded S139CompatibilityFixes DLL is carried forward unchanged.
+Thunderstore manifest remains 179 total / 173 enabled / 6 disabled.
+
+CODE_REBIRTH.CFG ASSERTIONS
+PASS - [Merchant Options]
+PASS - Coin inside moon weights blank
+PASS - Coin inside interior weights blank
+PASS - Crisp Dollar Bill inside moon weights blank
+PASS - Crisp Dollar Bill inside interior weights blank
+PASS - Wallet inside moon weights blank
+PASS - Wallet inside interior weights blank
+PASS - [FlashTurret Options]
+PASS - Flash Turret | Is Inside Hazard = false
+PASS - Flash Turret inside moon/interior weights blank
+
+RATIONALE
+CodeRebirth 1.6.9 registers these currency objects through DawnLib/Dusk map-object definitions with native inside curves. S1.39's late RoundManager/SelectableLevel filtering did not stop natural Coin/Wallet spawns despite a confirmed plugin load. S1.40 disables the spawn curves at the native owner/config layer.
+
+RUNTIME STATUS
+NOT YET ACCEPTED.
+Latest runtime-tested reference is S1.39.
+
+GALE IMPORT
+Use Advanced options -> Import all files because the cumulative project-local DLL remains embedded.
+Expected marker: S1.39 Compatibility Fixes loaded.

@@ -1,0 +1,37 @@
+S1.40 CURRENT FILE INVENTORY (critical handover set)
+Stand: 2026-09-02
+
+ROOT
+- README.md
+- START_HERE_ChatGPT_Masterprompt.txt
+
+CURRENT
+- Current/00_CURRENT_STATE.md
+- Current/01_HANDOVER_CORE.md
+- Current/02_TECHNICAL_BASELINE.md
+- Current/03_PROJECT_CHRONOLOGY.md
+- Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+- Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
+- Current/06_RECENT_WORK_S1.32-S1.40.md
+- Current/Projektstatus_S1.40.json
+- Current/Aktive_Modliste_S1.40.txt
+- Current/S1.40_BUILD_VERIFICATION.txt
+- Current/VERIFIKATION_S1.40.txt
+- Current/DATEIINVENTAR_S1.40.txt
+- Current/SHA256SUMS_S1.40.txt
+- Current/NEXT_CHAT_START_PROMPT_S1.40.txt
+- Current/README_Handover_S1.40.txt
+- Current/REPO_CLEANUP_PLAN_S1.40.txt
+
+PROFILES
+- Profiles/LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z (canonical S1.40 test candidate)
+- Profiles/LC V1 S1.39 Cleanup Health Pikmin Shield.r2z (latest runtime-tested reference)
+
+PATCHES
+- Patches/S139CompatibilityFixes/ (unchanged cumulative local patch)
+- Patches/S139CompatibilityFixes/Tendas-S139CompatibilityFixes-1.0.0.zip
+
+LOGS
+- Logs/S1.39_Run_Auswertung_2026-09-02_2.txt (S1.39 currency failure / S1.40 rationale)
+
+Historical files remain available and are not superseded as runtime evidence merely by this inventory.

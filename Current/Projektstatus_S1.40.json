@@ -1,0 +1,70 @@
+{
+  "date": "2026-09-02",
+  "canonical_state": "S1.40",
+  "current_profile": "LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z",
+  "current_profile_runtime_tested": false,
+  "latest_runtime_tested_state": "S1.39",
+  "latest_runtime_tested_profile": "LC V1 S1.39 Cleanup Health Pikmin Shield.r2z",
+  "game": "Lethal Company V81",
+  "manifest_total": 179,
+  "manifest_active": 173,
+  "manifest_disabled": [
+    "AJB-Keep_hangar_ship_door_closed",
+    "zealsprince-Malfunctions",
+    "Reiko88-Observer",
+    "ProjectSCP-SCP999",
+    "Kittenji-Dont_Touch_Me",
+    "SoftDiamond-BrutalCompanyMinusExtraReborn"
+  ],
+  "s139_runtime": {
+    "local_plugin_loaded": true,
+    "natural_coins_still_spawned": true,
+    "natural_wallets_still_spawned": true,
+    "flash_turret_seen_by_user": false,
+    "flash_turret_result": "inconclusive; absence in one run is not deterministic proof",
+    "conclusion": "late SelectableLevel/RoundManager map-object filtering is insufficient for DawnLib-native CodeRebirth currency"
+  },
+  "s140_delta": {
+    "base_profile": "LC V1 S1.39 Cleanup Health Pikmin Shield.r2z",
+    "added_archive_member": "BepInEx/config/CodeRebirth.cfg",
+    "native_currency_inside_spawn_disabled": [
+      "Coin",
+      "Crisp Dollar Bill",
+      "Wallet"
+    ],
+    "flash_turret_inside_hazard": false,
+    "flash_turret_inside_spawn_weights": "blank",
+    "local_patch_changed": false,
+    "thunderstore_manifest_changed": false
+  },
+  "local_patch": {
+    "name": "S139CompatibilityFixes",
+    "version": "1.0.0",
+    "source_path": "Patches/S139CompatibilityFixes/",
+    "fallback_package": "Patches/S139CompatibilityFixes/Tendas-S139CompatibilityFixes-1.0.0.zip",
+    "embedded_dll": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+    "gale_import_requirement": "Advanced options -> Import all files",
+    "runtime_load_marker": "S1.39 Compatibility Fixes loaded"
+  },
+  "persistent_user_decisions": {
+    "malfunctions": "disabled until user explicitly requests re-enable",
+    "scp999": "disabled",
+    "bcmer": "disabled through S1.40 acceptance; later isolated re-audit allowed",
+    "observer": "disabled",
+    "dont_touch_me": "disabled",
+    "coderebirthlib": "do not install"
+  },
+  "profile_sha256": {
+    "S1.39": "b510e519b4af8b683e9b9e9f4e18035f90910d2e8782f2b9e6ded5e4ecef95fe",
+    "S1.40": "f117cd1c6e234ed280ce8a55ca696ce26d3e14c8b20357ee3714919c5ebbac78"
+  },
+  "next_tests": [
+    "verify S139CompatibilityFixes load marker",
+    "verify no natural Coin/Crisp Dollar Bill/Wallet inside spawns",
+    "verify no natural Flash Turret",
+    "verify Ogopogo/Vermin absent",
+    "verify Autonomous Crane cannot kill Pikmin/Puffmin",
+    "verify health recharge station full-heal behavior",
+    "preserve full LogOutput.log"
+  ]
+}

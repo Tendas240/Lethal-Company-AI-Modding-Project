@@ -1,0 +1,26 @@
+S1.39 RUNTIME AUSWERTUNG - 2026-09-02 (zweiter S1.39-Abnahmelauf)
+
+Profil:
+LC V1 S1.39 Cleanup Health Pikmin Shield
+
+Bestaetigt:
+- BepInEx lud "S1.39 Compatibility Fixes 1.0.0".
+- Runtime-Marker "S1.39 Compatibility Fixes loaded." vorhanden.
+- Damit war der S1.39-Test des lokalen Patches gueltig.
+- Benutzer beobachtete weiterhin Coins und Wallets natuerlich im Dungeon.
+- Benutzer beobachtete in diesem Run keinen Flash Turret; das ist positiv, aber kein deterministischer Nachweis.
+
+Diagnose / Ursache:
+CodeRebirth 1.6.9 registriert Coin, Crisp Dollar Bill und Wallet ueber DawnLib/Dusk als eigene Inside MapObjects mit nativen Spawnkurven.
+Der S1.39-Filter auf SelectableLevel/RoundManager-Ebene greift deshalb nicht an der tatsaechlichen Spawn-Autoritaet fuer diese Objekte.
+Insbesondere Coin ist in CodeRebirth 1.6.9 als IsInsideHazard=true definiert und besitzt nicht-null native Inside-Kurven.
+
+Konsequenz fuer S1.40:
+Keine weitere Namensheuristik im spaeten S1.39-Filter.
+Stattdessen native CodeRebirth/DawnLib-Konfiguration:
+- Coin Inside Moon/Interior Spawn Weights leer
+- Crisp Dollar Bill Inside Moon/Interior Spawn Weights leer
+- Wallet Inside Moon/Interior Spawn Weights leer
+- Flash Turret Is Inside Hazard=false und Inside-Weights leer
+
+S1.39 bleibt der letzte runtime-getestete Referenzstand; S1.40 ist der neue Testkandidat.

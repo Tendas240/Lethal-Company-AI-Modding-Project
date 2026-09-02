@@ -1,15 +1,12 @@
-# 00 - Current State
+# 00 — Current State
 
-**Canonical project state:** S1.39  
+**Canonical project state:** S1.40  
 **Date:** 2026-09-02  
-**Current gameplay/test candidate:** `Profiles/LC V1 S1.39 Cleanup Health Pikmin Shield.r2z`  
-**Latest runtime-tested reference:** `Profiles/LC V1 S1.38 1440p Old Bird Resonance.r2z`  
-**Game:** Lethal Company V81  
-**Repository:** https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+**Current gameplay/test profile:** Profiles/LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z  
+**Latest runtime-tested profile:** Profiles/LC V1 S1.39 Cleanup Health Pikmin Shield.r2z  
+**Game:** Lethal Company V81
 
-S1.39 is the new canonical handover/test candidate. It has passed deterministic build, archive CRC, member-delta, Thunderstore package-manifest and configuration assertions, but it has **not yet received a runtime acceptance test**.
-
-S1.38 is the newest profile actually run in game. It successfully loaded the S1.37 compatibility plugin, and FixCameraResolution was visually accepted by the user at 2560x1440. Mirage retention did **not** reliably carry through profile import: the user manually set `neverDeleteRecordings=true` in the Main Menu/LethalConfig, after which the S1.38 log confirmed the value was true. That same test phase exposed remaining natural CodeRebirth currency/map-object noise and the crane/Pikmin kill gap, which are addressed by S1.39. Earlier S1.36 runtime testing had already accepted the ship-door failsafe, complete `enemies` output and Pikmin microwave immunity.
+S1.40 is the current build/test candidate. S1.39 is the newest profile actually run in game.
 
 ## Read order for ChatGPT
 
@@ -19,75 +16,67 @@ S1.38 is the newest profile actually run in game. It successfully loaded the S1.
 4. `Current/02_TECHNICAL_BASELINE.md`
 5. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
 6. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-7. `Current/06_RECENT_WORK_S1.32-S1.39.md`
+7. `Current/06_RECENT_WORK_S1.32-S1.40.md`
 8. `Current/03_PROJECT_CHRONOLOGY.md`
-9. `Current/Projektstatus_S1.39.json`
-10. `Current/Aktive_Modliste_S1.39.txt`
-11. `Current/S1.39_BUILD_VERIFICATION.txt`
-12. `Current/VERIFIKATION_S1.39.txt`
-13. `Current/DATEIINVENTAR_S1.39.txt`
-14. `Current/SHA256SUMS_S1.39.txt`
+9. `Current/Projektstatus_S1.40.json`
+10. `Current/Aktive_Modliste_S1.40.txt`
+11. `Current/S1.40_BUILD_VERIFICATION.txt`
+12. `Current/VERIFIKATION_S1.40.txt`
+13. `Current/DATEIINVENTAR_S1.40.txt`
+14. `Current/SHA256SUMS_S1.40.txt`
 
-## Critical Gale import rule for S1.39
+## S1.39 runtime result that triggered S1.40
 
-S1.39 embeds:
+The S1.39 local plugin loaded correctly, so the test was valid for the custom DLL. Natural CodeRebirth Coins and Wallets nevertheless still spawned in the dungeon. This disproved the assumption that filtering `SelectableLevel` map-object arrays around `RoundManager.SpawnMapObjects` was sufficient for CodeRebirth currency.
 
-`BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`
+CodeRebirth 1.6.9 registers Coin, Crisp Dollar Bill and Wallet through DawnLib/Dusk as their own inside map objects with native spawn curves. Therefore S1.40 disables the natural inside spawn source through CodeRebirth's generated config instead of adding another late Harmony filter.
 
-Import the `.r2z` with **Advanced options -> Import all files**.
+The user did not encounter a Flash Turret in the S1.39 run. Treat that as inconclusive positive evidence, not proof.
 
-If BepInEx does not log `S1.39 Compatibility Fixes loaded.`, import:
+## Exact S1.40 delta
 
-`Patches/S139CompatibilityFixes/Tendas-S139CompatibilityFixes-1.0.0.zip`
+S1.40 is based on S1.39 and adds one archive member:
 
-into the same profile.
+`BepInEx/config/CodeRebirth.cfg`
 
-Do not call the S1.39 runtime safeguards tested until the marker is present.
+Critical values:
 
-## Current build lineage
+- `[Merchant Options] Coin | Inside Moon Spawn Weights =`
+- `[Merchant Options] Coin | Inside Interior Spawn Weights =`
+- `[Merchant Options] Crisp Dollar Bill | Inside Moon Spawn Weights =`
+- `[Merchant Options] Crisp Dollar Bill | Inside Interior Spawn Weights =`
+- `[Merchant Options] Wallet | Inside Moon Spawn Weights =`
+- `[Merchant Options] Wallet | Inside Interior Spawn Weights =`
+- `[FlashTurret Options] Flash Turret | Is Inside Hazard = false`
+- Flash Turret inside moon/interior weights are also blank.
 
-S1.29 gameplay base -> S1.30 -> S1.31 -> S1.32 -> S1.33 -> S1.34 -> S1.35 -> S1.36 -> S1.37 -> S1.38 -> S1.39
+DawnLib parses blank spawn-weight strings as no registered curves; its map-object provider then returns a constant zero curve when no moon/interior curve matches.
 
-S1.29D was a diagnostic derivative only and is never a gameplay base.
+No Thunderstore package was added/removed. Manifest remains 179 total / 173 active / 6 disabled. The S1.39 local DLL is carried forward unchanged.
 
-Recent distinctions:
+## Critical Gale import rule
 
-- **S1.36:** clean baseline with SCP999 disabled; source profile for deterministic later builds. Runtime accepted the local door failsafe and complete EnemyScan output; the user also confirmed Pikmins were no longer affected by CodeRebirth microwaves.
-- **S1.37:** cumulative compatibility DLL adds normal natural-scrap filtering for CodeRebirth currency/credit items.
-- **S1.38:** adds fixed 2560x1440 internal resolution and Lethal Resonance configured for Old Bird only. This is the latest runtime-tested reference.
-- **S1.39:** disables Ogopogo/Vermin, suppresses natural Flash Turret and currency map-object generation, and adds direct CodeRebirth utility-kill protection for Pikmin/Puffmin. Health recharge is verified enabled in config.
+Use **Advanced options -> Import all files** because the cumulative local S1.39 compatibility DLL is still embedded.
 
-## Explicitly disabled in S1.39
+Expected marker:
 
-Manifest: 179 entries, 173 active, 6 disabled.
+- `S1.39 Compatibility Fixes loaded.`
 
-- AJB-Keep_hangar_ship_door_closed
-- zealsprince-Malfunctions
-- Reiko88-Observer
-- ProjectSCP-SCP999
-- Kittenji-Dont_Touch_Me
-- SoftDiamond-BrutalCompanyMinusExtraReborn
+## Persistent decisions
 
-## Persisting stable architecture
+- Malfunctions remains disabled until explicitly requested otherwise.
+- SCP999 remains disabled.
+- BCMER remains disabled through S1.40 acceptance.
+- AJB ship-door mod remains disabled.
+- CodeRebirthLib must not be reintroduced.
+- Unknown PowerLevels are never guessed.
 
-- Hold-to-Scan via LethalHUD.
-- Pikmin water resistance.
-- Company routing + auto landing via CompanyBuildingEnhancements.
-- 26 intended normal interiors at Weight 100, Black Mesa through its DawnLib path.
-- Rolling Giant / Shy Guy / Siren Head use native spawn ownership.
-- RandomEnemiesSize active.
-- x753-Mimics / CoronerMimics remain removed/disabled; fake Fire Exits must not be restored.
-- Malfunctions remains off until explicit user request.
-- BCMER remains off until a later isolated reactivation phase.
+## Immediate next test
 
-## S1.39 immediate acceptance test
-
-1. Import with `Import all files` and confirm `S1.39 Compatibility Fixes loaded.`
-2. Land on a suitable moon and verify no natural Flash Turret and no normal natural CodeRebirth currency/map-object spawns.
-3. Confirm Ogopogo and Vermin do not spawn.
-4. Reproduce CodeRebirth Autonomous Crane proximity with Pikmin/Puffmin and confirm they cannot be killed; look for `[PikminCraneShield]` only when a blocked utility kill is attempted.
-5. Damage the player and use the GeneralImprovements recharge station; verify it restores health as desired.
-6. Confirm FixCameraResolution remains sharp/native at 2560x1440.
-7. If an Old Bird appears, validate mechanical/weapon/footstep/loudspeaker replacement audio from Lethal Resonance.
-8. Check Mirage `neverDeleteRecordings` after import. If it reverted, set it manually in the Main Menu/LethalConfig; profile import alone is not trusted for this per-player setting.
-9. Preserve the full `LogOutput.log`.
+1. Confirm the S1.39 compatibility DLL still loads.
+2. Confirm no natural Coin / Crisp Dollar Bill / Wallet spawns in the dungeon.
+3. Confirm no natural Flash Turret spawns.
+4. Check Ogopogo/Vermin remain absent.
+5. Retest Autonomous Crane against Pikmin/Puffmin if encountered.
+6. Verify GeneralImprovements recharge station full-heal behavior.
+7. Preserve full `LogOutput.log`.

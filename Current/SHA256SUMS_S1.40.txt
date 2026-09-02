@@ -1,0 +1,7 @@
+S1.40 CRITICAL SHA256
+Stand: 2026-09-02
+
+f117cd1c6e234ed280ce8a55ca696ce26d3e14c8b20357ee3714919c5ebbac78  Profiles/LC V1 S1.40 Native Currency Flash Turret Cleanup.r2z
+b510e519b4af8b683e9b9e9f4e18035f90910d2e8782f2b9e6ded5e4ecef95fe  Profiles/LC V1 S1.39 Cleanup Health Pikmin Shield.r2z
+
+Note: S1.40 is a config-only profile delta over S1.39; the cumulative S139CompatibilityFixes DLL/package is unchanged.
