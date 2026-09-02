@@ -6,7 +6,7 @@ Current gameplay/test profile:
 
 Profiles/LC V1 S1.36 Handover Clean Baseline.r2z
 
-Latest runtime-tested state: **S1.34** — LC V1 S1.34 Malfunctions Disabled.
+Latest runtime-tested state: **S1.34** — `Profiles/LC V1 S1.34 Malfunctions Disabled.r2z`.
 
 S1.36 is build/diff/archive verified but **not yet runtime-tested**.
 
