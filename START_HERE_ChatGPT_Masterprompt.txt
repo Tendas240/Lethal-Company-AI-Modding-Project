@@ -1,0 +1,410 @@
+MASTER-PROMPT – Lethal Company Modding Project
+Repository / Übergabe / laufende Arbeit / spätere Repo-Aktualisierung
+
+Repository:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+WICHTIG:
+Dieser Prompt ist als dauerhafter Einstiegspunkt für neue ChatGPT-Chats gedacht.
+Er soll sowohl die initiale Projektübernahme aus dem GitHub-Repository als auch die spätere Aktualisierung des Repositories am Ende eines Arbeitsabschnitts steuern.
+Das Repository ist die kanonische Übergabequelle. Eine ZIP-Datei ist nur optionales Backup und niemals die einzige Quelle.
+
+======================================================================
+PHASE A – PROJEKT AUS DEM REPOSITORY ÜBERNEHMEN
+======================================================================
+
+1. Öffne und analysiere zuerst das Repository:
+   https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+2. Lies zuerst README.md im Repository-Root.
+
+3. Ermittle aus README.md und den Dateinamen den aktuellsten dokumentierten Projektstand.
+   Der aktuellste chronologisch bestätigte Stand ist verbindlich.
+   Falls das Repository inzwischen neuer als S1.31 ist, hat der neuere Stand Vorrang.
+   S1.31 ist nur ein historischer Fallback und darf einen neueren Stand niemals überschreiben.
+
+4. Lies anschließend die in README.md unter „Read first“ beziehungsweise als aktuell markierten Dateien.
+   Mindestens zu prüfen sind, sofern vorhanden:
+   - Current/Handover-Prompt_*_Aktueller-Kern.*
+   - Current/Handover-Prompt_Lethal-Company_bis_*.*
+   - Current/Projektstatus_*.json
+   - Current/Lethal-Company_Projektchronik_Kompakt_bis_*.*
+   - Current/Lethal-Company_Chatverlauf_Handover_bis_*.*
+   - Current/Aktive_Modliste_*.txt
+   - Current/README_Handover_*.txt
+   - Current/VERIFIKATION_*.txt
+   - Current/DATEIINVENTAR_*.txt
+   - Current/SHA256SUMS_*.txt
+
+5. Prüfe danach die aktuell relevanten technischen Dateien:
+   - Profiles/
+   - Logs/
+   - References/
+   - Archive/ nur bei Bedarf
+
+6. Behandle die Ordner wie folgt:
+   - Current/ = aktueller verbindlicher Projektstand
+   - Profiles/ = aktuelle und noch relevante Gale/r2modman-.r2z-Profile
+   - Logs/ = aktuelle beziehungsweise diagnostisch relevante Runtime-Logs/Auswertungen
+   - References/ = verbindliche Referenzbilder, Spawn-Rates, Referenzwerte und andere Primärquellen
+   - Archive/ = historische Primärquellen; wichtig für Rekonstruktion, aber nicht automatisch aktuell
+
+7. Prioritätsregel:
+   Chronologisch neuere, bestätigte Informationen überschreiben ältere Annahmen.
+   Archive/ darf einen neueren bestätigten Stand nicht überschreiben, außer die aktuelle Dokumentation verweist ausdrücklich auf eine historische Primärquelle.
+
+8. Wiederhole keine Lösungen, die in der Dokumentation bereits als gescheitert, obsolet oder unerwünscht markiert sind, außer es gibt neue technische Evidenz, die eine erneute Prüfung rechtfertigt.
+
+9. Falls das Repository, einzelne GitHub-Dateien oder wichtige Assets nicht abrufbar sind:
+   - nicht raten,
+   - nicht still mit unvollständigem Kontext fortfahren,
+   - konkret nennen, welche Datei oder welcher Pfad fehlt,
+   - den Benutzer nur um genau diese fehlende Datei bitten.
+
+10. ZIP-Regel:
+    Verlange nicht pauschal eine Handover-ZIP.
+    Bevorzuge direkt adressierbare Einzeldateien aus dem Repository.
+    ZIPs dürfen als Backup verwendet werden, aber die Projektkontinuität soll nicht davon abhängen, dass ein Archiv erfolgreich entpackt werden kann.
+
+11. Nach der Übernahme:
+    Gib eine kurze Bestätigung mit:
+    - erkanntem aktuellem Projektstand,
+    - erkanntem aktuellem Gameplay-Profil,
+    - wichtigsten offenen Baustellen,
+    - unmittelbar nächsten sinnvollen Tests/Aufgaben.
+    Danach arbeite normal mit dem Benutzer am Projekt weiter.
+
+======================================================================
+PHASE B – REGELN FÜR DIE LAUFENDE ARBEIT
+======================================================================
+
+1. Dokumentiere im Gespräch alle neuen, projektentscheidenden Informationen gedanklich mit:
+   - getestete Änderungen,
+   - erfolgreiche Fixes,
+   - fehlgeschlagene Fixes,
+   - neue Bugs,
+   - neue Logs,
+   - neue Profile,
+   - bestätigte Configwerte,
+   - verworfene Ansätze,
+   - offene Fragen,
+   - neue Referenzwerte,
+   - neue Spawn-/Power-/Balance-Regeln,
+   - Mod-Ownership einzelner Systeme.
+
+2. Vermeide Informationsverlust durch zu starke Zusammenfassungen.
+   Frühere Übergaben wurden teilweise zu stark gekürzt.
+   Diagnosehistorie, Fehlversuche und Gründe für Entscheidungen sind relevant und sollen erhalten bleiben.
+
+3. Bei technischen Änderungen an Profilen:
+   - immer vom korrekten Gameplay-Basisprofil ausgehen,
+   - Diagnoseprofile nicht versehentlich als Gameplay-Basis verwenden,
+   - geänderte Dateien gegen die Basis diffen,
+   - .r2z-Archivintegrität prüfen,
+   - Profilname und Versionsbezeichnung kontrollieren,
+   - unbeabsichtigte Configänderungen ausschließen.
+
+4. Bei neuen Logs:
+   - nicht nur einzelne sichtbare Ausschnitte betrachten,
+   - relevante Fehler/Warnungen systematisch suchen,
+   - neue Regressionen gegen den letzten bekannten Stand vergleichen.
+
+5. Bei Dokumenten:
+   - aktuelle Fakten und historische Fakten klar trennen,
+   - veraltete Aussagen als historisch/deprecated markieren,
+   - nie stillschweigend alte Primärinformationen entfernen, wenn sie noch Diagnosewert haben.
+
+======================================================================
+PHASE C – REPOSITORY AM ENDE EINES ARBEITSABSCHNITTS AKTUALISIEREN
+======================================================================
+
+Diese Phase wird ausgeführt, sobald der Benutzer sinngemäß sagt:
+- „Repo aktualisieren“
+- „Übergabe erstellen“
+- „Handover machen“
+- „Projekt für den nächsten Chat vorbereiten“
+- oder ausdrücklich verlangt, das GitHub-Repository auf den aktuellen Stand zu bringen.
+
+Dann gilt:
+
+1. Analysiere zuerst den aktuellen Repository-Stand erneut.
+
+2. Vergleiche ihn mit ALLEN neuen Informationen aus dem aktuellen Chat seit der letzten Übergabe:
+   - Entscheidungen
+   - Testergebnisse
+   - Profile
+   - Logs
+   - Configänderungen
+   - Fehler
+   - Fixes
+   - offene Aufgaben
+   - neue Referenzen
+
+3. Erstelle vor jeder Änderung eine Repo-Bereinigungsliste.
+   Ordne jede relevante Datei einer Kategorie zu:
+
+   KEEP
+   = unverändert behalten
+
+   UPDATE
+   = durch neue aktuelle Fassung ersetzen
+
+   ADD
+   = neu aufnehmen
+
+   ARCHIVE
+   = nicht mehr aktuell, aber historisch/diagnostisch weiterhin wertvoll
+
+   DELETE
+   = nur wenn mit hoher Sicherheit vollständig redundant oder dauerhaft irrelevant
+
+4. Löschregel:
+   Im Zweifel ARCHIVE statt DELETE.
+   Eine Datei darf nur gelöscht werden, wenn dadurch keine für zukünftige Diagnose, Rekonstruktion, Balanceentscheidung oder Projektkontinuität relevante Information verloren geht.
+
+5. Historische Primärquellen dürfen erhalten bleiben, auch wenn aktuelle Dokumentation dieselben Themen zusammenfasst.
+   Das gilt besonders für:
+   - alte Logs mit einzigartigen Fehlersignaturen,
+   - frühere Handover-Dokumente mit mehr Detailtiefe,
+   - Referenzscreenshots,
+   - historische Basis-/Diagnoseprofile,
+   - alte Configwerte, die für Regressionen relevant sind.
+
+======================================================================
+PHASE D – AKTUELLE DOKUMENTATION ERZEUGEN / AKTUALISIEREN
+======================================================================
+
+Prüfe und aktualisiere mindestens:
+
+1. Aktueller kompakter Handover-Kern
+   - schneller Einstieg für neuen Chat
+   - aktueller Stand
+   - wichtigste Regeln
+   - aktuelle Profile
+   - offene Aufgaben
+   - nächste Tests
+
+2. Vollständiger Handover-Prompt
+   - aktueller verbindlicher Kern vorne
+   - historische Detailanhänge bei Bedarf
+   - keine gefährliche Überkomprimierung
+
+3. Vollständige Chat-/Projektverlaufsdokumentation
+   - chronologisch
+   - mit relevanten Entscheidungen
+   - Tests
+   - Fehlversuchen
+   - Ursachen
+   - Fixes
+   - Versionen
+   - offenen Punkten
+
+4. Kompakte Projektchronik
+
+5. Projektstatus_<AKTUELLER_STAND>.json
+
+6. Aktive_Modliste_<AKTUELLER_STAND>.txt
+
+7. README_Handover_<AKTUELLER_STAND>.txt
+
+8. VERIFIKATION_<AKTUELLER_STAND>.txt
+
+9. DATEIINVENTAR_<AKTUELLER_STAND>.txt
+
+10. SHA256SUMS_<AKTUELLER_STAND>.txt
+
+11. Repository-README.md
+
+12. Diesen Master-Prompt selbst nur dann aktualisieren, wenn sich der Übergabe-/Repo-Workflow geändert hat.
+    Der Prompt soll möglichst versionsunabhängig bleiben.
+
+Die Dokumentation muss mindestens enthalten:
+- was seit der letzten Übergabe geändert wurde,
+- welche Tests erfolgreich waren,
+- welche Tests fehlgeschlagen sind,
+- welche Ansätze verworfen wurden und warum,
+- welche Probleme offen sind,
+- welche Werte/Configs verbindlich sind,
+- welche Mods welche Systeme „ownen“,
+- welche alten Lösungen nicht erneut ausprobiert werden sollen,
+- welche Profile Gameplay-Basis und welche Diagnoseprofile sind,
+- welcher Profilstand aktuell kanonisch ist,
+- welche Tests als Nächstes durchgeführt werden sollen.
+
+======================================================================
+PHASE E – TECHNISCHE DATEIEN AKTUALISIEREN
+======================================================================
+
+Prüfe insbesondere:
+
+- neuestes Gameplay-.r2z
+- relevante vorherige Basisprofile
+- relevante Diagnoseprofile
+- neue Runtime-Logs
+- neue Diagnoseauswertungen
+- verbindliche Referenzbilder
+- Spawn-Rate-Referenzen
+- Referenzwerte
+- Modlisten
+- Config-/Balance-Primärquellen
+
+Profile oder Logs dürfen nur entfernt werden, wenn ihre Informationen vollständig in neueren Quellen enthalten sind und sie keinen eigenständigen Diagnosewert mehr haben.
+
+======================================================================
+PHASE F – REPOSITORY-STRUKTUR
+======================================================================
+
+Grundstruktur:
+
+/
+├─ README.md
+├─ START_HERE_ChatGPT_Masterprompt.txt
+├─ Current/
+├─ Profiles/
+├─ Logs/
+├─ References/
+└─ Archive/
+
+Regeln:
+
+- Current/ enthält nur den aktuellen Einstiegspunkt und aktuelle Dokumentation.
+- Profiles/ enthält aktuelle sowie noch relevante Basis-/Diagnoseprofile.
+- Logs/ enthält aktuelle beziehungsweise diagnostisch relevante Logs/Auswertungen.
+- References/ enthält verbindliche Primärreferenzen.
+- Archive/ enthält historische Primärquellen mit fortbestehendem Erkenntniswert.
+
+README.md muss eindeutig nennen:
+- aktuell kanonischer Projektstand,
+- „Read first“-Dateien,
+- aktuelles Gameplayprofil,
+- Prioritätsregel „neuere bestätigte Information schlägt ältere“,
+- Hinweis, dass Archive/ historisch ist,
+- Hinweis auf diesen Master-Prompt.
+
+======================================================================
+PHASE G – QUALITÄTSKONTROLLE VOR DER ÜBERGABE
+======================================================================
+
+Vor Auslieferung prüfen:
+
+1. DOCX/PDF
+   - vollständig
+   - sinnvoll formatiert
+   - keine abgeschnittenen Tabellen
+   - keine versehentlich fehlenden historischen Abschnitte
+   - Versionsnummern korrekt
+
+2. .r2z
+   - ZIP-/Archivintegrität
+   - erwartete Dateistruktur
+   - korrekter profileName
+   - korrekte Versionsbezeichnung
+   - keine unbeabsichtigten Zusatz-/Fehl-Dateien
+   - Diff gegen korrektes Basisprofil
+
+3. Logs
+   - korrekter Versionsbezug
+   - keine falsche Zuordnung zu einem Profilstand
+
+4. Inventar/Hashes
+   - Inventar entspricht finalem Dateistand
+   - SHA-256-Hashes werden erst nach allen finalen Änderungen erzeugt
+   - Hashes müssen zu den final ausgelieferten Dateien passen
+
+5. Repository
+   - keine unnötigen Dubletten in Current/
+   - keine versehentlich gelöschten Primärquellen
+   - Archive klar als historisch markiert
+   - README zeigt auf tatsächlich vorhandene Dateien
+
+======================================================================
+PHASE H – DATEIEN FÜR DEN BENUTZER BEREITSTELLEN
+======================================================================
+
+1. Wichtige Dateien einzeln bereitstellen.
+2. Keine ZIP-only-Lösung.
+3. Optional zusätzlich ein vollständiges Backup-ZIP erzeugen.
+4. Der Benutzer muss die relevanten Einzeldateien direkt ins Repository übernehmen können.
+
+======================================================================
+PHASE I – EXAKTE POWERSHELL-BEFEHLE FÜR DAS REPO
+======================================================================
+
+Nachdem die finalen Dateien erzeugt wurden, gib konkrete PowerShell-Schritte.
+
+Lokales Repository standardmäßig:
+
+"$HOME\Desktop\Lethal-Company-AI-Modding-Project"
+
+Die Befehle sollen in kleinen, kontrollierbaren Schritten:
+
+1. ins Repo wechseln
+2. git status anzeigen
+3. git pull ausführen
+4. konkret identifizierte DELETE-Dateien entfernen
+5. konkret identifizierte ARCHIVE-Dateien verschieben
+6. neue/aktualisierte Dateien an exakt richtige Orte kopieren
+7. tree /F oder geeignete Kontrollbefehle ausführen
+8. git status anzeigen
+9. git add .
+10. git status erneut anzeigen
+11. sinnvollen Commit mit aktuellem Versionsstand erstellen
+12. git push ausführen
+13. optional abschließend git status prüfen
+
+Verwende konkrete Dateinamen und Pfade.
+Keine Platzhalter, sobald der aktuelle Stand feststeht.
+
+Falls Dateien im Downloads-Ordner liegen, verwende nach Möglichkeit robuste PowerShell-Befehle mit $HOME und vollständig quotierten Pfaden.
+
+======================================================================
+PHASE J – ABSCHLUSSBERICHT
+======================================================================
+
+Am Ende ausdrücklich nennen:
+
+- neuer kanonischer Projektstand
+- aktuelles Gameplayprofil
+- neu hinzugefügte Dateien
+- aktualisierte Dateien
+- archivierte Dateien
+- gelöschte Dateien
+- bewusst erhaltene historische Dateien
+- offene Probleme
+- nächste Tests
+- ob README.md angepasst wurde
+- ob dieser Master-Prompt angepasst werden musste
+- ob alle Integritäts-/Hashprüfungen bestanden wurden
+
+======================================================================
+PHASE K – PROMPT FÜR DEN NÄCHSTEN CHAT
+======================================================================
+
+Wenn das Repository vollständig aktualisiert wurde, gib zusätzlich einen extrem kurzen Startsatz für den nächsten Chat aus.
+
+Standardform:
+
+„Nutze dieses Repository als vollständige Projektübergabe:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+Lies zuerst README.md und anschließend die dort unter ‚Read first‘ genannten Dateien. Folge außerdem START_HERE_ChatGPT_Masterprompt.txt. Der chronologisch neueste bestätigte Stand ist verbindlich.“
+
+======================================================================
+KRITISCHE GRUNDREGELN
+======================================================================
+
+- Repository = kanonische Übergabequelle.
+- Keine ZIP-only-Abhängigkeit.
+- Neuere bestätigte Fakten schlagen ältere.
+- Archive ist historisch, nicht automatisch aktuell.
+- Im Zweifel archivieren statt löschen.
+- Keine Wiederholung bereits gescheiterter Ansätze ohne neue Evidenz.
+- Keine übermäßige Kürzung der Dokumentation.
+- Diagnosehistorie und Gründe für Entscheidungen erhalten.
+- Vor jeder Profiländerung korrekte Basis sicherstellen.
+- Nach jeder Profiländerung Diff und Archivintegrität prüfen.
+- Keine erfundenen Werte, wenn Logs/Dateien sie nicht belegen.
+- Fehlende Informationen klar benennen statt raten.
+- Wichtige Projektdateien für GitHub einzeln bereitstellen.
+- PowerShell-Befehle konkret, reproduzierbar und in kontrollierbaren Schritten liefern.
+
+ENDE DES MASTER-PROMPTS
