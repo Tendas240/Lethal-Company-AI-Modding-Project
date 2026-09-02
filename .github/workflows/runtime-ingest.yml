@@ -1,0 +1,50 @@
+name: Ingest runtime evidence
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "RuntimeInbox/Current/**"
+      - "RuntimeInbox/ACTIVE_BUILD.txt"
+      - "BuildSystem/runtime_ingest.py"
+      - ".github/workflows/runtime-ingest.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: runtime-evidence-ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Ingest evidence
+        run: python BuildSystem/runtime_ingest.py
+
+      - name: Commit evidence and clear inbox
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- RuntimeInbox RuntimeEvidence
+          if git diff --cached --quiet; then
+            echo "No runtime evidence changes to commit."
+          else
+            git commit -m "Ingest runtime evidence [skip ci]"
+            git push
+          fi
