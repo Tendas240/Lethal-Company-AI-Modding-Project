@@ -1,6 +1,6 @@
 {
   "enabled": false,
-  "build_id": "IDLE_AFTER_S1.41_MIGRATION",
+  "build_id": "IDLE_AFTER_S1.41_ACCEPTANCE",
   "base_profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
   "base_sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",
