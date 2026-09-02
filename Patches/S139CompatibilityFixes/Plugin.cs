@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using BepInEx;
+using BepInEx.Bootstrap;
 using BepInEx.Logging;
 using GameNetcodeStuff;
 using HarmonyLib;
@@ -14,11 +15,12 @@ namespace S139CompatibilityFixes
 {
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     [BepInDependency("299792458.EnemyScan")]
+    [BepInDependency("MaxWasUnavailable.LethalModDataLib", BepInDependency.DependencyFlags.SoftDependency)]
     public sealed class Plugin : BaseUnityPlugin
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.1.0";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
@@ -34,11 +36,12 @@ namespace S139CompatibilityFixes
 
             PatchEnemyScan();
             PatchCodeRebirthPikminKillShield();
+            PatchLethalModDataLibNullPluginGuard();
 
             Logger.LogInfo(
                 "S1.39 Compatibility Fixes loaded. Ship-door anti-lockout, complete EnemyScan output, " +
-                "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, and " +
-                "CodeRebirth kill-RPC Pikmin protection are active.");
+                "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, " +
+                "CodeRebirth kill-RPC Pikmin protection, and the optional LethalModDataLib null-plugin guard are active.");
         }
 
         private void PatchEnemyScan()
@@ -94,6 +97,126 @@ namespace S139CompatibilityFixes
             Logger.LogInfo(
                 "[PikminCraneShield] Protected Pikmin/Puffmin from CodeRebirth utility kill RPCs. " +
                 "This provides a direct failsafe for Autonomous Crane squish kills even when LethalMin's crane toggles are already false.");
+        }
+
+        private void PatchLethalModDataLibNullPluginGuard()
+        {
+            Type collectorType = AccessTools.TypeByName("LethalModDataLib.Features.ModDataAttributeCollector");
+            if (collectorType == null)
+            {
+                Logger.LogInfo("[LMDLGuard] LethalModDataLib is not present; guard not needed.");
+                return;
+            }
+
+            MethodInfo bulkRegister = AccessTools.Method(
+                collectorType,
+                "RegisterModDataAttributes",
+                Type.EmptyTypes);
+
+            MethodInfo registerPerType = collectorType
+                .GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+                .FirstOrDefault(m =>
+                    string.Equals(m.Name, "RegisterModDataAttributes", StringComparison.Ordinal) &&
+                    m.GetParameters().Length == 4);
+
+            if (bulkRegister == null || registerPerType == null)
+            {
+                Logger.LogError("[LMDLGuard] Could not resolve LethalModDataLib registration methods; NRE guard was not applied.");
+                return;
+            }
+
+            LethalModDataLibNullPluginGuard.RegisterPerTypeMethod = registerPerType;
+            Harmony.Patch(
+                bulkRegister,
+                prefix: new HarmonyMethod(typeof(LethalModDataLibNullPluginGuard), nameof(LethalModDataLibNullPluginGuard.Prefix)));
+
+            Logger.LogInfo(
+                "[LMDLGuard] Patched LethalModDataLib bulk ModDataAttribute registration to skip Chainloader PluginInfo entries with null Instance while preserving registration for valid plugins.");
+        }
+    }
+
+    internal static class LethalModDataLibNullPluginGuard
+    {
+        internal static MethodInfo RegisterPerTypeMethod;
+
+        public static bool Prefix()
+        {
+            MethodInfo registerPerType = RegisterPerTypeMethod;
+            if (registerPerType == null)
+            {
+                Plugin.Log.LogError("[LMDLGuard] Per-type registration method is unavailable; allowing original method to run.");
+                return true;
+            }
+
+            int scannedPlugins = 0;
+            int skippedNullInstances = 0;
+            int scannedTypes = 0;
+
+            foreach (PluginInfo pluginInfo in Chainloader.PluginInfos.Values)
+            {
+                if (pluginInfo == null || pluginInfo.Instance == null)
+                {
+                    skippedNullInstances++;
+                    string skippedGuid = pluginInfo != null && pluginInfo.Metadata != null
+                        ? pluginInfo.Metadata.GUID
+                        : "<unknown>";
+                    Plugin.Log.LogWarning(
+                        $"[LMDLGuard] Skipping Chainloader PluginInfo with null Instance: {skippedGuid}");
+                    continue;
+                }
+
+                string guid = pluginInfo.Metadata != null && !string.IsNullOrWhiteSpace(pluginInfo.Metadata.GUID)
+                    ? pluginInfo.Metadata.GUID
+                    : "<unknown>";
+
+                Assembly assembly = pluginInfo.Instance.GetType().Assembly;
+                IEnumerable<Type> types;
+                try
+                {
+                    types = assembly.GetTypes();
+                }
+                catch (ReflectionTypeLoadException ex)
+                {
+                    types = ex.Types.Where(t => t != null);
+                    Plugin.Log.LogWarning(
+                        $"[LMDLGuard] Partial type-load failure while scanning {guid}; continuing with loadable types.");
+                }
+                catch (Exception ex)
+                {
+                    Plugin.Log.LogWarning(
+                        $"[LMDLGuard] Could not enumerate types for {guid}: {ex.GetType().Name}: {ex.Message}");
+                    continue;
+                }
+
+                scannedPlugins++;
+                foreach (Type type in types)
+                {
+                    if (type == null)
+                        continue;
+
+                    try
+                    {
+                        registerPerType.Invoke(null, new object[] { guid, type, null, null });
+                        scannedTypes++;
+                    }
+                    catch (TargetInvocationException ex)
+                    {
+                        Exception inner = ex.InnerException ?? ex;
+                        Plugin.Log.LogError(
+                            $"[LMDLGuard] Per-type registration failed for {guid}/{type.FullName}: {inner.GetType().Name}: {inner.Message}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Plugin.Log.LogError(
+                            $"[LMDLGuard] Per-type registration failed for {guid}/{type.FullName}: {ex.GetType().Name}: {ex.Message}");
+                    }
+                }
+            }
+
+            Plugin.Log.LogInfo(
+                $"[LMDLGuard] Safe ModDataAttribute scan completed: plugins={scannedPlugins}, types={scannedTypes}, nullInstancesSkipped={skippedNullInstances}.");
+
+            return false;
         }
     }
 
