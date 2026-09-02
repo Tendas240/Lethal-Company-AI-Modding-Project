@@ -100,6 +100,14 @@ Exact runtime flow IDs are now known:
 
 Therefore the final S1.42 tuning can use the exact disable-culling list without guessing.
 
+## Mausoleum visibility finding
+
+The S1.42A Offense run generated `MelanieMausoleum`, but the user reports that the dungeon's indoor fog is much too dense and makes navigation difficult.
+
+Generated `MelanieMelicious.interior0.cfg` contains no fog-density control. Therefore S1.42 should investigate an interior-specific runtime/HDRP fog-volume adjustment rather than a global fog reduction.
+
+Desired result: materially clearer visibility in Mausoleum only, while retaining some atmosphere if possible.
+
 ## LethalModDataLib regression — important
 
 `MaxWasUnavailable.LethalModDataLib 1.2.2` loaded, patched, and then failed during initialization:
@@ -158,17 +166,21 @@ For each EventType, use a constant scale:
 
 where P is the user-selected global percentage/weight.
 
-Pending user values:
-- Insane
-- VeryBad
-- Bad
-- Neutral
-- Good
-- VeryGood
-- Rare
-- Remove
+User-selected values:
+- Insane = 12.5
+- VeryBad = 12.5
+- Bad = 12.5
+- Neutral = 12.5
+- Good = 12.5
+- VeryGood = 12.5
+- Rare = 12.5
+- Remove = 12.5
 
-Prefer values summing to 100.
+All eight scales should therefore be constant:
+
+`12.5, 0, 12.5, 12.5`
+
+The values sum to 100 and give an exactly even base EventType distribution before event-specific eligibility/exclusion rules are applied.
 
 Do not switch `Use custom weights?` to true; that switches BCMER to per-event Custom Weight values rather than global EventType distribution.
 
@@ -180,7 +192,7 @@ Accepted gameplay baseline remains S1.41.
 
 Before S1.42 final:
 1. decide how to handle the LethalModDataLib initialization NRE / DULL dependency;
-2. set exact user-selected BCMER fixed EventType percentages;
+2. apply the selected 12.5% fixed BCMER EventType distribution;
 3. tune new interior weights using generated IDs/configs;
 4. set CullFactory exceptions for `junkrooms` and `shatteredrooms`;
 5. preserve explicit author safety restrictions;
