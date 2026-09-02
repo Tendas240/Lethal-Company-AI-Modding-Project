@@ -1,0 +1,4 @@
+Nutze dieses Repository als vollständige Projektübergabe:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+Lies zuerst START_HERE_ChatGPT_Masterprompt.txt und führe die darin beschriebene Projektübernahme vollständig aus. Der aktuelle kanonische und runtime-akzeptierte Stand ist S1.41. Lies insbesondere Current/12_HANDOVER_S1.41_TO_S1.42A.md. Nächster verbindlicher Schritt ist S1.42A Interior Config Seed. Nutze den repository-first GitHub-Actions-Buildworkflow; fordere keinen lokalen Repo-Clone und keine PowerShell-Profilbuilds an, solange die benötigte Basis auf GitHub liegt.
