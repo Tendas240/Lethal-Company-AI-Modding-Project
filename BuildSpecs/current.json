@@ -1,0 +1,12 @@
+{
+  "enabled": false,
+  "build_id": "MIGRATION_PENDING_S1.41",
+  "base_profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+  "base_sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
+  "profile_name": "DO_NOT_BUILD",
+  "overwrite": false,
+  "mod_state_changes": [],
+  "config_patches": [],
+  "text_assertions": []
+}
