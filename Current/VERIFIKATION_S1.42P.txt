@@ -1,0 +1,95 @@
+VERIFIKATION — S1.42P
+Datum: 2026-09-03
+Spiel: Lethal Company V81
+
+KANONISCHER KANDIDAT
+Build: S1.42P — Baboon Hawk Exact FinishTask Recovery
+Profil: Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z
+SHA-256: 11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5
+Git blob SHA: 924b2bb3109bddbbe4558885b158960e19495768
+Dateigröße: 537963 Bytes
+
+BUILD
+GitHub Actions Build Run #48 / ID 33783386675: SUCCESS
+Build-Commit: a6e97be239a3865be2adb03474b594cab960a539
+Idle-Guard Run #49 / ID 33783508656: SUCCESS
+ZIP-Mitglieder: 331
+Lesbare Snapshot-Dateien: 330
+Geänderte bestehende Archivmitglieder:
+- BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+- export.r2x
+Neue Archivmitglieder: keine
+
+PLUGIN / CODE
+Patches/S139CompatibilityFixes/Plugin.cs:
+- PluginVersion = 1.3.11
+- exakter Runtime-bestätigter Resolver: LethalMin.PikminAI.FinishTask()
+- exact declaring type / void / zero parameters / method body werden validiert
+- one-shot RoundManager.Instance.SpawnedEnemies
+- DeathReleaseRadius = 4.0 m
+- kein RemoveCurrentTask-Fallback
+- kein Update-getriebener globaler Scan
+- Dead-Baboon-Hawk CanGrabScrap-Guard bleibt aktiv
+
+S1.42P SNAPSHOT
+Quelle: ProfileSources/S1.42P/
+Pakete gesamt: 188
+Aktiviert: 182
+Deaktiviert: 6
+Deaktiviert:
+- AJB-Keep_hangar_ship_door_closed 1.0.0
+- zealsprince-Malfunctions 1.10.3
+- Reiko88-Observer 2.0.1
+- ProjectSCP-SCP999 2.4.0
+- Kittenji-Dont_Touch_Me 1.2.8
+- SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0
+
+TEMPORÄRER TESTZUSTAND
+BepInEx/config/tendas.s139.compatibilityfixes.cfg:
+Isolated Enemy Regression = true
+
+BCMER:
+SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 = disabled
+
+LethalMin:
+No Knock Back = true
+Invinceable Pikmin = true
+Pikmin Die In Player Death Zones = false
+Attack Blacklist enthält weder Crawler/Thumper noch Baboon Hawk.
+
+SellBodies:
+Enable selling of Baboon Hawk Bodies = true
+Body Spawn Delay = 4
+
+RUNTIME-ROUTER
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42P
+RuntimeInbox/Current/ enthält nur .gitkeep
+RuntimeEvidence/S1.42P/ existiert noch nicht — korrekt, da S1.42P noch nicht getestet wurde.
+
+BUILD-CONTROLLER
+BuildSpecs/current.json:
+enabled = false
+build_id = IDLE_AFTER_S1.42P_BUILD_AWAITING_RUNTIME
+base_profile = Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z
+base_sha256 = 11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5
+
+LETZTE RUNTIME-EVIDENZ
+Build: S1.42O
+Pfad: RuntimeEvidence/S1.42O/20260903T171220Z/
+Log SHA-256: 1a1251f19a1d82e90b72e82ac8e4babd523c32e695fe3d7923d4590debb0be71
+Ergebnis: FAIL / Cleanup nicht ausgeführt, weil TaskFinished() nicht existiert.
+Runtime-Reflection bestätigte FinishTask():Void.
+Benutzerbeobachtung: 8 Pikmin verschwanden nach Hawk-Tod.
+
+LETZTER VOLL AKZEPTIERTER GAMEPLAY-BASELINE
+S1.41 — BCMER Reactivation
+SHA-256: d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b
+
+RESTORE-BASELINE
+Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+Profil-SHA-256: 22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3
+
+NÄCHSTER SCHRITT
+S1.42P unverändert testen. Kein S1.42Q vorher bauen.
+Gale -> Advanced options -> Import all files.
+Danach kompletten frischen LogOutput.log nach RuntimeInbox/Current/ committen.
