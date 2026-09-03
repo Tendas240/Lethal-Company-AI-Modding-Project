@@ -6,7 +6,27 @@ GitHub is the canonical source of truth for this project.
 
 Game: **Lethal Company V81**
 
-### Last fully accepted full normal gameplay baseline
+### Newest built candidate
+
+**S1.42U — BCMER 1.71.0 Reactivation Gate**
+
+`Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z`
+
+SHA-256:
+
+`ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969`
+
+Build verification:
+
+`Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
+
+GitHub Actions run `33818241873`: **success**
+
+**Runtime validation is still required. Do not treat S1.42U as accepted gameplay state yet.**
+
+### Accepted reference roles
+
+Last fully accepted full normal gameplay baseline:
 
 **S1.41 — BCMER Reactivation**
 
@@ -16,7 +36,7 @@ SHA-256:
 
 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-### Newest accepted technical descendant
+Newest runtime-accepted technical descendant:
 
 **S1.42T — Normal Enemy Restore**
 
@@ -38,107 +58,106 @@ Raw log SHA-256:
 
 `b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f`
 
-Compatibility plugin remains **v1.3.14** with embedded DLL SHA-256:
+S1.41 remains the last fully accepted full-normal-stack baseline until S1.42U passes runtime.
 
-`3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`
+## S1.42U exact delta
 
-S1.41 remains the last fully accepted *full normal-stack* baseline only because exact BCMER 1.71.0 is still intentionally disabled in S1.42T.
+Base:
 
-**S1.42U has not been built.** It is the next controlled plan only.
+`Profiles/LC V1 S1.42T Normal Enemy Restore.r2z`
 
-## Current state
+Only intended and verified package-state change:
 
-- EnemyIsolation: **disabled** (`Isolated Enemy Regression = false`)
-- BCMER exact `1.71.0`: **disabled intentionally**
-- Thumper Bite Limit: **3**
-- Crawler remains attackable by Pikmin / absent from Attack Blacklist
-- compatibility plugin v1.3.14 remains unchanged from accepted S1.42S
-- no successor build is currently armed.
+- `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`: **disabled -> enabled**
+
+Build result:
+
+- 331 archive members;
+- changed existing member only `export.r2x`;
+- no added/removed members;
+- no config patch;
+- no local plugin/compatibility-code change.
+
+Preserved:
+
+- EnemyIsolation off (`Isolated Enemy Regression = false`);
+- compatibility plugin v1.3.14;
+- compatibility DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
+- `Thumper Bite Limit = 3`;
+- Crawler absent from Attack Blacklist;
+- accepted Pikmin compatibility behavior.
+
+Do not upgrade BCMER to 2.0.0.
 
 ## Exact next step
 
-Next controlled build:
+Import/run:
 
-**S1.42U — BCMER 1.71.0 Reactivation Gate**
+`Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z`
 
-Plan:
+Perform a normal gameplay run with BCMER active, then upload the complete `LogOutput.log` to:
 
-`BuildSpecs/S1.42U_PLAN.md`
+`RuntimeInbox/Current/`
 
-Only intended package-state change:
+`RuntimeInbox/ACTIVE_BUILD.txt` is already `S1.42U`.
 
-- re-enable exact `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`.
+Runtime gate requires startup success, exact BCMER 1.71.0 active, normal enemies still spawning, no crash/freeze, no Work/no-task or Leader-null regression, no new compatibility exception flood, no catastrophic BCMER system/event regression, and accepted Pikmin behavior intact.
 
-Do not upgrade BCMER and do not mix unrelated gameplay tuning, repository migration, documentation/comment cleanup, or custom patch changes into this gate.
+Keep the S1.42T raw log through this immediate BCMER-on comparison.
 
 ## ChatGPT — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/75_FINAL_HANDOVER_S1.42T_PASS_S1.42U_NEXT.md`
+2. `Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
 3. `Current/00_CURRENT_STATE.md`
 4. `Current/01_HANDOVER_CORE.md`
-5. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
-6. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-7. `Current/Projektstatus_S1.42T.json`
-8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-9. `Current/76_REPOSITORY_HANDOVER_AUDIT_S1.42T.md`
+5. `Current/Projektstatus_S1.42U.json`
+6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+7. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
+8. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+9. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
 10. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-11. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
-12. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
-13. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-14. `BuildSpecs/S1.42U_PLAN.md`
-15. `BuildSpecs/current.json`
-16. `RuntimeInbox/ACTIVE_BUILD.txt`
+11. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
+12. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+13. `BuildSpecs/S1.42U_PLAN.md`
+14. `BuildSpecs/current.json`
+15. `RuntimeInbox/ACTIVE_BUILD.txt`
 
-Newer confirmed current documentation overrides older version-specific handover files. Older S1.42S/Q/R material remains historical/diagnostic evidence, not the active next-step contract.
+`Current/75_FINAL_HANDOVER_S1.42T_PASS_S1.42U_NEXT.md` and `Current/76_REPOSITORY_HANDOVER_AUDIT_S1.42T.md` are preserved as the immediately preceding pre-build handover state. Chronologically newer confirmed S1.42U files override their old "S1.42U not built" status.
 
-The historical `Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md` was fulfilled by S1.42T; retain it for restore history, but do not follow its old "S1.42T not built" wording.
+## Permanent anti-regression references
 
-## Restore / anti-regression references
+Patch safety:
 
-Canonical S1.42C enemy restore baseline:
-
-`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
-
-SHA-256:
-
-`22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
-
-Machine-readable baseline:
-
-`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
 
 Focused S1.42S lifecycle acceptance:
 
 `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
 
-Permanent patch-safety rule:
+Corrected S1.42R root cause:
 
-`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+`Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
+
+Canonical S1.42C enemy restore baseline:
+
+`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
 Never disable complete `LethalMin.BaboonBirdPikminEnemy` merely to block Hawk -> Pikmin interaction; preserve native inherited death/unlatch lifecycle and use the narrowest exact interception point.
 
-## Large runtime logs
+## Runtime-log infrastructure
 
-Normal runtime logs continue through `RuntimeInbox/Current/` and are processed by a streaming every-line analyzer. Smaller logs also receive lossless bounded `chat_chunks/` for direct ChatGPT reading.
+Normal logs use `RuntimeInbox/Current/` and streaming every-line analysis.
 
-Very large logs use the disposable `runtime-large` branch and `RuntimeInbox/Large/`. They are compressed/split if needed, fully streamed through analysis, retained temporarily as a 14-day Actions artifact for exact query-on-demand access, and are **not** meant to remain permanent raw history on `main`.
+Very large logs use the disposable `runtime-large` branch and `RuntimeInbox/Large/`, with compact analysis/provenance on `main`, a temporary 14-day raw Actions artifact, and query-on-demand extraction through `RuntimeAnalysis/QUERY.json`.
 
 Canonical policy:
 
 `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
 
-Automated infrastructure self-test:
+## Known non-functional drift
 
-- `.github/workflows/runtime-pipeline-selftest.yml`
-- `BuildSystem/runtime_pipeline_selftest.py`
-- initial GitHub Actions run `33817297654`: **success**
-
-Keep the current S1.42T raw log through the immediate S1.42U comparison because it is the clean BCMER-off reference run.
-
-## Known non-functional documentation/comment drift
-
-`Current/02_TECHNICAL_BASELINE.md` contains older chronology subsections with local "current" wording for S1.42S/earlier, and `Patches/S139CompatibilityFixes/Plugin.cs` contains some older comments that do not perfectly describe accepted v1.3.14 behavior. Current code/config/runtime evidence plus `Current/75`, `Current/00`, `Current/01` and `Current/Projektstatus_S1.42T.json` are authoritative. Do not mix cosmetic cleanup into S1.42U.
+`Current/02_TECHNICAL_BASELINE.md` contains older chronology subsections with stale local "current" wording, and `Patches/S139CompatibilityFixes/Plugin.cs` contains historical comments that do not perfectly describe accepted v1.3.14 behavior. Current code/config/runtime evidence plus chronologically newer canonical docs are authoritative. Do not mix cosmetic cleanup into the open S1.42U runtime gate.
 
 ## Repository-first rule
 
