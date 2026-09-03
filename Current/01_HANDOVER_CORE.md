@@ -229,7 +229,10 @@ Do not build another candidate before the clean S1.42G BCMER-off retest is evalu
 
 ## New-chat takeover
 
-Primary current retest handover:
+Canonical current handover:
+`Current/29_HANDOVER_S1.42G_BCMER_OFF_RETEST_TO_NEXT.md`
+
+Discarded-log context:
 `Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md`
 
 Build/test context:
