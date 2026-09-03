@@ -5,31 +5,25 @@ Repository:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
 ======================================================================
-CURRENT CANONICAL TAKEOVER POINTER - 2026-09-03 - S1.42M
+CURRENT CANONICAL TAKEOVER POINTER - 2026-09-03 - S1.42N
 ======================================================================
 
 Repository is the source of truth.
 
 Read immediately after this master prompt:
-1. Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md
-2. Current/Projektstatus_S1.42M.json
-3. Current/47_S1.42L_BABOON_ATTACK_PASS_DEATH_REGRESSION_ANALYSIS.md
-4. Current/46_S1.42M_BABOON_HAWK_DEATH_CLEANUP_BUILD.md
-5. Current/00_CURRENT_STATE.md
-6. Current/01_HANDOVER_CORE.md
-7. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-8. Current/VERIFIKATION_S1.42M.txt
-9. Current/SHA256SUMS_S1.42M.txt
-10. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-11. Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
-12. Current/02_TECHNICAL_BASELINE.md
-13. BuildSpecs/current.json
-14. RuntimeInbox/ACTIVE_BUILD.txt
-15. Current/49_REPOSITORY_HANDOVER_AUDIT_S1.42M.md
-16. Current/Aktive_Modliste_S1.42M.txt
-17. Current/DATEIINVENTAR_S1.42M.txt
-18. Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
-19. Current/NEXT_CHAT_START_PROMPT_S1.42M.txt
+1. Current/Projektstatus_S1.42N.json
+2. Current/50_S1.42M_DEATH_CLEANUP_PARTIAL_PASS_ANALYSIS.md
+3. Current/51_S1.42N_BABOON_HAWK_DEATH_TARGET_RESOLVER_BUILD.md
+4. Current/00_CURRENT_STATE.md
+5. Current/01_HANDOVER_CORE.md
+6. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+7. BuildSpecs/current.json
+8. RuntimeInbox/ACTIVE_BUILD.txt
+9. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+10. Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
+11. Current/02_TECHNICAL_BASELINE.md
+12. Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md for predecessor detail
+13. Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
 
 Last fully accepted gameplay baseline:
 S1.41
@@ -37,61 +31,67 @@ Profiles/LC V1 S1.41 BCMER Reactivation.r2z
 SHA-256:
 d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b
 
+Latest valid runtime evidence:
+S1.42M
+RuntimeEvidence/S1.42M/20260903T163446Z/
+Log SHA-256:
+0639d5cc04aa54f5d7943ef4689e0d705c818871b019287ca1a1cdc2aa2492fb
+
+S1.42M result:
+PARTIAL PASS.
+- Dead Baboon Hawk body appears and can be carried by Pikmin to the Onion.
+- living Baboon Hawks ignore the corpse.
+- Hawk -> Pikmin ignore remains accepted.
+- Leader is null when following = 0.
+- attacking Pikmin still disappear when the Hawk dies.
+- decisive death-cleanup marker: released 0/0 latched Pikmin.
+- exact PikminAI.RemoveCurrentTask() resolved successfully; target discovery was wrong.
+
 Current built candidate awaiting runtime:
-S1.42M - Baboon Hawk Death Cleanup
-Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z
+S1.42N - Baboon Hawk Death Target Resolver
+Profiles/LC V1 S1.42N Baboon Hawk Death Target Resolver.r2z
 SHA-256:
-9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7
+c87d48464a750f87274e2848c44e5e1e24d4f1da087f59a33e2889744ebc13e9
 
 Compatibility plugin:
-v1.3.8
-DLL SHA-256:
-47fff0272b00ce776150c203eb65710216eba4390f5f5864fdbffec686692adf
+v1.3.9
 
-Latest valid runtime evidence:
-RuntimeEvidence/S1.42L/20260903T155132Z/
-Log SHA-256:
-812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10
+S1.42N change:
+- preserve the passing S1.42M corpse guard;
+- replace only the failed Hawk-child Pikmin resolver;
+- at Hawk death, one-shot read RoundManager.Instance.SpawnedEnemies;
+- filter runtime LethalMin.PikminAI candidates;
+- release candidates under/within 4.0 m of the dying Hawk using exact RemoveCurrentTask();
+- emit per-Pikmin and aggregate release diagnostics;
+- no continuous Update-driven global scan;
+- no broad/inherited LethalMin Harmony scan.
 
-S1.42L confirmed PASS:
-- Thumper/Crawler -> Pikmin protection
-- Pikmin -> Thumper/Crawler attack/latch
-- Puffer -> Pikmin immunity
-- Jetpack
-- Baboon Hawk -> Pikmin ignore protection
-- Pikmin -> living Baboon Hawk attack/latch and kill capability
-- Leader is null when following = 0 in latest run
-
-New active gate:
-S1.42M fixes the Baboon-Hawk death-cleanup/corpse interaction discovered after the successful Pikmin attack test.
-
-Required result:
-- Pikmin latched to a dying Hawk detach and remain usable;
-- SellBodies Dead Baboon Hawk body remains enabled and present;
-- Pikmin/players can carry the corpse;
-- Pikmin can carry it toward the Onion;
-- living Baboon Hawks do not pick up the corpse;
+Required S1.42N result:
+- attacking/latching Pikmin remain visible and usable after Hawk death;
+- log shows non-zero death-release candidates/releases;
+- Dead Baboon Hawk body remains Pikmin-carryable to Onion;
+- living Hawks do not pick up the corpse;
 - Hawk -> Pikmin ignore remains intact;
 - no leader-null loop.
 
-Do not build a successor first.
+Do not build a successor first unless S1.42N cannot start.
 Do not restore normal enemies or BCMER first.
 EnemyIsolation remains enabled.
 Exact BCMER 1.71.0 remains disabled.
 
-After S1.42M passes:
+After S1.42N passes:
 1. remove/disable temporary EnemyIsolation;
-2. restore normal enemy configuration from Current/ENEMY_SPAWN_BASELINE_S1.42C.json;
+2. restore normal enemy configuration exactly from Current/ENEMY_SPAWN_BASELINE_S1.42C.json;
 3. re-enable exact SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0;
 4. preserve all accepted interaction/corpse rules;
 5. runtime-check and document the restored state;
 6. only then perform deferred repository maintenance/optimization.
 
 Current runtime router:
-RuntimeInbox/ACTIVE_BUILD.txt = S1.42M
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42N
 
 Current build controller:
-BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42M_BUILD_AWAITING_RUNTIME
+BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42N_BUILD_AWAITING_RUNTIME
 
 Non-functional drift intentionally deferred while this gate is open:
 - Current/02_TECHNICAL_BASELINE.md has older current-wording;
