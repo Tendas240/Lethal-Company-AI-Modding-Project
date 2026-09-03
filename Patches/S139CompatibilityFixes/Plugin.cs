@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -23,13 +22,12 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.3";
+        public const string PluginVersion = "1.3.4";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
         internal static Plugin Instance;
 
-        private SelectableLevel _lastDiagnosticIsolationLevel;
         private float _nextJetpackTargetTick;
 
         private void Awake()
@@ -62,7 +60,8 @@ namespace S139CompatibilityFixes
                 "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, " +
                 "CodeRebirth kill-RPC Pikmin protection, the optional LethalModDataLib null-plugin guard, " +
                 "Puffer smoke Pikmin-effect guard, generic LethalMin grab/bite state recovery, " +
-                "Coroner Jetpack log-spam guard, the 140-second Jetpack target, and the optional isolated-enemy diagnostic are active.");
+                "Coroner Jetpack log-spam guard, throttled ship-door compatibility audit, the 140-second Jetpack target, " +
+                "and the late-lifecycle isolated-enemy diagnostic are active.");
         }
 
         private IEnumerator DelayedLethalMinPatches()
@@ -82,29 +81,11 @@ namespace S139CompatibilityFixes
                 JetpackCapacityGuard.ApplyToLoadedItems(logIfMissing: false);
             }
 
-            if (!DiagnosticEnemyIsolation.Enabled ||
-                RoundManager.Instance == null ||
-                RoundManager.Instance.currentLevel == null)
-                return;
-
-            SelectableLevel currentLevel = RoundManager.Instance.currentLevel;
-
-            // S1.42F proved that even after the Gordion constructor loop was fixed,
-            // doing a global EnemyAI scene scan once per second on a routed moon still
-            // matched the user's periodic freeze cadence. The diagnostic spawn pools only
-            // need to be rewritten when the SelectableLevel changes.
-            if (ReferenceEquals(currentLevel, _lastDiagnosticIsolationLevel))
-                return;
-
-            _lastDiagnosticIsolationLevel = currentLevel;
-
-            if (!DiagnosticEnemyIsolation.ShouldRunForCurrentLevel())
-                return;
-
-            DiagnosticEnemyIsolation.ApplyToCurrentLevel();
-
-            Plugin.Log.LogInfo(
-                "[EnemyIsolation] One-shot level isolation applied; continuous global EnemyAI scanning is disabled.");
+            // EnemyIsolation is intentionally NOT driven from Update.
+            // S1.42G showed that SelectableLevel reference tracking is not a round lifecycle:
+            // repeated runs on the same moon reuse the same object, and other mods can
+            // repopulate pools after route-time filtering. S1.42H hooks late generation /
+            // spawn lifecycle points instead.
         }
 
         private void PatchLethalMinGrabBiteStateRepair()
@@ -240,10 +221,67 @@ namespace S139CompatibilityFixes
                 return;
             }
 
+            int patched = 0;
+
+            MethodInfo finishGeneration = AccessTools.Method(typeof(RoundManager), "FinishGeneratingNewLevelClientRpc");
+            if (finishGeneration != null)
+            {
+                Harmony.Patch(
+                    finishGeneration,
+                    postfix: new HarmonyMethod(
+                        typeof(DiagnosticEnemyIsolationLifecycle),
+                        nameof(DiagnosticEnemyIsolationLifecycle.FinishGenerationPostfix))
+                    {
+                        priority = Priority.Last
+                    });
+                patched++;
+            }
+            else
+            {
+                Logger.LogWarning("[EnemyIsolation] RoundManager.FinishGeneratingNewLevelClientRpc was not found.");
+            }
+
+            MethodInfo predictOutside = AccessTools.Method(typeof(RoundManager), "PredictAllOutsideEnemies");
+            if (predictOutside != null)
+            {
+                Harmony.Patch(
+                    predictOutside,
+                    prefix: new HarmonyMethod(
+                        typeof(DiagnosticEnemyIsolationLifecycle),
+                        nameof(DiagnosticEnemyIsolationLifecycle.PredictOutsidePrefix))
+                    {
+                        priority = Priority.First
+                    });
+                patched++;
+            }
+            else
+            {
+                Logger.LogWarning("[EnemyIsolation] RoundManager.PredictAllOutsideEnemies was not found.");
+            }
+
+            MethodInfo beginSpawning = AccessTools.Method(typeof(RoundManager), "BeginEnemySpawning");
+            if (beginSpawning != null)
+            {
+                Harmony.Patch(
+                    beginSpawning,
+                    prefix: new HarmonyMethod(
+                        typeof(DiagnosticEnemyIsolationLifecycle),
+                        nameof(DiagnosticEnemyIsolationLifecycle.BeginEnemySpawningPrefix))
+                    {
+                        priority = Priority.First
+                    });
+                patched++;
+            }
+            else
+            {
+                Logger.LogWarning("[EnemyIsolation] RoundManager.BeginEnemySpawning was not found.");
+            }
+
             Logger.LogWarning(
-                "[EnemyIsolation] ISOLATED ENEMY TEST MODE ENABLED. Indoor allowlist: Crawler/Thumper + Puffer. " +
-                "Outdoor allowlist: Baboon Hawk. Pikmin-family entities remain allowed. " +
-                "Spawn pools are rewritten once per level change; no continuous global EnemyAI scene scan is used.");
+                $"[EnemyIsolation] ISOLATED ENEMY TEST MODE ENABLED with {patched}/3 lifecycle hook(s). " +
+                "Indoor allowlist: Crawler/Thumper + Puffer. Outdoor allowlist: Baboon Hawk. " +
+                "Pikmin-family entities remain allowed. Pools are reasserted during every generated round; " +
+                "there is no Update-driven or continuous global EnemyAI scene scan.");
         }
 
         private void PatchCoronerJetpackUpdateSpamGuard()
@@ -549,7 +587,7 @@ namespace S139CompatibilityFixes
             return true;
         }
 
-        internal static void ApplyToCurrentLevel()
+        internal static void ApplyToCurrentLevel(string stage)
         {
             if (!ShouldRunForCurrentLevel())
                 return;
@@ -561,11 +599,99 @@ namespace S139CompatibilityFixes
             changed |= FilterPool(level, "OutsideEnemies", OutdoorTargets, ensureTargets: true);
             changed |= FilterPool(level, "DaytimeEnemies", new HashSet<string>(StringComparer.OrdinalIgnoreCase), ensureTargets: false);
 
-            if (changed)
+            // This is a diagnostic profile whose purpose is to produce actual target
+            // encounters. Keep at least two indoor spawn attempts and one outside attempt
+            // available even when another balance mod leaves a very low curve.
+            if (IsServer() && RoundManager.Instance != null)
             {
-                Plugin.Log.LogInfo(
-                    $"[EnemyIsolation] Applied isolated enemy pools to '{level.PlanetName}'. " +
-                    "Indoor=Crawler/Puffer; Outdoor=Baboon Hawk; Daytime=none (Pikmin-family entries, if any, are preserved).");
+                if (RoundManager.Instance.minEnemiesToSpawn < 2)
+                    RoundManager.Instance.minEnemiesToSpawn = 2;
+                if (RoundManager.Instance.minOutsideEnemiesToSpawn < 1)
+                    RoundManager.Instance.minOutsideEnemiesToSpawn = 1;
+            }
+
+            Plugin.Log.LogInfo(
+                $"[EnemyIsolation] {stage}: isolated pools {(changed ? "changed" : "verified")} on '{level.PlanetName}'. " +
+                $"Indoor=[{DescribePool(level, "Enemies")}]; Outdoor=[{DescribePool(level, "OutsideEnemies")}]; " +
+                $"Daytime=[{DescribePool(level, "DaytimeEnemies")}]; minInside={RoundManager.Instance.minEnemiesToSpawn}; " +
+                $"minOutside={RoundManager.Instance.minOutsideEnemiesToSpawn}; {DescribeSpawnCurves(level)}");
+        }
+
+        private static string DescribePool(SelectableLevel level, string memberName)
+        {
+            object raw = null;
+            FieldInfo field = AccessTools.Field(level.GetType(), memberName);
+            PropertyInfo property = field == null ? AccessTools.Property(level.GetType(), memberName) : null;
+
+            try
+            {
+                raw = field != null ? field.GetValue(level) : property?.GetValue(level, null);
+            }
+            catch
+            {
+                return "<unreadable>";
+            }
+
+            IList list = raw as IList;
+            if (list == null)
+                return "<missing>";
+
+            List<string> entries = new List<string>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                object entry = list[i];
+                EnemyType enemyType = GetEnemyType(entry);
+                if (enemyType == null)
+                    continue;
+
+                entries.Add($"{enemyType.enemyName}:{GetRarity(entry)}");
+            }
+
+            return entries.Count == 0 ? "<empty>" : string.Join(",", entries);
+        }
+
+        private static int GetRarity(object entry)
+        {
+            if (entry == null)
+                return -1;
+
+            Type type = entry.GetType();
+            FieldInfo field = AccessTools.Field(type, "rarity");
+            PropertyInfo property = field == null
+                ? AccessTools.Property(type, "rarity") ?? AccessTools.Property(type, "Rarity")
+                : null;
+
+            try
+            {
+                object value = field != null ? field.GetValue(entry) : property?.GetValue(entry, null);
+                return value == null ? -1 : Convert.ToInt32(value);
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        private static string DescribeSpawnCurves(SelectableLevel level)
+        {
+            return $"insideCurve@0.5={EvaluateCurve(level, "enemySpawnChanceThroughoutDay"):0.###}; " +
+                   $"outsideCurve@0.5={EvaluateCurve(level, "outsideEnemySpawnChanceThroughDay"):0.###}";
+        }
+
+        private static float EvaluateCurve(SelectableLevel level, string memberName)
+        {
+            FieldInfo field = AccessTools.Field(level.GetType(), memberName);
+            PropertyInfo property = field == null ? AccessTools.Property(level.GetType(), memberName) : null;
+
+            try
+            {
+                object value = field != null ? field.GetValue(level) : property?.GetValue(level, null);
+                AnimationCurve curve = value as AnimationCurve;
+                return curve != null ? curve.Evaluate(0.5f) : float.NaN;
+            }
+            catch
+            {
+                return float.NaN;
             }
         }
 
@@ -912,6 +1038,38 @@ namespace S139CompatibilityFixes
                 return string.Empty;
 
             return new string(value.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
+        }
+    }
+
+
+    internal static class DiagnosticEnemyIsolationLifecycle
+    {
+        public static void FinishGenerationPostfix()
+        {
+            Apply("FinishGeneratingNewLevelClientRpc/Postfix");
+        }
+
+        public static void PredictOutsidePrefix()
+        {
+            // Spawn Cycle Fixes replaces PredictAllOutsideEnemies with a Prefix.
+            // Reassert our final pool first so its predictor sees only Baboon Hawk.
+            Apply("PredictAllOutsideEnemies/Prefix");
+        }
+
+        public static void BeginEnemySpawningPrefix()
+        {
+            // Reassert once more immediately before the normal enemy spawning phase,
+            // covering mods that mutate indoor pools late in dungeon setup.
+            Apply("BeginEnemySpawning/Prefix");
+        }
+
+        private static void Apply(string stage)
+        {
+            if (!DiagnosticEnemyIsolation.Enabled ||
+                !DiagnosticEnemyIsolation.ShouldRunForCurrentLevel())
+                return;
+
+            DiagnosticEnemyIsolation.ApplyToCurrentLevel(stage);
         }
     }
 
@@ -1800,6 +1958,7 @@ namespace S139CompatibilityFixes
     internal static class ShipDoorPatches
     {
         private static bool? _lastObservedClosed;
+        private static bool? _lastObservedForcedOpenZeroPower;
         private static bool _failsafeWasActive;
 
         [HarmonyPatch(typeof(HangarShipDoor), nameof(HangarShipDoor.Update))]
@@ -1812,6 +1971,34 @@ namespace S139CompatibilityFixes
                 return;
 
             bool closed = round.hangarDoorsClosed;
+
+            // BCMER DoorFailure ("Door System: ERROR") intentionally forces the ship
+            // door open with zero hydraulic power and disabled buttons every Update.
+            // Do not log its SetDoorOpen call stack every frame and do not fight the
+            // intended forced-open state. Only record transitions into/out of it.
+            bool forcedOpenZeroPower =
+                !closed &&
+                __instance.doorPower <= 0.001f &&
+                !__instance.buttonsEnabled;
+
+            if (!_lastObservedForcedOpenZeroPower.HasValue ||
+                _lastObservedForcedOpenZeroPower.Value != forcedOpenZeroPower)
+            {
+                if (forcedOpenZeroPower)
+                {
+                    Plugin.Log.LogInfo(
+                        "[DoorCompatibility] Forced-open zero-power ship-door state detected. " +
+                        "This matches BCMER DoorFailure / 'Door System: ERROR'; event behavior is left intact without per-frame stack logging.");
+                }
+                else if (_lastObservedForcedOpenZeroPower == true)
+                {
+                    Plugin.Log.LogInfo(
+                        "[DoorCompatibility] Forced-open zero-power ship-door state ended.");
+                }
+
+                _lastObservedForcedOpenZeroPower = forcedOpenZeroPower;
+            }
+
             if (!_lastObservedClosed.HasValue || _lastObservedClosed.Value != closed)
             {
                 CountLivingPlayers(round, out int living, out int livingInside);
@@ -1885,34 +2072,6 @@ namespace S139CompatibilityFixes
             }
         }
 
-        [HarmonyPatch(typeof(HangarShipDoor), nameof(HangarShipDoor.SetDoorClosed))]
-        [HarmonyPrefix]
-        private static void SetDoorClosedPrefix(HangarShipDoor __instance)
-        {
-            Plugin.Log.LogWarning(
-                $"[DoorAudit] HangarShipDoor.SetDoorClosed called; currentPower={__instance.doorPower:0.000}\n" +
-                $"Caller stack:\n{new StackTrace(1, false)}");
-        }
-
-        [HarmonyPatch(typeof(HangarShipDoor), nameof(HangarShipDoor.SetDoorOpen))]
-        [HarmonyPrefix]
-        private static void SetDoorOpenPrefix(HangarShipDoor __instance)
-        {
-            Plugin.Log.LogInfo(
-                $"[DoorAudit] HangarShipDoor.SetDoorOpen called; currentPower={__instance.doorPower:0.000}\n" +
-                $"Caller stack:\n{new StackTrace(1, false)}");
-        }
-
-        [HarmonyPatch(typeof(HangarShipDoor), nameof(HangarShipDoor.PlayDoorAnimation))]
-        [HarmonyPrefix]
-        private static void PlayDoorAnimationPrefix(HangarShipDoor __instance, bool closed)
-        {
-            Plugin.Log.LogWarning(
-                $"[DoorAudit] HangarShipDoor.PlayDoorAnimation(closed={closed}) called; " +
-                $"buttonsEnabled={__instance.buttonsEnabled}; currentPower={__instance.doorPower:0.000}\n" +
-                $"Caller stack:\n{new StackTrace(1, false)}");
-        }
-
         [HarmonyPatch]
         private static class ShipDoorButtonInteractionAudit
         {
@@ -1940,9 +2099,8 @@ namespace S139CompatibilityFixes
                     ? $"clientId={player.playerClientId}, controlled={player.isPlayerControlled}, dead={player.isPlayerDead}, inHangar={player.isInHangarShipRoom}"
                     : $"transform={playerTransform?.name ?? "<null>"}";
 
-                Plugin.Log.LogWarning(
-                    $"[DoorAudit] Ship door button interaction: triggerParent={parentName}; {playerInfo}\n" +
-                    $"Caller stack:\n{new StackTrace(1, false)}");
+                Plugin.Log.LogInfo(
+                    $"[DoorAudit] Ship door button interaction: triggerParent={parentName}; {playerInfo}");
             }
         }
     }
