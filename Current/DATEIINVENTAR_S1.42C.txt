@@ -1,0 +1,64 @@
+DATEIINVENTAR — S1.42C HANDOVER
+Date: 2026-09-03
+
+PRIMARY ENTRYPOINTS
+- README.md
+- START_HERE_ChatGPT_Masterprompt.txt
+- Current/00_CURRENT_STATE.md
+- Current/01_HANDOVER_CORE.md
+- Current/16_HANDOVER_S1.42C_TO_NEXT.md
+- Current/NEXT_CHAT_START_PROMPT_S1.42C.txt
+- Current/README_Handover_S1.42C.txt
+- Current/Projektstatus_S1.42C.json
+- Current/Aktive_Modliste_S1.42C.txt
+- Current/VERIFIKATION_S1.42C.txt
+- Current/DATEIINVENTAR_S1.42C.txt
+- Current/SHA256SUMS_S1.42C.txt
+
+RECENT WORK / RUNTIME ANALYSIS
+- Current/06_RECENT_WORK_S1.42A-S1.42C.md
+- Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md
+- Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md
+- Current/15_RUNTIME_EVIDENCE_S1.42C.md
+- RuntimeEvidence/S1.42A/20260902T224318Z/
+- RuntimeEvidence/S1.42B/20260902T231959Z/
+- RuntimeEvidence/S1.42C/20260902T235238Z/
+
+CURRENT TECHNICAL PROFILES
+- Profiles/LC V1 S1.41 BCMER Reactivation.r2z
+- Profiles/LC V1 S1.42A Interior Config Seed.r2z
+- Profiles/LC V1 S1.42B LMDL NRE Guard.r2z
+- Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z
+
+READABLE SNAPSHOTS
+- ProfileSources/S1.41/
+- ProfileSources/S1.42A/
+- ProfileSources/S1.42B/
+- ProfileSources/S1.42C/
+
+BUILD
+- BuildSpecs/current.json
+- BuildSpecs/S1.42A_PLAN.md
+- BuildSpecs/S1.42B_PLAN.md
+- BuildSpecs/S1.42C_PLAN.md
+- BuildSpecs/S1.42D_PLAN.md
+- BuildSystem/profile_builder.py
+- BuildSystem/test_profile_builder.py
+- .github/workflows/profile-build.yml
+- .github/workflows/profile-index.yml
+- .github/workflows/runtime-ingest.yml
+
+PROJECT-LOCAL PATCH
+- Patches/S139CompatibilityFixes/Plugin.cs
+- Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj
+- Patches/S139CompatibilityFixes/README.md
+
+PERSISTENT POLICY / ROADMAP
+- Current/02_TECHNICAL_BASELINE.md
+- Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+- Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
+- Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
+- Current/09_REPOSITORY_FIRST_AUTOMATION.md
+- References/juijui_Referenzwerte.txt
+
+Historical S1.41 handover files remain intentionally preserved for reconstruction and are superseded as current entrypoints by the S1.42C files above.
