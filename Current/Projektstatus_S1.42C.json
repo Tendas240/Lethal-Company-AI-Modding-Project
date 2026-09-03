@@ -69,10 +69,22 @@
     "role": "historical_primary_reference_for_original_project_target",
     "expected_profile": "References/LegacyProfiles/juijui/juijui.r2z",
     "documentation": "Current/18_JUIJUI_LEGACY_REFERENCE.md",
-    "upload_status": "pending_user_upload",
+    "upload_status": "committed_and_indexed",
     "project_intent": "Approximate the old juijui mod constellation/configuration as closely as technically reasonable while respecting current game version, maintained mods and compatibility.",
     "jetpack_use": "Recover the exact historical Jetpack capacity/duration from this profile after upload; do not guess.",
-    "is_current_build_base": false
+    "is_current_build_base": false,
+    "sha256": "ddd10bcec3329c155b3a0a2d74460928b02df147356701fb6cf79ebb5a9f7e00",
+    "zip_members": 444,
+    "snapshot": "References/LegacyProfiles/juijui/Extracted/",
+    "jetpack_evidence": {
+      "config": "References/LegacyProfiles/juijui/Extracted/BepInEx/config/dev.alexanderdiaz.biggerbattery.cfg",
+      "plugin_version_in_config": "Bigger Battery v1.0.2",
+      "historical_config_value": 140,
+      "historical_game_default_in_config": 60,
+      "active_in_final_export": false,
+      "plugin_binary_present": false,
+      "interpretation": "strongest historical intended/configured target; reproduce with current-compatible mechanism"
+    }
   },
   "pending_engineering_priority": {
     "id": "generic_lethalmin_grab_bite_invincible_leader_state",
