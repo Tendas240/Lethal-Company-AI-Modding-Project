@@ -5,30 +5,29 @@ Repository:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
 ======================================================================
-CURRENT CANONICAL TAKEOVER POINTER - 2026-09-03 - S1.42Q MINIMAL ROLLBACK PLAN
+CURRENT CANONICAL TAKEOVER POINTER - 2026-09-03 - S1.42Q BUILT / AWAITING RUNTIME
 ======================================================================
 
 Repository is the source of truth.
 
 Read immediately after this master prompt:
 1. Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md
-2. Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md
-3. Current/Projektstatus_S1.42P.json
+2. Current/60_S1.42Q_MINIMAL_NATIVE_ROLLBACK_BUILD.md
+3. Current/Projektstatus_S1.42Q.json
 4. Current/00_CURRENT_STATE.md
 5. Current/01_HANDOVER_CORE.md
 6. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-7. Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md
-8. Current/VERIFIKATION_S1.42P.txt
-9. Current/SHA256SUMS_S1.42P.txt
-10. Current/Aktive_Modliste_S1.42P.txt
-11. BuildSpecs/current.json
-12. RuntimeInbox/ACTIVE_BUILD.txt
-13. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-14. Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
-15. Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md
-16. Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md
-17. Current/02_TECHNICAL_BASELINE.md
-18. Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
+7. Current/VERIFIKATION_S1.42Q.txt
+8. Current/SHA256SUMS_S1.42Q.txt
+9. Current/Aktive_Modliste_S1.42Q.txt
+10. Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md
+11. BuildSpecs/S1.42Q_PLAN.md
+12. BuildSpecs/current.json
+13. RuntimeInbox/ACTIVE_BUILD.txt
+14. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+15. Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
+16. Current/02_TECHNICAL_BASELINE.md
+17. Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
 
 Last fully accepted gameplay baseline:
 S1.41
@@ -41,61 +40,66 @@ S1.42P
 RuntimeEvidence/S1.42P/20260903T181706Z/
 Log SHA-256:
 d656095fb874a415a1bd2377c0411339d3d6eb002dce4ec3f6216e879294127f
+Verdict:
+PARTIAL / FAIL — exact 20 -> 18 follower recovery failure.
 
-S1.42P verdict:
-PARTIAL / FAIL
+CURRENT BUILT CANDIDATE:
+S1.42Q - LethalMin Native Minimal Rollback
+Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z
+SHA-256:
+50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1
 
-Runtime fact:
-20 Yellow Pikmin were leader-assigned before the Baboon Hawk fight and only 18 were recovered before teardown.
-Missing:
-- Yellow Pikmin_hcRGph
-- Yellow Pikmin_ruCpzY
+Compatibility plugin:
+v1.3.12
 
-S1.42P proved that project-local Hawk-death task ownership is unnecessary and fragile:
-- exact PikminAI.FinishTask() works;
-- 4.0m selection missed a real attacker;
-- finalized Pikmin could re-enter normal LethalMin enemy discovery.
+Embedded DLL SHA-256:
+f6a4e7b060af6a779da1c92236b2ce63d1bd5d890a21c9492517e568a9aaac45
 
-NEW CANONICAL S1.42Q DIRECTION:
-Return normal Pikmin gameplay to native LethalMin.
+Build verification:
+- GitHub Actions Build #52 / run 33794943826: SUCCESS
+- generated commit: bd6e1ca023921e5fecb14e301e9c24cf73cb4aea
+- idle guard Build #53: SUCCESS
+- 331 members / 330 readable snapshot files
+- changed existing profile members only: LethalMin config, compatibility DLL, export.r2x
+- no added members
 
-Native LethalMin must own:
-- Pikmin -> enemy target/latch/attack;
-- enemy-death task completion;
-- Pikmin -> enemy-body carry;
-- Onion delivery.
+S1.42Q canonical architecture:
+- Pikmin -> Enemy = native LethalMin
+- enemy death/task completion = native LethalMin
+- Pikmin -> dead enemy bodies = native LethalMin
+- Onion delivery = native LethalMin
+- Enemy -> Pikmin = blocked via native config plus only proven minimal shims
 
-Project-local code must only implement proven minimal Enemy -> Pikmin prevention gaps and unrelated compatibility fixes.
+Removed:
+- BaboonHawkDeathCleanup
+- project-local FinishTask death finalization
+- 4.0m Hawk-death scan
+- delayed/reflection-heavy post-grab state repair
 
-S1.42Q should remove:
-- BaboonHawkDeathCleanup;
-- project-local Hawk-death FinishTask calls;
-- 4.0m Hawk-death SpawnedEnemies scan;
-- reflection-heavy delayed post-grab leader/follow state restoration.
+Only LethalMin config delta from S1.42P:
+Thumper Bite Limit = 0 -> 3
 
-Do not replace them with another custom dead-Hawk target filter first.
+Expected startup marker:
+[LethalMinNativeOwnership]
 
-Prefer LethalMin config switches wherever proven effective.
-
-S1.41 vs S1.42P LethalMin config differs only at:
-Thumper Bite Limit = 3 (S1.41) vs 0 (S1.42P).
-Restore the accepted value in the minimal rollback unless new evidence requires otherwise.
-
-Desired asymmetric interaction:
-- Pikmin -> enemies: native LethalMin;
-- enemies -> Pikmin: blocked;
-- Pikmin -> dead enemy bodies: native LethalMin.
+Forbidden old marker:
+[BaboonHawkDeathCleanup]
 
 Current runtime router:
-RuntimeInbox/ACTIVE_BUILD.txt = S1.42P
-Keep until S1.42Q is actually built.
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42Q
 
 Current build controller:
-BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_MINIMAL_ROLLBACK_BUILD
+BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42Q_BUILD_AWAITING_RUNTIME
 
 EnemyIsolation remains enabled.
 Exact BCMER 1.71.0 remains disabled.
-Do not restore normal enemy baseline or BCMER before the minimal rollback passes.
+
+EXACT NEXT STEP:
+Do not build a successor first.
+Import S1.42Q through Gale "Advanced options -> Import all files".
+Run the focused Crawler/Thumper + Baboon Hawk + Puffer test, including exact follower-count recovery and Dead Baboon Hawk Onion carry.
+Commit the complete fresh LogOutput.log to RuntimeInbox/Current/.
+Then analyze S1.42Q runtime evidence before any restoration of normal enemies or BCMER.
 
 
 ======================================================================
