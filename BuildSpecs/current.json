@@ -35,7 +35,7 @@
     },
     {
       "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
-      "regex": "(?m)^Attack Blacklist = Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy$"
+      "contains": "Attack Blacklist = Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy"
     }
   ]
 }
