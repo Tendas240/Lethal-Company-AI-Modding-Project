@@ -42,3 +42,34 @@ Keine periodischen Freezes.
 Kein Coroner Jetpack Spam.
 
 Danach bei Erfolg direkt Enemy/Jetpack/Microwave-Test.
+
+
+AKTUELLER RUNTIME-STATUS — 2026-09-03
+
+Der zuerst hochgeladene S1.42G Runtime-ZIP-Ingest unter:
+RuntimeEvidence/S1.42G/20260903T100914Z/
+wurde absichtlich vollständig aus dem Repository gelöscht.
+
+Grund:
+- entpackter Log ca. 40 MB;
+- wiederholte Analysezugriffe liefen fest;
+- erste drei Runs waren laut Nutzer nicht repräsentativ;
+- vierter Run wurde vor dem Verwerfen nicht zuverlässig vollständig ausgewertet.
+
+Daher:
+S1.42G ist weiterhin NICHT sauber runtime-validiert.
+
+Nächster Test:
+S1.42G_BCMER_OFF_RETEST
+
+Vorgehen:
+- kanonisches S1.42G importieren;
+- BCMER manuell deaktivieren;
+- sonst keinerlei Änderungen;
+- frischen, möglichst kurzen Log erzeugen.
+
+RuntimeInbox/ACTIVE_BUILD.txt muss auf:
+S1.42G_BCMER_OFF_RETEST
+stehen.
+
+Kein neuer Build vor Auswertung dieses Retests.
