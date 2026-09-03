@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using BepInEx;
 using BepInEx.Bootstrap;
@@ -22,7 +23,7 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.12";
+        public const string PluginVersion = "1.3.13";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
@@ -57,16 +58,18 @@ namespace S139CompatibilityFixes
             StartCoroutine(DelayedLethalMinPatches());
 
             Logger.LogInfo(
-                "[LethalMinNativeOwnership] Pikmin -> enemy attack, enemy-death task completion, " +
-                "and enemy-body carry/Onion delivery are left to native LethalMin. " +
-                "No project-local enemy-death task finalizer is installed.");
+                "[LethalMinNativeOwnership] Pikmin -> enemy combat, native TaskEnd/SetToIdle/unlatch, " +
+                "enemy-body carry, and Onion delivery remain owned by LethalMin. " +
+                "Compatibility only bridges LethalMin 1.1.108's missing dead-target completion " +
+                "for currently latched AttackEnemyTask instances; no enemy-death hook, scene scan, or custom state restoration is installed.");
 
             Logger.LogInfo(
                 "S1.39 Compatibility Fixes loaded. Ship-door anti-lockout, complete EnemyScan output, " +
                 "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, " +
                 "CodeRebirth kill-RPC Pikmin protection, the optional LethalModDataLib null-plugin guard, " +
                 "Puffer smoke Pikmin-effect guard, exact PikminAI enemy-grab prevention for proven Thumper/Baboon Hawk gaps, " +
-                "Baboon Hawk -> Pikmin adapter/bite protection, Coroner Jetpack log-spam guard, throttled ship-door compatibility audit, " +
+                "LethalMin latched dead-target task completion, Baboon Hawk -> Pikmin adapter/bite protection, " +
+                "Coroner Jetpack log-spam guard, throttled ship-door compatibility audit, " +
                 "the 140-second Jetpack target, " +
                 "and the late-lifecycle isolated-enemy diagnostic are active.");
         }
@@ -77,6 +80,7 @@ namespace S139CompatibilityFixes
             // is an optional runtime dependency and does not need a compile-time DLL.
             yield return null;
             PatchLethalMinEnemyGrabPrevention();
+            PatchLethalMinLatchedDeadTargetCompletion();
             PatchBaboonHawkPikminProtection();
         }
 
@@ -146,6 +150,113 @@ namespace S139CompatibilityFixes
             {
                 Logger.LogError(
                     $"[LethalMinEnemyGrabGuard] Failed to patch exact PikminAI.GrabPikmin: " +
+                    $"{ex.GetType().Name}: {ex.Message}");
+            }
+        }
+
+        private void PatchLethalMinLatchedDeadTargetCompletion()
+        {
+            // Exact upstream LethalMinNightly 1.1.108 behavior:
+            // AttackEnemyTask.IntervaledUpdate() returns immediately while IsPikminOnEnemy
+            // is true, before it reaches the existing enemy.enemyScript.isEnemyDead check.
+            // This leaves non-killing co-attackers permanently latched to a dead target.
+            //
+            // Patch that missing branch at the task itself. Do NOT hook enemy death, scan
+            // Pikmin, infer target identity, or manually mutate Pikmin state. If the exact
+            // task's own target is dead, call the same native FinishTaskServerRpc() that
+            // LethalMin already uses in its unlatched branch.
+            Type attackTaskType = AccessTools.TypeByName("LethalMin.Pikmin.AttackEnemyTask");
+            Type pikminTaskType = AccessTools.TypeByName("LethalMin.Pikmin.PikminTask");
+            Type pikminAiType = AccessTools.TypeByName("LethalMin.PikminAI");
+            Type pikminEnemyType = AccessTools.TypeByName("LethalMin.PikminEnemy");
+
+            if (attackTaskType == null ||
+                pikminTaskType == null ||
+                pikminAiType == null ||
+                pikminEnemyType == null)
+            {
+                Logger.LogError(
+                    "[LethalMinLatchedDeathGuard] Required LethalMin 1.1.108 task types were not found. " +
+                    "Latched dead-target completion is NOT active.");
+                return;
+            }
+
+            MethodInfo intervaledUpdate = AccessTools.Method(
+                attackTaskType,
+                "IntervaledUpdate",
+                Type.EmptyTypes);
+
+            PropertyInfo isPikminOnEnemy = AccessTools.Property(attackTaskType, "IsPikminOnEnemy");
+            PropertyInfo enemyProperty = AccessTools.Property(attackTaskType, "enemy");
+            PropertyInfo pikminProperty = AccessTools.Property(pikminTaskType, "pikmin");
+            FieldInfo enemyScriptField = AccessTools.Field(pikminEnemyType, "enemyScript");
+            FieldInfo debugIdField = AccessTools.Field(pikminAiType, "DebugID");
+
+            MethodInfo isPikminOnEnemyGetter = isPikminOnEnemy?.GetGetMethod(true);
+            MethodInfo enemyGetter = enemyProperty?.GetGetMethod(true);
+            MethodInfo pikminGetter = pikminProperty?.GetGetMethod(true);
+            MethodInfo finishTaskServerRpc = AccessTools.Method(
+                pikminAiType,
+                "FinishTaskServerRpc",
+                Type.EmptyTypes);
+
+            bool valid =
+                intervaledUpdate != null &&
+                intervaledUpdate.DeclaringType == attackTaskType &&
+                intervaledUpdate.ReturnType == typeof(void) &&
+                intervaledUpdate.GetParameters().Length == 0 &&
+                intervaledUpdate.GetMethodBody() != null &&
+                isPikminOnEnemyGetter != null &&
+                isPikminOnEnemyGetter.ReturnType == typeof(bool) &&
+                enemyGetter != null &&
+                pikminEnemyType.IsAssignableFrom(enemyGetter.ReturnType) &&
+                pikminGetter != null &&
+                pikminAiType.IsAssignableFrom(pikminGetter.ReturnType) &&
+                enemyScriptField != null &&
+                enemyScriptField.DeclaringType == pikminEnemyType &&
+                typeof(EnemyAI).IsAssignableFrom(enemyScriptField.FieldType) &&
+                finishTaskServerRpc != null &&
+                finishTaskServerRpc.DeclaringType == pikminAiType &&
+                finishTaskServerRpc.ReturnType == typeof(void) &&
+                finishTaskServerRpc.GetParameters().Length == 0 &&
+                finishTaskServerRpc.GetMethodBody() != null;
+
+            if (!valid)
+            {
+                Logger.LogError(
+                    "[LethalMinLatchedDeathGuard] Exact LethalMin 1.1.108 AttackEnemyTask contract did not validate. " +
+                    "Refusing to install a guessed fallback.");
+                return;
+            }
+
+            LethalMinLatchedDeadTargetCompletion.IsPikminOnEnemyGetter = isPikminOnEnemyGetter;
+            LethalMinLatchedDeadTargetCompletion.EnemyGetter = enemyGetter;
+            LethalMinLatchedDeadTargetCompletion.PikminGetter = pikminGetter;
+            LethalMinLatchedDeadTargetCompletion.EnemyScriptField = enemyScriptField;
+            LethalMinLatchedDeadTargetCompletion.FinishTaskServerRpc = finishTaskServerRpc;
+            LethalMinLatchedDeadTargetCompletion.DebugIdField = debugIdField;
+
+            try
+            {
+                Harmony.Patch(
+                    intervaledUpdate,
+                    prefix: new HarmonyMethod(
+                        typeof(LethalMinLatchedDeadTargetCompletion),
+                        nameof(LethalMinLatchedDeadTargetCompletion.Prefix))
+                    {
+                        priority = Priority.First
+                    });
+
+                Logger.LogInfo(
+                    "[LethalMinLatchedDeathGuard] Patched exact declared " +
+                    "LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate(). " +
+                    "If a currently latched task's own TargetEnemy is dead, native FinishTaskServerRpc() is requested " +
+                    "before LethalMin 1.1.108's early IsPikminOnEnemy return. No death hook or Pikmin scan is used.");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(
+                    $"[LethalMinLatchedDeathGuard] Failed to patch exact AttackEnemyTask.IntervaledUpdate: " +
                     $"{ex.GetType().Name}: {ex.Message}");
             }
         }
@@ -1124,6 +1235,113 @@ namespace S139CompatibilityFixes
                 return;
 
             DiagnosticEnemyIsolation.ApplyToCurrentLevel(stage);
+        }
+    }
+
+    internal static class LethalMinLatchedDeadTargetCompletion
+    {
+        internal static MethodInfo IsPikminOnEnemyGetter;
+        internal static MethodInfo EnemyGetter;
+        internal static MethodInfo PikminGetter;
+        internal static FieldInfo EnemyScriptField;
+        internal static MethodInfo FinishTaskServerRpc;
+        internal static FieldInfo DebugIdField;
+
+        private sealed class PendingMarker
+        {
+        }
+
+        private static readonly ConditionalWeakTable<object, PendingMarker> PendingTasks =
+            new ConditionalWeakTable<object, PendingMarker>();
+
+        public static bool Prefix(object __instance)
+        {
+            if (__instance == null ||
+                IsPikminOnEnemyGetter == null ||
+                EnemyGetter == null ||
+                PikminGetter == null ||
+                EnemyScriptField == null ||
+                FinishTaskServerRpc == null)
+                return true;
+
+            try
+            {
+                object latchedValue = IsPikminOnEnemyGetter.Invoke(__instance, null);
+                if (!(latchedValue is bool isLatched) || !isLatched)
+                    return true;
+
+                object pikminEnemy = EnemyGetter.Invoke(__instance, null);
+                if (IsUnityNull(pikminEnemy))
+                    return true;
+
+                EnemyAI enemyScript = EnemyScriptField.GetValue(pikminEnemy) as EnemyAI;
+                if (enemyScript == null || !enemyScript.isEnemyDead)
+                    return true;
+
+                object pikmin = PikminGetter.Invoke(__instance, null);
+                if (IsUnityNull(pikmin))
+                    return true;
+
+                if (PendingTasks.TryGetValue(__instance, out _))
+                {
+                    // The native RPC has already been requested for this exact task.
+                    // Skip the broken upstream branch until its FinishTaskClientRpc
+                    // removes the task.
+                    return false;
+                }
+
+                PendingTasks.Add(__instance, new PendingMarker());
+
+                string debugId = null;
+                if (DebugIdField != null)
+                {
+                    try
+                    {
+                        debugId = DebugIdField.GetValue(pikmin) as string;
+                    }
+                    catch
+                    {
+                    }
+                }
+
+                FinishTaskServerRpc.Invoke(pikmin, null);
+
+                Plugin.Log.LogWarning(
+                    $"[LethalMinLatchedDeathGuard] Requested native FinishTaskServerRpc for " +
+                    $"{(string.IsNullOrEmpty(debugId) ? "<Pikmin>" : debugId)} because its own latched " +
+                    $"AttackEnemyTask target {enemyScript.gameObject.name} is already dead. " +
+                    "This mirrors LethalMin's existing unlatched dead-target branch.");
+
+                return false;
+            }
+            catch (TargetInvocationException ex)
+            {
+                PendingTasks.Remove(__instance);
+                Exception inner = ex.InnerException ?? ex;
+                Plugin.Log.LogError(
+                    $"[LethalMinLatchedDeathGuard] Native dead-target completion failed: " +
+                    $"{inner.GetType().Name}: {inner.Message}");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                PendingTasks.Remove(__instance);
+                Plugin.Log.LogError(
+                    $"[LethalMinLatchedDeathGuard] Dead-target inspection failed: " +
+                    $"{ex.GetType().Name}: {ex.Message}");
+                return true;
+            }
+        }
+
+        private static bool IsUnityNull(object value)
+        {
+            if (value == null)
+                return true;
+
+            if (value is UnityEngine.Object unityObject)
+                return unityObject == null;
+
+            return false;
         }
     }
 
