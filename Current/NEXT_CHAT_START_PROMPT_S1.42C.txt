@@ -1,7 +1,7 @@
 Nutze dieses Repository als vollständige Projektübergabe:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
-Lies zuerst START_HERE_ChatGPT_Masterprompt.txt und führe die darin beschriebene Projektübernahme vollständig aus. Lies danach insbesondere Current/16_HANDOVER_S1.42C_TO_NEXT.md, Current/15_RUNTIME_EVIDENCE_S1.42C.md, Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md und BuildSpecs/S1.42D_PLAN.md.
+Lies zuerst START_HERE_ChatGPT_Masterprompt.txt und führe die darin beschriebene Projektübernahme vollständig aus. Lies danach insbesondere Current/16_HANDOVER_S1.42C_TO_NEXT.md, Current/17_REPO_HANDOVER_CLEANUP_S1.42C.md, Current/15_RUNTIME_EVIDENCE_S1.42C.md, Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md und BuildSpecs/S1.42D_PLAN.md.
 
 Wichtiger Stand:
 - letzter vollständig akzeptierter Gameplay-Baseline-Stand ist weiterhin S1.41;
