@@ -2,7 +2,8 @@ Nutze dieses Repository als vollständige Projektübergabe:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
 Lies zuerst `START_HERE_ChatGPT_Masterprompt.txt` und danach mindestens:
-- `Current/34_HANDOVER_S1.42J_TO_NEXT.md`
+- `Current/36_HANDOVER_S1.42J_TO_NEXT.md`
+- `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
 - `Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
 - `Current/00_CURRENT_STATE.md`
 - `Current/01_HANDOVER_CORE.md`
@@ -16,4 +17,6 @@ Aktueller Testkandidat ist S1.42J:
 `Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z`
 SHA-256: `736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7`
 
-Der unmittelbar nächste Schritt ist der Runtime-Test von S1.42J. Baue S1.42K nicht vorher. Dabei müssen Baboon Hawks und Pikmin einander vollständig ignorieren; außerdem soll die Thumper/Crawler↔Pikmin-Zero-Interaction gezielt validiert werden. Puffer→Pikmin ist bereits als PASS dokumentiert. BCMER 1.71.0 bleibt bis zum Bestehen dieses isolierten Gates deaktiviert.
+Der unmittelbar nächste Schritt ist der Runtime-Test von S1.42J. Baue S1.42K nicht vorher und starte auch die vorgemerkte Repository-Strukturmigration nicht vorher. Dabei müssen Baboon Hawks und Pikmin einander vollständig ignorieren; außerdem soll die Thumper/Crawler↔Pikmin-Zero-Interaction gezielt validiert werden. Puffer→Pikmin ist bereits als PASS dokumentiert. BCMER 1.71.0 bleibt bis zum Bestehen dieses isolierten Gates deaktiviert.
+
+Nach Abschluss und Dokumentation des aktiven kritischen Runtime-/Build-Gates soll die in `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt` beschriebene Repository-Optimierung als eigene Maintenance-Phase geprüft und durchgeführt werden. Prüfe dafür zuerst den dann tatsächlich aktuellen Repo-Stand; S1.42J ist nur der Stand, zu dem der Plan vorgemerkt wurde.
