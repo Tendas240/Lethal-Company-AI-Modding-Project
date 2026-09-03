@@ -1,0 +1,35 @@
+Nutze dieses Repository als vollständige Projektübergabe:
+
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+Lies zuerst `START_HERE_ChatGPT_Masterprompt.txt` und danach mindestens:
+
+- `Current/45_HANDOVER_S1.42L_TO_NEXT_FINAL.md`
+- `Current/Projektstatus_S1.42L.json`
+- `Current/43_S1.42L_RUNTIME_ANALYSIS_THUMPER_CLOSED.md`
+- `Current/41_S1.42L_PIKMIN_COUNTERATTACK_RESTORE_BUILD.md`
+- `Current/00_CURRENT_STATE.md`
+- `Current/01_HANDOVER_CORE.md`
+- `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+- `Current/VERIFIKATION_S1.42L.txt`
+- `Current/SHA256SUMS_S1.42L.txt`
+- `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+- `BuildSpecs/current.json`
+- `RuntimeInbox/ACTIVE_BUILD.txt`
+- `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+
+Aktueller Kandidat ist S1.42L:
+`Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z`
+
+SHA-256:
+`fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722`
+
+Die neueste valide Runtime-Evidenz ist ebenfalls S1.42L:
+`RuntimeEvidence/S1.42L/20260903T151817Z/`
+
+Log SHA-256:
+`402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd`
+
+Thumper/Crawler, Puffer, Jetpack und Baboon Hawk -> Pikmin sind abgeschlossen/PASS. Der einzige verbleibende isolierte Runtime-Gate ist Pikmin -> Baboon Hawk: Pikmin müssen auf einen Baboon Hawk geworfen werden können und normal latchen/angreifen, während der Hawk selbst Pikmin weiterhin vollständig ignoriert.
+
+Baue keinen Nachfolger vor dieser Prüfung. BCMER 1.71.0 bleibt bis dahin deaktiviert und EnemyIsolation aktiv. Nach PASS normale Enemy-Konfiguration aus `Current/ENEMY_SPAWN_BASELINE_S1.42C.json` wiederherstellen, BCMER 1.71.0 reaktivieren und erst danach die vorgemerkte Repository-Optimierung als separate Maintenance-Phase prüfen.
