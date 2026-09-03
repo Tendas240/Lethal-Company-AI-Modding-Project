@@ -201,3 +201,17 @@ Primary detailed handover:
 
 Start prompt:
 `Current/NEXT_CHAT_START_PROMPT_S1.42C.txt`
+
+## Historical target reference — juijui
+
+The original `juijui.r2z` profile is a canonical historical reference for the project's intended mod constellation/configuration.
+
+Expected repository path:
+`References/LegacyProfiles/juijui/juijui.r2z`
+
+Read:
+`Current/18_JUIJUI_LEGACY_REFERENCE.md`
+
+Use the historical profile to recover exact old settings when requested, especially the unresolved Jetpack capacity/duration. Do not blindly restore obsolete mods or versions; current compatibility remains binding.
+
+The generic LethalMin enemy grab/bite + Invincible Pikmin leader/follow-state repair remains the first active engineering priority.
