@@ -326,3 +326,21 @@ SHA-256:
 
 Use the exact runtime checklist in:
 `Current/20_S1.42D_BUILD_AND_TEST.md`
+
+
+## S1.42E immediate startup gate
+
+Use:
+`Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
+
+SHA-256:
+`4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348`
+
+First check only:
+- game reaches Main Menu;
+- startup log contains a completed safe LethalMin state-guard registration marker;
+- no abrupt termination during the LethalMin patch scan.
+
+If startup succeeds, continue with the isolated Baboon Hawk / Thumper / Puffer tests plus Jetpack and Microwave checks.
+
+S1.42D must not be retested.
