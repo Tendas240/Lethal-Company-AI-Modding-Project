@@ -45,3 +45,20 @@ KANONISCHE HISTORISCHE PRIMÄRQUELLE
 - Nach Upload sind exakte historische Werte bevorzugt direkt aus juijui.r2z bzw. dessen repository-first extrahiertem Snapshot zu belegen.
 - Insbesondere der Jetpack-Wert darf dann nicht mehr geraten werden.
 - Siehe Current/18_JUIJUI_LEGACY_REFERENCE.md und References/LegacyProfiles/juijui/README.md.
+
+
+NEUE PRIMÄREVIDENZ AUS juijui.r2z
+- Original committed unter References/LegacyProfiles/juijui/juijui.r2z
+- SHA-256: ddd10bcec3329c155b3a0a2d74460928b02df147356701fb6cf79ebb5a9f7e00
+- Repository-first Snapshot: References/LegacyProfiles/juijui/Extracted/
+- 444 Archiv-Einträge, 444 Text-Snapshots.
+
+Jetpack:
+- Historische Datei: BepInEx/config/dev.alexanderdiaz.biggerbattery.cfg
+- Plugin-Hinweis in Datei: Bigger Battery v1.0.2
+- JetpackBatteryUsage = 140
+- damaliger in der Config genannter Game Default = 60
+- Wichtig: BiggerBattery steht nicht mehr im finalen export.r2x und die DLL liegt nicht im Profil. Die Config kann also aus einem früher aktiven Zustand übrig geblieben sein.
+- Für das Projekt ist 140 Sekunden dennoch die stärkste direkte historische Konfig-Evidenz für den gewünschten juijui-Jetpack-Zielwert.
+- Nicht den alten Bigger-Battery-Mod blind reaktivieren; den Wert mit einer aktuellen kompatiblen/lokalen Lösung nachbilden.
+- Der bisherige 50s-Fallback ist durch diese stärkere Primärevidenz überholt.
