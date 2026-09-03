@@ -115,7 +115,14 @@
     "enabled": false,
     "build_id": "IDLE_AFTER_S1.42S_FOCUSED_RUNTIME_PASS_AWAITING_S1.42T_RESTORE_BUILD",
     "base_profile": "Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z",
-    "base_sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee"
+    "base_sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee",
+    "guard_workflow": {
+      "name": "Build canonical profile",
+      "run_number": 58,
+      "run_id": 33806723503,
+      "conclusion": "success",
+      "meaning": "disabled BuildSpec guard passed; no S1.42T profile was built"
+    }
   },
   "next_action": {
     "type": "build_and_runtime_test_normal_enemy_restore",
@@ -157,7 +164,10 @@
     "audit": "Current/72_REPOSITORY_HANDOVER_AUDIT_S1.42S.md",
     "audit_verdict": "PASS",
     "next_restore_contract": "Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md",
-    "next_build_plan": "BuildSpecs/S1.42T_PLAN.md"
+    "next_build_plan": "BuildSpecs/S1.42T_PLAN.md",
+    "final_post_write_audit": "PASS",
+    "s142t_profile_exists": false,
+    "runtime_inbox_current": "empty_except_gitkeep"
   },
   "restore_contract": {
     "document": "Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md",
