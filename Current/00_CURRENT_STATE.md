@@ -5,6 +5,12 @@
 
 ## Canonical current pointers
 
+Final handover:
+`Current/64_HANDOVER_S1.42R_TO_NEXT_FINAL.md`
+
+Repository handover audit:
+`Current/65_REPOSITORY_HANDOVER_AUDIT_S1.42R.md`
+
 Machine-readable status:
 `Current/Projektstatus_S1.42R.json`
 
@@ -13,6 +19,9 @@ Exact upstream decompile:
 
 S1.42Q root-cause analysis:
 `Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
+
+S1.42R build:
+`Current/63_S1.42R_LATCHED_DEAD_TARGET_COMPLETION_BUILD.md`
 
 S1.42R build plan:
 `BuildSpecs/S1.42R_PLAN.md`
@@ -194,3 +203,16 @@ Then commit the complete fresh `LogOutput.log` to:
 `RuntimeInbox/Current/`
 
 Do not restore normal enemies or BCMER before S1.42R passes.
+
+
+## Handover readiness
+
+Repository audit:
+**PASS — ready for a new chat; S1.42R runtime gate remains open.**
+
+`RuntimeInbox/Current/` contains only `.gitkeep`.
+
+`RuntimeEvidence/S1.42R/` does not exist yet, which is correct because S1.42R has not been runtime-tested.
+
+No files were deleted during handover.
+No local clone/build/PowerShell work is required.
