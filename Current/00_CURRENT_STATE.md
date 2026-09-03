@@ -112,18 +112,33 @@ This remains S1.42P until a successor is actually built.
 
 ## Exact next step
 
-Design/build the S1.42Q successor from S1.42P without unrelated changes.
+**S1.42Q is now a minimal LethalMin-native rollback, not another Hawk-death algorithm.**
 
-Required direction:
-- retain native exact `PikminAI.FinishTask()`;
-- replace proximity-only attacker selection with exact/direct dying-Hawk target identity;
-- prevent already-dead Baboon Hawks from being selected/reselected as Pikmin `AttackEnemy` targets;
-- preserve living Pikmin -> living Hawk attack/latch/kill;
-- preserve living Hawk -> Pikmin protection;
-- preserve corpse-to-Onion behavior;
-- preserve living-Hawk corpse ignore.
+Canonical plan:
+`Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md`
 
-If the exact LethalMin target-selection member/method cannot be established from existing evidence, add narrow runtime diagnostics rather than guessing.
+Target architecture:
+- Pikmin -> enemy attack/latch/kill: native LethalMin only;
+- enemy death task completion: native LethalMin only;
+- Pikmin -> enemy-body carry/Onion: native LethalMin only;
+- project-local code: only proven minimal Enemy -> Pikmin prevention and unrelated compatibility gaps.
+
+Remove from the next build:
+- `BaboonHawkDeathCleanup`;
+- project-local `FinishTask()` Hawk death calls;
+- 4.0 m Hawk-death scan;
+- reflection-heavy post-grab leader/follow state repair.
+
+Prefer native LethalMin config switches where they already work.
+
+The current S1.42P config differs from accepted S1.41 LethalMin config only at:
+`Thumper Bite Limit = 0` vs accepted `3`.
+Restore the accepted value unless fresh evidence proves otherwise.
+
+Keep:
+- EnemyIsolation enabled;
+- BCMER 1.71.0 disabled;
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42P` until S1.42Q is actually built.
 
 ## Deferred maintenance
 
