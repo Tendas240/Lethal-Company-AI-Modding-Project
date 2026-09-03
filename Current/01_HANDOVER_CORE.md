@@ -85,19 +85,25 @@ Source:
 `Patches/S139CompatibilityFixes/`
 
 Current source version:
-**1.2.0**
+**1.3.1**
 
-Embedded path:
-`BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`
+Latest runtime-proven non-crashing version:
+**1.2.0 in S1.42C**
 
-S1.42C embedded DLL SHA-256:
-`c3da6ee8220bec3b954ac62ca1a4d813efcb292eefd9b70fc0616a76e2f37af3`
+S1.42E embedded DLL SHA-256:
+`caf20c785245396d9f31ff32b556cbe75d64b87a5a676807184093a6cef78eab`
 
 Gale:
 **Advanced options -> Import all files**
 
 Expected general marker:
 `S1.39 Compatibility Fixes loaded.`
+
+S1.42E safe LethalMin completion marker:
+`[LethalMinStateGuard] Safe generic grab/bite state repair registered on N declared enemy method(s).`
+
+Important:
+S1.42D v1.3.0 broad reflection/Harmony scan caused a startup crash. Do not restore it.
 
 ## Highest engineering priority
 
@@ -189,68 +195,66 @@ Do not request a local repo clone or PowerShell profile build while the base exi
 
 ## Current build status
 
-`BuildSpecs/current.json` is disabled:
-`IDLE_HANDOVER_AFTER_S1.42C_RUNTIME`
+S1.42D:
+**FAILED STARTUP — DO NOT RETEST**
 
-`BuildSpecs/S1.42D_PLAN.md` is **DRAFT ONLY**.
+Evidence:
+`RuntimeEvidence/S1.42D/20260903T084247Z/`
 
-Do not build it automatically.
+Latest built candidate:
+**S1.42E**
+
+`Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
+
+SHA-256:
+`4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348`
+
+Status:
+**built successfully; awaiting first runtime startup test**
+
+`BuildSpecs/current.json`:
+`IDLE_AFTER_S1.42E_BUILD_AWAITING_RUNTIME`
+
+`RuntimeInbox/ACTIVE_BUILD.txt`:
+`S1.42E`
+
+Do not build another candidate before S1.42E runtime evidence is evaluated.
 
 ## New-chat takeover
 
 Primary detailed handover:
-`Current/16_HANDOVER_S1.42C_TO_NEXT.md`
+`Current/22_HANDOVER_S1.42E_TO_NEXT.md`
 
 Start prompt:
-`Current/NEXT_CHAT_START_PROMPT_S1.42C.txt`
+`Current/NEXT_CHAT_START_PROMPT_S1.42E.txt`
 
 ## Historical target reference — juijui
 
-The original `juijui.r2z` profile is a canonical historical reference for the project's intended mod constellation/configuration.
+The original historical profile is committed and indexed:
 
-Expected repository path:
 `References/LegacyProfiles/juijui/juijui.r2z`
 
-Read:
-`Current/18_JUIJUI_LEGACY_REFERENCE.md`
-
-Use the historical profile to recover exact old settings when requested, especially the unresolved Jetpack capacity/duration. Do not blindly restore obsolete mods or versions; current compatibility remains binding.
-
-The generic LethalMin enemy grab/bite + Invincible Pikmin leader/follow-state repair remains the first active engineering priority.
-
-
-## Next focused candidate
-
-S1.42D is reserved as a focused regression candidate:
-- generic LethalMin grab/bite + Invincible Pikmin state repair;
-- retained Thumper/Puffer guards;
-- Jetpack 140-second historical target;
-- Jetpack no boost/speed explosion;
-- Functional Microwave volume 0.7 + editing gate.
-
-Do not mix the broader interior/BCMER tuning into this candidate.
-
-
-### S1.42D — built, awaiting runtime
-
-Profile:
-`Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z`
-
 SHA-256:
-`b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c`
+`ddd10bcec3329c155b3a0a2d74460928b02df147356701fb6cf79ebb5a9f7e00`
 
-Status:
-**built successfully; not runtime-accepted yet.**
+Recovered Jetpack config evidence:
+`JetpackBatteryUsage = 140`
 
-This is a temporary focused diagnostic descendant of S1.42C:
-- generic LethalMin grab/bite + Invincible Pikmin recovery;
-- isolated enemy runtime filter: Crawler/Puffer/Baboon Hawk only, plus Pikmin-family;
-- Jetpack 140-second target;
-- Jetpack `MidAirExplosions = Off`;
-- Functional Microwave volume 0.7/edit gate true.
+Use juijui as a historical target/reference, not a V81 build base.
 
-The full enemy roster must be restored after this test using:
+## Immediate next action
+
+Test S1.42E.
+
+First gate:
+**reach Main Menu without startup crash.**
+
+If it passes, continue:
+- Baboon Hawk generic invincible-Pikmin state recovery;
+- Thumper/Crawler <-> Pikmin zero interaction;
+- Puffer smoke/attack no Pikmin effect;
+- Jetpack ~140 seconds and no sustained/high-speed mid-air self-explosion;
+- Microwave volume 0.7.
+
+The temporary isolated-enemy mode must be removed after this regression stage and the full enemy roster restored from:
 `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-
-Runtime checklist:
-`Current/20_S1.42D_BUILD_AND_TEST.md`
