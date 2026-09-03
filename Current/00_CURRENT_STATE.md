@@ -188,3 +188,19 @@ Read:
 
 Next chat start prompt:
 `Current/NEXT_CHAT_START_PROMPT_S1.42C.txt`
+
+## Historical juijui reference — canonical source pending upload
+
+The old `juijui.r2z` profile is now formally classified as a historical primary reference for the project's intended gameplay/mod-configuration target.
+
+Expected location:
+`References/LegacyProfiles/juijui/juijui.r2z`
+
+See:
+`Current/18_JUIJUI_LEGACY_REFERENCE.md`
+
+The project goal is to approach the old juijui constellation/configuration where technically reasonable while respecting current V81 compatibility and maintained mods.
+
+Once uploaded, recover the exact historical Jetpack value from this profile rather than using a guessed fallback.
+
+This reference work does not supersede the current highest engineering priority: the generic LethalMin grab/bite + invincible-Pikmin invalid leader/follow-state fix.
