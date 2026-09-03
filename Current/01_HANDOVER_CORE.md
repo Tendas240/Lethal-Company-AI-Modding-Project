@@ -9,94 +9,73 @@ Last fully accepted gameplay baseline:
 **S1.41**
 
 Latest valid runtime evidence:
-**S1.42N — target resolver pass / native state-finalization bug exposed**
+**S1.42O — no cleanup executed because TaskFinished() does not exist**
 
 Current built candidate:
-**S1.42O - Baboon Hawk Native Task Finalization**
+**S1.42P - Baboon Hawk Exact FinishTask Recovery**
 
 Profile:
-`Profiles/LC V1 S1.42O Baboon Hawk Native Task Finalization.r2z`
+`Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z`
 
 SHA-256:
-`04d7e0df7f7a3b51d75832e9052c3e217ec07f91526c767323e1b5b0a3078d4d`
+`11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5`
 
 Compatibility plugin:
-**v1.3.10**
+**v1.3.11**
 
 Read:
-- `Current/52_S1.42N_NATIVE_TASK_FINALIZATION_ANALYSIS.md`
-- `Current/53_S1.42O_BABOON_HAWK_NATIVE_TASK_FINALIZATION_BUILD.md`
-- `Current/Projektstatus_S1.42O.json`
+- `Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md`
+- `Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md`
+- `Current/Projektstatus_S1.42P.json`
 
-## S1.42N runtime result
+## S1.42O result
 
 Evidence:
-`RuntimeEvidence/S1.42N/20260903T165818Z/`
+`RuntimeEvidence/S1.42O/20260903T171220Z/`
 
 Log SHA-256:
-`8ed6a79230e28535a01a4cb86a8971c358a5c9f57a53722e18ff4342474f51cf`
+`1a1251f19a1d82e90b72e82ac8e4babd523c32e695fe3d7923d4590debb0be71`
 
-The S1.42N target resolver succeeded:
-- 6/6 selected Pikmin were real Hawk attackers.
+User observed 8 Pikmin disappearing after Hawk death.
 
-But direct `RemoveCurrentTask()` was the wrong lifecycle API:
-- five selected Pikmin entered `Work state with no task assigned!`;
-- total warning count = 2155;
-- those five became non-following/unusable, matching user observation;
-- one retained a stale hit loop.
+S1.42O did not run cleanup:
+- attempted `PikminAI.TaskFinished()`;
+- runtime proves that method does not exist;
+- no RemoveCurrentTask fallback was used.
 
-Healthy control `PerDu` naturally ran:
-`Task finished -> Setting to idle -> Removing current task`
-and remained capable of taking a later task.
+Runtime reflection exposed the actual exact method:
+`PikminAI.FinishTask():Void`
 
-## Binding permanent behavior
+Eight Hawk attackers continued stale hit output after death and beyond corpse creation.
 
-Living Hawk -> Pikmin:
-blocked.
+## S1.42P scope
 
-Pikmin -> living Hawk:
-normal attack/latch/kill allowed.
+Keep the validated one-shot 4.0 m SpawnedEnemies resolver and the passing corpse guard.
 
-On Hawk death:
-- attackers must finish their attack task through LethalMin's native completion path;
-- they must remain recoverable/followable/reusable;
-- corpse remains enabled and Onion-carryable;
-- living Hawks cannot pick up corpse.
+Use exact declared:
+`PikminAI.FinishTask()`
 
-## S1.42O scope
-
-Only lifecycle completion changes.
-
-Retain:
-- 4.0 m one-shot SpawnedEnemies resolver;
-- exact PikminAI filtering;
-- corpse guard.
-
-Replace direct `RemoveCurrentTask()` with exact declared:
-`PikminAI.TaskFinished()`.
-
-No low-level fallback.
-No continuous scan.
+No direct RemoveCurrentTask fallback.
+No continuous global scan.
 No broad/inherited LethalMin Harmony scan.
 
 ## Exact next action
 
-Import S1.42O with:
+Import with:
 **Gale -> Advanced options -> Import all files**
 
-Focused test:
-1. record following count;
-2. attack/kill a Hawk with Pikmin;
-3. verify attackers are responsive after death;
-4. whistle/regain and verify they follow;
-5. compare count;
-6. verify no no-task Work loop;
-7. verify no stale hit loop;
-8. verify corpse/Onion behavior;
-9. verify living-Hawk corpse ignore;
-10. verify Hawk -> Pikmin ignore;
-11. verify no leader-null loop;
-12. upload full log to `RuntimeInbox/Current/`.
+Test S1.42P:
+1. note following Pikmin count;
+2. attack/kill Hawk with several Pikmin;
+3. verify attackers stop attacking dead Hawk;
+4. verify all remain visible/responsive;
+5. whistle/regain and verify follow/reuse;
+6. compare count;
+7. verify corpse/Onion behavior;
+8. verify living-Hawk corpse ignore;
+9. verify Hawk -> Pikmin ignore;
+10. verify no leader-null loop;
+11. upload full log to `RuntimeInbox/Current/`.
 
 ## Temporary state
 
@@ -111,16 +90,15 @@ Restore baseline:
 
 ## Controllers
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42O`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42P`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42O_BUILD_AWAITING_RUNTIME`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_BUILD_AWAITING_RUNTIME`
 
-## Critical anti-regression
+## Anti-regression
 
 - no S1.42D broad/inherited LethalMin Harmony scan;
 - no continuous global EnemyAI scan;
 - do not restore direct RemoveCurrentTask death cleanup;
+- do not guess alternate method names now that FinishTask() is runtime-confirmed;
 - no silent BCMER 2.0.0 upgrade;
-- preserve S1.42C enemy restore baseline;
-- CodeRebirthLib must not return;
-- unknown Enemy PowerLevels must not be guessed.
+- preserve S1.42C enemy restore baseline.
