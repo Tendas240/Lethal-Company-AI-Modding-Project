@@ -1,0 +1,152 @@
+name: Inspect LethalMin attack task
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/lethalmin-attack-inspect.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Install ILSpy command line
+        run: dotnet tool install --global ilspycmd
+
+      - name: Extract exact S1.42Q LethalMin assembly
+        shell: bash
+        run: |
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+
+          profile = Path("Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z")
+          out = Path("/tmp/s142q")
+          out.mkdir(parents=True, exist_ok=True)
+
+          with zipfile.ZipFile(profile, "r") as z:
+              matches = [
+                  n for n in z.namelist()
+                  if n.lower().endswith("/lethalmin.dll") or n.lower() == "lethalmin.dll"
+              ]
+              if len(matches) != 1:
+                  raise SystemExit(f"Expected exactly one LethalMin.dll, got {matches}")
+              member = matches[0]
+              target = out / "LethalMin.dll"
+              target.write_bytes(z.read(member))
+              Path("/tmp/lethalmin_member.txt").write_text(member + "\n", encoding="utf-8")
+              print(member)
+          PY
+
+      - name: Decompile exact assembly
+        shell: bash
+        run: |
+          mkdir -p /tmp/lethalmin-decompiled
+          ~/.dotnet/tools/ilspycmd -p -o /tmp/lethalmin-decompiled /tmp/s142q/LethalMin.dll
+
+      - name: Build focused attack-task report
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import re
+
+          root = Path("/tmp/lethalmin-decompiled")
+          dll = Path("/tmp/s142q/LethalMin.dll")
+          member = Path("/tmp/lethalmin_member.txt").read_text(encoding="utf-8").strip()
+          patterns = [
+              "class PikminAI",
+              "AttackEnemy",
+              "Hitting enemy with",
+              "Task finished",
+              "FinishTask",
+              "RemoveCurrentTask",
+              "Latching Pikmin",
+              "currentTask",
+              "CurrentTask",
+              "EnemyAI",
+          ]
+
+          files = sorted(root.rglob("*.cs"))
+          scored = []
+          for p in files:
+              text = p.read_text(encoding="utf-8", errors="replace")
+              score = sum(text.count(x) for x in patterns)
+              if score:
+                  scored.append((score, p, text))
+          scored.sort(key=lambda x: (-x[0], str(x[1])))
+
+          lines = [
+              "# LethalMinNightly 1.1.108 focused attack-task decompile",
+              "",
+              f"Embedded profile member: {member}",
+              f"DLL SHA-256: {hashlib.sha256(dll.read_bytes()).hexdigest()}",
+              "",
+              "This report is generated from the exact LethalMin.dll embedded in S1.42Q.",
+              "",
+          ]
+
+          for score, p, text in scored:
+              src = text.splitlines()
+              hits = []
+              for i, line in enumerate(src):
+                  if any(x in line for x in patterns):
+                      hits.append(i)
+              if not hits:
+                  continue
+
+              # Merge context windows so whole relevant methods survive.
+              windows = []
+              for i in hits:
+                  a = max(0, i - 45)
+                  b = min(len(src), i + 90)
+                  if windows and a <= windows[-1][1] + 5:
+                      windows[-1] = (windows[-1][0], max(windows[-1][1], b))
+                  else:
+                      windows.append((a, b))
+
+              lines += [
+                  "",
+                  "=" * 100,
+                  f"FILE: {p.relative_to(root)}  score={score}",
+                  "=" * 100,
+              ]
+              for a, b in windows:
+                  lines.append(f"--- lines {a+1}-{b} ---")
+                  for n in range(a, b):
+                      lines.append(f"{n+1:5d}: {src[n]}")
+
+          out = Path("Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt")
+          out.write_text("\n".join(lines) + "\n", encoding="utf-8")
+          print(f"Wrote {out} ({out.stat().st_size} bytes)")
+          PY
+
+      - name: Commit focused report
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt
+          if git diff --cached --quiet; then
+            echo "No report changes."
+          else
+            git commit -m "Inspect LethalMin 1.1.108 attack task [skip ci]"
+            git push
+          fi
