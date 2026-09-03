@@ -22,7 +22,7 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.1";
+        public const string PluginVersion = "1.3.2";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
@@ -41,7 +41,7 @@ namespace S139CompatibilityFixes
                 "Diagnostics",
                 "Isolated Enemy Regression",
                 false,
-                "TEST ONLY. When true, allow only Thumper/Crawler, Puffer/Spore Lizard, Baboon Hawk, and Pikmin-family enemies. Disable again after the isolated S1.42D regression test.").Value;
+                "TEST ONLY. When true, allow only Thumper/Crawler, Puffer/Spore Lizard, Baboon Hawk, and Pikmin-family enemies. Disable again after the focused enemy regression test.").Value;
 
             Harmony.PatchAll(typeof(ShipDoorPatches));
             Harmony.PatchAll(typeof(NaturalScrapFilterPatches));
@@ -60,7 +60,7 @@ namespace S139CompatibilityFixes
                 "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, " +
                 "CodeRebirth kill-RPC Pikmin protection, the optional LethalModDataLib null-plugin guard, " +
                 "Puffer smoke Pikmin-effect guard, generic LethalMin grab/bite state recovery, " +
-                "the 140-second Jetpack target, and the optional S1.42D isolated-enemy diagnostic are active.");
+                "the 140-second Jetpack target, and the optional isolated-enemy diagnostic are active.");
         }
 
         private IEnumerator DelayedLethalMinPatches()
@@ -85,6 +85,13 @@ namespace S139CompatibilityFixes
                 return;
 
             _nextDiagnosticIsolationTick = Time.unscaledTime + 1f;
+
+            // Do not mutate/scan Company/Gordion while the host lobby is sitting in orbit.
+            // S1.42E repeatedly tried to synthesize diagnostic spawn entries there once per
+            // second and caused visible periodic freezes.
+            if (!DiagnosticEnemyIsolation.ShouldRunForCurrentLevel())
+                return;
+
             DiagnosticEnemyIsolation.ApplyToCurrentLevel();
             DiagnosticEnemyIsolation.RemoveEscapedLiveEnemies();
         }
@@ -452,10 +459,31 @@ namespace S139CompatibilityFixes
 
         private static readonly HashSet<int> RemovedLiveIds = new HashSet<int>();
         private static readonly HashSet<string> MissingTypeWarnings = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private static bool LoggedGordionSkip;
+
+        internal static bool ShouldRunForCurrentLevel()
+        {
+            if (!Enabled || RoundManager.Instance == null || RoundManager.Instance.currentLevel == null)
+                return false;
+
+            string planetName = RoundManager.Instance.currentLevel.PlanetName ?? string.Empty;
+            if (planetName.IndexOf("Gordion", StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                if (!LoggedGordionSkip)
+                {
+                    LoggedGordionSkip = true;
+                    Plugin.Log.LogInfo(
+                        "[EnemyIsolation] Skipping diagnostic pool work on Gordion/Company while in orbit.");
+                }
+                return false;
+            }
+
+            return true;
+        }
 
         internal static void ApplyToCurrentLevel()
         {
-            if (!Enabled || RoundManager.Instance == null || RoundManager.Instance.currentLevel == null)
+            if (!ShouldRunForCurrentLevel())
                 return;
 
             SelectableLevel level = RoundManager.Instance.currentLevel;
@@ -500,6 +528,7 @@ namespace S139CompatibilityFixes
 
             bool changed = false;
             HashSet<string> present = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            object templateEntry = list.Count > 0 ? list[0] : null;
 
             for (int i = list.Count - 1; i >= 0; i--)
             {
@@ -543,7 +572,7 @@ namespace S139CompatibilityFixes
                 if (found == null)
                     continue;
 
-                object newEntry = CreateSpawnEntry(list, found, 100);
+                object newEntry = CreateSpawnEntry(list, templateEntry, found, 100);
                 if (newEntry == null)
                     continue;
 
@@ -603,7 +632,7 @@ namespace S139CompatibilityFixes
             }
         }
 
-        private static object CreateSpawnEntry(IList list, EnemyType enemyType, int rarity)
+        private static object CreateSpawnEntry(IList list, object templateEntry, EnemyType enemyType, int rarity)
         {
             Type listType = list.GetType();
             Type entryType = listType.IsGenericType ? listType.GetGenericArguments().FirstOrDefault() : null;
@@ -612,7 +641,32 @@ namespace S139CompatibilityFixes
 
             try
             {
-                object entry = Activator.CreateInstance(entryType);
+                object entry = null;
+
+                // V81 SpawnableEnemyWithRarity has no parameterless constructor. Prefer
+                // its EnemyType/int constructor and fall back to cloning an existing
+                // pool entry so the diagnostic layer never enters an exception loop.
+                ConstructorInfo ctor = entryType.GetConstructor(
+                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
+                    null,
+                    new Type[] { typeof(EnemyType), typeof(int) },
+                    null);
+
+                if (ctor != null)
+                    entry = ctor.Invoke(new object[] { enemyType, rarity });
+
+                if (entry == null && templateEntry != null && entryType.IsInstanceOfType(templateEntry))
+                {
+                    MethodInfo clone = typeof(object).GetMethod(
+                        "MemberwiseClone",
+                        BindingFlags.Instance | BindingFlags.NonPublic);
+                    entry = clone?.Invoke(templateEntry, null);
+                }
+
+                if (entry == null)
+                    throw new MissingMethodException(
+                        $"No usable EnemyType/int constructor or clone template exists for {entryType.FullName}.");
+
                 FieldInfo enemyField = AccessTools.Field(entryType, "enemyType");
                 if (enemyField != null)
                     enemyField.SetValue(entry, enemyType);
