@@ -1,5 +1,61 @@
 # 00 — Current State
 
+## Latest update — S1.42J Baboon Hawk zero interaction
+
+S1.42I was built after the S1.42H Baboon-Hawk failure but was **not runtime-tested**.
+
+Before that test, the user selected a stronger binding gameplay rule:
+
+**Baboon Hawks and Pikmin must not interact in either direction.**
+
+Reason:
+an invincible Pikmin is not a meaningful prey target; allowing Baboon Hawks to chase it while the actual grab is blocked wastes AI behavior and creates pointless interaction loops.
+
+Latest built candidate:
+
+**S1.42J**
+
+`Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z`
+
+SHA-256:
+`736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7`
+
+Compatibility plugin:
+**v1.3.7**
+
+DLL SHA-256:
+`7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2`
+
+Implementation:
+- exact LethalMin BaboonBirdPikminEnemy adapter is disabled after BaboonBirdAI.Start;
+- exact declared BitePikmin is blocked;
+- common GrabPikmin blocks Baboon Hawk -> Pikmin as a final failsafe for all Pikmin;
+- LethalMin Attack Blacklist now includes exact runtime enemy name `Baboon hawk`, preventing Pikmin -> Baboon Hawk attack/latch;
+- no broad/inherited LethalMin Harmony scan.
+
+Retained:
+- Thumper/Crawler <-> Pikmin zero interaction;
+- Puffer -> Pikmin no effect;
+- EnemyIsolation enabled;
+- BCMER 1.71.0 disabled for the isolated gate;
+- Microwave rarity unchanged;
+- Jetpack target 140 seconds / MidAirExplosions Off.
+
+Status:
+**built successfully; awaiting runtime validation.**
+
+Runtime route:
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42J`
+
+Build controller:
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME`
+
+Canonical analysis:
+`Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
+
+Do not build S1.42K before S1.42J runtime evidence is evaluated.
+
+
 ## Latest update — S1.42H runtime -> S1.42I
 
 Valid S1.42H evidence:
