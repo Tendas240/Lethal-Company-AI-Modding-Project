@@ -217,3 +217,20 @@ Next runtime candidate should be a focused S1.42D descendant of S1.42C containin
 - Functional Microwave volume 0.7 with editing gate true.
 
 Broader interior/BCMER/CullFactory/Mausoleum tuning is deferred until this focused regression stage passes.
+
+
+## S1.42D temporary enemy isolation
+
+For the next focused regression run, only these enemies should be allowed to spawn:
+- indoor: Thumper/Crawler and Puffer/Spore Lizard;
+- outdoor: Baboon Hawk.
+
+This is diagnostic-only. The normal enemy setup must not be permanently changed.
+
+Canonical restore baseline:
+`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+
+Detailed test plan:
+`Current/19_S1.42D_ISOLATED_ENEMY_TEST.md`
+
+After the isolated run, remove the diagnostic isolation layer and restore the complete S1.42C enemy configuration exactly.
