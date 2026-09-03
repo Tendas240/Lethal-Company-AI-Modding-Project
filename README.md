@@ -88,27 +88,31 @@ Expected general marker:
 ## ChatGPT — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/34_HANDOVER_S1.42J_TO_NEXT.md`
-3. `Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
-4. `Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md`
-5. `Current/00_CURRENT_STATE.md`
-6. `Current/01_HANDOVER_CORE.md`
-7. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-8. `Current/Projektstatus_S1.42J.json`
-9. `Current/VERIFIKATION_S1.42J.txt`
-10. `Current/SHA256SUMS_S1.42J.txt`
-11. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-12. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-13. `Current/02_TECHNICAL_BASELINE.md`
-14. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
-15. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-16. `Current/03_PROJECT_CHRONOLOGY.md`
-17. `ProfileSources/S1.42J/`
-18. `BuildSpecs/current.json`
-19. `RuntimeInbox/ACTIVE_BUILD.txt`
-20. `Current/NEXT_CHAT_START_PROMPT_S1.42J.txt`
+2. `Current/36_HANDOVER_S1.42J_TO_NEXT.md`
+3. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+4. `Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
+5. `Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md`
+6. `Current/00_CURRENT_STATE.md`
+7. `Current/01_HANDOVER_CORE.md`
+8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+9. `Current/Projektstatus_S1.42J.json`
+10. `Current/VERIFIKATION_S1.42J.txt`
+11. `Current/SHA256SUMS_S1.42J.txt`
+12. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+13. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+14. `Current/02_TECHNICAL_BASELINE.md`
+15. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
+16. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+17. `Current/03_PROJECT_CHRONOLOGY.md`
+18. `ProfileSources/S1.42J/`
+19. `BuildSpecs/current.json`
+20. `RuntimeInbox/ACTIVE_BUILD.txt`
+21. `Current/NEXT_CHAT_START_PROMPT_S1.42J.txt`
 
 S1.42H/S1.42I and earlier handovers remain historical/diagnostic evidence. Newer confirmed information always overrides older handover instructions.
+
+Repository-maintenance note:
+`Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt` records the recommended later repository-architecture migration. It is intentionally deferred until the active critical runtime/build gate is evaluated and documented; it must not replace the immediate S1.42J runtime test.
 
 Then inspect `Profiles/`, `RuntimeEvidence/`, `Patches/`, `References/`, `Logs/`, and `Archive/` only as required by the task.
 
