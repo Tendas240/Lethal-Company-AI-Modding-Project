@@ -48,6 +48,13 @@
       "Determine whether isolated enemies populate/spawn without BCMER",
       "Check Enemies terminal output",
       "Observe whether HangarShipDoor/DoorAudit spam disappears without BCMER"
+    ],
+    "artifacts": [
+      "Current/Aktive_Modliste_S1.42G_BCMER_OFF_RETEST.txt",
+      "Current/README_Handover_S1.42G_BCMER_OFF_RETEST.txt",
+      "Current/VERIFIKATION_S1.42G_BCMER_OFF_RETEST.txt",
+      "Current/SHA256SUMS_S1.42G_BCMER_OFF_RETEST.txt",
+      "Current/DATEIINVENTAR_S1.42G_BCMER_OFF_RETEST.txt"
     ]
   },
   "pending_user_requirements": {
