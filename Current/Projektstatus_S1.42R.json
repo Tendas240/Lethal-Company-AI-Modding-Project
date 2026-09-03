@@ -119,10 +119,32 @@
     ]
   },
   "current_docs": {
+    "final_handover": "Current/64_HANDOVER_S1.42R_TO_NEXT_FINAL.md",
+    "repository_audit": "Current/65_REPOSITORY_HANDOVER_AUDIT_S1.42R.md",
     "upstream_decompile": "Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt",
     "root_cause": "Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md",
+    "build": "Current/63_S1.42R_LATCHED_DEAD_TARGET_COMPLETION_BUILD.md",
     "build_plan": "BuildSpecs/S1.42R_PLAN.md",
     "verification": "Current/VERIFIKATION_S1.42R.txt",
-    "hashes": "Current/SHA256SUMS_S1.42R.txt"
+    "hashes": "Current/SHA256SUMS_S1.42R.txt",
+    "mod_list": "Current/Aktive_Modliste_S1.42R.txt",
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+    "failed_approaches": "Current/05_FAILED_AND_OBSOLETE_APPROACHES.md"
+  },
+  "updated_at": "2026-09-03T22:12:00+02:00",
+  "runtime_gate": {
+    "build": "S1.42R",
+    "status": "awaiting_runtime_validation",
+    "runtime_inbox_current": "empty_except_gitkeep",
+    "runtime_evidence_exists": false,
+    "instruction": "Do not build S1.42S first. Import S1.42R via Gale Advanced options -> Import all files and run the focused multi-Pikmin Baboon Hawk test."
+  },
+  "repository_handover": {
+    "status": "ready",
+    "final_handover": "Current/64_HANDOVER_S1.42R_TO_NEXT_FINAL.md",
+    "repository_audit": "Current/65_REPOSITORY_HANDOVER_AUDIT_S1.42R.md",
+    "audit_verdict": "PASS_READY_FOR_NEW_CHAT_RUNTIME_GATE_OPEN",
+    "files_deleted": [],
+    "local_manual_actions_required": false
   }
 }
