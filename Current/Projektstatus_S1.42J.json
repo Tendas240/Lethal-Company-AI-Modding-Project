@@ -41,9 +41,28 @@
     "build": "S1.42H",
     "path": "RuntimeEvidence/S1.42H/20260903T125734Z/",
     "log_sha256": "81ed064ce97d25f250d6fba1585055baef8ce801cd0f13626d074bf4fef71029",
-    "puffer_pikmin": "pass",
-    "baboon_hawk_invincible_pikmin": "fail_hold_regrab",
-    "thumper_pikmin": "not_validated"
+    "findings": {
+      "startup_exact_common_grab_hook": "pass",
+      "isolated_enemy_spawning": "pass",
+      "enemies_terminal": "pass_user_observed",
+      "puffer_pikmin": "pass",
+      "baboon_hawk_invincible_pikmin": "fail_enemy_side_hold_regrab",
+      "thumper_pikmin": "not_validated",
+      "coroner_jetpack_playercontroller_null_flood": "resolved_zero_in_run",
+      "bcmer_related_zero_power_door_flood": "not_reproduced_with_bcmer_disabled"
+    },
+    "key_counts": {
+      "baboon_bite_calls": 64,
+      "pregrab_captures": 64,
+      "grabbed_states": 59,
+      "grabbed_death_timers": 59,
+      "invincibility_blocked_kills": 59,
+      "state_repairs": 56,
+      "leader_null_errors": 193,
+      "puffer_spawns": 2,
+      "crawler_spawns": 1,
+      "thumper_guard_markers": 0
+    }
   },
   "binding_enemy_rules": {
     "thumper_crawler_pikmin": "zero_interaction_both_directions",
@@ -72,20 +91,70 @@
     "rule": "Do not build S1.42K first.",
     "import": "Gale -> Advanced options -> Import all files",
     "primary_checks": [
-      "Baboon Hawks ignore Pikmin and do not chase/bite/grab/hold them",
-      "Pikmin do not attack or latch Baboon Hawks",
-      "BaboonBirdPikminEnemy adapter-disable runtime marker appears",
-      "direct Crawler/Thumper contact triggers zero-interaction behavior",
-      "Enemies terminal remains functional"
+      "startup/Main Menu and host",
+      "routed moon stays free of periodic freezes",
+      "Enemies terminal lists diagnostic targets",
+      "Baboon Hawks ignore Pikmin: no target/chase/bite/grab/hold",
+      "Pikmin do not attack/latch Baboon Hawks",
+      "BaboonBirdPikminEnemy adapter-disable marker appears",
+      "direct Crawler/Thumper contact yields zero interaction in both directions and ThumperPikminGuard marker",
+      "Puffer optional spot-check only; already PASS"
     ],
     "upload": "RuntimeInbox/Current/"
   },
   "after_isolated_enemy_acceptance": {
     "disable_temporary_enemy_isolation": true,
     "enemy_restore_point": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
-    "reenable_bcmer_1_71_0": true
+    "reenable_bcmer_1_71_0": true,
+    "preserve_permanent_rules": [
+      "Thumper/Crawler <-> Pikmin zero interaction",
+      "Baboon Hawk <-> Pikmin zero interaction",
+      "Puffer attack/smoke -> Pikmin no effect"
+    ]
   },
   "runtime_route": "S1.42J",
   "build_controller": "IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME",
-  "canonical_analysis": "Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md"
+  "canonical_analysis": "Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md",
+  "canonical_handover": {
+    "master_prompt": "START_HERE_ChatGPT_Masterprompt.txt",
+    "handover": "Current/34_HANDOVER_S1.42J_TO_NEXT.md",
+    "latest_build_analysis": "Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md",
+    "predecessor_runtime_analysis": "Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md",
+    "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42J.txt",
+    "verification": "Current/VERIFIKATION_S1.42J.txt",
+    "hashes": "Current/SHA256SUMS_S1.42J.txt",
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+  },
+  "confirmed_fixes_and_guards": [
+    "S1.42D broad inherited/non-declared LethalMin scan removed; do not reintroduce",
+    "periodic routed-moon EnemyIsolation freezes resolved",
+    "Coroner historical Jetpack PlayerController-null flood resolved",
+    "Puffer attack/smoke -> Pikmin PASS",
+    "LethalModDataLib null-plugin initialization guard confirmed",
+    "CodeRebirth natural Currency/Flash Turret suppression accepted from S1.40B/S1.41",
+    "BCMER ownership/rain guards retained",
+    "Thumper/Crawler <-> Pikmin zero-interaction fix built and pending direct validation",
+    "Baboon Hawk <-> Pikmin zero-interaction implemented in S1.42J and pending runtime validation"
+  ],
+  "open_issues": [
+    "S1.42J Baboon Hawk <-> Pikmin zero interaction requires runtime validation",
+    "Thumper/Crawler <-> Pikmin direct zero-interaction validation still pending",
+    "Functional Microwave should become somewhat rarer after isolated enemy gate; exact rarity not selected",
+    "Jetpack ~140-second duration and no sustained/high-speed self-explosion still need representative runtime validation",
+    "interior equal-probability normalization remains pending",
+    "MelanieMausoleum-specific fog reduction remains pending",
+    "CullFactory culling disable for junkrooms and shatteredrooms remains pending",
+    "BCMER Door System ERROR/ship-door interaction should be rechecked after BCMER is re-enabled"
+  ],
+  "do_not_regress": [
+    "Do not reintroduce S1.42D broad reflection/Harmony scan",
+    "Do not use Update-driven global EnemyAI scene scan for EnemyIsolation",
+    "Do not treat S1.42I as runtime-tested",
+    "Do not build S1.42K before S1.42J runtime evidence is evaluated",
+    "Do not restore BCMER until isolated S1.42J gate passes",
+    "Do not migrate BCMER 1.71.0 to 2.0.0 without explicit decision",
+    "Do not remove Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+    "Do not restore or cite RuntimeEvidence/S1.42G/20260903T100914Z/",
+    "Do not ask for local clone or local PowerShell build while GitHub contains required base/infrastructure"
+  ]
 }
