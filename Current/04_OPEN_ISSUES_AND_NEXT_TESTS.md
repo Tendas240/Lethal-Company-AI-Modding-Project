@@ -1,91 +1,73 @@
 # 04 - Open Issues and Next Tests
 
-## Immediate active issue — S1.42P failed 20 -> 18 recovery
+## Immediate next stage — S1.42Q minimal LethalMin-native rollback
 
-Newest analysis:
+Canonical plan:
+`Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md`
+
+S1.42P runtime analysis remains:
 `Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md`
 
-Tested profile:
-`Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z`
+## New architectural decision
 
-SHA-256:
-`11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5`
+The project must stop owning normal LethalMin Pikmin lifecycle behavior.
 
-Runtime evidence:
-`RuntimeEvidence/S1.42P/20260903T181706Z/`
+Native LethalMin should own:
+- Pikmin -> enemy target/latch/attack;
+- enemy-death task completion;
+- Pikmin -> enemy-body carry;
+- Onion delivery.
 
-Log SHA-256:
-`d656095fb874a415a1bd2377c0411339d3d6eb002dce4ec3f6216e879294127f`
+Project-local code should own only:
+- proven Enemy -> Pikmin prevention gaps;
+- unrelated compatibility fixes already independently justified.
 
-## Confirmed failure
+This supersedes the previous idea of adding another custom dead-Hawk target filter/reacquisition layer.
 
-User observation:
-**20 following Pikmin before the fight, 18 recovered afterward.**
+## S1.42Q removals
 
-Log reconstruction:
-**exactly 20 -> 18 confirmed.**
+Remove:
+- `PatchBaboonHawkDeathCleanup()`;
+- `BaboonHawkDeathCleanup`;
+- Hawk-death `PikminAI.FinishTask()` reflection;
+- 4.0 m SpawnedEnemies death selector;
+- delayed post-grab snapshot/leader/follow reflection repair where prevention can replace it.
 
-Missing:
-- `Yellow Pikmin_hcRGph`
-- `Yellow Pikmin_ruCpzY`
+Do not add custom AttackEnemy or CarryItem logic.
 
-### Failure mode 1 — selector miss
+## Config rollback
 
-Four Pikmin were actively hitting the Hawk before death, but the 4.0 m cleanup selected only three.
+S1.41 vs S1.42P LethalMin config comparison shows only one difference:
 
-Missed attacker:
-`Yellow Pikmin_ruCpzY`
+`[Enemy Behavior] Thumper Bite Limit`
+- S1.41: `3`
+- S1.42P: `0`
 
-It continued hitting the dead Hawk for 168 post-death entries, ending about 84.565 seconds after death.
+Restore `3` in S1.42Q unless a new isolated test proves it must differ.
 
-A larger arbitrary radius is not an acceptable fix; attacker identity must be direct.
+Keep the existing native LethalMin protection settings such as invincible Pikmin, Puffer poison off, Old Bird grabs off, CodeRebirth interaction toggles off, etc.
 
-### Failure mode 2 — dead-target reacquisition
+## Narrow shims that may remain
 
-Native `FinishTask()` worked on:
-- `hcRGph`
-- `apYy5`
-- `khCd`
+- CodeRebirth Crane kill shield: previously proven necessary despite native config;
+- Dead Baboon Hawk `CanGrabScrap` guard: separate SellBodies compatibility shim; it does not implement Pikmin carrying and may remain unless a clean native test proves unnecessary;
+- minimal exact Enemy -> Pikmin Bite/Grab blockers only where runtime evidence proves upstream/config still allows the interaction.
 
-All three then rediscovered the already-dead `BaboonHawkEnemy(Clone)` and assigned a new `AttackEnemy` task.
+Prefer blocking before Pikmin state mutation. Avoid repairing state afterward.
 
-`apYy5` and `khCd` eventually recovered through later behavior.
-`hcRGph` did not return to the leader.
+## S1.42Q acceptance
 
-## Passing S1.42P subchecks
-
-- exact `PikminAI.FinishTask()` resolver: PASS
-- native FinishTask invocation: PASS
-- `Work state with no task assigned!`: 0
-- `Leader is null when following`: 0
-- Dead Baboon Hawk body creation/carry: PASS
-- corpse reaches Onion: PASS
-- living Baboon Hawk ignores corpse: PASS
-- Thumper/Pikmin protection remains active.
-
-## Next build direction — S1.42Q
-
-Build from S1.42P only after implementation is exact enough to avoid guessing.
-
-Required changes:
-1. retain `PikminAI.FinishTask()`;
-2. determine actual Pikmin attackers by dying-Hawk target identity rather than distance;
-3. prevent dead `BaboonHawkEnemy` objects from being valid future Pikmin AttackEnemy targets.
-
-Preserve:
-- Pikmin -> living Hawk attack/latch/kill;
-- living Hawk -> Pikmin ignore/protection;
-- corpse carry to Onion;
-- living Hawks ignore corpse.
-
-Do not:
-- simply widen the 4 m radius;
-- use direct `RemoveCurrentTask()`;
-- add continuous scene scanning;
-- restore normal enemy state;
-- re-enable BCMER yet.
-
-If exact target-selection internals are not established, prefer a narrow diagnostic descendant that logs exact runtime task/target members over guessed reflection.
+1. Pikmin attack/latch/kill Thumper/Crawler natively.
+2. Pikmin attack/latch/kill Baboon Hawk natively.
+3. Enemy death releases attackers naturally with no project-local FinishTask marker.
+4. All Pikmin remain responsive and whistle back.
+5. Following count recovers exactly.
+6. Dead Baboon Hawk is carried to Onion natively.
+7. Enemies do not target/bite/grab/harm Pikmin.
+8. Puffer remains harmless to Pikmin.
+9. no `Work state with no task assigned!`.
+10. no `Leader is null when following`.
+11. no `BaboonHawkDeathCleanup` runtime markers.
 
 ## Temporary state
 
@@ -102,13 +84,6 @@ Restore baseline:
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42P`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_SUCCESSOR_DESIGN`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_MINIMAL_ROLLBACK_BUILD`
 
-## After a future PASS
-
-Only after the Baboon-Hawk death/recovery gate is actually clean:
-1. disable EnemyIsolation;
-2. restore exact normal enemy configuration from S1.42C baseline;
-3. re-enable exact BCMER 1.71.0;
-4. runtime-test normal gameplay;
-5. then consider deferred repository cleanup/migration.
+Do not restore normal enemies or BCMER until this minimal architecture passes.
