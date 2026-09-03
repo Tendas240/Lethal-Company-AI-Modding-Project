@@ -1,9 +1,9 @@
-VERIFIKATION — S1.42L
+VERIFIKATION — S1.42L — FINAL HANDOVER STATE
 
 Profil:
 Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z
 
-SHA-256:
+Profil SHA-256:
 fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722
 
 Basis:
@@ -12,15 +12,21 @@ Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z
 Basis SHA-256:
 bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2
 
-GitHub Actions:
+GitHub-Actions-Build:
 - erfolgreich
 - 331 Archivmitglieder
 - 330 lesbare Snapshot-Dateien
-- geänderte Mitglieder nur:
+- geänderte bestehende Mitglieder nur:
   - BepInEx/config/NoteBoxz.LethalMin.cfg
   - export.r2x
-- keine neuen Mitglieder
+- keine neuen Archivmitglieder
 - Compatibility-DLL unverändert
+
+Compatibility Plugin:
+Version 1.3.7
+
+DLL SHA-256:
+7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2
 
 Attack Blacklist:
 Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy
@@ -29,15 +35,42 @@ Damit:
 - Crawler NICHT blacklisted
 - Baboon hawk NICHT blacklisted
 - Leaf boy weiterhin blacklisted
-- Blacklist entspricht S1.40B/S1.41 Modern-Baseline
+- Blacklist entspricht exakt der modernen S1.40B/S1.41-Baseline
 
-S1.42K:
-- gebaut
-- nie runtime-getestet
-- durch neue Pikmin -> Baboon-Hawk-Angriffsanforderung superseded
+Neueste valide Runtime-Evidenz:
+RuntimeEvidence/S1.42L/20260903T151817Z/raw/LogOutput.log
 
-Runtime:
+Runtime-Log SHA-256:
+402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd
+
+Runtime-Ergebnis S1.42L:
+- Startup/Host/Gameplay erfolgreich
+- Thumper/Crawler -> Pikmin Schutz PASS
+- [ThumperPikminGuard] = 36 Blocks
+- Leader is null when following = 0
+- Pikmin -> Thumper/Crawler Attack/Latch vom Benutzer bestätigt
+- sichtbares Thumper-Schnappen als harmloses kosmetisches Verhalten akzeptiert
+- Puffer -> Pikmin PASS / geschlossen
+- Jetpack PASS / geschlossen
+- Baboon Hawk -> Pikmin PASS / geschlossen
+- Baboon-Hawk-Adapter-Disable-Marker weiterhin vorhanden
+- Coroner Jetpack PlayerController-null = 0
+
+Noch offen:
+Pikmin -> Baboon Hawk Attack/Latch muss explizit runtime-bestätigt werden.
+
+Wichtig:
+- S1.42K wurde gebaut, aber nie runtime-getestet und ist superseded.
+- Kein neuer Build vor der verbleibenden S1.42L-Prüfung.
+- EnemyIsolation bleibt aktiv.
+- BCMER 1.71.0 bleibt deaktiviert.
+- Nach PASS normale Enemy-Konfiguration aus Current/ENEMY_SPAWN_BASELINE_S1.42C.json wiederherstellen und exakt BCMER 1.71.0 reaktivieren.
+
+Runtime-Route:
 RuntimeInbox/ACTIVE_BUILD.txt = S1.42L
 
-Build controller:
+Build-Controller:
 BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME
+
+Finaler Handover:
+Current/45_HANDOVER_S1.42L_TO_NEXT_FINAL.md
