@@ -368,8 +368,20 @@ This is intended to remove moon/day/difficulty drift from the EventType base dis
 
 Reduce fog only for this interior. Do not globally reduce fog.
 
-## Generic Pikmin state blocker
+## Generic Pikmin state blocker — resolved through S1.42S
 
-Before final S1.42 acceptance, resolve or safely contain the generic LethalMin enemy grab/bite + Invincible Pikmin leader-state bug confirmed with Baboon Hawk in S1.42C.
+The S1.42C-era generic LethalMin enemy grab/bite + Invincible Pikmin leader-state blocker is no longer an open blocker.
 
-Do not solve it by blacklisting all enemies.
+Current accepted containment:
+- Thumper/Crawler -> Pikmin broken grab path is blocked while Pikmin -> Thumper/Crawler remains allowed.
+- Puffer -> Pikmin effect path is blocked.
+- Baboon Hawk -> Pikmin collision/bite/grab is blocked narrowly.
+- Pikmin -> Baboon Hawk remains native LethalMin.
+- S1.42S preserves native BaboonBirdPikminEnemy death/unlatch lifecycle and passed the focused runtime gate.
+
+Do not regress by blacklisting all enemies or disabling complete LethalMin enemy-adapter components.
+
+See:
+- `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
+- `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+- `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
