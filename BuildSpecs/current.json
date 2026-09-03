@@ -1,15 +1,39 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42F_BUILD_AWAITING_RUNTIME",
+  "enabled": true,
+  "build_id": "S1.42G",
   "base_profile": "Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z",
   "base_sha256": "f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z",
+  "profile_name": "LC V1 S1.42G Routed Moon Performance Fix",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
   "config_patches": [],
-  "local_plugin_builds": [],
-  "text_assertions": []
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S139CompatibilityFixes/bin/Release/netstandard2.1/S139CompatibilityFixes.dll",
+      "archive_path": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "contains": "Functional Microwave | Volume = 0.7"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
+      "contains": "Reduce Battery = false"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.jetpackfixes.cfg",
+      "contains": "MidAirExplosions = Off"
+    },
+    {
+      "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+      "contains": "Isolated Enemy Regression = true"
+    }
+  ]
 }
