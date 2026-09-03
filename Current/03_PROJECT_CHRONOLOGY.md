@@ -215,3 +215,94 @@ See:
 - `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
 - `Current/12_HANDOVER_S1.41_TO_S1.42A.md`
 - `BuildSpecs/S1.42A_PLAN.md`
+
+
+## S1.42A — Interior Config Seed
+
+Built repository-first from accepted S1.41.
+
+Profile:
+`Profiles/LC V1 S1.42A Interior Config Seed.r2z`
+
+SHA-256:
+`70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
+
+Added eight requested interior packages plus required LethalModDataLib 1.2.2.
+
+Runtime evidence:
+`RuntimeEvidence/S1.42A/20260902T224318Z/`
+
+Result:
+- 52 ExtendedDungeonFlows total vs 26 in S1.41;
+- 26 new flows discovered;
+- real config/weight/ID generation succeeded;
+- exact CullFactory IDs `junkrooms`, `shatteredrooms`;
+- Mausoleum generated on Offense and was reported far too foggy;
+- LethalModDataLib initialization NRE discovered.
+
+S1.42A was a successful seed, not a clean final gameplay baseline.
+
+## S1.42B — LethalModDataLib NRE Guard
+
+Profile:
+`Profiles/LC V1 S1.42B LMDL NRE Guard.r2z`
+
+SHA-256:
+`8523754926e3f67c0ccef5aee976cbe72ab976f997876c59b51fedcfb293befe`
+
+The cumulative compatibility plugin added a null-safe replacement for LethalModDataLib's bulk ModDataAttribute scan.
+
+Runtime evidence:
+`RuntimeEvidence/S1.42B/20260902T231959Z/`
+
+Confirmed:
+- `MW.MagicWesleyInteriors` was the Chainloader entry with `PluginInfo.Instance == null`;
+- guard skipped exactly that null instance;
+- LMDL completed initialization;
+- save/load/delete hooks connected;
+- moddata load/save succeeded.
+
+**LethalModDataLib initialization NRE resolved.**
+
+The same run revealed:
+- a Thumper/Crawler-related Pikmin grabbed-state/leader-null issue;
+- Puffer smoke still receiving a LethalMin effect trigger despite `Puffer Can Poison Pikmin = false`.
+
+## S1.42C — Pikmin Enemy Guard
+
+Profile:
+`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
+
+SHA-256:
+`22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
+
+Changes:
+- `Thumper Bite Limit = 0`;
+- `Crawler` added to Pikmin Attack Blacklist;
+- compatibility plugin v1.2.0 adds targeted Puffer smoke effect-trigger removal;
+- LMDL guard retained.
+
+Runtime evidence:
+`RuntimeEvidence/S1.42C/20260902T235238Z/`
+
+Result:
+- no new startup regression attributable to S1.42C;
+- LMDL remained healthy;
+- Puffer did not spawn -> Puffer guard remains unvalidated;
+- Crawler spawned but interaction was not deliberately tested -> Thumper total noninteraction remains unconfirmed;
+- a Baboon Hawk explicitly bit a Bulbmin and reproduced the same repeated `Leader is null when following` loop.
+
+Important conclusion:
+the broken follower state is a **generic LethalMin enemy grab/bite + Invincible Pikmin interaction**, not a Thumper-only problem.
+
+## Current post-S1.42C decisions
+
+Binding:
+- all interiors equal effective probability on all moons, including future additions;
+- Mausoleum-specific fog reduction;
+- BCMER 1.71.0 with eight fixed 12.5% EventType categories;
+- Functional Microwave target volume 0.7 with edit gate;
+- Jetpack historical juijui value must not be guessed;
+- next preferred engineering work is a generic grab/bite + invincible follower-state repair.
+
+`BuildSpecs/S1.42D_PLAN.md` is draft-only.
