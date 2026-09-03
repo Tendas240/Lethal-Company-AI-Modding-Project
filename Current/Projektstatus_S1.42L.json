@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b"
+  },
+  "latest_valid_runtime_evidence": {
+    "build": "S1.42J",
+    "path": "RuntimeEvidence/S1.42J/20260903T145657Z/",
+    "log_sha256": "a8ce035bf64fa5b704e18c588215f43cd1fd184eef4f467dfbafa6fcb1379963"
+  },
+  "superseded_untested_candidates": ["S1.42I", "S1.42K"],
+  "active_candidate": {
+    "build": "S1.42L",
+    "profile": "Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z",
+    "sha256": "fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722",
+    "base": "S1.42K",
+    "status": "built_successfully_awaiting_runtime"
+  },
+  "binding_enemy_rules": {
+    "baboon_hawk_to_pikmin": "blocked_no_target_chase_bite_grab_hold",
+    "pikmin_to_baboon_hawk": "normal_lethalmin_attack_latch_allowed",
+    "thumper_crawler_to_pikmin": "blocked_no_functional_grab_leader_removal_death_timer",
+    "pikmin_to_thumper_crawler": "normal_lethalmin_attack_latch_allowed",
+    "puffer_to_pikmin": "no_effect"
+  },
+  "attack_blacklist": {
+    "current": "Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy",
+    "matches_modern_s1_40b_s1_41_baseline": true,
+    "recent_project_added_entries": ["Crawler", "Baboon hawk"],
+    "recent_project_added_entries_still_present": []
+  },
+  "jetpack": {
+    "status": "accepted_closed",
+    "target_seconds": 140,
+    "mid_air_explosions": "Off"
+  },
+  "temporary_test_state": {
+    "enemy_isolation_enabled": true,
+    "bcmer_1_71_0_enabled": false,
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+  },
+  "next_action": "Runtime-test S1.42L for Pikmin -> Thumper/Crawler and Pikmin -> Baboon Hawk attack/latch while retaining enemy-side protection.",
+  "runtime_route": "S1.42L",
+  "build_controller": "IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME",
+  "repository_migration": "deferred_until_S1.42L_gate_is_evaluated_and_state_documented"
+}
