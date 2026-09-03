@@ -233,6 +233,17 @@ The BCMER-off state is **temporary test isolation only**.
 
 Carry forward the accepted S1.41 BCMER config/ownership guards when BCMER is re-enabled.
 
+## Retest-specific machine-readable artifacts
+
+Use these for the manual variant:
+- `Current/Aktive_Modliste_S1.42G_BCMER_OFF_RETEST.txt`
+- `Current/README_Handover_S1.42G_BCMER_OFF_RETEST.txt`
+- `Current/VERIFIKATION_S1.42G_BCMER_OFF_RETEST.txt`
+- `Current/SHA256SUMS_S1.42G_BCMER_OFF_RETEST.txt`
+- `Current/DATEIINVENTAR_S1.42G_BCMER_OFF_RETEST.txt`
+
+The canonical S1.42G `export.r2x` must remain unchanged with BCMER enabled; BCMER-off exists only as the explicit manual retest state.
+
 ## Repository-first rules
 
 GitHub is canonical.
