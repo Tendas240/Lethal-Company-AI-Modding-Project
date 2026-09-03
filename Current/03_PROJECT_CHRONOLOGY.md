@@ -343,3 +343,39 @@ Compatibility plugin v1.3.1 narrows Harmony targets to declared local interactio
 Build passed with 0 compiler warnings/errors.
 
 S1.42E is awaiting runtime validation. First gate is Main Menu startup.
+
+
+## S1.42E — startup pass, diagnostic isolation freeze
+
+Runtime evidence:
+`RuntimeEvidence/S1.42E/20260903T091053Z/`
+
+S1.42E fixed the S1.42D startup crash:
+- compatibility plugin v1.3.1 loaded;
+- safe generic LethalMin state guard registered on four declared enemy-adapter methods;
+- Main Menu and host lobby were reached;
+- Jetpack Item asset was successfully changed from 50 to 140 seconds.
+
+The user observed short freezes approximately once per second in the ship lobby.
+
+The log showed the temporary EnemyIsolation layer running against `71 Gordion` and producing six `MissingMethodException` failures per second because `SpawnableEnemyWithRarity` was created through a nonexistent parameterless constructor.
+
+S1.42E therefore passed the startup gate but was not used for interaction testing.
+
+## S1.42F — Enemy Isolation Freeze Fix
+
+Built repository-first from S1.42E.
+
+Profile:
+`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
+
+SHA-256:
+`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
+
+Compatibility plugin v1.3.2:
+- skips diagnostic pool work on Gordion/Company while the host lobby is in orbit;
+- uses the `EnemyType, int` constructor for diagnostic spawn entries;
+- falls back to cloning an existing pool entry;
+- retains the S1.42E startup-safe DeclaredOnly LethalMin state-guard architecture.
+
+GitHub Actions passed with 0 compiler warnings/errors. S1.42F is awaiting runtime lobby-smoothness validation.
