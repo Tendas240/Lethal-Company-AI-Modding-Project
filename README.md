@@ -1,478 +1,154 @@
 # Lethal Company AI Modding Project
 
-## CURRENT CANONICAL OVERRIDE — S1.42L THUMPER CLOSED — 2026-09-03
-
-This section is newer than the earlier S1.42L gate text below.
-
-Latest valid runtime evidence:
-`RuntimeEvidence/S1.42L/20260903T151817Z/`
-Log SHA-256: `402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd`
-
-Thumper/Crawler is now **PASS / CLOSED**:
-- Pikmin -> Thumper/Crawler attack/latch confirmed by user;
-- Thumper/Crawler -> Pikmin broken GrabPikmin state blocked;
-- 36 `[ThumperPikminGuard]` blocks;
-- 0 `Leader is null when following`;
-- visible snapping is accepted as harmless and should be ignored.
-
-Also closed:
-- Puffer -> Pikmin PASS;
-- Jetpack PASS;
-- Baboon Hawk -> Pikmin PASS.
-
-Only remaining isolated enemy gate:
-**Pikmin -> Baboon Hawk attack/latch**.
-
-Keep using S1.42L. Do not build a successor yet.
-
-Current handover:
-`Current/44_HANDOVER_S1.42L_THUMPER_CLOSED.md`
-
-Current analysis:
-`Current/43_S1.42L_RUNTIME_ANALYSIS_THUMPER_CLOSED.md`
-
-Runtime route remains:
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42L`
-
-Build controller remains:
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME`
-
-Do not restore normal enemies/BCMER and do not start repository migration until the remaining Pikmin -> Baboon Hawk direction is explicitly validated.
-
-
-## CURRENT CANONICAL OVERRIDE — S1.42L — 2026-09-03
-
-This section supersedes the S1.42K current-gate override below.
-
-Latest valid runtime evidence:
-**S1.42J**
-`RuntimeEvidence/S1.42J/20260903T145657Z/`
-Log SHA-256: `a8ce035bf64fa5b704e18c588215f43cd1fd184eef4f467dfbafa6fcb1379963`
-
-S1.42K was built successfully but never runtime-tested and is superseded.
-
-Current candidate:
-**S1.42L — Pikmin Counterattack Restore**
-`Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z`
-SHA-256: `fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722`
-
-Binding interaction rules:
-- Baboon Hawk -> Pikmin: no target/chase/bite/grab/hold;
-- Pikmin -> Baboon Hawk: normal LethalMin attack/latch allowed;
-- Thumper/Crawler -> Pikmin: no functional GrabPikmin/leader-removal/death-timer effect;
-- Pikmin -> Thumper/Crawler: normal LethalMin attack/latch allowed;
-- Puffer -> Pikmin: no effect.
-
-S1.42L Attack Blacklist exactly matches the modern S1.40B/S1.41 baseline:
-`Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy`
-
-Thus neither `Crawler` nor `Baboon hawk` remains blacklisted.
-
-Exact next action:
-**runtime-test S1.42L** by throwing Pikmin onto both a Thumper/Crawler and a Baboon Hawk while confirming the enemy-side guards still prevent the old broken Pikmin grabbed-state behavior.
-
-Runtime route:
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42L`
-
-Build controller:
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME`
-
-Canonical handover:
-`Current/42_HANDOVER_S1.42L_TO_NEXT.md`
-
-Do not restore normal enemies/BCMER and do not start the repository migration before S1.42L is evaluated.
-
-
-## CURRENT CANONICAL OVERRIDE — S1.42K — 2026-09-03
-
-This section is chronologically newer than the S1.42J handover/history below.
-
-Latest valid runtime evidence:
-**S1.42J**
-`RuntimeEvidence/S1.42J/20260903T145657Z/`
-Log SHA-256: `a8ce035bf64fa5b704e18c588215f43cd1fd184eef4f467dfbafa6fcb1379963`
-
-S1.42J accepted:
-- Baboon Hawk <-> Pikmin complete zero interaction: **PASS**;
-- Puffer -> Pikmin: **PASS / reconfirmed**;
-- Jetpack 140-second target / normal-use behavior: **PASS, accepted by user**;
-- Thumper/Crawler -> Pikmin protection: **PASS**; 19 Thumper guard blocks and 0 leader-null errors.
-
-The earlier bidirectional Thumper zero-interaction wording is superseded.
-Current binding rule:
-- **Thumper/Crawler -> Pikmin:** functional grab/bite state effects remain blocked;
-- **Pikmin -> Thumper/Crawler:** normal LethalMin attack/latch is allowed.
-
-Current candidate:
-**S1.42K — Thumper Pikmin Attack Restore**
-`Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z`
-SHA-256: `bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2`
-
-S1.42K removes only `Crawler` from LethalMin's Pikmin Attack Blacklist; `Baboon hawk` remains blacklisted. Compatibility DLL is unchanged.
-
-Exact next action:
-**runtime-test S1.42K** by throwing Pikmin onto a Thumper/Crawler. Pikmin must latch/attack normally while the Thumper-owned GrabPikmin route remains blocked.
-
-Runtime route:
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42K`
-
-Build controller:
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42K_BUILD_AWAITING_RUNTIME`
-
-Canonical current handover:
-`Current/39_HANDOVER_S1.42K_TO_NEXT.md`
-
-Current analyses:
-- `Current/37_S1.42J_RUNTIME_ANALYSIS_AND_S1.42K_PLAN.md`
-- `Current/38_S1.42K_THUMPER_PIKMIN_ATTACK_RESTORE_BUILD.md`
-- `Current/Projektstatus_S1.42K.json`
-
-Do not restore normal enemies/BCMER and do not start the repository structural migration until S1.42K is evaluated.
-
+GitHub is the canonical source of truth for this project.
 
 ## Current state
 
-**Last fully accepted gameplay baseline:** S1.41
+Game:
+**Lethal Company V81**
+
+Last fully accepted gameplay baseline:
+**S1.41 - BCMER Reactivation**
 
 `Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
 
 SHA-256:
 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-**Most recent valid runtime evidence:** S1.42H
+Current built and runtime-tested candidate:
+**S1.42L - Pikmin Counterattack Restore**
 
-`RuntimeEvidence/S1.42H/20260903T125734Z/`
-
-Log SHA-256:
-`81ed064ce97d25f250d6fba1585055baef8ce801cd0f13626d074bf4fef71029`
-
-S1.42H confirmed:
-- startup/exact common GrabPikmin hook PASS;
-- isolated enemy spawning PASS;
-- in-game `Enemies` output works per user observation;
-- Puffer smoke -> Pikmin PASS;
-- Baboon Hawk + invincible Pikmin FAIL because the enemy-side hold/re-grab loop persisted;
-- direct Thumper/Crawler <-> Pikmin contact was not validated.
-
-S1.42I:
-- built successfully;
-- **never runtime-tested**;
-- superseded before test because the user selected a stronger gameplay rule.
-
-**Binding rule from S1.42J onward:**
-Baboon Hawks and Pikmin must not interact in either direction.
-
-**Latest built test candidate:** S1.42J
-
-`Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z`
+`Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z`
 
 SHA-256:
-`736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7`
+`fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722`
 
-Compatibility plugin:
-- version **1.3.7**
-- DLL SHA-256 `7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2`
+Latest valid runtime evidence:
+`RuntimeEvidence/S1.42L/20260903T151817Z/`
 
-S1.42J:
-- disables the exact `LethalMin.BaboonBirdPikminEnemy` adapter on spawned Baboon Hawks;
-- directly blocks its known declared `BitePikmin`;
-- blocks Baboon Hawk-owned common `GrabPikmin` as a final failsafe for all Pikmin;
-- adds exact runtime enemy name `Baboon hawk` to LethalMin's Pikmin `Attack Blacklist`;
-- retains Thumper/Crawler zero interaction and the accepted Puffer guard.
+Log SHA-256:
+`402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd`
 
-Build verification:
-- GitHub Actions success;
-- 0 warnings / 0 errors;
-- 331 archive members;
-- 330 readable snapshot files;
-- changed members only: LethalMin config + compatibility DLL + `export.r2x`;
-- no added members;
-- 188 packages total / 182 enabled / 6 disabled;
-- BCMER 1.71.0 remains disabled.
+Runtime verdict:
+**PARTIAL PASS - only Pikmin -> Baboon Hawk explicit attack/latch validation remains.**
 
-**Current next gate:** runtime-test S1.42J. Do not build S1.42K first.
+## Closed/PASS from the current isolated enemy stage
 
-Primary acceptance:
-- Baboon Hawks ignore Pikmin instead of chasing/biting/grabbing/holding them;
-- Pikmin do not attack/latch Baboon Hawks;
-- the exact adapter-disable marker appears;
-- direct Thumper/Crawler <-> Pikmin zero interaction is finally validated.
+- **Thumper/Crawler -> Pikmin:** broken GrabPikmin/leader/death-timer state is blocked.
+- **Pikmin -> Thumper/Crawler:** normal LethalMin attack/latch is restored and user-confirmed.
+- **Puffer -> Pikmin:** smoke/attack has no effect.
+- **Jetpack:** accepted at approximately 140 seconds; `MidAirExplosions = Off`; old Coroner Jetpack null flood absent.
+- **Baboon Hawk -> Pikmin:** exact LethalMin Baboon adapter is disabled; Hawk-side target/chase/bite/grab/hold behavior is blocked.
 
-After the isolated enemy stage passes:
-- remove/disable temporary EnemyIsolation;
-- restore the full normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
-- re-enable exact BCMER 1.71.0.
+Accepted cosmetic behavior:
+the Thumper may still visibly snap at Pikmin. Pikmin are not held and do not enter a broken state, so this should be ignored unless a future functional regression appears.
 
-Game: **Lethal Company V81**
+## Only remaining active runtime gate
+
+**Pikmin -> Baboon Hawk**
+
+Keep using S1.42L unchanged.
+
+Test:
+1. throw Pikmin onto a Baboon Hawk;
+2. confirm Pikmin latch/attack normally;
+3. confirm the Hawk still ignores Pikmin from its own AI side;
+4. confirm no `Leader is null when following` loop;
+5. upload the complete fresh log to `RuntimeInbox/Current/`.
+
+Do **not** build a successor first.
+
+Current router:
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42L`
+
+Current build controller:
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME`
+
+## Temporary diagnostic state
+
+EnemyIsolation:
+**enabled**
+
+BCMER:
+`SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`
+**disabled**
+
+Diagnostic allowlist:
+- indoor: Crawler/Thumper + Puffer
+- outdoor: Baboon Hawk
+- daytime: none
+- Pikmin-family entities retained
+
+After the last S1.42L direction passes:
+1. remove/disable EnemyIsolation;
+2. restore normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+3. re-enable exact BCMER 1.71.0;
+4. preserve all accepted asymmetric Pikmin interaction rules;
+5. document the resulting normal-enemy/BCMER state;
+6. only then consider the deferred repository optimization.
 
 ## Critical import requirement
 
-Profiles containing the project-local compatibility DLL must be imported in Gale with:
+Profiles containing the project-local compatibility DLL must be imported in Gale using:
 
 **Advanced options -> Import all files**
 
-Expected general marker:
+Expected plugin marker:
 
 `S1.39 Compatibility Fixes loaded.`
 
-## ChatGPT — read first
+## ChatGPT - read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/36_HANDOVER_S1.42J_TO_NEXT.md`
-3. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
-4. `Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
-5. `Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md`
+2. `Current/45_HANDOVER_S1.42L_TO_NEXT_FINAL.md`
+3. `Current/Projektstatus_S1.42L.json`
+4. `Current/43_S1.42L_RUNTIME_ANALYSIS_THUMPER_CLOSED.md`
+5. `Current/41_S1.42L_PIKMIN_COUNTERATTACK_RESTORE_BUILD.md`
 6. `Current/00_CURRENT_STATE.md`
 7. `Current/01_HANDOVER_CORE.md`
 8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-9. `Current/Projektstatus_S1.42J.json`
-10. `Current/VERIFIKATION_S1.42J.txt`
-11. `Current/SHA256SUMS_S1.42J.txt`
-12. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-13. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-14. `Current/02_TECHNICAL_BASELINE.md`
-15. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
-16. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-17. `Current/03_PROJECT_CHRONOLOGY.md`
-18. `ProfileSources/S1.42J/`
-19. `BuildSpecs/current.json`
-20. `RuntimeInbox/ACTIVE_BUILD.txt`
-21. `Current/NEXT_CHAT_START_PROMPT_S1.42J.txt`
+9. `Current/VERIFIKATION_S1.42L.txt`
+10. `Current/SHA256SUMS_S1.42L.txt`
+11. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+12. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+13. `Current/02_TECHNICAL_BASELINE.md`
+14. `Current/03_PROJECT_CHRONOLOGY.md`
+15. `BuildSpecs/current.json`
+16. `RuntimeInbox/ACTIVE_BUILD.txt`
+17. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
 
-S1.42H/S1.42I and earlier handovers remain historical/diagnostic evidence. Newer confirmed information always overrides older handover instructions.
+## Repository-first workflow
 
-Repository-maintenance note:
-`Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt` records the recommended later repository-architecture migration. It is intentionally deferred until the active critical runtime/build gate is evaluated and documented; it must not replace the immediate S1.42J runtime test.
-
-Then inspect `Profiles/`, `RuntimeEvidence/`, `Patches/`, `References/`, `Logs/`, and `Archive/` only as required by the task.
-
-## Recent technical progression
-
-### S1.42A — interior config-generation seed
-
-Profile:
-`Profiles/LC V1 S1.42A Interior Config Seed.r2z`
-
-SHA-256:
-`70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
-
-Result:
-- eight requested interior packages plus required LethalModDataLib 1.2.2 added;
-- 188 total / 183 enabled / 5 disabled packages;
-- runtime generated real configs and registered 52 dungeon flows total, 26 more than S1.41;
-- exact CullFactory IDs discovered: `junkrooms`, `shatteredrooms`;
-- Mausoleum generated on Offense and was much too foggy;
-- LethalModDataLib initialization NRE discovered.
-
-### S1.42B — LethalModDataLib guard
-
-Profile:
-`Profiles/LC V1 S1.42B LMDL NRE Guard.r2z`
-
-SHA-256:
-`8523754926e3f67c0ccef5aee976cbe72ab976f997876c59b51fedcfb293befe`
-
-Runtime confirmed:
-- offending null Chainloader entry: `MW.MagicWesleyInteriors`;
-- project-local guard skipped exactly that null instance;
-- `ModDataHandler initialised!`;
-- moddata load/save succeeded.
-
-**The S1.42A LethalModDataLib initialization NRE is resolved.**
-
-### S1.42C — Pikmin enemy guards
-
-Profile:
-`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
-
-Runtime evidence:
-`RuntimeEvidence/S1.42C/20260902T235238Z/`
-
-Result:
-- LMDL fix remains healthy;
-- Puffer guard registered, but no Puffer spawned -> not yet runtime-validated;
-- Crawler/Thumper spawned, but there was no deliberate interaction test -> total Thumper/Pikmin noninteraction still not fully validated;
-- a Baboon Hawk bit a Bulbmin and reproduced the same repeated `Leader is null when following` state.
-
-Important new conclusion:
-**the broken leader/follow state is a generic LethalMin enemy-grab/bite + Invincible-Pikmin interaction, not a Thumper-only issue.**
-
-## Binding user decisions
-
-### Interiors
-
-Every registered interior should have the same effective selection probability as every other interior **on every moon**, including interiors added in future.
-
-Project target:
-- common Weight 100 per interior/moon pairing where technically supported;
-- package defaults/theme rarity are not desired;
-- hard author blocks are compatibility questions, not desired balancing exceptions.
-
-### Mausoleum
-
-Reduce fog specifically inside `MelanieMausoleum`. Do not globally reduce fog in all interiors.
-
-### BCMER
-
-Pin exact:
-`SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`
-
-Do not silently upgrade to 2.0.0.
-
-Carry forward ownership guards:
-- `Experimental Dont Handle Power? = true`
-- `Experimental Dont Handle Spawn Chance? = true`
-- `Let Brutal handle properties outside of events? = false`
-- `Enable Randomizer? = false`
-
-BCMER rain-event routes stay disabled:
-- Raining
-- HeavyRain
-- AllWeather
-- Hurricane
-
-Natural vanilla Rainy remains allowed.
-
-New EventType target:
-- Insane 12.5%
-- VeryBad 12.5%
-- Bad 12.5%
-- Neutral 12.5%
-- Good 12.5%
-- VeryGood 12.5%
-- Rare 12.5%
-- Remove 12.5%
-
-Keep `Use custom weights? = false`.
-
-Use constant EventType scale:
-`12.5, 0, 12.5, 12.5`
-
-for all eight categories.
-
-### Pikmin-specific
-
-- Thumper/Crawler and Pikmin must not interact in either direction.
-- Baboon Hawks and Pikmin must not interact in either direction.
-- Puffer smoke/attack must not affect Pikmin.
-- Preserve intended interactions for other enemies; do not globally blacklist every enemy.
-
-### Functional Microwave
-
-Target:
-- `Functional Microwave | Allow Editing Config = true`
-- `Functional Microwave | Volume = 0.7`
-
-### Jetpack
-
-Historical juijui primary config evidence:
-- `JetpackBatteryUsage = 140`
-- source: `References/LegacyProfiles/juijui/Extracted/BepInEx/config/dev.alexanderdiaz.biggerbattery.cfg`
-
-Caveat: the final historical export no longer contains Bigger Battery and its DLL is absent, so 140 is the strongest intended/configured historical target rather than proof of final-export runtime activation.
-
-Current S1.42J retained target:
-- ButteRyBalance `Reduce Battery = false`;
-- project-local compatibility code targets the loaded Jetpack Item asset at 140 seconds;
-- `JetpackFixes MidAirExplosions = Off`;
-- sustained/high-speed normal boost use must not self-explode the Jetpack.
-
-### Current engineering priority
-
-First: **runtime-test S1.42J. Do not build S1.42K first.**
-
-Primary acceptance:
-- Main Menu/host succeeds;
-- routed-moon periodic freezes remain gone;
-- target enemies still populate and appear in `Enemies`;
-- Baboon Hawks completely ignore Pikmin instead of targeting/chasing/biting/grabbing/holding them;
-- Pikmin do not attack/latch Baboon Hawks;
-- the S1.42J Baboon adapter-disable marker appears;
-- direct Thumper/Crawler <-> Pikmin zero interaction is finally validated;
-- Puffer -> Pikmin is already accepted from S1.42H and needs only an optional spot-check.
-
-BCMER 1.71.0 is already disabled inside S1.42J. Do not manually alter package states or configs.
-
-After the isolated enemy stage passes:
-- remove/disable temporary EnemyIsolation;
-- restore the full normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
-- re-enable exact BCMER 1.71.0.
-
-## Build state
-
-`BuildSpecs/current.json` is disabled and idle:
-
-`IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME`
-
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42J`
-
-Do not create S1.42K before S1.42J runtime evidence is evaluated.
-
-## Repository-first automation
-
-GitHub is the canonical build and handover workspace.
-
-Binding policy:
-`Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-
-Use:
+Canonical build/runtime control:
 - `BuildSpecs/current.json`
 - `BuildSystem/profile_builder.py`
 - `.github/workflows/profile-build.yml`
-- `ProfileSources/<build_id>/`
+- `ProfileSources/`
 - `RuntimeInbox/Current/`
 - `RuntimeEvidence/`
+- `Patches/`
 
-Do not require a local repository clone or local PowerShell profile-build scripts while the required base exists in GitHub.
+Do not require a local repository clone or local PowerShell build while the required base artifacts and GitHub build infrastructure exist.
 
-## Persistent decisions
+## Critical persistent rules
 
-- Malfunctions disabled until explicit user request.
-- ProjectSCP-SCP999 disabled.
-- Observer disabled.
-- Don't Touch Me disabled.
-- AJB Keep Hangar Ship Door Closed disabled while local failsafe is active.
-- CodeRebirthLib must not return.
-- LethalModDataLib remains installed for DULL and must retain the confirmed null-instance guard.
+- Do not reintroduce the S1.42D broad/inherited LethalMin reflection/Harmony scan; it caused startup crash.
+- Do not use continuous Update-driven global EnemyAI scans for EnemyIsolation.
+- Do not upgrade BCMER 1.71.0 to 2.0.0 without explicit user decision.
+- Do not remove `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`.
+- Do not treat S1.42I or S1.42K as runtime evidence; both were built but never runtime-tested.
+- Do not restore/cite the intentionally deleted oversized S1.42G evidence path.
+- Do not let `CodeRebirthLib` return.
 - Unknown Enemy PowerLevels must never be guessed.
-- Leaf Boy remains on LethalMin Attack Blacklist.
-- S1.29D is diagnostic only and never a gameplay base.
-- Ogopogo disabled.
-- Vermin disabled.
+- Prefer one positive spawn owner per enemy.
+- Historical evidence, failed approaches, restore baselines and RuntimeEvidence remain preserved.
 
-## Priority rule
+## Deferred repository optimization
 
-Chronologically newer confirmed information overrides older assumptions. Runtime evidence overrides config/package assumptions. `Archive/` is historical reference material and must not override current machine-readable files unless explicitly referenced.
+Plan:
+`Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
 
-## Historical juijui reference profile
+Status:
+**DEFERRED_UNTIL_ACTIVE_GATE_COMPLETE**
 
-The original historical `juijui.r2z` profile is a primary project reference because the project was originally intended to reproduce its mod constellation/configuration as closely as reasonably possible on modern Lethal Company.
-
-Canonical reference path:
-`References/LegacyProfiles/juijui/juijui.r2z`
-
-Detailed handling:
-- `Current/18_JUIJUI_LEGACY_REFERENCE.md`
-- `References/LegacyProfiles/juijui/README.md`
-- `References/juijui_Referenzwerte.txt`
-
-juijui is a historical target/reference, **not** a current build base. Modern game-version, maintenance and compatibility constraints remain authoritative.
-
-The binary is committed and repository-first indexed. The historical Jetpack config evidence has been recovered as `JetpackBatteryUsage = 140`. Do not revert to the old unevidenced 50-second fallback.
-
-The highest active engineering priority is the S1.42J isolated runtime gate: validate Baboon Hawk <-> Pikmin and Thumper/Crawler <-> Pikmin zero interaction before restoring normal enemies and BCMER.
-
-
-### S1.42D / S1.42E — isolated enemy regression
-
-S1.42D introduced the focused enemy isolation and generic LethalMin recovery attempt but failed startup during an over-broad Harmony scan.
-
-S1.42E is the startup-safe hotfix:
-- compatibility plugin v1.3.1;
-- only declared `BitePikmin`, `GrabPikmin`, `GrabPikminWithTongue` on `*PikminEnemy` adapter types;
-- no RPC wrappers or generic PikminAI/PikminItem Harmony patching;
-- no inherited GrabbableObject.Start Jetpack patch;
-- temporary enemy isolation still enabled: indoor Crawler/Puffer, outdoor Baboon Hawk;
-- full normal enemy restore source remains `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`.
-
-See `Current/22_HANDOVER_S1.42E_TO_NEXT.md`.
+Do not begin structural migration until the remaining Pikmin -> Baboon Hawk gate has been evaluated and the resulting normal-enemy/BCMER state has been documented.
