@@ -4,9 +4,33 @@ This file is binding unless the user later changes the plan.
 
 ## Required sequence
 
-**S1.40B accepted -> S1.41 BCMER 1.71.0 accepted -> S1.42A Interior Config Seed -> runtime config generation -> collect full config + LogOutput -> analyze/tune -> S1.42 final interior build -> S1.42 test.**
+Historical planned sequence:
 
-Do not collapse these phases together. Isolation is intentional so regressions can be attributed.
+**S1.40B accepted -> S1.41 BCMER 1.71.0 accepted -> S1.42A Interior Config Seed -> runtime config generation -> analyze/tune -> final S1.42 acceptance.**
+
+The seed and two isolated regression stages have now happened. Do not collapse future phases together; isolation remains intentional so regressions can be attributed.
+
+## Current progress checkpoint — after S1.42C
+
+Completed:
+- S1.42A seed built and runtime-generated real configs/IDs.
+- 52 total dungeon flows discovered.
+- exact CullFactory IDs: `junkrooms`, `shatteredrooms`.
+- S1.42A LethalModDataLib NRE discovered.
+- S1.42B null-safe LMDL guard runtime-confirmed.
+- S1.42C Thumper/Puffer Pikmin guards built; LMDL fix remained healthy.
+- S1.42C revealed a broader LethalMin enemy grab/bite + Invincible Pikmin leader-state bug.
+
+Still pending before final S1.42:
+- generic grab/bite + invincible follower-state repair;
+- targeted Thumper/Puffer validation;
+- equal interior probability tuning;
+- CullFactory exceptions;
+- Mausoleum fog reduction;
+- BCMER fixed 12.5% x8 EventType distribution;
+- final runtime acceptance.
+
+`BuildSpecs/S1.42D_PLAN.md` is draft-only and not authorized to build automatically.
 
 ---
 
@@ -130,7 +154,7 @@ Candidate:
 SHA-256:
 `70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
 
-Accepted gameplay baseline remains S1.41 until runtime evidence is evaluated. The immediate next action is to run this S1.42A candidate to generate the real config sections/IDs.
+Accepted gameplay baseline remains S1.41. S1.42A runtime generation has already completed; do not rerun it by default.
 
 Purpose:
 - allow LLL/JLL/DawnLib/content mods to generate their real config sections;
@@ -171,21 +195,14 @@ Known current stack includes:
 
 Still audit each package's current manifest at build time. Do not assume old researched metadata is unchanged.
 
-## Required S1.42A runtime generation procedure
+## S1.42A runtime generation result
 
-After importing S1.42A via Gale with **Advanced options -> Import all files**:
+Completed.
 
-1. reach Main Menu;
-2. host/load a save;
-3. land on at least one normal moon;
-4. allow a dungeon to actually generate;
-5. exit game.
+Evidence:
+`RuntimeEvidence/S1.42A/20260902T224318Z/`
 
-Then user provides from that exact seeded profile:
-- complete `BepInEx/config/` directory, preferably ZIP;
-- full `LogOutput.log`.
-
-Only after this should exact config tuning happen.
+The seed produced the full generated config set and runtime registration data needed for tuning.
 
 ---
 
@@ -278,16 +295,19 @@ Prior research showed dependency on:
 LethalModDataLib is **not** permanently banned. Historical chronology only says the old NRE disappeared after a ShipWindows update and LethalModDataLib removal; causality was never proven.
 
 For DULL:
-- reintroduce LethalModDataLib only in S1.42A;
-- treat it as a regression surface for save/mod-data/netcode;
-- test it in isolation as part of that staged build.
+- LethalModDataLib 1.2.2 was reintroduced in S1.42A;
+- its upstream null-instance NRE was fixed by the project compatibility plugin in S1.42B;
+- S1.42B and S1.42C runtime-confirmed `ModDataHandler initialised!` plus moddata load/save;
+- keep the guard while LethalModDataLib 1.2.2 remains present.
 
 ## CullFactory
 
 Before S1.42 final:
-- inspect generated identifiers for Junkrooms and Shatteredrooms;
-- add correct disable-culling exceptions using exact syntax;
-- do not guess the IDs.
+- exact runtime IDs are now confirmed:
+  - Junkrooms = `junkrooms`
+  - Shatteredrooms = `shatteredrooms`
+- add these exact disable-culling exceptions;
+- do not guess alternate IDs.
 
 ## Duplicate registration rule
 
@@ -307,3 +327,33 @@ S1.42 should only be accepted after runtime checks for:
 - no LethalModDataLib save/netcode regression;
 - no Boom_Scraps dependency failure;
 - no new severe routing/elevator/navmesh regression.
+
+
+---
+
+# Additional binding S1.42 tuning decisions
+
+## BCMER fixed global EventType distribution
+
+Use equal base probability for all eight BCMER EventTypes:
+12.5% each.
+
+Keep:
+`Use custom weights? = false`
+
+Set every EventType scale to:
+`12.5, 0, 12.5, 12.5`
+
+This is intended to remove moon/day/difficulty drift from the EventType base distribution.
+
+## Mausoleum fog
+
+`MelanieMausoleum` was reported much too foggy in S1.42A.
+
+Reduce fog only for this interior. Do not globally reduce fog.
+
+## Generic Pikmin state blocker
+
+Before final S1.42 acceptance, resolve or safely contain the generic LethalMin enemy grab/bite + Invincible Pikmin leader-state bug confirmed with Baboon Hawk in S1.42C.
+
+Do not solve it by blacklisting all enemies.
