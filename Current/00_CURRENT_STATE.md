@@ -3,6 +3,13 @@
 **Date:** 2026-09-03  
 **Game:** Lethal Company V81
 
+## Canonical detailed handover
+
+`Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md`
+
+Supporting runtime analysis:
+`Current/47_S1.42L_BABOON_ATTACK_PASS_DEATH_REGRESSION_ANALYSIS.md`
+
 ## Canonical acceptance state
 
 ### Last fully accepted gameplay baseline
