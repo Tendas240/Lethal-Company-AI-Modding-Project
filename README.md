@@ -95,6 +95,16 @@ Import/run:
 
 `Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z`
 
+Because the profile contains the project-local compatibility DLL, import it in Gale using:
+
+**Advanced options -> Import all files**
+
+The first S1.42U runtime log must contain the plugin load marker:
+
+`Loading [S1.39 Compatibility Fixes 1.3.14]`
+
+If that marker is absent, the compatibility behavior has not been validly runtime-tested even if the game starts.
+
 Perform a normal gameplay run with BCMER active, then upload the complete `LogOutput.log` to:
 
 `RuntimeInbox/Current/`
