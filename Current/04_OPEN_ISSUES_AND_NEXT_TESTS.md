@@ -196,3 +196,32 @@ Validate deliberately:
 - `ModDataHandler initialised!` remains present.
 
 Return full `LogOutput.log`.
+
+
+## General Pikmin grab/bite state issue
+
+S1.42C proves the repeated `Leader is null when following` spam is not specific to Thumper.
+
+A Baboon Hawk explicitly bit a Bulbmin, removed its leader, started the LethalMin grab-death timer, and Invincible Pikmin prevented final death. The Pikmin then emitted repeated leader-null errors.
+
+Preferred future fix:
+- repair/reset the generic grabbed/follow state for invincible Pikmin;
+- do not solve this by blindly blacklisting every enemy.
+
+Specific user-requested immunity remains:
+- Thumper ↔ Pikmin: no interaction either direction;
+- Puffer attack/smoke → Pikmin: no effect.
+
+## Next-build gameplay tuning requests
+
+### Jetpack capacity
+- user wants old juijui-profile capacity/duration;
+- current ButteryBalance has `Reduce Battery = true`, explicitly 40s instead of vanilla 50s;
+- exact old juijui value is not yet preserved in the text reference set;
+- do not guess; fallback candidate if no stronger evidence appears is `Reduce Battery = false` (50s).
+
+### Functional Microwave volume
+- current CodeRebirth generated config: `Functional Microwave | Volume = 1`;
+- user wants it a little quieter;
+- planned target: `0.7`;
+- also set `Functional Microwave | Allow Editing Config = true` so the value survives CodeRebirth's edit gate/runtime regeneration.
