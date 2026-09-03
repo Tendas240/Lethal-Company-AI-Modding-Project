@@ -234,3 +234,28 @@ Detailed test plan:
 `Current/19_S1.42D_ISOLATED_ENEMY_TEST.md`
 
 After the isolated run, remove the diagnostic isolation layer and restore the complete S1.42C enemy configuration exactly.
+
+
+## Latest built candidate — S1.42D
+
+**S1.42D** has been built successfully but is not runtime-accepted yet.
+
+Profile:
+`Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z`
+
+SHA-256:
+`b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c`
+
+Purpose:
+focused isolated regression validation for:
+- generic LethalMin grab/bite + Invincible Pikmin state repair;
+- Thumper/Puffer guards;
+- temporary Crawler/Puffer/Baboon-Hawk-only enemy isolation;
+- Jetpack 140-second target;
+- Jetpack mid-air/high-speed self-explosion disabled;
+- Functional Microwave volume 0.7.
+
+S1.42C remains the latest runtime-tested technical candidate until S1.42D runtime evidence is committed.
+
+Test plan:
+`Current/20_S1.42D_BUILD_AND_TEST.md`
