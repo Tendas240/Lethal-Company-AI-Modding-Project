@@ -1,3 +1,5 @@
+> **S1.42S ACTIVE OVERRIDE — 2026-09-03:** S1.42R failed runtime. Current candidate is **S1.42S — Baboon Adapter Lifecycle Restore**, SHA-256 `addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee`. Corrected root cause: our compatibility patch disabled the full `LethalMin.BaboonBirdPikminEnemy`, suppressing inherited `PikminEnemy.Update() -> RemoveAndDisableTriggers() -> RemoveAllPikmin(3)`. S1.42S keeps the adapter enabled and blocks only `OnColideWithPikmin`/`BitePikmin` plus the existing GrabPikmin failsafe. See `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`, `Current/67_S1.42S_BABOON_ADAPTER_LIFECYCLE_RESTORE_BUILD.md`, and `Current/Projektstatus_S1.42S.json`. Runtime gate: import with Gale "Advanced options -> Import all files" and repeat the 3-Pikmin Baboon-Hawk kill test. EnemyIsolation remains enabled; BCMER 1.71.0 remains disabled.
+
 # 00 - Current State
 
 **Date:** 2026-09-03  
