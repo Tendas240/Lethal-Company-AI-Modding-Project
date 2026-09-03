@@ -1,14 +1,13 @@
 {
-  "build_id": "S1.42J",
-  "profile_name": "LC V1 S1.42J Baboon Hawk Zero Interaction",
-  "base_profile": "Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z",
-  "base_sha256": "c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97",
-  "output_profile": "Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z",
-  "output_sha256": "736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7",
+  "build_id": "S1.42K",
+  "profile_name": "LC V1 S1.42K Thumper Pikmin Attack Restore",
+  "base_profile": "Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z",
+  "base_sha256": "736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7",
+  "output_profile": "Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z",
+  "output_sha256": "bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2",
   "zip_members": 331,
   "changed_existing_members": [
     "BepInEx/config/NoteBoxz.LethalMin.cfg",
-    "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
     "export.r2x"
   ],
   "added_members": [],
@@ -21,7 +20,7 @@
   ],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42J",
+  "snapshot_dir": "ProfileSources/S1.42K",
   "snapshot": {
     "entries": 331,
     "text_entries": 330
