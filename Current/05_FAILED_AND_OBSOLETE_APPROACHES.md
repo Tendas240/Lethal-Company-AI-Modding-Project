@@ -35,6 +35,8 @@ Do not reintroduce these without new technical evidence or explicit user instruc
 | S1.42D broad LethalMin reflection/Harmony scan | **Failed startup.** It patched inherited/generated methods through derived types, produced HarmonyX warnings and the process terminated during the scan. Never restore this broad scan; S1.42E uses DeclaredOnly *PikminEnemy interaction methods. |
 | Patching `JetpackItem.Start` when it resolves inherited `GrabbableObject.Start` | Avoid. S1.42D showed the target is inherited and HarmonyX warned. S1.42E uses narrow loaded Jetpack Item asset targeting instead. |
 | S1.42E EnemyIsolation using `Activator.CreateInstance(entryType)` for `SpawnableEnemyWithRarity` | **Failed diagnostic implementation.** V81 has no usable parameterless constructor. On Gordion this retried six times per second and matched visible periodic freezes. S1.42F skips Gordion/Company and uses the EnemyType/int constructor with clone fallback. |
+| Continuous `FindObjectsOfType<EnemyAI>()` from diagnostic EnemyIsolation | **Failed performance approach.** S1.42F proved Gordion smooth but routed moons still stalled when the once-per-second global EnemyAI scan became active. S1.42G removes the continuous scan and applies pools only on level changes. |
+| Coroner `JetpackItem.Update` death detector on an unheld Jetpack | **Failed upstream interaction.** Coroner queries `playerHeldBy` every frame even when null, producing `PlayerController was null` + `Index not assigned!` at frame-rate cadence. S1.42G keeps Coroner but unpatches only this Jetpack Update detector. |
 
 ## Important correction — LethalModDataLib
 
