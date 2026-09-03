@@ -1,12 +1,13 @@
 {
-  "build_id": "S1.42P",
-  "profile_name": "LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery",
-  "base_profile": "Profiles/LC V1 S1.42O Baboon Hawk Native Task Finalization.r2z",
-  "base_sha256": "04d7e0df7f7a3b51d75832e9052c3e217ec07f91526c767323e1b5b0a3078d4d",
-  "output_profile": "Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z",
-  "output_sha256": "11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5",
+  "build_id": "S1.42Q",
+  "profile_name": "LC V1 S1.42Q LethalMin Native Minimal Rollback",
+  "base_profile": "Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z",
+  "base_sha256": "11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5",
+  "output_profile": "Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z",
+  "output_sha256": "50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1",
   "zip_members": 331,
   "changed_existing_members": [
+    "BepInEx/config/NoteBoxz.LethalMin.cfg",
     "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
     "export.r2x"
   ],
@@ -20,7 +21,7 @@
   ],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42P",
+  "snapshot_dir": "ProfileSources/S1.42Q",
   "snapshot": {
     "entries": 331,
     "text_entries": 330
