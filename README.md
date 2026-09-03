@@ -23,60 +23,78 @@ Latest valid runtime evidence:
 Log SHA-256:
 `d656095fb874a415a1bd2377c0411339d3d6eb002dce4ec3f6216e879294127f`
 
-Tested candidate:
-**S1.42P - Baboon Hawk Exact FinishTask Recovery**
+S1.42P confirmed the user's exact **20 -> 18** follower loss after the Baboon Hawk fight.
 
-`Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z`
+## Current built candidate
+
+**S1.42Q - LethalMin Native Minimal Rollback**
+
+`Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z`
 
 SHA-256:
-`11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5`
+`50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1`
+
+Git blob SHA:
+`9e1beec739c193c95e936a56fefb060a84577559`
 
 Compatibility plugin:
-**v1.3.11**
+**v1.3.12**
 
-## S1.42P finding
+Embedded DLL SHA-256:
+`f6a4e7b060af6a779da1c92236b2ce63d1bd5d890a21c9492517e568a9aaac45`
 
-The user observed a following-count drop from **20 to 18** after the Baboon Hawk fight.
+Build verification:
+- GitHub Actions Build #52: **SUCCESS**
+- generated commit: `bd6e1ca023921e5fecb14e301e9c24cf73cb4aea`
+- idle-guard Build #53: **SUCCESS**
+- 331 archive members
+- 330 readable snapshot files
+- no added profile members
 
-The runtime log confirms exactly the same state:
-- 20 Yellow Pikmin leader-assigned before the fight;
-- 18 recovered before teardown;
-- missing: `Yellow Pikmin_hcRGph` and `Yellow Pikmin_ruCpzY`.
+Changed existing profile members only:
+1. `BepInEx/config/NoteBoxz.LethalMin.cfg`
+2. `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`
+3. `export.r2x`
 
-`PikminAI.FinishTask()` itself is runtime-proven correct and executed successfully.
+## S1.42Q architecture
 
-S1.42P nevertheless fails for two reasons:
-1. the 4.0 m proximity selector missed real attacker `ruCpzY`, which continued hitting the dead Hawk for ~84.565 s;
-2. FinishTask-finalized Pikmin immediately rediscovered the already-dead Hawk and could start a new `AttackEnemy` task.
+Normal LethalMin ownership has been restored as far as possible.
 
-Corpse behavior remains PASS: Pikmin carried the Dead Baboon Hawk to Onion, and living Hawks ignored the corpse.
+Native LethalMin owns:
+- Pikmin -> living enemy targeting/latch/attack;
+- enemy-death task completion;
+- Pikmin -> dead enemy body carrying;
+- Onion delivery.
 
-Full analysis:
-`Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md`
+Project-local code now keeps only proven narrow Enemy -> Pikmin protection and unrelated compatibility shims.
 
-## Next technical stage
+Removed:
+- `BaboonHawkDeathCleanup`;
+- project-local Hawk-death `PikminAI.FinishTask()`;
+- 4.0 m death-release scan;
+- delayed post-grab recovery;
+- leader/follow/grab state snapshots and reflection restoration.
 
-**S1.42Q = minimal LethalMin-native rollback.**
+Kept:
+- prevention-only exact `PikminAI.GrabPikmin(Transform,float,int)` prefix for proven Crawler/Thumper and Baboon Hawk Enemy -> Pikmin gaps;
+- one-way Baboon Hawk -> Pikmin adapter/bite protection;
+- Puffer effect guard;
+- CodeRebirth utility-kill Pikmin protection;
+- Dead Baboon Hawk corpse `CanGrabScrap` guard;
+- unrelated accepted compatibility fixes.
 
-Canonical plan:
-`Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md`
+Exact LethalMin config delta from S1.42P:
+- `Thumper Bite Limit = 0` -> `3`
 
-Target:
-- Pikmin -> living enemy attack/latch/kill = native LethalMin;
-- enemy-death task lifecycle = native LethalMin;
-- Pikmin -> dead enemy body carry/Onion = native LethalMin;
-- project-local code only blocks proven unwanted Enemy -> Pikmin interactions or unrelated compatibility gaps.
+That is the **only** LethalMin config change and restores the accepted S1.41 value.
 
-S1.42Q should remove the custom Baboon-Hawk death cleanup entirely rather than add another custom dead-Hawk target filter.
+Expected S1.42Q startup marker:
 
-Remove:
-- Hawk-death `FinishTask()` calls;
-- 4.0 m SpawnedEnemies selector;
-- reflection-heavy post-grab state restoration.
+`[LethalMinNativeOwnership]`
 
-Prefer LethalMin config switches wherever they are proven effective.
+Forbidden old runtime marker:
 
-Do not restore normal enemies or BCMER yet.
+`[BaboonHawkDeathCleanup]`
 
 ## Temporary diagnostic state
 
@@ -90,51 +108,62 @@ BCMER exact:
 Restore baseline:
 `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
+Do not restore normal enemies or BCMER before S1.42Q passes.
+
 ## Runtime/build control
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42P`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Q`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_MINIMAL_ROLLBACK_BUILD`
-
-The runtime pointer stays on S1.42P until a successor is actually built.
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42Q_BUILD_AWAITING_RUNTIME`
 
 Profiles containing the project-local DLL must be imported with Gale:
 
 **Advanced options -> Import all files**
 
+## Exact next step
+
+Do **not** build S1.42R first.
+
+Import S1.42Q and perform the focused Crawler/Thumper + Baboon Hawk + Puffer runtime test.
+
+Record follower counts before and after the fights. Verify that native LethalMin releases Pikmin correctly after enemy death, enemy -> Pikmin protection remains intact, and Dead Baboon Hawk carrying to Onion still works.
+
+Then commit the complete fresh `LogOutput.log` to:
+
+`RuntimeInbox/Current/`
+
 ## ChatGPT - read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
 2. `Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md`
-3. `Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md`
-4. `Current/Projektstatus_S1.42P.json`
+3. `Current/60_S1.42Q_MINIMAL_NATIVE_ROLLBACK_BUILD.md`
+4. `Current/Projektstatus_S1.42Q.json`
 5. `Current/00_CURRENT_STATE.md`
 6. `Current/01_HANDOVER_CORE.md`
 7. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-8. `Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md`
-9. `Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md`
-10. `Current/VERIFIKATION_S1.42P.txt`
-11. `Current/SHA256SUMS_S1.42P.txt`
-12. `Current/Aktive_Modliste_S1.42P.txt`
+8. `Current/VERIFIKATION_S1.42Q.txt`
+9. `Current/SHA256SUMS_S1.42Q.txt`
+10. `Current/Aktive_Modliste_S1.42Q.txt`
+11. `Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md`
+12. `BuildSpecs/S1.42Q_PLAN.md`
 13. `BuildSpecs/current.json`
 14. `RuntimeInbox/ACTIVE_BUILD.txt`
 15. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 16. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-17. `Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md`
-18. `Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md`
-19. `Current/02_TECHNICAL_BASELINE.md`
-20. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+17. `Current/02_TECHNICAL_BASELINE.md`
+18. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
 
-The S1.42P final handover/audit files 56/57 describe the state **before** S1.42P was runtime-tested. Newer runtime evidence and Current files supersede their "awaiting runtime" wording.
+Historical S1.42P handover/build files remain evidence but are superseded for current-state decisions by the S1.42Q files above.
 
 ## Critical persistent rules
 
 - Do not reintroduce broad/inherited LethalMin reflection/Harmony scanning.
-- Do not use continuous Update-driven global EnemyAI scans for this death cleanup.
-- Do not own normal LethalMin Pikmin->enemy death/task lifecycle in the compatibility plugin.
-- Do not restore direct low-level `RemoveCurrentTask()` or custom Hawk-death `FinishTask()` finalization.
+- Do not use continuous Update-driven global EnemyAI scans.
+- Do not own normal LethalMin Pikmin -> enemy death/task lifecycle in the compatibility plugin.
+- Do not restore direct low-level `RemoveCurrentTask()` or project-local Hawk-death `FinishTask()`.
 - Do not add custom Pikmin corpse-carry/Onion logic.
-- Prefer blocking unwanted Enemy->Pikmin interactions before they mutate Pikmin state.
+- Prefer native LethalMin config where it is proven effective.
+- Prefer blocking unwanted Enemy -> Pikmin behavior before it mutates Pikmin state.
 - Do not silently upgrade BCMER 1.71.0 to 2.0.0.
 - Do not remove `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`.
 - Do not let `CodeRebirthLib` return.
@@ -143,9 +172,7 @@ The S1.42P final handover/audit files 56/57 describe the state **before** S1.42P
 
 ## Deferred maintenance
 
-General cleanup remains deferred while the enemy-regression chain is open:
-- older "current" wording in `Current/02_TECHNICAL_BASELINE.md`;
-- stale S1.42J-era comments in untouched historical parts of `Patches/S139CompatibilityFixes/Plugin.cs`.
+General cleanup remains deferred while the enemy-regression gate is open.
 
 Structural optimization:
 `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
