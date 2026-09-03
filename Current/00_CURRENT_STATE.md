@@ -8,6 +8,18 @@
 Machine-readable status:
 `Current/Projektstatus_S1.42P.json`
 
+Primary final handover:
+`Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md`
+
+Final repository audit:
+`Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md`
+
+Verification:
+`Current/VERIFIKATION_S1.42P.txt`
+
+Current mod list:
+`Current/Aktive_Modliste_S1.42P.txt`
+
 Latest runtime analysis:
 `Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md`
 
@@ -145,3 +157,10 @@ Then:
 ## Deferred maintenance
 
 Do not perform general cleanup during this runtime gate.
+
+## Handover integrity
+
+- No repository files were deleted during the final S1.42P handover.
+- Runtime evidence S1.42L through S1.42O remains preserved.
+- S1.42P has no runtime evidence yet; this is expected.
+- The next chat must not build a successor before the focused S1.42P test unless S1.42P cannot start.
