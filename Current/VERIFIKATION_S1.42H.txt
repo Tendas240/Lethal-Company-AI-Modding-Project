@@ -1,0 +1,60 @@
+VERIFIKATION — S1.42H
+
+Profil:
+Profiles/LC V1 S1.42H Thumper Grab Guard.r2z
+
+SHA-256:
+5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58
+
+Basis:
+Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z
+
+Basis SHA-256:
+09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a
+
+GitHub Actions:
+- erfolgreich
+- 0 Warning(s)
+- 0 Error(s)
+- 331 Archivmitglieder
+- 330 lesbare Snapshot-Dateien
+- keine neuen Archivmitglieder
+- geänderte bestehende Mitglieder nur:
+  - BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+  - export.r2x
+
+Compatibility Plugin:
+- Version 1.3.5
+- DLL SHA-256 d67f8f4bc2012f5b74086eb268fcb191f6990c93041617e9ef35c635ea33f186
+
+Temporärer Mod-State:
+- SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0: disabled
+- sonst keine Paket-State-Änderung
+
+Erwarteter Manifest-Stand:
+- 188 gesamt
+- 182 enabled
+- 6 disabled
+
+Neue Runtime-Logik:
+- exact one-time Harmony hook auf LethalMin.PikminAI.GrabPikmin(Transform,float,int)
+- kein broad inherited/derived PikminAI scan
+- Crawler/Thumper -> Pikmin Grab wird vor Leader-Removal/Death-Timer blockiert
+- Crawler bleibt in LethalMin Attack Blacklist für Pikmin -> Thumper
+- non-Thumper GrabPikmin erhält generischen Invincible-Pikmin State Repair
+- late-lifecycle EnemyIsolation
+- kein kontinuierlicher globaler EnemyAI Scan
+- throttled DoorAudit / BCMER DoorFailure compatibility recognition
+
+Unverändert:
+- Functional Microwave Volume = 0.7
+- Functional Microwave Rarity NICHT in S1.42H geändert
+- ButteRyBalance Reduce Battery = false
+- Jetpack target = 140 Sekunden
+- JetpackFixes MidAirExplosions = Off
+
+Runtime:
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42H
+
+Build controller:
+BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME
