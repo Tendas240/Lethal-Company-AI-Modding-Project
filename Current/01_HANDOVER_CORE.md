@@ -1,3 +1,5 @@
+> **S1.42S ACTIVE OVERRIDE:** S1.42R is a runtime FAIL. The current built candidate is `Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z`, SHA-256 `addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee`. The project-side Baboon-Hawk adapter disable was the root cause; do not disable `BaboonBirdPikminEnemy`. See Current/66 and Current/67. Next action is the focused 3-Pikmin Hawk kill runtime test. EnemyIsolation stays enabled and BCMER 1.71.0 stays disabled.
+
 # 01 - Handover Core
 
 ## Current identity
