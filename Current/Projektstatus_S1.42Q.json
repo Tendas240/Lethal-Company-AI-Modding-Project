@@ -1,0 +1,134 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "runtime_accepted"
+  },
+  "latest_valid_runtime_evidence": {
+    "build": "S1.42P",
+    "path": "RuntimeEvidence/S1.42P/20260903T181706Z/",
+    "log": "RuntimeEvidence/S1.42P/20260903T181706Z/raw/LogOutput.log",
+    "log_sha256": "d656095fb874a415a1bd2377c0411339d3d6eb002dce4ec3f6216e879294127f",
+    "verdict": "PARTIAL_FAIL_20_TO_18",
+    "missing_pikmin": [
+      "Yellow Pikmin_hcRGph",
+      "Yellow Pikmin_ruCpzY"
+    ]
+  },
+  "current_candidate": {
+    "build": "S1.42Q",
+    "name": "LethalMin Native Minimal Rollback",
+    "profile": "Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z",
+    "sha256": "50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1",
+    "git_blob_sha": "9e1beec739c193c95e936a56fefb060a84577559",
+    "size_bytes": 532408,
+    "status": "built_awaiting_runtime_validation",
+    "base_profile": "Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z",
+    "base_sha256": "11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5",
+    "compatibility_plugin": {
+      "version": "1.3.12",
+      "embedded_dll_sha256": "f6a4e7b060af6a779da1c92236b2ce63d1bd5d890a21c9492517e568a9aaac45"
+    },
+    "architecture": {
+      "pikmin_to_enemy_attack": "native_lethalmin",
+      "enemy_death_task_completion": "native_lethalmin",
+      "pikmin_to_enemy_body_carry": "native_lethalmin",
+      "onion_delivery": "native_lethalmin",
+      "enemy_to_pikmin": "blocked_by_native_config_plus_minimal_proven_shims"
+    },
+    "removed_custom_logic": [
+      "BaboonHawkDeathCleanup",
+      "BaboonBirdAI.KillEnemy death-task hook",
+      "project-local PikminAI.FinishTask",
+      "4.0m Hawk death scan",
+      "delayed post-grab repair",
+      "leader/follow/grab state reflection restoration"
+    ],
+    "kept_minimal_shims": [
+      "prevention-only PikminAI.GrabPikmin prefix for Crawler/Thumper and Baboon Hawk",
+      "one-way Baboon Hawk -> Pikmin adapter/bite protection",
+      "Dead Baboon Hawk corpse CanGrabScrap guard",
+      "Puffer smoke Pikmin-effect guard",
+      "CodeRebirth utility-kill Pikmin guard"
+    ],
+    "lethalmin_config_delta_from_s142p": {
+      "count": 1,
+      "change": "Enemy Behavior / Thumper Bite Limit: 0 -> 3"
+    },
+    "build_verification": {
+      "workflow_run_number": 52,
+      "workflow_run_id": 33794943826,
+      "conclusion": "success",
+      "generated_commit": "bd6e1ca023921e5fecb14e301e9c24cf73cb4aea",
+      "zip_members": 331,
+      "readable_snapshot_files": 330,
+      "changed_existing_members": [
+        "BepInEx/config/NoteBoxz.LethalMin.cfg",
+        "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+        "export.r2x"
+      ],
+      "added_members": []
+    }
+  },
+  "package_state": {
+    "source": "ProfileSources/S1.42Q/export.r2x",
+    "total": 188,
+    "enabled": 182,
+    "disabled": 6,
+    "disabled_packages": [
+      "AJB-Keep_hangar_ship_door_closed 1.0.0",
+      "zealsprince-Malfunctions 1.10.3",
+      "Reiko88-Observer 2.0.1",
+      "ProjectSCP-SCP999 2.4.0",
+      "Kittenji-Dont_Touch_Me 1.2.8",
+      "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0"
+    ]
+  },
+  "temporary_isolated_test_state": {
+    "enemy_isolation_enabled": true,
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
+    "bcmer_enabled": false,
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+  },
+  "runtime_route": {
+    "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+    "value": "S1.42Q"
+  },
+  "build_controller": {
+    "path": "BuildSpecs/current.json",
+    "enabled": false,
+    "build_id": "IDLE_AFTER_S1.42Q_BUILD_AWAITING_RUNTIME",
+    "base_profile": "Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z",
+    "base_sha256": "50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1"
+  },
+  "expected_runtime_markers": {
+    "required": [
+      "[LethalMinNativeOwnership]",
+      "[LethalMinEnemyGrabGuard]"
+    ],
+    "forbidden": [
+      "[BaboonHawkDeathCleanup]"
+    ]
+  },
+  "next_action": {
+    "type": "focused_runtime_test",
+    "instruction": "Import S1.42Q via Gale Advanced options -> Import all files. Test native Pikmin attack/death/carry on Crawler/Thumper and Baboon Hawk, verify Enemy->Pikmin prevention and Puffer protection, verify exact following-count recovery, then commit full LogOutput.log to RuntimeInbox/Current/.",
+    "do_not_restore_before_pass": [
+      "EnemyIsolation",
+      "normal enemy baseline",
+      "BCMER 1.71.0"
+    ]
+  },
+  "current_docs": {
+    "design": "Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md",
+    "build": "Current/60_S1.42Q_MINIMAL_NATIVE_ROLLBACK_BUILD.md",
+    "verification": "Current/VERIFIKATION_S1.42Q.txt",
+    "hashes": "Current/SHA256SUMS_S1.42Q.txt",
+    "mod_list": "Current/Aktive_Modliste_S1.42Q.txt",
+    "previous_runtime_analysis": "Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md"
+  }
+}
