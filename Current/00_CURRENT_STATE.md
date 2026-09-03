@@ -3,7 +3,92 @@
 **Date:** 2026-09-03  
 **Game:** Lethal Company V81
 
-## Current candidate
+## Canonical current pointers
+
+Machine-readable status:
+`Current/Projektstatus_S1.42R.json`
+
+Exact upstream decompile:
+`Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
+
+S1.42Q root-cause analysis:
+`Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
+
+S1.42R build plan:
+`BuildSpecs/S1.42R_PLAN.md`
+
+Verification:
+`Current/VERIFIKATION_S1.42R.txt`
+
+Hashes:
+`Current/SHA256SUMS_S1.42R.txt`
+
+Current mod list:
+`Current/Aktive_Modliste_S1.42R.txt`
+
+## Last fully accepted gameplay baseline
+
+**S1.41 - BCMER Reactivation**
+
+Profile:
+`Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
+
+SHA-256:
+`d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
+
+## Latest runtime evidence
+
+**S1.42Q - FAIL**
+
+Evidence:
+`RuntimeEvidence/S1.42Q/20260903T195158Z/`
+
+Log SHA-256:
+`e8949f87c0df2e3f5a8e7b985bf698aab9de68bba08ae45e3fe5b89e89f27aa5`
+
+The user's observation is confirmed exactly.
+
+First Baboon Hawk:
+- three Yellow Pikmin attacked it:
+  - `Yellow Pikmin_ruCpzY`
+  - `Yellow Pikmin_PerDu`
+  - `Yellow Pikmin_hcRGph`
+- `hcRGph` reached native `Task finished`;
+- `ruCpzY` and `PerDu` never reached `Task finished`;
+- those two remained on the stale attack task and kept hitting the already-dead first Hawk;
+- these are the two effectively "missing" Pikmin.
+
+Second Hawk:
+- the correctly transitioned attacker completed cleanly;
+- the two stale Pikmin from the first Hawk were still stuck on the first dead target.
+
+## Exact upstream root cause
+
+Exact package:
+`NotezyTeam-LethalMinNightly 1.1.108`
+
+Exact analyzed DLL SHA-256:
+`9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df`
+
+Decompiled:
+`LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate()`
+
+The upstream method does:
+
+1. while latched and attacking, keep/restart attack;
+2. then:
+   `if (CurrentIntention != Attack || IsPikminOnEnemy) return;`
+3. only after that early return:
+   - null-target handling
+   - pathing
+   - `enemy.enemyScript.isEnemyDead`
+   - `FinishTaskServerRpc()`
+
+Therefore **a still-latched co-attacker can never reach LethalMin's own dead-target completion branch**.
+
+This explains every prior runtime symptom without a radius or Hawk-specific theory.
+
+## Current built candidate
 
 **S1.42R - LethalMin Latched Dead Target Completion**
 
@@ -13,83 +98,73 @@ Profile:
 SHA-256:
 `009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101`
 
+Git blob SHA:
+`61e290182a0f056a20d81f31d340b27eb18f4be4`
+
 Compatibility plugin:
 **v1.3.13**
 
-DLL SHA-256:
+Embedded DLL SHA-256:
 `0d39a8895a1324457c2ac135fa2ae129e58ba8155ce6bde1cdb59d340be420ff`
-
-Status:
-**built and repository-verified; awaiting runtime**
 
 Build:
 - GitHub Actions #54: SUCCESS
 - generated commit `80fc7bc37476612320925083f062bda2b841cf40`
+- idle guard #55: SUCCESS
 - 331 archive members
 - 330 readable snapshot files
-- Q -> R changed only compatibility DLL and export profile name
-- no config delta
+- no added members
 
-## Latest runtime evidence
+Exact S1.42Q -> S1.42R profile delta:
+1. compatibility DLL
+2. `export.r2x`
 
-**S1.42Q - FAIL with exact root cause identified**
+**No config changes. No mod changes.**
 
-Evidence:
-`RuntimeEvidence/S1.42Q/20260903T195158Z/`
+## S1.42R exact patch
 
-Log SHA-256:
-`e8949f87c0df2e3f5a8e7b985bf698aab9de68bba08ae45e3fe5b89e89f27aa5`
+Patch only:
 
-Exact failed co-attackers:
-- Yellow Pikmin_ruCpzY
-- Yellow Pikmin_PerDu
-
-Successful control:
-- Yellow Pikmin_hcRGph
-
-## Exact root cause
-
-Exact LethalMinNightly version:
-**1.1.108**
-
-Decompile:
-`Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
-
-Analysis:
-`Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
-
-`AttackEnemyTask.IntervaledUpdate()` returns while `IsPikminOnEnemy == true` before it reaches its own dead-target check.
-
-Therefore a still-latched non-killing co-attacker never calls the existing native `FinishTaskServerRpc()` when its target dies.
-
-## S1.42R fix
-
-Patch exact:
 `LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate()`
 
-Only when:
-- this exact task is still latched;
-- this exact task's own target exists;
-- that target's `enemyScript.isEnemyDead == true`;
+Before the broken upstream latched early-return, the prefix checks the task itself:
 
-call:
+- `IsPikminOnEnemy == true`
+- this exact task's own `enemy` exists
+- `enemy.enemyScript.isEnemyDead == true`
+
+Then it invokes native:
+
 `PikminAI.FinishTaskServerRpc()`
 
-Then native LethalMin performs:
-TaskEnd -> SetToIdle -> reset/unlatch -> remove task.
+and skips the broken upstream interval for that tick.
 
-No death hook, scan, radius, target guessing, direct RemoveCurrentTask, manual unlatch, or leader restoration.
+It does **not**:
+- hook enemy death;
+- scan Pikmin;
+- scan enemies;
+- use distance/radius;
+- match names;
+- call `RemoveCurrentTask`;
+- manually unlatch;
+- restore leader/follow state;
+- implement corpse carrying.
+
+The rest of the lifecycle remains native LethalMin.
 
 ## Temporary state
 
 EnemyIsolation:
 **enabled**
 
-BCMER 1.71.0:
+BCMER exact 1.71.0:
 **disabled**
 
 Thumper Bite Limit:
 **3**
+
+Restore baseline:
+`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
 ## Controllers
 
@@ -99,18 +174,23 @@ Thumper Bite Limit:
 
 ## Exact next step
 
-Import S1.42R using:
+Do not build S1.42S first.
+
+Import S1.42R through:
 
 **Gale -> Advanced options -> Import all files**
 
-Use at least three Pikmin on the same Baboon Hawk.
+Then use **multiple Pikmin on the same Baboon Hawk** and kill it.
 
-After death verify:
-- all co-attackers stop;
-- `[LethalMinLatchedDeathGuard]` appears for latched co-attackers;
-- each is followed by native `Task finished`;
-- exact full follower count is recoverable.
+Expected:
+- one `[LethalMinLatchedDeathGuard] Requested native FinishTaskServerRpc` per stale latched co-attacker;
+- native `Task finished` immediately afterward;
+- no continued hits on the dead Hawk;
+- exact follower count recoverable.
 
-Repeat once, verify corpse carry/Onion and Hawk -> Pikmin blocking, then commit the complete fresh `LogOutput.log` to `RuntimeInbox/Current/`.
+Repeat on a second Hawk.
+
+Then commit the complete fresh `LogOutput.log` to:
+`RuntimeInbox/Current/`
 
 Do not restore normal enemies or BCMER before S1.42R passes.
