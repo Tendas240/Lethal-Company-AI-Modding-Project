@@ -145,6 +145,7 @@ Constant scale for every EventType:
 Target:
 - editing gate true
 - volume 0.7
+- future build: reduce Functional Microwave occurrence somewhat; exact rarity value remains to be selected after clean runtime confirmation
 
 ### Jetpack
 Historical juijui config evidence target: 140 seconds.
@@ -228,11 +229,14 @@ Do not build another candidate before the clean S1.42G BCMER-off retest is evalu
 
 ## New-chat takeover
 
-Primary detailed handover:
-`Current/22_HANDOVER_S1.42E_TO_NEXT.md`
+Primary current retest handover:
+`Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md`
+
+Build/test context:
+`Current/27_S1.42G_BUILD_AND_TEST.md`
 
 Start prompt:
-`Current/NEXT_CHAT_START_PROMPT_S1.42E.txt`
+`Current/NEXT_CHAT_START_PROMPT_S1.42G.txt`
 
 ## Historical target reference — juijui
 
