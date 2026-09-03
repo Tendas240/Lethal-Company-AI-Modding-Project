@@ -63,23 +63,30 @@ Body Spawn Delay = 4
 
 RUNTIME-ROUTER
 RuntimeInbox/ACTIVE_BUILD.txt = S1.42P
-RuntimeInbox/Current/ enthält nur .gitkeep
-RuntimeEvidence/S1.42P/ existiert noch nicht — korrekt, da S1.42P noch nicht getestet wurde.
+RuntimeInbox/Current/ enthält nach erfolgreichem Ingest wieder nur .gitkeep
+RuntimeEvidence/S1.42P/20260903T181706Z/ existiert und ist die aktuelle Runtime-Evidenz.
 
 BUILD-CONTROLLER
 BuildSpecs/current.json:
 enabled = false
-build_id = IDLE_AFTER_S1.42P_BUILD_AWAITING_RUNTIME
+build_id = IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_SUCCESSOR_DESIGN
 base_profile = Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z
 base_sha256 = 11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5
 
 LETZTE RUNTIME-EVIDENZ
-Build: S1.42O
-Pfad: RuntimeEvidence/S1.42O/20260903T171220Z/
-Log SHA-256: 1a1251f19a1d82e90b72e82ac8e4babd523c32e695fe3d7923d4590debb0be71
-Ergebnis: FAIL / Cleanup nicht ausgeführt, weil TaskFinished() nicht existiert.
-Runtime-Reflection bestätigte FinishTask():Void.
-Benutzerbeobachtung: 8 Pikmin verschwanden nach Hawk-Tod.
+Build: S1.42P
+Pfad: RuntimeEvidence/S1.42P/20260903T181706Z/
+Log SHA-256: d656095fb874a415a1bd2377c0411339d3d6eb002dce4ec3f6216e879294127f
+Ergebnis: PARTIAL / FAIL.
+- 20 Pikmin vor dem Kampf, 18 vor Teardown wieder Leader-zugeordnet.
+- Fehlend: Yellow Pikmin_hcRGph, Yellow Pikmin_ruCpzY.
+- FinishTask() löst korrekt auf und wird ausgeführt.
+- 4.0-m-Selektor verfehlt ruCpzY.
+- tote Hawks werden nach FinishTask erneut als AttackEnemy-Ziel gefunden.
+- Work-state-with-no-task: 0.
+- Leader-null-following: 0.
+- Dead-Baboon-Hawk-Corpse erreicht Onion; Living-Hawk-Corpse-Ignore PASS.
+Analyse: Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md
 
 LETZTER VOLL AKZEPTIERTER GAMEPLAY-BASELINE
 S1.41 — BCMER Reactivation
@@ -90,6 +97,10 @@ Current/ENEMY_SPAWN_BASELINE_S1.42C.json
 Profil-SHA-256: 22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3
 
 NÄCHSTER SCHRITT
-S1.42P unverändert testen. Kein S1.42Q vorher bauen.
-Gale -> Advanced options -> Import all files.
-Danach kompletten frischen LogOutput.log nach RuntimeInbox/Current/ committen.
+S1.42P nicht akzeptieren.
+S1.42Q-Nachfolger gezielt entwerfen/bauen:
+- FinishTask() beibehalten;
+- echte Hawk-Angreifer per Target-Identität statt fixer Distanz erfassen;
+- bereits tote Baboon Hawks aus zukünftiger Pikmin-AttackEnemy-Zielwahl ausschließen.
+Nicht nur Radius erhöhen. Kein direkter RemoveCurrentTask-Fallback.
+EnemyIsolation aktiv lassen; BCMER 1.71.0 deaktiviert lassen, bis der Gate wirklich besteht.
