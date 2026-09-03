@@ -44,6 +44,19 @@
         "export.r2x"
       ],
       "added_members": []
+    },
+    "build_pipeline": {
+      "first_attempt": {
+        "workflow_run_number": 41,
+        "result": "failed_build_spec_assertion_only",
+        "gameplay_artifact_committed": false,
+        "reason": "Overly strict LethalMin Attack Blacklist regex assertion."
+      },
+      "final_attempt": {
+        "workflow_run_number": 42,
+        "result": "success"
+      },
+      "idle_guard_workflow_run_number": 43
     }
   },
   "closed_runtime_topics": {
@@ -101,5 +114,16 @@
       "historical S1.42J comments in Patches/S139CompatibilityFixes/Plugin.cs"
     ],
     "rule": "Do not perform general documentation/comment cleanup during the open runtime gate."
+  },
+  "canonical_documents": {
+    "final_handover": "Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md",
+    "predecessor_runtime_analysis": "Current/47_S1.42L_BABOON_ATTACK_PASS_DEATH_REGRESSION_ANALYSIS.md",
+    "build_document": "Current/46_S1.42M_BABOON_HAWK_DEATH_CLEANUP_BUILD.md",
+    "current_state": "Current/00_CURRENT_STATE.md",
+    "handover_core": "Current/01_HANDOVER_CORE.md",
+    "open_issues": "Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md",
+    "verification": "Current/VERIFIKATION_S1.42M.txt",
+    "hashes": "Current/SHA256SUMS_S1.42M.txt",
+    "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42M.txt"
   }
 }
