@@ -25,5 +25,52 @@
     "result": "startup_crash_during_broad_lethalmin_reflective_patch_scan"
   },
   "first_runtime_gate": "Reach Main Menu without crash before performing interaction tests.",
-  "runtime_inbox_active_build": "S1.42E"
+  "runtime_inbox_active_build": "S1.42E",
+  "accepted_gameplay_baseline": {
+    "build_id": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b"
+  },
+  "latest_runtime_tested_gameplay_reaching_candidate": {
+    "build_id": "S1.42C",
+    "profile": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
+    "sha256": "22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3"
+  },
+  "build_control": {
+    "enabled": false,
+    "build_id": "IDLE_AFTER_S1.42E_BUILD_AWAITING_RUNTIME",
+    "file": "BuildSpecs/current.json"
+  },
+  "runtime_routing": {
+    "active_build": "S1.42E",
+    "upload_path": "RuntimeInbox/Current/",
+    "marker_file": "RuntimeInbox/ACTIVE_BUILD.txt"
+  },
+  "test_scope": {
+    "first_gate": "Reach Main Menu without crash.",
+    "if_startup_passes": [
+      "Baboon Hawk generic invincible-Pikmin grab/bite state recovery",
+      "Thumper/Crawler <-> Pikmin zero interaction",
+      "Puffer smoke/attack does not affect Pikmin",
+      "Jetpack approximately 140 seconds",
+      "Jetpack no sustained/high-speed mid-air self-explosion",
+      "Functional Microwave volume 0.7"
+    ],
+    "temporary_enemy_isolation": {
+      "indoor": [
+        "Thumper/Crawler",
+        "Puffer/Spore Lizard"
+      ],
+      "outdoor": [
+        "Baboon Hawk"
+      ],
+      "daytime": [],
+      "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+    }
+  },
+  "handover": {
+    "detailed": "Current/22_HANDOVER_S1.42E_TO_NEXT.md",
+    "start_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42E.txt",
+    "verification": "Current/VERIFIKATION_S1.42E.txt"
+  }
 }
