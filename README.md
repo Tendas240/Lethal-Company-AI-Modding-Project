@@ -1,3 +1,5 @@
+> **Current canonical status — S1.42S focused runtime PASS:** `LC V1 S1.42S Baboon Adapter Lifecycle Restore` passed the isolated Baboon-Hawk/Pikmin regression gate. Evidence: `RuntimeEvidence/S1.42S/20260903T205550Z/`, log SHA-256 `9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea`. All three focused attackers recovered and the Hawk corpse was naturally carried to Onion. See `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`. S1.41 remains the last fully accepted normal gameplay baseline until EnemyIsolation is removed and the normal enemy stack is restored/validated.
+
 > **Permanent patch-safety policy:** Every project-local Harmony/runtime/compatibility patch must follow `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`. New custom patches require exact lifecycle/side-effect analysis plus targeted and adjacent runtime regression testing before promotion. Compile/startup success alone is not acceptance.
 
 # Lethal Company AI Modding Project
