@@ -11,21 +11,33 @@
   "latest_valid_runtime_evidence": {
     "build": "S1.42Q",
     "path": "RuntimeEvidence/S1.42Q/20260903T195158Z/",
+    "log": "RuntimeEvidence/S1.42Q/20260903T195158Z/raw/LogOutput.log",
     "log_sha256": "e8949f87c0df2e3f5a8e7b985bf698aab9de68bba08ae45e3fe5b89e89f27aa5",
-    "verdict": "FAIL_EXACT_LATCHED_COATTACKER_STALE_TASK",
-    "exact_failed_pikmin": [
-      "Yellow Pikmin_ruCpzY",
-      "Yellow Pikmin_PerDu"
-    ],
-    "successful_transition_control": "Yellow Pikmin_hcRGph",
-    "root_cause": "LethalMinNightly 1.1.108 AttackEnemyTask.IntervaledUpdate returns while IsPikminOnEnemy=true before checking enemy.enemyScript.isEnemyDead"
-  },
-  "upstream_analysis": {
-    "package": "NotezyTeam-LethalMinNightly 1.1.108",
-    "dll": "NoteBoxz.LethalMin.dll",
-    "dll_sha256": "9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df",
-    "decompile": "Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt",
-    "analysis": "Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md"
+    "verdict": "FAIL_LATCHED_COATTACKERS_SKIP_DEAD_TARGET_COMPLETION",
+    "root_cause_doc": "Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md",
+    "exact_upstream_decompile": "Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt",
+    "exact_lethalmin_dll_sha256": "9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df",
+    "confirmed": {
+      "first_hawk_attackers": [
+        "Yellow Pikmin_ruCpzY",
+        "Yellow Pikmin_PerDu",
+        "Yellow Pikmin_hcRGph"
+      ],
+      "first_hawk_native_task_finished": [
+        "Yellow Pikmin_hcRGph"
+      ],
+      "stale_coattackers": [
+        "Yellow Pikmin_ruCpzY",
+        "Yellow Pikmin_PerDu"
+      ],
+      "stale_coattackers_task_finished_count": 0,
+      "stale_coattackers_remained_on_old_attack_task": true,
+      "second_hawk_single_attacker_recovered": true,
+      "work_state_no_task_count": 0,
+      "leader_null_count": 0,
+      "native_ownership_marker_present": true,
+      "old_baboon_hawk_cleanup_marker_present": false
+    }
   },
   "current_candidate": {
     "build": "S1.42R",
@@ -42,20 +54,27 @@
       "embedded_dll_sha256": "0d39a8895a1324457c2ac135fa2ae129e58ba8155ce6bde1cdb59d340be420ff"
     },
     "exact_patch": {
-      "target": "LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate()",
-      "condition": "IsPikminOnEnemy && task.enemy != null && task.enemy.enemyScript.isEnemyDead",
+      "method": "LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate()",
+      "condition": "IsPikminOnEnemy == true AND this task's own enemy exists AND enemy.enemyScript.isEnemyDead == true",
       "action": "invoke native PikminAI.FinishTaskServerRpc() and skip broken upstream interval for that tick",
-      "no_enemy_death_hook": true,
-      "no_pikmin_scan": true,
-      "no_radius": true,
-      "no_target_guessing": true,
-      "no_direct_state_mutation": true
+      "design_constraints": [
+        "no enemy-death hook",
+        "no Pikmin scene/registry scan",
+        "no proximity radius",
+        "no enemy name matching",
+        "no guessed target identity",
+        "no direct RemoveCurrentTask",
+        "no manual unlatch",
+        "no custom leader/follow restoration"
+      ]
     },
     "build_verification": {
-      "workflow_run_number": 54,
-      "workflow_run_id": 33800005390,
+      "build_run_number": 54,
+      "build_run_id": 33800005390,
       "conclusion": "success",
       "generated_commit": "80fc7bc37476612320925083f062bda2b841cf40",
+      "idle_guard_run_number": 55,
+      "idle_guard_conclusion": "success",
       "zip_members": 331,
       "readable_snapshot_files": 330,
       "changed_existing_members": [
@@ -66,7 +85,7 @@
       "config_delta_from_s142q": "none"
     }
   },
-  "temporary_test_state": {
+  "temporary_isolated_test_state": {
     "enemy_isolation_enabled": true,
     "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
     "bcmer_enabled": false,
@@ -84,8 +103,26 @@
     "base_profile": "Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z",
     "base_sha256": "009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101"
   },
+  "expected_runtime": {
+    "startup_patch_marker": "[LethalMinLatchedDeathGuard] Patched exact declared LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate()",
+    "per_coattacker_marker": "[LethalMinLatchedDeathGuard] Requested native FinishTaskServerRpc",
+    "native_followup": "Task finished",
+    "forbidden_old_marker": "[BaboonHawkDeathCleanup]"
+  },
   "next_action": {
     "type": "focused_runtime_test",
-    "instruction": "Import S1.42R via Gale Advanced options -> Import all files. Latch at least three Pikmin onto the same Baboon Hawk, kill it, verify each co-attacker emits LethalMinLatchedDeathGuard then native Task finished, recover exact full follower count, repeat, commit full LogOutput.log to RuntimeInbox/Current/."
+    "instruction": "Import S1.42R via Gale Advanced options -> Import all files. Latch multiple Pikmin onto the same Baboon Hawk, kill it, verify every attacker stops immediately and exact follower count recovers. Repeat on a second Hawk, verify corpse behavior and one-way Enemy->Pikmin protections, then commit full LogOutput.log to RuntimeInbox/Current/.",
+    "do_not_restore_before_pass": [
+      "EnemyIsolation",
+      "normal enemy baseline",
+      "BCMER 1.71.0"
+    ]
+  },
+  "current_docs": {
+    "upstream_decompile": "Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt",
+    "root_cause": "Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md",
+    "build_plan": "BuildSpecs/S1.42R_PLAN.md",
+    "verification": "Current/VERIFIKATION_S1.42R.txt",
+    "hashes": "Current/SHA256SUMS_S1.42R.txt"
   }
 }
