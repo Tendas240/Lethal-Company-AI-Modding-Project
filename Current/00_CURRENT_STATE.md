@@ -62,7 +62,7 @@ Confirmed:
 - diagnostic EnemyIsolation still performed a once-per-second global `FindObjectsOfType<EnemyAI>()` scan;
 - Coroner produced 16,138 dying-player warnings because its `JetpackItem.Update` death detector queried an unheld Jetpack every frame.
 
-Latest built candidate:
+At that historical point, the next built candidate was:
 
 **S1.42G**
 
@@ -80,7 +80,7 @@ Changes:
 - Coroner remains enabled, but only its faulty JetpackItem.Update prefix/postfix are removed.
 
 Status:
-**built successfully; clean runtime validation still pending. The previous oversized S1.42G evidence was intentionally discarded. Next evidence is a manual BCMER-off retest variant.**
+**historical status at that point: built successfully; the first oversized evidence was discarded and the clean BCMER-off retest was still pending. That retest has since completed and produced S1.42H.**
 
 ## Canonical acceptance state
 
@@ -224,9 +224,9 @@ Functional Microwave:
 
 Jetpack:
 - historical juijui config evidence target = 140 seconds;
-- S1.42G has ButteRyBalance `Reduce Battery = false`;
-- S1.42G local compatibility code targets the loaded Jetpack Item asset at 140 seconds;
-- S1.42G JetpackFixes has `MidAirExplosions = Off`;
+- S1.42H retains ButteRyBalance `Reduce Battery = false`;
+- S1.42H retains the project-local loaded Jetpack Item target at 140 seconds;
+- S1.42H retains JetpackFixes `MidAirExplosions = Off`;
 - do not restore obsolete Bigger Battery;
 - actual ~140-second runtime duration and sustained/high-speed no-self-explosion behavior still require clean gameplay validation.
 
