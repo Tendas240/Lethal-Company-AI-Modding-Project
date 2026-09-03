@@ -1,89 +1,77 @@
 # 04 - Open Issues and Next Tests
 
-## Immediate next stage — S1.42Q minimal LethalMin-native rollback
+## Immediate active gate — S1.42Q minimal LethalMin-native rollback
 
-Canonical plan:
+Design:
 `Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md`
 
-S1.42P runtime analysis remains:
-`Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md`
+Build:
+`Current/60_S1.42Q_MINIMAL_NATIVE_ROLLBACK_BUILD.md`
 
-## New architectural decision
+Profile:
+`Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z`
 
-The project must stop owning normal LethalMin Pikmin lifecycle behavior.
+SHA-256:
+`50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1`
 
-Native LethalMin should own:
-- Pikmin -> enemy target/latch/attack;
-- enemy-death task completion;
-- Pikmin -> enemy-body carry;
-- Onion delivery.
+Compatibility plugin:
+**v1.3.12**
 
-Project-local code should own only:
-- proven Enemy -> Pikmin prevention gaps;
-- unrelated compatibility fixes already independently justified.
+## What changed
 
-This supersedes the previous idea of adding another custom dead-Hawk target filter/reacquisition layer.
+Normal LethalMin combat/death/carry ownership is restored.
 
-## S1.42Q removals
+Removed:
+- BaboonHawkDeathCleanup
+- project-local FinishTask death handling
+- 4.0m death scan
+- delayed post-grab recovery
+- reflected leader/follow/grab restoration
 
-Remove:
-- `PatchBaboonHawkDeathCleanup()`;
-- `BaboonHawkDeathCleanup`;
-- Hawk-death `PikminAI.FinishTask()` reflection;
-- 4.0 m SpawnedEnemies death selector;
-- delayed post-grab snapshot/leader/follow reflection repair where prevention can replace it.
+Kept:
+- minimal pre-mutation Enemy -> Pikmin GrabPikmin prevention for proven Crawler/Thumper and Hawk gaps
+- one-way Hawk -> Pikmin adapter/bite protection
+- Puffer effect guard
+- CodeRebirth utility-kill guard
+- Dead Hawk corpse guard
 
-Do not add custom AttackEnemy or CarryItem logic.
+Config:
+`Thumper Bite Limit = 3`
 
-## Config rollback
+## Exact runtime test
 
-S1.41 vs S1.42P LethalMin config comparison shows only one difference:
+Use:
+**Gale -> Advanced options -> Import all files**
 
-`[Enemy Behavior] Thumper Bite Limit`
-- S1.41: `3`
-- S1.42P: `0`
-
-Restore `3` in S1.42Q unless a new isolated test proves it must differ.
-
-Keep the existing native LethalMin protection settings such as invincible Pikmin, Puffer poison off, Old Bird grabs off, CodeRebirth interaction toggles off, etc.
-
-## Narrow shims that may remain
-
-- CodeRebirth Crane kill shield: previously proven necessary despite native config;
-- Dead Baboon Hawk `CanGrabScrap` guard: separate SellBodies compatibility shim; it does not implement Pikmin carrying and may remain unless a clean native test proves unnecessary;
-- minimal exact Enemy -> Pikmin Bite/Grab blockers only where runtime evidence proves upstream/config still allows the interaction.
-
-Prefer blocking before Pikmin state mutation. Avoid repairing state afterward.
-
-## S1.42Q acceptance
-
-1. Pikmin attack/latch/kill Thumper/Crawler natively.
-2. Pikmin attack/latch/kill Baboon Hawk natively.
-3. Enemy death releases attackers naturally with no project-local FinishTask marker.
-4. All Pikmin remain responsive and whistle back.
-5. Following count recovers exactly.
-6. Dead Baboon Hawk is carried to Onion natively.
-7. Enemies do not target/bite/grab/harm Pikmin.
-8. Puffer remains harmless to Pikmin.
-9. no `Work state with no task assigned!`.
-10. no `Leader is null when following`.
-11. no `BaboonHawkDeathCleanup` runtime markers.
+1. record following count
+2. attack/kill Crawler/Thumper with Pikmin
+3. verify natural release/recovery
+4. attack/kill Baboon Hawk with Pikmin
+5. verify natural release/recovery
+6. verify exact following-count recovery
+7. verify Crawler/Thumper cannot grab Pikmin
+8. verify Hawk cannot target/chase/bite/grab Pikmin
+9. verify Puffer does not affect Pikmin
+10. verify Dead Hawk body is carried to Onion
+11. verify living Hawks ignore corpse
+12. verify no `Work state with no task assigned!`
+13. verify no `Leader is null when following`
+14. verify `[LethalMinNativeOwnership]`
+15. verify no `[BaboonHawkDeathCleanup]`
+16. commit full log to `RuntimeInbox/Current/`
 
 ## Temporary state
 
 EnemyIsolation:
 **enabled**
 
-BCMER exact 1.71.0:
+BCMER 1.71.0:
 **disabled**
-
-Restore baseline:
-`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
 ## Controllers
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42P`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Q`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_MINIMAL_ROLLBACK_BUILD`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42Q_BUILD_AWAITING_RUNTIME`
 
-Do not restore normal enemies or BCMER until this minimal architecture passes.
+Do not restore normal enemies or BCMER until S1.42Q passes.
