@@ -29,21 +29,25 @@ jobs:
       - name: Install ILSpy command line
         run: dotnet tool install --global ilspycmd
 
-      - name: Extract exact S1.42Q LethalMin assembly
+      - name: Download and extract exact LethalMinNightly 1.1.108 assembly
         shell: bash
         run: |
+          curl --fail --location --retry 3 \
+            "https://gcdn.thunderstore.io/live/repository/packages/NotezyTeam-LethalMinNightly-1.1.108.zip" \
+            --output /tmp/LethalMinNightly-1.1.108.zip
+
           python - <<'PY'
           import zipfile
           from pathlib import Path
 
-          profile = Path("Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z")
+          package = Path("/tmp/LethalMinNightly-1.1.108.zip")
           out = Path("/tmp/s142q")
           out.mkdir(parents=True, exist_ok=True)
 
-          with zipfile.ZipFile(profile, "r") as z:
+          with zipfile.ZipFile(package, "r") as z:
               matches = [
                   n for n in z.namelist()
-                  if n.lower().endswith("/lethalmin.dll") or n.lower() == "lethalmin.dll"
+                  if n.lower().endswith("lethalmin.dll")
               ]
               if len(matches) != 1:
                   raise SystemExit(f"Expected exactly one LethalMin.dll, got {matches}")
