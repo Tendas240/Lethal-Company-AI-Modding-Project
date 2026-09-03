@@ -16,6 +16,7 @@ Lies zuerst `START_HERE_ChatGPT_Masterprompt.txt` und danach mindestens:
 - `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 - `BuildSpecs/current.json`
 - `RuntimeInbox/ACTIVE_BUILD.txt`
+- `Current/49_REPOSITORY_HANDOVER_AUDIT_S1.42M.md`
 - `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
 
 Aktueller gebaute Kandidat ist S1.42M:
