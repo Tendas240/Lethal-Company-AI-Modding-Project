@@ -7,11 +7,11 @@ Aktiviert: 182
 Deaktiviert: 6
 
 WICHTIG:
-- S1.42P ist der aktuelle gebaute Testkandidat und noch nicht runtime-validiert.
+- S1.42P wurde runtime-getestet und ist PARTIAL/FAIL: 20 -> 18 Pikmin-Recovery; Details in Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md.
 - SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 ist für den isolierten Enemy-Test weiterhin deaktiviert.
 - EnemyIsolation ist über BepInEx/config/tendas.s139.compatibilityfixes.cfg aktiviert.
 - Gale-Import muss über Advanced options -> Import all files erfolgen, damit die projektlokale Compatibility-DLL übernommen wird.
-- Nach S1.42P PASS normalen Enemy-Stand exakt aus Current/ENEMY_SPAWN_BASELINE_S1.42C.json wiederherstellen und BCMER 1.71.0 reaktivieren.
+- Normalen Enemy-Stand und BCMER 1.71.0 noch NICHT wiederherstellen; zuerst den Baboon-Hawk-Nachfolger erfolgreich validieren.
 
 [ENABLED] Beaniebe-Liminal_House 1.1.6
 [ENABLED] MelanieMelicious-Melanie_Interiors_MelanieMelicious 1.2.1
