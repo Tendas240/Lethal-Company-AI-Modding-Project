@@ -1,6 +1,6 @@
 {
   "enabled": false,
-  "build_id": "IDLE_AWAITING_S1.42C_RUNTIME_PIKMIN_TEST",
+  "build_id": "IDLE_HANDOVER_AFTER_S1.42C_RUNTIME",
   "base_profile": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
   "base_sha256": "22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",
