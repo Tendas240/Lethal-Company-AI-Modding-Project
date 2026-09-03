@@ -4,6 +4,34 @@ Repository / Übergabe / laufende Arbeit / spätere Repo-Aktualisierung
 Repository:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
+======================================================================
+CURRENT CANONICAL TAKEOVER POINTER — 2026-09-03
+======================================================================
+
+For the current project state, read immediately after this master prompt:
+1. Current/31_HANDOVER_S1.42H_TO_NEXT.md
+2. Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md
+3. Current/00_CURRENT_STATE.md
+4. Current/01_HANDOVER_CORE.md
+5. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+6. Current/Projektstatus_S1.42H.json
+7. Current/VERIFIKATION_S1.42H.txt
+8. Current/SHA256SUMS_S1.42H.txt
+9. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+10. BuildSpecs/current.json
+11. RuntimeInbox/ACTIVE_BUILD.txt
+
+Current candidate:
+Profiles/LC V1 S1.42H Thumper Grab Guard.r2z
+SHA-256:
+5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58
+
+Current gate:
+S1.42H is built successfully and is awaiting runtime validation.
+Do not build S1.42I first.
+BCMER 1.71.0 is already disabled inside S1.42H for this final isolated enemy regression test.
+
+
 WICHTIG:
 Dieser Prompt ist als dauerhafter Einstiegspunkt für neue ChatGPT-Chats gedacht.
 Er soll sowohl die initiale Projektübernahme aus dem GitHub-Repository als auch die spätere Aktualisierung des Repositories am Ende eines Arbeitsabschnitts steuern.
