@@ -1,0 +1,6 @@
+Nutze dieses Repository als vollständige Projektübergabe:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+Lies zuerst START_HERE_ChatGPT_Masterprompt.txt, danach Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md, Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md, Current/Projektstatus_S1.42P.json, Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md und Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md.
+
+Aktueller Kandidat ist S1.42P "Baboon Hawk Exact FinishTask Recovery", SHA-256 11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5. Er ist gebaut und verifiziert, aber noch nicht runtime-getestet. EnemyIsolation ist weiterhin aktiv, BCMER 1.71.0 weiterhin deaktiviert. Baue keinen Nachfolger zuerst: Nächster Schritt ist S1.42P per Gale "Advanced options -> Import all files" zu importieren und den fokussierten Baboon-Hawk-Test durchzuführen. Wenn der neue Log committed ist, analysiere ihn vollständig aus RuntimeInbox/Current/ bzw. der ingestierten RuntimeEvidence.
