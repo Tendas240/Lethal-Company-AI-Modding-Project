@@ -8,6 +8,7 @@ on:
       - "RuntimeInbox/Current/**"
       - "RuntimeInbox/ACTIVE_BUILD.txt"
       - "BuildSystem/runtime_ingest.py"
+      - "BuildSystem/runtime_log_analyzer.py"
       - ".github/workflows/runtime-ingest.yml"
   workflow_dispatch:
 
