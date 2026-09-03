@@ -56,7 +56,7 @@ Canonical analysis:
 Do not build S1.42K before S1.42J runtime evidence is evaluated.
 
 
-## Latest update — S1.42H runtime -> S1.42I
+## Historical update — S1.42H runtime -> S1.42I
 
 Valid S1.42H evidence:
 `RuntimeEvidence/S1.42H/20260903T125734Z/`
@@ -111,7 +111,7 @@ Canonical analysis:
 Do not build S1.42J before S1.42I runtime evidence is evaluated.
 
 
-## Latest update — S1.42G BCMER-off retest -> S1.42H
+## Historical update — S1.42G BCMER-off retest -> S1.42H
 
 Valid clean evidence:
 `RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/`
@@ -335,9 +335,9 @@ Functional Microwave:
 
 Jetpack:
 - historical juijui config evidence target = 140 seconds;
-- S1.42H retains ButteRyBalance `Reduce Battery = false`;
-- S1.42H retains the project-local loaded Jetpack Item target at 140 seconds;
-- S1.42H retains JetpackFixes `MidAirExplosions = Off`;
+- S1.42J retains ButteRyBalance `Reduce Battery = false`;
+- S1.42J retains the project-local loaded Jetpack Item target at 140 seconds;
+- S1.42J retains JetpackFixes `MidAirExplosions = Off`;
 - do not restore obsolete Bigger Battery;
 - actual ~140-second runtime duration and sustained/high-speed no-self-explosion behavior still require clean gameplay validation.
 
@@ -351,11 +351,11 @@ Shatteredrooms:
 
 `BuildSpecs/current.json`:
 - `enabled = false`
-- `build_id = IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`
-- base/reference = S1.42H
+- `build_id = IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME`
+- base/reference = S1.42J
 
 `RuntimeInbox/ACTIVE_BUILD.txt`:
-- `S1.42H`
+- `S1.42J`
 
 S1.42D:
 **failed startup; do not retest.**
@@ -370,9 +370,15 @@ S1.42G:
 **clean BCMER-off retest completed; freezes resolved, enemy spawning works without BCMER, Thumper invalid grab state reproduced.**
 
 S1.42H:
-**latest built candidate; GitHub Actions success; awaiting first runtime validation.**
+**valid runtime evidence; Puffer PASS, Baboon Hawk hold/re-grab FAIL, Thumper direct validation incomplete.**
 
-Do not create S1.42I before S1.42H runtime evidence is evaluated.
+S1.42I:
+**built successfully but never runtime-tested; superseded by the stronger Baboon Hawk <-> Pikmin zero-interaction rule.**
+
+S1.42J:
+**latest built candidate; GitHub Actions success; awaiting runtime validation.**
+
+Do not create S1.42K before S1.42J runtime evidence is evaluated.
 
 ## Repository-first workflow
 
@@ -392,24 +398,25 @@ Profiles with the project-local DLL require:
 ## Primary current takeover
 
 Read first after the master prompt:
-- `Current/31_HANDOVER_S1.42H_TO_NEXT.md`
-- `Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
+- `Current/34_HANDOVER_S1.42J_TO_NEXT.md`
+- `Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
+- `Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md`
 - `Current/00_CURRENT_STATE.md`
 - `Current/01_HANDOVER_CORE.md`
 - `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-- `Current/Projektstatus_S1.42H.json`
-- `Current/VERIFIKATION_S1.42H.txt`
-- `Current/SHA256SUMS_S1.42H.txt`
+- `Current/Projektstatus_S1.42J.json`
+- `Current/VERIFIKATION_S1.42J.txt`
+- `Current/SHA256SUMS_S1.42J.txt`
 - `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
 Current start prompt:
-`Current/NEXT_CHAT_START_PROMPT_S1.42H.txt`
+`Current/NEXT_CHAT_START_PROMPT_S1.42J.txt`
 
 Runtime route:
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42H`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42J`
 
 Build controller:
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME`
 
 ## Historical juijui reference — committed and indexed
 
