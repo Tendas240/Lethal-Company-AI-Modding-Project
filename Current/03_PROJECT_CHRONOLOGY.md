@@ -306,3 +306,40 @@ Binding:
 - next preferred engineering work is a generic grab/bite + invincible follower-state repair.
 
 `BuildSpecs/S1.42D_PLAN.md` is draft-only.
+
+
+## S1.42D — isolated enemy regression startup failure
+
+S1.42D combined:
+- generic LethalMin grab/bite + Invincible Pikmin recovery attempt;
+- temporary runtime enemy isolation to Thumper/Crawler, Puffer and Baboon Hawk;
+- Jetpack historical 140-second target;
+- Jetpack high-speed/mid-air self-explosion disabled;
+- Functional Microwave volume 0.7.
+
+Static build passed.
+
+Runtime on 2026-09-03 failed before a usable Main Menu.
+
+Evidence:
+`RuntimeEvidence/S1.42D/20260903T084247Z/`
+
+The log reached LethalLevelLoader's Main Menu unlock point, then compatibility plugin v1.3.0 began a broad LethalMin reflection/Harmony scan. HarmonyX warned repeatedly about inherited/non-declared patch targets. The log terminated during the scan.
+
+S1.42D is therefore a failed startup diagnostic and must not be retested.
+
+## S1.42E — startup-safe LethalMin hotfix
+
+Built from S1.42D with no package/version/enabled-state changes.
+
+Profile:
+`Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
+
+SHA-256:
+`4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348`
+
+Compatibility plugin v1.3.1 narrows Harmony targets to declared local interaction methods on `*PikminEnemy` adapter types and removes the inherited GrabbableObject.Start Jetpack hook.
+
+Build passed with 0 compiler warnings/errors.
+
+S1.42E is awaiting runtime validation. First gate is Main Menu startup.
