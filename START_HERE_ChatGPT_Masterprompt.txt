@@ -1,3 +1,72 @@
+======================================================================
+CURRENT CANONICAL TAKEOVER OVERRIDE - 2026-09-03 - S1.42S BUILT / AWAITING RUNTIME
+======================================================================
+
+THIS OVERRIDES THE OLDER S1.42R POINTER BELOW.
+
+Current candidate:
+S1.42S - Baboon Adapter Lifecycle Restore
+Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z
+SHA-256:
+addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee
+
+Read first for the newest state:
+1. Current/Projektstatus_S1.42S.json
+2. Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md
+3. Current/67_S1.42S_BABOON_ADAPTER_LIFECYCLE_RESTORE_BUILD.md
+4. Current/VERIFIKATION_S1.42S.txt
+5. Current/SHA256SUMS_S1.42S.txt
+6. BuildSpecs/S1.42S_PLAN.md
+7. BuildSpecs/current.json
+8. RuntimeInbox/ACTIVE_BUILD.txt
+
+S1.42R runtime verdict:
+FAIL.
+Relevant evidence:
+RuntimeEvidence/S1.42R/20260903T203100Z/
+Log SHA-256:
+a45832c3e50d04a0dab29fc844c37a62bb6b08beced8da86e6c7fcf584b09df4
+
+CORRECTED ROOT CAUSE:
+The project compatibility plugin disabled the complete LethalMin.BaboonBirdPikminEnemy component.
+That also disabled inherited PikminEnemy.Update(), including native enemy-death detection and
+RemoveAndDisableTriggers() -> RemoveAllPikmin(3). Therefore latched Pikmin were never released
+after Baboon Hawk death.
+
+The previous S1.42Q/R classification of the AttackEnemyTask early return as the complete upstream
+root cause is superseded by Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md.
+
+S1.42S compatibility plugin:
+v1.3.14
+Embedded DLL SHA-256:
+3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960
+
+S1.42S:
+- does NOT disable BaboonBirdPikminEnemy;
+- does NOT install the S1.42R AttackEnemyTask dead-target bridge;
+- blocks only exact BaboonBirdPikminEnemy.OnColideWithPikmin(PikminAI);
+- blocks exact BaboonBirdPikminEnemy.BitePikmin(PikminAI);
+- retains the Baboon-Hawk PikminAI.GrabPikmin failsafe;
+- leaves native LethalMin PikminEnemy.Update death/unlatch lifecycle enabled.
+
+Build #56 / run 33803720934: SUCCESS
+Generated commit:
+3bb900342c41595504bf9ce6879477aad22a7d49
+Idle guard #57: SUCCESS
+
+EnemyIsolation remains enabled.
+BCMER exact 1.71.0 remains disabled.
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42S
+BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42S_BUILD_AWAITING_RUNTIME
+
+EXACT NEXT STEP:
+Import S1.42S via Gale "Advanced options -> Import all files".
+Latch at least 3 Pikmin onto one Baboon Hawk, kill it, verify every Pikmin falls off/stops attacking
+and exact follower count recovers. Verify Hawk -> Pikmin bite/grab is still blocked and corpse
+carrying remains normal. Commit the full fresh LogOutput.log to RuntimeInbox/Current/.
+
+======================================================================
+
 MASTER-PROMPT - Lethal Company Modding Project
 Repository / Übergabe / laufende Arbeit / spätere Repo-Aktualisierung
 
