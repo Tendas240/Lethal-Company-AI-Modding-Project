@@ -16,7 +16,8 @@ Read first:
 3. Current/00_CURRENT_STATE.md
 4. Current/01_HANDOVER_CORE.md
 5. Current/16_HANDOVER_S1.42C_TO_NEXT.md
-6. Current/06_RECENT_WORK_S1.42A-S1.42C.md
+6. Current/17_REPO_HANDOVER_CLEANUP_S1.42C.md
+7. Current/06_RECENT_WORK_S1.42A-S1.42C.md
 7. Current/15_RUNTIME_EVIDENCE_S1.42C.md
 8. Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md
 9. Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md
@@ -49,3 +50,10 @@ BuildSpecs/current.json is disabled/idle.
 Repository-first only.
 Gale imports with local DLL:
 Advanced options -> Import all files
+
+
+Manifest note:
+Current/Aktive_Modliste_S1.42C.txt was regenerated directly from ProfileSources/S1.42C/export.r2x during final handover verification after a shifted-version documentation error was discovered. Canonical counts remain 188 total / 183 enabled / 5 disabled.
+
+Superseded S1.41 handover metadata are archived under:
+Archive/S1.41/HandoverCheckpoint/
