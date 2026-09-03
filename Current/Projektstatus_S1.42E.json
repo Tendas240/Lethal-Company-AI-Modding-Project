@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "build_id": "S1.42E",
+  "profile": "Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z",
+  "sha256": "4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348",
+  "base": "Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z",
+  "base_sha256": "b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c",
+  "status": "built_awaiting_runtime_validation",
+  "manifest": {
+    "total": 188,
+    "enabled": 183,
+    "disabled": 5,
+    "diff_vs_s142d": []
+  },
+  "compatibility_plugin": {
+    "version": "1.3.1",
+    "dll_sha256": "caf20c785245396d9f31ff32b556cbe75d64b87a5a676807184093a6cef78eab",
+    "startup_fix": "DeclaredOnly *PikminEnemy interaction methods only; no RPC/generic PikminAI/PikminItem patching; no inherited GrabbableObject.Start Jetpack patch."
+  },
+  "predecessor_failure": {
+    "build_id": "S1.42D",
+    "evidence": "RuntimeEvidence/S1.42D/20260903T084247Z/",
+    "log_sha256": "55cdbf6904c7d1acb74647c90a79820df9e3a39978cd60ccf4d6e25bc95d4107",
+    "result": "startup_crash_during_broad_lethalmin_reflective_patch_scan"
+  },
+  "first_runtime_gate": "Reach Main Menu without crash before performing interaction tests.",
+  "runtime_inbox_active_build": "S1.42E"
+}
