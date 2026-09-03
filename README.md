@@ -248,3 +248,21 @@ Do not require a local repository clone or local PowerShell profile-build script
 ## Priority rule
 
 Chronologically newer confirmed information overrides older assumptions. Runtime evidence overrides config/package assumptions. `Archive/` is historical reference material and must not override current machine-readable files unless explicitly referenced.
+
+## Historical juijui reference profile
+
+The original historical `juijui.r2z` profile is a primary project reference because the project was originally intended to reproduce its mod constellation/configuration as closely as reasonably possible on modern Lethal Company.
+
+Canonical reference path:
+`References/LegacyProfiles/juijui/juijui.r2z`
+
+Detailed handling:
+- `Current/18_JUIJUI_LEGACY_REFERENCE.md`
+- `References/LegacyProfiles/juijui/README.md`
+- `References/juijui_Referenzwerte.txt`
+
+juijui is a historical target/reference, **not** a current build base. Modern game-version, maintenance and compatibility constraints remain authoritative.
+
+Once the binary is uploaded, use it as primary evidence for unresolved historical values such as the exact Jetpack capacity/duration. Do not guess values that can be recovered from the profile.
+
+The highest active engineering priority remains the generic LethalMin enemy-grab/bite + invincible-Pikmin leader/follow-state repair confirmed in S1.42C.
