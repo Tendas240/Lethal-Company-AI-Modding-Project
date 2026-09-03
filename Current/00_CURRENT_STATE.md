@@ -1,5 +1,52 @@
 # 00 — Current State
 
+## Latest update — S1.42G BCMER-off retest -> S1.42H
+
+Valid clean evidence:
+`RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/`
+
+Confirmed:
+- periodic routed-moon freezes are resolved;
+- Crawler and Puffer spawn normally with BCMER disabled;
+- Puffer smoke guard activates;
+- Thumper contact still enters LethalMin's grabbed-Pikmin path and reproduces the invincible-Pikmin leader-null loop;
+- the previous Coroner Jetpack `PlayerController was null` flood is gone;
+- BCMER-off removes the prior repeated DoorFailure/DoorAudit stack flood.
+
+Latest built candidate:
+
+**S1.42H**
+
+`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+
+SHA-256:
+`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
+
+Compatibility plugin:
+**v1.3.5**
+
+S1.42H:
+- patches exactly `LethalMin.PikminAI.GrabPikmin(Transform,float,int)` once;
+- blocks Crawler/Thumper -> Pikmin grab before leader removal/death timer;
+- retains Crawler in the Pikmin Attack Blacklist for the reverse direction;
+- applies generic post-grab recovery to non-Thumper interactions;
+- carries forward late-lifecycle EnemyIsolation and throttled DoorAudit;
+- embeds BCMER 1.71.0 as disabled for this final isolated regression stage;
+- does **not** change Functional Microwave rarity.
+
+Status:
+**built successfully; awaiting runtime validation.**
+
+Runtime route:
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42H`
+
+Build controller:
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`
+
+Canonical latest analysis:
+`Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
+
+
 **Handover refreshed:** 2026-09-03  
 **Game:** Lethal Company V81
 
