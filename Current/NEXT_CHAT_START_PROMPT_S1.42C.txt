@@ -20,3 +20,10 @@ Wichtiger Stand:
 - BuildSpecs/S1.42D_PLAN.md ist DRAFT ONLY und darf nicht einfach gebaut werden.
 
 Nächster technischer Schwerpunkt ist zuerst ein sauberer generischer Fix für den LethalMin Grab/Bite + Invincible-Pikmin Leader-State, ohne pauschal alle Gegner zu blacklisten. Nutze weiterhin ausschließlich den repository-first GitHub-Actions-Buildworkflow; fordere keinen lokalen Repo-Clone und keine PowerShell-Profilbuilds an, solange die benötigte Basis auf GitHub liegt.
+
+Zusätzliche historische Primärreferenz:
+- das ursprüngliche alte juijui-Profil soll unter References/LegacyProfiles/juijui/juijui.r2z liegen;
+- lies dazu Current/18_JUIJUI_LEGACY_REFERENCE.md;
+- juijui ist die historische Zielreferenz für die Modkonstellation/Konfiguration, aber keine heutige Build-Basis;
+- sobald das Profil hochgeladen ist, lies daraus insbesondere den exakten alten Jetpack-Wert aus statt ihn zu raten;
+- die generische LethalMin Enemy-Grab/Bite + Invincible-Pikmin Leader-State-Reparatur bleibt trotzdem die unmittelbar höchste technische Priorität.
