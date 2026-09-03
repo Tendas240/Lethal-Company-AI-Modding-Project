@@ -101,3 +101,24 @@ Before proposing an old mod/config/patch as a fix, search:
 - `Current/03_PROJECT_CHRONOLOGY.md`;
 - `Logs/`;
 - `Archive/` only when historical reconstruction is actually needed.
+
+
+## S1.42Q minimal native rollback supersession
+
+The first post-S1.42P idea was to keep project-local Hawk-death finalization and add exact attacker-target identity plus dead-Hawk reacquisition filtering.
+
+**Do not pursue that as the default next layer.**
+
+The user explicitly chose the simpler architecture now implemented in S1.42Q:
+
+- native LethalMin owns Pikmin -> enemy combat;
+- native LethalMin owns enemy-death task completion;
+- native LethalMin owns dead-body carry and Onion delivery;
+- project-local code only blocks proven Enemy -> Pikmin gaps.
+
+Therefore the custom target-identity/dead-Hawk-filter successor concept is superseded unless a clean S1.42Q native runtime proves that upstream LethalMin itself still fails with all project-local death-task code removed.
+
+S1.42Q removes BaboonHawkDeathCleanup, project-local FinishTask death handling, the 4.0 m scan, and reflection-heavy post-grab repair rather than adding more lifecycle code.
+
+Canonical plan:
+`Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md`
