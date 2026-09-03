@@ -3,143 +3,114 @@
 **Date:** 2026-09-03  
 **Game:** Lethal Company V81
 
-## Canonical current pointers
+## Current candidate
 
-Machine-readable status:
-`Current/Projektstatus_S1.42Q.json`
-
-Current design:
-`Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md`
-
-Current built candidate:
-`Current/60_S1.42Q_MINIMAL_NATIVE_ROLLBACK_BUILD.md`
-
-Verification:
-`Current/VERIFIKATION_S1.42Q.txt`
-
-Hashes:
-`Current/SHA256SUMS_S1.42Q.txt`
-
-Current mod list:
-`Current/Aktive_Modliste_S1.42Q.txt`
-
-Latest runtime analysis:
-`Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md`
-
-## Last fully accepted gameplay baseline
-
-**S1.41 - BCMER Reactivation**
+**S1.42R - LethalMin Latched Dead Target Completion**
 
 Profile:
-`Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
+`Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z`
 
 SHA-256:
-`d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
-
-## Latest valid runtime evidence
-
-**S1.42P - PARTIAL / FAIL**
-
-Evidence:
-`RuntimeEvidence/S1.42P/20260903T181706Z/`
-
-Log SHA-256:
-`d656095fb874a415a1bd2377c0411339d3d6eb002dce4ec3f6216e879294127f`
-
-The user's 20 -> 18 Pikmin recovery failure was confirmed exactly.
-
-## Current built candidate awaiting runtime
-
-**S1.42Q - LethalMin Native Minimal Rollback**
-
-Profile:
-`Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z`
-
-SHA-256:
-`50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1`
-
-Git blob SHA:
-`9e1beec739c193c95e936a56fefb060a84577559`
+`009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101`
 
 Compatibility plugin:
-**v1.3.12**
+**v1.3.13**
 
-Embedded DLL SHA-256:
-`f6a4e7b060af6a779da1c92236b2ce63d1bd5d890a21c9492517e568a9aaac45`
+DLL SHA-256:
+`0d39a8895a1324457c2ac135fa2ae129e58ba8155ce6bde1cdb59d340be420ff`
+
+Status:
+**built and repository-verified; awaiting runtime**
 
 Build:
-- GitHub Actions #52: SUCCESS
-- generated commit `bd6e1ca023921e5fecb14e301e9c24cf73cb4aea`
-- 331 ZIP members
+- GitHub Actions #54: SUCCESS
+- generated commit `80fc7bc37476612320925083f062bda2b841cf40`
+- 331 archive members
 - 330 readable snapshot files
-- no added members
+- Q -> R changed only compatibility DLL and export profile name
+- no config delta
 
-Changed profile members only:
-1. `BepInEx/config/NoteBoxz.LethalMin.cfg`
-2. `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`
-3. `export.r2x`
+## Latest runtime evidence
 
-## S1.42Q architecture
+**S1.42Q - FAIL with exact root cause identified**
 
-Native LethalMin owns:
-- Pikmin -> enemy attack/latch
-- enemy-death task completion
-- Pikmin -> dead enemy body carry
-- Onion delivery
+Evidence:
+`RuntimeEvidence/S1.42Q/20260903T195158Z/`
 
-Project-local code only keeps proven minimal Enemy -> Pikmin protection and unrelated compatibility shims.
+Log SHA-256:
+`e8949f87c0df2e3f5a8e7b985bf698aab9de68bba08ae45e3fe5b89e89f27aa5`
 
-Removed:
-- BaboonHawkDeathCleanup
-- project-local FinishTask death finalization
-- 4.0 m Hawk-death scan
-- delayed/reflection-heavy post-grab state repair
+Exact failed co-attackers:
+- Yellow Pikmin_ruCpzY
+- Yellow Pikmin_PerDu
 
-Kept:
-- prevention-only GrabPikmin prefix for Crawler/Thumper and Baboon Hawk Enemy -> Pikmin gaps
-- one-way Baboon Hawk -> Pikmin adapter/bite protection
-- Puffer effect guard
-- CodeRebirth utility-kill shield
-- Dead Baboon Hawk corpse CanGrabScrap guard
+Successful control:
+- Yellow Pikmin_hcRGph
 
-LethalMin config delta from S1.42P:
-**exactly one value**
-- `Thumper Bite Limit = 0` -> `3`
+## Exact root cause
 
-## Temporary test state
+Exact LethalMinNightly version:
+**1.1.108**
+
+Decompile:
+`Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
+
+Analysis:
+`Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
+
+`AttackEnemyTask.IntervaledUpdate()` returns while `IsPikminOnEnemy == true` before it reaches its own dead-target check.
+
+Therefore a still-latched non-killing co-attacker never calls the existing native `FinishTaskServerRpc()` when its target dies.
+
+## S1.42R fix
+
+Patch exact:
+`LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate()`
+
+Only when:
+- this exact task is still latched;
+- this exact task's own target exists;
+- that target's `enemyScript.isEnemyDead == true`;
+
+call:
+`PikminAI.FinishTaskServerRpc()`
+
+Then native LethalMin performs:
+TaskEnd -> SetToIdle -> reset/unlatch -> remove task.
+
+No death hook, scan, radius, target guessing, direct RemoveCurrentTask, manual unlatch, or leader restoration.
+
+## Temporary state
 
 EnemyIsolation:
 **enabled**
 
-BCMER exact 1.71.0:
+BCMER 1.71.0:
 **disabled**
 
-Restore baseline:
-`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+Thumper Bite Limit:
+**3**
 
 ## Controllers
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Q`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42R`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42Q_BUILD_AWAITING_RUNTIME`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42R_BUILD_AWAITING_RUNTIME`
 
 ## Exact next step
 
-Import S1.42Q through:
+Import S1.42R using:
 
 **Gale -> Advanced options -> Import all files**
 
-Then perform the focused Crawler/Thumper + Baboon Hawk + Puffer runtime test.
+Use at least three Pikmin on the same Baboon Hawk.
 
-Required startup marker:
-`[LethalMinNativeOwnership]`
+After death verify:
+- all co-attackers stop;
+- `[LethalMinLatchedDeathGuard]` appears for latched co-attackers;
+- each is followed by native `Task finished`;
+- exact full follower count is recoverable.
 
-Forbidden old marker:
-`[BaboonHawkDeathCleanup]`
+Repeat once, verify corpse carry/Onion and Hawk -> Pikmin blocking, then commit the complete fresh `LogOutput.log` to `RuntimeInbox/Current/`.
 
-Record following count before/after each enemy fight. Verify native attack/death/carry, Enemy -> Pikmin protection, corpse-to-Onion behavior, and no leader/no-task loops.
-
-Commit the complete fresh `LogOutput.log` to:
-`RuntimeInbox/Current/`
-
-Do not restore normal enemies or BCMER before S1.42Q passes.
+Do not restore normal enemies or BCMER before S1.42R passes.
