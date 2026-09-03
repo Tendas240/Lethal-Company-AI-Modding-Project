@@ -178,26 +178,29 @@ User target:
 
 Use config first; do not Harmony-patch audio unless runtime proves the config is ignored.
 
-## Jetpack capacity — historical value unresolved
+## Jetpack capacity — historical primary evidence recovered
 
 User wants the old juijui-profile capacity/duration.
 
 Current:
-- ButteryBalance `Reduce Battery = true`
+- ButteRyBalance `Reduce Battery = true`
 - 40-second battery.
+- current vanilla = 50 seconds.
 
-Current vanilla:
-- 50 seconds.
+The committed/indexed juijui profile contains historical Bigger Battery v1.0.2 config:
+- `JetpackBatteryUsage = 140`
+- config states then-game default = 60.
 
-Exact old juijui value is not preserved in currently indexed text references.
+Caveat:
+- BiggerBattery is absent from the final juijui `export.r2x` and no plugin binary is present, so the config may be retained from an earlier active state.
 
-Do not guess.
-
-Fallback candidate only if user accepts:
-- `Reduce Battery = false`
-- 50 seconds.
+Project target:
+- treat 140 seconds as the strongest historical intended/configured juijui target unless contradictory primary evidence appears;
+- implement it with a current-compatible/local mechanism;
+- do not blindly restore obsolete Bigger Battery.
 
 Reference:
+`References/LegacyProfiles/juijui/Extracted/`
 `References/juijui_Referenzwerte.txt`
 
 ## Monitor-only — Mineshaft elevator + Pikmin crowding
