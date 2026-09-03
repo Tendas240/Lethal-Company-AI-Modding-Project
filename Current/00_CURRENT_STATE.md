@@ -33,7 +33,7 @@ Changes:
 - Coroner remains enabled, but only its faulty JetpackItem.Update prefix/postfix are removed.
 
 Status:
-**built successfully; awaiting routed-moon smoothness gate.**
+**built successfully; clean runtime validation still pending. The previous oversized S1.42G evidence was intentionally discarded. Next evidence is a manual BCMER-off retest variant.**
 
 ## Canonical acceptance state
 
@@ -192,7 +192,7 @@ Shatteredrooms:
 
 `BuildSpecs/current.json`:
 - `enabled = false`
-- `build_id = IDLE_AFTER_S1.42G_BUILD_AWAITING_RUNTIME`
+- `build_id = IDLE_S1.42G_BCMER_OFF_RETEST`
 - base/reference = S1.42G
 
 S1.42D:
@@ -205,9 +205,9 @@ S1.42F:
 **Gordion smooth; routed-moon performance test failed because of periodic stalls and Coroner Jetpack spam.**
 
 S1.42G:
-**latest built candidate; awaiting routed-moon smoothness validation.**
+**latest built candidate; previous oversized runtime evidence discarded; awaiting clean manual BCMER-off retest.**
 
-Do not create another build before S1.42G runtime evidence is evaluated.
+Do not create another build before the clean S1.42G BCMER-off retest is evaluated.
 
 ## Repository-first workflow
 
@@ -224,16 +224,21 @@ Do not ask for local clone or PowerShell profile build while GitHub contains the
 Profiles with the project-local DLL require:
 **Gale -> Advanced options -> Import all files**
 
-## Primary handover
+## Primary current takeover
 
-Read:
-`Current/22_HANDOVER_S1.42E_TO_NEXT.md`
+Read first after the master prompt:
+- `Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md`
+- `Current/27_S1.42G_BUILD_AND_TEST.md`
+- `Current/00_CURRENT_STATE.md`
+- `Current/01_HANDOVER_CORE.md`
+- `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+- `Current/Projektstatus_S1.42G.json`
 
-Next chat start prompt:
-`Current/NEXT_CHAT_START_PROMPT_S1.42E.txt`
+Current start prompt:
+`Current/NEXT_CHAT_START_PROMPT_S1.42G.txt`
 
 Runtime route:
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42G`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42G_BCMER_OFF_RETEST`
 
 ## Historical juijui reference — committed and indexed
 
