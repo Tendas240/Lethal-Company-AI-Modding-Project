@@ -88,29 +88,47 @@
       "log_sha256": "9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea",
       "scope": "Baboon Hawk/Pikmin isolated regression gate",
       "final_full_gameplay_baseline_promoted": false
-    }
+    },
+    "is_final_full_gameplay_baseline": false,
+    "acceptance_scope": "isolated Baboon-Hawk/Pikmin lifecycle gate"
   },
   "temporary_isolated_test_state": {
     "enemy_isolation_enabled": true,
-    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
+    "diagnostic_config_path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+    "diagnostic_key": "Isolated Enemy Regression",
+    "diagnostic_value": true,
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+    "bcmer_version": "1.71.0",
     "bcmer_enabled": false,
     "thumper_bite_limit": 3,
-    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+    "crawler_in_attack_blacklist": false,
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+    "restore_baseline_profile_sha256": "22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3"
   },
   "runtime_route": {
     "path": "RuntimeInbox/ACTIVE_BUILD.txt",
-    "value": "S1.42S"
+    "value": "S1.42S",
+    "reason": "S1.42S is the latest built/runtime-ingested build; S1.42T is planned only."
   },
   "build_controller": {
     "path": "BuildSpecs/current.json",
     "enabled": false,
-    "build_id": "IDLE_AFTER_S1.42S_BUILD_AWAITING_RUNTIME",
+    "build_id": "IDLE_AFTER_S1.42S_FOCUSED_RUNTIME_PASS_AWAITING_S1.42T_RESTORE_BUILD",
     "base_profile": "Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z",
     "base_sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee"
   },
   "next_action": {
-    "type": "restore_normal_enemy_state",
-    "instruction": "Build the next controlled candidate from S1.42S with the temporary EnemyIsolation overlay disabled and restore/carry forward enemy-related configuration exactly from Current/ENEMY_SPAWN_BASELINE_S1.42C.json except for later explicitly accepted permanent fixes. Keep package versions unchanged. Do not silently upgrade BCMER; reintroduce exact BCMER 1.71.0 only according to the controlled roadmap after/with an explicitly reviewed restoration stage."
+    "type": "build_and_runtime_test_normal_enemy_restore",
+    "build_id": "S1.42T",
+    "plan": "BuildSpecs/S1.42T_PLAN.md",
+    "instruction": "Build from S1.42S with only the temporary EnemyIsolation diagnostic disabled, preserve accepted LethalMin/compatibility deltas, keep exact BCMER 1.71.0 disabled, then runtime-validate that normal non-isolated enemies return.",
+    "do_not_do_before": [
+      "do not upgrade BCMER",
+      "do not re-enable BCMER in the same first restore gate",
+      "do not modify compatibility patch code",
+      "do not perform unrelated gameplay tuning",
+      "do not mix repository structural migration into S1.42T"
+    ]
   },
   "permanent_engineering_policy": {
     "project_local_patch_safety": {
@@ -131,5 +149,60 @@
       "future_build_plan_requirement": "Every build plan introducing or materially changing a custom patch must include a Patch Safety Review.",
       "origin_case": "S1.42R BaboonBirdPikminEnemy component disable suppressed inherited PikminEnemy.Update death/unlatch cleanup."
     }
+  },
+  "updated_at": "2026-09-03T23:00:00+02:00",
+  "handover": {
+    "status": "READY",
+    "final_handover": "Current/71_HANDOVER_S1.42S_TO_NEXT_FINAL.md",
+    "audit": "Current/72_REPOSITORY_HANDOVER_AUDIT_S1.42S.md",
+    "audit_verdict": "PASS",
+    "next_restore_contract": "Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md",
+    "next_build_plan": "BuildSpecs/S1.42T_PLAN.md"
+  },
+  "restore_contract": {
+    "document": "Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md",
+    "next_build_id": "S1.42T",
+    "next_build_name": "Normal Enemy Restore",
+    "next_build_status": "planned_not_built",
+    "required_change": [
+      "set Isolated Enemy Regression = false"
+    ],
+    "preserve": [
+      "S139CompatibilityFixes v1.3.14",
+      "Thumper Bite Limit = 3",
+      "Crawler absent from LethalMin Attack Blacklist",
+      "all accepted permanent compatibility fixes"
+    ],
+    "bcmer_for_first_restore_gate": {
+      "version": "1.71.0",
+      "enabled": false,
+      "rationale": "keep normal-enemy restoration isolated from BCMER restoration"
+    },
+    "following_gate": "Re-enable exact BCMER 1.71.0 only after S1.42T normal-enemy restoration passes."
+  },
+  "open_issues": [
+    {
+      "id": "LETHALMIN_DISCONNECT_NOTICEZONE_NETWORKOBJECTREFERENCE",
+      "severity": "monitor_only",
+      "blocking": false,
+      "observation": "One ArgumentException during lobby disconnect after ShipOnion save: NetworkObjectReference can only be created from spawned NetworkObjects.",
+      "owner": "LethalMin.PikminNoticeZone.OnTriggerStay",
+      "action": "Do not patch unless reproducible/user-facing and supported by Patch Safety Review."
+    }
+  ],
+  "repository_maintenance": {
+    "plan": "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt",
+    "status": "pending_separate_maintenance_phase",
+    "note": "The S1.42S critical runtime gate is closed, but migration must not be mixed with S1.42T gameplay restoration."
+  },
+  "historical_evidence_policy": {
+    "preserve_runtime_evidence": [
+      "S1.42Q",
+      "S1.42R",
+      "S1.42S"
+    ],
+    "preserve_failed_approaches": true,
+    "preserve_restore_baselines": true,
+    "deleted_during_handover": []
   }
 }
