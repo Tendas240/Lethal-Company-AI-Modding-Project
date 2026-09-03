@@ -259,3 +259,42 @@ S1.42C remains the latest runtime-tested technical candidate until S1.42D runtim
 
 Test plan:
 `Current/20_S1.42D_BUILD_AND_TEST.md`
+
+
+## S1.42D startup failure
+
+S1.42D is **failed** as a runtime candidate.
+
+Evidence:
+`RuntimeEvidence/S1.42D/20260903T084247Z/`
+
+Log SHA-256:
+`55cdbf6904c7d1acb74647c90a79820df9e3a39978cd60ccf4d6e25bc95d4107`
+
+Root cause:
+the new v1.3.0 LethalMin reflective scan attempted to Harmony-patch inherited/non-declared Pikmin methods. HarmonyX warned against these targets and the log terminated during the scan before its completion marker.
+
+Do not retest S1.42D.
+
+## Latest built candidate — S1.42E
+
+Profile:
+`Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
+
+SHA-256:
+`4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348`
+
+Status:
+**built successfully; awaiting runtime validation.**
+
+Compatibility DLL SHA-256:
+`caf20c785245396d9f31ff32b556cbe75d64b87a5a676807184093a6cef78eab`
+
+S1.42E retains the S1.42D test goals but:
+- only patches declared methods on LethalMin `*PikminEnemy` adapter classes;
+- patches only local `BitePikmin`, `GrabPikmin`, `GrabPikminWithTongue` methods;
+- does not patch RPC wrappers or generic PikminAI/PikminItem methods;
+- removes the inherited `GrabbableObject.Start` Jetpack Harmony target and uses narrow loaded-Item asset targeting instead.
+
+First runtime gate:
+reach Main Menu without crash.
