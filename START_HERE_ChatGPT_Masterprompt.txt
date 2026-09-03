@@ -11,18 +11,23 @@ CURRENT CANONICAL TAKEOVER POINTER - 2026-09-03 - S1.42P
 Repository is the source of truth.
 
 Read immediately after this master prompt:
-1. Current/Projektstatus_S1.42P.json
-2. Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md
-3. Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md
-4. Current/00_CURRENT_STATE.md
-5. Current/01_HANDOVER_CORE.md
-6. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-7. BuildSpecs/current.json
-8. RuntimeInbox/ACTIVE_BUILD.txt
-9. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-10. Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
-11. Current/02_TECHNICAL_BASELINE.md
-12. Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
+1. Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md
+2. Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md
+3. Current/Projektstatus_S1.42P.json
+4. Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md
+5. Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md
+6. Current/00_CURRENT_STATE.md
+7. Current/01_HANDOVER_CORE.md
+8. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+9. Current/VERIFIKATION_S1.42P.txt
+10. Current/SHA256SUMS_S1.42P.txt
+11. Current/Aktive_Modliste_S1.42P.txt
+12. BuildSpecs/current.json
+13. RuntimeInbox/ACTIVE_BUILD.txt
+14. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+15. Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
+16. Current/02_TECHNICAL_BASELINE.md
+17. Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
 
 Last fully accepted gameplay baseline:
 S1.41
@@ -81,6 +86,12 @@ RuntimeInbox/ACTIVE_BUILD.txt = S1.42P
 
 Current build controller:
 BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_BUILD_AWAITING_RUNTIME
+
+Final handover document:
+Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md
+
+Final repository audit:
+Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md
 
 Deferred non-functional drift remains deferred until the runtime gate closes.
 
