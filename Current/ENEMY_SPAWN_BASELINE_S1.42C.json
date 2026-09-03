@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-03",
+  "purpose": "Canonical restore point for enemy spawning/configuration before the temporary S1.42D isolated enemy regression test.",
+  "canonical_profile": {
+    "path": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
+    "sha256": "22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3",
+    "readable_snapshot": "ProfileSources/S1.42C/"
+  },
+  "restore_rule": "After the isolated enemy test, remove only the temporary diagnostic enemy-isolation overlay/guard and restore/carry forward enemy-related configuration exactly from the canonical S1.42C profile/snapshot unless a later explicitly accepted gameplay change says otherwise.",
+  "permanent_enemy_state_changes_allowed_during_isolation": false,
+  "diagnostic_allowlist": {
+    "indoor": [
+      {
+        "display_name": "Thumper",
+        "internal_reference": "Crawler"
+      },
+      {
+        "display_name": "Puffer / Spore Lizard",
+        "internal_reference": "Puffer"
+      }
+    ],
+    "outdoor": [
+      {
+        "display_name": "Baboon Hawk",
+        "internal_reference": "Baboon Hawk / BaboonHawk (resolve exact runtime identifier before implementation)"
+      }
+    ],
+    "daytime": []
+  },
+  "diagnostic_behavior": [
+    "Temporarily prevent all non-allowlisted enemies from spawning during the S1.42D regression run.",
+    "Prefer a test-only runtime overlay/guard instead of rewriting the normal spawn-owner configs.",
+    "Do not permanently disable enemy mods/packages for the diagnostic run.",
+    "If BCMER/event/native-mod spawn routes can bypass the normal enemy lists, suppress those non-allowlisted spawns in the diagnostic layer as well.",
+    "Remove the isolation layer immediately after the focused validation stage."
+  ],
+  "spotcheck_hashes": {
+    "BepInEx/config/LethalLevelLoader.cfg": "6c294442cbd9339f24841b57cf0eb75726ec6e9e598693de2c308cf0d46ff8bc",
+    "BepInEx/config/BrutalCompanyMinusExtraReborn/AllEnemies.cfg": "b0c7d4e16496f8a4014bf8ff4011e179c5012d9a44cb2c5f756e7189d1e3fbcf",
+    "BepInEx/config/BrutalCompanyMinusExtraReborn/CoreProperties.cfg": "d828cd42c11c1a723bfb56fe36721c4b4092471c4102f41cc62ad926a5ae7de8",
+    "BepInEx/config/BrutalCompanyMinusExtraReborn/LevelProperties.cfg": "e40fc3d8ce7e3bf84a565fef94245d93f2364d26d4d8e6b1e2dc7bdb1b5776dc",
+    "BepInEx/config/NoteBoxz.LethalMin.cfg": "d43ac3fdf91715f43ae209466543023ee807689ca80cd84725775b274232a5b4",
+    "BepInEx/config/com.github.biodiversitylc.Biodiversity.cfg": "53eda6c5368fa0d0d2e3ceb7aac296ea3ea4434768ade1b1059b87ced35389a0",
+    "BepInEx/config/nomnomab.rollinggiant.cfg": "002e9a03922afcfc1f29eb5359fb35219a406be2ba38d1d374b4a9d00ff9d9e9",
+    "BepInEx/config/Scopophobia.cfg": "bb9e6b379037c2b6fb0fcac008780e35f82a0607a698f0b6bbb4a0d6cbea8649",
+    "BepInEx/config/Ccode.SirenHead.cfg": "1b8f30ba6d941de439de9758f836638062f2cea16190d0dff30f9f018b8cfe94",
+    "BepInEx/config/VectorV.TheCabinet.cfg": "68c716ff20ae204228ba320b485e2416a93748e33614b21cd9e63f7663ff8d06"
+  }
+}
