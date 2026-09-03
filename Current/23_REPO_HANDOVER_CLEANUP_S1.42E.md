@@ -43,14 +43,14 @@ New S1.42E handover/current files:
 
 ## ARCHIVE
 
-Purely superseded S1.42C entrypoint files can be moved out of Current:
-- Current/NEXT_CHAT_START_PROMPT_S1.42C.txt
-- Current/README_Handover_S1.42C.txt
+The purely superseded S1.42C entrypoint files were moved out of Current:
+- `Current/NEXT_CHAT_START_PROMPT_S1.42C.txt`
+- `Current/README_Handover_S1.42C.txt`
 
-Archive target:
+They are now preserved under:
 `Archive/S1.42C/HandoverCheckpoint/`
 
-They retain historical value but must not be mistaken for the current entrypoint.
+No information was lost; the archive prevents them from being mistaken for the current entrypoint.
 
 Detailed S1.42C technical/runtime handovers remain available because they contain unique diagnostic history.
 
