@@ -3,6 +3,41 @@
 **Handover refreshed:** 2026-09-03  
 **Game:** Lethal Company V81
 
+## Latest runtime/build update — S1.42E -> S1.42F
+
+S1.42E runtime evidence:
+`RuntimeEvidence/S1.42E/20260903T091053Z/`
+
+Confirmed:
+- S1.42D startup crash is fixed;
+- compatibility plugin v1.3.1 loaded;
+- safe LethalMin state guard registered on 4 declared enemy methods;
+- Jetpack Item asset was successfully changed from 50 -> 140 seconds;
+- host lobby then showed short periodic freezes.
+
+Freeze root cause:
+- temporary EnemyIsolation ran every second on `71 Gordion`;
+- it attempted six diagnostic `SpawnableEnemyWithRarity` creations per second;
+- V81 has no usable parameterless constructor;
+- repeated `MissingMethodException` matched the user's freeze cadence.
+
+Latest built candidate:
+
+**S1.42F**
+
+`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
+
+SHA-256:
+`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
+
+Compatibility plugin:
+**v1.3.2**
+
+S1.42F skips diagnostic work on Gordion/Company and uses the EnemyType/int constructor with clone fallback for diagnostic spawn entries.
+
+Status:
+**built successfully; awaiting runtime lobby-smoothness gate.**
+
 ## Canonical acceptance state
 
 Last fully accepted gameplay baseline:
@@ -160,16 +195,19 @@ Shatteredrooms:
 
 `BuildSpecs/current.json`:
 - `enabled = false`
-- `build_id = IDLE_AFTER_S1.42E_BUILD_AWAITING_RUNTIME`
-- base/reference = S1.42E
+- `build_id = IDLE_AFTER_S1.42F_BUILD_AWAITING_RUNTIME`
+- base/reference = S1.42F
 
 S1.42D:
 **failed startup; do not retest.**
 
 S1.42E:
-**latest built candidate; not runtime-tested yet.**
+**startup passed; interaction testing aborted because of the periodic EnemyIsolation freeze loop.**
 
-Do not create another build before S1.42E runtime evidence is evaluated.
+S1.42F:
+**latest built candidate; awaiting runtime lobby-smoothness validation.**
+
+Do not create another build before S1.42F runtime evidence is evaluated.
 
 ## Repository-first workflow
 
@@ -195,7 +233,7 @@ Next chat start prompt:
 `Current/NEXT_CHAT_START_PROMPT_S1.42E.txt`
 
 Runtime route:
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42E`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42F`
 
 ## Historical juijui reference — committed and indexed
 
