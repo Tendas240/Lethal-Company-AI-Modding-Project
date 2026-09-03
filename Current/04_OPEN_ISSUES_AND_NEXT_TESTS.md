@@ -1,173 +1,134 @@
 # 04 - Open Issues and Next Tests
 
-## Immediate active gate - only remaining isolated enemy direction
-
-**Build:** S1.42L - Pikmin Counterattack Restore
+## Immediate active gate — S1.42M Baboon Hawk death cleanup
 
 Profile:
-`Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z`
+`Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z`
 
 SHA-256:
-`fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722`
+`9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7`
 
-Latest runtime:
-`RuntimeEvidence/S1.42L/20260903T151817Z/`
+Compatibility plugin:
+v1.3.8  
+DLL SHA-256:
+`47fff0272b00ce776150c203eb65710216eba4390f5f5864fdbffec686692adf`
+
+Latest valid runtime evidence:
+`RuntimeEvidence/S1.42L/20260903T155132Z/`
 
 Log SHA-256:
-`402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd`
+`812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10`
 
-### Pending: Pikmin -> Baboon Hawk
+## What S1.42L closed
 
-Requirement:
-Pikmin must be throwable onto a Baboon Hawk and must attack/latch it normally.
+**Pikmin -> Baboon Hawk live attack/latch is PASS.**
 
-Existing S1.42L evidence:
-- `Baboon hawk` is not on the Pikmin Attack Blacklist;
-- LethalMin registers Baboon hawk as Pikmin enemy;
-- one latch trigger is registered;
-- Hawk-side adapter disable remains active;
-- no leader-null loop occurred.
+The evaluated run proves:
+- Pikmin latch onto the Hawk;
+- Pikmin repeatedly damage it;
+- Pikmin can kill it;
+- Hawk-side ignore protection remains;
+- `Leader is null when following` = 0.
 
-Missing:
-explicit user/runtime confirmation that thrown Pikmin actually latch/attack the Hawk.
+Therefore do not reopen the live attack/latch direction unless a regression appears.
 
-### Exact test
+## New issue found at Hawk death
 
-Do not build another candidate.
+After the Hawk died:
+- Pikmin stayed on the old `BaboonHawkEnemy(Clone)` attack/latch target;
+- they continued hitting it after `Kill enemy called! destroy: False`;
+- SellBodiesFixed spawned `BaboonHawkBody(Clone)` after its configured 4-second delay;
+- SellBodiesFixed then moved the original dead enemy transform away;
+- latched Pikmin visually disappeared with that stale target;
+- living Baboon Hawks grabbed the new corpse item as ordinary scrap.
 
-Use S1.42L unchanged:
-1. throw Pikmin onto a Baboon Hawk;
-2. confirm latch/attack;
-3. confirm Hawk still ignores Pikmin from its own side;
-4. confirm no bite/grab/hold loop;
-5. confirm no `Leader is null when following`;
-6. upload complete log to `RuntimeInbox/Current/`.
+## Desired result
 
-## Closed - do not retest unless regression appears
+- Pikmin detach from the dying Hawk and remain usable.
+- SellBodies Baboon Hawk corpse generation remains enabled.
+- Dead Baboon Hawk body remains on the ground.
+- Players can still carry it.
+- Pikmin can be thrown onto it and carry it toward the Onion.
+- Living Baboon Hawks do not pick it up.
+- Hawk -> Pikmin ignore remains intact.
+- No leader-null loop.
 
-### Thumper / Crawler
+## Exact S1.42M test
 
-**PASS / CLOSED**
+Use:
+**Gale -> Advanced options -> Import all files**
 
-- Pikmin -> Thumper attack/latch confirmed.
-- Thumper -> Pikmin functional broken grab state blocked.
-- 36 `[ThumperPikminGuard]` blocks.
-- 0 leader-null errors.
-- visible snapping is accepted as harmless cosmetic behavior.
+1. find/spawn a Baboon Hawk;
+2. throw multiple Pikmin directly onto it;
+3. let the Pikmin kill it;
+4. immediately confirm the attacking Pikmin detach/remain visible and usable;
+5. wait at least 5 seconds;
+6. confirm the Dead Baboon Hawk body remains at/near the death location;
+7. throw Pikmin onto the corpse;
+8. confirm they can carry the corpse toward the Onion;
+9. if another living Hawk is available, confirm it does not pick up the corpse;
+10. confirm living Hawk -> Pikmin remains blocked;
+11. confirm no `Leader is null when following`;
+12. upload the complete fresh log to `RuntimeInbox/Current/`.
 
-### Puffer -> Pikmin
+Do not build a successor first.
 
-**PASS / CLOSED**
+## Temporary isolated test state
 
-### Jetpack
+EnemyIsolation:
+**enabled**
 
-**PASS / CLOSED**
+BCMER exact 1.71.0:
+**disabled**
 
-- approximately 140-second target accepted;
-- `MidAirExplosions = Off`;
-- historical Coroner null flood absent.
+Restore baseline:
+`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
-### Baboon Hawk -> Pikmin
+Do not restore normal spawning/BCMER until S1.42M is evaluated.
 
-**PASS / CLOSED**
+## Closed — do not retest unless regression appears
 
-Exact adapter-disable/BitePikmin/GrabPikmin protection remains binding.
+- Thumper/Crawler -> Pikmin protection: PASS
+- Pikmin -> Thumper/Crawler attack/latch: PASS
+- Puffer -> Pikmin: PASS
+- Jetpack: PASS
+- Baboon Hawk -> Pikmin: PASS
+- Pikmin -> living Baboon Hawk attack/latch: PASS
 
-## After the remaining gate passes
+## After S1.42M PASS
 
+Then:
 1. remove/disable temporary EnemyIsolation;
-2. restore normal enemy spawning/configuration from:
-   `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+2. restore normal enemy spawning/config from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
 3. re-enable exact BCMER 1.71.0;
-4. preserve the accepted permanent asymmetric interaction rules;
+4. preserve all accepted asymmetric interaction rules and S1.42M corpse behavior;
 5. runtime-check the restored normal state;
-6. specifically monitor BCMER Door System ERROR / ship-door behavior;
-7. document the resulting state before any repository migration.
+6. specifically monitor historical BCMER Door System ERROR / ship-door behavior;
+7. document the normal-enemy/BCMER result before repository migration.
 
-## Pending gameplay/balance work after normal enemy/BCMER restore
+## Pending lower-priority work after restore
 
-### Functional Microwave
-
-Current accepted:
-`Functional Microwave | Volume = 0.7`
-
-Future requirement:
-Microwaves should be somewhat rarer.
-
-Exact target rarity is not selected.
-Do not change during the current isolated gate.
-
-### Interiors
-
-Binding:
-all registered interiors should have equal effective probability on all moons where technically safe.
-
-Target:
-Weight 100 per interior/moon pairing.
-
-Pending:
-- normalize all current interiors;
-- maintain equal-weight rule for future additions;
-- CullFactory disable culling for exact IDs `junkrooms` and `shatteredrooms`;
-- reduce fog only in MelanieMausoleum;
-- keep Shatteredrooms Experimentation/Embrion block until safety is understood.
-
-### BCMER final normal state
-
-Pinned exact version:
-1.71.0
-
-Preserve ownership guards:
-- `Experimental Dont Handle Power? = true`
-- `Experimental Dont Handle Spawn Chance? = true`
-- `Let Brutal handle properties outside of events? = false`
-- `Enable Randomizer? = false`
-
-Keep BCMER rain event routes disabled:
-- Raining
-- HeavyRain
-- AllWeather
-- Hurricane
-
-Vanilla Rainy remains allowed.
-
-### Monitor only
-
-- Mineshaft elevator + many Pikmin floor clipping/fall death: causality unproven.
-- Outdoor Pikmin Sprout density: subjective concern only; no rebalance without statistics.
-
-## Known noise - only escalate with user-facing symptoms
-
-- SoundAPI TypeLoadException during floor reporting;
-- SoftMaskKiller-protected SoftMask NREs;
-- duplicate NetworkPrefab GlobalObjectIdHash warnings;
-- RuntimeNavMeshBuilder unreadable-mesh messages;
-- BCMER ButlerSword missing-script warning;
-- historical S1.42C scene-teardown `Collection was modified`;
-- Pikmin/NavMesh agent warnings;
-- Coroner Baboon-Hawk player-damage noise separate from resolved Jetpack null flood.
-
-## Do-not-regress
-
-- no S1.42D broad/inherited LethalMin reflection/Harmony scan;
-- no Update-driven continuous global EnemyAI scan for EnemyIsolation;
-- no BCMER 2.0.0 migration without explicit decision;
-- no removal of `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
-- no CodeRebirthLib return;
-- no guessing unknown Enemy PowerLevels;
-- no local clone/build request while GitHub infrastructure is sufficient.
-
-## Build/runtime controllers
-
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42L`
-
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME`
+- Functional Microwaves should become somewhat rarer; exact target not selected.
+- all registered interiors should ultimately have equal effective selection probability where technically safe;
+- CullFactory exact IDs `junkrooms` and `shatteredrooms`;
+- MelanieMausoleum fog reduction;
+- preserve Shatteredrooms Experimentation/Embrion safety block until understood;
+- monitor Mineshaft elevator/Pikmin crowding;
+- do not rebalance outdoor Pikmin Sprout density without statistics.
 
 ## Deferred repository maintenance
 
+General cleanup remains deferred during the active runtime gate.
+
+Known non-functional drift:
+- `Current/02_TECHNICAL_BASELINE.md`;
+- stale S1.42J-era comments in `Patches/S139CompatibilityFixes/Plugin.cs`.
+
+Structural plan:
 `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
 
-Status:
-**DEFERRED_UNTIL_ACTIVE_GATE_COMPLETE**
+## Controllers
 
-Do not begin structural migration until the last S1.42L gate and post-gate normal enemy/BCMER state have been documented.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42M`
+
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42M_BUILD_AWAITING_RUNTIME`
