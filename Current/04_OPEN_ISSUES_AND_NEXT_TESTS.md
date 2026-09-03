@@ -1,6 +1,6 @@
 # 04 - Open Issues and Next Tests
 
-## Active runtime gate — S1.42R
+## Immediate active gate — S1.42R
 
 Profile:
 `Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z`
@@ -8,63 +8,89 @@ Profile:
 SHA-256:
 `009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101`
 
-Plugin:
+Compatibility plugin:
 **v1.3.13**
 
-## Confirmed S1.42Q failure
+Root cause:
+`Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
 
-S1.42Q proved that native LethalMin 1.1.108 has a specific `AttackEnemyTask` bug.
+Exact upstream decompile:
+`Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
 
-Three Pikmin attacked the first Hawk:
-- ruCpzY
-- PerDu
-- hcRGph
+## S1.42Q confirmed failure
 
-hcRGph reached native `Task finished` and remained usable.
+First Baboon Hawk had three attackers:
+- `Yellow Pikmin_ruCpzY`
+- `Yellow Pikmin_PerDu`
+- `Yellow Pikmin_hcRGph`
 
-ruCpzY and PerDu never reached `Task finished`, kept hitting the dead first Hawk until teardown, and exactly match the two missing Pikmin reported by the user.
+Only `hcRGph` got native `Task finished`.
 
-## Root cause
+`ruCpzY` and `PerDu` stayed on the first dead Hawk with no task transition.
 
-`AttackEnemyTask.IntervaledUpdate()` checks:
+The second Hawk did not lose its correctly transitioned attacker.
 
-`CurrentIntention != Attack || IsPikminOnEnemy`
+## Exact upstream defect
 
-and returns before its later:
+LethalMin 1.1.108 `AttackEnemyTask.IntervaledUpdate()` checks:
+
+`if (CurrentIntention != Attack || IsPikminOnEnemy) return;`
+
+before it checks:
 
 `enemy.enemyScript.isEnemyDead`
 
-check.
+and calls:
 
-Latched co-attackers therefore cannot reach native dead-target completion.
+`FinishTaskServerRpc()`.
 
-## S1.42R correction
+So a still-latched co-attacker is structurally prevented from reaching the native dead-target completion code.
 
-Patch only the exact task method.
+## S1.42R
 
-When its own target is dead while still latched, request the exact native:
+One narrow prefix on the exact `AttackEnemyTask.IntervaledUpdate()`:
 
-`PikminAI.FinishTaskServerRpc()`
+If this exact task is latched to its own dead target:
+- request native `PikminAI.FinishTaskServerRpc()`;
+- skip the broken upstream interval for that tick.
 
-No external attacker selection exists anymore.
+No:
+- death hook
+- scan
+- radius
+- name matching
+- direct state mutation
+- custom unlatch/carry
 
 ## Runtime test
 
-1. Import via Gale "Advanced options -> Import all files".
-2. Start with known follower count.
-3. Put at least three Pikmin onto the same Baboon Hawk.
-4. Kill Hawk.
-5. Confirm all affected Pikmin stop attacking.
-6. Confirm `[LethalMinLatchedDeathGuard]` for latched co-attackers.
-7. Confirm native `Task finished` for each.
-8. Whistle all and verify exact follower count.
-9. Repeat on second Hawk.
-10. Verify corpse remains Onion-carryable.
-11. Verify living Hawk ignores corpse.
-12. Verify Hawk -> Pikmin remains blocked.
-13. Verify no Work/no-task loop.
-14. Verify no Leader-null loop.
-15. Commit complete fresh log to `RuntimeInbox/Current/`.
+1. Import with Gale **Advanced options -> Import all files**.
+2. Record follower count.
+3. Put at least 3 Pikmin onto the same Baboon Hawk.
+4. Kill the Hawk.
+5. Verify every attacker immediately stops.
+6. Verify `[LethalMinLatchedDeathGuard] Requested native FinishTaskServerRpc` for co-attackers.
+7. Verify native `Task finished` for those Pikmin.
+8. Whistle all Pikmin back and verify exact count.
+9. Repeat on a second Hawk.
+10. Verify Dead Hawk body remains normally carryable to Onion.
+11. Verify living Hawk still ignores corpse/Pikmin.
+12. Verify no `Work state with no task assigned!`.
+13. Verify no `Leader is null when following`.
+14. Commit full fresh log to `RuntimeInbox/Current/`.
 
-EnemyIsolation remains enabled.
-BCMER 1.71.0 remains disabled.
+## Temporary state
+
+EnemyIsolation:
+**enabled**
+
+BCMER 1.71.0:
+**disabled**
+
+## Controllers
+
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42R`
+
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42R_BUILD_AWAITING_RUNTIME`
+
+Do not restore normal enemies or BCMER until R passes.
