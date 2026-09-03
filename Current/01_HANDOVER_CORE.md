@@ -1,5 +1,37 @@
 # 01 — Handover Core
 
+## Immediate current gate — S1.42H
+
+Latest built candidate:
+`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+
+SHA-256:
+`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
+
+Compatibility plugin:
+v1.3.5, DLL SHA-256
+`d67f8f4bc2012f5b74086eb268fcb191f6990c93041617e9ef35c635ea33f186`
+
+S1.42G BCMER-off retest proved:
+- periodic freezes fixed;
+- isolated Crawler/Puffer spawning works without BCMER;
+- Thumper contact still breaks an invincible Pikmin into a leader-null grabbed state.
+
+S1.42H therefore directly patches the declared common `PikminAI.GrabPikmin(Transform,float,int)` method exactly once and blocks Crawler/Thumper grabs before state mutation.
+
+BCMER 1.71.0 is disabled **inside S1.42H** only for the final isolated test.
+
+Do not build another candidate before S1.42H runtime evidence is evaluated.
+
+After isolated enemy acceptance:
+- disable EnemyIsolation;
+- restore full enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+- re-enable exact BCMER 1.71.0.
+
+Details:
+`Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
+
+
 ## Binding state
 
 ### Accepted gameplay baseline
