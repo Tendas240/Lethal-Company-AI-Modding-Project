@@ -3,40 +3,37 @@
 **Handover refreshed:** 2026-09-03  
 **Game:** Lethal Company V81
 
-## Latest runtime/build update — S1.42E -> S1.42F
+## Latest runtime/build update — S1.42F -> S1.42G
 
-S1.42E runtime evidence:
-`RuntimeEvidence/S1.42E/20260903T091053Z/`
+S1.42F runtime evidence:
+`RuntimeEvidence/S1.42F/20260903T092728Z/`
 
 Confirmed:
-- S1.42D startup crash is fixed;
-- compatibility plugin v1.3.1 loaded;
-- safe LethalMin state guard registered on 4 declared enemy methods;
-- Jetpack Item asset was successfully changed from 50 -> 140 seconds;
-- host lobby then showed short periodic freezes.
-
-Freeze root cause:
-- temporary EnemyIsolation ran every second on `71 Gordion`;
-- it attempted six diagnostic `SpawnableEnemyWithRarity` creations per second;
-- V81 has no usable parameterless constructor;
-- repeated `MissingMethodException` matched the user's freeze cadence.
+- Gordion/Company constructor-loop fix worked;
+- ship lobby was smooth before routing;
+- after routing to Offense, periodic freezes returned;
+- diagnostic EnemyIsolation still performed a once-per-second global `FindObjectsOfType<EnemyAI>()` scan;
+- Coroner produced 16,138 dying-player warnings because its `JetpackItem.Update` death detector queried an unheld Jetpack every frame.
 
 Latest built candidate:
 
-**S1.42F**
+**S1.42G**
 
-`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
+`Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
 
 SHA-256:
-`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
+`09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
 
 Compatibility plugin:
-**v1.3.2**
+**v1.3.3**
 
-S1.42F skips diagnostic work on Gordion/Company and uses the EnemyType/int constructor with clone fallback for diagnostic spawn entries.
+Changes:
+- EnemyIsolation is one-shot per SelectableLevel change;
+- no continuous global EnemyAI scan;
+- Coroner remains enabled, but only its faulty JetpackItem.Update prefix/postfix are removed.
 
 Status:
-**built successfully; awaiting runtime lobby-smoothness gate.**
+**built successfully; awaiting routed-moon smoothness gate.**
 
 ## Canonical acceptance state
 
@@ -195,8 +192,8 @@ Shatteredrooms:
 
 `BuildSpecs/current.json`:
 - `enabled = false`
-- `build_id = IDLE_AFTER_S1.42F_BUILD_AWAITING_RUNTIME`
-- base/reference = S1.42F
+- `build_id = IDLE_AFTER_S1.42G_BUILD_AWAITING_RUNTIME`
+- base/reference = S1.42G
 
 S1.42D:
 **failed startup; do not retest.**
@@ -205,9 +202,12 @@ S1.42E:
 **startup passed; interaction testing aborted because of the periodic EnemyIsolation freeze loop.**
 
 S1.42F:
-**latest built candidate; awaiting runtime lobby-smoothness validation.**
+**Gordion smooth; routed-moon performance test failed because of periodic stalls and Coroner Jetpack spam.**
 
-Do not create another build before S1.42F runtime evidence is evaluated.
+S1.42G:
+**latest built candidate; awaiting routed-moon smoothness validation.**
+
+Do not create another build before S1.42G runtime evidence is evaluated.
 
 ## Repository-first workflow
 
@@ -233,7 +233,7 @@ Next chat start prompt:
 `Current/NEXT_CHAT_START_PROMPT_S1.42E.txt`
 
 Runtime route:
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42F`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42G`
 
 ## Historical juijui reference — committed and indexed
 
