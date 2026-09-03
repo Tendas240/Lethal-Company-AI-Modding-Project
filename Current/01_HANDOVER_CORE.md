@@ -70,42 +70,40 @@ Corpse side remains PASS:
 
 ## Exact next action
 
-Next technical stage:
-**S1.42Q successor design/build**
+Build **S1.42Q as a minimal LethalMin-native rollback**.
 
-Required:
-1. keep exact native `PikminAI.FinishTask()`;
-2. select actual dying-Hawk attackers by target identity, not fixed radius;
-3. block already-dead Baboon Hawks from future Pikmin AttackEnemy acquisition;
-4. preserve asymmetric living-Hawk/Pikmin behavior and corpse behavior.
+Plan:
+`Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md`
 
-Do not merely increase the radius.
-Do not restore direct `RemoveCurrentTask()`.
-Do not restore normal enemies or BCMER yet.
+Do not implement the previously proposed custom dead-Hawk target-identity/reacquisition layer first.
 
-## Temporary state
+Instead:
+1. remove `BaboonHawkDeathCleanup` completely;
+2. return enemy-death task completion to LethalMin;
+3. return corpse carrying/Onion routing entirely to LethalMin;
+4. remove reflection-heavy post-grab state repair;
+5. keep only the smallest proven Enemy -> Pikmin blockers/config switches.
 
-EnemyIsolation:
-enabled.
+The intended asymmetric rule is:
+- Pikmin -> enemies: native LethalMin;
+- enemies -> Pikmin: blocked;
+- Pikmin -> dead enemy bodies: native LethalMin.
 
-BCMER 1.71.0:
-disabled.
-
-Restore baseline:
-`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+EnemyIsolation remains enabled.
+BCMER 1.71.0 remains disabled.
 
 ## Controllers
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42P`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_SUCCESSOR_DESIGN`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_MINIMAL_ROLLBACK_BUILD`
 
 ## Anti-regression
 
 - no broad/inherited LethalMin Harmony scan;
 - no continuous global EnemyAI scan;
-- no direct RemoveCurrentTask Hawk-death finalizer;
-- no guessed TaskFinished() method;
-- no proximity-only selector as the complete attacker identity solution;
-- no silent BCMER 2.0.0 upgrade;
-- preserve S1.42C enemy restore baseline.
+- no project-local FinishTask/RemoveCurrentTask enemy-death lifecycle;
+- no custom Pikmin corpse carry/Onion routing;
+- no reflection-heavy after-the-fact leader repair if the offending Enemy -> Pikmin interaction can be blocked before mutation;
+- prefer native LethalMin config over Harmony when the config is proven effective;
+- no silent BCMER 2.0.0 upgrade.
