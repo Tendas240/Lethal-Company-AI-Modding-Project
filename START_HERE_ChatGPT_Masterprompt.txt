@@ -9,27 +9,29 @@ CURRENT CANONICAL TAKEOVER POINTER — 2026-09-03
 ======================================================================
 
 For the current project state, read immediately after this master prompt:
-1. Current/31_HANDOVER_S1.42H_TO_NEXT.md
-2. Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md
-3. Current/00_CURRENT_STATE.md
-4. Current/01_HANDOVER_CORE.md
-5. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-6. Current/Projektstatus_S1.42H.json
-7. Current/VERIFIKATION_S1.42H.txt
-8. Current/SHA256SUMS_S1.42H.txt
+1. Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md
+2. Current/00_CURRENT_STATE.md
+3. Current/01_HANDOVER_CORE.md
+4. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+5. Current/Projektstatus_S1.42I.json
+6. Current/VERIFIKATION_S1.42I.txt
+7. Current/SHA256SUMS_S1.42I.txt
+8. Current/31_HANDOVER_S1.42H_TO_NEXT.md
 9. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
 10. BuildSpecs/current.json
 11. RuntimeInbox/ACTIVE_BUILD.txt
 
 Current candidate:
-Profiles/LC V1 S1.42H Thumper Grab Guard.r2z
+Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z
 SHA-256:
-5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58
+c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97
 
 Current gate:
-S1.42H is built successfully and is awaiting runtime validation.
-Do not build S1.42I first.
-BCMER 1.71.0 is already disabled inside S1.42H for this final isolated enemy regression test.
+S1.42I is built successfully and is awaiting runtime validation.
+Do not build S1.42J first.
+Primary unresolved runtime checks are Baboon Hawk -> invincible Pikmin no-hold behavior and direct Thumper/Crawler <-> Pikmin zero-interaction validation.
+Puffer -> Pikmin is accepted from S1.42H evidence.
+BCMER 1.71.0 remains disabled inside S1.42I for the isolated enemy regression stage.
 
 
 WICHTIG:
