@@ -15,7 +15,6 @@
     "base_sha256": "c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97",
     "compatibility_plugin_version": "1.3.7",
     "compatibility_dll_sha256": "7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2",
-    "lethlmin_config_sha256": "f7b2698171d9d6a7b6c2e7b415ff2cb2c63459fb267ff0807ebe0f4bcf3e0bd3",
     "export_sha256": "89e03afcf1bc9b3390969f83709ad04dca865743de6249af0dde642d0e3e6fe5",
     "build_verification": {
       "github_actions": "success",
@@ -30,7 +29,8 @@
       ],
       "added_members": []
     },
-    "status": "built_successfully_awaiting_runtime"
+    "status": "built_successfully_awaiting_runtime",
+    "lethalmin_config_sha256": "f7b2698171d9d6a7b6c2e7b415ff2cb2c63459fb267ff0807ebe0f4bcf3e0bd3"
   },
   "superseded_candidate": {
     "build": "S1.42I",
@@ -64,7 +64,7 @@
     "total_packages": 188,
     "enabled_packages": 182,
     "disabled_packages": 6,
-    "lethlmin_attack_blacklist_added": "Baboon hawk"
+    "lethalmin_attack_blacklist_added": "Baboon hawk"
   },
   "next_action": {
     "type": "runtime_test",
