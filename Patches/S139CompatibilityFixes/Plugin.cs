@@ -22,7 +22,7 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.5";
+        public const string PluginVersion = "1.3.6";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
@@ -59,8 +59,9 @@ namespace S139CompatibilityFixes
                 "S1.39 Compatibility Fixes loaded. Ship-door anti-lockout, complete EnemyScan output, " +
                 "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, " +
                 "CodeRebirth kill-RPC Pikmin protection, the optional LethalModDataLib null-plugin guard, " +
-                "Puffer smoke Pikmin-effect guard, exact PikminAI GrabPikmin recovery + Thumper zero-interaction guard, " +
-                "Coroner Jetpack log-spam guard, throttled ship-door compatibility audit, the 140-second Jetpack target, " +
+                "Puffer smoke Pikmin-effect guard, exact PikminAI GrabPikmin recovery + Thumper zero-interaction guard + " +
+                "Baboon Hawk invincible-Pikmin hold guard, Coroner Jetpack log-spam guard, throttled ship-door compatibility audit, " +
+                "the 140-second Jetpack target, " +
                 "and the late-lifecycle isolated-enemy diagnostic are active.");
         }
 
@@ -1053,6 +1054,19 @@ namespace S139CompatibilityFixes
             if (!IsAlive(pikmin))
                 return true;
 
+            // S1.42H runtime evidence proved that BaboonBirdPikminEnemy can repeatedly
+            // re-grab an invincible Pikmin faster than the generic post-grab recovery
+            // can stabilize it. Keep normal Baboon Hawk behavior for mortal Pikmin,
+            // but never enter LethalMin's grabbed/death-timer state for an invincible
+            // Pikmin. This is intentionally narrow and does not blacklist Baboon Hawks.
+            if (IsBaboonHawkSnapPosition(snapPos) && IsInvinciblePikmin(pikmin))
+            {
+                Plugin.Log.LogWarning(
+                    "[BaboonHawkPikminGuard] Blocked Baboon Hawk -> invincible Pikmin GrabPikmin " +
+                    "before hold/leader/death-timer state mutation.");
+                return false;
+            }
+
             object adapter = FindEnemyAdapterFromSnapPosition(snapPos);
             __state = Capture(pikmin, adapter, __originalMethod);
             return true;
@@ -1230,6 +1244,94 @@ namespace S139CompatibilityFixes
                 if (normalized.IndexOf("crawler", StringComparison.OrdinalIgnoreCase) >= 0 ||
                     normalized.IndexOf("thumper", StringComparison.OrdinalIgnoreCase) >= 0)
                     return true;
+            }
+
+            return false;
+        }
+
+        private static bool IsBaboonHawkSnapPosition(Transform snapPos)
+        {
+            if (snapPos == null)
+                return false;
+
+            EnemyAI enemy = snapPos.GetComponentInParent<EnemyAI>();
+            if (enemy != null)
+            {
+                string enemyName =
+                    enemy.enemyType != null
+                        ? enemy.enemyType.enemyName
+                        : enemy.GetType().Name;
+
+                string normalized = DiagnosticEnemyIsolation.NormalizeEnemyName(enemyName);
+                if (normalized == "baboonhawk" || normalized == "baboonbird")
+                    return true;
+            }
+
+            // Some LethalMin adapters/snap transforms are nested under helper objects
+            // rather than directly under the EnemyAI component. Use component type and
+            // hierarchy names only as narrow fallbacks; never perform a scene-wide scan.
+            foreach (MonoBehaviour behaviour in snapPos.GetComponentsInParent<MonoBehaviour>(true))
+            {
+                if (behaviour == null)
+                    continue;
+
+                string normalizedType = DiagnosticEnemyIsolation.NormalizeEnemyName(
+                    behaviour.GetType().FullName ?? behaviour.GetType().Name);
+                if (normalizedType.IndexOf("baboonhawk", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    normalizedType.IndexOf("baboonbird", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return true;
+            }
+
+            for (Transform current = snapPos; current != null; current = current.parent)
+            {
+                string normalized = DiagnosticEnemyIsolation.NormalizeEnemyName(current.name);
+                if (normalized.IndexOf("baboonhawk", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    normalized.IndexOf("baboonbird", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static bool IsInvinciblePikmin(object pikmin)
+        {
+            if (!IsAlive(pikmin))
+                return false;
+
+            Type type = pikmin.GetType();
+
+            foreach (FieldInfo field in GetFields(type))
+            {
+                if (field.FieldType != typeof(bool) ||
+                    field.Name.IndexOf("invinc", StringComparison.OrdinalIgnoreCase) < 0)
+                    continue;
+
+                try
+                {
+                    if ((bool)field.GetValue(pikmin))
+                        return true;
+                }
+                catch
+                {
+                }
+            }
+
+            foreach (PropertyInfo property in GetProperties(type))
+            {
+                if (property.PropertyType != typeof(bool) ||
+                    !property.CanRead ||
+                    property.GetIndexParameters().Length != 0 ||
+                    property.Name.IndexOf("invinc", StringComparison.OrdinalIgnoreCase) < 0)
+                    continue;
+
+                try
+                {
+                    if ((bool)property.GetValue(pikmin, null))
+                        return true;
+                }
+                catch
+                {
+                }
             }
 
             return false;
