@@ -228,10 +228,11 @@ Use config first; do not Harmony-patch audio unless runtime proves the config is
 
 User wants the old juijui-profile capacity/duration.
 
-Current:
-- ButteRyBalance `Reduce Battery = true`
-- 40-second battery.
-- current vanilla = 50 seconds.
+Current S1.42G:
+- ButteRyBalance `Reduce Battery = false`;
+- project-local loaded Jetpack Item target = 140 seconds;
+- JetpackFixes `MidAirExplosions = Off`;
+- actual runtime duration/explosion behavior is still unvalidated in a clean representative run.
 
 The committed/indexed juijui profile contains historical Bigger Battery v1.0.2 config:
 - `JetpackBatteryUsage = 140`
