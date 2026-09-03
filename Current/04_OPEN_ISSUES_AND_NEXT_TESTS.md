@@ -261,10 +261,13 @@ Before enabling S1.42D decide whether the next candidate is:
 
 Do not build merely because the draft exists.
 
-## Historical juijui profile — pending upload and extraction
+## Historical juijui profile — uploaded and indexed
 
-Canonical expected path:
+Canonical path:
 `References/LegacyProfiles/juijui/juijui.r2z`
+
+Readable snapshot:
+`References/LegacyProfiles/juijui/Extracted/`
 
 Purpose:
 - preserve the original project target profile as primary historical evidence;
@@ -275,3 +278,40 @@ See:
 `Current/18_JUIJUI_LEGACY_REFERENCE.md`
 
 This is a reference task and must not delay the higher-priority generic LethalMin enemy grab/bite + invincible-Pikmin state repair.
+
+
+## Jetpack explosion behavior — next build
+
+User requirement:
+the Jetpack must not explode merely because it is boosted/used for too long.
+
+Current S1.42C:
+- Jetpack Fixes v1.6.3
+- `MidAirExplosions = OnlyTooHigh`
+
+Next-build target:
+- `MidAirExplosions = Off`
+- sustained/high-speed boost must not trigger a Jetpack explosion.
+
+Jetpack Fixes still documents collision-with-solid-geometry crash behavior separately. The immediate binding requirement is to eliminate boost/speed/self-destruction during normal Jetpack use. If runtime shows another non-collision usage explosion path, patch it narrowly.
+
+Combined next Jetpack target:
+- historical juijui capacity target: 140 seconds;
+- no mid-air/high-speed/continuous-boost explosion.
+
+## Next runtime candidate — S1.42D
+
+S1.42D should be a focused regression candidate based on S1.42C.
+
+Planned scope:
+- generic LethalMin grab/bite + Invincible Pikmin state repair;
+- retain Thumper/Crawler total noninteraction guard;
+- retain Puffer smoke immunity guard;
+- Jetpack target 140 seconds;
+- Jetpack `MidAirExplosions = Off`;
+- Functional Microwave edit gate true + volume 0.7.
+
+Do not include equal-interior tuning, BCMER 12.5% x8, CullFactory changes, Mausoleum fog or Shatteredrooms restriction changes in S1.42D.
+
+Primary acceptance goal:
+prove that an enemy can grab/bite an invincible Pikmin without leaving it in the repeated `Leader is null when following` state.
