@@ -109,8 +109,11 @@ Profiles containing the project-local DLL must be imported with Gale:
 12. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
 13. `BuildSpecs/current.json`
 14. `RuntimeInbox/ACTIVE_BUILD.txt`
-15. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
-16. `Current/NEXT_CHAT_START_PROMPT_S1.42M.txt`
+15. `Current/49_REPOSITORY_HANDOVER_AUDIT_S1.42M.md`
+16. `Current/Aktive_Modliste_S1.42M.txt`
+17. `Current/DATEIINVENTAR_S1.42M.txt`
+18. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+19. `Current/NEXT_CHAT_START_PROMPT_S1.42M.txt`
 
 ## Critical persistent rules
 
