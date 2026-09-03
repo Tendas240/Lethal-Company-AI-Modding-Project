@@ -2,6 +2,12 @@
 
 ## Immediate active gate — S1.42M Baboon Hawk death cleanup
 
+Detailed predecessor-runtime analysis:
+`Current/47_S1.42L_BABOON_ATTACK_PASS_DEATH_REGRESSION_ANALYSIS.md`
+
+Canonical detailed handover:
+`Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md`
+
 Profile:
 `Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z`
 
