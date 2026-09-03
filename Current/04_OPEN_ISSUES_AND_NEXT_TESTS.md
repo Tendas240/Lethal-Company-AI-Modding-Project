@@ -253,7 +253,7 @@ When naturally encountered, continue checking:
 - `IDLE_HANDOVER_AFTER_S1.42C_RUNTIME`
 
 `BuildSpecs/S1.42D_PLAN.md`:
-**DRAFT ONLY — DO NOT BUILD YET**
+**BUILT — AWAITING RUNTIME VALIDATION**
 
 Before enabling S1.42D decide whether the next candidate is:
 - a small generic Pikmin-state + Microwave/Jetpack regression build;
@@ -315,3 +315,14 @@ Do not include equal-interior tuning, BCMER 12.5% x8, CullFactory changes, Mauso
 
 Primary acceptance goal:
 prove that an enemy can grab/bite an invincible Pikmin without leaving it in the repeated `Leader is null when following` state.
+
+
+## S1.42D built profile
+
+`Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z`
+
+SHA-256:
+`b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c`
+
+Use the exact runtime checklist in:
+`Current/20_S1.42D_BUILD_AND_TEST.md`
