@@ -9,18 +9,33 @@
     "status": "runtime_accepted"
   },
   "latest_valid_runtime_evidence": {
-    "build": "S1.42R",
-    "path": "RuntimeEvidence/S1.42R/20260903T203100Z/",
-    "log_sha256": "a45832c3e50d04a0dab29fc844c37a62bb6b08beced8da86e6c7fcf584b09df4",
-    "verdict": "FAIL_PROJECT_DISABLED_LETHALMIN_BABOON_DEATH_UNLATCH_LIFECYCLE",
-    "root_cause_doc": "Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md",
-    "second_run_attackers": [
-      "Yellow Pikmin_LuMKh",
+    "build": "S1.42S",
+    "path": "RuntimeEvidence/S1.42S/20260903T205550Z/",
+    "log_sha256": "9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea",
+    "verdict": "PASS_FOCUSED_BABOON_PIKMIN_LIFECYCLE_RESTORED",
+    "acceptance_doc": "Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md",
+    "attackers": [
       "Yellow Pikmin_IkVZWQe",
-      "Yellow Pikmin_3wnH"
+      "Yellow Pikmin_3wnH",
+      "Yellow Pikmin_ruCpzY"
     ],
-    "all_three_remained_on_stale_attack_task_until_teardown": true,
-    "s142r_runtime_completion_marker_count": 0
+    "hawk_death_time": "20:52:32.546",
+    "post_death_stale_attack_hits": 0,
+    "all_three_recoverable": true,
+    "all_three_reassigned_to_player": true,
+    "corpse_carry_to_onion_pass": true,
+    "work_state_no_task_count": 0,
+    "leader_null_count": 0,
+    "forbidden_adapter_disable_marker_count": 0,
+    "removed_s142r_latched_death_guard_marker_count": 0,
+    "one_way_collision_guard_exercised": true,
+    "bite_or_grab_failsafe_exercised": false,
+    "non_blocking_teardown_observation": {
+      "type": "LethalMin PikminNoticeZone NetworkObjectReference ArgumentException",
+      "phase": "lobby disconnect after ShipOnion save",
+      "classification": "monitor_only_non_blocking",
+      "user_facing_regression_observed": false
+    }
   },
   "corrected_root_cause": {
     "owner": "project compatibility plugin",
@@ -38,7 +53,7 @@
     "name": "Baboon Adapter Lifecycle Restore",
     "profile": "Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z",
     "sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee",
-    "status": "built_awaiting_runtime_validation",
+    "status": "focused_runtime_accepted_isolated_regression_pass",
     "base_profile": "Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z",
     "base_sha256": "009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101",
     "compatibility_plugin": {
@@ -66,6 +81,13 @@
       ],
       "config_delta_from_s142r": "none",
       "package_delta_from_s142r": "none"
+    },
+    "runtime_acceptance": {
+      "document": "Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md",
+      "evidence": "RuntimeEvidence/S1.42S/20260903T205550Z/",
+      "log_sha256": "9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea",
+      "scope": "Baboon Hawk/Pikmin isolated regression gate",
+      "final_full_gameplay_baseline_promoted": false
     }
   },
   "temporary_isolated_test_state": {
@@ -87,8 +109,8 @@
     "base_sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee"
   },
   "next_action": {
-    "type": "focused_runtime_test",
-    "instruction": "Import S1.42S via Gale Advanced options -> Import all files. Latch at least 3 Pikmin onto one Baboon Hawk, kill it, verify all fall off/stop attacking and exact follower count recovers. Verify Hawk -> Pikmin bite/grab remains blocked and corpse remains carryable, then commit full LogOutput.log to RuntimeInbox/Current/."
+    "type": "restore_normal_enemy_state",
+    "instruction": "Build the next controlled candidate from S1.42S with the temporary EnemyIsolation overlay disabled and restore/carry forward enemy-related configuration exactly from Current/ENEMY_SPAWN_BASELINE_S1.42C.json except for later explicitly accepted permanent fixes. Keep package versions unchanged. Do not silently upgrade BCMER; reintroduce exact BCMER 1.71.0 only according to the controlled roadmap after/with an explicitly reviewed restoration stage."
   },
   "permanent_engineering_policy": {
     "project_local_patch_safety": {
