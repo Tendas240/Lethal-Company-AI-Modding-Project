@@ -1,20 +1,25 @@
 {
-  "build_id": "S1.42T",
-  "profile_name": "LC V1 S1.42T Normal Enemy Restore",
-  "base_profile": "Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z",
-  "base_sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee",
-  "output_profile": "Profiles/LC V1 S1.42T Normal Enemy Restore.r2z",
-  "output_sha256": "a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10",
+  "build_id": "S1.42U",
+  "profile_name": "LC V1 S1.42U BCMER 1.71.0 Reactivation Gate",
+  "base_profile": "Profiles/LC V1 S1.42T Normal Enemy Restore.r2z",
+  "base_sha256": "a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10",
+  "output_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
+  "output_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
   "zip_members": 331,
   "changed_existing_members": [
-    "export.r2x",
-    "BepInEx/config/tendas.s139.compatibilityfixes.cfg"
+    "export.r2x"
   ],
   "added_members": [],
-  "mod_state_changes": [],
+  "mod_state_changes": [
+    {
+      "name": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+      "version": "1.71.0",
+      "enabled": true
+    }
+  ],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42T",
+  "snapshot_dir": "ProfileSources/S1.42U",
   "snapshot": {
     "entries": 331,
     "text_entries": 330
