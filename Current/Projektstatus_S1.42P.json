@@ -112,14 +112,15 @@
   "build_controller": {
     "path": "BuildSpecs/current.json",
     "enabled": false,
-    "build_id": "IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_SUCCESSOR_DESIGN",
+    "build_id": "IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_MINIMAL_ROLLBACK_BUILD",
     "base_profile": "Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z",
     "base_sha256": "11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5"
   },
   "next_action": {
-    "type": "successor_design_and_build",
+    "type": "minimal_lethalmin_native_rollback_build",
     "proposed_build": "S1.42Q",
-    "instruction": "Keep native PikminAI.FinishTask(), replace proximity-only attacker identity with an exact/direct dying-Hawk target identity route, and block already-dead Baboon Hawks from future Pikmin AttackEnemy reacquisition. Do not merely widen the 4.0m radius and do not restore RemoveCurrentTask.",
+    "plan": "Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md",
+    "instruction": "Return Pikmin->enemy attack/death handling and Pikmin->enemy-body carrying fully to native LethalMin. Remove project-local BaboonHawkDeathCleanup/FinishTask/4m selection and reflection-heavy post-grab state repair. Keep only proven minimal Enemy->Pikmin prevention shims and native config protections.",
     "do_not_restore_before_pass": [
       "EnemyIsolation",
       "normal enemy baseline",
@@ -156,7 +157,8 @@
       "no Leader is null when following loop",
       "Dead Baboon Hawk corpse reaches Onion",
       "living Baboon Hawks ignore corpse"
-    ]
+    ],
+    "superseded_successor_direction": "Do not add dead-Hawk target identity/reacquisition filtering to Pikmin task lifecycle first; instead remove the custom Hawk-death lifecycle interception and validate native LethalMin behavior."
   },
   "handover": {
     "newest_runtime_analysis": "Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md",
@@ -164,7 +166,8 @@
     "previous_audit": "Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md",
     "verification": "Current/VERIFIKATION_S1.42P.txt",
     "sha256_sums": "Current/SHA256SUMS_S1.42P.txt",
-    "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42P.txt"
+    "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42P.txt",
+    "next_stage_plan": "Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md"
   },
   "known_nonfunctional_drift": [
     "Current/02_TECHNICAL_BASELINE.md contains older current-wording from earlier S1.42 states",
