@@ -85,13 +85,13 @@ Source:
 `Patches/S139CompatibilityFixes/`
 
 Current source version:
-**1.3.1**
+**1.3.2**
 
-Latest runtime-proven non-crashing version:
-**1.2.0 in S1.42C**
+Latest runtime-proven non-crashing startup version:
+**1.3.1 in S1.42E**
 
-S1.42E embedded DLL SHA-256:
-`caf20c785245396d9f31ff32b556cbe75d64b87a5a676807184093a6cef78eab`
+S1.42F embedded DLL SHA-256:
+`8172c75bbcf75108266e1ce8d2808ec072f6cfc164acaf562baa0345123915f3`
 
 Gale:
 **Advanced options -> Import all files**
@@ -201,24 +201,30 @@ S1.42D:
 Evidence:
 `RuntimeEvidence/S1.42D/20260903T084247Z/`
 
-Latest built candidate:
-**S1.42E**
+S1.42E runtime:
+**STARTUP PASS, BUT INTERACTION TEST BLOCKED BY PERIODIC ENEMY-ISOLATION FREEZES**
 
-`Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
+Evidence:
+`RuntimeEvidence/S1.42E/20260903T091053Z/`
+
+Latest built candidate:
+**S1.42F**
+
+`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
 
 SHA-256:
-`4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348`
+`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
 
 Status:
-**built successfully; awaiting first runtime startup test**
+**built successfully; awaiting runtime lobby-smoothness test**
 
 `BuildSpecs/current.json`:
-`IDLE_AFTER_S1.42E_BUILD_AWAITING_RUNTIME`
+`IDLE_AFTER_S1.42F_BUILD_AWAITING_RUNTIME`
 
 `RuntimeInbox/ACTIVE_BUILD.txt`:
-`S1.42E`
+`S1.42F`
 
-Do not build another candidate before S1.42E runtime evidence is evaluated.
+Do not build another candidate before S1.42F runtime evidence is evaluated.
 
 ## New-chat takeover
 
@@ -244,12 +250,12 @@ Use juijui as a historical target/reference, not a V81 build base.
 
 ## Immediate next action
 
-Test S1.42E.
+Test S1.42F.
 
 First gate:
-**reach Main Menu without startup crash.**
+**reach Main Menu, host into the ship lobby in orbit, and confirm the S1.42E once-per-second freezes are gone.**
 
-If it passes, continue:
+If smooth, continue in the same run:
 - Baboon Hawk generic invincible-Pikmin state recovery;
 - Thumper/Crawler <-> Pikmin zero interaction;
 - Puffer smoke/attack no Pikmin effect;
