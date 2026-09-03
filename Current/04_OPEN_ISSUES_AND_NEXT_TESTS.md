@@ -1,36 +1,49 @@
 # 04 — Open Issues and Next Tests
 
-## Immediate active gate — S1.42I Baboon Hawk Grab Guard
+## Immediate active gate — S1.42J Baboon Hawk Zero Interaction
 
 Profile:
-`Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z`
+`Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z`
 
 SHA-256:
-`c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97`
+`736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7`
 
 Import with:
 **Gale -> Advanced options -> Import all files**
+
+Binding Baboon Hawk rule:
+**Baboon Hawks and Pikmin do not interact in either direction.**
 
 Primary test:
 1. startup/Main Menu and host;
 2. route/land on a normal moon;
 3. confirm `Enemies` still shows diagnostic targets;
-4. deliberately allow a Baboon Hawk to attack invincible Pikmin;
-5. expected marker:
-   `[BaboonHawkPikminGuard] Blocked Baboon Hawk -> invincible Pikmin GrabPikmin before hold/leader/death-timer state mutation.`
-6. verify no Pikmin is immobilized/held in the beak, no grabbed death timer starts, and no Baboon-caused leader-null loop follows;
-7. deliberately let a Crawler/Thumper cross a Pikmin group;
-8. expected marker:
-   `[ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.`
-9. verify no Thumper/Pikmin interaction in either direction;
-10. Puffer does not need another forced test; spot-check only if convenient;
-11. upload the complete fresh log to `RuntimeInbox/Current/`.
+4. deliberately place a Pikmin group around one or more Baboon Hawks;
+5. Baboon Hawks must ignore Pikmin rather than target/chase/bite/grab/hold them;
+6. Pikmin must not attack/latch Baboon Hawks;
+7. expected initialization marker:
+   `[BaboonHawkPikminGuard] Zero-interaction initialized; ...`
+8. expected spawned-Hawk marker:
+   `[BaboonHawkPikminGuard] Disabled LethalMin.BaboonBirdPikminEnemy on BaboonHawkEnemy(Clone). Baboon Hawk -> Pikmin targeting/chase/bite adapter is inactive.`
+9. `BitePikmin` / `GrabPikmin` failsafe markers should ideally not be needed during normal zero-interaction; if one fires, note whether visible chase/interaction occurred;
+10. deliberately let a Crawler/Thumper cross a Pikmin group and validate zero interaction in both directions;
+11. Puffer does not need another forced test; spot-check only if convenient;
+12. upload the complete fresh log to `RuntimeInbox/Current/`.
 
 BCMER 1.71.0 remains intentionally disabled.
 EnemyIsolation remains intentionally enabled.
 Functional Microwave rarity remains unchanged.
 
-Do not build S1.42J before this runtime gate is evaluated.
+Do not build S1.42K before this runtime gate is evaluated.
+
+## Superseded untested candidate — S1.42I
+
+S1.42I was built successfully but never runtime-tested.
+
+It is not the active gate because the user changed the desired Baboon-Hawk behavior before testing:
+instead of merely preventing the broken invincible-Pikmin grab state, Baboon Hawks and Pikmin should now completely ignore each other.
+
+S1.42I remains historical build evidence only.
 
 ## Completed gate — S1.42H runtime analysis
 
