@@ -14,15 +14,17 @@
     "manifest_total": 188,
     "manifest_enabled": 183,
     "manifest_disabled": [
-      "loaforc-loaforcsSoundAPI_LethalCompany 1.0.0",
-      "Zigzag-ChillaxScraps 1.10.3",
-      "Rozebud-FOV_Adjust 2.0.1",
-      "qwbarch-Concentus 2.4.0",
-      "Kittenji-Football 1.2.8"
+      "AJB-Keep_hangar_ship_door_closed 1.0.0",
+      "zealsprince-Malfunctions 1.10.3",
+      "Reiko88-Observer 2.0.1",
+      "ProjectSCP-SCP999 2.4.0",
+      "Kittenji-Dont_Touch_Me 1.2.8"
     ],
     "status": "runtime_tested_regression_candidate_not_finally_accepted",
     "runtime_evidence": "RuntimeEvidence/S1.42C/20260902T235238Z/",
-    "runtime_log_sha256": "60b349dd7b6de9690c6629f2988949c1eaa525c208b3d20c5df673b972dd9cca"
+    "runtime_log_sha256": "60b349dd7b6de9690c6629f2988949c1eaa525c208b3d20c5df673b972dd9cca",
+    "manifest_source": "ProfileSources/S1.42C/export.r2x",
+    "manifest_verified_directly_from_export": true
   },
   "lineage": {
     "s142a": {
@@ -94,6 +96,14 @@
     "recent_work": "Current/06_RECENT_WORK_S1.42A-S1.42C.md",
     "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42C.txt",
     "readme_handover": "Current/README_Handover_S1.42C.txt",
-    "active_modlist": "Current/Aktive_Modliste_S1.42C.txt"
+    "active_modlist": "Current/Aktive_Modliste_S1.42C.txt",
+    "modlist_correction": {
+      "date": "2026-09-03",
+      "reason": "Earlier generated Aktive_Modliste_S1.42C.txt had shifted package/version associations.",
+      "corrected_from": "ProfileSources/S1.42C/export.r2x",
+      "verified_total": 188,
+      "verified_enabled": 183,
+      "verified_disabled": 5
+    }
   }
 }
