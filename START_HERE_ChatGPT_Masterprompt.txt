@@ -9,29 +9,30 @@ CURRENT CANONICAL TAKEOVER POINTER — 2026-09-03
 ======================================================================
 
 For the current project state, read immediately after this master prompt:
-1. Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md
-2. Current/00_CURRENT_STATE.md
-3. Current/01_HANDOVER_CORE.md
-4. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-5. Current/Projektstatus_S1.42I.json
-6. Current/VERIFIKATION_S1.42I.txt
-7. Current/SHA256SUMS_S1.42I.txt
-8. Current/31_HANDOVER_S1.42H_TO_NEXT.md
+1. Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md
+2. Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md
+3. Current/00_CURRENT_STATE.md
+4. Current/01_HANDOVER_CORE.md
+5. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+6. Current/Projektstatus_S1.42J.json
+7. Current/VERIFIKATION_S1.42J.txt
+8. Current/SHA256SUMS_S1.42J.txt
 9. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
 10. BuildSpecs/current.json
 11. RuntimeInbox/ACTIVE_BUILD.txt
 
 Current candidate:
-Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z
+Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z
 SHA-256:
-c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97
+736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7
 
 Current gate:
-S1.42I is built successfully and is awaiting runtime validation.
-Do not build S1.42J first.
-Primary unresolved runtime checks are Baboon Hawk -> invincible Pikmin no-hold behavior and direct Thumper/Crawler <-> Pikmin zero-interaction validation.
-Puffer -> Pikmin is accepted from S1.42H evidence.
-BCMER 1.71.0 remains disabled inside S1.42I for the isolated enemy regression stage.
+S1.42J is built successfully and is awaiting runtime validation.
+Do not build S1.42K first.
+S1.42I was built but never runtime-tested and is superseded by the user's binding rule that Baboon Hawks and Pikmin must not interact in either direction.
+Puffer -> Pikmin is already accepted from S1.42H evidence.
+Direct Thumper/Crawler <-> Pikmin runtime validation is still pending.
+BCMER 1.71.0 remains disabled inside S1.42J for the isolated enemy regression stage.
 
 
 WICHTIG:
