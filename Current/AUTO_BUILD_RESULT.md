@@ -1,16 +1,16 @@
-# Automated profile build result - S1.42L
+# Automated profile build result - S1.42M
 
-- Profile: LC V1 S1.42L Pikmin Counterattack Restore
-- Base: Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z
-- Base SHA-256: bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2
-- Output: Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z
-- Output SHA-256: fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722
+- Profile: LC V1 S1.42M Baboon Hawk Death Cleanup
+- Base: Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z
+- Base SHA-256: fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722
+- Output: Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z
+- Output SHA-256: 9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7
 - ZIP members: 331
-- Text snapshot: ProfileSources/S1.42L (330 readable files)
+- Text snapshot: ProfileSources/S1.42M (330 readable files)
 
 ## Changed existing members
 
-- BepInEx/config/NoteBoxz.LethalMin.cfg
+- BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
 - export.r2x
 
 ## Added members
