@@ -55,108 +55,145 @@ Source:
 
 Current source version:
 
-**1.3.5**
+**1.3.14**
 
-Runtime/build status:
-- v1.2.0 is proven non-crashing in S1.42C;
-- v1.3.0 in S1.42D caused a startup crash due to an over-broad LethalMin Harmony scan;
-- v1.3.1 in S1.42E is runtime-proven startup-safe, but its EnemyIsolation constructor path caused periodic Gordion freezes;
-- v1.3.2 in S1.42F fixed the constructor loop, but routed moons still stalled because of continuous global EnemyAI scanning and Coroner Jetpack spam;
-- v1.3.3 in the clean S1.42G BCMER-off retest is runtime-proven: periodic routed-moon freezes are resolved and the previous Coroner `PlayerController was null` Jetpack flood is gone;
-- v1.3.5 is embedded in S1.42H and is **built successfully but not yet runtime-validated**.
+Current tested technical descendant:
 
-The v1.3.4 late-lifecycle isolation work was an intermediate source/plan step and was not promoted as a separate canonical runtime profile.
+**S1.42S — Baboon Adapter Lifecycle Restore**
 
-Build rule:
+Current profile:
 
-The authoritative current DLL is compiled from `Plugin.cs` by the repository-first GitHub Actions profile build and injected into the target profile. Standalone old DLL/ZIP artifacts under `Patches/S139CompatibilityFixes/` are historical unless their hash/version is explicitly identified as current.
+`Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z`
 
-Current S1.42H embedded DLL:
+Profile SHA-256:
+
+`addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee`
+
+Current embedded compatibility DLL:
 
 `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`
 
 SHA-256:
 
-`d67f8f4bc2012f5b74086eb268fcb191f6990c93041617e9ef35c635ea33f186`
+`3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`
 
-Expected general runtime marker:
+Runtime evidence:
 
-`S1.39 Compatibility Fixes loaded.`
-
-Expected S1.42H exact LethalMin marker:
-
-`[LethalMinStateGuard] Directly patched declared LethalMin.PikminAI.GrabPikmin(Transform,float,int) exactly once. No inherited/derived PikminAI Harmony scan is used.`
-
-Functions include:
-1. ship-door anti-lockout;
-2. state-change DoorAudit / DoorFailsafe diagnostics;
-3. transition-only BCMER DoorFailure forced-open recognition;
-4. complete EnemyScan terminal output;
-5. normal-scrap CodeRebirth Currency filtering;
-6. defensive late map-object Currency filtering;
-7. defensive Flash Turret filtering;
-8. direct CodeRebirth utility-kill Pikmin/Puffmin guard;
-9. null-safe LethalModDataLib 1.2.2 ModDataAttribute registration guard;
-10. targeted Puffer-smoke LethalMin Pikmin-effect guard;
-11. Coroner Jetpack `JetpackItem.Update` spam guard;
-12. 140-second loaded Jetpack Item target;
-13. temporary late-lifecycle EnemyIsolation diagnostic;
-14. exact `PikminAI.GrabPikmin` generic invincible-Pikmin state recovery;
-15. Crawler/Thumper -> Pikmin zero-interaction guard.
-
-The late map-object Currency filter is defense-in-depth only. S1.39 runtime proved it cannot replace DawnLib-native config control.
-
-### Gale import
-
-Use **Advanced options -> Import all files**.
-
-## Latest technical descendant: S1.42L
-
-Profile:
-
-`Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z`
-
-SHA-256:
-
-`fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722`
-
-Status:
-
-**runtime-tested partial pass; only Pikmin -> Baboon Hawk explicit attack/latch validation remains; not yet promoted to final gameplay acceptance**
-
-Compatibility plugin:
-- version 1.3.7
-- DLL SHA-256 `7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2`
-
-Readable exact profile contents:
-
-`ProfileSources/S1.42L/`
-
-Latest valid runtime evidence:
-
-`RuntimeEvidence/S1.42L/20260903T151817Z/`
+`RuntimeEvidence/S1.42S/20260903T205550Z/`
 
 Runtime log SHA-256:
 
-`402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd`
+`9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea`
 
-Confirmed in the current technical descendant:
-- Thumper/Crawler -> Pikmin broken GrabPikmin state is blocked;
-- Pikmin -> Thumper/Crawler attack/latch works;
-- Puffer -> Pikmin is PASS;
-- Jetpack is PASS/closed;
-- Baboon Hawk -> Pikmin adapter/bite/grab protection is PASS;
-- only Pikmin -> Baboon Hawk direct attack/latch remains to be explicitly runtime-confirmed.
+Focused runtime status:
 
-Temporary diagnostic state remains:
-- EnemyIsolation enabled;
-- exact BCMER 1.71.0 disabled.
+**PASS**
 
-After the remaining S1.42L direction passes:
-- remove/disable EnemyIsolation;
-- restore full normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
-- re-enable exact BCMER 1.71.0;
-- preserve accepted permanent asymmetric Pikmin interaction rules.
+### Important compatibility chronology
+
+Historical failures remain important:
+
+- v1.3.0 / S1.42D: startup crash from an over-broad LethalMin Harmony scan;
+- v1.3.1 / S1.42E: startup-safe, but EnemyIsolation constructor path caused periodic Gordion freezes;
+- v1.3.2 / S1.42F: constructor loop fixed, but continuous global EnemyAI scanning and Coroner Jetpack spam still caused routed-moon problems;
+- v1.3.3 / S1.42G: periodic routed-moon freeze and Coroner Jetpack flood resolved;
+- later versions progressively narrowed Thumper/Puffer/Baboon-Hawk interaction handling;
+- v1.3.13 / S1.42R: runtime failed because the project disabled complete `BaboonBirdPikminEnemy`, suppressing inherited native death/unlatch cleanup;
+- v1.3.14 / S1.42S: keeps `BaboonBirdPikminEnemy` enabled and blocks only narrow Hawk -> Pikmin entry points; focused runtime gate passed.
+
+Canonical S1.42R corrected root cause:
+
+`Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
+
+Canonical S1.42S acceptance:
+
+`Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+
+Permanent patch-safety policy:
+
+`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+
+### Current runtime markers
+
+General load:
+
+`S1.39 Compatibility Fixes loaded.`
+
+Native ownership:
+
+`[LethalMinNativeOwnership] ... BaboonBirdPikminEnemy component stays enabled.`
+
+Baboon-Hawk guard initialization:
+
+`[BaboonHawkPikminGuard] One-way Hawk -> Pikmin protection initialized; collisionPatched=True; bitePatched=True; BaboonBirdPikminEnemy remains ENABLED so native PikminEnemy.Update death/unlatch cleanup can run.`
+
+Forbidden old marker:
+
+`[BaboonHawkPikminGuard] Disabled LethalMin.BaboonBirdPikminEnemy`
+
+### Current functions
+
+The cumulative plugin includes:
+
+1. ship-door anti-lockout;
+2. state-change DoorAudit / DoorFailsafe diagnostics;
+3. BCMER DoorFailure compatibility;
+4. complete EnemyScan terminal output;
+5. CodeRebirth Currency natural-spawn filtering;
+6. defensive map-object Currency filtering;
+7. Flash Turret suppression/filtering;
+8. CodeRebirth utility-kill Pikmin/Puffmin protection;
+9. null-safe LethalModDataLib ModDataAttribute registration;
+10. targeted Puffer-smoke Pikmin-effect removal;
+11. Coroner Jetpack log-spam guard;
+12. Jetpack 140-second target;
+13. temporary EnemyIsolation diagnostic;
+14. exact PikminAI enemy-grab prevention for proven Thumper/Baboon Hawk gaps;
+15. Baboon Hawk -> Pikmin collision/bite protection that preserves LethalMin's adapter lifecycle;
+16. Dead Baboon Hawk corpse guard for living Hawks.
+
+The temporary EnemyIsolation feature is **not** a permanent gameplay rule and must be disabled in the next restore build.
+
+### S1.42S temporary state
+
+EnemyIsolation:
+
+**enabled**
+
+`Isolated Enemy Regression = true`
+
+BCMER exact 1.71.0:
+
+**disabled**
+
+LethalMin:
+
+- `Thumper Bite Limit = 3`
+- `Crawler` intentionally absent from Attack Blacklist
+
+### Next technical descendant
+
+Planned:
+
+**S1.42T — Normal Enemy Restore**
+
+Not built at this baseline update.
+
+Exact plan:
+
+`BuildSpecs/S1.42T_PLAN.md`
+
+Exact restore contract:
+
+`Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md`
+
+S1.42T must disable only the temporary EnemyIsolation diagnostic while preserving the v1.3.14 compatibility plugin and later accepted LethalMin values. Exact BCMER 1.71.0 remains disabled for this first restore gate.
+
+### Gale import
+
+Profiles containing the project-local compatibility DLL must be imported with:
+
+**Advanced options -> Import all files**.
 
 ## Accepted CodeRebirth/DawnLib natural-spawn control
 
