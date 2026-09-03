@@ -113,6 +113,26 @@ Then it automatically disarms `RuntimeAnalysis/QUERY.json`.
 
 This gives ChatGPT targeted, exact access to arbitrary portions of a 500 MB-class source without committing the full expanded log to `main`.
 
+## Automated pipeline self-test
+
+The runtime-log infrastructure has a repository-native synthetic end-to-end test:
+
+- workflow: `.github/workflows/runtime-pipeline-selftest.yml`;
+- test program: `BuildSystem/runtime_pipeline_selftest.py`.
+
+It runs whenever the runtime analyzer/ingest/query/preparation code or the self-test workflow changes and verifies, without committing test evidence:
+
+- every-line analyzer execution and marker counts;
+- lossless bounded chat-chunk generation;
+- normalized signature export;
+- reconstruction of split ZIP input;
+- very-large ingest/provenance generation;
+- pattern query with context;
+- exact line-range query;
+- large-log upload manifest preparation.
+
+Initial infrastructure verification: GitHub Actions run `33817297654` completed **successfully** on 2026-09-04. Future changes to this pipeline must keep the self-test green.
+
 ## GitHub size reality
 
 A normal GitHub Git blob has a hard per-file limit around 100 MiB, and browser upload paths can be lower. Therefore an uncompressed 500 MB log must not be committed as one file.
