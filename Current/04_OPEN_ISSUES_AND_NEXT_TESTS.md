@@ -1,56 +1,30 @@
 # 04 — Open Issues and Next Tests
 
-## Handover status
+## Active gate
 
-Primary takeover:
+**S1.42U — BCMER 1.71.0 Reactivation Gate** is built and build-verified, but **runtime validation is still open**.
 
-`Current/75_FINAL_HANDOVER_S1.42T_PASS_S1.42U_NEXT.md`
+Build verification:
 
-S1.42T is accepted. S1.42U is plan-only and **not built**. `BuildSpecs/current.json` is disarmed.
+`Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
 
-## Closed gate — S1.42T Normal Enemy Restore
+Machine-readable status:
 
-**PASS**
+`Current/Projektstatus_S1.42U.json`
 
-Acceptance:
+Profile:
 
-`Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
+`Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z`
 
-Evidence:
+SHA-256:
 
-`RuntimeEvidence/S1.42T/20260903T222109Z/`
+`ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969`
 
-Raw log size:
+GitHub Actions build run:
 
-`1,965,803 bytes`
+`33818241873` = **success**
 
-Raw log SHA-256:
-
-`b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f`
-
-Profile SHA-256:
-
-`a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10`
-
-Normal non-isolated enemy spawning is restored. No repeat S1.42T test is required solely for the missed terminal `Enemies` command.
-
-Critical runtime results:
-
-- Work/no-task = 0;
-- Leader-null = 0;
-- Fatal = 0;
-- project compatibility Error = 0;
-- no new compatibility exception flood;
-- no crash/freeze;
-- player death = normal `DeathPlayerJetpackBlast`.
-
-Keep the S1.42T raw log through the immediate BCMER restoration comparison because it is the clean BCMER-off normal-enemy reference run.
-
-## Active next task — S1.42U BCMER 1.71.0 Reactivation Gate
-
-Plan:
-
-`BuildSpecs/S1.42U_PLAN.md`
+## Build delta — verified
 
 Base:
 
@@ -60,74 +34,100 @@ Base SHA-256:
 
 `a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10`
 
-Required variable:
+Archive members:
 
-- re-enable exact `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`.
+**331**
 
-Preserve:
+Changed existing members only:
+
+- `export.r2x`
+
+Exact package-state change:
+
+- `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`: `disabled -> enabled`
+
+No package addition/removal, config patch, local plugin build or compatibility-code change occurred.
+
+Preserved and verified:
 
 - `Isolated Enemy Regression = false`;
 - compatibility plugin v1.3.14;
 - compatibility DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
 - `Thumper Bite Limit = 3`;
 - Crawler absent from Attack Blacklist;
-- current normal spawn-owner configs;
-- all accepted Pikmin compatibility behavior;
-- native `BaboonBirdPikminEnemy` / `PikminEnemy` death-unlatch lifecycle.
+- Puffer cannot poison Pikmin;
+- accepted S1.42S Baboon/Pikmin lifecycle behavior;
+- BCMER configuration carried forward unchanged.
 
-Forbidden in S1.42U:
+## Accepted reference roles
 
-- BCMER 2.0.0 or any other version upgrade;
-- new custom patch code;
-- interior probability tuning;
-- CullFactory/fog tuning;
-- microwave rarity change;
-- BCMER EventType rebalance;
-- structural repository migration;
-- cosmetic documentation/comment cleanup mixed into the gameplay gate.
+Last fully accepted full normal-stack baseline:
 
-### S1.42U runtime acceptance
+**S1.41 — BCMER Reactivation**  
+SHA-256 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-- main menu/startup succeeds;
-- exact BCMER 1.71.0 is runtime-active;
-- normal enemies still spawn;
-- no new startup/runtime crash or freeze;
-- no Work/no-task loop;
-- no Leader-null loop;
-- no new project compatibility exception flood;
-- no BCMER-specific catastrophic event/system failure;
-- accepted Pikmin behavior remains intact;
-- fresh full runtime log ingested and compared against S1.42T.
+Newest runtime-accepted technical descendant:
+
+**S1.42T — Normal Enemy Restore**  
+SHA-256 `a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10`  
+Verdict **PASS**
+
+S1.42U must not replace either accepted role until runtime evidence passes.
+
+## S1.42U runtime test
+
+### Immediate user action
+
+Import/run:
+
+`Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z`
+
+Perform a normal gameplay run with BCMER active. Then upload the complete `LogOutput.log` to:
+
+`RuntimeInbox/Current/`
+
+`RuntimeInbox/ACTIVE_BUILD.txt` is already set to `S1.42U`.
+
+### Acceptance criteria
+
+1. main menu/startup succeeds;
+2. exact BCMER 1.71.0 is loaded/active;
+3. normal non-isolated enemies remain available/spawn normally;
+4. no startup/runtime crash or freeze;
+5. `Work state with no task assigned!` = 0;
+6. `Leader is null when following` = 0;
+7. no new S1.39 Compatibility Fixes error/exception flood;
+8. no BCMER-driven catastrophic event/system regression;
+9. accepted Pikmin behavior remains intact;
+10. fresh full runtime log is ingested and compared against S1.42T.
 
 A heavy Baboon-Hawk stress retest is not required merely because BCMER is re-enabled; reopen that focused test only if new evidence indicates a regression.
 
-## Permanent do-not-regress / restore references
+## S1.42T comparison evidence
 
-Patch safety:
+Acceptance:
 
-`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+`Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
 
-Focused S1.42S acceptance:
+Evidence:
 
-`Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+`RuntimeEvidence/S1.42T/20260903T222109Z/`
 
-Corrected S1.42R root cause:
+Raw log SHA-256:
 
-`Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
+`b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f`
 
-Canonical enemy restore baseline:
+Keep the S1.42T raw log through this immediate BCMER-on comparison gate.
 
-`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
+## Controllers
 
-SHA-256:
+`BuildSpecs/current.json`:
 
-`22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
+- `enabled = false`
+- `build_id = IDLE_AFTER_S1.42U_BUILD_AWAITING_RUNTIME_VALIDATION`
+- base = S1.42U
 
-Machine-readable restore baseline:
-
-`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-
-The historical `Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md` was fulfilled by S1.42T and is retained for diagnostic/history value.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42U`
 
 ## Monitor-only issues
 
@@ -145,28 +145,36 @@ S1.42T one-off:
 
 No flood, Aloe later active, no user-facing issue reported. Monitor only.
 
-## Known non-functional documentation/comment drift
+## Permanent do-not-regress references
 
-- `Current/02_TECHNICAL_BASELINE.md` contains older chronology sections with local "current" wording for S1.42S/earlier.
-- `Patches/S139CompatibilityFixes/Plugin.cs` contains some older comments that do not perfectly describe accepted v1.3.14 behavior.
+Patch safety:
 
-These are not gameplay defects. Newer canonical state documents and actual code/config/runtime evidence override the stale wording. Cleanup should be a separate maintenance change after the active gameplay gate.
+`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
 
-## Runtime-log infrastructure
+Focused S1.42S acceptance:
 
-Canonical:
+`Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
 
-`Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+Corrected S1.42R root cause:
 
-The repository supports streaming every-line analysis, small lossless chat chunks, a disposable very-large-log branch, temporary raw artifacts, and query-on-demand raw extraction.
+`Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
 
-Automated self-test:
+Canonical enemy restore baseline:
 
-- `.github/workflows/runtime-pipeline-selftest.yml`;
-- `BuildSystem/runtime_pipeline_selftest.py`;
-- initial GitHub Actions run `33817297654` = **success**.
+`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
-Raw logs are not automatically permanent historical assets. Prune them only after dependent gates/issues are closed and required evidence/provenance is preserved.
+## Forbidden mixed changes while S1.42U runtime gate is open
+
+Do not include:
+
+- BCMER upgrade;
+- new custom patch code;
+- interior probability tuning;
+- CullFactory/fog tuning;
+- microwave rarity change;
+- BCMER EventType rebalance;
+- structural repository migration;
+- executable compatibility changes disguised as cleanup.
 
 ## Remaining broader S1.42 roadmap
 
