@@ -1,0 +1,22 @@
+Nutze dieses Repository als vollständige Projektübergabe:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+Lies zuerst START_HERE_ChatGPT_Masterprompt.txt und führe die darin beschriebene Projektübernahme vollständig aus. Lies danach prioritär Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md, Current/27_S1.42G_BUILD_AND_TEST.md, Current/00_CURRENT_STATE.md, Current/01_HANDOVER_CORE.md, Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md und Current/Projektstatus_S1.42G.json.
+
+Wichtiger aktueller Stand:
+- letzter vollständig akzeptierter Gameplay-Baseline-Stand ist S1.41;
+- S1.42D darf wegen des Startup-Crashs nicht erneut getestet werden;
+- S1.42E bestand Startup, hatte aber den ersten EnemyIsolation-Freeze-Pfad;
+- S1.42F beseitigte den Gordion-Konstruktorloop, aber routed-moon stalls + Coroner Jetpack spam blieben;
+- aktueller gebauter Kandidat ist S1.42G:
+  Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z
+  SHA-256 09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a
+- der übergroße S1.42G Runtime-Ingest unter RuntimeEvidence/S1.42G/20260903T100914Z/ wurde absichtlich vollständig gelöscht und darf nicht als Evidenz verwendet werden;
+- der nächste Test ist KEIN neuer Build, sondern die manuelle Variante S1.42G_BCMER_OFF_RETEST;
+- dafür S1.42G mit Gale -> Advanced options -> Import all files importieren und danach ausschließlich SoftDiamond-BrutalCompanyMinusExtraReborn deaktivieren; sonst nichts ändern;
+- Ziel des Retests: Enemy-Spawning/Enemies-Terminal ohne BCMER prüfen sowie routed-moon Performance, Coroner-Spam und möglichen HangarShipDoor/DoorAudit-Spam beobachten;
+- Functional Microwaves sollen in einem späteren Build etwas seltener werden, aber NICHT während dieses manuellen Retests verändert werden;
+- RuntimeInbox/ACTIVE_BUILD.txt muss auf S1.42G_BCMER_OFF_RETEST stehen;
+- BuildSpecs/current.json bleibt disabled/idle; vor Auswertung dieses Retests keinen neuen Build erstellen.
+
+Behalte alle repository-first Regeln bei. Frage nicht nach lokalen PowerShell-Builds oder einem lokalen Repo-Clone, solange die benötigten Basen im Repository liegen.
