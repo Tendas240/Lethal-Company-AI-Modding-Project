@@ -98,43 +98,53 @@ The late map-object Currency filter is defense-in-depth only. S1.39 runtime prov
 
 Use **Advanced options -> Import all files**.
 
-## Latest technical descendant: S1.42H
+## Latest technical descendant: S1.42L
 
 Profile:
 
-`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+`Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z`
 
 SHA-256:
 
-`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
+`fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722`
 
 Status:
 
-**built successfully; awaiting runtime validation; not final gameplay acceptance**
+**runtime-tested partial pass; only Pikmin -> Baboon Hawk explicit attack/latch validation remains; not yet promoted to final gameplay acceptance**
 
-Manifest:
-- 188 Thunderstore entries;
-- 182 enabled;
-- 6 disabled;
-- BCMER 1.71.0 is the extra temporary disabled package for this diagnostic stage.
+Compatibility plugin:
+- version 1.3.7
+- DLL SHA-256 `7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2`
 
 Readable exact profile contents:
 
-`ProfileSources/S1.42H/`
+`ProfileSources/S1.42L/`
 
-Exact package list:
+Latest valid runtime evidence:
 
-`Current/Aktive_Modliste_S1.42H.txt`
+`RuntimeEvidence/S1.42L/20260903T151817Z/`
 
-Most recent valid runtime predecessor:
+Runtime log SHA-256:
 
-`RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/`
+`402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd`
 
-That clean retest confirmed the performance fix and target enemy spawning without BCMER, but reproduced the Thumper -> invincible-Pikmin leader-null grab state that S1.42H is designed to fix.
+Confirmed in the current technical descendant:
+- Thumper/Crawler -> Pikmin broken GrabPikmin state is blocked;
+- Pikmin -> Thumper/Crawler attack/latch works;
+- Puffer -> Pikmin is PASS;
+- Jetpack is PASS/closed;
+- Baboon Hawk -> Pikmin adapter/bite/grab protection is PASS;
+- only Pikmin -> Baboon Hawk direct attack/latch remains to be explicitly runtime-confirmed.
 
-After S1.42H isolation passes, restore the full normal enemy state from:
-`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-and re-enable exact BCMER 1.71.0.
+Temporary diagnostic state remains:
+- EnemyIsolation enabled;
+- exact BCMER 1.71.0 disabled.
+
+After the remaining S1.42L direction passes:
+- remove/disable EnemyIsolation;
+- restore full normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+- re-enable exact BCMER 1.71.0;
+- preserve accepted permanent asymmetric Pikmin interaction rules.
 
 ## Accepted CodeRebirth/DawnLib natural-spawn control
 
@@ -466,7 +476,7 @@ Evidence:
 Root cause:
 v1.3.0 broadly scanned and Harmony-patched inherited/generated LethalMin methods; HarmonyX warned against these targets and the process terminated during the scan.
 
-### S1.42E — current untested startup hotfix
+### S1.42E — historical startup-safe hotfix
 
 Profile:
 `Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
