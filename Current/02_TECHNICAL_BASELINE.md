@@ -43,7 +43,12 @@ Source:
 
 Current source version:
 
-**1.2.0**
+**1.3.1**
+
+Runtime status:
+- v1.2.0 is proven non-crashing in S1.42C;
+- v1.3.0 in S1.42D caused a startup crash due to an over-broad LethalMin Harmony scan;
+- v1.3.1 in S1.42E is the narrowed startup-safe hotfix and is built but not runtime-tested yet.
 
 Build rule:
 
@@ -409,3 +414,66 @@ for the original historical juijui profile.
 This is a comparison/reference baseline only. It represents the old desired mod constellation/configuration that the modern V81 project should approach where safe and technically compatible.
 
 After upload, extract/index its readable metadata repository-first and use the original configs as primary evidence for historical-value questions such as Jetpack capacity.
+
+
+## Post-S1.42C diagnostic lineage
+
+### S1.42D — failed startup diagnostic
+
+Profile:
+`Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z`
+
+SHA-256:
+`b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c`
+
+Purpose:
+focused generic LethalMin state repair + isolated Thumper/Puffer/Baboon Hawk test + Jetpack/Microwave tuning.
+
+Runtime:
+**failed before usable Main Menu.**
+
+Evidence:
+`RuntimeEvidence/S1.42D/20260903T084247Z/`
+
+Root cause:
+v1.3.0 broadly scanned and Harmony-patched inherited/generated LethalMin methods; HarmonyX warned against these targets and the process terminated during the scan.
+
+### S1.42E — current untested startup hotfix
+
+Profile:
+`Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
+
+SHA-256:
+`4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348`
+
+Manifest:
+- 188 total
+- 183 enabled
+- 5 disabled
+- no package/version/state differences vs S1.42D
+
+Compatibility plugin:
+v1.3.1
+
+DLL SHA-256:
+`caf20c785245396d9f31ff32b556cbe75d64b87a5a676807184093a6cef78eab`
+
+LethalMin scope:
+- `*PikminEnemy` types only;
+- `DeclaredOnly`;
+- local `BitePikmin`, `GrabPikmin`, `GrabPikminWithTongue`;
+- no RPC wrappers;
+- no generic PikminAI/PikminItem patching.
+
+Jetpack:
+- historical target 140 seconds;
+- `Reduce Battery = false`;
+- `MidAirExplosions = Off`;
+- loaded Jetpack Item asset targeting only;
+- no inherited `GrabbableObject.Start` Harmony hook.
+
+Diagnostics:
+`Isolated Enemy Regression = true`
+
+First acceptance gate:
+reach Main Menu without crash.
