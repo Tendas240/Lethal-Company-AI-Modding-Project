@@ -1,12 +1,18 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42T_RUNTIME_PASS_AWAITING_S1.42U_BCMER_REACTIVATION",
+  "enabled": true,
+  "build_id": "S1.42U",
   "base_profile": "Profiles/LC V1 S1.42T Normal Enemy Restore.r2z",
   "base_sha256": "a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
+  "profile_name": "LC V1 S1.42U BCMER 1.71.0 Reactivation Gate",
   "overwrite": false,
-  "mod_state_changes": [],
+  "mod_state_changes": [
+    {
+      "name": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+      "version": "1.71.0",
+      "enabled": true
+    }
+  ],
   "mod_additions": [],
   "mod_removals": [],
   "config_patches": [],
