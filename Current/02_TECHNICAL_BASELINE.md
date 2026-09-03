@@ -1,3 +1,15 @@
+# Permanent custom-patch safety gate
+
+All project-local Harmony/runtime/compatibility code is governed by
+`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
+
+Key invariant: a custom patch is not considered safe because it compiles, starts, or fixes its direct symptom. Before promotion, the exact patch surface, inherited/base lifecycle, secondary responsibilities, network/state ownership, reverse direction, adjacent behavior, and runtime regressions must be checked.
+
+Whole-component disabling is forbidden as a convenience mechanism unless the complete foreign component lifecycle has been inspected and every lost responsibility is explicitly safe to suppress. Prefer narrow prevention-only hooks and preserve native lifecycle ownership.
+
+Every future patch-build plan must include a `Patch Safety Review` section.
+
+---
 # 02 — Technical Baseline
 
 ## Accepted gameplay baseline manifest: S1.41
