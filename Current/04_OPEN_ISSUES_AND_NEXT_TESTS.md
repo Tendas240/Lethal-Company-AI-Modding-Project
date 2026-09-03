@@ -1,5 +1,31 @@
 # 04 — Open Issues and Next Tests
 
+## Immediate active gate — S1.42F lobby smoothness
+
+S1.42E fixed the S1.42D startup crash but exposed a new diagnostic-only performance regression.
+
+Evidence:
+`RuntimeEvidence/S1.42E/20260903T091053Z/`
+
+Confirmed:
+- safe LethalMin state guard registered on 4 declared enemy methods;
+- Jetpack asset target successfully changed 50 -> 140 seconds;
+- EnemyIsolation then attempted six invalid `SpawnableEnemyWithRarity` default-constructor creations per second on Gordion;
+- this matches the user's short once-per-second freezes.
+
+S1.42F:
+`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
+
+SHA-256:
+`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
+
+First test:
+- Main Menu;
+- host into ship lobby in orbit;
+- verify the periodic freeze cadence is gone.
+
+If smooth, continue immediately with the focused Baboon Hawk / Thumper / Puffer / Jetpack / Microwave test.
+
 ## Highest engineering priority — generic LethalMin grab/bite + Invincible Pikmin state
 
 S1.42C runtime evidence proves that the repeated `Leader is null when following` loop is not Thumper-specific.
@@ -250,20 +276,23 @@ When naturally encountered, continue checking:
 
 `BuildSpecs/current.json`:
 - disabled
-- `IDLE_AFTER_S1.42E_BUILD_AWAITING_RUNTIME`
+- `IDLE_AFTER_S1.42F_BUILD_AWAITING_RUNTIME`
 
 S1.42D:
 **FAILED STARTUP — DO NOT RETEST**
 
 S1.42E:
-`Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
+**startup pass; interaction test aborted because of periodic EnemyIsolation freezes.**
+
+S1.42F:
+`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
 SHA-256:
-`4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348`
+`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
 
 Status:
-**built, awaiting runtime startup gate.**
+**built, awaiting runtime lobby-smoothness gate.**
 
-Do not build a new candidate before evaluating S1.42E runtime evidence.
+Do not build a new candidate before evaluating S1.42F runtime evidence.
 
 ## Historical juijui profile — uploaded and indexed
 
@@ -304,19 +333,22 @@ Combined next Jetpack target:
 - historical juijui capacity target: 140 seconds;
 - no mid-air/high-speed/continuous-boost explosion.
 
-## S1.42E immediate startup gate
+## S1.42F immediate runtime gate
 
 Use:
-`Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
+`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
 
 SHA-256:
-`4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348`
+`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
 
-First check only:
+First check:
 - game reaches Main Menu;
-- startup log contains a completed safe LethalMin state-guard registration marker;
-- no abrupt termination during the LethalMin patch scan.
+- host reaches ship lobby in orbit;
+- no once-per-second freeze cadence;
+- safe LethalMin completion marker still appears;
+- Gordion skip marker appears.
 
-If startup succeeds, continue with the isolated Baboon Hawk / Thumper / Puffer tests plus Jetpack and Microwave checks.
+If smooth, continue with the isolated Baboon Hawk / Thumper / Puffer tests plus Jetpack and Microwave checks.
 
 S1.42D must not be retested.
+S1.42E must not be used for the interaction stage.
