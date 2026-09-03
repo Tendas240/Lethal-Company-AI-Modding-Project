@@ -10,7 +10,7 @@ Historical planned sequence:
 
 The seed and two isolated regression stages have now happened. Do not collapse future phases together; isolation remains intentional so regressions can be attributed.
 
-## Current progress checkpoint — after S1.42C
+## Current progress checkpoint — after S1.42S focused runtime PASS
 
 Completed:
 - S1.42A seed built and runtime-generated real configs/IDs.
@@ -19,18 +19,34 @@ Completed:
 - S1.42A LethalModDataLib NRE discovered.
 - S1.42B null-safe LMDL guard runtime-confirmed.
 - S1.42C Thumper/Puffer Pikmin guards built; LMDL fix remained healthy.
-- S1.42C revealed a broader LethalMin enemy grab/bite + Invincible Pikmin leader-state bug.
+- isolated EnemyIsolation diagnostic chain was used to attribute enemy/Pikmin regressions.
+- Thumper/Crawler -> Pikmin broken grab-state path has been contained without blocking Pikmin counterattack.
+- Puffer -> Pikmin effect path is protected.
+- Baboon Hawk -> Pikmin collision/bite/grab path is protected asymmetrically.
+- Pikmin -> Baboon Hawk attack remains functional.
+- S1.42R identified a project-side lifecycle regression caused by disabling complete `BaboonBirdPikminEnemy`.
+- S1.42S corrected that regression by preserving native `PikminEnemy.Update()` death/unlatch ownership.
+- S1.42S focused runtime gate passed: all three test Pikmin recovered after Hawk death and corpse carry/Onion delivery worked.
+- permanent project-local patch safety policy added at `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
+
+Immediate next step before final S1.42:
+- S1.42T normal enemy restore: disable temporary EnemyIsolation and validate normal enemy population with exact BCMER 1.71.0 still disabled.
+- after S1.42T passes, re-enable exact BCMER 1.71.0 in a separate controlled gate.
 
 Still pending before final S1.42:
-- generic grab/bite + invincible follower-state repair;
-- targeted Thumper/Puffer validation;
+- normal enemy population restoration acceptance;
+- BCMER exact 1.71.0 restoration acceptance;
 - equal interior probability tuning;
 - CullFactory exceptions;
 - Mausoleum fog reduction;
 - BCMER fixed 12.5% x8 EventType distribution;
-- final runtime acceptance.
+- final normal-stack runtime acceptance.
 
-`BuildSpecs/S1.42D_PLAN.md` is draft-only and not authorized to build automatically.
+Canonical next-step files:
+- `Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md`
+- `BuildSpecs/S1.42T_PLAN.md`
+
+Historical `BuildSpecs/S1.42D_PLAN.md` is superseded and is not a current build instruction.
 
 ---
 
