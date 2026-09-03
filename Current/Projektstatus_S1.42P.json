@@ -49,8 +49,12 @@
         "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
         "export.r2x"
       ],
-      "added_members": []
-    }
+      "added_members": [],
+      "idle_guard_run": 49,
+      "build_commit": "a6e97be239a3865be2adb03474b594cab960a539"
+    },
+    "profile_git_blob_sha": "924b2bb3109bddbbe4558885b158960e19495768",
+    "profile_size_bytes": 537963
   },
   "temporary_isolated_test_state": {
     "enemy_isolation_enabled": true,
@@ -73,5 +77,52 @@
     "type": "runtime_test_only",
     "instruction": "Import S1.42P with Gale Advanced options -> Import all files and repeat focused Baboon Hawk kill. Verify exact FinishTask resolves and attackers remain recoverable.",
     "upload": "RuntimeInbox/Current/"
-  }
+  },
+  "package_state": {
+    "source": "ProfileSources/S1.42P/export.r2x",
+    "total": 188,
+    "enabled": 182,
+    "disabled": 6,
+    "disabled_packages": [
+      "AJB-Keep_hangar_ship_door_closed 1.0.0",
+      "zealsprince-Malfunctions 1.10.3",
+      "Reiko88-Observer 2.0.1",
+      "ProjectSCP-SCP999 2.4.0",
+      "Kittenji-Dont_Touch_Me 1.2.8",
+      "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0"
+    ],
+    "current_mod_list": "Current/Aktive_Modliste_S1.42P.txt"
+  },
+  "runtime_gate": {
+    "build": "S1.42P",
+    "status": "awaiting_runtime_test",
+    "expected_startup_marker": "[BaboonHawkDeathCleanup] Resolved exact declared LethalMin.PikminAI.FinishTask() for native Baboon-Hawk death task finalization.",
+    "expected_per_pikmin_marker": "[BaboonHawkDeathCleanup] Native FinishTask finalized ...",
+    "expected_aggregate_marker": "native-finished X/X",
+    "acceptance": [
+      "Attackers stop stale dead-Hawk hit loop promptly",
+      "No sustained Work state with no task assigned loop",
+      "Affected Pikmin remain visible and responsive",
+      "Affected Pikmin can be whistled/regained and follow/reuse normally",
+      "Following Pikmin count can be restored after fight",
+      "Dead Baboon Hawk corpse remains Pikmin-carryable to Onion",
+      "Living Baboon Hawks do not pick up corpse",
+      "Living Baboon Hawk -> Pikmin ignore remains intact",
+      "No Leader is null when following loop"
+    ],
+    "do_not_build_successor_first": true
+  },
+  "handover": {
+    "primary": "Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md",
+    "audit": "Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md",
+    "verification": "Current/VERIFIKATION_S1.42P.txt",
+    "sha256_sums": "Current/SHA256SUMS_S1.42P.txt",
+    "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42P.txt"
+  },
+  "known_nonfunctional_drift": [
+    "Current/02_TECHNICAL_BASELINE.md contains older current-wording from earlier S1.42 states",
+    "Untouched historical comments/strings in Patches/S139CompatibilityFixes/Plugin.cs retain S1.42J-era two-way zero-interaction wording"
+  ],
+  "deferred_repository_plan": "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt",
+  "deletion_decision": "No files deleted during handover; no identified evidence/file is certainly obsolete and without future diagnostic/documentary value."
 }
