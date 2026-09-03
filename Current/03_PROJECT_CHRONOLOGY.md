@@ -439,3 +439,79 @@ Next clean test:
 `S1.42G_BCMER_OFF_RETEST`
 
 The user will import canonical S1.42G and manually disable BCMER only. No new profile build is authorized before this retest is evaluated.
+
+
+## S1.42G BCMER-off clean retest — performance pass, Thumper grab failure
+
+Runtime variant:
+`S1.42G_BCMER_OFF_RETEST`
+
+Evidence:
+`RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/`
+
+Log SHA-256:
+`ac410c42e8174eb4f01aba1d3b7bf54100454e033ed87659a932f3b7f4a3c87e`
+
+The user manually disabled only BCMER 1.71.0 on canonical S1.42G.
+
+Confirmed:
+- the routed-moon periodic freezes were gone;
+- four Crawler/Thumper and two Puffer spawned;
+- Puffer smoke guard activated;
+- Coroner's prior per-frame Jetpack `PlayerController was null` flood was absent;
+- the prior repeated zero-power DoorAudit/HangarShipDoor stack flood did not reproduce without BCMER.
+
+Thumper interaction failed the intended zero-interaction requirement:
+- Thumper contacted the Pikmin group;
+- LethalMin removed a Yellow Pikmin leader;
+- grabbed death timer started;
+- invincibility prevented death;
+- repeated `Leader is null when following` followed.
+
+The `Kill enemy called! destroy: True` line was tied to the Pikmin death attempt, not proof that the Crawler itself was destroyed.
+
+Root cause:
+the v1.3.3 state guard covered four declared enemy-adapter methods but did not cover the common declared `LethalMin.PikminAI.GrabPikmin(Transform,float,int)` path used by this interaction.
+
+## S1.42H — Thumper Grab Guard
+
+Built repository-first from S1.42G.
+
+Profile:
+`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+
+SHA-256:
+`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
+
+Compatibility plugin:
+v1.3.5
+
+DLL SHA-256:
+`d67f8f4bc2012f5b74086eb268fcb191f6990c93041617e9ef35c635ea33f186`
+
+GitHub Actions:
+- build succeeded;
+- 0 warnings;
+- 0 errors;
+- 331 archive members;
+- only DLL + `export.r2x` changed;
+- no added archive members.
+
+S1.42H:
+- patches exactly the declared `PikminAI.GrabPikmin(Transform,float,int)` method once;
+- blocks Crawler/Thumper grabs before leader removal/death timer;
+- retains Crawler in the Pikmin Attack Blacklist;
+- keeps non-Thumper generic invincible-Pikmin recovery;
+- carries forward late-lifecycle EnemyIsolation with no continuous global EnemyAI scan;
+- disables BCMER 1.71.0 inside the diagnostic profile itself;
+- deliberately leaves Functional Microwave rarity unchanged.
+
+Status:
+**awaiting first runtime validation.**
+
+No S1.42I build is authorized before S1.42H runtime evidence is evaluated.
+
+After the isolated stage passes:
+- remove/disable EnemyIsolation;
+- restore normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+- re-enable exact BCMER 1.71.0.
