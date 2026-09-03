@@ -34,6 +34,7 @@ Do not reintroduce these without new technical evidence or explicit user instruc
 | Pre-writing all future interior configs before content has generated real sections/IDs | Avoid. Binding workflow uses S1.42A seed first, then real generated configs are collected and tuned. |
 | S1.42D broad LethalMin reflection/Harmony scan | **Failed startup.** It patched inherited/generated methods through derived types, produced HarmonyX warnings and the process terminated during the scan. Never restore this broad scan; S1.42E uses DeclaredOnly *PikminEnemy interaction methods. |
 | Patching `JetpackItem.Start` when it resolves inherited `GrabbableObject.Start` | Avoid. S1.42D showed the target is inherited and HarmonyX warned. S1.42E uses narrow loaded Jetpack Item asset targeting instead. |
+| S1.42E EnemyIsolation using `Activator.CreateInstance(entryType)` for `SpawnableEnemyWithRarity` | **Failed diagnostic implementation.** V81 has no usable parameterless constructor. On Gordion this retried six times per second and matched visible periodic freezes. S1.42F skips Gordion/Company and uses the EnemyType/int constructor with clone fallback. |
 
 ## Important correction — LethalModDataLib
 
