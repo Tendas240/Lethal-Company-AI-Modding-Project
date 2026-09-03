@@ -1,0 +1,12 @@
+{
+  "build_id": "juijui",
+  "profile_path": "References/LegacyProfiles/juijui/juijui.r2z",
+  "profile_name": "juijui",
+  "sha256": "ddd10bcec3329c155b3a0a2d74460928b02df147356701fb6cf79ebb5a9f7e00",
+  "zip_members": 444,
+  "snapshot_dir": "References/LegacyProfiles/juijui/Extracted",
+  "snapshot": {
+    "entries": 444,
+    "text_entries": 444
+  }
+}
