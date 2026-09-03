@@ -1,5 +1,5 @@
 ======================================================================
-CURRENT CANONICAL TAKEOVER - 2026-09-03 - S1.42S FOCUSED PASS / S1.42T NEXT
+CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42T PASS / S1.42U NEXT
 ======================================================================
 
 Repository:
@@ -8,34 +8,33 @@ https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 The repository is the source of truth.
 
 READ FIRST, COMPLETELY:
-1. Current/71_HANDOVER_S1.42S_TO_NEXT_FINAL.md
-2. Current/72_REPOSITORY_HANDOVER_AUDIT_S1.42S.md
-3. Current/Projektstatus_S1.42S.json
-4. Current/00_CURRENT_STATE.md
-5. Current/01_HANDOVER_CORE.md
+1. Current/00_CURRENT_STATE.md
+2. Current/01_HANDOVER_CORE.md
+3. Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md
+4. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
+5. Current/Projektstatus_S1.42T.json
 6. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-7. Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md
-8. Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md
-9. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
-10. Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md
-11. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-12. BuildSpecs/S1.42T_PLAN.md
-13. BuildSpecs/current.json
-14. RuntimeInbox/ACTIVE_BUILD.txt
+7. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+8. Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md
+9. Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md
+10. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+11. BuildSpecs/S1.42U_PLAN.md
+12. BuildSpecs/current.json
+13. RuntimeInbox/ACTIVE_BUILD.txt
 
 CURRENT ROLE SEPARATION
 
-Last fully accepted normal gameplay baseline:
+Last fully accepted full normal gameplay baseline:
 S1.41 - BCMER Reactivation
 Profiles/LC V1 S1.41 BCMER Reactivation.r2z
 SHA-256:
 d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b
 
-Latest built/tested technical descendant:
-S1.42S - Baboon Adapter Lifecycle Restore
-Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z
+Newest accepted technical descendant:
+S1.42T - Normal Enemy Restore
+Profiles/LC V1 S1.42T Normal Enemy Restore.r2z
 SHA-256:
-addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee
+a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10
 
 Compatibility plugin:
 v1.3.14
@@ -43,51 +42,35 @@ Embedded DLL SHA-256:
 3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960
 
 Latest valid runtime evidence:
-RuntimeEvidence/S1.42S/20260903T205550Z/
-Log SHA-256:
-9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea
+RuntimeEvidence/S1.42T/20260903T222109Z/
+Raw Log SHA-256:
+b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f
 
-Focused runtime verdict:
-PASS - isolated Baboon-Hawk/Pikmin lifecycle gate.
+S1.42T runtime verdict:
+PASS - normal non-isolated enemy population restored.
 
 Confirmed:
-- all three focused Pikmin stopped attacking after Hawk death;
-- post-death stale attack-hit count = 0;
-- all three remained recoverable;
-- all three could be reassigned to the player;
-- native dead-target unlatch/task lifecycle resumed;
-- Dead Baboon Hawk corpse carry and Onion delivery worked;
+- normal non-isolated enemies spawn again;
+- direct ADDING ENEMY / active-instance evidence is sufficient despite the missed manual terminal Enemies scan;
 - Work/no-task count = 0;
-- Leader-null count = 0.
+- Leader-null count = 0;
+- Fatal count = 0;
+- S1.39 Compatibility Fixes Error count = 0;
+- no new compatibility exception flood;
+- player death was normal DeathPlayerJetpackBlast, not a crash/freeze.
 
-CORRECTED ROOT CAUSE
-
-S1.42R failed because project compatibility code disabled the complete
-LethalMin.BaboonBirdPikminEnemy component.
-
-That also disabled inherited:
-PikminEnemy.Update() -> RemoveAndDisableTriggers() -> RemoveAllPikmin(3)
-
-and suppressed native dead-enemy unlatch cleanup.
-
-The older interpretation that AttackEnemyTask.IntervaledUpdate() alone was the complete
-upstream root cause is superseded by:
-Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md
-
-S1.42S keeps BaboonBirdPikminEnemy enabled and blocks only narrow Hawk -> Pikmin entry points.
-
-TEMPORARY CURRENT STATE
+CURRENT PACKAGE / DIAGNOSTIC STATE
 
 EnemyIsolation:
-enabled
+disabled
 
 Config:
 BepInEx/config/tendas.s139.compatibilityfixes.cfg
-Isolated Enemy Regression = true
+Isolated Enemy Regression = false
 
 BCMER:
 SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0
-disabled
+disabled intentionally for S1.42T
 
 Thumper Bite Limit:
 3
@@ -97,48 +80,54 @@ not in LethalMin Attack Blacklist
 
 EXACT NEXT STEP
 
-Next planned build:
-S1.42T - Normal Enemy Restore
-
-Status:
-planned only / not built
+Next controlled build:
+S1.42U - BCMER 1.71.0 Reactivation Gate
 
 Use:
-BuildSpecs/S1.42T_PLAN.md
-Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md
+BuildSpecs/S1.42U_PLAN.md
 
-Build S1.42T from S1.42S with one intended gameplay-state change:
-Isolated Enemy Regression = false
+Only intended package-state change:
+SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 disabled -> enabled
 
-Preserve:
-- compatibility plugin v1.3.14;
-- Thumper Bite Limit = 3;
-- Crawler remains attackable by Pikmin;
-- all later accepted permanent compatibility fixes.
-
-For the first restore gate keep exact BCMER 1.71.0 disabled.
-Do not combine BCMER restoration with the first normal-enemy restore test.
-After S1.42T passes, re-enable exact BCMER 1.71.0 in a separate controlled stage.
 Do not upgrade BCMER.
+Do not modify compatibility code.
+Do not mix interior tuning, fog/CullFactory tuning, microwave rarity, BCMER EventType rebalance,
+or repository structural migration into S1.42U.
 
 CONTROLLERS
 
-RuntimeInbox/ACTIVE_BUILD.txt = S1.42S
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42T
 
 BuildSpecs/current.json:
 enabled = false
-build_id = IDLE_AFTER_S1.42S_FOCUSED_RUNTIME_PASS_AWAITING_S1.42T_RESTORE_BUILD
+build_id = IDLE_AFTER_S1.42T_RUNTIME_PASS_AWAITING_S1.42U_BCMER_REACTIVATION
 
-No build is armed at handover.
+No successor build is armed at takeover.
 
-MONITOR-ONLY ISSUE
+LARGE RUNTIME LOG POLICY
 
-One LethalMin PikminNoticeZone.OnTriggerStay NetworkObjectReference ArgumentException occurred
-during lobby disconnect after ShipOnion save.
+Canonical infrastructure/retention policy:
+Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
 
-No user-facing regression was observed.
-Do not patch it unless it becomes reproducible/user-facing and a Patch Safety Review supports
-intervention.
+Normal logs:
+RuntimeInbox/Current/
+
+Very large logs:
+disposable branch runtime-large
+RuntimeInbox/Large/
+
+Rules:
+- every analyzed log is streamed line-by-line through BuildSystem/runtime_log_analyzer.py;
+- smaller logs receive lossless bounded chat_chunks for direct ChatGPT access;
+- very large logs are compressed/split, analyzed off-main, and only compact analysis/provenance is committed to main;
+- very-large raw evidence is retained as a temporary 14-day Actions artifact for exact query-on-demand access via RuntimeAnalysis/QUERY.json;
+- raw logs/chunks are not permanent by default and may be removed when their dependent gate/issues are closed and canonical evidence/provenance is preserved;
+- keep the current S1.42T raw log through the immediate BCMER restoration comparison because it is the clean BCMER-off reference run.
+
+MONITOR-ONLY ISSUES
+
+1. LethalMin PikminNoticeZone.OnTriggerStay NetworkObjectReference ArgumentException during disconnect in S1.42S. No user-facing regression observed. Do not patch without reproducibility/user impact and Patch Safety Review.
+2. S1.42T one-off AloeChase FSB load-state error. No flood/user-facing regression observed. Monitor only.
 
 PERMANENT PROJECT-LOCAL PATCH SAFETY RULE
 
@@ -150,23 +139,13 @@ Before implementing/promoting a custom patch:
 - inspect inheritance/base lifecycle;
 - map secondary cleanup/state/network responsibilities;
 - use the narrowest exact interception point;
-- do not disable a whole foreign component merely to block one interaction unless the full
-  lifecycle is proven safe to suppress;
+- do not disable a whole foreign component merely to block one interaction unless the full lifecycle is proven safe to suppress;
 - isolate risky patch changes from unrelated package/config changes;
 - runtime-test target behavior plus adjacent/reverse/native lifecycle behavior;
-- do not treat compile success, startup success, or disappearance of the direct symptom as
-  gameplay acceptance;
+- do not treat compile success, startup success, or disappearance of the direct symptom as gameplay acceptance;
 - prefer rollback/narrowing over stacking compensating repair layers.
 
 Every future custom-patch build plan must contain a Patch Safety Review.
-
-REPOSITORY MAINTENANCE
-
-Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt remains pending.
-
-The S1.42S critical runtime gate is closed, so that old deferral reason is gone.
-However, do NOT mix structural repository migration into the immediate S1.42T gameplay restore
-build. Keep migration as a separate maintenance phase.
 
 ======================================================================
 
@@ -178,13 +157,12 @@ https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
 ======================================================================
 HISTORICAL VERSION-SPECIFIC TAKEOVER BLOCK REMOVED FROM CURRENT BOOTSTRAP.
-Older S1.42R takeover state remains preserved in versioned Current/ history files and RuntimeEvidence.
+Older version-specific takeover state remains preserved in versioned Current/ history files and RuntimeEvidence.
 
 WICHTIG:
 Dieser Prompt ist als dauerhafter Einstiegspunkt für neue ChatGPT-Chats gedacht.
 Er soll sowohl die initiale Projektübernahme aus dem GitHub-Repository als auch die spätere Aktualisierung des Repositories am Ende eines Arbeitsabschnitts steuern.
 Das Repository ist die kanonische Übergabequelle UND der kanonische Build-Arbeitsbereich. Eine ZIP-Datei ist nur optionales Backup und niemals die einzige Quelle. Ein lokaler Repository-Clone auf dem Rechner des Benutzers ist für ChatGPT-Arbeit nicht vorgesehen. Profil-Builds, Verifikation, lokale Patch-Kompilierung und Repo-Pflege sollen standardmäßig direkt über GitHub/GitHub Actions erfolgen.
-
 
 ======================================================================
 MARKDOWN-FIRST / RAW-GITHUB RULE — CRITICAL
@@ -221,7 +199,6 @@ When a normal GitHub page returns a viewer instead of file content, prefer the r
 Do not waste time trying to screenshot GitHub's PDF viewer merely to recover information that already exists in Markdown/TXT/JSON.
 
 When updating the repository, keep the machine-readable current files synchronized with the newest confirmed project state. Human-readable PDF/DOCX documents are secondary and must not become the only source for critical facts.
-
 
 ======================================================================
 PHASE A – PROJEKT AUS DEM REPOSITORY ÜBERNEHMEN
@@ -269,8 +246,8 @@ PHASE A – PROJEKT AUS DEM REPOSITORY ÜBERNEHMEN
    - ProfileSources/ = aus .r2z extrahierte, für ChatGPT direkt lesbare Text/Config-Snapshots
    - BuildSpecs/ = aktuelle/kommende Buildanforderungen
    - BuildSystem/ = GitHub-native Build-/Index-/Ingest-Logik
-   - RuntimeEvidence/ = persistierte Runtime-Primärevidenz; bei Akzeptanzfragen besonders wichtig
-   - RuntimeInbox/ = temporärer Upload-Eingang für lokal erzeugte Runtime-Dateien
+   - RuntimeEvidence/ = persistierte Runtime-Primärevidenz bzw. kompakte kanonische Runtime-Analyse; Rohdaten dürfen gemäß Current/74 nach abgeschlossener Abhängigkeit bereinigt werden
+   - RuntimeInbox/ = temporärer Upload-Eingang für lokal erzeugte Runtime-Dateien; sehr große Logs verwenden den separaten `runtime-large`-Pfad
    - Patches/ = projektlokale Kompatibilitäts-Patches, Quellcode und installierbare lokale Mod-Pakete
    - Logs/ = ältere beziehungsweise diagnostisch relevante Runtime-Logs/Auswertungen
    - References/ = verbindliche Referenzbilder, Spawn-Rates, Referenzwerte und andere Primärquellen
@@ -346,7 +323,11 @@ PHASE B – REGELN FÜR DIE LAUFENDE ARBEIT
 4. Bei neuen Logs:
    - nicht nur einzelne sichtbare Ausschnitte betrachten,
    - relevante Fehler/Warnungen systematisch suchen,
-   - neue Regressionen gegen den letzten bekannten Stand vergleichen.
+   - neue Regressionen gegen den letzten bekannten Stand vergleichen,
+   - Runtime-Logs nach `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md` behandeln;
+   - für normale Logs den automatischen Streaming-Analyzer nutzen;
+   - für sehr große Logs den disposable `runtime-large`-Pfad nutzen, statt hunderte MiB Rohdaten dauerhaft nach `main` zu committen;
+   - Rohlogs/Chunks nach Abschluss ihrer Abhängigkeiten gezielt bereinigen, sofern kanonische Evidenz und Provenance erhalten bleiben.
 
 5. Bei Dokumenten:
    - aktuelle Fakten und historische Fakten klar trennen,
@@ -400,10 +381,11 @@ Dann gilt:
 4. Löschregel:
    Im Zweifel ARCHIVE statt DELETE.
    Eine Datei darf nur gelöscht werden, wenn dadurch keine für zukünftige Diagnose, Rekonstruktion, Balanceentscheidung oder Projektkontinuität relevante Information verloren geht.
+   Für Runtime-Rohlogs und automatisch erzeugte Runtime-Chunks gilt zusätzlich `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`: sie sind ausdrücklich nicht dauerhaft aufzubewahren, wenn Gate/Issue geschlossen und kanonische Evidenz/Provenance gesichert sind.
 
 5. Historische Primärquellen dürfen erhalten bleiben, auch wenn aktuelle Dokumentation dieselben Themen zusammenfasst.
    Das gilt besonders für:
-   - alte Logs mit einzigartigen Fehlersignaturen,
+   - alte Logs mit einzigartigen Fehlersignaturen, solange deren einzigartige Evidenz noch nicht anders kanonisch gesichert ist;
    - frühere Handover-Dokumente mit mehr Detailtiefe,
    - Referenzscreenshots,
    - historische Basis-/Diagnoseprofile,
@@ -480,15 +462,16 @@ Prüfe insbesondere:
 - relevante vorherige Basisprofile
 - relevante Diagnoseprofile
 - projektlokale Patch-Quellen / lokale Mod-Pakete unter Patches/
-- neue Runtime-Logs
-- neue Diagnoseauswertungen
+- neue Runtime-Logs und kompakte Runtime-Analysen
 - verbindliche Referenzbilder
 - Spawn-Rate-Referenzen
 - Referenzwerte
 - Modlisten
 - Config-/Balance-Primärquellen
 
-Profile oder Logs dürfen nur entfernt werden, wenn ihre Informationen vollständig in neueren Quellen enthalten sind und sie keinen eigenständigen Diagnosewert mehr haben.
+Profile dürfen nur entfernt werden, wenn ihre Informationen vollständig in neueren Quellen enthalten sind und sie keinen eigenständigen Diagnosewert mehr haben.
+
+Runtime-Rohlogs, extrahierte Duplikate und Analyzer-Chunks sind davon getrennt zu behandeln: sie dürfen nach der in Current/74 definierten Gate-/Issue-Abhängigkeitsprüfung gezielt gelöscht bzw. automatisch ablaufen.
 
 ======================================================================
 PHASE F – REPOSITORY-STRUKTUR
@@ -506,6 +489,7 @@ Grundstruktur:
 ├─ Profiles/
 ├─ ProfileSources/
 ├─ RuntimeInbox/
+├─ RuntimeAnalysis/
 ├─ RuntimeEvidence/
 ├─ Patches/ (falls projektlokale Patches existieren)
 ├─ Logs/
@@ -517,7 +501,9 @@ Regeln:
 - Current/ enthält den aktuellen maschinenlesbaren Einstiegspunkt und aktuelle Dokumentation; Current/HumanReadable/ enthält die sekundären PDF/DOCX-Fassungen.
 - BuildSpecs/ und BuildSystem/ bilden den GitHub-nativen Profil-Buildpfad.
 - ProfileSources/ enthält für ChatGPT direkt lesbare Text-/Config-Snapshots generierter .r2z-Profile.
-- RuntimeInbox/Current/ ist die einzige vorgesehene Upload-Ablage für unvermeidbar lokal erzeugte Runtime-Evidenz; RuntimeEvidence/ enthält die automatisch persistierte/entpackte Fassung.
+- RuntimeInbox/Current/ ist die normale Upload-Ablage für lokal erzeugte Runtime-Evidenz; RuntimeInbox/Large/ auf dem disposable `runtime-large`-Branch ist für sehr große Logs vorgesehen.
+- RuntimeAnalysis/ enthält Controller für gezielte Analyse-/Query-Aufträge, nicht dauerhafte Rohdaten.
+- RuntimeEvidence/ enthält kanonische Runtime-Provenance, Akzeptanz-relevante kompakte Analysen und nur solange benötigte Rohdaten gemäß Current/74.
 - Profiles/ enthält aktuelle sowie noch relevante Basis-/Diagnoseprofile.
 - Patches/ enthält projektlokale Kompatibilitäts-Patches, Quellcode und installierbare lokale Mod-Pakete.
 - Logs/ enthält aktuelle beziehungsweise diagnostisch relevante Logs/Auswertungen.
@@ -530,7 +516,8 @@ README.md muss eindeutig nennen:
 - aktuelles Gameplayprofil,
 - Prioritätsregel „neuere bestätigte Information schlägt ältere“,
 - Hinweis, dass Archive/ historisch ist,
-- Hinweis auf diesen Master-Prompt.
+- Hinweis auf diesen Master-Prompt,
+- aktuellen Runtime-Log-Ingest-/Retention-Pfad, wenn dieser für den aktiven Workflow relevant ist,
 - falls der aktuelle Stand projektlokale DLLs benötigt: die konkrete Gale-Importregel und die erwarteten Runtime-Load-Marker.
 
 ======================================================================
@@ -558,6 +545,8 @@ Vor Auslieferung prüfen:
 3. Logs
    - korrekter Versionsbezug
    - keine falsche Zuordnung zu einem Profilstand
+   - für große Logs: Analyzer-/Manifest-Provenance stimmt mit dem Rohlog-Hash überein
+   - Löschung/Retention entspricht Current/74
 
 4. Inventar/Hashes
    - Inventar entspricht finalem Dateistand
@@ -569,6 +558,7 @@ Vor Auslieferung prüfen:
    - keine versehentlich gelöschten Primärquellen
    - Archive klar als historisch markiert
    - README zeigt auf tatsächlich vorhandene Dateien
+   - sehr große Runtime-Rohdaten werden nicht versehentlich dauerhaft in main-History aufgenommen
 
 ======================================================================
 PHASE H – DATEIEN FÜR DEN BENUTZER BEREITSTELLEN
@@ -578,7 +568,8 @@ PHASE H – DATEIEN FÜR DEN BENUTZER BEREITSTELLEN
 2. Keine ZIP-only-Lösung.
 3. Optional zusätzlich ein vollständiges Backup-ZIP erzeugen.
 4. Profil-Builds und Repo-Dateiänderungen werden von ChatGPT direkt im GitHub-Repository vorgenommen, sofern die erforderlichen Basen dort vorhanden sind.
-5. Für Runtime-Dateien, die ausschließlich durch einen lokalen Spielstart entstehen können, nutzt der Benutzer GitHubs Web-Upload nach RuntimeInbox/Current/. Danach übernimmt die Runtime-Ingest-Automation.
+5. Für normale Runtime-Dateien, die ausschließlich durch einen lokalen Spielstart entstehen können, nutzt der Benutzer GitHubs Web-Upload nach RuntimeInbox/Current/. Danach übernimmt die Runtime-Ingest-Automation.
+6. Für sehr große Runtime-Logs folgt der Benutzer dem vorbereiteten `runtime-large`-Pfad aus Current/74; große Rohdaten werden nicht dauerhaft nach main überführt.
 
 ======================================================================
 PHASE I – GITHUB-NATIVE AUTOMATION / LOKALE FALLBACKS
@@ -586,7 +577,7 @@ PHASE I – GITHUB-NATIVE AUTOMATION / LOKALE FALLBACKS
 
 Standardfall:
 
-- KEIN lokaler Repository-Clone.
+- KEIN lokaler Repository-Clone für Profil-Builds/Repo-Pflege.
 - KEINE manuellen PowerShell-Profilbuilds.
 - KEIN manuelles Entpacken/Repacken von .r2z durch den Benutzer.
 - KEIN manuelles Kopieren erzeugter Build-Dateien ins Repository.
@@ -607,15 +598,16 @@ Stattdessen:
 
 Lokale Benutzeraktion ist nur zulässig, wenn technisch unvermeidbar:
 - tatsächliches Starten/Testen von Lethal Company;
+- Vorbereitung/Splitting eines lokal erzeugten sehr großen Runtime-Logs für den `runtime-large`-Upload;
 - einmalige Migration eines noch ausschließlich lokal vorhandenen kanonischen Basisartefakts;
-- Upload von lokal erzeugtem Log/config/runtime evidence nach RuntimeInbox/Current/.
+- Upload von lokal erzeugtem Log/config/runtime evidence in den vorgesehenen Runtime-Inbox-Pfad.
 
 Wenn ein zwingend benötigtes Basisprofil noch ausschließlich lokal existiert:
 - exakt benennen, welche Datei einmalig nach Profiles/ hochgeladen werden muss;
 - danach sofort wieder auf den GitHub-nativen Workflow wechseln;
 - keinen dauerhaften lokalen Repo-Workflow etablieren.
 
-PowerShell-Befehle nur noch als ausdrücklich gekennzeichneten Notfall-Fallback liefern, nicht als Standardprozess.
+PowerShell-Befehle nur noch als ausdrücklich gekennzeichneten Notfall-Fallback liefern, nicht als Standardprozess; die Ausnahme ist ein explizit dokumentierter lokaler Vorverarbeitungsschritt für unvermeidbar lokal entstandene sehr große Runtime-Rohdaten.
 
 ======================================================================
 PHASE J – ABSCHLUSSBERICHT
@@ -656,7 +648,7 @@ KRITISCHE GRUNDREGELN
 - Keine ZIP-only-Abhängigkeit.
 - Neuere bestätigte Fakten schlagen ältere.
 - Archive ist historisch, nicht automatisch aktuell.
-- Im Zweifel archivieren statt löschen.
+- Im Zweifel archivieren statt löschen; Runtime-Rohlogs/Chunks sind die ausdrücklich definierte Ausnahme gemäß Current/74, wenn ihre Abhängigkeit geschlossen ist.
 - Keine Wiederholung bereits gescheiterter Ansätze ohne neue Evidenz.
 - Keine übermäßige Kürzung der Dokumentation.
 - Diagnosehistorie und Gründe für Entscheidungen erhalten.
@@ -667,9 +659,10 @@ KRITISCHE GRUNDREGELN
 - Fehlende Informationen klar benennen statt raten.
 - GitHub ist der kanonische Build- und Übergabearbeitsbereich; ChatGPT pflegt ihn direkt.
 - Wenn der GitHub-Connector/Plugin verfügbar ist, soll ChatGPT Repository-Dateien und Commits darüber direkt lesen/schreiben, statt den Benutzer als manuellen Datei-Transport zu benutzen.
-- Nach einem erfolgreichen Runtime-Ingest gilt die persistierte Fassung unter RuntimeEvidence/ als kanonische Online-Evidenz; RuntimeInbox/Current/ darf anschließend wieder leer sein.
+- Nach einem erfolgreichen normalen Runtime-Ingest gilt die persistierte Fassung unter RuntimeEvidence/ als kanonische Online-Evidenz; RuntimeInbox/Current/ darf anschließend wieder leer sein.
+- Sehr große Runtime-Logs werden über den disposable `runtime-large`-Pfad verarbeitet; die vollständige Analyse muss alle Quellzeilen streamen, aber große Rohdaten müssen nicht dauerhaft im main-Repository verbleiben.
+- Runtime-Rohlogs dürfen nach abgeschlossener Gate-/Issue-Abhängigkeit gelöscht/ablaufen, wenn SHA-256, Buildzuordnung, Verdict und einzigartige relevante Evidenz kanonisch erhalten sind.
 - Lokale Repo-Clones und lokale PowerShell-Buildketten sind nicht der Standard.
 - Binäre .r2z/.zip/.dll-Dateien werden auf GitHub Actions verarbeitet; zusätzlich sind lesbare ProfileSources-Snapshots zu erzeugen.
-- Runtime-Evidenz wird über RuntimeInbox/Current/ nach GitHub überführt und dort automatisiert persistiert/entpackt.
 
 ENDE DES MASTER-PROMPTS
