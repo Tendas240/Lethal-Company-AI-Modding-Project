@@ -1,0 +1,91 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "accepted"
+  },
+  "latest_built_candidate": {
+    "build": "S1.42J",
+    "profile": "Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z",
+    "sha256": "736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7",
+    "base_profile": "Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z",
+    "base_sha256": "c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97",
+    "compatibility_plugin_version": "1.3.7",
+    "compatibility_dll_sha256": "7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2",
+    "lethlmin_config_sha256": "f7b2698171d9d6a7b6c2e7b415ff2cb2c63459fb267ff0807ebe0f4bcf3e0bd3",
+    "export_sha256": "89e03afcf1bc9b3390969f83709ad04dca865743de6249af0dde642d0e3e6fe5",
+    "build_verification": {
+      "github_actions": "success",
+      "warnings": 0,
+      "errors": 0,
+      "zip_members": 331,
+      "readable_snapshot_files": 330,
+      "changed_existing_members": [
+        "BepInEx/config/NoteBoxz.LethalMin.cfg",
+        "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+        "export.r2x"
+      ],
+      "added_members": []
+    },
+    "status": "built_successfully_awaiting_runtime"
+  },
+  "superseded_candidate": {
+    "build": "S1.42I",
+    "status": "built_but_not_runtime_tested_superseded_by_user_gameplay_rule",
+    "reason": "User selected complete Baboon Hawk <-> Pikmin zero interaction before S1.42I runtime test."
+  },
+  "most_recent_valid_runtime_evidence": {
+    "build": "S1.42H",
+    "path": "RuntimeEvidence/S1.42H/20260903T125734Z/",
+    "log_sha256": "81ed064ce97d25f250d6fba1585055baef8ce801cd0f13626d074bf4fef71029",
+    "puffer_pikmin": "pass",
+    "baboon_hawk_invincible_pikmin": "fail_hold_regrab",
+    "thumper_pikmin": "not_validated"
+  },
+  "binding_enemy_rules": {
+    "thumper_crawler_pikmin": "zero_interaction_both_directions",
+    "baboon_hawk_pikmin": "zero_interaction_both_directions",
+    "puffer_pikmin": "attack_and_smoke_no_effect"
+  },
+  "s142j_test_state": {
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
+    "bcmer_enabled": false,
+    "isolated_enemy_regression": true,
+    "target_indoor": [
+      "Crawler/Thumper",
+      "Puffer"
+    ],
+    "target_outdoor": [
+      "Baboon Hawk"
+    ],
+    "total_packages": 188,
+    "enabled_packages": 182,
+    "disabled_packages": 6,
+    "lethlmin_attack_blacklist_added": "Baboon hawk"
+  },
+  "next_action": {
+    "type": "runtime_test",
+    "build": "S1.42J",
+    "rule": "Do not build S1.42K first.",
+    "import": "Gale -> Advanced options -> Import all files",
+    "primary_checks": [
+      "Baboon Hawks ignore Pikmin and do not chase/bite/grab/hold them",
+      "Pikmin do not attack or latch Baboon Hawks",
+      "BaboonBirdPikminEnemy adapter-disable runtime marker appears",
+      "direct Crawler/Thumper contact triggers zero-interaction behavior",
+      "Enemies terminal remains functional"
+    ],
+    "upload": "RuntimeInbox/Current/"
+  },
+  "after_isolated_enemy_acceptance": {
+    "disable_temporary_enemy_isolation": true,
+    "enemy_restore_point": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+    "reenable_bcmer_1_71_0": true
+  },
+  "runtime_route": "S1.42J",
+  "build_controller": "IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME",
+  "canonical_analysis": "Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md"
+}
