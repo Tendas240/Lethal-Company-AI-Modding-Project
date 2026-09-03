@@ -228,6 +228,7 @@ Profiles with the project-local DLL require:
 ## Primary current takeover
 
 Read first after the master prompt:
+- `Current/29_HANDOVER_S1.42G_BCMER_OFF_RETEST_TO_NEXT.md`
 - `Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md`
 - `Current/27_S1.42G_BUILD_AND_TEST.md`
 - `Current/00_CURRENT_STATE.md`
