@@ -396,3 +396,16 @@ Mineshaft elevator + large Pikmin group:
 - BCMER is not implicated by current evidence.
 
 Track during future interior/elevator tests without blocking the accepted S1.41 baseline.
+
+## Historical comparison baseline — juijui
+
+The current technical/gameplay baselines above remain unchanged.
+
+Separately, the project now reserves:
+`References/LegacyProfiles/juijui/juijui.r2z`
+
+for the original historical juijui profile.
+
+This is a comparison/reference baseline only. It represents the old desired mod constellation/configuration that the modern V81 project should approach where safe and technically compatible.
+
+After upload, extract/index its readable metadata repository-first and use the original configs as primary evidence for historical-value questions such as Jetpack capacity.
