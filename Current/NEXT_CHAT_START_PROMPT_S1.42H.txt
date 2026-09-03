@@ -1,0 +1,22 @@
+Nutze dieses Repository als vollständige Projektübergabe:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+Lies zuerst START_HERE_ChatGPT_Masterprompt.txt und danach prioritär:
+- Current/31_HANDOVER_S1.42H_TO_NEXT.md
+- Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md
+- Current/00_CURRENT_STATE.md
+- Current/01_HANDOVER_CORE.md
+- Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+- Current/Projektstatus_S1.42H.json
+
+Aktueller Stand:
+- letzter vollständig akzeptierter Gameplay-Baseline-Stand: S1.41;
+- aktueller gebauter Kandidat: S1.42H "LC V1 S1.42H Thumper Grab Guard";
+- SHA-256: 5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58;
+- S1.42H ist erfolgreich gebaut, aber noch nicht runtime-validiert;
+- BCMER 1.71.0 ist in S1.42H bereits deaktiviert;
+- nächster Schritt ist ausschließlich der S1.42H Runtime-Test, kein neuer Build;
+- wenn bereits ein neuer Log unter RuntimeInbox/Current/ bzw. RuntimeEvidence/S1.42H/ liegt, werte ihn direkt vollständig aus;
+- nach erfolgreichem isolierten Enemy-Test den normalen Enemy-Stand aus Current/ENEMY_SPAWN_BASELINE_S1.42C.json wiederherstellen und BCMER 1.71.0 wieder aktivieren.
+
+Repository-first-Regeln beibehalten. Nicht nach lokalem Clone oder PowerShell-Build fragen, solange die benötigten Basen im Repository liegen.
