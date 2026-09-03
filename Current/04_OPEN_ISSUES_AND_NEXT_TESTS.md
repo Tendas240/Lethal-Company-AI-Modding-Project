@@ -34,24 +34,26 @@ Functional Microwave rarity remains unchanged in this build.
 Do not build another candidate before this runtime gate is evaluated.
 
 
-## Immediate active gate — S1.42G BCMER-off clean retest
+## Completed gate — S1.42G BCMER-off clean retest
 
-The oversized S1.42G runtime evidence formerly under `RuntimeEvidence/S1.42G/20260903T100914Z/` was intentionally deleted and must not be treated as project evidence.
+Valid evidence:
+`RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/`
 
-Next runtime variant:
-`S1.42G_BCMER_OFF_RETEST`
+Result:
+- periodic routed-moon freezes are gone;
+- Crawler/Thumper and Puffer spawn without BCMER;
+- Puffer smoke guard activates;
+- Coroner's prior Jetpack `PlayerController was null` flood is absent;
+- the repeated zero-power DoorAudit/HangarShipDoor stack flood does not reproduce with BCMER disabled;
+- Thumper contact reproduces the invalid grabbed/leader-null Pikmin state.
 
-Use canonical S1.42G, manually disable BCMER only, and make no other profile/config changes.
+This gate is complete and directly produced S1.42H.
 
-Unconfirmed observations to reproduce:
-- no visible enemies;
-- `Enemies` terminal output empty even late in the day;
-- repeated HangarShipDoor/DoorAudit stack spam possibly associated with BCMER `Door System: ERROR`;
-- Functional Microwaves felt too common.
+The earlier oversized S1.42G ingest formerly under
+`RuntimeEvidence/S1.42G/20260903T100914Z/`
+remains intentionally deleted and must not be cited.
 
-Do not patch or rebalance from those observations until the clean retest reproduces them.
-
-## Previous active gate — S1.42G routed-moon smoothness
+## Historical gate — S1.42G routed-moon smoothness
 
 S1.42E fixed the S1.42D startup crash but exposed a new diagnostic-only performance regression.
 
@@ -101,48 +103,51 @@ Evidence:
 
 ### Thumper / Crawler
 
-User requirement:
+Binding user requirement:
 **Thumper and Pikmin must not interact in either direction.**
 
-Current S1.42C controls:
-- `Thumper Bite Limit = 0`
-- `Crawler` in LethalMin Attack Blacklist
+Confirmed predecessor behavior in the clean S1.42G BCMER-off retest:
+- four Crawler/Thumper instances spawned;
+- deliberate contact produced a bite/grab sequence;
+- LethalMin removed a Pikmin leader and started the grabbed death timer;
+- invincibility blocked death;
+- repeated `Leader is null when following` followed.
 
-Runtime:
-- Crawler spawned;
-- no clear Thumper-Pikmin bite/latch was logged;
-- no deliberate controlled encounter was performed.
+S1.42H fix:
+- exact one-time hook on `LethalMin.PikminAI.GrabPikmin(Transform,float,int)`;
+- block Crawler/Thumper-owned grabs before leader removal/death timer;
+- retain `Crawler` in LethalMin Attack Blacklist for Pikmin -> Thumper.
+
+Runtime acceptance:
+- Thumper can cross into/through a Pikmin group without grabbing them;
+- no leader removal;
+- no grabbed death timer;
+- no Pikmin latch/attack on Crawler;
+- no new Thumper-caused leader-null loop;
+- expected marker:
+  `[ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.`
 
 Status:
-**retained but not fully validated.**
-
-Targeted future validation:
-- stand with Pikmin near a Thumper;
-- no Thumper grab/bite;
-- no Pikmin attack/latch;
-- no resulting leader-null spam.
+**fix built in S1.42H; runtime validation pending.**
 
 ### Puffer
 
-User requirement:
+Binding user requirement:
 **Puffer attack/smoke must not affect Pikmin.**
 
-Config already has:
+Config:
 `Puffer Can Poison Pikmin = false`
 
-Project compatibility plugin v1.2.0 also adds a targeted Puffer smoke effect-trigger guard.
+Project-local smoke guard remains active.
 
-S1.42C:
-- patch registration marker present;
-- no Puffer spawned;
-- actual smoke immunity remains unvalidated.
+Clean S1.42G BCMER-off evidence:
+- two Puffers spawned;
+- the compatibility guard removed LethalMin Pikmin-effect components from their smoke path;
+- first Puffer: 3 components removed;
+- second Puffer: 2 components removed.
 
-Targeted future validation:
-- spawn/encounter Puffer;
-- expose Pikmin to smoke;
-- Pikmin should remain unaffected;
-- player/vanilla Puffer behavior should remain normal;
-- look for `[PufferPikminGuard] Removed ...`.
+Status:
+**technical guard activation confirmed; visible gameplay immunity can be rechecked during S1.42H if convenient.**
 
 ## Resolved — LethalModDataLib 1.2.2 initialization NRE
 
@@ -330,24 +335,29 @@ When naturally encountered, continue checking:
 ## Build state
 
 `BuildSpecs/current.json`:
-- disabled
-- `IDLE_S1.42G_BCMER_OFF_RETEST`
+- disabled;
+- `IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`;
+- base/reference = S1.42H.
+
+`RuntimeInbox/ACTIVE_BUILD.txt`:
+- `S1.42H`
 
 S1.42D:
 **FAILED STARTUP — DO NOT RETEST**
 
-S1.42E:
-**startup pass; interaction test aborted because of periodic EnemyIsolation freezes.**
+S1.42G BCMER-off:
+**valid completed runtime gate**
 
-S1.42G:
-`Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
+S1.42H:
+`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+
 SHA-256:
-`09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
+`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
 
 Status:
-**built; previous oversized runtime evidence discarded; awaiting clean BCMER-off manual retest.**
+**built successfully; awaiting runtime validation.**
 
-Do not build a new candidate before evaluating the clean S1.42G BCMER-off retest.
+Do not build S1.42I before evaluating S1.42H.
 
 ## Historical juijui profile — uploaded and indexed
 
@@ -368,7 +378,7 @@ See:
 This is a reference task and must not delay the higher-priority generic LethalMin enemy grab/bite + invincible-Pikmin state repair.
 
 
-## Jetpack explosion behavior — next build
+## Pending later gameplay validation — Jetpack explosion behavior
 
 User requirement:
 the Jetpack must not explode merely because it is boosted/used for too long.
@@ -388,28 +398,17 @@ Combined next Jetpack target:
 - historical juijui capacity target: 140 seconds;
 - no mid-air/high-speed/continuous-boost explosion.
 
-## S1.42G immediate runtime gate
+## Historical S1.42G runtime gate — completed
 
-Use:
-`Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
+The clean BCMER-off retest is complete.
 
-SHA-256:
-`09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
+Evidence:
+`RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/`
 
-Manual test variant:
-`S1.42G_BCMER_OFF_RETEST`
+Its results are incorporated into S1.42H and summarized in:
+`Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
 
-Before launch:
-- disable BCMER only;
-- leave every other mod/config unchanged.
-
-First check:
-- game reaches Main Menu;
-- host/routing remains smooth;
-- no Coroner Jetpack warning flood;
-- isolated enemies appear and are visible through the `Enemies` terminal command.
-
-If the enemy spawn path works, continue with Baboon Hawk / Thumper / Puffer tests.
-
+Current active gate is S1.42H at the top of this file.
 S1.42D must not be retested.
 The deleted oversized S1.42G evidence must not be cited.
+
