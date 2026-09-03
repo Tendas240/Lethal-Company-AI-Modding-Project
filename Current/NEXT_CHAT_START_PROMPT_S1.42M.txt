@@ -1,0 +1,35 @@
+Nutze dieses Repository als vollständige Projektübergabe:
+
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+Lies zuerst `START_HERE_ChatGPT_Masterprompt.txt` und danach mindestens:
+
+- `Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md`
+- `Current/Projektstatus_S1.42M.json`
+- `Current/47_S1.42L_BABOON_ATTACK_PASS_DEATH_REGRESSION_ANALYSIS.md`
+- `Current/46_S1.42M_BABOON_HAWK_DEATH_CLEANUP_BUILD.md`
+- `Current/00_CURRENT_STATE.md`
+- `Current/01_HANDOVER_CORE.md`
+- `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+- `Current/VERIFIKATION_S1.42M.txt`
+- `Current/SHA256SUMS_S1.42M.txt`
+- `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+- `BuildSpecs/current.json`
+- `RuntimeInbox/ACTIVE_BUILD.txt`
+- `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+
+Aktueller gebaute Kandidat ist S1.42M:
+`Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z`
+
+SHA-256:
+`9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7`
+
+Die neueste valide Runtime-Evidenz ist S1.42L:
+`RuntimeEvidence/S1.42L/20260903T155132Z/`
+
+S1.42L hat Pikmin -> lebender Baboon Hawk Attack/Latch/Kill bestätigt. Dabei wurde ein neuer Death-Cleanup-Bug sichtbar: die gelatchten Pikmin verschwanden nach dem Hawk-Tod und lebende Hawks konnten den SellBodies-Körper wegtragen.
+
+Unmittelbar nächster Schritt:
+S1.42M unverändert mit Gale `Advanced options -> Import all files` testen. Pikmin müssen beim Hawk-Tod sauber detachbar/erhalten bleiben; der Dead Baboon Hawk Körper muss liegen bleiben und von Pikmin zur Onion getragen werden können; lebende Baboon Hawks dürfen diesen Körper nicht aufnehmen; Hawk -> Pikmin Ignore muss intakt bleiben. Danach den vollständigen frischen `LogOutput.log` nach `RuntimeInbox/Current/` committen.
+
+Vor diesem Test keinen Nachfolger bauen, EnemyIsolation nicht entfernen und BCMER 1.71.0 nicht reaktivieren. Die bekannte nicht-funktionale Dokumentations-/Kommentar-Drift-Bereinigung ist bis nach dem offenen Runtime-Gate vertagt.
