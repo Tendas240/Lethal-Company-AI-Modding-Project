@@ -15,53 +15,59 @@ Last fully accepted gameplay baseline:
 SHA-256:
 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-Current built candidate:
-**S1.42M - Baboon Hawk Death Cleanup**
+Latest valid runtime evidence:
+**S1.42M - partial pass**
 
-`Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z`
-
-SHA-256:
-`9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7`
-
-Compatibility plugin:
-- v1.3.8
-- DLL SHA-256 `47fff0272b00ce776150c203eb65710216eba4390f5f5864fdbffec686692adf`
-
-Latest valid runtime evidence is still S1.42L:
-`RuntimeEvidence/S1.42L/20260903T155132Z/`
+`RuntimeEvidence/S1.42M/20260903T163446Z/`
 
 Log SHA-256:
-`812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10`
+`0639d5cc04aa54f5d7943ef4689e0d705c818871b019287ca1a1cdc2aa2492fb`
 
-## Closed/PASS from the isolated enemy stage
+Current built candidate:
+**S1.42N - Baboon Hawk Death Target Resolver**
 
-- **Thumper/Crawler -> Pikmin:** broken GrabPikmin/leader/death-timer state blocked.
-- **Pikmin -> Thumper/Crawler:** normal attack/latch works.
-- **Puffer -> Pikmin:** no effect.
-- **Jetpack:** accepted at ~140 seconds; MidAirExplosions Off.
-- **Baboon Hawk -> Pikmin:** target/chase/bite/grab/hold protection works.
-- **Pikmin -> living Baboon Hawk:** normal latch/attack works and Pikmin can kill the Hawk.
-- latest S1.42L run had **0** `Leader is null when following`.
+`Profiles/LC V1 S1.42N Baboon Hawk Death Target Resolver.r2z`
 
-Visible Thumper snapping remains accepted harmless cosmetic behavior.
+SHA-256:
+`c87d48464a750f87274e2848c44e5e1e24d4f1da087f59a33e2889744ebc13e9`
 
-## Active S1.42M runtime gate
+Compatibility plugin:
+**v1.3.9**
 
-S1.42L exposed a post-kill compatibility problem:
-latched Pikmin remained on the dead original Hawk target. SellBodiesFixed later created the carryable `BaboonHawkBody(Clone)` and moved the original enemy transform away, so the attacking Pikmin disappeared with the stale target. Living Hawks could also pick up the new corpse as scrap.
+## S1.42M runtime result
 
-S1.42M must validate:
+PASS:
+- Pikmin can attack/latch/kill living Baboon Hawks;
+- Dead Baboon Hawk body appears;
+- Pikmin can carry the body to the Onion;
+- living Baboon Hawks ignore the corpse;
+- no `Leader is null when following` loop.
 
-1. Pikmin can still attack/latch a living Baboon Hawk.
-2. When they kill it, those Pikmin detach and remain visible/usable.
-3. After the SellBodies delay, the Dead Baboon Hawk body remains present.
-4. Players and Pikmin can still carry the corpse.
-5. Pikmin can carry the corpse toward the Onion.
-6. Living Baboon Hawks do not pick up the corpse.
+FAIL:
+- Pikmin attacking the Hawk still disappear when it dies.
+
+Critical log marker:
+`[BaboonHawkDeathCleanup] ... released 0/0 latched Pikmin ...`
+
+The exact `LethalMin.PikminAI.RemoveCurrentTask()` method resolved correctly. The failed assumption was target discovery: the attacking Pikmin are not `PikminAI` children of the dying Hawk transform.
+
+## Active S1.42N runtime gate
+
+S1.42N changes only the failed death target resolver.
+
+At Hawk death it performs a **one-shot** pass through `RoundManager.Instance.SpawnedEnemies`, filters runtime `LethalMin.PikminAI` candidates, and calls the exact resolved `RemoveCurrentTask()` for candidates under/near the dying Hawk. It does not restore the failed continuous global scan architecture.
+
+Required result:
+1. Pikmin can still attack/latch/kill a living Baboon Hawk.
+2. At Hawk death, attacking Pikmin remain visible and usable.
+3. The log reports non-zero S1.42N death-release candidates/releases.
+4. The Dead Baboon Hawk body still appears.
+5. Pikmin can still carry the body to the Onion.
+6. Living Hawks still ignore the corpse.
 7. Hawk -> Pikmin ignore remains intact.
 8. No leader-null loop appears.
 
-Do **not** build a successor first.
+Do **not** build a successor first unless S1.42N cannot start.
 
 ## Temporary diagnostic state
 
@@ -75,19 +81,19 @@ BCMER exact:
 Restore baseline:
 `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
-After S1.42M passes:
+After S1.42N passes:
 1. remove/disable EnemyIsolation;
-2. restore normal enemy state from the S1.42C restore baseline;
+2. restore normal enemy state exactly from the S1.42C restore baseline;
 3. re-enable exact BCMER 1.71.0;
 4. preserve all accepted interaction/corpse rules;
-5. runtime-check the normal state;
+5. runtime-check the restored normal state;
 6. only then consider deferred repository maintenance.
 
 ## Runtime/build control
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42M`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42N`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42M_BUILD_AWAITING_RUNTIME`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42N_BUILD_AWAITING_RUNTIME`
 
 Profiles containing the project-local DLL must be imported with Gale:
 
@@ -96,29 +102,24 @@ Profiles containing the project-local DLL must be imported with Gale:
 ## ChatGPT - read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md`
-3. `Current/Projektstatus_S1.42M.json`
-4. `Current/47_S1.42L_BABOON_ATTACK_PASS_DEATH_REGRESSION_ANALYSIS.md`
-5. `Current/46_S1.42M_BABOON_HAWK_DEATH_CLEANUP_BUILD.md`
-6. `Current/00_CURRENT_STATE.md`
-7. `Current/01_HANDOVER_CORE.md`
-8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-9. `Current/VERIFIKATION_S1.42M.txt`
-10. `Current/SHA256SUMS_S1.42M.txt`
-11. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-12. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-13. `BuildSpecs/current.json`
-14. `RuntimeInbox/ACTIVE_BUILD.txt`
-15. `Current/49_REPOSITORY_HANDOVER_AUDIT_S1.42M.md`
-16. `Current/Aktive_Modliste_S1.42M.txt`
-17. `Current/DATEIINVENTAR_S1.42M.txt`
-18. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
-19. `Current/NEXT_CHAT_START_PROMPT_S1.42M.txt`
+2. `Current/Projektstatus_S1.42N.json`
+3. `Current/50_S1.42M_DEATH_CLEANUP_PARTIAL_PASS_ANALYSIS.md`
+4. `Current/51_S1.42N_BABOON_HAWK_DEATH_TARGET_RESOLVER_BUILD.md`
+5. `Current/00_CURRENT_STATE.md`
+6. `Current/01_HANDOVER_CORE.md`
+7. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+8. `BuildSpecs/current.json`
+9. `RuntimeInbox/ACTIVE_BUILD.txt`
+10. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+11. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+12. `Current/02_TECHNICAL_BASELINE.md`
+13. `Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md` for predecessor detail
+14. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
 
 ## Critical persistent rules
 
 - Do not reintroduce the S1.42D broad/inherited LethalMin reflection/Harmony scan.
-- Do not use continuous Update-driven global EnemyAI scene scans for EnemyIsolation.
+- Do not use continuous Update-driven global EnemyAI scene scans for EnemyIsolation/death cleanup.
 - Do not silently upgrade BCMER 1.71.0 to 2.0.0.
 - Do not remove `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`.
 - Do not treat S1.42I or S1.42K as runtime evidence; both were built but never runtime-tested.
@@ -129,9 +130,9 @@ Profiles containing the project-local DLL must be imported with Gale:
 
 ## Deferred non-functional maintenance
 
-Do not clean this during the open S1.42M runtime gate:
+Do not clean this during the open S1.42N runtime gate:
 - older "current" wording in `Current/02_TECHNICAL_BASELINE.md`;
-- stale S1.42J-era comments in untouched parts of `Patches/S139CompatibilityFixes/Plugin.cs`.
+- stale S1.42J-era comments in untouched historical parts of `Patches/S139CompatibilityFixes/Plugin.cs`.
 
 Structural optimization:
 `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
