@@ -1,0 +1,37 @@
+DATEIINVENTAR — S1.42G_BCMER_OFF_RETEST
+
+KANONISCHE BASIS
+- Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z
+- ProfileSources/S1.42G/
+- Patches/S139CompatibilityFixes/
+- Current/27_S1.42G_BUILD_AND_TEST.md
+- Current/VERIFIKATION_S1.42G.txt
+- Current/SHA256SUMS_S1.42G.txt
+
+AKTUELLE ÜBERGABE
+- Current/29_HANDOVER_S1.42G_BCMER_OFF_RETEST_TO_NEXT.md
+- Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md
+- Current/00_CURRENT_STATE.md
+- Current/01_HANDOVER_CORE.md
+- Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+- Current/Projektstatus_S1.42G.json
+- Current/NEXT_CHAT_START_PROMPT_S1.42G.txt
+
+MANUELLE RETEST-DOKUMENTATION
+- Current/Aktive_Modliste_S1.42G_BCMER_OFF_RETEST.txt
+- Current/README_Handover_S1.42G_BCMER_OFF_RETEST.txt
+- Current/VERIFIKATION_S1.42G_BCMER_OFF_RETEST.txt
+- Current/SHA256SUMS_S1.42G_BCMER_OFF_RETEST.txt
+- Current/DATEIINVENTAR_S1.42G_BCMER_OFF_RETEST.txt
+
+RUNTIME ROUTING
+- RuntimeInbox/ACTIVE_BUILD.txt = S1.42G_BCMER_OFF_RETEST
+- RuntimeInbox/Current/ = leer bis auf .gitkeep
+
+BUILD CONTROL
+- BuildSpecs/current.json = disabled
+- IDLE_S1.42G_BCMER_OFF_RETEST
+
+VERWORFEN / GELÖSCHT
+- RuntimeEvidence/S1.42G/20260903T100914Z/
+  Grund: oversized Multi-Run-Log, nicht zuverlässig vollständig auswertbar.
