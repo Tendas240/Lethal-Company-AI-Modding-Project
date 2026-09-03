@@ -1,0 +1,165 @@
+{
+  "date": "2026-09-03",
+  "canonical_state": "S1.41",
+  "current_profile": "LC V1 S1.41 BCMER Reactivation.r2z",
+  "current_profile_sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+  "current_profile_runtime_tested": true,
+  "latest_runtime_tested_state": "S1.41",
+  "latest_runtime_tested_profile": "LC V1 S1.41 BCMER Reactivation.r2z",
+  "latest_runtime_test_result": "accepted",
+  "game": "Lethal Company V81",
+  "manifest_total": 179,
+  "manifest_active": 174,
+  "manifest_disabled": [
+    "AJB-Keep_hangar_ship_door_closed 1.0.0",
+    "zealsprince-Malfunctions 1.10.3",
+    "Reiko88-Observer 2.0.1",
+    "ProjectSCP-SCP999 2.4.0",
+    "Kittenji-Dont_Touch_Me 1.2.8"
+  ],
+  "s140b": {
+    "status": "accepted",
+    "sha256": "fd303f73f0f2223a6375fcf2b7ed209dae77e1934e3b4e8139932a89e7de7eb9",
+    "coderebirth_editing_gate_fix": true,
+    "postrun_config_retained": true,
+    "natural_currency_observed": false,
+    "natural_flash_turret_observed": false
+  },
+  "s141": {
+    "status": "accepted",
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+    "bcmer_version": "1.71.0",
+    "bcmer_enabled": true,
+    "bcmer_2_0_used": false,
+    "ownership_guard": {
+      "Experimental Dont Handle Power?": true,
+      "Experimental Dont Handle Spawn Chance?": true,
+      "Let Brutal handle properties outside of events?": false,
+      "Enable Randomizer?": false
+    },
+    "disabled_bcmer_rain_events": [
+      "Raining",
+      "HeavyRain",
+      "AllWeather",
+      "Hurricane"
+    ],
+    "zip_entries": 330,
+    "profile_online": true,
+    "profile_indexed": true,
+    "runtime_evidence_path": "RuntimeEvidence/S1.41/20260902T215804Z",
+    "runtime_event_sample": [
+      "Arachnophobia",
+      "ScarceOutsideScrap",
+      "LeaflessTrees"
+    ],
+    "postrun_ownership_guard_retained": true,
+    "postrun_rain_events_disabled": true,
+    "coderebirth_regression_guard_retained": true
+  },
+  "local_patch": {
+    "name": "S139CompatibilityFixes",
+    "version": "1.0.0",
+    "source_path": "Patches/S139CompatibilityFixes/",
+    "embedded_dll": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+    "gale_import_requirement": "Advanced options -> Import all files",
+    "runtime_load_marker": "S1.39 Compatibility Fixes loaded.",
+    "runtime_confirmed_s141": true
+  },
+  "repository_first_automation": {
+    "migration_complete": true,
+    "build_spec": "BuildSpecs/current.json",
+    "profile_builder": "BuildSystem/profile_builder.py",
+    "profile_build_workflow": ".github/workflows/profile-build.yml",
+    "profile_index_workflow": ".github/workflows/profile-index.yml",
+    "runtime_ingest_workflow": ".github/workflows/runtime-ingest.yml",
+    "profile_sources": "ProfileSources/",
+    "runtime_inbox": "RuntimeInbox/Current/",
+    "runtime_evidence": "RuntimeEvidence/",
+    "local_repository_clone_required": false,
+    "local_powershell_profile_build_required": false
+  },
+  "persistent_user_decisions": {
+    "malfunctions": "disabled until explicit user request",
+    "scp999": "disabled",
+    "observer": "disabled",
+    "dont_touch_me": "disabled",
+    "ajb_ship_door": "disabled while local failsafe active",
+    "bcmer": "exact 1.71.0 is the accepted baseline; do not upgrade to 2.0.0 without an explicit isolated migration stage",
+    "coderebirthlib": "hard do-not-install",
+    "lethalmoddatalib": "not permanently banned; isolated reintroduction allowed if DULL requires it",
+    "leaf_boy": "remain in LethalMin Attack Blacklist",
+    "unknown_powerlevels": "never guess"
+  },
+  "roadmap": [
+    "Build S1.42A with eight binding interior packages for config generation only",
+    "Run Main Menu -> host/load -> land -> generate dungeon -> exit",
+    "Upload complete config/runtime evidence through RuntimeInbox/Current",
+    "Tune actual generated IDs/configs",
+    "Build/test S1.42"
+  ],
+  "open_issues": [
+    {
+      "id": "mineshaft_elevator_pikmin_crowding",
+      "status": "open_nonblocking",
+      "observation": "Player clipped through Mineshaft elevator floor while descending with many Pikmin and died from fall damage.",
+      "evidence": "NavMesh agent creation failures near elevator/death window; gravity/fall death recorded.",
+      "causality": "Not proven. Do not attribute to BCMER without additional evidence."
+    },
+    {
+      "id": "pikmin_outdoor_sprout_density_monitor",
+      "status": "monitor_only",
+      "observation": "User felt outdoor Pikmin Sprouts may have become less common after CodeRebirth.",
+      "current_interpretation": "No strong evidence of a CodeRebirth-caused reduction; recent Offense counts were broadly consistent with configured spawn chance. More types/spatial distribution may change perception.",
+      "action": "Collect additional counts only if the concern persists; do not rebalance from this impression alone."
+    }
+  ],
+  "handover": {
+    "refreshed": true,
+    "handover_file": "Current/12_HANDOVER_S1.41_TO_S1.42A.md",
+    "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.41.txt",
+    "verification": "Current/VERIFIKATION_S1.41.txt",
+    "inventory": "Current/DATEIINVENTAR_S1.41.txt",
+    "hashes": "Current/SHA256SUMS_S1.41.txt"
+  },
+  "next_stage": {
+    "build_id": "S1.42A",
+    "name": "Interior Config Seed runtime generation",
+    "plan": "BuildSpecs/S1.42A_PLAN.md",
+    "candidate_profile": "Profiles/LC V1 S1.42A Interior Config Seed.r2z",
+    "candidate_sha256": "70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe",
+    "accepted_baseline": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "accepted_baseline_sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "build_method": "GitHub Actions repository-first",
+    "build_complete": true,
+    "runtime_test_pending": true,
+    "runtime_inbox_active_build": "S1.42A",
+    "next_action": "Import S1.42A with Gale Advanced options -> Import all files; Main Menu -> host/load -> land on normal moon -> generate dungeon -> exit; upload complete BepInEx/config ZIP and LogOutput.log to RuntimeInbox/Current/."
+  },
+  "s142a_candidate": {
+    "status": "built_automation_verified_runtime_pending",
+    "profile": "LC V1 S1.42A Interior Config Seed.r2z",
+    "profile_path": "Profiles/LC V1 S1.42A Interior Config Seed.r2z",
+    "sha256": "70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe",
+    "manifest_total": 188,
+    "manifest_active": 183,
+    "manifest_disabled": 5,
+    "additions": [
+      "Beaniebe-Liminal_House 1.1.6",
+      "MelanieMelicious-Melanie_Interiors_MelanieMelicious 1.2.1",
+      "Beaniebe-Deepcore_Mines 1.0.9",
+      "MrKixcat-Junkrooms 4.0.2",
+      "Beaniebe-Super_Market 1.0.3",
+      "MrKixcat-Shatteredrooms 2.1.6",
+      "BLB_Thunderstore_Mods_LOL-Lead_Interiors 0.0.7",
+      "DemonMae-Dungeons_Ultimately_Lacking_Liveliness 1.8.8",
+      "MaxWasUnavailable-LethalModDataLib 1.2.2"
+    ],
+    "boom_scraps_added": false,
+    "member_delta": [
+      "export.r2x"
+    ],
+    "snapshot": "ProfileSources/S1.42A/",
+    "auto_build_result": "Current/AUTO_BUILD_RESULT.json",
+    "runtime_accepted": false
+  }
+}
