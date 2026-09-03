@@ -9,52 +9,54 @@
 SHA-256:
 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-**Latest runtime-tested technical candidate that reached gameplay:** S1.42C
+**Most recent valid runtime evidence:** `S1.42G_BCMER_OFF_RETEST`
 
-`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
+`RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/`
 
-SHA-256:
-`22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
+Log SHA-256:
+`ac410c42e8174eb4f01aba1d3b7bf54100454e033ed87659a932f3b7f4a3c87e`
 
-**Failed diagnostic candidate:** S1.42D
+Confirmed by that clean run:
+- periodic routed-moon freezes are resolved;
+- Crawler/Thumper and Puffer spawn correctly with BCMER disabled;
+- Puffer smoke/Pikmin guard activates;
+- Coroner's previous per-frame Jetpack `PlayerController was null` flood is gone;
+- the repeated zero-power DoorAudit/HangarShipDoor stack flood does not reproduce with BCMER disabled;
+- Thumper contact still reproduced LethalMin's invalid invincible-Pikmin grabbed/leader-null state.
 
-Startup crashed during the new broad LethalMin reflection/Harmony scan. Do not retest S1.42D.
+**Latest built test candidate:** S1.42H
 
-Evidence:
-`RuntimeEvidence/S1.42D/20260903T084247Z/`
-
-**Runtime-tested predecessor:** S1.42E
-
-`Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
-
-SHA-256:
-`4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348`
-
-S1.42E **passed the startup gate** and registered the narrowed LethalMin state guard on 4 declared enemy methods. The user then observed short once-per-second freezes after hosting in the ship lobby. Runtime evidence proved the temporary EnemyIsolation layer was repeatedly attempting six invalid `SpawnableEnemyWithRarity` default-constructor creations per second on Gordion.
-
-Evidence:
-`RuntimeEvidence/S1.42E/20260903T091053Z/`
-
-**Runtime-tested predecessor:** S1.42F
-
-`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
+`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
 
 SHA-256:
-`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
+`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
 
-S1.42F fixed the Gordion constructor loop; the ship lobby was smooth until routing. On a routed moon, periodic freezes returned. The log also exposed a separate per-frame Coroner Jetpack warning flood.
+Compatibility plugin:
+- version **1.3.5**
+- DLL SHA-256 `d67f8f4bc2012f5b74086eb268fcb191f6990c93041617e9ef35c635ea33f186`
 
-**Latest built test candidate:** S1.42G
+Build verification:
+- GitHub Actions success;
+- 0 warnings / 0 errors;
+- 331 archive members;
+- only the compatibility DLL and `export.r2x` changed against S1.42G.
 
-`Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
+S1.42H:
+- patches exactly the declared `LethalMin.PikminAI.GrabPikmin(Transform,float,int)` implementation once;
+- blocks Crawler/Thumper -> Pikmin grabs before leader removal/death timer;
+- retains Crawler in LethalMin's Pikmin Attack Blacklist for the reverse direction;
+- carries forward the late-lifecycle EnemyIsolation without any continuous global EnemyAI scan;
+- contains BCMER 1.71.0 already **disabled** for this final isolated enemy test;
+- leaves Functional Microwave rarity unchanged.
 
-SHA-256:
-`09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
+**Current next gate:** runtime-test S1.42H. Do not build S1.42I first.
 
-S1.42G removes the continuous EnemyAI scene scan and unpatches only Coroner's faulty `JetpackItem.Update` death detector while keeping Coroner enabled.
+After the isolated enemy stage passes:
+- remove/disable the temporary EnemyIsolation diagnostic;
+- restore the full normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+- re-enable exact BCMER 1.71.0.
 
-Current next gate:
-**retest S1.42G as the manual variant `S1.42G_BCMER_OFF_RETEST`: import S1.42G, manually disable BCMER only, host, route/land, and collect a fresh shorter log. The oversized prior S1.42G evidence was intentionally discarded and must not be cited.**
+The old oversized S1.42G ingest formerly under `RuntimeEvidence/S1.42G/20260903T100914Z/` was intentionally deleted and must not be restored or cited.
 
 Game: **Lethal Company V81**
 
@@ -71,36 +73,28 @@ Expected general marker:
 ## ChatGPT — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/29_HANDOVER_S1.42G_BCMER_OFF_RETEST_TO_NEXT.md`
-3. `Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md`
-4. `Current/27_S1.42G_BUILD_AND_TEST.md`
-5. `Current/00_CURRENT_STATE.md`
-6. `Current/01_HANDOVER_CORE.md`
-7. `Current/26_S1.42F_RUNTIME_S1.42G_PERFORMANCE_HOTFIX.md`
-8. `Current/22_HANDOVER_S1.42E_TO_NEXT.md` (historical handover context)
-9. `Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md`
-10. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-11. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-12. `Current/06_RECENT_WORK_S1.42D-S1.42E.md`
-13. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
-14. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
-15. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
-16. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
-17. `Current/02_TECHNICAL_BASELINE.md`
-18. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-19. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-20. `Current/03_PROJECT_CHRONOLOGY.md`
-21. `Current/Projektstatus_S1.42G.json`
-22. `Current/VERIFIKATION_S1.42G.txt`
-23. `Current/SHA256SUMS_S1.42G.txt`
-24. `Current/VERIFIKATION_S1.42G_BCMER_OFF_RETEST.txt`
-25. `Current/SHA256SUMS_S1.42G_BCMER_OFF_RETEST.txt`
-26. `Current/DATEIINVENTAR_S1.42G_BCMER_OFF_RETEST.txt`
-27. `Current/README_Handover_S1.42G_BCMER_OFF_RETEST.txt`
-28. `Current/Aktive_Modliste_S1.42G_BCMER_OFF_RETEST.txt` (manual runtime variant; canonical S1.42G itself remains 183 enabled / 5 disabled)
-29. `ProfileSources/S1.42G/`
-30. `BuildSpecs/current.json`
-31. `RuntimeInbox/ACTIVE_BUILD.txt`
+2. `Current/31_HANDOVER_S1.42H_TO_NEXT.md`
+3. `Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
+4. `Current/00_CURRENT_STATE.md`
+5. `Current/01_HANDOVER_CORE.md`
+6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+7. `Current/Projektstatus_S1.42H.json`
+8. `Current/VERIFIKATION_S1.42H.txt`
+9. `Current/SHA256SUMS_S1.42H.txt`
+10. `Current/Aktive_Modliste_S1.42H.txt`
+11. `Current/README_Handover_S1.42H.txt`
+12. `Current/DATEIINVENTAR_S1.42H.txt`
+13. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+14. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+15. `Current/02_TECHNICAL_BASELINE.md`
+16. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
+17. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+18. `Current/03_PROJECT_CHRONOLOGY.md`
+19. `ProfileSources/S1.42H/`
+20. `BuildSpecs/current.json`
+21. `RuntimeInbox/ACTIVE_BUILD.txt`
+
+Historical S1.42G/S1.42D handovers and evidence are read only when needed for diagnosis. Newer confirmed information always overrides older handover instructions.
 
 Then inspect `Profiles/`, `RuntimeEvidence/`, `Patches/`, `References/`, `Logs/`, and `Archive/` only as required by the task.
 
