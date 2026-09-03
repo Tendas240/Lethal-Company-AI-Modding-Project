@@ -141,10 +141,12 @@ Target:
 - volume 0.7
 
 ### Jetpack
-Match historical juijui if evidence exists.
-Current = 40s.
-Do not guess historical value.
-50s is fallback only, not confirmed history.
+Historical juijui config evidence target: 140 seconds.
+Current = 40s via ButteRyBalance.
+Implement 140s with a current-compatible/local mechanism; do not restore obsolete Bigger Battery blindly.
+Jetpack must not explode from sustained/high-speed boost use.
+S1.42C Jetpack Fixes: `MidAirExplosions = OnlyTooHigh`.
+Next-build target: `MidAirExplosions = Off`.
 
 ## Remaining interior tuning
 
@@ -215,3 +217,15 @@ Read:
 Use the historical profile to recover exact old settings when requested, especially the unresolved Jetpack capacity/duration. Do not blindly restore obsolete mods or versions; current compatibility remains binding.
 
 The generic LethalMin enemy grab/bite + Invincible Pikmin leader/follow-state repair remains the first active engineering priority.
+
+
+## Next focused candidate
+
+S1.42D is reserved as a focused regression candidate:
+- generic LethalMin grab/bite + Invincible Pikmin state repair;
+- retained Thumper/Puffer guards;
+- Jetpack 140-second historical target;
+- Jetpack no boost/speed explosion;
+- Functional Microwave volume 0.7 + editing gate.
+
+Do not mix the broader interior/BCMER tuning into this candidate.
