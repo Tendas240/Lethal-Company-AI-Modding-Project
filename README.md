@@ -99,18 +99,23 @@ Profiles containing the project-local DLL must be imported with Gale:
 ## ChatGPT - read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/Projektstatus_S1.42P.json`
-3. `Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md`
-4. `Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md`
-5. `Current/00_CURRENT_STATE.md`
-6. `Current/01_HANDOVER_CORE.md`
-7. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-8. `BuildSpecs/current.json`
-9. `RuntimeInbox/ACTIVE_BUILD.txt`
-10. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-11. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-12. `Current/02_TECHNICAL_BASELINE.md`
-13. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+2. `Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md`
+3. `Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md`
+4. `Current/Projektstatus_S1.42P.json`
+5. `Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md`
+6. `Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md`
+7. `Current/00_CURRENT_STATE.md`
+8. `Current/01_HANDOVER_CORE.md`
+9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+10. `Current/VERIFIKATION_S1.42P.txt`
+11. `Current/SHA256SUMS_S1.42P.txt`
+12. `Current/Aktive_Modliste_S1.42P.txt`
+13. `BuildSpecs/current.json`
+14. `RuntimeInbox/ACTIVE_BUILD.txt`
+15. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+16. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+17. `Current/02_TECHNICAL_BASELINE.md`
+18. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
 
 ## Critical persistent rules
 
@@ -132,3 +137,8 @@ Do not clean during the open S1.42P runtime gate:
 
 Structural optimization:
 `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+
+
+## Final handover integrity
+
+No repository files were deleted during the S1.42P final handover. Historical runtime evidence and failed approaches remain preserved because they retain diagnostic value.
