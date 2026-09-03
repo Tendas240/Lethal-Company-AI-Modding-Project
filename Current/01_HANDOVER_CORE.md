@@ -1,5 +1,45 @@
 # 01 — Handover Core
 
+## CURRENT CANONICAL OVERRIDE — S1.42L THUMPER CLOSED — 2026-09-03
+
+This section is newer than the earlier S1.42L gate text below.
+
+Latest valid runtime evidence:
+`RuntimeEvidence/S1.42L/20260903T151817Z/`
+Log SHA-256: `402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd`
+
+Thumper/Crawler is now **PASS / CLOSED**:
+- Pikmin -> Thumper/Crawler attack/latch confirmed by user;
+- Thumper/Crawler -> Pikmin broken GrabPikmin state blocked;
+- 36 `[ThumperPikminGuard]` blocks;
+- 0 `Leader is null when following`;
+- visible snapping is accepted as harmless and should be ignored.
+
+Also closed:
+- Puffer -> Pikmin PASS;
+- Jetpack PASS;
+- Baboon Hawk -> Pikmin PASS.
+
+Only remaining isolated enemy gate:
+**Pikmin -> Baboon Hawk attack/latch**.
+
+Keep using S1.42L. Do not build a successor yet.
+
+Current handover:
+`Current/44_HANDOVER_S1.42L_THUMPER_CLOSED.md`
+
+Current analysis:
+`Current/43_S1.42L_RUNTIME_ANALYSIS_THUMPER_CLOSED.md`
+
+Runtime route remains:
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42L`
+
+Build controller remains:
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME`
+
+Do not restore normal enemies/BCMER and do not start repository migration until the remaining Pikmin -> Baboon Hawk direction is explicitly validated.
+
+
 ## CURRENT CANONICAL OVERRIDE — S1.42L — 2026-09-03
 
 This section supersedes the S1.42K current-gate override below.
