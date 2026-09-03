@@ -2,6 +2,12 @@
 
 ## Immediate active gate — S1.42R
 
+Final handover:
+`Current/64_HANDOVER_S1.42R_TO_NEXT_FINAL.md`
+
+Repository audit:
+`Current/65_REPOSITORY_HANDOVER_AUDIT_S1.42R.md`
+
 Profile:
 `Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z`
 
@@ -94,3 +100,5 @@ BCMER 1.71.0:
 `BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42R_BUILD_AWAITING_RUNTIME`
 
 Do not restore normal enemies or BCMER until R passes.
+
+There is currently no S1.42R runtime evidence. The next action is the runtime test itself, not another build.
