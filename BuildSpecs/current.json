@@ -1,15 +1,43 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42S_FOCUSED_RUNTIME_PASS_AWAITING_S1.42T_RESTORE_BUILD",
+  "enabled": true,
+  "build_id": "S1.42T",
   "base_profile": "Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z",
   "base_sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42T Normal Enemy Restore.r2z",
+  "profile_name": "LC V1 S1.42T Normal Enemy Restore",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "config_patches": [],
+  "config_patches": [
+    {
+      "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+      "section": "Diagnostics",
+      "key": "Isolated Enemy Regression",
+      "value": "false"
+    }
+  ],
   "local_plugin_builds": [],
-  "text_assertions": []
+  "text_assertions": [
+    {
+      "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+      "contains": "Isolated Enemy Regression = false"
+    },
+    {
+      "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+      "not_contains": "Isolated Enemy Regression = true"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Thumper Bite Limit = 3"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Attack Blacklist = Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "not_contains": "Leaf boy,Crawler"
+    }
+  ]
 }
