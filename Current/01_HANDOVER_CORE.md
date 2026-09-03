@@ -149,11 +149,11 @@ Target:
 
 ### Jetpack
 Historical juijui config evidence target: 140 seconds.
-Current = 40s via ButteRyBalance.
-Implement 140s with a current-compatible/local mechanism; do not restore obsolete Bigger Battery blindly.
-Jetpack must not explode from sustained/high-speed boost use.
-S1.42C Jetpack Fixes: `MidAirExplosions = OnlyTooHigh`.
-Next-build target: `MidAirExplosions = Off`.
+S1.42G has ButteRyBalance `Reduce Battery = false`.
+S1.42G compatibility plugin targets the loaded Jetpack Item asset at 140 seconds.
+S1.42G JetpackFixes has `MidAirExplosions = Off`.
+Do not restore obsolete Bigger Battery blindly.
+Runtime still needs to validate approximately 140 seconds of usable duration and no sustained/high-speed normal-boost self-explosion.
 
 ## Remaining interior tuning
 
