@@ -50,6 +50,17 @@ Runtime route:
 Build controller:
 `BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME`
 
+## Pending repository optimization — after active gate only
+
+A repository-architecture migration has been reviewed and is recommended for long-term ChatGPT reliability.
+
+Canonical plan:
+`Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+
+Do **not** perform that structural migration before the active S1.42J runtime gate is evaluated and the resulting canonical state is documented. The later migration target is a small stable Current/ core, explicit machine-readable project state/read order, indexed retrieval of ProfileSources/ and RuntimeEvidence/, preserved historical evidence, and automated repository consistency validation.
+
+A future chat must re-check the then-current repository state before starting the migration; S1.42J is only the state at which this plan was authored.
+
 Canonical analysis:
 `Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
 
@@ -398,7 +409,8 @@ Profiles with the project-local DLL require:
 ## Primary current takeover
 
 Read first after the master prompt:
-- `Current/34_HANDOVER_S1.42J_TO_NEXT.md`
+- `Current/36_HANDOVER_S1.42J_TO_NEXT.md`
+- `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
 - `Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
 - `Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md`
 - `Current/00_CURRENT_STATE.md`
