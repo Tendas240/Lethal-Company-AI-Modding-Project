@@ -35,17 +35,26 @@ S1.42E **passed the startup gate** and registered the narrowed LethalMin state g
 Evidence:
 `RuntimeEvidence/S1.42E/20260903T091053Z/`
 
-**Latest built test candidate:** S1.42F
+**Runtime-tested predecessor:** S1.42F
 
 `Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
 
 SHA-256:
 `f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
 
-S1.42F built successfully with 0 compiler warnings/errors and the unchanged 188/183/5 package manifest. It skips diagnostic pool work on Gordion/Company and fixes diagnostic `SpawnableEnemyWithRarity` creation.
+S1.42F fixed the Gordion constructor loop; the ship lobby was smooth until routing. On a routed moon, periodic freezes returned. The log also exposed a separate per-frame Coroner Jetpack warning flood.
+
+**Latest built test candidate:** S1.42G
+
+`Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
+
+SHA-256:
+`09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
+
+S1.42G removes the continuous EnemyAI scene scan and unpatches only Coroner's faulty `JetpackItem.Update` death detector while keeping Coroner enabled.
 
 Immediate next gate:
-**import S1.42F, reach Main Menu, host into the ship lobby in orbit, and confirm the S1.42E once-per-second freezes are gone. If smooth, continue directly with the isolated enemy / Jetpack / Microwave regression test.**
+**import S1.42G, host, route to a moon, wait 20-30 seconds before landing, and confirm there are no periodic freezes and no Coroner null-player flood.**
 
 Game: **Lethal Company V81**
 
@@ -64,8 +73,8 @@ Expected general marker:
 1. `START_HERE_ChatGPT_Masterprompt.txt`
 2. `Current/00_CURRENT_STATE.md`
 3. `Current/01_HANDOVER_CORE.md`
-4. `Current/25_S1.42F_BUILD_AND_TEST.md`
-5. `Current/24_S1.42E_RUNTIME_FREEZE_S1.42F_HOTFIX.md`
+4. `Current/27_S1.42G_BUILD_AND_TEST.md`
+5. `Current/26_S1.42F_RUNTIME_S1.42G_PERFORMANCE_HOTFIX.md`
 6. `Current/22_HANDOVER_S1.42E_TO_NEXT.md`
 7. `Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md`
 8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
@@ -79,11 +88,11 @@ Expected general marker:
 16. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
 17. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
 18. `Current/03_PROJECT_CHRONOLOGY.md`
-19. `Current/Projektstatus_S1.42F.json`
-20. `Current/VERIFIKATION_S1.42F.txt`
-21. `Current/SHA256SUMS_S1.42F.txt`
+19. `Current/Projektstatus_S1.42G.json`
+20. `Current/VERIFIKATION_S1.42G.txt`
+21. `Current/SHA256SUMS_S1.42G.txt`
 22. `Current/Aktive_Modliste_S1.42E.txt` (manifest unchanged in S1.42F)
-23. `ProfileSources/S1.42F/`
+23. `ProfileSources/S1.42G/`
 24. `BuildSpecs/current.json`
 25. `RuntimeInbox/ACTIVE_BUILD.txt`
 
@@ -248,11 +257,11 @@ Specific Thumper/Puffer guards remain retained and require targeted validation w
 
 `BuildSpecs/current.json` is disabled and idle:
 
-`IDLE_AFTER_S1.42F_BUILD_AWAITING_RUNTIME`
+`IDLE_AFTER_S1.42G_BUILD_AWAITING_RUNTIME`
 
 Do not rebuild or create another candidate before S1.42E runtime evidence is evaluated.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42F`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42G`
 
 ## Repository-first automation
 
