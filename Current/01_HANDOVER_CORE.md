@@ -23,7 +23,12 @@ SHA-256:
 Compatibility plugin:
 **v1.3.11**
 
-Read:
+Read first:
+- `Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md`
+- `Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md`
+- `Current/Projektstatus_S1.42P.json`
+- `Current/VERIFIKATION_S1.42P.txt`
+- `Current/Aktive_Modliste_S1.42P.txt`
 - `Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md`
 - `Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md`
 - `Current/Projektstatus_S1.42P.json`
@@ -102,3 +107,7 @@ Restore baseline:
 - do not guess alternate method names now that FinishTask() is runtime-confirmed;
 - no silent BCMER 2.0.0 upgrade;
 - preserve S1.42C enemy restore baseline.
+
+## Handover deletion decision
+
+No files were deleted. Historical runtime evidence, failed approaches, restore baselines and deferred-maintenance notes remain intentionally preserved.
