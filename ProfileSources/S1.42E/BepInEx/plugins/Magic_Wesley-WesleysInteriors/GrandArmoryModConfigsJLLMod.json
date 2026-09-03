@@ -1,0 +1,13 @@
+{
+  "modAuthor": "Magic Wesley",
+  "modName": "Grand Armory",
+  "configOptions": [
+    {
+      "configName": "Wake the birds",
+      "configCategory": "Core",
+      "configDescription": "Allows old birds to spawn inside",
+      "type": "bool",
+      "defaultValue": "False"
+    }
+  ]
+}
