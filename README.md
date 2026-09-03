@@ -222,7 +222,7 @@ Historical juijui primary config evidence:
 
 Caveat: the final historical export no longer contains Bigger Battery and its DLL is absent, so 140 is the strongest intended/configured historical target rather than proof of final-export runtime activation.
 
-S1.42E target:
+Current S1.42H retained target:
 - ButteRyBalance `Reduce Battery = false`;
 - project-local compatibility code targets the loaded Jetpack Item asset at 140 seconds;
 - `JetpackFixes MidAirExplosions = Off`;
@@ -230,38 +230,32 @@ S1.42E target:
 
 ### Current engineering priority
 
-First: **obtain a clean S1.42G runtime log with BCMER manually disabled only.**
+First: **runtime-test S1.42H.**
 
-The deleted oversized S1.42G evidence is not valid project evidence.
+Primary acceptance:
+- Main Menu/host succeeds;
+- routed-moon periodic freezes remain gone;
+- target enemies still populate and appear in `Enemies`;
+- Thumper/Crawler contact with Pikmin triggers the new zero-interaction guard before leader removal/death timer;
+- no new Thumper-caused `Leader is null when following` loop;
+- Baboon Hawk generic recovery and Puffer smoke immunity are checked if conveniently encountered.
 
-This retest must answer:
-- do the isolated test enemies actually populate/spawn without BCMER;
-- does the `Enemies` terminal command show them;
-- are routed-moon periodic stalls and Coroner Jetpack spam still gone;
-- does the observed HangarShipDoor/DoorAudit spam disappear with BCMER disabled.
+BCMER 1.71.0 is already disabled inside S1.42H. Do not manually alter package states or configs.
 
-After the spawn path is working:
-**validate/repair the generic LethalMin enemy-grab/bite + Invincible-Pikmin leader/follow state.**
-
-Confirmed failure sequence in S1.42C:
-- enemy bites/grabs Pikmin;
-- leader is removed;
-- death timer starts;
-- invincibility prevents final death;
-- Pikmin remains in invalid follow state;
-- repeated `Leader is null when following` errors.
-
-Specific Thumper/Puffer guards remain retained and require targeted validation when encountered.
+After the isolated enemy stage passes:
+- remove/disable temporary EnemyIsolation;
+- restore the full normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+- re-enable exact BCMER 1.71.0.
 
 ## Build state
 
 `BuildSpecs/current.json` is disabled and idle:
 
-`IDLE_S1.42G_BCMER_OFF_RETEST`
+`IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`
 
-Do not rebuild or create another candidate before the clean S1.42G BCMER-off retest is evaluated.
+Do not create S1.42I before S1.42H runtime evidence is evaluated.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42G_BCMER_OFF_RETEST`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42H`
 
 ## Repository-first automation
 
