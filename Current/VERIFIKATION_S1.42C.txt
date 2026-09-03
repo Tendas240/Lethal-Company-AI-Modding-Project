@@ -1,0 +1,56 @@
+VERIFICATION — S1.42C HANDOVER
+
+Date: 2026-09-03
+
+Accepted gameplay baseline:
+- S1.41
+- Profiles/LC V1 S1.41 BCMER Reactivation.r2z
+- SHA-256 d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b
+- runtime accepted
+
+Latest runtime-tested technical candidate:
+- S1.42C
+- Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z
+- SHA-256 22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3
+- 330 archive members
+- 188 Thunderstore entries / 183 enabled / 5 disabled
+- runtime evidence RuntimeEvidence/S1.42C/20260902T235238Z/
+- LogOutput SHA-256 60b349dd7b6de9690c6629f2988949c1eaa525c208b3d20c5df673b972dd9cca
+
+S1.42C build delta versus S1.42B verified earlier:
+- BepInEx/config/NoteBoxz.LethalMin.cfg
+- BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+- export.r2x
+- no added archive members
+- no removed archive members
+
+Compatibility DLL:
+- v1.2.0 source under Patches/S139CompatibilityFixes/
+- S1.42C embedded DLL SHA-256 c3da6ee8220bec3b954ac62ca1a4d813efcb292eefd9b70fc0616a76e2f37af3
+- GitHub Actions compilation passed
+
+LMDL guard:
+- runtime confirmed
+- offending null PluginInfo: MW.MagicWesleyInteriors
+- safe scan completed
+- ModDataHandler initialised
+- moddata load/save succeeded
+
+S1.42C interaction guards:
+- Thumper Bite Limit = 0
+- Crawler in Attack Blacklist
+- Puffer Can Poison Pikmin = false retained
+- Puffer smoke compatibility patch compiled and registered
+- Thumper deliberate encounter validation still pending
+- Puffer actual smoke validation still pending
+
+BuildSpecs/current.json:
+- enabled = false
+- build_id = IDLE_HANDOVER_AFTER_S1.42C_RUNTIME
+
+BuildSpecs/S1.42D_PLAN.md:
+- DRAFT ONLY
+- must not be built automatically
+
+Gale import:
+Advanced options -> Import all files
