@@ -162,7 +162,10 @@ Source:
 `Patches/S139CompatibilityFixes/`
 
 Current source version:
-**1.3.5**
+**1.3.7**
+
+Historical note:
+**v1.3.5 was the S1.42H-stage source/embedded version and is not the current source version.**
 
 Latest runtime-proven predecessor:
 **v1.3.3 in the clean S1.42G BCMER-off retest**
@@ -319,7 +322,7 @@ Do not build S1.42K before S1.42J runtime evidence is evaluated.
 ## New-chat takeover
 
 Canonical current handover:
-`Current/34_HANDOVER_S1.42J_TO_NEXT.md`
+`Current/36_HANDOVER_S1.42J_TO_NEXT.md`
 
 Latest build analysis:
 `Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
@@ -332,6 +335,11 @@ Verification:
 
 Start prompt:
 `Current/NEXT_CHAT_START_PROMPT_S1.42J.txt`
+
+Pending repository-optimization plan:
+`Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+
+The repository migration is recommended but deferred until the active critical runtime/build gate is evaluated and the resulting canonical state is documented. It is not the immediate next gameplay task.
 
 Older S1.42H/I handovers remain historical/diagnostic context and must not override S1.42J instructions.
 
