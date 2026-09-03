@@ -154,8 +154,7 @@ namespace S139CompatibilityFixes
                     {
                         if (method == null ||
                             method.IsAbstract ||
-                            method.ContainsGenericParameters ||
-                            method.IsPInvokeImpl)
+                            method.ContainsGenericParameters)
                             continue;
 
                         string name = method.Name ?? string.Empty;
