@@ -1,0 +1,44 @@
+VERIFIKATION — S1.42G
+
+Profil:
+Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z
+SHA-256:
+09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a
+
+Basis:
+Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z
+SHA-256:
+f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b
+
+GitHub Actions:
+- erfolgreich
+- 0 Warning(s)
+- 0 Error(s)
+- 331 ZIP-Mitglieder
+- 330 lesbare Snapshot-Dateien
+- keine Paket-/Config-/Enabled-State-Änderungen
+
+Delta:
+- Compatibility Plugin v1.3.3
+- DLL SHA-256 39690bf06dd6876e42badeb80f69bd8448fdbfeecd888fab0105951c38812436
+- EnemyIsolation nur noch einmal pro Levelwechsel
+- kein kontinuierlicher FindObjectsOfType<EnemyAI>() Scan
+- Coroner bleibt aktiv
+- nur Coroners JetpackItem.Update Prefix/Postfix entfernt
+
+S1.42F Evidenz:
+RuntimeEvidence/S1.42F/20260903T092728Z/
+Log SHA-256:
+1881cd9474cbfe9161cf6e612f743c797f6cac2185e192eacee920990819767f
+
+Coroner im S1.42F Log:
+- 16.138x Could not access dying player
+- 8.066x PlayerController was null
+- 8.069x Index not assigned!
+
+Nächster Gate:
+Main Menu -> Host -> Route zu Mond -> 20-30 Sekunden warten.
+Keine periodischen Freezes.
+Kein Coroner Jetpack Spam.
+
+Danach bei Erfolg direkt Enemy/Jetpack/Microwave-Test.
