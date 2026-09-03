@@ -7,7 +7,7 @@ Aktiviert: 182
 Deaktiviert: 6
 
 WICHTIG:
-- S1.42R ist gebaut/verifiziert und wartet auf Runtime-Test. Keine Config-/Modänderung gegen S1.42Q; nur Compatibility-DLL + Profilname.
+- S1.42R ist gebaut/verifiziert und wartet auf Runtime-Test. Minimal-Rollback: Pikmin->Enemy/Death/Carry wieder native LethalMin.
 - SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 ist für den isolierten Enemy-Test weiterhin deaktiviert.
 - EnemyIsolation ist über BepInEx/config/tendas.s139.compatibilityfixes.cfg aktiviert.
 - Gale-Import muss über Advanced options -> Import all files erfolgen, damit die projektlokale Compatibility-DLL übernommen wird.
