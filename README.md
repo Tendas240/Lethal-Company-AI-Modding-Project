@@ -23,17 +23,29 @@ Startup crashed during the new broad LethalMin reflection/Harmony scan. Do not r
 Evidence:
 `RuntimeEvidence/S1.42D/20260903T084247Z/`
 
-**Latest built test candidate:** S1.42E
+**Runtime-tested predecessor:** S1.42E
 
 `Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
 
 SHA-256:
 `4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348`
 
-S1.42E built successfully with 0 compiler warnings/errors and an unchanged 188/183/5 package manifest, but it has **not yet been runtime tested**.
+S1.42E **passed the startup gate** and registered the narrowed LethalMin state guard on 4 declared enemy methods. The user then observed short once-per-second freezes after hosting in the ship lobby. Runtime evidence proved the temporary EnemyIsolation layer was repeatedly attempting six invalid `SpawnableEnemyWithRarity` default-constructor creations per second on Gordion.
+
+Evidence:
+`RuntimeEvidence/S1.42E/20260903T091053Z/`
+
+**Latest built test candidate:** S1.42F
+
+`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
+
+SHA-256:
+`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
+
+S1.42F built successfully with 0 compiler warnings/errors and the unchanged 188/183/5 package manifest. It skips diagnostic pool work on Gordion/Company and fixes diagnostic `SpawnableEnemyWithRarity` creation.
 
 Immediate next gate:
-**import S1.42E and confirm the game reaches Main Menu without a startup crash before doing any further build work.**
+**import S1.42F, reach Main Menu, host into the ship lobby in orbit, and confirm the S1.42E once-per-second freezes are gone. If smooth, continue directly with the isolated enemy / Jetpack / Microwave regression test.**
 
 Game: **Lethal Company V81**
 
@@ -52,27 +64,28 @@ Expected general marker:
 1. `START_HERE_ChatGPT_Masterprompt.txt`
 2. `Current/00_CURRENT_STATE.md`
 3. `Current/01_HANDOVER_CORE.md`
-4. `Current/22_HANDOVER_S1.42E_TO_NEXT.md`
-5. `Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md`
-6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-7. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-8. `Current/06_RECENT_WORK_S1.42D-S1.42E.md`
-9. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
-10. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
-11. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
-12. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
-13. `Current/02_TECHNICAL_BASELINE.md`
-14. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-15. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-16. `Current/03_PROJECT_CHRONOLOGY.md`
-17. `Current/Projektstatus_S1.42E.json`
-18. `Current/Aktive_Modliste_S1.42E.txt`
-19. `Current/VERIFIKATION_S1.42E.txt`
-20. `Current/DATEIINVENTAR_S1.42E.txt`
-21. `Current/SHA256SUMS_S1.42E.txt`
-22. `ProfileSources/S1.42E/`
-23. `BuildSpecs/current.json`
-24. `RuntimeInbox/ACTIVE_BUILD.txt`
+4. `Current/25_S1.42F_BUILD_AND_TEST.md`
+5. `Current/24_S1.42E_RUNTIME_FREEZE_S1.42F_HOTFIX.md`
+6. `Current/22_HANDOVER_S1.42E_TO_NEXT.md`
+7. `Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md`
+8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+9. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+10. `Current/06_RECENT_WORK_S1.42D-S1.42E.md`
+11. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
+12. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
+13. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
+14. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
+15. `Current/02_TECHNICAL_BASELINE.md`
+16. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+17. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+18. `Current/03_PROJECT_CHRONOLOGY.md`
+19. `Current/Projektstatus_S1.42F.json`
+20. `Current/VERIFIKATION_S1.42F.txt`
+21. `Current/SHA256SUMS_S1.42F.txt`
+22. `Current/Aktive_Modliste_S1.42E.txt` (manifest unchanged in S1.42F)
+23. `ProfileSources/S1.42F/`
+24. `BuildSpecs/current.json`
+25. `RuntimeInbox/ACTIVE_BUILD.txt`
 
 Then inspect `Profiles/`, `RuntimeEvidence/`, `Patches/`, `References/`, `Logs/`, and `Archive/` only as required by the task.
 
@@ -235,11 +248,11 @@ Specific Thumper/Puffer guards remain retained and require targeted validation w
 
 `BuildSpecs/current.json` is disabled and idle:
 
-`IDLE_AFTER_S1.42E_BUILD_AWAITING_RUNTIME`
+`IDLE_AFTER_S1.42F_BUILD_AWAITING_RUNTIME`
 
 Do not rebuild or create another candidate before S1.42E runtime evidence is evaluated.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42E`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42F`
 
 ## Repository-first automation
 
