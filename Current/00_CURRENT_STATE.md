@@ -199,3 +199,19 @@ Exact archive delta versus S1.42B:
 No other changes.
 
 Next binding test: deliberate Thumper + Puffer interaction test, then upload full `LogOutput.log` to `RuntimeInbox/Current/`.
+
+
+## S1.42C runtime result
+
+Evidence:
+`RuntimeEvidence/S1.42C/20260902T235238Z/`
+
+- LMDL fix remains confirmed healthy.
+- Puffer did not spawn; Puffer Pikmin smoke guard remains unvalidated.
+- A Crawler/Thumper did spawn and was later killed, with no logged Thumper-specific Pikmin grab/bite during its observed lifetime, but there was no deliberate interaction test; keep status unconfirmed.
+- Later, a Baboon Hawk explicitly bit a Bulbmin and reproduced the `Leader is null when following` spam. This proves a broader LethalMin grab/bite + Invincible Pikmin state issue.
+- Detailed evidence: `Current/15_RUNTIME_EVIDENCE_S1.42C.md`.
+
+Next-build tuning requests now recorded:
+- match Jetpack capacity/duration to old juijui profile; current ButteryBalance forces 40s instead of 50s, exact historical juijui value still needs evidence;
+- lower CodeRebirth Functional Microwave volume from 1 to target 0.7 with its edit gate enabled.
