@@ -1,0 +1,9 @@
+SHA256SUMS — S1.42L
+
+fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722  Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z
+
+LATEST VALID RUNTIME EVIDENCE:
+a8ce035bf64fa5b704e18c588215f43cd1fd184eef4f467dfbafa6fcb1379963  RuntimeEvidence/S1.42J/20260903T145657Z/raw/LogOutput.log
+
+UNCHANGED COMPATIBILITY DLL:
+7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2  ProfileSources/S1.42L/BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
