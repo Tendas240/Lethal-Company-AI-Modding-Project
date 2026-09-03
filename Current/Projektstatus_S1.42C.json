@@ -107,7 +107,7 @@
   "build_state": {
     "current_spec": "BuildSpecs/current.json",
     "current_spec_enabled": false,
-    "current_spec_build_id": "IDLE_HANDOVER_AFTER_S1.42C_RUNTIME",
+    "current_spec_build_id": "S1.42D_BUILD_COMPLETED_AWAITING_IDLE_RESET",
     "next_draft_plan": "BuildSpecs/S1.42D_PLAN.md",
     "next_draft_plan_status": "DRAFT_ONLY_DO_NOT_BUILD_YET",
     "repository_first": true,
@@ -131,7 +131,7 @@
   },
   "next_candidate": {
     "build_id": "S1.42D",
-    "status": "planned_focused_regression_not_built_yet",
+    "status": "built_awaiting_runtime_validation",
     "base_profile": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
     "scope": [
       "generic LethalMin enemy grab/bite + Invincible Pikmin state repair",
@@ -160,6 +160,15 @@
       "preferred_implementation": "test-only runtime spawn isolation overlay/guard",
       "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
       "restore_rule": "remove only diagnostic isolation after test; restore all enemy configuration exactly to S1.42C unless explicitly changed later"
-    }
+    },
+    "profile": "Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z",
+    "sha256": "b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c",
+    "compatibility_dll_sha256": "ede191d1e3f1d0b1166cebeee76f2226aa67d382bb247895c1070e06c1f1ba32",
+    "build_result": "Current/AUTO_BUILD_RESULT.json",
+    "runtime_test_plan": "Current/20_S1.42D_BUILD_AND_TEST.md",
+    "manifest_total": 188,
+    "manifest_enabled": 183,
+    "manifest_disabled": 5,
+    "manifest_diff_vs_s142c": []
   }
 }
