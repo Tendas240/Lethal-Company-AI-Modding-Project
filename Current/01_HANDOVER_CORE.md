@@ -1,8 +1,5 @@
 # 01 - Handover Core
 
-This is the compact current-state handover. For the complete latest handover, read:
-`Current/45_HANDOVER_S1.42L_TO_NEXT_FINAL.md`
-
 ## Current identity
 
 Game:
@@ -11,73 +8,86 @@ Game:
 Last fully accepted gameplay baseline:
 **S1.41**
 
-Current built/runtime-tested candidate:
-**S1.42L - Pikmin Counterattack Restore**
+Current built candidate:
+**S1.42M - Baboon Hawk Death Cleanup**
 
 Profile:
-`Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z`
+`Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z`
 
 SHA-256:
-`fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722`
+`9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7`
 
-Latest runtime:
-`RuntimeEvidence/S1.42L/20260903T151817Z/`
+Compatibility plugin:
+- version 1.3.8
+- DLL SHA-256 `47fff0272b00ce776150c203eb65710216eba4390f5f5864fdbffec686692adf`
+
+Latest valid runtime evidence is still S1.42L:
+`RuntimeEvidence/S1.42L/20260903T155132Z/`
 
 Log SHA-256:
-`402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd`
+`812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10`
 
-## Current verdict
+## Runtime status
 
 Closed/PASS:
 - Thumper/Crawler -> Pikmin protection;
 - Pikmin -> Thumper/Crawler attack/latch;
-- Puffer -> Pikmin immunity;
+- Puffer -> Pikmin;
 - Jetpack;
-- Baboon Hawk -> Pikmin protection.
+- Baboon Hawk -> Pikmin protection;
+- Pikmin -> Baboon Hawk live attack/latch.
 
-Only open isolated direction:
-**Pikmin -> Baboon Hawk attack/latch.**
+S1.42L proved that Pikmin can latch to, damage and kill a Baboon Hawk with zero leader-null errors.
 
-Do not build another profile before testing that direction on S1.42L.
+The remaining isolated issue is **death cleanup / corpse ownership**:
+- latched Pikmin remained on the dead original Hawk target;
+- SellBodies moved that old target away after spawning `BaboonHawkBody(Clone)`;
+- attacking Pikmin visually disappeared with it;
+- living Hawks picked up the new corpse item.
 
-## Binding asymmetric enemy/Pikmin rules
+## Binding desired Baboon Hawk behavior
 
-### Thumper / Crawler
+Living Hawk -> Pikmin:
+blocked target/chase/bite/grab/hold.
 
-Enemy -> Pikmin:
-blocked functional GrabPikmin / leader-removal / grabbed-death-state effect.
+Pikmin -> living Hawk:
+normal LethalMin attack/latch allowed.
 
-Pikmin -> enemy:
-normal attack/latch allowed.
+On Hawk death:
+- attacking Pikmin must detach and remain usable;
+- SellBodies corpse must remain enabled;
+- Dead Baboon Hawk body must remain available for player/Pikmin carrying;
+- Pikmin must be able to carry the corpse toward the Onion;
+- living Hawks must not pick up the corpse.
 
-Visible snapping by the Thumper is accepted as harmless and should be ignored.
+## S1.42M scope
 
-### Baboon Hawk
+Only:
+- exact `BaboonBirdAI.KillEnemy(bool)` death hook;
+- exact `PikminAI.RemoveCurrentTask()` runtime resolution;
+- specific dying-Hawk child Pikmin cleanup;
+- exact `BaboonBirdAI.CanGrabScrap(GrabbableObject)` corpse rejection.
 
-Enemy -> Pikmin:
-blocked target/chase/bite/grab/hold through exact adapter disable + BitePikmin block + common GrabPikmin failsafe.
-
-Pikmin -> enemy:
-normal attack/latch must be allowed.
-
-### Puffer
-
-Puffer -> Pikmin:
-no effect.
+No global scene scan.
+No broad/inherited LethalMin scan.
+SellBodies remains enabled.
 
 ## Exact next action
 
-Keep S1.42L.
-
-Import with:
+Import:
 **Gale -> Advanced options -> Import all files**
 
-Test only:
+Test S1.42M only:
 1. throw Pikmin onto a Baboon Hawk;
-2. verify normal Pikmin latch/attack;
-3. verify the Hawk itself continues to ignore Pikmin;
-4. verify no leader-null loop;
-5. upload complete log to `RuntimeInbox/Current/`.
+2. let them kill it;
+3. confirm Pikmin detach/remain visible and usable;
+4. wait >4 seconds;
+5. confirm the Dead Baboon Hawk body remains;
+6. throw Pikmin onto the corpse and verify Onion carrying;
+7. confirm living Hawks do not pick up the corpse;
+8. confirm Hawk -> Pikmin ignore still works;
+9. confirm no `Leader is null when following`;
+10. upload full log to `RuntimeInbox/Current/`.
 
 ## Temporary test state
 
@@ -87,94 +97,31 @@ enabled.
 BCMER:
 exact `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0` disabled.
 
-Do not restore normal spawning or BCMER before the remaining direction is accepted.
+Restore baseline:
+`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
-After PASS:
-- remove EnemyIsolation;
-- restore normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
-- re-enable exact BCMER 1.71.0;
-- preserve accepted permanent interaction rules.
+Do not restore normal spawning/BCMER before S1.42M is evaluated.
 
-## Critical technical lineage
+## Controllers
 
-S1.42D broad/inherited LethalMin reflection/Harmony scanning caused startup crash.
-Never reintroduce it.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42M`
 
-Use exact declared types/methods and narrow lifecycle anchors.
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42M_BUILD_AWAITING_RUNTIME`
 
-EnemyIsolation must not use an Update-driven continuous global EnemyAI scene scan.
+## Critical anti-regression
 
-S1.42I and S1.42K were built but never runtime-tested and must not be treated as runtime evidence.
-
-## Important persistent accepted fixes
-
-- CodeRebirth natural Coin / Crisp Dollar Bill / Wallet suppression retained.
-- Natural Flash Turret suppression retained.
-- LethalModDataLib 1.2.2 null-plugin guard confirmed.
-- Recharge station full heal retained.
-- Autonomous Crane cannot kill Pikmin/Puffmin.
-- Leaf Boy remains on LethalMin Attack Blacklist.
-- Ogopogo and Vermin disabled.
-- SCP999 disabled.
-- AJB Keep Hangar Ship Door Closed disabled while project-local failsafe exists.
-- Old Bird Resonance retained.
-- Mirage recording retention retained.
-- CodeRebirthLib must not return.
-
-## BCMER persistent rules
-
-Pinned:
-**1.71.0**
-
-Do not silently migrate to 2.0.0.
-
-Preserve after re-enable:
-- `Experimental Dont Handle Power? = true`
-- `Experimental Dont Handle Spawn Chance? = true`
-- `Let Brutal handle properties outside of events? = false`
-- `Enable Randomizer? = false`
-
-Disabled BCMER rain routes:
-- Raining
-- HeavyRain
-- AllWeather
-- Hurricane
-
-Vanilla natural Rainy remains allowed.
-
-## Lower-priority work after active gate
-
-- re-check BCMER Door System ERROR / ship-door behavior after BCMER is re-enabled;
-- make Functional Microwaves somewhat rarer once an exact target is selected;
-- interior equal-probability normalization;
-- CullFactory exact IDs `junkrooms`, `shatteredrooms`;
-- MelanieMausoleum fog reduction;
-- preserve Shatteredrooms Experimentation/Embrion safety block until understood;
-- monitor Mineshaft elevator/Pikmin crowding;
-- do not rebalance outdoor Pikmin Sprout density without statistics.
-
-## Repository-first
-
-Use:
-- `BuildSpecs/current.json`
-- `BuildSystem/profile_builder.py`
-- `.github/workflows/profile-build.yml`
-- `ProfileSources/`
-- `RuntimeInbox/Current/`
-- `RuntimeEvidence/`
-- `Patches/`
-
-No local clone/build is needed while repository infrastructure contains the required bases.
+- no S1.42D broad/inherited LethalMin Harmony scan;
+- no continuous Update-driven global EnemyAI scan;
+- no BCMER 2.0.0 upgrade without explicit decision;
+- do not remove the S1.42C enemy restore baseline;
+- CodeRebirthLib must not return;
+- unknown Enemy PowerLevels must not be guessed.
 
 ## Deferred maintenance
 
-Repository optimization:
-`Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+Do not clean unrelated documentation/source drift during the active S1.42M gate.
 
-Do not start it until the active S1.42L direction gate and post-gate normal-enemy/BCMER state are documented.
-
-Historical detail remains available in:
-- `Current/03_PROJECT_CHRONOLOGY.md`
-- `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-- older handovers/analysis files;
-- `RuntimeEvidence/`.
+Known later cleanup:
+- `Current/02_TECHNICAL_BASELINE.md`;
+- stale S1.42J-era comments in `Patches/S139CompatibilityFixes/Plugin.cs`;
+- structural optimization per `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`.
