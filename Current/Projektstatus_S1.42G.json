@@ -41,7 +41,7 @@
     "id": "S1.42G_BCMER_OFF_RETEST",
     "base_profile": "Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z",
     "base_sha256": "09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a",
-    "manual_change": "Disable SoftDiamond-BrutalCompanyMinusExtraReborn only; no other changes.",
+    "manual_change": "Disable SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 only; no other changes.",
     "purpose": [
       "Reconfirm routed-moon smoothness",
       "Reconfirm Coroner Jetpack spam suppression",
@@ -54,5 +54,10 @@
     "functional_microwave": "Make Functional Microwaves somewhat rarer in a future build; exact rarity change not yet selected.",
     "bcmer_door_error": "If clean retest reproduces BCMER Door System: ERROR / hangar door conflict, implement a narrow BCMER-specific compatibility patch.",
     "enemy_isolation": "Next clean isolation test must run with BCMER disabled."
+  },
+  "handover": {
+    "canonical": "Current/29_HANDOVER_S1.42G_BCMER_OFF_RETEST_TO_NEXT.md",
+    "discarded_log_context": "Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md",
+    "start_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42G.txt"
   }
 }
