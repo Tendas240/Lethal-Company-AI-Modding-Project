@@ -35,5 +35,6 @@
       "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
       "contains": "Isolated Enemy Regression = true"
     }
-  ]
+  ],
+  "retry_sequence": 2
 }
