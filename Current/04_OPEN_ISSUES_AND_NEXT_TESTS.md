@@ -1,5 +1,44 @@
 # 04 — Open Issues and Next Tests
 
+## IMMEDIATE ACTIVE GATE — S1.42K
+
+Profile:
+`Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z`
+
+SHA-256:
+`bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2`
+
+Import:
+**Gale -> Advanced options -> Import all files**
+
+S1.42J established:
+- Baboon Hawk <-> Pikmin zero interaction PASS;
+- Puffer -> Pikmin PASS;
+- Jetpack PASS/accepted;
+- Thumper/Crawler -> Pikmin protection PASS with 19 guard blocks and zero leader-null errors.
+
+Revised binding Thumper rule:
+- Thumper/Crawler -> Pikmin: blocked functional grab/death-state effects;
+- Pikmin -> Thumper/Crawler: normal attack/latch allowed.
+
+S1.42K removes `Crawler` from LethalMin Attack Blacklist while retaining `Baboon hawk`.
+
+Primary runtime test:
+1. throw Pikmin directly onto a Thumper/Crawler;
+2. verify Pikmin latch/attack normally;
+3. allow Thumper to snap toward Pikmin;
+4. verify `[ThumperPikminGuard]` still blocks GrabPikmin;
+5. verify no grabbed death timer, leader removal, or `Leader is null when following`.
+
+If PASS:
+- isolated enemy interaction gate complete;
+- restore enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+- re-enable exact BCMER 1.71.0;
+- then document resulting state before repository migration.
+
+Do not build a successor before S1.42K runtime evidence is evaluated unless S1.42K itself cannot start.
+
+
 ## Immediate active gate — S1.42J Baboon Hawk Zero Interaction
 
 Profile:
