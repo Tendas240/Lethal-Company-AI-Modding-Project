@@ -23,7 +23,7 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.13";
+        public const string PluginVersion = "1.3.14";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
@@ -58,17 +58,16 @@ namespace S139CompatibilityFixes
             StartCoroutine(DelayedLethalMinPatches());
 
             Logger.LogInfo(
-                "[LethalMinNativeOwnership] Pikmin -> enemy combat, native TaskEnd/SetToIdle/unlatch, " +
-                "enemy-body carry, and Onion delivery remain owned by LethalMin. " +
-                "Compatibility only bridges LethalMin 1.1.108's missing dead-target completion " +
-                "for currently latched AttackEnemyTask instances; no enemy-death hook, scene scan, or custom state restoration is installed.");
+                "[LethalMinNativeOwnership] Pikmin -> enemy combat, native PikminEnemy death detection, " +
+                "latch removal, TaskEnd/SetToIdle, enemy-body carry, and Onion delivery remain owned by LethalMin. " +
+                "Baboon Hawk compatibility blocks only Hawk -> Pikmin entry points; the BaboonBirdPikminEnemy component stays enabled.");
 
             Logger.LogInfo(
                 "S1.39 Compatibility Fixes loaded. Ship-door anti-lockout, complete EnemyScan output, " +
                 "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, " +
                 "CodeRebirth kill-RPC Pikmin protection, the optional LethalModDataLib null-plugin guard, " +
                 "Puffer smoke Pikmin-effect guard, exact PikminAI enemy-grab prevention for proven Thumper/Baboon Hawk gaps, " +
-                "LethalMin latched dead-target task completion, Baboon Hawk -> Pikmin adapter/bite protection, " +
+                "Baboon Hawk -> Pikmin collision/bite protection without disabling LethalMin's adapter lifecycle, " +
                 "Coroner Jetpack log-spam guard, throttled ship-door compatibility audit, " +
                 "the 140-second Jetpack target, " +
                 "and the late-lifecycle isolated-enemy diagnostic are active.");
@@ -80,7 +79,6 @@ namespace S139CompatibilityFixes
             // is an optional runtime dependency and does not need a compile-time DLL.
             yield return null;
             PatchLethalMinEnemyGrabPrevention();
-            PatchLethalMinLatchedDeadTargetCompletion();
             PatchBaboonHawkPikminProtection();
         }
 
@@ -264,40 +262,64 @@ namespace S139CompatibilityFixes
         private void PatchBaboonHawkPikminProtection()
         {
             // Asymmetric gameplay rule:
-            // Pikmin -> Baboon Hawk remains native LethalMin.
-            // Baboon Hawk -> Pikmin targeting/chase/bite/grab is blocked.
+            // Pikmin -> Baboon Hawk remains fully native LethalMin.
+            // Baboon Hawk -> Pikmin collision/bite/grab is blocked.
             //
-            // Keep this patch deliberately narrow. S1.42D proved that broad/inherited
-            // LethalMin reflection patching can crash during startup. Here we inspect
-            // only the exact BaboonBirdPikminEnemy type, patch its declared BitePikmin,
-            // and disable the Hawk -> Pikmin adapter after BaboonBirdAI.Start.
+            // IMPORTANT S1.42S correction:
+            // Never disable BaboonBirdPikminEnemy itself. It inherits PikminEnemy.Update(),
+            // whose native death path calls RemoveAndDisableTriggers() and therefore unlatches
+            // Pikmin when the Hawk dies. S1.42R disabled the entire adapter and accidentally
+            // suppressed that lifecycle.
             Type adapterType = AccessTools.TypeByName("LethalMin.BaboonBirdPikminEnemy");
-            if (adapterType == null)
+            Type pikminAiType = AccessTools.TypeByName("LethalMin.PikminAI");
+            if (adapterType == null || pikminAiType == null)
             {
                 Logger.LogError(
-                    "[BaboonHawkPikminGuard] LethalMin.BaboonBirdPikminEnemy was not found. " +
-                    "Baboon Hawk -> Pikmin adapter protection is NOT active.");
+                    "[BaboonHawkPikminGuard] Required LethalMin BaboonBirdPikminEnemy/PikminAI types were not found. " +
+                    "Baboon Hawk -> Pikmin protection is NOT active.");
                 return;
             }
 
-            BaboonHawkPikminProtection.AdapterType = adapterType;
-
-            string[] declaredPikminMethods = adapterType
+            MethodInfo onColideWithPikmin = adapterType
                 .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
-                .Where(m => m.Name.IndexOf("Pikmin", StringComparison.OrdinalIgnoreCase) >= 0)
-                .Select(m => m.Name + ":" + m.ReturnType.Name)
-                .Distinct()
-                .OrderBy(x => x, StringComparer.OrdinalIgnoreCase)
-                .ToArray();
+                .FirstOrDefault(m =>
+                    string.Equals(m.Name, "OnColideWithPikmin", StringComparison.Ordinal) &&
+                    m.ReturnType == typeof(void) &&
+                    m.GetParameters().Length == 1 &&
+                    pikminAiType.IsAssignableFrom(m.GetParameters()[0].ParameterType) &&
+                    m.GetMethodBody() != null);
 
             MethodInfo bitePikmin = adapterType
                 .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
                 .FirstOrDefault(m =>
                     string.Equals(m.Name, "BitePikmin", StringComparison.Ordinal) &&
                     m.ReturnType == typeof(void) &&
+                    m.GetParameters().Length == 1 &&
+                    pikminAiType.IsAssignableFrom(m.GetParameters()[0].ParameterType) &&
                     m.GetMethodBody() != null);
 
+            bool collisionPatched = false;
             bool bitePatched = false;
+
+            if (onColideWithPikmin != null)
+            {
+                Harmony.Patch(
+                    onColideWithPikmin,
+                    prefix: new HarmonyMethod(
+                        typeof(BaboonHawkPikminProtection),
+                        nameof(BaboonHawkPikminProtection.BlockOnColideWithPikminPrefix))
+                    {
+                        priority = Priority.First
+                    });
+                collisionPatched = true;
+            }
+            else
+            {
+                Logger.LogError(
+                    "[BaboonHawkPikminGuard] Exact declared BaboonBirdPikminEnemy.OnColideWithPikmin(PikminAI) " +
+                    "was not found. Hawk -> Pikmin collision protection is NOT complete.");
+            }
+
             if (bitePikmin != null)
             {
                 Harmony.Patch(
@@ -312,38 +334,15 @@ namespace S139CompatibilityFixes
             }
             else
             {
-                Logger.LogWarning(
-                    "[BaboonHawkPikminGuard] Exact declared void BaboonBirdPikminEnemy.BitePikmin was not found. " +
-                    "Adapter disable + common GrabPikmin failsafe will still remain active.");
-            }
-
-            MethodInfo baboonStart = AccessTools.Method(typeof(BaboonBirdAI), "Start");
-            bool startPatched = false;
-            if (baboonStart != null &&
-                baboonStart.DeclaringType == typeof(BaboonBirdAI) &&
-                baboonStart.GetMethodBody() != null)
-            {
-                Harmony.Patch(
-                    baboonStart,
-                    postfix: new HarmonyMethod(
-                        typeof(BaboonHawkPikminProtection),
-                        nameof(BaboonHawkPikminProtection.BaboonStartPostfix))
-                    {
-                        priority = Priority.Last
-                    });
-                startPatched = true;
-            }
-            else
-            {
-                Logger.LogWarning(
-                    "[BaboonHawkPikminGuard] Exact declared BaboonBirdAI.Start was not found. " +
-                    "Direct BitePikmin + GrabPikmin failsafes remain active.");
+                Logger.LogError(
+                    "[BaboonHawkPikminGuard] Exact declared BaboonBirdPikminEnemy.BitePikmin(PikminAI) " +
+                    "was not found. Common GrabPikmin failsafe remains active.");
             }
 
             Logger.LogInfo(
                 $"[BaboonHawkPikminGuard] One-way Hawk -> Pikmin protection initialized; " +
-                $"bitePatched={bitePatched}; baboonStartPatched={startPatched}; " +
-                $"declaredPikminMethods=[{string.Join(", ", declaredPikminMethods)}].");
+                $"collisionPatched={collisionPatched}; bitePatched={bitePatched}; " +
+                "BaboonBirdPikminEnemy remains ENABLED so native PikminEnemy.Update death/unlatch cleanup can run.");
         }
 
         private void PatchBaboonHawkCorpseProtection()
@@ -1347,10 +1346,21 @@ namespace S139CompatibilityFixes
 
     internal static class BaboonHawkPikminProtection
     {
-        internal static Type AdapterType;
-
-        private static readonly HashSet<int> DisabledAdapterIds = new HashSet<int>();
+        private static readonly HashSet<int> CollisionBlockedAdapterIds = new HashSet<int>();
         private static readonly HashSet<int> BiteBlockedAdapterIds = new HashSet<int>();
+
+        public static bool BlockOnColideWithPikminPrefix(object __instance)
+        {
+            int id = GetInstanceId(__instance);
+            if (id == 0 || CollisionBlockedAdapterIds.Add(id))
+            {
+                Plugin.Log.LogWarning(
+                    "[BaboonHawkPikminGuard] Blocked LethalMin BaboonBirdPikminEnemy.OnColideWithPikmin. " +
+                    "Adapter remains enabled for native death/latch cleanup.");
+            }
+
+            return false;
+        }
 
         public static bool BlockBitePikminPrefix(object __instance)
         {
@@ -1359,45 +1369,10 @@ namespace S139CompatibilityFixes
             {
                 Plugin.Log.LogWarning(
                     "[BaboonHawkPikminGuard] Blocked LethalMin BaboonBirdPikminEnemy.BitePikmin. " +
-                    "Baboon Hawks must ignore Pikmin completely.");
+                    "Baboon Hawks must not grab/bite Pikmin.");
             }
 
             return false;
-        }
-
-        public static void BaboonStartPostfix(BaboonBirdAI __instance)
-        {
-            if (__instance == null || Plugin.Instance == null)
-                return;
-
-            Plugin.Instance.StartCoroutine(DisableAdapterNextFrame(__instance));
-        }
-
-        private static IEnumerator DisableAdapterNextFrame(BaboonBirdAI baboon)
-        {
-            // Let LethalMin and other Start postfixes finish adding their components,
-            // then disable only the exact LethalMin Baboon/Pikmin adapter.
-            yield return null;
-
-            if (baboon == null || AdapterType == null)
-                yield break;
-
-            MonoBehaviour[] behaviours = baboon.GetComponentsInChildren<MonoBehaviour>(true);
-            foreach (MonoBehaviour behaviour in behaviours)
-            {
-                if (behaviour == null || !AdapterType.IsAssignableFrom(behaviour.GetType()))
-                    continue;
-
-                behaviour.enabled = false;
-
-                int id = behaviour.GetInstanceID();
-                if (DisabledAdapterIds.Add(id))
-                {
-                    Plugin.Log.LogWarning(
-                        $"[BaboonHawkPikminGuard] Disabled {behaviour.GetType().FullName} on " +
-                        $"{baboon.gameObject.name}. Baboon Hawk -> Pikmin targeting/chase/bite adapter is inactive.");
-                }
-            }
         }
 
         private static int GetInstanceId(object value)
