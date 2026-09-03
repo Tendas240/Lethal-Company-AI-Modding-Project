@@ -122,3 +122,29 @@ S1.42Q removes BaboonHawkDeathCleanup, project-local FinishTask death handling, 
 
 Canonical plan:
 `Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md`
+
+
+## S1.42R exact upstream correction
+
+S1.42Q proved that the remaining Pikmin-loss symptom was not caused by an external Hawk-death selector.
+
+Exact LethalMinNightly 1.1.108 decompilation shows the real upstream defect:
+
+`AttackEnemyTask.IntervaledUpdate()` returns while `IsPikminOnEnemy == true` **before** its existing dead-target check.
+
+Therefore still-latched co-attackers cannot reach upstream `enemy.enemyScript.isEnemyDead -> FinishTaskServerRpc()`.
+
+Do not regress to:
+- proximity/radius death selection;
+- Baboon-Hawk-specific death scans;
+- global Pikmin/enemy scans;
+- direct `RemoveCurrentTask()`;
+- manual unlatch/leader restoration.
+
+S1.42R uses the minimal exact bridge:
+only a still-latched `AttackEnemyTask` whose **own target is already dead** requests native `PikminAI.FinishTaskServerRpc()`.
+
+Evidence:
+- `Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
+- `Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
+- `Current/63_S1.42R_LATCHED_DEAD_TARGET_COMPLETION_BUILD.md`
