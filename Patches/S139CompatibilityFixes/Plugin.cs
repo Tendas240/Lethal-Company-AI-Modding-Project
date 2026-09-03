@@ -22,7 +22,7 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.8";
+        public const string PluginVersion = "1.3.9";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
@@ -266,7 +266,7 @@ namespace S139CompatibilityFixes
 
             Logger.LogInfo(
                 "[BaboonHawkDeathCleanup] Patched exact declared BaboonBirdAI.KillEnemy(bool). " +
-                "Only Pikmin latched under that dying Hawk are released; no scene-wide scan is used.");
+                "Death cleanup uses a one-shot RoundManager.SpawnedEnemies Pikmin registry pass; no continuous scene scan is used.");
         }
 
         private void PatchBaboonHawkCorpseProtection()
@@ -1282,6 +1282,8 @@ namespace S139CompatibilityFixes
             Plugin.Instance.StartCoroutine(ReleaseLatchedPikminNextFrame(__instance));
         }
 
+        private const float DeathReleaseRadius = 4f;
+
         private static IEnumerator ReleaseLatchedPikminNextFrame(BaboonBirdAI baboon)
         {
             yield return null;
@@ -1289,40 +1291,79 @@ namespace S139CompatibilityFixes
             if (baboon == null || PikminAiType == null || RemoveCurrentTaskMethod == null)
                 yield break;
 
-            MonoBehaviour[] behaviours = baboon.GetComponentsInChildren<MonoBehaviour>(true);
-            int found = 0;
+            if (RoundManager.Instance == null || RoundManager.Instance.SpawnedEnemies == null)
+            {
+                Plugin.Log.LogWarning(
+                    "[BaboonHawkDeathCleanup] RoundManager.SpawnedEnemies is unavailable at Hawk death. " +
+                    "Death-unlatch cleanup could not enumerate Pikmin.");
+                yield break;
+            }
+
+            EnemyAI[] spawnedEnemies = RoundManager.Instance.SpawnedEnemies
+                .Where(enemy => enemy != null)
+                .ToArray();
+
+            int pikminCandidates = 0;
+            int inReleaseZone = 0;
             int released = 0;
 
-            foreach (MonoBehaviour behaviour in behaviours)
+            foreach (EnemyAI enemy in spawnedEnemies)
             {
-                if (behaviour == null || !PikminAiType.IsAssignableFrom(behaviour.GetType()))
+                if (enemy == null || !PikminAiType.IsAssignableFrom(enemy.GetType()))
                     continue;
 
-                found++;
+                pikminCandidates++;
+
+                Transform pikminTransform = enemy.transform;
+                if (pikminTransform == null)
+                    continue;
+
+                float distance = Vector3.Distance(pikminTransform.position, baboon.transform.position);
+                bool underDyingHawk =
+                    pikminTransform == baboon.transform ||
+                    pikminTransform.IsChildOf(baboon.transform);
+                bool closeToDyingHawk = distance <= DeathReleaseRadius;
+
+                if (!underDyingHawk && !closeToDyingHawk)
+                    continue;
+
+                inReleaseZone++;
 
                 try
                 {
-                    RemoveCurrentTaskMethod.Invoke(behaviour, null);
+                    RemoveCurrentTaskMethod.Invoke(enemy, null);
                     released++;
+
+                    Plugin.Log.LogInfo(
+                        $"[BaboonHawkDeathCleanup] Released {enemy.gameObject.name} from dying Hawk task; " +
+                        $"distance={distance:F2}m; underHawk={underDyingHawk}.");
                 }
                 catch (TargetInvocationException ex)
                 {
                     Exception inner = ex.InnerException ?? ex;
                     Plugin.Log.LogWarning(
-                        $"[BaboonHawkDeathCleanup] RemoveCurrentTask failed for {behaviour.gameObject.name}: " +
+                        $"[BaboonHawkDeathCleanup] RemoveCurrentTask failed for {enemy.gameObject.name}: " +
                         $"{inner.GetType().Name}: {inner.Message}");
                 }
                 catch (Exception ex)
                 {
                     Plugin.Log.LogWarning(
-                        $"[BaboonHawkDeathCleanup] RemoveCurrentTask failed for {behaviour.gameObject.name}: " +
+                        $"[BaboonHawkDeathCleanup] RemoveCurrentTask failed for {enemy.gameObject.name}: " +
                         $"{ex.GetType().Name}: {ex.Message}");
                 }
             }
 
+            if (pikminCandidates == 0)
+            {
+                Plugin.Log.LogWarning(
+                    "[BaboonHawkDeathCleanup] RoundManager.SpawnedEnemies contained zero LethalMin.PikminAI candidates " +
+                    "at Hawk death. The nightly SpawnedEnemies registry path may not be populated on this runtime peer.");
+            }
+
             Plugin.Log.LogInfo(
-                $"[BaboonHawkDeathCleanup] Dying {baboon.gameObject.name}: released {released}/{found} " +
-                "latched Pikmin before SellBodies can move the original enemy transform.");
+                $"[BaboonHawkDeathCleanup] Dying {baboon.gameObject.name}: released {released}/{inReleaseZone} " +
+                $"Pikmin in {DeathReleaseRadius:F1}m death-release zone; total Pikmin registry candidates={pikminCandidates}. " +
+                "One-shot death event only; no Update-driven scan.");
         }
     }
 
