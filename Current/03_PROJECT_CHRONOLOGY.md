@@ -651,3 +651,100 @@ Control state remained:
 
 Immediate next action remained:
 **runtime-test S1.42J; do not build S1.42K and do not begin the structural repository migration first.**
+
+## S1.42J runtime — Baboon Hawk enemy-side protection passes
+
+Evidence:
+`RuntimeEvidence/S1.42J/20260903T145657Z/`
+
+Log SHA-256:
+`a8ce035bf64fa5b704e18c588215f43cd1fd184eef4f467dfbafa6fcb1379963`
+
+Confirmed:
+- startup and exact common GrabPikmin hook remained safe;
+- Baboon Hawks repeatedly had exact `LethalMin.BaboonBirdPikminEnemy` disabled after spawn;
+- user confirmed Baboon Hawks ignored Pikmin instead of chasing/biting/grabbing/holding them;
+- Puffer smoke immunity was reconfirmed;
+- Jetpack 140-second behavior was accepted by the user;
+- Thumper/Crawler -> Pikmin guard worked, but the then-current `Crawler` Attack Blacklist entry prevented Pikmin -> Thumper/Crawler attacks.
+
+Runtime counts:
+- 19 `[ThumperPikminGuard]` blocks;
+- 0 `Leader is null when following`.
+
+The user clarified that Pikmin must still be able to attack Thumpers and Baboon Hawks.
+
+## S1.42K — Thumper Pikmin Attack Restore
+
+Built from S1.42J.
+
+Profile:
+`Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z`
+
+SHA-256:
+`bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2`
+
+Change:
+- removed `Crawler` from LethalMin Pikmin Attack Blacklist;
+- compatibility DLL unchanged.
+
+S1.42K was built successfully but **never runtime-tested**.
+
+Before testing it, the user clarified that Pikmin must also be able to attack/latch Baboon Hawks. S1.42K is therefore a superseded intermediate build and not runtime evidence.
+
+## S1.42L — Pikmin Counterattack Restore
+
+Built from S1.42K.
+
+Profile:
+`Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z`
+
+SHA-256:
+`fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722`
+
+Change:
+- removed `Baboon hawk` from LethalMin Pikmin Attack Blacklist;
+- compatibility DLL remained v1.3.7 and unchanged;
+- resulting Attack Blacklist exactly matches modern S1.40B/S1.41 baseline.
+
+Build verification:
+- GitHub Actions success;
+- 331 archive members;
+- 330 readable snapshot files;
+- changed existing members only: LethalMin config + `export.r2x`;
+- no added members.
+
+## S1.42L runtime — Thumper closed; one Baboon reverse-direction gate remains
+
+Evidence:
+`RuntimeEvidence/S1.42L/20260903T151817Z/`
+
+Log SHA-256:
+`402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd`
+
+Confirmed:
+- `[ThumperPikminGuard]` fired 36 times;
+- `Leader is null when following` count remained 0;
+- user confirmed Pikmin can be thrown onto Thumper/Crawler and attack/latch normally;
+- user confirmed Thumper snapping does not hold Pikmin or create a broken state;
+- visible Thumper snapping is accepted as harmless cosmetic/AI behavior and should not be patched further unless a functional regression appears;
+- Puffer -> Pikmin remains PASS;
+- Jetpack remains PASS/closed;
+- Baboon Hawk -> Pikmin remains PASS/closed;
+- Baboon Hawks continue to receive the exact adapter-disable guard;
+- LethalMin registers Baboon hawk as Pikmin enemy with one latch trigger.
+
+Current isolated runtime status:
+**only Pikmin -> Baboon Hawk explicit attack/latch validation remains.**
+
+Do not build a successor before this check.
+Keep EnemyIsolation enabled and BCMER 1.71.0 disabled.
+
+After PASS:
+- remove/disable EnemyIsolation;
+- restore normal enemy configuration from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+- re-enable exact BCMER 1.71.0;
+- preserve accepted asymmetric Pikmin interaction rules.
+
+Repository structural migration remains deferred until the active gate and resulting normal-enemy/BCMER state are documented.
+
