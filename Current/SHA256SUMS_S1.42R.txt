@@ -1,0 +1,17 @@
+SHA-256 SUMS — S1.42R
+Datum: 2026-09-03
+
+PROFILE
+009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101  Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z
+
+BASE PROFILE
+50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1  Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z
+
+EMBEDDED COMPATIBILITY DLL
+0d39a8895a1324457c2ac135fa2ae129e58ba8155ce6bde1cdb59d340be420ff  BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+
+EXACT LETHALMIN NIGHTLY 1.1.108 DLL ANALYZED
+9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df  NoteBoxz.LethalMin.dll
+
+S1.42Q RUNTIME LOG
+e8949f87c0df2e3f5a8e7b985bf698aab9de68bba08ae45e3fe5b89e89f27aa5  RuntimeEvidence/S1.42Q/20260903T195158Z/raw/LogOutput.log
