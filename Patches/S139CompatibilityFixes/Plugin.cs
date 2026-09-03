@@ -1070,8 +1070,10 @@ namespace S139CompatibilityFixes
             if (value == null)
                 return true;
 
-            UnityEngine.Object unityObject = value as UnityEngine.Object;
-            return unityObject != null && unityObject == null;
+            if (value is UnityEngine.Object unityObject)
+                return unityObject == null;
+
+            return false;
         }
 
         private static bool IsAlive(object value)
