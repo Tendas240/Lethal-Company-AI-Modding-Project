@@ -1,53 +1,56 @@
 # 01 — Handover Core
 
 
-## Current takeover override — S1.42I
+## Current takeover override — S1.42J
 
 Chronologically newer than the historical sections below.
 
 Latest built candidate:
-`Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z`
+`Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z`
 
 SHA-256:
-`c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97`
+`736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7`
 
 Compatibility plugin:
-- version 1.3.6
-- DLL SHA-256 `76544a536f5c626f0c81b50dc06a7bf1521c265cd23a7698917789e3846eecb2`
+- version 1.3.7
+- DLL SHA-256 `7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2`
 
-Latest runtime evidence:
+Latest runtime evidence remains:
 `RuntimeEvidence/S1.42H/20260903T125734Z/`
 
-S1.42H result:
+S1.42H:
 - Puffer -> Pikmin PASS;
-- Baboon Hawk + invincible Pikmin FAIL because enemy-side hold/re-grab persists;
-- direct Thumper/Crawler <-> Pikmin contact still needs validation;
-- exact common GrabPikmin hook is startup-safe;
-- Coroner Jetpack PlayerController-null flood remains resolved.
+- Baboon Hawk + invincible Pikmin FAIL because enemy-side hold/re-grab persisted;
+- direct Thumper/Crawler <-> Pikmin contact still needs runtime validation.
 
-S1.42I change:
-- narrowly block Baboon Hawk/Baboon Bird `GrabPikmin` only for invincible Pikmin before hold/leader/death-timer state mutation;
-- retain normal mortal-Pikmin Baboon-Hawk behavior;
-- retain Thumper and Puffer guards unchanged;
-- retain EnemyIsolation and BCMER-off isolated test state.
+S1.42I:
+- built successfully;
+- never runtime-tested;
+- superseded before test.
+
+Binding S1.42J gameplay rule:
+**Baboon Hawks and Pikmin do not interact in either direction.**
+
+Implementation:
+- disable exact `LethalMin.BaboonBirdPikminEnemy` adapter after BaboonBirdAI.Start;
+- block exact declared `BitePikmin`;
+- retain common `GrabPikmin` Baboon failsafe for all Pikmin;
+- add exact runtime enemy name `Baboon hawk` to LethalMin Attack Blacklist;
+- no broad/inherited LethalMin scan.
 
 Exact next action:
-**runtime-test S1.42I; do not build S1.42J first.**
+**runtime-test S1.42J; do not build S1.42K first.**
 
-Expected new marker:
-`[BaboonHawkPikminGuard] Blocked Baboon Hawk -> invincible Pikmin GrabPikmin before hold/leader/death-timer state mutation.`
-
-Also deliberately validate:
-`[ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.`
+Also deliberately validate Thumper/Crawler <-> Pikmin zero interaction.
 
 Runtime route:
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42I`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42J`
 
 Build controller:
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42I_BUILD_AWAITING_RUNTIME`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME`
 
 Canonical newest analysis:
-`Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md`
+`Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
 
 ## Immediate current gate — S1.42H
 
