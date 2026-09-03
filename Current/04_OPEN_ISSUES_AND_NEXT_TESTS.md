@@ -1,83 +1,84 @@
 # 04 - Open Issues and Next Tests
 
-## Immediate active gate — S1.42M Baboon Hawk death cleanup
+## Immediate active gate — S1.42N Baboon Hawk death target resolver
 
-Detailed predecessor-runtime analysis:
-`Current/47_S1.42L_BABOON_ATTACK_PASS_DEATH_REGRESSION_ANALYSIS.md`
+Latest runtime analysis:
+`Current/50_S1.42M_DEATH_CLEANUP_PARTIAL_PASS_ANALYSIS.md`
 
-Canonical detailed handover:
-`Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md`
+Current build:
+`Current/51_S1.42N_BABOON_HAWK_DEATH_TARGET_RESOLVER_BUILD.md`
 
 Profile:
-`Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z`
+`Profiles/LC V1 S1.42N Baboon Hawk Death Target Resolver.r2z`
 
 SHA-256:
-`9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7`
+`c87d48464a750f87274e2848c44e5e1e24d4f1da087f59a33e2889744ebc13e9`
 
 Compatibility plugin:
-v1.3.8  
-DLL SHA-256:
-`47fff0272b00ce776150c203eb65710216eba4390f5f5864fdbffec686692adf`
+**v1.3.9**
 
-Latest valid runtime evidence:
-`RuntimeEvidence/S1.42L/20260903T155132Z/`
+## Latest valid runtime evidence — S1.42M
+
+Evidence:
+`RuntimeEvidence/S1.42M/20260903T163446Z/`
 
 Log SHA-256:
-`812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10`
+`0639d5cc04aa54f5d7943ef4689e0d705c818871b019287ca1a1cdc2aa2492fb`
 
-## What S1.42L closed
+### Confirmed PASS
 
-**Pikmin -> Baboon Hawk live attack/latch is PASS.**
-
-The evaluated run proves:
-- Pikmin latch onto the Hawk;
-- Pikmin repeatedly damage it;
-- Pikmin can kill it;
-- Hawk-side ignore protection remains;
+- Pikmin -> living Baboon Hawk attack/latch/kill;
+- Dead Baboon Hawk body appears;
+- corpse can be carried by Pikmin to Onion;
+- living Hawks ignore Dead Baboon Hawk corpse;
+- Hawk -> Pikmin ignore remains accepted;
 - `Leader is null when following` = 0.
 
-Therefore do not reopen the live attack/latch direction unless a regression appears.
+### Remaining FAIL
 
-## New issue found at Hawk death
+Attacking Pikmin still disappear when the Hawk dies.
 
-After the Hawk died:
-- Pikmin stayed on the old `BaboonHawkEnemy(Clone)` attack/latch target;
-- they continued hitting it after `Kill enemy called! destroy: False`;
-- SellBodiesFixed spawned `BaboonHawkBody(Clone)` after its configured 4-second delay;
-- SellBodiesFixed then moved the original dead enemy transform away;
-- latched Pikmin visually disappeared with that stale target;
-- living Baboon Hawks grabbed the new corpse item as ordinary scrap.
+The S1.42M death hook executed, and `PikminAI.RemoveCurrentTask()` resolved, but the resolver logged:
+`released 0/0 latched Pikmin`.
 
-## Desired result
+Therefore the failed assumption is specifically that latched/attacking Pikmin are `PikminAI` children under the dying Hawk transform.
 
-- Pikmin detach from the dying Hawk and remain usable.
-- SellBodies Baboon Hawk corpse generation remains enabled.
-- Dead Baboon Hawk body remains on the ground.
-- Players can still carry it.
-- Pikmin can be thrown onto it and carry it toward the Onion.
-- Living Baboon Hawks do not pick it up.
-- Hawk -> Pikmin ignore remains intact.
-- No leader-null loop.
+## S1.42N change
 
-## Exact S1.42M test
+S1.42N leaves all passing corpse behavior untouched.
+
+At Hawk death it performs a one-shot candidate pass through:
+`RoundManager.Instance.SpawnedEnemies`
+
+Then:
+- keep only objects assignable to `LethalMin.PikminAI`;
+- select under-Hawk or <= 4.0 m from the dying Hawk;
+- call exact resolved `PikminAI.RemoveCurrentTask()`;
+- log each release and aggregate counts.
+
+No continuous Update scan and no broad/inherited Harmony scan.
+
+## Exact S1.42N test
 
 Use:
 **Gale -> Advanced options -> Import all files**
 
 1. find/spawn a Baboon Hawk;
-2. throw multiple Pikmin directly onto it;
-3. let the Pikmin kill it;
-4. immediately confirm the attacking Pikmin detach/remain visible and usable;
-5. wait at least 5 seconds;
-6. confirm the Dead Baboon Hawk body remains at/near the death location;
-7. throw Pikmin onto the corpse;
-8. confirm they can carry the corpse toward the Onion;
-9. if another living Hawk is available, confirm it does not pick up the corpse;
-10. confirm living Hawk -> Pikmin remains blocked;
-11. confirm no `Leader is null when following`;
-12. upload the complete fresh log to `RuntimeInbox/Current/`.
+2. throw several Pikmin directly onto it;
+3. confirm normal latch/attack;
+4. let the Pikmin kill it;
+5. immediately confirm the attackers detach/remain visible and usable;
+6. check that the log reports one or more `[BaboonHawkDeathCleanup] Released ...` lines;
+7. check that the aggregate release count is non-zero;
+8. wait at least 5 seconds;
+9. confirm the Dead Baboon Hawk body remains;
+10. carry it to the Onion with Pikmin;
+11. confirm a living Hawk does not pick it up;
+12. confirm living Hawk -> Pikmin remains blocked;
+13. confirm no `Leader is null when following`;
+14. commit the complete fresh log to `RuntimeInbox/Current/`.
 
-Do not build a successor first.
+Do not build a successor first unless S1.42N cannot start.
 
 ## Temporary isolated test state
 
@@ -90,7 +91,7 @@ BCMER exact 1.71.0:
 Restore baseline:
 `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
-Do not restore normal spawning/BCMER until S1.42M is evaluated.
+Do not restore normal spawning/BCMER until S1.42N is evaluated.
 
 ## Closed — do not retest unless regression appears
 
@@ -99,15 +100,15 @@ Do not restore normal spawning/BCMER until S1.42M is evaluated.
 - Puffer -> Pikmin: PASS
 - Jetpack: PASS
 - Baboon Hawk -> Pikmin: PASS
-- Pikmin -> living Baboon Hawk attack/latch: PASS
+- Pikmin -> living Baboon Hawk attack/latch/kill: PASS
 
-## After S1.42M PASS
+## After S1.42N PASS
 
 Then:
 1. remove/disable temporary EnemyIsolation;
-2. restore normal enemy spawning/config from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+2. restore normal enemy spawning/config exactly from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
 3. re-enable exact BCMER 1.71.0;
-4. preserve all accepted asymmetric interaction rules and S1.42M corpse behavior;
+4. preserve all accepted asymmetric interaction rules and corpse behavior;
 5. runtime-check the restored normal state;
 6. specifically monitor historical BCMER Door System ERROR / ship-door behavior;
 7. document the normal-enemy/BCMER result before repository migration.
@@ -124,8 +125,6 @@ Then:
 
 ## Deferred repository maintenance
 
-General cleanup remains deferred during the active runtime gate.
-
 Known non-functional drift:
 - `Current/02_TECHNICAL_BASELINE.md`;
 - stale S1.42J-era comments in `Patches/S139CompatibilityFixes/Plugin.cs`.
@@ -135,6 +134,6 @@ Structural plan:
 
 ## Controllers
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42M`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42N`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42M_BUILD_AWAITING_RUNTIME`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42N_BUILD_AWAITING_RUNTIME`
