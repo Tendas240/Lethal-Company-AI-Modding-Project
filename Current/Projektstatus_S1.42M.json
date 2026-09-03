@@ -1,0 +1,105 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "runtime_accepted"
+  },
+  "latest_valid_runtime_evidence": {
+    "build": "S1.42L",
+    "path": "RuntimeEvidence/S1.42L/20260903T155132Z/",
+    "log": "RuntimeEvidence/S1.42L/20260903T155132Z/raw/LogOutput.log",
+    "log_sha256": "812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10",
+    "verdict": "PIKMIN_TO_BABOON_HAWK_PASS_DEATH_CLEANUP_REGRESSION_FOUND",
+    "confirmed": {
+      "pikmin_to_baboon_hawk_attack_latch": true,
+      "pikmin_can_kill_baboon_hawk": true,
+      "baboon_hawk_to_pikmin_guard": true,
+      "leader_null_errors": 0
+    }
+  },
+  "active_candidate": {
+    "build": "S1.42M",
+    "name": "Baboon Hawk Death Cleanup",
+    "profile": "Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z",
+    "sha256": "9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7",
+    "base_profile": "Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z",
+    "base_sha256": "fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722",
+    "status": "built_awaiting_runtime_validation",
+    "compatibility_plugin": {
+      "version": "1.3.8",
+      "dll_sha256": "47fff0272b00ce776150c203eb65710216eba4390f5f5864fdbffec686692adf"
+    },
+    "build_verification": {
+      "github_actions": "success",
+      "warnings": 0,
+      "errors": 0,
+      "zip_members": 331,
+      "readable_snapshot_files": 330,
+      "changed_existing_members": [
+        "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+        "export.r2x"
+      ],
+      "added_members": []
+    }
+  },
+  "closed_runtime_topics": {
+    "thumper_crawler": "PASS_CLOSED",
+    "puffer_to_pikmin": "PASS_CLOSED",
+    "jetpack": "PASS_CLOSED",
+    "baboon_hawk_to_pikmin": "PASS_CLOSED",
+    "pikmin_to_baboon_hawk_attack_latch": "PASS_CLOSED"
+  },
+  "active_runtime_gate": {
+    "build": "S1.42M",
+    "issue": "baboon_hawk_death_cleanup_and_corpse_ownership",
+    "required": [
+      "Pikmin latched to a dying Baboon Hawk detach/remain usable",
+      "SellBodies Dead Baboon Hawk body remains present and carryable by Pikmin/players",
+      "Pikmin can carry the corpse toward the Onion",
+      "Living Baboon Hawks do not pick up the corpse",
+      "Baboon Hawk -> Pikmin ignore remains intact",
+      "No Leader is null when following loop"
+    ]
+  },
+  "desired_corpse_behavior": {
+    "sellbodies_baboon_corpse_enabled": true,
+    "corpse_should_remain": true,
+    "pikmin_may_carry_to_onion": true,
+    "players_may_carry": true,
+    "living_baboon_hawks_may_carry": false
+  },
+  "temporary_isolated_test_state": {
+    "enemy_isolation_enabled": true,
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
+    "bcmer_enabled": false,
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+  },
+  "runtime_route": {
+    "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+    "value": "S1.42M"
+  },
+  "build_controller": {
+    "path": "BuildSpecs/current.json",
+    "enabled": false,
+    "build_id": "IDLE_AFTER_S1.42M_BUILD_AWAITING_RUNTIME",
+    "base_profile": "Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z",
+    "base_sha256": "9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7"
+  },
+  "next_action": {
+    "type": "runtime_test_only",
+    "instruction": "Import S1.42M with Gale Advanced options -> Import all files and perform the focused Baboon Hawk death/corpse test. Do not build a successor or restore BCMER/enemy baseline first.",
+    "upload": "RuntimeInbox/Current/"
+  },
+  "repository_maintenance": {
+    "status": "DEFERRED_UNTIL_ACTIVE_GATE_COMPLETE",
+    "known_nonfunctional_drift": [
+      "Current/02_TECHNICAL_BASELINE.md",
+      "historical S1.42J comments in Patches/S139CompatibilityFixes/Plugin.cs"
+    ],
+    "rule": "Do not perform general documentation/comment cleanup during the open runtime gate."
+  }
+}
