@@ -37,3 +37,11 @@ Offene juijui-Referenz - Jetpack-Kapazität:
 - Aktueller Projektstand: ButteryBalance "Reduce Battery = true" reduziert 50s auf 40s.
 - Der exakte historische juijui-Wert ist in den aktuell erhaltenen Text-Referenzen nicht dokumentiert.
 - Nicht raten. Wenn keine stärkere historische Quelle mehr verfügbar ist, ist 50s ("Reduce Battery = false") nur ein plausibler Fallback-Kandidat, nicht als historisch bestätigt behandeln.
+
+KANONISCHE HISTORISCHE PRIMÄRQUELLE
+- Das vollständige alte juijui-Profil soll unverändert unter References/LegacyProfiles/juijui/juijui.r2z abgelegt werden.
+- Dieses Profil ist die historische Primärreferenz für die ursprüngliche Ziel-Modkonstellation/-Konfiguration des Projekts.
+- Das Projekt soll die damalige Konstellation/Spielweise soweit technisch sinnvoll mit aktueller Spielversion, gepflegten Mods und heutiger Kompatibilität nachbilden.
+- Nach Upload sind exakte historische Werte bevorzugt direkt aus juijui.r2z bzw. dessen repository-first extrahiertem Snapshot zu belegen.
+- Insbesondere der Jetpack-Wert darf dann nicht mehr geraten werden.
+- Siehe Current/18_JUIJUI_LEGACY_REFERENCE.md und References/LegacyProfiles/juijui/README.md.
