@@ -32,6 +32,8 @@ Do not reintroduce these without new technical evidence or explicit user instruc
 | Using S1.29D as gameplay base | Forbidden; diagnostic-only power audit derivative. |
 | Upgrading BCMER to 2.0.0 as part of first reactivation | Do not do this. BCMER 2.0.0 is a major compatibility break from prior versions. First reactivation must use exact existing 1.71.0. |
 | Pre-writing all future interior configs before content has generated real sections/IDs | Avoid. Binding workflow uses S1.42A seed first, then real generated configs are collected and tuned. |
+| S1.42D broad LethalMin reflection/Harmony scan | **Failed startup.** It patched inherited/generated methods through derived types, produced HarmonyX warnings and the process terminated during the scan. Never restore this broad scan; S1.42E uses DeclaredOnly *PikminEnemy interaction methods. |
+| Patching `JetpackItem.Start` when it resolves inherited `GrabbableObject.Start` | Avoid. S1.42D showed the target is inherited and HarmonyX warned. S1.42E uses narrow loaded Jetpack Item asset targeting instead. |
 
 ## Important correction — LethalModDataLib
 
