@@ -53,8 +53,8 @@ SHA-256:
 
 S1.42G removes the continuous EnemyAI scene scan and unpatches only Coroner's faulty `JetpackItem.Update` death detector while keeping Coroner enabled.
 
-Immediate next gate:
-**import S1.42G, host, route to a moon, wait 20-30 seconds before landing, and confirm there are no periodic freezes and no Coroner null-player flood.**
+Current next gate:
+**retest S1.42G as the manual variant `S1.42G_BCMER_OFF_RETEST`: import S1.42G, manually disable BCMER only, host, route/land, and collect a fresh shorter log. The oversized prior S1.42G evidence was intentionally discarded and must not be cited.**
 
 Game: **Lethal Company V81**
 
@@ -73,28 +73,29 @@ Expected general marker:
 1. `START_HERE_ChatGPT_Masterprompt.txt`
 2. `Current/00_CURRENT_STATE.md`
 3. `Current/01_HANDOVER_CORE.md`
-4. `Current/27_S1.42G_BUILD_AND_TEST.md`
-5. `Current/26_S1.42F_RUNTIME_S1.42G_PERFORMANCE_HOTFIX.md`
-6. `Current/22_HANDOVER_S1.42E_TO_NEXT.md`
-7. `Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md`
-8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-9. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-10. `Current/06_RECENT_WORK_S1.42D-S1.42E.md`
-11. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
-12. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
-13. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
-14. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
-15. `Current/02_TECHNICAL_BASELINE.md`
-16. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-17. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-18. `Current/03_PROJECT_CHRONOLOGY.md`
-19. `Current/Projektstatus_S1.42G.json`
-20. `Current/VERIFIKATION_S1.42G.txt`
-21. `Current/SHA256SUMS_S1.42G.txt`
-22. `Current/Aktive_Modliste_S1.42E.txt` (manifest unchanged in S1.42F)
-23. `ProfileSources/S1.42G/`
-24. `BuildSpecs/current.json`
-25. `RuntimeInbox/ACTIVE_BUILD.txt`
+4. `Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md`
+5. `Current/27_S1.42G_BUILD_AND_TEST.md`
+6. `Current/26_S1.42F_RUNTIME_S1.42G_PERFORMANCE_HOTFIX.md`
+7. `Current/22_HANDOVER_S1.42E_TO_NEXT.md` (historical handover context)
+8. `Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md`
+9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+10. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+11. `Current/06_RECENT_WORK_S1.42D-S1.42E.md`
+12. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
+13. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
+14. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
+15. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
+16. `Current/02_TECHNICAL_BASELINE.md`
+17. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+18. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+19. `Current/03_PROJECT_CHRONOLOGY.md`
+20. `Current/Projektstatus_S1.42G.json`
+21. `Current/VERIFIKATION_S1.42G.txt`
+22. `Current/SHA256SUMS_S1.42G.txt`
+23. `Current/Aktive_Modliste_S1.42E.txt` (package manifest unchanged through S1.42G)
+24. `ProfileSources/S1.42G/`
+25. `BuildSpecs/current.json`
+26. `RuntimeInbox/ACTIVE_BUILD.txt`
 
 Then inspect `Profiles/`, `RuntimeEvidence/`, `Patches/`, `References/`, `Logs/`, and `Archive/` only as required by the task.
 
@@ -230,18 +231,18 @@ S1.42E target:
 
 ### Current engineering priority
 
-First: **runtime-test S1.42E startup.**
+First: **obtain a clean S1.42G runtime log with BCMER manually disabled only.**
 
-S1.42D failed before a usable Main Menu because the v1.3.0 broad LethalMin patch scan targeted inherited/non-declared methods.
+The deleted oversized S1.42G evidence is not valid project evidence.
 
-S1.42E v1.3.1 narrows the scan to declared `*PikminEnemy` interaction methods only.
+This retest must answer:
+- do the isolated test enemies actually populate/spawn without BCMER;
+- does the `Enemies` terminal command show them;
+- are routed-moon periodic stalls and Coroner Jetpack spam still gone;
+- does the observed HangarShipDoor/DoorAudit spam disappear with BCMER disabled.
 
-If S1.42E reaches Main Menu, then validate the generic LethalMin state repair, isolated Thumper/Puffer/Baboon Hawk behavior, Jetpack and Microwave.
-
-
-
-First:
-**repair the generic LethalMin enemy-grab/bite + Invincible-Pikmin leader/follow state.**
+After the spawn path is working:
+**validate/repair the generic LethalMin enemy-grab/bite + Invincible-Pikmin leader/follow state.**
 
 Confirmed failure sequence in S1.42C:
 - enemy bites/grabs Pikmin;
@@ -257,11 +258,11 @@ Specific Thumper/Puffer guards remain retained and require targeted validation w
 
 `BuildSpecs/current.json` is disabled and idle:
 
-`IDLE_AFTER_S1.42G_BUILD_AWAITING_RUNTIME`
+`IDLE_S1.42G_BCMER_OFF_RETEST`
 
-Do not rebuild or create another candidate before S1.42E runtime evidence is evaluated.
+Do not rebuild or create another candidate before the clean S1.42G BCMER-off retest is evaluated.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42G`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42G_BCMER_OFF_RETEST`
 
 ## Repository-first automation
 
