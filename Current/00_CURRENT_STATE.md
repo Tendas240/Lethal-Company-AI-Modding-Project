@@ -171,8 +171,9 @@ Use constant scale `12.5, 0, 12.5, 12.5` for all eight EventTypes.
 ## Other pending tuning
 
 Functional Microwave:
-- set edit gate true;
-- target volume 0.7.
+- edit gate true;
+- target volume 0.7;
+- future tuning requirement: make Functional Microwaves somewhat rarer than in S1.42G; exact rarity reduction is not yet selected and should be implemented in a later build, not by manually changing this retest.
 
 Jetpack:
 - historical juijui config evidence target = 140 seconds;
