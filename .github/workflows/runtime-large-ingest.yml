@@ -1,0 +1,73 @@
+name: Ingest very large runtime evidence
+
+on:
+  push:
+    branches:
+      - runtime-large
+    paths:
+      - "RuntimeInbox/Large/**"
+      - "RuntimeInbox/ACTIVE_BUILD.txt"
+      - "BuildSystem/runtime_large_ingest.py"
+      - "BuildSystem/runtime_log_analyzer.py"
+      - ".github/workflows/runtime-large-ingest.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: runtime-large-evidence-ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout disposable runtime-large branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Analyze every log line
+        run: |
+          rm -rf /tmp/runtime-large-result /tmp/runtime-large-scratch
+          python BuildSystem/runtime_large_ingest.py \
+            --output /tmp/runtime-large-result \
+            --scratch /tmp/runtime-large-scratch
+
+      - name: Upload temporary raw evidence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: runtime-large-raw-${{ github.run_id }}
+          path: /tmp/runtime-large-scratch
+          retention-days: 14
+          compression-level: 9
+          if-no-files-found: ignore
+
+      - name: Commit compact analysis to main and clear disposable branch
+        shell: bash
+        run: |
+          if [ ! -f /tmp/runtime-large-result/RESULT_READY ]; then
+            echo "No large runtime evidence to ingest."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git checkout -f main
+          cp -a /tmp/runtime-large-result/RuntimeEvidence/. RuntimeEvidence/
+          git add RuntimeEvidence
+          if ! git diff --cached --quiet; then
+            git commit -m "Ingest large runtime analysis [skip ci]"
+            git push origin main
+          fi
+
+          git fetch origin main
+          git push --force origin HEAD:runtime-large
