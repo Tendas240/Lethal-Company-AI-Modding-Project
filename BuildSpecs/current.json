@@ -1,15 +1,45 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42R_BUILD_AWAITING_RUNTIME",
+  "enabled": true,
+  "build_id": "S1.42S",
   "base_profile": "Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z",
   "base_sha256": "009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z",
+  "profile_name": "LC V1 S1.42S Baboon Adapter Lifecycle Restore",
   "overwrite": false,
-  "mod_state_changes": [],
+  "mod_state_changes": [
+    {
+      "name": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+      "version": "1.71.0",
+      "enabled": false
+    }
+  ],
   "mod_additions": [],
   "mod_removals": [],
   "config_patches": [],
-  "local_plugin_builds": [],
-  "text_assertions": []
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S139CompatibilityFixes/bin/Release/netstandard2.1/S139CompatibilityFixes.dll",
+      "archive_path": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+      "contains": "Isolated Enemy Regression = true"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Thumper Bite Limit = 3"
+    },
+    {
+      "path": "BepInEx/config/Entity378.sellbodies.cfg",
+      "contains": "Enable selling of Baboon Hawk Bodies = true"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Attack Blacklist = Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy"
+    }
+  ]
 }
