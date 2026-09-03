@@ -257,3 +257,18 @@ Before enabling S1.42D decide whether the next candidate is:
 - or a broader S1.42 tuning build including interiors/BCMER/CullFactory/Mausoleum.
 
 Do not build merely because the draft exists.
+
+## Historical juijui profile — pending upload and extraction
+
+Canonical expected path:
+`References/LegacyProfiles/juijui/juijui.r2z`
+
+Purpose:
+- preserve the original project target profile as primary historical evidence;
+- recover exact historic configuration values instead of guessing;
+- specifically resolve the current Jetpack capacity/duration question.
+
+See:
+`Current/18_JUIJUI_LEGACY_REFERENCE.md`
+
+This is a reference task and must not delay the higher-priority generic LethalMin enemy grab/bite + invincible-Pikmin state repair.
