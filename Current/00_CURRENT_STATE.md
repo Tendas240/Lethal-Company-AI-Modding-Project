@@ -50,7 +50,7 @@ Canonical latest analysis:
 **Handover refreshed:** 2026-09-03  
 **Game:** Lethal Company V81
 
-## Latest runtime/build update — S1.42F -> S1.42G
+## Historical runtime/build progression — S1.42F -> S1.42G
 
 S1.42F runtime evidence:
 `RuntimeEvidence/S1.42F/20260903T092728Z/`
@@ -95,7 +95,7 @@ SHA-256:
 
 S1.41 remains the acceptance anchor because S1.42A/B/C are staged technical descendants, not yet the final tuned gameplay release.
 
-## Latest runtime-tested technical candidate
+## Historical runtime-tested technical checkpoint — S1.42C
 
 **S1.42C**
 
@@ -240,22 +240,28 @@ Shatteredrooms:
 
 `BuildSpecs/current.json`:
 - `enabled = false`
-- `build_id = IDLE_S1.42G_BCMER_OFF_RETEST`
-- base/reference = S1.42G
+- `build_id = IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`
+- base/reference = S1.42H
+
+`RuntimeInbox/ACTIVE_BUILD.txt`:
+- `S1.42H`
 
 S1.42D:
 **failed startup; do not retest.**
 
 S1.42E:
-**startup passed; interaction testing aborted because of the periodic EnemyIsolation freeze loop.**
+**startup passed; interaction testing was blocked by the then-current EnemyIsolation freeze loop.**
 
 S1.42F:
-**Gordion smooth; routed-moon performance test failed because of periodic stalls and Coroner Jetpack spam.**
+**Gordion smooth; routed-moon stalls and Coroner Jetpack spam remained.**
 
 S1.42G:
-**latest built candidate; previous oversized runtime evidence discarded; awaiting clean manual BCMER-off retest.**
+**clean BCMER-off retest completed; freezes resolved, enemy spawning works without BCMER, Thumper invalid grab state reproduced.**
 
-Do not create another build before the clean S1.42G BCMER-off retest is evaluated.
+S1.42H:
+**latest built candidate; GitHub Actions success; awaiting first runtime validation.**
+
+Do not create S1.42I before S1.42H runtime evidence is evaluated.
 
 ## Repository-first workflow
 
@@ -275,19 +281,24 @@ Profiles with the project-local DLL require:
 ## Primary current takeover
 
 Read first after the master prompt:
-- `Current/29_HANDOVER_S1.42G_BCMER_OFF_RETEST_TO_NEXT.md`
-- `Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md`
-- `Current/27_S1.42G_BUILD_AND_TEST.md`
+- `Current/31_HANDOVER_S1.42H_TO_NEXT.md`
+- `Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
 - `Current/00_CURRENT_STATE.md`
 - `Current/01_HANDOVER_CORE.md`
 - `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-- `Current/Projektstatus_S1.42G.json`
+- `Current/Projektstatus_S1.42H.json`
+- `Current/VERIFIKATION_S1.42H.txt`
+- `Current/SHA256SUMS_S1.42H.txt`
+- `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
 Current start prompt:
-`Current/NEXT_CHAT_START_PROMPT_S1.42G.txt`
+`Current/NEXT_CHAT_START_PROMPT_S1.42H.txt`
 
 Runtime route:
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42G_BCMER_OFF_RETEST`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42H`
+
+Build controller:
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`
 
 ## Historical juijui reference — committed and indexed
 
@@ -321,7 +332,7 @@ the new v1.3.0 LethalMin reflective scan attempted to Harmony-patch inherited/no
 
 Do not retest S1.42D.
 
-## Latest built candidate — S1.42E
+## Historical S1.42E startup-safe candidate
 
 Profile:
 `Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
