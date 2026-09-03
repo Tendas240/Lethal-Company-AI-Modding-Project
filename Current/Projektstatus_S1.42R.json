@@ -1,0 +1,91 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "runtime_accepted"
+  },
+  "latest_valid_runtime_evidence": {
+    "build": "S1.42Q",
+    "path": "RuntimeEvidence/S1.42Q/20260903T195158Z/",
+    "log_sha256": "e8949f87c0df2e3f5a8e7b985bf698aab9de68bba08ae45e3fe5b89e89f27aa5",
+    "verdict": "FAIL_EXACT_LATCHED_COATTACKER_STALE_TASK",
+    "exact_failed_pikmin": [
+      "Yellow Pikmin_ruCpzY",
+      "Yellow Pikmin_PerDu"
+    ],
+    "successful_transition_control": "Yellow Pikmin_hcRGph",
+    "root_cause": "LethalMinNightly 1.1.108 AttackEnemyTask.IntervaledUpdate returns while IsPikminOnEnemy=true before checking enemy.enemyScript.isEnemyDead"
+  },
+  "upstream_analysis": {
+    "package": "NotezyTeam-LethalMinNightly 1.1.108",
+    "dll": "NoteBoxz.LethalMin.dll",
+    "dll_sha256": "9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df",
+    "decompile": "Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt",
+    "analysis": "Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md"
+  },
+  "current_candidate": {
+    "build": "S1.42R",
+    "name": "LethalMin Latched Dead Target Completion",
+    "profile": "Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z",
+    "sha256": "009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101",
+    "git_blob_sha": "61e290182a0f056a20d81f31d340b27eb18f4be4",
+    "size_bytes": 533870,
+    "status": "built_awaiting_runtime_validation",
+    "base_profile": "Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z",
+    "base_sha256": "50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1",
+    "compatibility_plugin": {
+      "version": "1.3.13",
+      "embedded_dll_sha256": "0d39a8895a1324457c2ac135fa2ae129e58ba8155ce6bde1cdb59d340be420ff"
+    },
+    "exact_patch": {
+      "target": "LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate()",
+      "condition": "IsPikminOnEnemy && task.enemy != null && task.enemy.enemyScript.isEnemyDead",
+      "action": "invoke native PikminAI.FinishTaskServerRpc() and skip broken upstream interval for that tick",
+      "no_enemy_death_hook": true,
+      "no_pikmin_scan": true,
+      "no_radius": true,
+      "no_target_guessing": true,
+      "no_direct_state_mutation": true
+    },
+    "build_verification": {
+      "workflow_run_number": 54,
+      "workflow_run_id": 33800005390,
+      "conclusion": "success",
+      "generated_commit": "80fc7bc37476612320925083f062bda2b841cf40",
+      "zip_members": 331,
+      "readable_snapshot_files": 330,
+      "changed_existing_members": [
+        "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+        "export.r2x"
+      ],
+      "added_members": [],
+      "config_delta_from_s142q": "none"
+    }
+  },
+  "temporary_test_state": {
+    "enemy_isolation_enabled": true,
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
+    "bcmer_enabled": false,
+    "thumper_bite_limit": 3,
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+  },
+  "runtime_route": {
+    "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+    "value": "S1.42R"
+  },
+  "build_controller": {
+    "path": "BuildSpecs/current.json",
+    "enabled": false,
+    "build_id": "IDLE_AFTER_S1.42R_BUILD_AWAITING_RUNTIME",
+    "base_profile": "Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z",
+    "base_sha256": "009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101"
+  },
+  "next_action": {
+    "type": "focused_runtime_test",
+    "instruction": "Import S1.42R via Gale Advanced options -> Import all files. Latch at least three Pikmin onto the same Baboon Hawk, kill it, verify each co-attacker emits LethalMinLatchedDeathGuard then native Task finished, recover exact full follower count, repeat, commit full LogOutput.log to RuntimeInbox/Current/."
+  }
+}
