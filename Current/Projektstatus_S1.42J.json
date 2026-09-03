@@ -117,13 +117,14 @@
   "canonical_analysis": "Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md",
   "canonical_handover": {
     "master_prompt": "START_HERE_ChatGPT_Masterprompt.txt",
-    "handover": "Current/34_HANDOVER_S1.42J_TO_NEXT.md",
+    "handover": "Current/36_HANDOVER_S1.42J_TO_NEXT.md",
     "latest_build_analysis": "Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md",
     "predecessor_runtime_analysis": "Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md",
     "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42J.txt",
     "verification": "Current/VERIFIKATION_S1.42J.txt",
     "hashes": "Current/SHA256SUMS_S1.42J.txt",
-    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+    "repository_optimization_plan": "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt"
   },
   "confirmed_fixes_and_guards": [
     "S1.42D broad inherited/non-declared LethalMin scan removed; do not reintroduce",
@@ -144,7 +145,8 @@
     "interior equal-probability normalization remains pending",
     "MelanieMausoleum-specific fog reduction remains pending",
     "CullFactory culling disable for junkrooms and shatteredrooms remains pending",
-    "BCMER Door System ERROR/ship-door interaction should be rechecked after BCMER is re-enabled"
+    "BCMER Door System ERROR/ship-door interaction should be rechecked after BCMER is re-enabled",
+    "Deferred repository structural migration should be performed after the active critical runtime/build gate is completed; see Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt"
   ],
   "do_not_regress": [
     "Do not reintroduce S1.42D broad reflection/Harmony scan",
@@ -156,5 +158,20 @@
     "Do not remove Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
     "Do not restore or cite RuntimeEvidence/S1.42G/20260903T100914Z/",
     "Do not ask for local clone or local PowerShell build while GitHub contains required base/infrastructure"
-  ]
+  ],
+  "repository_optimization": {
+    "status": "DEFERRED_UNTIL_ACTIVE_GATE_COMPLETE",
+    "recommendation": "Perform the repository structural migration after the currently active critical runtime/build gate has been evaluated and the resulting canonical state has been documented.",
+    "plan": "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt",
+    "immediate_priority": "Runtime-test S1.42J first; do not build S1.42K first and do not start the structural migration first.",
+    "target": "Small stable canonical Current context plus targeted retrieval from complete evidence/history.",
+    "constraints": [
+      "Archive instead of delete when information value is uncertain",
+      "Preserve raw runtime evidence and failed approaches",
+      "Extend existing profile/runtime indexing rather than creating competing index systems",
+      "Do not aggressively deduplicate ProfileSources solely for apparent storage savings because Git already deduplicates identical blobs",
+      "No destructive Git history rewrite, Git LFS migration, or external-storage migration without explicit user approval",
+      "Future chat must re-check the then-current repository state before starting migration"
+    ]
+  }
 }
