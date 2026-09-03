@@ -1,15 +1,74 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_HANDOVER_AFTER_S1.42C_RUNTIME",
+  "enabled": true,
+  "build_id": "S1.42D",
   "base_profile": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
   "base_sha256": "22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z",
+  "profile_name": "LC V1 S1.42D Isolated Enemy Regression",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "config_patches": [],
-  "local_plugin_builds": [],
-  "text_assertions": []
+  "config_patches": [
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "section": "FunctionalMicrowave Options",
+      "key": "Functional Microwave | Allow Editing Config",
+      "value": "true"
+    },
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "section": "FunctionalMicrowave Options",
+      "key": "Functional Microwave | Volume",
+      "value": "0.7"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
+      "section": "Item.Jetpack",
+      "key": "Reduce Battery",
+      "value": "false"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.jetpackfixes.cfg",
+      "section": "Misc",
+      "key": "MidAirExplosions",
+      "value": "Off"
+    },
+    {
+      "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+      "section": "Diagnostics",
+      "key": "Isolated Enemy Regression",
+      "value": "true"
+    }
+  ],
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S139CompatibilityFixes/bin/Release/netstandard2.1/S139CompatibilityFixes.dll",
+      "archive_path": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "contains": "Functional Microwave | Allow Editing Config = true"
+    },
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "contains": "Functional Microwave | Volume = 0.7"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
+      "contains": "Reduce Battery = false"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.jetpackfixes.cfg",
+      "contains": "MidAirExplosions = Off"
+    },
+    {
+      "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+      "contains": "Isolated Enemy Regression = true"
+    }
+  ]
 }
