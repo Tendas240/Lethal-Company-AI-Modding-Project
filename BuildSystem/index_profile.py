@@ -46,7 +46,10 @@ def main(paths: list[str]) -> int:
             raise RuntimeError(f"{path}: profileName not found")
         profile_name = m.group(1).strip().strip('"').strip("'")
 
-        snap_dir = Path("ProfileSources") / build_id
+        if path.as_posix().startswith("References/LegacyProfiles/"):
+            snap_dir = path.parent / "Extracted"
+        else:
+            snap_dir = Path("ProfileSources") / build_id
         snap_info = snapshot(entries, snap_dir)
         result = {
             "build_id": build_id,
@@ -54,6 +57,7 @@ def main(paths: list[str]) -> int:
             "profile_name": profile_name,
             "sha256": actual_hash,
             "zip_members": len(entries),
+            "snapshot_dir": snap_dir.as_posix(),
             "snapshot": snap_info,
         }
         (snap_dir / "PROFILE_INDEX_RESULT.json").write_text(
