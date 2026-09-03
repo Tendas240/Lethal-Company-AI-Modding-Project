@@ -43,12 +43,13 @@ Source:
 
 Current source version:
 
-**1.3.1**
+**1.3.2**
 
 Runtime status:
 - v1.2.0 is proven non-crashing in S1.42C;
 - v1.3.0 in S1.42D caused a startup crash due to an over-broad LethalMin Harmony scan;
-- v1.3.1 in S1.42E is the narrowed startup-safe hotfix and is built but not runtime-tested yet.
+- v1.3.1 in S1.42E is runtime-proven startup-safe and registered 4 declared LethalMin enemy methods, but its diagnostic EnemyIsolation caused periodic Gordion lobby freezes;
+- v1.3.2 in S1.42F fixes the diagnostic isolation freeze path and is built but not runtime-tested yet.
 
 Build rule:
 
