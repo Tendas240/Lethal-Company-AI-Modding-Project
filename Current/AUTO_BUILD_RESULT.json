@@ -1,10 +1,10 @@
 {
-  "build_id": "S1.42F",
-  "profile_name": "LC V1 S1.42F Enemy Isolation Freeze Fix",
-  "base_profile": "Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z",
-  "base_sha256": "4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348",
-  "output_profile": "Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z",
-  "output_sha256": "f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b",
+  "build_id": "S1.42G",
+  "profile_name": "LC V1 S1.42G Routed Moon Performance Fix",
+  "base_profile": "Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z",
+  "base_sha256": "f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b",
+  "output_profile": "Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z",
+  "output_sha256": "09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a",
   "zip_members": 331,
   "changed_existing_members": [
     "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
@@ -14,7 +14,7 @@
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42F",
+  "snapshot_dir": "ProfileSources/S1.42G",
   "snapshot": {
     "entries": 331,
     "text_entries": 330
