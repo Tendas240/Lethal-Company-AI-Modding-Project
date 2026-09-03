@@ -1,80 +1,91 @@
 # 04 - Open Issues and Next Tests
 
-## Immediate active gate — S1.42P exact FinishTask recovery
+## Immediate active issue — S1.42P failed 20 -> 18 recovery
 
-Analysis:
-`Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md`
+Newest analysis:
+`Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md`
 
-Build:
-`Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md`
-
-Profile:
+Tested profile:
 `Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z`
 
 SHA-256:
 `11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5`
 
-Compatibility plugin:
-**v1.3.11**
-
-## S1.42O failure
-
-Evidence:
-`RuntimeEvidence/S1.42O/20260903T171220Z/`
+Runtime evidence:
+`RuntimeEvidence/S1.42P/20260903T181706Z/`
 
 Log SHA-256:
-`1a1251f19a1d82e90b72e82ac8e4babd523c32e695fe3d7923d4590debb0be71`
+`d656095fb874a415a1bd2377c0411339d3d6eb002dce4ec3f6216e879294127f`
 
-User observed:
-**8 Pikmin disappeared after Hawk death.**
+## Confirmed failure
 
-Reason:
-S1.42O attempted exact `PikminAI.TaskFinished()`, but the runtime type has no such method. Cleanup was therefore inactive.
+User observation:
+**20 following Pikmin before the fight, 18 recovered afterward.**
 
-The runtime candidate list reveals:
-`PikminAI.FinishTask():Void`
+Log reconstruction:
+**exactly 20 -> 18 confirmed.**
 
-Eight attackers continued hitting the dead Hawk beyond the SellBodies body-spawn point.
+Missing:
+- `Yellow Pikmin_hcRGph`
+- `Yellow Pikmin_ruCpzY`
 
-## S1.42P change
+### Failure mode 1 — selector miss
 
-Use exact runtime-confirmed:
-`PikminAI.FinishTask()`
+Four Pikmin were actively hitting the Hawk before death, but the 4.0 m cleanup selected only three.
 
-Keep:
-- one-shot SpawnedEnemies resolver;
-- 4.0 m selection;
-- corpse guard;
-- EnemyIsolation;
-- BCMER disabled.
+Missed attacker:
+`Yellow Pikmin_ruCpzY`
 
-No RemoveCurrentTask fallback.
+It continued hitting the dead Hawk for 168 post-death entries, ending about 84.565 seconds after death.
 
-## Exact S1.42P test
+A larger arbitrary radius is not an acceptable fix; attacker identity must be direct.
 
-Use:
-**Gale -> Advanced options -> Import all files**
+### Failure mode 2 — dead-target reacquisition
 
-1. record following count;
-2. throw several Pikmin onto living Hawk;
-3. let them kill it;
-4. attackers must stop dead-target hit activity;
-5. affected Pikmin must remain visible and responsive;
-6. whistle/regain them;
-7. verify they follow and can be reused;
-8. compare following count;
-9. verify corpse still reaches Onion;
-10. verify living Hawks ignore corpse;
-11. verify Hawk -> Pikmin ignore;
-12. verify no leader-null loop;
-13. commit complete fresh log to `RuntimeInbox/Current/`.
+Native `FinishTask()` worked on:
+- `hcRGph`
+- `apYy5`
+- `khCd`
 
-Expected log:
-- `Resolved exact declared LethalMin.PikminAI.FinishTask()`;
-- one or more `Native FinishTask finalized ...`;
-- non-zero `native-finished X/X`;
-- no sustained no-task Work loop;
-- no sustained hit loop after Hawk death.
+All three then rediscovered the already-dead `BaboonHawkEnemy(Clone)` and assigned a new `AttackEnemy` task.
+
+`apYy5` and `khCd` eventually recovered through later behavior.
+`hcRGph` did not return to the leader.
+
+## Passing S1.42P subchecks
+
+- exact `PikminAI.FinishTask()` resolver: PASS
+- native FinishTask invocation: PASS
+- `Work state with no task assigned!`: 0
+- `Leader is null when following`: 0
+- Dead Baboon Hawk body creation/carry: PASS
+- corpse reaches Onion: PASS
+- living Baboon Hawk ignores corpse: PASS
+- Thumper/Pikmin protection remains active.
+
+## Next build direction — S1.42Q
+
+Build from S1.42P only after implementation is exact enough to avoid guessing.
+
+Required changes:
+1. retain `PikminAI.FinishTask()`;
+2. determine actual Pikmin attackers by dying-Hawk target identity rather than distance;
+3. prevent dead `BaboonHawkEnemy` objects from being valid future Pikmin AttackEnemy targets.
+
+Preserve:
+- Pikmin -> living Hawk attack/latch/kill;
+- living Hawk -> Pikmin ignore/protection;
+- corpse carry to Onion;
+- living Hawks ignore corpse.
+
+Do not:
+- simply widen the 4 m radius;
+- use direct `RemoveCurrentTask()`;
+- add continuous scene scanning;
+- restore normal enemy state;
+- re-enable BCMER yet.
+
+If exact target-selection internals are not established, prefer a narrow diagnostic descendant that logs exact runtime task/target members over guessed reflection.
 
 ## Temporary state
 
@@ -87,22 +98,17 @@ BCMER exact 1.71.0:
 Restore baseline:
 `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
-## After PASS
-
-Then restore exact normal enemy config and exact BCMER 1.71.0, followed by a normal-state runtime test.
-
 ## Controllers
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42P`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_BUILD_AWAITING_RUNTIME`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_SUCCESSOR_DESIGN`
 
-## Handover continuity
+## After a future PASS
 
-Primary continuation document:
-`Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md`
-
-Final repository audit:
-`Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md`
-
-Do not treat repository cleanup, BCMER restore, or normal enemy restore as the next step. The next step remains the unchanged S1.42P focused runtime test.
+Only after the Baboon-Hawk death/recovery gate is actually clean:
+1. disable EnemyIsolation;
+2. restore exact normal enemy configuration from S1.42C baseline;
+3. re-enable exact BCMER 1.71.0;
+4. runtime-test normal gameplay;
+5. then consider deferred repository cleanup/migration.
