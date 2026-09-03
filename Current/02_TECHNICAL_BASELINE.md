@@ -1,6 +1,6 @@
 # 02 — Technical Baseline
 
-## Current canonical manifest: S1.41
+## Accepted gameplay baseline manifest: S1.41
 
 Profile:
 
@@ -41,9 +41,13 @@ Source:
 
 `Patches/S139CompatibilityFixes/`
 
-Fallback package:
+Current source version:
 
-`Patches/S139CompatibilityFixes/Tendas-S139CompatibilityFixes-1.0.0.zip`
+**1.2.0**
+
+Build rule:
+
+The authoritative current DLL is compiled from `Plugin.cs` by the repository-first GitHub Actions profile build and injected into the target profile. The standalone v1.0.0 DLL/ZIP files still present under `Patches/S139CompatibilityFixes/` are historical artifacts only and must not be used as the current fallback.
 
 Embedded DLL:
 
@@ -60,13 +64,44 @@ Functions:
 4. normal-scrap CodeRebirth Currency filtering;
 5. defensive late map-object Currency filtering;
 6. defensive Flash Turret filtering;
-7. direct CodeRebirth utility-kill Pikmin/Puffmin guard.
+7. direct CodeRebirth utility-kill Pikmin/Puffmin guard;
+8. null-safe LethalModDataLib 1.2.2 ModDataAttribute registration guard;
+9. targeted Puffer-smoke LethalMin Pikmin-effect guard.
 
 The late map-object Currency filter is defense-in-depth only. S1.39 runtime proved it cannot replace the DawnLib-native config control.
 
 ### Gale import
 
 Use **Advanced options -> Import all files**.
+
+## Latest technical descendant: S1.42C
+
+Profile:
+
+`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
+
+SHA-256:
+
+`22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
+
+Status:
+
+**runtime-tested technical candidate; not final gameplay acceptance**
+
+Manifest:
+- 188 Thunderstore entries
+- 183 enabled
+- 5 disabled
+
+Readable exact profile contents:
+
+`ProfileSources/S1.42C/`
+
+Exact package list:
+
+`Current/Aktive_Modliste_S1.42C.txt`
+
+S1.42C carries the confirmed S1.42B LethalModDataLib guard and the current Thumper/Puffer Pikmin guards.
 
 ## Accepted CodeRebirth/DawnLib natural-spawn control
 
@@ -341,17 +376,15 @@ Use:
 
 Do not ask the user to run local PowerShell profile-build scripts or maintain a local repository clone while the required base profile is online.
 
-Current S1.42A candidate:
+Current technical base for descendants:
 
-`Profiles/LC V1 S1.42A Interior Config Seed.r2z`
+`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
 
-SHA-256: `70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
+SHA-256: `22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
 
-Status: GitHub-Actions build verified; runtime config-generation seed test pending. S1.41 remains the accepted gameplay baseline.
+Status: runtime-tested technical candidate. S1.41 remains the last fully accepted gameplay baseline.
 
-Plan / runtime procedure:
-
-`BuildSpecs/S1.42A_PLAN.md`
+Current build spec is disabled/idle after S1.42C runtime. `BuildSpecs/S1.42D_PLAN.md` is draft-only and must not be built automatically.
 
 ## New non-blocking regression surface
 
