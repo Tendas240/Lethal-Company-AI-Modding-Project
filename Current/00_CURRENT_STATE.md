@@ -10,6 +10,9 @@
 Supporting runtime analysis:
 `Current/47_S1.42L_BABOON_ATTACK_PASS_DEATH_REGRESSION_ANALYSIS.md`
 
+Final repository handover audit:
+`Current/49_REPOSITORY_HANDOVER_AUDIT_S1.42M.md`
+
 ## Canonical acceptance state
 
 ### Last fully accepted gameplay baseline
