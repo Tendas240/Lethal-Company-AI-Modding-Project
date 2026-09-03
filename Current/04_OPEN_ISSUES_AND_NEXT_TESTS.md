@@ -399,6 +399,25 @@ Status:
 
 Do not build S1.42K before evaluating S1.42J.
 
+## Deferred repository-maintenance task — structural migration
+
+Status:
+**recommended, but intentionally deferred until the active critical runtime/build gate is evaluated and the resulting state is documented.**
+
+Canonical plan:
+`Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+
+Purpose:
+- shrink the mandatory ChatGPT bootstrap context;
+- make Current/ truly current;
+- introduce stable canonical state/read-order paths;
+- separate active state from historical evidence;
+- improve ProfileSources/ and RuntimeEvidence/ indexes;
+- preserve failed approaches and primary evidence;
+- add automated repository consistency validation.
+
+This maintenance task must not displace the immediate S1.42J runtime test. A future chat must first re-evaluate the then-current repository state and only begin the migration when no critical gate is left half-finished.
+
 
 ## Historical juijui profile — uploaded and indexed
 
