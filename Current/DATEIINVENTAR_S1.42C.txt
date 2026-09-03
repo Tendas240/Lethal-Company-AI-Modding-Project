@@ -7,6 +7,7 @@ PRIMARY ENTRYPOINTS
 - Current/00_CURRENT_STATE.md
 - Current/01_HANDOVER_CORE.md
 - Current/16_HANDOVER_S1.42C_TO_NEXT.md
+- Current/17_REPO_HANDOVER_CLEANUP_S1.42C.md
 - Current/NEXT_CHAT_START_PROMPT_S1.42C.txt
 - Current/README_Handover_S1.42C.txt
 - Current/Projektstatus_S1.42C.json
@@ -61,4 +62,16 @@ PERSISTENT POLICY / ROADMAP
 - Current/09_REPOSITORY_FIRST_AUTOMATION.md
 - References/juijui_Referenzwerte.txt
 
-Historical S1.41 handover files remain intentionally preserved for reconstruction and are superseded as current entrypoints by the S1.42C files above.
+Superseded S1.41 handover-support metadata are preserved under Archive/S1.41/HandoverCheckpoint/ and are not current entrypoints. Historical runtime/diagnostic S1.41 material remains available where it has reconstruction value.
+
+
+ARCHIVED HANDOVER CHECKPOINT
+- Archive/S1.41/HandoverCheckpoint/README.md
+- Archive/S1.41/HandoverCheckpoint/NEXT_CHAT_START_PROMPT_S1.41.txt
+- Archive/S1.41/HandoverCheckpoint/README_Handover_S1.41.txt
+- Archive/S1.41/HandoverCheckpoint/REPO_HANDOVER_CLEANUP_S1.41.txt
+- Archive/S1.41/HandoverCheckpoint/Projektstatus_S1.41.json
+- Archive/S1.41/HandoverCheckpoint/Aktive_Modliste_S1.41.txt
+- Archive/S1.41/HandoverCheckpoint/VERIFIKATION_S1.41.txt
+- Archive/S1.41/HandoverCheckpoint/DATEIINVENTAR_S1.41.txt
+- Archive/S1.41/HandoverCheckpoint/SHA256SUMS_S1.41.txt
