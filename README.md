@@ -93,10 +93,14 @@ Expected general marker:
 21. `Current/Projektstatus_S1.42G.json`
 22. `Current/VERIFIKATION_S1.42G.txt`
 23. `Current/SHA256SUMS_S1.42G.txt`
-24. `Current/Aktive_Modliste_S1.42E.txt` (package manifest unchanged through S1.42G)
-25. `ProfileSources/S1.42G/`
-26. `BuildSpecs/current.json`
-27. `RuntimeInbox/ACTIVE_BUILD.txt`
+24. `Current/VERIFIKATION_S1.42G_BCMER_OFF_RETEST.txt`
+25. `Current/SHA256SUMS_S1.42G_BCMER_OFF_RETEST.txt`
+26. `Current/DATEIINVENTAR_S1.42G_BCMER_OFF_RETEST.txt`
+27. `Current/README_Handover_S1.42G_BCMER_OFF_RETEST.txt`
+28. `Current/Aktive_Modliste_S1.42G_BCMER_OFF_RETEST.txt` (manual runtime variant; canonical S1.42G itself remains 183 enabled / 5 disabled)
+29. `ProfileSources/S1.42G/`
+30. `BuildSpecs/current.json`
+31. `RuntimeInbox/ACTIVE_BUILD.txt`
 
 Then inspect `Profiles/`, `RuntimeEvidence/`, `Patches/`, `References/`, `Logs/`, and `Archive/` only as required by the task.
 
