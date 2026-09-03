@@ -80,23 +80,23 @@ Expected general marker:
 8. `Current/22_HANDOVER_S1.42E_TO_NEXT.md` (historical handover context)
 9. `Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md`
 10. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-10. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-11. `Current/06_RECENT_WORK_S1.42D-S1.42E.md`
-12. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
-13. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
-14. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
-15. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
-16. `Current/02_TECHNICAL_BASELINE.md`
-17. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-18. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-19. `Current/03_PROJECT_CHRONOLOGY.md`
-20. `Current/Projektstatus_S1.42G.json`
-21. `Current/VERIFIKATION_S1.42G.txt`
-22. `Current/SHA256SUMS_S1.42G.txt`
-23. `Current/Aktive_Modliste_S1.42E.txt` (package manifest unchanged through S1.42G)
-24. `ProfileSources/S1.42G/`
-25. `BuildSpecs/current.json`
-26. `RuntimeInbox/ACTIVE_BUILD.txt`
+11. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+12. `Current/06_RECENT_WORK_S1.42D-S1.42E.md`
+13. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
+14. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
+15. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
+16. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
+17. `Current/02_TECHNICAL_BASELINE.md`
+18. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+19. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+20. `Current/03_PROJECT_CHRONOLOGY.md`
+21. `Current/Projektstatus_S1.42G.json`
+22. `Current/VERIFIKATION_S1.42G.txt`
+23. `Current/SHA256SUMS_S1.42G.txt`
+24. `Current/Aktive_Modliste_S1.42E.txt` (package manifest unchanged through S1.42G)
+25. `ProfileSources/S1.42G/`
+26. `BuildSpecs/current.json`
+27. `RuntimeInbox/ACTIVE_BUILD.txt`
 
 Then inspect `Profiles/`, `RuntimeEvidence/`, `Patches/`, `References/`, `Logs/`, and `Archive/` only as required by the task.
 
