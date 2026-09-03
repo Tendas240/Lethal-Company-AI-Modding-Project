@@ -54,3 +54,24 @@ BuildSpecs/S1.42D_PLAN.md:
 
 Gale import:
 Advanced options -> Import all files
+
+
+Manifest re-verification during final handover:
+- source: ProfileSources/S1.42C/export.r2x
+- total: 188
+- enabled: 183
+- disabled: 5
+- Current/Aktive_Modliste_S1.42C.txt regenerated from this source because an earlier generated copy had shifted version associations.
+
+Correct manifest disabled set:
+- AJB-Keep_hangar_ship_door_closed 1.0.0
+- zealsprince-Malfunctions 1.10.3
+- Reiko88-Observer 2.0.1
+- ProjectSCP-SCP999 2.4.0
+- Kittenji-Dont_Touch_Me 1.2.8
+
+The manifest correction changed documentation only; S1.42C .r2z remained unchanged.
+
+Superseded S1.41 handover-support metadata:
+- archived under Archive/S1.41/HandoverCheckpoint/
+- no permanent information deletion.
