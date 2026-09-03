@@ -1,0 +1,85 @@
+VERIFIKATION — S1.42Q
+Datum: 2026-09-03
+Spiel: Lethal Company V81
+
+KANONISCHER TESTKANDIDAT
+Build: S1.42Q — LethalMin Native Minimal Rollback
+Profil: Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z
+SHA-256: 50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1
+Git blob SHA: 9e1beec739c193c95e936a56fefb060a84577559
+Dateigröße: 532408 Bytes
+
+BUILD
+GitHub Actions Run #52 / ID 33794943826: SUCCESS
+Build-Commit: bd6e1ca023921e5fecb14e301e9c24cf73cb4aea
+ZIP-Mitglieder: 331
+Lesbare Snapshot-Dateien: 330
+Geänderte bestehende Archivmitglieder:
+- BepInEx/config/NoteBoxz.LethalMin.cfg
+- BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+- export.r2x
+Neue Archivmitglieder: keine
+
+PLUGIN
+Version: 1.3.12
+DLL SHA-256: f6a4e7b060af6a779da1c92236b2ce63d1bd5d890a21c9492517e568a9aaac45
+
+ENTFERNTE PIKMIN-LIFECYCLE-SONDERLOGIK
+- BaboonHawkDeathCleanup vollständig entfernt
+- kein BaboonBirdAI.KillEnemy Death-Task-Hook
+- kein project-local PikminAI.FinishTask()
+- kein 4.0m Death-Release-Scan
+- kein Delayed Post-Grab Repair
+- keine Leader/Follow/Grab-State-Snapshots
+- keine Release-Method-Reflection
+- keine reflektierende State-Restoration
+
+BEIBEHALTEN
+- prevention-only PikminAI.GrabPikmin Prefix für Crawler/Thumper -> Pikmin und Baboon Hawk -> Pikmin
+- einseitiger Baboon-Hawk -> Pikmin Adapter/Bite-Guard
+- Dead-Baboon-Hawk CanGrabScrap Guard
+- Puffer Pikmin-Effect Guard
+- CodeRebirth Utility-Kill Pikmin Guard
+- restliche unabhängige Compatibility-Fixes
+- EnemyIsolation
+
+ERWARTETER STARTUP-MARKER
+[LethalMinNativeOwnership]
+
+VERBOTENER ALTER RUNTIME-MARKER
+[BaboonHawkDeathCleanup]
+
+LETHALMIN-CONFIG-DIFF GEGEN S1.42P
+Genau 1 Wert geändert:
+Thumper Bite Limit = 0 -> 3
+
+Damit ist der akzeptierte S1.41-Wert wiederhergestellt.
+Alle anderen LethalMin-Configwerte bleiben unverändert.
+
+PAKETE
+Gesamt: 188
+Aktiv: 182
+Deaktiviert: 6
+BCMER 1.71.0 bleibt deaktiviert.
+
+TEMPORÄRER TESTZUSTAND
+EnemyIsolation = true
+BCMER 1.71.0 = disabled
+
+RUNTIME-ROUTER
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42Q
+
+BUILD-CONTROLLER
+enabled = false
+build_id = IDLE_AFTER_S1.42Q_BUILD_AWAITING_RUNTIME
+base_profile = Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z
+base_sha256 = 50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1
+
+STATUS
+Repository/build verification: PASS
+Runtime verification: PENDING
+
+NÄCHSTER SCHRITT
+S1.42Q via Gale Advanced options -> Import all files importieren.
+Fokussierten Crawler/Thumper + Baboon Hawk + Puffer Test durchführen.
+Kompletten frischen LogOutput.log nach RuntimeInbox/Current/ committen.
