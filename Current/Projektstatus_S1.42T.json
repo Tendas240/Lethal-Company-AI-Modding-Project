@@ -1,0 +1,112 @@
+{
+  "date": "2026-09-04",
+  "game": "Lethal Company V81",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "runtime_accepted_full_normal_stack"
+  },
+  "latest_accepted_technical_descendant": {
+    "build": "S1.42T",
+    "name": "Normal Enemy Restore",
+    "profile": "Profiles/LC V1 S1.42T Normal Enemy Restore.r2z",
+    "sha256": "a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10",
+    "status": "runtime_accepted_normal_enemy_restore_gate",
+    "full_normal_stack_promoted": false,
+    "reason_not_full_normal_stack": "Exact BCMER 1.71.0 remains intentionally disabled until the separate S1.42U gate."
+  },
+  "compatibility_plugin": {
+    "version": "1.3.14",
+    "embedded_dll_sha256": "3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960",
+    "code_changed_in_s142t": false
+  },
+  "s142t_build": {
+    "base": "S1.42S",
+    "base_sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee",
+    "output_sha256": "a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10",
+    "zip_members": 331,
+    "changed_existing_members": [
+      "export.r2x",
+      "BepInEx/config/tendas.s139.compatibilityfixes.cfg"
+    ],
+    "added_members": [],
+    "mod_state_changes": [],
+    "mod_additions": [],
+    "mod_removals": [],
+    "intended_gameplay_delta": "Isolated Enemy Regression = false"
+  },
+  "latest_runtime_evidence": {
+    "build": "S1.42T",
+    "path": "RuntimeEvidence/S1.42T/20260903T222109Z/",
+    "raw_log": "RuntimeEvidence/S1.42T/20260903T222109Z/raw/LogOutput.log",
+    "raw_log_size": 1965803,
+    "raw_log_sha256": "b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f",
+    "verdict": "PASS_NORMAL_ENEMY_RESTORE",
+    "acceptance_doc": "Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md",
+    "normal_non_isolated_enemy_spawn_restored": true,
+    "terminal_enemy_scan_performed": false,
+    "terminal_enemy_scan_required_for_verdict": false,
+    "terminal_enemy_scan_reason": "Player died before manual command; direct spawn/active-instance runtime evidence is stronger and sufficient.",
+    "work_state_no_task_count": 0,
+    "leader_null_count": 0,
+    "fatal_count": 0,
+    "project_compatibility_error_count": 0,
+    "new_compatibility_exception_flood": false,
+    "player_death": "DeathPlayerJetpackBlast",
+    "crash_or_freeze": false,
+    "monitor_only_observations": [
+      "one-off Failed getting load state of FSB for audio clip AloeChase",
+      "known/pre-existing SoundAPI TypeLoadException and other startup/lobby stack noise"
+    ]
+  },
+  "current_state": {
+    "enemy_isolation_enabled": false,
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+    "bcmer_version": "1.71.0",
+    "bcmer_enabled": false,
+    "thumper_bite_limit": 3,
+    "crawler_in_attack_blacklist": false
+  },
+  "runtime_route": {
+    "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+    "value": "S1.42T"
+  },
+  "build_controller": {
+    "path": "BuildSpecs/current.json",
+    "enabled": false,
+    "build_id": "IDLE_AFTER_S1.42T_RUNTIME_PASS_AWAITING_S1.42U_BCMER_REACTIVATION",
+    "base_profile": "Profiles/LC V1 S1.42T Normal Enemy Restore.r2z",
+    "base_sha256": "a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10"
+  },
+  "next_action": {
+    "type": "build_and_runtime_test_bcmer_reactivation",
+    "build_id": "S1.42U",
+    "plan": "BuildSpecs/S1.42U_PLAN.md",
+    "instruction": "Re-enable exact SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 only; preserve S1.42T and all accepted compatibility/config state; do not upgrade or mix unrelated tuning."
+  },
+  "large_runtime_log_policy": {
+    "document": "Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md",
+    "normal_inbox": "RuntimeInbox/Current/",
+    "large_branch": "runtime-large",
+    "large_inbox": "RuntimeInbox/Large/",
+    "stream_every_line": true,
+    "raw_artifact_retention_days": 14,
+    "query_controller": "RuntimeAnalysis/QUERY.json",
+    "raw_logs_permanent_by_default": false,
+    "s142t_raw_retention_now": "keep through immediate BCMER restoration comparison"
+  },
+  "open_issues": [
+    {
+      "id": "LETHALMIN_DISCONNECT_NOTICEZONE_NETWORKOBJECTREFERENCE",
+      "severity": "monitor_only",
+      "blocking": false
+    },
+    {
+      "id": "ALOECHASE_FSB_LOAD_STATE",
+      "severity": "monitor_only",
+      "blocking": false
+    }
+  ]
+}
