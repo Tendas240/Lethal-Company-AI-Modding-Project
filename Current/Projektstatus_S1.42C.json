@@ -107,12 +107,14 @@
   "build_state": {
     "current_spec": "BuildSpecs/current.json",
     "current_spec_enabled": false,
-    "current_spec_build_id": "S1.42D_BUILD_COMPLETED_AWAITING_IDLE_RESET",
+    "current_spec_build_id": "IDLE_AFTER_S1.42D_BUILD_AWAITING_RUNTIME",
     "next_draft_plan": "BuildSpecs/S1.42D_PLAN.md",
-    "next_draft_plan_status": "DRAFT_ONLY_DO_NOT_BUILD_YET",
+    "next_draft_plan_status": "S1.42D_BUILT_AWAITING_RUNTIME",
     "repository_first": true,
     "local_clone_required": false,
-    "local_powershell_build_required": false
+    "local_powershell_build_required": false,
+    "current_spec_base": "Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z",
+    "current_spec_base_sha256": "b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c"
   },
   "handover": {
     "core": "Current/16_HANDOVER_S1.42C_TO_NEXT.md",
