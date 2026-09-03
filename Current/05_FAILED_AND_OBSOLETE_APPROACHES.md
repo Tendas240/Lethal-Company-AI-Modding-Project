@@ -1,3 +1,13 @@
+## Permanent generalized patch-safety rule
+
+The S1.42R Baboon-Hawk failure is now generalized into a mandatory engineering policy:
+
+`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+
+Do not introduce project-local compatibility patches without first checking inheritance, base lifecycle, cleanup/state/network responsibilities, callers/downstream effects, and adjacent/reverse behavior. Do not disable complete foreign components merely to block one interaction. Compile/startup success is never sufficient acceptance; targeted runtime regression evidence is mandatory.
+
+Future patch-build plans must contain a `Patch Safety Review`. If that section is missing, the plan is incomplete.
+
 ## S1.42S correction — never disable BaboonBirdPikminEnemy
 
 **Do not disable the complete `LethalMin.BaboonBirdPikminEnemy` component.**
