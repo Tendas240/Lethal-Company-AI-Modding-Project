@@ -18,17 +18,18 @@ namespace S139CompatibilityFixes
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     [BepInDependency("299792458.EnemyScan")]
     [BepInDependency("MaxWasUnavailable.LethalModDataLib", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.elitemastereric.coroner", BepInDependency.DependencyFlags.SoftDependency)]
     public sealed class Plugin : BaseUnityPlugin
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.2";
+        public const string PluginVersion = "1.3.3";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
         internal static Plugin Instance;
 
-        private float _nextDiagnosticIsolationTick;
+        private SelectableLevel _lastDiagnosticIsolationLevel;
         private float _nextJetpackTargetTick;
 
         private void Awake()
@@ -52,6 +53,7 @@ namespace S139CompatibilityFixes
             PatchLethalModDataLibNullPluginGuard();
             PatchPufferSmokePikminEffectGuard();
             PatchDiagnosticEnemyIsolation();
+            PatchCoronerJetpackUpdateSpamGuard();
             PatchJetpackCapacityTarget();
             StartCoroutine(DelayedLethalMinPatches());
 
@@ -60,7 +62,7 @@ namespace S139CompatibilityFixes
                 "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, " +
                 "CodeRebirth kill-RPC Pikmin protection, the optional LethalModDataLib null-plugin guard, " +
                 "Puffer smoke Pikmin-effect guard, generic LethalMin grab/bite state recovery, " +
-                "the 140-second Jetpack target, and the optional isolated-enemy diagnostic are active.");
+                "Coroner Jetpack log-spam guard, the 140-second Jetpack target, and the optional isolated-enemy diagnostic are active.");
         }
 
         private IEnumerator DelayedLethalMinPatches()
@@ -81,19 +83,28 @@ namespace S139CompatibilityFixes
             }
 
             if (!DiagnosticEnemyIsolation.Enabled ||
-                Time.unscaledTime < _nextDiagnosticIsolationTick)
+                RoundManager.Instance == null ||
+                RoundManager.Instance.currentLevel == null)
                 return;
 
-            _nextDiagnosticIsolationTick = Time.unscaledTime + 1f;
+            SelectableLevel currentLevel = RoundManager.Instance.currentLevel;
 
-            // Do not mutate/scan Company/Gordion while the host lobby is sitting in orbit.
-            // S1.42E repeatedly tried to synthesize diagnostic spawn entries there once per
-            // second and caused visible periodic freezes.
+            // S1.42F proved that even after the Gordion constructor loop was fixed,
+            // doing a global EnemyAI scene scan once per second on a routed moon still
+            // matched the user's periodic freeze cadence. The diagnostic spawn pools only
+            // need to be rewritten when the SelectableLevel changes.
+            if (ReferenceEquals(currentLevel, _lastDiagnosticIsolationLevel))
+                return;
+
+            _lastDiagnosticIsolationLevel = currentLevel;
+
             if (!DiagnosticEnemyIsolation.ShouldRunForCurrentLevel())
                 return;
 
             DiagnosticEnemyIsolation.ApplyToCurrentLevel();
-            DiagnosticEnemyIsolation.RemoveEscapedLiveEnemies();
+
+            Plugin.Log.LogInfo(
+                "[EnemyIsolation] One-shot level isolation applied; continuous global EnemyAI scanning is disabled.");
         }
 
         private void PatchLethalMinGrabBiteStateRepair()
@@ -232,7 +243,64 @@ namespace S139CompatibilityFixes
             Logger.LogWarning(
                 "[EnemyIsolation] ISOLATED ENEMY TEST MODE ENABLED. Indoor allowlist: Crawler/Thumper + Puffer. " +
                 "Outdoor allowlist: Baboon Hawk. Pikmin-family entities remain allowed. " +
-                "All other enemy spawns are removed from in-memory level pools and escaped server spawns are despawned.");
+                "Spawn pools are rewritten once per level change; no continuous global EnemyAI scene scan is used.");
+        }
+
+        private void PatchCoronerJetpackUpdateSpamGuard()
+        {
+            MethodInfo jetpackUpdate = AccessTools.Method(typeof(JetpackItem), "Update");
+            if (jetpackUpdate == null)
+            {
+                Logger.LogWarning("[CoronerJetpackGuard] JetpackItem.Update was not found; Coroner spam guard not applied.");
+                return;
+            }
+
+            Patches patchInfo = Harmony.GetPatchInfo(jetpackUpdate);
+            if (patchInfo == null)
+            {
+                Logger.LogInfo("[CoronerJetpackGuard] JetpackItem.Update has no Harmony patches; nothing to remove.");
+                return;
+            }
+
+            MethodInfo[] coronerPatchMethods = patchInfo.Prefixes
+                .Concat(patchInfo.Postfixes)
+                .Where(p =>
+                    p != null &&
+                    p.PatchMethod != null &&
+                    p.PatchMethod.DeclaringType != null &&
+                    string.Equals(
+                        p.PatchMethod.DeclaringType.FullName,
+                        "Coroner.Patch.JetpackItemUpdatePatch",
+                        StringComparison.Ordinal))
+                .Select(p => p.PatchMethod)
+                .Distinct()
+                .ToArray();
+
+            if (coronerPatchMethods.Length == 0)
+            {
+                Logger.LogInfo("[CoronerJetpackGuard] Coroner JetpackItem.Update death hook was not present.");
+                return;
+            }
+
+            int removed = 0;
+            foreach (MethodInfo patchMethod in coronerPatchMethods)
+            {
+                try
+                {
+                    Harmony.Unpatch(jetpackUpdate, patchMethod);
+                    removed++;
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogWarning(
+                        $"[CoronerJetpackGuard] Failed to remove {patchMethod.Name}: {ex.GetType().Name}: {ex.Message}");
+                }
+            }
+
+            Logger.LogWarning(
+                $"[CoronerJetpackGuard] Removed {removed}/{coronerPatchMethods.Length} Coroner JetpackItem.Update patch method(s). " +
+                "Coroner remains enabled; only the per-frame Jetpack death detector is disabled to stop null-player log spam. " +
+                "Jetpack-specific death text may fall back to Coroner/vanilla generic cause reporting.");
         }
 
         private void PatchJetpackCapacityTarget()
