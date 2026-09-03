@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "Profiles/*.r2z"
+      - "References/LegacyProfiles/**/*.r2z"
       - "BuildSystem/index_profile.py"
       - ".github/workflows/profile-index.yml"
   workflow_dispatch:
@@ -37,13 +38,28 @@ jobs:
         run: |
           python - <<'PY'
           import subprocess
+          from pathlib import Path
+
           files = subprocess.check_output(
-              ["git", "diff", "--name-only", "HEAD^", "HEAD", "--", "Profiles"],
+              [
+                  "git", "diff", "--name-only", "HEAD^", "HEAD", "--",
+                  "Profiles", "References/LegacyProfiles",
+              ],
               text=True,
           ).splitlines()
           files = [path for path in files if path.lower().endswith(".r2z")]
+
+          # A workflow/indexer change may happen after a legacy reference profile
+          # was uploaded. In that case, index all retained legacy references so
+          # they become machine-readable without requiring a second binary commit.
           if not files:
-              print("No changed .r2z profiles in this commit.")
+              files = sorted(
+                  str(path)
+                  for path in Path("References/LegacyProfiles").glob("**/*.r2z")
+              )
+
+          if not files:
+              print("No .r2z profiles require indexing.")
           else:
               print("Indexing:", files)
               subprocess.run(["python", "BuildSystem/index_profile.py", *files], check=True)
