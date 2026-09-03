@@ -1,0 +1,6 @@
+SHA256SUMS — S1.42G
+
+09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a  Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z
+39690bf06dd6876e42badeb80f69bd8448fdbfeecd888fab0105951c38812436  ProfileSources/S1.42G/BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+e664c8e7702f0fda4bf23b70c3de4eaf06cef1edab6fe61ec71e39f183aa7bf6  ProfileSources/S1.42G/export.r2x
+1881cd9474cbfe9161cf6e612f743c797f6cac2185e192eacee920990819767f  RuntimeEvidence/S1.42F/20260903T092728Z/raw/LogOutput.log
