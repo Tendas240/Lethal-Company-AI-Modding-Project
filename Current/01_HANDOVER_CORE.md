@@ -2,6 +2,10 @@
 
 ## Current identity
 
+Canonical detailed handover:
+`Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md`
+
+
 Game:
 **Lethal Company V81**
 
