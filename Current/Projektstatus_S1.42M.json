@@ -124,6 +124,10 @@
     "open_issues": "Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md",
     "verification": "Current/VERIFIKATION_S1.42M.txt",
     "hashes": "Current/SHA256SUMS_S1.42M.txt",
-    "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42M.txt"
+    "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42M.txt",
+    "repository_handover_audit": "Current/49_REPOSITORY_HANDOVER_AUDIT_S1.42M.md",
+    "active_modlist": "Current/Aktive_Modliste_S1.42M.txt",
+    "file_inventory": "Current/DATEIINVENTAR_S1.42M.txt",
+    "compact_handover_readme": "Current/README_Handover_S1.42M.txt"
   }
 }
