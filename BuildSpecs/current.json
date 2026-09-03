@@ -1,53 +1,15 @@
 {
-  "enabled": true,
-  "build_id": "S1.42K",
-  "base_profile": "Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z",
-  "base_sha256": "736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7",
-  "output_profile": "Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z",
-  "profile_name": "LC V1 S1.42K Thumper Pikmin Attack Restore",
+  "enabled": false,
+  "build_id": "IDLE_AFTER_S1.42K_BUILD_AWAITING_RUNTIME",
+  "base_profile": "Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z",
+  "base_sha256": "bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2",
+  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
+  "profile_name": "DO_NOT_BUILD",
   "overwrite": false,
-  "mod_state_changes": [
-    {
-      "name": "SoftDiamond-BrutalCompanyMinusExtraReborn",
-      "version": "1.71.0",
-      "enabled": false
-    }
-  ],
+  "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "config_patches": [
-    {
-      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
-      "section": "Pikmin Behavior",
-      "key": "Attack Blacklist",
-      "value": "Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy,Baboon hawk"
-    }
-  ],
+  "config_patches": [],
   "local_plugin_builds": [],
-  "text_assertions": [
-    {
-      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
-      "contains": "Attack Blacklist = Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy,Baboon hawk"
-    },
-    {
-      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
-      "not_contains": "Leaf boy,Crawler,Baboon hawk"
-    },
-    {
-      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
-      "contains": "Puffer Can Poison Pikmin = false"
-    },
-    {
-      "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
-      "contains": "Isolated Enemy Regression = true"
-    },
-    {
-      "path": "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
-      "contains": "Reduce Battery = false"
-    },
-    {
-      "path": "BepInEx/config/butterystancakes.lethalcompany.jetpackfixes.cfg",
-      "contains": "MidAirExplosions = Off"
-    }
-  ]
+  "text_assertions": []
 }
