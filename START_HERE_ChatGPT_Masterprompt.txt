@@ -9,19 +9,20 @@ CURRENT CANONICAL TAKEOVER POINTER — 2026-09-03
 ======================================================================
 
 For the current project state, read immediately after this master prompt:
-1. Current/34_HANDOVER_S1.42J_TO_NEXT.md
-2. Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md
-3. Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md
-4. Current/00_CURRENT_STATE.md
-5. Current/01_HANDOVER_CORE.md
-6. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-7. Current/Projektstatus_S1.42J.json
-8. Current/VERIFIKATION_S1.42J.txt
-9. Current/SHA256SUMS_S1.42J.txt
-10. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-11. BuildSpecs/current.json
-12. RuntimeInbox/ACTIVE_BUILD.txt
-13. Current/NEXT_CHAT_START_PROMPT_S1.42J.txt
+1. Current/36_HANDOVER_S1.42J_TO_NEXT.md
+2. Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
+3. Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md
+4. Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md
+5. Current/00_CURRENT_STATE.md
+6. Current/01_HANDOVER_CORE.md
+7. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+8. Current/Projektstatus_S1.42J.json
+9. Current/VERIFIKATION_S1.42J.txt
+10. Current/SHA256SUMS_S1.42J.txt
+11. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+12. BuildSpecs/current.json
+13. RuntimeInbox/ACTIVE_BUILD.txt
+14. Current/NEXT_CHAT_START_PROMPT_S1.42J.txt
 
 Last fully accepted gameplay baseline:
 S1.41
@@ -49,6 +50,10 @@ Puffer -> Pikmin is accepted from S1.42H evidence.
 Direct Thumper/Crawler <-> Pikmin runtime validation is still pending.
 BCMER 1.71.0 remains disabled inside S1.42J for the isolated enemy regression stage.
 After this isolated gate passes, restore normal enemies from Current/ENEMY_SPAWN_BASELINE_S1.42C.json and re-enable exact BCMER 1.71.0.
+
+Pending repository-maintenance task:
+Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
+The repository optimization is recommended, but do not perform the structural migration before the active critical runtime/build gate is evaluated and its resulting state is documented. A future chat must re-check the then-current state before starting the migration.
 
 
 WICHTIG:
