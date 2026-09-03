@@ -1,108 +1,102 @@
-> **S1.42S GATE CLOSED — PASS:** The Baboon-Hawk/Pikmin isolated regression is resolved. Runtime evidence: `RuntimeEvidence/S1.42S/20260903T205550Z/`. No focused attacker continued hitting after Hawk death; all three were recoverable; corpse carry to Onion passed; Work/no-task and Leader-null counts are zero. See `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`. **Next active task:** remove/disable EnemyIsolation and restore normal enemy-related configuration from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`, preserving later accepted fixes. BCMER must remain exact 1.71.0 whenever reintroduced.
+# 04 — Open Issues and Next Tests
 
-> **S1.42S ACTIVE GATE:** Import `Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z` via Gale **Advanced options -> Import all files**. Latch at least 3 Pikmin onto one Baboon Hawk, kill it, verify all fall off/stop attacking and exact follower count recovers. Also verify Hawk -> Pikmin bite/grab remains blocked and Dead Baboon Hawk carry remains normal. S1.42R is failed and superseded. See Current/66 and Current/67.
+## Active next task — S1.42T Normal Enemy Restore
 
-# 04 - Open Issues and Next Tests
+S1.42S focused Baboon-Hawk/Pikmin gate is **closed / PASS**.
 
-## Immediate active gate — S1.42R
+Evidence:
 
-Final handover:
-`Current/64_HANDOVER_S1.42R_TO_NEXT_FINAL.md`
+`RuntimeEvidence/S1.42S/20260903T205550Z/`
 
-Repository audit:
-`Current/65_REPOSITORY_HANDOVER_AUDIT_S1.42R.md`
+Log SHA-256:
 
-Profile:
-`Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z`
+`9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea`
 
-SHA-256:
-`009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101`
+Next plan:
 
-Compatibility plugin:
-**v1.3.13**
+`BuildSpecs/S1.42T_PLAN.md`
 
-Root cause:
-`Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
+Restore contract:
 
-Exact upstream decompile:
-`Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
+`Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md`
 
-## S1.42Q confirmed failure
+### Required S1.42T delta
 
-First Baboon Hawk had three attackers:
-- `Yellow Pikmin_ruCpzY`
-- `Yellow Pikmin_PerDu`
-- `Yellow Pikmin_hcRGph`
+Set:
 
-Only `hcRGph` got native `Task finished`.
+`Isolated Enemy Regression = false`
 
-`ruCpzY` and `PerDu` stayed on the first dead Hawk with no task transition.
+Do not change the compatibility code.
 
-The second Hawk did not lose its correctly transitioned attacker.
+Preserve:
 
-## Exact upstream defect
+- v1.3.14 compatibility plugin;
+- `Thumper Bite Limit = 3`;
+- Crawler absent from Attack Blacklist;
+- all accepted S1.42S interaction fixes.
 
-LethalMin 1.1.108 `AttackEnemyTask.IntervaledUpdate()` checks:
+Keep exact BCMER 1.71.0 **disabled** for this first restore gate.
 
-`if (CurrentIntention != Attack || IsPikminOnEnemy) return;`
+### S1.42T runtime acceptance
 
-before it checks:
+- EnemyIsolation warning absent.
+- Normal non-allowlisted enemies can spawn again.
+- Terminal EnemyScan can show normal active enemies.
+- No startup crash/freeze.
+- No Work/no-task loop.
+- No Leader-null loop.
+- No new exception flood.
+- Commit full fresh `LogOutput.log` to `RuntimeInbox/Current/`.
 
-`enemy.enemyScript.isEnemyDead`
+## Following gate — BCMER restoration
 
-and calls:
+After S1.42T passes:
 
-`FinishTaskServerRpc()`.
+Re-enable **exact**:
 
-So a still-latched co-attacker is structurally prevented from reaching the native dead-target completion code.
+`SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`
 
-## S1.42R
+Use the accepted S1.41 BCMER config/ownership/rain-event decisions.
 
-One narrow prefix on the exact `AttackEnemyTask.IntervaledUpdate()`:
+Do not upgrade to BCMER 2.0.0.
 
-If this exact task is latched to its own dead target:
-- request native `PikminAI.FinishTaskServerRpc()`;
-- skip the broken upstream interval for that tick.
+Keep BCMER restoration separate from the first normal-enemy restore gate.
 
-No:
-- death hook
-- scan
-- radius
-- name matching
-- direct state mutation
-- custom unlatch/carry
+## Monitor-only issue
 
-## Runtime test
+LethalMin disconnect-only exception:
 
-1. Import with Gale **Advanced options -> Import all files**.
-2. Record follower count.
-3. Put at least 3 Pikmin onto the same Baboon Hawk.
-4. Kill the Hawk.
-5. Verify every attacker immediately stops.
-6. Verify `[LethalMinLatchedDeathGuard] Requested native FinishTaskServerRpc` for co-attackers.
-7. Verify native `Task finished` for those Pikmin.
-8. Whistle all Pikmin back and verify exact count.
-9. Repeat on a second Hawk.
-10. Verify Dead Hawk body remains normally carryable to Onion.
-11. Verify living Hawk still ignores corpse/Pikmin.
-12. Verify no `Work state with no task assigned!`.
-13. Verify no `Leader is null when following`.
-14. Commit full fresh log to `RuntimeInbox/Current/`.
+`PikminNoticeZone.OnTriggerStay -> NetworkObjectReference can only be created from spawned NetworkObjects`
 
-## Temporary state
+Observed once during lobby disconnect after ShipOnion save.
 
-EnemyIsolation:
-**enabled**
+No user-facing regression.
 
-BCMER 1.71.0:
-**disabled**
+Status:
 
-## Controllers
+**monitor only**
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42R`
+Do not patch unless reproducible/user-facing and supported by a Patch Safety Review.
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42R_BUILD_AWAITING_RUNTIME`
+## Remaining broader S1.42 roadmap
 
-Do not restore normal enemies or BCMER until R passes.
+Still pending after enemy/BCMER restoration:
 
-There is currently no S1.42R runtime evidence. The next action is the runtime test itself, not another build.
+- final normal-stack runtime acceptance;
+- equal-interior probability tuning;
+- CullFactory exceptions for `junkrooms` and `shatteredrooms`;
+- Mausoleum fog reduction;
+- BCMER fixed 12.5% x8 EventType distribution;
+- final S1.42 acceptance.
+
+See:
+
+`Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+
+## Repository maintenance
+
+Structural repository optimization remains planned in:
+
+`Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+
+Do not mix migration work into S1.42T gameplay restoration.
