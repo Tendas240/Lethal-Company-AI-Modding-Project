@@ -5,15 +5,15 @@ Repository:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
 ======================================================================
-CURRENT CANONICAL TAKEOVER POINTER - 2026-09-03 - S1.42O
+CURRENT CANONICAL TAKEOVER POINTER - 2026-09-03 - S1.42P
 ======================================================================
 
 Repository is the source of truth.
 
 Read immediately after this master prompt:
-1. Current/Projektstatus_S1.42O.json
-2. Current/52_S1.42N_NATIVE_TASK_FINALIZATION_ANALYSIS.md
-3. Current/53_S1.42O_BABOON_HAWK_NATIVE_TASK_FINALIZATION_BUILD.md
+1. Current/Projektstatus_S1.42P.json
+2. Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md
+3. Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md
 4. Current/00_CURRENT_STATE.md
 5. Current/01_HANDOVER_CORE.md
 6. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
@@ -31,62 +31,56 @@ SHA-256:
 d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b
 
 Latest valid runtime evidence:
-S1.42N
-RuntimeEvidence/S1.42N/20260903T165818Z/
+S1.42O
+RuntimeEvidence/S1.42O/20260903T171220Z/
 Log SHA-256:
-8ed6a79230e28535a01a4cb86a8971c358a5c9f57a53722e18ff4342474f51cf
+1a1251f19a1d82e90b72e82ac8e4babd523c32e695fe3d7923d4590debb0be71
 
-S1.42N proved:
-- the one-shot SpawnedEnemies resolver selects real Hawk attackers;
-- 6/6 attack participants were selected;
-- the corpse still reached the Onion;
-- Leader is null when following = 0.
-
-S1.42N failed because direct PikminAI.RemoveCurrentTask() left five selected attackers in Work state with no task.
-The log contains 2155 Work state with no task assigned warnings.
-One affected Pikmin continued stale hit-loop output.
-This matches the user's observation of approximately 4–5 Pikmin running in place, not following and unusable.
-
-Healthy control PerDu naturally ran:
-Task finished -> Setting to idle -> Removing current task
-and later accepted a valid CarryItem task.
+S1.42O result:
+- user observed 8 Pikmin disappearing after Baboon Hawk death;
+- attempted PikminAI.TaskFinished() does not exist;
+- no low-level RemoveCurrentTask fallback ran;
+- runtime reflection identifies exact PikminAI.FinishTask():Void;
+- the eight attackers continued hit-loop output after Hawk death and beyond corpse creation.
 
 Current built candidate awaiting runtime:
-S1.42O - Baboon Hawk Native Task Finalization
-Profiles/LC V1 S1.42O Baboon Hawk Native Task Finalization.r2z
+S1.42P - Baboon Hawk Exact FinishTask Recovery
+Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z
 SHA-256:
-04d7e0df7f7a3b51d75832e9052c3e217ec07f91526c767323e1b5b0a3078d4d
+11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5
 
 Compatibility plugin:
-v1.3.10
+v1.3.11
 
-S1.42O:
-- keeps the validated 4.0m one-shot SpawnedEnemies resolver;
-- keeps the passing corpse guard;
-- replaces direct RemoveCurrentTask with exact declared zero-argument LethalMin.PikminAI.TaskFinished();
-- validates exact declaring type, void return, zero parameters and method body;
-- uses no low-level RemoveCurrentTask fallback.
+S1.42P:
+- keeps one-shot SpawnedEnemies resolver;
+- keeps 4.0m death zone;
+- keeps passing corpse guard;
+- resolves and invokes exact runtime-confirmed LethalMin.PikminAI.FinishTask();
+- validates exact declaring type / void / zero parameters / method body;
+- uses no RemoveCurrentTask fallback.
 
 Required result:
-- attackers become responsive/recoverable after Hawk death;
-- no sustained Work state with no task assigned loop;
-- no stale dead-Hawk hit loop;
-- affected Pikmin can be regained and follow again;
+- exact FinishTask resolves;
+- attackers stop dead-Hawk hit loop;
+- affected Pikmin remain visible/responsive;
+- affected Pikmin can be whistled/regained and follow/reuse;
+- following count recovers;
 - corpse behavior remains intact;
 - living Hawks ignore corpse;
 - Hawk -> Pikmin ignore remains intact;
 - no leader-null loop.
 
-Do not build a successor first unless S1.42O cannot start.
+Do not build a successor first unless S1.42P cannot start.
 Do not restore normal enemies or BCMER first.
 EnemyIsolation remains enabled.
 Exact BCMER 1.71.0 remains disabled.
 
 Current runtime router:
-RuntimeInbox/ACTIVE_BUILD.txt = S1.42O
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42P
 
 Current build controller:
-BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42O_BUILD_AWAITING_RUNTIME
+BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_BUILD_AWAITING_RUNTIME
 
 Deferred non-functional drift remains deferred until the runtime gate closes.
 
