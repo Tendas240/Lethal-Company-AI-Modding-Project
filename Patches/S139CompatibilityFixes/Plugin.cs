@@ -22,7 +22,7 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.9";
+        public const string PluginVersion = "1.3.10";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
@@ -266,7 +266,7 @@ namespace S139CompatibilityFixes
 
             Logger.LogInfo(
                 "[BaboonHawkDeathCleanup] Patched exact declared BaboonBirdAI.KillEnemy(bool). " +
-                "Death cleanup uses a one-shot RoundManager.SpawnedEnemies Pikmin registry pass; no continuous scene scan is used.");
+                "Death cleanup uses a one-shot RoundManager.SpawnedEnemies Pikmin registry pass plus native PikminAI.TaskFinished(); no continuous scene scan is used.");
         }
 
         private void PatchBaboonHawkCorpseProtection()
@@ -1228,7 +1228,7 @@ namespace S139CompatibilityFixes
     internal static class BaboonHawkDeathCleanup
     {
         private static Type PikminAiType;
-        private static MethodInfo RemoveCurrentTaskMethod;
+        private static MethodInfo TaskFinishedMethod;
 
         internal static void InitializeLethalMinUnlatch()
         {
@@ -1237,26 +1237,28 @@ namespace S139CompatibilityFixes
             {
                 Plugin.Log.LogError(
                     "[BaboonHawkDeathCleanup] LethalMin.PikminAI was not found. " +
-                    "Death-unlatch cleanup is NOT active.");
+                    "Death-task finalization is NOT active.");
                 return;
             }
 
-            RemoveCurrentTaskMethod = AccessTools.Method(
+            TaskFinishedMethod = AccessTools.Method(
                 PikminAiType,
-                "RemoveCurrentTask",
+                "TaskFinished",
                 Type.EmptyTypes);
 
-            if (RemoveCurrentTaskMethod == null ||
-                RemoveCurrentTaskMethod.DeclaringType != PikminAiType ||
-                RemoveCurrentTaskMethod.ReturnType != typeof(void) ||
-                RemoveCurrentTaskMethod.GetParameters().Length != 0 ||
-                RemoveCurrentTaskMethod.GetMethodBody() == null)
+            if (TaskFinishedMethod == null ||
+                TaskFinishedMethod.DeclaringType != PikminAiType ||
+                TaskFinishedMethod.ReturnType != typeof(void) ||
+                TaskFinishedMethod.GetParameters().Length != 0 ||
+                TaskFinishedMethod.GetMethodBody() == null)
             {
-                RemoveCurrentTaskMethod = null;
+                TaskFinishedMethod = null;
                 string[] candidates = PikminAiType
                     .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
                     .Where(m =>
                         m.Name.IndexOf("Task", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        m.Name.IndexOf("Finish", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        m.Name.IndexOf("Idle", StringComparison.OrdinalIgnoreCase) >= 0 ||
                         m.Name.IndexOf("Latch", StringComparison.OrdinalIgnoreCase) >= 0)
                     .Select(m => m.Name + "(" + string.Join(",", m.GetParameters().Select(p => p.ParameterType.Name)) + "):" + m.ReturnType.Name)
                     .Distinct()
@@ -1264,14 +1266,14 @@ namespace S139CompatibilityFixes
                     .ToArray();
 
                 Plugin.Log.LogError(
-                    "[BaboonHawkDeathCleanup] Exact declared LethalMin.PikminAI.RemoveCurrentTask() was not found. " +
-                    $"Death-unlatch cleanup is NOT active. Task/latch candidates=[{string.Join(", ", candidates)}].");
+                    "[BaboonHawkDeathCleanup] Exact declared LethalMin.PikminAI.TaskFinished() was not found. " +
+                    $"No low-level RemoveCurrentTask fallback will be used. Task/finish/idle candidates=[{string.Join(", ", candidates)}].");
                 return;
             }
 
             Plugin.Log.LogInfo(
-                "[BaboonHawkDeathCleanup] Resolved exact declared LethalMin.PikminAI.RemoveCurrentTask() " +
-                "for Baboon-Hawk death unlatching.");
+                "[BaboonHawkDeathCleanup] Resolved exact declared LethalMin.PikminAI.TaskFinished() " +
+                "for native Baboon-Hawk death task finalization.");
         }
 
         public static void KillEnemyPostfix(BaboonBirdAI __instance, bool destroy)
@@ -1288,7 +1290,7 @@ namespace S139CompatibilityFixes
         {
             yield return null;
 
-            if (baboon == null || PikminAiType == null || RemoveCurrentTaskMethod == null)
+            if (baboon == null || PikminAiType == null || TaskFinishedMethod == null)
                 yield break;
 
             if (RoundManager.Instance == null || RoundManager.Instance.SpawnedEnemies == null)
@@ -1331,24 +1333,24 @@ namespace S139CompatibilityFixes
 
                 try
                 {
-                    RemoveCurrentTaskMethod.Invoke(enemy, null);
+                    TaskFinishedMethod.Invoke(enemy, null);
                     released++;
 
                     Plugin.Log.LogInfo(
-                        $"[BaboonHawkDeathCleanup] Released {enemy.gameObject.name} from dying Hawk task; " +
+                        $"[BaboonHawkDeathCleanup] Native TaskFinished finalized {enemy.gameObject.name} at dying Hawk; " +
                         $"distance={distance:F2}m; underHawk={underDyingHawk}.");
                 }
                 catch (TargetInvocationException ex)
                 {
                     Exception inner = ex.InnerException ?? ex;
                     Plugin.Log.LogWarning(
-                        $"[BaboonHawkDeathCleanup] RemoveCurrentTask failed for {enemy.gameObject.name}: " +
+                        $"[BaboonHawkDeathCleanup] TaskFinished failed for {enemy.gameObject.name}: " +
                         $"{inner.GetType().Name}: {inner.Message}");
                 }
                 catch (Exception ex)
                 {
                     Plugin.Log.LogWarning(
-                        $"[BaboonHawkDeathCleanup] RemoveCurrentTask failed for {enemy.gameObject.name}: " +
+                        $"[BaboonHawkDeathCleanup] TaskFinished failed for {enemy.gameObject.name}: " +
                         $"{ex.GetType().Name}: {ex.Message}");
                 }
             }
@@ -1361,7 +1363,7 @@ namespace S139CompatibilityFixes
             }
 
             Plugin.Log.LogInfo(
-                $"[BaboonHawkDeathCleanup] Dying {baboon.gameObject.name}: released {released}/{inReleaseZone} " +
+                $"[BaboonHawkDeathCleanup] Dying {baboon.gameObject.name}: native-finalized {released}/{inReleaseZone} " +
                 $"Pikmin in {DeathReleaseRadius:F1}m death-release zone; total Pikmin registry candidates={pikminCandidates}. " +
                 "One-shot death event only; no Update-driven scan.");
         }
