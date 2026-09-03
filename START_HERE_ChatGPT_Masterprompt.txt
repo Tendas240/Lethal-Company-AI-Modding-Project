@@ -1,5 +1,48 @@
 ## CURRENT CANONICAL OVERRIDE — S1.42K — 2026-09-03
 
+## CURRENT CANONICAL OVERRIDE — S1.42L — 2026-09-03
+
+This section supersedes the S1.42K current-gate override below.
+
+Latest valid runtime evidence:
+**S1.42J**
+`RuntimeEvidence/S1.42J/20260903T145657Z/`
+Log SHA-256: `a8ce035bf64fa5b704e18c588215f43cd1fd184eef4f467dfbafa6fcb1379963`
+
+S1.42K was built successfully but never runtime-tested and is superseded.
+
+Current candidate:
+**S1.42L — Pikmin Counterattack Restore**
+`Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z`
+SHA-256: `fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722`
+
+Binding interaction rules:
+- Baboon Hawk -> Pikmin: no target/chase/bite/grab/hold;
+- Pikmin -> Baboon Hawk: normal LethalMin attack/latch allowed;
+- Thumper/Crawler -> Pikmin: no functional GrabPikmin/leader-removal/death-timer effect;
+- Pikmin -> Thumper/Crawler: normal LethalMin attack/latch allowed;
+- Puffer -> Pikmin: no effect.
+
+S1.42L Attack Blacklist exactly matches the modern S1.40B/S1.41 baseline:
+`Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy`
+
+Thus neither `Crawler` nor `Baboon hawk` remains blacklisted.
+
+Exact next action:
+**runtime-test S1.42L** by throwing Pikmin onto both a Thumper/Crawler and a Baboon Hawk while confirming the enemy-side guards still prevent the old broken Pikmin grabbed-state behavior.
+
+Runtime route:
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42L`
+
+Build controller:
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME`
+
+Canonical handover:
+`Current/42_HANDOVER_S1.42L_TO_NEXT.md`
+
+Do not restore normal enemies/BCMER and do not start the repository migration before S1.42L is evaluated.
+
+
 This section is chronologically newer than the S1.42J handover/history below.
 
 Latest valid runtime evidence:
