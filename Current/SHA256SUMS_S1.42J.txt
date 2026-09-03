@@ -1,0 +1,9 @@
+SHA256SUMS — S1.42J
+
+736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7  Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z
+7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2  ProfileSources/S1.42J/BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+f7b2698171d9d6a7b6c2e7b415ff2cb2c63459fb267ff0807ebe0f4bcf3e0bd3  ProfileSources/S1.42J/BepInEx/config/NoteBoxz.LethalMin.cfg
+89e03afcf1bc9b3390969f83709ad04dca865743de6249af0dde642d0e3e6fe5  ProfileSources/S1.42J/export.r2x
+
+LATEST VALID RUNTIME EVIDENCE:
+81ed064ce97d25f250d6fba1585055baef8ce801cd0f13626d074bf4fef71029  RuntimeEvidence/S1.42H/20260903T125734Z/raw/LogOutput.log
