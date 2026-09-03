@@ -96,19 +96,21 @@ Profiles containing the project-local DLL must be imported with Gale:
 ## ChatGPT - read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/00_CURRENT_STATE.md`
+2. `Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md`
 3. `Current/Projektstatus_S1.42M.json`
-4. `Current/46_S1.42M_BABOON_HAWK_DEATH_CLEANUP_BUILD.md`
-5. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-6. `Current/01_HANDOVER_CORE.md`
-7. `Current/VERIFIKATION_S1.42M.txt`
-8. `Current/SHA256SUMS_S1.42M.txt`
-9. `Current/45_HANDOVER_S1.42L_TO_NEXT_FINAL.md` for predecessor context
-10. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-11. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-12. `BuildSpecs/current.json`
-13. `RuntimeInbox/ACTIVE_BUILD.txt`
-14. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+4. `Current/47_S1.42L_BABOON_ATTACK_PASS_DEATH_REGRESSION_ANALYSIS.md`
+5. `Current/46_S1.42M_BABOON_HAWK_DEATH_CLEANUP_BUILD.md`
+6. `Current/00_CURRENT_STATE.md`
+7. `Current/01_HANDOVER_CORE.md`
+8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+9. `Current/VERIFIKATION_S1.42M.txt`
+10. `Current/SHA256SUMS_S1.42M.txt`
+11. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+12. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+13. `BuildSpecs/current.json`
+14. `RuntimeInbox/ACTIVE_BUILD.txt`
+15. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+16. `Current/NEXT_CHAT_START_PROMPT_S1.42M.txt`
 
 ## Critical persistent rules
 
