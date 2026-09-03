@@ -1,5 +1,60 @@
 # 00 — Current State
 
+## Latest update — S1.42H runtime -> S1.42I
+
+Valid S1.42H evidence:
+`RuntimeEvidence/S1.42H/20260903T125734Z/`
+
+Log SHA-256:
+`81ed064ce97d25f250d6fba1585055baef8ce801cd0f13626d074bf4fef71029`
+
+Confirmed:
+- exact S1.42H common GrabPikmin hook loaded once; startup safe;
+- isolated enemy spawning works;
+- Puffer -> Pikmin smoke protection passes;
+- in-game `Enemies` output works per user observation;
+- Baboon Hawk + invincible Pikmin still fails: 64 bite calls, 59 grabbed/death-timer states, 56 repairs, 193 leader-null errors; enemy-side hold/re-grab persists;
+- Crawler spawned but direct Thumper/Pikmin contact was not validated;
+- Coroner Jetpack `PlayerController was null` remains at 0;
+- DoorAudit remained normal.
+
+Latest built candidate:
+
+**S1.42I**
+
+`Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z`
+
+SHA-256:
+`c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97`
+
+Compatibility plugin:
+**v1.3.6**
+
+DLL SHA-256:
+`76544a536f5c626f0c81b50dc06a7bf1521c265cd23a7698917789e3846eecb2`
+
+S1.42I:
+- keeps the exact one-time `LethalMin.PikminAI.GrabPikmin(Transform,float,int)` hook;
+- blocks Baboon Hawk -> invincible Pikmin GrabPikmin before hold/leader/death-timer mutation;
+- does not globally blacklist Baboon Hawks or mortal-Pikmin behavior;
+- keeps Thumper/Crawler zero-interaction and Puffer smoke guards unchanged;
+- keeps EnemyIsolation enabled and BCMER 1.71.0 disabled for this isolated gate.
+
+Status:
+**built successfully; awaiting runtime validation.**
+
+Runtime route:
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42I`
+
+Build controller:
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42I_BUILD_AWAITING_RUNTIME`
+
+Canonical analysis:
+`Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md`
+
+Do not build S1.42J before S1.42I runtime evidence is evaluated.
+
+
 ## Latest update — S1.42G BCMER-off retest -> S1.42H
 
 Valid clean evidence:
