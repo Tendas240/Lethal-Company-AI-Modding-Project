@@ -1,64 +1,80 @@
 # 04 - Open Issues and Next Tests
 
-## Immediate active gate — S1.42O native Pikmin task finalization
+## Immediate active gate — S1.42P exact FinishTask recovery
 
 Analysis:
-`Current/52_S1.42N_NATIVE_TASK_FINALIZATION_ANALYSIS.md`
+`Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md`
 
 Build:
-`Current/53_S1.42O_BABOON_HAWK_NATIVE_TASK_FINALIZATION_BUILD.md`
+`Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md`
 
 Profile:
-`Profiles/LC V1 S1.42O Baboon Hawk Native Task Finalization.r2z`
+`Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z`
 
 SHA-256:
-`04d7e0df7f7a3b51d75832e9052c3e217ec07f91526c767323e1b5b0a3078d4d`
+`11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5`
 
 Compatibility plugin:
-**v1.3.10**
+**v1.3.11**
 
-## Why S1.42O exists
+## S1.42O failure
 
-S1.42N successfully found 6/6 actual Hawk attackers, but direct `RemoveCurrentTask()` caused a lifecycle break.
+Evidence:
+`RuntimeEvidence/S1.42O/20260903T171220Z/`
 
-Five selected Pikmin repeatedly logged:
-`Work state with no task assigned!`
+Log SHA-256:
+`1a1251f19a1d82e90b72e82ac8e4babd523c32e695fe3d7923d4590debb0be71`
 
-Total:
-**2155 warnings**
+User observed:
+**8 Pikmin disappeared after Hawk death.**
 
-User observed approximately 4–5 Pikmin running in place, no longer following, non-responsive and effectively unusable.
+Reason:
+S1.42O attempted exact `PikminAI.TaskFinished()`, but the runtime type has no such method. Cleanup was therefore inactive.
 
-The healthy control Pikmin ran LethalMin's own:
-`Task finished -> Setting to idle -> Removing current task`
+The runtime candidate list reveals:
+`PikminAI.FinishTask():Void`
 
-Therefore S1.42O invokes exact `PikminAI.TaskFinished()` instead of direct `RemoveCurrentTask()`.
+Eight attackers continued hitting the dead Hawk beyond the SellBodies body-spawn point.
 
-## Exact S1.42O test
+## S1.42P change
+
+Use exact runtime-confirmed:
+`PikminAI.FinishTask()`
+
+Keep:
+- one-shot SpawnedEnemies resolver;
+- 4.0 m selection;
+- corpse guard;
+- EnemyIsolation;
+- BCMER disabled.
+
+No RemoveCurrentTask fallback.
+
+## Exact S1.42P test
 
 Use:
 **Gale -> Advanced options -> Import all files**
 
-1. record approximate following Pikmin count;
-2. throw several Pikmin onto a living Baboon Hawk;
+1. record following count;
+2. throw several Pikmin onto living Hawk;
 3. let them kill it;
-4. immediately inspect the attackers;
-5. they must not remain running in place or become permanently unresponsive;
-6. whistle/regain them and verify they can follow and be reused;
-7. compare following count with pre-fight count;
-8. wait for corpse;
-9. verify corpse still travels to Onion;
-10. verify living Hawk does not pick up corpse;
+4. attackers must stop dead-target hit activity;
+5. affected Pikmin must remain visible and responsive;
+6. whistle/regain them;
+7. verify they follow and can be reused;
+8. compare following count;
+9. verify corpse still reaches Onion;
+10. verify living Hawks ignore corpse;
 11. verify Hawk -> Pikmin ignore;
 12. verify no leader-null loop;
-13. commit full fresh log to `RuntimeInbox/Current/`.
+13. commit complete fresh log to `RuntimeInbox/Current/`.
 
 Expected log:
-- exact `PikminAI.TaskFinished()` resolution marker;
-- one or more `Native TaskFinished finalized ...` markers;
-- non-zero aggregate native-finalized count;
-- no sustained `Work state with no task assigned!` loop for finalized attackers;
-- no sustained dead-Hawk hit loop.
+- `Resolved exact declared LethalMin.PikminAI.FinishTask()`;
+- one or more `Native FinishTask finalized ...`;
+- non-zero `native-finished X/X`;
+- no sustained no-task Work loop;
+- no sustained hit loop after Hawk death.
 
 ## Temporary state
 
@@ -71,30 +87,12 @@ BCMER exact 1.71.0:
 Restore baseline:
 `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
-Do not restore normal enemies or BCMER before this gate passes.
-
 ## After PASS
 
-Then:
-1. disable EnemyIsolation;
-2. restore normal enemy configuration exactly from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
-3. re-enable exact BCMER 1.71.0;
-4. preserve all accepted asymmetric interaction/corpse rules;
-5. runtime-test restored normal gameplay;
-6. monitor historical BCMER Door System ERROR / ship-door behavior;
-7. only after that perform deferred repository cleanup/optimization.
-
-## Lower-priority pending
-
-- CodeRebirth Functional Microwaves somewhat rarer;
-- equal effective interior selection probability where safe;
-- CullFactory exact IDs `junkrooms` and `shatteredrooms`;
-- MelanieMausoleum fog reduction;
-- Shatteredrooms Experimentation/Embrion safety block stays until understood;
-- monitor Mineshaft elevator/Pikmin crowding.
+Then restore exact normal enemy config and exact BCMER 1.71.0, followed by a normal-state runtime test.
 
 ## Controllers
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42O`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42P`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42O_BUILD_AWAITING_RUNTIME`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_BUILD_AWAITING_RUNTIME`
