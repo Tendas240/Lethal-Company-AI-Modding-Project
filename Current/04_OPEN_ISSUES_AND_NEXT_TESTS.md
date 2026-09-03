@@ -1,77 +1,70 @@
 # 04 - Open Issues and Next Tests
 
-## Immediate active gate — S1.42Q minimal LethalMin-native rollback
-
-Design:
-`Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md`
-
-Build:
-`Current/60_S1.42Q_MINIMAL_NATIVE_ROLLBACK_BUILD.md`
+## Active runtime gate — S1.42R
 
 Profile:
-`Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z`
+`Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z`
 
 SHA-256:
-`50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1`
+`009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101`
 
-Compatibility plugin:
-**v1.3.12**
+Plugin:
+**v1.3.13**
 
-## What changed
+## Confirmed S1.42Q failure
 
-Normal LethalMin combat/death/carry ownership is restored.
+S1.42Q proved that native LethalMin 1.1.108 has a specific `AttackEnemyTask` bug.
 
-Removed:
-- BaboonHawkDeathCleanup
-- project-local FinishTask death handling
-- 4.0m death scan
-- delayed post-grab recovery
-- reflected leader/follow/grab restoration
+Three Pikmin attacked the first Hawk:
+- ruCpzY
+- PerDu
+- hcRGph
 
-Kept:
-- minimal pre-mutation Enemy -> Pikmin GrabPikmin prevention for proven Crawler/Thumper and Hawk gaps
-- one-way Hawk -> Pikmin adapter/bite protection
-- Puffer effect guard
-- CodeRebirth utility-kill guard
-- Dead Hawk corpse guard
+hcRGph reached native `Task finished` and remained usable.
 
-Config:
-`Thumper Bite Limit = 3`
+ruCpzY and PerDu never reached `Task finished`, kept hitting the dead first Hawk until teardown, and exactly match the two missing Pikmin reported by the user.
 
-## Exact runtime test
+## Root cause
 
-Use:
-**Gale -> Advanced options -> Import all files**
+`AttackEnemyTask.IntervaledUpdate()` checks:
 
-1. record following count
-2. attack/kill Crawler/Thumper with Pikmin
-3. verify natural release/recovery
-4. attack/kill Baboon Hawk with Pikmin
-5. verify natural release/recovery
-6. verify exact following-count recovery
-7. verify Crawler/Thumper cannot grab Pikmin
-8. verify Hawk cannot target/chase/bite/grab Pikmin
-9. verify Puffer does not affect Pikmin
-10. verify Dead Hawk body is carried to Onion
-11. verify living Hawks ignore corpse
-12. verify no `Work state with no task assigned!`
-13. verify no `Leader is null when following`
-14. verify `[LethalMinNativeOwnership]`
-15. verify no `[BaboonHawkDeathCleanup]`
-16. commit full log to `RuntimeInbox/Current/`
+`CurrentIntention != Attack || IsPikminOnEnemy`
 
-## Temporary state
+and returns before its later:
 
-EnemyIsolation:
-**enabled**
+`enemy.enemyScript.isEnemyDead`
 
-BCMER 1.71.0:
-**disabled**
+check.
 
-## Controllers
+Latched co-attackers therefore cannot reach native dead-target completion.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Q`
+## S1.42R correction
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42Q_BUILD_AWAITING_RUNTIME`
+Patch only the exact task method.
 
-Do not restore normal enemies or BCMER until S1.42Q passes.
+When its own target is dead while still latched, request the exact native:
+
+`PikminAI.FinishTaskServerRpc()`
+
+No external attacker selection exists anymore.
+
+## Runtime test
+
+1. Import via Gale "Advanced options -> Import all files".
+2. Start with known follower count.
+3. Put at least three Pikmin onto the same Baboon Hawk.
+4. Kill Hawk.
+5. Confirm all affected Pikmin stop attacking.
+6. Confirm `[LethalMinLatchedDeathGuard]` for latched co-attackers.
+7. Confirm native `Task finished` for each.
+8. Whistle all and verify exact follower count.
+9. Repeat on second Hawk.
+10. Verify corpse remains Onion-carryable.
+11. Verify living Hawk ignores corpse.
+12. Verify Hawk -> Pikmin remains blocked.
+13. Verify no Work/no-task loop.
+14. Verify no Leader-null loop.
+15. Commit complete fresh log to `RuntimeInbox/Current/`.
+
+EnemyIsolation remains enabled.
+BCMER 1.71.0 remains disabled.
