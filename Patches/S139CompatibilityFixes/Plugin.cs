@@ -22,7 +22,7 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.4";
+        public const string PluginVersion = "1.3.5";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
@@ -59,7 +59,7 @@ namespace S139CompatibilityFixes
                 "S1.39 Compatibility Fixes loaded. Ship-door anti-lockout, complete EnemyScan output, " +
                 "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, " +
                 "CodeRebirth kill-RPC Pikmin protection, the optional LethalModDataLib null-plugin guard, " +
-                "Puffer smoke Pikmin-effect guard, generic LethalMin grab/bite state recovery, " +
+                "Puffer smoke Pikmin-effect guard, exact PikminAI GrabPikmin recovery + Thumper zero-interaction guard, " +
                 "Coroner Jetpack log-spam guard, throttled ship-door compatibility audit, the 140-second Jetpack target, " +
                 "and the late-lifecycle isolated-enemy diagnostic are active.");
         }
@@ -90,126 +90,61 @@ namespace S139CompatibilityFixes
 
         private void PatchLethalMinGrabBiteStateRepair()
         {
-            int patched = 0;
-
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                string assemblyName = assembly.GetName().Name ?? string.Empty;
-                if (assemblyName.IndexOf("LethalMin", StringComparison.OrdinalIgnoreCase) < 0)
-                    continue;
-
-                IEnumerable<Type> types;
-                try
-                {
-                    types = assembly.GetTypes();
-                }
-                catch (ReflectionTypeLoadException ex)
-                {
-                    types = ex.Types.Where(t => t != null);
-                }
-                catch (Exception ex)
-                {
-                    Logger.LogWarning(
-                        $"[LethalMinStateGuard] Could not enumerate {assemblyName}: {ex.GetType().Name}: {ex.Message}");
-                    continue;
-                }
-
-                foreach (Type type in types)
-                {
-                    if (type == null)
-                        continue;
-
-                    // S1.42D crashed because the broad scan also attempted to Harmony-patch
-                    // inherited PikminAI/PikminItem methods through derived types. HarmonyX
-                    // explicitly warned those were not declared/implemented methods.
-                    //
-                    // Only patch concrete LethalMin enemy-adapter classes, and only methods
-                    // actually declared on that class. This still covers BaboonBird,
-                    // BushWolf, ForestGiant, RadMech, and future *PikminEnemy adapters
-                    // without touching generic PikminAI state-machine methods at startup.
-                    string typeName = type.Name ?? string.Empty;
-                    if (typeName.IndexOf("PikminEnemy", StringComparison.OrdinalIgnoreCase) < 0)
-                        continue;
-
-                    MethodInfo[] declared;
-                    try
-                    {
-                        declared = type.GetMethods(
-                            BindingFlags.Instance |
-                            BindingFlags.Static |
-                            BindingFlags.Public |
-                            BindingFlags.NonPublic |
-                            BindingFlags.DeclaredOnly);
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.LogWarning(
-                            $"[LethalMinStateGuard] Could not inspect declared methods on {type.FullName}: " +
-                            $"{ex.GetType().Name}: {ex.Message}");
-                        continue;
-                    }
-
-                    foreach (MethodInfo method in declared)
-                    {
-                        if (method == null ||
-                            method.IsAbstract ||
-                            method.ContainsGenericParameters)
-                            continue;
-
-                        string name = method.Name ?? string.Empty;
-
-                        // Patch the actual local interaction method, not generated
-                        // ServerRpc/ClientRpc wrappers.
-                        bool candidate =
-                            string.Equals(name, "BitePikmin", StringComparison.OrdinalIgnoreCase) ||
-                            string.Equals(name, "GrabPikmin", StringComparison.OrdinalIgnoreCase) ||
-                            string.Equals(name, "GrabPikminWithTongue", StringComparison.OrdinalIgnoreCase);
-
-                        if (!candidate)
-                            continue;
-
-                        try
-                        {
-                            if (method.GetMethodBody() == null)
-                                continue;
-                        }
-                        catch
-                        {
-                            continue;
-                        }
-
-                        try
-                        {
-                            Harmony.Patch(
-                                method,
-                                prefix: new HarmonyMethod(typeof(LethalMinGrabBiteStateRepair), nameof(LethalMinGrabBiteStateRepair.Prefix)),
-                                postfix: new HarmonyMethod(typeof(LethalMinGrabBiteStateRepair), nameof(LethalMinGrabBiteStateRepair.Postfix)));
-
-                            patched++;
-                            Logger.LogInfo(
-                                $"[LethalMinStateGuard] Safely patched declared enemy interaction " +
-                                $"{type.FullName}.{method.Name}.");
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.LogWarning(
-                                $"[LethalMinStateGuard] Failed to patch {type.FullName}.{method.Name}: " +
-                                $"{ex.GetType().Name}: {ex.Message}");
-                        }
-                    }
-                }
-            }
-
-            if (patched == 0)
+            // S1.42D proved that the common grabbed-Pikmin state mutation lives in the
+            // declared LethalMin.PikminAI.GrabPikmin(Transform,float,int) base method.
+            // Patch that exact implementation once instead of scanning inherited methods
+            // through every derived Pikmin type.
+            Type pikminAiType = AccessTools.TypeByName("LethalMin.PikminAI");
+            if (pikminAiType == null)
             {
                 Logger.LogError(
-                    "[LethalMinStateGuard] No declared LethalMin enemy BitePikmin/GrabPikmin methods were found. " +
-                    "The generic state repair is NOT active; capture the startup log before testing.");
+                    "[LethalMinStateGuard] LethalMin.PikminAI was not found. " +
+                    "Direct GrabPikmin state repair is NOT active.");
+                return;
             }
-            else
+
+            MethodInfo grabPikmin = AccessTools.Method(
+                pikminAiType,
+                "GrabPikmin",
+                new Type[] { typeof(Transform), typeof(float), typeof(int) });
+
+            if (grabPikmin == null || grabPikmin.DeclaringType != pikminAiType)
             {
+                Logger.LogError(
+                    "[LethalMinStateGuard] Exact declared PikminAI.GrabPikmin(Transform,float,int) " +
+                    "was not found. Direct state repair is NOT active.");
+                return;
+            }
+
+            try
+            {
+                if (grabPikmin.GetMethodBody() == null)
+                {
+                    Logger.LogError(
+                        "[LethalMinStateGuard] PikminAI.GrabPikmin has no implementation body. " +
+                        "Direct state repair is NOT active.");
+                    return;
+                }
+
+                Harmony.Patch(
+                    grabPikmin,
+                    prefix: new HarmonyMethod(
+                        typeof(LethalMinGrabBiteStateRepair),
+                        nameof(LethalMinGrabBiteStateRepair.Prefix)),
+                    postfix: new HarmonyMethod(
+                        typeof(LethalMinGrabBiteStateRepair),
+                        nameof(LethalMinGrabBiteStateRepair.Postfix)));
+
                 Logger.LogInfo(
-                    $"[LethalMinStateGuard] Safe generic grab/bite state repair registered on {patched} declared enemy method(s).");
+                    "[LethalMinStateGuard] Directly patched declared " +
+                    "LethalMin.PikminAI.GrabPikmin(Transform,float,int) exactly once. " +
+                    "No inherited/derived PikminAI Harmony scan is used.");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(
+                    $"[LethalMinStateGuard] Failed to patch exact PikminAI.GrabPikmin: " +
+                    $"{ex.GetType().Name}: {ex.Message}");
             }
         }
 
@@ -1091,17 +1026,36 @@ namespace S139CompatibilityFixes
             internal readonly List<MemberSnapshot> Members = new List<MemberSnapshot>();
         }
 
-        public static void Prefix(
+        public static bool Prefix(
             MethodBase __originalMethod,
             object __instance,
             object[] __args,
             ref GrabSnapshot __state)
         {
-            object pikmin = FindPikminTarget(__args);
-            if (!IsAlive(pikmin))
-                return;
+            Transform snapPos =
+                __args != null && __args.Length > 0
+                    ? __args[0] as Transform
+                    : null;
 
-            __state = Capture(pikmin, __instance, __originalMethod);
+            // Binding gameplay rule: Thumper/Crawler and Pikmin must not interact
+            // in either direction. Crawler remains on LethalMin's Pikmin attack
+            // blacklist for Pikmin -> Thumper. This blocks the opposite direction
+            // before GrabPikmin removes the leader or starts its death timer.
+            if (IsCrawlerOrThumperSnapPosition(snapPos))
+            {
+                Plugin.Log.LogWarning(
+                    "[ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin " +
+                    "before leader/grab/death-timer state mutation.");
+                return false;
+            }
+
+            object pikmin = __instance;
+            if (!IsAlive(pikmin))
+                return true;
+
+            object adapter = FindEnemyAdapterFromSnapPosition(snapPos);
+            __state = Capture(pikmin, adapter, __originalMethod);
+            return true;
         }
 
         public static void Postfix(GrabSnapshot __state)
@@ -1248,6 +1202,57 @@ namespace S139CompatibilityFixes
                     releaseTokens,
                     token => m.Name.IndexOf(token, StringComparison.OrdinalIgnoreCase) >= 0))
                 .FirstOrDefault();
+        }
+
+        private static bool IsCrawlerOrThumperSnapPosition(Transform snapPos)
+        {
+            if (snapPos == null)
+                return false;
+
+            EnemyAI enemy = snapPos.GetComponentInParent<EnemyAI>();
+            if (enemy != null)
+            {
+                string enemyName =
+                    enemy.enemyType != null
+                        ? enemy.enemyType.enemyName
+                        : enemy.GetType().Name;
+
+                string normalized = DiagnosticEnemyIsolation.NormalizeEnemyName(enemyName);
+                if (normalized == "crawler" || normalized == "thumper")
+                    return true;
+            }
+
+            // Fallback for unusual prefab layouts where the EnemyAI component is not
+            // above the snap point in the hierarchy.
+            for (Transform current = snapPos; current != null; current = current.parent)
+            {
+                string normalized = DiagnosticEnemyIsolation.NormalizeEnemyName(current.name);
+                if (normalized.IndexOf("crawler", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    normalized.IndexOf("thumper", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static object FindEnemyAdapterFromSnapPosition(Transform snapPos)
+        {
+            if (snapPos == null)
+                return null;
+
+            MonoBehaviour[] behaviours = snapPos.GetComponentsInParent<MonoBehaviour>(true);
+            foreach (MonoBehaviour behaviour in behaviours)
+            {
+                if (behaviour == null)
+                    continue;
+
+                string typeName = behaviour.GetType().FullName ?? behaviour.GetType().Name ?? string.Empty;
+                if (typeName.IndexOf("LethalMin.", StringComparison.OrdinalIgnoreCase) >= 0 &&
+                    typeName.IndexOf("PikminEnemy", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return behaviour;
+            }
+
+            return null;
         }
 
         private static object FindPikminTarget(object[] args)
