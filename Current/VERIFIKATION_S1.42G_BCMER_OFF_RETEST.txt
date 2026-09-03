@@ -1,0 +1,38 @@
+VERIFIKATION — S1.42G_BCMER_OFF_RETEST
+
+Status:
+MANUELLE RUNTIME-TESTVARIANTE — KEIN NEUER BUILD
+
+Kanonisches Basisprofil:
+Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z
+
+Basis SHA-256:
+09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a
+
+S1.42G Build:
+- GitHub Actions erfolgreich
+- 0 Compiler-Warnings
+- 0 Compiler-Errors
+- 331 Archivmitglieder
+- Compatibility Plugin v1.3.3
+- DLL SHA-256 39690bf06dd6876e42badeb80f69bd8448fdbfeecd888fab0105951c38812436
+
+Manuelle Abweichung für diesen Retest:
+- SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0: enabled -> disabled
+- sonst keine Änderungen
+
+Erwartete Modanzahl der manuellen Variante:
+- 188 gesamt
+- 182 enabled
+- 6 disabled
+
+WICHTIG:
+Es gibt absichtlich KEINEN separaten .r2z-SHA für S1.42G_BCMER_OFF_RETEST, weil kein neues Archiv erzeugt wurde.
+
+RuntimeInbox/ACTIVE_BUILD.txt:
+S1.42G_BCMER_OFF_RETEST
+
+BuildSpecs/current.json:
+disabled / IDLE_S1.42G_BCMER_OFF_RETEST
+
+Der frühere oversized S1.42G Log wurde verworfen und aus dem aktiven Repository gelöscht.
