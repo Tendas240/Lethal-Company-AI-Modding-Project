@@ -379,3 +379,37 @@ Compatibility plugin v1.3.2:
 - retains the S1.42E startup-safe DeclaredOnly LethalMin state-guard architecture.
 
 GitHub Actions passed with 0 compiler warnings/errors. S1.42F is awaiting runtime lobby-smoothness validation.
+
+
+## S1.42F — Gordion fix passed, routed-moon stalls remained
+
+Runtime evidence:
+`RuntimeEvidence/S1.42F/20260903T092728Z/`
+
+Confirmed:
+- S1.42E Gordion constructor-loop fix worked;
+- zero `MissingMethodException` from EnemyIsolation;
+- ship lobby was smooth before routing;
+- routed moon still showed periodic freezes.
+
+The log exposed two causes:
+1. EnemyIsolation still performed a once-per-second global `FindObjectsOfType<EnemyAI>()` scan on actual moons.
+2. Coroner's `JetpackItem.Update` patch queried an unheld Jetpack every frame, producing 16,138 dying-player warnings in the short run.
+
+## S1.42G — Routed Moon Performance Fix
+
+Built from S1.42F.
+
+Profile:
+`Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
+
+SHA-256:
+`09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
+
+Compatibility plugin v1.3.3:
+- EnemyIsolation only applies on SelectableLevel changes;
+- continuous global EnemyAI scene scanning removed;
+- Coroner stays enabled;
+- only Coroner's faulty JetpackItem.Update prefix/postfix are unpatched.
+
+Build passed with 0 compiler warnings/errors. Awaiting routed-moon runtime validation.
