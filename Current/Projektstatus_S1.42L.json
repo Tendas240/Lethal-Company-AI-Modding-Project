@@ -7,9 +7,18 @@
     "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b"
   },
   "latest_valid_runtime_evidence": {
-    "build": "S1.42J",
-    "path": "RuntimeEvidence/S1.42J/20260903T145657Z/",
-    "log_sha256": "a8ce035bf64fa5b704e18c588215f43cd1fd184eef4f467dfbafa6fcb1379963"
+    "build": "S1.42L",
+    "path": "RuntimeEvidence/S1.42L/20260903T151817Z/",
+    "log": "RuntimeEvidence/S1.42L/20260903T151817Z/raw/LogOutput.log",
+    "log_sha256": "402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd",
+    "verdict": "PARTIAL_PASS_ONLY_PIKMIN_TO_BABOON_HAWK_REMAINS",
+    "runtime_counts": {
+      "thumper_guard_blocks": 36,
+      "leader_null_errors": 0,
+      "baboon_guard_markers": 9,
+      "puffer_guard_markers": 8,
+      "coroner_jetpack_playercontroller_null": 0
+    }
   },
   "superseded_untested_candidates": ["S1.42I", "S1.42K"],
   "active_candidate": {
@@ -17,7 +26,23 @@
     "profile": "Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z",
     "sha256": "fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722",
     "base": "S1.42K",
-    "status": "built_successfully_awaiting_runtime"
+    "status": "runtime_partial_pass_one_subgate_remaining"
+  },
+  "closed_runtime_topics": {
+    "thumper_crawler": {
+      "status": "PASS_CLOSED",
+      "enemy_to_pikmin": "functional_grab_and_broken_state_blocked",
+      "pikmin_to_enemy": "normal_attack_latch_confirmed_by_user",
+      "accepted_cosmetic_behavior": "Thumper may visibly snap at Pikmin; ignore because Pikmin are not functionally affected"
+    },
+    "puffer_to_pikmin": "PASS_CLOSED",
+    "jetpack": "PASS_CLOSED",
+    "baboon_hawk_to_pikmin": "PASS_CLOSED"
+  },
+  "remaining_runtime_gate": {
+    "direction": "pikmin_to_baboon_hawk",
+    "required": "throw Pikmin onto Baboon Hawk and confirm normal LethalMin attack/latch while Hawk-side guard remains effective",
+    "status": "PENDING_EXPLICIT_RUNTIME_CONFIRMATION"
   },
   "binding_enemy_rules": {
     "baboon_hawk_to_pikmin": "blocked_no_target_chase_bite_grab_hold",
@@ -32,18 +57,14 @@
     "recent_project_added_entries": ["Crawler", "Baboon hawk"],
     "recent_project_added_entries_still_present": []
   },
-  "jetpack": {
-    "status": "accepted_closed",
-    "target_seconds": 140,
-    "mid_air_explosions": "Off"
-  },
   "temporary_test_state": {
     "enemy_isolation_enabled": true,
     "bcmer_1_71_0_enabled": false,
     "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
   },
-  "next_action": "Runtime-test S1.42L for Pikmin -> Thumper/Crawler and Pikmin -> Baboon Hawk attack/latch while retaining enemy-side protection.",
+  "next_action": "Keep S1.42L. Explicitly validate Pikmin -> Baboon Hawk attack/latch only. Do not build a successor yet.",
   "runtime_route": "S1.42L",
   "build_controller": "IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME",
-  "repository_migration": "deferred_until_S1.42L_gate_is_evaluated_and_state_documented"
+  "canonical_analysis": "Current/43_S1.42L_RUNTIME_ANALYSIS_THUMPER_CLOSED.md",
+  "repository_migration": "deferred_until_remaining_S1.42L_baboon_reverse_direction_gate_is_evaluated"
 }
