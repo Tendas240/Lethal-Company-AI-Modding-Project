@@ -43,20 +43,21 @@ After `START_HERE_ChatGPT_Masterprompt.txt` and root `README.md`, read:
 1. `Current/00_CURRENT_STATE.md`
 2. `Current/01_HANDOVER_CORE.md`
 3. `Current/16_HANDOVER_S1.42C_TO_NEXT.md`
-4. `Current/06_RECENT_WORK_S1.42A-S1.42C.md`
-5. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
-6. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
-7. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
-8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-9. `Current/02_TECHNICAL_BASELINE.md`
-10. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-11. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-12. `BuildSpecs/S1.42C_PLAN.md`
-13. `BuildSpecs/S1.42D_PLAN.md`
-14. `BuildSpecs/current.json`
-15. `Current/Projektstatus_S1.42C.json`
-16. `Current/Aktive_Modliste_S1.42C.txt`
-17. `ProfileSources/S1.42C/`
+4. `Current/17_REPO_HANDOVER_CLEANUP_S1.42C.md`
+5. `Current/06_RECENT_WORK_S1.42A-S1.42C.md`
+6. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
+7. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
+8. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
+9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+10. `Current/02_TECHNICAL_BASELINE.md`
+11. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+12. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+13. `BuildSpecs/S1.42C_PLAN.md`
+14. `BuildSpecs/S1.42D_PLAN.md`
+15. `BuildSpecs/current.json`
+16. `Current/Projektstatus_S1.42C.json`
+17. `Current/Aktive_Modliste_S1.42C.txt`
+18. `ProfileSources/S1.42C/`
 
 ## 3. Repository-first workflow is binding
 
@@ -398,3 +399,33 @@ First engineering priority:
 Then continue the broader pending S1.42 tuning in controlled stages.
 
 Repository-first only.
+
+
+## 16. Handover cleanup / manifest correction
+
+During final handover verification, an earlier generated `Current/Aktive_Modliste_S1.42C.txt` was found to have shifted package/version associations.
+
+It was regenerated directly from:
+`ProfileSources/S1.42C/export.r2x`
+
+Verified manifest:
+- 188 total
+- 183 enabled
+- 5 disabled
+
+Correct disabled set:
+- AJB-Keep_hangar_ship_door_closed 1.0.0
+- zealsprince-Malfunctions 1.10.3
+- Reiko88-Observer 2.0.1
+- ProjectSCP-SCP999 2.4.0
+- Kittenji-Dont_Touch_Me 1.2.8
+
+This was documentation-only; no profile content changed.
+
+Superseded S1.41 handover-support metadata were moved from `Current/` to:
+`Archive/S1.41/HandoverCheckpoint/`
+
+Nothing was permanently deleted.
+
+See:
+`Current/17_REPO_HANDOVER_CLEANUP_S1.42C.md`
