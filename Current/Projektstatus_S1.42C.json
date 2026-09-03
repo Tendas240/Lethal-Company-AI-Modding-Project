@@ -61,7 +61,7 @@
     "thumper_pikmin": "no interaction in either direction",
     "puffer_pikmin": "Puffer attack/smoke must not affect Pikmin",
     "functional_microwave": "target Volume=0.7 and Allow Editing Config=true",
-    "jetpack": "match old juijui value if evidenced; do not guess; 50s only fallback candidate",
+    "jetpack": "historical juijui config target 140 seconds; do not restore obsolete Bigger Battery blindly; Jetpack must not explode from sustained/high-speed boost use; set Jetpack Fixes MidAirExplosions=Off and patch narrowly if another non-collision usage explosion remains",
     "unknown_enemy_powerlevels": "never guess"
   },
   "historical_reference_profile": {
@@ -101,7 +101,8 @@
     "Mausoleum-specific fog reduction",
     "BCMER fixed 12.5% x8 EventType distribution",
     "Functional Microwave volume 0.7 with editing gate",
-    "resolve historical juijui Jetpack duration"
+    "Jetpack 140-second historical target",
+    "Jetpack no sustained/high-speed boost explosion"
   ],
   "build_state": {
     "current_spec": "BuildSpecs/current.json",
@@ -127,5 +128,24 @@
       "verified_enabled": 183,
       "verified_disabled": 5
     }
+  },
+  "next_candidate": {
+    "build_id": "S1.42D",
+    "status": "planned_focused_regression_not_built_yet",
+    "base_profile": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
+    "scope": [
+      "generic LethalMin enemy grab/bite + Invincible Pikmin state repair",
+      "retain S1.42C Thumper/Puffer guards",
+      "Jetpack 140-second historical target",
+      "Jetpack MidAirExplosions=Off; no sustained/high-speed boost self-destruction",
+      "Functional Microwave editing gate true and Volume=0.7"
+    ],
+    "deferred": [
+      "BCMER fixed 12.5% x8 EventType distribution",
+      "equal-weight interior normalization",
+      "CullFactory junkrooms/shatteredrooms exceptions",
+      "Mausoleum-specific fog reduction",
+      "Shatteredrooms hard-restriction investigation"
+    ]
   }
 }
