@@ -8,23 +8,21 @@
 Machine-readable status:
 `Current/Projektstatus_S1.42P.json`
 
-Primary final handover:
-`Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md`
+Newest runtime analysis:
+`Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md`
 
-Final repository audit:
-`Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md`
+S1.42P build definition:
+`Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md`
+
+Pre-test handover / audit, now historical:
+- `Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md`
+- `Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md`
 
 Verification:
 `Current/VERIFIKATION_S1.42P.txt`
 
 Current mod list:
 `Current/Aktive_Modliste_S1.42P.txt`
-
-Latest runtime analysis:
-`Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md`
-
-Current candidate build:
-`Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md`
 
 ## State separation
 
@@ -40,81 +38,56 @@ SHA-256:
 
 ### Latest valid runtime evidence
 
-**S1.42O - FAIL / no Hawk death cleanup executed**
+**S1.42P - PARTIAL / FAIL**
 
 Evidence:
-`RuntimeEvidence/S1.42O/20260903T171220Z/`
+`RuntimeEvidence/S1.42P/20260903T181706Z/`
+
+Log:
+`RuntimeEvidence/S1.42P/20260903T181706Z/raw/LogOutput.log`
 
 Log SHA-256:
-`1a1251f19a1d82e90b72e82ac8e4babd523c32e695fe3d7923d4590debb0be71`
+`d656095fb874a415a1bd2377c0411339d3d6eb002dce4ec3f6216e879294127f`
 
-User-observed:
-**8 Pikmin disappeared after the Baboon Hawk died.**
+User observed a following-count drop from **20 to 18** after the Baboon Hawk fight.
 
-Critical startup evidence:
-- `PikminAI.TaskFinished()` does not exist in loaded LethalMin;
-- S1.42O therefore performed no death cleanup;
-- no low-level RemoveCurrentTask fallback ran.
+The log confirms that exact 20 -> 18 transition.
 
-Runtime reflection exposed exact declared:
-`PikminAI.FinishTask():Void`
+Missing from the recovered leader set:
+- `Yellow Pikmin_hcRGph`
+- `Yellow Pikmin_ruCpzY`
 
-After Hawk death, the eight attackers continued `Hitting enemy with: 0.03` beyond the SellBodies corpse-spawn point.
+### S1.42P result
 
-## Current built candidate awaiting runtime
+PASS:
+- exact declared `LethalMin.PikminAI.FinishTask()` resolves at startup;
+- native FinishTask executes;
+- three Pikmin are finalized at Hawk death;
+- no `Work state with no task assigned!` loop;
+- no `Leader is null when following` loop;
+- Dead Baboon Hawk corpse remains Pikmin-carryable and reaches Onion;
+- living Baboon Hawks ignore the corpse.
 
-**S1.42P - Baboon Hawk Exact FinishTask Recovery**
+FAIL:
+- 4.0 m proximity selection missed real attacker `Yellow Pikmin_ruCpzY`;
+- `ruCpzY` continued hitting the dead Hawk for about 84.565 seconds after death;
+- FinishTask-finalized Pikmin can immediately reacquire the already-dead `BaboonHawkEnemy(Clone)`;
+- `hcRGph` reacquired the dead Hawk and never returned to the leader before teardown;
+- final recovered following set was 18/20.
 
-Profile:
-`Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z`
+Therefore S1.42P is **not accepted** as the Baboon-Hawk death fix.
 
-SHA-256:
-`11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5`
+## Root cause now established
 
-Compatibility plugin:
-**v1.3.11**
+S1.42P proved that `FinishTask()` is the correct high-level native task finalizer.
 
-Build:
-- GitHub Actions #48: PASS;
-- 331 archive members;
-- 330 readable snapshot files;
-- changed existing members only: compatibility DLL + `export.r2x`;
-- no added members.
+The remaining defects are:
 
-## S1.42P implementation
+1. attacker identity cannot be inferred reliably from a fixed 4.0 m distance;
+2. dead Baboon Hawks remain eligible for LethalMin attack-target discovery after death.
 
-Retain:
-- exact `BaboonBirdAI.KillEnemy(bool)`;
-- one-shot `RoundManager.Instance.SpawnedEnemies`;
-- exact/assignable `LethalMin.PikminAI`;
-- 4.0 m death zone;
-- passing Dead Baboon Hawk corpse guard.
-
-Use runtime-confirmed exact:
-`LethalMin.PikminAI.FinishTask()`
-
-Validation:
-- exact declaring type;
-- zero parameters;
-- void return;
-- implementation body.
-
-No direct `RemoveCurrentTask()` fallback.
-
-## Active runtime gate
-
-S1.42P must prove:
-- exact FinishTask resolves at startup;
-- real Hawk attackers are selected;
-- FinishTask runs at Hawk death;
-- dead-Hawk attack-hit loop stops promptly;
-- no sustained Work-state-with-no-task loop;
-- attackers remain visible, responsive and recoverable;
-- following count can be restored;
-- corpse remains Onion-carryable;
-- living Hawks ignore corpse;
-- Hawk -> Pikmin ignore remains intact;
-- no leader-null loop.
+Do not merely widen the radius.
+Do not return to direct `RemoveCurrentTask()`.
 
 ## Temporary test state
 
@@ -127,40 +100,33 @@ BCMER exact 1.71.0:
 Restore baseline:
 `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
-Do not restore normal enemies or BCMER before S1.42P passes.
+Do not restore normal enemies or BCMER yet.
 
 ## Controllers
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42P`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_BUILD_AWAITING_RUNTIME`
+This remains S1.42P until a successor is actually built.
+
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_SUCCESSOR_DESIGN`
 
 ## Exact next step
 
-Import:
-**Gale -> Advanced options -> Import all files**
+Design/build the S1.42Q successor from S1.42P without unrelated changes.
 
-Then:
-1. note approximate following Pikmin count;
-2. throw several Pikmin onto a living Baboon Hawk;
-3. let them kill it;
-4. confirm attackers stop hitting the dead Hawk;
-5. verify they remain visible/responsive;
-6. whistle/regain and verify follow/reuse;
-7. compare count before/after;
-8. verify corpse still appears and reaches Onion;
-9. verify living Hawks ignore corpse;
-10. verify Hawk -> Pikmin ignore;
-11. verify no leader-null loop;
-12. commit full fresh log to `RuntimeInbox/Current/`.
+Required direction:
+- retain native exact `PikminAI.FinishTask()`;
+- replace proximity-only attacker selection with exact/direct dying-Hawk target identity;
+- prevent already-dead Baboon Hawks from being selected/reselected as Pikmin `AttackEnemy` targets;
+- preserve living Pikmin -> living Hawk attack/latch/kill;
+- preserve living Hawk -> Pikmin protection;
+- preserve corpse-to-Onion behavior;
+- preserve living-Hawk corpse ignore.
+
+If the exact LethalMin target-selection member/method cannot be established from existing evidence, add narrow runtime diagnostics rather than guessing.
 
 ## Deferred maintenance
 
-Do not perform general cleanup during this runtime gate.
+Do not perform general repository cleanup while this enemy-regression chain is still open.
 
-## Handover integrity
-
-- No repository files were deleted during the final S1.42P handover.
-- Runtime evidence S1.42L through S1.42O remains preserved.
-- S1.42P has no runtime evidence yet; this is expected.
-- The next chat must not build a successor before the focused S1.42P test unless S1.42P cannot start.
+Known non-functional drift in `Current/02_TECHNICAL_BASELINE.md` and historical comments in `Plugin.cs` remains deferred.
