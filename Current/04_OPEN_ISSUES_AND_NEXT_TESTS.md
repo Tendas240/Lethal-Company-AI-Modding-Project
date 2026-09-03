@@ -1,3 +1,5 @@
+> **S1.42S GATE CLOSED — PASS:** The Baboon-Hawk/Pikmin isolated regression is resolved. Runtime evidence: `RuntimeEvidence/S1.42S/20260903T205550Z/`. No focused attacker continued hitting after Hawk death; all three were recoverable; corpse carry to Onion passed; Work/no-task and Leader-null counts are zero. See `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`. **Next active task:** remove/disable EnemyIsolation and restore normal enemy-related configuration from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`, preserving later accepted fixes. BCMER must remain exact 1.71.0 whenever reintroduced.
+
 > **S1.42S ACTIVE GATE:** Import `Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z` via Gale **Advanced options -> Import all files**. Latch at least 3 Pikmin onto one Baboon Hawk, kill it, verify all fall off/stop attacking and exact follower count recovers. Also verify Hawk -> Pikmin bite/grab remains blocked and Dead Baboon Hawk carry remains normal. S1.42R is failed and superseded. See Current/66 and Current/67.
 
 # 04 - Open Issues and Next Tests
