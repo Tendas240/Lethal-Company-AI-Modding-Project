@@ -162,7 +162,7 @@ Runtime acceptance:
   `[ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.`
 
 Status:
-**fix built in S1.42H; runtime validation pending.**
+**fix retained through S1.42J; deliberate direct-contact runtime validation pending.**
 
 ### Puffer
 
@@ -181,7 +181,7 @@ Clean S1.42G BCMER-off evidence:
 - second Puffer: 2 components removed.
 
 Status:
-**technical guard activation confirmed; visible gameplay immunity can be rechecked during S1.42H if convenient.**
+**PASS from S1.42H runtime evidence. Recheck only if conveniently encountered; no forced Puffer test is required for S1.42J.**
 
 ## Resolved — LethalModDataLib 1.2.2 initialization NRE
 
@@ -284,16 +284,16 @@ to all eight EventTypes.
 
 ## Functional Microwave — volume configured; future rarity reduction requested
 
-Current S1.42H retained values:
+Current S1.42J retained values:
 - `Functional Microwave | Allow Editing Config = true`
 - `Functional Microwave | Volume = 0.7`
 
 User target:
 - `Allow Editing Config = true`
 - `Volume = 0.7`
-- Functional Microwaves should be somewhat rarer in a future post-isolation build than in the current S1.42H/S1.42G behavior.
+- Functional Microwaves should be somewhat rarer in a future post-isolation build than in the current S1.42J/S1.42H behavior.
 
-The exact rarity reduction is not yet selected. Do not change Microwave rarity during the S1.42H isolated enemy runtime gate.
+The exact rarity reduction is not yet selected. Do not change Microwave rarity during the S1.42J isolated enemy runtime gate.
 
 Use config first; do not Harmony-patch audio unless runtime proves the config is ignored.
 
@@ -301,7 +301,7 @@ Use config first; do not Harmony-patch audio unless runtime proves the config is
 
 User wants the old juijui-profile capacity/duration.
 
-Current S1.42H:
+Current S1.42J:
 - ButteRyBalance `Reduce Battery = false`;
 - project-local loaded Jetpack Item target = 140 seconds;
 - JetpackFixes `MidAirExplosions = Off`;
@@ -370,11 +370,11 @@ When naturally encountered, continue checking:
 
 `BuildSpecs/current.json`:
 - disabled;
-- `IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`;
-- base/reference = S1.42H.
+- `IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME`;
+- base/reference = S1.42J.
 
 `RuntimeInbox/ACTIVE_BUILD.txt`:
-- `S1.42H`
+- `S1.42J`
 
 S1.42D:
 **FAILED STARTUP — DO NOT RETEST**
@@ -383,15 +383,22 @@ S1.42G BCMER-off:
 **valid completed runtime gate**
 
 S1.42H:
-`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+**valid runtime evidence — Puffer PASS, Baboon Hawk hold/re-grab FAIL, Thumper direct validation incomplete.**
+
+S1.42I:
+**built successfully but never runtime-tested; superseded before test by the binding Baboon Hawk <-> Pikmin zero-interaction rule.**
+
+S1.42J:
+`Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z`
 
 SHA-256:
-`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
+`736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7`
 
 Status:
 **built successfully; awaiting runtime validation.**
 
-Do not build S1.42I before evaluating S1.42H.
+Do not build S1.42K before evaluating S1.42J.
+
 
 ## Historical juijui profile — uploaded and indexed
 
@@ -409,7 +416,7 @@ Purpose:
 See:
 `Current/18_JUIJUI_LEGACY_REFERENCE.md`
 
-This is a reference task and must not delay the higher-priority generic LethalMin enemy grab/bite + invincible-Pikmin state repair.
+This is a reference task and must not delay the higher-priority S1.42J isolated enemy runtime gate.
 
 
 ## Pending later gameplay validation — Jetpack explosion behavior
@@ -442,7 +449,7 @@ Evidence:
 Its results are incorporated into S1.42H and summarized in:
 `Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
 
-Current active gate is S1.42H at the top of this file.
+Current active gate is S1.42J at the top of this file.
 S1.42D must not be retested.
 The deleted oversized S1.42G evidence must not be cited.
 
