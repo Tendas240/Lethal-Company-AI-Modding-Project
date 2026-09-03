@@ -10,20 +10,25 @@ CURRENT CANONICAL TAKEOVER POINTER - 2026-09-03 - S1.42R BUILT / AWAITING RUNTIM
 
 Repository is the source of truth.
 
-Read first:
-1. Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md
-2. Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt
-3. BuildSpecs/S1.42R_PLAN.md
-4. Current/Projektstatus_S1.42R.json
-5. Current/00_CURRENT_STATE.md
-6. Current/01_HANDOVER_CORE.md
-7. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-8. Current/VERIFIKATION_S1.42R.txt
-9. Current/SHA256SUMS_S1.42R.txt
-10. Current/Aktive_Modliste_S1.42R.txt
-11. BuildSpecs/current.json
-12. RuntimeInbox/ACTIVE_BUILD.txt
-13. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+Read immediately after this master prompt:
+1. Current/64_HANDOVER_S1.42R_TO_NEXT_FINAL.md
+2. Current/65_REPOSITORY_HANDOVER_AUDIT_S1.42R.md
+3. Current/Projektstatus_S1.42R.json
+4. Current/00_CURRENT_STATE.md
+5. Current/01_HANDOVER_CORE.md
+6. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+7. Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md
+8. Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt
+9. Current/63_S1.42R_LATCHED_DEAD_TARGET_COMPLETION_BUILD.md
+10. Current/VERIFIKATION_S1.42R.txt
+11. Current/SHA256SUMS_S1.42R.txt
+12. Current/Aktive_Modliste_S1.42R.txt
+13. BuildSpecs/S1.42R_PLAN.md
+14. BuildSpecs/current.json
+15. RuntimeInbox/ACTIVE_BUILD.txt
+16. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+17. Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
+18. Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
 
 Last fully accepted gameplay baseline:
 S1.41
@@ -31,7 +36,7 @@ Profiles/LC V1 S1.41 BCMER Reactivation.r2z
 SHA-256:
 d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b
 
-Latest runtime evidence:
+Latest valid runtime evidence:
 S1.42Q
 RuntimeEvidence/S1.42Q/20260903T195158Z/
 Log SHA-256:
@@ -41,7 +46,7 @@ FAIL — exact LethalMin 1.1.108 latched co-attacker dead-target bug confirmed.
 
 Exact upstream cause:
 LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate() returns while IsPikminOnEnemy is true BEFORE its existing enemy.enemyScript.isEnemyDead -> FinishTaskServerRpc() branch.
-Thus still-latched co-attackers never finish when their target dies.
+Therefore still-latched co-attackers never finish when their target dies.
 
 CURRENT BUILT CANDIDATE:
 S1.42R - LethalMin Latched Dead Target Completion
@@ -49,16 +54,28 @@ Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z
 SHA-256:
 009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101
 
+Git blob SHA:
+61e290182a0f056a20d81f31d340b27eb18f4be4
+
 Compatibility plugin:
 v1.3.13
 
-S1.42R exact shim:
-Patch only AttackEnemyTask.IntervaledUpdate().
-If THIS task is latched to ITS OWN dead target, request native PikminAI.FinishTaskServerRpc() before upstream's broken early return.
-No death hook, scan, radius, name guess, direct state mutation, manual unlatch, or custom leader restoration.
+Embedded compatibility DLL SHA-256:
+0d39a8895a1324457c2ac135fa2ae129e58ba8155ce6bde1cdb59d340be420ff
 
-Build #54: SUCCESS
-Idle guard #55: SUCCESS
+S1.42R exact shim:
+Patch only LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate().
+If THIS task is still latched to ITS OWN dead target, request native PikminAI.FinishTaskServerRpc() before upstream's broken early return.
+No death hook, scan, radius, name guess, direct RemoveCurrentTask, manual unlatch, leader restoration, or custom corpse carry.
+
+Build verification:
+- GitHub Actions Build #54 / run 33800005390: SUCCESS
+- generated commit: 80fc7bc37476612320925083f062bda2b841cf40
+- idle guard #55: SUCCESS
+- 331 members / 330 readable snapshot files
+- changed existing profile members only: compatibility DLL and export.r2x
+- config delta from S1.42Q: none
+- package/mod delta from S1.42Q: none
 
 Current runtime router:
 RuntimeInbox/ACTIVE_BUILD.txt = S1.42R
@@ -66,16 +83,27 @@ RuntimeInbox/ACTIVE_BUILD.txt = S1.42R
 Current build controller:
 BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42R_BUILD_AWAITING_RUNTIME
 
+RuntimeInbox/Current/ currently contains only .gitkeep.
+RuntimeEvidence/S1.42R/ does not exist yet because S1.42R has not been runtime-tested.
+
 EnemyIsolation remains enabled.
 Exact BCMER 1.71.0 remains disabled.
+Do not silently upgrade BCMER to 2.0.0.
 
 EXACT NEXT STEP:
 Do not build S1.42S first.
 Import S1.42R via Gale "Advanced options -> Import all files".
-Latch multiple Pikmin onto one Baboon Hawk, kill it, verify every attacker stops and exact follower count recovers.
-Expected marker: [LethalMinLatchedDeathGuard] Requested native FinishTaskServerRpc
-Expected native follow-up: Task finished
-Repeat on second Hawk and commit full fresh LogOutput.log to RuntimeInbox/Current/.
+Latch at least 3 Pikmin onto the same Baboon Hawk, kill it, verify all co-attackers stop and exact follower count recovers.
+Expected co-attacker marker:
+[LethalMinLatchedDeathGuard] Requested native FinishTaskServerRpc
+Expected native follow-up:
+Task finished
+Repeat on a second Hawk, retain corpse/one-way protection checks, and commit the full fresh LogOutput.log to RuntimeInbox/Current/.
+Then analyze S1.42R runtime evidence before restoring normal enemies or BCMER.
+
+Repository handover audit:
+PASS — ready for a new chat; runtime gate remains open.
+No local clone, local build, or manual PowerShell/Git action is required for takeover.
 
 
 ======================================================================
