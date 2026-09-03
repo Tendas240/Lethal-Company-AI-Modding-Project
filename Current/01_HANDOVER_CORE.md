@@ -52,37 +52,30 @@ Build controller:
 Canonical newest analysis:
 `Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
 
-## Immediate current gate — S1.42H
+## Historical predecessor gate — S1.42H
 
-Latest built candidate:
+S1.42H is no longer the active gate.
+
+Profile:
 `Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
 
 SHA-256:
 `5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
 
-Compatibility plugin:
-v1.3.5, DLL SHA-256
-`d67f8f4bc2012f5b74086eb268fcb191f6990c93041617e9ef35c635ea33f186`
+Valid runtime evidence:
+`RuntimeEvidence/S1.42H/20260903T125734Z/`
 
-S1.42G BCMER-off retest proved:
-- periodic freezes fixed;
-- isolated Crawler/Puffer spawning works without BCMER;
-- Thumper contact still breaks an invincible Pikmin into a leader-null grabbed state.
+Result:
+- startup/exact common GrabPikmin hook PASS;
+- isolated enemy spawning PASS;
+- Puffer -> Pikmin PASS;
+- Baboon Hawk + invincible Pikmin FAIL due to repeated hold/re-grab;
+- direct Thumper/Crawler <-> Pikmin validation incomplete.
 
-S1.42H therefore directly patches the declared common `PikminAI.GrabPikmin(Transform,float,int)` method exactly once and blocks Crawler/Thumper grabs before state mutation.
-
-BCMER 1.71.0 is disabled **inside S1.42H** only for the final isolated test.
-
-Do not build another candidate before S1.42H runtime evidence is evaluated.
-
-After isolated enemy acceptance:
-- disable EnemyIsolation;
-- restore full enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
-- re-enable exact BCMER 1.71.0.
+S1.42I was built from this result but never runtime-tested. The user then selected complete Baboon Hawk <-> Pikmin zero interaction, producing S1.42J.
 
 Details:
-`Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
-
+`Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md`
 
 ## Binding state
 
@@ -299,39 +292,48 @@ Evidence:
 `RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/`
 
 Latest built candidate:
-**S1.42H**
+**S1.42J**
 
-`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+`Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z`
 
 SHA-256:
-`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
+`736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7`
+
+Compatibility plugin:
+**v1.3.7**
+
+DLL SHA-256:
+`7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2`
 
 Status:
-**built successfully; awaiting first runtime validation**
+**built successfully; awaiting runtime validation**
 
 `BuildSpecs/current.json`:
-`IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`
+`IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME`
 
 `RuntimeInbox/ACTIVE_BUILD.txt`:
-`S1.42H`
+`S1.42J`
 
-Do not build S1.42I before S1.42H runtime evidence is evaluated.
+Do not build S1.42K before S1.42J runtime evidence is evaluated.
 
 ## New-chat takeover
 
 Canonical current handover:
-`Current/31_HANDOVER_S1.42H_TO_NEXT.md`
+`Current/34_HANDOVER_S1.42J_TO_NEXT.md`
 
-Latest predecessor analysis:
-`Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
+Latest build analysis:
+`Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
+
+Predecessor runtime/build analysis:
+`Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md`
 
 Verification:
-`Current/VERIFIKATION_S1.42H.txt`
+`Current/VERIFIKATION_S1.42J.txt`
 
 Start prompt:
-`Current/NEXT_CHAT_START_PROMPT_S1.42H.txt`
+`Current/NEXT_CHAT_START_PROMPT_S1.42J.txt`
 
-The old S1.42G handovers remain historical/diagnostic context and must not override S1.42H instructions.
+Older S1.42H/I handovers remain historical/diagnostic context and must not override S1.42J instructions.
 
 ## Historical target reference — juijui
 
@@ -349,32 +351,34 @@ Use juijui as a historical target/reference, not a V81 build base.
 
 ## Immediate next action
 
-Runtime-test **S1.42H**.
+Runtime-test **S1.42J**.
 
 Profile:
-`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+`Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z`
 
 Import:
 **Gale -> Advanced options -> Import all files**
 
-Do not manually change package states or configs. BCMER 1.71.0 is already disabled in S1.42H.
+Do not manually change package states or configs. BCMER 1.71.0 is already disabled in S1.42J.
 
 Primary questions:
 - does the game reach Main Menu and host cleanly;
-- do routed moons remain free of the periodic stalls;
-- does Crawler/Thumper contact with Pikmin trigger the new `[ThumperPikminGuard]` marker without leader removal/death timer;
-- are there zero new Thumper-caused `Leader is null when following` loops;
-- does generic Baboon Hawk grab/bite recovery work if encountered;
-- does Puffer smoke remain harmless to Pikmin;
-- do target enemies still populate the `Enemies` terminal output.
+- do routed moons remain free of periodic stalls;
+- do target enemies still populate the `Enemies` terminal output;
+- do Baboon Hawks completely ignore Pikmin instead of targeting/chasing/biting/grabbing/holding them;
+- do Pikmin avoid attacking/latching Baboon Hawks;
+- does the expected Baboon adapter-disable marker appear;
+- does direct Crawler/Thumper contact produce zero interaction in both directions and the `[ThumperPikminGuard]` marker;
+- Puffer only needs an optional spot-check because S1.42H already established PASS.
 
 Upload the complete fresh log to:
 `RuntimeInbox/Current/`
 
-If a new S1.42H log is already committed, analyze it immediately instead of requesting another test.
+If a new S1.42J log is already committed, analyze it immediately instead of requesting another test.
 
 After this isolated stage passes:
 - remove/disable temporary EnemyIsolation;
 - restore full enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
 - re-enable exact BCMER 1.71.0.
 
+Do not build S1.42K before S1.42J runtime evidence is evaluated.
