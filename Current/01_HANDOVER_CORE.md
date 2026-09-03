@@ -216,15 +216,15 @@ SHA-256:
 `09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
 
 Status:
-**built successfully; awaiting routed-moon smoothness test**
+**built successfully; previous oversized evidence discarded; awaiting clean BCMER-off manual retest**
 
 `BuildSpecs/current.json`:
-`IDLE_AFTER_S1.42G_BUILD_AWAITING_RUNTIME`
+`IDLE_S1.42G_BCMER_OFF_RETEST`
 
 `RuntimeInbox/ACTIVE_BUILD.txt`:
-`S1.42G`
+`S1.42G_BCMER_OFF_RETEST`
 
-Do not build another candidate before S1.42F runtime evidence is evaluated.
+Do not build another candidate before the clean S1.42G BCMER-off retest is evaluated.
 
 ## New-chat takeover
 
@@ -250,17 +250,22 @@ Use juijui as a historical target/reference, not a V81 build base.
 
 ## Immediate next action
 
-Test S1.42G.
+Retest S1.42G as manual variant:
+**`S1.42G_BCMER_OFF_RETEST`**
 
-First gate:
-**reach Main Menu, host, route to a moon, wait 20-30 seconds, and confirm there are no periodic freezes or Coroner Jetpack warning floods.**
+Procedure:
+- import canonical S1.42G with all files;
+- manually disable BCMER only;
+- make no other changes;
+- create a fresh shorter log.
 
-If smooth, continue in the same run:
-- Baboon Hawk generic invincible-Pikmin state recovery;
-- Thumper/Crawler <-> Pikmin zero interaction;
-- Puffer smoke/attack no Pikmin effect;
-- Jetpack ~140 seconds and no sustained/high-speed mid-air self-explosion;
-- Microwave volume 0.7.
+Primary questions:
+- do isolated enemies now populate/spawn;
+- does the `Enemies` terminal command list them;
+- are routed-moon stalls and Coroner Jetpack spam gone;
+- does the HangarShipDoor/DoorAudit spam disappear without BCMER.
+
+Only after the spawn path works should the Baboon Hawk / Thumper / Puffer interaction tests continue.
 
 The temporary isolated-enemy mode must be removed after this regression stage and the full enemy roster restored from:
 `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
