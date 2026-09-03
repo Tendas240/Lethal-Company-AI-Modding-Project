@@ -1,8 +1,16 @@
 {
   "date": "2026-09-03",
   "game": "Lethal Company V81",
+  "canonical_handover": {
+    "master_prompt": "START_HERE_ChatGPT_Masterprompt.txt",
+    "handover": "Current/31_HANDOVER_S1.42H_TO_NEXT.md",
+    "predecessor_analysis": "Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md",
+    "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42H.txt"
+  },
   "accepted_gameplay_baseline": {
     "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
     "status": "accepted"
   },
   "latest_built_candidate": {
@@ -11,31 +19,88 @@
     "sha256": "5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58",
     "compatibility_plugin_version": "1.3.5",
     "compatibility_dll_sha256": "d67f8f4bc2012f5b74086eb268fcb191f6990c93041617e9ef35c635ea33f186",
+    "export_sha256": "57ef07116e555cb5746a62355a4ea84a80e973d9a0989f616da089bf6c3ab978",
+    "build_verification": {
+      "github_actions": "success",
+      "warnings": 0,
+      "errors": 0,
+      "zip_members": 331,
+      "readable_snapshot_files": 330,
+      "changed_existing_members": [
+        "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+        "export.r2x"
+      ],
+      "added_members": []
+    },
     "status": "built_successfully_awaiting_runtime"
   },
-  "valid_predecessor_evidence": {
+  "most_recent_valid_runtime_evidence": {
     "variant": "S1.42G_BCMER_OFF_RETEST",
     "path": "RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/",
     "log_sha256": "ac410c42e8174eb4f01aba1d3b7bf54100454e033ed87659a932f3b7f4a3c87e",
     "findings": [
       "periodic routed-moon freezes resolved",
-      "Crawler and Puffer spawns work with BCMER disabled",
+      "Crawler/Thumper and Puffer spawn with BCMER disabled",
       "Puffer smoke guard activates",
-      "Thumper contact reproduces invalid invincible-Pikmin grabbed/leader state",
-      "BCMER-off removes prior repeated DoorFailure/DoorAudit stack spam",
+      "Thumper contact reproduces invalid invincible-Pikmin grabbed/leader-null state",
+      "BCMER-off removes the previously observed repeated zero-power DoorFailure/DoorAudit stack flood",
       "Coroner Jetpack PlayerController-null flood resolved"
     ]
   },
+  "discarded_evidence": {
+    "path": "RuntimeEvidence/S1.42G/20260903T100914Z/",
+    "status": "intentionally_deleted",
+    "rule": "do_not_search_restore_or_cite"
+  },
   "s142h_test_state": {
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
     "bcmer_enabled": false,
+    "bcmer_is_already_disabled_in_profile": true,
     "isolated_enemy_regression": true,
+    "target_indoor": [
+      "Crawler/Thumper",
+      "Puffer"
+    ],
+    "target_outdoor": [
+      "Baboon Hawk"
+    ],
     "functional_microwave_rarity_changed": false,
     "expected_total_packages": 188,
     "expected_enabled_packages": 182,
     "expected_disabled_packages": 6
   },
-  "next_action": "Runtime-test S1.42H. Do not build another candidate first.",
+  "s142h_runtime_evidence": {
+    "inbox_has_new_log": false,
+    "runtime_evidence_directory_exists": false,
+    "status": "not_tested_yet"
+  },
+  "next_action": {
+    "type": "runtime_test",
+    "build": "S1.42H",
+    "rule": "Do not build S1.42I first.",
+    "import": "Gale -> Advanced options -> Import all files",
+    "primary_checks": [
+      "startup/Main Menu and host",
+      "routed moon remains free of periodic freezes",
+      "Enemies terminal lists/spawns diagnostic targets",
+      "Thumper/Crawler contact does not grab/remove Pikmin leader/start death timer",
+      "no new Thumper-caused Leader is null when following loop",
+      "Baboon Hawk generic invincible-Pikmin state recovery if encountered",
+      "Puffer smoke remains harmless to Pikmin"
+    ],
+    "upload": "RuntimeInbox/Current/"
+  },
+  "after_isolated_enemy_acceptance": {
+    "disable_temporary_enemy_isolation": true,
+    "enemy_restore_point": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+    "reenable_bcmer_1_71_0": true,
+    "pending_followup_tuning": [
+      "Functional Microwave somewhat rarer",
+      "normal gameplay validation including Jetpack ~140 seconds",
+      "interior equal-probability normalization",
+      "MelanieMausoleum-specific fog reduction"
+    ]
+  },
   "runtime_route": "S1.42H",
-  "build_controller": "IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME",
-  "enemy_restore_point": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+  "build_controller": "IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME"
 }
