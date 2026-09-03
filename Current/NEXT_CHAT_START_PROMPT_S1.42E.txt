@@ -1,0 +1,20 @@
+Nutze dieses Repository als vollständige Projektübergabe:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+Lies zuerst START_HERE_ChatGPT_Masterprompt.txt und führe die darin beschriebene Projektübernahme vollständig aus. Lies danach prioritär Current/22_HANDOVER_S1.42E_TO_NEXT.md, Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md, Current/00_CURRENT_STATE.md, Current/01_HANDOVER_CORE.md, Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md und Current/Projektstatus_S1.42E.json.
+
+Wichtiger aktueller Stand:
+- letzter vollständig akzeptierter Gameplay-Baseline-Stand ist S1.41;
+- letzter runtime-getesteter technischer Kandidat, der Gameplay erreichte, ist S1.42C;
+- S1.42D ist wegen eines Startup-Crashs durch unseren zu breiten LethalMin Reflection/Harmony-Scan fehlgeschlagen und darf nicht erneut getestet werden;
+- der nächste bereits gebaute Testkandidat ist S1.42E:
+  Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z
+  SHA-256 4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348
+- S1.42E ist noch NICHT runtime-getestet;
+- erster Testschritt ist ausschließlich zu prüfen, ob das Spiel damit ohne Crash bis ins Main Menu kommt;
+- falls Startup funktioniert, danach den isolierten Enemy-Test mit Thumper/Crawler, Puffer und Baboon Hawk sowie Jetpack/Microwave durchführen;
+- RuntimeInbox/ACTIVE_BUILD.txt steht bereits auf S1.42E;
+- neue Logs kommen nach RuntimeInbox/Current/;
+- BuildSpecs/current.json ist disabled/idle und es soll vor dem S1.42E-Runtimetest kein weiterer Build erstellt werden.
+
+Behalte alle repository-first Regeln bei. Frage nicht nach lokalen PowerShell-Builds oder einem lokalen Repo-Clone, solange die benötigten Basen im Repository liegen.
