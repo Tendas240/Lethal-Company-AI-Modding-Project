@@ -413,3 +413,29 @@ Compatibility plugin v1.3.3:
 - only Coroner's faulty JetpackItem.Update prefix/postfix are unpatched.
 
 Build passed with 0 compiler warnings/errors. Awaiting routed-moon runtime validation.
+
+
+## S1.42G — oversized evidence discarded / BCMER-off retest reset
+
+A later S1.42G test upload was ingested as a ZIP and expanded to an approximately 40 MB combined log.
+
+The evidence path:
+`RuntimeEvidence/S1.42G/20260903T100914Z/`
+
+was intentionally deleted because:
+- repository analysis repeatedly stalled on the oversized combined log;
+- the user explicitly marked the first three runs as non-representative;
+- the final run was not fully/reliably analyzed before discard.
+
+No conclusions from that deleted evidence are canonical.
+
+User-reported observations retained only for reproduction:
+- repeated HangarShipDoor/DoorAudit caller stacks involving BCMER;
+- suspicion around BCMER `Door System: ERROR`;
+- no enemies visible and empty `Enemies` terminal result;
+- Functional Microwaves felt too common.
+
+Next clean test:
+`S1.42G_BCMER_OFF_RETEST`
+
+The user will import canonical S1.42G and manually disable BCMER only. No new profile build is authorized before this retest is evaluated.
