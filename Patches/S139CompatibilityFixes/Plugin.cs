@@ -22,7 +22,7 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.7";
+        public const string PluginVersion = "1.3.8";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
@@ -53,6 +53,8 @@ namespace S139CompatibilityFixes
             PatchDiagnosticEnemyIsolation();
             PatchCoronerJetpackUpdateSpamGuard();
             PatchJetpackCapacityTarget();
+            PatchBaboonHawkDeathCleanup();
+            PatchBaboonHawkCorpseProtection();
             StartCoroutine(DelayedLethalMinPatches());
 
             Logger.LogInfo(
@@ -72,6 +74,7 @@ namespace S139CompatibilityFixes
             yield return null;
             PatchLethalMinGrabBiteStateRepair();
             PatchBaboonHawkPikminZeroInteraction();
+            BaboonHawkDeathCleanup.InitializeLethalMinUnlatch();
         }
 
         private void Update()
@@ -233,6 +236,69 @@ namespace S139CompatibilityFixes
                 $"[BaboonHawkPikminGuard] Zero-interaction initialized; " +
                 $"bitePatched={bitePatched}; baboonStartPatched={startPatched}; " +
                 $"declaredPikminMethods=[{string.Join(", ", declaredPikminMethods)}].");
+        }
+
+        private void PatchBaboonHawkDeathCleanup()
+        {
+            MethodInfo killEnemy = AccessTools.Method(
+                typeof(BaboonBirdAI),
+                "KillEnemy",
+                new Type[] { typeof(bool) });
+
+            if (killEnemy == null ||
+                killEnemy.DeclaringType != typeof(BaboonBirdAI) ||
+                killEnemy.GetMethodBody() == null)
+            {
+                Logger.LogError(
+                    "[BaboonHawkDeathCleanup] Exact declared BaboonBirdAI.KillEnemy(bool) was not found. " +
+                    "Latched-Pikmin death cleanup is NOT active.");
+                return;
+            }
+
+            Harmony.Patch(
+                killEnemy,
+                postfix: new HarmonyMethod(
+                    typeof(BaboonHawkDeathCleanup),
+                    nameof(BaboonHawkDeathCleanup.KillEnemyPostfix))
+                {
+                    priority = Priority.Last
+                });
+
+            Logger.LogInfo(
+                "[BaboonHawkDeathCleanup] Patched exact declared BaboonBirdAI.KillEnemy(bool). " +
+                "Only Pikmin latched under that dying Hawk are released; no scene-wide scan is used.");
+        }
+
+        private void PatchBaboonHawkCorpseProtection()
+        {
+            MethodInfo canGrabScrap = AccessTools.Method(
+                typeof(BaboonBirdAI),
+                "CanGrabScrap",
+                new Type[] { typeof(GrabbableObject) });
+
+            if (canGrabScrap == null ||
+                canGrabScrap.DeclaringType != typeof(BaboonBirdAI) ||
+                canGrabScrap.ReturnType != typeof(bool) ||
+                canGrabScrap.GetMethodBody() == null)
+            {
+                Logger.LogError(
+                    "[BaboonHawkCorpseGuard] Exact declared BaboonBirdAI.CanGrabScrap(GrabbableObject) " +
+                    "was not found. Dead-Baboon-Hawk item protection is NOT active.");
+                return;
+            }
+
+            Harmony.Patch(
+                canGrabScrap,
+                postfix: new HarmonyMethod(
+                    typeof(BaboonHawkCorpseProtection),
+                    nameof(BaboonHawkCorpseProtection.CanGrabScrapPostfix))
+                {
+                    priority = Priority.Last
+                });
+
+            Logger.LogInfo(
+                "[BaboonHawkCorpseGuard] Patched exact declared BaboonBirdAI.CanGrabScrap(GrabbableObject). " +
+                "Living Baboon Hawks will ignore only the SellBodies Dead Baboon Hawk item; players/Pikmin remain unaffected.");
         }
 
         private void PatchDiagnosticEnemyIsolation()
@@ -1156,6 +1222,144 @@ namespace S139CompatibilityFixes
                 return unityObject.GetInstanceID();
 
             return 0;
+        }
+    }
+
+    internal static class BaboonHawkDeathCleanup
+    {
+        private static Type PikminAiType;
+        private static MethodInfo RemoveCurrentTaskMethod;
+
+        internal static void InitializeLethalMinUnlatch()
+        {
+            PikminAiType = AccessTools.TypeByName("LethalMin.PikminAI");
+            if (PikminAiType == null)
+            {
+                Plugin.Log.LogError(
+                    "[BaboonHawkDeathCleanup] LethalMin.PikminAI was not found. " +
+                    "Death-unlatch cleanup is NOT active.");
+                return;
+            }
+
+            RemoveCurrentTaskMethod = AccessTools.Method(
+                PikminAiType,
+                "RemoveCurrentTask",
+                Type.EmptyTypes);
+
+            if (RemoveCurrentTaskMethod == null ||
+                RemoveCurrentTaskMethod.DeclaringType != PikminAiType ||
+                RemoveCurrentTaskMethod.ReturnType != typeof(void) ||
+                RemoveCurrentTaskMethod.GetParameters().Length != 0 ||
+                RemoveCurrentTaskMethod.GetMethodBody() == null)
+            {
+                RemoveCurrentTaskMethod = null;
+                string[] candidates = PikminAiType
+                    .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
+                    .Where(m =>
+                        m.Name.IndexOf("Task", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        m.Name.IndexOf("Latch", StringComparison.OrdinalIgnoreCase) >= 0)
+                    .Select(m => m.Name + "(" + string.Join(",", m.GetParameters().Select(p => p.ParameterType.Name)) + "):" + m.ReturnType.Name)
+                    .Distinct()
+                    .OrderBy(x => x, StringComparer.OrdinalIgnoreCase)
+                    .ToArray();
+
+                Plugin.Log.LogError(
+                    "[BaboonHawkDeathCleanup] Exact declared LethalMin.PikminAI.RemoveCurrentTask() was not found. " +
+                    $"Death-unlatch cleanup is NOT active. Task/latch candidates=[{string.Join(", ", candidates)}].");
+                return;
+            }
+
+            Plugin.Log.LogInfo(
+                "[BaboonHawkDeathCleanup] Resolved exact declared LethalMin.PikminAI.RemoveCurrentTask() " +
+                "for Baboon-Hawk death unlatching.");
+        }
+
+        public static void KillEnemyPostfix(BaboonBirdAI __instance, bool destroy)
+        {
+            if (__instance == null || destroy || Plugin.Instance == null)
+                return;
+
+            Plugin.Instance.StartCoroutine(ReleaseLatchedPikminNextFrame(__instance));
+        }
+
+        private static IEnumerator ReleaseLatchedPikminNextFrame(BaboonBirdAI baboon)
+        {
+            yield return null;
+
+            if (baboon == null || PikminAiType == null || RemoveCurrentTaskMethod == null)
+                yield break;
+
+            MonoBehaviour[] behaviours = baboon.GetComponentsInChildren<MonoBehaviour>(true);
+            int found = 0;
+            int released = 0;
+
+            foreach (MonoBehaviour behaviour in behaviours)
+            {
+                if (behaviour == null || !PikminAiType.IsAssignableFrom(behaviour.GetType()))
+                    continue;
+
+                found++;
+
+                try
+                {
+                    RemoveCurrentTaskMethod.Invoke(behaviour, null);
+                    released++;
+                }
+                catch (TargetInvocationException ex)
+                {
+                    Exception inner = ex.InnerException ?? ex;
+                    Plugin.Log.LogWarning(
+                        $"[BaboonHawkDeathCleanup] RemoveCurrentTask failed for {behaviour.gameObject.name}: " +
+                        $"{inner.GetType().Name}: {inner.Message}");
+                }
+                catch (Exception ex)
+                {
+                    Plugin.Log.LogWarning(
+                        $"[BaboonHawkDeathCleanup] RemoveCurrentTask failed for {behaviour.gameObject.name}: " +
+                        $"{ex.GetType().Name}: {ex.Message}");
+                }
+            }
+
+            Plugin.Log.LogInfo(
+                $"[BaboonHawkDeathCleanup] Dying {baboon.gameObject.name}: released {released}/{found} " +
+                "latched Pikmin before SellBodies can move the original enemy transform.");
+        }
+    }
+
+    internal static class BaboonHawkCorpseProtection
+    {
+        private static readonly HashSet<int> LoggedBodyIds = new HashSet<int>();
+
+        public static void CanGrabScrapPostfix(GrabbableObject scrap, ref bool __result)
+        {
+            if (!__result || scrap == null)
+                return;
+
+            string objectName = scrap.gameObject != null ? scrap.gameObject.name : string.Empty;
+            string itemName =
+                scrap.itemProperties != null
+                    ? scrap.itemProperties.itemName
+                    : string.Empty;
+
+            string normalizedObject = DiagnosticEnemyIsolation.NormalizeEnemyName(objectName);
+            string normalizedItem = DiagnosticEnemyIsolation.NormalizeEnemyName(itemName);
+
+            bool isDeadBaboonHawk =
+                normalizedObject.IndexOf("baboonhawkbody", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                normalizedItem == "deadbaboonhawk";
+
+            if (!isDeadBaboonHawk)
+                return;
+
+            __result = false;
+
+            int id = scrap.GetInstanceID();
+            if (LoggedBodyIds.Add(id))
+            {
+                Plugin.Log.LogInfo(
+                    $"[BaboonHawkCorpseGuard] Living Baboon Hawk ignored corpse item " +
+                    $"{scrap.gameObject.name} / {itemName}. Pikmin/player carrying remains allowed.");
+            }
         }
     }
 
