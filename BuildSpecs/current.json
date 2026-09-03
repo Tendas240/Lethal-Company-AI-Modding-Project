@@ -1,15 +1,41 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42O_BUILD_AWAITING_RUNTIME",
+  "enabled": true,
+  "build_id": "S1.42P",
   "base_profile": "Profiles/LC V1 S1.42O Baboon Hawk Native Task Finalization.r2z",
   "base_sha256": "04d7e0df7f7a3b51d75832e9052c3e217ec07f91526c767323e1b5b0a3078d4d",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z",
+  "profile_name": "LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery",
   "overwrite": false,
-  "mod_state_changes": [],
+  "mod_state_changes": [
+    {
+      "name": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+      "version": "1.71.0",
+      "enabled": false
+    }
+  ],
   "mod_additions": [],
   "mod_removals": [],
   "config_patches": [],
-  "local_plugin_builds": [],
-  "text_assertions": []
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S139CompatibilityFixes/bin/Release/netstandard2.1/S139CompatibilityFixes.dll",
+      "archive_path": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+      "contains": "Isolated Enemy Regression = true"
+    },
+    {
+      "path": "BepInEx/config/Entity378.sellbodies.cfg",
+      "contains": "Enable selling of Baboon Hawk Bodies = true"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Attack Blacklist = Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy"
+    }
+  ]
 }
