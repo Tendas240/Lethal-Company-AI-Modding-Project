@@ -22,13 +22,14 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.0";
+        public const string PluginVersion = "1.3.1";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
         internal static Plugin Instance;
 
         private float _nextDiagnosticIsolationTick;
+        private float _nextJetpackTargetTick;
 
         private void Awake()
         {
@@ -72,10 +73,15 @@ namespace S139CompatibilityFixes
 
         private void Update()
         {
-            if (!DiagnosticEnemyIsolation.Enabled)
-                return;
+            if (!JetpackCapacityGuard.TargetApplied &&
+                Time.unscaledTime >= _nextJetpackTargetTick)
+            {
+                _nextJetpackTargetTick = Time.unscaledTime + 1f;
+                JetpackCapacityGuard.ApplyToLoadedItems(logIfMissing: false);
+            }
 
-            if (Time.unscaledTime < _nextDiagnosticIsolationTick)
+            if (!DiagnosticEnemyIsolation.Enabled ||
+                Time.unscaledTime < _nextDiagnosticIsolationTick)
                 return;
 
             _nextDiagnosticIsolationTick = Time.unscaledTime + 1f;
@@ -86,7 +92,6 @@ namespace S139CompatibilityFixes
         private void PatchLethalMinGrabBiteStateRepair()
         {
             int patched = 0;
-            HashSet<MethodBase> seen = new HashSet<MethodBase>();
 
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
@@ -115,20 +120,65 @@ namespace S139CompatibilityFixes
                     if (type == null)
                         continue;
 
-                    foreach (MethodInfo method in type.GetMethods(
-                        BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic))
+                    // S1.42D crashed because the broad scan also attempted to Harmony-patch
+                    // inherited PikminAI/PikminItem methods through derived types. HarmonyX
+                    // explicitly warned those were not declared/implemented methods.
+                    //
+                    // Only patch concrete LethalMin enemy-adapter classes, and only methods
+                    // actually declared on that class. This still covers BaboonBird,
+                    // BushWolf, ForestGiant, RadMech, and future *PikminEnemy adapters
+                    // without touching generic PikminAI state-machine methods at startup.
+                    string typeName = type.Name ?? string.Empty;
+                    if (typeName.IndexOf("PikminEnemy", StringComparison.OrdinalIgnoreCase) < 0)
+                        continue;
+
+                    MethodInfo[] declared;
+                    try
                     {
-                        if (method == null || method.IsAbstract || method.ContainsGenericParameters)
+                        declared = type.GetMethods(
+                            BindingFlags.Instance |
+                            BindingFlags.Static |
+                            BindingFlags.Public |
+                            BindingFlags.NonPublic |
+                            BindingFlags.DeclaredOnly);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.LogWarning(
+                            $"[LethalMinStateGuard] Could not inspect declared methods on {type.FullName}: " +
+                            $"{ex.GetType().Name}: {ex.Message}");
+                        continue;
+                    }
+
+                    foreach (MethodInfo method in declared)
+                    {
+                        if (method == null ||
+                            method.IsAbstract ||
+                            method.ContainsGenericParameters ||
+                            method.IsPInvokeImpl)
                             continue;
 
                         string name = method.Name ?? string.Empty;
-                        bool candidate =
-                            name.IndexOf("BitePikmin", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                            name.IndexOf("GrabPikmin", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                            string.Equals(name, "GrabbedByEnemy", StringComparison.OrdinalIgnoreCase);
 
-                        if (!candidate || !seen.Add(method))
+                        // Patch the actual local interaction method, not generated
+                        // ServerRpc/ClientRpc wrappers.
+                        bool candidate =
+                            string.Equals(name, "BitePikmin", StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(name, "GrabPikmin", StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(name, "GrabPikminWithTongue", StringComparison.OrdinalIgnoreCase);
+
+                        if (!candidate)
                             continue;
+
+                        try
+                        {
+                            if (method.GetMethodBody() == null)
+                                continue;
+                        }
+                        catch
+                        {
+                            continue;
+                        }
 
                         try
                         {
@@ -139,12 +189,14 @@ namespace S139CompatibilityFixes
 
                             patched++;
                             Logger.LogInfo(
-                                $"[LethalMinStateGuard] Patched {type.FullName}.{method.Name} for post-grab invincible-Pikmin state validation.");
+                                $"[LethalMinStateGuard] Safely patched declared enemy interaction " +
+                                $"{type.FullName}.{method.Name}.");
                         }
                         catch (Exception ex)
                         {
                             Logger.LogWarning(
-                                $"[LethalMinStateGuard] Failed to patch {type.FullName}.{method.Name}: {ex.GetType().Name}: {ex.Message}");
+                                $"[LethalMinStateGuard] Failed to patch {type.FullName}.{method.Name}: " +
+                                $"{ex.GetType().Name}: {ex.Message}");
                         }
                     }
                 }
@@ -153,13 +205,13 @@ namespace S139CompatibilityFixes
             if (patched == 0)
             {
                 Logger.LogError(
-                    "[LethalMinStateGuard] No LethalMin BitePikmin/GrabPikmin methods were found. " +
+                    "[LethalMinStateGuard] No declared LethalMin enemy BitePikmin/GrabPikmin methods were found. " +
                     "The generic state repair is NOT active; capture the startup log before testing.");
             }
             else
             {
                 Logger.LogInfo(
-                    $"[LethalMinStateGuard] Generic grab/bite state repair registered on {patched} LethalMin method(s).");
+                    $"[LethalMinStateGuard] Safe generic grab/bite state repair registered on {patched} declared enemy method(s).");
             }
         }
 
@@ -172,30 +224,22 @@ namespace S139CompatibilityFixes
             }
 
             Logger.LogWarning(
-                "[EnemyIsolation] S1.42D TEST MODE ENABLED. Indoor allowlist: Crawler/Thumper + Puffer. " +
+                "[EnemyIsolation] ISOLATED ENEMY TEST MODE ENABLED. Indoor allowlist: Crawler/Thumper + Puffer. " +
                 "Outdoor allowlist: Baboon Hawk. Pikmin-family entities remain allowed. " +
                 "All other enemy spawns are removed from in-memory level pools and escaped server spawns are despawned.");
         }
 
         private void PatchJetpackCapacityTarget()
         {
-            Type jetpackType = AccessTools.TypeByName("JetpackItem");
-            MethodInfo start = jetpackType == null ? null : AccessTools.Method(jetpackType, "Start");
-
-            if (start == null)
-            {
-                Logger.LogWarning(
-                    "[Jetpack140] JetpackItem.Start was not found. Applying the loaded-item fallback only.");
-            }
-            else
-            {
-                Harmony.Patch(
-                    start,
-                    postfix: new HarmonyMethod(typeof(JetpackCapacityGuard), nameof(JetpackCapacityGuard.Postfix)));
-                Logger.LogInfo("[Jetpack140] Patched JetpackItem.Start to enforce the 140-second historical juijui battery target.");
-            }
-
-            JetpackCapacityGuard.ApplyToLoadedItems();
+            // S1.42D showed JetpackItem does not declare Start; AccessTools.Method
+            // resolved inherited GrabbableObject.Start and HarmonyX warned about the
+            // overly broad target. Do not patch an inherited lifecycle method.
+            //
+            // The battery duration lives on the loaded Jetpack Item asset, so retry
+            // that narrow asset mutation from Update until the content is available.
+            JetpackCapacityGuard.ApplyToLoadedItems(logIfMissing: true);
+            Logger.LogInfo(
+                "[Jetpack140] Using loaded Jetpack Item asset targeting only; no GrabbableObject.Start Harmony patch.");
         }
 
         private void PatchEnemyScan()
@@ -312,34 +356,52 @@ namespace S139CompatibilityFixes
     internal static class JetpackCapacityGuard
     {
         internal const float TargetSeconds = 140f;
+        internal static bool TargetApplied;
 
-        public static void Postfix(object __instance)
-        {
-            GrabbableObject grabbable = __instance as GrabbableObject;
-            if (grabbable == null || grabbable.itemProperties == null)
-                return;
-
-            Apply(grabbable.itemProperties, "JetpackItem.Start");
-        }
-
-        internal static void ApplyToLoadedItems()
+        internal static void ApplyToLoadedItems(bool logIfMissing)
         {
             Item[] items = Resources.FindObjectsOfTypeAll<Item>();
-            int changed = 0;
+            bool foundJetpack = false;
 
             foreach (Item item in items)
             {
                 if (item == null || !string.Equals(item.itemName, "Jetpack", StringComparison.OrdinalIgnoreCase))
                     continue;
 
+                foundJetpack = true;
                 if (Apply(item, "loaded Item registry"))
-                    changed++;
+                    TargetApplied = true;
+                else if (ReadBatteryUsage(item, out float current) &&
+                         Math.Abs(current - TargetSeconds) < 0.001f)
+                    TargetApplied = true;
             }
 
-            if (changed == 0)
+            if (!foundJetpack && logIfMissing)
             {
                 Plugin.Log.LogInfo(
-                    "[Jetpack140] No loaded Jetpack Item asset needed adjustment yet; JetpackItem.Start remains patched.");
+                    "[Jetpack140] Jetpack Item asset is not loaded yet; narrow asset targeting will retry.");
+            }
+        }
+
+        private static bool ReadBatteryUsage(Item item, out float value)
+        {
+            value = 0f;
+            if (item == null)
+                return false;
+
+            FieldInfo field = AccessTools.Field(item.GetType(), "batteryUsage") ??
+                              AccessTools.Field(typeof(Item), "batteryUsage");
+            if (field == null)
+                return false;
+
+            try
+            {
+                value = Convert.ToSingle(field.GetValue(item));
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
 
