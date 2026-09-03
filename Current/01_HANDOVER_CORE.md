@@ -2,154 +2,100 @@
 
 ## Identity
 
-Game:
-
-**Lethal Company V81**
-
-Repository:
-
-`Tendas240/Lethal-Company-AI-Modding-Project`
-
+Game: **Lethal Company V81**  
+Repository: `Tendas240/Lethal-Company-AI-Modding-Project`  
 Repository is the source of truth.
 
 ## Read first
 
-1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/71_HANDOVER_S1.42S_TO_NEXT_FINAL.md`
-3. `Current/72_REPOSITORY_HANDOVER_AUDIT_S1.42S.md`
-4. `Current/Projektstatus_S1.42S.json`
-5. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
-6. `Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md`
+1. `Current/00_CURRENT_STATE.md`
+2. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
+3. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+4. `Current/Projektstatus_S1.42T.json`
+5. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+6. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
 7. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
 8. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
 9. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-10. `BuildSpecs/S1.42T_PLAN.md`
+10. `BuildSpecs/S1.42U_PLAN.md`
 11. `BuildSpecs/current.json`
 12. `RuntimeInbox/ACTIVE_BUILD.txt`
 
-## Accepted baseline
+Older S1.42S handover/audit files remain historical evidence but no longer define the active next step.
 
-Last fully accepted normal gameplay baseline:
+## Accepted roles
 
-**S1.41 — BCMER Reactivation**
+Last fully accepted full normal gameplay baseline:
 
-Profile:
+**S1.41 — BCMER Reactivation**  
+SHA-256 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-`Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
+Newest accepted technical descendant:
 
-SHA-256:
+**S1.42T — Normal Enemy Restore**  
+Profile `Profiles/LC V1 S1.42T Normal Enemy Restore.r2z`  
+SHA-256 `a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10`
 
-`d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
+S1.42T scope verdict: **PASS**.
 
-## Current technical descendant
+## Latest runtime evidence
 
-**S1.42S — Baboon Adapter Lifecycle Restore**
+`RuntimeEvidence/S1.42T/20260903T222109Z/`
 
-Profile:
+Raw log SHA-256:
 
-`Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z`
+`b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f`
 
-SHA-256:
+Normal enemy population is directly proven by runtime spawn/active-instance evidence. Manual `Enemies` terminal scan was missed because the player died, but is not required to repeat this gate.
 
-`addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee`
+Critical counts:
 
-Compatibility plugin:
+- Work/no-task = 0
+- Leader-null = 0
+- Fatal = 0
+- project compatibility Error = 0
+- no new compatibility exception flood.
 
-**v1.3.14**
+Player death = `DeathPlayerJetpackBlast`, not crash.
 
-DLL SHA-256:
+## Current technical state
 
-`3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`
+- EnemyIsolation: **off** (`Isolated Enemy Regression = false`)
+- BCMER exact 1.71.0: **disabled intentionally**
+- compatibility plugin: v1.3.14
+- compatibility DLL SHA-256: `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`
+- Thumper Bite Limit: 3
+- Crawler: not in Attack Blacklist
 
-Status:
-
-**focused runtime accepted / isolated regression pass**
-
-## Runtime result
-
-Evidence:
-
-`RuntimeEvidence/S1.42S/20260903T205550Z/`
-
-Log SHA-256:
-
-`9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea`
-
-The three focused Pikmin stopped attacking immediately after Baboon Hawk death, remained recoverable, and native corpse carry/Onion delivery worked.
-
-No Work/no-task loop.
-
-No Leader-null loop.
-
-## Do-not-regress root cause
-
-Do not disable complete `LethalMin.BaboonBirdPikminEnemy`.
-
-It owns inherited native death/unlatch cleanup.
-
-S1.42S correctly keeps the component enabled and blocks only narrow Hawk -> Pikmin entry points.
-
-See Current/66 and Current/69.
-
-## Temporary state
-
-EnemyIsolation:
-
-**enabled**
-
-`Isolated Enemy Regression = true`
-
-BCMER exact 1.71.0:
-
-**disabled**
-
-Thumper Bite Limit:
-
-**3**
-
-Crawler:
-
-**not in Attack Blacklist**
+Never disable complete `LethalMin.BaboonBirdPikminEnemy`; preserve inherited native death/unlatch lifecycle.
 
 ## Exact next step
 
-Prepare/build:
+Prepare/build **S1.42U — BCMER 1.71.0 Reactivation Gate** from S1.42T.
 
-**S1.42T — Normal Enemy Restore**
+Only intended package-state change:
 
-From S1.42S.
+- `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`: disabled -> enabled.
 
-Only required gameplay delta for the first restore gate:
-
-`Isolated Enemy Regression = false`
-
-Preserve:
-
-- compatibility v1.3.14;
-- Thumper Bite Limit 3;
-- Crawler attackable by Pikmin;
-- all accepted permanent compatibility fixes.
-
-Keep BCMER exact 1.71.0 disabled for S1.42T so normal-enemy restoration is tested as one variable.
-
-Then runtime-test normal enemy population.
-
-Only after S1.42T passes, re-enable exact BCMER 1.71.0 in a separate controlled stage.
+Do not upgrade BCMER. Do not change compatibility code. Do not mix other gameplay tuning.
 
 ## Controllers
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42S`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42T`
 
-`BuildSpecs/current.json` is disabled and idle after S1.42S PASS.
+`BuildSpecs/current.json` is disabled/idle after S1.42T runtime PASS. No build is armed.
 
-Do not build from a local clone.
+## Runtime log handling
 
-Use repository-first GitHub Actions/profile builder.
+See `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`.
+
+- normal logs: `RuntimeInbox/Current/`;
+- large logs: disposable `runtime-large` branch + `RuntimeInbox/Large/`;
+- all logs receive streaming every-line analysis;
+- very large raw evidence is temporary, not permanent `main` history;
+- arbitrary raw context can be materialized while the 14-day artifact exists via `RuntimeAnalysis/QUERY.json`;
+- raw/auxiliary logs may be pruned after dependent gates/issues close and canonical evidence is preserved.
 
 ## Patch policy
 
-All future custom patches require:
-
-`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-
-Every patch build plan must contain a Patch Safety Review.
+All future project-local patches require `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` and a Patch Safety Review.
