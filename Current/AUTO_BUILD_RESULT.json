@@ -1,10 +1,10 @@
 {
-  "build_id": "S1.42O",
-  "profile_name": "LC V1 S1.42O Baboon Hawk Native Task Finalization",
-  "base_profile": "Profiles/LC V1 S1.42N Baboon Hawk Death Target Resolver.r2z",
-  "base_sha256": "c87d48464a750f87274e2848c44e5e1e24d4f1da087f59a33e2889744ebc13e9",
-  "output_profile": "Profiles/LC V1 S1.42O Baboon Hawk Native Task Finalization.r2z",
-  "output_sha256": "04d7e0df7f7a3b51d75832e9052c3e217ec07f91526c767323e1b5b0a3078d4d",
+  "build_id": "S1.42P",
+  "profile_name": "LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery",
+  "base_profile": "Profiles/LC V1 S1.42O Baboon Hawk Native Task Finalization.r2z",
+  "base_sha256": "04d7e0df7f7a3b51d75832e9052c3e217ec07f91526c767323e1b5b0a3078d4d",
+  "output_profile": "Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z",
+  "output_sha256": "11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5",
   "zip_members": 331,
   "changed_existing_members": [
     "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
@@ -20,7 +20,7 @@
   ],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42O",
+  "snapshot_dir": "ProfileSources/S1.42P",
   "snapshot": {
     "entries": 331,
     "text_entries": 330
