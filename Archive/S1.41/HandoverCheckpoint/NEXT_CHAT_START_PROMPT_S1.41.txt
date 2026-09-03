@@ -1,0 +1,4 @@
+Nutze dieses Repository als vollständige Projektübergabe:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+Lies zuerst START_HERE_ChatGPT_Masterprompt.txt und führe die darin beschriebene Projektübernahme vollständig aus. Der aktuelle kanonische und runtime-akzeptierte Stand ist weiterhin S1.41. S1.42A Interior Config Seed wurde bereits repository-first über GitHub Actions gebaut und automation-verifiziert: Profiles/LC V1 S1.42A Interior Config Seed.r2z, SHA-256 70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe. Lies insbesondere Current/12_HANDOVER_S1.41_TO_S1.42A.md und BuildSpecs/S1.42A_PLAN.md. Nächster verbindlicher Schritt ist der S1.42A Runtime-Config-Generation-Seed-Test mit anschließendem Upload von vollständigem BepInEx/config-ZIP und LogOutput.log nach RuntimeInbox/Current/. Baue S1.42A nicht erneut, solange kein technischer Grund dafür vorliegt. Fordere keinen lokalen Repo-Clone und keine PowerShell-Profilbuilds an.
