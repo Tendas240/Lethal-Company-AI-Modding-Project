@@ -64,6 +64,16 @@
     "jetpack": "match old juijui value if evidenced; do not guess; 50s only fallback candidate",
     "unknown_enemy_powerlevels": "never guess"
   },
+  "historical_reference_profile": {
+    "name": "juijui",
+    "role": "historical_primary_reference_for_original_project_target",
+    "expected_profile": "References/LegacyProfiles/juijui/juijui.r2z",
+    "documentation": "Current/18_JUIJUI_LEGACY_REFERENCE.md",
+    "upload_status": "pending_user_upload",
+    "project_intent": "Approximate the old juijui mod constellation/configuration as closely as technically reasonable while respecting current game version, maintained mods and compatibility.",
+    "jetpack_use": "Recover the exact historical Jetpack capacity/duration from this profile after upload; do not guess.",
+    "is_current_build_base": false
+  },
   "pending_engineering_priority": {
     "id": "generic_lethalmin_grab_bite_invincible_leader_state",
     "evidence": "Baboon Hawk bite in S1.42C caused leader removal + grabbed state + invincibility-blocked death + repeated Leader is null when following",
