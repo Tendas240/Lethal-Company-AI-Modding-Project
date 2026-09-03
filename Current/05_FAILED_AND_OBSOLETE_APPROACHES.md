@@ -1,3 +1,15 @@
+## S1.42S correction — never disable BaboonBirdPikminEnemy
+
+**Do not disable the complete `LethalMin.BaboonBirdPikminEnemy` component.**
+
+S1.42R runtime proved that the project-side adapter disable suppresses inherited `PikminEnemy.Update()`, including native `RemoveAndDisableTriggers() -> RemoveAllPikmin(3)` after enemy death. That causes latched Pikmin to remain on stale `AttackEnemy` tasks until teardown.
+
+Also do not treat the `AttackEnemyTask.IntervaledUpdate()` latched early return by itself as the complete upstream root cause. LethalMin's native lifecycle first removes/unlatches Pikmin from the dead enemy adapter, after which the task can complete normally.
+
+Current protection must remain narrow: block Baboon Hawk -> Pikmin `OnColideWithPikmin` / `BitePikmin` / proven GrabPikmin entry points while keeping the adapter component enabled.
+
+Evidence: `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`.
+
 # 05 — Failed, Obsolete, Parked, or Misclassified Approaches
 
 Do not reintroduce these without new technical evidence or explicit user instruction.
