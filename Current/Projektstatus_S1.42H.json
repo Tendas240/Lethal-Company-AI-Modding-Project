@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "status": "accepted"
+  },
+  "latest_built_candidate": {
+    "build": "S1.42H",
+    "profile": "Profiles/LC V1 S1.42H Thumper Grab Guard.r2z",
+    "sha256": "5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58",
+    "compatibility_plugin_version": "1.3.5",
+    "compatibility_dll_sha256": "d67f8f4bc2012f5b74086eb268fcb191f6990c93041617e9ef35c635ea33f186",
+    "status": "built_successfully_awaiting_runtime"
+  },
+  "valid_predecessor_evidence": {
+    "variant": "S1.42G_BCMER_OFF_RETEST",
+    "path": "RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/",
+    "log_sha256": "ac410c42e8174eb4f01aba1d3b7bf54100454e033ed87659a932f3b7f4a3c87e",
+    "findings": [
+      "periodic routed-moon freezes resolved",
+      "Crawler and Puffer spawns work with BCMER disabled",
+      "Puffer smoke guard activates",
+      "Thumper contact reproduces invalid invincible-Pikmin grabbed/leader state",
+      "BCMER-off removes prior repeated DoorFailure/DoorAudit stack spam",
+      "Coroner Jetpack PlayerController-null flood resolved"
+    ]
+  },
+  "s142h_test_state": {
+    "bcmer_enabled": false,
+    "isolated_enemy_regression": true,
+    "functional_microwave_rarity_changed": false,
+    "expected_total_packages": 188,
+    "expected_enabled_packages": 182,
+    "expected_disabled_packages": 6
+  },
+  "next_action": "Runtime-test S1.42H. Do not build another candidate first.",
+  "runtime_route": "S1.42H",
+  "build_controller": "IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME",
+  "enemy_restore_point": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+}
