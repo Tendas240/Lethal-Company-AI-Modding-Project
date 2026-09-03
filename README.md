@@ -144,17 +144,34 @@ Do not restore normal enemies or BCMER before R passes.
 ## ChatGPT - read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
-3. `Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
-4. `BuildSpecs/S1.42R_PLAN.md`
-5. `Current/Projektstatus_S1.42R.json`
-6. `Current/00_CURRENT_STATE.md`
-7. `Current/01_HANDOVER_CORE.md`
-8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-9. `Current/VERIFIKATION_S1.42R.txt`
-10. `Current/SHA256SUMS_S1.42R.txt`
-11. `Current/Aktive_Modliste_S1.42R.txt`
-12. `BuildSpecs/current.json`
-13. `RuntimeInbox/ACTIVE_BUILD.txt`
-14. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-15. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+2. `Current/64_HANDOVER_S1.42R_TO_NEXT_FINAL.md`
+3. `Current/65_REPOSITORY_HANDOVER_AUDIT_S1.42R.md`
+4. `Current/Projektstatus_S1.42R.json`
+5. `Current/00_CURRENT_STATE.md`
+6. `Current/01_HANDOVER_CORE.md`
+7. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+8. `Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
+9. `Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
+10. `Current/63_S1.42R_LATCHED_DEAD_TARGET_COMPLETION_BUILD.md`
+11. `Current/VERIFIKATION_S1.42R.txt`
+12. `Current/SHA256SUMS_S1.42R.txt`
+13. `Current/Aktive_Modliste_S1.42R.txt`
+14. `BuildSpecs/S1.42R_PLAN.md`
+15. `BuildSpecs/current.json`
+16. `RuntimeInbox/ACTIVE_BUILD.txt`
+17. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+18. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+
+
+## Handover readiness
+
+Final handover:
+`Current/64_HANDOVER_S1.42R_TO_NEXT_FINAL.md`
+
+Repository audit:
+`Current/65_REPOSITORY_HANDOVER_AUDIT_S1.42R.md`
+
+Audit verdict:
+**PASS — ready for a new chat; S1.42R runtime validation is still pending.**
+
+No local clone or local build is required.
