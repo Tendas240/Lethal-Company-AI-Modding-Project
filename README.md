@@ -9,54 +9,58 @@
 SHA-256:
 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-**Most recent valid runtime evidence:** `S1.42G_BCMER_OFF_RETEST`
+**Most recent valid runtime evidence:** S1.42H
 
-`RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/`
+`RuntimeEvidence/S1.42H/20260903T125734Z/`
 
 Log SHA-256:
-`ac410c42e8174eb4f01aba1d3b7bf54100454e033ed87659a932f3b7f4a3c87e`
+`81ed064ce97d25f250d6fba1585055baef8ce801cd0f13626d074bf4fef71029`
 
-Confirmed by that clean run:
-- periodic routed-moon freezes are resolved;
-- Crawler/Thumper and Puffer spawn correctly with BCMER disabled;
-- Puffer smoke/Pikmin guard activates;
-- Coroner's previous per-frame Jetpack `PlayerController was null` flood is gone;
-- the repeated zero-power DoorAudit/HangarShipDoor stack flood does not reproduce with BCMER disabled;
-- Thumper contact still reproduced LethalMin's invalid invincible-Pikmin grabbed/leader-null state.
+S1.42H confirmed:
+- startup and exact one-time `PikminAI.GrabPikmin` hook pass;
+- isolated Crawler/Puffer/Baboon-Hawk spawning works with BCMER disabled;
+- in-game `Enemies` output works per user observation;
+- Puffer smoke -> Pikmin guard passes;
+- Baboon Hawk + invincible Pikmin remains broken: repeated hold/re-grab causes grabbed death timers and leader-null errors despite post-grab repairs;
+- a Crawler spawned, but direct Thumper/Crawler <-> Pikmin contact was not validated.
 
-**Latest built test candidate:** S1.42H
+**Latest built test candidate:** S1.42I
 
-`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+`Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z`
 
 SHA-256:
-`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
+`c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97`
 
 Compatibility plugin:
-- version **1.3.5**
-- DLL SHA-256 `d67f8f4bc2012f5b74086eb268fcb191f6990c93041617e9ef35c635ea33f186`
+- version **1.3.6**
+- DLL SHA-256 `76544a536f5c626f0c81b50dc06a7bf1521c265cd23a7698917789e3846eecb2`
 
 Build verification:
 - GitHub Actions success;
 - 0 warnings / 0 errors;
 - 331 archive members;
-- only the compatibility DLL and `export.r2x` changed against S1.42G.
+- 330 readable snapshot files;
+- changed members only: compatibility DLL + `export.r2x`;
+- no added members;
+- 188 packages total / 182 enabled / 6 disabled;
+- BCMER 1.71.0 remains disabled.
 
-S1.42H:
-- patches exactly the declared `LethalMin.PikminAI.GrabPikmin(Transform,float,int)` implementation once;
-- blocks Crawler/Thumper -> Pikmin grabs before leader removal/death timer;
-- retains Crawler in LethalMin's Pikmin Attack Blacklist for the reverse direction;
-- carries forward the late-lifecycle EnemyIsolation without any continuous global EnemyAI scan;
-- contains BCMER 1.71.0 already **disabled** for this final isolated enemy test;
-- leaves Functional Microwave rarity unchanged.
+S1.42I adds one narrow compatibility rule:
+- Baboon Hawk/Baboon Bird `GrabPikmin` is blocked only when the target Pikmin is invincible, before hold/leader/death-timer mutation.
+- Mortal-Pikmin Baboon-Hawk behavior is not globally blacklisted.
+- Existing Thumper and Puffer guards remain unchanged.
 
-**Current next gate:** runtime-test S1.42H. Do not build S1.42I first.
+**Current next gate:** runtime-test S1.42I. Do not build S1.42J first.
+
+Primary acceptance:
+- `[BaboonHawkPikminGuard]` appears during a Baboon-Hawk attack on invincible Pikmin;
+- no beak hold/immobilization, grabbed death timer, or Baboon-caused leader-null loop;
+- direct Thumper/Crawler contact triggers `[ThumperPikminGuard]` and produces no interaction in either direction.
 
 After the isolated enemy stage passes:
-- remove/disable the temporary EnemyIsolation diagnostic;
+- remove/disable temporary EnemyIsolation;
 - restore the full normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
 - re-enable exact BCMER 1.71.0.
-
-The old oversized S1.42G ingest formerly under `RuntimeEvidence/S1.42G/20260903T100914Z/` was intentionally deleted and must not be restored or cited.
 
 Game: **Lethal Company V81**
 
