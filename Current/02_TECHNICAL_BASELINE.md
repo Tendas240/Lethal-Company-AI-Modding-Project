@@ -43,72 +43,98 @@ Source:
 
 Current source version:
 
-**1.3.3**
+**1.3.5**
 
-Runtime status:
+Runtime/build status:
 - v1.2.0 is proven non-crashing in S1.42C;
 - v1.3.0 in S1.42D caused a startup crash due to an over-broad LethalMin Harmony scan;
-- v1.3.1 in S1.42E is runtime-proven startup-safe and registered 4 declared LethalMin enemy methods, but its diagnostic EnemyIsolation caused periodic Gordion lobby freezes;
-- v1.3.2 in S1.42F fixed the Gordion constructor loop, but routed moons still showed periodic stalls and Coroner Jetpack per-frame warning spam;
-- v1.3.3 in S1.42G removes the continuous EnemyAI scan and only Coroner's faulty JetpackItem.Update hook; awaiting runtime validation.
+- v1.3.1 in S1.42E is runtime-proven startup-safe, but its EnemyIsolation constructor path caused periodic Gordion freezes;
+- v1.3.2 in S1.42F fixed the constructor loop, but routed moons still stalled because of continuous global EnemyAI scanning and Coroner Jetpack spam;
+- v1.3.3 in the clean S1.42G BCMER-off retest is runtime-proven: periodic routed-moon freezes are resolved and the previous Coroner `PlayerController was null` Jetpack flood is gone;
+- v1.3.5 is embedded in S1.42H and is **built successfully but not yet runtime-validated**.
+
+The v1.3.4 late-lifecycle isolation work was an intermediate source/plan step and was not promoted as a separate canonical runtime profile.
 
 Build rule:
 
-The authoritative current DLL is compiled from `Plugin.cs` by the repository-first GitHub Actions profile build and injected into the target profile. The standalone v1.0.0 DLL/ZIP files still present under `Patches/S139CompatibilityFixes/` are historical artifacts only and must not be used as the current fallback.
+The authoritative current DLL is compiled from `Plugin.cs` by the repository-first GitHub Actions profile build and injected into the target profile. Standalone old DLL/ZIP artifacts under `Patches/S139CompatibilityFixes/` are historical unless their hash/version is explicitly identified as current.
 
-Embedded DLL:
+Current S1.42H embedded DLL:
 
 `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`
 
-Expected runtime marker:
+SHA-256:
+
+`d67f8f4bc2012f5b74086eb268fcb191f6990c93041617e9ef35c635ea33f186`
+
+Expected general runtime marker:
 
 `S1.39 Compatibility Fixes loaded.`
 
-Functions:
-1. ship-door anti-lockout;
-2. DoorAudit / DoorFailsafe diagnostics;
-3. complete EnemyScan terminal output;
-4. normal-scrap CodeRebirth Currency filtering;
-5. defensive late map-object Currency filtering;
-6. defensive Flash Turret filtering;
-7. direct CodeRebirth utility-kill Pikmin/Puffmin guard;
-8. null-safe LethalModDataLib 1.2.2 ModDataAttribute registration guard;
-9. targeted Puffer-smoke LethalMin Pikmin-effect guard.
+Expected S1.42H exact LethalMin marker:
 
-The late map-object Currency filter is defense-in-depth only. S1.39 runtime proved it cannot replace the DawnLib-native config control.
+`[LethalMinStateGuard] Directly patched declared LethalMin.PikminAI.GrabPikmin(Transform,float,int) exactly once. No inherited/derived PikminAI Harmony scan is used.`
+
+Functions include:
+1. ship-door anti-lockout;
+2. state-change DoorAudit / DoorFailsafe diagnostics;
+3. transition-only BCMER DoorFailure forced-open recognition;
+4. complete EnemyScan terminal output;
+5. normal-scrap CodeRebirth Currency filtering;
+6. defensive late map-object Currency filtering;
+7. defensive Flash Turret filtering;
+8. direct CodeRebirth utility-kill Pikmin/Puffmin guard;
+9. null-safe LethalModDataLib 1.2.2 ModDataAttribute registration guard;
+10. targeted Puffer-smoke LethalMin Pikmin-effect guard;
+11. Coroner Jetpack `JetpackItem.Update` spam guard;
+12. 140-second loaded Jetpack Item target;
+13. temporary late-lifecycle EnemyIsolation diagnostic;
+14. exact `PikminAI.GrabPikmin` generic invincible-Pikmin state recovery;
+15. Crawler/Thumper -> Pikmin zero-interaction guard.
+
+The late map-object Currency filter is defense-in-depth only. S1.39 runtime proved it cannot replace DawnLib-native config control.
 
 ### Gale import
 
 Use **Advanced options -> Import all files**.
 
-## Latest technical descendant: S1.42C
+## Latest technical descendant: S1.42H
 
 Profile:
 
-`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
+`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
 
 SHA-256:
 
-`22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
+`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
 
 Status:
 
-**runtime-tested technical candidate; not final gameplay acceptance**
+**built successfully; awaiting runtime validation; not final gameplay acceptance**
 
 Manifest:
-- 188 Thunderstore entries
-- 183 enabled
-- 5 disabled
+- 188 Thunderstore entries;
+- 182 enabled;
+- 6 disabled;
+- BCMER 1.71.0 is the extra temporary disabled package for this diagnostic stage.
 
 Readable exact profile contents:
 
-`ProfileSources/S1.42C/`
+`ProfileSources/S1.42H/`
 
 Exact package list:
 
-`Current/Aktive_Modliste_S1.42C.txt`
+`Current/Aktive_Modliste_S1.42H.txt`
 
-S1.42C carries the confirmed S1.42B LethalModDataLib guard and the current Thumper/Puffer Pikmin guards.
+Most recent valid runtime predecessor:
+
+`RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/`
+
+That clean retest confirmed the performance fix and target enemy spawning without BCMER, but reproduced the Thumper -> invincible-Pikmin leader-null grab state that S1.42H is designed to fix.
+
+After S1.42H isolation passes, restore the full normal enemy state from:
+`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+and re-enable exact BCMER 1.71.0.
 
 ## Accepted CodeRebirth/DawnLib natural-spawn control
 
