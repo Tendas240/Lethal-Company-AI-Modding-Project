@@ -143,11 +143,12 @@ Functional Microwave:
 - target volume 0.7.
 
 Jetpack:
-- user wants historical juijui duration;
-- current = 40s via ButteryBalance Reduce Battery;
-- exact old value not evidenced;
-- do not guess;
-- 50s is fallback only if explicitly accepted.
+- historical juijui config evidence target = 140 seconds;
+- current = 40s via ButteRyBalance Reduce Battery;
+- do not restore obsolete Bigger Battery; reproduce 140s with a current-compatible mechanism;
+- Jetpack must not explode from sustained/high-speed boost use;
+- current Jetpack Fixes `MidAirExplosions = OnlyTooHigh`;
+- next-build target `MidAirExplosions = Off`.
 
 CullFactory:
 - exact IDs: `junkrooms`, `shatteredrooms`.
@@ -189,7 +190,7 @@ Read:
 Next chat start prompt:
 `Current/NEXT_CHAT_START_PROMPT_S1.42C.txt`
 
-## Historical juijui reference — canonical source pending upload
+## Historical juijui reference — committed and indexed
 
 The old `juijui.r2z` profile is now formally classified as a historical primary reference for the project's intended gameplay/mod-configuration target.
 
@@ -201,6 +202,18 @@ See:
 
 The project goal is to approach the old juijui constellation/configuration where technically reasonable while respecting current V81 compatibility and maintained mods.
 
-Once uploaded, recover the exact historical Jetpack value from this profile rather than using a guessed fallback.
+Recovered historical Jetpack config evidence: `JetpackBatteryUsage = 140`. See `Current/18_JUIJUI_LEGACY_REFERENCE.md` for the evidence caveat.
 
 This reference work does not supersede the current highest engineering priority: the generic LethalMin grab/bite + invincible-Pikmin invalid leader/follow-state fix.
+
+
+## Next candidate scope — S1.42D
+
+Next runtime candidate should be a focused S1.42D descendant of S1.42C containing:
+- generic LethalMin enemy grab/bite + Invincible Pikmin state repair;
+- retained S1.42C Thumper/Puffer guards;
+- Jetpack 140-second target;
+- Jetpack boost/speed explosion disabled;
+- Functional Microwave volume 0.7 with editing gate true.
+
+Broader interior/BCMER/CullFactory/Mausoleum tuning is deferred until this focused regression stage passes.
