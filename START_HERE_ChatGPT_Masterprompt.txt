@@ -1,4 +1,29 @@
 ======================================================================
+PERMANENT PROJECT-LOCAL PATCH SAFETY RULE
+======================================================================
+
+Every project-local Harmony/runtime/compatibility patch must comply with:
+Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+
+Before implementing or promoting any custom patch:
+- identify the exact owner/call site and inspect inheritance/base lifecycle;
+- map secondary responsibilities and downstream cleanup/state/network effects;
+- use the narrowest exact interception point;
+- never disable a whole foreign component to block one interaction unless its complete lifecycle is proven safe to suppress;
+- isolate risky patch changes from unrelated config/package changes;
+- verify exact archive/DLL delta and hashes;
+- runtime-test the target behavior AND adjacent/reverse/native lifecycle behavior;
+- do not treat compile success, startup success, or disappearance of the original symptom as gameplay acceptance;
+- if collateral damage occurs, roll back/narrow the patch rather than stacking compensating repair layers.
+
+Any future build plan that introduces or materially changes a custom patch must contain a
+"Patch Safety Review" covering the exact patch surface, inherited lifecycle, secondary
+responsibilities, forbidden broader alternatives, and regression acceptance tests.
+
+This is a permanent project rule and survives all future handovers.
+
+======================================================================
+======================================================================
 CURRENT CANONICAL TAKEOVER OVERRIDE - 2026-09-03 - S1.42S BUILT / AWAITING RUNTIME
 ======================================================================
 
