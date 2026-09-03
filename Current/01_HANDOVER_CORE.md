@@ -24,10 +24,13 @@ Compatibility plugin:
 **v1.3.13**
 
 Read first:
+- `Current/64_HANDOVER_S1.42R_TO_NEXT_FINAL.md`
+- `Current/65_REPOSITORY_HANDOVER_AUDIT_S1.42R.md`
+- `Current/Projektstatus_S1.42R.json`
 - `Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
 - `Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
 - `BuildSpecs/S1.42R_PLAN.md`
-- `Current/Projektstatus_S1.42R.json`
+- `Current/63_S1.42R_LATCHED_DEAD_TARGET_COMPLETION_BUILD.md`
 - `Current/VERIFIKATION_S1.42R.txt`
 - `Current/SHA256SUMS_S1.42R.txt`
 
@@ -125,3 +128,18 @@ disabled.
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42R`
 
 `BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42R_BUILD_AWAITING_RUNTIME`
+
+
+## Handover status
+
+Repository takeover audit:
+**PASS**
+
+Final handover:
+`Current/64_HANDOVER_S1.42R_TO_NEXT_FINAL.md`
+
+Audit:
+`Current/65_REPOSITORY_HANDOVER_AUDIT_S1.42R.md`
+
+S1.42R has not yet been runtime-tested.
+Do not interpret the absence of `RuntimeEvidence/S1.42R/` as missing ingestion; no R test has been performed yet.
