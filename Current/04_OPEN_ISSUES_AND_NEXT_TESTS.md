@@ -1,227 +1,259 @@
 # 04 — Open Issues and Next Tests
 
-## Highest priority — S1.42A runtime config-generation seed
+## Highest engineering priority — generic LethalMin grab/bite + Invincible Pikmin state
 
-S1.41 is accepted and remains the canonical gameplay baseline.
+S1.42C runtime evidence proves that the repeated `Leader is null when following` loop is not Thumper-specific.
 
-S1.42A has been built and automation-verified:
-- `Profiles/LC V1 S1.42A Interior Config Seed.r2z`
-- SHA-256 `70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
-- 188 total / 183 enabled / 5 disabled packages
-- only `export.r2x` changed versus S1.41
+Confirmed with a Baboon Hawk:
+1. enemy bite/grab starts;
+2. Pikmin leader is removed;
+3. LethalMin starts its grabbed/death timer;
+4. `Invinceable Pikmin = true` prevents final death;
+5. follower remains in an invalid leader-less state;
+6. repeated `Leader is null when following` errors follow.
 
-Next isolated stage:
-**run S1.42A to generate its real configs/registrations.**
+Preferred solution:
+- repair/reset the generic grabbed/follow state when invincibility prevents death;
+- preserve intended enemy interactions;
+- do not blindly blacklist every enemy.
 
-Purpose:
-- allow LLL/JLL/DawnLib/content mods to generate their real config sections and IDs;
-- collect actual CullFactory identifiers and dependency/runtime behavior;
-- regression-check the isolated LethalModDataLib reintroduction;
-- avoid speculative deep tuning before that evidence exists.
+Evidence:
+`Current/15_RUNTIME_EVIDENCE_S1.42C.md`
 
-Use the exact binding package list and rules in:
-`Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+## Specific retained Pikmin requirements
 
-## S1.42A runtime procedure
+### Thumper / Crawler
 
-After importing the generated S1.42A profile with Gale:
+User requirement:
+**Thumper and Pikmin must not interact in either direction.**
 
-**Advanced options -> Import all files**
+Current S1.42C controls:
+- `Thumper Bite Limit = 0`
+- `Crawler` in LethalMin Attack Blacklist
 
-then:
-1. reach Main Menu;
-2. host/load a save;
-3. land on at least one normal moon;
-4. allow a dungeon to actually generate;
-5. exit game.
+Runtime:
+- Crawler spawned;
+- no clear Thumper-Pikmin bite/latch was logged;
+- no deliberate controlled encounter was performed.
 
-Then upload to:
-`RuntimeInbox/Current/`
+Status:
+**retained but not fully validated.**
 
-Preferred evidence:
-- complete `BepInEx/config/` directory as ZIP;
-- full `LogOutput.log`;
-- screenshots only for meaningful visual/runtime failures.
+Targeted future validation:
+- stand with Pikmin near a Thumper;
+- no Thumper grab/bite;
+- no Pikmin attack/latch;
+- no resulting leader-null spam.
 
-## New open issue — Mineshaft elevator + Pikmin crowding
+### Puffer
+
+User requirement:
+**Puffer attack/smoke must not affect Pikmin.**
+
+Config already has:
+`Puffer Can Poison Pikmin = false`
+
+Project compatibility plugin v1.2.0 also adds a targeted Puffer smoke effect-trigger guard.
+
+S1.42C:
+- patch registration marker present;
+- no Puffer spawned;
+- actual smoke immunity remains unvalidated.
+
+Targeted future validation:
+- spawn/encounter Puffer;
+- expose Pikmin to smoke;
+- Pikmin should remain unaffected;
+- player/vanilla Puffer behavior should remain normal;
+- look for `[PufferPikminGuard] Removed ...`.
+
+## Resolved — LethalModDataLib 1.2.2 initialization NRE
+
+S1.42B runtime-confirmed the project-local null-safe registration guard.
+
+Offending null Chainloader entry:
+`MW.MagicWesleyInteriors`
+
+Confirmed:
+- safe scan completed;
+- save/load/delete hooks connected;
+- `ModDataHandler initialised!`;
+- moddata load/save succeeded.
+
+Keep the guard while LethalModDataLib 1.2.2 remains installed.
+
+## Interior tuning — pending
+
+S1.42A generated the real config/ID set.
+
+Known:
+- 52 dungeon flows total;
+- 26 new flows vs S1.41;
+- exact CullFactory IDs:
+  - `junkrooms`
+  - `shatteredrooms`
+
+### Binding equal-probability architecture
+
+Every registered interior should have the same effective selection probability as every other interior on every moon, including future additions.
+
+Target:
+Weight 100 per interior/moon pairing where technically supported/safe.
+
+Do not preserve package rarity/theme preferences as desired balancing.
+
+Hard author restrictions are compatibility issues to investigate.
+
+Current example:
+Shatteredrooms excludes Experimentation/Embrion. Preserve until technical safety is understood; desired final architecture is still equality everywhere if safe.
+
+### CullFactory
+
+Pending final config:
+- disable culling for `junkrooms`
+- disable culling for `shatteredrooms`
+
+Use exact generated IDs; do not guess variants.
+
+### Mausoleum fog
+
+Observed:
+`MelanieMausoleum` is far too foggy for comfortable gameplay.
+
+Requirement:
+- reduce fog specifically inside Mausoleum;
+- do not globally reduce fog in every dungeon;
+- atmosphere may remain, but visibility has priority.
+
+Generated Melanie config has no obvious fog-density key, so likely needs a targeted runtime/HDRP-volume solution.
+
+## BCMER final tuning — pending
+
+Pin:
+`SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`
+
+Do not silently migrate to 2.0.0.
+
+Carry-forward ownership guards:
+- `Experimental Dont Handle Power? = true`
+- `Experimental Dont Handle Spawn Chance? = true`
+- `Let Brutal handle properties outside of events? = false`
+- `Enable Randomizer? = false`
+
+BCMER rain-event routes remain disabled:
+- Raining
+- HeavyRain
+- AllWeather
+- Hurricane
+
+Natural vanilla Rainy remains allowed.
+
+User-selected global EventType distribution:
+- Insane = 12.5%
+- VeryBad = 12.5%
+- Bad = 12.5%
+- Neutral = 12.5%
+- Good = 12.5%
+- VeryGood = 12.5%
+- Rare = 12.5%
+- Remove = 12.5%
+
+Keep:
+`Use custom weights? = false`
+
+Apply constant scale:
+`12.5, 0, 12.5, 12.5`
+
+to all eight EventTypes.
+
+## Functional Microwave volume — pending next tuning build
+
+Current CodeRebirth generated values:
+- `Functional Microwave | Allow Editing Config = false`
+- `Functional Microwave | Volume = 1`
+
+User target:
+- `Allow Editing Config = true`
+- `Volume = 0.7`
+
+Use config first; do not Harmony-patch audio unless runtime proves the config is ignored.
+
+## Jetpack capacity — historical value unresolved
+
+User wants the old juijui-profile capacity/duration.
+
+Current:
+- ButteryBalance `Reduce Battery = true`
+- 40-second battery.
+
+Current vanilla:
+- 50 seconds.
+
+Exact old juijui value is not preserved in currently indexed text references.
+
+Do not guess.
+
+Fallback candidate only if user accepts:
+- `Reduce Battery = false`
+- 50 seconds.
+
+Reference:
+`References/juijui_Referenzwerte.txt`
+
+## Monitor-only — Mineshaft elevator + Pikmin crowding
 
 Observed once in S1.41:
-- many Pikmin were in the Mineshaft elevator with the player;
-- player clipped through the elevator floor while descending;
-- player died from fall damage;
-- nearby log window contains many NavMesh-agent creation failures.
+- player in Mineshaft elevator with many Pikmin;
+- floor clipping during descent;
+- fall death;
+- heavy NavMesh-agent creation warnings nearby.
 
-Current interpretation:
-- real runtime issue worth tracking;
-- not yet reproducible/proven;
-- no evidence BCMER caused it;
-- no proof yet that Pikmin collision physically pushed the player through the floor.
+Causality remains unproven.
 
-During future interior/elevator tests, specifically watch:
-- large Pikmin groups entering moving elevators;
-- player floor clipping;
-- Pikmin NavMesh/agent failures during elevator movement.
+Track in future multi-floor/elevator runs.
 
 ## Monitor-only — outdoor Pikmin Sprout density
 
-User reported a subjective impression that fewer outdoor Pikmin Sprouts may appear since CodeRebirth.
+User had a subjective impression of lower outdoor sprout density.
 
-Current evidence does not support an immediate balance change:
-- recent Offense runs were broadly consistent with the configured spawn chance;
-- more Pikmin types and wider spatial distribution can make the same total feel sparser.
+Current evidence does not justify rebalance.
 
-Only investigate statistically if the concern persists. Do not change spawn values from the impression alone.
-
-## Monitor-only warning — BCMER ButlerSword
-
-S1.41 emitted a ButlerSword missing-script warning. It did not prevent BCMER 1.71.0 from loading, selecting events, or passing the intended acceptance gate.
-
-Only escalate if a Butler/ButlerSword-related event produces an actual gameplay failure.
+Collect statistical evidence only if concern persists.
 
 ## Carry-forward regression guards
 
-Continue checking when naturally encountered:
-- no natural Coin / Crisp Dollar Bill / Wallet;
+When naturally encountered, continue checking:
+- no unwanted natural Coin / Crisp Dollar Bill / Wallet;
 - no natural Flash Turret;
-- BCMER 1.71.0 stays pinned until a deliberate future migration;
-- BCMER rain routes remain disabled;
+- BCMER ownership/rain guards survive;
 - Ogopogo absent;
 - Vermin absent;
-- Autonomous Crane cannot kill Pikmin/Puffmin through CodeRebirth utility-kill path;
-- GeneralImprovements recharge station performs desired full heal;
-- Old Bird Resonance replacement works in a real encounter;
-- Mirage `neverDeleteRecordings=true` remains active after import.
+- Autonomous Crane cannot kill Pikmin/Puffmin;
+- recharge station full-heal behavior;
+- Old Bird Resonance encounter;
+- Mirage recording retention;
+- LMDL safe scan + ModDataHandler initialization.
 
-## Do not do yet
+## Known noise / only escalate with user-facing symptoms
 
-During S1.42A:
-- do not upgrade BCMER to 2.0.0;
-- do not fabricate interior IDs;
-- do not normalize/tune guessed interior weights before generated configs exist;
-- do not guess CullFactory identifiers;
-- do not mix unrelated gameplay balancing into the config-seed build.
+- SoundAPI TypeLoadException during floor reporting;
+- SoftMaskKiller-protected SoftMask NREs;
+- duplicate NetworkPrefab hash warnings;
+- RuntimeNavMeshBuilder unreadable-mesh messages;
+- BCMER ButlerSword missing-script warning;
+- S1.42C scene-teardown `Collection was modified` exception.
 
+## Build state
 
-## Resolved in S1.42B — LethalModDataLib initialization NRE
+`BuildSpecs/current.json`:
+- disabled
+- `IDLE_HANDOVER_AFTER_S1.42C_RUNTIME`
 
-S1.42B runtime-confirmed the project-local null-instance guard.
+`BuildSpecs/S1.42D_PLAN.md`:
+**DRAFT ONLY — DO NOT BUILD YET**
 
-The upstream crash path was triggered by:
-`MW.MagicWesleyInteriors` having a Chainloader `PluginInfo` with `Instance == null`.
+Before enabling S1.42D decide whether the next candidate is:
+- a small generic Pikmin-state + Microwave/Jetpack regression build;
+- or a broader S1.42 tuning build including interiors/BCMER/CullFactory/Mausoleum.
 
-The guard skipped that entry, scanned all valid plugins, and LethalModDataLib continued through `ModDataHandler initialised!` plus moddata load/save.
-
-Keep the guard as a regression requirement while LethalModDataLib 1.2.2 remains present.
-
-## S1.42 tuning inputs now available
-
-- 26 new dungeon flow IDs captured.
-- Total registered ExtendedDungeonFlows: 52.
-- Exact CullFactory exception IDs: `junkrooms`, `shatteredrooms`.
-- Generated LLL weights are available and need normalization where appropriate.
-- Preserve explicit author restrictions, especially Shatteredrooms Experimentation/Embrion = 0.
-- BCMER EventType distribution must be converted to fixed global user-selected percentages; exact values pending.
-
-See `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`.
-
-
-## Binding architecture — equal interior probability everywhere
-
-User requirement:
-- every registered interior should have the same effective selection probability as every other interior on every moon;
-- future interior additions must be normalized into this architecture automatically;
-- use common Weight 100 where the owning system supports it;
-- package defaults/thematic preferences are not desired rarity rules.
-
-Explicit hard blocks are compatibility questions, not desired balancing exceptions. Shatteredrooms' Experimentation/Embrion block remains protected until its technical necessity is understood and tested.
-
-## Visual tuning — Melanie Mausoleum fog
-
-Observed in S1.42A:
-- `Mausoleum (MelanieMausoleum)` generated successfully;
-- indoor fog was far too dense for the user; visibility was severely reduced.
-
-Requirement:
-- reduce fog **specifically inside MelanieMausoleum**;
-- preserve some atmosphere if practical, but gameplay visibility takes priority;
-- do not globally reduce fog in every interior.
-
-The generated `MelanieMelicious.interior0.cfg` exposes interior/item toggles and values but no fog-density setting. Expect a targeted runtime/HDRP-volume compatibility patch or another interior-specific mechanism rather than a simple Melanie config edit. Investigate after the LethalModDataLib blocker.
-
-## BCMER fixed EventType distribution
-
-User selected a completely even global EventType distribution:
-- Insane = 12.5
-- VeryBad = 12.5
-- Bad = 12.5
-- Neutral = 12.5
-- Good = 12.5
-- VeryGood = 12.5
-- Rare = 12.5
-- Remove = 12.5
-
-Keep `Use custom weights? = false`.
-
-Use constant scales:
-`12.5, 0, 12.5, 12.5`
-
-for all eight EventTypes.
-
-This removes difficulty/moon/day-based drift from the EventType base distribution. Event-specific eligibility, disabled events, incompatibilities, and mutual exclusions can still alter the effective pool in a particular run.
-
-
-## Highest immediate runtime test — S1.42C Pikmin enemy guard
-
-Candidate:
-`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
-
-SHA-256:
-`22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
-
-Validate deliberately:
-
-**Thumper / Crawler**
-- Pikmin do not attack/latch Crawler;
-- Crawler does not grab/bite Pikmin;
-- no `Grabbed by enemy` sequence from Thumper;
-- no resulting `Leader is null when following` error spam.
-
-**Puffer**
-- Puffer smoke/attack does not affect Pikmin;
-- expected compatibility marker begins `[PufferPikminGuard]`;
-- vanilla Puffer/player behavior remains normal.
-
-**Regression**
-- LMDL safe-scan marker remains present;
-- `ModDataHandler initialised!` remains present.
-
-Return full `LogOutput.log`.
-
-
-## General Pikmin grab/bite state issue
-
-S1.42C proves the repeated `Leader is null when following` spam is not specific to Thumper.
-
-A Baboon Hawk explicitly bit a Bulbmin, removed its leader, started the LethalMin grab-death timer, and Invincible Pikmin prevented final death. The Pikmin then emitted repeated leader-null errors.
-
-Preferred future fix:
-- repair/reset the generic grabbed/follow state for invincible Pikmin;
-- do not solve this by blindly blacklisting every enemy.
-
-Specific user-requested immunity remains:
-- Thumper ↔ Pikmin: no interaction either direction;
-- Puffer attack/smoke → Pikmin: no effect.
-
-## Next-build gameplay tuning requests
-
-### Jetpack capacity
-- user wants old juijui-profile capacity/duration;
-- current ButteryBalance has `Reduce Battery = true`, explicitly 40s instead of vanilla 50s;
-- exact old juijui value is not yet preserved in the text reference set;
-- do not guess; fallback candidate if no stronger evidence appears is `Reduce Battery = false` (50s).
-
-### Functional Microwave volume
-- current CodeRebirth generated config: `Functional Microwave | Volume = 1`;
-- user wants it a little quieter;
-- planned target: `0.7`;
-- also set `Functional Microwave | Allow Editing Config = true` so the value survives CodeRebirth's edit gate/runtime regeneration.
+Do not build merely because the draft exists.
