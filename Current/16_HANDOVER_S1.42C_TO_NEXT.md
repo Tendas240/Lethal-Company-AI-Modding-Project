@@ -429,3 +429,20 @@ Nothing was permanently deleted.
 
 See:
 `Current/17_REPO_HANDOVER_CLEANUP_S1.42C.md`
+
+## 17. Historical juijui profile reference
+
+The original `juijui.r2z` profile has been designated as a canonical historical project reference.
+
+Expected location:
+`References/LegacyProfiles/juijui/juijui.r2z`
+
+Detailed reference:
+`Current/18_JUIJUI_LEGACY_REFERENCE.md`
+
+Project intent:
+bring the modern mod constellation/configuration as close as reasonably possible to the old juijui experience while respecting current game version, maintained mods and compatibility.
+
+Once the profile is uploaded, extract the exact historical Jetpack settings from it and stop treating 50 seconds as anything more than an unevidenced fallback.
+
+The generic LethalMin grab/bite + Invincible Pikmin leader-state problem remains the immediate engineering priority and should be solved generically because S1.42C proved it can affect enemies beyond Thumper/Puffer.
