@@ -1,102 +1,107 @@
 # 04 — Open Issues and Next Tests
 
-## Active next task — S1.42T Normal Enemy Restore
+## Closed gate — S1.42T Normal Enemy Restore
 
-S1.42S focused Baboon-Hawk/Pikmin gate is **closed / PASS**.
+**PASS**
+
+Acceptance:
+
+`Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
 
 Evidence:
 
-`RuntimeEvidence/S1.42S/20260903T205550Z/`
+`RuntimeEvidence/S1.42T/20260903T222109Z/`
 
-Log SHA-256:
+Raw log SHA-256:
 
-`9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea`
+`b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f`
 
-Next plan:
+Normal non-isolated enemy spawning is restored. No repeat S1.42T test is required solely for the missed terminal `Enemies` command.
 
-`BuildSpecs/S1.42T_PLAN.md`
+## Active next task — S1.42U BCMER 1.71.0 Reactivation Gate
 
-Restore contract:
+Plan:
 
-`Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md`
+`BuildSpecs/S1.42U_PLAN.md`
 
-### Required S1.42T delta
+Base:
 
-Set:
+`Profiles/LC V1 S1.42T Normal Enemy Restore.r2z`
 
-`Isolated Enemy Regression = false`
+Base SHA-256:
 
-Do not change the compatibility code.
+`a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10`
+
+Required variable:
+
+- re-enable exact `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`.
 
 Preserve:
 
-- v1.3.14 compatibility plugin;
+- `Isolated Enemy Regression = false`;
+- compatibility plugin v1.3.14 / DLL hash unchanged;
 - `Thumper Bite Limit = 3`;
 - Crawler absent from Attack Blacklist;
-- all accepted S1.42S interaction fixes.
+- current normal spawn-owner configs;
+- all accepted Pikmin compatibility behavior.
 
-Keep exact BCMER 1.71.0 **disabled** for this first restore gate.
+Forbidden in S1.42U:
 
-### S1.42T runtime acceptance
+- BCMER 2.0.0 upgrade;
+- new custom patch code;
+- interior probability tuning;
+- CullFactory/fog tuning;
+- microwave rarity change;
+- BCMER EventType rebalance;
+- structural repository migration.
 
-- EnemyIsolation warning absent.
-- Normal non-allowlisted enemies can spawn again.
-- Terminal EnemyScan can show normal active enemies.
-- No startup crash/freeze.
-- No Work/no-task loop.
-- No Leader-null loop.
-- No new exception flood.
-- Commit full fresh `LogOutput.log` to `RuntimeInbox/Current/`.
+### S1.42U runtime acceptance
 
-## Following gate — BCMER restoration
+- normal stack starts and reaches gameplay;
+- BCMER exact 1.71.0 is runtime-active;
+- normal enemies still spawn;
+- no new startup/runtime crash or freeze;
+- no Work/no-task loop;
+- no Leader-null loop;
+- no new project compatibility exception flood;
+- no BCMER-specific catastrophic event/system failure;
+- fresh full runtime log ingested.
 
-After S1.42T passes:
+## Monitor-only issues
 
-Re-enable **exact**:
-
-`SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`
-
-Use the accepted S1.41 BCMER config/ownership/rain-event decisions.
-
-Do not upgrade to BCMER 2.0.0.
-
-Keep BCMER restoration separate from the first normal-enemy restore gate.
-
-## Monitor-only issue
-
-LethalMin disconnect-only exception:
+### LethalMin disconnect NoticeZone
 
 `PikminNoticeZone.OnTriggerStay -> NetworkObjectReference can only be created from spawned NetworkObjects`
 
-Observed once during lobby disconnect after ShipOnion save.
+Seen during disconnect in S1.42S. No user-facing regression. Do not patch without reproducibility + Patch Safety Review.
 
-No user-facing regression.
+### Aloe audio load marker
 
-Status:
+S1.42T one-off:
 
-**monitor only**
+`Failed getting load state of FSB for audio clip "AloeChase"`
 
-Do not patch unless reproducible/user-facing and supported by a Patch Safety Review.
+No flood, Aloe later active, no user-facing issue reported. Monitor only.
+
+## Runtime-log infrastructure
+
+Canonical:
+
+`Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+
+The repository now supports streaming every-line analysis, small lossless chat chunks, a disposable very-large-log branch, temporary raw artifacts, and query-on-demand raw extraction.
+
+Raw logs are not automatically permanent historical assets. Prune them after dependent gates/issues are closed and required evidence/provenance is preserved.
+
+Keep the current S1.42T raw log through S1.42U because it is the immediate BCMER-off comparison baseline.
 
 ## Remaining broader S1.42 roadmap
 
-Still pending after enemy/BCMER restoration:
+After BCMER restoration/final normal-stack acceptance:
 
-- final normal-stack runtime acceptance;
 - equal-interior probability tuning;
 - CullFactory exceptions for `junkrooms` and `shatteredrooms`;
 - Mausoleum fog reduction;
 - BCMER fixed 12.5% x8 EventType distribution;
+- CodeRebirth microwaves somewhat rarer;
 - final S1.42 acceptance.
-
-See:
-
-`Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-
-## Repository maintenance
-
-Structural repository optimization remains planned in:
-
-`Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
-
-Do not mix migration work into S1.42T gameplay restoration.
