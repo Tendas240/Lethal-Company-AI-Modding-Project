@@ -57,3 +57,11 @@ Current/Aktive_Modliste_S1.42C.txt was regenerated directly from ProfileSources/
 
 Superseded S1.41 handover metadata are archived under:
 Archive/S1.41/HandoverCheckpoint/
+
+Historical juijui reference:
+- expected binary: References/LegacyProfiles/juijui/juijui.r2z
+- detailed current note: Current/18_JUIJUI_LEGACY_REFERENCE.md
+- purpose: primary historical target/reference for the original mod constellation/configuration
+- after upload, recover exact Jetpack settings from the profile instead of guessing
+- this does not replace the current V81 gameplay/technical baselines
+- generic LethalMin grab/bite + Invincible Pikmin state repair remains highest engineering priority
