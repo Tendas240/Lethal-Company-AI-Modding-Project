@@ -146,6 +146,20 @@
       "CullFactory junkrooms/shatteredrooms exceptions",
       "Mausoleum-specific fog reduction",
       "Shatteredrooms hard-restriction investigation"
-    ]
+    ],
+    "enemy_isolation": {
+      "diagnostic_only": true,
+      "allowed_indoor": [
+        "Thumper/Crawler",
+        "Puffer/Spore Lizard"
+      ],
+      "allowed_outdoor": [
+        "Baboon Hawk"
+      ],
+      "all_other_enemies_temporarily_blocked": true,
+      "preferred_implementation": "test-only runtime spawn isolation overlay/guard",
+      "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+      "restore_rule": "remove only diagnostic isolation after test; restore all enemy configuration exactly to S1.42C unless explicitly changed later"
+    }
   }
 }
