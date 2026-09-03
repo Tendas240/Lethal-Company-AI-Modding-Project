@@ -39,6 +39,26 @@ Do not reintroduce these without new technical evidence or explicit user instruc
 | Coroner `JetpackItem.Update` death detector on an unheld Jetpack | **Failed upstream interaction.** Coroner queries `playerHeldBy` every frame even when null, producing `PlayerController was null` + `Index not assigned!` at frame-rate cadence. S1.42G keeps Coroner but unpatches only this Jetpack Update detector; the clean BCMER-off retest confirmed the `PlayerController was null` flood is gone. || Treating the four declared LethalMin `*PikminEnemy` adapter hooks as a complete generic invincible-Pikmin grab repair | **Insufficient.** The clean S1.42G BCMER-off retest reproduced Thumper -> Pikmin leader removal through the common declared `LethalMin.PikminAI.GrabPikmin(Transform,float,int)` path. S1.42H patches that exact base method once; do not return to adapter-only coverage as the complete solution. |
 
 
+## S1.42P Baboon-Hawk correction
+
+**S1.42P proximity-only Hawk-death selection + one-shot FinishTask as a complete solution is insufficient.**
+
+Runtime evidence:
+`RuntimeEvidence/S1.42P/20260903T181706Z/`
+
+Do not repeat these assumptions:
+- a fixed 4.0 m world-distance zone reliably identifies every Pikmin attacking the dying Hawk;
+- calling `PikminAI.FinishTask()` once is sufficient while the dead Hawk remains discoverable as an enemy target.
+
+S1.42P proved:
+- `FinishTask()` itself is the correct high-level native task finalizer;
+- real attacker `Yellow Pikmin_ruCpzY` was missed by the 4.0 m selector and hit the dead Hawk for ~84.565 s;
+- FinishTask-selected Pikmin immediately rediscovered the already-dead Hawk and could start a fresh `AttackEnemy` task;
+- the user's 20 -> 18 loss is log-confirmed.
+
+Future work must use actual target identity and must invalidate dead Hawks for Pikmin enemy acquisition. Do not merely increase the radius and do not fall back to direct `RemoveCurrentTask()`.
+
+
 ## Important correction — LethalModDataLib
 
 Older project wording was too categorical.
