@@ -1,0 +1,37 @@
+name: Runtime pipeline self-test
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "BuildSystem/runtime_log_analyzer.py"
+      - "BuildSystem/runtime_ingest.py"
+      - "BuildSystem/runtime_large_ingest.py"
+      - "BuildSystem/runtime_log_query.py"
+      - "BuildSystem/prepare_large_runtime_log.py"
+      - "BuildSystem/runtime_pipeline_selftest.py"
+      - ".github/workflows/runtime-pipeline-selftest.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: runtime-pipeline-selftest
+  cancel-in-progress: true
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run synthetic end-to-end runtime pipeline test
+        run: python BuildSystem/runtime_pipeline_selftest.py
