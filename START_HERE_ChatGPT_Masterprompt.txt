@@ -5,28 +5,26 @@ Repository:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
 ======================================================================
-CURRENT CANONICAL TAKEOVER POINTER - 2026-09-03 - S1.42L
+CURRENT CANONICAL TAKEOVER POINTER - 2026-09-03 - S1.42M
 ======================================================================
 
 Repository is the source of truth.
 
 Read immediately after this master prompt:
-1. Current/45_HANDOVER_S1.42L_TO_NEXT_FINAL.md
-2. Current/Projektstatus_S1.42L.json
-3. Current/43_S1.42L_RUNTIME_ANALYSIS_THUMPER_CLOSED.md
-4. Current/41_S1.42L_PIKMIN_COUNTERATTACK_RESTORE_BUILD.md
-5. Current/00_CURRENT_STATE.md
-6. Current/01_HANDOVER_CORE.md
-7. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-8. Current/VERIFIKATION_S1.42L.txt
-9. Current/SHA256SUMS_S1.42L.txt
-10. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-11. Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
-12. Current/02_TECHNICAL_BASELINE.md
-13. BuildSpecs/current.json
-14. RuntimeInbox/ACTIVE_BUILD.txt
-15. Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
-16. Current/NEXT_CHAT_START_PROMPT_S1.42L.txt
+1. Current/00_CURRENT_STATE.md
+2. Current/Projektstatus_S1.42M.json
+3. Current/46_S1.42M_BABOON_HAWK_DEATH_CLEANUP_BUILD.md
+4. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+5. Current/01_HANDOVER_CORE.md
+6. Current/VERIFIKATION_S1.42M.txt
+7. Current/SHA256SUMS_S1.42M.txt
+8. Current/45_HANDOVER_S1.42L_TO_NEXT_FINAL.md (historical predecessor context)
+9. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+10. Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
+11. Current/02_TECHNICAL_BASELINE.md
+12. BuildSpecs/current.json
+13. RuntimeInbox/ACTIVE_BUILD.txt
+14. Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
 
 Last fully accepted gameplay baseline:
 S1.41
@@ -34,58 +32,66 @@ Profiles/LC V1 S1.41 BCMER Reactivation.r2z
 SHA-256:
 d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b
 
-Current built/runtime-tested candidate:
-S1.42L - Pikmin Counterattack Restore
-Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z
+Current built candidate awaiting runtime:
+S1.42M - Baboon Hawk Death Cleanup
+Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z
 SHA-256:
-fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722
+9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7
+
+Compatibility plugin:
+v1.3.8
+DLL SHA-256:
+47fff0272b00ce776150c203eb65710216eba4390f5f5864fdbffec686692adf
 
 Latest valid runtime evidence:
-RuntimeEvidence/S1.42L/20260903T151817Z/
+RuntimeEvidence/S1.42L/20260903T155132Z/
 Log SHA-256:
-402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd
+812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10
 
-Current runtime verdict:
-PARTIAL PASS - only Pikmin -> Baboon Hawk explicit attack/latch validation remains.
-
-Closed/PASS:
-- Thumper/Crawler -> Pikmin broken grab-state protection
-- Pikmin -> Thumper/Crawler normal attack/latch
+S1.42L confirmed PASS:
+- Thumper/Crawler -> Pikmin protection
+- Pikmin -> Thumper/Crawler attack/latch
 - Puffer -> Pikmin immunity
-- Jetpack 140-second target / MidAirExplosions Off
-- Baboon Hawk -> Pikmin ignore/adapter guard
+- Jetpack
+- Baboon Hawk -> Pikmin ignore protection
+- Pikmin -> living Baboon Hawk attack/latch and kill capability
+- Leader is null when following = 0 in latest run
 
-Accepted Thumper behavior:
-The Thumper may still visibly snap at Pikmin. This is harmless because Pikmin are neither held nor put into a broken state. Do not patch this cosmetic behavior further unless a future functional regression appears.
+New active gate:
+S1.42M fixes the Baboon-Hawk death-cleanup/corpse interaction discovered after the successful Pikmin attack test.
 
-Only remaining isolated gate:
-Use S1.42L unchanged. Throw Pikmin onto a Baboon Hawk and confirm normal Pikmin attack/latch while the Hawk itself still ignores Pikmin completely.
+Required result:
+- Pikmin latched to a dying Hawk detach and remain usable;
+- SellBodies Dead Baboon Hawk body remains enabled and present;
+- Pikmin/players can carry the corpse;
+- Pikmin can carry it toward the Onion;
+- living Baboon Hawks do not pick up the corpse;
+- Hawk -> Pikmin ignore remains intact;
+- no leader-null loop.
 
 Do not build a successor first.
 Do not restore normal enemies or BCMER first.
 EnemyIsolation remains enabled.
 Exact BCMER 1.71.0 remains disabled.
 
-After this direction passes:
+After S1.42M passes:
 1. remove/disable temporary EnemyIsolation;
 2. restore normal enemy configuration from Current/ENEMY_SPAWN_BASELINE_S1.42C.json;
 3. re-enable exact SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0;
-4. preserve the accepted permanent asymmetric Pikmin interaction rules;
-5. document the resulting normal-enemy/BCMER state;
-6. only then re-evaluate and, if appropriate, perform the deferred repository optimization in Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt as a separate maintenance phase.
+4. preserve all accepted interaction/corpse rules;
+5. runtime-check and document the restored state;
+6. only then perform deferred repository maintenance/optimization.
 
 Current runtime router:
-RuntimeInbox/ACTIVE_BUILD.txt = S1.42L
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42M
 
 Current build controller:
-BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME
+BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42M_BUILD_AWAITING_RUNTIME
 
-Important historical state:
-- S1.42I and S1.42K were built but never runtime-tested and are not runtime evidence.
-- S1.42D broad/inherited LethalMin reflection/Harmony scanning caused a startup crash and must not return.
-- Current/ENEMY_SPAWN_BASELINE_S1.42C.json is a required restore baseline and must not be removed.
-- The intentionally deleted oversized RuntimeEvidence/S1.42G/20260903T100914Z/ must not be restored/cited.
-- Preserve RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/, S1.42H, S1.42J and S1.42L evidence.
+Non-functional drift intentionally deferred while this gate is open:
+- Current/02_TECHNICAL_BASELINE.md has older current-wording;
+- Patches/S139CompatibilityFixes/Plugin.cs retains stale S1.42J-era comments in untouched historical sections.
+Do not perform general cleanup during the runtime gate.
 
 ======================================================================
 
