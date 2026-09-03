@@ -20,171 +20,126 @@ runtime accepted gameplay baseline.
 
 ### Current candidate
 
-**S1.42L - Pikmin Counterattack Restore**
+**S1.42M - Baboon Hawk Death Cleanup**
 
 Profile:
-`Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z`
+`Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z`
 
 SHA-256:
-`fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722`
+`9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7`
+
+Base:
+`Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z`
 
 Compatibility plugin:
-- version 1.3.7
-- DLL SHA-256 `7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2`
+- version 1.3.8
+- DLL SHA-256 `47fff0272b00ce776150c203eb65710216eba4390f5f5864fdbffec686692adf`
 
 Build:
 - GitHub Actions success;
+- 0 warnings / 0 errors;
 - 331 archive members;
 - 330 readable snapshot files;
 - changed existing members only:
-  - `BepInEx/config/NoteBoxz.LethalMin.cfg`
+  - compatibility DLL;
   - `export.r2x`;
-- no added members;
-- compatibility DLL unchanged.
+- no added members.
 
 ## Latest valid runtime evidence
 
-Evidence:
-`RuntimeEvidence/S1.42L/20260903T151817Z/`
+Latest tested build remains **S1.42L**:
 
-Log:
-`RuntimeEvidence/S1.42L/20260903T151817Z/raw/LogOutput.log`
+`RuntimeEvidence/S1.42L/20260903T155132Z/`
 
 Log SHA-256:
-`402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd`
+`812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10`
 
-Verdict:
-**PARTIAL PASS - only Pikmin -> Baboon Hawk explicit attack/latch validation remains.**
+Confirmed:
+- Pikmin -> Baboon Hawk latch/attack **PASS**;
+- Pikmin can kill Baboon Hawk;
+- Baboon Hawk -> Pikmin protection remains **PASS**;
+- `Leader is null when following` count = 0.
 
-Observed counts:
-- `[ThumperPikminGuard]`: 36
-- `Leader is null when following`: 0
-- Baboon guard markers: 9
-- Puffer guard markers: 8
-- Coroner Jetpack `PlayerController was null`: 0
+New reproduced issue:
+latched Pikmin remained attached to the dead original Hawk target after death. SellBodiesFixed later created the carryable `BaboonHawkBody(Clone)` and moved the original enemy transform away, causing the attacking Pikmin to disappear with the stale target. Living Baboon Hawks also picked up the new corpse item as scrap.
 
 ## Closed topics
 
-### Thumper/Crawler
+- Thumper/Crawler -> Pikmin protection: **PASS / CLOSED**
+- Pikmin -> Thumper/Crawler attack/latch: **PASS / CLOSED**
+- Puffer -> Pikmin: **PASS / CLOSED**
+- Jetpack: **PASS / CLOSED**
+- Baboon Hawk -> Pikmin: **PASS / CLOSED**
+- Pikmin -> Baboon Hawk live attack/latch: **PASS / CLOSED**
 
-**PASS / CLOSED**
+Visible Thumper snapping remains accepted harmless cosmetic behavior.
 
-Permanent rule:
-- Thumper/Crawler -> Pikmin: no functional GrabPikmin / leader removal / grabbed death timer / broken state.
-- Pikmin -> Thumper/Crawler: normal LethalMin attack/latch allowed.
+## Active runtime gate - S1.42M
 
-User confirmed Pikmin can again be thrown onto the Thumper and attack it.
+Desired permanent behavior:
+- attacking/latching living Baboon Hawks remains allowed;
+- Hawk -> Pikmin ignore remains active;
+- Pikmin latched to a dying Hawk detach/remain visible and usable;
+- SellBodiesFixed continues creating the Dead Baboon Hawk body;
+- corpse remains on the ground and carryable by Pikmin/players;
+- Pikmin can carry the corpse toward the Onion;
+- living Baboon Hawks do not pick up the corpse;
+- no leader-null loop.
 
-Visible Thumper snapping is accepted as harmless cosmetic/AI behavior because Pikmin are not functionally affected. Do not patch this further unless a future regression appears.
+S1.42M implementation is deliberately narrow:
+- exact declared `BaboonBirdAI.KillEnemy(bool)`;
+- exact declared `LethalMin.PikminAI.RemoveCurrentTask()` runtime resolution;
+- only Pikmin under the specific dying Hawk hierarchy;
+- exact declared `BaboonBirdAI.CanGrabScrap(GrabbableObject)`;
+- only `BaboonHawkBody` / `Dead Baboon Hawk` is rejected for living Hawk scrap pickup.
 
-### Puffer -> Pikmin
-
-**PASS / CLOSED**
-
-Puffer smoke/attack has no effect on Pikmin.
-
-### Jetpack
-
-**PASS / CLOSED**
-
-Accepted:
-- approximately 140-second target;
-- `MidAirExplosions = Off`;
-- historical Coroner Jetpack null flood absent.
-
-### Baboon Hawk -> Pikmin
-
-**PASS / CLOSED**
-
-Retained exact protection:
-- disable exact `LethalMin.BaboonBirdPikminEnemy` after `BaboonBirdAI.Start`;
-- block exact declared `BitePikmin`;
-- retain exact common `PikminAI.GrabPikmin(Transform,float,int)` Baboon failsafe.
-
-## Only remaining runtime gate
-
-**Pikmin -> Baboon Hawk**
-
-S1.42L removes `Baboon hawk` from LethalMin's Pikmin Attack Blacklist and LethalMin registers the Hawk with one latch trigger, but direct Pikmin attack/latch was not explicitly confirmed in the latest run.
-
-Exact next step:
-- keep S1.42L unchanged;
-- throw Pikmin directly onto a Baboon Hawk;
-- confirm normal latch/attack;
-- confirm Hawk-side ignore protection remains intact;
-- upload a fresh complete log to `RuntimeInbox/Current/`.
-
-Do not build a successor first.
-
-## Current Attack Blacklist
-
-`Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy`
-
-This exactly matches modern S1.40B/S1.41.
-
-Recent project-added entries:
-- `Crawler` - removed again;
-- `Baboon hawk` - removed again.
+No scene-wide scan and no broad LethalMin patching.
 
 ## Temporary isolated test state
 
 EnemyIsolation:
 **enabled**
 
-BCMER 1.71.0:
+BCMER exact 1.71.0:
 **disabled**
 
 Restore baseline:
 `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
-After the remaining direction passes:
-1. remove/disable EnemyIsolation;
-2. restore normal enemy configuration from the S1.42C restore baseline;
-3. re-enable exact BCMER 1.71.0;
-4. preserve all accepted asymmetric enemy/Pikmin interaction rules;
-5. document the resulting normal-enemy/BCMER state.
+Do not restore normal spawning/BCMER until S1.42M is evaluated.
 
 ## Controllers
 
-`RuntimeInbox/ACTIVE_BUILD.txt`:
-`S1.42L`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42M`
 
-`BuildSpecs/current.json`:
-disabled / `IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42M_BUILD_AWAITING_RUNTIME`
 
-`RuntimeInbox/Current/`:
-empty except `.gitkeep` after successful ingestion.
+## Exact next step
 
-## Superseded untested builds
+Import S1.42M using:
+**Gale -> Advanced options -> Import all files**
 
-- S1.42I - built, never runtime-tested.
-- S1.42K - built, never runtime-tested.
+Then:
+1. throw Pikmin onto a Baboon Hawk;
+2. let them kill it;
+3. verify Pikmin detach/remain usable;
+4. wait beyond SellBodies' 4-second body delay;
+5. verify Dead Baboon Hawk remains;
+6. throw Pikmin onto corpse and verify carry toward Onion;
+7. verify living Hawks do not pick up corpse;
+8. verify Hawk -> Pikmin ignore;
+9. verify no leader-null loop;
+10. upload complete log to `RuntimeInbox/Current/`.
 
-Neither is runtime evidence.
+## Deferred maintenance
 
-## Deferred repository optimization
+General repository/documentation cleanup remains deferred until the active runtime gate closes.
 
-Plan:
+Known non-functional drift to clean later:
+- older "current" wording in `Current/02_TECHNICAL_BASELINE.md`;
+- stale S1.42J-era comments in `Patches/S139CompatibilityFixes/Plugin.cs`.
+
+Do not mix that maintenance into the S1.42M runtime gate.
+
+Repository optimization plan:
 `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
-
-Status:
-**DEFERRED_UNTIL_ACTIVE_GATE_COMPLETE**
-
-Do not perform structural migration before the last S1.42L gate and the resulting normal-enemy/BCMER state are documented.
-
-## Canonical takeover files
-
-- `Current/45_HANDOVER_S1.42L_TO_NEXT_FINAL.md`
-- `Current/Projektstatus_S1.42L.json`
-- `Current/43_S1.42L_RUNTIME_ANALYSIS_THUMPER_CLOSED.md`
-- `Current/41_S1.42L_PIKMIN_COUNTERATTACK_RESTORE_BUILD.md`
-- `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-- `Current/VERIFIKATION_S1.42L.txt`
-- `Current/SHA256SUMS_S1.42L.txt`
-- `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-
-Historical detail is preserved in:
-- `Current/03_PROJECT_CHRONOLOGY.md`
-- `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-- older dedicated handovers/analyses;
-- `RuntimeEvidence/`.
