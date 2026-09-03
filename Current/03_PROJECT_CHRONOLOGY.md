@@ -629,3 +629,25 @@ After isolated acceptance:
 - disable/remove EnemyIsolation;
 - restore normal enemy configuration from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
 - re-enable exact BCMER 1.71.0.
+
+
+## 2026-09-03 — handover refresh + repository optimization plan recorded
+
+No gameplay/build/runtime state changed.
+
+The repository handover was refreshed while S1.42J remained the active untested runtime gate.
+
+Recorded:
+- new canonical handover: `Current/36_HANDOVER_S1.42J_TO_NEXT.md`;
+- pending structural repository optimization plan: `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`;
+- the migration is recommended but explicitly deferred until the active critical runtime/build gate has been evaluated and the resulting canonical state documented;
+- START_HERE, README, Current state/handover/open-issues/status pointers were synchronized;
+- `Current/01_HANDOVER_CORE.md` stale wording calling compatibility source version 1.3.5 current was corrected: current S1.42J source is v1.3.7, while v1.3.5 is historical S1.42H-stage context.
+
+Control state remained:
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42J`;
+- `BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME`;
+- no new runtime evidence was present in `RuntimeInbox/Current/`.
+
+Immediate next action remained:
+**runtime-test S1.42J; do not build S1.42K and do not begin the structural repository migration first.**
