@@ -85,13 +85,13 @@ Source:
 `Patches/S139CompatibilityFixes/`
 
 Current source version:
-**1.3.2**
+**1.3.3**
 
 Latest runtime-proven non-crashing startup version:
 **1.3.1 in S1.42E**
 
-S1.42F embedded DLL SHA-256:
-`8172c75bbcf75108266e1ce8d2808ec072f6cfc164acaf562baa0345123915f3`
+S1.42G embedded DLL SHA-256:
+`39690bf06dd6876e42badeb80f69bd8448fdbfeecd888fab0105951c38812436`
 
 Gale:
 **Advanced options -> Import all files**
@@ -208,21 +208,21 @@ Evidence:
 `RuntimeEvidence/S1.42E/20260903T091053Z/`
 
 Latest built candidate:
-**S1.42F**
+**S1.42G**
 
-`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
+`Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
 
 SHA-256:
-`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
+`09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
 
 Status:
-**built successfully; awaiting runtime lobby-smoothness test**
+**built successfully; awaiting routed-moon smoothness test**
 
 `BuildSpecs/current.json`:
-`IDLE_AFTER_S1.42F_BUILD_AWAITING_RUNTIME`
+`IDLE_AFTER_S1.42G_BUILD_AWAITING_RUNTIME`
 
 `RuntimeInbox/ACTIVE_BUILD.txt`:
-`S1.42F`
+`S1.42G`
 
 Do not build another candidate before S1.42F runtime evidence is evaluated.
 
@@ -250,10 +250,10 @@ Use juijui as a historical target/reference, not a V81 build base.
 
 ## Immediate next action
 
-Test S1.42F.
+Test S1.42G.
 
 First gate:
-**reach Main Menu, host into the ship lobby in orbit, and confirm the S1.42E once-per-second freezes are gone.**
+**reach Main Menu, host, route to a moon, wait 20-30 seconds, and confirm there are no periodic freezes or Coroner Jetpack warning floods.**
 
 If smooth, continue in the same run:
 - Baboon Hawk generic invincible-Pikmin state recovery;
