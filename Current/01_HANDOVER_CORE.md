@@ -9,93 +9,65 @@ Last fully accepted gameplay baseline:
 **S1.41**
 
 Latest runtime evidence:
-**S1.42P — PARTIAL/FAIL, exact 20 -> 18 Pikmin recovery**
+**S1.42Q — FAIL, exact LethalMin latched-co-attacker root cause identified**
 
 Current built candidate:
-**S1.42Q — LethalMin Native Minimal Rollback**
+**S1.42R — LethalMin Latched Dead Target Completion**
 
 Profile:
-`Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z`
+`Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z`
 
 SHA-256:
-`50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1`
+`009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101`
 
 Compatibility plugin:
-**v1.3.12**
+**v1.3.13**
 
-Read first:
-- `Current/59_S1.42Q_MINIMAL_LETHALMIN_NATIVE_ROLLBACK_PLAN.md`
-- `Current/60_S1.42Q_MINIMAL_NATIVE_ROLLBACK_BUILD.md`
-- `Current/Projektstatus_S1.42Q.json`
-- `Current/VERIFIKATION_S1.42Q.txt`
-- `Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md`
+## Read first
 
-## Architectural rule
+1. `Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
+2. `Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
+3. `Current/63_S1.42R_LATCHED_DEAD_TARGET_COMPLETION_BUILD.md`
+4. `Current/Projektstatus_S1.42R.json`
+5. `Current/VERIFIKATION_S1.42R.txt`
+6. `BuildSpecs/S1.42R_PLAN.md`
 
-Keep normal LethalMin ownership:
+## Exact bug
 
-- Pikmin -> Enemy = native LethalMin
-- enemy death / task completion = native LethalMin
-- Pikmin -> dead enemy body = native LethalMin
-- Onion delivery = native LethalMin
-- Enemy -> Pikmin = blocked by native config plus only proven minimal compatibility shims
+LethalMinNightly 1.1.108 `AttackEnemyTask.IntervaledUpdate()` returns for a currently latched Pikmin before checking whether its own target is dead.
 
-S1.42Q removes all project-local Hawk-death task cleanup and reflection-heavy post-grab recovery.
+S1.42Q runtime mapped this to the exact two lost Pikmin.
 
-## Build verification
+## S1.42R
 
-GitHub Actions #52:
-**SUCCESS**
+Adds only the missing dead-target completion to the exact task:
 
-Profile SHA-256:
-`50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1`
+latched + own target dead -> native `FinishTaskServerRpc()`.
 
-Embedded DLL SHA-256:
-`f6a4e7b060af6a779da1c92236b2ce63d1bd5d890a21c9492517e568a9aaac45`
+No death hook.
+No scan.
+No radius.
+No guessed attacker identity.
+No custom state restoration.
 
-Only profile delta:
-- LethalMin config
-- compatibility DLL
-- export profile name
+## Next action
 
-Only LethalMin config value changed:
-`Thumper Bite Limit = 0 -> 3`
-
-## Exact next action
-
-Import with:
-**Gale -> Advanced options -> Import all files**
-
-Test:
-1. Crawler/Thumper native Pikmin attack/latch/kill
-2. full follower recovery
-3. Baboon Hawk native Pikmin attack/latch/kill
-4. full follower recovery
-5. Puffer harmlessness
-6. Enemy -> Pikmin grab/bite protection
-7. Dead Baboon Hawk native carry to Onion
-8. living Hawk corpse ignore
-9. no no-task Work loop
-10. no leader-null loop
+Import S1.42R using Gale "Advanced options -> Import all files" and perform the focused multi-Pikmin Baboon Hawk test.
 
 Expected:
-`[LethalMinNativeOwnership]`
+`[LethalMinLatchedDeathGuard]`
+followed by native:
+`Task finished`
 
-Must not appear:
-`[BaboonHawkDeathCleanup]`
-
-Then commit complete fresh log to `RuntimeInbox/Current/`.
+Then commit complete `LogOutput.log` to `RuntimeInbox/Current/`.
 
 ## Temporary state
 
-EnemyIsolation:
-enabled.
-
-BCMER 1.71.0:
-disabled.
+EnemyIsolation: enabled  
+BCMER 1.71.0: disabled
 
 ## Controllers
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Q`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42R`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42Q_BUILD_AWAITING_RUNTIME`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42R_BUILD_AWAITING_RUNTIME`
