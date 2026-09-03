@@ -89,5 +89,25 @@
   "next_action": {
     "type": "focused_runtime_test",
     "instruction": "Import S1.42S via Gale Advanced options -> Import all files. Latch at least 3 Pikmin onto one Baboon Hawk, kill it, verify all fall off/stop attacking and exact follower count recovers. Verify Hawk -> Pikmin bite/grab remains blocked and corpse remains carryable, then commit full LogOutput.log to RuntimeInbox/Current/."
+  },
+  "permanent_engineering_policy": {
+    "project_local_patch_safety": {
+      "mandatory": true,
+      "document": "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md",
+      "principles": [
+        "use the smallest exact patch surface",
+        "inspect inheritance and native lifecycle before patching",
+        "map secondary cleanup/state/network responsibilities",
+        "never disable a whole foreign component for one interaction unless its complete lifecycle is proven safe to suppress",
+        "prefer prevention over manual state repair",
+        "isolate risky patch changes from unrelated package/config changes",
+        "record exact DLL/profile hashes and archive delta",
+        "runtime-test target behavior plus adjacent and reverse/native lifecycle behavior",
+        "compile/startup success alone is not acceptance",
+        "rollback or narrow collateral-damage patches instead of stacking compensating repair layers"
+      ],
+      "future_build_plan_requirement": "Every build plan introducing or materially changing a custom patch must include a Patch Safety Review.",
+      "origin_case": "S1.42R BaboonBirdPikminEnemy component disable suppressed inherited PikminEnemy.Update death/unlatch cleanup."
+    }
   }
 }
