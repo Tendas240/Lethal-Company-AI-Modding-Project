@@ -36,23 +36,24 @@ Expected general marker:
 2. `Current/00_CURRENT_STATE.md`
 3. `Current/01_HANDOVER_CORE.md`
 4. `Current/16_HANDOVER_S1.42C_TO_NEXT.md`
-5. `Current/06_RECENT_WORK_S1.42A-S1.42C.md`
-6. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
-7. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
-8. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
-9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-10. `Current/02_TECHNICAL_BASELINE.md`
-11. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-12. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-13. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-14. `Current/03_PROJECT_CHRONOLOGY.md`
-15. `Current/Projektstatus_S1.42C.json`
-16. `Current/Aktive_Modliste_S1.42C.txt`
-17. `Current/VERIFIKATION_S1.42C.txt`
-18. `BuildSpecs/S1.42C_PLAN.md`
-19. `BuildSpecs/S1.42D_PLAN.md`
-20. `BuildSpecs/current.json`
-21. `ProfileSources/S1.42C/`
+5. `Current/17_REPO_HANDOVER_CLEANUP_S1.42C.md`
+6. `Current/06_RECENT_WORK_S1.42A-S1.42C.md`
+7. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
+8. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
+9. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
+10. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+11. `Current/02_TECHNICAL_BASELINE.md`
+12. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+13. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+14. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+15. `Current/03_PROJECT_CHRONOLOGY.md`
+16. `Current/Projektstatus_S1.42C.json`
+17. `Current/Aktive_Modliste_S1.42C.txt`
+18. `Current/VERIFIKATION_S1.42C.txt`
+19. `BuildSpecs/S1.42C_PLAN.md`
+20. `BuildSpecs/S1.42D_PLAN.md`
+21. `BuildSpecs/current.json`
+22. `ProfileSources/S1.42C/`
 
 Then inspect `Profiles/`, `RuntimeEvidence/`, `Patches/`, `References/`, `Logs/`, and `Archive/` only as required by the task.
 
