@@ -1,12 +1,32 @@
 # Lethal Company AI Modding Project
 
-GitHub is the canonical source of truth.
+GitHub is the canonical source of truth for this project.
+
+## Current state
+
+Game:
+**Lethal Company V81**
+
+Last fully accepted gameplay baseline:
+**S1.41 - BCMER Reactivation**
+
+`Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
+
+SHA-256:
+`d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
+
+Latest valid runtime evidence:
+**S1.42Q - FAIL**
+
+`RuntimeEvidence/S1.42Q/20260903T195158Z/`
+
+Log SHA-256:
+`e8949f87c0df2e3f5a8e7b985bf698aab9de68bba08ae45e3fe5b89e89f27aa5`
 
 ## Current built candidate
 
 **S1.42R - LethalMin Latched Dead Target Completion**
 
-Profile:
 `Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z`
 
 SHA-256:
@@ -15,56 +35,77 @@ SHA-256:
 Compatibility plugin:
 **v1.3.13**
 
-DLL SHA-256:
-`0d39a8895a1324457c2ac135fa2ae129e58ba8155ce6bde1cdb59d340be420ff`
+## Root cause now proven
 
-Status:
-**built and repository-verified; awaiting runtime test**
-
-## Latest runtime evidence
-
-**S1.42Q — FAIL, exact upstream root cause identified**
-
-Evidence:
-`RuntimeEvidence/S1.42Q/20260903T195158Z/`
-
-Log SHA-256:
-`e8949f87c0df2e3f5a8e7b985bf698aab9de68bba08ae45e3fe5b89e89f27aa5`
-
-Exact failed co-attackers:
-- `Yellow Pikmin_ruCpzY`
-- `Yellow Pikmin_PerDu`
-
-Successful control:
-- `Yellow Pikmin_hcRGph`
-
-## Root cause
-
-Exact LethalMin version:
-**NotezyTeam-LethalMinNightly 1.1.108**
+Exact LethalMinNightly:
+**1.1.108**
 
 Exact analyzed DLL SHA-256:
 `9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df`
 
-`AttackEnemyTask.IntervaledUpdate()` returns while a Pikmin is still latched before it reaches LethalMin's own `enemy.enemyScript.isEnemyDead` check.
+Decompiled:
+`LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate()`
 
-S1.42R patches only that missing branch and invokes LethalMin's existing native `FinishTaskServerRpc()` for the exact task whose own target is dead.
+The method returns early while `IsPikminOnEnemy == true`, before its own dead-target check.
 
-No enemy death hook, no Pikmin scan, no radius, no target guessing, no direct state mutation.
+Therefore still-latched co-attackers can never reach LethalMin's existing:
+
+`enemy.enemyScript.isEnemyDead -> FinishTaskServerRpc()`
+
+branch.
+
+S1.42Q reproduced this exactly:
+- first Hawk attackers: `ruCpzY`, `PerDu`, `hcRGph`
+- only `hcRGph` reached native `Task finished`
+- `ruCpzY` and `PerDu` remained stuck on the dead first Hawk
+
+Full evidence:
+- `Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
+- `Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
+
+## S1.42R fix
+
+S1.42R patches only exact:
+
+`LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate()`
+
+When this exact task:
+- is still latched;
+- has its own target;
+- and that target's `EnemyAI.isEnemyDead` is true;
+
+the compatibility plugin requests native:
+
+`PikminAI.FinishTaskServerRpc()`
+
+before LethalMin's broken early return.
+
+No:
+- enemy death hook
+- global scan
+- proximity radius
+- target-name guess
+- direct RemoveCurrentTask
+- manual unlatch
+- custom leader repair
+- custom corpse carry
+
+All actual task ending/unlatching remains native LethalMin.
 
 ## Build verification
 
-GitHub Actions Build #54:
-**SUCCESS**
+Compatibility DLL SHA-256:
+`0d39a8895a1324457c2ac135fa2ae129e58ba8155ce6bde1cdb59d340be420ff`
 
-Generated commit:
-`80fc7bc37476612320925083f062bda2b841cf40`
+GitHub Actions:
+- Build #54: **SUCCESS**
+- Idle guard #55: **SUCCESS**
 
-Q -> R changed only:
-- local compatibility DLL
-- `export.r2x` profile name
+S1.42Q -> R changed only:
+1. compatibility DLL
+2. `export.r2x`
 
-All configs are unchanged.
+No config or mod changes.
 
 ## Temporary state
 
@@ -74,7 +115,7 @@ EnemyIsolation:
 BCMER 1.71.0:
 **disabled**
 
-## Controllers
+## Runtime/build control
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42R`
 
@@ -82,26 +123,30 @@ BCMER 1.71.0:
 
 ## Exact next step
 
-Import S1.42R through Gale:
+Import S1.42R with:
 
-**Advanced options -> Import all files**
+**Gale -> Advanced options -> Import all files**
 
-Put at least 3 Pikmin on the same Baboon Hawk, kill it, verify full follower recovery, repeat once, and commit the complete fresh `LogOutput.log` to `RuntimeInbox/Current/`.
+Use multiple Pikmin on the same Baboon Hawk.
 
-Expected for stale co-attackers:
+After death:
+- every attacker must stop;
+- co-attackers should log `[LethalMinLatchedDeathGuard]`;
+- they should immediately get native `Task finished`;
+- follower count must fully recover.
 
-`[LethalMinLatchedDeathGuard] Requested native FinishTaskServerRpc ...`
+Repeat on a second Hawk, then commit the complete fresh log to:
 
-followed by native:
+`RuntimeInbox/Current/`
 
-`Task finished`
+Do not restore normal enemies or BCMER before R passes.
 
-## Read first
+## ChatGPT - read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
 2. `Current/62_S1.42Q_RUNTIME_LATCHED_COATTACKER_ROOT_CAUSE.md`
 3. `Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`
-4. `Current/63_S1.42R_LATCHED_DEAD_TARGET_COMPLETION_BUILD.md`
+4. `BuildSpecs/S1.42R_PLAN.md`
 5. `Current/Projektstatus_S1.42R.json`
 6. `Current/00_CURRENT_STATE.md`
 7. `Current/01_HANDOVER_CORE.md`
@@ -109,6 +154,7 @@ followed by native:
 9. `Current/VERIFIKATION_S1.42R.txt`
 10. `Current/SHA256SUMS_S1.42R.txt`
 11. `Current/Aktive_Modliste_S1.42R.txt`
-12. `BuildSpecs/S1.42R_PLAN.md`
-13. `BuildSpecs/current.json`
-14. `RuntimeInbox/ACTIVE_BUILD.txt`
+12. `BuildSpecs/current.json`
+13. `RuntimeInbox/ACTIVE_BUILD.txt`
+14. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+15. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
