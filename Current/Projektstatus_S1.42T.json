@@ -2,6 +2,11 @@
   "date": "2026-09-04",
   "game": "Lethal Company V81",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "handover": {
+    "primary": "Current/75_FINAL_HANDOVER_S1.42T_PASS_S1.42U_NEXT.md",
+    "audit": "Current/76_REPOSITORY_HANDOVER_AUDIT_S1.42T.md",
+    "status": "S1.42T_RUNTIME_PASS_S1.42U_PLAN_ONLY"
+  },
   "accepted_gameplay_baseline": {
     "build": "S1.41",
     "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
@@ -17,10 +22,27 @@
     "full_normal_stack_promoted": false,
     "reason_not_full_normal_stack": "Exact BCMER 1.71.0 remains intentionally disabled until the separate S1.42U gate."
   },
+  "next_candidate": {
+    "build": "S1.42U",
+    "name": "BCMER 1.71.0 Reactivation Gate",
+    "status": "plan_only_not_built",
+    "plan": "BuildSpecs/S1.42U_PLAN.md",
+    "only_intended_change": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 disabled -> enabled"
+  },
   "compatibility_plugin": {
     "version": "1.3.14",
     "embedded_dll_sha256": "3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960",
-    "code_changed_in_s142t": false
+    "code_changed_in_s142t": false,
+    "permanent_rules": [
+      "BaboonBirdPikminEnemy remains enabled",
+      "block only narrow Hawk -> Pikmin entry points",
+      "preserve native PikminEnemy death/unlatch lifecycle",
+      "Pikmin -> Baboon Hawk remains allowed",
+      "Puffer -> Pikmin protection remains",
+      "Thumper/Crawler intended attack/counterattack behavior remains",
+      "Thumper Bite Limit = 3",
+      "Crawler absent from Attack Blacklist"
+    ]
   },
   "s142t_build": {
     "base": "S1.42S",
@@ -35,7 +57,8 @@
     "mod_state_changes": [],
     "mod_additions": [],
     "mod_removals": [],
-    "intended_gameplay_delta": "Isolated Enemy Regression = false"
+    "intended_gameplay_delta": "Isolated Enemy Regression = false",
+    "canonical_result": "Current/AUTO_BUILD_RESULT.json"
   },
   "latest_runtime_evidence": {
     "build": "S1.42T",
@@ -61,6 +84,26 @@
       "known/pre-existing SoundAPI TypeLoadException and other startup/lobby stack noise"
     ]
   },
+  "focused_predecessor_evidence": {
+    "build": "S1.42S",
+    "profile_sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee",
+    "runtime_log_sha256": "9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea",
+    "acceptance_doc": "Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md",
+    "corrected_root_cause_doc": "Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md"
+  },
+  "restore_baseline": {
+    "build": "S1.42C",
+    "profile": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
+    "sha256": "22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3",
+    "machine_readable": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+    "historical_restore_contract": "Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md",
+    "restore_contract_status": "fulfilled_by_S1.42T_do_not_treat_old_next_step_wording_as_current",
+    "accepted_later_deltas_to_preserve": [
+      "Thumper Bite Limit = 3",
+      "Crawler absent from Attack Blacklist",
+      "compatibility plugin v1.3.14 behavior"
+    ]
+  },
   "current_state": {
     "enemy_isolation_enabled": false,
     "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn",
@@ -84,7 +127,7 @@
     "type": "build_and_runtime_test_bcmer_reactivation",
     "build_id": "S1.42U",
     "plan": "BuildSpecs/S1.42U_PLAN.md",
-    "instruction": "Re-enable exact SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 only; preserve S1.42T and all accepted compatibility/config state; do not upgrade or mix unrelated tuning."
+    "instruction": "Re-enable exact SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 only; preserve S1.42T and all accepted compatibility/config state; do not upgrade or mix unrelated tuning, repository migration, or documentation/comment cleanup."
   },
   "large_runtime_log_policy": {
     "document": "Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md",
@@ -97,6 +140,23 @@
     "raw_logs_permanent_by_default": false,
     "s142t_raw_retention_now": "keep through immediate BCMER restoration comparison"
   },
+  "runtime_pipeline_verification": {
+    "workflow": ".github/workflows/runtime-pipeline-selftest.yml",
+    "test_program": "BuildSystem/runtime_pipeline_selftest.py",
+    "initial_actions_run_id": 33817297654,
+    "initial_result": "success",
+    "verified_components": [
+      "every-line analyzer and marker counts",
+      "lossless bounded chat chunks",
+      "normalized signature export",
+      "split ZIP reconstruction",
+      "large-ingest provenance generation",
+      "pattern query with context",
+      "exact line-range query",
+      "large-log upload manifest preparation"
+    ],
+    "production_100_to_500_mb_game_log_exercised": false
+  },
   "open_issues": [
     {
       "id": "LETHALMIN_DISCONNECT_NOTICEZONE_NETWORKOBJECTREFERENCE",
@@ -107,6 +167,18 @@
       "id": "ALOECHASE_FSB_LOAD_STATE",
       "severity": "monitor_only",
       "blocking": false
+    }
+  ],
+  "known_nonfunctional_drift": [
+    {
+      "path": "Current/02_TECHNICAL_BASELINE.md",
+      "issue": "older chronology subsections locally describe S1.42S/earlier as current",
+      "authority": "Current/75, Current/00, Current/01 and this project status override those historical labels"
+    },
+    {
+      "path": "Patches/S139CompatibilityFixes/Plugin.cs",
+      "issue": "some older comments do not perfectly describe accepted v1.3.14 behavior",
+      "authority": "actual code/config/runtime evidence is authoritative; comment cleanup is separate maintenance"
     }
   ]
 }
