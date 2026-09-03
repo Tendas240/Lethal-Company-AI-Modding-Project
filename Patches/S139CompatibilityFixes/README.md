@@ -2,6 +2,12 @@
 
 Project-local cumulative plugin for the Tendas Lethal Company profile.
 
+Current source version: **1.2.0**
+
+Current runtime-tested embedded binary reference:
+- profile: `Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
+- embedded DLL SHA-256: `c3da6ee8220bec3b954ac62ca1a4d813efcb292eefd9b70fc0616a76e2f37af3`
+
 Functions:
 
 - Keeps landed ship-door hydraulic power at 100% while at least one living controlled player is actually inside the ship.
@@ -16,8 +22,9 @@ Functions:
 
 Gale import rule:
 
-- Import the S1.39 `.r2z` with **Advanced options -> Import all files** so the embedded DLL is extracted.
-- If the plugin does not load, import `Tendas-S139CompatibilityFixes-1.0.0.zip` separately into the same Gale profile.
+- Import any current project `.r2z` containing this plugin with **Advanced options -> Import all files** so the embedded DLL is extracted.
+- The current source is compiled directly by the repository-first GitHub Actions profile build and injected into the generated profile.
+- **Do not use `Tendas-S139CompatibilityFixes-1.0.0.zip` or the standalone `S139CompatibilityFixes.dll` in this folder as a current fallback.** Those binary artifacts are historical v1.0.0-era files and do not contain the later LethalModDataLib/Puffer guards. They remain only for historical reconstruction; the authoritative current implementation is `Plugin.cs` compiled by the build workflow.
 
 Expected runtime markers:
 
