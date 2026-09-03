@@ -199,7 +199,7 @@ Evidence:
 
 A separate non-blocking incident occurred in the Mineshaft elevator: the player clipped through the floor while descending with many Pikmin and died from fall damage. Nearby logs contained heavy NavMesh-agent creation failures. Causality remains unproven and BCMER is not implicated.
 
-## Current binding sequence
+## Historical binding sequence at the S1.41 -> S1.42A transition
 
 1. Freeze accepted S1.41 as the current gameplay baseline.
 2. Fresh-audit the eight planned interior packages and dependencies.
@@ -506,12 +506,126 @@ S1.42H:
 - disables BCMER 1.71.0 inside the diagnostic profile itself;
 - deliberately leaves Functional Microwave rarity unchanged.
 
-Status:
+Historical build-time status:
 **awaiting first runtime validation.**
 
-No S1.42I build is authorized before S1.42H runtime evidence is evaluated.
+That runtime validation later occurred and is documented below.
 
-After the isolated stage passes:
-- remove/disable EnemyIsolation;
-- restore normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+
+## S1.42H runtime — Puffer pass, Baboon Hawk hold/re-grab failure
+
+Evidence:
+`RuntimeEvidence/S1.42H/20260903T125734Z/`
+
+Log SHA-256:
+`81ed064ce97d25f250d6fba1585055baef8ce801cd0f13626d074bf4fef71029`
+
+Confirmed:
+- exact common `LethalMin.PikminAI.GrabPikmin(Transform,float,int)` hook loaded exactly once;
+- startup/Main Menu remained safe;
+- isolated Crawler/Puffer/Baboon-Hawk spawning worked with BCMER disabled;
+- user confirmed the in-game `Enemies` terminal displayed enemies;
+- Puffer smoke -> Pikmin guard passed;
+- Coroner's historical Jetpack `PlayerController was null` flood remained absent;
+- prior zero-power BCMER-related door flood did not reproduce with BCMER disabled.
+
+Baboon Hawk remained broken for invincible Pikmin:
+- 64 BitePikmin calls;
+- 59 grabbed states;
+- 59 grabbed death timers;
+- 59 invincibility-blocked kills;
+- 56 post-grab repairs;
+- 193 `Leader is null when following` errors.
+
+The user visibly observed Pikmin held immobilized in Baboon Hawk beaks.
+
+A Crawler spawned, but direct Thumper/Crawler <-> Pikmin contact was not validated in this run.
+
+## S1.42I — narrow Baboon Hawk invincible-Pikmin Grab Guard
+
+Built from S1.42H.
+
+Profile:
+`Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z`
+
+SHA-256:
+`c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97`
+
+Compatibility plugin:
+v1.3.6
+
+DLL SHA-256:
+`76544a536f5c626f0c81b50dc06a7bf1521c265cd23a7698917789e3846eecb2`
+
+S1.42I blocked Baboon Hawk-owned common `GrabPikmin` only for invincible Pikmin.
+
+Build:
+- GitHub Actions success;
+- 0 warnings;
+- 0 errors.
+
+**S1.42I was never runtime-tested.**
+
+Before testing it, the user selected a stronger gameplay rule:
+Baboon Hawks and Pikmin should completely ignore each other in both directions because chasing invincible Pikmin is pointless AI behavior.
+
+S1.42I is therefore a superseded intermediate build, not runtime evidence.
+
+## S1.42J — Baboon Hawk Zero Interaction
+
+Built from S1.42I.
+
+Profile:
+`Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z`
+
+SHA-256:
+`736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7`
+
+Compatibility plugin:
+v1.3.7
+
+DLL SHA-256:
+`7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2`
+
+LethalMin config SHA-256:
+`f7b2698171d9d6a7b6c2e7b415ff2cb2c63459fb267ff0807ebe0f4bcf3e0bd3`
+
+Export SHA-256:
+`89e03afcf1bc9b3390969f83709ad04dca865743de6249af0dde642d0e3e6fe5`
+
+Binding rule:
+**Baboon Hawk <-> Pikmin = zero interaction in both directions.**
+
+Implementation:
+- exact `LethalMin.BaboonBirdPikminEnemy` adapter disabled after exact `BaboonBirdAI.Start`;
+- exact declared `BaboonBirdPikminEnemy.BitePikmin` blocked;
+- common exact `PikminAI.GrabPikmin` retains Baboon Hawk failsafe for all Pikmin;
+- exact runtime enemy name `Baboon hawk` added to LethalMin Pikmin Attack Blacklist;
+- no broad inherited reflection/Harmony scan.
+
+GitHub Actions:
+- success;
+- 0 warnings;
+- 0 errors;
+- 331 archive members;
+- 330 readable snapshot files;
+- changed existing members only: LethalMin config, compatibility DLL, `export.r2x`;
+- no added members;
+- BCMER 1.71.0 remains disabled;
+- EnemyIsolation remains enabled.
+
+Current status:
+**built successfully; awaiting runtime validation.**
+
+Exact next action:
+runtime-test S1.42J. Do not build S1.42K first.
+
+Primary gate:
+- Baboon Hawks and Pikmin ignore each other completely;
+- direct Thumper/Crawler <-> Pikmin zero interaction is finally validated;
+- Puffer -> Pikmin remains accepted from S1.42H.
+
+After isolated acceptance:
+- disable/remove EnemyIsolation;
+- restore normal enemy configuration from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
 - re-enable exact BCMER 1.71.0.
