@@ -160,12 +160,16 @@ Shatteredrooms:
 
 `BuildSpecs/current.json`:
 - `enabled = false`
-- `build_id = IDLE_HANDOVER_AFTER_S1.42C_RUNTIME`
+- `build_id = IDLE_AFTER_S1.42E_BUILD_AWAITING_RUNTIME`
+- base/reference = S1.42E
 
-`BuildSpecs/S1.42D_PLAN.md`:
-**DRAFT ONLY — DO NOT BUILD YET**
+S1.42D:
+**failed startup; do not retest.**
 
-Do not rebuild S1.42C by default.
+S1.42E:
+**latest built candidate; not runtime-tested yet.**
+
+Do not create another build before S1.42E runtime evidence is evaluated.
 
 ## Repository-first workflow
 
@@ -185,10 +189,13 @@ Profiles with the project-local DLL require:
 ## Primary handover
 
 Read:
-`Current/16_HANDOVER_S1.42C_TO_NEXT.md`
+`Current/22_HANDOVER_S1.42E_TO_NEXT.md`
 
 Next chat start prompt:
-`Current/NEXT_CHAT_START_PROMPT_S1.42C.txt`
+`Current/NEXT_CHAT_START_PROMPT_S1.42E.txt`
+
+Runtime route:
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42E`
 
 ## Historical juijui reference — committed and indexed
 
@@ -205,60 +212,6 @@ The project goal is to approach the old juijui constellation/configuration where
 Recovered historical Jetpack config evidence: `JetpackBatteryUsage = 140`. See `Current/18_JUIJUI_LEGACY_REFERENCE.md` for the evidence caveat.
 
 This reference work does not supersede the current highest engineering priority: the generic LethalMin grab/bite + invincible-Pikmin invalid leader/follow-state fix.
-
-
-## Next candidate scope — S1.42D
-
-Next runtime candidate should be a focused S1.42D descendant of S1.42C containing:
-- generic LethalMin enemy grab/bite + Invincible Pikmin state repair;
-- retained S1.42C Thumper/Puffer guards;
-- Jetpack 140-second target;
-- Jetpack boost/speed explosion disabled;
-- Functional Microwave volume 0.7 with editing gate true.
-
-Broader interior/BCMER/CullFactory/Mausoleum tuning is deferred until this focused regression stage passes.
-
-
-## S1.42D temporary enemy isolation
-
-For the next focused regression run, only these enemies should be allowed to spawn:
-- indoor: Thumper/Crawler and Puffer/Spore Lizard;
-- outdoor: Baboon Hawk.
-
-This is diagnostic-only. The normal enemy setup must not be permanently changed.
-
-Canonical restore baseline:
-`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-
-Detailed test plan:
-`Current/19_S1.42D_ISOLATED_ENEMY_TEST.md`
-
-After the isolated run, remove the diagnostic isolation layer and restore the complete S1.42C enemy configuration exactly.
-
-
-## Latest built candidate — S1.42D
-
-**S1.42D** has been built successfully but is not runtime-accepted yet.
-
-Profile:
-`Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z`
-
-SHA-256:
-`b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c`
-
-Purpose:
-focused isolated regression validation for:
-- generic LethalMin grab/bite + Invincible Pikmin state repair;
-- Thumper/Puffer guards;
-- temporary Crawler/Puffer/Baboon-Hawk-only enemy isolation;
-- Jetpack 140-second target;
-- Jetpack mid-air/high-speed self-explosion disabled;
-- Functional Microwave volume 0.7.
-
-S1.42C remains the latest runtime-tested technical candidate until S1.42D runtime evidence is committed.
-
-Test plan:
-`Current/20_S1.42D_BUILD_AND_TEST.md`
 
 
 ## S1.42D startup failure
