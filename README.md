@@ -1,3 +1,5 @@
+> **Permanent patch-safety policy:** Every project-local Harmony/runtime/compatibility patch must follow `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`. New custom patches require exact lifecycle/side-effect analysis plus targeted and adjacent runtime regression testing before promotion. Compile/startup success alone is not acceptance.
+
 # Lethal Company AI Modding Project
 
 GitHub is the canonical source of truth for this project.
