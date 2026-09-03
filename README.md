@@ -71,14 +71,15 @@ Expected general marker:
 ## ChatGPT — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/00_CURRENT_STATE.md`
-3. `Current/01_HANDOVER_CORE.md`
-4. `Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md`
-5. `Current/27_S1.42G_BUILD_AND_TEST.md`
-6. `Current/26_S1.42F_RUNTIME_S1.42G_PERFORMANCE_HOTFIX.md`
-7. `Current/22_HANDOVER_S1.42E_TO_NEXT.md` (historical handover context)
-8. `Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md`
-9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+2. `Current/29_HANDOVER_S1.42G_BCMER_OFF_RETEST_TO_NEXT.md`
+3. `Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md`
+4. `Current/27_S1.42G_BUILD_AND_TEST.md`
+5. `Current/00_CURRENT_STATE.md`
+6. `Current/01_HANDOVER_CORE.md`
+7. `Current/26_S1.42F_RUNTIME_S1.42G_PERFORMANCE_HOTFIX.md`
+8. `Current/22_HANDOVER_S1.42E_TO_NEXT.md` (historical handover context)
+9. `Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md`
+10. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
 10. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
 11. `Current/06_RECENT_WORK_S1.42D-S1.42E.md`
 12. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
