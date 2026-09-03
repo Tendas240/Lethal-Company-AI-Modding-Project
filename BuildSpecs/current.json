@@ -1,15 +1,56 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_MINIMAL_ROLLBACK_BUILD",
+  "enabled": true,
+  "build_id": "S1.42Q",
   "base_profile": "Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z",
   "base_sha256": "11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z",
+  "profile_name": "LC V1 S1.42Q LethalMin Native Minimal Rollback",
   "overwrite": false,
-  "mod_state_changes": [],
+  "mod_state_changes": [
+    {
+      "name": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+      "version": "1.71.0",
+      "enabled": false
+    }
+  ],
   "mod_additions": [],
   "mod_removals": [],
-  "config_patches": [],
-  "local_plugin_builds": [],
-  "text_assertions": []
+  "config_patches": [
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "section": "Enemy Behavior",
+      "key": "Thumper Bite Limit",
+      "value": "3"
+    }
+  ],
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S139CompatibilityFixes/bin/Release/netstandard2.1/S139CompatibilityFixes.dll",
+      "archive_path": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+      "contains": "Isolated Enemy Regression = true"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Thumper Bite Limit = 3"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "not_contains": "Thumper Bite Limit = 0"
+    },
+    {
+      "path": "BepInEx/config/Entity378.sellbodies.cfg",
+      "contains": "Enable selling of Baboon Hawk Bodies = true"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Attack Blacklist = Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy"
+    }
+  ]
 }
