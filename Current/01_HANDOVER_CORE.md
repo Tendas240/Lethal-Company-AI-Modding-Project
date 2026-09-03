@@ -229,3 +229,28 @@ S1.42D is reserved as a focused regression candidate:
 - Functional Microwave volume 0.7 + editing gate.
 
 Do not mix the broader interior/BCMER tuning into this candidate.
+
+
+### S1.42D — built, awaiting runtime
+
+Profile:
+`Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z`
+
+SHA-256:
+`b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c`
+
+Status:
+**built successfully; not runtime-accepted yet.**
+
+This is a temporary focused diagnostic descendant of S1.42C:
+- generic LethalMin grab/bite + Invincible Pikmin recovery;
+- isolated enemy runtime filter: Crawler/Puffer/Baboon Hawk only, plus Pikmin-family;
+- Jetpack 140-second target;
+- Jetpack `MidAirExplosions = Off`;
+- Functional Microwave volume 0.7/edit gate true.
+
+The full enemy roster must be restored after this test using:
+`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+
+Runtime checklist:
+`Current/20_S1.42D_BUILD_AND_TEST.md`
