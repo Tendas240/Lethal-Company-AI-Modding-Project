@@ -1,4 +1,74 @@
 ======================================================================
+CURRENT CANONICAL TAKEOVER OVERRIDE - 2026-09-03 - S1.42S FOCUSED RUNTIME PASS
+======================================================================
+
+THIS OVERRIDES THE OLDER "S1.42S BUILT / AWAITING RUNTIME" AND S1.42R POINTERS BELOW.
+
+Current technical descendant:
+S1.42S - Baboon Adapter Lifecycle Restore
+Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z
+SHA-256:
+addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee
+
+FOCUSED RUNTIME VERDICT:
+PASS — isolated Baboon-Hawk/Pikmin lifecycle gate.
+
+Runtime evidence:
+RuntimeEvidence/S1.42S/20260903T205550Z/
+Log SHA-256:
+9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea
+
+Read first for newest state:
+1. Current/Projektstatus_S1.42S.json
+2. Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md
+3. Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md
+4. Current/67_S1.42S_BABOON_ADAPTER_LIFECYCLE_RESTORE_BUILD.md
+5. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+6. Current/VERIFIKATION_S1.42S.txt
+7. Current/SHA256SUMS_S1.42S.txt
+8. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+9. BuildSpecs/current.json
+10. RuntimeInbox/ACTIVE_BUILD.txt
+
+Focused attackers:
+- Yellow Pikmin_IkVZWQe
+- Yellow Pikmin_3wnH
+- Yellow Pikmin_ruCpzY
+
+Hawk death:
+20:52:32.546
+
+Result:
+- zero stale attack hits after Hawk death for all three;
+- native idle/task removal/unlatch restored;
+- all three remained recoverable;
+- all three were later Assigned Leader: MasaeAhmya (0);
+- dead Hawk corpse was naturally carried to the Onion;
+- Work-state/no-task count = 0;
+- Leader-null count = 0;
+- old full BaboonBirdPikminEnemy disable marker = 0;
+- removed S1.42R LethalMinLatchedDeathGuard marker = 0.
+
+One LethalMin PikminNoticeZone NetworkObjectReference ArgumentException occurred only during lobby
+disconnect after ShipOnion save. Monitor-only; do not patch without user-facing reproduction and a
+Patch Safety Review.
+
+ACCEPTANCE BOUNDARY:
+S1.42S is accepted for the isolated Baboon-Hawk/Pikmin regression gate.
+S1.41 remains the last fully accepted normal gameplay baseline because EnemyIsolation is still enabled
+and BCMER exact 1.71.0 is still temporarily disabled.
+
+EXACT NEXT CONTROLLED STEP:
+Do not build a random successor.
+The next build should disable/remove the temporary EnemyIsolation overlay and restore/carry forward
+normal enemy-related configuration exactly from Current/ENEMY_SPAWN_BASELINE_S1.42C.json, preserving
+later explicitly accepted permanent fixes. Keep package versions unchanged. Do not silently upgrade
+BCMER; exact 1.71.0 is the only accepted BCMER version when reintroduced according to the controlled
+roadmap.
+
+======================================================================
+
+======================================================================
 PERMANENT PROJECT-LOCAL PATCH SAFETY RULE
 ======================================================================
 
