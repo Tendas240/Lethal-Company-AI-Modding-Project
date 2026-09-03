@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using BepInEx;
 using BepInEx.Bootstrap;
+using BepInEx.Configuration;
 using BepInEx.Logging;
 using GameNetcodeStuff;
 using HarmonyLib;
@@ -20,15 +22,25 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.2.0";
+        public const string PluginVersion = "1.3.0";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
+        internal static Plugin Instance;
+
+        private float _nextDiagnosticIsolationTick;
 
         private void Awake()
         {
             Log = Logger;
+            Instance = this;
             Harmony = new Harmony(PluginGuid);
+
+            DiagnosticEnemyIsolation.Enabled = Config.Bind(
+                "Diagnostics",
+                "Isolated Enemy Regression",
+                false,
+                "TEST ONLY. When true, allow only Thumper/Crawler, Puffer/Spore Lizard, Baboon Hawk, and Pikmin-family enemies. Disable again after the isolated S1.42D regression test.").Value;
 
             Harmony.PatchAll(typeof(ShipDoorPatches));
             Harmony.PatchAll(typeof(NaturalScrapFilterPatches));
@@ -38,12 +50,152 @@ namespace S139CompatibilityFixes
             PatchCodeRebirthPikminKillShield();
             PatchLethalModDataLibNullPluginGuard();
             PatchPufferSmokePikminEffectGuard();
+            PatchDiagnosticEnemyIsolation();
+            PatchJetpackCapacityTarget();
+            StartCoroutine(DelayedLethalMinPatches());
 
             Logger.LogInfo(
                 "S1.39 Compatibility Fixes loaded. Ship-door anti-lockout, complete EnemyScan output, " +
                 "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, " +
                 "CodeRebirth kill-RPC Pikmin protection, the optional LethalModDataLib null-plugin guard, " +
-                "and the Puffer smoke Pikmin-effect guard are active.");
+                "Puffer smoke Pikmin-effect guard, generic LethalMin grab/bite state recovery, " +
+                "the 140-second Jetpack target, and the optional S1.42D isolated-enemy diagnostic are active.");
+        }
+
+        private IEnumerator DelayedLethalMinPatches()
+        {
+            // Wait one frame so all BepInEx plugin Awake methods have run. LethalMin
+            // is an optional runtime dependency and does not need a compile-time DLL.
+            yield return null;
+            PatchLethalMinGrabBiteStateRepair();
+        }
+
+        private void Update()
+        {
+            if (!DiagnosticEnemyIsolation.Enabled)
+                return;
+
+            if (Time.unscaledTime < _nextDiagnosticIsolationTick)
+                return;
+
+            _nextDiagnosticIsolationTick = Time.unscaledTime + 1f;
+            DiagnosticEnemyIsolation.ApplyToCurrentLevel();
+            DiagnosticEnemyIsolation.RemoveEscapedLiveEnemies();
+        }
+
+        private void PatchLethalMinGrabBiteStateRepair()
+        {
+            int patched = 0;
+            HashSet<MethodBase> seen = new HashSet<MethodBase>();
+
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                string assemblyName = assembly.GetName().Name ?? string.Empty;
+                if (assemblyName.IndexOf("LethalMin", StringComparison.OrdinalIgnoreCase) < 0)
+                    continue;
+
+                IEnumerable<Type> types;
+                try
+                {
+                    types = assembly.GetTypes();
+                }
+                catch (ReflectionTypeLoadException ex)
+                {
+                    types = ex.Types.Where(t => t != null);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogWarning(
+                        $"[LethalMinStateGuard] Could not enumerate {assemblyName}: {ex.GetType().Name}: {ex.Message}");
+                    continue;
+                }
+
+                foreach (Type type in types)
+                {
+                    if (type == null)
+                        continue;
+
+                    foreach (MethodInfo method in type.GetMethods(
+                        BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic))
+                    {
+                        if (method == null || method.IsAbstract || method.ContainsGenericParameters)
+                            continue;
+
+                        string name = method.Name ?? string.Empty;
+                        bool candidate =
+                            name.IndexOf("BitePikmin", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                            name.IndexOf("GrabPikmin", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                            string.Equals(name, "GrabbedByEnemy", StringComparison.OrdinalIgnoreCase);
+
+                        if (!candidate || !seen.Add(method))
+                            continue;
+
+                        try
+                        {
+                            Harmony.Patch(
+                                method,
+                                prefix: new HarmonyMethod(typeof(LethalMinGrabBiteStateRepair), nameof(LethalMinGrabBiteStateRepair.Prefix)),
+                                postfix: new HarmonyMethod(typeof(LethalMinGrabBiteStateRepair), nameof(LethalMinGrabBiteStateRepair.Postfix)));
+
+                            patched++;
+                            Logger.LogInfo(
+                                $"[LethalMinStateGuard] Patched {type.FullName}.{method.Name} for post-grab invincible-Pikmin state validation.");
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.LogWarning(
+                                $"[LethalMinStateGuard] Failed to patch {type.FullName}.{method.Name}: {ex.GetType().Name}: {ex.Message}");
+                        }
+                    }
+                }
+            }
+
+            if (patched == 0)
+            {
+                Logger.LogError(
+                    "[LethalMinStateGuard] No LethalMin BitePikmin/GrabPikmin methods were found. " +
+                    "The generic state repair is NOT active; capture the startup log before testing.");
+            }
+            else
+            {
+                Logger.LogInfo(
+                    $"[LethalMinStateGuard] Generic grab/bite state repair registered on {patched} LethalMin method(s).");
+            }
+        }
+
+        private void PatchDiagnosticEnemyIsolation()
+        {
+            if (!DiagnosticEnemyIsolation.Enabled)
+            {
+                Logger.LogInfo("[EnemyIsolation] Diagnostic enemy isolation is disabled.");
+                return;
+            }
+
+            Logger.LogWarning(
+                "[EnemyIsolation] S1.42D TEST MODE ENABLED. Indoor allowlist: Crawler/Thumper + Puffer. " +
+                "Outdoor allowlist: Baboon Hawk. Pikmin-family entities remain allowed. " +
+                "All other enemy spawns are removed from in-memory level pools and escaped server spawns are despawned.");
+        }
+
+        private void PatchJetpackCapacityTarget()
+        {
+            Type jetpackType = AccessTools.TypeByName("JetpackItem");
+            MethodInfo start = jetpackType == null ? null : AccessTools.Method(jetpackType, "Start");
+
+            if (start == null)
+            {
+                Logger.LogWarning(
+                    "[Jetpack140] JetpackItem.Start was not found. Applying the loaded-item fallback only.");
+            }
+            else
+            {
+                Harmony.Patch(
+                    start,
+                    postfix: new HarmonyMethod(typeof(JetpackCapacityGuard), nameof(JetpackCapacityGuard.Postfix)));
+                Logger.LogInfo("[Jetpack140] Patched JetpackItem.Start to enforce the 140-second historical juijui battery target.");
+            }
+
+            JetpackCapacityGuard.ApplyToLoadedItems();
         }
 
         private void PatchEnemyScan()
@@ -154,6 +306,783 @@ namespace S139CompatibilityFixes
 
             Logger.LogInfo(
                 "[LMDLGuard] Patched LethalModDataLib bulk ModDataAttribute registration to skip Chainloader PluginInfo entries with null Instance while preserving registration for valid plugins.");
+        }
+    }
+
+    internal static class JetpackCapacityGuard
+    {
+        internal const float TargetSeconds = 140f;
+
+        public static void Postfix(object __instance)
+        {
+            GrabbableObject grabbable = __instance as GrabbableObject;
+            if (grabbable == null || grabbable.itemProperties == null)
+                return;
+
+            Apply(grabbable.itemProperties, "JetpackItem.Start");
+        }
+
+        internal static void ApplyToLoadedItems()
+        {
+            Item[] items = Resources.FindObjectsOfTypeAll<Item>();
+            int changed = 0;
+
+            foreach (Item item in items)
+            {
+                if (item == null || !string.Equals(item.itemName, "Jetpack", StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                if (Apply(item, "loaded Item registry"))
+                    changed++;
+            }
+
+            if (changed == 0)
+            {
+                Plugin.Log.LogInfo(
+                    "[Jetpack140] No loaded Jetpack Item asset needed adjustment yet; JetpackItem.Start remains patched.");
+            }
+        }
+
+        private static bool Apply(Item item, string source)
+        {
+            if (item == null)
+                return false;
+
+            FieldInfo field = AccessTools.Field(item.GetType(), "batteryUsage") ??
+                              AccessTools.Field(typeof(Item), "batteryUsage");
+
+            if (field == null)
+            {
+                Plugin.Log.LogError("[Jetpack140] Item.batteryUsage field was not found.");
+                return false;
+            }
+
+            try
+            {
+                float before = Convert.ToSingle(field.GetValue(item));
+                if (Math.Abs(before - TargetSeconds) < 0.001f)
+                    return false;
+
+                object value = Convert.ChangeType(TargetSeconds, field.FieldType);
+                field.SetValue(item, value);
+
+                Plugin.Log.LogInfo(
+                    $"[Jetpack140] Jetpack battery duration changed {before:0.###} -> {TargetSeconds:0.###} seconds via {source}.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogError(
+                    $"[Jetpack140] Failed to set Jetpack battery duration via {source}: {ex.GetType().Name}: {ex.Message}");
+                return false;
+            }
+        }
+    }
+
+    internal static class DiagnosticEnemyIsolation
+    {
+        internal static bool Enabled;
+
+        private static readonly HashSet<string> IndoorTargets =
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "crawler", "thumper", "puffer", "sporelizard" };
+
+        private static readonly HashSet<string> OutdoorTargets =
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "baboonhawk", "baboonbird" };
+
+        private static readonly HashSet<int> RemovedLiveIds = new HashSet<int>();
+        private static readonly HashSet<string> MissingTypeWarnings = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        internal static void ApplyToCurrentLevel()
+        {
+            if (!Enabled || RoundManager.Instance == null || RoundManager.Instance.currentLevel == null)
+                return;
+
+            SelectableLevel level = RoundManager.Instance.currentLevel;
+            bool changed = false;
+
+            changed |= FilterPool(level, "Enemies", IndoorTargets, ensureTargets: true);
+            changed |= FilterPool(level, "OutsideEnemies", OutdoorTargets, ensureTargets: true);
+            changed |= FilterPool(level, "DaytimeEnemies", new HashSet<string>(StringComparer.OrdinalIgnoreCase), ensureTargets: false);
+
+            if (changed)
+            {
+                Plugin.Log.LogInfo(
+                    $"[EnemyIsolation] Applied isolated enemy pools to '{level.PlanetName}'. " +
+                    "Indoor=Crawler/Puffer; Outdoor=Baboon Hawk; Daytime=none (Pikmin-family entries, if any, are preserved).");
+            }
+        }
+
+        private static bool FilterPool(
+            SelectableLevel level,
+            string memberName,
+            HashSet<string> targetNames,
+            bool ensureTargets)
+        {
+            object raw = null;
+            Type levelType = level.GetType();
+
+            FieldInfo field = AccessTools.Field(levelType, memberName);
+            PropertyInfo property = field == null ? AccessTools.Property(levelType, memberName) : null;
+
+            try
+            {
+                raw = field != null ? field.GetValue(level) : property?.GetValue(level, null);
+            }
+            catch
+            {
+                return false;
+            }
+
+            IList list = raw as IList;
+            if (list == null)
+                return false;
+
+            bool changed = false;
+            HashSet<string> present = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                object entry = list[i];
+                EnemyType enemyType = GetEnemyType(entry);
+                string normalized = NormalizeEnemyName(enemyType != null ? enemyType.enemyName : null);
+
+                if (IsPikminFamily(normalized))
+                    continue;
+
+                if (!targetNames.Contains(normalized))
+                {
+                    list.RemoveAt(i);
+                    changed = true;
+                    continue;
+                }
+
+                present.Add(normalized);
+                SetRarity(entry, 100);
+            }
+
+            if (!ensureTargets)
+                return changed;
+
+            foreach (string targetName in targetNames)
+            {
+                // Alias pairs point to the same actual EnemyType. Do not add duplicates:
+                // Crawler/Thumper, Puffer/SporeLizard, BaboonHawk/BaboonBird.
+                if (present.Contains(targetName))
+                    continue;
+
+                if ((targetName == "thumper" && present.Contains("crawler")) ||
+                    (targetName == "crawler" && present.Contains("thumper")) ||
+                    (targetName == "sporelizard" && present.Contains("puffer")) ||
+                    (targetName == "puffer" && present.Contains("sporelizard")) ||
+                    (targetName == "baboonbird" && present.Contains("baboonhawk")) ||
+                    (targetName == "baboonhawk" && present.Contains("baboonbird")))
+                    continue;
+
+                EnemyType found = FindEnemyType(targetName);
+                if (found == null)
+                    continue;
+
+                object newEntry = CreateSpawnEntry(list, found, 100);
+                if (newEntry == null)
+                    continue;
+
+                list.Add(newEntry);
+                present.Add(NormalizeEnemyName(found.enemyName));
+                changed = true;
+            }
+
+            return changed;
+        }
+
+        private static EnemyType GetEnemyType(object entry)
+        {
+            if (entry == null)
+                return null;
+
+            Type type = entry.GetType();
+            FieldInfo field = AccessTools.Field(type, "enemyType");
+            if (field != null)
+                return field.GetValue(entry) as EnemyType;
+
+            PropertyInfo property = AccessTools.Property(type, "enemyType") ??
+                                    AccessTools.Property(type, "EnemyType");
+            return property?.GetValue(entry, null) as EnemyType;
+        }
+
+        private static void SetRarity(object entry, int rarity)
+        {
+            if (entry == null)
+                return;
+
+            Type type = entry.GetType();
+            FieldInfo field = AccessTools.Field(type, "rarity");
+            if (field != null && !field.IsInitOnly)
+            {
+                try
+                {
+                    field.SetValue(entry, Convert.ChangeType(rarity, field.FieldType));
+                }
+                catch
+                {
+                }
+                return;
+            }
+
+            PropertyInfo property = AccessTools.Property(type, "rarity") ??
+                                    AccessTools.Property(type, "Rarity");
+            if (property != null && property.CanWrite)
+            {
+                try
+                {
+                    property.SetValue(entry, Convert.ChangeType(rarity, property.PropertyType), null);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        private static object CreateSpawnEntry(IList list, EnemyType enemyType, int rarity)
+        {
+            Type listType = list.GetType();
+            Type entryType = listType.IsGenericType ? listType.GetGenericArguments().FirstOrDefault() : null;
+            if (entryType == null)
+                return null;
+
+            try
+            {
+                object entry = Activator.CreateInstance(entryType);
+                FieldInfo enemyField = AccessTools.Field(entryType, "enemyType");
+                if (enemyField != null)
+                    enemyField.SetValue(entry, enemyType);
+                else
+                {
+                    PropertyInfo enemyProperty = AccessTools.Property(entryType, "enemyType") ??
+                                                 AccessTools.Property(entryType, "EnemyType");
+                    if (enemyProperty == null || !enemyProperty.CanWrite)
+                        return null;
+                    enemyProperty.SetValue(entry, enemyType, null);
+                }
+
+                SetRarity(entry, rarity);
+                Plugin.Log.LogInfo(
+                    $"[EnemyIsolation] Added '{enemyType.enemyName}' to diagnostic pool with rarity {rarity}.");
+                return entry;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning(
+                    $"[EnemyIsolation] Could not create diagnostic spawn entry for '{enemyType?.enemyName ?? "<unknown>"}': " +
+                    $"{ex.GetType().Name}: {ex.Message}");
+                return null;
+            }
+        }
+
+        private static EnemyType FindEnemyType(string normalizedTarget)
+        {
+            EnemyType[] all = Resources.FindObjectsOfTypeAll<EnemyType>();
+            foreach (EnemyType enemyType in all)
+            {
+                if (enemyType == null)
+                    continue;
+
+                string normalized = NormalizeEnemyName(enemyType.enemyName);
+                if (string.Equals(normalized, normalizedTarget, StringComparison.OrdinalIgnoreCase))
+                    return enemyType;
+
+                if ((normalizedTarget == "crawler" || normalizedTarget == "thumper") &&
+                    (normalized == "crawler" || normalized == "thumper"))
+                    return enemyType;
+
+                if ((normalizedTarget == "puffer" || normalizedTarget == "sporelizard") &&
+                    (normalized == "puffer" || normalized == "sporelizard"))
+                    return enemyType;
+
+                if ((normalizedTarget == "baboonhawk" || normalizedTarget == "baboonbird") &&
+                    (normalized == "baboonhawk" || normalized == "baboonbird"))
+                    return enemyType;
+            }
+
+            if (MissingTypeWarnings.Add(normalizedTarget))
+            {
+                Plugin.Log.LogWarning(
+                    $"[EnemyIsolation] EnemyType '{normalizedTarget}' is not loaded yet; the diagnostic filter will retry.");
+            }
+            return null;
+        }
+
+        internal static void RemoveEscapedLiveEnemies()
+        {
+            if (!Enabled || !IsServer())
+                return;
+
+            EnemyAI[] live = UnityEngine.Object.FindObjectsOfType<EnemyAI>();
+            foreach (EnemyAI enemy in live)
+            {
+                if (enemy == null)
+                    continue;
+
+                string name = enemy.enemyType != null ? enemy.enemyType.enemyName : enemy.GetType().Name;
+                string normalized = NormalizeEnemyName(name);
+
+                if (IsAllowedLiveEnemy(normalized))
+                    continue;
+
+                int id = enemy.GetInstanceID();
+                if (RemovedLiveIds.Contains(id))
+                    continue;
+
+                if (TryDespawn(enemy))
+                {
+                    RemovedLiveIds.Add(id);
+                    Plugin.Log.LogWarning(
+                        $"[EnemyIsolation] Despawned non-allowlisted live enemy '{name}' that bypassed the filtered spawn pools.");
+                }
+            }
+        }
+
+        private static bool TryDespawn(EnemyAI enemy)
+        {
+            Type networkObjectType = AccessTools.TypeByName("Unity.Netcode.NetworkObject");
+            if (networkObjectType == null)
+                return false;
+
+            Component networkObject = enemy.GetComponent(networkObjectType);
+            if (networkObject == null)
+                return false;
+
+            PropertyInfo isSpawnedProperty = AccessTools.Property(networkObjectType, "IsSpawned");
+            if (isSpawnedProperty != null)
+            {
+                try
+                {
+                    if (!(bool)isSpawnedProperty.GetValue(networkObject, null))
+                        return false;
+                }
+                catch
+                {
+                }
+            }
+
+            MethodInfo despawn = AccessTools.Method(networkObjectType, "Despawn", new Type[] { typeof(bool) });
+            if (despawn == null)
+                return false;
+
+            try
+            {
+                despawn.Invoke(networkObject, new object[] { true });
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning(
+                    $"[EnemyIsolation] Failed to despawn '{enemy?.name ?? "<unknown>"}': {ex.GetType().Name}: {ex.Message}");
+                return false;
+            }
+        }
+
+        private static bool IsServer()
+        {
+            Type managerType = AccessTools.TypeByName("Unity.Netcode.NetworkManager");
+            if (managerType == null)
+                return false;
+
+            PropertyInfo singletonProperty = AccessTools.Property(managerType, "Singleton");
+            object singleton = singletonProperty?.GetValue(null, null);
+            if (singleton == null)
+                return false;
+
+            PropertyInfo isServerProperty = AccessTools.Property(managerType, "IsServer");
+            if (isServerProperty == null)
+                return false;
+
+            try
+            {
+                return (bool)isServerProperty.GetValue(singleton, null);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        internal static bool IsPikminFamily(string normalized)
+        {
+            if (string.IsNullOrEmpty(normalized))
+                return false;
+
+            return normalized.IndexOf("pikmin", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                   normalized.IndexOf("puffmin", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                   normalized.IndexOf("bulbmin", StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
+        private static bool IsAllowedLiveEnemy(string normalized)
+        {
+            return IndoorTargets.Contains(normalized) ||
+                   OutdoorTargets.Contains(normalized) ||
+                   IsPikminFamily(normalized);
+        }
+
+        internal static string NormalizeEnemyName(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return string.Empty;
+
+            return new string(value.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
+        }
+    }
+
+    internal static class LethalMinGrabBiteStateRepair
+    {
+        internal sealed class MemberSnapshot
+        {
+            internal MemberInfo Member;
+            internal object Value;
+        }
+
+        internal sealed class GrabSnapshot
+        {
+            internal object Pikmin;
+            internal object Adapter;
+            internal MethodBase BiteMethod;
+            internal MethodInfo ReleaseMethod;
+            internal Transform OriginalParent;
+            internal readonly List<MemberSnapshot> Members = new List<MemberSnapshot>();
+        }
+
+        public static void Prefix(
+            MethodBase __originalMethod,
+            object __instance,
+            object[] __args,
+            ref GrabSnapshot __state)
+        {
+            object pikmin = FindPikminTarget(__args);
+            if (!IsAlive(pikmin))
+                return;
+
+            __state = Capture(pikmin, __instance, __originalMethod);
+        }
+
+        public static void Postfix(GrabSnapshot __state)
+        {
+            if (__state == null || Plugin.Instance == null)
+                return;
+
+            Plugin.Instance.StartCoroutine(RepairAfterGrab(__state));
+        }
+
+        private static IEnumerator RepairAfterGrab(GrabSnapshot snapshot)
+        {
+            // LethalMin's runtime log says the grabbed Pikmin will die after 0.5s.
+            // Wait slightly longer: if Invinceable Pikmin blocked that death but the
+            // leader was cleared, the survivor is exactly the invalid state we need.
+            yield return new WaitForSeconds(0.75f);
+
+            if (!IsAlive(snapshot.Pikmin))
+                yield break;
+
+            if (!HasLostLeader(snapshot))
+                yield break;
+
+            bool releaseInvoked = false;
+            if (snapshot.ReleaseMethod != null && snapshot.Adapter != null)
+            {
+                try
+                {
+                    snapshot.ReleaseMethod.Invoke(snapshot.Adapter, new object[] { snapshot.Pikmin });
+                    releaseInvoked = true;
+                    Plugin.Log.LogWarning(
+                        $"[LethalMinStateGuard] Invoked existing release path " +
+                        $"{snapshot.ReleaseMethod.DeclaringType?.FullName}.{snapshot.ReleaseMethod.Name} after " +
+                        $"{snapshot.BiteMethod?.DeclaringType?.FullName}.{snapshot.BiteMethod?.Name} left a surviving Pikmin leader-less.");
+                }
+                catch (TargetInvocationException ex)
+                {
+                    Exception inner = ex.InnerException ?? ex;
+                    Plugin.Log.LogWarning(
+                        $"[LethalMinStateGuard] Existing release path failed: {inner.GetType().Name}: {inner.Message}. " +
+                        "Falling back to pre-grab state restoration.");
+                }
+                catch (Exception ex)
+                {
+                    Plugin.Log.LogWarning(
+                        $"[LethalMinStateGuard] Existing release path failed: {ex.GetType().Name}: {ex.Message}. " +
+                        "Falling back to pre-grab state restoration.");
+                }
+            }
+
+            if (releaseInvoked)
+            {
+                yield return null;
+                if (!HasLostLeader(snapshot))
+                {
+                    Plugin.Log.LogInfo(
+                        "[LethalMinStateGuard] Existing LethalMin release path restored a valid leader/follow state.");
+                    yield break;
+                }
+            }
+
+            int restored = RestorePreGrabState(snapshot);
+
+            Component component = snapshot.Pikmin as Component;
+            if (component != null && component.transform != null &&
+                component.transform.parent != snapshot.OriginalParent)
+            {
+                component.transform.SetParent(snapshot.OriginalParent, true);
+            }
+
+            Plugin.Log.LogWarning(
+                $"[LethalMinStateGuard] Repaired surviving grabbed Pikmin by restoring {restored} pre-grab " +
+                "leader/follow/grab member(s). This prevents the Invincible-Pikmin 'Leader is null when following' loop.");
+        }
+
+        private static GrabSnapshot Capture(object pikmin, object adapter, MethodBase biteMethod)
+        {
+            GrabSnapshot snapshot = new GrabSnapshot
+            {
+                Pikmin = pikmin,
+                Adapter = adapter,
+                BiteMethod = biteMethod,
+                ReleaseMethod = FindReleaseMethod(adapter?.GetType(), pikmin.GetType())
+            };
+
+            Component component = pikmin as Component;
+            if (component != null && component.transform != null)
+                snapshot.OriginalParent = component.transform.parent;
+
+            foreach (FieldInfo field in GetFields(pikmin.GetType()))
+            {
+                if (field.IsStatic || field.IsLiteral || !ShouldCapture(field.Name))
+                    continue;
+
+                try
+                {
+                    snapshot.Members.Add(new MemberSnapshot { Member = field, Value = field.GetValue(pikmin) });
+                }
+                catch
+                {
+                }
+            }
+
+            foreach (PropertyInfo property in GetProperties(pikmin.GetType()))
+            {
+                if (!property.CanRead || property.GetIndexParameters().Length != 0 || !ShouldCapture(property.Name))
+                    continue;
+
+                try
+                {
+                    snapshot.Members.Add(new MemberSnapshot { Member = property, Value = property.GetValue(pikmin, null) });
+                }
+                catch
+                {
+                }
+            }
+
+            Plugin.Log.LogInfo(
+                $"[LethalMinStateGuard] Captured pre-grab state for {pikmin.GetType().FullName} via " +
+                $"{biteMethod?.DeclaringType?.FullName}.{biteMethod?.Name}; trackedMembers={snapshot.Members.Count}; " +
+                $"releasePath={(snapshot.ReleaseMethod != null ? snapshot.ReleaseMethod.Name : "<fallback-reflection>")}.");
+
+            return snapshot;
+        }
+
+        private static MethodInfo FindReleaseMethod(Type adapterType, Type pikminType)
+        {
+            if (adapterType == null || pikminType == null)
+                return null;
+
+            string[] releaseTokens = { "ReleasePikmin", "SavePikmin", "DropPikmin", "FreePikmin", "LetGoPikmin" };
+
+            return adapterType
+                .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                .Where(m => releaseTokens.Any(token =>
+                    m.Name.IndexOf(token, StringComparison.OrdinalIgnoreCase) >= 0))
+                .Where(m =>
+                {
+                    ParameterInfo[] parameters = m.GetParameters();
+                    return parameters.Length == 1 &&
+                           parameters[0].ParameterType.IsAssignableFrom(pikminType);
+                })
+                .OrderBy(m => Array.FindIndex(
+                    releaseTokens,
+                    token => m.Name.IndexOf(token, StringComparison.OrdinalIgnoreCase) >= 0))
+                .FirstOrDefault();
+        }
+
+        private static object FindPikminTarget(object[] args)
+        {
+            if (args == null)
+                return null;
+
+            foreach (object arg in args)
+            {
+                if (arg == null)
+                    continue;
+
+                Type type = arg.GetType();
+                string typeName = type.FullName ?? type.Name ?? string.Empty;
+                if (typeName.IndexOf("Pikmin", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    typeName.IndexOf("Puffmin", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    typeName.IndexOf("Bulbmin", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return arg;
+
+                EnemyAI enemy = arg as EnemyAI;
+                if (enemy != null && enemy.enemyType != null)
+                {
+                    string normalized = DiagnosticEnemyIsolation.NormalizeEnemyName(enemy.enemyType.enemyName);
+                    if (DiagnosticEnemyIsolation.IsPikminFamily(normalized))
+                        return arg;
+                }
+            }
+
+            return null;
+        }
+
+        private static bool HasLostLeader(GrabSnapshot snapshot)
+        {
+            foreach (MemberSnapshot member in snapshot.Members)
+            {
+                if (member.Member == null ||
+                    member.Member.Name.IndexOf("leader", StringComparison.OrdinalIgnoreCase) < 0 ||
+                    IsNullLike(member.Value))
+                    continue;
+
+                object current = ReadMember(snapshot.Pikmin, member.Member);
+                if (IsNullLike(current))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static int RestorePreGrabState(GrabSnapshot snapshot)
+        {
+            int restored = 0;
+
+            foreach (MemberSnapshot member in snapshot.Members)
+            {
+                if (member.Member == null)
+                    continue;
+
+                string name = member.Member.Name ?? string.Empty;
+                bool leader = name.IndexOf("leader", StringComparison.OrdinalIgnoreCase) >= 0;
+                bool follow = name.IndexOf("follow", StringComparison.OrdinalIgnoreCase) >= 0;
+                bool grab = name.IndexOf("grab", StringComparison.OrdinalIgnoreCase) >= 0;
+                bool bitten = name.IndexOf("bitten", StringComparison.OrdinalIgnoreCase) >= 0;
+                bool eaten = name.IndexOf("eaten", StringComparison.OrdinalIgnoreCase) >= 0;
+
+                if (!(leader || follow || grab || bitten || eaten))
+                    continue;
+
+                if (leader && IsNullLike(member.Value))
+                    continue;
+
+                if (WriteMember(snapshot.Pikmin, member.Member, member.Value))
+                    restored++;
+            }
+
+            return restored;
+        }
+
+        private static bool ShouldCapture(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return false;
+
+            return name.IndexOf("leader", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                   name.IndexOf("follow", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                   name.IndexOf("grab", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                   name.IndexOf("bitten", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                   name.IndexOf("eaten", StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
+        private static IEnumerable<FieldInfo> GetFields(Type type)
+        {
+            for (Type current = type; current != null; current = current.BaseType)
+            {
+                foreach (FieldInfo field in current.GetFields(
+                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
+                    yield return field;
+            }
+        }
+
+        private static IEnumerable<PropertyInfo> GetProperties(Type type)
+        {
+            for (Type current = type; current != null; current = current.BaseType)
+            {
+                foreach (PropertyInfo property in current.GetProperties(
+                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
+                    yield return property;
+            }
+        }
+
+        private static object ReadMember(object target, MemberInfo member)
+        {
+            if (!IsAlive(target) || member == null)
+                return null;
+
+            try
+            {
+                if (member is FieldInfo field)
+                    return field.GetValue(target);
+                if (member is PropertyInfo property && property.CanRead)
+                    return property.GetValue(target, null);
+            }
+            catch
+            {
+            }
+
+            return null;
+        }
+
+        private static bool WriteMember(object target, MemberInfo member, object value)
+        {
+            if (!IsAlive(target) || member == null)
+                return false;
+
+            try
+            {
+                if (member is FieldInfo field)
+                {
+                    if (field.IsInitOnly || field.IsLiteral || field.IsStatic)
+                        return false;
+                    field.SetValue(target, value);
+                    return true;
+                }
+
+                if (member is PropertyInfo property &&
+                    property.CanWrite &&
+                    property.GetIndexParameters().Length == 0)
+                {
+                    property.SetValue(target, value, null);
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+
+            return false;
+        }
+
+        private static bool IsNullLike(object value)
+        {
+            if (value == null)
+                return true;
+
+            UnityEngine.Object unityObject = value as UnityEngine.Object;
+            return unityObject != null && unityObject == null;
+        }
+
+        private static bool IsAlive(object value)
+        {
+            if (value == null)
+                return false;
+
+            if (value is UnityEngine.Object unityObject)
+                return unityObject != null;
+
+            return true;
         }
     }
 
