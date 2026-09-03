@@ -1,0 +1,885 @@
+LETHAL COMPANY AI MODDING PROJECT
+PENDING REPOSITORY OPTIMIZATION / MIGRATION PLAN
+================================================
+
+Created: 2026-09-03
+
+Repository:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+
+STATUS
+------
+
+This is a PENDING repository-maintenance plan.
+
+DO NOT perform the structural migration while a critical build/runtime gate is still open.
+At the time this plan was recorded, the active gate is S1.42J and the immediate required
+action is still the S1.42J runtime test. Do not build S1.42K first.
+
+A future chat must NOT assume S1.42J is still current merely because this file mentions it.
+Before starting the migration, always take over the then-current repository state from
+START_HERE_ChatGPT_Masterprompt.txt and the newest canonical handover/current files.
+
+The migration should start only after the currently active critical runtime/build gate has
+been evaluated and the resulting state has been documented cleanly.
+
+PURPOSE
+-------
+
+The repository is the persistent knowledge, build, evidence and handover source of truth for
+a long-running Lethal Company modding project that is continued across multiple ChatGPT
+sessions.
+
+The long-term target architecture is:
+
+"Small canonical working context + targeted retrieval from the complete knowledge/evidence base."
+
+The migration is recommended and is expected to improve the repository substantially.
+Overall assessment at the time of review: approximately 9/10 useful.
+
+The migration must optimize for all of these goals simultaneously:
+
+1. no relevant information loss;
+2. no contradictory or ambiguous current state;
+3. a much smaller and more efficient initial ChatGPT context;
+4. smaller repository growth where practical without harming accessibility or evidence.
+
+IMPORTANT OBSERVED STRUCTURE BEFORE MIGRATION
+---------------------------------------------
+
+At the time of the audit:
+
+- current Git tree: about 4,911 files;
+- logical blob payload in the current tree: about 169 MB;
+- GitHub repository size metadata: about 25.7 MB;
+- Current/: 81 files, about 395 KB;
+- ProfileSources/: about 3,970 files, about 38.7 MB logical tree size;
+- RuntimeEvidence/: about 232 files, about 35.2 MB;
+- Archive/: about 67.5 MB logical tree size;
+- Profiles/: about 11.6 MB;
+- References/: about 13.1 MB.
+
+Current/ contained multiple parallel generations, including:
+
+- 8 Projektstatus files;
+- 8 VERIFIKATION files;
+- 8 SHA256SUMS files;
+- multiple mod lists;
+- multiple NEXT_CHAT_START_PROMPT files;
+- many old handovers;
+- many completed build/runtime reports.
+
+The then-current explicit takeover bootstrap required roughly 14 files with more than
+100 KB of text.
+
+This works, but it increases stale-current and contradiction risk.
+
+A concrete example found during the review:
+Current/01_HANDOVER_CORE.md had an older lower section that called compatibility-plugin
+1.3.5 the "Current source version" even though the actual S1.42J source/current override
+was already 1.3.7. This drift should be treated as evidence that Current/ needs a stricter
+single-source architecture.
+
+CORE RECOMMENDATION
+-------------------
+
+Perform the migration, but NOT as a blind 1:1 implementation of the original optimization
+proposal.
+
+Three important technical corrections apply:
+
+1. Extend/consolidate the repository's existing indexing and automation rather than creating
+   a second parallel index system.
+
+2. Do not aggressively replace identical files in ProfileSources/ with pointer/symlink-like
+   mechanisms merely to reduce apparent duplicate size. Git is content-addressed and already
+   deduplicates identical blob contents in its object store.
+
+3. PROJECT_STATE must explicitly distinguish the roles that matter in this project:
+   - accepted gameplay baseline;
+   - latest valid runtime evidence;
+   - active candidate;
+   - candidate build parent/base;
+   - restore/configuration baselines;
+   - active runtime gate;
+   - next required action.
+
+Never collapse these into a vague "latest build" concept.
+
+TARGET CURRENT ARCHITECTURE
+---------------------------
+
+Current/ should eventually contain only files needed for the actual present working state.
+
+Recommended stable roles, names may be adjusted during migration:
+
+Current/
+  PROJECT_STATE.json
+  READ_ORDER.json
+  HANDOVER_CORE.md
+  TECHNICAL_BASELINE.md
+  OPEN_ISSUES.md
+  ACTIVE_DECISIONS.json
+  FAILED_APPROACHES.md
+  ACTIVE_MODLIST.txt
+  NEXT_ACTION.md
+  AUTO_BUILD_RESULT.json
+  AUTO_BUILD_RESULT.md
+  baselines/
+    ENEMY_SPAWN_BASELINE.json
+    ...other genuinely active restore baselines only
+
+Versioned historical status generations should not remain in Current/.
+
+Prefer ARCHIVE instead of DELETE.
+
+Historical build/status material may be grouped by build, for example:
+
+Archive/S1.42J/
+  Projektstatus_S1.42J.json
+  VERIFIKATION_S1.42J.txt
+  SHA256SUMS_S1.42J.txt
+  HANDOVER_S1.42J.md
+  BUILD_ANALYSIS.md
+  NEXT_CHAT_START_PROMPT.txt
+
+Do not copy raw RuntimeEvidence into Archive if the primary evidence already exists at its
+canonical RuntimeEvidence path. Historical documents should reference the primary evidence.
+
+PROJECT_STATE.JSON
+------------------
+
+PROJECT_STATE.json should become the single authoritative machine-readable source for the
+current overall state.
+
+Recommended role separation:
+
+{
+  "schema_version": "...",
+  "updated_at": "...",
+  "game_version": "...",
+
+  "accepted_gameplay_baseline": {
+    "build_id": "...",
+    "profile_path": "...",
+    "profile_sha256": "...",
+    "status": "accepted"
+  },
+
+  "latest_valid_runtime_evidence": {
+    "build_id": "...",
+    "path": "...",
+    "log_sha256": "...",
+    "verdict": "PASS|FAIL|PARTIAL|INCONCLUSIVE|INVALID_TEST"
+  },
+
+  "active_candidate": {
+    "build_id": "...",
+    "profile_path": "...",
+    "profile_sha256": "...",
+    "status": "candidate|awaiting_runtime_validation|..."
+  },
+
+  "candidate_build_base": {
+    "build_id": "...",
+    "profile_path": "...",
+    "profile_sha256": "..."
+  },
+
+  "configuration_restore_baselines": {
+    "...": "..."
+  },
+
+  "active_build_spec": {
+    "path": "BuildSpecs/current.json",
+    "enabled": false,
+    "build_id": "..."
+  },
+
+  "runtime_gate": {
+    "build_id": "...",
+    "active_build_pointer": "RuntimeInbox/ACTIVE_BUILD.txt",
+    "status": "awaiting_runtime_validation"
+  },
+
+  "blocking_issues": [...],
+
+  "next_required_action": {
+    "type": "...",
+    "description": "...",
+    "do_not_do_before": [...]
+  }
+}
+
+The following are always distinct concepts:
+
+- last fully accepted gameplay baseline;
+- latest valid runtime evidence;
+- active candidate;
+- candidate parent/base;
+- restore/configuration baseline;
+- next future build.
+
+READ_ORDER.JSON
+---------------
+
+READ_ORDER.json is one of the highest-value improvements.
+
+It should define:
+
+A) mandatory
+Files every new chat must read completely.
+
+Possible end state:
+
+- START_HERE_ChatGPT_Masterprompt.txt
+- Current/PROJECT_STATE.json
+- Current/READ_ORDER.json
+- Current/HANDOVER_CORE.md
+- Current/NEXT_ACTION.md
+- optionally Current/ACTIVE_DECISIONS.json
+
+B) task_specific
+Topic-driven source lists, for example:
+
+- enemy_spawns
+- pikmin
+- interiors
+- bcmer
+- rolling_giant
+- performance
+- patches
+- buildsystem
+- profile_diff
+- runtime_crash
+- jetpack
+- code_rebirth
+- legacy_juijui
+- repository_maintenance
+
+C) on_demand_only
+
+- Archive/
+- full raw logs
+- full ProfileSources directories
+- old Profiles
+- historical PDF/DOCX
+- large reference archives
+
+A new chat should not load the entire project "just in case".
+
+START_HERE
+----------
+
+START_HERE_ChatGPT_Masterprompt.txt was already around 25 KB during the audit and was
+beginning to combine too many roles:
+
+- bootstrap;
+- governance;
+- current status;
+- history;
+- build workflow;
+- handover rules.
+
+Eventually shrink START_HERE substantially.
+
+It should mainly contain:
+
+- repository purpose;
+- source-of-truth rule;
+- priority rules;
+- exact bootstrap via PROJECT_STATE + READ_ORDER;
+- Current vs Archive vs primary evidence rules;
+- "do not guess";
+- repository-first rule;
+- pointer to detailed governance.
+
+Move durable detailed rules to something like:
+
+docs/REPOSITORY_GOVERNANCE.md
+
+Current build state and historical build detail should not live permanently in START_HERE.
+
+ACTIVE DECISIONS
+----------------
+
+Create a structured decision register.
+
+Important project rules must not be hidden across long handovers.
+
+Examples of the kind of decisions that need durable IDs/status:
+
+- Baboon Hawk <-> Pikmin zero interaction;
+- Thumper/Crawler <-> Pikmin zero interaction;
+- Puffer -> Pikmin no effect;
+- exact BCMER 1.71.0 pin;
+- CodeRebirthLib must not return;
+- Malfunctions disabled;
+- unknown Enemy PowerLevels must never be guessed;
+- interiors should ultimately have equal effective selection probability where safe;
+- Jetpack target 140 seconds;
+- disabled enemy decisions;
+- BCMER rain-event routing decisions.
+
+Recommended fields:
+
+- id
+- date
+- topic
+- decision
+- status
+- rationale
+- evidence
+- affected_builds
+- affected_mods
+- affected_configs
+- supersedes
+- reconsider_if
+
+Recommended statuses:
+
+ACTIVE
+SUPERSEDED
+REJECTED
+EXPERIMENTAL
+
+Prefer one durable append/ID-based decision register over copying the entire decision set
+for every build.
+
+EVIDENCE CONFIDENCE / PROVENANCE
+--------------------------------
+
+Use evidence classifications where helpful:
+
+CONFIRMED
+OBSERVED
+INFERRED
+ASSUMED
+PENDING_VALIDATION
+DISPROVEN
+
+Especially in:
+
+- PROJECT_STATE;
+- Runtime analyses;
+- OPEN_ISSUES;
+- decisions;
+- technical claims whose origin matters.
+
+Record the source where possible:
+
+- runtime test;
+- raw log;
+- build diff;
+- config snapshot;
+- user observation;
+- mod documentation;
+- project decision.
+
+A repeated assumption does not become CONFIRMED merely because multiple chats repeated it.
+
+FAILED APPROACHES
+-----------------
+
+Keep failed/obsolete approaches easy to retrieve.
+
+Document:
+
+- problem;
+- build;
+- attempted approach;
+- result;
+- failure reason;
+- evidence;
+- whether permanently rejected;
+- when a retest would become justified.
+
+Do not delete known failed approaches during cleanup.
+
+A critical historical example:
+the broad reflection/Harmony scan in S1.42D caused a startup crash.
+Future chats must be able to find that quickly and must not reintroduce it without new
+technical justification.
+
+PROFILESOURCES
+--------------
+
+Do not require a new chat to read complete ProfileSources trees.
+
+The repository already has FILE_INDEX.json and, for some builds, PROFILE_INDEX_RESULT.json.
+
+Do not create a competing parallel index architecture unnecessarily.
+
+Instead evolve the existing profile indexer toward something like:
+
+ProfileSources/<BUILD>/
+  PROFILE_INDEX.json
+  DIFF_FROM_BASE.json
+  export.r2x
+  BepInEx/...
+
+PROFILE_INDEX should summarize:
+
+- build_id;
+- profile_name;
+- profile_path;
+- profile_sha256;
+- base build/profile/hash;
+- package counts;
+- important enabled/disabled states;
+- relevant config paths;
+- local patches;
+- snapshot path;
+- build-result reference.
+
+DIFF_FROM_BASE should summarize:
+
+- changed_files;
+- added_files;
+- removed_files;
+- important config changes;
+- mod-state changes;
+- local DLL/patch changes.
+
+This allows a future chat to understand a build delta without comparing hundreds of files.
+
+GIT DUPLICATION CORRECTION
+--------------------------
+
+The audit found roughly 37 MB of logically repeated identical file contents across the
+current tree.
+
+This does NOT mean Git necessarily stores an extra 37 MB.
+
+Git is content-addressed: identical content uses the same blob object and multiple paths can
+reference that same blob.
+
+Therefore do NOT aggressively convert ProfileSources into pointer/symlink structures merely
+to reduce apparent duplicate file size.
+
+That could:
+
+- reduce ChatGPT accessibility;
+- make reproduction harder;
+- complicate build automation;
+- save little or no real Git object-store space.
+
+Use semantic indexes and diffs instead.
+
+RUNTIME EVIDENCE
+----------------
+
+RuntimeEvidence already has automatic INDEX.json files.
+
+Keep the existing ingest provenance and improve around it.
+
+Recommended structure:
+
+RuntimeEvidence/<BUILD>/<TIMESTAMP>/
+  INDEX.json
+  ANALYSIS.json
+  SUMMARY.md
+  raw/
+    ...
+
+Recommended meanings:
+
+INDEX.json
+= immutable/automatic ingest provenance:
+  build id, timestamp, file name, size, SHA-256, extracted members.
+
+ANALYSIS.json
+= machine-readable interpreted technical result:
+  tested profile/hash, goals, expected behavior, observed behavior, load markers,
+  errors/warnings, spawn/performance observations, verdict, limitations, confidence.
+
+SUMMARY.md
+= short human-readable analysis.
+
+raw/
+= complete primary evidence.
+
+Suggested verdicts:
+
+PASS
+FAIL
+PARTIAL
+INVALID_TEST
+INCONCLUSIVE
+
+Do not mix automated ingest facts and later interpretation without clearly distinguishing
+them.
+
+REPOSITORY SIZE
+---------------
+
+Cleaning Current/ is mainly a context/reliability improvement, not a major storage saving.
+
+The biggest logical current-tree consumers at the time of the audit were approximately:
+
+Archive/          67.5 MB
+ProfileSources/   38.7 MB
+RuntimeEvidence/  35.2 MB
+References/       13.1 MB
+Profiles/         11.6 MB
+Current/           0.4 MB
+
+Large historical objects included:
+
+- an approximately 39 MB historical runtime log;
+- historical handover/chat PDFs around 11 MB each;
+- runtime logs in roughly 1.5-10 MB range;
+- a large legacy config JSON around 4.5 MB.
+
+For future growth:
+
+- losslessly compress large historical logs where useful;
+- keep a directly readable index/summary next to compressed evidence;
+- remove PDF/DOCX derivatives only if they have no unique value and canonical machine-readable
+  sources are complete;
+- never leave critical information only in PDF/DOCX;
+- keep profiles required for reproduction/regression;
+- identify deterministic/generated derivatives.
+
+IMPORTANT:
+Deleting a large current-tree file does not remove its historical Git blob from old commits.
+
+Do not perform:
+
+- destructive history rewrite;
+- git filter-repo/BFG;
+- Git LFS migration;
+- external-storage migration
+
+without explicit user authorization.
+
+REPOSITORY VALIDATOR
+--------------------
+
+Strongly recommended.
+
+Suggested path:
+
+BuildSystem/repository_validator.py
+
+plus:
+
+.github/workflows/repository-validator.yml
+
+At minimum validate:
+
+- START_HERE exists;
+- exactly one canonical current PROJECT_STATE exists;
+- READ_ORDER exists;
+- all mandatory paths exist;
+- task-specific referenced paths exist;
+- exactly one active candidate is defined;
+- exactly one accepted gameplay baseline is defined;
+- latest valid runtime evidence is unambiguous;
+- candidate profile exists;
+- candidate SHA-256 matches;
+- accepted profile exists;
+- RuntimeEvidence path exists;
+- Build IDs are consistent;
+- JSON is valid;
+- BuildSpecs/current.json matches PROJECT_STATE expectations;
+- RuntimeInbox/ACTIVE_BUILD.txt matches the active runtime gate;
+- README/START_HERE do not contradict PROJECT_STATE;
+- old versioned current status/verification/hash files do not accidentally compete as current;
+- important internal path references exist.
+
+Relevant inconsistencies should fail CI.
+
+Preserve and test the existing repository-first automation:
+
+.github/workflows/profile-build.yml
+.github/workflows/profile-index.yml
+.github/workflows/runtime-ingest.yml
+BuildSpecs/
+BuildSystem/
+RuntimeInbox/
+RuntimeEvidence/
+ProfileSources/
+Profiles/
+Patches/
+
+Do not reinvent working automation unless necessary.
+
+RECOMMENDED MIGRATION TIMING
+----------------------------
+
+At the time this plan was created:
+
+- S1.42J was built;
+- S1.42J runtime validation was still pending;
+- BuildSpecs/current.json was disabled / IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME;
+- RuntimeInbox/ACTIVE_BUILD.txt was S1.42J;
+- no new runtime evidence was waiting in RuntimeInbox/Current/.
+
+Therefore the recommendation was:
+
+1. runtime-test S1.42J first;
+2. analyze the result;
+3. document the resulting canonical state;
+4. then perform the repository migration.
+
+For a future chat, generalize this rule:
+
+Before migration ask:
+
+1. Is there an active candidate whose critical runtime test is still immediately pending?
+2. Is a build/runtime gate open?
+3. Would migration make the interpretation of an ongoing test harder?
+
+If yes:
+finish the gate first.
+
+If no and current state is cleanly documented:
+start the migration.
+
+RECOMMENDED MIGRATION ORDER
+---------------------------
+
+PHASE 0 — information-architecture freeze
+
+Avoid unrelated gameplay/balance changes during structural migration.
+Snapshot the current state before migration.
+
+PHASE 1 — complete inventory
+
+Capture:
+- full Git tree;
+- files/types/sizes/blob SHAs;
+- complete Current inventory;
+- workflows and BuildSystem;
+- current Profiles/ProfileSources/RuntimeEvidence;
+- largest files;
+- identical blob groups;
+- human-readable derivatives.
+
+Suggested outputs:
+Migration/INVENTORY_BEFORE.json
+Migration/STORAGE_AUDIT_BEFORE.md
+
+PHASE 2 — Current audit
+
+Classify every relevant Current file:
+
+KEEP_CURRENT
+MERGE_INTO_CANONICAL
+MOVE_TO_ARCHIVE
+GENERATED
+DUPLICATE
+NEEDS_REVIEW
+
+Do not move/delete before unique information has a destination.
+
+PHASE 3 — contradiction audit
+
+Check at least:
+
+- accepted gameplay baseline;
+- latest valid runtime evidence;
+- active candidate;
+- candidate build base;
+- active runtime target;
+- BCMER state/version;
+- EnemyIsolation;
+- enabled/disabled enemies;
+- Pikmin interaction rules;
+- patch version;
+- mod list;
+- important config values;
+- profile hashes;
+- runtime hashes;
+- open/completed issues.
+
+Resolve only from chronology + primary evidence:
+build artifact, config snapshot, source, RuntimeEvidence, user decision.
+
+If uncertain:
+mark UNRESOLVED. Do not guess.
+
+PHASE 4 — create stable canonical files
+
+At minimum:
+
+Current/PROJECT_STATE.json
+Current/READ_ORDER.json
+Current/HANDOVER_CORE.md
+Current/TECHNICAL_BASELINE.md
+Current/OPEN_ISSUES.md
+Current/NEXT_ACTION.md
+decision register
+FAILED_APPROACHES
+
+Do not finalize START_HERE migration until these exist and are verified.
+
+PHASE 5 — archive historical Current generations
+
+Move old:
+
+- Projektstatus_*.json;
+- VERIFIKATION_*.txt;
+- SHA256SUMS_*.txt;
+- NEXT_CHAT_START_PROMPT_*;
+- old handovers;
+- old completed build/runtime analyses;
+- old mod lists;
+- old inventories
+
+out of Current to a clear historical structure.
+
+ARCHIVE instead of DELETE.
+
+Do not duplicate raw primary evidence unnecessarily.
+
+PHASE 6 — improve ProfileSources indexer
+
+Extend the existing profile-index process:
+- compact semantic PROFILE_INDEX;
+- DIFF_FROM_BASE.
+
+Do not establish a competing second index mechanism.
+
+PHASE 7 — improve runtime ingest/analysis metadata
+
+Preserve automatic INDEX provenance.
+Optionally produce automatic extracts for:
+- plugin loads;
+- errors;
+- warnings;
+- project-specific markers.
+
+Keep interpreted verdicts clearly separate from ingest facts.
+
+PHASE 8 — slim START_HERE and create governance
+
+Move durable detailed rules to:
+docs/REPOSITORY_GOVERNANCE.md
+
+Switch README/START_HERE to stable current paths.
+
+PHASE 9 — repository validator
+
+Implement validator + CI.
+Fix all failures until green.
+
+PHASE 10 — automation regression test
+
+Verify:
+- profile indexing;
+- disabled BuildSpec behavior;
+- normal build path;
+- runtime ingest;
+- validator consistency.
+
+PHASE 11 — storage audit
+
+Only after logical migration:
+- large historical logs;
+- PDF/DOCX derivatives;
+- actual redundant binaries;
+- compression opportunities.
+
+No history rewrite.
+
+Suggested:
+Migration/STORAGE_AUDIT_AFTER.md
+
+PHASE 12 — bootstrap simulation
+
+Simulate a completely new ChatGPT session that receives only the repository URL and:
+
+"Take over this project and continue where the previous chat stopped."
+
+The new chat must independently identify:
+
+- accepted gameplay baseline;
+- latest valid runtime evidence;
+- active candidate;
+- active profile;
+- active runtime/build gate;
+- exact next action;
+- blocking issues;
+- active decisions;
+- failed approaches;
+- relevant primary/detail sources.
+
+If that cannot be done reliably, migration is not complete.
+
+INFORMATION-LOSS CHECK
+----------------------
+
+Before moving, merging, compressing or removing any file, ask whether it contains a unique:
+
+- user decision;
+- rationale;
+- user observation;
+- config value;
+- build/profile hash;
+- runtime observation;
+- error signature;
+- failed attempt;
+- negative finding;
+- primary source;
+- technical limitation;
+- non-reconstructable fact.
+
+If yes:
+preserve it or provide an unambiguous reference to preserved primary evidence.
+
+When in doubt:
+ARCHIVE.
+
+DO NOT
+------
+
+Do not:
+
+- mass-delete Current;
+- delete history just because it is old;
+- lossy-truncate raw logs;
+- replace ProfileSources with complicated pointers only for apparent deduplication;
+- create parallel competing index systems;
+- silently mix runtime interpretation with immutable ingest provenance;
+- merge accepted baseline and latest runtime evidence into one status;
+- treat superseded builds as current bases;
+- re-bloat START_HERE with build history;
+- rewrite Git history;
+- migrate to LFS/external storage without explicit user authorization.
+
+SUCCESS CRITERIA
+----------------
+
+Migration is complete only when:
+
+1. Current/ is small and unambiguous.
+2. Exactly one PROJECT_STATE is authoritative.
+3. Stable current paths are used.
+4. Historical status generations no longer compete as Current.
+5. START_HERE is small.
+6. READ_ORDER works.
+7. decisions are structurally retrievable.
+8. failed approaches remain retrievable.
+9. ProfileSources can be understood through compact indexes/diffs.
+10. RuntimeEvidence has compact analyses while raw evidence remains preserved.
+11. build/runtime automation still works.
+12. repository validator passes.
+13. a new chat can take over from the repository URL alone.
+14. no relevant information was lost.
+15. no destructive history operation was performed.
+
+FINAL FUTURE HANDOVER GOAL
+--------------------------
+
+After successful migration, long version-specific handover prompts should no longer be needed.
+
+Ideal future bootstrap:
+
+"Use this repository as the complete project handover:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+Read START_HERE_ChatGPT_Masterprompt.txt and follow the defined read order."
+
+The repository is the persistent truth.
+The individual chat is only the temporary operator.
