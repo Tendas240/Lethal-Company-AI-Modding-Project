@@ -16,14 +16,14 @@ SHA-256:
 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
 Latest valid runtime evidence:
-**S1.42O - FAIL / no Hawk-death cleanup executed**
+**S1.42P - PARTIAL / FAIL**
 
-`RuntimeEvidence/S1.42O/20260903T171220Z/`
+`RuntimeEvidence/S1.42P/20260903T181706Z/`
 
 Log SHA-256:
-`1a1251f19a1d82e90b72e82ac8e4babd523c32e695fe3d7923d4590debb0be71`
+`d656095fb874a415a1bd2377c0411339d3d6eb002dce4ec3f6216e879294127f`
 
-Current built candidate:
+Tested candidate:
 **S1.42P - Baboon Hawk Exact FinishTask Recovery**
 
 `Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z`
@@ -34,43 +34,36 @@ SHA-256:
 Compatibility plugin:
 **v1.3.11**
 
-## S1.42O finding
+## S1.42P finding
 
-S1.42O attempted `LethalMin.PikminAI.TaskFinished()`, but the loaded LethalMin type has no such method. The patch therefore correctly performed no low-level fallback.
+The user observed a following-count drop from **20 to 18** after the Baboon Hawk fight.
 
-User result:
-**8 Pikmin disappeared after Hawk death.**
+The runtime log confirms exactly the same state:
+- 20 Yellow Pikmin leader-assigned before the fight;
+- 18 recovered before teardown;
+- missing: `Yellow Pikmin_hcRGph` and `Yellow Pikmin_ruCpzY`.
 
-The runtime method list explicitly exposes the actual high-level method:
-`LethalMin.PikminAI.FinishTask():Void`
+`PikminAI.FinishTask()` itself is runtime-proven correct and executed successfully.
 
-The same eight attackers continued `Hitting enemy with: 0.03` after Hawk death and beyond the SellBodies corpse-spawn point.
+S1.42P nevertheless fails for two reasons:
+1. the 4.0 m proximity selector missed real attacker `ruCpzY`, which continued hitting the dead Hawk for ~84.565 s;
+2. FinishTask-finalized Pikmin immediately rediscovered the already-dead Hawk and could start a new `AttackEnemy` task.
 
-## Active S1.42P runtime gate
+Corpse behavior remains PASS: Pikmin carried the Dead Baboon Hawk to Onion, and living Hawks ignored the corpse.
 
-S1.42P keeps:
-- one-shot `RoundManager.Instance.SpawnedEnemies` resolver;
-- exact/assignable `LethalMin.PikminAI` filtering;
-- 4.0 m Hawk-death zone;
-- passing Dead Baboon Hawk corpse guard.
+Full analysis:
+`Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md`
 
-It now uses the runtime-confirmed exact:
-`PikminAI.FinishTask()`
+## Next technical stage
 
-No `RemoveCurrentTask()` fallback.
+S1.42Q should:
+- retain exact native `LethalMin.PikminAI.FinishTask()`;
+- replace proximity-only attacker selection with exact/direct dying-Hawk target identity;
+- prevent already-dead Baboon Hawks from being selected as future Pikmin attack targets.
 
-Required result:
-1. exact FinishTask resolves at startup;
-2. real Hawk attackers are selected;
-3. native FinishTask runs at Hawk death;
-4. attackers stop hitting the dead Hawk;
-5. affected Pikmin remain visible/responsive;
-6. they can be whistled/regained and follow/reuse normally;
-7. following count can be restored;
-8. corpse still reaches Onion;
-9. living Hawks ignore corpse;
-10. Hawk -> Pikmin ignore remains intact;
-11. no leader-null loop.
+Do not merely widen the radius.
+Do not restore direct `RemoveCurrentTask()`.
+Do not restore normal enemies or BCMER yet.
 
 ## Temporary diagnostic state
 
@@ -84,13 +77,13 @@ BCMER exact:
 Restore baseline:
 `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 
-Do not restore normal enemies or BCMER before S1.42P passes.
-
 ## Runtime/build control
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42P`
 
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_BUILD_AWAITING_RUNTIME`
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_SUCCESSOR_DESIGN`
+
+The runtime pointer stays on S1.42P until a successor is actually built.
 
 Profiles containing the project-local DLL must be imported with Gale:
 
@@ -99,23 +92,26 @@ Profiles containing the project-local DLL must be imported with Gale:
 ## ChatGPT - read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md`
-3. `Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md`
-4. `Current/Projektstatus_S1.42P.json`
-5. `Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md`
-6. `Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md`
-7. `Current/00_CURRENT_STATE.md`
-8. `Current/01_HANDOVER_CORE.md`
-9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-10. `Current/VERIFIKATION_S1.42P.txt`
-11. `Current/SHA256SUMS_S1.42P.txt`
-12. `Current/Aktive_Modliste_S1.42P.txt`
-13. `BuildSpecs/current.json`
-14. `RuntimeInbox/ACTIVE_BUILD.txt`
-15. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-16. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-17. `Current/02_TECHNICAL_BASELINE.md`
-18. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+2. `Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md`
+3. `Current/Projektstatus_S1.42P.json`
+4. `Current/00_CURRENT_STATE.md`
+5. `Current/01_HANDOVER_CORE.md`
+6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+7. `Current/55_S1.42P_BABOON_HAWK_EXACT_FINISHTASK_BUILD.md`
+8. `Current/54_S1.42O_NO_CLEANUP_FINISHTASK_ANALYSIS.md`
+9. `Current/VERIFIKATION_S1.42P.txt`
+10. `Current/SHA256SUMS_S1.42P.txt`
+11. `Current/Aktive_Modliste_S1.42P.txt`
+12. `BuildSpecs/current.json`
+13. `RuntimeInbox/ACTIVE_BUILD.txt`
+14. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+15. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+16. `Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md`
+17. `Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md`
+18. `Current/02_TECHNICAL_BASELINE.md`
+19. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+
+The S1.42P final handover/audit files 56/57 describe the state **before** S1.42P was runtime-tested. Newer runtime evidence and Current files supersede their "awaiting runtime" wording.
 
 ## Critical persistent rules
 
@@ -123,6 +119,7 @@ Profiles containing the project-local DLL must be imported with Gale:
 - Do not use continuous Update-driven global EnemyAI scans for this death cleanup.
 - Do not restore direct low-level RemoveCurrentTask as the Hawk-death finalizer.
 - Use runtime-confirmed `FinishTask()`; do not guess `TaskFinished()` again.
+- Do not treat a fixed proximity radius as complete Hawk-attacker identity.
 - Do not silently upgrade BCMER 1.71.0 to 2.0.0.
 - Do not remove `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`.
 - Do not let `CodeRebirthLib` return.
@@ -131,14 +128,9 @@ Profiles containing the project-local DLL must be imported with Gale:
 
 ## Deferred maintenance
 
-Do not clean during the open S1.42P runtime gate:
+General cleanup remains deferred while the enemy-regression chain is open:
 - older "current" wording in `Current/02_TECHNICAL_BASELINE.md`;
 - stale S1.42J-era comments in untouched historical parts of `Patches/S139CompatibilityFixes/Plugin.cs`.
 
 Structural optimization:
 `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
-
-
-## Final handover integrity
-
-No repository files were deleted during the S1.42P final handover. Historical runtime evidence and failed approaches remain preserved because they retain diagnostic value.
