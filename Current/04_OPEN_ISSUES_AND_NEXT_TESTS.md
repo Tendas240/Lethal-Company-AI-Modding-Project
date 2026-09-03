@@ -209,7 +209,7 @@ Apply constant scale:
 
 to all eight EventTypes.
 
-## Functional Microwave volume — configured in S1.42E, runtime validation pending
+## Functional Microwave — volume configured; future rarity reduction requested
 
 S1.42E configured values:
 - `Functional Microwave | Allow Editing Config = true`
@@ -218,6 +218,9 @@ S1.42E configured values:
 User target:
 - `Allow Editing Config = true`
 - `Volume = 0.7`
+- Functional Microwaves should be somewhat rarer in a future build than in S1.42G.
+
+The exact rarity reduction is not yet selected. Do not change Microwave rarity during the manual BCMER-off retest, because that retest must alter BCMER only.
 
 Use config first; do not Harmony-patch audio unless runtime proves the config is ignored.
 
