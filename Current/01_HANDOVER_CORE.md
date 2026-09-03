@@ -1,3 +1,5 @@
+> **S1.42S FOCUSED RUNTIME PASS OVERRIDE:** S1.42S is runtime-accepted for the isolated Baboon-Hawk/Pikmin lifecycle gate. Evidence: `RuntimeEvidence/S1.42S/20260903T205550Z/`, SHA-256 `9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea`. All three focused attackers recovered, no stale post-death attacks remained, and corpse carry/Onion delivery worked. See Current/69. Next step is controlled normal-enemy restoration from the S1.42C restore baseline; do not silently change package versions or BCMER version.
+
 > **S1.42S ACTIVE OVERRIDE:** S1.42R is a runtime FAIL. The current built candidate is `Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z`, SHA-256 `addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee`. The project-side Baboon-Hawk adapter disable was the root cause; do not disable `BaboonBirdPikminEnemy`. See Current/66 and Current/67. Next action is the focused 3-Pikmin Hawk kill runtime test. EnemyIsolation stays enabled and BCMER 1.71.0 stays disabled.
 
 # 01 - Handover Core
