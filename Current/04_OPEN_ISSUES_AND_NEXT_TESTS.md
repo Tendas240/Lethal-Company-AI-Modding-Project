@@ -1,6 +1,6 @@
 # 04 — Open Issues and Next Tests
 
-## Immediate active gate — S1.42F lobby smoothness
+## Immediate active gate — S1.42G routed-moon smoothness
 
 S1.42E fixed the S1.42D startup crash but exposed a new diagnostic-only performance regression.
 
@@ -13,11 +13,11 @@ Confirmed:
 - EnemyIsolation then attempted six invalid `SpawnableEnemyWithRarity` default-constructor creations per second on Gordion;
 - this matches the user's short once-per-second freezes.
 
-S1.42F:
-`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
+S1.42G:
+`Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
 
 SHA-256:
-`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
+`09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
 
 First test:
 - Main Menu;
@@ -276,7 +276,7 @@ When naturally encountered, continue checking:
 
 `BuildSpecs/current.json`:
 - disabled
-- `IDLE_AFTER_S1.42F_BUILD_AWAITING_RUNTIME`
+- `IDLE_AFTER_S1.42G_BUILD_AWAITING_RUNTIME`
 
 S1.42D:
 **FAILED STARTUP — DO NOT RETEST**
@@ -285,9 +285,9 @@ S1.42E:
 **startup pass; interaction test aborted because of periodic EnemyIsolation freezes.**
 
 S1.42F:
-`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
+`Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
 SHA-256:
-`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
+`09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
 
 Status:
 **built, awaiting runtime lobby-smoothness gate.**
@@ -333,7 +333,7 @@ Combined next Jetpack target:
 - historical juijui capacity target: 140 seconds;
 - no mid-air/high-speed/continuous-boost explosion.
 
-## S1.42F immediate runtime gate
+## S1.42G immediate runtime gate
 
 Use:
 `Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
