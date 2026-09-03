@@ -44,12 +44,15 @@ Compatibility plugin remains **v1.3.14** with embedded DLL SHA-256:
 
 S1.41 remains the last fully accepted *full normal-stack* baseline only because exact BCMER 1.71.0 is still intentionally disabled in S1.42T.
 
+**S1.42U has not been built.** It is the next controlled plan only.
+
 ## Current state
 
 - EnemyIsolation: **disabled** (`Isolated Enemy Regression = false`)
 - BCMER exact `1.71.0`: **disabled intentionally**
 - Thumper Bite Limit: **3**
 - Crawler remains attackable by Pikmin / absent from Attack Blacklist
+- compatibility plugin v1.3.14 remains unchanged from accepted S1.42S
 - no successor build is currently armed.
 
 ## Exact next step
@@ -66,30 +69,58 @@ Only intended package-state change:
 
 - re-enable exact `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`.
 
-Do not upgrade BCMER and do not mix unrelated gameplay tuning or custom patch changes into this gate.
+Do not upgrade BCMER and do not mix unrelated gameplay tuning, repository migration, documentation/comment cleanup, or custom patch changes into this gate.
 
 ## ChatGPT — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/00_CURRENT_STATE.md`
-3. `Current/01_HANDOVER_CORE.md`
-4. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
-5. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-6. `Current/Projektstatus_S1.42T.json`
-7. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-8. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-9. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
-10. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
-11. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-12. `BuildSpecs/S1.42U_PLAN.md`
-13. `BuildSpecs/current.json`
-14. `RuntimeInbox/ACTIVE_BUILD.txt`
+2. `Current/75_FINAL_HANDOVER_S1.42T_PASS_S1.42U_NEXT.md`
+3. `Current/00_CURRENT_STATE.md`
+4. `Current/01_HANDOVER_CORE.md`
+5. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
+6. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+7. `Current/Projektstatus_S1.42T.json`
+8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+9. `Current/76_REPOSITORY_HANDOVER_AUDIT_S1.42T.md`
+10. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+11. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+12. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
+13. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+14. `BuildSpecs/S1.42U_PLAN.md`
+15. `BuildSpecs/current.json`
+16. `RuntimeInbox/ACTIVE_BUILD.txt`
 
 Newer confirmed current documentation overrides older version-specific handover files. Older S1.42S/Q/R material remains historical/diagnostic evidence, not the active next-step contract.
 
+The historical `Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md` was fulfilled by S1.42T; retain it for restore history, but do not follow its old "S1.42T not built" wording.
+
+## Restore / anti-regression references
+
+Canonical S1.42C enemy restore baseline:
+
+`Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
+
+SHA-256:
+
+`22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
+
+Machine-readable baseline:
+
+`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+
+Focused S1.42S lifecycle acceptance:
+
+`Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+
+Permanent patch-safety rule:
+
+`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+
+Never disable complete `LethalMin.BaboonBirdPikminEnemy` merely to block Hawk -> Pikmin interaction; preserve native inherited death/unlatch lifecycle and use the narrowest exact interception point.
+
 ## Large runtime logs
 
-Normal runtime logs continue through `RuntimeInbox/Current/` and are now processed by a streaming every-line analyzer. Smaller logs also receive lossless bounded `chat_chunks/` for direct ChatGPT reading.
+Normal runtime logs continue through `RuntimeInbox/Current/` and are processed by a streaming every-line analyzer. Smaller logs also receive lossless bounded `chat_chunks/` for direct ChatGPT reading.
 
 Very large logs use the disposable `runtime-large` branch and `RuntimeInbox/Large/`. They are compressed/split if needed, fully streamed through analysis, retained temporarily as a 14-day Actions artifact for exact query-on-demand access, and are **not** meant to remain permanent raw history on `main`.
 
@@ -97,13 +128,17 @@ Canonical policy:
 
 `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
 
-## Permanent patch-safety rule
+Automated infrastructure self-test:
 
-Every project-local Harmony/runtime/compatibility patch must follow:
+- `.github/workflows/runtime-pipeline-selftest.yml`
+- `BuildSystem/runtime_pipeline_selftest.py`
+- initial GitHub Actions run `33817297654`: **success**
 
-`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+Keep the current S1.42T raw log through the immediate S1.42U comparison because it is the clean BCMER-off reference run.
 
-Compile/startup success alone is not acceptance. Custom patches must be narrow and regression-tested against adjacent/native lifecycle behavior.
+## Known non-functional documentation/comment drift
+
+`Current/02_TECHNICAL_BASELINE.md` contains older chronology subsections with local "current" wording for S1.42S/earlier, and `Patches/S139CompatibilityFixes/Plugin.cs` contains some older comments that do not perfectly describe accepted v1.3.14 behavior. Current code/config/runtime evidence plus `Current/75`, `Current/00`, `Current/01` and `Current/Projektstatus_S1.42T.json` are authoritative. Do not mix cosmetic cleanup into S1.42U.
 
 ## Repository-first rule
 
