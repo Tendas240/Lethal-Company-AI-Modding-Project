@@ -2,115 +2,178 @@
 
 ## Binding state
 
-- Canonical accepted state: **S1.41**
-- Profile: `Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
+### Accepted gameplay baseline
+- build: **S1.41**
+- profile: `Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
 - SHA-256: `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
-- Latest runtime-tested state: **S1.41**
-- S1.40B status: **accepted**
-- S1.41 status: **accepted**
-- Game: Lethal Company V81
+- status: runtime accepted
 
-## Critical recent lineage
+### Latest runtime-tested technical candidate
+- build: **S1.42C**
+- profile: `Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
+- SHA-256: `22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
+- manifest: 188 total / 183 enabled / 5 disabled
+- status: runtime-tested technical descendant, not final gameplay acceptance
 
-### S1.39
-The cumulative local compatibility DLL loaded correctly, but late `RoundManager/SelectableLevel` Currency filtering did not catch the actual DawnLib natural spawn path.
+Game: **Lethal Company V81**
 
-### S1.40
-Moved Currency/Flash Turret suppression into `CodeRebirth.cfg`. Runtime failed because CodeRebirth/DawnLib restored defaults.
+## Critical lineage
 
-### S1.40A
-Set `Clean Unusued Configs = false`. Runtime still failed: the individual relevant content definitions had `Allow Editing Config = false`, so DawnLib continued enforcing author defaults.
+### S1.39 -> S1.40B
+The cumulative local compatibility plugin was established and CodeRebirth/DawnLib Currency + Flash Turret suppression was eventually fixed by opening the per-content editing gates.
 
-### S1.40B
-Opened the relevant DawnLib editing gates:
-- Coin `Allow Editing Config = true`
-- Crisp Dollar Bill `Allow Editing Config = true`
-- Wallet `Allow Editing Config = true`
-- Flash Turret `Allow Editing Config = true`
-
-Currency inside weights remained blank and Flash Turret remained `Is Inside Hazard = false`.
-
-Post-run values survived and the evaluated test did not show the previous natural Currency/Flash-Turret behavior. **S1.40B accepted.**
+S1.40B accepted solution must survive:
+- `Clean Unusued Configs = false`
+- Coin / Crisp Dollar Bill / Wallet editing gates true
+- their inside weights blank
+- Flash Turret editing gate true
+- `Flash Turret | Is Inside Hazard = false`
+- Flash Turret inside weights blank
 
 ### S1.41
-Reactivates exact BCMER 1.71.0 without changing the accepted S1.40B CodeRebirth solution.
+Exact BCMER 1.71.0 reactivated and runtime accepted.
 
-Manifest:
-- 179 total
-- 174 enabled
-- 5 disabled
+Carry-forward:
+- `Experimental Dont Handle Power? = true`
+- `Experimental Dont Handle Spawn Chance? = true`
+- `Let Brutal handle properties outside of events? = false`
+- `Enable Randomizer? = false`
+- Raining / HeavyRain / AllWeather / Hurricane disabled
+- natural vanilla Rainy allowed
 
-BCMER 2.0.0 is not used.
+Do not silently upgrade BCMER to 2.0.0.
 
-## S1.41 BCMER configuration
+### S1.42A
+Interior config seed added eight interior packages + required LethalModDataLib 1.2.2.
 
-```ini
-[Events Features]
-Disable all events? = false
+Runtime:
+- 52 dungeon flows total;
+- 26 new flows;
+- generated configs/real IDs available;
+- `junkrooms` and `shatteredrooms` exact CullFactory IDs;
+- Mausoleum too foggy;
+- LMDL initialization NRE exposed.
 
-[Mod Compatibility]
-Experimental Dont Handle Power? = true
-Experimental Dont Handle Spawn Chance? = true
-Let Brutal handle properties outside of events? = false
+### S1.42B
+Compatibility plugin v1.1.0 added null-safe LMDL bulk registration.
 
-[Randomizer]
-Enable Randomizer? = false
-```
+Runtime-confirmed:
+- `MW.MagicWesleyInteriors` is the null `PluginInfo.Instance`;
+- skipped safely;
+- LMDL fully initializes;
+- moddata load/save succeeds.
 
-Disabled BCMER event routes:
+This fix is accepted technically and must be retained.
 
-```ini
-[Raining]
-Event Enabled? = false
+### S1.42C
+Compatibility plugin v1.2.0 + LethalMin config:
+- `Thumper Bite Limit = 0`
+- `Crawler` in Attack Blacklist
+- Puffer smoke effect-trigger guard
+- LMDL guard retained
 
-[HeavyRain]
-Event Enabled? = false
+Runtime:
+- no new startup regression;
+- LMDL healthy;
+- Puffer did not spawn -> Puffer guard not validated;
+- Thumper not deliberately tested -> total noninteraction not fully validated;
+- Baboon Hawk bite proved a generic LethalMin grab/bite + invincibility state bug.
 
-[AllWeather]
-Event Enabled? = false
-
-[Hurricane]
-Event Enabled? = false
-```
-
-GeneralImprovements `SpeakerPlaysIntroVoice = true` is compatible with the BCMER reactivation requirement and was already present, so it did not require a build delta.
-
-## Required local compatibility plugin
+## Project-local compatibility plugin
 
 Source:
 `Patches/S139CompatibilityFixes/`
 
-Embedded DLL:
+Current source version:
+**1.2.0**
+
+Embedded path:
 `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`
 
-Expected marker:
+S1.42C embedded DLL SHA-256:
+`c3da6ee8220bec3b954ac62ca1a4d813efcb292eefd9b70fc0616a76e2f37af3`
+
+Gale:
+**Advanced options -> Import all files**
+
+Expected general marker:
 `S1.39 Compatibility Fixes loaded.`
 
-Gale profile imports that depend on the local DLL must use:
+## Highest engineering priority
 
-**Advanced options -> Import all files**
+Fix the generic:
+
+**enemy grab/bite + Invincible Pikmin -> broken leader/follow state**
+
+without disabling all enemy interactions.
+
+Confirmed with Baboon Hawk in S1.42C.
+
+Keep separate requested immunity:
+- Thumper/Crawler <-> Pikmin: no interaction either direction
+- Puffer attack/smoke -> Pikmin: no effect
+
+## Binding balancing/design rules
+
+### Interiors
+All registered interiors should have equal effective selection probability on every moon, including future additions.
+
+Common target: Weight 100 where technically safe.
+
+### Mausoleum
+Reduce fog specifically inside `MelanieMausoleum`.
+
+### BCMER
+Pin 1.71.0.
+
+Eight EventTypes should each have equal global base probability:
+12.5% each.
+
+Keep:
+`Use custom weights? = false`
+
+Constant scale for every EventType:
+`12.5, 0, 12.5, 12.5`
+
+### Functional Microwave
+Target:
+- editing gate true
+- volume 0.7
+
+### Jetpack
+Match historical juijui if evidence exists.
+Current = 40s.
+Do not guess historical value.
+50s is fallback only, not confirmed history.
+
+## Remaining interior tuning
+
+- normalize generated interior weights;
+- use exact IDs;
+- CullFactory exceptions `junkrooms`, `shatteredrooms`;
+- investigate Shatteredrooms Experimentation/Embrion block before overriding;
+- Mausoleum-specific fog reduction;
+- final runtime validation.
 
 ## Persistent project rules
 
-- S1.29D is diagnostic only.
-- Malfunctions stays disabled until explicit user request.
-- SCP999 stays disabled.
-- Observer stays disabled.
-- Don't Touch Me stays disabled.
-- AJB ship-door mod stays disabled while the local failsafe exists.
-- BCMER exact 1.71.0 is the accepted baseline; any 2.0 migration must be explicit and isolated.
+- S1.29D diagnostic only.
+- Malfunctions disabled until explicit request.
+- SCP999 disabled.
+- Observer disabled.
+- Don't Touch Me disabled.
+- AJB ship-door mod disabled while local failsafe exists.
 - CodeRebirthLib must not return.
-- LethalModDataLib is not a hard ban; reintroduce only if DULL requires it, in the isolated interior stage.
+- LethalModDataLib allowed/required for DULL but must retain our guard.
 - Unknown Enemy PowerLevels are never guessed.
 - Prefer one positive spawn owner per enemy.
-- Leaf Boy stays in the LethalMin Attack Blacklist.
-- Natural vanilla Rainy weather is allowed; the four disabled rain routes are BCMER events only.
+- Leaf Boy remains in LethalMin Attack Blacklist.
+- Ogopogo disabled.
+- Vermin disabled.
 
 ## Repository-first workflow
 
-GitHub is the canonical build workspace.
-
-Do not ask the user to run local profile-build PowerShell scripts or maintain a local repository clone when the base profile is already online.
+GitHub is canonical.
 
 Use:
 - `BuildSpecs/current.json`
@@ -120,42 +183,21 @@ Use:
 - `RuntimeInbox/Current/`
 - `RuntimeEvidence/`
 
-Binding policy: `Current/09_REPOSITORY_FIRST_AUTOMATION.md`.
+Do not request a local repo clone or PowerShell profile build while the base exists online.
 
-## Binding roadmap
+## Current build status
 
-**S1.41 accepted -> S1.42A interior config seed -> runtime config generation -> config/log collection -> S1.42 tuned interior candidate.**
+`BuildSpecs/current.json` is disabled:
+`IDLE_HANDOVER_AFTER_S1.42C_RUNTIME`
 
-See `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `Current/12_HANDOVER_S1.41_TO_S1.42A.md`, and `BuildSpecs/S1.42A_PLAN.md`.
+`BuildSpecs/S1.42D_PLAN.md` is **DRAFT ONLY**.
 
-## S1.41 acceptance result
+Do not build it automatically.
 
-Accepted. Runtime evidence is persisted under `RuntimeEvidence/S1.41/20260902T215804Z/`.
+## New-chat takeover
 
-Confirmed:
-- exact BCMER 1.71.0 loaded and ran events;
-- four BCMER rain routes remained disabled post-run;
-- ownership-guard values survived post-run;
-- S1.40B CodeRebirth Currency/Flash-Turret suppression survived;
-- no severe BCMER regression was observed.
-
-New separate issue: Mineshaft elevator + large Pikmin group may trigger NavMesh/collision instability and a player fall-through. Track independently; do not attribute to BCMER without evidence.
-
-
-## New-chat takeover / current progress
-
-Repository handover was refreshed on 2026-09-03.
-
-Accepted S1.41 remains the canonical gameplay baseline and should not be retested by default.
-
-The repository-first S1.42A build step has now been completed:
-- profile: `Profiles/LC V1 S1.42A Interior Config Seed.r2z`
-- SHA-256: `70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
-- automated member delta: only `export.r2x`
-- manifest: 188 total / 183 enabled / 5 disabled
-- `RuntimeInbox/ACTIVE_BUILD.txt` = `S1.42A`
-
-Do **not** rebuild S1.42A by default. The immediate next task is the runtime config-generation seed procedure and evidence upload described in `BuildSpecs/S1.42A_PLAN.md`.
+Primary detailed handover:
+`Current/16_HANDOVER_S1.42C_TO_NEXT.md`
 
 Start prompt:
-`Current/NEXT_CHAT_START_PROMPT_S1.41.txt`
+`Current/NEXT_CHAT_START_PROMPT_S1.42C.txt`
