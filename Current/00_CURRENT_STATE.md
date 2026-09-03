@@ -1,34 +1,38 @@
 # 00 — Current State
 
-**Updated:** 2026-09-03  
+**Updated:** 2026-09-04  
 **Game:** Lethal Company V81  
 **Repository:** `Tendas240/Lethal-Company-AI-Modding-Project`
 
-## Canonical handover
+## Current canonical state
 
-Final handover:
+Newest accepted technical descendant:
 
-`Current/71_HANDOVER_S1.42S_TO_NEXT_FINAL.md`
+**S1.42T — Normal Enemy Restore**
 
-Repository audit:
+Profile:
 
-`Current/72_REPOSITORY_HANDOVER_AUDIT_S1.42S.md`
+`Profiles/LC V1 S1.42T Normal Enemy Restore.r2z`
 
-Machine-readable status:
+SHA-256:
 
-`Current/Projektstatus_S1.42S.json`
+`a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10`
 
-Exact next-step contract:
+Runtime acceptance:
 
-`Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md`
+`Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
 
-Next build plan:
+Evidence:
 
-`BuildSpecs/S1.42T_PLAN.md`
+`RuntimeEvidence/S1.42T/20260903T222109Z/`
 
-Permanent patch-safety policy:
+Raw log SHA-256:
 
-`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+`b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f`
+
+Verdict:
+
+**PASS — normal non-isolated enemy population restored; no critical LethalMin regression markers; no new compatibility exception flood.**
 
 ## Last fully accepted normal gameplay baseline
 
@@ -42,23 +46,9 @@ SHA-256:
 
 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-Status:
+S1.41 remains the last fully accepted *full normal-stack* baseline because S1.42T intentionally keeps BCMER disabled. S1.42T is nevertheless runtime accepted for its isolated normal-enemy restoration scope.
 
-**runtime accepted**
-
-S1.41 remains the last full normal-gameplay baseline because the newer S1.42S test profile still has temporary EnemyIsolation enabled and BCMER disabled.
-
-## Latest built and tested technical descendant
-
-**S1.42S — Baboon Adapter Lifecycle Restore**
-
-Profile:
-
-`Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z`
-
-SHA-256:
-
-`addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee`
+## Permanent S1.42 compatibility state to preserve
 
 Compatibility plugin:
 
@@ -68,181 +58,113 @@ Embedded DLL SHA-256:
 
 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`
 
-Build verification:
+Preserve:
 
-- Build canonical profile #56: **SUCCESS**
-- run ID: `33803720934`
-- generated commit: `3bb900342c41595504bf9ce6879477aad22a7d49`
-- idle guard #57: **SUCCESS**
+- `BaboonBirdPikminEnemy` remains enabled;
+- only narrow Hawk -> Pikmin entry points are blocked;
+- native PikminEnemy death/unlatch lifecycle remains active;
+- Pikmin -> Baboon Hawk attack remains allowed;
+- Puffer -> Pikmin protection remains;
+- Thumper/Crawler counterattack capability remains;
+- `Thumper Bite Limit = 3`;
+- Crawler remains absent from LethalMin Attack Blacklist.
 
-## Latest valid runtime evidence
+Patch policy:
 
-**S1.42S — PASS for focused isolated Baboon-Hawk/Pikmin lifecycle gate**
+`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
 
-Evidence:
-
-`RuntimeEvidence/S1.42S/20260903T205550Z/`
-
-Raw log:
-
-`RuntimeEvidence/S1.42S/20260903T205550Z/raw/LogOutput.log`
-
-Log SHA-256:
-
-`9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea`
-
-Full analysis:
-
-`Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+## S1.42T runtime findings
 
 Confirmed:
 
-- three focused Pikmin attacked the same Baboon Hawk;
-- Hawk death at approximately `20:52:32.546`;
-- post-death stale attack-hit count = **0** for all three;
-- all three remained recoverable;
-- all three were later assigned back to the player;
-- native idle/task removal/unlatch resumed;
-- dead Hawk body was naturally carried to the Onion;
-- `Work state with no task assigned!` = **0**;
-- `Leader is null when following` = **0**.
+- normal non-isolated enemies spawn again;
+- direct `ADDING ENEMY`/active-instance evidence makes the missed terminal `Enemies` scan non-blocking;
+- `Work state with no task assigned!` = 0;
+- `Leader is null when following` = 0;
+- `[Fatal` = 0;
+- `[Error  :S1.39 Compatibility Fixes]` = 0;
+- no runtime crash/freeze;
+- player death was normal gameplay `DeathPlayerJetpackBlast`;
+- known SoundAPI/SoftMask/etc. stack noise is non-blocking;
+- one-off `AloeChase` FSB load-state message is monitor-only.
 
-## Corrected root cause
-
-Canonical analysis:
-
-`Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
-
-The project compatibility patch had disabled the complete:
-
-`LethalMin.BaboonBirdPikminEnemy`
-
-component.
-
-That also disabled inherited:
-
-`PikminEnemy.Update() -> RemoveAndDisableTriggers() -> RemoveAllPikmin(3)`
-
-and suppressed native dead-enemy unlatch cleanup.
-
-The older claim that the `AttackEnemyTask.IntervaledUpdate()` early return alone was the complete upstream root cause is superseded.
-
-S1.42S fixes this by keeping `BaboonBirdPikminEnemy` enabled and blocking only narrow Hawk -> Pikmin entry points.
-
-## Temporary current state
+## Current package/diagnostic state
 
 EnemyIsolation:
 
-**enabled**
+**disabled**
 
-Config:
+`Isolated Enemy Regression = false`
 
-`BepInEx/config/tendas.s139.compatibilityfixes.cfg`
-
-`Isolated Enemy Regression = true`
-
-BCMER:
+BCMER exact package:
 
 `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`
 
-State:
+State in S1.42T:
 
-**disabled**
+**disabled intentionally**
 
-Thumper Bite Limit:
+Do not upgrade to BCMER 2.0.0.
 
-**3**
+## Exact next gameplay gate
 
-LethalMin Attack Blacklist:
+Next controlled build identity:
 
-`Crawler` is intentionally **not** blacklisted.
+**S1.42U — BCMER 1.71.0 Reactivation Gate**
 
-## Canonical restore baseline
+Plan:
 
-`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+`BuildSpecs/S1.42U_PLAN.md`
 
-Baseline profile SHA-256:
+Only intended package-state variable:
 
-`22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
+- re-enable exact BCMER `1.71.0`.
 
-Verified restore rule:
-
-- normal enemy/spawn-owner configs remain byte-identical to S1.42C in the spot-checked files;
-- disable only the temporary EnemyIsolation diagnostic;
-- preserve later accepted LethalMin deltas:
-  - `Thumper Bite Limit = 3`;
-  - do not re-add `Crawler` to Attack Blacklist.
-
-## Exact next action
-
-Next planned build:
-
-**S1.42T — Normal Enemy Restore**
-
-Status:
-
-**planned only / not built**
-
-Build from S1.42S.
-
-For S1.42T:
-
-1. set `Isolated Enemy Regression = false`;
-2. keep compatibility plugin v1.3.14 unchanged;
-3. keep `Thumper Bite Limit = 3`;
-4. keep Crawler attackable by Pikmin;
-5. keep exact BCMER 1.71.0 **disabled** for this first restoration gate;
-6. make no unrelated package/config/gameplay changes;
-7. runtime-test that normal non-isolated enemies spawn again.
-
-Only after that passes should exact BCMER 1.71.0 be re-enabled in a separate controlled stage.
-
-Do not upgrade BCMER.
+Preserve S1.42T and all accepted compatibility/config state. Do not mix interior tuning, fog, CullFactory, microwave rarity, EventType distribution, repository migration, or new custom patch code into this gate.
 
 ## Controllers
 
 Runtime router:
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42S`
-
-This is correct until a new build actually exists.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42T`
 
 Build controller:
 
 `BuildSpecs/current.json`
 
 - `enabled = false`
-- `build_id = IDLE_AFTER_S1.42S_FOCUSED_RUNTIME_PASS_AWAITING_S1.42T_RESTORE_BUILD`
-- base = S1.42S
+- idle after S1.42T runtime PASS
+- base = S1.42T
+- no successor build armed.
 
-No build is currently armed.
+## Large runtime logs
 
-## Monitor-only issue
+Canonical policy/infrastructure:
 
-One disconnect-only LethalMin exception:
+`Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
 
-`PikminNoticeZone.OnTriggerStay -> NetworkObjectReference can only be created from spawned NetworkObjects`
+Normal logs continue through `RuntimeInbox/Current/` and now receive streaming full-line analysis plus bounded ChatGPT-readable chunks when small enough.
 
-It occurred after ShipOnion save during lobby disconnect.
+Very large logs use the disposable `runtime-large` branch, `RuntimeInbox/Large/`, compact analysis on `main`, a 14-day raw Actions artifact, and query-on-demand extraction through `RuntimeAnalysis/QUERY.json`.
 
-Classification:
+Raw logs are not permanent by default. They may be removed once their dependent gate/issues are closed and canonical evidence/provenance has been preserved.
 
-**monitor-only / non-blocking**
+The current S1.42T raw log is retained for now because it is the immediate BCMER-off comparison baseline for S1.42U.
 
-Do not patch without a reproducible user-facing issue and a Patch Safety Review.
+## Monitor-only issues
 
-## Permanent engineering rule
+1. LethalMin disconnect-only `PikminNoticeZone.OnTriggerStay -> NetworkObjectReference can only be created from spawned NetworkObjects` from S1.42S. Do not patch without reproducible user-facing impact and Patch Safety Review.
+2. S1.42T one-off `Failed getting load state of FSB for audio clip "AloeChase"`. Monitor only unless user-facing/reproducible.
 
-Every project-local runtime/Harmony/compatibility patch must comply with:
+## Later S1.42 work
 
-`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+After BCMER restoration/final normal-stack gate:
 
-Compile success, startup success, or removal of the direct symptom is not sufficient acceptance.
+- equal-interior probability tuning;
+- CullFactory exceptions for `junkrooms` and `shatteredrooms`;
+- Mausoleum fog reduction;
+- BCMER fixed 12.5% x8 EventType distribution;
+- CodeRebirth microwave rarity reduction;
+- final S1.42 acceptance.
 
-## Repository maintenance
-
-Structural migration remains tracked in:
-
-`Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
-
-The old S1.42S runtime-gate reason for deferring migration is closed, but repository migration must not be mixed into the immediate S1.42T gameplay restore build.
+Do not mix these into S1.42U.
