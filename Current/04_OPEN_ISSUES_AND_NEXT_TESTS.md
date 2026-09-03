@@ -1,38 +1,59 @@
 # 04 — Open Issues and Next Tests
 
-## Immediate active gate — S1.42H Thumper Grab Guard
+## Immediate active gate — S1.42I Baboon Hawk Grab Guard
 
 Profile:
-`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+`Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z`
 
 SHA-256:
-`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
+`c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97`
 
 Import with:
 **Gale -> Advanced options -> Import all files**
 
 Primary test:
-1. startup/Main Menu;
-2. route/land and confirm no periodic freezes;
-3. deliberately let a Thumper/Crawler cross into a Pikmin group;
-4. Thumper must not grab/remove leader/start a grabbed death timer;
-5. Pikmin must not attack/latch onto Crawler;
-6. no new Thumper-caused `Leader is null when following` loop;
-7. if possible, test Baboon Hawk bite/grab recovery on an invincible Pikmin;
-8. if possible, expose Pikmin to Puffer smoke and confirm no effect;
-9. confirm target enemies still appear/spawn and are shown by `Enemies`.
+1. startup/Main Menu and host;
+2. route/land on a normal moon;
+3. confirm `Enemies` still shows diagnostic targets;
+4. deliberately allow a Baboon Hawk to attack invincible Pikmin;
+5. expected marker:
+   `[BaboonHawkPikminGuard] Blocked Baboon Hawk -> invincible Pikmin GrabPikmin before hold/leader/death-timer state mutation.`
+6. verify no Pikmin is immobilized/held in the beak, no grabbed death timer starts, and no Baboon-caused leader-null loop follows;
+7. deliberately let a Crawler/Thumper cross a Pikmin group;
+8. expected marker:
+   `[ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.`
+9. verify no Thumper/Pikmin interaction in either direction;
+10. Puffer does not need another forced test; spot-check only if convenient;
+11. upload the complete fresh log to `RuntimeInbox/Current/`.
 
-Expected S1.42H startup marker:
-`[LethalMinStateGuard] Directly patched declared LethalMin.PikminAI.GrabPikmin(Transform,float,int) exactly once.`
+BCMER 1.71.0 remains intentionally disabled.
+EnemyIsolation remains intentionally enabled.
+Functional Microwave rarity remains unchanged.
 
-Expected Thumper encounter marker:
-`[ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.`
+Do not build S1.42J before this runtime gate is evaluated.
 
-BCMER 1.71.0 is intentionally disabled in S1.42H.
-Functional Microwave rarity remains unchanged in this build.
+## Completed gate — S1.42H runtime analysis
 
-Do not build another candidate before this runtime gate is evaluated.
+Evidence:
+`RuntimeEvidence/S1.42H/20260903T125734Z/`
 
+Result:
+- startup/exact hook PASS;
+- enemy isolation/spawning PASS;
+- `Enemies` terminal PASS by user gameplay observation;
+- Puffer smoke -> Pikmin PASS;
+- Baboon Hawk + invincible Pikmin FAIL because enemy-side hold/re-grab persists despite post-grab state restoration;
+- Crawler spawned, but direct Thumper/Pikmin contact was not validated.
+
+Key Baboon counts:
+- 64 bite calls;
+- 59 grabbed states;
+- 59 grabbed death timers;
+- 59 invincibility-blocked kill attempts;
+- 56 repairs;
+- 193 leader-null errors.
+
+This gate directly produced S1.42I.
 
 ## Completed gate — S1.42G BCMER-off clean retest
 
