@@ -22,7 +22,7 @@ namespace S139CompatibilityFixes
     {
         public const string PluginGuid = "tendas.s139.compatibilityfixes";
         public const string PluginName = "S1.39 Compatibility Fixes";
-        public const string PluginVersion = "1.3.11";
+        public const string PluginVersion = "1.3.12";
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;
@@ -53,16 +53,20 @@ namespace S139CompatibilityFixes
             PatchDiagnosticEnemyIsolation();
             PatchCoronerJetpackUpdateSpamGuard();
             PatchJetpackCapacityTarget();
-            PatchBaboonHawkDeathCleanup();
             PatchBaboonHawkCorpseProtection();
             StartCoroutine(DelayedLethalMinPatches());
+
+            Logger.LogInfo(
+                "[LethalMinNativeOwnership] Pikmin -> enemy attack, enemy-death task completion, " +
+                "and enemy-body carry/Onion delivery are left to native LethalMin. " +
+                "No project-local enemy-death task finalizer is installed.");
 
             Logger.LogInfo(
                 "S1.39 Compatibility Fixes loaded. Ship-door anti-lockout, complete EnemyScan output, " +
                 "natural CodeRebirth currency/map-object filtering, Flash Turret suppression, " +
                 "CodeRebirth kill-RPC Pikmin protection, the optional LethalModDataLib null-plugin guard, " +
-                "Puffer smoke Pikmin-effect guard, exact PikminAI GrabPikmin recovery + Thumper zero-interaction guard + " +
-                "Baboon Hawk/Pikmin total zero-interaction guard, Coroner Jetpack log-spam guard, throttled ship-door compatibility audit, " +
+                "Puffer smoke Pikmin-effect guard, exact PikminAI enemy-grab prevention for proven Thumper/Baboon Hawk gaps, " +
+                "Baboon Hawk -> Pikmin adapter/bite protection, Coroner Jetpack log-spam guard, throttled ship-door compatibility audit, " +
                 "the 140-second Jetpack target, " +
                 "and the late-lifecycle isolated-enemy diagnostic are active.");
         }
@@ -72,9 +76,8 @@ namespace S139CompatibilityFixes
             // Wait one frame so all BepInEx plugin Awake methods have run. LethalMin
             // is an optional runtime dependency and does not need a compile-time DLL.
             yield return null;
-            PatchLethalMinGrabBiteStateRepair();
+            PatchLethalMinEnemyGrabPrevention();
             PatchBaboonHawkPikminZeroInteraction();
-            BaboonHawkDeathCleanup.InitializeLethalMinUnlatch();
         }
 
         private void Update()
@@ -93,18 +96,18 @@ namespace S139CompatibilityFixes
             // spawn lifecycle points instead.
         }
 
-        private void PatchLethalMinGrabBiteStateRepair()
+        private void PatchLethalMinEnemyGrabPrevention()
         {
-            // S1.42D proved that the common grabbed-Pikmin state mutation lives in the
-            // declared LethalMin.PikminAI.GrabPikmin(Transform,float,int) base method.
-            // Patch that exact implementation once instead of scanning inherited methods
-            // through every derived Pikmin type.
+            // Minimal asymmetric protection:
+            // LethalMin owns all normal Pikmin -> enemy attack/death/carry lifecycle.
+            // This exact base-method prefix only blocks proven Enemy -> Pikmin grab paths
+            // before GrabPikmin can mutate leader/grab/death-timer state.
             Type pikminAiType = AccessTools.TypeByName("LethalMin.PikminAI");
             if (pikminAiType == null)
             {
                 Logger.LogError(
-                    "[LethalMinStateGuard] LethalMin.PikminAI was not found. " +
-                    "Direct GrabPikmin state repair is NOT active.");
+                    "[LethalMinEnemyGrabGuard] LethalMin.PikminAI was not found. " +
+                    "Exact Enemy -> Pikmin GrabPikmin prevention is NOT active.");
                 return;
             }
 
@@ -113,56 +116,50 @@ namespace S139CompatibilityFixes
                 "GrabPikmin",
                 new Type[] { typeof(Transform), typeof(float), typeof(int) });
 
-            if (grabPikmin == null || grabPikmin.DeclaringType != pikminAiType)
+            if (grabPikmin == null ||
+                grabPikmin.DeclaringType != pikminAiType ||
+                grabPikmin.GetMethodBody() == null)
             {
                 Logger.LogError(
-                    "[LethalMinStateGuard] Exact declared PikminAI.GrabPikmin(Transform,float,int) " +
-                    "was not found. Direct state repair is NOT active.");
+                    "[LethalMinEnemyGrabGuard] Exact declared PikminAI.GrabPikmin(Transform,float,int) " +
+                    "was not found with an implementation body. Prevention is NOT active.");
                 return;
             }
 
             try
             {
-                if (grabPikmin.GetMethodBody() == null)
-                {
-                    Logger.LogError(
-                        "[LethalMinStateGuard] PikminAI.GrabPikmin has no implementation body. " +
-                        "Direct state repair is NOT active.");
-                    return;
-                }
-
                 Harmony.Patch(
                     grabPikmin,
                     prefix: new HarmonyMethod(
-                        typeof(LethalMinGrabBiteStateRepair),
-                        nameof(LethalMinGrabBiteStateRepair.Prefix)),
-                    postfix: new HarmonyMethod(
-                        typeof(LethalMinGrabBiteStateRepair),
-                        nameof(LethalMinGrabBiteStateRepair.Postfix)));
+                        typeof(LethalMinEnemyGrabPrevention),
+                        nameof(LethalMinEnemyGrabPrevention.Prefix))
+                    {
+                        priority = Priority.First
+                    });
 
                 Logger.LogInfo(
-                    "[LethalMinStateGuard] Directly patched declared " +
-                    "LethalMin.PikminAI.GrabPikmin(Transform,float,int) exactly once. " +
-                    "No inherited/derived PikminAI Harmony scan is used.");
+                    "[LethalMinEnemyGrabGuard] Patched exact declared " +
+                    "LethalMin.PikminAI.GrabPikmin(Transform,float,int) with a prevention-only prefix. " +
+                    "No delayed repair, state snapshot, release-method reflection, or leader/follow restoration is installed.");
             }
             catch (Exception ex)
             {
                 Logger.LogError(
-                    $"[LethalMinStateGuard] Failed to patch exact PikminAI.GrabPikmin: " +
+                    $"[LethalMinEnemyGrabGuard] Failed to patch exact PikminAI.GrabPikmin: " +
                     $"{ex.GetType().Name}: {ex.Message}");
             }
         }
 
         private void PatchBaboonHawkPikminZeroInteraction()
         {
-            // Binding gameplay rule from S1.42J onward:
-            // Baboon Hawks and Pikmin do not interact in either direction.
+            // Asymmetric gameplay rule:
+            // Pikmin -> Baboon Hawk remains native LethalMin.
+            // Baboon Hawk -> Pikmin targeting/chase/bite/grab is blocked.
             //
             // Keep this patch deliberately narrow. S1.42D proved that broad/inherited
             // LethalMin reflection patching can crash during startup. Here we inspect
-            // only the exact BaboonBirdPikminEnemy type, directly patch only its known
-            // declared BitePikmin implementation, and disable that adapter on spawned
-            // Baboon Hawks one frame after BaboonBirdAI.Start.
+            // only the exact BaboonBirdPikminEnemy type, patch its declared BitePikmin,
+            // and disable the Hawk -> Pikmin adapter after BaboonBirdAI.Start.
             Type adapterType = AccessTools.TypeByName("LethalMin.BaboonBirdPikminEnemy");
             if (adapterType == null)
             {
@@ -233,40 +230,9 @@ namespace S139CompatibilityFixes
             }
 
             Logger.LogInfo(
-                $"[BaboonHawkPikminGuard] Zero-interaction initialized; " +
+                $"[BaboonHawkPikminGuard] One-way Hawk -> Pikmin protection initialized; " +
                 $"bitePatched={bitePatched}; baboonStartPatched={startPatched}; " +
                 $"declaredPikminMethods=[{string.Join(", ", declaredPikminMethods)}].");
-        }
-
-        private void PatchBaboonHawkDeathCleanup()
-        {
-            MethodInfo killEnemy = AccessTools.Method(
-                typeof(BaboonBirdAI),
-                "KillEnemy",
-                new Type[] { typeof(bool) });
-
-            if (killEnemy == null ||
-                killEnemy.DeclaringType != typeof(BaboonBirdAI) ||
-                killEnemy.GetMethodBody() == null)
-            {
-                Logger.LogError(
-                    "[BaboonHawkDeathCleanup] Exact declared BaboonBirdAI.KillEnemy(bool) was not found. " +
-                    "Latched-Pikmin death cleanup is NOT active.");
-                return;
-            }
-
-            Harmony.Patch(
-                killEnemy,
-                postfix: new HarmonyMethod(
-                    typeof(BaboonHawkDeathCleanup),
-                    nameof(BaboonHawkDeathCleanup.KillEnemyPostfix))
-                {
-                    priority = Priority.Last
-                });
-
-            Logger.LogInfo(
-                "[BaboonHawkDeathCleanup] Patched exact declared BaboonBirdAI.KillEnemy(bool). " +
-                "Death cleanup uses a one-shot RoundManager.SpawnedEnemies Pikmin registry pass plus native PikminAI.FinishTask(); no continuous scene scan is used.");
         }
 
         private void PatchBaboonHawkCorpseProtection()
@@ -1225,150 +1191,6 @@ namespace S139CompatibilityFixes
         }
     }
 
-    internal static class BaboonHawkDeathCleanup
-    {
-        private static Type PikminAiType;
-        private static MethodInfo FinishTaskMethod;
-
-        internal static void InitializeLethalMinUnlatch()
-        {
-            PikminAiType = AccessTools.TypeByName("LethalMin.PikminAI");
-            if (PikminAiType == null)
-            {
-                Plugin.Log.LogError(
-                    "[BaboonHawkDeathCleanup] LethalMin.PikminAI was not found. " +
-                    "Death-task finalization is NOT active.");
-                return;
-            }
-
-            FinishTaskMethod = AccessTools.Method(
-                PikminAiType,
-                "FinishTask",
-                Type.EmptyTypes);
-
-            if (FinishTaskMethod == null ||
-                FinishTaskMethod.DeclaringType != PikminAiType ||
-                FinishTaskMethod.ReturnType != typeof(void) ||
-                FinishTaskMethod.GetParameters().Length != 0 ||
-                FinishTaskMethod.GetMethodBody() == null)
-            {
-                FinishTaskMethod = null;
-                string[] candidates = PikminAiType
-                    .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
-                    .Where(m =>
-                        m.Name.IndexOf("Task", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                        m.Name.IndexOf("Finish", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                        m.Name.IndexOf("Idle", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                        m.Name.IndexOf("Latch", StringComparison.OrdinalIgnoreCase) >= 0)
-                    .Select(m => m.Name + "(" + string.Join(",", m.GetParameters().Select(p => p.ParameterType.Name)) + "):" + m.ReturnType.Name)
-                    .Distinct()
-                    .OrderBy(x => x, StringComparer.OrdinalIgnoreCase)
-                    .ToArray();
-
-                Plugin.Log.LogError(
-                    "[BaboonHawkDeathCleanup] Exact declared LethalMin.PikminAI.FinishTask() was not found. " +
-                    $"No low-level RemoveCurrentTask fallback will be used. Task/finish/idle candidates=[{string.Join(", ", candidates)}].");
-                return;
-            }
-
-            Plugin.Log.LogInfo(
-                "[BaboonHawkDeathCleanup] Resolved exact declared LethalMin.PikminAI.FinishTask() " +
-                "for native Baboon-Hawk death task finalization.");
-        }
-
-        public static void KillEnemyPostfix(BaboonBirdAI __instance, bool destroy)
-        {
-            if (__instance == null || destroy || Plugin.Instance == null)
-                return;
-
-            Plugin.Instance.StartCoroutine(ReleaseLatchedPikminNextFrame(__instance));
-        }
-
-        private const float DeathReleaseRadius = 4f;
-
-        private static IEnumerator ReleaseLatchedPikminNextFrame(BaboonBirdAI baboon)
-        {
-            yield return null;
-
-            if (baboon == null || PikminAiType == null || FinishTaskMethod == null)
-                yield break;
-
-            if (RoundManager.Instance == null || RoundManager.Instance.SpawnedEnemies == null)
-            {
-                Plugin.Log.LogWarning(
-                    "[BaboonHawkDeathCleanup] RoundManager.SpawnedEnemies is unavailable at Hawk death. " +
-                    "Death-unlatch cleanup could not enumerate Pikmin.");
-                yield break;
-            }
-
-            EnemyAI[] spawnedEnemies = RoundManager.Instance.SpawnedEnemies
-                .Where(enemy => enemy != null)
-                .ToArray();
-
-            int pikminCandidates = 0;
-            int inReleaseZone = 0;
-            int released = 0;
-
-            foreach (EnemyAI enemy in spawnedEnemies)
-            {
-                if (enemy == null || !PikminAiType.IsAssignableFrom(enemy.GetType()))
-                    continue;
-
-                pikminCandidates++;
-
-                Transform pikminTransform = enemy.transform;
-                if (pikminTransform == null)
-                    continue;
-
-                float distance = Vector3.Distance(pikminTransform.position, baboon.transform.position);
-                bool underDyingHawk =
-                    pikminTransform == baboon.transform ||
-                    pikminTransform.IsChildOf(baboon.transform);
-                bool closeToDyingHawk = distance <= DeathReleaseRadius;
-
-                if (!underDyingHawk && !closeToDyingHawk)
-                    continue;
-
-                inReleaseZone++;
-
-                try
-                {
-                    FinishTaskMethod.Invoke(enemy, null);
-                    released++;
-
-                    Plugin.Log.LogInfo(
-                        $"[BaboonHawkDeathCleanup] Native FinishTask finalized {enemy.gameObject.name} at dying Hawk; " +
-                        $"distance={distance:F2}m; underHawk={underDyingHawk}.");
-                }
-                catch (TargetInvocationException ex)
-                {
-                    Exception inner = ex.InnerException ?? ex;
-                    Plugin.Log.LogWarning(
-                        $"[BaboonHawkDeathCleanup] FinishTask failed for {enemy.gameObject.name}: " +
-                        $"{inner.GetType().Name}: {inner.Message}");
-                }
-                catch (Exception ex)
-                {
-                    Plugin.Log.LogWarning(
-                        $"[BaboonHawkDeathCleanup] FinishTask failed for {enemy.gameObject.name}: " +
-                        $"{ex.GetType().Name}: {ex.Message}");
-                }
-            }
-
-            if (pikminCandidates == 0)
-            {
-                Plugin.Log.LogWarning(
-                    "[BaboonHawkDeathCleanup] RoundManager.SpawnedEnemies contained zero LethalMin.PikminAI candidates " +
-                    "at Hawk death. The nightly SpawnedEnemies registry path may not be populated on this runtime peer.");
-            }
-
-            Plugin.Log.LogInfo(
-                $"[BaboonHawkDeathCleanup] Dying {baboon.gameObject.name}: native-finished {released}/{inReleaseZone} " +
-                $"Pikmin in {DeathReleaseRadius:F1}m death-release zone; total Pikmin registry candidates={pikminCandidates}. " +
-                "One-shot death event only; no Update-driven scan.");
-        }
-    }
-
     internal static class BaboonHawkCorpseProtection
     {
         private static readonly HashSet<int> LoggedBodyIds = new HashSet<int>();
@@ -1406,39 +1228,15 @@ namespace S139CompatibilityFixes
         }
     }
 
-    internal static class LethalMinGrabBiteStateRepair
+    internal static class LethalMinEnemyGrabPrevention
     {
-        internal sealed class MemberSnapshot
-        {
-            internal MemberInfo Member;
-            internal object Value;
-        }
-
-        internal sealed class GrabSnapshot
-        {
-            internal object Pikmin;
-            internal object Adapter;
-            internal MethodBase BiteMethod;
-            internal MethodInfo ReleaseMethod;
-            internal Transform OriginalParent;
-            internal readonly List<MemberSnapshot> Members = new List<MemberSnapshot>();
-        }
-
-        public static bool Prefix(
-            MethodBase __originalMethod,
-            object __instance,
-            object[] __args,
-            ref GrabSnapshot __state)
+        public static bool Prefix(object[] __args)
         {
             Transform snapPos =
                 __args != null && __args.Length > 0
                     ? __args[0] as Transform
                     : null;
 
-            // Binding gameplay rule: Thumper/Crawler and Pikmin must not interact
-            // in either direction. Crawler remains on LethalMin's Pikmin attack
-            // blacklist for Pikmin -> Thumper. This blocks the opposite direction
-            // before GrabPikmin removes the leader or starts its death timer.
             if (IsCrawlerOrThumperSnapPosition(snapPos))
             {
                 Plugin.Log.LogWarning(
@@ -1447,14 +1245,6 @@ namespace S139CompatibilityFixes
                 return false;
             }
 
-            object pikmin = __instance;
-            if (!IsAlive(pikmin))
-                return true;
-
-            // S1.42J binding rule: Baboon Hawks and Pikmin do not interact at all.
-            // The dedicated BaboonBirdPikminEnemy adapter is disabled separately;
-            // this common GrabPikmin block is a final failsafe in case another path
-            // still reaches the shared LethalMin grabbed-state mutation.
             if (IsBaboonHawkSnapPosition(snapPos))
             {
                 Plugin.Log.LogWarning(
@@ -1463,155 +1253,7 @@ namespace S139CompatibilityFixes
                 return false;
             }
 
-            object adapter = FindEnemyAdapterFromSnapPosition(snapPos);
-            __state = Capture(pikmin, adapter, __originalMethod);
             return true;
-        }
-
-        public static void Postfix(GrabSnapshot __state)
-        {
-            if (__state == null || Plugin.Instance == null)
-                return;
-
-            Plugin.Instance.StartCoroutine(RepairAfterGrab(__state));
-        }
-
-        private static IEnumerator RepairAfterGrab(GrabSnapshot snapshot)
-        {
-            // LethalMin's runtime log says the grabbed Pikmin will die after 0.5s.
-            // Wait slightly longer: if Invinceable Pikmin blocked that death but the
-            // leader was cleared, the survivor is exactly the invalid state we need.
-            yield return new WaitForSeconds(0.75f);
-
-            if (!IsAlive(snapshot.Pikmin))
-                yield break;
-
-            if (!HasLostLeader(snapshot))
-                yield break;
-
-            bool releaseInvoked = false;
-            if (snapshot.ReleaseMethod != null && snapshot.Adapter != null)
-            {
-                try
-                {
-                    snapshot.ReleaseMethod.Invoke(snapshot.Adapter, new object[] { snapshot.Pikmin });
-                    releaseInvoked = true;
-                    Plugin.Log.LogWarning(
-                        $"[LethalMinStateGuard] Invoked existing release path " +
-                        $"{snapshot.ReleaseMethod.DeclaringType?.FullName}.{snapshot.ReleaseMethod.Name} after " +
-                        $"{snapshot.BiteMethod?.DeclaringType?.FullName}.{snapshot.BiteMethod?.Name} left a surviving Pikmin leader-less.");
-                }
-                catch (TargetInvocationException ex)
-                {
-                    Exception inner = ex.InnerException ?? ex;
-                    Plugin.Log.LogWarning(
-                        $"[LethalMinStateGuard] Existing release path failed: {inner.GetType().Name}: {inner.Message}. " +
-                        "Falling back to pre-grab state restoration.");
-                }
-                catch (Exception ex)
-                {
-                    Plugin.Log.LogWarning(
-                        $"[LethalMinStateGuard] Existing release path failed: {ex.GetType().Name}: {ex.Message}. " +
-                        "Falling back to pre-grab state restoration.");
-                }
-            }
-
-            if (releaseInvoked)
-            {
-                yield return null;
-                if (!HasLostLeader(snapshot))
-                {
-                    Plugin.Log.LogInfo(
-                        "[LethalMinStateGuard] Existing LethalMin release path restored a valid leader/follow state.");
-                    yield break;
-                }
-            }
-
-            int restored = RestorePreGrabState(snapshot);
-
-            Component component = snapshot.Pikmin as Component;
-            if (component != null && component.transform != null &&
-                component.transform.parent != snapshot.OriginalParent)
-            {
-                component.transform.SetParent(snapshot.OriginalParent, true);
-            }
-
-            Plugin.Log.LogWarning(
-                $"[LethalMinStateGuard] Repaired surviving grabbed Pikmin by restoring {restored} pre-grab " +
-                "leader/follow/grab member(s). This prevents the Invincible-Pikmin 'Leader is null when following' loop.");
-        }
-
-        private static GrabSnapshot Capture(object pikmin, object adapter, MethodBase biteMethod)
-        {
-            GrabSnapshot snapshot = new GrabSnapshot
-            {
-                Pikmin = pikmin,
-                Adapter = adapter,
-                BiteMethod = biteMethod,
-                ReleaseMethod = FindReleaseMethod(adapter?.GetType(), pikmin.GetType())
-            };
-
-            Component component = pikmin as Component;
-            if (component != null && component.transform != null)
-                snapshot.OriginalParent = component.transform.parent;
-
-            foreach (FieldInfo field in GetFields(pikmin.GetType()))
-            {
-                if (field.IsStatic || field.IsLiteral || !ShouldCapture(field.Name))
-                    continue;
-
-                try
-                {
-                    snapshot.Members.Add(new MemberSnapshot { Member = field, Value = field.GetValue(pikmin) });
-                }
-                catch
-                {
-                }
-            }
-
-            foreach (PropertyInfo property in GetProperties(pikmin.GetType()))
-            {
-                if (!property.CanRead || property.GetIndexParameters().Length != 0 || !ShouldCapture(property.Name))
-                    continue;
-
-                try
-                {
-                    snapshot.Members.Add(new MemberSnapshot { Member = property, Value = property.GetValue(pikmin, null) });
-                }
-                catch
-                {
-                }
-            }
-
-            Plugin.Log.LogInfo(
-                $"[LethalMinStateGuard] Captured pre-grab state for {pikmin.GetType().FullName} via " +
-                $"{biteMethod?.DeclaringType?.FullName}.{biteMethod?.Name}; trackedMembers={snapshot.Members.Count}; " +
-                $"releasePath={(snapshot.ReleaseMethod != null ? snapshot.ReleaseMethod.Name : "<fallback-reflection>")}.");
-
-            return snapshot;
-        }
-
-        private static MethodInfo FindReleaseMethod(Type adapterType, Type pikminType)
-        {
-            if (adapterType == null || pikminType == null)
-                return null;
-
-            string[] releaseTokens = { "ReleasePikmin", "SavePikmin", "DropPikmin", "FreePikmin", "LetGoPikmin" };
-
-            return adapterType
-                .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                .Where(m => releaseTokens.Any(token =>
-                    m.Name.IndexOf(token, StringComparison.OrdinalIgnoreCase) >= 0))
-                .Where(m =>
-                {
-                    ParameterInfo[] parameters = m.GetParameters();
-                    return parameters.Length == 1 &&
-                           parameters[0].ParameterType.IsAssignableFrom(pikminType);
-                })
-                .OrderBy(m => Array.FindIndex(
-                    releaseTokens,
-                    token => m.Name.IndexOf(token, StringComparison.OrdinalIgnoreCase) >= 0))
-                .FirstOrDefault();
         }
 
         private static bool IsCrawlerOrThumperSnapPosition(Transform snapPos)
@@ -1632,8 +1274,6 @@ namespace S139CompatibilityFixes
                     return true;
             }
 
-            // Fallback for unusual prefab layouts where the EnemyAI component is not
-            // above the snap point in the hierarchy.
             for (Transform current = snapPos; current != null; current = current.parent)
             {
                 string normalized = DiagnosticEnemyIsolation.NormalizeEnemyName(current.name);
@@ -1663,9 +1303,6 @@ namespace S139CompatibilityFixes
                     return true;
             }
 
-            // Some LethalMin adapters/snap transforms are nested under helper objects
-            // rather than directly under the EnemyAI component. Use component type and
-            // hierarchy names only as narrow fallbacks; never perform a scene-wide scan.
             foreach (MonoBehaviour behaviour in snapPos.GetComponentsInParent<MonoBehaviour>(true))
             {
                 if (behaviour == null)
@@ -1687,248 +1324,6 @@ namespace S139CompatibilityFixes
             }
 
             return false;
-        }
-
-        private static bool IsInvinciblePikmin(object pikmin)
-        {
-            if (!IsAlive(pikmin))
-                return false;
-
-            Type type = pikmin.GetType();
-
-            foreach (FieldInfo field in GetFields(type))
-            {
-                if (field.FieldType != typeof(bool) ||
-                    field.Name.IndexOf("invinc", StringComparison.OrdinalIgnoreCase) < 0)
-                    continue;
-
-                try
-                {
-                    if ((bool)field.GetValue(pikmin))
-                        return true;
-                }
-                catch
-                {
-                }
-            }
-
-            foreach (PropertyInfo property in GetProperties(type))
-            {
-                if (property.PropertyType != typeof(bool) ||
-                    !property.CanRead ||
-                    property.GetIndexParameters().Length != 0 ||
-                    property.Name.IndexOf("invinc", StringComparison.OrdinalIgnoreCase) < 0)
-                    continue;
-
-                try
-                {
-                    if ((bool)property.GetValue(pikmin, null))
-                        return true;
-                }
-                catch
-                {
-                }
-            }
-
-            return false;
-        }
-
-        private static object FindEnemyAdapterFromSnapPosition(Transform snapPos)
-        {
-            if (snapPos == null)
-                return null;
-
-            MonoBehaviour[] behaviours = snapPos.GetComponentsInParent<MonoBehaviour>(true);
-            foreach (MonoBehaviour behaviour in behaviours)
-            {
-                if (behaviour == null)
-                    continue;
-
-                string typeName = behaviour.GetType().FullName ?? behaviour.GetType().Name ?? string.Empty;
-                if (typeName.IndexOf("LethalMin.", StringComparison.OrdinalIgnoreCase) >= 0 &&
-                    typeName.IndexOf("PikminEnemy", StringComparison.OrdinalIgnoreCase) >= 0)
-                    return behaviour;
-            }
-
-            return null;
-        }
-
-        private static object FindPikminTarget(object[] args)
-        {
-            if (args == null)
-                return null;
-
-            foreach (object arg in args)
-            {
-                if (arg == null)
-                    continue;
-
-                Type type = arg.GetType();
-                string typeName = type.FullName ?? type.Name ?? string.Empty;
-                if (typeName.IndexOf("Pikmin", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    typeName.IndexOf("Puffmin", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    typeName.IndexOf("Bulbmin", StringComparison.OrdinalIgnoreCase) >= 0)
-                    return arg;
-
-                EnemyAI enemy = arg as EnemyAI;
-                if (enemy != null && enemy.enemyType != null)
-                {
-                    string normalized = DiagnosticEnemyIsolation.NormalizeEnemyName(enemy.enemyType.enemyName);
-                    if (DiagnosticEnemyIsolation.IsPikminFamily(normalized))
-                        return arg;
-                }
-            }
-
-            return null;
-        }
-
-        private static bool HasLostLeader(GrabSnapshot snapshot)
-        {
-            foreach (MemberSnapshot member in snapshot.Members)
-            {
-                if (member.Member == null ||
-                    member.Member.Name.IndexOf("leader", StringComparison.OrdinalIgnoreCase) < 0 ||
-                    IsNullLike(member.Value))
-                    continue;
-
-                object current = ReadMember(snapshot.Pikmin, member.Member);
-                if (IsNullLike(current))
-                    return true;
-            }
-
-            return false;
-        }
-
-        private static int RestorePreGrabState(GrabSnapshot snapshot)
-        {
-            int restored = 0;
-
-            foreach (MemberSnapshot member in snapshot.Members)
-            {
-                if (member.Member == null)
-                    continue;
-
-                string name = member.Member.Name ?? string.Empty;
-                bool leader = name.IndexOf("leader", StringComparison.OrdinalIgnoreCase) >= 0;
-                bool follow = name.IndexOf("follow", StringComparison.OrdinalIgnoreCase) >= 0;
-                bool grab = name.IndexOf("grab", StringComparison.OrdinalIgnoreCase) >= 0;
-                bool bitten = name.IndexOf("bitten", StringComparison.OrdinalIgnoreCase) >= 0;
-                bool eaten = name.IndexOf("eaten", StringComparison.OrdinalIgnoreCase) >= 0;
-
-                if (!(leader || follow || grab || bitten || eaten))
-                    continue;
-
-                if (leader && IsNullLike(member.Value))
-                    continue;
-
-                if (WriteMember(snapshot.Pikmin, member.Member, member.Value))
-                    restored++;
-            }
-
-            return restored;
-        }
-
-        private static bool ShouldCapture(string name)
-        {
-            if (string.IsNullOrEmpty(name))
-                return false;
-
-            return name.IndexOf("leader", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                   name.IndexOf("follow", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                   name.IndexOf("grab", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                   name.IndexOf("bitten", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                   name.IndexOf("eaten", StringComparison.OrdinalIgnoreCase) >= 0;
-        }
-
-        private static IEnumerable<FieldInfo> GetFields(Type type)
-        {
-            for (Type current = type; current != null; current = current.BaseType)
-            {
-                foreach (FieldInfo field in current.GetFields(
-                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
-                    yield return field;
-            }
-        }
-
-        private static IEnumerable<PropertyInfo> GetProperties(Type type)
-        {
-            for (Type current = type; current != null; current = current.BaseType)
-            {
-                foreach (PropertyInfo property in current.GetProperties(
-                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
-                    yield return property;
-            }
-        }
-
-        private static object ReadMember(object target, MemberInfo member)
-        {
-            if (!IsAlive(target) || member == null)
-                return null;
-
-            try
-            {
-                if (member is FieldInfo field)
-                    return field.GetValue(target);
-                if (member is PropertyInfo property && property.CanRead)
-                    return property.GetValue(target, null);
-            }
-            catch
-            {
-            }
-
-            return null;
-        }
-
-        private static bool WriteMember(object target, MemberInfo member, object value)
-        {
-            if (!IsAlive(target) || member == null)
-                return false;
-
-            try
-            {
-                if (member is FieldInfo field)
-                {
-                    if (field.IsInitOnly || field.IsLiteral || field.IsStatic)
-                        return false;
-                    field.SetValue(target, value);
-                    return true;
-                }
-
-                if (member is PropertyInfo property &&
-                    property.CanWrite &&
-                    property.GetIndexParameters().Length == 0)
-                {
-                    property.SetValue(target, value, null);
-                    return true;
-                }
-            }
-            catch
-            {
-            }
-
-            return false;
-        }
-
-        private static bool IsNullLike(object value)
-        {
-            if (value == null)
-                return true;
-
-            if (value is UnityEngine.Object unityObject)
-                return unityObject == null;
-
-            return false;
-        }
-
-        private static bool IsAlive(object value)
-        {
-            if (value == null)
-                return false;
-
-            if (value is UnityEngine.Object unityObject)
-                return unityObject != null;
-
-            return true;
         }
     }
 
