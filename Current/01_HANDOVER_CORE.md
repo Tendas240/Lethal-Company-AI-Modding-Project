@@ -40,7 +40,7 @@ Details:
 - SHA-256: `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 - status: runtime accepted
 
-### Latest runtime-tested technical candidate
+### Historical runtime-tested technical checkpoint — S1.42C
 - build: **S1.42C**
 - profile: `Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
 - SHA-256: `22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
@@ -117,13 +117,13 @@ Source:
 `Patches/S139CompatibilityFixes/`
 
 Current source version:
-**1.3.3**
+**1.3.5**
 
-Latest runtime-proven non-crashing startup version:
-**1.3.1 in S1.42E**
+Latest runtime-proven predecessor:
+**v1.3.3 in the clean S1.42G BCMER-off retest**
 
-S1.42G embedded DLL SHA-256:
-`39690bf06dd6876e42badeb80f69bd8448fdbfeecd888fab0105951c38812436`
+S1.42H embedded DLL SHA-256:
+`d67f8f4bc2012f5b74086eb268fcb191f6990c93041617e9ef35c635ea33f186`
 
 Gale:
 **Advanced options -> Import all files**
@@ -131,8 +131,11 @@ Gale:
 Expected general marker:
 `S1.39 Compatibility Fixes loaded.`
 
-S1.42E safe LethalMin completion marker:
-`[LethalMinStateGuard] Safe generic grab/bite state repair registered on N declared enemy method(s).`
+Expected S1.42H exact grab-hook marker:
+`[LethalMinStateGuard] Directly patched declared LethalMin.PikminAI.GrabPikmin(Transform,float,int) exactly once. No inherited/derived PikminAI Harmony scan is used.`
+
+Expected Thumper encounter marker:
+`[ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.`
 
 Important:
 S1.42D v1.3.0 broad reflection/Harmony scan caused a startup crash. Do not restore it.
@@ -231,47 +234,52 @@ Do not request a local repo clone or PowerShell profile build while the base exi
 S1.42D:
 **FAILED STARTUP — DO NOT RETEST**
 
-Evidence:
-`RuntimeEvidence/S1.42D/20260903T084247Z/`
+S1.42E:
+**startup pass; historical freeze-regression candidate.**
 
-S1.42E runtime:
-**STARTUP PASS, BUT INTERACTION TEST BLOCKED BY PERIODIC ENEMY-ISOLATION FREEZES**
+S1.42F:
+**historical routed-moon performance failure.**
+
+S1.42G BCMER-off retest:
+**VALID RUNTIME EVIDENCE — periodic freezes resolved; target enemies spawn without BCMER; Thumper invalid grab state reproduced.**
 
 Evidence:
-`RuntimeEvidence/S1.42E/20260903T091053Z/`
+`RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/`
 
 Latest built candidate:
-**S1.42G**
+**S1.42H**
 
-`Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
+`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
 
 SHA-256:
-`09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
+`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
 
 Status:
-**built successfully; previous oversized evidence discarded; awaiting clean BCMER-off manual retest**
+**built successfully; awaiting first runtime validation**
 
 `BuildSpecs/current.json`:
-`IDLE_S1.42G_BCMER_OFF_RETEST`
+`IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`
 
 `RuntimeInbox/ACTIVE_BUILD.txt`:
-`S1.42G_BCMER_OFF_RETEST`
+`S1.42H`
 
-Do not build another candidate before the clean S1.42G BCMER-off retest is evaluated.
+Do not build S1.42I before S1.42H runtime evidence is evaluated.
 
 ## New-chat takeover
 
 Canonical current handover:
-`Current/29_HANDOVER_S1.42G_BCMER_OFF_RETEST_TO_NEXT.md`
+`Current/31_HANDOVER_S1.42H_TO_NEXT.md`
 
-Discarded-log context:
-`Current/28_S1.42G_DISCARDED_LOG_BCMER_OFF_RETEST.md`
+Latest predecessor analysis:
+`Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
 
-Build/test context:
-`Current/27_S1.42G_BUILD_AND_TEST.md`
+Verification:
+`Current/VERIFIKATION_S1.42H.txt`
 
 Start prompt:
-`Current/NEXT_CHAT_START_PROMPT_S1.42G.txt`
+`Current/NEXT_CHAT_START_PROMPT_S1.42H.txt`
+
+The old S1.42G handovers remain historical/diagnostic context and must not override S1.42H instructions.
 
 ## Historical target reference — juijui
 
@@ -289,22 +297,32 @@ Use juijui as a historical target/reference, not a V81 build base.
 
 ## Immediate next action
 
-Retest S1.42G as manual variant:
-**`S1.42G_BCMER_OFF_RETEST`**
+Runtime-test **S1.42H**.
 
-Procedure:
-- import canonical S1.42G with all files;
-- manually disable BCMER only;
-- make no other changes;
-- create a fresh shorter log.
+Profile:
+`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+
+Import:
+**Gale -> Advanced options -> Import all files**
+
+Do not manually change package states or configs. BCMER 1.71.0 is already disabled in S1.42H.
 
 Primary questions:
-- do isolated enemies now populate/spawn;
-- does the `Enemies` terminal command list them;
-- are routed-moon stalls and Coroner Jetpack spam gone;
-- does the HangarShipDoor/DoorAudit spam disappear without BCMER.
+- does the game reach Main Menu and host cleanly;
+- do routed moons remain free of the periodic stalls;
+- does Crawler/Thumper contact with Pikmin trigger the new `[ThumperPikminGuard]` marker without leader removal/death timer;
+- are there zero new Thumper-caused `Leader is null when following` loops;
+- does generic Baboon Hawk grab/bite recovery work if encountered;
+- does Puffer smoke remain harmless to Pikmin;
+- do target enemies still populate the `Enemies` terminal output.
 
-Only after the spawn path works should the Baboon Hawk / Thumper / Puffer interaction tests continue.
+Upload the complete fresh log to:
+`RuntimeInbox/Current/`
 
-The temporary isolated-enemy mode must be removed after this regression stage and the full enemy roster restored from:
-`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+If a new S1.42H log is already committed, analyze it immediately instead of requesting another test.
+
+After this isolated stage passes:
+- remove/disable temporary EnemyIsolation;
+- restore full enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`;
+- re-enable exact BCMER 1.71.0.
+
