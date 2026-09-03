@@ -1,5 +1,39 @@
 # 04 — Open Issues and Next Tests
 
+## Immediate active gate — S1.42H Thumper Grab Guard
+
+Profile:
+`Profiles/LC V1 S1.42H Thumper Grab Guard.r2z`
+
+SHA-256:
+`5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58`
+
+Import with:
+**Gale -> Advanced options -> Import all files**
+
+Primary test:
+1. startup/Main Menu;
+2. route/land and confirm no periodic freezes;
+3. deliberately let a Thumper/Crawler cross into a Pikmin group;
+4. Thumper must not grab/remove leader/start a grabbed death timer;
+5. Pikmin must not attack/latch onto Crawler;
+6. no new Thumper-caused `Leader is null when following` loop;
+7. if possible, test Baboon Hawk bite/grab recovery on an invincible Pikmin;
+8. if possible, expose Pikmin to Puffer smoke and confirm no effect;
+9. confirm target enemies still appear/spawn and are shown by `Enemies`.
+
+Expected S1.42H startup marker:
+`[LethalMinStateGuard] Directly patched declared LethalMin.PikminAI.GrabPikmin(Transform,float,int) exactly once.`
+
+Expected Thumper encounter marker:
+`[ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.`
+
+BCMER 1.71.0 is intentionally disabled in S1.42H.
+Functional Microwave rarity remains unchanged in this build.
+
+Do not build another candidate before this runtime gate is evaluated.
+
+
 ## Immediate active gate — S1.42G BCMER-off clean retest
 
 The oversized S1.42G runtime evidence formerly under `RuntimeEvidence/S1.42G/20260903T100914Z/` was intentionally deleted and must not be treated as project evidence.
