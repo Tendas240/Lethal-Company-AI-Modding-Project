@@ -9,18 +9,53 @@
     "status": "runtime_accepted"
   },
   "latest_valid_runtime_evidence": {
-    "build": "S1.42O",
-    "path": "RuntimeEvidence/S1.42O/20260903T171220Z/",
-    "log": "RuntimeEvidence/S1.42O/20260903T171220Z/raw/LogOutput.log",
-    "log_sha256": "1a1251f19a1d82e90b72e82ac8e4babd523c32e695fe3d7923d4590debb0be71",
-    "verdict": "NO_DEATH_CLEANUP_WRONG_METHOD_NAME",
+    "build": "S1.42P",
+    "path": "RuntimeEvidence/S1.42P/20260903T181706Z/",
+    "log": "RuntimeEvidence/S1.42P/20260903T181706Z/raw/LogOutput.log",
+    "log_sha256": "d656095fb874a415a1bd2377c0411339d3d6eb002dce4ec3f6216e879294127f",
+    "log_git_blob_sha": "47c05ca602b3b1c37430a8e24e77a2c16a702f26",
+    "verdict": "PARTIAL_FAIL_TWO_PIKMIN_NOT_RECOVERED_DEAD_HAWK_REACQUIRE",
     "confirmed": {
-      "taskFinished_method_exists": false,
-      "runtime_exact_finish_method": "FinishTask():Void",
-      "low_level_fallback_used": false,
-      "observed_missing_pikmin": 8,
-      "stale_attack_loop_after_hawk_death": true,
-      "sellbodies_corpse_creation_observed": true
+      "user_following_before": 20,
+      "log_prefight_leader_count": 20,
+      "log_preteardown_leader_count": 18,
+      "missing_pikmin": [
+        "Yellow Pikmin_hcRGph",
+        "Yellow Pikmin_ruCpzY"
+      ],
+      "finishTask_resolved": true,
+      "native_finish_aggregate": "3/3",
+      "native_finished_pikmin": [
+        {
+          "name": "Yellow Pikmin_hcRGph",
+          "distance_m": 2.25
+        },
+        {
+          "name": "Yellow Pikmin_apYy5",
+          "distance_m": 3.78
+        },
+        {
+          "name": "Yellow Pikmin_khCd",
+          "distance_m": 1.66
+        }
+      ],
+      "missed_real_attacker": "Yellow Pikmin_ruCpzY",
+      "dead_hawk_reacquired_by": [
+        "Yellow Pikmin_apYy5",
+        "Yellow Pikmin_khCd",
+        "Yellow Pikmin_hcRGph"
+      ],
+      "post_death_hits": {
+        "Yellow Pikmin_apYy5": 5,
+        "Yellow Pikmin_khCd": 2,
+        "Yellow Pikmin_hcRGph": 0,
+        "Yellow Pikmin_ruCpzY": 168
+      },
+      "ruCpzY_last_hit_seconds_after_death": 84.565,
+      "work_state_no_task_count": 0,
+      "leader_null_count": 0,
+      "corpse_to_onion": true,
+      "living_hawk_ignored_corpse": true
     }
   },
   "active_candidate": {
@@ -30,7 +65,7 @@
     "sha256": "11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5",
     "base_profile": "Profiles/LC V1 S1.42O Baboon Hawk Native Task Finalization.r2z",
     "base_sha256": "04d7e0df7f7a3b51d75832e9052c3e217ec07f91526c767323e1b5b0a3078d4d",
-    "status": "built_awaiting_runtime_validation",
+    "status": "runtime_failed_partial_requires_successor",
     "compatibility_plugin": {
       "version": "1.3.11"
     },
@@ -39,6 +74,13 @@
       "death_release_radius_m": 4,
       "completion_method": "exact declared LethalMin.PikminAI.FinishTask()",
       "low_level_RemoveCurrentTask_fallback": false
+    },
+    "runtime_result": {
+      "finishTask_method_valid": true,
+      "proximity_selector_valid_as_complete_attacker_identity": false,
+      "dead_hawk_reacquisition_blocked": false,
+      "following_count_recovered": false,
+      "corpse_behavior_pass": true
     },
     "build_verification": {
       "github_actions_run": 48,
@@ -64,19 +106,25 @@
   },
   "runtime_route": {
     "path": "RuntimeInbox/ACTIVE_BUILD.txt",
-    "value": "S1.42P"
+    "value": "S1.42P",
+    "note": "Remains S1.42P until a successor profile is actually built; do not upload a different build under this route."
   },
   "build_controller": {
     "path": "BuildSpecs/current.json",
     "enabled": false,
-    "build_id": "IDLE_AFTER_S1.42P_BUILD_AWAITING_RUNTIME",
+    "build_id": "IDLE_AFTER_S1.42P_RUNTIME_FAIL_AWAITING_SUCCESSOR_DESIGN",
     "base_profile": "Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z",
     "base_sha256": "11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5"
   },
   "next_action": {
-    "type": "runtime_test_only",
-    "instruction": "Import S1.42P with Gale Advanced options -> Import all files and repeat focused Baboon Hawk kill. Verify exact FinishTask resolves and attackers remain recoverable.",
-    "upload": "RuntimeInbox/Current/"
+    "type": "successor_design_and_build",
+    "proposed_build": "S1.42Q",
+    "instruction": "Keep native PikminAI.FinishTask(), replace proximity-only attacker identity with an exact/direct dying-Hawk target identity route, and block already-dead Baboon Hawks from future Pikmin AttackEnemy reacquisition. Do not merely widen the 4.0m radius and do not restore RemoveCurrentTask.",
+    "do_not_restore_before_pass": [
+      "EnemyIsolation",
+      "normal enemy baseline",
+      "BCMER 1.71.0"
+    ]
   },
   "package_state": {
     "source": "ProfileSources/S1.42P/export.r2x",
@@ -95,26 +143,25 @@
   },
   "runtime_gate": {
     "build": "S1.42P",
-    "status": "awaiting_runtime_test",
-    "expected_startup_marker": "[BaboonHawkDeathCleanup] Resolved exact declared LethalMin.PikminAI.FinishTask() for native Baboon-Hawk death task finalization.",
-    "expected_per_pikmin_marker": "[BaboonHawkDeathCleanup] Native FinishTask finalized ...",
-    "expected_aggregate_marker": "native-finished X/X",
-    "acceptance": [
-      "Attackers stop stale dead-Hawk hit loop promptly",
-      "No sustained Work state with no task assigned loop",
-      "Affected Pikmin remain visible and responsive",
-      "Affected Pikmin can be whistled/regained and follow/reuse normally",
-      "Following Pikmin count can be restored after fight",
-      "Dead Baboon Hawk corpse remains Pikmin-carryable to Onion",
-      "Living Baboon Hawks do not pick up corpse",
-      "Living Baboon Hawk -> Pikmin ignore remains intact",
-      "No Leader is null when following loop"
+    "status": "failed_requires_successor",
+    "failure_modes": [
+      "4.0m proximity selector missed real attacker Yellow Pikmin_ruCpzY",
+      "FinishTask-finalized Pikmin can reacquire already-dead BaboonHawkEnemy(Clone)",
+      "20 prefight followers became 18 recovered followers"
     ],
-    "do_not_build_successor_first": true
+    "passing_subchecks": [
+      "exact FinishTask resolves",
+      "native FinishTask executes",
+      "no sustained Work state with no task assigned loop",
+      "no Leader is null when following loop",
+      "Dead Baboon Hawk corpse reaches Onion",
+      "living Baboon Hawks ignore corpse"
+    ]
   },
   "handover": {
-    "primary": "Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md",
-    "audit": "Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md",
+    "newest_runtime_analysis": "Current/58_S1.42P_RUNTIME_TWO_PIKMIN_LOSS_REACQUIRE_ANALYSIS.md",
+    "previous_primary": "Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md",
+    "previous_audit": "Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md",
     "verification": "Current/VERIFIKATION_S1.42P.txt",
     "sha256_sums": "Current/SHA256SUMS_S1.42P.txt",
     "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42P.txt"
@@ -124,5 +171,5 @@
     "Untouched historical comments/strings in Patches/S139CompatibilityFixes/Plugin.cs retain S1.42J-era two-way zero-interaction wording"
   ],
   "deferred_repository_plan": "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt",
-  "deletion_decision": "No files deleted during handover; no identified evidence/file is certainly obsolete and without future diagnostic/documentary value."
+  "deletion_decision": "No files deleted. Preserve failed-runtime evidence and historical approaches."
 }
