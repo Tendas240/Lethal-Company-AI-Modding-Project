@@ -88,28 +88,27 @@ Expected general marker:
 ## ChatGPT — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/31_HANDOVER_S1.42H_TO_NEXT.md`
-3. `Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
-4. `Current/00_CURRENT_STATE.md`
-5. `Current/01_HANDOVER_CORE.md`
-6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-7. `Current/Projektstatus_S1.42H.json`
-8. `Current/VERIFIKATION_S1.42H.txt`
-9. `Current/SHA256SUMS_S1.42H.txt`
-10. `Current/Aktive_Modliste_S1.42H.txt`
-11. `Current/README_Handover_S1.42H.txt`
-12. `Current/DATEIINVENTAR_S1.42H.txt`
-13. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-14. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-15. `Current/02_TECHNICAL_BASELINE.md`
-16. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
-17. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-18. `Current/03_PROJECT_CHRONOLOGY.md`
-19. `ProfileSources/S1.42H/`
-20. `BuildSpecs/current.json`
-21. `RuntimeInbox/ACTIVE_BUILD.txt`
+2. `Current/34_HANDOVER_S1.42J_TO_NEXT.md`
+3. `Current/33_S1.42J_BABOON_HAWK_ZERO_INTERACTION_BUILD.md`
+4. `Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md`
+5. `Current/00_CURRENT_STATE.md`
+6. `Current/01_HANDOVER_CORE.md`
+7. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+8. `Current/Projektstatus_S1.42J.json`
+9. `Current/VERIFIKATION_S1.42J.txt`
+10. `Current/SHA256SUMS_S1.42J.txt`
+11. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+12. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+13. `Current/02_TECHNICAL_BASELINE.md`
+14. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
+15. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+16. `Current/03_PROJECT_CHRONOLOGY.md`
+17. `ProfileSources/S1.42J/`
+18. `BuildSpecs/current.json`
+19. `RuntimeInbox/ACTIVE_BUILD.txt`
+20. `Current/NEXT_CHAT_START_PROMPT_S1.42J.txt`
 
-Historical S1.42G/S1.42D handovers and evidence are read only when needed for diagnosis. Newer confirmed information always overrides older handover instructions.
+S1.42H/S1.42I and earlier handovers remain historical/diagnostic evidence. Newer confirmed information always overrides older handover instructions.
 
 Then inspect `Profiles/`, `RuntimeEvidence/`, `Patches/`, `References/`, `Logs/`, and `Archive/` only as required by the task.
 
@@ -219,9 +218,10 @@ for all eight categories.
 
 ### Pikmin-specific
 
-- Thumper/Crawler and Pikmin should not interact in either direction.
+- Thumper/Crawler and Pikmin must not interact in either direction.
+- Baboon Hawks and Pikmin must not interact in either direction.
 - Puffer smoke/attack must not affect Pikmin.
-- Do not solve the new general bite/grab bug by blindly blacklisting every enemy. Prefer a generic state repair.
+- Preserve intended interactions for other enemies; do not globally blacklist every enemy.
 
 ### Functional Microwave
 
@@ -237,7 +237,7 @@ Historical juijui primary config evidence:
 
 Caveat: the final historical export no longer contains Bigger Battery and its DLL is absent, so 140 is the strongest intended/configured historical target rather than proof of final-export runtime activation.
 
-Current S1.42H retained target:
+Current S1.42J retained target:
 - ButteRyBalance `Reduce Battery = false`;
 - project-local compatibility code targets the loaded Jetpack Item asset at 140 seconds;
 - `JetpackFixes MidAirExplosions = Off`;
@@ -245,17 +245,19 @@ Current S1.42H retained target:
 
 ### Current engineering priority
 
-First: **runtime-test S1.42H.**
+First: **runtime-test S1.42J. Do not build S1.42K first.**
 
 Primary acceptance:
 - Main Menu/host succeeds;
 - routed-moon periodic freezes remain gone;
 - target enemies still populate and appear in `Enemies`;
-- Thumper/Crawler contact with Pikmin triggers the new zero-interaction guard before leader removal/death timer;
-- no new Thumper-caused `Leader is null when following` loop;
-- Baboon Hawk generic recovery and Puffer smoke immunity are checked if conveniently encountered.
+- Baboon Hawks completely ignore Pikmin instead of targeting/chasing/biting/grabbing/holding them;
+- Pikmin do not attack/latch Baboon Hawks;
+- the S1.42J Baboon adapter-disable marker appears;
+- direct Thumper/Crawler <-> Pikmin zero interaction is finally validated;
+- Puffer -> Pikmin is already accepted from S1.42H and needs only an optional spot-check.
 
-BCMER 1.71.0 is already disabled inside S1.42H. Do not manually alter package states or configs.
+BCMER 1.71.0 is already disabled inside S1.42J. Do not manually alter package states or configs.
 
 After the isolated enemy stage passes:
 - remove/disable temporary EnemyIsolation;
@@ -266,11 +268,11 @@ After the isolated enemy stage passes:
 
 `BuildSpecs/current.json` is disabled and idle:
 
-`IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`
+`IDLE_AFTER_S1.42J_BUILD_AWAITING_RUNTIME`
 
-Do not create S1.42I before S1.42H runtime evidence is evaluated.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42J`
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42H`
+Do not create S1.42K before S1.42J runtime evidence is evaluated.
 
 ## Repository-first automation
 
@@ -324,7 +326,7 @@ juijui is a historical target/reference, **not** a current build base. Modern ga
 
 The binary is committed and repository-first indexed. The historical Jetpack config evidence has been recovered as `JetpackBatteryUsage = 140`. Do not revert to the old unevidenced 50-second fallback.
 
-The highest active engineering priority remains the generic LethalMin enemy-grab/bite + invincible-Pikmin leader/follow-state repair confirmed in S1.42C.
+The highest active engineering priority is the S1.42J isolated runtime gate: validate Baboon Hawk <-> Pikmin and Thumper/Crawler <-> Pikmin zero interaction before restoring normal enemies and BCMER.
 
 
 ### S1.42D / S1.42E — isolated enemy regression
