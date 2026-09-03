@@ -1,0 +1,86 @@
+VERIFIKATION — S1.42R
+Datum: 2026-09-03
+Spiel: Lethal Company V81
+
+KANONISCHER TESTKANDIDAT
+Build: S1.42R — LethalMin Latched Dead Target Completion
+Profil: Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z
+SHA-256: 009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101
+Git blob SHA: 61e290182a0f056a20d81f31d340b27eb18f4be4
+Dateigröße: 533870 Bytes
+
+BASIS
+S1.42Q
+SHA-256: 50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1
+
+ROOT CAUSE
+LethalMinNightly 1.1.108 AttackEnemyTask.IntervaledUpdate returns early while IsPikminOnEnemy=true.
+Therefore latched co-attackers never reach the existing enemy.enemyScript.isEnemyDead check.
+
+EXACT UPSTREAM DLL
+NoteBoxz.LethalMin.dll
+SHA-256: 9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df
+
+PLUGIN
+Version: 1.3.13
+DLL SHA-256: 0d39a8895a1324457c2ac135fa2ae129e58ba8155ce6bde1cdb59d340be420ff
+
+PATCH
+Exact method:
+LethalMin.Pikmin.AttackEnemyTask.IntervaledUpdate()
+
+Only when this exact task:
+- is still latched
+- has an enemy
+- and that enemy's EnemyAI.isEnemyDead is true
+
+the plugin invokes native:
+PikminAI.FinishTaskServerRpc()
+
+No enemy-death hook.
+No Pikmin scan.
+No radius.
+No guessed target identity.
+No direct RemoveCurrentTask.
+No custom state restoration.
+
+BUILD
+GitHub Actions #54 / ID 33800005390: SUCCESS
+Build-Commit: 80fc7bc37476612320925083f062bda2b841cf40
+ZIP members: 331
+Readable snapshot files: 330
+Changed existing members:
+- BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+- export.r2x
+Added members: none
+
+CONFIG DELTA S1.42Q -> S1.42R
+None.
+
+TEMPORARY TEST STATE
+EnemyIsolation = true
+BCMER 1.71.0 = disabled
+Thumper Bite Limit = 3
+
+RUNTIME ROUTER
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42R
+
+BUILD CONTROLLER
+enabled = false
+build_id = IDLE_AFTER_S1.42R_BUILD_AWAITING_RUNTIME
+
+STATUS
+Repository/build verification: PASS
+Runtime verification: PENDING
+
+EXPECTED RUNTIME MARKER
+[LethalMinLatchedDeathGuard] Requested native FinishTaskServerRpc
+
+EXPECTED NATIVE FOLLOW-UP
+Task finished
+
+NÄCHSTER SCHRITT
+S1.42R via Gale Advanced options -> Import all files importieren.
+Mehrere Pikmin auf denselben Baboon Hawk latchen und ihn töten.
+Exakte Follower-Zahl vor/nach dem Kill prüfen.
+Kompletten frischen LogOutput.log nach RuntimeInbox/Current/ committen.
