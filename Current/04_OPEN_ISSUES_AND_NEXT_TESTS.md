@@ -96,3 +96,13 @@ Then restore exact normal enemy config and exact BCMER 1.71.0, followed by a nor
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42P`
 
 `BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42P_BUILD_AWAITING_RUNTIME`
+
+## Handover continuity
+
+Primary continuation document:
+`Current/56_HANDOVER_S1.42P_TO_NEXT_FINAL.md`
+
+Final repository audit:
+`Current/57_REPOSITORY_HANDOVER_AUDIT_S1.42P.md`
+
+Do not treat repository cleanup, BCMER restore, or normal enemy restore as the next step. The next step remains the unchanged S1.42P focused runtime test.
