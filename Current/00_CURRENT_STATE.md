@@ -177,11 +177,11 @@ Functional Microwave:
 
 Jetpack:
 - historical juijui config evidence target = 140 seconds;
-- current = 40s via ButteRyBalance Reduce Battery;
-- do not restore obsolete Bigger Battery; reproduce 140s with a current-compatible mechanism;
-- Jetpack must not explode from sustained/high-speed boost use;
-- current Jetpack Fixes `MidAirExplosions = OnlyTooHigh`;
-- next-build target `MidAirExplosions = Off`.
+- S1.42G has ButteRyBalance `Reduce Battery = false`;
+- S1.42G local compatibility code targets the loaded Jetpack Item asset at 140 seconds;
+- S1.42G JetpackFixes has `MidAirExplosions = Off`;
+- do not restore obsolete Bigger Battery;
+- actual ~140-second runtime duration and sustained/high-speed no-self-explosion behavior still require clean gameplay validation.
 
 CullFactory:
 - exact IDs: `junkrooms`, `shatteredrooms`.
