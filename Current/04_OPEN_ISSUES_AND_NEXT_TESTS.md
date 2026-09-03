@@ -250,16 +250,16 @@ to all eight EventTypes.
 
 ## Functional Microwave — volume configured; future rarity reduction requested
 
-S1.42E configured values:
+Current S1.42H retained values:
 - `Functional Microwave | Allow Editing Config = true`
 - `Functional Microwave | Volume = 0.7`
 
 User target:
 - `Allow Editing Config = true`
 - `Volume = 0.7`
-- Functional Microwaves should be somewhat rarer in a future build than in S1.42G.
+- Functional Microwaves should be somewhat rarer in a future post-isolation build than in the current S1.42H/S1.42G behavior.
 
-The exact rarity reduction is not yet selected. Do not change Microwave rarity during the manual BCMER-off retest, because that retest must alter BCMER only.
+The exact rarity reduction is not yet selected. Do not change Microwave rarity during the S1.42H isolated enemy runtime gate.
 
 Use config first; do not Harmony-patch audio unless runtime proves the config is ignored.
 
@@ -267,7 +267,7 @@ Use config first; do not Harmony-patch audio unless runtime proves the config is
 
 User wants the old juijui-profile capacity/duration.
 
-Current S1.42G:
+Current S1.42H:
 - ButteRyBalance `Reduce Battery = false`;
 - project-local loaded Jetpack Item target = 140 seconds;
 - JetpackFixes `MidAirExplosions = Off`;
