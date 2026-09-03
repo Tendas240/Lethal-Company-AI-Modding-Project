@@ -1,5 +1,52 @@
 # 00 — Current State
 
+## CURRENT CANONICAL OVERRIDE — S1.42K — 2026-09-03
+
+This section is chronologically newer than the S1.42J handover/history below.
+
+Latest valid runtime evidence:
+**S1.42J**
+`RuntimeEvidence/S1.42J/20260903T145657Z/`
+Log SHA-256: `a8ce035bf64fa5b704e18c588215f43cd1fd184eef4f467dfbafa6fcb1379963`
+
+S1.42J accepted:
+- Baboon Hawk <-> Pikmin complete zero interaction: **PASS**;
+- Puffer -> Pikmin: **PASS / reconfirmed**;
+- Jetpack 140-second target / normal-use behavior: **PASS, accepted by user**;
+- Thumper/Crawler -> Pikmin protection: **PASS**; 19 Thumper guard blocks and 0 leader-null errors.
+
+The earlier bidirectional Thumper zero-interaction wording is superseded.
+Current binding rule:
+- **Thumper/Crawler -> Pikmin:** functional grab/bite state effects remain blocked;
+- **Pikmin -> Thumper/Crawler:** normal LethalMin attack/latch is allowed.
+
+Current candidate:
+**S1.42K — Thumper Pikmin Attack Restore**
+`Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z`
+SHA-256: `bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2`
+
+S1.42K removes only `Crawler` from LethalMin's Pikmin Attack Blacklist; `Baboon hawk` remains blacklisted. Compatibility DLL is unchanged.
+
+Exact next action:
+**runtime-test S1.42K** by throwing Pikmin onto a Thumper/Crawler. Pikmin must latch/attack normally while the Thumper-owned GrabPikmin route remains blocked.
+
+Runtime route:
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42K`
+
+Build controller:
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42K_BUILD_AWAITING_RUNTIME`
+
+Canonical current handover:
+`Current/39_HANDOVER_S1.42K_TO_NEXT.md`
+
+Current analyses:
+- `Current/37_S1.42J_RUNTIME_ANALYSIS_AND_S1.42K_PLAN.md`
+- `Current/38_S1.42K_THUMPER_PIKMIN_ATTACK_RESTORE_BUILD.md`
+- `Current/Projektstatus_S1.42K.json`
+
+Do not restore normal enemies/BCMER and do not start the repository structural migration until S1.42K is evaluated.
+
+
 ## Latest update — S1.42J Baboon Hawk zero interaction
 
 S1.42I was built after the S1.42H Baboon-Hawk failure but was **not runtime-tested**.
