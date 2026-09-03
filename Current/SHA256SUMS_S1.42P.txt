@@ -1,0 +1,20 @@
+SHA-256 SUMS — S1.42P HANDOVER
+Datum: 2026-09-03
+
+GAMEPLAY / BUILD PROFILES
+d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b  Profiles/LC V1 S1.41 BCMER Reactivation.r2z
+22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3  Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z
+fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722  Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z
+9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7  Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z
+c87d48464a750f87274e2848c44e5e1e24d4f1da087f59a33e2889744ebc13e9  Profiles/LC V1 S1.42N Baboon Hawk Death Target Resolver.r2z
+04d7e0df7f7a3b51d75832e9052c3e217ec07f91526c767323e1b5b0a3078d4d  Profiles/LC V1 S1.42O Baboon Hawk Native Task Finalization.r2z
+11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5  Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z
+
+RUNTIME LOGS
+812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10  RuntimeEvidence/S1.42L/20260903T155132Z/raw/LogOutput.log
+0639d5cc04aa54f5d7943ef4689e0d705c818871b019287ca1a1cdc2aa2492fb  RuntimeEvidence/S1.42M/20260903T163446Z/raw/LogOutput.log
+8ed6a79230e28535a01a4cb86a8971c358a5c9f57a53722e18ff4342474f51cf  RuntimeEvidence/S1.42N/20260903T165818Z/raw/LogOutput.log
+1a1251f19a1d82e90b72e82ac8e4babd523c32e695fe3d7923d4590debb0be71  RuntimeEvidence/S1.42O/20260903T171220Z/raw/LogOutput.log
+
+HINWEIS
+Für die v1.3.11-Compatibility-DLL ist in der aktuellen Übergabe kein separat verifizierter SHA-256-Wert aufgezeichnet. Nicht erfinden. Profil-SHA-256 und GitHub-Actions-Buildverifikation sind kanonisch.
