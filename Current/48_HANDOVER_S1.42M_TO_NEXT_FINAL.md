@@ -487,7 +487,11 @@ Do not ask the user for a local clone or local build while the required base and
 13. `Current/02_TECHNICAL_BASELINE.md`
 14. `BuildSpecs/current.json`
 15. `RuntimeInbox/ACTIVE_BUILD.txt`
-16. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+16. `Current/49_REPOSITORY_HANDOVER_AUDIT_S1.42M.md`
+17. `Current/Aktive_Modliste_S1.42M.txt`
+18. `Current/DATEIINVENTAR_S1.42M.txt`
+19. `Current/README_Handover_S1.42M.txt`
+20. `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
 
 ---
 
