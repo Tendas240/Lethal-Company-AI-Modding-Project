@@ -1,10 +1,14 @@
 {
   "date": "2026-09-03",
   "game": "Lethal Company V81",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "canonical_handover": "Current/45_HANDOVER_S1.42L_TO_NEXT_FINAL.md",
+  "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42L.txt",
   "accepted_gameplay_baseline": {
     "build": "S1.41",
     "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
-    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b"
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "runtime_accepted"
   },
   "latest_valid_runtime_evidence": {
     "build": "S1.42L",
@@ -20,14 +24,42 @@
       "coroner_jetpack_playercontroller_null": 0
     }
   },
-  "superseded_untested_candidates": ["S1.42I", "S1.42K"],
   "active_candidate": {
     "build": "S1.42L",
+    "name": "Pikmin Counterattack Restore",
     "profile": "Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z",
     "sha256": "fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722",
-    "base": "S1.42K",
-    "status": "runtime_partial_pass_one_subgate_remaining"
+    "base_profile": "Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z",
+    "base_sha256": "bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2",
+    "status": "runtime_partial_pass_one_subgate_remaining",
+    "build_verification": {
+      "github_actions": "success",
+      "zip_members": 331,
+      "readable_snapshot_files": 330,
+      "changed_existing_members": [
+        "BepInEx/config/NoteBoxz.LethalMin.cfg",
+        "export.r2x"
+      ],
+      "added_members": [],
+      "compatibility_dll_changed": false
+    },
+    "compatibility_plugin": {
+      "version": "1.3.7",
+      "dll_sha256": "7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2"
+    }
   },
+  "superseded_untested_candidates": [
+    {
+      "build": "S1.42I",
+      "profile": "Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z",
+      "sha256": "c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97"
+    },
+    {
+      "build": "S1.42K",
+      "profile": "Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z",
+      "sha256": "bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2"
+    }
+  ],
   "closed_runtime_topics": {
     "thumper_crawler": {
       "status": "PASS_CLOSED",
@@ -36,13 +68,18 @@
       "accepted_cosmetic_behavior": "Thumper may visibly snap at Pikmin; ignore because Pikmin are not functionally affected"
     },
     "puffer_to_pikmin": "PASS_CLOSED",
-    "jetpack": "PASS_CLOSED",
+    "jetpack": {
+      "status": "PASS_CLOSED",
+      "target_seconds": 140,
+      "mid_air_explosions": "Off"
+    },
     "baboon_hawk_to_pikmin": "PASS_CLOSED"
   },
   "remaining_runtime_gate": {
     "direction": "pikmin_to_baboon_hawk",
-    "required": "throw Pikmin onto Baboon Hawk and confirm normal LethalMin attack/latch while Hawk-side guard remains effective",
-    "status": "PENDING_EXPLICIT_RUNTIME_CONFIRMATION"
+    "required": "throw Pikmin onto Baboon Hawk and confirm normal LethalMin attack/latch while Hawk-side adapter/bite/grab guards remain effective",
+    "status": "PENDING_EXPLICIT_RUNTIME_CONFIRMATION",
+    "build_change_required_before_test": false
   },
   "binding_enemy_rules": {
     "baboon_hawk_to_pikmin": "blocked_no_target_chase_bite_grab_hold",
@@ -54,17 +91,72 @@
   "attack_blacklist": {
     "current": "Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy",
     "matches_modern_s1_40b_s1_41_baseline": true,
-    "recent_project_added_entries": ["Crawler", "Baboon hawk"],
+    "recent_project_added_entries": [
+      "Crawler",
+      "Baboon hawk"
+    ],
     "recent_project_added_entries_still_present": []
   },
-  "temporary_test_state": {
+  "temporary_isolated_test_state": {
     "enemy_isolation_enabled": true,
-    "bcmer_1_71_0_enabled": false,
+    "diagnostic_allowlist": {
+      "indoor": [
+        "Crawler/Thumper",
+        "Puffer"
+      ],
+      "outdoor": [
+        "Baboon Hawk"
+      ],
+      "daytime": []
+    },
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
+    "bcmer_enabled": false,
     "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
   },
-  "next_action": "Keep S1.42L. Explicitly validate Pikmin -> Baboon Hawk attack/latch only. Do not build a successor yet.",
-  "runtime_route": "S1.42L",
-  "build_controller": "IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME",
-  "canonical_analysis": "Current/43_S1.42L_RUNTIME_ANALYSIS_THUMPER_CLOSED.md",
-  "repository_migration": "deferred_until_remaining_S1.42L_baboon_reverse_direction_gate_is_evaluated"
+  "next_action": {
+    "type": "runtime_test_only",
+    "build": "S1.42L",
+    "instruction": "Explicitly validate Pikmin -> Baboon Hawk attack/latch while confirming Baboon Hawk -> Pikmin remains blocked. Do not build a successor first.",
+    "upload": "RuntimeInbox/Current/"
+  },
+  "after_remaining_gate_passes": {
+    "disable_enemy_isolation": true,
+    "restore_normal_enemy_state_from": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+    "reenable_exact_bcmer": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
+    "preserve_permanent_rules": [
+      "Baboon Hawk -> Pikmin blocked",
+      "Pikmin -> Baboon Hawk normal attack/latch allowed",
+      "Thumper/Crawler -> Pikmin broken grab state blocked",
+      "Pikmin -> Thumper/Crawler normal attack/latch allowed",
+      "Puffer -> Pikmin no effect"
+    ]
+  },
+  "build_controller": {
+    "path": "BuildSpecs/current.json",
+    "enabled": false,
+    "build_id": "IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME",
+    "base_profile": "Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z",
+    "base_sha256": "fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722"
+  },
+  "runtime_route": {
+    "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+    "value": "S1.42L"
+  },
+  "runtime_inbox_current": "empty_except_gitkeep",
+  "repository_optimization": {
+    "status": "DEFERRED_UNTIL_ACTIVE_GATE_COMPLETE",
+    "plan": "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt",
+    "rule": "Do not start structural migration until remaining S1.42L gate is evaluated and the post-gate normal-enemy/BCMER state is documented."
+  },
+  "critical_do_not_regress": [
+    "Do not reintroduce S1.42D broad/inherited LethalMin reflection/Harmony scan.",
+    "Do not use continuous Update-driven global EnemyAI scene scanning for EnemyIsolation.",
+    "Do not upgrade BCMER 1.71.0 to 2.0.0 without explicit user decision.",
+    "Do not remove Current/ENEMY_SPAWN_BASELINE_S1.42C.json.",
+    "Do not treat S1.42I or S1.42K as runtime evidence.",
+    "Do not restore intentionally deleted oversized S1.42G evidence.",
+    "Do not let CodeRebirthLib return.",
+    "Do not guess unknown Enemy PowerLevels.",
+    "Do not ask for local clone/build while GitHub contains required build infrastructure."
+  ]
 }
