@@ -30,3 +30,10 @@ Weitere relevante juijui-Referenz:
 - Rolling Giant gewünschtes/ bestätigtes Verhalten: MoveSpeed 2, MoveAcceleration 1 (weitere alte Timing-Werte wurden bereits in den heutigen Stand übertragen).
 - RandomEnemiesSize 1.1.20 wurde mit den übernommenen historischen Werten praktisch bestätigt.
 - LethalQuantities 1.2.9 war historisch installiert; bei den geprüften Spawn-Konfigurationen war es jedoch nicht der aktive globale Spawn-Owner. Nicht blind wieder installieren/aktivieren.
+
+
+Offene juijui-Referenz - Jetpack-Kapazität:
+- Benutzerwunsch: aktuelle Jetpack-Kapazität/Laufzeit soll an das alte juijui-Profil angepasst werden.
+- Aktueller Projektstand: ButteryBalance "Reduce Battery = true" reduziert 50s auf 40s.
+- Der exakte historische juijui-Wert ist in den aktuell erhaltenen Text-Referenzen nicht dokumentiert.
+- Nicht raten. Wenn keine stärkere historische Quelle mehr verfügbar ist, ist 50s ("Reduce Battery = false") nur ein plausibler Fallback-Kandidat, nicht als historisch bestätigt behandeln.
