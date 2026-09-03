@@ -1,0 +1,43 @@
+VERIFIKATION — S1.42L
+
+Profil:
+Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z
+
+SHA-256:
+fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722
+
+Basis:
+Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z
+
+Basis SHA-256:
+bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2
+
+GitHub Actions:
+- erfolgreich
+- 331 Archivmitglieder
+- 330 lesbare Snapshot-Dateien
+- geänderte Mitglieder nur:
+  - BepInEx/config/NoteBoxz.LethalMin.cfg
+  - export.r2x
+- keine neuen Mitglieder
+- Compatibility-DLL unverändert
+
+Attack Blacklist:
+Docile Locust Bees,Manticoil,Red Locust Bees,Blob,Nemo,InternNPC,BellCrab,Nancy,Transporter,Janior,Peace Keeper,Guardsman,Tornado,FireStorm,Hurricane,Cabinet, Leaf boy
+
+Damit:
+- Crawler NICHT blacklisted
+- Baboon hawk NICHT blacklisted
+- Leaf boy weiterhin blacklisted
+- Blacklist entspricht S1.40B/S1.41 Modern-Baseline
+
+S1.42K:
+- gebaut
+- nie runtime-getestet
+- durch neue Pikmin -> Baboon-Hawk-Angriffsanforderung superseded
+
+Runtime:
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42L
+
+Build controller:
+BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42L_BUILD_AWAITING_RUNTIME
