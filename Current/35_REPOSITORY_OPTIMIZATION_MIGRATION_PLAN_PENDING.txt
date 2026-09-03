@@ -1,3 +1,26 @@
+CURRENT STATUS UPDATE - 2026-09-03 AFTER S1.42S
+------------------------------------------------
+
+The critical S1.42S Baboon-Hawk/Pikmin runtime gate is now CLOSED / PASS.
+
+Current handover:
+Current/71_HANDOVER_S1.42S_TO_NEXT_FINAL.md
+
+Current audit:
+Current/72_REPOSITORY_HANDOVER_AUDIT_S1.42S.md
+
+The original gate-based reason for deferring this structural migration is therefore no longer active.
+
+However, the immediate next gameplay task is S1.42T Normal Enemy Restore. Do NOT combine the
+structural repository migration with that gameplay restoration build/test. Keep S1.42T isolated,
+finish and document its normal-enemy restore gate first, then schedule this migration as a separate
+maintenance phase.
+
+This status update supersedes only the old timing example below. The migration design,
+information-loss rules, archive-not-delete policy, and technical recommendations remain valid.
+
+================================================
+
 LETHAL COMPANY AI MODDING PROJECT
 PENDING REPOSITORY OPTIMIZATION / MIGRATION PLAN
 ================================================
