@@ -1,6 +1,23 @@
 # 04 — Open Issues and Next Tests
 
-## Immediate active gate — S1.42G routed-moon smoothness
+## Immediate active gate — S1.42G BCMER-off clean retest
+
+The oversized S1.42G runtime evidence formerly under `RuntimeEvidence/S1.42G/20260903T100914Z/` was intentionally deleted and must not be treated as project evidence.
+
+Next runtime variant:
+`S1.42G_BCMER_OFF_RETEST`
+
+Use canonical S1.42G, manually disable BCMER only, and make no other profile/config changes.
+
+Unconfirmed observations to reproduce:
+- no visible enemies;
+- `Enemies` terminal output empty even late in the day;
+- repeated HangarShipDoor/DoorAudit stack spam possibly associated with BCMER `Door System: ERROR`;
+- Functional Microwaves felt too common.
+
+Do not patch or rebalance from those observations until the clean retest reproduces them.
+
+## Previous active gate — S1.42G routed-moon smoothness
 
 S1.42E fixed the S1.42D startup crash but exposed a new diagnostic-only performance regression.
 
@@ -276,7 +293,7 @@ When naturally encountered, continue checking:
 
 `BuildSpecs/current.json`:
 - disabled
-- `IDLE_AFTER_S1.42G_BUILD_AWAITING_RUNTIME`
+- `IDLE_S1.42G_BCMER_OFF_RETEST`
 
 S1.42D:
 **FAILED STARTUP — DO NOT RETEST**
@@ -284,15 +301,15 @@ S1.42D:
 S1.42E:
 **startup pass; interaction test aborted because of periodic EnemyIsolation freezes.**
 
-S1.42F:
+S1.42G:
 `Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
 SHA-256:
 `09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
 
 Status:
-**built, awaiting runtime lobby-smoothness gate.**
+**built; previous oversized runtime evidence discarded; awaiting clean BCMER-off manual retest.**
 
-Do not build a new candidate before evaluating S1.42F runtime evidence.
+Do not build a new candidate before evaluating the clean S1.42G BCMER-off retest.
 
 ## Historical juijui profile — uploaded and indexed
 
@@ -336,19 +353,25 @@ Combined next Jetpack target:
 ## S1.42G immediate runtime gate
 
 Use:
-`Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z`
+`Profiles/LC V1 S1.42G Routed Moon Performance Fix.r2z`
 
 SHA-256:
-`f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b`
+`09364c11f8032645205b869ad760471259520cd57758e4d2d09a35665cf0d35a`
+
+Manual test variant:
+`S1.42G_BCMER_OFF_RETEST`
+
+Before launch:
+- disable BCMER only;
+- leave every other mod/config unchanged.
 
 First check:
 - game reaches Main Menu;
-- host reaches ship lobby in orbit;
-- no once-per-second freeze cadence;
-- safe LethalMin completion marker still appears;
-- Gordion skip marker appears.
+- host/routing remains smooth;
+- no Coroner Jetpack warning flood;
+- isolated enemies appear and are visible through the `Enemies` terminal command.
 
-If smooth, continue with the isolated Baboon Hawk / Thumper / Puffer tests plus Jetpack and Microwave checks.
+If the enemy spawn path works, continue with Baboon Hawk / Thumper / Puffer tests.
 
 S1.42D must not be retested.
-S1.42E must not be used for the interaction stage.
+The deleted oversized S1.42G evidence must not be cited.
