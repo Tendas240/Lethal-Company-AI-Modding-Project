@@ -149,10 +149,10 @@ Status:
 **built successfully; awaiting runtime validation.**
 
 Runtime route:
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42H`
+Historical note: the runtime router pointed to S1.42H during that predecessor gate.
 
 Build controller:
-`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42H_BUILD_AWAITING_RUNTIME`
+Historical note: the build controller was idle and awaiting S1.42H runtime during that predecessor gate.
 
 Canonical latest analysis:
 `Current/30_S1.42G_BCMER_OFF_RETEST_ANALYSIS_AND_S1.42H_BUILD.md`
