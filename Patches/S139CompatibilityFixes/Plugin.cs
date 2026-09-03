@@ -77,7 +77,7 @@ namespace S139CompatibilityFixes
             // is an optional runtime dependency and does not need a compile-time DLL.
             yield return null;
             PatchLethalMinEnemyGrabPrevention();
-            PatchBaboonHawkPikminZeroInteraction();
+            PatchBaboonHawkPikminProtection();
         }
 
         private void Update()
@@ -150,7 +150,7 @@ namespace S139CompatibilityFixes
             }
         }
 
-        private void PatchBaboonHawkPikminZeroInteraction()
+        private void PatchBaboonHawkPikminProtection()
         {
             // Asymmetric gameplay rule:
             // Pikmin -> Baboon Hawk remains native LethalMin.
@@ -165,11 +165,11 @@ namespace S139CompatibilityFixes
             {
                 Logger.LogError(
                     "[BaboonHawkPikminGuard] LethalMin.BaboonBirdPikminEnemy was not found. " +
-                    "Baboon Hawk/Pikmin zero-interaction adapter disable is NOT active.");
+                    "Baboon Hawk -> Pikmin adapter protection is NOT active.");
                 return;
             }
 
-            BaboonHawkPikminZeroInteraction.AdapterType = adapterType;
+            BaboonHawkPikminProtection.AdapterType = adapterType;
 
             string[] declaredPikminMethods = adapterType
                 .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
@@ -192,8 +192,8 @@ namespace S139CompatibilityFixes
                 Harmony.Patch(
                     bitePikmin,
                     prefix: new HarmonyMethod(
-                        typeof(BaboonHawkPikminZeroInteraction),
-                        nameof(BaboonHawkPikminZeroInteraction.BlockBitePikminPrefix))
+                        typeof(BaboonHawkPikminProtection),
+                        nameof(BaboonHawkPikminProtection.BlockBitePikminPrefix))
                     {
                         priority = Priority.First
                     });
@@ -215,8 +215,8 @@ namespace S139CompatibilityFixes
                 Harmony.Patch(
                     baboonStart,
                     postfix: new HarmonyMethod(
-                        typeof(BaboonHawkPikminZeroInteraction),
-                        nameof(BaboonHawkPikminZeroInteraction.BaboonStartPostfix))
+                        typeof(BaboonHawkPikminProtection),
+                        nameof(BaboonHawkPikminProtection.BaboonStartPostfix))
                     {
                         priority = Priority.Last
                     });
@@ -1127,7 +1127,7 @@ namespace S139CompatibilityFixes
         }
     }
 
-    internal static class BaboonHawkPikminZeroInteraction
+    internal static class BaboonHawkPikminProtection
     {
         internal static Type AdapterType;
 
