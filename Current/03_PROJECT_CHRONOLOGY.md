@@ -748,3 +748,103 @@ After PASS:
 
 Repository structural migration remains deferred until the active gate and resulting normal-enemy/BCMER state are documented.
 
+## S1.42L second runtime — Pikmin -> Baboon Hawk PASS, death-cleanup regression found
+
+Evidence:
+`RuntimeEvidence/S1.42L/20260903T155132Z/`
+
+Raw log:
+`RuntimeEvidence/S1.42L/20260903T155132Z/raw/LogOutput.log`
+
+Log SHA-256:
+`812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10`
+
+User-confirmed:
+- thrown Pikmin latch onto a living Baboon Hawk normally;
+- Pikmin attack it normally;
+- Pikmin can kill it.
+
+Therefore:
+**Pikmin -> living Baboon Hawk attack/latch is PASS/CLOSED.**
+
+Hawk-side protection remained accepted and `Leader is null when following` remained 0.
+
+New regression found at death:
+- Pikmin latched to the Hawk remained associated with the dead original `BaboonHawkEnemy(Clone)` target after death;
+- the log continued to show attack activity against that old target;
+- SellBodies generated `BaboonHawkBody(Clone)`;
+- living Baboon Hawks subsequently logged three grabs of that corpse item;
+- the user observed the attacking Pikmin disappear and the corpse not remain where expected.
+
+The user clarified the binding corpse requirement:
+- SellBodies Baboon Hawk corpse generation must stay enabled;
+- the Dead Baboon Hawk body must remain carryable by Pikmin/players;
+- Pikmin must be able to carry it toward the Onion;
+- living Baboon Hawks should not pick up the corpse.
+
+Detailed analysis:
+`Current/47_S1.42L_BABOON_ATTACK_PASS_DEATH_REGRESSION_ANALYSIS.md`
+
+## S1.42M — Baboon Hawk Death Cleanup
+
+Built from S1.42L.
+
+Profile:
+`Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z`
+
+SHA-256:
+`9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7`
+
+Compatibility plugin:
+v1.3.8
+
+DLL SHA-256:
+`47fff0272b00ce776150c203eb65710216eba4390f5f5864fdbffec686692adf`
+
+Purpose:
+- release only Pikmin attached under the specific dying Baboon Hawk via exact death lifecycle + exact LethalMin `RemoveCurrentTask()` runtime resolution;
+- prevent living Baboon Hawks from treating only the SellBodies Dead Baboon Hawk body as collectible scrap;
+- preserve player/Pikmin corpse carrying.
+
+Narrow implementation:
+- exact declared `BaboonBirdAI.KillEnemy(bool)`;
+- exact declared `BaboonBirdAI.CanGrabScrap(GrabbableObject)`;
+- no scene-wide Pikmin scan;
+- no Update-driven scan;
+- no broad/inherited LethalMin Harmony scan.
+
+Build attempt #41 failed only because the build specification used an overly strict Attack Blacklist regex assertion. No failed gameplay profile was committed.
+
+The assertion was corrected to an equivalent containment check.
+
+Final GitHub Actions build #42:
+- success;
+- 0 warnings;
+- 0 errors;
+- 331 archive members;
+- 330 readable snapshot files;
+- only compatibility DLL + `export.r2x` changed;
+- no added members.
+
+S1.42M configs for LethalMin, SellBodies and the compatibility plugin remain byte-identical to S1.42L.
+
+Current status:
+**built; awaiting first runtime validation.**
+
+Controllers:
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42M`;
+- `BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42M_BUILD_AWAITING_RUNTIME`.
+
+Temporary test state remains:
+- EnemyIsolation enabled;
+- exact BCMER 1.71.0 disabled.
+
+Immediate next action:
+runtime-test S1.42M unchanged. Confirm the attacking Pikmin survive/detach at Hawk death, the SellBodies corpse remains and can be carried by Pikmin toward the Onion, living Hawks do not pick it up, Hawk -> Pikmin ignore stays intact, and no leader-null loop appears. Then commit the complete fresh log to `RuntimeInbox/Current/`.
+
+After S1.42M PASS:
+restore normal enemy state from `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`, re-enable exact BCMER 1.71.0, runtime-check the normal state, and only afterward perform deferred repository maintenance.
+
+Final detailed handover:
+`Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md`
+
