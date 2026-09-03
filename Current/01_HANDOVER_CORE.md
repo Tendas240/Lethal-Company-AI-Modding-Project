@@ -1,5 +1,54 @@
 # 01 — Handover Core
 
+
+## Current takeover override — S1.42I
+
+Chronologically newer than the historical sections below.
+
+Latest built candidate:
+`Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z`
+
+SHA-256:
+`c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97`
+
+Compatibility plugin:
+- version 1.3.6
+- DLL SHA-256 `76544a536f5c626f0c81b50dc06a7bf1521c265cd23a7698917789e3846eecb2`
+
+Latest runtime evidence:
+`RuntimeEvidence/S1.42H/20260903T125734Z/`
+
+S1.42H result:
+- Puffer -> Pikmin PASS;
+- Baboon Hawk + invincible Pikmin FAIL because enemy-side hold/re-grab persists;
+- direct Thumper/Crawler <-> Pikmin contact still needs validation;
+- exact common GrabPikmin hook is startup-safe;
+- Coroner Jetpack PlayerController-null flood remains resolved.
+
+S1.42I change:
+- narrowly block Baboon Hawk/Baboon Bird `GrabPikmin` only for invincible Pikmin before hold/leader/death-timer state mutation;
+- retain normal mortal-Pikmin Baboon-Hawk behavior;
+- retain Thumper and Puffer guards unchanged;
+- retain EnemyIsolation and BCMER-off isolated test state.
+
+Exact next action:
+**runtime-test S1.42I; do not build S1.42J first.**
+
+Expected new marker:
+`[BaboonHawkPikminGuard] Blocked Baboon Hawk -> invincible Pikmin GrabPikmin before hold/leader/death-timer state mutation.`
+
+Also deliberately validate:
+`[ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.`
+
+Runtime route:
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42I`
+
+Build controller:
+`BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42I_BUILD_AWAITING_RUNTIME`
+
+Canonical newest analysis:
+`Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md`
+
 ## Immediate current gate — S1.42H
 
 Latest built candidate:
