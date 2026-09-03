@@ -32,11 +32,11 @@ Weitere relevante juijui-Referenz:
 - LethalQuantities 1.2.9 war historisch installiert; bei den geprüften Spawn-Konfigurationen war es jedoch nicht der aktive globale Spawn-Owner. Nicht blind wieder installieren/aktivieren.
 
 
-Offene juijui-Referenz - Jetpack-Kapazität:
+HISTORISCHER ZWISCHENSTAND — DURCH SPÄTERE PRIMÄREVIDENZ ÜBERHOLT:
 - Benutzerwunsch: aktuelle Jetpack-Kapazität/Laufzeit soll an das alte juijui-Profil angepasst werden.
 - Aktueller Projektstand: ButteryBalance "Reduce Battery = true" reduziert 50s auf 40s.
-- Der exakte historische juijui-Wert ist in den aktuell erhaltenen Text-Referenzen nicht dokumentiert.
-- Nicht raten. Wenn keine stärkere historische Quelle mehr verfügbar ist, ist 50s ("Reduce Battery = false") nur ein plausibler Fallback-Kandidat, nicht als historisch bestätigt behandeln.
+- Zu diesem damaligen Zwischenstand war der exakte Wert noch nicht in den Text-Referenzen dokumentiert. Diese Aussage ist durch die unten dokumentierte Primärevidenz überholt.
+- Der damalige 50s-Fallback ist verworfen/superseded. Die später indexierte Primärquelle belegt als stärkste historische Konfig-Evidenz JetpackBatteryUsage = 140.
 
 KANONISCHE HISTORISCHE PRIMÄRQUELLE
 - Das vollständige alte juijui-Profil soll unverändert unter References/LegacyProfiles/juijui/juijui.r2z abgelegt werden.
