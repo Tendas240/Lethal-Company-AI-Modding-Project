@@ -1,164 +1,172 @@
 ======================================================================
-CURRENT CANONICAL TAKEOVER OVERRIDE - 2026-09-03 - S1.42S FOCUSED RUNTIME PASS
+CURRENT CANONICAL TAKEOVER - 2026-09-03 - S1.42S FOCUSED PASS / S1.42T NEXT
 ======================================================================
 
-THIS OVERRIDES THE OLDER "S1.42S BUILT / AWAITING RUNTIME" AND S1.42R POINTERS BELOW.
+Repository:
+https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
-Current technical descendant:
+The repository is the source of truth.
+
+READ FIRST, COMPLETELY:
+1. Current/71_HANDOVER_S1.42S_TO_NEXT_FINAL.md
+2. Current/72_REPOSITORY_HANDOVER_AUDIT_S1.42S.md
+3. Current/Projektstatus_S1.42S.json
+4. Current/00_CURRENT_STATE.md
+5. Current/01_HANDOVER_CORE.md
+6. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+7. Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md
+8. Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md
+9. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+10. Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md
+11. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+12. BuildSpecs/S1.42T_PLAN.md
+13. BuildSpecs/current.json
+14. RuntimeInbox/ACTIVE_BUILD.txt
+
+CURRENT ROLE SEPARATION
+
+Last fully accepted normal gameplay baseline:
+S1.41 - BCMER Reactivation
+Profiles/LC V1 S1.41 BCMER Reactivation.r2z
+SHA-256:
+d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b
+
+Latest built/tested technical descendant:
 S1.42S - Baboon Adapter Lifecycle Restore
 Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z
 SHA-256:
 addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee
 
-FOCUSED RUNTIME VERDICT:
-PASS — isolated Baboon-Hawk/Pikmin lifecycle gate.
-
-Runtime evidence:
-RuntimeEvidence/S1.42S/20260903T205550Z/
-Log SHA-256:
-9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea
-
-Read first for newest state:
-1. Current/Projektstatus_S1.42S.json
-2. Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md
-3. Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md
-4. Current/67_S1.42S_BABOON_ADAPTER_LIFECYCLE_RESTORE_BUILD.md
-5. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
-6. Current/VERIFIKATION_S1.42S.txt
-7. Current/SHA256SUMS_S1.42S.txt
-8. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-9. BuildSpecs/current.json
-10. RuntimeInbox/ACTIVE_BUILD.txt
-
-Focused attackers:
-- Yellow Pikmin_IkVZWQe
-- Yellow Pikmin_3wnH
-- Yellow Pikmin_ruCpzY
-
-Hawk death:
-20:52:32.546
-
-Result:
-- zero stale attack hits after Hawk death for all three;
-- native idle/task removal/unlatch restored;
-- all three remained recoverable;
-- all three were later Assigned Leader: MasaeAhmya (0);
-- dead Hawk corpse was naturally carried to the Onion;
-- Work-state/no-task count = 0;
-- Leader-null count = 0;
-- old full BaboonBirdPikminEnemy disable marker = 0;
-- removed S1.42R LethalMinLatchedDeathGuard marker = 0.
-
-One LethalMin PikminNoticeZone NetworkObjectReference ArgumentException occurred only during lobby
-disconnect after ShipOnion save. Monitor-only; do not patch without user-facing reproduction and a
-Patch Safety Review.
-
-ACCEPTANCE BOUNDARY:
-S1.42S is accepted for the isolated Baboon-Hawk/Pikmin regression gate.
-S1.41 remains the last fully accepted normal gameplay baseline because EnemyIsolation is still enabled
-and BCMER exact 1.71.0 is still temporarily disabled.
-
-EXACT NEXT CONTROLLED STEP:
-Do not build a random successor.
-The next build should disable/remove the temporary EnemyIsolation overlay and restore/carry forward
-normal enemy-related configuration exactly from Current/ENEMY_SPAWN_BASELINE_S1.42C.json, preserving
-later explicitly accepted permanent fixes. Keep package versions unchanged. Do not silently upgrade
-BCMER; exact 1.71.0 is the only accepted BCMER version when reintroduced according to the controlled
-roadmap.
-
-======================================================================
-
-======================================================================
-PERMANENT PROJECT-LOCAL PATCH SAFETY RULE
-======================================================================
-
-Every project-local Harmony/runtime/compatibility patch must comply with:
-Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
-
-Before implementing or promoting any custom patch:
-- identify the exact owner/call site and inspect inheritance/base lifecycle;
-- map secondary responsibilities and downstream cleanup/state/network effects;
-- use the narrowest exact interception point;
-- never disable a whole foreign component to block one interaction unless its complete lifecycle is proven safe to suppress;
-- isolate risky patch changes from unrelated config/package changes;
-- verify exact archive/DLL delta and hashes;
-- runtime-test the target behavior AND adjacent/reverse/native lifecycle behavior;
-- do not treat compile success, startup success, or disappearance of the original symptom as gameplay acceptance;
-- if collateral damage occurs, roll back/narrow the patch rather than stacking compensating repair layers.
-
-Any future build plan that introduces or materially changes a custom patch must contain a
-"Patch Safety Review" covering the exact patch surface, inherited lifecycle, secondary
-responsibilities, forbidden broader alternatives, and regression acceptance tests.
-
-This is a permanent project rule and survives all future handovers.
-
-======================================================================
-======================================================================
-CURRENT CANONICAL TAKEOVER OVERRIDE - 2026-09-03 - S1.42S BUILT / AWAITING RUNTIME
-======================================================================
-
-THIS OVERRIDES THE OLDER S1.42R POINTER BELOW.
-
-Current candidate:
-S1.42S - Baboon Adapter Lifecycle Restore
-Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z
-SHA-256:
-addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee
-
-Read first for the newest state:
-1. Current/Projektstatus_S1.42S.json
-2. Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md
-3. Current/67_S1.42S_BABOON_ADAPTER_LIFECYCLE_RESTORE_BUILD.md
-4. Current/VERIFIKATION_S1.42S.txt
-5. Current/SHA256SUMS_S1.42S.txt
-6. BuildSpecs/S1.42S_PLAN.md
-7. BuildSpecs/current.json
-8. RuntimeInbox/ACTIVE_BUILD.txt
-
-S1.42R runtime verdict:
-FAIL.
-Relevant evidence:
-RuntimeEvidence/S1.42R/20260903T203100Z/
-Log SHA-256:
-a45832c3e50d04a0dab29fc844c37a62bb6b08beced8da86e6c7fcf584b09df4
-
-CORRECTED ROOT CAUSE:
-The project compatibility plugin disabled the complete LethalMin.BaboonBirdPikminEnemy component.
-That also disabled inherited PikminEnemy.Update(), including native enemy-death detection and
-RemoveAndDisableTriggers() -> RemoveAllPikmin(3). Therefore latched Pikmin were never released
-after Baboon Hawk death.
-
-The previous S1.42Q/R classification of the AttackEnemyTask early return as the complete upstream
-root cause is superseded by Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md.
-
-S1.42S compatibility plugin:
+Compatibility plugin:
 v1.3.14
 Embedded DLL SHA-256:
 3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960
 
-S1.42S:
-- does NOT disable BaboonBirdPikminEnemy;
-- does NOT install the S1.42R AttackEnemyTask dead-target bridge;
-- blocks only exact BaboonBirdPikminEnemy.OnColideWithPikmin(PikminAI);
-- blocks exact BaboonBirdPikminEnemy.BitePikmin(PikminAI);
-- retains the Baboon-Hawk PikminAI.GrabPikmin failsafe;
-- leaves native LethalMin PikminEnemy.Update death/unlatch lifecycle enabled.
+Latest valid runtime evidence:
+RuntimeEvidence/S1.42S/20260903T205550Z/
+Log SHA-256:
+9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea
 
-Build #56 / run 33803720934: SUCCESS
-Generated commit:
-3bb900342c41595504bf9ce6879477aad22a7d49
-Idle guard #57: SUCCESS
+Focused runtime verdict:
+PASS - isolated Baboon-Hawk/Pikmin lifecycle gate.
 
-EnemyIsolation remains enabled.
-BCMER exact 1.71.0 remains disabled.
+Confirmed:
+- all three focused Pikmin stopped attacking after Hawk death;
+- post-death stale attack-hit count = 0;
+- all three remained recoverable;
+- all three could be reassigned to the player;
+- native dead-target unlatch/task lifecycle resumed;
+- Dead Baboon Hawk corpse carry and Onion delivery worked;
+- Work/no-task count = 0;
+- Leader-null count = 0.
+
+CORRECTED ROOT CAUSE
+
+S1.42R failed because project compatibility code disabled the complete
+LethalMin.BaboonBirdPikminEnemy component.
+
+That also disabled inherited:
+PikminEnemy.Update() -> RemoveAndDisableTriggers() -> RemoveAllPikmin(3)
+
+and suppressed native dead-enemy unlatch cleanup.
+
+The older interpretation that AttackEnemyTask.IntervaledUpdate() alone was the complete
+upstream root cause is superseded by:
+Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md
+
+S1.42S keeps BaboonBirdPikminEnemy enabled and blocks only narrow Hawk -> Pikmin entry points.
+
+TEMPORARY CURRENT STATE
+
+EnemyIsolation:
+enabled
+
+Config:
+BepInEx/config/tendas.s139.compatibilityfixes.cfg
+Isolated Enemy Regression = true
+
+BCMER:
+SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0
+disabled
+
+Thumper Bite Limit:
+3
+
+Crawler:
+not in LethalMin Attack Blacklist
+
+EXACT NEXT STEP
+
+Next planned build:
+S1.42T - Normal Enemy Restore
+
+Status:
+planned only / not built
+
+Use:
+BuildSpecs/S1.42T_PLAN.md
+Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md
+
+Build S1.42T from S1.42S with one intended gameplay-state change:
+Isolated Enemy Regression = false
+
+Preserve:
+- compatibility plugin v1.3.14;
+- Thumper Bite Limit = 3;
+- Crawler remains attackable by Pikmin;
+- all later accepted permanent compatibility fixes.
+
+For the first restore gate keep exact BCMER 1.71.0 disabled.
+Do not combine BCMER restoration with the first normal-enemy restore test.
+After S1.42T passes, re-enable exact BCMER 1.71.0 in a separate controlled stage.
+Do not upgrade BCMER.
+
+CONTROLLERS
+
 RuntimeInbox/ACTIVE_BUILD.txt = S1.42S
-BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42S_BUILD_AWAITING_RUNTIME
 
-EXACT NEXT STEP:
-Import S1.42S via Gale "Advanced options -> Import all files".
-Latch at least 3 Pikmin onto one Baboon Hawk, kill it, verify every Pikmin falls off/stops attacking
-and exact follower count recovers. Verify Hawk -> Pikmin bite/grab is still blocked and corpse
-carrying remains normal. Commit the full fresh LogOutput.log to RuntimeInbox/Current/.
+BuildSpecs/current.json:
+enabled = false
+build_id = IDLE_AFTER_S1.42S_FOCUSED_RUNTIME_PASS_AWAITING_S1.42T_RESTORE_BUILD
+
+No build is armed at handover.
+
+MONITOR-ONLY ISSUE
+
+One LethalMin PikminNoticeZone.OnTriggerStay NetworkObjectReference ArgumentException occurred
+during lobby disconnect after ShipOnion save.
+
+No user-facing regression was observed.
+Do not patch it unless it becomes reproducible/user-facing and a Patch Safety Review supports
+intervention.
+
+PERMANENT PROJECT-LOCAL PATCH SAFETY RULE
+
+Every project-local Harmony/runtime/compatibility patch must comply with:
+Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+
+Before implementing/promoting a custom patch:
+- inspect exact owner/call site;
+- inspect inheritance/base lifecycle;
+- map secondary cleanup/state/network responsibilities;
+- use the narrowest exact interception point;
+- do not disable a whole foreign component merely to block one interaction unless the full
+  lifecycle is proven safe to suppress;
+- isolate risky patch changes from unrelated package/config changes;
+- runtime-test target behavior plus adjacent/reverse/native lifecycle behavior;
+- do not treat compile success, startup success, or disappearance of the direct symptom as
+  gameplay acceptance;
+- prefer rollback/narrowing over stacking compensating repair layers.
+
+Every future custom-patch build plan must contain a Patch Safety Review.
+
+REPOSITORY MAINTENANCE
+
+Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt remains pending.
+
+The S1.42S critical runtime gate is closed, so that old deferral reason is gone.
+However, do NOT mix structural repository migration into the immediate S1.42T gameplay restore
+build. Keep migration as a separate maintenance phase.
 
 ======================================================================
 
