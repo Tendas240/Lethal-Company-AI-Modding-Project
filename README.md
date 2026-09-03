@@ -9,14 +9,31 @@
 SHA-256:
 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
 
-**Latest runtime-tested technical candidate:** S1.42C
+**Latest runtime-tested technical candidate that reached gameplay:** S1.42C
 
 `Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
 
 SHA-256:
 `22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3`
 
-S1.42C is not the final accepted gameplay baseline yet. It is the newest tested technical descendant and can remain the base for further staged work.
+**Failed diagnostic candidate:** S1.42D
+
+Startup crashed during the new broad LethalMin reflection/Harmony scan. Do not retest S1.42D.
+
+Evidence:
+`RuntimeEvidence/S1.42D/20260903T084247Z/`
+
+**Latest built test candidate:** S1.42E
+
+`Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z`
+
+SHA-256:
+`4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348`
+
+S1.42E built successfully with 0 compiler warnings/errors and an unchanged 188/183/5 package manifest, but it has **not yet been runtime tested**.
+
+Immediate next gate:
+**import S1.42E and confirm the game reaches Main Menu without a startup crash before doing any further build work.**
 
 Game: **Lethal Company V81**
 
@@ -35,25 +52,27 @@ Expected general marker:
 1. `START_HERE_ChatGPT_Masterprompt.txt`
 2. `Current/00_CURRENT_STATE.md`
 3. `Current/01_HANDOVER_CORE.md`
-4. `Current/16_HANDOVER_S1.42C_TO_NEXT.md`
-5. `Current/17_REPO_HANDOVER_CLEANUP_S1.42C.md`
-6. `Current/06_RECENT_WORK_S1.42A-S1.42C.md`
-7. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
-8. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
-9. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
-10. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-11. `Current/02_TECHNICAL_BASELINE.md`
-12. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-13. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-14. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-15. `Current/03_PROJECT_CHRONOLOGY.md`
-16. `Current/Projektstatus_S1.42C.json`
-17. `Current/Aktive_Modliste_S1.42C.txt`
-18. `Current/VERIFIKATION_S1.42C.txt`
-19. `BuildSpecs/S1.42C_PLAN.md`
-20. `BuildSpecs/S1.42D_PLAN.md`
-21. `BuildSpecs/current.json`
-22. `ProfileSources/S1.42C/`
+4. `Current/22_HANDOVER_S1.42E_TO_NEXT.md`
+5. `Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md`
+6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+7. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+8. `Current/06_RECENT_WORK_S1.42D-S1.42E.md`
+9. `Current/18_JUIJUI_LEGACY_REFERENCE.md`
+10. `Current/15_RUNTIME_EVIDENCE_S1.42C.md`
+11. `Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md`
+12. `Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md`
+13. `Current/02_TECHNICAL_BASELINE.md`
+14. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+15. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+16. `Current/03_PROJECT_CHRONOLOGY.md`
+17. `Current/Projektstatus_S1.42E.json`
+18. `Current/Aktive_Modliste_S1.42E.txt`
+19. `Current/VERIFIKATION_S1.42E.txt`
+20. `Current/DATEIINVENTAR_S1.42E.txt`
+21. `Current/SHA256SUMS_S1.42E.txt`
+22. `ProfileSources/S1.42E/`
+23. `BuildSpecs/current.json`
+24. `RuntimeInbox/ACTIVE_BUILD.txt`
 
 Then inspect `Profiles/`, `RuntimeEvidence/`, `Patches/`, `References/`, `Logs/`, and `Archive/` only as required by the task.
 
@@ -175,18 +194,29 @@ Target:
 
 ### Jetpack
 
-User wants the old juijui-profile duration/capacity.
+Historical juijui primary config evidence:
+- `JetpackBatteryUsage = 140`
+- source: `References/LegacyProfiles/juijui/Extracted/BepInEx/config/dev.alexanderdiaz.biggerbattery.cfg`
 
-Current ButteryBalance:
-- `Reduce Battery = true`
-- 40 seconds instead of current vanilla 50 seconds.
+Caveat: the final historical export no longer contains Bigger Battery and its DLL is absent, so 140 is the strongest intended/configured historical target rather than proof of final-export runtime activation.
 
-Exact historical juijui value is not preserved in the current text references.
+S1.42E target:
+- ButteRyBalance `Reduce Battery = false`;
+- project-local compatibility code targets the loaded Jetpack Item asset at 140 seconds;
+- `JetpackFixes MidAirExplosions = Off`;
+- sustained/high-speed normal boost use must not self-explode the Jetpack.
 
-**Do not guess.**  
-50 seconds is only a fallback candidate if the user later accepts it.
+### Current engineering priority
 
-## Current engineering priority
+First: **runtime-test S1.42E startup.**
+
+S1.42D failed before a usable Main Menu because the v1.3.0 broad LethalMin patch scan targeted inherited/non-declared methods.
+
+S1.42E v1.3.1 narrows the scan to declared `*PikminEnemy` interaction methods only.
+
+If S1.42E reaches Main Menu, then validate the generic LethalMin state repair, isolated Thumper/Puffer/Baboon Hawk behavior, Jetpack and Microwave.
+
+
 
 First:
 **repair the generic LethalMin enemy-grab/bite + Invincible-Pikmin leader/follow state.**
@@ -205,13 +235,11 @@ Specific Thumper/Puffer guards remain retained and require targeted validation w
 
 `BuildSpecs/current.json` is disabled and idle:
 
-`IDLE_HANDOVER_AFTER_S1.42C_RUNTIME`
+`IDLE_AFTER_S1.42E_BUILD_AWAITING_RUNTIME`
 
-`BuildSpecs/S1.42D_PLAN.md` exists but is:
+Do not rebuild or create another candidate before S1.42E runtime evidence is evaluated.
 
-**DRAFT ONLY — DO NOT BUILD YET**
-
-Do not build S1.42D merely because the plan exists. Decide the scope first.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42E`
 
 ## Repository-first automation
 
@@ -263,6 +291,21 @@ Detailed handling:
 
 juijui is a historical target/reference, **not** a current build base. Modern game-version, maintenance and compatibility constraints remain authoritative.
 
-Once the binary is uploaded, use it as primary evidence for unresolved historical values such as the exact Jetpack capacity/duration. Do not guess values that can be recovered from the profile.
+The binary is committed and repository-first indexed. The historical Jetpack config evidence has been recovered as `JetpackBatteryUsage = 140`. Do not revert to the old unevidenced 50-second fallback.
 
 The highest active engineering priority remains the generic LethalMin enemy-grab/bite + invincible-Pikmin leader/follow-state repair confirmed in S1.42C.
+
+
+### S1.42D / S1.42E — isolated enemy regression
+
+S1.42D introduced the focused enemy isolation and generic LethalMin recovery attempt but failed startup during an over-broad Harmony scan.
+
+S1.42E is the startup-safe hotfix:
+- compatibility plugin v1.3.1;
+- only declared `BitePikmin`, `GrabPikmin`, `GrabPikminWithTongue` on `*PikminEnemy` adapter types;
+- no RPC wrappers or generic PikminAI/PikminItem Harmony patching;
+- no inherited GrabbableObject.Start Jetpack patch;
+- temporary enemy isolation still enabled: indoor Crawler/Puffer, outdoor Baboon Hawk;
+- full normal enemy restore source remains `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`.
+
+See `Current/22_HANDOVER_S1.42E_TO_NEXT.md`.
