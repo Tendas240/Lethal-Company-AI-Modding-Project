@@ -1,3 +1,5 @@
+> **S1.42S ACTIVE GATE:** Import `Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z` via Gale **Advanced options -> Import all files**. Latch at least 3 Pikmin onto one Baboon Hawk, kill it, verify all fall off/stop attacking and exact follower count recovers. Also verify Hawk -> Pikmin bite/grab remains blocked and Dead Baboon Hawk carry remains normal. S1.42R is failed and superseded. See Current/66 and Current/67.
+
 # 04 - Open Issues and Next Tests
 
 ## Immediate active gate — S1.42R
