@@ -1,6 +1,6 @@
 # 00 — Current State
 
-**Updated:** 2026-09-04 — S1.42Z runtime accepted  
+**Updated:** 2026-09-04 — S1.42Z accepted; S1.42AA built and awaiting runtime validation  
 **Game:** Lethal Company V81  
 **Repository:** `Tendas240/Lethal-Company-AI-Modding-Project`  
 **Repository is the source of truth.**
@@ -13,113 +13,135 @@ Profile:
 
 `Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z`
 
-Gale profile name:
-
-`LC V1 S1.42Z Jetpack Pikmin Retune`
-
-Profile SHA-256:
+SHA-256:
 
 `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`
 
-Canonical runtime acceptance:
+Acceptance:
 
 `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`
 
-Machine-readable accepted status:
+Machine status:
 
 `Current/Projektstatus_S1.42Z_ACCEPTED.json`
 
-S1.42U remains the previous pre-retune rollback artifact, but S1.42Z is now the latest accepted full-normal-stack baseline.
-
-## S1.42Z runtime evidence
-
-Evidence:
+Runtime evidence:
 
 `RuntimeEvidence/S1.42Z/20260904T135820Z/`
 
-Raw LogOutput.log SHA-256:
+Raw log SHA-256:
 
 `ca61e82e5a7d12f96dcb51849e291582df4d45568da4fa1e10b476551c897db8`
 
-Coverage:
+S1.42Z remains the rollback baseline until S1.42AA passes fresh runtime validation.
 
-- 1,586,159 bytes;
-- 16,094 lines;
-- 15,325 parsed runtime events;
-- 32 Error-severity events;
-- Fatal = 0.
+## Active runtime candidate
 
-Runtime gate confirmed:
+**S1.42AA — Interior Weight Equalization**
 
-- S1.42Z Jetpack Acceleration `1.0.0` loaded;
-- ButteRyBalance `0.7.0`, JetpackFixes `1.6.3`, More Ship Upgrades `3.14.1` validated;
-- exact Jetpack `10 -> 18` armed marker present;
-- S1.42Z CodeRebirth Aerial Defense Spawn Tuning `1.0.0` loaded;
-- CodeRebirth `1.6.9`, DawnLib `0.9.25`, Dusk `0.9.25` validated;
-- Air Control Unit provider validated with exactly 18 curves;
-- G.R.E.G. / Advanced Airspace Control provider validated with exactly 18 curves;
-- both full provider sets transactionally scaled ×0.5;
-- no aerial-defense contract refusal observed;
-- EnemyIsolation diagnostic isolation disabled at runtime;
-- Work/no-task = 0;
-- Leader-null = 0;
-- Compatibility Fixes Error = 0;
-- unspawned NetworkObjectReference marker = 0;
-- PikminNoticeZone regression marker = 0;
-- Fatal = 0;
-- neither S1.42Z project-local plugin emitted an Error-severity entry.
+Profile:
 
-The user reported the tested runtime behavior as satisfactory and stated that everything is in order from their side. The subjective balance gate is therefore closed and S1.42Z is accepted.
+`Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z`
 
-## Accepted S1.42Z tuning
+Gale profile name:
 
-### Jetpack
+`LC V1 S1.42AA Interior Weight Equalization`
 
-- project-local base acceleration `10f -> 18f`;
+SHA-256:
+
+`0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364`
+
+Status:
+
+**BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
+
+Build workflow run:
+
+`33884101262` — success
+
+Automated build commit:
+
+`4d5e5e6c86a0bc8ab10e0adc32ab22ae6f5c0156`
+
+Candidate record:
+
+`Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`
+
+Machine status:
+
+`Current/Projektstatus_S1.42AA_CANDIDATE.json`
+
+Plan / Patch Safety Review:
+
+`BuildSpecs/S1.42AA_PLAN.md`
+
+## S1.42AA root cause and exact change
+
+The accepted S1.42Z `LethalLevelLoader.cfg` already contains normalized configured dungeon weights `Vanilla:100,Custom:100`. The remaining inequality came from LethalLevelLoader's global runtime behavior:
+
+`Inject Dynamic Matching Weights = true`
+
+This re-injects mod-author Level/Dungeon MatchingProperties on every landing. S1.42Z runtime evidence on Offense therefore still produced effective weights such as LiminalHouse `300`, Sub Systems `275`, Abandoned Foundry `250`, Shatteredrooms `75`, Lead Factory `70`, Spelunkers Caverns (Random) `50`, Crimson Keep `35`, Gray Apartments `25`, DeepcoreMines `25`, and several `20` values.
+
+S1.42AA changes only:
+
+`Inject Dynamic Matching Weights = false`
+
+The generated archive delta is exactly:
+
+- `BepInEx/config/LethalLevelLoader.cfg`;
+- `export.r2x` profile-name metadata.
+
+No package, DLL, LethalMin, Jetpack, CodeRebirth, BCMER, CullFactory, Microwave, Mausoleum or other gameplay setting changed. ZIP members remain `333`; added members = `0`; mod state/add/remove changes = `0`.
+
+Black Mesa remains on its dedicated native-owner config path with `lethal_company:vanilla=+100,lethal_company:custom=+100`. Do not enable a duplicate LLL owner path.
+
+Permanent interior rule: every eligible installed interior should have the same effective selection weight on vanilla and custom moons. Future added interiors must be normalized into the same architecture before acceptance unless an explicitly documented technical incompatibility requires an exception.
+
+Shatteredrooms' known Experimentation/Embrion restriction remains a compatibility guard pending dedicated proof that removing it is safe. Do not accept S1.42AA if the global change produces an unsafe generation path.
+
+## Accepted S1.42Z tuning preserved byte-for-byte outside the two-member AA delta
+
+- Jetpack base acceleration `10 -> 18`;
 - Jet Fuel `18 / 18`;
 - Jetpack Thrusters `25 / 20`;
-- ButteRyBalance V49 handling/deceleration preserved;
-- JetpackFixes collision/death/control safety preserved.
-
-Jetpack DLL SHA-256:
-
-`9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add`
-
-### LethalMin
-
 - Indoor Pikmin Spawn Chance `0.09`;
 - configured non-Purple CarryStrength `3`;
-- Purple CarryStrength `30`.
+- Purple CarryStrength `30`;
+- CodeRebirth ACU exact 18 curves ×`0.5`;
+- CodeRebirth G.R.E.G. exact 18 curves ×`0.5`;
+- Functional Microwave volume `0.15`;
+- Immortal Snail Rarity `40`, Max `2`.
 
-### CodeRebirth aerial defense
+Project-local DLL SHA-256 values remain:
 
-- `code_rebirth:air_control_unit`: exact 18 curves ×0.5;
-- `code_rebirth:gunslinger_greg`: exact 18 curves ×0.5;
-- both contracts validate before either is modified;
-- no other map-object provider is touched.
+- Jetpack: `9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add`;
+- aerial defense: `7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b`;
+- Compatibility Fixes: `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`.
 
-Aerial-defense DLL SHA-256:
+## Exact next action
 
-`7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b`
+**Runtime-test S1.42AA. Do not build a successor first.**
 
-The ×0.5 operation is exact curve-amplitude/spawn-weight scaling. DawnLib evaluates and rounds the result, so short-run observed counts do not need to be exact half-counts.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AA`
 
-### Other accepted tuning
+Use Gale:
 
-- Functional Microwave Volume `0.15`;
-- Immortal Snail `Rarity = 40`, `Max Snails = 2`.
+**Advanced options -> Import all files**
 
-## Error-severity assessment
+Preferred direct comparison moon: **Offense**.
 
-The S1.42Z log contains 32 Error-severity events, equal to the preceding S1.42Y total. Observed exception classes remain within already monitored non-project-local/setup classes, including the known loaforcsSoundAPI/HarmonyX `TypeLoadException` and SoftMask/SoftMasking setup `NullReferenceException` class.
+One normal Offense gameplay run is the intended minimum if generation succeeds and the complete log contains the viable-dungeon list. Verify normal entry/gameplay; the log must then prove that eligible `Viable ExtendedDungeonFlows` use the common weight `100` rather than S1.42Z's unequal author weights. Also verify no dungeon-generation failure, no duplicate-owner regression, Work/no-task `0`, Leader-null `0`, Fatal `0`, and no new project-local exception class.
 
-There is no S1.42Z project-local Error-severity source and no Fatal. Do not patch these monitor-only classes without stronger reproducibility or user-facing impact.
+Upload the complete fresh log using the exact one-line PowerShell command in:
+
+`Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`
 
 ## Permanent compatibility state to preserve
 
-- exact BCMER `1.71.0` enabled; do not silently upgrade to 2.x;
+- exact BCMER `1.71.0`; do not silently upgrade to 2.x;
 - EnemyIsolation off;
-- Compatibility Fixes `1.3.14`, DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
+- Compatibility Fixes `1.3.14`;
 - `BaboonBirdPikminEnemy` enabled;
 - narrow Hawk -> Pikmin prevention only;
 - native inherited PikminEnemy lifecycle preserved;
@@ -128,9 +150,9 @@ There is no S1.42Z project-local Error-severity source and no Fatal. Do not patc
 - `Thumper Bite Limit = 3`;
 - Crawler absent from Attack Blacklist;
 - accepted S1.42C-derived moon power/spawn baseline;
-- `Consistent Spawn Times = true`.
+- SpawnCycleFixes `Consistent Spawn Times = true`.
 
-Never repeat the S1.42R approach of disabling the complete `BaboonBirdPikminEnemy` component merely to block one interaction.
+Never repeat the S1.42R whole-component disable approach.
 
 Patch policy:
 
@@ -147,57 +169,29 @@ Do not patch without stronger reproducibility or user-facing impact:
 - known SoftMask/SoftMasking setup exceptions;
 - existing non-project-local Error-severity classes.
 
-## Next planned work
-
-**No successor build is armed.**
-
-S1.42Z is accepted and should be used as the base for the next explicitly requested stage.
-
-The next planned gameplay/config scope is:
-
-- equal effective probability for all currently installed interiors;
-- preserve the same equal-probability rule for future added interiors unless explicitly overridden.
-
-Do not silently mix unrelated deferred scopes into that stage.
-
-Later deferred scopes:
+## Deferred — not mixed into S1.42AA
 
 - CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - Mausoleum fog reduction;
 - Functional Microwave spawn rarity reduction;
 - BCMER EventTypes fixed to `8 × 12.5%`;
 - final long full-stack acceptance;
-- AdditionalNetworking patch only with reproducible/user-facing evidence;
+- AdditionalNetworking repair only with reproducible/user-facing evidence;
 - LethalMin `DespawnLumiknulls()` repair only with stronger evidence;
 - cosmetic documentation cleanup.
 
-## Known non-functional drift
-
-- older chronology subsections in `Current/02_TECHNICAL_BASELINE.md` contain stale local current wording;
-- historical comments in `Patches/S139CompatibilityFixes/Plugin.cs` do not perfectly describe accepted v1.3.14 behavior.
-
-Chronologically newer current documents, actual code/config and runtime evidence are authoritative. Keep cosmetic cleanup separate from gameplay/runtime changes.
+The separate local Gale profile-replacement PowerShell helper is pending user verification and is not yet canonical repository policy.
 
 ## Controllers
 
 `BuildSpecs/current.json`:
 
 - `enabled = false`;
-- `build_id = IDLE_AFTER_S1.42Z_ACCEPTANCE`;
-- base = accepted S1.42Z;
-- base SHA-256 = `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`;
-- no patches/builds/assertions armed.
+- `build_id = IDLE_AFTER_S1.42AA_BUILD_AWAITING_RUNTIME_VALIDATION`;
+- guarded base = S1.42AA;
+- base SHA-256 = `0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364`;
+- no successor work armed.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Z`
-
-`RuntimeInbox/Current/` contains only `.gitkeep` after successful S1.42Z ingestion.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AA`
 
 No successor is armed.
-
-## Mandatory runtime upload rule
-
-For every future new profile designated for testing, ChatGPT must provide one exact, self-contained PowerShell command using that exact Gale profile name to upload `BepInEx\LogOutput.log` to `RuntimeInbox/Current/LogOutput.log`.
-
-Binding policy:
-
-`Current/09_REPOSITORY_FIRST_AUTOMATION.md`
