@@ -1,7 +1,7 @@
 $root='C:\Users\Milan\AppData\Roaming\com.kesomannen.gale\lethal-company\profiles'
 $repo='Tendas240/Lethal-Company-AI-Modding-Project'
 $headers=@{'User-Agent'='LC-Profile-Updater';'Cache-Control'='no-cache'}
-$helperRevision='2026-09-04-import-uia-v2-single-open-evidence'
+$helperRevision='2026-09-04-import-uia-v2.1-download-hotfix'
 
 function Get-GaleAutomationRoot {
     try {
@@ -322,7 +322,7 @@ $dst=Join-Path $downloads $profileFile
 if(Test-Path -LiteralPath $dst){Remove-Item -LiteralPath $dst -Force}
 
 $encodedPath=[Uri]::EscapeUriString($profilePath)
-$downloadUrl="https://raw.githubusercontent.com/$repo/main/$encodedPath?cb=$([DateTime]::UtcNow.Ticks)"
+$downloadUrl="https://raw.githubusercontent.com/$repo/main/$encodedPath"
 Write-Host "`nLade neues Profil zuerst sicher herunter..." -ForegroundColor Cyan
 Invoke-WebRequest -UseBasicParsing -Uri $downloadUrl -OutFile $dst -Headers $headers
 if(!(Test-Path -LiteralPath $dst) -or (Get-Item -LiteralPath $dst).Length -le 0){throw 'Download fehlgeschlagen oder Datei ist leer'}
