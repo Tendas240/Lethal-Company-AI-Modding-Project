@@ -94,7 +94,7 @@ def main() -> int:
         "Current/INTEGRITY_ERRATA_REGISTRY.json",
         "Knowledge/BUILD_AND_RUNTIME_PIPELINE.md",
         "exact build-specific self-contained PowerShell one-line runtime-log uploader",
-        "do not perform a manual full-repository audit by default",
+        "full-repository audit by default",
         "when the user later signals another handover",
     ]
     lowered = prompt.lower()
