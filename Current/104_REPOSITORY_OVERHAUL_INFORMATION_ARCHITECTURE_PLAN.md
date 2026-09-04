@@ -48,9 +48,43 @@ The overhaul is complete only when all of the following are true:
 9. every accepted or active binary `.r2z` has a readable `ProfileSources/<build>/` snapshot and `FILE_INDEX.json` so binary-only information is not hidden from text retrieval;
 10. large runtime logs remain discoverable through indexed/summarized RuntimeEvidence, with raw logs opened only when necessary;
 11. automated validation rejects broken knowledge-routing state;
-12. representative user questions pass an answerability/routing regression suite.
+12. representative user questions pass an answerability/routing regression suite;
+13. the complete pre-overhaul repository state has been preserved and independently verified in a separate standalone backup repository before structural changes begin.
 
 If a fact exists only inside an unindexed binary, deleted external source, inaccessible artifact or malformed file, this contract does not magically make it retrievable. Such cases must instead be converted into readable/indexed repository evidence.
+
+## 0. Mandatory pre-overhaul standalone backup gate
+
+This gate is **required before the first structural overhaul change**. No mass rename, move, delete, archival migration, history reclassification, bootstrap rewrite or other destructive/structural repository cleanup may begin until this gate has passed.
+
+A branch, tag, release or checkpoint inside this same repository is useful additional protection but **does not satisfy this requirement by itself**. The pre-overhaul state must also exist as an independent repository so that a mistake in the primary repository cannot destroy the only easy-to-use copy of the old information architecture.
+
+Required sequence:
+
+1. freeze and record the exact source repository default-branch commit SHA immediately before the overhaul;
+2. create a separate standalone GitHub repository dedicated to the pre-overhaul backup;
+3. copy the complete repository state into it, preserving full Git history, branches and tags where technically practical; a mirror-style backup is preferred over copying only the working tree;
+4. ensure repository files that matter to project recovery are present, including profiles, readable ProfileSources snapshots, RuntimeEvidence, BuildSpecs, patches/source, workflows, tools and documentation;
+5. mark the backup repository clearly as an immutable/read-only historical snapshot and **not** the current project source of truth;
+6. verify the backup against the frozen source checkpoint before any overhaul modifications begin;
+7. write a machine-readable backup manifest in the primary repository, target path `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json`, recording at minimum:
+   - source repository;
+   - frozen source commit SHA;
+   - backup repository;
+   - backup default-branch commit SHA after import;
+   - backup date/time;
+   - backup method;
+   - whether history/branches/tags were preserved;
+   - verification result;
+   - any exclusions or known limitations;
+8. place equivalent provenance information in the backup repository README or manifest so either repository can identify the other;
+9. only after the backup is verified may the information-architecture overhaul begin.
+
+Verification should be stronger than merely confirming that the backup repository exists. At minimum, validate that the backed-up tree corresponds to the frozen pre-overhaul source state. Where a mirror changes commit identity because of an unavoidable import method, record and compare tree/file inventories and hashes sufficient to prove equivalent contents.
+
+The backup repository should remain untouched after verification except for clearly documented archival metadata fixes. Do not reuse it for continued development.
+
+If the overhaul fails, loses information, creates ambiguous authority, or needs to be restarted, this standalone repository is the recovery reference for the complete pre-overhaul state.
 
 ## 1. Compact bootstrap layer
 
@@ -106,7 +140,8 @@ Minimum topic coverage should include:
 - Black Mesa/Pikmin routing evidence;
 - roadmap / deferred scopes;
 - project-local patch safety policy;
-- repository overhaul itself.
+- repository overhaul itself;
+- pre-overhaul backup/recovery provenance.
 
 ## 3. Formal document authority metadata
 
@@ -206,7 +241,9 @@ At minimum validate:
 - build lineage links resolve;
 - supersession/redirect targets resolve;
 - live roadmap pointers do not nominate a superseded build as current;
-- bootstrap/read-first routing does not expand without bound.
+- bootstrap/read-first routing does not expand without bound;
+- `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json` exists once the overhaul starts and records a verified standalone pre-overhaul backup repository;
+- the frozen source checkpoint recorded in that manifest predates the first structural overhaul commit.
 
 The validator should fail CI for broken navigation/authority state instead of relying on a future chat to notice drift manually.
 
@@ -228,6 +265,7 @@ Each test case should contain a representative user question or aliases and the 
 - "Woher kommt die Jetpack-Beschleunigung?"
 - "Welche Fehler sind nur monitor-only?"
 - "Wie importiere ich einen neuen Gale-Build?"
+- "Wo ist das unveränderte Repository von vor dem Overhaul gesichert?"
 
 This suite validates repository routing, not natural-language quality. A future AI should be able to map the question to the expected source without reading the entire repository.
 
@@ -292,6 +330,9 @@ Do not perform mass moves merely for aesthetics. Every move must preserve refere
 
 The repository overhaul may be called complete only when:
 
+- a separate standalone pre-overhaul backup repository exists and has been verified against the frozen source checkpoint;
+- `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json` records the backup provenance and verification result;
+- the backup repository is clearly marked as historical/read-only and not current authority;
 - the human + JSON knowledge maps exist and cover all major topics;
 - the build lineage exists and covers the meaningful build history;
 - current/historical authority is explicit;
@@ -312,10 +353,12 @@ This plan is **binding but not an instruction to disturb the active S1.42AC runt
 
 S1.42AC remains the active gameplay candidate and S1.42AB remains accepted until AC runtime validation closes. The information-architecture overhaul should be executed as an explicit repository-maintenance stage when doing so will not blur attribution of gameplay/config changes.
 
+When that maintenance stage begins, the **first action is the standalone pre-overhaul backup gate in section 0**. No structural overhaul commit may precede the frozen checkpoint and verified backup.
+
 Until the overhaul is executed, use the current authority rule: newest confirmed Current/candidate/acceptance records override older historical wording, and verify important facts against actual config/code/runtime evidence.
 
 ## Scope classification change
 
 Where older current documents say only `cosmetic documentation cleanup`, interpret that deferred item from this point forward as:
 
-**Repository information-architecture overhaul per `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`, including cleanup of cosmetic drift as a subordinate task.**
+**Repository information-architecture overhaul per `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`, including mandatory standalone pre-overhaul backup/recovery provenance and cleanup of cosmetic drift as subordinate tasks.**
