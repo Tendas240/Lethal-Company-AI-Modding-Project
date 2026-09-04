@@ -5,7 +5,7 @@
 **Canonical-For:** `repository_overhaul`  
 **Evidence:** `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`, `Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md`, `Current/117_REPOSITORY_INTEGRITY_HARDENING_20260905.md`, `Current/OVERHAUL_VALIDATION_RESULTS.json`, `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`  
 **Machine State:** `Current/OVERHAUL_EXECUTION_STATE.json`  
-**Related:** `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md`, `Current/REPOSITORY_MIGRATION_MANIFEST.md`, `Current/DOCUMENT_AUTHORITY.md`, `Current/VALIDATOR_COVERAGE.json`  
+**Related:** `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md`, `Current/REPOSITORY_MIGRATION_MANIFEST.md`, `Current/DOCUMENT_AUTHORITY.md`, `Current/VALIDATOR_COVERAGE.json`, `Current/HANDOVER_PREPARATION_PROMPT.md`  
 **Last-Validated:** 2026-09-05
 
 ## Result
@@ -73,17 +73,28 @@ The post-audit hardening adds defense-in-depth rather than new gameplay state:
 
 This does **not** retroactively repair the missing Phase 3–10 historical checkpoints. Instead it prevents the same auditability class from recurring in future multi-phase work.
 
+## Persistent current-chat handover workflow
+
+`Current/HANDOVER_PREPARATION_PROMPT.md` is the canonical workflow executed by the active ChatGPT chat whenever the user requests transfer to a new ChatGPT chat.
+
+It intentionally does not embed the current accepted build, latest artifact, hashes, active candidate, runtime gate, CI run or exact next action. At handover time the active chat resolves those facts from `Current/CURRENT_STATE.json`, controllers, the Knowledge Map, Document Authority, integrity errata and the actual current `main`/CI state, then produces a fresh new-chat start prompt.
+
+The workflow is discoverable from generated `README.md`, `START_HERE_ChatGPT_Masterprompt.txt` and `Current/01_HANDOVER_CORE.md`, and is registered in both the Knowledge Map and Document Authority registry. `RepositoryTools/handover_workflow_validator.py` fails CI if that cross-link contract drifts. The answerability suite also contains an explicit natural-language handover trigger case.
+
+This avoids maintaining a second stale build-specific handover truth while still allowing the handover procedure itself to evolve when repository workflow or authority policy changes.
+
 The permanent CI now runs:
 
 1. generated current-navigation validation;
 2. repository knowledge/state/reference validation;
-3. actual artifact/runtime byte integrity validation;
-4. repository-wide integrity/authority/known-bad-value validation;
-5. S1.42AC runtime-SHA provenance validation;
-6. future multi-phase checkpoint validation;
-7. strict frozen original-overhaul-contract validation;
-8. semantic answerability routing regression;
-9. negative validator self-tests.
+3. persistent ChatGPT handover-workflow validation;
+4. actual artifact/runtime byte integrity validation;
+5. repository-wide integrity/authority/known-bad-value validation;
+6. S1.42AC runtime-SHA provenance validation;
+7. future multi-phase checkpoint validation;
+8. strict frozen original-overhaul-contract validation;
+9. semantic answerability routing regression;
+10. negative validator self-tests.
 
 Coverage and explicit blindspots are documented in `Current/VALIDATOR_COVERAGE.json` so a green run is not interpreted as proof of obligations a validator does not test.
 
@@ -93,6 +104,8 @@ Coverage and explicit blindspots are documented in `Current/VALIDATOR_COVERAGE.j
 
 Ordinary takeover now starts at `START_HERE_ChatGPT_Masterprompt.txt`, then `Current/00_CURRENT_STATE.md` and `Current/PROJECT_KNOWLEDGE_MAP.md`.
 
+When the user later requests transfer again, the active chat must execute `Current/HANDOVER_PREPARATION_PROMPT.md` rather than manually reconstructing a handover from memory.
+
 ## Continuing safeguards
 
 - preserve information/provenance before reducing duplication;
@@ -100,6 +113,7 @@ Ordinary takeover now starts at `START_HERE_ChatGPT_Masterprompt.txt`, then `Cur
 - use `Current/DOCUMENT_AUTHORITY.md` when older documents contain stale `current` wording;
 - qualify corrected concrete values through `Current/INTEGRITY_ERRATA_REGISTRY.json`;
 - create immutable per-phase checkpoints for future ordered multi-phase work;
+- use `Current/HANDOVER_PREPARATION_PROMPT.md` for future chat transfers;
 - every future architecture change remains subject to `.github/workflows/knowledge-architecture.yml`;
 - rollback/compare against the verified standalone backup if routing, authority or discoverability regresses.
 
