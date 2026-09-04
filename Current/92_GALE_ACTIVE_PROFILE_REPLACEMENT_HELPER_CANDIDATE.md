@@ -1,18 +1,23 @@
-# Gale Active Profile Replacement Helper — Candidate
+# Gale Active Profile Replacement Helper — Historical Candidate Record
 
 **Date:** 2026-09-04  
-**Status:** USER-VALIDATED CANDIDATE FOR PERMANENT REPOSITORY WORKFLOW  
-**Not yet binding default policy.**
+**Status:** USER-VALIDATED / PROMOTED / SUPERSEDED BY PERMANENT WORKFLOW
+
+Canonical successor:
+
+`Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`
+
+Binding policy:
+
+`Current/09_REPOSITORY_FIRST_AUTOMATION.md`
 
 ## Purpose
 
-This helper replaces the repetitive local Gale profile-update workflow for future runtime candidates without requiring a local repository clone.
-
-Repository implementation:
+This file preserves the validation history for the repository-backed Gale profile replacement helper. The maintained implementation remains:
 
 `RuntimeTools/ReplaceActiveGaleProfile.ps1`
 
-The helper is intentionally driven by repository state rather than a hard-coded build name.
+The helper is driven by repository state rather than a hard-coded build name.
 
 It reads:
 
@@ -40,11 +45,11 @@ Observed successful flow:
 11. the user used `Advanced options -> Import all files` and completed the import;
 12. after user confirmation in PowerShell, the downloaded `.r2z` was removed from Downloads.
 
-This closes the earlier helper bugs involving case-sensitive `LOESCHEN`, Windows PowerShell 5.1 array handling, and the automatic `$Matches` variable collision.
+This closed the earlier helper bugs involving case-sensitive `LOESCHEN`, Windows PowerShell 5.1 array handling, and the automatic `$Matches` variable collision.
 
-## Safety properties
+## Safety properties validated by this candidate
 
-The candidate deliberately performs the non-destructive work first:
+The helper deliberately performs the non-destructive work first:
 
 1. resolve active build;
 2. require `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
@@ -61,7 +66,7 @@ The helper never searches by fuzzy build-name matching and therefore avoids ambi
 
 Gale does not currently have a project-proven command-line switch in this workflow that safely forces `Advanced options -> Import all files`.
 
-Therefore the candidate deliberately opens the `.r2z` and requires the user to:
+Therefore the helper deliberately opens the `.r2z` and requires the user to:
 
 1. enable `Advanced options -> Import all files`;
 2. complete the Gale import;
@@ -69,28 +74,14 @@ Therefore the candidate deliberately opens the `.r2z` and requires the user to:
 
 Do not replace this manual gate with blind GUI automation unless separately validated.
 
-## Candidate invocation
-
-The maintained implementation is the repository file:
-
-`RuntimeTools/ReplaceActiveGaleProfile.ps1`
-
-For direct one-line execution from the repository, the candidate invocation is:
+## Validated invocation
 
 ```powershell
 iex (iwr -UseBasicParsing 'https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1').Content
 ```
 
-This short launcher always executes the current repository candidate. Before promotion to permanent binding policy, retain the full script in GitHub as the auditable source rather than duplicating the long implementation across candidate records.
+## Promotion outcome
 
-## Promotion rule
+The user subsequently required this launcher to be included automatically whenever a newly built profile is ready for runtime testing. The candidate has therefore been promoted to the permanent binding workflow in `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md` and `Current/09_REPOSITORY_FIRST_AUTOMATION.md`.
 
-The user explicitly approved this version as the actual candidate for the permanent repository solution after the successful disposable-profile test.
-
-It may be promoted to the canonical profile-replacement workflow after a future normal profile replacement confirms the same behavior in routine use, or earlier if the user explicitly instructs that it should become binding immediately.
-
-Until then:
-
-- it is approved for use as the preferred candidate helper;
-- it is not yet a mandatory project policy;
-- the S1.42AA runtime gate remains independent and unchanged.
+This file is retained only as historical validation evidence.
