@@ -1,0 +1,138 @@
+{
+  "work_state_no_task": {
+    "needle": "Work state with no task assigned!",
+    "count": 0,
+    "first": null,
+    "last": null
+  },
+  "leader_null_following": {
+    "needle": "Leader is null when following",
+    "count": 0,
+    "first": null,
+    "last": null
+  },
+  "compatibility_fixes_error": {
+    "needle": "[Error  :S1.39 Compatibility Fixes]",
+    "count": 0,
+    "first": null,
+    "last": null
+  },
+  "fatal_marker": {
+    "needle": "[Fatal",
+    "count": 0,
+    "first": null,
+    "last": null
+  },
+  "exception": {
+    "needle": "Exception",
+    "count": 17,
+    "first": {
+      "line": 1,
+      "timestamp": null,
+      "sample": "[Message:   BepInEx] BepInEx 5.4.23.5 - Lethal Company (8/21/2026 3:33:04 PM)\n[Info   :   BepInEx] Running under Unity v2022.3.62.7762112\n[Info   :   BepInEx] CLR runtime version: 4.0.30319.42000\n[Info   :   BepInEx] Supports SRE: True\n[Info   :   BepInEx] System platform: Bits64, Windows\n[Message:   BepInEx] Preloader started\n[Info   :   BepInEx] Loaded 1 patcher method from [BepInEx.Preloader 5.4.23.5]\n[Info   :   BepInEx] Loaded 1 patcher method from [BepInEx.MonoMod.AutoHookGenPatcher 1.1.1.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [Hamunii.DetourContext.Dispose_Fix 1.0.9.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [com.github.Hamunii.TypeLoadExceptionFixer 1.0.4.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [LethalLevelLoader.Patcher 1.0.0.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [AsyncLoggers 2.2.3.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [MonkeyInjectionLibrary 1.0.2.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [0.com.github.MonoDetour.BepInEx.5 0.7.15.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [ReXuvination.Preloader 1.1.0.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [DunGenReferenceFixer 0.0.1.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [HarmonyXTranspilerFix 0.0.0.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [LethalPerformance.Patcher 1.2.6.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [FixPluginTypesSerialization 1.0.0.0]\n[Info   :   BepInEx] Loaded 1 patcher method from [BepInEx.MonoMod.HookGenPatcher 1.2.1.0]\n[Info   :   BepInEx] 14 patcher plugins loaded\n[Info   :AsyncLoggers] AsyncLoggers:2.2.3 Prepatcher Started\n[Info   :   Console] [MonoMod] \n[Info   :   Console] Reading input file into module.\n[Info   :   Console] [MonoMod] \n[Info   :AutoHookGenPatcher] [RunHookGen] Starting HookGenerator for MMHOOK_BepInEx.dll\n[Info   :   Console] Reading input file into module.\n[Info   :AutoHookGenPatcher] [RunHookGen] Starting HookGenerator for MMHOOK_Unity.TextMeshPro.dll\n[Info   :   Console] [MonoMod] \n[Info   :   Console] Reading input file into module.\n[Info   :AutoHookGenPatcher] [RunHookGen] Starting HookGenerator for MMHOOK_DunGen.dll\n[Info   :   Console] [MonoMod] \n[Info   :   Console] Reading input file into module.\n[Info   :AutoHookGenPatcher] [RunHookGen] Starting HookGenerator for MMHOOK_Unity.AI.Navigation.dll\n[Info   :   Console] [MonoMod] \n[Info   :   Console] Reading input file into module.\n[Info   :   Console] [MonoMod] \n[Info   :AutoHookGenPatcher] [RunHookGen] Starting HookGenerator for MMHOOK_Unity.Netcode.Runtime.dll\n[Info   :   Console] Reading input file into module.\n[Info   :   Console] [MonoMod] \n[Info   :AutoHookGenPatcher] [RunHookGen] Starting HookGenerator for MMHOOK_DissonanceVoip.dll\n[Info   :   Console] Reading input file into module.\n[Info   :AutoHookGenPatcher] [RunHookGen] Starting HookGenerator for MMHOOK_Assembly-CSharp.dll\n[Info   :   Console] [MonoMod] \n[Info   :   Console] Reading input file into module.\n[Info   :AutoHookGenPatcher] [RunHookGen] Starting HookGenerator for MMHOOK_com.willis.lc.lethalsettings.dll\n[Info   :AutoHookGenPatcher] [RunHookGen] HookGen done for MMHOOK_BepInEx.dll\n[Info   :AutoHookGenPatcher] [RunHookGen] HookGen done for MMHOOK_Unity.AI.Navigation.dll\n[Info   :AutoHookGenPatcher] [RunHookGen] HookGen done for MMHOOK_com.willis.lc.lethalsettings.dll\n[Info   :AutoHookGenPatcher] [RunHookGen] HookGen done for MMHOOK_DunGen.dll\n[Info   :AutoHookGenPatcher] [RunHookGen] HookGen done for MMHOOK_DissonanceVoip.dll\n[Info   :AutoHookGenPatcher] [RunHookGen] HookGen done for MMHOOK_Unity.TextMeshPro.dll\n[Info   :AutoHookGenPatcher] [RunHookGen] HookGen done for MMHOOK_Unity.Netcode.Runtime.dll\n[Info   :AutoHookGenPatcher] [RunHookGen] HookGen done for MMHOOK_Assembly-CSharp.dll\n[Info   :HookGenPatcher] Previous MMHOOK location found. Using that location to save instead.\n[Info   :HookGenPatcher] Already ran for this version, reusing that file.\n[Info   :   Console] [MonoMod] \n[Info   :   Console] Reading input file into module.\n[Info   :HookGenPatcher] Starting HookGenerator\n[Info   :HookGenPatcher] Done.\n[Info   :HookGenPatcher] Previous MMHOOK location found. Using that location to save instead.\n[Info   :HookGenPatcher] Already ran for this version, reusing that file.\n[Info   :   Console] [MonoMod] \n[Info   :   Console] Reading input file into module.\n[Info   :HookGenPatcher] Starting HookGenerator\n[Info   :HookGenPatcher] Done.\n[Info   :   Console] [MonoMod] \n[Info   :   Console] Reading input file into module.\n[Info   :HookGenPatcher] Starting HookGenerator\n[Info   :HookGenPatcher] Done.\n[Info   :   Console] [MonoMod] \n[Info   :   Console] Reading input file into module.\n[Info   :HookGenPatcher] Starting HookGenerator\n[Info   :HookGenPatcher] Done.\n[Info   :FixPluginTypesSerialization] Running under Unity v2022.3.62\n[Debug  :FixPluginTypesSerialization] Unity version obtained from main application module.\n[Info   :FixPluginTypesSerialization] Found"
+    },
+    "last": {
+      "line": 12049,
+      "timestamp": "13:44:52.9083229",
+      "sample": "[13:44:52.9083229] [Error  :  HarmonyX] Error while running static void loaforcsSoundAPI.LethalCompany.Patches.RoundManagerPatch::Reporting(). Error: System.TypeLoadException: Failure has occurred while loading a type.\n  at (wrapper dynamic-method) RoundManager.DMD<RoundManager::GenerateNewFloor>(RoundManager)"
+    }
+  },
+  "null_reference_exception": {
+    "needle": "NullReferenceException",
+    "count": 2,
+    "first": {
+      "line": 8361,
+      "timestamp": "13:44:21.6399230",
+      "sample": "[13:44:21.6399230] [Warning:SoftMaskKiller] Preventing SoftMask from being enabled because of an exception: System.NullReferenceException: Object reference not set to an instance of an object\n  at SoftMasking.SoftMask.UpdateMaskParameters () [0x0003f] in <f6d400b2730f4700aa0acc85707a1316>:IL_003F \n  at (wrapper dynamic-method) SoftMasking.SoftMask.DMD<SoftMasking.SoftMask::OnEnable>(SoftMasking.SoftMask)"
+    },
+    "last": {
+      "line": 8364,
+      "timestamp": "13:44:21.6399230",
+      "sample": "[13:44:21.6399230] [Warning:SoftMaskKiller] Preventing SoftMask from erroring because of an exception: System.NullReferenceException: Object reference not set to an instance of an object\n  at SoftMasking.SoftMask.DestroyMaterials () [0x00000] in <f6d400b2730f4700aa0acc85707a1316>:IL_0000 \n  at (wrapper dynamic-method) SoftMasking.SoftMask.DMD<SoftMasking.SoftMask::OnDisable>(SoftMasking.SoftMask)"
+    }
+  },
+  "missing_reference_exception": {
+    "needle": "MissingReferenceException",
+    "count": 0,
+    "first": null,
+    "last": null
+  },
+  "stack_overflow_exception": {
+    "needle": "StackOverflowException",
+    "count": 0,
+    "first": null,
+    "last": null
+  },
+  "out_of_memory_exception": {
+    "needle": "OutOfMemoryException",
+    "count": 0,
+    "first": null,
+    "last": null
+  },
+  "networkobjectreference_unspawned": {
+    "needle": "NetworkObjectReference can only be created from spawned NetworkObjects",
+    "count": 0,
+    "first": null,
+    "last": null
+  },
+  "pikmin_notice_zone": {
+    "needle": "PikminNoticeZone.OnTriggerStay",
+    "count": 0,
+    "first": null,
+    "last": null
+  },
+  "adding_enemy": {
+    "needle": "ADDING ENEMY",
+    "count": 0,
+    "first": null,
+    "last": null
+  },
+  "enemy_isolation": {
+    "needle": "EnemyIsolation",
+    "count": 1,
+    "first": {
+      "line": 3310,
+      "timestamp": "13:43:07.3867498",
+      "sample": "[13:43:07.3867498] [Info   :S1.39 Compatibility Fixes] [EnemyIsolation] Diagnostic enemy isolation is disabled."
+    },
+    "last": {
+      "line": 3310,
+      "timestamp": "13:43:07.3867498",
+      "sample": "[13:43:07.3867498] [Info   :S1.39 Compatibility Fixes] [EnemyIsolation] Diagnostic enemy isolation is disabled."
+    }
+  },
+  "player_died": {
+    "needle": "A player died.",
+    "count": 1,
+    "first": {
+      "line": 15349,
+      "timestamp": "13:48:40.9771588",
+      "sample": "[13:48:40.9771588] [Info   : Unity Log] A player died. player object: Player"
+    },
+    "last": {
+      "line": 15349,
+      "timestamp": "13:48:40.9771588",
+      "sample": "[13:48:40.9771588] [Info   : Unity Log] A player died. player object: Player"
+    }
+  },
+  "jetpack_blast_death": {
+    "needle": "DeathPlayerJetpackBlast",
+    "count": 0,
+    "first": null,
+    "last": null
+  },
+  "harmony_error": {
+    "needle": "Error while running static void",
+    "count": 1,
+    "first": {
+      "line": 12049,
+      "timestamp": "13:44:52.9083229",
+      "sample": "[13:44:52.9083229] [Error  :  HarmonyX] Error while running static void loaforcsSoundAPI.LethalCompany.Patches.RoundManagerPatch::Reporting(). Error: System.TypeLoadException: Failure has occurred while loading a type.\n  at (wrapper dynamic-method) RoundManager.DMD<RoundManager::GenerateNewFloor>(RoundManager)"
+    },
+    "last": {
+      "line": 12049,
+      "timestamp": "13:44:52.9083229",
+      "sample": "[13:44:52.9083229] [Error  :  HarmonyX] Error while running static void loaforcsSoundAPI.LethalCompany.Patches.RoundManagerPatch::Reporting(). Error: System.TypeLoadException: Failure has occurred while loading a type.\n  at (wrapper dynamic-method) RoundManager.DMD<RoundManager::GenerateNewFloor>(RoundManager)"
+    }
+  }
+}

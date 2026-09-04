@@ -1,0 +1,144 @@
+[13:48:47.2583683] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[13:48:47.2593681] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[13:48:47.2603685] [Info   : Unity Log] Interact trigger destroying! name: Mimic Metal Crate(Clone)
+[13:48:47.2603685] [Info   : Unity Log] Interact trigger destroying! name: Metal Crate(Clone)
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2694610] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[13:48:47.2694610] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[13:48:47.2704612] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[13:48:47.2704612] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[13:48:47.2714610] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[13:48:47.2714610] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[13:48:47.2714610] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[13:48:47.2724618] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[13:48:47.2855051] [Info   : Unity Log] Resetting unlockables list!
+[13:48:47.2875106] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[13:48:47.2900189] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[13:48:47.2900189] [Info   : Unity Log] Scene manager is null
+[13:48:47.2962935] [Info   :LethalPerformance] Saved 1 save(s)
+[13:48:47.3508732] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[13:48:47.3573896] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[13:48:47.3573896] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[13:48:47.3573896] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[13:48:47.3573896] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[13:48:47.3573896] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[13:48:47.3573896] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[13:48:47.3573896] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[13:48:47.3583881] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[13:48:47.3583881] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[13:48:47.3583881] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[13:48:47.3583881] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[13:48:47.3583881] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[13:48:47.3583881] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[13:48:47.3583881] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[13:48:47.3583881] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[13:48:47.3603878] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[13:48:47.3603878] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[13:48:47.3603878] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[13:48:47.3603878] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[13:48:47.3603878] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[13:48:47.3603878] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[13:48:47.3603878] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[13:48:47.3694008] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[13:48:47.3864310] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[13:48:47.3864310] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[13:48:47.3864310] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[13:48:47.3864310] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[13:48:47.3914308] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[13:48:47.3914308] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[13:48:47.3969435] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[13:48:47.3969435] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[13:48:47.4189767] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[13:48:47.4324975] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[13:48:47.4390098] [Info   :MoreCompany] LANMenu startLAN Patched
+[13:48:47.7352404] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[13:48:49.3540296] [Info   : Unity Log] Returning week num: 142
+[13:48:49.3540296] [Info   : Unity Log] week num: 142
+[13:48:49.3601786] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[13:48:49.3611783] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[13:48:49.3706845] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[13:48:49.3789587] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[13:48:49.3789587] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[13:48:49.3819657] [Info   :LethalPerformance] Saved 1 save(s)
+[13:48:50.8699810] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[13:48:50.8839929] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[13:49:05.2784970] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[13:49:05.2796936] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[13:49:05.2796936] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...

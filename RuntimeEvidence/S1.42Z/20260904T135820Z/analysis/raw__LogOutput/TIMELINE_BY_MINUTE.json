@@ -1,0 +1,82 @@
+[
+  {
+    "minute": "13:41",
+    "levels": {
+      "Message": 1,
+      "Debug": 64,
+      "Info": 64,
+      "Warning": 1
+    }
+  },
+  {
+    "minute": "13:42",
+    "levels": {
+      "Info": 577,
+      "Debug": 1277,
+      "Warning": 34,
+      "Message": 15
+    }
+  },
+  {
+    "minute": "13:43",
+    "levels": {
+      "Info": 1463,
+      "Debug": 3210,
+      "Message": 43,
+      "Warning": 431,
+      "Error": 20
+    }
+  },
+  {
+    "minute": "13:44",
+    "levels": {
+      "Debug": 3185,
+      "Info": 783,
+      "Warning": 392,
+      "Error": 12,
+      "Message": 135
+    }
+  },
+  {
+    "minute": "13:45",
+    "levels": {
+      "Debug": 1297,
+      "Info": 207,
+      "Warning": 764,
+      "Message": 31
+    }
+  },
+  {
+    "minute": "13:46",
+    "levels": {
+      "Info": 68,
+      "Warning": 4,
+      "Debug": 30
+    }
+  },
+  {
+    "minute": "13:47",
+    "levels": {
+      "Debug": 167,
+      "Info": 105,
+      "Warning": 7,
+      "Message": 6
+    }
+  },
+  {
+    "minute": "13:48",
+    "levels": {
+      "Info": 441,
+      "Debug": 456,
+      "Warning": 25,
+      "Message": 6
+    }
+  },
+  {
+    "minute": "13:49",
+    "levels": {
+      "Debug": 2,
+      "Warning": 1
+    }
+  }
+]
