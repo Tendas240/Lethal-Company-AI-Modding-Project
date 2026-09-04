@@ -9,21 +9,19 @@ Repository is the source of truth.
 ## Read first
 
 1. `Current/00_CURRENT_STATE.md`
-2. `Current/83_S1.42W_BUILD_CANDIDATE_LIFT_MICROWAVE_LGU.md`
-3. `Current/Projektstatus_S1.42W_CANDIDATE.json`
-4. `BuildSpecs/S1.42W_PLAN.md`
-5. `Current/82_S1.42V_RUNTIME_TECHNICAL_PASS_BALANCE_REJECTED.md`
+2. `Current/85_S1.42Y_BUILD_CANDIDATE_JETPACK_COMPLETE_AERIAL_DEFENSE.md`
+3. `Current/84_S1.42X_RUNTIME_ASSESSMENT_AND_S1.42Y_NEXT.md`
+4. `Current/Projektstatus_S1.42Y_CANDIDATE.json`
+5. `BuildSpecs/S1.42Y_PLAN.md`
 6. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
-7. `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
-8. `Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md`
-9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-10. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-11. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-12. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-13. `BuildSpecs/current.json`
-14. `RuntimeInbox/ACTIVE_BUILD.txt`
+7. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+8. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+9. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+10. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+11. `BuildSpecs/current.json`
+12. `RuntimeInbox/ACTIVE_BUILD.txt`
 
-Chronologically newer S1.42W documents define the active test candidate. S1.42U remains the last fully accepted gameplay baseline.
+Chronologically newer S1.42Y documents define the active test candidate. S1.42U remains the last fully accepted gameplay baseline.
 
 ## Accepted rollback baseline
 
@@ -39,89 +37,110 @@ Runtime acceptance:
 
 `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
 
-## S1.42V outcome
+## Latest tested tuning result — S1.42X
 
-S1.42V proved the narrow Jetpack patch architecture in runtime but was not promoted because the user rejected the tuning magnitude.
+S1.42X profile:
 
-Evidence:
-
-`RuntimeEvidence/S1.42V/20260904T095739Z/`
-
-Raw log SHA-256:
-
-`5e094086efef862abdbaf1bfdaab85fb8c8ed20d73d865c9f1bc902e08180dfd`
-
-Technical facts:
-
-- Jetpack plugin loaded and armed;
-- ButteRyBalance 0.7.0, JetpackFixes 1.6.3, More Ship Upgrades 3.14.1 validated;
-- Compatibility Fixes 1.3.14 healthy;
-- Work/no-task = 0;
-- Leader-null = 0;
-- project compatibility Error = 0;
-- user reported `12f` lift still too weak and Microwave `0.5` still too loud.
-
-One AdditionalNetworking NetworkObjectReference Fatal occurred during local-disconnect teardown after BCMER `OnLocalDisconnect`; monitor only unless reproducible/user-facing.
-
-Canonical S1.42V runtime record:
-
-`Current/82_S1.42V_RUNTIME_TECHNICAL_PASS_BALANCE_REJECTED.md`
-
-## Active candidate
-
-**S1.42W — Lift-Off Microwave Retune**
-
-`Profiles/LC V1 S1.42W Lift-Off Microwave Retune.r2z`
+`Profiles/LC V1 S1.42X Jetpack Pikmin ACU Retune.r2z`
 
 SHA-256:
 
-`f34ebcf18bd2b475da5546e6c391bd15bf70df5648b5f69ffb668d196df057dc`
+`57d8f9251236cf40eacf4366a21646ae8c51500b9ed6fa79cbc9b56c8daa611d`
+
+Runtime evidence:
+
+`RuntimeEvidence/S1.42X/20260904T115324Z/`
+
+Raw log SHA-256:
+
+`6fe57bda1c2a2a9e2a910304890e47b3fffd606460225bfd142ffae9fd996a9d`
+
+Verdict:
+
+**TECHNICAL PATHS PASS / GAMEPLAY BALANCE AND AERIAL-SCOPE REJECT / NOT ACCEPTED**
+
+Important findings:
+
+- Jetpack `32f` proved `jetpackAcceleration` is the correct perceptible tuning lever but was far too strong;
+- Pikmin CarryStrength `3` for configured non-Purple types and `30` for Purple is user-approved and must be preserved;
+- Indoor Pikmin Spawn Chance remains `0.08`;
+- the DawnLib Air Control Unit provider-level ×0.5 curve architecture worked;
+- X missed CodeRebirth's separate `code_rebirth:gunslinger_greg` / G.R.E.G. / Advanced Airspace Control provider;
+- Work/no-task = 0;
+- Leader-null = 0;
+- Fatal = 0;
+- Compatibility Fixes error count = 0;
+- normal enemies remained active.
+
+Canonical record:
+
+`Current/84_S1.42X_RUNTIME_ASSESSMENT_AND_S1.42Y_NEXT.md`
+
+## Active candidate — S1.42Y
+
+**S1.42Y — Jetpack Aerial Defense Retune**
+
+`Profiles/LC V1 S1.42Y Jetpack Aerial Defense Retune.r2z`
+
+SHA-256:
+
+`f4ae0d93c9cff4f9441c24d1021e5d9b816861b8317d9ed8995fde67ebbd8d89`
 
 Status:
 
-**BUILD PASS / RUNTIME VALIDATION REQUIRED / NOT ACCEPTED**
+**BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
 
-Build commit:
+Actions build run:
 
-`165d102364438cace2fd2184af3fd091855ff0d7`
+`33871219861` = success
 
-Actions run:
+Candidate record:
 
-`33861561173` = **success**
+`Current/85_S1.42Y_BUILD_CANDIDATE_JETPACK_COMPLETE_AERIAL_DEFENSE.md`
 
-S1.42W was built directly from S1.42U to avoid stacking the superseded S1.42V Jetpack DLL.
+S1.42Y was rebuilt directly from S1.42U, so V/W/X tuning DLLs are not stacked into it.
 
-## Exact S1.42W scope
+## Exact S1.42Y scope
 
-### Jetpack base
+### Jetpack
 
-- project plugin: `Patches/S142WJetpackAcceleration/`;
-- DLL SHA-256: `95b7e689f68246ebda2fa6a0cab9fbe2ead206a00d85e6cbf64653d1f69d1fa8`;
+- project plugin: `Patches/S142YJetpackAcceleration/`;
+- DLL SHA-256: `fab15a520c1ff0172d33bc88303426d214b12135b34803f6e98689c295409c7e`;
 - exact `JetpackItem.Update()` local-player Prefix after ButteRyBalance;
-- base `10f -> 16f`;
+- validated base `10f -> 22f`;
 - V49 handling/deceleration untouched;
 - JetpackFixes safety logic untouched;
-- fail-closed owner/version checks.
+- exact dependency/Harmony-owner fail-closed checks.
 
-### LateGameUpgrades / More Ship Upgrades
+More Ship Upgrades:
 
-Jet Fuel stays:
+- Jet Fuel = `15 / 15`;
+- Jetpack Thrusters = `25 / 20`.
 
-- initial acceleration `20%`;
-- incremental acceleration `20%`.
+### Pikmin
 
-It already scales automatically with the 16f base, giving 19.2 / 22.4 / 25.6 / 28.8 across 20/40/60/80% effects.
+- Indoor Pikmin Spawn Chance = `0.08`;
+- Blue / Red / Yellow / White / Winged / Rock / Ice / Glow / Bulbmin CarryStrength = `3`;
+- Purple Pikmin CarryStrength = `30`.
 
-Jetpack Thrusters:
+### CodeRebirth aerial defense
 
-- initial max-speed increase `25%`;
-- incremental max-speed increase `20%`.
+- project plugin: `Patches/S142YCodeRebirthAerialDefenseSpawnTuning/`;
+- DLL SHA-256: `e017ccb74d92df10442bb5f8651a776787954f4861309059ec6c497e000a3d45`;
+- exact target 1: `code_rebirth:air_control_unit`;
+- exact target 2: `code_rebirth:gunslinger_greg` / G.R.E.G. / Advanced Airspace Control;
+- exactly 18 expected curves per target;
+- both complete contracts validate before either changes;
+- both complete curve sets then scale ×`0.5`;
+- no global outside-hazard, prefab, RPC, network or save-state mutation.
+
+The ×0.5 value is an exact curve-amplitude/spawn-weight reduction, not a guarantee of exactly half as many observed objects in a short sample after DawnLib's evaluation/rounding.
 
 ### Other tuning
 
-- Functional Microwave volume = `0.15`;
-- Immortal Snail `Rarity = 40`;
-- Immortal Snail `Max Snails = 2`.
+- Functional Microwave Volume = `0.15`;
+- Microwave rarity deferred;
+- Immortal Snail `Rarity = 40`, `Max Snails = 2`.
 
 ## Permanent anti-regression state
 
@@ -143,53 +162,62 @@ Never disable the entire `BaboonBirdPikminEnemy` just to block one interaction.
 
 ## Exact next action
 
-**Runtime-test S1.42W. Do not build another successor yet.**
+**Runtime-test S1.42Y. Do not build another successor first.**
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42W`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Y`
 
 Run:
 
-`LC V1 S1.42W Lift-Off Microwave Retune`
+`LC V1 S1.42Y Jetpack Aerial Defense Retune`
 
-Use Gale `Advanced options -> Import all files` unless custom files are otherwise guaranteed to import.
+Use Gale:
+
+`Advanced options -> Import all files`
+
+because Y contains two project-local DLLs.
 
 Minimum gate:
 
-1. S1.42W Jetpack plugin loads, validates dependencies/owners and logs `armed`;
-2. lift-off is clearly faster and acceptable;
-3. V49 handling remains acceptable;
-4. release, landing, hard collision and high-speed ground touch remain sane;
-5. repeated flights show no state accumulation/random mid-air explosion;
-6. Jet Fuel and Thrusters remain useful;
-7. Microwave `0.15` is acceptable and still functional;
-8. Snail remains functional at 40 / max 2;
-9. BCMER, normal enemies and Compatibility Fixes remain healthy;
-10. Work/no-task = 0;
-11. Leader-null = 0;
-12. no new compatibility error flood;
-13. ingest the complete fresh log.
+1. Y Jetpack plugin loads, validates owners/dependencies and logs `10 -> 22` armed;
+2. Y aerial-defense plugin loads;
+3. CodeRebirth 1.6.9 / DawnLib 0.9.25 / DawnLib.Dusk 0.9.25 validate;
+4. Air Control Unit provider validates with 18 curves;
+5. G.R.E.G. provider validates with 18 curves;
+6. final transactional marker confirms both complete curve sets ×0.5;
+7. no contract-refusal marker;
+8. 22f is clearly calmer than X/32f while still stronger than old 10/16 behavior;
+9. V49 handling, release, landing, collision and repeated flight remain sane;
+10. CarryStrength remains correct at 3 / Purple 30;
+11. both aerial-defense systems remain functional and less common;
+12. normal enemies, BCMER and Compatibility Fixes remain healthy;
+13. Work/no-task = 0;
+14. Leader-null = 0;
+15. Fatal = 0;
+16. no new compatibility/project-local error flood;
+17. ingest the complete fresh runtime log.
 
-## Deferred after W
+## Deferred after Y
 
-Do not mix into the W gate:
+Do not mix into the Y gate:
 
 - equal interior probability / future-interior rule;
 - CullFactory exceptions;
 - Mausoleum fog;
 - Microwave rarity;
-- BCMER 8 x 12.5% EventTypes;
+- BCMER 8 × 12.5% EventTypes;
 - final long full-stack acceptance;
-- AdditionalNetworking disconnect patch without new evidence.
+- AdditionalNetworking disconnect patch without new evidence;
+- LethalMin `DespawnLumiknulls()` repair without stronger evidence.
 
 ## Controllers
 
 `BuildSpecs/current.json`:
 
 - `enabled = false`;
-- `build_id = IDLE_AFTER_S1.42W_BUILD_AWAITING_RUNTIME_VALIDATION`;
-- base = S1.42W candidate;
-- base SHA-256 = `f34ebcf18bd2b475da5546e6c391bd15bf70df5648b5f69ffb668d196df057dc`.
+- `build_id = IDLE_AFTER_S1.42Y_BUILD_AWAITING_RUNTIME_VALIDATION`;
+- base = S1.42Y candidate;
+- base SHA-256 = `f4ae0d93c9cff4f9441c24d1021e5d9b816861b8317d9ed8995fde67ebbd8d89`.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42W`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Y`
 
 No successor is armed.
