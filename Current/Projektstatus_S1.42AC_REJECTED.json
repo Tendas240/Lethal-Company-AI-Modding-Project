@@ -1,0 +1,118 @@
+{
+  "schema_version": 3,
+  "date": "2026-09-04",
+  "repository_is_source_of_truth": true,
+  "canonical_state": "S1.42AB_ACCEPTED_S1.42AC_RUNTIME_REJECTED_ANALYSIS_NEXT",
+  "accepted_baseline": {
+    "build_id": "S1.42AB",
+    "title": "Interior Weight Normalization",
+    "status": "ACCEPTED_FULL_NORMAL_STACK",
+    "profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
+    "profile_name": "LC V1 S1.42AB Interior Weight Normalization",
+    "sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
+    "acceptance_record": "Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md",
+    "machine_state": "Current/Projektstatus_S1.42AB_ACCEPTED.json",
+    "runtime_evidence": "RuntimeEvidence/S1.42AB/20260904T174010Z/",
+    "raw_log_sha256": "42cfba3d157f6abdbeee114909d90749d1bfd043d4b0c224922ad5be976194ae"
+  },
+  "rejected_candidate": {
+    "build_id": "S1.42AC",
+    "title": "BCMER EventType Equal Distribution",
+    "status": "RUNTIME_FAIL_REJECTED_NOT_ACCEPTED",
+    "profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+    "profile_name": "LC V1 S1.42AC BCMER EventType Equal Distribution",
+    "sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+    "successful_build_run": 33903271224,
+    "automated_build_commit": "a30b327580e28f42e55281e91abe03d32ae41363",
+    "candidate_record": "Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+    "rejection_record": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+    "plan": "BuildSpecs/S1.42AC_PLAN.md",
+    "snapshot": "ProfileSources/S1.42AC/",
+    "runtime_evidence": "RuntimeEvidence/S1.42AC/20260904T181854Z/",
+    "raw_log_sha256": "8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0",
+    "runtime_log_bytes": 2000261,
+    "runtime_log_lines": 20460,
+    "parsed_events": 19547,
+    "error_severity_events": 77,
+    "fatal": 0,
+    "intended_delta": {
+      "changed_config": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
+      "event_type_scale": "12.5, 0.0, 12.5, 12.5",
+      "use_custom_weights": false,
+      "target_distribution": "8 x 12.5%"
+    },
+    "primary_runtime_gate": {
+      "expected": "all eight Set eventType weight runtime values identical in the same roll context",
+      "result": "FAIL",
+      "repeated_roll_contexts_observed": 5,
+      "observed_effective_weights": {
+        "Insane": 6843,
+        "VeryBad": 506,
+        "Bad": 355,
+        "Neutral": 1368,
+        "Good": 1244,
+        "VeryGood": 2737,
+        "Rare": 27375,
+        "Remove": 883
+      },
+      "conclusion": "Equal configured EventType scale curves do not produce equal final BCMER 1.71.0 EventType selection weights."
+    },
+    "preserved_runtime_checks": {
+      "bcmer_event_execution": "PASS",
+      "s1_42ab_interior_normalization": "PASS",
+      "offense_viable_pool_entries": 40,
+      "offense_positive_effective_rarities_all_100": true,
+      "generated_interior": "Mausoleum",
+      "work_no_task": 0,
+      "leader_null": 0,
+      "compatibility_fixes_error": 0,
+      "unspawned_network_object_reference": 0,
+      "pikmin_notice_zone_regression": 0,
+      "fatal": 0
+    },
+    "secondary_observations": {
+      "navmesh_setdestination_error_signature_count": 43,
+      "lethalmin_route_failure_signature_count": 26,
+      "interpretation": "Secondary interior/Pikmin routing evidence only; do not attribute causally to the AC config-only BCMER change without reproducibility."
+    }
+  },
+  "diagnosis": {
+    "confirmed": [
+      "S1.42AC changed final BCMER EventType runtime weights relative to S1.42AB.",
+      "Setting all eight EventType scales to the same constant does not equalize the final effective EventType weights.",
+      "S1.42AC therefore fails its primary acceptance objective and is rejected."
+    ],
+    "not_yet_proven": [
+      "The exact complete BCMER 1.71.0 formula that converts configured scales and other inputs into final EventType weights."
+    ],
+    "do_not_repeat": "Do not build another successor that merely sets all eight EventType scale curves to the same value and assumes equal final probability."
+  },
+  "controllers": {
+    "desired_buildspec_id": "IDLE_AFTER_S1.42AC_RUNTIME_REJECTION_ANALYSIS_REQUIRED",
+    "desired_buildspec_base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
+    "desired_buildspec_base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
+    "desired_runtime_active_build": "S1.42AB",
+    "successor_armed": false,
+    "runtime_test_outstanding": false
+  },
+  "exact_next_step": "Inspect the exact BCMER 1.71.0 calculation path that produces final 'Set eventType weight for <type> to <value>' values. Identify the final effective EventType-weight owner and all additional type-dependent inputs. Only then choose and document a safe successor design: proven inverse config compensation if stable, or preferably a narrow fail-closed project-local final-weight normalization if code-level control is safer. Do not arm/build a successor before this analysis is complete.",
+  "deferred_separate_scopes": [
+    "Functional Microwave spawn-rarity reduction",
+    "CullFactory junkrooms/shatteredrooms exceptions",
+    "Mausoleum fog reduction",
+    "Black Mesa/interior/Pikmin route recovery",
+    "isolated woah25-LethalEscapeUpdated 2.5.0 evaluation",
+    "final long full-stack acceptance",
+    "AdditionalNetworking repair only with reproducible user-facing evidence",
+    "LethalMin teardown repair only with stronger evidence",
+    "repository information-architecture overhaul"
+  ],
+  "repository_overhaul": {
+    "status": "PLANNED_NOT_EXECUTED",
+    "start": "OVERHAUL_START_HERE_ChatGPT.txt",
+    "plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
+    "execution_playbook": "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md",
+    "requirements": "Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json",
+    "pre_overhaul_standalone_backup_required": true
+  }
+}
