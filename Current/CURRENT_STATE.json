@@ -1,5 +1,5 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "updated": "2026-09-05",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
@@ -46,6 +46,7 @@
     "bootstrap": "START_HERE_ChatGPT_Masterprompt.txt",
     "human_state": "Current/00_CURRENT_STATE.md",
     "handover": "Current/01_HANDOVER_CORE.md",
+    "handover_preparation_prompt": "Current/HANDOVER_PREPARATION_PROMPT.md",
     "knowledge_map_human": "Current/PROJECT_KNOWLEDGE_MAP.md",
     "knowledge_map_machine": "Current/PROJECT_KNOWLEDGE_MAP.json",
     "build_lineage_human": "Current/BUILD_LINEAGE.md",
