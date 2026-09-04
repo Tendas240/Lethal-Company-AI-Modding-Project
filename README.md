@@ -122,6 +122,15 @@ All eight values for the same roll context must be identical. Then upload the co
 
 Chronologically newer confirmed information overrides older version-specific wording.
 
+## Planned repository information architecture overhaul
+
+The deferred repository cleanup is now a binding information-architecture project rather than merely cosmetic cleanup.
+
+Canonical plan: `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`  
+Machine requirements: `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`
+
+The target is reliable fresh-chat operation under limited context through a compact bootstrap, human+JSON topic knowledge map, explicit authority/supersession metadata, build lineage, provenance links, readable profile snapshots, broken-link/orphan CI validation and answerability-routing regression tests. The overhaul is planned but must not disturb the active S1.42AC runtime gate.
+
 ## Permanent anti-regression state
 
 Preserve exact BCMER `1.71.0`, EnemyIsolation off, Compatibility Fixes `1.3.14`, `BaboonBirdPikminEnemy` enabled, narrow Hawk -> Pikmin prevention only, native inherited PikminEnemy lifecycle, Pikmin -> Baboon Hawk attack allowed, Puffer -> Pikmin protection, Thumper Bite Limit `3`, Crawler absent from LethalMin Attack Blacklist, accepted S1.42C-derived moon power/spawn baseline, `Consistent Spawn Times = true`, Jetpack base acceleration `18`, Jet Fuel `18/18`, Thrusters `25/20`, Indoor Pikmin `0.09`, CarryStrength `3 / 30`, CodeRebirth ACU + G.R.E.G. exact 18 curves ×`0.5`, Functional Microwave volume `0.15`, Immortal Snail `40 / 2`, and the accepted S1.42AB interior-normalization architecture.
@@ -139,4 +148,4 @@ Keep separate unless explicitly selected/grouped:
 - isolated evaluation of `woah25-LethalEscapeUpdated 2.5.0`;
 - final long full-stack acceptance;
 - AdditionalNetworking / LethalMin teardown repair only with stronger evidence;
-- cosmetic documentation cleanup.
+- repository information-architecture overhaul per `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`, including cosmetic drift cleanup as a subordinate task.
