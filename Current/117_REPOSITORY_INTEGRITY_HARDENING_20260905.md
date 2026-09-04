@@ -1,7 +1,7 @@
 # 117 — Repository Integrity Hardening after Independent Re-Audit
 
 **Date:** 2026-09-05  
-**Status:** IMPLEMENTED / VALIDATION PENDING  
+**Status:** VALIDATED / REAUDIT HARDENING PASS  
 **Scope:** repository information integrity, provenance, auditability and CI only  
 **Gameplay/config/profile/runtime behavior change:** NONE
 
@@ -110,6 +110,26 @@ This is prospective. It intentionally does **not** fabricate missing Phase 3–1
 
 The permanent gate now runs nine layers: renderer, architecture/state, actual-byte integrity, central integrity/authority, S1.42AC provenance, future phase checkpoints, frozen contract, answerability regression and negative self-tests.
 
+## Validation
+
+First full PR validation of the complete hardening implementation:
+
+- Workflow: `Knowledge Architecture`
+- Run ID: `33927769717`
+- Head SHA: `7af7ddeebf5b443290b4cd0e7d6ca8ded222b602`
+- Result: **SUCCESS**
+- Generated current navigation: PASS
+- Knowledge/state/reference validator: PASS
+- Actual artifact/runtime bytes: PASS
+- Repository-wide integrity registry/authority: PASS
+- S1.42AC runtime SHA provenance: PASS
+- Future multi-phase checkpoints: PASS
+- Original frozen overhaul contract: PASS
+- Answerability routing regression: PASS
+- Negative validator self-tests: PASS
+
+This run proves the new guards execute together on a real GitHub pull-request checkout with full Git provenance history and the repository's actual profile/runtime-evidence bytes.
+
 ## 3. Recommendations deliberately not implemented
 
 ### Branch protection / required checks
@@ -159,7 +179,7 @@ No finite validator can discover a future incorrect value that has never been re
 
 ## 5. Operational conclusion
 
-After this hardening passes CI, the repository architecture is intended to be robust enough that a future normal project chat does **not** need to perform a manual full-repository audit before ordinary work.
+The hardening has passed its full PR CI gate. The repository architecture is robust enough that a future normal project chat does **not** need to perform a manual full-repository audit before ordinary work.
 
 Normal takeover remains:
 
