@@ -5,7 +5,7 @@
 **Machine state:** `Current/CURRENT_STATE.json`  
 **Topic router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
 **Authority registry:** `Current/DOCUMENT_AUTHORITY.md`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-09-05
 
 ## Fresh-session procedure
 
