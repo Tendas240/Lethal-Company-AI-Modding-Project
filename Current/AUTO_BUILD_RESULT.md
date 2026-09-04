@@ -1,12 +1,12 @@
-# Automated profile build result - S1.42Y
+# Automated profile build result - S1.42Z
 
-- Profile: LC V1 S1.42Y Jetpack Aerial Defense Retune
+- Profile: LC V1 S1.42Z Jetpack Pikmin Retune
 - Base: Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z
 - Base SHA-256: ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969
-- Output: Profiles/LC V1 S1.42Y Jetpack Aerial Defense Retune.r2z
-- Output SHA-256: f4ae0d93c9cff4f9441c24d1021e5d9b816861b8317d9ed8995fde67ebbd8d89
+- Output: Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z
+- Output SHA-256: a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4
 - ZIP members: 333
-- Text snapshot: ProfileSources/S1.42Y (330 readable files)
+- Text snapshot: ProfileSources/S1.42Z (330 readable files)
 
 ## Changed existing members
 
@@ -28,5 +28,5 @@
 
 ## Added members
 
-- BepInEx/plugins/S142YJetpackAcceleration/S142YJetpackAcceleration.dll
-- BepInEx/plugins/S142YCodeRebirthAerialDefenseSpawnTuning/S142YCodeRebirthAerialDefenseSpawnTuning.dll
+- BepInEx/plugins/S142ZJetpackAcceleration/S142ZJetpackAcceleration.dll
+- BepInEx/plugins/S142ZCodeRebirthAerialDefenseSpawnTuning/S142ZCodeRebirthAerialDefenseSpawnTuning.dll
