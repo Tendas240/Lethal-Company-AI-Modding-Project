@@ -74,6 +74,10 @@ The first strict-validator CI attempt, run `33919072718`, failed. That was usefu
 
 The genuine drift was corrected. The checker was then narrowed to distinguish concrete repository references from documented patterns without weakening checks on actual canonical targets.
 
+During final documentation, three subsequent runs failed because the base validator still enumerated only the older completed status names and therefore rejected the new post-audit status string. That validator was changed to recognize completed/validated status semantically instead of by a brittle exact enumeration.
+
+A further run then failed because the strict validator treated a historical sentence in this audit naming the removed legacy machine-state path as if it were a live concrete reference. The audit wording was corrected to preserve the historical fact without masquerading the obsolete name as a valid current path.
+
 ## Why `Plugin.cs` comments were not rewritten
 
 The frozen requirements explicitly called out stale historical comments in `Patches/S139CompatibilityFixes/Plugin.cs` as a refactor target. `Current/DOCUMENT_AUTHORITY.json` now records this explicitly as `code_comment_drift` with the current accepted invariants:
@@ -104,13 +108,19 @@ This audit/remediation does not alter gameplay state:
 
 ## Revalidation result — PASS
 
-The first strict green `Knowledge Architecture` run is:
+The first strict green `Knowledge Architecture` run was:
 
 - run: `33919296323`
 - head commit: `e3704877d309e40b092768430d0e81f7d86ed2e3`
 - conclusion: **SUCCESS**
 
-It passed all four permanent gates:
+After the final post-audit status/schema and audit-wording cleanup, the confirmation run was:
+
+- run: `33919943680`
+- head commit: `18f5f24719a91986c954b0a59445db83d9571e77`
+- conclusion: **SUCCESS**
+
+That confirmation passed all four permanent gates:
 
 1. generated current navigation — PASS;
 2. knowledge/state/reference validator — PASS;
