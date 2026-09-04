@@ -2,6 +2,176 @@ $root='C:\Users\Milan\AppData\Roaming\com.kesomannen.gale\lethal-company\profile
 $repo='Tendas240/Lethal-Company-AI-Modding-Project'
 $headers=@{'User-Agent'='LC-Profile-Updater'}
 
+function Get-GaleAutomationRoot {
+    try {
+        $proc=@(Get-Process -ErrorAction SilentlyContinue |
+            Where-Object { $_.ProcessName -ieq 'gale' -and $_.MainWindowHandle -ne 0 } |
+            Sort-Object StartTime -Descending |
+            Select-Object -First 1)
+        if(!$proc.Count){return $null}
+        return [System.Windows.Automation.AutomationElement]::FromHandle([IntPtr]$proc[0].MainWindowHandle)
+    }
+    catch {
+        return $null
+    }
+}
+
+function Find-UiaVisibleByName {
+    param(
+        [Parameter(Mandatory=$true)]$Root,
+        [Parameter(Mandatory=$true)][string]$Name
+    )
+
+    $out=@()
+    try {
+        $condition=New-Object System.Windows.Automation.PropertyCondition -ArgumentList @(
+            [System.Windows.Automation.AutomationElement]::NameProperty,
+            $Name
+        )
+        $collection=$Root.FindAll([System.Windows.Automation.TreeScope]::Descendants,$condition)
+        for($i=0;$i-lt$collection.Count;$i++){
+            try {
+                $item=$collection.Item($i)
+                if($item.Current.IsEnabled -and -not $item.Current.IsOffscreen){
+                    $out+=$item
+                }
+            }
+            catch {}
+        }
+    }
+    catch {}
+    return $out
+}
+
+function Invoke-UiaElement {
+    param(
+        [Parameter(Mandatory=$true)]$Element,
+        [ValidateSet('default','expand','select')][string]$Action='default'
+    )
+
+    if($Action -eq 'expand'){
+        try {
+            $pattern=$Element.GetCurrentPattern([System.Windows.Automation.ExpandCollapsePattern]::Pattern)
+            $pattern.Expand()
+            return $true
+        }
+        catch {}
+    }
+
+    if($Action -eq 'select'){
+        try {
+            $pattern=$Element.GetCurrentPattern([System.Windows.Automation.SelectionItemPattern]::Pattern)
+            $pattern.Select()
+            return $true
+        }
+        catch {}
+    }
+
+    try {
+        $pattern=$Element.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern)
+        $pattern.Invoke()
+        return $true
+    }
+    catch {}
+
+    if($Action -ne 'expand'){
+        try {
+            $pattern=$Element.GetCurrentPattern([System.Windows.Automation.ExpandCollapsePattern]::Pattern)
+            $pattern.Expand()
+            return $true
+        }
+        catch {}
+    }
+
+    return $false
+}
+
+function Try-ResolveGaleMissingProfileDialog {
+    param(
+        [Parameter(Mandatory=$true)][string]$ExpectedProfileName,
+        [int]$WaitSeconds=20
+    )
+
+    try {
+        Add-Type -AssemblyName UIAutomationClient -ErrorAction Stop
+        Add-Type -AssemblyName UIAutomationTypes -ErrorAction Stop
+    }
+    catch {
+        return 'uia-unavailable'
+    }
+
+    $deadline=[DateTime]::UtcNow.AddSeconds($WaitSeconds)
+    $root=$null
+    $dialog=@()
+
+    do{
+        $root=Get-GaleAutomationRoot
+        if($root){
+            $dialog=@(Find-UiaVisibleByName -Root $root -Name 'Missing Profiles')
+            if($dialog.Count -gt 0){break}
+        }
+        Start-Sleep -Milliseconds 250
+    }while([DateTime]::UtcNow -lt $deadline)
+
+    if(!$root){return 'no-window'}
+    if($dialog.Count -eq 0){return 'none'}
+
+    # Fail closed unless the dialog is exactly the simple one-profile case that
+    # this helper itself just created. Never auto-delete unrelated missing profiles.
+    $profileHits=@(Find-UiaVisibleByName -Root $root -Name $ExpectedProfileName)
+    $selectors=@(Find-UiaVisibleByName -Root $root -Name 'Select an action')
+    if($profileHits.Count -lt 1 -or $selectors.Count -ne 1){
+        return 'ambiguous'
+    }
+
+    if(!(Invoke-UiaElement -Element $selectors[0] -Action 'expand')){
+        return 'failed'
+    }
+
+    $deleteDeadline=[DateTime]::UtcNow.AddSeconds(5)
+    $deleteItems=@()
+    do{
+        $root=Get-GaleAutomationRoot
+        if($root){
+            $deleteItems=@(Find-UiaVisibleByName -Root $root -Name 'Delete')
+            if($deleteItems.Count -eq 1){break}
+        }
+        Start-Sleep -Milliseconds 100
+    }while([DateTime]::UtcNow -lt $deleteDeadline)
+
+    if($deleteItems.Count -ne 1){return 'failed'}
+    if(!(Invoke-UiaElement -Element $deleteItems[0] -Action 'select')){
+        return 'failed'
+    }
+
+    $submitDeadline=[DateTime]::UtcNow.AddSeconds(5)
+    $submit=@()
+    do{
+        $root=Get-GaleAutomationRoot
+        if($root){
+            $submit=@(Find-UiaVisibleByName -Root $root -Name 'Submit')
+            if($submit.Count -eq 1){break}
+        }
+        Start-Sleep -Milliseconds 100
+    }while([DateTime]::UtcNow -lt $submitDeadline)
+
+    if($submit.Count -ne 1){return 'failed'}
+    if(!(Invoke-UiaElement -Element $submit[0] -Action 'default')){
+        return 'failed'
+    }
+
+    $closeDeadline=[DateTime]::UtcNow.AddSeconds(8)
+    do{
+        Start-Sleep -Milliseconds 150
+        $root=Get-GaleAutomationRoot
+        if(!$root){continue}
+        $remaining=@(Find-UiaVisibleByName -Root $root -Name 'Missing Profiles')
+        if($remaining.Count -eq 0){return 'resolved'}
+    }while([DateTime]::UtcNow -lt $closeDeadline)
+
+    return 'failed'
+}
+
 Get-Process -ErrorAction SilentlyContinue |
     Where-Object { $_.ProcessName -ieq 'gale' } |
     Stop-Process -Force -ErrorAction SilentlyContinue
@@ -80,6 +250,27 @@ Write-Host "Gelöscht: $($sel.FullName)" -ForegroundColor Green
 
 Write-Host "`nÖffne neues Profil in Gale..." -ForegroundColor Green
 Start-Process -FilePath $dst
+
+$missingResult=Try-ResolveGaleMissingProfileDialog -ExpectedProfileName $sel.Name
+switch($missingResult){
+    'resolved' {
+        Write-Host "Gales 'Missing Profiles'-Dialog wurde gezielt für '$($sel.Name)' auf Delete -> Submit aufgelöst." -ForegroundColor Green
+        Start-Sleep -Milliseconds 500
+        # Re-send the verified .r2z after the blocking dialog is gone. Gale's import
+        # dialog is a singleton, so this safely refreshes/opens the same import flow.
+        Start-Process -FilePath $dst
+    }
+    'none' {
+        Write-Host "Kein blockierender 'Missing Profiles'-Dialog erkannt." -ForegroundColor Green
+    }
+    default {
+        Write-Warning "Der 'Missing Profiles'-Dialog konnte nicht eindeutig und sicher automatisiert werden ($missingResult). Es wird nichts blind angeklickt."
+        Write-Host "Bitte in Gale für '$($sel.Name)' gezielt Delete auswählen und danach Submit drücken." -ForegroundColor Yellow
+        Read-Host 'Wenn der Missing-Profile-Dialog vollständig geschlossen ist, hier ENTER drücken'
+        Start-Process -FilePath $dst
+    }
+}
+
 Write-Host "`nIn Gale jetzt: Advanced options -> Import all files aktivieren -> Import." -ForegroundColor Yellow
 Read-Host 'Wenn Gale den Import ERFOLGREICH abgeschlossen hat, hier ENTER drücken'
 
