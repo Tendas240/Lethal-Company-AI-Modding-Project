@@ -1,15 +1,72 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42U_RUNTIME_PASS_AWAITING_S1.42V_TUNING",
+  "enabled": true,
+  "build_id": "S1.42V",
   "base_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
   "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42V Post-BCMER Balance Tuning.r2z",
+  "profile_name": "LC V1 S1.42V Post-BCMER Balance Tuning",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "config_patches": [],
-  "local_plugin_builds": [],
-  "text_assertions": []
+  "config_patches": [
+    {
+      "path": "BepInEx/config/dev.idjut.SnailFork.cfg",
+      "section": "General",
+      "key": "Rarity",
+      "value": 40
+    },
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "section": "FunctionalMicrowave Options",
+      "key": "Functional Microwave | Volume",
+      "value": 0.5
+    }
+  ],
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S142VJetpackAcceleration/S142VJetpackAcceleration.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S142VJetpackAcceleration/bin/Release/netstandard2.1/S142VJetpackAcceleration.dll",
+      "archive_path": "BepInEx/plugins/S142VJetpackAcceleration/S142VJetpackAcceleration.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "BepInEx/config/dev.idjut.SnailFork.cfg",
+      "contains": "Max Snails = 2"
+    },
+    {
+      "path": "BepInEx/config/dev.idjut.SnailFork.cfg",
+      "contains": "Rarity = 40"
+    },
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "contains": "Functional Microwave | Allow Editing Config = true"
+    },
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "contains": "Functional Microwave | Volume = 0.5"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
+      "contains": "Control Scheme = V49"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
+      "contains": "Warmup Period = false"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.jetpackfixes.cfg",
+      "contains": "MidAirExplosions = Off"
+    },
+    {
+      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
+      "contains": "Initial Acceleration Increase = 20"
+    },
+    {
+      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
+      "contains": "Initial Maximum Speed Increase = 20"
+    }
+  ]
 }
