@@ -1,27 +1,25 @@
 {
-  "build_id": "S1.42U",
-  "profile_name": "LC V1 S1.42U BCMER 1.71.0 Reactivation Gate",
-  "base_profile": "Profiles/LC V1 S1.42T Normal Enemy Restore.r2z",
-  "base_sha256": "a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10",
-  "output_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
-  "output_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
-  "zip_members": 331,
+  "build_id": "S1.42V",
+  "profile_name": "LC V1 S1.42V Post-BCMER Balance Tuning",
+  "base_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
+  "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
+  "output_profile": "Profiles/LC V1 S1.42V Post-BCMER Balance Tuning.r2z",
+  "output_sha256": "06390fc2faaf5ef30918efb077a1728c75864777c79a084855ed4dc3e69b3f0d",
+  "zip_members": 332,
   "changed_existing_members": [
-    "export.r2x"
+    "BepInEx/config/dev.idjut.SnailFork.cfg",
+    "export.r2x",
+    "BepInEx/config/CodeRebirth.cfg"
   ],
-  "added_members": [],
-  "mod_state_changes": [
-    {
-      "name": "SoftDiamond-BrutalCompanyMinusExtraReborn",
-      "version": "1.71.0",
-      "enabled": true
-    }
+  "added_members": [
+    "BepInEx/plugins/S142VJetpackAcceleration/S142VJetpackAcceleration.dll"
   ],
+  "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42U",
+  "snapshot_dir": "ProfileSources/S1.42V",
   "snapshot": {
-    "entries": 331,
+    "entries": 332,
     "text_entries": 330
   }
 }
