@@ -2,57 +2,34 @@
 
 ## Closed accepted gate — S1.42Z
 
-**PASS / ACCEPTED**
+**PASS / ACCEPTED FULL NORMAL STACK**
 
-Profile:
+Profile: `Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z`  
+SHA-256: `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`
 
-`Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z`
+Acceptance: `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`
 
-SHA-256:
-
-`a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`
-
-Acceptance:
-
-`Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`
+Runtime evidence: `RuntimeEvidence/S1.42Z/20260904T135820Z/`  
+Raw log SHA-256: `ca61e82e5a7d12f96dcb51849e291582df4d45568da4fa1e10b476551c897db8`
 
 S1.42Z remains the accepted rollback baseline while S1.42AA is under runtime validation.
 
 ## Active gate — S1.42AA Interior Weight Equalization
 
-**BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
+**BUILD PASS / PROFILE IMPORT CONFIRMED / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
 
-Profile:
+Profile: `Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z`  
+Gale profile name: `LC V1 S1.42AA Interior Weight Equalization`  
+SHA-256: `0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364`
 
-`Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z`
+Build run: `33884101262` — success  
+Automated build commit: `4d5e5e6c86a0bc8ab10e0adc32ab22ae6f5c0156`
 
-Gale profile name:
+Candidate record: `Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`  
+Machine status: `Current/Projektstatus_S1.42AA_CANDIDATE.json`  
+Plan / Patch Safety Review: `BuildSpecs/S1.42AA_PLAN.md`
 
-`LC V1 S1.42AA Interior Weight Equalization`
-
-SHA-256:
-
-`0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364`
-
-Build run:
-
-`33884101262` — success
-
-Automated build commit:
-
-`4d5e5e6c86a0bc8ab10e0adc32ab22ae6f5c0156`
-
-Candidate record:
-
-`Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`
-
-Machine status:
-
-`Current/Projektstatus_S1.42AA_CANDIDATE.json`
-
-Plan / Patch Safety Review:
-
-`BuildSpecs/S1.42AA_PLAN.md`
+The user has already imported S1.42AA through Gale using **Advanced options -> Import all files**. The gameplay/runtime gate is still open and no S1.42AA log has been submitted yet.
 
 ## Root cause proven before build
 
@@ -68,8 +45,6 @@ On accepted S1.42Z Offense runtime evidence, the effective viable pool therefore
 
 Only one functional value changed:
 
-`BepInEx/config/LethalLevelLoader.cfg`
-
 `Inject Dynamic Matching Weights = true -> false`
 
 The only other changed archive member is `export.r2x` for the Gale profile name.
@@ -82,23 +57,16 @@ Automated archive verification:
 - removed `0`;
 - mod state changes `0`;
 - mod additions `0`;
-- mod removals `0`.
+- mod removals `0`;
+- no project-local DLL changed.
 
-Generated snapshot confirms `Inject Dynamic Matching Weights = false`. Build assertions also preserve the normalized `Vanilla:100,Custom:100` LLL configuration, Black Mesa's dedicated native-owner `lethal_company:vanilla=+100,lethal_company:custom=+100`, and Indoor Pikmin Spawn Chance `0.09`.
-
-Because no other member changed, accepted S1.42Z Jetpack, LethalMin, CodeRebirth aerial-defense, BCMER and Compatibility state remains byte-identical.
+Generated snapshot confirms `Inject Dynamic Matching Weights = false`. Build assertions preserve `Vanilla:100,Custom:100`, Black Mesa's dedicated native-owner `lethal_company:vanilla=+100,lethal_company:custom=+100`, and Indoor Pikmin Spawn Chance `0.09`.
 
 ## Exact next test
 
-**Run S1.42AA. Do not build a successor first.**
+**Run S1.42AA on Offense. Do not build a successor first.**
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AA`
-
-Import with Gale:
-
-**Advanced options -> Import all files**
-
-Preferred comparison moon: **Offense** because S1.42Z already provides a direct unequal before-state there.
+Because S1.42AA is already imported, do not require a new replacement/import before this test unless the user explicitly wants to reinstall it.
 
 Minimum gate:
 
@@ -115,10 +83,10 @@ Minimum gate:
 11. Leader-null = `0`;
 12. Fatal = `0`;
 13. no new project-local exception class;
-14. Shatteredrooms' Experimentation/Embrion technical restriction remains treated as a compatibility guard unless dedicated evidence proves removal safe;
-15. upload the complete fresh `LogOutput.log` using the exact one-line command in `Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`.
+14. preserve Shatteredrooms' Experimentation/Embrion technical restriction unless dedicated evidence proves removal safe;
+15. upload the complete fresh `LogOutput.log` using the exact one-line uploader in `Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`.
 
-One successful normal Offense run is the intended minimum; do not manually farm all interiors just to measure their weights. The complete log is the primary pool evidence.
+One successful normal Offense run is the intended minimum. Do not manually farm all interiors just to measure their weights; the complete log is the primary pool evidence.
 
 ## Permanent interior rule
 
@@ -146,6 +114,24 @@ Do not blindly remove hard compatibility restrictions merely to make an interior
 - Functional Microwave volume `0.15`;
 - Immortal Snail `40 / 2`.
 
+Never repeat the S1.42R whole-component disable approach.
+
+## Gale profile replacement workflow — canonical
+
+Implementation: `RuntimeTools/ReplaceActiveGaleProfile.ps1`  
+Workflow contract: `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`  
+Binding automation/chat policy: `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+
+Canonical one-line launcher:
+
+```powershell
+iex (iwr -UseBasicParsing 'https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1').Content
+```
+
+The final y/n version was user-validated under Windows PowerShell 5.1 with a disposable `testpowershell` profile. It is now the permanent profile-replacement workflow. Every future ready-to-test build response must include this launcher and the exact build-specific runtime-log uploader together.
+
+Do not reuse failed experimental helper patterns: case-sensitive `LOESCHEN`, fuzzy profile matching, Windows PowerShell 5.1 array assumptions, or a normal `$matches` variable that collides with automatic `$Matches`.
+
 ## Monitor-only issues
 
 Do not patch without stronger reproducibility or user-facing impact:
@@ -163,14 +149,12 @@ Keep separate unless explicitly grouped by the user:
 
 - CullFactory exceptions for `junkrooms` / `shatteredrooms`;
 - Mausoleum fog reduction;
-- CodeRebirth Functional Microwave spawn rarity reduction;
+- CodeRebirth Functional Microwave spawn-rarity reduction;
 - BCMER EventTypes fixed equal distribution `8 × 12.5%`;
 - final long full-stack acceptance;
 - AdditionalNetworking patch without reproducible/user-facing evidence;
 - LethalMin `DespawnLumiknulls()` repair without stronger evidence;
 - cosmetic documentation cleanup.
-
-The separate local Gale profile-replacement PowerShell helper is pending user verification and is not yet a permanent project policy.
 
 ## Controllers
 
@@ -184,12 +168,10 @@ The separate local Gale profile-replacement PowerShell helper is pending user ve
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AA`
 
-## Mandatory one-line runtime upload
+`RuntimeInbox/Current/` contains only `.gitkeep`.
 
-The exact S1.42AA uploader is recorded in:
+## Handover references
 
-`Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`
-
-Binding uploader policy:
-
-`Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+Latest handover: `Current/94_FINAL_HANDOVER_S1.42Z_ACCEPTED_S1.42AA_RUNTIME_NEXT.md`  
+Latest audit: `Current/95_REPOSITORY_HANDOVER_AUDIT_S1.42AA.md`  
+Recent work: `Current/06_RECENT_WORK_S1.42AA.md`
