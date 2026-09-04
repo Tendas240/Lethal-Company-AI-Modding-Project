@@ -64,7 +64,7 @@ def concrete_path(value: str) -> bool:
         return False
     if re.fullmatch(r"Current/\d+", value):
         return False
-    if re.search(r"\.json\.[A-Za-z_][A-Za-z0-9_]*$", value):
+    if re.search(r"\.json(?:\.[A-Za-z_][A-Za-z0-9_]*)+$", value):
         return False
     if value in {"Profiles/DO_NOT_BUILD.r2z", "RuntimeInbox/Current/LogOutput.log"}:
         return False
