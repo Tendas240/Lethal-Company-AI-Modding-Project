@@ -23,6 +23,7 @@ Do not ask the user to run local PowerShell build scripts when the required base
 - Persisted runtime evidence: `RuntimeEvidence/<build>/<timestamp>/`
 - Canonical local Gale replacement helper: `RuntimeTools/ReplaceActiveGaleProfile.ps1`
 - Permanent Gale replacement workflow contract: `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`
+- Current Gale missing-profile automation revision: `Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`
 
 ## Future profile builds
 
@@ -143,7 +144,11 @@ Historical validation record:
 
 `Current/92_GALE_ACTIVE_PROFILE_REPLACEMENT_HELPER_CANDIDATE.md`
 
-The user successfully validated the final y/n version under Windows PowerShell 5.1 with a disposable local Gale profile on 2026-09-04. The helper:
+Current missing-profile revision record:
+
+`Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`
+
+The **base y/n/download/hash/profile-selection flow** was user-validated under Windows PowerShell 5.1 with a disposable local Gale profile on 2026-09-04. The canonical helper still:
 
 - closes Gale;
 - resolves the exact active build from `RuntimeInbox/ACTIVE_BUILD.txt`;
@@ -157,11 +162,21 @@ The user successfully validated the final y/n version under Windows PowerShell 5
 - keeps `Advanced options -> Import all files` as an explicit manual user gate;
 - removes the downloaded `.r2z` only after the user confirms the import completed.
 
-If the user answers `n`, no local profile is deleted and the temporary download is cleaned up.
+A real S1.42AB replacement attempt exposed an additional Gale startup gate: after an externally deleted profile directory, Gale can show a non-dismissible `Missing Profiles` dialog because the profile still exists in Gale's own database. This dialog can block the `.r2z` import flow.
 
-This helper is now the **binding default profile-replacement workflow** for future ready-to-test builds. Every such build response must include the launcher in the Mandatory ready-to-test build ChatGPT UX section above.
+The current helper therefore adds a **fail-closed targeted Windows UI Automation step** for only the simple one-missing-profile case created by this workflow. It requires the exact selected/deleted profile name, exactly one visible `Select an action`, exactly one visible `Delete`, exactly one visible `Submit`, and successful disappearance of the `Missing Profiles` dialog. It uses accessibility controls rather than screen coordinates or blind key presses.
 
-Do not duplicate older experimental helper variants. In particular, do not reintroduce case-sensitive `LOESCHEN`, fuzzy profile-name matching, Windows PowerShell 5.1 array assumptions, or a variable named `$matches` that collides with PowerShell's automatic `$Matches` variable.
+If the dialog is absent, ambiguous, contains multiple missing profiles, or cannot be accessed safely through Windows UI Automation, the helper does not auto-delete anything. It falls back to explicit manual `Delete -> Submit` instructions and waits for the user before re-triggering the verified `.r2z` import.
+
+The helper **does not directly modify Gale's `data.sqlite3`**, and it still does **not** automate `Advanced options`, `Import all files`, or the final Import button.
+
+The new missing-profile UIA branch is currently **implemented but user-validation pending**. Do not describe that new branch as proven until the user confirms it works in the real Gale replacement flow. The older base flow remains historically validated.
+
+If the user answers `n` at the destructive confirmation, no local profile is deleted and the temporary download is cleaned up.
+
+This helper remains the **binding default profile-replacement workflow** for future ready-to-test builds. Every such build response must include the launcher in the Mandatory ready-to-test build ChatGPT UX section above.
+
+Do not duplicate older experimental helper variants. In particular, do not reintroduce case-sensitive `LOESCHEN`, fuzzy profile-name matching, Windows PowerShell 5.1 array assumptions, a variable named `$matches` that collides with PowerShell's automatic `$Matches` variable, direct Gale SQLite edits, screen-coordinate clicks, or blind `Tab`/`Enter` sequences.
 
 ## Binary accessibility rule
 
