@@ -3,6 +3,8 @@
   "date": "2026-09-04",
   "repository_is_source_of_truth": true,
   "canonical_state": "S1.42AB_ACCEPTED_S1.42AC_RUNTIME_REJECTED_ANALYSIS_NEXT",
+  "handover": "Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md",
+  "repository_audit": "Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md",
   "accepted_baseline": {
     "build_id": "S1.42AB",
     "title": "Interior Weight Normalization",
@@ -88,10 +90,10 @@
     "do_not_repeat": "Do not build another successor that merely sets all eight EventType scale curves to the same value and assumes equal final probability."
   },
   "controllers": {
-    "desired_buildspec_id": "IDLE_AFTER_S1.42AC_RUNTIME_REJECTION_ANALYSIS_REQUIRED",
-    "desired_buildspec_base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
-    "desired_buildspec_base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
-    "desired_runtime_active_build": "S1.42AB",
+    "buildspec_id": "IDLE_AFTER_S1.42AC_RUNTIME_REJECTION_ANALYSIS_REQUIRED",
+    "buildspec_base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
+    "buildspec_base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
+    "runtime_active_build": "S1.42AB",
     "successor_armed": false,
     "runtime_test_outstanding": false
   },
