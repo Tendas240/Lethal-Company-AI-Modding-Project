@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "updated": "2026-09-04",
   "status": "CURRENT_CANONICAL_OVERHAUL_MIGRATION_MANIFEST",
   "migration_policy": "NON_DESTRUCTIVE_SEMANTIC_MIGRATION",
@@ -7,6 +7,14 @@
   "new_semantic_root": "Knowledge/",
   "moved_paths": [],
   "deleted_paths": [],
+  "compacted_live_paths": [
+    {
+      "path": "Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md",
+      "reason": "Removed duplicated historical/current-state prose after durable facts were routed to Current/CURRENT_STATE.json, Knowledge topics, build records and runtime evidence.",
+      "pre_overhaul_copy": "verified standalone pre-overhaul repository and Git history",
+      "unique_fact_audit": "PASS_NO_UNIQUE_FACT_LOSS"
+    }
+  ],
   "deletion_decision": "No legacy evidence or historical document was deleted during the overhaul. The verified standalone pre-overhaul repository exists, but preservation in the primary repository remains preferable while historical references are still valuable and storage pressure does not justify destructive cleanup.",
   "redirects_and_supersessions": [
     {"legacy":"Current/02_TECHNICAL_BASELINE.md","classification":"historical_mixed_snapshot","current_targets":["Current/00_CURRENT_STATE.md","Knowledge/ENEMY_SPAWN_BASELINE.md","Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md","Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md"]},
@@ -21,6 +29,8 @@
     "Current/BUILD_LINEAGE.md and .json",
     "Current/DOCUMENT_AUTHORITY.md and .json",
     "Current/CURRENT_STATE.json",
+    "Current/ARTIFACT_EVIDENCE_INTEGRITY.md and .json",
+    "Current/CURRENT_STATE_TRANSITION_POLICY.md",
     "RepositoryTools knowledge validation and answerability regression",
     "Current final overhaul validation/acceptance artifacts"
   ],
@@ -28,7 +38,7 @@
     "Historical handovers show exact state transitions and user decisions.",
     "Rejected candidates preserve anti-regression evidence and failed approaches.",
     "Runtime evidence is required for causal verification and later comparison.",
-    "Old roadmap/baseline files contain chronology and implementation context even where their current wording is stale.",
+    "Old roadmap/baseline files contain chronology and implementation context even where their current wording is stale; Current/DOCUMENT_AUTHORITY.* explicitly prevents them from overriding live state.",
     "No unique-fact/reference audit justified deletion of any legacy file during this pass."
   ],
   "safe_cleanup_after_overhaul": "Future cleanup may remove a legacy file only after proving no unique fact remains, all inbound references are migrated or redirected, the Knowledge/lineage replacements preserve the needed information, and validator/answerability suites remain green.",
