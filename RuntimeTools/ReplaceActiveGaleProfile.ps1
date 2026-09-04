@@ -85,7 +85,10 @@ function Find-UiaVisibleByValue {
 
 function Get-UiaParent {
     param([Parameter(Mandatory=$true)]$Element)
-    try {return [System.Windows.Automation.TreeWalker]::RawViewWalker.GetParent($Element)}catch{return $null}
+    try {
+        $walker=[System.Windows.Automation.TreeWalker]::RawViewWalker
+        return $walker.GetParent($Element)
+    } catch {return $null}
 }
 
 function Invoke-UiaElement {
@@ -129,14 +132,15 @@ function Try-ResolveGaleMissingProfileDialog {
 
     $deadline=[DateTime]::UtcNow.AddSeconds($WaitSeconds)
     $rootElement=$null
+    $missing=@()
     do {
         $rootElement=Get-GaleAutomationRoot
-        if($rootElement -and @(Find-UiaVisibleByName -Root $rootElement -Name 'Missing Profiles').Count -gt 0){break}
+        if($rootElement){$missing=@(Find-UiaVisibleByName -Root $rootElement -Name 'Missing Profiles');if($missing.Count -gt 0){break}}
         Start-Sleep -Milliseconds 250
     } while([DateTime]::UtcNow -lt $deadline)
 
     if(!$rootElement){return 'no-window'}
-    if(@(Find-UiaVisibleByName -Root $rootElement -Name 'Missing Profiles').Count -eq 0){return 'none'}
+    if($missing.Count -eq 0){return 'none'}
 
     $selectors=@(Find-UiaVisibleByNameAndPattern -Root $rootElement -Name 'Select an action' -Pattern ([System.Windows.Automation.ExpandCollapsePattern]::Pattern))
     if($selectors.Count -ne 1){
