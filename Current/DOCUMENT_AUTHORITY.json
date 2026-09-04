@@ -1,12 +1,13 @@
 {
-  "schema_version": 2,
-  "updated": "2026-09-04",
+  "schema_version": 3,
+  "updated": "2026-09-05",
   "status": "CURRENT_CANONICAL_AUTHORITY_REGISTRY",
   "authority_precedence": [
     "Current/CURRENT_STATE.json",
     "Current/00_CURRENT_STATE.md",
     "Current/PROJECT_KNOWLEDGE_MAP.json",
     "Knowledge topic registered by PROJECT_KNOWLEDGE_MAP",
+    "Current/INTEGRITY_ERRATA_REGISTRY.json for known-bad/superseded-value qualification",
     "current machine/controller files named by the topic",
     "accepted runtime/build evidence",
     "historical snapshots"
@@ -14,6 +15,7 @@
   "rules": [
     "Historical documents remain evidence of what was known or decided at their timestamp and do not override newer canonical topic/state sources.",
     "A newer source-level analysis may supersede the interpretation of an older verdict without deleting the historical verdict.",
+    "Known concrete bad/superseded values are qualified by Current/INTEGRITY_ERRATA_REGISTRY.json and must not be treated as current authority merely because they remain in historical evidence.",
     "BuildSpecs/current.json and RuntimeInbox/ACTIVE_BUILD.txt are controllers, not narrative authority for unrelated topics.",
     "Only Current/CURRENT_STATE.json and Current/00_CURRENT_STATE.md declare the concise global current state after the overhaul.",
     "Ordinary topic questions route through Current/PROJECT_KNOWLEDGE_MAP.json to one Knowledge canonical source."
@@ -53,6 +55,21 @@
       "path": "Current/BUILD_LINEAGE.md",
       "authority": "BUILD_LINEAGE_HUMAN",
       "canonical_for": ["build_history"]
+    },
+    {
+      "path": "Current/INTEGRITY_ERRATA_REGISTRY.json",
+      "authority": "CURRENT_INTEGRITY_AUTHORITY",
+      "canonical_for": ["known_bad_values", "supersession_qualifications", "historical_current_qualification", "historical_phase_order_provenance"]
+    },
+    {
+      "path": "Current/VALIDATOR_COVERAGE.json",
+      "authority": "CURRENT_VALIDATOR_COVERAGE",
+      "canonical_for": ["validator_coverage_and_blindspots"]
+    },
+    {
+      "path": "Current/MULTIPHASE_CHECKPOINT_POLICY.json",
+      "authority": "CURRENT_POLICY",
+      "canonical_for": ["future_multiphase_checkpoint_policy"]
     },
     {
       "path": "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md",
@@ -118,6 +135,12 @@
       "classification": "COMPLETED_EXECUTION_CONTRACT_SNAPSHOT",
       "reason": "Preserved original execution playbook; its planned/not-yet-executed status line is historical after Phase 11 completion.",
       "current_targets": ["Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md", "Current/OVERHAUL_VALIDATION_RESULTS.json"]
+    },
+    {
+      "path": "Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md",
+      "classification": "INDEPENDENT_REAUDIT_RECORD",
+      "reason": "Authoritative historical audit of the frozen pre-overhaul contract and phase-order/SHA provenance limitations.",
+      "current_targets": ["Knowledge/REPOSITORY_OVERHAUL.md", "Current/INTEGRITY_ERRATA_REGISTRY.json"]
     }
   ],
   "historical_patterns": [
@@ -142,5 +165,5 @@
     ],
     "provenance_rule": "Do not edit accepted patch source solely to modernize comments unless the accepted binary/profile provenance is rebuilt and revalidated; use authority metadata to classify non-normative historical comments."
   },
-  "last_validated": "2026-09-04"
+  "last_validated": "2026-09-05"
 }
