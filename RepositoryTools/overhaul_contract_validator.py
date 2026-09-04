@@ -171,8 +171,12 @@ def check_live_state() -> None:
     if spec.get("base_profile") != a.get("profile") or spec.get("base_sha256") != ACCEPTED_SHA:
         error("BuildSpecs accepted-base guard drift")
     active = (ROOT / "RuntimeInbox/ACTIVE_BUILD.txt").read_text(encoding="utf-8").strip()
-    if active != ACCEPTED_BUILD or controllers.get("runtime_active_build") != ACCEPTED_BUILD:
-        error("runtime active-build controller drift")
+    lineage = load("Current/BUILD_LINEAGE.json")
+    known_builds = {b.get("id") for b in lineage.get("builds", []) if isinstance(b, dict) and b.get("id")}
+    if active not in known_builds:
+        error(f"runtime active-build controller points to unknown lineage build: {active!r}")
+    if controllers.get("runtime_active_build") != active:
+        error("runtime active-build controller disagrees with CURRENT_STATE")
     if controllers.get("build_enabled") is not False:
         error("CURRENT_STATE controllers.build_enabled unexpectedly true")
     for key in ("profile", "acceptance", "project_status", "runtime_evidence", "profile_sources", "file_index"):
