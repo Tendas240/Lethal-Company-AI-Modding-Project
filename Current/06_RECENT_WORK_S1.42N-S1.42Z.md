@@ -1,7 +1,7 @@
 # 06 — Recent Work: S1.42N through S1.42Z
 
 **Purpose:** compact chronology continuation after the older `Current/03_PROJECT_CHRONOLOGY.md` coverage.  
-**Updated:** 2026-09-04  
+**Updated:** 2026-09-04 — S1.42Z accepted  
 **Authority rule:** dedicated per-build Current files and RuntimeEvidence remain the detailed primary records; this file summarizes the sequence without replacing them.
 
 ## S1.42N — Baboon Hawk death-target resolver
@@ -98,7 +98,7 @@ A one-off AloeChase/FSB load-state message later remained monitor-only rather th
 
 ## S1.42U — BCMER 1.71.0 full-normal-stack acceptance
 
-U reactivated the exact intended BCMER version on the restored normal stack and became the current accepted rollback baseline.
+U reactivated the exact intended BCMER version on the restored normal stack and became the accepted pre-retune rollback baseline.
 
 Profile:
 
@@ -123,7 +123,7 @@ U confirmed:
 - SpawnCycleFixes `Consistent Spawn Times = true` retained;
 - Work/no-task, Leader-null and the project-specific compatibility regression markers absent.
 
-U remains the last fully accepted full-normal-stack baseline.
+After S1.42Z acceptance, U remains an important rollback artifact but is no longer the latest accepted baseline.
 
 ## S1.42V — first post-BCMER balance tuning
 
@@ -251,7 +251,7 @@ Canonical assessment:
 
 `Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md`
 
-## S1.42Z — active Jetpack/Pikmin retune candidate
+## S1.42Z — Jetpack/Pikmin retune — ACCEPTED
 
 Profile:
 
@@ -260,10 +260,6 @@ Profile:
 SHA-256:
 
 `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`
-
-Status:
-
-**BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
 
 Build run:
 
@@ -280,7 +276,7 @@ Exact tuning:
 - Thrusters `25 / 20`;
 - Indoor Pikmin Spawn Chance `0.09`;
 - CarryStrength `3` / Purple `30`;
-- Microwave `0.15`, user accepted;
+- Microwave `0.15`;
 - Snail Rarity `40`, Max `2`;
 - ACU exact 18 curves ×0.5;
 - G.R.E.G. exact 18 curves ×0.5.
@@ -296,23 +292,70 @@ Candidate record:
 
 `Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md`
 
-Final handover:
+Runtime evidence:
 
-`Current/88_FINAL_HANDOVER_S1.42Y_PASS_S1.42Z_NEXT.md`
+`RuntimeEvidence/S1.42Z/20260904T135820Z/`
 
-## Current next step
+Raw log SHA-256:
 
-**Runtime-test S1.42Z before building another successor.**
+`ca61e82e5a7d12f96dcb51849e291582df4d45568da4fa1e10b476551c897db8`
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Z`
+Coverage:
 
-Run/import:
+- 1,586,159 bytes;
+- 16,094 lines;
+- 15,325 parsed runtime events;
+- 32 Error-severity events;
+- Fatal = 0.
 
-`LC V1 S1.42Z Jetpack Pikmin Retune`
+Fresh runtime validation confirmed:
 
-Use Gale `Advanced options -> Import all files` unless custom file retention is independently guaranteed.
+- both Z project-local plugins loaded;
+- exact Jetpack `10 -> 18` path armed;
+- CodeRebirth 1.6.9 / DawnLib 0.9.25 / Dusk 0.9.25 validated;
+- ACU exact 18-curve provider validated;
+- G.R.E.G. exact 18-curve provider validated;
+- both complete provider sets transactionally scaled ×0.5;
+- no aerial-defense contract refusal;
+- EnemyIsolation disabled at runtime;
+- Work/no-task = 0;
+- Leader-null = 0;
+- Compatibility Fixes Error = 0;
+- unspawned NetworkObjectReference marker = 0;
+- PikminNoticeZone regression marker = 0;
+- Fatal = 0;
+- no Error-severity output from either project-local Z plugin.
 
-The next run must validate the two Z plugin markers/contracts and judge Jetpack 18f plus Indoor Pikmin 0.09 while preserving the accepted CarryStrength, Microwave, normal-enemy, BCMER and Compatibility state.
+The user reported that everything is in order from their side. S1.42Z is therefore promoted to the canonical accepted full-normal-stack baseline.
+
+Canonical acceptance:
+
+`Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`
+
+Machine status:
+
+`Current/Projektstatus_S1.42Z_ACCEPTED.json`
+
+## Current next state
+
+**No successor build is armed.**
+
+Accepted base:
+
+`S1.42Z`
+
+The next planned gameplay/config stage, when explicitly requested, is equal effective probability for all installed interiors, with the same equal-probability rule preserved for future added interiors unless explicitly overridden.
+
+Later deferred scopes remain separate unless the user explicitly combines them:
+
+- CullFactory exceptions for `junkrooms` / `shatteredrooms`;
+- Mausoleum fog reduction;
+- Functional Microwave spawn rarity reduction;
+- BCMER EventTypes fixed to `8 × 12.5%`;
+- final long full-stack acceptance;
+- AdditionalNetworking repair only with reproducible/user-facing evidence;
+- LethalMin `DespawnLumiknulls()` repair only with stronger evidence;
+- cosmetic documentation cleanup.
 
 ## Permanent lessons from N–Z
 
