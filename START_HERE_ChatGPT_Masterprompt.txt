@@ -1,5 +1,5 @@
 ======================================================================
-CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42U ACCEPTED / S1.42Y TECH PASS / S1.42Z BUILT
+CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42Z ACCEPTED
 ======================================================================
 
 Repository:
@@ -8,128 +8,96 @@ https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 The repository is the source of truth.
 
 READ FIRST, COMPLETELY:
-1. Current/88_FINAL_HANDOVER_S1.42Y_PASS_S1.42Z_NEXT.md
-2. Current/89_REPOSITORY_HANDOVER_AUDIT_S1.42Z.md
-3. Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md
-4. Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md
-5. Current/Projektstatus_S1.42Z_CANDIDATE.json
-6. Current/00_CURRENT_STATE.md
-7. Current/01_HANDOVER_CORE.md
-8. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-9. BuildSpecs/S1.42Z_PLAN.md
-10. Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md
-11. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
-12. Current/09_REPOSITORY_FIRST_AUTOMATION.md
-13. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
-14. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-15. Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
-16. BuildSpecs/current.json
-17. RuntimeInbox/ACTIVE_BUILD.txt
+1. Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md
+2. Current/Projektstatus_S1.42Z_ACCEPTED.json
+3. Current/00_CURRENT_STATE.md
+4. Current/01_HANDOVER_CORE.md
+5. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+6. Current/06_RECENT_WORK_S1.42N-S1.42Z.md
+7. Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md
+8. Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md
+9. Current/88_FINAL_HANDOVER_S1.42Y_PASS_S1.42Z_NEXT.md
+10. Current/89_REPOSITORY_HANDOVER_AUDIT_S1.42Z.md
+11. Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md
+12. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+13. Current/09_REPOSITORY_FIRST_AUTOMATION.md
+14. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
+15. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+16. Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
+17. BuildSpecs/current.json
+18. RuntimeInbox/ACTIVE_BUILD.txt
 
 Chronologically newer confirmed files override older version-specific wording.
+`Current/87`, `Current/88`, and `Current/89` are retained as pre-acceptance build/handover history. `Current/90` plus `Current/Projektstatus_S1.42Z_ACCEPTED.json` are authoritative for the current accepted state.
 
 CURRENT ACCEPTED STATE
 
-Last fully accepted full-normal-stack gameplay baseline:
+S1.42Z - Jetpack Pikmin Retune - ACCEPTED FULL NORMAL STACK
+Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z
+Gale profile name:
+LC V1 S1.42Z Jetpack Pikmin Retune
+
+Profile SHA-256:
+a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4
+
+Canonical acceptance:
+Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md
+
+Machine status:
+Current/Projektstatus_S1.42Z_ACCEPTED.json
+
+Previous accepted rollback artifact:
 S1.42U - BCMER 1.71.0 Reactivation Gate
 Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z
 SHA-256:
 ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969
 
-Runtime acceptance:
-Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md
+S1.42U remains useful as the pre-retune rollback artifact but is no longer the latest accepted baseline.
 
-S1.42U remains the canonical accepted rollback baseline until a later candidate passes fresh runtime validation.
-
-LATEST COMPLETED RUNTIME EVALUATION
-
-S1.42Y - Jetpack Aerial Defense Retune
-Profiles/LC V1 S1.42Y Jetpack Aerial Defense Retune.r2z
-Profile SHA-256:
-f4ae0d93c9cff4f9441c24d1021e5d9b816861b8317d9ed8995fde67ebbd8d89
+S1.42Z RUNTIME EVIDENCE
 
 Runtime evidence:
-RuntimeEvidence/S1.42Y/20260904T123817Z/
+RuntimeEvidence/S1.42Z/20260904T135820Z/
 
 Raw log SHA-256:
-dc32b104b880199ef0b210be254946bad280d1992e6142f6913bf9602921435a
+ca61e82e5a7d12f96dcb51849e291582df4d45568da4fa1e10b476551c897db8
 
-Verdict:
-TECHNICAL PATHS PASS / MICROWAVE + CARRY TUNING ACCEPTED / JETPACK + INDOOR PIKMIN BALANCE RETUNE REQUIRED / NOT ACCEPTED.
+Coverage:
+- 1,586,159 bytes;
+- 16,094 lines;
+- 15,325 parsed runtime events;
+- 32 Error-severity events;
+- Fatal = 0.
 
-Canonical assessment:
-Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md
-
-Confirmed Y facts:
-- S1.42Y Jetpack Acceleration 1.0.0 loaded;
+Confirmed runtime facts:
+- S1.42Z Jetpack Acceleration 1.0.0 loaded;
 - ButteRyBalance 0.7.0, JetpackFixes 1.6.3 and More Ship Upgrades 3.14.1 validated;
-- exact Jetpack path armed 10 -> 22;
-- S1.42Y CodeRebirth Aerial Defense Spawn Tuning 1.0.0 loaded;
+- exact Jetpack path armed 10 -> 18;
+- S1.42Z CodeRebirth Aerial Defense Spawn Tuning 1.0.0 loaded;
 - CodeRebirth 1.6.9, DawnLib 0.9.25 and Dusk 0.9.25 validated;
 - Air Control Unit provider validated with exactly 18 curves;
 - G.R.E.G. / Advanced Airspace Control provider validated with exactly 18 curves;
-- both complete provider contracts were transactionally scaled x0.5;
-- normal enemy activity present;
+- both complete provider sets were transactionally scaled x0.5;
+- no aerial-defense contract-refusal marker observed;
+- EnemyIsolation diagnostic isolation disabled at runtime;
 - Work/no-task = 0;
 - Leader-null = 0;
 - Compatibility Fixes Error = 0;
 - unspawned NetworkObjectReference marker = 0;
 - PikminNoticeZone regression marker = 0;
-- Fatal = 0.
+- Fatal = 0;
+- neither S1.42Z project-local plugin emitted Error-severity output.
 
-User decisions after Y:
-- Functional Microwave Volume 0.15 = accepted;
-- configured non-Purple Pikmin CarryStrength 3 = accepted;
-- Purple Pikmin CarryStrength 30 = accepted;
-- Jetpack 22f should be reduced to 18f;
-- Indoor Pikmin Spawn Chance 0.08 should be raised to 0.09.
+The user reported the S1.42Z runtime behavior as fully satisfactory and stated that everything is in order from their side. The subjective balance/runtime gate is therefore closed.
 
-The Y log contained 32 Error-severity entries, but they were classified as existing/non-Y setup or mod messages. Neither Y project-local plugin emitted a runtime error and Fatal remained zero. Exact classes are documented in Current/86.
-
-ACTIVE RUNTIME CANDIDATE
-
-S1.42Z - Jetpack Pikmin Retune
-Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z
-Gale profile name:
-LC V1 S1.42Z Jetpack Pikmin Retune
-
-SHA-256:
-a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4
-
-Status:
-BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED.
-
-Build run:
-33874737048 = success
-
-Automated build commit:
-267543634bb884bb447bf4bec320103ba75c9ff8
-
-Candidate record:
-Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md
-
-Final handover:
-Current/88_FINAL_HANDOVER_S1.42Y_PASS_S1.42Z_NEXT.md
-
-Repository audit:
-Current/89_REPOSITORY_HANDOVER_AUDIT_S1.42Z.md
-
-Machine status:
-Current/Projektstatus_S1.42Z_CANDIDATE.json
-
-Plan / Patch Safety Reviews:
-BuildSpecs/S1.42Z_PLAN.md
-
-S1.42Z was built directly from S1.42U. Do not stack V/W/X/Y tuning DLLs.
-
-S1.42Z EXACT CURRENT TUNING
+S1.42Z EXACT ACCEPTED TUNING
 
 Jetpack:
 - project-local base acceleration 10 -> 18;
 - Jet Fuel 18 / 18;
 - Jetpack Thrusters 25 / 20;
-- ButteRyBalance V49 handling/deceleration untouched;
-- JetpackFixes collision/death/control safety untouched.
+- ButteRyBalance V49 handling/deceleration preserved;
+- JetpackFixes collision/death/control safety preserved.
 
 Jetpack DLL SHA-256:
 9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add
@@ -138,10 +106,6 @@ LethalMin:
 - Indoor Pikmin Spawn Chance = 0.09;
 - Blue / Red / Yellow / White / Winged / Rock / Ice / Glow / Bulbmin CarryStrength = 3;
 - Purple Pikmin CarryStrength = 30.
-
-Authoritative raw LethalMin configs:
-- BepInEx/config/NoteBoxz.LethalMin.cfg
-- BepInEx/config/Pikmin/*.cfg
 
 CodeRebirth aerial defense:
 - code_rebirth:air_control_unit = exact 18 curves x0.5;
@@ -155,21 +119,10 @@ Aerial-defense DLL SHA-256:
 Important semantics:
 The x0.5 operation halves DawnLib animation-curve amplitude/spawn weight. DawnLib evaluates and rounds the result, so a short gameplay sample is not required to show mathematically exact half-counts.
 
-Other carried tuning:
-- Functional Microwave Volume = 0.15, user accepted;
+Other accepted tuning:
+- Functional Microwave Volume = 0.15;
 - Immortal Snail Rarity = 40;
 - Immortal Snail Max Snails = 2.
-
-ARCHIVE VERIFICATION
-
-S1.42Z:
-- ZIP members = 333;
-- changed existing members vs S1.42U = 15;
-- added members = exactly two S1.42Z DLLs;
-- mod state changes = none;
-- mod additions = none;
-- mod removals = none;
-- historical V/W/X/Y tuning DLLs absent.
 
 PERMANENT PACKAGE / COMPATIBILITY STATE
 
@@ -199,55 +152,35 @@ Preserve:
 
 Never repeat the S1.42R approach of disabling the complete LethalMin.BaboonBirdPikminEnemy component merely to block one interaction.
 
-EXACT NEXT STEP
+CURRENT NEXT STATE
 
-Do NOT build a successor yet.
-Runtime-test S1.42Z first.
-
-Run/import:
-LC V1 S1.42Z Jetpack Pikmin Retune
-
-Because S1.42Z contains two project-local DLLs, use Gale:
-Advanced options -> Import all files
-unless the concrete import flow already guarantees every custom file is retained.
-
-Minimum runtime gate:
-1. startup/main menu succeeds;
-2. S1.42Z Jetpack Acceleration 1.0.0 loads;
-3. dependency/Harmony-owner validation succeeds;
-4. exact 10 -> 18 armed marker appears;
-5. S1.42Z CodeRebirth Aerial Defense Spawn Tuning 1.0.0 loads;
-6. CodeRebirth 1.6.9 / DawnLib 0.9.25 / Dusk 0.9.25 validate;
-7. ACU validates exactly 18 curves;
-8. G.R.E.G. validates exactly 18 curves;
-9. final transactional x0.5 marker appears;
-10. no aerial-defense contract refusal;
-11. Jetpack 18f feels correct relative to Y/22f and old 16f;
-12. V49 handling, release, repeated flight, landing and hard/high-speed contact remain sane;
-13. Indoor Pikmin density at 0.09 feels correct;
-14. CarryStrength remains 3 / Purple 30;
-15. Microwave 0.15 remains correct;
-16. Snail remains functional at Rarity 40 / Max 2;
-17. normal enemies, BCMER and Compatibility Fixes remain healthy;
-18. Work/no-task = 0;
-19. Leader-null = 0;
-20. Fatal = 0;
-21. no new project-local exception flood;
-22. upload a complete fresh LogOutput.log with the exact self-contained PowerShell one-liner in Current/87.
-
-RuntimeInbox/ACTIVE_BUILD.txt = S1.42Z
-
-CONTROLLERS
+No successor build is armed.
 
 BuildSpecs/current.json:
 enabled = false
-build_id = IDLE_AFTER_S1.42Z_BUILD_AWAITING_RUNTIME_VALIDATION
+build_id = IDLE_AFTER_S1.42Z_ACCEPTANCE
 base profile = Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z
 base SHA-256 = a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4
 no patches/builds/assertions armed.
 
-RuntimeInbox/Current/ currently contains only .gitkeep.
-No successor build is armed.
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42Z
+RuntimeInbox/Current/ contains only .gitkeep after successful S1.42Z runtime ingestion.
+
+The next planned gameplay/config scope, only when explicitly requested by the user, is:
+- equal effective probability for every currently installed interior;
+- preserve the same equal-probability rule for future added interiors unless explicitly overridden.
+
+Do not silently mix unrelated deferred work into that stage.
+
+Later deferred scopes:
+- CullFactory exceptions for junkrooms and shatteredrooms;
+- Mausoleum fog reduction;
+- Functional Microwave spawn rarity reduction;
+- BCMER EventTypes fixed equal distribution 8 x 12.5%;
+- final long full-stack acceptance;
+- AdditionalNetworking repair only with reproducible/user-facing evidence;
+- LethalMin DespawnLumiknulls repair only with stronger evidence;
+- cosmetic documentation cleanup.
 
 MONITOR-ONLY ISSUES
 
@@ -257,20 +190,7 @@ Do not patch without stronger reproducibility or user-facing impact:
 3. historical S1.42W PikminManager.DespawnLumiknulls collection-modified teardown exception;
 4. known loaforcsSoundAPI/HarmonyX TypeLoadException class;
 5. known SoftMask/SoftMasking setup exception classes;
-6. existing/non-Y Error-severity classes documented in Current/86.
-
-PLANNED LATER STAGES - DO NOT SILENTLY MIX INTO S1.42Z
-
-- equal effective probability for all installed interiors;
-- permanent future-interior equal-probability rule unless explicitly overridden;
-- CullFactory exceptions for junkrooms and shatteredrooms;
-- Mausoleum fog reduction;
-- Functional Microwave spawn rarity reduction;
-- BCMER EventTypes fixed equal distribution 8 x 12.5%;
-- final long S1.42 full-stack acceptance;
-- AdditionalNetworking patch only with reproducible/user-facing evidence;
-- LethalMin DespawnLumiknulls repair only with stronger evidence;
-- cosmetic documentation cleanup.
+6. existing non-project-local Error-severity classes.
 
 KNOWN NON-FUNCTIONAL DRIFT
 
