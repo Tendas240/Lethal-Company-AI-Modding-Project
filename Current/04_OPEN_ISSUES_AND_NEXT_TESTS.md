@@ -35,6 +35,7 @@ Whenever a future runtime test becomes outstanding, the same response that expla
 
 Route scope decisions through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. Current deferred items include:
 
+- reconsider existing S1.42AC under the corrected BCMER static EventType acceptance model;
 - Functional Microwave spawn-rarity reduction;
 - CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - Mausoleum fog reduction;
@@ -44,7 +45,7 @@ Route scope decisions through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. Curren
 - AdditionalNetworking repair only with reproducible user-facing evidence;
 - LethalMin teardown repair only with stronger evidence.
 
-The repository information-architecture overhaul is no longer a deferred gameplay scope; it is implemented and validated separately under `Knowledge/REPOSITORY_OVERHAUL.md` and `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`.
+The repository information-architecture overhaul is **closed** and has passed the stricter post-acceptance re-audit against the frozen original instructions. Its current summary is `Knowledge/REPOSITORY_OVERHAUL.md`; final evidence is `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md` and `Current/OVERHAUL_VALIDATION_RESULTS.json`.
 
 ## Topic routes
 
@@ -62,7 +63,8 @@ The repository information-architecture overhaul is no longer a deferred gamepla
 - Gale import: `Knowledge/GALE_PROFILE_WORKFLOW.md`
 - Build history: `Current/BUILD_LINEAGE.md`
 - Patch safety: `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+- Repository overhaul: `Knowledge/REPOSITORY_OVERHAUL.md`
 
 ## Permanent guardrail
 
-Do not reopen old diagnostic branches or rewrite historical outcomes merely because old files contain stale "current" wording. Current authority is determined by `Current/DOCUMENT_AUTHORITY.md` and the semantic knowledge map.
+Do not reopen old diagnostic branches or rewrite historical outcomes merely because old files contain stale `current` wording. Current authority is determined by `Current/DOCUMENT_AUTHORITY.md` and the semantic knowledge map.
