@@ -6,6 +6,7 @@
   "handover": {
     "primary": "Current/88_FINAL_HANDOVER_S1.42Y_PASS_S1.42Z_NEXT.md",
     "repository_audit": "Current/89_REPOSITORY_HANDOVER_AUDIT_S1.42Z.md",
+    "recent_chronology": "Current/06_RECENT_WORK_S1.42N-S1.42Z.md",
     "bootstrap": "START_HERE_ChatGPT_Masterprompt.txt"
   },
   "accepted_baseline": {
