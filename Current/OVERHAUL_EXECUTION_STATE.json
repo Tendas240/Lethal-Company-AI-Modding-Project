@@ -1,13 +1,15 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "date": "2026-09-04",
   "status": "OVERHAUL_COMPLETE_VALIDATED",
+  "post_acceptance_reaudit_status": "POST_ACCEPTANCE_REAUDIT_PASS",
   "authority": "Execution-state checkpoint for the completed repository information-architecture overhaul",
   "canonical_start": "OVERHAUL_START_HERE_ChatGPT.txt",
   "canonical_plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
   "canonical_playbook": "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md",
   "canonical_requirements": "Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json",
   "final_acceptance": "Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md",
+  "post_acceptance_audit": "Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md",
   "validation_results": "Current/OVERHAUL_VALIDATION_RESULTS.json",
   "last_completed_phase": 11,
   "current_phase": null,
@@ -77,6 +79,7 @@
     "artifact_evidence_index": "Current/ARTIFACT_EVIDENCE_INTEGRITY.md",
     "migration_manifest": "Current/REPOSITORY_MIGRATION_MANIFEST.md",
     "validator": "RepositoryTools/knowledge_architecture_validator.py",
+    "strict_frozen_contract_validator": "RepositoryTools/overhaul_contract_validator.py",
     "answerability_suite": "RepositoryTools/answerability_regression.py",
     "navigation_renderer": "RepositoryTools/render_current_navigation.py",
     "ci_workflow": ".github/workflows/knowledge-architecture.yml",
@@ -86,17 +89,19 @@
     "gameplay_behavior_changed": false
   },
   "validation": {
-    "previous_failed_run_id": 33916065314,
-    "previous_failed_head_sha": "83934ccf674563e862c226d5be0045920ec09366",
-    "previous_failure_corrected": true,
-    "routing_failed_run_id": 33916672796,
-    "routing_failure_corrected": true,
-    "final_green_run_id": 33917143180,
-    "final_green_head_sha": "37d0b25823844603cf919c033507c1f0fc3bb88e",
-    "final_green_conclusion": "SUCCESS",
+    "initial_final_green_run_id": 33917143180,
+    "initial_final_green_head_sha": "37d0b25823844603cf919c033507c1f0fc3bb88e",
+    "initial_final_green_conclusion": "SUCCESS",
+    "strict_reaudit_first_green_run_id": 33919296323,
+    "strict_reaudit_first_green_head_sha": "e3704877d309e40b092768430d0e81f7d86ed2e3",
+    "strict_reaudit_first_green_conclusion": "SUCCESS",
+    "post_reaudit_confirmation_run_id": 33920068335,
+    "post_reaudit_confirmation_head_sha": "5a42fe7c6a69c8cef9692fba090d3da6af566ccd",
+    "post_reaudit_confirmation_conclusion": "SUCCESS",
     "navigation_check": "PASS",
     "knowledge_validator": "PASS_ERRORS_0_WARNINGS_0",
-    "answerability_regression": "PASS_24_OF_24"
+    "frozen_contract_validator": "PASS",
+    "answerability_regression": "PASS"
   },
   "exact_next_operation": "Repository overhaul is closed. Resume normal project work from Current/CURRENT_STATE.json. If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence using the corrected acceptance model in Current/109; do not create a compensation successor merely to equalize per-event log weights.",
   "files_not_yet_safe_to_move_or_delete": "Historical evidence remains intentionally retained. Any future deletion still requires the unique-fact and reference audit in Current/REPOSITORY_MIGRATION_MANIFEST.md.",
@@ -108,6 +113,7 @@
     "No gameplay/config/mod/profile/project-local patch behavior changed.",
     "The architecture uses semantic routing instead of destructive historical file moves.",
     "S1.42Z lineage drift was corrected to the actual accepted artifact path and SHA before final validation.",
-    "All final architecture checks are green; later metadata-only commits remain subject to the same Knowledge Architecture workflow."
+    "The post-acceptance re-audit directly re-read the frozen old-repository overhaul contract and is PASS.",
+    "All permanent architecture checks are green at the recorded confirmation run; later metadata-only commits remain subject to the same Knowledge Architecture workflow."
   ]
 }
