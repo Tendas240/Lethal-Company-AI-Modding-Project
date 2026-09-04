@@ -94,6 +94,8 @@ def main() -> int:
         "Current/INTEGRITY_ERRATA_REGISTRY.json",
         "Knowledge/BUILD_AND_RUNTIME_PIPELINE.md",
         "exact build-specific self-contained PowerShell one-line runtime-log uploader",
+        "completed runtime log",
+        "runtime-active/evidence-attribution",
         "full-repository audit by default",
         "when the user later signals another handover",
     ]
