@@ -9,7 +9,9 @@ from pathlib import Path
 import phase_checkpoint_validator as pcv
 import repository_integrity_guard as rig
 
-BAD = "8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0"
+ROOT = Path(__file__).resolve().parents[1]
+REGISTRY_PATH = ROOT / "Current/INTEGRITY_ERRATA_REGISTRY.json"
+BAD = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))["known_bad_values"][0]["value"]
 
 
 def write_json(path: Path, data: dict) -> None:
