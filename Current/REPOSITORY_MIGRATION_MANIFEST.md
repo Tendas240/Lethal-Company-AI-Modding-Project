@@ -1,7 +1,7 @@
 # Repository Overhaul Migration / Retention Manifest
 
 **Status:** CURRENT / CANONICAL MIGRATION RECORD  
-**Authority:** path migration, supersession and deletion rationale  
+**Authority:** path migration, supersession, compaction and deletion rationale  
 **Canonical-For:** moved/redirected/deleted-files rationale  
 **Machine mirror:** `Current/REPOSITORY_MIGRATION_MANIFEST.json`  
 **Last-Validated:** 2026-09-04
@@ -17,6 +17,8 @@ Instead of moving hundreds of historical files and breaking old links, the repos
 - `Current/BUILD_LINEAGE.md/.json`;
 - `Current/DOCUMENT_AUTHORITY.md/.json`;
 - `Current/CURRENT_STATE.json`;
+- `Current/ARTIFACT_EVIDENCE_INTEGRITY.md/.json`;
+- `Current/CURRENT_STATE_TRANSITION_POLICY.md`;
 - automated knowledge/answerability validation.
 
 Historical paths remain reachable for provenance.
@@ -32,6 +34,19 @@ No canonical evidence was physically moved because stable historical paths alrea
 None.
 
 The standalone pre-overhaul recovery repository means rollback is possible, but that is **not** a reason to delete useful primary-repository history. No file passed the stricter unique-fact + inbound-reference + replacement-validation gate required for deletion.
+
+## Compacted live files
+
+`Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md` was intentionally compacted from a duplicate state/history document into a current work-queue router.
+
+Before compaction:
+
+- its full pre-overhaul content was already preserved in Git history and the verified standalone recovery repository;
+- durable S1.42AB/S1.42AC facts were present in build/decision/runtime records;
+- technical topic facts had been extracted into `Knowledge/`;
+- controller truth remained in `Current/CURRENT_STATE.json`, `BuildSpecs/current.json`, and `RuntimeInbox/ACTIVE_BUILD.txt`.
+
+Result: no unique fact was lost, while ordinary current-state navigation no longer requires reconciling another large duplicate declaration.
 
 ## Explicit supersession routes
 
