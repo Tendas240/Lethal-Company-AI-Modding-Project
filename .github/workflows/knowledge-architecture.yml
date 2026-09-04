@@ -53,6 +53,9 @@ jobs:
       - name: Validate repository knowledge architecture
         run: python RepositoryTools/knowledge_architecture_validator.py
 
+      - name: Validate S1.42AC runtime SHA provenance
+        run: python RepositoryTools/runtime_sha_provenance_validator.py
+
       - name: Validate original overhaul contract
         run: python RepositoryTools/overhaul_contract_validator.py
 
