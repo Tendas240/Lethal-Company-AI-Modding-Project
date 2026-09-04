@@ -1,63 +1,29 @@
 ======================================================================
-CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42AB ACCEPTED / S1.42AC RUNTIME NEXT
+CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42AB ACCEPTED / S1.42AC REJECTED / ANALYSIS NEXT
 ======================================================================
 
 Repository:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
-The repository is the source of truth and canonical build/handover workspace.
+The repository is the Source of Truth and canonical build/handover workspace.
 Do not require a local repository clone or local profile build while repository-native artifacts and GitHub automation are available.
 
 READ FIRST, COMPLETELY:
 1. README.md
-2. Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md
-3. Current/Projektstatus_S1.42AC_CANDIDATE.json
-4. Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md
-5. Current/Projektstatus_S1.42AB_ACCEPTED.json
-6. Current/00_CURRENT_STATE.md
-7. Current/01_HANDOVER_CORE.md
-8. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-9. BuildSpecs/S1.42AC_PLAN.md
-10. Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md
-11. Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md
+2. Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md
+3. Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md
+4. Current/Projektstatus_S1.42AC_REJECTED.json
+5. Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md
+6. Current/Projektstatus_S1.42AB_ACCEPTED.json
+7. Current/00_CURRENT_STATE.md
+8. Current/01_HANDOVER_CORE.md
+9. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+10. BuildSpecs/current.json
+11. RuntimeInbox/ACTIVE_BUILD.txt
 12. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
 13. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
-14. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-15. Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
-16. BuildSpecs/current.json
-17. RuntimeInbox/ACTIVE_BUILD.txt
 
-Chronologically newer confirmed documents override older version-specific wording.
-
-======================================================================
-SPECIAL ROUTE — IF THE USER STARTS THE REPOSITORY OVERHAUL
-======================================================================
-
-If the user explicitly asks to start, perform, execute, begin or carry out the planned repository overhaul / repository rework / information-architecture cleanup / ChatGPT retrieval hardening, DO NOT improvise from old cosmetic-cleanup wording.
-
-Immediately switch to the dedicated overhaul bootstrap and read completely, in this order:
-
-1. OVERHAUL_START_HERE_ChatGPT.txt
-2. Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md
-3. Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md
-4. Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json
-5. the then-current README / START_HERE / Current state / project-status JSON / BuildSpecs/current.json / RuntimeInbox/ACTIVE_BUILD.txt
-
-Then re-resolve the actual project state at that future time. Do not assume S1.42AC is still current merely because these planning documents were created during its runtime gate.
-
-Hard pre-overhaul gate:
-- freeze the exact source HEAD;
-- create a SEPARATE standalone backup repository of the complete pre-overhaul state;
-- prefer mirror-style history/branch/tag preservation where technically practical;
-- verify the backup against the frozen checkpoint;
-- create Current/PRE_OVERHAUL_BACKUP_MANIFEST.json;
-- only after verification may structural changes begin.
-
-A branch/tag/release inside this repository alone does NOT satisfy the required standalone backup.
-
-The overhaul must remain separate from gameplay/config/mod/code changes and must follow the binding phase order in Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md. If the overhaul spans chats, repository state must be updated before each handover; do not depend on chat memory.
-
-The final target is deterministic limited-context retrieval: compact bootstrap -> knowledge map -> canonical topic source -> evidence/config/code/history, with search only as fallback, explicit current-vs-history authority, build lineage, redirects/supersession, readable binary/profile evidence, CI validation, answerability tests, and <=3 hops from bootstrap to every major current topic.
+Historical candidate/build files remain evidence. Newer confirmed acceptance/rejection records override older version-specific or open-candidate wording.
 
 ======================================================================
 ACCEPTED BASELINE
@@ -74,47 +40,46 @@ SHA-256:
 Acceptance:
 Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md
 
+Machine state:
+Current/Projektstatus_S1.42AB_ACCEPTED.json
+
 Runtime evidence:
 RuntimeEvidence/S1.42AB/20260904T174010Z/
 
 Raw LogOutput.log SHA-256:
 42cfba3d157f6abdbeee114909d90749d1bfd043d4b0c224922ad5be976194ae
 
-Accepted AB facts:
+Accepted facts:
 - exact LethalLevelLoader 1.7.12 validated;
 - project-local post-viability normalization armed;
 - Offense viable membership remained 40 entries;
-- 12/40 rarity values changed from pre-range 20..300;
+- 12/40 positive rarities changed from pre-range 20..300 to final 100;
 - all positive final effective rarities = 100;
 - Black Mesa single-registered at 100;
 - Expanded facility generated successfully;
-- user played normally until death and reported no problem;
 - Work/no-task = 0;
 - Leader-null = 0;
 - Compatibility Fixes Error = 0;
-- unspawned NetworkObjectReference = 0;
+- unspawned NetworkObjectReference regression = 0;
 - PikminNoticeZone regression = 0;
 - Fatal = 0.
 
 Authoritative interior marker:
 [InteriorWeightNormalization] Final effective viable pool for <moon>: ...
 
-LLL's built-in Viable ExtendedDungeonFlows line is pre-Postfix and may remain unequal.
+LLL's own earlier Viable ExtendedDungeonFlows line is pre-Postfix and may remain unequal.
 
 ======================================================================
-ACTIVE RUNTIME CANDIDATE
+LATEST BUILD - S1.42AC RUNTIME REJECTED
 ======================================================================
 
 S1.42AC - BCMER EventType Equal Distribution
 
 Status:
-BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED
+BUILD PASS / RUNTIME FAIL / REJECTED / NOT ACCEPTED
 
 Profile:
 Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z
-
-Gale profile name:
-LC V1 S1.42AC BCMER EventType Equal Distribution
 
 Profile SHA-256:
 0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9
@@ -125,95 +90,91 @@ Build workflow run:
 Automated build commit:
 a30b327580e28f42e55281e91abe03d32ae41363
 
-Candidate record:
+Build/candidate record:
 Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md
 
-Machine status:
-Current/Projektstatus_S1.42AC_CANDIDATE.json
+Runtime rejection:
+Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md
 
-Plan:
-BuildSpecs/S1.42AC_PLAN.md
+Machine state:
+Current/Projektstatus_S1.42AC_REJECTED.json
 
-Snapshot:
-ProfileSources/S1.42AC/
+Runtime evidence:
+RuntimeEvidence/S1.42AC/20260904T181854Z/
 
-Exact frozen delta:
+Raw LogOutput.log SHA-256:
+8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0
+
+Runtime coverage:
+- 2,000,261 bytes;
+- 20,460 lines;
+- 19,547 parsed events;
+- 77 Error-severity events;
+- Fatal = 0.
+
+AC build delta:
 - only BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg;
-- plus normal profile-name change in export.r2x;
-- no added files;
-- no removed files;
-- no mod state/add/remove changes;
-- no DLL/code patch.
+- plus normal profile-name metadata in export.r2x;
+- no mod state/add/remove delta;
+- no DLL/code patch;
+- exact BCMER 1.71.0 preserved;
+- Use custom weights? = false preserved;
+- all eight [_EventType Weights] scales set to 12.5, 0.0, 12.5, 12.5.
 
-Use custom weights? = false remains preserved.
+Primary runtime gate FAILED.
 
-All eight [_EventType Weights] scales are exactly:
-12.5, 0.0, 12.5, 12.5
+Five observed roll contexts consistently produced final effective BCMER EventType weights:
+- Insane = 6843
+- VeryBad = 506
+- Bad = 355
+- Neutral = 1368
+- Good = 1244
+- VeryGood = 2737
+- Rare = 27375
+- Remove = 883
 
-Categories:
-Insane, VeryBad, Bad, Neutral, Good, VeryGood, Rare, Remove.
+These are not equal. The intended fixed 8 x 12.5% final distribution was not achieved.
 
-Target normalized distribution:
-8 x 12.5%, fixed independent of difficulty.
+Comparison with accepted S1.42AB proves that AC changed the final weights, so the configured scales influence the calculation. However, equal configured scales do NOT imply equal final BCMER EventType weights. BCMER 1.71.0 applies additional type-dependent calculation/weighting.
 
-Automated archive QC:
-- ZIP members = 334;
-- changed existing exactly Difficulty_Settings.cfg + export.r2x;
-- added = 0;
-- removed = 0;
-- mod state/add/remove delta = 0.
+DO NOT REPEAT:
+Do not build another candidate that merely sets all eight EventType scale curves to the same value and assumes equal final probability.
 
-Exact SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 remains required. Never silently upgrade to 2.x.
-
-======================================================================
-LOCAL GALE / EXACT NEXT ACTION
-======================================================================
-
-Last confirmed installed profile before AC import:
-S1.42AB
-
-Import S1.42AC with the already validated helper:
-
-$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
-
-The helper is FULL END-TO-END USER-VALIDATED under Windows PowerShell 5.1.
-After selecting old S1.42AB numerically and confirming y, the validated happy path handles download, SHA verification, selected-profile deletion, Gale Missing Profiles, single .r2z open, Advanced options -> Import all files -> Import, exact target export.r2x verification and cleanup.
-
-Then run one normal Offense gameplay round.
-
-DO NOT manually farm all eight EventTypes.
-
-Primary runtime probability evidence:
-BCMER must emit all eight lines for the same roll context:
-Set eventType weight for <type> to <value>
-
-All eight resulting values must be identical.
-
-Also verify:
-- startup/main menu/lobby succeeds;
-- exact BCMER 1.71.0 loads normally;
-- Offense route/landing succeeds;
-- normal BCMER events still execute;
-- accepted AB interior normalization remains healthy when emitted;
-- accepted enemy/Pikmin/Jetpack/CodeRebirth behavior remains healthy;
-- Work/no-task preferably 0;
+AC still preserved important regression gates:
+- normal BCMER event execution remained active;
+- accepted S1.42AB interior normalization remained healthy;
+- Offense final viable pool = 40 entries, all positive effective rarities 100;
+- Mausoleum generated successfully;
+- later CompanyBuildingLevel normalization also had 40 entries all positive 100;
+- Work/no-task = 0;
 - Leader-null = 0;
-- Fatal = 0;
-- no new config-induced error flood.
+- Compatibility Fixes Error = 0;
+- unspawned NetworkObjectReference regression = 0;
+- PikminNoticeZone regression = 0;
+- Fatal = 0.
 
-After the gameplay test, use the exact S1.42AC one-line PowerShell runtime uploader stored in Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md.
-
-Do not accept AC and do not build a successor before analyzing the full fresh runtime log.
+Secondary AC evidence:
+- 43 dominant NavMeshAgent:SetDestination error signatures;
+- 26 LethalMin route-failure signatures;
+- repeated Pikmin/interior entrance/ToShip routing failures.
+Treat this separately as map/NavMesh/Pikmin routing evidence. Do not attribute it causally to the BCMER config-only delta without reproducibility and do not mix a broad routing patch into the immediate BCMER probability investigation.
 
 ======================================================================
-MANDATORY RUNTIME-TEST UX
+EXACT NEXT ACTION
 ======================================================================
 
-Whenever any build/runtime candidate is ready for user gameplay testing, the SAME response that tells the user what to test MUST also include the exact canonical one-line PowerShell runtime-log uploader for that specific build.
+NO RUNTIME TEST IS CURRENTLY OUTSTANDING.
+NO SUCCESSOR IS ARMED.
 
-Do not wait for the user to ask for the uploader afterwards.
-Do not give only a generic upload description.
-Use the exact uploader from the active candidate/build record whenever one exists.
+Before building another BCMER equal-distribution candidate:
+1. inspect the exact BCMER 1.71.0 calculation that produces final Set eventType weight for <type> to <value> values;
+2. identify the final effective EventType-weight owner and all additional type-dependent inputs;
+3. determine whether safe deterministic inverse config compensation is provable, or whether a narrow project-local final-weight normalization is safer;
+4. if code patching is required, follow Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md and fail closed on exact BCMER version/target contract;
+5. preserve exact BCMER 1.71.0, disabled rain routes, event eligibility and all accepted S1.42AB invariants;
+6. only after this analysis plan/arm a successor.
+
+Do not silently assign a successor build ID before the implementation path is verified.
 
 ======================================================================
 CONTROLLERS
@@ -221,13 +182,27 @@ CONTROLLERS
 
 BuildSpecs/current.json:
 - enabled = false;
-- build_id = IDLE_AFTER_S1.42AC_BUILD_AWAITING_RUNTIME_VALIDATION;
-- base profile = Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z;
-- base SHA-256 = 0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9;
+- build_id = IDLE_AFTER_S1.42AC_RUNTIME_REJECTION_ANALYSIS_REQUIRED;
+- base profile = Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z;
+- base SHA-256 = 3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca;
 - output = Profiles/DO_NOT_BUILD.r2z;
 - no successor armed.
 
-RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42AB
+
+RuntimeInbox/Current should be clean after successful AC ingest.
+
+======================================================================
+MANDATORY RUNTIME-TEST UX
+======================================================================
+
+Whenever any future build/runtime candidate is ready for user gameplay testing, the SAME response that tells the user what to test MUST also include the exact canonical one-line PowerShell runtime-log uploader for that specific build.
+
+Do not wait for the user to ask for the uploader afterwards.
+Do not give only a generic upload description.
+Use the exact uploader from the active candidate/build record whenever one exists.
+
+There is no uploader to run now because no runtime test is pending.
 
 ======================================================================
 PERMANENT ANTI-REGRESSION STATE
@@ -259,21 +234,65 @@ Preserve:
 - Immortal Snail Rarity = 40, Max Snails = 2;
 - accepted S1.42AB interior-normalization architecture.
 
-Never repeat the S1.42R whole-component disable approach.
+Never repeat S1.42R's whole-component disable approach.
+Follow Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md for project-local patches.
 
 ======================================================================
-DEFERRED AFTER S1.42AC
+DEFERRED SEPARATE SCOPES
 ======================================================================
 
 Keep separate unless the user explicitly selects/groups scope:
 - Functional Microwave spawn-rarity reduction;
 - CullFactory junkrooms / shatteredrooms exceptions;
 - Mausoleum fog reduction;
-- Black Mesa table/NavMesh/Pikmin route recovery;
+- Black Mesa/interior/Pikmin route recovery;
 - isolated woah25-LethalEscapeUpdated 2.5.0 evaluation;
 - final long full-stack acceptance;
 - AdditionalNetworking repair only with reproducible user-facing evidence;
 - LethalMin teardown repair only with stronger evidence;
-- repository information-architecture overhaul: start from OVERHAUL_START_HERE_ChatGPT.txt and follow Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md + Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md + Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json; cosmetic documentation drift cleanup is only a subordinate part.
+- repository information-architecture overhaul.
 
-Known older stale wording/comments are historical non-functional drift. Newer Current documents, actual code/config and fresh runtime evidence are authoritative.
+Known historical monitor-only classes remain monitor-only unless stronger evidence appears, including loaforcsSoundAPI/HarmonyX TypeLoadException, SoftMask/SoftMasking setup exceptions, historical PikminNoticeZone/NetworkObjectReference disconnect evidence and other documented non-project-local errors.
+
+======================================================================
+SPECIAL ROUTE - IF THE USER STARTS THE REPOSITORY OVERHAUL
+======================================================================
+
+The repository information-architecture overhaul is PLANNED/BINDING but NOT EXECUTED.
+
+If the user explicitly asks to start, perform, execute, begin or carry out the planned repository overhaul / rework / information-architecture cleanup / ChatGPT retrieval hardening, DO NOT improvise from old cosmetic-cleanup wording.
+
+Immediately switch to and read completely:
+1. OVERHAUL_START_HERE_ChatGPT.txt
+2. Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md
+3. Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md
+4. Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json
+5. the then-current README / START_HERE / Current state / project-status JSON / BuildSpecs/current.json / RuntimeInbox/ACTIVE_BUILD.txt
+
+Re-resolve the actual project state at that future time. Do not assume S1.42AB/S1.42AC are still current merely because these planning documents were authored now.
+
+Hard pre-overhaul gate, ONCE before the first structural migration change:
+- freeze the exact source HEAD;
+- create a SEPARATE standalone backup repository containing the complete pre-overhaul state;
+- prefer mirror-style Git history/branch/tag preservation where technically practical;
+- verify the backup against the frozen source checkpoint;
+- mark backup historical/read-only and not current Source of Truth;
+- create Current/PRE_OVERHAUL_BACKUP_MANIFEST.json with source/backup provenance;
+- only after verification may structural migration begin.
+
+A branch/tag/release inside the primary repository alone does NOT satisfy the required standalone backup.
+
+The overhaul must stay separate from gameplay/config/mod/code changes. If it spans multiple ChatGPT chats, commit/update the repository before every handover and never depend on conversation memory for continuation.
+
+Target retrieval architecture:
+compact bootstrap -> knowledge map -> canonical topic source -> evidence/config/code/history.
+Repository search becomes fallback only.
+Major current topics must be reachable within at most three logical document hops from bootstrap.
+
+======================================================================
+HISTORICAL EVIDENCE RETENTION
+======================================================================
+
+Do not delete failed builds, rejected candidates, runtime evidence, diagnostic records, restore baselines or do-not-regress decisions merely because they are not current.
+
+S1.42AC and RuntimeEvidence/S1.42AC/20260904T181854Z/ are important permanent evidence that equal configured BCMER EventType scales are not sufficient to equalize final effective EventType weights.
