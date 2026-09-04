@@ -1,3 +1,6 @@
+> **HISTORICAL MIXED SNAPSHOT — NOT GLOBAL CURRENT AUTHORITY**
+> This file preserves older S1.41/S1.42-era wording for provenance. Live global state is `Current/00_CURRENT_STATE.md`; current topic authority lives in `Knowledge/`; patch-safety authority is `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`. Historical `current` wording below must not override those sources.
+
 # Permanent custom-patch safety gate
 
 All project-local Harmony/runtime/compatibility code is governed by

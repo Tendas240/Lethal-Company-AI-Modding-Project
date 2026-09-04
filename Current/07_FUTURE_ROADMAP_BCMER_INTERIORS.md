@@ -1,3 +1,6 @@
+> **HISTORICAL ROADMAP SNAPSHOT — NOT CURRENT AUTHORITY**
+> The `Current progress` block below is preserved chronology and is no longer live state. Current BCMER authority: `Knowledge/BCMER.md`; current Interiors/LLL authority: `Knowledge/INTERIORS_AND_LLL.md`; live deferred roadmap: `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
+
 # 07 — Binding Future Roadmap: BCMER and Interior Expansion
 
 This file is binding unless the user later changes the plan.

@@ -1,3 +1,6 @@
+> **EXECUTED CONTRACT SNAPSHOT — OVERHAUL COMPLETE / VALIDATED**
+> This document preserves the original binding overhaul plan. Its original `PLANNED / BINDING / NOT YET EXECUTED` wording below is historical text, not live state. Completion authority: `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`; machine result: `Current/OVERHAUL_VALIDATION_RESULTS.json`.
+
 # 104 — Repository Overhaul: ChatGPT Retrieval and Information Architecture Plan
 
 **Date:** 2026-09-04  

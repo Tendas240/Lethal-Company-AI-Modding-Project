@@ -1,4 +1,19 @@
 ======================================================================
+EXECUTED CONTRACT SNAPSHOT — OVERHAUL COMPLETE / VALIDATED
+======================================================================
+The instructions below are the preserved one-time execution contract from the pre-overhaul repository. They are NOT a claim that the overhaul is still pending.
+
+Current completion authority: Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md
+Machine validation: Current/OVERHAUL_VALIDATION_RESULTS.json
+Requirements status: Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json
+Ordinary takeover starts at START_HERE_ChatGPT_Masterprompt.txt.
+
+Do not rerun phases 0-11 or create another pre-overhaul backup unless the user explicitly requests a new repository migration/audit.
+======================================================================
+PRESERVED ORIGINAL EXECUTION CONTRACT
+======================================================================
+
+======================================================================
 REPOSITORY OVERHAUL — START HERE FOR A FUTURE CHATGPT SESSION
 ======================================================================
 

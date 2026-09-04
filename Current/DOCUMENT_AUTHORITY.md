@@ -90,3 +90,14 @@ A newer source may supersede an interpretation without deleting history. When th
 - register its classification here or in the migration map;
 - route current questions to the new source;
 - keep the old source reachable for "why did we think that?" questions.
+
+
+## Completed overhaul execution-contract snapshots
+
+The following files are preserved as the original one-time overhaul contract, but their old `PLANNED` / `NOT YET EXECUTED` wording is **historical** and must not be interpreted as live state:
+
+- `OVERHAUL_START_HERE_ChatGPT.txt`
+- `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`
+- `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md`
+
+Current completion authority is `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md` with machine validation in `Current/OVERHAUL_VALIDATION_RESULTS.json`. Ordinary project takeover starts at `START_HERE_ChatGPT_Masterprompt.txt`.

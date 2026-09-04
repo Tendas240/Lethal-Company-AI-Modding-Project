@@ -19,47 +19,163 @@
     "Ordinary topic questions route through Current/PROJECT_KNOWLEDGE_MAP.json to one Knowledge canonical source."
   ],
   "canonical": [
-    {"path":"Current/CURRENT_STATE.json","authority":"GLOBAL_CURRENT_MACHINE","canonical_for":["accepted_baseline","active_candidate","runtime_test_outstanding","exact_next_action","controller_summary"]},
-    {"path":"Current/00_CURRENT_STATE.md","authority":"GLOBAL_CURRENT_HUMAN","canonical_for":["accepted_baseline","active_candidate","runtime_test_outstanding","exact_next_action","current_invariants"]},
-    {"path":"Current/01_HANDOVER_CORE.md","authority":"TAKEOVER_ROUTER","canonical_for":["fresh_chat_takeover"]},
-    {"path":"Current/PROJECT_KNOWLEDGE_MAP.json","authority":"TOPIC_ROUTER_MACHINE","canonical_for":["topic_routing"]},
-    {"path":"Current/PROJECT_KNOWLEDGE_MAP.md","authority":"TOPIC_ROUTER_HUMAN","canonical_for":["topic_routing"]},
-    {"path":"Current/BUILD_LINEAGE.json","authority":"BUILD_LINEAGE_MACHINE","canonical_for":["build_history","introduced_by","rejected_build_reason"]},
-    {"path":"Current/BUILD_LINEAGE.md","authority":"BUILD_LINEAGE_HUMAN","canonical_for":["build_history"]},
-    {"path":"Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md","authority":"CURRENT_POLICY","canonical_for":["patch_safety_policy"]},
-    {"path":"BuildSpecs/current.json","authority":"CURRENT_BUILD_CONTROLLER","canonical_for":["armed_build_controller"]},
-    {"path":"RuntimeInbox/ACTIVE_BUILD.txt","authority":"CURRENT_RUNTIME_CONTROLLER","canonical_for":["runtime_active_build"]}
+    {
+      "path": "Current/CURRENT_STATE.json",
+      "authority": "GLOBAL_CURRENT_MACHINE",
+      "canonical_for": [
+        "accepted_baseline",
+        "active_candidate",
+        "runtime_test_outstanding",
+        "exact_next_action",
+        "controller_summary"
+      ]
+    },
+    {
+      "path": "Current/00_CURRENT_STATE.md",
+      "authority": "GLOBAL_CURRENT_HUMAN",
+      "canonical_for": [
+        "accepted_baseline",
+        "active_candidate",
+        "runtime_test_outstanding",
+        "exact_next_action",
+        "current_invariants"
+      ]
+    },
+    {
+      "path": "Current/01_HANDOVER_CORE.md",
+      "authority": "TAKEOVER_ROUTER",
+      "canonical_for": [
+        "fresh_chat_takeover"
+      ]
+    },
+    {
+      "path": "Current/PROJECT_KNOWLEDGE_MAP.json",
+      "authority": "TOPIC_ROUTER_MACHINE",
+      "canonical_for": [
+        "topic_routing"
+      ]
+    },
+    {
+      "path": "Current/PROJECT_KNOWLEDGE_MAP.md",
+      "authority": "TOPIC_ROUTER_HUMAN",
+      "canonical_for": [
+        "topic_routing"
+      ]
+    },
+    {
+      "path": "Current/BUILD_LINEAGE.json",
+      "authority": "BUILD_LINEAGE_MACHINE",
+      "canonical_for": [
+        "build_history",
+        "introduced_by",
+        "rejected_build_reason"
+      ]
+    },
+    {
+      "path": "Current/BUILD_LINEAGE.md",
+      "authority": "BUILD_LINEAGE_HUMAN",
+      "canonical_for": [
+        "build_history"
+      ]
+    },
+    {
+      "path": "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md",
+      "authority": "CURRENT_POLICY",
+      "canonical_for": [
+        "patch_safety_policy"
+      ]
+    },
+    {
+      "path": "BuildSpecs/current.json",
+      "authority": "CURRENT_BUILD_CONTROLLER",
+      "canonical_for": [
+        "armed_build_controller"
+      ]
+    },
+    {
+      "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+      "authority": "CURRENT_RUNTIME_CONTROLLER",
+      "canonical_for": [
+        "runtime_active_build"
+      ]
+    }
   ],
   "semantic_topic_root": "Knowledge/",
   "semantic_topic_authority": "Files registered as canonical targets in Current/PROJECT_KNOWLEDGE_MAP.json are current topic authority unless that map explicitly marks another authority class.",
   "historical_or_superseded": [
     {
-      "path":"Current/02_TECHNICAL_BASELINE.md",
-      "classification":"HISTORICAL_MIXED_SNAPSHOT_NOT_GLOBAL_CURRENT_AUTHORITY",
-      "reason":"Contains durable technical facts mixed with old S1.41/S1.42S current-state wording.",
-      "current_targets":["Current/00_CURRENT_STATE.md","Knowledge/ENEMY_SPAWN_BASELINE.md","Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md","Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md"]
+      "path": "Current/02_TECHNICAL_BASELINE.md",
+      "classification": "HISTORICAL_MIXED_SNAPSHOT_NOT_GLOBAL_CURRENT_AUTHORITY",
+      "reason": "Contains durable technical facts mixed with old S1.41/S1.42S current-state wording.",
+      "current_targets": [
+        "Current/00_CURRENT_STATE.md",
+        "Knowledge/ENEMY_SPAWN_BASELINE.md",
+        "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md",
+        "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md"
+      ]
     },
     {
-      "path":"Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md",
-      "classification":"HISTORICAL_ROADMAP_SNAPSHOT_WITH_EXTRACTED_BINDING_RULES",
-      "reason":"Contains valuable BCMER/interior policy plus obsolete S1.42U/S1.42V current-progress wording.",
-      "current_targets":["Knowledge/BCMER.md","Knowledge/INTERIORS_AND_LLL.md","Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md"]
+      "path": "Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md",
+      "classification": "HISTORICAL_ROADMAP_SNAPSHOT_WITH_EXTRACTED_BINDING_RULES",
+      "reason": "Contains valuable BCMER/interior policy plus obsolete S1.42U/S1.42V current-progress wording.",
+      "current_targets": [
+        "Knowledge/BCMER.md",
+        "Knowledge/INTERIORS_AND_LLL.md",
+        "Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md"
+      ]
     },
     {
-      "path":"Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
-      "classification":"HISTORICAL_DECISION_PRESERVED_INTERPRETATION_SUPERSEDED",
-      "reason":"Formal rejection remains historical fact, but equal per-event-weight acceptance interpretation was disproved by exact BCMER 1.71.0 source analysis.",
-      "current_targets":["Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md","Knowledge/BCMER.md"]
+      "path": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+      "classification": "HISTORICAL_DECISION_PRESERVED_INTERPRETATION_SUPERSEDED",
+      "reason": "Formal rejection remains historical fact, but equal per-event-weight acceptance interpretation was disproved by exact BCMER 1.71.0 source analysis.",
+      "current_targets": [
+        "Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md",
+        "Knowledge/BCMER.md"
+      ]
     },
     {
-      "path":"Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md",
-      "classification":"HISTORICAL_HANDOVER_SNAPSHOT",
-      "current_targets":["Current/01_HANDOVER_CORE.md","Current/00_CURRENT_STATE.md"]
+      "path": "Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md",
+      "classification": "HISTORICAL_HANDOVER_SNAPSHOT",
+      "current_targets": [
+        "Current/01_HANDOVER_CORE.md",
+        "Current/00_CURRENT_STATE.md"
+      ]
     },
     {
-      "path":"Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md",
-      "classification":"HISTORICAL_HANDOVER_AUDIT",
-      "current_targets":["Current/00_CURRENT_STATE.md","Current/PROJECT_KNOWLEDGE_MAP.md"]
+      "path": "Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md",
+      "classification": "HISTORICAL_HANDOVER_AUDIT",
+      "current_targets": [
+        "Current/00_CURRENT_STATE.md",
+        "Current/PROJECT_KNOWLEDGE_MAP.md"
+      ]
+    },
+    {
+      "path": "OVERHAUL_START_HERE_ChatGPT.txt",
+      "classification": "COMPLETED_EXECUTION_CONTRACT_SNAPSHOT",
+      "reason": "One-time pre-overhaul execution entry point retained as the binding historical contract; the overhaul is complete and must not be re-run merely because the original instructions remain below the completion banner.",
+      "current_targets": [
+        "Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md",
+        "Current/OVERHAUL_VALIDATION_RESULTS.json",
+        "START_HERE_ChatGPT_Masterprompt.txt"
+      ]
+    },
+    {
+      "path": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
+      "classification": "COMPLETED_EXECUTION_CONTRACT_SNAPSHOT",
+      "reason": "Preserved original binding information-architecture plan; its planned/not-yet-executed status line is historical after Phase 11 completion.",
+      "current_targets": [
+        "Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md",
+        "Current/OVERHAUL_VALIDATION_RESULTS.json"
+      ]
+    },
+    {
+      "path": "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md",
+      "classification": "COMPLETED_EXECUTION_CONTRACT_SNAPSHOT",
+      "reason": "Preserved original execution playbook; its planned/not-yet-executed status line is historical after Phase 11 completion.",
+      "current_targets": [
+        "Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md",
+        "Current/OVERHAUL_VALIDATION_RESULTS.json"
+      ]
     }
   ],
   "historical_patterns": [
@@ -73,9 +189,9 @@
     "RuntimeEvidence/** and Archive/** are evidence/history, never concise current-state authority"
   ],
   "code_comment_drift": {
-    "path":"Patches/S139CompatibilityFixes/Plugin.cs",
-    "classification":"CURRENT_CODE_AUTHORITY_COMMENTS_NON_NORMATIVE",
-    "rule":"Executable code/runtime evidence and Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md override historical wording in comments. No comment may be used to infer a current two-way interaction ban or Crawler blacklist. Current invariant: Crawler/Thumper may not corrupt Pikmin through the proven grab path; Pikmin counterattack remains native; Crawler is absent from LethalMin Attack Blacklist."
+    "path": "Patches/S139CompatibilityFixes/Plugin.cs",
+    "classification": "CURRENT_CODE_AUTHORITY_COMMENTS_NON_NORMATIVE",
+    "rule": "Executable code/runtime evidence and Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md override historical wording in comments. No comment may be used to infer a current two-way interaction ban or Crawler blacklist. Current invariant: Crawler/Thumper may not corrupt Pikmin through the proven grab path; Pikmin counterattack remains native; Crawler is absent from LethalMin Attack Blacklist."
   },
   "last_validated": "2026-09-04"
 }
