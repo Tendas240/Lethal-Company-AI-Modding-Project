@@ -1,0 +1,143 @@
+======================================================================
+REPOSITORY OVERHAUL — START HERE FOR A FUTURE CHATGPT SESSION
+======================================================================
+
+Purpose:
+This is the dedicated entry point for the planned repository information-architecture overhaul.
+Use it when the user explicitly asks to start/perform/execute the repository overhaul, cleanup, restructuring, retrieval hardening or ChatGPT-navigation rework.
+
+The repository is the Source of Truth. Do not rely on an old chat transcript as the only source of overhaul instructions.
+
+READ THESE COMPLETELY BEFORE MAKING STRUCTURAL CHANGES:
+
+1. Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md
+2. Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md
+3. Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json
+4. README.md
+5. START_HERE_ChatGPT_Masterprompt.txt
+6. Current/00_CURRENT_STATE.md
+7. Current/01_HANDOVER_CORE.md
+8. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+9. the then-current Projektstatus_*.json
+10. BuildSpecs/current.json
+11. RuntimeInbox/ACTIVE_BUILD.txt
+
+Then determine the then-current accepted baseline, active candidate, open runtime/build gate and exact repository HEAD. Do not assume the project state written into the 2026-09-04 planning documents is still current.
+
+======================================================================
+ABSOLUTE FIRST GATE — BACK UP THE PRE-OVERHAUL REPOSITORY
+======================================================================
+
+Before the first structural repository change:
+
+- freeze the exact source default-branch commit SHA;
+- create a SEPARATE standalone GitHub repository containing the complete pre-overhaul state;
+- prefer mirror-style backup with full Git history, branches and tags where technically practical;
+- verify the backup against the frozen source checkpoint;
+- mark the backup historical/read-only and NOT the current Source of Truth;
+- write Current/PRE_OVERHAUL_BACKUP_MANIFEST.json in the primary repository with source/backup identities, SHAs, date, method, preservation status, verification and limitations;
+- cross-reference primary and backup repositories;
+- only after verification may structural migration begin.
+
+A branch/tag/release inside the primary repository does NOT satisfy this standalone-backup requirement by itself.
+
+If the backup cannot be created and verified, STOP. Do not continue with structural overhaul work.
+
+======================================================================
+WHAT THE OVERHAUL IS ACTUALLY TRYING TO ACHIEVE
+======================================================================
+
+A fresh ChatGPT session with limited context should not need to read the whole repository or reconcile dozens of historical handovers to answer normal project questions.
+
+Target routing:
+
+README / START_HERE
+  -> Current State + Knowledge Map
+  -> Topic Canonical Source
+  -> Evidence / Config / Code / History
+
+Repository search should be fallback, not primary navigation.
+
+The overhaul must produce:
+
+- compact bootstrap documents;
+- human + JSON project knowledge map;
+- stable semantic topic documents;
+- human + JSON build lineage;
+- formal current-vs-history authority/supersession metadata;
+- redirect/supersession handling for moved paths;
+- readable indexing of important binary/profile/runtime evidence;
+- repository-native knowledge-architecture validator in CI;
+- answerability/routing regression suite using realistic user questions;
+- reduced manually duplicated current-state prose;
+- deterministic accepted-baseline, active-candidate and next-action pointers.
+
+Key measurable acceptance rules include:
+
+- zero broken canonical internal references;
+- zero orphan canonical/current documents;
+- one authoritative accepted-baseline declaration;
+- one authoritative active-candidate declaration when applicable;
+- all major topics registered;
+- all major current topics reachable from bootstrap within at most 3 document hops;
+- active/accepted profiles have readable ProfileSources snapshots + FILE_INDEX.json;
+- runtime evidence references resolve;
+- historical stale-current wording is explicitly classified;
+- build lineage resolves;
+- answerability tests pass;
+- CI knowledge validation passes;
+- verified standalone pre-overhaul backup exists.
+
+======================================================================
+DO NOT TURN THIS INTO A COSMETIC CLEANUP
+======================================================================
+
+Do not:
+
+- delete history merely because it looks old;
+- move/delete files before extracting unique facts and checking references;
+- silently change gameplay configs, mod versions, profile behavior or project-local code as part of the overhaul;
+- combine the overhaul with a gameplay balance build, mod migration or runtime fix;
+- rely on GitHub search as the only way to find important information;
+- leave important future reasoning trapped only in opaque binaries;
+- rewrite historical evidence so it no longer reflects what was known at that time;
+- continue if routing/authority becomes less clear than before.
+
+Known refactor targets include Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md, Current/02_TECHNICAL_BASELINE.md and stale historical comments in Patches/S139CompatibilityFixes/Plugin.cs, but preserve provenance and accepted runtime behavior.
+
+======================================================================
+EXECUTION ORDER
+======================================================================
+
+Follow Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md in order:
+
+Phase 0  — establish exact pre-overhaul state
+Phase 1  — create + verify standalone backup repository
+Phase 2  — inventory and extract knowledge before moves
+Phase 3  — create new navigation/knowledge-map layer first
+Phase 4  — create build lineage + authority graph
+Phase 5  — separate live truth from chronology
+Phase 6  — harden binary/large-evidence retrieval
+Phase 7  — migrate references/redirects with conservative deletion discipline
+Phase 8  — implement knowledge validator + CI
+Phase 9  — implement answerability/routing regression suite
+Phase 10 — harden atomic current-state transitions
+Phase 11 — final validation against requirements and pre-overhaul backup
+
+Do not skip phases simply because the repository appears understandable to the current chat.
+
+======================================================================
+HANDOVER DURING THE OVERHAUL
+======================================================================
+
+If the overhaul spans multiple ChatGPT chats, update the repository before every chat handover. Record the last completed phase, current phase, committed changes, validation results, unresolved problems, backup repository/frozen checkpoint, exact next operation and any files that must not yet be moved/deleted.
+
+Never depend on conversation memory to resume the overhaul.
+
+======================================================================
+FINAL DEFINITION OF DONE
+======================================================================
+
+The overhaul is done only when Current/104..., Current/105... and Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json all pass their acceptance criteria and a fresh ChatGPT session can answer normal current/historical project questions by loading only a compact bootstrap plus relevant topic/evidence files.
+
+If the new structure loses information, creates ambiguous authority, breaks routing or fails validation, stop and use the standalone pre-overhaul backup as the recovery/comparison reference.
