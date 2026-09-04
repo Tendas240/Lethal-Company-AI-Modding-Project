@@ -1,41 +1,36 @@
 ======================================================================
-CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42AB ACCEPTED / NEXT SCOPE NOT ARMED
+CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42AB ACCEPTED / S1.42AC RUNTIME NEXT
 ======================================================================
 
 Repository:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
 The repository is the source of truth and canonical build/handover workspace.
-Do not require a local repository clone or local profile build while the needed bases and GitHub-native infrastructure are present.
+Do not require a local repository clone or local profile build while repository-native artifacts and GitHub automation are available.
 
 READ FIRST, COMPLETELY:
 1. README.md
-2. Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md
-3. Current/Projektstatus_S1.42AB_ACCEPTED.json
-4. Current/00_CURRENT_STATE.md
-5. Current/01_HANDOVER_CORE.md
-6. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-7. Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md
-8. Current/100_FINAL_HANDOVER_S1.42Z_ACCEPTED_S1.42AB_RUNTIME_NEXT.md
-9. Current/101_REPOSITORY_HANDOVER_AUDIT_S1.42AB.md
-10. Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md
-11. Current/Projektstatus_S1.42Z_ACCEPTED.json
-12. BuildSpecs/S1.42AB_PLAN.md
-13. Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md
-14. Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md
-15. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
-16. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
-17. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-18. Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
-19. BuildSpecs/current.json
-20. RuntimeInbox/ACTIVE_BUILD.txt
+2. Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md
+3. Current/Projektstatus_S1.42AC_CANDIDATE.json
+4. Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md
+5. Current/Projektstatus_S1.42AB_ACCEPTED.json
+6. Current/00_CURRENT_STATE.md
+7. Current/01_HANDOVER_CORE.md
+8. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+9. BuildSpecs/S1.42AC_PLAN.md
+10. Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md
+11. Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md
+12. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+13. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
+14. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+15. Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
+16. BuildSpecs/current.json
+17. RuntimeInbox/ACTIVE_BUILD.txt
 
-Chronologically newer confirmed information overrides older version-specific wording.
-Current/102 + Current/Projektstatus_S1.42AB_ACCEPTED.json + Current/00 + Current/04 are authoritative for the current accepted state.
-Current/100 and Current/101 are historical handover/audit evidence from immediately before the S1.42AB runtime gate closed.
+Chronologically newer confirmed documents override older version-specific wording.
 
 ======================================================================
-CURRENT ACCEPTED BASELINE
+ACCEPTED BASELINE
 ======================================================================
 
 S1.42AB - Interior Weight Normalization - ACCEPTED FULL NORMAL STACK
@@ -43,26 +38,11 @@ S1.42AB - Interior Weight Normalization - ACCEPTED FULL NORMAL STACK
 Profile:
 Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z
 
-Gale profile name:
-LC V1 S1.42AB Interior Weight Normalization
-
-Profile SHA-256:
+SHA-256:
 3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca
 
-Build workflow run:
-33892396551
-
-Automated build commit:
-9bf3085d82990ca565ad81f992d896855c21f1c6
-
-Injected DLL SHA-256:
-901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06
-
-Canonical runtime acceptance:
+Acceptance:
 Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md
-
-Machine-readable accepted state:
-Current/Projektstatus_S1.42AB_ACCEPTED.json
 
 Runtime evidence:
 RuntimeEvidence/S1.42AB/20260904T174010Z/
@@ -70,162 +50,167 @@ RuntimeEvidence/S1.42AB/20260904T174010Z/
 Raw LogOutput.log SHA-256:
 42cfba3d157f6abdbeee114909d90749d1bfd043d4b0c224922ad5be976194ae
 
-Fresh Offense runtime acceptance facts:
-- S1.42AB Interior Weight Normalization 1.0.0 loaded;
-- exact imabatby.lethallevelloader v1.7.12 validated;
-- exact post-viability dungeon-selection contract validated;
-- armed marker appeared without refusal;
-- LLL pre-Postfix Offense pool contained 40 viable entries with rarity range 20..300;
-- authoritative final effective pool contained the same 40 entries, all at exactly 100;
-- 12/40 entries were normalized;
-- no flow membership was inserted or removed;
-- Black Mesa remained single-registered at final rarity 100;
-- normal dungeon generation succeeded;
-- Expanded facility was selected;
-- user entered the generated interior and played normally until death with no problematic behavior reported;
+Accepted AB facts:
+- exact LethalLevelLoader 1.7.12 validated;
+- project-local post-viability normalization armed;
+- Offense viable membership remained 40 entries;
+- 12/40 rarity values changed from pre-range 20..300;
+- all positive final effective rarities = 100;
+- Black Mesa single-registered at 100;
+- Expanded facility generated successfully;
+- user played normally until death and reported no problem;
 - Work/no-task = 0;
 - Leader-null = 0;
-- Compatibility Fixes Error marker = 0;
-- unspawned NetworkObjectReference marker = 0;
-- PikminNoticeZone regression marker = 0;
+- Compatibility Fixes Error = 0;
+- unspawned NetworkObjectReference = 0;
+- PikminNoticeZone regression = 0;
 - Fatal = 0.
 
-Complete S1.42AB log stats:
-- 1,731,946 bytes;
-- 17,347 lines;
-- 16,087 events;
-- 32 Error-severity events;
-- Fatal = 0.
-
-The 32 Error-severity events match accepted S1.42Z. Known loaforcsSoundAPI/HarmonyX TypeLoadException and SoftMask/SoftMasking setup exceptions remain monitor-only; do not patch them without stronger reproducibility or user-facing impact.
-
-======================================================================
-ACCEPTED INTERIOR ARCHITECTURE
-======================================================================
-
-Exact target:
-LethalLevelLoader.DungeonManager.GetValidExtendedDungeonFlows(ExtendedLevel, bool)
-
-Architecture:
-1. LethalLevelLoader performs native matching, viability and exclusion first.
-2. A project-local Harmony Postfix receives only the already-returned viable list.
-3. Only positive rarity values in that list are normalized to exactly 100.
-4. No flow is appended.
-5. No flow is removed.
-6. No flow is re-registered or deduplicated.
-7. No LLL matching/config list is rewritten.
-8. Enemy, Scrap and MapObject rarity systems are untouched.
-
-Permanent accepted future-interior rule:
-Every newly installed interior receives effective rarity 100 automatically whenever LLL itself considers that interior viable. Hard technical exclusions remain upstream-owned.
-
-Preserve the Shatteredrooms Experimentation/Embrion restriction until dedicated evidence proves removal safe.
-
-IMPORTANT LOG INTERPRETATION:
-LLL's built-in Viable ExtendedDungeonFlows line is emitted before the Postfix and may show unequal pre-normalization values. Do not judge the accepted architecture from that earlier line.
-
-Authoritative marker:
+Authoritative interior marker:
 [InteriorWeightNormalization] Final effective viable pool for <moon>: ...
 
-Every positive entry there must be (100).
+LLL's built-in Viable ExtendedDungeonFlows line is pre-Postfix and may remain unequal.
 
 ======================================================================
-PREVIOUS / REJECTED STATES
+ACTIVE RUNTIME CANDIDATE
 ======================================================================
 
-S1.42Z - Jetpack Pikmin Retune - PREVIOUS ACCEPTED ROLLBACK / PROVENANCE BASELINE
-
-Profile SHA-256:
-a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4
-
-Acceptance:
-Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md
-
-Its accepted Jetpack/Pikmin/CodeRebirth/Microwave/Snail tuning is inherited by S1.42AB.
-
-S1.42AA - Interior Weight Equalization - RUNTIME FAIL / NOT ACCEPTED
-
-Profile SHA-256:
-0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364
-
-Do not revive its Inject Dynamic Matching Weights=false approach. Runtime proved it cannot lower stronger LLL author/planet/mod matches because LLL retains the highest matching rarity.
-
-Separate AA evidence remains deferred/monitor-only:
-- Black Mesa table/NavMesh/Pikmin unreachable entrance / Unpathable ToShip routing;
-- two Work state with no task assigned warnings in a separate White-Pikmin lifecycle sequence.
-
-Work/no-task did not reproduce in accepted S1.42AB.
-
-======================================================================
-LOCAL GALE / IMPORT TOOLING
-======================================================================
-
-S1.42AB remains the current installed Gale profile.
-
-Canonical replacement helper:
-RuntimeTools/ReplaceActiveGaleProfile.ps1
+S1.42AC - BCMER EventType Equal Distribution
 
 Status:
-FULL END-TO-END USER-VALIDATED under Windows PowerShell 5.1
+BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED
 
-Validated revision:
-2026-09-04-import-uia-v2.1-download-hotfix
+Profile:
+Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z
 
-Validated helper blob SHA:
-9458f427b538615249714e7f064f3107d6dcd36c
+Gale profile name:
+LC V1 S1.42AC BCMER EventType Equal Distribution
 
-Validated implementation commit:
-f711f53f4971f97200ed3605479ef887a14b243d
+Profile SHA-256:
+0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9
 
-See:
-Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md
-Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md
+Build workflow run:
+33903271224
 
-Do not reintroduce direct Gale SQLite mutation, screen-coordinate clicks, blind keyboard navigation, fuzzy build/profile matching, duplicate .r2z open events, binary Raw-GitHub cache-busting query strings, or normal $matches variables that collide case-insensitively with automatic $Matches.
+Automated build commit:
+a30b327580e28f42e55281e91abe03d32ae41363
+
+Candidate record:
+Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md
+
+Machine status:
+Current/Projektstatus_S1.42AC_CANDIDATE.json
+
+Plan:
+BuildSpecs/S1.42AC_PLAN.md
+
+Snapshot:
+ProfileSources/S1.42AC/
+
+Exact frozen delta:
+- only BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg;
+- plus normal profile-name change in export.r2x;
+- no added files;
+- no removed files;
+- no mod state/add/remove changes;
+- no DLL/code patch.
+
+Use custom weights? = false remains preserved.
+
+All eight [_EventType Weights] scales are exactly:
+12.5, 0.0, 12.5, 12.5
+
+Categories:
+Insane, VeryBad, Bad, Neutral, Good, VeryGood, Rare, Remove.
+
+Target normalized distribution:
+8 x 12.5%, fixed independent of difficulty.
+
+Automated archive QC:
+- ZIP members = 334;
+- changed existing exactly Difficulty_Settings.cfg + export.r2x;
+- added = 0;
+- removed = 0;
+- mod state/add/remove delta = 0.
+
+Exact SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 remains required. Never silently upgrade to 2.x.
+
+======================================================================
+LOCAL GALE / EXACT NEXT ACTION
+======================================================================
+
+Last confirmed installed profile before AC import:
+S1.42AB
+
+Import S1.42AC with the already validated helper:
+
+$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
+
+The helper is FULL END-TO-END USER-VALIDATED under Windows PowerShell 5.1.
+After selecting old S1.42AB numerically and confirming y, the validated happy path handles download, SHA verification, selected-profile deletion, Gale Missing Profiles, single .r2z open, Advanced options -> Import all files -> Import, exact target export.r2x verification and cleanup.
+
+Then run one normal Offense gameplay round.
+
+DO NOT manually farm all eight EventTypes.
+
+Primary runtime probability evidence:
+BCMER must emit all eight lines for the same roll context:
+Set eventType weight for <type> to <value>
+
+All eight resulting values must be identical.
+
+Also verify:
+- startup/main menu/lobby succeeds;
+- exact BCMER 1.71.0 loads normally;
+- Offense route/landing succeeds;
+- normal BCMER events still execute;
+- accepted AB interior normalization remains healthy when emitted;
+- accepted enemy/Pikmin/Jetpack/CodeRebirth behavior remains healthy;
+- Work/no-task preferably 0;
+- Leader-null = 0;
+- Fatal = 0;
+- no new config-induced error flood.
+
+After the gameplay test, use the exact S1.42AC one-line PowerShell runtime uploader stored in Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md.
+
+Do not accept AC and do not build a successor before analyzing the full fresh runtime log.
 
 ======================================================================
 MANDATORY RUNTIME-TEST UX
 ======================================================================
 
-Whenever any future build/runtime candidate is ready for user gameplay testing, the same response that tells the user what to test MUST also include the exact canonical one-line PowerShell runtime-log uploader for that specific build.
+Whenever any build/runtime candidate is ready for user gameplay testing, the SAME response that tells the user what to test MUST also include the exact canonical one-line PowerShell runtime-log uploader for that specific build.
 
-Do not wait for the user to ask for the uploader after the test.
+Do not wait for the user to ask for the uploader afterwards.
 Do not give only a generic upload description.
 Use the exact uploader from the active candidate/build record whenever one exists.
-The user should be able to: read test instructions -> run the game -> close/finish the test -> paste the already-provided PowerShell one-liner -> report that the log is committed.
-
-If no runtime test is outstanding, no uploader needs to be repeated.
 
 ======================================================================
-CURRENT CONTROLLERS / EXACT NEXT STATE
+CONTROLLERS
 ======================================================================
 
 BuildSpecs/current.json:
 - enabled = false;
-- build_id = IDLE_AFTER_S1.42AB_ACCEPTANCE;
-- base profile = Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z;
-- base SHA-256 = 3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca;
+- build_id = IDLE_AFTER_S1.42AC_BUILD_AWAITING_RUNTIME_VALIDATION;
+- base profile = Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z;
+- base SHA-256 = 0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9;
 - output = Profiles/DO_NOT_BUILD.r2z;
-- no successor is armed.
+- no successor armed.
 
-RuntimeInbox/ACTIVE_BUILD.txt = S1.42AB
-
-There is currently NO outstanding runtime test.
-Do not build a successor until the user explicitly selects the next isolated scope.
-
-The BCMER EventTypes equal-distribution scope (8 x 12.5%) is now technically eligible to be selected next because S1.42AB is accepted, but it is NOT armed and must not be treated as implicitly authorized.
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC
 
 ======================================================================
-PERMANENT COMPATIBILITY / ANTI-REGRESSION STATE
+PERMANENT ANTI-REGRESSION STATE
 ======================================================================
 
 Preserve:
-- exact SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0; never silently upgrade to 2.x;
+- exact BCMER 1.71.0; never silently upgrade to 2.x;
+- accepted disabled BCMER rain routes;
 - EnemyIsolation disabled;
 - Compatibility Fixes 1.3.14;
 - BaboonBirdPikminEnemy enabled;
 - narrow Hawk -> Pikmin prevention only;
-- inherited/native PikminEnemy lifecycle preserved;
+- native inherited PikminEnemy lifecycle;
 - Pikmin -> Baboon Hawk attack allowed;
 - Puffer -> Pikmin protection;
 - Thumper Bite Limit = 3;
@@ -233,39 +218,32 @@ Preserve:
 - accepted S1.42C-derived moon power/spawn baseline;
 - SpawnCycleFixes Consistent Spawn Times = true;
 - Jetpack base acceleration = 18;
-- Jet Fuel = 18 / 18;
-- Jetpack Thrusters = 25 / 20;
+- Jet Fuel = 18/18;
+- Jetpack Thrusters = 25/20;
 - Indoor Pikmin Spawn Chance = 0.09;
 - non-Purple CarryStrength = 3;
 - Purple CarryStrength = 30;
-- CodeRebirth air_control_unit = exact 18 curves x0.5;
-- CodeRebirth gunslinger_greg = exact 18 curves x0.5;
+- CodeRebirth ACU exact 18 curves x0.5;
+- CodeRebirth G.R.E.G. exact 18 curves x0.5;
 - Functional Microwave volume = 0.15;
-- Immortal Snail Rarity = 40;
-- Immortal Snail Max Snails = 2;
-- accepted S1.42AB post-viability interior normalization architecture.
+- Immortal Snail Rarity = 40, Max Snails = 2;
+- accepted S1.42AB interior-normalization architecture.
 
-Never repeat S1.42R's whole-component BaboonBirdPikminEnemy disable strategy.
-Every future project-local patch must comply with Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md.
+Never repeat the S1.42R whole-component disable approach.
 
 ======================================================================
-DEFERRED / ELIGIBLE FUTURE SCOPES
+DEFERRED AFTER S1.42AC
 ======================================================================
 
-Keep scopes isolated unless the user explicitly groups them:
-- BCMER EventTypes fixed equal distribution 8 x 12.5%;
+Keep separate unless the user explicitly selects/groups scope:
 - Functional Microwave spawn-rarity reduction;
 - CullFactory junkrooms / shatteredrooms exceptions;
 - Mausoleum fog reduction;
 - Black Mesa table/NavMesh/Pikmin route recovery;
-- isolated evaluation of woah25-LethalEscapeUpdated 2.5.0 for V81;
+- isolated woah25-LethalEscapeUpdated 2.5.0 evaluation;
 - final long full-stack acceptance;
-- AdditionalNetworking repair only with reproducible/user-facing evidence;
+- AdditionalNetworking repair only with reproducible user-facing evidence;
 - LethalMin teardown repair only with stronger evidence;
 - cosmetic documentation cleanup.
 
-Known non-functional historical drift remains in older chronology wording under Current/02_TECHNICAL_BASELINE.md and historical comments in Patches/S139CompatibilityFixes/Plugin.cs. Newer canonical documents, actual code/config and fresh runtime evidence override those stale comments.
-
-======================================================================
-END CURRENT CANONICAL TAKEOVER
-======================================================================
+Known older stale wording/comments are historical non-functional drift. Newer Current documents, actual code/config and fresh runtime evidence are authoritative.
