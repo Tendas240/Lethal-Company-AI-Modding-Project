@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "updated": "2026-09-04",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
@@ -54,10 +54,14 @@
     "authority_machine": "Current/DOCUMENT_AUTHORITY.json"
   },
   "overhaul": {
-    "status": "OVERHAUL_IMPLEMENTED_FINAL_VALIDATION_PENDING",
+    "status": "OVERHAUL_COMPLETE_VALIDATED",
     "pre_overhaul_backup": "Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904",
     "frozen_source_commit": "5dbd0e637a480d8591773e422bbca4b0654cad20",
     "frozen_source_tree": "0e17aac410cf600a164396b5586b5b50f084df22",
-    "backup_manifest": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json"
+    "backup_manifest": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
+    "final_acceptance": "Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md",
+    "validation_results": "Current/OVERHAUL_VALIDATION_RESULTS.json",
+    "validated_ci_run_id": 33916920484,
+    "validated_head_sha": "ccb3fce0a44cfe63033ac263ad9b73e52cada592"
   }
 }
