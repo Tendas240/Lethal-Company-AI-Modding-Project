@@ -40,7 +40,7 @@ Historical handovers, candidate notes and runtime decisions are preserved as evi
 
 ## Repository overhaul
 
-Status: **OVERHAUL_IMPLEMENTED_FINAL_VALIDATION_PENDING**.  
+Status: **OVERHAUL_COMPLETE_VALIDATED**.  
 Verified pre-overhaul recovery repository: `Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904` at frozen source commit `5dbd0e637a480d8591773e422bbca4b0654cad20`.  
 Manifest: `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json`.
 
