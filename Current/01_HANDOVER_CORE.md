@@ -8,19 +8,20 @@ Repository is the source of truth.
 
 ## Read first
 
-1. `Current/00_CURRENT_STATE.md`
+1. `Current/88_FINAL_HANDOVER_S1.42Y_PASS_S1.42Z_NEXT.md`
 2. `Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md`
 3. `Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md`
 4. `Current/Projektstatus_S1.42Z_CANDIDATE.json`
-5. `BuildSpecs/S1.42Z_PLAN.md`
-6. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
-7. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-8. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-9. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-10. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-11. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-12. `BuildSpecs/current.json`
-13. `RuntimeInbox/ACTIVE_BUILD.txt`
+5. `Current/00_CURRENT_STATE.md`
+6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+7. `BuildSpecs/S1.42Z_PLAN.md`
+8. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
+9. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+10. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+11. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+12. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+13. `BuildSpecs/current.json`
+14. `RuntimeInbox/ACTIVE_BUILD.txt`
 
 Chronologically newer confirmed documents override older version-specific wording.
 
@@ -34,9 +35,17 @@ SHA-256:
 
 `ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969`
 
+Acceptance:
+
+`Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
+
 S1.42U remains the last fully accepted full-normal-stack baseline.
 
-## Latest runtime result — S1.42Y
+## Latest completed runtime result — S1.42Y
+
+Profile:
+
+`Profiles/LC V1 S1.42Y Jetpack Aerial Defense Retune.r2z`
 
 Profile SHA-256:
 
@@ -52,7 +61,7 @@ Raw log SHA-256:
 
 Verdict:
 
-**TECHNICAL PATHS PASS / BALANCE RETUNE REQUIRED / NOT ACCEPTED**
+**TECHNICAL PATHS PASS / MICROWAVE + CARRY TUNING ACCEPTED / JETPACK + INDOOR PIKMIN RETUNE REQUIRED / NOT ACCEPTED**
 
 Y proved:
 
@@ -62,7 +71,9 @@ Y proved:
 - normal enemies remain active;
 - Work/no-task = 0;
 - Leader-null = 0;
-- Compatibility Fixes error = 0;
+- Compatibility Fixes Error = 0;
+- unspawned NetworkObjectReference marker = 0;
+- PikminNoticeZone regression marker = 0;
 - Fatal = 0.
 
 User accepted:
@@ -84,6 +95,10 @@ Canonical result:
 Profile:
 
 `Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z`
+
+Gale profile name:
+
+`LC V1 S1.42Z Jetpack Pikmin Retune`
 
 SHA-256:
 
@@ -124,15 +139,23 @@ Jetpack DLL SHA-256:
 - non-Purple configured CarryStrength `3`;
 - Purple CarryStrength `30`.
 
+Authoritative raw configs:
+
+- `BepInEx/config/NoteBoxz.LethalMin.cfg`;
+- `BepInEx/config/Pikmin/*.cfg`.
+
 ### CodeRebirth
 
 - Air Control Unit: exact 18 curves ×0.5;
 - G.R.E.G. / Advanced Airspace Control: exact 18 curves ×0.5;
-- both exact contracts must validate before either is changed.
+- both exact contracts must validate before either is changed;
+- no other map-object provider is modified.
 
 Aerial-defense DLL SHA-256:
 
 `7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b`
+
+The scaling is exact curve-amplitude/spawn-weight ×0.5, not a guarantee of exact half-counts in a short sample because DawnLib evaluates and rounds the resulting spawn amount.
 
 ### Other accepted tuning
 
@@ -167,36 +190,53 @@ Minimum gate:
 12. Work/no-task = 0;
 13. Leader-null = 0;
 14. Fatal = 0;
-15. upload a complete fresh LogOutput.log with the exact self-contained PowerShell command in `Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md`.
+15. upload a complete fresh `LogOutput.log` with the exact self-contained PowerShell command in `Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md`.
 
 ## Permanent anti-regression state
 
 Preserve:
 
-- exact BCMER 1.71.0;
+- exact BCMER 1.71.0; do not silently upgrade to 2.x;
 - EnemyIsolation off;
 - Compatibility Fixes 1.3.14 / DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
 - `BaboonBirdPikminEnemy` enabled;
 - narrow Hawk -> Pikmin block only;
 - native inherited PikminEnemy lifecycle;
+- Pikmin -> Baboon Hawk attack remains allowed;
 - Puffer -> Pikmin protection;
 - `Thumper Bite Limit = 3`;
 - Crawler absent from Attack Blacklist;
 - accepted S1.42C-derived moon power/spawn baseline;
 - `Consistent Spawn Times = true`.
 
+Do not repeat the S1.42R whole-component disable approach.
+
+Patch policy:
+
+`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+
+## Monitor only
+
+- historical S1.42S disconnect-only PikminNoticeZone / unspawned NetworkObjectReference exception;
+- historical S1.42T one-off AloeChase FSB load-state message;
+- historical S1.42W `PikminManager.DespawnLumiknulls()` collection-modified teardown exception;
+- known loaforcsSoundAPI/HarmonyX and SoftMask/SoftMasking setup exception classes;
+- Y's non-project-local Error-severity classes documented in `Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md`.
+
+Do not patch these without stronger reproducibility or user-facing impact.
+
 ## Deferred after Z
 
 Do not mix into the Z gate:
 
 - equal interior probability / future-interior rule;
-- CullFactory exceptions;
+- CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - Mausoleum fog;
 - Microwave spawn rarity;
 - BCMER 8 × 12.5% EventTypes;
 - final long full-stack acceptance;
 - AdditionalNetworking patch without new evidence;
-- LethalMin DespawnLumiknulls repair without stronger evidence;
+- LethalMin `DespawnLumiknulls()` repair without stronger evidence;
 - cosmetic documentation cleanup.
 
 ## Controllers
@@ -206,11 +246,18 @@ Do not mix into the Z gate:
 - `enabled = false`;
 - `build_id = IDLE_AFTER_S1.42Z_BUILD_AWAITING_RUNTIME_VALIDATION`;
 - base = S1.42Z;
-- base SHA-256 = `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`.
+- base SHA-256 = `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`;
+- no build work armed.
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42Z`
 
+`RuntimeInbox/Current/` currently contains only `.gitkeep`.
+
 No successor is armed.
+
+## Known non-functional drift
+
+Older chronology wording in `Current/02_TECHNICAL_BASELINE.md` and historical comments in `Patches/S139CompatibilityFixes/Plugin.cs` are not fully current. Newer canonical docs, code/config and runtime evidence are authoritative. Keep cosmetic cleanup separate from runtime work.
 
 ## Mandatory runtime upload UX
 
