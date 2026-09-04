@@ -1,7 +1,11 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "date": "2026-09-04",
   "repository_is_source_of_truth": true,
+  "status": "HISTORICAL_CANDIDATE_SUPERSEDED_BY_RUNTIME_REJECTION",
+  "superseded_by": "Current/Projektstatus_S1.42AC_REJECTED.json",
+  "runtime_outcome": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+  "note": "This file preserves the pre-runtime candidate contract. It is not the current machine state. Use Projektstatus_S1.42AC_REJECTED.json for current status.",
   "accepted_baseline": {
     "build_id": "S1.42AB",
     "profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
@@ -12,17 +16,20 @@
     "runtime_evidence": "RuntimeEvidence/S1.42AB/20260904T174010Z/",
     "raw_log_sha256": "42cfba3d157f6abdbeee114909d90749d1bfd043d4b0c224922ad5be976194ae"
   },
-  "active_runtime_candidate": {
+  "historical_runtime_candidate": {
     "build_id": "S1.42AC",
     "profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
     "profile_name": "LC V1 S1.42AC BCMER EventType Equal Distribution",
     "sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
-    "status": "BUILD_PASS_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
+    "pre_runtime_status": "BUILD_PASS_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
+    "final_status": "RUNTIME_FAIL_REJECTED_NOT_ACCEPTED",
     "successful_build_run": 33903271224,
     "automated_build_commit": "a30b327580e28f42e55281e91abe03d32ae41363",
     "candidate_record": "Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+    "rejection_record": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
     "plan": "BuildSpecs/S1.42AC_PLAN.md",
     "snapshot": "ProfileSources/S1.42AC/",
+    "runtime_evidence": "RuntimeEvidence/S1.42AC/20260904T181854Z/",
     "zip_members": 334,
     "changed_existing_members": [
       "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
@@ -46,31 +53,30 @@
       "Rare": 12.5,
       "Remove": 12.5
     },
-    "runtime_gate": {
-      "startup_main_menu_lobby": "OPEN",
-      "exact_bcmer_1_71_0_load": "OPEN",
-      "eight_eventtype_runtime_weights_present": "OPEN",
-      "eight_eventtype_runtime_weights_equal": "OPEN",
-      "normal_bcmer_event_execution": "OPEN",
-      "accepted_s1_42ab_regression_check": "OPEN",
-      "leader_null": "MUST_BE_0",
-      "fatal": "MUST_BE_0",
-      "work_no_task": "EXPECTED_0"
+    "observed_final_runtime_weights": {
+      "Insane": 6843,
+      "VeryBad": 506,
+      "Bad": 355,
+      "Neutral": 1368,
+      "Good": 1244,
+      "VeryGood": 2737,
+      "Rare": 27375,
+      "Remove": 883
     }
   },
-  "controllers": {
-    "buildspec_target_idle_id": "IDLE_AFTER_S1.42AC_BUILD_AWAITING_RUNTIME_VALIDATION",
-    "buildspec_base_profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
-    "buildspec_base_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
-    "runtime_active_build": "S1.42AC",
+  "current_controllers": {
+    "buildspec_target_idle_id": "IDLE_AFTER_S1.42AC_RUNTIME_REJECTION_ANALYSIS_REQUIRED",
+    "buildspec_base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
+    "buildspec_base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
+    "runtime_active_build": "S1.42AB",
     "successor_armed": false
   },
   "repository_overhaul": {
     "status": "PLANNED_BINDING_NOT_EXECUTED",
+    "canonical_start": "OVERHAUL_START_HERE_ChatGPT.txt",
     "canonical_plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
-    "machine_requirements": "Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json",
-    "purpose": "Deterministic limited-context ChatGPT retrieval, authority routing, build lineage, knowledge map, broken-link/orphan validation and answerability regression tests.",
-    "must_not_disturb_active_gate": true
+    "execution_playbook": "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md",
+    "machine_requirements": "Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json"
   },
-  "exact_next_step": "Import S1.42AC into Gale with the canonical ReplaceActiveGaleProfile.ps1 helper, then run one normal Offense gameplay round. After the run upload the complete fresh LogOutput.log with the exact S1.42AC uploader in Current/103. Acceptance requires all eight BCMER Set eventType weight runtime values in the same roll context to be equal, plus no material regression."
+  "current_exact_next_step": "Use Current/Projektstatus_S1.42AC_REJECTED.json. Inspect the exact BCMER 1.71.0 final EventType-weight calculation before planning/arming any successor."
 }
