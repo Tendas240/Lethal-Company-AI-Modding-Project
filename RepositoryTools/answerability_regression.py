@@ -27,6 +27,33 @@ def tokens(text: str) -> set[str]:
     return {t for t in norm(text).split() if t not in STOP and len(t) > 1}
 
 
+def token_equivalent(a: str, b: str) -> bool:
+    """Match exact tokens plus conservative German-style inflection variants.
+
+    The router is deliberately lightweight, but ordinary takeover questions should not
+    route differently only because an adjective changes from e.g. "aktueller" to
+    "aktuelle". Require a long common stem and allow only a short suffix difference.
+    """
+    if a == b:
+        return True
+    prefix = 0
+    for ca, cb in zip(a, b):
+        if ca != cb:
+            break
+        prefix += 1
+    return prefix >= 5 and (len(a) - prefix) <= 2 and (len(b) - prefix) <= 2
+
+
+def semantic_overlap(query_tokens: set[str], phrase_tokens: set[str]) -> tuple[int, int]:
+    matched_query_tokens = {
+        q for q in query_tokens
+        if any(token_equivalent(q, p) for p in phrase_tokens)
+    }
+    # Character weight breaks one-token ties in favor of the more informative query
+    # token (e.g. "verworfen" over the generic token "build").
+    return len(matched_query_tokens), sum(len(q) for q in matched_query_tokens)
+
+
 def score(query: str, topic: dict) -> tuple[int, int, str]:
     nq = norm(query)
     qtokens = tokens(query)
@@ -38,10 +65,11 @@ def score(query: str, topic: dict) -> tuple[int, int, str]:
             continue
         ptokens = tokens(np)
         exact_phrase = np in nq
-        overlap = len(qtokens & ptokens)
-        # Exact semantic phrases dominate. Otherwise reward token coverage and specificity.
+        overlap, overlap_weight = semantic_overlap(qtokens, ptokens)
+        # Exact semantic phrases dominate. Otherwise reward token coverage; on an equal
+        # overlap count, prefer the phrase matching more informative query tokens.
         primary = (1000 if exact_phrase else 0) + overlap * 100
-        secondary = len(ptokens) * 10 + len(np)
+        secondary = overlap_weight * 100 - len(ptokens)
         candidate = (primary, secondary, np)
         if candidate > best:
             best = candidate
