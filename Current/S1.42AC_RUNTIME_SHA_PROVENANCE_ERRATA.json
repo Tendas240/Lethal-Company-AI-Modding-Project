@@ -10,6 +10,16 @@
   "rule": "The superseded SHA-256 may appear on current main only when the occurrence is locally marked as superseded/erratum/incorrect historical metadata or the containing historical document is explicitly enumerated in historical_document_errata below. It must never be treated as the authoritative raw runtime-log hash.",
   "historical_document_errata": [
     {
+      "path": "Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+      "classification": "HISTORICAL_CANDIDATE_RECORD_SUPERSEDED_SHA_METADATA",
+      "note": "The historical candidate record preserves the runtime-log SHA value recorded before the later byte-provenance correction. That value is superseded by the RuntimeEvidence INDEX authority and must not be used as current byte provenance."
+    },
+    {
+      "path": "BuildSpecs/S1.42AC_PLAN.md",
+      "classification": "HISTORICAL_EXECUTED_PLAN_SUPERSEDED_SHA_METADATA",
+      "note": "The executed historical build plan preserves a post-run SHA value recorded before the later byte-provenance correction. That value is superseded by the RuntimeEvidence INDEX authority and must not be used as current byte provenance."
+    },
+    {
       "path": "Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md",
       "classification": "HISTORICAL_HANDOVER_SUPERSEDED_SHA_METADATA",
       "note": "The body preserves the raw-log SHA value recorded at that handover. That value is superseded by the RuntimeEvidence INDEX authority and must not be used as current byte provenance."
