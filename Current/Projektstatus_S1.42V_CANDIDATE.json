@@ -1,0 +1,207 @@
+{
+  "date": "2026-09-04",
+  "game": "Lethal Company V81",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "status": "S1.42V_BUILD_PASS_AWAITING_RUNTIME_VALIDATION_S1.42U_REMAINS_ACCEPTED",
+  "accepted_gameplay_baseline": {
+    "build": "S1.42U",
+    "name": "BCMER 1.71.0 Reactivation Gate",
+    "profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
+    "sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
+    "status": "runtime_accepted_full_normal_stack",
+    "acceptance_doc": "Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md",
+    "final_handover": "Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md",
+    "actions_run_id": 33818241873,
+    "build_commit": "29e7b36c3d09ff37551894438744d67089d7aba4"
+  },
+  "latest_built_candidate": {
+    "build": "S1.42V",
+    "name": "Post-BCMER Balance Tuning",
+    "profile": "Profiles/LC V1 S1.42V Post-BCMER Balance Tuning.r2z",
+    "sha256": "06390fc2faaf5ef30918efb077a1728c75864777c79a084855ed4dc3e69b3f0d",
+    "status": "build_pass_runtime_validation_required",
+    "accepted": false,
+    "candidate_doc": "Current/81_S1.42V_BUILD_CANDIDATE_JETPACK_SNAIL_MICROWAVE.md",
+    "plan": "BuildSpecs/S1.42V_PLAN.md",
+    "actions_run_id": 33859188647,
+    "build_commit": "1f5dd23eeb5b23d565af624fd97b78dcea58b784",
+    "snapshot": "ProfileSources/S1.42V/"
+  },
+  "s142v_build": {
+    "base_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
+    "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
+    "output_profile": "Profiles/LC V1 S1.42V Post-BCMER Balance Tuning.r2z",
+    "output_sha256": "06390fc2faaf5ef30918efb077a1728c75864777c79a084855ed4dc3e69b3f0d",
+    "zip_members": 332,
+    "changed_existing_members": [
+      "BepInEx/config/dev.idjut.SnailFork.cfg",
+      "export.r2x",
+      "BepInEx/config/CodeRebirth.cfg"
+    ],
+    "added_members": [
+      "BepInEx/plugins/S142VJetpackAcceleration/S142VJetpackAcceleration.dll"
+    ],
+    "mod_state_changes": [],
+    "mod_additions": [],
+    "mod_removals": [],
+    "workflow_result": "success"
+  },
+  "s142v_changes": {
+    "immortal_snail": {
+      "config": "BepInEx/config/dev.idjut.SnailFork.cfg",
+      "rarity_before": 80,
+      "rarity_after": 40,
+      "max_snails": 2
+    },
+    "functional_microwave": {
+      "config": "BepInEx/config/CodeRebirth.cfg",
+      "volume_before": 0.7,
+      "volume_after": 0.5,
+      "spawn_rarity_changed": false
+    },
+    "jetpack": {
+      "project": "Patches/S142VJetpackAcceleration/",
+      "plugin_guid": "tendas.lethalcompany.s142vjetpackacceleration",
+      "plugin_version": "1.0.0",
+      "archive_path": "BepInEx/plugins/S142VJetpackAcceleration/S142VJetpackAcceleration.dll",
+      "dll_sha256": "084fe47b5e47d3637fbb6d4fdd735429a37934993fc190fb4b6abbc51eada00c",
+      "target_type": "JetpackItem",
+      "target_method": "Update()",
+      "field": "jetpackAcceleration",
+      "base_before": 10.0,
+      "base_after": 12.0,
+      "percent_increase": 20,
+      "always_on": true,
+      "local_player_only": true,
+      "harmony_after_owner": "butterystancakes.lethalcompany.butterybalance",
+      "replace_only_expected_10f_value": true,
+      "fail_closed": true,
+      "new_rpc_or_network_state": false
+    }
+  },
+  "jetpack_compatibility_contract": {
+    "butterybalance": {
+      "guid": "butterystancakes.lethalcompany.butterybalance",
+      "version": "0.7.0",
+      "control_scheme": "V49",
+      "warmup_period": false,
+      "base_owner": true
+    },
+    "jetpackfixes": {
+      "guid": "butterystancakes.lethalcompany.jetpackfixes",
+      "version": "1.6.3",
+      "mid_air_explosions": "Off",
+      "writes_jetpack_acceleration": false,
+      "collision_death_logic_preserved": true
+    },
+    "more_ship_upgrades": {
+      "guid": "com.malco.lethalcompany.moreshipupgrades",
+      "version": "3.14.1",
+      "jet_fuel_initial_acceleration_increase": 20,
+      "jet_fuel_incremental_acceleration_increase": 20,
+      "jet_fuel_scope": "purchase_gated_percentage_layer",
+      "jetpack_thrusters_scope": "separate_maximum_speed_layer",
+      "values_changed_in_s142v": false
+    }
+  },
+  "preserved_state": {
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+    "bcmer_version": "1.71.0",
+    "bcmer_enabled": true,
+    "enemy_isolation_enabled": false,
+    "compatibility_plugin_version": "1.3.14",
+    "compatibility_dll_sha256": "3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960",
+    "thumper_bite_limit": 3,
+    "crawler_in_attack_blacklist": false,
+    "puffer_can_poison_pikmin": false,
+    "baboonbird_pikmin_enemy_component_enabled": true,
+    "native_pikminenemy_lifecycle_preserved": true,
+    "normal_enemy_population_restored": true,
+    "consistent_spawn_times": true,
+    "unrelated_existing_archive_members_byte_preserved_by_builder": true
+  },
+  "moon_spawn_restore": {
+    "candidate_file": "ProfileSources/S1.42V/BepInEx/config/LethalLevelLoader.cfg",
+    "accepted_reference": "ProfileSources/S1.42U/BepInEx/config/LethalLevelLoader.cfg",
+    "canonical_baseline": "ProfileSources/S1.42C/BepInEx/config/LethalLevelLoader.cfg",
+    "s142u_git_blob_sha": "14dcd076692cbc54e073ad281a63d046b0976e00",
+    "changed_by_s142v_build": false,
+    "repair_required": false
+  },
+  "runtime_gate": {
+    "status": "open",
+    "active_build": "S1.42V",
+    "candidate_profile": "Profiles/LC V1 S1.42V Post-BCMER Balance Tuning.r2z",
+    "required_checks": [
+      "startup/main menu succeeds",
+      "S1.42V Jetpack Acceleration v1.0.0 validates dependencies and Harmony owners and logs armed",
+      "no Harmony target/transpiler/ordering exception",
+      "BCMER 1.71.0 remains healthy",
+      "Compatibility Fixes 1.3.14 remains healthy",
+      "normal enemies still spawn",
+      "base Jetpack acceleration is modestly higher",
+      "V49 inertia/handling is unchanged",
+      "no unintended maximum-speed/power change",
+      "takeoff/release/safe landing/hard collision/high-speed ground touch remain sane",
+      "repeated Jetpack flights show no state accumulation or random mid-air explosion",
+      "Immortal Snail works with Rarity 40 and Max Snails 2",
+      "Functional Microwave works and is audibly lower at Volume 0.5",
+      "Jet Fuel remains a separate percentage layer if tested",
+      "Work/no-task count remains 0",
+      "Leader-null count remains 0",
+      "no new compatibility exception flood",
+      "fresh complete runtime log is ingested"
+    ],
+    "promotion_rule": "S1.42U remains accepted canonical baseline until this runtime gate passes"
+  },
+  "post_s142v_sequence": [
+    {
+      "stage": "environment_interior_tuning",
+      "build_id": null,
+      "items": [
+        "equal probability for all installed interiors and same rule for newly added interiors",
+        "CullFactory exceptions for junkrooms and shatteredrooms",
+        "Mausoleum fog reduction",
+        "CodeRebirth Microwave rarity reduction"
+      ]
+    },
+    {
+      "stage": "bcmer_eventtype_balancing",
+      "build_id": null,
+      "items": [
+        "fixed equal distribution: 8 EventTypes x 12.5%"
+      ]
+    },
+    {
+      "stage": "final_s142_full_stack_acceptance",
+      "build_id": null,
+      "promotion_rule": "promote only after all independent tuning gates and final long full-stack runtime pass"
+    }
+  ],
+  "build_controller": {
+    "path": "BuildSpecs/current.json",
+    "enabled": false,
+    "build_id": "IDLE_AFTER_S1.42V_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "base_profile": "Profiles/LC V1 S1.42V Post-BCMER Balance Tuning.r2z",
+    "base_sha256": "06390fc2faaf5ef30918efb077a1728c75864777c79a084855ed4dc3e69b3f0d",
+    "successor_armed": false
+  },
+  "runtime_route": {
+    "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+    "value": "S1.42V"
+  },
+  "known_nonfunctional_drift": [
+    "Current/02_TECHNICAL_BASELINE.md contains older chronology subsections with stale local current wording",
+    "Patches/S139CompatibilityFixes/Plugin.cs contains historical comments that do not perfectly describe accepted v1.3.14 behavior"
+  ],
+  "handover": {
+    "current_state": "Current/00_CURRENT_STATE.md",
+    "handover_core": "Current/01_HANDOVER_CORE.md",
+    "candidate_record": "Current/81_S1.42V_BUILD_CANDIDATE_JETPACK_SNAIL_MICROWAVE.md",
+    "s142u_final_handover": "Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md",
+    "s142u_repository_audit": "Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md",
+    "local_repo_clone_required": false,
+    "manual_local_build_required": false,
+    "manual_user_action_now": "runtime test S1.42V and commit fresh complete log"
+  }
+}
