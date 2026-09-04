@@ -1,7 +1,7 @@
 # Gale Active Profile Replacement Workflow — Permanent
 
 **Date:** 2026-09-04  
-**Status:** USER-VALIDATED / CANONICAL / BINDING CHAT UX
+**Status:** CANONICAL / BINDING CHAT UX / BASE FLOW USER-VALIDATED / MISSING-PROFILE UIA REVISION USER-VALIDATION PENDING
 
 ## Purpose
 
@@ -14,6 +14,10 @@ Canonical implementation:
 Historical candidate/validation record:
 
 `Current/92_GALE_ACTIVE_PROFILE_REPLACEMENT_HELPER_CANDIDATE.md`
+
+Current missing-profile revision record:
+
+`Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`
 
 ## Mandatory ChatGPT behavior
 
@@ -32,11 +36,11 @@ Therefore every new ready-to-test build response must provide both:
 1. the canonical Gale active-profile replacement launcher above;
 2. the exact build-specific `LogOutput.log` uploader for that candidate.
 
-## Validated behavior
+## Historically validated base behavior
 
-The final y/n implementation was successfully tested under Windows PowerShell 5.1 on 2026-09-04 using a disposable local Gale profile named `testpowershell` while S1.42AA was active.
+The y/n implementation was successfully tested under Windows PowerShell 5.1 on 2026-09-04 using a disposable local Gale profile named `testpowershell` while S1.42AA was active.
 
-Validated flow:
+The historically validated portion is:
 
 1. close Gale;
 2. read the active build from `RuntimeInbox/ACTIVE_BUILD.txt`;
@@ -54,6 +58,40 @@ Validated flow:
 
 If the user answers `n`, the selected local profile is not deleted and the temporary downloaded `.r2z` is cleaned up.
 
+## Missing-profile startup gate discovered during S1.42AB
+
+A later real replacement attempt exposed an additional Gale behavior that the disposable test did not fully exercise:
+
+- deleting a profile directory outside Gale leaves Gale's internal profile record behind;
+- on the next Gale startup, Gale intentionally opens a non-dismissible `Missing Profiles` dialog;
+- each missing profile must be resolved with `Locate` or `Delete`, then `Submit`;
+- while that dialog is open, the normal `.r2z` profile-import dialog can be blocked.
+
+Current Gale source confirms this is an intentional recovery flow. The delete choice uses Gale's `forgetProfile` path; direct external SQLite editing is therefore not part of the project workflow.
+
+## Current canonical missing-profile handling
+
+After deleting the explicitly selected local profile and opening the already SHA-verified `.r2z`, the helper now performs a best-effort targeted Windows UI Automation pass.
+
+Automatic `Delete -> Submit` is permitted only when all of the following hold:
+
+1. Windows UI Automation is available;
+2. a Gale window is detected;
+3. `Missing Profiles` is visible;
+4. the exact selected/deleted profile name is visible;
+5. exactly one visible `Select an action` controller exists;
+6. exactly one visible `Delete` option is exposed;
+7. exactly one visible `Submit` control is exposed;
+8. the dialog disappears after submission.
+
+This is intentionally **not** screen-coordinate automation and **not** blind keyboard navigation.
+
+If any check fails or more than one missing profile is present, the helper does not automatically delete anything. It falls back to a manual instruction for the user to resolve the intended profile using `Delete -> Submit`, waits for confirmation, and then continues.
+
+After the blocking missing-profile dialog is resolved, the helper re-opens the same downloaded and SHA-verified `.r2z` to ensure the import event is delivered after the modal gate is gone.
+
+The new UI-Automation branch is implemented but remains **user-validation pending** until the user confirms the revised flow in Gale. The older download/hash/selection/y-n safety flow remains validated.
+
 ## Safety requirements
 
 Preserve these properties in future revisions:
@@ -61,14 +99,17 @@ Preserve these properties in future revisions:
 - do not fuzzy-match build IDs or profile names;
 - require `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
 - download and verify SHA-256 before offering deletion;
-- keep destructive deletion behind explicit user confirmation;
+- keep destructive local-profile deletion behind explicit user confirmation;
 - do not reintroduce the case-sensitive `LOESCHEN` flow;
 - remain compatible with Windows PowerShell 5.1;
 - do not use `$matches` as a normal variable because PowerShell's automatic `$Matches` variable is case-insensitive;
-- do not automate `Advanced options -> Import all files` through blind GUI keystrokes unless separately proven safe.
+- do not directly edit Gale's `data.sqlite3` as part of the canonical helper;
+- never automatically resolve multiple missing profiles;
+- never use screen-coordinate clicks or blind `Tab`/`Enter` sequences for the missing-profile flow;
+- do not automate `Advanced options -> Import all files` through GUI automation unless separately proven safe and explicitly approved.
 
 ## Current manual boundary
 
-The helper opens the `.r2z`, but the user still explicitly enables `Advanced options -> Import all files` and completes the Gale import. This is intentional and remains the safe project contract.
+The helper may resolve the single known missing-profile startup gate, but the user still explicitly enables `Advanced options -> Import all files` and completes the actual Gale profile import. This is intentional and remains the safe project contract.
 
-Any future change to this workflow must be documented and revalidated before replacing `RuntimeTools/ReplaceActiveGaleProfile.ps1` as the canonical implementation.
+Any future change to this workflow must be documented and revalidated before its new behavior is described as user-validated.
