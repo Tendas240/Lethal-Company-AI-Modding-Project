@@ -158,8 +158,10 @@ def validate_current_state() -> None:
         active_build = ""
     else:
         active_build = active_build_path.read_text(encoding="utf-8").strip()
-    if active_build != accepted.get("build_id"):
-        fail(f"ACTIVE_BUILD mismatch: {active_build!r} != {accepted.get('build_id')!r}")
+
+    lineage_ids = {b.get("id") for b in lineage.get("builds", []) if b.get("id")}
+    if active_build and active_build not in lineage_ids:
+        fail(f"ACTIVE_BUILD references unknown build lineage id: {active_build!r}")
     if controllers.get("runtime_active_build") != active_build:
         fail("CURRENT_STATE controller runtime_active_build mismatch")
 
@@ -357,7 +359,6 @@ def main() -> int:
     validate_authority_and_migration()
     validate_bootstrap()
     validate_overhaul_completion_metadata()
-
     print("Repository knowledge architecture validation")
     print(f"errors={len(ERRORS)} warnings={len(WARNINGS)}")
     for message in WARNINGS:

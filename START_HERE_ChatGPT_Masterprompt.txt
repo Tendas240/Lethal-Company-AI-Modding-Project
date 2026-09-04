@@ -37,13 +37,13 @@ CURRENT EXECUTION STATE
 - successor armed: NO
 - BuildSpecs/current.json enabled: false
 - build controller id: IDLE_AFTER_S1.42AC_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED
-- RuntimeInbox/ACTIVE_BUILD.txt: S1.42AB
+- RuntimeInbox/ACTIVE_BUILD.txt: S1.42AC
 
 EXACT NEXT ACTION
-If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
+Upload and ingest the just-completed S1.42AC runtime log, then reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
 
 RUNTIME-TEST UX RULE
-Whenever a future runtime test is outstanding, the same response that explains the test MUST include the exact build-specific one-line PowerShell log uploader. There is no uploader to run now because no runtime test is pending.
+Whenever a future runtime test is outstanding, the same response that explains the test MUST include the exact build-specific one-line PowerShell log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
 
 PERMANENT POLICY ROUTES
 - Chat handover: Current/HANDOVER_PREPARATION_PROMPT.md

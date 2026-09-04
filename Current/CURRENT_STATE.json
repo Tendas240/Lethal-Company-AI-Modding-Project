@@ -32,7 +32,7 @@
   },
   "active_candidate": null,
   "runtime_test_outstanding": false,
-  "next_action": "If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.",
+  "next_action": "Upload and ingest the just-completed S1.42AC runtime log, then reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
@@ -40,7 +40,7 @@
     "build_base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
     "build_base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",
-    "runtime_active_build": "S1.42AB"
+    "runtime_active_build": "S1.42AC"
   },
   "canonical_navigation": {
     "bootstrap": "START_HERE_ChatGPT_Masterprompt.txt",

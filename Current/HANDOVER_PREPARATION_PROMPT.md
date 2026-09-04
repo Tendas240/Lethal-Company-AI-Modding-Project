@@ -73,6 +73,7 @@ Before producing the handover, independently verify:
   - latest built artifact;
   - active candidate;
   - runtime-test state;
+  - runtime-active/evidence-attribution build;
   - successor/build-controller state;
   - exact next action;
 - that build/profile/runtime hashes used in the handover come from current authority/evidence rather than stale historical prose;
@@ -97,14 +98,16 @@ If genuine drift or missing handover-critical information exists:
 
 If a repository change also changes the canonical machine state, update `Current/CURRENT_STATE.json` first and regenerate renderer-controlled navigation through `RepositoryTools/render_current_navigation.py` rather than hand-editing generated files independently.
 
-## Step 4 — Preserve runtime-test UX
+## Step 4 — Preserve runtime-test and completed-log UX
 
-If **no runtime test is outstanding**, do not ask for a log upload and do not provide an unnecessary uploader.
+If **no runtime test is outstanding and no completed run still needs evidence upload**, do not ask for a log upload and do not provide an unnecessary uploader.
 
 If a runtime test **is** outstanding, the same response that explains what the user must test must also provide:
 
 1. the canonical repository-driven Gale replacement/import PowerShell one-liner when applicable;
 2. the exact build-specific self-contained PowerShell one-line runtime-log uploader.
+
+If the runtime test is already complete but its log has not yet been ingested, provide the exact build-specific uploader for the build identified by `RuntimeInbox/ACTIVE_BUILD.txt` and do **not** ask the user to repeat the run solely because evidence submission is pending. `ACTIVE_BUILD` controls runtime-evidence attribution; it is not acceptance authority and may differ from the accepted baseline.
 
 Use `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` and `Knowledge/GALE_PROFILE_WORKFLOW.md` as authority for that workflow.
 
@@ -125,9 +128,10 @@ Give a compact but complete final state including:
 - latest built artifact with profile path, SHA-256 and acceptance/rejection/pending status;
 - active candidate;
 - runtime-test state;
+- runtime-active/evidence-attribution build;
+- whether a completed runtime log still needs upload/ingest;
 - successor/build-controller state;
 - exact next project action;
-- current runtime active-build controller;
 - relevant current authority files;
 - relevant known supersessions/errata that a new chat must not misread;
 - remaining non-blocking integrity qualifications or optional governance points that materially matter;
@@ -145,7 +149,7 @@ The new-chat prompt must:
 - give the new chat the exact initial read order for current canonical files;
 - include the final verified `main` commit and relevant green CI run;
 - state the actual accepted baseline, latest built artifact and their current authoritative hashes/statuses;
-- state active candidate, runtime-test state and successor/build-controller state;
+- state active candidate, runtime-test state, runtime-active/evidence-attribution build and successor/build-controller state;
 - state the exact next project action;
 - name the canonical topic/evidence that governs that next action;
 - include any current errata/supersession facts that would otherwise cause a likely wrong interpretation;
@@ -153,6 +157,7 @@ The new-chat prompt must:
 - explicitly tell the new chat to route normal project questions through `Current/PROJECT_KNOWLEDGE_MAP.md/.json` rather than re-auditing the whole repository by default;
 - explicitly tell the new chat not to require local clone/build work while repository-native infrastructure is sufficient;
 - explicitly preserve the future runtime-test UX rule requiring the exact PowerShell uploader in the same response as test instructions;
+- explicitly preserve the completed-log rule: if a run is already complete but its log is pending, provide the uploader for `RuntimeInbox/ACTIVE_BUILD.txt` without requiring another run;
 - explicitly tell the new chat that **when the user later signals another handover, it must execute `Current/HANDOVER_PREPARATION_PROMPT.md`**;
 - be self-contained enough that the new chat does not need access to the previous conversation.
 
@@ -163,6 +168,7 @@ The new-chat prompt may include additional topic-specific files if the current e
 During handover:
 
 - never promote a rejected build implicitly because a later analysis corrected only part of its rejection rationale;
+- never treat `RuntimeInbox/ACTIVE_BUILD.txt` as acceptance authority; it is the runtime-active/evidence-attribution controller;
 - never treat a historical handover, candidate record or old project-status snapshot as current authority merely because it says `current`;
 - never fabricate missing historical provenance/checkpoints;
 - never replace a superseded historical concrete value in retained history merely to make search results look clean; use explicit errata/supersession authority;
@@ -180,6 +186,7 @@ Review and update it when any of the following changes:
 - Knowledge Map or Document Authority routing;
 - branch/PR/CI handover policy;
 - runtime-test uploader/import UX requirements;
+- completed-run evidence-upload semantics;
 - required integrity/audit preflight;
 - required fields in the generated new-chat start prompt.
 

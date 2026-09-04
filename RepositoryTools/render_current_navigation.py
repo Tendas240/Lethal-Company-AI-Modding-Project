@@ -114,7 +114,7 @@ EXACT NEXT ACTION
 {s['next_action']}
 
 RUNTIME-TEST UX RULE
-Whenever a future runtime test is outstanding, the same response that explains the test MUST include the exact build-specific one-line PowerShell log uploader. There is no uploader to run now because no runtime test is pending.
+Whenever a future runtime test is outstanding, the same response that explains the test MUST include the exact build-specific one-line PowerShell log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
 
 PERMANENT POLICY ROUTES
 - Chat handover: {h}
@@ -183,7 +183,7 @@ The old S1.42AC equality gate misread BCMER's logged values as aggregate EventTy
 
 {s['next_action']}
 
-No PowerShell uploader is required now because no runtime test is pending.
+No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
@@ -235,7 +235,7 @@ Exact next action: {s['next_action']}
 
 ## Mandatory runtime-test UX
 
-Whenever a future runtime test becomes outstanding, the response that explains what to test must include the exact build-specific one-line PowerShell log uploader in the same response.
+Whenever a future runtime test becomes outstanding, the response that explains what to test must include the exact build-specific one-line PowerShell log uploader in the same response. If a run is already complete but its log is not yet ingested, provide the uploader for the runtime-active build without requiring another test run.
 
 ## Historical authority warning
 

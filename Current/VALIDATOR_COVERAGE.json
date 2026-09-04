@@ -6,19 +6,19 @@
   "validators": [
     {
       "path": "RepositoryTools/render_current_navigation.py",
-      "checks": ["Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json.", "Generated bootstrap/takeover files expose the current handover-preparation route stored in Current/CURRENT_STATE.json."],
+      "checks": ["Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json.", "Generated bootstrap/takeover files expose the current handover-preparation route stored in Current/CURRENT_STATE.json.", "Generated runtime UX distinguishes a pending future test from upload of an already-completed run."],
       "scan_scope": ["README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/00_CURRENT_STATE.md", "Current/01_HANDOVER_CORE.md", "Current/CURRENT_STATE.json", "Current/HANDOVER_PREPARATION_PROMPT.md path reference"],
       "does_not_check": ["Gameplay correctness", "profile/runtime artifact bytes", "historical provenance outside generated outputs", "whether an arbitrary uncommitted handover response contains truthful current facts"]
     },
     {
       "path": "RepositoryTools/knowledge_architecture_validator.py",
-      "checks": ["Current-state/controller/lineage consistency", "canonical path existence", "Knowledge topic routing/orphans", "runtime metadata-chain consistency"],
-      "scan_scope": ["Current state and authority metadata", "Current/PROJECT_KNOWLEDGE_MAP.json canonical targets", "Knowledge/*.md", "ProfileSources current indexes", "RuntimeEvidence indexes"],
-      "does_not_check": ["Actual profile .r2z byte hashes", "actual raw runtime-log byte hashes", "all repository-wide superseded-value occurrences", "complete handover-workflow cross-link contract"]
+      "checks": ["Current-state/controller/lineage consistency", "RuntimeInbox/ACTIVE_BUILD.txt matches CURRENT_STATE.controllers.runtime_active_build and references a known build-lineage ID without being forced to equal the accepted baseline", "canonical path existence", "Knowledge topic routing/orphans", "runtime metadata-chain consistency"],
+      "scan_scope": ["Current state and authority metadata", "RuntimeInbox/ACTIVE_BUILD.txt", "Current/BUILD_LINEAGE.json", "Current/PROJECT_KNOWLEDGE_MAP.json canonical targets", "Knowledge/*.md", "ProfileSources current indexes", "RuntimeEvidence indexes"],
+      "does_not_check": ["Whether the user's local Gale installation actually contains the build named by ACTIVE_BUILD except insofar as the repository state was updated from user/runtime evidence", "Actual profile .r2z byte hashes", "actual raw runtime-log byte hashes", "all repository-wide superseded-value occurrences", "complete handover-workflow cross-link contract"]
     },
     {
       "path": "RepositoryTools/handover_workflow_validator.py",
-      "checks": ["Canonical handover prompt exists", "CURRENT_STATE points to the canonical handover prompt", "README/START_HERE/Current-01 expose the handover route", "machine and human Knowledge Maps expose chat_handover", "Document Authority registers exactly one CURRENT_HANDOVER_WORKFLOW authority", "answerability suite contains the explicit handover trigger case", "handover prompt retains required two-part output/runtime/fresh-state contract"],
+      "checks": ["Canonical handover prompt exists", "CURRENT_STATE points to the canonical handover prompt", "README/START_HERE/Current-01 expose the handover route", "machine and human Knowledge Maps expose chat_handover", "Document Authority registers exactly one CURRENT_HANDOVER_WORKFLOW authority", "answerability suite contains the explicit handover trigger case", "handover prompt retains required two-part output/runtime/fresh-state contract", "handover prompt preserves completed-run log-upload handling and runtime-active/evidence-attribution semantics"],
       "scan_scope": ["Current/HANDOVER_PREPARATION_PROMPT.md", "Current/CURRENT_STATE.json", "README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/01_HANDOVER_CORE.md", "Current/PROJECT_KNOWLEDGE_MAP.md", "Current/PROJECT_KNOWLEDGE_MAP.json", "Current/DOCUMENT_AUTHORITY.json", "RepositoryTools/answerability_cases.json"],
       "does_not_check": ["Truth of the future handover response before it is produced", "GitHub Actions run status at the moment a future user triggers handover", "gameplay semantics"]
     },
