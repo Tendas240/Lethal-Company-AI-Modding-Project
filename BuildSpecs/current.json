@@ -1,6 +1,7 @@
 {
   "enabled": true,
   "build_id": "S1.42AB",
+  "request_revision": 2,
   "base_profile": "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z",
   "base_sha256": "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4",
   "output_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
