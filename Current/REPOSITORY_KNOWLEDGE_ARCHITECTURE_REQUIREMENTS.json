@@ -1,10 +1,35 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "date": "2026-09-04",
   "status": "PLANNED_BINDING_NOT_EXECUTED",
   "canonical_plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
   "purpose": "Make repository knowledge deterministically discoverable for fresh ChatGPT sessions with limited context.",
   "current_gate_must_not_be_disturbed": "S1.42AC runtime validation",
+  "pre_overhaul_backup_gate": {
+    "required": true,
+    "must_complete_before_first_structural_overhaul_change": true,
+    "standalone_repository_required": true,
+    "same_repository_branch_or_tag_alone_is_sufficient": false,
+    "preferred_backup_method": "mirror-style repository copy preserving Git history, branches and tags where technically practical",
+    "freeze_source_default_branch_commit": true,
+    "backup_must_be_verified": true,
+    "backup_must_be_marked_historical_read_only": true,
+    "backup_must_not_be_current_source_of_truth": true,
+    "primary_repository_manifest": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
+    "manifest_required_fields": [
+      "source_repository",
+      "frozen_source_commit_sha",
+      "backup_repository",
+      "backup_default_branch_commit_sha",
+      "backup_datetime",
+      "backup_method",
+      "history_branches_tags_preserved",
+      "verification_result",
+      "exclusions_or_limitations"
+    ],
+    "backup_repository_should_cross_reference_primary": true,
+    "recovery_purpose": "Preserve the complete pre-overhaul repository and information architecture as an independent recovery reference."
+  },
   "retrieval_path": [
     "bootstrap",
     "current_state_and_knowledge_map",
@@ -12,6 +37,7 @@
     "evidence_config_code_or_history"
   ],
   "required_artifacts": [
+    "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
     "Current/PROJECT_KNOWLEDGE_MAP.md",
     "Current/PROJECT_KNOWLEDGE_MAP.json",
     "human_and_machine_readable_build_lineage",
@@ -37,7 +63,8 @@
     "black_mesa_pikmin_routing",
     "roadmap_and_deferred_scopes",
     "patch_safety_policy",
-    "repository_overhaul"
+    "repository_overhaul",
+    "pre_overhaul_backup_and_recovery"
   ],
   "document_metadata": [
     "Status",
@@ -51,6 +78,9 @@
     "Last-Validated"
   ],
   "acceptance_invariants": {
+    "pre_overhaul_backup_repository_verified": true,
+    "pre_overhaul_backup_manifest_present": true,
+    "first_structural_overhaul_commit_occurs_after_backup_checkpoint": true,
     "max_hops_from_bootstrap_to_major_current_topic": 3,
     "broken_internal_references": 0,
     "orphan_canonical_current_documents": 0,
@@ -65,6 +95,9 @@
     "ci_knowledge_validation_passes": true
   },
   "validator_checks": [
+    "standalone pre-overhaul backup repository exists and is verified",
+    "pre-overhaul backup manifest records source and backup provenance",
+    "frozen source checkpoint predates first structural overhaul change",
     "canonical referenced paths exist",
     "knowledge map targets exist",
     "no orphan canonical/current documents",
@@ -90,7 +123,8 @@
     "Wie werden Interior-Gewichte normalisiert?",
     "Woher kommt die Jetpack-Beschleunigung?",
     "Welche Fehler sind monitor-only?",
-    "Wie importiere ich einen neuen Gale-Build?"
+    "Wie importiere ich einen neuen Gale-Build?",
+    "Wo ist das Repository von vor dem Overhaul gesichert?"
   ],
   "binary_and_large_file_policy": [
     "important future reasoning must not depend only on opaque binary content",
@@ -98,5 +132,5 @@
     "important DLLs require source/readme/build record and SHA256",
     "large logs require indexed RuntimeEvidence summaries while preserving raw evidence"
   ],
-  "overhaul_complete_when": "A fresh ChatGPT session can answer ordinary project questions from a compact bootstrap plus on-demand topic/evidence files, without reading the entire repository or reconciling unclassified historical current wording."
+  "overhaul_complete_when": "A verified independent pre-overhaul repository backup exists, then a fresh ChatGPT session can answer ordinary project questions from a compact bootstrap plus on-demand topic/evidence files, without reading the entire repository or reconciling unclassified historical current wording."
 }
