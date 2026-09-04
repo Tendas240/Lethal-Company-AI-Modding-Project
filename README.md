@@ -6,7 +6,7 @@ GitHub is the canonical source of truth for this project.
 
 Game: **Lethal Company V81**
 
-### Current accepted full-normal-stack baseline
+### Last accepted full-normal-stack baseline
 
 **S1.42U — BCMER 1.71.0 Reactivation Gate**
 
@@ -15,10 +15,6 @@ Game: **Lethal Company V81**
 SHA-256:
 
 `ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969`
-
-Build verification:
-
-`Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
 
 Runtime acceptance:
 
@@ -36,33 +32,134 @@ Evidence:
 
 `RuntimeEvidence/S1.42U/20260904T082412Z/`
 
-Raw log SHA-256:
-
-`0a2e0839b106a7d6f9867d186a835252bc72a869ef63a62517ae1971fd93c5fc`
-
 Runtime verdict:
 
 **PASS — exact BCMER 1.71.0 restored, normal enemy stack retained, no critical compatibility regression or gameplay-visible technical problem.**
 
-S1.42U is both the newest runtime-accepted technical descendant and the newest fully accepted full-normal-stack gameplay baseline.
+S1.42U remains the canonical accepted baseline until S1.42V passes fresh runtime validation.
 
-There is **no newer built candidate**. S1.42V is plan-only and not armed.
+### Newest built candidate
 
-S1.41 remains historical as the previous full-normal-stack baseline. S1.42T remains the clean accepted BCMER-off comparison point from the restoration chain.
+**S1.42V — Post-BCMER Balance Tuning**
 
-## S1.42U runtime highlights
+`Profiles/LC V1 S1.42V Post-BCMER Balance Tuning.r2z`
 
-- BCMER `1.71.0` loads and reports patching completed;
-- S1.39 Compatibility Fixes `1.3.14` loads;
-- EnemyIsolation disabled;
-- `ADDING ENEMY` = 13;
+SHA-256:
+
+`06390fc2faaf5ef30918efb077a1728c75864777c79a084855ed4dc3e69b3f0d`
+
+Status:
+
+**BUILD PASS / RUNTIME VALIDATION REQUIRED / NOT ACCEPTED**
+
+Candidate record:
+
+`Current/81_S1.42V_BUILD_CANDIDATE_JETPACK_SNAIL_MICROWAVE.md`
+
+Machine status:
+
+`Current/Projektstatus_S1.42V_CANDIDATE.json`
+
+Frozen plan / Patch Safety Review:
+
+`BuildSpecs/S1.42V_PLAN.md`
+
+Automated build result:
+
+`Current/AUTO_BUILD_RESULT.json`
+
+GitHub Actions run:
+
+`33859188647` = **success**
+
+Build commit:
+
+`1f5dd23eeb5b23d565af624fd97b78dcea58b784`
+
+The automated builder verified exactly three changed existing archive members (`export.r2x`, Immortal Snail config, CodeRebirth config) and one added project-local Jetpack DLL. No mod package state/add/remove change occurred.
+
+## S1.42V exact scope
+
+### Immortal Snail
+
+- `Rarity = 80 -> 40`;
+- `Max Snails = 2` preserved.
+
+### Functional Microwave
+
+- `Functional Microwave | Volume = 0.7 -> 0.5`;
+- Microwave spawn rarity remains deferred.
+
+### Always-on base Jetpack acceleration
+
+Project source:
+
+`Patches/S142VJetpackAcceleration/`
+
+Injected DLL:
+
+`BepInEx/plugins/S142VJetpackAcceleration/S142VJetpackAcceleration.dll`
+
+DLL SHA-256:
+
+`084fe47b5e47d3637fbb6d4fdd735429a37934993fc190fb4b6abbc51eada00c`
+
+Frozen behavior:
+
+- exact `JetpackItem.Update()` local-player prefix;
+- ordered after ButteRyBalance;
+- proven ButteRyBalance base `jetpackAcceleration = 10f -> 12f` (+20%);
+- only an approximately-10f value is replaced;
+- fail-closed dependency/version/Harmony-owner validation;
+- no fallback target, original-method skip, or extra IL transpiler.
+
+Preserved:
+
+- ButteRyBalance `0.7.0`;
+- `Control Scheme = V49`;
+- `Warmup Period = false`;
+- V49 inertia/handling and deceleration;
+- Jetpack maximum-speed/power layer;
+- battery and price;
+- JetpackFixes `1.6.3` and `MidAirExplosions = Off`;
+- More Ship Upgrades `3.14.1` Jet Fuel `20` initial / `20` incremental purchase-gated layer;
+- More Ship Upgrades Jetpack Thrusters maximum-speed layer.
+
+## Exact next action
+
+**Runtime-test S1.42V. Do not build a successor yet.**
+
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42V`
+
+Import/run:
+
+`LC V1 S1.42V Post-BCMER Balance Tuning`
+
+Because the profile contains project-local DLLs under `BepInEx/plugins/`, import it in Gale with:
+
+**Advanced options -> Import all files**
+
+unless the concrete Gale import flow already guarantees all custom files are retained.
+
+The runtime gate is invalid if either project-local plugin load path is missing. The log must include the established Compatibility Fixes marker and the new S1.42V Jetpack plugin/armed markers before Jetpack behavior can count as tested.
+
+Minimum focus:
+
+- startup/main menu;
+- exact dependency/Harmony-owner validation for the Jetpack patch;
+- no Harmony target/transpiler/ordering exception;
+- BCMER 1.71.0 and Compatibility Fixes 1.3.14 still healthy;
+- normal enemies still spawn;
+- Jetpack accelerates modestly faster without changing V49 handling or maximum-speed behavior;
+- takeoff, release/deactivation, safe landing, hard collision, high-speed ground touch and repeated flights remain sane;
+- no random mid-air explosion/state accumulation;
+- Immortal Snail works at `Rarity = 40`, `Max Snails = 2`;
+- Functional Microwave works and is audibly lower at `Volume = 0.5`;
+- if practical, Jet Fuel still layers as a separate percentage upgrade;
 - Work/no-task = 0;
 - Leader-null = 0;
-- S1.39 Compatibility Fixes Error = 0;
-- Fatal = 0;
-- no crash/freeze;
-- old disconnect-only Pikmin NoticeZone exception did not recur;
-- user reported no gameplay-visible technical issue.
+- no new compatibility exception flood;
+- commit/ingest a fresh complete runtime log.
 
 ## Restored moon/spawn state
 
@@ -70,45 +167,17 @@ S1.42U `LethalLevelLoader.cfg` is byte-identical to the canonical S1.42C restore
 
 `14dcd076692cbc54e073ad281a63d046b0976e00`
 
-This preserves all configured per-moon inside/daytime/nighttime power counts and enemy spawn lists.
+S1.42V did not change this archive member, so the accepted per-moon inside/daytime/nighttime power counts and enemy spawn lists remain byte-identical in the candidate.
 
-SpawnCycleFixes also remains byte-identical to S1.42C and keeps:
+SpawnCycleFixes remains on:
 
 `Consistent Spawn Times = true`
 
-The intended standardized first spawn wave at approximately 07:39 is preserved, including outside/daytime participation rather than the possible vanilla delay while vents are occupied.
+S1.42V did not change that member either.
 
-These systems are verified restore invariants, not current repair tasks.
+These are verified restore invariants, not current repair tasks.
 
-## Exact next stage
-
-**S1.42V — Post-BCMER Balance Tuning**
-
-Plan:
-
-`BuildSpecs/S1.42V_PLAN.md`
-
-Status:
-
-**plan-only / not armed / no S1.42V profile exists.**
-
-Current intended scope:
-
-- ImmortalSnail `Rarity 80 -> 40`, keep `Max Snails = 2`;
-- CodeRebirth Functional Microwave volume currently `0.7`, proposed `0.5` because 0.7 still sounds too loud;
-- modest **always-on base Jetpack acceleration increase**.
-
-### Blocking technical action before building S1.42V
-
-Resolve the exact narrow Jetpack implementation first.
-
-- ButteRyBalance currently uses `Control Scheme = V49`; this is a broad handling/inertia mode and must not be switched merely to fake a small acceleration change.
-- More Ship Upgrades `Jet Fuel` currently uses `20` initial / `20` incremental acceleration but is purchase-gated; do not silently substitute it for an always-on base buff.
-- Identify the actual runtime owner/method/field and interaction with JetpackFixes.
-- If custom code is required, perform the project Patch Safety Review and preferably isolate the risky Jetpack code change from unrelated balance tuning.
-- Freeze the exact delta, then arm/build through the GitHub-native workflow.
-
-## Planned stages after S1.42V
+## Planned stages after S1.42V passes
 
 Later build IDs are intentionally not assigned yet.
 
@@ -127,24 +196,24 @@ Later build IDs are intentionally not assigned yet.
 
 After individual tuning stages pass, perform a longer normal run covering varied enemies, Pikmin lifecycle, BCMER events, interiors, Jetpack and CodeRebirth systems; ingest the complete log and promote only if the full stack remains clean.
 
-Do not reopen isolated-enemy diagnostics or heavy Baboon-Hawk stress unless a later change touches that path or new evidence reopens it.
+Do not silently mix these later stages into S1.42V.
 
 ## ChatGPT — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
-3. `Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md`
-4. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
-5. `Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
-6. `Current/00_CURRENT_STATE.md`
-7. `Current/01_HANDOVER_CORE.md`
-8. `Current/Projektstatus_S1.42U.json`
-9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-10. `BuildSpecs/S1.42V_PLAN.md`
-11. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-12. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
-13. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
-14. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+2. `Current/81_S1.42V_BUILD_CANDIDATE_JETPACK_SNAIL_MICROWAVE.md`
+3. `Current/00_CURRENT_STATE.md`
+4. `Current/01_HANDOVER_CORE.md`
+5. `Current/Projektstatus_S1.42V_CANDIDATE.json`
+6. `BuildSpecs/S1.42V_PLAN.md`
+7. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
+8. `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
+9. `Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md`
+10. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+11. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+12. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+13. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
+14. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
 15. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
 16. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
 17. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
@@ -156,7 +225,7 @@ Chronologically newer confirmed documents override older version-specific handov
 ## Permanent anti-regression state
 
 - exact BCMER 1.71.0 stays enabled unless a controlled diagnostic gate explicitly says otherwise;
-- compatibility plugin v1.3.14 / DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
+- Compatibility Fixes v1.3.14 / DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
 - EnemyIsolation off;
 - `Thumper Bite Limit = 3`;
 - Crawler absent from Attack Blacklist;
@@ -169,15 +238,19 @@ Patch policy:
 
 ## Gale import / project-local DLL guard
 
-The accepted profile contains the project-local Compatibility Fixes DLL. When importing S1.42U or any successor profile that carries this DLL in Gale, use:
+For S1.42V, Gale must retain both project-local DLL paths contained by the exported profile. Use:
 
 **Advanced options -> Import all files**
 
-A successor runtime test does not count as testing the compatibility behavior unless its log contains:
+unless the concrete import flow is independently verified to preserve all custom files.
+
+Expected runtime markers include:
 
 `Loading [S1.39 Compatibility Fixes 1.3.14]`
 
-If that marker is absent, fix the import/runtime load path before drawing conclusions about compatibility behavior.
+and the S1.42V Jetpack plugin's load/validation/`armed` messages.
+
+If those markers are absent, fix the import/runtime load path before drawing conclusions about the corresponding patch behavior.
 
 ## Runtime-log infrastructure
 
