@@ -1,6 +1,6 @@
 {
-  "schema_version": 3,
-  "updated": "2026-09-04",
+  "schema_version": 4,
+  "updated": "2026-09-05",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "game": "Lethal Company V81",
@@ -56,15 +56,17 @@
   "overhaul": {
     "status": "OVERHAUL_COMPLETE_VALIDATED",
     "post_acceptance_reaudit_status": "POST_ACCEPTANCE_REAUDIT_PASS",
+    "independent_reaudit_status": "PASS_WITH_PROVENANCE_QUALIFICATION",
+    "integrity_hardening_status": "VALIDATED",
     "pre_overhaul_backup": "Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904",
     "frozen_source_commit": "5dbd0e637a480d8591773e422bbca4b0654cad20",
     "frozen_source_tree": "0e17aac410cf600a164396b5586b5b50f084df22",
     "backup_manifest": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
     "final_acceptance": "Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md",
     "post_acceptance_audit": "Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md",
+    "independent_audit": "Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md",
+    "integrity_hardening": "Current/117_REPOSITORY_INTEGRITY_HARDENING_20260905.md",
     "validation_results": "Current/OVERHAUL_VALIDATION_RESULTS.json",
-    "strict_validator": "RepositoryTools/overhaul_contract_validator.py",
-    "last_recorded_green_ci_run_id": 33920068335,
-    "last_recorded_green_head_sha": "5a42fe7c6a69c8cef9692fba090d3da6af566ccd"
+    "strict_validator": "RepositoryTools/overhaul_contract_validator.py"
   }
 }
