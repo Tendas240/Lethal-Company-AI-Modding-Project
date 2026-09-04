@@ -1,8 +1,8 @@
 {
-  "schema_version": 4,
-  "date": "2026-09-04",
+  "schema_version": 5,
+  "date": "2026-09-05",
   "status": "POST_ACCEPTANCE_REAUDIT_PASS",
-  "scope": "repository information architecture only",
+  "scope": "repository information architecture and integrity only",
   "frozen_source_commit": "5dbd0e637a480d8591773e422bbca4b0654cad20",
   "frozen_source_tree": "0e17aac410cf600a164396b5586b5b50f084df22",
   "backup_repository": "Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904",
@@ -65,75 +65,100 @@
     "first_strict_green_run": {
       "run_id": 33919296323,
       "head_sha": "e3704877d309e40b092768430d0e81f7d86ed2e3",
-      "conclusion": "SUCCESS",
-      "navigation_check": "PASS",
-      "knowledge_validator": "PASS",
-      "frozen_contract_validator": "PASS",
-      "answerability_regression": "PASS"
+      "conclusion": "SUCCESS"
     },
     "final_confirmation_run": {
       "run_id": 33919943680,
       "head_sha": "18f5f24719a91986c954b0a59445db83d9571e77",
-      "conclusion": "SUCCESS",
-      "navigation_check": "PASS",
-      "knowledge_validator": "PASS",
-      "frozen_contract_validator": "PASS",
-      "answerability_regression": "PASS",
-      "purpose": "Confirms the post-audit status schema and audit-record cleanup also pass all permanent gates after the stricter re-audit documentation was finalized."
-    },
-    "false_positive_calibration": {
-      "recorded": true,
-      "reason": "The first strict-validator attempt intentionally surfaced both genuine drift and notation that is not a concrete path (globs, placeholders, lifecycle destinations, JSON field selectors). The validator was tightened to distinguish concrete repository references from documented patterns without weakening checks on actual canonical targets."
+      "conclusion": "SUCCESS"
     },
     "final_status": "PASS"
+  },
+  "independent_frozen_state_reaudit_20260905": {
+    "record": "Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md",
+    "source_branch": "pre-overhaul-freeze-20260904-5dbd0e6",
+    "source_commit_verified": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+    "source_tree_verified": "0e17aac410cf600a164396b5586b5b50f084df22",
+    "result": "PASS_WITH_PROVENANCE_QUALIFICATION",
+    "blockers_after_remediation": 0,
+    "phase_0_to_11_deliverables": "PASS",
+    "phase_3_to_10_completion_checkpoint_order": "NOT_INDEPENDENTLY_RECONSTRUCTIBLE",
+    "phase_order_classification": "NON_BLOCKING_INTEGRITY_ISSUE_HISTORICAL_IRREVERSIBLE",
+    "s1_42ac_sha_provenance_issue": "REMEDIATED",
+    "authoritative_s1_42ac_raw_log_sha256": "fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067",
+    "superseded_s1_42ac_raw_log_sha256": "8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0",
+    "errata": "Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json",
+    "final_pre_hardening_ci": {
+      "run_id": 33924985805,
+      "head_sha": "3238594103e48ffcc696b4f9897e3e139d2eb0c6",
+      "conclusion": "SUCCESS",
+      "permanent_gates": 5
+    }
+  },
+  "integrity_hardening_20260905": {
+    "record": "Current/117_REPOSITORY_INTEGRITY_HARDENING_20260905.md",
+    "branch": "repository-integrity-hardening-20260905",
+    "status": "IMPLEMENTED_VALIDATION_PENDING",
+    "gameplay_behavior_changed": false,
+    "added": [
+      "Current/INTEGRITY_ERRATA_REGISTRY.json",
+      "Current/VALIDATOR_COVERAGE.json",
+      "Current/MULTIPHASE_CHECKPOINT_POLICY.json",
+      "RepositoryTools/artifact_byte_integrity_validator.py",
+      "RepositoryTools/repository_integrity_guard.py",
+      "RepositoryTools/phase_checkpoint_validator.py",
+      "RepositoryTools/validator_selftest.py"
+    ],
+    "strengthened": [
+      "generated-file protection markers and byte-exact renderer contract",
+      "authority routing for known-bad/superseded values",
+      "BCMER byte-provenance routing",
+      "Knowledge Architecture CI path triggers and permanent validation stages"
+    ],
+    "prospective_only": [
+      "immutable per-phase completion checkpoint requirement"
+    ],
+    "not_implemented_by_design": [
+      "retroactive fabrication of missing Phase 3-10 checkpoints",
+      "branch protection/required checks without governance workflow redesign",
+      "unrestricted regex failure on every historical use of the word current",
+      "generic parsing of arbitrary uncommitted ChatGPT handover prose"
+    ]
   },
   "known_previous_finalization_attempts": [
     {
       "run_id": 33916065314,
       "head_sha": "83934ccf674563e862c226d5be0045920ec09366",
       "conclusion": "FAILURE",
-      "reason": [
-        "BUILD_LINEAGE referenced a non-existent S1.42Z profile path",
-        "OVERHAUL_EXECUTION_STATE still described an incomplete phase"
-      ],
+      "reason": ["BUILD_LINEAGE referenced a non-existent S1.42Z profile path", "OVERHAUL_EXECUTION_STATE still described an incomplete phase"],
       "disposition": "Corrected before initial final acceptance."
     },
     {
       "run_id": 33916672796,
       "head_sha": "4ae6bb397d85cd6891cfcd2ff7ff99dbd615014e",
       "conclusion": "FAILURE",
-      "reason": [
-        "knowledge validator passed",
-        "answerability routing still misrouted two German build-history/current-build queries"
-      ],
+      "reason": ["knowledge validator passed", "answerability routing still misrouted two German build-history/current-build queries"],
       "disposition": "Router scoring was hardened; later CI passed all answerability cases."
     },
     {
       "run_id": 33919072718,
       "head_sha": "6dd45dc58a3f5b63c0b0d0aabc84d2371737f383",
       "conclusion": "FAILURE",
-      "reason": [
-        "first strict frozen-contract validator correctly exposed one manifest-field schema mismatch in the validator and several path-notation false positives",
-        "it also exposed genuine stale legacy PROJECT_STATE.json wording in the human Knowledge Map"
-      ],
-      "disposition": "Validator semantics were calibrated to concrete paths and the genuine knowledge-map drift was corrected; strict run 33919296323 then passed."
+      "reason": ["first strict frozen-contract validator exposed schema/path-notation issues and genuine stale legacy PROJECT_STATE.json wording"],
+      "disposition": "Validator semantics were calibrated to concrete paths and the genuine knowledge-map drift was corrected."
     },
     {
       "run_ids": [33919486831, 33919524804, 33919568347],
       "conclusion": "FAILURE",
-      "reason": [
-        "the base knowledge validator still enumerated only the older completed status names and rejected the new EXECUTED_VALIDATED_POST_ACCEPTANCE_REAUDIT status"
-      ],
-      "disposition": "Completion-status validation was made semantic/suffix-safe; the knowledge validator then passed."
+      "reason": ["base knowledge validator rejected the new completed re-audit status name"],
+      "disposition": "Completion-status validation was made semantic/suffix-safe."
     },
     {
       "run_id": 33919875089,
       "head_sha": "e22648d6a455d159b43c51b27a90fed93305571f",
       "conclusion": "FAILURE",
-      "reason": [
-        "the strict validator interpreted a historical audit sentence naming the removed Current/PROJECT_STATE.json path as a live broken concrete reference"
-      ],
-      "disposition": "The audit wording was changed to identify PROJECT_STATE.json as an obsolete legacy name rather than a live path; run 33919943680 then passed all gates."
+      "reason": ["strict validator interpreted a historical sentence naming removed PROJECT_STATE.json as a live broken path"],
+      "disposition": "Audit wording was clarified; later strict CI passed."
     }
   ],
   "validated_current_gameplay_state": {
@@ -147,5 +172,5 @@
     "buildspec_enabled": false,
     "runtime_active_build": "S1.42AB"
   },
-  "final_decision": "Repository information-architecture overhaul is accepted as complete only after the stricter post-acceptance re-audit against the frozen old-repository contract. The identified authority/validator gaps were remediated without gameplay behavior changes. Normal project work may resume from Current/CURRENT_STATE.json."
+  "final_decision": "The repository information-architecture overhaul is functionally complete and independently re-audited against the frozen source. Its current end state is valid. The exact Phase 3-10 individual completion-checkpoint order is not historically reconstructible and must remain qualified. Post-audit hardening adds actual-byte verification, central known-bad/supersession authority, negative validator tests and prospective immutable phase checkpoints without gameplay changes."
 }
