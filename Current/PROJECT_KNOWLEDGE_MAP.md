@@ -41,7 +41,7 @@ For current questions:
 4. Build-specific acceptance/rejection/diagnostic records and RuntimeEvidence prove historical decisions.
 5. Historical files may accurately describe what was current **at that time** but do not override current semantic topics.
 
-Machine lifecycle authority is mirrored in `Current/PROJECT_STATE.json` once Phase 10 state hardening is complete. Until then, the current project-status JSON + `BuildSpecs/current.json` + `RuntimeInbox/ACTIVE_BUILD.txt` remain validation inputs.
+Machine lifecycle authority is `Current/CURRENT_STATE.json`. `BuildSpecs/current.json` and `RuntimeInbox/ACTIVE_BUILD.txt` are controller inputs whose lifecycle must remain consistent with that canonical machine state.
 
 ## Historical navigation
 
