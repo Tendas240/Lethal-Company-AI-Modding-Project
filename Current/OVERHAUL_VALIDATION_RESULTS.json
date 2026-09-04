@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "date": "2026-09-04",
   "status": "POST_ACCEPTANCE_REAUDIT_PASS",
   "scope": "repository information architecture only",
@@ -49,7 +49,7 @@
       "Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md lacked the required conspicuous historical roadmap banner",
       "OVERHAUL_START_HERE_ChatGPT.txt could still be misread as an active migration instruction",
       "Current/104 and Current/105 preserved planned/not-yet-executed wording without completion banners",
-      "Current/PROJECT_KNOWLEDGE_MAP.md retained stale Phase-10 wording pointing to non-existent Current/PROJECT_STATE.json",
+      "Current/PROJECT_KNOWLEDGE_MAP.md retained stale Phase-10 wording pointing to the non-existent legacy PROJECT_STATE.json name",
       "the initial knowledge validator did not independently prove backup-checkpoint-before-structural-migration ordering or visible stale-wording classification"
     ],
     "remediation": [
@@ -58,7 +58,9 @@
       "expanded accepted Plugin.cs comment-drift authority and provenance rules without changing accepted source behavior",
       "corrected Current/PROJECT_KNOWLEDGE_MAP.md to Current/CURRENT_STATE.json",
       "added RepositoryTools/overhaul_contract_validator.py",
-      "changed .github/workflows/knowledge-architecture.yml to fetch full history and run the frozen-contract validator"
+      "changed .github/workflows/knowledge-architecture.yml to fetch full history and run the frozen-contract validator",
+      "made completion-status validation suffix-safe so POST_ACCEPTANCE_REAUDIT remains a valid completed state",
+      "removed a false concrete-path interpretation from the audit narrative while preserving the historical fact that the obsolete PROJECT_STATE.json name had existed"
     ],
     "first_strict_green_run": {
       "run_id": 33919296323,
@@ -68,6 +70,16 @@
       "knowledge_validator": "PASS",
       "frozen_contract_validator": "PASS",
       "answerability_regression": "PASS"
+    },
+    "final_confirmation_run": {
+      "run_id": 33919943680,
+      "head_sha": "18f5f24719a91986c954b0a59445db83d9571e77",
+      "conclusion": "SUCCESS",
+      "navigation_check": "PASS",
+      "knowledge_validator": "PASS",
+      "frozen_contract_validator": "PASS",
+      "answerability_regression": "PASS",
+      "purpose": "Confirms the post-audit status schema and audit-record cleanup also pass all permanent gates after the stricter re-audit documentation was finalized."
     },
     "false_positive_calibration": {
       "recorded": true,
@@ -102,9 +114,26 @@
       "conclusion": "FAILURE",
       "reason": [
         "first strict frozen-contract validator correctly exposed one manifest-field schema mismatch in the validator and several path-notation false positives",
-        "it also exposed genuine stale Current/PROJECT_STATE.json wording in the human Knowledge Map"
+        "it also exposed genuine stale legacy PROJECT_STATE.json wording in the human Knowledge Map"
       ],
       "disposition": "Validator semantics were calibrated to concrete paths and the genuine knowledge-map drift was corrected; strict run 33919296323 then passed."
+    },
+    {
+      "run_ids": [33919486831, 33919524804, 33919568347],
+      "conclusion": "FAILURE",
+      "reason": [
+        "the base knowledge validator still enumerated only the older completed status names and rejected the new EXECUTED_VALIDATED_POST_ACCEPTANCE_REAUDIT status"
+      ],
+      "disposition": "Completion-status validation was made semantic/suffix-safe; the knowledge validator then passed."
+    },
+    {
+      "run_id": 33919875089,
+      "head_sha": "e22648d6a455d159b43c51b27a90fed93305571f",
+      "conclusion": "FAILURE",
+      "reason": [
+        "the strict validator interpreted a historical audit sentence naming the removed Current/PROJECT_STATE.json path as a live broken concrete reference"
+      ],
+      "disposition": "The audit wording was changed to identify PROJECT_STATE.json as an obsolete legacy name rather than a live path; run 33919943680 then passed all gates."
     }
   ],
   "validated_current_gameplay_state": {
