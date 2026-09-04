@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-04",
+  "repository_is_source_of_truth": true,
+  "accepted_baseline": {
+    "build_id": "S1.42U",
+    "profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
+    "sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
+    "status": "ACCEPTED_FULL_NORMAL_STACK"
+  },
+  "latest_runtime_tested_tuning_candidate": {
+    "build_id": "S1.42X",
+    "profile": "Profiles/LC V1 S1.42X Jetpack Pikmin ACU Retune.r2z",
+    "sha256": "57d8f9251236cf40eacf4366a21646ae8c51500b9ed6fa79cbc9b56c8daa611d",
+    "runtime_log_sha256": "6fe57bda1c2a2a9e2a910304890e47b3fffd606460225bfd142ffae9fd996a9d",
+    "verdict": "TECHNICAL_PATHS_PASS_GAMEPLAY_BALANCE_AND_SCOPE_REJECT",
+    "accepted_findings": [
+      "Pikmin CarryStrength 3 for all configured non-Purple types is correct",
+      "Purple Pikmin CarryStrength 30 is correct",
+      "jetpackAcceleration is a valid perceptible tuning lever",
+      "DawnLib provider-level Air Control Unit curve scaling works technically"
+    ],
+    "rejected_findings": [
+      "Jetpack 32f is far too strong",
+      "Aerial-defense scope was incomplete because G.R.E.G. was not included"
+    ]
+  },
+  "latest_built_candidate": {
+    "build_id": "S1.42Y",
+    "profile": "Profiles/LC V1 S1.42Y Jetpack Aerial Defense Retune.r2z",
+    "sha256": "f4ae0d93c9cff4f9441c24d1021e5d9b816861b8317d9ed8995fde67ebbd8d89",
+    "status": "BUILD_PASS_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
+    "build_run": 33871219861,
+    "zip_members": 333,
+    "mod_state_changes": [],
+    "mod_additions": [],
+    "mod_removals": [],
+    "project_local_dlls": [
+      {
+        "path": "BepInEx/plugins/S142YJetpackAcceleration/S142YJetpackAcceleration.dll",
+        "sha256": "fab15a520c1ff0172d33bc88303426d214b12135b34803f6e98689c295409c7e",
+        "purpose": "replace validated ButteRyBalance local-player jetpackAcceleration baseline 10f with 22f"
+      },
+      {
+        "path": "BepInEx/plugins/S142YCodeRebirthAerialDefenseSpawnTuning/S142YCodeRebirthAerialDefenseSpawnTuning.dll",
+        "sha256": "e017ccb74d92df10442bb5f8651a776787954f4861309059ec6c497e000a3d45",
+        "purpose": "transactionally scale both CodeRebirth aerial-defense DawnLib provider curve sets by 0.5"
+      }
+    ],
+    "tuning": {
+      "jetpack_base_acceleration": 22,
+      "jet_fuel_initial_percent": 15,
+      "jet_fuel_incremental_percent": 15,
+      "jetpack_thrusters_initial_max_speed_percent": 25,
+      "jetpack_thrusters_incremental_max_speed_percent": 20,
+      "lethalmin_indoor_pikmin_spawn_chance": 0.08,
+      "pikmin_carry_strength_non_purple": 3,
+      "pikmin_carry_strength_purple": 30,
+      "immortal_snail_rarity": 40,
+      "immortal_snail_max": 2,
+      "functional_microwave_volume": 0.15
+    },
+    "aerial_defense_contract": {
+      "scale": 0.5,
+      "semantics": "curve_amplitude_spawn_weight_reduction_not_exact_short_sample_spawn_count_probability",
+      "transactional": true,
+      "targets": [
+        {
+          "key": "code_rebirth:air_control_unit",
+          "expected_curve_count": 18
+        },
+        {
+          "key": "code_rebirth:gunslinger_greg",
+          "display_name": "G.R.E.G. / Advanced Airspace Control",
+          "expected_curve_count": 18
+        }
+      ]
+    }
+  },
+  "controllers": {
+    "buildspec_current_enabled": false,
+    "buildspec_current_id": "IDLE_AFTER_S1.42Y_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "runtime_active_build": "S1.42Y"
+  },
+  "gale_import_requirement": "Advanced options -> Import all files",
+  "exact_next_step": "Runtime-test S1.42Y, verify both Y project-local plugin load/validation/applied markers and gameplay tuning, then commit a complete fresh log to RuntimeInbox/Current for ingest. Do not build a successor before evaluating that log."
+}
