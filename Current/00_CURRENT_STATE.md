@@ -33,13 +33,13 @@ The old S1.42AC equality gate misread BCMER's logged values as aggregate EventTy
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AC_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED`)
 - Guarded build base: accepted S1.42AB / `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AB`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC`
 
 ## Exact next action
 
-If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
+Upload and ingest the just-completed S1.42AC runtime log, then reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
 
-No PowerShell uploader is required now because no runtime test is pending.
+No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
