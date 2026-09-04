@@ -1,5 +1,5 @@
 ======================================================================
-CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42T PASS / S1.42U NEXT
+CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42U PASS / S1.42V NEXT
 ======================================================================
 
 Repository:
@@ -8,126 +8,220 @@ https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 The repository is the source of truth.
 
 READ FIRST, COMPLETELY:
-1. Current/00_CURRENT_STATE.md
-2. Current/01_HANDOVER_CORE.md
-3. Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md
-4. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
-5. Current/Projektstatus_S1.42T.json
-6. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-7. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
-8. Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md
-9. Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md
-10. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-11. BuildSpecs/S1.42U_PLAN.md
-12. BuildSpecs/current.json
-13. RuntimeInbox/ACTIVE_BUILD.txt
+1. Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md
+2. Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md
+3. Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md
+4. Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md
+5. Current/00_CURRENT_STATE.md
+6. Current/01_HANDOVER_CORE.md
+7. Current/Projektstatus_S1.42U.json
+8. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+9. BuildSpecs/S1.42V_PLAN.md
+10. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
+11. Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md
+12. Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md
+13. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+14. Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md
+15. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+16. Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
+17. BuildSpecs/current.json
+18. RuntimeInbox/ACTIVE_BUILD.txt
 
-CURRENT ROLE SEPARATION
+CURRENT ACCEPTED STATE
 
-Last fully accepted full normal gameplay baseline:
+Newest fully accepted full normal gameplay baseline and newest runtime-accepted technical descendant:
+S1.42U - BCMER 1.71.0 Reactivation Gate
+Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z
+SHA-256:
+ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969
+
+Build verification:
+Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md
+
+Runtime acceptance:
+Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md
+
+Final handover:
+Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md
+
+Runtime evidence:
+RuntimeEvidence/S1.42U/20260904T082412Z/
+
+Raw runtime log SHA-256:
+0a2e0839b106a7d6f9867d186a835252bc72a869ef63a62517ae1971fd93c5fc
+
+Raw size:
+1,959,356 bytes
+
+Line count:
+19,939
+
+GitHub Actions profile build run:
+33818241873 = success
+
+S1.42U build commit:
+29e7b36c3d09ff37551894438744d67089d7aba4
+
+S1.42U runtime verdict:
+PASS - full normal stack restored and accepted.
+
+Confirmed:
+- exact BrutalCompanyMinusExtraReborn 1.71.0 loads and reports done patching;
+- S1.39 Compatibility Fixes 1.3.14 loads;
+- EnemyIsolation is disabled;
+- normal non-isolated enemy population is active, ADDING ENEMY count = 13;
+- Work/no-task count = 0;
+- Leader-null count = 0;
+- S1.39 Compatibility Fixes Error count = 0;
+- Fatal count = 0;
+- old disconnect NoticeZone / unspawned NetworkObjectReference marker = 0;
+- no crash/freeze;
+- user reported no gameplay-visible technical problem;
+- known setup SoundAPI/SoftMask exception classes did not become a gameplay cascade.
+
+Direct power evidence from the accepted S1.42U run:
+- Aloe = 1;
+- ImmortalSnail = 1;
+- Janitor = 1;
+- Crawler = 3;
+- Bunker Spider = 2.
+
+REFERENCE HISTORY
+
+Previous accepted full-normal-stack baseline:
 S1.41 - BCMER Reactivation
 Profiles/LC V1 S1.41 BCMER Reactivation.r2z
 SHA-256:
 d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b
 
-Newest accepted technical descendant:
+Accepted clean BCMER-off comparison baseline:
 S1.42T - Normal Enemy Restore
 Profiles/LC V1 S1.42T Normal Enemy Restore.r2z
 SHA-256:
 a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10
+Evidence:
+RuntimeEvidence/S1.42T/20260903T222109Z/
+Raw log SHA-256:
+b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f
+
+S1.42T remains diagnostically valuable as the clean BCMER-off comparison point even though S1.42U now owns the active accepted role.
+
+PERMANENT PACKAGE / COMPATIBILITY STATE
+
+BCMER:
+SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0
+enabled
+Do not silently upgrade to 2.0.0 or another version.
+
+EnemyIsolation:
+disabled
 
 Compatibility plugin:
 v1.3.14
 Embedded DLL SHA-256:
 3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960
 
-Latest valid runtime evidence:
-RuntimeEvidence/S1.42T/20260903T222109Z/
-Raw Log SHA-256:
-b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f
+Preserve:
+- BaboonBirdPikminEnemy enabled;
+- only narrow Hawk -> Pikmin entry points blocked;
+- native inherited PikminEnemy death/unlatch/task lifecycle preserved;
+- Pikmin -> Baboon Hawk attack remains allowed;
+- Puffer -> Pikmin protection remains;
+- Thumper Bite Limit = 3;
+- Crawler remains absent from LethalMin Attack Blacklist;
+- normal enemy population remains restored.
 
-S1.42T runtime verdict:
-PASS - normal non-isolated enemy population restored.
+Never repeat the S1.42R approach of disabling complete LethalMin.BaboonBirdPikminEnemy merely to block one interaction.
 
-Confirmed:
-- normal non-isolated enemies spawn again;
-- direct ADDING ENEMY / active-instance evidence is sufficient despite the missed manual terminal Enemies scan;
-- Work/no-task count = 0;
-- Leader-null count = 0;
-- Fatal count = 0;
-- S1.39 Compatibility Fixes Error count = 0;
-- no new compatibility exception flood;
-- player death was normal DeathPlayerJetpackBlast, not a crash/freeze.
+MOON / SPAWN RESTORE STATE
 
-CURRENT PACKAGE / DIAGNOSTIC STATE
+S1.42U:
+ProfileSources/S1.42U/BepInEx/config/LethalLevelLoader.cfg
 
-EnemyIsolation:
-disabled
+is byte-identical to the canonical S1.42C restore file:
+ProfileSources/S1.42C/BepInEx/config/LethalLevelLoader.cfg
 
-Config:
-BepInEx/config/tendas.s139.compatibilityfixes.cfg
-Isolated Enemy Regression = false
+Git blob SHA:
+14dcd076692cbc54e073ad281a63d046b0976e00
 
-BCMER:
-SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0
-disabled intentionally for S1.42T
+Therefore all stored per-moon inside/daytime/nighttime maximum power counts and enemy spawn lists are already on the intended restore baseline.
+Do not regenerate or normalize the file wholesale.
 
-Thumper Bite Limit:
-3
+SpawnCycleFixes retains:
+Consistent Spawn Times = true
 
-Crawler:
-not in LethalMin Attack Blacklist
+and is byte-identical to S1.42C, preserving the intended standardized first wave around 07:39 including outside/daytime participation instead of vanilla's possible vent-empty delay.
 
 EXACT NEXT STEP
 
-Next controlled build:
-S1.42U - BCMER 1.71.0 Reactivation Gate
+Next planned build:
+S1.42V - Post-BCMER Balance Tuning
 
-Use:
-BuildSpecs/S1.42U_PLAN.md
+Plan:
+BuildSpecs/S1.42V_PLAN.md
 
-Only intended package-state change:
-SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 disabled -> enabled
+Status:
+PLAN ONLY / NOT ARMED / NO S1.42V PROFILE EXISTS.
 
-Do not upgrade BCMER.
-Do not modify compatibility code.
-Do not mix interior tuning, fog/CullFactory tuning, microwave rarity, BCMER EventType rebalance,
-or repository structural migration into S1.42U.
+Intended tuning:
+- ImmortalSnail Rarity 80 -> 40; keep Max Snails = 2;
+- CodeRebirth Functional Microwave current Volume = 0.7; proposed next value = 0.5 because 0.7 still sounds too loud;
+- modest ALWAYS-ON BASE Jetpack acceleration increase.
+
+BLOCKING TECHNICAL ACTION BEFORE S1.42V MAY BE ARMED:
+- identify the exact runtime owner/method/field for unconditional base Jetpack acceleration;
+- preserve ButteRyBalance Control Scheme = V49 unless exact evidence justifies changing it;
+- inspect interaction with JetpackFixes;
+- do not invent a config key;
+- do not silently substitute More Ship Upgrades Jet Fuel, whose current 20 initial / 20 incremental acceleration values are purchase-gated;
+- if project-local code is required, perform a dedicated Patch Safety Review and isolate the risky Jetpack patch from unrelated tuning if practical;
+- freeze the exact file/value/code delta;
+- only then arm BuildSpecs/current.json and build repository-first through GitHub Actions.
+
+PLANNED LATER STAGES - DO NOT SILENTLY MIX INTO S1.42V
+
+Stage after S1.42V - Environment / Interior tuning:
+- equal probability for all installed interiors;
+- permanent rule: future newly added interiors receive the same effective probability unless a documented technical incompatibility prevents it;
+- CullFactory exceptions for junkrooms and shatteredrooms;
+- Mausoleum fog reduction;
+- CodeRebirth Microwave rarity reduction.
+
+Following stage - BCMER EventType balancing:
+- fixed equal distribution: 8 EventTypes x 12.5%.
+
+Final stage - final S1.42 full-stack acceptance:
+- longer normal gameplay run after individual tuning stages pass;
+- varied enemies, Pikmin lifecycle, BCMER events, interiors, Jetpack and CodeRebirth coverage;
+- complete runtime-log ingest and permanent invariant checks;
+- final tuned profile promoted only if clean.
+
+Do not reopen isolated-enemy diagnostics or heavy Baboon-Hawk stress testing unless a later change touches those compatibility paths or new evidence reopens the issue.
 
 CONTROLLERS
 
-RuntimeInbox/ACTIVE_BUILD.txt = S1.42T
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42U
 
 BuildSpecs/current.json:
 enabled = false
-build_id = IDLE_AFTER_S1.42T_RUNTIME_PASS_AWAITING_S1.42U_BCMER_REACTIVATION
+build_id = IDLE_AFTER_S1.42U_RUNTIME_PASS_AWAITING_S1.42V_TUNING
+base profile = Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z
+base SHA-256 = ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969
 
 No successor build is armed at takeover.
 
-LARGE RUNTIME LOG POLICY
-
-Canonical infrastructure/retention policy:
-Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
-
-Normal logs:
-RuntimeInbox/Current/
-
-Very large logs:
-disposable branch runtime-large
-RuntimeInbox/Large/
-
-Rules:
-- every analyzed log is streamed line-by-line through BuildSystem/runtime_log_analyzer.py;
-- smaller logs receive lossless bounded chat_chunks for direct ChatGPT access;
-- very large logs are compressed/split, analyzed off-main, and only compact analysis/provenance is committed to main;
-- very-large raw evidence is retained as a temporary 14-day Actions artifact for exact query-on-demand access via RuntimeAnalysis/QUERY.json;
-- raw logs/chunks are not permanent by default and may be removed when their dependent gate/issues are closed and canonical evidence/provenance is preserved;
-- keep the current S1.42T raw log through the immediate BCMER restoration comparison because it is the clean BCMER-off reference run.
-
 MONITOR-ONLY ISSUES
 
-1. LethalMin PikminNoticeZone.OnTriggerStay NetworkObjectReference ArgumentException during disconnect in S1.42S. No user-facing regression observed. Do not patch without reproducibility/user impact and Patch Safety Review.
-2. S1.42T one-off AloeChase FSB load-state error. No flood/user-facing regression observed. Monitor only.
+1. Historical S1.42S disconnect-only LethalMin PikminNoticeZone.OnTriggerStay / unspawned NetworkObjectReference exception. It did not recur in S1.42U. Do not patch without reproducibility/user impact and Patch Safety Review.
+2. Historical S1.42T one-off AloeChase FSB load-state message. No gameplay impact established. Monitor only.
+3. Known setup loaforcsSoundAPI/HarmonyX TypeLoadException and SoftMaskKiller-handled SoftMask NullReferenceException classes remain non-blocking unless behavior changes, they flood, or become user-facing.
+
+KNOWN NON-FUNCTIONAL DRIFT
+
+- Current/02_TECHNICAL_BASELINE.md contains older chronology subsections with stale local current wording.
+- Patches/S139CompatibilityFixes/Plugin.cs contains historical comments that do not perfectly describe accepted v1.3.14 behavior.
+
+Actual current code/config/runtime evidence and chronologically newer canonical documents are authoritative. Keep cleanup separate from risky runtime/gameplay changes.
 
 PERMANENT PROJECT-LOCAL PATCH SAFETY RULE
 
@@ -156,8 +250,9 @@ Repository:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
 ======================================================================
-HISTORICAL VERSION-SPECIFIC TAKEOVER BLOCK REMOVED FROM CURRENT BOOTSTRAP.
+OLDER VERSION-SPECIFIC TAKEOVER STATE IS HISTORICAL.
 Older version-specific takeover state remains preserved in versioned Current/ history files and RuntimeEvidence.
+The CURRENT CANONICAL TAKEOVER block at the top of this file is authoritative for the immediate handover.
 
 WICHTIG:
 Dieser Prompt ist als dauerhafter Einstiegspunkt für neue ChatGPT-Chats gedacht.
@@ -436,8 +531,8 @@ Prüfe und aktualisiere mindestens:
 
 11. Repository-README.md
 
-12. Diesen Master-Prompt selbst nur dann aktualisieren, wenn sich der Übergabe-/Repo-Workflow geändert hat.
-    Der Prompt soll möglichst versionsunabhängig bleiben.
+12. Diesen Master-Prompt selbst nur dann aktualisieren, wenn sich der Übergabe-/Repo-Workflow geändert hat oder der aktuelle Bootstrap-Block veraltet ist.
+    Der dauerhafte Regelteil soll möglichst versionsunabhängig bleiben.
 
 Die Dokumentation muss mindestens enthalten:
 - was seit der letzten Übergabe geändert wurde,
