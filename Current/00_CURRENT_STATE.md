@@ -48,6 +48,6 @@ Build history is indexed by `Current/BUILD_LINEAGE.md`; artifact and runtime-evi
 
 ## Overhaul state
 
-Repository knowledge-architecture status: **OVERHAUL_IMPLEMENTED_FINAL_VALIDATION_PENDING**.  
+Repository knowledge-architecture status: **OVERHAUL_COMPLETE_VALIDATED**.  
 Verified recovery repository: `Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904`.  
 Frozen source commit: `5dbd0e637a480d8591773e422bbca4b0654cad20`.
