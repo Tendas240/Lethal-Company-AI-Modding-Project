@@ -10,7 +10,6 @@ READ FIRST:
 1. Current/00_CURRENT_STATE.md
 2. Current/PROJECT_KNOWLEDGE_MAP.md
 3. Current/01_HANDOVER_CORE.md
-4. Current/114_FINAL_HANDOVER_POST_INTEGRITY_REMEDIATION.md
 
 Then route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the relevant Knowledge topic plus linked evidence/config/code.
 Use Current/DOCUMENT_AUTHORITY.md when old files contain stale "current" wording.
@@ -27,8 +26,6 @@ LATEST BUILT ARTIFACT
 - status: FORMALLY REJECTED / NOT PROMOTED
 - SHA-256: 0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9
 - corrected BCMER analysis: Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md
-- authoritative raw runtime LogOutput.log SHA-256: fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067
-- provenance erratum: Current/113_POST_OVERHAUL_INTEGRITY_REMEDIATION.md
 
 CURRENT EXECUTION STATE
 - active candidate: NONE
@@ -39,14 +36,12 @@ CURRENT EXECUTION STATE
 - RuntimeInbox/ACTIVE_BUILD.txt: S1.42AB
 
 EXACT NEXT ACTION
-If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights. Otherwise explicitly select another deferred scope from Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md.
+If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
 
 RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the exact build-specific one-line PowerShell log uploader. There is no uploader to run now because no runtime test is pending.
-Whenever the user must perform any other manual repository action, provide the exact PowerShell one-liner(s) in execution order.
 
 PERMANENT POLICY ROUTES
-- Current lifecycle / next test: Knowledge/CURRENT_LIFECYCLE.md
 - BCMER: Knowledge/BCMER.md
 - Interiors/LLL: Knowledge/INTERIORS_AND_LLL.md
 - Enemy spawn baseline: Knowledge/ENEMY_SPAWN_BASELINE.md
@@ -60,12 +55,9 @@ PERMANENT POLICY ROUTES
 
 HISTORY RULE
 Do not delete or reinterpret history to match current truth. Historical decisions remain evidence. Current/109 supersedes only the old BCMER per-event-weight interpretation behind the S1.42AC rejection; S1.42AC remains formally rejected/not promoted until an explicit later decision changes that status.
-For proven provenance mistakes, use explicit erratum/supersession rather than silently retaining conflicting hashes.
 
 REPOSITORY OVERHAUL
 Architecture status: OVERHAUL_COMPLETE_VALIDATED
-Post-acceptance frozen-contract re-audit: PASS
-Post-overhaul integrity remediation: PASS — Current/113_POST_OVERHAUL_INTEGRITY_REMEDIATION.md
 Recovery repository: Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904
 Frozen source commit: 5dbd0e637a480d8591773e422bbca4b0654cad20
 
