@@ -1,39 +1,49 @@
 ======================================================================
-CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42Z ACCEPTED
+CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42Z ACCEPTED / S1.42AA RUNTIME NEXT
 ======================================================================
 
 Repository:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
-The repository is the source of truth.
+The repository is the source of truth and the canonical build/handover workspace.
+Do not require a local repository clone or local profile build while the needed bases and GitHub-native infrastructure are present.
 
 READ FIRST, COMPLETELY:
-1. Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md
-2. Current/Projektstatus_S1.42Z_ACCEPTED.json
-3. Current/00_CURRENT_STATE.md
-4. Current/01_HANDOVER_CORE.md
-5. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
-6. Current/06_RECENT_WORK_S1.42N-S1.42Z.md
-7. Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md
-8. Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md
-9. Current/88_FINAL_HANDOVER_S1.42Y_PASS_S1.42Z_NEXT.md
-10. Current/89_REPOSITORY_HANDOVER_AUDIT_S1.42Z.md
-11. Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md
-12. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
-13. Current/09_REPOSITORY_FIRST_AUTOMATION.md
-14. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
-15. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-16. Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
-17. BuildSpecs/current.json
-18. RuntimeInbox/ACTIVE_BUILD.txt
+1. README.md
+2. Current/94_FINAL_HANDOVER_S1.42Z_ACCEPTED_S1.42AA_RUNTIME_NEXT.md
+3. Current/95_REPOSITORY_HANDOVER_AUDIT_S1.42AA.md
+4. Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md
+5. Current/Projektstatus_S1.42AA_CANDIDATE.json
+6. Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md
+7. Current/Projektstatus_S1.42Z_ACCEPTED.json
+8. Current/00_CURRENT_STATE.md
+9. Current/01_HANDOVER_CORE.md
+10. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+11. Current/06_RECENT_WORK_S1.42AA.md
+12. BuildSpecs/S1.42AA_PLAN.md
+13. Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md
+14. Current/09_REPOSITORY_FIRST_AUTOMATION.md
+15. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+16. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
+17. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+18. Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
+19. BuildSpecs/current.json
+20. RuntimeInbox/ACTIVE_BUILD.txt
 
 Chronologically newer confirmed files override older version-specific wording.
-`Current/87`, `Current/88`, and `Current/89` are retained as pre-acceptance build/handover history. `Current/90` plus `Current/Projektstatus_S1.42Z_ACCEPTED.json` are authoritative for the current accepted state.
+Current/94 + Current/95 + Current/91 + Current/Projektstatus_S1.42AA_CANDIDATE.json are authoritative for the active runtime gate.
+Current/90 + Current/Projektstatus_S1.42Z_ACCEPTED.json are authoritative for the accepted rollback baseline.
+Older handover/build records remain historical evidence unless explicitly superseded.
 
-CURRENT ACCEPTED STATE
+======================================================================
+CURRENT ACCEPTED BASELINE
+======================================================================
 
 S1.42Z - Jetpack Pikmin Retune - ACCEPTED FULL NORMAL STACK
+
+Profile:
 Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z
+
 Gale profile name:
 LC V1 S1.42Z Jetpack Pikmin Retune
 
@@ -46,694 +56,524 @@ Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md
 Machine status:
 Current/Projektstatus_S1.42Z_ACCEPTED.json
 
-Previous accepted rollback artifact:
-S1.42U - BCMER 1.71.0 Reactivation Gate
-Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z
-SHA-256:
-ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969
-
-S1.42U remains useful as the pre-retune rollback artifact but is no longer the latest accepted baseline.
-
-S1.42Z RUNTIME EVIDENCE
-
 Runtime evidence:
 RuntimeEvidence/S1.42Z/20260904T135820Z/
 
 Raw log SHA-256:
 ca61e82e5a7d12f96dcb51849e291582df4d45568da4fa1e10b476551c897db8
 
-Coverage:
-- 1,586,159 bytes;
-- 16,094 lines;
-- 15,325 parsed runtime events;
-- 32 Error-severity events;
-- Fatal = 0.
-
-Confirmed runtime facts:
-- S1.42Z Jetpack Acceleration 1.0.0 loaded;
+Confirmed S1.42Z runtime facts:
+- S1.42Z Jetpack Acceleration plugin loaded;
 - ButteRyBalance 0.7.0, JetpackFixes 1.6.3 and More Ship Upgrades 3.14.1 validated;
 - exact Jetpack path armed 10 -> 18;
-- S1.42Z CodeRebirth Aerial Defense Spawn Tuning 1.0.0 loaded;
+- S1.42Z CodeRebirth aerial-defense tuning plugin loaded;
 - CodeRebirth 1.6.9, DawnLib 0.9.25 and Dusk 0.9.25 validated;
 - Air Control Unit provider validated with exactly 18 curves;
 - G.R.E.G. / Advanced Airspace Control provider validated with exactly 18 curves;
-- both complete provider sets were transactionally scaled x0.5;
-- no aerial-defense contract-refusal marker observed;
-- EnemyIsolation diagnostic isolation disabled at runtime;
+- both complete provider sets transactionally scaled x0.5;
 - Work/no-task = 0;
 - Leader-null = 0;
 - Compatibility Fixes Error = 0;
 - unspawned NetworkObjectReference marker = 0;
 - PikminNoticeZone regression marker = 0;
+- project-local Error-severity output = 0;
 - Fatal = 0;
-- neither S1.42Z project-local plugin emitted Error-severity output.
+- user reported the S1.42Z behavior as fully satisfactory.
 
-The user reported the S1.42Z runtime behavior as fully satisfactory and stated that everything is in order from their side. The subjective balance/runtime gate is therefore closed.
-
-S1.42Z EXACT ACCEPTED TUNING
-
-Jetpack:
-- project-local base acceleration 10 -> 18;
+Accepted S1.42Z tuning:
+- Jetpack base acceleration 10 -> 18;
 - Jet Fuel 18 / 18;
 - Jetpack Thrusters 25 / 20;
-- ButteRyBalance V49 handling/deceleration preserved;
-- JetpackFixes collision/death/control safety preserved.
-
-Jetpack DLL SHA-256:
-9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add
-
-LethalMin:
 - Indoor Pikmin Spawn Chance = 0.09;
 - Blue / Red / Yellow / White / Winged / Rock / Ice / Glow / Bulbmin CarryStrength = 3;
-- Purple Pikmin CarryStrength = 30.
-
-CodeRebirth aerial defense:
-- code_rebirth:air_control_unit = exact 18 curves x0.5;
-- code_rebirth:gunslinger_greg = exact 18 curves x0.5;
-- validate both complete contracts before mutating either;
-- no other map-object provider is modified.
-
-Aerial-defense DLL SHA-256:
-7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b
-
-Important semantics:
-The x0.5 operation halves DawnLib animation-curve amplitude/spawn weight. DawnLib evaluates and rounds the result, so a short gameplay sample is not required to show mathematically exact half-counts.
-
-Other accepted tuning:
+- Purple CarryStrength = 30;
+- CodeRebirth air_control_unit = exact 18 curves x0.5;
+- CodeRebirth gunslinger_greg = exact 18 curves x0.5;
 - Functional Microwave Volume = 0.15;
 - Immortal Snail Rarity = 40;
 - Immortal Snail Max Snails = 2.
 
+Project-local DLL SHA-256 values:
+- Jetpack: 9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add
+- aerial defense: 7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b
+- Compatibility Fixes: 3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960
+
+======================================================================
+ACTIVE RUNTIME CANDIDATE
+======================================================================
+
+S1.42AA - Interior Weight Equalization
+
+Status:
+BUILD PASS / PROFILE IMPORT CONFIRMED / RUNTIME VALIDATION OPEN / NOT ACCEPTED
+
+Profile:
+Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z
+
+Gale profile name:
+LC V1 S1.42AA Interior Weight Equalization
+
+Profile SHA-256:
+0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364
+
+Build workflow run:
+33884101262 - success
+
+Automated build commit:
+4d5e5e6c86a0bc8ab10e0adc32ab22ae6f5c0156
+
+Candidate record:
+Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md
+
+Machine status:
+Current/Projektstatus_S1.42AA_CANDIDATE.json
+
+Plan:
+BuildSpecs/S1.42AA_PLAN.md
+
+Readable snapshot:
+ProfileSources/S1.42AA/
+
+The user successfully imported S1.42AA before this handover using Gale:
+Advanced options -> Import all files
+
+No S1.42AA gameplay runtime test has been completed yet.
+RuntimeInbox/Current/ currently contains only .gitkeep.
+
+======================================================================
+S1.42AA ROOT CAUSE / EXACT CHANGE
+======================================================================
+
+S1.42Z already had project-normalized LethalLevelLoader dungeon tag weights:
+Vanilla:100,Custom:100
+
+But it also had:
+Inject Dynamic Matching Weights = true
+
+That global LethalLevelLoader option re-injected mod-author Level/Dungeon MatchingProperties on each landing.
+S1.42Z Offense runtime evidence therefore still showed unequal effective viable-dungeon weights including:
+- LiminalHouse 300;
+- Sub Systems 275;
+- Abandoned Foundry 250;
+- Shatteredrooms 75;
+- Lead Factory 70;
+- Spelunkers Caverns (Random) 50;
+- Crimson Keep 35;
+- Gray Apartments 25;
+- DeepcoreMines 25;
+- several 20-weight interiors.
+
+S1.42AA changes only:
+Inject Dynamic Matching Weights = false
+
+Automated archive delta vs accepted S1.42Z:
+- ZIP members = 333;
+- changed existing members = exactly BepInEx/config/LethalLevelLoader.cfg and export.r2x;
+- added members = 0;
+- removed members = 0;
+- mod state changes = 0;
+- mod additions/removals = 0;
+- no project-local DLL changed.
+
+Black Mesa remains on its dedicated native-owner path:
+lethal_company:vanilla=+100,lethal_company:custom=+100
+
+Do not create a duplicate LLL owner path.
+
+Permanent interior rule:
+Every eligible installed interior should have the same effective selection weight on vanilla and custom moons. Future added interiors must be normalized into the same architecture before acceptance unless a documented technical incompatibility requires an exception.
+
+Shatteredrooms' Experimentation/Embrion restriction remains a compatibility guard until dedicated evidence proves removal safe.
+Equal probability does not mean blindly removing hard technical restrictions.
+
+======================================================================
+EXACT NEXT ACTION
+======================================================================
+
+Runtime-test the already-imported S1.42AA on Offense.
+Do not build a successor first.
+
+Minimum intended test:
+1. startup/main menu/lobby succeeds;
+2. route to Offense and land;
+3. enter the generated interior;
+4. play one normal gameplay run;
+5. upload the complete fresh LogOutput.log using the exact S1.42AA uploader in Current/91;
+6. analyze the full runtime evidence before deciding any successor.
+
+Primary acceptance proof:
+- eligible Viable ExtendedDungeonFlows use common effective weight 100 instead of S1.42Z's unequal author weights;
+- formerly unequal examples are compared when present;
+- Facility/Mineshaft remain viable where appropriate;
+- no duplicate Black Mesa/native-owner registration;
+- no dungeon-generation/seed failure;
+- normal enemies, Pikmin and BCMER remain healthy;
+- Work/no-task = 0;
+- Leader-null = 0;
+- Fatal = 0;
+- no new project-local exception class.
+
+Current controllers:
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42AA
+
+BuildSpecs/current.json:
+enabled = false
+build_id = IDLE_AFTER_S1.42AA_BUILD_AWAITING_RUNTIME_VALIDATION
+base profile = Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z
+base SHA-256 = 0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364
+no successor work armed.
+
+======================================================================
 PERMANENT PACKAGE / COMPATIBILITY STATE
-
-BCMER:
-SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0 enabled.
-Do not silently upgrade to 2.x.
-
-EnemyIsolation:
-disabled.
-
-Compatibility plugin:
-v1.3.14
-DLL SHA-256:
-3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960
+======================================================================
 
 Preserve:
+- exact SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0; do not silently upgrade to 2.x;
+- EnemyIsolation disabled;
+- Compatibility Fixes 1.3.14;
 - BaboonBirdPikminEnemy enabled;
 - only narrow Hawk -> Pikmin entry points blocked;
 - native inherited PikminEnemy death/unlatch/task lifecycle preserved;
 - Pikmin -> Baboon Hawk attack remains allowed;
 - Puffer -> Pikmin protection remains;
 - Thumper Bite Limit = 3;
-- Crawler remains absent from LethalMin Attack Blacklist;
-- normal enemy population remains restored;
+- Crawler absent from LethalMin Attack Blacklist;
+- normal enemy population restored;
 - accepted S1.42C-derived moon power/spawn baseline;
 - SpawnCycleFixes Consistent Spawn Times = true.
 
 Never repeat the S1.42R approach of disabling the complete LethalMin.BaboonBirdPikminEnemy component merely to block one interaction.
 
-CURRENT NEXT STATE
+Every future project-local patch must comply with:
+Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
 
-No successor build is armed.
+Before implementing/promoting a custom patch:
+- inspect exact owner/call site;
+- inspect inheritance/base lifecycle;
+- map cleanup/state/network responsibilities;
+- use the narrowest exact interception point;
+- do not disable a whole foreign component merely to block one interaction unless the full lifecycle is proven safe to suppress;
+- isolate risky patch changes from unrelated package/config changes;
+- runtime-test target behavior plus adjacent/reverse/native lifecycle behavior;
+- do not treat compile success, startup success or disappearance of the direct symptom as gameplay acceptance;
+- prefer rollback/narrowing over stacking compensating repair layers.
 
-BuildSpecs/current.json:
-enabled = false
-build_id = IDLE_AFTER_S1.42Z_ACCEPTANCE
-base profile = Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z
-base SHA-256 = a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4
-no patches/builds/assertions armed.
+Every future custom-patch build plan must contain a Patch Safety Review.
 
-RuntimeInbox/ACTIVE_BUILD.txt = S1.42Z
-RuntimeInbox/Current/ contains only .gitkeep after successful S1.42Z runtime ingestion.
+======================================================================
+GALE ACTIVE-PROFILE REPLACEMENT WORKFLOW - CANONICAL / BINDING
+======================================================================
 
-The next planned gameplay/config scope, only when explicitly requested by the user, is:
-- equal effective probability for every currently installed interior;
-- preserve the same equal-probability rule for future added interiors unless explicitly overridden.
+Implementation:
+RuntimeTools/ReplaceActiveGaleProfile.ps1
 
-Do not silently mix unrelated deferred work into that stage.
+Workflow contract:
+Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md
 
-Later deferred scopes:
-- CullFactory exceptions for junkrooms and shatteredrooms;
+Historical validation record:
+Current/92_GALE_ACTIVE_PROFILE_REPLACEMENT_HELPER_CANDIDATE.md
+
+Canonical one-line launcher:
+
+iex (iwr -UseBasicParsing 'https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1').Content
+
+Validated under Windows PowerShell 5.1 using disposable profile testpowershell.
+The helper:
+- closes Gale;
+- reads RuntimeInbox/ACTIVE_BUILD.txt;
+- requires Current/AUTO_BUILD_RESULT.json to have the same build ID;
+- resolves exact output_profile and output_sha256;
+- downloads the new .r2z before any destructive action;
+- verifies SHA-256;
+- numerically lists local Gale profiles;
+- asks y/n before deleting only the selected profile;
+- opens the verified .r2z in Gale;
+- keeps Advanced options -> Import all files as an explicit manual user gate;
+- removes the downloaded .r2z only after the user confirms successful import.
+
+If the user answers n, no local profile is deleted and the temporary download is cleaned up.
+
+Do not reintroduce failed helper patterns:
+- case-sensitive LOESCHEN confirmation;
+- fuzzy profile/build matching;
+- Windows PowerShell 5.1 array assumptions for GitHub directory listings;
+- a normal variable named $matches which collides case-insensitively with automatic $Matches.
+
+MANDATORY CHAT UX FOR EVERY FUTURE READY-TO-TEST BUILD:
+In the same response that announces a newly built profile is ready for runtime testing, ChatGPT must provide BOTH:
+1. the canonical Gale replacement launcher above;
+2. the exact build-specific LogOutput.log uploader.
+
+The user must not have to ask again for either command.
+
+======================================================================
+RUNTIME LOG UPLOAD / EVIDENCE POLICY
+======================================================================
+
+Binding policy:
+Current/09_REPOSITORY_FIRST_AUTOMATION.md
+
+For every normal new runtime-test build, ChatGPT must include one exact self-contained PowerShell one-line uploader for that profile's:
+BepInEx\LogOutput.log
+
+It must upload to:
+RuntimeInbox/Current/LogOutput.log
+
+It must:
+- use the exact Gale profile name;
+- require no local repo clone;
+- use GitHub CLI/API directly;
+- safely create/replace the inbox file;
+- robustly resolve/bootstrap gh.exe;
+- not treat winget's exit code alone as installation failure;
+- bootstrap gh authentication if needed;
+- verify the local log exists;
+- use a build-specific commit message.
+
+After successful ingest, RuntimeEvidence/<build>/<timestamp>/ is the canonical persisted evidence and RuntimeInbox/Current/ may return to only .gitkeep.
+
+For unusually large logs, follow:
+Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
+
+Do not push >100 MiB raw logs into normal main history. Use the disposable runtime-large path and preserve SHA-256/provenance/verdict/unique evidence according to Current/74.
+
+======================================================================
+MONITOR-ONLY / DEFERRED
+======================================================================
+
+Do not patch without stronger reproducibility or user-facing impact:
+- historical S1.42S disconnect-only PikminNoticeZone / unspawned NetworkObjectReference exception;
+- historical S1.42T one-off AloeChase FSB load-state message;
+- historical S1.42W PikminManager.DespawnLumiknulls collection-modified teardown exception;
+- known loaforcsSoundAPI/HarmonyX TypeLoadException class;
+- known SoftMask/SoftMasking setup exceptions;
+- existing non-project-local Error-severity classes.
+
+Deferred after the S1.42AA gate unless the user explicitly changes scope:
+- CullFactory junkrooms / shatteredrooms exceptions;
 - Mausoleum fog reduction;
-- Functional Microwave spawn rarity reduction;
+- Functional Microwave spawn-rarity reduction;
 - BCMER EventTypes fixed equal distribution 8 x 12.5%;
 - final long full-stack acceptance;
 - AdditionalNetworking repair only with reproducible/user-facing evidence;
 - LethalMin DespawnLumiknulls repair only with stronger evidence;
 - cosmetic documentation cleanup.
 
-MONITOR-ONLY ISSUES
-
-Do not patch without stronger reproducibility or user-facing impact:
-1. historical S1.42S disconnect-only PikminNoticeZone / unspawned NetworkObjectReference exception;
-2. historical S1.42T one-off AloeChase FSB load-state message;
-3. historical S1.42W PikminManager.DespawnLumiknulls collection-modified teardown exception;
-4. known loaforcsSoundAPI/HarmonyX TypeLoadException class;
-5. known SoftMask/SoftMasking setup exception classes;
-6. existing non-project-local Error-severity classes.
-
-KNOWN NON-FUNCTIONAL DRIFT
-
-- Current/02_TECHNICAL_BASELINE.md contains older chronology subsections with stale local current wording.
+Known non-functional drift retained intentionally during the open runtime gate:
+- Current/02_TECHNICAL_BASELINE.md contains older chronology subsections with stale local-current wording;
 - Patches/S139CompatibilityFixes/Plugin.cs contains historical comments that do not perfectly describe accepted v1.3.14 behavior.
 
-Actual current code/config/runtime evidence and chronologically newer canonical documents are authoritative. Keep cosmetic cleanup separate from risky runtime/gameplay changes.
-
-PERMANENT PROJECT-LOCAL PATCH SAFETY RULE
-
-Every project-local Harmony/runtime/compatibility patch must comply with:
-Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
-
-Before implementing/promoting a custom patch:
-- inspect exact owner/call site;
-- inspect inheritance/base lifecycle;
-- map secondary cleanup/state/network responsibilities;
-- use the narrowest exact interception point;
-- do not disable a whole foreign component merely to block one interaction unless the full lifecycle is proven safe to suppress;
-- isolate risky patch changes from unrelated package/config changes;
-- runtime-test target behavior plus adjacent/reverse/native lifecycle behavior;
-- do not treat compile success, startup success, or disappearance of the direct symptom as gameplay acceptance;
-- prefer rollback/narrowing over stacking compensating repair layers.
-
-Every future custom-patch build plan must contain a Patch Safety Review.
+Actual current code/config/runtime evidence and chronologically newer canonical documents are authoritative.
 
 ======================================================================
-
-MASTER-PROMPT - Lethal Company Modding Project
-Repository / Übergabe / laufende Arbeit / spätere Repo-Aktualisierung
-
-Repository:
-https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
-
-======================================================================
-OLDER VERSION-SPECIFIC TAKEOVER STATE IS HISTORICAL.
-Older version-specific takeover state remains preserved in versioned Current/ history files and RuntimeEvidence.
-The CURRENT CANONICAL TAKEOVER block at the top of this file is authoritative for the immediate handover.
-
-WICHTIG:
-Dieser Prompt ist als dauerhafter Einstiegspunkt für neue ChatGPT-Chats gedacht.
-Er soll sowohl die initiale Projektübernahme aus dem GitHub-Repository als auch die spätere Aktualisierung des Repositories am Ende eines Arbeitsabschnitts steuern.
-Das Repository ist die kanonische Übergabequelle UND der kanonische Build-Arbeitsbereich. Eine ZIP-Datei ist nur optionales Backup und niemals die einzige Quelle. Ein lokaler Repository-Clone auf dem Rechner des Benutzers ist für ChatGPT-Arbeit nicht vorgesehen. Profil-Builds, Verifikation, lokale Patch-Kompilierung und Repo-Pflege sollen standardmäßig direkt über GitHub/GitHub Actions erfolgen.
-
-======================================================================
-MARKDOWN-FIRST / RAW-GITHUB RULE — CRITICAL
+MASTER-PROMPT - DURABLE PROJECT RULES
 ======================================================================
 
-The repository uses machine-readable text as the primary ChatGPT handover format.
+This file is the durable entry point for new ChatGPT chats and for end-of-work repository handovers.
+Repository = canonical transition source AND canonical build workspace.
+A ZIP backup is optional and must never become the sole source of continuity.
 
-Read `.md`, `.txt`, and `.json` files before PDF/DOCX.
+---------------------------------------------------------------------
+A. MARKDOWN-FIRST / SOURCE PRIORITY
+---------------------------------------------------------------------
 
-Preferred current read order:
-1. `README.md`
-2. `Current/00_CURRENT_STATE.md`
-3. `Current/01_HANDOVER_CORE.md`
-4. `Current/02_TECHNICAL_BASELINE.md`
-5. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-6. `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
-7. newest `Current/06_RECENT_WORK_*.md`
-8. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md` when present
-9. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-10. newest relevant `Current/*RUNTIME_EVIDENCE*.md`
-11. newest dedicated `Current/*HANDOVER*.md`
-12. `Current/03_PROJECT_CHRONOLOGY.md`
-13. newest `Current/Projektstatus_*.json`
-14. newest `Current/Aktive_Modliste_*.txt`
-15. newest `Current/VERIFIKATION_*.txt`
-16. readable snapshot for the canonical profile under `ProfileSources/<build_id>/`
-17. `BuildSpecs/current.json` and any next-stage plan under `BuildSpecs/`
+Read .md, .txt and .json before PDF/DOCX.
+Current/HumanReadable/ is secondary.
 
-`Current/HumanReadable/` contains PDF/DOCX secondary versions for human readability and visual verification. A GitHub PDF preview/viewer failure is not a blocking error if equivalent machine-readable current documentation exists.
+Preferred generic read order:
+1. README.md;
+2. current canonical takeover block in this file;
+3. newest dedicated Current/*HANDOVER*.md;
+4. newest Current/*AUDIT*.md;
+5. Current/00_CURRENT_STATE.md;
+6. Current/01_HANDOVER_CORE.md;
+7. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md;
+8. newest Current/Projektstatus_*.json;
+9. newest Current/06_RECENT_WORK_*.md;
+10. active candidate/acceptance records;
+11. Current/09_REPOSITORY_FIRST_AUTOMATION.md;
+12. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md;
+13. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md;
+14. Current/03_PROJECT_CHRONOLOGY.md and older history as needed;
+15. readable ProfileSources/<build_id>/ snapshot;
+16. BuildSpecs/current.json and relevant plan;
+17. RuntimeInbox/ACTIVE_BUILD.txt.
 
-When a normal GitHub page returns a viewer instead of file content, prefer the raw form for text files:
-`https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/<PATH>`
+Chronologically newer confirmed information overrides older assumptions.
+Archive/ is historical and must not override current confirmed state unless current docs explicitly refer back to a historical primary source.
 
-Do not waste time trying to screenshot GitHub's PDF viewer merely to recover information that already exists in Markdown/TXT/JSON.
+Do not waste time on PDF viewers if equivalent machine-readable text exists.
 
-When updating the repository, keep the machine-readable current files synchronized with the newest confirmed project state. Human-readable PDF/DOCX documents are secondary and must not become the only source for critical facts.
+---------------------------------------------------------------------
+B. REPOSITORY STRUCTURE
+---------------------------------------------------------------------
 
-======================================================================
-PHASE A – PROJEKT AUS DEM REPOSITORY ÜBERNEHMEN
-======================================================================
+Current/ = current binding machine-readable state and handover docs.
+Profiles/ = current and still-relevant Gale/r2modman .r2z artifacts.
+ProfileSources/ = readable extracted snapshots of generated profiles.
+BuildSpecs/ = build requests/plans/controllers.
+BuildSystem/ = GitHub-native build/index/ingest logic.
+RuntimeInbox/ = temporary incoming locally produced runtime evidence.
+RuntimeAnalysis/ = analysis/query controllers, not permanent raw data.
+RuntimeEvidence/ = canonical persisted runtime provenance/analysis according to retention policy.
+Patches/ = project-local patches/source/installable local packages.
+Logs/ = older or diagnostically useful logs/analyses.
+References/ = binding reference images/values/primary sources.
+Archive/ = historical primary sources with continuing reconstruction value.
 
-1. Öffne und analysiere zuerst das Repository:
-   https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
+---------------------------------------------------------------------
+C. GITHUB-NATIVE BUILD RULE
+---------------------------------------------------------------------
 
-2. Lies zuerst README.md im Repository-Root.
+If the required base profile already exists under Profiles/:
+- do not ask the user to clone the repository;
+- do not ask the user to unpack/repack .r2z locally;
+- do not ask the user to run local profile-build PowerShell scripts;
+- update BuildSpecs/current.json directly on GitHub;
+- use .github/workflows/profile-build.yml and BuildSystem/profile_builder.py;
+- inspect workflow status/logs;
+- verify Current/AUTO_BUILD_RESULT.json/.md;
+- verify exact output SHA-256, archive delta and ProfileSources snapshot.
 
-3. Ermittle aus README.md und den Dateinamen den aktuellsten dokumentierten Projektstand.
-   Der aktuellste chronologisch bestätigte Stand ist verbindlich.
-   Verlasse dich nie auf eine fest im Prompt genannte historische Versionsnummer.
-   README.md und Current/ müssen den aktuellen kanonischen Stand eindeutig ausweisen.
-   Ein neuer Build kann kanonischer Testkandidat sein, obwohl ein älterer Stand der letzte tatsächlich runtime-getestete Stand ist; diese beiden Zustände sind getrennt zu dokumentieren.
+Binary .r2z/.zip/.dll manipulation belongs in GitHub Actions when possible. Every generated profile should also have a readable ProfileSources/<build_id>/ snapshot and member hashes/index.
 
-4. Lies anschließend zuerst die in README.md unter „ChatGPT — read first“ aufgeführten Markdown/TXT/JSON-Dateien. PDF/DOCX sind sekundär.
-   Mindestens zu prüfen sind, sofern vorhanden:
-   - Current/Handover-Prompt_*_Aktueller-Kern.*
-   - Current/Handover-Prompt_Lethal-Company_bis_*.*
-   - Current/Projektstatus_*.json
-   - Current/Lethal-Company_Projektchronik_Kompakt_bis_*.*
-   - Current/Lethal-Company_Chatverlauf_Handover_bis_*.*
-   - Current/Aktive_Modliste_*.txt
-   - Current/README_Handover_*.txt
-   - Current/VERIFIKATION_*.txt
-   - Current/DATEIINVENTAR_*.txt
-   - Current/SHA256SUMS_*.txt
+Local build chains are emergency fallback only when a genuinely required canonical base artifact is not yet online.
 
-5. Prüfe danach die aktuell relevanten technischen Dateien:
-   - Profiles/
-   - ProfileSources/ für das kanonische Profil
-   - BuildSpecs/
-   - BuildSystem/
-   - Patches/ sofern vorhanden
-   - RuntimeEvidence/ für die neuesten akzeptanzrelevanten Läufe
-   - RuntimeInbox/ACTIVE_BUILD.txt
-   - Logs/
-   - References/
-   - Archive/ nur bei Bedarf
+---------------------------------------------------------------------
+D. PROFILE / PATCH CHANGE SAFETY
+---------------------------------------------------------------------
 
-6. Behandle die Ordner wie folgt:
-   - Current/ = aktueller verbindlicher Projektstand
-   - Profiles/ = aktuelle und noch relevante Gale/r2modman-.r2z-Profile
-   - ProfileSources/ = aus .r2z extrahierte, für ChatGPT direkt lesbare Text/Config-Snapshots
-   - BuildSpecs/ = aktuelle/kommende Buildanforderungen
-   - BuildSystem/ = GitHub-native Build-/Index-/Ingest-Logik
-   - RuntimeEvidence/ = persistierte Runtime-Primärevidenz bzw. kompakte kanonische Runtime-Analyse; Rohdaten dürfen gemäß Current/74 nach abgeschlossener Abhängigkeit bereinigt werden
-   - RuntimeInbox/ = temporärer Upload-Eingang für lokal erzeugte Runtime-Dateien; sehr große Logs verwenden den separaten `runtime-large`-Pfad
-   - Patches/ = projektlokale Kompatibilitäts-Patches, Quellcode und installierbare lokale Mod-Pakete
-   - Logs/ = ältere beziehungsweise diagnostisch relevante Runtime-Logs/Auswertungen
-   - References/ = verbindliche Referenzbilder, Spawn-Rates, Referenzwerte und andere Primärquellen
-   - Archive/ = historische Primärquellen; wichtig für Rekonstruktion, aber nicht automatisch aktuell
+Always:
+- start from the correct accepted/gameplay base;
+- never use a diagnostic profile accidentally as production base;
+- exact-hash guard the base;
+- diff changed archive members;
+- verify archive integrity and internal profileName;
+- exclude unintended config/package changes;
+- preserve explicit restore baselines and do-not-regress rules.
 
-7. Prioritätsregel:
-   Chronologisch neuere, bestätigte Informationen überschreiben ältere Annahmen.
-   Archive/ darf einen neueren bestätigten Stand nicht überschreiben, außer die aktuelle Dokumentation verweist ausdrücklich auf eine historische Primärquelle.
+For embedded project-local DLLs:
+- document Gale import semantics;
+- require Advanced options -> Import all files when needed;
+- verify actual plugin load markers after runtime start before claiming the patch was tested.
 
-8. Wiederhole keine Lösungen, die in der Dokumentation bereits als gescheitert, obsolet oder unerwünscht markiert sind, außer es gibt neue technische Evidenz, die eine erneute Prüfung rechtfertigt.
+Custom Harmony/runtime patches must obey Current/68.
 
-9. Falls das Repository, einzelne GitHub-Dateien oder wichtige Assets nicht abrufbar sind:
-   - nicht raten,
-   - nicht still mit unvollständigem Kontext fortfahren,
-   - konkret nennen, welche Datei oder welcher Pfad fehlt,
-   - den Benutzer nur um genau diese fehlende Datei bitten.
+---------------------------------------------------------------------
+E. RUNTIME EVIDENCE RULE
+---------------------------------------------------------------------
 
-10. ZIP-Regel:
-    Verlange nicht pauschal eine Handover-ZIP.
-    Bevorzuge direkt adressierbare Einzeldateien aus dem Repository.
-    ZIPs dürfen als Backup verwendet werden, aber die Projektkontinuität soll nicht davon abhängen, dass ein Archiv erfolgreich entpackt werden kann.
+Runtime gameplay necessarily occurs on the user's PC.
+Everything else should remain repository-first.
 
-11. Nach der Übernahme:
-    Gib eine kurze Bestätigung mit:
-    - erkanntem aktuellem Projektstand,
-    - erkanntem aktuellem Gameplay-Profil,
-    - wichtigsten offenen Baustellen,
-    - unmittelbar nächsten sinnvollen Tests/Aufgaben.
-    Danach arbeite normal mit dem Benutzer am Projekt weiter.
+For normal runtime gates:
+- provide canonical Gale profile-replacement launcher when the build is first ready to test;
+- provide exact build-specific runtime uploader in the same response;
+- ingest the full fresh LogOutput.log;
+- inspect the complete log, not only screenshots;
+- compare errors/warnings/regression markers against the last accepted baseline;
+- preserve canonical provenance and acceptance/rejection decision.
 
-======================================================================
-PHASE B – REGELN FÜR DIE LAUFENDE ARBEIT
-======================================================================
+For large logs follow Current/74.
+Do not retain giant raw logs indefinitely when their gate/issue dependency is closed and canonical SHA-256/provenance/verdict/unique evidence is secured.
 
-1. Dokumentiere im Gespräch alle neuen, projektentscheidenden Informationen gedanklich mit:
-   - getestete Änderungen,
-   - erfolgreiche Fixes,
-   - fehlgeschlagene Fixes,
-   - neue Bugs,
-   - neue Logs,
-   - neue Profile,
-   - bestätigte Configwerte,
-   - verworfene Ansätze,
-   - offene Fragen,
-   - neue Referenzwerte,
-   - neue Spawn-/Power-/Balance-Regeln,
-   - Mod-Ownership einzelner Systeme.
+---------------------------------------------------------------------
+F. HISTORICAL EVIDENCE / DELETION RULE
+---------------------------------------------------------------------
 
-2. Vermeide Informationsverlust durch zu starke Zusammenfassungen.
-   Frühere Übergaben wurden teilweise zu stark gekürzt.
-   Diagnosehistorie, Fehlversuche und Gründe für Entscheidungen sind relevant und sollen erhalten bleiben.
+At handover classify files conceptually as KEEP / UPDATE / ADD / ARCHIVE / DELETE.
 
-3. Bei technischen Änderungen an Profilen:
-   - immer vom korrekten Gameplay-Basisprofil ausgehen,
-   - Diagnoseprofile nicht versehentlich als Gameplay-Basis verwenden,
-   - geänderte Dateien gegen die Basis diffen,
-   - .r2z-Archivintegrität prüfen,
-   - Profilname und Versionsbezeichnung kontrollieren,
-   - unbeabsichtigte Configänderungen ausschließen.
-   - Falls eine projektlokale DLL oder ein anderes zusätzliches ausführbares File in einem .r2z steckt, zusätzlich dokumentieren, wie Gale dieses File tatsächlich importiert.
-   - Für Gale-Profile mit projektlokalen DLLs ist standardmäßig „Advanced options -> Import all files“ zu verlangen, sofern der konkrete Importpfad dies benötigt.
-   - Nach dem ersten Runtime-Start müssen eindeutige Plugin-Load-Marker im Log geprüft werden. Fehlen sie, darf das Verhalten des Patches nicht als getestet gelten.
-   - Wenn sinnvoll, zusätzlich ein separates lokales Mod-Paket als Fallback unter Patches/ bereitstellen.
+Default:
+In doubt, ARCHIVE/KEEP rather than DELETE.
 
-   REPOSITORY-FIRST REGEL:
-   - Liegt das erforderliche Basisprofil bereits unter Profiles/ auf GitHub, darf der Benutzer nicht zum lokalen Entpacken, Patchen, Hashen oder Repacken aufgefordert werden.
-   - ChatGPT aktualisiert BuildSpecs/current.json direkt im Repository.
-   - .github/workflows/profile-build.yml führt den Build bytegenau auf GitHub aus.
-   - BuildSystem/profile_builder.py übernimmt Profilname, Modzustände, Mod-Ergänzungen/-Entfernungen, Config-Patches, lokale Patch-Builds, Datei-Injektion, Hash-/Delta-Prüfung und erzeugt ProfileSources/<build_id>/ als lesbaren Snapshot.
-   - Current/AUTO_BUILD_RESULT.json und .md sind nach einem automatisierten Build zu prüfen.
-   - Lokale PowerShell-Buildskripte sind nur noch Notfall-Fallback, wenn ein zwingend benötigtes Basisartefakt nachweislich noch nicht online im Repository vorhanden ist.
+Delete only when information is certainly redundant and has no future diagnostic, reconstruction, balance or continuity value.
 
-4. Bei neuen Logs:
-   - nicht nur einzelne sichtbare Ausschnitte betrachten,
-   - relevante Fehler/Warnungen systematisch suchen,
-   - neue Regressionen gegen den letzten bekannten Stand vergleichen,
-   - Runtime-Logs nach `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md` behandeln;
-   - für normale Logs den automatischen Streaming-Analyzer nutzen;
-   - für sehr große Logs den disposable `runtime-large`-Pfad nutzen, statt hunderte MiB Rohdaten dauerhaft nach `main` zu committen;
-   - Rohlogs/Chunks nach Abschluss ihrer Abhängigkeiten gezielt bereinigen, sofern kanonische Evidenz und Provenance erhalten bleiben.
+Never delete RuntimeEvidence or historical material merely because a newer summary exists if it still contains unique evidence.
 
-5. Bei Dokumenten:
-   - aktuelle Fakten und historische Fakten klar trennen,
-   - veraltete Aussagen als historisch/deprecated markieren,
-   - nie stillschweigend alte Primärinformationen entfernen, wenn sie noch Diagnosewert haben.
+Runtime raw logs/chunks are the explicit retention-policy exception under Current/74 once their dependency is closed and canonical evidence is preserved.
 
-======================================================================
-PHASE C – REPOSITORY AM ENDE EINES ARBEITSABSCHNITTS AKTUALISIEREN
-======================================================================
+Failed approaches and their causes are valuable do-not-regress evidence and should remain documented.
 
-Diese Phase wird ausgeführt, sobald der Benutzer sinngemäß sagt:
-- „Repo aktualisieren“
-- „Übergabe erstellen“
-- „Handover machen“
-- „Projekt für den nächsten Chat vorbereiten“
-- oder ausdrücklich verlangt, das GitHub-Repository auf den aktuellen Stand zu bringen.
+---------------------------------------------------------------------
+G. END-OF-WORK HANDOVER PROCEDURE
+---------------------------------------------------------------------
 
-Dann gilt:
+When the user requests repo update / handover / new-chat preparation:
 
-1. Analysiere zuerst den aktuellen Repository-Stand erneut.
+1. re-read current repository state;
+2. compare all new chat decisions, builds, tests, logs, fixes, failures, configs and open tasks;
+3. refresh at minimum:
+   - START_HERE_ChatGPT_Masterprompt.txt when bootstrap/current workflow changed;
+   - Current/00_CURRENT_STATE.md;
+   - Current/01_HANDOVER_CORE.md;
+   - Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md;
+   - current Projektstatus_*.json;
+   - BuildSpecs/current.json controller if state changed;
+   - RuntimeInbox/ACTIVE_BUILD.txt if active test target changed;
+4. add dedicated handover/audit/recent-work files when useful;
+5. update README.md only where needed for correct entry/read order/current state;
+6. preserve accepted baselines, hashes, runtime evidence, failed approaches and technical decisions;
+7. do not delete uncertain historical evidence;
+8. audit all current entry points for contradictions or stale pointers;
+9. state any unavoidable local manual action as one-line PowerShell commands where appropriate;
+10. never require a local repo clone/build when GitHub can do it.
 
-2. Vergleiche ihn mit ALLEN neuen Informationen aus dem aktuellen Chat seit der letzten Übergabe:
-   - Entscheidungen
-   - Testergebnisse
-   - Profile
-   - Logs
-   - Configänderungen
-   - Fehler
-   - Fixes
-   - offene Aufgaben
-   - neue Referenzen
+The handover must clearly separate:
+- latest accepted baseline;
+- latest built/runtime candidate;
+- whether profile import occurred;
+- whether runtime test occurred;
+- relevant SHA-256 values;
+- confirmed fixes;
+- open errors/monitor-only observations;
+- exact next step;
+- successor armed/disarmed state.
 
-3. Erstelle vor jeder Änderung eine Repo-Bereinigungsliste.
-   Ordne jede relevante Datei einer Kategorie zu:
+---------------------------------------------------------------------
+H. QUALITY CONTROL
+---------------------------------------------------------------------
 
-   KEEP
-   = unverändert behalten
+Before final handover verify:
+- README and START point to files that exist;
+- Projectstatus JSON matches human-readable Current docs;
+- BuildSpecs/current.json matches the actual controller state;
+- RuntimeInbox/ACTIVE_BUILD.txt matches the actual runtime target;
+- Current/AUTO_BUILD_RESULT.json matches the active built candidate when relevant;
+- profile SHA-256 values are consistent across docs;
+- no successor is accidentally armed during an open runtime gate;
+- no runtime log is misattributed to the wrong build;
+- historical evidence was not accidentally deleted;
+- known non-functional drift is clearly non-authoritative if retained;
+- mandatory Gale replacement + log-upload UX is preserved for future ready-to-test builds.
 
-   UPDATE
-   = durch neue aktuelle Fassung ersetzen
+---------------------------------------------------------------------
+I. NEXT-CHAT PROMPT RULE
+---------------------------------------------------------------------
 
-   ADD
-   = neu aufnehmen
-
-   ARCHIVE
-   = nicht mehr aktuell, aber historisch/diagnostisch weiterhin wertvoll
-
-   DELETE
-   = nur wenn mit hoher Sicherheit vollständig redundant oder dauerhaft irrelevant
-
-4. Löschregel:
-   Im Zweifel ARCHIVE statt DELETE.
-   Eine Datei darf nur gelöscht werden, wenn dadurch keine für zukünftige Diagnose, Rekonstruktion, Balanceentscheidung oder Projektkontinuität relevante Information verloren geht.
-   Für Runtime-Rohlogs und automatisch erzeugte Runtime-Chunks gilt zusätzlich `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`: sie sind ausdrücklich nicht dauerhaft aufzubewahren, wenn Gate/Issue geschlossen und kanonische Evidenz/Provenance gesichert sind.
-
-5. Historische Primärquellen dürfen erhalten bleiben, auch wenn aktuelle Dokumentation dieselben Themen zusammenfasst.
-   Das gilt besonders für:
-   - alte Logs mit einzigartigen Fehlersignaturen, solange deren einzigartige Evidenz noch nicht anders kanonisch gesichert ist;
-   - frühere Handover-Dokumente mit mehr Detailtiefe,
-   - Referenzscreenshots,
-   - historische Basis-/Diagnoseprofile,
-   - alte Configwerte, die für Regressionen relevant sind.
+At the end of a completed handover provide the user a short first prompt for the new chat that:
+- refers only to the repository as the handover source;
+- names the newest key files to read first;
+- states accepted baseline, active candidate and exact next action;
+- says repository is source of truth;
+- says do not require a local clone/build.
 
 ======================================================================
-PHASE D – AKTUELLE DOKUMENTATION ERZEUGEN / AKTUALISIEREN
+CRITICAL SUMMARY RULES
 ======================================================================
 
-Prüfe und aktualisiere mindestens:
-
-1. Aktueller kompakter Handover-Kern
-   - schneller Einstieg für neuen Chat
-   - aktueller Stand
-   - wichtigste Regeln
-   - aktuelle Profile
-   - offene Aufgaben
-   - nächste Tests
-
-2. Vollständiger Handover-Prompt
-   - aktueller verbindlicher Kern vorne
-   - historische Detailanhänge bei Bedarf
-   - keine gefährliche Überkomprimierung
-
-3. Vollständige Chat-/Projektverlaufsdokumentation
-   - chronologisch
-   - mit relevanten Entscheidungen
-   - Tests
-   - Fehlversuchen
-   - Ursachen
-   - Fixes
-   - Versionen
-   - offenen Punkten
-
-4. Kompakte Projektchronik
-
-5. Projektstatus_<AKTUELLER_STAND>.json
-
-6. Aktive_Modliste_<AKTUELLER_STAND>.txt
-
-7. README_Handover_<AKTUELLER_STAND>.txt
-
-8. VERIFIKATION_<AKTUELLER_STAND>.txt
-
-9. DATEIINVENTAR_<AKTUELLER_STAND>.txt
-
-10. SHA256SUMS_<AKTUELLER_STAND>.txt
-
-11. Repository-README.md
-
-12. Diesen Master-Prompt selbst nur dann aktualisieren, wenn sich der Übergabe-/Repo-Workflow geändert hat oder der aktuelle Bootstrap-Block veraltet ist.
-    Der dauerhafte Regelteil soll möglichst versionsunabhängig bleiben.
-
-Die Dokumentation muss mindestens enthalten:
-- was seit der letzten Übergabe geändert wurde,
-- welche Tests erfolgreich waren,
-- welche Tests fehlgeschlagen sind,
-- welche Ansätze verworfen wurden und warum,
-- welche Probleme offen sind,
-- welche Werte/Configs verbindlich sind,
-- welche Mods welche Systeme „ownen“,
-- welche alten Lösungen nicht erneut ausprobiert werden sollen,
-- welche Profile Gameplay-Basis und welche Diagnoseprofile sind,
-- welcher Profilstand aktuell kanonisch ist,
-- welche Tests als Nächstes durchgeführt werden sollen.
-
-======================================================================
-PHASE E – TECHNISCHE DATEIEN AKTUALISIEREN
-======================================================================
-
-Prüfe insbesondere:
-
-- neuestes Gameplay-.r2z
-- relevante vorherige Basisprofile
-- relevante Diagnoseprofile
-- projektlokale Patch-Quellen / lokale Mod-Pakete unter Patches/
-- neue Runtime-Logs und kompakte Runtime-Analysen
-- verbindliche Referenzbilder
-- Spawn-Rate-Referenzen
-- Referenzwerte
-- Modlisten
-- Config-/Balance-Primärquellen
-
-Profile dürfen nur entfernt werden, wenn ihre Informationen vollständig in neueren Quellen enthalten sind und sie keinen eigenständigen Diagnosewert mehr haben.
-
-Runtime-Rohlogs, extrahierte Duplikate und Analyzer-Chunks sind davon getrennt zu behandeln: sie dürfen nach der in Current/74 definierten Gate-/Issue-Abhängigkeitsprüfung gezielt gelöscht bzw. automatisch ablaufen.
-
-======================================================================
-PHASE F – REPOSITORY-STRUKTUR
-======================================================================
-
-Grundstruktur:
-
-/
-├─ README.md
-├─ START_HERE_ChatGPT_Masterprompt.txt
-├─ .github/workflows/
-├─ BuildSpecs/
-├─ BuildSystem/
-├─ Current/
-├─ Profiles/
-├─ ProfileSources/
-├─ RuntimeInbox/
-├─ RuntimeAnalysis/
-├─ RuntimeEvidence/
-├─ Patches/ (falls projektlokale Patches existieren)
-├─ Logs/
-├─ References/
-└─ Archive/
-
-Regeln:
-
-- Current/ enthält den aktuellen maschinenlesbaren Einstiegspunkt und aktuelle Dokumentation; Current/HumanReadable/ enthält die sekundären PDF/DOCX-Fassungen.
-- BuildSpecs/ und BuildSystem/ bilden den GitHub-nativen Profil-Buildpfad.
-- ProfileSources/ enthält für ChatGPT direkt lesbare Text-/Config-Snapshots generierter .r2z-Profile.
-- RuntimeInbox/Current/ ist die normale Upload-Ablage für lokal erzeugte Runtime-Evidenz; RuntimeInbox/Large/ auf dem disposable `runtime-large`-Branch ist für sehr große Logs vorgesehen.
-- RuntimeAnalysis/ enthält Controller für gezielte Analyse-/Query-Aufträge, nicht dauerhafte Rohdaten.
-- RuntimeEvidence/ enthält kanonische Runtime-Provenance, Akzeptanz-relevante kompakte Analysen und nur solange benötigte Rohdaten gemäß Current/74.
-- Profiles/ enthält aktuelle sowie noch relevante Basis-/Diagnoseprofile.
-- Patches/ enthält projektlokale Kompatibilitäts-Patches, Quellcode und installierbare lokale Mod-Pakete.
-- Logs/ enthält aktuelle beziehungsweise diagnostisch relevante Logs/Auswertungen.
-- References/ enthält verbindliche Primärreferenzen.
-- Archive/ enthält historische Primärquellen mit fortbestehendem Erkenntniswert.
-
-README.md muss eindeutig nennen:
-- aktuell kanonischer Projektstand,
-- „Read first“-Dateien,
-- aktuelles Gameplayprofil,
-- Prioritätsregel „neuere bestätigte Information schlägt ältere“,
-- Hinweis, dass Archive/ historisch ist,
-- Hinweis auf diesen Master-Prompt,
-- aktuellen Runtime-Log-Ingest-/Retention-Pfad, wenn dieser für den aktiven Workflow relevant ist,
-- falls der aktuelle Stand projektlokale DLLs benötigt: die konkrete Gale-Importregel und die erwarteten Runtime-Load-Marker.
-
-======================================================================
-PHASE G – QUALITÄTSKONTROLLE VOR DER ÜBERGABE
-======================================================================
-
-Vor Auslieferung prüfen:
-
-1. DOCX/PDF
-   - vollständig
-   - sinnvoll formatiert
-   - keine abgeschnittenen Tabellen
-   - keine versehentlich fehlenden historischen Abschnitte
-   - Versionsnummern korrekt
-
-2. .r2z
-   - ZIP-/Archivintegrität
-   - erwartete Dateistruktur
-   - korrekter profileName
-   - korrekte Versionsbezeichnung
-   - keine unbeabsichtigten Zusatz-/Fehl-Dateien
-   - Diff gegen korrektes Basisprofil
-   - bei eingebetteten projektlokalen DLLs: DLL tatsächlich vorhanden, separates Fallback-Paket vorhanden falls vorgesehen, Gale-Importregel dokumentiert und Runtime-Load-Marker für den nächsten Test festgelegt
-
-3. Logs
-   - korrekter Versionsbezug
-   - keine falsche Zuordnung zu einem Profilstand
-   - für große Logs: Analyzer-/Manifest-Provenance stimmt mit dem Rohlog-Hash überein
-   - Löschung/Retention entspricht Current/74
-
-4. Inventar/Hashes
-   - Inventar entspricht finalem Dateistand
-   - SHA-256-Hashes werden erst nach allen finalen Änderungen erzeugt
-   - Hashes müssen zu den final ausgelieferten Dateien passen
-
-5. Repository
-   - keine unnötigen Dubletten in Current/
-   - keine versehentlich gelöschten Primärquellen
-   - Archive klar als historisch markiert
-   - README zeigt auf tatsächlich vorhandene Dateien
-   - sehr große Runtime-Rohdaten werden nicht versehentlich dauerhaft in main-History aufgenommen
-
-======================================================================
-PHASE H – DATEIEN FÜR DEN BENUTZER BEREITSTELLEN
-======================================================================
-
-1. Wichtige Dateien einzeln bereitstellen.
-2. Keine ZIP-only-Lösung.
-3. Optional zusätzlich ein vollständiges Backup-ZIP erzeugen.
-4. Profil-Builds und Repo-Dateiänderungen werden von ChatGPT direkt im GitHub-Repository vorgenommen, sofern die erforderlichen Basen dort vorhanden sind.
-5. Für normale Runtime-Dateien, die ausschließlich durch einen lokalen Spielstart entstehen können, nutzt der Benutzer GitHubs Web-Upload nach RuntimeInbox/Current/. Danach übernimmt die Runtime-Ingest-Automation.
-6. Für sehr große Runtime-Logs folgt der Benutzer dem vorbereiteten `runtime-large`-Pfad aus Current/74; große Rohdaten werden nicht dauerhaft nach main überführt.
-
-======================================================================
-PHASE I – GITHUB-NATIVE AUTOMATION / LOKALE FALLBACKS
-======================================================================
-
-Standardfall:
-
-- KEIN lokaler Repository-Clone für Profil-Builds/Repo-Pflege.
-- KEINE manuellen PowerShell-Profilbuilds.
-- KEIN manuelles Entpacken/Repacken von .r2z durch den Benutzer.
-- KEIN manuelles Kopieren erzeugter Build-Dateien ins Repository.
-
-Stattdessen:
-
-1. ChatGPT prüft das exakte Basisprofil unter Profiles/ und den dokumentierten SHA-256.
-2. ChatGPT aktualisiert BuildSpecs/current.json direkt auf GitHub.
-3. Der Push triggert .github/workflows/profile-build.yml.
-4. GitHub Actions baut und verifiziert das Profil.
-5. Der Workflow committed:
-   - das neue Profiles/*.r2z,
-   - ProfileSources/<build_id>/,
-   - Current/AUTO_BUILD_RESULT.json,
-   - Current/AUTO_BUILD_RESULT.md.
-6. ChatGPT prüft Workflow-Status, Logs, Delta und Hash selbst.
-7. Der Benutzer lädt anschließend nur das fertige Profil aus GitHub/Gale für den tatsächlichen Runtime-Test.
-
-Lokale Benutzeraktion ist nur zulässig, wenn technisch unvermeidbar:
-- tatsächliches Starten/Testen von Lethal Company;
-- Vorbereitung/Splitting eines lokal erzeugten sehr großen Runtime-Logs für den `runtime-large`-Upload;
-- einmalige Migration eines noch ausschließlich lokal vorhandenen kanonischen Basisartefakts;
-- Upload von lokal erzeugtem Log/config/runtime evidence in den vorgesehenen Runtime-Inbox-Pfad.
-
-Wenn ein zwingend benötigtes Basisprofil noch ausschließlich lokal existiert:
-- exakt benennen, welche Datei einmalig nach Profiles/ hochgeladen werden muss;
-- danach sofort wieder auf den GitHub-nativen Workflow wechseln;
-- keinen dauerhaften lokalen Repo-Workflow etablieren.
-
-PowerShell-Befehle nur noch als ausdrücklich gekennzeichneten Notfall-Fallback liefern, nicht als Standardprozess; die Ausnahme ist ein explizit dokumentierter lokaler Vorverarbeitungsschritt für unvermeidbar lokal entstandene sehr große Runtime-Rohdaten.
-
-======================================================================
-PHASE J – ABSCHLUSSBERICHT
-======================================================================
-
-Am Ende ausdrücklich nennen:
-
-- neuer kanonischer Projektstand
-- aktuelles Gameplayprofil
-- neu hinzugefügte Dateien
-- aktualisierte Dateien
-- archivierte Dateien
-- gelöschte Dateien
-- bewusst erhaltene historische Dateien
-- offene Probleme
-- nächste Tests
-- ob README.md angepasst wurde
-- ob dieser Master-Prompt angepasst werden musste
-- ob alle Integritäts-/Hashprüfungen bestanden wurden
-
-======================================================================
-PHASE K – PROMPT FÜR DEN NÄCHSTEN CHAT
-======================================================================
-
-Wenn das Repository vollständig aktualisiert wurde, gib zusätzlich einen extrem kurzen Startsatz für den nächsten Chat aus.
-
-Standardform:
-
-„Nutze dieses Repository als vollständige Projektübergabe:
-https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
-Lies zuerst README.md und anschließend die dort unter ‚Read first‘ genannten Dateien. Folge außerdem START_HERE_ChatGPT_Masterprompt.txt. Der chronologisch neueste bestätigte Stand ist verbindlich.“
-
-======================================================================
-KRITISCHE GRUNDREGELN
-======================================================================
-
-- Repository = kanonische Übergabequelle.
-- Keine ZIP-only-Abhängigkeit.
-- Neuere bestätigte Fakten schlagen ältere.
-- Archive ist historisch, nicht automatisch aktuell.
-- Im Zweifel archivieren statt löschen; Runtime-Rohlogs/Chunks sind die ausdrücklich definierte Ausnahme gemäß Current/74, wenn ihre Abhängigkeit geschlossen ist.
-- Keine Wiederholung bereits gescheiterter Ansätze ohne neue Evidenz.
-- Keine übermäßige Kürzung der Dokumentation.
-- Diagnosehistorie und Gründe für Entscheidungen erhalten.
-- Vor jeder Profiländerung korrekte Basis sicherstellen.
-- Nach jeder Profiländerung Diff und Archivintegrität prüfen.
-- Eingebettete projektlokale DLLs gelten erst als runtime-getestet, wenn ihr tatsächlicher Load im neuen Profil-Log bestätigt ist.
-- Keine erfundenen Werte, wenn Logs/Dateien sie nicht belegen.
-- Fehlende Informationen klar benennen statt raten.
-- GitHub ist der kanonische Build- und Übergabearbeitsbereich; ChatGPT pflegt ihn direkt.
-- Wenn der GitHub-Connector/Plugin verfügbar ist, soll ChatGPT Repository-Dateien und Commits darüber direkt lesen/schreiben, statt den Benutzer als manuellen Datei-Transport zu benutzen.
-- Nach einem erfolgreichen normalen Runtime-Ingest gilt die persistierte Fassung unter RuntimeEvidence/ als kanonische Online-Evidenz; RuntimeInbox/Current/ darf anschließend wieder leer sein.
-- Sehr große Runtime-Logs werden über den disposable `runtime-large`-Pfad verarbeitet; die vollständige Analyse muss alle Quellzeilen streamen, aber große Rohdaten müssen nicht dauerhaft im main-Repository verbleiben.
-- Runtime-Rohlogs dürfen nach abgeschlossener Gate-/Issue-Abhängigkeit gelöscht/ablaufen, wenn SHA-256, Buildzuordnung, Verdict und einzigartige relevante Evidenz kanonisch erhalten sind.
-- Lokale Repo-Clones und lokale PowerShell-Buildketten sind nicht der Standard.
-- Binäre .r2z/.zip/.dll-Dateien werden auf GitHub Actions verarbeitet; zusätzlich sind lesbare ProfileSources-Snapshots zu erzeugen.
+- Repository = canonical source of truth and build workspace.
+- No ZIP-only dependency.
+- Newer confirmed facts beat older wording.
+- Archive/history is not automatically current.
+- Preserve diagnostic history and reasons for decisions.
+- Do not repeat failed approaches without new evidence.
+- No local repo clone/profile-build requirement when GitHub infrastructure can do the work.
+- Exact base hash + archive delta + profile integrity for every build.
+- Embedded project-local DLLs require real runtime load proof.
+- Custom patches must obey Current/68.
+- Runtime evidence must be full-log based; large logs follow Current/74.
+- Current/AUTO_BUILD_RESULT and ProfileSources are part of build verification.
+- Every ready-to-test build response must include BOTH the canonical Gale replacement launcher and exact build-specific runtime uploader.
+- S1.42AA is currently imported but not runtime-tested; S1.42Z remains accepted until S1.42AA passes.
 
 ENDE DES MASTER-PROMPTS
