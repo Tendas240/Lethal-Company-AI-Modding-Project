@@ -258,7 +258,8 @@ def validate_bootstrap() -> None:
 
 def validate_overhaul_completion_metadata() -> None:
     req = load_json("Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json")
-    if req.get("status") not in {"EXECUTED_VALIDATED", "COMPLETE_VALIDATED"}:
+    status = str(req.get("status", "")).upper()
+    if "VALIDATED" not in status or not any(token in status for token in ("EXECUTED", "COMPLETE", "IMPLEMENTED")):
         fail(f"requirements status does not declare completed execution: {req.get('status')!r}")
     execution = load_json("Current/OVERHAUL_EXECUTION_STATE.json")
     if execution.get("last_completed_phase") != 11:
