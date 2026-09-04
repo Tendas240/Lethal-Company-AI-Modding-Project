@@ -12,136 +12,158 @@ SHA-256:
 
 S1.42U remains the last fully accepted full-normal-stack gameplay baseline.
 
-## Closed tuning evaluation — S1.42V
+## Closed tuning evaluation — S1.42X
 
-S1.42V Jetpack architecture was proven at runtime, but its balance values were rejected by user feedback.
+S1.42X technical paths worked, but the candidate was rejected for Jetpack balance and incomplete aerial-defense scope.
 
-Runtime evidence:
+Profile:
 
-`RuntimeEvidence/S1.42V/20260904T095739Z/`
-
-Raw log SHA-256:
-
-`5e094086efef862abdbaf1bfdaab85fb8c8ed20d73d865c9f1bc902e08180dfd`
-
-Technical result:
-
-- S1.42V Jetpack plugin loaded;
-- ButteRyBalance 0.7.0 / JetpackFixes 1.6.3 / More Ship Upgrades 3.14.1 validated;
-- patch armed successfully;
-- Compatibility Fixes 1.3.14 loaded;
-- Work/no-task = 0;
-- Leader-null = 0;
-- S1.39 Compatibility Fixes Error = 0;
-- no Jetpack Harmony owner/target/order failure.
-
-Balance result:
-
-- `12f` lift-off still too weak;
-- Microwave `0.5` still too loud.
-
-Record:
-
-`Current/82_S1.42V_RUNTIME_TECHNICAL_PASS_BALANCE_REJECTED.md`
-
-One AdditionalNetworking NetworkObjectReference Fatal occurred during local-disconnect teardown after BCMER `OnLocalDisconnect`; monitor only unless it becomes reproducible before disconnect or user-facing.
-
-## Active gate — S1.42W
-
-**BUILD PASS / RUNTIME VALIDATION OPEN**
-
-Candidate:
-
-`Profiles/LC V1 S1.42W Lift-Off Microwave Retune.r2z`
+`Profiles/LC V1 S1.42X Jetpack Pikmin ACU Retune.r2z`
 
 SHA-256:
 
-`f34ebcf18bd2b475da5546e6c391bd15bf70df5648b5f69ffb668d196df057dc`
+`57d8f9251236cf40eacf4366a21646ae8c51500b9ed6fa79cbc9b56c8daa611d`
+
+Runtime evidence:
+
+`RuntimeEvidence/S1.42X/20260904T115324Z/`
+
+Raw log SHA-256:
+
+`6fe57bda1c2a2a9e2a910304890e47b3fffd606460225bfd142ffae9fd996a9d`
+
+Technical result:
+
+- Jetpack plugin loaded and armed `10 -> 32`;
+- CodeRebirth ACU plugin loaded;
+- CodeRebirth 1.6.9 / DawnLib 0.9.25 / DawnLib.Dusk 0.9.25 validated;
+- exact `code_rebirth:air_control_unit` provider validated;
+- all 18 ACU curves scaled ×0.5;
+- normal enemies remained active;
+- Work/no-task = 0;
+- Leader-null = 0;
+- Fatal = 0;
+- Compatibility Fixes project error = 0.
+
+Gameplay result:
+
+- `32f` Jetpack acceleration is far too strong;
+- Pikmin CarryStrength `3` / Purple `30` is correct and accepted;
+- the Air Control Unit-only scope was incomplete because G.R.E.G. / Advanced Airspace Control is a separate `code_rebirth:gunslinger_greg` map object.
+
+Record:
+
+`Current/84_S1.42X_RUNTIME_ASSESSMENT_AND_S1.42Y_NEXT.md`
+
+## Active gate — S1.42Y
+
+**BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
+
+Candidate:
+
+`Profiles/LC V1 S1.42Y Jetpack Aerial Defense Retune.r2z`
+
+SHA-256:
+
+`f4ae0d93c9cff4f9441c24d1021e5d9b816861b8317d9ed8995fde67ebbd8d89`
 
 Candidate record:
 
-`Current/83_S1.42W_BUILD_CANDIDATE_LIFT_MICROWAVE_LGU.md`
+`Current/85_S1.42Y_BUILD_CANDIDATE_JETPACK_COMPLETE_AERIAL_DEFENSE.md`
 
 Plan / Patch Safety Review:
 
-`BuildSpecs/S1.42W_PLAN.md`
+`BuildSpecs/S1.42Y_PLAN.md`
 
-Build commit:
+Actions build run:
 
-`165d102364438cace2fd2184af3fd091855ff0d7`
+`33871219861` = success
 
-Actions run:
-
-`33861561173` = success
-
-## Exact S1.42W changes
+## Exact S1.42Y changes
 
 ### Jetpack
 
-- S1.42W project-local DLL SHA-256: `95b7e689f68246ebda2fa6a0cab9fbe2ead206a00d85e6cbf64653d1f69d1fa8`;
-- base acceleration `10f -> 16f` after ButteRyBalance;
+- project-local DLL SHA-256: `fab15a520c1ff0172d33bc88303426d214b12135b34803f6e98689c295409c7e`;
+- base acceleration `10f -> 22f` after ButteRyBalance;
 - V49 handling/deceleration untouched;
-- JetpackFixes safety logic untouched;
+- JetpackFixes safety behavior untouched;
 - exact dependency/Harmony-owner fail-closed validation retained.
 
-### LateGameUpgrades / More Ship Upgrades
+More Ship Upgrades:
 
-Jet Fuel remains:
+- Jet Fuel initial/incremental acceleration = `15 / 15`;
+- Jetpack Thrusters initial/incremental max speed = `25 / 20`.
 
-- `Initial Acceleration Increase = 20`;
-- `Incremental Acceleration Increase = 20`.
+### Pikmin
 
-This already scales automatically with base 16f, producing 19.2 / 22.4 / 25.6 / 28.8 at 20/40/60/80% effects.
+Preserve the user-confirmed values:
 
-Jetpack Thrusters:
+- Indoor Pikmin Spawn Chance = `0.08`;
+- Blue / Red / Yellow / White / Winged / Rock / Ice / Glow / Bulbmin CarryStrength = `3`;
+- Purple Pikmin CarryStrength = `30`.
 
-- `Initial Maximum Speed Increase = 25`;
-- `Incremental Maximum Speed Increase = 20`.
+### CodeRebirth aerial defense
 
-### Microwave
+Project-local DLL SHA-256:
 
-`Functional Microwave | Volume = 0.15`
+`e017ccb74d92df10442bb5f8651a776787954f4861309059ec6c497e000a3d45`
 
-Microwave spawn rarity remains deferred.
+The Y patch transactionally validates both exact providers before changing either:
 
-### Immortal Snail
+1. `code_rebirth:air_control_unit` — 18 exact moon/tag curves;
+2. `code_rebirth:gunslinger_greg` — G.R.E.G. / Advanced Airspace Control — 18 exact moon/tag curves.
 
-- `Rarity = 40`;
-- `Max Snails = 2`.
+After both contracts validate, both complete curve sets are scaled ×`0.5`. No unrelated map-object provider is changed.
+
+The ×0.5 value is an exact curve-amplitude/spawn-weight reduction. DawnLib's later evaluation/rounding means short observed spawn counts need not be exactly half.
+
+### Other tuning
+
+- Functional Microwave Volume = `0.15`;
+- Microwave spawn rarity remains deferred;
+- Immortal Snail `Rarity = 40`;
+- Immortal Snail `Max Snails = 2`.
 
 ## Exact next test
 
-**Run S1.42W. Do not build a successor first.**
+**Run S1.42Y. Do not build a successor first.**
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42W`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Y`
 
 Import/run:
 
-`LC V1 S1.42W Lift-Off Microwave Retune`
+`LC V1 S1.42Y Jetpack Aerial Defense Retune`
 
-Use Gale `Advanced options -> Import all files` unless all custom files are otherwise guaranteed to import.
+Use Gale:
+
+`Advanced options -> Import all files`
+
+because Y contains two project-local DLLs.
 
 Minimum checks:
 
 1. startup/main menu succeeds;
-2. `Loading [S1.42W Jetpack Acceleration 1.0.0]` appears;
-3. dependency/owner validation succeeds;
-4. `S1.42W Jetpack acceleration patch armed` appears;
-5. BCMER 1.71.0 and Compatibility Fixes 1.3.14 remain healthy;
-6. normal enemies still spawn;
-7. lift-off is clearly faster than S1.42V and subjectively acceptable;
-8. V49 handling/inertia remains acceptable;
-9. release/deactivation and safe landing remain sane;
-10. hard collision and high-speed ground touch show no new JetpackFixes regression;
-11. repeated flights show no random mid-air explosion/state accumulation;
-12. Jet Fuel remains useful as purchase-gated acceleration progression;
-13. Jetpack Thrusters remains useful without obvious instability;
-14. Microwave remains functional and `0.15` is acceptably quiet;
-15. Snail remains functional at rarity 40 / max 2;
-16. Work/no-task = 0;
-17. Leader-null = 0;
-18. no new project compatibility error flood;
-19. commit and ingest the complete fresh runtime log.
+2. `Loading [S1.42Y Jetpack Acceleration 1.0.0]` appears;
+3. Jetpack dependency/owner validation succeeds;
+4. exact `10 -> 22` armed marker appears;
+5. `Loading [S1.42Y CodeRebirth Aerial Defense Spawn Tuning 1.0.0]` appears;
+6. CodeRebirth 1.6.9 / DawnLib 0.9.25 / DawnLib.Dusk 0.9.25 validate;
+7. Air Control Unit provider validates with exactly 18 curves;
+8. G.R.E.G. provider validates with exactly 18 curves;
+9. final transactional marker confirms both complete curve sets scaled ×0.5;
+10. no aerial-defense contract-refusal marker;
+11. 22f Jetpack is materially calmer than X/32f while still meaningfully stronger than old 10/16 behavior;
+12. V49 handling, release/deactivation, landing, hard contact and repeated flights remain sane;
+13. CarryStrength remains correct at 3 / Purple 30;
+14. both aerial-defense systems remain functional and subjectively less common;
+15. Microwave `0.15` is evaluated only if one is encountered;
+16. Snail remains functional at rarity 40 / max 2;
+17. BCMER 1.71.0, normal enemies and Compatibility Fixes 1.3.14 remain healthy;
+18. Work/no-task = 0;
+19. Leader-null = 0;
+20. Fatal = 0;
+21. no new project compatibility error flood;
+22. commit and ingest the complete fresh runtime log.
 
 ## Verified restore invariants — do not reopen without evidence
 
@@ -156,7 +178,7 @@ Minimum checks:
 - Crawler absent from Attack Blacklist;
 - normal enemy population.
 
-## Deferred after S1.42W
+## Deferred after S1.42Y
 
 Do not silently mix into the current gate:
 
@@ -164,20 +186,21 @@ Do not silently mix into the current gate:
 - CullFactory exceptions for `junkrooms` / `shatteredrooms`;
 - Mausoleum fog reduction;
 - CodeRebirth Microwave rarity reduction;
-- BCMER EventTypes fixed to 8 x 12.5%;
+- BCMER EventTypes fixed to 8 × 12.5%;
 - final long full-stack acceptance;
-- AdditionalNetworking disconnect patch without reproducible/user-facing evidence.
+- AdditionalNetworking disconnect patch without reproducible/user-facing evidence;
+- LethalMin `DespawnLumiknulls()` repair without stronger evidence.
 
 ## Controllers
 
 `BuildSpecs/current.json`:
 
 - `enabled = false`;
-- `build_id = IDLE_AFTER_S1.42W_BUILD_AWAITING_RUNTIME_VALIDATION`;
-- base = S1.42W;
-- base SHA-256 = `f34ebcf18bd2b475da5546e6c391bd15bf70df5648b5f69ffb668d196df057dc`.
+- `build_id = IDLE_AFTER_S1.42Y_BUILD_AWAITING_RUNTIME_VALIDATION`;
+- base = S1.42Y;
+- base SHA-256 = `f4ae0d93c9cff4f9441c24d1021e5d9b816861b8317d9ed8995fde67ebbd8d89`.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42W`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Y`
 
 No successor is armed.
 
