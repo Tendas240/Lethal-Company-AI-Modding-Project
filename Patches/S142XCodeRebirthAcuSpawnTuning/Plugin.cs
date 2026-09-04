@@ -18,7 +18,7 @@ namespace S142XCodeRebirthAcuSpawnTuning
     [BepInDependency(DuskGuid, BepInDependency.DependencyFlags.HardDependency)]
     public sealed class Plugin : BaseUnityPlugin
     {
-        internal const string PluginGuid = "tendas.lethalcompany.s142xcodebirthacuspawntuning";
+        internal const string PluginGuid = "tendas.lethalcompany.s142xcoderebirthacuspawntuning";
         internal const string PluginName = "S1.42X CodeRebirth ACU Spawn Tuning";
         internal const string PluginVersion = "1.0.0";
 
