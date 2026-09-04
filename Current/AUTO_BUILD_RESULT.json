@@ -1,36 +1,20 @@
 {
-  "build_id": "S1.42Z",
-  "profile_name": "LC V1 S1.42Z Jetpack Pikmin Retune",
-  "base_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
-  "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
-  "output_profile": "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z",
-  "output_sha256": "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4",
+  "build_id": "S1.42AA",
+  "profile_name": "LC V1 S1.42AA Interior Weight Equalization",
+  "base_profile": "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z",
+  "base_sha256": "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4",
+  "output_profile": "Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z",
+  "output_sha256": "0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364",
   "zip_members": 333,
   "changed_existing_members": [
-    "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
-    "BepInEx/config/dev.idjut.SnailFork.cfg",
-    "BepInEx/config/NoteBoxz.LethalMin.cfg",
-    "BepInEx/config/Pikmin/Blue Pikmin.cfg",
-    "BepInEx/config/Pikmin/Bulbmin.cfg",
-    "BepInEx/config/Pikmin/Glow Pikmin.cfg",
-    "BepInEx/config/Pikmin/Ice Pikmin.cfg",
-    "BepInEx/config/Pikmin/Purple Pikmin.cfg",
-    "BepInEx/config/Pikmin/Red Pikmin.cfg",
-    "BepInEx/config/Pikmin/Rock Pikmin.cfg",
-    "BepInEx/config/Pikmin/White Pikmin.cfg",
-    "BepInEx/config/Pikmin/Winged Pikmin.cfg",
-    "BepInEx/config/Pikmin/Yellow Pikmin.cfg",
-    "export.r2x",
-    "BepInEx/config/CodeRebirth.cfg"
+    "BepInEx/config/LethalLevelLoader.cfg",
+    "export.r2x"
   ],
-  "added_members": [
-    "BepInEx/plugins/S142ZJetpackAcceleration/S142ZJetpackAcceleration.dll",
-    "BepInEx/plugins/S142ZCodeRebirthAerialDefenseSpawnTuning/S142ZCodeRebirthAerialDefenseSpawnTuning.dll"
-  ],
+  "added_members": [],
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42Z",
+  "snapshot_dir": "ProfileSources/S1.42AA",
   "snapshot": {
     "entries": 333,
     "text_entries": 330
