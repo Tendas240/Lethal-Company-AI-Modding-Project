@@ -18,9 +18,9 @@ Do not require a local repository clone or local profile build while the reposit
 6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
 7. `Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md`
 8. `Current/Projektstatus_S1.42AB_CANDIDATE.json`
-9. `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`
-10. `Current/Projektstatus_S1.42Z_ACCEPTED.json`
-11. `Current/94_S1.42AA_RUNTIME_FAIL_INTERIOR_WEIGHT_EQUALIZATION.md`
+9. `Current/06_RECENT_WORK_S1.42AA-S1.42AB.md`
+10. `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`
+11. `Current/Projektstatus_S1.42Z_ACCEPTED.json`
 12. `BuildSpecs/S1.42AB_PLAN.md`
 13. `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`
 14. `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`
@@ -100,6 +100,8 @@ Canonical launcher for future new-build replacements:
 $u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
 ```
 
+Do **not** run the replacement helper again for the immediate AB test because AB is already installed and current.
+
 ## Exact next action
 
 **Run one normal Offense gameplay test with the already-imported S1.42AB. Do not build a successor first.**
@@ -111,7 +113,11 @@ $u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Projec
 5. upload the complete fresh `LogOutput.log` using the exact uploader in `Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md`;
 6. analyze before deciding any successor.
 
+One successful Offense run is sufficient if the authoritative final-pool marker is present. Do not farm every interior manually.
+
 Minimum gate: final effective viable pool all positive `100`, no excluded-flow insertion, successful dungeon generation, accepted Z gameplay healthy, Leader-null `0`, Fatal `0`, and no new project-local exception flood. Work/no-task should preferably be `0`; if the AA two-warning lifecycle case reproduces, analyze separately.
+
+`RuntimeInbox/Current/` currently contains only `.gitkeep`; there is no S1.42AB gameplay runtime log yet.
 
 ## Permanent compatibility / anti-regression state
 
