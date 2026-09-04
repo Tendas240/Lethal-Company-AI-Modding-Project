@@ -11,10 +11,15 @@ on:
       - 'Current/**'
       - 'Knowledge/**'
       - 'RepositoryTools/**'
-      - 'BuildSpecs/current.json'
+      - 'BuildSpecs/**'
       - 'RuntimeInbox/ACTIVE_BUILD.txt'
-      - 'ProfileSources/**/FILE_INDEX.json'
-      - 'ProfileSources/**/export.r2x'
+      - 'Profiles/**'
+      - 'ProfileSources/**'
+      - 'RuntimeEvidence/**'
+      - 'Patches/**'
+      - 'BuildSystem/**'
+      - 'RuntimeTools/**'
+      - 'ExecutionCheckpoints/**'
       - '.github/workflows/knowledge-architecture.yml'
   pull_request:
     paths:
@@ -24,10 +29,15 @@ on:
       - 'Current/**'
       - 'Knowledge/**'
       - 'RepositoryTools/**'
-      - 'BuildSpecs/current.json'
+      - 'BuildSpecs/**'
       - 'RuntimeInbox/ACTIVE_BUILD.txt'
-      - 'ProfileSources/**/FILE_INDEX.json'
-      - 'ProfileSources/**/export.r2x'
+      - 'Profiles/**'
+      - 'ProfileSources/**'
+      - 'RuntimeEvidence/**'
+      - 'Patches/**'
+      - 'BuildSystem/**'
+      - 'RuntimeTools/**'
+      - 'ExecutionCheckpoints/**'
       - '.github/workflows/knowledge-architecture.yml'
 
 permissions:
@@ -37,7 +47,7 @@ jobs:
   validate-knowledge-architecture:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository with overhaul history
+      - name: Checkout repository with full provenance history
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -53,11 +63,23 @@ jobs:
       - name: Validate repository knowledge architecture
         run: python RepositoryTools/knowledge_architecture_validator.py
 
+      - name: Validate actual artifact and runtime bytes
+        run: python RepositoryTools/artifact_byte_integrity_validator.py
+
+      - name: Validate repository-wide integrity registry and authority
+        run: python RepositoryTools/repository_integrity_guard.py
+
       - name: Validate S1.42AC runtime SHA provenance
         run: python RepositoryTools/runtime_sha_provenance_validator.py
+
+      - name: Validate future multi-phase checkpoints
+        run: python RepositoryTools/phase_checkpoint_validator.py
 
       - name: Validate original overhaul contract
         run: python RepositoryTools/overhaul_contract_validator.py
 
       - name: Run answerability routing regression
         run: python RepositoryTools/answerability_regression.py
+
+      - name: Run validator negative self-tests
+        run: python RepositoryTools/validator_selftest.py
