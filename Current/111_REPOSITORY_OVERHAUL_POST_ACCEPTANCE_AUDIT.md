@@ -32,7 +32,7 @@ The post-acceptance audit found **information-architecture gaps, not gameplay de
 3. `OVERHAUL_START_HERE_ChatGPT.txt` still looked like an active instruction to execute phases 0–11, even though the one-time overhaul was already complete.
 4. `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md` still showed its preserved original `PLANNED / ... / NOT YET EXECUTED` status without an explicit completion banner above it.
 5. `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md` had the same ambiguity.
-6. `Current/PROJECT_KNOWLEDGE_MAP.md` still had stale Phase-10 text pointing at non-existent `Current/PROJECT_STATE.json` instead of the completed `Current/CURRENT_STATE.json` architecture.
+6. `Current/PROJECT_KNOWLEDGE_MAP.md` still had stale Phase-10 text pointing at the non-existent legacy machine-state name `PROJECT_STATE.json` instead of the completed `Current/CURRENT_STATE.json` architecture.
 7. The original `RepositoryTools/knowledge_architecture_validator.py` checked live knowledge architecture correctly but did **not** independently enforce all one-time frozen-contract obligations such as visible stale-wording banners and backup-checkpoint-before-structural-migration ordering.
 
 Therefore the earlier unqualified statement that every overhaul obligation had already been checked was too strong. These items are now corrected.
@@ -70,7 +70,7 @@ The permanent `.github/workflows/knowledge-architecture.yml` now checks out full
 
 ## Strict-validator calibration
 
-The first strict-validator CI attempt, run `33919072718`, failed. That was useful rather than hidden: it exposed the genuine stale `Current/PROJECT_STATE.json` wording and also showed that an initial path checker was treating globs/placeholders such as `ProfileSources/<build>/` as if they were missing concrete files.
+The first strict-validator CI attempt, run `33919072718`, failed. That was useful rather than hidden: it exposed the genuine stale legacy machine-state name `PROJECT_STATE.json` in the knowledge map and also showed that an initial path checker was treating globs/placeholders such as `ProfileSources/<build>/` as if they were missing concrete files.
 
 The genuine drift was corrected. The checker was then narrowed to distinguish concrete repository references from documented patterns without weakening checks on actual canonical targets.
 
