@@ -104,6 +104,15 @@ S1.42AB remains accepted until this gate passes.
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC`
 
+## Planned repository information-architecture overhaul
+
+The previous vague `cosmetic documentation cleanup` item is now formalized as a binding repository information-architecture overhaul:
+
+- canonical plan: `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`;
+- machine-readable requirements: `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`.
+
+The overhaul targets deterministic limited-context ChatGPT retrieval through a compact bootstrap, topic knowledge map, formal authority/supersession metadata, build lineage, provenance links, readable binary snapshots, broken-link/orphan validation and an answerability-routing regression suite. It must preserve historical evidence and must not disturb the active S1.42AC runtime gate.
+
 ## Permanent invariants
 
 Preserve exact BCMER `1.71.0`, EnemyIsolation off, Compatibility Fixes `1.3.14`, BaboonBirdPikminEnemy enabled with only narrow Hawk -> Pikmin prevention, native inherited PikminEnemy lifecycle, Pikmin -> Baboon Hawk attack, Puffer protection, Thumper Bite Limit `3`, Crawler absent from Attack Blacklist, accepted S1.42C moon power/spawn baseline, `Consistent Spawn Times = true`, Jetpack `18`, Jet Fuel `18/18`, Thrusters `25/20`, Indoor Pikmin `0.09`, CarryStrength `3 / 30`, CodeRebirth ACU/G.R.E.G. exact 18 curves ×`0.5`, Functional Microwave volume `0.15`, Immortal Snail `40 / 2`, and S1.42AB interior normalization.
@@ -119,4 +128,4 @@ Never repeat S1.42R's whole-component disable approach.
 - isolated `woah25-LethalEscapeUpdated 2.5.0` evaluation;
 - final long full-stack acceptance;
 - AdditionalNetworking/LethalMin teardown repair only with stronger evidence;
-- cosmetic documentation cleanup.
+- repository information-architecture overhaul per `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`, including cosmetic drift cleanup as a subordinate task.
