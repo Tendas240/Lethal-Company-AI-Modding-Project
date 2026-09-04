@@ -5,7 +5,7 @@
 **Canonical-For:** topic discovery from bootstrap  
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`  
 **Current State:** `Current/00_CURRENT_STATE.md`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-09-05
 
 Use this map before repository search. Open only the topic that matches the user's question, then follow its evidence/config/code links as needed.
 
@@ -14,6 +14,7 @@ Use this map before repository search. Open only the topic that matches the user
 | User question / topic | Topic ID | Canonical source |
 |---|---|---|
 | What is the accepted build? What is active? What must I test next? | `accepted_baseline`, `active_candidate_and_next_test` | `Knowledge/CURRENT_LIFECYCLE.md` |
+| How do I hand the project over to a new ChatGPT chat? What should happen when the user signals a handover? | `chat_handover` | `Current/HANDOVER_PREPARATION_PROMPT.md` |
 | How are profiles built in GitHub? Where is the runtime uploader/ingest? | `build_pipeline`, `runtime_upload_and_ingest` | `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` |
 | How do I replace/import the active Gale profile? | `gale_import` | `Knowledge/GALE_PROFILE_WORKFLOW.md` |
 | Which BCMER version/settings are allowed? Are EventTypes equally likely? | `bcmer` | `Knowledge/BCMER.md` |
@@ -42,6 +43,8 @@ For current questions:
 5. Historical files may accurately describe what was current **at that time** but do not override current semantic topics.
 
 Machine lifecycle authority is `Current/CURRENT_STATE.json`. `BuildSpecs/current.json` and `RuntimeInbox/ACTIVE_BUILD.txt` are controller inputs whose lifecycle must remain consistent with that canonical machine state.
+
+When the user requests transfer to a new ChatGPT chat, route directly to `Current/HANDOVER_PREPARATION_PROMPT.md`; that procedure resolves the then-current state and generates a fresh new-chat start prompt.
 
 ## Historical navigation
 
