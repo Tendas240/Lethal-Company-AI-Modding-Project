@@ -124,12 +124,21 @@ Chronologically newer confirmed information overrides older version-specific wor
 
 ## Planned repository information architecture overhaul
 
-The deferred repository cleanup is now a binding information-architecture project rather than merely cosmetic cleanup.
+The deferred repository cleanup is now a binding information-architecture and retrieval-hardening project rather than merely cosmetic cleanup.
 
-Canonical plan: `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`  
+**If a future user asks to start/execute the overhaul, begin with:**
+
+`OVERHAUL_START_HERE_ChatGPT.txt`
+
+Binding plan: `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`  
+Binding execution playbook: `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md`  
 Machine requirements: `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`
 
-The target is reliable fresh-chat operation under limited context through a compact bootstrap, human+JSON topic knowledge map, explicit authority/supersession metadata, build lineage, provenance links, readable profile snapshots, broken-link/orphan CI validation and answerability-routing regression tests. The overhaul is planned but must not disturb the active S1.42AC runtime gate.
+The target is reliable fresh-chat operation under limited context through a compact bootstrap, human+JSON topic knowledge map, explicit authority/supersession metadata, build lineage, provenance links, readable profile snapshots, broken-link/orphan CI validation and answerability-routing regression tests.
+
+Before any structural overhaul change, the complete pre-overhaul repository must be frozen and verified in a **separate standalone backup repository**; a branch/tag in this repository alone is insufficient. The primary repository must then record `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json`. The full mandatory sequence, stop conditions, rollback rules and multi-chat handover requirements are defined in `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md`.
+
+The overhaul is planned but must not disturb or be mixed with the active S1.42AC runtime gate.
 
 ## Permanent anti-regression state
 
@@ -148,4 +157,4 @@ Keep separate unless explicitly selected/grouped:
 - isolated evaluation of `woah25-LethalEscapeUpdated 2.5.0`;
 - final long full-stack acceptance;
 - AdditionalNetworking / LethalMin teardown repair only with stronger evidence;
-- repository information-architecture overhaul per `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`, including cosmetic drift cleanup as a subordinate task.
+- repository information-architecture overhaul starting at `OVERHAUL_START_HERE_ChatGPT.txt`, governed by `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`, `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md` and `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`, including cosmetic drift cleanup as a subordinate task.
