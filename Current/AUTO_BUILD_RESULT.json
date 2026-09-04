@@ -1,26 +1,38 @@
 {
-  "build_id": "S1.42W",
-  "profile_name": "LC V1 S1.42W Lift-Off Microwave Retune",
+  "build_id": "S1.42X",
+  "profile_name": "LC V1 S1.42X Jetpack Pikmin ACU Retune",
   "base_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
   "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
-  "output_profile": "Profiles/LC V1 S1.42W Lift-Off Microwave Retune.r2z",
-  "output_sha256": "f34ebcf18bd2b475da5546e6c391bd15bf70df5648b5f69ffb668d196df057dc",
-  "zip_members": 332,
+  "output_profile": "Profiles/LC V1 S1.42X Jetpack Pikmin ACU Retune.r2z",
+  "output_sha256": "57d8f9251236cf40eacf4366a21646ae8c51500b9ed6fa79cbc9b56c8daa611d",
+  "zip_members": 333,
   "changed_existing_members": [
     "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
     "BepInEx/config/dev.idjut.SnailFork.cfg",
+    "BepInEx/config/NoteBoxz.LethalMin.cfg",
+    "BepInEx/config/Pikmin/Blue Pikmin.cfg",
+    "BepInEx/config/Pikmin/Bulbmin.cfg",
+    "BepInEx/config/Pikmin/Glow Pikmin.cfg",
+    "BepInEx/config/Pikmin/Ice Pikmin.cfg",
+    "BepInEx/config/Pikmin/Purple Pikmin.cfg",
+    "BepInEx/config/Pikmin/Red Pikmin.cfg",
+    "BepInEx/config/Pikmin/Rock Pikmin.cfg",
+    "BepInEx/config/Pikmin/White Pikmin.cfg",
+    "BepInEx/config/Pikmin/Winged Pikmin.cfg",
+    "BepInEx/config/Pikmin/Yellow Pikmin.cfg",
     "export.r2x",
     "BepInEx/config/CodeRebirth.cfg"
   ],
   "added_members": [
-    "BepInEx/plugins/S142WJetpackAcceleration/S142WJetpackAcceleration.dll"
+    "BepInEx/plugins/S142XJetpackAcceleration/S142XJetpackAcceleration.dll",
+    "BepInEx/plugins/S142XCodeRebirthAcuSpawnTuning/S142XCodeRebirthAcuSpawnTuning.dll"
   ],
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42W",
+  "snapshot_dir": "ProfileSources/S1.42X",
   "snapshot": {
-    "entries": 332,
+    "entries": 333,
     "text_entries": 330
   }
 }
