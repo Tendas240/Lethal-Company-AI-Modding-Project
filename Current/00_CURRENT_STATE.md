@@ -180,7 +180,18 @@ Do not patch without stronger reproducibility or user-facing impact:
 - LethalMin `DespawnLumiknulls()` repair only with stronger evidence;
 - cosmetic documentation cleanup.
 
-The separate local Gale profile-replacement PowerShell helper is pending user verification and is not yet canonical repository policy.
+## Gale profile replacement helper candidate
+
+The repository-backed local Gale profile replacement flow is now user-validated once under Windows PowerShell 5.1 using the disposable profile `testpowershell` and is the approved candidate for the future permanent workflow.
+
+Candidate implementation and record:
+
+- `RuntimeTools/ReplaceActiveGaleProfile.ps1`;
+- `Current/92_GALE_ACTIVE_PROFILE_REPLACEMENT_HELPER_CANDIDATE.md`.
+
+Validated behavior includes exact ACTIVE_BUILD/AUTO_BUILD_RESULT matching, download before deletion, SHA-256 verification, numeric local-profile selection, explicit `y/n` deletion confirmation, Gale `.r2z` import launch, and post-import Downloads cleanup.
+
+It is not yet binding default policy. Promote after a normal future profile replacement confirms routine use, or immediately if the user explicitly requests promotion.
 
 ## Controllers
 
