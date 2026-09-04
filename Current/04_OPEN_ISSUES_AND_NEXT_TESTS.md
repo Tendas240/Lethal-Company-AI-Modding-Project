@@ -12,6 +12,10 @@ SHA-256:
 
 S1.42U remains the last fully accepted full-normal-stack gameplay baseline.
 
+Acceptance:
+
+`Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
+
 ## Closed tuning evaluation — S1.42Y
 
 Runtime evidence:
@@ -24,7 +28,7 @@ Raw log SHA-256:
 
 Verdict:
 
-**Technical paths PASS; candidate not promoted because balance retune requested.**
+**Technical paths PASS; candidate not promoted because balance retune was requested.**
 
 Confirmed:
 
@@ -35,7 +39,9 @@ Confirmed:
 - normal enemy activity present;
 - Work/no-task = 0;
 - Leader-null = 0;
-- Compatibility Fixes error = 0;
+- Compatibility Fixes Error = 0;
+- unspawned NetworkObjectReference marker = 0;
+- PikminNoticeZone regression marker = 0;
 - Fatal = 0.
 
 Accepted by user:
@@ -45,20 +51,26 @@ Accepted by user:
 
 Retune requested:
 
-- Jetpack 22f -> 18f;
-- Indoor Pikmin Spawn Chance 0.08 -> 0.09.
+- Jetpack `22f -> 18f`;
+- Indoor Pikmin Spawn Chance `0.08 -> 0.09`.
 
 Record:
 
 `Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md`
 
+The 32 Y Error-severity entries are catalogued there and classified as existing/non-Y setup or mod messages rather than a new project-local regression.
+
 ## Active gate — S1.42Z
 
-**BUILD PASS / RUNTIME VALIDATION OPEN**
+**BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
 
 Candidate:
 
 `Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z`
+
+Gale profile name:
+
+`LC V1 S1.42Z Jetpack Pikmin Retune`
 
 SHA-256:
 
@@ -68,7 +80,11 @@ Candidate record:
 
 `Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md`
 
-Plan / Patch Safety Review:
+Final handover:
+
+`Current/88_FINAL_HANDOVER_S1.42Y_PASS_S1.42Z_NEXT.md`
+
+Plan / Patch Safety Reviews:
 
 `BuildSpecs/S1.42Z_PLAN.md`
 
@@ -79,6 +95,8 @@ Build run:
 Automated build commit:
 
 `267543634bb884bb447bf4bec320103ba75c9ff8`
+
+S1.42Z was built directly from S1.42U; V/W/X/Y tuning DLLs are not stacked.
 
 ## Exact S1.42Z changes
 
@@ -104,6 +122,8 @@ Automated build commit:
 - G.R.E.G. exact 18-curve provider ×0.5;
 - transactional validation: both contracts must pass before either changes;
 - Z aerial DLL SHA-256 `7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b`.
+
+This is curve-amplitude/spawn-weight halving. DawnLib subsequently evaluates and rounds the result; do not infer exact 50% observed short-run object counts.
 
 ### Accepted carried tuning
 
@@ -137,7 +157,7 @@ Minimum checks:
 11. Jetpack 18f feels acceptable and calmer than Y/22f;
 12. V49 handling/inertia, release, landing, hard contact and repeated flights remain sane;
 13. Jet Fuel 18/18 and Thrusters 25/20 remain reasonable if practical;
-14. Indoor Pikmin density at 0.09 feels better than 0.08;
+14. Indoor Pikmin density at 0.09 feels correct;
 15. CarryStrength remains correct at 3 / Purple 30;
 16. Microwave remains functional at accepted volume 0.15;
 17. Snail remains functional at 40 / max 2;
@@ -155,11 +175,26 @@ Minimum checks:
 - exact BCMER 1.71.0;
 - EnemyIsolation off;
 - Compatibility Fixes v1.3.14;
-- narrow Baboon Hawk -> Pikmin block with native lifecycle;
+- `BaboonBirdPikminEnemy` enabled;
+- narrow Baboon Hawk -> Pikmin block with native inherited lifecycle preserved;
+- Pikmin -> Baboon Hawk attack remains allowed;
 - Puffer -> Pikmin protection;
 - `Thumper Bite Limit = 3`;
 - Crawler absent from Attack Blacklist;
 - normal enemy population.
+
+Never repeat the S1.42R whole-component disable approach.
+
+## Monitor-only issues
+
+Do not patch without stronger reproducibility or user-facing impact:
+
+- S1.42S disconnect-only PikminNoticeZone / unspawned NetworkObjectReference exception;
+- S1.42T one-off AloeChase FSB load-state message;
+- S1.42W `InvalidOperationException: Collection was modified` in `PikminManager.DespawnLumiknulls()` during teardown/despawn;
+- known loaforcsSoundAPI/HarmonyX TypeLoadException class;
+- known SoftMask/SoftMasking setup exceptions;
+- the existing/non-Y Error classes documented in the S1.42Y runtime assessment.
 
 ## Deferred after S1.42Z
 
@@ -175,6 +210,10 @@ Do not silently mix into the active gate:
 - LethalMin `DespawnLumiknulls()` repair without stronger evidence;
 - cosmetic documentation cleanup.
 
+## Known non-functional drift
+
+Older chronology wording in `Current/02_TECHNICAL_BASELINE.md` and historical comments in `Patches/S139CompatibilityFixes/Plugin.cs` are not authoritative for the current behavior. Actual current code/config/runtime evidence and chronologically newer canonical documents override them. Keep cosmetic cleanup separate from the Z gate.
+
 ## Controllers
 
 `BuildSpecs/current.json`:
@@ -182,9 +221,12 @@ Do not silently mix into the active gate:
 - `enabled = false`;
 - `build_id = IDLE_AFTER_S1.42Z_BUILD_AWAITING_RUNTIME_VALIDATION`;
 - base = S1.42Z;
-- base SHA-256 = `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`.
+- base SHA-256 = `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`;
+- no build work armed.
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42Z`
+
+`RuntimeInbox/Current/` currently contains only `.gitkeep`.
 
 No successor is armed.
 
