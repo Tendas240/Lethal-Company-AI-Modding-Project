@@ -1,16 +1,8 @@
 # 04 — Open Issues and Next Tests
 
-## Active gate
+## Closed gate — S1.42U BCMER 1.71.0 Reactivation
 
-**S1.42U — BCMER 1.71.0 Reactivation Gate** is built and build-verified, but **runtime validation is still open**.
-
-Build verification:
-
-`Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
-
-Machine-readable status:
-
-`Current/Projektstatus_S1.42U.json`
+**PASS**
 
 Profile:
 
@@ -20,169 +12,164 @@ SHA-256:
 
 `ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969`
 
-GitHub Actions build run:
+Runtime acceptance:
 
-`33818241873` = **success**
-
-## Build delta — verified
-
-Base:
-
-`Profiles/LC V1 S1.42T Normal Enemy Restore.r2z`
-
-Base SHA-256:
-
-`a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10`
-
-Archive members:
-
-**331**
-
-Changed existing members only:
-
-- `export.r2x`
-
-Exact package-state change:
-
-- `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`: `disabled -> enabled`
-
-No package addition/removal, config patch, local plugin build or compatibility-code change occurred.
-
-Preserved and verified:
-
-- `Isolated Enemy Regression = false`;
-- compatibility plugin v1.3.14;
-- compatibility DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
-- `Thumper Bite Limit = 3`;
-- Crawler absent from Attack Blacklist;
-- Puffer cannot poison Pikmin;
-- accepted S1.42S Baboon/Pikmin lifecycle behavior;
-- BCMER configuration carried forward unchanged.
-
-## Accepted reference roles
-
-Last fully accepted full normal-stack baseline:
-
-**S1.41 — BCMER Reactivation**  
-SHA-256 `d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
-
-Newest runtime-accepted technical descendant:
-
-**S1.42T — Normal Enemy Restore**  
-SHA-256 `a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10`  
-Verdict **PASS**
-
-S1.42U must not replace either accepted role until runtime evidence passes.
-
-## S1.42U runtime test
-
-### Immediate user action
-
-Import/run:
-
-`Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z`
-
-Perform a normal gameplay run with BCMER active. Then upload the complete `LogOutput.log` to:
-
-`RuntimeInbox/Current/`
-
-`RuntimeInbox/ACTIVE_BUILD.txt` is already set to `S1.42U`.
-
-### Acceptance criteria
-
-1. main menu/startup succeeds;
-2. exact BCMER 1.71.0 is loaded/active;
-3. normal non-isolated enemies remain available/spawn normally;
-4. no startup/runtime crash or freeze;
-5. `Work state with no task assigned!` = 0;
-6. `Leader is null when following` = 0;
-7. no new S1.39 Compatibility Fixes error/exception flood;
-8. no BCMER-driven catastrophic event/system regression;
-9. accepted Pikmin behavior remains intact;
-10. fresh full runtime log is ingested and compared against S1.42T.
-
-A heavy Baboon-Hawk stress retest is not required merely because BCMER is re-enabled; reopen that focused test only if new evidence indicates a regression.
-
-## S1.42T comparison evidence
-
-Acceptance:
-
-`Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
+`Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
 
 Evidence:
 
-`RuntimeEvidence/S1.42T/20260903T222109Z/`
+`RuntimeEvidence/S1.42U/20260904T082412Z/`
 
 Raw log SHA-256:
 
-`b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f`
+`0a2e0839b106a7d6f9867d186a835252bc72a869ef63a62517ae1971fd93c5fc`
 
-Keep the S1.42T raw log through this immediate BCMER-on comparison gate.
+Confirmed:
 
-## Controllers
+- exact BCMER 1.71.0 loads and finishes patching;
+- Compatibility Fixes 1.3.14 loads;
+- EnemyIsolation off;
+- normal enemy population remains active (`ADDING ENEMY` = 13);
+- Work/no-task = 0;
+- Leader-null = 0;
+- project compatibility Error = 0;
+- Fatal = 0;
+- no crash/freeze;
+- no gameplay-visible technical problem reported.
 
-`BuildSpecs/current.json`:
+S1.42U is now the newest accepted full-normal-stack gameplay baseline and newest runtime-accepted technical descendant.
 
-- `enabled = false`
-- `build_id = IDLE_AFTER_S1.42U_BUILD_AWAITING_RUNTIME_VALIDATION`
-- base = S1.42U
+## Verified restore invariants
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42U`
+### Moon power counts / spawn pools
 
-## Monitor-only issues
+S1.42U `LethalLevelLoader.cfg` is byte-identical to the canonical S1.42C restore baseline.
 
-### LethalMin disconnect NoticeZone
+All stored per-moon inside/daytime/nighttime maximum power counts and enemy spawning lists are therefore preserved exactly.
 
-`PikminNoticeZone.OnTriggerStay -> NetworkObjectReference can only be created from spawned NetworkObjects`
+### Spawn timing
 
-Seen during disconnect in S1.42S. No user-facing regression. Do not patch without reproducibility + Patch Safety Review.
+S1.42U SpawnCycleFixes remains byte-identical to S1.42C with:
 
-### Aloe audio load marker
+`Consistent Spawn Times = true`
 
-S1.42T one-off:
+Preserve this. It standardizes the first spawn wave around 7:39 AM and prevents the vanilla vent-empty dependency from delaying the first outside/daytime wave.
 
-`Failed getting load state of FSB for audio clip "AloeChase"`
+## Active next planning task — S1.42V Post-BCMER Balance Tuning
 
-No flood, Aloe later active, no user-facing issue reported. Monitor only.
+Plan:
 
-## Permanent do-not-regress references
+`BuildSpecs/S1.42V_PLAN.md`
 
-Patch safety:
+Status:
 
-`Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+**plan-only / not armed**
 
-Focused S1.42S acceptance:
+Base:
 
-`Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+`Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z`
 
-Corrected S1.42R root cause:
+Base SHA-256:
 
-`Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
+`ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969`
 
-Canonical enemy restore baseline:
+### Confirmed requested config changes
 
-`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+#### Immortal Snail
 
-## Forbidden mixed changes while S1.42U runtime gate is open
+`BepInEx/config/dev.idjut.SnailFork.cfg`
 
-Do not include:
+`Rarity = 80 -> 40`
 
-- BCMER upgrade;
-- new custom patch code;
-- interior probability tuning;
-- CullFactory/fog tuning;
-- microwave rarity change;
-- BCMER EventType rebalance;
-- structural repository migration;
-- executable compatibility changes disguised as cleanup.
+Keep `Max Snails = 2`.
 
-## Remaining broader S1.42 roadmap
+#### CodeRebirth Functional Microwave
 
-After BCMER restoration/final normal-stack acceptance:
+`BepInEx/config/CodeRebirth.cfg`
+
+Current volume is confirmed at `0.7`; the previous reduction therefore exists in S1.42U.
+
+Proposed next target after user reported it still sounds too loud:
+
+`Functional Microwave | Volume = 0.5`
+
+### Jetpack acceleration
+
+Requested: modest acceleration increase.
+
+Current ButteRyBalance uses `Control Scheme = V49`. This is a broad inertia/handling mode and must not be switched merely to approximate a small acceleration buff.
+
+More Ship Upgrades has a real `Jet Fuel` acceleration upgrade currently configured at:
+
+- `Initial Acceleration Increase = 20`;
+- `Incremental Acceleration Increase = 20`.
+
+That only affects purchased Jet Fuel tiers. If the desired buff is always-on base Jetpack acceleration, an exact narrow implementation must be identified first. Do not guess a config key or introduce broad movement changes.
+
+Do not arm S1.42V until the exact Jetpack implementation is frozen.
+
+## Enemy information verified from current stack/runtime
+
+### Janitor / Scrap-E
+
+Owner: CodeRebirth.
+
+Runtime power count:
+
+**1**
+
+Gameplay role: cleanup/hoarding-style robot that collects loose scrap/debris and keeps it; strong claws make it an active threat around litter/scrap.
+
+### Aloe
+
+Owner: Biodiversity.
+
+Runtime/config power count:
+
+**1**
+
+Gameplay role: neutral Bracken-like stalker that preferentially targets wounded players, kidnaps/drags them to a chosen location and heals them; players can struggle free. Current config keeps healing mode rather than damage mode.
+
+### Immortal Snail
+
+Runtime power count:
+
+**1**
+
+Current configured spawn rarity/weight:
+
+**80**
+
+## Broader tuning backlog — not automatically part of S1.42V
 
 - equal-interior probability tuning;
 - CullFactory exceptions for `junkrooms` and `shatteredrooms`;
 - Mausoleum fog reduction;
 - BCMER fixed 12.5% x8 EventType distribution;
-- CodeRebirth microwaves somewhat rarer;
-- final S1.42 acceptance.
+- CodeRebirth microwave rarity reduction.
+
+Each must be explicitly listed with its exact delta before being mixed into a build.
+
+## Controllers
+
+`BuildSpecs/current.json`:
+
+- `enabled = false`;
+- `build_id = IDLE_AFTER_S1.42U_RUNTIME_PASS_AWAITING_S1.42V_TUNING`;
+- base = S1.42U.
+
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42U`
+
+No S1.42V profile exists yet.
+
+## Monitor-only issues
+
+1. Historical S1.42S disconnect-only LethalMin NoticeZone NetworkObjectReference exception; absent in S1.42U.
+2. Historical S1.42T one-off AloeChase FSB load-state message; no user-facing regression established.
+
+## Permanent do-not-regress references
+
+- `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+- `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+- `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
+- `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
