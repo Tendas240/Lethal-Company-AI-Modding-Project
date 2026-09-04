@@ -1,7 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "date": "2026-09-04",
-  "status": "FINAL_CI_GATE_PENDING",
+  "status": "FINAL_VALIDATION_PASS",
   "scope": "repository information architecture only",
   "frozen_source_commit": "5dbd0e637a480d8591773e422bbca4b0654cad20",
   "backup_repository": "Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904",
@@ -17,26 +17,51 @@
     "generated_bootstrap": "PASS",
     "legacy_files_moved": 0,
     "legacy_files_deleted": 0,
+    "live_work_queue_compacted": true,
     "gameplay_behavior_changed": false
   },
   "final_ci": {
     "workflow": ".github/workflows/knowledge-architecture.yml",
     "workflow_name": "Knowledge Architecture",
-    "run_id": null,
-    "head_sha": null,
-    "conclusion": "PENDING",
-    "navigation_check": "PENDING",
-    "knowledge_validator": "PENDING",
-    "answerability_regression": "PENDING"
+    "run_id": 33917143180,
+    "head_sha": "37d0b25823844603cf919c033507c1f0fc3bb88e",
+    "conclusion": "SUCCESS",
+    "navigation_check": "PASS",
+    "knowledge_validator": "PASS_ERRORS_0_WARNINGS_0",
+    "answerability_regression": "PASS_24_OF_24"
   },
-  "known_previous_finalization_attempt": {
-    "run_id": 33916065314,
-    "head_sha": "83934ccf674563e862c226d5be0045920ec09366",
-    "conclusion": "FAILURE",
-    "reason": [
-      "BUILD_LINEAGE referenced a non-existent S1.42Z profile path",
-      "OVERHAUL_EXECUTION_STATE still described Phase 2/3"
-    ],
-    "disposition": "Corrected before the final green gate; not accepted as final validation."
-  }
+  "known_previous_finalization_attempts": [
+    {
+      "run_id": 33916065314,
+      "head_sha": "83934ccf674563e862c226d5be0045920ec09366",
+      "conclusion": "FAILURE",
+      "reason": [
+        "BUILD_LINEAGE referenced a non-existent S1.42Z profile path",
+        "OVERHAUL_EXECUTION_STATE still described an incomplete phase"
+      ],
+      "disposition": "Corrected before final acceptance; not accepted as final validation."
+    },
+    {
+      "run_id": 33916672796,
+      "head_sha": "4ae6bb397d85cd6891cfcd2ff7ff99dbd615014e",
+      "conclusion": "FAILURE",
+      "reason": [
+        "Knowledge validator passed",
+        "answerability routing still misrouted two German build-history/current-build queries"
+      ],
+      "disposition": "Router scoring was hardened for conservative inflection matching and informative-token tie breaking; later CI passed all 24 cases."
+    }
+  ],
+  "validated_current_gameplay_state": {
+    "accepted_baseline": "S1.42AB",
+    "accepted_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
+    "latest_built_artifact": "S1.42AC",
+    "latest_built_status": "FORMALLY_REJECTED_NOT_PROMOTED",
+    "active_candidate": null,
+    "runtime_test_outstanding": false,
+    "successor_armed": false,
+    "buildspec_enabled": false,
+    "runtime_active_build": "S1.42AB"
+  },
+  "final_decision": "Repository information-architecture overhaul accepted as complete and validated. Normal project work may resume from Current/CURRENT_STATE.json."
 }
