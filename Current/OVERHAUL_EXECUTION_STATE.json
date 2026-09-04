@@ -1,24 +1,24 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "date": "2026-09-04",
-  "status": "PHASE_2_COMPLETE_PHASE_3_NAVIGATION_LAYER_ACTIVE",
-  "authority": "Execution-state checkpoint for the binding repository information-architecture overhaul",
+  "status": "OVERHAUL_COMPLETE_VALIDATED",
+  "authority": "Execution-state checkpoint for the completed repository information-architecture overhaul",
   "canonical_start": "OVERHAUL_START_HERE_ChatGPT.txt",
   "canonical_plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
   "canonical_playbook": "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md",
   "canonical_requirements": "Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json",
-  "phase_2_inventory_human": "Current/REPOSITORY_KNOWLEDGE_INVENTORY.md",
-  "phase_2_inventory_machine": "Current/REPOSITORY_KNOWLEDGE_INVENTORY.json",
-  "last_completed_phase": 2,
-  "current_phase": 3,
+  "final_acceptance": "Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md",
+  "validation_results": "Current/OVERHAUL_VALIDATION_RESULTS.json",
+  "last_completed_phase": 11,
+  "current_phase": null,
   "structural_overhaul_started": true,
-  "first_structural_overhaul_commit_must_follow_backup_manifest_commit": "2c1ab3be7db5474b0e08ff8a80c063a2c50224a4",
   "source_repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "source_default_branch": "main",
   "frozen_source_commit_sha": "5dbd0e637a480d8591773e422bbca4b0654cad20",
   "frozen_source_tree_sha": "0e17aac410cf600a164396b5586b5b50f084df22",
   "same_repository_checkpoint_branch": "pre-overhaul-freeze-20260904-5dbd0e6",
-  "phase_0_project_state": {
+  "first_structural_overhaul_commit_must_follow_backup_manifest_commit": "2c1ab3be7db5474b0e08ff8a80c063a2c50224a4",
+  "project_state_preserved": {
     "game": "Lethal Company V81",
     "accepted_baseline": {
       "build_id": "S1.42AB",
@@ -36,12 +36,7 @@
     },
     "runtime_test_outstanding": false,
     "successor_armed": false,
-    "buildspec": {
-      "enabled": false,
-      "build_id": "IDLE_AFTER_S1.42AC_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED",
-      "base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
-      "base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca"
-    },
+    "buildspec_enabled": false,
     "runtime_active_build": "S1.42AB"
   },
   "backup_gate": {
@@ -52,32 +47,60 @@
     "backup_frozen_content_tree_sha": "0e17aac410cf600a164396b5586b5b50f084df22",
     "backup_provenance_commit_sha": "c0f267fadfa807730f6f465953861f4728b2136a",
     "verification_result": "PASS",
-    "manifest_created": true,
     "primary_manifest_path": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
-    "stop_condition_active": false,
     "limitations": [
-      "GitHub-managed refs/pull/* hidden refs were rejected during mirror push; all normal project branches were preserved and there were no source tags."
+      "GitHub-managed refs/pull hidden refs were rejected during mirror push; all normal project branches were preserved and there were no source tags."
     ]
   },
-  "phase_2_result": {
-    "status": "PASS",
-    "deletion_approvals": [],
-    "known_high_risk_mixed_authority_files": [
-      "Current/02_TECHNICAL_BASELINE.md",
-      "Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md"
-    ],
-    "project_source_comment_audit_target": "Patches/S139CompatibilityFixes/Plugin.cs",
-    "navigation_must_be_created_before_old_navigation_is_reduced": true
+  "phase_results": {
+    "0_establish_exact_pre_overhaul_state": "PASS",
+    "1_create_and_verify_standalone_backup_repository": "PASS",
+    "2_inventory_and_extract_knowledge_before_moves": "PASS",
+    "3_create_new_navigation_and_knowledge_map_before_removing_old_navigation": "PASS",
+    "4_create_build_lineage_and_authority_graph": "PASS",
+    "5_separate_live_truth_from_chronology": "PASS",
+    "6_harden_binary_and_large_evidence_retrieval": "PASS",
+    "7_migrate_references_redirects_and_apply_conservative_deletion_discipline": "PASS_NON_DESTRUCTIVE",
+    "8_implement_repository_knowledge_validator_and_ci": "PASS_IMPLEMENTED",
+    "9_implement_answerability_routing_regression_suite": "PASS_IMPLEMENTED",
+    "10_harden_atomic_current_state_transitions": "PASS",
+    "11_final_validation_against_requirements_and_backup": "FINAL_CI_GATE_RUNNING"
   },
-  "exact_next_operation": "Create the Phase 3 semantic Knowledge/ topic layer plus Current/PROJECT_KNOWLEDGE_MAP.md and Current/PROJECT_KNOWLEDGE_MAP.json before altering old bootstrap/history navigation.",
-  "files_not_yet_safe_to_move_or_delete": "All historical/current files remain retained. Phase 3 adds navigation first; no old path is removed.",
-  "bootstrap_rewrite_allowed": false,
-  "history_reclassification_allowed": false,
+  "implementation": {
+    "style": "non-destructive semantic migration",
+    "knowledge_root": "Knowledge/",
+    "knowledge_map": "Current/PROJECT_KNOWLEDGE_MAP.md",
+    "machine_knowledge_map": "Current/PROJECT_KNOWLEDGE_MAP.json",
+    "build_lineage": "Current/BUILD_LINEAGE.md",
+    "authority_registry": "Current/DOCUMENT_AUTHORITY.md",
+    "atomic_state": "Current/CURRENT_STATE.json",
+    "artifact_evidence_index": "Current/ARTIFACT_EVIDENCE_INTEGRITY.md",
+    "migration_manifest": "Current/REPOSITORY_MIGRATION_MANIFEST.md",
+    "validator": "RepositoryTools/knowledge_architecture_validator.py",
+    "answerability_suite": "RepositoryTools/answerability_regression.py",
+    "navigation_renderer": "RepositoryTools/render_current_navigation.py",
+    "ci_workflow": ".github/workflows/knowledge-architecture.yml",
+    "legacy_files_moved": 0,
+    "legacy_files_deleted": 0,
+    "gameplay_behavior_changed": false
+  },
+  "validation": {
+    "previous_failed_run_id": 33916065314,
+    "previous_failed_head_sha": "83934ccf674563e862c226d5be0045920ec09366",
+    "previous_failure_corrected": true,
+    "final_green_run_id": null,
+    "final_green_head_sha": null,
+    "final_green_conclusion": "PENDING"
+  },
+  "exact_next_operation": "Run and verify the final Knowledge Architecture CI gate; if green, record the exact workflow run/commit in the final acceptance and validation-result files, then return to the normal project next action from Current/CURRENT_STATE.json.",
+  "files_not_yet_safe_to_move_or_delete": "Historical evidence remains intentionally retained. Any future deletion still requires the unique-fact and reference audit in Current/REPOSITORY_MIGRATION_MANIFEST.md.",
+  "bootstrap_rewrite_allowed": true,
+  "history_reclassification_allowed": true,
   "mass_move_or_delete_allowed": false,
   "rollback_status": "CLEAN_AND_VERIFIED_AGAINST_STANDALONE_BACKUP",
   "notes": [
     "No gameplay/config/mod/profile/project-local patch behavior changed.",
-    "Phase 2 found authority-mixing rather than evidence loss as the primary problem.",
-    "No file is approved for deletion before semantic extraction/reference validation."
+    "The architecture uses semantic routing instead of destructive historical file moves.",
+    "S1.42Z lineage drift was corrected to the actual accepted artifact path and SHA before final validation."
   ]
 }
