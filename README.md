@@ -1,10 +1,12 @@
 # Lethal Company AI Modding Project
 
-GitHub is the canonical source of truth for this project.
-
-## Current canonical state
+GitHub is the canonical source of truth and build/handover workspace for this project.
 
 Game: **Lethal Company V81**
+
+Do not require a local repository clone or local profile build while the required base artifacts and GitHub-native infrastructure are present.
+
+## Current canonical state
 
 ### Accepted full-normal-stack baseline
 
@@ -14,114 +16,106 @@ Profile: `Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z`
 SHA-256: `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`
 
 Canonical runtime acceptance: `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`  
-Machine-readable accepted state: `Current/Projektstatus_S1.42Z_ACCEPTED.json`
-
+Machine-readable accepted state: `Current/Projektstatus_S1.42Z_ACCEPTED.json`  
 Runtime evidence: `RuntimeEvidence/S1.42Z/20260904T135820Z/`  
 Raw log SHA-256: `ca61e82e5a7d12f96dcb51849e291582df4d45568da4fa1e10b476551c897db8`
 
-S1.42Z remains the accepted rollback baseline until S1.42AA passes fresh runtime validation.
+S1.42Z remains the rollback baseline until S1.42AB passes fresh gameplay runtime validation.
+
+### Rejected candidate
+
+**S1.42AA — Interior Weight Equalization — RUNTIME FAIL / NOT ACCEPTED**
+
+Profile: `Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z`  
+SHA-256: `0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364`  
+Runtime evidence: `RuntimeEvidence/S1.42AA/20260904T153744Z/`
+
+The config-only change `Inject Dynamic Matching Weights = false` did not equalize effective LethalLevelLoader dungeon rarities. Offense still contained values from `20` through `300`. Root cause: LLL retains the highest matching rarity, so generic `Vanilla:100,Custom:100` matches cannot reduce stronger author/planet/mod matches.
+
+Black Mesa generated successfully in the AA run. A separate Pikmin-on-table incident produced repeated unreachable entrance / `Unpathable` ToShip routing and is retained as a likely Black Mesa/NavMesh/LethalMin compatibility finding. The same run contained two Work/no-task warnings in a separate White-Pikmin lifecycle sequence; both are monitor-only unless reproduced.
 
 ### Active runtime candidate
 
-**S1.42AA — Interior Weight Equalization — BUILD PASS / PROFILE IMPORT CONFIRMED / RUNTIME OPEN / NOT ACCEPTED**
+**S1.42AB — Interior Weight Normalization — BUILD PASS / LOCAL IMPORT PASS / GAMEPLAY RUNTIME OPEN / NOT ACCEPTED**
 
-Profile: `Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z`  
-Gale profile name: `LC V1 S1.42AA Interior Weight Equalization`  
-SHA-256: `0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364`
+Profile: `Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z`  
+Gale profile name: `LC V1 S1.42AB Interior Weight Normalization`  
+SHA-256: `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`
 
-Build workflow run: `33884101262` — success  
-Automated build commit: `4d5e5e6c86a0bc8ab10e0adc32ab22ae6f5c0156`
+Build workflow run: `33892396551`  
+Automated build commit: `9bf3085d82990ca565ad81f992d896855c21f1c6`  
+Injected DLL SHA-256: `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`
 
-Candidate record: `Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`  
-Machine-readable candidate state: `Current/Projektstatus_S1.42AA_CANDIDATE.json`
+Candidate record: `Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md`  
+Machine-readable state: `Current/Projektstatus_S1.42AB_CANDIDATE.json`  
+Plan / Patch Safety Review: `BuildSpecs/S1.42AB_PLAN.md`
 
-The user has already imported S1.42AA in Gale with **Advanced options -> Import all files**. No S1.42AA gameplay runtime test has been completed yet.
+S1.42AB was built directly from accepted S1.42Z and retains `Inject Dynamic Matching Weights = true`; S1.42AA's failed config experiment is not inherited.
+
+S1.42AB patches `LethalLevelLoader.DungeonManager.GetValidExtendedDungeonFlows(ExtendedLevel, bool)` with a Postfix. LLL decides viability/exclusions first; only positive rarity values in the already-returned viable list are then normalized to `100`. No flow membership is added/removed and Enemy/Scrap/MapObject rarity systems are untouched.
+
+LLL's earlier built-in `Viable ExtendedDungeonFlows` log line may still show pre-normalization values. The authoritative runtime marker is:
+
+`[InteriorWeightNormalization] Final effective viable pool for <moon>: ...`
+
+Every positive entry there must be `(100)`.
+
+## Local Gale state
+
+S1.42AB is **already imported and current in Gale**. Do not ask the user to reinstall it before the immediate gameplay test.
+
+The canonical replacement helper `RuntimeTools/ReplaceActiveGaleProfile.ps1` is now **FULL END-TO-END USER-VALIDATED** under Windows PowerShell 5.1.
+
+Validated revision: `2026-09-04-import-uia-v2.1-download-hotfix`  
+Validated helper blob SHA: `9458f427b538615249714e7f064f3107d6dcd36c`  
+Validated implementation commit: `f711f53f4971f97200ed3605479ef887a14b243d`
+
+After the user selects the old profile numerically and confirms `y`, the validated happy path automatically handles Missing Profiles, single-open `.r2z` import, `Advanced options -> Import all files -> Import`, exact target `export.r2x` hash verification and temporary download cleanup. No further Gale click or PowerShell Enter is required.
+
+Permanent workflow: `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`  
+Import automation history: `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`
 
 ## Latest handover — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/94_FINAL_HANDOVER_S1.42Z_ACCEPTED_S1.42AA_RUNTIME_NEXT.md`
-3. `Current/95_REPOSITORY_HANDOVER_AUDIT_S1.42AA.md`
-4. `Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`
-5. `Current/Projektstatus_S1.42AA_CANDIDATE.json`
-6. `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`
-7. `Current/Projektstatus_S1.42Z_ACCEPTED.json`
-8. `Current/00_CURRENT_STATE.md`
-9. `Current/01_HANDOVER_CORE.md`
-10. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-11. `Current/06_RECENT_WORK_S1.42AA.md`
-12. `BuildSpecs/S1.42AA_PLAN.md`
+2. `Current/100_FINAL_HANDOVER_S1.42Z_ACCEPTED_S1.42AB_RUNTIME_NEXT.md`
+3. `Current/101_REPOSITORY_HANDOVER_AUDIT_S1.42AB.md`
+4. `Current/00_CURRENT_STATE.md`
+5. `Current/01_HANDOVER_CORE.md`
+6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+7. `Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md`
+8. `Current/Projektstatus_S1.42AB_CANDIDATE.json`
+9. `Current/06_RECENT_WORK_S1.42AA-S1.42AB.md`
+10. `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`
+11. `Current/Projektstatus_S1.42Z_ACCEPTED.json`
+12. `BuildSpecs/S1.42AB_PLAN.md`
 13. `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`
-14. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-15. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-16. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-17. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-18. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-19. `BuildSpecs/current.json`
-20. `RuntimeInbox/ACTIVE_BUILD.txt`
+14. `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`
+15. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+16. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+17. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+18. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+19. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+20. `BuildSpecs/current.json`
+21. `RuntimeInbox/ACTIVE_BUILD.txt`
 
-Chronologically newer confirmed information overrides older version-specific wording. `Current/94`, `Current/95`, `Current/91` and `Projektstatus_S1.42AA_CANDIDATE.json` are authoritative for the active runtime gate. `Current/90` and `Projektstatus_S1.42Z_ACCEPTED.json` remain authoritative for the accepted baseline.
+Chronologically newer confirmed information overrides older version-specific wording. `Current/100` and `Current/101` are the newest dedicated handover/audit pair for the active gate.
 
-## Why S1.42AA exists
+## Exact next step
 
-S1.42Z already contained project-normalized LethalLevelLoader dungeon tag weights:
+**Do not re-import S1.42AB and do not build a successor yet.**
 
-`Vanilla:100,Custom:100`
+Run one normal Offense gameplay round using the already-imported S1.42AB, enter the generated interior, then upload the complete fresh `LogOutput.log` with the exact one-line uploader in `Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md`.
 
-but still had:
+One successful Offense run is sufficient if the authoritative final effective-pool marker is present. Judge equalization from that post-normalization marker, not from LLL's earlier built-in viable-flow line.
 
-`Inject Dynamic Matching Weights = true`
+`RuntimeInbox/Current/` currently contains only `.gitkeep`; no S1.42AB gameplay log has been submitted yet.
 
-which caused mod-author Level/Dungeon MatchingProperties to be injected again on each landing. S1.42Z Offense runtime evidence therefore still showed unequal effective interior weights such as `300`, `275`, `250`, `75`, `70`, `50`, `35`, `25` and `20`.
+## Current controllers
 
-S1.42AA makes one functional change:
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AB_BUILD_AWAITING_RUNTIME_VALIDATION`, guarded by S1.42AB SHA-256 `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`. No successor is armed.
 
-`Inject Dynamic Matching Weights = false`
-
-Automated build verification shows exactly two changed archive members vs S1.42Z:
-
-- `BepInEx/config/LethalLevelLoader.cfg`;
-- `export.r2x` profile-name metadata.
-
-ZIP members remain `333`; added members = `0`; removed members = `0`; mod state/add/remove changes = `0`; no package or project-local DLL changed.
-
-Black Mesa remains on its dedicated native-owner path with `lethal_company:vanilla=+100,lethal_company:custom=+100`. Shatteredrooms' Experimentation/Embrion restriction remains a technical compatibility guard pending dedicated proof that removing it is safe.
-
-Permanent interior rule: every eligible installed interior should have the same effective selection weight on vanilla and custom moons. Future added interiors must be normalized into the same architecture before acceptance unless an explicitly documented technical incompatibility requires an exception.
-
-## S1.42Z accepted runtime evidence
-
-S1.42Z technical acceptance confirmed:
-
-- Jetpack `10 -> 18`;
-- CodeRebirth ACU exact 18 curves ×`0.5`;
-- CodeRebirth G.R.E.G. exact 18 curves ×`0.5`;
-- Work/no-task `0`;
-- Leader-null `0`;
-- Compatibility Fixes Error `0`;
-- relevant NetworkObjectReference/PikminNoticeZone regression markers `0`;
-- project-local Error-severity `0`;
-- Fatal `0`;
-- user acceptance of the resulting runtime behavior.
-
-## Accepted tuning preserved in S1.42AA
-
-- Jetpack base acceleration `10 -> 18`;
-- Jet Fuel `18 / 18`;
-- Jetpack Thrusters `25 / 20`;
-- Indoor Pikmin Spawn Chance `0.09`;
-- non-Purple CarryStrength `3`;
-- Purple CarryStrength `30`;
-- CodeRebirth Air Control Unit 18 exact curves ×`0.5`;
-- CodeRebirth G.R.E.G. 18 exact curves ×`0.5`;
-- Functional Microwave volume `0.15`;
-- Immortal Snail `Rarity = 40`, `Max Snails = 2`.
-
-Project-local DLL SHA-256 values:
-
-- Jetpack: `9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add`;
-- aerial defense: `7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b`;
-- Compatibility Fixes: `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AB`
 
 ## Permanent anti-regression state
 
@@ -136,59 +130,27 @@ Preserve:
 - Pikmin -> Baboon Hawk attack remains allowed;
 - Puffer -> Pikmin protection;
 - `Thumper Bite Limit = 3`;
-- Crawler absent from Attack Blacklist;
+- Crawler absent from LethalMin Attack Blacklist;
 - accepted S1.42C-derived moon power/spawn baseline;
-- `Consistent Spawn Times = true`.
+- `Consistent Spawn Times = true`;
+- accepted S1.42Z Jetpack/Pikmin/CodeRebirth/Microwave/Snail tuning.
 
 Never repeat the S1.42R whole-component disable approach.
 
 Project-local patch policy: `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
 
-## Exact next state
+## Deferred / monitor-only
 
-**Runtime-test the already-imported S1.42AA on Offense before any successor is built.**
+Keep separate from S1.42AB until its runtime gate closes unless the user explicitly changes scope:
 
-One normal successful Offense gameplay run is the intended minimum. Enter the generated interior and then upload the complete fresh `LogOutput.log` using the exact corrected S1.42AA one-line uploader in:
-
-`Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`
-
-The log must show eligible `Viable ExtendedDungeonFlows` at common effective weight `100` rather than the previous unequal author weights and must show no dungeon-generation regression, duplicate Black Mesa/native-owner regression, Work/no-task, Leader-null, Fatal or new project-local exception class.
-
-`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AA_BUILD_AWAITING_RUNTIME_VALIDATION` with S1.42AA as guarded base.  
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AA`.  
-`RuntimeInbox/Current/` contains only `.gitkeep`.  
-No successor is armed.
-
-## Gale active-profile replacement workflow — canonical and binding
-
-Implementation: `RuntimeTools/ReplaceActiveGaleProfile.ps1`  
-Workflow contract: `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`  
-Binding chat/build policy: `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-
-Canonical launcher:
-
-```powershell
-iex (iwr -UseBasicParsing 'https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1').Content
-```
-
-The final y/n version was user-validated under Windows PowerShell 5.1 with a disposable `testpowershell` profile and used successfully for the S1.42AA import flow. The helper downloads before deletion, verifies SHA-256, requires explicit `y/n`, opens Gale, leaves **Advanced options -> Import all files** manual, and cleans the temporary download only after confirmed import.
-
-Every future response that announces a newly built ready-to-test profile must include both this launcher and the exact build-specific runtime-log uploader without waiting for the user to ask.
-
-## Deferred — keep separate from S1.42AA runtime gate
-
+- Black Mesa table/NavMesh/Pikmin route recovery;
 - CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - Mausoleum fog reduction;
 - Functional Microwave spawn-rarity reduction;
-- BCMER EventTypes fixed to `8 × 12.5%`;
+- BCMER EventTypes fixed `8 × 12.5%`;
 - final long full-stack acceptance;
-- monitor-only AdditionalNetworking / LethalMin repairs;
-- cosmetic documentation cleanup.
+- AdditionalNetworking / LethalMin teardown repair only with stronger evidence;
+- cosmetic documentation cleanup;
+- isolated future evaluation of `woah25-LethalEscapeUpdated 2.5.0` after the AB gate.
 
-## Known monitor-only / non-functional issues
-
-Do not patch known setup/teardown error classes without stronger reproducibility or user-facing impact. Known documentation drift remains in older chronology wording under `Current/02_TECHNICAL_BASELINE.md` and historical comments in `Patches/S139CompatibilityFixes/Plugin.cs`; newer canonical documents, actual code/config and runtime evidence override them.
-
-## Repository-first rule
-
-Do not ask for a local repository clone or manual profile rebuild when GitHub infrastructure can perform the work. Profile builds, patch compilation, archive verification and repository handover are performed through the GitHub-native workflow. Local user action is reserved for actual gameplay/runtime testing and the documented profile-import/log-upload helpers.
+Known non-functional drift remains intentionally in older chronology wording under `Current/02_TECHNICAL_BASELINE.md` and historical comments in `Patches/S139CompatibilityFixes/Plugin.cs`; newer canonical documents, actual code/config and runtime evidence override them.
