@@ -1,7 +1,7 @@
 # Gale Active Profile Replacement Workflow — Permanent
 
 **Date:** 2026-09-04  
-**Status:** CANONICAL / BINDING CHAT UX / BASE FLOW USER-VALIDATED / MISSING-PROFILE UIA USER-VALIDATED / IMPORT UIA V2 USER-VALIDATION PENDING
+**Status:** CANONICAL / BINDING CHAT UX / FULL END-TO-END USER-VALIDATED
 
 ## Purpose
 
@@ -38,24 +38,41 @@ $u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Projec
 
 During helper-development validation, prefer a commit-pinned Raw GitHub URL so the exact tested revision is deterministic.
 
-## Validated base behavior
+## Fully validated normal UX
 
-The base y/n implementation was successfully tested under Windows PowerShell 5.1 on 2026-09-04.
+The complete replacement flow was successfully validated on the real project machine under Windows PowerShell 5.1 during the S1.42AA -> S1.42AB transition.
 
-Validated properties:
+After the user runs the launcher, the normal interaction boundary is now only:
+
+1. choose the old local Gale profile numerically;
+2. confirm destructive replacement with `y`.
+
+After that confirmation, the helper performs the remaining replacement automatically unless a fail-closed safety fallback is triggered.
+
+Validated end-to-end behavior:
 
 1. close Gale;
 2. read `RuntimeInbox/ACTIVE_BUILD.txt`;
 3. require exact equality with `Current/AUTO_BUILD_RESULT.json.build_id`;
 4. resolve exact output `.r2z`, profile name and SHA-256;
-5. download before any destructive local action;
-6. verify SHA-256;
-7. list local Gale profiles numerically;
-8. let the user choose the profile to replace;
-9. require explicit `y/n` confirmation;
-10. delete only the selected profile after `y`;
-11. no fuzzy build/profile matching;
-12. no local repository clone required.
+5. download the candidate before any destructive local action;
+6. verify the candidate SHA-256;
+7. compute the expected SHA-256 of the archive's `export.r2x` entry;
+8. list local Gale profiles numerically;
+9. let the user choose the profile to replace;
+10. require explicit `y/n` confirmation;
+11. delete only the selected profile after `y`;
+12. open the verified `.r2z` exactly once;
+13. resolve Gale's `Missing Profiles` dialog automatically for the one-profile case using `Delete -> Submit`;
+14. wait for the already-buffered target-profile import dialog from the original `.r2z` open event;
+15. expand `Advanced options`;
+16. enable and verify `Import all files`;
+17. invoke `Import`;
+18. wait for the exact target profile's local `export.r2x`;
+19. require that local file's SHA-256 to equal the `export.r2x` SHA-256 computed from the verified build archive;
+20. remove the temporary downloaded `.r2z` only after that post-import evidence passes.
+
+No additional Gale click or PowerShell Enter is required after profile selection / `y` during the validated happy path.
 
 If the user answers `n`, no local profile is deleted and the temporary archive is cleaned up.
 
@@ -70,13 +87,13 @@ The helper resolves the simple one-missing-profile case through targeted Windows
 - exactly one actionable `Submit` button with `InvokePattern`;
 - dialog disappearance verified after submission.
 
-This path was tested by the user with the real S1.42AA -> S1.42AB starting condition using the commit-pinned interaction-pattern revision. Result: `Missing Profiles -> Delete -> Submit` completed automatically and the normal import dialog became available with no manual dialog interaction.
+This path was tested repeatedly with the real S1.42AA -> S1.42AB starting condition and completed automatically without manual dialog interaction.
 
 Therefore the Missing Profiles automation is **user-validated**.
 
-## Import-dialog automation
+## Import-dialog automation — USER-VALIDATED
 
-The intended semantic UIA sequence is:
+The semantic UIA sequence is:
 
 1. detect the localized full target-profile import dialog;
 2. require the exact expected target profile identity;
@@ -86,37 +103,49 @@ The intended semantic UIA sequence is:
 6. require exactly one dialog-local `Import` / `Importieren` button;
 7. invoke Import.
 
-V1 proved on the user's actual Gale/WebView that this UIA targeting can activate `Import all files` and start the import. S1.42AB was successfully created/activated.
+V1 first proved on the user's actual Gale/WebView that this UIA targeting could activate `Import all files` and start the import, but V1 reopened the same `.r2z` after resolving Missing Profiles and therefore generated a second empty import-code dialog through Gale's single-instance/deep-link path.
 
-However, V1 also reopened the same `.r2z` a second time after resolving Missing Profiles. Gale's single-instance/deep-link path therefore received two import events, which produced a second empty import-code dialog after the real import completed. This was a helper sequencing defect, not a build/import failure.
+V2 removed the duplicate `.r2z` event and replaced transient success-toast detection with post-import `export.r2x` evidence. Its first controlled test failed safely before deletion because a cache-busting query string on the binary Raw GitHub `.r2z` download returned HTTP 404.
 
-## Current V2 contract
+V2.1 removed that unnecessary binary-download query string while preserving the single-open/import/hash-evidence architecture.
 
-Current helper marker:
+## V2.1 validation — FULL PASS
 
-`2026-09-04-import-uia-v2-single-open-evidence`
+Validated helper marker:
 
-Current helper blob:
+`2026-09-04-import-uia-v2.1-download-hotfix`
 
-`aa2b5ac7084fb08f75382405658b4ffa49452587`
+Validated helper blob:
 
-Current implementation commit:
+`9458f427b538615249714e7f064f3107d6dcd36c`
 
-`2c25fccabdf177a6cc114a3eaba752014cf5cb45`
+Validated implementation commit:
 
-V2 changes the sequencing and completion proof:
+`f711f53f4971f97200ed3605479ef887a14b243d`
 
-1. the SHA-verified `.r2z` is opened exactly once;
-2. after Missing Profiles closes, the helper waits for the already-buffered full import dialog from that original file-open event;
-3. the `.r2z` is not re-sent to Gale;
-4. before opening Gale, the helper computes the SHA-256 of the archive's `export.r2x` entry;
-5. after Import, it waits for the exact local target profile's `export.r2x` and requires the same SHA-256;
-6. that filesystem/hash evidence replaces the fragile success-toast dependency;
-7. matching `export.r2x` also proves that `Import all files` copied the expected full-profile evidence;
-8. temporary `.r2z` cleanup happens only after this verification passes;
-9. manual fallbacks no longer require an additional PowerShell Enter merely to acknowledge that the dialog/import completed; PowerShell polls for dialog closure or final profile evidence automatically.
+Controlled test starting condition:
 
-V2 is implemented but requires one user validation before being described as fully user-validated.
+- S1.42AA existed normally in Gale;
+- S1.42AB was not locally imported;
+- the commit-pinned V2.1 helper was executed;
+- the user selected S1.42AA and confirmed replacement with `y`.
+
+Observed PASS evidence from PowerShell:
+
+- candidate profile SHA-256 matched the repository expectation;
+- `export.r2x` evidence SHA-256 was computed before deletion;
+- S1.42AA was deleted only after explicit `y`;
+- Gale `Missing Profiles` was resolved automatically with `Delete -> Submit`;
+- the helper waited for the import dialog from the single original `.r2z` invocation;
+- `Import all files` was activated automatically;
+- Import was triggered automatically;
+- no second empty import-code dialog appeared;
+- the resulting local profile was exactly `LC V1 S1.42AB Interior Weight Normalization`;
+- the imported target profile's local `export.r2x` matched the expected archive-entry SHA-256;
+- the downloaded `.r2z` was removed automatically;
+- PowerShell returned to the prompt with no manual Gale click or final Enter after profile selection / `y`.
+
+Therefore the complete replacement workflow is **FULL END-TO-END USER-VALIDATED**.
 
 ## Safety requirements
 
@@ -133,13 +162,16 @@ Preserve these properties:
 - never automatically resolve multiple missing profiles;
 - no screen-coordinate mouse clicks;
 - no blind `Tab` / `Enter` / arrow-key automation;
-- every UI Automation branch must fail closed and retain a manual fallback;
-- do not describe a new automation branch as user-validated until the user confirms it on the project machine.
+- every UI Automation branch must fail closed and retain a safe manual fallback;
+- open the candidate `.r2z` exactly once during the automated replacement sequence;
+- do not add cache-busting query strings to the binary `.r2z` Raw GitHub download; integrity is enforced by the exact SHA-256 check;
+- keep post-import verification tied to the exact target profile and exact `export.r2x` archive-entry SHA-256;
+- do not describe future changed automation branches as user-validated until the changed behavior is actually tested on the project machine.
 
-## Intended normal UX after V2 validation
+## Canonical normal UX
 
 1. run the canonical one-line launcher;
 2. select the old profile numerically;
 3. confirm with `y`;
-4. helper handles Missing Profiles, `Import all files`, Import, exact `export.r2x` verification and archive cleanup automatically;
-5. no further Gale click or PowerShell Enter should be required unless a fail-closed fallback is triggered.
+4. the helper handles Gale startup recovery, `Import all files`, Import, exact `export.r2x` verification and temporary archive cleanup automatically;
+5. no further Gale click or PowerShell Enter is required unless a fail-closed fallback is triggered.
