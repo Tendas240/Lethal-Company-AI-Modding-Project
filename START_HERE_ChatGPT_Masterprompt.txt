@@ -1,6 +1,7 @@
 ======================================================================
 CURRENT CANONICAL TAKEOVER — GENERATED FROM Current/CURRENT_STATE.json
 ======================================================================
+GENERATED — DO NOT MANUALLY EDIT. Update Current/CURRENT_STATE.json and run RepositoryTools/render_current_navigation.py.
 
 Repository: https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 Game: Lethal Company V81
