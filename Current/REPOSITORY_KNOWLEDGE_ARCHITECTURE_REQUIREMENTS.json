@@ -1,12 +1,12 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "date": "2026-09-04",
-  "status": "EXECUTED_VALIDATED",
+  "status": "EXECUTED_VALIDATED_POST_ACCEPTANCE_REAUDIT",
   "canonical_start": "OVERHAUL_START_HERE_ChatGPT.txt",
   "canonical_plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
   "canonical_execution_playbook": "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md",
   "purpose": "Make repository knowledge deterministically discoverable for fresh ChatGPT sessions with limited context, while preserving complete provenance and a verified pre-overhaul recovery repository.",
-  "trigger_rule": "The one-time 2026-09-04 overhaul has been executed. Future sessions must use START_HERE_ChatGPT_Masterprompt.txt plus Current/00_CURRENT_STATE.md and Current/PROJECT_KNOWLEDGE_MAP.md for ordinary takeover. Re-run this overhaul contract only if a new explicit information-architecture migration is requested.",
+  "trigger_rule": "The one-time 2026-09-04 overhaul has been executed and post-acceptance re-audited against the frozen original contract. Future sessions must use START_HERE_ChatGPT_Masterprompt.txt plus Current/00_CURRENT_STATE.md and Current/PROJECT_KNOWLEDGE_MAP.md for ordinary takeover. Re-run this overhaul contract only if a new explicit information-architecture migration is requested.",
   "must_re_resolve_project_state_at_execution_time": true,
   "current_gate_at_planning_time_must_not_be_disturbed": "S1.42AC runtime validation",
   "do_not_assume_planning_time_build_is_still_current": true,
@@ -86,11 +86,13 @@
     "Current/REPOSITORY_MIGRATION_MANIFEST.json",
     "Current/CURRENT_STATE_TRANSITION_POLICY.md",
     "RepositoryTools/knowledge_architecture_validator.py",
+    "RepositoryTools/overhaul_contract_validator.py",
     "RepositoryTools/answerability_cases.json",
     "RepositoryTools/answerability_regression.py",
     "RepositoryTools/render_current_navigation.py",
     ".github/workflows/knowledge-architecture.yml",
     "Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md",
+    "Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md",
     "Current/OVERHAUL_VALIDATION_RESULTS.json",
     "START_HERE_ChatGPT_Masterprompt.txt"
   ],
@@ -184,7 +186,10 @@
     "live roadmap does not point at superseded build as current",
     "bootstrap routing remains bounded",
     "major current topics are reachable within three hops",
-    "final architecture does not depend on repository search for ordinary canonical questions"
+    "final architecture does not depend on repository search for ordinary canonical questions",
+    "historical mixed/current-wording documents have conspicuous top-of-file authority banners",
+    "completed one-time overhaul execution files cannot masquerade as still-pending instructions",
+    "accepted Plugin.cs historical comments are explicitly non-normative without creating source/binary provenance drift"
   ],
   "answerability_examples": [
     "Was ist der aktuelle akzeptierte Build?",
@@ -229,14 +234,45 @@
     "artifact_evidence_index": "Current/ARTIFACT_EVIDENCE_INTEGRITY.json",
     "migration_manifest": "Current/REPOSITORY_MIGRATION_MANIFEST.json",
     "validator": "RepositoryTools/knowledge_architecture_validator.py",
+    "frozen_contract_validator": "RepositoryTools/overhaul_contract_validator.py",
     "answerability_suite": "RepositoryTools/answerability_regression.py",
     "current_navigation_renderer": "RepositoryTools/render_current_navigation.py",
     "ci_workflow": ".github/workflows/knowledge-architecture.yml",
     "final_acceptance": "Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md",
+    "post_acceptance_audit": "Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md",
     "final_results": "Current/OVERHAUL_VALIDATION_RESULTS.json",
     "gameplay_behavior_changed": false,
     "legacy_files_deleted": 0,
     "legacy_files_moved": 0
+  },
+  "post_acceptance_reaudit": {
+    "requested_against_frozen_old_repository_contract": true,
+    "old_repository_commit": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+    "gaps_found_after_initial_acceptance": [
+      "Current/02_TECHNICAL_BASELINE.md lacked a conspicuous historical mixed-snapshot banner",
+      "Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md lacked a conspicuous historical roadmap banner",
+      "OVERHAUL_START_HERE_ChatGPT.txt could still be misread as an active one-time migration instruction",
+      "Current/104 and Current/105 retained planned/not-yet-executed wording without completion banners",
+      "the initial validator did not independently encode every one-time frozen-contract requirement",
+      "Current/PROJECT_KNOWLEDGE_MAP.md retained stale Phase-10 wording pointing at non-existent Current/PROJECT_STATE.json"
+    ],
+    "remediation": [
+      "added conspicuous historical/completion banners",
+      "expanded document-authority classification and accepted-code comment-drift provenance rules",
+      "corrected the knowledge map to Current/CURRENT_STATE.json",
+      "added RepositoryTools/overhaul_contract_validator.py",
+      "changed knowledge CI to fetch full history and run the strict frozen-contract validator"
+    ],
+    "strict_validation_run_id": 33919296323,
+    "strict_validation_head_sha": "e3704877d309e40b092768430d0e81f7d86ed2e3",
+    "strict_validation_conclusion": "SUCCESS",
+    "permanent_checks": [
+      "generated current navigation PASS",
+      "knowledge/state/reference validator PASS",
+      "frozen original-overhaul-contract validator PASS",
+      "answerability routing regression PASS"
+    ],
+    "gameplay_behavior_changed": false
   },
   "rollback_rule": "If information is lost, authority becomes ambiguous, routing breaks, validation fails, or the new structure is less usable, stop migration and compare/restore against the verified standalone pre-overhaul backup; revert/replan if necessary rather than continuing destructive cleanup.",
   "overhaul_complete_when": "A verified independent pre-overhaul repository backup exists and all plan/playbook/requirements gates pass, such that a fresh ChatGPT session can answer ordinary current and historical project questions from a compact bootstrap plus on-demand topic/evidence files without reading the entire repository or reconciling unclassified historical current wording."
