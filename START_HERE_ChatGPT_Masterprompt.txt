@@ -1,170 +1,44 @@
 ======================================================================
-CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42Z ACCEPTED / S1.42AB GAMEPLAY RUNTIME NEXT
+CURRENT CANONICAL TAKEOVER - 2026-09-04 - S1.42AB ACCEPTED / NEXT SCOPE NOT ARMED
 ======================================================================
 
 Repository:
 https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
 
-The repository is the source of truth and the canonical build/handover workspace.
+The repository is the source of truth and canonical build/handover workspace.
 Do not require a local repository clone or local profile build while the needed bases and GitHub-native infrastructure are present.
 
 READ FIRST, COMPLETELY:
 1. README.md
-2. Current/100_FINAL_HANDOVER_S1.42Z_ACCEPTED_S1.42AB_RUNTIME_NEXT.md
-3. Current/101_REPOSITORY_HANDOVER_AUDIT_S1.42AB.md
+2. Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md
+3. Current/Projektstatus_S1.42AB_ACCEPTED.json
 4. Current/00_CURRENT_STATE.md
 5. Current/01_HANDOVER_CORE.md
 6. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
 7. Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md
-8. Current/Projektstatus_S1.42AB_CANDIDATE.json
-9. Current/06_RECENT_WORK_S1.42AA-S1.42AB.md
+8. Current/100_FINAL_HANDOVER_S1.42Z_ACCEPTED_S1.42AB_RUNTIME_NEXT.md
+9. Current/101_REPOSITORY_HANDOVER_AUDIT_S1.42AB.md
 10. Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md
 11. Current/Projektstatus_S1.42Z_ACCEPTED.json
 12. BuildSpecs/S1.42AB_PLAN.md
 13. Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md
 14. Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md
-15. Current/09_REPOSITORY_FIRST_AUTOMATION.md
-16. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
-17. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
-18. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
-19. Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
-20. BuildSpecs/current.json
-21. RuntimeInbox/ACTIVE_BUILD.txt
+15. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+16. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md
+17. Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+18. Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
+19. BuildSpecs/current.json
+20. RuntimeInbox/ACTIVE_BUILD.txt
 
-Chronologically newer confirmed files override older version-specific wording.
-Current/100 + Current/101 + Current/00 + Current/04 + Current/96 + Current/Projektstatus_S1.42AB_CANDIDATE.json are authoritative for the active runtime gate.
-Current/90 + Current/Projektstatus_S1.42Z_ACCEPTED.json are authoritative for the accepted rollback baseline.
-Older handover/build records remain historical evidence unless explicitly superseded.
+Chronologically newer confirmed information overrides older version-specific wording.
+Current/102 + Current/Projektstatus_S1.42AB_ACCEPTED.json + Current/00 + Current/04 are authoritative for the current accepted state.
+Current/100 and Current/101 are historical handover/audit evidence from immediately before the S1.42AB runtime gate closed.
 
 ======================================================================
 CURRENT ACCEPTED BASELINE
 ======================================================================
 
-S1.42Z - Jetpack Pikmin Retune - ACCEPTED FULL NORMAL STACK
-
-Profile:
-Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z
-
-Gale profile name:
-LC V1 S1.42Z Jetpack Pikmin Retune
-
-Profile SHA-256:
-a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4
-
-Canonical acceptance:
-Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md
-
-Machine status:
-Current/Projektstatus_S1.42Z_ACCEPTED.json
-
-Runtime evidence:
-RuntimeEvidence/S1.42Z/20260904T135820Z/
-
-Raw log SHA-256:
-ca61e82e5a7d12f96dcb51849e291582df4d45568da4fa1e10b476551c897db8
-
-Confirmed S1.42Z runtime facts:
-- S1.42Z Jetpack Acceleration project-local patch loaded;
-- exact local-player Jetpack base acceleration path armed 10 -> 18;
-- ButteRyBalance 0.7.0, JetpackFixes 1.6.3 and More Ship Upgrades 3.14.1 validated;
-- S1.42Z CodeRebirth Aerial Defense Spawn Tuning project-local patch loaded;
-- CodeRebirth 1.6.9, DawnLib 0.9.25 and DawnLib.Dusk 0.9.25 validated;
-- Air Control Unit provider exactly 18 curves x0.5;
-- G.R.E.G. / Advanced Airspace Control provider exactly 18 curves x0.5;
-- Work/no-task = 0;
-- Leader-null = 0;
-- Compatibility Fixes Error marker = 0;
-- unspawned NetworkObjectReference marker = 0;
-- PikminNoticeZone regression marker = 0;
-- project-local Error-severity output = 0;
-- Fatal = 0;
-- user accepted the resulting behavior as fully satisfactory.
-
-Accepted S1.42Z tuning:
-- Jetpack base acceleration = 18;
-- Jet Fuel = 18 / 18;
-- Jetpack Thrusters = 25 / 20;
-- Indoor Pikmin Spawn Chance = 0.09;
-- Blue / Red / Yellow / White / Winged / Rock / Ice / Glow / Bulbmin CarryStrength = 3;
-- Purple CarryStrength = 30;
-- CodeRebirth air_control_unit = exact 18 curves x0.5;
-- CodeRebirth gunslinger_greg = exact 18 curves x0.5;
-- Functional Microwave Volume = 0.15;
-- Immortal Snail Rarity = 40;
-- Immortal Snail Max Snails = 2.
-
-Project-local accepted DLL SHA-256 values:
-- Jetpack: 9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add
-- aerial defense: 7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b
-- Compatibility Fixes: 3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960
-
-S1.42Z remains the rollback baseline until S1.42AB passes fresh gameplay runtime validation.
-
-======================================================================
-REJECTED CANDIDATE - S1.42AA
-======================================================================
-
-S1.42AA - Interior Weight Equalization - RUNTIME FAIL / NOT ACCEPTED
-
-Profile:
-Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z
-
-Profile SHA-256:
-0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364
-
-Build workflow run:
-33884101262 - success
-
-Automated build commit:
-4d5e5e6c86a0bc8ab10e0adc32ab22ae6f5c0156
-
-Runtime evidence:
-RuntimeEvidence/S1.42AA/20260904T153744Z/
-
-S1.42AA changed only:
-Inject Dynamic Matching Weights = true -> false
-
-Fresh Offense runtime proved this did not equalize the effective LethalLevelLoader dungeon pool.
-Examples remained:
-- LiminalHouse 300;
-- Sub Systems 275;
-- Abandoned Foundry 250;
-- Shatteredrooms 75;
-- Lead Factory 70;
-- Spelunkers Caverns (Random) 50;
-- Crimson Keep 35;
-- Gray Apartments 25;
-- DeepcoreMines 25;
-- several 20-weight interiors.
-
-Root cause:
-LethalLevelLoader keeps the highest matching rarity across matching sources. Generic Vanilla:100,Custom:100 matches therefore cannot lower a stronger author/planet/mod match such as 300 to 100.
-
-Black Mesa successfully generated in the AA run.
-
-Separate Black Mesa/Pikmin finding:
-- scrap was on a Black Mesa table asset;
-- a thrown Pikmin attempted to carry it to the ship but ran in place;
-- the log repeatedly showed unreachable interior entrance nodes;
-- generated ToShip routes were Unpathable / failed;
-- this strongly supports a map/NavMesh/entrance-routing compatibility issue;
-- do not mix a broad global Pikmin recovery patch into the interior-weight fix without stronger reproducibility and a narrow safe design.
-
-Separate lifecycle finding:
-- Work state with no task assigned! occurred twice in a White-Pikmin sequence;
-- this was not the same sequence as the table incident;
-- Leader-null remained 0;
-- Fatal remained 0;
-- monitor if reproduced; do not patch from this single occurrence alone.
-
-======================================================================
-ACTIVE RUNTIME CANDIDATE - S1.42AB
-======================================================================
-
-S1.42AB - Interior Weight Normalization
-
-Status:
-BUILD PASS / LOCAL IMPORT PASS / GAMEPLAY RUNTIME VALIDATION OPEN / NOT ACCEPTED
+S1.42AB - Interior Weight Normalization - ACCEPTED FULL NORMAL STACK
 
 Profile:
 Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z
@@ -175,105 +49,126 @@ LC V1 S1.42AB Interior Weight Normalization
 Profile SHA-256:
 3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca
 
-Successful build workflow run:
+Build workflow run:
 33892396551
 
 Automated build commit:
 9bf3085d82990ca565ad81f992d896855c21f1c6
 
-Candidate record:
-Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md
-
-Machine status:
-Current/Projektstatus_S1.42AB_CANDIDATE.json
-
-Plan / Patch Safety Review:
-BuildSpecs/S1.42AB_PLAN.md
-
-Patch source:
-Patches/S142ABInteriorWeightNormalization/
-
-Readable snapshot:
-ProfileSources/S1.42AB/
-
-Injected DLL:
-BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll
-
-DLL SHA-256:
+Injected DLL SHA-256:
 901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06
 
-Automated archive delta vs accepted S1.42Z:
-- ZIP members = 334;
-- changed existing members = exactly export.r2x;
-- added members = exactly the S1.42AB DLL;
-- removed members = 0;
-- config changes = 0;
-- mod state changes/additions/removals = 0.
+Canonical runtime acceptance:
+Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md
 
-The generated AB snapshot explicitly retains:
-Inject Dynamic Matching Weights = true
+Machine-readable accepted state:
+Current/Projektstatus_S1.42AB_ACCEPTED.json
 
-Therefore S1.42AA's failed false experiment is not inherited.
+Runtime evidence:
+RuntimeEvidence/S1.42AB/20260904T174010Z/
+
+Raw LogOutput.log SHA-256:
+42cfba3d157f6abdbeee114909d90749d1bfd043d4b0c224922ad5be976194ae
+
+Fresh Offense runtime acceptance facts:
+- S1.42AB Interior Weight Normalization 1.0.0 loaded;
+- exact imabatby.lethallevelloader v1.7.12 validated;
+- exact post-viability dungeon-selection contract validated;
+- armed marker appeared without refusal;
+- LLL pre-Postfix Offense pool contained 40 viable entries with rarity range 20..300;
+- authoritative final effective pool contained the same 40 entries, all at exactly 100;
+- 12/40 entries were normalized;
+- no flow membership was inserted or removed;
+- Black Mesa remained single-registered at final rarity 100;
+- normal dungeon generation succeeded;
+- Expanded facility was selected;
+- user entered the generated interior and played normally until death with no problematic behavior reported;
+- Work/no-task = 0;
+- Leader-null = 0;
+- Compatibility Fixes Error marker = 0;
+- unspawned NetworkObjectReference marker = 0;
+- PikminNoticeZone regression marker = 0;
+- Fatal = 0.
+
+Complete S1.42AB log stats:
+- 1,731,946 bytes;
+- 17,347 lines;
+- 16,087 events;
+- 32 Error-severity events;
+- Fatal = 0.
+
+The 32 Error-severity events match accepted S1.42Z. Known loaforcsSoundAPI/HarmonyX TypeLoadException and SoftMask/SoftMasking setup exceptions remain monitor-only; do not patch them without stronger reproducibility or user-facing impact.
 
 ======================================================================
-S1.42AB ARCHITECTURE / CONTRACT
+ACCEPTED INTERIOR ARCHITECTURE
 ======================================================================
 
 Exact target:
 LethalLevelLoader.DungeonManager.GetValidExtendedDungeonFlows(ExtendedLevel, bool)
 
 Architecture:
-1. LethalLevelLoader performs its complete native matching, viability and exclusion logic first.
-2. A project-local Harmony Postfix receives the already-returned viable list.
-3. Only positive rarity values in that returned list are normalized to exactly 100.
+1. LethalLevelLoader performs native matching, viability and exclusion first.
+2. A project-local Harmony Postfix receives only the already-returned viable list.
+3. Only positive rarity values in that list are normalized to exactly 100.
 4. No flow is appended.
 5. No flow is removed.
 6. No flow is re-registered or deduplicated.
 7. No LLL matching/config list is rewritten.
 8. Enemy, Scrap and MapObject rarity systems are untouched.
 
-Fail-closed contract:
-- imabatby.lethallevelloader must be loaded;
-- exact version 1.7.12;
-- exact static GetValidExtendedDungeonFlows(ExtendedLevel, bool) target;
-- exact expected return/list type and rarity field contract;
-- expected flow/DungeonName reflection contract;
-- Harmony owner confirmation after patching;
-- unexpected non-positive returned entries are preserved and logged rather than promoted.
+Permanent accepted future-interior rule:
+Every newly installed interior receives effective rarity 100 automatically whenever LLL itself considers that interior viable. Hard technical exclusions remain upstream-owned.
 
-Permanent future-interior rule:
-Every eligible installed interior should have effective rarity 100 whenever LLL itself considers that interior viable. Hard technical exclusions remain upstream-owned.
-
-Preserve the Shatteredrooms Experimentation/Embrion restriction until dedicated evidence proves it safe to remove.
+Preserve the Shatteredrooms Experimentation/Embrion restriction until dedicated evidence proves removal safe.
 
 IMPORTANT LOG INTERPRETATION:
-LLL writes its built-in Viable ExtendedDungeonFlows report inside the original method before the Postfix returns. That line may still show old values such as 300, 275, 75, etc. This is not by itself an AB failure.
+LLL's built-in Viable ExtendedDungeonFlows line is emitted before the Postfix and may show unequal pre-normalization values. Do not judge the accepted architecture from that earlier line.
 
-Authoritative S1.42AB marker:
+Authoritative marker:
 [InteriorWeightNormalization] Final effective viable pool for <moon>: ...
 
-Every positive entry in this final pool must be (100).
+Every positive entry there must be (100).
 
 ======================================================================
-LOCAL GALE STATE - IMPORT ALREADY COMPLETE
+PREVIOUS / REJECTED STATES
 ======================================================================
 
-S1.42AB is already imported locally in Gale and is the current profile.
-DO NOT ask the user to re-import or reinstall S1.42AB before the immediate gameplay test.
+S1.42Z - Jetpack Pikmin Retune - PREVIOUS ACCEPTED ROLLBACK / PROVENANCE BASELINE
+
+Profile SHA-256:
+a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4
+
+Acceptance:
+Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md
+
+Its accepted Jetpack/Pikmin/CodeRebirth/Microwave/Snail tuning is inherited by S1.42AB.
+
+S1.42AA - Interior Weight Equalization - RUNTIME FAIL / NOT ACCEPTED
+
+Profile SHA-256:
+0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364
+
+Do not revive its Inject Dynamic Matching Weights=false approach. Runtime proved it cannot lower stronger LLL author/planet/mod matches because LLL retains the highest matching rarity.
+
+Separate AA evidence remains deferred/monitor-only:
+- Black Mesa table/NavMesh/Pikmin unreachable entrance / Unpathable ToShip routing;
+- two Work state with no task assigned warnings in a separate White-Pikmin lifecycle sequence.
+
+Work/no-task did not reproduce in accepted S1.42AB.
+
+======================================================================
+LOCAL GALE / IMPORT TOOLING
+======================================================================
+
+S1.42AB remains the current installed Gale profile.
 
 Canonical replacement helper:
 RuntimeTools/ReplaceActiveGaleProfile.ps1
 
-Permanent contract:
-Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md
-
-Import automation history:
-Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md
-
 Status:
 FULL END-TO-END USER-VALIDATED under Windows PowerShell 5.1
 
-Validated helper revision:
+Validated revision:
 2026-09-04-import-uia-v2.1-download-hotfix
 
 Validated helper blob SHA:
@@ -282,434 +177,95 @@ Validated helper blob SHA:
 Validated implementation commit:
 f711f53f4971f97200ed3605479ef887a14b243d
 
-AB archive export.r2x evidence SHA-256:
-331c01bfe5eda5d4ce9bc2a887fd322b302f32dccf9d95918d6c7d0c7fb6cf40
+See:
+Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md
+Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md
 
-Validated happy path after old-profile number + explicit y:
-- candidate downloaded before deletion;
-- candidate SHA-256 verified;
-- archive export.r2x evidence SHA computed;
-- only selected old profile deleted;
-- verified candidate .r2z opened exactly once;
-- Gale Missing Profiles automatically resolved through Delete -> Submit;
-- already-buffered full target import dialog used;
-- Advanced options expanded automatically;
-- Import all files enabled and verified automatically;
-- Import invoked automatically;
-- exact local target export.r2x hash matched archive-entry hash;
-- temporary .r2z deleted after verification;
-- no second empty import-code dialog;
-- no additional Gale click or final PowerShell Enter required.
-
-Historical failed helper iterations are valuable do-not-regress evidence.
-Do not reintroduce:
-- direct Gale data.sqlite3 mutation;
-- screen-coordinate mouse clicks;
-- blind Tab / Enter / arrow navigation;
-- fuzzy profile/build matching;
-- duplicate .r2z open events;
-- cache-busting query strings on binary Raw-GitHub .r2z downloads;
-- a normal $matches variable that collides case-insensitively with automatic $Matches;
-- claims that changed automation is user-validated before real project-machine validation.
-
-Canonical launcher for FUTURE new-build replacements:
-$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
-
-The profile-replacement launcher itself does not need GitHub CLI authentication; it reads the public repository over HTTP and uses Windows/.NET/UI Automation facilities.
+Do not reintroduce direct Gale SQLite mutation, screen-coordinate clicks, blind keyboard navigation, fuzzy build/profile matching, duplicate .r2z open events, binary Raw-GitHub cache-busting query strings, or normal $matches variables that collide case-insensitively with automatic $Matches.
 
 ======================================================================
-EXACT NEXT ACTION
+MANDATORY RUNTIME-TEST UX
 ======================================================================
 
-GAMEPLAY-RUNTIME-TEST THE ALREADY-IMPORTED S1.42AB ON OFFENSE.
-DO NOT BUILD S1.42AC OR ANOTHER SUCCESSOR FIRST.
-DO NOT RE-RUN THE PROFILE REPLACEMENT HELPER UNLESS THE USER INTENTIONALLY WANTS A REINSTALL.
+Whenever any future build/runtime candidate is ready for user gameplay testing, the same response that tells the user what to test MUST also include the exact canonical one-line PowerShell runtime-log uploader for that specific build.
 
-Minimum intended test:
-1. start S1.42AB normally and reach main menu/lobby;
-2. route to Offense and land;
-3. enter the generated interior;
-4. play one normal gameplay round;
-5. upload the complete fresh LogOutput.log using the exact S1.42AB uploader in Current/96;
-6. analyze the complete log before accepting AB or designing any successor.
+Do not wait for the user to ask for the uploader after the test.
+Do not give only a generic upload description.
+Use the exact uploader from the active candidate/build record whenever one exists.
+The user should be able to: read test instructions -> run the game -> close/finish the test -> paste the already-provided PowerShell one-liner -> report that the log is committed.
 
-One successful Offense run is sufficient if the authoritative final-pool marker is present.
-Do not manually farm every interior.
-
-Minimum acceptance gate:
-- S1.42AB Interior Weight Normalization 1.0.0 loads;
-- exact LLL 1.7.12 validation succeeds;
-- exact target-contract validation succeeds;
-- armed marker appears without refusal;
-- dungeon generation succeeds;
-- [InteriorWeightNormalization] Final effective viable pool appears;
-- every positive final-pool entry = 100;
-- no excluded flow is inserted;
-- expected vanilla/custom viable flows remain available;
-- Black Mesa remains single-registered when present;
-- accepted S1.42Z enemy/Pikmin/BCMER/Jetpack/CodeRebirth behavior remains healthy;
-- Leader-null = 0;
-- Fatal = 0;
-- Work/no-task preferably = 0; if reproduced, correlate separately;
-- no new project-local exception/error flood.
-
-RuntimeInbox/Current/ currently contains only .gitkeep.
-Therefore no S1.42AB gameplay runtime log exists yet.
-
-The exact self-contained runtime uploader is in:
-Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md
-
-Runtime uploader bootstrap contract:
-- works from a fresh Windows PowerShell session;
-- verifies exact local LogOutput.log path first;
-- resolves gh.exe from PATH/common install locations;
-- if absent, installs GitHub CLI with winget and resolves it again without requiring a PowerShell restart;
-- checks gh auth status;
-- if unauthenticated, starts gh auth login --hostname github.com --git-protocol https --web;
-- uses GitHub API directly; no local repository clone needed;
-- safely creates/replaces RuntimeInbox/Current/LogOutput.log.
+If no runtime test is outstanding, no uploader needs to be repeated.
 
 ======================================================================
-CURRENT CONTROLLERS
+CURRENT CONTROLLERS / EXACT NEXT STATE
 ======================================================================
+
+BuildSpecs/current.json:
+- enabled = false;
+- build_id = IDLE_AFTER_S1.42AB_ACCEPTANCE;
+- base profile = Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z;
+- base SHA-256 = 3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca;
+- output = Profiles/DO_NOT_BUILD.r2z;
+- no successor is armed.
 
 RuntimeInbox/ACTIVE_BUILD.txt = S1.42AB
 
-BuildSpecs/current.json:
-enabled = false
-build_id = IDLE_AFTER_S1.42AB_BUILD_AWAITING_RUNTIME_VALIDATION
-base profile = Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z
-base SHA-256 = 3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca
-output profile = Profiles/DO_NOT_BUILD.r2z
-no successor work armed.
+There is currently NO outstanding runtime test.
+Do not build a successor until the user explicitly selects the next isolated scope.
 
-Current/AUTO_BUILD_RESULT.json identifies S1.42AB and the same output SHA-256.
+The BCMER EventTypes equal-distribution scope (8 x 12.5%) is now technically eligible to be selected next because S1.42AB is accepted, but it is NOT armed and must not be treated as implicitly authorized.
 
 ======================================================================
-PERMANENT PACKAGE / COMPATIBILITY STATE
+PERMANENT COMPATIBILITY / ANTI-REGRESSION STATE
 ======================================================================
 
 Preserve:
-- exact SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0; do not silently upgrade to 2.x;
+- exact SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0; never silently upgrade to 2.x;
 - EnemyIsolation disabled;
 - Compatibility Fixes 1.3.14;
 - BaboonBirdPikminEnemy enabled;
-- only narrow Hawk -> Pikmin entry points blocked;
-- native inherited PikminEnemy death/unlatch/task lifecycle preserved;
-- Pikmin -> Baboon Hawk attack remains allowed;
-- Puffer -> Pikmin protection remains;
+- narrow Hawk -> Pikmin prevention only;
+- inherited/native PikminEnemy lifecycle preserved;
+- Pikmin -> Baboon Hawk attack allowed;
+- Puffer -> Pikmin protection;
 - Thumper Bite Limit = 3;
 - Crawler absent from LethalMin Attack Blacklist;
-- normal enemy population restored;
 - accepted S1.42C-derived moon power/spawn baseline;
 - SpawnCycleFixes Consistent Spawn Times = true;
-- accepted S1.42Z Jetpack/Pikmin/CodeRebirth/Microwave/Snail tuning.
+- Jetpack base acceleration = 18;
+- Jet Fuel = 18 / 18;
+- Jetpack Thrusters = 25 / 20;
+- Indoor Pikmin Spawn Chance = 0.09;
+- non-Purple CarryStrength = 3;
+- Purple CarryStrength = 30;
+- CodeRebirth air_control_unit = exact 18 curves x0.5;
+- CodeRebirth gunslinger_greg = exact 18 curves x0.5;
+- Functional Microwave volume = 0.15;
+- Immortal Snail Rarity = 40;
+- Immortal Snail Max Snails = 2;
+- accepted S1.42AB post-viability interior normalization architecture.
 
-Never repeat the S1.42R approach of disabling the complete LethalMin.BaboonBirdPikminEnemy component merely to block one interaction.
-
-Every future project-local patch must comply with:
-Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
-
-Before implementing/promoting a custom patch:
-- inspect exact owner/call site;
-- inspect inheritance/base lifecycle;
-- map cleanup/state/network responsibilities;
-- use the narrowest exact interception point;
-- do not disable a whole foreign component merely to block one interaction unless the full lifecycle is proven safe to suppress;
-- isolate risky patch changes from unrelated package/config changes;
-- runtime-test target behavior plus adjacent/reverse/native lifecycle behavior;
-- do not treat compile success, startup success or disappearance of the direct symptom as gameplay acceptance;
-- prefer rollback/narrowing over stacking compensating repair layers.
-
-Every future custom-patch build plan must contain a Patch Safety Review.
+Never repeat S1.42R's whole-component BaboonBirdPikminEnemy disable strategy.
+Every future project-local patch must comply with Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md.
 
 ======================================================================
-MONITOR-ONLY / DEFERRED
+DEFERRED / ELIGIBLE FUTURE SCOPES
 ======================================================================
 
-Do not patch without stronger reproducibility or user-facing impact:
-- historical S1.42S disconnect-only PikminNoticeZone / unspawned NetworkObjectReference exception;
-- historical S1.42T one-off AloeChase FSB load-state message;
-- historical S1.42W PikminManager.DespawnLumiknulls collection-modified teardown exception;
-- known loaforcsSoundAPI/HarmonyX TypeLoadException class;
-- known SoftMask/SoftMasking setup exceptions;
-- existing non-project-local Error-severity classes.
-
-Deferred until S1.42AB closes unless the user explicitly changes scope:
-- Black Mesa table/NavMesh/Pikmin route recovery;
+Keep scopes isolated unless the user explicitly groups them:
+- BCMER EventTypes fixed equal distribution 8 x 12.5%;
+- Functional Microwave spawn-rarity reduction;
 - CullFactory junkrooms / shatteredrooms exceptions;
 - Mausoleum fog reduction;
-- Functional Microwave spawn-rarity reduction;
-- BCMER EventTypes fixed equal distribution 8 x 12.5%;
+- Black Mesa table/NavMesh/Pikmin route recovery;
+- isolated evaluation of woah25-LethalEscapeUpdated 2.5.0 for V81;
 - final long full-stack acceptance;
 - AdditionalNetworking repair only with reproducible/user-facing evidence;
-- LethalMin DespawnLumiknulls repair only with stronger evidence;
+- LethalMin teardown repair only with stronger evidence;
 - cosmetic documentation cleanup.
 
-Potential later isolated evaluation:
-woah25-LethalEscapeUpdated 2.5.0 for V81.
-Do not add it to S1.42AB. Inspect the actual 2.5.0 package/config first. Initially keep arbitrary direct-outside spawning disabled where possible and be especially conservative around Baboon Hawk/LethalMin/Pikmin lifecycle, SmartEnemyPathfinding, FairAI and custom-interior NavMesh behavior.
-
-Known non-functional drift retained intentionally:
-- Current/02_TECHNICAL_BASELINE.md contains older chronology subsections with stale local-current wording;
-- Patches/S139CompatibilityFixes/Plugin.cs contains historical comments that do not perfectly describe accepted v1.3.14 behavior.
-
-Actual current code/config/runtime evidence and chronologically newer canonical documents are authoritative.
+Known non-functional historical drift remains in older chronology wording under Current/02_TECHNICAL_BASELINE.md and historical comments in Patches/S139CompatibilityFixes/Plugin.cs. Newer canonical documents, actual code/config and fresh runtime evidence override those stale comments.
 
 ======================================================================
-MASTER-PROMPT - DURABLE PROJECT RULES
+END CURRENT CANONICAL TAKEOVER
 ======================================================================
-
-This file is the durable entry point for new ChatGPT chats and for end-of-work repository handovers.
-Repository = canonical transition source AND canonical build workspace.
-A ZIP backup is optional and must never become the sole source of continuity.
-
----------------------------------------------------------------------
-A. MARKDOWN-FIRST / SOURCE PRIORITY
----------------------------------------------------------------------
-
-Read .md, .txt and .json before PDF/DOCX.
-Current/HumanReadable/ is secondary.
-
-Preferred generic read order:
-1. README.md;
-2. current canonical takeover block in this file;
-3. newest dedicated Current/*HANDOVER*.md;
-4. newest Current/*AUDIT*.md;
-5. Current/00_CURRENT_STATE.md;
-6. Current/01_HANDOVER_CORE.md;
-7. Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md;
-8. newest Current/Projektstatus_*.json;
-9. newest Current/06_RECENT_WORK_*.md;
-10. active candidate/acceptance records;
-11. Current/09_REPOSITORY_FIRST_AUTOMATION.md;
-12. Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md;
-13. Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md;
-14. Current/03_PROJECT_CHRONOLOGY.md and older history as needed;
-15. readable ProfileSources/<build_id>/ snapshot;
-16. BuildSpecs/current.json and relevant plan;
-17. RuntimeInbox/ACTIVE_BUILD.txt.
-
-Chronologically newer confirmed information overrides older assumptions.
-Archive/ is historical and must not override current confirmed state unless current docs explicitly refer back to a historical primary source.
-Do not waste time on PDF viewers if equivalent machine-readable text exists.
-
----------------------------------------------------------------------
-B. REPOSITORY STRUCTURE
----------------------------------------------------------------------
-
-Current/ = current binding machine-readable state and handover docs.
-Profiles/ = current and still-relevant Gale/r2modman .r2z artifacts.
-ProfileSources/ = readable extracted snapshots of generated profiles.
-BuildSpecs/ = build requests/plans/controllers.
-BuildSystem/ = GitHub-native build/index/ingest logic.
-RuntimeInbox/ = temporary incoming locally produced runtime evidence.
-RuntimeAnalysis/ = analysis/query controllers, not permanent raw data.
-RuntimeEvidence/ = canonical persisted runtime provenance/analysis according to retention policy.
-Patches/ = project-local patches/source/installable local packages.
-Logs/ = older or diagnostically useful logs/analyses.
-References/ = binding reference images/values/primary sources.
-Archive/ = historical primary sources with continuing reconstruction value.
-
----------------------------------------------------------------------
-C. GITHUB-NATIVE BUILD RULE
----------------------------------------------------------------------
-
-If the required base profile already exists under Profiles/:
-- do not ask the user to clone the repository;
-- do not ask the user to unpack/repack .r2z locally;
-- do not ask the user to run local profile-build PowerShell scripts;
-- update BuildSpecs/current.json directly on GitHub;
-- use .github/workflows/profile-build.yml and BuildSystem/profile_builder.py;
-- inspect workflow status/logs;
-- verify Current/AUTO_BUILD_RESULT.json/.md;
-- verify exact output SHA-256, archive delta and ProfileSources snapshot.
-
-Binary .r2z/.zip/.dll manipulation belongs in GitHub Actions when possible.
-Every generated profile should also have a readable ProfileSources/<build_id>/ snapshot and member hashes/index.
-Local build chains are emergency fallback only when a genuinely required canonical base artifact is not yet online.
-
----------------------------------------------------------------------
-D. PROFILE / PATCH CHANGE SAFETY
----------------------------------------------------------------------
-
-Always:
-- start from the correct accepted/gameplay base;
-- never use a diagnostic/rejected profile accidentally as production base;
-- exact-hash guard the base;
-- diff changed archive members;
-- verify archive integrity and internal profileName;
-- exclude unintended config/package changes;
-- preserve explicit restore baselines and do-not-regress rules.
-
-For embedded project-local DLLs:
-- document Gale import semantics;
-- ensure Import all files behavior is handled through the canonical validated replacement helper;
-- verify actual plugin load markers after runtime start before claiming the patch was tested.
-
-Custom Harmony/runtime patches must obey Current/68.
-
----------------------------------------------------------------------
-E. GALE REPLACEMENT / READY-TO-TEST UX RULE
----------------------------------------------------------------------
-
-Whenever ChatGPT produces or designates a NEW build/profile whose next project step is runtime testing, the same response announcing the build as ready must include BOTH:
-1. the canonical Gale active-profile replacement launcher;
-2. the exact build-specific self-contained runtime-log uploader.
-
-The user must not need to ask for either command again.
-
-Canonical replacement launcher:
-$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
-
-Before presenting it for a new candidate, verify:
-RuntimeInbox/ACTIVE_BUILD.txt == Current/AUTO_BUILD_RESULT.json.build_id == exact ready-to-test candidate.
-
-Replacement helper safety requirements:
-- download candidate before destructive action;
-- exact profile SHA-256 verification before deletion is offered;
-- explicit numeric profile selection + y/n confirmation;
-- delete only the selected old profile after y;
-- exact build/profile equality, no fuzzy matching;
-- Windows PowerShell 5.1 compatibility;
-- do not use $matches as a normal variable;
-- do not edit Gale data.sqlite3 directly;
-- never automatically resolve multiple missing profiles;
-- no screen-coordinate clicks;
-- no blind keyboard-navigation automation;
-- candidate .r2z opened exactly once per replacement sequence;
-- no cache-busting query string on binary .r2z Raw-GitHub download;
-- import completion proof tied to exact local target export.r2x SHA matching the verified archive entry;
-- changed automation branches require fresh user validation before being described as proven.
-
----------------------------------------------------------------------
-F. RUNTIME EVIDENCE RULE
----------------------------------------------------------------------
-
-Runtime gameplay necessarily occurs on the user's PC.
-Everything else should remain repository-first.
-
-For normal runtime gates:
-- use already-imported profile if it is current; do not force unnecessary re-import;
-- provide exact build-specific runtime uploader when the build is first announced ready;
-- ingest the full fresh LogOutput.log;
-- inspect the complete log, not only screenshots;
-- compare errors/warnings/regression markers against the last accepted baseline;
-- preserve canonical provenance and acceptance/rejection decision.
-
-Uploader must be self-contained and work from a fresh PowerShell session:
-- exact local log path check;
-- robust gh.exe resolution;
-- winget GitHub CLI install only if unresolved;
-- re-resolve gh without requiring PowerShell restart;
-- gh auth status check;
-- gh auth login browser bootstrap when needed;
-- direct GitHub API create/replace of RuntimeInbox/Current/LogOutput.log;
-- no local clone requirement.
-
-For large logs follow Current/74.
-Do not retain giant raw logs indefinitely when their gate/issue dependency is closed and canonical SHA-256/provenance/verdict/unique evidence is secured.
-
----------------------------------------------------------------------
-G. HISTORICAL EVIDENCE / DELETION RULE
----------------------------------------------------------------------
-
-At handover classify files conceptually as KEEP / UPDATE / ADD / ARCHIVE / DELETE.
-
-Default:
-In doubt, ARCHIVE/KEEP rather than DELETE.
-
-Delete only when information is certainly redundant and has no future diagnostic, reconstruction, balance or continuity value.
-Never delete RuntimeEvidence or historical material merely because a newer summary exists if it still contains unique evidence.
-Runtime raw logs/chunks are the explicit retention-policy exception under Current/74 once their dependency is closed and canonical evidence is preserved.
-Failed approaches and their causes are valuable do-not-regress evidence and should remain documented.
-
----------------------------------------------------------------------
-H. END-OF-WORK HANDOVER PROCEDURE
----------------------------------------------------------------------
-
-When the user requests repo update / handover / new-chat preparation:
-
-1. re-read current repository state;
-2. compare all new chat decisions, builds, tests, logs, fixes, failures, configs and open tasks;
-3. refresh at minimum:
-   - START_HERE_ChatGPT_Masterprompt.txt when bootstrap/current workflow changed;
-   - Current/00_CURRENT_STATE.md;
-   - Current/01_HANDOVER_CORE.md;
-   - Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md;
-   - current Projektstatus_*.json;
-   - BuildSpecs/current.json controller if state changed;
-   - RuntimeInbox/ACTIVE_BUILD.txt if active test target changed;
-4. add dedicated handover/audit/recent-work files when useful;
-5. update README.md only where needed for correct entry/read order/current state;
-6. preserve accepted baselines, hashes, runtime evidence, failed approaches and technical decisions;
-7. do not delete uncertain historical evidence;
-8. audit all current entry points for contradictions or stale pointers;
-9. state unavoidable local manual action as one-line PowerShell commands where appropriate;
-10. never require a local repo clone/build when GitHub can do it.
-
-The handover must clearly separate:
-- latest accepted baseline;
-- rejected candidates that materially explain the current design;
-- latest built/runtime candidate;
-- whether profile import occurred;
-- whether gameplay runtime test occurred;
-- relevant SHA-256 values;
-- confirmed fixes;
-- open errors/monitor-only observations;
-- exact next step;
-- successor armed/disarmed state.
-
----------------------------------------------------------------------
-I. QUALITY CONTROL
----------------------------------------------------------------------
-
-Before final handover verify:
-- README and START point to files that exist;
-- Projectstatus JSON matches human-readable Current docs;
-- BuildSpecs/current.json matches the actual controller state;
-- RuntimeInbox/ACTIVE_BUILD.txt matches the actual runtime target;
-- Current/AUTO_BUILD_RESULT.json matches the active built candidate when relevant;
-- profile SHA-256 values are consistent across docs;
-- local import state is accurately described;
-- RuntimeInbox/Current is not mistaken for persisted evidence;
-- no successor is accidentally armed during an open runtime gate;
-- no runtime log is misattributed to the wrong build;
-- historical evidence was not accidentally deleted;
-- known non-functional drift is clearly non-authoritative if retained;
-- mandatory Gale replacement + log-upload UX is preserved for future ready-to-test builds.
-
----------------------------------------------------------------------
-J. NEXT-CHAT PROMPT RULE
----------------------------------------------------------------------
-
-At the end of a completed handover provide the user a short first prompt for the new chat that:
-- refers only to the repository as the handover source;
-- names the newest key files to read first;
-- states accepted baseline, active candidate and exact next action;
-- says repository is source of truth;
-- says do not require a local clone/build.
-
-======================================================================
-CRITICAL SUMMARY RULES
-======================================================================
-
-- Repository = canonical source of truth and build workspace.
-- No ZIP-only dependency.
-- Newer confirmed facts beat older wording.
-- Archive/history is not automatically current.
-- Preserve diagnostic history and reasons for decisions.
-- Do not repeat failed approaches without new evidence.
-- No local repo clone/profile-build requirement when GitHub infrastructure can do the work.
-- Exact base hash + archive delta + profile integrity for every build.
-- Embedded project-local DLLs require real runtime load proof.
-- Custom patches must obey Current/68.
-- Runtime evidence must be full-log based; large logs follow Current/74.
-- Current/AUTO_BUILD_RESULT and ProfileSources are part of build verification.
-- Every future ready-to-test build response must include BOTH canonical Gale replacement launcher and exact build-specific runtime uploader.
-- S1.42Z is accepted.
-- S1.42AA is rejected by runtime evidence.
-- S1.42AB is built and already imported locally, but has NOT yet received gameplay runtime validation.
-- Exact next action is one normal Offense S1.42AB run + full log upload; no successor first.
-
-ENDE DES MASTER-PROMPTS
