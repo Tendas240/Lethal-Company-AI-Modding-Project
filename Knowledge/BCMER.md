@@ -3,9 +3,9 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current BCMER package/config/weight-model interpretation  
 **Canonical-For:** `bcmer`  
-**Evidence:** `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`, `Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md`, S1.42AC ProfileSources/runtime evidence  
+**Evidence:** `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`, `Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`, S1.42AC ProfileSources/runtime evidence  
 **Related:** `Knowledge/CURRENT_LIFECYCLE.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-09-05
 
 ## Version invariant
 
@@ -86,6 +86,16 @@ Do **not**:
 - infer a massive EventType imbalance directly from the raw per-event values.
 
 Either approach would bias types with more individual events.
+
+## S1.42AC byte provenance
+
+The authoritative raw `LogOutput.log` SHA-256 is:
+
+`fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067`
+
+Authority: `RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json` plus direct byte recomputation in permanent CI.
+
+The older `8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0` value is **superseded incorrect historical metadata**, not current byte authority. Its retained occurrences are classified by `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json` and the central `Current/INTEGRITY_ERRATA_REGISTRY.json`.
 
 ## Correct acceptance model if S1.42AC is reconsidered
 
