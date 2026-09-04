@@ -83,13 +83,31 @@ The command must:
 - be presented as a single copy/pasteable PowerShell line;
 - be included automatically without waiting for the user to ask again.
 
-Canonical normal-log one-line pattern:
+### GitHub CLI prerequisite — do not assume silently
+
+The direct upload one-liner uses GitHub CLI (`gh`). ChatGPT must **not silently assume that `gh` is installed or on `PATH`**.
+
+If the user has not yet established a working `gh` installation/authentication, or an upload fails with `gh is not recognized`, first provide this one-time PowerShell setup command:
 
 ```powershell
-$src='C:\Users\Milan\AppData\Roaming\com.kesomannen.gale\lethal-company\profiles\<EXACT PROFILE NAME>\BepInEx\LogOutput.log';$repo='Tendas240/Lethal-Company-AI-Modding-Project';$dst='RuntimeInbox/Current/LogOutput.log';$sha=(gh api "repos/$repo/contents/$dst" --jq '.sha' 2>$null);$p=@{message='Upload <BUILD_ID> runtime log';content=[Convert]::ToBase64String([IO.File]::ReadAllBytes($src));branch='main'};if($sha){$p['sha']=$sha};$p|ConvertTo-Json -Compress|gh api --method PUT "repos/$repo/contents/$dst" --input -
+winget install --id GitHub.cli -e --source winget --accept-package-agreements --accept-source-agreements; & "$env:ProgramFiles\GitHub CLI\gh.exe" auth login --hostname github.com --git-protocol https --web
 ```
 
-This assumes GitHub CLI `gh` is installed and authenticated. Do not substitute local clone / `git add` / `git push` instructions unless the direct GitHub CLI path is actually unavailable.
+This installs GitHub CLI and starts GitHub's web authentication flow. It normally only needs to be completed once on that Windows installation.
+
+After installation, future upload commands should resolve `gh` from `PATH` when available and otherwise fall back to:
+
+`C:\Program Files\GitHub CLI\gh.exe`
+
+This avoids requiring the user to restart PowerShell merely for a newly installed PATH entry.
+
+Canonical robust normal-log one-line pattern:
+
+```powershell
+$gh=(Get-Command gh -ErrorAction SilentlyContinue).Source;if(!$gh){$gh="$env:ProgramFiles\GitHub CLI\gh.exe"};if(!(Test-Path $gh)){throw 'GitHub CLI gh is not installed. Run the one-time setup command first.'};$src='C:\Users\Milan\AppData\Roaming\com.kesomannen.gale\lethal-company\profiles\<EXACT PROFILE NAME>\BepInEx\LogOutput.log';$repo='Tendas240/Lethal-Company-AI-Modding-Project';$dst='RuntimeInbox/Current/LogOutput.log';$sha=(& $gh api "repos/$repo/contents/$dst" --jq '.sha' 2>$null);$p=@{message='Upload <BUILD_ID> runtime log';content=[Convert]::ToBase64String([IO.File]::ReadAllBytes($src));branch='main'};if($sha){$p['sha']=$sha};($p|ConvertTo-Json -Compress)|& $gh api --method PUT "repos/$repo/contents/$dst" --input -
+```
+
+Do not substitute local clone / `git add` / `git push` instructions unless the direct GitHub CLI path is actually unavailable.
 
 For unusually large logs that cannot safely use the normal GitHub Contents API / main-branch path, follow `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md` instead and provide the corresponding large-log PowerShell command. Do not silently try to commit a >100 MiB raw log to `main`.
 
