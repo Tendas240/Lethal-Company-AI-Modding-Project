@@ -1,10 +1,10 @@
 {
-  "build_id": "S1.42X",
-  "profile_name": "LC V1 S1.42X Jetpack Pikmin ACU Retune",
+  "build_id": "S1.42Y",
+  "profile_name": "LC V1 S1.42Y Jetpack Aerial Defense Retune",
   "base_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
   "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
-  "output_profile": "Profiles/LC V1 S1.42X Jetpack Pikmin ACU Retune.r2z",
-  "output_sha256": "57d8f9251236cf40eacf4366a21646ae8c51500b9ed6fa79cbc9b56c8daa611d",
+  "output_profile": "Profiles/LC V1 S1.42Y Jetpack Aerial Defense Retune.r2z",
+  "output_sha256": "f4ae0d93c9cff4f9441c24d1021e5d9b816861b8317d9ed8995fde67ebbd8d89",
   "zip_members": 333,
   "changed_existing_members": [
     "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
@@ -24,13 +24,13 @@
     "BepInEx/config/CodeRebirth.cfg"
   ],
   "added_members": [
-    "BepInEx/plugins/S142XJetpackAcceleration/S142XJetpackAcceleration.dll",
-    "BepInEx/plugins/S142XCodeRebirthAcuSpawnTuning/S142XCodeRebirthAcuSpawnTuning.dll"
+    "BepInEx/plugins/S142YJetpackAcceleration/S142YJetpackAcceleration.dll",
+    "BepInEx/plugins/S142YCodeRebirthAerialDefenseSpawnTuning/S142YCodeRebirthAerialDefenseSpawnTuning.dll"
   ],
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42X",
+  "snapshot_dir": "ProfileSources/S1.42Y",
   "snapshot": {
     "entries": 333,
     "text_entries": 330
