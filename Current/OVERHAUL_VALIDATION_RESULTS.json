@@ -98,8 +98,24 @@
   "integrity_hardening_20260905": {
     "record": "Current/117_REPOSITORY_INTEGRITY_HARDENING_20260905.md",
     "branch": "repository-integrity-hardening-20260905",
-    "status": "IMPLEMENTED_VALIDATION_PENDING",
+    "status": "VALIDATED",
     "gameplay_behavior_changed": false,
+    "first_full_green_pr_validation": {
+      "workflow": "Knowledge Architecture",
+      "run_id": 33927769717,
+      "head_sha": "7af7ddeebf5b443290b4cd0e7d6ca8ded222b602",
+      "conclusion": "SUCCESS",
+      "permanent_gates": 9,
+      "generated_navigation": "PASS",
+      "knowledge_state_reference": "PASS",
+      "actual_artifact_runtime_bytes": "PASS",
+      "repository_integrity_authority": "PASS",
+      "s1_42ac_sha_provenance": "PASS",
+      "future_multiphase_checkpoints": "PASS",
+      "original_frozen_overhaul_contract": "PASS",
+      "answerability_regression": "PASS",
+      "negative_validator_selftests": "PASS"
+    },
     "added": [
       "Current/INTEGRITY_ERRATA_REGISTRY.json",
       "Current/VALIDATOR_COVERAGE.json",
@@ -172,5 +188,5 @@
     "buildspec_enabled": false,
     "runtime_active_build": "S1.42AB"
   },
-  "final_decision": "The repository information-architecture overhaul is functionally complete and independently re-audited against the frozen source. Its current end state is valid. The exact Phase 3-10 individual completion-checkpoint order is not historically reconstructible and must remain qualified. Post-audit hardening adds actual-byte verification, central known-bad/supersession authority, negative validator tests and prospective immutable phase checkpoints without gameplay changes."
+  "final_decision": "The repository information-architecture overhaul is functionally complete and independently re-audited against the frozen source. Its current end state is valid. The exact Phase 3-10 individual completion-checkpoint order is not historically reconstructible and must remain qualified. Post-audit hardening is validated and adds actual-byte verification, central known-bad/supersession authority, negative validator tests and prospective immutable phase checkpoints without gameplay changes."
 }
