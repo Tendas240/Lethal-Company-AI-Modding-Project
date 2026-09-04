@@ -3,7 +3,7 @@
 **Status:** COMPLETE / INDEPENDENT REAUDIT PASS WITH PHASE-ORDER PROVENANCE QUALIFICATION  
 **Authority:** canonical semantic summary of the completed overhaul and its validation  
 **Canonical-For:** `repository_overhaul`  
-**Evidence:** `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`, `Current/OVERHAUL_VALIDATION_RESULTS.json`, `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`  
+**Evidence:** `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`, `Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md`, `Current/OVERHAUL_VALIDATION_RESULTS.json`, `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`  
 **Machine State:** `Current/OVERHAUL_EXECUTION_STATE.json`  
 **Related:** `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md`, `Current/REPOSITORY_MIGRATION_MANIFEST.md`, `Current/DOCUMENT_AUTHORITY.md`  
 **Last-Validated:** 2026-09-05
@@ -65,7 +65,7 @@ Those gaps were corrected without changing gameplay behavior. The permanent CI n
 4. strict frozen original-overhaul-contract validation;
 5. semantic answerability routing regression.
 
-The earlier re-audit authority is `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`. Machine result: `Current/OVERHAUL_VALIDATION_RESULTS.json`, status `POST_ACCEPTANCE_REAUDIT_PASS`.
+The earlier re-audit authority is `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`. The current independent audit is `Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md`. Machine result: `Current/OVERHAUL_VALIDATION_RESULTS.json`, status `POST_ACCEPTANCE_REAUDIT_PASS`.
 
 The SHA-provenance remediation confirmation workflow run `33924737597` at commit `02d29a66d632ac46d405d3f1617eb1f0518d2494` passed all five permanent gates.
 
