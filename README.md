@@ -22,44 +22,9 @@ Runtime acceptance:
 
 S1.42U remains the accepted rollback baseline until a newer candidate passes fresh runtime validation.
 
-### Latest runtime-tested tuning candidate
+## Latest runtime-tested tuning candidate — S1.42Y
 
-**S1.42X — Jetpack Pikmin ACU Retune**
-
-`Profiles/LC V1 S1.42X Jetpack Pikmin ACU Retune.r2z`
-
-SHA-256:
-
-`57d8f9251236cf40eacf4366a21646ae8c51500b9ed6fa79cbc9b56c8daa611d`
-
-Runtime evidence:
-
-`RuntimeEvidence/S1.42X/20260904T115324Z/`
-
-Raw runtime log SHA-256:
-
-`6fe57bda1c2a2a9e2a910304890e47b3fffd606460225bfd142ffae9fd996a9d`
-
-Verdict:
-
-**TECHNICAL PATHS PASS / GAMEPLAY BALANCE AND AERIAL-DEFENSE SCOPE REJECT / NOT ACCEPTED**
-
-Confirmed from S1.42X:
-
-- project-local Jetpack architecture works;
-- `jetpackAcceleration = 32f` is clearly perceptible but far too strong;
-- Pikmin CarryStrength tuning is accepted at `3` for configured non-Purple types and `30` for Purple;
-- Indoor Pikmin Spawn Chance remains `0.08`;
-- the DawnLib provider-level Air Control Unit spawn-weight scaling path works;
-- X only covered `code_rebirth:air_control_unit` and missed CodeRebirth's separate G.R.E.G. / Advanced Airspace Control object `code_rebirth:gunslinger_greg`.
-
-Canonical assessment:
-
-`Current/84_S1.42X_RUNTIME_ASSESSMENT_AND_S1.42Y_NEXT.md`
-
-### Newest built candidate
-
-**S1.42Y — Jetpack Aerial Defense Retune**
+Profile:
 
 `Profiles/LC V1 S1.42Y Jetpack Aerial Defense Retune.r2z`
 
@@ -67,164 +32,154 @@ SHA-256:
 
 `f4ae0d93c9cff4f9441c24d1021e5d9b816861b8317d9ed8995fde67ebbd8d89`
 
+Runtime evidence:
+
+`RuntimeEvidence/S1.42Y/20260904T123817Z/`
+
+Raw runtime log SHA-256:
+
+`dc32b104b880199ef0b210be254946bad280d1992e6142f6913bf9602921435a`
+
+Verdict:
+
+**TECHNICAL PATHS PASS / MICROWAVE + CARRY TUNING ACCEPTED / JETPACK + INDOOR PIKMIN BALANCE RETUNE REQUIRED / NOT ACCEPTED**
+
+Canonical assessment:
+
+`Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md`
+
+Y runtime proved:
+
+- exact Jetpack interception path loads/arms cleanly at `22f`;
+- exact Air Control Unit provider validates with 18 curves;
+- exact G.R.E.G. / Advanced Airspace Control provider validates with 18 curves;
+- both CodeRebirth aerial-defense providers are transactionally scaled ×0.5;
+- Work/no-task = 0;
+- Leader-null = 0;
+- Compatibility Fixes error = 0;
+- Fatal = 0;
+- normal enemy activity remains present.
+
+User decisions after Y:
+
+- Functional Microwave volume `0.15` is **accepted**;
+- Pikmin CarryStrength `3` / Purple `30` remains **accepted**;
+- Jetpack `22f` should be reduced to `18f`;
+- Indoor Pikmin Spawn Chance `0.08` should be raised to `0.09`.
+
+## Newest built candidate — S1.42Z
+
+**S1.42Z — Jetpack Pikmin Retune**
+
+`Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z`
+
+SHA-256:
+
+`a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`
+
 Status:
 
 **BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
 
-Build run:
+GitHub Actions build run:
 
-`33871219861` = **success**
+`33874737048` — success
+
+Automated build commit:
+
+`267543634bb884bb447bf4bec320103ba75c9ff8`
 
 Candidate record:
 
-`Current/85_S1.42Y_BUILD_CANDIDATE_JETPACK_COMPLETE_AERIAL_DEFENSE.md`
+`Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md`
 
 Machine status:
 
-`Current/Projektstatus_S1.42Y_CANDIDATE.json`
+`Current/Projektstatus_S1.42Z_CANDIDATE.json`
 
-Frozen plan / Patch Safety Review:
+Frozen plan / Patch Safety Reviews:
 
-`BuildSpecs/S1.42Y_PLAN.md`
+`BuildSpecs/S1.42Z_PLAN.md`
 
-S1.42Y was built directly from S1.42U; historical V/W/X tuning DLLs are not stacked into Y.
+S1.42Z was rebuilt directly from S1.42U so historical V/W/X/Y tuning DLLs are not stacked into the candidate.
 
-## S1.42Y exact tuning
+### Exact S1.42Z tuning
 
-### Jetpack
-
-Project source:
-
-`Patches/S142YJetpackAcceleration/`
-
-Injected DLL SHA-256:
-
-`fab15a520c1ff0172d33bc88303426d214b12135b34803f6e98689c295409c7e`
-
-Behavior:
-
-- exact `JetpackItem.Update()` local-player Prefix after ButteRyBalance;
-- validated ButteRyBalance-owned baseline `10f -> 22f`;
-- only the proven approximately-10f value is replaced;
-- V49 handling/deceleration remains untouched;
-- JetpackFixes collision/death/control behavior remains untouched;
-- fail-closed dependency/version/Harmony-owner validation.
-
-More Ship Upgrades progression:
-
-- Jet Fuel `15 / 15`;
-- Jetpack Thrusters `25 / 20`.
-
-### Pikmin
-
-- Indoor Pikmin Spawn Chance = `0.08`;
-- Blue / Red / Yellow / White / Winged / Rock / Ice / Glow / Bulbmin CarryStrength = `3`;
-- Purple Pikmin CarryStrength = `30`.
-
-The CarryStrength values are user-confirmed and should not be reverted without new feedback.
-
-### CodeRebirth aerial-defense systems
-
-Project source:
-
-`Patches/S142YCodeRebirthAerialDefenseSpawnTuning/`
-
-Injected DLL SHA-256:
-
-`e017ccb74d92df10442bb5f8651a776787954f4861309059ec6c497e000a3d45`
-
-The Y patch transactionally validates and scales both exact DawnLib outside-map-object providers:
-
-1. `code_rebirth:air_control_unit` — all 18 native moon/tag curves × `0.5`;
-2. `code_rebirth:gunslinger_greg` — G.R.E.G. / Advanced Airspace Control — all 18 native moon/tag curves × `0.5`.
-
-Both contracts must validate before either is modified. No other map-object provider is changed.
-
-This is an exact 50% curve-amplitude/spawn-weight reduction. DawnLib later evaluates and rounds the resulting quantity, so a short runtime sample is not expected to show mathematically exact half-counts.
-
-### Other carried tuning
-
-- Functional Microwave Volume = `0.15`; subjective volume remains unverified if no Microwave is encountered;
-- Microwave spawn rarity remains deferred;
+- Jetpack base acceleration `10 -> 18`;
+- More Ship Upgrades Jet Fuel `18 / 18`;
+- Jetpack Thrusters `25 / 20`;
+- Indoor Pikmin Spawn Chance `0.09`;
+- configured non-Purple Pikmin CarryStrength `3`;
+- Purple Pikmin CarryStrength `30`;
+- CodeRebirth Air Control Unit 18 exact curves × `0.5`;
+- CodeRebirth G.R.E.G. 18 exact curves × `0.5`;
+- Functional Microwave volume `0.15` — user accepted;
 - Immortal Snail `Rarity = 40`, `Max Snails = 2`.
 
-## Exact S1.42Y archive result
+Project-local DLL SHA-256 values:
 
-ZIP members: `333`.
+- S1.42Z Jetpack: `9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add`;
+- S1.42Z aerial defense: `7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b`.
 
-Changed existing members relative to S1.42U:
+Archive verification:
 
-- `export.r2x`;
-- `BepInEx/config/dev.idjut.SnailFork.cfg`;
-- `BepInEx/config/CodeRebirth.cfg`;
-- `BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg`;
-- `BepInEx/config/NoteBoxz.LethalMin.cfg`;
-- the ten configured `BepInEx/config/Pikmin/*.cfg` files.
-
-Added members only:
-
-- `BepInEx/plugins/S142YJetpackAcceleration/S142YJetpackAcceleration.dll`;
-- `BepInEx/plugins/S142YCodeRebirthAerialDefenseSpawnTuning/S142YCodeRebirthAerialDefenseSpawnTuning.dll`.
-
-No mod package state/add/remove changes occurred.
+- ZIP members: 333;
+- 15 changed existing members vs S1.42U;
+- exactly 2 added members: the Z DLLs;
+- no mod package state/add/remove changes.
 
 ## Exact next action
 
-**Runtime-test S1.42Y. Do not build a successor first.**
+**Runtime-test S1.42Z. Do not build a successor first.**
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Y`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Z`
 
 Import/run:
 
-`LC V1 S1.42Y Jetpack Aerial Defense Retune`
+`LC V1 S1.42Z Jetpack Pikmin Retune`
 
 Because the candidate contains two project-local DLLs, use Gale:
 
 **Advanced options -> Import all files**
 
-unless the concrete import flow independently guarantees all custom files are retained.
+unless the actual import path independently guarantees all custom files are retained.
 
-Required log markers include:
+Primary runtime focus:
 
-- `Loading [S1.42Y Jetpack Acceleration 1.0.0]`;
-- successful Jetpack dependency/Harmony-owner validation;
-- `10 -> 22` Jetpack armed marker;
-- `Loading [S1.42Y CodeRebirth Aerial Defense Spawn Tuning 1.0.0]`;
-- CodeRebirth 1.6.9 / DawnLib 0.9.25 / DawnLib.Dusk 0.9.25 validation;
-- Air Control Unit provider validated with exactly 18 curves;
-- G.R.E.G. provider validated with exactly 18 curves;
-- final transactional marker confirming both 18-curve sets were scaled by 0.5.
-
-Gameplay focus:
-
-- 22f should be clearly calmer than X/32f while stronger than the old 10/16 behavior;
-- V49 handling, release, landing, hard contact and repeated flights remain sane;
-- CarryStrength remains correct at 3 / Purple 30;
-- both CodeRebirth aerial-defense systems remain functional and less common;
-- Microwave 0.15 only needs evaluation if one appears;
+- both Z plugins load and validate;
+- Jetpack exact `10 -> 18` armed marker;
+- ACU 18-curve validation;
+- G.R.E.G. 18-curve validation;
+- final transactional ×0.5 applied marker;
+- Jetpack 18f feels acceptable and calmer than Y/22f;
+- Indoor Pikmin density at 0.09 feels better than Y/0.08;
+- CarryStrength stays correct at 3 / Purple 30;
+- Microwave 0.15 remains correct;
 - normal enemies, BCMER and Compatibility Fixes remain healthy;
 - Work/no-task = 0;
 - Leader-null = 0;
 - Fatal = 0;
-- no new project-local/compatibility exception flood;
-- ingest a complete fresh runtime log.
+- no new project-local exception flood.
+
+The candidate-specific one-line PowerShell uploader is recorded in `Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md` and must also be supplied in the ChatGPT response that hands Z to the user for testing.
 
 ## ChatGPT — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/85_S1.42Y_BUILD_CANDIDATE_JETPACK_COMPLETE_AERIAL_DEFENSE.md`
-3. `Current/84_S1.42X_RUNTIME_ASSESSMENT_AND_S1.42Y_NEXT.md`
-4. `Current/Projektstatus_S1.42Y_CANDIDATE.json`
-5. `BuildSpecs/S1.42Y_PLAN.md`
+2. `Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md`
+3. `Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md`
+4. `Current/Projektstatus_S1.42Z_CANDIDATE.json`
+5. `BuildSpecs/S1.42Z_PLAN.md`
 6. `Current/00_CURRENT_STATE.md`
 7. `Current/01_HANDOVER_CORE.md`
 8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
 9. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
 10. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-11. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-12. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-13. `BuildSpecs/current.json`
-14. `RuntimeInbox/ACTIVE_BUILD.txt`
+11. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+12. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+13. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+14. `BuildSpecs/current.json`
+15. `RuntimeInbox/ACTIVE_BUILD.txt`
 
 Chronologically newer confirmed information overrides older handover wording.
 
@@ -248,31 +203,32 @@ Patch policy:
 
 `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
 
-## Deferred after S1.42Y
+## Deferred after S1.42Z
 
-Do not mix into the active Y gate:
+Do not mix into the active Z gate:
 
-- equal interior probability and same rule for future interiors;
+- equal interior probability and future-interior equal-probability rule;
 - CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - Mausoleum fog reduction;
-- Functional Microwave rarity reduction;
+- Functional Microwave spawn rarity reduction;
 - BCMER EventType equalization to 8 × 12.5%;
 - final long S1.42 full-stack acceptance;
-- AdditionalNetworking disconnect patch without reproducible/user-facing evidence;
-- LethalMin `DespawnLumiknulls()` repair without stronger evidence.
+- AdditionalNetworking patch without reproducible/user-facing evidence;
+- LethalMin `DespawnLumiknulls()` repair without stronger evidence;
+- cosmetic documentation cleanup.
 
 ## Controllers
 
-`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42Y_BUILD_AWAITING_RUNTIME_VALIDATION`.
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42Z_BUILD_AWAITING_RUNTIME_VALIDATION`.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Y`.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Z`.
 
 No successor build is armed.
 
-## Known non-functional drift
+## Repository-first and runtime-upload rule
 
-Older chronology sections in `Current/02_TECHNICAL_BASELINE.md` and historical comments in `Patches/S139CompatibilityFixes/Plugin.cs` may contain stale local wording. Current code/config/runtime evidence and chronologically newer canonical documents are authoritative.
+Do not ask for a local repository clone or manual profile rebuild when GitHub infrastructure can do the work.
 
-## Repository-first rule
+For every new profile the user is told to runtime-test, ChatGPT must automatically provide the exact profile-specific, self-contained PowerShell one-liner that uploads its `BepInEx\LogOutput.log` to `RuntimeInbox/Current/LogOutput.log`. Binding policy:
 
-Do not ask for a local repository clone or manual profile rebuild when the necessary profiles, build system and GitHub Actions infrastructure exist here.
+`Current/09_REPOSITORY_FIRST_AUTOMATION.md`
