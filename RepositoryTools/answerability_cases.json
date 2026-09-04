@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-04",
+  "status": "CANONICAL_ROUTING_REGRESSION_CASES",
+  "router": "RepositoryTools/answerability_regression.py",
+  "cases": [
+    {"id":"accepted-build","query":"Was ist der aktuelle akzeptierte Build?","expected_topic":"accepted_baseline","expected_canonical":"Knowledge/CURRENT_LIFECYCLE.md"},
+    {"id":"next-test","query":"Was muss ich jetzt testen?","expected_topic":"active_candidate_and_next_test","expected_canonical":"Knowledge/CURRENT_LIFECYCLE.md"},
+    {"id":"log-uploader","query":"Wo ist der Log-Uploader?","expected_topic":"active_candidate_and_next_test","expected_canonical":"Knowledge/CURRENT_LIFECYCLE.md"},
+    {"id":"runtime-upload","query":"Wie lade ich einen Runtime Log hoch und wo landet RuntimeEvidence?","expected_topic":"runtime_upload_and_ingest","expected_canonical":"Knowledge/BUILD_AND_RUNTIME_PIPELINE.md"},
+    {"id":"bcmer-version","query":"Welche BCMER-Version ist erlaubt?","expected_topic":"bcmer","expected_canonical":"Knowledge/BCMER.md"},
+    {"id":"bcmer-equal","query":"Sind BCMER-EventTypes gleich wahrscheinlich?","expected_topic":"bcmer","expected_canonical":"Knowledge/BCMER.md"},
+    {"id":"thumper-bite","query":"Wie hoch ist das Thumper Bite Limit?","expected_topic":"pikmin_enemy_compatibility","expected_canonical":"Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md"},
+    {"id":"shatteredrooms","query":"Warum ist Shatteredrooms auf Experimentation/Embrion eingeschraenkt?","expected_topic":"interiors_and_lll","expected_canonical":"Knowledge/INTERIORS_AND_LLL.md"},
+    {"id":"black-mesa-routing","query":"Was war das Black Mesa Pikmin routing problem?","expected_topic":"black_mesa_pikmin_routing","expected_canonical":"Knowledge/BLACK_MESA_PIKMIN_ROUTING.md"},
+    {"id":"interior-normalization","query":"Wie werden Interior Gewichte mit LethalLevelLoader normalisiert?","expected_topic":"interiors_and_lll","expected_canonical":"Knowledge/INTERIORS_AND_LLL.md"},
+    {"id":"jetpack","query":"Woher kommt die Jetpack acceleration?","expected_topic":"jetpack","expected_canonical":"Knowledge/JETPACK.md"},
+    {"id":"monitor-errors","query":"Welche Fehler sind monitor-only?","expected_topic":"monitor_only_errors","expected_canonical":"Knowledge/MONITOR_ONLY_ERRORS.md"},
+    {"id":"gale-import","query":"Wie mache ich einen Gale import mit Import all files?","expected_topic":"gale_import","expected_canonical":"Knowledge/GALE_PROFILE_WORKFLOW.md"},
+    {"id":"backup","query":"Wo ist das pre-overhaul backup Repository gesichert?","expected_topic":"pre_overhaul_backup_and_recovery","expected_canonical":"Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md"},
+    {"id":"introduced-fix","query":"Welcher Build hat einen bestimmten Fix eingeführt?","expected_topic":"build_lineage","expected_canonical":"Current/BUILD_LINEAGE.md"},
+    {"id":"rejected-build","query":"Warum wurde ein bestimmter Build verworfen?","expected_topic":"build_lineage","expected_canonical":"Current/BUILD_LINEAGE.md"},
+    {"id":"build-pipeline","query":"Wie wird ein Build mit BuildSpecs und GitHub Actions gebaut?","expected_topic":"build_pipeline","expected_canonical":"Knowledge/BUILD_AND_RUNTIME_PIPELINE.md"},
+    {"id":"enemy-baseline","query":"Was ist die Enemy Spawn Chance und PowerLevel Baseline?","expected_topic":"enemy_spawn_baseline","expected_canonical":"Knowledge/ENEMY_SPAWN_BASELINE.md"},
+    {"id":"coderebirth","query":"Wie sind CodeRebirth ACU und G.R.E.G. konfiguriert?","expected_topic":"coderebirth","expected_canonical":"Knowledge/CODEREBIRTH.md"},
+    {"id":"microwave","query":"Wie ist die Functional Microwave eingestellt?","expected_topic":"functional_microwave","expected_canonical":"Knowledge/ITEM_TUNING.md"},
+    {"id":"snail","query":"Wie ist die Immortal Snail rarity und Max Snails eingestellt?","expected_topic":"immortal_snail","expected_canonical":"Knowledge/ITEM_TUNING.md"},
+    {"id":"roadmap","query":"Was steht auf der Roadmap und welche Themen sind später geplant?","expected_topic":"roadmap_and_deferred_scopes","expected_canonical":"Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md"},
+    {"id":"patch-safety","query":"Was verlangt der Patch Safety Review für einen Harmony patch?","expected_topic":"patch_safety_policy","expected_canonical":"Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md"},
+    {"id":"repo-overhaul","query":"Wie funktioniert die Repository Informationsarchitektur und Knowledge Map?","expected_topic":"repository_overhaul","expected_canonical":"Knowledge/REPOSITORY_OVERHAUL.md"}
+  ]
+}
