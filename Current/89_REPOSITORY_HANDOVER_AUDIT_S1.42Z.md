@@ -103,7 +103,13 @@ New handover file:
 
 `Current/88_FINAL_HANDOVER_S1.42Y_PASS_S1.42Z_NEXT.md`
 
-The `START_HERE_ChatGPT_Masterprompt.txt` bootstrap block now points to U accepted / Y technical PASS / Z built. Its durable generic `MASTER-PROMPT - Lethal Company Modding Project` section was preserved.
+New compact chronology continuation:
+
+`Current/06_RECENT_WORK_S1.42N-S1.42Z.md`
+
+This closes the compact chronology gap after the older `Current/03_PROJECT_CHRONOLOGY.md` coverage while keeping dedicated per-build files as the detailed primary records.
+
+The `START_HERE_ChatGPT_Masterprompt.txt` bootstrap block points to U accepted / Y technical PASS / Z built. Its durable generic `MASTER-PROMPT - Lethal Company Modding Project` section was preserved.
 
 ## Permanent invariants retained
 
@@ -140,7 +146,8 @@ Important retained evidence includes:
 - S1.42T AloeChase FSB one-off history;
 - S1.42W `PikminManager.DespawnLumiknulls()` teardown collection-modified history;
 - Baboon/Pikmin lifecycle root-cause and acceptance history;
-- previous tuning candidates V/W/X/Y and their profile/snapshot evidence.
+- previous tuning candidates V/W/X/Y and their profile/snapshot evidence;
+- compact N–Z chronology with links back to the detailed evidence chain.
 
 The known non-Y setup/mod Error classes remain monitor-only unless they become reproducible and user-facing.
 
@@ -173,10 +180,12 @@ Chronologically newer current docs, actual code/config and runtime evidence are 
 - `Current/00_CURRENT_STATE.md`;
 - `Current/01_HANDOVER_CORE.md`;
 - `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`;
-- `Current/Projektstatus_S1.42Z_CANDIDATE.json`.
+- `Current/Projektstatus_S1.42Z_CANDIDATE.json`;
+- `BuildSpecs/S1.42Z_PLAN.md`.
 
 ### ADD
 
+- `Current/06_RECENT_WORK_S1.42N-S1.42Z.md`;
 - `Current/88_FINAL_HANDOVER_S1.42Y_PASS_S1.42Z_NEXT.md`;
 - `Current/89_REPOSITORY_HANDOVER_AUDIT_S1.42Z.md`.
 
