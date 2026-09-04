@@ -1,29 +1,19 @@
 #!/usr/bin/env python3
-"""Render compact current navigation from Current/CURRENT_STATE.json.
-
-Use `python RepositoryTools/render_current_navigation.py --check` in CI.
-Without --check the script rewrites the generated navigation files.
-"""
+"""Render protected current navigation from Current/CURRENT_STATE.json."""
 from __future__ import annotations
-
-import argparse
-import json
-import sys
+import argparse, json, sys
 from pathlib import Path
-
 ROOT = Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "Current/CURRENT_STATE.json"
+MARKER_MD = "<!-- GENERATED — DO NOT MANUALLY EDIT. Source: Current/CURRENT_STATE.json via RepositoryTools/render_current_navigation.py -->"
+MARKER_TEXT = "GENERATED — DO NOT MANUALLY EDIT. Update Current/CURRENT_STATE.json and run RepositoryTools/render_current_navigation.py."
 
+def load_state(): return json.loads(STATE_PATH.read_text(encoding="utf-8"))
 
-def load_state() -> dict:
-    return json.loads(STATE_PATH.read_text(encoding="utf-8"))
-
-
-def render_readme(s: dict) -> str:
-    a = s["accepted_baseline"]
-    l = s["latest_built_artifact"]
-    o = s["overhaul"]
-    return f"""# Lethal Company AI Modding Project
+def render_readme(s):
+    a,l,o=s["accepted_baseline"],s["latest_built_artifact"],s["overhaul"]
+    return f"""{MARKER_MD}
+# Lethal Company AI Modding Project
 
 GitHub is the canonical Source of Truth and build/handover workspace for **Lethal Company V81**.
 
@@ -72,14 +62,12 @@ Manifest: `{o['backup_manifest']}`.
 No local repository clone or local profile build should be required from the user while repository-native artifacts and automation are sufficient.
 """
 
-
-def render_start(s: dict) -> str:
-    a = s["accepted_baseline"]
-    l = s["latest_built_artifact"]
-    c = s["controllers"]
+def render_start(s):
+    a,l,c=s["accepted_baseline"],s["latest_built_artifact"],s["controllers"]
     return f"""======================================================================
 CURRENT CANONICAL TAKEOVER — GENERATED FROM Current/CURRENT_STATE.json
 ======================================================================
+{MARKER_TEXT}
 
 Repository: https://github.com/{s['repository']}
 Game: {s['game']}
@@ -143,12 +131,10 @@ Frozen source commit: {s['overhaul']['frozen_source_commit']}
 Do not require the user to make a local clone/build while repository-native infrastructure is sufficient.
 """
 
-
-def render_current(s: dict) -> str:
-    a = s["accepted_baseline"]
-    l = s["latest_built_artifact"]
-    c = s["controllers"]
-    return f"""# 00 — Current State
+def render_current(s):
+    a,l,c=s["accepted_baseline"],s["latest_built_artifact"],s["controllers"]
+    return f"""{MARKER_MD}
+# 00 — Current State
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
@@ -203,11 +189,10 @@ Verified recovery repository: `{s['overhaul']['pre_overhaul_backup']}`.
 Frozen source commit: `{s['overhaul']['frozen_source_commit']}`.
 """
 
-
-def render_handover(s: dict) -> str:
-    a = s["accepted_baseline"]
-    l = s["latest_built_artifact"]
-    return f"""# 01 — Handover Core
+def render_handover(s):
+    a,l=s["accepted_baseline"],s["latest_built_artifact"]
+    return f"""{MARKER_MD}
+# 01 — Handover Core
 
 **Status:** CURRENT TAKEOVER ROUTER  
 **Machine state:** `Current/CURRENT_STATE.json`  
@@ -248,39 +233,21 @@ Frozen source commit: `{s['overhaul']['frozen_source_commit']}`
 Manifest: `{s['overhaul']['backup_manifest']}`
 """
 
+def generated(s):
+    return {"README.md":render_readme(s),"START_HERE_ChatGPT_Masterprompt.txt":render_start(s),"Current/00_CURRENT_STATE.md":render_current(s),"Current/01_HANDOVER_CORE.md":render_handover(s)}
 
-def generated(s: dict) -> dict[str, str]:
-    return {
-        "README.md": render_readme(s),
-        "START_HERE_ChatGPT_Masterprompt.txt": render_start(s),
-        "Current/00_CURRENT_STATE.md": render_current(s),
-        "Current/01_HANDOVER_CORE.md": render_handover(s),
-    }
-
-
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--check", action="store_true")
-    args = parser.parse_args()
-    state = load_state()
-    mismatches = []
-    for rel, content in generated(state).items():
-        p = ROOT / rel
+def main():
+    p=argparse.ArgumentParser(); p.add_argument("--check",action="store_true"); args=p.parse_args(); s=load_state(); mismatches=[]
+    for rel,content in generated(s).items():
+        path=ROOT/rel
         if args.check:
-            actual = p.read_text(encoding="utf-8") if p.exists() else ""
-            if actual != content:
-                mismatches.append(rel)
+            actual=path.read_text(encoding="utf-8") if path.exists() else ""
+            if actual!=content: mismatches.append(rel)
         else:
-            p.write_text(content, encoding="utf-8")
-            print("rendered", rel)
+            path.parent.mkdir(parents=True,exist_ok=True); path.write_text(content,encoding="utf-8"); print("rendered",rel)
     if mismatches:
-        for rel in mismatches:
-            print("OUT-OF-DATE:", rel)
+        for rel in mismatches: print("OUT-OF-DATE:",rel)
         return 1
-    if args.check:
-        print("PASS: generated current navigation matches Current/CURRENT_STATE.json")
+    if args.check: print("PASS: generated current navigation matches Current/CURRENT_STATE.json")
     return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
+if __name__=="__main__": sys.exit(main())
