@@ -6,7 +6,7 @@
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
 **Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `Current/Projektstatus_S1.42AC_REJECTED.json`  
 **Related:** `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/BCMER.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-09-05
 
 ## Accepted baseline
 
@@ -34,9 +34,11 @@ S1.42AC exists as a built artifact but is **formally rejected / not promoted / n
 
 `RuntimeInbox/ACTIVE_BUILD.txt` contains:
 
-`S1.42AB`
+`S1.42AC`
 
-`BuildSpecs/current.json` is disabled:
+This pointer currently reflects the Gale profile that was actually tested and is the build ID used by the normal runtime-ingest pipeline for evidence attribution. It is **not** acceptance authority and does not make S1.42AC an active candidate or promoted build.
+
+`BuildSpecs/current.json` remains disabled:
 
 - `enabled = false`
 - `build_id = IDLE_AFTER_S1.42AC_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED`
@@ -47,14 +49,14 @@ S1.42AC exists as a built artifact but is **formally rejected / not promoted / n
 
 **NONE.**
 
-No runtime-log uploader is currently required.
+The S1.42AC run is already complete; its new `LogOutput.log` still needs to be uploaded and ingested. A completed run can therefore require the build-specific uploader even when there is no new runtime test outstanding.
 
-Permanent UX rule: whenever a future build is designated ready for runtime testing, the same response must provide both the repository-driven Gale replacement PowerShell one-liner and the exact build-specific self-contained runtime-log upload PowerShell one-liner. See `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` and `Knowledge/GALE_PROFILE_WORKFLOW.md`.
+Permanent UX rule: whenever a future build is designated ready for runtime testing, the same response must provide both the repository-driven Gale replacement PowerShell one-liner and the exact build-specific self-contained runtime-log upload PowerShell one-liner. If the user has already completed a run but evidence upload is still pending, provide the uploader for `RuntimeInbox/ACTIVE_BUILD.txt` without requiring another run. See `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` and `Knowledge/GALE_PROFILE_WORKFLOW.md`.
 
 ## Exact next gameplay decision
 
-The repository information-architecture overhaul is **complete** and is no longer the active maintenance scope. There is currently no active gameplay candidate, runtime gate, or automatically implied successor.
+First upload and ingest the just-completed S1.42AC runtime log. Then reconsider the existing S1.42AC artifact under the corrected acceptance model in `Knowledge/BCMER.md` / `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`.
 
-If the BCMER EventType scope is continued, first reconsider the existing S1.42AC artifact under the corrected acceptance model in `Knowledge/BCMER.md` / `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`. Alternatively, select a different deferred scope explicitly from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
+The repository information-architecture overhaul is **complete** and is no longer the active maintenance scope. There is currently no active gameplay candidate, runtime gate, or automatically implied successor.
 
 Do not build inverse BCMER compensation merely to make the eight logged per-event weights numerically equal.
