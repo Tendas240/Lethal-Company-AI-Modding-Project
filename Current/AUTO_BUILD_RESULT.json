@@ -1,23 +1,24 @@
 {
-  "build_id": "S1.42V",
-  "profile_name": "LC V1 S1.42V Post-BCMER Balance Tuning",
+  "build_id": "S1.42W",
+  "profile_name": "LC V1 S1.42W Lift-Off Microwave Retune",
   "base_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
   "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
-  "output_profile": "Profiles/LC V1 S1.42V Post-BCMER Balance Tuning.r2z",
-  "output_sha256": "06390fc2faaf5ef30918efb077a1728c75864777c79a084855ed4dc3e69b3f0d",
+  "output_profile": "Profiles/LC V1 S1.42W Lift-Off Microwave Retune.r2z",
+  "output_sha256": "f34ebcf18bd2b475da5546e6c391bd15bf70df5648b5f69ffb668d196df057dc",
   "zip_members": 332,
   "changed_existing_members": [
+    "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
     "BepInEx/config/dev.idjut.SnailFork.cfg",
     "export.r2x",
     "BepInEx/config/CodeRebirth.cfg"
   ],
   "added_members": [
-    "BepInEx/plugins/S142VJetpackAcceleration/S142VJetpackAcceleration.dll"
+    "BepInEx/plugins/S142WJetpackAcceleration/S142WJetpackAcceleration.dll"
   ],
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42V",
+  "snapshot_dir": "ProfileSources/S1.42W",
   "snapshot": {
     "entries": 332,
     "text_entries": 330
