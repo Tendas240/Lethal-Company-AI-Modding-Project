@@ -93,11 +93,11 @@ This evidence closes the S1.42U BCMER-on integration gate.
 
 `BuildSpecs/current.json`
 
-Required/current state:
+Current state:
 
 - `enabled = false`;
 - `build_id = IDLE_AFTER_S1.42U_RUNTIME_PASS_AWAITING_S1.42V_TUNING`;
-- base profile = S1.42U;
+- base profile = `Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z`;
 - base SHA-256 = `ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969`;
 - `mod_state_changes = []`;
 - `mod_additions = []`;
@@ -106,15 +106,33 @@ Required/current state:
 - `local_plugin_builds = []`;
 - no successor build armed.
 
+Blob SHA verified at handover:
+
+`f1248c0b5740d83081ccf16c1de1295fafdbf1f5`
+
 ### Runtime router
 
 `RuntimeInbox/ACTIVE_BUILD.txt`
 
-Required/current value:
+Current value:
 
 `S1.42U`
 
-This is correct because S1.42V does not exist yet and no successor runtime gate is active.
+Blob SHA verified at handover:
+
+`75a334389cd722cb1d5dcd08e4dd343f14ea727f`
+
+This routing is correct because S1.42V does not exist yet and no successor runtime gate is active.
+
+### Workflow state
+
+The newest canonical-profile workflow run remains the safe idle-controller run:
+
+`33855281208` / run #70 = **success**
+
+Its head commit is the idle-controller commit `0afeb889723312ec5036726e3c654cdfbe4f3a27`.
+
+No S1.42V build was triggered during handover documentation updates.
 
 ## Restore invariant audit — verified
 
@@ -166,6 +184,20 @@ Patch safety remains binding:
 Focused accepted lifecycle evidence remains:
 
 `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+
+## Gale import / project-local DLL guard — verified documented
+
+The accepted S1.42U profile and expected successors carry the project-local Compatibility Fixes DLL.
+
+README now explicitly requires Gale:
+
+**Advanced options -> Import all files**
+
+A successor compatibility runtime test is invalid unless its log contains:
+
+`Loading [S1.39 Compatibility Fixes 1.3.14]`
+
+If the marker is absent, correct the import/load path before interpreting compatibility behavior.
 
 ## Next-build audit — S1.42V
 
@@ -255,6 +287,24 @@ No physical archive move was necessary. Older handover/build-plan documents rema
 
 No file or runtime evidence was sufficiently certain to be permanently valueless. The conservative preserve-history rule was followed.
 
+## Final canonical entrypoint blob snapshot
+
+The following repository text blobs were verified as the final handover entrypoint state immediately before finalizing this audit:
+
+- `START_HERE_ChatGPT_Masterprompt.txt` = `f2619d3791629f3f1cef8c7728fc03156b030fef`;
+- `README.md` = `f047ec84e265226373e30589ae9f2e8dd3df8ef4`;
+- `Current/00_CURRENT_STATE.md` = `8290f669b274940972e86563e6448565b95503cb`;
+- `Current/01_HANDOVER_CORE.md` = `5feaba5539eeba0cc459c9dd5b58fa5a845eb968`;
+- `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md` = `186e7042f2e9acd1bfdbc128c8d1b29cd7f83d34`;
+- `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md` = `278310ec4d0822c4206f345bbb72bb65f9ae655d`;
+- `Current/Projektstatus_S1.42U.json` = `2f0b4e58675e3c0adc68af650f6abd055eb3261a`;
+- `BuildSpecs/S1.42V_PLAN.md` = `173791bb1c1423fe49dfc912734d95157731c449`;
+- `BuildSpecs/current.json` = `f1248c0b5740d83081ccf16c1de1295fafdbf1f5`;
+- `RuntimeInbox/ACTIVE_BUILD.txt` = `75a334389cd722cb1d5dcd08e4dd343f14ea727f`;
+- `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md` = `5223efeebb2fec8315b7eebcd564056157110042`.
+
+This audit file itself is intentionally excluded from its own blob snapshot because updating the list would recursively change its blob SHA.
+
 ## Known non-functional drift — intentionally not mixed into gameplay work
 
 The audit confirms two known non-functional stale areas still exist:
@@ -278,9 +328,11 @@ No PowerShell command is required for this handover.
 
 Do not ask for a local clone or local profile build. The required S1.42U base profile, snapshots and GitHub-native build infrastructure are already online.
 
-## Entry-point consistency target
+## Entry-point consistency — verified
 
-After this audit is referenced directly from README and `Current/01_HANDOVER_CORE.md`, the canonical read order should begin:
+README and `Current/01_HANDOVER_CORE.md` now directly reference this audit.
+
+The canonical read order begins:
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
 2. `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
