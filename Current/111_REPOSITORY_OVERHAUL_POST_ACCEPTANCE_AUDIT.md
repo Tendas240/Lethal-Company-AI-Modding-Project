@@ -1,16 +1,16 @@
 # Repository Overhaul — Post-Acceptance Audit Against Frozen Pre-Overhaul Contract
 
 **Date:** 2026-09-04  
-**Status:** REMEDIATION IMPLEMENTED / FINAL REVALIDATION PENDING  
+**Verdict:** POST_ACCEPTANCE_REAUDIT_PASS  
 **Scope:** repository information architecture only; no gameplay/config/mod/profile/project-local patch behavior change  
 **Authority:** strict re-audit requested after the initial overhaul acceptance  
 **Original contract source:** frozen standalone pre-overhaul repository at commit `5dbd0e637a480d8591773e422bbca4b0654cad20`
 
 ## Why this audit exists
 
-After the repository overhaul had been marked complete, the user explicitly requested a second validation against the **actual instructions stored in the old pre-overhaul repository**, not merely against the validator that had just been created by the overhaul itself.
+After the repository overhaul had been marked complete, the user explicitly requested a second validation against the **actual instructions stored in the old pre-overhaul repository**, not merely against the validator created during the overhaul.
 
-That distinction mattered. The first final CI gate was genuinely green, but the second pass found that the validator did not yet encode every obligation from the frozen contract.
+That distinction mattered. The first final CI gate was genuinely green, but this second pass found that the validator did not yet encode every obligation from the frozen contract. The repository therefore was not treated as finally revalidated until those gaps were remediated and a stricter CI gate passed.
 
 ## Frozen contract re-read
 
@@ -21,7 +21,7 @@ The audit re-read these files directly from the standalone backup at the frozen 
 - `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md`
 - `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`
 
-The audit then compared those requirements against the current primary repository rather than assuming the prior acceptance was sufficient.
+The audit compared those frozen requirements against the current primary repository rather than assuming the prior acceptance was sufficient.
 
 ## Gaps found after the first acceptance
 
@@ -32,53 +32,62 @@ The post-acceptance audit found **information-architecture gaps, not gameplay de
 3. `OVERHAUL_START_HERE_ChatGPT.txt` still looked like an active instruction to execute phases 0–11, even though the one-time overhaul was already complete.
 4. `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md` still showed its preserved original `PLANNED / ... / NOT YET EXECUTED` status without an explicit completion banner above it.
 5. `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md` had the same ambiguity.
-6. The original `RepositoryTools/knowledge_architecture_validator.py` checked the live knowledge architecture correctly but did **not** independently enforce all one-time contract obligations such as visible stale-wording banners and backup-checkpoint-before-structural-migration ordering.
+6. `Current/PROJECT_KNOWLEDGE_MAP.md` still had stale Phase-10 text pointing at non-existent `Current/PROJECT_STATE.json` instead of the completed `Current/CURRENT_STATE.json` architecture.
+7. The original `RepositoryTools/knowledge_architecture_validator.py` checked live knowledge architecture correctly but did **not** independently enforce all one-time frozen-contract obligations such as visible stale-wording banners and backup-checkpoint-before-structural-migration ordering.
 
-Therefore the earlier statement “everything is complete” was too strong until these points were remediated.
+Therefore the earlier unqualified statement that every overhaul obligation had already been checked was too strong. These items are now corrected.
 
 ## Remediation completed
 
-The current repository now adds conspicuous authority/completion banners to all five affected historical/execution-contract documents and registers them in `Current/DOCUMENT_AUTHORITY.json`.
+The current repository adds conspicuous authority/completion banners to all affected historical/execution-contract documents and registers them in `Current/DOCUMENT_AUTHORITY.json`.
 
-`OVERHAUL_START_HERE_ChatGPT.txt` now explicitly says that the instructions below it are the preserved historical one-time execution contract and that ordinary takeover starts at `START_HERE_ChatGPT_Masterprompt.txt`.
+`OVERHAUL_START_HERE_ChatGPT.txt` explicitly states that the instructions below it are the preserved historical one-time execution contract and that ordinary takeover starts at `START_HERE_ChatGPT_Masterprompt.txt`.
 
-A dedicated strict validator has been added:
+`Current/PROJECT_KNOWLEDGE_MAP.md` now identifies `Current/CURRENT_STATE.json` as machine lifecycle authority and no longer describes Phase 10 as pending.
+
+A dedicated strict validator is now permanent:
 
 `RepositoryTools/overhaul_contract_validator.py`
 
-It validates obligations that are specifically derived from the frozen pre-overhaul contract, including:
+It validates obligations derived from the frozen pre-overhaul contract, including:
 
 - all machine-required artifacts exist;
-- the independent backup manifest is PASS and points to the frozen source commit/tree;
-- the frozen commit/tree are still present in Git history;
+- the independent backup manifest is PASS and points to the exact frozen source commit/tree;
+- the frozen commit/tree remain present in Git history;
 - the backup-gate commit is an ancestor of current HEAD;
-- structural knowledge-architecture artifacts did **not** yet exist at the backup gate, proving the mandatory backup checkpoint preceded the structural migration;
-- stale historical/current wording has a conspicuous visible classification;
+- structural knowledge-architecture artifacts did **not** yet exist at the backup gate, independently proving that the mandatory backup checkpoint preceded structural migration;
+- stale historical/current wording has conspicuous visible classification;
 - the authority registry classifies the stale documents;
 - accepted/current build/controller state remains internally consistent;
 - accepted `.r2z` state has readable `ProfileSources` and runtime evidence;
-- all mandatory semantic topics from the old requirements exist and their registered paths resolve;
-- ordinary topics remain reachable from the compact bootstrap through the knowledge map within the required hop budget;
-- build-lineage paths resolve, including the corrected S1.42Z provenance;
+- all mandatory semantic topics from the old requirements exist and their concrete registered paths resolve;
+- the compact bootstrap routes directly through the knowledge map within the required hop budget;
+- build-lineage paths resolve, including corrected S1.42Z provenance;
 - final execution/validation/migration records are present;
-- canonical/current documents are checked for broken backtick path references.
+- canonical/current documents are checked for broken **concrete** path references while documented globs, placeholders, lifecycle destinations and JSON field selectors are treated as notation rather than files.
 
-The permanent `.github/workflows/knowledge-architecture.yml` now checks out full Git history and runs this strict contract validator in addition to the existing navigation check, knowledge validator, and answerability regression suite.
+The permanent `.github/workflows/knowledge-architecture.yml` now checks out full Git history and runs this strict frozen-contract validator in addition to the existing navigation check, knowledge validator and answerability regression suite.
+
+## Strict-validator calibration
+
+The first strict-validator CI attempt, run `33919072718`, failed. That was useful rather than hidden: it exposed the genuine stale `Current/PROJECT_STATE.json` wording and also showed that an initial path checker was treating globs/placeholders such as `ProfileSources/<build>/` as if they were missing concrete files.
+
+The genuine drift was corrected. The checker was then narrowed to distinguish concrete repository references from documented patterns without weakening checks on actual canonical targets.
 
 ## Why `Plugin.cs` comments were not rewritten
 
-The frozen requirements explicitly called out stale historical comments in `Patches/S139CompatibilityFixes/Plugin.cs` as a refactor target. The audit confirmed that `Current/DOCUMENT_AUTHORITY.json` already records this as `known_comment_drift` together with the current invariants:
+The frozen requirements explicitly called out stale historical comments in `Patches/S139CompatibilityFixes/Plugin.cs` as a refactor target. `Current/DOCUMENT_AUTHORITY.json` now records this explicitly as `code_comment_drift` with the current accepted invariants:
 
-- Crawler attack is allowed;
-- Thumper uses Bite Limit 3 rather than complete isolation;
+- Crawler attack/counterattack behavior is allowed and Crawler is absent from the LethalMin Attack Blacklist;
+- Thumper uses Bite Limit 3 rather than complete two-way isolation;
 - Puffer protection remains;
 - Baboon compatibility blocks only the proven Hawk-to-Pikmin entry points before mutation while preserving native cleanup lifecycle ownership.
 
-The accepted S1.42AB profile/binary provenance must not be disturbed merely to modernize comments. Editing accepted patch source without rebuilding/reaccepting the artifact would create a source-versus-binary provenance mismatch. The correct repository-overhaul action is therefore explicit authority metadata, not a behavior-neutral source edit that would falsely imply the accepted binary was rebuilt from the edited file.
+The accepted S1.42AB profile/binary provenance must not be disturbed merely to modernize comments. Editing accepted patch source without rebuilding/reaccepting the artifact would create source-versus-binary provenance drift. The correct repository-overhaul action is explicit authority metadata, not an after-the-fact source edit that would falsely imply the accepted binary was rebuilt from the edited file.
 
 ## Preservation / deletion result
 
-The non-destructive migration decision remains valid. No historical evidence file has been deleted merely because it is redundant or stale. `Current/REPOSITORY_MIGRATION_MANIFEST.md/.json` remains the deletion/retention authority.
+The non-destructive migration decision remains valid. No historical evidence file was deleted merely because it is redundant or stale. `Current/REPOSITORY_MIGRATION_MANIFEST.md/.json` remains the deletion/retention authority.
 
 ## Gameplay state revalidated as unchanged
 
@@ -93,13 +102,25 @@ This audit/remediation does not alter gameplay state:
 - `BuildSpecs/current.json` remains disabled;
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AB`.
 
-## Final revalidation gate
+## Revalidation result — PASS
 
-The audit is not closed merely because the remediation files exist. The final step is a green `Knowledge Architecture` run on the remediated repository with all four permanent checks:
+The first strict green `Knowledge Architecture` run is:
 
-1. generated current navigation;
-2. knowledge/state/reference validator;
-3. frozen original-overhaul-contract validator;
-4. semantic answerability routing regression.
+- run: `33919296323`
+- head commit: `e3704877d309e40b092768430d0e81f7d86ed2e3`
+- conclusion: **SUCCESS**
 
-Once that run is green, `Current/OVERHAUL_VALIDATION_RESULTS.json` and this audit record are updated to `POST_ACCEPTANCE_REAUDIT_PASS` with the exact validation run/commit.
+It passed all four permanent gates:
+
+1. generated current navigation — PASS;
+2. knowledge/state/reference validator — PASS;
+3. frozen original-overhaul-contract validator — PASS;
+4. semantic answerability routing regression — PASS.
+
+The machine record is `Current/OVERHAUL_VALIDATION_RESULTS.json`. The machine requirements are updated in `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json` so this stricter contract check remains part of future CI rather than being a one-time chat assertion.
+
+## Final decision
+
+**POST_ACCEPTANCE_REAUDIT_PASS.**
+
+The repository overhaul is now accepted not only against the architecture produced by the new repository, but also against a direct re-read of the frozen old-repository instructions. The gaps found by that stricter comparison have been corrected without changing gameplay behavior.
