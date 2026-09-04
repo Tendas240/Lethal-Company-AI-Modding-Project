@@ -1,22 +1,21 @@
 {
   "schema_version": 1,
   "date": "2026-09-04",
-  "status": "PHASE_1_BLOCKED_STANDALONE_BACKUP_REQUIRED",
+  "status": "PHASE_1_COMPLETE_PHASE_2_INVENTORY_ACTIVE",
   "authority": "Execution-state checkpoint for the binding repository information-architecture overhaul",
   "canonical_start": "OVERHAUL_START_HERE_ChatGPT.txt",
   "canonical_plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
   "canonical_playbook": "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md",
   "canonical_requirements": "Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json",
-  "last_completed_phase": 0,
-  "current_phase": 1,
-  "structural_overhaul_started": false,
+  "last_completed_phase": 1,
+  "current_phase": 2,
+  "structural_overhaul_started": true,
+  "first_structural_overhaul_commit_must_follow_backup_manifest_commit": "2c1ab3be7db5474b0e08ff8a80c063a2c50224a4",
   "source_repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "source_default_branch": "main",
   "frozen_source_commit_sha": "5dbd0e637a480d8591773e422bbca4b0654cad20",
   "frozen_source_tree_sha": "0e17aac410cf600a164396b5586b5b50f084df22",
   "same_repository_checkpoint_branch": "pre-overhaul-freeze-20260904-5dbd0e6",
-  "same_repository_checkpoint_verified": true,
-  "same_repository_checkpoint_is_not_sufficient_backup": true,
   "phase_0_project_state": {
     "game": "Lethal Company V81",
     "accepted_baseline": {
@@ -43,46 +42,30 @@
     },
     "runtime_active_build": "S1.42AB"
   },
-  "top_level_inventory_at_frozen_checkpoint": [
-    ".gitattributes",
-    ".github",
-    ".gitignore",
-    "Archive",
-    "BuildSpecs",
-    "BuildSystem",
-    "Current",
-    "Logs",
-    "OVERHAUL_START_HERE_ChatGPT.txt",
-    "Patches",
-    "ProfileSources",
-    "Profiles",
-    "README.md",
-    "References",
-    "RuntimeAnalysis",
-    "RuntimeEvidence",
-    "RuntimeInbox",
-    "RuntimeTools",
-    "START_HERE_ChatGPT_Masterprompt.txt"
-  ],
   "backup_gate": {
     "required": true,
     "standalone_repository_required": true,
-    "backup_repository": null,
-    "verification_result": "NOT_RUN",
-    "manifest_created": false,
+    "backup_repository": "Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904",
+    "backup_frozen_content_commit_sha": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+    "backup_frozen_content_tree_sha": "0e17aac410cf600a164396b5586b5b50f084df22",
+    "backup_provenance_commit_sha": "c0f267fadfa807730f6f465953861f4728b2136a",
+    "verification_result": "PASS",
+    "manifest_created": true,
     "primary_manifest_path": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
-    "blocker": "No standalone pre-overhaul backup repository currently exists. The connected GitHub action surface in this session can read/write existing repositories but does not expose repository creation, and the execution environment has no authenticated GitHub CLI/token available for creating the required separate repository.",
-    "stop_condition_active": true
+    "stop_condition_active": false,
+    "limitations": [
+      "GitHub-managed refs/pull/* hidden refs were rejected during mirror push; all normal project branches were preserved and there were no source tags."
+    ]
   },
-  "exact_next_operation": "Create a separate standalone GitHub repository dedicated to the pre-overhaul backup, mirror the frozen source repository/history into it with frozen commit 5dbd0e637a480d8591773e422bbca4b0654cad20 preserved, mark the backup historical/read-only and not Source of Truth, then let ChatGPT verify commit/tree/history/path equivalence and create Current/PRE_OVERHAUL_BACKUP_MANIFEST.json before Phase 2 begins.",
-  "files_not_yet_safe_to_move_or_delete": "ALL tracked files; Phase 1 has not passed.",
+  "exact_next_operation": "Execute Phase 2 inventory and knowledge extraction before any move/delete; classify current, historical, policy, evidence and machine-state document families and record unique facts/reference risks.",
+  "files_not_yet_safe_to_move_or_delete": "ALL tracked files until Phase 2 inventory identifies unique facts and inbound-reference risks.",
   "bootstrap_rewrite_allowed": false,
   "history_reclassification_allowed": false,
   "mass_move_or_delete_allowed": false,
-  "rollback_status": "CLEAN",
+  "rollback_status": "CLEAN_AND_VERIFIED_AGAINST_STANDALONE_BACKUP",
   "notes": [
-    "No gameplay/config/mod/profile/project-local patch behavior was changed.",
-    "No structural information-architecture migration has begun.",
-    "The same-repository freeze branch is supplemental protection only and does not satisfy the binding standalone-backup requirement."
+    "No gameplay/config/mod/profile/project-local patch behavior changed during backup creation.",
+    "The standalone backup contains the exact frozen commit/tree and preserved normal branches.",
+    "Phase 2 inventory is now the active operation."
   ]
 }
