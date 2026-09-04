@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-05",
+  "status": "CURRENT_CANONICAL_INTEGRITY_ERRATA_REGISTRY",
+  "registry_path": "Current/INTEGRITY_ERRATA_REGISTRY.json",
+  "authority_level": "CURRENT_INTEGRITY_AUTHORITY",
+  "canonical_for": [
+    "known_bad_values",
+    "supersession_qualifications",
+    "historical_current_qualification",
+    "historical_phase_order_provenance"
+  ],
+  "known_bad_values": [
+    {
+      "id": "S1.42AC_RAW_RUNTIME_LOG_SHA_PRE_CORRECTION",
+      "kind": "sha256",
+      "value": "8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0",
+      "replacement": "fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067",
+      "authority": "RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json",
+      "detailed_errata": "Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json",
+      "classification": "SUPERSEDED_INCORRECT_HISTORICAL_METADATA",
+      "allowed_historical_paths": [
+        "Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+        "BuildSpecs/S1.42AC_PLAN.md",
+        "Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md",
+        "Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md"
+      ],
+      "local_qualifiers": [
+        "supersed",
+        "erratum",
+        "incorrect",
+        "wrong",
+        "historical metadata",
+        "historical sha",
+        "old value",
+        "old sha",
+        "provenance correction",
+        "do not use",
+        "not authoritative"
+      ]
+    }
+  ],
+  "historical_claim_qualifications": [
+    {
+      "id": "OVERHAUL_PHASE_3_TO_10_COMPLETION_ORDER",
+      "classification": "NON_BLOCKING_INTEGRITY_ISSUE_HISTORICAL_IRREVERSIBLE",
+      "overstrong_claim": "All phases completed in order as independently proven by phase-completion checkpoints.",
+      "qualified_current_claim": "All phase deliverables 0-11 are present and the end state is validated, but the exact individual phase-completion checkpoint order for phases 3-10 is not independently reconstructible from immutable execution-state checkpoints.",
+      "authority": "Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md",
+      "canonical_topic": "Knowledge/REPOSITORY_OVERHAUL.md"
+    }
+  ],
+  "generated_artifacts": [
+    {
+      "path": "README.md",
+      "generated_from": "Current/CURRENT_STATE.json + RepositoryTools/render_current_navigation.py",
+      "required_marker": "GENERATED — DO NOT MANUALLY EDIT"
+    },
+    {
+      "path": "START_HERE_ChatGPT_Masterprompt.txt",
+      "generated_from": "Current/CURRENT_STATE.json + RepositoryTools/render_current_navigation.py",
+      "required_marker": "GENERATED — DO NOT MANUALLY EDIT"
+    },
+    {
+      "path": "Current/00_CURRENT_STATE.md",
+      "generated_from": "Current/CURRENT_STATE.json + RepositoryTools/render_current_navigation.py",
+      "required_marker": "GENERATED — DO NOT MANUALLY EDIT"
+    },
+    {
+      "path": "Current/01_HANDOVER_CORE.md",
+      "generated_from": "Current/CURRENT_STATE.json + RepositoryTools/render_current_navigation.py",
+      "required_marker": "GENERATED — DO NOT MANUALLY EDIT"
+    }
+  ],
+  "state_source_policy": {
+    "global_live_state": "Current/CURRENT_STATE.json",
+    "rendered_human_state": "Current/00_CURRENT_STATE.md",
+    "build_controller": "BuildSpecs/current.json",
+    "runtime_controller": "RuntimeInbox/ACTIVE_BUILD.txt",
+    "rule": "Do not independently hand-maintain accepted build, active candidate, runtime gate, successor state or controller summaries in generated bootstrap files."
+  },
+  "history_policy": "Preserve historical evidence. Correct concrete historical errors through explicit errata/supersession classification instead of silently rewriting history.",
+  "severity_classes": [
+    "BLOCKER",
+    "NON-BLOCKING INTEGRITY ISSUE",
+    "OPTIONAL HARDENING"
+  ],
+  "last_validated": "2026-09-05"
+}
