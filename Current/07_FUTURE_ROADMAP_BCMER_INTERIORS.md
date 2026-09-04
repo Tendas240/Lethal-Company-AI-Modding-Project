@@ -2,51 +2,104 @@
 
 This file is binding unless the user later changes the plan.
 
-## Required sequence
+Chronologically newer accepted runtime evidence and final handover documents override older checkpoint wording inside historical subsections of this roadmap.
 
-Historical planned sequence:
+## Historical sequence and current position
+
+Historical planned sequence began as:
 
 **S1.40B accepted -> S1.41 BCMER 1.71.0 accepted -> S1.42A Interior Config Seed -> runtime config generation -> analyze/tune -> final S1.42 acceptance.**
 
-The seed and two isolated regression stages have now happened. Do not collapse future phases together; isolation remains intentional so regressions can be attributed.
+The diagnostic/restore chain subsequently expanded through S1.42B-S1.42U so regressions could be attributed safely instead of collapsing unrelated changes together.
 
-## Current progress checkpoint — after S1.42S focused runtime PASS
+## Current progress checkpoint — after S1.42U full-normal-stack runtime PASS
 
 Completed:
+
 - S1.42A seed built and runtime-generated real configs/IDs.
 - 52 total dungeon flows discovered.
-- exact CullFactory IDs: `junkrooms`, `shatteredrooms`.
+- exact CullFactory IDs confirmed: `junkrooms`, `shatteredrooms`.
 - S1.42A LethalModDataLib NRE discovered.
 - S1.42B null-safe LMDL guard runtime-confirmed.
 - S1.42C Thumper/Puffer Pikmin guards built; LMDL fix remained healthy.
-- isolated EnemyIsolation diagnostic chain was used to attribute enemy/Pikmin regressions.
-- Thumper/Crawler -> Pikmin broken grab-state path has been contained without blocking Pikmin counterattack.
-- Puffer -> Pikmin effect path is protected.
-- Baboon Hawk -> Pikmin collision/bite/grab path is protected asymmetrically.
+- isolated EnemyIsolation diagnostic chain used to attribute enemy/Pikmin regressions.
+- Thumper/Crawler -> Pikmin broken grab-state path contained without blocking Pikmin counterattack.
+- Puffer -> Pikmin effect path protected.
+- Baboon Hawk -> Pikmin collision/bite/grab path protected asymmetrically.
 - Pikmin -> Baboon Hawk attack remains functional.
-- S1.42R identified a project-side lifecycle regression caused by disabling complete `BaboonBirdPikminEnemy`.
-- S1.42S corrected that regression by preserving native `PikminEnemy.Update()` death/unlatch ownership.
-- S1.42S focused runtime gate passed: all three test Pikmin recovered after Hawk death and corpse carry/Onion delivery worked.
-- permanent project-local patch safety policy added at `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
+- S1.42R identified the project-side lifecycle regression caused by disabling complete `BaboonBirdPikminEnemy`.
+- S1.42S corrected that regression by preserving native `PikminEnemy.Update()` death/unlatch ownership and passed focused runtime acceptance.
+- S1.42T disabled temporary EnemyIsolation and passed normal non-isolated enemy restoration with BCMER intentionally off.
+- S1.42U re-enabled exact BCMER 1.71.0 as the only build delta and passed full normal-stack runtime acceptance.
+- S1.42U is now the newest accepted full-normal-stack baseline and newest runtime-accepted technical descendant.
+- S1.42U `LethalLevelLoader.cfg` is byte-identical to the canonical S1.42C restore baseline, preserving all stored per-moon power counts and spawn lists.
+- SpawnCycleFixes remains on `Consistent Spawn Times = true`, preserving the intended standardized first wave around 07:39.
 
-Immediate next step before final S1.42:
-- S1.42T normal enemy restore: disable temporary EnemyIsolation and validate normal enemy population with exact BCMER 1.71.0 still disabled.
-- after S1.42T passes, re-enable exact BCMER 1.71.0 in a separate controlled gate.
+Current accepted profile:
 
-Still pending before final S1.42:
-- normal enemy population restoration acceptance;
-- BCMER exact 1.71.0 restoration acceptance;
-- equal interior probability tuning;
-- CullFactory exceptions;
+`Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z`
+
+SHA-256:
+
+`ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969`
+
+Runtime acceptance:
+
+`Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
+
+Final handover:
+
+`Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
+
+## Immediate next stage — S1.42V
+
+**S1.42V — Post-BCMER Balance Tuning** is plan-only and not armed.
+
+Canonical plan:
+
+`BuildSpecs/S1.42V_PLAN.md`
+
+Current intended scope:
+
+- ImmortalSnail `Rarity 80 -> 40`, keep `Max Snails = 2`;
+- CodeRebirth Functional Microwave `Volume 0.7 -> 0.5` proposed because 0.7 still sounds too loud;
+- modest always-on base Jetpack acceleration increase.
+
+The Jetpack item is the implementation gate. Before S1.42V may be armed, identify the exact owner/method/field, preserve ButteRyBalance `Control Scheme = V49` unless exact evidence justifies otherwise, account for JetpackFixes, and do not silently substitute the purchase-gated More Ship Upgrades `Jet Fuel` values. If custom code is required, perform the Patch Safety Review and isolate the risky patch if practical.
+
+## Remaining staged work before final S1.42
+
+Do not collapse these stages automatically into S1.42V. Later build IDs are intentionally not assigned yet.
+
+### Environment / Interior tuning
+
+- equal interior probability tuning using actual generated configs/IDs;
+- permanent rule: all installed interiors should have equal effective selection probability, and future newly added interiors should be normalized to the same architecture unless a documented technical incompatibility prevents it;
+- CullFactory exceptions for `junkrooms` and `shatteredrooms`;
 - Mausoleum fog reduction;
-- BCMER fixed 12.5% x8 EventType distribution;
-- final normal-stack runtime acceptance.
+- CodeRebirth Microwave rarity reduction.
 
-Canonical next-step files:
-- `Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md`
-- `BuildSpecs/S1.42T_PLAN.md`
+### BCMER EventType balancing
 
-Historical `BuildSpecs/S1.42D_PLAN.md` is superseded and is not a current build instruction.
+- fixed equal global distribution: **8 EventTypes x 12.5%**.
+
+### Final normal-stack acceptance
+
+- longer normal full-stack runtime after individual tuning stages pass;
+- varied enemies, Pikmin lifecycle, BCMER events, interiors, Jetpack and CodeRebirth coverage;
+- complete runtime-log ingest and permanent invariant checks;
+- final S1.42 promotion only if clean.
+
+Do not reopen isolated-enemy diagnostics or heavy Baboon-Hawk stress merely as routine testing. Reopen them only if a later change touches those compatibility paths or new evidence indicates regression.
+
+Canonical current next-step files:
+
+- `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
+- `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+- `BuildSpecs/S1.42V_PLAN.md`
+- `BuildSpecs/current.json`
+
+Historical `BuildSpecs/S1.42D_PLAN.md`, `BuildSpecs/S1.42T_PLAN.md`, and `BuildSpecs/S1.42U_PLAN.md` are preserved history and are not current build instructions.
 
 ---
 
@@ -170,7 +223,7 @@ Candidate:
 SHA-256:
 `70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe`
 
-Accepted gameplay baseline remains S1.41. S1.42A runtime generation has already completed; do not rerun it by default.
+Accepted gameplay baseline at that historical point was S1.41. S1.42A runtime generation has already completed; do not rerun it by default.
 
 Purpose:
 - allow LLL/JLL/DawnLib/content mods to generate their real config sections;
@@ -343,7 +396,6 @@ S1.42 should only be accepted after runtime checks for:
 - no LethalModDataLib save/netcode regression;
 - no Boom_Scraps dependency failure;
 - no new severe routing/elevator/navmesh regression.
-
 
 ---
 
