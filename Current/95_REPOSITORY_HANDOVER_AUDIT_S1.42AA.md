@@ -110,7 +110,7 @@ Older experimental helper variants are historical failures and must not be reuse
 
 ## Canonical documentation refreshed in this handover
 
-The handover refresh updates the current bootstrap/status files to distinguish clearly:
+The handover refresh distinguishes clearly:
 
 - **accepted** = S1.42Z;
 - **active candidate** = S1.42AA;
@@ -160,3 +160,35 @@ After the S1.42AA gate, deferred work still includes:
 - final long full-stack acceptance;
 - evidence-gated AdditionalNetworking / LethalMin teardown repairs;
 - cosmetic documentation cleanup.
+
+## Final post-refresh verification
+
+After all handover edits, the canonical entry points were fetched again and checked against each other.
+
+Verified current blob SHAs:
+
+- `START_HERE_ChatGPT_Masterprompt.txt` — `8c074d84eaf358490faa1ef3d5d9eb8420514691`;
+- `README.md` — `945a2f528f2c6bb74032c931472116deb8d0139b`;
+- `Current/00_CURRENT_STATE.md` — `1096253bfa49032f3e3cec01a59e8d13f35b5908`;
+- `Current/01_HANDOVER_CORE.md` — `25dbd4178c4cc7b44c334f9f29e7d407333fbfe8`;
+- `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md` — `dac856ccf6d90fff6abfa962a4c9fff69c1791a8`;
+- `Current/Projektstatus_S1.42AA_CANDIDATE.json` — `72e0fa046803307d9a3a23f4cf6b204813633621`;
+- `Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md` — `4faa6f440602791ece66a2dfbaad8ab27d9e7662`;
+- `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md` — `d80db7b572f5d444654569ddeffe1e2fef5d3746`;
+- `BuildSpecs/current.json` — `69d63b4df1609a25c5795557443c0d681c0cc131`;
+- `RuntimeInbox/ACTIVE_BUILD.txt` — `4c7b326d02c1d6b424b0a1fd75204fb959fcb847`;
+- `Current/AUTO_BUILD_RESULT.json` — `b49ad75f30b9d821b462edb82385ed697d7b7d6d`.
+
+Cross-check result:
+
+- accepted baseline references agree on S1.42Z and profile SHA-256 `a030d4...`;
+- active candidate references agree on S1.42AA and profile SHA-256 `0490abe...`;
+- `ACTIVE_BUILD`, `AUTO_BUILD_RESULT` and disarmed `BuildSpecs/current.json` agree on S1.42AA;
+- no successor is armed;
+- S1.42AA import is recorded as complete, runtime test as open;
+- runtime inbox contains no unprocessed S1.42AA log;
+- helper policy is consistently canonical/binding in current entry points;
+- exact next action is consistently the Offense runtime run followed by the S1.42AA log uploader;
+- no blocking current-pointer contradiction remains.
+
+Final audit verdict remains **PASS**.
