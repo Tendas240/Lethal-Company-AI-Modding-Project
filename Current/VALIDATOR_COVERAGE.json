@@ -6,15 +6,15 @@
   "validators": [
     {
       "path": "RepositoryTools/render_current_navigation.py",
-      "checks": ["Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json."],
-      "scan_scope": ["README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/00_CURRENT_STATE.md", "Current/01_HANDOVER_CORE.md", "Current/CURRENT_STATE.json"],
-      "does_not_check": ["Gameplay correctness", "profile/runtime artifact bytes", "historical provenance outside generated outputs"]
+      "checks": ["Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json.", "Generated bootstrap/takeover files expose the current handover-preparation route stored in Current/CURRENT_STATE.json."],
+      "scan_scope": ["README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/00_CURRENT_STATE.md", "Current/01_HANDOVER_CORE.md", "Current/CURRENT_STATE.json", "Current/HANDOVER_PREPARATION_PROMPT.md path reference"],
+      "does_not_check": ["Gameplay correctness", "profile/runtime artifact bytes", "historical provenance outside generated outputs", "whether an arbitrary uncommitted handover prompt contains truthful current facts"]
     },
     {
       "path": "RepositoryTools/knowledge_architecture_validator.py",
-      "checks": ["Current-state/controller/lineage consistency", "canonical path existence", "Knowledge topic routing/orphans", "runtime metadata-chain consistency"],
-      "scan_scope": ["Current state and authority metadata", "Knowledge/*.md", "ProfileSources current indexes", "RuntimeEvidence indexes"],
-      "does_not_check": ["Actual profile .r2z byte hashes", "actual raw runtime-log byte hashes", "all repository-wide superseded-value occurrences"]
+      "checks": ["Current-state/controller/lineage consistency", "canonical path existence", "Knowledge topic routing/orphans", "runtime metadata-chain consistency", "canonical handover prompt existence and discoverability from CURRENT_STATE/README/START_HERE/Current-01"],
+      "scan_scope": ["Current state and authority metadata", "Current/HANDOVER_PREPARATION_PROMPT.md", "generated bootstrap files", "Knowledge/*.md", "ProfileSources current indexes", "RuntimeEvidence indexes"],
+      "does_not_check": ["Actual profile .r2z byte hashes", "actual raw runtime-log byte hashes", "all repository-wide superseded-value occurrences", "truth of a future handover response before it is produced"]
     },
     {
       "path": "RepositoryTools/artifact_byte_integrity_validator.py",
@@ -48,7 +48,7 @@
     },
     {
       "path": "RepositoryTools/answerability_regression.py",
-      "checks": ["Semantic routing for the maintained answerability case suite"],
+      "checks": ["Semantic routing for the maintained answerability case suite, including the explicit new-chat handover query"],
       "scan_scope": ["RepositoryTools/answerability_cases.json", "Current/PROJECT_KNOWLEDGE_MAP.json"],
       "does_not_check": ["Truth of every routed source", "questions absent from the case suite"]
     },
