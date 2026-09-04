@@ -1,5 +1,5 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "date": "2026-09-04",
   "repository_is_source_of_truth": true,
   "canonical_state": "S1.42AB_ACCEPTED_S1.42AC_REJECTED_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED",
@@ -27,7 +27,15 @@
     "candidate_record": "Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
     "rejection_record": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
     "runtime_evidence": "RuntimeEvidence/S1.42AC/20260904T181854Z/",
-    "raw_log_sha256": "8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0",
+    "raw_log_sha256": "fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067",
+    "raw_log_sha256_provenance": {
+      "status": "CORRECTED_BYTE_PROVENANCE",
+      "authority": "RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json",
+      "authoritative_sha256": "fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067",
+      "superseded_recorded_sha256": "8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0",
+      "reason": "The RuntimeEvidence INDEX and its embedded analysis STATS agree on the SHA-256 of the 2,000,261-byte raw LogOutput.log. The earlier project-status/rejection-record value was incorrect.",
+      "decision_impact": "NONE. This corrects byte provenance only; S1.42AC remains formally rejected/not promoted and the later BCMER interpretation in Current/109 remains authoritative."
+    },
     "configured_event_type_scale": "12.5, 0.0, 12.5, 12.5",
     "use_custom_weights": false,
     "randomizer_enabled": false,
@@ -106,6 +114,10 @@
     "implementation_decision": "Do not apply inverse config compensation and do not force equal per-event weights with a project-local patch. No new successor implementation is justified by this analysis; the existing equal-scale S1.42AC concept is the correct static EventType-probability approach under BCMER ownership.",
     "promotion_status": "S1.42AC remains formally rejected/not accepted until an explicit corrected acceptance interpretation is applied. This analysis does not silently promote it."
   },
+  "post_overhaul_integrity_note": {
+    "repository_overhaul": "COMPLETED_POST_ACCEPTANCE_REAUDIT_PASS",
+    "runtime_log_provenance": "S1.42AC raw-log SHA corrected to the RuntimeEvidence INDEX authority. See rejected_candidate.raw_log_sha256_provenance and Current/113_POST_OVERHAUL_INTEGRITY_REMEDIATION.md."
+  },
   "controllers": {
     "buildspec_id": "IDLE_AFTER_S1.42AC_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED",
     "buildspec_base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
@@ -123,7 +135,6 @@
     "isolated woah25-LethalEscapeUpdated 2.5.0 evaluation",
     "final long full-stack acceptance",
     "AdditionalNetworking repair only with reproducible user-facing evidence",
-    "LethalMin teardown repair only with stronger evidence",
-    "repository information-architecture overhaul"
+    "LethalMin teardown repair only with stronger evidence"
   ]
 }

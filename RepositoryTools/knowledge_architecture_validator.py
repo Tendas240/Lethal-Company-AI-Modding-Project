@@ -203,6 +203,83 @@ def validate_profile_sources() -> None:
         require_path(f"ProfileSources/{build}/export.r2x", f"{build} readable snapshot")
 
 
+def runtime_log_sha256_from_index(path: str, context: str) -> str | None:
+    data = load_json(path)
+    files = [entry for entry in data.get("files", []) if entry.get("name") == "LogOutput.log"]
+    if len(files) != 1:
+        fail(f"{context}: expected exactly one LogOutput.log entry in {path}, found {len(files)}")
+        return None
+    sha = files[0].get("sha256")
+    if not sha:
+        fail(f"{context}: LogOutput.log entry has no sha256 in {path}")
+        return None
+
+    for analysis in data.get("analysis", []):
+        stats = analysis.get("stats", {})
+        source_sha = stats.get("source_sha256")
+        if source_sha and source_sha != sha:
+            fail(f"{context}: runtime INDEX file sha256 {sha} disagrees with embedded analysis source_sha256 {source_sha}")
+    return sha
+
+
+def validate_runtime_evidence_provenance() -> None:
+    integrity = load_json("Current/ARTIFACT_EVIDENCE_INTEGRITY.json")
+    runtime_by_build: dict[str, str] = {}
+
+    for profile in integrity.get("profiles", []):
+        build_id = profile.get("build_id", "<missing-build-id>")
+        index_path = profile.get("runtime_index")
+        declared_sha = profile.get("runtime_log_sha256")
+        if not index_path:
+            fail(f"artifact evidence {build_id} has no runtime_index")
+            continue
+        require_path(index_path, f"artifact evidence {build_id}.runtime_index")
+        actual_sha = runtime_log_sha256_from_index(index_path, f"artifact evidence {build_id}")
+        if actual_sha is None:
+            continue
+        runtime_by_build[str(build_id)] = actual_sha
+        if declared_sha != actual_sha:
+            fail(f"artifact evidence {build_id} runtime_log_sha256 mismatch: {declared_sha!r} != {actual_sha!r}")
+
+    status = load_json("Current/Projektstatus_S1.42AC_REJECTED.json")
+    accepted = status.get("accepted_baseline", {})
+    rejected = status.get("rejected_candidate", {})
+
+    ab_sha = runtime_by_build.get("S1.42AB")
+    if ab_sha and accepted.get("raw_log_sha256") != ab_sha:
+        fail("S1.42AB project-status raw_log_sha256 disagrees with authoritative RuntimeEvidence INDEX")
+
+    ac_sha = runtime_by_build.get("S1.42AC")
+    if not ac_sha:
+        fail("S1.42AC authoritative runtime-log SHA could not be resolved from artifact evidence")
+        return
+    if rejected.get("raw_log_sha256") != ac_sha:
+        fail("S1.42AC project-status raw_log_sha256 disagrees with authoritative RuntimeEvidence INDEX")
+
+    provenance = rejected.get("raw_log_sha256_provenance", {})
+    expected_index = "RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json"
+    if provenance.get("authority") != expected_index:
+        fail("S1.42AC raw-log provenance authority does not point to the canonical RuntimeEvidence INDEX")
+    if provenance.get("authoritative_sha256") != ac_sha:
+        fail("S1.42AC provenance authoritative_sha256 disagrees with RuntimeEvidence INDEX")
+    superseded = provenance.get("superseded_recorded_sha256")
+    if not superseded or superseded == ac_sha:
+        fail("S1.42AC provenance must retain a distinct superseded historical SHA-256 value")
+
+    rejection_path = ROOT / "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md"
+    if not rejection_path.is_file():
+        fail("missing S1.42AC rejection record for provenance erratum validation")
+        return
+    rejection_text = rejection_path.read_text(encoding="utf-8", errors="replace")
+    lowered = rejection_text.lower()
+    if ac_sha not in rejection_text:
+        fail("S1.42AC rejection record does not contain authoritative raw-log SHA-256")
+    if str(superseded) not in rejection_text:
+        fail("S1.42AC rejection record does not preserve the superseded historical SHA-256")
+    if "provenance erratum" not in lowered or "supersed" not in lowered:
+        fail("S1.42AC rejection record lacks an explicit provenance erratum/supersession marker")
+
+
 def validate_lineage() -> None:
     data = load_json("Current/BUILD_LINEAGE.json")
     builds = data.get("builds", [])
@@ -275,6 +352,7 @@ def main() -> int:
     validate_knowledge_map(req)
     validate_current_state()
     validate_profile_sources()
+    validate_runtime_evidence_provenance()
     validate_lineage()
     validate_authority_and_migration()
     validate_bootstrap()

@@ -53,8 +53,8 @@ Permanent UX rule: whenever a future build is designated ready for runtime testi
 
 ## Exact next gameplay decision
 
-The repository overhaul is the active maintenance scope and must not alter gameplay state.
+The repository information-architecture overhaul is **complete** and is no longer the active maintenance scope. There is currently no active gameplay candidate, runtime gate, or automatically implied successor.
 
-If gameplay work resumes after the overhaul, no successor is implied automatically. The outstanding S1.42AC artifact may first be reconsidered under the corrected BCMER acceptance model in `Knowledge/BCMER.md`; alternatively a different deferred scope may be selected explicitly from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
+If the BCMER EventType scope is continued, first reconsider the existing S1.42AC artifact under the corrected acceptance model in `Knowledge/BCMER.md` / `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`. Alternatively, select a different deferred scope explicitly from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
 
 Do not build inverse BCMER compensation merely to make the eight logged per-event weights numerically equal.
