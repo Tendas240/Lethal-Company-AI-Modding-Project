@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-04",
+  "status": "CURRENT_CANONICAL_ARTIFACT_EVIDENCE_INDEX",
+  "profiles": [
+    {
+      "build_id": "S1.42AB",
+      "role": "ACCEPTED_BASELINE",
+      "profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
+      "profile_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
+      "profile_sources": "ProfileSources/S1.42AB/",
+      "file_index": "ProfileSources/S1.42AB/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AB/export.r2x",
+      "acceptance": "Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md",
+      "runtime_index": "RuntimeEvidence/S1.42AB/20260904T174010Z/INDEX.json",
+      "runtime_log_sha256": "42cfba3d157f6abdbeee114909d90749d1bfd043d4b0c224922ad5be976194ae"
+    },
+    {
+      "build_id": "S1.42AC",
+      "role": "LATEST_BUILT_FORMALLY_REJECTED_NOT_PROMOTED",
+      "profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+      "profile_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+      "profile_sources": "ProfileSources/S1.42AC/",
+      "file_index": "ProfileSources/S1.42AC/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AC/export.r2x",
+      "decision": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+      "corrected_analysis": "Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md",
+      "runtime_index": "RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json",
+      "runtime_log_sha256": "fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067"
+    }
+  ],
+  "important_project_dlls": [
+    {
+      "name": "S139CompatibilityFixes.dll",
+      "source": "Patches/S139CompatibilityFixes/Plugin.cs",
+      "source_root": "Patches/S139CompatibilityFixes/",
+      "accepted_version": "1.3.14",
+      "accepted_sha256": "3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960",
+      "evidence": "Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md",
+      "note": "Executable behavior and accepted runtime evidence are authoritative; historical comments are non-normative."
+    },
+    {
+      "name": "S1.42AB interior normalization injected DLL",
+      "source_root": "Patches/",
+      "accepted_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+      "evidence": "Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md",
+      "acceptance": "Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md"
+    }
+  ],
+  "runtime_evidence_policy": {
+    "raw_logs_preserved_when_present": true,
+    "index_required_for_current_critical_runs": true,
+    "analysis_directory_required": true,
+    "binary_only_fact_policy": "Any fact required for future reasoning must also exist in readable ProfileSources, FILE_INDEX, runtime INDEX/analysis, source, build record, or canonical documentation."
+  },
+  "verified_repository_api_observations": [
+    "ProfileSources/S1.42AB contains FILE_INDEX.json and export.r2x.",
+    "ProfileSources/S1.42AC contains FILE_INDEX.json and export.r2x.",
+    "RuntimeEvidence/S1.42AB/20260904T174010Z contains INDEX.json, analysis/, and raw/.",
+    "RuntimeEvidence/S1.42AC/20260904T181854Z contains INDEX.json, analysis/, and raw/."
+  ],
+  "last_validated": "2026-09-04"
+}
