@@ -43,6 +43,32 @@ function Find-UiaVisibleByName {
     return $out
 }
 
+function Test-UiaPattern {
+    param(
+        [Parameter(Mandatory=$true)]$Element,
+        [Parameter(Mandatory=$true)]$Pattern
+    )
+    try {
+        $null=$Element.GetCurrentPattern($Pattern)
+        return $true
+    }
+    catch {
+        return $false
+    }
+}
+
+function Find-UiaVisibleByNameAndPattern {
+    param(
+        [Parameter(Mandatory=$true)]$Root,
+        [Parameter(Mandatory=$true)][string]$Name,
+        [Parameter(Mandatory=$true)]$Pattern
+    )
+
+    return @(Find-UiaVisibleByName -Root $Root -Name $Name | Where-Object {
+        Test-UiaPattern -Element $_ -Pattern $Pattern
+    })
+}
+
 function Invoke-UiaElement {
     param(
         [Parameter(Mandatory=$true)]$Element,
@@ -116,13 +142,24 @@ function Try-ResolveGaleMissingProfileDialog {
     if(!$root){return 'no-window'}
     if($dialog.Count -eq 0){return 'none'}
 
-    # Fail closed unless the dialog is exactly the simple one-profile case that
-    # this helper itself just created. Never auto-delete unrelated missing profiles.
-    $profileHits=@(Find-UiaVisibleByName -Root $root -Name $ExpectedProfileName)
-    $selectors=@(Find-UiaVisibleByName -Root $root -Name 'Select an action')
-    if($profileHits.Count -lt 1 -or $selectors.Count -ne 1){
+    # bits-ui/Chromium can expose both the clickable select and its visible label
+    # with the same accessible name. Filter by the interaction pattern rather than
+    # requiring the raw visible-name match to be unique.
+    $selectors=@(Find-UiaVisibleByNameAndPattern -Root $root -Name 'Select an action' -Pattern ([System.Windows.Automation.ExpandCollapsePattern]::Pattern))
+
+    # Exactly one actionable selector means exactly one unresolved missing-profile row.
+    # This helper has just deleted one explicitly selected profile; any extra row is
+    # treated as ambiguous so unrelated Gale state is never auto-deleted.
+    if($selectors.Count -ne 1){
+        Write-Host "UIA diagnostic: actionable missing-profile selectors = $($selectors.Count)" -ForegroundColor DarkYellow
         return 'ambiguous'
     }
+
+    # Best-effort identity diagnostic only. CSS truncation/WebView accessibility may
+    # expose a shortened text node, so absence of an exact text node is not by itself
+    # a deletion authorization failure; the single-row invariant above is authoritative.
+    $profileHits=@(Find-UiaVisibleByName -Root $root -Name $ExpectedProfileName)
+    Write-Host "UIA diagnostic: exact profile-name nodes for '$ExpectedProfileName' = $($profileHits.Count)" -ForegroundColor DarkGray
 
     if(!(Invoke-UiaElement -Element $selectors[0] -Action 'expand')){
         return 'failed'
@@ -133,13 +170,16 @@ function Try-ResolveGaleMissingProfileDialog {
     do{
         $root=Get-GaleAutomationRoot
         if($root){
-            $deleteItems=@(Find-UiaVisibleByName -Root $root -Name 'Delete')
+            $deleteItems=@(Find-UiaVisibleByNameAndPattern -Root $root -Name 'Delete' -Pattern ([System.Windows.Automation.SelectionItemPattern]::Pattern))
             if($deleteItems.Count -eq 1){break}
         }
         Start-Sleep -Milliseconds 100
     }while([DateTime]::UtcNow -lt $deleteDeadline)
 
-    if($deleteItems.Count -ne 1){return 'failed'}
+    if($deleteItems.Count -ne 1){
+        Write-Host "UIA diagnostic: actionable Delete items = $($deleteItems.Count)" -ForegroundColor DarkYellow
+        return 'failed'
+    }
     if(!(Invoke-UiaElement -Element $deleteItems[0] -Action 'select')){
         return 'failed'
     }
@@ -149,13 +189,16 @@ function Try-ResolveGaleMissingProfileDialog {
     do{
         $root=Get-GaleAutomationRoot
         if($root){
-            $submit=@(Find-UiaVisibleByName -Root $root -Name 'Submit')
+            $submit=@(Find-UiaVisibleByNameAndPattern -Root $root -Name 'Submit' -Pattern ([System.Windows.Automation.InvokePattern]::Pattern))
             if($submit.Count -eq 1){break}
         }
         Start-Sleep -Milliseconds 100
     }while([DateTime]::UtcNow -lt $submitDeadline)
 
-    if($submit.Count -ne 1){return 'failed'}
+    if($submit.Count -ne 1){
+        Write-Host "UIA diagnostic: actionable Submit buttons = $($submit.Count)" -ForegroundColor DarkYellow
+        return 'failed'
+    }
     if(!(Invoke-UiaElement -Element $submit[0] -Action 'default')){
         return 'failed'
     }
