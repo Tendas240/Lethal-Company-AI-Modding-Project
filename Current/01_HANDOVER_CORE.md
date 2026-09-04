@@ -9,24 +9,24 @@ Repository is the source of truth.
 ## Read first
 
 1. `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
-2. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
-3. `Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
-4. `Current/00_CURRENT_STATE.md`
-5. `Current/Projektstatus_S1.42U.json`
-6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-7. `BuildSpecs/S1.42V_PLAN.md`
-8. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-9. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
-10. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
-11. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-12. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
-13. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-14. `BuildSpecs/current.json`
-15. `RuntimeInbox/ACTIVE_BUILD.txt`
+2. `Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md`
+3. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
+4. `Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
+5. `Current/00_CURRENT_STATE.md`
+6. `Current/Projektstatus_S1.42U.json`
+7. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+8. `BuildSpecs/S1.42V_PLAN.md`
+9. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+10. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
+11. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+12. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+13. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
+14. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+15. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+16. `BuildSpecs/current.json`
+17. `RuntimeInbox/ACTIVE_BUILD.txt`
 
-After the repository handover audit is created, read that immediately after `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`.
-
-Older S1.42T/S handover records remain historical/diagnostic evidence. Chronologically newer S1.42U acceptance and final-handover files define the active state.
+Older S1.42T/S handover records remain historical/diagnostic evidence. Chronologically newer S1.42U acceptance, final-handover and audit files define the active state.
 
 ## Accepted current baseline
 
@@ -47,6 +47,14 @@ Runtime verdict:
 Acceptance:
 
 `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
+
+Final handover:
+
+`Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
+
+Repository audit:
+
+`Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md`
 
 Evidence:
 
