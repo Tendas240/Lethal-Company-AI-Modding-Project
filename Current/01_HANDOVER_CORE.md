@@ -9,31 +9,25 @@ Repository is the source of truth.
 ## Read first
 
 1. `Current/00_CURRENT_STATE.md`
-2. `Current/81_S1.42V_BUILD_CANDIDATE_JETPACK_SNAIL_MICROWAVE.md`
-3. `BuildSpecs/S1.42V_PLAN.md`
-4. `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
-5. `Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md`
+2. `Current/83_S1.42W_BUILD_CANDIDATE_LIFT_MICROWAVE_LGU.md`
+3. `Current/Projektstatus_S1.42W_CANDIDATE.json`
+4. `BuildSpecs/S1.42W_PLAN.md`
+5. `Current/82_S1.42V_RUNTIME_TECHNICAL_PASS_BALANCE_REJECTED.md`
 6. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
-7. `Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
-8. `Current/Projektstatus_S1.42U.json`
+7. `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
+8. `Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md`
 9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
 10. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
 11. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-12. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
-13. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
-14. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
-15. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-16. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-17. `BuildSpecs/current.json`
-18. `RuntimeInbox/ACTIVE_BUILD.txt`
+12. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+13. `BuildSpecs/current.json`
+14. `RuntimeInbox/ACTIVE_BUILD.txt`
 
-Chronologically newer S1.42V candidate documentation controls the active test state. S1.42U acceptance/handover/audit documents remain authoritative for the last fully accepted baseline.
+Chronologically newer S1.42W documents define the active test candidate. S1.42U remains the last fully accepted gameplay baseline.
 
-## Last accepted baseline
+## Accepted rollback baseline
 
 **S1.42U — BCMER 1.71.0 Reactivation Gate**
-
-Profile:
 
 `Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z`
 
@@ -41,198 +35,161 @@ SHA-256:
 
 `ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969`
 
-Runtime verdict:
-
-**PASS — last fully accepted full-normal-stack baseline.**
-
-Acceptance:
+Runtime acceptance:
 
 `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
 
+## S1.42V outcome
+
+S1.42V proved the narrow Jetpack patch architecture in runtime but was not promoted because the user rejected the tuning magnitude.
+
 Evidence:
 
-`RuntimeEvidence/S1.42U/20260904T082412Z/`
+`RuntimeEvidence/S1.42V/20260904T095739Z/`
 
-Compatibility/plugin invariants accepted in S1.42U remain the rollback contract for S1.42V.
+Raw log SHA-256:
 
-## Newest built candidate
+`5e094086efef862abdbaf1bfdaab85fb8c8ed20d73d865c9f1bc902e08180dfd`
 
-**S1.42V — Post-BCMER Balance Tuning**
+Technical facts:
 
-Profile:
+- Jetpack plugin loaded and armed;
+- ButteRyBalance 0.7.0, JetpackFixes 1.6.3, More Ship Upgrades 3.14.1 validated;
+- Compatibility Fixes 1.3.14 healthy;
+- Work/no-task = 0;
+- Leader-null = 0;
+- project compatibility Error = 0;
+- user reported `12f` lift still too weak and Microwave `0.5` still too loud.
 
-`Profiles/LC V1 S1.42V Post-BCMER Balance Tuning.r2z`
+One AdditionalNetworking NetworkObjectReference Fatal occurred during local-disconnect teardown after BCMER `OnLocalDisconnect`; monitor only unless reproducible/user-facing.
+
+Canonical S1.42V runtime record:
+
+`Current/82_S1.42V_RUNTIME_TECHNICAL_PASS_BALANCE_REJECTED.md`
+
+## Active candidate
+
+**S1.42W — Lift-Off Microwave Retune**
+
+`Profiles/LC V1 S1.42W Lift-Off Microwave Retune.r2z`
 
 SHA-256:
 
-`06390fc2faaf5ef30918efb077a1728c75864777c79a084855ed4dc3e69b3f0d`
+`f34ebcf18bd2b475da5546e6c391bd15bf70df5648b5f69ffb668d196df057dc`
 
 Status:
 
 **BUILD PASS / RUNTIME VALIDATION REQUIRED / NOT ACCEPTED**
 
-Candidate record:
+Build commit:
 
-`Current/81_S1.42V_BUILD_CANDIDATE_JETPACK_SNAIL_MICROWAVE.md`
+`165d102364438cace2fd2184af3fd091855ff0d7`
 
-Automated build commit:
+Actions run:
 
-`1f5dd23eeb5b23d565af624fd97b78dcea58b784`
+`33861561173` = **success**
 
-GitHub Actions run:
+S1.42W was built directly from S1.42U to avoid stacking the superseded S1.42V Jetpack DLL.
 
-`33859188647` = **success**
+## Exact S1.42W scope
 
-Automated archive verification reported exactly three changed existing members and one added DLL, with no package-state changes.
+### Jetpack base
 
-## Exact S1.42V scope
+- project plugin: `Patches/S142WJetpackAcceleration/`;
+- DLL SHA-256: `95b7e689f68246ebda2fa6a0cab9fbe2ead206a00d85e6cbf64653d1f69d1fa8`;
+- exact `JetpackItem.Update()` local-player Prefix after ButteRyBalance;
+- base `10f -> 16f`;
+- V49 handling/deceleration untouched;
+- JetpackFixes safety logic untouched;
+- fail-closed owner/version checks.
 
-### Immortal Snail
+### LateGameUpgrades / More Ship Upgrades
 
-- `Rarity = 80 -> 40`;
-- `Max Snails = 2` preserved.
+Jet Fuel stays:
 
-### Functional Microwave
+- initial acceleration `20%`;
+- incremental acceleration `20%`.
 
-- `Functional Microwave | Volume = 0.7 -> 0.5`;
-- spawn rarity is still deferred.
+It already scales automatically with the 16f base, giving 19.2 / 22.4 / 25.6 / 28.8 across 20/40/60/80% effects.
 
-### Always-on base Jetpack acceleration
+Jetpack Thrusters:
 
-Project-local patch:
+- initial max-speed increase `25%`;
+- incremental max-speed increase `20%`.
 
-`Patches/S142VJetpackAcceleration/`
+### Other tuning
 
-Injected DLL SHA-256:
+- Functional Microwave volume = `0.15`;
+- Immortal Snail `Rarity = 40`;
+- Immortal Snail `Max Snails = 2`.
 
-`084fe47b5e47d3637fbb6d4fdd735429a37934993fc190fb4b6abbc51eada00c`
+## Permanent anti-regression state
 
-Frozen behavior:
+Preserve:
 
-- exact `JetpackItem.Update()` target;
-- local-player prefix after ButteRyBalance;
-- proven base `jetpackAcceleration = 10f -> 12f` (+20%);
-- only an approximately-10f value is replaced;
-- fail-closed version/owner validation;
-- no fallback/IL rewrite/original-method skip.
-
-Owner interactions:
-
-- ButteRyBalance 0.7.0 remains the base acceleration/handling owner and `Control Scheme = V49` is preserved;
-- `Warmup Period = false` preserved;
-- JetpackFixes 1.6.3 still owns collision/death/control fixes and `MidAirExplosions = Off` remains unchanged;
-- More Ship Upgrades 3.14.1 `Jet Fuel` remains purchase-gated at 20/20 and layers over the base value;
-- `Jetpack Thrusters` maximum-speed layer remains separate and unchanged.
-
-Full Patch Safety Review:
-
-`BuildSpecs/S1.42V_PLAN.md`
-
-and:
-
-`Patches/S142VJetpackAcceleration/README.md`
-
-## Permanent technical state to preserve
-
-- BCMER exact 1.71.0 enabled;
+- exact BCMER 1.71.0;
 - EnemyIsolation off;
-- Compatibility Fixes v1.3.14;
-- compatibility DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
+- Compatibility Fixes 1.3.14 / DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
+- `BaboonBirdPikminEnemy` enabled;
+- narrow Hawk -> Pikmin block only;
+- native inherited PikminEnemy lifecycle;
+- Puffer -> Pikmin protection;
 - `Thumper Bite Limit = 3`;
 - Crawler absent from Attack Blacklist;
-- Puffer -> Pikmin protection;
-- `BaboonBirdPikminEnemy` enabled;
-- narrow Hawk -> Pikmin prevention only;
-- native inherited PikminEnemy death/unlatch/task lifecycle;
-- normal enemy population restored;
 - accepted S1.42C-derived moon power/spawn baseline;
 - `Consistent Spawn Times = true`.
 
-Never repeat the S1.42R approach of disabling the whole `BaboonBirdPikminEnemy` adapter to block one interaction.
+Never disable the entire `BaboonBirdPikminEnemy` just to block one interaction.
 
 ## Exact next action
 
-**Runtime-test S1.42V. Do not build a successor yet.**
+**Runtime-test S1.42W. Do not build another successor yet.**
+
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42W`
 
 Run:
 
-`LC V1 S1.42V Post-BCMER Balance Tuning`
+`LC V1 S1.42W Lift-Off Microwave Retune`
 
-`RuntimeInbox/ACTIVE_BUILD.txt` now points to `S1.42V`.
+Use Gale `Advanced options -> Import all files` unless custom files are otherwise guaranteed to import.
 
 Minimum gate:
 
-1. startup/main menu succeeds;
-2. `S1.42V Jetpack Acceleration v1.0.0` validates exact dependencies/owners and logs `armed`;
-3. no Harmony target/transpiler/ordering exception;
-4. BCMER 1.71.0 and Compatibility Fixes 1.3.14 load normally;
-5. normal enemies still spawn;
-6. Jetpack base acceleration is modestly higher;
-7. V49 handling/inertia remains unchanged;
-8. no unintended maximum-speed/power change;
-9. takeoff, release/deactivation, safe landing, hard collision and high-speed ground touch remain sane;
-10. repeat Jetpack flights show no state accumulation/random mid-air explosion;
-11. Immortal Snail remains functional at `Rarity = 40`, `Max Snails = 2`;
-12. Functional Microwave remains functional and is audibly lower at `Volume = 0.5`;
-13. if practical, test purchased Jet Fuel once as a separate percentage layer;
-14. Work/no-task = 0;
-15. Leader-null = 0;
-16. no new compatibility exception flood;
-17. commit/ingest a fresh complete runtime log.
+1. S1.42W Jetpack plugin loads, validates dependencies/owners and logs `armed`;
+2. lift-off is clearly faster and acceptable;
+3. V49 handling remains acceptable;
+4. release, landing, hard collision and high-speed ground touch remain sane;
+5. repeated flights show no state accumulation/random mid-air explosion;
+6. Jet Fuel and Thrusters remain useful;
+7. Microwave `0.15` is acceptable and still functional;
+8. Snail remains functional at 40 / max 2;
+9. BCMER, normal enemies and Compatibility Fixes remain healthy;
+10. Work/no-task = 0;
+11. Leader-null = 0;
+12. no new compatibility error flood;
+13. ingest the complete fresh log.
 
-S1.42U remains canonical accepted until this gate passes.
+## Deferred after W
 
-## Planned stages after S1.42V
+Do not mix into the W gate:
 
-Do not mix these into the current runtime gate.
-
-### Environment / Interior tuning
-
-- equal probability for all installed interiors and same rule for newly added interiors;
-- CullFactory exceptions for `junkrooms` and `shatteredrooms`;
-- Mausoleum fog reduction;
-- CodeRebirth Microwave rarity reduction.
-
-### BCMER EventType balancing
-
-- fixed equal distribution: **8 x 12.5% EventTypes**.
-
-### Final S1.42 full-stack acceptance
-
-- longer normal full-stack run after independent tuning gates pass;
-- varied enemies, Pikmin lifecycle, BCMER events, interiors, Jetpack and CodeRebirth coverage;
-- full log ingest and permanent invariant check;
-- promote only if clean.
+- equal interior probability / future-interior rule;
+- CullFactory exceptions;
+- Mausoleum fog;
+- Microwave rarity;
+- BCMER 8 x 12.5% EventTypes;
+- final long full-stack acceptance;
+- AdditionalNetworking disconnect patch without new evidence.
 
 ## Controllers
 
 `BuildSpecs/current.json`:
 
 - `enabled = false`;
-- `build_id = IDLE_AFTER_S1.42V_BUILD_AWAITING_RUNTIME_VALIDATION`;
-- base = built S1.42V candidate;
-- base SHA-256 = `06390fc2faaf5ef30918efb077a1728c75864777c79a084855ed4dc3e69b3f0d`;
-- no successor delta armed.
+- `build_id = IDLE_AFTER_S1.42W_BUILD_AWAITING_RUNTIME_VALIDATION`;
+- base = S1.42W candidate;
+- base SHA-256 = `f34ebcf18bd2b475da5546e6c391bd15bf70df5648b5f69ffb668d196df057dc`.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42V`
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42W`
 
-## Monitor-only observations
-
-1. Historical S1.42S disconnect-only LethalMin NoticeZone `NetworkObjectReference` exception; absent in S1.42U.
-2. Historical S1.42T one-off `AloeChase` FSB load-state message; no user-facing regression established.
-3. Known setup SoundAPI/HarmonyX and SoftMaskKiller-handled exception classes remain non-blocking unless behavior changes, they flood, or become user-facing.
-
-## Known non-functional drift
-
-- `Current/02_TECHNICAL_BASELINE.md` contains older chronology subsections with stale local `current` wording.
-- `Patches/S139CompatibilityFixes/Plugin.cs` contains historical comments that do not perfectly describe accepted v1.3.14 behavior.
-
-Do not mix cosmetic cleanup with risky gameplay/runtime changes.
-
-## Patch policy
-
-All project-local patches require `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` and a Patch Safety Review. S1.42V satisfies this requirement in `BuildSpecs/S1.42V_PLAN.md` and `Patches/S142VJetpackAcceleration/README.md`.
-
-## Local work
-
-No local repository clone or local build is required. GitHub-native build infrastructure produced and verified the S1.42V candidate.
+No successor is armed.
