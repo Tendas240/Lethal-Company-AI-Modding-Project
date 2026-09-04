@@ -57,7 +57,7 @@ HISTORY RULE
 Do not delete or reinterpret history to match current truth. Historical decisions remain evidence. Current/109 supersedes only the old BCMER per-event-weight interpretation behind the S1.42AC rejection; S1.42AC remains formally rejected/not promoted until an explicit later decision changes that status.
 
 REPOSITORY OVERHAUL
-Architecture status: OVERHAUL_IMPLEMENTED_FINAL_VALIDATION_PENDING
+Architecture status: OVERHAUL_COMPLETE_VALIDATED
 Recovery repository: Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904
 Frozen source commit: 5dbd0e637a480d8591773e422bbca4b0654cad20
 
