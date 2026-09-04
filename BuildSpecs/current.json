@@ -1,82 +1,15 @@
 {
-  "enabled": true,
-  "build_id": "S1.42W",
-  "base_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
-  "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
-  "output_profile": "Profiles/LC V1 S1.42W Lift-Off Microwave Retune.r2z",
-  "profile_name": "LC V1 S1.42W Lift-Off Microwave Retune",
+  "enabled": false,
+  "build_id": "IDLE_AFTER_S1.42W_BUILD_AWAITING_RUNTIME_VALIDATION",
+  "base_profile": "Profiles/LC V1 S1.42W Lift-Off Microwave Retune.r2z",
+  "base_sha256": "f34ebcf18bd2b475da5546e6c391bd15bf70df5648b5f69ffb668d196df057dc",
+  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
+  "profile_name": "DO_NOT_BUILD",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "config_patches": [
-    {
-      "path": "BepInEx/config/dev.idjut.SnailFork.cfg",
-      "section": "General",
-      "key": "Rarity",
-      "value": 40
-    },
-    {
-      "path": "BepInEx/config/CodeRebirth.cfg",
-      "section": "FunctionalMicrowave Options",
-      "key": "Functional Microwave | Volume",
-      "value": 0.15
-    },
-    {
-      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
-      "section": "Jetpack Thrusters",
-      "key": "Initial Maximum Speed Increase",
-      "value": 25
-    }
-  ],
-  "local_plugin_builds": [
-    {
-      "project": "Patches/S142WJetpackAcceleration/S142WJetpackAcceleration.csproj",
-      "configuration": "Release",
-      "built_file": "Patches/S142WJetpackAcceleration/bin/Release/netstandard2.1/S142WJetpackAcceleration.dll",
-      "archive_path": "BepInEx/plugins/S142WJetpackAcceleration/S142WJetpackAcceleration.dll"
-    }
-  ],
-  "text_assertions": [
-    {
-      "path": "BepInEx/config/dev.idjut.SnailFork.cfg",
-      "contains": "Max Snails = 2"
-    },
-    {
-      "path": "BepInEx/config/dev.idjut.SnailFork.cfg",
-      "contains": "Rarity = 40"
-    },
-    {
-      "path": "BepInEx/config/CodeRebirth.cfg",
-      "contains": "Functional Microwave | Volume = 0.15"
-    },
-    {
-      "path": "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
-      "contains": "Control Scheme = V49"
-    },
-    {
-      "path": "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
-      "contains": "Warmup Period = false"
-    },
-    {
-      "path": "BepInEx/config/butterystancakes.lethalcompany.jetpackfixes.cfg",
-      "contains": "MidAirExplosions = Off"
-    },
-    {
-      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
-      "contains": "Initial Acceleration Increase = 20"
-    },
-    {
-      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
-      "contains": "Incremental Acceleration Increase = 20"
-    },
-    {
-      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
-      "contains": "Initial Maximum Speed Increase = 25"
-    },
-    {
-      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
-      "contains": "Incremental Maximum Speed Increase = 20"
-    }
-  ]
+  "config_patches": [],
+  "local_plugin_builds": [],
+  "text_assertions": []
 }
