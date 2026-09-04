@@ -64,17 +64,18 @@ No successor is armed.
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
 2. `Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md`
-3. `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
-4. `Current/Projektstatus_S1.42AC_REJECTED.json`
-5. `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`
-6. `Current/Projektstatus_S1.42AB_ACCEPTED.json`
-7. `Current/00_CURRENT_STATE.md`
-8. `Current/01_HANDOVER_CORE.md`
-9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-10. `BuildSpecs/current.json`
-11. `RuntimeInbox/ACTIVE_BUILD.txt`
-12. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-13. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+3. `Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md`
+4. `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
+5. `Current/Projektstatus_S1.42AC_REJECTED.json`
+6. `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`
+7. `Current/Projektstatus_S1.42AB_ACCEPTED.json`
+8. `Current/00_CURRENT_STATE.md`
+9. `Current/01_HANDOVER_CORE.md`
+10. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+11. `BuildSpecs/current.json`
+12. `RuntimeInbox/ACTIVE_BUILD.txt`
+13. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+14. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
 
 Historical candidate/build files remain evidence; chronologically newer confirmed rejection/acceptance records override older open-candidate wording.
 
