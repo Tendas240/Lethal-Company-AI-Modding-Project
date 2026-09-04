@@ -1,0 +1,70 @@
+{
+  "created": true,
+  "source_size_limit_bytes": 8388608,
+  "target_chunk_bytes": 262144,
+  "chunks": [
+    {
+      "file": "chat_chunks/chunk_0001_L00000001-L00002488.log",
+      "line_start": 1,
+      "line_end": 2488,
+      "size": 262298,
+      "sha256": "20fbb8c43556c35d9402bd8340886df6124b87652a719dcf98ca42d83060cc4c"
+    },
+    {
+      "file": "chat_chunks/chunk_0002_L00002489-L00005083.log",
+      "line_start": 2489,
+      "line_end": 5083,
+      "size": 262189,
+      "sha256": "23e6856e7268c65d1982c57f3b9fb0a69452eaa75a5b27cfe294015c32eab4a1"
+    },
+    {
+      "file": "chat_chunks/chunk_0003_L00005084-L00007963.log",
+      "line_start": 5084,
+      "line_end": 7963,
+      "size": 262149,
+      "sha256": "f5668195d01c1a66f3a57d660acaed4663a995f558aef0f59970d071755a5f12"
+    },
+    {
+      "file": "chat_chunks/chunk_0004_L00007964-L00010683.log",
+      "line_start": 7964,
+      "line_end": 10683,
+      "size": 262213,
+      "sha256": "0870273ee68ae9171d65b9f792831d8b4e0396ea5579545ce9754079957572de"
+    },
+    {
+      "file": "chat_chunks/chunk_0005_L00010684-L00013189.log",
+      "line_start": 10684,
+      "line_end": 13189,
+      "size": 262274,
+      "sha256": "943bb1e6a52b01f0ddc8418e1f7c22d3386be7fc784907b42f2dabbe81625e79"
+    },
+    {
+      "file": "chat_chunks/chunk_0006_L00013190-L00016049.log",
+      "line_start": 13190,
+      "line_end": 16049,
+      "size": 262189,
+      "sha256": "91e26ebe0837c97c95d4d4c4a3c55aa31a3da8b943b09b4eb99f6e35fcc46dd3"
+    },
+    {
+      "file": "chat_chunks/chunk_0007_L00016050-L00018726.log",
+      "line_start": 16050,
+      "line_end": 18726,
+      "size": 262202,
+      "sha256": "b3efc96c095d835797658fa07233bb7e9ef42638bcc3d30f3c728665b0c13e9b"
+    },
+    {
+      "file": "chat_chunks/chunk_0008_L00018727-L00021658.log",
+      "line_start": 18727,
+      "line_end": 21658,
+      "size": 262155,
+      "sha256": "907d8b48f620b2de5e49eb47c5c775bd3f745192ade62226aec31057706baa25"
+    },
+    {
+      "file": "chat_chunks/chunk_0009_L00021659-L00023260.log",
+      "line_start": 21659,
+      "line_end": 23260,
+      "size": 124127,
+      "sha256": "7bda2f3c2de82cc55bb5cf9462b82d940ee985f9092e2207e5e51b916e8547f0"
+    }
+  ]
+}

@@ -1,0 +1,1602 @@
+[11:50:37.7639215] [Info   : Unity Log] Setting DropHeldItem on item #4: 'FlashlightItem(Clone)
+[11:50:37.7639215] [Info   : Unity Log] Drop item 'FlashlightItem(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[11:50:37.7639215] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[11:50:37.7639215] [Info   : Unity Log] Set dropItem parentObject to null True
+[11:50:37.7639215] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[11:50:37.7639215] [Info   : Unity Log] DropHeldItem A; placeObject:False (16.11, -220.23, 100.83); item parent: Props (UnityEngine.Transform); (16.11, -220.23, 100.83); (-1.33, -212.62, 84.36)
+[11:50:37.7639215] [Debug  : LightsOut] DiscardItem Pro-flashlight
+[11:50:37.7639215] [Info   : Unity Log] Set dropItem parentObject to null True
+[11:50:37.7639215] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[11:50:37.7639215] [Info   : Unity Log] Item slot #5 null?: True
+[11:50:37.7639215] [Info   : Unity Log] Item slot #6 null?: True
+[11:50:37.7639215] [Info   : Unity Log] Item slot #7 null?: True
+[11:50:37.7639215] [Info   : Unity Log] Item slot #8 null?: True
+[11:50:37.7639215] [Info   : Unity Log] Item slot #9 null?: True
+[11:50:37.7639215] [Info   : Unity Log] Item slot #10 null?: True
+[11:50:37.7639215] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[11:50:37.7649219] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_VhJAgo #14 with force of 2.
+[11:50:37.7670550] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Has Invincible mode when hit
+[11:50:37.7670550] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_IkVZWQe #26 with force of 2.
+[11:50:37.7670550] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Has Invincible mode when hit
+[11:50:37.7680547] [Info   : Unity Log] Local client hit enemy StingrayEnemy(Clone) #8 with force of 3.
+[11:50:37.7690557] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[11:50:37.7690557] [Debug  :   Coroner] Handling Shotgun damage...
+[11:50:37.7690557] [Debug  :   Coroner] Shotgun killed Player! Checking wielder...
+[11:50:37.7690557] [Debug  :   Coroner] Shotgun (Nutcracker) killed player! Setting special cause of death...
+[11:50:37.7690557] [Debug  :   Coroner] Serializing AdvancedCauseOfDeath(DeathEnemyNutcrackerShot) to DeathEnemyNutcrackerShot
+[11:50:37.7690557] [Debug  :   Coroner] Server received cause of death via RPC: (0, DeathEnemyNutcrackerShot)
+[11:50:37.7690557] [Debug  :   Coroner] Client received cause of death via RPC: (0, DeathEnemyNutcrackerShot)
+[11:50:37.7690557] [Debug  :   Coroner] Deserialized cause of death to AdvancedCauseOfDeath(DeathEnemyNutcrackerShot)
+[11:50:37.7690557] [Debug  :   Coroner] Player 0 has no custom cause of death stored! Returning null...
+[11:50:37.7690557] [Debug  :   Coroner] Storing cause of death DeathEnemyNutcrackerShot (overriding null) for player 0!
+[11:50:37.7690557] [Debug  :   Coroner] Player 0 has custom cause of death stored! DeathEnemyNutcrackerShot
+[11:50:37.7690557] [Warning:   Coroner] Player 0 already has a cause of death set (DeathEnemyNutcrackerShot), not overwriting it with DeathEnemyNutcrackerShot.
+[11:50:37.7704508] [Debug  :ScienceBirdTweaks] Shot fired, updating tooltip!
+[11:50:37.7714494] [Info   : Unity Log] PlayerScript set for body with id 0 PlayerRagdoll(Clone)
+[11:50:37.7714494] [Debug  :Buttery Fixes] Badges added to player corpse
+[11:50:37.7714494] [Info   : LethalMin] Creating PikminItemNode for RagdollGrabbableObject(Clone) at (-17.22, 9.55, -30.56)...
+[11:50:37.7714494] [Debug  : LethalMin] Initializing PikminItem PikminItemNode(Clone) with item PikminItemNode(Clone) (True)
+[11:50:37.7714494] [Info   : LethalMin] PikminItem PikminItemNode(Clone) has no carry strength set, setting to default
+[11:50:37.7714494] [Debug  : LethalMin] Calculated weight for Body: 11 lb, Devided weight: 4.4 lb
+[11:50:37.7714494] [Debug  : LethalMin] A True, B True rename reasons
+[11:50:37.7714494] [Debug  : LethalMin] (Body (PikminItem Node)) Colider: RagdollGrabbableObject(Clone) (UnityEngine.BoxCollider)
+[11:50:37.7714494] [Debug  : LethalMin] (Body (PikminItem Node)) Center: (-17.22, 9.55, -30.56)
+[11:50:37.8001805] [Info   : Unity Log] !!!! DISABLING CAMERA FOR PLAYER: Player
+[11:50:37.8001805] [Info   : Unity Log] !!!! connectedPlayersAmount: 0
+[11:50:37.8001805] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player took damage (Health: 0)
+[11:50:37.8001805] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player has died
+[11:50:37.8001805] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited facility
+[11:50:37.8076924] [Debug  : LethalMin] Animator Controller changed from metarig to metarigOtherPlayers
+[11:50:37.8086926] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.8086926] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.8086926] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.8086926] [Info   : Unity Log] cloak speed lunge: 11
+[11:50:37.8086926] [Debug  : LethalMin] Creating counter for Body (PikminItem Node)
+[11:50:37.8112022] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Insane to 1948
+[11:50:37.8112022] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryBad to 321
+[11:50:37.8112022] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Bad to 1071
+[11:50:37.8112022] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Neutral to 1015
+[11:50:37.8112022] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Good to 2140
+[11:50:37.8112022] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryGood to 1015
+[11:50:37.8112022] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Rare to 2685
+[11:50:37.8112022] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Remove to 1003
+[11:50:37.8167122] [Info   :BrutalCompanyMinusExtraReborn] Executing OnShipLeave for all events()
+[11:50:37.8177114] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[11:50:37.8177114] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[11:50:37.8177114] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[11:50:37.8177114] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[11:50:37.8177114] [Info   :BrutalCompanyMinusExtraReborn] Restoring un-modified level enemy spawns on current level.
+[11:50:37.8177114] [Info   : LethalMin] Game Ended, Deinitializing PikminManager
+[11:50:37.8177114] [Info   : LethalMin] Pikmin Purple Pikmin_ib6l is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Purple Pikmin_ib6l: Dropped item TeaKettle(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Purple Pikmin_ib6l: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Purple Pikmin_ib6l: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Purple Pikmin_ib6l: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Purple Pikmin_ib6l: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_8LNgEB is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_8LNgEB: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_G5l3h is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_G5l3h: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_khCd is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_khCd: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_khCd: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_khCd: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_khCd: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_khCd: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_LuMKh is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_LuMKh: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_PerDu is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_PerDu: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_PerDu: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_PerDu: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_PerDu: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_PerDu: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_ruCpzY is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_ruCpzY: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_XYErHj is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_XYErHj: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_pxom is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_pxom: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_pxom: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_pxom: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_pxom: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_pxom: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_apYy5 is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_apYy5: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_apYy5: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_apYy5: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_apYy5: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_apYy5: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_3wnH is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_3wnH: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_3wnH: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_3wnH: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_3wnH: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_3wnH: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_2nE2lyy is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_2nE2lyy: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : LethalMin] Pikmin Yellow Pikmin_hcRGph is outside and not dead/dying, checking if it can leave
+[11:50:37.8192142] [Info   : LethalMin] Yellow Pikmin_hcRGph: Dropped item CrawlerBody(Clone)
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Removed Leader
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Setting collision mode to 1
+[11:50:37.8192142] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[11:50:37.8192142] [Info   : Unity Log] [F] The ship is leaving.................
+[11:50:37.8192142] [Info   :HerobrineMod] The ship is leaving.................
+[11:50:37.8442552] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship has taken off
+[11:50:37.8442552] [Debug  :PizzaTowerEscapeMusic ScriptManager] Conditions for a script event have been met!
+ Script Event Type: StopMusic
+   Game Event Type: ShipTakeOff
+           Comment: StopMusic quand ShipTakeOff
+[11:50:37.8467623] [Info   : LethalMin] TeaKettle(Clone) is not carrying enough pikmin and is dropping it
+[11:50:37.8487623] [Info   : LethalMin] Adjusted target floor position: (96.54, 6.79, -52.25)
+[11:50:37.8487623] [Info   : LethalMin] TeaKettle(Clone) is dropping an item on local client
+[11:50:37.8487623] [Info   : LethalMin] PrimaryLeader: MasaeAhmya
+[11:50:37.8487623] [Info   : LethalMin] TeaKettle(Clone) dropped an item on a non-physics region parent
+[11:50:37.8502649] [Info   : LethalMin] TeaKettle(Clone) has cleared its route
+[11:50:37.8512705] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.8512705] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.8512705] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.8512705] [Info   : Unity Log] cloak speed lunge: 10.68403
+[11:50:37.8533396] [Info   : LethalMin] CrawlerBody(Clone) is not carrying enough pikmin and is dropping it
+[11:50:37.8543371] [Info   : LethalMin] Adjusted target floor position: (139.52, 9.09, -44.37)
+[11:50:37.8543371] [Info   : LethalMin] CrawlerBody(Clone) is dropping an item on local client
+[11:50:37.8543371] [Info   : LethalMin] PrimaryLeader: MasaeAhmya
+[11:50:37.8543371] [Info   : LethalMin] CrawlerBody(Clone) dropped an item on a non-physics region parent
+[11:50:37.8543371] [Info   : LethalMin] CrawlerBody(Clone) has cleared its route
+[11:50:37.8693683] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.8693683] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.8693683] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.8693683] [Info   : Unity Log] cloak speed lunge: 9.856516
+[11:50:37.8758748] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Found item: Body (PikminItem Node)
+[11:50:37.8758748] [Info   : LethalMin] Yellow Pikmin_VhJAgo: targeting item Body (PikminItem Node) at GrabPosition_7
+[11:50:37.8758748] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Setting current task to CarryItem
+[11:50:37.8768801] [Info   : LethalMin] Yellow Pikmin_Aq9v9: Found item: Body (PikminItem Node)
+[11:50:37.8768801] [Info   : LethalMin] Yellow Pikmin_Aq9v9: targeting item Body (PikminItem Node) at GrabPosition_6
+[11:50:37.8768801] [Info   : LethalMin] Yellow Pikmin_Aq9v9: Setting current task to CarryItem
+[11:50:37.8888930] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.8888930] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.8888930] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.8888930] [Info   : Unity Log] cloak speed lunge: 9.542669
+[11:50:37.8989092] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:37.8989092] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.8989092] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.8989092] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.8989092] [Info   : Unity Log] cloak speed lunge: 9.301847
+[11:50:37.9099231] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.9099231] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.9099231] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.9099231] [Info   : Unity Log] cloak speed lunge: 9.154289
+[11:50:37.9109256] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Found item: Body (PikminItem Node)
+[11:50:37.9109256] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: targeting item Body (PikminItem Node) at GrabPosition_5
+[11:50:37.9109256] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Setting current task to CarryItem
+[11:50:37.9195746] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.9195746] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.9195746] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.9195746] [Info   : Unity Log] cloak speed lunge: 9.046254
+[11:50:37.9286002] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.9286002] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.9286002] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.9286002] [Info   : Unity Log] cloak speed lunge: 8.923611
+[11:50:37.9366143] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.9366143] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.9366143] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.9366143] [Info   : Unity Log] cloak speed lunge: 8.824019
+[11:50:37.9456246] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.9456246] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.9456246] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.9466292] [Info   : Unity Log] cloak speed lunge: 8.716327
+[11:50:37.9541443] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.9541443] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.9541443] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.9541443] [Info   : Unity Log] cloak speed lunge: 8.6117
+[11:50:37.9631629] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.9631629] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.9631629] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.9631629] [Info   : Unity Log] cloak speed lunge: 8.496783
+[11:50:37.9718791] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.9718791] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.9718791] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.9718791] [Info   : Unity Log] cloak speed lunge: 8.40644
+[11:50:37.9793873] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.9793873] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.9793873] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.9793873] [Info   : Unity Log] cloak speed lunge: 8.293455
+[11:50:37.9888937] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.9888937] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.9888937] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.9888937] [Info   : Unity Log] cloak speed lunge: 8.202353
+[11:50:37.9979089] [Info   : Unity Log] Time since hitting < 8!
+[11:50:37.9979089] [Info   : Unity Log] Whining audio playing?: False
+[11:50:37.9979089] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:37.9979089] [Info   : Unity Log] cloak speed lunge: 8.105937
+[11:50:38.0059190] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0059190] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0059190] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0059190] [Info   : Unity Log] cloak speed lunge: 7.986346
+[11:50:38.0139227] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:38.0139227] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0139227] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0139227] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0139227] [Info   : Unity Log] cloak speed lunge: 7.890783
+[11:50:38.0211548] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0211548] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0211548] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0211548] [Info   : Unity Log] cloak speed lunge: 7.78301
+[11:50:38.0311718] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0311718] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0311718] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0311718] [Info   : Unity Log] cloak speed lunge: 7.69888
+[11:50:38.0388169] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0388169] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0388169] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0388169] [Info   : Unity Log] cloak speed lunge: 7.601016
+[11:50:38.0478314] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0478314] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0478314] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0478314] [Info   : Unity Log] cloak speed lunge: 7.482761
+[11:50:38.0555889] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0555889] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0555889] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0555889] [Info   : Unity Log] cloak speed lunge: 7.387446
+[11:50:38.0639615] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0639615] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0639615] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0639615] [Info   : Unity Log] cloak speed lunge: 7.283624
+[11:50:38.0714841] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0714841] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0714841] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0714841] [Info   : Unity Log] cloak speed lunge: 7.197989
+[11:50:38.0789898] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0789898] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0789898] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0789898] [Info   : Unity Log] cloak speed lunge: 7.09278
+[11:50:38.0873176] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0873176] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0873176] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0873176] [Info   : Unity Log] cloak speed lunge: 7.007275
+[11:50:38.0943183] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.0943183] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.0943183] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.0943183] [Info   : Unity Log] cloak speed lunge: 6.917235
+[11:50:38.1013347] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.1013347] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.1013347] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.1013347] [Info   : Unity Log] cloak speed lunge: 6.821117
+[11:50:38.1178543] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.1178543] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.1178543] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.1178543] [Info   : Unity Log] cloak speed lunge: 6.729851
+[11:50:38.1269750] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:38.1279762] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.1279762] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.1279762] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.1279762] [Info   : Unity Log] cloak speed lunge: 6.55077
+[11:50:38.1369911] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.1369911] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.1369911] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.1369911] [Info   : Unity Log] cloak speed lunge: 6.434182
+[11:50:38.1470585] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.1470585] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.1470585] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.1470585] [Info   : Unity Log] cloak speed lunge: 6.314711
+[11:50:38.1555638] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.1555638] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.1555638] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.1555638] [Info   : Unity Log] cloak speed lunge: 6.203625
+[11:50:38.1643775] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.1643775] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.1643775] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.1643775] [Info   : Unity Log] cloak speed lunge: 6.09097
+[11:50:38.1713940] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.1713940] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.1713940] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.1713940] [Info   : Unity Log] cloak speed lunge: 5.996305
+[11:50:38.1779084] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.1779084] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.1779084] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.1779084] [Info   : Unity Log] cloak speed lunge: 5.895658
+[11:50:38.1859198] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.1859198] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.1859198] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.1859198] [Info   : Unity Log] cloak speed lunge: 5.814068
+[11:50:38.1929230] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.1929230] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.1929230] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.1929230] [Info   : Unity Log] cloak speed lunge: 5.728438
+[11:50:38.2011051] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2011051] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2011051] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2011051] [Info   : Unity Log] cloak speed lunge: 5.629303
+[11:50:38.2086127] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2086127] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2086127] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2086127] [Info   : Unity Log] cloak speed lunge: 5.544002
+[11:50:38.2166286] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2166286] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2166286] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2166286] [Info   : Unity Log] cloak speed lunge: 5.454273
+[11:50:38.2242228] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2242228] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2242228] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2242228] [Info   : Unity Log] cloak speed lunge: 5.351728
+[11:50:38.2327406] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2327406] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2327406] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2327406] [Info   : Unity Log] cloak speed lunge: 5.265247
+[11:50:38.2388785] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:38.2403830] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2403830] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2403830] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2403830] [Info   : Unity Log] cloak speed lunge: 5.163998
+[11:50:38.2478942] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2478942] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2478942] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2478942] [Info   : Unity Log] cloak speed lunge: 5.07788
+[11:50:38.2559085] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2559085] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2559085] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2559085] [Info   : Unity Log] cloak speed lunge: 4.987693
+[11:50:38.2639213] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2639213] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2639213] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2639213] [Info   : Unity Log] cloak speed lunge: 4.884472
+[11:50:38.2711260] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2711260] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2711260] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2711260] [Info   : Unity Log] cloak speed lunge: 4.800837
+[11:50:38.2780589] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2780589] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2780589] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2780589] [Info   : Unity Log] cloak speed lunge: 4.699284
+[11:50:38.2855661] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2855661] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2855661] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2855661] [Info   : Unity Log] cloak speed lunge: 4.621316
+[11:50:38.2920774] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2930764] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2930764] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2930764] [Info   : Unity Log] cloak speed lunge: 4.53662
+[11:50:38.2985847] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.2985847] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.2985847] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.2985847] [Info   : Unity Log] cloak speed lunge: 4.440521
+[11:50:38.3075999] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3075999] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3075999] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3075999] [Info   : Unity Log] cloak speed lunge: 4.360189
+[11:50:38.3141066] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3141066] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3141066] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3141066] [Info   : Unity Log] cloak speed lunge: 4.274981
+[11:50:38.3221203] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3221203] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3221203] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3221203] [Info   : Unity Log] cloak speed lunge: 4.179049
+[11:50:38.3324063] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3324063] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3324063] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3324063] [Info   : Unity Log] cloak speed lunge: 4.090709
+[11:50:38.3409339] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3409339] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3409339] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3409339] [Info   : Unity Log] cloak speed lunge: 3.974303
+[11:50:38.3490623] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:38.3500612] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3500612] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3500612] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3500612] [Info   : Unity Log] cloak speed lunge: 3.863374
+[11:50:38.3566543] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3566543] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3566543] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3576551] [Info   : Unity Log] cloak speed lunge: 3.765575
+[11:50:38.3641634] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3641634] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3641634] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3641634] [Info   : Unity Log] cloak speed lunge: 3.663293
+[11:50:38.3721772] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3721772] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3721772] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3721772] [Info   : Unity Log] cloak speed lunge: 3.586466
+[11:50:38.3789075] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3789075] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3789075] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3789075] [Info   : Unity Log] cloak speed lunge: 3.484165
+[11:50:38.3869225] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3869225] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3869225] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3869225] [Info   : Unity Log] cloak speed lunge: 3.40278
+[11:50:38.3934278] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3934278] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3934278] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3934278] [Info   : Unity Log] cloak speed lunge: 3.323214
+[11:50:38.3999366] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.3999366] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.3999366] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.3999366] [Info   : Unity Log] cloak speed lunge: 3.225206
+[11:50:38.4073442] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4073442] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4073442] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4073442] [Info   : Unity Log] cloak speed lunge: 3.147132
+[11:50:38.4133440] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4133440] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4133440] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4133440] [Info   : Unity Log] cloak speed lunge: 3.071783
+[11:50:38.4188514] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4188514] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4188514] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4188514] [Info   : Unity Log] cloak speed lunge: 2.987952
+[11:50:38.4263701] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4263701] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4263701] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4263701] [Info   : Unity Log] cloak speed lunge: 2.915967
+[11:50:38.4345348] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4345348] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4345348] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4345348] [Info   : Unity Log] cloak speed lunge: 2.846202
+[11:50:38.4412008] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4412008] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4412008] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4412008] [Info   : Unity Log] cloak speed lunge: 2.735517
+[11:50:38.4432016] [Warning:S1.39 Compatibility Fixes] [ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.
+[11:50:38.4487111] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4487111] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4487111] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4487111] [Info   : Unity Log] cloak speed lunge: 2.651023
+[11:50:38.4562302] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4562302] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4562302] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4562302] [Info   : Unity Log] cloak speed lunge: 2.574589
+[11:50:38.4632381] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:38.4642388] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4642388] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4642388] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4642388] [Info   : Unity Log] cloak speed lunge: 2.480413
+[11:50:38.4702490] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4702490] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4702490] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4702490] [Info   : Unity Log] cloak speed lunge: 2.392799
+[11:50:38.4768056] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4768056] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4768056] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4768056] [Info   : Unity Log] cloak speed lunge: 2.300803
+[11:50:38.4833137] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4833137] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4833137] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4833137] [Info   : Unity Log] cloak speed lunge: 2.230045
+[11:50:38.4888214] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4888214] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4888214] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4888214] [Info   : Unity Log] cloak speed lunge: 2.160346
+[11:50:38.4943285] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.4943285] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.4943285] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.4943285] [Info   : Unity Log] cloak speed lunge: 2.080091
+[11:50:38.5003404] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5003404] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5003404] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5003404] [Info   : Unity Log] cloak speed lunge: 2.010852
+[11:50:38.5078499] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5078499] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5078499] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5078499] [Info   : Unity Log] cloak speed lunge: 1.941125
+[11:50:38.5143586] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5143586] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5143586] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5143586] [Info   : Unity Log] cloak speed lunge: 1.866722
+[11:50:38.5188680] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5188680] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5188680] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5188680] [Info   : Unity Log] cloak speed lunge: 1.783013
+[11:50:38.5271298] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5271298] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5271298] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5271298] [Info   : Unity Log] cloak speed lunge: 1.709567
+[11:50:38.5336405] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5336405] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5336405] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5336405] [Info   : Unity Log] cloak speed lunge: 1.636253
+[11:50:38.5388698] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5388698] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5388698] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5388698] [Info   : Unity Log] cloak speed lunge: 1.545521
+[11:50:38.5468877] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5468877] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5468877] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5468877] [Info   : Unity Log] cloak speed lunge: 1.475935
+[11:50:38.5528982] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5528982] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5528982] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5528982] [Info   : Unity Log] cloak speed lunge: 1.397929
+[11:50:38.5584104] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5584104] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5584104] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5584104] [Info   : Unity Log] cloak speed lunge: 1.311671
+[11:50:38.5644312] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5644312] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5644312] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5644312] [Info   : Unity Log] cloak speed lunge: 1.243236
+[11:50:38.5709416] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:38.5709416] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5709416] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5709416] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5709416] [Info   : Unity Log] cloak speed lunge: 1.176316
+[11:50:38.5769634] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5769634] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5769634] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5769634] [Info   : Unity Log] cloak speed lunge: 1.09293
+[11:50:38.5859646] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5859646] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5859646] [Info   : Unity Log] Whining audio playing? B: False
+[11:50:38.5859646] [Info   : Unity Log] cloak speed lunge: 1.024117
+[11:50:38.5930185] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5930185] [Info   : Unity Log] Whining audio playing?: False
+[11:50:38.5930185] [Info   : Unity Log] Start whining audio!
+[11:50:38.5930185] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.5930185] [Info   : Unity Log] cloak speed lunge: 0.9406464
+[11:50:38.5990955] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.5990955] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.5990955] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.5990955] [Info   : Unity Log] cloak speed lunge: 0.83694
+[11:50:38.6056009] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6056009] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6056009] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6056009] [Info   : Unity Log] cloak speed lunge: 0.761838
+[11:50:38.6121138] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6121138] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6121138] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6121138] [Info   : Unity Log] cloak speed lunge: 0.6892644
+[11:50:38.6176230] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6176230] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6176230] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6176230] [Info   : Unity Log] cloak speed lunge: 0.6053184
+[11:50:38.6246320] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6246320] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6246320] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6246320] [Info   : Unity Log] cloak speed lunge: 0.5332068
+[11:50:38.6301839] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6301839] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6301839] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6301839] [Info   : Unity Log] cloak speed lunge: 0.4636284
+[11:50:38.6356926] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6367475] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6367475] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6367475] [Info   : Unity Log] cloak speed lunge: 0.3824484
+[11:50:38.6432557] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6432557] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6432557] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6432557] [Info   : Unity Log] cloak speed lunge: 0.3115908
+[11:50:38.6483727] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6483727] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6483727] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6483727] [Info   : Unity Log] cloak speed lunge: 0.2427192
+[11:50:38.6548761] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6548761] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6548761] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6548761] [Info   : Unity Log] cloak speed lunge: 0.1621344
+[11:50:38.6609315] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6609315] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6609315] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6609315] [Info   : Unity Log] cloak speed lunge: 0.08876161
+[11:50:38.6670647] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6670647] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6670647] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6670647] [Info   : Unity Log] cloak speed lunge: 0.01977842
+[11:50:38.6730647] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6730647] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6730647] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6795788] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:38.6795788] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6795788] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6795788] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6887075] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6887075] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6887075] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.6967222] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.6967222] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.6967222] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7042316] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7042316] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7042316] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7102439] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7102439] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7102439] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7167565] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7167565] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7167565] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7232650] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7232650] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7232650] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7297745] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7297745] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7297745] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7343619] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7343619] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7343619] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7403725] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7403725] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7403725] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7468835] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7468835] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7468835] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7528932] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7528932] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7528932] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7580042] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7580042] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7580042] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7645130] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7645130] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7645130] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7645130] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Grabbed item Body (PikminItem Node) Speed is now: 3.1875
+[11:50:38.7645130] [Message: LethalMin] Body (PikminItem Node) Switched Primary Pikmin to Yellow Pikmin_IkVZWQe
+[11:50:38.7740243] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7740243] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7740243] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7814270] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7814270] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7814270] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7899377] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:38.7899377] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7899377] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7899377] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.7959339] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.7959339] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.7959339] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8031771] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8031771] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8031771] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8086858] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8086858] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8086858] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8141934] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8141934] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8141934] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8212135] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8212135] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8212135] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8287228] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8287228] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8287228] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8357731] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8357731] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8357731] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8442859] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8442859] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8442859] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8513012] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8513012] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8513012] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8579999] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8579999] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8579999] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8650000] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8650000] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8650000] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8720183] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8720183] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8720183] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8780370] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8780370] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8780370] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8879762] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8879762] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8879762] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.8959768] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.8959768] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.8959768] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9070048] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:38.9070048] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9070048] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9070048] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9150057] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9150057] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9150057] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9220953] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9220953] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9220953] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9286041] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9301079] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9301079] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9366473] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9366473] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9366473] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9456625] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9456625] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9456625] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9526776] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9526776] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9526776] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9606745] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9606745] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9606745] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9678423] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9678423] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9678423] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9758532] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9758532] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9758532] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9823674] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9823674] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9823674] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9913912] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9913912] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9913912] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:38.9988942] [Info   : Unity Log] Time since hitting < 8!
+[11:50:38.9988942] [Info   : Unity Log] Whining audio playing?: True
+[11:50:38.9988942] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0069121] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0069121] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0069121] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0134199] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:39.0144190] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0144190] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0144190] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0204311] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0204311] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0204311] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0279424] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0279424] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0279424] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0349594] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0349594] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0349594] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0439722] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0439722] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0439722] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0511230] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0511230] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0511230] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0581209] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0581209] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0581209] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0656239] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0656239] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0656239] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0731371] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0731371] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0731371] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0801519] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0801519] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0801519] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0870163] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0870163] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0870163] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.0940159] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.0940159] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.0940159] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1011138] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1011138] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1011138] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1086219] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1086219] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1086219] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1141309] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1141309] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1141309] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1211449] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:39.1211449] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1211449] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1211449] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1286513] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1286513] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1286513] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1343129] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1358169] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1358169] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1358169] [Info   : LethalMin] Yellow Pikmin_Aq9v9: Grabbed item Body (PikminItem Node) Speed is now: 5.875
+[11:50:39.1443305] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1443305] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1443305] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1443305] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Grabbed item Body (PikminItem Node) Speed is now: 8.5625
+[11:50:39.1443305] [Info   : LethalMin] Body (PikminItem Node) is grabbing an item on local client
+[11:50:39.1443305] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting collision mode to 1
+[11:50:39.1443305] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Setting collision mode to 0
+[11:50:39.1443305] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Setting collision mode to 0
+[11:50:39.1443305] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[11:50:39.1443305] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 44.44612
+[11:50:39.1443305] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 21.91153
+[11:50:39.1443305] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[11:50:39.1443305] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 44.44612
+[11:50:39.1458334] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 21.91153
+[11:50:39.1458334] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[11:50:39.1458334] [Info   : LethalMin] Body (PikminItem Node) successfully created a test route to the ToShip
+[11:50:39.1458334] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[11:50:39.1458334] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 44.44612
+[11:50:39.1458334] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 21.91153
+[11:50:39.1458334] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[11:50:39.1458334] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 44.44612
+[11:50:39.1458334] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 21.91153
+[11:50:39.1458334] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[11:50:39.1458334] [Info   : LethalMin] Body (PikminItem Node) has created a route
+[11:50:39.1538570] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1538570] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1538570] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1611858] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1611858] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1611858] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1686921] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1686921] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1686921] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1767089] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1767089] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1767089] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1847236] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1847236] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1847236] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1912452] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1912452] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1912452] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.1977531] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.1977531] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.1977531] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2067673] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2067673] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2067673] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2132740] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2132740] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2132740] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2187840] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2187840] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2187840] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2268004] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2268004] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2268004] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2338234] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:39.2338234] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2338234] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2338234] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2440234] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2440234] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2440234] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2511676] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2511676] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2511676] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2589347] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2589347] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2589347] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2670895] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2670895] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2670895] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2740888] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2740888] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2740888] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2740888] [Info   : Unity Log] SET SPECTATED PLAYER EFFECTS; True
+[11:50:39.2740888] [Info   : Unity Log] Enable sun direct light
+[11:50:39.2740888] [Info   : Unity Log] All players dead; set reverb to preset #3
+[11:50:39.2801017] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2801017] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2801017] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2889766] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2889766] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2889766] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.2959769] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.2959769] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.2959769] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.3042300] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.3042300] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.3042300] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.3112468] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.3112468] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.3112468] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.3187564] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.3187564] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.3187564] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.3277777] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.3277777] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.3277777] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.3361230] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.3361230] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.3361230] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.3441242] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:39.3456277] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.3456277] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.3456277] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.3546496] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.3546496] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.3546496] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.3671942] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.3671942] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.3671942] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.3777044] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.3777044] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.3777044] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.3867397] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.3867397] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.3867397] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.3942475] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.3942475] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.3942475] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.4032639] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.4032639] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.4032639] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.4107792] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.4107792] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.4107792] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.4188107] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.4188107] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.4188107] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.4288263] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.4288263] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.4288263] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.4391161] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.4391161] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.4391161] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.4486277] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.4486277] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.4486277] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.4511355] [Warning: Unity Log] Setting linear velocity of a kinematic body is not supported.
+[11:50:39.4511355] [Warning: Unity Log] Setting angular velocity of a kinematic body is not supported.
+[11:50:39.4568116] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:39.4568116] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.4568116] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.4568116] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.4658223] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.4658223] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.4658223] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.4743362] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.4758394] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.4758394] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.4858553] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.4858553] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.4858553] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.4933660] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.4943654] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.4943654] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5013804] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5013804] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5013804] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5104096] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5104096] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5104096] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5179226] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5179226] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5179226] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5259356] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5259356] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5259356] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5334484] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5334484] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5334484] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5410662] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5410662] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5410662] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5485743] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5485743] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5485743] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5555900] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5555900] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5555900] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5637890] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5637890] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5637890] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5704000] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:39.5704000] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5704000] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5704000] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5779127] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5779127] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5779127] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5869277] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5869277] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5869277] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.5944614] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.5944614] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.5944614] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6019687] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6019687] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6019687] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6099800] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6099800] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6099800] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6171392] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6171392] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6171392] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6241370] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6241370] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6241370] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6311510] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6311510] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6311510] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6376636] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6376636] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6376636] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6456806] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6456806] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6456806] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6526970] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6526970] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6526970] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6601283] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6601283] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6601283] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6676351] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6676351] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6676351] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6741461] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6741461] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6741461] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6811600] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:39.6821603] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6821603] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6821603] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6896718] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6896718] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6896718] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.6970919] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.6970919] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.6970919] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7040915] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7040915] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7040915] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7121064] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7121064] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7121064] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7186157] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7186157] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7186157] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7266323] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7266323] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7266323] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7356472] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7356472] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7356472] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7441612] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7441612] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7441612] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7511761] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7511761] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7511761] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7577054] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7577054] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7577054] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7657501] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7657501] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7657501] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7732629] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7732629] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7732629] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7802768] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7802768] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7802768] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7887960] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7887960] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7887960] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.7958088] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:39.7958088] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.7958088] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.7958088] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8043203] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8043203] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8043203] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8123426] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8123426] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8123426] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8188482] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8188482] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8188482] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8278677] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8278677] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8278677] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8368858] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8368858] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8368858] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8443927] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8443927] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8443927] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8529120] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8529120] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8529120] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8604221] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8604221] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8604221] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8689299] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8689299] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8689299] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8769452] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8769452] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8769452] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8844546] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8844546] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8844546] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.8927408] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.8927408] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.8927408] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9000244] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9000244] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9000244] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9075357] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:39.9085365] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9085365] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9085365] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9150454] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9150454] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9150454] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9221248] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9221248] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9221248] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9286317] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9286317] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9286317] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9361796] [Info   : Unity Log] Butler: pinged attention to position
+[11:50:39.9371837] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9371837] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9371837] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9435262] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9435262] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9435262] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9500346] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9500346] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9500346] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9559982] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9559982] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9559982] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9635117] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9635117] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9635117] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9700216] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9700216] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9700216] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9760211] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9760211] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9760211] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9842044] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9842044] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9842044] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9902166] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9902166] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9902166] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:39.9972297] [Info   : Unity Log] Time since hitting < 8!
+[11:50:39.9972297] [Info   : Unity Log] Whining audio playing?: True
+[11:50:39.9972297] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.0042319] [Info   : Unity Log] Time since hitting < 8!
+[11:50:40.0042319] [Info   : Unity Log] Whining audio playing?: True
+[11:50:40.0042319] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.0102434] [Info   : Unity Log] Time since hitting < 8!
+[11:50:40.0102434] [Info   : Unity Log] Whining audio playing?: True
+[11:50:40.0102434] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.0157496] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 3
+[11:50:40.0167535] [Info   : Unity Log] Time since hitting < 8!
+[11:50:40.0167535] [Info   : Unity Log] Whining audio playing?: True
+[11:50:40.0167535] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.0232599] [Info   : Unity Log] Time since hitting < 8!
+[11:50:40.0232599] [Info   : Unity Log] Whining audio playing?: True
+[11:50:40.0232599] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.0302711] [Info   : Unity Log] Time since hitting < 8!
+[11:50:40.0302711] [Info   : Unity Log] Whining audio playing?: True
+[11:50:40.0302711] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.0373340] [Info   : Unity Log] Time since hitting < 8!
+[11:50:40.0373340] [Info   : Unity Log] Whining audio playing?: True
+[11:50:40.0373340] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.0458400] [Info   : Unity Log] Time since hitting < 8!
+[11:50:40.0458400] [Info   : Unity Log] Whining audio playing?: True
+[11:50:40.0458400] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.0514145] [Info   : Unity Log] Time since hitting < 8!
+[11:50:40.0514145] [Info   : Unity Log] Whining audio playing?: True
+[11:50:40.0514145] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.0580597] [Info   : Unity Log] Time since hitting < 8!
+[11:50:40.0580597] [Info   : Unity Log] Whining audio playing?: True
+[11:50:40.0580597] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.0655638] [Info   : Unity Log] Time since hitting < 8!
+[11:50:40.0655638] [Info   : Unity Log] Whining audio playing?: True
+[11:50:40.0655638] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.0730747] [Info   : Unity Log] Leaving current lobby
+[11:50:40.0730747] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[11:50:40.0987908] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[11:50:40.0987908] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[11:50:40.0987908] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[11:50:40.0987908] [Info   :Rolling Giant] Resetting all rolling giants!
+[11:50:40.0987908] [Message:Rolling Giant] Reverting sync
+[11:50:40.1002973] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[11:50:40.1002973] [Debug  :MrHat.BasedItemSaving] Saved 10 exact item poses
+[11:50:40.1002973] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[11:50:40.1002973] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[11:50:40.1002973] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[11:50:40.1203315] [Info   : Unity Log] Time since hitting < 8!
+[11:50:40.1203315] [Info   : Unity Log] Whining audio playing?: True
+[11:50:40.1203315] [Info   : Unity Log] Whining audio playing? B: True
+[11:50:40.1288455] [Info   :LethalPerformance] Saved 2 save(s)
+[11:50:40.1358572] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[11:50:40.1599594] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Task finished
+[11:50:40.1599594] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting to idle on local client
+[11:50:40.1599594] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Dropped item Body (PikminItem Node)
+[11:50:40.1599594] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting collision mode to 1
+[11:50:40.1599594] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Removed Leader
+[11:50:40.1599594] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Removing current task
+[11:50:40.1599594] [Info   : LethalMin] Yellow Pikmin_Aq9v9: Task finished
+[11:50:40.1599594] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Setting to idle on local client
+[11:50:40.1599594] [Info   : LethalMin] Yellow Pikmin_Aq9v9: Dropped item Body (PikminItem Node)
+[11:50:40.1599594] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Setting collision mode to 1
+[11:50:40.1599594] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Removed Leader
+[11:50:40.1599594] [Info   : LethalMin] Yellow Pikmin_Aq9v9: Removing current task
+[11:50:40.1599594] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Task finished
+[11:50:40.1599594] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Setting to idle on local client
+[11:50:40.1599594] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Dropped item Body (PikminItem Node)
+[11:50:40.1599594] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Setting collision mode to 1
+[11:50:40.1599594] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Removed Leader
+[11:50:40.1599594] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Removing current task
+[11:50:40.1599594] [Info   : LethalMin] Body (PikminItem Node) has cleared its route
+[11:50:40.1629639] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Removed Leader
+[11:50:40.1629639] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Removed Leader
+[11:50:40.1629639] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Removed Leader
+[11:50:40.1629639] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Removed Leader
+[11:50:40.1629639] [Debug  : LethalMin] Yellow Pikmin_3wnH: Removed Leader
+[11:50:40.1639634] [Debug  : LethalMin] Yellow Pikmin_apYy5: Removed Leader
+[11:50:40.1639634] [Debug  : LethalMin] Yellow Pikmin_pxom: Removed Leader
+[11:50:40.1639634] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Removed Leader
+[11:50:40.1639634] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Removed Leader
+[11:50:40.1639634] [Debug  : LethalMin] Yellow Pikmin_PerDu: Removed Leader
+[11:50:40.1649649] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Removed Leader
+[11:50:40.1649649] [Debug  : LethalMin] Yellow Pikmin_khCd: Removed Leader
+[11:50:40.1649649] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Removed Leader
+[11:50:40.1649649] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Removed Leader
+[11:50:40.1649649] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Removed Leader
+[11:50:40.1690729] [Debug  : LethalMin] Purple Pikmin_J0Xf: Removed Leader
+[11:50:40.1690729] [Debug  : LethalMin] Purple Pikmin_0JKDLP: Removed Leader
+[11:50:40.1700712] [Debug  : LethalMin] Purple Pikmin_ib6l: Removed Leader
+[11:50:40.1700712] [Debug  : LethalMin] Bulbmin_QutJbW: Removed Leader
+[11:50:40.1700712] [Info   : LethalMin] White Pikmin_8Dgr: Removing current task
+[11:50:40.1700712] [Debug  : LethalMin] White Pikmin_8Dgr: Removed Leader
+[11:50:40.1700712] [Debug  : LethalMin] Bulbmin_qVTPqc: Removed Leader
+[11:50:40.1700712] [Info   : LethalMin] White Pikmin_XoFxyAe: Removing current task
+[11:50:40.1700712] [Debug  : LethalMin] White Pikmin_XoFxyAe: Removed Leader
+[11:50:40.1740746] [Info   : LethalMin] ShipOnion: saved 59 pikmin to disk on despawn.
+[11:50:40.1946228] [Info   :LobbyControl] 0 disconnected
+[11:50:40.1946228] [Info   : Unity Log] Disconnect callback called
+[11:50:40.1946228] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[11:50:40.1946228] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[11:50:40.1946228] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[11:50:40.1971326] [Debug  :Starlancer AI Fix] Crawler(Clone) from the interior enemy list has died; 
+Previous interior power level is 14
+[11:50:40.1971326] [Debug  :Starlancer AI Fix] Removing Crawler(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 11
+[11:50:40.1971326] [Debug  :Starlancer AI Fix] RollingGiant(Clone) from the interior enemy list has died; 
+Previous interior power level is 11
+[11:50:40.1971326] [Debug  :Starlancer AI Fix] Removing RollingGiant(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 10
+[11:50:40.1981308] [Debug  :Starlancer AI Fix] Crawler(Clone) from the interior enemy list has died; 
+Previous interior power level is 10
+[11:50:40.1981308] [Debug  :Starlancer AI Fix] Removing Crawler(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 7
+[11:50:40.1991313] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 7
+[11:50:40.1991313] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 6
+[11:50:40.2001309] [Debug  :Starlancer AI Fix] StingrayEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 6
+[11:50:40.2001309] [Debug  :Starlancer AI Fix] Removing StingrayEnemy(Clone)'s power (0.5) from the RoundManager; 
+Current interior power level is 5.5
+[11:50:40.2001309] [Debug  :Starlancer AI Fix] Yellow Pikmin_IkVZWQe from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2001309] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_IkVZWQe's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2011309] [Debug  :Starlancer AI Fix] Yellow Pikmin_hcRGph from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2011309] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_hcRGph's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2011309] [Debug  :Starlancer AI Fix] Yellow Pikmin_Aq9v9 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2011309] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_Aq9v9's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2011309] [Debug  :Starlancer AI Fix] Yellow Pikmin_2nE2lyy from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2011309] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_2nE2lyy's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2011309] [Debug  :Starlancer AI Fix] Yellow Pikmin_3wnH from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2011309] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_3wnH's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2021313] [Debug  :Starlancer AI Fix] Yellow Pikmin_apYy5 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2021313] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_apYy5's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2021313] [Debug  :Starlancer AI Fix] Yellow Pikmin_pxom from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2021313] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_pxom's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2021313] [Debug  :Starlancer AI Fix] Yellow Pikmin_XYErHj from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2021313] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_XYErHj's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2031345] [Debug  :Starlancer AI Fix] Yellow Pikmin_ruCpzY from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2031345] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_ruCpzY's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2031345] [Debug  :Starlancer AI Fix] Yellow Pikmin_PerDu from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2031345] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_PerDu's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2031345] [Debug  :Starlancer AI Fix] Yellow Pikmin_LuMKh from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2031345] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_LuMKh's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2031345] [Debug  :Starlancer AI Fix] Yellow Pikmin_khCd from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2031345] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_khCd's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2041322] [Debug  :Starlancer AI Fix] Yellow Pikmin_VhJAgo from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2041322] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_VhJAgo's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2041322] [Debug  :Starlancer AI Fix] Yellow Pikmin_G5l3h from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2041322] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_G5l3h's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2041322] [Debug  :Starlancer AI Fix] Yellow Pikmin_8LNgEB from the exterior enemy list has died; 
+Previous exterior power level is 0
+[11:50:40.2041322] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_8LNgEB's power (0) from the RoundManager; 
+Current exterior power level is 0
+[11:50:40.2041322] [Debug  :Starlancer AI Fix] HoarderBug(Clone) from the interior enemy list has died; 
+Previous interior power level is 5.5
+[11:50:40.2041322] [Debug  :Starlancer AI Fix] Removing HoarderBug(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 4.5
+[11:50:40.2056350] [Debug  :Starlancer AI Fix] ButlerEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 4.5
+[11:50:40.2056350] [Debug  :Starlancer AI Fix] Removing ButlerEnemy(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 2.5
+[11:50:40.2066390] [Debug  :Starlancer AI Fix] HoarderBug(Clone) from the interior enemy list has died; 
+Previous interior power level is 2.5
+[11:50:40.2066390] [Debug  :Starlancer AI Fix] Removing HoarderBug(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 1.5
+[11:50:40.2076423] [Debug  :Starlancer AI Fix] StingrayEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 1.5
+[11:50:40.2076423] [Debug  :Starlancer AI Fix] Removing StingrayEnemy(Clone)'s power (0.5) from the RoundManager; 
+Current interior power level is 1
+[11:50:40.2076423] [Debug  :Starlancer AI Fix] NutcrackerEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 1
+[11:50:40.2076423] [Debug  :Starlancer AI Fix] Removing NutcrackerEnemy(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[11:50:40.2086430] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[11:50:40.2086430] [Debug  :Starlancer AI Fix] Purple Pikmin_J0Xf from the interior enemy list has died; 
+Previous interior power level is 0
+[11:50:40.2086430] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_J0Xf's power (0) from the RoundManager; 
+Current interior power level is 0
+[11:50:40.2101498] [Debug  :Starlancer AI Fix] Purple Pikmin_0JKDLP from the interior enemy list has died; 
+Previous interior power level is 0
+[11:50:40.2101498] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_0JKDLP's power (0) from the RoundManager; 
+Current interior power level is 0
+[11:50:40.2101498] [Debug  :Starlancer AI Fix] Purple Pikmin_ib6l from the interior enemy list has died; 
+Previous interior power level is 0
+[11:50:40.2101498] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_ib6l's power (0) from the RoundManager; 
+Current interior power level is 0
+[11:50:40.2101498] [Debug  :Starlancer AI Fix] Bulbmin_QutJbW from the interior enemy list has died; 
+Previous interior power level is 0
+[11:50:40.2101498] [Debug  :Starlancer AI Fix] Removing Bulbmin_QutJbW's power (0) from the RoundManager; 
+Current interior power level is 0
+[11:50:40.2101498] [Debug  :Starlancer AI Fix] White Pikmin_8Dgr from the interior enemy list has died; 
+Previous interior power level is 0
+[11:50:40.2101498] [Debug  :Starlancer AI Fix] Removing White Pikmin_8Dgr's power (0) from the RoundManager; 
+Current interior power level is 0
+[11:50:40.2111565] [Debug  :Starlancer AI Fix] Bulbmin_qVTPqc from the interior enemy list has died; 
+Previous interior power level is 0
+[11:50:40.2111565] [Debug  :Starlancer AI Fix] Removing Bulbmin_qVTPqc's power (0) from the RoundManager; 
+Current interior power level is 0
+[11:50:40.2111565] [Debug  :Starlancer AI Fix] White Pikmin_XoFxyAe from the interior enemy list has died; 
+Previous interior power level is 0
+[11:50:40.2111565] [Debug  :Starlancer AI Fix] Removing White Pikmin_XoFxyAe's power (0) from the RoundManager; 
+Current interior power level is 0
+[11:50:40.2111565] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2111565] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2111565] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2111565] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2121571] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2121571] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2121571] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2121571] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2121571] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2121571] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2121571] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2121571] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2121571] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2121571] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2121571] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2131561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2131561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2131561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2131561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2131561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2131561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2131561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2131561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2131561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2131561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2141545] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2176686] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA(Clone)
+[11:50:40.2186651] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch1
+[11:50:40.2186651] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch2
+[11:50:40.2186651] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch3
+[11:50:40.2186651] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch4
+[11:50:40.2186651] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch5
+[11:50:40.2186651] [Info   : Unity Log] Interact trigger destroying! name: PowerBoxDoor
+[11:50:40.2186651] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[11:50:40.2186651] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[11:50:40.2186651] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[11:50:40.2186651] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[11:50:40.2201687] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[11:50:40.2201687] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[11:50:40.2201687] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2201687] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2201687] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2201687] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2201687] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2201687] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2201687] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[11:50:40.2241723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2241723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[11:50:40.2256792] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2256792] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[11:50:40.2256792] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[11:50:40.2256792] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[11:50:40.2256792] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[11:50:40.2256792] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[11:50:40.2256792] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[11:50:40.2256792] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[11:50:40.2372129] [Info   : Unity Log] Resetting unlockables list!
+[11:50:40.2372129] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[11:50:40.2372129] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[11:50:40.2372129] [Info   : Unity Log] Scene manager is null
+[11:50:40.2427976] [Info   :LethalPerformance] Saved 1 save(s)
+[11:50:40.2965341] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[11:50:40.2965341] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[11:50:40.2965341] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[11:50:40.2965341] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[11:50:40.3070503] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[11:50:40.3070503] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[11:50:40.3070503] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[11:50:40.3140491] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[11:50:40.3150484] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[11:50:40.3150484] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[11:50:40.3242133] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[11:50:40.3257171] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[11:50:40.3498788] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[11:50:40.3638962] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[11:50:40.3724008] [Info   :MoreCompany] LANMenu startLAN Patched
+[11:50:40.6725640] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[11:50:42.2746347] [Info   : Unity Log] Returning week num: 142
+[11:50:42.2746347] [Info   : Unity Log] week num: 142
+[11:50:42.2806836] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[11:50:42.2816847] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[11:50:42.2921893] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[11:50:42.3006985] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[11:50:42.3006985] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[11:50:42.3026994] [Info   :LethalPerformance] Saved 1 save(s)
+[11:50:43.7675458] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[11:50:43.7815655] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[11:50:44.8070302] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[11:50:44.8080299] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[11:50:44.8080299] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
