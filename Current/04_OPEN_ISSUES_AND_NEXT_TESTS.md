@@ -10,12 +10,13 @@ SHA-256: `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`
 Acceptance: `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`  
 Runtime evidence: `RuntimeEvidence/S1.42Z/20260904T135820Z/`
 
-S1.42Z remains the accepted rollback baseline while S1.42AB is under runtime validation.
+S1.42Z remains the accepted rollback baseline while S1.42AB is under gameplay runtime validation.
 
 ## Rejected gate — S1.42AA
 
 **RUNTIME FAIL / NOT ACCEPTED**
 
+Profile SHA-256: `0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364`  
 Runtime evidence: `RuntimeEvidence/S1.42AA/20260904T153744Z/`
 
 The S1.42AA config-only experiment `Inject Dynamic Matching Weights = false` failed to equalize effective LethalLevelLoader dungeon weights. On Offense, the viable list still contained values from `20` through `300`, including LiminalHouse `300`, Sub Systems `275`, Abandoned Foundry `250`, Shatteredrooms `75`, Lead Factory `70`, Spelunkers Caverns (Random) `50`, Crimson Keep `35`, Gray Apartments `25` and DeepcoreMines `25`.
@@ -24,9 +25,11 @@ Root cause: LLL preserves the highest matching rarity, so generic `Vanilla:100,C
 
 Black Mesa generated successfully in this run. A separate Pikmin-carrying incident produced repeated LethalMin `Unpathable` / unreachable entrance routing evidence and is tracked as a likely Black Mesa/NavMesh/entrance-routing compatibility issue. Do not mix a global Pikmin recovery patch into the interior-weight work.
 
+The same AA log contained two `Work state with no task assigned!` warnings during a separate White-Pikmin lifecycle sequence. Leader-null remained `0` and Fatal remained `0`. Re-evaluate only if reproduced.
+
 ## Active gate — S1.42AB Post-Viability Interior Weight Normalization
 
-**BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
+**BUILD PASS / LOCAL IMPORT PASS / GAMEPLAY RUNTIME VALIDATION OPEN / NOT ACCEPTED**
 
 Profile: `Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z`  
 Gale profile name: `LC V1 S1.42AB Interior Weight Normalization`  
@@ -77,17 +80,24 @@ The authoritative S1.42AB evidence is:
 
 Every positive entry in this line must be `(100)`.
 
+## Local import state — complete
+
+S1.42AB is already imported locally in Gale and is the current profile. **Do not run the replacement helper again before the immediate gameplay test unless the user intentionally wants a reinstall.**
+
+The canonical helper is fully end-to-end user-validated under Windows PowerShell 5.1. See:
+
+- `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`;
+- `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`.
+
+Validated helper revision: `2026-09-04-import-uia-v2.1-download-hotfix`  
+Validated helper blob SHA: `9458f427b538615249714e7f064f3107d6dcd36c`  
+Validated implementation commit: `f711f53f4971f97200ed3605479ef887a14b243d`
+
+After old-profile number + `y`, the validated happy path requires no further Gale click or PowerShell Enter.
+
 ## Exact next test
 
-**Import S1.42AB, then do one normal Offense run. Do not build a successor first.**
-
-Canonical Gale replacement launcher:
-
-```powershell
-iex (iwr -UseBasicParsing 'https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1').Content
-```
-
-Complete **Advanced options -> Import all files** in Gale when prompted.
+**Do one normal Offense gameplay run with the already-imported S1.42AB. Do not build a successor first.**
 
 Minimum runtime gate:
 
@@ -102,12 +112,16 @@ Minimum runtime gate:
 9. Facility/Mineshaft/other expected vanilla interiors remain viable;
 10. no dungeon-generation failure;
 11. accepted S1.42Z enemy/Pikmin/BCMER/Jetpack/CodeRebirth behavior remains healthy;
-12. Leader-null `0`;
-13. Fatal `0`;
-14. Work/no-task preferably `0`; if reproduced, correlate separately;
-15. upload the complete fresh `LogOutput.log` with the exact S1.42AB uploader in `Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md`.
+12. Black Mesa remains single-registered when present;
+13. Leader-null `0`;
+14. Fatal `0`;
+15. Work/no-task preferably `0`; if reproduced, correlate separately;
+16. no new project-local exception/error flood;
+17. upload the complete fresh `LogOutput.log` with the exact S1.42AB uploader in `Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md`.
 
-One successful Offense run is sufficient if it provides the marker and full log. Do not manually farm every interior.
+One successful Offense run is sufficient if it provides the authoritative marker and full log. Do not manually farm every interior.
+
+`RuntimeInbox/Current/` currently contains only `.gitkeep`; no S1.42AB gameplay log has been submitted yet.
 
 ## Verified invariants — preserve
 
@@ -122,7 +136,7 @@ One successful Offense run is sufficient if it provides the marker and full log.
 - Crawler absent from Attack Blacklist;
 - accepted S1.42C-derived moon power/spawn baseline;
 - SpawnCycleFixes `Consistent Spawn Times = true`;
-- Jetpack `18f`, Jet Fuel `18/18`, Thrusters `25/20`;
+- Jetpack `18`, Jet Fuel `18/18`, Thrusters `25/20`;
 - Indoor Pikmin `0.09`, CarryStrength `3 / 30`;
 - ACU + G.R.E.G. exact 18-curve providers ×`0.5`;
 - Functional Microwave volume `0.15`;
@@ -141,6 +155,8 @@ Never repeat the S1.42R whole-component disable approach.
 - AdditionalNetworking repair only with reproducible/user-facing evidence;
 - LethalMin teardown repair only with stronger evidence;
 - cosmetic documentation cleanup.
+
+Potential later isolated evaluation: `woah25-LethalEscapeUpdated 2.5.0` for V81. Do not mix it into AB.
 
 ## Controllers
 
