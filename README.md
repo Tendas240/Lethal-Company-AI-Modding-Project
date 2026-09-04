@@ -28,6 +28,10 @@ Final handover:
 
 `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
 
+Repository handover audit:
+
+`Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md`
+
 Evidence:
 
 `RuntimeEvidence/S1.42U/20260904T082412Z/`
@@ -129,24 +133,23 @@ Do not reopen isolated-enemy diagnostics or heavy Baboon-Hawk stress unless a la
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
 2. `Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md`
-3. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
-4. `Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
-5. `Current/00_CURRENT_STATE.md`
-6. `Current/01_HANDOVER_CORE.md`
-7. `Current/Projektstatus_S1.42U.json`
-8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-9. `BuildSpecs/S1.42V_PLAN.md`
-10. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-11. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
-12. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
-13. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-14. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
-15. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-16. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
-17. `BuildSpecs/current.json`
-18. `RuntimeInbox/ACTIVE_BUILD.txt`
-
-After `Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md` exists, read it immediately after the final handover file.
+3. `Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md`
+4. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
+5. `Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
+6. `Current/00_CURRENT_STATE.md`
+7. `Current/01_HANDOVER_CORE.md`
+8. `Current/Projektstatus_S1.42U.json`
+9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+10. `BuildSpecs/S1.42V_PLAN.md`
+11. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+12. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
+13. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+14. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+15. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
+16. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+17. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+18. `BuildSpecs/current.json`
+19. `RuntimeInbox/ACTIVE_BUILD.txt`
 
 Chronologically newer confirmed documents override older version-specific handovers and historical local `current` wording.
 
