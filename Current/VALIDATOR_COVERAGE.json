@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-05",
+  "status": "CURRENT_CANONICAL_VALIDATOR_COVERAGE",
+  "rule": "A green validator is evidence only for the obligations it explicitly checks. Do not infer coverage of unlisted semantics or runtime behavior.",
+  "validators": [
+    {
+      "path": "RepositoryTools/render_current_navigation.py",
+      "checks": ["Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json."],
+      "scan_scope": ["README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/00_CURRENT_STATE.md", "Current/01_HANDOVER_CORE.md", "Current/CURRENT_STATE.json"],
+      "does_not_check": ["Gameplay correctness", "profile/runtime artifact bytes", "historical provenance outside generated outputs"]
+    },
+    {
+      "path": "RepositoryTools/knowledge_architecture_validator.py",
+      "checks": ["Current-state/controller/lineage consistency", "canonical path existence", "Knowledge topic routing/orphans", "runtime metadata-chain consistency"],
+      "scan_scope": ["Current state and authority metadata", "Knowledge/*.md", "ProfileSources current indexes", "RuntimeEvidence indexes"],
+      "does_not_check": ["Actual profile .r2z byte hashes", "actual raw runtime-log byte hashes", "all repository-wide superseded-value occurrences"]
+    },
+    {
+      "path": "RepositoryTools/artifact_byte_integrity_validator.py",
+      "checks": ["Actual SHA-256 of every profile listed in Current/ARTIFACT_EVIDENCE_INTEGRITY.json", "actual SHA-256 and size of each linked raw LogOutput.log", "agreement with runtime INDEX and embedded analysis source SHA"],
+      "scan_scope": ["Current/ARTIFACT_EVIDENCE_INTEGRITY.json", "listed Profiles/*.r2z", "listed current-critical RuntimeEvidence indexes/raw logs"],
+      "does_not_check": ["Gameplay semantics", "whether a rejected artifact should be promoted", "historical artifacts not listed in the integrity index"]
+    },
+    {
+      "path": "RepositoryTools/runtime_sha_provenance_validator.py",
+      "checks": ["S1.42AC authoritative runtime-log SHA metadata chain", "repository-wide qualification of the known superseded S1.42AC SHA"],
+      "scan_scope": ["repository text files with supported suffixes", "S1.42AC RuntimeEvidence INDEX", "S1.42AC detailed errata"],
+      "does_not_check": ["Other future known-bad values unless added elsewhere", "actual raw log bytes"]
+    },
+    {
+      "path": "RepositoryTools/repository_integrity_guard.py",
+      "checks": ["Central known-bad-value registry across repository text", "duplicate same-level current authority claims", "orphan Knowledge topics", "generated-file protection markers"],
+      "scan_scope": ["repository text files", "Current/INTEGRITY_ERRATA_REGISTRY.json", "Current/DOCUMENT_AUTHORITY.json", "Current/PROJECT_KNOWLEDGE_MAP.json", "generated bootstrap files"],
+      "does_not_check": ["Gameplay semantics", "arbitrary unknown bad values not registered", "raw binary content"]
+    },
+    {
+      "path": "RepositoryTools/phase_checkpoint_validator.py",
+      "checks": ["Future per-phase checkpoint monotonicity", "predecessor PASS", "checkpoint immutability", "completion-commit existence", "produced artifacts present in completion commit"],
+      "scan_scope": ["ExecutionCheckpoints/<process>/phase_*.json", "Git history for those checkpoint paths/commits"],
+      "does_not_check": ["Retroactively prove the legacy 2026 overhaul phase 3-10 completion order"]
+    },
+    {
+      "path": "RepositoryTools/overhaul_contract_validator.py",
+      "checks": ["Frozen pre-overhaul contract obligations", "backup-before-structural-migration provenance", "historical/completion classifications required by the original overhaul contract"],
+      "scan_scope": ["frozen contract files", "Git history", "overhaul machine/audit records"],
+      "does_not_check": ["General future multi-phase processes", "gameplay behavior"]
+    },
+    {
+      "path": "RepositoryTools/answerability_regression.py",
+      "checks": ["Semantic routing for the maintained answerability case suite"],
+      "scan_scope": ["RepositoryTools/answerability_cases.json", "Current/PROJECT_KNOWLEDGE_MAP.json"],
+      "does_not_check": ["Truth of every routed source", "questions absent from the case suite"]
+    },
+    {
+      "path": "RepositoryTools/validator_selftest.py",
+      "checks": ["Representative negative fixtures fail as required: unqualified bad SHA, duplicate authority, orphan topic, phase without predecessor; registered historical SHA passes"],
+      "scan_scope": ["temporary synthetic fixtures", "new integrity/checkpoint validator helper functions"],
+      "does_not_check": ["Formal proof that every validator branch is covered"]
+    }
+  ],
+  "permanent_ci_workflow": ".github/workflows/knowledge-architecture.yml",
+  "last_validated": "2026-09-05"
+}

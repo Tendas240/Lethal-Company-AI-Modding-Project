@@ -1,3 +1,4 @@
+<!-- GENERATED — DO NOT MANUALLY EDIT. Source: Current/CURRENT_STATE.json via RepositoryTools/render_current_navigation.py -->
 # 00 — Current State
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  

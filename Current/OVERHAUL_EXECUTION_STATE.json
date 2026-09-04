@@ -1,8 +1,9 @@
 {
-  "schema_version": 4,
-  "date": "2026-09-04",
+  "schema_version": 5,
+  "date": "2026-09-05",
   "status": "OVERHAUL_COMPLETE_VALIDATED",
   "post_acceptance_reaudit_status": "POST_ACCEPTANCE_REAUDIT_PASS",
+  "independent_reaudit_status": "PASS_WITH_PROVENANCE_QUALIFICATION",
   "authority": "Execution-state checkpoint for the completed repository information-architecture overhaul",
   "canonical_start": "OVERHAUL_START_HERE_ChatGPT.txt",
   "canonical_plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
@@ -10,6 +11,8 @@
   "canonical_requirements": "Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json",
   "final_acceptance": "Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md",
   "post_acceptance_audit": "Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md",
+  "independent_audit": "Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md",
+  "integrity_hardening": "Current/117_REPOSITORY_INTEGRITY_HARDENING_20260905.md",
   "validation_results": "Current/OVERHAUL_VALIDATION_RESULTS.json",
   "last_completed_phase": 11,
   "current_phase": null,
@@ -20,6 +23,17 @@
   "frozen_source_tree_sha": "0e17aac410cf600a164396b5586b5b50f084df22",
   "same_repository_checkpoint_branch": "pre-overhaul-freeze-20260904-5dbd0e6",
   "first_structural_overhaul_commit_must_follow_backup_manifest_commit": "2c1ab3be7db5474b0e08ff8a80c063a2c50224a4",
+  "historical_phase_order_provenance": {
+    "phase_0": "DIRECTLY_CHECKPOINTED",
+    "phase_1_backup_gate": "DIRECTLY_PROVEN_BEFORE_STRUCTURAL_MIGRATION",
+    "phase_2": "DIRECTLY_CHECKPOINTED",
+    "transition_into_phase_3": "DIRECTLY_CHECKPOINTED",
+    "individual_phase_3_to_10_completion_order": "NOT_INDEPENDENTLY_RECONSTRUCTIBLE_FROM_IMMUTABLE_COMPLETION_CHECKPOINTS",
+    "phase_11_final_state": "DIRECTLY_RECORDED",
+    "classification": "NON_BLOCKING_INTEGRITY_ISSUE_HISTORICAL_IRREVERSIBLE",
+    "authority": "Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md",
+    "rule": "Do not claim the exact individual Phase 3-10 completion sequence is historically proven. Final deliverables/end-state validation remain PASS."
+  },
   "project_state_preserved": {
     "game": "Lethal Company V81",
     "accepted_baseline": {
@@ -49,7 +63,6 @@
     "backup_frozen_content_tree_sha": "0e17aac410cf600a164396b5586b5b50f084df22",
     "backup_provenance_commit_sha": "c0f267fadfa807730f6f465953861f4728b2136a",
     "verification_result": "PASS",
-    "primary_manifest_path": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
     "limitations": [
       "GitHub-managed refs/pull hidden refs were rejected during mirror push; all normal project branches were preserved and there were no source tags."
     ]
@@ -75,10 +88,17 @@
     "machine_knowledge_map": "Current/PROJECT_KNOWLEDGE_MAP.json",
     "build_lineage": "Current/BUILD_LINEAGE.md",
     "authority_registry": "Current/DOCUMENT_AUTHORITY.md",
+    "integrity_errata_registry": "Current/INTEGRITY_ERRATA_REGISTRY.json",
+    "validator_coverage": "Current/VALIDATOR_COVERAGE.json",
+    "future_multiphase_checkpoint_policy": "Current/MULTIPHASE_CHECKPOINT_POLICY.json",
     "atomic_state": "Current/CURRENT_STATE.json",
     "artifact_evidence_index": "Current/ARTIFACT_EVIDENCE_INTEGRITY.md",
     "migration_manifest": "Current/REPOSITORY_MIGRATION_MANIFEST.md",
     "validator": "RepositoryTools/knowledge_architecture_validator.py",
+    "actual_byte_validator": "RepositoryTools/artifact_byte_integrity_validator.py",
+    "integrity_guard": "RepositoryTools/repository_integrity_guard.py",
+    "phase_checkpoint_validator": "RepositoryTools/phase_checkpoint_validator.py",
+    "validator_selftest": "RepositoryTools/validator_selftest.py",
     "strict_frozen_contract_validator": "RepositoryTools/overhaul_contract_validator.py",
     "answerability_suite": "RepositoryTools/answerability_regression.py",
     "navigation_renderer": "RepositoryTools/render_current_navigation.py",
@@ -90,20 +110,27 @@
   },
   "validation": {
     "initial_final_green_run_id": 33917143180,
-    "initial_final_green_head_sha": "37d0b25823844603cf919c033507c1f0fc3bb88e",
-    "initial_final_green_conclusion": "SUCCESS",
     "strict_reaudit_first_green_run_id": 33919296323,
-    "strict_reaudit_first_green_head_sha": "e3704877d309e40b092768430d0e81f7d86ed2e3",
-    "strict_reaudit_first_green_conclusion": "SUCCESS",
     "post_reaudit_confirmation_run_id": 33920068335,
-    "post_reaudit_confirmation_head_sha": "5a42fe7c6a69c8cef9692fba090d3da6af566ccd",
-    "post_reaudit_confirmation_conclusion": "SUCCESS",
+    "independent_audit_final_pre_hardening_run_id": 33924985805,
+    "independent_audit_final_pre_hardening_head_sha": "3238594103e48ffcc696b4f9897e3e139d2eb0c6",
+    "independent_audit_final_pre_hardening_conclusion": "SUCCESS",
+    "hardening_status": "VALIDATED",
+    "hardening_first_full_green_run_id": 33927769717,
+    "hardening_first_full_green_head_sha": "7af7ddeebf5b443290b4cd0e7d6ca8ded222b602",
+    "hardening_first_full_green_conclusion": "SUCCESS",
+    "hardening_permanent_gate_count": 9,
     "navigation_check": "PASS",
-    "knowledge_validator": "PASS_ERRORS_0_WARNINGS_0",
+    "knowledge_validator": "PASS",
+    "actual_byte_integrity_validator": "PASS",
+    "repository_integrity_guard": "PASS",
+    "runtime_sha_provenance_validator": "PASS",
+    "phase_checkpoint_validator": "PASS",
     "frozen_contract_validator": "PASS",
-    "answerability_regression": "PASS"
+    "answerability_regression": "PASS",
+    "validator_negative_selftests": "PASS"
   },
-  "exact_next_operation": "Repository overhaul is closed. Resume normal project work from Current/CURRENT_STATE.json. If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence using the corrected acceptance model in Current/109; do not create a compensation successor merely to equalize per-event log weights.",
+  "exact_next_operation": "Repository overhaul and post-audit integrity hardening are closed. Resume normal project work from Current/CURRENT_STATE.json. If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence using Current/109; do not create a compensation successor merely to equalize per-event log weights.",
   "files_not_yet_safe_to_move_or_delete": "Historical evidence remains intentionally retained. Any future deletion still requires the unique-fact and reference audit in Current/REPOSITORY_MIGRATION_MANIFEST.md.",
   "bootstrap_rewrite_allowed": true,
   "history_reclassification_allowed": true,
@@ -112,8 +139,9 @@
   "notes": [
     "No gameplay/config/mod/profile/project-local patch behavior changed.",
     "The architecture uses semantic routing instead of destructive historical file moves.",
-    "S1.42Z lineage drift was corrected to the actual accepted artifact path and SHA before final validation.",
-    "The post-acceptance re-audit directly re-read the frozen old-repository overhaul contract and is PASS.",
-    "All permanent architecture checks are green at the recorded confirmation run; later metadata-only commits remain subject to the same Knowledge Architecture workflow."
+    "The exact individual Phase 3-10 completion checkpoint order is not independently reconstructible and remains explicitly qualified.",
+    "The old incorrect S1.42AC raw-log SHA is centrally registered as superseded historical metadata.",
+    "Future multi-phase repository work must use immutable phase completion checkpoints.",
+    "The expanded nine-stage hardening CI passed on a real pull-request checkout with full Git history and actual critical artifact/runtime bytes."
   ]
 }

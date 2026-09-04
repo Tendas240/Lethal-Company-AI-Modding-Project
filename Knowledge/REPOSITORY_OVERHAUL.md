@@ -1,11 +1,11 @@
 # Repository Information-Architecture Overhaul
 
-**Status:** COMPLETE / INDEPENDENT REAUDIT PASS WITH PHASE-ORDER PROVENANCE QUALIFICATION  
+**Status:** COMPLETE / INDEPENDENT REAUDIT PASS WITH PHASE-ORDER PROVENANCE QUALIFICATION / INTEGRITY HARDENING ADDED  
 **Authority:** canonical semantic summary of the completed overhaul and its validation  
 **Canonical-For:** `repository_overhaul`  
-**Evidence:** `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`, `Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md`, `Current/OVERHAUL_VALIDATION_RESULTS.json`, `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`  
+**Evidence:** `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`, `Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md`, `Current/117_REPOSITORY_INTEGRITY_HARDENING_20260905.md`, `Current/OVERHAUL_VALIDATION_RESULTS.json`, `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`  
 **Machine State:** `Current/OVERHAUL_EXECUTION_STATE.json`  
-**Related:** `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md`, `Current/REPOSITORY_MIGRATION_MANIFEST.md`, `Current/DOCUMENT_AUTHORITY.md`  
+**Related:** `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md`, `Current/REPOSITORY_MIGRATION_MANIFEST.md`, `Current/DOCUMENT_AUTHORITY.md`, `Current/VALIDATOR_COVERAGE.json`  
 **Last-Validated:** 2026-09-05
 
 ## Result
@@ -55,19 +55,37 @@ The same-repository freeze branch is supplemental only; the standalone repositor
 
 After initial acceptance, the overhaul was rechecked directly against the frozen original pre-overhaul instructions. That stricter audit found several information-architecture gaps and validator-calibration issues, including stale historical/current wording, an obsolete machine-state name in the human Knowledge Map and incomplete enforcement of one-time backup-ordering requirements.
 
-The independent 2026-09-05 audit additionally found stale S1.42AC raw-log SHA metadata in retained historical records. The authoritative raw-log SHA-256 is `fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067`; the old `8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0` value is superseded historical metadata only. `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json` explicitly classifies retained historical occurrences, and `RepositoryTools/runtime_sha_provenance_validator.py` now performs a repository-wide CI scan so a new unqualified occurrence fails closed.
+The independent 2026-09-05 audit additionally found stale S1.42AC raw-log SHA metadata in retained historical records. The authoritative raw-log SHA-256 is `fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067`; the old `8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0` value is superseded historical metadata only. `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json` explicitly classifies retained historical occurrences. `Current/INTEGRITY_ERRATA_REGISTRY.json` is now the central known-bad/supersession registry.
 
-Those gaps were corrected without changing gameplay behavior. The permanent CI now runs:
+Those gaps were corrected without changing gameplay behavior.
+
+## 2026-09-05 integrity hardening
+
+The post-audit hardening adds defense-in-depth rather than new gameplay state:
+
+- direct SHA-256 recomputation from the actual S1.42AB/S1.42AC profile bytes and linked raw runtime logs;
+- repository-wide central known-bad/supersession registry and linter;
+- explicit generated-file protection markers plus byte-exact renderer validation;
+- machine-readable validator coverage/blindspot documentation;
+- negative validator fixtures proving representative invalid states fail closed;
+- prospective immutable per-phase checkpoint policy with Git commit/artifact verification;
+- broader CI triggers covering profile, runtime-evidence, patch, build-system and runtime-tool changes relevant to repository authority.
+
+This does **not** retroactively repair the missing Phase 3–10 historical checkpoints. Instead it prevents the same auditability class from recurring in future multi-phase work.
+
+The permanent CI now runs:
 
 1. generated current-navigation validation;
 2. repository knowledge/state/reference validation;
-3. repository-wide S1.42AC runtime-SHA provenance validation;
-4. strict frozen original-overhaul-contract validation;
-5. semantic answerability routing regression.
+3. actual artifact/runtime byte integrity validation;
+4. repository-wide integrity/authority/known-bad-value validation;
+5. S1.42AC runtime-SHA provenance validation;
+6. future multi-phase checkpoint validation;
+7. strict frozen original-overhaul-contract validation;
+8. semantic answerability routing regression;
+9. negative validator self-tests.
 
-The earlier re-audit authority is `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`. The current independent audit is `Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md`. Machine result: `Current/OVERHAUL_VALIDATION_RESULTS.json`, status `POST_ACCEPTANCE_REAUDIT_PASS`.
-
-The SHA-provenance remediation confirmation workflow run `33924737597` at commit `02d29a66d632ac46d405d3f1617eb1f0518d2494` passed all five permanent gates.
+Coverage and explicit blindspots are documented in `Current/VALIDATOR_COVERAGE.json` so a green run is not interpreted as proof of obligations a validator does not test.
 
 ## Historical execution-contract rule
 
@@ -80,6 +98,8 @@ Ordinary takeover now starts at `START_HERE_ChatGPT_Masterprompt.txt`, then `Cur
 - preserve information/provenance before reducing duplication;
 - do not delete historical evidence merely because it looks redundant;
 - use `Current/DOCUMENT_AUTHORITY.md` when older documents contain stale `current` wording;
+- qualify corrected concrete values through `Current/INTEGRITY_ERRATA_REGISTRY.json`;
+- create immutable per-phase checkpoints for future ordered multi-phase work;
 - every future architecture change remains subject to `.github/workflows/knowledge-architecture.yml`;
 - rollback/compare against the verified standalone backup if routing, authority or discoverability regresses.
 

@@ -1,3 +1,4 @@
+<!-- GENERATED — DO NOT MANUALLY EDIT. Source: Current/CURRENT_STATE.json via RepositoryTools/render_current_navigation.py -->
 # Lethal Company AI Modding Project
 
 GitHub is the canonical Source of Truth and build/handover workspace for **Lethal Company V81**.

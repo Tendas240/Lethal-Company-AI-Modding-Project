@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-05",
+  "status": "CURRENT_POLICY",
+  "canonical_for": "future_multiphase_execution_auditability",
+  "applies_to": "New multi-phase repository migrations, overhauls, maintenance programs or other ordered workflows started after 2026-09-05.",
+  "checkpoint_root": "ExecutionCheckpoints",
+  "first_phase": 0,
+  "checkpoint_pattern": "ExecutionCheckpoints/<process>/phase_<NN>.json",
+  "required_fields": [
+    "phase",
+    "status",
+    "start_commit",
+    "completion_commit",
+    "required_inputs",
+    "produced_artifacts",
+    "validation_result",
+    "next_phase",
+    "timestamp",
+    "predecessor_checkpoint"
+  ],
+  "rules": [
+    "A PASS checkpoint for phase N must exist before phase N+1 may be recorded as complete.",
+    "Checkpoint files are immutable after creation; corrections require a separate explicit erratum/checkpoint record rather than overwriting history.",
+    "A PASS completion_commit must exist in Git history and contain every path listed in produced_artifacts.",
+    "The predecessor_checkpoint field must point to the immediately preceding phase checkpoint.",
+    "Mutable execution-state files may summarize progress but are not a substitute for immutable per-phase completion checkpoints."
+  ],
+  "legacy_overhaul_exception": {
+    "process": "2026 repository information-architecture overhaul",
+    "reason": "The original process predates this policy. Phase 3-10 individual completion checkpoints were not preserved, so the exact historical phase-completion order cannot be retroactively made provable.",
+    "authority": "Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md",
+    "classification": "NON_BLOCKING_INTEGRITY_ISSUE_HISTORICAL_IRREVERSIBLE"
+  },
+  "validator": "RepositoryTools/phase_checkpoint_validator.py",
+  "last_validated": "2026-09-05"
+}
