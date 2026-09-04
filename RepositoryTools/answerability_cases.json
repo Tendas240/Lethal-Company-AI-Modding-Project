@@ -1,12 +1,13 @@
 {
   "schema_version": 1,
-  "updated": "2026-09-04",
+  "updated": "2026-09-05",
   "status": "CANONICAL_ROUTING_REGRESSION_CASES",
   "router": "RepositoryTools/answerability_regression.py",
   "cases": [
     {"id":"accepted-build","query":"Was ist der aktuelle akzeptierte Build?","expected_topic":"accepted_baseline","expected_canonical":"Knowledge/CURRENT_LIFECYCLE.md"},
     {"id":"next-test","query":"Was muss ich jetzt testen?","expected_topic":"active_candidate_and_next_test","expected_canonical":"Knowledge/CURRENT_LIFECYCLE.md"},
     {"id":"log-uploader","query":"Wo ist der Log-Uploader?","expected_topic":"active_candidate_and_next_test","expected_canonical":"Knowledge/CURRENT_LIFECYCLE.md"},
+    {"id":"chat-handover","query":"Wir machen jetzt die Übergabe an einen neuen ChatGPT Chat.","expected_topic":"chat_handover","expected_canonical":"Current/HANDOVER_PREPARATION_PROMPT.md"},
     {"id":"runtime-upload","query":"Wie lade ich einen Runtime Log hoch und wo landet RuntimeEvidence?","expected_topic":"runtime_upload_and_ingest","expected_canonical":"Knowledge/BUILD_AND_RUNTIME_PIPELINE.md"},
     {"id":"bcmer-version","query":"Welche BCMER-Version ist erlaubt?","expected_topic":"bcmer","expected_canonical":"Knowledge/BCMER.md"},
     {"id":"bcmer-equal","query":"Sind BCMER-EventTypes gleich wahrscheinlich?","expected_topic":"bcmer","expected_canonical":"Knowledge/BCMER.md"},
