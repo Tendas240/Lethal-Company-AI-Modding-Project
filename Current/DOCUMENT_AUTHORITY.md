@@ -80,7 +80,16 @@ These files are intentionally retained because they contain provenance, failed a
 
 `Patches/S139CompatibilityFixes/Plugin.cs` is executable current code, but comments are not an independent policy source. Use executable behavior, accepted runtime evidence and `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md` for current semantics.
 
-In particular, do not infer an old complete two-way Pikmin/Thumper ban or a current Crawler Attack Blacklist from historical wording. Current invariant: the proven enemy -> Pikmin corrupting grab path is prevented narrowly; native Pikmin counterattack/lifecycle remains; Crawler is absent from the LethalMin Attack Blacklist.
+Current accepted invariants are:
+
+- Crawler attack/counterattack behavior is allowed; Crawler is absent from the LethalMin Attack Blacklist.
+- Thumper is governed by Bite Limit 3 rather than complete two-way isolation.
+- Puffer protection for Pikmin remains part of accepted compatibility behavior.
+- Baboon Hawk compatibility blocks only the proven Hawk-to-Pikmin entry points before mutation while native cleanup lifecycle ownership remains enabled.
+
+Therefore old S1.42J-era wording about complete two-way isolation or a Crawler blacklist is non-normative.
+
+Do **not** edit accepted patch source solely to modernize comments unless the accepted binary/profile provenance is rebuilt and revalidated. A comment-only source edit after acceptance would make the tracked source no longer exactly represent the accepted binary build. Authority metadata is the safe repository-overhaul mechanism for this historical comment drift.
 
 ## Supersession rule
 
@@ -91,7 +100,6 @@ A newer source may supersede an interpretation without deleting history. When th
 - route current questions to the new source;
 - keep the old source reachable for "why did we think that?" questions.
 
-
 ## Completed overhaul execution-contract snapshots
 
 The following files are preserved as the original one-time overhaul contract, but their old `PLANNED` / `NOT YET EXECUTED` wording is **historical** and must not be interpreted as live state:
@@ -100,4 +108,4 @@ The following files are preserved as the original one-time overhaul contract, bu
 - `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`
 - `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md`
 
-Current completion authority is `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md` with machine validation in `Current/OVERHAUL_VALIDATION_RESULTS.json`. Ordinary project takeover starts at `START_HERE_ChatGPT_Masterprompt.txt`.
+Current completion authority is `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md` with machine validation in `Current/OVERHAUL_VALIDATION_RESULTS.json`. The stricter frozen-contract re-audit is recorded in `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`. Ordinary project takeover starts at `START_HERE_ChatGPT_Masterprompt.txt`.
