@@ -8,134 +8,97 @@ Profile: `Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z`
 SHA-256: `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`
 
 Acceptance: `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`  
-Machine status: `Current/Projektstatus_S1.42AB_ACCEPTED.json`  
-Runtime evidence: `RuntimeEvidence/S1.42AB/20260904T174010Z/`  
-Raw log SHA-256: `42cfba3d157f6abdbeee114909d90749d1bfd043d4b0c224922ad5be976194ae`
+Runtime evidence: `RuntimeEvidence/S1.42AB/20260904T174010Z/`
 
-Fresh Offense runtime closed the gate successfully:
+S1.42AB remains accepted while S1.42AC is under runtime validation.
 
-- exact S1.42AB plugin loaded;
-- LethalLevelLoader `1.7.12` validated;
-- exact post-viability target contract validated and armed;
-- pre-normalization viable pool: 40 entries, rarity range `20..300`;
-- final effective viable pool: same 40 entries, every positive rarity exactly `100`;
-- `12 / 40` entries normalized;
-- no flow membership insertion/removal;
-- Black Mesa single-registered at final `100`;
-- normal dungeon generation succeeded and `Expanded facility` was selected;
-- user entered the interior, played normally until death and reported no problematic behavior;
-- Work/no-task `0`;
-- Leader-null `0`;
-- Compatibility Fixes Error `0`;
-- unspawned NetworkObjectReference `0`;
-- PikminNoticeZone regression `0`;
-- Fatal `0`.
+## Active gate — S1.42AC BCMER EventType Equal Distribution
 
-The complete log contains 32 Error-severity events, matching accepted S1.42Z. Known loaforcsSoundAPI/HarmonyX and SoftMask/SoftMasking exception classes remain monitor-only.
+**BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
 
-## Accepted interior rule
+Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`  
+Gale profile name: `LC V1 S1.42AC BCMER EventType Equal Distribution`  
+SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
 
-LethalLevelLoader owns viability/exclusion membership first. S1.42AB then normalizes only positive rarity values in the already-returned viable list to `100`.
+Build run: `33903271224`  
+Automated build commit: `a30b327580e28f42e55281e91abe03d32ae41363`
 
-Permanent accepted behavior:
+Candidate: `Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`  
+Machine state: `Current/Projektstatus_S1.42AC_CANDIDATE.json`  
+Plan: `BuildSpecs/S1.42AC_PLAN.md`
 
-- flow absent from LLL result -> remains unavailable;
-- returned positive-rarity flow -> effective rarity `100`;
-- no flow appended, removed, re-registered or deduplicated;
-- no LLL matching/config list rewritten;
-- Enemy, Scrap and MapObject rarity systems untouched;
-- newly installed interiors inherit effective rarity `100` automatically whenever LLL itself considers them viable.
+### Frozen delta
 
-Preserve the Shatteredrooms Experimentation/Embrion restriction until dedicated evidence proves removal safe.
+Only `BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg` is intentionally modified, plus `export.r2x` for the Gale profile name.
 
-The built-in LLL `Viable ExtendedDungeonFlows` line is pre-Postfix only. The authoritative accepted marker is:
+`Use custom weights? = false` remains unchanged.
 
-`[InteriorWeightNormalization] Final effective viable pool for <moon>: ...`
+All eight EventType scales are:
 
-## Previous / rejected states
+`12.5, 0.0, 12.5, 12.5`
 
-### Previous accepted baseline — S1.42Z
+for Insane, VeryBad, Bad, Neutral, Good, VeryGood, Rare and Remove.
 
-S1.42Z remains the previous accepted rollback/provenance artifact. Its accepted Jetpack/Pikmin/CodeRebirth/Microwave/Snail tuning is inherited by S1.42AB.
+This removes difficulty-based skew from EventType selection and targets a fixed equal normalized distribution of `8 × 12.5%`.
 
-### Rejected gate — S1.42AA
+Automated build QC:
 
-S1.42AA remains **RUNTIME FAIL / NOT ACCEPTED**. The `Inject Dynamic Matching Weights = false` config-only experiment did not equalize effective LLL weights because LLL retains the highest matching rarity.
+- ZIP members `334`;
+- changed existing exactly `Difficulty_Settings.cfg` and `export.r2x`;
+- no added/removed members;
+- no mod state/add/remove changes;
+- no DLL/code patch.
 
-Black Mesa table/NavMesh/Pikmin ToShip routing remains a separate deferred compatibility finding. The two-warning Work/no-task lifecycle finding from AA did not reproduce in AB.
+## Exact next test
 
-## Next test/build state
+First import AC with the canonical validated helper:
 
-**No runtime test is currently outstanding and no successor build is armed.**
+```powershell
+$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
+```
 
-`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AB_ACCEPTANCE`, guarded by the accepted S1.42AB SHA-256.
+Then do one normal **Offense** gameplay run.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AB`
+Primary gate:
 
-The next isolated scope must be explicitly selected before a successor is designed or built.
+1. startup/main menu/lobby succeeds;
+2. exact BCMER `1.71.0` loads normally;
+3. Offense route/landing succeeds;
+4. complete log contains all eight `Set eventType weight for <type> to <value>` lines for the same roll context;
+5. all eight values are identical;
+6. normal BCMER events still run;
+7. disabled BCMER rain-event configuration remains preserved;
+8. accepted S1.42AB interior normalization remains healthy when emitted;
+9. accepted enemy/Pikmin/Jetpack/CodeRebirth behavior remains healthy;
+10. Work/no-task preferably `0`;
+11. Leader-null `0`;
+12. Fatal `0`;
+13. no new config-induced error flood.
 
-## Eligible next isolated scopes
+Do **not** manually farm eight EventTypes. Equal runtime weights are the probability proof.
 
-### BCMER EventTypes equal distribution
+After the run, use the exact S1.42AC uploader in `Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`.
 
-Planned target: exactly `8 × 12.5%` across the eight BCMER EventTypes.
+## Controllers
 
-This scope is now eligible to be selected next because the S1.42AB gate has closed. It is not yet armed and must remain isolated from unrelated changes unless explicitly grouped by the user.
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AC_BUILD_AWAITING_RUNTIME_VALIDATION`, guarded by AC SHA-256 `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`.
 
-### Functional Microwave spawn-rarity reduction
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC`
 
-The current accepted volume remains `0.15`. Spawn rarity reduction is still deferred and should be handled independently.
+No successor is armed.
 
-### CullFactory exceptions
+## Deferred after AC
 
-Potential exceptions for `junkrooms` / `shatteredrooms` remain deferred pending an isolated safety review.
-
-### Mausoleum fog reduction
-
-Deferred balance/visibility scope; keep separate from unrelated gameplay changes.
-
-### Black Mesa table/NavMesh/Pikmin route recovery
-
-AA produced meaningful unreachable-entrance / `Unpathable` ToShip evidence correlated with a Pikmin stuck while carrying scrap from a table. Do not introduce a broad global recovery/teleport patch without stronger reproducibility and a narrow compatibility design.
-
-### LethalEscapeUpdated 2.5.0 evaluation
-
-Potential isolated V81 evaluation of `woah25-LethalEscapeUpdated 2.5.0`. Inspect the actual package/config first and protect Baboon Hawk/LethalMin/Pikmin lifecycle plus SmartEnemyPathfinding/FairAI/NavMesh behavior. Do not silently mix it into another scope.
-
-### Final long full-stack acceptance
-
-Still deferred until the intended remaining isolated changes are complete.
-
-## Monitor-only / stronger evidence required
-
+- Functional Microwave spawn-rarity reduction;
+- CullFactory `junkrooms` / `shatteredrooms` exceptions;
+- Mausoleum fog reduction;
+- Black Mesa table/NavMesh/Pikmin route recovery;
+- isolated `woah25-LethalEscapeUpdated 2.5.0` evaluation;
+- final long full-stack acceptance;
 - AdditionalNetworking repair only with reproducible user-facing evidence;
 - LethalMin teardown repair only with stronger evidence;
-- historical S1.42S disconnect PikminNoticeZone/unspawned NetworkObjectReference exception;
-- historical S1.42T AloeChase FSB load-state message;
-- historical S1.42W `DespawnLumiknulls()` collection-modified teardown exception;
-- loaforcsSoundAPI/HarmonyX `TypeLoadException`;
-- SoftMask/SoftMasking setup exceptions;
-- existing non-project-local Error-severity classes;
-- cosmetic documentation/comment cleanup.
+- cosmetic documentation cleanup.
 
-## Verified invariants — preserve
+## Permanent invariants
 
-- exact BCMER `1.71.0`;
-- EnemyIsolation off;
-- Compatibility Fixes `1.3.14`;
-- BaboonBirdPikminEnemy enabled;
-- narrow Hawk -> Pikmin block with native inherited lifecycle preserved;
-- Pikmin -> Baboon Hawk attack remains allowed;
-- Puffer -> Pikmin protection;
-- Thumper Bite Limit `3`;
-- Crawler absent from Attack Blacklist;
-- accepted S1.42C-derived moon power/spawn baseline;
-- SpawnCycleFixes `Consistent Spawn Times = true`;
-- Jetpack `18`, Jet Fuel `18/18`, Thrusters `25/20`;
-- Indoor Pikmin `0.09`, CarryStrength `3 / 30`;
-- ACU + G.R.E.G. exact 18-curve providers ×`0.5`;
-- Functional Microwave volume `0.15`;
-- Immortal Snail `40 / 2`;
-- accepted S1.42AB post-viability interior normalization.
-
-Never repeat the S1.42R whole-component disable approach.
+Preserve exact BCMER `1.71.0`, EnemyIsolation off, Compatibility Fixes `1.3.14`, BaboonBirdPikminEnemy enabled, narrow Hawk -> Pikmin prevention only, inherited PikminEnemy lifecycle, Pikmin -> Baboon Hawk attack, Puffer protection, Thumper Bite Limit `3`, Crawler absent from Attack Blacklist, accepted S1.42C moon power/spawn baseline, `Consistent Spawn Times = true`, accepted Jetpack/Pikmin/CodeRebirth/Microwave/Snail tuning, and accepted S1.42AB post-viability interior normalization.
