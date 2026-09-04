@@ -21,6 +21,8 @@ Do not ask the user to run local PowerShell build scripts when the required base
 - Runtime upload inbox: `RuntimeInbox/Current/`
 - Active runtime build: `RuntimeInbox/ACTIVE_BUILD.txt`
 - Persisted runtime evidence: `RuntimeEvidence/<build>/<timestamp>/`
+- Canonical local Gale replacement helper: `RuntimeTools/ReplaceActiveGaleProfile.ps1`
+- Permanent Gale replacement workflow contract: `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`
 
 ## Future profile builds
 
@@ -45,6 +47,29 @@ The builder supports:
 - exact base-hash guarding;
 - member-delta verification;
 - readable config/export snapshots.
+
+## Mandatory ready-to-test build ChatGPT UX
+
+Whenever ChatGPT produces or designates a **new build/profile whose next project step is runtime testing by the user**, the same ChatGPT response that announces that the build is ready to test must contain **both** of the following copy/pasteable PowerShell commands:
+
+1. the canonical Gale active-profile replacement launcher;
+2. the exact build-specific runtime-log uploader described below.
+
+The user must not need to ask for either command again.
+
+The Gale replacement launcher is always:
+
+```powershell
+iex (iwr -UseBasicParsing 'https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1').Content
+```
+
+It is repository-state driven and therefore must not be rewritten with a hard-coded build name. Before presenting it for a new candidate, ensure `RuntimeInbox/ACTIVE_BUILD.txt` and `Current/AUTO_BUILD_RESULT.json` both identify that exact ready-to-test build.
+
+The full binding workflow and safety contract are documented in:
+
+`Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`
+
+The replacement launcher does **not** replace the runtime-log uploader. Both commands are mandatory in every new ready-to-test build response.
 
 ## Runtime evidence
 
@@ -104,13 +129,17 @@ Do not substitute local clone / `git add` / `git push` instructions unless the d
 
 For unusually large logs that cannot safely use the normal GitHub Contents API / main-branch path, follow `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md` instead and provide the corresponding **single self-contained** large-log PowerShell command. Do not silently try to commit a >100 MiB raw log to `main`.
 
-## Gale active-profile replacement helper — validated candidate
+## Gale active-profile replacement helper — canonical and binding
 
-A repository-backed local Gale profile replacement helper is maintained at:
+The repository-backed local Gale profile replacement helper is maintained at:
 
 `RuntimeTools/ReplaceActiveGaleProfile.ps1`
 
-Validation record:
+Canonical workflow contract:
+
+`Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`
+
+Historical validation record:
 
 `Current/92_GALE_ACTIVE_PROFILE_REPLACEMENT_HELPER_CANDIDATE.md`
 
@@ -130,13 +159,7 @@ The user successfully validated the final y/n version under Windows PowerShell 5
 
 If the user answers `n`, no local profile is deleted and the temporary download is cleaned up.
 
-This helper is the approved candidate for the permanent replacement workflow, but it is **not yet binding default policy**. Promote it after a normal future profile replacement confirms routine use, or earlier if the user explicitly requests immediate promotion.
-
-Candidate one-line launcher:
-
-```powershell
-iex (iwr -UseBasicParsing 'https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1').Content
-```
+This helper is now the **binding default profile-replacement workflow** for future ready-to-test builds. Every such build response must include the launcher in the Mandatory ready-to-test build ChatGPT UX section above.
 
 Do not duplicate older experimental helper variants. In particular, do not reintroduce case-sensitive `LOESCHEN`, fuzzy profile-name matching, Windows PowerShell 5.1 array assumptions, or a variable named `$matches` that collides with PowerShell's automatic `$Matches` variable.
 
