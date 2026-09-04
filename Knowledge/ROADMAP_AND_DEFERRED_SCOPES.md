@@ -4,7 +4,7 @@
 **Authority:** live deferred-scope list only; historical build sequencing remains in chronology/lineage  
 **Canonical-For:** `roadmap_and_deferred_scopes`  
 **Evidence:** `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, durable rules extracted from `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`  
-**Related:** `Knowledge/BCMER.md`, `Knowledge/INTERIORS_AND_LLL.md`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`  
+**Related:** `Knowledge/BCMER.md`, `Knowledge/INTERIORS_AND_LLL.md`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/REPOSITORY_OVERHAUL.md`  
 **Last-Validated:** 2026-09-04
 
 ## Current position
@@ -17,7 +17,7 @@ Runtime test outstanding: **none**.
 
 Successor armed: **no**.
 
-The repository information-architecture overhaul is the currently active maintenance scope and must not modify gameplay behavior.
+The repository information-architecture overhaul is complete and passed the stricter post-acceptance re-audit against the frozen original contract. It is no longer the active maintenance scope. Normal gameplay/compatibility roadmap work may resume from the accepted S1.42AB baseline.
 
 ## Deferred independent gameplay/compatibility scopes
 
@@ -51,6 +51,12 @@ Still separate:
 - route/NavMesh recovery.
 
 Do not reopen the accepted interior-weight normalization just to solve one of those separate compatibility scopes.
+
+## Repository-overhaul boundary
+
+The overhaul is closed with `POST_ACCEPTANCE_REAUDIT_PASS`. Current summary: `Knowledge/REPOSITORY_OVERHAUL.md`. Final acceptance/audit evidence: `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md` and `Current/OVERHAUL_VALIDATION_RESULTS.json`.
+
+Future repository-architecture changes must remain separate from gameplay changes and continue to pass `.github/workflows/knowledge-architecture.yml`.
 
 ## Historical roadmap warning
 
