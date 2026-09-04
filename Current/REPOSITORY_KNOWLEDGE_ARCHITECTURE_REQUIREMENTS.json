@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-04",
+  "status": "PLANNED_BINDING_NOT_EXECUTED",
+  "canonical_plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
+  "purpose": "Make repository knowledge deterministically discoverable for fresh ChatGPT sessions with limited context.",
+  "current_gate_must_not_be_disturbed": "S1.42AC runtime validation",
+  "retrieval_path": [
+    "bootstrap",
+    "current_state_and_knowledge_map",
+    "topic_canonical_source",
+    "evidence_config_code_or_history"
+  ],
+  "required_artifacts": [
+    "Current/PROJECT_KNOWLEDGE_MAP.md",
+    "Current/PROJECT_KNOWLEDGE_MAP.json",
+    "human_and_machine_readable_build_lineage",
+    "RepositoryTools/knowledge_architecture_validator",
+    "RepositoryTools/answerability_cases.json",
+    "redirect_or_supersession_map_if_paths_are_moved"
+  ],
+  "mandatory_topics": [
+    "accepted_baseline",
+    "active_candidate_and_next_test",
+    "build_pipeline",
+    "gale_import",
+    "runtime_upload_and_ingest",
+    "bcmer",
+    "interiors_and_lll",
+    "enemy_spawn_baseline",
+    "pikmin_enemy_compatibility",
+    "jetpack",
+    "coderebirth",
+    "functional_microwave",
+    "immortal_snail",
+    "monitor_only_errors",
+    "black_mesa_pikmin_routing",
+    "roadmap_and_deferred_scopes",
+    "patch_safety_policy",
+    "repository_overhaul"
+  ],
+  "document_metadata": [
+    "Status",
+    "Authority",
+    "Canonical-For",
+    "Supersedes",
+    "Superseded-By",
+    "Topics",
+    "Evidence",
+    "Related",
+    "Last-Validated"
+  ],
+  "acceptance_invariants": {
+    "max_hops_from_bootstrap_to_major_current_topic": 3,
+    "broken_internal_references": 0,
+    "orphan_canonical_current_documents": 0,
+    "canonical_accepted_baseline_declarations": 1,
+    "canonical_active_candidate_declarations": 1,
+    "all_major_topics_registered": true,
+    "all_build_lineage_links_resolve": true,
+    "active_and_accepted_r2z_have_readable_profile_sources": true,
+    "runtime_evidence_references_resolve": true,
+    "historical_current_wording_explicitly_classified": true,
+    "answerability_routing_regression_suite_passes": true,
+    "ci_knowledge_validation_passes": true
+  },
+  "validator_checks": [
+    "canonical referenced paths exist",
+    "knowledge map targets exist",
+    "no orphan canonical/current documents",
+    "accepted baseline declarations are consistent",
+    "active candidate declarations are consistent",
+    "ACTIVE_BUILD candidate state AUTO_BUILD_RESULT and BuildSpecs lifecycle are consistent",
+    "BuildSpecs base profile and SHA guard are correct",
+    "active/accepted profiles have ProfileSources FILE_INDEX",
+    "runtime evidence roots exist",
+    "build lineage and supersession targets resolve",
+    "live roadmap does not point at superseded build as current",
+    "bootstrap routing remains bounded"
+  ],
+  "answerability_examples": [
+    "Was ist der aktuelle akzeptierte Build?",
+    "Was muss ich jetzt testen?",
+    "Wo ist der Log-Uploader?",
+    "Welche BCMER-Version ist erlaubt?",
+    "Sind BCMER-EventTypes gleich wahrscheinlich?",
+    "Wie hoch ist das Thumper Bite Limit?",
+    "Warum ist Shatteredrooms auf Experimentation/Embrion eingeschraenkt?",
+    "Was war das Black-Mesa/Pikmin-Problem?",
+    "Wie werden Interior-Gewichte normalisiert?",
+    "Woher kommt die Jetpack-Beschleunigung?",
+    "Welche Fehler sind monitor-only?",
+    "Wie importiere ich einen neuen Gale-Build?"
+  ],
+  "binary_and_large_file_policy": [
+    "important future reasoning must not depend only on opaque binary content",
+    "every active/accepted r2z must have ProfileSources snapshot and FILE_INDEX",
+    "important DLLs require source/readme/build record and SHA256",
+    "large logs require indexed RuntimeEvidence summaries while preserving raw evidence"
+  ],
+  "overhaul_complete_when": "A fresh ChatGPT session can answer ordinary project questions from a compact bootstrap plus on-demand topic/evidence files, without reading the entire repository or reconciling unclassified historical current wording."
+}
