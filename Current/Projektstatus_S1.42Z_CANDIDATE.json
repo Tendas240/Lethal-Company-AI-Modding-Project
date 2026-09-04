@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-04",
+  "repository_is_source_of_truth": true,
+  "accepted_baseline": {
+    "build_id": "S1.42U",
+    "profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
+    "sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
+    "status": "ACCEPTED_FULL_NORMAL_STACK"
+  },
+  "latest_runtime_tested_tuning_candidate": {
+    "build_id": "S1.42Y",
+    "profile": "Profiles/LC V1 S1.42Y Jetpack Aerial Defense Retune.r2z",
+    "sha256": "f4ae0d93c9cff4f9441c24d1021e5d9b816861b8317d9ed8995fde67ebbd8d89",
+    "runtime_evidence": "RuntimeEvidence/S1.42Y/20260904T123817Z/",
+    "runtime_log_sha256": "dc32b104b880199ef0b210be254946bad280d1992e6142f6913bf9602921435a",
+    "runtime_log_bytes": 1507644,
+    "runtime_log_lines": 15447,
+    "verdict": "TECHNICAL_PATHS_PASS_BALANCE_RETUNE_REQUIRED_NOT_ACCEPTED",
+    "technical_gate": {
+      "jetpack_plugin_loaded_and_armed": true,
+      "jetpack_target": 22,
+      "acu_provider_exact_curve_count": 18,
+      "greg_provider_exact_curve_count": 18,
+      "aerial_defense_transactional_scale_applied": 0.5,
+      "work_no_task": 0,
+      "leader_null": 0,
+      "compatibility_fixes_errors": 0,
+      "fatal": 0,
+      "normal_enemy_activity_present": true
+    },
+    "accepted_findings": [
+      "Functional Microwave Volume 0.15 is subjectively correct",
+      "Pikmin CarryStrength 3 for configured non-Purple types is correct",
+      "Purple Pikmin CarryStrength 30 is correct",
+      "complete ACU plus G.R.E.G. transactional provider scaling works technically"
+    ],
+    "retune_findings": [
+      "Jetpack 22f should be reduced to 18f",
+      "Indoor Pikmin Spawn Chance 0.08 should be increased to 0.09"
+    ]
+  },
+  "latest_built_candidate": {
+    "build_id": "S1.42Z",
+    "profile": "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z",
+    "profile_name": "LC V1 S1.42Z Jetpack Pikmin Retune",
+    "sha256": "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4",
+    "status": "BUILD_PASS_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
+    "build_run": 33874737048,
+    "automated_build_commit": "267543634bb884bb447bf4bec320103ba75c9ff8",
+    "zip_members": 333,
+    "changed_existing_members": 15,
+    "mod_state_changes": [],
+    "mod_additions": [],
+    "mod_removals": [],
+    "project_local_dlls": [
+      {
+        "path": "BepInEx/plugins/S142ZJetpackAcceleration/S142ZJetpackAcceleration.dll",
+        "sha256": "9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add",
+        "purpose": "replace validated ButteRyBalance local-player jetpackAcceleration baseline 10f with 18f"
+      },
+      {
+        "path": "BepInEx/plugins/S142ZCodeRebirthAerialDefenseSpawnTuning/S142ZCodeRebirthAerialDefenseSpawnTuning.dll",
+        "sha256": "7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b",
+        "purpose": "transactionally scale both CodeRebirth aerial-defense DawnLib provider curve sets by 0.5"
+      }
+    ],
+    "tuning": {
+      "jetpack_base_acceleration": 18,
+      "jet_fuel_initial_percent": 18,
+      "jet_fuel_incremental_percent": 18,
+      "jetpack_thrusters_initial_max_speed_percent": 25,
+      "jetpack_thrusters_incremental_max_speed_percent": 20,
+      "lethalmin_indoor_pikmin_spawn_chance": 0.09,
+      "pikmin_carry_strength_non_purple": 3,
+      "pikmin_carry_strength_purple": 30,
+      "immortal_snail_rarity": 40,
+      "immortal_snail_max": 2,
+      "functional_microwave_volume": 0.15,
+      "functional_microwave_volume_status": "USER_ACCEPTED"
+    },
+    "aerial_defense_contract": {
+      "scale": 0.5,
+      "semantics": "curve_amplitude_spawn_weight_reduction_not_exact_short_sample_spawn_count_probability",
+      "transactional": true,
+      "targets": [
+        {
+          "key": "code_rebirth:air_control_unit",
+          "expected_curve_count": 18
+        },
+        {
+          "key": "code_rebirth:gunslinger_greg",
+          "display_name": "G.R.E.G. / Advanced Airspace Control",
+          "expected_curve_count": 18
+        }
+      ]
+    }
+  },
+  "controllers": {
+    "buildspec_current_enabled": false,
+    "buildspec_current_id": "IDLE_AFTER_S1.42Z_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "runtime_active_build": "S1.42Z"
+  },
+  "gale_import_requirement": "Advanced options -> Import all files",
+  "runtime_upload_policy": "Provide one exact self-contained PowerShell one-liner for every new runtime test profile; Current/09_REPOSITORY_FIRST_AUTOMATION.md",
+  "exact_next_step": "Runtime-test S1.42Z. Verify both Z project-local plugin load/validation/applied markers, Jetpack 18f feel, Indoor Pikmin 0.09 density, preserved CarryStrength and Microwave tuning, then upload the complete profile LogOutput.log with the candidate-specific single PowerShell command."
+}
