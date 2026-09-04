@@ -54,9 +54,9 @@ After a test, the generated evidence goes to `RuntimeInbox/Current/`. The ingest
 
 The user should not need to rename `.cfg` to `.txt` merely for ChatGPT compatibility.
 
-### Mandatory PowerShell upload one-liner for every new runtime test build
+### Mandatory self-contained PowerShell upload one-liner for every new runtime test build
 
-Whenever ChatGPT produces or designates a **new build/profile that the user is supposed to test next**, the same response that tells the user to test that build must also include a ready-to-run **PowerShell one-line command** which uploads that exact Gale profile's:
+Whenever ChatGPT produces or designates a **new build/profile that the user is supposed to test next**, the same response that tells the user to test that build must also include exactly one ready-to-run **PowerShell one-line command** which uploads that exact Gale profile's:
 
 `BepInEx\LogOutput.log`
 
@@ -81,35 +81,23 @@ The command must:
 - replace it safely when it already exists by supplying the current GitHub blob SHA;
 - use a build-specific commit message such as `Upload S1.42Y runtime log`;
 - be presented as a single copy/pasteable PowerShell line;
-- be included automatically without waiting for the user to ask again.
+- be included automatically without waiting for the user to ask again;
+- **self-bootstrap GitHub CLI**: if `gh` is missing, install `GitHub.cli` with `winget` inside the same command;
+- resolve a newly installed `gh` directly from `C:\Program Files\GitHub CLI\gh.exe` so no PowerShell restart is required;
+- **self-bootstrap authentication**: if `gh auth status` is not already valid for github.com, run `gh auth login --hostname github.com --git-protocol https --web` inside the same command and continue to the upload after authentication completes;
+- verify that the exact local `LogOutput.log` exists before attempting the upload and stop with a clear error if it does not.
 
-### GitHub CLI prerequisite — do not assume silently
+Do **not** give the user a separate installation command plus a separate upload command when one self-contained command can do both. The normal expected UX is one pasted command per test build. The browser-based GitHub authorization may still require the user's interactive approval the first time, but it is launched from the same PowerShell command and the command continues afterwards.
 
-The direct upload one-liner uses GitHub CLI (`gh`). ChatGPT must **not silently assume that `gh` is installed or on `PATH`**.
-
-If the user has not yet established a working `gh` installation/authentication, or an upload fails with `gh is not recognized`, first provide this one-time PowerShell setup command:
-
-```powershell
-winget install --id GitHub.cli -e --source winget --accept-package-agreements --accept-source-agreements; & "$env:ProgramFiles\GitHub CLI\gh.exe" auth login --hostname github.com --git-protocol https --web
-```
-
-This installs GitHub CLI and starts GitHub's web authentication flow. It normally only needs to be completed once on that Windows installation.
-
-After installation, future upload commands should resolve `gh` from `PATH` when available and otherwise fall back to:
-
-`C:\Program Files\GitHub CLI\gh.exe`
-
-This avoids requiring the user to restart PowerShell merely for a newly installed PATH entry.
-
-Canonical robust normal-log one-line pattern:
+Canonical self-contained normal-log one-line pattern:
 
 ```powershell
-$gh=(Get-Command gh -ErrorAction SilentlyContinue).Source;if(!$gh){$gh="$env:ProgramFiles\GitHub CLI\gh.exe"};if(!(Test-Path $gh)){throw 'GitHub CLI gh is not installed. Run the one-time setup command first.'};$src='C:\Users\Milan\AppData\Roaming\com.kesomannen.gale\lethal-company\profiles\<EXACT PROFILE NAME>\BepInEx\LogOutput.log';$repo='Tendas240/Lethal-Company-AI-Modding-Project';$dst='RuntimeInbox/Current/LogOutput.log';$sha=(& $gh api "repos/$repo/contents/$dst" --jq '.sha' 2>$null);$p=@{message='Upload <BUILD_ID> runtime log';content=[Convert]::ToBase64String([IO.File]::ReadAllBytes($src));branch='main'};if($sha){$p['sha']=$sha};($p|ConvertTo-Json -Compress)|& $gh api --method PUT "repos/$repo/contents/$dst" --input -
+$src='C:\Users\Milan\AppData\Roaming\com.kesomannen.gale\lethal-company\profiles\<EXACT PROFILE NAME>\BepInEx\LogOutput.log';if(!(Test-Path -LiteralPath $src)){throw "Log not found: $src"};$gh=(Get-Command gh -ErrorAction SilentlyContinue).Source;if(!$gh){winget install --id GitHub.cli -e --source winget --accept-package-agreements --accept-source-agreements;if($LASTEXITCODE -ne 0){throw 'GitHub CLI installation failed'};$gh="$env:ProgramFiles\GitHub CLI\gh.exe"};if(!(Test-Path -LiteralPath $gh)){$gh=(Get-Command gh -ErrorAction SilentlyContinue).Source};if(!$gh -or !(Test-Path -LiteralPath $gh)){throw 'GitHub CLI gh could not be found after installation'};& $gh auth status --hostname github.com *> $null;if($LASTEXITCODE -ne 0){& $gh auth login --hostname github.com --git-protocol https --web;if($LASTEXITCODE -ne 0){throw 'GitHub authentication failed'}};$repo='Tendas240/Lethal-Company-AI-Modding-Project';$dst='RuntimeInbox/Current/LogOutput.log';$sha=(& $gh api "repos/$repo/contents/$dst" --jq '.sha' 2>$null);$p=@{message='Upload <BUILD_ID> runtime log';content=[Convert]::ToBase64String([IO.File]::ReadAllBytes($src));branch='main'};if($sha){$p['sha']=$sha};($p|ConvertTo-Json -Compress)|& $gh api --method PUT "repos/$repo/contents/$dst" --input -;if($LASTEXITCODE -ne 0){throw 'Runtime log upload failed'}
 ```
 
 Do not substitute local clone / `git add` / `git push` instructions unless the direct GitHub CLI path is actually unavailable.
 
-For unusually large logs that cannot safely use the normal GitHub Contents API / main-branch path, follow `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md` instead and provide the corresponding large-log PowerShell command. Do not silently try to commit a >100 MiB raw log to `main`.
+For unusually large logs that cannot safely use the normal GitHub Contents API / main-branch path, follow `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md` instead and provide the corresponding **single self-contained** large-log PowerShell command. Do not silently try to commit a >100 MiB raw log to `main`.
 
 ## Binary accessibility rule
 
