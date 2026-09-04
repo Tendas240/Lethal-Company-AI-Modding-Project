@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "status": "VERIFIED",
+  "source_repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "source_default_branch": "main",
+  "frozen_source_commit_sha": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+  "frozen_source_tree_sha": "0e17aac410cf600a164396b5586b5b50f084df22",
+  "backup_repository": "Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904",
+  "backup_default_branch": "main",
+  "backup_default_branch_commit_sha": "c0f267fadfa807730f6f465953861f4728b2136a",
+  "backup_frozen_content_commit_sha": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+  "backup_frozen_content_tree_sha": "0e17aac410cf600a164396b5586b5b50f084df22",
+  "backup_datetime": "2026-09-04T19:40:51Z",
+  "backup_method": "git clone --mirror followed by GitHub push; GitHub-managed refs/pull/* were rejected, while all normal source branches were preserved. Backup main was explicitly reset to the frozen source commit before verification; one archival provenance manifest commit was then added on top.",
+  "history_branches_tags_preserved": {
+    "full_commit_history_reachable_from_preserved_refs": true,
+    "branches": {
+      "source_at_verification": {
+        "main": "dbd616c798cb82866cc1d29a8ee660c768c9bc42",
+        "pre-overhaul-freeze-20260904-5dbd0e6": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+        "runtime-large": "2e3b17f028ff5d194307776d39a509ddb3658e5b"
+      },
+      "backup_preserved": {
+        "main_frozen_parent": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+        "pre-overhaul-freeze-20260904-5dbd0e6": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+        "runtime-large": "2e3b17f028ff5d194307776d39a509ddb3658e5b"
+      }
+    },
+    "source_tags": [],
+    "backup_tags": []
+  },
+  "verification_result": "PASS",
+  "verification": {
+    "frozen_commit_present_in_backup": true,
+    "frozen_commit_identity_matches": true,
+    "frozen_tree_identity_matches": true,
+    "frozen_tree_sha": "0e17aac410cf600a164396b5586b5b50f084df22",
+    "important_recovery_paths_present_via_identical_tree": [
+      ".github",
+      "BuildSpecs",
+      "BuildSystem",
+      "Current",
+      "Patches",
+      "ProfileSources",
+      "Profiles",
+      "RuntimeAnalysis",
+      "RuntimeEvidence",
+      "RuntimeInbox",
+      "RuntimeTools",
+      "README.md",
+      "START_HERE_ChatGPT_Masterprompt.txt"
+    ],
+    "backup_provenance_manifest": "PRE_OVERHAUL_BACKUP_MANIFEST.json",
+    "backup_provenance_commit_sha": "c0f267fadfa807730f6f465953861f4728b2136a",
+    "backup_provenance_parent_is_frozen_source_commit": true
+  },
+  "exclusions_or_limitations": [
+    "GitHub rejected refs/pull/* hidden pull-request refs during the mirror push. These GitHub-managed hidden refs are not normal project branches or tags and are not required for repository recovery.",
+    "The backup default branch contains one archival provenance-manifest commit on top of the exact frozen source commit. The complete pre-overhaul source tree and original commit identity remain preserved as its parent commit 5dbd0e637a480d8591773e422bbca4b0654cad20.",
+    "The source main branch advanced after the frozen checkpoint only to record non-structural overhaul execution state; the frozen checkpoint remains the authoritative pre-overhaul recovery point."
+  ],
+  "backup_is_historical_read_only": true,
+  "backup_is_current_source_of_truth": false,
+  "primary_repository_remains_source_of_truth": true,
+  "standalone_backup_gate_passed": true,
+  "structural_overhaul_may_begin_after_this_manifest_commit": true
+}
