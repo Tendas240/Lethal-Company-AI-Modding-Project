@@ -2,6 +2,7 @@
 
 **Date:** 2026-09-04  
 **Verdict:** PASS / COMPLETE / VALIDATED  
+**Post-acceptance re-audit:** `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md` — PASS  
 **Scope:** repository knowledge architecture only; no gameplay/config/mod/profile/project-local patch behavior change
 
 ## Objective
@@ -34,7 +35,8 @@ The migration is intentionally **non-destructive and semantic** rather than a ma
 - artifact/runtime retrieval integrity: `Current/ARTIFACT_EVIDENCE_INTEGRITY.md/.json`
 - migration/retention record: `Current/REPOSITORY_MIGRATION_MANIFEST.md/.json`
 - atomic state policy: `Current/CURRENT_STATE_TRANSITION_POLICY.md`
-- validator: `RepositoryTools/knowledge_architecture_validator.py`
+- live knowledge validator: `RepositoryTools/knowledge_architecture_validator.py`
+- frozen original-contract validator: `RepositoryTools/overhaul_contract_validator.py`
 - answerability suite: `RepositoryTools/answerability_regression.py`
 - generated current navigation: `RepositoryTools/render_current_navigation.py`
 - CI: `.github/workflows/knowledge-architecture.yml`
@@ -53,45 +55,50 @@ The first finalization attempt exposed index-only drift: `Current/BUILD_LINEAGE.
 
 No gameplay artifact was changed; only the knowledge index was corrected.
 
-## CI validation — PASS
+## Initial CI validation — PASS, later strengthened
 
-Knowledge Architecture workflow run `33917143180` at commit `37d0b25823844603cf919c033507c1f0fc3bb88e` completed successfully.
+Knowledge Architecture workflow run `33917143180` at commit `37d0b25823844603cf919c033507c1f0fc3bb88e` completed successfully. It proved generated-current-navigation consistency, the then-current knowledge validator, and 24/24 answerability routing cases.
 
-That green gate proved:
+A later user-requested audit re-read the actual frozen pre-overhaul contract and found that this initial green validator did not encode every one-time migration obligation. The gaps were authority/validation gaps, not gameplay defects. They are documented and corrected in `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`.
 
-- generated current navigation matches `Current/CURRENT_STATE.json`;
-- repository knowledge/state/reference validation passed with `errors=0 warnings=0`;
-- all 24 semantic answerability routing regression cases passed.
+The first strict green run after adding the frozen-contract validator was `33919296323` at commit `e3704877d309e40b092768430d0e81f7d86ed2e3`. It passed:
 
-The answerability router was hardened during final validation so ordinary German inflection variants such as `aktuelle/aktueller` and semantically stronger terms such as `verworfen` do not lose to the generic token `build`.
+- generated current navigation;
+- live knowledge/state/reference validation;
+- frozen original-overhaul-contract validation;
+- semantic answerability routing regression.
 
 Machine result: `Current/OVERHAUL_VALIDATION_RESULTS.json`.
 
 ## Current gameplay state preserved
 
-The overhaul did not alter the gameplay controller state:
+The overhaul and the stricter post-acceptance remediation did not alter the gameplay controller state:
 
 - accepted baseline remains S1.42AB, SHA-256 `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`;
 - S1.42AC remains formally rejected/not promoted;
 - no active candidate;
 - no runtime test outstanding;
+- no successor armed;
 - `BuildSpecs/current.json` remains disabled;
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AB`.
 
-## Acceptance against the binding overhaul contract
+## Acceptance against the binding frozen overhaul contract
 
-PASS:
+PASS after post-acceptance re-audit:
 
 - independent pre-overhaul recovery repository verified;
 - backup provenance manifest present;
-- structural work began only after the backup checkpoint;
+- Git history independently proves structural knowledge-architecture artifacts were absent at the backup gate and appeared only after that checkpoint;
 - compact bootstrap and semantic topic routing implemented;
 - current truth separated from historical chronology;
+- stale historical `current` wording is conspicuously classified at the affected files;
+- completed one-time overhaul instructions cannot masquerade as still-pending live instructions;
 - build lineage and document authority graph implemented;
 - active/accepted profile source snapshots and runtime evidence indexed;
 - historical evidence retained conservatively;
+- accepted-code historical comment drift is explicitly non-normative without creating source/binary provenance drift;
 - atomic current-state transition policy implemented;
-- repository validator and CI implemented;
+- live knowledge validator, frozen-contract validator and CI implemented;
 - answerability routing regression suite implemented and green;
 - no gameplay behavior change introduced by the overhaul.
 
