@@ -163,9 +163,9 @@ After the S1.42AA gate, deferred work still includes:
 
 ## Final post-refresh verification
 
-After all handover edits, the canonical entry points were fetched again and checked against each other.
+After all handover edits, the canonical entry points were fetched again and checked against each other. The dedicated handover status line was then aligned to explicitly include the already-confirmed profile import, and this audit was finalized afterward.
 
-Verified current blob SHAs:
+Verified current blob SHAs at the final check:
 
 - `START_HERE_ChatGPT_Masterprompt.txt` — `8c074d84eaf358490faa1ef3d5d9eb8420514691`;
 - `README.md` — `945a2f528f2c6bb74032c931472116deb8d0139b`;
@@ -175,6 +175,7 @@ Verified current blob SHAs:
 - `Current/Projektstatus_S1.42AA_CANDIDATE.json` — `72e0fa046803307d9a3a23f4cf6b204813633621`;
 - `Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md` — `4faa6f440602791ece66a2dfbaad8ab27d9e7662`;
 - `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md` — `d80db7b572f5d444654569ddeffe1e2fef5d3746`;
+- `Current/94_FINAL_HANDOVER_S1.42Z_ACCEPTED_S1.42AA_RUNTIME_NEXT.md` — `a3cf0deb49b4e599754c6fcbed04dde647ab63cb`;
 - `BuildSpecs/current.json` — `69d63b4df1609a25c5795557443c0d681c0cc131`;
 - `RuntimeInbox/ACTIVE_BUILD.txt` — `4c7b326d02c1d6b424b0a1fd75204fb959fcb847`;
 - `Current/AUTO_BUILD_RESULT.json` — `b49ad75f30b9d821b462edb82385ed697d7b7d6d`.
@@ -191,4 +192,4 @@ Cross-check result:
 - exact next action is consistently the Offense runtime run followed by the S1.42AA log uploader;
 - no blocking current-pointer contradiction remains.
 
-Final audit verdict remains **PASS**.
+Final audit verdict: **PASS**.
