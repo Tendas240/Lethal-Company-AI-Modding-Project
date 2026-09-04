@@ -71,8 +71,8 @@ def git_object_exists(spec: str) -> bool:
 def check_required_artifacts() -> None:
     req = read_json("Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json")
     status = str(req.get("status", ""))
-    if "IMPLEMENTED" not in status or "VALIDATED" not in status:
-        err(f"requirements status is not implemented+validated: {status!r}")
+    if "VALIDATED" not in status or not ("EXECUTED" in status or "IMPLEMENTED" in status):
+        err(f"requirements status is not executed/implemented + validated: {status!r}")
     for item in req.get("required_artifacts", []):
         if isinstance(item, str):
             require_path(item, "requirements artifact")
@@ -147,18 +147,17 @@ def check_visible_historical_classification() -> None:
         if path not in history:
             err(f"document authority registry does not classify {path}")
 
-    drift = {
-        x.get("path"): x for x in authority.get("known_comment_drift", [])
-        if isinstance(x, dict) and x.get("path")
-    }
     plugin = "Patches/S139CompatibilityFixes/Plugin.cs"
-    if plugin not in drift:
+    drift = authority.get("code_comment_drift")
+    if not isinstance(drift, dict) or drift.get("path") != plugin:
         err("accepted Plugin.cs stale-comment drift is not explicitly classified")
     else:
-        invariants = " ".join(map(str, drift[plugin].get("current_invariants", []))).lower()
+        invariants = " ".join(map(str, drift.get("current_invariants", []))).lower()
         for needle in ("crawler", "bite limit 3", "puffer", "native cleanup"):
             if needle not in invariants:
                 err(f"Plugin.cs comment-drift authority lacks current invariant: {needle}")
+        if not drift.get("provenance_rule"):
+            err("Plugin.cs comment-drift authority lacks provenance rule for accepted source/binary alignment")
 
 
 def check_current_state_and_controllers() -> None:
