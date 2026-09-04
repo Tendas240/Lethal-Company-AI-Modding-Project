@@ -115,13 +115,22 @@
     "independent_audit_final_pre_hardening_run_id": 33924985805,
     "independent_audit_final_pre_hardening_head_sha": "3238594103e48ffcc696b4f9897e3e139d2eb0c6",
     "independent_audit_final_pre_hardening_conclusion": "SUCCESS",
-    "hardening_status": "IMPLEMENTED_VALIDATION_PENDING",
-    "navigation_check": "PASS_PRE_HARDENING",
-    "knowledge_validator": "PASS_PRE_HARDENING",
-    "frozen_contract_validator": "PASS_PRE_HARDENING",
-    "answerability_regression": "PASS_PRE_HARDENING"
+    "hardening_status": "VALIDATED",
+    "hardening_first_full_green_run_id": 33927769717,
+    "hardening_first_full_green_head_sha": "7af7ddeebf5b443290b4cd0e7d6ca8ded222b602",
+    "hardening_first_full_green_conclusion": "SUCCESS",
+    "hardening_permanent_gate_count": 9,
+    "navigation_check": "PASS",
+    "knowledge_validator": "PASS",
+    "actual_byte_integrity_validator": "PASS",
+    "repository_integrity_guard": "PASS",
+    "runtime_sha_provenance_validator": "PASS",
+    "phase_checkpoint_validator": "PASS",
+    "frozen_contract_validator": "PASS",
+    "answerability_regression": "PASS",
+    "validator_negative_selftests": "PASS"
   },
-  "exact_next_operation": "Complete CI validation of the repository-integrity hardening. After that, repository overhaul/hardening is closed and normal project work resumes from Current/CURRENT_STATE.json. If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence using Current/109; do not create a compensation successor merely to equalize per-event log weights.",
+  "exact_next_operation": "Repository overhaul and post-audit integrity hardening are closed. Resume normal project work from Current/CURRENT_STATE.json. If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence using Current/109; do not create a compensation successor merely to equalize per-event log weights.",
   "files_not_yet_safe_to_move_or_delete": "Historical evidence remains intentionally retained. Any future deletion still requires the unique-fact and reference audit in Current/REPOSITORY_MIGRATION_MANIFEST.md.",
   "bootstrap_rewrite_allowed": true,
   "history_reclassification_allowed": true,
@@ -132,6 +141,7 @@
     "The architecture uses semantic routing instead of destructive historical file moves.",
     "The exact individual Phase 3-10 completion checkpoint order is not independently reconstructible and remains explicitly qualified.",
     "The old incorrect S1.42AC raw-log SHA is centrally registered as superseded historical metadata.",
-    "Future multi-phase repository work must use immutable phase completion checkpoints."
+    "Future multi-phase repository work must use immutable phase completion checkpoints.",
+    "The expanded nine-stage hardening CI passed on a real pull-request checkout with full Git history and actual critical artifact/runtime bytes."
   ]
 }
