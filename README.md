@@ -109,6 +109,10 @@ Repository handover audit:
 
 `Current/89_REPOSITORY_HANDOVER_AUDIT_S1.42Z.md`
 
+Recent chronology continuation:
+
+`Current/06_RECENT_WORK_S1.42N-S1.42Z.md`
+
 Machine status:
 
 `Current/Projektstatus_S1.42Z_CANDIDATE.json`
@@ -190,18 +194,19 @@ The candidate-specific one-line PowerShell uploader is recorded in `Current/87_S
 3. `Current/89_REPOSITORY_HANDOVER_AUDIT_S1.42Z.md`
 4. `Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md`
 5. `Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md`
-6. `Current/Projektstatus_S1.42Z_CANDIDATE.json`
-7. `Current/00_CURRENT_STATE.md`
-8. `Current/01_HANDOVER_CORE.md`
-9. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-10. `BuildSpecs/S1.42Z_PLAN.md`
-11. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
-12. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-13. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-14. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-15. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-16. `BuildSpecs/current.json`
-17. `RuntimeInbox/ACTIVE_BUILD.txt`
+6. `Current/06_RECENT_WORK_S1.42N-S1.42Z.md`
+7. `Current/Projektstatus_S1.42Z_CANDIDATE.json`
+8. `Current/00_CURRENT_STATE.md`
+9. `Current/01_HANDOVER_CORE.md`
+10. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+11. `BuildSpecs/S1.42Z_PLAN.md`
+12. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
+13. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+14. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+15. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+16. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+17. `BuildSpecs/current.json`
+18. `RuntimeInbox/ACTIVE_BUILD.txt`
 
 Chronologically newer confirmed information overrides older handover wording. `Archive/` is historical evidence, not an automatically current state source.
 
