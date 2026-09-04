@@ -1,22 +1,23 @@
 {
-  "build_id": "S1.42AA",
-  "profile_name": "LC V1 S1.42AA Interior Weight Equalization",
+  "build_id": "S1.42AB",
+  "profile_name": "LC V1 S1.42AB Interior Weight Normalization",
   "base_profile": "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z",
   "base_sha256": "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4",
-  "output_profile": "Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z",
-  "output_sha256": "0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364",
-  "zip_members": 333,
+  "output_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
+  "output_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
+  "zip_members": 334,
   "changed_existing_members": [
-    "BepInEx/config/LethalLevelLoader.cfg",
     "export.r2x"
   ],
-  "added_members": [],
+  "added_members": [
+    "BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll"
+  ],
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42AA",
+  "snapshot_dir": "ProfileSources/S1.42AB",
   "snapshot": {
-    "entries": 333,
+    "entries": 334,
     "text_entries": 330
   }
 }

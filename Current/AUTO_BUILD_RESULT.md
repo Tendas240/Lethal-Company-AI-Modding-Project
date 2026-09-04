@@ -1,18 +1,17 @@
-# Automated profile build result - S1.42AA
+# Automated profile build result - S1.42AB
 
-- Profile: LC V1 S1.42AA Interior Weight Equalization
+- Profile: LC V1 S1.42AB Interior Weight Normalization
 - Base: Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z
 - Base SHA-256: a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4
-- Output: Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z
-- Output SHA-256: 0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364
-- ZIP members: 333
-- Text snapshot: ProfileSources/S1.42AA (330 readable files)
+- Output: Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z
+- Output SHA-256: 3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca
+- ZIP members: 334
+- Text snapshot: ProfileSources/S1.42AB (330 readable files)
 
 ## Changed existing members
 
-- BepInEx/config/LethalLevelLoader.cfg
 - export.r2x
 
 ## Added members
 
-- none
+- BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll
