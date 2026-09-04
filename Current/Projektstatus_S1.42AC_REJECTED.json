@@ -1,63 +1,46 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "date": "2026-09-04",
   "repository_is_source_of_truth": true,
-  "canonical_state": "S1.42AB_ACCEPTED_S1.42AC_RUNTIME_REJECTED_ANALYSIS_NEXT",
+  "canonical_state": "S1.42AB_ACCEPTED_S1.42AC_REJECTED_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED",
   "handover": "Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md",
   "repository_audit": "Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md",
+  "post_rejection_analysis": "Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md",
   "accepted_baseline": {
     "build_id": "S1.42AB",
     "title": "Interior Weight Normalization",
     "status": "ACCEPTED_FULL_NORMAL_STACK",
     "profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
-    "profile_name": "LC V1 S1.42AB Interior Weight Normalization",
     "sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
     "acceptance_record": "Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md",
-    "machine_state": "Current/Projektstatus_S1.42AB_ACCEPTED.json",
     "runtime_evidence": "RuntimeEvidence/S1.42AB/20260904T174010Z/",
     "raw_log_sha256": "42cfba3d157f6abdbeee114909d90749d1bfd043d4b0c224922ad5be976194ae"
   },
   "rejected_candidate": {
     "build_id": "S1.42AC",
     "title": "BCMER EventType Equal Distribution",
-    "status": "RUNTIME_FAIL_REJECTED_NOT_ACCEPTED",
+    "status": "FORMALLY_REJECTED_NOT_PROMOTED_OR_REARMED",
     "profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
-    "profile_name": "LC V1 S1.42AC BCMER EventType Equal Distribution",
     "sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
     "successful_build_run": 33903271224,
     "automated_build_commit": "a30b327580e28f42e55281e91abe03d32ae41363",
     "candidate_record": "Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
     "rejection_record": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
-    "plan": "BuildSpecs/S1.42AC_PLAN.md",
-    "snapshot": "ProfileSources/S1.42AC/",
     "runtime_evidence": "RuntimeEvidence/S1.42AC/20260904T181854Z/",
     "raw_log_sha256": "8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0",
-    "runtime_log_bytes": 2000261,
-    "runtime_log_lines": 20460,
-    "parsed_events": 19547,
-    "error_severity_events": 77,
-    "fatal": 0,
-    "intended_delta": {
-      "changed_config": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "event_type_scale": "12.5, 0.0, 12.5, 12.5",
-      "use_custom_weights": false,
-      "target_distribution": "8 x 12.5%"
-    },
-    "primary_runtime_gate": {
-      "expected": "all eight Set eventType weight runtime values identical in the same roll context",
-      "result": "FAIL",
-      "repeated_roll_contexts_observed": 5,
-      "observed_effective_weights": {
-        "Insane": 6843,
-        "VeryBad": 506,
-        "Bad": 355,
-        "Neutral": 1368,
-        "Good": 1244,
-        "VeryGood": 2737,
-        "Rare": 27375,
-        "Remove": 883
-      },
-      "conclusion": "Equal configured EventType scale curves do not produce equal final BCMER 1.71.0 EventType selection weights."
+    "configured_event_type_scale": "12.5, 0.0, 12.5, 12.5",
+    "use_custom_weights": false,
+    "randomizer_enabled": false,
+    "randomize_event_weights": false,
+    "observed_per_event_weights": {
+      "Insane": 6843,
+      "VeryBad": 506,
+      "Bad": 355,
+      "Neutral": 1368,
+      "Good": 1244,
+      "VeryGood": 2737,
+      "Rare": 27375,
+      "Remove": 883
     },
     "preserved_runtime_checks": {
       "bcmer_event_execution": "PASS",
@@ -71,33 +54,67 @@
       "unspawned_network_object_reference": 0,
       "pikmin_notice_zone_regression": 0,
       "fatal": 0
-    },
-    "secondary_observations": {
-      "navmesh_setdestination_error_signature_count": 43,
-      "lethalmin_route_failure_signature_count": 26,
-      "interpretation": "Secondary interior/Pikmin routing evidence only; do not attribute causally to the AC config-only BCMER change without reproducibility."
     }
   },
-  "diagnosis": {
-    "confirmed": [
-      "S1.42AC changed final BCMER EventType runtime weights relative to S1.42AB.",
-      "Setting all eight EventType scales to the same constant does not equalize the final effective EventType weights.",
-      "S1.42AC therefore fails its primary acceptance objective and is rejected."
+  "bcmer_1_71_weight_path_analysis": {
+    "status": "COMPLETE",
+    "record": "Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md",
+    "exact_upstream_commit": "e2ca64b9954b7076e75e9a9ff97d76232c4086b0",
+    "version_proof": "BrutalCompanyMinus/Plugin.cs declares VERSION = 1.71.0 at the exact upstream commit",
+    "per_event_formula": "int((eventTypeSum / fix(eventTypeCount[i])) * eventTypeProbabilities[i] * 1000.0f)",
+    "principal_type_dependent_factor": "eventTypeCount[i], the number of enabled events in EventManager.events for that EventType",
+    "semantic_correction": "The logged Set eventType weight value is a per-event weight assigned to every event of that type, not the aggregate EventType mass.",
+    "equal_scale_result": "With eight constant 12.5 scales, BCMER computes eventTypeProbabilities[i] = 0.125 for every type and uses inverse event-count normalization to distribute that type mass across individual events.",
+    "observed_active_pool_solution": {
+      "eventTypeSum": 219,
+      "eventTypeCounts": {
+        "Insane": 4,
+        "VeryBad": 54,
+        "Bad": 77,
+        "Neutral": 20,
+        "Good": 22,
+        "VeryGood": 10,
+        "Rare": 1,
+        "Remove": 31
+      },
+      "aggregate_integer_masses": {
+        "Insane": 27372,
+        "VeryBad": 27324,
+        "Bad": 27335,
+        "Neutral": 27360,
+        "Good": 27368,
+        "VeryGood": 27370,
+        "Rare": 27375,
+        "Remove": 27373
+      },
+      "aggregate_share_min_percent": 12.4837,
+      "aggregate_share_max_percent": 12.5070,
+      "spread_percentage_points": 0.0233,
+      "residual_reason": "integer truncation of per-event weights"
+    },
+    "selection_stage_factors": [
+      "AddEventIfOnly eligibility",
+      "moon whitelist/blacklist",
+      "Special/Beta gating",
+      "forced-event removal",
+      "without-replacement removal after selection",
+      "EventsToRemove incompatibility",
+      "EventsToSpawnWith handling",
+      "multiple draws per round"
     ],
-    "not_yet_proven": [
-      "The exact complete BCMER 1.71.0 formula that converts configured scales and other inputs into final EventType weights."
-    ],
-    "do_not_repeat": "Do not build another successor that merely sets all eight EventType scale curves to the same value and assumes equal final probability."
+    "superseded_rejection_interpretation": "Requiring all eight logged per-event weights to be identical was an invalid acceptance gate for EventType equality.",
+    "implementation_decision": "Do not apply inverse config compensation and do not force equal per-event weights with a project-local patch. No new successor implementation is justified by this analysis; the existing equal-scale S1.42AC concept is the correct static EventType-probability approach under BCMER ownership.",
+    "promotion_status": "S1.42AC remains formally rejected/not accepted until an explicit corrected acceptance interpretation is applied. This analysis does not silently promote it."
   },
   "controllers": {
-    "buildspec_id": "IDLE_AFTER_S1.42AC_RUNTIME_REJECTION_ANALYSIS_REQUIRED",
+    "buildspec_id": "IDLE_AFTER_S1.42AC_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED",
     "buildspec_base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
     "buildspec_base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
     "runtime_active_build": "S1.42AB",
     "successor_armed": false,
     "runtime_test_outstanding": false
   },
-  "exact_next_step": "Inspect the exact BCMER 1.71.0 calculation path that produces final 'Set eventType weight for <type> to <value>' values. Identify the final effective EventType-weight owner and all additional type-dependent inputs. Only then choose and document a safe successor design: proven inverse config compensation if stable, or preferably a narrow fail-closed project-local final-weight normalization if code-level control is safer. Do not arm/build a successor before this analysis is complete.",
+  "exact_next_step": "Do not build a compensation successor. Preserve S1.42AB as accepted baseline and S1.42AC as formally rejected/not promoted. If the EventType scope is continued, first apply the corrected acceptance model from Current/109 to the existing S1.42AC artifact/evidence; do not require equality of the eight per-event log values. A requirement for exact post-eligibility long-run 12.5% executed frequencies would be a separate broader algorithm-design scope.",
   "deferred_separate_scopes": [
     "Functional Microwave spawn-rarity reduction",
     "CullFactory junkrooms/shatteredrooms exceptions",
@@ -108,13 +125,5 @@
     "AdditionalNetworking repair only with reproducible user-facing evidence",
     "LethalMin teardown repair only with stronger evidence",
     "repository information-architecture overhaul"
-  ],
-  "repository_overhaul": {
-    "status": "PLANNED_NOT_EXECUTED",
-    "start": "OVERHAUL_START_HERE_ChatGPT.txt",
-    "plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
-    "execution_playbook": "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md",
-    "requirements": "Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json",
-    "pre_overhaul_standalone_backup_required": true
-  }
+  ]
 }
