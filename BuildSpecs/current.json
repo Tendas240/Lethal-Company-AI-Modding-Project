@@ -1,109 +1,15 @@
 {
-  "enabled": true,
-  "build_id": "S1.42AC",
-  "base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
-  "base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
-  "output_profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
-  "profile_name": "LC V1 S1.42AC BCMER EventType Equal Distribution",
+  "enabled": false,
+  "build_id": "IDLE_AFTER_S1.42AC_BUILD_AWAITING_RUNTIME_VALIDATION",
+  "base_profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+  "base_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
+  "profile_name": "DO_NOT_BUILD",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "config_patches": [
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "section": "_EventType Weights",
-      "key": "Insane event scale",
-      "value": "12.5, 0.0, 12.5, 12.5"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "section": "_EventType Weights",
-      "key": "VeryBad event scale",
-      "value": "12.5, 0.0, 12.5, 12.5"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "section": "_EventType Weights",
-      "key": "Bad event scale",
-      "value": "12.5, 0.0, 12.5, 12.5"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "section": "_EventType Weights",
-      "key": "Neutral event scale",
-      "value": "12.5, 0.0, 12.5, 12.5"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "section": "_EventType Weights",
-      "key": "Good event scale",
-      "value": "12.5, 0.0, 12.5, 12.5"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "section": "_EventType Weights",
-      "key": "VeryGood event scale",
-      "value": "12.5, 0.0, 12.5, 12.5"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "section": "_EventType Weights",
-      "key": "Rare event scale",
-      "value": "12.5, 0.0, 12.5, 12.5"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "section": "_EventType Weights",
-      "key": "Remove event scale",
-      "value": "12.5, 0.0, 12.5, 12.5"
-    }
-  ],
+  "config_patches": [],
   "local_plugin_builds": [],
-  "text_assertions": [
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "contains": "Use custom weights? = false"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "contains": "Insane event scale = 12.5, 0.0, 12.5, 12.5",
-      "not_contains": "Insane event scale = 3, 0.05, 3, 20"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "contains": "VeryBad event scale = 12.5, 0.0, 12.5, 12.5",
-      "not_contains": "VeryBad event scale = 5, 0.25, 5, 30"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "contains": "Bad event scale = 12.5, 0.0, 12.5, 12.5",
-      "not_contains": "Bad event scale = 40, -0.15, 25, 40"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "contains": "Neutral event scale = 12.5, 0.0, 12.5, 12.5",
-      "not_contains": "Neutral event scale = 10, -0.05, 5, 10"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "contains": "Good event scale = 12.5, 0.0, 12.5, 12.5",
-      "not_contains": "Good event scale = 23, -0.1, 13, 23"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "contains": "VeryGood event scale = 12.5, 0.0, 12.5, 12.5",
-      "not_contains": "VeryGood event scale = 3, 0.14, 3, 17"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "contains": "Rare event scale = 12.5, 0.0, 12.5, 12.5",
-      "not_contains": "Rare event scale = 1, 0.02, 1, 10"
-    },
-    {
-      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
-      "contains": "Remove event scale = 12.5, 0.0, 12.5, 12.5",
-      "not_contains": "Remove event scale = 15, -0.05, 10, 15"
-    }
-  ]
+  "text_assertions": []
 }
