@@ -16,8 +16,7 @@ Profile: `Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z`
 SHA-256: `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`  
 Acceptance: `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`  
 Machine state: `Current/Projektstatus_S1.42AB_ACCEPTED.json`  
-Runtime evidence: `RuntimeEvidence/S1.42AB/20260904T174010Z/`  
-Raw log SHA-256: `42cfba3d157f6abdbeee114909d90749d1bfd043d4b0c224922ad5be976194ae`
+Runtime evidence: `RuntimeEvidence/S1.42AB/20260904T174010Z/`
 
 Accepted AB behavior includes post-viability LethalLevelLoader normalization: LLL owns viable/excluded membership first, then every positive rarity in the returned list becomes exactly `100`. The accepted Offense run preserved all 40 viable flows, normalized 12/40 values from `20..300`, kept Black Mesa single-registered, generated `Expanded facility`, and had Work/no-task `0`, Leader-null `0`, Compatibility Fixes Error `0` and Fatal `0`.
 
@@ -25,75 +24,105 @@ Authoritative interior marker:
 
 `[InteriorWeightNormalization] Final effective viable pool for <moon>: ...`
 
-### Latest build — rejected
+### Latest built artifact — S1.42AC remains formally rejected/not promoted
 
-**S1.42AC — BCMER EventType Equal Distribution — BUILD PASS / RUNTIME FAIL / REJECTED**
+**S1.42AC — BCMER EventType Equal Distribution**
 
 Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`  
 SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`  
-Build run: `33903271224`  
-Automated build commit: `a30b327580e28f42e55281e91abe03d32ae41363`  
-Rejection record: `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`  
+Original rejection: `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`  
+Completed source-path analysis: `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`  
 Machine state: `Current/Projektstatus_S1.42AC_REJECTED.json`  
-Runtime evidence: `RuntimeEvidence/S1.42AC/20260904T181854Z/`  
-Raw log SHA-256: `8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0`
+Runtime evidence: `RuntimeEvidence/S1.42AC/20260904T181854Z/`
 
-AC set all eight BCMER EventType scales to the same constant `12.5, 0.0, 12.5, 12.5`, but five runtime contexts produced unequal final weights:
+S1.42AC set all eight BCMER EventType scales to the same constant `12.5, 0.0, 12.5, 12.5`, with `Use custom weights? = false`, BCMER randomizer disabled, and exact BCMER `1.71.0` preserved.
+
+The original runtime rejection compared these eight log values directly:
 
 `Insane 6843 / VeryBad 506 / Bad 355 / Neutral 1368 / Good 1244 / VeryGood 2737 / Rare 27375 / Remove 883`
 
-Therefore the intended fixed `8 × 12.5%` final distribution was not achieved. AC is not a gameplay base.
+That **acceptance interpretation is now superseded** by exact BCMER `1.71.0` source analysis.
 
-The scale changes did influence the final weights relative to AB, but equal configured scales do not imply equal final BCMER weights. Do not repeat that assumption.
+## BCMER 1.71.0 weight-path finding
 
-### Exact next step
+Exact upstream source commit:
+
+`TheSoftDiamond/BrutalCompanyMinusExtraReborn@e2ca64b9954b7076e75e9a9ff97d76232c4086b0`
+
+At that commit `Plugin.cs` declares `VERSION = "1.71.0"`.
+
+BCMER computes:
+
+```text
+p_i = computedScale_i / sum(computedScales)
+perEventWeight_i = int((eventTypeSum / eventTypeCount_i) * p_i * 1000)
+```
+
+and then assigns `perEventWeight_i` to **every individual event of that EventType**.
+
+Therefore `Set eventType weight for <type> to <value>` is a **per-event weight**, not the aggregate EventType mass. Types with many enabled events intentionally get lower per-event values than types with few events so their aggregate mass remains near the configured EventType probability.
+
+For S1.42AC, all eight configured scales resolve to `12.5`, so BCMER's own normalized target is `p_i = 0.125` for all eight types. The observed values are consistent with inverse event-count normalization; aggregate type shares are approximately `12.5%` each, with only small integer-truncation spread.
+
+Full derivation, event-count reconstruction, aggregate-mass table and dynamic eligibility caveats:
+
+`Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`
+
+### Consequence
+
+Do **not**:
+
+- inverse-compensate the eight config scales merely to make the logged per-event values match;
+- patch BCMER to force the eight logged per-event values equal;
+- build a new successor for that purpose.
+
+Equal per-event values would strongly bias EventTypes that contain many events.
+
+The existing S1.42AC equal-scale concept is the correct static EventType-probability approach under BCMER ownership. S1.42AC is nevertheless **not silently promoted** by this analysis; S1.42AB remains the accepted gameplay baseline until an explicit corrected acceptance decision is made.
+
+## Exact next step
 
 No runtime test is currently outstanding and no successor is armed.
 
-Inspect the exact BCMER `1.71.0` calculation path that produces final `Set eventType weight for <type> to <value>` values. Identify all additional type-dependent inputs and the owner of the final effective type-weight pool. Only after that analysis choose a safe successor implementation: proven config compensation if mathematically reliable, or a narrow fail-closed project-local final-weight normalization if safer.
+If the BCMER EventType scope is continued, apply the **corrected acceptance model** from `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md` to the already-existing S1.42AC artifact/evidence. Do not require equality of the eight per-event log values.
+
+A requirement for exact long-run `12.5%` **executed** EventType frequency after moon eligibility, `AddEventIfOnly`, Special/Beta gating, incompatibility removal and without-replacement selection would be a different, materially broader algorithm-design scope.
 
 ## Controllers
 
-`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AC_RUNTIME_REJECTION_ANALYSIS_REQUIRED`, guarded by accepted S1.42AB.
+`BuildSpecs/current.json`:
+
+- `enabled = false`;
+- `build_id = IDLE_AFTER_S1.42AC_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED`;
+- guarded base = accepted S1.42AB;
+- output = `Profiles/DO_NOT_BUILD.r2z`;
+- no successor armed.
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AB`
-
-No successor is armed.
 
 ## Read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md`
-3. `Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md`
-4. `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
-5. `Current/Projektstatus_S1.42AC_REJECTED.json`
-6. `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`
-7. `Current/Projektstatus_S1.42AB_ACCEPTED.json`
+2. `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`
+3. `Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md`
+4. `Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md`
+5. `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
+6. `Current/Projektstatus_S1.42AC_REJECTED.json`
+7. `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`
 8. `Current/00_CURRENT_STATE.md`
 9. `Current/01_HANDOVER_CORE.md`
 10. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
 11. `BuildSpecs/current.json`
 12. `RuntimeInbox/ACTIVE_BUILD.txt`
 13. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-14. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
 
-Historical candidate/build files remain evidence; chronologically newer confirmed rejection/acceptance records override older open-candidate wording.
+Historical candidate/build/rejection files remain evidence. Newer confirmed source-path analysis may supersede the **interpretation** of an older gate without erasing the historical decision itself.
 
 ## Planned repository information-architecture overhaul
 
-The repository cleanup is now a binding information-architecture/retrieval-hardening project, but it is **not executed yet**.
+The repository cleanup is planned/binding but **not executed yet**.
 
-If a future user explicitly starts the overhaul, begin with:
-
-`OVERHAUL_START_HERE_ChatGPT.txt`
-
-Binding plan: `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`  
-Execution playbook: `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md`  
-Machine requirements: `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`
-
-The future overhaul must re-resolve the then-current project state and, before the first structural migration change, freeze the exact HEAD and create/verify a **separate standalone backup repository**. A branch/tag in the primary repository alone is insufficient. The backup provenance must be recorded in `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json`.
-
-The target architecture is compact bootstrap -> knowledge map -> canonical topic source -> evidence/config/code/history, with repository search as fallback, explicit current-vs-history authority, build lineage, redirects/supersession, readable binary/profile evidence, CI knowledge validation, answerability routing tests and at most three logical document hops from bootstrap to every major current topic.
+If explicitly started later, begin with `OVERHAUL_START_HERE_ChatGPT.txt`, re-resolve the then-current state, and create/verify the required separate standalone pre-overhaul backup repository before structural migration.
 
 ## Permanent anti-regression state
 
