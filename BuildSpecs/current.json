@@ -1,29 +1,15 @@
 {
-  "enabled": true,
-  "build_id": "S1.42AB",
-  "request_revision": 2,
-  "base_profile": "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z",
-  "base_sha256": "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4",
-  "output_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
-  "profile_name": "LC V1 S1.42AB Interior Weight Normalization",
+  "enabled": false,
+  "build_id": "IDLE_AFTER_S1.42AB_BUILD_AWAITING_RUNTIME_VALIDATION",
+  "base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
+  "base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
+  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
+  "profile_name": "DO_NOT_BUILD",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
   "config_patches": [],
-  "local_plugin_builds": [
-    {
-      "project": "Patches/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.csproj",
-      "configuration": "Release",
-      "built_file": "Patches/S142ABInteriorWeightNormalization/bin/Release/netstandard2.1/S142ABInteriorWeightNormalization.dll",
-      "archive_path": "BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll"
-    }
-  ],
-  "text_assertions": [
-    {
-      "path": "BepInEx/config/LethalLevelLoader.cfg",
-      "contains": "Inject Dynamic Matching Weights = true",
-      "not_contains": "Inject Dynamic Matching Weights = false"
-    }
-  ]
+  "local_plugin_builds": [],
+  "text_assertions": []
 }
