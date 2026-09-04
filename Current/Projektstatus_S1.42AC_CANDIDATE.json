@@ -65,5 +65,12 @@
     "runtime_active_build": "S1.42AC",
     "successor_armed": false
   },
+  "repository_overhaul": {
+    "status": "PLANNED_BINDING_NOT_EXECUTED",
+    "canonical_plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
+    "machine_requirements": "Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json",
+    "purpose": "Deterministic limited-context ChatGPT retrieval, authority routing, build lineage, knowledge map, broken-link/orphan validation and answerability regression tests.",
+    "must_not_disturb_active_gate": true
+  },
   "exact_next_step": "Import S1.42AC into Gale with the canonical ReplaceActiveGaleProfile.ps1 helper, then run one normal Offense gameplay round. After the run upload the complete fresh LogOutput.log with the exact S1.42AC uploader in Current/103. Acceptance requires all eight BCMER Set eventType weight runtime values in the same roll context to be equal, plus no material regression."
 }
