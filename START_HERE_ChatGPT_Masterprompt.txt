@@ -29,6 +29,8 @@ READ FIRST, COMPLETELY:
 
 Chronologically newer confirmed documents override older version-specific wording.
 
+The planned repository cleanup is now formally a limited-context information-architecture overhaul. Canonical plan: Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md. Machine requirements: Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json. Do not execute that overhaul in a way that disturbs the active S1.42AC runtime gate.
+
 ======================================================================
 ACCEPTED BASELINE
 ======================================================================
@@ -244,6 +246,6 @@ Keep separate unless the user explicitly selects/groups scope:
 - final long full-stack acceptance;
 - AdditionalNetworking repair only with reproducible user-facing evidence;
 - LethalMin teardown repair only with stronger evidence;
-- cosmetic documentation cleanup.
+- repository information-architecture overhaul per Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md, including cosmetic documentation drift cleanup.
 
 Known older stale wording/comments are historical non-functional drift. Newer Current documents, actual code/config and fresh runtime evidence are authoritative.
