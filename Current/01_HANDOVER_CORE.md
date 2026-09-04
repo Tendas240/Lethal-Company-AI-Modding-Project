@@ -84,6 +84,12 @@ Whenever a runtime test is outstanding, the response that explains the test must
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC`
 
+## Planned repository information-architecture overhaul
+
+The deferred repository cleanup is now formally defined in `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`, with machine-readable acceptance requirements in `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`.
+
+The purpose is reliable fresh-chat operation under context limits: compact bootstrap routing, a human+JSON topic knowledge map, formal authority/supersession metadata, build lineage, provenance-first links, readable binary snapshots, broken-link/orphan CI validation and an answerability-routing regression suite. The overhaul is binding but must not disturb the active S1.42AC runtime gate.
+
 ## Permanent invariants
 
 Preserve exact BCMER `1.71.0`; EnemyIsolation disabled; Compatibility Fixes `1.3.14`; BaboonBirdPikminEnemy enabled; narrow Hawk -> Pikmin prevention only; inherited PikminEnemy lifecycle; Pikmin -> Baboon Hawk attack allowed; Puffer protection; Thumper Bite Limit `3`; Crawler absent from Attack Blacklist; accepted S1.42C moon power/spawn baseline; `Consistent Spawn Times = true`; Jetpack `18`; Jet Fuel `18/18`; Thrusters `25/20`; Indoor Pikmin `0.09`; CarryStrength `3 / 30`; CodeRebirth ACU/G.R.E.G. exact 18 curves ×`0.5`; Functional Microwave volume `0.15`; Immortal Snail `40 / 2`; accepted S1.42AB interior normalization.
@@ -99,4 +105,4 @@ Never repeat S1.42R's whole-component disable approach.
 - isolated `woah25-LethalEscapeUpdated 2.5.0` evaluation;
 - final long full-stack acceptance;
 - AdditionalNetworking / LethalMin teardown repair only with stronger evidence;
-- cosmetic documentation cleanup.
+- repository information-architecture overhaul per `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`, including cosmetic documentation drift cleanup.
