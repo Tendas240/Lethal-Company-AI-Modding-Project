@@ -1,16 +1,16 @@
 # Repository Information-Architecture Overhaul
 
-**Status:** COMPLETE / POST-ACCEPTANCE REAUDIT PASS  
+**Status:** COMPLETE / INDEPENDENT REAUDIT PASS WITH PHASE-ORDER PROVENANCE QUALIFICATION  
 **Authority:** canonical semantic summary of the completed overhaul and its validation  
 **Canonical-For:** `repository_overhaul`  
-**Evidence:** `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`, `Current/OVERHAUL_VALIDATION_RESULTS.json`, `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`  
+**Evidence:** `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`, `Current/OVERHAUL_VALIDATION_RESULTS.json`, `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`  
 **Machine State:** `Current/OVERHAUL_EXECUTION_STATE.json`  
 **Related:** `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md`, `Current/REPOSITORY_MIGRATION_MANIFEST.md`, `Current/DOCUMENT_AUTHORITY.md`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-09-05
 
 ## Result
 
-The one-time repository information-architecture overhaul is complete. The repository now uses deterministic semantic routing for fresh ChatGPT sessions while preserving gameplay evidence, historical reasoning and recovery provenance.
+The one-time repository information-architecture overhaul is functionally complete. The repository now uses deterministic semantic routing for fresh ChatGPT sessions while preserving gameplay evidence, historical reasoning and recovery provenance.
 
 Current retrieval path:
 
@@ -18,9 +18,9 @@ Current retrieval path:
 
 Repository search is a fallback rather than the primary way to answer ordinary project questions.
 
-## Completed execution order
+## Completed deliverables and phase-order provenance
 
-All binding phases 0 through 11 completed in order:
+All binding phase deliverables 0 through 11 are present and independently inspectable:
 
 0. exact pre-overhaul state established;
 1. standalone backup created and verified;
@@ -35,6 +35,10 @@ All binding phases 0 through 11 completed in order:
 10. atomic current-state transitions hardened;
 11. final validation performed against requirements and backup.
 
+The independent 2026-09-05 re-audit distinguishes deliverable completion from historical checkpoint provenance. Git history directly proves Phase 0, the Phase-1 standalone-backup gate, Phase 2, and the transition into Phase 3 in the required order. `Current/OVERHAUL_EXECUTION_STATE.json` then remained at "Phase 2 complete / Phase 3 active" while the Phase 3–10 implementation artifacts were created and was later advanced to final validation/Phase 11 in one state update. Therefore the exact individual **phase-completion checkpoint order for Phases 3–10 is not independently reconstructible from execution-state checkpoints**. This is a non-blocking provenance limitation, not evidence of an out-of-order destructive migration: the implementation was non-destructive, old navigation/evidence was retained, and the final dependency graph satisfies all phase deliverables.
+
+Do not restate "all phases completed in order" as an independently proven historical fact without this qualification.
+
 The implementation remained non-destructive: no legacy evidence files were mass-moved or deleted, and gameplay/config/mod/profile/project-local patch behavior was not changed.
 
 ## Recovery gate
@@ -47,20 +51,23 @@ The implementation remained non-destructive: no legacy evidence files were mass-
 
 The same-repository freeze branch is supplemental only; the standalone repository is the independent recovery point.
 
-## Post-acceptance re-audit
+## Post-acceptance re-audits
 
 After initial acceptance, the overhaul was rechecked directly against the frozen original pre-overhaul instructions. That stricter audit found several information-architecture gaps and validator-calibration issues, including stale historical/current wording, an obsolete machine-state name in the human Knowledge Map and incomplete enforcement of one-time backup-ordering requirements.
+
+The independent 2026-09-05 audit additionally found stale S1.42AC raw-log SHA metadata in retained historical records. The authoritative raw-log SHA-256 is `fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067`; the old `8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0` value is superseded historical metadata only. `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json` explicitly classifies retained historical occurrences, and `RepositoryTools/runtime_sha_provenance_validator.py` now performs a repository-wide CI scan so a new unqualified occurrence fails closed.
 
 Those gaps were corrected without changing gameplay behavior. The permanent CI now runs:
 
 1. generated current-navigation validation;
 2. repository knowledge/state/reference validation;
-3. strict frozen original-overhaul-contract validation;
-4. semantic answerability routing regression.
+3. repository-wide S1.42AC runtime-SHA provenance validation;
+4. strict frozen original-overhaul-contract validation;
+5. semantic answerability routing regression.
 
-The re-audit authority is `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`. Machine result: `Current/OVERHAUL_VALIDATION_RESULTS.json`, status `POST_ACCEPTANCE_REAUDIT_PASS`.
+The earlier re-audit authority is `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`. Machine result: `Current/OVERHAUL_VALIDATION_RESULTS.json`, status `POST_ACCEPTANCE_REAUDIT_PASS`.
 
-A final confirmation workflow run after the re-audit fixes passed all permanent gates: run `33920068335` at commit `5a42fe7c6a69c8cef9692fba090d3da6af566ccd`.
+The SHA-provenance remediation confirmation workflow run `33924737597` at commit `02d29a66d632ac46d405d3f1617eb1f0518d2494` passed all five permanent gates.
 
 ## Historical execution-contract rule
 
