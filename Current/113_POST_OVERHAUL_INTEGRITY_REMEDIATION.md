@@ -1,13 +1,13 @@
 # 113 — Post-Overhaul Integrity Remediation
 
 **Date:** 2026-09-04  
-**Status:** REMEDIATION IMPLEMENTED / CI VALIDATION PENDING  
+**Status:** PASS / CI VERIFIED  
 **Scope:** post-overhaul information-integrity hardening only; no gameplay/config/mod/profile/runtime behavior change  
 **Authority:** follow-up audit record after the post-overhaul handover review
 
 ## Why this follow-up exists
 
-A fresh independent review of the completed repository overhaul identified two concrete repository-truth inconsistencies and two optional hardening opportunities. The two concrete inconsistencies are corrected in the same commit as this record; the permanent Knowledge Architecture validator is extended so the runtime-SHA class of error becomes CI-blocking in future.
+A fresh independent review of the completed repository overhaul identified two concrete repository-truth inconsistencies and two optional hardening opportunities. The two concrete inconsistencies were corrected together, and the permanent Knowledge Architecture validator was extended so the runtime-SHA class of error becomes CI-blocking in future.
 
 ## Finding 1 — stale current lifecycle wording
 
@@ -37,7 +37,7 @@ records the 2,000,261-byte raw `LogOutput.log` SHA-256 as:
 
 Its embedded analysis `source_sha256` agrees with the same value. `Current/ARTIFACT_EVIDENCE_INTEGRITY.md/.json` also already used this authoritative hash.
 
-However, the older `Current/Projektstatus_S1.42AC_REJECTED.json` and `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md` still recorded:
+However, the older `Current/Projektstatus_S1.42AC_REJECTED.json` and `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md` had still recorded:
 
 `8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0`
 
@@ -47,8 +47,8 @@ The RuntimeEvidence `INDEX.json` is definitive byte provenance for the ingested 
 
 - authoritative raw-log SHA-256 = `fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067`;
 - `862603...` is retained only as the superseded historically recorded value;
-- the S1.42AC project-status record now carries an explicit machine-readable provenance/supersession object;
-- the historical rejection record now has a conspicuous provenance erratum and uses the authoritative hash in its Runtime Evidence section;
+- the S1.42AC project-status record carries an explicit machine-readable provenance/supersession object;
+- the historical rejection record has a conspicuous provenance erratum and uses the authoritative hash in its Runtime Evidence section;
 - this byte-provenance correction does **not** change S1.42AC's formal rejected/not-promoted status and does not change the later BCMER interpretation in `Current/109`.
 
 ## Validator hardening
@@ -89,13 +89,23 @@ This is not an overhaul acceptance failure; it is repository-governance hardenin
 - `BuildSpecs/current.json`: disabled;
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AB`.
 
-## Validation gate
+## Validation result — PASS
 
-Do not regenerate the final fresh-chat handover until this remediation commit passes the permanent `Knowledge Architecture` workflow, including:
+Remediation commit:
 
-- generated current navigation;
-- knowledge/state/reference validation including the new runtime-SHA provenance checks;
-- frozen original-overhaul-contract validation;
-- answerability routing regression.
+`0d1a06e226ddbe0e37e94a79b72fb3d14bf6d8dd`
 
-After that green gate, create a fresh final handover snapshot that references this remediation and the exact green run.
+Permanent `Knowledge Architecture` workflow run:
+
+`33922283909`
+
+Result: **SUCCESS**.
+
+The run passed all permanent gates:
+
+1. generated current navigation — PASS;
+2. knowledge/state/reference validation — PASS, including the new runtime-SHA provenance checks;
+3. frozen original-overhaul-contract validation — PASS;
+4. answerability routing regression — PASS.
+
+A fresh final handover may therefore be generated from this corrected and validated state.
