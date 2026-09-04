@@ -1,9 +1,10 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "date": "2026-09-04",
-  "status": "FINAL_VALIDATION_PASS",
+  "status": "POST_ACCEPTANCE_REAUDIT_PASS",
   "scope": "repository information architecture only",
   "frozen_source_commit": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+  "frozen_source_tree": "0e17aac410cf600a164396b5586b5b50f084df22",
   "backup_repository": "Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904",
   "backup_verification": "PASS",
   "implementation": {
@@ -15,12 +16,15 @@
     "migration_manifest": "PASS",
     "atomic_current_state": "PASS",
     "generated_bootstrap": "PASS",
+    "strict_frozen_contract_validator": "PASS",
+    "historical_stale_wording_banners": "PASS_AFTER_POST_ACCEPTANCE_REMEDIATION",
+    "backup_before_structural_migration_ordering": "PASS_INDEPENDENTLY_RECHECKED_FROM_GIT_HISTORY",
     "legacy_files_moved": 0,
     "legacy_files_deleted": 0,
     "live_work_queue_compacted": true,
     "gameplay_behavior_changed": false
   },
-  "final_ci": {
+  "initial_final_ci": {
     "workflow": ".github/workflows/knowledge-architecture.yml",
     "workflow_name": "Knowledge Architecture",
     "run_id": 33917143180,
@@ -28,7 +32,48 @@
     "conclusion": "SUCCESS",
     "navigation_check": "PASS",
     "knowledge_validator": "PASS_ERRORS_0_WARNINGS_0",
-    "answerability_regression": "PASS_24_OF_24"
+    "answerability_regression": "PASS_24_OF_24",
+    "limitation_discovered_later": "This gate was genuinely green but the then-current validator did not yet encode every one-time obligation from the frozen pre-overhaul contract."
+  },
+  "post_acceptance_reaudit": {
+    "record": "Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md",
+    "requested_against_actual_frozen_old_repository_instructions": true,
+    "frozen_contract_files_reread": [
+      "OVERHAUL_START_HERE_ChatGPT.txt",
+      "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
+      "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md",
+      "Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json"
+    ],
+    "gaps_found": [
+      "Current/02_TECHNICAL_BASELINE.md lacked the required conspicuous historical mixed-snapshot banner",
+      "Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md lacked the required conspicuous historical roadmap banner",
+      "OVERHAUL_START_HERE_ChatGPT.txt could still be misread as an active migration instruction",
+      "Current/104 and Current/105 preserved planned/not-yet-executed wording without completion banners",
+      "Current/PROJECT_KNOWLEDGE_MAP.md retained stale Phase-10 wording pointing to non-existent Current/PROJECT_STATE.json",
+      "the initial knowledge validator did not independently prove backup-checkpoint-before-structural-migration ordering or visible stale-wording classification"
+    ],
+    "remediation": [
+      "added conspicuous historical/completion banners while preserving historical bodies",
+      "registered the completed execution-contract snapshots in Current/DOCUMENT_AUTHORITY.json",
+      "expanded accepted Plugin.cs comment-drift authority and provenance rules without changing accepted source behavior",
+      "corrected Current/PROJECT_KNOWLEDGE_MAP.md to Current/CURRENT_STATE.json",
+      "added RepositoryTools/overhaul_contract_validator.py",
+      "changed .github/workflows/knowledge-architecture.yml to fetch full history and run the frozen-contract validator"
+    ],
+    "first_strict_green_run": {
+      "run_id": 33919296323,
+      "head_sha": "e3704877d309e40b092768430d0e81f7d86ed2e3",
+      "conclusion": "SUCCESS",
+      "navigation_check": "PASS",
+      "knowledge_validator": "PASS",
+      "frozen_contract_validator": "PASS",
+      "answerability_regression": "PASS"
+    },
+    "false_positive_calibration": {
+      "recorded": true,
+      "reason": "The first strict-validator attempt intentionally surfaced both genuine drift and notation that is not a concrete path (globs, placeholders, lifecycle destinations, JSON field selectors). The validator was tightened to distinguish concrete repository references from documented patterns without weakening checks on actual canonical targets."
+    },
+    "final_status": "PASS"
   },
   "known_previous_finalization_attempts": [
     {
@@ -39,17 +84,27 @@
         "BUILD_LINEAGE referenced a non-existent S1.42Z profile path",
         "OVERHAUL_EXECUTION_STATE still described an incomplete phase"
       ],
-      "disposition": "Corrected before final acceptance; not accepted as final validation."
+      "disposition": "Corrected before initial final acceptance."
     },
     {
       "run_id": 33916672796,
       "head_sha": "4ae6bb397d85cd6891cfcd2ff7ff99dbd615014e",
       "conclusion": "FAILURE",
       "reason": [
-        "Knowledge validator passed",
+        "knowledge validator passed",
         "answerability routing still misrouted two German build-history/current-build queries"
       ],
-      "disposition": "Router scoring was hardened for conservative inflection matching and informative-token tie breaking; later CI passed all 24 cases."
+      "disposition": "Router scoring was hardened; later CI passed all answerability cases."
+    },
+    {
+      "run_id": 33919072718,
+      "head_sha": "6dd45dc58a3f5b63c0b0d0aabc84d2371737f383",
+      "conclusion": "FAILURE",
+      "reason": [
+        "first strict frozen-contract validator correctly exposed one manifest-field schema mismatch in the validator and several path-notation false positives",
+        "it also exposed genuine stale Current/PROJECT_STATE.json wording in the human Knowledge Map"
+      ],
+      "disposition": "Validator semantics were calibrated to concrete paths and the genuine knowledge-map drift was corrected; strict run 33919296323 then passed."
     }
   ],
   "validated_current_gameplay_state": {
@@ -63,5 +118,5 @@
     "buildspec_enabled": false,
     "runtime_active_build": "S1.42AB"
   },
-  "final_decision": "Repository information-architecture overhaul accepted as complete and validated. Normal project work may resume from Current/CURRENT_STATE.json."
+  "final_decision": "Repository information-architecture overhaul is accepted as complete only after the stricter post-acceptance re-audit against the frozen old-repository contract. The identified authority/validator gaps were remediated without gameplay behavior changes. Normal project work may resume from Current/CURRENT_STATE.json."
 }
