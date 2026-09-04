@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-04",
+  "status": "CURRENT_CANONICAL_OVERHAUL_MIGRATION_MANIFEST",
+  "migration_policy": "NON_DESTRUCTIVE_SEMANTIC_MIGRATION",
+  "backup_manifest": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
+  "new_semantic_root": "Knowledge/",
+  "moved_paths": [],
+  "deleted_paths": [],
+  "deletion_decision": "No legacy evidence or historical document was deleted during the overhaul. The verified standalone pre-overhaul repository exists, but preservation in the primary repository remains preferable while historical references are still valuable and storage pressure does not justify destructive cleanup.",
+  "redirects_and_supersessions": [
+    {"legacy":"Current/02_TECHNICAL_BASELINE.md","classification":"historical_mixed_snapshot","current_targets":["Current/00_CURRENT_STATE.md","Knowledge/ENEMY_SPAWN_BASELINE.md","Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md","Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md"]},
+    {"legacy":"Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md","classification":"historical_roadmap_snapshot","current_targets":["Knowledge/BCMER.md","Knowledge/INTERIORS_AND_LLL.md","Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md"]},
+    {"legacy":"Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md","classification":"historical_decision_interpretation_superseded","current_targets":["Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md","Knowledge/BCMER.md"]},
+    {"legacy":"Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md","classification":"historical_handover","current_targets":["Current/01_HANDOVER_CORE.md","Current/00_CURRENT_STATE.md"]},
+    {"legacy":"Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md","classification":"historical_handover_audit","current_targets":["Current/00_CURRENT_STATE.md","Current/PROJECT_KNOWLEDGE_MAP.md"]}
+  ],
+  "new_artifact_families": [
+    "Knowledge/*.md semantic topic authority",
+    "Current/PROJECT_KNOWLEDGE_MAP.md and .json",
+    "Current/BUILD_LINEAGE.md and .json",
+    "Current/DOCUMENT_AUTHORITY.md and .json",
+    "Current/CURRENT_STATE.json",
+    "RepositoryTools knowledge validation and answerability regression",
+    "Current final overhaul validation/acceptance artifacts"
+  ],
+  "retention_rationale": [
+    "Historical handovers show exact state transitions and user decisions.",
+    "Rejected candidates preserve anti-regression evidence and failed approaches.",
+    "Runtime evidence is required for causal verification and later comparison.",
+    "Old roadmap/baseline files contain chronology and implementation context even where their current wording is stale.",
+    "No unique-fact/reference audit justified deletion of any legacy file during this pass."
+  ],
+  "safe_cleanup_after_overhaul": "Future cleanup may remove a legacy file only after proving no unique fact remains, all inbound references are migrated or redirected, the Knowledge/lineage replacements preserve the needed information, and validator/answerability suites remain green.",
+  "last_validated": "2026-09-04"
+}
