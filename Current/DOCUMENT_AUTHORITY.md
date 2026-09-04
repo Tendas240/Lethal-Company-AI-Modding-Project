@@ -3,8 +3,8 @@
 **Status:** CURRENT / CANONICAL AUTHORITY REGISTRY  
 **Authority:** repository knowledge-source precedence  
 **Canonical-For:** authority resolution, historical/current classification  
-**Related:** `Current/DOCUMENT_AUTHORITY.json`, `Current/PROJECT_KNOWLEDGE_MAP.md`, `Current/CURRENT_STATE.json`  
-**Last-Validated:** 2026-09-04
+**Related:** `Current/DOCUMENT_AUTHORITY.json`, `Current/PROJECT_KNOWLEDGE_MAP.md`, `Current/CURRENT_STATE.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`  
+**Last-Validated:** 2026-09-05
 
 ## Precedence
 
@@ -13,10 +13,11 @@ For a fresh session, resolve facts in this order:
 1. `Current/CURRENT_STATE.json` and `Current/00_CURRENT_STATE.md` for global live state.
 2. `Current/PROJECT_KNOWLEDGE_MAP.md/.json` for semantic routing.
 3. The registered `Knowledge/*.md` canonical topic.
-4. The exact controller/config/code/build/runtime evidence linked by that topic.
-5. Historical handovers, candidate notes and chronology only for provenance.
+4. `Current/INTEGRITY_ERRATA_REGISTRY.json` when a concrete value/status/provenance claim is known to have been corrected or superseded.
+5. The exact controller/config/code/build/runtime evidence linked by that topic.
+6. Historical handovers, candidate notes and chronology only for provenance.
 
-A historical file never becomes current merely because it contains the word "current". Its authority is determined by this registry and the Knowledge Map.
+A historical file never becomes current merely because it contains the word "current". Its authority is determined by this registry, the Knowledge Map and explicit integrity errata.
 
 ## Global current authority
 
@@ -25,9 +26,18 @@ A historical file never becomes current merely because it contains the word "cur
 - `Current/01_HANDOVER_CORE.md` — fresh-session takeover router.
 - `Current/PROJECT_KNOWLEDGE_MAP.md/.json` — topic router.
 - `Current/BUILD_LINEAGE.md/.json` — build history / introduced-by / rejected-build reasoning.
+- `Current/INTEGRITY_ERRATA_REGISTRY.json` — known-bad values and supersession/provenance qualifications.
+- `Current/VALIDATOR_COVERAGE.json` — explicit validator scope and blindspots.
+- `Current/MULTIPHASE_CHECKPOINT_POLICY.json` — future ordered-workflow checkpoint policy.
 - `BuildSpecs/current.json` — currently armed build controller only.
 - `RuntimeInbox/ACTIVE_BUILD.txt` — runtime active-build controller only.
 - `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` — project-local patch safety policy.
+
+## Generated current navigation
+
+`README.md`, `START_HERE_ChatGPT_Masterprompt.txt`, `Current/00_CURRENT_STATE.md` and `Current/01_HANDOVER_CORE.md` are generated from `Current/CURRENT_STATE.json` by `RepositoryTools/render_current_navigation.py`.
+
+They carry an explicit `GENERATED — DO NOT MANUALLY EDIT` marker. Update the canonical machine state first, render the derived navigation, and commit the logical transition together. CI checks byte-for-byte renderer equality.
 
 ## Explicitly classified stale-current sources
 
@@ -59,6 +69,8 @@ The old S1.42U/S1.42V progress block is preserved as chronology. Current policy/
 `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md` remains a truthful historical decision record. The original interpretation that equal EventType probability requires identical eight per-event log weights is superseded by `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`.
 
 The historical rejection itself is not erased; S1.42AC remains formally rejected/not promoted until a later explicit decision changes that status.
+
+The old incorrect raw-runtime-log SHA is likewise retained only as qualified historical metadata. Current byte authority is `RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json`; detailed correction is `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`; repository-wide known-bad classification is `Current/INTEGRITY_ERRATA_REGISTRY.json`.
 
 ## Historical families
 
@@ -96,9 +108,17 @@ Do **not** edit accepted patch source solely to modernize comments unless the ac
 A newer source may supersede an interpretation without deleting history. When that happens:
 
 - preserve the old file;
-- register its classification here or in the migration map;
+- register its classification here, in the migration map, or in `Current/INTEGRITY_ERRATA_REGISTRY.json`;
 - route current questions to the new source;
 - keep the old source reachable for "why did we think that?" questions.
+
+Known concrete bad values must be locally qualified or explicitly registered; an unqualified occurrence is a CI failure.
+
+## Future multi-phase execution rule
+
+New multi-phase migrations/maintenance workflows use immutable per-phase records under `ExecutionCheckpoints/<process>/phase_<NN>.json` according to `Current/MULTIPHASE_CHECKPOINT_POLICY.json`.
+
+The validator requires monotonic predecessor PASS checkpoints and checks commit existence/artifact provenance. This policy is prospective; it does not retroactively manufacture missing phase 3-10 checkpoints for the 2026 overhaul. That historical limitation remains explicitly qualified by `Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md`.
 
 ## Completed overhaul execution-contract snapshots
 
@@ -108,4 +128,4 @@ The following files are preserved as the original one-time overhaul contract, bu
 - `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`
 - `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md`
 
-Current completion authority is `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md` with machine validation in `Current/OVERHAUL_VALIDATION_RESULTS.json`. The stricter frozen-contract re-audit is recorded in `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`. Ordinary project takeover starts at `START_HERE_ChatGPT_Masterprompt.txt`.
+Current completion authority is `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md` with machine validation in `Current/OVERHAUL_VALIDATION_RESULTS.json`. The stricter frozen-contract re-audit is recorded in `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`; the independent frozen-state audit and phase-order qualification are recorded in `Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md`. Ordinary project takeover starts at `START_HERE_ChatGPT_Masterprompt.txt`.
