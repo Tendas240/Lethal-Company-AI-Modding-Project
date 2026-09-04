@@ -1,0 +1,65 @@
+# Project Knowledge Map
+
+**Status:** CURRENT / CANONICAL ROUTER  
+**Authority:** primary human topic router for repository knowledge  
+**Canonical-For:** topic discovery from bootstrap  
+**Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`  
+**Current State:** `Current/00_CURRENT_STATE.md`  
+**Last-Validated:** 2026-09-04
+
+Use this map before repository search. Open only the topic that matches the user's question, then follow its evidence/config/code links as needed.
+
+## Immediate routing
+
+| User question / topic | Topic ID | Canonical source |
+|---|---|---|
+| What is the accepted build? What is active? What must I test next? | `accepted_baseline`, `active_candidate_and_next_test` | `Knowledge/CURRENT_LIFECYCLE.md` |
+| How are profiles built in GitHub? Where is the runtime uploader/ingest? | `build_pipeline`, `runtime_upload_and_ingest` | `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` |
+| How do I replace/import the active Gale profile? | `gale_import` | `Knowledge/GALE_PROFILE_WORKFLOW.md` |
+| Which BCMER version/settings are allowed? Are EventTypes equally likely? | `bcmer` | `Knowledge/BCMER.md` |
+| How do interior weights work? LLL? Shatteredrooms? CullFactory? Black Mesa registration? | `interiors_and_lll` | `Knowledge/INTERIORS_AND_LLL.md` |
+| What is the normal enemy spawn baseline / ownership architecture? | `enemy_spawn_baseline` | `Knowledge/ENEMY_SPAWN_BASELINE.md` |
+| How should Thumper/Puffer/Baboon Hawk interact with Pikmin? | `pikmin_enemy_compatibility` | `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md` |
+| What are the accepted Jetpack values and owner? | `jetpack` | `Knowledge/JETPACK.md` |
+| How is CodeRebirth/DawnLib configured/tuned? | `coderebirth` | `Knowledge/CODEREBIRTH.md` |
+| What are Microwave/Snail values? What is still deferred? | `functional_microwave`, `immortal_snail` | `Knowledge/ITEM_TUNING.md` |
+| Which errors/warnings should only be monitored? | `monitor_only_errors` | `Knowledge/MONITOR_ONLY_ERRORS.md` |
+| What is the Black Mesa/Pikmin routing problem? | `black_mesa_pikmin_routing` | `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md` |
+| What remains on the live roadmap? | `roadmap_and_deferred_scopes` | `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md` |
+| What rules govern project-local Harmony/runtime patches? | `patch_safety_policy` | `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` |
+| What is happening with the repository overhaul? | `repository_overhaul` | `Knowledge/REPOSITORY_OVERHAUL.md` |
+| Where is the untouched pre-overhaul recovery point? | `pre_overhaul_backup_and_recovery` | `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md` |
+| Which build introduced/rejected/fixed something? What came before build X? | `build_lineage` | `Current/BUILD_LINEAGE.md` |
+
+## Authority rule
+
+For current questions:
+
+1. `Current/00_CURRENT_STATE.md` is the sole concise human current-state declaration.
+2. This Knowledge Map chooses the topic.
+3. The topic canonical source states the current rule/value and points to provenance.
+4. Build-specific acceptance/rejection/diagnostic records and RuntimeEvidence prove historical decisions.
+5. Historical files may accurately describe what was current **at that time** but do not override current semantic topics.
+
+Machine lifecycle authority is mirrored in `Current/PROJECT_STATE.json` once Phase 10 state hardening is complete. Until then, the current project-status JSON + `BuildSpecs/current.json` + `RuntimeInbox/ACTIVE_BUILD.txt` remain validation inputs.
+
+## Historical navigation
+
+- Project chronology: `Current/03_PROJECT_CHRONOLOGY.md`
+- Failed/obsolete approaches: `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
+- Build lineage: `Current/BUILD_LINEAGE.md` / `.json`
+- Exact build records: numbered `Current/*S1.*` candidate/acceptance/rejection/runtime files
+- Historical profile evidence: `ProfileSources/<build>/`
+- Runtime evidence: `RuntimeEvidence/<build>/<timestamp>/`
+- Deep archival fallback: `Archive/`, `Logs/`, `References/`
+
+Repository/code search is appropriate for unknown symbols, exact error strings or deep historical reconstruction, but ordinary canonical questions should route through this map first.
+
+## Current authority exclusions
+
+The following retained files contain valuable historical/durable evidence but must not be treated as unqualified current-state authority after the overhaul:
+
+- `Current/02_TECHNICAL_BASELINE.md` — mixes durable facts with obsolete S1.41/S1.42S/T current wording;
+- `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md` — mixes durable/binding interior research with obsolete S1.42U/S1.42V current checkpoint wording.
+
+Their still-live facts have been extracted into semantic topics above; the original files remain provenance/history.
