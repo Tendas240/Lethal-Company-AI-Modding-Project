@@ -1,0 +1,1724 @@
+[17:35:35.6860361] [Debug  : LightsOut] DiscardItem Jetpack
+[17:35:39.3568774] [Info   : Unity Log] Called finishopeningentrance (False)
+[17:35:39.3568774] [Info   : Unity Log] 'EntranceTeleportA' STOPPING entrancePointAudio
+[17:35:39.3648732] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered facility
+[17:35:39.3658772] [Debug  : LethalMin] Setting pikmin to entrance: True
+[17:35:39.3658772] [Info   : LethalMin] Purple Pikmin_rKa2: Warping to position around leader at angle -90 degrees
+[17:35:39.3658772] [Info   : LethalMin] Purple Pikmin_y8qD5r: Warping to position around leader at angle -81.42857 degrees
+[17:35:39.3658772] [Info   : LethalMin] Purple Pikmin_EKPWp: Warping to position around leader at angle -72.85714 degrees
+[17:35:39.3658772] [Info   : LethalMin] Purple Pikmin_evzc4: Warping to position around leader at angle -64.28571 degrees
+[17:35:39.3658772] [Info   : LethalMin] Purple Pikmin_51w0Zom: Warping to position around leader at angle -55.71429 degrees
+[17:35:39.3658772] [Info   : LethalMin] Purple Pikmin_bRqe: Warping to position around leader at angle -47.14286 degrees
+[17:35:39.3658772] [Info   : LethalMin] Purple Pikmin_4WYiK: Warping to position around leader at angle -38.57143 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_deVvFe: Warping to position around leader at angle -30 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_Md8MI: Warping to position around leader at angle -21.42857 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_ddF5L: Warping to position around leader at angle -12.85714 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_2FoB: Warping to position around leader at angle -4.285714 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_FjliuFV: Warping to position around leader at angle 4.285714 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_ICMO7: Warping to position around leader at angle 12.85714 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_Lw2dTVF: Warping to position around leader at angle 21.42857 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_TzDCc: Warping to position around leader at angle 30 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_Gono4bn: Warping to position around leader at angle 38.57143 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_u7yjpLI: Warping to position around leader at angle 47.14286 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_tbmIr: Warping to position around leader at angle 55.71429 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_XWR5u2K: Warping to position around leader at angle 64.28571 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_yExgK: Warping to position around leader at angle 72.85714 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_YV0Gw: Warping to position around leader at angle 81.42857 degrees
+[17:35:39.3658772] [Info   : LethalMin] White Pikmin_68JLiBF: Warping to position around leader at angle 90 degrees
+[17:35:39.3668774] [Debug  : LethalMin] Setting pikmin to entrance: True
+[17:35:39.3668774] [Info   : LethalMin] Purple Pikmin_rKa2: Warping to position around leader at angle -90 degrees
+[17:35:39.3668774] [Info   : LethalMin] Purple Pikmin_y8qD5r: Warping to position around leader at angle -81.42857 degrees
+[17:35:39.3668774] [Info   : LethalMin] Purple Pikmin_EKPWp: Warping to position around leader at angle -72.85714 degrees
+[17:35:39.3668774] [Info   : LethalMin] Purple Pikmin_evzc4: Warping to position around leader at angle -64.28571 degrees
+[17:35:39.3668774] [Info   : LethalMin] Purple Pikmin_51w0Zom: Warping to position around leader at angle -55.71429 degrees
+[17:35:39.3668774] [Info   : LethalMin] Purple Pikmin_bRqe: Warping to position around leader at angle -47.14286 degrees
+[17:35:39.3668774] [Info   : LethalMin] Purple Pikmin_4WYiK: Warping to position around leader at angle -38.57143 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_deVvFe: Warping to position around leader at angle -30 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_Md8MI: Warping to position around leader at angle -21.42857 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_ddF5L: Warping to position around leader at angle -12.85714 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_2FoB: Warping to position around leader at angle -4.285714 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_FjliuFV: Warping to position around leader at angle 4.285714 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_ICMO7: Warping to position around leader at angle 12.85714 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_Lw2dTVF: Warping to position around leader at angle 21.42857 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_TzDCc: Warping to position around leader at angle 30 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_Gono4bn: Warping to position around leader at angle 38.57143 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_u7yjpLI: Warping to position around leader at angle 47.14286 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_tbmIr: Warping to position around leader at angle 55.71429 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_XWR5u2K: Warping to position around leader at angle 64.28571 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_yExgK: Warping to position around leader at angle 72.85714 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_YV0Gw: Warping to position around leader at angle 81.42857 degrees
+[17:35:39.3668774] [Info   : LethalMin] White Pikmin_68JLiBF: Warping to position around leader at angle 90 degrees
+[17:35:44.8988182] [Debug  :GeneralImprovements] Toggling helmet light on.
+[17:35:48.9315226] [Debug  :   Coroner] Querying target player parameters pre-death...
+[17:35:48.9315226] [Debug  :   Coroner] Query successful!True
+[17:35:52.5628987] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:35:53.9491801] [Info   : Unity Log] enemy rush index is -1; current index 0
+[17:35:53.9491801] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #0 'Centipede' : probability: 39
+[17:35:53.9491801] [Info   : Unity Log] enemy rush index is -1; current index 1
+[17:35:53.9491801] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #1 'Bunker Spider' : probability: 61
+[17:35:53.9491801] [Info   : Unity Log] enemy rush index is -1; current index 2
+[17:35:53.9491801] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #2 'Hoarding bug' : probability: 22
+[17:35:53.9491801] [Info   : Unity Log] enemy rush index is -1; current index 3
+[17:35:53.9491801] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #3 'Flowerman' : probability: 2
+[17:35:53.9491801] [Info   : Unity Log] enemy rush index is -1; current index 4
+[17:35:53.9491801] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #4 'Blob' : probability: 31
+[17:35:53.9491801] [Info   : Unity Log] enemy rush index is -1; current index 5
+[17:35:53.9491801] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #5 'Spring' : probability: 33
+[17:35:53.9491801] [Info   : Unity Log] enemy rush index is -1; current index 6
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #6 'Puffer' : probability: 9
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 7
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #7 'Nutcracker' : probability: 8
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 8
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #8 'Maneater' : probability: 3
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 9
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #9 'Stingray' : probability: 16
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 10
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #10 'Masked' : probability: 34
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 11
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #11 'Jester' : probability: 3
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 12
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #12 'Butler' : probability: 16
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 13
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #13 'Clay Surgeon' : probability: 6
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 14
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #14 'Girl' : probability: 0
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 15
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #15 'Herobrine' : probability: 3
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 16
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #16 'Locker' : probability: 8
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 17
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #17 'ImmortalSnail' : probability: 46
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 18
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #18 'HarpGhost' : probability: 0
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 19
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #19 'BagpipeGhost' : probability: 0
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 20
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #20 'EnforcerGhost' : probability: 0
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 21
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #21 'Shy guy' : probability: 3
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 22
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #22 'Men-stalker' : probability: 40
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 23
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #23 'SlendermanEnemy' : probability: 0
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 24
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #24 'Cabinet' : probability: 0
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 25
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #25 'Aloe' : probability: 38
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 26
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #26 'RollingGiant' : probability: 25
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 27
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #27 'Boomba' : probability: 0
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 28
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #28 'Rabbit Magician' : probability: 0
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 29
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #29 'Peace Keeper' : probability: 1
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 30
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #30 'Lord Of The Manor' : probability: 2
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 31
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #31 'Janitor' : probability: 21
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 32
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #32 'Nancy' : probability: 7
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 33
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #33 'Mistress' : probability: 0
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 34
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #34 'Duck' : probability: 0
+[17:35:53.9501811] [Info   : Unity Log] enemy rush index is -1; current index 35
+[17:35:53.9501811] [Info   : Unity Log] Hours: 180 ; Time: 0.1666667 | Enemy #35 'Transporter' : probability: 49
+[17:35:53.9501811] [Info   : Unity Log] ADDING ENEMY #5: Spring
+[17:35:53.9501811] [Info   : Unity Log] Adding 2 to power level, enemy: Spring
+[17:35:53.9501811] [Info   : Unity Log] Adding 2 to diversity level for enemy 'Spring'
+[17:35:54.8059534] [Debug  :GeneralImprovements] Toggling helmet light off.
+[17:35:58.5093476] [Debug  : LethalMin] Purple Pikmin_XFcV1AA: Removed Leader
+[17:35:58.5093476] [Debug  : LethalMin] Purple Pikmin_XFcV1AA: Setting collision mode to 1
+[17:35:58.5128948] [Info   : LethalMin] Purple Pikmin_XFcV1AA: Assigned Leader: MasaeAhmya (0)
+[17:36:00.5162098] [Debug  :GeneralImprovements] Toggling helmet light on.
+[17:36:00.5593124] [Info   : LethalMin] White Pikmin_i3TJWxA: Setting growth stage to 1
+[17:36:02.8715295] [Debug  : LethalMin] White Pikmin_FYP39: Removed Leader
+[17:36:02.8715295] [Debug  : LethalMin] White Pikmin_FYP39: Setting collision mode to 1
+[17:36:02.8730339] [Info   : LethalMin] White Pikmin_FYP39: Assigned Leader: MasaeAhmya (0)
+[17:36:05.9105458] [Debug  : LethalMin] Purple Pikmin_AQAFk: Removed Leader
+[17:36:05.9105458] [Debug  : LethalMin] Purple Pikmin_AQAFk: Setting collision mode to 1
+[17:36:05.9105458] [Info   : LethalMin] Purple Pikmin_AQAFk: Assigned Leader: MasaeAhmya (0)
+[17:36:14.5586911] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:36:18.5617401] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:36:19.5634626] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:36:22.0487036] [Debug  : LethalMin] Purple Pikmin_sqK71kA: Removed Leader
+[17:36:22.0487036] [Debug  : LethalMin] Purple Pikmin_sqK71kA: Setting collision mode to 1
+[17:36:22.0497037] [Info   : LethalMin] Purple Pikmin_sqK71kA: Assigned Leader: MasaeAhmya (0)
+[17:36:22.5655390] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:36:23.3469301] [Debug  : LethalMin] Purple Pikmin_TFl1: Removed Leader
+[17:36:23.3469301] [Debug  : LethalMin] Purple Pikmin_TFl1: Setting collision mode to 1
+[17:36:23.3469301] [Info   : LethalMin] Purple Pikmin_TFl1: Assigned Leader: MasaeAhmya (0)
+[17:36:28.5517073] [Info   : Unity Log] Picked up scrap Airhorn was not in the normal places; reparenting it now
+[17:36:28.5517073] [Info   : Unity Log] Picked up scrap Airhorn is not in the elevator; parenting it to spawnedScrapContainer
+[17:36:28.6590801] [Debug  : LightsOut] GrabItem Airhorn
+[17:36:28.6595829] [Debug  : LightsOut] NoisemakerProp is not in ship room
+[17:36:32.4335197] [Debug  : LethalMin] Bulbmin_wrCbHH9: Removed Leader
+[17:36:32.4335197] [Debug  : LethalMin] Bulbmin_wrCbHH9: Setting collision mode to 1
+[17:36:32.4355244] [Info   : LethalMin] Bulbmin_wrCbHH9: Assigned Leader: MasaeAhmya (0)
+[17:36:34.4943733] [Debug  : LethalMin] Purple Pikmin_S7OhcGh: Removed Leader
+[17:36:34.4943733] [Debug  : LethalMin] Purple Pikmin_S7OhcGh: Setting collision mode to 1
+[17:36:34.4943733] [Info   : LethalMin] Purple Pikmin_S7OhcGh: Assigned Leader: MasaeAhmya (0)
+[17:36:35.2736907] [Debug  : LethalMin] White Pikmin_IRuDGrA: Removed Leader
+[17:36:35.2736907] [Debug  : LethalMin] White Pikmin_IRuDGrA: Setting collision mode to 1
+[17:36:35.2736907] [Info   : LethalMin] White Pikmin_IRuDGrA: Assigned Leader: MasaeAhmya (0)
+[17:36:35.5646734] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:36:36.0011591] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:36:36.0011591] [Info   : Unity Log] Picked up scrap Clown horn was not in the normal places; reparenting it now
+[17:36:36.0011591] [Info   : Unity Log] Picked up scrap Clown horn is not in the elevator; parenting it to spawnedScrapContainer
+[17:36:36.1069342] [Debug  : LightsOut] GrabItem Clown horn
+[17:36:36.1069342] [Debug  : LightsOut] NoisemakerProp is not in ship room
+[17:36:36.5656306] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:36:38.5610125] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:36:43.5607076] [Info   : LethalMin] Purple Pikmin_TFl1: Setting growth stage to 1
+[17:36:44.5592323] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:36:44.5592323] [Info   : LethalMin] Purple Pikmin_Z1kL0: Setting growth stage to 1
+[17:36:48.5623679] [Info   : LethalMin] White Pikmin_pxpxt: Setting growth stage to 1
+[17:36:52.5680290] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:36:57.5582487] [Info   : LethalMin] Purple Pikmin_XFcV1AA: Setting growth stage to 1
+[17:37:01.5626259] [Info   : LethalMin] White Pikmin_d2bp: Setting growth stage to 1
+[17:37:04.5604532] [Info   : LethalMin] White Pikmin_PLGre: Setting growth stage to 1
+[17:37:05.6728251] [Debug  : LethalMin] White Pikmin_0kglO: Removed Leader
+[17:37:05.6728251] [Debug  : LethalMin] White Pikmin_0kglO: Setting collision mode to 1
+[17:37:05.6728251] [Info   : LethalMin] White Pikmin_0kglO: Assigned Leader: MasaeAhmya (0)
+[17:37:11.0774788] [Info   : Unity Log] Found enemy vent which has its time up: VentEntrance(Clone). Spawning Spring from vent.
+[17:37:11.0824831] [Info   : Unity Log] Spawned enemy from vent
+[17:37:11.1095440] [Info   :qwbarch.Mirage] SpringManAI(a6fd1618-8b07-4860-88b5-81bb56a0cef7) - Mimicking player #0
+[17:37:16.5595827] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:37:18.5589606] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:37:18.7519328] [Info   :GoldenKitten.FairAI] Turret: Detected player, entering charging mode.
+[17:37:19.5628364] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 0
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #0 'Centipede' : probability: 39
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 1
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #1 'Bunker Spider' : probability: 61
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 2
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #2 'Hoarding bug' : probability: 22
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 3
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #3 'Flowerman' : probability: 2
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 4
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #4 'Blob' : probability: 31
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 5
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #5 'Spring' : probability: 33
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 6
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #6 'Puffer' : probability: 9
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 7
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #7 'Nutcracker' : probability: 8
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 8
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #8 'Maneater' : probability: 3
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 9
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #9 'Stingray' : probability: 15
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 10
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #10 'Masked' : probability: 34
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 11
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #11 'Jester' : probability: 3
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 12
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #12 'Butler' : probability: 16
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 13
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #13 'Clay Surgeon' : probability: 4
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 14
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #14 'Girl' : probability: 1
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 15
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #15 'Herobrine' : probability: 3
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 16
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #16 'Locker' : probability: 7
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 17
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #17 'ImmortalSnail' : probability: 44
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 18
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #18 'HarpGhost' : probability: 0
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 19
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #19 'BagpipeGhost' : probability: 0
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 20
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #20 'EnforcerGhost' : probability: 0
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 21
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #21 'Shy guy' : probability: 3
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 22
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #22 'Men-stalker' : probability: 41
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 23
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #23 'SlendermanEnemy' : probability: 0
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 24
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #24 'Cabinet' : probability: 0
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 25
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #25 'Aloe' : probability: 62
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 26
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #26 'RollingGiant' : probability: 27
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 27
+[17:37:19.6690341] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #27 'Boomba' : probability: 0
+[17:37:19.6690341] [Info   : Unity Log] enemy rush index is -1; current index 28
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #28 'Rabbit Magician' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 29
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #29 'Peace Keeper' : probability: 1
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 30
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #30 'Lord Of The Manor' : probability: 2
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 31
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #31 'Janitor' : probability: 14
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 32
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #32 'Nancy' : probability: 7
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 33
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #33 'Mistress' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 34
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #34 'Duck' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 35
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #35 'Transporter' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] ADDING ENEMY #0: Centipede
+[17:37:19.6700383] [Info   : Unity Log] Adding 1 to power level, enemy: Centipede
+[17:37:19.6700383] [Info   : Unity Log] Adding 1 to diversity level for enemy 'Centipede'
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 0
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #0 'Centipede' : probability: 39
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 1
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #1 'Bunker Spider' : probability: 61
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 2
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #2 'Hoarding bug' : probability: 22
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 3
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #3 'Flowerman' : probability: 2
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 4
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #4 'Blob' : probability: 31
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 5
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #5 'Spring' : probability: 33
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 6
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #6 'Puffer' : probability: 9
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 7
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #7 'Nutcracker' : probability: 8
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 8
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #8 'Maneater' : probability: 3
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 9
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #9 'Stingray' : probability: 15
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 10
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #10 'Masked' : probability: 34
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 11
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #11 'Jester' : probability: 3
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 12
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #12 'Butler' : probability: 16
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 13
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #13 'Clay Surgeon' : probability: 4
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 14
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #14 'Girl' : probability: 1
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 15
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #15 'Herobrine' : probability: 3
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 16
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #16 'Locker' : probability: 7
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 17
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #17 'ImmortalSnail' : probability: 44
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 18
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #18 'HarpGhost' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 19
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #19 'BagpipeGhost' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 20
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #20 'EnforcerGhost' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 21
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #21 'Shy guy' : probability: 3
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 22
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #22 'Men-stalker' : probability: 41
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 23
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #23 'SlendermanEnemy' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 24
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #24 'Cabinet' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 25
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #25 'Aloe' : probability: 62
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 26
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #26 'RollingGiant' : probability: 27
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 27
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #27 'Boomba' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 28
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #28 'Rabbit Magician' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 29
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #29 'Peace Keeper' : probability: 1
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 30
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #30 'Lord Of The Manor' : probability: 2
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 31
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #31 'Janitor' : probability: 14
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 32
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #32 'Nancy' : probability: 7
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 33
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #33 'Mistress' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 34
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #34 'Duck' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 35
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #35 'Transporter' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] ADDING ENEMY #25: Aloe
+[17:37:19.6700383] [Info   : Unity Log] Adding 1 to power level, enemy: Aloe
+[17:37:19.6700383] [Info   : Unity Log] Adding 0 to diversity level for enemy 'Aloe'
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 0
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #0 'Centipede' : probability: 39
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 1
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #1 'Bunker Spider' : probability: 61
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 2
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #2 'Hoarding bug' : probability: 22
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 3
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #3 'Flowerman' : probability: 2
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 4
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #4 'Blob' : probability: 31
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 5
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #5 'Spring' : probability: 33
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 6
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #6 'Puffer' : probability: 9
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 7
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #7 'Nutcracker' : probability: 8
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 8
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #8 'Maneater' : probability: 3
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 9
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #9 'Stingray' : probability: 15
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 10
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #10 'Masked' : probability: 34
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 11
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #11 'Jester' : probability: 3
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 12
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #12 'Butler' : probability: 16
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 13
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #13 'Clay Surgeon' : probability: 4
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 14
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #14 'Girl' : probability: 1
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 15
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #15 'Herobrine' : probability: 3
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 16
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #16 'Locker' : probability: 7
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 17
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #17 'ImmortalSnail' : probability: 44
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 18
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #18 'HarpGhost' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 19
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #19 'BagpipeGhost' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 20
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #20 'EnforcerGhost' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 21
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #21 'Shy guy' : probability: 3
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 22
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #22 'Men-stalker' : probability: 41
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 23
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #23 'SlendermanEnemy' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 24
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #24 'Cabinet' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 26
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #26 'RollingGiant' : probability: 27
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 27
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #27 'Boomba' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 28
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #28 'Rabbit Magician' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 29
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #29 'Peace Keeper' : probability: 1
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 30
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #30 'Lord Of The Manor' : probability: 2
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 31
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #31 'Janitor' : probability: 14
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 32
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #32 'Nancy' : probability: 7
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 33
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #33 'Mistress' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 34
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #34 'Duck' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] enemy rush index is -1; current index 35
+[17:37:19.6700383] [Info   : Unity Log] Hours: 300 ; Time: 0.2777778 | Enemy #35 'Transporter' : probability: 0
+[17:37:19.6700383] [Info   : Unity Log] ADDING ENEMY #5: Spring
+[17:37:19.6700383] [Info   : Unity Log] Adding 2 to power level, enemy: Spring
+[17:37:19.8176753] [Info   :GoldenKitten.FairAI] Turret: Detected player, entering charging mode.
+[17:37:20.2579161] [Info   :GoldenKitten.FairAI] Turret: Lost LOS during charge wind-up, returning to detection.
+[17:37:20.5627730] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:37:20.8330294] [Debug  :   Coroner] Querying target player parameters pre-death...
+[17:37:20.8330294] [Debug  :   Coroner] Query successful!True
+[17:37:21.3287666] [Info   :GoldenKitten.FairAI] Turret: Lost LOS during charge wind-up, returning to detection.
+[17:37:21.5614129] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:37:24.2729042] [Debug  : LethalMin] White Pikmin_d2bp: Removed Leader
+[17:37:24.2729042] [Debug  : LethalMin] White Pikmin_d2bp: Setting collision mode to 1
+[17:37:24.2729042] [Info   : LethalMin] White Pikmin_d2bp: Assigned Leader: MasaeAhmya (0)
+[17:37:24.3446932] [Info   :GoldenKitten.FairAI] Turret: Detected player, entering charging mode.
+[17:37:25.8526586] [Info   :GoldenKitten.FairAI] Turret: Lost LOS during charge wind-up, returning to detection.
+[17:37:26.9077516] [Debug  : LethalMin] Bulbmin_7e3Pm4A: Removed Leader
+[17:37:26.9077516] [Debug  : LethalMin] Bulbmin_7e3Pm4A: Setting collision mode to 1
+[17:37:26.9077516] [Info   : LethalMin] Bulbmin_7e3Pm4A: Assigned Leader: MasaeAhmya (0)
+[17:37:27.5666037] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[17:37:28.7406371] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player took damage (Health: 1)
+[17:37:29.5591163] [Info   : LethalMin] Purple Pikmin_AQAFk: Setting growth stage to 1
+[17:37:30.5665918] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[17:37:31.5620700] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:37:34.5602372] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:37:37.8639467] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:37:38.7055269] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:37:39.4513378] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:37:42.1755666] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:37:42.5812182] [Info   :ReservedItemSlotCore-2.0.41] Focusing reserved hotbar slots. NewIndex: 10 OldIndex: 1 ReservedStartIndex: 4
+[17:37:42.5812182] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:37:44.6558299] [Info   : Unity Log] DROP ITEM AHEAD
+[17:37:44.6558299] [Info   : Unity Log] Got raycast hit
+[17:37:44.6558299] [Info   : Unity Log] Startpos: (73.68, -219.50, 18.26)
+[17:37:44.6568318] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[17:37:44.6568318] [Debug  : LightsOut] DiscardItem Key
+[17:37:44.6648459] [Debug  :GeneralImprovements] Toggling helmet light off.
+[17:37:45.5630593] [Info   : LethalMin] Purple Pikmin_sqK71kA: Setting growth stage to 1
+[17:37:47.6466099] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[17:37:47.6466099] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[17:37:47.6466099] [Debug  :   Coroner] Handling Out of Bounds death...
+[17:37:48.4501559] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[17:37:48.4501559] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[17:37:48.4501559] [Debug  :   Coroner] Handling Out of Bounds death...
+[17:37:50.3675301] [Info   : Unity Log] Found enemy vent which has its time up: VentEntrance(Clone). Spawning Centipede from vent.
+[17:37:50.3730445] [Info   : Unity Log] Spawned enemy from vent
+[17:37:50.3870641] [Debug  :Starlancer AI Fix] The Enemy Whitelist contains: Blob, Butler, Centipede, Crawler, Flowerman, HoarderBug, Nutcracker, SandSpider, Stingray.
+[17:37:50.3870641] [Debug  :Starlancer AI Fix] Adding IVisibleThreat component to Centipede(Clone).
+[17:37:50.3885689] [Info   :qwbarch.Mirage] CentipedeAI(41d95b1f-1e57-4048-b03a-9b3acf5c9443) - Mimicking player #0
+[17:37:50.4172146] [Info   : LethalMin] White Pikmin_PLGre: Found enemy: Centipede(Clone)
+[17:37:50.4188074] [Info   : LethalMin] White Pikmin_PLGre: Setting current task to AttackEnemy
+[17:37:52.5233063] [Info   : Unity Log] Picked up scrap Zed Dog was not in the normal places; reparenting it now
+[17:37:52.5233063] [Info   : Unity Log] Picked up scrap Zed Dog is not in the elevator; parenting it to spawnedScrapContainer
+[17:37:52.6323919] [Debug  : LightsOut] GrabItem Zed Dog
+[17:37:52.6323919] [Debug  : LightsOut] PhysicsProp is not in ship room
+[17:37:53.0936016] [Info   :ReservedItemSlotCore-2.0.41] Focusing reserved hotbar slots. NewIndex: 4 OldIndex: 2 ReservedStartIndex: 4
+[17:37:53.0936016] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:37:53.0936016] [Debug  :GeneralImprovements] Toggling helmet light off.
+[17:37:53.5635194] [Info   :ReservedItemSlotCore-2.0.41] Unfocusing reserved hotbar slots. NewIndex: 2 OldIndex: 4 ReservedStartIndex: 4
+[17:37:54.5225416] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:37:54.5225416] [Info   : Unity Log] Picked up scrap Airhorn was not in the normal places; reparenting it now
+[17:37:54.5225416] [Info   : Unity Log] Picked up scrap Airhorn is not in the elevator; parenting it to spawnedScrapContainer
+[17:37:54.5626184] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[17:37:54.6271254] [Debug  : LightsOut] GrabItem Airhorn
+[17:37:54.6271254] [Debug  : LightsOut] NoisemakerProp is not in ship room
+[17:37:56.5611847] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:38:03.5597206] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:38:09.5618601] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:38:09.6518985] [Info   : Unity Log] Found enemy vent which has its time up: VentEntrance(Clone). Spawning Aloe from vent.
+[17:38:09.6644366] [Info   : Unity Log] Spawned enemy from vent
+[17:38:09.7476461] [Info   : LethalMin] White Pikmin_3dBv: Found enemy: AloeBracken(Clone)
+[17:38:09.7476461] [Info   : LethalMin] White Pikmin_3dBv: Setting current task to AttackEnemy
+[17:38:11.7096322] [Debug  :   Coroner] Player is dying! Unknown precise cause of death in final hook (Electrocution)...
+[17:38:11.7121422] [Debug  : LethalMin] Purple Pikmin_rKa2: Setting to idle on local client
+[17:38:11.7121422] [Debug  : LethalMin] Purple Pikmin_rKa2: Removed Leader
+[17:38:11.7141433] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Setting to idle on local client
+[17:38:11.7141433] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Removed Leader
+[17:38:11.7151434] [Debug  : LethalMin] Purple Pikmin_EKPWp: Setting to idle on local client
+[17:38:11.7151434] [Debug  : LethalMin] Purple Pikmin_EKPWp: Removed Leader
+[17:38:11.7151434] [Debug  : LethalMin] Purple Pikmin_evzc4: Setting to idle on local client
+[17:38:11.7151434] [Debug  : LethalMin] Purple Pikmin_evzc4: Removed Leader
+[17:38:11.7164269] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Setting to idle on local client
+[17:38:11.7164269] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Removed Leader
+[17:38:11.7174262] [Debug  : LethalMin] Purple Pikmin_bRqe: Setting to idle on local client
+[17:38:11.7174262] [Debug  : LethalMin] Purple Pikmin_bRqe: Removed Leader
+[17:38:11.7174262] [Debug  : LethalMin] Purple Pikmin_4WYiK: Setting to idle on local client
+[17:38:11.7174262] [Debug  : LethalMin] Purple Pikmin_4WYiK: Removed Leader
+[17:38:11.7189364] [Debug  : LethalMin] White Pikmin_deVvFe: Setting to idle on local client
+[17:38:11.7189364] [Debug  : LethalMin] White Pikmin_deVvFe: Removed Leader
+[17:38:11.7189364] [Debug  : LethalMin] White Pikmin_Md8MI: Setting to idle on local client
+[17:38:11.7189364] [Debug  : LethalMin] White Pikmin_Md8MI: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_ddF5L: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_ddF5L: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_2FoB: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_2FoB: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_FjliuFV: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_FjliuFV: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_ICMO7: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_ICMO7: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_TzDCc: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_TzDCc: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_Gono4bn: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_Gono4bn: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_u7yjpLI: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_u7yjpLI: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_tbmIr: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_tbmIr: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_XWR5u2K: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_XWR5u2K: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_yExgK: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_yExgK: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_YV0Gw: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_YV0Gw: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_68JLiBF: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_68JLiBF: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] Purple Pikmin_XFcV1AA: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] Purple Pikmin_XFcV1AA: Removed Leader
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_FYP39: Setting to idle on local client
+[17:38:11.7199434] [Debug  : LethalMin] White Pikmin_FYP39: Removed Leader
+[17:38:11.7209434] [Debug  : LethalMin] Purple Pikmin_AQAFk: Setting to idle on local client
+[17:38:11.7209434] [Debug  : LethalMin] Purple Pikmin_AQAFk: Removed Leader
+[17:38:11.7209434] [Debug  : LethalMin] Purple Pikmin_sqK71kA: Setting to idle on local client
+[17:38:11.7209434] [Debug  : LethalMin] Purple Pikmin_sqK71kA: Removed Leader
+[17:38:11.7209434] [Debug  : LethalMin] Purple Pikmin_TFl1: Setting to idle on local client
+[17:38:11.7209434] [Debug  : LethalMin] Purple Pikmin_TFl1: Removed Leader
+[17:38:11.7209434] [Debug  : LethalMin] Bulbmin_wrCbHH9: Setting to idle on local client
+[17:38:11.7209434] [Debug  : LethalMin] Bulbmin_wrCbHH9: Removed Leader
+[17:38:11.7209434] [Debug  : LethalMin] Purple Pikmin_S7OhcGh: Setting to idle on local client
+[17:38:11.7209434] [Debug  : LethalMin] Purple Pikmin_S7OhcGh: Removed Leader
+[17:38:11.7209434] [Debug  : LethalMin] White Pikmin_IRuDGrA: Setting to idle on local client
+[17:38:11.7209434] [Debug  : LethalMin] White Pikmin_IRuDGrA: Removed Leader
+[17:38:11.7209434] [Debug  : LethalMin] White Pikmin_0kglO: Setting to idle on local client
+[17:38:11.7219432] [Debug  : LethalMin] White Pikmin_0kglO: Removed Leader
+[17:38:11.7219432] [Debug  : LethalMin] White Pikmin_d2bp: Setting to idle on local client
+[17:38:11.7219432] [Debug  : LethalMin] White Pikmin_d2bp: Removed Leader
+[17:38:11.7219432] [Debug  : LethalMin] Bulbmin_7e3Pm4A: Setting to idle on local client
+[17:38:11.7219432] [Debug  : LethalMin] Bulbmin_7e3Pm4A: Removed Leader
+[17:38:11.7219432] [Info   : Unity Log] KILL LOCAL PLAYER!
+[17:38:11.7254490] [Info   : Unity Log] Body spawned with id 0: PlayerRagdollElectrocuted Variant(Clone)
+[17:38:11.7254490] [Warning: Unity Log] Setting linear velocity of a kinematic body is not supported.
+[17:38:11.7264561] [Info   : Unity Log] Running kill player function for LOCAL client, player object: Player
+[17:38:11.7304624] [Debug  :ainavt.lc.lethalconfig] Registered config "Matty's Fixes/Vanilla/Body"
+[17:38:11.7304624] [Debug  : LethalMin] IsClientRpcPrefixValid (No): RpcExecStage is Send, IsClient: True, IsHost: True KillPlayerClientRpcPrefix
+[17:38:11.7314669] [Debug  : LethalMin] IsClientRpcPrefixValid (Yes): RpcExecStage is Execute, IsClient: True, IsHost: True KillPlayerClientRpcPrefix
+[17:38:11.7314669] [Info   : Unity Log] A player died. player object: Player
+[17:38:11.7334692] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[17:38:11.7344668] [Info   : Unity Log] Switch camera to 'SpectateCamera'
+[17:38:11.7344668] [Info   : Unity Log] Override drop items : False; overridedontspawnbody: False
+[17:38:11.7344668] [Info   : Unity Log] DropAllHeldItems called on player 'MasaeAhmya'; itemsFall: True; disconnecting: False; ItemSlots length: 11; isHoldingObject: False
+[17:38:11.7344668] [Info   : Unity Log] DropAllHeldItems; player pos: (81.16, -219.56, 18.40)
+[17:38:11.7344668] [Info   : Unity Log] Item slot #0 null?: False
+[17:38:11.7344668] [Info   : Unity Log] Setting DropHeldItem on item #0: 'Airhorn(Clone)
+[17:38:11.7344668] [Info   : Unity Log] Drop item 'Airhorn(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[17:38:11.7354664] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[17:38:11.7354664] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:38:11.7354664] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:38:11.7354664] [Info   : Unity Log] DropHeldItem A; placeObject:False (98.06, -225.27, 35.28); item parent: Props (UnityEngine.Transform); (98.06, -225.27, 35.28); (80.62, -217.67, 18.81)
+[17:38:11.7359697] [Debug  : LightsOut] DiscardItem Airhorn
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:38:11.7359697] [Info   : Unity Log] Item slot #1 null?: False
+[17:38:11.7359697] [Info   : Unity Log] Setting DropHeldItem on item #1: 'Clownhorn(Clone)
+[17:38:11.7359697] [Info   : Unity Log] Drop item 'Clownhorn(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[17:38:11.7359697] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:38:11.7359697] [Info   : Unity Log] DropHeldItem A; placeObject:False (98.05, -225.27, 35.29); item parent: Props (UnityEngine.Transform); (98.05, -225.27, 35.29); (80.61, -217.66, 18.82)
+[17:38:11.7359697] [Debug  : LightsOut] DiscardItem Clown horn
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:38:11.7359697] [Info   : Unity Log] Item slot #2 null?: False
+[17:38:11.7359697] [Info   : Unity Log] Setting DropHeldItem on item #2: 'ZeddogPlushie(Clone)
+[17:38:11.7359697] [Info   : Unity Log] Drop item 'ZeddogPlushie(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[17:38:11.7359697] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:38:11.7359697] [Info   : Unity Log] DropHeldItem A; placeObject:False (98.43, -224.99, 35.65); item parent: Props (UnityEngine.Transform); (98.43, -224.99, 35.65); (80.99, -217.39, 19.18)
+[17:38:11.7359697] [Debug  : LightsOut] DiscardItem Zed Dog
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:38:11.7359697] [Info   : Unity Log] Item slot #3 null?: False
+[17:38:11.7359697] [Info   : Unity Log] Setting DropHeldItem on item #3: 'Airhorn(Clone)
+[17:38:11.7359697] [Info   : Unity Log] Drop item 'Airhorn(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[17:38:11.7359697] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:38:11.7359697] [Info   : Unity Log] DropHeldItem A; placeObject:False (98.06, -225.27, 35.28); item parent: Props (UnityEngine.Transform); (98.06, -225.27, 35.28); (80.62, -217.67, 18.81)
+[17:38:11.7359697] [Debug  : LightsOut] DiscardItem Airhorn
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:38:11.7359697] [Info   : Unity Log] Item slot #4 null?: False
+[17:38:11.7359697] [Info   : Unity Log] Setting DropHeldItem on item #4: 'FlashlightItem(Clone)
+[17:38:11.7359697] [Info   : Unity Log] Drop item 'FlashlightItem(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[17:38:11.7359697] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:38:11.7359697] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:38:11.7359697] [Info   : Unity Log] DropHeldItem A; placeObject:False (98.57, -225.00, 35.08); item parent: Props (UnityEngine.Transform); (98.57, -225.00, 35.08); (81.14, -217.39, 18.61)
+[17:38:11.7359697] [Debug  : LightsOut] DiscardItem Pro-flashlight
+[17:38:11.7369737] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:38:11.7369737] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:38:11.7369737] [Info   : Unity Log] Item slot #5 null?: True
+[17:38:11.7369737] [Info   : Unity Log] Item slot #6 null?: True
+[17:38:11.7369737] [Info   : Unity Log] Item slot #7 null?: True
+[17:38:11.7369737] [Info   : Unity Log] Item slot #8 null?: True
+[17:38:11.7369737] [Info   : Unity Log] Item slot #9 null?: True
+[17:38:11.7369737] [Info   : Unity Log] Item slot #10 null?: True
+[17:38:11.7369737] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[17:38:11.7379740] [Info   : Unity Log] PlayerScript set for body with id 0 PlayerRagdollElectrocuted Variant(Clone)
+[17:38:11.7389740] [Debug  :Buttery Fixes] Badges added to player corpse
+[17:38:11.7389740] [Debug  :Matty's Fixes] Vanilla/Body(656) needs to compute vertical offset - scheduled
+[17:38:11.7389740] [Info   : LethalMin] Creating PikminItemNode for RagdollGrabbableObject(Clone) at (-17.22, 9.55, -30.56)...
+[17:38:11.7389740] [Debug  : LethalMin] Initializing PikminItem PikminItemNode(Clone) with item PikminItemNode(Clone) (True)
+[17:38:11.7389740] [Info   : LethalMin] PikminItem PikminItemNode(Clone) has no carry strength set, setting to default
+[17:38:11.7389740] [Debug  : LethalMin] Calculated weight for Body: 11 lb, Devided weight: 4.4 lb
+[17:38:11.7389740] [Debug  : LethalMin] A True, B True rename reasons
+[17:38:11.7389740] [Debug  : LethalMin] (Body (PikminItem Node)) Colider: RagdollGrabbableObject(Clone) (UnityEngine.BoxCollider)
+[17:38:11.7389740] [Debug  : LethalMin] (Body (PikminItem Node)) Center: (-17.22, 9.55, -30.56)
+[17:38:11.7651343] [Info   : Unity Log] !!!! DISABLING CAMERA FOR PLAYER: Player
+[17:38:11.7651343] [Info   : Unity Log] !!!! connectedPlayersAmount: 0
+[17:38:11.7651343] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player took damage (Health: 0)
+[17:38:11.7651343] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player has died
+[17:38:11.7651343] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited facility
+[17:38:11.7736480] [Debug  : LethalMin] Animator Controller changed from metarig to metarigOtherPlayers
+[17:38:11.7761583] [Info   : LethalMin] Purple Pikmin_sqK71kA: Found item: Clownhorn(Clone)
+[17:38:11.7771563] [Info   : LethalMin] Purple Pikmin_sqK71kA: targeting item Clownhorn(Clone) at GrabPosition_1
+[17:38:11.7771563] [Info   : LethalMin] Purple Pikmin_sqK71kA: Setting current task to CarryItem
+[17:38:11.7786593] [Debug  : LethalMin] Creating counter for Body (PikminItem Node)
+[17:38:11.7851697] [Info   :LethalPerformance.Patcher] Saved 1 config(s)
+[17:38:11.8073797] [Info   : LethalMin] White Pikmin_IRuDGrA: Found item: Body (PikminItem Node)
+[17:38:11.8073797] [Info   : LethalMin] White Pikmin_IRuDGrA: targeting item Body (PikminItem Node) at GrabPosition_1
+[17:38:11.8073797] [Info   : LethalMin] White Pikmin_IRuDGrA: Setting current task to CarryItem
+[17:38:11.8073797] [Info   : LethalMin] Purple Pikmin_S7OhcGh: Found item: Clownhorn(Clone)
+[17:38:11.8073797] [Info   : LethalMin] Purple Pikmin_S7OhcGh: targeting item Clownhorn(Clone) at GrabPosition_0
+[17:38:11.8073797] [Info   : LethalMin] Purple Pikmin_S7OhcGh: Setting current task to CarryItem
+[17:38:11.8088862] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: Clownhorn(Clone)
+[17:38:11.8124049] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Insane to 1945
+[17:38:11.8124049] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryBad to 320
+[17:38:11.8124049] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Bad to 1072
+[17:38:11.8124049] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Neutral to 1015
+[17:38:11.8124049] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Good to 2141
+[17:38:11.8124049] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryGood to 1012
+[17:38:11.8124049] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Rare to 2681
+[17:38:11.8124049] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Remove to 1003
+[17:38:11.8227539] [Info   :BrutalCompanyMinusExtraReborn] Executing OnShipLeave for all events()
+[17:38:11.8237556] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:38:11.8237556] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:38:11.8237556] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:38:11.8237556] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:38:11.8237556] [Info   :BrutalCompanyMinusExtraReborn] Restoring un-modified level enemy spawns on current level.
+[17:38:11.8252622] [Info   : LethalMin] Game Ended, Deinitializing PikminManager
+[17:38:11.8262701] [Info   : Unity Log] [F] The ship is leaving.................
+[17:38:11.8262701] [Info   :HerobrineMod] The ship is leaving.................
+[17:38:11.8339786] [Debug  :Matty's Fixes] Vanilla/Body(656) is computing vertical offset
+[17:38:11.8339786] [Debug  :Matty's Fixes] Vanilla/Body original offset is 0.3
+[17:38:11.8496480] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship has taken off
+[17:38:11.8506453] [Debug  :PizzaTowerEscapeMusic ScriptManager] Conditions for a script event have been met!
+ Script Event Type: StopMusic
+   Game Event Type: ShipTakeOff
+           Comment: StopMusic quand ShipTakeOff
+[17:38:11.8526449] [Info   : LethalMin] Bulbmin_wrCbHH9: Found item: Clownhorn(Clone)
+[17:38:11.8526449] [Info   : LethalMin] White Pikmin_FYP39: Found item: FlashlightItem(Clone)
+[17:38:11.8526449] [Info   : LethalMin] White Pikmin_FYP39: targeting item FlashlightItem(Clone) at GrabPosition_2
+[17:38:11.8526449] [Info   : LethalMin] White Pikmin_FYP39: Setting current task to CarryItem
+[17:38:11.8526449] [Info   : LethalMin] Purple Pikmin_evzc4: Found item: FlashlightItem(Clone)
+[17:38:11.8526449] [Info   : LethalMin] Purple Pikmin_evzc4: targeting item FlashlightItem(Clone) at GrabPosition_1
+[17:38:11.8526449] [Info   : LethalMin] Purple Pikmin_evzc4: Setting current task to CarryItem
+[17:38:11.8526449] [Info   : LethalMin] Purple Pikmin_51w0Zom: Found item: ZeddogPlushie(Clone)
+[17:38:11.8526449] [Info   : LethalMin] Purple Pikmin_51w0Zom: targeting item ZeddogPlushie(Clone) at GrabPosition_1
+[17:38:11.8526449] [Info   : LethalMin] Purple Pikmin_51w0Zom: Setting current task to CarryItem
+[17:38:11.8526449] [Info   : LethalMin] Purple Pikmin_bRqe: Found item: ZeddogPlushie(Clone)
+[17:38:11.8526449] [Info   : LethalMin] Purple Pikmin_bRqe: targeting item ZeddogPlushie(Clone) at GrabPosition_0
+[17:38:11.8526449] [Info   : LethalMin] Purple Pikmin_bRqe: Setting current task to CarryItem
+[17:38:11.8526449] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: ZeddogPlushie(Clone)
+[17:38:11.8526449] [Info   : LethalMin] White Pikmin_ICMO7: Found item: ZeddogPlushie(Clone)
+[17:38:11.8526449] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: ZeddogPlushie(Clone)
+[17:38:11.8526449] [Info   : LethalMin] White Pikmin_tbmIr: Found item: ZeddogPlushie(Clone)
+[17:38:11.8536480] [Info   : LethalMin] White Pikmin_XWR5u2K: Found item: ZeddogPlushie(Clone)
+[17:38:11.8536480] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: ZeddogPlushie(Clone)
+[17:38:11.8686857] [Info   : LethalMin] Bulbmin_7e3Pm4A: Found item: FlashlightItem(Clone)
+[17:38:11.8686857] [Info   : LethalMin] Bulbmin_7e3Pm4A: targeting item FlashlightItem(Clone) at GrabPosition_0
+[17:38:11.8686857] [Info   : LethalMin] Bulbmin_7e3Pm4A: Setting current task to CarryItem
+[17:38:11.8686857] [Info   : LethalMin] White Pikmin_0kglO: Found item: FlashlightItem(Clone)
+[17:38:11.8686857] [Info   : LethalMin] White Pikmin_0kglO: targeting item FlashlightItem(Clone) at GrabPosition_3
+[17:38:11.8686857] [Info   : LethalMin] White Pikmin_0kglO: Setting current task to CarryItem
+[17:38:11.8696905] [Info   : LethalMin] Purple Pikmin_TFl1: Found item: Clownhorn(Clone)
+[17:38:11.8696905] [Info   : LethalMin] White Pikmin_d2bp: Found item: ZeddogPlushie(Clone)
+[17:38:11.8696905] [Info   : LethalMin] Purple Pikmin_EKPWp: Found item: Airhorn(Clone)
+[17:38:11.8696905] [Info   : LethalMin] Purple Pikmin_EKPWp: targeting item Airhorn(Clone) at GrabPosition_0
+[17:38:11.8696905] [Info   : LethalMin] Purple Pikmin_EKPWp: Setting current task to CarryItem
+[17:38:11.8696905] [Info   : LethalMin] White Pikmin_Md8MI: Found item: FlashlightItem(Clone)
+[17:38:11.8696905] [Info   : LethalMin] White Pikmin_2FoB: Found item: ZeddogPlushie(Clone)
+[17:38:11.8696905] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: ZeddogPlushie(Clone)
+[17:38:11.8696905] [Info   : LethalMin] White Pikmin_YV0Gw: Found item: Airhorn(Clone)
+[17:38:11.8696905] [Info   : LethalMin] White Pikmin_YV0Gw: targeting item Airhorn(Clone) at GrabPosition_1
+[17:38:11.8696905] [Info   : LethalMin] White Pikmin_YV0Gw: Setting current task to CarryItem
+[17:38:11.8817109] [Info   : LethalMin] Purple Pikmin_XFcV1AA: Found item: ZeddogPlushie(Clone)
+[17:38:11.8817109] [Info   : LethalMin] White Pikmin_ddF5L: Found item: ZeddogPlushie(Clone)
+[17:38:11.8922399] [Info   : LethalMin] Purple Pikmin_AQAFk: Found item: Body (PikminItem Node)
+[17:38:11.8922399] [Info   : LethalMin] Purple Pikmin_AQAFk: targeting item Body (PikminItem Node) at GrabPosition_7
+[17:38:11.8922399] [Info   : LethalMin] Purple Pikmin_AQAFk: Setting current task to CarryItem
+[17:38:11.8922399] [Info   : LethalMin] Purple Pikmin_y8qD5r: Found item: ZeddogPlushie(Clone)
+[17:38:11.8922399] [Info   : LethalMin] Purple Pikmin_4WYiK: Found item: Body (PikminItem Node)
+[17:38:11.8922399] [Info   : LethalMin] Purple Pikmin_4WYiK: targeting item Body (PikminItem Node) at GrabPosition_0
+[17:38:11.8922399] [Info   : LethalMin] Purple Pikmin_4WYiK: Setting current task to CarryItem
+[17:38:11.8932423] [Info   : LethalMin] White Pikmin_TzDCc: Found item: ZeddogPlushie(Clone)
+[17:38:11.9122862] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 0
+[17:38:11.9122862] [Info   : LethalMin] White Pikmin_deVvFe: Found item: ZeddogPlushie(Clone)
+[17:38:11.9122862] [Info   : LethalMin] White Pikmin_yExgK: Found item: FlashlightItem(Clone)
+[17:38:11.9218652] [Info   : LethalMin] Purple Pikmin_rKa2: Found item: ZeddogPlushie(Clone)
+[17:38:12.0045614] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: ZeddogPlushie(Clone)
+[17:38:12.0207309] [Info   : LethalMin] Purple Pikmin_S7OhcGh: Grabbed item Clownhorn(Clone) Speed is now: 3.05
+[17:38:12.0272376] [Message: LethalMin] Clownhorn(Clone) Switched Primary Pikmin to Purple Pikmin_S7OhcGh
+[17:38:12.0373539] [Info   : LethalMin] Clownhorn(Clone) is grabbing an item on local client
+[17:38:12.0373539] [Debug  : LethalMin] Purple Pikmin_S7OhcGh: Setting collision mode to 1
+[17:38:12.0465099] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.0505110] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 109.4402
+[17:38:12.0505110] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 112.7308
+[17:38:12.0505110] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.0515111] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 109.4402
+[17:38:12.0525109] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 112.7308
+[17:38:12.0525109] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.0525109] [Info   : LethalMin] Clownhorn(Clone) successfully created a test route to the ToShip
+[17:38:12.0525109] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.0525109] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 109.4402
+[17:38:12.0525109] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 112.7308
+[17:38:12.0525109] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.0535107] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 109.4402
+[17:38:12.0535107] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 112.7308
+[17:38:12.0535107] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.0535107] [Info   : LethalMin] Clownhorn(Clone) has created a route
+[17:38:12.0661213] [Info   : LethalMin] White Pikmin_FYP39: Grabbed item FlashlightItem(Clone) Speed is now: 3.075
+[17:38:12.0671229] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: ZeddogPlushie(Clone)
+[17:38:12.0751371] [Message: LethalMin] FlashlightItem(Clone) Switched Primary Pikmin to White Pikmin_FYP39
+[17:38:12.0761421] [Info   : LethalMin] Bulbmin_wrCbHH9: Found item: Airhorn(Clone)
+[17:38:12.0761421] [Info   : LethalMin] Bulbmin_wrCbHH9: targeting item Airhorn(Clone) at GrabPosition_0
+[17:38:12.0761421] [Info   : LethalMin] Bulbmin_wrCbHH9: Setting current task to CarryItem
+[17:38:12.0761421] [Info   : LethalMin] Purple Pikmin_TFl1: Found item: Airhorn(Clone)
+[17:38:12.0761421] [Info   : LethalMin] Purple Pikmin_TFl1: targeting item Airhorn(Clone) at GrabPosition_1
+[17:38:12.0761421] [Info   : LethalMin] Purple Pikmin_TFl1: Setting current task to CarryItem
+[17:38:12.0771434] [Info   : LethalMin] White Pikmin_2FoB: Found item: ZeddogPlushie(Clone)
+[17:38:12.0771434] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: ZeddogPlushie(Clone)
+[17:38:12.0771434] [Info   : LethalMin] White Pikmin_ICMO7: Found item: FlashlightItem(Clone)
+[17:38:12.0771434] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: ZeddogPlushie(Clone)
+[17:38:12.0771434] [Info   : LethalMin] White Pikmin_tbmIr: Found item: ZeddogPlushie(Clone)
+[17:38:12.0771434] [Info   : LethalMin] White Pikmin_XWR5u2K: Found item: ZeddogPlushie(Clone)
+[17:38:12.0771434] [Info   : LethalMin] White Pikmin_YV0Gw: Grabbed item Airhorn(Clone) Speed is now: 13.2
+[17:38:12.0771434] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: ZeddogPlushie(Clone)
+[17:38:12.0841589] [Info   : LethalMin] FlashlightItem(Clone) is grabbing an item on local client
+[17:38:12.0851568] [Debug  : LethalMin] White Pikmin_FYP39: Setting collision mode to 1
+[17:38:12.0861892] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.0861892] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 111.7826
+[17:38:12.0861892] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 115.0732
+[17:38:12.0861892] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.0871894] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 111.7826
+[17:38:12.0871894] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 115.0732
+[17:38:12.0871894] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.0871894] [Info   : LethalMin] FlashlightItem(Clone) successfully created a test route to the ToShip
+[17:38:12.0871894] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.0871894] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 111.7826
+[17:38:12.0871894] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 115.0732
+[17:38:12.0871894] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.0871894] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 111.7826
+[17:38:12.0871894] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 115.0732
+[17:38:12.0871894] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.0871894] [Info   : LethalMin] FlashlightItem(Clone) has created a route
+[17:38:12.0886938] [Message: LethalMin] Airhorn(Clone) Switched Primary Pikmin to White Pikmin_YV0Gw
+[17:38:12.0886938] [Info   : LethalMin] Purple Pikmin_XFcV1AA: Found item: Body (PikminItem Node)
+[17:38:12.0886938] [Info   : LethalMin] Purple Pikmin_XFcV1AA: targeting item Body (PikminItem Node) at GrabPosition_2
+[17:38:12.0886938] [Info   : LethalMin] Purple Pikmin_XFcV1AA: Setting current task to CarryItem
+[17:38:12.0886938] [Info   : LethalMin] White Pikmin_d2bp: Found item: ZeddogPlushie(Clone)
+[17:38:12.0886938] [Info   : LethalMin] Purple Pikmin_EKPWp: Grabbed item Airhorn(Clone) Speed is now: 20.7
+[17:38:12.0896994] [Info   : LethalMin] White Pikmin_Md8MI: Found item: ZeddogPlushie(Clone)
+[17:38:12.0999292] [Info   : LethalMin] Airhorn(Clone) is grabbing an item on local client
+[17:38:12.0999292] [Debug  : LethalMin] White Pikmin_YV0Gw: Setting collision mode to 1
+[17:38:12.1009306] [Debug  : LethalMin] Purple Pikmin_EKPWp: Setting collision mode to 0
+[17:38:12.1019296] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.1019296] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 110.7395
+[17:38:12.1019296] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 114.0301
+[17:38:12.1019296] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.1019296] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 110.7395
+[17:38:12.1029295] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 114.0301
+[17:38:12.1029295] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.1029295] [Info   : LethalMin] Airhorn(Clone) successfully created a test route to the ToShip
+[17:38:12.1029295] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.1029295] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 110.7395
+[17:38:12.1029295] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 114.0301
+[17:38:12.1029295] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.1029295] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 110.7395
+[17:38:12.1029295] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 114.0301
+[17:38:12.1029295] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.1029295] [Info   : LethalMin] Airhorn(Clone) has created a route
+[17:38:12.1039304] [Debug  : LethalMin] Bulbmin_7e3Pm4A: Setting collision mode to 0
+[17:38:12.1039304] [Info   : LethalMin] Bulbmin_7e3Pm4A: Grabbed item FlashlightItem(Clone) Speed is now: 5
+[17:38:12.1054369] [Info   : LethalMin] Purple Pikmin_AQAFk: Grabbed item Body (PikminItem Node) Speed is now: 1.825
+[17:38:12.1054369] [Info   : LethalMin] Purple Pikmin_y8qD5r: Found item: ZeddogPlushie(Clone)
+[17:38:12.1054369] [Info   : LethalMin] White Pikmin_ddF5L: Found item: ZeddogPlushie(Clone)
+[17:38:12.1064415] [Info   : LethalMin] White Pikmin_TzDCc: Found item: ZeddogPlushie(Clone)
+[17:38:12.1064415] [Message: LethalMin] Body (PikminItem Node) Switched Primary Pikmin to Purple Pikmin_AQAFk
+[17:38:12.1166350] [Info   : LethalMin] Purple Pikmin_4WYiK: Grabbed item Body (PikminItem Node) Speed is now: 3.7
+[17:38:12.1166350] [Info   : LethalMin] Body (PikminItem Node) is grabbing an item on local client
+[17:38:12.1166350] [Debug  : LethalMin] Purple Pikmin_AQAFk: Setting collision mode to 1
+[17:38:12.1166350] [Debug  : LethalMin] Purple Pikmin_4WYiK: Setting collision mode to 0
+[17:38:12.1176378] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.1176378] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 112.4517
+[17:38:12.1176378] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 115.7423
+[17:38:12.1176378] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.1176378] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 112.4517
+[17:38:12.1176378] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 115.7423
+[17:38:12.1176378] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.1176378] [Info   : LethalMin] Body (PikminItem Node) successfully created a test route to the ToShip
+[17:38:12.1176378] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.1186363] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 112.4517
+[17:38:12.1186363] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 115.7423
+[17:38:12.1186363] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.1186363] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 112.4517
+[17:38:12.1186363] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 115.7423
+[17:38:12.1186363] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.1186363] [Info   : LethalMin] Body (PikminItem Node) has created a route
+[17:38:12.1272084] [Info   : LethalMin] White Pikmin_deVvFe: Found item: ZeddogPlushie(Clone)
+[17:38:12.1272084] [Info   : LethalMin] White Pikmin_yExgK: Found item: ZeddogPlushie(Clone)
+[17:38:12.1453425] [Info   : LethalMin] Purple Pikmin_rKa2: Found item: ZeddogPlushie(Clone)
+[17:38:12.2153639] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: ZeddogPlushie(Clone)
+[17:38:12.2235867] [Debug  : LethalMin] White Pikmin_IRuDGrA: Setting collision mode to 0
+[17:38:12.2235867] [Info   : LethalMin] White Pikmin_IRuDGrA: Grabbed item Body (PikminItem Node) Speed is now: 4.9875
+[17:38:12.2729132] [Info   : LethalMin] Purple Pikmin_bRqe: Grabbed item ZeddogPlushie(Clone) Speed is now: 8
+[17:38:12.2729132] [Info   : LethalMin] White Pikmin_ICMO7: Found item: Airhorn(Clone)
+[17:38:12.2729132] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: ZeddogPlushie(Clone)
+[17:38:12.2799331] [Message: LethalMin] ZeddogPlushie(Clone) Switched Primary Pikmin to Purple Pikmin_bRqe
+[17:38:12.2809336] [Info   : LethalMin] Purple Pikmin_51w0Zom: Grabbed item ZeddogPlushie(Clone) Speed is now: 15.5
+[17:38:12.2809336] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: Airhorn(Clone)
+[17:38:12.2874391] [Info   : LethalMin] ZeddogPlushie(Clone) is grabbing an item on local client
+[17:38:12.2874391] [Debug  : LethalMin] Purple Pikmin_bRqe: Setting collision mode to 1
+[17:38:12.2874391] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Setting collision mode to 0
+[17:38:12.2874391] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.2874391] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 111.4935
+[17:38:12.2874391] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 114.7841
+[17:38:12.2874391] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.2874391] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 111.4935
+[17:38:12.2889441] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 114.7841
+[17:38:12.2889441] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.2889441] [Info   : LethalMin] ZeddogPlushie(Clone) successfully created a test route to the ToShip
+[17:38:12.2889441] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.2889441] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 111.4935
+[17:38:12.2889441] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 114.7841
+[17:38:12.2889441] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.2889441] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 111.4935
+[17:38:12.2889441] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 114.7841
+[17:38:12.2889441] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.2889441] [Info   : LethalMin] ZeddogPlushie(Clone) has created a route
+[17:38:12.2899498] [Info   : LethalMin] White Pikmin_d2bp: Found item: Airhorn(Clone)
+[17:38:12.2899498] [Info   : LethalMin] White Pikmin_2FoB: Found item: Airhorn(Clone)
+[17:38:12.2899498] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Airhorn(Clone)
+[17:38:12.2899498] [Info   : LethalMin] White Pikmin_tbmIr: Found item: Airhorn(Clone)
+[17:38:12.2899498] [Info   : LethalMin] White Pikmin_XWR5u2K: Found item: Airhorn(Clone)
+[17:38:12.2989640] [Info   : LethalMin] Bulbmin_wrCbHH9: Grabbed item Airhorn(Clone) Speed is now: 4.35
+[17:38:12.2989640] [Info   : LethalMin] Purple Pikmin_y8qD5r: Found item: Airhorn(Clone)
+[17:38:12.2989640] [Info   : LethalMin] White Pikmin_Md8MI: Found item: Airhorn(Clone)
+[17:38:12.2989640] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: Airhorn(Clone)
+[17:38:12.3065081] [Message: LethalMin] Airhorn(Clone) Switched Primary Pikmin to Bulbmin_wrCbHH9
+[17:38:12.3145344] [Info   : LethalMin] Airhorn(Clone) is grabbing an item on local client
+[17:38:12.3145344] [Debug  : LethalMin] Bulbmin_wrCbHH9: Setting collision mode to 1
+[17:38:12.3155346] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.3155346] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 109.2071
+[17:38:12.3155346] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 112.4977
+[17:38:12.3155346] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.3160380] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 109.2071
+[17:38:12.3160380] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 112.4977
+[17:38:12.3160380] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.3160380] [Info   : LethalMin] Airhorn(Clone) successfully created a test route to the ToShip
+[17:38:12.3160380] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.3160380] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 109.2071
+[17:38:12.3160380] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 112.4977
+[17:38:12.3160380] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.3170447] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 109.2071
+[17:38:12.3170447] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 112.4977
+[17:38:12.3170447] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.3170447] [Info   : LethalMin] Airhorn(Clone) has created a route
+[17:38:12.3170447] [Info   : LethalMin] White Pikmin_ddF5L: Found item: Key(Clone)
+[17:38:12.3170447] [Info   : LethalMin] White Pikmin_ddF5L: targeting item Key(Clone) at GrabPosition_1
+[17:38:12.3170447] [Info   : LethalMin] White Pikmin_ddF5L: Setting current task to CarryItem
+[17:38:12.3275864] [Info   : LethalMin] White Pikmin_TzDCc: Found item: Key(Clone)
+[17:38:12.3275864] [Info   : LethalMin] White Pikmin_TzDCc: targeting item Key(Clone) at GrabPosition_0
+[17:38:12.3275864] [Info   : LethalMin] White Pikmin_TzDCc: Setting current task to CarryItem
+[17:38:12.3372829] [Info   : LethalMin] White Pikmin_deVvFe: Found item: Key(Clone)
+[17:38:12.3533193] [Info   : LethalMin] Purple Pikmin_rKa2: Found item: FlashlightItem(Clone)
+[17:38:12.3533193] [Info   : LethalMin] White Pikmin_yExgK: Found item: Key(Clone)
+[17:38:12.4172398] [Warning: Unity Log] Setting linear velocity of a kinematic body is not supported.
+[17:38:12.4172398] [Warning: Unity Log] Setting angular velocity of a kinematic body is not supported.
+[17:38:12.4227480] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: Key(Clone)
+[17:38:12.4771830] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: Key(Clone)
+[17:38:12.4771830] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: Key(Clone)
+[17:38:12.4836942] [Info   : LethalMin] White Pikmin_d2bp: Found item: Key(Clone)
+[17:38:12.4836942] [Info   : LethalMin] White Pikmin_ICMO7: Found item: Key(Clone)
+[17:38:12.4927192] [Info   : LethalMin] White Pikmin_XWR5u2K: Found item: Key(Clone)
+[17:38:12.4997461] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Key(Clone)
+[17:38:12.5057608] [Debug  : LethalMin] Purple Pikmin_evzc4: Setting collision mode to 0
+[17:38:12.5067685] [Info   : LethalMin] Purple Pikmin_evzc4: Grabbed item FlashlightItem(Clone) Speed is now: 8.75
+[17:38:12.5067685] [Info   : LethalMin] White Pikmin_2FoB: Found item: Key(Clone)
+[17:38:12.5067685] [Info   : LethalMin] White Pikmin_tbmIr: Found item: Key(Clone)
+[17:38:12.5217878] [Debug  : LethalMin] White Pikmin_0kglO: Setting collision mode to 0
+[17:38:12.5217878] [Info   : LethalMin] White Pikmin_0kglO: Grabbed item FlashlightItem(Clone) Speed is now: 11.325
+[17:38:12.5217878] [Info   : LethalMin] White Pikmin_Md8MI: Found item: Key(Clone)
+[17:38:12.5217878] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: Key(Clone)
+[17:38:12.5308062] [Info   : LethalMin] White Pikmin_deVvFe: Found item: Key(Clone)
+[17:38:12.5605435] [Info   : LethalMin] Purple Pikmin_rKa2: Found item: Airhorn(Clone)
+[17:38:12.5667024] [Info   : LethalMin] White Pikmin_yExgK: Found item: Key(Clone)
+[17:38:12.6272411] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: Key(Clone)
+[17:38:12.6910832] [Info   : LethalMin] White Pikmin_d2bp: Found item: Key(Clone)
+[17:38:12.6910832] [Info   : LethalMin] White Pikmin_XWR5u2K: Found item: Key(Clone)
+[17:38:12.6910832] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: Key(Clone)
+[17:38:12.6986024] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: Key(Clone)
+[17:38:12.7056742] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Key(Clone)
+[17:38:12.7151818] [Info   : LethalMin] White Pikmin_ICMO7: Found item: Key(Clone)
+[17:38:12.7216983] [Info   : LethalMin] White Pikmin_ddF5L: Grabbed item Key(Clone) Speed is now: 13.2
+[17:38:12.7216983] [Info   : LethalMin] White Pikmin_2FoB: Found item: Key(Clone)
+[17:38:12.7297167] [Message: LethalMin] Key(Clone) Switched Primary Pikmin to White Pikmin_ddF5L
+[17:38:12.7307173] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: Key(Clone)
+[17:38:12.7307173] [Info   : LethalMin] White Pikmin_tbmIr: Found item: Key(Clone)
+[17:38:12.7364038] [Info   : LethalMin] Key(Clone) is grabbing an item on local client
+[17:38:12.7364038] [Debug  : LethalMin] White Pikmin_ddF5L: Setting collision mode to 1
+[17:38:12.7373984] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.7373984] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 105.2313
+[17:38:12.7373984] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 108.5219
+[17:38:12.7373984] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.7373984] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 105.2313
+[17:38:12.7373984] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 108.5219
+[17:38:12.7373984] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.7373984] [Info   : LethalMin] Key(Clone) successfully created a test route to the ToShip
+[17:38:12.7373984] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:38:12.7373984] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 105.2313
+[17:38:12.7373984] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 108.5219
+[17:38:12.7373984] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[17:38:12.7373984] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 105.2313
+[17:38:12.7389034] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 108.5219
+[17:38:12.7389034] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) -> Ship
+[17:38:12.7389034] [Info   : LethalMin] Key(Clone) has created a route
+[17:38:12.7399080] [Info   : LethalMin] White Pikmin_deVvFe: Found item: Body (PikminItem Node)
+[17:38:12.7399080] [Info   : LethalMin] White Pikmin_deVvFe: targeting item Body (PikminItem Node) at GrabPosition_3
+[17:38:12.7399080] [Info   : LethalMin] White Pikmin_deVvFe: Setting current task to CarryItem
+[17:38:12.7464186] [Info   : LethalMin] White Pikmin_Md8MI: Found item: Body (PikminItem Node)
+[17:38:12.7464186] [Info   : LethalMin] White Pikmin_Md8MI: targeting item Body (PikminItem Node) at GrabPosition_6
+[17:38:12.7464186] [Info   : LethalMin] White Pikmin_Md8MI: Setting current task to CarryItem
+[17:38:12.7709643] [Debug  : LethalMin] Purple Pikmin_sqK71kA: Setting collision mode to 0
+[17:38:12.7709643] [Info   : LethalMin] Purple Pikmin_sqK71kA: Grabbed item Clownhorn(Clone) Speed is now: 8.349999
+[17:38:12.7774760] [Info   : LethalMin] Purple Pikmin_rKa2: Found item: Body (PikminItem Node)
+[17:38:12.7774760] [Info   : LethalMin] Purple Pikmin_rKa2: targeting item Body (PikminItem Node) at GrabPosition_4
+[17:38:12.7774760] [Info   : LethalMin] Purple Pikmin_rKa2: Setting current task to CarryItem
+[17:38:12.7934969] [Info   : LethalMin] White Pikmin_yExgK: Found item: Body (PikminItem Node)
+[17:38:12.7934969] [Info   : LethalMin] White Pikmin_yExgK: targeting item Body (PikminItem Node) at GrabPosition_5
+[17:38:12.7934969] [Info   : LethalMin] White Pikmin_yExgK: Setting current task to CarryItem
+[17:38:12.8496962] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: Body (PikminItem Node)
+[17:38:12.8972861] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: Body (PikminItem Node)
+[17:38:12.9058135] [Info   : LethalMin] White Pikmin_d2bp: Found item: Body (PikminItem Node)
+[17:38:12.9058135] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: Body (PikminItem Node)
+[17:38:12.9058135] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Body (PikminItem Node)
+[17:38:12.9058135] [Info   : LethalMin] White Pikmin_XWR5u2K: Found item: Body (PikminItem Node)
+[17:38:12.9218363] [Debug  : LethalMin] Purple Pikmin_XFcV1AA: Setting collision mode to 0
+[17:38:12.9218363] [Info   : LethalMin] Purple Pikmin_XFcV1AA: Grabbed item Body (PikminItem Node) Speed is now: 6.3125
+[17:38:12.9373649] [Info   : LethalMin] White Pikmin_2FoB: Found item: Body (PikminItem Node)
+[17:38:12.9373649] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: Body (PikminItem Node)
+[17:38:12.9373649] [Info   : LethalMin] White Pikmin_ICMO7: Found item: Body (PikminItem Node)
+[17:38:12.9438717] [Info   : LethalMin] White Pikmin_tbmIr: Found item: Body (PikminItem Node)
+[17:38:13.0671109] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: Body (PikminItem Node)
+[17:38:13.1038660] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: Body (PikminItem Node)
+[17:38:13.1038660] [Info   : LethalMin] White Pikmin_XWR5u2K: Found item: Body (PikminItem Node)
+[17:38:13.1116170] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: Body (PikminItem Node)
+[17:38:13.1186357] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Body (PikminItem Node)
+[17:38:13.1271567] [Info   : LethalMin] White Pikmin_d2bp: Found item: Body (PikminItem Node)
+[17:38:13.1436994] [Info   : LethalMin] White Pikmin_tbmIr: Found item: Body (PikminItem Node)
+[17:38:13.1527452] [Debug  : LethalMin] White Pikmin_Md8MI: Setting collision mode to 0
+[17:38:13.1527452] [Info   : LethalMin] White Pikmin_Md8MI: Grabbed item Body (PikminItem Node) Speed is now: 9.487499
+[17:38:13.1527452] [Info   : LethalMin] White Pikmin_2FoB: Found item: Body (PikminItem Node)
+[17:38:13.1527452] [Info   : LethalMin] White Pikmin_ICMO7: Found item: Body (PikminItem Node)
+[17:38:13.1597756] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: Body (PikminItem Node)
+[17:38:13.2028568] [Debug  : LethalMin] White Pikmin_yExgK: Setting collision mode to 0
+[17:38:13.2028568] [Info   : LethalMin] White Pikmin_yExgK: Grabbed item Body (PikminItem Node) Speed is now: 12.6625
+[17:38:13.2798148] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: Body (PikminItem Node)
+[17:38:13.3028550] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: Body (PikminItem Node)
+[17:38:13.3038538] [Info   : Unity Log] SET SPECTATED PLAYER EFFECTS; True
+[17:38:13.3038538] [Info   : Unity Log] Enable sun direct light
+[17:38:13.3038538] [Info   : Unity Log] All players dead; set reverb to preset #3
+[17:38:13.3119632] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: Body (PikminItem Node)
+[17:38:13.3274968] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Body (PikminItem Node)
+[17:38:13.3274968] [Info   : LethalMin] White Pikmin_XWR5u2K: Found item: Body (PikminItem Node)
+[17:38:13.3463140] [Info   : LethalMin] White Pikmin_d2bp: Found item: Body (PikminItem Node)
+[17:38:13.3553316] [Info   : LethalMin] White Pikmin_2FoB: Found item: Body (PikminItem Node)
+[17:38:13.3553316] [Info   : LethalMin] White Pikmin_tbmIr: Found item: Body (PikminItem Node)
+[17:38:13.3633503] [Info   : LethalMin] White Pikmin_ICMO7: Found item: Body (PikminItem Node)
+[17:38:13.3786008] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: Body (PikminItem Node)
+[17:38:13.3856004] [Debug  : LethalMin] White Pikmin_deVvFe: Setting collision mode to 0
+[17:38:13.3868630] [Info   : LethalMin] White Pikmin_deVvFe: Grabbed item Body (PikminItem Node) Speed is now: 15.8375
+[17:38:13.4737885] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: Body (PikminItem Node)
+[17:38:13.5028485] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: Body (PikminItem Node)
+[17:38:13.5165127] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: Body (PikminItem Node)
+[17:38:13.5337681] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Airhorn(Clone)
+[17:38:13.5337681] [Info   : LethalMin] White Pikmin_XWR5u2K: Found item: Airhorn(Clone)
+[17:38:13.5407838] [Debug  : LethalMin] Purple Pikmin_TFl1: Setting collision mode to 0
+[17:38:13.5407838] [Info   : LethalMin] Purple Pikmin_TFl1: Grabbed item Airhorn(Clone) Speed is now: 9.65
+[17:38:13.5633279] [Info   : LethalMin] White Pikmin_d2bp: Found item: Body (PikminItem Node)
+[17:38:13.5633279] [Info   : LethalMin] White Pikmin_tbmIr: Found item: Body (PikminItem Node)
+[17:38:13.5716363] [Info   : LethalMin] White Pikmin_2FoB: Found item: Body (PikminItem Node)
+[17:38:13.5851677] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: Body (PikminItem Node)
+[17:38:13.5851677] [Info   : LethalMin] White Pikmin_ICMO7: Found item: Body (PikminItem Node)
+[17:38:13.6761915] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: Body (PikminItem Node)
+[17:38:13.7189067] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: Body (PikminItem Node)
+[17:38:13.7189067] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: Body (PikminItem Node)
+[17:38:13.7399519] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Body (PikminItem Node)
+[17:38:13.7576311] [Info   : LethalMin] White Pikmin_XWR5u2K: Found item: Body (PikminItem Node)
+[17:38:13.7716499] [Info   : LethalMin] White Pikmin_d2bp: Found item: Body (PikminItem Node)
+[17:38:13.7716499] [Info   : LethalMin] White Pikmin_2FoB: Found item: Body (PikminItem Node)
+[17:38:13.7851737] [Info   : LethalMin] White Pikmin_ICMO7: Found item: Body (PikminItem Node)
+[17:38:13.8077238] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: Body (PikminItem Node)
+[17:38:13.9507481] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Body (PikminItem Node)
+[17:38:14.0131525] [Info   : LethalMin] White Pikmin_ICMO7: Found item: Body (PikminItem Node)
+[17:38:14.1505712] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Body (PikminItem Node)
+[17:38:14.2372203] [Info   : LethalMin] White Pikmin_ICMO7: Found item: Body (PikminItem Node)
+[17:38:14.3076825] [Info   : Unity Log] Is in elevator D?: False
+[17:38:14.3636349] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Body (PikminItem Node)
+[17:38:16.5408522] [Info   : Unity Log] Leaving current lobby
+[17:38:16.5418504] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[17:38:16.5674651] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[17:38:16.5674651] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[17:38:16.5674651] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[17:38:16.5674651] [Info   :Rolling Giant] Resetting all rolling giants!
+[17:38:16.5674651] [Message:Rolling Giant] Reverting sync
+[17:38:16.5699811] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[17:38:16.5709861] [Debug  :MrHat.BasedItemSaving] Saved 10 exact item poses
+[17:38:16.5709861] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[17:38:16.5739791] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[17:38:16.5739791] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[17:38:16.6088190] [Info   :LethalPerformance] Saved 2 save(s)
+[17:38:16.6153308] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[17:38:16.6440164] [Info   : LethalMin] Purple Pikmin_AQAFk: Task finished
+[17:38:16.6440164] [Debug  : LethalMin] Purple Pikmin_AQAFk: Setting to idle on local client
+[17:38:16.6440164] [Info   : LethalMin] Purple Pikmin_AQAFk: Dropped item Body (PikminItem Node)
+[17:38:16.6440164] [Debug  : LethalMin] Purple Pikmin_AQAFk: Setting collision mode to 1
+[17:38:16.6455223] [Debug  : LethalMin] Purple Pikmin_AQAFk: Removed Leader
+[17:38:16.6455223] [Info   : LethalMin] Purple Pikmin_AQAFk: Removing current task
+[17:38:16.6455223] [Info   : LethalMin] Purple Pikmin_4WYiK: Task finished
+[17:38:16.6455223] [Debug  : LethalMin] Purple Pikmin_4WYiK: Setting to idle on local client
+[17:38:16.6455223] [Info   : LethalMin] Purple Pikmin_4WYiK: Dropped item Body (PikminItem Node)
+[17:38:16.6455223] [Debug  : LethalMin] Purple Pikmin_4WYiK: Setting collision mode to 1
+[17:38:16.6455223] [Debug  : LethalMin] Purple Pikmin_4WYiK: Removed Leader
+[17:38:16.6455223] [Info   : LethalMin] Purple Pikmin_4WYiK: Removing current task
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_IRuDGrA: Task finished
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_IRuDGrA: Setting to idle on local client
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_IRuDGrA: Dropped item Body (PikminItem Node)
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_IRuDGrA: Setting collision mode to 1
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_IRuDGrA: Removed Leader
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_IRuDGrA: Removing current task
+[17:38:16.6455223] [Info   : LethalMin] Purple Pikmin_XFcV1AA: Task finished
+[17:38:16.6455223] [Debug  : LethalMin] Purple Pikmin_XFcV1AA: Setting to idle on local client
+[17:38:16.6455223] [Info   : LethalMin] Purple Pikmin_XFcV1AA: Dropped item Body (PikminItem Node)
+[17:38:16.6455223] [Debug  : LethalMin] Purple Pikmin_XFcV1AA: Setting collision mode to 1
+[17:38:16.6455223] [Debug  : LethalMin] Purple Pikmin_XFcV1AA: Removed Leader
+[17:38:16.6455223] [Info   : LethalMin] Purple Pikmin_XFcV1AA: Removing current task
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_Md8MI: Task finished
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_Md8MI: Setting to idle on local client
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_Md8MI: Dropped item Body (PikminItem Node)
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_Md8MI: Setting collision mode to 1
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_Md8MI: Removed Leader
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_Md8MI: Removing current task
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_yExgK: Task finished
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_yExgK: Setting to idle on local client
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_yExgK: Dropped item Body (PikminItem Node)
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_yExgK: Setting collision mode to 1
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_yExgK: Removed Leader
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_yExgK: Removing current task
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_deVvFe: Task finished
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_deVvFe: Setting to idle on local client
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_deVvFe: Dropped item Body (PikminItem Node)
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_deVvFe: Setting collision mode to 1
+[17:38:16.6455223] [Debug  : LethalMin] White Pikmin_deVvFe: Removed Leader
+[17:38:16.6455223] [Info   : LethalMin] White Pikmin_deVvFe: Removing current task
+[17:38:16.6455223] [Info   : LethalMin] Body (PikminItem Node) has cleared its route
+[17:38:16.6480451] [Debug  : LethalMin] White Pikmin_68JLiBF: Removed Leader
+[17:38:16.6480451] [Info   : LethalMin] White Pikmin_YV0Gw: Dropped item Airhorn(Clone)
+[17:38:16.6480451] [Debug  : LethalMin] White Pikmin_YV0Gw: Setting collision mode to 1
+[17:38:16.6480451] [Debug  : LethalMin] White Pikmin_YV0Gw: Removed Leader
+[17:38:16.6480451] [Debug  : LethalMin] White Pikmin_yExgK: Removed Leader
+[17:38:16.6480451] [Debug  : LethalMin] White Pikmin_XWR5u2K: Removed Leader
+[17:38:16.6490443] [Debug  : LethalMin] White Pikmin_tbmIr: Removed Leader
+[17:38:16.6490443] [Debug  : LethalMin] White Pikmin_u7yjpLI: Removed Leader
+[17:38:16.6490443] [Debug  : LethalMin] White Pikmin_Gono4bn: Removed Leader
+[17:38:16.6490443] [Debug  : LethalMin] White Pikmin_TzDCc: Removed Leader
+[17:38:16.6490443] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Removed Leader
+[17:38:16.6500448] [Debug  : LethalMin] White Pikmin_ICMO7: Removed Leader
+[17:38:16.6500448] [Debug  : LethalMin] White Pikmin_FjliuFV: Removed Leader
+[17:38:16.6500448] [Debug  : LethalMin] White Pikmin_2FoB: Removed Leader
+[17:38:16.6500448] [Info   : LethalMin] White Pikmin_ddF5L: Dropped item Key(Clone)
+[17:38:16.6500448] [Debug  : LethalMin] White Pikmin_ddF5L: Setting collision mode to 1
+[17:38:16.6500448] [Debug  : LethalMin] White Pikmin_ddF5L: Removed Leader
+[17:38:16.6500448] [Debug  : LethalMin] White Pikmin_Md8MI: Removed Leader
+[17:38:16.6510430] [Debug  : LethalMin] White Pikmin_deVvFe: Removed Leader
+[17:38:16.6510430] [Debug  : LethalMin] Purple Pikmin_4WYiK: Removed Leader
+[17:38:16.6510430] [Info   : LethalMin] Purple Pikmin_bRqe: Dropped item ZeddogPlushie(Clone)
+[17:38:16.6510430] [Debug  : LethalMin] Purple Pikmin_bRqe: Setting collision mode to 1
+[17:38:16.6510430] [Debug  : LethalMin] Purple Pikmin_bRqe: Removed Leader
+[17:38:16.6510430] [Info   : LethalMin] Purple Pikmin_51w0Zom: Dropped item ZeddogPlushie(Clone)
+[17:38:16.6510430] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Setting collision mode to 1
+[17:38:16.6510430] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Removed Leader
+[17:38:16.6510430] [Info   : LethalMin] Purple Pikmin_evzc4: Dropped item FlashlightItem(Clone)
+[17:38:16.6510430] [Debug  : LethalMin] Purple Pikmin_evzc4: Setting collision mode to 1
+[17:38:16.6510430] [Debug  : LethalMin] Purple Pikmin_evzc4: Removed Leader
+[17:38:16.6520435] [Info   : LethalMin] Purple Pikmin_EKPWp: Dropped item Airhorn(Clone)
+[17:38:16.6520435] [Debug  : LethalMin] Purple Pikmin_EKPWp: Setting collision mode to 1
+[17:38:16.6520435] [Debug  : LethalMin] Purple Pikmin_EKPWp: Removed Leader
+[17:38:16.6520435] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Removed Leader
+[17:38:16.6520435] [Debug  : LethalMin] Purple Pikmin_rKa2: Removed Leader
+[17:38:16.6520435] [Debug  : LethalMin] Purple Pikmin_LD13F: Removed Leader
+[17:38:16.6530441] [Debug  : LethalMin] Bulbmin_2WobMAi: Removed Leader
+[17:38:16.6530441] [Debug  : LethalMin] White Pikmin_kpb9U: Removed Leader
+[17:38:16.6530441] [Info   : LethalMin] Purple Pikmin_S7OhcGh: Dropped item Clownhorn(Clone)
+[17:38:16.6530441] [Debug  : LethalMin] Purple Pikmin_S7OhcGh: Setting collision mode to 1
+[17:38:16.6530441] [Debug  : LethalMin] Purple Pikmin_S7OhcGh: Removed Leader
+[17:38:16.6530441] [Debug  : LethalMin] Purple Pikmin_AQAFk: Removed Leader
+[17:38:16.6530441] [Debug  : LethalMin] Bulbmin_sjxnsNh: Removed Leader
+[17:38:16.6540417] [Debug  : LethalMin] Purple Pikmin_Z1kL0: Removed Leader
+[17:38:16.6540417] [Debug  : LethalMin] Purple Pikmin_HKXt7Th: Removed Leader
+[17:38:16.6540417] [Debug  : LethalMin] Purple Pikmin_zdJRF: Removed Leader
+[17:38:16.6540417] [Debug  : LethalMin] White Pikmin_hv6zNah: Removed Leader
+[17:38:16.6540417] [Debug  : LethalMin] Bulbmin_PEtXV: Removed Leader
+[17:38:16.6540417] [Debug  : LethalMin] Bulbmin_6Xg5dg: Removed Leader
+[17:38:16.6540417] [Debug  : LethalMin] Bulbmin_opSd: Removed Leader
+[17:38:16.6540417] [Debug  : LethalMin] White Pikmin_W8FBsm: Removed Leader
+[17:38:16.6540417] [Debug  : LethalMin] Purple Pikmin_ER2j: Removed Leader
+[17:38:16.6555467] [Debug  : LethalMin] Purple Pikmin_wjpH8t: Removed Leader
+[17:38:16.6555467] [Debug  : LethalMin] White Pikmin_d2bp: Removed Leader
+[17:38:16.6555467] [Debug  : LethalMin] White Pikmin_LLONOz: Removed Leader
+[17:38:16.6555467] [Info   : LethalMin] White Pikmin_3dBv: Removing current task
+[17:38:16.6555467] [Debug  : LethalMin] White Pikmin_3dBv: Removed Leader
+[17:38:16.6555467] [Debug  : LethalMin] Purple Pikmin_lwyTd6: Removed Leader
+[17:38:16.6555467] [Info   : LethalMin] Purple Pikmin_TFl1: Dropped item Airhorn(Clone)
+[17:38:16.6555467] [Debug  : LethalMin] Purple Pikmin_TFl1: Setting collision mode to 1
+[17:38:16.6555467] [Debug  : LethalMin] Purple Pikmin_TFl1: Removed Leader
+[17:38:16.6565528] [Debug  : LethalMin] Bulbmin_BXXZtC: Removed Leader
+[17:38:16.6565528] [Info   : LethalMin] Purple Pikmin_sqK71kA: Dropped item Clownhorn(Clone)
+[17:38:16.6565528] [Debug  : LethalMin] Purple Pikmin_sqK71kA: Setting collision mode to 1
+[17:38:16.6565528] [Debug  : LethalMin] Purple Pikmin_sqK71kA: Removed Leader
+[17:38:16.6565528] [Debug  : LethalMin] Bulbmin_a97f8: Removed Leader
+[17:38:16.6565528] [Debug  : LethalMin] White Pikmin_IRuDGrA: Removed Leader
+[17:38:16.6565528] [Info   : LethalMin] White Pikmin_0kglO: Dropped item FlashlightItem(Clone)
+[17:38:16.6565528] [Debug  : LethalMin] White Pikmin_0kglO: Setting collision mode to 1
+[17:38:16.6565528] [Debug  : LethalMin] White Pikmin_0kglO: Removed Leader
+[17:38:16.6575526] [Debug  : LethalMin] White Pikmin_i3TJWxA: Removed Leader
+[17:38:16.6575526] [Info   : LethalMin] White Pikmin_PLGre: Removing current task
+[17:38:16.6575526] [Debug  : LethalMin] White Pikmin_PLGre: Removed Leader
+[17:38:16.6575526] [Info   : LethalMin] Bulbmin_7e3Pm4A: Dropped item FlashlightItem(Clone)
+[17:38:16.6575526] [Debug  : LethalMin] Bulbmin_7e3Pm4A: Setting collision mode to 1
+[17:38:16.6575526] [Debug  : LethalMin] Bulbmin_7e3Pm4A: Removed Leader
+[17:38:16.6575526] [Debug  : LethalMin] White Pikmin_pxpxt: Removed Leader
+[17:38:16.6575526] [Debug  : LethalMin] Purple Pikmin_XFcV1AA: Removed Leader
+[17:38:16.6575526] [Info   : LethalMin] White Pikmin_FYP39: Dropped item FlashlightItem(Clone)
+[17:38:16.6575526] [Debug  : LethalMin] White Pikmin_FYP39: Setting collision mode to 1
+[17:38:16.6575526] [Debug  : LethalMin] White Pikmin_FYP39: Removed Leader
+[17:38:16.6575526] [Info   : LethalMin] Bulbmin_wrCbHH9: Dropped item Airhorn(Clone)
+[17:38:16.6575526] [Debug  : LethalMin] Bulbmin_wrCbHH9: Setting collision mode to 1
+[17:38:16.6575526] [Debug  : LethalMin] Bulbmin_wrCbHH9: Removed Leader
+[17:38:16.6575526] [Debug  : LethalMin] White Pikmin_e9z9: Removed Leader
+[17:38:16.6590583] [Debug  : LethalMin] White Pikmin_MSlhWN: Removed Leader
+[17:38:16.6610662] [Info   : LethalMin] Airhorn(Clone) has cleared its route
+[17:38:16.6610662] [Info   : LethalMin] Clownhorn(Clone) has cleared its route
+[17:38:16.6610662] [Info   : LethalMin] Airhorn(Clone) has cleared its route
+[17:38:16.6610662] [Info   : LethalMin] ZeddogPlushie(Clone) has cleared its route
+[17:38:16.6675748] [Info   : LethalMin] Key(Clone) has cleared its route
+[17:38:16.6675748] [Info   : LethalMin] FlashlightItem(Clone) has cleared its route
+[17:38:16.6710884] [Info   : LethalMin] ShipOnion: saved 37 pikmin to disk on despawn.
+[17:38:16.6988084] [Info   :LobbyControl] 0 disconnected
+[17:38:16.6998060] [Info   : Unity Log] Disconnect callback called
+[17:38:16.6998060] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[17:38:16.6998060] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[17:38:16.6998060] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[17:38:16.7038064] [Debug  :Starlancer AI Fix] AloeBracken(Clone) from the interior enemy list has died; 
+Previous interior power level is 6
+[17:38:16.7038064] [Debug  :Starlancer AI Fix] Removing AloeBracken(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 5
+[17:38:16.7098267] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 5
+[17:38:16.7098267] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 4
+[17:38:16.7108285] [Debug  :Starlancer AI Fix] SpringMan(Clone) from the interior enemy list has died; 
+Previous interior power level is 4
+[17:38:16.7108285] [Debug  :Starlancer AI Fix] Removing SpringMan(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7118271] [Debug  :Starlancer AI Fix] White Pikmin_68JLiBF from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7118271] [Debug  :Starlancer AI Fix] Removing White Pikmin_68JLiBF's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7118271] [Debug  :Starlancer AI Fix] White Pikmin_YV0Gw from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7118271] [Debug  :Starlancer AI Fix] Removing White Pikmin_YV0Gw's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7128294] [Debug  :Starlancer AI Fix] White Pikmin_yExgK from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7128294] [Debug  :Starlancer AI Fix] Removing White Pikmin_yExgK's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7128294] [Debug  :Starlancer AI Fix] White Pikmin_XWR5u2K from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7128294] [Debug  :Starlancer AI Fix] Removing White Pikmin_XWR5u2K's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7138276] [Debug  :Starlancer AI Fix] White Pikmin_tbmIr from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7138276] [Debug  :Starlancer AI Fix] Removing White Pikmin_tbmIr's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7138276] [Debug  :Starlancer AI Fix] White Pikmin_u7yjpLI from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7138276] [Debug  :Starlancer AI Fix] Removing White Pikmin_u7yjpLI's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7138276] [Debug  :Starlancer AI Fix] White Pikmin_Gono4bn from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7138276] [Debug  :Starlancer AI Fix] Removing White Pikmin_Gono4bn's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7138276] [Debug  :Starlancer AI Fix] White Pikmin_TzDCc from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7138276] [Debug  :Starlancer AI Fix] Removing White Pikmin_TzDCc's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7138276] [Debug  :Starlancer AI Fix] White Pikmin_Lw2dTVF from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7138276] [Debug  :Starlancer AI Fix] Removing White Pikmin_Lw2dTVF's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7153314] [Debug  :Starlancer AI Fix] White Pikmin_ICMO7 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7153314] [Debug  :Starlancer AI Fix] Removing White Pikmin_ICMO7's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7153314] [Debug  :Starlancer AI Fix] White Pikmin_FjliuFV from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7153314] [Debug  :Starlancer AI Fix] Removing White Pikmin_FjliuFV's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7153314] [Debug  :Starlancer AI Fix] White Pikmin_2FoB from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7153314] [Debug  :Starlancer AI Fix] Removing White Pikmin_2FoB's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7163353] [Debug  :Starlancer AI Fix] White Pikmin_ddF5L from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7163353] [Debug  :Starlancer AI Fix] Removing White Pikmin_ddF5L's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7163353] [Debug  :Starlancer AI Fix] White Pikmin_Md8MI from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7163353] [Debug  :Starlancer AI Fix] Removing White Pikmin_Md8MI's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7163353] [Debug  :Starlancer AI Fix] White Pikmin_deVvFe from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7163353] [Debug  :Starlancer AI Fix] Removing White Pikmin_deVvFe's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7173367] [Debug  :Starlancer AI Fix] Purple Pikmin_4WYiK from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7173367] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_4WYiK's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7173367] [Debug  :Starlancer AI Fix] Purple Pikmin_bRqe from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7173367] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_bRqe's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7173367] [Debug  :Starlancer AI Fix] Purple Pikmin_51w0Zom from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7173367] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_51w0Zom's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7173367] [Debug  :Starlancer AI Fix] Purple Pikmin_evzc4 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7173367] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_evzc4's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7173367] [Debug  :Starlancer AI Fix] Purple Pikmin_EKPWp from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7173367] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_EKPWp's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7188409] [Debug  :Starlancer AI Fix] Purple Pikmin_y8qD5r from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7188409] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_y8qD5r's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7188409] [Debug  :Starlancer AI Fix] Purple Pikmin_rKa2 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:38:16.7188409] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_rKa2's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:38:16.7188409] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[17:38:16.7198450] [Debug  :Starlancer AI Fix] Purple Pikmin_LD13F from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7198450] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_LD13F's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7198450] [Debug  :Starlancer AI Fix] Bulbmin_2WobMAi from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7198450] [Debug  :Starlancer AI Fix] Removing Bulbmin_2WobMAi's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7198450] [Debug  :Starlancer AI Fix] White Pikmin_kpb9U from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7208468] [Debug  :Starlancer AI Fix] Removing White Pikmin_kpb9U's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7208468] [Debug  :Starlancer AI Fix] Purple Pikmin_S7OhcGh from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7208468] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_S7OhcGh's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7208468] [Debug  :Starlancer AI Fix] Purple Pikmin_AQAFk from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7208468] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_AQAFk's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7208468] [Debug  :Starlancer AI Fix] Bulbmin_sjxnsNh from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7208468] [Debug  :Starlancer AI Fix] Removing Bulbmin_sjxnsNh's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7218476] [Debug  :Starlancer AI Fix] Purple Pikmin_Z1kL0 from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7218476] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_Z1kL0's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7218476] [Debug  :Starlancer AI Fix] Purple Pikmin_HKXt7Th from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7218476] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_HKXt7Th's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7218476] [Debug  :Starlancer AI Fix] Purple Pikmin_zdJRF from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7218476] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_zdJRF's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7218476] [Debug  :Starlancer AI Fix] White Pikmin_hv6zNah from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7218476] [Debug  :Starlancer AI Fix] Removing White Pikmin_hv6zNah's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7228470] [Debug  :Starlancer AI Fix] Bulbmin_PEtXV from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7228470] [Debug  :Starlancer AI Fix] Removing Bulbmin_PEtXV's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7228470] [Debug  :Starlancer AI Fix] Bulbmin_6Xg5dg from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7228470] [Debug  :Starlancer AI Fix] Removing Bulbmin_6Xg5dg's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7228470] [Debug  :Starlancer AI Fix] Bulbmin_opSd from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7228470] [Debug  :Starlancer AI Fix] Removing Bulbmin_opSd's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7228470] [Debug  :Starlancer AI Fix] White Pikmin_W8FBsm from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7228470] [Debug  :Starlancer AI Fix] Removing White Pikmin_W8FBsm's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] Purple Pikmin_ER2j from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_ER2j's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] Purple Pikmin_wjpH8t from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_wjpH8t's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] White Pikmin_d2bp from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] Removing White Pikmin_d2bp's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] White Pikmin_LLONOz from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] Removing White Pikmin_LLONOz's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] White Pikmin_3dBv from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] Removing White Pikmin_3dBv's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] Purple Pikmin_lwyTd6 from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_lwyTd6's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] Purple Pikmin_TFl1 from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7238479] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_TFl1's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7253512] [Debug  :Starlancer AI Fix] Bulbmin_BXXZtC from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7253512] [Debug  :Starlancer AI Fix] Removing Bulbmin_BXXZtC's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7253512] [Debug  :Starlancer AI Fix] Purple Pikmin_sqK71kA from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7253512] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_sqK71kA's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7253512] [Debug  :Starlancer AI Fix] Bulbmin_a97f8 from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7253512] [Debug  :Starlancer AI Fix] Removing Bulbmin_a97f8's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7263557] [Debug  :Starlancer AI Fix] White Pikmin_IRuDGrA from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7263557] [Debug  :Starlancer AI Fix] Removing White Pikmin_IRuDGrA's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7263557] [Debug  :Starlancer AI Fix] White Pikmin_0kglO from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7263557] [Debug  :Starlancer AI Fix] Removing White Pikmin_0kglO's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7263557] [Debug  :Starlancer AI Fix] White Pikmin_i3TJWxA from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7263557] [Debug  :Starlancer AI Fix] Removing White Pikmin_i3TJWxA's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7263557] [Debug  :Starlancer AI Fix] White Pikmin_PLGre from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7263557] [Debug  :Starlancer AI Fix] Removing White Pikmin_PLGre's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] Bulbmin_7e3Pm4A from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] Removing Bulbmin_7e3Pm4A's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] White Pikmin_pxpxt from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] Removing White Pikmin_pxpxt's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] Purple Pikmin_XFcV1AA from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_XFcV1AA's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] White Pikmin_FYP39 from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] Removing White Pikmin_FYP39's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] Bulbmin_wrCbHH9 from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] Removing Bulbmin_wrCbHH9's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] White Pikmin_e9z9 from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7273559] [Debug  :Starlancer AI Fix] Removing White Pikmin_e9z9's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7288599] [Debug  :Starlancer AI Fix] White Pikmin_MSlhWN from the interior enemy list has died; 
+Previous interior power level is 2
+[17:38:16.7288599] [Debug  :Starlancer AI Fix] Removing White Pikmin_MSlhWN's power (0) from the RoundManager; 
+Current interior power level is 2
+[17:38:16.7288599] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7288599] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7288599] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7288599] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7288599] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7288599] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7298669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7298669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7298669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7298669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7298669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7298669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7298669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7298669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7298669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7298669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7298669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7308643] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7308643] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7308643] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7308643] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7308643] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7308643] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7308643] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7308643] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7308643] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7308643] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7318656] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7318656] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7318656] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7318656] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7318656] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7318656] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7318656] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7318656] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7318656] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7318656] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7318656] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7328641] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7338659] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7338659] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7388850] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA(Clone)
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: SteamValve(Clone)
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch1
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch2
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch3
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch4
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch5
+[17:38:16.7398891] [Info   : Unity Log] Interact trigger destroying! name: PowerBoxDoor
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: InsertTrigger
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[17:38:16.7408901] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: SteamValve(Clone)
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: SteamValve(Clone)
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: SteamValve(Clone)
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[17:38:16.7418897] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7428912] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7428912] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7428912] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7428912] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7428912] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7428912] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7428912] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7428912] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7428912] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7438918] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7453957] [Info   : Unity Log] Interact trigger destroying! name: Metal Crate(Clone)
+[17:38:16.7539633] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7539633] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[17:38:16.7554710] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7554710] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[17:38:16.7564753] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:38:16.7564753] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[17:38:16.7574798] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[17:38:16.7574798] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:38:16.7574798] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:38:16.7574798] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:38:16.7755104] [Info   : Unity Log] Resetting unlockables list!
+[17:38:16.7768510] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[17:38:16.7789806] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:38:16.7789806] [Info   : Unity Log] Scene manager is null
+[17:38:16.7864904] [Info   :LethalPerformance] Saved 1 save(s)
+[17:38:16.8386840] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:38:16.8451924] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.8472008] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:38:16.8472008] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:38:16.8472008] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:38:16.8472008] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[17:38:16.8472008] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[17:38:16.8472008] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[17:38:16.8472008] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[17:38:16.8482947] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[17:38:16.8578051] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[17:38:16.8808266] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:38:16.8808266] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[17:38:16.8808266] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:38:16.8808266] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[17:38:16.8808266] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[17:38:16.8808266] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (3)
+[17:38:16.8808266] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[17:38:16.8818258] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[17:38:16.8818258] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[17:38:16.8818258] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[17:38:16.8818258] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[17:38:16.8818258] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[17:38:16.8818258] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[17:38:16.8818258] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[17:38:16.8818258] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[17:38:16.8818258] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[17:38:16.8818258] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[17:38:16.8818258] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[17:38:16.8953573] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:38:16.8953573] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:38:16.8953573] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[17:38:16.8953573] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[17:38:16.8993633] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:38:16.9143777] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[17:38:16.9273924] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[17:38:16.9353968] [Info   :MoreCompany] LANMenu startLAN Patched
+[17:38:17.2355878] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[17:38:18.8401356] [Info   : Unity Log] Returning week num: 142
+[17:38:18.8401356] [Info   : Unity Log] week num: 142
+[17:38:18.8476462] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[17:38:18.8476462] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[17:38:18.8593445] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[17:38:18.8683665] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[17:38:18.8683665] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[17:38:18.8713689] [Info   :LethalPerformance] Saved 1 save(s)
+[17:38:20.3872846] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[17:38:20.4005121] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[17:38:21.7508854] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[17:38:21.7518882] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[17:38:21.7518882] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
