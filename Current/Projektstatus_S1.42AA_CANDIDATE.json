@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "date": "2026-09-04",
   "repository_is_source_of_truth": true,
+  "handover": {
+    "final_handover": "Current/94_FINAL_HANDOVER_S1.42Z_ACCEPTED_S1.42AA_RUNTIME_NEXT.md",
+    "repository_audit": "Current/95_REPOSITORY_HANDOVER_AUDIT_S1.42AA.md",
+    "recent_work": "Current/06_RECENT_WORK_S1.42AA.md"
+  },
   "accepted_baseline": {
     "build_id": "S1.42Z",
     "profile": "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z",
     "profile_name": "LC V1 S1.42Z Jetpack Pikmin Retune",
     "sha256": "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4",
     "status": "ACCEPTED_FULL_NORMAL_STACK",
-    "acceptance_record": "Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md"
+    "acceptance_record": "Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md",
+    "runtime_evidence": "RuntimeEvidence/S1.42Z/20260904T135820Z/",
+    "runtime_raw_log_sha256": "ca61e82e5a7d12f96dcb51849e291582df4d45568da4fa1e10b476551c897db8"
   },
   "active_runtime_candidate": {
     "build_id": "S1.42AA",
     "profile": "Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z",
     "profile_name": "LC V1 S1.42AA Interior Weight Equalization",
     "sha256": "0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364",
-    "status": "BUILD_PASS_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
+    "status": "BUILD_PASS_PROFILE_IMPORT_CONFIRMED_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
     "build_run": 33884101262,
     "automated_build_commit": "4d5e5e6c86a0bc8ab10e0adc32ab22ae6f5c0156",
     "candidate_record": "Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md",
@@ -27,6 +34,7 @@
       "export.r2x"
     ],
     "added_members": [],
+    "removed_members": [],
     "mod_state_changes": [],
     "mod_additions": [],
     "mod_removals": [],
@@ -41,6 +49,12 @@
       "lethal_level_loader_tag_weights": "Vanilla:100,Custom:100",
       "black_mesa_native_owner_weights": "lethal_company:vanilla=+100,lethal_company:custom=+100"
     },
+    "user_confirmed_local_profile_import": {
+      "status": "CONFIRMED",
+      "gale_import_mode": "Advanced options -> Import all files",
+      "runtime_test_completed": false,
+      "note": "S1.42AA was successfully imported before handover; no re-import is required for the immediate Offense runtime test unless the user intentionally reinstalls it."
+    },
     "runtime_primary_comparison_moon": "Offense",
     "runtime_gate": {
       "startup_main_menu_lobby": "OPEN",
@@ -53,18 +67,81 @@
       "leader_null": "MUST_BE_0",
       "fatal": "MUST_BE_0",
       "new_project_local_exception_class": "MUST_BE_0"
-    }
+    },
+    "runtime_log_submitted": false
+  },
+  "accepted_tuning_to_preserve": {
+    "jetpack_base_acceleration": 18,
+    "jet_fuel": "18/18",
+    "jetpack_thrusters": "25/20",
+    "indoor_pikmin_spawn_chance": 0.09,
+    "carry_strength_non_purple": 3,
+    "carry_strength_purple": 30,
+    "code_rebirth_air_control_unit": "18 exact curves x0.5",
+    "code_rebirth_greg": "18 exact curves x0.5",
+    "functional_microwave_volume": 0.15,
+    "immortal_snail_rarity": 40,
+    "immortal_snail_max": 2
+  },
+  "project_local_dll_sha256": {
+    "jetpack": "9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add",
+    "aerial_defense": "7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b",
+    "compatibility_fixes": "3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960"
   },
   "permanent_interior_rule": "Every eligible installed interior should have the same effective selection weight on vanilla and custom moons; future added interiors must be normalized into the same architecture before acceptance unless an explicitly documented technical incompatibility requires an exception.",
   "technical_exception_guard": "Preserve Shatteredrooms Experimentation/Embrion restriction until dedicated evidence proves removal safe; do not accept S1.42AA if the global LLL change creates an unsafe generation path.",
+  "compatibility_invariants": [
+    "exact BCMER 1.71.0; do not silently upgrade to 2.x",
+    "EnemyIsolation disabled",
+    "Compatibility Fixes 1.3.14",
+    "BaboonBirdPikminEnemy enabled",
+    "narrow Hawk -> Pikmin prevention only",
+    "native inherited PikminEnemy lifecycle preserved",
+    "Pikmin -> Baboon Hawk attack remains allowed",
+    "Puffer -> Pikmin protection preserved",
+    "Thumper Bite Limit = 3",
+    "Crawler absent from LethalMin Attack Blacklist",
+    "accepted S1.42C-derived moon power/spawn baseline",
+    "SpawnCycleFixes Consistent Spawn Times = true",
+    "never repeat S1.42R whole-component disable approach"
+  ],
+  "gale_profile_replacement_workflow": {
+    "status": "CANONICAL_BINDING_USER_VALIDATED",
+    "implementation": "RuntimeTools/ReplaceActiveGaleProfile.ps1",
+    "workflow_contract": "Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md",
+    "historical_validation_record": "Current/92_GALE_ACTIVE_PROFILE_REPLACEMENT_HELPER_CANDIDATE.md",
+    "validated_environment": "Windows PowerShell 5.1",
+    "validated_disposable_profile": "testpowershell",
+    "launcher": "iex (iwr -UseBasicParsing 'https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1').Content",
+    "mandatory_future_chat_ux": "Every ready-to-test build response must include both this launcher and the exact build-specific runtime-log uploader."
+  },
+  "helper_failed_variants_do_not_regress": [
+    "case-sensitive LOESCHEN confirmation",
+    "fuzzy profile/build matching",
+    "Windows PowerShell 5.1 directory-result array assumptions",
+    "using normal variable $matches which collides with automatic $Matches"
+  ],
   "controllers": {
     "buildspec_current_enabled": false,
     "buildspec_current_id": "IDLE_AFTER_S1.42AA_BUILD_AWAITING_RUNTIME_VALIDATION",
     "buildspec_base_profile": "Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z",
     "buildspec_base_sha256": "0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364",
     "runtime_active_build": "S1.42AA",
+    "runtime_inbox_current": "ONLY_GITKEEP_NO_RUNTIME_LOG",
     "successor_armed": false
   },
+  "monitor_only_issues": [
+    "historical S1.42S disconnect-only PikminNoticeZone / unspawned NetworkObjectReference exception",
+    "historical S1.42T one-off AloeChase FSB load-state message",
+    "historical S1.42W PikminManager.DespawnLumiknulls collection-modified teardown exception",
+    "known loaforcsSoundAPI/HarmonyX TypeLoadException class",
+    "known SoftMask/SoftMasking setup exception classes",
+    "existing non-project-local Error-severity classes"
+  ],
+  "known_nonfunctional_drift": [
+    "Current/02_TECHNICAL_BASELINE.md contains older chronology subsections with stale local-current wording",
+    "Patches/S139CompatibilityFixes/Plugin.cs contains historical comments that do not perfectly describe accepted v1.3.14 behavior"
+  ],
   "deferred_scopes": [
     "CullFactory junkrooms and shatteredrooms exceptions",
     "Mausoleum fog reduction",
@@ -75,6 +152,5 @@
     "LethalMin DespawnLumiknulls repair only with stronger evidence",
     "cosmetic documentation cleanup"
   ],
-  "gale_profile_replacement_helper_status": "PENDING_USER_VERIFICATION_NOT_CANONICAL",
-  "exact_next_step": "Import LC V1 S1.42AA Interior Weight Equalization in Gale with Advanced options -> Import all files. Run a normal Offense gameplay round, verify generation/entry and normal gameplay, then upload the complete fresh LogOutput.log using the exact candidate-specific PowerShell uploader in Current/91. Do not build a successor before analyzing this runtime evidence."
+  "exact_next_step": "Run one normal Offense gameplay round in the already-imported LC V1 S1.42AA Interior Weight Equalization profile, enter the generated interior, then upload the complete fresh LogOutput.log using the exact candidate-specific PowerShell uploader in Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md. Analyze that runtime evidence before building any successor."
 }
