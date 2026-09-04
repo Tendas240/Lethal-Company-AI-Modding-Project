@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "date": "2026-09-04",
+  "date": "2026-09-05",
   "status": "CURRENT_CANONICAL_ROUTER",
   "human_map": "Current/PROJECT_KNOWLEDGE_MAP.md",
   "bootstrap": ["README.md","START_HERE_ChatGPT_Masterprompt.txt","Current/00_CURRENT_STATE.md","Current/PROJECT_KNOWLEDGE_MAP.md"],
@@ -42,6 +42,22 @@
       "related_topics":["accepted_baseline","bcmer","roadmap_and_deferred_scopes"],
       "authority":"CURRENT",
       "last_validated":"2026-09-04"
+    },
+    {
+      "id":"chat_handover",
+      "title":"Current-chat preparation for transfer to a new ChatGPT chat",
+      "aliases":["Übergabe","neuer ChatGPT Chat","new chat handover","handover prompt","Chat wechseln","Projekt übergeben"],
+      "canonical":"Current/HANDOVER_PREPARATION_PROMPT.md",
+      "machine_state":["Current/CURRENT_STATE.json","BuildSpecs/current.json","RuntimeInbox/ACTIVE_BUILD.txt"],
+      "evidence":["Current/DOCUMENT_AUTHORITY.json","Current/VALIDATOR_COVERAGE.json"],
+      "config_paths":[],
+      "code_paths":["RepositoryTools/render_current_navigation.py","RepositoryTools/knowledge_architecture_validator.py"],
+      "related_builds":[],
+      "mods":[],
+      "historical_sources":["Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md"],
+      "related_topics":["accepted_baseline","active_candidate_and_next_test","build_pipeline","runtime_upload_and_ingest"],
+      "authority":"CURRENT_WORKFLOW",
+      "last_validated":"2026-09-05"
     },
     {
       "id":"build_pipeline",
