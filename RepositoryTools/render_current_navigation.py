@@ -12,6 +12,7 @@ def load_state(): return json.loads(STATE_PATH.read_text(encoding="utf-8"))
 
 def render_readme(s):
     a,l,o=s["accepted_baseline"],s["latest_built_artifact"],s["overhaul"]
+    h=s["canonical_navigation"]["handover_preparation_prompt"]
     return f"""{MARKER_MD}
 # Lethal Company AI Modding Project
 
@@ -29,6 +30,8 @@ Then open only the topic/evidence needed for the user's question. Do not read th
 
 Machine-readable live state: `Current/CURRENT_STATE.json`.
 
+Current-chat handover procedure: `{h}`. When the user requests transfer to a new ChatGPT chat, the active chat must execute that procedure and generate a fresh new-chat prompt from current repository authority.
+
 ## Current state
 
 Accepted baseline: **{a['build_id']} — {a['title']}**  
@@ -45,6 +48,7 @@ Exact next action: {s['next_action']}
 ## Semantic navigation
 
 - Topic router: `Current/PROJECT_KNOWLEDGE_MAP.md` / `.json`
+- Chat handover procedure: `{h}`
 - Build history: `Current/BUILD_LINEAGE.md` / `.json`
 - Authority/history classification: `Current/DOCUMENT_AUTHORITY.md` / `.json`
 - Artifact/runtime-evidence integrity: `Current/ARTIFACT_EVIDENCE_INTEGRITY.md` / `.json`
@@ -64,6 +68,7 @@ No local repository clone or local profile build should be required from the use
 
 def render_start(s):
     a,l,c=s["accepted_baseline"],s["latest_built_artifact"],s["controllers"]
+    h=s["canonical_navigation"]["handover_preparation_prompt"]
     return f"""======================================================================
 CURRENT CANONICAL TAKEOVER — GENERATED FROM Current/CURRENT_STATE.json
 ======================================================================
@@ -81,6 +86,9 @@ READ FIRST:
 Then route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the relevant Knowledge topic plus linked evidence/config/code.
 Use Current/DOCUMENT_AUTHORITY.md when old files contain stale "current" wording.
 Use Current/BUILD_LINEAGE.md for "which build introduced/rejected this?" questions.
+
+HANDOVER SIGNAL
+When the user explicitly requests transfer to a new ChatGPT chat, execute {h}. Verify the then-current main/CI/controllers first and generate a fresh new-chat start prompt from repository authority instead of reusing stale conversation memory.
 
 ACCEPTED BASELINE
 - {a['build_id']} — {a['title']}
@@ -109,6 +117,7 @@ RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the exact build-specific one-line PowerShell log uploader. There is no uploader to run now because no runtime test is pending.
 
 PERMANENT POLICY ROUTES
+- Chat handover: {h}
 - BCMER: Knowledge/BCMER.md
 - Interiors/LLL: Knowledge/INTERIORS_AND_LLL.md
 - Enemy spawn baseline: Knowledge/ENEMY_SPAWN_BASELINE.md
@@ -191,6 +200,7 @@ Frozen source commit: `{s['overhaul']['frozen_source_commit']}`.
 
 def render_handover(s):
     a,l=s["accepted_baseline"],s["latest_built_artifact"]
+    h=s["canonical_navigation"]["handover_preparation_prompt"]
     return f"""{MARKER_MD}
 # 01 — Handover Core
 
@@ -198,6 +208,7 @@ def render_handover(s):
 **Machine state:** `Current/CURRENT_STATE.json`  
 **Topic router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
 **Authority registry:** `Current/DOCUMENT_AUTHORITY.md`  
+**Current-chat handover procedure:** `{h}`  
 **Last-Validated:** {s['updated']}
 
 ## Fresh-session procedure
@@ -209,6 +220,10 @@ def render_handover(s):
 5. Use `Current/BUILD_LINEAGE.md` for build-history questions and `Current/DOCUMENT_AUTHORITY.md` when an older file says "current".
 
 Do not require a local repository clone or local profile build while repository-native artifacts and automation are sufficient.
+
+## Future handover signal
+
+When the user later requests transfer to another ChatGPT chat, execute `{h}`. That procedure verifies the then-current repository/CI/controller state and generates the new chat's start prompt from current authority; do not reuse an old static handover snapshot.
 
 ## Current anchors
 
