@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-05",
+  "status": "CURRENT_CANONICAL_PROVENANCE_ERRATA",
+  "build_id": "S1.42AC",
+  "artifact": "RuntimeEvidence/S1.42AC/20260904T181854Z/raw/LogOutput.log",
+  "authority": "RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json",
+  "authoritative_sha256": "fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067",
+  "superseded_sha256": "8626030f279243f9f3b8c04e07dfc7b11cb2d0d1359b8494f657a68aa1288bc0",
+  "rule": "The superseded SHA-256 may appear on current main only when the occurrence is locally marked as superseded/erratum/incorrect historical metadata or the containing historical document is explicitly enumerated in historical_document_errata below. It must never be treated as the authoritative raw runtime-log hash.",
+  "historical_document_errata": [
+    {
+      "path": "Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md",
+      "classification": "HISTORICAL_HANDOVER_SUPERSEDED_SHA_METADATA",
+      "note": "The body preserves the raw-log SHA value recorded at that handover. That value is superseded by the RuntimeEvidence INDEX authority and must not be used as current byte provenance."
+    },
+    {
+      "path": "Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md",
+      "classification": "HISTORICAL_HANDOVER_AUDIT_SUPERSEDED_SHA_METADATA",
+      "note": "The body preserves the raw-log SHA value recorded by the pre-correction audit. That value is superseded by the RuntimeEvidence INDEX authority and must not be used as current byte provenance."
+    }
+  ],
+  "decision_impact": "NONE. S1.42AC remains formally rejected/not promoted; this is byte-provenance correction only.",
+  "canonical_related": [
+    "RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json",
+    "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+    "Current/Projektstatus_S1.42AC_REJECTED.json",
+    "Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md"
+  ]
+}
