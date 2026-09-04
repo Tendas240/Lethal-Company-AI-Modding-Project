@@ -1,12 +1,12 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "updated": "2026-09-05",
   "status": "CURRENT_CANONICAL_AUTHORITY_REGISTRY",
   "authority_precedence": [
     "Current/CURRENT_STATE.json",
     "Current/00_CURRENT_STATE.md",
     "Current/PROJECT_KNOWLEDGE_MAP.json",
-    "Knowledge topic registered by PROJECT_KNOWLEDGE_MAP",
+    "canonical topic/workflow source registered by PROJECT_KNOWLEDGE_MAP",
     "Current/INTEGRITY_ERRATA_REGISTRY.json for known-bad/superseded-value qualification",
     "current machine/controller files named by the topic",
     "accepted runtime/build evidence",
@@ -18,7 +18,8 @@
     "Known concrete bad/superseded values are qualified by Current/INTEGRITY_ERRATA_REGISTRY.json and must not be treated as current authority merely because they remain in historical evidence.",
     "BuildSpecs/current.json and RuntimeInbox/ACTIVE_BUILD.txt are controllers, not narrative authority for unrelated topics.",
     "Only Current/CURRENT_STATE.json and Current/00_CURRENT_STATE.md declare the concise global current state after the overhaul.",
-    "Ordinary topic questions route through Current/PROJECT_KNOWLEDGE_MAP.json to one Knowledge canonical source."
+    "Ordinary topic questions route through Current/PROJECT_KNOWLEDGE_MAP.json to one canonical topic/workflow source.",
+    "When the user explicitly requests transfer to a new ChatGPT chat, Current/HANDOVER_PREPARATION_PROMPT.md is the current workflow authority and must resolve then-current repository facts rather than reuse a stale static handover snapshot."
   ],
   "canonical": [
     {
@@ -35,6 +36,11 @@
       "path": "Current/01_HANDOVER_CORE.md",
       "authority": "TAKEOVER_ROUTER",
       "canonical_for": ["fresh_chat_takeover"]
+    },
+    {
+      "path": "Current/HANDOVER_PREPARATION_PROMPT.md",
+      "authority": "CURRENT_HANDOVER_WORKFLOW",
+      "canonical_for": ["chat_handover_preparation", "fresh_new_chat_prompt_generation"]
     },
     {
       "path": "Current/PROJECT_KNOWLEDGE_MAP.json",
@@ -88,7 +94,7 @@
     }
   ],
   "semantic_topic_root": "Knowledge/",
-  "semantic_topic_authority": "Files registered as canonical targets in Current/PROJECT_KNOWLEDGE_MAP.json are current topic authority unless that map explicitly marks another authority class.",
+  "semantic_topic_authority": "Files registered as canonical targets in Current/PROJECT_KNOWLEDGE_MAP.json are current topic/workflow authority unless that map explicitly marks another authority class.",
   "historical_or_superseded": [
     {
       "path": "Current/02_TECHNICAL_BASELINE.md",
@@ -111,7 +117,7 @@
     {
       "path": "Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md",
       "classification": "HISTORICAL_HANDOVER_SNAPSHOT",
-      "current_targets": ["Current/01_HANDOVER_CORE.md", "Current/00_CURRENT_STATE.md"]
+      "current_targets": ["Current/01_HANDOVER_CORE.md", "Current/00_CURRENT_STATE.md", "Current/HANDOVER_PREPARATION_PROMPT.md"]
     },
     {
       "path": "Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md",
@@ -160,7 +166,7 @@
     "current_invariants": [
       "Crawler attack/counterattack behavior is allowed; Crawler is absent from the LethalMin Attack Blacklist.",
       "Thumper is governed by Bite Limit 3 rather than complete two-way isolation.",
-      "Puffer protection for Pikmin remains part of the accepted compatibility behavior.",
+      "Puffer protection for Pikmin remains part of accepted compatibility behavior.",
       "Baboon Hawk compatibility blocks only the proven Hawk-to-Pikmin entry points before mutation while native cleanup lifecycle ownership remains enabled."
     ],
     "provenance_rule": "Do not edit accepted patch source solely to modernize comments unless the accepted binary/profile provenance is rebuilt and revalidated; use authority metadata to classify non-normative historical comments."

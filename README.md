@@ -15,6 +15,8 @@ Then open only the topic/evidence needed for the user's question. Do not read th
 
 Machine-readable live state: `Current/CURRENT_STATE.json`.
 
+Current-chat handover procedure: `Current/HANDOVER_PREPARATION_PROMPT.md`. When the user requests transfer to a new ChatGPT chat, the active chat must execute that procedure and generate a fresh new-chat prompt from current repository authority.
+
 ## Current state
 
 Accepted baseline: **S1.42AB — Interior Weight Normalization**  
@@ -31,6 +33,7 @@ Exact next action: If BCMER EventType work continues, reevaluate the existing S1
 ## Semantic navigation
 
 - Topic router: `Current/PROJECT_KNOWLEDGE_MAP.md` / `.json`
+- Chat handover procedure: `Current/HANDOVER_PREPARATION_PROMPT.md`
 - Build history: `Current/BUILD_LINEAGE.md` / `.json`
 - Authority/history classification: `Current/DOCUMENT_AUTHORITY.md` / `.json`
 - Artifact/runtime-evidence integrity: `Current/ARTIFACT_EVIDENCE_INTEGRITY.md` / `.json`

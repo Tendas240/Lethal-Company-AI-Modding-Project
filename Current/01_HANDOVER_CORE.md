@@ -5,6 +5,7 @@
 **Machine state:** `Current/CURRENT_STATE.json`  
 **Topic router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
 **Authority registry:** `Current/DOCUMENT_AUTHORITY.md`  
+**Current-chat handover procedure:** `Current/HANDOVER_PREPARATION_PROMPT.md`  
 **Last-Validated:** 2026-09-05
 
 ## Fresh-session procedure
@@ -16,6 +17,10 @@
 5. Use `Current/BUILD_LINEAGE.md` for build-history questions and `Current/DOCUMENT_AUTHORITY.md` when an older file says "current".
 
 Do not require a local repository clone or local profile build while repository-native artifacts and automation are sufficient.
+
+## Future handover signal
+
+When the user later requests transfer to another ChatGPT chat, execute `Current/HANDOVER_PREPARATION_PROMPT.md`. That procedure verifies the then-current repository/CI/controller state and generates the new chat's start prompt from current authority; do not reuse an old static handover snapshot.
 
 ## Current anchors
 

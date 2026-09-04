@@ -16,6 +16,9 @@ Then route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read
 Use Current/DOCUMENT_AUTHORITY.md when old files contain stale "current" wording.
 Use Current/BUILD_LINEAGE.md for "which build introduced/rejected this?" questions.
 
+HANDOVER SIGNAL
+When the user explicitly requests transfer to a new ChatGPT chat, execute Current/HANDOVER_PREPARATION_PROMPT.md. Verify the then-current main/CI/controllers first and generate a fresh new-chat start prompt from repository authority instead of reusing stale conversation memory.
+
 ACCEPTED BASELINE
 - S1.42AB — Interior Weight Normalization
 - profile: Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z
@@ -43,6 +46,7 @@ RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the exact build-specific one-line PowerShell log uploader. There is no uploader to run now because no runtime test is pending.
 
 PERMANENT POLICY ROUTES
+- Chat handover: Current/HANDOVER_PREPARATION_PROMPT.md
 - BCMER: Knowledge/BCMER.md
 - Interiors/LLL: Knowledge/INTERIORS_AND_LLL.md
 - Enemy spawn baseline: Knowledge/ENEMY_SPAWN_BASELINE.md
