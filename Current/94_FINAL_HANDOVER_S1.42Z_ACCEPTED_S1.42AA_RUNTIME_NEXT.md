@@ -43,7 +43,7 @@ Confirmed acceptance facts include:
 
 ### Active runtime candidate
 
-**S1.42AA — Interior Weight Equalization — BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
+**S1.42AA — Interior Weight Equalization — BUILD PASS / PROFILE IMPORT CONFIRMED / RUNTIME VALIDATION OPEN / NOT ACCEPTED**
 
 Profile: `Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z`  
 Gale profile name: `LC V1 S1.42AA Interior Weight Equalization`  
