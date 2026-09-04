@@ -180,18 +180,19 @@ Do not patch without stronger reproducibility or user-facing impact:
 - LethalMin `DespawnLumiknulls()` repair only with stronger evidence;
 - cosmetic documentation cleanup.
 
-## Gale profile replacement helper candidate
+## Gale profile replacement workflow — binding
 
-The repository-backed local Gale profile replacement flow is now user-validated once under Windows PowerShell 5.1 using the disposable profile `testpowershell` and is the approved candidate for the future permanent workflow.
+The repository-backed local Gale profile replacement flow is now a permanent project workflow.
 
-Candidate implementation and record:
+Canonical implementation and contract:
 
 - `RuntimeTools/ReplaceActiveGaleProfile.ps1`;
-- `Current/92_GALE_ACTIVE_PROFILE_REPLACEMENT_HELPER_CANDIDATE.md`.
+- `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`;
+- binding chat/build policy: `Current/09_REPOSITORY_FIRST_AUTOMATION.md`.
 
-Validated behavior includes exact ACTIVE_BUILD/AUTO_BUILD_RESULT matching, download before deletion, SHA-256 verification, numeric local-profile selection, explicit `y/n` deletion confirmation, Gale `.r2z` import launch, and post-import Downloads cleanup.
+The validated workflow performs exact ACTIVE_BUILD/AUTO_BUILD_RESULT matching, downloads before deletion, verifies SHA-256, lists local profiles numerically, requires explicit `y/n` deletion confirmation, opens Gale's `.r2z` import flow, keeps `Advanced options -> Import all files` as a manual safety gate, and cleans the downloaded `.r2z` after successful import confirmation.
 
-It is not yet binding default policy. Promote after a normal future profile replacement confirms routine use, or immediately if the user explicitly requests promotion.
+Whenever a newly built profile is ready for runtime testing, ChatGPT must include the short repository launcher in that same response, together with the separate exact build-specific runtime-log uploader. The user must not need to ask for either command.
 
 ## Controllers
 
