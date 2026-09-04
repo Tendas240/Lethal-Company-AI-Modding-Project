@@ -28,11 +28,11 @@ Accepted: **S1.42AB — Interior Weight Normalization**, SHA-256 `3f2387886daaf6
 Latest built: **S1.42AC — BCMER EventType Equal Distribution**, SHA-256 `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`, formally rejected/not promoted.  
 Active candidate: **none**. Runtime test: **none pending**. Successor: **not armed**.
 
-Exact next action: If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
+Exact next action: Upload and ingest the just-completed S1.42AC runtime log, then reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
 
 ## Mandatory runtime-test UX
 
-Whenever a future runtime test becomes outstanding, the response that explains what to test must include the exact build-specific one-line PowerShell log uploader in the same response.
+Whenever a future runtime test becomes outstanding, the response that explains what to test must include the exact build-specific one-line PowerShell log uploader in the same response. If a run is already complete but its log is not yet ingested, provide the uploader for the runtime-active build without requiring another test run.
 
 ## Historical authority warning
 
