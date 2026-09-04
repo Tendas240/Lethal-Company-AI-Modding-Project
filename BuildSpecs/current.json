@@ -1,15 +1,214 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42Y_BUILD_AWAITING_RUNTIME_VALIDATION",
-  "base_profile": "Profiles/LC V1 S1.42Y Jetpack Aerial Defense Retune.r2z",
-  "base_sha256": "f4ae0d93c9cff4f9441c24d1021e5d9b816861b8317d9ed8995fde67ebbd8d89",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "enabled": true,
+  "build_id": "S1.42Z",
+  "base_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
+  "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
+  "output_profile": "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z",
+  "profile_name": "LC V1 S1.42Z Jetpack Pikmin Retune",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "config_patches": [],
-  "local_plugin_builds": [],
-  "text_assertions": []
+  "config_patches": [
+    {
+      "path": "BepInEx/config/dev.idjut.SnailFork.cfg",
+      "section": "General",
+      "key": "Rarity",
+      "value": 40
+    },
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "section": "FunctionalMicrowave Options",
+      "key": "Functional Microwave | Volume",
+      "value": 0.15
+    },
+    {
+      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
+      "section": "Jet Fuel",
+      "key": "Initial Acceleration Increase",
+      "value": 18
+    },
+    {
+      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
+      "section": "Jet Fuel",
+      "key": "Incremental Acceleration Increase",
+      "value": 18
+    },
+    {
+      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
+      "section": "Jetpack Thrusters",
+      "key": "Initial Maximum Speed Increase",
+      "value": 25
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "section": "Spawning",
+      "key": "Indoor Pikmin Spawn Chance",
+      "value": 0.09
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Blue Pikmin.cfg",
+      "section": "Pikmin Stats",
+      "key": "CarryStrength",
+      "value": 3
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Bulbmin.cfg",
+      "section": "Pikmin Stats",
+      "key": "CarryStrength",
+      "value": 3
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Glow Pikmin.cfg",
+      "section": "Pikmin Stats",
+      "key": "CarryStrength",
+      "value": 3
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Ice Pikmin.cfg",
+      "section": "Pikmin Stats",
+      "key": "CarryStrength",
+      "value": 3
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Purple Pikmin.cfg",
+      "section": "Pikmin Stats",
+      "key": "CarryStrength",
+      "value": 30
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Red Pikmin.cfg",
+      "section": "Pikmin Stats",
+      "key": "CarryStrength",
+      "value": 3
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Rock Pikmin.cfg",
+      "section": "Pikmin Stats",
+      "key": "CarryStrength",
+      "value": 3
+    },
+    {
+      "path": "BepInEx/config/Pikmin/White Pikmin.cfg",
+      "section": "Pikmin Stats",
+      "key": "CarryStrength",
+      "value": 3
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Winged Pikmin.cfg",
+      "section": "Pikmin Stats",
+      "key": "CarryStrength",
+      "value": 3
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Yellow Pikmin.cfg",
+      "section": "Pikmin Stats",
+      "key": "CarryStrength",
+      "value": 3
+    }
+  ],
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S142ZJetpackAcceleration/S142ZJetpackAcceleration.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S142ZJetpackAcceleration/bin/Release/netstandard2.1/S142ZJetpackAcceleration.dll",
+      "archive_path": "BepInEx/plugins/S142ZJetpackAcceleration/S142ZJetpackAcceleration.dll"
+    },
+    {
+      "project": "Patches/S142ZCodeRebirthAerialDefenseSpawnTuning/S142ZCodeRebirthAerialDefenseSpawnTuning.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S142ZCodeRebirthAerialDefenseSpawnTuning/bin/Release/netstandard2.1/S142ZCodeRebirthAerialDefenseSpawnTuning.dll",
+      "archive_path": "BepInEx/plugins/S142ZCodeRebirthAerialDefenseSpawnTuning/S142ZCodeRebirthAerialDefenseSpawnTuning.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "BepInEx/config/dev.idjut.SnailFork.cfg",
+      "contains": "Max Snails = 2"
+    },
+    {
+      "path": "BepInEx/config/dev.idjut.SnailFork.cfg",
+      "contains": "Rarity = 40"
+    },
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "contains": "Functional Microwave | Allow Editing Config = true"
+    },
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "contains": "Functional Microwave | Volume = 0.15"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
+      "contains": "Control Scheme = V49"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
+      "contains": "Warmup Period = false"
+    },
+    {
+      "path": "BepInEx/config/butterystancakes.lethalcompany.jetpackfixes.cfg",
+      "contains": "MidAirExplosions = Off"
+    },
+    {
+      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
+      "contains": "Initial Acceleration Increase = 18"
+    },
+    {
+      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
+      "contains": "Incremental Acceleration Increase = 18"
+    },
+    {
+      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
+      "contains": "Initial Maximum Speed Increase = 25"
+    },
+    {
+      "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
+      "contains": "Incremental Maximum Speed Increase = 20"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Indoor Pikmin Spawn Chance = 0.09"
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Blue Pikmin.cfg",
+      "contains": "CarryStrength = 3"
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Bulbmin.cfg",
+      "contains": "CarryStrength = 3"
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Glow Pikmin.cfg",
+      "contains": "CarryStrength = 3"
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Ice Pikmin.cfg",
+      "contains": "CarryStrength = 3"
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Purple Pikmin.cfg",
+      "contains": "CarryStrength = 30"
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Red Pikmin.cfg",
+      "contains": "CarryStrength = 3"
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Rock Pikmin.cfg",
+      "contains": "CarryStrength = 3"
+    },
+    {
+      "path": "BepInEx/config/Pikmin/White Pikmin.cfg",
+      "contains": "CarryStrength = 3"
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Winged Pikmin.cfg",
+      "contains": "CarryStrength = 3"
+    },
+    {
+      "path": "BepInEx/config/Pikmin/Yellow Pikmin.cfg",
+      "contains": "CarryStrength = 3"
+    }
+  ]
 }
