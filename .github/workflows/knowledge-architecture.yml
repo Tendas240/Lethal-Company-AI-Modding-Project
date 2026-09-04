@@ -1,0 +1,55 @@
+name: Knowledge Architecture
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'README.md'
+      - 'START_HERE_ChatGPT_Masterprompt.txt'
+      - 'OVERHAUL_START_HERE_ChatGPT.txt'
+      - 'Current/**'
+      - 'Knowledge/**'
+      - 'RepositoryTools/**'
+      - 'BuildSpecs/current.json'
+      - 'RuntimeInbox/ACTIVE_BUILD.txt'
+      - 'ProfileSources/**/FILE_INDEX.json'
+      - 'ProfileSources/**/export.r2x'
+      - '.github/workflows/knowledge-architecture.yml'
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'START_HERE_ChatGPT_Masterprompt.txt'
+      - 'OVERHAUL_START_HERE_ChatGPT.txt'
+      - 'Current/**'
+      - 'Knowledge/**'
+      - 'RepositoryTools/**'
+      - 'BuildSpecs/current.json'
+      - 'RuntimeInbox/ACTIVE_BUILD.txt'
+      - 'ProfileSources/**/FILE_INDEX.json'
+      - 'ProfileSources/**/export.r2x'
+      - '.github/workflows/knowledge-architecture.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-knowledge-architecture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check generated current navigation
+        run: python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate repository knowledge architecture
+        run: python RepositoryTools/knowledge_architecture_validator.py
+
+      - name: Run answerability routing regression
+        run: python RepositoryTools/answerability_regression.py
