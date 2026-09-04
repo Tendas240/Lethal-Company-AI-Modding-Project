@@ -104,6 +104,42 @@ Do not substitute local clone / `git add` / `git push` instructions unless the d
 
 For unusually large logs that cannot safely use the normal GitHub Contents API / main-branch path, follow `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md` instead and provide the corresponding **single self-contained** large-log PowerShell command. Do not silently try to commit a >100 MiB raw log to `main`.
 
+## Gale active-profile replacement helper — validated candidate
+
+A repository-backed local Gale profile replacement helper is maintained at:
+
+`RuntimeTools/ReplaceActiveGaleProfile.ps1`
+
+Validation record:
+
+`Current/92_GALE_ACTIVE_PROFILE_REPLACEMENT_HELPER_CANDIDATE.md`
+
+The user successfully validated the final y/n version under Windows PowerShell 5.1 with a disposable local Gale profile on 2026-09-04. The helper:
+
+- closes Gale;
+- resolves the exact active build from `RuntimeInbox/ACTIVE_BUILD.txt`;
+- requires that `Current/AUTO_BUILD_RESULT.json` belongs to the same build;
+- obtains the exact output profile path and SHA-256 from the build result rather than fuzzy-searching `Profiles/`;
+- downloads the new `.r2z` before any destructive local action;
+- verifies its SHA-256 before deletion is offered;
+- numerically lists local Gale profiles;
+- asks `y/n` before deleting only the selected local profile;
+- opens the verified `.r2z` in Gale;
+- keeps `Advanced options -> Import all files` as an explicit manual user gate;
+- removes the downloaded `.r2z` only after the user confirms the import completed.
+
+If the user answers `n`, no local profile is deleted and the temporary download is cleaned up.
+
+This helper is the approved candidate for the permanent replacement workflow, but it is **not yet binding default policy**. Promote it after a normal future profile replacement confirms routine use, or earlier if the user explicitly requests immediate promotion.
+
+Candidate one-line launcher:
+
+```powershell
+iex (iwr -UseBasicParsing 'https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1').Content
+```
+
+Do not duplicate older experimental helper variants. In particular, do not reintroduce case-sensitive `LOESCHEN`, fuzzy profile-name matching, Windows PowerShell 5.1 array assumptions, or a variable named `$matches` that collides with PowerShell's automatic `$Matches` variable.
+
 ## Binary accessibility rule
 
 Binary `.r2z`, `.zip`, and `.dll` artifacts may not be directly UTF-8-readable through the GitHub connector. Therefore every generated profile must also have:
