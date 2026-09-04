@@ -1,6 +1,7 @@
 $root='C:\Users\Milan\AppData\Roaming\com.kesomannen.gale\lethal-company\profiles'
 $repo='Tendas240/Lethal-Company-AI-Modding-Project'
 $headers=@{'User-Agent'='LC-Profile-Updater'}
+$helperRevision='2026-09-04-import-uia-v1'
 
 function Get-GaleAutomationRoot {
     try {
@@ -43,6 +44,18 @@ function Find-UiaVisibleByName {
     return $out
 }
 
+function Find-UiaVisibleByNames {
+    param(
+        [Parameter(Mandatory=$true)]$Root,
+        [Parameter(Mandatory=$true)][string[]]$Names
+    )
+    $out=@()
+    foreach($name in $Names){
+        $out+=@(Find-UiaVisibleByName -Root $Root -Name $name)
+    }
+    return $out
+}
+
 function Test-UiaPattern {
     param(
         [Parameter(Mandatory=$true)]$Element,
@@ -57,6 +70,33 @@ function Test-UiaPattern {
     }
 }
 
+function Find-UiaVisibleByPattern {
+    param(
+        [Parameter(Mandatory=$true)]$Root,
+        [Parameter(Mandatory=$true)]$Pattern
+    )
+
+    $out=@()
+    try {
+        $collection=$Root.FindAll(
+            [System.Windows.Automation.TreeScope]::Descendants,
+            [System.Windows.Automation.Condition]::TrueCondition
+        )
+        for($i=0;$i-lt$collection.Count;$i++){
+            try {
+                $item=$collection.Item($i)
+                if($item.Current.IsEnabled -and -not $item.Current.IsOffscreen -and
+                   (Test-UiaPattern -Element $item -Pattern $Pattern)){
+                    $out+=$item
+                }
+            }
+            catch {}
+        }
+    }
+    catch {}
+    return $out
+}
+
 function Find-UiaVisibleByNameAndPattern {
     param(
         [Parameter(Mandatory=$true)]$Root,
@@ -69,6 +109,50 @@ function Find-UiaVisibleByNameAndPattern {
     })
 }
 
+function Find-UiaVisibleByNamesAndPattern {
+    param(
+        [Parameter(Mandatory=$true)]$Root,
+        [Parameter(Mandatory=$true)][string[]]$Names,
+        [Parameter(Mandatory=$true)]$Pattern
+    )
+
+    $out=@()
+    foreach($name in $Names){
+        $out+=@(Find-UiaVisibleByNameAndPattern -Root $Root -Name $name -Pattern $Pattern)
+    }
+    return $out
+}
+
+function Find-UiaVisibleByValue {
+    param(
+        [Parameter(Mandatory=$true)]$Root,
+        [Parameter(Mandatory=$true)][string]$Value
+    )
+
+    $out=@()
+    foreach($item in @(Find-UiaVisibleByPattern -Root $Root -Pattern ([System.Windows.Automation.ValuePattern]::Pattern))){
+        try {
+            $pattern=$item.GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern)
+            if(([string]$pattern.Current.Value) -eq $Value){
+                $out+=$item
+            }
+        }
+        catch {}
+    }
+    return $out
+}
+
+function Get-UiaParent {
+    param([Parameter(Mandatory=$true)]$Element)
+    try {
+        $walker=[System.Windows.Automation.TreeWalker]::RawViewWalker
+        return $walker.GetParent($Element)
+    }
+    catch {
+        return $null
+    }
+}
+
 function Invoke-UiaElement {
     param(
         [Parameter(Mandatory=$true)]$Element,
@@ -78,7 +162,9 @@ function Invoke-UiaElement {
     if($Action -eq 'expand'){
         try {
             $pattern=$Element.GetCurrentPattern([System.Windows.Automation.ExpandCollapsePattern]::Pattern)
-            $pattern.Expand()
+            if($pattern.Current.ExpandCollapseState -ne [System.Windows.Automation.ExpandCollapseState]::Expanded){
+                $pattern.Expand()
+            }
             return $true
         }
         catch {}
@@ -103,7 +189,9 @@ function Invoke-UiaElement {
     if($Action -ne 'expand'){
         try {
             $pattern=$Element.GetCurrentPattern([System.Windows.Automation.ExpandCollapsePattern]::Pattern)
-            $pattern.Expand()
+            if($pattern.Current.ExpandCollapseState -ne [System.Windows.Automation.ExpandCollapseState]::Expanded){
+                $pattern.Expand()
+            }
             return $true
         }
         catch {}
@@ -142,22 +230,13 @@ function Try-ResolveGaleMissingProfileDialog {
     if(!$root){return 'no-window'}
     if($dialog.Count -eq 0){return 'none'}
 
-    # bits-ui/Chromium can expose both the clickable select and its visible label
-    # with the same accessible name. Filter by the interaction pattern rather than
-    # requiring the raw visible-name match to be unique.
     $selectors=@(Find-UiaVisibleByNameAndPattern -Root $root -Name 'Select an action' -Pattern ([System.Windows.Automation.ExpandCollapsePattern]::Pattern))
 
-    # Exactly one actionable selector means exactly one unresolved missing-profile row.
-    # This helper has just deleted one explicitly selected profile; any extra row is
-    # treated as ambiguous so unrelated Gale state is never auto-deleted.
     if($selectors.Count -ne 1){
         Write-Host "UIA diagnostic: actionable missing-profile selectors = $($selectors.Count)" -ForegroundColor DarkYellow
         return 'ambiguous'
     }
 
-    # Best-effort identity diagnostic only. CSS truncation/WebView accessibility may
-    # expose a shortened text node, so absence of an exact text node is not by itself
-    # a deletion authorization failure; the single-row invariant above is authoritative.
     $profileHits=@(Find-UiaVisibleByName -Root $root -Name $ExpectedProfileName)
     Write-Host "UIA diagnostic: exact profile-name nodes for '$ExpectedProfileName' = $($profileHits.Count)" -ForegroundColor DarkGray
 
@@ -215,6 +294,152 @@ function Try-ResolveGaleMissingProfileDialog {
     return 'failed'
 }
 
+function Find-GaleImportDialogScope {
+    param([Parameter(Mandatory=$true)]$Root)
+
+    $titleNames=@('Import profile','Profil importieren')
+    $advancedNames=@('Advanced options','Erweiterte Optionen')
+    $importNames=@('Import','Importieren')
+
+    foreach($title in @(Find-UiaVisibleByNames -Root $Root -Names $titleNames)){
+        $node=$title
+        for($depth=0;$depth-lt 14 -and $node;$depth++){
+            $advanced=@(Find-UiaVisibleByNames -Root $node -Names $advancedNames)
+            $buttons=@(Find-UiaVisibleByNamesAndPattern -Root $node -Names $importNames -Pattern ([System.Windows.Automation.InvokePattern]::Pattern))
+            if($advanced.Count -ge 1 -and $buttons.Count -ge 1){
+                return $node
+            }
+            $node=Get-UiaParent -Element $node
+        }
+    }
+    return $null
+}
+
+function Try-AutomateGaleProfileImport {
+    param(
+        [Parameter(Mandatory=$true)][string]$ExpectedProfileName,
+        [int]$WaitSeconds=30
+    )
+
+    try {
+        Add-Type -AssemblyName UIAutomationClient -ErrorAction Stop
+        Add-Type -AssemblyName UIAutomationTypes -ErrorAction Stop
+    }
+    catch {
+        return 'uia-unavailable'
+    }
+
+    $deadline=[DateTime]::UtcNow.AddSeconds($WaitSeconds)
+    $root=$null
+    $scope=$null
+    do{
+        $root=Get-GaleAutomationRoot
+        if($root){
+            $scope=Find-GaleImportDialogScope -Root $root
+            if($scope){break}
+        }
+        Start-Sleep -Milliseconds 250
+    }while([DateTime]::UtcNow -lt $deadline)
+
+    if(!$root){return 'no-window'}
+    if(!$scope){return 'none'}
+
+    $nameNodes=@(Find-UiaVisibleByName -Root $scope -Name $ExpectedProfileName)
+    $valueNodes=@(Find-UiaVisibleByValue -Root $scope -Value $ExpectedProfileName)
+    if(($nameNodes.Count + $valueNodes.Count) -lt 1){
+        Write-Host "UIA diagnostic: expected import profile identity '$ExpectedProfileName' not exposed." -ForegroundColor DarkYellow
+        return 'ambiguous'
+    }
+
+    $toggleControls=@(Find-UiaVisibleByPattern -Root $scope -Pattern ([System.Windows.Automation.TogglePattern]::Pattern))
+    if($toggleControls.Count -eq 0){
+        $advancedNames=@('Advanced options','Erweiterte Optionen')
+        $advanced=@(Find-UiaVisibleByNamesAndPattern -Root $scope -Names $advancedNames -Pattern ([System.Windows.Automation.ExpandCollapsePattern]::Pattern))
+        if($advanced.Count -eq 1){
+            if(!(Invoke-UiaElement -Element $advanced[0] -Action 'expand')){return 'failed'}
+        }
+        else{
+            $advanced=@(Find-UiaVisibleByNamesAndPattern -Root $scope -Names $advancedNames -Pattern ([System.Windows.Automation.InvokePattern]::Pattern))
+            if($advanced.Count -ne 1){
+                Write-Host "UIA diagnostic: actionable Advanced options controls = $($advanced.Count)" -ForegroundColor DarkYellow
+                return 'ambiguous'
+            }
+            if(!(Invoke-UiaElement -Element $advanced[0] -Action 'default')){return 'failed'}
+        }
+
+        $toggleDeadline=[DateTime]::UtcNow.AddSeconds(5)
+        do{
+            Start-Sleep -Milliseconds 100
+            $root=Get-GaleAutomationRoot
+            if(!$root){continue}
+            $scope=Find-GaleImportDialogScope -Root $root
+            if(!$scope){continue}
+            $toggleControls=@(Find-UiaVisibleByPattern -Root $scope -Pattern ([System.Windows.Automation.TogglePattern]::Pattern))
+            if($toggleControls.Count -gt 0){break}
+        }while([DateTime]::UtcNow -lt $toggleDeadline)
+    }
+
+    if($toggleControls.Count -ne 1){
+        Write-Host "UIA diagnostic: visible toggle controls inside import dialog = $($toggleControls.Count)" -ForegroundColor DarkYellow
+        return 'ambiguous'
+    }
+
+    try {
+        $toggle=$toggleControls[0].GetCurrentPattern([System.Windows.Automation.TogglePattern]::Pattern)
+        if($toggle.Current.ToggleState -eq [System.Windows.Automation.ToggleState]::Off){
+            $toggle.Toggle()
+            Start-Sleep -Milliseconds 150
+            $toggle=$toggleControls[0].GetCurrentPattern([System.Windows.Automation.TogglePattern]::Pattern)
+        }
+        if($toggle.Current.ToggleState -ne [System.Windows.Automation.ToggleState]::On){
+            Write-Host "UIA diagnostic: Import all files toggle did not reach ON state." -ForegroundColor DarkYellow
+            return 'failed'
+        }
+    }
+    catch {
+        return 'failed'
+    }
+
+    $importNames=@('Import','Importieren')
+    $importButtons=@(Find-UiaVisibleByNamesAndPattern -Root $scope -Names $importNames -Pattern ([System.Windows.Automation.InvokePattern]::Pattern))
+    if($importButtons.Count -ne 1){
+        Write-Host "UIA diagnostic: actionable Import buttons inside import dialog = $($importButtons.Count)" -ForegroundColor DarkYellow
+        return 'ambiguous'
+    }
+
+    if(!(Invoke-UiaElement -Element $importButtons[0] -Action 'default')){
+        return 'failed'
+    }
+
+    return 'started'
+}
+
+function Wait-GaleProfileImportComplete {
+    param(
+        [Parameter(Mandatory=$true)][string]$ExpectedProfileName,
+        [int]$WaitSeconds=300
+    )
+
+    $successNames=@(
+        "Profile $ExpectedProfileName was imported.",
+        "Profil $ExpectedProfileName wurde importiert."
+    )
+
+    $deadline=[DateTime]::UtcNow.AddSeconds($WaitSeconds)
+    do{
+        $root=Get-GaleAutomationRoot
+        if($root){
+            $hits=@(Find-UiaVisibleByNames -Root $root -Names $successNames)
+            if($hits.Count -gt 0){return 'completed'}
+        }
+        Start-Sleep -Milliseconds 250
+    }while([DateTime]::UtcNow -lt $deadline)
+
+    return 'unconfirmed'
+}
+
+Write-Host "Helper revision: $helperRevision" -ForegroundColor DarkGray
+
 Get-Process -ErrorAction SilentlyContinue |
     Where-Object { $_.ProcessName -ieq 'gale' } |
     Stop-Process -Force -ErrorAction SilentlyContinue
@@ -231,10 +456,15 @@ if(([string]$build.build_id) -ne $active){
 
 $profilePath=[string]$build.output_profile
 $expected=([string]$build.output_sha256).ToLowerInvariant()
-if(!$profilePath -or !$expected){throw 'AUTO_BUILD_RESULT enthält keinen gültigen Profilpfad oder SHA-256'}
+$expectedProfileName=[string]$build.profile_name
+if(!$expectedProfileName){
+    $expectedProfileName=[IO.Path]::GetFileNameWithoutExtension($profilePath)
+}
+if(!$profilePath -or !$expected -or !$expectedProfileName){throw 'AUTO_BUILD_RESULT enthält keinen gültigen Profilpfad, Profilnamen oder SHA-256'}
 
 $profileFile=[IO.Path]::GetFileName($profilePath)
 Write-Host "Repository-Profil: $profileFile" -ForegroundColor Cyan
+Write-Host "Zielprofilname: $expectedProfileName" -ForegroundColor Cyan
 Write-Host "Erwarteter SHA-256: $expected" -ForegroundColor Cyan
 
 $downloads=Join-Path $env:USERPROFILE 'Downloads'
@@ -278,6 +508,12 @@ do{
 $sel=$dirs[$parsed-1]
 Write-Host "`nAusgewählt: $($sel.Name)" -ForegroundColor Yellow
 
+$targetDir=Join-Path $root $expectedProfileName
+if((Test-Path -LiteralPath $targetDir) -and ([IO.Path]::GetFullPath($targetDir) -ne [IO.Path]::GetFullPath($sel.FullName))){
+    Remove-Item -LiteralPath $dst -Force -ErrorAction SilentlyContinue
+    throw "Das Zielprofil '$expectedProfileName' existiert bereits lokal. Abbruch, damit kein anderes Profil unbeabsichtigt überschrieben wird."
+}
+
 do{
     $answer=(Read-Host 'Soll dieses Profil wirklich gelöscht werden? (y/n)').Trim().ToLowerInvariant()
 }until($answer -eq 'y' -or $answer -eq 'n')
@@ -299,8 +535,6 @@ switch($missingResult){
     'resolved' {
         Write-Host "Gales 'Missing Profiles'-Dialog wurde gezielt für '$($sel.Name)' auf Delete -> Submit aufgelöst." -ForegroundColor Green
         Start-Sleep -Milliseconds 500
-        # Re-send the verified .r2z after the blocking dialog is gone. Gale's import
-        # dialog is a singleton, so this safely refreshes/opens the same import flow.
         Start-Process -FilePath $dst
     }
     'none' {
@@ -314,8 +548,24 @@ switch($missingResult){
     }
 }
 
-Write-Host "`nIn Gale jetzt: Advanced options -> Import all files aktivieren -> Import." -ForegroundColor Yellow
-Read-Host 'Wenn Gale den Import ERFOLGREICH abgeschlossen hat, hier ENTER drücken'
+Write-Host "`nVersuche den Gale-Import jetzt automatisch mit 'Import all files'..." -ForegroundColor Cyan
+$importResult=Try-AutomateGaleProfileImport -ExpectedProfileName $expectedProfileName
+if($importResult -eq 'started'){
+    Write-Host "'Import all files' wurde aktiviert und der Import ausgelöst. Warte auf Gales Erfolgsmeldung..." -ForegroundColor Green
+    $completion=Wait-GaleProfileImportComplete -ExpectedProfileName $expectedProfileName
+    if($completion -eq 'completed'){
+        Write-Host "Gale meldet den Import von '$expectedProfileName' als erfolgreich." -ForegroundColor Green
+    }
+    else{
+        Write-Warning "Der Import wurde automatisch ausgelöst, aber Gales Erfolgsmeldung war über UI Automation nicht eindeutig erkennbar."
+        Read-Host 'Wenn Gale den Import ERFOLGREICH abgeschlossen hat, hier ENTER drücken'
+    }
+}
+else{
+    Write-Warning "Der Importdialog konnte nicht eindeutig und sicher automatisiert werden ($importResult). Es wird nichts blind angeklickt."
+    Write-Host "Bitte in Gale: Advanced options -> Import all files aktivieren -> Import." -ForegroundColor Yellow
+    Read-Host 'Wenn Gale den Import ERFOLGREICH abgeschlossen hat, hier ENTER drücken'
+}
 
 if(Test-Path -LiteralPath $dst){Remove-Item -LiteralPath $dst -Force}
 Write-Host "Download-Datei entfernt: $dst" -ForegroundColor Green
