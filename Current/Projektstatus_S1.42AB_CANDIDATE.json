@@ -9,7 +9,8 @@
     "sha256": "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4",
     "status": "ACCEPTED_FULL_NORMAL_STACK",
     "acceptance_record": "Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md",
-    "runtime_evidence": "RuntimeEvidence/S1.42Z/20260904T135820Z/"
+    "runtime_evidence": "RuntimeEvidence/S1.42Z/20260904T135820Z/",
+    "raw_log_sha256": "ca61e82e5a7d12f96dcb51849e291582df4d45568da4fa1e10b476551c897db8"
   },
   "rejected_candidate": {
     "build_id": "S1.42AA",
@@ -17,16 +18,17 @@
     "sha256": "0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364",
     "status": "RUNTIME_FAIL_NOT_ACCEPTED",
     "runtime_evidence": "RuntimeEvidence/S1.42AA/20260904T153744Z/",
-    "failure_reason": "Inject Dynamic Matching Weights=false did not equalize effective LethalLevelLoader dungeon rarities; Offense still contained author-weight values from 20 through 300.",
+    "failure_reason": "Inject Dynamic Matching Weights=false did not equalize effective LethalLevelLoader dungeon rarities; Offense still contained author/planet/mod weight values from 20 through 300 because LLL retains the highest matching rarity.",
     "black_mesa_generated": true,
-    "separate_map_pathfinding_finding": "Black Mesa run showed repeated LethalMin unpathable entrance/ToShip routing consistent with the user-observed Pikmin stuck on a table; deferred from S1.42AB."
+    "separate_map_pathfinding_finding": "Black Mesa run showed repeated LethalMin unreachable entrance and Unpathable ToShip routing consistent with the user-observed Pikmin stuck on a table while carrying scrap; deferred from S1.42AB.",
+    "separate_work_no_task_finding": "Two Work state with no task assigned warnings occurred in a separate White-Pikmin lifecycle sequence; Leader-null remained 0 and Fatal remained 0."
   },
   "active_runtime_candidate": {
     "build_id": "S1.42AB",
     "profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
     "profile_name": "LC V1 S1.42AB Interior Weight Normalization",
     "sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
-    "status": "BUILD_PASS_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
+    "status": "BUILD_PASS_LOCAL_IMPORT_PASS_GAMEPLAY_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
     "successful_build_run": 33892396551,
     "automated_build_commit": "9bf3085d82990ca565ad81f992d896855c21f1c6",
     "candidate_record": "Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md",
@@ -34,8 +36,12 @@
     "patch_source": "Patches/S142ABInteriorWeightNormalization/",
     "snapshot": "ProfileSources/S1.42AB/",
     "zip_members": 334,
-    "changed_existing_members": ["export.r2x"],
-    "added_members": ["BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll"],
+    "changed_existing_members": [
+      "export.r2x"
+    ],
+    "added_members": [
+      "BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll"
+    ],
     "removed_members": [],
     "mod_state_changes": [],
     "mod_additions": [],
@@ -46,6 +52,17 @@
     "architecture": "LLL determines viable/excluded flows first; project-local Harmony Postfix normalizes only positive rarity values in the already-returned viable list to 100 without changing list membership.",
     "authoritative_runtime_marker": "[InteriorWeightNormalization] Final effective viable pool",
     "runtime_primary_comparison_moon": "Offense",
+    "local_import": {
+      "status": "PASS_CURRENT_GALE_PROFILE",
+      "replacement_helper": "RuntimeTools/ReplaceActiveGaleProfile.ps1",
+      "helper_revision": "2026-09-04-import-uia-v2.1-download-hotfix",
+      "helper_blob_sha": "9458f427b538615249714e7f064f3107d6dcd36c",
+      "validated_commit": "f711f53f4971f97200ed3605479ef887a14b243d",
+      "archive_export_r2x_sha256": "331c01bfe5eda5d4ce9bc2a887fd322b302f32dccf9d95918d6c7d0c7fb6cf40",
+      "end_to_end_user_validated": true,
+      "manual_interaction_after_profile_number_and_y": false,
+      "reimport_required_before_immediate_runtime_test": false
+    },
     "runtime_gate": {
       "startup_main_menu_lobby": "OPEN",
       "plugin_load_and_exact_lll_1_7_12_validation": "OPEN",
@@ -53,6 +70,7 @@
       "final_effective_viable_pool_all_positive_100": "OPEN",
       "no_excluded_flow_insertion": "OPEN",
       "normal_dungeon_generation": "OPEN",
+      "accepted_s1_42z_gameplay_regression_check": "OPEN",
       "leader_null": "MUST_BE_0",
       "fatal": "MUST_BE_0",
       "work_no_task": "EXPECTED_0_CORRELATE_SEPARATELY_IF_REPRODUCED"
@@ -94,6 +112,7 @@
     "buildspec_base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
     "buildspec_base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
     "runtime_active_build": "S1.42AB",
+    "runtime_inbox_current_only_gitkeep": true,
     "successor_armed": false
   },
   "deferred_scopes": [
@@ -105,7 +124,13 @@
     "final long full-stack acceptance",
     "AdditionalNetworking repair only with reproducible user-facing evidence",
     "LethalMin teardown repair only with stronger evidence",
-    "cosmetic documentation cleanup"
+    "cosmetic documentation cleanup",
+    "isolated future evaluation of woah25-LethalEscapeUpdated 2.5.0 after the AB gate"
   ],
-  "exact_next_step": "Use the canonical Gale replacement helper to import LC V1 S1.42AB Interior Weight Normalization with Advanced options -> Import all files. Run one normal Offense round, enter the generated interior, then upload the complete LogOutput.log using the exact S1.42AB uploader in Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md. Judge equalization from the post-normalization [InteriorWeightNormalization] Final effective viable pool marker, not from LLL's earlier pre-Postfix Viable ExtendedDungeonFlows line."
+  "handover": {
+    "final_handover": "Current/100_FINAL_HANDOVER_S1.42Z_ACCEPTED_S1.42AB_RUNTIME_NEXT.md",
+    "repository_audit": "Current/101_REPOSITORY_HANDOVER_AUDIT_S1.42AB.md",
+    "recent_work": "Current/06_RECENT_WORK_S1.42AA-S1.42AB.md"
+  },
+  "exact_next_step": "Do not re-import S1.42AB. Run one normal Offense gameplay round with the already-imported LC V1 S1.42AB Interior Weight Normalization profile, enter the generated interior, then upload the complete fresh LogOutput.log using the exact S1.42AB uploader in Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md. Judge equalization from the post-normalization [InteriorWeightNormalization] Final effective viable pool marker, not from LLL's earlier pre-Postfix Viable ExtendedDungeonFlows line. Do not build a successor before analyzing this runtime evidence."
 }
