@@ -63,6 +63,9 @@ jobs:
       - name: Validate repository knowledge architecture
         run: python RepositoryTools/knowledge_architecture_validator.py
 
+      - name: Validate persistent ChatGPT handover workflow
+        run: python RepositoryTools/handover_workflow_validator.py
+
       - name: Validate actual artifact and runtime bytes
         run: python RepositoryTools/artifact_byte_integrity_validator.py
 
