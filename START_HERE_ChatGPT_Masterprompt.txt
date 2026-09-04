@@ -29,7 +29,35 @@ READ FIRST, COMPLETELY:
 
 Chronologically newer confirmed documents override older version-specific wording.
 
-The planned repository cleanup is now formally a limited-context information-architecture overhaul. Canonical plan: Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md. Machine requirements: Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json. Do not execute that overhaul in a way that disturbs the active S1.42AC runtime gate.
+======================================================================
+SPECIAL ROUTE — IF THE USER STARTS THE REPOSITORY OVERHAUL
+======================================================================
+
+If the user explicitly asks to start, perform, execute, begin or carry out the planned repository overhaul / repository rework / information-architecture cleanup / ChatGPT retrieval hardening, DO NOT improvise from old cosmetic-cleanup wording.
+
+Immediately switch to the dedicated overhaul bootstrap and read completely, in this order:
+
+1. OVERHAUL_START_HERE_ChatGPT.txt
+2. Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md
+3. Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md
+4. Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json
+5. the then-current README / START_HERE / Current state / project-status JSON / BuildSpecs/current.json / RuntimeInbox/ACTIVE_BUILD.txt
+
+Then re-resolve the actual project state at that future time. Do not assume S1.42AC is still current merely because these planning documents were created during its runtime gate.
+
+Hard pre-overhaul gate:
+- freeze the exact source HEAD;
+- create a SEPARATE standalone backup repository of the complete pre-overhaul state;
+- prefer mirror-style history/branch/tag preservation where technically practical;
+- verify the backup against the frozen checkpoint;
+- create Current/PRE_OVERHAUL_BACKUP_MANIFEST.json;
+- only after verification may structural changes begin.
+
+A branch/tag/release inside this repository alone does NOT satisfy the required standalone backup.
+
+The overhaul must remain separate from gameplay/config/mod/code changes and must follow the binding phase order in Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md. If the overhaul spans chats, repository state must be updated before each handover; do not depend on chat memory.
+
+The final target is deterministic limited-context retrieval: compact bootstrap -> knowledge map -> canonical topic source -> evidence/config/code/history, with search only as fallback, explicit current-vs-history authority, build lineage, redirects/supersession, readable binary/profile evidence, CI validation, answerability tests, and <=3 hops from bootstrap to every major current topic.
 
 ======================================================================
 ACCEPTED BASELINE
@@ -246,6 +274,6 @@ Keep separate unless the user explicitly selects/groups scope:
 - final long full-stack acceptance;
 - AdditionalNetworking repair only with reproducible user-facing evidence;
 - LethalMin teardown repair only with stronger evidence;
-- repository information-architecture overhaul per Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md, including cosmetic documentation drift cleanup.
+- repository information-architecture overhaul: start from OVERHAUL_START_HERE_ChatGPT.txt and follow Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md + Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md + Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json; cosmetic documentation drift cleanup is only a subordinate part.
 
 Known older stale wording/comments are historical non-functional drift. Newer Current documents, actual code/config and fresh runtime evidence are authoritative.
