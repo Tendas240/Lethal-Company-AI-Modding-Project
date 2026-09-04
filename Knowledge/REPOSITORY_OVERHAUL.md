@@ -1,57 +1,83 @@
 # Repository Information-Architecture Overhaul
 
-**Status:** CURRENT / EXECUTION IN PROGRESS  
-**Authority:** semantic router to the binding overhaul contract and execution state  
+**Status:** COMPLETE / POST-ACCEPTANCE REAUDIT PASS  
+**Authority:** canonical semantic summary of the completed overhaul and its validation  
 **Canonical-For:** `repository_overhaul`  
-**Evidence:** `OVERHAUL_START_HERE_ChatGPT.txt`, `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`, `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md`, `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`  
+**Evidence:** `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`, `Current/OVERHAUL_VALIDATION_RESULTS.json`, `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`  
 **Machine State:** `Current/OVERHAUL_EXECUTION_STATE.json`  
-**Related:** `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md`, `Current/REPOSITORY_KNOWLEDGE_INVENTORY.md`  
+**Related:** `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md`, `Current/REPOSITORY_MIGRATION_MANIFEST.md`, `Current/DOCUMENT_AUTHORITY.md`  
 **Last-Validated:** 2026-09-04
 
-## Goal
+## Result
 
-Convert the chronology-heavy repository into deterministic retrieval architecture for fresh ChatGPT sessions while preserving all gameplay evidence, historical reasoning and recovery provenance.
+The one-time repository information-architecture overhaul is complete. The repository now uses deterministic semantic routing for fresh ChatGPT sessions while preserving gameplay evidence, historical reasoning and recovery provenance.
 
-Target retrieval path:
+Current retrieval path:
 
 `README / START_HERE -> Current State + Knowledge Map -> Topic Canonical Source -> Evidence / Config / Code / History`
 
-Repository search becomes fallback rather than the primary way to answer ordinary project questions.
+Repository search is a fallback rather than the primary way to answer ordinary project questions.
 
-## Binding execution order
+## Completed execution order
 
-0. establish exact pre-overhaul state;
-1. create and verify standalone backup;
-2. inventory and extract knowledge before moves;
-3. create new navigation/knowledge map before removing old navigation;
-4. create build lineage and authority graph;
-5. separate live truth from chronology;
-6. harden binary/large-evidence retrieval;
-7. migrate references/redirects with conservative deletion discipline;
-8. implement repository knowledge validator + CI;
-9. implement answerability/routing regression suite;
-10. harden atomic current-state transitions;
-11. final validation against requirements and backup.
+All binding phases 0 through 11 completed in order:
 
-## Completed gates
+0. exact pre-overhaul state established;
+1. standalone backup created and verified;
+2. knowledge inventoried/extracted before moves;
+3. new navigation/knowledge map created before old navigation was reduced;
+4. build lineage and authority graph created;
+5. live truth separated from chronology;
+6. binary/large-evidence retrieval hardened;
+7. references/redirects migrated with conservative deletion discipline;
+8. repository validator + CI implemented;
+9. answerability/routing regression suite implemented;
+10. atomic current-state transitions hardened;
+11. final validation performed against requirements and backup.
 
-- Phase 0: exact source state frozen at commit `5dbd0e637a480d8591773e422bbca4b0654cad20`, tree `0e17aac410cf600a164396b5586b5b50f084df22`.
-- Phase 1: verified standalone backup repository established; machine manifest at `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json`.
-- Phase 2: repository knowledge inventory/classification recorded in `Current/REPOSITORY_KNOWLEDGE_INVENTORY.md` + `.json`.
+The implementation remained non-destructive: no legacy evidence files were mass-moved or deleted, and gameplay/config/mod/profile/project-local patch behavior was not changed.
 
-For the exact active phase, always read `Current/OVERHAUL_EXECUTION_STATE.json`; do not infer progress from this prose if the execution state is newer.
+## Recovery gate
 
-## Non-negotiable migration rules
+- Frozen source commit: `5dbd0e637a480d8591773e422bbca4b0654cad20`
+- Frozen source tree: `0e17aac410cf600a164396b5586b5b50f084df22`
+- Standalone recovery repository: `Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904`
+- Primary backup manifest: `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json`
+- Verification: **PASS**
+
+The same-repository freeze branch is supplemental only; the standalone repository is the independent recovery point.
+
+## Post-acceptance re-audit
+
+After initial acceptance, the overhaul was rechecked directly against the frozen original pre-overhaul instructions. That stricter audit found several information-architecture gaps and validator-calibration issues, including stale historical/current wording, an obsolete machine-state name in the human Knowledge Map and incomplete enforcement of one-time backup-ordering requirements.
+
+Those gaps were corrected without changing gameplay behavior. The permanent CI now runs:
+
+1. generated current-navigation validation;
+2. repository knowledge/state/reference validation;
+3. strict frozen original-overhaul-contract validation;
+4. semantic answerability routing regression.
+
+The re-audit authority is `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`. Machine result: `Current/OVERHAUL_VALIDATION_RESULTS.json`, status `POST_ACCEPTANCE_REAUDIT_PASS`.
+
+A final confirmation workflow run after the re-audit fixes passed all permanent gates: run `33920068335` at commit `5a42fe7c6a69c8cef9692fba090d3da6af566ccd`.
+
+## Historical execution-contract rule
+
+`OVERHAUL_START_HERE_ChatGPT.txt`, `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md` and `Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md` are retained as historical one-time execution contracts. Their preserved planned/pending wording must not be interpreted as current project state.
+
+Ordinary takeover now starts at `START_HERE_ChatGPT_Masterprompt.txt`, then `Current/00_CURRENT_STATE.md` and `Current/PROJECT_KNOWLEDGE_MAP.md`.
+
+## Continuing safeguards
 
 - preserve information/provenance before reducing duplication;
-- do not alter gameplay configs, mod versions, profile behavior or project-local runtime behavior as part of the overhaul;
-- do not delete merely because something looks old;
-- create navigation before removing old navigation;
-- classify historical stale-current wording explicitly;
-- active/accepted binary profiles require readable ProfileSources + FILE_INDEX;
-- validator and answerability suite must pass before completion;
-- rollback to/compare with the verified standalone backup if discoverability or authority gets worse.
+- do not delete historical evidence merely because it looks redundant;
+- use `Current/DOCUMENT_AUTHORITY.md` when older documents contain stale `current` wording;
+- every future architecture change remains subject to `.github/workflows/knowledge-architecture.yml`;
+- rollback/compare against the verified standalone backup if routing, authority or discoverability regresses.
 
-## Completion contract
+## Current gameplay handoff
 
-The overhaul is complete only when the plan, playbook and machine requirements all pass, including zero broken canonical references, zero orphan canonical/current documents, one authoritative accepted baseline/current-candidate state, all major topics indexed within at most three hops, complete useful build lineage, readable active/accepted profile evidence, CI validation PASS and answerability routing PASS.
+The overhaul itself is closed. Accepted gameplay baseline remains **S1.42AB**. S1.42AC remains formally rejected/not promoted, with its old BCMER weight interpretation superseded by `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`.
+
+No runtime test is outstanding and no successor is armed. Resume normal project work from `Current/CURRENT_STATE.json` and `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
