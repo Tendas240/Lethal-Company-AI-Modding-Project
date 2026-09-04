@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-04",
+  "repository_is_source_of_truth": true,
+  "accepted_baseline": {
+    "build_id": "S1.42Z",
+    "profile": "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z",
+    "profile_name": "LC V1 S1.42Z Jetpack Pikmin Retune",
+    "sha256": "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4",
+    "status": "ACCEPTED_FULL_NORMAL_STACK",
+    "acceptance_record": "Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md"
+  },
+  "active_runtime_candidate": {
+    "build_id": "S1.42AA",
+    "profile": "Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z",
+    "profile_name": "LC V1 S1.42AA Interior Weight Equalization",
+    "sha256": "0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364",
+    "status": "BUILD_PASS_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
+    "build_run": 33884101262,
+    "automated_build_commit": "4d5e5e6c86a0bc8ab10e0adc32ab22ae6f5c0156",
+    "candidate_record": "Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md",
+    "plan": "BuildSpecs/S1.42AA_PLAN.md",
+    "snapshot": "ProfileSources/S1.42AA/",
+    "zip_members": 333,
+    "changed_existing_members": [
+      "BepInEx/config/LethalLevelLoader.cfg",
+      "export.r2x"
+    ],
+    "added_members": [],
+    "mod_state_changes": [],
+    "mod_additions": [],
+    "mod_removals": [],
+    "functional_change": {
+      "path": "BepInEx/config/LethalLevelLoader.cfg",
+      "key": "Inject Dynamic Matching Weights",
+      "from": true,
+      "to": false,
+      "purpose": "stop mod-author Level/Dungeon MatchingProperties from being re-injected over the already normalized equal-weight project configuration"
+    },
+    "preserved_equal_weight_config": {
+      "lethal_level_loader_tag_weights": "Vanilla:100,Custom:100",
+      "black_mesa_native_owner_weights": "lethal_company:vanilla=+100,lethal_company:custom=+100"
+    },
+    "runtime_primary_comparison_moon": "Offense",
+    "runtime_gate": {
+      "startup_main_menu_lobby": "OPEN",
+      "offense_generation_and_entry": "OPEN",
+      "eligible_viable_dungeon_weights_all_common_100": "OPEN",
+      "vanilla_interiors_remain_viable": "OPEN",
+      "black_mesa_no_duplicate_owner_regression": "OPEN",
+      "no_dungeon_generation_failure": "OPEN",
+      "work_no_task": "MUST_BE_0",
+      "leader_null": "MUST_BE_0",
+      "fatal": "MUST_BE_0",
+      "new_project_local_exception_class": "MUST_BE_0"
+    }
+  },
+  "permanent_interior_rule": "Every eligible installed interior should have the same effective selection weight on vanilla and custom moons; future added interiors must be normalized into the same architecture before acceptance unless an explicitly documented technical incompatibility requires an exception.",
+  "technical_exception_guard": "Preserve Shatteredrooms Experimentation/Embrion restriction until dedicated evidence proves removal safe; do not accept S1.42AA if the global LLL change creates an unsafe generation path.",
+  "controllers": {
+    "buildspec_current_enabled": false,
+    "buildspec_current_id": "IDLE_AFTER_S1.42AA_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "buildspec_base_profile": "Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z",
+    "buildspec_base_sha256": "0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364",
+    "runtime_active_build": "S1.42AA",
+    "successor_armed": false
+  },
+  "deferred_scopes": [
+    "CullFactory junkrooms and shatteredrooms exceptions",
+    "Mausoleum fog reduction",
+    "Functional Microwave spawn rarity reduction",
+    "BCMER EventTypes fixed to 8 x 12.5 percent",
+    "final long full-stack acceptance",
+    "AdditionalNetworking repair only with reproducible user-facing evidence",
+    "LethalMin DespawnLumiknulls repair only with stronger evidence",
+    "cosmetic documentation cleanup"
+  ],
+  "gale_profile_replacement_helper_status": "PENDING_USER_VERIFICATION_NOT_CANONICAL",
+  "exact_next_step": "Import LC V1 S1.42AA Interior Weight Equalization in Gale with Advanced options -> Import all files. Run a normal Offense gameplay round, verify generation/entry and normal gameplay, then upload the complete fresh LogOutput.log using the exact candidate-specific PowerShell uploader in Current/91. Do not build a successor before analyzing this runtime evidence."
+}
