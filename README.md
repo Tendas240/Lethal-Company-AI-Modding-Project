@@ -6,7 +6,7 @@ GitHub is the canonical source of truth for this project.
 
 Game: **Lethal Company V81**
 
-### Newest built candidate
+### Current accepted full-normal-stack baseline
 
 **S1.42U — BCMER 1.71.0 Reactivation Gate**
 
@@ -20,146 +20,111 @@ Build verification:
 
 `Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
 
-GitHub Actions run `33818241873`: **success**
+Runtime acceptance:
 
-**Runtime validation is still required. Do not treat S1.42U as accepted gameplay state yet.**
-
-### Accepted reference roles
-
-Last fully accepted full normal gameplay baseline:
-
-**S1.41 — BCMER Reactivation**
-
-`Profiles/LC V1 S1.41 BCMER Reactivation.r2z`
-
-SHA-256:
-
-`d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b`
-
-Newest runtime-accepted technical descendant:
-
-**S1.42T — Normal Enemy Restore**
-
-`Profiles/LC V1 S1.42T Normal Enemy Restore.r2z`
-
-SHA-256:
-
-`a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10`
-
-Runtime verdict:
-
-**PASS — normal non-isolated enemy population restored.**
+`Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
 
 Evidence:
 
-`RuntimeEvidence/S1.42T/20260903T222109Z/`
+`RuntimeEvidence/S1.42U/20260904T082412Z/`
 
 Raw log SHA-256:
 
-`b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f`
+`0a2e0839b106a7d6f9867d186a835252bc72a869ef63a62517ae1971fd93c5fc`
 
-S1.41 remains the last fully accepted full-normal-stack baseline until S1.42U passes runtime.
+Runtime verdict:
 
-## S1.42U exact delta
+**PASS — exact BCMER 1.71.0 restored, normal enemy stack retained, no critical compatibility regression or gameplay-visible technical problem.**
 
-Base:
+S1.42U is now both the newest runtime-accepted technical descendant and the newest fully accepted full-normal-stack gameplay baseline.
 
-`Profiles/LC V1 S1.42T Normal Enemy Restore.r2z`
+S1.41 remains historical as the previous full-normal-stack baseline. S1.42T remains the clean accepted BCMER-off comparison point from the restoration chain.
 
-Only intended and verified package-state change:
+## S1.42U runtime highlights
 
-- `SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0`: **disabled -> enabled**
+- BCMER `1.71.0` loads and reports that patching completed;
+- S1.39 Compatibility Fixes `1.3.14` loads;
+- EnemyIsolation is disabled;
+- `ADDING ENEMY` = 13;
+- Work/no-task = 0;
+- Leader-null = 0;
+- S1.39 Compatibility Fixes Error = 0;
+- Fatal = 0;
+- no crash/freeze;
+- old disconnect-only Pikmin NoticeZone exception did not recur.
 
-Build result:
+## Restored moon/spawn state
 
-- 331 archive members;
-- changed existing member only `export.r2x`;
-- no added/removed members;
-- no config patch;
-- no local plugin/compatibility-code change.
+S1.42U `LethalLevelLoader.cfg` is byte-identical to the canonical S1.42C restore baseline. This preserves all configured per-moon inside/daytime/nighttime power counts and enemy spawning lists.
 
-Preserved:
+SpawnCycleFixes also remains byte-identical to S1.42C and keeps:
 
-- EnemyIsolation off (`Isolated Enemy Regression = false`);
-- compatibility plugin v1.3.14;
-- compatibility DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
-- `Thumper Bite Limit = 3`;
-- Crawler absent from Attack Blacklist;
-- accepted Pikmin compatibility behavior.
+`Consistent Spawn Times = true`
 
-Do not upgrade BCMER to 2.0.0.
+The intended standardized first spawn wave at approximately 7:39 AM is therefore preserved, including outside/daytime enemy participation rather than the possible vanilla delay while vents are occupied.
 
-## Exact next step
+## Next planned stage
 
-Import/run:
+**S1.42V — Post-BCMER Balance Tuning**
 
-`Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z`
+Plan:
 
-Because the profile contains the project-local compatibility DLL, import it in Gale using:
+`BuildSpecs/S1.42V_PLAN.md`
 
-**Advanced options -> Import all files**
+Status:
 
-The first S1.42U runtime log must contain the plugin load marker:
+**plan-only / not armed**
 
-`Loading [S1.39 Compatibility Fixes 1.3.14]`
+Confirmed/requested items:
 
-If that marker is absent, the compatibility behavior has not been validly runtime-tested even if the game starts.
+- ImmortalSnail spawn rarity/weight `80 -> 40`;
+- CodeRebirth Functional Microwave volume is currently `0.7`; proposed next value `0.5`;
+- modest Jetpack acceleration increase requested, exact narrow implementation still to be frozen.
 
-Perform a normal gameplay run with BCMER active, then upload the complete `LogOutput.log` to:
+Jetpack note: ButteRyBalance's current `Control Scheme = V49` is a broad handling/inertia mode, not a small numeric acceleration knob. More Ship Upgrades' `Jet Fuel` is an actual acceleration upgrade, currently `20` initial / `20` incremental, but only affects purchased upgrade tiers. Do not fake an always-on base acceleration change through the wrong owner.
 
-`RuntimeInbox/Current/`
-
-`RuntimeInbox/ACTIVE_BUILD.txt` is already `S1.42U`.
-
-Runtime gate requires startup success, exact BCMER 1.71.0 active, normal enemies still spawning, no crash/freeze, no Work/no-task or Leader-null regression, no new compatibility exception flood, no catastrophic BCMER system/event regression, and accepted Pikmin behavior intact.
-
-Keep the S1.42T raw log through this immediate BCMER-on comparison.
+No successor build is armed.
 
 ## ChatGPT — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
-3. `Current/00_CURRENT_STATE.md`
-4. `Current/01_HANDOVER_CORE.md`
-5. `Current/Projektstatus_S1.42U.json`
-6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-7. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
-8. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-9. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
-10. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-11. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
-12. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-13. `BuildSpecs/S1.42U_PLAN.md`
-14. `BuildSpecs/current.json`
-15. `RuntimeInbox/ACTIVE_BUILD.txt`
+2. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
+3. `Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md`
+4. `Current/00_CURRENT_STATE.md`
+5. `Current/01_HANDOVER_CORE.md`
+6. `Current/Projektstatus_S1.42U.json`
+7. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+8. `BuildSpecs/S1.42V_PLAN.md`
+9. `Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md`
+10. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+11. `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+12. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+13. `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
+14. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+15. `BuildSpecs/current.json`
+16. `RuntimeInbox/ACTIVE_BUILD.txt`
 
-`Current/75_FINAL_HANDOVER_S1.42T_PASS_S1.42U_NEXT.md` and `Current/76_REPOSITORY_HANDOVER_AUDIT_S1.42T.md` are preserved as the immediately preceding pre-build handover state. Chronologically newer confirmed S1.42U files override their old "S1.42U not built" status.
+Chronologically newer confirmed documents override older version-specific handovers.
 
-## Permanent anti-regression references
+## Permanent anti-regression state
 
-Patch safety:
+- exact BCMER 1.71.0 stays enabled unless a controlled diagnostic gate explicitly says otherwise;
+- compatibility plugin v1.3.14 / DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
+- EnemyIsolation off;
+- `Thumper Bite Limit = 3`;
+- Crawler absent from Attack Blacklist;
+- Puffer -> Pikmin protection;
+- never disable complete `LethalMin.BaboonBirdPikminEnemy` merely to block Hawk -> Pikmin interaction; preserve native inherited death/unlatch lifecycle.
+
+Patch policy:
 
 `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-
-Focused S1.42S lifecycle acceptance:
-
-`Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
-
-Corrected S1.42R root cause:
-
-`Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`
-
-Canonical S1.42C enemy restore baseline:
-
-`Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-
-Never disable complete `LethalMin.BaboonBirdPikminEnemy` merely to block Hawk -> Pikmin interaction; preserve native inherited death/unlatch lifecycle and use the narrowest exact interception point.
 
 ## Runtime-log infrastructure
 
 Normal logs use `RuntimeInbox/Current/` and streaming every-line analysis.
 
-Very large logs use the disposable `runtime-large` branch and `RuntimeInbox/Large/`, with compact analysis/provenance on `main`, a temporary 14-day raw Actions artifact, and query-on-demand extraction through `RuntimeAnalysis/QUERY.json`.
+Very large logs use the disposable `runtime-large` branch and `RuntimeInbox/Large/`, compact analysis/provenance on `main`, a temporary raw Actions artifact, and query-on-demand extraction through `RuntimeAnalysis/QUERY.json`.
 
 Canonical policy:
 
@@ -167,7 +132,7 @@ Canonical policy:
 
 ## Known non-functional drift
 
-`Current/02_TECHNICAL_BASELINE.md` contains older chronology subsections with stale local "current" wording, and `Patches/S139CompatibilityFixes/Plugin.cs` contains historical comments that do not perfectly describe accepted v1.3.14 behavior. Current code/config/runtime evidence plus chronologically newer canonical docs are authoritative. Do not mix cosmetic cleanup into the open S1.42U runtime gate.
+`Current/02_TECHNICAL_BASELINE.md` contains older chronology subsections with stale local "current" wording, and `Patches/S139CompatibilityFixes/Plugin.cs` contains historical comments that do not perfectly describe accepted v1.3.14 behavior. Current code/config/runtime evidence plus chronologically newer canonical docs are authoritative. Cleanup remains separate maintenance.
 
 ## Repository-first rule
 
