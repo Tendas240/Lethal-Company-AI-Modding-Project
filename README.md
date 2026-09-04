@@ -167,6 +167,18 @@ Patch policy:
 
 `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
 
+## Gale import / project-local DLL guard
+
+The accepted profile contains the project-local Compatibility Fixes DLL. When importing S1.42U or any successor profile that carries this DLL in Gale, use:
+
+**Advanced options -> Import all files**
+
+A successor runtime test does not count as testing the compatibility behavior unless its log contains:
+
+`Loading [S1.39 Compatibility Fixes 1.3.14]`
+
+If that marker is absent, fix the import/runtime load path before drawing conclusions about compatibility behavior.
+
 ## Runtime-log infrastructure
 
 Normal logs use `RuntimeInbox/Current/` and streaming every-line analysis.
