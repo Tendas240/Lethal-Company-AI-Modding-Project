@@ -1,7 +1,7 @@
 # Gale Missing-Profile Dialog Automation Revision
 
 **Date:** 2026-09-04  
-**Status:** IMPLEMENTED / USER VALIDATION STILL OPEN / TWO OBSERVED FALLBACK RUNS
+**Status:** USER-VALIDATED / PROMOTED INTO CANONICAL HELPER
 
 ## Triggering observation
 
@@ -35,7 +35,7 @@ Canonical implementation remains:
 
 `RuntimeTools/ReplaceActiveGaleProfile.ps1`
 
-The helper still preserves all previously validated safety properties:
+The helper preserves all previously validated safety properties:
 
 - repository-driven exact `ACTIVE_BUILD` / `AUTO_BUILD_RESULT` match;
 - download before destructive action;
@@ -43,75 +43,50 @@ The helper still preserves all previously validated safety properties:
 - numeric local-profile selection;
 - explicit `y/n` confirmation;
 - no fuzzy build/profile matching;
-- no local repository clone requirement;
-- `Advanced options -> Import all files` remains a manual user gate.
+- no local repository clone requirement.
 
-After the selected local profile directory is deleted and the verified `.r2z` opens Gale, the helper performs a best-effort targeted Windows UI Automation pass for the known Gale `Missing Profiles` dialog.
+After the selected local profile directory is deleted and the verified `.r2z` opens Gale, the helper performs targeted Windows UI Automation for the known Gale `Missing Profiles` dialog.
 
-The current helper revision filters candidate controls by their actual supported UIA interaction patterns rather than trusting duplicate visible text nodes from the Gale/Chromium accessibility tree. It also emits diagnostic counts when the actionable selector cannot be resolved uniquely.
+The working implementation filters the Gale/WebView accessibility tree by actual interaction patterns rather than trusting duplicate visible text nodes:
 
-The single-missing-profile automation remains fail-closed. If the expected actionable controls are not uniquely resolved, the helper does not click anything; it asks the user to resolve `Delete -> Submit` manually and waits for confirmation.
+1. exactly one actionable `Select an action` element with `ExpandCollapsePattern` must be present;
+2. that selector is expanded;
+3. exactly one actionable `Delete` item with `SelectionItemPattern` must be present;
+4. `Delete` is selected;
+5. exactly one actionable `Submit` control with `InvokePattern` must be present;
+6. `Submit` is invoked;
+7. the helper verifies that `Missing Profiles` disappears.
 
-## Validation attempts on S1.42AB
+If any condition fails or more than one unresolved row is exposed, the helper does not click blindly and falls back to manual resolution.
 
-### Attempt 1
+## Validation history
 
-The first UIA implementation fell back with:
+Two early tests of mutable `main/.../ReplaceActiveGaleProfile.ps1` URLs fell back with `ambiguous`. One of those screenshots lacked diagnostics that were mandatory in the newest revision, so stale Raw-GitHub/CDN content was suspected.
 
-`ambiguous`
-
-The `Missing Profiles` dialog remained open, the user had to select `Delete`, press `Submit`, then return to PowerShell and press Enter. The final `Advanced options -> Import all files -> Import` step also remained manual.
-
-This first revision used raw accessible-name uniqueness and was superseded.
-
-### Attempt 2 / cache ambiguity
-
-A second user reproduction again showed the same `ambiguous` fallback and manual interaction requirement.
-
-However, the screenshot from that run does **not** contain the mandatory diagnostic line added by the newer interaction-pattern revision, such as:
-
-`UIA diagnostic: actionable missing-profile selectors = <count>`
-
-The invoked command used the same mutable Raw GitHub `main/.../ReplaceActiveGaleProfile.ps1` URL repeatedly shortly after repository updates. Therefore this run cannot prove that the latest helper blob executed; a stale Raw-GitHub/CDN response is a plausible explanation.
-
-The next validation must therefore use a commit-pinned Raw URL (or an explicit cache-busting launcher) so the executed script revision is unambiguous.
-
-Current interaction-pattern helper blob:
-
-`54fddc6731ef97377730d3eb741826cfd738aa08`
-
-Commit that installed that revision:
+The user then restored the real pre-S1.42AB replacement state with S1.42AA present locally and S1.42AB not yet imported and tested the exact commit-pinned helper revision from:
 
 `2e3aaf5e9dc8381b979ce85b03e38970cf55fbf4`
 
-## Exact next helper validation
+Result:
 
-Reproduce the known starting condition only if the user wants to continue helper validation:
+- profile download and SHA-256 verification succeeded;
+- S1.42AA selection/deletion flow succeeded;
+- Gale opened;
+- `Missing Profiles` was resolved automatically;
+- the normal S1.42AB import dialog became available without manual `Delete -> Submit` interaction.
 
-- S1.42AA exists normally in Gale;
-- S1.42AB is not yet locally imported/downloaded for that reproduction;
-- invoke the helper by the exact commit-pinned URL for commit `2e3aaf5e9dc8381b979ce85b03e38970cf55fbf4`;
-- select S1.42AA and confirm deletion with `y`;
-- observe the PowerShell output when `Missing Profiles` appears.
+Therefore the missing-profile UI Automation path is now **user-validated** for the actual Gale/WebView environment used by this project.
 
-Acceptance for the UIA branch requires automatic `Delete -> Submit` with no manual dialog interaction. If it still falls back, the diagnostic selector count must be captured before changing the implementation again.
+## Cache lesson
 
-## Separate architecture finding: Gale native overwrite
+During helper-development validation, use a commit-pinned Raw GitHub URL so the exact script revision is deterministic. Mutable `main` is appropriate again only after a helper revision has been validated and stabilized.
 
-Current Gale import source was also inspected after the failed UIA attempts. Gale supports overwriting an existing profile natively. With `merge = false`, Gale's `incremental_update` removes Thunderstore mods that are not in the imported profile, reconciles enabled states, and installs missing/new versions. Its `import_config` path removes extra destination config files when not merging and, with `import_all = true`, copies all profile files rather than only normally allowed config formats.
+## Successor work
 
-This is a promising future redesign because it can avoid externally deleting a profile before Gale starts and therefore avoid creating the `Missing Profiles` state at all. It is not yet the canonical workflow because Gale's overwrite path uses the selected existing profile name; the project still needs a clean strategy for ending with the new canonical build/profile name rather than retaining the old name.
+The remaining manual boundary after this validation was:
 
-## Explicitly not automated yet
+`Advanced options -> Import all files -> Import`
 
-The helper does not yet automate:
+That successor automation is tracked in:
 
-- `Advanced options`;
-- `Import all files`;
-- the final Gale `Import` button;
-- arbitrary missing profiles when more than one is present;
-- direct SQLite/database mutation;
-- screen-coordinate mouse clicks;
-- blind `Tab`/`Enter`/arrow-key sequences.
-
-Until a specific UIA path is proven on the user's actual Gale/WebView environment, these remain manual.
+`Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`
