@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-04",
+  "status": "PHASE_1_BLOCKED_STANDALONE_BACKUP_REQUIRED",
+  "authority": "Execution-state checkpoint for the binding repository information-architecture overhaul",
+  "canonical_start": "OVERHAUL_START_HERE_ChatGPT.txt",
+  "canonical_plan": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
+  "canonical_playbook": "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md",
+  "canonical_requirements": "Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json",
+  "last_completed_phase": 0,
+  "current_phase": 1,
+  "structural_overhaul_started": false,
+  "source_repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "source_default_branch": "main",
+  "frozen_source_commit_sha": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+  "frozen_source_tree_sha": "0e17aac410cf600a164396b5586b5b50f084df22",
+  "same_repository_checkpoint_branch": "pre-overhaul-freeze-20260904-5dbd0e6",
+  "same_repository_checkpoint_verified": true,
+  "same_repository_checkpoint_is_not_sufficient_backup": true,
+  "phase_0_project_state": {
+    "game": "Lethal Company V81",
+    "accepted_baseline": {
+      "build_id": "S1.42AB",
+      "title": "Interior Weight Normalization",
+      "profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
+      "sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
+      "status": "ACCEPTED_FULL_NORMAL_STACK"
+    },
+    "latest_built_artifact": {
+      "build_id": "S1.42AC",
+      "title": "BCMER EventType Equal Distribution",
+      "sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+      "status": "FORMALLY_REJECTED_NOT_PROMOTED",
+      "corrected_weight_path_analysis": "Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md"
+    },
+    "runtime_test_outstanding": false,
+    "successor_armed": false,
+    "buildspec": {
+      "enabled": false,
+      "build_id": "IDLE_AFTER_S1.42AC_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED",
+      "base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
+      "base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca"
+    },
+    "runtime_active_build": "S1.42AB"
+  },
+  "top_level_inventory_at_frozen_checkpoint": [
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    "Archive",
+    "BuildSpecs",
+    "BuildSystem",
+    "Current",
+    "Logs",
+    "OVERHAUL_START_HERE_ChatGPT.txt",
+    "Patches",
+    "ProfileSources",
+    "Profiles",
+    "README.md",
+    "References",
+    "RuntimeAnalysis",
+    "RuntimeEvidence",
+    "RuntimeInbox",
+    "RuntimeTools",
+    "START_HERE_ChatGPT_Masterprompt.txt"
+  ],
+  "backup_gate": {
+    "required": true,
+    "standalone_repository_required": true,
+    "backup_repository": null,
+    "verification_result": "NOT_RUN",
+    "manifest_created": false,
+    "primary_manifest_path": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
+    "blocker": "No standalone pre-overhaul backup repository currently exists. The connected GitHub action surface in this session can read/write existing repositories but does not expose repository creation, and the execution environment has no authenticated GitHub CLI/token available for creating the required separate repository.",
+    "stop_condition_active": true
+  },
+  "exact_next_operation": "Create a separate standalone GitHub repository dedicated to the pre-overhaul backup, mirror the frozen source repository/history into it with frozen commit 5dbd0e637a480d8591773e422bbca4b0654cad20 preserved, mark the backup historical/read-only and not Source of Truth, then let ChatGPT verify commit/tree/history/path equivalence and create Current/PRE_OVERHAUL_BACKUP_MANIFEST.json before Phase 2 begins.",
+  "files_not_yet_safe_to_move_or_delete": "ALL tracked files; Phase 1 has not passed.",
+  "bootstrap_rewrite_allowed": false,
+  "history_reclassification_allowed": false,
+  "mass_move_or_delete_allowed": false,
+  "rollback_status": "CLEAN",
+  "notes": [
+    "No gameplay/config/mod/profile/project-local patch behavior was changed.",
+    "No structural information-architecture migration has begun.",
+    "The same-repository freeze branch is supplemental protection only and does not satisfy the binding standalone-backup requirement."
+  ]
+}
