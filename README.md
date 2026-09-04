@@ -14,11 +14,7 @@ Profile:
 
 `Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z`
 
-Gale profile name:
-
-`LC V1 S1.42Z Jetpack Pikmin Retune`
-
-Profile SHA-256:
+SHA-256:
 
 `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`
 
@@ -30,9 +26,56 @@ Machine-readable accepted state:
 
 `Current/Projektstatus_S1.42Z_ACCEPTED.json`
 
-S1.42U remains the previous pre-retune rollback artifact, but S1.42Z is now the latest accepted gameplay baseline.
+**Active runtime candidate:**
 
-## S1.42Z runtime evidence
+**S1.42AA — Interior Weight Equalization — BUILD PASS / RUNTIME OPEN / NOT ACCEPTED**
+
+Profile:
+
+`Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z`
+
+Gale profile name:
+
+`LC V1 S1.42AA Interior Weight Equalization`
+
+SHA-256:
+
+`0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364`
+
+Candidate record:
+
+`Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`
+
+Machine-readable candidate state:
+
+`Current/Projektstatus_S1.42AA_CANDIDATE.json`
+
+S1.42Z remains the accepted rollback baseline until S1.42AA passes fresh runtime validation.
+
+## Why S1.42AA exists
+
+The accepted S1.42Z LethalLevelLoader configuration already contains the project-normalized dungeon tag weights `Vanilla:100,Custom:100`, but it still had:
+
+`Inject Dynamic Matching Weights = true`
+
+which causes mod-author Level/Dungeon MatchingProperties to be injected again on every landing. Accepted S1.42Z runtime evidence on Offense therefore still showed unequal effective interior weights such as `300`, `275`, `250`, `75`, `70`, `50`, `35`, `25` and `20`.
+
+S1.42AA makes one functional change:
+
+`Inject Dynamic Matching Weights = false`
+
+Automated build verification shows exactly two changed archive members vs S1.42Z:
+
+- `BepInEx/config/LethalLevelLoader.cfg`;
+- `export.r2x` profile-name metadata.
+
+ZIP members remain `333`; added members = `0`; mod state/add/remove changes = `0`. No package or project-local DLL changed.
+
+Black Mesa remains on its dedicated native-owner path with `lethal_company:vanilla=+100,lethal_company:custom=+100`. Shatteredrooms' Experimentation/Embrion restriction remains a technical compatibility guard pending dedicated proof that removing it is safe.
+
+Permanent interior rule: every eligible installed interior should have the same effective selection weight on vanilla and custom moons. Future added interiors must be normalized into the same architecture before acceptance unless an explicitly documented technical incompatibility requires an exception.
+
+## S1.42Z accepted runtime evidence
 
 Evidence root:
 
@@ -42,78 +85,48 @@ Raw log SHA-256:
 
 `ca61e82e5a7d12f96dcb51849e291582df4d45568da4fa1e10b476551c897db8`
 
-Coverage:
+S1.42Z technical gate confirmed Jetpack `10 -> 18`, ACU + G.R.E.G. exact 18-curve providers ×`0.5`, Work/no-task `0`, Leader-null `0`, Compatibility Fixes Error `0`, relevant regression markers `0`, project-local Error-severity `0`, and Fatal `0`. The user accepted the runtime behavior.
 
-- 1,586,159 bytes;
-- 16,094 lines;
-- 15,325 parsed runtime events;
-- 32 Error-severity events;
-- Fatal = 0.
-
-Confirmed runtime gate:
-
-- `S1.42Z Jetpack Acceleration 1.0.0` loaded;
-- ButteRyBalance `0.7.0`, JetpackFixes `1.6.3`, More Ship Upgrades `3.14.1` validated;
-- exact Jetpack `10 -> 18` marker present;
-- `S1.42Z CodeRebirth Aerial Defense Spawn Tuning 1.0.0` loaded;
-- CodeRebirth `1.6.9`, DawnLib `0.9.25`, Dusk `0.9.25` validated;
-- Air Control Unit provider validated with exactly 18 curves;
-- G.R.E.G. / Advanced Airspace Control provider validated with exactly 18 curves;
-- both complete provider sets transactionally scaled ×0.5;
-- no aerial-defense contract refusal observed;
-- EnemyIsolation diagnostic isolation disabled;
-- Work/no-task = 0;
-- Leader-null = 0;
-- Compatibility Fixes Error = 0;
-- unspawned NetworkObjectReference marker = 0;
-- PikminNoticeZone regression marker = 0;
-- Fatal = 0;
-- neither S1.42Z project-local plugin emitted Error-severity output.
-
-The user reported the tested S1.42Z runtime behavior as fully satisfactory, so the subjective balance gate is closed.
-
-## Accepted S1.42Z tuning
+## Accepted S1.42Z tuning preserved in S1.42AA
 
 - Jetpack base acceleration `10 -> 18`;
-- More Ship Upgrades Jet Fuel `18 / 18`;
+- Jet Fuel `18 / 18`;
 - Jetpack Thrusters `25 / 20`;
 - Indoor Pikmin Spawn Chance `0.09`;
-- configured non-Purple Pikmin CarryStrength `3`;
+- configured non-Purple CarryStrength `3`;
 - Purple Pikmin CarryStrength `30`;
 - CodeRebirth Air Control Unit 18 exact curves ×`0.5`;
 - CodeRebirth G.R.E.G. 18 exact curves ×`0.5`;
 - Functional Microwave volume `0.15`;
 - Immortal Snail `Rarity = 40`, `Max Snails = 2`.
 
-Project-local DLL SHA-256 values:
+Project-local DLL SHA-256 values remain:
 
 - Jetpack: `9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add`;
-- aerial defense: `7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b`.
-
-The aerial-defense ×0.5 operation halves DawnLib animation-curve amplitude/spawn weight. DawnLib evaluates and rounds the result, so short-run observed counts are not required to be exact half-counts.
+- aerial defense: `7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b`;
+- Compatibility Fixes: `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`.
 
 ## ChatGPT — read first
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`
-3. `Current/Projektstatus_S1.42Z_ACCEPTED.json`
-4. `Current/00_CURRENT_STATE.md`
-5. `Current/01_HANDOVER_CORE.md`
-6. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
-7. `Current/06_RECENT_WORK_S1.42N-S1.42Z.md`
-8. `Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md`
-9. `Current/86_S1.42Y_RUNTIME_ASSESSMENT_AND_S1.42Z_NEXT.md`
-10. `Current/88_FINAL_HANDOVER_S1.42Y_PASS_S1.42Z_NEXT.md`
-11. `Current/89_REPOSITORY_HANDOVER_AUDIT_S1.42Z.md`
-12. `Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md`
-13. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-14. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
-15. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
-16. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
-17. `BuildSpecs/current.json`
-18. `RuntimeInbox/ACTIVE_BUILD.txt`
+2. `Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`
+3. `Current/Projektstatus_S1.42AA_CANDIDATE.json`
+4. `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`
+5. `Current/Projektstatus_S1.42Z_ACCEPTED.json`
+6. `Current/00_CURRENT_STATE.md`
+7. `Current/01_HANDOVER_CORE.md`
+8. `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`
+9. `BuildSpecs/S1.42AA_PLAN.md`
+10. `Current/06_RECENT_WORK_S1.42N-S1.42Z.md`
+11. `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`
+12. `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
+13. `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
+14. `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`
+15. `Current/ENEMY_SPAWN_BASELINE_S1.42C.json`
+16. `BuildSpecs/current.json`
+17. `RuntimeInbox/ACTIVE_BUILD.txt`
 
-Chronologically newer confirmed information overrides older handover wording. `Current/88`, `Current/89`, and `Current/87` are retained as pre-acceptance handover/build history; `Current/90` and `Projektstatus_S1.42Z_ACCEPTED.json` are authoritative for the current accepted state.
+Chronologically newer confirmed information overrides older handover wording. `Current/91` plus `Projektstatus_S1.42AA_CANDIDATE.json` are authoritative for the active runtime candidate; `Current/90` plus `Projektstatus_S1.42Z_ACCEPTED.json` remain authoritative for the accepted baseline.
 
 ## Permanent anti-regression state
 
@@ -121,7 +134,7 @@ Preserve:
 
 - exact BCMER `1.71.0`; do not silently upgrade to 2.x;
 - EnemyIsolation off;
-- Compatibility Fixes `1.3.14` / DLL SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`;
+- Compatibility Fixes `1.3.14`;
 - `BaboonBirdPikminEnemy` enabled;
 - narrow Hawk -> Pikmin prevention only;
 - native inherited PikminEnemy lifecycle;
@@ -138,55 +151,40 @@ Project-local patch policy:
 
 `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
 
-## Current next state
+## Exact next state
 
-**No successor build is armed.**
+**Runtime-test S1.42AA before any successor is built.**
 
 `BuildSpecs/current.json` is disabled at:
 
-`IDLE_AFTER_S1.42Z_ACCEPTANCE`
+`IDLE_AFTER_S1.42AA_BUILD_AWAITING_RUNTIME_VALIDATION`
 
-with accepted S1.42Z as its guarded base.
+with S1.42AA as its guarded base.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42Z`.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AA`.
 
-`RuntimeInbox/Current/` contains only `.gitkeep` after successful S1.42Z runtime ingestion.
+Import S1.42AA through Gale with **Advanced options -> Import all files**. Preferred direct before/after test moon is **Offense**. One normal successful Offense gameplay run is the intended minimum, followed by upload of the complete fresh `LogOutput.log` using the exact corrected one-line uploader in `Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md`.
 
-The next planned gameplay/config scope, when explicitly requested, is:
+No successor is armed.
 
-- equal effective probability for all currently installed interiors;
-- preserve the same equal-probability rule for future added interiors unless explicitly overridden.
-
-Keep unrelated deferred scopes separate unless the user explicitly combines them:
+Keep unrelated deferred scopes separate:
 
 - CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - Mausoleum fog reduction;
 - Functional Microwave spawn rarity reduction;
 - BCMER EventTypes fixed to `8 × 12.5%`;
 - final long full-stack acceptance;
-- AdditionalNetworking repair only with reproducible/user-facing evidence;
-- LethalMin `DespawnLumiknulls()` repair only with stronger evidence;
+- monitor-only AdditionalNetworking / LethalMin repairs;
 - cosmetic documentation cleanup.
+
+The separate local Gale profile-replacement PowerShell helper remains pending user verification and is not yet canonical repository policy.
 
 ## Known monitor-only / non-functional issues
 
-Do not patch without stronger reproducibility or user-facing impact:
-
-- historical S1.42S disconnect-only PikminNoticeZone / unspawned NetworkObjectReference exception;
-- historical S1.42T one-off AloeChase FSB load-state message;
-- historical S1.42W `PikminManager.DespawnLumiknulls()` teardown exception;
-- known loaforcsSoundAPI/HarmonyX TypeLoadException class;
-- known SoftMask/SoftMasking setup exception classes;
-- other existing non-project-local Error-severity classes.
-
-Known non-functional documentation drift remains in older chronology wording under `Current/02_TECHNICAL_BASELINE.md` and historical comments in `Patches/S139CompatibilityFixes/Plugin.cs`. Newer canonical documents, actual code/config and runtime evidence are authoritative.
+Do not patch known setup/teardown error classes without stronger reproducibility or user-facing impact. Known documentation drift remains in older chronology wording under `Current/02_TECHNICAL_BASELINE.md` and historical comments in `Patches/S139CompatibilityFixes/Plugin.cs`; newer canonical documents, actual code/config and runtime evidence override them.
 
 ## Repository-first and runtime-upload rule
 
-Do not ask for a local repository clone or manual profile rebuild when the GitHub infrastructure can perform the work.
-
-For every future new profile designated for runtime testing, ChatGPT must automatically provide the exact profile-specific self-contained PowerShell one-liner that uploads its `BepInEx\LogOutput.log` to `RuntimeInbox/Current/LogOutput.log`.
-
-Binding policy:
+Do not ask for a local repository clone or manual profile rebuild when GitHub infrastructure can perform the work. Every new profile designated for runtime testing must have the exact profile-specific self-contained PowerShell uploader recorded/provided according to:
 
 `Current/09_REPOSITORY_FIRST_AUTOMATION.md`
