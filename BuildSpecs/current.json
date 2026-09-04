@@ -1,6 +1,6 @@
 {
   "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42Z_BUILD_AWAITING_RUNTIME_VALIDATION",
+  "build_id": "IDLE_AFTER_S1.42Z_ACCEPTANCE",
   "base_profile": "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z",
   "base_sha256": "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",
