@@ -2,33 +2,51 @@
   "date": "2026-09-04",
   "game": "Lethal Company V81",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
-  "status": "S1.42U_RUNTIME_ACCEPTED_FULL_NORMAL_STACK_S1.42V_PLAN_ONLY",
+  "status": "S1.42U_RUNTIME_ACCEPTED_FULL_NORMAL_STACK_S1.42V_PLAN_ONLY_HANDOVER_READY",
   "accepted_gameplay_baseline": {
     "build": "S1.42U",
     "name": "BCMER 1.71.0 Reactivation Gate",
     "profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
     "sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
     "status": "runtime_accepted_full_normal_stack",
-    "acceptance_doc": "Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md"
+    "build_verification": "Current/77_S1.42U_BUILD_VERIFICATION_BCMER_REACTIVATION.md",
+    "acceptance_doc": "Current/78_S1.42U_RUNTIME_ACCEPTANCE_BCMER_REACTIVATION.md",
+    "final_handover": "Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md",
+    "actions_run_id": 33818241873,
+    "build_commit": "29e7b36c3d09ff37551894438744d67089d7aba4"
+  },
+  "latest_built_candidate": {
+    "build": "S1.42U",
+    "sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
+    "accepted": true,
+    "newer_candidate_exists": false
   },
   "previous_accepted_references": {
     "s141_full_normal_stack": {
       "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
-      "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b"
+      "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+      "role": "historical_previous_full_normal_stack"
     },
     "s142t_bcmer_off_comparison": {
       "profile": "Profiles/LC V1 S1.42T Normal Enemy Restore.r2z",
       "sha256": "a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10",
-      "acceptance_doc": "Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md"
+      "acceptance_doc": "Current/73_S1.42T_RUNTIME_ACCEPTANCE_NORMAL_ENEMY_RESTORE.md",
+      "evidence": "RuntimeEvidence/S1.42T/20260903T222109Z/",
+      "raw_log_sha256": "b136464c55436fedc1d762aa9d961cea9ef53052d7cf829cdb93a4892184ec8f",
+      "role": "accepted_clean_bcmer_off_comparison"
     }
   },
   "s142u_build": {
     "actions_run_id": 33818241873,
+    "build_commit": "29e7b36c3d09ff37551894438744d67089d7aba4",
     "base_profile": "Profiles/LC V1 S1.42T Normal Enemy Restore.r2z",
     "base_sha256": "a2714d04777edc95490398367c9dad2e320b44b664e20e9fe0b0f85d6a5fea10",
     "output_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
     "zip_members": 331,
-    "changed_existing_members": ["export.r2x"],
+    "changed_existing_members": [
+      "export.r2x"
+    ],
+    "added_members": [],
     "mod_state_changes": [
       {
         "name": "SoftDiamond-BrutalCompanyMinusExtraReborn",
@@ -45,6 +63,7 @@
     "raw_log_size": 1959356,
     "line_count": 19939,
     "bcmer_1710_loaded": true,
+    "bcmer_done_patching": true,
     "compatibility_plugin_1314_loaded": true,
     "enemy_isolation_enabled": false,
     "adding_enemy_count": 13,
@@ -56,12 +75,15 @@
     "pikmin_notice_zone_count": 0,
     "crash_or_freeze": false,
     "user_reported_gameplay_problem": false,
+    "known_setup_exceptions_became_gameplay_cascade": false,
     "verdict": "PASS_FULL_NORMAL_STACK"
   },
   "verified_enemy_power_counts": {
     "Aloe": 1,
     "ImmortalSnail": 1,
-    "Janitor": 1
+    "Janitor": 1,
+    "Crawler": 3,
+    "Bunker Spider": 2
   },
   "preserved_state": {
     "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn",
@@ -72,44 +94,98 @@
     "compatibility_dll_sha256": "3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960",
     "thumper_bite_limit": 3,
     "crawler_in_attack_blacklist": false,
-    "puffer_can_poison_pikmin": false
+    "puffer_can_poison_pikmin": false,
+    "baboonbird_pikmin_enemy_component_enabled": true,
+    "native_pikminenemy_lifecycle_preserved": true
   },
   "moon_spawn_restore": {
     "current_file": "ProfileSources/S1.42U/BepInEx/config/LethalLevelLoader.cfg",
     "canonical_baseline": "ProfileSources/S1.42C/BepInEx/config/LethalLevelLoader.cfg",
     "git_blob_sha": "14dcd076692cbc54e073ad281a63d046b0976e00",
     "byte_identical": true,
-    "power_counts_and_spawn_pools_preserved": true
+    "power_counts_and_spawn_pools_preserved": true,
+    "repair_required": false
   },
   "spawn_cycle": {
     "config": "BepInEx/config/butterystancakes.lethalcompany.spawncyclefixes.cfg",
     "consistent_spawn_times": true,
     "byte_identical_to_s142c": true,
-    "intended_first_wave": "approximately 07:39; inside/outside/daytime classes participate in standardized first wave"
+    "intended_first_wave": "approximately 07:39; inside/outside/daytime classes participate in standardized first wave",
+    "repair_required": false
   },
   "next_plan": {
     "build": "S1.42V",
     "name": "Post-BCMER Balance Tuning",
     "status": "plan_only_not_armed",
     "plan": "BuildSpecs/S1.42V_PLAN.md",
-    "confirmed_changes": [
-      "ImmortalSnail Rarity 80 -> 40",
-      "CodeRebirth Functional Microwave Volume 0.7 -> 0.5 proposed"
+    "base_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
+    "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
+    "confirmed_or_proposed_changes": [
+      "ImmortalSnail Rarity 80 -> 40; keep Max Snails = 2",
+      "CodeRebirth Functional Microwave Volume 0.7 -> 0.5 proposed",
+      "modest always-on base Jetpack acceleration increase after exact owner/implementation is resolved"
     ],
-    "jetpack_requirement": "modest acceleration increase",
-    "jetpack_implementation_status": "unresolved_exact_owner_for_always_on_base_acceleration; do not guess or switch broad V49 handling mode",
-    "jet_fuel_existing_upgrade": {
-      "initial_acceleration_increase": 20,
-      "incremental_acceleration_increase": 20,
-      "scope": "only when Jet Fuel upgrade is purchased"
-    }
+    "blocking_question": "exact narrow implementation for unconditional base Jetpack acceleration",
+    "jetpack_constraints": {
+      "butterybalance_control_scheme": "V49",
+      "do_not_switch_broad_handling_mode_to_fake_acceleration": true,
+      "jet_fuel_initial_acceleration_increase": 20,
+      "jet_fuel_incremental_acceleration_increase": 20,
+      "jet_fuel_scope": "purchase-gated only",
+      "do_not_substitute_jet_fuel_by_default": true,
+      "patch_safety_review_required_if_custom_code": true
+    },
+    "exact_next_action": "identify exact Jetpack acceleration owner/method/field, inspect ButteRyBalance and JetpackFixes interaction, freeze the delta, then arm/build S1.42V repository-first"
   },
+  "post_s142v_sequence": [
+    {
+      "stage": "environment_interior_tuning",
+      "build_id": null,
+      "items": [
+        "equal probability for all installed interiors and same rule for newly added interiors",
+        "CullFactory exceptions for junkrooms and shatteredrooms",
+        "Mausoleum fog reduction",
+        "CodeRebirth Microwave rarity reduction"
+      ],
+      "test_focus": [
+        "deterministic config/delta verification",
+        "multiple landings/reroutes",
+        "targeted junkrooms/shatteredrooms CullFactory behavior",
+        "visual Mausoleum fog check",
+        "Microwave functionality and lower occurrence over repeated play"
+      ]
+    },
+    {
+      "stage": "bcmer_eventtype_balancing",
+      "build_id": null,
+      "items": [
+        "fixed equal distribution: 8 EventTypes x 12.5%"
+      ],
+      "test_focus": [
+        "deterministic equal-weight config verification",
+        "preserve exact BCMER 1.71.0",
+        "multiple event/runtime runs for functional coverage",
+        "no catastrophic BCMER system regression"
+      ]
+    },
+    {
+      "stage": "final_s142_full_stack_acceptance",
+      "build_id": null,
+      "items": [
+        "longer normal gameplay run with final tuned stack",
+        "varied enemies, Pikmin lifecycle, BCMER events, interiors, Jetpack and CodeRebirth coverage",
+        "complete runtime log ingest and critical-marker verification"
+      ],
+      "promotion_rule": "promote final S1.42 baseline only after individual tuning gates pass and final full-stack runtime remains clean"
+    }
+  ],
   "build_controller": {
     "path": "BuildSpecs/current.json",
     "enabled": false,
     "build_id": "IDLE_AFTER_S1.42U_RUNTIME_PASS_AWAITING_S1.42V_TUNING",
     "base_profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
-    "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969"
+    "base_sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
+    "successor_armed": false
   },
   "runtime_route": {
     "path": "RuntimeInbox/ACTIVE_BUILD.txt",
@@ -117,6 +193,18 @@
   },
   "monitor_only": [
     "historical S1.42S disconnect-only PikminNoticeZone NetworkObjectReference exception; absent in S1.42U",
-    "historical S1.42T one-off AloeChase FSB load-state message"
-  ]
+    "historical S1.42T one-off AloeChase FSB load-state message; no gameplay impact established",
+    "known setup loaforcsSoundAPI/HarmonyX and SoftMaskKiller-handled exception classes; non-blocking unless they change, flood or become user-facing"
+  ],
+  "known_nonfunctional_drift": [
+    "Current/02_TECHNICAL_BASELINE.md contains older chronology subsections with stale local current wording",
+    "Patches/S139CompatibilityFixes/Plugin.cs contains historical comments that do not perfectly describe accepted v1.3.14 behavior"
+  ],
+  "handover": {
+    "final_handover": "Current/79_FINAL_HANDOVER_S1.42U_PASS_S1.42V_NEXT.md",
+    "repository_audit": "Current/80_REPOSITORY_HANDOVER_AUDIT_S1.42U.md",
+    "local_repo_clone_required": false,
+    "manual_local_build_required": false,
+    "manual_user_action_at_handover": null
+  }
 }
