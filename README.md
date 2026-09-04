@@ -28,7 +28,7 @@ SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
 
 Active candidate: **none**. Runtime test outstanding: **no**. Build successor armed: **no**.
 
-Exact next action: If BCMER EventType work continues, reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
+Exact next action: Upload and ingest the just-completed S1.42AC runtime log, then reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
 
 ## Semantic navigation
 
