@@ -97,7 +97,9 @@ No successor is armed.
 - final long full-stack acceptance;
 - AdditionalNetworking repair only with reproducible user-facing evidence;
 - LethalMin teardown repair only with stronger evidence;
-- cosmetic documentation cleanup.
+- **repository information-architecture overhaul** per `Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md`, with machine requirements in `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`. This supersedes the old vague `cosmetic documentation cleanup` scope and includes cosmetic drift cleanup as only one subordinate task.
+
+The repository overhaul is specifically intended to make limited-context ChatGPT retrieval deterministic: compact bootstrap, topic knowledge map, explicit current-vs-history authority, build lineage, provenance links, readable binary snapshots, broken-reference/orphan CI checks and answerability-routing regression cases. Do not execute it in a way that muddies attribution during the open S1.42AC runtime gate.
 
 ## Permanent invariants
 
