@@ -19,6 +19,8 @@ For a fresh session, resolve facts in this order:
 
 A historical file never becomes current merely because it contains the word "current". Its authority is determined by this registry, the Knowledge Map and explicit integrity errata.
 
+A later explicit acceptance or rejection may supersede an older lifecycle verdict while preserving the older record as historical evidence.
+
 ## Global current authority
 
 - `Current/CURRENT_STATE.json` — single machine-readable global state object.
@@ -71,17 +73,17 @@ The old S1.42U/S1.42V progress block is preserved as chronology. Current policy/
 - `Knowledge/INTERIORS_AND_LLL.md`
 - `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`
 
-### S1.42AC rejection records
+### S1.42AC rejection and later acceptance
 
 `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md` remains a truthful historical decision record. The original interpretation that equal EventType probability requires identical eight per-event log weights is superseded by `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`.
 
-The historical rejection itself is not erased; S1.42AC remains formally rejected/not promoted until a later explicit decision changes that status.
+That source-level analysis did not itself promote the artifact. After a fresh S1.42AC confirmation run under the corrected model, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md` explicitly accepted S1.42AC. Current live status is therefore accepted, while `Current/106...` remains reachable as historical rejection evidence. Machine acceptance detail is `Current/Projektstatus_S1.42AC_ACCEPTED.json`.
 
-The old incorrect raw-runtime-log SHA is likewise retained only as qualified historical metadata. Current byte authority is `RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json`; detailed correction is `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`; repository-wide known-bad classification is `Current/INTEGRITY_ERRATA_REGISTRY.json`.
+The old incorrect raw-runtime-log SHA is likewise retained only as qualified historical metadata. Byte authority for the original rejection-era run is `RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json`; detailed correction is `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`; repository-wide known-bad classification is `Current/INTEGRITY_ERRATA_REGISTRY.json`. The fresh acceptance run is `RuntimeEvidence/S1.42AC/20260904T235720Z/` with its own `INDEX.json`.
 
 ## Historical families
 
-Treat these as history/evidence unless the Knowledge Map explicitly promotes one as current policy:
+Treat these as history/evidence unless the Knowledge Map explicitly promotes one as current policy or `Current/CURRENT_STATE.json` explicitly references one as the current build decision/status source:
 
 - `Current/*FINAL_HANDOVER*.md`
 - `Current/*REPOSITORY_HANDOVER_AUDIT*.md`
@@ -112,7 +114,7 @@ Do **not** edit accepted patch source solely to modernize comments unless the ac
 
 ## Supersession rule
 
-A newer source may supersede an interpretation without deleting history. When that happens:
+A newer source may supersede an interpretation or lifecycle verdict without deleting history. When that happens:
 
 - preserve the old file;
 - register its classification here, in the migration map, or in `Current/INTEGRITY_ERRATA_REGISTRY.json`;
