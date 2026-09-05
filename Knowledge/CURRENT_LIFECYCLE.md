@@ -4,7 +4,7 @@
 **Authority:** current lifecycle router; detailed acceptance remains in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
-**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/Projektstatus_S1.42AC_ACCEPTED.json`, `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`  
+**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/Projektstatus_S1.42AC_ACCEPTED.json`, `Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md`, `Current/Projektstatus_S1.42AD_CANDIDATE.json`  
 **Related:** `BuildSpecs/current.json`, `BuildSpecs/S1.42AD_PLAN.md`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/BCMER.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Knowledge/ITEM_TUNING.md`  
 **Last-Validated:** 2026-09-05
 
@@ -18,72 +18,79 @@
 - Machine state: `Current/Projektstatus_S1.42AC_ACCEPTED.json`
 - Fresh acceptance runtime evidence: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
 
-S1.42AC inherits accepted S1.42AB unchanged outside the isolated BCMER EventType scale config and implements the intended equal static EventType probability model under exact BCMER `1.71.0`. All eight scales are constant `12.5`; BCMER's unequal logged per-event weights are the expected inverse-population normalization. Fresh runtime reproduced the expected weight/count formula, kept project-critical regression markers at zero, and the user reported no problematic gameplay behavior.
-
-S1.42AB remains the previous accepted rollback/predecessor baseline.
-
-## Historical S1.42AC rejection qualification
-
-`Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md` remains historical evidence of the first runtime decision. Its requirement that the eight logged `Set eventType weight ...` values be numerically equal was later shown to be technically invalid by `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`.
-
-The artifact was **not** silently accepted by that analysis. It was explicitly promoted only by the later corrected acceptance decision in `Current/118...` after fresh S1.42AC runtime confirmation.
-
-## Selected next scope
-
-**S1.42AD — Functional Microwave Spawn Rarity Reduction — SOURCE DRAFT PRESENT / NOT BUILT.**
-
-The user explicitly selected the next build after S1.42AC acceptance. The interrupted ChatGPT session then began the Functional Microwave scope and committed a source-only draft under:
-
-`Patches/S142ADCodeRebirthMicrowaveSpawnTuning/`
-
-Recovery/audit record:
-
-`Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`
-
-Blocked pre-build plan:
-
-`BuildSpecs/S1.42AD_PLAN.md`
-
-The draft uses `SpawnScale = 0.5f`, but current canonical project requirements only establish that the Functional Microwave should become rarer; no exact percentage is currently authorized. Therefore `0.5` is a proposal, not a current accepted target.
+S1.42AC remains the rollback/full-normal-stack baseline until S1.42AD completes a fresh runtime gate. Its corrected BCMER 1.71.0 interpretation remains unchanged: equal EventType scales of 12.5 implement equal static type probability while logged per-event weights may differ because they are inverse-population normalization values.
 
 ## Active candidate
 
-**NONE.**
+**S1.42AD — Functional Microwave Spawn Rarity Reduction — BUILD PASS / RUNTIME VALIDATION OPEN / NOT ACCEPTED.**
 
-No S1.42AD profile has been built. Source files and a blocked pre-build plan are not a gameplay candidate.
+- Profile: `Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z`
+- Profile SHA-256: `9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c`
+- Candidate record: `Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md`
+- Machine candidate state: `Current/Projektstatus_S1.42AD_CANDIDATE.json`
+- Build workflow run: `33959742235` — SUCCESS
+- Automated build commit: `1463a6cde5e8cb7655dd233f83da5157c91b036e`
+- DLL SHA-256: `45f22f9b27e3ab7c853fe742bb7c2ce9bc94abc5a0856bb278c747076a2f99c7`
+
+The user explicitly authorized the Functional Microwave target as **half as often**, implemented as proportional `SpawnScale = 0.5f` on the validated effective Moon/tag curves.
+
+The finalized fail-closed runtime contract is:
+
+- CodeRebirth `1.6.9`;
+- DawnLib `0.9.25`;
+- Dusk `0.9.25`;
+- exact key `code_rebirth:functional_microwave`;
+- exactly one `MapObjectSpawnMechanics` provider;
+- `PrioritiseMoons = true`;
+- exactly 18 Moon/tag curves;
+- exactly 0 Interior/tag curves;
+- no mutation on any contract drift.
+
+The 18/0 expectation is based on the relevant shipped asset-bundle provenance, not the later Unity-source-only 19/Interior state.
+
+## Build result / archive delta
+
+Automated profile verification passed:
+
+- ZIP members: `335`;
+- changed existing members: only `export.r2x`;
+- added members: only `BepInEx/plugins/S142ADCodeRebirthMicrowaveSpawnTuning/S142ADCodeRebirthMicrowaveSpawnTuning.dll`;
+- package state/additions/removals: none;
+- config patches: none;
+- accepted Functional Microwave Volume `0.15` preserved.
 
 ## Current controllers
 
 `RuntimeInbox/ACTIVE_BUILD.txt` contains:
 
-`S1.42AC`
+`S1.42AD`
 
-This is the runtime-active/evidence-attribution build and remains the accepted baseline because no S1.42AD profile exists yet.
+`BuildSpecs/current.json` is disabled after the successful candidate build:
 
-`BuildSpecs/current.json` remains disabled:
-
-- `enabled = false`
-- `build_id = IDLE_S1.42AD_SCOPE_SELECTED_SOURCE_REVIEW_PENDING_NO_SUCCESSOR_ARMED`
-- guarded base = accepted S1.42AC profile/SHA
-- output = `Profiles/DO_NOT_BUILD.r2z`
+- `enabled = false`;
+- `build_id = IDLE_AFTER_S1.42AD_BUILD_AWAITING_RUNTIME_VALIDATION`;
+- guarded base = generated S1.42AD profile / SHA `9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c`;
+- no successor is armed.
 
 ## Pending runtime test
 
-**NONE.**
+**YES — S1.42AD.**
 
-There is no S1.42AD runtime test because no candidate exists.
+The next evidence must confirm:
 
-Permanent UX rule: whenever a future build is designated ready for runtime testing, the same response must provide both the repository-driven Gale replacement/import PowerShell one-liner when required and the exact build-specific self-contained runtime-log upload PowerShell one-liner. If a user has already completed a run but evidence upload is still pending, provide the uploader for `RuntimeInbox/ACTIVE_BUILD.txt` without requiring another run. See `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` and `Knowledge/GALE_PROFILE_WORKFLOW.md`.
+1. normal startup/main menu/lobby;
+2. S1.42AD plugin load;
+3. exact CodeRebirth/Dawn/Dusk version validation;
+4. provider marker `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=0`;
+5. final marker showing all 18 Functional Microwave Moon/tag curves scaled by `0.5`;
+6. no S1.42AD contract-refusal/error;
+7. normal moon/interior generation and ordinary gameplay;
+8. no new fatal/project-critical regression.
+
+A short gameplay sample is not expected to statistically prove an exact observed 50% occurrence ratio; the deterministic provider mutation is the primary technical evidence.
 
 ## Exact next gameplay action
 
-Before any S1.42AD build is armed:
+Replace/import the generated S1.42AD Gale profile using the canonical repository helper, play one normal round far enough for normal moon/interior generation, and upload the complete fresh `LogOutput.log` using the exact S1.42AD uploader recorded in `Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md`.
 
-1. resolve the exact desired Functional Microwave spawn reduction magnitude; the current `0.5` draft value is not yet an authorized target;
-2. independently verify the exact CodeRebirth `1.6.9` / DawnLib `0.9.25` / Dusk `0.9.25` ownership and the exact 19-curve Microwave provider contract;
-3. complete/finalize the blocked pre-build plan `BuildSpecs/S1.42AD_PLAN.md`, including the mandatory Patch Safety Review from `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
-4. only then arm the repository build controller.
-
-Do not treat the green Knowledge Architecture run on the source draft as a compile/build gate. Do not runtime-test source-only files.
-
-The repository information-architecture overhaul remains complete and is not the active maintenance scope.
+Do not arm or build a successor before this runtime evidence is analyzed.
