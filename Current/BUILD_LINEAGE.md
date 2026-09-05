@@ -9,9 +9,9 @@
 ## Current lineage head
 
 - **Accepted gameplay baseline:** S1.42AC — BCMER EventType Equal Distribution.
-- **Latest built artifact:** S1.42AC — BCMER EventType Equal Distribution — accepted full normal stack.
-- **Active candidate:** none.
-- **Next build:** none armed.
+- **Latest built artifact:** S1.42AD — Functional Microwave Spawn Rarity Reduction — build pass, runtime validation open, not accepted.
+- **Active candidate:** S1.42AD.
+- **Next build:** none armed; controller is idle pending S1.42AD runtime validation.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -57,6 +57,7 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AA | rejected | Config-only interior equalization failed to equalize final effective LLL rarities. |
 | S1.42AB | accepted predecessor to AC | Post-viability LLL normalization to Weight 100 while preserving membership/exclusions. |
 | S1.42AC | **ACCEPTED CURRENT BASELINE** | Equal BCMER static EventType probability. Historical per-event-equality rejection is retained, but `Current/109` corrected its interpretation and `Current/118` explicitly accepted the artifact. |
+| S1.42AD | **ACTIVE CANDIDATE / RUNTIME OPEN** | Functional Microwave exact owner/provider tuning: user-authorized 18 Moon/tag curves ×0.5, fail-closed on 18/0/Moon-priority contract drift. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -84,8 +85,6 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Runtime: `RuntimeEvidence/S1.42Z/20260904T135820Z/`
 - Build workflow run: `33874737048`
 - Automated build commit: `267543634bb884bb447bf4bec320103ba75c9ff8`
-
-This corrects the earlier index-only drift that incorrectly named a non-existent `S1.42Z Final Balance Acceptance.r2z` artifact.
 
 ### S1.42AA — rejected interior config-only attempt
 
@@ -117,6 +116,18 @@ This corrects the earlier index-only drift that incorrectly named a non-existent
 - Build workflow run: `33903271224`
 - Build commit: `a30b327580e28f42e55281e91abe03d32ae41363`
 
+### S1.42AD — active runtime candidate
+
+- Profile: `Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z`
+- SHA-256: `9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c`
+- Candidate: `Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md`
+- Project status: `Current/Projektstatus_S1.42AD_CANDIDATE.json`
+- Plan / Patch Safety Review: `BuildSpecs/S1.42AD_PLAN.md`
+- Build workflow run: `33959742235`
+- Build commit: `1463a6cde5e8cb7655dd233f83da5157c91b036e`
+- DLL SHA-256: `45f22f9b27e3ab7c853fe742bb7c2ce9bc94abc5a0856bb278c747076a2f99c7`
+- Runtime evidence: **pending**
+
 ## Feature/fix lookup
 
 | Feature / decision | Established by |
@@ -137,6 +148,7 @@ This corrects the earlier index-only drift that incorrectly named a non-existent
 | Post-viability interior rarity normalization to 100 | S1.42AB |
 | Exact BCMER per-event-weight semantic correction | `Current/109...` analysis |
 | Equal BCMER static EventType probability accepted | S1.42AC / `Current/118...` |
+| Functional Microwave exact 18-curve ×0.5 candidate | S1.42AD |
 
 ## Parentage rules that matter
 
@@ -144,5 +156,6 @@ This corrects the earlier index-only drift that incorrectly named a non-existent
 - S1.42S is the accepted recovery architecture after the rejected broad Baboon approaches.
 - S1.42AB was built **directly from accepted S1.42Z**, not from rejected S1.42AA.
 - S1.42AC was built **directly from accepted S1.42AB**. Its original rejection remains historical evidence, `Current/109` corrected the per-event-weight interpretation, and `Current/118` is the explicit later acceptance decision.
+- S1.42AD was built **directly from accepted S1.42AC**. It is not accepted and must not become a successor build base until the fresh runtime gate is explicitly passed.
 
 When an exact artifact/hash/status is not indexed here or in `Current/BUILD_LINEAGE.json`, open the linked build-specific record rather than inferring it from build-name order.
