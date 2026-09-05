@@ -4,77 +4,66 @@
 **Authority:** current lifecycle router; detailed acceptance/rejection remains in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
-**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`, `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`, `Current/Projektstatus_S1.42AF_CANDIDATE.json`  
-**Related:** `BuildSpecs/current.json`, `BuildSpecs/S1.42AF_PLAN.md`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/CODEREBIRTH.md`, `Knowledge/ITEM_TUNING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Knowledge/GALE_PROFILE_WORKFLOW.md`  
-**Last-Validated:** 2026-09-05
+**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`, `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `Current/Projektstatus_S1.42AF_ACCEPTED.json`  
+**Related:** `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/CODEREBIRTH.md`, `Knowledge/ITEM_TUNING.md`, `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
+**Last-Validated:** 2026-09-06
 
 ## Accepted baseline
 
-**S1.42AC — BCMER EventType Equal Distribution — ACCEPTED FULL NORMAL STACK**
+**S1.42AF — Path-Length-Safe Microwave Packaging — ACCEPTED FULL NORMAL STACK**
 
-- Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`
-- SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
-- Acceptance: `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
-- Fresh acceptance runtime evidence: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
+- Profile: `Profiles/LC V1 S1.42AF Microwave Fix.r2z`
+- SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
+- Injected DLL SHA-256: `41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f`
+- Acceptance: `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`
+- Fresh acceptance runtime evidence: `RuntimeEvidence/S1.42AF/20260905T223738Z/`
+- Runtime log SHA-256: `63df88a3acb0c455bab914fd844767cb50b7384ab4b1ede8bd7cbcb63537d956`
 
-S1.42AC remains the accepted full-normal-stack gameplay/rollback baseline.
+S1.42AF passed the path-length-safe packaging gate and the corrected Functional Microwave provider contract. The imported nested SoundAPI LC binding was present and non-empty at 40960 bytes on a 226-character full path; BepInEx then reached normal preloader/chainloader/game runtime. Runtime validated CodeRebirth `1.6.9`, DawnLib/Dusk `0.9.25`, `PrioritiseMoons=true`, exactly 18 Moon/tag and 18 Interior/tag curves, and the final mutation marker: 18 Moon/tag curves scaled by `0.5`, 18 Interior curves validation-only and not mutated.
 
-## Rejected predecessor
+S1.42AC remains the accepted predecessor and historical rollback/provenance point.
+
+## Historical rejected/superseded Microwave steps
 
 **S1.42AD — Functional Microwave Spawn Rarity Reduction — RUNTIME REJECTED / NOT ACCEPTED.**
 
 S1.42AD failed closed because it expected `InteriorCurves=0`, while runtime exposed 18 Interior/tag curves. No `0.5` mutation executed. Rejection authority: `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`.
 
-## Superseded S1.42AE candidate
-
 **S1.42AE — Functional Microwave Provider Contract Correction — SUPERSEDED FOR PATH-LENGTH-SAFE PACKAGING / NOT GAMEPLAY-REJECTED.**
 
-The corrected provider code was never reached during the failing launches. v2.4 positively verified both SoundAPI materialization contracts, and direct pre-launch plus post-failure filesystem checks showed the exact nested `me.loaforc.soundapi.lethalcompany.dll` still present and non-empty at `40960` bytes. The full S1.42AE binding path measured `262` characters. BepInEx/Mono nevertheless failed before chainloader startup with `DirectoryNotFoundException` / `FileNotFoundException` for that path.
+The corrected provider code was never reached during AE's failing launches. v2.4 and direct filesystem checks proved the nested SoundAPI binding remained physically present and non-empty at 40960 bytes, but the full path measured 262 characters and BepInEx/Mono failed before chainloader startup. S1.42AF isolated the same functional source on a short profile identity and succeeded, confirming the path-length compatibility classification. Decision history: `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`.
 
-Accepted S1.42AC passed the same SoundAPI dependency family with a corresponding path length of `247`. Path-length compatibility is therefore the leading root-cause classification. This is packaging/preloader evidence, not a rejection of the corrected Microwave provider logic. Decision: `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`.
+## Active candidate / runtime state
 
-## Active candidate
+There is **no active build candidate** and **no runtime test outstanding**.
 
-**S1.42AF — Path-Length-Safe Microwave Packaging — BUILD PASS / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED.**
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF` remains the runtime-evidence attribution pointer; it is not a separate acceptance authority. The completed S1.42AF log is already ingested, so no upload or repeat run is pending.
 
-- Profile: `Profiles/LC V1 S1.42AF Microwave Fix.r2z`
-- Gale profile name: `LC V1 S1.42AF Microwave Fix`
-- Profile SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
-- DLL SHA-256: `41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f`
-- Build workflow run: `33993880634` — SUCCESS
-- Automated build commit: `2cab9044579e74739669440699c763a32f0fe379`
-- Candidate record: `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`
-- Project status: `Current/Projektstatus_S1.42AF_CANDIDATE.json`
-- Plan: `BuildSpecs/S1.42AF_PLAN.md`
-- Snapshot: `ProfileSources/S1.42AF/`
+## Current open compatibility finding
 
-S1.42AF was built directly from accepted S1.42AC, not from S1.42AE. The only intended packaging variable is the shorter Gale profile identity. Automated QC reports exactly `export.r2x` changed and exactly the unchanged-source Microwave plugin DLL added, with no package/config drift.
+The S1.42AF acceptance run also exposed a separate inherited compatibility gap:
 
-The source contract is unchanged from S1.42AE: validate CodeRebirth `1.6.9`, DawnLib/Dusk `0.9.25`, one Functional Microwave `MapObjectSpawnMechanics` provider, `PrioritiseMoons=true`, exact 18 Moon/tag curves and exact 18 Interior/tag curves, then scale only the 18 Moon/tag curves by `0.5`; Interior curves are validation-only. Runtime plugin markers intentionally still identify `S1.42AE CodeRebirth Microwave Spawn Tuning 1.0.0`.
+**Mouth Dog / Eyeless Dog -> Pikmin bite/grab/death-timer interaction is currently possible and must not be.**
+
+The log records `Biting 2 Pikmin`, two White Pikmin attaching to `EnemyAttackMouth`, and two 2.5-second death timers. Pikmin invincibility prevented the final kill attempt, but the affected Pikmin then generated 707 `Work state with no task assigned!` warnings. This is tracked by `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`.
+
+It is not classified as an S1.42AF regression: AF was built directly from S1.42AC and changed no LethalMin package/config state. The required asymmetric target is to prevent Mouth Dog / Eyeless Dog targeting, bite, grab and kill **before** Pikmin grab/death-timer state mutation while preserving native Pikmin -> Mouth Dog combat unless exact source evidence requires otherwise.
 
 ## Current controllers
 
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF`.
 - `BuildSpecs/current.json` is disabled.
-- Controller id: `IDLE_AFTER_S1.42AF_BUILD_AWAITING_RUNTIME_VALIDATION`.
+- Controller id: `IDLE_AFTER_S1.42AF_ACCEPTANCE_MOUTHDOG_ANALYSIS`.
 - Guarded base: `Profiles/LC V1 S1.42AF Microwave Fix.r2z` / `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`.
 - No successor is armed.
 
 ## Exact next project action
 
-Canonical Gale helper: `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`.
+Perform focused source/contract analysis of the confirmed MouthDog/EyelessDog -> Pikmin path under:
 
-1. Import S1.42AF with the canonical v2.4 Gale launcher and require the final positive import/materialization proof.
-2. Confirm the nested LC-binding DLL is non-empty under the short S1.42AF profile path and that the full path is below 260 characters.
-3. Start the game. The path-length hypothesis passes its first gate only if BepInEx reaches normal preloader/chainloader/main-menu/lobby startup.
-4. Play one normal run far enough for ordinary moon/interior generation.
-5. Upload the complete fresh S1.42AF `LogOutput.log` with the exact uploader in `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`.
-6. Evaluate the preserved S1.42AE plugin marker, dependency versions, `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=18`, both keysets, final 18 Moon curves x0.5 / 18 Interior validation-only marker, and fatal/project-critical regressions before ACCEPT or REJECT.
+- `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`;
+- `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`;
+- `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
+- `Patches/S139CompatibilityFixes/Plugin.cs`.
 
-Canonical Gale one-liner:
-
-```powershell
-$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfileV24.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
-```
-
-Exact S1.42AF log uploader is frozen in `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md` and must be used after the run.
+Determine the exact LethalMin owner/method/inheritance/config contract for Mouth Dog targeting/bite/grab and whether native configuration can enforce the desired one-way noninteraction. If not, prove whether the existing exact `PikminAI.GrabPikmin(Transform,float,int)` prevention-only boundary can safely cover MouthDog/EyelessDog before harmful state mutation. Preserve native Pikmin -> Mouth Dog behavior. **Do not arm or build a successor until that contract is proved.**
