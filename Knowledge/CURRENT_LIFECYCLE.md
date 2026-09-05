@@ -5,7 +5,7 @@
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
 **Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/Projektstatus_S1.42AC_ACCEPTED.json`, `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`  
-**Related:** `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/BCMER.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Knowledge/ITEM_TUNING.md`  
+**Related:** `BuildSpecs/current.json`, `BuildSpecs/S1.42AD_PLAN.md`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/BCMER.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Knowledge/ITEM_TUNING.md`  
 **Last-Validated:** 2026-09-05
 
 ## Accepted baseline
@@ -40,13 +40,17 @@ Recovery/audit record:
 
 `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`
 
+Blocked pre-build plan:
+
+`BuildSpecs/S1.42AD_PLAN.md`
+
 The draft uses `SpawnScale = 0.5f`, but current canonical project requirements only establish that the Functional Microwave should become rarer; no exact percentage is currently authorized. Therefore `0.5` is a proposal, not a current accepted target.
 
 ## Active candidate
 
 **NONE.**
 
-No S1.42AD profile has been built. Source files alone are not a gameplay candidate.
+No S1.42AD profile has been built. Source files and a blocked pre-build plan are not a gameplay candidate.
 
 ## Current controllers
 
@@ -77,8 +81,8 @@ Before any S1.42AD build is armed:
 
 1. resolve the exact desired Functional Microwave spawn reduction magnitude; the current `0.5` draft value is not yet an authorized target;
 2. independently verify the exact CodeRebirth `1.6.9` / DawnLib `0.9.25` / Dusk `0.9.25` ownership and the exact 19-curve Microwave provider contract;
-3. complete the mandatory review in `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
-4. write an explicit `BuildSpecs/S1.42AD_PLAN.md` and only then arm the repository build controller.
+3. complete/finalize the blocked pre-build plan `BuildSpecs/S1.42AD_PLAN.md`, including the mandatory Patch Safety Review from `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
+4. only then arm the repository build controller.
 
 Do not treat the green Knowledge Architecture run on the source draft as a compile/build gate. Do not runtime-test source-only files.
 
