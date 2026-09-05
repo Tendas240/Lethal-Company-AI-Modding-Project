@@ -4,7 +4,7 @@
 **Authority:** current lifecycle router; detailed acceptance/rejection remains in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
-**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`, `Current/Projektstatus_S1.42AE_CANDIDATE.json`  
+**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`, `Current/124_HANDOVER_S1.42AE_V23_SEGMENT3_NEXT.md`, `Current/Projektstatus_S1.42AE_CANDIDATE.json`  
 **Related:** `BuildSpecs/current.json`, `BuildSpecs/S1.42AE_PLAN.md`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/CODEREBIRTH.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Knowledge/GALE_PROFILE_WORKFLOW.md`  
 **Last-Validated:** 2026-09-05
 
@@ -66,6 +66,16 @@ Consequences remain:
 The first hardening, helper v2.2 in commit `7b8a23e57ad0ac678314564da1f22638362b97f3`, used a flat dependency path model. The second failure established that this model did not match Gale's preserved inner Thunderstore plugin subtree. It also exposed that `loaforc-loaforcsSoundAPI_LethalCompany` must imply the base `loaforc-loaforcsSoundAPI` materialization requirement even when the base dependency is not separately listed in Gale export metadata.
 
 The current canonical launcher is therefore `RuntimeTools/ReplaceActiveGaleProfileV23.ps1`, revision `2026-09-05-import-uia-v2.3-recursive-package-materialization-proof`. It keeps the validated v2.2 UI/import behavior but requires exactly one non-empty expected DLL recursively within each required Gale package root, and fails closed on missing roots, missing/empty DLLs, or duplicates. See `Knowledge/GALE_PROFILE_WORKFLOW.md`.
+
+## Fresh-chat continuation checkpoint
+
+The durable chat-transfer checkpoint is:
+
+`Current/124_HANDOVER_S1.42AE_V23_SEGMENT3_NEXT.md`
+
+The youngest technical recovery task reached **Technical Segment 2/3 complete**. Its continuation point is **Technical Segment 3/3 — post-merge verification and release of the renewed S1.42AE v2.3 re-import/runtime test**. The technical post-merge check for the v2.3 merge commit was already confirmed during handover inspection, but the final handover must re-verify the eventual final `main` after the handover checkpoint itself is merged.
+
+A fresh chat must not repeat Technical Segment 2/3, must not build a successor, and after final handover verification should continue at Technical Segment 3/3's user-facing v2.3 import/test step.
 
 ## Corrected Functional Microwave contract
 
