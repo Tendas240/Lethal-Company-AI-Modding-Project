@@ -4,38 +4,37 @@
 **Authority:** concise current work queue only  
 **Machine state:** `Current/CURRENT_STATE.json`  
 **Topic router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-09-05
 
 This file intentionally no longer duplicates the full project history or technical baseline. The pre-overhaul version is preserved in Git history and in the verified standalone pre-overhaul repository; durable facts were extracted into the `Knowledge/` topic layer and build/runtime evidence.
 
 ## Current gameplay gate
 
-- **Accepted baseline:** S1.42AB — Interior Weight Normalization.
-- Profile: `Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z`
-- SHA-256: `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`
-- Acceptance: `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`
-- Runtime: `RuntimeEvidence/S1.42AB/20260904T174010Z/`
+- **Accepted baseline:** S1.42AC — BCMER EventType Equal Distribution.
+- Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`
+- SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
+- Acceptance: `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
+- Fresh acceptance runtime: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
 
-Latest built artifact is S1.42AC. It remains **formally rejected/not promoted**. The original rejection interpretation was corrected by exact BCMER 1.71.0 source analysis in `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`: unequal `Set eventType weight ...` log values are expected inverse-count **per-event** weights, not unequal aggregate EventType probability.
+S1.42AC is now explicitly accepted under the corrected BCMER `1.71.0` static EventType model. `Current/106...` remains historical rejection evidence; `Current/109...` corrected the per-event-weight interpretation and `Current/118...` is the later acceptance decision.
 
 ## Exact next action
 
-**No runtime test is outstanding. No successor is armed. No compensation build should be created.**
+**No runtime test is outstanding. No successor is armed. No build is implicitly authorized.**
 
-If the BCMER EventType scope is continued, apply the corrected acceptance model in `Current/109...` to the existing S1.42AC artifact/evidence. Do not require equality of the eight per-event log values.
+Wait for explicit selection of the next isolated gameplay/compatibility scope through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
 
 Current controllers:
 
-- `BuildSpecs/current.json` is disabled and guarded by accepted S1.42AB.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AB`.
+- `BuildSpecs/current.json` is disabled and guarded by accepted S1.42AC.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC`.
 
-Whenever a future runtime test becomes outstanding, the same response that explains the test must include the exact build-specific PowerShell one-line log uploader.
+Whenever a future runtime test becomes outstanding, the same response that explains the test must include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader.
 
 ## Open/deferred work
 
 Route scope decisions through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. Current deferred items include:
 
-- reconsider existing S1.42AC under the corrected BCMER static EventType acceptance model;
 - Functional Microwave spawn-rarity reduction;
 - CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - Mausoleum fog reduction;

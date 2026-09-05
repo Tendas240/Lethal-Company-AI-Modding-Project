@@ -4,31 +4,35 @@
 **Authority:** current lifecycle router; detailed acceptance remains in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
-**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `Current/Projektstatus_S1.42AC_REJECTED.json`  
+**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/Projektstatus_S1.42AC_ACCEPTED.json`  
 **Related:** `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/BCMER.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
 **Last-Validated:** 2026-09-05
 
 ## Accepted baseline
 
-**S1.42AB — Interior Weight Normalization — ACCEPTED FULL NORMAL STACK**
+**S1.42AC — BCMER EventType Equal Distribution — ACCEPTED FULL NORMAL STACK**
 
-- Profile: `Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z`
-- SHA-256: `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`
-- Acceptance: `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`
-- Machine state: `Current/Projektstatus_S1.42AB_ACCEPTED.json`
-- Runtime evidence: `RuntimeEvidence/S1.42AB/20260904T174010Z/`
+- Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`
+- SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
+- Acceptance: `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
+- Machine state: `Current/Projektstatus_S1.42AC_ACCEPTED.json`
+- Fresh acceptance runtime evidence: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
 
-S1.42AB preserves LethalLevelLoader ownership of interior viability/exclusion membership and normalizes every positive rarity in LLL's returned viable list to `100`. The accepted Offense run retained all 40 viable entries, kept Black Mesa single-registered, generated `Expanded facility`, and had the project-critical Work/no-task, Leader-null, Compatibility Fixes Error and Fatal regressions at zero.
+S1.42AC inherits accepted S1.42AB unchanged outside the isolated BCMER EventType scale config and implements the intended equal static EventType probability model under exact BCMER `1.71.0`. All eight scales are constant `12.5`; BCMER's unequal logged per-event weights are the expected inverse-population normalization. Fresh runtime reproduced the expected weight/count formula, kept project-critical regression markers at zero, and the user reported no problematic gameplay behavior.
+
+S1.42AB remains the previous accepted rollback/predecessor baseline.
+
+## Historical S1.42AC rejection qualification
+
+`Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md` remains historical evidence of the first runtime decision. Its requirement that the eight logged `Set eventType weight ...` values be numerically equal was later shown to be technically invalid by `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`.
+
+The artifact was **not** silently accepted by that analysis. It was explicitly promoted only by the later corrected acceptance decision in `Current/118...` after fresh S1.42AC runtime confirmation.
 
 ## Active candidate
 
 **NONE.**
 
-S1.42AC exists as a built artifact but is **formally rejected / not promoted / not armed**. Its original rejection criterion was later shown to be semantically wrong for BCMER's per-event weighting model, but that analysis did not silently accept the artifact.
-
-- S1.42AC profile SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
-- Historical rejection: `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
-- Corrected source-path analysis: `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`
+There is no successor build armed by the S1.42AC acceptance.
 
 ## Current controllers
 
@@ -36,27 +40,25 @@ S1.42AC exists as a built artifact but is **formally rejected / not promoted / n
 
 `S1.42AC`
 
-This pointer currently reflects the Gale profile that was actually tested and is the build ID used by the normal runtime-ingest pipeline for evidence attribution. It is **not** acceptance authority and does not make S1.42AC an active candidate or promoted build.
+This is consistent with both the installed/tested runtime profile and the current accepted baseline.
 
 `BuildSpecs/current.json` remains disabled:
 
 - `enabled = false`
-- `build_id = IDLE_AFTER_S1.42AC_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED`
-- guarded base = accepted S1.42AB profile/SHA
+- `build_id = IDLE_AFTER_S1.42AC_ACCEPTANCE_NO_SUCCESSOR_ARMED`
+- guarded base = accepted S1.42AC profile/SHA
 - output = `Profiles/DO_NOT_BUILD.r2z`
 
 ## Pending runtime test
 
 **NONE.**
 
-The S1.42AC run is already complete; its new `LogOutput.log` still needs to be uploaded and ingested. A completed run can therefore require the build-specific uploader even when there is no new runtime test outstanding.
-
-Permanent UX rule: whenever a future build is designated ready for runtime testing, the same response must provide both the repository-driven Gale replacement PowerShell one-liner and the exact build-specific self-contained runtime-log upload PowerShell one-liner. If the user has already completed a run but evidence upload is still pending, provide the uploader for `RuntimeInbox/ACTIVE_BUILD.txt` without requiring another run. See `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` and `Knowledge/GALE_PROFILE_WORKFLOW.md`.
+Permanent UX rule: whenever a future build is designated ready for runtime testing, the same response must provide both the repository-driven Gale replacement/import PowerShell one-liner when required and the exact build-specific self-contained runtime-log upload PowerShell one-liner. If a user has already completed a run but evidence upload is still pending, provide the uploader for `RuntimeInbox/ACTIVE_BUILD.txt` without requiring another run. See `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` and `Knowledge/GALE_PROFILE_WORKFLOW.md`.
 
 ## Exact next gameplay decision
 
-First upload and ingest the just-completed S1.42AC runtime log. Then reconsider the existing S1.42AC artifact under the corrected acceptance model in `Knowledge/BCMER.md` / `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`.
+No next gameplay build is implicitly selected. Route the user's next explicit scope choice through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
 
-The repository information-architecture overhaul is **complete** and is no longer the active maintenance scope. There is currently no active gameplay candidate, runtime gate, or automatically implied successor.
+The repository information-architecture overhaul remains complete and is not the active maintenance scope. There is currently no active gameplay candidate, runtime gate, or automatically implied successor.
 
-Do not build inverse BCMER compensation merely to make the eight logged per-event weights numerically equal.
+Do not build inverse BCMER compensation merely to make the eight logged per-event weights numerically equal. Exact post-filter long-run `12.5%` executed EventType frequency, if ever required, is a separate algorithm-design scope rather than a correction to accepted S1.42AC.

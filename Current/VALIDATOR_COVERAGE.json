@@ -6,15 +6,15 @@
   "validators": [
     {
       "path": "RepositoryTools/render_current_navigation.py",
-      "checks": ["Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json.", "Generated bootstrap/takeover files expose the current handover-preparation route stored in Current/CURRENT_STATE.json.", "Generated runtime UX distinguishes a pending future test from upload of an already-completed run."],
+      "checks": ["Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json.", "Generated bootstrap/takeover files expose the current handover-preparation route stored in Current/CURRENT_STATE.json.", "Generated latest-build status is state-driven so a preserved historical rejection can coexist with a later explicit lifecycle decision.", "Generated runtime UX distinguishes a pending future test from upload of an already-completed run."],
       "scan_scope": ["README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/00_CURRENT_STATE.md", "Current/01_HANDOVER_CORE.md", "Current/CURRENT_STATE.json", "Current/HANDOVER_PREPARATION_PROMPT.md path reference"],
       "does_not_check": ["Gameplay correctness", "profile/runtime artifact bytes", "historical provenance outside generated outputs", "whether an arbitrary uncommitted handover response contains truthful current facts"]
     },
     {
       "path": "RepositoryTools/knowledge_architecture_validator.py",
-      "checks": ["Current-state/controller/lineage consistency", "RuntimeInbox/ACTIVE_BUILD.txt matches CURRENT_STATE.controllers.runtime_active_build and references a known build-lineage ID without being forced to equal the accepted baseline", "canonical path existence", "Knowledge topic routing/orphans", "runtime metadata-chain consistency"],
-      "scan_scope": ["Current state and authority metadata", "RuntimeInbox/ACTIVE_BUILD.txt", "Current/BUILD_LINEAGE.json", "Current/PROJECT_KNOWLEDGE_MAP.json canonical targets", "Knowledge/*.md", "ProfileSources current indexes", "RuntimeEvidence indexes"],
-      "does_not_check": ["Whether the user's local Gale installation actually contains the build named by ACTIVE_BUILD except insofar as the repository state was updated from user/runtime evidence", "Actual profile .r2z byte hashes", "actual raw runtime-log byte hashes", "all repository-wide superseded-value occurrences", "complete handover-workflow cross-link contract"]
+      "checks": ["Current-state/controller/lineage consistency including explicit accepted S1.42AC decision linkage", "RuntimeInbox/ACTIVE_BUILD.txt matches CURRENT_STATE.controllers.runtime_active_build and references a known build-lineage ID", "BuildSpecs guarded base matches the currently accepted baseline", "AUTO_BUILD_RESULT base SHA is validated against the latest artifact's lineage parent rather than the post-promotion controller base", "canonical path existence", "Knowledge topic routing/orphans", "historical S1.42AC rejection SHA-provenance chain remains intact independently of the current artifact index", "fresh S1.42AC corrected-acceptance runtime INDEX SHA agrees with Current/Projektstatus_S1.42AC_ACCEPTED.json and the current artifact evidence index"],
+      "scan_scope": ["Current state and authority metadata", "RuntimeInbox/ACTIVE_BUILD.txt", "Current/BUILD_LINEAGE.json", "Current/PROJECT_KNOWLEDGE_MAP.json canonical targets", "Knowledge/*.md", "ProfileSources current indexes", "historical and fresh S1.42AC RuntimeEvidence indexes"],
+      "does_not_check": ["Whether the user's local Gale installation actually contains the build named by ACTIVE_BUILD except insofar as the repository state was updated from user/runtime evidence", "Actual profile .r2z byte hashes", "actual raw runtime-log byte hashes", "whether the BCMER mathematical interpretation itself is correct independently of its decision evidence", "all repository-wide superseded-value occurrences", "complete handover-workflow cross-link contract"]
     },
     {
       "path": "RepositoryTools/handover_workflow_validator.py",
@@ -24,15 +24,15 @@
     },
     {
       "path": "RepositoryTools/artifact_byte_integrity_validator.py",
-      "checks": ["Actual SHA-256 of every profile listed in Current/ARTIFACT_EVIDENCE_INTEGRITY.json", "actual SHA-256 and size of each linked raw LogOutput.log", "agreement with runtime INDEX and embedded analysis source SHA"],
-      "scan_scope": ["Current/ARTIFACT_EVIDENCE_INTEGRITY.json", "listed Profiles/*.r2z", "listed current-critical RuntimeEvidence indexes/raw logs"],
-      "does_not_check": ["Gameplay semantics", "whether a rejected artifact should be promoted", "historical artifacts not listed in the integrity index"]
+      "checks": ["Actual SHA-256 of every profile listed in Current/ARTIFACT_EVIDENCE_INTEGRITY.json", "actual SHA-256 and size of each current-critical linked raw LogOutput.log", "agreement with runtime INDEX and embedded analysis source SHA", "current S1.42AC entry points at the fresh corrected-acceptance runtime bytes"],
+      "scan_scope": ["Current/ARTIFACT_EVIDENCE_INTEGRITY.json", "listed Profiles/*.r2z", "S1.42AB predecessor runtime bytes", "fresh S1.42AC 20260904T235720Z acceptance runtime bytes"],
+      "does_not_check": ["Gameplay semantics", "whether an artifact should be promoted", "historical runtime artifacts that are retained only through historical_* fields rather than the current runtime_index entry"]
     },
     {
       "path": "RepositoryTools/runtime_sha_provenance_validator.py",
-      "checks": ["S1.42AC authoritative runtime-log SHA metadata chain", "repository-wide qualification of the known superseded S1.42AC SHA"],
-      "scan_scope": ["repository text files with supported suffixes", "S1.42AC RuntimeEvidence INDEX", "S1.42AC detailed errata"],
-      "does_not_check": ["Other future known-bad values unless added elsewhere", "actual raw log bytes"]
+      "checks": ["Original S1.42AC rejection-era authoritative runtime-log SHA metadata chain", "repository-wide qualification of the known superseded S1.42AC SHA"],
+      "scan_scope": ["repository text files with supported suffixes", "S1.42AC 20260904T181854Z RuntimeEvidence INDEX", "S1.42AC detailed errata"],
+      "does_not_check": ["Fresh 20260904T235720Z acceptance-log byte hash", "Other future known-bad values unless added elsewhere", "actual raw log bytes"]
     },
     {
       "path": "RepositoryTools/repository_integrity_guard.py",
@@ -48,13 +48,13 @@
     },
     {
       "path": "RepositoryTools/overhaul_contract_validator.py",
-      "checks": ["Frozen pre-overhaul contract obligations", "backup-before-structural-migration provenance", "historical/completion classifications required by the original overhaul contract"],
-      "scan_scope": ["frozen contract files", "Git history", "overhaul machine/audit records"],
-      "does_not_check": ["General future multi-phase processes", "gameplay behavior"]
+      "checks": ["Frozen pre-overhaul contract obligations", "backup-before-structural-migration provenance", "historical/completion classifications required by the original overhaul contract", "current accepted-build pointers remain internally coherent after an explicit post-overhaul gameplay lifecycle transition"],
+      "scan_scope": ["frozen contract files", "Git history", "overhaul machine/audit records", "current accepted/latest/controller/lineage pointers"],
+      "does_not_check": ["General future multi-phase processes", "gameplay behavior", "independent correctness of the BCMER acceptance mathematics"]
     },
     {
       "path": "RepositoryTools/answerability_regression.py",
-      "checks": ["Semantic routing for the maintained answerability case suite, including the explicit new-chat handover query"],
+      "checks": ["Semantic routing for the maintained answerability case suite, including accepted build, BCMER, runtime uploader, roadmap and explicit new-chat handover queries"],
       "scan_scope": ["RepositoryTools/answerability_cases.json", "Current/PROJECT_KNOWLEDGE_MAP.json"],
       "does_not_check": ["Truth of every routed source", "questions absent from the case suite"]
     },

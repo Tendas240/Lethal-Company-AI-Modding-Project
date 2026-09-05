@@ -4,12 +4,12 @@
 **Authority:** human build-history router; exact build evidence remains in candidate/acceptance/rejection/runtime records  
 **Canonical-For:** `build_lineage`  
 **Machine Mirror:** `Current/BUILD_LINEAGE.json`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-09-05
 
 ## Current lineage head
 
-- **Accepted gameplay baseline:** S1.42AB — Interior Weight Normalization.
-- **Latest built artifact:** S1.42AC — BCMER EventType Equal Distribution — formally rejected/not promoted.
+- **Accepted gameplay baseline:** S1.42AC — BCMER EventType Equal Distribution.
+- **Latest built artifact:** S1.42AC — BCMER EventType Equal Distribution — accepted full normal stack.
 - **Active candidate:** none.
 - **Next build:** none armed.
 
@@ -53,10 +53,10 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42W | rejected | Naive CodeRebirth aerial-defense reduction. |
 | S1.42X | diagnostic-only | Aerial-defense ownership/pipeline diagnostic. |
 | S1.42Y | rejected | Post-load provider evaluation; useful root-cause evidence, not accepted behavior. |
-| S1.42Z | **accepted predecessor to AB** | Final accepted balance/Jetpack/Pikmin/Microwave/Snail + DawnLib ACU/G.R.E.G. scaling. |
+| S1.42Z | accepted predecessor | Final accepted balance/Jetpack/Pikmin/Microwave/Snail + DawnLib ACU/G.R.E.G. scaling. |
 | S1.42AA | rejected | Config-only interior equalization failed to equalize final effective LLL rarities. |
-| S1.42AB | **ACCEPTED CURRENT BASELINE** | Post-viability LLL normalization to Weight 100 while preserving membership/exclusions. |
-| S1.42AC | formally rejected/not promoted; interpretation corrected | Equal BCMER scales. Old equality gate misread inverse-count per-event weights; no compensation successor is justified. |
+| S1.42AB | accepted predecessor to AC | Post-viability LLL normalization to Weight 100 while preserving membership/exclusions. |
+| S1.42AC | **ACCEPTED CURRENT BASELINE** | Equal BCMER static EventType probability. Historical per-event-equality rejection is retained, but `Current/109` corrected its interpretation and `Current/118` explicitly accepted the artifact. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -75,7 +75,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Acceptance: `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
 - Runtime: `RuntimeEvidence/S1.42S/20260903T205550Z/`
 
-### S1.42Z — accepted predecessor to AB
+### S1.42Z — accepted predecessor
 
 - Profile: `Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z`
 - SHA-256: `a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4`
@@ -93,7 +93,7 @@ This corrects the earlier index-only drift that incorrectly named a non-existent
 - SHA-256: `0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364`
 - Runtime: `RuntimeEvidence/S1.42AA/20260904T153744Z/`
 
-### S1.42AB — current accepted baseline
+### S1.42AB — accepted predecessor to AC
 
 - Profile: `Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z`
 - SHA-256: `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`
@@ -103,14 +103,17 @@ This corrects the earlier index-only drift that incorrectly named a non-existent
 - Build workflow run: `33892396551`
 - Build commit: `9bf3085d82990ca565ad81f992d896855c21f1c6`
 
-### S1.42AC — latest built, not promoted
+### S1.42AC — current accepted baseline
 
 - Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`
 - SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
 - Candidate: `Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
 - Historical rejection: `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
 - Corrected source analysis: `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`
-- Runtime: `RuntimeEvidence/S1.42AC/20260904T181854Z/`
+- Corrected acceptance: `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
+- Original runtime evidence: `RuntimeEvidence/S1.42AC/20260904T181854Z/`
+- Fresh acceptance runtime evidence: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
+- Fresh raw-log SHA-256: `98170374c4ffb6f40322a8019ad7f7f807e900525717dfdf7e70698bd7f28fa8`
 - Build workflow run: `33903271224`
 - Build commit: `a30b327580e28f42e55281e91abe03d32ae41363`
 
@@ -127,18 +130,19 @@ This corrects the earlier index-only drift that incorrectly named a non-existent
 | Thumper Bite Limit 3 / Crawler attack allowed / Puffer protection | S1.42I |
 | Lifecycle-safe Baboon Hawk prevention-before-mutation architecture | S1.42S |
 | Full-normal restoration after diagnostics | S1.42T |
-| Equal BCMER static EventType scale concept | S1.42U, later re-applied in S1.42AC |
+| Equal BCMER static EventType scale concept | S1.42U, later re-applied and accepted in S1.42AC |
 | Final accepted Jetpack 18 + Pikmin/Microwave/Snail values | S1.42Z |
 | Transactional CodeRebirth ACU/G.R.E.G. 18-curve ×0.5 scaling | S1.42Z |
 | Config-only interior equalization proven insufficient | S1.42AA rejection |
 | Post-viability interior rarity normalization to 100 | S1.42AB |
-| Exact BCMER per-event-weight semantic correction | post-S1.42AC `Current/109...` analysis |
+| Exact BCMER per-event-weight semantic correction | `Current/109...` analysis |
+| Equal BCMER static EventType probability accepted | S1.42AC / `Current/118...` |
 
 ## Parentage rules that matter
 
 - S1.42C is the restore baseline after S1.42B's diagnostic divergence.
 - S1.42S is the accepted recovery architecture after the rejected broad Baboon approaches.
 - S1.42AB was built **directly from accepted S1.42Z**, not from rejected S1.42AA.
-- S1.42AC was built from S1.42AB but never promoted, so S1.42AB remains accepted.
+- S1.42AC was built **directly from accepted S1.42AB**. Its original rejection remains historical evidence, `Current/109` corrected the per-event-weight interpretation, and `Current/118` is the explicit later acceptance decision.
 
 When an exact artifact/hash/status is not indexed here or in `Current/BUILD_LINEAGE.json`, open the linked build-specific record rather than inferring it from build-name order.

@@ -19,16 +19,16 @@ Current-chat handover procedure: `Current/HANDOVER_PREPARATION_PROMPT.md`. When 
 
 ## Current state
 
-Accepted baseline: **S1.42AB — Interior Weight Normalization**  
-Profile: `Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z`  
-SHA-256: `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`
+Accepted baseline: **S1.42AC — BCMER EventType Equal Distribution**  
+Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`  
+SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
 
-Latest built artifact: **S1.42AC — BCMER EventType Equal Distribution — formally rejected/not promoted**  
+Latest built artifact: **S1.42AC — BCMER EventType Equal Distribution — ACCEPTED FULL NORMAL STACK**  
 SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
 
 Active candidate: **none**. Runtime test outstanding: **no**. Build successor armed: **no**.
 
-Exact next action: Upload and ingest the just-completed S1.42AC runtime log, then reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
+Exact next action: S1.42AC is accepted. No successor is armed and no runtime test is outstanding. Wait for explicit selection of the next isolated gameplay/compatibility scope through Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md.
 
 ## Semantic navigation
 
@@ -40,7 +40,7 @@ Exact next action: Upload and ingest the just-completed S1.42AC runtime log, the
 - Deferred work: `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`
 - Patch safety: `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
 
-Historical handovers, candidate notes and runtime decisions are preserved as evidence, but they do not override the current state/topic authority graph.
+Historical handovers, candidate notes, rejection records and runtime decisions are preserved as evidence, but they do not override the current state/topic authority graph or a later explicit acceptance decision.
 
 ## Repository overhaul
 

@@ -8,36 +8,38 @@
 
 ## Accepted baseline
 
-**S1.42AB — Interior Weight Normalization — ACCEPTED FULL NORMAL STACK**
-
-Profile: `Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z`  
-SHA-256: `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`  
-Acceptance: `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`  
-Runtime evidence: `RuntimeEvidence/S1.42AB/20260904T174010Z/`
-
-## Latest built artifact
-
-**S1.42AC — BCMER EventType Equal Distribution — FORMALLY REJECTED / NOT PROMOTED**
+**S1.42AC — BCMER EventType Equal Distribution — ACCEPTED FULL NORMAL STACK**
 
 Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`  
 SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`  
-Original rejection: `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`  
-Corrected source-path analysis: `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`
+Acceptance: `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`  
+Runtime evidence: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
 
-The old S1.42AC equality gate misread BCMER's logged values as aggregate EventType weights. `Current/109` proves they are per-event weights normalized by enabled event count. The equal 12.5 scales are therefore the correct static EventType-probability model; this technical correction does not silently promote the rejected artifact.
+## Latest built artifact
+
+**S1.42AC — BCMER EventType Equal Distribution — ACCEPTED FULL NORMAL STACK**
+
+Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`  
+SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`  
+Acceptance: `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`  
+
+Historical rejection: `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`  
+Corrected source-path analysis: `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`  
+
+A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
 ## Live execution state
 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AC_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED`)
-- Guarded build base: accepted S1.42AB / `3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AC_ACCEPTANCE_NO_SUCCESSOR_ARMED`)
+- Guarded build base: accepted S1.42AC / `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC`
 
 ## Exact next action
 
-Upload and ingest the just-completed S1.42AC runtime log, then reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
+S1.42AC is accepted. No successor is armed and no runtime test is outstanding. Wait for explicit selection of the next isolated gameplay/compatibility scope through Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
