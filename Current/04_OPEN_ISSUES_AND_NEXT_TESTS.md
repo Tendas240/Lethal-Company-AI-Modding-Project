@@ -16,26 +16,45 @@ This file intentionally no longer duplicates the full project history or technic
 - Acceptance: `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
 - Fresh acceptance runtime: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
 
-S1.42AC is now explicitly accepted under the corrected BCMER `1.71.0` static EventType model. `Current/106...` remains historical rejection evidence; `Current/109...` corrected the per-event-weight interpretation and `Current/118...` is the later acceptance decision.
+S1.42AC is explicitly accepted under the corrected BCMER `1.71.0` static EventType model. `Current/106...` remains historical rejection evidence; `Current/109...` corrected the per-event-weight interpretation and `Current/118...` is the later acceptance decision.
+
+## Selected next scope
+
+**S1.42AD — Functional Microwave Spawn Rarity Reduction.**
+
+The previous ChatGPT session selected this scope after the user explicitly requested the next build and committed a source-only draft under:
+
+`Patches/S142ADCodeRebirthMicrowaveSpawnTuning/`
+
+Recovery/status record:
+
+`Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`
+
+This is **not** a built candidate. The draft currently uses `SpawnScale = 0.5f`, but current canonical project requirements only specify that the Microwave should become rarer; no exact reduction percentage is yet authorized.
 
 ## Exact next action
 
-**No runtime test is outstanding. No successor is armed. No build is implicitly authorized.**
+**No runtime test is outstanding. No successor is armed. Do not build the current draft yet.**
 
-Wait for explicit selection of the next isolated gameplay/compatibility scope through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
+Before S1.42AD is armed:
+
+1. resolve/confirm the exact desired Microwave spawn reduction magnitude;
+2. independently verify the CodeRebirth `1.6.9` / DawnLib `0.9.25` / Dusk `0.9.25` ownership and exact 19-curve provider contract;
+3. complete the Patch Safety Review from `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
+4. create `BuildSpecs/S1.42AD_PLAN.md` and only then arm the repository-native build.
 
 Current controllers:
 
 - `BuildSpecs/current.json` is disabled and guarded by accepted S1.42AC.
+- controller id: `IDLE_S1.42AD_SCOPE_SELECTED_SOURCE_REVIEW_PENDING_NO_SUCCESSOR_ARMED`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC`.
 
 Whenever a future runtime test becomes outstanding, the same response that explains the test must include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader.
 
-## Open/deferred work
+## Remaining open/deferred work
 
-Route scope decisions through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. Current deferred items include:
+Route scope decisions through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. After the selected S1.42AD scope, remaining independent items include:
 
-- Functional Microwave spawn-rarity reduction;
 - CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - Mausoleum fog reduction;
 - Black Mesa/interior/Pikmin route recovery;
