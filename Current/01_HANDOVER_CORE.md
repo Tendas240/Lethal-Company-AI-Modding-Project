@@ -3,6 +3,7 @@
 
 **Status:** CURRENT TAKEOVER ROUTER  
 **Machine state:** `Current/CURRENT_STATE.json`  
+**Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
 **Topic router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
 **Authority registry:** `Current/DOCUMENT_AUTHORITY.md`  
 **Current-chat handover procedure:** `Current/HANDOVER_PREPARATION_PROMPT.md`  
@@ -10,17 +11,20 @@
 
 ## Fresh-session procedure
 
-1. Read `Current/00_CURRENT_STATE.md`.
-2. Read `Current/PROJECT_KNOWLEDGE_MAP.md`.
-3. Route the user's question to the registered semantic topic.
-4. Open linked config/code/runtime/history only when needed.
-5. Use `Current/BUILD_LINEAGE.md` for build-history questions and `Current/DOCUMENT_AUTHORITY.md` when an older file says "current".
+1. Read `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` and follow it for every project task.
+2. Read `Current/00_CURRENT_STATE.md`.
+3. Read `Current/PROJECT_KNOWLEDGE_MAP.md`.
+4. Route the user's question to the registered semantic topic.
+5. Open linked config/code/runtime/history only when needed.
+6. Use `Current/BUILD_LINEAGE.md` for build-history questions and `Current/DOCUMENT_AUTHORITY.md` when an older file says "current".
+
+For non-trivial work, execute one bounded segment per assistant turn, report the checkpoint, stop, and wait for explicit user continuation before the next segment. Short atomic work may be Segment 1/1; never create a knowingly inconsistent checkpoint.
 
 Do not require a local repository clone or local profile build while repository-native artifacts and automation are sufficient.
 
 ## Future handover signal
 
-When the user later requests transfer to another ChatGPT chat, execute `Current/HANDOVER_PREPARATION_PROMPT.md`. That procedure verifies the then-current repository/CI/controller state and generates the new chat's start prompt from current authority; do not reuse an old static handover snapshot.
+When the user later requests transfer to another ChatGPT chat, execute `Current/HANDOVER_PREPARATION_PROMPT.md` under `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. That procedure verifies the then-current repository/CI/controller state and generates the new chat's start prompt from current authority; do not reuse an old static handover snapshot.
 
 ## Current anchors
 
