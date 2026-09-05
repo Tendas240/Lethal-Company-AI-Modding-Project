@@ -27,8 +27,29 @@ def policy_path(s):
     return s["canonical_navigation"]["segmented_execution_policy"]
 
 
+def active_candidate_id(s):
+    candidate = s.get("active_candidate")
+    return candidate.get("build_id", "none") if isinstance(candidate, dict) else "none"
+
+
+def yes_no(value):
+    return "yes" if bool(value) else "no"
+
+
+def runtime_note(s):
+    if s.get("runtime_test_outstanding"):
+        return (
+            f"A runtime test is pending for {active_candidate_id(s)}. "
+            "`RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build."
+        )
+    return (
+        "No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; "
+        "`RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build."
+    )
+
+
 def render_readme(s):
-    a, l, o = s["accepted_baseline"], s["latest_built_artifact"], s["overhaul"]
+    a, l, o, c = s["accepted_baseline"], s["latest_built_artifact"], s["overhaul"], s["controllers"]
     h = s["canonical_navigation"]["handover_preparation_prompt"]
     p = policy_path(s)
     return f"""{MARKER_MD}
@@ -62,7 +83,7 @@ SHA-256: `{a['sha256']}`
 Latest built artifact: **{l['build_id']} — {l['title']} — {status_text(l['status'])}**  
 SHA-256: `{l['sha256']}`
 
-Active candidate: **none**. Runtime test outstanding: **no**. Build successor armed: **no**.
+Active candidate: **{active_candidate_id(s)}**. Runtime test outstanding: **{yes_no(s.get('runtime_test_outstanding'))}**. Build successor armed: **{yes_no(c.get('build_enabled'))}**.
 
 Exact next action: {s['next_action']}
 
@@ -95,6 +116,7 @@ def render_start(s):
     p = policy_path(s)
     latest_details = (
         opt_line(l, "acceptance", "acceptance")
+        + opt_line(l, "candidate_record", "candidate record")
         + opt_line(l, "original_rejection", "historical rejection")
         + opt_line(l, "corrected_analysis", "corrected BCMER analysis")
     ).rstrip()
@@ -137,9 +159,9 @@ LATEST BUILT ARTIFACT
 {latest_details}
 
 CURRENT EXECUTION STATE
-- active candidate: NONE
-- runtime test outstanding: NO
-- successor armed: NO
+- active candidate: {active_candidate_id(s).upper()}
+- runtime test outstanding: {yes_no(s.get('runtime_test_outstanding')).upper()}
+- successor armed: {yes_no(c.get('build_enabled')).upper()}
 - BuildSpecs/current.json enabled: {str(c['build_enabled']).lower()}
 - build controller id: {c['build_id']}
 - RuntimeInbox/ACTIVE_BUILD.txt: {c['runtime_active_build']}
@@ -182,6 +204,7 @@ def render_current(s):
     hist = f"\nHistorical rejection: `{l['original_rejection']}`  \n" if l.get("original_rejection") else ""
     corr = f"Corrected source-path analysis: `{l['corrected_analysis']}`  \n" if l.get("corrected_analysis") else ""
     acc = f"Acceptance: `{l['acceptance']}`  \n" if l.get("acceptance") else ""
+    cand = f"Candidate record: `{l['candidate_record']}`  \n" if l.get("candidate_record") else ""
     return f"""{MARKER_MD}
 # 00 — Current State
 
@@ -209,23 +232,23 @@ Runtime evidence: `{a['runtime_evidence']}`
 
 Profile: `{l['profile']}`  
 SHA-256: `{l['sha256']}`  
-{acc}{hist}{corr}
+{acc}{cand}{hist}{corr}
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
 ## Live execution state
 
-- Active candidate: **none**
-- Runtime test outstanding: **no**
-- Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`{c['build_id']}`)
-- Guarded build base: accepted {a['build_id']} / `{c['build_base_sha256']}`
+- Active candidate: **{active_candidate_id(s)}**
+- Runtime test outstanding: **{yes_no(s.get('runtime_test_outstanding'))}**
+- Successor armed: **{yes_no(c.get('build_enabled'))}**
+- `BuildSpecs/current.json`: {'enabled' if c['build_enabled'] else 'disabled'} (`{c['build_id']}`)
+- Guarded build base: `{c['build_base_profile']}` / `{c['build_base_sha256']}`
 - `RuntimeInbox/ACTIVE_BUILD.txt = {c['runtime_active_build']}`
 
 ## Exact next action
 
 {s['next_action']}
 
-No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+{runtime_note(s)}
 
 ## Where current truth lives
 
@@ -242,7 +265,7 @@ Frozen source commit: `{s['overhaul']['frozen_source_commit']}`.
 
 
 def render_handover(s):
-    a, l = s["accepted_baseline"], s["latest_built_artifact"]
+    a, l, c = s["accepted_baseline"], s["latest_built_artifact"], s["controllers"]
     h = s["canonical_navigation"]["handover_preparation_prompt"]
     p = policy_path(s)
     return f"""{MARKER_MD}
@@ -277,7 +300,7 @@ When the user later requests transfer to another ChatGPT chat, execute `{h}` und
 
 Accepted: **{a['build_id']} — {a['title']}**, SHA-256 `{a['sha256']}`.  
 Latest built: **{l['build_id']} — {l['title']}**, SHA-256 `{l['sha256']}`, status **{status_text(l['status'])}**.  
-Active candidate: **none**. Runtime test: **none pending**. Successor: **not armed**.
+Active candidate: **{active_candidate_id(s)}**. Runtime test: **{'pending' if s.get('runtime_test_outstanding') else 'none pending'}**. Successor: **{'armed' if c.get('build_enabled') else 'not armed'}**.
 
 Exact next action: {s['next_action']}
 
