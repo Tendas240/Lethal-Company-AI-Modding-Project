@@ -4,7 +4,7 @@
 **Authority:** current lifecycle router; detailed acceptance/rejection remains in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
-**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`, `Current/124_HANDOVER_S1.42AE_V23_SEGMENT3_NEXT.md`, `Current/Projektstatus_S1.42AE_CANDIDATE.json`  
+**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`, `Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`, `Current/Projektstatus_S1.42AE_CANDIDATE.json`  
 **Related:** `BuildSpecs/current.json`, `BuildSpecs/S1.42AE_PLAN.md`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/CODEREBIRTH.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Knowledge/GALE_PROFILE_WORKFLOW.md`  
 **Last-Validated:** 2026-09-05
 
@@ -39,20 +39,23 @@ S1.42AD failed closed because it expected `InteriorCurves=0`, while runtime expo
 - Automated build commit: `85e6caade0edd94ac5d7f409b9dd734fc8613f3f`
 - Candidate record: `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`
 - Correction analysis: `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`
+- Current import-recovery analysis: `Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`
 - Machine state: `Current/Projektstatus_S1.42AE_CANDIDATE.json`
 - Snapshot: `ProfileSources/S1.42AE/`
 
 Automated archive QC vs accepted S1.42AC found exactly one changed existing member (`export.r2x`) and exactly one added member (the S1.42AE DLL), with zero mod-state/addition/removal/config changes.
 
-## Two invalid S1.42AE launch attempts
+## Three invalid S1.42AE launch attempts
 
-Both user launch attempts are classified as **invalid Gale/Thunderstore import-materialization evidence, not candidate runtime rejections**. In both cases BepInEx failed in the preloader before S1.42AE's own provider-contract validation could execute.
+All three user launch attempts are classified as **invalid Gale/Thunderstore import-materialization evidence, not candidate runtime rejections**. In every case BepInEx failed in the preloader before S1.42AE's own provider-contract validation could execute.
 
 The second console capture exposed the actual package path used by `AutoHookGenPatcher`:
 
 `BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
 
 It then failed through `FixPluginTypesSerialization` with the same missing binding dependency and fatal preloader termination.
+
+The third attempt used v2.3 and exposed a separate proof bug before game launch: inherited `Get-ZipEntryText` produced a non-terminating Windows PowerShell 5.1 `New-Object` overload error for the five-argument `System.IO.StreamReader` construction. The resulting empty export text caused `Get-RequiredCriticalMaterializationPaths` parameter binding to fail, but the importer continued with no effective critical dependency list and printed a false-positive import success. The subsequent game start then failed in the same missing SoundAPI binding preloader path.
 
 Consequences remain:
 
@@ -61,21 +64,36 @@ Consequences remain:
 - the S1.42AE runtime gate remains open;
 - no successor is armed;
 - no complete fresh valid S1.42AE `LogOutput.log` has been ingested;
-- a new profile build is not justified by either incident.
+- a new profile build is not justified by these import/preloader incidents.
 
-The first hardening, helper v2.2 in commit `7b8a23e57ad0ac678314564da1f22638362b97f3`, used a flat dependency path model. The second failure established that this model did not match Gale's preserved inner Thunderstore plugin subtree. It also exposed that `loaforc-loaforcsSoundAPI_LethalCompany` must imply the base `loaforc-loaforcsSoundAPI` materialization requirement even when the base dependency is not separately listed in Gale export metadata.
+## S1.42AC control confirmation
 
-The current canonical launcher is therefore `RuntimeTools/ReplaceActiveGaleProfileV23.ps1`, revision `2026-09-05-import-uia-v2.3-recursive-package-materialization-proof`. It keeps the validated v2.2 UI/import behavior but requires exactly one non-empty expected DLL recursively within each required Gale package root, and fails closed on missing roots, missing/empty DLLs, or duplicates. See `Knowledge/GALE_PROFILE_WORKFLOW.md`.
+A fresh SHA-verified S1.42AC import was used as an A/B control because S1.42AC carries the same SoundAPI dependency family. Both expected nested SoundAPI DLLs were physically present and non-empty after that import. The user then started S1.42AC and reached the main menu normally.
 
-## Fresh-chat continuation checkpoint
+The supplied control log showed `Preloader finished`, `Chainloader ready`, `Chainloader started`, `DawnLib 0.9.25`, `DawnLib.DuskMod 0.9.25`, `CodeRebirth 1.6.9`, and `loaforcsSoundAPI 2.0.12` loading, with no Fatal marker. It was intentionally not ingested through `RuntimeInbox/Current/` because `RuntimeInbox/ACTIVE_BUILD.txt` remains `S1.42AE` and doing so would misattribute the control evidence.
 
-The durable chat-transfer checkpoint is:
+Authority for this diagnostic conclusion:
 
-`Current/124_HANDOVER_S1.42AE_V23_SEGMENT3_NEXT.md`
+`Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`
 
-The youngest technical recovery task reached **Technical Segment 2/3 complete**. Its continuation point is **Technical Segment 3/3 — post-merge verification and release of the renewed S1.42AE v2.3 re-import/runtime test**. The technical post-merge check for the v2.3 merge commit was already confirmed during handover inspection, but the final handover must re-verify the eventual final `main` after the handover checkpoint itself is merged.
+## Current Gale recovery
 
-A fresh chat must not repeat Technical Segment 2/3, must not build a successor, and after final handover verification should continue at Technical Segment 3/3's user-facing v2.3 import/test step.
+The canonical launcher is now `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision:
+
+`2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`
+
+It preserves the validated v2.2 UI/import workflow and the recursive package-root semantics, while additionally replacing `Get-ZipEntryText` in-memory so the export text is obtained through a direct four-argument `System.IO.StreamReader` constructor. Read/constructor failure, empty export text, package-name parse drift, missing roots, zero matches, empty DLLs, duplicate matches, or unexpected underlying v2.2 helper drift all fail closed.
+
+For an export containing `loaforc-loaforcsSoundAPI_LethalCompany`, v2.4 requires exactly two critical contracts before success:
+
+- exactly one non-empty `me.loaforc.soundapi.dll` recursively below the `loaforc-loaforcsSoundAPI` Gale package root;
+- exactly one non-empty `me.loaforc.soundapi.lethalcompany.dll` recursively below the `loaforc-loaforcsSoundAPI_LethalCompany` package root.
+
+Permanent regression gate:
+
+`RepositoryTools/gale_import_helper_validator.py`
+
+See `Knowledge/GALE_PROFILE_WORKFLOW.md`.
 
 ## Corrected Functional Microwave contract
 
@@ -108,15 +126,17 @@ Dusk 0.9.25 selection semantics under Moon priority are exact Moon -> exact Inte
 
 ## Exact next project action
 
-Re-import and runtime-test the **same S1.42AE artifact** before any successor work:
+Re-import and runtime-test the **same S1.42AE artifact** after the v2.4 repository/CI repair is merged:
 
-1. run the canonical `RuntimeTools/ReplaceActiveGaleProfileV23.ps1` launcher;
-2. require revision `2026-09-05-import-uia-v2.3-recursive-package-materialization-proof` to positively verify exact imported `export.r2x` identity;
-3. require exactly one non-empty `me.loaforc.soundapi.dll` recursively below the `loaforc-loaforcsSoundAPI` Gale package root and exactly one non-empty `me.loaforc.soundapi.lethalcompany.dll` recursively below the `loaforc-loaforcsSoundAPI_LethalCompany` package root;
-4. only after that proof, start the game and reach main menu/lobby;
-5. play one normal run far enough for ordinary moon/interior generation;
-6. upload the complete fresh `LogOutput.log` using the exact S1.42AE uploader in the candidate record;
-7. verify dependency versions, `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=18`, both keyset logs, final 18-Moon-curves `x0.5` marker, no contract refusal, and no new fatal/project-critical regression;
-8. accept or reject S1.42AE from that valid evidence.
+1. run the canonical `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` launcher;
+2. require revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`;
+3. require successful non-empty `export.r2x` text decoding before dependency derivation;
+4. require the two SoundAPI critical contracts to be derived and listed;
+5. require exactly one non-empty base SoundAPI DLL and one non-empty LC-binding DLL inside their respective Gale package roots;
+6. only after that proof, start the game and reach main menu/lobby;
+7. play one normal run far enough for ordinary moon/interior generation;
+8. upload the complete fresh `LogOutput.log` using the exact S1.42AE uploader in the candidate record;
+9. verify dependency versions, `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=18`, both keyset logs, final 18-Moon-curves `x0.5` marker, no contract refusal, and no new fatal/project-critical regression;
+10. accept or reject S1.42AE from that valid evidence.
 
 Do not build a successor before this runtime evidence is evaluated.
