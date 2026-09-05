@@ -1,8 +1,8 @@
 {
   "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42AF_BUILD_AWAITING_RUNTIME_VALIDATION",
-  "base_profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
-  "base_sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
+  "build_id": "IDLE_AFTER_S1.42AF_RUNTIME_GATE_PASS_MOUTH_DOG_ANALYSIS_SELECTED",
+  "base_profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+  "base_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",
   "profile_name": "DO_NOT_BUILD",
   "overwrite": false,
