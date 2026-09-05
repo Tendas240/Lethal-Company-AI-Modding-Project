@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "date": "2026-09-05",
+  "repository_is_source_of_truth": true,
+  "accepted_baseline": {
+    "build_id": "S1.42AC",
+    "profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+    "sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+    "status": "ACCEPTED_FULL_NORMAL_STACK",
+    "acceptance_record": "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+    "runtime_evidence": "RuntimeEvidence/S1.42AC/20260904T235720Z/"
+  },
+  "active_runtime_candidate": {
+    "build_id": "S1.42AE",
+    "title": "Functional Microwave Provider Contract Correction",
+    "profile": "Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z",
+    "profile_name": "LC V1 S1.42AE Functional Microwave Provider Contract Correction",
+    "sha256": "d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee",
+    "status": "BUILD_PASS_GAMEPLAY_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
+    "successful_build_run": 33968217356,
+    "automated_build_commit": "85e6caade0edd94ac5d7f409b9dd734fc8613f3f",
+    "candidate_record": "Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md",
+    "analysis": "Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md",
+    "plan": "BuildSpecs/S1.42AE_PLAN.md",
+    "patch_source": "Patches/S142AECodeRebirthMicrowaveSpawnTuning/",
+    "snapshot": "ProfileSources/S1.42AE/",
+    "zip_members": 335,
+    "changed_existing_members": ["export.r2x"],
+    "added_members": ["BepInEx/plugins/S142AECodeRebirthMicrowaveSpawnTuning/S142AECodeRebirthMicrowaveSpawnTuning.dll"],
+    "removed_members": [],
+    "mod_state_changes": [],
+    "mod_additions": [],
+    "mod_removals": [],
+    "config_changes": [],
+    "plugin_dll_sha256": "f42b25f32dc338617176d6d1d8c76ec3583ab29c7c4a1231c9e5ca4078378357",
+    "user_authorized_spawn_scale": 0.5,
+    "target_semantics": "Validate exact 18 Moon and 18 Interior Functional Microwave tables, then scale only the 18 effective Moon/tag curves to 50 percent amplitude.",
+    "provider_contract": {
+      "coderebirth": "1.6.9",
+      "dawnlib": "0.9.25",
+      "dusk": "0.9.25",
+      "map_object_key": "code_rebirth:functional_microwave",
+      "prioritise_moons": true,
+      "moon_curve_count": 18,
+      "interior_curve_count": 18,
+      "scaled_table": "CurvesByMoonOrTagName",
+      "interior_table_action": "VALIDATE_ONLY_NO_MUTATION",
+      "fail_closed": true
+    },
+    "runtime_gate": {
+      "startup_main_menu_lobby": "OPEN",
+      "dependency_validation": "OPEN",
+      "provider_contract_marker": "MUST_SHOW_PRIORITISE_MOONS_TRUE_MOONCURVES_18_INTERIORCURVES_18",
+      "moon_keyset_marker": "MUST_BE_PRESENT",
+      "interior_keyset_marker": "MUST_BE_PRESENT",
+      "scale_application_marker": "MUST_SHOW_18_MOON_CURVES_X0_5_AND_18_INTERIOR_VALIDATION_ONLY",
+      "contract_refusal": "MUST_BE_0",
+      "normal_round_generation": "OPEN",
+      "fatal": "MUST_BE_0",
+      "accepted_s1_42ac_regression_check": "OPEN"
+    }
+  },
+  "controllers": {
+    "buildspec_current_enabled": false,
+    "buildspec_current_id": "IDLE_AFTER_S1.42AE_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "buildspec_base_profile": "Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z",
+    "buildspec_base_sha256": "d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee",
+    "runtime_active_build": "S1.42AE",
+    "successor_armed": false
+  },
+  "exact_next_step": "Replace/import S1.42AE with the canonical Gale helper, run one normal gameplay round far enough for normal moon/interior generation, then upload the complete fresh LogOutput.log with the exact S1.42AE uploader in Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md. Do not build a successor before evaluating this runtime evidence."
+}
