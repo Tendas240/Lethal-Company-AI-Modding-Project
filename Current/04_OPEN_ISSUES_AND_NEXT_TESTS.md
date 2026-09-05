@@ -6,7 +6,7 @@
 **Topic router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
 **Last-Validated:** 2026-09-05
 
-This file intentionally no longer duplicates the full project history or technical baseline. The pre-overhaul version is preserved in Git history and in the verified standalone pre-overhaul repository; durable facts were extracted into the `Knowledge/` topic layer and build/runtime evidence.
+This file intentionally no longer duplicates the full project history or technical baseline. Durable facts belong in the registered `Knowledge/` topics and build/runtime evidence.
 
 ## Current gameplay gate
 
@@ -16,48 +16,47 @@ This file intentionally no longer duplicates the full project history or technic
 - Acceptance: `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
 - Fresh acceptance runtime: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
 
-S1.42AC is explicitly accepted under the corrected BCMER `1.71.0` static EventType model. `Current/106...` remains historical rejection evidence; `Current/109...` corrected the per-event-weight interpretation and `Current/118...` is the later acceptance decision.
+S1.42AC remains the accepted full-normal-stack gameplay/rollback baseline.
 
-## Selected next scope
+## Latest built artifact
 
-**S1.42AD — Functional Microwave Spawn Rarity Reduction.**
+**S1.42AD — Functional Microwave Spawn Rarity Reduction — RUNTIME REJECTED / NOT ACCEPTED.**
 
-The previous ChatGPT session selected this scope after the user explicitly requested the next build and committed a source-only draft under:
+- Profile: `Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z`
+- SHA-256: `9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c`
+- Candidate: `Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md`
+- Rejection: `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`
+- Runtime evidence: `RuntimeEvidence/S1.42AD/20260905T103333Z/`
+- Raw log SHA-256: `30c69254c4a4fd6bea1ec83cda075c168742c9060b88b09c22025973b074b3e8`
 
-`Patches/S142ADCodeRebirthMicrowaveSpawnTuning/`
-
-Recovery/status record:
-
-`Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`
-
-Blocked pre-build plan:
-
-`BuildSpecs/S1.42AD_PLAN.md`
-
-This is **not** a built candidate. The draft currently uses `SpawnScale = 0.5f`, but current canonical project requirements only specify that the Microwave should become rarer; no exact reduction percentage is yet authorized.
+The user-authorized target remains Functional Microwaves **half as often** (`SpawnScale = 0.5`). S1.42AD did not apply that change: its fail-closed patch expected zero Interior/tag curves but runtime exposed 18, including `code_rebirth:functional_microwave_ultra_high`, so mutation was correctly refused.
 
 ## Exact next action
 
-**No runtime test is outstanding. No successor is armed. Do not build the current draft yet.**
+**No runtime test is outstanding. No successor is armed. Do not build from S1.42AD.**
 
-Before S1.42AD is armed:
+Before a corrected Microwave successor is armed, independently establish:
 
-1. resolve/confirm the exact desired Microwave spawn reduction magnitude;
-2. independently verify the CodeRebirth `1.6.9` / DawnLib `0.9.25` / Dusk `0.9.25` ownership and exact 19-curve provider contract;
-3. complete/finalize `BuildSpecs/S1.42AD_PLAN.md`, including the Patch Safety Review from `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` and the approved target/provenance;
-4. only then arm the repository-native build.
+1. the actual runtime Moon-curve count and exact key set;
+2. the actual runtime Interior-curve count and exact key set;
+3. DawnLib/Dusk `MapObjectSpawnMechanics` selection/evaluation semantics for `PrioritiseMoons = true`;
+4. which effective curve table or tables must be proportionally scaled for the half-frequency target;
+5. a revised fail-closed contract that logs/verifies both tables before mutation.
+
+Do not merely remove the Interior check and do not blindly scale both dictionaries.
 
 Current controllers:
 
-- `BuildSpecs/current.json` is disabled and guarded by accepted S1.42AC.
-- controller id: `IDLE_S1.42AD_SCOPE_SELECTED_SOURCE_REVIEW_PENDING_NO_SUCCESSOR_ARMED`.
+- `BuildSpecs/current.json` is disabled.
+- controller id: `IDLE_AFTER_S1.42AD_REJECTION_MICROWAVE_PROVIDER_ANALYSIS_PENDING`.
+- guarded base: accepted S1.42AC profile/SHA.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC`.
 
 Whenever a future runtime test becomes outstanding, the same response that explains the test must include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader.
 
 ## Remaining open/deferred work
 
-Route scope decisions through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. After the selected S1.42AD scope, remaining independent items include:
+Route scope decisions through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. Independent deferred items include:
 
 - CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - Mausoleum fog reduction;
@@ -67,26 +66,23 @@ Route scope decisions through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. After 
 - AdditionalNetworking repair only with reproducible user-facing evidence;
 - LethalMin teardown repair only with stronger evidence.
 
-The repository information-architecture overhaul is **closed** and has passed the stricter post-acceptance re-audit against the frozen original instructions. Its current summary is `Knowledge/REPOSITORY_OVERHAUL.md`; final evidence is `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md` and `Current/OVERHAUL_VALIDATION_RESULTS.json`.
-
 ## Topic routes
 
 - Current lifecycle / next test: `Knowledge/CURRENT_LIFECYCLE.md`
+- Roadmap/deferred scopes: `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`
+- CodeRebirth: `Knowledge/CODEREBIRTH.md`
+- Microwave / Immortal Snail: `Knowledge/ITEM_TUNING.md`
 - BCMER: `Knowledge/BCMER.md`
 - Interiors / LLL / CullFactory: `Knowledge/INTERIORS_AND_LLL.md`
 - Enemy-spawn baseline: `Knowledge/ENEMY_SPAWN_BASELINE.md`
 - Pikmin/enemy compatibility: `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`
 - Black Mesa/Pikmin routing: `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`
-- Jetpack: `Knowledge/JETPACK.md`
-- CodeRebirth: `Knowledge/CODEREBIRTH.md`
-- Microwave / Immortal Snail: `Knowledge/ITEM_TUNING.md`
 - Known monitor-only errors: `Knowledge/MONITOR_ONLY_ERRORS.md`
 - Build/runtime/GitHub pipeline: `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`
 - Gale import: `Knowledge/GALE_PROFILE_WORKFLOW.md`
 - Build history: `Current/BUILD_LINEAGE.md`
 - Patch safety: `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-- Repository overhaul: `Knowledge/REPOSITORY_OVERHAUL.md`
 
 ## Permanent guardrail
 
-Do not reopen old diagnostic branches or rewrite historical outcomes merely because old files contain stale `current` wording. Current authority is determined by `Current/DOCUMENT_AUTHORITY.md` and the semantic knowledge map.
+Do not reopen rejected builds or rewrite historical outcomes because older snapshots say `current`. Current authority is determined by `Current/CURRENT_STATE.json`, `Current/DOCUMENT_AUTHORITY.md`, the Knowledge Map, and the latest build-specific acceptance/rejection evidence.
