@@ -15,6 +15,7 @@
   "rules": [
     "Historical documents remain evidence of what was known or decided at their timestamp and do not override newer canonical topic/state sources.",
     "A newer source-level analysis may supersede the interpretation of an older verdict without deleting the historical verdict.",
+    "A later explicit acceptance or rejection decision may supersede an older lifecycle verdict while preserving the older record as historical evidence.",
     "Known concrete bad/superseded values are qualified by Current/INTEGRITY_ERRATA_REGISTRY.json and must not be treated as current authority merely because they remain in historical evidence.",
     "BuildSpecs/current.json and RuntimeInbox/ACTIVE_BUILD.txt are controllers, not narrative authority for unrelated topics.",
     "Only Current/CURRENT_STATE.json and Current/00_CURRENT_STATE.md declare the concise global current state after the overhaul.",
@@ -110,9 +111,9 @@
     },
     {
       "path": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
-      "classification": "HISTORICAL_DECISION_PRESERVED_INTERPRETATION_SUPERSEDED",
-      "reason": "Formal rejection remains historical fact, but equal per-event-weight acceptance interpretation was disproved by exact BCMER 1.71.0 source analysis.",
-      "current_targets": ["Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md", "Knowledge/BCMER.md"]
+      "classification": "HISTORICAL_DECISION_PRESERVED_INTERPRETATION_AND_LIFECYCLE_VERDICT_SUPERSEDED",
+      "reason": "The formal rejection remains historical fact. Its equal per-event-weight acceptance interpretation was disproved by exact BCMER 1.71.0 source analysis, and the artifact was later explicitly accepted after fresh corrected-model runtime confirmation.",
+      "current_targets": ["Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md", "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md", "Current/Projektstatus_S1.42AC_ACCEPTED.json", "Knowledge/BCMER.md"]
     },
     {
       "path": "Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md",
