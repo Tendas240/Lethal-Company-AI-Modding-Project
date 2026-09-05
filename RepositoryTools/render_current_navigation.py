@@ -3,20 +3,34 @@
 from __future__ import annotations
 import argparse, json, sys
 from pathlib import Path
+
 ROOT = Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "Current/CURRENT_STATE.json"
 MARKER_MD = "<!-- GENERATED — DO NOT MANUALLY EDIT. Source: Current/CURRENT_STATE.json via RepositoryTools/render_current_navigation.py -->"
 MARKER_TEXT = "GENERATED — DO NOT MANUALLY EDIT. Update Current/CURRENT_STATE.json and run RepositoryTools/render_current_navigation.py."
 
-def load_state(): return json.loads(STATE_PATH.read_text(encoding="utf-8"))
-def status_text(value): return str(value).replace("_", " ")
+
+def load_state():
+    return json.loads(STATE_PATH.read_text(encoding="utf-8"))
+
+
+def status_text(value):
+    return str(value).replace("_", " ")
+
+
 def opt_line(obj, key, label):
-    value=obj.get(key)
+    value = obj.get(key)
     return f"- {label}: {value}\n" if value else ""
 
+
+def policy_path(s):
+    return s["canonical_navigation"]["segmented_execution_policy"]
+
+
 def render_readme(s):
-    a,l,o=s["accepted_baseline"],s["latest_built_artifact"],s["overhaul"]
-    h=s["canonical_navigation"]["handover_preparation_prompt"]
+    a, l, o = s["accepted_baseline"], s["latest_built_artifact"], s["overhaul"]
+    h = s["canonical_navigation"]["handover_preparation_prompt"]
+    p = policy_path(s)
     return f"""{MARKER_MD}
 # Lethal Company AI Modding Project
 
@@ -27,14 +41,17 @@ GitHub is the canonical Source of Truth and build/handover workspace for **Letha
 Read, in order:
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/00_CURRENT_STATE.md`
-3. `Current/PROJECT_KNOWLEDGE_MAP.md`
+2. `{p}`
+3. `Current/00_CURRENT_STATE.md`
+4. `Current/PROJECT_KNOWLEDGE_MAP.md`
+
+Every ChatGPT chat performing project work must follow `{p}`: execute one bounded segment, report the checkpoint, then stop and wait for explicit user continuation before the next non-final segment. Short atomic work may be one segment.
 
 Then open only the topic/evidence needed for the user's question. Do not read the entire historical repository by default.
 
 Machine-readable live state: `Current/CURRENT_STATE.json`.
 
-Current-chat handover procedure: `{h}`. When the user requests transfer to a new ChatGPT chat, the active chat must execute that procedure and generate a fresh new-chat prompt from current repository authority.
+Current-chat handover procedure: `{h}`. Handover work is also continuation-gated by `{p}`.
 
 ## Current state
 
@@ -51,6 +68,7 @@ Exact next action: {s['next_action']}
 
 ## Semantic navigation
 
+- ChatGPT segmented execution: `{p}`
 - Topic router: `Current/PROJECT_KNOWLEDGE_MAP.md` / `.json`
 - Chat handover procedure: `{h}`
 - Build history: `Current/BUILD_LINEAGE.md` / `.json`
@@ -70,10 +88,16 @@ Manifest: `{o['backup_manifest']}`.
 No local repository clone or local profile build should be required from the user while repository-native artifacts and automation are sufficient.
 """
 
+
 def render_start(s):
-    a,l,c=s["accepted_baseline"],s["latest_built_artifact"],s["controllers"]
-    h=s["canonical_navigation"]["handover_preparation_prompt"]
-    latest_details=(opt_line(l,"acceptance","acceptance")+opt_line(l,"original_rejection","historical rejection")+opt_line(l,"corrected_analysis","corrected BCMER analysis")).rstrip()
+    a, l, c = s["accepted_baseline"], s["latest_built_artifact"], s["controllers"]
+    h = s["canonical_navigation"]["handover_preparation_prompt"]
+    p = policy_path(s)
+    latest_details = (
+        opt_line(l, "acceptance", "acceptance")
+        + opt_line(l, "original_rejection", "historical rejection")
+        + opt_line(l, "corrected_analysis", "corrected BCMER analysis")
+    ).rstrip()
     return f"""======================================================================
 CURRENT CANONICAL TAKEOVER — GENERATED FROM Current/CURRENT_STATE.json
 ======================================================================
@@ -84,16 +108,20 @@ Game: {s['game']}
 Repository is the Source of Truth.
 
 READ FIRST:
-1. Current/00_CURRENT_STATE.md
-2. Current/PROJECT_KNOWLEDGE_MAP.md
-3. Current/01_HANDOVER_CORE.md
+1. {p}
+2. Current/00_CURRENT_STATE.md
+3. Current/PROJECT_KNOWLEDGE_MAP.md
+4. Current/01_HANDOVER_CORE.md
+
+SEGMENTED EXECUTION RULE
+For every project request that requires work, follow {p}. Divide non-trivial work into bounded segments. Execute only the current segment, report Completed / Findings / Remaining / Next segment, then STOP and wait for the user's explicit continuation signal before beginning the next non-final segment. A genuinely short atomic task may be Segment 1/1. Never split an atomic change so the repository/controllers are knowingly left inconsistent.
 
 Then route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the relevant Knowledge topic plus linked evidence/config/code.
 Use Current/DOCUMENT_AUTHORITY.md when old files contain stale "current" wording.
 Use Current/BUILD_LINEAGE.md for "which build introduced/rejected/accepted this?" questions.
 
 HANDOVER SIGNAL
-When the user explicitly requests transfer to a new ChatGPT chat, execute {h}. Verify the then-current main/CI/controllers first and generate a fresh new-chat start prompt from repository authority instead of reusing stale conversation memory.
+When the user explicitly requests transfer to a new ChatGPT chat, execute {h} under the same segmented execution policy. Verify the then-current main/CI/controllers and generate a fresh new-chat start prompt from repository authority instead of reusing stale conversation memory.
 
 ACCEPTED BASELINE
 - {a['build_id']} — {a['title']}
@@ -123,6 +151,7 @@ RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
 
 PERMANENT POLICY ROUTES
+- Segmented ChatGPT execution: {p}
 - Chat handover: {h}
 - BCMER: Knowledge/BCMER.md
 - Interiors/LLL: Knowledge/INTERIORS_AND_LLL.md
@@ -146,17 +175,13 @@ Frozen source commit: {s['overhaul']['frozen_source_commit']}
 Do not require the user to make a local clone/build while repository-native infrastructure is sufficient.
 """
 
+
 def render_current(s):
-    a,l,c=s["accepted_baseline"],s["latest_built_artifact"],s["controllers"]
-    hist=""
-    if l.get("original_rejection"):
-        hist=f"\nHistorical rejection: `{l['original_rejection']}`  \n"
-    corr=""
-    if l.get("corrected_analysis"):
-        corr=f"Corrected source-path analysis: `{l['corrected_analysis']}`  \n"
-    acc=""
-    if l.get("acceptance"):
-        acc=f"Acceptance: `{l['acceptance']}`  \n"
+    a, l, c = s["accepted_baseline"], s["latest_built_artifact"], s["controllers"]
+    p = policy_path(s)
+    hist = f"\nHistorical rejection: `{l['original_rejection']}`  \n" if l.get("original_rejection") else ""
+    corr = f"Corrected source-path analysis: `{l['corrected_analysis']}`  \n" if l.get("corrected_analysis") else ""
+    acc = f"Acceptance: `{l['acceptance']}`  \n" if l.get("acceptance") else ""
     return f"""{MARKER_MD}
 # 00 — Current State
 
@@ -164,6 +189,10 @@ def render_current(s):
 **Generated from:** `Current/CURRENT_STATE.json`  
 **Updated:** {s['updated']}  
 **Game:** {s['game']}
+
+## Project execution policy
+
+Every ChatGPT chat performing project work must follow `{p}`. This controls task segmentation/checkpoints, not gameplay lifecycle state.
 
 ## Accepted baseline
 
@@ -200,7 +229,7 @@ No new runtime test is pending. A completed run may still require its build-spec
 
 ## Where current truth lives
 
-Use `Current/PROJECT_KNOWLEDGE_MAP.md` for semantic routing and `Current/DOCUMENT_AUTHORITY.md` for current-vs-history precedence. Durable gameplay/config invariants live in the relevant `Knowledge/*.md` topic rather than being duplicated here.
+Use `{p}` for execution cadence, `Current/PROJECT_KNOWLEDGE_MAP.md` for semantic routing and `Current/DOCUMENT_AUTHORITY.md` for current-vs-history precedence. Durable gameplay/config invariants live in the relevant `Knowledge/*.md` topic rather than being duplicated here.
 
 Build history is indexed by `Current/BUILD_LINEAGE.md`; artifact and runtime-evidence readability is indexed by `Current/ARTIFACT_EVIDENCE_INTEGRITY.md`.
 
@@ -211,14 +240,17 @@ Verified recovery repository: `{s['overhaul']['pre_overhaul_backup']}`.
 Frozen source commit: `{s['overhaul']['frozen_source_commit']}`.
 """
 
+
 def render_handover(s):
-    a,l=s["accepted_baseline"],s["latest_built_artifact"]
-    h=s["canonical_navigation"]["handover_preparation_prompt"]
+    a, l = s["accepted_baseline"], s["latest_built_artifact"]
+    h = s["canonical_navigation"]["handover_preparation_prompt"]
+    p = policy_path(s)
     return f"""{MARKER_MD}
 # 01 — Handover Core
 
 **Status:** CURRENT TAKEOVER ROUTER  
 **Machine state:** `Current/CURRENT_STATE.json`  
+**Project execution policy:** `{p}`  
 **Topic router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
 **Authority registry:** `Current/DOCUMENT_AUTHORITY.md`  
 **Current-chat handover procedure:** `{h}`  
@@ -226,17 +258,20 @@ def render_handover(s):
 
 ## Fresh-session procedure
 
-1. Read `Current/00_CURRENT_STATE.md`.
-2. Read `Current/PROJECT_KNOWLEDGE_MAP.md`.
-3. Route the user's question to the registered semantic topic.
-4. Open linked config/code/runtime/history only when needed.
-5. Use `Current/BUILD_LINEAGE.md` for build-history questions and `Current/DOCUMENT_AUTHORITY.md` when an older file says "current".
+1. Read `{p}` and follow it for every project task.
+2. Read `Current/00_CURRENT_STATE.md`.
+3. Read `Current/PROJECT_KNOWLEDGE_MAP.md`.
+4. Route the user's question to the registered semantic topic.
+5. Open linked config/code/runtime/history only when needed.
+6. Use `Current/BUILD_LINEAGE.md` for build-history questions and `Current/DOCUMENT_AUTHORITY.md` when an older file says "current".
+
+For non-trivial work, execute one bounded segment per assistant turn, report the checkpoint, stop, and wait for explicit user continuation before the next segment. Short atomic work may be Segment 1/1; never create a knowingly inconsistent checkpoint.
 
 Do not require a local repository clone or local profile build while repository-native artifacts and automation are sufficient.
 
 ## Future handover signal
 
-When the user later requests transfer to another ChatGPT chat, execute `{h}`. That procedure verifies the then-current repository/CI/controller state and generates the new chat's start prompt from current authority; do not reuse an old static handover snapshot.
+When the user later requests transfer to another ChatGPT chat, execute `{h}` under `{p}`. That procedure verifies the then-current repository/CI/controller state and generates the new chat's start prompt from current authority; do not reuse an old static handover snapshot.
 
 ## Current anchors
 
@@ -261,21 +296,40 @@ Frozen source commit: `{s['overhaul']['frozen_source_commit']}`
 Manifest: `{s['overhaul']['backup_manifest']}`
 """
 
+
 def generated(s):
-    return {"README.md":render_readme(s),"START_HERE_ChatGPT_Masterprompt.txt":render_start(s),"Current/00_CURRENT_STATE.md":render_current(s),"Current/01_HANDOVER_CORE.md":render_handover(s)}
+    return {
+        "README.md": render_readme(s),
+        "START_HERE_ChatGPT_Masterprompt.txt": render_start(s),
+        "Current/00_CURRENT_STATE.md": render_current(s),
+        "Current/01_HANDOVER_CORE.md": render_handover(s),
+    }
+
 
 def main():
-    p=argparse.ArgumentParser(); p.add_argument("--check",action="store_true"); args=p.parse_args(); s=load_state(); mismatches=[]
-    for rel,content in generated(s).items():
-        path=ROOT/rel
+    p = argparse.ArgumentParser()
+    p.add_argument("--check", action="store_true")
+    args = p.parse_args()
+    s = load_state()
+    mismatches = []
+    for rel, content in generated(s).items():
+        path = ROOT / rel
         if args.check:
-            actual=path.read_text(encoding="utf-8") if path.exists() else ""
-            if actual!=content: mismatches.append(rel)
+            actual = path.read_text(encoding="utf-8") if path.exists() else ""
+            if actual != content:
+                mismatches.append(rel)
         else:
-            path.parent.mkdir(parents=True,exist_ok=True); path.write_text(content,encoding="utf-8"); print("rendered",rel)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(content, encoding="utf-8")
+            print("rendered", rel)
     if mismatches:
-        for rel in mismatches: print("OUT-OF-DATE:",rel)
+        for rel in mismatches:
+            print("OUT-OF-DATE:", rel)
         return 1
-    if args.check: print("PASS: generated current navigation matches Current/CURRENT_STATE.json")
+    if args.check:
+        print("PASS: generated current navigation matches Current/CURRENT_STATE.json")
     return 0
-if __name__=="__main__": sys.exit(main())
+
+
+if __name__ == "__main__":
+    sys.exit(main())
