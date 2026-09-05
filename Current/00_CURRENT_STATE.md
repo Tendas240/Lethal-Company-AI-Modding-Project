@@ -6,6 +6,10 @@
 **Updated:** 2026-09-05  
 **Game:** Lethal Company V81
 
+## Project execution policy
+
+Every ChatGPT chat performing project work must follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. This controls task segmentation/checkpoints, not gameplay lifecycle state.
+
 ## Accepted baseline
 
 **S1.42AC — BCMER EventType Equal Distribution — ACCEPTED FULL NORMAL STACK**
@@ -45,7 +49,7 @@ No new runtime test is pending. A completed run may still require its build-spec
 
 ## Where current truth lives
 
-Use `Current/PROJECT_KNOWLEDGE_MAP.md` for semantic routing and `Current/DOCUMENT_AUTHORITY.md` for current-vs-history precedence. Durable gameplay/config invariants live in the relevant `Knowledge/*.md` topic rather than being duplicated here.
+Use `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` for execution cadence, `Current/PROJECT_KNOWLEDGE_MAP.md` for semantic routing and `Current/DOCUMENT_AUTHORITY.md` for current-vs-history precedence. Durable gameplay/config invariants live in the relevant `Knowledge/*.md` topic rather than being duplicated here.
 
 Build history is indexed by `Current/BUILD_LINEAGE.md`; artifact and runtime-evidence readability is indexed by `Current/ARTIFACT_EVIDENCE_INTEGRITY.md`.
 
