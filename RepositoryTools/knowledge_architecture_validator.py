@@ -24,7 +24,6 @@ def warn(message: str) -> None:
 
 
 def exists(path: str) -> bool:
-    # Directory references in project metadata conventionally end with '/'.
     clean = path.rstrip("/")
     if not clean:
         return False
@@ -112,13 +111,11 @@ def validate_knowledge_map(req: dict[str, Any]) -> None:
 
         for field in ("machine_state", "evidence", "config_paths", "code_paths", "historical_sources"):
             for path in topic.get(field, []):
-                # Evidence glob descriptions such as Current/Projektstatus_*.json are allowed.
                 require_path(path, f"topic {tid}.{field}")
         for related in topic.get("related_topics", []):
             if related not in topic_ids:
                 fail(f"topic {tid} links unknown related topic: {related}")
 
-    # Every semantic Knowledge document should be routable from the map.
     for p in sorted((ROOT / "Knowledge").glob("*.md")):
         rel = p.relative_to(ROOT).as_posix()
         if rel not in canonical_paths:
@@ -139,22 +136,17 @@ def validate_current_state() -> None:
 
     accepted = state.get("accepted_baseline", {})
     latest = state.get("latest_built_artifact", {})
+    candidate = state.get("active_candidate")
     controllers = state.get("controllers", {})
 
+    # The accepted baseline remains a deliberately frozen gameplay authority until
+    # an explicit later runtime decision promotes a successor.
     if accepted.get("build_id") != "S1.42AC":
         fail("atomic state accepted baseline is not S1.42AC")
     if accepted.get("sha256") != "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9":
         fail("atomic state S1.42AC SHA drift")
     if accepted.get("status") != "ACCEPTED_FULL_NORMAL_STACK":
         fail("atomic state S1.42AC is not accepted full normal stack")
-    if latest.get("build_id") != "S1.42AC":
-        fail("atomic state latest built artifact is not S1.42AC")
-    if latest.get("status") != "ACCEPTED_FULL_NORMAL_STACK":
-        fail("latest built S1.42AC status does not match explicit corrected acceptance")
-    if state.get("active_candidate") is not None:
-        fail("active candidate must be null while no successor is armed")
-    if state.get("runtime_test_outstanding") is not False:
-        fail("runtime_test_outstanding must be false")
 
     active_build_path = ROOT / "RuntimeInbox/ACTIVE_BUILD.txt"
     if not active_build_path.is_file():
@@ -166,17 +158,42 @@ def validate_current_state() -> None:
     lineage_builds = [b for b in lineage.get("builds", []) if isinstance(b, dict)]
     lineage_by_id = {b.get("id"): b for b in lineage_builds if b.get("id")}
     lineage_ids = set(lineage_by_id)
+
     if active_build and active_build not in lineage_ids:
         fail(f"ACTIVE_BUILD references unknown build lineage id: {active_build!r}")
     if controllers.get("runtime_active_build") != active_build:
         fail("CURRENT_STATE controller runtime_active_build mismatch")
 
+    candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None
+    if candidate_id:
+        if state.get("runtime_test_outstanding") is not True:
+            fail("active candidate requires runtime_test_outstanding=true")
+        if latest.get("build_id") != candidate_id:
+            fail("active candidate must be the latest built artifact")
+        if active_build != candidate_id:
+            fail("ACTIVE_BUILD must identify the active runtime candidate")
+        if lineage.get("active_candidate_build_id") != candidate_id:
+            fail("BUILD_LINEAGE active candidate mismatch")
+        if candidate_id not in lineage_ids:
+            fail("active candidate is missing from BUILD_LINEAGE")
+        if candidate.get("profile") != latest.get("profile") or candidate.get("sha256") != latest.get("sha256"):
+            fail("active candidate identity disagrees with latest built artifact")
+    else:
+        if state.get("runtime_test_outstanding") is not False:
+            fail("runtime_test_outstanding must be false when no active candidate exists")
+        if lineage.get("active_candidate_build_id") is not None:
+            fail("BUILD_LINEAGE active candidate must be null when CURRENT_STATE has none")
+
+    # The current build controller must be disabled between atomic build operations.
+    # Its guard may point at the active candidate while runtime validation is open;
+    # otherwise it guards the accepted baseline.
     if buildspec.get("enabled") is not False:
-        fail("BuildSpecs/current.json must remain disabled")
-    if buildspec.get("base_profile") != accepted.get("profile"):
-        fail("BuildSpecs base_profile does not match accepted baseline")
-    if buildspec.get("base_sha256") != accepted.get("sha256"):
-        fail("BuildSpecs base_sha256 does not match accepted baseline")
+        fail("BuildSpecs/current.json must remain disabled outside an atomic build operation")
+    guard = candidate if candidate_id else accepted
+    if buildspec.get("base_profile") != guard.get("profile"):
+        fail("BuildSpecs base_profile does not match the current guarded artifact")
+    if buildspec.get("base_sha256") != guard.get("sha256"):
+        fail("BuildSpecs base_sha256 does not match the current guarded artifact")
     if controllers.get("build_id") != buildspec.get("build_id"):
         fail("CURRENT_STATE controller build_id mismatch")
     if controllers.get("build_enabled") != buildspec.get("enabled"):
@@ -188,8 +205,6 @@ def validate_current_state() -> None:
 
     if lineage.get("current_accepted_build_id") != accepted.get("build_id"):
         fail("BUILD_LINEAGE current accepted build mismatch")
-    if lineage.get("active_candidate_build_id") is not None:
-        fail("BUILD_LINEAGE active candidate must be null")
     if lineage.get("latest_built_artifact_id") != latest.get("build_id"):
         fail("BUILD_LINEAGE latest built artifact mismatch")
 
@@ -201,9 +216,7 @@ def validate_current_state() -> None:
     if accepted_lineage.get("safe_as_gameplay_base") is not True:
         fail("accepted BUILD_LINEAGE entry is not marked safe_as_gameplay_base")
 
-    # AUTO_BUILD_RESULT is immutable provenance for the latest build operation, not
-    # the post-acceptance controller. Its base must match the latest artifact's
-    # lineage parent, not the now-promoted artifact itself.
+    # AUTO_BUILD_RESULT is immutable provenance for the latest actual profile build.
     if auto.get("build_id") != latest.get("build_id"):
         fail("AUTO_BUILD_RESULT does not describe latest built artifact")
     if auto.get("output_sha256") != latest.get("sha256"):
@@ -215,15 +228,22 @@ def validate_current_state() -> None:
         fail("AUTO_BUILD_RESULT base SHA disagrees with latest artifact lineage parent")
 
     for key in ("profile", "acceptance", "project_status", "runtime_evidence", "profile_sources", "file_index"):
-        if key in accepted:
-            require_path(accepted[key], f"CURRENT_STATE.accepted_baseline.{key}")
-    for key in ("profile", "acceptance", "project_status", "original_rejection", "corrected_analysis", "runtime_evidence", "profile_sources", "file_index"):
-        if key in latest:
-            require_path(latest[key], f"CURRENT_STATE.latest_built_artifact.{key}")
+        value = accepted.get(key)
+        if value:
+            require_path(value, f"CURRENT_STATE.accepted_baseline.{key}")
+    for key in ("profile", "acceptance", "candidate_record", "project_status", "original_rejection", "corrected_analysis", "runtime_evidence", "profile_sources", "file_index", "build_plan"):
+        value = latest.get(key)
+        if value:
+            require_path(value, f"CURRENT_STATE.latest_built_artifact.{key}")
+    if isinstance(candidate, dict):
+        for key in ("profile", "candidate_record", "project_status", "runtime_evidence"):
+            value = candidate.get(key)
+            if value:
+                require_path(value, f"CURRENT_STATE.active_candidate.{key}")
 
 
 def validate_profile_sources() -> None:
-    for build in ("S1.42AB", "S1.42AC"):
+    for build in ("S1.42AB", "S1.42AC", "S1.42AD"):
         require_path(f"ProfileSources/{build}/FILE_INDEX.json", f"{build} readable snapshot")
         require_path(f"ProfileSources/{build}/export.r2x", f"{build} readable snapshot")
 
@@ -308,7 +328,6 @@ def validate_runtime_evidence_provenance() -> None:
     if "provenance erratum" not in lowered or "supersed" not in lowered:
         fail("S1.42AC rejection record lacks an explicit provenance erratum/supersession marker")
 
-    # The new accepted status and current artifact index must point to the fresh run.
     accepted_status = load_json("Current/Projektstatus_S1.42AC_ACCEPTED.json")
     accepted_runtime = accepted_status.get("runtime_acceptance", {})
     fresh_index = "RuntimeEvidence/S1.42AC/20260904T235720Z/INDEX.json"
