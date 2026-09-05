@@ -21,31 +21,28 @@ Runtime evidence: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
 
 ## Latest built artifact
 
-**S1.42AC — BCMER EventType Equal Distribution — ACCEPTED FULL NORMAL STACK**
+**S1.42AD — Functional Microwave Spawn Rarity Reduction — BUILD PASS RUNTIME VALIDATION OPEN NOT ACCEPTED**
 
-Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`  
-SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`  
-Acceptance: `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`  
-
-Historical rejection: `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`  
-Corrected source-path analysis: `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`  
+Profile: `Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z`  
+SHA-256: `9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c`  
+Candidate record: `Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
 ## Live execution state
 
-- Active candidate: **none**
-- Runtime test outstanding: **no**
+- Active candidate: **S1.42AD**
+- Runtime test outstanding: **yes**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_S1.42AD_SCOPE_SELECTED_SOURCE_REVIEW_PENDING_NO_SUCCESSOR_ARMED`)
-- Guarded build base: accepted S1.42AC / `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AD_BUILD_AWAITING_RUNTIME_VALIDATION`)
+- Guarded build base: `Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z` / `9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AD`
 
 ## Exact next action
 
-S1.42AD Functional Microwave spawn-rarity reduction is the explicitly selected next scope. A source-only draft exists at Patches/S142ADCodeRebirthMicrowaveSpawnTuning/, but no profile has been built or armed. Before building, independently review the draft against Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md, verify the exact CodeRebirth/DawnLib owner and 19-curve contract, and resolve the exact reduction magnitude: the draft uses 0.5 while current canonical requirements specify only that the Microwave should be rarer. Do not build or runtime-test until the target is explicitly confirmed and a build spec is armed.
+S1.42AD is built and is the active runtime candidate. Replace/import the Gale profile with LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction using the canonical repository helper, run one normal gameplay round far enough for normal moon/interior generation, then upload the complete fresh LogOutput.log using the exact S1.42AD uploader in Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md. Runtime acceptance must confirm dependency validation, PrioritiseMoons=true with 18 Moon curves and 0 Interior curves, the final x0.5 application marker, normal gameplay and no contract-refusal/fatal regression. Do not build a successor before this evidence is analyzed.
 
-No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+A runtime test is pending for S1.42AD. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
