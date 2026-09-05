@@ -6,7 +6,7 @@ DLL SHA-256: 9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df
 Generated from the exact NotezyTeam-LethalMinNightly-1.1.108 package used by the repository's established decompile workflow.
 The report is evidence-only: it does not modify gameplay code, config, controllers, or build state.
 
-Matched C# files: 16
+Matched C# files: 24
 
 ==============================================================================================================
 FILE: LethalMin/BaboonBirdPikminEnemy.cs
@@ -214,11 +214,36 @@ MATCHES: bitepikmin, grabpikmin
 
 ==============================================================================================================
 FILE: LethalMin/BushWolfPikminEnemy.cs
-MATCHES: grabpikmin
+MATCHES: grabpikmin, getnearbypikmin
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
    10: public class BushWolfPikminEnemy : PikminEnemy
---- SOURCE lines 26-322 ---
+--- SOURCE lines 1-537 ---
+    1: using System;
+    2: using System.Collections.Generic;
+    3: using System.Linq;
+    4: using System.Runtime.CompilerServices;
+    5: using Unity.Netcode;
+    6: using UnityEngine;
+    7: 
+    8: namespace LethalMin;
+    9: 
+   10: public class BushWolfPikminEnemy : PikminEnemy
+   11: {
+   12: 	private BushWolfEnemy bushWolfAI = null;
+   13: 
+   14: 	private float tongueCheckInterval = 0.2f;
+   15: 
+   16: 	private float nestCheckInterval = 2f;
+   17: 
+   18: 	private float nestLingerTime = 8f;
+   19: 
+   20: 	private int maxTongueGrab = 5;
+   21: 
+   22: 	private List<PikminAI> pikminGrabbedByTongue = new List<PikminAI>();
+   23: 
+   24: 	private Dictionary<PikminAI, float> pikminNestTimers = new Dictionary<PikminAI, float>();
+   25: 
    26: 	protected override void Start()
    27: 	{
    28: 		base.Start();
@@ -516,7 +541,56 @@ MATCHES: grabpikmin
   320: 	public void KnockbackPikminFromNestServerRpc(NetworkObjectReference pikRef)
   321: 	{
   322: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
---- SOURCE lines 373-537 ---
+  323: 		//IL_002e: Invalid comparison between Unknown and I4
+  324: 		//IL_00a7: Unknown result type (might be due to invalid IL or missing references)
+  325: 		//IL_00b1: Invalid comparison between Unknown and I4
+  326: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+  327: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+  328: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+  329: 		//IL_007d: Unknown result type (might be due to invalid IL or missing references)
+  330: 		//IL_0083: Unknown result type (might be due to invalid IL or missing references)
+  331: 		//IL_0097: Unknown result type (might be due to invalid IL or missing references)
+  332: 		//IL_00dc: Unknown result type (might be due to invalid IL or missing references)
+  333: 		//IL_00e3: Unknown result type (might be due to invalid IL or missing references)
+  334: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  335: 		if (networkManager != null && networkManager.IsListening)
+  336: 		{
+  337: 			if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+  338: 			{
+  339: 				ServerRpcParams val2 = default(ServerRpcParams);
+  340: 				FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(3051814546u, val2, (RpcDelivery)0);
+  341: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(ref pikRef, default(ForNetworkSerializable));
+  342: 				((NetworkBehaviour)this).__endSendServerRpc(ref val, 3051814546u, val2, (RpcDelivery)0);
+  343: 			}
+  344: 			if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
+  345: 			{
+  346: 				((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  347: 				KnockbackPikminFromNestClientRpc(pikRef);
+  348: 			}
+  349: 		}
+  350: 	}
+  351: 
+  352: 	[ClientRpc]
+  353: 	public void KnockbackPikminFromNestClientRpc(NetworkObjectReference pikRef)
+  354: 	{
+  355: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  356: 		//IL_002e: Invalid comparison between Unknown and I4
+  357: 		//IL_00a7: Unknown result type (might be due to invalid IL or missing references)
+  358: 		//IL_00b1: Invalid comparison between Unknown and I4
+  359: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+  360: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+  361: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+  362: 		//IL_007d: Unknown result type (might be due to invalid IL or missing references)
+  363: 		//IL_0083: Unknown result type (might be due to invalid IL or missing references)
+  364: 		//IL_0097: Unknown result type (might be due to invalid IL or missing references)
+  365: 		//IL_00dc: Unknown result type (might be due to invalid IL or missing references)
+  366: 		//IL_0115: Unknown result type (might be due to invalid IL or missing references)
+  367: 		//IL_0125: Unknown result type (might be due to invalid IL or missing references)
+  368: 		//IL_012a: Unknown result type (might be due to invalid IL or missing references)
+  369: 		//IL_012f: Unknown result type (might be due to invalid IL or missing references)
+  370: 		//IL_0133: Unknown result type (might be due to invalid IL or missing references)
+  371: 		//IL_0138: Unknown result type (might be due to invalid IL or missing references)
+  372: 		//IL_0147: Unknown result type (might be due to invalid IL or missing references)
   373: 		//IL_014c: Unknown result type (might be due to invalid IL or missing references)
   374: 		//IL_014e: Unknown result type (might be due to invalid IL or missing references)
   375: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
@@ -684,12 +758,426 @@ MATCHES: grabpikmin
   537: }
 
 ==============================================================================================================
+FILE: LethalMin/ButlerEnemyPikminEnemy.cs
+MATCHES: getnearbypikmin
+==============================================================================================================
+--- TYPE DECLARATIONS ---
+   11: public class ButlerEnemyPikminEnemy : PikminEnemy
+--- SOURCE lines 1-248 ---
+    1: using System;
+    2: using System.Collections.Generic;
+    3: using System.Runtime.CompilerServices;
+    4: using GameNetcodeStuff;
+    5: using LethalMin.Utils;
+    6: using Unity.Netcode;
+    7: using UnityEngine;
+    8: 
+    9: namespace LethalMin;
+   10: 
+   11: public class ButlerEnemyPikminEnemy : PikminEnemy
+   12: {
+   13: 	private List<NetworkObjectReference> PikminRefs = new List<NetworkObjectReference>();
+   14: 
+   15: 	private ButlerEnemyAI butlerEnemyAI = null;
+   16: 
+   17: 	private float CheckInterval = 0.25f;
+   18: 
+   19: 	private float StabCooldown = 1.5f;
+   20: 
+   21: 	public float StabResetCooldown = 1f;
+   22: 
+   23: 	public int StabLimmit = 1;
+   24: 
+   25: 	protected override void Start()
+   26: 	{
+   27: 		base.Start();
+   28: 		EnemyAI obj = enemyScript;
+   29: 		butlerEnemyAI = (ButlerEnemyAI)(object)(((obj is ButlerEnemyAI) ? obj : null) ?? throw new Exception("ButlerEnemyPE: enemyScript is not a ButlerEnemyAI"));
+   30: 		if ((Object)(object)butlerEnemyAI == (Object)null)
+   31: 		{
+   32: 			((Behaviour)this).enabled = false;
+   33: 		}
+   34: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   35: 		{
+   36: 			StabCooldown = LethalMin.ButlerEnemy_StabCooldown.InternalValue;
+   37: 		}
+   38: 	}
+   39: 
+   40: 	private void LateUpdate()
+   41: 	{
+   42: 		if (!((NetworkBehaviour)this).IsOwner || enemyScript.isEnemyDead || ((EnemyAI)butlerEnemyAI).currentBehaviourStateIndex != 2)
+   43: 		{
+   44: 			return;
+   45: 		}
+   46: 		if (StabCooldown > 0f)
+   47: 		{
+   48: 			StabCooldown -= Time.deltaTime;
+   49: 			return;
+   50: 		}
+   51: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   52: 		{
+   53: 			StabResetCooldown = LethalMin.ButlerEnemy_StabCooldown.InternalValue;
+   54: 			StabLimmit = LethalMin.ButlerEnemy_StabLimit.InternalValue;
+   55: 		}
+   56: 		if (CheckInterval > 0f)
+   57: 		{
+   58: 			CheckInterval -= Time.deltaTime;
+   59: 			return;
+   60: 		}
+   61: 		DoCheckInterval();
+   62: 		CheckInterval = ((EnemyAI)butlerEnemyAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);
+   63: 	}
+   64: 
+   65: 	public void DoCheckInterval()
+   66: 	{
+   67: 		//IL_004e: Unknown result type (might be due to invalid IL or missing references)
+   68: 		PikminRefs.Clear();
+   69: 		foreach (PikminAI item in GetNearbyPikmin())
+   70: 		{
+   71: 			if (!item.IsAirborn && !((Object)(object)item.CurrentLatchTrigger != (Object)null))
+   72: 			{
+   73: 				PikminRefs.Add(NetworkObjectReference.op_Implicit(((NetworkBehaviour)item).NetworkObject));
+   74: 				if (PikminRefs.Count >= StabLimmit)
+   75: 				{
+   76: 					break;
+   77: 				}
+   78: 			}
+   79: 		}
+   80: 		if (PikminRefs.Count > 0)
+   81: 		{
+   82: 			StabCooldown = StabResetCooldown;
+   83: 			StabNearbyPikminServerRpc(PikminRefs.ToArray());
+   84: 		}
+   85: 	}
+   86: 
+   87: 	[ServerRpc]
+   88: 	public void StabNearbyPikminServerRpc(NetworkObjectReference[] Pikmins)
+   89: 	{
+   90: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+   91: 		//IL_002e: Invalid comparison between Unknown and I4
+   92: 		//IL_011d: Unknown result type (might be due to invalid IL or missing references)
+   93: 		//IL_0127: Invalid comparison between Unknown and I4
+   94: 		//IL_0152: Unknown result type (might be due to invalid IL or missing references)
+   95: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+   96: 		//IL_00ae: Unknown result type (might be due to invalid IL or missing references)
+   97: 		//IL_00b3: Unknown result type (might be due to invalid IL or missing references)
+   98: 		//IL_00ce: Unknown result type (might be due to invalid IL or missing references)
+   99: 		//IL_00d4: Unknown result type (might be due to invalid IL or missing references)
+  100: 		//IL_007a: Unknown result type (might be due to invalid IL or missing references)
+  101: 		//IL_0084: Invalid comparison between Unknown and I4
+  102: 		//IL_010d: Unknown result type (might be due to invalid IL or missing references)
+  103: 		//IL_00f2: Unknown result type (might be due to invalid IL or missing references)
+  104: 		//IL_00f8: Unknown result type (might be due to invalid IL or missing references)
+  105: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  106: 		if (networkManager == null || !networkManager.IsListening)
+  107: 		{
+  108: 			return;
+  109: 		}
+  110: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+  111: 		{
+  112: 			if (((NetworkBehaviour)this).OwnerClientId != networkManager.LocalClientId)
+  113: 			{
+  114: 				if ((int)networkManager.LogLevel <= 1)
+  115: 				{
+  116: 					Debug.LogError((object)"Only the owner can invoke a ServerRpc that requires ownership!");
+  117: 				}
+  118: 				return;
+  119: 			}
+  120: 			ServerRpcParams val2 = default(ServerRpcParams);
+  121: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(3105564123u, val2, (RpcDelivery)0);
+  122: 			bool flag = Pikmins != null;
+  123: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  124: 			if (flag)
+  125: 			{
+  126: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(Pikmins, default(ForNetworkSerializable));
+  127: 			}
+  128: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 3105564123u, val2, (RpcDelivery)0);
+  129: 		}
+  130: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
+  131: 		{
+  132: 			((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  133: 			StabNearbyPikminClientRpc(Pikmins);
+  134: 		}
+  135: 	}
+  136: 
+  137: 	[ClientRpc]
+  138: 	public void StabNearbyPikminClientRpc(NetworkObjectReference[] Pikmins)
+  139: 	{
+  140: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  141: 		//IL_002e: Invalid comparison between Unknown and I4
+  142: 		//IL_00d7: Unknown result type (might be due to invalid IL or missing references)
+  143: 		//IL_00e1: Invalid comparison between Unknown and I4
+  144: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+  145: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+  146: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+  147: 		//IL_0088: Unknown result type (might be due to invalid IL or missing references)
+  148: 		//IL_008e: Unknown result type (might be due to invalid IL or missing references)
+  149: 		//IL_010c: Unknown result type (might be due to invalid IL or missing references)
+  150: 		//IL_00c7: Unknown result type (might be due to invalid IL or missing references)
+  151: 		//IL_00ac: Unknown result type (might be due to invalid IL or missing references)
+  152: 		//IL_00b2: Unknown result type (might be due to invalid IL or missing references)
+  153: 		//IL_0121: Unknown result type (might be due to invalid IL or missing references)
+  154: 		//IL_0126: Unknown result type (might be due to invalid IL or missing references)
+  155: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  156: 		if (networkManager == null || !networkManager.IsListening)
+  157: 		{
+  158: 			return;
+  159: 		}
+  160: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsServer || networkManager.IsHost))
+  161: 		{
+  162: 			ClientRpcParams val2 = default(ClientRpcParams);
+  163: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendClientRpc(365584200u, val2, (RpcDelivery)0);
+  164: 			bool flag = Pikmins != null;
+  165: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  166: 			if (flag)
+  167: 			{
+  168: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(Pikmins, default(ForNetworkSerializable));
+  169: 			}
+  170: 			((NetworkBehaviour)this).__endSendClientRpc(ref val, 365584200u, val2, (RpcDelivery)0);
+  171: 		}
+  172: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 || (!networkManager.IsClient && !networkManager.IsHost))
+  173: 		{
+  174: 			return;
+  175: 		}
+  176: 		((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  177: 		List<PikminAI> list = new List<PikminAI>();
+  178: 		NetworkObject val4 = default(NetworkObject);
+  179: 		PikminAI item = default(PikminAI);
+  180: 		for (int i = 0; i < Pikmins.Length; i++)
+  181: 		{
+  182: 			NetworkObjectReference val3 = Pikmins[i];
+  183: 			if (((NetworkObjectReference)(ref val3)).TryGet(ref val4, (NetworkManager)null) && ((Component)val4).TryGetComponent<PikminAI>(ref item))
+  184: 			{
+  185: 				list.Add(item);
+  186: 			}
+  187: 			else
+  188: 			{
+  189: 				LethalMin.Logger.LogError((object)"Failed to get PikminAI from NetworkObjectReference in StabNearbyPikminClientRpc");
+  190: 			}
+  191: 		}
+  192: 		if (list.Count > 0)
+  193: 		{
+  194: 			StabNearbyPikmin(list);
+  195: 		}
+  196: 		else
+  197: 		{
+  198: 			LethalMin.Logger.LogError((object)"Failed to get PikminAI from NetworkObjectReference in StabNearbyPikminClientRpc");
+  199: 		}
+  200: 	}
+  201: 
+  202: 	public void StabNearbyPikmin(List<PikminAI> Pikmins)
+  203: 	{
+  204: 		StabCooldown = StabResetCooldown;
+  205: 		foreach (PikminAI Pikmin in Pikmins)
+  206: 		{
+  207: 			if (!PikChecks.IsPikminResistantToHazard(Pikmin, PikminHazard.Stab))
+  208: 			{
+  209: 				((EnemyAI)Pikmin).HitEnemy(1, (PlayerControllerB)null, false, -1);
+  210: 			}
+  211: 		}
+  212: 		((EnemyAI)butlerEnemyAI).creatureAnimator.SetTrigger("Stab");
+  213: 		((EnemyAI)butlerEnemyAI).creatureSFX.PlayOneShot(((EnemyAI)butlerEnemyAI).enemyType.audioClips[0]);
+  214: 	}
+  215: 
+  216: 	protected override void __initializeVariables()
+  217: 	{
+  218: 		base.__initializeVariables();
+  219: 	}
+  220: 
+  221: 	protected override void __initializeRpcs()
+  222: 	{
+  223: 		//IL_000d: Unknown result type (might be due to invalid IL or missing references)
+  224: 		//IL_001c: Expected O, but got Unknown
+  225: 		//IL_0029: Unknown result type (might be due to invalid IL or missing references)
+  226: 		//IL_0038: Expected O, but got Unknown
+  227: 		((NetworkBehaviour)this).__registerRpc(3105564123u, new RpcReceiveHandler(__rpc_handler_3105564123), "StabNearbyPikminServerRpc");
+  228: 		((NetworkBehaviour)this).__registerRpc(365584200u, new RpcReceiveHandler(__rpc_handler_365584200), "StabNearbyPikminClientRpc");
+  229: 		base.__initializeRpcs();
+  230: 	}
+  231: 
+  232: 	private static void __rpc_handler_3105564123(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)
+  233: 	{
+  234: 		//IL_0023: Unknown result type (might be due to invalid IL or missing references)
+  235: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  236: 		//IL_0029: Unknown result type (might be due to invalid IL or missing references)
+  237: 		//IL_007c: Unknown result type (might be due to invalid IL or missing references)
+  238: 		//IL_0082: Unknown result type (might be due to invalid IL or missing references)
+  239: 		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
+  240: 		//IL_0055: Invalid comparison between Unknown and I4
+  241: 		//IL_00bb: Unknown result type (might be due to invalid IL or missing references)
+  242: 		//IL_00d5: Unknown result type (might be due to invalid IL or missing references)
+  243: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+  244: 		//IL_00ab: Unknown result type (might be due to invalid IL or missing references)
+  245: 		NetworkManager networkManager = target.NetworkManager;
+  246: 		if (networkManager == null || !networkManager.IsListening)
+  247: 		{
+  248: 			return;
+
+==============================================================================================================
 FILE: LethalMin/CaveDwellerPikminEnemy.cs
-MATCHES: grabpikmin
+MATCHES: grabpikmin, getnearbypikmin
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
    10: public class CaveDwellerPikminEnemy : PikminEnemy
---- SOURCE lines 159-326 ---
+--- SOURCE lines 1-326 ---
+    1: using System;
+    2: using System.Collections.Generic;
+    3: using System.Reflection;
+    4: using System.Runtime.CompilerServices;
+    5: using Unity.Netcode;
+    6: using UnityEngine;
+    7: 
+    8: namespace LethalMin;
+    9: 
+   10: public class CaveDwellerPikminEnemy : PikminEnemy
+   11: {
+   12: 	private List<NetworkObjectReference> PikminRefs = new List<NetworkObjectReference>();
+   13: 
+   14: 	private CaveDwellerAI caveDwellerAI = null;
+   15: 
+   16: 	private CaveDwellerPikminItem pikminItem = null;
+   17: 
+   18: 	private float CheckInterval = 0.25f;
+   19: 
+   20: 	public float BiteCooldown;
+   21: 
+   22: 	public float BiteCooldownRest = 1f;
+   23: 
+   24: 	public int BiteLimmit = 7;
+   25: 
+   26: 	public override void OnAddedToEnemy(EnemyAI enemy)
+   27: 	{
+   28: 		base.OnAddedToEnemy(enemy);
+   29: 		GameObject val = LethalMin.assetBundle.LoadAsset<GameObject>("Assets/LethalMin/PikminItemNode.prefab");
+   30: 		PikminItem component = val.GetComponent<PikminItem>();
+   31: 		pikminItem = ((Component)this).gameObject.AddComponent<CaveDwellerPikminItem>();
+   32: 		FieldInfo[] fields = typeof(PikminItem).GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+   33: 		FieldInfo[] array = fields;
+   34: 		foreach (FieldInfo fieldInfo in array)
+   35: 		{
+   36: 			fieldInfo.SetValue(pikminItem, fieldInfo.GetValue(component));
+   37: 		}
+   38: 		pikminItem.HasOwnNetworkObject = false;
+   39: 		pikminItem.settings = ((Component)this).gameObject.AddComponent<PikminItemSettings>();
+   40: 		pikminItem.settings.CarryStrength = 5;
+   41: 		pikminItem.settings.OverrideGrabbableToEnemeis = true;
+   42: 		pikminItem.settings.RouteToPlayer = true;
+   43: 		pikminItem.settings.ChangeOwnershipOnCarry = false;
+   44: 	}
+   45: 
+   46: 	protected override void Start()
+   47: 	{
+   48: 		//IL_0083: Unknown result type (might be due to invalid IL or missing references)
+   49: 		base.Start();
+   50: 		EnemyAI obj = enemyScript;
+   51: 		caveDwellerAI = (CaveDwellerAI)(object)(((obj is CaveDwellerAI) ? obj : null) ?? throw new Exception("CaveDwellerPE: enemyScript is not a CaveDwellerAI"));
+   52: 		pikminItem = ((Component)this).GetComponent<CaveDwellerPikminItem>();
+   53: 		pikminItem.caveDwellerAI = caveDwellerAI;
+   54: 		pikminItem.caveDwellerPikminEnemy = this;
+   55: 		if ((Object)(object)caveDwellerAI == (Object)null)
+   56: 		{
+   57: 			((Behaviour)this).enabled = false;
+   58: 			return;
+   59: 		}
+   60: 		if (((NetworkBehaviour)this).IsServer)
+   61: 		{
+   62: 			pikminItem.InitalizeClientRpc(NetworkObjectReference.op_Implicit(((NetworkBehaviour)this).NetworkObject), "CaveDwellerPikminEnemy");
+   63: 		}
+   64: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   65: 		{
+   66: 			BiteCooldown = LethalMin.CaveDweller_BiteCooldown.InternalValue;
+   67: 		}
+   68: 	}
+   69: 
+   70: 	private void LateUpdate()
+   71: 	{
+   72: 		CanBeAttacked = ((EnemyAI)caveDwellerAI).currentBehaviourStateIndex != 0 || (bool)LethalMin.CaveDweller_AttackAsBaby;
+   73: 		if (!((NetworkBehaviour)this).IsOwner || caveDwellerAI.inKillAnimation || ((EnemyAI)caveDwellerAI).inSpecialAnimation || enemyScript.isEnemyDead || caveDwellerAI.leapTimer < 0.02f || ((EnemyAI)caveDwellerAI).currentBehaviourStateIndex != 3)
+   74: 		{
+   75: 			return;
+   76: 		}
+   77: 		if (BiteCooldown > 0f)
+   78: 		{
+   79: 			BiteCooldown -= Time.deltaTime;
+   80: 			return;
+   81: 		}
+   82: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   83: 		{
+   84: 			BiteCooldownRest = LethalMin.CaveDweller_BiteCooldown.InternalValue;
+   85: 			BiteLimmit = LethalMin.CaveDweller_BiteLimit.InternalValue;
+   86: 		}
+   87: 		if (CheckInterval > 0f)
+   88: 		{
+   89: 			CheckInterval -= Time.deltaTime;
+   90: 			return;
+   91: 		}
+   92: 		DoCheckInterval();
+   93: 		CheckInterval = ((EnemyAI)caveDwellerAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);
+   94: 	}
+   95: 
+   96: 	public void DoCheckInterval()
+   97: 	{
+   98: 		//IL_004e: Unknown result type (might be due to invalid IL or missing references)
+   99: 		PikminRefs.Clear();
+  100: 		foreach (PikminAI item in GetNearbyPikmin())
+  101: 		{
+  102: 			if (!item.IsAirborn && !((Object)(object)item.CurrentLatchTrigger != (Object)null))
+  103: 			{
+  104: 				PikminRefs.Add(NetworkObjectReference.op_Implicit(((NetworkBehaviour)item).NetworkObject));
+  105: 				if (PikminRefs.Count >= BiteLimmit)
+  106: 				{
+  107: 					break;
+  108: 				}
+  109: 			}
+  110: 		}
+  111: 		if (PikminRefs.Count > 0)
+  112: 		{
+  113: 			BiteCooldown = BiteCooldownRest;
+  114: 			BiteNearbyPikminServerRpc(PikminRefs.ToArray());
+  115: 		}
+  116: 	}
+  117: 
+  118: 	[ServerRpc]
+  119: 	public void BiteNearbyPikminServerRpc(NetworkObjectReference[] Pikmins)
+  120: 	{
+  121: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  122: 		//IL_002e: Invalid comparison between Unknown and I4
+  123: 		//IL_011d: Unknown result type (might be due to invalid IL or missing references)
+  124: 		//IL_0127: Invalid comparison between Unknown and I4
+  125: 		//IL_0152: Unknown result type (might be due to invalid IL or missing references)
+  126: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+  127: 		//IL_00ae: Unknown result type (might be due to invalid IL or missing references)
+  128: 		//IL_00b3: Unknown result type (might be due to invalid IL or missing references)
+  129: 		//IL_00ce: Unknown result type (might be due to invalid IL or missing references)
+  130: 		//IL_00d4: Unknown result type (might be due to invalid IL or missing references)
+  131: 		//IL_007a: Unknown result type (might be due to invalid IL or missing references)
+  132: 		//IL_0084: Invalid comparison between Unknown and I4
+  133: 		//IL_010d: Unknown result type (might be due to invalid IL or missing references)
+  134: 		//IL_00f2: Unknown result type (might be due to invalid IL or missing references)
+  135: 		//IL_00f8: Unknown result type (might be due to invalid IL or missing references)
+  136: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  137: 		if (networkManager == null || !networkManager.IsListening)
+  138: 		{
+  139: 			return;
+  140: 		}
+  141: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+  142: 		{
+  143: 			if (((NetworkBehaviour)this).OwnerClientId != networkManager.LocalClientId)
+  144: 			{
+  145: 				if ((int)networkManager.LogLevel <= 1)
+  146: 				{
+  147: 					Debug.LogError((object)"Only the owner can invoke a ServerRpc that requires ownership!");
+  148: 				}
+  149: 				return;
+  150: 			}
+  151: 			ServerRpcParams val2 = default(ServerRpcParams);
+  152: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(1861949405u, val2, (RpcDelivery)0);
+  153: 			bool flag = Pikmins != null;
+  154: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  155: 			if (flag)
+  156: 			{
+  157: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(Pikmins, default(ForNetworkSerializable));
+  158: 			}
   159: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 1861949405u, val2, (RpcDelivery)0);
   160: 		}
   161: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
@@ -865,7 +1353,7 @@ MATCHES: grabpikmin
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
     9: public class CaveDwellerPikminItem : PikminItem
---- SOURCE lines 1-188 ---
+--- SOURCE lines 1-228 ---
     1: using System.Runtime.CompilerServices;
     2: using LethalMin.Utils;
     3: using Unity.Netcode;
@@ -1054,14 +1542,434 @@ MATCHES: grabpikmin
   186: 		//IL_043c: Unknown result type (might be due to invalid IL or missing references)
   187: 		//IL_0446: Unknown result type (might be due to invalid IL or missing references)
   188: 		//IL_044b: Unknown result type (might be due to invalid IL or missing references)
+  189: 		//IL_04c0: Unknown result type (might be due to invalid IL or missing references)
+  190: 		//IL_04d7: Unknown result type (might be due to invalid IL or missing references)
+  191: 		//IL_04a2: Unknown result type (might be due to invalid IL or missing references)
+  192: 		IsBeingCarried = false;
+  193: 		lastPrimaryPikminOnItem = null;
+  194: 		PikminCounter.SetCounterColor(DefultColor);
+  195: 		ClearCurrentRoute();
+  196: 		if (soundRoutine != null)
+  197: 		{
+  198: 			((MonoBehaviour)this).StopCoroutine(soundRoutine);
+  199: 			soundRoutine = null;
+  200: 		}
+  201: 		foreach (PikminAI item in PikminOnItem)
+  202: 		{
+  203: 			item.UnsetAsCarryingItem();
+  204: 		}
+  205: 		caveDwellerAI.propScript.previousPlayerHeldBy = caveDwellerAI.playerHolding;
+  206: 		caveDwellerAI.holdingBaby = false;
+  207: 		caveDwellerAI.rockingBaby = 0;
+  208: 		caveDwellerAI.playerHolding = null;
+  209: 		LethalMin.Logger.LogInfo((object)"Drop baby A");
+  210: 		if (((EnemyAI)caveDwellerAI).currentBehaviourStateIndex != 0)
+  211: 		{
+  212: 			LethalMin.Logger.LogWarning((object)$"Drop baby B; currentBehaviourStateIndex: {((EnemyAI)caveDwellerAI).currentBehaviourStateIndex}");
+  213: 			return;
+  214: 		}
+  215: 		if (((NetworkBehaviour)this).IsOwner)
+  216: 		{
+  217: 			LethalMin.Logger.LogInfo((object)$"Set ownership of creature. Currentownershiponthisclient: {((EnemyAI)caveDwellerAI).currentOwnershipOnThisClient}");
+  218: 			((EnemyAI)caveDwellerAI).ChangeOwnershipOfEnemy(StartOfRound.Instance.allPlayerScripts[0].actualClientId);
+  219: 		}
+  220: 		((EnemyAI)caveDwellerAI).serverPosition = ((Component)this).transform.position;
+  221: 		bool flag = true;
+  222: 		Vector3 itemFloorPosition = ((GrabbableObject)caveDwellerAI.propScript).GetItemFloorPosition(((Component)this).transform.position + Vector3.up * 0.5f);
+  223: 		Vector3 navMeshPosition = RoundManager.Instance.GetNavMeshPosition(itemFloorPosition, default(NavMeshHit), 10f, -1);
+  224: 		LethalMin.Logger.LogInfo((object)$"Drop on position: {navMeshPosition}");
+  225: 		Debug.DrawRay(((GrabbableObject)caveDwellerAI.propScript).startFallingPosition, Vector3.up * 1f, Color.white, 10f);
+  226: 		Debug.DrawRay(navMeshPosition, Vector3.up * 0.75f, Color.red, 10f);
+  227: 		if (!RoundManager.Instance.GotNavMeshPositionResult || ((EnemyAI)caveDwellerAI).DebugEnemy)
+  228: 		{
+
+==============================================================================================================
+FILE: LethalMin/ClaySurgeonPikminEnemy.cs
+MATCHES: getnearbypikmin
+==============================================================================================================
+--- TYPE DECLARATIONS ---
+    9: public class ClaySurgeonPikminEnemy : PikminEnemy
+--- SOURCE lines 1-247 ---
+    1: using System;
+    2: using System.Collections.Generic;
+    3: using System.Runtime.CompilerServices;
+    4: using Unity.Netcode;
+    5: using UnityEngine;
+    6: 
+    7: namespace LethalMin;
+    8: 
+    9: public class ClaySurgeonPikminEnemy : PikminEnemy
+   10: {
+   11: 	private List<NetworkObjectReference> PikminRefs = new List<NetworkObjectReference>();
+   12: 
+   13: 	private ClaySurgeonAI claySurgeonAI = null;
+   14: 
+   15: 	private float CheckInterval = 0.2f;
+   16: 
+   17: 	private float SnippingCooldown = 1.5f;
+   18: 
+   19: 	public float SnipResetCooldown = 1f;
+   20: 
+   21: 	public int SnipLimmit = 3;
+   22: 
+   23: 	protected override void Start()
+   24: 	{
+   25: 		base.Start();
+   26: 		EnemyAI obj = enemyScript;
+   27: 		claySurgeonAI = (ClaySurgeonAI)(object)(((obj is ClaySurgeonAI) ? obj : null) ?? throw new InvalidOperationException("ClaySurgeonPE: enemyScript is not a ClaySurgeonAI"));
+   28: 		if ((Object)(object)claySurgeonAI == (Object)null)
+   29: 		{
+   30: 			((Behaviour)this).enabled = false;
+   31: 		}
+   32: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   33: 		{
+   34: 			SnippingCooldown = LethalMin.ClaySurgeon_SnipCooldown.InternalValue;
+   35: 		}
+   36: 	}
+   37: 
+   38: 	private void LateUpdate()
+   39: 	{
+   40: 		if (!((NetworkBehaviour)this).IsOwner)
+   41: 		{
+   42: 			return;
+   43: 		}
+   44: 		if (SnippingCooldown > 0f)
+   45: 		{
+   46: 			SnippingCooldown -= Time.deltaTime;
+   47: 			return;
+   48: 		}
+   49: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   50: 		{
+   51: 			SnipResetCooldown = LethalMin.ClaySurgeon_SnipCooldown.InternalValue;
+   52: 			SnipLimmit = LethalMin.ClaySurgeon_SnipLimit.InternalValue;
+   53: 		}
+   54: 		if (CheckInterval > 0f)
+   55: 		{
+   56: 			CheckInterval -= Time.deltaTime;
+   57: 			return;
+   58: 		}
+   59: 		DoCheckInterval();
+   60: 		CheckInterval = ((EnemyAI)claySurgeonAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);
+   61: 	}
+   62: 
+   63: 	public void DoCheckInterval()
+   64: 	{
+   65: 		//IL_00bc: Unknown result type (might be due to invalid IL or missing references)
+   66: 		//IL_0056: Unknown result type (might be due to invalid IL or missing references)
+   67: 		PikminRefs.Clear();
+   68: 		foreach (PikminAI item in GetNearbyPikmin())
+   69: 		{
+   70: 			if (!item.IsAirborn && item.CurrentGrowthStage != 0 && !((Object)(object)item.CurrentLatchTrigger != (Object)null))
+   71: 			{
+   72: 				PikminRefs.Add(NetworkObjectReference.op_Implicit(((NetworkBehaviour)item).NetworkObject));
+   73: 				if (PikminRefs.Count >= SnipLimmit)
+   74: 				{
+   75: 					break;
+   76: 				}
+   77: 			}
+   78: 		}
+   79: 		if (PikminRefs.Count > 0)
+   80: 		{
+   81: 			SnippingCooldown = SnipResetCooldown;
+   82: 			SnipNearbyPikminServerRpc(((Component)this).transform.position, PikminRefs.ToArray());
+   83: 		}
+   84: 	}
+   85: 
+   86: 	[ServerRpc]
+   87: 	public void SnipNearbyPikminServerRpc(Vector3 position, NetworkObjectReference[] Pikmins)
+   88: 	{
+   89: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+   90: 		//IL_002e: Invalid comparison between Unknown and I4
+   91: 		//IL_012a: Unknown result type (might be due to invalid IL or missing references)
+   92: 		//IL_0134: Invalid comparison between Unknown and I4
+   93: 		//IL_015f: Unknown result type (might be due to invalid IL or missing references)
+   94: 		//IL_0166: Unknown result type (might be due to invalid IL or missing references)
+   95: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+   96: 		//IL_00ae: Unknown result type (might be due to invalid IL or missing references)
+   97: 		//IL_00b3: Unknown result type (might be due to invalid IL or missing references)
+   98: 		//IL_00db: Unknown result type (might be due to invalid IL or missing references)
+   99: 		//IL_00e1: Unknown result type (might be due to invalid IL or missing references)
+  100: 		//IL_007a: Unknown result type (might be due to invalid IL or missing references)
+  101: 		//IL_0084: Invalid comparison between Unknown and I4
+  102: 		//IL_011a: Unknown result type (might be due to invalid IL or missing references)
+  103: 		//IL_00ff: Unknown result type (might be due to invalid IL or missing references)
+  104: 		//IL_0105: Unknown result type (might be due to invalid IL or missing references)
+  105: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  106: 		if (networkManager == null || !networkManager.IsListening)
+  107: 		{
+  108: 			return;
+  109: 		}
+  110: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+  111: 		{
+  112: 			if (((NetworkBehaviour)this).OwnerClientId != networkManager.LocalClientId)
+  113: 			{
+  114: 				if ((int)networkManager.LogLevel <= 1)
+  115: 				{
+  116: 					Debug.LogError((object)"Only the owner can invoke a ServerRpc that requires ownership!");
+  117: 				}
+  118: 				return;
+  119: 			}
+  120: 			ServerRpcParams val2 = default(ServerRpcParams);
+  121: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(2378882116u, val2, (RpcDelivery)0);
+  122: 			((FastBufferWriter)(ref val)).WriteValueSafe(ref position);
+  123: 			bool flag = Pikmins != null;
+  124: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  125: 			if (flag)
+  126: 			{
+  127: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(Pikmins, default(ForNetworkSerializable));
+  128: 			}
+  129: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 2378882116u, val2, (RpcDelivery)0);
+  130: 		}
+  131: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
+  132: 		{
+  133: 			((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  134: 			SnipNearbyPikminClientRpc(position, Pikmins);
+  135: 		}
+  136: 	}
+  137: 
+  138: 	[ClientRpc]
+  139: 	public void SnipNearbyPikminClientRpc(Vector3 position, NetworkObjectReference[] Pikmins)
+  140: 	{
+  141: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  142: 		//IL_002e: Invalid comparison between Unknown and I4
+  143: 		//IL_00e4: Unknown result type (might be due to invalid IL or missing references)
+  144: 		//IL_00ee: Invalid comparison between Unknown and I4
+  145: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+  146: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+  147: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+  148: 		//IL_0095: Unknown result type (might be due to invalid IL or missing references)
+  149: 		//IL_009b: Unknown result type (might be due to invalid IL or missing references)
+  150: 		//IL_0119: Unknown result type (might be due to invalid IL or missing references)
+  151: 		//IL_00d4: Unknown result type (might be due to invalid IL or missing references)
+  152: 		//IL_00b9: Unknown result type (might be due to invalid IL or missing references)
+  153: 		//IL_00bf: Unknown result type (might be due to invalid IL or missing references)
+  154: 		//IL_012e: Unknown result type (might be due to invalid IL or missing references)
+  155: 		//IL_0133: Unknown result type (might be due to invalid IL or missing references)
+  156: 		//IL_018e: Unknown result type (might be due to invalid IL or missing references)
+  157: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  158: 		if (networkManager == null || !networkManager.IsListening)
+  159: 		{
+  160: 			return;
+  161: 		}
+  162: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsServer || networkManager.IsHost))
+  163: 		{
+  164: 			ClientRpcParams val2 = default(ClientRpcParams);
+  165: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendClientRpc(2389404858u, val2, (RpcDelivery)0);
+  166: 			((FastBufferWriter)(ref val)).WriteValueSafe(ref position);
+  167: 			bool flag = Pikmins != null;
+  168: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  169: 			if (flag)
+  170: 			{
+  171: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(Pikmins, default(ForNetworkSerializable));
+  172: 			}
+  173: 			((NetworkBehaviour)this).__endSendClientRpc(ref val, 2389404858u, val2, (RpcDelivery)0);
+  174: 		}
+  175: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 || (!networkManager.IsClient && !networkManager.IsHost))
+  176: 		{
+  177: 			return;
+  178: 		}
+  179: 		((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  180: 		List<PikminAI> list = new List<PikminAI>();
+  181: 		NetworkObject val4 = default(NetworkObject);
+  182: 		PikminAI item = default(PikminAI);
+  183: 		for (int i = 0; i < Pikmins.Length; i++)
+  184: 		{
+  185: 			NetworkObjectReference val3 = Pikmins[i];
+  186: 			if (((NetworkObjectReference)(ref val3)).TryGet(ref val4, (NetworkManager)null) && ((Component)val4).TryGetComponent<PikminAI>(ref item))
+  187: 			{
+  188: 				list.Add(item);
+  189: 			}
+  190: 			else
+  191: 			{
+  192: 				LethalMin.Logger.LogError((object)"Failed to get PikminAI from NetworkObjectReference in SnipNearbyPikminClientRpc");
+  193: 			}
+  194: 		}
+  195: 		if (list.Count > 0)
+  196: 		{
+  197: 			SnipNearbyPikmin(position, list);
+  198: 		}
+  199: 		else
+  200: 		{
+  201: 			LethalMin.Logger.LogError((object)"Failed to get PikminAI from NetworkObjectReference in SnipNearbyPikminClientRpc");
+  202: 		}
+  203: 	}
+  204: 
+  205: 	public void SnipNearbyPikmin(Vector3 position, List<PikminAI> Pikmins)
+  206: 	{
+  207: 		//IL_0026: Unknown result type (might be due to invalid IL or missing references)
+  208: 		//IL_002b: Unknown result type (might be due to invalid IL or missing references)
+  209: 		//IL_002c: Unknown result type (might be due to invalid IL or missing references)
+  210: 		//IL_0031: Unknown result type (might be due to invalid IL or missing references)
+  211: 		//IL_0034: Unknown result type (might be due to invalid IL or missing references)
+  212: 		//IL_0039: Unknown result type (might be due to invalid IL or missing references)
+  213: 		//IL_003a: Unknown result type (might be due to invalid IL or missing references)
+  214: 		//IL_003b: Unknown result type (might be due to invalid IL or missing references)
+  215: 		//IL_0045: Unknown result type (might be due to invalid IL or missing references)
+  216: 		//IL_004a: Unknown result type (might be due to invalid IL or missing references)
+  217: 		//IL_004f: Unknown result type (might be due to invalid IL or missing references)
+  218: 		//IL_0051: Unknown result type (might be due to invalid IL or missing references)
+  219: 		SnippingCooldown = SnipResetCooldown;
+  220: 		foreach (PikminAI Pikmin in Pikmins)
+  221: 		{
+  222: 			Vector3 val = ((Component)Pikmin).transform.position - position;
+  223: 			Vector3 normalized = ((Vector3)(ref val)).normalized;
+  224: 			normalized += Vector3.up * 2f;
+  225: 			Pikmin.ApplyKnockBack(normalized, 5f);
+  226: 			Pikmin.SetGrowth(0);
+  227: 			Pikmin.LandBuffer = 0.1f;
+  228: 		}
+  229: 		((EnemyAI)claySurgeonAI).creatureAnimator.SetTrigger("snip");
+  230: 		((EnemyAI)claySurgeonAI).creatureSFX.PlayOneShot(claySurgeonAI.snipScissors);
+  231: 	}
+  232: 
+  233: 	protected override void __initializeVariables()
+  234: 	{
+  235: 		base.__initializeVariables();
+  236: 	}
+  237: 
+  238: 	protected override void __initializeRpcs()
+  239: 	{
+  240: 		//IL_000d: Unknown result type (might be due to invalid IL or missing references)
+  241: 		//IL_001c: Expected O, but got Unknown
+  242: 		//IL_0029: Unknown result type (might be due to invalid IL or missing references)
+  243: 		//IL_0038: Expected O, but got Unknown
+  244: 		((NetworkBehaviour)this).__registerRpc(2378882116u, new RpcReceiveHandler(__rpc_handler_2378882116), "SnipNearbyPikminServerRpc");
+  245: 		((NetworkBehaviour)this).__registerRpc(2389404858u, new RpcReceiveHandler(__rpc_handler_2389404858), "SnipNearbyPikminClientRpc");
+  246: 		base.__initializeRpcs();
+  247: 	}
 
 ==============================================================================================================
 FILE: LethalMin/CrawlerPikminEnemy.cs
-MATCHES: grabpikmin
+MATCHES: grabpikmin, getnearbypikmin
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
     9: public class CrawlerPikminEnemy : PikminEnemy
---- SOURCE lines 126-298 ---
+--- SOURCE lines 1-298 ---
+    1: using System;
+    2: using System.Collections.Generic;
+    3: using System.Runtime.CompilerServices;
+    4: using Unity.Netcode;
+    5: using UnityEngine;
+    6: 
+    7: namespace LethalMin;
+    8: 
+    9: public class CrawlerPikminEnemy : PikminEnemy
+   10: {
+   11: 	private List<NetworkObjectReference> PikminRefs = new List<NetworkObjectReference>();
+   12: 
+   13: 	private CrawlerAI crawlerAI = null;
+   14: 
+   15: 	private float CheckInterval = 0.25f;
+   16: 
+   17: 	private float BiteCooldown = 1.5f;
+   18: 
+   19: 	public float BiteResetCooldown = 2f;
+   20: 
+   21: 	public int BiteLimmit = 3;
+   22: 
+   23: 	protected override void Start()
+   24: 	{
+   25: 		base.Start();
+   26: 		EnemyAI obj = enemyScript;
+   27: 		crawlerAI = (CrawlerAI)(object)(((obj is CrawlerAI) ? obj : null) ?? throw new Exception("CrawlerPE: enemyScript is not a CrawlerAI"));
+   28: 		if ((Object)(object)crawlerAI == (Object)null)
+   29: 		{
+   30: 			((Behaviour)this).enabled = false;
+   31: 		}
+   32: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   33: 		{
+   34: 			BiteCooldown = LethalMin.Crawler_BiteCooldown.InternalValue;
+   35: 		}
+   36: 	}
+   37: 
+   38: 	private void LateUpdate()
+   39: 	{
+   40: 		if (!((NetworkBehaviour)this).IsOwner || enemyScript.isEnemyDead)
+   41: 		{
+   42: 			return;
+   43: 		}
+   44: 		if (BiteCooldown > 0f)
+   45: 		{
+   46: 			BiteCooldown -= Time.deltaTime;
+   47: 			return;
+   48: 		}
+   49: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   50: 		{
+   51: 			BiteResetCooldown = LethalMin.Crawler_BiteCooldown.InternalValue;
+   52: 			BiteLimmit = LethalMin.Crawler_BiteLimit.InternalValue;
+   53: 		}
+   54: 		if (CheckInterval > 0f)
+   55: 		{
+   56: 			CheckInterval -= Time.deltaTime;
+   57: 			return;
+   58: 		}
+   59: 		DoCheckInterval();
+   60: 		CheckInterval = ((EnemyAI)crawlerAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);
+   61: 	}
+   62: 
+   63: 	public void DoCheckInterval()
+   64: 	{
+   65: 		//IL_004e: Unknown result type (might be due to invalid IL or missing references)
+   66: 		PikminRefs.Clear();
+   67: 		foreach (PikminAI item in GetNearbyPikmin())
+   68: 		{
+   69: 			if (!item.IsAirborn && !((Object)(object)item.CurrentLatchTrigger != (Object)null))
+   70: 			{
+   71: 				PikminRefs.Add(NetworkObjectReference.op_Implicit(((NetworkBehaviour)item).NetworkObject));
+   72: 				if (PikminRefs.Count >= BiteLimmit)
+   73: 				{
+   74: 					break;
+   75: 				}
+   76: 			}
+   77: 		}
+   78: 		if (PikminRefs.Count > 0)
+   79: 		{
+   80: 			BiteCooldown = BiteResetCooldown;
+   81: 			BiteNearbyPikminServerRpc(PikminRefs.ToArray());
+   82: 		}
+   83: 	}
+   84: 
+   85: 	[ServerRpc]
+   86: 	public void BiteNearbyPikminServerRpc(NetworkObjectReference[] Pikmins)
+   87: 	{
+   88: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+   89: 		//IL_002e: Invalid comparison between Unknown and I4
+   90: 		//IL_011d: Unknown result type (might be due to invalid IL or missing references)
+   91: 		//IL_0127: Invalid comparison between Unknown and I4
+   92: 		//IL_0152: Unknown result type (might be due to invalid IL or missing references)
+   93: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+   94: 		//IL_00ae: Unknown result type (might be due to invalid IL or missing references)
+   95: 		//IL_00b3: Unknown result type (might be due to invalid IL or missing references)
+   96: 		//IL_00ce: Unknown result type (might be due to invalid IL or missing references)
+   97: 		//IL_00d4: Unknown result type (might be due to invalid IL or missing references)
+   98: 		//IL_007a: Unknown result type (might be due to invalid IL or missing references)
+   99: 		//IL_0084: Invalid comparison between Unknown and I4
+  100: 		//IL_010d: Unknown result type (might be due to invalid IL or missing references)
+  101: 		//IL_00f2: Unknown result type (might be due to invalid IL or missing references)
+  102: 		//IL_00f8: Unknown result type (might be due to invalid IL or missing references)
+  103: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  104: 		if (networkManager == null || !networkManager.IsListening)
+  105: 		{
+  106: 			return;
+  107: 		}
+  108: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+  109: 		{
+  110: 			if (((NetworkBehaviour)this).OwnerClientId != networkManager.LocalClientId)
+  111: 			{
+  112: 				if ((int)networkManager.LogLevel <= 1)
+  113: 				{
+  114: 					Debug.LogError((object)"Only the owner can invoke a ServerRpc that requires ownership!");
+  115: 				}
+  116: 				return;
+  117: 			}
+  118: 			ServerRpcParams val2 = default(ServerRpcParams);
+  119: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(4017625870u, val2, (RpcDelivery)0);
+  120: 			bool flag = Pikmins != null;
+  121: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  122: 			if (flag)
+  123: 			{
+  124: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(Pikmins, default(ForNetworkSerializable));
+  125: 			}
   126: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 4017625870u, val2, (RpcDelivery)0);
   127: 		}
   128: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
@@ -1242,7 +2150,23 @@ MATCHES: grabpikmin
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
    12: public class ForestGiantPikminEnemy : PikminEnemy
---- SOURCE lines 17-287 ---
+--- SOURCE lines 1-287 ---
+    1: using System;
+    2: using System.Collections;
+    3: using System.Collections.Generic;
+    4: using System.Linq;
+    5: using System.Runtime.CompilerServices;
+    6: using LethalMin.Utils;
+    7: using Unity.Netcode;
+    8: using UnityEngine;
+    9: 
+   10: namespace LethalMin;
+   11: 
+   12: public class ForestGiantPikminEnemy : PikminEnemy
+   13: {
+   14: 	public List<PikminAI> PikminGrabbed = new List<PikminAI>();
+   15: 
+   16: 	private ForestGiantAI forestGiantAI = null;
    17: 
    18: 	public ForestGiantLatchTrigger handTrigger = null;
    19: 
@@ -1517,11 +2441,265 @@ MATCHES: grabpikmin
 
 ==============================================================================================================
 FILE: LethalMin/HoarderBugPikminEnemy.cs
-MATCHES: grabpikmin
+MATCHES: grabpikmin, getnearbypikmin
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
     9: public class HoarderBugPikminEnemy : PikminEnemy
---- SOURCE lines 255-474 ---
+--- SOURCE lines 1-493 ---
+    1: using System;
+    2: using System.Collections.Generic;
+    3: using System.Runtime.CompilerServices;
+    4: using Unity.Netcode;
+    5: using UnityEngine;
+    6: 
+    7: namespace LethalMin;
+    8: 
+    9: public class HoarderBugPikminEnemy : PikminEnemy
+   10: {
+   11: 	private List<NetworkObjectReference> PikminRefs = new List<NetworkObjectReference>();
+   12: 
+   13: 	private HoarderBugAI hoarderBugAI = null;
+   14: 
+   15: 	private float CheckInterval = 0.25f;
+   16: 
+   17: 	private float BiteCooldown = 1.5f;
+   18: 
+   19: 	public float BiteResetCooldown = 3f;
+   20: 
+   21: 	public int BiteLimmit = 1;
+   22: 
+   23: 	protected override void Start()
+   24: 	{
+   25: 		base.Start();
+   26: 		EnemyAI obj = enemyScript;
+   27: 		hoarderBugAI = (HoarderBugAI)(object)(((obj is HoarderBugAI) ? obj : null) ?? throw new Exception("HoarderBugPE: enemyScript is not a HoarderBugAI"));
+   28: 		if ((Object)(object)hoarderBugAI == (Object)null)
+   29: 		{
+   30: 			((Behaviour)this).enabled = false;
+   31: 		}
+   32: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   33: 		{
+   34: 			BiteCooldown = LethalMin.HoarderBug_BiteCooldown.InternalValue;
+   35: 		}
+   36: 	}
+   37: 
+   38: 	private void LateUpdate()
+   39: 	{
+   40: 		if (!((NetworkBehaviour)this).IsOwner || enemyScript.isEnemyDead)
+   41: 		{
+   42: 			return;
+   43: 		}
+   44: 		if (BiteCooldown > 0f)
+   45: 		{
+   46: 			BiteCooldown -= Time.deltaTime;
+   47: 			return;
+   48: 		}
+   49: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   50: 		{
+   51: 			BiteResetCooldown = LethalMin.HoarderBug_BiteCooldown.InternalValue;
+   52: 			BiteLimmit = LethalMin.HoarderBug_BiteLimit.InternalValue;
+   53: 		}
+   54: 		if (CheckInterval > 0f)
+   55: 		{
+   56: 			CheckInterval -= Time.deltaTime;
+   57: 			return;
+   58: 		}
+   59: 		DoCheckInterval();
+   60: 		CheckInterval = ((EnemyAI)hoarderBugAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);
+   61: 	}
+   62: 
+   63: 	public void DoCheckInterval()
+   64: 	{
+   65: 		//IL_0069: Unknown result type (might be due to invalid IL or missing references)
+   66: 		//IL_0074: Unknown result type (might be due to invalid IL or missing references)
+   67: 		//IL_0168: Unknown result type (might be due to invalid IL or missing references)
+   68: 		//IL_00d4: Unknown result type (might be due to invalid IL or missing references)
+   69: 		//IL_00e4: Unknown result type (might be due to invalid IL or missing references)
+   70: 		if (!hoarderBugAI.inChase && (!LethalMin.UseConfigsForEnemies.InternalValue || LethalMin.HoarderBug_AggroWhenPikminTakesItem.InternalValue))
+   71: 		{
+   72: 			for (int i = 0; i < HoarderBugAI.HoarderBugItems.Count; i++)
+   73: 			{
+   74: 				HoarderBugItem val = HoarderBugAI.HoarderBugItems[i];
+   75: 				if (!((Object)(object)val.itemGrabbableObject == (Object)null) && !(Vector3.Distance(((Component)val.itemGrabbableObject).transform.position, ((Component)this).transform.position) > 30f))
+   76: 				{
+   77: 					PikminItem componentInChildren = ((Component)val.itemGrabbableObject).GetComponentInChildren<PikminItem>();
+   78: 					if ((Object)(object)componentInChildren != (Object)null && componentInChildren.IsBeingCarried && (Object)(object)componentInChildren.PrimaryLeader != (Object)null)
+   79: 					{
+   80: 						BiteCooldown = BiteResetCooldown;
+   81: 						GetAngryAtPikminItemServerRpc(NetworkObjectReference.op_Implicit(((NetworkBehaviour)componentInChildren).NetworkObject), NetworkObjectReference.op_Implicit(((NetworkBehaviour)componentInChildren.PrimaryLeader).NetworkObject));
+   82: 						break;
+   83: 					}
+   84: 				}
+   85: 			}
+   86: 			return;
+   87: 		}
+   88: 		PikminRefs.Clear();
+   89: 		foreach (PikminAI item in GetNearbyPikmin())
+   90: 		{
+   91: 			if (!item.IsAirborn && !((Object)(object)item.CurrentLatchTrigger != (Object)null))
+   92: 			{
+   93: 				PikminRefs.Add(NetworkObjectReference.op_Implicit(((NetworkBehaviour)item).NetworkObject));
+   94: 				if (PikminRefs.Count >= BiteLimmit)
+   95: 				{
+   96: 					break;
+   97: 				}
+   98: 			}
+   99: 		}
+  100: 		if (PikminRefs.Count > 0)
+  101: 		{
+  102: 			BiteCooldown = BiteResetCooldown;
+  103: 			BiteNearbyPikminServerRpc(PikminRefs.ToArray());
+  104: 		}
+  105: 	}
+  106: 
+  107: 	[ServerRpc]
+  108: 	public void GetAngryAtPikminItemServerRpc(NetworkObjectReference itemRef, NetworkObjectReference leaderRef)
+  109: 	{
+  110: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  111: 		//IL_002e: Invalid comparison between Unknown and I4
+  112: 		//IL_0108: Unknown result type (might be due to invalid IL or missing references)
+  113: 		//IL_0112: Invalid comparison between Unknown and I4
+  114: 		//IL_013d: Unknown result type (might be due to invalid IL or missing references)
+  115: 		//IL_0144: Unknown result type (might be due to invalid IL or missing references)
+  116: 		//IL_0145: Unknown result type (might be due to invalid IL or missing references)
+  117: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+  118: 		//IL_00ae: Unknown result type (might be due to invalid IL or missing references)
+  119: 		//IL_00b3: Unknown result type (might be due to invalid IL or missing references)
+  120: 		//IL_00c3: Unknown result type (might be due to invalid IL or missing references)
+  121: 		//IL_00c9: Unknown result type (might be due to invalid IL or missing references)
+  122: 		//IL_00de: Unknown result type (might be due to invalid IL or missing references)
+  123: 		//IL_00e4: Unknown result type (might be due to invalid IL or missing references)
+  124: 		//IL_00f8: Unknown result type (might be due to invalid IL or missing references)
+  125: 		//IL_007a: Unknown result type (might be due to invalid IL or missing references)
+  126: 		//IL_0084: Invalid comparison between Unknown and I4
+  127: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  128: 		if (networkManager == null || !networkManager.IsListening)
+  129: 		{
+  130: 			return;
+  131: 		}
+  132: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+  133: 		{
+  134: 			if (((NetworkBehaviour)this).OwnerClientId != networkManager.LocalClientId)
+  135: 			{
+  136: 				if ((int)networkManager.LogLevel <= 1)
+  137: 				{
+  138: 					Debug.LogError((object)"Only the owner can invoke a ServerRpc that requires ownership!");
+  139: 				}
+  140: 				return;
+  141: 			}
+  142: 			ServerRpcParams val2 = default(ServerRpcParams);
+  143: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(3037749952u, val2, (RpcDelivery)0);
+  144: 			((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(ref itemRef, default(ForNetworkSerializable));
+  145: 			((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(ref leaderRef, default(ForNetworkSerializable));
+  146: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 3037749952u, val2, (RpcDelivery)0);
+  147: 		}
+  148: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
+  149: 		{
+  150: 			((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  151: 			GetAngryAtPikminItemClientRpc(itemRef, leaderRef);
+  152: 		}
+  153: 	}
+  154: 
+  155: 	[ClientRpc]
+  156: 	public void GetAngryAtPikminItemClientRpc(NetworkObjectReference itemRef, NetworkObjectReference leaderRef)
+  157: 	{
+  158: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  159: 		//IL_002e: Invalid comparison between Unknown and I4
+  160: 		//IL_00c2: Unknown result type (might be due to invalid IL or missing references)
+  161: 		//IL_00cc: Invalid comparison between Unknown and I4
+  162: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+  163: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+  164: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+  165: 		//IL_007d: Unknown result type (might be due to invalid IL or missing references)
+  166: 		//IL_0083: Unknown result type (might be due to invalid IL or missing references)
+  167: 		//IL_0098: Unknown result type (might be due to invalid IL or missing references)
+  168: 		//IL_009e: Unknown result type (might be due to invalid IL or missing references)
+  169: 		//IL_00b2: Unknown result type (might be due to invalid IL or missing references)
+  170: 		//IL_00f7: Unknown result type (might be due to invalid IL or missing references)
+  171: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  172: 		if (networkManager == null || !networkManager.IsListening)
+  173: 		{
+  174: 			return;
+  175: 		}
+  176: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsServer || networkManager.IsHost))
+  177: 		{
+  178: 			ClientRpcParams val2 = default(ClientRpcParams);
+  179: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendClientRpc(3800975872u, val2, (RpcDelivery)0);
+  180: 			((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(ref itemRef, default(ForNetworkSerializable));
+  181: 			((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(ref leaderRef, default(ForNetworkSerializable));
+  182: 			((NetworkBehaviour)this).__endSendClientRpc(ref val, 3800975872u, val2, (RpcDelivery)0);
+  183: 		}
+  184: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsClient || networkManager.IsHost))
+  185: 		{
+  186: 			((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  187: 			NetworkObject val3 = default(NetworkObject);
+  188: 			PikminItem itm = default(PikminItem);
+  189: 			NetworkObject val4 = default(NetworkObject);
+  190: 			Leader leaderToBeMadAt = default(Leader);
+  191: 			if (((NetworkObjectReference)(ref itemRef)).TryGet(ref val3, (NetworkManager)null) && ((Component)val3).TryGetComponent<PikminItem>(ref itm) && ((NetworkObjectReference)(ref leaderRef)).TryGet(ref val4, (NetworkManager)null) && ((Component)val4).TryGetComponent<Leader>(ref leaderToBeMadAt))
+  192: 			{
+  193: 				GetAngryAtPikminItem(itm, leaderToBeMadAt);
+  194: 			}
+  195: 			else
+  196: 			{
+  197: 				LethalMin.Logger.LogError((object)"Failed to get PikminItem from NetworkObjectReference in GetAngryAtPikminItemClientRpc");
+  198: 			}
+  199: 		}
+  200: 	}
+  201: 
+  202: 	public void GetAngryAtPikminItem(PikminItem itm, Leader leaderToBeMadAt)
+  203: 	{
+  204: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+  205: 		LethalMin.Logger.LogInfo((object)("HoarderBugPE: GetAngryAtPikminItem called for " + ((Object)((Component)itm).gameObject).name + " at " + leaderToBeMadAt.Controller.playerUsername));
+  206: 		HoarderBugItem val = HoarderBugAI.HoarderBugItems.Find((HoarderBugItem x) => (Object)(object)x.itemGrabbableObject == (Object)(object)itm.ItemScript);
+  207: 		itm.hoarderBugItem = val;
+  208: 		val.status = (HoarderBugItemStatus)1;
+  209: 		hoarderBugAI.angryAtPlayer = leaderToBeMadAt.Controller;
+  210: 		hoarderBugAI.angryTimer = 4f;
+  211: 		((EnemyAI)hoarderBugAI).SwitchToBehaviourStateOnLocalClient(2);
+  212: 	}
+  213: 
+  214: 	[ServerRpc]
+  215: 	public void BiteNearbyPikminServerRpc(NetworkObjectReference[] Pikmins)
+  216: 	{
+  217: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  218: 		//IL_002e: Invalid comparison between Unknown and I4
+  219: 		//IL_011d: Unknown result type (might be due to invalid IL or missing references)
+  220: 		//IL_0127: Invalid comparison between Unknown and I4
+  221: 		//IL_0152: Unknown result type (might be due to invalid IL or missing references)
+  222: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+  223: 		//IL_00ae: Unknown result type (might be due to invalid IL or missing references)
+  224: 		//IL_00b3: Unknown result type (might be due to invalid IL or missing references)
+  225: 		//IL_00ce: Unknown result type (might be due to invalid IL or missing references)
+  226: 		//IL_00d4: Unknown result type (might be due to invalid IL or missing references)
+  227: 		//IL_007a: Unknown result type (might be due to invalid IL or missing references)
+  228: 		//IL_0084: Invalid comparison between Unknown and I4
+  229: 		//IL_010d: Unknown result type (might be due to invalid IL or missing references)
+  230: 		//IL_00f2: Unknown result type (might be due to invalid IL or missing references)
+  231: 		//IL_00f8: Unknown result type (might be due to invalid IL or missing references)
+  232: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  233: 		if (networkManager == null || !networkManager.IsListening)
+  234: 		{
+  235: 			return;
+  236: 		}
+  237: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+  238: 		{
+  239: 			if (((NetworkBehaviour)this).OwnerClientId != networkManager.LocalClientId)
+  240: 			{
+  241: 				if ((int)networkManager.LogLevel <= 1)
+  242: 				{
+  243: 					Debug.LogError((object)"Only the owner can invoke a ServerRpc that requires ownership!");
+  244: 				}
+  245: 				return;
+  246: 			}
+  247: 			ServerRpcParams val2 = default(ServerRpcParams);
+  248: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(4093114400u, val2, (RpcDelivery)0);
+  249: 			bool flag = Pikmins != null;
+  250: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  251: 			if (flag)
+  252: 			{
+  253: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(Pikmins, default(ForNetworkSerializable));
+  254: 			}
   255: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 4093114400u, val2, (RpcDelivery)0);
   256: 		}
   257: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
@@ -1742,6 +2920,280 @@ MATCHES: grabpikmin
   472: 		NetworkManager networkManager = target.NetworkManager;
   473: 		if (networkManager != null && networkManager.IsListening)
   474: 		{
+  475: 			bool flag = default(bool);
+  476: 			((FastBufferReader)(ref reader)).ReadValueSafe<bool>(ref flag, default(ForPrimitives));
+  477: 			NetworkObjectReference[] pikmins = null;
+  478: 			if (flag)
+  479: 			{
+  480: 				((FastBufferReader)(ref reader)).ReadValueSafe<NetworkObjectReference>(ref pikmins, default(ForNetworkSerializable));
+  481: 			}
+  482: 			target.__rpc_exec_stage = (__RpcExecStage)1;
+  483: 			((HoarderBugPikminEnemy)(object)target).BiteNearbyPikminClientRpc(pikmins);
+  484: 			target.__rpc_exec_stage = (__RpcExecStage)0;
+  485: 		}
+  486: 	}
+  487: 
+  488: 	[MethodImpl(MethodImplOptions.NoInlining)]
+  489: 	protected internal override string __getTypeName()
+  490: 	{
+  491: 		return "HoarderBugPikminEnemy";
+  492: 	}
+  493: }
+
+==============================================================================================================
+FILE: LethalMin/JesterPikminEnemy.cs
+MATCHES: getnearbypikmin
+==============================================================================================================
+--- TYPE DECLARATIONS ---
+   10: public class JesterPikminEnemy : PikminEnemy
+--- SOURCE lines 1-247 ---
+    1: using System;
+    2: using System.Collections.Generic;
+    3: using System.Runtime.CompilerServices;
+    4: using GameNetcodeStuff;
+    5: using Unity.Netcode;
+    6: using UnityEngine;
+    7: 
+    8: namespace LethalMin;
+    9: 
+   10: public class JesterPikminEnemy : PikminEnemy
+   11: {
+   12: 	private List<NetworkObjectReference> PikminRefs = new List<NetworkObjectReference>();
+   13: 
+   14: 	private JesterAI jesterAI = null;
+   15: 
+   16: 	private float CheckInterval = 0.25f;
+   17: 
+   18: 	private float BiteCooldown = 1.5f;
+   19: 
+   20: 	public float BiteResetCooldown = 5f;
+   21: 
+   22: 	public int BiteLimmit = 10;
+   23: 
+   24: 	protected override void Start()
+   25: 	{
+   26: 		base.Start();
+   27: 		EnemyAI obj = enemyScript;
+   28: 		jesterAI = (JesterAI)(object)(((obj is JesterAI) ? obj : null) ?? throw new Exception("JesterPE: enemyScript is not a JesterAI"));
+   29: 		if ((Object)(object)jesterAI == (Object)null)
+   30: 		{
+   31: 			((Behaviour)this).enabled = false;
+   32: 		}
+   33: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   34: 		{
+   35: 			BiteCooldown = LethalMin.Jester_BiteCooldown.InternalValue;
+   36: 		}
+   37: 	}
+   38: 
+   39: 	private void LateUpdate()
+   40: 	{
+   41: 		if (!((NetworkBehaviour)this).IsOwner || enemyScript.isEnemyDead || jesterAI.inKillAnimation || ((EnemyAI)jesterAI).currentBehaviourStateIndex != 2)
+   42: 		{
+   43: 			return;
+   44: 		}
+   45: 		if (BiteCooldown > 0f)
+   46: 		{
+   47: 			BiteCooldown -= Time.deltaTime;
+   48: 			return;
+   49: 		}
+   50: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   51: 		{
+   52: 			BiteResetCooldown = LethalMin.Jester_BiteCooldown.InternalValue;
+   53: 			BiteLimmit = LethalMin.Jester_BiteLimit.InternalValue;
+   54: 		}
+   55: 		if (CheckInterval > 0f)
+   56: 		{
+   57: 			CheckInterval -= Time.deltaTime;
+   58: 			return;
+   59: 		}
+   60: 		DoCheckInterval();
+   61: 		CheckInterval = ((EnemyAI)jesterAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);
+   62: 	}
+   63: 
+   64: 	public void DoCheckInterval()
+   65: 	{
+   66: 		//IL_004e: Unknown result type (might be due to invalid IL or missing references)
+   67: 		PikminRefs.Clear();
+   68: 		foreach (PikminAI item in GetNearbyPikmin())
+   69: 		{
+   70: 			if (!item.IsAirborn && !((Object)(object)item.CurrentLatchTrigger != (Object)null))
+   71: 			{
+   72: 				PikminRefs.Add(NetworkObjectReference.op_Implicit(((NetworkBehaviour)item).NetworkObject));
+   73: 				if (PikminRefs.Count >= BiteLimmit)
+   74: 				{
+   75: 					break;
+   76: 				}
+   77: 			}
+   78: 		}
+   79: 		if (PikminRefs.Count > 0)
+   80: 		{
+   81: 			BiteCooldown = BiteResetCooldown;
+   82: 			BiteNearbyPikminServerRpc(PikminRefs.ToArray());
+   83: 		}
+   84: 	}
+   85: 
+   86: 	[ServerRpc]
+   87: 	public void BiteNearbyPikminServerRpc(NetworkObjectReference[] Pikmins)
+   88: 	{
+   89: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+   90: 		//IL_002e: Invalid comparison between Unknown and I4
+   91: 		//IL_011d: Unknown result type (might be due to invalid IL or missing references)
+   92: 		//IL_0127: Invalid comparison between Unknown and I4
+   93: 		//IL_0152: Unknown result type (might be due to invalid IL or missing references)
+   94: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+   95: 		//IL_00ae: Unknown result type (might be due to invalid IL or missing references)
+   96: 		//IL_00b3: Unknown result type (might be due to invalid IL or missing references)
+   97: 		//IL_00ce: Unknown result type (might be due to invalid IL or missing references)
+   98: 		//IL_00d4: Unknown result type (might be due to invalid IL or missing references)
+   99: 		//IL_007a: Unknown result type (might be due to invalid IL or missing references)
+  100: 		//IL_0084: Invalid comparison between Unknown and I4
+  101: 		//IL_010d: Unknown result type (might be due to invalid IL or missing references)
+  102: 		//IL_00f2: Unknown result type (might be due to invalid IL or missing references)
+  103: 		//IL_00f8: Unknown result type (might be due to invalid IL or missing references)
+  104: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  105: 		if (networkManager == null || !networkManager.IsListening)
+  106: 		{
+  107: 			return;
+  108: 		}
+  109: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+  110: 		{
+  111: 			if (((NetworkBehaviour)this).OwnerClientId != networkManager.LocalClientId)
+  112: 			{
+  113: 				if ((int)networkManager.LogLevel <= 1)
+  114: 				{
+  115: 					Debug.LogError((object)"Only the owner can invoke a ServerRpc that requires ownership!");
+  116: 				}
+  117: 				return;
+  118: 			}
+  119: 			ServerRpcParams val2 = default(ServerRpcParams);
+  120: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(2948855529u, val2, (RpcDelivery)0);
+  121: 			bool flag = Pikmins != null;
+  122: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  123: 			if (flag)
+  124: 			{
+  125: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(Pikmins, default(ForNetworkSerializable));
+  126: 			}
+  127: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 2948855529u, val2, (RpcDelivery)0);
+  128: 		}
+  129: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
+  130: 		{
+  131: 			((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  132: 			BiteNearbyPikminClientRpc(Pikmins);
+  133: 		}
+  134: 	}
+  135: 
+  136: 	[ClientRpc]
+  137: 	public void BiteNearbyPikminClientRpc(NetworkObjectReference[] Pikmins)
+  138: 	{
+  139: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  140: 		//IL_002e: Invalid comparison between Unknown and I4
+  141: 		//IL_00d7: Unknown result type (might be due to invalid IL or missing references)
+  142: 		//IL_00e1: Invalid comparison between Unknown and I4
+  143: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+  144: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+  145: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+  146: 		//IL_0088: Unknown result type (might be due to invalid IL or missing references)
+  147: 		//IL_008e: Unknown result type (might be due to invalid IL or missing references)
+  148: 		//IL_010c: Unknown result type (might be due to invalid IL or missing references)
+  149: 		//IL_00c7: Unknown result type (might be due to invalid IL or missing references)
+  150: 		//IL_00ac: Unknown result type (might be due to invalid IL or missing references)
+  151: 		//IL_00b2: Unknown result type (might be due to invalid IL or missing references)
+  152: 		//IL_0121: Unknown result type (might be due to invalid IL or missing references)
+  153: 		//IL_0126: Unknown result type (might be due to invalid IL or missing references)
+  154: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  155: 		if (networkManager == null || !networkManager.IsListening)
+  156: 		{
+  157: 			return;
+  158: 		}
+  159: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsServer || networkManager.IsHost))
+  160: 		{
+  161: 			ClientRpcParams val2 = default(ClientRpcParams);
+  162: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendClientRpc(475812140u, val2, (RpcDelivery)0);
+  163: 			bool flag = Pikmins != null;
+  164: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  165: 			if (flag)
+  166: 			{
+  167: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(Pikmins, default(ForNetworkSerializable));
+  168: 			}
+  169: 			((NetworkBehaviour)this).__endSendClientRpc(ref val, 475812140u, val2, (RpcDelivery)0);
+  170: 		}
+  171: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 || (!networkManager.IsClient && !networkManager.IsHost))
+  172: 		{
+  173: 			return;
+  174: 		}
+  175: 		((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  176: 		List<PikminAI> list = new List<PikminAI>();
+  177: 		NetworkObject val4 = default(NetworkObject);
+  178: 		PikminAI item = default(PikminAI);
+  179: 		for (int i = 0; i < Pikmins.Length; i++)
+  180: 		{
+  181: 			NetworkObjectReference val3 = Pikmins[i];
+  182: 			if (((NetworkObjectReference)(ref val3)).TryGet(ref val4, (NetworkManager)null) && ((Component)val4).TryGetComponent<PikminAI>(ref item))
+  183: 			{
+  184: 				list.Add(item);
+  185: 			}
+  186: 			else
+  187: 			{
+  188: 				LethalMin.Logger.LogError((object)"Failed to get PikminAI from NetworkObjectReference in BiteNearbyPikminClientRpc");
+  189: 			}
+  190: 		}
+  191: 		if (list.Count > 0)
+  192: 		{
+  193: 			BiteNearbyPikmin(list);
+  194: 		}
+  195: 		else
+  196: 		{
+  197: 			LethalMin.Logger.LogError((object)"Failed to get PikminAI from NetworkObjectReference in BiteNearbyPikminClientRpc");
+  198: 		}
+  199: 	}
+  200: 
+  201: 	public void BiteNearbyPikmin(List<PikminAI> Pikmins)
+  202: 	{
+  203: 		BiteCooldown = BiteResetCooldown;
+  204: 		foreach (PikminAI Pikmin in Pikmins)
+  205: 		{
+  206: 			Pikmin.DeathSnapToPos = jesterAI.grabBodyPoint;
+  207: 			Pikmin.OverrideDelay = 1f + (float)Pikmin.enemyRandom.Next(80) * 0.01f;
+  208: 			((EnemyAI)Pikmin).HitEnemy(999, (PlayerControllerB)null, false, -1);
+  209: 		}
+  210: 		((EnemyAI)jesterAI).creatureAnimator.SetTrigger("KillPlayer");
+  211: 		((EnemyAI)jesterAI).creatureSFX.PlayOneShot(jesterAI.killPlayerSFX);
+  212: 	}
+  213: 
+  214: 	protected override void __initializeVariables()
+  215: 	{
+  216: 		base.__initializeVariables();
+  217: 	}
+  218: 
+  219: 	protected override void __initializeRpcs()
+  220: 	{
+  221: 		//IL_000d: Unknown result type (might be due to invalid IL or missing references)
+  222: 		//IL_001c: Expected O, but got Unknown
+  223: 		//IL_0029: Unknown result type (might be due to invalid IL or missing references)
+  224: 		//IL_0038: Expected O, but got Unknown
+  225: 		((NetworkBehaviour)this).__registerRpc(2948855529u, new RpcReceiveHandler(__rpc_handler_2948855529), "BiteNearbyPikminServerRpc");
+  226: 		((NetworkBehaviour)this).__registerRpc(475812140u, new RpcReceiveHandler(__rpc_handler_475812140), "BiteNearbyPikminClientRpc");
+  227: 		base.__initializeRpcs();
+  228: 	}
+  229: 
+  230: 	private static void __rpc_handler_2948855529(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)
+  231: 	{
+  232: 		//IL_0023: Unknown result type (might be due to invalid IL or missing references)
+  233: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  234: 		//IL_0029: Unknown result type (might be due to invalid IL or missing references)
+  235: 		//IL_007c: Unknown result type (might be due to invalid IL or missing references)
+  236: 		//IL_0082: Unknown result type (might be due to invalid IL or missing references)
+  237: 		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
+  238: 		//IL_0055: Invalid comparison between Unknown and I4
+  239: 		//IL_00bb: Unknown result type (might be due to invalid IL or missing references)
+  240: 		//IL_00d5: Unknown result type (might be due to invalid IL or missing references)
+  241: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+  242: 		//IL_00ab: Unknown result type (might be due to invalid IL or missing references)
+  243: 		NetworkManager networkManager = target.NetworkManager;
+  244: 		if (networkManager == null || !networkManager.IsListening)
+  245: 		{
+  246: 			return;
+  247: 		}
 
 ==============================================================================================================
 FILE: LethalMin/LethalMin.cs
@@ -1749,7 +3201,27 @@ MATCHES: mouthdog, eyeless, biting , bite cooldown, bite limit
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
    47: public class LethalMin : BaseUnityPlugin
---- SOURCE lines 243-464 ---
+--- SOURCE lines 223-504 ---
+  223: 	public static ConfigItem<string> OnionHudSpeedAction;
+  224: 
+  225: 	public static Dictionary<string, MoonSpawnConfig> MoonSpawnConfigs;
+  226: 
+  227: 	public static Dictionary<string, WeatherSpawnConfig> WeatherSpawnConfigs;
+  228: 
+  229: 	public static ConfigItem<bool> UsePowerLVForSprouts;
+  230: 
+  231: 	public static ConfigItem<bool> UseLCSpawnSystem;
+  232: 
+  233: 	public static ConfigItem<float> IndoorSpawnChance;
+  234: 
+  235: 	public static ConfigItem<float> OutdoorSpawnChance;
+  236: 
+  237: 	public static ConfigItem<float> OnionSpawnChance;
+  238: 
+  239: 	public static ConfigItem<bool> UseBetaOnionSpawnSystem;
+  240: 
+  241: 	public static ConfigItem<bool> AvoidWaterForOnionSpawning;
+  242: 
   243: 	public static ConfigItem<bool> AvoidBehindShipForOnionSpawning;
   244: 
   245: 	public static ConfigItem<bool> EnableTypeSpawnFalloff;
@@ -1972,7 +3444,67 @@ MATCHES: mouthdog, eyeless, biting , bite cooldown, bite limit
   462: 
   463: 	public static ConfigItem<bool> DisableWhistleFix;
   464: 
---- SOURCE lines 1824-2069 ---
+  465: 	public static ConfigItem<float> OnionHUDZDistance;
+  466: 
+  467: 	public static ConfigItem<string> ThrowVRAction;
+  468: 
+  469: 	public static ConfigItem<string> ThrowCancelVRAction;
+  470: 
+  471: 	public static ConfigItem<string> SecondaryThrowVRAction;
+  472: 
+  473: 	public static ConfigItem<string> SwitchForwardVRAction;
+  474: 
+  475: 	public static ConfigItem<string> SwitchBackwawrdsVRAction;
+  476: 
+  477: 	public static ConfigItem<string> WhisleVRAction;
+  478: 
+  479: 	public static ConfigItem<bool> UseMouthTriggerForWhistle;
+  480: 
+  481: 	public static ConfigItem<string> DismissVRAction;
+  482: 
+  483: 	public static ConfigItem<string> SwitchWhistleSoundVRAction;
+  484: 
+  485: 	public static ConfigItem<string> ChargeVRAction;
+  486: 
+  487: 	public static ConfigItem<string> SecondaryChargeVRAction;
+  488: 
+  489: 	public static ConfigItem<bool> DisableChargeMotionBlur;
+  490: 
+  491: 	public static ConfigItem<string> GlowmobVRAction;
+  492: 
+  493: 	public static ConfigItem<bool> GlowmobDelay;
+  494: 
+  495: 	public static ConfigItem<bool> DontDoAudibleNoiseCalcuationsForPikmin;
+  496: 
+  497: 	public static ConfigItem<bool> DontResimulateOracleOnPikminDeath;
+  498: 
+  499: 	public static ConfigItem<bool> RemovePuffminFromSpawnSearch;
+  500: 
+  501: 	public static ConfigItem<bool> MakeCustomBoundsForWideShip;
+  502: 
+  503: 	public static ConfigItem<bool> CR_ACUTargetsPikmin;
+  504: 
+--- SOURCE lines 1804-2109 ---
+ 1804: 		PikminScanNodeColorType = new ConfigItem<PikminScanNodeProperties.ScanNodeType>("Appearances", "Pikmin Scan Node Color Type", PikminScanNodeProperties.ScanNodeType.Enemy, "The type of color to use for the scan node (Point of Intrest: Blue, Enemy: Red, Item: Green)", needsRestart: false, ConfigItemAuthority.Local);
+ 1805: 		PikminSproutScanNodeColorType = new ConfigItem<PikminScanNodeProperties.ScanNodeType>("Appearances", "Pikmin Sprout Scan Node Color Type", PikminScanNodeProperties.ScanNodeType.Enemy, "The type of color to use for the scan node (Point of Intrest: Blue, Enemy: Red, Item: Green)", needsRestart: false, ConfigItemAuthority.Local);
+ 1806: 		DefaultGeneration = new ConfigItem<PikminGeneration>("Generations", "Default Generation", PikminGeneration.Pikmin4, "The default generation to use when no specific generation is set", needsRestart: false, ConfigItemAuthority.Local);
+ 1807: 		DefaultGeneration.OnValueChanged += delegate
+ 1808: 		{
+ 1809: 			UpdateDefaultGeneration();
+ 1810: 		};
+ 1811: 		PikminModelGeneration = new ConfigItem<CfgPikminGeneration>("Generations", "Pikmin Model Generation", CfgPikminGeneration.Default, "The generation to use for Pikmin models", needsRestart: false, ConfigItemAuthority.Local);
+ 1812: 		PikminModelGeneration.OnValueChanged += delegate
+ 1813: 		{
+ 1814: 			UpdateCurrentGeneration(1, ref PikminModelGeneration);
+ 1815: 		};
+ 1816: 		SproutModelGeneration = new ConfigItem<CfgPikminGeneration>("Generations", "Sprout Model Generation", CfgPikminGeneration.Default, "The generation to use for Sprout models", needsRestart: false, ConfigItemAuthority.Local);
+ 1817: 		SproutModelGeneration.OnValueChanged += delegate
+ 1818: 		{
+ 1819: 			UpdateCurrentGeneration(2, ref SproutModelGeneration);
+ 1820: 		};
+ 1821: 		PikminSoundGeneration = new ConfigItem<CfgPikminGeneration>("Generations", "Pikmin Sound Generation", CfgPikminGeneration.Default, "The generation to use for Pikmin sounds", needsRestart: false, ConfigItemAuthority.Local);
+ 1822: 		PikminSoundGeneration.OnValueChanged += delegate
+ 1823: 		{
  1824: 			UpdateCurrentGeneration(3, ref PikminSoundGeneration);
  1825: 		};
  1826: 		SoulSpriteGeneration = new ConfigItem<CfgPikminGeneration>("Generations", "Soul Sprite Generation", CfgPikminGeneration.Default, "The generation to use for Pikmin Souls", needsRestart: false, ConfigItemAuthority.Local);
@@ -2219,7 +3751,67 @@ MATCHES: mouthdog, eyeless, biting , bite cooldown, bite limit
  2067: 		}
  2068: 	}
  2069: 
---- SOURCE lines 2254-2474 ---
+ 2070: 	public static void UpdateDefaultGeneration()
+ 2071: 	{
+ 2072: 		Logger.LogInfo((object)$"Current Generation set to: {DefaultGeneration.InternalValue}");
+ 2073: 		GenerationManager.Instance.SwitchGeneration(DefaultGeneration.InternalValue);
+ 2074: 		((ConfigEntryBase)PikminModelGeneration.Entry).BoxedValue = -1;
+ 2075: 		((ConfigEntryBase)SoulSpriteGeneration.Entry).BoxedValue = -1;
+ 2076: 		((ConfigEntryBase)OnionModelGeneration.Entry).BoxedValue = -1;
+ 2077: 		((ConfigEntryBase)OnionItemModelGeneration.Entry).BoxedValue = -1;
+ 2078: 		((ConfigEntryBase)SproutModelGeneration.Entry).BoxedValue = -1;
+ 2079: 		((ConfigEntryBase)PikminSoundGeneration.Entry).BoxedValue = -1;
+ 2080: 		((ConfigEntryBase)PuffminGeneration.Entry).BoxedValue = -1;
+ 2081: 	}
+ 2082: 
+ 2083: 	public static void UpdateCurrentGeneration(int numb, ref ConfigItem<CfgPikminGeneration> itm)
+ 2084: 	{
+ 2085: 		if (1 == 0)
+ 2086: 		{
+ 2087: 		}
+ 2088: 		string text = numb switch
+ 2089: 		{
+ 2090: 			1 => "Pikmin", 
+ 2091: 			2 => "Sprout", 
+ 2092: 			3 => "PikminSound", 
+ 2093: 			4 => "Soul", 
+ 2094: 			5 => "Onion", 
+ 2095: 			6 => "OnionItem", 
+ 2096: 			7 => "Puffmin", 
+ 2097: 			_ => "???", 
+ 2098: 		};
+ 2099: 		if (1 == 0)
+ 2100: 		{
+ 2101: 		}
+ 2102: 		string text2 = text;
+ 2103: 		Logger.LogInfo((object)$"{text2}'s Current Generation set to: {itm.InternalValue}");
+ 2104: 		PikminGeneration pikminGeneration = PikminGeneration.Pikmin1And2;
+ 2105: 		pikminGeneration = ((itm.InternalValue != CfgPikminGeneration.Default) ? ((PikminGeneration)itm.InternalValue) : DefaultGeneration.InternalValue);
+ 2106: 		switch (text2)
+ 2107: 		{
+ 2108: 		case "Pikmin":
+ 2109: 		{
+--- SOURCE lines 2234-2477 ---
+ 2234: 		_isNightlyBuild = null;
+ 2235: 		_nightlyVersion = null;
+ 2236: 		InVRMode = false;
+ 2237: 		LibraryTypes = new List<Type>();
+ 2238: 		ConfigPatchTypes = new List<Type>();
+ 2239: 		MaxPikmin = null;
+ 2240: 		FriendlyFire = null;
+ 2241: 		FriendlyerFire = null;
+ 2242: 		SkipPluckAnimation = null;
+ 2243: 		WhistleVolume = null;
+ 2244: 		AllowOnionsToRevivePlayers = null;
+ 2245: 		AllowOnionToReviveMaskeds = null;
+ 2246: 		AllowOnionFusing = null;
+ 2247: 		HideResultsWhenMoreThanFour = null;
+ 2248: 		ConvertEnemyBodiesToItems = null;
+ 2249: 		ShowOnionsInSpace = null;
+ 2250: 		SpaceOnionPosition = null;
+ 2251: 		DontUpdateSpaceOnionPosition = null;
+ 2252: 		MakeItemsScanable = null;
+ 2253: 		MakePikminScanable = null;
  2254: 		MakeSproutsScanable = null;
  2255: 		TriggerLandmines = null;
  2256: 		GlobalGhostSFX = null;
@@ -2441,10 +4033,13 @@ MATCHES: mouthdog, eyeless, biting , bite cooldown, bite limit
  2472: 		FuniOnion = null;
  2473: 		GiantWhistleMode = null;
  2474: 		RagdollOnKnockback = null;
+ 2475: 		RagdollOnDeath = null;
+ 2476: 	}
+ 2477: }
 
 ==============================================================================================================
 FILE: LethalMin/MouthDogPikminEnemy.cs
-MATCHES: mouthdog, biting , grabpikmin
+MATCHES: mouthdog, biting , grabpikmin, getnearbypikmin
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
    10: public class MouthDogPikminEnemy : PikminEnemy
@@ -2784,7 +4379,27 @@ MATCHES: grabpikmin
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
    15: public class PikminAI : EnemyAI, IGenerationSwitchable
---- SOURCE lines 4367-4586 ---
+--- SOURCE lines 4347-4626 ---
+ 4347: 	{
+ 4348: 		if (DeathTimerAffecters.Contains(val))
+ 4349: 		{
+ 4350: 			if (remove)
+ 4351: 			{
+ 4352: 				LethalMin.Logger.LogInfo((object)(DebugID + ": Remvoing " + val + " to deathtimers"));
+ 4353: 				DeathTimerAffecters.Remove(val);
+ 4354: 			}
+ 4355: 		}
+ 4356: 		else if (!remove)
+ 4357: 		{
+ 4358: 			LethalMin.Logger.LogInfo((object)(DebugID + ": Adding " + val + " to deathtimers"));
+ 4359: 			DeathTimer += timerAddition;
+ 4360: 			DeathTimerAffecters.Add(val);
+ 4361: 		}
+ 4362: 		OverrideDelay = -1f;
+ 4363: 	}
+ 4364: 
+ 4365: 	[ServerRpc]
+ 4366: 	public void SetInvincibiltyServerRpc(bool val)
  4367: 	{
  4368: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
  4369: 		//IL_002e: Invalid comparison between Unknown and I4
@@ -3005,6 +4620,328 @@ MATCHES: grabpikmin
  4584: 			ApplyKnockBack(direction, 3 + force);
  4585: 			return;
  4586: 		}
+ 4587: 		if ((Object)(object)DeathSnapToPos != (Object)null)
+ 4588: 		{
+ 4589: 			LethalMin.Logger.LogInfo((object)(DebugID + ": is snapped to position"));
+ 4590: 			base.enemyHP -= force;
+ 4591: 			if (base.enemyHP <= 0)
+ 4592: 			{
+ 4593: 				hitBeforeKillWasCalled = true;
+ 4594: 				((EnemyAI)this).KillEnemy(false);
+ 4595: 				PlayAnimation(animController.AnimPack.EditorLayingAnim);
+ 4596: 				PlayAudioOnLocalClient(PikminSoundPackSounds.Hurt);
+ 4597: 			}
+ 4598: 			else
+ 4599: 			{
+ 4600: 				Vector3 val2 = ((Component)this).transform.position - ((Component)DeathSnapToPos).transform.position;
+ 4601: 				ApplyKnockBack(-val2, 3f);
+ 4602: 				DeathSnapToPos = null;
+ 4603: 			}
+ 4604: 			return;
+ 4605: 		}
+ 4606: 		LethalMin.Logger.LogInfo((object)$"{DebugID} was hit: {force}");
+ 4607: 		Vector3 direction2 = default(Vector3);
+ 4608: 		((Vector3)(ref direction2))._002Ector((0f - ((Component)this).transform.forward.x) * 2f, 3f, (0f - ((Component)this).transform.forward.z) * 2f);
+ 4609: 		if ((Object)(object)playerWhoHit != (Object)null)
+ 4610: 		{
+ 4611: 			Vector3 val3 = ((Component)this).transform.position - ((Component)playerWhoHit).transform.position;
+ 4612: 			((Vector3)(ref direction2))._002Ector(((Vector3)(ref val3)).normalized.x * 2f, 3f, ((Vector3)(ref val3)).normalized.z * 2f);
+ 4613: 		}
+ 4614: 		LandBuffer = 0.25f;
+ 4615: 		base.enemyHP -= force;
+ 4616: 		LethalMin.Logger.LogInfo((object)$"{DebugID} HP left: {base.enemyHP}");
+ 4617: 		if (base.enemyHP > 0)
+ 4618: 		{
+ 4619: 			ApplyKnockBack(direction2, 3 + force);
+ 4620: 			return;
+ 4621: 		}
+ 4622: 		LandBuffer = 0.1f;
+ 4623: 		ApplyKnockBack(direction2, force);
+ 4624: 		hitBeforeKillWasCalled = true;
+ 4625: 		((EnemyAI)this).KillEnemy(false);
+ 4626: 	}
+
+==============================================================================================================
+FILE: LethalMin/PikminEnemy.cs
+MATCHES: getnearbypikmin, class pikminenemy
+==============================================================================================================
+--- TYPE DECLARATIONS ---
+   12: public class PikminEnemy : NetworkBehaviour
+--- SOURCE lines 1-229 ---
+    1: using System.Collections;
+    2: using System.Collections.Generic;
+    3: using System.Linq;
+    4: using System.Runtime.CompilerServices;
+    5: using LethalMin.Patches;
+    6: using Unity.Netcode;
+    7: using UnityEngine;
+    8: using UnityEngine.Events;
+    9: 
+   10: namespace LethalMin;
+   11: 
+   12: public class PikminEnemy : NetworkBehaviour
+   13: {
+   14: 	public EnemyAI enemyScript;
+   15: 
+   16: 	public List<PikminLatchTrigger> LatchTriggers;
+   17: 
+   18: 	public List<PikminEnemyCollisionDetector> ProximityDetectors;
+   19: 
+   20: 	public float DamageCounter;
+   21: 
+   22: 	public bool IsDead;
+   23: 
+   24: 	public bool CanBeAttacked;
+   25: 
+   26: 	public bool OverrideCanDie;
+   27: 
+   28: 	public bool CanShakeOffPikmin;
+   29: 
+   30: 	public float MaxShakeOffVelocity;
+   31: 
+   32: 	private float ShakeCooldown;
+   33: 
+   34: 	public UnityEvent<float> OnHit;
+   35: 
+   36: 	protected List<PikminAI> GrabbedPikmin;
+   37: 
+   38: 	public float FreezeCounter;
+   39: 
+   40: 	public bool IsFrozen;
+   41: 
+   42: 	public bool HasShattered;
+   43: 
+   44: 	public float FreezeDuration;
+   45: 
+   46: 	private Dictionary<Renderer, Material[]> originalMaterials;
+   47: 
+   48: 	private Vector3 OOB;
+   49: 
+   50: 	protected IEnumerable<PikminAI> GetNearbyPikmin()
+   51: 	{
+   52: 		HashSet<PikminAI> seen = new HashSet<PikminAI>();
+   53: 		foreach (PikminEnemyCollisionDetector detector in ProximityDetectors)
+   54: 		{
+   55: 			detector.PikminInCollider.RemoveWhere((PikminAI p) => (Object)(object)p == (Object)null);
+   56: 			foreach (PikminAI pikmin in detector.PikminInCollider)
+   57: 			{
+   58: 				if (!((Object)(object)pikmin == (Object)null) && !pikmin.IsDeadOrDying && seen.Add(pikmin))
+   59: 				{
+   60: 					yield return pikmin;
+   61: 				}
+   62: 			}
+   63: 		}
+   64: 	}
+   65: 
+   66: 	protected virtual void Start()
+   67: 	{
+   68: 		foreach (PikminLatchTrigger latchTrigger in LatchTriggers)
+   69: 		{
+   70: 			latchTrigger.OnPikminHit.AddListener((UnityAction<PikminAI>)delegate(PikminAI pikmin)
+   71: 			{
+   72: 				HitEnemy(pikmin.pikminType.GetAttackStrength(pikmin.CurrentGrowthStage), pikmin);
+   73: 			});
+   74: 			latchTrigger.OnPikminDirectLatch.AddListener((UnityAction<PikminAI>)HandleDirectHit);
+   75: 		}
+   76: 		if ((Object)(object)enemyScript == (Object)null)
+   77: 		{
+   78: 			LethalMin.Logger.LogWarning((object)("EnemyAI component not found on the GameObject (" + ((Object)((Component)this).gameObject).name + ")"));
+   79: 			enemyScript = ((Component)this).GetComponent<EnemyAI>();
+   80: 		}
+   81: 		if ((Object)(object)enemyScript == (Object)null)
+   82: 		{
+   83: 			LethalMin.Logger.LogFatal((object)("EnemyAI component not found on the GameObject fallback failed (" + ((Object)((Component)this).gameObject).name + ")"));
+   84: 			((Behaviour)this).enabled = false;
+   85: 		}
+   86: 		else
+   87: 		{
+   88: 			PikminManager.instance.PikminEnemies.Add(this);
+   89: 		}
+   90: 	}
+   91: 
+   92: 	public override void OnDestroy()
+   93: 	{
+   94: 		PikminManager.instance.PikminEnemies.Remove(this);
+   95: 	}
+   96: 
+   97: 	protected virtual void Update()
+   98: 	{
+   99: 		//IL_0410: Unknown result type (might be due to invalid IL or missing references)
+  100: 		//IL_01b3: Unknown result type (might be due to invalid IL or missing references)
+  101: 		//IL_01b8: Unknown result type (might be due to invalid IL or missing references)
+  102: 		//IL_0155: Unknown result type (might be due to invalid IL or missing references)
+  103: 		//IL_015a: Unknown result type (might be due to invalid IL or missing references)
+  104: 		//IL_02c6: Unknown result type (might be due to invalid IL or missing references)
+  105: 		if (enemyScript.isEnemyDead && !IsDead)
+  106: 		{
+  107: 			RemoveAndDisableTriggers();
+  108: 			if (((NetworkBehaviour)this).IsOwner && IsFrozen)
+  109: 			{
+  110: 				ShatterServerRpc();
+  111: 			}
+  112: 			foreach (PikminAI item2 in GrabbedPikmin)
+  113: 			{
+  114: 				if ((Object)(object)item2 != (Object)null)
+  115: 				{
+  116: 					item2.ReleaseFromGrab();
+  117: 				}
+  118: 			}
+  119: 			GrabbedPikmin.Clear();
+  120: 			IsDead = true;
+  121: 			((Behaviour)this).enabled = false;
+  122: 		}
+  123: 		if (IsFrozen)
+  124: 		{
+  125: 			enemyScript.inSpecialAnimation = true;
+  126: 			enemyScript.SetClientCalculatingAI(false);
+  127: 		}
+  128: 		ShakeCooldown -= Time.deltaTime;
+  129: 		if (MaxShakeOffVelocity > 1f)
+  130: 		{
+  131: 			MaxShakeOffVelocity -= Time.deltaTime * 0.5f;
+  132: 		}
+  133: 		if (!LethalMin.NoKnockbackCheat && CanShakeOffPikmin && ((NetworkBehaviour)enemyScript).IsOwner && ShakeCooldown <= 0f && (Object)(object)enemyScript.agent != (Object)null)
+  134: 		{
+  135: 			Vector3 velocity = enemyScript.agent.velocity;
+  136: 			if (((Vector3)(ref velocity)).magnitude > MaxShakeOffVelocity)
+  137: 			{
+  138: 				ShakeCooldown = Random.Range(1f, 5f);
+  139: 				float maxShakeOffVelocity;
+  140: 				if (!((Object)(object)enemyScript.agent != (Object)null))
+  141: 				{
+  142: 					maxShakeOffVelocity = 0f;
+  143: 				}
+  144: 				else
+  145: 				{
+  146: 					velocity = enemyScript.agent.velocity;
+  147: 					maxShakeOffVelocity = ((Vector3)(ref velocity)).magnitude - 1.5f;
+  148: 				}
+  149: 				MaxShakeOffVelocity = maxShakeOffVelocity;
+  150: 				if (MaxShakeOffVelocity < 0.5f)
+  151: 				{
+  152: 					MaxShakeOffVelocity = 0.5f;
+  153: 				}
+  154: 				bool flag = false;
+  155: 				foreach (PikminLatchTrigger latchTrigger in LatchTriggers)
+  156: 				{
+  157: 					if (latchTrigger.PikminOnLatch.Count > 0)
+  158: 					{
+  159: 						flag = true;
+  160: 						break;
+  161: 					}
+  162: 				}
+  163: 				if (flag)
+  164: 				{
+  165: 					HashSet<PikminAI> hashSet = new HashSet<PikminAI>();
+  166: 					List<(NetworkObjectReference, PikminAI, float)> list = new List<(NetworkObjectReference, PikminAI, float)>();
+  167: 					foreach (PikminLatchTrigger latchTrigger2 in LatchTriggers)
+  168: 					{
+  169: 						foreach (PikminAI item3 in latchTrigger2.PikminOnLatch)
+  170: 						{
+  171: 							if (!hashSet.Contains(item3))
+  172: 							{
+  173: 								hashSet.Add(item3);
+  174: 								float item = Random.Range(0f, 1f);
+  175: 								list.Add((NetworkObjectReference.op_Implicit(((NetworkBehaviour)item3).NetworkObject), item3, item));
+  176: 							}
+  177: 						}
+  178: 					}
+  179: 					list.Sort(((NetworkObjectReference netRef, PikminAI pikmin, float rngValue) a, (NetworkObjectReference netRef, PikminAI pikmin, float rngValue) b) => a.rngValue.CompareTo(b.rngValue));
+  180: 					NetworkObjectReference[] pikRef = list.Select<(NetworkObjectReference, PikminAI, float), NetworkObjectReference>(delegate((NetworkObjectReference netRef, PikminAI pikmin, float rngValue) data)
+  181: 					{
+  182: 						//IL_0001: Unknown result type (might be due to invalid IL or missing references)
+  183: 						return data.netRef;
+  184: 					}).ToArray();
+  185: 					float[] rNG = list.Select<(NetworkObjectReference, PikminAI, float), float>(((NetworkObjectReference netRef, PikminAI pikmin, float rngValue) data) => data.rngValue).ToArray();
+  186: 					Dictionary<PikminAI, float> pikminRNG = list.ToDictionary<(NetworkObjectReference, PikminAI, float), PikminAI, float>(((NetworkObjectReference netRef, PikminAI pikmin, float rngValue) data) => data.pikmin, ((NetworkObjectReference netRef, PikminAI pikmin, float rngValue) data) => data.rngValue);
+  187: 					ShakePikminServerRpc(MaxShakeOffVelocity, pikRef, rNG);
+  188: 					ShakePikmin(pikminRNG);
+  189: 				}
+  190: 			}
+  191: 		}
+  192: 		if (HasShattered)
+  193: 		{
+  194: 			((Component)enemyScript).transform.position = OOB;
+  195: 		}
+  196: 		if (!IsDead && ((NetworkBehaviour)this).IsOwner && IsFrozen)
+  197: 		{
+  198: 			if (FreezeDuration > 0f)
+  199: 			{
+  200: 				FreezeDuration -= Time.deltaTime;
+  201: 			}
+  202: 			else
+  203: 			{
+  204: 				UnfreezeEnemyServerRpc();
+  205: 				FreezeDuration = 3f;
+  206: 			}
+  207: 			if (!enemyScript.inSpecialAnimation)
+  208: 			{
+  209: 				UnfreezeEnemyServerRpc();
+  210: 				FreezeDuration = 3f;
+  211: 			}
+  212: 		}
+  213: 	}
+  214: 
+  215: 	public virtual void HandleDirectHit(PikminAI? pikminWhoHit = null)
+  216: 	{
+  217: 		if ((Object)(object)pikminWhoHit != (Object)null && pikminWhoHit.pikminType.DamageDeltUpLanding > 0f)
+  218: 		{
+  219: 			float num = pikminWhoHit.pikminType.DamageDeltUpLanding * pikminWhoHit.pikminType.GetAttackStrength(pikminWhoHit.CurrentGrowthStage);
+  220: 			HitEnemy(num, pikminWhoHit);
+  221: 			LethalMin.Logger.LogInfo((object)$"{pikminWhoHit.DebugID}: landed on enemy with: {num}");
+  222: 		}
+  223: 	}
+  224: 
+  225: 	[ServerRpc(RequireOwnership = false)]
+  226: 	public void HitEnemyServerRpc(float Damage, NetworkObjectReference PikRef)
+  227: 	{
+  228: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  229: 		//IL_002e: Invalid comparison between Unknown and I4
+
+==============================================================================================================
+FILE: LethalMin/PikminEnemyCollisionDetector.cs
+MATCHES: class pikminenemy
+==============================================================================================================
+--- TYPE DECLARATIONS ---
+    6: public class PikminEnemyCollisionDetector : MonoBehaviour
+--- SOURCE lines 1-37 ---
+    1: using System.Collections.Generic;
+    2: using UnityEngine;
+    3: 
+    4: namespace LethalMin;
+    5: 
+    6: public class PikminEnemyCollisionDetector : MonoBehaviour
+    7: {
+    8: 	public PikminEnemy enemy = null;
+    9: 
+   10: 	public HashSet<PikminAI> PikminInCollider { get; } = new HashSet<PikminAI>();
+   11: 
+   12: 	public void AddPikmin(PikminAI pikmin)
+   13: 	{
+   14: 		if ((Object)(object)pikmin != (Object)null && !pikmin.IsDeadOrDying)
+   15: 		{
+   16: 			PikminInCollider.Add(pikmin);
+   17: 		}
+   18: 	}
+   19: 
+   20: 	public void RemovePikmin(PikminAI pikmin)
+   21: 	{
+   22: 		if ((Object)(object)pikmin != (Object)null)
+   23: 		{
+   24: 			PikminInCollider.Remove(pikmin);
+   25: 		}
+   26: 	}
+   27: 
+   28: 	private void OnDisable()
+   29: 	{
+   30: 		PikminInCollider.Clear();
+   31: 	}
+   32: 
+   33: 	private void OnDestroy()
+   34: 	{
+   35: 		PikminInCollider.Clear();
+   36: 	}
+   37: }
 
 ==============================================================================================================
 FILE: LethalMin/PikminItem.cs
@@ -3012,7 +4949,27 @@ MATCHES: grabpikmin
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
    17: public class PikminItem : NetworkBehaviour
---- SOURCE lines 305-605 ---
+--- SOURCE lines 285-645 ---
+  285: 		//IL_0019: Unknown result type (might be due to invalid IL or missing references)
+  286: 		//IL_002a: Unknown result type (might be due to invalid IL or missing references)
+  287: 		//IL_0031: Unknown result type (might be due to invalid IL or missing references)
+  288: 		//IL_0036: Unknown result type (might be due to invalid IL or missing references)
+  289: 		//IL_0039: Unknown result type (might be due to invalid IL or missing references)
+  290: 		float num = angleDegrees * (MathF.PI / 180f);
+  291: 		float num2 = center.x + radius * Mathf.Cos(num);
+  292: 		float num3 = center.z + radius * Mathf.Sin(num);
+  293: 		return new Vector3(num2, center.y, num3);
+  294: 	}
+  295: 
+  296: 	public void CreateCounter()
+  297: 	{
+  298: 		//IL_005b: Unknown result type (might be due to invalid IL or missing references)
+  299: 		if (!((Object)(object)PikminCounter != (Object)null))
+  300: 		{
+  301: 			LethalMin.Logger.LogDebug((object)("Creating counter for " + ((Object)((Component)this).gameObject).name));
+  302: 			PikminCounter = Object.Instantiate<GameObject>(LethalMin.ItemCounterPrefab).GetComponent<PikminItemCounter>();
+  303: 			PikminCounter.item = this;
+  304: 			PikminCounter.SetCounterColor(DefultColor);
   305: 			((Object)PikminCounter).name = ((Object)((Component)this).gameObject).name + "'s Counter";
   306: 		}
   307: 	}
@@ -3314,7 +5271,67 @@ MATCHES: grabpikmin
   603: 		if ((Object)(object)PikminManager.instance != (Object)null && PikminManager.instance.Onions.Count > 0)
   604: 		{
   605: 			LethalMin.Logger.LogInfo((object)"Trying to find any available onion as fallback");
---- SOURCE lines 1372-1592 ---
+  606: 			List<(PikminType, Onion, int)> list2 = new List<(PikminType, Onion, int)>();
+  607: 			foreach (Onion onion in PikminManager.instance.Onions)
+  608: 			{
+  609: 				if (!((Object)(object)onion != (Object)null) || !((Object)(object)onion.onionType != (Object)null) || !onion.onionType.CanCreateSprouts)
+  610: 				{
+  611: 					continue;
+  612: 				}
+  613: 				for (int num = 0; num < onion.onionType.TypesCanHold.Length; num++)
+  614: 				{
+  615: 					PikminType onionPikminType = onion.onionType.TypesCanHold[num];
+  616: 					if ((Object)(object)onionPikminType != (Object)null)
+  617: 					{
+  618: 						int item3 = onion.PikminInOnion.Count((PikminData p) => p.TypeID == onionPikminType.PikminTypeID);
+  619: 						list2.Add((onionPikminType, onion, item3));
+  620: 					}
+  621: 				}
+  622: 			}
+  623: 			if (list2.Count > 0)
+  624: 			{
+  625: 				(PikminType, Onion, int) tuple = list2.OrderBy<(PikminType, Onion, int), int>(((PikminType type, Onion onion, int count) info) => info.count).First();
+  626: 				LethalMin.Logger.LogInfo((object)$"Found fallback onion with {tuple.Item3} pikmin inside");
+  627: 				return (tuple.Item1, tuple.Item2);
+  628: 			}
+  629: 		}
+  630: 		return null;
+  631: 	}
+  632: 
+  633: 	public void OnPrimaryChange()
+  634: 	{
+  635: 		if ((Object)(object)PrimaryPikminOnItem == (Object)null)
+  636: 		{
+  637: 			return;
+  638: 		}
+  639: 		LethalMin.Logger.LogMessage((object)(((Object)((Component)this).gameObject).name + " Switched Primary Pikmin to " + PrimaryPikminOnItem.DebugID));
+  640: 		if (IsBeingCarried)
+  641: 		{
+  642: 			ItemScript.parentObject = PrimaryPikminOnItem.HoldPosition;
+  643: 			ItemScript.GrabItemFromEnemy((EnemyAI)(object)PrimaryPikminOnItem);
+  644: 			if (!((Behaviour)((EnemyAI)PrimaryPikminOnItem).agent).enabled)
+  645: 			{
+--- SOURCE lines 1352-1632 ---
+ 1352: 		//IL_018a: Unknown result type (might be due to invalid IL or missing references)
+ 1353: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+ 1354: 		if (networkManager == null || !networkManager.IsListening)
+ 1355: 		{
+ 1356: 			return;
+ 1357: 		}
+ 1358: 		if ((int)base.__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+ 1359: 		{
+ 1360: 			ServerRpcParams val2 = default(ServerRpcParams);
+ 1361: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(2602416696u, val2, (RpcDelivery)0);
+ 1362: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 2602416696u, val2, (RpcDelivery)0);
+ 1363: 		}
+ 1364: 		if ((int)base.__rpc_exec_stage != 1 || (!networkManager.IsServer && !networkManager.IsHost))
+ 1365: 		{
+ 1366: 			return;
+ 1367: 		}
+ 1368: 		base.__rpc_exec_stage = (__RpcExecStage)0;
+ 1369: 		DespawnCount++;
+ 1370: 		if (DespawnCount >= StartOfRound.Instance.connectedPlayersAmount + 1)
+ 1371: 		{
  1372: 			LethalMin.Logger.LogInfo((object)("All Clients marked to despawn " + ((Object)((Component)this).gameObject).name));
  1373: 			if ((Object)(object)ItemScript.playerHeldBy != (Object)null)
  1374: 			{
@@ -3536,7 +5553,67 @@ MATCHES: grabpikmin
  1590: 		float num7 = num5 + (num3 - num + (float)PikminOnItem.Count) / num2 + num6;
  1591: 		return Mathf.Max(num7, 1f);
  1592: 	}
---- SOURCE lines 2017-2316 ---
+ 1593: 
+ 1594: 	public void CreateRoute()
+ 1595: 	{
+ 1596: 		//IL_00d1: Unknown result type (might be due to invalid IL or missing references)
+ 1597: 		//IL_00db: Expected O, but got Unknown
+ 1598: 		ClearCurrentRoute();
+ 1599: 		if ((Object)(object)PrimaryPikminOnItem != (Object)null)
+ 1600: 		{
+ 1601: 			PikminRouteRequest pikminRouteRequest = new PikminRouteRequest
+ 1602: 			{
+ 1603: 				Pikmin = PrimaryPikminOnItem,
+ 1604: 				Intent = DetermineRouteIntent(),
+ 1605: 				TargetOnion = targetOnion,
+ 1606: 				CarriedItem = this,
+ 1607: 				HandleEntrances = false
+ 1608: 			};
+ 1609: 			if (pikminRouteRequest.Intent == RouteIntent.ToPlayer)
+ 1610: 			{
+ 1611: 				PrimaryLeader = PikUtils.GetLeaderFromMultiplePikmin(PikminOnItem);
+ 1612: 				pikminRouteRequest.TargetPlayer = PrimaryLeader;
+ 1613: 				pikminRouteRequest.CustomCheckDistance = settings.RouteToPlayerDroppingDistance;
+ 1614: 			}
+ 1615: 			CurrentRoute = PikminRouteManager.Instance.CreateRoute(pikminRouteRequest);
+ 1616: 			CurrentRoute.OnNodeReached.AddListener((UnityAction<RouteNode>)OnNodeReached);
+ 1617: 			CurrentRoute.OnRouteComplete.AddListener(new UnityAction(OnRouteEndOwnerSide));
+ 1618: 			CurrentRoute.OnRouteInvalidated.AddListener((UnityAction<RouteValidation.InvalidationReason>)OnRouteInvalidated);
+ 1619: 			if (!isRegeneratingRoute)
+ 1620: 			{
+ 1621: 				LethalMin.Logger.LogInfo((object)(((Object)((Component)this).gameObject).name + " has created a route"));
+ 1622: 			}
+ 1623: 			isRegeneratingRoute = false;
+ 1624: 		}
+ 1625: 		else
+ 1626: 		{
+ 1627: 			LethalMin.Logger.LogWarning((object)(((Object)((Component)this).gameObject).name + " has no primary pikmin to create a route"));
+ 1628: 		}
+ 1629: 	}
+ 1630: 
+ 1631: 	public virtual RouteIntent DetermineRouteIntent()
+ 1632: 	{
+--- SOURCE lines 1997-2356 ---
+ 1997: 	}
+ 1998: 
+ 1999: 	public void UseEntranceOnLocalClient(EntranceTeleport entrance, bool Inside)
+ 2000: 	{
+ 2001: 		if (!IsBeingCarried)
+ 2002: 		{
+ 2003: 			LethalMin.Logger.LogError((object)(((Object)((Component)this).gameObject).name + " is not carrying any pikmin, cannot use entrance"));
+ 2004: 			return;
+ 2005: 		}
+ 2006: 		List<PikminAI> list = new List<PikminAI>(PikminOnItem);
+ 2007: 		foreach (PikminAI item in list)
+ 2008: 		{
+ 2009: 			item.UseEntranceOnLocalClient(entrance, Inside, PlaySFX: false);
+ 2010: 		}
+ 2011: 		ItemScript.isInFactory = Inside;
+ 2012: 		entrance.PlayAudioAtTeleportPositions();
+ 2013: 	}
+ 2014: 
+ 2015: 	public PikminItem()
+ 2016: 	{
  2017: 		//IL_0055: Unknown result type (might be due to invalid IL or missing references)
  2018: 		//IL_005a: Unknown result type (might be due to invalid IL or missing references)
  2019: 		//IL_00b9: Unknown result type (might be due to invalid IL or missing references)
@@ -3837,6 +5914,46 @@ MATCHES: grabpikmin
  2314: 	private static void __rpc_handler_4108332875(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)
  2315: 	{
  2316: 		//IL_0023: Unknown result type (might be due to invalid IL or missing references)
+ 2317: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+ 2318: 		//IL_0029: Unknown result type (might be due to invalid IL or missing references)
+ 2319: 		//IL_0076: Unknown result type (might be due to invalid IL or missing references)
+ 2320: 		//IL_008c: Unknown result type (might be due to invalid IL or missing references)
+ 2321: 		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
+ 2322: 		//IL_0055: Invalid comparison between Unknown and I4
+ 2323: 		NetworkManager networkManager = target.NetworkManager;
+ 2324: 		if (networkManager == null || !networkManager.IsListening)
+ 2325: 		{
+ 2326: 			return;
+ 2327: 		}
+ 2328: 		if (rpcParams.Server.Receive.SenderClientId != target.OwnerClientId)
+ 2329: 		{
+ 2330: 			if ((int)networkManager.LogLevel <= 1)
+ 2331: 			{
+ 2332: 				Debug.LogError((object)"Only the owner can invoke a ServerRpc that requires ownership!");
+ 2333: 			}
+ 2334: 		}
+ 2335: 		else
+ 2336: 		{
+ 2337: 			target.__rpc_exec_stage = (__RpcExecStage)1;
+ 2338: 			((PikminItem)(object)target).RemoveFromPikminServerRpc();
+ 2339: 			target.__rpc_exec_stage = (__RpcExecStage)0;
+ 2340: 		}
+ 2341: 	}
+ 2342: 
+ 2343: 	private static void __rpc_handler_4074632369(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)
+ 2344: 	{
+ 2345: 		//IL_0029: Unknown result type (might be due to invalid IL or missing references)
+ 2346: 		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
+ 2347: 		NetworkManager networkManager = target.NetworkManager;
+ 2348: 		if (networkManager != null && networkManager.IsListening)
+ 2349: 		{
+ 2350: 			target.__rpc_exec_stage = (__RpcExecStage)1;
+ 2351: 			((PikminItem)(object)target).RemoveFromPikminClientRpc();
+ 2352: 			target.__rpc_exec_stage = (__RpcExecStage)0;
+ 2353: 		}
+ 2354: 	}
+ 2355: 
+ 2356: 	private static void __rpc_handler_2602416696(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)
 
 ==============================================================================================================
 FILE: LethalMin/PikminManager.cs
@@ -3844,7 +5961,27 @@ MATCHES: mouthdog
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
    21: public class PikminManager : NetworkBehaviour
---- SOURCE lines 1483-1702 ---
+--- SOURCE lines 1463-1742 ---
+ 1463: 		if (networkManager == null || !networkManager.IsListening)
+ 1464: 		{
+ 1465: 			return;
+ 1466: 		}
+ 1467: 		if ((int)base.__rpc_exec_stage != 1 && (networkManager.IsServer || networkManager.IsHost))
+ 1468: 		{
+ 1469: 			ClientRpcParams val2 = default(ClientRpcParams);
+ 1470: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendClientRpc(1145705668u, val2, (RpcDelivery)0);
+ 1471: 			((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(ref enemyRef, default(ForNetworkSerializable));
+ 1472: 			((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(ref itemNode, default(ForNetworkSerializable));
+ 1473: 			((NetworkBehaviour)this).__endSendClientRpc(ref val, 1145705668u, val2, (RpcDelivery)0);
+ 1474: 		}
+ 1475: 		if ((int)base.__rpc_exec_stage != 1 || (!networkManager.IsClient && !networkManager.IsHost))
+ 1476: 		{
+ 1477: 			return;
+ 1478: 		}
+ 1479: 		base.__rpc_exec_stage = (__RpcExecStage)0;
+ 1480: 		NetworkObject val3 = default(NetworkObject);
+ 1481: 		if (!((NetworkObjectReference)(ref enemyRef)).TryGet(ref val3, (NetworkManager)null))
+ 1482: 		{
  1483: 			LethalMin.Logger.LogWarning((object)"Failed to get enemy object from reference");
  1484: 			return;
  1485: 		}
@@ -4065,6 +6202,304 @@ MATCHES: mouthdog
  1700: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
  1701: 		//IL_00ae: Unknown result type (might be due to invalid IL or missing references)
  1702: 		//IL_00b3: Unknown result type (might be due to invalid IL or missing references)
+ 1703: 		//IL_00b7: Unknown result type (might be due to invalid IL or missing references)
+ 1704: 		//IL_00cf: Unknown result type (might be due to invalid IL or missing references)
+ 1705: 		//IL_007a: Unknown result type (might be due to invalid IL or missing references)
+ 1706: 		//IL_0084: Invalid comparison between Unknown and I4
+ 1707: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+ 1708: 		if (networkManager == null || !networkManager.IsListening)
+ 1709: 		{
+ 1710: 			return;
+ 1711: 		}
+ 1712: 		if ((int)base.__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+ 1713: 		{
+ 1714: 			if (((NetworkBehaviour)this).OwnerClientId != networkManager.LocalClientId)
+ 1715: 			{
+ 1716: 				if ((int)networkManager.LogLevel <= 1)
+ 1717: 				{
+ 1718: 					Debug.LogError((object)"Only the owner can invoke a ServerRpc that requires ownership!");
+ 1719: 				}
+ 1720: 				return;
+ 1721: 			}
+ 1722: 			ServerRpcParams val2 = default(ServerRpcParams);
+ 1723: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(3548144878u, val2, (RpcDelivery)0);
+ 1724: 			BytePacker.WriteValueBitPacked(val, index);
+ 1725: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 3548144878u, val2, (RpcDelivery)0);
+ 1726: 		}
+ 1727: 		if ((int)base.__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
+ 1728: 		{
+ 1729: 			base.__rpc_exec_stage = (__RpcExecStage)0;
+ 1730: 			FreezeWaterAtIndexClientRpc(index);
+ 1731: 		}
+ 1732: 	}
+ 1733: 
+ 1734: 	[ClientRpc]
+ 1735: 	public void FreezeWaterAtIndexClientRpc(int index)
+ 1736: 	{
+ 1737: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+ 1738: 		//IL_002e: Invalid comparison between Unknown and I4
+ 1739: 		//IL_0099: Unknown result type (might be due to invalid IL or missing references)
+ 1740: 		//IL_00a3: Invalid comparison between Unknown and I4
+ 1741: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+ 1742: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+
+==============================================================================================================
+FILE: LethalMin/PumaPikminEnemy.cs
+MATCHES: getnearbypikmin
+==============================================================================================================
+--- TYPE DECLARATIONS ---
+   11: public class PumaPikminEnemy : PikminEnemy
+--- SOURCE lines 1-250 ---
+    1: using System;
+    2: using System.Collections.Generic;
+    3: using System.Runtime.CompilerServices;
+    4: using GameNetcodeStuff;
+    5: using LethalMin.Utils;
+    6: using Unity.Netcode;
+    7: using UnityEngine;
+    8: 
+    9: namespace LethalMin;
+   10: 
+   11: public class PumaPikminEnemy : PikminEnemy
+   12: {
+   13: 	private PumaAI pumaAI = null;
+   14: 
+   15: 	private float scratchCheckInterval = 0.3f;
+   16: 
+   17: 	private float scratchCooldown = 0f;
+   18: 
+   19: 	private float scratchCooldownDuration = 1.5f;
+   20: 
+   21: 	private int maxScratchHits = 3;
+   22: 
+   23: 	protected override void Start()
+   24: 	{
+   25: 		base.Start();
+   26: 		EnemyAI obj = enemyScript;
+   27: 		pumaAI = (PumaAI)(object)(((obj is PumaAI) ? obj : null) ?? throw new Exception("PumaPE: enemyScript is not a PumaAI"));
+   28: 		if ((Object)(object)pumaAI == (Object)null)
+   29: 		{
+   30: 			((Behaviour)this).enabled = false;
+   31: 		}
+   32: 	}
+   33: 
+   34: 	protected override void Update()
+   35: 	{
+   36: 		base.Update();
+   37: 		if (enemyScript.isEnemyDead)
+   38: 		{
+   39: 			return;
+   40: 		}
+   41: 		if (scratchCooldown > 0f)
+   42: 		{
+   43: 			scratchCooldown -= Time.deltaTime;
+   44: 		}
+   45: 		if (((EnemyAI)pumaAI).currentBehaviourStateIndex == 2)
+   46: 		{
+   47: 			if (scratchCheckInterval > 0f)
+   48: 			{
+   49: 				scratchCheckInterval -= Time.deltaTime;
+   50: 				return;
+   51: 			}
+   52: 			scratchCheckInterval = 0.3f;
+   53: 			CheckScratchNearbyPikmin();
+   54: 		}
+   55: 	}
+   56: 
+   57: 	private void CheckScratchNearbyPikmin()
+   58: 	{
+   59: 		//IL_00e9: Unknown result type (might be due to invalid IL or missing references)
+   60: 		//IL_00a1: Unknown result type (might be due to invalid IL or missing references)
+   61: 		if (!((NetworkBehaviour)this).IsOwner || scratchCooldown > 0f)
+   62: 		{
+   63: 			return;
+   64: 		}
+   65: 		Transform val = pumaAI.pushPoint;
+   66: 		if ((Object)(object)val == (Object)null)
+   67: 		{
+   68: 			val = ((Component)pumaAI).transform;
+   69: 		}
+   70: 		List<NetworkObjectReference> list = new List<NetworkObjectReference>();
+   71: 		foreach (PikminAI item in GetNearbyPikmin())
+   72: 		{
+   73: 			if (list.Count >= maxScratchHits)
+   74: 			{
+   75: 				break;
+   76: 			}
+   77: 			if (!item.IsDeadOrDying && !item.IsAirborn)
+   78: 			{
+   79: 				list.Add(NetworkObjectReference.op_Implicit(((NetworkBehaviour)item).NetworkObject));
+   80: 			}
+   81: 		}
+   82: 		if (list.Count > 0)
+   83: 		{
+   84: 			scratchCooldown = scratchCooldownDuration;
+   85: 			ScratchNearbyPikminServerRpc(list.ToArray(), val.position);
+   86: 		}
+   87: 	}
+   88: 
+   89: 	[ServerRpc(RequireOwnership = false)]
+   90: 	public void ScratchNearbyPikminServerRpc(NetworkObjectReference[] pikRefs, Vector3 scratchPos)
+   91: 	{
+   92: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+   93: 		//IL_002e: Invalid comparison between Unknown and I4
+   94: 		//IL_00e4: Unknown result type (might be due to invalid IL or missing references)
+   95: 		//IL_00ee: Invalid comparison between Unknown and I4
+   96: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+   97: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+   98: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+   99: 		//IL_0088: Unknown result type (might be due to invalid IL or missing references)
+  100: 		//IL_008e: Unknown result type (might be due to invalid IL or missing references)
+  101: 		//IL_0119: Unknown result type (might be due to invalid IL or missing references)
+  102: 		//IL_0121: Unknown result type (might be due to invalid IL or missing references)
+  103: 		//IL_00d4: Unknown result type (might be due to invalid IL or missing references)
+  104: 		//IL_00ac: Unknown result type (might be due to invalid IL or missing references)
+  105: 		//IL_00b2: Unknown result type (might be due to invalid IL or missing references)
+  106: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  107: 		if (networkManager == null || !networkManager.IsListening)
+  108: 		{
+  109: 			return;
+  110: 		}
+  111: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+  112: 		{
+  113: 			ServerRpcParams val2 = default(ServerRpcParams);
+  114: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(2610963359u, val2, (RpcDelivery)0);
+  115: 			bool flag = pikRefs != null;
+  116: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  117: 			if (flag)
+  118: 			{
+  119: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(pikRefs, default(ForNetworkSerializable));
+  120: 			}
+  121: 			((FastBufferWriter)(ref val)).WriteValueSafe(ref scratchPos);
+  122: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 2610963359u, val2, (RpcDelivery)0);
+  123: 		}
+  124: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
+  125: 		{
+  126: 			((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  127: 			ScratchNearbyPikminClientRpc(pikRefs, scratchPos);
+  128: 		}
+  129: 	}
+  130: 
+  131: 	[ClientRpc]
+  132: 	public void ScratchNearbyPikminClientRpc(NetworkObjectReference[] pikRefs, Vector3 scratchPos)
+  133: 	{
+  134: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  135: 		//IL_002e: Invalid comparison between Unknown and I4
+  136: 		//IL_00e4: Unknown result type (might be due to invalid IL or missing references)
+  137: 		//IL_00ee: Invalid comparison between Unknown and I4
+  138: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+  139: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+  140: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+  141: 		//IL_0088: Unknown result type (might be due to invalid IL or missing references)
+  142: 		//IL_008e: Unknown result type (might be due to invalid IL or missing references)
+  143: 		//IL_0119: Unknown result type (might be due to invalid IL or missing references)
+  144: 		//IL_00d4: Unknown result type (might be due to invalid IL or missing references)
+  145: 		//IL_00ac: Unknown result type (might be due to invalid IL or missing references)
+  146: 		//IL_00b2: Unknown result type (might be due to invalid IL or missing references)
+  147: 		//IL_012b: Unknown result type (might be due to invalid IL or missing references)
+  148: 		//IL_0130: Unknown result type (might be due to invalid IL or missing references)
+  149: 		//IL_016c: Unknown result type (might be due to invalid IL or missing references)
+  150: 		//IL_0171: Unknown result type (might be due to invalid IL or missing references)
+  151: 		//IL_0172: Unknown result type (might be due to invalid IL or missing references)
+  152: 		//IL_0177: Unknown result type (might be due to invalid IL or missing references)
+  153: 		//IL_017b: Unknown result type (might be due to invalid IL or missing references)
+  154: 		//IL_0180: Unknown result type (might be due to invalid IL or missing references)
+  155: 		//IL_0182: Unknown result type (might be due to invalid IL or missing references)
+  156: 		//IL_0184: Unknown result type (might be due to invalid IL or missing references)
+  157: 		//IL_018e: Unknown result type (might be due to invalid IL or missing references)
+  158: 		//IL_0193: Unknown result type (might be due to invalid IL or missing references)
+  159: 		//IL_0198: Unknown result type (might be due to invalid IL or missing references)
+  160: 		//IL_019a: Unknown result type (might be due to invalid IL or missing references)
+  161: 		//IL_019c: Unknown result type (might be due to invalid IL or missing references)
+  162: 		//IL_01a6: Unknown result type (might be due to invalid IL or missing references)
+  163: 		//IL_01ab: Unknown result type (might be due to invalid IL or missing references)
+  164: 		//IL_01b0: Unknown result type (might be due to invalid IL or missing references)
+  165: 		//IL_01b4: Unknown result type (might be due to invalid IL or missing references)
+  166: 		//IL_01b9: Unknown result type (might be due to invalid IL or missing references)
+  167: 		//IL_01ed: Unknown result type (might be due to invalid IL or missing references)
+  168: 		//IL_01f1: Unknown result type (might be due to invalid IL or missing references)
+  169: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  170: 		if (networkManager == null || !networkManager.IsListening)
+  171: 		{
+  172: 			return;
+  173: 		}
+  174: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsServer || networkManager.IsHost))
+  175: 		{
+  176: 			ClientRpcParams val2 = default(ClientRpcParams);
+  177: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendClientRpc(3248477683u, val2, (RpcDelivery)0);
+  178: 			bool flag = pikRefs != null;
+  179: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  180: 			if (flag)
+  181: 			{
+  182: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(pikRefs, default(ForNetworkSerializable));
+  183: 			}
+  184: 			((FastBufferWriter)(ref val)).WriteValueSafe(ref scratchPos);
+  185: 			((NetworkBehaviour)this).__endSendClientRpc(ref val, 3248477683u, val2, (RpcDelivery)0);
+  186: 		}
+  187: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 || (!networkManager.IsClient && !networkManager.IsHost))
+  188: 		{
+  189: 			return;
+  190: 		}
+  191: 		((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  192: 		NetworkObject val4 = default(NetworkObject);
+  193: 		PikminAI pikminAI = default(PikminAI);
+  194: 		for (int i = 0; i < pikRefs.Length; i++)
+  195: 		{
+  196: 			NetworkObjectReference val3 = pikRefs[i];
+  197: 			if (!((NetworkObjectReference)(ref val3)).TryGet(ref val4, (NetworkManager)null) || !((Component)val4).TryGetComponent<PikminAI>(ref pikminAI) || pikminAI.IsDeadOrDying)
+  198: 			{
+  199: 				continue;
+  200: 			}
+  201: 			Vector3 val5 = ((Component)pikminAI).transform.position - scratchPos;
+  202: 			Vector3 val6 = ((Vector3)(ref val5)).normalized;
+  203: 			val6 += Vector3.up * 0.3f;
+  204: 			val6 += Random.onUnitSphere * 0.2f;
+  205: 			val6 = ((Vector3)(ref val6)).normalized;
+  206: 			float num = pumaAI.scratchPushForce + Random.Range(0f, 2f);
+  207: 			if (!PikChecks.IsPikminResistantToHazard(pikminAI, PikminHazard.Stab))
+  208: 			{
+  209: 				pikminAI.ApplyKnockBack(val6 * num, 0.5f);
+  210: 				if (!LethalMin.UseConfigsForEnemies.InternalValue || LethalMin.Puma_HurtsPikmin.InternalValue)
+  211: 				{
+  212: 					((EnemyAI)pikminAI).HitEnemy(1, (PlayerControllerB)null, false, -1);
+  213: 				}
+  214: 			}
+  215: 		}
+  216: 	}
+  217: 
+  218: 	protected override void __initializeVariables()
+  219: 	{
+  220: 		base.__initializeVariables();
+  221: 	}
+  222: 
+  223: 	protected override void __initializeRpcs()
+  224: 	{
+  225: 		//IL_000d: Unknown result type (might be due to invalid IL or missing references)
+  226: 		//IL_001c: Expected O, but got Unknown
+  227: 		//IL_0029: Unknown result type (might be due to invalid IL or missing references)
+  228: 		//IL_0038: Expected O, but got Unknown
+  229: 		((NetworkBehaviour)this).__registerRpc(2610963359u, new RpcReceiveHandler(__rpc_handler_2610963359), "ScratchNearbyPikminServerRpc");
+  230: 		((NetworkBehaviour)this).__registerRpc(3248477683u, new RpcReceiveHandler(__rpc_handler_3248477683), "ScratchNearbyPikminClientRpc");
+  231: 		base.__initializeRpcs();
+  232: 	}
+  233: 
+  234: 	private static void __rpc_handler_2610963359(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)
+  235: 	{
+  236: 		//IL_002f: Unknown result type (might be due to invalid IL or missing references)
+  237: 		//IL_0035: Unknown result type (might be due to invalid IL or missing references)
+  238: 		//IL_007b: Unknown result type (might be due to invalid IL or missing references)
+  239: 		//IL_008a: Unknown result type (might be due to invalid IL or missing references)
+  240: 		//IL_0099: Unknown result type (might be due to invalid IL or missing references)
+  241: 		//IL_0058: Unknown result type (might be due to invalid IL or missing references)
+  242: 		//IL_005e: Unknown result type (might be due to invalid IL or missing references)
+  243: 		NetworkManager networkManager = target.NetworkManager;
+  244: 		if (networkManager != null && networkManager.IsListening)
+  245: 		{
+  246: 			bool flag = default(bool);
+  247: 			((FastBufferReader)(ref reader)).ReadValueSafe<bool>(ref flag, default(ForPrimitives));
+  248: 			NetworkObjectReference[] pikRefs = null;
+  249: 			if (flag)
+  250: 			{
 
 ==============================================================================================================
 FILE: LethalMin/RadMechPikminEnemy.cs
@@ -4072,7 +6507,27 @@ MATCHES: grabpikmin
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
    12: public class RadMechPikminEnemy : PikminEnemy
---- SOURCE lines 70-374 ---
+--- SOURCE lines 50-642 ---
+   50: 		radMechLatchTrigger.radMechPikminEnemy = this;
+   51: 		radMechLatchTrigger.AllowBaseLatchOn = false;
+   52: 		radMechLatchTrigger.OverrideLatchObject = radMechAI.holdPlayerPoint;
+   53: 		handTrigger = radMechLatchTrigger;
+   54: 		LatchTriggers.Remove(pikminLatchTrigger);
+   55: 		LatchTriggers.Add(radMechLatchTrigger);
+   56: 		Object.Destroy((Object)(object)pikminLatchTrigger);
+   57: 	}
+   58: 
+   59: 	public void LateUpdate()
+   60: 	{
+   61: 		if (((EnemyAI)radMechAI).isEnemyDead || StartOfRound.Instance.allPlayersDead || !((EnemyAI)radMechAI).ventAnimationFinished || !((NetworkBehaviour)radMechAI).IsServer || (((EnemyAI)radMechAI).currentBehaviourStateIndex == 2 && radMechAI.finishingFlight && (!radMechAI.inSky || radMechAI.flyTimer > 10f)) || ((bool)LethalMin.UseConfigsForEnemies && !LethalMin.RadMech_GrabsPikmin))
+   62: 		{
+   63: 			return;
+   64: 		}
+   65: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   66: 		{
+   67: 			GrabLimmit = LethalMin.RadMech_GrabLimmit.InternalValue;
+   68: 		}
+   69: 		if (attemptingPikminGrab)
    70: 		{
    71: 			if (grabCheckInterval > 0f)
    72: 			{
@@ -4378,7 +6833,75 @@ MATCHES: grabpikmin
   372: 		torchPikminCoroutine = null;
   373: 	}
   374: 
---- SOURCE lines 444-642 ---
+  375: 	public void CancelTorchPikminAnimation()
+  376: 	{
+  377: 		LethalMin.Logger.LogInfo((object)"RadMechPE: CancelTorchPikminAnimation: Cancelling torch animation.");
+  378: 		radMechAI.inTorchPlayerAnimation = false;
+  379: 		((EnemyAI)radMechAI).inSpecialAnimation = false;
+  380: 		radMechAI.disableWalking = false;
+  381: 		radMechAI.attemptGrabTimer = 5f;
+  382: 		attemptPikminGrabTimer = 5f;
+  383: 		if (((NetworkBehaviour)this).IsServer)
+  384: 		{
+  385: 			((Behaviour)((EnemyAI)radMechAI).agent).enabled = true;
+  386: 		}
+  387: 		((EnemyAI)radMechAI).creatureAnimator.SetBool("GrabSuccessful", false);
+  388: 		((EnemyAI)radMechAI).creatureAnimator.SetBool("AttemptingGrab", false);
+  389: 		((EnemyAI)radMechAI).creatureAnimator.SetBool("GrabUnsuccessful", false);
+  390: 		foreach (PikminAI item in PikminGrabbed)
+  391: 		{
+  392: 			if (!((Object)(object)item == (Object)null))
+  393: 			{
+  394: 				item.ApplyPhysics(Use3: true);
+  395: 				item.LandBuffer = 0.5f;
+  396: 			}
+  397: 		}
+  398: 		PikminGrabbed.Clear();
+  399: 		if (radMechAI.blowtorchActivated)
+  400: 		{
+  401: 			radMechAI.DisableBlowtorch();
+  402: 		}
+  403: 		if (torchPikminCoroutine != null)
+  404: 		{
+  405: 			((MonoBehaviour)this).StopCoroutine(torchPikminCoroutine);
+  406: 		}
+  407: 	}
+  408: 
+  409: 	public void StartPikminGrabAttempt()
+  410: 	{
+  411: 		LethalMin.Logger.LogInfo((object)"RadMechPE: StartPikminGrabAttemptClientRpc:(Server) Starting Pikmin grab attempt.");
+  412: 		attemptingPikminGrab = true;
+  413: 		radMechAI.attemptingGrab = true;
+  414: 		radMechAI.attemptGrabTimer = 1.5f;
+  415: 		attemptPikminGrabTimer = 1.5f;
+  416: 		((EnemyAI)radMechAI).creatureAnimator.SetBool("AttemptingGrab", true);
+  417: 		((EnemyAI)radMechAI).creatureAnimator.SetBool("GrabUnsuccessful", false);
+  418: 		((EnemyAI)radMechAI).creatureAnimator.SetBool("GrabSuccessful", false);
+  419: 		radMechAI.disableWalking = true;
+  420: 		StartPikminGrabAttemptClientRpc();
+  421: 	}
+  422: 
+  423: 	[ClientRpc]
+  424: 	public void StartPikminGrabAttemptClientRpc()
+  425: 	{
+  426: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  427: 		//IL_002e: Invalid comparison between Unknown and I4
+  428: 		//IL_008c: Unknown result type (might be due to invalid IL or missing references)
+  429: 		//IL_0096: Invalid comparison between Unknown and I4
+  430: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+  431: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+  432: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+  433: 		//IL_007c: Unknown result type (might be due to invalid IL or missing references)
+  434: 		//IL_00c1: Unknown result type (might be due to invalid IL or missing references)
+  435: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  436: 		if (networkManager != null && networkManager.IsListening)
+  437: 		{
+  438: 			if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsServer || networkManager.IsHost))
+  439: 			{
+  440: 				ClientRpcParams val2 = default(ClientRpcParams);
+  441: 				FastBufferWriter val = ((NetworkBehaviour)this).__beginSendClientRpc(1293342839u, val2, (RpcDelivery)0);
+  442: 				((NetworkBehaviour)this).__endSendClientRpc(ref val, 1293342839u, val2, (RpcDelivery)0);
+  443: 			}
   444: 			if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsClient || networkManager.IsHost))
   445: 			{
   446: 				((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
@@ -4580,12 +7103,536 @@ MATCHES: grabpikmin
   642: }
 
 ==============================================================================================================
+FILE: LethalMin/SandSpiderPikminEnemy.cs
+MATCHES: getnearbypikmin
+==============================================================================================================
+--- TYPE DECLARATIONS ---
+   10: public class SandSpiderPikminEnemy : PikminEnemy
+--- SOURCE lines 1-247 ---
+    1: using System;
+    2: using System.Collections.Generic;
+    3: using System.Runtime.CompilerServices;
+    4: using GameNetcodeStuff;
+    5: using Unity.Netcode;
+    6: using UnityEngine;
+    7: 
+    8: namespace LethalMin;
+    9: 
+   10: public class SandSpiderPikminEnemy : PikminEnemy
+   11: {
+   12: 	private List<NetworkObjectReference> PikminRefs = new List<NetworkObjectReference>();
+   13: 
+   14: 	private SandSpiderAI sandSpiderAI = null;
+   15: 
+   16: 	private float CheckInterval = 0.25f;
+   17: 
+   18: 	private float BiteCooldown = 1.5f;
+   19: 
+   20: 	public float BiteResetCooldown = 3.5f;
+   21: 
+   22: 	public int BiteLimmit = 2;
+   23: 
+   24: 	protected override void Start()
+   25: 	{
+   26: 		base.Start();
+   27: 		EnemyAI obj = enemyScript;
+   28: 		sandSpiderAI = (SandSpiderAI)(object)(((obj is SandSpiderAI) ? obj : null) ?? throw new Exception("SandSpiderPE: enemyScript is not a SandSpiderAI"));
+   29: 		if ((Object)(object)sandSpiderAI == (Object)null)
+   30: 		{
+   31: 			((Behaviour)this).enabled = false;
+   32: 		}
+   33: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   34: 		{
+   35: 			BiteCooldown = LethalMin.SandSpider_BiteCooldown.InternalValue;
+   36: 		}
+   37: 	}
+   38: 
+   39: 	private void LateUpdate()
+   40: 	{
+   41: 		if (!((NetworkBehaviour)this).IsOwner || sandSpiderAI.onWall || enemyScript.isEnemyDead || enemyScript.currentBehaviourStateIndex != 2)
+   42: 		{
+   43: 			return;
+   44: 		}
+   45: 		if (BiteCooldown > 0f)
+   46: 		{
+   47: 			BiteCooldown -= Time.deltaTime;
+   48: 			return;
+   49: 		}
+   50: 		if ((bool)LethalMin.UseConfigsForEnemies)
+   51: 		{
+   52: 			BiteResetCooldown = LethalMin.SandSpider_BiteCooldown.InternalValue;
+   53: 			BiteLimmit = LethalMin.SandSpider_BiteLimit.InternalValue;
+   54: 		}
+   55: 		if (CheckInterval > 0f)
+   56: 		{
+   57: 			CheckInterval -= Time.deltaTime;
+   58: 			return;
+   59: 		}
+   60: 		DoCheckInterval();
+   61: 		CheckInterval = ((EnemyAI)sandSpiderAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);
+   62: 	}
+   63: 
+   64: 	public void DoCheckInterval()
+   65: 	{
+   66: 		//IL_004e: Unknown result type (might be due to invalid IL or missing references)
+   67: 		PikminRefs.Clear();
+   68: 		foreach (PikminAI item in GetNearbyPikmin())
+   69: 		{
+   70: 			if (!item.IsAirborn && !((Object)(object)item.CurrentLatchTrigger != (Object)null))
+   71: 			{
+   72: 				PikminRefs.Add(NetworkObjectReference.op_Implicit(((NetworkBehaviour)item).NetworkObject));
+   73: 				if (PikminRefs.Count >= BiteLimmit)
+   74: 				{
+   75: 					break;
+   76: 				}
+   77: 			}
+   78: 		}
+   79: 		if (PikminRefs.Count > 0)
+   80: 		{
+   81: 			BiteCooldown = BiteResetCooldown;
+   82: 			BiteNearbyPikminServerRpc(PikminRefs.ToArray());
+   83: 		}
+   84: 	}
+   85: 
+   86: 	[ServerRpc]
+   87: 	public void BiteNearbyPikminServerRpc(NetworkObjectReference[] Pikmins)
+   88: 	{
+   89: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+   90: 		//IL_002e: Invalid comparison between Unknown and I4
+   91: 		//IL_011d: Unknown result type (might be due to invalid IL or missing references)
+   92: 		//IL_0127: Invalid comparison between Unknown and I4
+   93: 		//IL_0152: Unknown result type (might be due to invalid IL or missing references)
+   94: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+   95: 		//IL_00ae: Unknown result type (might be due to invalid IL or missing references)
+   96: 		//IL_00b3: Unknown result type (might be due to invalid IL or missing references)
+   97: 		//IL_00ce: Unknown result type (might be due to invalid IL or missing references)
+   98: 		//IL_00d4: Unknown result type (might be due to invalid IL or missing references)
+   99: 		//IL_007a: Unknown result type (might be due to invalid IL or missing references)
+  100: 		//IL_0084: Invalid comparison between Unknown and I4
+  101: 		//IL_010d: Unknown result type (might be due to invalid IL or missing references)
+  102: 		//IL_00f2: Unknown result type (might be due to invalid IL or missing references)
+  103: 		//IL_00f8: Unknown result type (might be due to invalid IL or missing references)
+  104: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  105: 		if (networkManager == null || !networkManager.IsListening)
+  106: 		{
+  107: 			return;
+  108: 		}
+  109: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+  110: 		{
+  111: 			if (((NetworkBehaviour)this).OwnerClientId != networkManager.LocalClientId)
+  112: 			{
+  113: 				if ((int)networkManager.LogLevel <= 1)
+  114: 				{
+  115: 					Debug.LogError((object)"Only the owner can invoke a ServerRpc that requires ownership!");
+  116: 				}
+  117: 				return;
+  118: 			}
+  119: 			ServerRpcParams val2 = default(ServerRpcParams);
+  120: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(1715452637u, val2, (RpcDelivery)0);
+  121: 			bool flag = Pikmins != null;
+  122: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  123: 			if (flag)
+  124: 			{
+  125: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(Pikmins, default(ForNetworkSerializable));
+  126: 			}
+  127: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 1715452637u, val2, (RpcDelivery)0);
+  128: 		}
+  129: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
+  130: 		{
+  131: 			((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  132: 			BiteNearbyPikminClientRpc(Pikmins);
+  133: 		}
+  134: 	}
+  135: 
+  136: 	[ClientRpc]
+  137: 	public void BiteNearbyPikminClientRpc(NetworkObjectReference[] Pikmins)
+  138: 	{
+  139: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  140: 		//IL_002e: Invalid comparison between Unknown and I4
+  141: 		//IL_00d7: Unknown result type (might be due to invalid IL or missing references)
+  142: 		//IL_00e1: Invalid comparison between Unknown and I4
+  143: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+  144: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+  145: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+  146: 		//IL_0088: Unknown result type (might be due to invalid IL or missing references)
+  147: 		//IL_008e: Unknown result type (might be due to invalid IL or missing references)
+  148: 		//IL_010c: Unknown result type (might be due to invalid IL or missing references)
+  149: 		//IL_00c7: Unknown result type (might be due to invalid IL or missing references)
+  150: 		//IL_00ac: Unknown result type (might be due to invalid IL or missing references)
+  151: 		//IL_00b2: Unknown result type (might be due to invalid IL or missing references)
+  152: 		//IL_0121: Unknown result type (might be due to invalid IL or missing references)
+  153: 		//IL_0126: Unknown result type (might be due to invalid IL or missing references)
+  154: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  155: 		if (networkManager == null || !networkManager.IsListening)
+  156: 		{
+  157: 			return;
+  158: 		}
+  159: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsServer || networkManager.IsHost))
+  160: 		{
+  161: 			ClientRpcParams val2 = default(ClientRpcParams);
+  162: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendClientRpc(881145350u, val2, (RpcDelivery)0);
+  163: 			bool flag = Pikmins != null;
+  164: 			((FastBufferWriter)(ref val)).WriteValueSafe<bool>(ref flag, default(ForPrimitives));
+  165: 			if (flag)
+  166: 			{
+  167: 				((FastBufferWriter)(ref val)).WriteValueSafe<NetworkObjectReference>(Pikmins, default(ForNetworkSerializable));
+  168: 			}
+  169: 			((NetworkBehaviour)this).__endSendClientRpc(ref val, 881145350u, val2, (RpcDelivery)0);
+  170: 		}
+  171: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 || (!networkManager.IsClient && !networkManager.IsHost))
+  172: 		{
+  173: 			return;
+  174: 		}
+  175: 		((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  176: 		List<PikminAI> list = new List<PikminAI>();
+  177: 		NetworkObject val4 = default(NetworkObject);
+  178: 		PikminAI item = default(PikminAI);
+  179: 		for (int i = 0; i < Pikmins.Length; i++)
+  180: 		{
+  181: 			NetworkObjectReference val3 = Pikmins[i];
+  182: 			if (((NetworkObjectReference)(ref val3)).TryGet(ref val4, (NetworkManager)null) && ((Component)val4).TryGetComponent<PikminAI>(ref item))
+  183: 			{
+  184: 				list.Add(item);
+  185: 			}
+  186: 			else
+  187: 			{
+  188: 				LethalMin.Logger.LogError((object)"Failed to get PikminAI from NetworkObjectReference in BiteNearbyPikminClientRpc");
+  189: 			}
+  190: 		}
+  191: 		if (list.Count > 0)
+  192: 		{
+  193: 			BiteNearbyPikmin(list);
+  194: 		}
+  195: 		else
+  196: 		{
+  197: 			LethalMin.Logger.LogError((object)"Failed to get PikminAI from NetworkObjectReference in BiteNearbyPikminClientRpc");
+  198: 		}
+  199: 	}
+  200: 
+  201: 	public void BiteNearbyPikmin(List<PikminAI> Pikmins)
+  202: 	{
+  203: 		BiteCooldown = BiteResetCooldown;
+  204: 		foreach (PikminAI Pikmin in Pikmins)
+  205: 		{
+  206: 			Pikmin.DeathSnapToPos = sandSpiderAI.mouthTarget;
+  207: 			Pikmin.OverrideDelay = 0.8f;
+  208: 			((EnemyAI)Pikmin).HitEnemy(1, (PlayerControllerB)null, false, -1);
+  209: 		}
+  210: 		((EnemyAI)sandSpiderAI).creatureAnimator.SetTrigger("attack");
+  211: 		sandSpiderAI.overrideAnimation = 0.8f;
+  212: 		((EnemyAI)sandSpiderAI).creatureSFX.PlayOneShot(sandSpiderAI.attackSFX);
+  213: 		WalkieTalkie.TransmitOneShotAudio(((EnemyAI)sandSpiderAI).creatureSFX, sandSpiderAI.attackSFX, 1f);
+  214: 	}
+  215: 
+  216: 	protected override void __initializeVariables()
+  217: 	{
+  218: 		base.__initializeVariables();
+  219: 	}
+  220: 
+  221: 	protected override void __initializeRpcs()
+  222: 	{
+  223: 		//IL_000d: Unknown result type (might be due to invalid IL or missing references)
+  224: 		//IL_001c: Expected O, but got Unknown
+  225: 		//IL_0029: Unknown result type (might be due to invalid IL or missing references)
+  226: 		//IL_0038: Expected O, but got Unknown
+  227: 		((NetworkBehaviour)this).__registerRpc(1715452637u, new RpcReceiveHandler(__rpc_handler_1715452637), "BiteNearbyPikminServerRpc");
+  228: 		((NetworkBehaviour)this).__registerRpc(881145350u, new RpcReceiveHandler(__rpc_handler_881145350), "BiteNearbyPikminClientRpc");
+  229: 		base.__initializeRpcs();
+  230: 	}
+  231: 
+  232: 	private static void __rpc_handler_1715452637(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)
+  233: 	{
+  234: 		//IL_0023: Unknown result type (might be due to invalid IL or missing references)
+  235: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  236: 		//IL_0029: Unknown result type (might be due to invalid IL or missing references)
+  237: 		//IL_007c: Unknown result type (might be due to invalid IL or missing references)
+  238: 		//IL_0082: Unknown result type (might be due to invalid IL or missing references)
+  239: 		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
+  240: 		//IL_0055: Invalid comparison between Unknown and I4
+  241: 		//IL_00bb: Unknown result type (might be due to invalid IL or missing references)
+  242: 		//IL_00d5: Unknown result type (might be due to invalid IL or missing references)
+  243: 		//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+  244: 		//IL_00ab: Unknown result type (might be due to invalid IL or missing references)
+  245: 		NetworkManager networkManager = target.NetworkManager;
+  246: 		if (networkManager == null || !networkManager.IsListening)
+  247: 		{
+
+==============================================================================================================
+FILE: LethalMin/StingrayPikminEnemy.cs
+MATCHES: getnearbypikmin
+==============================================================================================================
+--- TYPE DECLARATIONS ---
+    9: public class StingrayPikminEnemy : PikminEnemy
+--- SOURCE lines 1-252 ---
+    1: using System;
+    2: using System.Reflection;
+    3: using System.Runtime.CompilerServices;
+    4: using Unity.Netcode;
+    5: using UnityEngine;
+    6: 
+    7: namespace LethalMin;
+    8: 
+    9: public class StingrayPikminEnemy : PikminEnemy
+   10: {
+   11: 	private StingrayAI stingrayAI = null;
+   12: 
+   13: 	private MethodInfo? createSlimeMethod;
+   14: 
+   15: 	private float heavyItemCheckInterval = 0.5f;
+   16: 
+   17: 	private float slimeSlipCheckInterval = 5f;
+   18: 
+   19: 	private float slimeSlipChance = 0.15f;
+   20: 
+   21: 	private float spitCooldown = 0f;
+   22: 
+   23: 	private float spitCooldownDuration = 8f;
+   24: 
+   25: 	protected override void Start()
+   26: 	{
+   27: 		base.Start();
+   28: 		EnemyAI obj = enemyScript;
+   29: 		stingrayAI = (StingrayAI)(object)(((obj is StingrayAI) ? obj : null) ?? throw new Exception("StingrayPE: enemyScript is not a StingrayAI"));
+   30: 		if ((Object)(object)stingrayAI == (Object)null)
+   31: 		{
+   32: 			((Behaviour)this).enabled = false;
+   33: 		}
+   34: 		createSlimeMethod = typeof(StingrayAI).GetMethod("CreateSlime", BindingFlags.Instance | BindingFlags.NonPublic, null, new Type[1] { typeof(Vector3) }, null);
+   35: 	}
+   36: 
+   37: 	protected override void Update()
+   38: 	{
+   39: 		base.Update();
+   40: 		if (!enemyScript.isEnemyDead && stingrayAI.mainAI)
+   41: 		{
+   42: 			if (spitCooldown > 0f)
+   43: 			{
+   44: 				spitCooldown -= Time.deltaTime;
+   45: 			}
+   46: 			if (heavyItemCheckInterval > 0f)
+   47: 			{
+   48: 				heavyItemCheckInterval -= Time.deltaTime;
+   49: 			}
+   50: 			else
+   51: 			{
+   52: 				heavyItemCheckInterval = 0.5f;
+   53: 				CheckHeavyPikminCarriers();
+   54: 			}
+   55: 			if (slimeSlipCheckInterval > 0f)
+   56: 			{
+   57: 				slimeSlipCheckInterval -= Time.deltaTime;
+   58: 				return;
+   59: 			}
+   60: 			slimeSlipCheckInterval = 3f;
+   61: 			CheckPikminOnSlime();
+   62: 		}
+   63: 	}
+   64: 
+   65: 	private void CheckHeavyPikminCarriers()
+   66: 	{
+   67: 		//IL_0117: Unknown result type (might be due to invalid IL or missing references)
+   68: 		if ((LethalMin.UseConfigsForEnemies.InternalValue && !LethalMin.Stingray_HeavyCarriersCanTriggerSpit.InternalValue) || !((NetworkBehaviour)this).IsOwner || spitCooldown > 0f)
+   69: 		{
+   70: 			return;
+   71: 		}
+   72: 		int num = (LethalMin.UseConfigsForEnemies.InternalValue ? Mathf.Max(0, LethalMin.Stingray_CarryStrengthNeededToTriggerSpit.InternalValue) : 10);
+   73: 		foreach (PikminAI item in GetNearbyPikmin())
+   74: 		{
+   75: 			if (item.IsDeadOrDying || item.IsAirborn || !((Object)(object)item.TargetItem != (Object)null) || item.TargetItem.CarryStrengthNeeded < num)
+   76: 			{
+   77: 				continue;
+   78: 			}
+   79: 			spitCooldown = spitCooldownDuration;
+   80: 			LethalMin.Logger.LogMessage((object)$"StingrayPE: Triggering spit response due to {item.DebugID} carrying item with carry strength {item.TargetItem.CarryStrengthNeeded} (threshold {num})");
+   81: 			TriggerSpitResponseServerRpc(((Component)stingrayAI).transform.position);
+   82: 			break;
+   83: 		}
+   84: 	}
+   85: 
+   86: 	[ServerRpc(RequireOwnership = false)]
+   87: 	public void TriggerSpitResponseServerRpc(Vector3 spitOrigin)
+   88: 	{
+   89: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+   90: 		//IL_002e: Invalid comparison between Unknown and I4
+   91: 		//IL_0099: Unknown result type (might be due to invalid IL or missing references)
+   92: 		//IL_00a3: Invalid comparison between Unknown and I4
+   93: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+   94: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+   95: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+   96: 		//IL_0089: Unknown result type (might be due to invalid IL or missing references)
+   97: 		//IL_00ce: Unknown result type (might be due to invalid IL or missing references)
+   98: 		//IL_00fd: Unknown result type (might be due to invalid IL or missing references)
+   99: 		//IL_00fe: Unknown result type (might be due to invalid IL or missing references)
+  100: 		//IL_0105: Unknown result type (might be due to invalid IL or missing references)
+  101: 		//IL_0106: Unknown result type (might be due to invalid IL or missing references)
+  102: 		//IL_0110: Unknown result type (might be due to invalid IL or missing references)
+  103: 		//IL_0115: Unknown result type (might be due to invalid IL or missing references)
+  104: 		//IL_011a: Unknown result type (might be due to invalid IL or missing references)
+  105: 		//IL_0121: Unknown result type (might be due to invalid IL or missing references)
+  106: 		//IL_0122: Unknown result type (might be due to invalid IL or missing references)
+  107: 		//IL_012c: Unknown result type (might be due to invalid IL or missing references)
+  108: 		//IL_0131: Unknown result type (might be due to invalid IL or missing references)
+  109: 		//IL_0136: Unknown result type (might be due to invalid IL or missing references)
+  110: 		//IL_013d: Unknown result type (might be due to invalid IL or missing references)
+  111: 		//IL_013e: Unknown result type (might be due to invalid IL or missing references)
+  112: 		//IL_0148: Unknown result type (might be due to invalid IL or missing references)
+  113: 		//IL_014d: Unknown result type (might be due to invalid IL or missing references)
+  114: 		//IL_0152: Unknown result type (might be due to invalid IL or missing references)
+  115: 		//IL_0159: Unknown result type (might be due to invalid IL or missing references)
+  116: 		//IL_015a: Unknown result type (might be due to invalid IL or missing references)
+  117: 		//IL_0164: Unknown result type (might be due to invalid IL or missing references)
+  118: 		//IL_0169: Unknown result type (might be due to invalid IL or missing references)
+  119: 		//IL_016e: Unknown result type (might be due to invalid IL or missing references)
+  120: 		//IL_017d: Unknown result type (might be due to invalid IL or missing references)
+  121: 		//IL_0182: Unknown result type (might be due to invalid IL or missing references)
+  122: 		//IL_018b: Unknown result type (might be due to invalid IL or missing references)
+  123: 		//IL_01c7: Unknown result type (might be due to invalid IL or missing references)
+  124: 		//IL_01ad: Unknown result type (might be due to invalid IL or missing references)
+  125: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  126: 		if (networkManager == null || !networkManager.IsListening)
+  127: 		{
+  128: 			return;
+  129: 		}
+  130: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+  131: 		{
+  132: 			ServerRpcParams val2 = default(ServerRpcParams);
+  133: 			FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(2513596840u, val2, (RpcDelivery)0);
+  134: 			((FastBufferWriter)(ref val)).WriteValueSafe(ref spitOrigin);
+  135: 			((NetworkBehaviour)this).__endSendServerRpc(ref val, 2513596840u, val2, (RpcDelivery)0);
+  136: 		}
+  137: 		if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
+  138: 		{
+  139: 			((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  140: 			if (((EnemyAI)stingrayAI).currentBehaviourStateIndex == 1)
+  141: 			{
+  142: 				((EnemyAI)stingrayAI).SwitchToBehaviourState(0);
+  143: 			}
+  144: 			Vector3[] array = (Vector3[])(object)new Vector3[5]
+  145: 			{
+  146: 				spitOrigin,
+  147: 				spitOrigin + Vector3.right * 1.75f,
+  148: 				spitOrigin + Vector3.right * -1.75f,
+  149: 				spitOrigin + Vector3.forward * 1.75f,
+  150: 				spitOrigin + Vector3.forward * -1.75f
+  151: 			};
+  152: 			Vector3[] array2 = array;
+  153: 			foreach (Vector3 val3 in array2)
+  154: 			{
+  155: 				stingrayAI.CreateSlimeRpc(val3);
+  156: 				createSlimeMethod?.Invoke(stingrayAI, new object[1] { val3 });
+  157: 			}
+  158: 			TriggerSpitResponseClientRpc(spitOrigin);
+  159: 		}
+  160: 	}
+  161: 
+  162: 	[ClientRpc]
+  163: 	public void TriggerSpitResponseClientRpc(Vector3 spitOrigin)
+  164: 	{
+  165: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+  166: 		//IL_002e: Invalid comparison between Unknown and I4
+  167: 		//IL_0099: Unknown result type (might be due to invalid IL or missing references)
+  168: 		//IL_00a3: Invalid comparison between Unknown and I4
+  169: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+  170: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+  171: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+  172: 		//IL_0089: Unknown result type (might be due to invalid IL or missing references)
+  173: 		//IL_00ce: Unknown result type (might be due to invalid IL or missing references)
+  174: 		//IL_0124: Unknown result type (might be due to invalid IL or missing references)
+  175: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+  176: 		if (networkManager != null && networkManager.IsListening)
+  177: 		{
+  178: 			if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsServer || networkManager.IsHost))
+  179: 			{
+  180: 				ClientRpcParams val2 = default(ClientRpcParams);
+  181: 				FastBufferWriter val = ((NetworkBehaviour)this).__beginSendClientRpc(1345283010u, val2, (RpcDelivery)0);
+  182: 				((FastBufferWriter)(ref val)).WriteValueSafe(ref spitOrigin);
+  183: 				((NetworkBehaviour)this).__endSendClientRpc(ref val, 1345283010u, val2, (RpcDelivery)0);
+  184: 			}
+  185: 			if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsClient || networkManager.IsHost))
+  186: 			{
+  187: 				((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+  188: 				((EnemyAI)stingrayAI).creatureSFX.PlayOneShot(stingrayAI.spitSFX);
+  189: 				WalkieTalkie.TransmitOneShotAudio(((EnemyAI)stingrayAI).creatureSFX, stingrayAI.spitSFX, 1f);
+  190: 				stingrayAI.spitParticle.Play(true);
+  191: 				KnockbackNearbyPikminFromSpit(spitOrigin);
+  192: 			}
+  193: 		}
+  194: 	}
+  195: 
+  196: 	private void KnockbackNearbyPikminFromSpit(Vector3 spitOrigin)
+  197: 	{
+  198: 		//IL_004e: Unknown result type (might be due to invalid IL or missing references)
+  199: 		//IL_0055: Unknown result type (might be due to invalid IL or missing references)
+  200: 		//IL_0071: Unknown result type (might be due to invalid IL or missing references)
+  201: 		//IL_0076: Unknown result type (might be due to invalid IL or missing references)
+  202: 		//IL_0077: Unknown result type (might be due to invalid IL or missing references)
+  203: 		//IL_007c: Unknown result type (might be due to invalid IL or missing references)
+  204: 		//IL_0080: Unknown result type (might be due to invalid IL or missing references)
+  205: 		//IL_0085: Unknown result type (might be due to invalid IL or missing references)
+  206: 		//IL_0095: Unknown result type (might be due to invalid IL or missing references)
+  207: 		//IL_009a: Unknown result type (might be due to invalid IL or missing references)
+  208: 		//IL_00b1: Unknown result type (might be due to invalid IL or missing references)
+  209: 		float spitRadius = stingrayAI.spitRadius;
+  210: 		foreach (PikminAI pikminAI in PikminManager.instance.PikminAIs)
+  211: 		{
+  212: 			if (!((Object)(object)pikminAI == (Object)null) && !pikminAI.IsDeadOrDying && !pikminAI.IsAirborn)
+  213: 			{
+  214: 				float num = Vector3.Distance(spitOrigin, ((Component)pikminAI).transform.position);
+  215: 				if (num < spitRadius)
+  216: 				{
+  217: 					Vector3 val = ((Component)pikminAI).transform.position - spitOrigin;
+  218: 					Vector3 normalized = ((Vector3)(ref val)).normalized;
+  219: 					normalized.y = 2f;
+  220: 					normalized = ((Vector3)(ref normalized)).normalized;
+  221: 					float force = Mathf.Lerp(6f, 2f, num / spitRadius);
+  222: 					pikminAI.ApplyKnockBack(normalized, force);
+  223: 				}
+  224: 			}
+  225: 		}
+  226: 	}
+  227: 
+  228: 	private void CheckPikminOnSlime()
+  229: 	{
+  230: 		//IL_0131: Unknown result type (might be due to invalid IL or missing references)
+  231: 		//IL_013d: Unknown result type (might be due to invalid IL or missing references)
+  232: 		//IL_0158: Unknown result type (might be due to invalid IL or missing references)
+  233: 		//IL_0169: Unknown result type (might be due to invalid IL or missing references)
+  234: 		//IL_01de: Unknown result type (might be due to invalid IL or missing references)
+  235: 		//IL_01e3: Unknown result type (might be due to invalid IL or missing references)
+  236: 		//IL_01e7: Unknown result type (might be due to invalid IL or missing references)
+  237: 		//IL_01ec: Unknown result type (might be due to invalid IL or missing references)
+  238: 		//IL_01ef: Unknown result type (might be due to invalid IL or missing references)
+  239: 		if ((LethalMin.UseConfigsForEnemies.InternalValue && !LethalMin.Stingray_PikminCanSlipOnSlime.InternalValue) || StartOfRound.Instance.slimeDecals == null || StartOfRound.Instance.slimeDecals.Count == 0)
+  240: 		{
+  241: 			return;
+  242: 		}
+  243: 		foreach (PikminAI pikminAI in PikminManager.instance.PikminAIs)
+  244: 		{
+  245: 			if ((Object)(object)pikminAI == (Object)null || !((NetworkBehaviour)pikminAI).IsOwner || pikminAI.IsDeadOrDying || pikminAI.IsAirborn || pikminAI.Laying || pikminAI.CurrentIntention == Pintent.Knockedback || pikminAI.CurrentIntention == Pintent.LatchedOn || (Object)(object)pikminAI.CurrentLatchTrigger != (Object)null)
+  246: 			{
+  247: 				continue;
+  248: 			}
+  249: 			bool flag = false;
+  250: 			int num = Mathf.Min(30, StartOfRound.Instance.slimeDecals.Count);
+  251: 			for (int i = 0; i < num; i++)
+  252: 			{
+
+==============================================================================================================
 FILE: LethalMin.Patches/EnemyAIPatch.cs
 MATCHES: mouthdog
 ==============================================================================================================
 --- TYPE DECLARATIONS ---
     9: public class EnemyAIPatch
---- SOURCE lines 10-182 ---
+--- SOURCE lines 1-182 ---
+    1: using System;
+    2: using System.Collections.Generic;
+    3: using HarmonyLib;
+    4: using UnityEngine;
+    5: 
+    6: namespace LethalMin.Patches;
+    7: 
+    8: [HarmonyPatch(typeof(EnemyAI))]
+    9: public class EnemyAIPatch
    10: {
    11: 	public static HashSet<EnemyType> EnemiesModified = new HashSet<EnemyType>();
    12: 
