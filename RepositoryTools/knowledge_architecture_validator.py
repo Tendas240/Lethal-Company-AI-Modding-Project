@@ -267,30 +267,32 @@ def validate_runtime_evidence_provenance() -> None:
             fail(f"artifact evidence {build_id} runtime_log_sha256 mismatch: {declared_sha!r} != {actual_sha!r}")
 
     # Preserve and validate the original rejected-state provenance independently of
-    # the later explicit acceptance. The erratum belongs to historical evidence.
+    # the later explicit acceptance. The current artifact index intentionally points
+    # S1.42AC at the fresh acceptance run, so resolve rejection-era bytes directly.
     status = load_json("Current/Projektstatus_S1.42AC_REJECTED.json")
-    accepted = status.get("accepted_baseline", {})
+    historical_accepted = status.get("accepted_baseline", {})
     rejected = status.get("rejected_candidate", {})
 
     ab_sha = runtime_by_build.get("S1.42AB")
-    if ab_sha and accepted.get("raw_log_sha256") != ab_sha:
+    if ab_sha and historical_accepted.get("raw_log_sha256") != ab_sha:
         fail("S1.42AB historical project-status raw_log_sha256 disagrees with authoritative RuntimeEvidence INDEX")
 
-    ac_sha = runtime_by_build.get("S1.42AC")
-    if not ac_sha:
-        fail("S1.42AC historical authoritative runtime-log SHA could not be resolved from artifact evidence")
+    old_index = "RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json"
+    require_path(old_index, "S1.42AC historical rejection runtime index")
+    old_ac_sha = runtime_log_sha256_from_index(old_index, "S1.42AC historical rejection")
+    if not old_ac_sha:
+        fail("S1.42AC historical authoritative runtime-log SHA could not be resolved")
         return
-    if rejected.get("raw_log_sha256") != ac_sha:
-        fail("S1.42AC historical rejected project-status raw_log_sha256 disagrees with authoritative RuntimeEvidence INDEX")
+    if rejected.get("raw_log_sha256") != old_ac_sha:
+        fail("S1.42AC historical rejected project-status raw_log_sha256 disagrees with rejection-era RuntimeEvidence INDEX")
 
     provenance = rejected.get("raw_log_sha256_provenance", {})
-    expected_index = "RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json"
-    if provenance.get("authority") != expected_index:
+    if provenance.get("authority") != old_index:
         fail("S1.42AC raw-log provenance authority does not point to the canonical historical RuntimeEvidence INDEX")
-    if provenance.get("authoritative_sha256") != ac_sha:
-        fail("S1.42AC provenance authoritative_sha256 disagrees with RuntimeEvidence INDEX")
+    if provenance.get("authoritative_sha256") != old_ac_sha:
+        fail("S1.42AC historical provenance authoritative_sha256 disagrees with RuntimeEvidence INDEX")
     superseded = provenance.get("superseded_recorded_sha256")
-    if not superseded or superseded == ac_sha:
+    if not superseded or superseded == old_ac_sha:
         fail("S1.42AC provenance must retain a distinct superseded historical SHA-256 value")
 
     rejection_path = ROOT / "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md"
@@ -299,14 +301,14 @@ def validate_runtime_evidence_provenance() -> None:
         return
     rejection_text = rejection_path.read_text(encoding="utf-8", errors="replace")
     lowered = rejection_text.lower()
-    if ac_sha not in rejection_text:
-        fail("S1.42AC rejection record does not contain authoritative raw-log SHA-256")
+    if old_ac_sha not in rejection_text:
+        fail("S1.42AC rejection record does not contain authoritative rejection-era raw-log SHA-256")
     if str(superseded) not in rejection_text:
         fail("S1.42AC rejection record does not preserve the superseded historical SHA-256")
     if "provenance erratum" not in lowered or "supersed" not in lowered:
         fail("S1.42AC rejection record lacks an explicit provenance erratum/supersession marker")
 
-    # The new accepted status must independently point to the fresh confirmation run.
+    # The new accepted status and current artifact index must point to the fresh run.
     accepted_status = load_json("Current/Projektstatus_S1.42AC_ACCEPTED.json")
     accepted_runtime = accepted_status.get("runtime_acceptance", {})
     fresh_index = "RuntimeEvidence/S1.42AC/20260904T235720Z/INDEX.json"
@@ -314,6 +316,8 @@ def validate_runtime_evidence_provenance() -> None:
     fresh_sha = runtime_log_sha256_from_index(fresh_index, "S1.42AC corrected acceptance")
     if fresh_sha and accepted_runtime.get("raw_log_sha256") != fresh_sha:
         fail("S1.42AC accepted project-status raw_log_sha256 disagrees with fresh RuntimeEvidence INDEX")
+    if fresh_sha and runtime_by_build.get("S1.42AC") != fresh_sha:
+        fail("Current artifact evidence index does not point S1.42AC at the fresh accepted runtime bytes")
     if accepted_runtime.get("static_equal_eventtype_probability_gate") is not True:
         fail("S1.42AC accepted project status does not assert the corrected static EventType probability gate")
 
