@@ -82,6 +82,8 @@ jobs:
               "biting ",
               "bitepikmin",
               "grabpikmin",
+              "getnearbypikmin",
+              "class pikminenemy",
               "bite cooldown",
               "bite limit",
           ]
@@ -113,8 +115,8 @@ jobs:
 
               windows = []
               for i in hit_lines:
-                  a = max(0, i - 80)
-                  b = min(len(src), i + 140)
+                  a = max(0, i - 100)
+                  b = min(len(src), i + 180)
                   if windows and a <= windows[-1][1] + 10:
                       windows[-1] = (windows[-1][0], max(windows[-1][1], b))
                   else:
