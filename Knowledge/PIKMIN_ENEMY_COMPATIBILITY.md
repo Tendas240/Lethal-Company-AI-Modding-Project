@@ -3,10 +3,10 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** accepted interaction ownership and permanent anti-regression rules  
 **Canonical-For:** `pikmin_enemy_compatibility`  
-**Evidence:** `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`, `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`, `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`  
+**Evidence:** `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`, `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`, `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/`  
 **Code:** `Patches/S139CompatibilityFixes/Plugin.cs`  
 **Related:** `Knowledge/ENEMY_SPAWN_BASELINE.md`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-09-06
 
 ## Ownership principle
 
@@ -39,6 +39,21 @@ Do not revert to complete two-way noninteraction. Pikmin counterattack remains i
 ## Puffer / Spore Lizard
 
 Puffer -> Pikmin smoke/effect interaction is protected by removing the LethalMin-injected Pikmin effect-trigger components from Puffer smoke. This is targeted protection, not a broad enemy disable.
+
+## Mouth Dog / Eyeless Dog — current open gap
+
+The accepted S1.42AF runtime run exposed a separate inherited Mouth Dog -> Pikmin compatibility gap. LethalMin logged `Biting 2 Pikmin`, both White Pikmin attaching to `EnemyAttackMouth`, and 2.5-second death timers. Pikmin invincibility prevented the final enemy-attack kill, but the grab/death-timer mutation had already happened and the two affected Pikmin subsequently generated 707 `Work state with no task assigned!` warnings.
+
+The binding target is asymmetric:
+
+- Mouth Dog / Eyeless Dog -> Pikmin targeting/bite/grab/kill: **must be blocked before Pikmin grab/death-timer state mutation**;
+- Pikmin -> Mouth Dog attack: preserve native LethalMin behavior unless exact source evidence proves another requirement;
+- relying on `Invinceable Pikmin = true` after the grab is insufficient;
+- do not introduce delayed state repair or broad component disable without proving that no narrower prevention boundary exists.
+
+`Patches/S139CompatibilityFixes/Plugin.cs` already patches exact declared `LethalMin.PikminAI.GrabPikmin(Transform,float,int)` with a `Priority.First` prevention-only prefix for proven Crawler/Thumper and Baboon Hawk snap-position paths. It currently does not identify MouthDog/EyelessDog. That makes the existing prevention point a candidate for investigation, **not yet an authorized fix**.
+
+Next work must first inspect the exact LethalMin MouthDog/EyelessDog owner, targeting/bite method, inheritance, native configuration surface and whether the harmful path reaches `GrabPikmin` before all mutation. See `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`. No successor is armed until that contract is proved.
 
 ## CodeRebirth utility kills
 

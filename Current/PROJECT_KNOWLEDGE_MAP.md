@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`  
 **Current State:** `Current/00_CURRENT_STATE.md`  
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
-**Last-Validated:** 2026-09-05
+**Last-Validated:** 2026-09-06
 
 Before performing project work, every ChatGPT chat must read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Use this map for the semantic content route inside each execution segment.
 
@@ -17,14 +17,14 @@ Use this map before repository search. Open only the topic that matches the user
 | User question / topic | Topic ID | Canonical source |
 |---|---|---|
 | How must ChatGPT divide and execute project work? When must it stop and wait for `weiter`? | `chatgpt_segmented_execution` | `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` |
-| What is the accepted build? What is active? What must I test next? | `accepted_baseline`, `active_candidate_and_next_test` | `Knowledge/CURRENT_LIFECYCLE.md` |
+| What is the accepted build? What is active? What must I test or analyze next? | `accepted_baseline`, `active_candidate_and_next_test` | `Knowledge/CURRENT_LIFECYCLE.md` |
 | How do I hand the project over to a new ChatGPT chat? What should happen when the user signals a handover? | `chat_handover` | `Current/HANDOVER_PREPARATION_PROMPT.md` |
 | How are profiles built in GitHub? Where is the runtime uploader/ingest? | `build_pipeline`, `runtime_upload_and_ingest` | `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` |
 | How do I replace/import the active Gale profile? | `gale_import` | `Knowledge/GALE_PROFILE_WORKFLOW.md` |
 | Which BCMER version/settings are allowed? Are EventTypes equally likely? | `bcmer` | `Knowledge/BCMER.md` |
 | How do interior weights work? LLL? Shatteredrooms? CullFactory? Black Mesa registration? | `interiors_and_lll` | `Knowledge/INTERIORS_AND_LLL.md` |
 | What is the normal enemy spawn baseline / ownership architecture? | `enemy_spawn_baseline` | `Knowledge/ENEMY_SPAWN_BASELINE.md` |
-| How should Thumper/Puffer/Baboon Hawk interact with Pikmin? | `pikmin_enemy_compatibility` | `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md` |
+| How should Thumper/Puffer/Baboon Hawk/Mouth Dog/Eyeless Dog interact with Pikmin? | `pikmin_enemy_compatibility` | `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md` |
 | What are the accepted Jetpack values and owner? | `jetpack` | `Knowledge/JETPACK.md` |
 | How is CodeRebirth/DawnLib configured/tuned? | `coderebirth` | `Knowledge/CODEREBIRTH.md` |
 | What are Microwave/Snail values? What is still deferred? | `functional_microwave`, `immortal_snail` | `Knowledge/ITEM_TUNING.md` |
@@ -35,6 +35,8 @@ Use this map before repository search. Open only the topic that matches the user
 | What is happening with the repository overhaul? | `repository_overhaul` | `Knowledge/REPOSITORY_OVERHAUL.md` |
 | Where is the untouched pre-overhaul recovery point? | `pre_overhaul_backup_and_recovery` | `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md` |
 | Which build introduced/rejected/fixed something? What came before build X? | `build_lineage` | `Current/BUILD_LINEAGE.md` |
+
+The current accepted gameplay baseline is S1.42AF. The immediate technical work is not a new build or runtime test: it is source/contract analysis of the confirmed Mouth Dog / Eyeless Dog -> Pikmin grab/bite path documented in `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`.
 
 ## Authority rule
 

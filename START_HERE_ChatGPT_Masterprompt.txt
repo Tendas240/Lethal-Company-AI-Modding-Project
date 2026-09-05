@@ -24,28 +24,29 @@ HANDOVER SIGNAL
 When the user explicitly requests transfer to a new ChatGPT chat, execute Current/HANDOVER_PREPARATION_PROMPT.md under the same segmented execution policy. Verify the then-current main/CI/controllers and generate a fresh new-chat start prompt from repository authority instead of reusing stale conversation memory.
 
 ACCEPTED BASELINE
-- S1.42AC — BCMER EventType Equal Distribution
+- S1.42AF — Path-Length-Safe Microwave Packaging
 - status: ACCEPTED FULL NORMAL STACK
-- profile: Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z
-- SHA-256: 0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9
-- acceptance: Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md
+- profile: Profiles/LC V1 S1.42AF Microwave Fix.r2z
+- SHA-256: 6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0
+- acceptance: Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md
 
 LATEST BUILT ARTIFACT
 - S1.42AF — Path-Length-Safe Microwave Packaging
-- status: BUILD PASS RUNTIME VALIDATION OPEN NOT ACCEPTED
+- status: RUNTIME ACCEPTED
 - SHA-256: 6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0
+- acceptance: Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md
 - candidate record: Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md
 
 CURRENT EXECUTION STATE
-- active candidate: S1.42AF
-- runtime test outstanding: YES
+- active candidate: NONE
+- runtime test outstanding: NO
 - successor armed: NO
 - BuildSpecs/current.json enabled: false
-- build controller id: IDLE_AFTER_S1.42AF_BUILD_AWAITING_RUNTIME_VALIDATION
+- build controller id: IDLE_AFTER_S1.42AF_ACCEPTANCE_MOUTHDOG_ANALYSIS
 - RuntimeInbox/ACTIVE_BUILD.txt: S1.42AF
 
 EXACT NEXT ACTION
-Import S1.42AF with RuntimeTools/ReplaceActiveGaleProfileV24.ps1. Proceed only after v2.4 positively verifies non-empty export.r2x plus exactly one non-empty base SoundAPI DLL and one non-empty LethalCompany binding DLL. Confirm the shortened nested binding path is below the legacy 260-character boundary, then start Lethal Company, require preloader/main-menu success, play one normal run far enough for ordinary moon/interior generation, and upload the complete fresh S1.42AF LogOutput.log with the exact uploader in Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md. Evaluate the preserved S1.42AE plugin markers, dependency versions, PrioritiseMoons=true MoonCurves=18 InteriorCurves=18, both keysets, the 18 Moon curves x0.5 / 18 Interior validation-only marker, and regression/fatal markers before accepting or rejecting S1.42AF.
+Analyze the confirmed MouthDog/EyelessDog -> Pikmin targeting/bite/grab path from Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md under Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md and Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md. Inspect the exact LethalMin owner/method/inheritance/config contract and Patches/S139CompatibilityFixes/Plugin.cs; determine whether native configuration can prevent targeting or whether the existing exact PikminAI.GrabPikmin(Transform,float,int) prevention-only guard can safely cover MouthDog/EyelessDog. Preserve Pikmin -> Mouth Dog native behavior. Do not arm or build a successor until the exact contract is proved.
 
 RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.

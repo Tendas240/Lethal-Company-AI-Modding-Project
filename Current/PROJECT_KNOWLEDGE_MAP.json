@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "date": "2026-09-05",
+  "date": "2026-09-06",
   "status": "CURRENT_CANONICAL_ROUTER",
   "human_map": "Current/PROJECT_KNOWLEDGE_MAP.md",
   "bootstrap": ["README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/00_CURRENT_STATE.md", "Current/PROJECT_KNOWLEDGE_MAP.md"],
@@ -14,30 +14,30 @@
     {
       "id": "accepted_baseline",
       "title": "Accepted baseline",
-      "aliases": ["aktueller akzeptierter Build", "accepted build", "current baseline", "welcher Build ist aktuell", "S1.42AC"],
+      "aliases": ["aktueller akzeptierter Build", "accepted build", "current baseline", "welcher Build ist aktuell", "S1.42AF", "S1.42AC predecessor"],
       "canonical": "Knowledge/CURRENT_LIFECYCLE.md",
-      "machine_state": ["Current/Projektstatus_S1.42AC_ACCEPTED.json", "Current/CURRENT_STATE.json", "BuildSpecs/current.json", "RuntimeInbox/ACTIVE_BUILD.txt"],
-      "evidence": ["Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md", "RuntimeEvidence/S1.42AC/20260904T235720Z/"],
-      "config_paths": ["ProfileSources/S1.42AC/"],
+      "machine_state": ["Current/Projektstatus_S1.42AF_ACCEPTED.json", "Current/CURRENT_STATE.json", "BuildSpecs/current.json", "RuntimeInbox/ACTIVE_BUILD.txt"],
+      "evidence": ["Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md", "RuntimeEvidence/S1.42AF/20260905T223738Z/"],
+      "config_paths": ["ProfileSources/S1.42AF/"],
       "code_paths": [],
-      "historical_sources": ["Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md", "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md"],
+      "historical_sources": ["Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md", "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md"],
       "related_topics": ["active_candidate_and_next_test", "build_lineage"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "active_candidate_and_next_test",
       "title": "Active candidate and exact next test/action",
-      "aliases": ["was muss ich testen", "next test", "nächster Build", "active candidate", "was ist als nächstes dran", "log uploader"],
+      "aliases": ["was muss ich testen", "next test", "nächster Build", "active candidate", "was ist als nächstes dran", "log uploader", "Mouth Dog analysis", "Eyeless Dog Pikmin"],
       "canonical": "Knowledge/CURRENT_LIFECYCLE.md",
       "machine_state": ["Current/CURRENT_STATE.json", "BuildSpecs/current.json", "RuntimeInbox/ACTIVE_BUILD.txt"],
-      "evidence": ["Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md"],
-      "config_paths": [],
-      "code_paths": [],
-      "historical_sources": ["Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md"],
-      "related_topics": ["accepted_baseline", "bcmer", "roadmap_and_deferred_scopes"],
+      "evidence": ["Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md", "Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md"],
+      "config_paths": ["ProfileSources/S1.42AF/BepInEx/config/NoteBoxz.LethalMin.cfg"],
+      "code_paths": ["Patches/S139CompatibilityFixes/Plugin.cs"],
+      "historical_sources": ["Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md"],
+      "related_topics": ["accepted_baseline", "pikmin_enemy_compatibility", "roadmap_and_deferred_scopes"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "chat_handover",
@@ -51,7 +51,7 @@
       "historical_sources": ["Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md"],
       "related_topics": ["accepted_baseline", "active_candidate_and_next_test", "build_pipeline", "runtime_upload_and_ingest"],
       "authority": "CURRENT_WORKFLOW",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "build_pipeline",
@@ -65,7 +65,7 @@
       "historical_sources": ["Current/03_PROJECT_CHRONOLOGY.md"],
       "related_topics": ["gale_import", "runtime_upload_and_ingest", "active_candidate_and_next_test"],
       "authority": "CURRENT_POLICY",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "gale_import",
@@ -79,7 +79,7 @@
       "historical_sources": ["Current/92_GALE_ACTIVE_PROFILE_REPLACEMENT_HELPER_CANDIDATE.md"],
       "related_topics": ["build_pipeline", "runtime_upload_and_ingest"],
       "authority": "CURRENT_WORKFLOW",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "runtime_upload_and_ingest",
@@ -93,35 +93,35 @@
       "historical_sources": [],
       "related_topics": ["build_pipeline", "gale_import", "monitor_only_errors"],
       "authority": "CURRENT_POLICY",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "bcmer",
       "title": "BCMER 1.71.0 events ownership EventType weighting",
       "aliases": ["BCMER", "Brutal Company Minus Extra Reborn", "BrutalCompanyMinusExtraReborn", "events gleich wahrscheinlich", "EventType", "12.5%", "Rain events"],
       "canonical": "Knowledge/BCMER.md",
-      "machine_state": ["Current/Projektstatus_S1.42AC_ACCEPTED.json", "Current/CURRENT_STATE.json"],
+      "machine_state": ["Current/CURRENT_STATE.json"],
       "evidence": ["Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md", "Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md", "RuntimeEvidence/S1.42AC/20260904T235720Z/"],
-      "config_paths": ["ProfileSources/S1.42AC/BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg", "ProfileSources/S1.42AC/BepInEx/config/BrutalCompanyMinusExtraReborn/CoreProperties.cfg", "ProfileSources/S1.42AC/export.r2x"],
+      "config_paths": ["ProfileSources/S1.42AF/BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg", "ProfileSources/S1.42AF/BepInEx/config/BrutalCompanyMinusExtraReborn/CoreProperties.cfg", "ProfileSources/S1.42AF/export.r2x"],
       "code_paths": [],
       "historical_sources": ["Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md", "RuntimeEvidence/S1.42AC/20260904T181854Z/", "Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md"],
       "related_topics": ["active_candidate_and_next_test", "enemy_spawn_baseline", "roadmap_and_deferred_scopes"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "interiors_and_lll",
       "title": "Interiors LLL equal effective weighting compatibility restrictions",
       "aliases": ["Interior Gewichte", "interiors gleich wahrscheinlich", "LLL", "LethalLevelLoader", "Shatteredrooms", "Junkrooms", "CullFactory", "Black Mesa registration"],
       "canonical": "Knowledge/INTERIORS_AND_LLL.md",
-      "machine_state": ["Current/Projektstatus_S1.42AC_ACCEPTED.json"],
+      "machine_state": ["Current/CURRENT_STATE.json"],
       "evidence": ["Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md", "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md"],
-      "config_paths": ["ProfileSources/S1.42AC/"],
+      "config_paths": ["ProfileSources/S1.42AF/"],
       "code_paths": [],
       "historical_sources": ["Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md"],
       "related_topics": ["black_mesa_pikmin_routing", "roadmap_and_deferred_scopes"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "enemy_spawn_baseline",
@@ -135,21 +135,21 @@
       "historical_sources": ["Current/02_TECHNICAL_BASELINE.md", "Current/03_PROJECT_CHRONOLOGY.md"],
       "related_topics": ["pikmin_enemy_compatibility", "bcmer"],
       "authority": "CURRENT_RESTORE_BASELINE",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "pikmin_enemy_compatibility",
-      "title": "Pikmin interactions Thumper Puffer Baboon Hawk",
-      "aliases": ["Pikmin Thumper", "Pikmin Puffer", "Baboon Hawk", "BaboonBirdPikminEnemy", "Leader is null", "GrabPikmin", "Bite Limit"],
+      "title": "Pikmin interactions Thumper Puffer Baboon Hawk Mouth Dog Eyeless Dog",
+      "aliases": ["Pikmin Thumper", "Pikmin Puffer", "Baboon Hawk", "BaboonBirdPikminEnemy", "Mouth Dog", "MouthDog", "Eyeless Dog", "EyelessDog", "EnemyAttackMouth", "Biting Pikmin", "Leader is null", "GrabPikmin", "Bite Limit"],
       "canonical": "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md",
-      "machine_state": [],
-      "evidence": ["Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md", "Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md"],
-      "config_paths": ["ProfileSources/S1.42AC/BepInEx/config/NoteBoxz.LethalMin.cfg"],
+      "machine_state": ["Current/CURRENT_STATE.json"],
+      "evidence": ["Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md", "Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md", "Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md", "RuntimeEvidence/S1.42AF/20260905T223738Z/"],
+      "config_paths": ["ProfileSources/S1.42AF/BepInEx/config/NoteBoxz.LethalMin.cfg"],
       "code_paths": ["Patches/S139CompatibilityFixes/Plugin.cs"],
       "historical_sources": ["Current/05_FAILED_AND_OBSOLETE_APPROACHES.md", "Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt"],
-      "related_topics": ["enemy_spawn_baseline", "patch_safety_policy"],
+      "related_topics": ["enemy_spawn_baseline", "patch_safety_policy", "active_candidate_and_next_test"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "jetpack",
@@ -158,40 +158,40 @@
       "canonical": "Knowledge/JETPACK.md",
       "machine_state": [],
       "evidence": ["Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md", "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md"],
-      "config_paths": ["ProfileSources/S1.42AC/"],
+      "config_paths": ["ProfileSources/S1.42AF/"],
       "code_paths": [],
       "historical_sources": ["Current/05_FAILED_AND_OBSOLETE_APPROACHES.md"],
       "related_topics": ["patch_safety_policy"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "coderebirth",
       "title": "CodeRebirth DawnLib spawn aerial-defense tuning",
       "aliases": ["CodeRebirth", "DawnLib", "Currency", "Coin", "Wallet", "Flash Turret", "ACU", "G.R.E.G.", "Autonomous Crane"],
       "canonical": "Knowledge/CODEREBIRTH.md",
-      "machine_state": [],
-      "evidence": ["Current/03_PROJECT_CHRONOLOGY.md", "Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md"],
-      "config_paths": ["ProfileSources/S1.42AC/BepInEx/config/CodeRebirth.cfg", "ProfileSources/S1.42AC/"],
-      "code_paths": ["Patches/S139CompatibilityFixes/Plugin.cs"],
-      "historical_sources": ["Current/05_FAILED_AND_OBSOLETE_APPROACHES.md"],
+      "machine_state": ["Current/CURRENT_STATE.json"],
+      "evidence": ["Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md", "Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md"],
+      "config_paths": ["ProfileSources/S1.42AF/BepInEx/config/CodeRebirth.cfg", "ProfileSources/S1.42AF/"],
+      "code_paths": ["Patches/S139CompatibilityFixes/Plugin.cs", "Patches/S142AECodeRebirthMicrowaveSpawnTuning/"],
+      "historical_sources": ["Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md", "Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md"],
       "related_topics": ["functional_microwave", "pikmin_enemy_compatibility"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "functional_microwave",
       "title": "Functional Microwave tuning",
-      "aliases": ["Microwave", "Mikrowelle", "Functional Microwave", "Microwave volume", "Microwave rarity"],
+      "aliases": ["Microwave", "Mikrowelle", "Functional Microwave", "Microwave volume", "Microwave rarity", "Microwave 0.5", "Microwave half frequency"],
       "canonical": "Knowledge/ITEM_TUNING.md",
-      "machine_state": [],
-      "evidence": ["Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md"],
-      "config_paths": ["ProfileSources/S1.42AC/"],
-      "code_paths": [],
-      "historical_sources": [],
+      "machine_state": ["Current/CURRENT_STATE.json", "Current/Projektstatus_S1.42AF_ACCEPTED.json"],
+      "evidence": ["Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md", "Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md", "RuntimeEvidence/S1.42AF/20260905T223738Z/"],
+      "config_paths": ["ProfileSources/S1.42AF/"],
+      "code_paths": ["Patches/S142AECodeRebirthMicrowaveSpawnTuning/"],
+      "historical_sources": ["Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md", "Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md"],
       "related_topics": ["roadmap_and_deferred_scopes", "coderebirth"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "immortal_snail",
@@ -199,13 +199,13 @@
       "aliases": ["Immortal Snail", "snail rarity", "Max Snails", "Snail"],
       "canonical": "Knowledge/ITEM_TUNING.md",
       "machine_state": [],
-      "evidence": ["Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md"],
-      "config_paths": ["ProfileSources/S1.42AC/"],
+      "evidence": ["Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md", "Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md"],
+      "config_paths": ["ProfileSources/S1.42AF/"],
       "code_paths": [],
       "historical_sources": [],
       "related_topics": ["roadmap_and_deferred_scopes"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "monitor_only_errors",
@@ -213,13 +213,13 @@
       "aliases": ["monitor-only", "monitor only", "known errors", "errors", "warnings", "Fehler"],
       "canonical": "Knowledge/MONITOR_ONLY_ERRORS.md",
       "machine_state": [],
-      "evidence": ["RuntimeEvidence/S1.42AC/20260904T235720Z/", "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md"],
+      "evidence": ["RuntimeEvidence/S1.42AF/20260905T223738Z/", "Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md"],
       "config_paths": [],
       "code_paths": [],
-      "historical_sources": ["RuntimeEvidence/S1.42AB/20260904T174010Z/", "RuntimeEvidence/S1.42Z/20260904T135820Z/"],
+      "historical_sources": ["RuntimeEvidence/S1.42AC/20260904T235720Z/", "RuntimeEvidence/S1.42AB/20260904T174010Z/", "RuntimeEvidence/S1.42Z/20260904T135820Z/"],
       "related_topics": ["runtime_upload_and_ingest"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "black_mesa_pikmin_routing",
@@ -228,12 +228,12 @@
       "canonical": "Knowledge/BLACK_MESA_PIKMIN_ROUTING.md",
       "machine_state": [],
       "evidence": ["Current/03_PROJECT_CHRONOLOGY.md"],
-      "config_paths": ["ProfileSources/S1.42AC/"],
+      "config_paths": ["ProfileSources/S1.42AF/"],
       "code_paths": [],
       "historical_sources": [],
       "related_topics": ["interiors_and_lll", "roadmap_and_deferred_scopes"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "roadmap_and_deferred_scopes",
@@ -241,13 +241,13 @@
       "aliases": ["Roadmap", "später geplant", "deferred scopes", "future work", "was steht auf der Roadmap"],
       "canonical": "Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md",
       "machine_state": ["Current/CURRENT_STATE.json"],
-      "evidence": ["Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md", "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md"],
+      "evidence": ["Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md", "Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md", "Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md"],
       "config_paths": [],
       "code_paths": [],
       "historical_sources": ["Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md"],
-      "related_topics": ["active_candidate_and_next_test", "bcmer", "interiors_and_lll"],
+      "related_topics": ["active_candidate_and_next_test", "pikmin_enemy_compatibility", "bcmer", "interiors_and_lll"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "patch_safety_policy",
@@ -255,13 +255,13 @@
       "aliases": ["Patch Safety Review", "Harmony patch", "patch safety", "runtime patch"],
       "canonical": "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md",
       "machine_state": [],
-      "evidence": ["Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md"],
+      "evidence": ["Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md", "Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md"],
       "config_paths": [],
       "code_paths": ["Patches/S139CompatibilityFixes/Plugin.cs"],
       "historical_sources": ["Current/05_FAILED_AND_OBSOLETE_APPROACHES.md"],
       "related_topics": ["pikmin_enemy_compatibility", "jetpack"],
       "authority": "CURRENT_POLICY",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "repository_overhaul",
@@ -275,7 +275,7 @@
       "historical_sources": ["OVERHAUL_START_HERE_ChatGPT.txt", "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md", "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md"],
       "related_topics": ["pre_overhaul_backup_and_recovery", "patch_safety_policy"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "pre_overhaul_backup_and_recovery",
@@ -289,7 +289,7 @@
       "historical_sources": [],
       "related_topics": ["repository_overhaul"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     },
     {
       "id": "build_lineage",
@@ -303,7 +303,7 @@
       "historical_sources": ["Current/03_PROJECT_CHRONOLOGY.md"],
       "related_topics": ["accepted_baseline", "active_candidate_and_next_test"],
       "authority": "CURRENT",
-      "last_validated": "2026-09-05"
+      "last_validated": "2026-09-06"
     }
   ]
 }

@@ -4,14 +4,14 @@
 **Authority:** human build-history router; exact build evidence remains in candidate/acceptance/rejection/runtime records  
 **Canonical-For:** `build_lineage`  
 **Machine Mirror:** `Current/BUILD_LINEAGE.json`  
-**Last-Validated:** 2026-09-05
+**Last-Validated:** 2026-09-06
 
 ## Current lineage head
 
-- **Accepted gameplay baseline:** S1.42AC — BCMER EventType Equal Distribution.
-- **Latest built artifact:** S1.42AF — Path-Length-Safe Microwave Packaging — build pass, runtime validation outstanding, not accepted.
-- **Active candidate:** S1.42AF.
-- **Next build:** none armed; controller is idle awaiting S1.42AF runtime validation.
+- **Accepted gameplay baseline:** S1.42AF — Path-Length-Safe Microwave Packaging.
+- **Latest built artifact:** S1.42AF — Path-Length-Safe Microwave Packaging — runtime accepted.
+- **Active candidate:** none.
+- **Next build:** none armed; controller is idle while Mouth Dog / Eyeless Dog -> Pikmin source-contract analysis is selected.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -56,10 +56,10 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42Z | accepted predecessor | Final accepted balance/Jetpack/Pikmin/Microwave/Snail + DawnLib ACU/G.R.E.G. scaling. |
 | S1.42AA | rejected | Config-only interior equalization failed to equalize final effective LLL rarities. |
 | S1.42AB | accepted predecessor to AC | Post-viability LLL normalization to Weight 100 while preserving membership/exclusions. |
-| S1.42AC | **ACCEPTED CURRENT BASELINE** | Equal BCMER static EventType probability. Historical per-event-equality rejection is retained, but `Current/109` corrected its interpretation and `Current/118` explicitly accepted the artifact. |
+| S1.42AC | accepted predecessor to AF | Equal BCMER static EventType probability. Historical per-event-equality rejection is retained, but `Current/109` corrected its interpretation and `Current/118` explicitly accepted the artifact. |
 | S1.42AD | **REJECTED** | Functional Microwave half-frequency attempt. Runtime exposed 18 Interior/tag curves instead of the frozen zero-Interior assumption; fail-closed refusal prevented the `0.5` mutation from applying. |
 | S1.42AE | **SUPERSEDED — PATH-LENGTH BLOCKED, NOT GAMEPLAY-REJECTED** | Corrected provider code was never reached; v2.4 plus direct filesystem checks proved the 40,960-byte LC SoundAPI binding existed while its full path measured 262 characters and BepInEx/Mono still failed before chainloader startup. |
-| S1.42AF | **ACTIVE RUNTIME CANDIDATE** | One-variable path-length-safe packaging successor built directly from S1.42AC. Reuses unchanged S1.42AE source contract with short Gale profile name `LC V1 S1.42AF Microwave Fix`; runtime validation pending. |
+| S1.42AF | **ACCEPTED CURRENT BASELINE** | Path-length-safe packaging successor built directly from S1.42AC. Runtime proved the nested LC SoundAPI binding at 226 characters, normal startup, and the exact 18 Moon / 18 Interior Functional Microwave contract with only the 18 Moon/tag curves scaled by `0.5`. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -104,7 +104,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Build workflow run: `33892396551`
 - Build commit: `9bf3085d82990ca565ad81f992d896855c21f1c6`
 
-### S1.42AC — current accepted baseline
+### S1.42AC — accepted predecessor
 
 - Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`
 - SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
@@ -148,21 +148,26 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Status: superseded for path-length-safe packaging; provider code never executed; not accepted and not classified as a Microwave gameplay/runtime rejection.
 - Supersession: `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`
 
-### S1.42AF — active path-length-safe Microwave candidate
+### S1.42AF — current accepted baseline
 
 - Profile: `Profiles/LC V1 S1.42AF Microwave Fix.r2z`
 - Gale profile name: `LC V1 S1.42AF Microwave Fix`
 - SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
 - Candidate: `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`
+- Acceptance: `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`
 - Supersession/promotion analysis: `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`
-- Project status: `Current/Projektstatus_S1.42AF_CANDIDATE.json`
+- Project status: `Current/Projektstatus_S1.42AF_ACCEPTED.json`
+- Runtime evidence: `RuntimeEvidence/S1.42AF/20260905T223738Z/`
+- Runtime log SHA-256: `63df88a3acb0c455bab914fd844767cb50b7384ab4b1ede8bd7cbcb63537d956`
 - Plan: `BuildSpecs/S1.42AF_PLAN.md`
 - Build workflow run: `33993880634`
 - Build commit: `2cab9044579e74739669440699c763a32f0fe379`
 - DLL SHA-256: `41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f`
 - Parent: accepted S1.42AC, not S1.42AE.
-- Status: build pass; runtime validation outstanding; not accepted.
-- One-variable packaging change: short Gale profile identity reduces the previously failing nested SoundAPI LC-binding path from 262 characters to approximately 226 on the validated runtime host; functional plugin source is unchanged from S1.42AE.
+- Runtime path gate: nested `me.loaforc.soundapi.lethalcompany.dll` existed with 40960 bytes at a 226-character full path; normal BepInEx/game startup succeeded.
+- Functional Microwave gate: CodeRebirth `1.6.9`, DawnLib/Dusk `0.9.25`, `PrioritiseMoons=true`, 18 Moon/tag curves and 18 Interior/tag curves; 18 Moon/tag curves scaled by `0.5`, Interior curves validation-only and not mutated.
+- Status: accepted full normal stack.
+- Separate inherited Mouth Dog / Pikmin compatibility finding: `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`.
 
 ## Feature/fix lookup
 
@@ -184,9 +189,10 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 | Post-viability interior rarity normalization to 100 | S1.42AB |
 | Exact BCMER per-event-weight semantic correction | `Current/109...` analysis |
 | Equal BCMER static EventType probability accepted | S1.42AC / `Current/118...` |
-| Functional Microwave half-frequency target | S1.42AF runtime candidate; not accepted yet |
+| Functional Microwave half-frequency target accepted | S1.42AF / `Current/128...` |
 | Functional Microwave 0-Interior provider assumption disproved | S1.42AD runtime rejection |
-| Functional Microwave corrected 18 Moon / 18 Interior fail-closed contract | S1.42AE source, reused unchanged in S1.42AF |
+| Functional Microwave corrected 18 Moon / 18 Interior contract | S1.42AE source, runtime-proved and accepted in S1.42AF |
+| Functional Microwave path-length-safe packaging | S1.42AF |
 
 ## Parentage rules that matter
 
@@ -196,6 +202,6 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - S1.42AC was built **directly from accepted S1.42AB**. Its original rejection remains historical evidence, `Current/109` corrected the per-event-weight interpretation, and `Current/118` is the explicit later acceptance decision.
 - S1.42AD was built **directly from accepted S1.42AC** and is rejected. It must not be used as a successor build base.
 - S1.42AE was built **directly from accepted S1.42AC**, not from rejected S1.42AD. Its provider code was never reached during the preloader failures; it is superseded for packaging/path-length reasons and is not a safe gameplay base.
-- S1.42AF was built **directly from accepted S1.42AC**, not from S1.42AE. It reuses the unchanged S1.42AE plugin source under a path-length-safe Gale profile identity and is not a safe gameplay base until its runtime gate is explicitly accepted.
+- S1.42AF was built **directly from accepted S1.42AC**, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and is now the accepted full-normal-stack gameplay base after explicit runtime acceptance in `Current/128...`.
 
 When an exact artifact/hash/status is not indexed here or in `Current/BUILD_LINEAGE.json`, open the linked build-specific record rather than inferring it from build-name order.

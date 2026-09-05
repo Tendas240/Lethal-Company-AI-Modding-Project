@@ -139,14 +139,15 @@ def validate_current_state() -> None:
     candidate = state.get("active_candidate")
     controllers = state.get("controllers", {})
 
-    # The accepted baseline remains a deliberately frozen gameplay authority until
-    # an explicit later runtime decision promotes a successor.
-    if accepted.get("build_id") != "S1.42AC":
-        fail("atomic state accepted baseline is not S1.42AC")
-    if accepted.get("sha256") != "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9":
-        fail("atomic state S1.42AC SHA drift")
+    # Accepted-baseline identity is controlled by CURRENT_STATE plus explicit
+    # decision evidence and BUILD_LINEAGE. Do not hard-code a specific build here:
+    # a later explicit runtime decision may promote a successor while history remains preserved.
+    if not accepted.get("build_id"):
+        fail("atomic state accepted baseline has no build_id")
+    if not accepted.get("sha256"):
+        fail("atomic state accepted baseline has no SHA-256")
     if accepted.get("status") != "ACCEPTED_FULL_NORMAL_STACK":
-        fail("atomic state S1.42AC is not accepted full normal stack")
+        fail("atomic state accepted baseline is not accepted full normal stack")
 
     active_build_path = ROOT / "RuntimeInbox/ACTIVE_BUILD.txt"
     if not active_build_path.is_file():

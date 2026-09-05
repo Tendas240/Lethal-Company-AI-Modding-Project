@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-05  
+**Updated:** 2026-09-06  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -12,37 +12,38 @@ Every ChatGPT chat performing project work must follow `Current/CHATGPT_SEGMENTE
 
 ## Accepted baseline
 
-**S1.42AC — BCMER EventType Equal Distribution — ACCEPTED FULL NORMAL STACK**
-
-Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`  
-SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`  
-Acceptance: `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`  
-Runtime evidence: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
-
-## Latest built artifact
-
-**S1.42AF — Path-Length-Safe Microwave Packaging — BUILD PASS RUNTIME VALIDATION OPEN NOT ACCEPTED**
+**S1.42AF — Path-Length-Safe Microwave Packaging — ACCEPTED FULL NORMAL STACK**
 
 Profile: `Profiles/LC V1 S1.42AF Microwave Fix.r2z`  
 SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`  
+Acceptance: `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`  
+Runtime evidence: `RuntimeEvidence/S1.42AF/20260905T223738Z/`
+
+## Latest built artifact
+
+**S1.42AF — Path-Length-Safe Microwave Packaging — RUNTIME ACCEPTED**
+
+Profile: `Profiles/LC V1 S1.42AF Microwave Fix.r2z`  
+SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`  
+Acceptance: `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`  
 Candidate record: `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
 ## Live execution state
 
-- Active candidate: **S1.42AF**
-- Runtime test outstanding: **yes**
+- Active candidate: **none**
+- Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AF_BUILD_AWAITING_RUNTIME_VALIDATION`)
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AF_ACCEPTANCE_MOUTHDOG_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AF Microwave Fix.r2z` / `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF`
 
 ## Exact next action
 
-Import S1.42AF with RuntimeTools/ReplaceActiveGaleProfileV24.ps1. Proceed only after v2.4 positively verifies non-empty export.r2x plus exactly one non-empty base SoundAPI DLL and one non-empty LethalCompany binding DLL. Confirm the shortened nested binding path is below the legacy 260-character boundary, then start Lethal Company, require preloader/main-menu success, play one normal run far enough for ordinary moon/interior generation, and upload the complete fresh S1.42AF LogOutput.log with the exact uploader in Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md. Evaluate the preserved S1.42AE plugin markers, dependency versions, PrioritiseMoons=true MoonCurves=18 InteriorCurves=18, both keysets, the 18 Moon curves x0.5 / 18 Interior validation-only marker, and regression/fatal markers before accepting or rejecting S1.42AF.
+Analyze the confirmed MouthDog/EyelessDog -> Pikmin targeting/bite/grab path from Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md under Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md and Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md. Inspect the exact LethalMin owner/method/inheritance/config contract and Patches/S139CompatibilityFixes/Plugin.cs; determine whether native configuration can prevent targeting or whether the existing exact PikminAI.GrabPikmin(Transform,float,int) prevention-only guard can safely cover MouthDog/EyelessDog. Preserve Pikmin -> Mouth Dog native behavior. Do not arm or build a successor until the exact contract is proved.
 
-A runtime test is pending for S1.42AF. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
