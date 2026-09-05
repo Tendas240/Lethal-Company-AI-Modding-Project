@@ -3,46 +3,21 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only; historical build sequencing remains in chronology/lineage  
 **Canonical-For:** `roadmap_and_deferred_scopes`  
-**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`, `BuildSpecs/S1.42AE_PLAN.md`  
+**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`  
 **Related:** `Knowledge/BCMER.md`, `Knowledge/INTERIORS_AND_LLL.md`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ITEM_TUNING.md`, `Knowledge/CODEREBIRTH.md`, `Knowledge/REPOSITORY_OVERHAUL.md`  
 **Last-Validated:** 2026-09-05
 
 ## Current position
 
-Accepted gameplay baseline: **S1.42AC — BCMER EventType Equal Distribution**.
+Accepted gameplay baseline: **S1.42AC — BCMER EventType Equal Distribution**. Latest built artifact and active gameplay candidate: **S1.42AF — Path-Length-Safe Microwave Packaging — BUILD PASS / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED**. Runtime test outstanding: **yes**. Successor armed: **no**. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF`; `BuildSpecs/current.json` is disabled and guards S1.42AF.
 
-Latest built artifact: **S1.42AE — Functional Microwave Provider Contract Correction — BUILD PASS / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED**.
-
-Active gameplay candidate: **S1.42AE**.
-
-Runtime test outstanding: **yes**.
-
-Successor armed: **no**.
-
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AE` and `BuildSpecs/current.json` is disabled with S1.42AE as the guarded candidate artifact while runtime validation is open.
-
-S1.42AD remains runtime-rejected historical evidence: its fail-closed provider contract expected zero Interior/tag curves, while direct runtime evidence exposed 18, so the `0.5` mutation did not apply.
-
-The follow-up provider analysis is complete. Dusk 0.9.25 with `PrioritiseMoons=true` evaluates exact Moon -> exact Interior fallback -> matching Moon tags; Moon and Interior tables are not combined. The corrected shipped provider contract is exact 18 Moon/tag curves plus exact 18 Interior/tag curves. S1.42AE validates/logs both exact tables and scales only the 18 Moon/tag curves by `SpawnScale = 0.5`; Interior curves are validation-only.
+S1.42AD remains runtime-rejected historical provider-contract evidence. S1.42AE's corrected provider code was never reached; it is superseded for packaging after the physically present SoundAPI binding failed through a 262-character runtime path. S1.42AF preserves the same functional source contract but shortens only the Gale profile identity.
 
 ## Exact next scope
 
-The selected work is now the **S1.42AE runtime acceptance gate**. Do not build another successor before this evidence is evaluated.
-
-Required next steps:
-
-1. replace/import S1.42AE with the canonical repository Gale helper;
-2. play one normal run far enough for ordinary moon/interior generation;
-3. upload the complete fresh `LogOutput.log` with the exact S1.42AE uploader from `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`;
-4. verify exact dependency versions, the armed lifecycle marker, `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=18`, both logged keysets, and the final marker that 18 Moon/tag curves were scaled by `0.5` while 18 Interior curves were not mutated;
-5. verify no S1.42AE contract-refusal/error marker and no new fatal/project-critical regression;
-6. accept or reject S1.42AE from that evidence.
-
-A single normal gameplay run is sufficient for the immediate technical gate. It is not expected to statistically demonstrate an exact 50% observed Microwave count; deterministic provider mutation is the primary rarity evidence.
+The selected work is the **S1.42AF runtime acceptance gate**. Import through v2.4, require both SoundAPI materialization proofs, confirm the shortened binding path is below 260, start normally, play one ordinary run far enough for moon/interior generation, upload the fresh S1.42AF log with `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, then accept or reject from deterministic provider and regression evidence. A single normal run is sufficient for this technical gate; it is not expected to statistically demonstrate an exact 50% observed Microwave count.
 
 ## Remaining deferred independent gameplay/compatibility scopes
-
-These remain separate unless the user explicitly selects or groups them:
 
 - CullFactory disable-culling exceptions for exact IDs `junkrooms` / `shatteredrooms`;
 - MelanieMausoleum fog reduction only for that interior;
@@ -54,28 +29,15 @@ These remain separate unless the user explicitly selects or groups them:
 
 ## BCMER scope boundary
 
-S1.42AC is the accepted BCMER 1.71.0 **static EventType probability** implementation. Eight equal `12.5` scales intentionally produce unequal inverse-population per-event weights while preserving approximately equal aggregate EventType mass within integer truncation.
-
-Exact long-run 12.5% **executed** EventType frequency after all runtime eligibility filters would be a materially broader algorithm-design project and is not the same scope. It is not currently armed.
+S1.42AC remains the accepted BCMER 1.71.0 static EventType-probability implementation. Exact long-run executed EventType frequency after runtime eligibility filters is a broader algorithm-design scope and is not armed.
 
 ## Interior scope boundary
 
-The inherited S1.42AB implementation already solves equal effective rarity for all **LLL-viable** interiors by normalizing positive returned rarities to 100 after viability filtering. S1.42AC and S1.42AE do not modify that path.
-
-Still separate:
-
-- author/technical viability restrictions such as Shatteredrooms on Experimentation/Embrion;
-- CullFactory compatibility;
-- Mausoleum fog;
-- route/NavMesh recovery.
-
-Do not reopen the accepted interior-weight normalization just to solve one of those separate compatibility scopes.
+The inherited S1.42AB implementation already equalizes effective rarity for LLL-viable interiors after viability filtering. S1.42AC and S1.42AF do not alter that path. Author/technical viability restrictions, CullFactory compatibility, Mausoleum fog and route/NavMesh recovery remain separate.
 
 ## Repository-overhaul boundary
 
-The overhaul is closed and validated. Current summary: `Knowledge/REPOSITORY_OVERHAUL.md`. Final acceptance/audit evidence remains in the registered overhaul authorities and `Current/OVERHAUL_VALIDATION_RESULTS.json`.
-
-Future repository-architecture changes must remain separate from gameplay changes and continue to pass `.github/workflows/knowledge-architecture.yml`.
+The overhaul is closed and validated. Future repository-architecture changes remain separate from gameplay changes and must continue to pass `.github/workflows/knowledge-architecture.yml`.
 
 ## Historical roadmap warning
 

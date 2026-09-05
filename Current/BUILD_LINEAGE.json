@@ -1,1 +1,550 @@
-{"schema_version":3,"date":"2026-09-05","status":"CURRENT_CANONICAL_BUILD_INDEX","human_mirror":"Current/BUILD_LINEAGE.md","current_accepted_build_id":"S1.42AC","active_candidate_build_id":"S1.42AE","latest_built_artifact_id":"S1.42AE","field_policy":"This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.","builds":[{"id":"S1.2","title":"Initial profile/loading forensics","status":"historical-foundation","parent":null,"decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"project forensics foundation"},{"id":"S1.3","title":"V81 transition and early interaction fixes","status":"historical-foundation","parent":"S1.2","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"V81 transition"},{"id":"S1.32-C","title":"LiveEnemyInfo safe subset","status":"historical-accepted-step","parent":"S1.3","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"LiveEnemyInfo safe subset"},{"id":"S1.32-D","title":"Rolling Giant and Scopophobia LLL registration","status":"historical-accepted-step","parent":"S1.32-C","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"enemy registration"},{"id":"S1.32-E","title":"Counterattack and enemy compatibility refinement","status":"historical-accepted-step","parent":"S1.32-D","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"Pikmin/enemy compatibility"},{"id":"S1.32-F","title":"Puffer trigger cleanup","status":"historical-accepted-step","parent":"S1.32-E","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"Puffer compatibility"},{"id":"S1.32-G","title":"Accidental KidnapperFoxOutskirts divergence","status":"rejected","parent":"S1.32-F","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"failed Kidnapper Fox divergence"},{"id":"S1.33-S1.36","title":"PikminNotice and EnemyCeiling diagnostic series","status":"diagnostic-only","parent":"S1.32-F","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"diagnostic instrumentation"},{"id":"S1.37-S1.38","title":"Minimal validation and error logging","status":"diagnostic-only","parent":"S1.33-S1.36","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"runtime observability"},{"id":"S1.39","title":"CodeRebirth/DawnLib upgrade and cleanup","status":"runtime-pass","parent":"S1.37-S1.38","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"CodeRebirth/DawnLib architecture"},{"id":"S1.39A","title":"CodeRebirth utility kill protection","status":"historical-accepted-step","parent":"S1.39","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"CodeRebirth utility kill protection"},{"id":"S1.39B","title":"Kidnapper Fox outside-disabled intent","status":"historical-accepted-step","parent":"S1.39A","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"Kidnapper Fox configuration"},{"id":"S1.39C","title":"Siren Head rarity correction","status":"historical-accepted-step","parent":"S1.39B","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"Siren Head rarity 30"},{"id":"S1.39C2","title":"Siren Head all-outside validation","status":"runtime-pass","parent":"S1.39C","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"Siren Head validation"},{"id":"S1.40","title":"Currency/Flash Turret suppression attempt","status":"rejected","parent":"S1.39C2","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"failed natural-spawn suppression"},{"id":"S1.40A","title":"Project-local Currency/Flash Turret filters","status":"rejected","parent":"S1.40","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"failed local object filters"},{"id":"S1.40B","title":"Native CodeRebirth/DawnLib spawn-owner solution","status":"historical-accepted-step","parent":"S1.39C2","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"native Currency/Flash Turret control"},{"id":"S1.41","title":"BCMER Reactivation full-stack baseline","status":"runtime-pass","parent":"S1.40B","sha256":"21161fcfa9cf5aac23ecffd9da4720308988868cf764bad108519077fea86932","decision_record":"Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md","safe_as_gameplay_base":false,"principal_feature":"BCMER 1.71.0 reactivation"},{"id":"S1.42A","title":"Interior Expansion","status":"runtime-pass","parent":"S1.41","sha256":"476e9c1a464cc6788e56e97394eceb79fa26f2d11a3761005cce022ce07dbd1c","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"interior expansion and restrictions"},{"id":"S1.42B","title":"Enemy Spawn Balance and Texture Cleanup","status":"rejected","parent":"S1.42A","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"rejected enemy spawn balance"},{"id":"S1.42C","title":"Pikmin Enemy Guard / enemy-spawn restore baseline","status":"historical-accepted-step","parent":"S1.42A","profile":"Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z","sha256":"22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3","decision_record":"Current/ENEMY_SPAWN_BASELINE_S1.42C.json","safe_as_gameplay_base":true,"principal_feature":"enemy-spawn restore baseline"},{"id":"S1.42D","title":"Jetpack inherited-Start acceleration attempt","status":"rejected","parent":"S1.42C","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"failed Jetpack owner patch"},{"id":"S1.42E","title":"Fail-closed local patch build mismatch","status":"build-aborted","parent":"S1.42C","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"build safety failure"},{"id":"S1.42F","title":"Typed inherited-Start Jetpack attempt","status":"mixed","parent":"S1.42C","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"Jetpack diagnostic"},{"id":"S1.42G","title":"Lost-state Jetpack follow-up","status":"superseded","parent":"S1.42F","sha256":"2bd2778547d552e7bd60e9170360c06c17d163f0b759731c50632ce5526c86af","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"Jetpack Lost-state repair candidate"},{"id":"S1.42H","title":"Jetpack balance and Puffer guard","status":"superseded","parent":"S1.42G","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"Jetpack/Puffer tuning"},{"id":"S1.42I","title":"Jetpack/Puffer/Enemy cleanup","status":"historical-accepted-step","parent":"S1.42H","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"Thumper Bite Limit 3, Crawler attack allowed, Puffer protection"},{"id":"S1.42J","title":"Baboon Hawk complete isolation attempt","status":"rejected","parent":"S1.42I","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"failed Baboon isolation"},{"id":"S1.42K","title":"Baboon follow-up","status":"superseded","parent":"S1.42J","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"Baboon compatibility iteration"},{"id":"S1.42L","title":"Baboon runtime-pass stage","status":"runtime-pass","parent":"S1.42K","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"Baboon compatibility runtime pass"},{"id":"S1.42M","title":"Long-run networking freeze evidence","status":"not-accepted","parent":"S1.42L","decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"long-run teardown evidence"},{"id":"S1.42N","title":"AdditionalNetworking targeted repair","status":"diagnostic-only","parent":"S1.42M","decision_record":"Current/06_RECENT_WORK_S1.42N-S1.42Z.md","safe_as_gameplay_base":false,"principal_feature":"AdditionalNetworking diagnostic"},{"id":"S1.42O","title":"Focused one-ship networking repair evidence","status":"runtime-pass-focused","parent":"S1.42N","decision_record":"Current/06_RECENT_WORK_S1.42N-S1.42Z.md","safe_as_gameplay_base":false,"principal_feature":"focused networking evidence"},{"id":"S1.42P","title":"Full-normal networking restoration attempt","status":"rejected","parent":"S1.42O","decision_record":"Current/06_RECENT_WORK_S1.42N-S1.42Z.md","safe_as_gameplay_base":false,"principal_feature":"rejected networking full-stack attempt"},{"id":"S1.42Q","title":"NetworkObjectReference prevention attempt","status":"rejected","parent":"S1.42P","decision_record":"Current/06_RECENT_WORK_S1.42N-S1.42Z.md","safe_as_gameplay_base":false,"principal_feature":"rejected NetworkObjectReference prevention"},{"id":"S1.42R","title":"Baboon adapter whole-component disable","status":"rejected","parent":"S1.42Q","decision_record":"Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md","safe_as_gameplay_base":false,"principal_feature":"failed whole-component disable"},{"id":"S1.42S","title":"Baboon Adapter Lifecycle Restore","status":"accepted-focused","parent":"S1.42R","profile":"Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z","sha256":"addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee","decision_record":"Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md","runtime_evidence":"RuntimeEvidence/S1.42S/20260903T205550Z/","safe_as_gameplay_base":false,"principal_feature":"accepted focused Baboon lifecycle architecture"},{"id":"S1.42T","title":"Full-normal enemy restoration","status":"accepted","parent":"S1.42S","build_plan":"BuildSpecs/S1.42T_PLAN.md","decision_record":"Current/06_RECENT_WORK_S1.42N-S1.42Z.md","safe_as_gameplay_base":true,"principal_feature":"full-normal stack restoration"},{"id":"S1.42U","title":"Pill balance and equal BCMER EventType scales","status":"accepted","parent":"S1.42T","decision_record":"Current/06_RECENT_WORK_S1.42N-S1.42Z.md","safe_as_gameplay_base":true,"principal_feature":"Pill balance + equal BCMER scales"},{"id":"S1.42V","title":"Jetpack/Pikmin/Snail retune","status":"accepted","parent":"S1.42U","decision_record":"Current/06_RECENT_WORK_S1.42N-S1.42Z.md","safe_as_gameplay_base":true,"principal_feature":"intermediate balance retune"},{"id":"S1.42W","title":"Naive CodeRebirth aerial-defense reduction","status":"rejected","parent":"S1.42V","decision_record":"Current/06_RECENT_WORK_S1.42N-S1.42Z.md","safe_as_gameplay_base":false,"principal_feature":"failed aerial-defense tuning"},{"id":"S1.42X","title":"Aerial-defense pipeline/refactor diagnostic","status":"diagnostic-only","parent":"S1.42W","decision_record":"Current/06_RECENT_WORK_S1.42N-S1.42Z.md","safe_as_gameplay_base":false,"principal_feature":"aerial-defense diagnostics"},{"id":"S1.42Y","title":"Post-load DawnLib provider evaluation","status":"rejected","parent":"S1.42X","decision_record":"Current/06_RECENT_WORK_S1.42N-S1.42Z.md","safe_as_gameplay_base":false,"principal_feature":"DawnLib provider root-cause evidence"},{"id":"S1.42Z","title":"Jetpack Pikmin Retune / final accepted balance predecessor","status":"accepted","parent":"S1.42V","profile":"Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z","sha256":"a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4","candidate_record":"Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md","decision_record":"Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md","runtime_evidence":"RuntimeEvidence/S1.42Z/20260904T135820Z/","workflow_run":33874737048,"build_commit":"267543634bb884bb447bf4bec320103ba75c9ff8","safe_as_gameplay_base":true,"principal_feature":"final balance + DawnLib aerial-defense tuning"},{"id":"S1.42AA","title":"Interior Weight Equalization","status":"rejected","parent":"S1.42Z","profile":"Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z","sha256":"0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364","candidate_record":"Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md","decision_record":"Current/06_RECENT_WORK_S1.42AA-S1.42AB.md","runtime_evidence":"RuntimeEvidence/S1.42AA/20260904T153744Z/","safe_as_gameplay_base":false,"principal_feature":"proved config-only interior equalization insufficient"},{"id":"S1.42AB","title":"Interior Weight Normalization","status":"accepted-predecessor","parent":"S1.42Z","profile":"Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z","sha256":"3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca","candidate_record":"Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md","decision_record":"Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md","runtime_evidence":"RuntimeEvidence/S1.42AB/20260904T174010Z/","workflow_run":33892396551,"build_commit":"9bf3085d82990ca565ad81f992d896855c21f1c6","safe_as_gameplay_base":true,"principal_feature":"accepted equal effective interior weighting"},{"id":"S1.42AC","title":"BCMER EventType Equal Distribution","status":"accepted","parent":"S1.42AB","profile":"Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z","sha256":"0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9","candidate_record":"Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md","decision_record":"Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md","historical_rejection":"Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md","runtime_evidence":"RuntimeEvidence/S1.42AC/20260904T235720Z/","historical_runtime_evidence":"RuntimeEvidence/S1.42AC/20260904T181854Z/","workflow_run":33903271224,"build_commit":"a30b327580e28f42e55281e91abe03d32ae41363","safe_as_gameplay_base":true,"principal_feature":"accepted BCMER static EventType equal probability model","post_decision_analysis":"Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md"},{"id":"S1.42AD","title":"Functional Microwave Spawn Rarity Reduction","status":"rejected","parent":"S1.42AC","profile":"Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z","sha256":"9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c","build_plan":"BuildSpecs/S1.42AD_PLAN.md","candidate_record":"Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md","decision_record":"Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md","runtime_evidence":"RuntimeEvidence/S1.42AD/20260905T103333Z/","workflow_run":33959742235,"build_commit":"1463a6cde5e8cb7655dd233f83da5157c91b036e","safe_as_gameplay_base":false,"principal_feature":"rejected Functional Microwave x0.5 attempt; runtime exposed 18 Interior curves, fail-closed mutation did not apply"},{"id":"S1.42AE","title":"Functional Microwave Provider Contract Correction","status":"runtime-candidate","parent":"S1.42AC","profile":"Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z","sha256":"d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee","build_plan":"BuildSpecs/S1.42AE_PLAN.md","candidate_record":"Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md","analysis":"Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md","project_status":"Current/Projektstatus_S1.42AE_CANDIDATE.json","workflow_run":33968217356,"build_commit":"85e6caade0edd94ac5d7f409b9dd734fc8613f3f","safe_as_gameplay_base":false,"principal_feature":"corrected Functional Microwave 18 Moon / 18 Interior fail-closed contract; scale only 18 Moon/tag curves x0.5 pending runtime validation"}],"feature_index":{"CodeRebirthLib_removed_DawnLib_owner":"S1.39","CodeRebirth_utility_kill_Pikmin_protection":"S1.39A","Currency_Flash_Turret_native_spawn_control":"S1.40B","BCMER_1_71_0_reactivation":"S1.41","interior_expansion_restrictions":"S1.42A","enemy_spawn_restore_baseline":"S1.42C","Thumper_Bite_Limit_3_Crawler_attack_allowed_Puffer_protection":"S1.42I","Baboon_prevention_before_mutation_lifecycle":"S1.42S","full_normal_stack_restoration":"S1.42T","equal_BCMER_static_EventType_scales":"S1.42U","final_Jetpack_18_and_Pikmin_Microwave_Snail_tuning":"S1.42Z","CodeRebirth_ACU_GREG_18_curves_half":"S1.42Z","config_only_interior_equalization_proven_insufficient":"S1.42AA","post_viability_interior_weight_100_normalization":"S1.42AB","BCMER_per_event_weight_semantic_correction":"Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md","BCMER_static_equal_EventType_probability_accepted":"S1.42AC","Functional_Microwave_half_frequency_target":"S1.42AE_RUNTIME_CANDIDATE","Functional_Microwave_provider_contract_drift_proved":"S1.42AD","Functional_Microwave_corrected_18_Moon_18_Interior_contract":"S1.42AE"},"lineage_invariants":["S1.42C is the canonical normal enemy-spawn/config restore baseline after S1.42B diagnostic divergence.","S1.42R whole-component BaboonBirdPikminEnemy disable is rejected and must never be replayed.","S1.42AB was built directly from accepted S1.42Z, not from rejected S1.42AA.","S1.42AC was built directly from accepted S1.42AB. Its original Current/106 rejection is retained as history, the per-event-weight interpretation was corrected by Current/109, and explicit corrected acceptance is recorded by Current/118. S1.42AC is the current accepted gameplay baseline.","S1.42AD was built directly from accepted S1.42AC and runtime-rejected because the Functional Microwave provider exposed 18 Interior/tag curves instead of the frozen zero-Interior assumption; its x0.5 mutation did not apply and it is not a safe gameplay base.","S1.42AE was built directly from accepted S1.42AC, not from rejected S1.42AD. It validates exact 18 Moon/tag and 18 Interior/tag curves, scales only the 18 Moon/tag curves by 0.5, and remains a runtime candidate until explicit acceptance or rejection."]}
+{
+  "schema_version": 3,
+  "date": "2026-09-05",
+  "status": "CURRENT_CANONICAL_BUILD_INDEX",
+  "human_mirror": "Current/BUILD_LINEAGE.md",
+  "current_accepted_build_id": "S1.42AC",
+  "active_candidate_build_id": "S1.42AF",
+  "latest_built_artifact_id": "S1.42AF",
+  "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
+  "builds": [
+    {
+      "id": "S1.2",
+      "title": "Initial profile/loading forensics",
+      "status": "historical-foundation",
+      "parent": null,
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "project forensics foundation"
+    },
+    {
+      "id": "S1.3",
+      "title": "V81 transition and early interaction fixes",
+      "status": "historical-foundation",
+      "parent": "S1.2",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "V81 transition"
+    },
+    {
+      "id": "S1.32-C",
+      "title": "LiveEnemyInfo safe subset",
+      "status": "historical-accepted-step",
+      "parent": "S1.3",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "LiveEnemyInfo safe subset"
+    },
+    {
+      "id": "S1.32-D",
+      "title": "Rolling Giant and Scopophobia LLL registration",
+      "status": "historical-accepted-step",
+      "parent": "S1.32-C",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "enemy registration"
+    },
+    {
+      "id": "S1.32-E",
+      "title": "Counterattack and enemy compatibility refinement",
+      "status": "historical-accepted-step",
+      "parent": "S1.32-D",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "Pikmin/enemy compatibility"
+    },
+    {
+      "id": "S1.32-F",
+      "title": "Puffer trigger cleanup",
+      "status": "historical-accepted-step",
+      "parent": "S1.32-E",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "Puffer compatibility"
+    },
+    {
+      "id": "S1.32-G",
+      "title": "Accidental KidnapperFoxOutskirts divergence",
+      "status": "rejected",
+      "parent": "S1.32-F",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "failed Kidnapper Fox divergence"
+    },
+    {
+      "id": "S1.33-S1.36",
+      "title": "PikminNotice and EnemyCeiling diagnostic series",
+      "status": "diagnostic-only",
+      "parent": "S1.32-F",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "diagnostic instrumentation"
+    },
+    {
+      "id": "S1.37-S1.38",
+      "title": "Minimal validation and error logging",
+      "status": "diagnostic-only",
+      "parent": "S1.33-S1.36",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "runtime observability"
+    },
+    {
+      "id": "S1.39",
+      "title": "CodeRebirth/DawnLib upgrade and cleanup",
+      "status": "runtime-pass",
+      "parent": "S1.37-S1.38",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "CodeRebirth/DawnLib architecture"
+    },
+    {
+      "id": "S1.39A",
+      "title": "CodeRebirth utility kill protection",
+      "status": "historical-accepted-step",
+      "parent": "S1.39",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "CodeRebirth utility kill protection"
+    },
+    {
+      "id": "S1.39B",
+      "title": "Kidnapper Fox outside-disabled intent",
+      "status": "historical-accepted-step",
+      "parent": "S1.39A",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "Kidnapper Fox configuration"
+    },
+    {
+      "id": "S1.39C",
+      "title": "Siren Head rarity correction",
+      "status": "historical-accepted-step",
+      "parent": "S1.39B",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "Siren Head rarity 30"
+    },
+    {
+      "id": "S1.39C2",
+      "title": "Siren Head all-outside validation",
+      "status": "runtime-pass",
+      "parent": "S1.39C",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "Siren Head validation"
+    },
+    {
+      "id": "S1.40",
+      "title": "Currency/Flash Turret suppression attempt",
+      "status": "rejected",
+      "parent": "S1.39C2",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "failed natural-spawn suppression"
+    },
+    {
+      "id": "S1.40A",
+      "title": "Project-local Currency/Flash Turret filters",
+      "status": "rejected",
+      "parent": "S1.40",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "failed local object filters"
+    },
+    {
+      "id": "S1.40B",
+      "title": "Native CodeRebirth/DawnLib spawn-owner solution",
+      "status": "historical-accepted-step",
+      "parent": "S1.39C2",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "native Currency/Flash Turret control"
+    },
+    {
+      "id": "S1.41",
+      "title": "BCMER Reactivation full-stack baseline",
+      "status": "runtime-pass",
+      "parent": "S1.40B",
+      "sha256": "21161fcfa9cf5aac23ecffd9da4720308988868cf764bad108519077fea86932",
+      "decision_record": "Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "BCMER 1.71.0 reactivation"
+    },
+    {
+      "id": "S1.42A",
+      "title": "Interior Expansion",
+      "status": "runtime-pass",
+      "parent": "S1.41",
+      "sha256": "476e9c1a464cc6788e56e97394eceb79fa26f2d11a3761005cce022ce07dbd1c",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "interior expansion and restrictions"
+    },
+    {
+      "id": "S1.42B",
+      "title": "Enemy Spawn Balance and Texture Cleanup",
+      "status": "rejected",
+      "parent": "S1.42A",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "rejected enemy spawn balance"
+    },
+    {
+      "id": "S1.42C",
+      "title": "Pikmin Enemy Guard / enemy-spawn restore baseline",
+      "status": "historical-accepted-step",
+      "parent": "S1.42A",
+      "profile": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
+      "sha256": "22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3",
+      "decision_record": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+      "safe_as_gameplay_base": true,
+      "principal_feature": "enemy-spawn restore baseline"
+    },
+    {
+      "id": "S1.42D",
+      "title": "Jetpack inherited-Start acceleration attempt",
+      "status": "rejected",
+      "parent": "S1.42C",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "failed Jetpack owner patch"
+    },
+    {
+      "id": "S1.42E",
+      "title": "Fail-closed local patch build mismatch",
+      "status": "build-aborted",
+      "parent": "S1.42C",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "build safety failure"
+    },
+    {
+      "id": "S1.42F",
+      "title": "Typed inherited-Start Jetpack attempt",
+      "status": "mixed",
+      "parent": "S1.42C",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "Jetpack diagnostic"
+    },
+    {
+      "id": "S1.42G",
+      "title": "Lost-state Jetpack follow-up",
+      "status": "superseded",
+      "parent": "S1.42F",
+      "sha256": "2bd2778547d552e7bd60e9170360c06c17d163f0b759731c50632ce5526c86af",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "Jetpack Lost-state repair candidate"
+    },
+    {
+      "id": "S1.42H",
+      "title": "Jetpack balance and Puffer guard",
+      "status": "superseded",
+      "parent": "S1.42G",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "Jetpack/Puffer tuning"
+    },
+    {
+      "id": "S1.42I",
+      "title": "Jetpack/Puffer/Enemy cleanup",
+      "status": "historical-accepted-step",
+      "parent": "S1.42H",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "Thumper Bite Limit 3, Crawler attack allowed, Puffer protection"
+    },
+    {
+      "id": "S1.42J",
+      "title": "Baboon Hawk complete isolation attempt",
+      "status": "rejected",
+      "parent": "S1.42I",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "failed Baboon isolation"
+    },
+    {
+      "id": "S1.42K",
+      "title": "Baboon follow-up",
+      "status": "superseded",
+      "parent": "S1.42J",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "Baboon compatibility iteration"
+    },
+    {
+      "id": "S1.42L",
+      "title": "Baboon runtime-pass stage",
+      "status": "runtime-pass",
+      "parent": "S1.42K",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "Baboon compatibility runtime pass"
+    },
+    {
+      "id": "S1.42M",
+      "title": "Long-run networking freeze evidence",
+      "status": "not-accepted",
+      "parent": "S1.42L",
+      "decision_record": "Current/03_PROJECT_CHRONOLOGY.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "long-run teardown evidence"
+    },
+    {
+      "id": "S1.42N",
+      "title": "AdditionalNetworking targeted repair",
+      "status": "diagnostic-only",
+      "parent": "S1.42M",
+      "decision_record": "Current/06_RECENT_WORK_S1.42N-S1.42Z.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "AdditionalNetworking diagnostic"
+    },
+    {
+      "id": "S1.42O",
+      "title": "Focused one-ship networking repair evidence",
+      "status": "runtime-pass-focused",
+      "parent": "S1.42N",
+      "decision_record": "Current/06_RECENT_WORK_S1.42N-S1.42Z.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "focused networking evidence"
+    },
+    {
+      "id": "S1.42P",
+      "title": "Full-normal networking restoration attempt",
+      "status": "rejected",
+      "parent": "S1.42O",
+      "decision_record": "Current/06_RECENT_WORK_S1.42N-S1.42Z.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "rejected networking full-stack attempt"
+    },
+    {
+      "id": "S1.42Q",
+      "title": "NetworkObjectReference prevention attempt",
+      "status": "rejected",
+      "parent": "S1.42P",
+      "decision_record": "Current/06_RECENT_WORK_S1.42N-S1.42Z.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "rejected NetworkObjectReference prevention"
+    },
+    {
+      "id": "S1.42R",
+      "title": "Baboon adapter whole-component disable",
+      "status": "rejected",
+      "parent": "S1.42Q",
+      "decision_record": "Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "failed whole-component disable"
+    },
+    {
+      "id": "S1.42S",
+      "title": "Baboon Adapter Lifecycle Restore",
+      "status": "accepted-focused",
+      "parent": "S1.42R",
+      "profile": "Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z",
+      "sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee",
+      "decision_record": "Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md",
+      "runtime_evidence": "RuntimeEvidence/S1.42S/20260903T205550Z/",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "accepted focused Baboon lifecycle architecture"
+    },
+    {
+      "id": "S1.42T",
+      "title": "Full-normal enemy restoration",
+      "status": "accepted",
+      "parent": "S1.42S",
+      "build_plan": "BuildSpecs/S1.42T_PLAN.md",
+      "decision_record": "Current/06_RECENT_WORK_S1.42N-S1.42Z.md",
+      "safe_as_gameplay_base": true,
+      "principal_feature": "full-normal stack restoration"
+    },
+    {
+      "id": "S1.42U",
+      "title": "Pill balance and equal BCMER EventType scales",
+      "status": "accepted",
+      "parent": "S1.42T",
+      "decision_record": "Current/06_RECENT_WORK_S1.42N-S1.42Z.md",
+      "safe_as_gameplay_base": true,
+      "principal_feature": "Pill balance + equal BCMER scales"
+    },
+    {
+      "id": "S1.42V",
+      "title": "Jetpack/Pikmin/Snail retune",
+      "status": "accepted",
+      "parent": "S1.42U",
+      "decision_record": "Current/06_RECENT_WORK_S1.42N-S1.42Z.md",
+      "safe_as_gameplay_base": true,
+      "principal_feature": "intermediate balance retune"
+    },
+    {
+      "id": "S1.42W",
+      "title": "Naive CodeRebirth aerial-defense reduction",
+      "status": "rejected",
+      "parent": "S1.42V",
+      "decision_record": "Current/06_RECENT_WORK_S1.42N-S1.42Z.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "failed aerial-defense tuning"
+    },
+    {
+      "id": "S1.42X",
+      "title": "Aerial-defense pipeline/refactor diagnostic",
+      "status": "diagnostic-only",
+      "parent": "S1.42W",
+      "decision_record": "Current/06_RECENT_WORK_S1.42N-S1.42Z.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "aerial-defense diagnostics"
+    },
+    {
+      "id": "S1.42Y",
+      "title": "Post-load DawnLib provider evaluation",
+      "status": "rejected",
+      "parent": "S1.42X",
+      "decision_record": "Current/06_RECENT_WORK_S1.42N-S1.42Z.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "DawnLib provider root-cause evidence"
+    },
+    {
+      "id": "S1.42Z",
+      "title": "Jetpack Pikmin Retune / final accepted balance predecessor",
+      "status": "accepted",
+      "parent": "S1.42V",
+      "profile": "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z",
+      "sha256": "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4",
+      "candidate_record": "Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md",
+      "decision_record": "Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md",
+      "runtime_evidence": "RuntimeEvidence/S1.42Z/20260904T135820Z/",
+      "workflow_run": 33874737048,
+      "build_commit": "267543634bb884bb447bf4bec320103ba75c9ff8",
+      "safe_as_gameplay_base": true,
+      "principal_feature": "final balance + DawnLib aerial-defense tuning"
+    },
+    {
+      "id": "S1.42AA",
+      "title": "Interior Weight Equalization",
+      "status": "rejected",
+      "parent": "S1.42Z",
+      "profile": "Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z",
+      "sha256": "0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364",
+      "candidate_record": "Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md",
+      "decision_record": "Current/06_RECENT_WORK_S1.42AA-S1.42AB.md",
+      "runtime_evidence": "RuntimeEvidence/S1.42AA/20260904T153744Z/",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "proved config-only interior equalization insufficient"
+    },
+    {
+      "id": "S1.42AB",
+      "title": "Interior Weight Normalization",
+      "status": "accepted-predecessor",
+      "parent": "S1.42Z",
+      "profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
+      "sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
+      "candidate_record": "Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md",
+      "decision_record": "Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md",
+      "runtime_evidence": "RuntimeEvidence/S1.42AB/20260904T174010Z/",
+      "workflow_run": 33892396551,
+      "build_commit": "9bf3085d82990ca565ad81f992d896855c21f1c6",
+      "safe_as_gameplay_base": true,
+      "principal_feature": "accepted equal effective interior weighting"
+    },
+    {
+      "id": "S1.42AC",
+      "title": "BCMER EventType Equal Distribution",
+      "status": "accepted",
+      "parent": "S1.42AB",
+      "profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+      "sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+      "candidate_record": "Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+      "decision_record": "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+      "historical_rejection": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+      "runtime_evidence": "RuntimeEvidence/S1.42AC/20260904T235720Z/",
+      "historical_runtime_evidence": "RuntimeEvidence/S1.42AC/20260904T181854Z/",
+      "workflow_run": 33903271224,
+      "build_commit": "a30b327580e28f42e55281e91abe03d32ae41363",
+      "safe_as_gameplay_base": true,
+      "principal_feature": "accepted BCMER static EventType equal probability model",
+      "post_decision_analysis": "Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md"
+    },
+    {
+      "id": "S1.42AD",
+      "title": "Functional Microwave Spawn Rarity Reduction",
+      "status": "rejected",
+      "parent": "S1.42AC",
+      "profile": "Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z",
+      "sha256": "9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c",
+      "build_plan": "BuildSpecs/S1.42AD_PLAN.md",
+      "candidate_record": "Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md",
+      "decision_record": "Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md",
+      "runtime_evidence": "RuntimeEvidence/S1.42AD/20260905T103333Z/",
+      "workflow_run": 33959742235,
+      "build_commit": "1463a6cde5e8cb7655dd233f83da5157c91b036e",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "rejected Functional Microwave x0.5 attempt; runtime exposed 18 Interior curves, fail-closed mutation did not apply"
+    },
+    {
+      "id": "S1.42AE",
+      "title": "Functional Microwave Provider Contract Correction",
+      "status": "superseded-path-length-blocked",
+      "parent": "S1.42AC",
+      "profile": "Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z",
+      "sha256": "d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee",
+      "build_plan": "BuildSpecs/S1.42AE_PLAN.md",
+      "candidate_record": "Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md",
+      "analysis": "Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md",
+      "project_status": "Current/Projektstatus_S1.42AE_CANDIDATE.json",
+      "workflow_run": 33968217356,
+      "build_commit": "85e6caade0edd94ac5d7f409b9dd734fc8613f3f",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "correct Functional Microwave provider source contract; superseded because 262-character nested SoundAPI path blocked BepInEx/Mono before provider execution",
+      "decision_record": "Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md"
+    },
+    {
+      "id": "S1.42AF",
+      "title": "Path-Length-Safe Microwave Packaging",
+      "status": "runtime-candidate",
+      "parent": "S1.42AC",
+      "profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
+      "sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
+      "build_plan": "BuildSpecs/S1.42AF_PLAN.md",
+      "candidate_record": "Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md",
+      "analysis": "Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md",
+      "project_status": "Current/Projektstatus_S1.42AF_CANDIDATE.json",
+      "workflow_run": 33993880634,
+      "build_commit": "2cab9044579e74739669440699c763a32f0fe379",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "path-length-safe packaging successor preserving the corrected Functional Microwave 18 Moon / 18 Interior contract and scaling only 18 Moon/tag curves x0.5"
+    }
+  ],
+  "feature_index": {
+    "CodeRebirthLib_removed_DawnLib_owner": "S1.39",
+    "CodeRebirth_utility_kill_Pikmin_protection": "S1.39A",
+    "Currency_Flash_Turret_native_spawn_control": "S1.40B",
+    "BCMER_1_71_0_reactivation": "S1.41",
+    "interior_expansion_restrictions": "S1.42A",
+    "enemy_spawn_restore_baseline": "S1.42C",
+    "Thumper_Bite_Limit_3_Crawler_attack_allowed_Puffer_protection": "S1.42I",
+    "Baboon_prevention_before_mutation_lifecycle": "S1.42S",
+    "full_normal_stack_restoration": "S1.42T",
+    "equal_BCMER_static_EventType_scales": "S1.42U",
+    "final_Jetpack_18_and_Pikmin_Microwave_Snail_tuning": "S1.42Z",
+    "CodeRebirth_ACU_GREG_18_curves_half": "S1.42Z",
+    "config_only_interior_equalization_proven_insufficient": "S1.42AA",
+    "post_viability_interior_weight_100_normalization": "S1.42AB",
+    "BCMER_per_event_weight_semantic_correction": "Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md",
+    "BCMER_static_equal_EventType_probability_accepted": "S1.42AC",
+    "Functional_Microwave_half_frequency_target": "S1.42AF_RUNTIME_CANDIDATE",
+    "Functional_Microwave_provider_contract_drift_proved": "S1.42AD",
+    "Functional_Microwave_corrected_18_Moon_18_Interior_contract": "S1.42AE_SOURCE_REUSED_BY_S1.42AF",
+    "Functional_Microwave_path_length_safe_packaging": "S1.42AF"
+  },
+  "lineage_invariants": [
+    "S1.42C is the canonical normal enemy-spawn/config restore baseline after S1.42B diagnostic divergence.",
+    "S1.42R whole-component BaboonBirdPikminEnemy disable is rejected and must never be replayed.",
+    "S1.42AB was built directly from accepted S1.42Z, not from rejected S1.42AA.",
+    "S1.42AC was built directly from accepted S1.42AB. Its original Current/106 rejection is retained as history, the per-event-weight interpretation was corrected by Current/109, and explicit corrected acceptance is recorded by Current/118. S1.42AC is the current accepted gameplay baseline.",
+    "S1.42AD was built directly from accepted S1.42AC and runtime-rejected because the Functional Microwave provider exposed 18 Interior/tag curves instead of the frozen zero-Interior assumption; its x0.5 mutation did not apply and it is not a safe gameplay base.",
+    "S1.42AE was built directly from accepted S1.42AC, not from rejected S1.42AD. It validates exact 18 Moon/tag and 18 Interior/tag curves, scales only the 18 Moon/tag curves by 0.5, and remains a runtime candidate until explicit acceptance or rejection.",
+    "S1.42AE was built directly from accepted S1.42AC and its provider code was never reached during the preloader failures. It is superseded for packaging/path-length reasons, not runtime-rejected for Microwave logic.",
+    "S1.42AF was built directly from accepted S1.42AC, not from S1.42AE. It reuses the unchanged S1.42AE plugin source while shortening only the Gale profile identity and remains unsafe as a gameplay base until explicit runtime acceptance."
+  ]
+}
