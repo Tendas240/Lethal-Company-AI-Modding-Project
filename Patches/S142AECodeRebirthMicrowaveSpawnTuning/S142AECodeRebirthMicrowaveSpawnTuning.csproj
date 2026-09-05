@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>S142AECodeRebirthMicrowaveSpawnTuning</AssemblyName>
+    <RootNamespace>S142AECodeRebirthMicrowaveSpawnTuning</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Core" Version="5.4.21" />
+    <PackageReference Include="LethalCompany.GameLibs.Steam" Version="81.0.5-ngd.0" />
+    <PackageReference Include="TeamXiaolan.DawnLib" Version="0.9.25" />
+    <PackageReference Include="TeamXiaolan.DawnLib.DuskMod" Version="0.9.25" />
+  </ItemGroup>
+</Project>
