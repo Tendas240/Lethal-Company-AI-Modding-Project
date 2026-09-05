@@ -30,6 +30,10 @@ Recovery/status record:
 
 `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`
 
+Blocked pre-build plan:
+
+`BuildSpecs/S1.42AD_PLAN.md`
+
 This is **not** a built candidate. The draft currently uses `SpawnScale = 0.5f`, but current canonical project requirements only specify that the Microwave should become rarer; no exact reduction percentage is yet authorized.
 
 ## Exact next action
@@ -40,8 +44,8 @@ Before S1.42AD is armed:
 
 1. resolve/confirm the exact desired Microwave spawn reduction magnitude;
 2. independently verify the CodeRebirth `1.6.9` / DawnLib `0.9.25` / Dusk `0.9.25` ownership and exact 19-curve provider contract;
-3. complete the Patch Safety Review from `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
-4. create `BuildSpecs/S1.42AD_PLAN.md` and only then arm the repository-native build.
+3. complete/finalize `BuildSpecs/S1.42AD_PLAN.md`, including the Patch Safety Review from `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` and the approved target/provenance;
+4. only then arm the repository-native build.
 
 Current controllers:
 
