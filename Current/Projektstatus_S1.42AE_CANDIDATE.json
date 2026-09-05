@@ -47,8 +47,22 @@
       "interior_table_action": "VALIDATE_ONLY_NO_MUTATION",
       "fail_closed": true
     },
+    "runtime_attempts": [
+      {
+        "attempt": 1,
+        "status": "INVALID_IMPORT_MATERIALIZATION_EVIDENCE_NOT_RUNTIME_REJECTION",
+        "stage_reached": "BEPINEX_PRELOADER_ONLY",
+        "observed_failure": "FixPluginTypesSerialization TypeInitializationException with inner System.IO.FileNotFoundException for BepInEx\\plugins\\loaforc-loaforcsSoundAPI_LethalCompany\\me.loaforc.soundapi.lethalcompany.dll",
+        "candidate_provider_contract_executed": false,
+        "complete_log_ingested": false,
+        "runtime_inbox_current_at_state_repair": "EMPTY_EXCEPT_GITKEEP",
+        "disposition": "REIMPORT_SAME_S1_42AE_WITH_HARDENED_GALE_HELPER",
+        "helper_hardening_commit": "7b8a23e57ad0ac678314564da1f22638362b97f3",
+        "helper_revision": "2026-09-05-import-uia-v2.2-materialization-proof"
+      }
+    ],
     "runtime_gate": {
-      "startup_main_menu_lobby": "OPEN",
+      "startup_main_menu_lobby": "OPEN_AFTER_INVALID_IMPORT_ATTEMPT",
       "dependency_validation": "OPEN",
       "provider_contract_marker": "MUST_SHOW_PRIORITISE_MOONS_TRUE_MOONCURVES_18_INTERIORCURVES_18",
       "moon_keyset_marker": "MUST_BE_PRESENT",
@@ -68,5 +82,5 @@
     "runtime_active_build": "S1.42AE",
     "successor_armed": false
   },
-  "exact_next_step": "Replace/import S1.42AE with the canonical Gale helper, run one normal gameplay round far enough for normal moon/interior generation, then upload the complete fresh LogOutput.log with the exact S1.42AE uploader in Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md. Do not build a successor before evaluating this runtime evidence."
+  "exact_next_step": "Re-import the same S1.42AE artifact with the canonical Gale helper hardened by commit 7b8a23e57ad0ac678314564da1f22638362b97f3. Proceed only after the helper positively verifies exact export.r2x identity plus both required SoundAPI dependency DLLs as physically present and non-empty. Then run one normal gameplay round far enough for normal moon/interior generation and upload the complete fresh LogOutput.log with the exact S1.42AE uploader in Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md. Do not build a successor before evaluating this runtime evidence."
 }
