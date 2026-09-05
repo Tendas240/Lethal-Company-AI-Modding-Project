@@ -28,7 +28,7 @@ SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
 
 Active candidate: **none**. Runtime test outstanding: **no**. Build successor armed: **no**.
 
-Exact next action: S1.42AC is accepted. No successor is armed and no runtime test is outstanding. Wait for explicit selection of the next isolated gameplay/compatibility scope through Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md.
+Exact next action: S1.42AD Functional Microwave spawn-rarity reduction is the explicitly selected next scope. A source-only draft exists at Patches/S142ADCodeRebirthMicrowaveSpawnTuning/, but no profile has been built or armed. Before building, independently review the draft against Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md, verify the exact CodeRebirth/DawnLib owner and 19-curve contract, and resolve the exact reduction magnitude: the draft uses 0.5 while current canonical requirements specify only that the Microwave should be rarer. Do not build or runtime-test until the target is explicitly confirmed and a build spec is armed.
 
 ## Semantic navigation
 

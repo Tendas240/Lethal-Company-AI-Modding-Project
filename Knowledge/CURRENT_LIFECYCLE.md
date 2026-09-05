@@ -4,8 +4,8 @@
 **Authority:** current lifecycle router; detailed acceptance remains in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
-**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/Projektstatus_S1.42AC_ACCEPTED.json`  
-**Related:** `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/BCMER.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
+**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/Projektstatus_S1.42AC_ACCEPTED.json`, `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`  
+**Related:** `BuildSpecs/current.json`, `BuildSpecs/S1.42AD_PLAN.md`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/BCMER.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Knowledge/ITEM_TUNING.md`  
 **Last-Validated:** 2026-09-05
 
 ## Accepted baseline
@@ -28,11 +28,29 @@ S1.42AB remains the previous accepted rollback/predecessor baseline.
 
 The artifact was **not** silently accepted by that analysis. It was explicitly promoted only by the later corrected acceptance decision in `Current/118...` after fresh S1.42AC runtime confirmation.
 
+## Selected next scope
+
+**S1.42AD — Functional Microwave Spawn Rarity Reduction — SOURCE DRAFT PRESENT / NOT BUILT.**
+
+The user explicitly selected the next build after S1.42AC acceptance. The interrupted ChatGPT session then began the Functional Microwave scope and committed a source-only draft under:
+
+`Patches/S142ADCodeRebirthMicrowaveSpawnTuning/`
+
+Recovery/audit record:
+
+`Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`
+
+Blocked pre-build plan:
+
+`BuildSpecs/S1.42AD_PLAN.md`
+
+The draft uses `SpawnScale = 0.5f`, but current canonical project requirements only establish that the Functional Microwave should become rarer; no exact percentage is currently authorized. Therefore `0.5` is a proposal, not a current accepted target.
+
 ## Active candidate
 
 **NONE.**
 
-There is no successor build armed by the S1.42AC acceptance.
+No S1.42AD profile has been built. Source files and a blocked pre-build plan are not a gameplay candidate.
 
 ## Current controllers
 
@@ -40,12 +58,12 @@ There is no successor build armed by the S1.42AC acceptance.
 
 `S1.42AC`
 
-This is consistent with both the installed/tested runtime profile and the current accepted baseline.
+This is the runtime-active/evidence-attribution build and remains the accepted baseline because no S1.42AD profile exists yet.
 
 `BuildSpecs/current.json` remains disabled:
 
 - `enabled = false`
-- `build_id = IDLE_AFTER_S1.42AC_ACCEPTANCE_NO_SUCCESSOR_ARMED`
+- `build_id = IDLE_S1.42AD_SCOPE_SELECTED_SOURCE_REVIEW_PENDING_NO_SUCCESSOR_ARMED`
 - guarded base = accepted S1.42AC profile/SHA
 - output = `Profiles/DO_NOT_BUILD.r2z`
 
@@ -53,12 +71,19 @@ This is consistent with both the installed/tested runtime profile and the curren
 
 **NONE.**
 
+There is no S1.42AD runtime test because no candidate exists.
+
 Permanent UX rule: whenever a future build is designated ready for runtime testing, the same response must provide both the repository-driven Gale replacement/import PowerShell one-liner when required and the exact build-specific self-contained runtime-log upload PowerShell one-liner. If a user has already completed a run but evidence upload is still pending, provide the uploader for `RuntimeInbox/ACTIVE_BUILD.txt` without requiring another run. See `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` and `Knowledge/GALE_PROFILE_WORKFLOW.md`.
 
-## Exact next gameplay decision
+## Exact next gameplay action
 
-No next gameplay build is implicitly selected. Route the user's next explicit scope choice through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
+Before any S1.42AD build is armed:
 
-The repository information-architecture overhaul remains complete and is not the active maintenance scope. There is currently no active gameplay candidate, runtime gate, or automatically implied successor.
+1. resolve the exact desired Functional Microwave spawn reduction magnitude; the current `0.5` draft value is not yet an authorized target;
+2. independently verify the exact CodeRebirth `1.6.9` / DawnLib `0.9.25` / Dusk `0.9.25` ownership and the exact 19-curve Microwave provider contract;
+3. complete/finalize the blocked pre-build plan `BuildSpecs/S1.42AD_PLAN.md`, including the mandatory Patch Safety Review from `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
+4. only then arm the repository build controller.
 
-Do not build inverse BCMER compensation merely to make the eight logged per-event weights numerically equal. Exact post-filter long-run `12.5%` executed EventType frequency, if ever required, is a separate algorithm-design scope rather than a correction to accepted S1.42AC.
+Do not treat the green Knowledge Architecture run on the source draft as a compile/build gate. Do not runtime-test source-only files.
+
+The repository information-architecture overhaul remains complete and is not the active maintenance scope.

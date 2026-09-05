@@ -1,15 +1,17 @@
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
-**Authority:** live deferred-scope list only; historical build sequencing remains in chronology/lineage  
+**Authority:** live selected/deferred-scope list only; historical build sequencing remains in chronology/lineage  
 **Canonical-For:** `roadmap_and_deferred_scopes`  
-**Evidence:** `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, durable rules extracted from `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`  
-**Related:** `Knowledge/BCMER.md`, `Knowledge/INTERIORS_AND_LLL.md`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/REPOSITORY_OVERHAUL.md`  
+**Evidence:** `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`, `BuildSpecs/S1.42AD_PLAN.md`, durable rules extracted from `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`  
+**Related:** `Knowledge/BCMER.md`, `Knowledge/INTERIORS_AND_LLL.md`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ITEM_TUNING.md`, `Knowledge/REPOSITORY_OVERHAUL.md`  
 **Last-Validated:** 2026-09-05
 
 ## Current position
 
 Accepted gameplay baseline: **S1.42AC — BCMER EventType Equal Distribution**.
+
+Selected next scope: **S1.42AD — Functional Microwave Spawn Rarity Reduction**.
 
 Active gameplay candidate: **none**.
 
@@ -17,15 +19,31 @@ Runtime test outstanding: **none**.
 
 Successor armed: **no**.
 
-S1.42AC is accepted under the corrected BCMER `1.71.0` static EventType probability model in `Current/118...`; S1.42AB is its accepted predecessor/rollback baseline. The repository information-architecture overhaul remains complete and is no longer the active maintenance scope.
+S1.42AC is accepted under the corrected BCMER `1.71.0` static EventType probability model in `Current/118...`; S1.42AB is its accepted predecessor/rollback baseline.
 
-No deferred scope below is implicitly selected by the S1.42AC acceptance. Wait for the user's explicit choice before arming or building a successor.
+After S1.42AC acceptance, the user explicitly requested the next build. The interrupted ChatGPT session selected the Functional Microwave rarity scope and committed a source-only project under `Patches/S142ADCodeRebirthMicrowaveSpawnTuning/`, but it did not build a profile or arm the controller. Recovery authority: `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`.
 
-## Deferred independent gameplay/compatibility scopes
+A blocked pre-build plan now records the incomplete contract at `BuildSpecs/S1.42AD_PLAN.md`.
+
+## S1.42AD pre-build gate
+
+The current draft proposes a uniform Functional Microwave curve scale of `0.5`, implemented through the same narrow DawnLib provider-scaling pattern used by the accepted S1.42Z aerial-defense tuner.
+
+However, the canonical user requirement currently establishes only that the Functional Microwave should become **rarer**. It does not specify an exact reduction percentage. Therefore the draft `0.5` value is not yet an accepted target.
+
+Before S1.42AD may be armed:
+
+1. resolve/confirm the exact desired spawn-rarity reduction magnitude;
+2. independently verify the exact CodeRebirth `1.6.9` / DawnLib `0.9.25` / Dusk `0.9.25` owner path and 19-curve contract;
+3. complete/finalize the Patch Safety Review and approved target/provenance in `BuildSpecs/S1.42AD_PLAN.md` under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
+4. only then arm/build the candidate repository-native.
+
+Do not treat the source-only draft, blocked plan or its green Knowledge Architecture check as a built candidate.
+
+## Remaining deferred independent gameplay/compatibility scopes
 
 These remain separate unless the user explicitly selects or groups them:
 
-- Functional Microwave spawn-rarity reduction;
 - CullFactory disable-culling exceptions for exact IDs `junkrooms` / `shatteredrooms`;
 - MelanieMausoleum fog reduction only for that interior;
 - Black Mesa/interior/Pikmin route recovery;
@@ -33,6 +51,8 @@ These remain separate unless the user explicitly selects or groups them:
 - final long full-stack acceptance;
 - AdditionalNetworking repair only with reproducible user-facing evidence;
 - LethalMin teardown/despawn repair only with stronger evidence.
+
+Functional Microwave spawn-rarity reduction is no longer merely deferred: it is the selected S1.42AD scope, currently stopped at the pre-build/source-review gate above.
 
 ## BCMER scope boundary
 

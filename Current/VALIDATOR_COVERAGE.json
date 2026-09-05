@@ -14,7 +14,7 @@
       "path": "RepositoryTools/knowledge_architecture_validator.py",
       "checks": ["Current-state/controller/lineage consistency including explicit accepted S1.42AC decision linkage", "RuntimeInbox/ACTIVE_BUILD.txt matches CURRENT_STATE.controllers.runtime_active_build and references a known build-lineage ID", "BuildSpecs guarded base matches the currently accepted baseline", "AUTO_BUILD_RESULT base SHA is validated against the latest artifact's lineage parent rather than the post-promotion controller base", "canonical path existence", "Knowledge topic routing/orphans", "historical S1.42AC rejection SHA-provenance chain remains intact independently of the current artifact index", "fresh S1.42AC corrected-acceptance runtime INDEX SHA agrees with Current/Projektstatus_S1.42AC_ACCEPTED.json and the current artifact evidence index"],
       "scan_scope": ["Current state and authority metadata", "RuntimeInbox/ACTIVE_BUILD.txt", "Current/BUILD_LINEAGE.json", "Current/PROJECT_KNOWLEDGE_MAP.json canonical targets", "Knowledge/*.md", "ProfileSources current indexes", "historical and fresh S1.42AC RuntimeEvidence indexes"],
-      "does_not_check": ["Whether the user's local Gale installation actually contains the build named by ACTIVE_BUILD except insofar as the repository state was updated from user/runtime evidence", "Actual profile .r2z byte hashes", "actual raw runtime-log byte hashes", "whether the BCMER mathematical interpretation itself is correct independently of its decision evidence", "all repository-wide superseded-value occurrences", "complete handover-workflow cross-link contract"]
+      "does_not_check": ["Whether the user's local Gale installation actually contains the build named by ACTIVE_BUILD except insofar as the repository state was updated from user/runtime evidence", "Actual profile .r2z byte hashes", "actual raw runtime-log byte hashes", "compilation or runtime correctness of arbitrary new source projects under Patches/ that have not entered the profile-build pipeline", "whether the BCMER mathematical interpretation itself is correct independently of its decision evidence", "all repository-wide superseded-value occurrences", "complete handover-workflow cross-link contract"]
     },
     {
       "path": "RepositoryTools/handover_workflow_validator.py",
@@ -38,7 +38,7 @@
       "path": "RepositoryTools/repository_integrity_guard.py",
       "checks": ["Central known-bad-value registry across repository text", "duplicate same-level current authority claims", "orphan Knowledge topics", "generated-file protection markers"],
       "scan_scope": ["repository text files", "Current/INTEGRITY_ERRATA_REGISTRY.json", "Current/DOCUMENT_AUTHORITY.json", "Current/PROJECT_KNOWLEDGE_MAP.json", "generated bootstrap files"],
-      "does_not_check": ["Gameplay semantics", "arbitrary unknown bad values not registered", "raw binary content"]
+      "does_not_check": ["Gameplay semantics", "arbitrary unknown bad values not registered", "raw binary content", "compilation of source projects under Patches/"]
     },
     {
       "path": "RepositoryTools/phase_checkpoint_validator.py",
