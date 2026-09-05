@@ -75,6 +75,9 @@ jobs:
       - name: Validate repository-wide integrity registry and authority
         run: python RepositoryTools/repository_integrity_guard.py
 
+      - name: Validate Gale import helper fail-closed regression contract
+        run: python RepositoryTools/gale_import_helper_validator.py
+
       - name: Validate S1.42AC runtime SHA provenance
         run: python RepositoryTools/runtime_sha_provenance_validator.py
 
