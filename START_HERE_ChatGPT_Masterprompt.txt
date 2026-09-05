@@ -8,16 +8,20 @@ Game: Lethal Company V81
 Repository is the Source of Truth.
 
 READ FIRST:
-1. Current/00_CURRENT_STATE.md
-2. Current/PROJECT_KNOWLEDGE_MAP.md
-3. Current/01_HANDOVER_CORE.md
+1. Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md
+2. Current/00_CURRENT_STATE.md
+3. Current/PROJECT_KNOWLEDGE_MAP.md
+4. Current/01_HANDOVER_CORE.md
+
+SEGMENTED EXECUTION RULE
+For every project request that requires work, follow Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md. Divide non-trivial work into bounded segments. Execute only the current segment, report Completed / Findings / Remaining / Next segment, then STOP and wait for the user's explicit continuation signal before beginning the next non-final segment. A genuinely short atomic task may be Segment 1/1. Never split an atomic change so the repository/controllers are knowingly left inconsistent.
 
 Then route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the relevant Knowledge topic plus linked evidence/config/code.
 Use Current/DOCUMENT_AUTHORITY.md when old files contain stale "current" wording.
 Use Current/BUILD_LINEAGE.md for "which build introduced/rejected/accepted this?" questions.
 
 HANDOVER SIGNAL
-When the user explicitly requests transfer to a new ChatGPT chat, execute Current/HANDOVER_PREPARATION_PROMPT.md. Verify the then-current main/CI/controllers first and generate a fresh new-chat start prompt from repository authority instead of reusing stale conversation memory.
+When the user explicitly requests transfer to a new ChatGPT chat, execute Current/HANDOVER_PREPARATION_PROMPT.md under the same segmented execution policy. Verify the then-current main/CI/controllers and generate a fresh new-chat start prompt from repository authority instead of reusing stale conversation memory.
 
 ACCEPTED BASELINE
 - S1.42AC — BCMER EventType Equal Distribution
@@ -49,6 +53,7 @@ RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
 
 PERMANENT POLICY ROUTES
+- Segmented ChatGPT execution: Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md
 - Chat handover: Current/HANDOVER_PREPARATION_PROMPT.md
 - BCMER: Knowledge/BCMER.md
 - Interiors/LLL: Knowledge/INTERIORS_AND_LLL.md
