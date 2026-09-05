@@ -3,19 +3,20 @@
 **Status:** CURRENT / CANONICAL AUTHORITY REGISTRY  
 **Authority:** repository knowledge-source precedence  
 **Canonical-For:** authority resolution, historical/current classification  
-**Related:** `Current/DOCUMENT_AUTHORITY.json`, `Current/PROJECT_KNOWLEDGE_MAP.md`, `Current/CURRENT_STATE.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`, `Current/HANDOVER_PREPARATION_PROMPT.md`  
+**Related:** `Current/DOCUMENT_AUTHORITY.json`, `Current/PROJECT_KNOWLEDGE_MAP.md`, `Current/CURRENT_STATE.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`, `Current/HANDOVER_PREPARATION_PROMPT.md`, `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
 **Last-Validated:** 2026-09-05
 
 ## Precedence
 
 For a fresh session, resolve facts in this order:
 
-1. `Current/CURRENT_STATE.json` and `Current/00_CURRENT_STATE.md` for global live state.
-2. `Current/PROJECT_KNOWLEDGE_MAP.md/.json` for semantic routing.
-3. The registered canonical topic/workflow source selected by that map.
-4. `Current/INTEGRITY_ERRATA_REGISTRY.json` when a concrete value/status/provenance claim is known to have been corrected or superseded.
-5. The exact controller/config/code/build/runtime evidence linked by that topic.
-6. Historical handovers, candidate notes and chronology only for provenance.
+1. `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` for the mandatory cadence/checkpoint procedure used while performing project work.
+2. `Current/CURRENT_STATE.json` and `Current/00_CURRENT_STATE.md` for global live state.
+3. `Current/PROJECT_KNOWLEDGE_MAP.md/.json` for semantic routing.
+4. The registered canonical topic/workflow source selected by that map.
+5. `Current/INTEGRITY_ERRATA_REGISTRY.json` when a concrete value/status/provenance claim is known to have been corrected or superseded.
+6. The exact controller/config/code/build/runtime evidence linked by that topic.
+7. Historical handovers, candidate notes and chronology only for provenance.
 
 A historical file never becomes current merely because it contains the word "current". Its authority is determined by this registry, the Knowledge Map and explicit integrity errata.
 
@@ -23,10 +24,11 @@ A later explicit acceptance or rejection may supersede an older lifecycle verdic
 
 ## Global current authority
 
+- `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` — mandatory project-wide ChatGPT execution cadence: segment work, report a checkpoint, stop, and wait for explicit user continuation before the next segment; short atomic tasks may be one segment.
 - `Current/CURRENT_STATE.json` — single machine-readable global state object.
 - `Current/00_CURRENT_STATE.md` — single concise human global state declaration.
 - `Current/01_HANDOVER_CORE.md` — fresh-session takeover router.
-- `Current/HANDOVER_PREPARATION_PROMPT.md` — current workflow executed by the active ChatGPT chat when the user requests transfer to a new ChatGPT chat; it verifies live repository/CI/controller state and generates the new chat's fresh start prompt.
+- `Current/HANDOVER_PREPARATION_PROMPT.md` — current workflow executed by the active ChatGPT chat when the user requests transfer to a new ChatGPT chat; it verifies live repository/CI/controller state and generates the new chat's fresh start prompt while remaining subject to the segmented-execution policy.
 - `Current/PROJECT_KNOWLEDGE_MAP.md/.json` — topic router.
 - `Current/BUILD_LINEAGE.md/.json` — build history / introduced-by / rejected-build reasoning.
 - `Current/INTEGRITY_ERRATA_REGISTRY.json` — known-bad values and supersession/provenance qualifications.
@@ -36,9 +38,17 @@ A later explicit acceptance or rejection may supersede an older lifecycle verdic
 - `RuntimeInbox/ACTIVE_BUILD.txt` — runtime active-build controller only.
 - `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` — project-local patch safety policy.
 
+## Project-wide ChatGPT execution workflow
+
+`Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` controls how work is paced in every project chat. For non-trivial work, ChatGPT must announce a bounded segment, execute only that segment, report completed/findings/remaining/next, then stop until the user explicitly says to continue. Atomic operations must not be split into a knowingly inconsistent state.
+
+This is an execution-cadence authority only. It does not replace lifecycle, semantic-topic, patch-safety, build or runtime authorities.
+
 ## Current-chat handover workflow
 
 When the user explicitly requests a transfer to a new ChatGPT chat, `Current/HANDOVER_PREPARATION_PROMPT.md` is the workflow authority. It is intentionally state-neutral: accepted build, latest artifact, hashes, CI run, runtime gate and next action must be resolved from the then-current repository instead of being duplicated as a static prompt snapshot.
+
+The handover itself must follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`; repository verification, repairs, PR/CI/merge and final prompt generation should be separated into bounded continuation-gated segments when they cannot safely be completed as one short atomic task.
 
 The prompt should be updated when handover mechanics/authority/validation policy changes, not merely because normal build/runtime state advances. Its discoverability from generated bootstrap files, the Knowledge Map and this registry is part of the repository knowledge-architecture contract.
 
