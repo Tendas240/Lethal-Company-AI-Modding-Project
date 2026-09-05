@@ -18,41 +18,55 @@ This file intentionally no longer duplicates the full project history or technic
 
 S1.42AC remains the accepted full-normal-stack gameplay/rollback baseline.
 
-## Latest built artifact
+## Active runtime candidate
 
-**S1.42AD — Functional Microwave Spawn Rarity Reduction — RUNTIME REJECTED / NOT ACCEPTED.**
+**S1.42AE — Functional Microwave Provider Contract Correction — BUILD PASS / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED.**
 
-- Profile: `Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z`
-- SHA-256: `9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c`
-- Candidate: `Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md`
-- Rejection: `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`
-- Runtime evidence: `RuntimeEvidence/S1.42AD/20260905T103333Z/`
-- Raw log SHA-256: `30c69254c4a4fd6bea1ec83cda075c168742c9060b88b09c22025973b074b3e8`
+- Profile: `Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z`
+- SHA-256: `d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee`
+- Candidate: `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`
+- Analysis: `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`
+- Plan: `BuildSpecs/S1.42AE_PLAN.md`
+- Build workflow run: `33968217356`
+- Build commit: `85e6caade0edd94ac5d7f409b9dd734fc8613f3f`
+- DLL SHA-256: `f42b25f32dc338617176d6d1d8c76ec3583ab29c7c4a1231c9e5ca4078378357`
 
-The user-authorized target remains Functional Microwaves **half as often** (`SpawnScale = 0.5`). S1.42AD did not apply that change: its fail-closed patch expected zero Interior/tag curves but runtime exposed 18, including `code_rebirth:functional_microwave_ultra_high`, so mutation was correctly refused.
+The user-authorized target remains Functional Microwaves **half as often** (`SpawnScale = 0.5`). S1.42AE corrects rejected S1.42AD's provider contract: it validates exact 18 Moon/tag and 18 Interior/tag curves, logs both keysets, and scales only the 18 Moon/tag curves. Interior curves are validation-only.
+
+S1.42AD remains rejected history and is not a build/gameplay base.
 
 ## Exact next action
 
-**No runtime test is outstanding. No successor is armed. Do not build from S1.42AD.**
+**A runtime test is outstanding for S1.42AE. No successor is armed.**
 
-Before a corrected Microwave successor is armed, independently establish:
+1. Replace/import S1.42AE using the canonical repository Gale helper.
+2. Start normally and reach main menu/lobby.
+3. Play one normal run far enough for normal moon/interior generation and ordinary gameplay.
+4. Upload the complete fresh `LogOutput.log` with the exact S1.42AE uploader in the candidate record.
+5. Evaluate the log before any successor work.
 
-1. the actual runtime Moon-curve count and exact key set;
-2. the actual runtime Interior-curve count and exact key set;
-3. DawnLib/Dusk `MapObjectSpawnMechanics` selection/evaluation semantics for `PrioritiseMoons = true`;
-4. which effective curve table or tables must be proportionally scaled for the half-frequency target;
-5. a revised fail-closed contract that logs/verifies both tables before mutation.
+Required S1.42AE evidence:
 
-Do not merely remove the Interior check and do not blindly scale both dictionaries.
+- `S1.42AE CodeRebirth Microwave Spawn Tuning 1.0.0` loads;
+- CodeRebirth `1.6.9`, DawnLib `0.9.25`, and Dusk `0.9.25` validation succeeds;
+- armed marker appears for the Moon-registry-freeze lifecycle;
+- provider marker reports `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=18`;
+- both exact Moon and Interior keyset markers appear;
+- final marker reports all 18 Moon/tag curves scaled by `0.5` and 18 Interior curves validation-only/not mutated;
+- no S1.42AE refusal/error marker;
+- normal startup/round generation/gameplay remains healthy;
+- no new fatal/project-critical regression.
+
+A single normal run is sufficient for this technical gate. Do not require a statistically meaningful observed Microwave count from that run; deterministic provider mutation is the primary half-frequency evidence.
 
 Current controllers:
 
 - `BuildSpecs/current.json` is disabled.
-- controller id: `IDLE_AFTER_S1.42AD_REJECTION_MICROWAVE_PROVIDER_ANALYSIS_PENDING`.
-- guarded base: accepted S1.42AC profile/SHA.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC`.
+- controller id: `IDLE_AFTER_S1.42AE_BUILD_AWAITING_RUNTIME_VALIDATION`.
+- guarded base: S1.42AE candidate profile/SHA.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AE`.
 
-Whenever a future runtime test becomes outstanding, the same response that explains the test must include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader.
+The response that explains this runtime test must include both the repository-driven Gale replacement/import one-liner and the exact S1.42AE self-contained PowerShell one-line runtime-log uploader.
 
 ## Remaining open/deferred work
 
