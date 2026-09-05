@@ -1,12 +1,12 @@
-# Automated profile build result - S1.42AE
+# Automated profile build result - S1.42AF
 
-- Profile: LC V1 S1.42AE Functional Microwave Provider Contract Correction
+- Profile: LC V1 S1.42AF Microwave Fix
 - Base: Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z
 - Base SHA-256: 0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9
-- Output: Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z
-- Output SHA-256: d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee
+- Output: Profiles/LC V1 S1.42AF Microwave Fix.r2z
+- Output SHA-256: 6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0
 - ZIP members: 335
-- Text snapshot: ProfileSources/S1.42AE (330 readable files)
+- Text snapshot: ProfileSources/S1.42AF (330 readable files)
 
 ## Changed existing members
 
