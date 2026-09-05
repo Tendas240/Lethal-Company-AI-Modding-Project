@@ -39,6 +39,8 @@ There is **no active build candidate** and **no runtime test outstanding**.
 
 `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF` remains the runtime-evidence attribution pointer; it is not a separate acceptance authority. The completed S1.42AF log is already ingested, so no upload or repeat run is pending.
 
+The canonical Gale replacement/import helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. No Gale re-import is currently required because S1.42AF is already accepted and its runtime evidence is complete.
+
 ## Current open compatibility finding
 
 The S1.42AF acceptance run also exposed a separate inherited compatibility gap:
