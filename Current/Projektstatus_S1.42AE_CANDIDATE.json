@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "date": "2026-09-05",
   "repository_is_source_of_truth": true,
   "accepted_baseline": {
@@ -21,6 +21,7 @@
     "automated_build_commit": "85e6caade0edd94ac5d7f409b9dd734fc8613f3f",
     "candidate_record": "Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md",
     "analysis": "Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md",
+    "import_recovery_analysis": "Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md",
     "plan": "BuildSpecs/S1.42AE_PLAN.md",
     "patch_source": "Patches/S142AECodeRebirthMicrowaveSpawnTuning/",
     "snapshot": "ProfileSources/S1.42AE/",
@@ -73,22 +74,54 @@
         "complete_log_ingested": false,
         "disposition": "REIMPORT_SAME_S1_42AE_WITH_V2_3_RECURSIVE_PACKAGE_MATERIALIZATION_PROOF",
         "root_cause_classification": "V2_2_SENTINEL_PATH_MODEL_AND_TRANSITIVE_DEPENDENCY_CLOSURE_INCOMPLETE"
+      },
+      {
+        "attempt": 3,
+        "status": "INVALID_IMPORT_MATERIALIZATION_EVIDENCE_NOT_RUNTIME_REJECTION",
+        "stage_reached": "BEPINEX_PRELOADER_ONLY_AFTER_FALSE_POSITIVE_V2_3_IMPORT_PROOF",
+        "observed_failure": "v2.3 inherited Get-ZipEntryText emitted non-terminating New-Object StreamReader overload error, dependency derivation received empty ExpectedExportText, proof continued with no effective critical contracts, then game failed in the same missing nested loaforcsSoundAPI_LethalCompany binding path",
+        "candidate_provider_contract_executed": false,
+        "complete_log_ingested": false,
+        "disposition": "REIMPORT_SAME_S1_42AE_WITH_V2_4_EXPORT_READ_FAIL_CLOSED_PROOF",
+        "root_cause_classification": "V2_3_EXPORT_TEXT_READ_NONTERMINATING_ERROR_ALLOWED_FALSE_POSITIVE_MATERIALIZATION_SUCCESS"
       }
     ],
+    "control_test": {
+      "build_id": "S1.42AC",
+      "purpose": "A_B_CONTROL_FOR_SOUNDAPI_GALE_MATERIALIZATION",
+      "fresh_sha_verified_import": true,
+      "base_soundapi_nested_dll_present_nonempty": true,
+      "binding_soundapi_nested_dll_present_nonempty": true,
+      "base_soundapi_size_bytes": 107008,
+      "binding_soundapi_size_bytes": 40960,
+      "main_menu_reached": true,
+      "control_log_sha256": "29070a04985b9e7df781337ff6cd9cb8ec57b9c4b12f31128ab195c0e6e3e825",
+      "control_log_size_bytes": 766059,
+      "control_log_lines": 7671,
+      "fatal_markers": 0,
+      "ingested_to_runtime_inbox": false,
+      "ingest_reason": "ACTIVE_BUILD remains S1.42AE; ingesting S1.42AC control log would misattribute evidence"
+    },
     "import_recovery": {
-      "canonical_launcher": "RuntimeTools/ReplaceActiveGaleProfileV23.ps1",
-      "helper_revision": "2026-09-05-import-uia-v2.3-recursive-package-materialization-proof",
+      "canonical_launcher": "RuntimeTools/ReplaceActiveGaleProfileV24.ps1",
+      "helper_revision": "2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof",
       "underlying_validated_importer": "RuntimeTools/ReplaceActiveGaleProfile.ps1",
       "underlying_required_revision": "2026-09-05-import-uia-v2.2-materialization-proof",
+      "superseded_helper": "RuntimeTools/ReplaceActiveGaleProfileV23.ps1",
+      "superseded_helper_failure": "FALSE_POSITIVE_AFTER_NONTERMINATING_EXPORT_TEXT_READ_ERROR",
       "binding_package": "loaforc-loaforcsSoundAPI_LethalCompany",
       "binding_required_recursive_file": "me.loaforc.soundapi.lethalcompany.dll",
       "base_package_transitively_required": "loaforc-loaforcsSoundAPI",
       "base_required_recursive_file": "me.loaforc.soundapi.dll",
       "package_root_rule": "EXACTLY_ONE_NONEMPTY_EXPECTED_DLL_RECURSIVELY_WITHIN_EACH_GALE_PACKAGE_ROOT",
-      "fail_closed_on_missing_empty_or_duplicate": true
+      "export_text_rule": "NONEMPTY_SUCCESSFULLY_DECODED_BEFORE_DEPENDENCY_DERIVATION",
+      "binding_contract_count": 2,
+      "fail_closed_on_export_read_error": true,
+      "fail_closed_on_missing_empty_or_duplicate": true,
+      "regression_validator": "RepositoryTools/gale_import_helper_validator.py"
     },
     "runtime_gate": {
-      "startup_main_menu_lobby": "OPEN_AFTER_TWO_INVALID_IMPORT_ATTEMPTS",
+      "startup_main_menu_lobby": "OPEN_AFTER_THREE_INVALID_IMPORT_ATTEMPTS",
       "dependency_validation": "OPEN",
       "provider_contract_marker": "MUST_SHOW_PRIORITISE_MOONS_TRUE_MOONCURVES_18_INTERIORCURVES_18",
       "moon_keyset_marker": "MUST_BE_PRESENT",
@@ -108,5 +141,5 @@
     "runtime_active_build": "S1.42AE",
     "successor_armed": false
   },
-  "exact_next_step": "Re-import the same S1.42AE artifact with RuntimeTools/ReplaceActiveGaleProfileV23.ps1. Proceed only after revision 2026-09-05-import-uia-v2.3-recursive-package-materialization-proof positively verifies exact export.r2x identity plus exactly one non-empty base SoundAPI DLL and one non-empty LethalCompany SoundAPI binding DLL inside their respective Gale package roots. Then run one normal gameplay round far enough for normal moon/interior generation and upload the complete fresh LogOutput.log with the exact S1.42AE uploader in Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md. Do not build a successor before evaluating this runtime evidence."
+  "exact_next_step": "After v2.4 repository/CI validation is merged, re-import the same S1.42AE artifact with RuntimeTools/ReplaceActiveGaleProfileV24.ps1. Proceed only after revision 2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof successfully decodes non-empty export.r2x text, derives and lists exactly two SoundAPI critical contracts, and verifies exactly one non-empty base SoundAPI DLL plus one non-empty LethalCompany binding DLL inside their respective Gale package roots. Then run one normal gameplay round far enough for normal moon/interior generation and upload the complete fresh LogOutput.log with the exact S1.42AE uploader in Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md. Do not build a successor before evaluating this runtime evidence."
 }

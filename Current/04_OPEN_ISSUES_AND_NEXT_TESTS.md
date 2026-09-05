@@ -25,7 +25,8 @@ S1.42AC remains the accepted full-normal-stack gameplay/rollback baseline.
 - Profile: `Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z`
 - SHA-256: `d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee`
 - Candidate: `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`
-- Analysis: `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`
+- Provider analysis: `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`
+- Import-recovery analysis: `Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`
 - Plan: `BuildSpecs/S1.42AE_PLAN.md`
 - Build workflow run: `33968217356`
 - Build commit: `85e6caade0edd94ac5d7f409b9dd734fc8613f3f`
@@ -37,49 +38,70 @@ S1.42AD remains rejected history and is not a build/gameplay base.
 
 ## Import/materialization blocker
 
-Two S1.42AE game launches have failed before the candidate runtime gate. Both are **invalid import/materialization evidence, not S1.42AE runtime rejections**.
+Three S1.42AE game launches have failed before the candidate runtime gate. All are **invalid import/materialization evidence, not S1.42AE runtime rejections**.
 
-The second console capture explicitly showed `AutoHookGenPatcher` trying to read:
+The second and third game launches failed with `AutoHookGenPatcher` / `FixPluginTypesSerialization` unable to consume:
 
 `BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
 
-The local path did not exist, followed by `FixPluginTypesSerialization` `System.TypeInitializationException` / inner `System.IO.FileNotFoundException` and fatal BepInEx preloader termination. S1.42AE's Microwave provider-contract code was not reached.
+S1.42AE's Microwave provider-contract code was not reached.
 
-The previous v2.2 Gale materialization sentinel used a flat path model and did not close the transitive dependency requirement. The current canonical launcher is now:
+The third attempt additionally proved that v2.3's apparent successful materialization result was a **false positive**. The inherited `Get-ZipEntryText` emitted a non-terminating Windows PowerShell 5.1 `New-Object` overload error for its five-argument `StreamReader`; dependency derivation then received empty `ExpectedExportText`, emitted another non-terminating error, and the importer continued with no effective critical dependency list.
 
-`RuntimeTools/ReplaceActiveGaleProfileV23.ps1`
+A fresh SHA-verified S1.42AC control import physically produced both nested SoundAPI DLLs. S1.42AC then passed the BepInEx preloader and reached the main menu normally. This isolates the current blocker to the Gale import/materialization proof path rather than S1.42AE's Functional Microwave code.
+
+Current analysis authority:
+
+`Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`
+
+## Current Gale recovery
+
+The canonical launcher is now:
+
+`RuntimeTools/ReplaceActiveGaleProfileV24.ps1`
 
 revision:
 
-`2026-09-05-import-uia-v2.3-recursive-package-materialization-proof`
+`2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`
 
-For a binding-enabled export it requires, before import success:
+v2.4 preserves the validated v2.2 Gale UI/import behavior and recursive package-root checks, but additionally:
 
-- exactly one non-empty `me.loaforc.soundapi.dll` recursively inside the `loaforc-loaforcsSoundAPI` Gale package root;
-- exactly one non-empty `me.loaforc.soundapi.lethalcompany.dll` recursively inside the `loaforc-loaforcsSoundAPI_LethalCompany` Gale package root.
+- replaces the failing export-text reader with a direct four-argument `System.IO.StreamReader` constructor;
+- terminates on export-reader construction/read failure;
+- terminates on empty/whitespace export text before dependency derivation;
+- rejects null/empty `ExpectedExportText`;
+- fails closed on SoundAPI package-name parse drift;
+- requires an LC binding to derive exactly two critical contracts;
+- requires exactly one non-empty base SoundAPI DLL and exactly one non-empty LC-binding DLL recursively inside their respective Gale package roots;
+- fails closed on missing roots, zero matches, empty files, duplicate files, or unexpected v2.2 helper drift.
 
-Missing roots, zero matches, empty files, or duplicate matches fail closed. The base SoundAPI requirement is implied by the binding package even when Gale export metadata does not separately list the base package.
+Permanent regression guard:
+
+`RepositoryTools/gale_import_helper_validator.py`
 
 No valid complete S1.42AE runtime log has been ingested yet. The candidate remains active; no successor is armed.
 
-## Fresh-chat continuation checkpoint
+## Continuation authority
 
-The durable handover/continuation record is:
+`Current/124_HANDOVER_S1.42AE_V23_SEGMENT3_NEXT.md` is preserved as the handover checkpoint that led into the now-completed v2.3 user-facing attempt. Its v2.3 continuation instruction is superseded for live work by:
 
-`Current/124_HANDOVER_S1.42AE_V23_SEGMENT3_NEXT.md`
+`Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`
 
-The youngest technical task reached **Technical Segment 2/3 complete**. Resume at **Technical Segment 3/3**. The implementation/merge work is already done; do not repeat v2.3 implementation and do not build a successor. After the handover's final `main`/CI verification, Technical Segment 3/3 should release the v2.3 re-import/test instructions to the user, including the Gale launcher and exact S1.42AE uploader in the same response.
+and the current lifecycle/state authorities.
 
 ## Exact next action
 
-**The same S1.42AE artifact must be re-imported with v2.3 and tested. Do not build a successor.**
+**The same S1.42AE artifact must be re-imported with v2.4 after the repair is merged and CI is green. Do not build a successor.**
 
-1. Run the canonical `RuntimeTools/ReplaceActiveGaleProfileV23.ps1` repository launcher.
-2. Do not start the game unless it positively verifies exact `export.r2x` identity and both recursive SoundAPI package-root contracts.
-3. Start normally and reach main menu/lobby.
-4. Play one normal run far enough for normal moon/interior generation and ordinary gameplay.
-5. Upload the complete fresh `LogOutput.log` with the exact S1.42AE uploader in the candidate record.
-6. Evaluate the log before any successor work.
+1. Run the canonical `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` repository launcher.
+2. Require successful non-empty `export.r2x` text decoding.
+3. Require the helper to derive/list exactly two SoundAPI critical materialization contracts.
+4. Require exactly one non-empty base SoundAPI DLL and one non-empty LC-binding DLL inside their respective package roots.
+5. Do not start the game unless all of those checks pass.
+6. Start normally and reach main menu/lobby.
+7. Play one normal run far enough for normal moon/interior generation and ordinary gameplay.
+8. Upload the complete fresh `LogOutput.log` with the exact S1.42AE uploader in the candidate record.
+9. Evaluate the log before any successor work.
 
 Required S1.42AE evidence:
 
@@ -102,7 +124,7 @@ Current controllers:
 - guarded base: S1.42AE candidate profile/SHA.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AE`.
 
-The response that explains this runtime test must include both the repository-driven Gale v2.3 replacement/import one-liner and the exact S1.42AE self-contained PowerShell one-line runtime-log uploader.
+The response that releases this runtime test must include both the repository-driven Gale v2.4 replacement/import one-liner and the exact S1.42AE self-contained PowerShell one-line runtime-log uploader.
 
 ## Remaining open/deferred work
 
