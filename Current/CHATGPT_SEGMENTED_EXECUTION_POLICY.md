@@ -145,11 +145,14 @@ This policy must remain discoverable from the normal project bootstrap and hando
 
 - `README.md`;
 - `START_HERE_ChatGPT_Masterprompt.txt`;
+- `Current/00_CURRENT_STATE.md`;
 - `Current/01_HANDOVER_CORE.md`;
 - `Current/CURRENT_STATE.json` canonical navigation;
-- `Current/PROJECT_KNOWLEDGE_MAP.md/.json`;
+- `Current/PROJECT_KNOWLEDGE_MAP.md`;
 - `Current/DOCUMENT_AUTHORITY.md/.json`;
 - `Current/HANDOVER_PREPARATION_PROMPT.md`.
+
+`Current/PROJECT_KNOWLEDGE_MAP.json` remains the machine semantic-topic router; this cross-cutting execution policy is anchored through canonical navigation/authority rather than being required to behave as a gameplay/content topic.
 
 Repository CI should fail if this discoverability contract is lost.
 
