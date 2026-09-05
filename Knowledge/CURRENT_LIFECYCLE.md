@@ -4,8 +4,8 @@
 **Authority:** current lifecycle router; detailed acceptance/rejection remains in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
-**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/Projektstatus_S1.42AC_ACCEPTED.json`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/Projektstatus_S1.42AD_REJECTED.json`  
-**Related:** `BuildSpecs/current.json`, `BuildSpecs/S1.42AD_PLAN.md`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/BCMER.md`, `Knowledge/CODEREBIRTH.md`, `Knowledge/ITEM_TUNING.md`  
+**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`, `Current/Projektstatus_S1.42AE_CANDIDATE.json`  
+**Related:** `BuildSpecs/current.json`, `BuildSpecs/S1.42AE_PLAN.md`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/CODEREBIRTH.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
 **Last-Validated:** 2026-09-05
 
 ## Accepted baseline
@@ -20,64 +20,67 @@
 
 S1.42AC remains the accepted full-normal-stack gameplay/rollback baseline.
 
-## Latest built artifact — rejected
+## Rejected predecessor
 
 **S1.42AD — Functional Microwave Spawn Rarity Reduction — RUNTIME REJECTED / NOT ACCEPTED.**
 
-- Profile: `Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z`
-- Profile SHA-256: `9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c`
-- Candidate record: `Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md`
-- Rejection: `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`
-- Machine rejection state: `Current/Projektstatus_S1.42AD_REJECTED.json`
-- Runtime evidence: `RuntimeEvidence/S1.42AD/20260905T103333Z/`
-- Raw log SHA-256: `30c69254c4a4fd6bea1ec83cda075c168742c9060b88b09c22025973b074b3e8`
+S1.42AD failed closed because it expected `InteriorCurves=0`, while runtime exposed 18 Interior/tag curves. No `0.5` mutation executed. Rejection authority:
 
-S1.42AD loaded successfully and validated CodeRebirth `1.6.9`, DawnLib `0.9.25` and Dusk `0.9.25`. Its fail-closed patch then refused mutation because the runtime Functional Microwave provider exposed **18 Interior/tag curves**, while the frozen candidate contract required `0`.
-
-The refusal included `code_rebirth:functional_microwave_ultra_high` in the actual Interior-curve set. No later S1.42AD application marker exists, so the user-authorized `SpawnScale = 0.5` was not applied.
-
-The candidate is rejected because the target tuning did not execute. The fail-closed behavior itself worked correctly.
+`Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`
 
 ## Active candidate
 
-**NONE.**
+**S1.42AE — Functional Microwave Provider Contract Correction — BUILD PASS / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED.**
 
-No runtime test is outstanding. Do not use S1.42AD as a gameplay/build base.
+- Profile: `Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z`
+- Profile SHA-256: `d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee`
+- DLL SHA-256: `f42b25f32dc338617176d6d1d8c76ec3583ab29c7c4a1231c9e5ca4078378357`
+- Successful build run: `33968217356`
+- Automated build commit: `85e6caade0edd94ac5d7f409b9dd734fc8613f3f`
+- Candidate record: `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`
+- Correction analysis: `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`
+- Machine state: `Current/Projektstatus_S1.42AE_CANDIDATE.json`
+- Snapshot: `ProfileSources/S1.42AE/`
+
+Automated archive QC vs accepted S1.42AC found exactly one changed existing member (`export.r2x`) and exactly one added member (the S1.42AE DLL), with zero mod-state/addition/removal/config changes.
+
+## Corrected Functional Microwave contract
+
+The user-authorized target remains `SpawnScale = 0.5`.
+
+S1.42AE requires:
+
+- CodeRebirth `1.6.9`;
+- DawnLib/Dusk `0.9.25`;
+- exact `code_rebirth:functional_microwave` provider;
+- `PrioritiseMoons=true`;
+- exact 18-key Moon/tag table;
+- exact 18-key Interior/tag table;
+- all curves valid.
+
+Dusk 0.9.25 selection semantics under Moon priority are exact Moon -> exact Interior fallback -> matching Moon tags. The two tables are not combined. S1.42AE therefore logs/validates both tables and scales only the 18 Moon/tag curves by `0.5`; the 18 Interior curves are validation-only.
 
 ## Current controllers
 
-`RuntimeInbox/ACTIVE_BUILD.txt` contains:
+`RuntimeInbox/ACTIVE_BUILD.txt`:
 
-`S1.42AC`
+`S1.42AE`
 
-`BuildSpecs/current.json` is disabled:
+`BuildSpecs/current.json` is disabled after successful generation:
 
 - `enabled = false`;
-- `build_id = IDLE_AFTER_S1.42AD_REJECTION_MICROWAVE_PROVIDER_ANALYSIS_PENDING`;
-- guarded base = accepted S1.42AC profile/SHA;
+- `build_id = IDLE_AFTER_S1.42AE_BUILD_AWAITING_RUNTIME_VALIDATION`;
+- guarded base = S1.42AE candidate profile/SHA;
 - no successor is armed.
-
-## Regression triage from S1.42AD
-
-Fresh S1.42AD evidence kept project-critical regression markers clean:
-
-- Work/no-task = `0`;
-- Leader-null = `0`;
-- Compatibility Fixes Error = `0`;
-- Fatal = `0`;
-- NetworkObjectReference-unspawned regression = `0`;
-- PikminNoticeZone regression = `0`.
-
-The known loaforcsSoundAPI/HarmonyX TypeLoadException and SoftMask NullReference warnings remain monitor-only under `Knowledge/MONITOR_ONLY_ERRORS.md`.
 
 ## Exact next project action
 
-The user's desired Functional Microwave target remains **half as often** (`SpawnScale = 0.5`). Before any corrected successor is armed, independently resolve:
+Runtime-test S1.42AE before any successor work:
 
-1. the actual runtime Moon-curve count and exact keys;
-2. the actual runtime Interior-curve count and exact keys;
-3. DawnLib `MapObjectSpawnMechanics` selection/evaluation semantics when `PrioritiseMoons = true`;
-4. which effective table or tables must be scaled to produce true half-frequency behavior;
-5. a revised fail-closed contract that logs and verifies both tables before mutation.
+1. replace/import the active Gale profile using the canonical repository helper;
+2. play one normal run far enough for ordinary moon/interior generation;
+3. upload the complete fresh `LogOutput.log` using the exact S1.42AE uploader in the candidate record;
+4. verify dependency versions, `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=18`, both keyset logs, final 18-Moon-curves `x0.5` marker, no contract refusal, and no new fatal/project-critical regression;
+5. accept or reject S1.42AE from that evidence.
 
-Do not simply remove the Interior check or blindly scale both dictionaries. No successor build or runtime test is currently pending.
+Do not build a successor before this runtime evidence is evaluated.
