@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only; historical build sequencing remains in chronology/lineage  
 **Canonical-For:** `roadmap_and_deferred_scopes`  
-**Evidence:** `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`, durable rules extracted from `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`  
+**Evidence:** `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`, `BuildSpecs/S1.42AD_PLAN.md`, durable rules extracted from `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`  
 **Related:** `Knowledge/BCMER.md`, `Knowledge/INTERIORS_AND_LLL.md`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ITEM_TUNING.md`, `Knowledge/REPOSITORY_OVERHAUL.md`  
 **Last-Validated:** 2026-09-05
 
@@ -23,6 +23,8 @@ S1.42AC is accepted under the corrected BCMER `1.71.0` static EventType probabil
 
 After S1.42AC acceptance, the user explicitly requested the next build. The interrupted ChatGPT session selected the Functional Microwave rarity scope and committed a source-only project under `Patches/S142ADCodeRebirthMicrowaveSpawnTuning/`, but it did not build a profile or arm the controller. Recovery authority: `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`.
 
+A blocked pre-build plan now records the incomplete contract at `BuildSpecs/S1.42AD_PLAN.md`.
+
 ## S1.42AD pre-build gate
 
 The current draft proposes a uniform Functional Microwave curve scale of `0.5`, implemented through the same narrow DawnLib provider-scaling pattern used by the accepted S1.42Z aerial-defense tuner.
@@ -33,11 +35,10 @@ Before S1.42AD may be armed:
 
 1. resolve/confirm the exact desired spawn-rarity reduction magnitude;
 2. independently verify the exact CodeRebirth `1.6.9` / DawnLib `0.9.25` / Dusk `0.9.25` owner path and 19-curve contract;
-3. complete the Patch Safety Review required by `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
-4. create `BuildSpecs/S1.42AD_PLAN.md` with exact base S1.42AC profile/SHA, local-plugin build, archive assertions and runtime acceptance markers;
-5. only then arm/build the candidate repository-native.
+3. complete/finalize the Patch Safety Review and approved target/provenance in `BuildSpecs/S1.42AD_PLAN.md` under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
+4. only then arm/build the candidate repository-native.
 
-Do not treat the source-only draft or its green Knowledge Architecture check as a built candidate.
+Do not treat the source-only draft, blocked plan or its green Knowledge Architecture check as a built candidate.
 
 ## Remaining deferred independent gameplay/compatibility scopes
 
