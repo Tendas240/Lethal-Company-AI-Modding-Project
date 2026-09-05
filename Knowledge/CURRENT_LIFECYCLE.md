@@ -5,7 +5,7 @@
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
 **Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`, `Current/Projektstatus_S1.42AE_CANDIDATE.json`  
-**Related:** `BuildSpecs/current.json`, `BuildSpecs/S1.42AE_PLAN.md`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/CODEREBIRTH.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
+**Related:** `BuildSpecs/current.json`, `BuildSpecs/S1.42AE_PLAN.md`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/CODEREBIRTH.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Knowledge/GALE_PROFILE_WORKFLOW.md`  
 **Last-Validated:** 2026-09-05
 
 ## Accepted baseline
@@ -44,6 +44,25 @@ S1.42AD failed closed because it expected `InteriorCurves=0`, while runtime expo
 
 Automated archive QC vs accepted S1.42AC found exactly one changed existing member (`export.r2x`) and exactly one added member (the S1.42AE DLL), with zero mod-state/addition/removal/config changes.
 
+## First S1.42AE launch attempt
+
+The first user launch attempt is classified as **invalid import/materialization evidence, not a candidate rejection**.
+
+BepInEx failed during preloader initialization before S1.42AE's own provider-contract validation could run. The observed chain was `FixPluginTypesSerialization` `System.TypeInitializationException` with an inner `System.IO.FileNotFoundException` for the expected local Gale dependency DLL:
+
+`BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
+
+Consequences:
+
+- S1.42AE remains the active runtime candidate;
+- S1.42AC remains the accepted rollback baseline;
+- the S1.42AE runtime gate remains open;
+- no successor is armed;
+- no complete fresh valid S1.42AE `LogOutput.log` has been ingested;
+- a new profile build is not justified by this incident.
+
+The canonical Gale replacement/import helper was hardened in commit `7b8a23e57ad0ac678314564da1f22638362b97f3` with revision `2026-09-05-import-uia-v2.2-materialization-proof`. Besides exact `export.r2x` identity, it now requires the project-critical SoundAPI dependency files referenced by the export to be physically present and non-empty before import success is declared. See `Knowledge/GALE_PROFILE_WORKFLOW.md`.
+
 ## Corrected Functional Microwave contract
 
 The user-authorized target remains `SpawnScale = 0.5`.
@@ -75,12 +94,14 @@ Dusk 0.9.25 selection semantics under Moon priority are exact Moon -> exact Inte
 
 ## Exact next project action
 
-Runtime-test S1.42AE before any successor work:
+Re-import and runtime-test the **same S1.42AE artifact** before any successor work:
 
-1. replace/import the active Gale profile using the canonical repository helper;
-2. play one normal run far enough for ordinary moon/interior generation;
-3. upload the complete fresh `LogOutput.log` using the exact S1.42AE uploader in the candidate record;
-4. verify dependency versions, `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=18`, both keyset logs, final 18-Moon-curves `x0.5` marker, no contract refusal, and no new fatal/project-critical regression;
-5. accept or reject S1.42AE from that evidence.
+1. replace/import S1.42AE using the canonical repository Gale helper hardened by commit `7b8a23e57ad0ac678314564da1f22638362b97f3`;
+2. require the helper to positively verify exact imported `export.r2x` identity plus both required SoundAPI DLLs as physically present and non-empty;
+3. only after that proof, start the game and reach main menu/lobby;
+4. play one normal run far enough for ordinary moon/interior generation;
+5. upload the complete fresh `LogOutput.log` using the exact S1.42AE uploader in the candidate record;
+6. verify dependency versions, `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=18`, both keyset logs, final 18-Moon-curves `x0.5` marker, no contract refusal, and no new fatal/project-critical regression;
+7. accept or reject S1.42AE from that valid evidence.
 
 Do not build a successor before this runtime evidence is evaluated.
