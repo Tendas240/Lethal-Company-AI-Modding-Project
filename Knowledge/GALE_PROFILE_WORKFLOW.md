@@ -6,7 +6,8 @@
 **Evidence:** `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`  
 **Implementation:** `RuntimeTools/ReplaceActiveGaleProfile.ps1`  
 **Related:** `Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`, `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`, `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-09-04  
+**Last-Hardened:** 2026-09-05 (critical dependency materialization proof; pending next user re-import)
 
 ## Canonical launcher
 
@@ -33,9 +34,21 @@ The helper was fully user-validated during S1.42AA -> S1.42AB on Windows PowerSh
 - invokes Import;
 - waits for the exact target profile's local `export.r2x`;
 - requires that local `export.r2x` hash to match the archive-entry hash;
-- removes the temporary `.r2z` only after proof succeeds.
+- additionally requires project-critical external Thunderstore dependency DLLs referenced by the expected export to be physically materialized and non-empty in the imported profile;
+- removes the temporary `.r2z` only after both export identity and required materialization proof succeed.
 
 After profile number + `y`, no additional Gale click or PowerShell Enter is required on the validated happy path.
+
+## Critical materialization proof
+
+An exact `export.r2x` proves the imported profile metadata, but it does **not** by itself prove that Gale finished materializing every external Thunderstore package file. This distinction became operationally important when S1.42AE had the correct export metadata while BepInEx could not open the expected `loaforc-loaforcsSoundAPI_LethalCompany` DLL from the local Gale profile.
+
+The helper therefore carries a narrow project-critical materialization contract. When the corresponding package names are present in the expected export, the import is not accepted until these files exist as non-empty files:
+
+- `BepInEx\plugins\loaforc-loaforcsSoundAPI\me.loaforc.soundapi.dll`
+- `BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
+
+This is a fail-closed sentinel for the observed dependency-installation failure. It is not a claim that every third-party Thunderstore DLL is embedded in the `.r2z`, and it does not replace runtime validation.
 
 ## Fail-closed requirements
 
@@ -47,7 +60,9 @@ Keep the exact workflow safety constraints from `Current/93_GALE_ACTIVE_PROFILE_
 - no coordinate clicks or blind key navigation;
 - never auto-resolve multiple missing profiles;
 - no cache-busting query string on the binary `.r2z` Raw GitHub URL;
-- exact post-import `export.r2x` evidence is the success proof.
+- exact post-import `export.r2x` evidence remains mandatory;
+- required project-critical dependency files must also exist and be non-empty before the helper declares success or removes the downloaded `.r2z`;
+- on materialization timeout/failure, report the missing relative paths and preserve the downloaded `.r2z` for diagnosis.
 
 ## Runtime-test pairing
 

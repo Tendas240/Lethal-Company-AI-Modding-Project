@@ -1,7 +1,7 @@
 $root='C:\Users\Milan\AppData\Roaming\com.kesomannen.gale\lethal-company\profiles'
 $repo='Tendas240/Lethal-Company-AI-Modding-Project'
 $headers=@{'User-Agent'='LC-Profile-Updater';'Cache-Control'='no-cache'}
-$helperRevision='2026-09-04-import-uia-v2.1-download-hotfix'
+$helperRevision='2026-09-05-import-uia-v2.2-materialization-proof'
 
 function Get-GaleAutomationRoot {
     try {
@@ -275,20 +275,78 @@ function Get-ZipEntrySha256 {
     finally {$zip.Dispose()}
 }
 
+function Get-ZipEntryText {
+    param([Parameter(Mandatory=$true)][string]$ZipPath,[Parameter(Mandatory=$true)][string]$EntryName)
+    Add-Type -AssemblyName System.IO.Compression.FileSystem -ErrorAction Stop
+    $zip=[System.IO.Compression.ZipFile]::OpenRead($ZipPath)
+    try {
+        $entry=$zip.GetEntry($EntryName)
+        if(!$entry){throw "ZIP entry not found: $EntryName"}
+        $stream=$entry.Open()
+        try {
+            $reader=New-Object System.IO.StreamReader -ArgumentList $stream,[System.Text.Encoding]::UTF8,$true,4096,$true
+            try {return $reader.ReadToEnd()}
+            finally {$reader.Dispose()}
+        }
+        finally {$stream.Dispose()}
+    }
+    finally {$zip.Dispose()}
+}
+
+function Get-RequiredCriticalMaterializationPaths {
+    param([Parameter(Mandatory=$true)][string]$ExpectedExportText)
+    $contracts=@(
+        [pscustomobject]@{Package='loaforc-loaforcsSoundAPI';RelativePath='BepInEx\plugins\loaforc-loaforcsSoundAPI\me.loaforc.soundapi.dll'},
+        [pscustomobject]@{Package='loaforc-loaforcsSoundAPI_LethalCompany';RelativePath='BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll'}
+    )
+    $required=@()
+    foreach($contract in $contracts){
+        $needle="- name: $($contract.Package)"
+        if($ExpectedExportText.IndexOf($needle,[System.StringComparison]::Ordinal) -ge 0){$required+=$contract.RelativePath}
+    }
+    return @($required)
+}
+
+function Get-MissingCriticalImportedFiles {
+    param([Parameter(Mandatory=$true)][string]$TargetDir,[string[]]$CriticalRelativePaths=@())
+    $missing=@()
+    foreach($relativePath in @($CriticalRelativePaths)){
+        $fullPath=Join-Path $TargetDir $relativePath
+        if(!(Test-Path -LiteralPath $fullPath -PathType Leaf)){$missing+=$relativePath;continue}
+        try {
+            if((Get-Item -LiteralPath $fullPath -ErrorAction Stop).Length -le 0){$missing+=$relativePath}
+        } catch {$missing+=$relativePath}
+    }
+    return @($missing)
+}
+
 function Wait-ImportedProfileEvidence {
-    param([Parameter(Mandatory=$true)][string]$TargetDir,[Parameter(Mandatory=$true)][string]$ExpectedExportSha,[int]$WaitSeconds=300)
+    param(
+        [Parameter(Mandatory=$true)][string]$TargetDir,
+        [Parameter(Mandatory=$true)][string]$ExpectedExportSha,
+        [string[]]$CriticalRelativePaths=@(),
+        [int]$WaitSeconds=300
+    )
     $exportPath=Join-Path $TargetDir 'export.r2x'
     $deadline=[DateTime]::UtcNow.AddSeconds($WaitSeconds)
+    $exportVerified=$false
+    $lastMissing=@($CriticalRelativePaths)
     do {
-        if(Test-Path -LiteralPath $exportPath){
+        if(Test-Path -LiteralPath $exportPath -PathType Leaf){
             try {
                 $actualExport=(Get-FileHash -LiteralPath $exportPath -Algorithm SHA256).Hash.ToLowerInvariant()
-                if($actualExport -eq $ExpectedExportSha){return 'completed'}
-            } catch {}
+                $exportVerified=($actualExport -eq $ExpectedExportSha)
+            } catch {$exportVerified=$false}
+        }
+        if($exportVerified){
+            $lastMissing=@(Get-MissingCriticalImportedFiles -TargetDir $TargetDir -CriticalRelativePaths $CriticalRelativePaths)
+            if($lastMissing.Count -eq 0){
+                return [pscustomobject]@{Status='completed';ExportVerified=$true;MissingCriticalFiles=@()}
+            }
         }
         Start-Sleep -Milliseconds 250
     } while([DateTime]::UtcNow -lt $deadline)
-    return 'unconfirmed'
+    return [pscustomobject]@{Status='unconfirmed';ExportVerified=$exportVerified;MissingCriticalFiles=@($lastMissing)}
 }
 
 Write-Host "Helper revision: $helperRevision" -ForegroundColor DarkGray
@@ -331,8 +389,14 @@ $actual=(Get-FileHash -LiteralPath $dst -Algorithm SHA256).Hash.ToLowerInvariant
 Write-Host "Download SHA-256: $actual" -ForegroundColor Cyan
 if($actual -ne $expected){Remove-Item -LiteralPath $dst -Force -ErrorAction SilentlyContinue;throw "SHA-256-Prüfung fehlgeschlagen. Erwartet: $expected / Erhalten: $actual"}
 $expectedExportSha=Get-ZipEntrySha256 -ZipPath $dst -EntryName 'export.r2x'
+$expectedExportText=Get-ZipEntryText -ZipPath $dst -EntryName 'export.r2x'
+$criticalMaterializationPaths=@(Get-RequiredCriticalMaterializationPaths -ExpectedExportText $expectedExportText)
 Write-Host "SHA-256 stimmt. Download ist verifiziert." -ForegroundColor Green
 Write-Host "export.r2x Evidenz-SHA-256: $expectedExportSha" -ForegroundColor DarkGray
+if($criticalMaterializationPaths.Count -gt 0){
+    Write-Host "Kritische Materialisierungsnachweise für diesen Export:" -ForegroundColor DarkGray
+    foreach($relativePath in $criticalMaterializationPaths){Write-Host "  - $relativePath" -ForegroundColor DarkGray}
+}
 
 $dirs=@(Get-ChildItem -LiteralPath $root -Directory | Sort-Object Name)
 if(!$dirs.Count){Remove-Item -LiteralPath $dst -Force -ErrorAction SilentlyContinue;throw "Keine Gale-Profile gefunden unter: $root"}
@@ -382,13 +446,18 @@ else {
     Write-Host "Bitte in Gale manuell: Advanced options -> Import all files aktivieren -> Import. PowerShell wartet automatisch auf die importierte Profil-Evidenz." -ForegroundColor Yellow
 }
 
-Write-Host "Prüfe Importabschluss über die tatsächliche lokale export.r2x des Zielprofils..." -ForegroundColor Cyan
-$completion=Wait-ImportedProfileEvidence -TargetDir $targetDir -ExpectedExportSha $expectedExportSha -WaitSeconds 300
-if($completion -ne 'completed'){
-    Write-Warning "Der Import konnte innerhalb des Zeitlimits nicht über die Zielprofil-Evidenz bestätigt werden. Die heruntergeladene .r2z bleibt zur Sicherheit erhalten: $dst"
+Write-Host "Prüfe Importabschluss über export.r2x und kritische externe Plugin-Dateien des Zielprofils..." -ForegroundColor Cyan
+$completion=Wait-ImportedProfileEvidence -TargetDir $targetDir -ExpectedExportSha $expectedExportSha -CriticalRelativePaths $criticalMaterializationPaths -WaitSeconds 300
+if($completion.Status -ne 'completed'){
+    if(!$completion.ExportVerified){Write-Warning 'Die lokale export.r2x konnte nicht exakt gegen den heruntergeladenen Build verifiziert werden.'}
+    if(@($completion.MissingCriticalFiles).Count -gt 0){
+        Write-Warning 'Der Export ist vorhanden, aber kritische Thunderstore-Plugin-Dateien wurden nicht vollständig materialisiert:'
+        foreach($relativePath in @($completion.MissingCriticalFiles)){Write-Warning "  FEHLT/LEER: $relativePath"}
+    }
+    Write-Warning "Der Import konnte innerhalb des Zeitlimits nicht vollständig bestätigt werden. Die heruntergeladene .r2z bleibt zur Sicherheit erhalten: $dst"
     return
 }
 
-Write-Host "Import verifiziert: '$expectedProfileName' enthält exakt die erwartete export.r2x aus dem SHA-geprüften Build." -ForegroundColor Green
+Write-Host "Import verifiziert: '$expectedProfileName' enthält exakt die erwartete export.r2x und alle für diesen Export verlangten kritischen Plugin-Dateien sind physisch vorhanden und nicht leer." -ForegroundColor Green
 if(Test-Path -LiteralPath $dst){Remove-Item -LiteralPath $dst -Force}
 Write-Host "Download-Datei entfernt: $dst" -ForegroundColor Green
