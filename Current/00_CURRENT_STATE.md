@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-05  
+**Updated:** 2026-09-06  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -21,7 +21,7 @@ Runtime evidence: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
 
 ## Latest built artifact
 
-**S1.42AF — Path-Length-Safe Microwave Packaging — BUILD PASS RUNTIME VALIDATION OPEN NOT ACCEPTED**
+**S1.42AF — Path-Length-Safe Microwave Packaging — TARGETED RUNTIME GATE PASS ACCEPTANCE DEFERRED NOT REJECTED**
 
 Profile: `Profiles/LC V1 S1.42AF Microwave Fix.r2z`  
 SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`  
@@ -32,17 +32,17 @@ A historical rejection can remain preserved even when a later explicit decision 
 ## Live execution state
 
 - Active candidate: **S1.42AF**
-- Runtime test outstanding: **yes**
+- Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AF_BUILD_AWAITING_RUNTIME_VALIDATION`)
-- Guarded build base: `Profiles/LC V1 S1.42AF Microwave Fix.r2z` / `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AF_RUNTIME_GATE_PASS_MOUTH_DOG_ANALYSIS_SELECTED`)
+- Guarded build base: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z` / `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF`
 
 ## Exact next action
 
-Import S1.42AF with RuntimeTools/ReplaceActiveGaleProfileV24.ps1. Proceed only after v2.4 positively verifies non-empty export.r2x plus exactly one non-empty base SoundAPI DLL and one non-empty LethalCompany binding DLL. Confirm the shortened nested binding path is below the legacy 260-character boundary, then start Lethal Company, require preloader/main-menu success, play one normal run far enough for ordinary moon/interior generation, and upload the complete fresh S1.42AF LogOutput.log with the exact uploader in Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md. Evaluate the preserved S1.42AE plugin markers, dependency versions, PrioritiseMoons=true MoonCurves=18 InteriorCurves=18, both keysets, the 18 Moon curves x0.5 / 18 Interior validation-only marker, and regression/fatal markers before accepting or rejecting S1.42AF.
+Investigate the Mouth Dog / Eyeless Dog -> Pikmin compatibility gap documented in Current/129_MOUTH_DOG_PIKMIN_BASELINE_COMPATIBILITY_GAP_NEXT_ANALYSIS.md. Inspect LethalMin 1.1.108 configuration first for a native one-way noninteraction contract. If configuration cannot fully prevent Dog -> Pikmin bite/grab while preserving Pikmin -> Dog combat, prove the exact LethalMin Mouth-Dog adapter/bite/grab ownership path and design the smallest prevention-before-mutation extension to Patches/S139CompatibilityFixes/Plugin.cs under Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md. Do not rerun S1.42AF merely for its completed Microwave gate, and do not name or arm a successor until the owner/method contract and isolated build plan are proven.
 
-A runtime test is pending for S1.42AF. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
