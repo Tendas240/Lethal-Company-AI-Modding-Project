@@ -26,12 +26,12 @@ Accepted baseline: **S1.42AC — BCMER EventType Equal Distribution**
 Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`  
 SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
 
-Latest built artifact: **S1.42AC — BCMER EventType Equal Distribution — ACCEPTED FULL NORMAL STACK**  
-SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
+Latest built artifact: **S1.42AD — Functional Microwave Spawn Rarity Reduction — BUILD PASS RUNTIME VALIDATION OPEN NOT ACCEPTED**  
+SHA-256: `9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c`
 
-Active candidate: **none**. Runtime test outstanding: **no**. Build successor armed: **no**.
+Active candidate: **S1.42AD**. Runtime test outstanding: **yes**. Build successor armed: **no**.
 
-Exact next action: S1.42AD Functional Microwave spawn-rarity reduction is the explicitly selected next scope. A source-only draft exists at Patches/S142ADCodeRebirthMicrowaveSpawnTuning/, but no profile has been built or armed. Before building, independently review the draft against Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md, verify the exact CodeRebirth/DawnLib owner and 19-curve contract, and resolve the exact reduction magnitude: the draft uses 0.5 while current canonical requirements specify only that the Microwave should be rarer. Do not build or runtime-test until the target is explicitly confirmed and a build spec is armed.
+Exact next action: S1.42AD is built and is the active runtime candidate. Replace/import the Gale profile with LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction using the canonical repository helper, run one normal gameplay round far enough for normal moon/interior generation, then upload the complete fresh LogOutput.log using the exact S1.42AD uploader in Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md. Runtime acceptance must confirm dependency validation, PrioritiseMoons=true with 18 Moon curves and 0 Interior curves, the final x0.5 application marker, normal gameplay and no contract-refusal/fatal regression. Do not build a successor before this evidence is analyzed.
 
 ## Semantic navigation
 
