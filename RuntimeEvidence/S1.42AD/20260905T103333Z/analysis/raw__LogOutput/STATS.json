@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "source_file": "LogOutput.log",
+  "source_size_bytes": 1630442,
+  "source_sha256": "30c69254c4a4fd6bea1ec83cda075c168742c9060b88b09c22025973b074b3e8",
+  "line_count": 16297,
+  "event_count": 15032,
+  "unique_normalized_signatures": 10112,
+  "first_timestamp": "10:28:22.9064107",
+  "last_timestamp": "10:32:54.7121697",
+  "severity_counts": {
+    "UNPARSED": 1,
+    "Message": 252,
+    "Debug": 9496,
+    "Info": 3398,
+    "Warning": 1851,
+    "Error": 34
+  },
+  "parse_counts": {
+    "continuation_or_unparsed_lines": 1266,
+    "parsed_header_lines": 15031
+  },
+  "chat_readable_chunks_created": true,
+  "signature_chunk_count": 11
+}

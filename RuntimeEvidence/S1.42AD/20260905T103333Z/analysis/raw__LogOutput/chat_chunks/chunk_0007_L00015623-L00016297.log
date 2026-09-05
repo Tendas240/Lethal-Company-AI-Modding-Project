@@ -1,0 +1,675 @@
+[10:32:16.3102262] [Info   : Unity Log] Is jetpack audio playing?: True
+[10:32:16.6372884] [Info   : Unity Log] Is jetpack audio playing?: True
+[10:32:17.3190860] [Debug  :   Coroner] Querying target player parameters pre-death...
+[10:32:17.3190860] [Debug  :   Coroner] Query successful!True
+[10:32:18.5496232] [Info   : Unity Log] DROP ITEM AHEAD
+[10:32:18.5496232] [Info   : Unity Log] Got no raycast hit
+[10:32:18.5496232] [Info   : Unity Log] Startpos: (129.84, 16.45, -58.53)
+[10:32:18.5526247] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[10:32:18.5526247] [Info   : Unity Log] Owner of jetpack?: True
+[10:32:18.5526247] [Info   : Unity Log] Is dead?: False
+[10:32:18.5526247] [Debug  : LightsOut] DiscardItem Jetpack
+[10:32:20.6309016] [Info   :HotbarPlus-1.8.5] Sending hotbar swap slot: 0
+[10:32:20.6309016] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[10:32:21.7926954] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[10:32:22.5825030] [Info   : Unity Log] Called finishopeningentrance (False)
+[10:32:22.5825030] [Info   : Unity Log] 'EntranceTeleportA' STOPPING entrancePointAudio
+[10:32:22.5940203] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered facility
+[10:32:22.5940203] [Debug  : LethalMin] Setting pikmin to entrance: True
+[10:32:22.5950246] [Info   : LethalMin] Purple Pikmin_rKa2: Warping to position around leader at angle -90 degrees
+[10:32:22.5950246] [Info   : LethalMin] Purple Pikmin_y8qD5r: Warping to position around leader at angle -81.42857 degrees
+[10:32:22.5950246] [Info   : LethalMin] Purple Pikmin_EKPWp: Warping to position around leader at angle -72.85714 degrees
+[10:32:22.5950246] [Info   : LethalMin] Purple Pikmin_evzc4: Warping to position around leader at angle -64.28571 degrees
+[10:32:22.5950246] [Info   : LethalMin] Purple Pikmin_51w0Zom: Warping to position around leader at angle -55.71429 degrees
+[10:32:22.5950246] [Info   : LethalMin] Purple Pikmin_bRqe: Warping to position around leader at angle -47.14286 degrees
+[10:32:22.5950246] [Info   : LethalMin] Purple Pikmin_4WYiK: Warping to position around leader at angle -38.57143 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_deVvFe: Warping to position around leader at angle -30 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_Md8MI: Warping to position around leader at angle -21.42857 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_ddF5L: Warping to position around leader at angle -12.85714 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_2FoB: Warping to position around leader at angle -4.285714 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_FjliuFV: Warping to position around leader at angle 4.285714 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_ICMO7: Warping to position around leader at angle 12.85714 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_Lw2dTVF: Warping to position around leader at angle 21.42857 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_TzDCc: Warping to position around leader at angle 30 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_Gono4bn: Warping to position around leader at angle 38.57143 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_u7yjpLI: Warping to position around leader at angle 47.14286 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_tbmIr: Warping to position around leader at angle 55.71429 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_XWR5u2K: Warping to position around leader at angle 64.28571 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_yExgK: Warping to position around leader at angle 72.85714 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_YV0Gw: Warping to position around leader at angle 81.42857 degrees
+[10:32:22.5950246] [Info   : LethalMin] White Pikmin_68JLiBF: Warping to position around leader at angle 90 degrees
+[10:32:22.5965287] [Debug  : LethalMin] Setting pikmin to entrance: True
+[10:32:22.5965287] [Info   : LethalMin] Purple Pikmin_rKa2: Warping to position around leader at angle -90 degrees
+[10:32:22.5965287] [Info   : LethalMin] Purple Pikmin_y8qD5r: Warping to position around leader at angle -81.42857 degrees
+[10:32:22.5965287] [Info   : LethalMin] Purple Pikmin_EKPWp: Warping to position around leader at angle -72.85714 degrees
+[10:32:22.5965287] [Info   : LethalMin] Purple Pikmin_evzc4: Warping to position around leader at angle -64.28571 degrees
+[10:32:22.5965287] [Info   : LethalMin] Purple Pikmin_51w0Zom: Warping to position around leader at angle -55.71429 degrees
+[10:32:22.5965287] [Info   : LethalMin] Purple Pikmin_bRqe: Warping to position around leader at angle -47.14286 degrees
+[10:32:22.5965287] [Info   : LethalMin] Purple Pikmin_4WYiK: Warping to position around leader at angle -38.57143 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_deVvFe: Warping to position around leader at angle -30 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_Md8MI: Warping to position around leader at angle -21.42857 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_ddF5L: Warping to position around leader at angle -12.85714 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_2FoB: Warping to position around leader at angle -4.285714 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_FjliuFV: Warping to position around leader at angle 4.285714 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_ICMO7: Warping to position around leader at angle 12.85714 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_Lw2dTVF: Warping to position around leader at angle 21.42857 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_TzDCc: Warping to position around leader at angle 30 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_Gono4bn: Warping to position around leader at angle 38.57143 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_u7yjpLI: Warping to position around leader at angle 47.14286 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_tbmIr: Warping to position around leader at angle 55.71429 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_XWR5u2K: Warping to position around leader at angle 64.28571 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_yExgK: Warping to position around leader at angle 72.85714 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_YV0Gw: Warping to position around leader at angle 81.42857 degrees
+[10:32:22.5965287] [Info   : LethalMin] White Pikmin_68JLiBF: Warping to position around leader at angle 90 degrees
+[10:32:22.7887196] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[10:32:27.7596705] [Debug  :   Coroner] Querying target player parameters pre-death...
+[10:32:27.7596705] [Debug  :   Coroner] Query successful!True
+[10:32:30.3266367] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[10:32:35.6485177] [Info   : Unity Log] Local client hit enemy Purple Pikmin_Xv9CHCw #7 with force of 2.
+[10:32:35.6495176] [Info   : LethalMin] Purple Pikmin_Xv9CHCw: Has Invincible mode when hit
+[10:32:37.7876744] [Info   : LethalMin] White Pikmin_bw1gYj: Setting growth stage to 1
+[10:32:38.0208187] [Debug  : LethalMin] Purple Pikmin_Xv9CHCw: Removed Leader
+[10:32:38.0208187] [Debug  : LethalMin] Purple Pikmin_Xv9CHCw: Setting collision mode to 1
+[10:32:38.0233286] [Info   : LethalMin] Purple Pikmin_Xv9CHCw: Assigned Leader: MasaeAhmya (0)
+[10:32:39.7854988] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[10:32:43.4068603] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[10:32:43.7908548] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[10:32:48.3321271] [Info   :GeneralImprovements] Server disconnecting - dropping FlashlightItem(Clone)
+[10:32:48.3321271] [Info   :GeneralImprovements] Server disconnecting - dropping Key(Clone)
+[10:32:48.3321271] [Info   :GeneralImprovements] Server disconnecting - dropping SprayPaintItem(Clone)
+[10:32:48.3331259] [Info   : Unity Log] Leaving current lobby
+[10:32:48.3346291] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[10:32:48.3656855] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[10:32:48.3656855] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[10:32:48.3656855] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[10:32:48.3656855] [Info   :Rolling Giant] Resetting all rolling giants!
+[10:32:48.3656855] [Message:Rolling Giant] Reverting sync
+[10:32:48.3691954] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[10:32:48.3691954] [Debug  :MrHat.BasedItemSaving] Saved 10 exact item poses
+[10:32:48.3701957] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[10:32:48.3721951] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[10:32:48.3721951] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[10:32:48.4037416] [Info   :LethalPerformance] Saved 2 save(s)
+[10:32:48.4128841] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[10:32:48.4409365] [Debug  : LethalMin] White Pikmin_68JLiBF: Removed Leader
+[10:32:48.4409365] [Debug  : LethalMin] White Pikmin_YV0Gw: Removed Leader
+[10:32:48.4409365] [Debug  : LethalMin] White Pikmin_yExgK: Removed Leader
+[10:32:48.4409365] [Debug  : LethalMin] White Pikmin_XWR5u2K: Removed Leader
+[10:32:48.4419355] [Debug  : LethalMin] White Pikmin_tbmIr: Removed Leader
+[10:32:48.4419355] [Debug  : LethalMin] White Pikmin_u7yjpLI: Removed Leader
+[10:32:48.4419355] [Debug  : LethalMin] White Pikmin_Gono4bn: Removed Leader
+[10:32:48.4419355] [Debug  : LethalMin] White Pikmin_TzDCc: Removed Leader
+[10:32:48.4419355] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Removed Leader
+[10:32:48.4419355] [Debug  : LethalMin] White Pikmin_ICMO7: Removed Leader
+[10:32:48.4419355] [Debug  : LethalMin] White Pikmin_FjliuFV: Removed Leader
+[10:32:48.4419355] [Debug  : LethalMin] White Pikmin_2FoB: Removed Leader
+[10:32:48.4434384] [Debug  : LethalMin] White Pikmin_ddF5L: Removed Leader
+[10:32:48.4434384] [Debug  : LethalMin] White Pikmin_Md8MI: Removed Leader
+[10:32:48.4434384] [Debug  : LethalMin] White Pikmin_deVvFe: Removed Leader
+[10:32:48.4434384] [Debug  : LethalMin] Purple Pikmin_4WYiK: Removed Leader
+[10:32:48.4434384] [Debug  : LethalMin] Purple Pikmin_bRqe: Removed Leader
+[10:32:48.4444416] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Removed Leader
+[10:32:48.4455761] [Debug  : LethalMin] Purple Pikmin_evzc4: Removed Leader
+[10:32:48.4470804] [Debug  : LethalMin] Purple Pikmin_EKPWp: Removed Leader
+[10:32:48.4470804] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Removed Leader
+[10:32:48.4470804] [Debug  : LethalMin] Purple Pikmin_rKa2: Removed Leader
+[10:32:48.4470804] [Debug  : LethalMin] Purple Pikmin_wPLyOv: Removed Leader
+[10:32:48.4480865] [Debug  : LethalMin] White Pikmin_ei8W: Removed Leader
+[10:32:48.4480865] [Debug  : LethalMin] Bulbmin_M1v4e2: Removed Leader
+[10:32:48.4480865] [Debug  : LethalMin] Bulbmin_3Jic: Removed Leader
+[10:32:48.4480865] [Debug  : LethalMin] White Pikmin_lcUAt8: Removed Leader
+[10:32:48.4480865] [Debug  : LethalMin] Bulbmin_TvHi1gx: Removed Leader
+[10:32:48.4490853] [Debug  : LethalMin] White Pikmin_BD4G9: Removed Leader
+[10:32:48.4490853] [Debug  : LethalMin] Bulbmin_tWroHnx: Removed Leader
+[10:32:48.4490853] [Debug  : LethalMin] White Pikmin_apeMP: Removed Leader
+[10:32:48.4490853] [Debug  : LethalMin] Purple Pikmin_I7QuXtx: Removed Leader
+[10:32:48.4490853] [Debug  : LethalMin] Bulbmin_0QDSe: Removed Leader
+[10:32:48.4490853] [Debug  : LethalMin] Bulbmin_ij00m0x: Removed Leader
+[10:32:48.4500855] [Debug  : LethalMin] Bulbmin_Q1nYu: Removed Leader
+[10:32:48.4500855] [Debug  : LethalMin] Bulbmin_7KZ626w: Removed Leader
+[10:32:48.4500855] [Debug  : LethalMin] Bulbmin_pdMeA: Removed Leader
+[10:32:48.4500855] [Debug  : LethalMin] Purple Pikmin_Xv9CHCw: Removed Leader
+[10:32:48.4500855] [Debug  : LethalMin] Purple Pikmin_FEwk: Removed Leader
+[10:32:48.4500855] [Debug  : LethalMin] Bulbmin_xXiIXJ: Removed Leader
+[10:32:48.4510861] [Debug  : LethalMin] Purple Pikmin_fpVq: Removed Leader
+[10:32:48.4510861] [Debug  : LethalMin] Purple Pikmin_M8IOnP: Removed Leader
+[10:32:48.4510861] [Debug  : LethalMin] Bulbmin_4R5w: Removed Leader
+[10:32:48.4510861] [Debug  : LethalMin] Purple Pikmin_mjrU2W: Removed Leader
+[10:32:48.4510861] [Debug  : LethalMin] Bulbmin_U2e2: Removed Leader
+[10:32:48.4510861] [Debug  : LethalMin] Bulbmin_CLRaIc: Removed Leader
+[10:32:48.4520854] [Debug  : LethalMin] Bulbmin_tdE8: Removed Leader
+[10:32:48.4520854] [Debug  : LethalMin] White Pikmin_bw1gYj: Removed Leader
+[10:32:48.4520854] [Debug  : LethalMin] Purple Pikmin_JFnE: Removed Leader
+[10:32:48.4520854] [Debug  : LethalMin] Bulbmin_1Xamn: Removed Leader
+[10:32:48.4520854] [Debug  : LethalMin] Bulbmin_jqNKvNQ: Removed Leader
+[10:32:48.4530859] [Debug  : LethalMin] Bulbmin_Q8As3: Removed Leader
+[10:32:48.4646087] [Info   : LethalMin] ShipOnion: saved 37 pikmin to disk on despawn.
+[10:32:48.4911918] [Info   :LobbyControl] 0 disconnected
+[10:32:48.4921916] [Info   : Unity Log] Disconnect callback called
+[10:32:48.4921916] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[10:32:48.4921916] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[10:32:48.4921916] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[10:32:48.4956997] [Debug  :Starlancer AI Fix] White Pikmin_68JLiBF from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.4956997] [Debug  :Starlancer AI Fix] Removing White Pikmin_68JLiBF's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5012086] [Debug  :Starlancer AI Fix] White Pikmin_YV0Gw from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5012086] [Debug  :Starlancer AI Fix] Removing White Pikmin_YV0Gw's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5012086] [Debug  :Starlancer AI Fix] White Pikmin_yExgK from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5012086] [Debug  :Starlancer AI Fix] Removing White Pikmin_yExgK's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5022072] [Debug  :Starlancer AI Fix] White Pikmin_XWR5u2K from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5022072] [Debug  :Starlancer AI Fix] Removing White Pikmin_XWR5u2K's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5022072] [Debug  :Starlancer AI Fix] White Pikmin_tbmIr from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5022072] [Debug  :Starlancer AI Fix] Removing White Pikmin_tbmIr's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5032096] [Debug  :Starlancer AI Fix] White Pikmin_u7yjpLI from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5032096] [Debug  :Starlancer AI Fix] Removing White Pikmin_u7yjpLI's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5032096] [Debug  :Starlancer AI Fix] White Pikmin_Gono4bn from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5032096] [Debug  :Starlancer AI Fix] Removing White Pikmin_Gono4bn's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5032096] [Debug  :Starlancer AI Fix] White Pikmin_TzDCc from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5032096] [Debug  :Starlancer AI Fix] Removing White Pikmin_TzDCc's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5032096] [Debug  :Starlancer AI Fix] White Pikmin_Lw2dTVF from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5032096] [Debug  :Starlancer AI Fix] Removing White Pikmin_Lw2dTVF's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5047126] [Debug  :Starlancer AI Fix] White Pikmin_ICMO7 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5047126] [Debug  :Starlancer AI Fix] Removing White Pikmin_ICMO7's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5047126] [Debug  :Starlancer AI Fix] White Pikmin_FjliuFV from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5047126] [Debug  :Starlancer AI Fix] Removing White Pikmin_FjliuFV's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5047126] [Debug  :Starlancer AI Fix] White Pikmin_2FoB from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5047126] [Debug  :Starlancer AI Fix] Removing White Pikmin_2FoB's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5057159] [Debug  :Starlancer AI Fix] White Pikmin_ddF5L from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5057159] [Debug  :Starlancer AI Fix] Removing White Pikmin_ddF5L's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5057159] [Debug  :Starlancer AI Fix] White Pikmin_Md8MI from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5057159] [Debug  :Starlancer AI Fix] Removing White Pikmin_Md8MI's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5057159] [Debug  :Starlancer AI Fix] White Pikmin_deVvFe from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5057159] [Debug  :Starlancer AI Fix] Removing White Pikmin_deVvFe's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5067166] [Debug  :Starlancer AI Fix] Purple Pikmin_4WYiK from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5067166] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_4WYiK's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5067166] [Debug  :Starlancer AI Fix] Purple Pikmin_bRqe from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5067166] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_bRqe's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5067166] [Debug  :Starlancer AI Fix] Purple Pikmin_51w0Zom from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5067166] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_51w0Zom's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5067166] [Debug  :Starlancer AI Fix] Purple Pikmin_evzc4 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5067166] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_evzc4's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5077195] [Debug  :Starlancer AI Fix] Purple Pikmin_EKPWp from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5077195] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_EKPWp's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5077195] [Debug  :Starlancer AI Fix] Purple Pikmin_y8qD5r from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5077195] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_y8qD5r's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5077195] [Debug  :Starlancer AI Fix] Purple Pikmin_rKa2 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[10:32:48.5077195] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_rKa2's power (0) from the RoundManager; 
+Current exterior power level is 0
+[10:32:48.5087165] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[10:32:48.5087165] [Debug  :Starlancer AI Fix] Purple Pikmin_wPLyOv from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5087165] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_wPLyOv's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5087165] [Debug  :Starlancer AI Fix] White Pikmin_ei8W from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5087165] [Debug  :Starlancer AI Fix] Removing White Pikmin_ei8W's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5097174] [Debug  :Starlancer AI Fix] Bulbmin_M1v4e2 from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5097174] [Debug  :Starlancer AI Fix] Removing Bulbmin_M1v4e2's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5097174] [Debug  :Starlancer AI Fix] Bulbmin_3Jic from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5097174] [Debug  :Starlancer AI Fix] Removing Bulbmin_3Jic's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5097174] [Debug  :Starlancer AI Fix] White Pikmin_lcUAt8 from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5097174] [Debug  :Starlancer AI Fix] Removing White Pikmin_lcUAt8's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5107167] [Debug  :Starlancer AI Fix] Bulbmin_TvHi1gx from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5107167] [Debug  :Starlancer AI Fix] Removing Bulbmin_TvHi1gx's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5107167] [Debug  :Starlancer AI Fix] White Pikmin_BD4G9 from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5107167] [Debug  :Starlancer AI Fix] Removing White Pikmin_BD4G9's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5107167] [Debug  :Starlancer AI Fix] Bulbmin_tWroHnx from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5107167] [Debug  :Starlancer AI Fix] Removing Bulbmin_tWroHnx's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5117178] [Debug  :Starlancer AI Fix] White Pikmin_apeMP from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5117178] [Debug  :Starlancer AI Fix] Removing White Pikmin_apeMP's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5117178] [Debug  :Starlancer AI Fix] Purple Pikmin_I7QuXtx from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5117178] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_I7QuXtx's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5117178] [Debug  :Starlancer AI Fix] Bulbmin_0QDSe from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5117178] [Debug  :Starlancer AI Fix] Removing Bulbmin_0QDSe's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5117178] [Debug  :Starlancer AI Fix] Bulbmin_ij00m0x from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5117178] [Debug  :Starlancer AI Fix] Removing Bulbmin_ij00m0x's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5127172] [Debug  :Starlancer AI Fix] Bulbmin_Q1nYu from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5127172] [Debug  :Starlancer AI Fix] Removing Bulbmin_Q1nYu's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5127172] [Debug  :Starlancer AI Fix] Bulbmin_7KZ626w from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5127172] [Debug  :Starlancer AI Fix] Removing Bulbmin_7KZ626w's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5127172] [Debug  :Starlancer AI Fix] Bulbmin_pdMeA from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5127172] [Debug  :Starlancer AI Fix] Removing Bulbmin_pdMeA's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5137200] [Debug  :Starlancer AI Fix] Purple Pikmin_Xv9CHCw from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5137200] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_Xv9CHCw's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5137200] [Debug  :Starlancer AI Fix] Purple Pikmin_FEwk from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5137200] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_FEwk's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5137200] [Debug  :Starlancer AI Fix] Bulbmin_xXiIXJ from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5137200] [Debug  :Starlancer AI Fix] Removing Bulbmin_xXiIXJ's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5147173] [Debug  :Starlancer AI Fix] Purple Pikmin_fpVq from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5147173] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_fpVq's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5147173] [Debug  :Starlancer AI Fix] Purple Pikmin_M8IOnP from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5147173] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_M8IOnP's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5147173] [Debug  :Starlancer AI Fix] Bulbmin_4R5w from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5147173] [Debug  :Starlancer AI Fix] Removing Bulbmin_4R5w's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5147173] [Debug  :Starlancer AI Fix] Purple Pikmin_mjrU2W from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5147173] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_mjrU2W's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5157796] [Debug  :Starlancer AI Fix] Bulbmin_U2e2 from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5157796] [Debug  :Starlancer AI Fix] Removing Bulbmin_U2e2's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5157796] [Debug  :Starlancer AI Fix] Bulbmin_CLRaIc from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5157796] [Debug  :Starlancer AI Fix] Removing Bulbmin_CLRaIc's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5157796] [Debug  :Starlancer AI Fix] Bulbmin_tdE8 from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5157796] [Debug  :Starlancer AI Fix] Removing Bulbmin_tdE8's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5167789] [Debug  :Starlancer AI Fix] White Pikmin_bw1gYj from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5167789] [Debug  :Starlancer AI Fix] Removing White Pikmin_bw1gYj's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5167789] [Debug  :Starlancer AI Fix] Purple Pikmin_JFnE from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5167789] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_JFnE's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5167789] [Debug  :Starlancer AI Fix] Bulbmin_1Xamn from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5167789] [Debug  :Starlancer AI Fix] Removing Bulbmin_1Xamn's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5167789] [Debug  :Starlancer AI Fix] Bulbmin_jqNKvNQ from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5167789] [Debug  :Starlancer AI Fix] Removing Bulbmin_jqNKvNQ's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5177805] [Debug  :Starlancer AI Fix] Bulbmin_Q8As3 from the interior enemy list has died; 
+Previous interior power level is 0
+[10:32:48.5177805] [Debug  :Starlancer AI Fix] Removing Bulbmin_Q8As3's power (0) from the RoundManager; 
+Current interior power level is 0
+[10:32:48.5177805] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5177805] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5177805] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5177805] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5177805] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5187791] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5187791] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5187791] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5187791] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5187791] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5187791] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5187791] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5187791] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5187791] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5187791] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5187791] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5198082] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5208078] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5208078] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5208078] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5208078] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5208078] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5208078] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5208078] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5208078] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5208078] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5208078] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5208078] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5218080] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5228082] [Debug  :Starlancer AI Fix] DocileLocustBees(Clone) from the daytime enemy list has died; 
+Previous daytime power level is 0
+[10:32:48.5228082] [Debug  :Starlancer AI Fix] Removing DocileLocustBees(Clone)'s power (1) from the RoundManager; 
+Current daytime power level is 0
+[10:32:48.5228082] [Debug  :Starlancer AI Fix] DocileLocustBees(Clone) from the daytime enemy list has died; 
+Previous daytime power level is 0
+[10:32:48.5228082] [Debug  :Starlancer AI Fix] Removing DocileLocustBees(Clone)'s power (1) from the RoundManager; 
+Current daytime power level is 0
+[10:32:48.5228082] [Debug  :Starlancer AI Fix] DocileLocustBees(Clone) from the daytime enemy list has died; 
+Previous daytime power level is 0
+[10:32:48.5228082] [Debug  :Starlancer AI Fix] Removing DocileLocustBees(Clone)'s power (1) from the RoundManager; 
+Current daytime power level is 0
+[10:32:48.5228082] [Debug  :Starlancer AI Fix] DocileLocustBees(Clone) from the daytime enemy list has died; 
+Previous daytime power level is 0
+[10:32:48.5228082] [Debug  :Starlancer AI Fix] Removing DocileLocustBees(Clone)'s power (1) from the RoundManager; 
+Current daytime power level is 0
+[10:32:48.5243114] [Debug  :Starlancer AI Fix] DocileLocustBees(Clone) from the daytime enemy list has died; 
+Previous daytime power level is 0
+[10:32:48.5243114] [Debug  :Starlancer AI Fix] Removing DocileLocustBees(Clone)'s power (1) from the RoundManager; 
+Current daytime power level is 0
+[10:32:48.5243114] [Debug  :Starlancer AI Fix] DocileLocustBees(Clone) from the daytime enemy list has died; 
+Previous daytime power level is 0
+[10:32:48.5243114] [Debug  :Starlancer AI Fix] Removing DocileLocustBees(Clone)'s power (1) from the RoundManager; 
+Current daytime power level is 0
+[10:32:48.5243114] [Debug  :Starlancer AI Fix] DocileLocustBees(Clone) from the daytime enemy list has died; 
+Previous daytime power level is 0
+[10:32:48.5243114] [Debug  :Starlancer AI Fix] Removing DocileLocustBees(Clone)'s power (1) from the RoundManager; 
+Current daytime power level is 0
+[10:32:48.5278282] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA(Clone)
+[10:32:48.5288269] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5288269] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5288269] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5288269] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[10:32:48.5288269] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5298266] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5298266] [Info   : Unity Log] Interact trigger destroying! name: InsertTrigger
+[10:32:48.5298266] [Info   : Unity Log] Interact trigger destroying! name: SteamValve(Clone)
+[10:32:48.5298266] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[10:32:48.5298266] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5298266] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[10:32:48.5298266] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[10:32:48.5298266] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[10:32:48.5298266] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5298266] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[10:32:48.5298266] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[10:32:48.5308273] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5308273] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5308273] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5308273] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch1
+[10:32:48.5308273] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch2
+[10:32:48.5308273] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch3
+[10:32:48.5308273] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch4
+[10:32:48.5308273] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch5
+[10:32:48.5308273] [Info   : Unity Log] Interact trigger destroying! name: PowerBoxDoor
+[10:32:48.5308273] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5308273] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: SteamValve(Clone)
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: SteamValve(Clone)
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[10:32:48.5318274] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: SteamValve(Clone)
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: ItemFilter
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger (1)
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: PlaceTrigger
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5328297] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5343326] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5343326] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5343326] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5353364] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5353364] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5353364] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5353364] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5353364] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5353364] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5353364] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5368412] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.5368412] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5368412] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5368412] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5368412] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5368412] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5368412] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5368412] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5448978] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5448978] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[10:32:48.5459027] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5459027] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[10:32:48.5469022] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[10:32:48.5469022] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[10:32:48.5479030] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[10:32:48.5479030] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[10:32:48.5479030] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[10:32:48.5489015] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[10:32:48.5659440] [Info   : Unity Log] Resetting unlockables list!
+[10:32:48.5669457] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[10:32:48.5689523] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[10:32:48.5689523] [Info   : Unity Log] Scene manager is null
+[10:32:48.5754642] [Info   :LethalPerformance] Saved 1 save(s)
+[10:32:48.6331787] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:32:48.6331787] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:32:48.6331787] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[10:32:48.6331787] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[10:32:48.6386891] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[10:32:48.6571016] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (3)
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:32:48.6631022] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[10:32:48.6646050] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:32:48.6646050] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[10:32:48.6646050] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[10:32:48.6646050] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[10:32:48.6646050] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:32:48.6646050] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:32:48.6646050] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[10:32:48.6646050] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[10:32:48.6646050] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:32:48.6756452] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[10:32:48.6806448] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.6806448] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.6806448] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.6806448] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[10:32:48.6806448] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[10:32:48.6806448] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[10:32:48.6806448] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:32:48.6816458] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[10:32:48.6816458] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[10:32:48.6816458] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:32:48.6816458] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:32:48.6816458] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[10:32:48.6816458] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[10:32:48.6816458] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[10:32:48.6816458] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:32:48.6826451] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[10:32:48.6826451] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[10:32:48.6826451] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[10:32:48.6826451] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[10:32:48.6826451] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[10:32:48.6826451] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:32:48.6836444] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[10:32:48.6919080] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:32:48.7089259] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[10:32:48.7224562] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[10:32:48.7295670] [Info   :MoreCompany] LANMenu startLAN Patched
+[10:32:49.0292787] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[10:32:50.6958881] [Info   : Unity Log] Returning week num: 142
+[10:32:50.6958881] [Info   : Unity Log] week num: 142
+[10:32:50.7018873] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[10:32:50.7018873] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[10:32:50.7143969] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[10:32:50.7228080] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[10:32:50.7228080] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[10:32:50.7228080] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited facility
+[10:32:50.7259548] [Info   :LethalPerformance] Saved 1 save(s)
+[10:32:52.2146326] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[10:32:52.2271444] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[10:32:54.7111695] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[10:32:54.7111695] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[10:32:54.7121697] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
