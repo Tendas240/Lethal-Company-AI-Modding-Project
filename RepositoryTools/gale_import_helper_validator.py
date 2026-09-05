@@ -58,6 +58,8 @@ def main() -> int:
 
     required_materialization_tokens = (
         "[ValidateNotNullOrEmpty()][string]$ExpectedExportText",
+        "$baseNamePattern='(?m)^\\s*-\\s*name:\\s*'+[regex]::Escape($basePackage)+'\\s*$'",
+        "$lcNamePattern='(?m)^\\s*-\\s*name:\\s*'+[regex]::Escape($lcPackage)+'\\s*$'",
         "BepInEx\\plugins\\loaforc-loaforcsSoundAPI\\**\\me.loaforc.soundapi.dll",
         "BepInEx\\plugins\\loaforc-loaforcsSoundAPI_LethalCompany\\**\\me.loaforc.soundapi.lethalcompany.dll",
         "$hits.Count -ne 1",
@@ -66,6 +68,9 @@ def main() -> int:
     for token in required_materialization_tokens:
         if token not in materialization_functions:
             fail(f"v2.4 materialization contract missing token: {token}")
+
+    if "$ExpectedExportText.IndexOf($basePackage" in materialization_functions:
+        fail("base SoundAPI drift detection uses an unsafe substring test; LC package name has the base name as a prefix")
 
     zip_start = base.find("function Get-ZipEntryText {")
     materialization_start = base.find("function Get-RequiredCriticalMaterializationPaths {")
