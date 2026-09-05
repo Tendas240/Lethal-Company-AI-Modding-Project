@@ -1,6 +1,6 @@
 {
   "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42AC_ACCEPTANCE_NO_SUCCESSOR_ARMED",
+  "build_id": "IDLE_S1.42AD_SCOPE_SELECTED_SOURCE_REVIEW_PENDING_NO_SUCCESSOR_ARMED",
   "base_profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
   "base_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",
