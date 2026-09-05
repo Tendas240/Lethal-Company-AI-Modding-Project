@@ -1,11 +1,11 @@
 {
-  "schema_version": 1,
-  "updated": "2026-09-04",
+  "schema_version": 2,
+  "updated": "2026-09-05",
   "status": "CURRENT_CANONICAL_ARTIFACT_EVIDENCE_INDEX",
   "profiles": [
     {
       "build_id": "S1.42AB",
-      "role": "ACCEPTED_BASELINE",
+      "role": "ACCEPTED_PREDECESSOR_ROLLBACK_BASELINE",
       "profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
       "profile_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
       "profile_sources": "ProfileSources/S1.42AB/",
@@ -17,16 +17,19 @@
     },
     {
       "build_id": "S1.42AC",
-      "role": "LATEST_BUILT_FORMALLY_REJECTED_NOT_PROMOTED",
+      "role": "ACCEPTED_CURRENT_BASELINE",
       "profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
       "profile_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
       "profile_sources": "ProfileSources/S1.42AC/",
       "file_index": "ProfileSources/S1.42AC/FILE_INDEX.json",
       "export": "ProfileSources/S1.42AC/export.r2x",
-      "decision": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+      "acceptance": "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
       "corrected_analysis": "Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md",
-      "runtime_index": "RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json",
-      "runtime_log_sha256": "fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067"
+      "historical_rejection": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+      "runtime_index": "RuntimeEvidence/S1.42AC/20260904T235720Z/INDEX.json",
+      "runtime_log_sha256": "98170374c4ffb6f40322a8019ad7f7f807e900525717dfdf7e70698bd7f28fa8",
+      "historical_runtime_index": "RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json",
+      "historical_runtime_log_sha256": "fe4b4a20996d0b76d9f1bdd8551a233138a032c1321c417a56e1ac3948ae8067"
     }
   ],
   "important_project_dlls": [
@@ -44,7 +47,8 @@
       "source_root": "Patches/",
       "accepted_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
       "evidence": "Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md",
-      "acceptance": "Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md"
+      "acceptance": "Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md",
+      "note": "Inherited unchanged by accepted S1.42AC outside the isolated BCMER config delta."
     }
   ],
   "runtime_evidence_policy": {
@@ -57,7 +61,8 @@
     "ProfileSources/S1.42AB contains FILE_INDEX.json and export.r2x.",
     "ProfileSources/S1.42AC contains FILE_INDEX.json and export.r2x.",
     "RuntimeEvidence/S1.42AB/20260904T174010Z contains INDEX.json, analysis/, and raw/.",
-    "RuntimeEvidence/S1.42AC/20260904T181854Z contains INDEX.json, analysis/, and raw/."
+    "RuntimeEvidence/S1.42AC/20260904T181854Z contains INDEX.json, analysis/, and raw/ as preserved historical rejection-era evidence.",
+    "RuntimeEvidence/S1.42AC/20260904T235720Z contains INDEX.json, analysis/, and raw/ and is the fresh corrected-acceptance runtime evidence."
   ],
-  "last_validated": "2026-09-04"
+  "last_validated": "2026-09-05"
 }
