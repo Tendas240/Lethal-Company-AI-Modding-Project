@@ -25,8 +25,12 @@
     "patch_source": "Patches/S142AECodeRebirthMicrowaveSpawnTuning/",
     "snapshot": "ProfileSources/S1.42AE/",
     "zip_members": 335,
-    "changed_existing_members": ["export.r2x"],
-    "added_members": ["BepInEx/plugins/S142AECodeRebirthMicrowaveSpawnTuning/S142AECodeRebirthMicrowaveSpawnTuning.dll"],
+    "changed_existing_members": [
+      "export.r2x"
+    ],
+    "added_members": [
+      "BepInEx/plugins/S142AECodeRebirthMicrowaveSpawnTuning/S142AECodeRebirthMicrowaveSpawnTuning.dll"
+    ],
     "removed_members": [],
     "mod_state_changes": [],
     "mod_additions": [],
@@ -52,17 +56,39 @@
         "attempt": 1,
         "status": "INVALID_IMPORT_MATERIALIZATION_EVIDENCE_NOT_RUNTIME_REJECTION",
         "stage_reached": "BEPINEX_PRELOADER_ONLY",
-        "observed_failure": "FixPluginTypesSerialization TypeInitializationException with inner System.IO.FileNotFoundException for BepInEx\\plugins\\loaforc-loaforcsSoundAPI_LethalCompany\\me.loaforc.soundapi.lethalcompany.dll",
+        "observed_failure": "FixPluginTypesSerialization TypeInitializationException with inner System.IO.FileNotFoundException for the local loaforcsSoundAPI_LethalCompany binding DLL",
         "candidate_provider_contract_executed": false,
         "complete_log_ingested": false,
         "runtime_inbox_current_at_state_repair": "EMPTY_EXCEPT_GITKEEP",
         "disposition": "REIMPORT_SAME_S1_42AE_WITH_HARDENED_GALE_HELPER",
         "helper_hardening_commit": "7b8a23e57ad0ac678314564da1f22638362b97f3",
         "helper_revision": "2026-09-05-import-uia-v2.2-materialization-proof"
+      },
+      {
+        "attempt": 2,
+        "status": "INVALID_IMPORT_MATERIALIZATION_EVIDENCE_NOT_RUNTIME_REJECTION",
+        "stage_reached": "BEPINEX_PRELOADER_ONLY",
+        "observed_failure": "AutoHookGenPatcher DirectoryNotFoundException and subsequent FixPluginTypesSerialization FileNotFoundException for BepInEx\\plugins\\loaforc-loaforcsSoundAPI_LethalCompany\\loaforcsSoundAPI_LethalCompany\\me.loaforc.soundapi.lethalcompany.dll",
+        "candidate_provider_contract_executed": false,
+        "complete_log_ingested": false,
+        "disposition": "REIMPORT_SAME_S1_42AE_WITH_V2_3_RECURSIVE_PACKAGE_MATERIALIZATION_PROOF",
+        "root_cause_classification": "V2_2_SENTINEL_PATH_MODEL_AND_TRANSITIVE_DEPENDENCY_CLOSURE_INCOMPLETE"
       }
     ],
+    "import_recovery": {
+      "canonical_launcher": "RuntimeTools/ReplaceActiveGaleProfileV23.ps1",
+      "helper_revision": "2026-09-05-import-uia-v2.3-recursive-package-materialization-proof",
+      "underlying_validated_importer": "RuntimeTools/ReplaceActiveGaleProfile.ps1",
+      "underlying_required_revision": "2026-09-05-import-uia-v2.2-materialization-proof",
+      "binding_package": "loaforc-loaforcsSoundAPI_LethalCompany",
+      "binding_required_recursive_file": "me.loaforc.soundapi.lethalcompany.dll",
+      "base_package_transitively_required": "loaforc-loaforcsSoundAPI",
+      "base_required_recursive_file": "me.loaforc.soundapi.dll",
+      "package_root_rule": "EXACTLY_ONE_NONEMPTY_EXPECTED_DLL_RECURSIVELY_WITHIN_EACH_GALE_PACKAGE_ROOT",
+      "fail_closed_on_missing_empty_or_duplicate": true
+    },
     "runtime_gate": {
-      "startup_main_menu_lobby": "OPEN_AFTER_INVALID_IMPORT_ATTEMPT",
+      "startup_main_menu_lobby": "OPEN_AFTER_TWO_INVALID_IMPORT_ATTEMPTS",
       "dependency_validation": "OPEN",
       "provider_contract_marker": "MUST_SHOW_PRIORITISE_MOONS_TRUE_MOONCURVES_18_INTERIORCURVES_18",
       "moon_keyset_marker": "MUST_BE_PRESENT",
@@ -82,5 +108,5 @@
     "runtime_active_build": "S1.42AE",
     "successor_armed": false
   },
-  "exact_next_step": "Re-import the same S1.42AE artifact with the canonical Gale helper hardened by commit 7b8a23e57ad0ac678314564da1f22638362b97f3. Proceed only after the helper positively verifies exact export.r2x identity plus both required SoundAPI dependency DLLs as physically present and non-empty. Then run one normal gameplay round far enough for normal moon/interior generation and upload the complete fresh LogOutput.log with the exact S1.42AE uploader in Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md. Do not build a successor before evaluating this runtime evidence."
+  "exact_next_step": "Re-import the same S1.42AE artifact with RuntimeTools/ReplaceActiveGaleProfileV23.ps1. Proceed only after revision 2026-09-05-import-uia-v2.3-recursive-package-materialization-proof positively verifies exact export.r2x identity plus exactly one non-empty base SoundAPI DLL and one non-empty LethalCompany SoundAPI binding DLL inside their respective Gale package roots. Then run one normal gameplay round far enough for normal moon/interior generation and upload the complete fresh LogOutput.log with the exact S1.42AE uploader in Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md. Do not build a successor before evaluating this runtime evidence."
 }

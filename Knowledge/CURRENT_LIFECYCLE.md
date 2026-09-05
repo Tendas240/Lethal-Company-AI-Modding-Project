@@ -44,24 +44,28 @@ S1.42AD failed closed because it expected `InteriorCurves=0`, while runtime expo
 
 Automated archive QC vs accepted S1.42AC found exactly one changed existing member (`export.r2x`) and exactly one added member (the S1.42AE DLL), with zero mod-state/addition/removal/config changes.
 
-## First S1.42AE launch attempt
+## Two invalid S1.42AE launch attempts
 
-The first user launch attempt is classified as **invalid import/materialization evidence, not a candidate rejection**.
+Both user launch attempts are classified as **invalid Gale/Thunderstore import-materialization evidence, not candidate runtime rejections**. In both cases BepInEx failed in the preloader before S1.42AE's own provider-contract validation could execute.
 
-BepInEx failed during preloader initialization before S1.42AE's own provider-contract validation could run. The observed chain was `FixPluginTypesSerialization` `System.TypeInitializationException` with an inner `System.IO.FileNotFoundException` for the expected local Gale dependency DLL:
+The second console capture exposed the actual package path used by `AutoHookGenPatcher`:
 
-`BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
+`BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
 
-Consequences:
+It then failed through `FixPluginTypesSerialization` with the same missing binding dependency and fatal preloader termination.
 
-- S1.42AE remains the active runtime candidate;
-- S1.42AC remains the accepted rollback baseline;
+Consequences remain:
+
+- S1.42AE is still the active runtime candidate;
+- S1.42AC is still the accepted rollback baseline;
 - the S1.42AE runtime gate remains open;
 - no successor is armed;
 - no complete fresh valid S1.42AE `LogOutput.log` has been ingested;
-- a new profile build is not justified by this incident.
+- a new profile build is not justified by either incident.
 
-The canonical Gale replacement/import helper was hardened in commit `7b8a23e57ad0ac678314564da1f22638362b97f3` with revision `2026-09-05-import-uia-v2.2-materialization-proof`. Besides exact `export.r2x` identity, it now requires the project-critical SoundAPI dependency files referenced by the export to be physically present and non-empty before import success is declared. See `Knowledge/GALE_PROFILE_WORKFLOW.md`.
+The first hardening, helper v2.2 in commit `7b8a23e57ad0ac678314564da1f22638362b97f3`, used a flat dependency path model. The second failure established that this model did not match Gale's preserved inner Thunderstore plugin subtree. It also exposed that `loaforc-loaforcsSoundAPI_LethalCompany` must imply the base `loaforc-loaforcsSoundAPI` materialization requirement even when the base dependency is not separately listed in Gale export metadata.
+
+The current canonical launcher is therefore `RuntimeTools/ReplaceActiveGaleProfileV23.ps1`, revision `2026-09-05-import-uia-v2.3-recursive-package-materialization-proof`. It keeps the validated v2.2 UI/import behavior but requires exactly one non-empty expected DLL recursively within each required Gale package root, and fails closed on missing roots, missing/empty DLLs, or duplicates. See `Knowledge/GALE_PROFILE_WORKFLOW.md`.
 
 ## Corrected Functional Microwave contract
 
@@ -96,12 +100,13 @@ Dusk 0.9.25 selection semantics under Moon priority are exact Moon -> exact Inte
 
 Re-import and runtime-test the **same S1.42AE artifact** before any successor work:
 
-1. replace/import S1.42AE using the canonical repository Gale helper hardened by commit `7b8a23e57ad0ac678314564da1f22638362b97f3`;
-2. require the helper to positively verify exact imported `export.r2x` identity plus both required SoundAPI DLLs as physically present and non-empty;
-3. only after that proof, start the game and reach main menu/lobby;
-4. play one normal run far enough for ordinary moon/interior generation;
-5. upload the complete fresh `LogOutput.log` using the exact S1.42AE uploader in the candidate record;
-6. verify dependency versions, `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=18`, both keyset logs, final 18-Moon-curves `x0.5` marker, no contract refusal, and no new fatal/project-critical regression;
-7. accept or reject S1.42AE from that valid evidence.
+1. run the canonical `RuntimeTools/ReplaceActiveGaleProfileV23.ps1` launcher;
+2. require revision `2026-09-05-import-uia-v2.3-recursive-package-materialization-proof` to positively verify exact imported `export.r2x` identity;
+3. require exactly one non-empty `me.loaforc.soundapi.dll` recursively below the `loaforc-loaforcsSoundAPI` Gale package root and exactly one non-empty `me.loaforc.soundapi.lethalcompany.dll` recursively below the `loaforc-loaforcsSoundAPI_LethalCompany` package root;
+4. only after that proof, start the game and reach main menu/lobby;
+5. play one normal run far enough for ordinary moon/interior generation;
+6. upload the complete fresh `LogOutput.log` using the exact S1.42AE uploader in the candidate record;
+7. verify dependency versions, `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=18`, both keyset logs, final 18-Moon-curves `x0.5` marker, no contract refusal, and no new fatal/project-critical regression;
+8. accept or reject S1.42AE from that valid evidence.
 
 Do not build a successor before this runtime evidence is evaluated.
