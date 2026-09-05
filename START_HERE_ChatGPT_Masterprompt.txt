@@ -39,11 +39,11 @@ CURRENT EXECUTION STATE
 - runtime test outstanding: NO
 - successor armed: NO
 - BuildSpecs/current.json enabled: false
-- build controller id: IDLE_AFTER_S1.42AC_ACCEPTANCE_NO_SUCCESSOR_ARMED
+- build controller id: IDLE_S1.42AD_SCOPE_SELECTED_SOURCE_REVIEW_PENDING_NO_SUCCESSOR_ARMED
 - RuntimeInbox/ACTIVE_BUILD.txt: S1.42AC
 
 EXACT NEXT ACTION
-S1.42AC is accepted. No successor is armed and no runtime test is outstanding. Wait for explicit selection of the next isolated gameplay/compatibility scope through Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md.
+S1.42AD Functional Microwave spawn-rarity reduction is the explicitly selected next scope. A source-only draft exists at Patches/S142ADCodeRebirthMicrowaveSpawnTuning/, but no profile has been built or armed. Before building, independently review the draft against Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md, verify the exact CodeRebirth/DawnLib owner and 19-curve contract, and resolve the exact reduction magnitude: the draft uses 0.5 while current canonical requirements specify only that the Microwave should be rarer. Do not build or runtime-test until the target is explicitly confirmed and a build spec is armed.
 
 RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
