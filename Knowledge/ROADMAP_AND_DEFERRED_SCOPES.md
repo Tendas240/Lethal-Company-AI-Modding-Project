@@ -3,13 +3,13 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live deferred-scope list only; historical build sequencing remains in chronology/lineage  
 **Canonical-For:** `roadmap_and_deferred_scopes`  
-**Evidence:** `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, durable rules extracted from `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`  
+**Evidence:** `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, durable rules extracted from `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`  
 **Related:** `Knowledge/BCMER.md`, `Knowledge/INTERIORS_AND_LLL.md`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/REPOSITORY_OVERHAUL.md`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-09-05
 
 ## Current position
 
-Accepted gameplay baseline: **S1.42AB**.
+Accepted gameplay baseline: **S1.42AC — BCMER EventType Equal Distribution**.
 
 Active gameplay candidate: **none**.
 
@@ -17,13 +17,14 @@ Runtime test outstanding: **none**.
 
 Successor armed: **no**.
 
-The repository information-architecture overhaul is complete and passed the stricter post-acceptance re-audit against the frozen original contract. It is no longer the active maintenance scope. Normal gameplay/compatibility roadmap work may resume from the accepted S1.42AB baseline.
+S1.42AC is accepted under the corrected BCMER `1.71.0` static EventType probability model in `Current/118...`; S1.42AB is its accepted predecessor/rollback baseline. The repository information-architecture overhaul remains complete and is no longer the active maintenance scope.
+
+No deferred scope below is implicitly selected by the S1.42AC acceptance. Wait for the user's explicit choice before arming or building a successor.
 
 ## Deferred independent gameplay/compatibility scopes
 
 These remain separate unless the user explicitly selects or groups them:
 
-- reconsider existing S1.42AC under the corrected BCMER static EventType acceptance model;
 - Functional Microwave spawn-rarity reduction;
 - CullFactory disable-culling exceptions for exact IDs `junkrooms` / `shatteredrooms`;
 - MelanieMausoleum fog reduction only for that interior;
@@ -35,13 +36,13 @@ These remain separate unless the user explicitly selects or groups them:
 
 ## BCMER scope boundary
 
-The existing S1.42AC equal-scale concept is the correct BCMER 1.71.0 **static EventType probability** implementation. Its old rejection interpretation is superseded, but the artifact is still not promoted automatically.
+S1.42AC is the accepted BCMER 1.71.0 **static EventType probability** implementation. Eight equal `12.5` scales intentionally produce unequal inverse-population per-event weights while preserving approximately equal aggregate EventType mass within integer truncation.
 
-Exact long-run 12.5% **executed** EventType frequency after all runtime eligibility filters would be a materially broader algorithm-design project and is not the same scope.
+Exact long-run 12.5% **executed** EventType frequency after all runtime eligibility filters would be a materially broader algorithm-design project and is not the same scope. It is not currently armed.
 
 ## Interior scope boundary
 
-S1.42AB already solves equal effective rarity for all **LLL-viable** interiors by normalizing positive returned rarities to 100 after viability filtering.
+The inherited S1.42AB implementation already solves equal effective rarity for all **LLL-viable** interiors by normalizing positive returned rarities to 100 after viability filtering. S1.42AC does not modify that path.
 
 Still separate:
 
