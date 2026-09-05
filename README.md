@@ -8,14 +8,17 @@ GitHub is the canonical Source of Truth and build/handover workspace for **Letha
 Read, in order:
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
-2. `Current/00_CURRENT_STATE.md`
-3. `Current/PROJECT_KNOWLEDGE_MAP.md`
+2. `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
+3. `Current/00_CURRENT_STATE.md`
+4. `Current/PROJECT_KNOWLEDGE_MAP.md`
+
+Every ChatGPT chat performing project work must follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`: execute one bounded segment, report the checkpoint, then stop and wait for explicit user continuation before the next non-final segment. Short atomic work may be one segment.
 
 Then open only the topic/evidence needed for the user's question. Do not read the entire historical repository by default.
 
 Machine-readable live state: `Current/CURRENT_STATE.json`.
 
-Current-chat handover procedure: `Current/HANDOVER_PREPARATION_PROMPT.md`. When the user requests transfer to a new ChatGPT chat, the active chat must execute that procedure and generate a fresh new-chat prompt from current repository authority.
+Current-chat handover procedure: `Current/HANDOVER_PREPARATION_PROMPT.md`. Handover work is also continuation-gated by `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`.
 
 ## Current state
 
@@ -32,6 +35,7 @@ Exact next action: S1.42AD Functional Microwave spawn-rarity reduction is the ex
 
 ## Semantic navigation
 
+- ChatGPT segmented execution: `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
 - Topic router: `Current/PROJECT_KNOWLEDGE_MAP.md` / `.json`
 - Chat handover procedure: `Current/HANDOVER_PREPARATION_PROMPT.md`
 - Build history: `Current/BUILD_LINEAGE.md` / `.json`

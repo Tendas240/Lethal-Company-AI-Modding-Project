@@ -1,8 +1,9 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "updated": "2026-09-05",
   "status": "CURRENT_CANONICAL_AUTHORITY_REGISTRY",
   "authority_precedence": [
+    "Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md for project-work cadence/checkpointing",
     "Current/CURRENT_STATE.json",
     "Current/00_CURRENT_STATE.md",
     "Current/PROJECT_KNOWLEDGE_MAP.json",
@@ -13,6 +14,7 @@
     "historical snapshots"
   ],
   "rules": [
+    "Every ChatGPT chat performing project work must follow Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md: bounded segment, checkpoint, explicit user continuation gate, with only atomicity/safety completion inside the current segment.",
     "Historical documents remain evidence of what was known or decided at their timestamp and do not override newer canonical topic/state sources.",
     "A newer source-level analysis may supersede the interpretation of an older verdict without deleting the historical verdict.",
     "A later explicit acceptance or rejection decision may supersede an older lifecycle verdict while preserving the older record as historical evidence.",
@@ -20,9 +22,14 @@
     "BuildSpecs/current.json and RuntimeInbox/ACTIVE_BUILD.txt are controllers, not narrative authority for unrelated topics.",
     "Only Current/CURRENT_STATE.json and Current/00_CURRENT_STATE.md declare the concise global current state after the overhaul.",
     "Ordinary topic questions route through Current/PROJECT_KNOWLEDGE_MAP.json to one canonical topic/workflow source.",
-    "When the user explicitly requests transfer to a new ChatGPT chat, Current/HANDOVER_PREPARATION_PROMPT.md is the current workflow authority and must resolve then-current repository facts rather than reuse a stale static handover snapshot."
+    "When the user explicitly requests transfer to a new ChatGPT chat, Current/HANDOVER_PREPARATION_PROMPT.md is the current workflow authority and must resolve then-current repository facts rather than reuse a stale static handover snapshot; the handover workflow itself remains subject to the segmented execution policy."
   ],
   "canonical": [
+    {
+      "path": "Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md",
+      "authority": "CURRENT_CHATGPT_EXECUTION_POLICY",
+      "canonical_for": ["chatgpt_segmented_execution", "project_task_segmentation", "continuation_gate"]
+    },
     {
       "path": "Current/CURRENT_STATE.json",
       "authority": "GLOBAL_CURRENT_MACHINE",

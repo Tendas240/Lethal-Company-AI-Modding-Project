@@ -1,26 +1,32 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "date": "2026-09-05",
   "status": "CURRENT_CANONICAL_VALIDATOR_COVERAGE",
   "rule": "A green validator is evidence only for the obligations it explicitly checks. Do not infer coverage of unlisted semantics or runtime behavior.",
   "validators": [
     {
       "path": "RepositoryTools/render_current_navigation.py",
-      "checks": ["Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json.", "Generated bootstrap/takeover files expose the current handover-preparation route stored in Current/CURRENT_STATE.json.", "Generated latest-build status is state-driven so a preserved historical rejection can coexist with a later explicit lifecycle decision.", "Generated runtime UX distinguishes a pending future test from upload of an already-completed run."],
-      "scan_scope": ["README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/00_CURRENT_STATE.md", "Current/01_HANDOVER_CORE.md", "Current/CURRENT_STATE.json", "Current/HANDOVER_PREPARATION_PROMPT.md path reference"],
-      "does_not_check": ["Gameplay correctness", "profile/runtime artifact bytes", "historical provenance outside generated outputs", "whether an arbitrary uncommitted handover response contains truthful current facts"]
+      "checks": ["Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json.", "Generated bootstrap/takeover files expose the current handover-preparation route and segmented-execution policy stored in Current/CURRENT_STATE.json.", "Generated latest-build status is state-driven so a preserved historical rejection can coexist with a later explicit lifecycle decision.", "Generated runtime UX distinguishes a pending future test from upload of an already-completed run."],
+      "scan_scope": ["README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/00_CURRENT_STATE.md", "Current/01_HANDOVER_CORE.md", "Current/CURRENT_STATE.json", "Current/HANDOVER_PREPARATION_PROMPT.md path reference", "Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md path reference"],
+      "does_not_check": ["Gameplay correctness", "profile/runtime artifact bytes", "historical provenance outside generated outputs", "whether ChatGPT actually obeys the segmented-execution policy in every future platform turn"]
     },
     {
       "path": "RepositoryTools/knowledge_architecture_validator.py",
       "checks": ["Current-state/controller/lineage consistency including explicit accepted S1.42AC decision linkage", "RuntimeInbox/ACTIVE_BUILD.txt matches CURRENT_STATE.controllers.runtime_active_build and references a known build-lineage ID", "BuildSpecs guarded base matches the currently accepted baseline", "AUTO_BUILD_RESULT base SHA is validated against the latest artifact's lineage parent rather than the post-promotion controller base", "canonical path existence", "Knowledge topic routing/orphans", "historical S1.42AC rejection SHA-provenance chain remains intact independently of the current artifact index", "fresh S1.42AC corrected-acceptance runtime INDEX SHA agrees with Current/Projektstatus_S1.42AC_ACCEPTED.json and the current artifact evidence index"],
       "scan_scope": ["Current state and authority metadata", "RuntimeInbox/ACTIVE_BUILD.txt", "Current/BUILD_LINEAGE.json", "Current/PROJECT_KNOWLEDGE_MAP.json canonical targets", "Knowledge/*.md", "ProfileSources current indexes", "historical and fresh S1.42AC RuntimeEvidence indexes"],
-      "does_not_check": ["Whether the user's local Gale installation actually contains the build named by ACTIVE_BUILD except insofar as the repository state was updated from user/runtime evidence", "Actual profile .r2z byte hashes", "actual raw runtime-log byte hashes", "compilation or runtime correctness of arbitrary new source projects under Patches/ that have not entered the profile-build pipeline", "whether the BCMER mathematical interpretation itself is correct independently of its decision evidence", "all repository-wide superseded-value occurrences", "complete handover-workflow cross-link contract"]
+      "does_not_check": ["Whether the user's local Gale installation actually contains the build named by ACTIVE_BUILD except insofar as the repository state was updated from user/runtime evidence", "Actual profile .r2z byte hashes", "actual raw runtime-log byte hashes", "compilation or runtime correctness of arbitrary new source projects under Patches/ that have not entered the profile-build pipeline", "whether the BCMER mathematical interpretation itself is correct independently of its decision evidence", "all repository-wide superseded-value occurrences", "complete handover-workflow cross-link contract", "whether future ChatGPT turns obey the segmented execution continuation gate"]
     },
     {
       "path": "RepositoryTools/handover_workflow_validator.py",
       "checks": ["Canonical handover prompt exists", "CURRENT_STATE points to the canonical handover prompt", "README/START_HERE/Current-01 expose the handover route", "machine and human Knowledge Maps expose chat_handover", "Document Authority registers exactly one CURRENT_HANDOVER_WORKFLOW authority", "answerability suite contains the explicit handover trigger case", "handover prompt retains required two-part output/runtime/fresh-state contract", "handover prompt preserves completed-run log-upload handling and runtime-active/evidence-attribution semantics"],
       "scan_scope": ["Current/HANDOVER_PREPARATION_PROMPT.md", "Current/CURRENT_STATE.json", "README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/01_HANDOVER_CORE.md", "Current/PROJECT_KNOWLEDGE_MAP.md", "Current/PROJECT_KNOWLEDGE_MAP.json", "Current/DOCUMENT_AUTHORITY.json", "RepositoryTools/answerability_cases.json"],
-      "does_not_check": ["Truth of the future handover response before it is produced", "GitHub Actions run status at the moment a future user triggers handover", "gameplay semantics"]
+      "does_not_check": ["Truth of the future handover response before it is produced", "GitHub Actions run status at the moment a future user triggers handover", "gameplay semantics", "actual compliance with the segmented continuation gate by a future ChatGPT runtime"]
+    },
+    {
+      "path": "RepositoryTools/segmented_execution_policy_validator.py",
+      "checks": ["Canonical segmented-execution policy exists and contains bounded-segment, checkpoint, continuation-gate, one-segment and atomicity rules", "CURRENT_STATE canonical navigation points to the policy", "README/START_HERE/Current-00/Current-01 expose the policy", "START_HERE and Handover Core explicitly require stop-and-wait behavior", "human Knowledge Map exposes the cross-cutting execution route", "Document Authority registers exactly one CURRENT_CHATGPT_EXECUTION_POLICY entry with the required canonical_for claims", "handover workflow is explicitly subject to the segmented policy and requires generated new-chat prompts to preserve it"],
+      "scan_scope": ["Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md", "Current/CURRENT_STATE.json", "README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/00_CURRENT_STATE.md", "Current/01_HANDOVER_CORE.md", "Current/PROJECT_KNOWLEDGE_MAP.md", "Current/DOCUMENT_AUTHORITY.md", "Current/DOCUMENT_AUTHORITY.json", "Current/HANDOVER_PREPARATION_PROMPT.md"],
+      "does_not_check": ["Whether the ChatGPT product/platform can guarantee no timeout or network interruption", "whether every future assistant turn actually follows the policy", "gameplay correctness", "build/runtime semantics"]
     },
     {
       "path": "RepositoryTools/artifact_byte_integrity_validator.py",
@@ -56,13 +62,13 @@
       "path": "RepositoryTools/answerability_regression.py",
       "checks": ["Semantic routing for the maintained answerability case suite, including accepted build, BCMER, runtime uploader, roadmap and explicit new-chat handover queries"],
       "scan_scope": ["RepositoryTools/answerability_cases.json", "Current/PROJECT_KNOWLEDGE_MAP.json"],
-      "does_not_check": ["Truth of every routed source", "questions absent from the case suite"]
+      "does_not_check": ["Truth of every routed source", "questions absent from the case suite", "cross-cutting segmented execution policy because it is bootstrap/authority policy rather than a gameplay/content semantic topic"]
     },
     {
       "path": "RepositoryTools/validator_selftest.py",
       "checks": ["Representative negative fixtures fail as required: unqualified bad SHA, duplicate authority, orphan topic, phase without predecessor; registered historical SHA passes"],
       "scan_scope": ["temporary synthetic fixtures", "new integrity/checkpoint validator helper functions"],
-      "does_not_check": ["Formal proof that every validator branch is covered"]
+      "does_not_check": ["Formal proof that every validator branch is covered", "segmented execution validator negative cases"]
     }
   ],
   "permanent_ci_workflow": ".github/workflows/knowledge-architecture.yml",
