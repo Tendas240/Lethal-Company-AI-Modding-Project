@@ -35,15 +35,28 @@ The user-authorized target remains Functional Microwaves **half as often** (`Spa
 
 S1.42AD remains rejected history and is not a build/gameplay base.
 
+## First launch attempt status
+
+The first user launch attempt with S1.42AE is **not a valid runtime-gate result**. BepInEx failed in the preloader before the S1.42AE provider-contract code could execute because the local Gale profile could not load:
+
+`BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
+
+The console showed a `FixPluginTypesSerialization` `System.TypeInitializationException` with inner `System.IO.FileNotFoundException`, followed by the fatal preloader exception. This is classified as incomplete Gale/Thunderstore dependency materialization, not an S1.42AE runtime rejection.
+
+The canonical Gale helper was hardened in commit `7b8a23e57ad0ac678314564da1f22638362b97f3` (`2026-09-05-import-uia-v2.2-materialization-proof`). It now requires exact imported `export.r2x` identity **and** the expected project-critical SoundAPI DLLs to exist physically and be non-empty before it reports import success.
+
+No valid complete S1.42AE runtime log has been ingested yet. The candidate remains active; no successor is armed.
+
 ## Exact next action
 
-**A runtime test is outstanding for S1.42AE. No successor is armed.**
+**The same S1.42AE artifact must be re-imported and tested. Do not build a successor.**
 
 1. Replace/import S1.42AE using the canonical repository Gale helper.
-2. Start normally and reach main menu/lobby.
-3. Play one normal run far enough for normal moon/interior generation and ordinary gameplay.
-4. Upload the complete fresh `LogOutput.log` with the exact S1.42AE uploader in the candidate record.
-5. Evaluate the log before any successor work.
+2. Do not proceed until the helper positively verifies both exact `export.r2x` identity and the required SoundAPI dependency materialization.
+3. Start normally and reach main menu/lobby.
+4. Play one normal run far enough for normal moon/interior generation and ordinary gameplay.
+5. Upload the complete fresh `LogOutput.log` with the exact S1.42AE uploader in the candidate record.
+6. Evaluate the log before any successor work.
 
 Required S1.42AE evidence:
 
