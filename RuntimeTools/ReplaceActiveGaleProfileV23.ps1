@@ -1,7 +1,7 @@
 $repo='Tendas240/Lethal-Company-AI-Modding-Project'
 $headers=@{'User-Agent'='LC-Profile-Updater';'Cache-Control'='no-cache'}
-$expectedBaseRevision="$helperRevision='2026-09-05-import-uia-v2.2-materialization-proof'"
-$replacementRevision="$helperRevision='2026-09-05-import-uia-v2.3-recursive-package-materialization-proof'"
+$expectedBaseRevision='$helperRevision=''2026-09-05-import-uia-v2.2-materialization-proof'''
+$replacementRevision='$helperRevision=''2026-09-05-import-uia-v2.3-recursive-package-materialization-proof'''
 
 $cache=[DateTime]::UtcNow.Ticks
 $baseUrl="https://raw.githubusercontent.com/$repo/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb=$cache"
