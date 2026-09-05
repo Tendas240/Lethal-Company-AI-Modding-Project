@@ -1,44 +1,57 @@
 # S1.42AD CodeRebirth Functional Microwave Spawn Tuning
 
-> **STATUS: UNBUILT IMPLEMENTATION DRAFT — NOT AN ACCEPTED BUILD CONTRACT.**
-> The current source draft uses `SpawnScale = 0.5f` as a proposed value. Current canonical project authorities require the Functional Microwave to become rarer but do not yet authorize an exact reduction percentage. Resolve the target magnitude and complete the mandatory Patch Safety Review before arming/building S1.42AD. Recovery authority: `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`.
+> **STATUS: FINAL PRE-BUILD CONTRACT — SCALE USER-AUTHORIZED / OWNER CONTRACT VERIFIED.**
+> The user explicitly authorized the Functional Microwave to be encountered half as often. S1.42AD therefore uses proportional curve-amplitude scaling with `SpawnScale = 0.5f`. The implementation is fail-closed against the independently verified CodeRebirth 1.6.9 / DawnLib 0.9.25 / Dusk 0.9.25 runtime-provider contract.
 
-Project-local narrow runtime tuner draft for CodeRebirth's Functional Microwave inside hazard.
+Project-local narrow runtime tuner for CodeRebirth's Functional Microwave inside hazard.
 
-## Intended purpose
+## Purpose
 
-Reduce Functional Microwave occurrence while preserving CodeRebirth's relative Moon/tag distribution and without changing other inside hazards.
-
-The **current draft proposal** is a 50% amplitude reduction. That value is not yet an accepted user target.
+Reduce Functional Microwave occurrence by scaling its currently effective spawn-weight curves to 50% amplitude while preserving CodeRebirth's relative Moon/tag distribution and without changing any other inside hazard.
 
 Exact DawnLib key:
 
 `code_rebirth:functional_microwave`
 
-Expected owner versions:
+Frozen owner versions:
 
 - CodeRebirth `1.6.9`;
 - DawnLib `0.9.25`;
 - DawnLib.Dusk `0.9.25`.
 
-## Draft mutation
+## Verified provenance / owner contract
 
-If the final approved target remains `0.5`, the draft intends to run after DawnLib's Moon-registry freeze/rebuild and:
+The independent source review established:
 
-1. require the MapObjects registry to be frozen;
-2. resolve exactly `code_rebirth:functional_microwave`;
-3. require an InsideInfo provider table;
-4. require exactly one `Dusk.MapObjectSpawnMechanics` provider;
-5. require the frozen 19-key microwave curve set;
-6. multiply every microwave keyframe value, incoming tangent and outgoing tangent by `0.5`;
-7. leave keyframe time and weights unchanged;
-8. modify no other map-object provider.
+- CodeRebirth registers the exact map-object key `code_rebirth:functional_microwave` through DawnLib/Dusk;
+- `DawnMapObjectInfo.InsideInfo.SpawnWeights` is the narrow owner surface;
+- Dusk represents the target provider as `MapObjectSpawnMechanics`;
+- the shipped/bundle-time Functional Microwave contract predates later Unity-source edits that added unused Interior curves;
+- the expected runtime contract for the shipped 1.6.9 bundle is Moon-priority enabled, exactly 18 Moon/tag curves, and zero Interior/tag curves;
+- Dusk 0.9.25 exposes `PrioritiseMoons`, `CurvesByMoonOrTagName`, and `CurvesByInteriorOrTagName` directly on `MapObjectSpawnMechanics`.
+
+The later source-only 19-key/Interior-curve state is not accepted as the shipped runtime contract because those changes occurred after the last relevant `coderebirthasset` rebuild.
+
+## Mutation contract
+
+After DawnLib's Moon-registry freeze/rebuild the plugin must:
+
+1. validate exact CodeRebirth/DawnLib/Dusk versions;
+2. require the MapObjects registry to be frozen;
+3. resolve exactly `code_rebirth:functional_microwave` with InsideInfo;
+4. require the expected DawnLib ProviderTable structure;
+5. require exactly one `Dusk.MapObjectSpawnMechanics` provider for the target;
+6. require `PrioritiseMoons == true`;
+7. require exactly zero `CurvesByInteriorOrTagName` entries;
+8. require exactly the frozen 18-key `CurvesByMoonOrTagName` set below;
+9. require every expected curve to be non-null and non-empty;
+10. only then multiply every Microwave Moon/tag keyframe value, incoming tangent and outgoing tangent by `0.5`;
+11. leave keyframe time and weights unchanged;
+12. modify no other map-object provider.
 
 Scaling values and tangents together preserves each curve's shape at half amplitude.
 
-Do not treat the value `0.5` as final until the exact target magnitude is confirmed and recorded in the S1.42AD build plan.
-
-## Expected curve-key draft contract
+## Expected 18-key Moon/tag contract
 
 - `lethal_company:vanilla`
 - `lethal_company:custom`
@@ -47,7 +60,6 @@ Do not treat the value `0.5` as final until the exact target magnitude is confir
 - `code_rebirth:functional_microwave_low`
 - `code_rebirth:functional_microwave_medium`
 - `code_rebirth:functional_microwave_high`
-- `code_rebirth:functional_microwave_ultra_high`
 - `lethal_company:experimentation`
 - `lethal_company:vow`
 - `lethal_company:march`
@@ -60,36 +72,58 @@ Do not treat the value `0.5` as final until the exact target magnitude is confir
 - `lethal_company:titan`
 - `lethal_company:artifice`
 
-Any version/key/provider/curve-set drift should cause a fail-closed refusal instead of a guessed fallback.
+`code_rebirth:functional_microwave_ultra_high` is deliberately absent. It belongs to a later Unity-source state that was added after the relevant asset-bundle rebuild and is not part of the verified shipped Moon/tag contract.
 
-This 19-key list still requires an explicit independent ownership/provenance review before the build is armed.
+Any version/key/provider/priority/Interior-curve/Moon-curve drift causes a fail-closed refusal instead of a guessed fallback.
 
-## Required pre-build gate
+## Patch Safety Review
 
-Before this draft may become a candidate:
+### Exact owner / smallest mutation surface
 
-- resolve the exact requested spawn reduction magnitude;
-- independently confirm the exact CodeRebirth/DawnLib ownership and provider/key contract;
-- complete the Patch Safety Review required by `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
-- compile cleanly in the repository build environment;
-- record the resulting DLL SHA-256;
-- prove the candidate profile diff is limited to the intended DLL/build metadata;
-- keep S1.42AC as the guarded base until a later explicit promotion.
+The patch touches only the Functional Microwave's own DawnLib/Dusk inside-spawn `AnimationCurve` provider after the owner registry lifecycle has settled. It does not patch global DawnLib selection, CodeRebirth lifecycle methods, other hazards, networking, saves, or object functionality.
 
-## Runtime acceptance after a candidate exists
+### Lifecycle / secondary responsibilities
+
+The plugin subscribes once to `LethalContent.Moons.OnFreeze` unless the registry is already frozen, validates MapObjects freeze state, validates the exact provider contract, applies once, and otherwise leaves native CodeRebirth/DawnLib spawn evaluation intact.
+
+### State ownership
+
+DawnLib/Dusk remains the owner of spawn evaluation. S1.42AD only performs deterministic proportional amplitude scaling on the exact target provider curves.
+
+### Fail-closed guarantees
+
+Do not:
+
+- globally disable Functional Microwave;
+- scale all Inside Hazards;
+- globally patch DawnLib map-object selection;
+- fall back to similar keys/providers;
+- mutate Interior curves when the verified contract expects none;
+- reinstall historical `CodeRebirthLib`.
+
+If any exact contract check fails, the plugin logs an error and performs no curve mutation.
+
+### Adjacent behavior preserved
+
+- Functional Microwave remains fully functional when spawned;
+- accepted `Functional Microwave | Volume = 0.15` remains unchanged;
+- all other CodeRebirth inside/outside hazards remain unchanged;
+- accepted S1.42Z ACU/G.R.E.G. tuning remains unchanged;
+- all accepted S1.42AC BCMER/interior/enemy/Pikmin/Jetpack behavior remains unchanged.
+
+## Runtime acceptance
 
 The log must show:
 
 - exact dependency versions validated;
-- plugin armed before Moon freeze;
-- final marker confirming the approved Microwave curve scale was applied to all expected curves;
-- no contract-refusal/error marker;
-- normal round generation without a new fatal regression.
+- plugin armed on the intended Moon-freeze lifecycle;
+- provider marker `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=0`;
+- final marker confirming all 18 Microwave Moon/tag curves were scaled by `0.5`;
+- no S1.42AD contract-refusal/error marker;
+- normal startup and ordinary round generation without a new fatal regression.
 
-A short runtime sample cannot statistically prove an exact occurrence reduction. The deterministic provider mutation plus clean runtime behavior is the primary acceptance evidence.
+A short runtime sample cannot statistically prove an exact observed occurrence ratio. The deterministic provider mutation plus clean adjacent runtime behavior is the primary acceptance evidence.
 
 ## Rollback
 
-If this plugin is eventually built into a candidate, removing `BepInEx/plugins/S142ADCodeRebirthMicrowaveSpawnTuning/S142ADCodeRebirthMicrowaveSpawnTuning.dll` restores CodeRebirth/DawnLib native Functional Microwave curves.
-
-At the current repository state no S1.42AD profile contains this DLL yet, so no runtime rollback is presently required.
+Removing `BepInEx/plugins/S142ADCodeRebirthMicrowaveSpawnTuning/S142ADCodeRebirthMicrowaveSpawnTuning.dll` restores CodeRebirth/DawnLib native Functional Microwave curves.
