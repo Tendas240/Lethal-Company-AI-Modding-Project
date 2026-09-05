@@ -1,22 +1,23 @@
 {
-  "build_id": "S1.42AC",
-  "profile_name": "LC V1 S1.42AC BCMER EventType Equal Distribution",
-  "base_profile": "Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z",
-  "base_sha256": "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca",
-  "output_profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
-  "output_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
-  "zip_members": 334,
+  "build_id": "S1.42AD",
+  "profile_name": "LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction",
+  "base_profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+  "base_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+  "output_profile": "Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z",
+  "output_sha256": "9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c",
+  "zip_members": 335,
   "changed_existing_members": [
-    "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
     "export.r2x"
   ],
-  "added_members": [],
+  "added_members": [
+    "BepInEx/plugins/S142ADCodeRebirthMicrowaveSpawnTuning/S142ADCodeRebirthMicrowaveSpawnTuning.dll"
+  ],
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42AC",
+  "snapshot_dir": "ProfileSources/S1.42AD",
   "snapshot": {
-    "entries": 334,
+    "entries": 335,
     "text_entries": 330
   }
 }
