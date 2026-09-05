@@ -9,6 +9,10 @@ MARKER_MD = "<!-- GENERATED — DO NOT MANUALLY EDIT. Source: Current/CURRENT_ST
 MARKER_TEXT = "GENERATED — DO NOT MANUALLY EDIT. Update Current/CURRENT_STATE.json and run RepositoryTools/render_current_navigation.py."
 
 def load_state(): return json.loads(STATE_PATH.read_text(encoding="utf-8"))
+def status_text(value): return str(value).replace("_", " ")
+def opt_line(obj, key, label):
+    value=obj.get(key)
+    return f"- {label}: {value}\n" if value else ""
 
 def render_readme(s):
     a,l,o=s["accepted_baseline"],s["latest_built_artifact"],s["overhaul"]
@@ -38,7 +42,7 @@ Accepted baseline: **{a['build_id']} — {a['title']}**
 Profile: `{a['profile']}`  
 SHA-256: `{a['sha256']}`
 
-Latest built artifact: **{l['build_id']} — {l['title']} — formally rejected/not promoted**  
+Latest built artifact: **{l['build_id']} — {l['title']} — {status_text(l['status'])}**  
 SHA-256: `{l['sha256']}`
 
 Active candidate: **none**. Runtime test outstanding: **no**. Build successor armed: **no**.
@@ -55,7 +59,7 @@ Exact next action: {s['next_action']}
 - Deferred work: `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`
 - Patch safety: `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
 
-Historical handovers, candidate notes and runtime decisions are preserved as evidence, but they do not override the current state/topic authority graph.
+Historical handovers, candidate notes, rejection records and runtime decisions are preserved as evidence, but they do not override the current state/topic authority graph or a later explicit acceptance decision.
 
 ## Repository overhaul
 
@@ -69,6 +73,7 @@ No local repository clone or local profile build should be required from the use
 def render_start(s):
     a,l,c=s["accepted_baseline"],s["latest_built_artifact"],s["controllers"]
     h=s["canonical_navigation"]["handover_preparation_prompt"]
+    latest_details=(opt_line(l,"acceptance","acceptance")+opt_line(l,"original_rejection","historical rejection")+opt_line(l,"corrected_analysis","corrected BCMER analysis")).rstrip()
     return f"""======================================================================
 CURRENT CANONICAL TAKEOVER — GENERATED FROM Current/CURRENT_STATE.json
 ======================================================================
@@ -85,22 +90,23 @@ READ FIRST:
 
 Then route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the relevant Knowledge topic plus linked evidence/config/code.
 Use Current/DOCUMENT_AUTHORITY.md when old files contain stale "current" wording.
-Use Current/BUILD_LINEAGE.md for "which build introduced/rejected this?" questions.
+Use Current/BUILD_LINEAGE.md for "which build introduced/rejected/accepted this?" questions.
 
 HANDOVER SIGNAL
 When the user explicitly requests transfer to a new ChatGPT chat, execute {h}. Verify the then-current main/CI/controllers first and generate a fresh new-chat start prompt from repository authority instead of reusing stale conversation memory.
 
 ACCEPTED BASELINE
 - {a['build_id']} — {a['title']}
+- status: {status_text(a['status'])}
 - profile: {a['profile']}
 - SHA-256: {a['sha256']}
 - acceptance: {a['acceptance']}
 
 LATEST BUILT ARTIFACT
 - {l['build_id']} — {l['title']}
-- status: FORMALLY REJECTED / NOT PROMOTED
+- status: {status_text(l['status'])}
 - SHA-256: {l['sha256']}
-- corrected BCMER analysis: {l['corrected_analysis']}
+{latest_details}
 
 CURRENT EXECUTION STATE
 - active candidate: NONE
@@ -114,7 +120,7 @@ EXACT NEXT ACTION
 {s['next_action']}
 
 RUNTIME-TEST UX RULE
-Whenever a future runtime test is outstanding, the same response that explains the test MUST include the exact build-specific one-line PowerShell log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
+Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
 
 PERMANENT POLICY ROUTES
 - Chat handover: {h}
@@ -130,7 +136,7 @@ PERMANENT POLICY ROUTES
 - Patch safety: Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
 
 HISTORY RULE
-Do not delete or reinterpret history to match current truth. Historical decisions remain evidence. Current/109 supersedes only the old BCMER per-event-weight interpretation behind the S1.42AC rejection; S1.42AC remains formally rejected/not promoted until an explicit later decision changes that status.
+Do not delete or reinterpret history to match current truth. Historical decisions remain evidence. A later explicit decision may supersede a historical lifecycle verdict while preserving the original record and its observations. Current/CURRENT_STATE.json plus the build-specific current decision record determine live status.
 
 REPOSITORY OVERHAUL
 Architecture status: {s['overhaul']['status']}
@@ -142,6 +148,15 @@ Do not require the user to make a local clone/build while repository-native infr
 
 def render_current(s):
     a,l,c=s["accepted_baseline"],s["latest_built_artifact"],s["controllers"]
+    hist=""
+    if l.get("original_rejection"):
+        hist=f"\nHistorical rejection: `{l['original_rejection']}`  \n"
+    corr=""
+    if l.get("corrected_analysis"):
+        corr=f"Corrected source-path analysis: `{l['corrected_analysis']}`  \n"
+    acc=""
+    if l.get("acceptance"):
+        acc=f"Acceptance: `{l['acceptance']}`  \n"
     return f"""{MARKER_MD}
 # 00 — Current State
 
@@ -152,7 +167,7 @@ def render_current(s):
 
 ## Accepted baseline
 
-**{a['build_id']} — {a['title']} — ACCEPTED FULL NORMAL STACK**
+**{a['build_id']} — {a['title']} — {status_text(a['status'])}**
 
 Profile: `{a['profile']}`  
 SHA-256: `{a['sha256']}`  
@@ -161,14 +176,12 @@ Runtime evidence: `{a['runtime_evidence']}`
 
 ## Latest built artifact
 
-**{l['build_id']} — {l['title']} — FORMALLY REJECTED / NOT PROMOTED**
+**{l['build_id']} — {l['title']} — {status_text(l['status'])}**
 
 Profile: `{l['profile']}`  
 SHA-256: `{l['sha256']}`  
-Original rejection: `{l['original_rejection']}`  
-Corrected source-path analysis: `{l['corrected_analysis']}`
-
-The old S1.42AC equality gate misread BCMER's logged values as aggregate EventType weights. `Current/109` proves they are per-event weights normalized by enabled event count. The equal 12.5 scales are therefore the correct static EventType-probability model; this technical correction does not silently promote the rejected artifact.
+{acc}{hist}{corr}
+A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
 ## Live execution state
 
@@ -228,18 +241,18 @@ When the user later requests transfer to another ChatGPT chat, execute `{h}`. Th
 ## Current anchors
 
 Accepted: **{a['build_id']} — {a['title']}**, SHA-256 `{a['sha256']}`.  
-Latest built: **{l['build_id']} — {l['title']}**, SHA-256 `{l['sha256']}`, formally rejected/not promoted.  
+Latest built: **{l['build_id']} — {l['title']}**, SHA-256 `{l['sha256']}`, status **{status_text(l['status'])}**.  
 Active candidate: **none**. Runtime test: **none pending**. Successor: **not armed**.
 
 Exact next action: {s['next_action']}
 
 ## Mandatory runtime-test UX
 
-Whenever a future runtime test becomes outstanding, the response that explains what to test must include the exact build-specific one-line PowerShell log uploader in the same response. If a run is already complete but its log is not yet ingested, provide the uploader for the runtime-active build without requiring another test run.
+Whenever a future runtime test becomes outstanding, the response that explains what to test must include the repository-driven Gale replacement/import one-liner when required and the exact build-specific one-line PowerShell log uploader in the same response. If a run is already complete but its log is not yet ingested, provide the uploader for the runtime-active build without requiring another test run.
 
 ## Historical authority warning
 
-Old final handovers, audits, candidate notes, `Current/02_TECHNICAL_BASELINE.md`, and the old progress blocks in `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md` are retained history. They do not override the new current-state/topic graph. See `Current/DOCUMENT_AUTHORITY.md` and `Current/REPOSITORY_MIGRATION_MANIFEST.md`.
+Old final handovers, audits, candidate notes, rejection records, `Current/02_TECHNICAL_BASELINE.md`, and the old progress blocks in `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md` are retained history. They do not override the current-state/topic graph or a later explicit acceptance decision. See `Current/DOCUMENT_AUTHORITY.md` and `Current/REPOSITORY_MIGRATION_MANIFEST.md`.
 
 ## Recovery
 
