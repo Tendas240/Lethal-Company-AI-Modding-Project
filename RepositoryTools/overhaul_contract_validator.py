@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Strict post-overhaul validation against the frozen pre-overhaul contract."""
+"""Strict post-overhaul validation against the frozen pre-overhaul contract.
+
+Frozen overhaul provenance/completion remains immutable. Mutable post-overhaul gameplay
+lifecycle state is validated for coherence rather than pinned to the lifecycle snapshot
+that happened to exist on the day the information-architecture overhaul completed.
+"""
 from __future__ import annotations
 
 import json
@@ -15,7 +20,6 @@ BACKUP_GATE_COMMIT = "2c1ab3be7db5474b0e08ff8a80c063a2c50224a4"
 BACKUP_REPOSITORY = "Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904"
 ACCEPTED_BUILD = "S1.42AC"
 ACCEPTED_SHA = "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9"
-LATEST_BUILD = "S1.42AC"
 ERRORS: list[str] = []
 WARNINGS: list[str] = []
 
@@ -53,11 +57,7 @@ def git_has(spec: str) -> bool:
 
 
 def concrete_path(value: str) -> bool:
-    """True only for references intended to identify a currently existing path.
-
-    The knowledge map also contains globs, placeholders and lifecycle destinations;
-    those are search/process notation rather than broken file references.
-    """
+    """True only for references intended to identify a currently existing path."""
     if not value:
         return False
     if any(mark in value for mark in ("*", "?", "<", ">", "...")):
@@ -158,20 +158,21 @@ def check_live_state() -> None:
     state = load("Current/CURRENT_STATE.json")
     a = state.get("accepted_baseline", {})
     latest = state.get("latest_built_artifact", {})
+    candidate = state.get("active_candidate")
     controllers = state.get("controllers", {})
+
+    # Frozen contract fact: corrected S1.42AC remains the accepted baseline until a
+    # later explicit runtime decision promotes a successor. Latest/candidate state is
+    # intentionally mutable after overhaul completion.
     if a.get("build_id") != ACCEPTED_BUILD or a.get("sha256") != ACCEPTED_SHA:
         error("accepted baseline/SHA drift from explicitly accepted S1.42AC")
     if a.get("status") != "ACCEPTED_FULL_NORMAL_STACK":
         error("S1.42AC accepted baseline status drift")
-    if latest.get("build_id") != LATEST_BUILD or latest.get("status") != "ACCEPTED_FULL_NORMAL_STACK":
-        error("latest artifact drift: S1.42AC must reflect explicit corrected acceptance")
-    if state.get("active_candidate") is not None or state.get("runtime_test_outstanding") is not False:
-        error("unexpected active candidate or runtime test")
+
     spec = load("BuildSpecs/current.json")
     if spec.get("enabled") is not False:
-        error("BuildSpecs/current.json unexpectedly enabled")
-    if spec.get("base_profile") != a.get("profile") or spec.get("base_sha256") != ACCEPTED_SHA:
-        error("BuildSpecs accepted-base guard drift")
+        error("BuildSpecs/current.json unexpectedly enabled outside an atomic build")
+
     active = (ROOT / "RuntimeInbox/ACTIVE_BUILD.txt").read_text(encoding="utf-8").strip()
     lineage = load("Current/BUILD_LINEAGE.json")
     known_builds = {b.get("id") for b in lineage.get("builds", []) if isinstance(b, dict) and b.get("id")}
@@ -181,11 +182,36 @@ def check_live_state() -> None:
         error("runtime active-build controller disagrees with CURRENT_STATE")
     if controllers.get("build_enabled") is not False:
         error("CURRENT_STATE controllers.build_enabled unexpectedly true")
+
+    candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None
+    if candidate_id:
+        if latest.get("build_id") != candidate_id:
+            error("active candidate is not the latest built artifact")
+        if state.get("runtime_test_outstanding") is not True:
+            error("active candidate does not have runtime_test_outstanding=true")
+        if active != candidate_id:
+            error("runtime active build does not identify the active candidate")
+        guard = candidate
+    else:
+        if state.get("runtime_test_outstanding") is not False:
+            error("runtime test is outstanding without an active candidate")
+        guard = a
+
+    if spec.get("base_profile") != guard.get("profile") or spec.get("base_sha256") != guard.get("sha256"):
+        error("BuildSpecs disabled guard does not match current guarded artifact")
+    if controllers.get("build_base_profile") != spec.get("base_profile") or controllers.get("build_base_sha256") != spec.get("base_sha256"):
+        error("CURRENT_STATE build guard disagrees with BuildSpecs/current.json")
+
     for key in ("profile", "acceptance", "project_status", "runtime_evidence", "profile_sources", "file_index"):
         value = a.get(key)
         if not isinstance(value, str) or not exists(value):
             error(f"accepted baseline lacks readable {key}: {value!r}")
     require(f"ProfileSources/{ACCEPTED_BUILD}/export.r2x", "accepted readable profile export")
+
+    for key in ("profile", "candidate_record", "project_status", "profile_sources", "file_index"):
+        value = latest.get(key)
+        if value is not None and (not isinstance(value, str) or not exists(value)):
+            error(f"latest built artifact lacks readable {key}: {value!r}")
 
 
 def check_map() -> None:
@@ -222,9 +248,19 @@ def check_map() -> None:
 
 
 def check_lineage_and_completion() -> None:
+    state = load("Current/CURRENT_STATE.json")
     lineage = load("Current/BUILD_LINEAGE.json")
-    if lineage.get("current_accepted_build_id") != ACCEPTED_BUILD or lineage.get("active_candidate_build_id") is not None:
-        error("BUILD_LINEAGE current lifecycle drift")
+    candidate = state.get("active_candidate")
+    candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None
+    latest_id = state.get("latest_built_artifact", {}).get("build_id")
+
+    if lineage.get("current_accepted_build_id") != ACCEPTED_BUILD:
+        error("BUILD_LINEAGE accepted baseline drift")
+    if lineage.get("active_candidate_build_id") != candidate_id:
+        error("BUILD_LINEAGE active candidate disagrees with CURRENT_STATE")
+    if lineage.get("latest_built_artifact_id") != latest_id:
+        error("BUILD_LINEAGE latest built artifact disagrees with CURRENT_STATE")
+
     for build in lineage.get("builds", []):
         if not isinstance(build, dict):
             continue
@@ -232,12 +268,14 @@ def check_lineage_and_completion() -> None:
             value = build.get(field)
             if isinstance(value, str) and concrete_path(value) and not exists(value):
                 error(f"BUILD_LINEAGE {build.get('id')}.{field} missing: {value}")
+
     ac = next((x for x in lineage.get("builds", []) if isinstance(x, dict) and x.get("id") == "S1.42AC"), {})
     if ac.get("sha256") != ACCEPTED_SHA or ac.get("decision_record") != "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md" or ac.get("safe_as_gameplay_base") is not True:
         error("S1.42AC corrected acceptance provenance regression in BUILD_LINEAGE")
     z = next((x for x in lineage.get("builds", []) if isinstance(x, dict) and x.get("id") == "S1.42Z"), {})
     if z.get("profile") != "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z" or z.get("sha256") != "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4":
         error("S1.42Z accepted provenance regression in BUILD_LINEAGE")
+
     execution = load("Current/OVERHAUL_EXECUTION_STATE.json")
     if execution.get("status") != "OVERHAUL_COMPLETE_VALIDATED" or execution.get("last_completed_phase") != 11:
         error("OVERHAUL_EXECUTION_STATE is not complete through phase 11")
@@ -294,7 +332,7 @@ def main() -> int:
         print("ERROR:", item)
     if ERRORS:
         return 1
-    print("PASS: completed repository satisfies frozen pre-overhaul contract checks")
+    print("PASS: frozen overhaul provenance/completion remains valid and current lifecycle is coherent")
     return 0
 
 
