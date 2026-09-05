@@ -26,12 +26,12 @@ Accepted baseline: **S1.42AC — BCMER EventType Equal Distribution**
 Profile: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z`  
 SHA-256: `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
 
-Latest built artifact: **S1.42AE — Functional Microwave Provider Contract Correction — BUILD PASS GAMEPLAY RUNTIME VALIDATION OPEN NOT ACCEPTED**  
-SHA-256: `d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee`
+Latest built artifact: **S1.42AF — Path-Length-Safe Microwave Packaging — BUILD PASS RUNTIME VALIDATION OPEN NOT ACCEPTED**  
+SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
 
-Active candidate: **S1.42AE**. Runtime test outstanding: **yes**. Build successor armed: **no**.
+Active candidate: **S1.42AF**. Runtime test outstanding: **yes**. Build successor armed: **no**.
 
-Exact next action: After the v2.4 Gale import-proof repair is merged and CI is green, re-import the same S1.42AE artifact with RuntimeTools/ReplaceActiveGaleProfileV24.ps1. Do not start the game unless revision 2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof successfully decodes non-empty export.r2x text, derives and lists exactly two SoundAPI critical materialization contracts, and verifies exactly one non-empty base SoundAPI DLL plus one non-empty LethalCompany binding DLL inside their respective Gale package roots. Then play one normal gameplay run far enough for normal moon/interior generation and upload the complete fresh LogOutput.log with the exact S1.42AE uploader from Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md. Evaluate dependency validation, PrioritiseMoons=true MoonCurves=18 InteriorCurves=18, both keyset markers, the final 18 Moon curves x0.5 / Interior validation-only marker, and project-critical regression markers before accepting or rejecting S1.42AE. Do not build a successor before this runtime evidence is evaluated.
+Exact next action: Import S1.42AF with RuntimeTools/ReplaceActiveGaleProfileV24.ps1. Proceed only after v2.4 positively verifies non-empty export.r2x plus exactly one non-empty base SoundAPI DLL and one non-empty LethalCompany binding DLL. Confirm the shortened nested binding path is below the legacy 260-character boundary, then start Lethal Company, require preloader/main-menu success, play one normal run far enough for ordinary moon/interior generation, and upload the complete fresh S1.42AF LogOutput.log with the exact uploader in Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md. Evaluate the preserved S1.42AE plugin markers, dependency versions, PrioritiseMoons=true MoonCurves=18 InteriorCurves=18, both keysets, the 18 Moon curves x0.5 / 18 Interior validation-only marker, and regression/fatal markers before accepting or rejecting S1.42AF.
 
 ## Semantic navigation
 

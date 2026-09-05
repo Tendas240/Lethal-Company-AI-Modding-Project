@@ -31,21 +31,21 @@ ACCEPTED BASELINE
 - acceptance: Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md
 
 LATEST BUILT ARTIFACT
-- S1.42AE — Functional Microwave Provider Contract Correction
-- status: BUILD PASS GAMEPLAY RUNTIME VALIDATION OPEN NOT ACCEPTED
-- SHA-256: d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee
-- candidate record: Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md
+- S1.42AF — Path-Length-Safe Microwave Packaging
+- status: BUILD PASS RUNTIME VALIDATION OPEN NOT ACCEPTED
+- SHA-256: 6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0
+- candidate record: Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md
 
 CURRENT EXECUTION STATE
-- active candidate: S1.42AE
+- active candidate: S1.42AF
 - runtime test outstanding: YES
 - successor armed: NO
 - BuildSpecs/current.json enabled: false
-- build controller id: IDLE_AFTER_S1.42AE_BUILD_AWAITING_RUNTIME_VALIDATION
-- RuntimeInbox/ACTIVE_BUILD.txt: S1.42AE
+- build controller id: IDLE_AFTER_S1.42AF_BUILD_AWAITING_RUNTIME_VALIDATION
+- RuntimeInbox/ACTIVE_BUILD.txt: S1.42AF
 
 EXACT NEXT ACTION
-After the v2.4 Gale import-proof repair is merged and CI is green, re-import the same S1.42AE artifact with RuntimeTools/ReplaceActiveGaleProfileV24.ps1. Do not start the game unless revision 2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof successfully decodes non-empty export.r2x text, derives and lists exactly two SoundAPI critical materialization contracts, and verifies exactly one non-empty base SoundAPI DLL plus one non-empty LethalCompany binding DLL inside their respective Gale package roots. Then play one normal gameplay run far enough for normal moon/interior generation and upload the complete fresh LogOutput.log with the exact S1.42AE uploader from Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md. Evaluate dependency validation, PrioritiseMoons=true MoonCurves=18 InteriorCurves=18, both keyset markers, the final 18 Moon curves x0.5 / Interior validation-only marker, and project-critical regression markers before accepting or rejecting S1.42AE. Do not build a successor before this runtime evidence is evaluated.
+Import S1.42AF with RuntimeTools/ReplaceActiveGaleProfileV24.ps1. Proceed only after v2.4 positively verifies non-empty export.r2x plus exactly one non-empty base SoundAPI DLL and one non-empty LethalCompany binding DLL. Confirm the shortened nested binding path is below the legacy 260-character boundary, then start Lethal Company, require preloader/main-menu success, play one normal run far enough for ordinary moon/interior generation, and upload the complete fresh S1.42AF LogOutput.log with the exact uploader in Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md. Evaluate the preserved S1.42AE plugin markers, dependency versions, PrioritiseMoons=true MoonCurves=18 InteriorCurves=18, both keysets, the 18 Moon curves x0.5 / 18 Interior validation-only marker, and regression/fatal markers before accepting or rejecting S1.42AF.
 
 RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
