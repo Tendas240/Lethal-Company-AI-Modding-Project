@@ -39,7 +39,6 @@ namespace S142ADCodeRebirthMicrowaveSpawnTuning
             "code_rebirth:functional_microwave_low",
             "code_rebirth:functional_microwave_medium",
             "code_rebirth:functional_microwave_high",
-            "code_rebirth:functional_microwave_ultra_high",
             "lethal_company:experimentation",
             "lethal_company:vow",
             "lethal_company:march",
@@ -132,7 +131,22 @@ namespace S142ADCodeRebirthMicrowaveSpawnTuning
                 return;
             }
 
-            Dictionary<NamespacedKey, AnimationCurve> curves = mechanics[0].CurvesByMoonOrTagName;
+            MapObjectSpawnMechanics mechanic = mechanics[0];
+            if (!mechanic.PrioritiseMoons)
+            {
+                Logger.LogError("S1.42AD microwave spawn tuning refused to apply: expected Functional Microwave provider to prioritise Moon curves, but PrioritiseMoons was false.");
+                return;
+            }
+
+            Dictionary<NamespacedKey, AnimationCurve> interiorCurves = mechanic.CurvesByInteriorOrTagName;
+            if (interiorCurves.Count != 0)
+            {
+                string interiorKeys = string.Join(", ", interiorCurves.Keys.Select(key => key.ToString()).OrderBy(x => x));
+                Logger.LogError($"S1.42AD microwave spawn tuning refused to apply: expected zero Functional Microwave interior curves, found {interiorCurves.Count}: [{interiorKeys}].");
+                return;
+            }
+
+            Dictionary<NamespacedKey, AnimationCurve> curves = mechanic.CurvesByMoonOrTagName;
             HashSet<string> actualKeys = curves.Keys.Select(key => key.ToString()).ToHashSet(StringComparer.Ordinal);
             if (!actualKeys.SetEquals(ExpectedCurveKeys))
             {
@@ -147,6 +161,8 @@ namespace S142ADCodeRebirthMicrowaveSpawnTuning
                 Logger.LogError("S1.42AD microwave spawn tuning refused to apply: one or more expected microwave curves were null or empty.");
                 return;
             }
+
+            Logger.LogInfo($"S1.42AD microwave provider contract validated: PrioritiseMoons=true, MoonCurves={curves.Count}, InteriorCurves={interiorCurves.Count}.");
 
             foreach (AnimationCurve curve in curves.Values)
             {
