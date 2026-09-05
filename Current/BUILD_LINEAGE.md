@@ -9,9 +9,9 @@
 ## Current lineage head
 
 - **Accepted gameplay baseline:** S1.42AC — BCMER EventType Equal Distribution.
-- **Latest built artifact:** S1.42AD — Functional Microwave Spawn Rarity Reduction — runtime rejected, not accepted.
-- **Active candidate:** none.
-- **Next build:** none armed; controller is idle pending corrected Functional Microwave provider analysis.
+- **Latest built artifact:** S1.42AE — Functional Microwave Provider Contract Correction — build pass, runtime validation outstanding, not accepted.
+- **Active candidate:** S1.42AE.
+- **Next build:** none armed; controller is idle awaiting S1.42AE runtime validation.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -58,6 +58,7 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AB | accepted predecessor to AC | Post-viability LLL normalization to Weight 100 while preserving membership/exclusions. |
 | S1.42AC | **ACCEPTED CURRENT BASELINE** | Equal BCMER static EventType probability. Historical per-event-equality rejection is retained, but `Current/109` corrected its interpretation and `Current/118` explicitly accepted the artifact. |
 | S1.42AD | **REJECTED** | Functional Microwave half-frequency attempt. Runtime exposed 18 Interior/tag curves instead of the frozen zero-Interior assumption; fail-closed refusal prevented the `0.5` mutation from applying. |
+| S1.42AE | **ACTIVE RUNTIME CANDIDATE** | Corrected Functional Microwave contract: validate exact 18 Moon/tag + 18 Interior/tag curves and scale only the 18 Moon/tag curves by `0.5`. Built directly from S1.42AC; runtime validation is pending. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -131,6 +132,20 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Raw log SHA-256: `30c69254c4a4fd6bea1ec83cda075c168742c9060b88b09c22025973b074b3e8`
 - Result: dependency validation passed, but provider contract failed closed on 18 unexpected Interior/tag curves; no x0.5 application marker.
 
+### S1.42AE — active Functional Microwave correction candidate
+
+- Profile: `Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z`
+- SHA-256: `d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee`
+- Candidate: `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`
+- Analysis: `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`
+- Project status: `Current/Projektstatus_S1.42AE_CANDIDATE.json`
+- Plan: `BuildSpecs/S1.42AE_PLAN.md`
+- Build workflow run: `33968217356`
+- Build commit: `85e6caade0edd94ac5d7f409b9dd734fc8613f3f`
+- DLL SHA-256: `f42b25f32dc338617176d6d1d8c76ec3583ab29c7c4a1231c9e5ca4078378357`
+- Parent: accepted S1.42AC, not rejected S1.42AD.
+- Status: build pass; runtime validation outstanding; not accepted.
+
 ## Feature/fix lookup
 
 | Feature / decision | Established by |
@@ -151,8 +166,9 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 | Post-viability interior rarity normalization to 100 | S1.42AB |
 | Exact BCMER per-event-weight semantic correction | `Current/109...` analysis |
 | Equal BCMER static EventType probability accepted | S1.42AC / `Current/118...` |
-| Functional Microwave half-frequency target | user-authorized; implementation still unresolved after S1.42AD rejection |
+| Functional Microwave half-frequency target | S1.42AE runtime candidate; not accepted yet |
 | Functional Microwave 0-Interior provider assumption disproved | S1.42AD runtime rejection |
+| Functional Microwave corrected 18 Moon / 18 Interior fail-closed contract | S1.42AE |
 
 ## Parentage rules that matter
 
@@ -161,5 +177,6 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - S1.42AB was built **directly from accepted S1.42Z**, not from rejected S1.42AA.
 - S1.42AC was built **directly from accepted S1.42AB**. Its original rejection remains historical evidence, `Current/109` corrected the per-event-weight interpretation, and `Current/118` is the explicit later acceptance decision.
 - S1.42AD was built **directly from accepted S1.42AC** and is rejected. It must not be used as a successor build base.
+- S1.42AE was built **directly from accepted S1.42AC**, not from rejected S1.42AD. It is not a safe gameplay base until the open runtime gate is explicitly accepted.
 
 When an exact artifact/hash/status is not indexed here or in `Current/BUILD_LINEAGE.json`, open the linked build-specific record rather than inferring it from build-name order.
