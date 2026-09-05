@@ -1,31 +1,15 @@
 {
-  "enabled": true,
-  "build_id": "S1.42AF",
-  "base_profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
-  "base_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
-  "output_profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
-  "profile_name": "LC V1 S1.42AF Microwave Fix",
+  "enabled": false,
+  "build_id": "IDLE_AFTER_S1.42AF_BUILD_AWAITING_RUNTIME_VALIDATION",
+  "base_profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
+  "base_sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
+  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
+  "profile_name": "DO_NOT_BUILD",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
   "config_patches": [],
-  "local_plugin_builds": [
-    {
-      "project": "Patches/S142AECodeRebirthMicrowaveSpawnTuning/S142AECodeRebirthMicrowaveSpawnTuning.csproj",
-      "configuration": "Release",
-      "built_file": "Patches/S142AECodeRebirthMicrowaveSpawnTuning/bin/Release/netstandard2.1/S142AECodeRebirthMicrowaveSpawnTuning.dll",
-      "archive_path": "BepInEx/plugins/S142AECodeRebirthMicrowaveSpawnTuning/S142AECodeRebirthMicrowaveSpawnTuning.dll"
-    }
-  ],
-  "text_assertions": [
-    {
-      "path": "BepInEx/config/CodeRebirth.cfg",
-      "contains": "Functional Microwave | Allow Editing Config = true"
-    },
-    {
-      "path": "BepInEx/config/CodeRebirth.cfg",
-      "contains": "Functional Microwave | Volume = 0.15"
-    }
-  ]
+  "local_plugin_builds": [],
+  "text_assertions": []
 }
