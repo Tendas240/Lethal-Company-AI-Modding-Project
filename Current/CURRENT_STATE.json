@@ -18,39 +18,51 @@
     "file_index": "ProfileSources/S1.42AC/FILE_INDEX.json"
   },
   "latest_built_artifact": {
-    "build_id": "S1.42AC",
-    "title": "BCMER EventType Equal Distribution",
-    "status": "ACCEPTED_FULL_NORMAL_STACK",
-    "profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
-    "sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
-    "acceptance": "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
-    "project_status": "Current/Projektstatus_S1.42AC_ACCEPTED.json",
-    "original_rejection": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
-    "corrected_analysis": "Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md",
-    "runtime_evidence": "RuntimeEvidence/S1.42AC/20260904T235720Z/",
-    "profile_sources": "ProfileSources/S1.42AC/",
-    "file_index": "ProfileSources/S1.42AC/FILE_INDEX.json"
+    "build_id": "S1.42AD",
+    "title": "Functional Microwave Spawn Rarity Reduction",
+    "status": "BUILD_PASS_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
+    "profile": "Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z",
+    "sha256": "9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c",
+    "candidate_record": "Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md",
+    "project_status": "Current/Projektstatus_S1.42AD_CANDIDATE.json",
+    "build_plan": "BuildSpecs/S1.42AD_PLAN.md",
+    "profile_sources": "ProfileSources/S1.42AD/",
+    "file_index": "ProfileSources/S1.42AD/FILE_INDEX.json",
+    "workflow_run": 33959742235,
+    "build_commit": "1463a6cde5e8cb7655dd233f83da5157c91b036e",
+    "plugin_dll_sha256": "45f22f9b27e3ab7c853fe742bb7c2ce9bc94abc5a0856bb278c747076a2f99c7"
   },
-  "active_candidate": null,
-  "runtime_test_outstanding": false,
+  "active_candidate": {
+    "build_id": "S1.42AD",
+    "title": "Functional Microwave Spawn Rarity Reduction",
+    "status": "BUILD_PASS_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
+    "profile": "Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z",
+    "sha256": "9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c",
+    "candidate_record": "Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md",
+    "project_status": "Current/Projektstatus_S1.42AD_CANDIDATE.json",
+    "runtime_evidence": null
+  },
+  "runtime_test_outstanding": true,
   "selected_scope": {
     "build_id": "S1.42AD",
     "title": "Functional Microwave Spawn Rarity Reduction",
-    "status": "SOURCE_DRAFT_PRESENT_REVIEW_PENDING_NOT_BUILT",
+    "status": "BUILT_CANDIDATE_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
     "source": "Patches/S142ADCodeRebirthMicrowaveSpawnTuning/",
     "review": "Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md",
-    "draft_spawn_scale": 0.5,
-    "target_authority_status": "EXACT_REDUCTION_NOT_YET_USER_CONFIRMED"
+    "plan": "BuildSpecs/S1.42AD_PLAN.md",
+    "user_authorized_spawn_scale": 0.5,
+    "target_authority_status": "USER_CONFIRMED_HALF_FREQUENCY",
+    "provider_contract": "CodeRebirth 1.6.9 / DawnLib+Dusk 0.9.25 / exact code_rebirth:functional_microwave / PrioritiseMoons=true / 18 Moon-tag curves / 0 Interior-tag curves / fail closed"
   },
-  "next_action": "S1.42AD Functional Microwave spawn-rarity reduction is the explicitly selected next scope. A source-only draft exists at Patches/S142ADCodeRebirthMicrowaveSpawnTuning/, but no profile has been built or armed. Before building, independently review the draft against Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md, verify the exact CodeRebirth/DawnLib owner and 19-curve contract, and resolve the exact reduction magnitude: the draft uses 0.5 while current canonical requirements specify only that the Microwave should be rarer. Do not build or runtime-test until the target is explicitly confirmed and a build spec is armed.",
+  "next_action": "S1.42AD is built and is the active runtime candidate. Replace/import the Gale profile with LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction using the canonical repository helper, run one normal gameplay round far enough for normal moon/interior generation, then upload the complete fresh LogOutput.log using the exact S1.42AD uploader in Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md. Runtime acceptance must confirm dependency validation, PrioritiseMoons=true with 18 Moon curves and 0 Interior curves, the final x0.5 application marker, normal gameplay and no contract-refusal/fatal regression. Do not build a successor before this evidence is analyzed.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
-    "build_id": "IDLE_S1.42AD_SCOPE_SELECTED_SOURCE_REVIEW_PENDING_NO_SUCCESSOR_ARMED",
-    "build_base_profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
-    "build_base_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+    "build_id": "IDLE_AFTER_S1.42AD_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "build_base_profile": "Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z",
+    "build_base_sha256": "9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",
-    "runtime_active_build": "S1.42AC"
+    "runtime_active_build": "S1.42AD"
   },
   "canonical_navigation": {
     "bootstrap": "START_HERE_ChatGPT_Masterprompt.txt",
