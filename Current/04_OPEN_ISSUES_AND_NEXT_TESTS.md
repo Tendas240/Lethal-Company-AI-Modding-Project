@@ -35,24 +35,39 @@ The user-authorized target remains Functional Microwaves **half as often** (`Spa
 
 S1.42AD remains rejected history and is not a build/gameplay base.
 
-## First launch attempt status
+## Import/materialization blocker
 
-The first user launch attempt with S1.42AE is **not a valid runtime-gate result**. BepInEx failed in the preloader before the S1.42AE provider-contract code could execute because the local Gale profile could not load:
+Two S1.42AE game launches have failed before the candidate runtime gate. Both are **invalid import/materialization evidence, not S1.42AE runtime rejections**.
 
-`BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
+The second console capture explicitly showed `AutoHookGenPatcher` trying to read:
 
-The console showed a `FixPluginTypesSerialization` `System.TypeInitializationException` with inner `System.IO.FileNotFoundException`, followed by the fatal preloader exception. This is classified as incomplete Gale/Thunderstore dependency materialization, not an S1.42AE runtime rejection.
+`BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
 
-The canonical Gale helper was hardened in commit `7b8a23e57ad0ac678314564da1f22638362b97f3` (`2026-09-05-import-uia-v2.2-materialization-proof`). It now requires exact imported `export.r2x` identity **and** the expected project-critical SoundAPI DLLs to exist physically and be non-empty before it reports import success.
+The local path did not exist, followed by `FixPluginTypesSerialization` `System.TypeInitializationException` / inner `System.IO.FileNotFoundException` and fatal BepInEx preloader termination. S1.42AE's Microwave provider-contract code was not reached.
+
+The previous v2.2 Gale materialization sentinel used a flat path model and did not close the transitive dependency requirement. The current canonical launcher is now:
+
+`RuntimeTools/ReplaceActiveGaleProfileV23.ps1`
+
+revision:
+
+`2026-09-05-import-uia-v2.3-recursive-package-materialization-proof`
+
+For a binding-enabled export it requires, before import success:
+
+- exactly one non-empty `me.loaforc.soundapi.dll` recursively inside the `loaforc-loaforcsSoundAPI` Gale package root;
+- exactly one non-empty `me.loaforc.soundapi.lethalcompany.dll` recursively inside the `loaforc-loaforcsSoundAPI_LethalCompany` Gale package root.
+
+Missing roots, zero matches, empty files, or duplicate matches fail closed. The base SoundAPI requirement is implied by the binding package even when Gale export metadata does not separately list the base package.
 
 No valid complete S1.42AE runtime log has been ingested yet. The candidate remains active; no successor is armed.
 
 ## Exact next action
 
-**The same S1.42AE artifact must be re-imported and tested. Do not build a successor.**
+**The same S1.42AE artifact must be re-imported with v2.3 and tested. Do not build a successor.**
 
-1. Replace/import S1.42AE using the canonical repository Gale helper.
-2. Do not proceed until the helper positively verifies both exact `export.r2x` identity and the required SoundAPI dependency materialization.
+1. Run the canonical `RuntimeTools/ReplaceActiveGaleProfileV23.ps1` repository launcher.
+2. Do not start the game unless it positively verifies exact `export.r2x` identity and both recursive SoundAPI package-root contracts.
 3. Start normally and reach main menu/lobby.
 4. Play one normal run far enough for normal moon/interior generation and ordinary gameplay.
 5. Upload the complete fresh `LogOutput.log` with the exact S1.42AE uploader in the candidate record.
@@ -79,7 +94,7 @@ Current controllers:
 - guarded base: S1.42AE candidate profile/SHA.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AE`.
 
-The response that explains this runtime test must include both the repository-driven Gale replacement/import one-liner and the exact S1.42AE self-contained PowerShell one-line runtime-log uploader.
+The response that explains this runtime test must include both the repository-driven Gale v2.3 replacement/import one-liner and the exact S1.42AE self-contained PowerShell one-line runtime-log uploader.
 
 ## Remaining open/deferred work
 
