@@ -1,0 +1,113 @@
+[
+  {
+    "minute": "22:25",
+    "levels": {
+      "Message": 3,
+      "Debug": 400,
+      "Info": 286,
+      "Warning": 3
+    }
+  },
+  {
+    "minute": "22:26",
+    "levels": {
+      "Warning": 348,
+      "Info": 660,
+      "Debug": 1666,
+      "Message": 55
+    }
+  },
+  {
+    "minute": "22:27",
+    "levels": {
+      "Warning": 440,
+      "Info": 1762,
+      "Debug": 5386,
+      "Error": 31,
+      "Message": 130
+    }
+  },
+  {
+    "minute": "22:29",
+    "levels": {
+      "Info": 121,
+      "Debug": 196,
+      "Message": 6,
+      "Error": 39,
+      "Warning": 163
+    }
+  },
+  {
+    "minute": "22:30",
+    "levels": {
+      "Debug": 1468,
+      "Info": 260,
+      "Warning": 732,
+      "Message": 32
+    }
+  },
+  {
+    "minute": "22:31",
+    "levels": {
+      "Debug": 30,
+      "Info": 39,
+      "Warning": 4,
+      "Message": 1
+    }
+  },
+  {
+    "minute": "22:32",
+    "levels": {
+      "Warning": 34,
+      "Debug": 220,
+      "Info": 115,
+      "Message": 5
+    }
+  },
+  {
+    "minute": "22:33",
+    "levels": {
+      "Warning": 53,
+      "Info": 546,
+      "Debug": 263,
+      "Message": 2
+    }
+  },
+  {
+    "minute": "22:34",
+    "levels": {
+      "Info": 214,
+      "Debug": 126,
+      "Warning": 31,
+      "Message": 1
+    }
+  },
+  {
+    "minute": "22:35",
+    "levels": {
+      "Info": 435,
+      "Warning": 490,
+      "Debug": 135,
+      "Message": 1
+    }
+  },
+  {
+    "minute": "22:36",
+    "levels": {
+      "Warning": 305,
+      "Debug": 381,
+      "Info": 369,
+      "Message": 8,
+      "Error": 1
+    }
+  },
+  {
+    "minute": "22:37",
+    "levels": {
+      "Info": 128,
+      "Message": 4,
+      "Debug": 54,
+      "Warning": 2
+    }
+  }
+]
