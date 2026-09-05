@@ -1,0 +1,83 @@
+{
+  "schema_version": 3,
+  "date": "2026-09-06",
+  "repository_is_source_of_truth": true,
+  "accepted_baseline": {
+    "build_id": "S1.42AC",
+    "profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+    "sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+    "status": "ACCEPTED_FULL_NORMAL_STACK",
+    "acceptance_record": "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+    "runtime_evidence": "RuntimeEvidence/S1.42AC/20260904T235720Z/"
+  },
+  "active_runtime_candidate": {
+    "build_id": "S1.42AF",
+    "title": "Path-Length-Safe Microwave Packaging",
+    "profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
+    "profile_name": "LC V1 S1.42AF Microwave Fix",
+    "sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
+    "status": "TARGETED_RUNTIME_GATE_PASS_ACCEPTANCE_DEFERRED_NOT_REJECTED",
+    "successful_build_run": 33993880634,
+    "automated_build_commit": "2cab9044579e74739669440699c763a32f0fe379",
+    "candidate_record": "Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md",
+    "runtime_decision": "Current/128_S1.42AF_RUNTIME_GATE_PASS_ACCEPTANCE_DEFERRED_MOUTH_DOG_BASELINE_GAP.md",
+    "next_analysis": "Current/129_MOUTH_DOG_PIKMIN_BASELINE_COMPATIBILITY_GAP_NEXT_ANALYSIS.md",
+    "plan": "BuildSpecs/S1.42AF_PLAN.md",
+    "patch_source": "Patches/S142AECodeRebirthMicrowaveSpawnTuning/",
+    "snapshot": "ProfileSources/S1.42AF/",
+    "plugin_dll_sha256": "41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f"
+  },
+  "runtime_evidence": {
+    "root": "RuntimeEvidence/S1.42AF/20260905T223738Z/",
+    "raw_log": "RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log",
+    "raw_sha256": "63df88a3acb0c455bab914fd844767cb50b7384ab4b1ede8bd7cbcb63537d956",
+    "bytes": 1904235,
+    "lines": 19290,
+    "events": 18185,
+    "error_events": 71,
+    "fatal_marker_count": 0
+  },
+  "microwave_runtime_gate": {
+    "startup_and_path_length_blocker": "PASS",
+    "plugin_identity": "S1.42AE CodeRebirth Microwave Spawn Tuning 1.0.0",
+    "coderebirth": "1.6.9",
+    "dawnlib": "0.9.25",
+    "dusk": "0.9.25",
+    "prioritise_moons": true,
+    "moon_curve_count": 18,
+    "interior_curve_count": 18,
+    "moon_keyset": "PASS",
+    "interior_keyset": "PASS",
+    "moon_scale": 0.5,
+    "interior_action": "VALIDATE_ONLY_NO_MUTATION",
+    "final_application_marker": "PASS",
+    "verdict": "TARGETED_GATE_PASS"
+  },
+  "regression_markers": {
+    "work_state_no_task": 707,
+    "leader_null_following": 0,
+    "compatibility_fixes_error": 0,
+    "networkobjectreference_unspawned": 0,
+    "pikmin_notice_zone": 0,
+    "fatal": 0
+  },
+  "mouth_dog_pikmin_gap": {
+    "status": "SEPARATE_BASELINE_COMPATIBILITY_GAP_SELECTED_FOR_ANALYSIS",
+    "user_observed_dog_bite_grab_interaction": true,
+    "classified_as_s1_42af_regression": false,
+    "reason": "S1.42AF changed only export.r2x and added the Microwave tuning DLL; the cumulative compatibility DLL is byte-identical to accepted S1.42AC and its current source has no Mouth-Dog branch in the prevention-only GrabPikmin guard.",
+    "compatibility_dll_sha256_s1_42ac_and_s1_42af": "3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960",
+    "desired_contract": "Mouth Dog / Eyeless Dog must not grab or bite Pikmin at all; Pikmin -> Mouth Dog combat and native LethalMin lifecycle remain enabled.",
+    "analysis_record": "Current/129_MOUTH_DOG_PIKMIN_BASELINE_COMPATIBILITY_GAP_NEXT_ANALYSIS.md"
+  },
+  "runtime_test_outstanding": false,
+  "controllers": {
+    "buildspec_current_enabled": false,
+    "buildspec_current_id": "IDLE_AFTER_S1.42AF_RUNTIME_GATE_PASS_MOUTH_DOG_ANALYSIS_SELECTED",
+    "buildspec_base_profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+    "buildspec_base_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+    "runtime_active_build": "S1.42AF",
+    "successor_armed": false
+  },
+  "exact_next_step": "Investigate LethalMin 1.1.108 ownership for Mouth Dog / Eyeless Dog -> Pikmin bite/grab. Check native configuration first. If it cannot express the required one-way noninteraction, prove the exact adapter/bite/grab method path and design the smallest prevention-before-mutation extension to Patches/S139CompatibilityFixes/Plugin.cs while preserving Pikmin -> Mouth Dog combat and native death/latch/task lifecycle. Do not name or arm a successor until that contract and isolated build plan are proven."
+}
