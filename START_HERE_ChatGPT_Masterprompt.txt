@@ -14,21 +14,24 @@ READ FIRST:
 
 Then route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the relevant Knowledge topic plus linked evidence/config/code.
 Use Current/DOCUMENT_AUTHORITY.md when old files contain stale "current" wording.
-Use Current/BUILD_LINEAGE.md for "which build introduced/rejected this?" questions.
+Use Current/BUILD_LINEAGE.md for "which build introduced/rejected/accepted this?" questions.
 
 HANDOVER SIGNAL
 When the user explicitly requests transfer to a new ChatGPT chat, execute Current/HANDOVER_PREPARATION_PROMPT.md. Verify the then-current main/CI/controllers first and generate a fresh new-chat start prompt from repository authority instead of reusing stale conversation memory.
 
 ACCEPTED BASELINE
-- S1.42AB — Interior Weight Normalization
-- profile: Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z
-- SHA-256: 3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca
-- acceptance: Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md
+- S1.42AC — BCMER EventType Equal Distribution
+- status: ACCEPTED FULL NORMAL STACK
+- profile: Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z
+- SHA-256: 0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9
+- acceptance: Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md
 
 LATEST BUILT ARTIFACT
 - S1.42AC — BCMER EventType Equal Distribution
-- status: FORMALLY REJECTED / NOT PROMOTED
+- status: ACCEPTED FULL NORMAL STACK
 - SHA-256: 0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9
+- acceptance: Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md
+- historical rejection: Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md
 - corrected BCMER analysis: Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md
 
 CURRENT EXECUTION STATE
@@ -36,14 +39,14 @@ CURRENT EXECUTION STATE
 - runtime test outstanding: NO
 - successor armed: NO
 - BuildSpecs/current.json enabled: false
-- build controller id: IDLE_AFTER_S1.42AC_WEIGHT_PATH_ANALYSIS_COMPLETE_NO_SUCCESSOR_ARMED
+- build controller id: IDLE_AFTER_S1.42AC_ACCEPTANCE_NO_SUCCESSOR_ARMED
 - RuntimeInbox/ACTIVE_BUILD.txt: S1.42AC
 
 EXACT NEXT ACTION
-Upload and ingest the just-completed S1.42AC runtime log, then reevaluate the existing S1.42AC artifact/evidence with the corrected static EventType acceptance model from Current/109. Do not build a compensation successor and do not require equal per-event log weights.
+S1.42AC is accepted. No successor is armed and no runtime test is outstanding. Wait for explicit selection of the next isolated gameplay/compatibility scope through Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md.
 
 RUNTIME-TEST UX RULE
-Whenever a future runtime test is outstanding, the same response that explains the test MUST include the exact build-specific one-line PowerShell log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
+Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
 
 PERMANENT POLICY ROUTES
 - Chat handover: Current/HANDOVER_PREPARATION_PROMPT.md
@@ -59,7 +62,7 @@ PERMANENT POLICY ROUTES
 - Patch safety: Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
 
 HISTORY RULE
-Do not delete or reinterpret history to match current truth. Historical decisions remain evidence. Current/109 supersedes only the old BCMER per-event-weight interpretation behind the S1.42AC rejection; S1.42AC remains formally rejected/not promoted until an explicit later decision changes that status.
+Do not delete or reinterpret history to match current truth. Historical decisions remain evidence. A later explicit decision may supersede a historical lifecycle verdict while preserving the original record and its observations. Current/CURRENT_STATE.json plus the build-specific current decision record determine live status.
 
 REPOSITORY OVERHAUL
 Architecture status: OVERHAUL_COMPLETE_VALIDATED
