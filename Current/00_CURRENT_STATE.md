@@ -21,28 +21,28 @@ Runtime evidence: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
 
 ## Latest built artifact
 
-**S1.42AD — Functional Microwave Spawn Rarity Reduction — RUNTIME REJECTED NOT ACCEPTED**
+**S1.42AE — Functional Microwave Provider Contract Correction — BUILD PASS GAMEPLAY RUNTIME VALIDATION OPEN NOT ACCEPTED**
 
-Profile: `Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z`  
-SHA-256: `9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c`  
-Candidate record: `Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md`  
+Profile: `Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z`  
+SHA-256: `d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee`  
+Candidate record: `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
 ## Live execution state
 
-- Active candidate: **none**
-- Runtime test outstanding: **no**
+- Active candidate: **S1.42AE**
+- Runtime test outstanding: **yes**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AD_REJECTION_MICROWAVE_PROVIDER_ANALYSIS_PENDING`)
-- Guarded build base: `Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z` / `0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AE_BUILD_AWAITING_RUNTIME_VALIDATION`)
+- Guarded build base: `Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z` / `d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AE`
 
 ## Exact next action
 
-S1.42AD is runtime-rejected because its fail-closed Functional Microwave provider contract expected 0 Interior/tag curves but direct runtime evidence exposed 18, so the x0.5 mutation was not applied. S1.42AC remains the accepted full-normal-stack baseline. Before building any corrected Microwave successor, independently resolve the actual runtime Moon-curve set, Interior-curve set, and DawnLib MapObjectSpawnMechanics selection/evaluation semantics for PrioritiseMoons=true; then design a revised fail-closed contract that verifies both tables and scales only the effective spawn-weight path required for the user-authorized half-frequency target.
+Replace/import S1.42AE using the canonical repository Gale helper, play one normal gameplay run far enough for normal moon/interior generation, then upload the complete fresh LogOutput.log with the exact S1.42AE uploader from Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md. Evaluate dependency validation, PrioritiseMoons=true MoonCurves=18 InteriorCurves=18, both keyset markers, the final 18 Moon curves x0.5 / Interior validation-only marker, and project-critical regression markers before accepting or rejecting S1.42AE. Do not build a successor before this runtime evidence is evaluated.
 
-No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+A runtime test is pending for S1.42AE. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
