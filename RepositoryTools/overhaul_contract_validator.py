@@ -18,8 +18,7 @@ FROZEN_COMMIT = "5dbd0e637a480d8591773e422bbca4b0654cad20"
 FROZEN_TREE = "0e17aac410cf600a164396b5586b5b50f084df22"
 BACKUP_GATE_COMMIT = "2c1ab3be7db5474b0e08ff8a80c063a2c50224a4"
 BACKUP_REPOSITORY = "Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904"
-ACCEPTED_BUILD = "S1.42AC"
-ACCEPTED_SHA = "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9"
+S142AC_SHA = "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9"
 ERRORS: list[str] = []
 WARNINGS: list[str] = []
 
@@ -161,13 +160,13 @@ def check_live_state() -> None:
     candidate = state.get("active_candidate")
     controllers = state.get("controllers", {})
 
-    # Frozen contract fact: corrected S1.42AC remains the accepted baseline until a
-    # later explicit runtime decision promotes a successor. Latest/candidate state is
-    # intentionally mutable after overhaul completion.
-    if a.get("build_id") != ACCEPTED_BUILD or a.get("sha256") != ACCEPTED_SHA:
-        error("accepted baseline/SHA drift from explicitly accepted S1.42AC")
+    # Mutable post-overhaul lifecycle state is validated for coherence. Historical
+    # S1.42AC acceptance provenance remains checked separately below, but current
+    # accepted identity may advance after an explicit runtime decision.
+    if not a.get("build_id") or not a.get("sha256"):
+        error("accepted baseline lacks build identity or SHA-256")
     if a.get("status") != "ACCEPTED_FULL_NORMAL_STACK":
-        error("S1.42AC accepted baseline status drift")
+        error("accepted baseline status is not ACCEPTED_FULL_NORMAL_STACK")
 
     spec = load("BuildSpecs/current.json")
     if spec.get("enabled") is not False:
@@ -206,7 +205,9 @@ def check_live_state() -> None:
         value = a.get(key)
         if not isinstance(value, str) or not exists(value):
             error(f"accepted baseline lacks readable {key}: {value!r}")
-    require(f"ProfileSources/{ACCEPTED_BUILD}/export.r2x", "accepted readable profile export")
+    accepted_build_id = a.get("build_id")
+    if isinstance(accepted_build_id, str) and accepted_build_id:
+        require(f"ProfileSources/{accepted_build_id}/export.r2x", "accepted readable profile export")
 
     for key in ("profile", "candidate_record", "project_status", "profile_sources", "file_index"):
         value = latest.get(key)
@@ -253,9 +254,10 @@ def check_lineage_and_completion() -> None:
     candidate = state.get("active_candidate")
     candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None
     latest_id = state.get("latest_built_artifact", {}).get("build_id")
+    accepted_id = state.get("accepted_baseline", {}).get("build_id")
 
-    if lineage.get("current_accepted_build_id") != ACCEPTED_BUILD:
-        error("BUILD_LINEAGE accepted baseline drift")
+    if lineage.get("current_accepted_build_id") != accepted_id:
+        error("BUILD_LINEAGE accepted baseline disagrees with CURRENT_STATE")
     if lineage.get("active_candidate_build_id") != candidate_id:
         error("BUILD_LINEAGE active candidate disagrees with CURRENT_STATE")
     if lineage.get("latest_built_artifact_id") != latest_id:
@@ -270,7 +272,7 @@ def check_lineage_and_completion() -> None:
                 error(f"BUILD_LINEAGE {build.get('id')}.{field} missing: {value}")
 
     ac = next((x for x in lineage.get("builds", []) if isinstance(x, dict) and x.get("id") == "S1.42AC"), {})
-    if ac.get("sha256") != ACCEPTED_SHA or ac.get("decision_record") != "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md" or ac.get("safe_as_gameplay_base") is not True:
+    if ac.get("sha256") != S142AC_SHA or ac.get("decision_record") != "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md" or ac.get("safe_as_gameplay_base") is not True:
         error("S1.42AC corrected acceptance provenance regression in BUILD_LINEAGE")
     z = next((x for x in lineage.get("builds", []) if isinstance(x, dict) and x.get("id") == "S1.42Z"), {})
     if z.get("profile") != "Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z" or z.get("sha256") != "a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4":
