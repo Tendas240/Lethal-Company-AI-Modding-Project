@@ -1,11 +1,11 @@
 # CodeRebirth and DawnLib Tuning
 
 **Status:** CURRENT / CANONICAL TOPIC  
-**Authority:** accepted CodeRebirth ownership/tuning rules  
+**Authority:** accepted CodeRebirth ownership/tuning rules plus selected S1.42AD implementation boundary  
 **Canonical-For:** `coderebirth`  
-**Evidence:** `Current/03_PROJECT_CHRONOLOGY.md`, `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`, S1.40B/S1.42Z ProfileSources  
-**Related:** `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ITEM_TUNING.md`  
-**Last-Validated:** 2026-09-04
+**Evidence:** `Current/03_PROJECT_CHRONOLOGY.md`, `Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md`, `Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`, S1.40B/S1.42Z ProfileSources  
+**Related:** `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ITEM_TUNING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
+**Last-Validated:** 2026-09-05
 
 ## Package architecture
 
@@ -32,7 +32,7 @@ Do not blank `Money | Enemy Drop Rates` as collateral damage. The project target
 
 The cumulative compatibility plugin contains a direct utility-kill shield for Pikmin/Puffmin. This is retained because configuration toggles alone did not cover every Autonomous Crane kill path.
 
-## Aerial-defense tuning
+## Accepted aerial-defense tuning
 
 S1.42Z accepted project-local transactional scaling of exactly two DawnLib map-object providers:
 
@@ -49,6 +49,29 @@ Accepted runtime evidence:
 
 `RuntimeEvidence/S1.42Z/20260904T135820Z/`
 
-## Deferred CodeRebirth scope
+## Selected S1.42AD Functional Microwave scope
 
-Functional Microwave **spawn-rarity reduction** remains deferred and is separate from its already accepted volume setting. See `Knowledge/ITEM_TUNING.md`.
+The Functional Microwave spawn-rarity reduction is now the explicitly selected next scope after accepted S1.42AC.
+
+An interrupted ChatGPT session committed an **unbuilt source draft** at:
+
+`Patches/S142ADCodeRebirthMicrowaveSpawnTuning/`
+
+Recovery/status authority:
+
+`Current/119_S1.42AD_INTERRUPTED_IMPLEMENTATION_RECOVERY.md`
+
+The draft intentionally mirrors the accepted S1.42Z DawnLib provider-scaling architecture and currently attempts to:
+
+- validate CodeRebirth `1.6.9`, DawnLib `0.9.25`, Dusk `0.9.25`;
+- resolve exactly `code_rebirth:functional_microwave`;
+- use `InsideInfo` rather than the aerial-defense `OutsideInfo` path;
+- require exactly one `Dusk.MapObjectSpawnMechanics` provider;
+- require an exact 19-curve Microwave key set;
+- scale only those curves and fail closed on drift.
+
+This is a plausible narrow ownership approach because it follows an already accepted project pattern, but it is **not yet independently source-proven, compiled, built or runtime-tested for the Microwave target**.
+
+The draft hard-codes `SpawnScale = 0.5f`. Do not treat that value as accepted merely because the aerial-defense tuner also uses `0.5`: current Microwave authority only requires the object to become rarer and does not yet define an exact percentage.
+
+Before S1.42AD is armed, independently verify the owner/19-curve contract, complete the mandatory Patch Safety Review, resolve the exact target magnitude and create the explicit build plan.
