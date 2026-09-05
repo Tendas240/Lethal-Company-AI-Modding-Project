@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only; historical build sequencing remains in chronology/lineage  
 **Canonical-For:** `roadmap_and_deferred_scopes`  
-**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `BuildSpecs/S1.42AD_PLAN.md`  
+**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`, `BuildSpecs/S1.42AE_PLAN.md`  
 **Related:** `Knowledge/BCMER.md`, `Knowledge/INTERIORS_AND_LLL.md`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ITEM_TUNING.md`, `Knowledge/CODEREBIRTH.md`, `Knowledge/REPOSITORY_OVERHAUL.md`  
 **Last-Validated:** 2026-09-05
 
@@ -11,31 +11,34 @@
 
 Accepted gameplay baseline: **S1.42AC — BCMER EventType Equal Distribution**.
 
-Latest built artifact: **S1.42AD — Functional Microwave Spawn Rarity Reduction — RUNTIME REJECTED / NOT ACCEPTED**.
+Latest built artifact: **S1.42AE — Functional Microwave Provider Contract Correction — BUILD PASS / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED**.
 
-Active gameplay candidate: **none**.
+Active gameplay candidate: **S1.42AE**.
 
-Runtime test outstanding: **none**.
+Runtime test outstanding: **yes**.
 
 Successor armed: **no**.
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AC` and `BuildSpecs/current.json` is disabled against the accepted S1.42AC profile/SHA.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AE` and `BuildSpecs/current.json` is disabled with S1.42AE as the guarded candidate artifact while runtime validation is open.
 
-S1.42AD was built and runtime-tested. The user-authorized Functional Microwave target remains **half as often**, implemented conceptually as proportional `SpawnScale = 0.5`. The candidate was rejected because its fail-closed provider contract expected zero Interior/tag curves, while direct runtime evidence exposed **18 Interior/tag curves**, including `code_rebirth:functional_microwave_ultra_high`. The patch therefore correctly refused mutation and the `0.5` scale was not applied. Rejection authority: `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`.
+S1.42AD remains runtime-rejected historical evidence: its fail-closed provider contract expected zero Interior/tag curves, while direct runtime evidence exposed 18, so the `0.5` mutation did not apply.
+
+The follow-up provider analysis is complete. Dusk 0.9.25 with `PrioritiseMoons=true` evaluates exact Moon -> exact Interior fallback -> matching Moon tags; Moon and Interior tables are not combined. The corrected shipped provider contract is exact 18 Moon/tag curves plus exact 18 Interior/tag curves. S1.42AE validates/logs both exact tables and scales only the 18 Moon/tag curves by `SpawnScale = 0.5`; Interior curves are validation-only.
 
 ## Exact next scope
 
-The selected work remains the **Functional Microwave provider-contract correction**, but no successor build ID is armed yet.
+The selected work is now the **S1.42AE runtime acceptance gate**. Do not build another successor before this evidence is evaluated.
 
-Before any corrected successor is built, independently resolve:
+Required next steps:
 
-1. the actual runtime Moon-curve count and exact keys;
-2. the actual runtime Interior-curve count and exact keys;
-3. DawnLib/Dusk `MapObjectSpawnMechanics` selection/evaluation semantics when `PrioritiseMoons = true`;
-4. which effective table or tables must be scaled to produce the user-authorized half-frequency target without collateral changes;
-5. a revised fail-closed contract that verifies/logs both tables before mutation.
+1. replace/import S1.42AE with the canonical repository Gale helper;
+2. play one normal run far enough for ordinary moon/interior generation;
+3. upload the complete fresh `LogOutput.log` with the exact S1.42AE uploader from `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`;
+4. verify exact dependency versions, the armed lifecycle marker, `PrioritiseMoons=true, MoonCurves=18, InteriorCurves=18`, both logged keysets, and the final marker that 18 Moon/tag curves were scaled by `0.5` while 18 Interior curves were not mutated;
+5. verify no S1.42AE contract-refusal/error marker and no new fatal/project-critical regression;
+6. accept or reject S1.42AE from that evidence.
 
-Do **not** simply delete the Interior-curve guard and do **not** blindly scale both dictionaries. S1.42AD is rejected and must not be used as a gameplay/build base.
+A single normal gameplay run is sufficient for the immediate technical gate. It is not expected to statistically demonstrate an exact 50% observed Microwave count; deterministic provider mutation is the primary rarity evidence.
 
 ## Remaining deferred independent gameplay/compatibility scopes
 
@@ -57,7 +60,7 @@ Exact long-run 12.5% **executed** EventType frequency after all runtime eligibil
 
 ## Interior scope boundary
 
-The inherited S1.42AB implementation already solves equal effective rarity for all **LLL-viable** interiors by normalizing positive returned rarities to 100 after viability filtering. S1.42AC and rejected S1.42AD do not modify that path.
+The inherited S1.42AB implementation already solves equal effective rarity for all **LLL-viable** interiors by normalizing positive returned rarities to 100 after viability filtering. S1.42AC and S1.42AE do not modify that path.
 
 Still separate:
 
