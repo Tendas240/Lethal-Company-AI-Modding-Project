@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-05",
+  "repository_is_source_of_truth": true,
+  "accepted_baseline": {
+    "build_id": "S1.42AC",
+    "profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+    "sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+    "status": "ACCEPTED_FULL_NORMAL_STACK",
+    "acceptance_record": "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+    "runtime_evidence": "RuntimeEvidence/S1.42AC/20260904T235720Z/"
+  },
+  "rejected_candidate": {
+    "build_id": "S1.42AD",
+    "title": "Functional Microwave Spawn Rarity Reduction",
+    "profile": "Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z",
+    "sha256": "9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c",
+    "status": "RUNTIME_REJECTED_NOT_ACCEPTED",
+    "candidate_record": "Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md",
+    "rejection_record": "Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md",
+    "runtime_evidence": "RuntimeEvidence/S1.42AD/20260905T103333Z/",
+    "raw_log_sha256": "30c69254c4a4fd6bea1ec83cda075c168742c9060b88b09c22025973b074b3e8",
+    "plugin_loaded": true,
+    "dependency_validation_passed": true,
+    "armed_marker_present": true,
+    "provider_contract_result": "FAIL_CLOSED_INTERIOR_CURVE_COUNT_DRIFT",
+    "expected_interior_curves": 0,
+    "actual_interior_curves": 18,
+    "runtime_interior_keys_include_ultra_high": true,
+    "spawn_scale_applied": false,
+    "target_spawn_scale": 0.5,
+    "failure_reason": "Runtime Functional Microwave provider exposed 18 Interior/tag curves, falsifying the frozen 18-Moon/0-Interior contract. The patch correctly refused mutation, so the intended half-frequency tuning was not applied."
+  },
+  "regression_markers": {
+    "work_state_no_task": 0,
+    "leader_null_following": 0,
+    "compatibility_fixes_error": 0,
+    "fatal": 0,
+    "networkobjectreference_unspawned": 0,
+    "pikmin_notice_zone": 0,
+    "monitor_only_loaforcs_soundapi_harmony_typeloadexception": 1,
+    "monitor_only_softmask_nullreferenceexception": 2
+  },
+  "corrected_next_scope": {
+    "title": "Functional Microwave provider-contract correction",
+    "status": "ANALYSIS_REQUIRED_NOT_BUILT_NOT_ARMED",
+    "required_questions": [
+      "Resolve exact runtime Moon-curve count and key set.",
+      "Resolve exact runtime Interior-curve count and key set.",
+      "Prove DawnLib MapObjectSpawnMechanics selection/evaluation semantics with PrioritiseMoons=true.",
+      "Determine which effective curve table or tables must be scaled for true half-frequency behavior.",
+      "Revise fail-closed validation to log and verify both tables before mutation."
+    ]
+  },
+  "controllers_after_rejection": {
+    "runtime_active_build": "S1.42AC",
+    "successor_armed": false,
+    "buildspec_target": "IDLE_AFTER_S1.42AD_REJECTION_MICROWAVE_PROVIDER_ANALYSIS_PENDING"
+  },
+  "exact_next_step": "Do not reuse S1.42AD as a gameplay base. Return runtime attribution and build guarding to accepted S1.42AC. Independently resolve DawnLib Functional Microwave Moon/Interior provider semantics from source/runtime evidence before arming a corrected successor."
+}
