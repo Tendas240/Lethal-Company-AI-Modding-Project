@@ -68,11 +68,17 @@ function Get-RequiredCriticalMaterializationPaths {
     $lcPackage='loaforc-loaforcsSoundAPI_LethalCompany'
     $hasBase=($ExpectedExportText.IndexOf("- name: $basePackage",[System.StringComparison]::Ordinal) -ge 0)
     $hasLc=($ExpectedExportText.IndexOf("- name: $lcPackage",[System.StringComparison]::Ordinal) -ge 0)
-    $mentionsBase=($ExpectedExportText.IndexOf($basePackage,[System.StringComparison]::Ordinal) -ge 0)
-    $mentionsLc=($ExpectedExportText.IndexOf($lcPackage,[System.StringComparison]::Ordinal) -ge 0)
 
-    # If the package name appears but the canonical export-list line cannot be
-    # recognized, fail closed instead of silently treating the package as absent.
+    # Use anchored line patterns for drift detection. The base package name is a
+    # prefix of the LC package name, so a plain substring test would misclassify
+    # an LC-only export as also explicitly mentioning the base package.
+    $baseNamePattern='(?m)^\s*-\s*name:\s*'+[regex]::Escape($basePackage)+'\s*$'
+    $lcNamePattern='(?m)^\s*-\s*name:\s*'+[regex]::Escape($lcPackage)+'\s*$'
+    $mentionsBase=[regex]::IsMatch($ExpectedExportText,$baseNamePattern)
+    $mentionsLc=[regex]::IsMatch($ExpectedExportText,$lcNamePattern)
+
+    # If a package list entry is recognizable with harmless whitespace variance
+    # but not by the exact validated canonical form, fail closed for review.
     if($mentionsBase -and -not $hasBase){throw "Export mentions '$basePackage' but its canonical '- name:' entry could not be resolved"}
     if($mentionsLc -and -not $hasLc){throw "Export mentions '$lcPackage' but its canonical '- name:' entry could not be resolved"}
 
