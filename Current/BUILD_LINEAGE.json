@@ -4,8 +4,8 @@
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AC",
-  "active_candidate_build_id": null,
-  "latest_built_artifact_id": "S1.42AC",
+  "active_candidate_build_id": "S1.42AD",
+  "latest_built_artifact_id": "S1.42AD",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
     {"id":"S1.2","title":"Initial profile/loading forensics","status":"historical-foundation","parent":null,"decision_record":"Current/03_PROJECT_CHRONOLOGY.md","safe_as_gameplay_base":false,"principal_feature":"project forensics foundation"},
@@ -54,7 +54,8 @@
     {"id":"S1.42Z","title":"Jetpack Pikmin Retune / final accepted balance predecessor","status":"accepted","parent":"S1.42V","profile":"Profiles/LC V1 S1.42Z Jetpack Pikmin Retune.r2z","sha256":"a030d4b280b4768f6859f6fea43981004c48f31060f100322206b6016a1477e4","candidate_record":"Current/87_S1.42Z_BUILD_CANDIDATE_JETPACK_PIKMIN_RETUNE.md","decision_record":"Current/90_S1.42Z_RUNTIME_ACCEPTANCE_JETPACK_PIKMIN_RETUNE.md","runtime_evidence":"RuntimeEvidence/S1.42Z/20260904T135820Z/","workflow_run":33874737048,"build_commit":"267543634bb884bb447bf4bec320103ba75c9ff8","safe_as_gameplay_base":true,"principal_feature":"final balance + DawnLib aerial-defense tuning"},
     {"id":"S1.42AA","title":"Interior Weight Equalization","status":"rejected","parent":"S1.42Z","profile":"Profiles/LC V1 S1.42AA Interior Weight Equalization.r2z","sha256":"0490abe0ceb441489d5cef98a78df979387d2e5de513f0cdbb42d84b084ba364","candidate_record":"Current/91_S1.42AA_BUILD_CANDIDATE_INTERIOR_WEIGHT_EQUALIZATION.md","decision_record":"Current/06_RECENT_WORK_S1.42AA-S1.42AB.md","runtime_evidence":"RuntimeEvidence/S1.42AA/20260904T153744Z/","safe_as_gameplay_base":false,"principal_feature":"proved config-only interior equalization insufficient"},
     {"id":"S1.42AB","title":"Interior Weight Normalization","status":"accepted-predecessor","parent":"S1.42Z","profile":"Profiles/LC V1 S1.42AB Interior Weight Normalization.r2z","sha256":"3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca","candidate_record":"Current/96_S1.42AB_BUILD_CANDIDATE_INTERIOR_WEIGHT_NORMALIZATION.md","decision_record":"Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md","runtime_evidence":"RuntimeEvidence/S1.42AB/20260904T174010Z/","workflow_run":33892396551,"build_commit":"9bf3085d82990ca565ad81f992d896855c21f1c6","safe_as_gameplay_base":true,"principal_feature":"accepted equal effective interior weighting"},
-    {"id":"S1.42AC","title":"BCMER EventType Equal Distribution","status":"accepted","parent":"S1.42AB","profile":"Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z","sha256":"0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9","candidate_record":"Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md","decision_record":"Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md","historical_rejection":"Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md","runtime_evidence":"RuntimeEvidence/S1.42AC/20260904T235720Z/","historical_runtime_evidence":"RuntimeEvidence/S1.42AC/20260904T181854Z/","workflow_run":33903271224,"build_commit":"a30b327580e28f42e55281e91abe03d32ae41363","safe_as_gameplay_base":true,"principal_feature":"accepted BCMER static EventType equal probability model","post_decision_analysis":"Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md"}
+    {"id":"S1.42AC","title":"BCMER EventType Equal Distribution","status":"accepted","parent":"S1.42AB","profile":"Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z","sha256":"0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9","candidate_record":"Current/103_S1.42AC_BUILD_CANDIDATE_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md","decision_record":"Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md","historical_rejection":"Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md","runtime_evidence":"RuntimeEvidence/S1.42AC/20260904T235720Z/","historical_runtime_evidence":"RuntimeEvidence/S1.42AC/20260904T181854Z/","workflow_run":33903271224,"build_commit":"a30b327580e28f42e55281e91abe03d32ae41363","safe_as_gameplay_base":true,"principal_feature":"accepted BCMER static EventType equal probability model","post_decision_analysis":"Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md"},
+    {"id":"S1.42AD","title":"Functional Microwave Spawn Rarity Reduction","status":"active-candidate-runtime-open","parent":"S1.42AC","profile":"Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z","sha256":"9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c","build_plan":"BuildSpecs/S1.42AD_PLAN.md","candidate_record":"Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md","workflow_run":33959742235,"build_commit":"1463a6cde5e8cb7655dd233f83da5157c91b036e","safe_as_gameplay_base":false,"principal_feature":"user-authorized Functional Microwave 18-curve x0.5 fail-closed spawn tuning; runtime validation open"}
   ],
   "feature_index": {
     "CodeRebirthLib_removed_DawnLib_owner":"S1.39",
@@ -72,12 +73,14 @@
     "config_only_interior_equalization_proven_insufficient":"S1.42AA",
     "post_viability_interior_weight_100_normalization":"S1.42AB",
     "BCMER_per_event_weight_semantic_correction":"Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md",
-    "BCMER_static_equal_EventType_probability_accepted":"S1.42AC"
+    "BCMER_static_equal_EventType_probability_accepted":"S1.42AC",
+    "Functional_Microwave_18_curves_half_candidate":"S1.42AD"
   },
   "lineage_invariants": [
     "S1.42C is the canonical normal enemy-spawn/config restore baseline after S1.42B diagnostic divergence.",
     "S1.42R whole-component BaboonBirdPikminEnemy disable is rejected and must never be replayed.",
     "S1.42AB was built directly from accepted S1.42Z, not from rejected S1.42AA.",
-    "S1.42AC was built directly from accepted S1.42AB. Its original Current/106 rejection is retained as history, the per-event-weight interpretation was corrected by Current/109, and explicit corrected acceptance is recorded by Current/118. S1.42AC is the current accepted gameplay baseline."
+    "S1.42AC was built directly from accepted S1.42AB. Its original Current/106 rejection is retained as history, the per-event-weight interpretation was corrected by Current/109, and explicit corrected acceptance is recorded by Current/118. S1.42AC is the current accepted gameplay baseline.",
+    "S1.42AD was built directly from accepted S1.42AC. It is an active runtime candidate only and is not a safe gameplay base until a fresh explicit acceptance decision."
   ]
 }
