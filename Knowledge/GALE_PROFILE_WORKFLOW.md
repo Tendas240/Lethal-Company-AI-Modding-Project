@@ -4,24 +4,26 @@
 **Authority:** semantic router to the fully user-validated Gale workflow  
 **Canonical-For:** `gale_import`  
 **Evidence:** `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`  
-**Implementation:** `RuntimeTools/ReplaceActiveGaleProfile.ps1`  
+**Implementation:** `RuntimeTools/ReplaceActiveGaleProfileV23.ps1` (canonical launcher), `RuntimeTools/ReplaceActiveGaleProfile.ps1` (validated v2.2 importer base)  
 **Related:** `Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`, `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`, `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`  
 **Last-Validated:** 2026-09-04  
-**Last-Hardened:** 2026-09-05 (critical dependency materialization proof; pending next user re-import)
+**Last-Hardened:** 2026-09-05 (`2026-09-05-import-uia-v2.3-recursive-package-materialization-proof`; pending next user re-import)
 
 ## Canonical launcher
 
-For a future ready-to-test build, use the repository-driven launcher rather than a build-name-specific script:
+For the currently ready-to-test build, use the repository-driven v2.3 launcher rather than a build-name-specific script:
 
 ```powershell
-$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
+$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfileV23.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
 ```
 
 Before presenting it, the repository must have `RuntimeInbox/ACTIVE_BUILD.txt` and `Current/AUTO_BUILD_RESULT.json.build_id` pointing to the exact same ready candidate.
 
-## Validated happy path
+The v2.3 launcher deliberately wraps the already user-validated v2.2 importer instead of duplicating its UI Automation implementation. It first requires the exact expected v2.2 source-revision signature, replaces only the narrow critical-materialization functions in memory, stamps the v2.3 revision, and then executes the resulting helper. If the underlying v2.2 source drifts, v2.3 refuses to run until that drift is reviewed.
 
-The helper was fully user-validated during S1.42AA -> S1.42AB on Windows PowerShell 5.1. It:
+## Validated import path
+
+The underlying helper was fully user-validated during S1.42AA -> S1.42AB on Windows PowerShell 5.1. The current launcher preserves that behavior:
 
 - closes Gale;
 - resolves the exact repository candidate;
@@ -34,21 +36,33 @@ The helper was fully user-validated during S1.42AA -> S1.42AB on Windows PowerSh
 - invokes Import;
 - waits for the exact target profile's local `export.r2x`;
 - requires that local `export.r2x` hash to match the archive-entry hash;
-- additionally requires project-critical external Thunderstore dependency DLLs referenced by the expected export to be physically materialized and non-empty in the imported profile;
+- additionally requires project-critical external Thunderstore dependency DLLs to be physically materialized according to the v2.3 package-root contract;
 - removes the temporary `.r2z` only after both export identity and required materialization proof succeed.
 
 After profile number + `y`, no additional Gale click or PowerShell Enter is required on the validated happy path.
 
-## Critical materialization proof
+## Why v2.2 was insufficient
 
-An exact `export.r2x` proves the imported profile metadata, but it does **not** by itself prove that Gale finished materializing every external Thunderstore package file. This distinction became operationally important when S1.42AE had the correct export metadata while BepInEx could not open the expected `loaforc-loaforcsSoundAPI_LethalCompany` DLL from the local Gale profile.
+S1.42AE exposed two consecutive preloader-only launch failures before its own candidate code could execute. The second console capture made the actual Gale package layout explicit. BepInEx/AutoHookGenPatcher attempted to read the binding DLL below:
 
-The helper therefore carries a narrow project-critical materialization contract. When the corresponding package names are present in the expected export, the import is not accepted until these files exist as non-empty files:
+`BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
 
-- `BepInEx\plugins\loaforc-loaforcsSoundAPI\me.loaforc.soundapi.dll`
-- `BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
+The v2.2 sentinel modeled the package as a flat path directly below `BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\`. That path model was incomplete: Gale keeps a namespace/package outer directory and the Thunderstore package preserves its own `BepInEx/plugins/...` subtree beneath it.
 
-This is a fail-closed sentinel for the observed dependency-installation failure. It is not a claim that every third-party Thunderstore DLL is embedded in the `.r2z`, and it does not replace runtime validation.
+There was also a dependency-closure gap. `loaforc-loaforcsSoundAPI_LethalCompany` depends on the base `loaforc-loaforcsSoundAPI` package, but the Gale export can list only the requested top-level binding package. Therefore the base SoundAPI DLL must be treated as a mandatory transitive materialization requirement whenever the LethalCompany binding is present.
+
+## v2.3 critical materialization proof
+
+An exact `export.r2x` proves imported profile metadata, but it does **not** prove that Gale finished materializing every external Thunderstore package file. v2.3 therefore checks package roots rather than a guessed flat DLL path.
+
+When `loaforc-loaforcsSoundAPI_LethalCompany` is present in the expected export, both of these contracts are mandatory:
+
+- below `BepInEx\plugins\loaforc-loaforcsSoundAPI\`, recursively find **exactly one** `me.loaforc.soundapi.dll` and require it to be non-empty;
+- below `BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\`, recursively find **exactly one** `me.loaforc.soundapi.lethalcompany.dll` and require it to be non-empty.
+
+If the base `loaforc-loaforcsSoundAPI` package is explicitly present without the binding, the base-DLL contract still applies.
+
+The recursive search is deliberately constrained to each package's own Gale package root. It therefore tolerates the package's inner directory layout while remaining fail-closed against absence, empty files, or ambiguous duplicate DLLs.
 
 ## Fail-closed requirements
 
@@ -61,8 +75,10 @@ Keep the exact workflow safety constraints from `Current/93_GALE_ACTIVE_PROFILE_
 - never auto-resolve multiple missing profiles;
 - no cache-busting query string on the binary `.r2z` Raw GitHub URL;
 - exact post-import `export.r2x` evidence remains mandatory;
-- required project-critical dependency files must also exist and be non-empty before the helper declares success or removes the downloaded `.r2z`;
-- on materialization timeout/failure, report the missing relative paths and preserve the downloaded `.r2z` for diagnosis.
+- required project-critical dependency package roots must each contain exactly one expected non-empty DLL;
+- the LethalCompany binding implies the base SoundAPI dependency even if the base package is not separately listed in export metadata;
+- on materialization timeout/failure, report the unresolved contract and preserve the downloaded `.r2z` for diagnosis;
+- if the validated importer source revision changes unexpectedly, the v2.3 wrapper must refuse rather than patch unknown code.
 
 ## Runtime-test pairing
 
