@@ -141,12 +141,16 @@ def validate_current_state() -> None:
     latest = state.get("latest_built_artifact", {})
     controllers = state.get("controllers", {})
 
-    if accepted.get("build_id") != "S1.42AB":
-        fail("atomic state accepted baseline is not S1.42AB")
-    if accepted.get("sha256") != "3f2387886daaf68d0d55ddc1b3cffb913565a658db0072b11f3b975ff07860ca":
-        fail("atomic state S1.42AB SHA drift")
+    if accepted.get("build_id") != "S1.42AC":
+        fail("atomic state accepted baseline is not S1.42AC")
+    if accepted.get("sha256") != "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9":
+        fail("atomic state S1.42AC SHA drift")
+    if accepted.get("status") != "ACCEPTED_FULL_NORMAL_STACK":
+        fail("atomic state S1.42AC is not accepted full normal stack")
     if latest.get("build_id") != "S1.42AC":
         fail("atomic state latest built artifact is not S1.42AC")
+    if latest.get("status") != "ACCEPTED_FULL_NORMAL_STACK":
+        fail("latest built S1.42AC status does not match explicit corrected acceptance")
     if state.get("active_candidate") is not None:
         fail("active candidate must be null while no successor is armed")
     if state.get("runtime_test_outstanding") is not False:
@@ -159,7 +163,9 @@ def validate_current_state() -> None:
     else:
         active_build = active_build_path.read_text(encoding="utf-8").strip()
 
-    lineage_ids = {b.get("id") for b in lineage.get("builds", []) if b.get("id")}
+    lineage_builds = [b for b in lineage.get("builds", []) if isinstance(b, dict)]
+    lineage_by_id = {b.get("id"): b for b in lineage_builds if b.get("id")}
+    lineage_ids = set(lineage_by_id)
     if active_build and active_build not in lineage_ids:
         fail(f"ACTIVE_BUILD references unknown build lineage id: {active_build!r}")
     if controllers.get("runtime_active_build") != active_build:
@@ -175,6 +181,10 @@ def validate_current_state() -> None:
         fail("CURRENT_STATE controller build_id mismatch")
     if controllers.get("build_enabled") != buildspec.get("enabled"):
         fail("CURRENT_STATE controller build_enabled mismatch")
+    if controllers.get("build_base_profile") != buildspec.get("base_profile"):
+        fail("CURRENT_STATE controller build_base_profile mismatch")
+    if controllers.get("build_base_sha256") != buildspec.get("base_sha256"):
+        fail("CURRENT_STATE controller build_base_sha256 mismatch")
 
     if lineage.get("current_accepted_build_id") != accepted.get("build_id"):
         fail("BUILD_LINEAGE current accepted build mismatch")
@@ -183,18 +193,31 @@ def validate_current_state() -> None:
     if lineage.get("latest_built_artifact_id") != latest.get("build_id"):
         fail("BUILD_LINEAGE latest built artifact mismatch")
 
-    # AUTO_BUILD_RESULT is historical latest-build output, not the active controller.
+    accepted_lineage = lineage_by_id.get(accepted.get("build_id"), {})
+    if accepted_lineage.get("sha256") != accepted.get("sha256"):
+        fail("accepted CURRENT_STATE SHA disagrees with BUILD_LINEAGE")
+    if accepted_lineage.get("decision_record") != accepted.get("acceptance"):
+        fail("accepted CURRENT_STATE acceptance disagrees with BUILD_LINEAGE decision record")
+    if accepted_lineage.get("safe_as_gameplay_base") is not True:
+        fail("accepted BUILD_LINEAGE entry is not marked safe_as_gameplay_base")
+
+    # AUTO_BUILD_RESULT is immutable provenance for the latest build operation, not
+    # the post-acceptance controller. Its base must match the latest artifact's
+    # lineage parent, not the now-promoted artifact itself.
     if auto.get("build_id") != latest.get("build_id"):
         fail("AUTO_BUILD_RESULT does not describe latest built artifact")
     if auto.get("output_sha256") != latest.get("sha256"):
         fail("AUTO_BUILD_RESULT latest artifact SHA mismatch")
-    if auto.get("base_sha256") != accepted.get("sha256"):
-        fail("AUTO_BUILD_RESULT base SHA no longer matches accepted baseline lineage")
+    latest_lineage = lineage_by_id.get(latest.get("build_id"), {})
+    parent_id = latest_lineage.get("parent")
+    parent = lineage_by_id.get(parent_id, {}) if parent_id else {}
+    if parent_id and auto.get("base_sha256") != parent.get("sha256"):
+        fail("AUTO_BUILD_RESULT base SHA disagrees with latest artifact lineage parent")
 
     for key in ("profile", "acceptance", "project_status", "runtime_evidence", "profile_sources", "file_index"):
         if key in accepted:
             require_path(accepted[key], f"CURRENT_STATE.accepted_baseline.{key}")
-    for key in ("profile", "project_status", "original_rejection", "corrected_analysis", "runtime_evidence", "profile_sources", "file_index"):
+    for key in ("profile", "acceptance", "project_status", "original_rejection", "corrected_analysis", "runtime_evidence", "profile_sources", "file_index"):
         if key in latest:
             require_path(latest[key], f"CURRENT_STATE.latest_built_artifact.{key}")
 
@@ -243,25 +266,27 @@ def validate_runtime_evidence_provenance() -> None:
         if declared_sha != actual_sha:
             fail(f"artifact evidence {build_id} runtime_log_sha256 mismatch: {declared_sha!r} != {actual_sha!r}")
 
+    # Preserve and validate the original rejected-state provenance independently of
+    # the later explicit acceptance. The erratum belongs to historical evidence.
     status = load_json("Current/Projektstatus_S1.42AC_REJECTED.json")
     accepted = status.get("accepted_baseline", {})
     rejected = status.get("rejected_candidate", {})
 
     ab_sha = runtime_by_build.get("S1.42AB")
     if ab_sha and accepted.get("raw_log_sha256") != ab_sha:
-        fail("S1.42AB project-status raw_log_sha256 disagrees with authoritative RuntimeEvidence INDEX")
+        fail("S1.42AB historical project-status raw_log_sha256 disagrees with authoritative RuntimeEvidence INDEX")
 
     ac_sha = runtime_by_build.get("S1.42AC")
     if not ac_sha:
-        fail("S1.42AC authoritative runtime-log SHA could not be resolved from artifact evidence")
+        fail("S1.42AC historical authoritative runtime-log SHA could not be resolved from artifact evidence")
         return
     if rejected.get("raw_log_sha256") != ac_sha:
-        fail("S1.42AC project-status raw_log_sha256 disagrees with authoritative RuntimeEvidence INDEX")
+        fail("S1.42AC historical rejected project-status raw_log_sha256 disagrees with authoritative RuntimeEvidence INDEX")
 
     provenance = rejected.get("raw_log_sha256_provenance", {})
     expected_index = "RuntimeEvidence/S1.42AC/20260904T181854Z/INDEX.json"
     if provenance.get("authority") != expected_index:
-        fail("S1.42AC raw-log provenance authority does not point to the canonical RuntimeEvidence INDEX")
+        fail("S1.42AC raw-log provenance authority does not point to the canonical historical RuntimeEvidence INDEX")
     if provenance.get("authoritative_sha256") != ac_sha:
         fail("S1.42AC provenance authoritative_sha256 disagrees with RuntimeEvidence INDEX")
     superseded = provenance.get("superseded_recorded_sha256")
@@ -281,6 +306,17 @@ def validate_runtime_evidence_provenance() -> None:
     if "provenance erratum" not in lowered or "supersed" not in lowered:
         fail("S1.42AC rejection record lacks an explicit provenance erratum/supersession marker")
 
+    # The new accepted status must independently point to the fresh confirmation run.
+    accepted_status = load_json("Current/Projektstatus_S1.42AC_ACCEPTED.json")
+    accepted_runtime = accepted_status.get("runtime_acceptance", {})
+    fresh_index = "RuntimeEvidence/S1.42AC/20260904T235720Z/INDEX.json"
+    require_path(fresh_index, "S1.42AC corrected acceptance runtime index")
+    fresh_sha = runtime_log_sha256_from_index(fresh_index, "S1.42AC corrected acceptance")
+    if fresh_sha and accepted_runtime.get("raw_log_sha256") != fresh_sha:
+        fail("S1.42AC accepted project-status raw_log_sha256 disagrees with fresh RuntimeEvidence INDEX")
+    if accepted_runtime.get("static_equal_eventtype_probability_gate") is not True:
+        fail("S1.42AC accepted project status does not assert the corrected static EventType probability gate")
+
 
 def validate_lineage() -> None:
     data = load_json("Current/BUILD_LINEAGE.json")
@@ -294,7 +330,7 @@ def validate_lineage() -> None:
             target = b.get(field)
             if target and target not in ids:
                 fail(f"BUILD_LINEAGE {bid}.{field} points to unknown build {target}")
-        for field in ("profile", "build_plan", "candidate_record", "decision_record", "runtime_evidence"):
+        for field in ("profile", "build_plan", "candidate_record", "decision_record", "runtime_evidence", "historical_rejection", "historical_runtime_evidence", "post_decision_analysis"):
             path = b.get(field)
             if path:
                 require_path(path, f"BUILD_LINEAGE {bid}.{field}")
