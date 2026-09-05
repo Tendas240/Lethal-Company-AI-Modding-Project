@@ -1,8 +1,8 @@
 {
   "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42AD_BUILD_AWAITING_RUNTIME_VALIDATION",
-  "base_profile": "Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z",
-  "base_sha256": "9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c",
+  "build_id": "IDLE_AFTER_S1.42AD_REJECTION_MICROWAVE_PROVIDER_ANALYSIS_PENDING",
+  "base_profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+  "base_sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",
   "profile_name": "DO_NOT_BUILD",
   "overwrite": false,
