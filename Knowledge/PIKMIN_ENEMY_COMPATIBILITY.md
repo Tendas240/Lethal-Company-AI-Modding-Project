@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** accepted interaction ownership and permanent anti-regression rules  
 **Canonical-For:** `pikmin_enemy_compatibility`  
-**Evidence:** `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`, `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`, `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/`  
+**Evidence:** `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`, `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`, `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt`, `Current/131_MOUTHDOG_PIKMIN_PATCH_BOUNDARY_AND_SUCCESSOR_PLAN.md`, `Current/132_MOUTHDOG_PATCH_SAFETY_REVIEW.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/`  
 **Code:** `Patches/S139CompatibilityFixes/Plugin.cs`  
 **Related:** `Knowledge/ENEMY_SPAWN_BASELINE.md`  
 **Last-Validated:** 2026-09-06
@@ -40,20 +40,25 @@ Do not revert to complete two-way noninteraction. Pikmin counterattack remains i
 
 Puffer -> Pikmin smoke/effect interaction is protected by removing the LethalMin-injected Pikmin effect-trigger components from Puffer smoke. This is targeted protection, not a broad enemy disable.
 
-## Mouth Dog / Eyeless Dog — current open gap
+## Mouth Dog / Eyeless Dog — source contract proved, successor planned
 
 The accepted S1.42AF runtime run exposed a separate inherited Mouth Dog -> Pikmin compatibility gap. LethalMin logged `Biting 2 Pikmin`, both White Pikmin attaching to `EnemyAttackMouth`, and 2.5-second death timers. Pikmin invincibility prevented the final enemy-attack kill, but the grab/death-timer mutation had already happened and the two affected Pikmin subsequently generated 707 `Work state with no task assigned!` warnings.
 
-The binding target is asymmetric:
+Exact LethalMinNightly 1.1.108 source evidence now proves:
 
-- Mouth Dog / Eyeless Dog -> Pikmin targeting/bite/grab/kill: **must be blocked before Pikmin grab/death-timer state mutation**;
-- Pikmin -> Mouth Dog attack: preserve native LethalMin behavior unless exact source evidence proves another requirement;
-- relying on `Invinceable Pikmin = true` after the grab is insufficient;
-- do not introduce delayed state repair or broad component disable without proving that no narrower prevention boundary exists.
+- adapter ownership is `MouthDogAI -> MouthDogPikminEnemy : PikminEnemy`;
+- no native boolean config exists to disable only Dog -> Pikmin interaction;
+- `Eyeless Dog Bite Limit = 0` is not a valid disable contract because a Pikmin is admitted before the limit check;
+- `MouthDogPikminEnemy.LateUpdate()` enters `DoCheckInterval()` during a valid Dog lunge;
+- `DoCheckInterval()` is the exact MouthDog-specific nearby-Pikmin selection/dispatch point;
+- downstream `BiteNearbyPikmin(List<PikminAI>)` performs `GrabbedPikmin.Add(Pikmin)` and then `PikminAI.GrabPikmin(mouthDogAI.mouthGrip, 2.5f, 5)` before starting the bite animation;
+- core Pikmin grabbed/death-timer/task/leader/latch mutation occurs inside `PikminAI.GrabPikmin(Transform,float,int)`.
 
-`Patches/S139CompatibilityFixes/Plugin.cs` already patches exact declared `LethalMin.PikminAI.GrabPikmin(Transform,float,int)` with a `Priority.First` prevention-only prefix for proven Crawler/Thumper and Baboon Hawk snap-position paths. It currently does not identify MouthDog/EyelessDog. That makes the existing prevention point a candidate for investigation, **not yet an authorized fix**.
+The existing exact `PikminAI.GrabPikmin` `Priority.First` guard is correctly before core Pikmin mutation, but it is too late to be the preferred complete Mouth Dog fix because MouthDog adapter bookkeeping and bite dispatch have already begun.
 
-Next work must first inspect the exact LethalMin MouthDog/EyelessDog owner, targeting/bite method, inheritance, native configuration surface and whether the harmful path reaches `GrabPikmin` before all mutation. See `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`. No successor is armed until that contract is proved.
+The approved implementation boundary is therefore exact declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` with a fail-closed `Priority.First` prevention-only prefix. The adapter must stay enabled so inherited `PikminEnemy.Update()` lifecycle and native Pikmin -> Mouth Dog combat remain intact.
+
+Planned successor: **S1.42AG — Mouth Dog Pikmin One-Way Protection**. It is planned only; no artifact, active candidate or runtime test exists yet. See `Current/131_MOUTHDOG_PIKMIN_PATCH_BOUNDARY_AND_SUCCESSOR_PLAN.md`, `Current/132_MOUTHDOG_PATCH_SAFETY_REVIEW.md` and `BuildSpecs/S1.42AG_PLAN.md`.
 
 ## CodeRebirth utility kills
 

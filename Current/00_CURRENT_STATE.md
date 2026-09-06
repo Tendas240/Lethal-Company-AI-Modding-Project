@@ -35,13 +35,13 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AF_ACCEPTANCE_MOUTHDOG_ANALYSIS`)
+- `BuildSpecs/current.json`: disabled (`IDLE_S1.42AG_PLANNED_NOT_ARMED`)
 - Guarded build base: `Profiles/LC V1 S1.42AF Microwave Fix.r2z` / `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF`
 
 ## Exact next action
 
-Analyze the confirmed MouthDog/EyelessDog -> Pikmin targeting/bite/grab path from Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md under Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md and Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md. Inspect the exact LethalMin owner/method/inheritance/config contract and Patches/S139CompatibilityFixes/Plugin.cs; determine whether native configuration can prevent targeting or whether the existing exact PikminAI.GrabPikmin(Transform,float,int) prevention-only guard can safely cover MouthDog/EyelessDog. Preserve Pikmin -> Mouth Dog native behavior. Do not arm or build a successor until the exact contract is proved.
+Implement the exact validated LethalMin.MouthDogPikminEnemy.DoCheckInterval() Priority.First prevention-only guard in Patches/S139CompatibilityFixes/Plugin.cs, prepare/arm the S1.42AG build specification atomically from accepted S1.42AF, and build S1.42AG repository-native. Do not declare a runtime test outstanding until a successful S1.42AG artifact exists.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
