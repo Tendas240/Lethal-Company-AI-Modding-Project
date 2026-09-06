@@ -48,6 +48,8 @@ The corrected provider code was never reached during AE's failing launches. v2.4
 
 The exact source contract is proved by `Current/130`, the authorized patch boundary by `Current/131`, and the pre-build safety review by `Current/132`. S1.42AG blocks exact declared `MouthDogPikminEnemy.DoCheckInterval()` with `Priority.First` before Pikmin target collection/bite/grab dispatch while keeping the adapter enabled.
 
+The canonical Gale replacement/import helper for this runtime gate is `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`.
+
 The next action is the full-normal runtime gate described in `Current/133`, followed by the build-specific log uploader. S1.42AF remains accepted until that evidence passes.
 
 ## Current open compatibility finding
