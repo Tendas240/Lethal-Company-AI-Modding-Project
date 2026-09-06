@@ -153,7 +153,20 @@ function Ensure-DotNetAndIlSpy {
     if (-not (Test-Path -LiteralPath $ilspy -PathType Leaf)) {
         throw 'ilspycmd installation completed without producing ilspycmd.exe.'
     }
-    return $ilspy
+
+    $ilspyDllMatches = @(Get-ChildItem -LiteralPath $toolDir -Recurse -File -Filter 'ilspycmd.dll')
+    if ($ilspyDllMatches.Count -ne 1) {
+        throw ('Expected exactly one ilspycmd.dll in the isolated tool directory, found: ' + $ilspyDllMatches.Count)
+    }
+
+    $launcher = Join-Path $TempRoot 'run-ilspycmd.cmd'
+    $launcherText = "@echo off`r`n`"$dotnetExe`" `"$($ilspyDllMatches[0].FullName)`" %*`r`nexit /b %ERRORLEVEL%`r`n"
+    [IO.File]::WriteAllText($launcher, $launcherText, (New-Object Text.ASCIIEncoding))
+    if (-not (Test-Path -LiteralPath $launcher -PathType Leaf)) {
+        throw 'Failed to create the isolated ilspycmd launcher.'
+    }
+
+    return $launcher
 }
 
 function Find-MouthDogTypeName {
