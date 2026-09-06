@@ -36,7 +36,7 @@ Use this map before repository search. Open only the topic that matches the user
 | Where is the untouched pre-overhaul recovery point? | `pre_overhaul_backup_and_recovery` | `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md` |
 | Which build introduced/rejected/fixed something? What came before build X? | `build_lineage` | `Current/BUILD_LINEAGE.md` |
 
-The current accepted gameplay baseline is S1.42AF. The immediate technical work is not a new build or runtime test: it is source/contract analysis of the confirmed Mouth Dog / Eyeless Dog -> Pikmin grab/bite path documented in `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`.
+The current accepted gameplay baseline is S1.42AF. The latest built artifact and active runtime candidate is **S1.42AG — Mouth Dog Pikmin One-Way Protection**. Its exact source contract, prevention boundary and patch-safety review are already complete; the outstanding action is the full-normal runtime validation described in `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`. No successor beyond S1.42AG is armed.
 
 ## Authority rule
 
