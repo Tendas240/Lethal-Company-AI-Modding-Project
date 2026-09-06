@@ -36,7 +36,11 @@ Use this map before repository search. Open only the topic that matches the user
 | Where is the untouched pre-overhaul recovery point? | `pre_overhaul_backup_and_recovery` | `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md` |
 | Which build introduced/rejected/fixed something? What came before build X? | `build_lineage` | `Current/BUILD_LINEAGE.md` |
 
-The current accepted gameplay baseline is **S1.42AF — Path-Length-Safe Microwave Packaging**. The latest built artifact is **S1.42AG — Mouth Dog Pikmin One-Way Protection — runtime rejected / partial fix**. There is no active runtime candidate and no successor is armed. The exact next action is targeted repository-native analysis of the remaining Mouth Dog targeting/attack path recorded in `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, routed through `Knowledge/CURRENT_LIFECYCLE.md` and `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`.
+The current accepted gameplay baseline is **S1.42AF — Path-Length-Safe Microwave Packaging**. The latest built artifact is **S1.42AG — Mouth Dog Pikmin One-Way Protection — runtime rejected / partial fix**. There is no active runtime candidate and no successor is armed.
+
+The previously pending Vanilla V81 MouthDogAI capture has completed successfully. Current Mouth Dog analysis authority is `Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md`, with provenance-safe source evidence under `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/`. `Current/135_MOUTHDOG_V81_SOURCE_CAPTURE_TOOL_WINDOWS_HARDENING_STATE.md` is resolved capture-tool history.
+
+The exact next action is the targeted source-evidence extension registered in `Knowledge/CURRENT_LIFECYCLE.md` and `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`: prove Vanilla V81 `EnemyAI.OnCollideWithEnemy()` base behavior and exact LethalMin 1.1.108 `PikminItem.CarryNumerator()` / carry-audio-noise callsites before any successor safety review or build.
 
 ## Authority rule
 
