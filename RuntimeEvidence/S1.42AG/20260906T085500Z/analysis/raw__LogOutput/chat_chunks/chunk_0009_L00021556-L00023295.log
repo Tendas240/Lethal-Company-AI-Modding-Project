@@ -1,0 +1,1740 @@
+[07:40:32.8023733] [Info   : LethalMin] GoldBar(Clone) dropped an item on a non-physics region parent
+[07:40:32.8175179] [Debug  : LethalMin] Initializing PikminItem GoldBar(Clone) with item GoldBar(Clone) (True)
+[07:40:32.9498209] [Info   :GeneralImprovements] Updated ship scrap total monitors to $1448 (16 items).
+[07:40:32.9498209] [Info   :GeneralImprovements] Updated remaining scrap display.
+[07:40:32.9914771] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Removed Leader
+[07:40:32.9914771] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Setting collision mode to 1
+[07:40:32.9914771] [Info   : LethalMin] Purple Pikmin_Dhx8wa: Assigned Leader: MasaeAhmya (0)
+[07:40:33.2469130] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:33.2469130] [Debug  :   Coroner] Query successful!True
+[07:40:33.2469130] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:33.2469130] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:33.4339897] [Info   : Unity Log] Noise heard relative loudness: 0.917672 [NCS:300-168842]
+[07:40:34.0181399] [Info   : Unity Log] Anomaly random yrotation farthest: 1
+[07:40:34.1894977] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:34.2305991] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:34.2305991] [Debug  :   Coroner] Query successful!True
+[07:40:34.2305991] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:34.2305991] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:35.0884697] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:35.1896854] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:35.1896854] [Debug  :   Coroner] Query successful!True
+[07:40:35.1896854] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:35.1896854] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:35.2925708] [Debug  :GeneralImprovements] Updated time display.
+[07:40:36.1843781] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:36.1843781] [Debug  :   Coroner] Query successful!True
+[07:40:36.1843781] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:36.1843781] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:36.3397352] [Warning: LethalMin] (GoldBar's Counter)'s item is null, destroying counter.
+[07:40:37.1278979] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:37.1278979] [Debug  :   Coroner] Query successful!True
+[07:40:37.1278979] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:37.1278979] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:37.3198371] [Info   : Unity Log] Noise heard relative loudness: 0.9179557 [NCS:300-169147]
+[07:40:38.0643325] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:38.1229129] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:38.1229129] [Debug  :   Coroner] Query successful!True
+[07:40:38.1244190] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:38.1244190] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:38.2219893] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:38.3043773] [Debug  :GeneralImprovements] Updated time display.
+[07:40:38.4592101] [Debug  :Spawn Cycle Fixes] Enemy "RadMech" has no nests present on map
+[07:40:38.4592101] [Debug  :Spawn Cycle Fixes] Enemy "RadMech" ignored, as natural spawns are still not finished
+[07:40:38.4787470] [Info   : Unity Log] Spawned enemy: Baboon hawk
+[07:40:38.4787470] [Info   : Unity Log] Could not spawn more enemies; vents #: 6. CannotSpawnMoreInsideEnemies: True
+[07:40:38.4967766] [Info   :qwbarch.Mirage] BaboonBirdAI(e1a8faaf-fd70-46f1-a7f5-4335c814a396) - Mimicking player #0
+[07:40:38.5057915] [Info   :qwbarch.Mirage] BaboonBirdAI(cc2b3292-d185-41db-8222-316b90c7ea2e) - Mimicking player #0
+[07:40:39.0656974] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:39.0656974] [Debug  :   Coroner] Query successful!True
+[07:40:39.0656974] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:39.0656974] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:39.0888683] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) Purple Pikmin (IS:1) (EC:0) (PIC:0)
+[07:40:39.2323391] [Info   : Unity Log] Anomaly random yrotation farthest: 9
+[07:40:39.3297725] [Info   : Unity Log] Anomaly random yrotation farthest: 0
+[07:40:39.3550610] [Info   : Unity Log] Targetable A [NCS:480-169297]
+[07:40:39.6576177] [Debug  : LethalMin] Confirmed Button Pressed, sending withdraw request for 2 types to server.
+[07:40:39.6576177] [Info   : LethalMin] MasaeAhmya: withdrawing (-1, 0), of (Purple Pikmin, White Pikmin)
+[07:40:39.6576177] [Info   : LethalMin] Setting Purple Pikmin_Dhx8wa to the onion
+[07:40:39.6576177] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Removed Leader
+[07:40:39.6576177] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Setting collision mode to 1
+[07:40:39.6576177] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:39.6987803] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Is linking onto Link
+[07:40:39.6987803] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Setting collision mode to 0
+[07:40:40.0292453] [Warning: Unity Log] [Netcode] NetworkObject #640 moved to the root because its parent NetworkObject #639 is destroyed
+[07:40:40.0292453] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Removed Leader
+[07:40:40.0292453] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Setting collision mode to 1
+[07:40:40.0302510] [Debug  :Starlancer AI Fix] Purple Pikmin_Dhx8wa from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:40.0302510] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_Dhx8wa's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:40.0708342] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:40.0708342] [Debug  :   Coroner] Query successful!True
+[07:40:40.0708342] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:40.0708342] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:40.1514668] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:40.5888151] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:40:40.5888151] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:40:40.5888151] [Debug  :   Coroner] Handling Spike Trap death...
+[07:40:40.6058381] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:40:40.6058381] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:40:40.6058381] [Debug  :   Coroner] Handling Spike Trap death...
+[07:40:40.6343885] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:40:40.6343885] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:40:40.6343885] [Debug  :   Coroner] Handling Spike Trap death...
+[07:40:41.0108514] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:41.0108514] [Debug  :   Coroner] Query successful!True
+[07:40:41.0108514] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:41.0108514] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:41.3318498] [Debug  :GeneralImprovements] Updated time display.
+[07:40:41.5028892] [Info   : Unity Log] Noise heard relative loudness: 0.9179265 [NCS:300-169447]
+[07:40:41.5419734] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:0) (PIC:14)
+[07:40:41.6057439] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-1) (PIC:13)
+[07:40:41.6599200] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-2) (PIC:12)
+[07:40:41.7167867] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-3) (PIC:11)
+[07:40:41.7684441] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-4) (PIC:10)
+[07:40:41.8287139] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-5) (PIC:9)
+[07:40:41.8817582] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-6) (PIC:8)
+[07:40:41.9340060] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-7) (PIC:7)
+[07:40:41.9723273] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:41.9898511] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-8) (PIC:6)
+[07:40:42.0098851] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:42.0098851] [Debug  :   Coroner] Query successful!True
+[07:40:42.0098851] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:42.0098851] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:42.0389357] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-9) (PIC:5)
+[07:40:42.0906983] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-10) (PIC:4)
+[07:40:42.1427778] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-11) (PIC:3)
+[07:40:42.2033144] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-12) (PIC:2)
+[07:40:42.2571232] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-13) (PIC:1)
+[07:40:42.3093113] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-14) (PIC:0)
+[07:40:42.3618716] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-15) (PIC:-1)
+[07:40:42.3618716] [Debug  : LethalMin] __OnionHUDSlot: UpPressed: White Pikmin cannot withdraw more than you have in your squad.
+[07:40:42.4144472] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-15) (PIC:-1)
+[07:40:42.4144472] [Debug  : LethalMin] __OnionHUDSlot: UpPressed: White Pikmin cannot withdraw more than you have in your squad.
+[07:40:42.4740255] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-15) (PIC:-1)
+[07:40:42.4740255] [Debug  : LethalMin] __OnionHUDSlot: UpPressed: White Pikmin cannot withdraw more than you have in your squad.
+[07:40:42.5290359] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-15) (PIC:-1)
+[07:40:42.5290359] [Debug  : LethalMin] __OnionHUDSlot: UpPressed: White Pikmin cannot withdraw more than you have in your squad.
+[07:40:42.5708676] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:15) (EC:-15) (PIC:-1)
+[07:40:42.5708676] [Debug  : LethalMin] __OnionHUDSlot: UpPressed: White Pikmin cannot withdraw more than you have in your squad.
+[07:40:42.9628974] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:42.9628974] [Debug  :   Coroner] Query successful!True
+[07:40:42.9628974] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:42.9628974] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:43.1357145] [Debug  : LethalMin] Confirmed Button Pressed, sending withdraw request for 2 types to server.
+[07:40:43.1357145] [Info   : LethalMin] MasaeAhmya: withdrawing (0, -15), of (Purple Pikmin, White Pikmin)
+[07:40:43.1357145] [Info   : LethalMin] Setting White Pikmin_Lih6T to the onion
+[07:40:43.1357145] [Debug  : LethalMin] White Pikmin_Lih6T: Removed Leader
+[07:40:43.1357145] [Debug  : LethalMin] White Pikmin_Lih6T: Setting collision mode to 1
+[07:40:43.1357145] [Debug  : LethalMin] White Pikmin_Lih6T: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.1517379] [Info   : LethalMin] Setting White Pikmin_kDts to the onion
+[07:40:43.1517379] [Debug  : LethalMin] White Pikmin_kDts: Removed Leader
+[07:40:43.1517379] [Debug  : LethalMin] White Pikmin_kDts: Setting collision mode to 1
+[07:40:43.1517379] [Debug  : LethalMin] White Pikmin_kDts: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.1627688] [Info   : LethalMin] Setting White Pikmin_MElACv9 to the onion
+[07:40:43.1627688] [Debug  : LethalMin] White Pikmin_MElACv9: Removed Leader
+[07:40:43.1627688] [Debug  : LethalMin] White Pikmin_MElACv9: Setting collision mode to 1
+[07:40:43.1627688] [Debug  : LethalMin] White Pikmin_MElACv9: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.1769559] [Info   : LethalMin] Setting White Pikmin_nJjY to the onion
+[07:40:43.1779551] [Debug  : LethalMin] White Pikmin_nJjY: Removed Leader
+[07:40:43.1779551] [Debug  : LethalMin] White Pikmin_nJjY: Setting collision mode to 1
+[07:40:43.1779551] [Debug  : LethalMin] White Pikmin_nJjY: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.1909681] [Debug  : LethalMin] White Pikmin_MElACv9: Is linking onto Link
+[07:40:43.1909681] [Debug  : LethalMin] White Pikmin_MElACv9: Setting collision mode to 0
+[07:40:43.1919693] [Info   : LethalMin] Setting White Pikmin_OjPJLx to the onion
+[07:40:43.1919693] [Debug  : LethalMin] White Pikmin_OjPJLx: Removed Leader
+[07:40:43.1919693] [Debug  : LethalMin] White Pikmin_OjPJLx: Setting collision mode to 1
+[07:40:43.1919693] [Debug  : LethalMin] White Pikmin_OjPJLx: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.2070081] [Info   : LethalMin] Setting White Pikmin_sRxN to the onion
+[07:40:43.2070081] [Debug  : LethalMin] White Pikmin_sRxN: Removed Leader
+[07:40:43.2070081] [Debug  : LethalMin] White Pikmin_sRxN: Setting collision mode to 1
+[07:40:43.2070081] [Debug  : LethalMin] White Pikmin_sRxN: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.2191595] [Info   : LethalMin] Setting White Pikmin_bBAu3I to the onion
+[07:40:43.2191595] [Debug  : LethalMin] White Pikmin_bBAu3I: Removed Leader
+[07:40:43.2191595] [Debug  : LethalMin] White Pikmin_bBAu3I: Setting collision mode to 1
+[07:40:43.2191595] [Debug  : LethalMin] White Pikmin_bBAu3I: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.2326716] [Info   : LethalMin] Setting White Pikmin_NNRcIz to the onion
+[07:40:43.2326716] [Debug  : LethalMin] White Pikmin_NNRcIz: Removed Leader
+[07:40:43.2326716] [Debug  : LethalMin] White Pikmin_NNRcIz: Setting collision mode to 1
+[07:40:43.2326716] [Debug  : LethalMin] White Pikmin_NNRcIz: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.2487000] [Debug  : LethalMin] White Pikmin_Lih6T: Is linking onto Link
+[07:40:43.2487000] [Debug  : LethalMin] White Pikmin_Lih6T: Setting collision mode to 0
+[07:40:43.2497029] [Info   : LethalMin] Setting White Pikmin_M5qY to the onion
+[07:40:43.2497029] [Debug  : LethalMin] White Pikmin_M5qY: Removed Leader
+[07:40:43.2497029] [Debug  : LethalMin] White Pikmin_M5qY: Setting collision mode to 1
+[07:40:43.2497029] [Debug  : LethalMin] White Pikmin_M5qY: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.2642822] [Debug  : LethalMin] White Pikmin_M5qY: Is linking onto Link
+[07:40:43.2642822] [Debug  : LethalMin] White Pikmin_M5qY: Setting collision mode to 0
+[07:40:43.2657859] [Info   : LethalMin] Setting White Pikmin_4gEA to the onion
+[07:40:43.2657859] [Debug  : LethalMin] White Pikmin_4gEA: Removed Leader
+[07:40:43.2657859] [Debug  : LethalMin] White Pikmin_4gEA: Setting collision mode to 1
+[07:40:43.2657859] [Debug  : LethalMin] White Pikmin_4gEA: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.2828144] [Debug  : LethalMin] White Pikmin_kDts: Is linking onto Link
+[07:40:43.2828144] [Debug  : LethalMin] White Pikmin_kDts: Setting collision mode to 0
+[07:40:43.2843210] [Debug  : LethalMin] White Pikmin_4gEA: Is linking onto Link
+[07:40:43.2843210] [Debug  : LethalMin] White Pikmin_4gEA: Setting collision mode to 0
+[07:40:43.2843210] [Info   : LethalMin] Setting White Pikmin_GbSI4 to the onion
+[07:40:43.2843210] [Debug  : LethalMin] White Pikmin_GbSI4: Removed Leader
+[07:40:43.2843210] [Debug  : LethalMin] White Pikmin_GbSI4: Setting collision mode to 1
+[07:40:43.2843210] [Debug  : LethalMin] White Pikmin_GbSI4: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.2998508] [Info   : LethalMin] Setting White Pikmin_31TebA2 to the onion
+[07:40:43.2998508] [Debug  : LethalMin] White Pikmin_31TebA2: Removed Leader
+[07:40:43.2998508] [Debug  : LethalMin] White Pikmin_31TebA2: Setting collision mode to 1
+[07:40:43.2998508] [Debug  : LethalMin] White Pikmin_31TebA2: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.3144002] [Info   : Unity Log] Anomaly random yrotation farthest: 11
+[07:40:43.3144002] [Info   : LethalMin] Setting White Pikmin_D3m1 to the onion
+[07:40:43.3144002] [Debug  : LethalMin] White Pikmin_D3m1: Removed Leader
+[07:40:43.3144002] [Debug  : LethalMin] White Pikmin_D3m1: Setting collision mode to 1
+[07:40:43.3144002] [Debug  : LethalMin] White Pikmin_D3m1: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.3299243] [Info   : LethalMin] Setting White Pikmin_BpHYn to the onion
+[07:40:43.3299243] [Debug  : LethalMin] White Pikmin_BpHYn: Removed Leader
+[07:40:43.3299243] [Debug  : LethalMin] White Pikmin_BpHYn: Setting collision mode to 1
+[07:40:43.3299243] [Debug  : LethalMin] White Pikmin_BpHYn: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.3440320] [Debug  : LethalMin] White Pikmin_GbSI4: Is linking onto Link
+[07:40:43.3440320] [Debug  : LethalMin] White Pikmin_GbSI4: Setting collision mode to 0
+[07:40:43.3450301] [Info   : LethalMin] Setting White Pikmin_r7FWxz to the onion
+[07:40:43.3450301] [Debug  : LethalMin] White Pikmin_r7FWxz: Removed Leader
+[07:40:43.3450301] [Debug  : LethalMin] White Pikmin_r7FWxz: Setting collision mode to 1
+[07:40:43.3450301] [Debug  : LethalMin] White Pikmin_r7FWxz: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[07:40:43.3591873] [Debug  : LethalMin] White Pikmin_sRxN: Is linking onto Link
+[07:40:43.3591873] [Debug  : LethalMin] White Pikmin_sRxN: Setting collision mode to 0
+[07:40:43.3732038] [Debug  : LethalMin] White Pikmin_OjPJLx: Is linking onto Link
+[07:40:43.3732038] [Debug  : LethalMin] White Pikmin_OjPJLx: Setting collision mode to 0
+[07:40:43.3897277] [Debug  : LethalMin] White Pikmin_bBAu3I: Is linking onto Link
+[07:40:43.3897277] [Debug  : LethalMin] White Pikmin_bBAu3I: Setting collision mode to 0
+[07:40:43.4027400] [Debug  : LethalMin] White Pikmin_nJjY: Is linking onto Link
+[07:40:43.4027400] [Debug  : LethalMin] White Pikmin_nJjY: Setting collision mode to 0
+[07:40:43.4167825] [Debug  : LethalMin] White Pikmin_NNRcIz: Is linking onto Link
+[07:40:43.4167825] [Debug  : LethalMin] White Pikmin_NNRcIz: Setting collision mode to 0
+[07:40:43.4711052] [Debug  : LethalMin] White Pikmin_31TebA2: Is linking onto Link
+[07:40:43.4711052] [Debug  : LethalMin] White Pikmin_31TebA2: Setting collision mode to 0
+[07:40:43.4826653] [Debug  : LethalMin] White Pikmin_D3m1: Is linking onto Link
+[07:40:43.4826653] [Debug  : LethalMin] White Pikmin_D3m1: Setting collision mode to 0
+[07:40:43.4962388] [Debug  : LethalMin] White Pikmin_r7FWxz: Is linking onto Link
+[07:40:43.4962388] [Debug  : LethalMin] White Pikmin_r7FWxz: Setting collision mode to 0
+[07:40:43.5217746] [Warning: Unity Log] [Netcode] NetworkObject #652 moved to the root because its parent NetworkObject #651 is destroyed
+[07:40:43.5217746] [Debug  : LethalMin] White Pikmin_MElACv9: Removed Leader
+[07:40:43.5217746] [Debug  : LethalMin] White Pikmin_MElACv9: Setting collision mode to 1
+[07:40:43.5227749] [Debug  :Starlancer AI Fix] White Pikmin_MElACv9 from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.5227749] [Debug  :Starlancer AI Fix] Removing White Pikmin_MElACv9's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.5378005] [Debug  : LethalMin] White Pikmin_BpHYn: Is linking onto Link
+[07:40:43.5378005] [Debug  : LethalMin] White Pikmin_BpHYn: Setting collision mode to 0
+[07:40:43.5657239] [Warning: Unity Log] [Netcode] NetworkObject #656 moved to the root because its parent NetworkObject #655 is destroyed
+[07:40:43.5657239] [Debug  : LethalMin] White Pikmin_Lih6T: Removed Leader
+[07:40:43.5657239] [Debug  : LethalMin] White Pikmin_Lih6T: Setting collision mode to 1
+[07:40:43.5667302] [Debug  :Starlancer AI Fix] White Pikmin_Lih6T from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.5667302] [Debug  :Starlancer AI Fix] Removing White Pikmin_Lih6T's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.5797467] [Warning: Unity Log] [Netcode] NetworkObject #658 moved to the root because its parent NetworkObject #657 is destroyed
+[07:40:43.5797467] [Debug  : LethalMin] White Pikmin_M5qY: Removed Leader
+[07:40:43.5797467] [Debug  : LethalMin] White Pikmin_M5qY: Setting collision mode to 1
+[07:40:43.5807493] [Debug  :Starlancer AI Fix] White Pikmin_M5qY from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.5807493] [Debug  :Starlancer AI Fix] Removing White Pikmin_M5qY's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.6093080] [Warning: Unity Log] [Netcode] NetworkObject #648 moved to the root because its parent NetworkObject #647 is destroyed
+[07:40:43.6093080] [Debug  : LethalMin] White Pikmin_kDts: Removed Leader
+[07:40:43.6093080] [Debug  : LethalMin] White Pikmin_kDts: Setting collision mode to 1
+[07:40:43.6093080] [Warning: Unity Log] [Netcode] NetworkObject #662 moved to the root because its parent NetworkObject #661 is destroyed
+[07:40:43.6093080] [Debug  : LethalMin] White Pikmin_4gEA: Removed Leader
+[07:40:43.6103049] [Debug  : LethalMin] White Pikmin_4gEA: Setting collision mode to 1
+[07:40:43.6123053] [Debug  :Starlancer AI Fix] White Pikmin_kDts from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.6123053] [Debug  :Starlancer AI Fix] Removing White Pikmin_kDts's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.6133064] [Debug  :Starlancer AI Fix] White Pikmin_4gEA from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.6133064] [Debug  :Starlancer AI Fix] Removing White Pikmin_4gEA's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.6710464] [Warning: Unity Log] [Netcode] NetworkObject #666 moved to the root because its parent NetworkObject #665 is destroyed
+[07:40:43.6710464] [Debug  : LethalMin] White Pikmin_GbSI4: Removed Leader
+[07:40:43.6710464] [Debug  : LethalMin] White Pikmin_GbSI4: Setting collision mode to 1
+[07:40:43.6710464] [Debug  :Starlancer AI Fix] White Pikmin_GbSI4 from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.6710464] [Debug  :Starlancer AI Fix] Removing White Pikmin_GbSI4's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.6834004] [Warning: Unity Log] [Netcode] NetworkObject #646 moved to the root because its parent NetworkObject #645 is destroyed
+[07:40:43.6834004] [Debug  : LethalMin] White Pikmin_sRxN: Removed Leader
+[07:40:43.6834004] [Debug  : LethalMin] White Pikmin_sRxN: Setting collision mode to 1
+[07:40:43.6844038] [Debug  :Starlancer AI Fix] White Pikmin_sRxN from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.6844038] [Debug  :Starlancer AI Fix] Removing White Pikmin_sRxN's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.7009310] [Warning: Unity Log] [Netcode] NetworkObject #654 moved to the root because its parent NetworkObject #653 is destroyed
+[07:40:43.7009310] [Debug  : LethalMin] White Pikmin_OjPJLx: Removed Leader
+[07:40:43.7019314] [Debug  : LethalMin] White Pikmin_OjPJLx: Setting collision mode to 1
+[07:40:43.7029320] [Debug  :Starlancer AI Fix] White Pikmin_OjPJLx from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.7029320] [Debug  :Starlancer AI Fix] Removing White Pikmin_OjPJLx's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.7169607] [Warning: Unity Log] [Netcode] NetworkObject #664 moved to the root because its parent NetworkObject #663 is destroyed
+[07:40:43.7169607] [Debug  : LethalMin] White Pikmin_bBAu3I: Removed Leader
+[07:40:43.7179669] [Debug  : LethalMin] White Pikmin_bBAu3I: Setting collision mode to 1
+[07:40:43.7189683] [Debug  :Starlancer AI Fix] White Pikmin_bBAu3I from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.7189683] [Debug  :Starlancer AI Fix] Removing White Pikmin_bBAu3I's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.7319802] [Warning: Unity Log] [Netcode] NetworkObject #642 moved to the root because its parent NetworkObject #641 is destroyed
+[07:40:43.7319802] [Debug  : LethalMin] White Pikmin_nJjY: Removed Leader
+[07:40:43.7329797] [Debug  : LethalMin] White Pikmin_nJjY: Setting collision mode to 1
+[07:40:43.7329797] [Debug  :Starlancer AI Fix] White Pikmin_nJjY from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.7329797] [Debug  :Starlancer AI Fix] Removing White Pikmin_nJjY's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.7480049] [Warning: Unity Log] [Netcode] NetworkObject #668 moved to the root because its parent NetworkObject #667 is destroyed
+[07:40:43.7480049] [Debug  : LethalMin] White Pikmin_NNRcIz: Removed Leader
+[07:40:43.7480049] [Debug  : LethalMin] White Pikmin_NNRcIz: Setting collision mode to 1
+[07:40:43.7490046] [Debug  :Starlancer AI Fix] White Pikmin_NNRcIz from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.7490046] [Debug  :Starlancer AI Fix] Removing White Pikmin_NNRcIz's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.8027140] [Warning: Unity Log] [Netcode] NetworkObject #650 moved to the root because its parent NetworkObject #649 is destroyed
+[07:40:43.8027140] [Debug  : LethalMin] White Pikmin_31TebA2: Removed Leader
+[07:40:43.8027140] [Debug  : LethalMin] White Pikmin_31TebA2: Setting collision mode to 1
+[07:40:43.8042180] [Debug  :Starlancer AI Fix] White Pikmin_31TebA2 from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.8042180] [Debug  :Starlancer AI Fix] Removing White Pikmin_31TebA2's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.8167504] [Warning: Unity Log] [Netcode] NetworkObject #660 moved to the root because its parent NetworkObject #659 is destroyed
+[07:40:43.8167504] [Debug  : LethalMin] White Pikmin_D3m1: Removed Leader
+[07:40:43.8187496] [Debug  : LethalMin] White Pikmin_D3m1: Setting collision mode to 1
+[07:40:43.8197498] [Debug  :Starlancer AI Fix] White Pikmin_D3m1 from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.8197498] [Debug  :Starlancer AI Fix] Removing White Pikmin_D3m1's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.8342700] [Warning: Unity Log] [Netcode] NetworkObject #670 moved to the root because its parent NetworkObject #669 is destroyed
+[07:40:43.8342700] [Debug  : LethalMin] White Pikmin_r7FWxz: Removed Leader
+[07:40:43.8342700] [Debug  : LethalMin] White Pikmin_r7FWxz: Setting collision mode to 1
+[07:40:43.8357774] [Debug  :Starlancer AI Fix] White Pikmin_r7FWxz from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.8357774] [Debug  :Starlancer AI Fix] Removing White Pikmin_r7FWxz's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.8628339] [Warning: Unity Log] [Netcode] NetworkObject #644 moved to the root because its parent NetworkObject #643 is destroyed
+[07:40:43.8628339] [Debug  : LethalMin] White Pikmin_BpHYn: Removed Leader
+[07:40:43.8628339] [Debug  : LethalMin] White Pikmin_BpHYn: Setting collision mode to 1
+[07:40:43.8643387] [Debug  :Starlancer AI Fix] White Pikmin_BpHYn from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:40:43.8643387] [Debug  :Starlancer AI Fix] Removing White Pikmin_BpHYn's power (0) from the RoundManager; 
+Current exterior power level is 7
+[07:40:43.9260517] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:43.9492333] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:43.9492333] [Debug  :   Coroner] Query successful!True
+[07:40:43.9492333] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:43.9492333] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:44.3511035] [Debug  :GeneralImprovements] Updated time display.
+[07:40:44.9100299] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:44.9100299] [Debug  :   Coroner] Query successful!True
+[07:40:44.9100299] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:44.9100299] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:45.3991871] [Info   : Unity Log] Noise heard relative loudness: 0.9204354 [NCS:300-169752]
+[07:40:45.8678466] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:45.8945353] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:45.8945353] [Debug  :   Coroner] Query successful!True
+[07:40:45.8945353] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:45.8945353] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:46.0170760] [Info   : Unity Log] Targetable A [NCS:480-169803]
+[07:40:46.8490254] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:46.8490254] [Debug  :   Coroner] Query successful!True
+[07:40:46.8490254] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:46.8490254] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:47.0461064] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:47.3668110] [Debug  :GeneralImprovements] Updated time display.
+[07:40:47.8297786] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:47.8297786] [Debug  :   Coroner] Query successful!True
+[07:40:47.8297786] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:47.8297786] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:47.8427947] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.8427947] [Warning:S1.39 Compatibility Fixes] [DoorAudit] Hangar state changed -> CLOSED; doorPower=1.000; landed=True; leaving=False; living=1; livingInsideShip=1
+[07:40:47.8593472] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.8728558] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.8873897] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.8979028] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.9129143] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.9268396] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.9378524] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.9488656] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.9614035] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.9744193] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.9859362] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:47.9974398] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.0089630] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.0199790] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.0309934] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.0420052] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.0535252] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.0645859] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.0746077] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.0871258] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.1001466] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.1142433] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.1307702] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.1457912] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[07:40:48.7488338] [Info   : Unity Log] Anomaly random yrotation farthest: 228
+[07:40:48.7728637] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:48.7728637] [Debug  :   Coroner] Query successful!True
+[07:40:48.7728637] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:48.7728637] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:48.8860102] [Info   :S1.39 Compatibility Fixes] [BaboonHawkCorpseGuard] Living Baboon Hawk ignored corpse item BaboonHawkBody(Clone) / Dead Baboon Hawk. Pikmin/player carrying remains allowed.
+[07:40:49.0245161] [Info   : Unity Log] Noise heard relative loudness: 0.917526 [NCS:300-170062]
+[07:40:49.7209746] [Info   : Unity Log] Anomaly random yrotation farthest: 205
+[07:40:49.7690660] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:49.7690660] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:49.7690660] [Debug  :   Coroner] Query successful!True
+[07:40:49.7690660] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:49.7690660] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:49.8570881] [Info   : Unity Log] Anomaly random yrotation farthest: -15
+[07:40:50.1636148] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:50.3819344] [Debug  :GeneralImprovements] Updated time display.
+[07:40:50.7112264] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:50.7112264] [Debug  :   Coroner] Query successful!True
+[07:40:50.7112264] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:50.7112264] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:51.6323216] [Info   : Unity Log] Threat type : RadMech; threat level: 6 ; with distance: 0.7775893 [NCS:600-170278]
+[07:40:51.6829197] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:51.6829197] [Debug  :   Coroner] Query successful!True
+[07:40:51.6829197] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:51.6829197] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:51.7470220] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:51.8930440] [Info   : Unity Log] Targetable A [NCS:480-170298]
+[07:40:52.1929970] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:40:52.1929970] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:40:52.1929970] [Debug  :   Coroner] Handling Spike Trap death...
+[07:40:52.2045250] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:40:52.2045250] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:40:52.2045250] [Debug  :   Coroner] Handling Spike Trap death...
+[07:40:52.2296254] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:40:52.2306228] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:40:52.2306228] [Debug  :   Coroner] Handling Spike Trap death...
+[07:40:52.6523137] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:52.6523137] [Debug  :   Coroner] Query successful!True
+[07:40:52.6523137] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:52.6523137] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:52.8100907] [Info   : Unity Log] Anomaly random yrotation farthest: 6
+[07:40:52.9280166] [Info   : Unity Log] Noise heard relative loudness: 0.9741787 [NCS:300-170380]
+[07:40:53.3089166] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:53.3920427] [Debug  :GeneralImprovements] Updated time display.
+[07:40:53.4501479] [Warning:S1.39 Compatibility Fixes] [ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.
+[07:40:53.6268625] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:53.6268625] [Debug  :   Coroner] Query successful!True
+[07:40:53.6268625] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:53.6268625] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:53.6634259] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:54.0708859] [Info   : Unity Log] Update used by player client rpc has been called for interact trigger: TerminalScript
+[07:40:54.0718826] [Info   : Unity Log] Set interminalmenu to true: True
+[07:40:54.0718826] [Message:darmuhsTerminalStuff] Mode set to - [ None ] OnUpdateCamsEvent
+[07:40:54.5722043] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:40:54.5722043] [Debug  :   Coroner] Query successful!True
+[07:40:54.5722043] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:40:54.5722043] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:40:55.6692125] [Warning:S1.39 Compatibility Fixes] [ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.
+[07:40:55.9299269] [Info   : Unity Log] Local client hit enemy RadMechEnemy(Clone) #43 with force of 6.
+[07:40:56.0020455] [Info   : Unity Log] Parsed word: enemies
+[07:40:56.0030456] [Info   : Unity Log] noun keyword: enemies ; verb keyword: list ; result null? : False
+[07:40:56.0030456] [Info   : Unity Log] result: 
+[07:40:56.0280999] [Message:darmuhsTerminalStuff] Mode set to - [ None ] OnUpdateCamsEvent
+[07:40:56.0280999] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MHELP
+[07:40:56.0280999] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MEVENT
+[07:40:56.0280999] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MCLEAR
+[07:40:56.0280999] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MEVENTS
+[07:40:56.0280999] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MRANDOM
+[07:40:56.0280999] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MPAY
+[07:40:56.0280999] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MENEMIES
+[07:40:56.0280999] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MITEMS
+[07:40:56.0280999] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MMOONS
+[07:40:56.0280999] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MSCAN
+[07:40:56.0280999] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MHAZARDS
+[07:40:56.4022313] [Debug  :GeneralImprovements] Updated time display.
+[07:40:56.4232652] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:56.8102203] [Info   : Unity Log] Noise heard relative loudness: 0.919406 [NCS:300-170696]
+[07:40:57.0269278] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[07:40:57.5489227] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:40:57.7881064] [Info   : Unity Log] Targetable A [NCS:480-170787]
+[07:40:57.9007725] [Warning:S1.39 Compatibility Fixes] [ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.
+[07:40:58.4959782] [Info   :S1.39 Compatibility Fixes] [BaboonHawkCorpseGuard] Living Baboon Hawk ignored corpse item BaboonHawkBody(Clone) / Dead Baboon Hawk. Pikmin/player carrying remains allowed.
+[07:40:58.8894115] [Info   : Unity Log] Anomaly random yrotation farthest: 8
+[07:40:59.1029933] [Info   : Unity Log] Local client hit enemy BaboonHawkEnemy(Clone) #61 with force of 1.
+[07:40:59.1432186] [Info   : Unity Log] Threat type : RadMech; threat level: 11 ; with distance: 2.758701 [NCS:600-170907]
+[07:40:59.3654767] [Info   : Unity Log] Local client hit enemy BaboonHawkEnemy(Clone) #61 with force of 1.
+[07:40:59.4192517] [Debug  :GeneralImprovements] Updated time display.
+[07:40:59.5485722] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:00.1112709] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:00.1112709] [Debug  :   Coroner] Query successful!True
+[07:41:00.1112709] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:00.1112709] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:00.1182848] [Warning:S1.39 Compatibility Fixes] [ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.
+[07:41:00.1912714] [Info   : Unity Log] Noise heard relative loudness: 0.9225004 [NCS:300-170996]
+[07:41:00.5847815] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:00.5847815] [Debug  :   Coroner] Query successful!True
+[07:41:00.5847815] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:00.5847815] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:01.0274161] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:01.0274161] [Debug  :   Coroner] Query successful!True
+[07:41:01.0274161] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:01.0274161] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:01.4500318] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:01.5046758] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:01.5046758] [Debug  :   Coroner] Query successful!True
+[07:41:01.5046758] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:01.5046758] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:01.8210502] [Info   : Unity Log] Stop special animation F
+[07:41:01.8210502] [Info   : Unity Log] Stop special animation G
+[07:41:01.8210502] [Info   : Unity Log] Quit terminal; inTerminalMenu true?: {playerScript.inTerminalMenu}
+[07:41:01.8325669] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:01.8325669] [Debug  :   Coroner] Query successful!True
+[07:41:01.9461658] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:01.9461658] [Debug  :   Coroner] Query successful!True
+[07:41:01.9461658] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:01.9461658] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:02.3380492] [Warning:S1.39 Compatibility Fixes] [ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.
+[07:41:02.4293223] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:02.4293223] [Debug  :   Coroner] Query successful!True
+[07:41:02.4293223] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:02.4293223] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:02.4433397] [Debug  :GeneralImprovements] Updated time display.
+[07:41:02.6714342] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:02.8844816] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:02.8844816] [Debug  :   Coroner] Query successful!True
+[07:41:02.8844816] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:02.8844816] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:03.0860183] [Info   : Unity Log] Anomaly random yrotation farthest: 13
+[07:41:03.3132468] [Info   : Unity Log] Targetable A [NCS:480-171269]
+[07:41:03.3347763] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:03.3714145] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:03.3714145] [Debug  :   Coroner] Query successful!True
+[07:41:03.3714145] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:03.3714145] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:03.7661928] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:03.7661928] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:03.7661928] [Debug  :   Coroner] Handling Spike Trap death...
+[07:41:03.7869811] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:03.7869811] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:03.7869811] [Debug  :   Coroner] Handling Spike Trap death...
+[07:41:03.8121146] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:03.8121146] [Debug  :   Coroner] Query successful!True
+[07:41:03.8131145] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:03.8131145] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:03.8131145] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:03.8131145] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:03.8131145] [Debug  :   Coroner] Handling Spike Trap death...
+[07:41:03.8422095] [Info   : Unity Log] Noise heard relative loudness: 0.8932216 [NCS:300-171314]
+[07:41:04.2372020] [Info   : Unity Log] Update used by player client rpc has been called for interact trigger: StartGameLever
+[07:41:04.2372020] [Info   : Unity Log] Start lever animation A
+[07:41:04.2372020] [Info   : Unity Log] Start lever animation B
+[07:41:04.2372020] [Info   : Unity Log] Start lever animation C
+[07:41:04.2372020] [Info   : Unity Log] Start lever animation D; False 
+[07:41:04.2372020] [Info   : Unity Log] Start lever animation E; True ; False
+[07:41:04.2372020] [Info   : Unity Log] Start lever animation F
+[07:41:04.2372020] [Info   : Unity Log] Lever animation: setting bool to False
+[07:41:04.2372020] [Info   : Unity Log] Sent lever animation RPC on this client
+[07:41:04.2968119] [Info   : Unity Log] Local client hit enemy RadMechEnemy(Clone) #43 with force of 6.
+[07:41:04.5507166] [Warning:S1.39 Compatibility Fixes] [ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.
+[07:41:05.3182164] [Info   : Unity Log] Local client hit enemy BaboonHawkEnemy(Clone) #61 with force of 1.
+[07:41:05.3347369] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:05.4605102] [Debug  :GeneralImprovements] Updated time display.
+[07:41:05.7865254] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:05.9165432] [Info   : Unity Log] Stop special animation F
+[07:41:05.9345692] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Insane to 6843
+[07:41:05.9345692] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryBad to 506
+[07:41:05.9345692] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Bad to 355
+[07:41:05.9345692] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Neutral to 1368
+[07:41:05.9345692] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Good to 1244
+[07:41:05.9345692] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryGood to 2737
+[07:41:05.9345692] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Rare to 27375
+[07:41:05.9345692] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Remove to 883
+[07:41:05.9440820] [Info   :BrutalCompanyMinusExtraReborn] Executing OnShipLeave for all events()
+[07:41:05.9452954] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[07:41:05.9452954] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[07:41:05.9452954] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[07:41:05.9452954] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[07:41:05.9452954] [Info   :BrutalCompanyMinusExtraReborn] Restoring un-modified level enemy spawns on current level.
+[07:41:05.9462956] [Info   : LethalMin] Game Ended, Deinitializing PikminManager
+[07:41:05.9462956] [Info   : LethalMin] Pikmin Bulbmin_RaZsuw is outside and not dead/dying, checking if it can leave
+[07:41:05.9462956] [Debug  : LethalMin] Bulbmin_RaZsuw: Removed Leader
+[07:41:05.9462956] [Debug  : LethalMin] Bulbmin_RaZsuw: Setting collision mode to 1
+[07:41:05.9462956] [Debug  : LethalMin] Bulbmin_RaZsuw: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[07:41:05.9462956] [Info   : LethalMin] Pikmin Bulbmin_YNZC8D6 is outside and not dead/dying, checking if it can leave
+[07:41:05.9462956] [Debug  : LethalMin] Bulbmin_YNZC8D6: Removed Leader
+[07:41:05.9462956] [Debug  : LethalMin] Bulbmin_YNZC8D6: Setting collision mode to 1
+[07:41:05.9462956] [Debug  : LethalMin] Bulbmin_YNZC8D6: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[07:41:05.9462956] [Info   : LethalMin] Pikmin Bulbmin_jAQ0d06 is outside and not dead/dying, checking if it can leave
+[07:41:05.9462956] [Debug  : LethalMin] Bulbmin_jAQ0d06: Removed Leader
+[07:41:05.9462956] [Debug  : LethalMin] Bulbmin_jAQ0d06: Setting collision mode to 1
+[07:41:05.9462956] [Debug  : LethalMin] Bulbmin_jAQ0d06: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[07:41:05.9462956] [Info   : Unity Log] [F] The ship is leaving.................
+[07:41:05.9462956] [Info   :HerobrineMod] The ship is leaving.................
+[07:41:05.9561032] [Info   : Unity Log] Stop special animation G
+[07:41:05.9714212] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship has taken off
+[07:41:05.9724217] [Debug  :PizzaTowerEscapeMusic ScriptManager] Conditions for a script event have been met!
+ Script Event Type: StopMusic
+   Game Event Type: ShipTakeOff
+           Comment: StopMusic quand ShipTakeOff
+[07:41:05.9919418] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:05.9919418] [Debug  :   Coroner] Query successful!True
+[07:41:05.9944465] [Info   : Unity Log] Anomaly random yrotation farthest: 2
+[07:41:06.0348696] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 0
+[07:41:06.0749327] [Info   : Unity Log] Anomaly random yrotation farthest: 134
+[07:41:06.7301530] [Info   : Unity Log] Threat type : RadMech; threat level: 11 ; with distance: 4.910296 [NCS:600-171541]
+[07:41:06.7582021] [Warning:S1.39 Compatibility Fixes] [ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.
+[07:41:07.0902798] [Info   : Unity Log] Local client hit enemy BaboonHawkEnemy(Clone) #61 with force of 6.
+[07:41:07.0902798] [Info   : Unity Log] Local client hit enemy BaboonHawkEnemy(Clone) #61 with force of 6.
+[07:41:07.0902798] [Info   : Unity Log] Kill enemy called! destroy: False
+[07:41:07.0902798] [Info   : Unity Log] Playing death sound for enemy: Baboon hawk
+[07:41:07.0902798] [Debug  :Starlancer AI Fix] BaboonHawkEnemy(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 7
+[07:41:07.0902798] [Debug  :Starlancer AI Fix] Removing BaboonHawkEnemy(Clone)'s power (0.5) from the RoundManager; 
+Current exterior power level is 6.5
+[07:41:07.0902798] [Info   : Unity Log] Kill enemy server rpc called with destroy False
+[07:41:07.0902798] [Info   : Unity Log] Kill enemy client rpc called; False
+[07:41:07.4537314] [Info   : Unity Log] Local client hit enemy BaboonHawkEnemy(Clone) #61 with force of 6.
+[07:41:07.5933721] [Info   : Unity Log] Anomaly random yrotation farthest: 150
+[07:41:07.7162743] [Info   : Unity Log] Local client hit enemy BaboonHawkEnemy(Clone) #61 with force of 6.
+[07:41:07.7162743] [Info   : Unity Log] Local client hit enemy BaboonHawkEnemy(Clone) #61 with force of 6.
+[07:41:07.7594404] [Info   : Unity Log] Noise heard relative loudness: 0.8186013 [NCS:300-171616]
+[07:41:08.3547517] [Info   : Unity Log] Local client hit enemy BaboonHawkEnemy(Clone) #61 with force of 6.
+[07:41:08.4782154] [Debug  :GeneralImprovements] Updated time display.
+[07:41:08.6502976] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:08.6502976] [Debug  :   Coroner] Query successful!True
+[07:41:08.6502976] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:08.6502976] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:08.9049529] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:08.9712977] [Warning:S1.39 Compatibility Fixes] [DoorAudit] Hangar state changed -> OPEN; doorPower=1.000; landed=False; leaving=True; living=1; livingInsideShip=1
+[07:41:09.0220080] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[07:41:09.1282072] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:09.1282072] [Debug  :   Coroner] Query successful!True
+[07:41:09.1282072] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:09.1282072] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:09.2263456] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:09.5633278] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:09.5633278] [Debug  :   Coroner] Query successful!True
+[07:41:09.5633278] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:09.5633278] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:09.5933834] [Info   : Unity Log] Targetable A [NCS:480-171773]
+[07:41:09.7112698] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[07:41:09.7262957] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[07:41:09.8610320] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[07:41:10.0702862] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:10.0702862] [Debug  :   Coroner] Query successful!True
+[07:41:10.0702862] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:10.0702862] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:10.4633777] [Info   : Unity Log] Anomaly random yrotation farthest: 8
+[07:41:10.5045398] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:10.5045398] [Debug  :   Coroner] Query successful!True
+[07:41:10.5045398] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:10.5045398] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:10.8974208] [Info   : Unity Log] Anomaly random yrotation farthest: -2
+[07:41:10.9925350] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:10.9925350] [Debug  :   Coroner] Query successful!True
+[07:41:10.9925350] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:10.9925350] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:11.0765432] [Info   : Unity Log] Successfully synced body values
+[07:41:11.0765432] [Info   : Unity Log] End of OnNetworkSpawn body override
+[07:41:11.1047470] [Debug  : LethalMin] Initializing PikminItem BaboonHawkBody(Clone) with item BaboonHawkBody(Clone) (True)
+[07:41:11.4333829] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:11.4333829] [Debug  :   Coroner] Query successful!True
+[07:41:11.4333829] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:11.4333829] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:11.4786558] [Info   : Unity Log] Anomaly random yrotation farthest: 6
+[07:41:11.5001818] [Debug  :GeneralImprovements] Updated time display.
+[07:41:11.6234179] [Info   : Unity Log] Noise heard relative loudness: 0.9177486 [NCS:300-171924]
+[07:41:11.9076731] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:11.9076731] [Debug  :   Coroner] Query successful!True
+[07:41:11.9076731] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:11.9076731] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:12.0225696] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:12.3525567] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:12.3525567] [Debug  :   Coroner] Query successful!True
+[07:41:12.3525567] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:12.3525567] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:12.8249531] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:12.8249531] [Debug  :   Coroner] Query successful!True
+[07:41:12.8249531] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:12.8249531] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:12.8827137] [Info   : Unity Log] Anomaly random yrotation farthest: 9
+[07:41:13.1293840] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:13.2673336] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:13.2673336] [Debug  :   Coroner] Query successful!True
+[07:41:13.2688368] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:13.2688368] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:13.7524416] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:13.7524416] [Debug  :   Coroner] Query successful!True
+[07:41:13.7524416] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:13.7524416] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:14.1900358] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:14.1900358] [Debug  :   Coroner] Query successful!True
+[07:41:14.1900358] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:14.1900358] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:14.5203256] [Debug  :GeneralImprovements] Updated time display.
+[07:41:14.6714959] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:14.6714959] [Debug  :   Coroner] Query successful!True
+[07:41:14.6714959] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:14.6714959] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:14.9049552] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:14.9595418] [Info   : Unity Log] Noise heard relative loudness: 0.92978 [NCS:300-172228]
+[07:41:15.1085473] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:15.1085473] [Debug  :   Coroner] Query successful!True
+[07:41:15.1085473] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:15.1085473] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:15.1521133] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:15.3513053] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:15.3513053] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:15.3513053] [Debug  :   Coroner] Handling Spike Trap death...
+[07:41:15.3633163] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:15.3633163] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:15.3633163] [Debug  :   Coroner] Handling Spike Trap death...
+[07:41:15.3864529] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:15.3864529] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:15.3864529] [Debug  :   Coroner] Handling Spike Trap death...
+[07:41:15.4901550] [Info   : Unity Log] Anomaly random yrotation farthest: 6
+[07:41:15.5877735] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:15.5877735] [Debug  :   Coroner] Query successful!True
+[07:41:15.5877735] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:15.5877735] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:16.0476084] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:16.0476084] [Debug  :   Coroner] Query successful!True
+[07:41:16.0476084] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:16.0476084] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:16.5304682] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:16.5304682] [Debug  :   Coroner] Query successful!True
+[07:41:16.5304682] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:16.5304682] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:16.9674516] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:16.9674516] [Debug  :   Coroner] Query successful!True
+[07:41:16.9674516] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:16.9674516] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:17.0103947] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:17.4266306] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:17.4266306] [Debug  :   Coroner] Query successful!True
+[07:41:17.4266306] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:17.4266306] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:17.5335317] [Debug  :GeneralImprovements] Updated time display.
+[07:41:17.8899403] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:17.8899403] [Debug  :   Coroner] Query successful!True
+[07:41:17.8899403] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:17.8899403] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:17.9280020] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[07:41:18.0225264] [Info   : LethalMin] Bulbmin_jInK: Setting growth stage to 2
+[07:41:18.0356672] [Info   : LethalMin] Bulbmin_nBHUtX: Setting growth stage to 2
+[07:41:18.0976426] [Info   : Unity Log] Targetable A [NCS:480-172519]
+[07:41:18.2665426] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[07:41:18.3310409] [Info   : Unity Log] Noise heard relative loudness: 0.9177138 [NCS:300-172538]
+[07:41:18.3705949] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:18.3705949] [Debug  :   Coroner] Query successful!True
+[07:41:18.3705949] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:18.3705949] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:18.8083039] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:18.8083039] [Debug  :   Coroner] Query successful!True
+[07:41:18.8083039] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:18.8083039] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:18.8328410] [Info   : Unity Log] Ship is leaving. Despawning props and enemies.
+[07:41:18.8338441] [Info   :KawaiiBone.Remnants] Patching ShipHasLeft.
+[07:41:18.8363526] [Info   : LethalMin] Syncing Game Stats to clients
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexTail(Clone)" worth $16
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexVertebrae(Clone)" worth $21
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexVertebrae(Clone)" worth $21
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexFoot1(Clone)" worth $24
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexFoot0(Clone)" worth $27
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexBone(Clone)" worth $13
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexBone(Clone)" worth $13
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexBone(Clone)" worth $13
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexBone(Clone)" worth $13
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexArm1(Clone)" worth $22
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexArm0(Clone)" worth $23
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexRibs(Clone)" worth $56
+[07:41:18.8373612] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexSpine(Clone)" worth $28
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RexSkull(Clone)" worth $33
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "RelicAnkh(Clone)" worth $37
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $4
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $8
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.2(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $4
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $7
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.2(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $8
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $8
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.2(Clone)" worth $8
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.2(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.2(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.2(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $8
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $7
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $4
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.2(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $8
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $7
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $7
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.1(Clone)" worth $4
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $8
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.2(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.2(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $4
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.2(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $7
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $7
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $5
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0.2(Clone)" worth $8
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $6
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting0(Clone)" worth $4
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Painting1(Clone)" worth $4
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "MagnifyingGlass(Clone)" worth $52
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "BaboonHawkBody(Clone)" worth $172
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "ModdedEnemyPowerLevel1Body(Clone)" worth $117
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "BurntRubble(Clone)" worth $0
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "ControlPad(Clone)" worth $47
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "BaboonHawkBody(Clone)" worth $175
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "BaboonHawkBody(Clone)" worth $169
+[07:41:18.8383574] [Debug  :Buttery Fixes] Scrap tracker: Tracking "MouthDogBody(Clone)" worth $233
+[07:41:18.9534152] [Info   : Unity Log] Anomaly random yrotation farthest: 6
+[07:41:18.9674491] [Info   : Unity Log] Anomaly random yrotation farthest: 8
+[07:41:19.3083832] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:19.3083832] [Debug  :   Coroner] Query successful!True
+[07:41:19.3093832] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:19.3093832] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:19.5975123] [Warning:S1.39 Compatibility Fixes] [DoorAudit] Hangar state changed -> CLOSED; doorPower=1.000; landed=False; leaving=True; living=1; livingInsideShip=1
+[07:41:19.7427386] [Debug  :   Coroner] Querying target player parameters pre-death...
+[07:41:19.7427386] [Debug  :   Coroner] Query successful!True
+[07:41:19.7427386] [Debug  :   Coroner] Handling Old Bird (Stomp) damage...
+[07:41:19.7427386] [Warning:   Coroner] Could not access dying player: Player is still alive!
+[07:41:20.3363702] [Info   : Unity Log] Despawning props and enemies #2
+[07:41:20.3363702] [Info   : Unity Log] Despawning props and enemies #3
+[07:41:20.3584846] [Info   : Unity Log] Enemies on map: 39
+[07:41:20.3584846] [Warning: Unity Log] [Netcode] NetworkObject #721 moved to the root because its parent NetworkObject #719 is destroyed
+[07:41:20.3584846] [Warning: Unity Log] [Netcode] NetworkObject #720 moved to the root because its parent NetworkObject #718 is destroyed
+[07:41:20.3584846] [Warning: Unity Log] [Netcode] NetworkObject #715 moved to the root because its parent NetworkObject #712 is destroyed
+[07:41:20.3594901] [Warning: Unity Log] [Netcode] NetworkObject #714 moved to the root because its parent NetworkObject #711 is destroyed
+[07:41:20.3594901] [Warning: Unity Log] [Netcode] NetworkObject #713 moved to the root because its parent NetworkObject #710 is destroyed
+[07:41:20.3594901] [Warning: Unity Log] [Netcode] NetworkObject #708 moved to the root because its parent NetworkObject #707 is destroyed
+[07:41:20.3604895] [Warning: Unity Log] [Netcode] NetworkObject #706 moved to the root because its parent NetworkObject #705 is destroyed
+[07:41:20.3604895] [Warning: Unity Log] [Netcode] NetworkObject #704 moved to the root because its parent NetworkObject #703 is destroyed
+[07:41:20.3604895] [Warning: Unity Log] [Netcode] NetworkObject #702 moved to the root because its parent NetworkObject #700 is destroyed
+[07:41:20.3614900] [Warning: Unity Log] [Netcode] NetworkObject #699 moved to the root because its parent NetworkObject #697 is destroyed
+[07:41:20.3614900] [Warning: Unity Log] [Netcode] NetworkObject #695 moved to the root because its parent NetworkObject #694 is destroyed
+[07:41:20.3634922] [Warning: Unity Log] [Netcode] NetworkObject #693 moved to the root because its parent NetworkObject #692 is destroyed
+[07:41:20.3634922] [Warning: Unity Log] [Netcode] NetworkObject #691 moved to the root because its parent NetworkObject #690 is destroyed
+[07:41:20.3634922] [Warning: Unity Log] [Netcode] NetworkObject #689 moved to the root because its parent NetworkObject #688 is destroyed
+[07:41:20.3634922] [Warning: Unity Log] [Netcode] NetworkObject #687 moved to the root because its parent NetworkObject #686 is destroyed
+[07:41:20.3634922] [Warning: Unity Log] [Netcode] NetworkObject #684 moved to the root because its parent NetworkObject #682 is destroyed
+[07:41:20.3634922] [Warning: Unity Log] [Netcode] NetworkObject #683 moved to the root because its parent NetworkObject #681 is destroyed
+[07:41:20.3634922] [Warning: Unity Log] [Netcode] NetworkObject #680 moved to the root because its parent NetworkObject #679 is destroyed
+[07:41:20.3634922] [Warning: Unity Log] [Netcode] NetworkObject #678 moved to the root because its parent NetworkObject #677 is destroyed
+[07:41:20.3649954] [Warning: Unity Log] [Netcode] NetworkObject #676 moved to the root because its parent NetworkObject #675 is destroyed
+[07:41:20.3649954] [Warning: Unity Log] [Netcode] NetworkObject #674 moved to the root because its parent NetworkObject #673 is destroyed
+[07:41:20.3649954] [Warning: Unity Log] [Netcode] NetworkObject #625 moved to the root because its parent NetworkObject #606 is destroyed
+[07:41:20.3649954] [Debug  : LethalMin] Bulbmin_jAQ0d06: Removed Leader
+[07:41:20.3649954] [Warning: Unity Log] [Netcode] NetworkObject #623 moved to the root because its parent NetworkObject #604 is destroyed
+[07:41:20.3649954] [Info   : LethalMin] White Pikmin_8mz6t76: Removing current task
+[07:41:20.3649954] [Debug  : LethalMin] White Pikmin_8mz6t76: Removed Leader
+[07:41:20.3649954] [Warning: Unity Log] [Netcode] NetworkObject #622 moved to the root because its parent NetworkObject #603 is destroyed
+[07:41:20.3649954] [Debug  : LethalMin] Bulbmin_q4me1: Removed Leader
+[07:41:20.3649954] [Warning: Unity Log] [Netcode] NetworkObject #621 moved to the root because its parent NetworkObject #602 is destroyed
+[07:41:20.3649954] [Debug  : LethalMin] Bulbmin_YNZC8D6: Removed Leader
+[07:41:20.3649954] [Warning: Unity Log] [Netcode] NetworkObject #620 moved to the root because its parent NetworkObject #601 is destroyed
+[07:41:20.3649954] [Debug  : LethalMin] White Pikmin_GgLkG: Removed Leader
+[07:41:20.3649954] [Warning: Unity Log] [Netcode] NetworkObject #619 moved to the root because its parent NetworkObject #600 is destroyed
+[07:41:20.3649954] [Debug  : LethalMin] Purple Pikmin_xy8IOK6: Removed Leader
+[07:41:20.3664989] [Warning: Unity Log] [Netcode] NetworkObject #618 moved to the root because its parent NetworkObject #599 is destroyed
+[07:41:20.3664989] [Info   : LethalMin] White Pikmin_fHvqW: Removing current task
+[07:41:20.3664989] [Debug  : LethalMin] White Pikmin_fHvqW: Removed Leader
+[07:41:20.3664989] [Warning: Unity Log] [Netcode] NetworkObject #617 moved to the root because its parent NetworkObject #598 is destroyed
+[07:41:20.3664989] [Info   : LethalMin] Bulbmin_NaiOeQ: Removing current task
+[07:41:20.3664989] [Debug  : LethalMin] Bulbmin_NaiOeQ: Removed Leader
+[07:41:20.3664989] [Warning: Unity Log] [Netcode] NetworkObject #616 moved to the root because its parent NetworkObject #597 is destroyed
+[07:41:20.3664989] [Debug  : LethalMin] White Pikmin_5sVw: Removed Leader
+[07:41:20.3664989] [Warning: Unity Log] [Netcode] NetworkObject #615 moved to the root because its parent NetworkObject #596 is destroyed
+[07:41:20.3664989] [Debug  : LethalMin] Bulbmin_nBHUtX: Removed Leader
+[07:41:20.3664989] [Warning: Unity Log] [Netcode] NetworkObject #614 moved to the root because its parent NetworkObject #595 is destroyed
+[07:41:20.3664989] [Debug  : LethalMin] White Pikmin_UU42: Removed Leader
+[07:41:20.3675037] [Warning: Unity Log] [Netcode] NetworkObject #613 moved to the root because its parent NetworkObject #594 is destroyed
+[07:41:20.3675037] [Info   : LethalMin] Bulbmin_Cmra9d: Removing current task
+[07:41:20.3675037] [Debug  : LethalMin] Bulbmin_Cmra9d: Removed Leader
+[07:41:20.3675037] [Warning: Unity Log] [Netcode] NetworkObject #612 moved to the root because its parent NetworkObject #593 is destroyed
+[07:41:20.3675037] [Debug  : LethalMin] Purple Pikmin_u5e8: Removed Leader
+[07:41:20.3675037] [Warning: Unity Log] [Netcode] NetworkObject #611 moved to the root because its parent NetworkObject #592 is destroyed
+[07:41:20.3675037] [Info   : LethalMin] Bulbmin_cOQgPj: Removing current task
+[07:41:20.3675037] [Debug  : LethalMin] Bulbmin_cOQgPj: Removed Leader
+[07:41:20.3675037] [Warning: Unity Log] [Netcode] NetworkObject #610 moved to the root because its parent NetworkObject #591 is destroyed
+[07:41:20.3675037] [Debug  : LethalMin] Bulbmin_KgDE: Removed Leader
+[07:41:20.3675037] [Warning: Unity Log] [Netcode] NetworkObject #609 moved to the root because its parent NetworkObject #590 is destroyed
+[07:41:20.3675037] [Debug  : LethalMin] Purple Pikmin_1z0meq: Removed Leader
+[07:41:20.3685036] [Warning: Unity Log] [Netcode] NetworkObject #608 moved to the root because its parent NetworkObject #589 is destroyed
+[07:41:20.3685036] [Debug  : LethalMin] Bulbmin_jInK: Removed Leader
+[07:41:20.3685036] [Warning: Unity Log] [Netcode] NetworkObject #607 moved to the root because its parent NetworkObject #588 is destroyed
+[07:41:20.3685036] [Debug  : LethalMin] Bulbmin_RaZsuw: Removed Leader
+[07:41:20.3755117] [Info   : Unity Log] despawn nest spawn object
+[07:41:20.3790238] [Debug  :Starlancer AI Fix] BaboonHawkEnemy(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 0
+[07:41:20.3790238] [Debug  :Starlancer AI Fix] Removing BaboonHawkEnemy(Clone)'s power (0.5) from the RoundManager; 
+Current exterior power level is 0
+[07:41:20.3810228] [Debug  :Starlancer AI Fix] SirenHead(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 0
+[07:41:20.3810228] [Debug  :Starlancer AI Fix] Removing SirenHead(Clone)'s power (1) from the RoundManager; 
+Current exterior power level is 0
+[07:41:20.3830251] [Debug  :Starlancer AI Fix] SandWorm(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 0
+[07:41:20.3830251] [Debug  :Starlancer AI Fix] Removing SandWorm(Clone)'s power (2) from the RoundManager; 
+Current exterior power level is 0
+[07:41:20.3830251] [Debug  :GeneralImprovements] Updated danger level display.
+[07:41:20.3830251] [Debug  :Starlancer AI Fix] Crawler(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3830251] [Debug  :Starlancer AI Fix] Removing Crawler(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.3850272] [Debug  :   Coroner] Handling Masked Player death...
+[07:41:20.3885343] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3885343] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.3895346] [Debug  :   Coroner] Handling Masked Player death...
+[07:41:20.3905357] [Debug  :GeneralImprovements] Updated danger level display.
+[07:41:20.3905357] [Debug  :   Coroner] Handling Masked Player death...
+[07:41:20.3925360] [Debug  :Starlancer AI Fix] Janitor(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3925360] [Debug  :Starlancer AI Fix] Removing Janitor(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.3935388] [Debug  :Starlancer AI Fix] Crawler(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3935388] [Debug  :Starlancer AI Fix] Removing Crawler(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.3940477] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3940477] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.3950482] [Debug  :Starlancer AI Fix] Blob(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3950482] [Debug  :Starlancer AI Fix] Removing Blob(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.3950482] [Debug  :Starlancer AI Fix] menstalker_prefab(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3950482] [Debug  :Starlancer AI Fix] Removing menstalker_prefab(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.3965529] [Debug  :Starlancer AI Fix] Nancy(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3965529] [Debug  :Starlancer AI Fix] Removing Nancy(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.3965529] [Debug  :GeneralImprovements] Updated danger level display.
+[07:41:20.3975582] [Debug  :Starlancer AI Fix] SandSpider(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3975582] [Debug  :Starlancer AI Fix] Removing SandSpider(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.3975582] [Message:SpiderPositionFix] Cleared Bunker Spider #44's data
+[07:41:20.3985627] [Debug  :Starlancer AI Fix] RadMechEnemy(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 0
+[07:41:20.3985627] [Debug  :Starlancer AI Fix] Removing RadMechEnemy(Clone)'s power (3) from the RoundManager; 
+Current exterior power level is 0
+[07:41:20.3995628] [Debug  :Starlancer AI Fix] Blob(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3995628] [Debug  :Starlancer AI Fix] Removing Blob(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.3995628] [Debug  :Starlancer AI Fix] Bulbmin_jAQ0d06 from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3995628] [Debug  :Starlancer AI Fix] Removing Bulbmin_jAQ0d06's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.3995628] [Debug  :Starlancer AI Fix] White Pikmin_8mz6t76 from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.3995628] [Debug  :Starlancer AI Fix] Removing White Pikmin_8mz6t76's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4005622] [Debug  :Starlancer AI Fix] Bulbmin_q4me1 from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4005622] [Debug  :Starlancer AI Fix] Removing Bulbmin_q4me1's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4005622] [Debug  :Starlancer AI Fix] Bulbmin_YNZC8D6 from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4005622] [Debug  :Starlancer AI Fix] Removing Bulbmin_YNZC8D6's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4005622] [Debug  :Starlancer AI Fix] White Pikmin_GgLkG from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4005622] [Debug  :Starlancer AI Fix] Removing White Pikmin_GgLkG's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4015627] [Debug  :Starlancer AI Fix] Purple Pikmin_xy8IOK6 from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4015627] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_xy8IOK6's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4015627] [Debug  :Starlancer AI Fix] White Pikmin_fHvqW from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4015627] [Debug  :Starlancer AI Fix] Removing White Pikmin_fHvqW's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4015627] [Debug  :Starlancer AI Fix] Bulbmin_NaiOeQ from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4015627] [Debug  :Starlancer AI Fix] Removing Bulbmin_NaiOeQ's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4015627] [Debug  :Starlancer AI Fix] White Pikmin_5sVw from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4015627] [Debug  :Starlancer AI Fix] Removing White Pikmin_5sVw's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4025621] [Debug  :Starlancer AI Fix] Bulbmin_nBHUtX from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4025621] [Debug  :Starlancer AI Fix] Removing Bulbmin_nBHUtX's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4025621] [Debug  :Starlancer AI Fix] White Pikmin_UU42 from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4025621] [Debug  :Starlancer AI Fix] Removing White Pikmin_UU42's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4025621] [Debug  :Starlancer AI Fix] Bulbmin_Cmra9d from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4025621] [Debug  :Starlancer AI Fix] Removing Bulbmin_Cmra9d's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4025621] [Debug  :Starlancer AI Fix] Purple Pikmin_u5e8 from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4025621] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_u5e8's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4035621] [Debug  :Starlancer AI Fix] Bulbmin_cOQgPj from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4035621] [Debug  :Starlancer AI Fix] Removing Bulbmin_cOQgPj's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4035621] [Debug  :Starlancer AI Fix] Bulbmin_KgDE from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4035621] [Debug  :Starlancer AI Fix] Removing Bulbmin_KgDE's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4035621] [Debug  :Starlancer AI Fix] Purple Pikmin_1z0meq from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4035621] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_1z0meq's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4035621] [Debug  :Starlancer AI Fix] Bulbmin_jInK from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4035621] [Debug  :Starlancer AI Fix] Removing Bulbmin_jInK's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4035621] [Debug  :Starlancer AI Fix] Bulbmin_RaZsuw from the interior enemy list has died; 
+Previous interior power level is 0
+[07:41:20.4035621] [Debug  :Starlancer AI Fix] Removing Bulbmin_RaZsuw's power (0) from the RoundManager; 
+Current interior power level is 0
+[07:41:20.4196014] [Info   :GeneralImprovements] Updated remaining scrap display.
+[07:41:20.4236025] [Error  :qwbarch.Mirage] An exception occured while streaming audio: UnityEngine.MissingReferenceException: DestroyCancellation token should be called atleast once before destroying the monobehaviour object
+  at UnityEngine.MonoBehaviour.get_destroyCancellationToken () [0x00016] in <c39a522eee05469b8171a6cfeb646c59>:IL_0016 
+  at Mirage.Unity.AudioStream+AudioStream.InitializeAudioReceiver (System.Int32 totalSamples) [0x00033] in .\Mirage\Unity\AudioStream.fs:121 
+  at Mirage.Unity.AudioStream+AudioStream.streamAudioHost (Mirage.Core.Audio.Opus.Reader+OpusReader opusReader) [0x00017] in .\Mirage\Unity\AudioStream.fs:60 
+  at Mirage.Unity.AudioStream+StreamOpusFromFile@94.MoveNext () [0x00167] in .\Mirage\Unity\AudioStream.fs:104 
+[07:41:20.4236025] [Error  :qwbarch.Mirage] Error occurred while mimicking voice: UnityEngine.MissingReferenceException: DestroyCancellation token should be called atleast once before destroying the monobehaviour object
+  at UnityEngine.MonoBehaviour.get_destroyCancellationToken () [0x00016] in <c39a522eee05469b8171a6cfeb646c59>:IL_0016 
+  at Mirage.Unity.AudioStream+StreamOpusFromFile@94.MoveNext () [0x001e9] in .\Mirage\Unity\AudioStream.fs:107 
+  at Mirage.Unity.MimicVoice+startVoiceMimicking@53-1.MoveNext () [0x001f3] in .\Mirage\Unity\MimicVoice.fs:61 
+[07:41:20.4912469] [Debug  :Buttery Fixes] Landmine: Hide radar dot after detonation
+[07:41:20.4924780] [Debug  :Buttery Fixes] Landmine: Disable ground collider after detonation
+[07:41:20.5405494] [Debug  :GeneralImprovements] Updated time display.
+[07:41:20.6875450] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:20.6875450] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:20.6875450] [Debug  :   Coroner] Handling Out of Bounds death...
+[07:41:20.6875450] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:20.6875450] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:20.6875450] [Debug  :   Coroner] Handling Out of Bounds death...
+[07:41:20.6885448] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:20.6885448] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:20.6885448] [Debug  :   Coroner] Handling Out of Bounds death...
+[07:41:20.6885448] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:20.6885448] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:20.6885448] [Debug  :   Coroner] Handling Out of Bounds death...
+[07:41:20.6885448] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:20.6885448] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:20.6885448] [Debug  :   Coroner] Handling Out of Bounds death...
+[07:41:20.6885448] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[07:41:20.6885448] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[07:41:20.6885448] [Debug  :   Coroner] Handling Out of Bounds death...
+[07:41:20.8467602] [Warning: LethalMin] PikminItem T-Rex Tail (PikminItem Node) is detached from a GrabbableObject
+[07:41:20.8467602] [Warning: Unity Log] [Netcode] NetworkObject #472 moved to the root because its parent NetworkObject #364 is destroyed
+[07:41:20.8467602] [Warning: LethalMin] PikminItem T-Rex Vertebrae (PikminItem Node) is detached from a GrabbableObject
+[07:41:20.8467602] [Warning: Unity Log] [Netcode] NetworkObject #473 moved to the root because its parent NetworkObject #365 is destroyed
+[07:41:20.8467602] [Warning: LethalMin] PikminItem T-Rex Vertebrae (PikminItem Node) is detached from a GrabbableObject
+[07:41:20.8467602] [Warning: Unity Log] [Netcode] NetworkObject #474 moved to the root because its parent NetworkObject #366 is destroyed
+[07:41:20.8467602] [Warning: LethalMin] PikminItem T-Rex Foot (PikminItem Node) is detached from a GrabbableObject
+[07:41:20.8467602] [Warning: Unity Log] [Netcode] NetworkObject #475 moved to the root because its parent NetworkObject #367 is destroyed
+[07:41:20.8467602] [Warning: LethalMin] PikminItem T-Rex Foot (PikminItem Node) is detached from a GrabbableObject
+[07:41:20.8467602] [Warning: Unity Log] [Netcode] NetworkObject #476 moved to the root because its parent NetworkObject #368 is destroyed
+[07:41:20.8467602] [Warning: LethalMin] PikminItem T-Rex Arm (PikminItem Node) is detached from a GrabbableObject
+[07:41:20.8467602] [Warning: Unity Log] [Netcode] NetworkObject #477 moved to the root because its parent NetworkObject #373 is destroyed
+[07:41:20.8467602] [Warning: LethalMin] PikminItem T-Rex Arm (PikminItem Node) is detached from a GrabbableObject
+[07:41:20.8467602] [Warning: Unity Log] [Netcode] NetworkObject #478 moved to the root because its parent NetworkObject #374 is destroyed
+[07:41:20.8477654] [Warning: Unity Log] [Netcode] NetworkObject #458 moved to the root because its parent NetworkObject #457 is destroyed
+[07:41:20.8487654] [Warning: Unity Log] [Netcode] NetworkObject #460 moved to the root because its parent NetworkObject #459 is destroyed
+[07:41:20.8487654] [Warning: Unity Log] [Netcode] NetworkObject #462 moved to the root because its parent NetworkObject #461 is destroyed
+[07:41:20.8487654] [Warning: Unity Log] [Netcode] NetworkObject #464 moved to the root because its parent NetworkObject #463 is destroyed
+[07:41:20.8487654] [Warning: Unity Log] [Netcode] NetworkObject #466 moved to the root because its parent NetworkObject #465 is destroyed
+[07:41:20.8487654] [Warning: Unity Log] [Netcode] NetworkObject #468 moved to the root because its parent NetworkObject #467 is destroyed
+[07:41:20.8527678] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[07:41:20.8527678] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[07:41:20.8537677] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[07:41:20.8547688] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[07:41:20.8632785] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[07:41:20.8632785] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8632785] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[07:41:20.8657874] [Info   : Unity Log] Interact trigger destroying! name: Metal Crate(Clone)
+[07:41:20.8657874] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:20.8657874] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8657874] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:20.8657874] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8667860] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8678096] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8688114] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8698101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8708101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8708101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8708101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8708101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8708101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8708101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8708101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8708101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8708101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8708101] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[07:41:20.8718101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8718101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8718101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8718101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8718101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8718101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8718101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8718101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8718101] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:20.8718101] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA(Clone)
+[07:41:20.8803265] [Warning: Unity Log] Some metrics in the collection went over the configured values limit. Some values were ignored.
+[07:41:20.8848340] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[07:41:20.8848340] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[07:41:20.9194121] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[07:41:20.9249206] [Warning: LethalMin] PikminItem T-Rex Tail (PikminItem Node) has no ItemScript, despawning
+[07:41:20.9249206] [Warning: LethalMin] PikminItem T-Rex Vertebrae (PikminItem Node) has no ItemScript, despawning
+[07:41:20.9249206] [Warning: LethalMin] PikminItem T-Rex Vertebrae (PikminItem Node) has no ItemScript, despawning
+[07:41:20.9249206] [Warning: LethalMin] PikminItem T-Rex Foot (PikminItem Node) has no ItemScript, despawning
+[07:41:20.9249206] [Warning: LethalMin] PikminItem T-Rex Foot (PikminItem Node) has no ItemScript, despawning
+[07:41:20.9249206] [Warning: LethalMin] PikminItem T-Rex Arm (PikminItem Node) has no ItemScript, despawning
+[07:41:20.9249206] [Warning: LethalMin] PikminItem T-Rex Arm (PikminItem Node) has no ItemScript, despawning
+[07:41:20.9604550] [Debug  : LethalMin] IsClientRpcPrefixValid (No): RpcExecStage is Send, IsClient: True, IsHost: True EndOfGameClientRpcPrefix
+[07:41:20.9604550] [Debug  : LethalMin] IsClientRpcPrefixValid (Yes): RpcExecStage is Execute, IsClient: True, IsHost: True EndOfGameClientRpcPrefix
+[07:41:20.9975927] [Debug  :   Coroner] Applying Coroner patches to player notes...
+[07:41:20.9985912] [Debug  :   Coroner] Syncing randomization to map seed: '88644760'
+[07:41:20.9985912] [Info   :   Coroner] [REPORT] Player 0 has no notes! Injecting something funny...
+[07:41:20.9985912] [Info   :   Coroner] Player 1 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 2 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 3 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 4 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 5 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 6 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 7 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 8 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 9 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 10 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 11 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 12 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 13 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 14 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Info   :   Coroner] Player 15 is not controlled by a player. Skipping...
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 0
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 1
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 2
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 3
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 4
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 5
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 6
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 7
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 8
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 9
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 10
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 11
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 12
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 13
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 14
+[07:41:20.9985912] [Debug  :   Coroner] Clearing cause of death for player 15
+[07:41:21.0015901] [Debug  :More Ship Upgrades] Removing speed in EndOfGame callback
+[07:41:21.0015901] [Info   : Unity Log] Scrap collected: 998
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Warning: Unity Log] [Netcode] NetworkObject #479 moved to the root because its parent NetworkObject #395 is destroyed
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Warning: Unity Log] [Netcode] NetworkObject #480 moved to the root because its parent NetworkObject #400 is destroyed
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9547924] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9557927] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Info   : Unity Log] Despawning prop
+[07:41:22.9567922] [Debug  :GeneralImprovements] Updated time display.
+[07:41:30.9477099] [Info   : Unity Log] XP gain before scaling to scrap returned: 10
+[07:41:30.9477099] [Info   : Unity Log] 0.1086463
+[07:41:30.9477099] [Info   : Unity Log] 0.1086463
+[07:41:30.9477099] [Info   : Unity Log] Reviving players A
+[07:41:30.9497097] [Info   : Unity Log] Reviving players B
+[07:41:30.9497097] [Info   : Unity Log] Reviving players F
+[07:41:30.9517062] [Info   : Unity Log] Refreshing voice playback objects. Number of voice objects found: 0
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #1 as they are not controlled or dead
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #2 as they are not controlled or dead
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #3 as they are not controlled or dead
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #4 as they are not controlled or dead
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #5 as they are not controlled or dead
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #6 as they are not controlled or dead
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #7 as they are not controlled or dead
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #8 as they are not controlled or dead
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #9 as they are not controlled or dead
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #10 as they are not controlled or dead
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #11 as they are not controlled or dead
+[07:41:30.9517062] [Info   : Unity Log] Skipping player #12 as they are not controlled or dead
+[07:41:30.9527065] [Info   : Unity Log] Skipping player #13 as they are not controlled or dead
+[07:41:30.9527065] [Info   : Unity Log] Skipping player #14 as they are not controlled or dead
+[07:41:30.9527065] [Info   : Unity Log] Skipping player #15 as they are not controlled or dead
+[07:41:30.9527065] [Info   : Unity Log] Reviving players G
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players A
+[07:41:30.9527065] [Info   : Unity Log] Reviving players H
+[07:41:32.0265715] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[07:41:33.9510410] [Info   : Unity Log] Weather chance: 0.5424005; 1
+[07:41:33.9540406] [Debug  :ButteRyBalance] Adjusted vain shroud growth chances on host: (3%, 4.5%, 1.5%, 2.2%)
+[07:41:33.9550424] [Debug  :Buttery Fixes] Weeds: Luck 0% -> 0%
+[07:41:33.9550424] [Info   : Unity Log] Increasing level #5 20 Adamance mold iterations by 1; risen to 5
+[07:41:33.9550424] [Info   : Unity Log] Increasing level #6 85 Rend mold iterations by 1; risen to 4
+[07:41:33.9550424] [Info   : Unity Log] Increasing level #11 44 Liquidation mold iterations by 1; risen to 53
+[07:41:33.9550424] [Info   : Unity Log] Increasing level #12 5 Embrion mold iterations by 1; risen to 23
+[07:41:33.9550424] [Info   : Unity Log] Increasing level #14 31 Arcadia mold iterations by 1; risen to 13
+[07:41:33.9550424] [Info   : Unity Log] Increasing level #17 556 Flicker mold iterations by 1; risen to 7
+[07:41:33.9550424] [Info   :GeneralImprovements] Updated sales display.
+[07:41:33.9550424] [Info   :GeneralImprovements] Updated fancy weather monitors
+[07:41:33.9585531] [Warning:LethalPerformance] GrabbableObject search called with inactive objects, probably will cause incompatibility!
+[07:41:33.9585531] [Message:LethalSponge] ---
+[07:41:33.9585531] [Message:LethalSponge] Applying Sponge
+[07:41:33.9595494] [Message:LethalSponge] Calling Resources.UnloadUnusedAssets().
+[07:41:34.9667708] [Message:LethalSponge] Resources.UnloadUnusedAssets() completed.
+[07:41:34.9667708] [Message:LethalSponge] Sponge took 1.0076586 seconds to execute.
+[07:41:34.9667708] [Message:LethalSponge] ---
+[07:41:36.3343049] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[07:41:36.3625246] [Info   : Unity Log] saved vehicle: -1
+[07:41:36.3625246] [Info   : Unity Log] SAVE ITEMS IN SHIP CALLED! inShipPhase: True
+[07:41:36.4751715] [Info   :TooManyEmotes-2.3.17] Saving game values.
+[07:41:36.4766751] [Info   :TooManyEmotes-2.3.17] Saving 22 unlocked emotes for player: MasaeAhmya
+[07:41:36.4766751] [Info   :TooManyEmotes-2.3.17] Saving 1094 emote credits for player: MasaeAhmya
+[07:41:36.4766751] [Info   :TooManyEmotes-2.3.17] Saved Seed: 746501728
+[07:41:36.4912211] [Info   :Buttery Fixes] Dropship inventory saved (0 items)
+[07:41:36.4912211] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[07:41:36.4912211] [Debug  :MrHat.BasedItemSaving] Saved 27 exact item poses
+[07:41:36.4932210] [Message: LethalMin] ---Saving LethalMin Data---
+[07:41:36.4932210] [Debug  : LethalMin] SavePath: LCSaveFile1_LethalMinSave
+[07:41:36.4942210] [Info   : LethalMin] Loaded 14 persistent sprouts from save file
+[07:41:36.4942210] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 4, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 4, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 4, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 4, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] data moon: 4, current moon: 8
+[07:41:36.4942210] [Info   : LethalMin] Removed 0 persistent sprouts from load due to them already being spawned on the current moon
+[07:41:36.5152498] [Info   : LethalMin] Saved 14 persistent sprouts
+[07:41:36.5152498] [Info   : LethalMin] Loaded 0 leafling players from save file
+[07:41:36.5342935] [Info   : LethalMin] Loaded 6 onions from save file
+[07:41:36.5514075] [Info   : LethalMin] Saving 6 fused types for FusedType: 0, 4, 8, 5, 1, 7
+[07:41:36.5514075] [Info   : LethalMin] Saving Blue Onion fused type (0)
+[07:41:36.5514075] [Info   : LethalMin] Saving Red Onion fused type (4)
+[07:41:36.5514075] [Info   : LethalMin] Saving Yellow Onion fused type (8)
+[07:41:36.5514075] [Info   : LethalMin] Saving Rock Onion fused type (5)
+[07:41:36.5514075] [Info   : LethalMin] Saving Ice Onion fused type (1)
+[07:41:36.5514075] [Info   : LethalMin] Saving Winged Onion fused type (7)
+[07:41:36.5514075] [Info   : LethalMin] Saving Pikmin Container type (2)
+[07:41:36.5544075] [Info   : LethalMin] Saved pikmin data for 6 onions
+[07:41:36.5544075] [Info   : LethalMin] Loaded 1 fusions from save file
+[07:41:36.5544075] [Info   : LethalMin] Created Fusion: 'RBY_FuseRules' 0, 4, 8, 5, 1, 7 from: 8, 5, 7, 0, 4, 1
+[07:41:36.5544075] [Info   : LethalMin] Saved pikmin data for 1 fusions
+[07:41:36.5544075] [Message: LethalMin] ---Finished Saving LethalMin Data---
+[07:41:36.6570916] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Insane to 6843
+[07:41:36.6570916] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryBad to 506
+[07:41:36.6570916] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Bad to 355
+[07:41:36.6570916] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Neutral to 1368
+[07:41:36.6570916] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Good to 1244
+[07:41:36.6570916] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryGood to 2737
+[07:41:36.6570916] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Rare to 27375
+[07:41:36.6570916] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Remove to 883
+[07:41:36.6575958] [Debug  : LightsOut] SprayPaintItem is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] Shovel is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] FlashlightItem is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] Shovel is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] Money is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] KeyItem is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] KeyItem is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] KeyItem is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] Arson is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] NoisemakerProp is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] Disabling light of Mystic Cristal
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] KeyItem is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] KeyItem is not a predefined type
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6575958] [Debug  : LightsOut] PhysicsProp has no light
+[07:41:36.6586010] [Debug  :LobbyControl] Lobby can be re-opened
+[07:41:36.6596050] [Info   :GeneralImprovements] Updated remaining scrap display.
+[07:41:36.6596050] [Info   :GeneralImprovements] Updated total days display.
+[07:41:36.6731805] [Info   :LethalPerformance] Saved 4 save(s)
+[07:41:36.7828027] [Info   : LethalMin] Refreshing onions for ShipPhaseOnionContainer(Clone)
+[07:41:36.7828027] [Info   : LethalMin] Removing ship phase onions
+[07:41:36.8386652] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[07:41:36.8396644] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8396644] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8396644] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8396644] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8396644] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8396644] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8406650] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8421706] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8421706] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8421706] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8421706] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8421706] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8421706] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8421706] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8421706] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8421706] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8421706] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8431757] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8431757] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8431757] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8431757] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8431757] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8431757] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8431757] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8431757] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8431757] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8431757] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8441759] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8441759] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8441759] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:36.8441759] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:45.1521610] [Info   :GeneralImprovements] Server disconnecting - dropping FlashlightItem(Clone)
+[07:41:45.1531603] [Info   : Unity Log] Leaving current lobby
+[07:41:45.1531603] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[07:41:45.1758623] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[07:41:45.1768636] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[07:41:45.1768636] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[07:41:45.1768636] [Info   :Rolling Giant] Resetting all rolling giants!
+[07:41:45.1768636] [Message:Rolling Giant] Reverting sync
+[07:41:45.1779963] [Info   : Unity Log] saved vehicle: -1
+[07:41:45.1779963] [Info   : Unity Log] SAVE ITEMS IN SHIP CALLED! inShipPhase: True
+[07:41:45.2755827] [Info   :TooManyEmotes-2.3.17] Saving game values.
+[07:41:45.2755827] [Info   :TooManyEmotes-2.3.17] Saving 22 unlocked emotes for player: MasaeAhmya
+[07:41:45.2755827] [Info   :TooManyEmotes-2.3.17] Saving 1094 emote credits for player: MasaeAhmya
+[07:41:45.2755827] [Info   :TooManyEmotes-2.3.17] Saved Seed: 746501728
+[07:41:45.2885216] [Info   :Buttery Fixes] Dropship inventory saved (0 items)
+[07:41:45.2885216] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[07:41:45.2885216] [Debug  :MrHat.BasedItemSaving] Saved 27 exact item poses
+[07:41:45.2885216] [Message: LethalMin] ---Saving LethalMin Data---
+[07:41:45.2885216] [Debug  : LethalMin] SavePath: LCSaveFile1_LethalMinSave
+[07:41:45.2885216] [Info   : LethalMin] Loaded 14 persistent sprouts from save file
+[07:41:45.2885216] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 1, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 4, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 4, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 4, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 4, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] data moon: 4, current moon: 8
+[07:41:45.2885216] [Info   : LethalMin] Removed 0 persistent sprouts from load due to them already being spawned on the current moon
+[07:41:45.3098156] [Info   : LethalMin] Saved 14 persistent sprouts
+[07:41:45.3098156] [Info   : LethalMin] Loaded 0 leafling players from save file
+[07:41:45.3273696] [Info   : LethalMin] Loaded 6 onions from save file
+[07:41:45.3438856] [Info   : LethalMin] Saving Pikmin Container type (2)
+[07:41:45.3448837] [Info   : LethalMin] Saved pikmin data for 6 onions
+[07:41:45.3448837] [Info   : LethalMin] Loaded 1 fusions from save file
+[07:41:45.3448837] [Info   : LethalMin] Created Fusion: 'RBY_FuseRules' 0, 4, 8, 5, 1, 7 from: 8, 5, 7, 0, 4, 1
+[07:41:45.3448837] [Info   : LethalMin] Saved pikmin data for 1 fusions
+[07:41:45.3448837] [Message: LethalMin] ---Finished Saving LethalMin Data---
+[07:41:45.3448837] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[07:41:45.3458871] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[07:41:45.3468866] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[07:41:45.3792686] [Info   :LethalPerformance] Saved 4 save(s)
+[07:41:45.3852670] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[07:41:45.4183610] [Info   : LethalMin] ShipOnion: saved 38 pikmin to disk on despawn.
+[07:41:45.4389424] [Info   :LobbyControl] 0 disconnected
+[07:41:45.4399430] [Info   : Unity Log] Disconnect callback called
+[07:41:45.4399430] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[07:41:45.4399430] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[07:41:45.4399430] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[07:41:45.4504496] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4504496] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4514501] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[07:41:45.4514501] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[07:41:45.4524498] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4524498] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[07:41:45.4534504] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4534504] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[07:41:45.4534504] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4534504] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[07:41:45.4534504] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4534504] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[07:41:45.4534504] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4534504] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[07:41:45.4534504] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4534504] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[07:41:45.4534504] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[07:41:45.4534504] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[07:41:45.4534504] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[07:41:45.4534504] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[07:41:45.4534504] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:45.4554502] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:45.4706158] [Info   : Unity Log] Resetting unlockables list!
+[07:41:45.4721200] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[07:41:45.4731260] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[07:41:45.4741277] [Info   : Unity Log] Scene manager is null
+[07:41:45.4791827] [Info   :LethalPerformance] Saved 1 save(s)
+[07:41:45.5211331] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[07:41:45.5301511] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[07:41:45.5311525] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[07:41:45.5321515] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[07:41:45.5321515] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[07:41:45.5321515] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[07:41:45.5321515] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[07:41:45.5321515] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[07:41:45.5321515] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[07:41:45.5321515] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[07:41:45.5341505] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[07:41:45.5456205] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[07:41:45.5670398] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[07:41:45.5747827] [Info   :MoreCompany] LANMenu startLAN Patched
+[07:41:45.8668086] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[07:41:47.4215832] [Info   : Unity Log] Returning week num: 142
+[07:41:47.4215832] [Info   : Unity Log] week num: 142
+[07:41:47.4280909] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[07:41:47.4280909] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[07:41:47.4370918] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[07:41:47.4452532] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[07:41:47.4452532] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[07:41:47.4482842] [Info   :LethalPerformance] Saved 1 save(s)
+[07:41:48.8885843] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[07:41:48.9016092] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[07:41:49.7533826] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[07:41:49.7545535] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[07:41:49.7545535] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...

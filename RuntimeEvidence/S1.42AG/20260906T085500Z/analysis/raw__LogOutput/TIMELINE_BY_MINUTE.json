@@ -1,0 +1,154 @@
+[
+  {
+    "minute": "07:24",
+    "levels": {
+      "Message": 4,
+      "Debug": 1059,
+      "Info": 622,
+      "Warning": 34
+    }
+  },
+  {
+    "minute": "07:25",
+    "levels": {
+      "Info": 1480,
+      "Debug": 3330,
+      "Warning": 430,
+      "Message": 54,
+      "Error": 21
+    }
+  },
+  {
+    "minute": "07:26",
+    "levels": {
+      "Warning": 2,
+      "Info": 9,
+      "Debug": 166,
+      "Message": 1
+    }
+  },
+  {
+    "minute": "07:28",
+    "levels": {
+      "Info": 2
+    }
+  },
+  {
+    "minute": "07:29",
+    "levels": {
+      "Info": 870,
+      "Debug": 4710,
+      "Warning": 1052,
+      "Error": 10,
+      "Message": 149
+    }
+  },
+  {
+    "minute": "07:30",
+    "levels": {
+      "Info": 127,
+      "Debug": 259,
+      "Warning": 119,
+      "Message": 22
+    }
+  },
+  {
+    "minute": "07:31",
+    "levels": {
+      "Warning": 97,
+      "Debug": 120,
+      "Info": 73,
+      "Message": 4
+    }
+  },
+  {
+    "minute": "07:32",
+    "levels": {
+      "Info": 76,
+      "Debug": 118,
+      "Warning": 136,
+      "Message": 1
+    }
+  },
+  {
+    "minute": "07:33",
+    "levels": {
+      "Info": 252,
+      "Debug": 105,
+      "Warning": 129,
+      "Message": 2
+    }
+  },
+  {
+    "minute": "07:34",
+    "levels": {
+      "Debug": 132,
+      "Warning": 129,
+      "Info": 293,
+      "Message": 2
+    }
+  },
+  {
+    "minute": "07:35",
+    "levels": {
+      "Debug": 281,
+      "Warning": 166,
+      "Info": 69
+    }
+  },
+  {
+    "minute": "07:36",
+    "levels": {
+      "Debug": 426,
+      "Info": 721,
+      "Warning": 224,
+      "Message": 2
+    }
+  },
+  {
+    "minute": "07:37",
+    "levels": {
+      "Warning": 194,
+      "Debug": 473,
+      "Info": 315,
+      "Message": 2,
+      "Error": 1
+    }
+  },
+  {
+    "minute": "07:38",
+    "levels": {
+      "Debug": 297,
+      "Info": 97,
+      "Warning": 173
+    }
+  },
+  {
+    "minute": "07:39",
+    "levels": {
+      "Debug": 356,
+      "Warning": 185,
+      "Info": 128,
+      "Message": 2
+    }
+  },
+  {
+    "minute": "07:40",
+    "levels": {
+      "Info": 199,
+      "Warning": 178,
+      "Debug": 460,
+      "Message": 2
+    }
+  },
+  {
+    "minute": "07:41",
+    "levels": {
+      "Debug": 447,
+      "Warning": 150,
+      "Info": 589,
+      "Message": 13,
+      "Error": 2
+    }
+  }
+]
