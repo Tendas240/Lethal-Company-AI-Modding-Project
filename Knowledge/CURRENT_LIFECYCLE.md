@@ -4,8 +4,8 @@
 **Authority:** current lifecycle router; detailed acceptance/rejection remains in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
-**Evidence:** `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/135_MOUTHDOG_V81_SOURCE_CAPTURE_TOOL_WINDOWS_HARDENING_STATE.md`, `Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MOUTHDOGAI_FOCUSED_DECOMPILE.txt`, `RuntimeEvidence/S1.42AG/20260906T085500Z/`  
-**Related:** `Current/CURRENT_STATE.json`, `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Knowledge/GALE_PROFILE_WORKFLOW.md`, `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`  
+**Evidence:** `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md`, `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/`, `SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/`, `RuntimeEvidence/S1.42AG/20260906T085500Z/`  
+**Related:** `Current/CURRENT_STATE.json`, `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`  
 **Last-Validated:** 2026-09-06
 
 ## Accepted baseline
@@ -19,7 +19,7 @@
 - Runtime evidence: `RuntimeEvidence/S1.42AF/20260905T223738Z/`
 - Runtime log SHA-256: `63df88a3acb0c455bab914fd844767cb50b7384ab4b1ede8bd7cbcb63537d956`
 
-S1.42AF remains the only accepted gameplay base. S1.42AC remains its accepted predecessor/provenance point.
+S1.42AF remains the only accepted gameplay base.
 
 ## Latest built artifact
 
@@ -32,45 +32,42 @@ S1.42AF remains the only accepted gameplay base. S1.42AC remains its accepted pr
 - Rejection: `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`
 - Runtime evidence: `RuntimeEvidence/S1.42AG/20260906T085500Z/`
 - Runtime log SHA-256: `3e8ca4c8fe045bbd2c62576dbbd5aaba2a226990e6b4af4149481f2672c35dfe`
-- Runtime test outstanding: **no**
-- Active candidate: **none**
 
-S1.42AG's `Priority.First` guard on exact `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` armed and executed. It successfully prevented the LethalMin-specific Pikmin bite/grab/death-timer mutation path: the prior `Biting N Pikmin` / `EnemyAttackMouth` / 2.5-second grab signature disappeared and `Work state with no task assigned!` fell from 707 in the S1.42AF exposure evidence to 0.
+S1.42AG's exact `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` prevention guard armed and executed. It removed the prior LethalMin-specific bite/grab/death-timer signature and reduced `Work state with no task assigned!` from 707 in the exposure baseline to 0. It remains rejected because a Mouth Dog still visually pursued/attacked a scrap-carrying Purple Pikmin through a different path.
 
-S1.42AG remains rejected because the broader one-way contract still failed visually: a Mouth Dog pursued/attacked a scrap-carrying Purple Pikmin through a path outside the blocked LethalMin dispatcher. Reverse-direction Pikmin -> Mouth Dog combat was not deliberately exercised and has no pass/fail result yet.
+Reverse-direction Pikmin -> Mouth Dog combat was not deliberately tested and has no pass/fail result.
 
-## Vanilla V81 MouthDogAI source capture — completed
+## Closed MouthDog source boundaries
 
-The previously prepared Windows capture is now complete and provenance-verified. `Current/135_MOUTHDOG_V81_SOURCE_CAPTURE_TOOL_WINDOWS_HARDENING_STATE.md` is resolved history; current analysis authority is `Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md`.
+The previously required pre-successor source extension is complete. Current analysis authority is `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`.
 
-Authoritative capture:
+### Vanilla V81 MouthDog source
 
-- evidence branch: `source-evidence/mouthdog-v81-20260906t121738z`;
-- evidence commit: `a618b19bfc30234ca556c924d681d43b2c13d1d9`;
-- capture base: `main = 3049b0fa52af79db39efb075d94684d229eed3c6`;
-- assembly SHA-256: `5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731`;
-- Steam buildid: `22825947`;
-- manifest: `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json`;
-- focused report: `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MOUTHDOGAI_FOCUSED_DECOMPILE.txt`.
+The provenance-safe MouthDog capture proves:
 
-Do not re-run the capture merely to recreate evidence that already exists.
+- `MouthDogAI.DetectNoise(...)` consumes a world-space position;
+- `noisePositionGuess` drives native pursuit and can lead to `EnterLunge()`;
+- `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` is an independent generic enemy-collision surface which can lunge and call `collidedEnemy.HitEnemy(2, ...)`;
+- exact LethalMin source proves `PikminAI : EnemyAI`.
 
-## What the captured native source proves
+### Vanilla V81 EnemyAI base collision
 
-Vanilla `MouthDogAI.DetectNoise(Vector3 noisePosition, ...)` is position-based. Native chase logic stores/uses `noisePositionGuess` and can enter a lunge once the dog is within less than 4 units of that world-space position.
+The targeted `EnemyAI.OnCollideWithEnemy()` capture is complete and integrated under `SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/`.
 
-Vanilla `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` is a separate generic enemy-collision attack surface. It calls `base.OnCollideWithEnemy(...)`; for a different enemy type after its cooldown it can face the collided enemy, enter a lunge in chase state, and call `collidedEnemy.HitEnemy(2, ...)`.
+Exact V81 behavior is debug-only: the method optionally emits a server debug log and performs no gameplay, navigation, targeting, damage, grab, cleanup or lifecycle mutation. This closes the previous concern that an exact future MouthDog collision Prefix might suppress hidden base gameplay responsibilities.
 
-Exact LethalMin 1.1.108 evidence proves `PikminAI : EnemyAI`, so Pikmin can enter that generic Vanilla path without any Pikmin-specific selector in `MouthDogAI`.
+### LethalMin 1.1.108 carry/noise contract
 
-Exact LethalMin evidence also proves Pikmin audio can call `RoundManager.PlayAudibleNoise(...)` at the Pikmin position. The accepted configuration has `Dont Make Audible Noises = false`, so a Pikmin itself is a proved possible audible-noise emitter.
+Existing exact source evidence proves `PikminItem.CarryNumerator()` repeatedly calls `pikmin.PlayAudioOnLocalClient("ItemCarry", ...)` for each carrier. `PikminAI.PlayAudioOnLocalClient(...)` can call `RoundManager.PlayAudibleNoise(...)` at the Pikmin transform when audible-noise suppression is disabled, and the accepted config has `Dont Make Audible Noises = false`.
 
-The runtime evidence confirms a Purple Pikmin carried `GoldBar(Clone)`, but current source/runtime evidence does **not** prove that the carried GoldBar itself caused the Dog's noise pursuit. That narrower carried-scrap/noise causality remains unresolved.
+Therefore item carrying is source-proven to generate recurring audible noise through the carrying Pikmin at the carrier's world position. The stronger claim that Vanilla MouthDogAI semantically targets Purple Pikmin because they carry scrap, or that the GoldBar itself is the proved recurring carry-noise emitter, is unsupported/rejected. Exact runtime causality for the observed S1.42AG chase is still not proven.
+
+No additional local source capture is currently required.
 
 ## Current controllers
 
 - `BuildSpecs/current.json` is disabled.
-- Controller id: `IDLE_AFTER_MOUTHDOG_V81_CAPTURE_AWAITING_TARGETED_SOURCE_EXTENSION`.
+- Controller id: `IDLE_AFTER_MOUTHDOG_SOURCE_BOUNDARIES_AWAITING_PATCH_SAFETY_REVIEW`.
 - Guarded base remains accepted `Profiles/LC V1 S1.42AF Microwave Fix.r2z` / `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG` remains runtime-evidence attribution only.
 - No successor is armed.
@@ -78,21 +75,30 @@ The runtime evidence confirms a Purple Pikmin carried `GoldBar(Clone)`, but curr
 
 ## Exact next project action
 
-Perform a **targeted source-evidence extension**, not a build and not another gameplay run.
+Perform the **successor-specific Patch Safety Review** under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
 
-Prove exactly two remaining contracts:
+Before any successor is armed, the review must define:
 
-1. Vanilla V81 `EnemyAI.OnCollideWithEnemy()` base behavior/side effects, because `MouthDogAI.OnCollideWithEnemy()` calls it before its own generic `EnemyAI` lunge/damage logic.
-2. Exact LethalMin 1.1.108 `PikminItem.CarryNumerator()` plus carry-item audio / `PlayAudibleNoise` callsites, so the narrower carried-GoldBar/noise hypothesis is proved or rejected rather than inferred.
+- the exact smallest Harmony interception surface for remaining MouthDog -> Pikmin protection;
+- exact declaring type, method, signature and Pikmin-identification boundary;
+- inheritance/base behavior and secondary responsibilities;
+- whether the proven S1.42AG `DoCheckInterval()` prevention guard remains part of the successor;
+- preservation of MouthDog -> player behavior;
+- preservation of native Pikmin -> MouthDog attack/latch/death/unlatch/task ownership;
+- a one-variable delta against accepted S1.42AF;
+- build-time target/signature/DLL/archive-diff diagnostics;
+- runtime target, adjacent lifecycle, repetition, neighbor behavior and log checks;
+- a deliberate reverse-direction Pikmin -> MouthDog test rather than passive follower observation.
 
-Only after those two source boundaries are proved may a successor-specific safety review be performed under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
+Do **not** arm/build a successor or start a runtime test before this safety review is complete.
 
-Do **not** build or arm a successor, start a runtime test, disable `MouthDogPikminEnemy`, add broad `EnemyAI` scanning, guess a Harmony boundary, alter Mouth Dog -> player behavior, or suppress native Pikmin -> Mouth Dog combat/latch/death-unlatch ownership before that proof is complete.
+## Currently irrelevant actions
+
+- Do not repeat `InspectMouthDogV81.ps1`.
+- Do not repeat `InspectEnemyAICollisionV81.ps1` merely to recreate integrated evidence.
+- Do not ask the user for `Assembly-CSharp.dll`, a full decompile, `-AssemblyPath`, a local repository clone, or manual .NET/ILSpy installation for the already closed source proofs.
+- Do not repeat the S1.42AG gameplay run or request another S1.42AG log upload.
 
 ## Canonical Gale workflow
 
-The current repository-driven Gale replacement/import workflow remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. No runtime test is currently pending, but any future candidate that requires Gale replacement must continue to use this canonical v2.4 path unless a later validated workflow authority explicitly supersedes it.
-
-## Historical Microwave boundary
-
-S1.42AD remains runtime-rejected historical provider-contract evidence. S1.42AE remains superseded for path-length-safe packaging, not gameplay-rejected. S1.42AF proved the corrected provider source under a safe profile path and remains accepted.
+No runtime test is currently pending. When a later candidate reaches runtime testing, use the then-current canonical Gale workflow under `Knowledge/GALE_PROFILE_WORKFLOW.md` and include both the required replacement/import one-liner and the exact build-specific runtime-log uploader in the same response as the test instructions.
