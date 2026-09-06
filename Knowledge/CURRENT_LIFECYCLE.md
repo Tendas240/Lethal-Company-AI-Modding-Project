@@ -56,6 +56,10 @@ Therefore S1.42AG is rejected as a partial fix and is **not** a safe gameplay ba
 
 The inherited S1.42AF Functional Microwave gate remained healthy in S1.42AG: `PrioritiseMoons=true`, 18 Moon/tag curves, 18 Interior/tag curves, 18 Moon/tag curves scaled by `0.5`, Interior curves validation-only. The SoundAPI `RoundManagerPatch::Reporting()` `TypeLoadException` also existed in the accepted S1.42AF evidence and is not classified as an S1.42AG regression.
 
+## Canonical Gale workflow
+
+The current repository-driven Gale replacement/import workflow remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. No runtime test is currently pending, but any future candidate that requires Gale replacement must continue to use this canonical v2.4 path unless a later validated workflow authority explicitly supersedes it.
+
 ## Current controllers
 
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG` remains the last runtime-evidence attribution target; it is not acceptance authority.
