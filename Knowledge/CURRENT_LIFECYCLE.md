@@ -5,7 +5,7 @@
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
 **Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`, `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt`, `Current/131_MOUTHDOG_PIKMIN_PATCH_BOUNDARY_AND_SUCCESSOR_PLAN.md`, `Current/132_MOUTHDOG_PATCH_SAFETY_REVIEW.md`, `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/Projektstatus_S1.42AF_ACCEPTED.json`, `Current/Projektstatus_S1.42AG_REJECTED.json`, `RuntimeEvidence/S1.42AG/20260906T085500Z/`  
-**Related:** `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/CODEREBIRTH.md`, `Knowledge/ITEM_TUNING.md`, `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
+**Related:** `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `AnalysisTools/InspectMouthDogV81.ps1`, `Knowledge/CODEREBIRTH.md`, `Knowledge/ITEM_TUNING.md`, `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
 **Last-Validated:** 2026-09-06
 
 ## Accepted baseline
@@ -58,6 +58,16 @@ Therefore S1.42AG is rejected as a partial fix because the observed Mouth Dog ->
 
 The inherited S1.42AF Functional Microwave gate remained healthy in S1.42AG: `PrioritiseMoons=true`, 18 Moon/tag curves, 18 Interior/tag curves, 18 Moon/tag curves scaled by `0.5`, Interior curves validation-only. The SoundAPI `RoundManagerPatch::Reporting()` `TypeLoadException` also existed in the accepted S1.42AF evidence and is not classified as an S1.42AG regression.
 
+## Prepared native V81 source-evidence capture
+
+The provenance-safe inspection helper `AnalysisTools/InspectMouthDogV81.ps1` was added on commit `9bda16c9be86ad4c0d752f08aebb9cf6cf8fcad5` specifically to close the unresolved native Mouth Dog boundary without guessing.
+
+Current capture status: **TOOL READY / EVIDENCE NOT YET CAPTURED**.
+
+The helper is designed to locate the user's installed V81 `Lethal Company_Data/Managed/Assembly-CSharp.dll`, record assembly/executable/Steam-build provenance, decompile only `MouthDogAI`, and extract focused source windows around the native perception/target/lunge/collision markers needed for the S1.42AG follow-up. It publishes only a focused report plus manifest to a temporary `source-evidence/mouthdog-v81-*` branch under `SourceEvidence/VanillaV81/MouthDogAI/`; it does not publish `Assembly-CSharp.dll` or a full game decompile.
+
+No such focused report/manifest has been captured yet. Until a successful capture exists, `SourceEvidence/VanillaV81/MouthDogAI/` is **not** an authoritative evidence source and the exact native Mouth Dog owner/method boundary remains unresolved.
+
 ## Canonical Gale workflow
 
 The current repository-driven Gale replacement/import workflow remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. No runtime test is currently pending, but any future candidate that requires Gale replacement must continue to use this canonical v2.4 path unless a later validated workflow authority explicitly supersedes it.
@@ -72,7 +82,7 @@ The current repository-driven Gale replacement/import workflow remains `RuntimeT
 
 ## Exact next project action
 
-Perform **targeted repository-native analysis of the remaining Mouth Dog targeting/attack path** exposed by the S1.42AG rejection. Use exact current source and runtime evidence to determine why a scrap-carrying Purple Pikmin can still be selected/attacked despite the successful `MouthDogPikminEnemy.DoCheckInterval()` prevention guard.
+Run `AnalysisTools/InspectMouthDogV81.ps1` against the user's installed V81 `Lethal Company_Data/Managed/Assembly-CSharp.dll` and successfully publish the focused `MouthDogAI` report plus manifest on a temporary `source-evidence/mouthdog-v81-*` branch. Then inspect that provenance-bound evidence to prove the exact native perception/target/lunge/collision owner/method boundary responsible for the remaining Mouth Dog -> Pikmin targeting/attack behavior exposed by S1.42AG.
 
 Reverse-direction Pikmin -> Mouth Dog combat is **not a current failure signal**. Passive follower non-aggression is expected. Reserve a deliberate player-directed Pikmin attack/latch/death-unlatch validation for a future runtime candidate after the remaining Mouth Dog -> Pikmin owner/method boundary has been proved.
 
