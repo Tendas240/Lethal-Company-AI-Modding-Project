@@ -5,7 +5,7 @@
 **Canonical-For:** `build_pipeline`, `runtime_upload_and_ingest`  
 **Evidence:** `Current/09_REPOSITORY_FIRST_AUTOMATION.md`, `Current/74_LARGE_RUNTIME_LOG_PIPELINE_AND_RETENTION.md`  
 **Related:** `BuildSpecs/README.md`, `BuildSystem/`, `.github/workflows/`, `RuntimeInbox/`, `RuntimeEvidence/`, `Knowledge/GALE_PROFILE_WORKFLOW.md`  
-**Last-Validated:** 2026-09-05
+**Last-Validated:** 2026-09-06
 
 ## Repository-first rule
 
@@ -69,3 +69,19 @@ For a ready candidate, the following must agree:
 For an idle/no-successor state, `BuildSpecs/current.json` may remain disabled while `ACTIVE_BUILD` identifies either the accepted baseline or another known build that is currently installed/tested for runtime-evidence attribution. `Current/CURRENT_STATE.json.controllers.runtime_active_build` must match the pointer. This does not alter the accepted baseline, candidate status, or promotion state.
 
 `Knowledge/CURRENT_LIFECYCLE.md` is the human router for the current combination of accepted baseline, runtime-active build and next action.
+
+## Branch lifecycle and merged-PR cleanup
+
+Normal project work should use a short-lived same-repository working branch plus PR/CI/merge when a repository change is non-trivial or when an existing project procedure requires a PR. The merged working branch is not historical authority: merged commits, PR metadata, build/runtime records and explicit archival tags provide the durable provenance.
+
+`.github/workflows/merged-branch-cleanup.yml` automatically deletes the head branch after a **merged** same-repository pull request. It deliberately does not delete:
+
+- `main`;
+- `runtime-large`, because the very-large-runtime workflow actively uses it as a disposable transport branch;
+- `pre-overhaul-freeze-20260904-5dbd0e6`, because it is an explicit recovery/provenance branch.
+
+The cleanup workflow ignores fork PRs and closed-but-unmerged PRs. Before deletion it verifies that the branch still points at the exact merged PR head SHA; any ref drift fails closed instead of deleting a moved/reused branch.
+
+If a temporary branch contains unique historical staging lineage that should remain directly addressable even though the branch itself is obsolete, preserve the exact head with an explicit annotated archival tag before deleting the branch. Do not keep ordinary merged feature/build/handover branches indefinitely merely as informal history.
+
+If a new permanent infrastructure or recovery branch is introduced in the future, add it to the retained-branch list in `.github/workflows/merged-branch-cleanup.yml` as part of the same change that establishes that branch's permanent role.
