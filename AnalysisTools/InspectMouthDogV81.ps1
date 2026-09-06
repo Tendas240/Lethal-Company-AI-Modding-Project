@@ -1,3 +1,4 @@
+#requires -Version 5.1
 [CmdletBinding()]
 param(
     [string]$AssemblyPath
@@ -23,37 +24,39 @@ function Get-Sha256Lower {
 }
 
 function Get-SteamRoots {
-    $roots = New-Object System.Collections.Generic.List[string]
+    $roots = @()
 
     try {
         $steam = Get-ItemProperty -Path 'HKCU:\Software\Valve\Steam' -ErrorAction Stop
         if ($steam.SteamPath) {
-            $roots.Add([IO.Path]::GetFullPath(($steam.SteamPath -replace '/', '\')))
+            $roots += [IO.Path]::GetFullPath(($steam.SteamPath -replace '/', '\'))
         }
     }
     catch { }
 
-    $common = @(
-        (Join-Path ${env:ProgramFiles(x86)} 'Steam'),
-        (Join-Path $env:ProgramFiles 'Steam')
-    )
-
-    foreach ($candidate in $common) {
-        if ($candidate -and (Test-Path -LiteralPath $candidate)) {
-            $roots.Add([IO.Path]::GetFullPath($candidate))
+    if (${env:ProgramFiles(x86)}) {
+        $candidate = Join-Path ${env:ProgramFiles(x86)} 'Steam'
+        if (Test-Path -LiteralPath $candidate) {
+            $roots += [IO.Path]::GetFullPath($candidate)
+        }
+    }
+    if ($env:ProgramFiles) {
+        $candidate = Join-Path $env:ProgramFiles 'Steam'
+        if (Test-Path -LiteralPath $candidate) {
+            $roots += [IO.Path]::GetFullPath($candidate)
         }
     }
 
-    $expanded = New-Object System.Collections.Generic.List[string]
+    $expanded = @()
     foreach ($root in ($roots | Select-Object -Unique)) {
-        $expanded.Add($root)
+        $expanded += $root
         $vdf = Join-Path $root 'steamapps\libraryfolders.vdf'
-        if (Test-Path -LiteralPath $vdf) {
+        if (Test-Path -LiteralPath $vdf -PathType Leaf) {
             $text = Get-Content -LiteralPath $vdf -Raw
             foreach ($match in [regex]::Matches($text, '"path"\s+"([^"]+)"')) {
                 $library = $match.Groups[1].Value -replace '\\\\', '\'
                 if ($library) {
-                    $expanded.Add([IO.Path]::GetFullPath($library))
+                    $expanded += [IO.Path]::GetFullPath($library)
                 }
             }
         }
@@ -72,11 +75,11 @@ function Resolve-AssemblyPath {
         return (Resolve-Path -LiteralPath $RequestedPath).Path
     }
 
-    $candidates = New-Object System.Collections.Generic.List[string]
+    $candidates = @()
     foreach ($root in (Get-SteamRoots)) {
         $candidate = Join-Path $root 'steamapps\common\Lethal Company\Lethal Company_Data\Managed\Assembly-CSharp.dll'
         if (Test-Path -LiteralPath $candidate -PathType Leaf) {
-            $candidates.Add((Resolve-Path -LiteralPath $candidate).Path)
+            $candidates += (Resolve-Path -LiteralPath $candidate).Path
         }
     }
 
@@ -86,7 +89,7 @@ function Resolve-AssemblyPath {
     }
 
     if ($unique.Count -gt 1) {
-        Write-Step 'Multiple Lethal Company installs were found. Selecting the newest Assembly-CSharp.dll by LastWriteTimeUtc:'
+        Write-Step 'Multiple installs found; selecting the newest Assembly-CSharp.dll by LastWriteTimeUtc.'
         foreach ($path in $unique) {
             Write-Host ('  ' + $path)
         }
@@ -106,13 +109,13 @@ function Ensure-DotNetAndIlSpy {
     $dotnet = Get-Command dotnet -ErrorAction SilentlyContinue
     if ($dotnet) {
         $sdkList = & $dotnet.Source --list-sdks 2>$null
-        if ($LASTEXITCODE -eq 0 -and ($sdkList | Where-Object { $_ -match '^10\.' })) {
+        if ($LASTEXITCODE -eq 0 -and @($sdkList | Where-Object { $_ -match '^10\.' }).Count -gt 0) {
             $dotnetExe = $dotnet.Source
         }
     }
 
     if (-not $dotnetExe) {
-        Write-Step '.NET 10 SDK not found; bootstrapping an isolated SDK under the temporary directory.'
+        Write-Step '.NET 10 SDK not found; bootstrapping an isolated SDK in the temporary directory.'
         $dotnetDir = Join-Path $TempRoot 'dotnet'
         $installer = Join-Path $TempRoot 'dotnet-install.ps1'
         Invoke-WebRequest -UseBasicParsing 'https://dot.net/v1/dotnet-install.ps1' -OutFile $installer
@@ -133,7 +136,6 @@ function Ensure-DotNetAndIlSpy {
     if (-not (Test-Path -LiteralPath $ilspy -PathType Leaf)) {
         throw 'ilspycmd installation completed without producing ilspycmd.exe.'
     }
-
     return $ilspy
 }
 
@@ -148,83 +150,37 @@ function Find-MouthDogTypeName {
         throw 'ilspycmd could not list classes from Assembly-CSharp.dll.'
     }
 
-    $matches = @($listing | Where-Object { $_ -match 'MouthDogAI' })
-    foreach ($line in $matches) {
+    $candidateLines = @($listing | Where-Object { ([string]$_) -match 'MouthDogAI' })
+    foreach ($line in $candidateLines) {
         $text = [string]$line
         if ($text -match '^\s*(?:Class|class)\s+(.+?MouthDogAI)\s*$') {
-            return $matches[0] -replace '^\s*(?:Class|class)\s+', ''
+            return $Matches[1]
         }
         if ($text -match '([A-Za-z_][A-Za-z0-9_\.\+`]*MouthDogAI)') {
             return $Matches[1]
         }
     }
 
-    # Runtime evidence names the loaded type MouthDogAI; try that exact global-namespace name
-    # before failing. This is not a fallback patch target; it is only a decompiler lookup.
+    # Runtime evidence names the loaded native type MouthDogAI. Trying that exact
+    # global-namespace name is only a decompiler lookup, never a Harmony fallback target.
     return 'MouthDogAI'
 }
 
-function Get-EnclosingMethodRange {
+function Find-MethodStart {
     param(
         [Parameter(Mandatory = $true)][string[]]$Lines,
         [Parameter(Mandatory = $true)][int]$HitIndex
     )
 
-    $start = -1
-    $scanStart = [Math]::Max(0, $HitIndex - 80)
-    for ($i = $HitIndex; $i -ge $scanStart; $i--) {
+    $floor = [Math]::Max(0, $HitIndex - 90)
+    for ($i = $HitIndex; $i -ge $floor; $i--) {
         $line = $Lines[$i]
         if ($line -match '^\s*(public|private|protected|internal)\b.*\(' -and
             $line -notmatch '^\s*(public|private|protected|internal)\s+(class|struct|interface|enum)\b') {
-            $start = $i
-            break
+            return $i
         }
     }
-
-    if ($start -lt 0) {
-        return $null
-    }
-
-    $openLine = -1
-    for ($i = $start; $i -lt [Math]::Min($Lines.Count, $start + 25); $i++) {
-        if ($Lines[$i].Contains('{')) {
-            $openLine = $i
-            break
-        }
-        if ($Lines[$i].TrimEnd().EndsWith(';')) {
-            break
-        }
-    }
-
-    if ($openLine -lt 0) {
-        return $null
-    }
-
-    $depth = 0
-    $seenOpen = $false
-    $end = -1
-    for ($i = $openLine; $i -lt $Lines.Count; $i++) {
-        $chars = $Lines[$i].ToCharArray()
-        foreach ($ch in $chars) {
-            if ($ch -eq '{') {
-                $depth++
-                $seenOpen = $true
-            }
-            elseif ($ch -eq '}') {
-                $depth--
-            }
-        }
-        if ($seenOpen -and $depth -le 0) {
-            $end = $i
-            break
-        }
-    }
-
-    if ($end -lt 0) {
-        return $null
-    }
-
-    return [pscustomobject]@{ Start = $start; End = $end }
+    return [Math]::Max(0, $HitIndex - 8)
 }
 
 function Build-FocusedReport {
@@ -244,34 +200,33 @@ function Build-FocusedReport {
         'OnCollideWithPlayer'
     )
 
-    $ranges = New-Object System.Collections.Generic.List[object]
-    $markerHits = New-Object System.Collections.Generic.List[object]
-
+    $hits = @()
+    $windowByStart = @{}
     for ($i = 0; $i -lt $lines.Count; $i++) {
         foreach ($pattern in $patterns) {
             if ($lines[$i].IndexOf($pattern, [StringComparison]::OrdinalIgnoreCase) -ge 0) {
-                $markerHits.Add([pscustomobject]@{ Marker = $pattern; Line = ($i + 1) })
-                $range = Get-EnclosingMethodRange -Lines $lines -HitIndex $i
-                if ($range) {
-                    $ranges.Add($range)
+                $hits += [pscustomobject]@{ Marker = $pattern; Line = ($i + 1) }
+                $start = Find-MethodStart -Lines $lines -HitIndex $i
+                $end = [Math]::Min($lines.Count - 1, [Math]::Max($i + 28, $start + 72))
+                $key = [string]$start
+                if (-not $windowByStart.ContainsKey($key) -or $end -gt $windowByStart[$key]) {
+                    $windowByStart[$key] = $end
                 }
             }
         }
     }
 
-    if ($markerHits.Count -eq 0) {
+    if ($hits.Count -eq 0) {
         throw 'Focused MouthDogAI decompile contained none of the required marker/method names.'
     }
 
-    $uniqueRanges = @($ranges | Sort-Object Start, End -Unique)
+    $starts = @($windowByStart.Keys | ForEach-Object { [int]$_ } | Sort-Object)
     $selectedLineCount = 0
-    foreach ($range in $uniqueRanges) {
-        $selectedLineCount += ($range.End - $range.Start + 1)
+    foreach ($start in $starts) {
+        $selectedLineCount += ($windowByStart[[string]$start] - $start + 1)
     }
-
-    # Keep public repository evidence focused. Full MouthDogAI source remains only in memory/temp.
-    if ($selectedLineCount -gt 650) {
-        throw "Focused extraction expanded to $selectedLineCount source lines, above the 650-line safety ceiling. Refusing to publish an over-broad decompile."
+    if ($selectedLineCount -gt 500) {
+        throw "Focused extraction expanded to $selectedLineCount source lines, above the 500-line safety ceiling. Refusing to publish an over-broad decompile."
     }
 
     $builder = New-Object System.Text.StringBuilder
@@ -280,7 +235,7 @@ function Build-FocusedReport {
     [void]$builder.AppendLine('Purpose: resolve the exact native Mouth Dog perception/target/lunge/collision boundary exposed by S1.42AG without publishing Assembly-CSharp.dll or a full game decompile.')
     [void]$builder.AppendLine('')
     [void]$builder.AppendLine('## Provenance')
-    [void]$builder.AppendLine(('- Assembly: `Lethal Company_Data/Managed/Assembly-CSharp.dll`'))
+    [void]$builder.AppendLine('- Assembly: `Lethal Company_Data/Managed/Assembly-CSharp.dll`')
     [void]$builder.AppendLine(('- Assembly SHA-256: `' + $Provenance.AssemblySha256 + '`'))
     [void]$builder.AppendLine(('- Assembly size: `' + $Provenance.AssemblySize + '` bytes'))
     [void]$builder.AppendLine(('- Assembly LastWriteTimeUtc: `' + $Provenance.AssemblyLastWriteUtc + '`'))
@@ -296,23 +251,23 @@ function Build-FocusedReport {
     [void]$builder.AppendLine('Absolute local paths and Windows user names are intentionally omitted.')
     [void]$builder.AppendLine('')
     [void]$builder.AppendLine('## Marker index')
-    foreach ($hit in $markerHits) {
+    foreach ($hit in $hits) {
         [void]$builder.AppendLine(('- `' + $hit.Marker + '` at local focused-type line ' + $hit.Line))
     }
     [void]$builder.AppendLine('')
-    [void]$builder.AppendLine('## Focused method blocks')
-    [void]$builder.AppendLine('Only methods containing the requested perception/target/lunge/collision markers are retained below. Unrelated MouthDogAI source is not included.')
+    [void]$builder.AppendLine('## Focused source windows')
+    [void]$builder.AppendLine('Each window begins at the nearest decompiled method declaration found before a requested marker/callsite. Unrelated MouthDogAI source is excluded.')
 
-    $blockNumber = 0
-    foreach ($range in $uniqueRanges) {
-        $blockNumber++
+    $block = 0
+    foreach ($start in $starts) {
+        $block++
+        $end = [int]$windowByStart[[string]$start]
         [void]$builder.AppendLine('')
-        [void]$builder.AppendLine(('--- BLOCK ' + $blockNumber + ' / local lines ' + ($range.Start + 1) + '-' + ($range.End + 1) + ' ---'))
-        for ($i = $range.Start; $i -le $range.End; $i++) {
+        [void]$builder.AppendLine(('--- BLOCK ' + $block + ' / local lines ' + ($start + 1) + '-' + ($end + 1) + ' ---'))
+        for ($i = $start; $i -le $end; $i++) {
             [void]$builder.AppendLine(('{0,5}: {1}' -f ($i + 1), $lines[$i]))
         }
     }
-
     return $builder.ToString()
 }
 
@@ -349,32 +304,32 @@ try {
     Write-Step ('Assembly SHA-256: ' + $assemblySha)
 
     if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
-        throw 'Git is required to publish the focused evidence branch, but git.exe is not available on PATH.'
+        throw 'git.exe is required to publish the focused evidence branch, but Git is not available on PATH.'
     }
 
     $ilspy = Ensure-DotNetAndIlSpy -TempRoot $tempRoot
     $ilspyVersionText = (& $ilspy --version 2>&1 | Out-String).Trim()
-
     $typeName = Find-MouthDogTypeName -IlSpy $ilspy -Assembly $resolvedAssembly
-    Write-Step ('Decompiling only type: ' + $typeName)
+
+    Write-Step ('Decompiling only native type: ' + $typeName)
     $source = (& $ilspy -t $typeName -r $managedDir $resolvedAssembly 2>&1 | Out-String)
     if ($LASTEXITCODE -ne 0 -or -not $source.Trim()) {
         throw "Focused ilspycmd decompile failed for type '$typeName'."
     }
 
     $sourceBytes = [Text.Encoding]::UTF8.GetBytes($source)
-    $sha256 = [Security.Cryptography.SHA256]::Create()
+    $hash = [Security.Cryptography.SHA256]::Create()
     try {
-        $fullTypeSourceSha = ([BitConverter]::ToString($sha256.ComputeHash($sourceBytes))).Replace('-', '').ToLowerInvariant()
+        $fullTypeSourceSha = ([BitConverter]::ToString($hash.ComputeHash($sourceBytes))).Replace('-', '').ToLowerInvariant()
     }
     finally {
-        $sha256.Dispose()
+        $hash.Dispose()
     }
 
     $captureUtc = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
     $stamp = [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssZ')
 
-    Write-Step 'Creating temporary shallow repository clone for provenance and evidence branch publication.'
+    Write-Step 'Creating a temporary shallow clone for provenance and evidence publication.'
     $cloneDir = Join-Path $tempRoot 'repo'
     & git clone --quiet --depth 1 --branch main $Repository $cloneDir
     if ($LASTEXITCODE -ne 0) {
@@ -402,7 +357,6 @@ try {
             SteamBuildId = $steamBuildId
             AppManifestSha256 = $appManifestSha
             IlSpyVersion = $IlSpyVersion
-            IlSpyVersionOutput = $ilspyVersionText
             TypeName = $typeName
             FullTypeSourceSha256 = $fullTypeSourceSha
             CaptureUtc = $captureUtc
@@ -411,15 +365,15 @@ try {
 
         $report = Build-FocusedReport -Source $source -Provenance $provenance
         $reportBytes = [Text.Encoding]::UTF8.GetBytes($report)
-        $reportShaObj = [Security.Cryptography.SHA256]::Create()
+        $reportHash = [Security.Cryptography.SHA256]::Create()
         try {
-            $reportSha = ([BitConverter]::ToString($reportShaObj.ComputeHash($reportBytes))).Replace('-', '').ToLowerInvariant()
+            $reportSha = ([BitConverter]::ToString($reportHash.ComputeHash($reportBytes))).Replace('-', '').ToLowerInvariant()
         }
         finally {
-            $reportShaObj.Dispose()
+            $reportHash.Dispose()
         }
 
-        $relativeDir = ($EvidenceRoot + '/' + $stamp)
+        $relativeDir = $EvidenceRoot + '/' + $stamp
         $evidenceDir = Join-Path $cloneDir ($relativeDir -replace '/', '\')
         New-Item -ItemType Directory -Path $evidenceDir -Force | Out-Null
 
@@ -432,7 +386,7 @@ try {
             capture_utc = $captureUtc
             repository = $RepositoryName
             repository_main_at_capture = $repoMain
-            game_contract = 'Lethal Company V81 project-local installation; Steam buildid is recorded for independent provenance checking'
+            game_contract = 'Lethal Company V81 project-local installation; Steam buildid is recorded for provenance checking'
             source_assembly = [ordered]@{
                 logical_path = 'Lethal Company_Data/Managed/Assembly-CSharp.dll'
                 sha256 = $assemblySha
@@ -500,7 +454,7 @@ try {
         Write-Step ('Pushing temporary evidence branch: ' + $branch)
         & git push -q -u origin $branch
         if ($LASTEXITCODE -ne 0) {
-            throw 'Evidence branch push failed. No Assembly-CSharp.dll or full decompile was staged; check Git credentials and retry.'
+            throw 'Evidence branch push failed. No game DLL or full decompile was staged; check Git credentials and retry.'
         }
 
         $evidenceCommit = (& git rev-parse HEAD).Trim()
@@ -510,7 +464,7 @@ try {
         Write-Host ('Evidence commit : ' + $evidenceCommit)
         Write-Host ('Assembly SHA-256: ' + $assemblySha)
         Write-Host ('Steam buildid    : ' + $steamBuildId)
-        Write-Host 'Only the focused report and manifest were pushed. The game DLL and complete decompile were not uploaded.'
+        Write-Host 'Only the focused report and manifest were pushed. Assembly-CSharp.dll and the complete decompile were not uploaded.'
     }
     finally {
         Pop-Location
