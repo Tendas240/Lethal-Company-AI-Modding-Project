@@ -1,0 +1,358 @@
+name: Atomic build S1.42AG candidate
+
+on:
+  push:
+    branches:
+      - build/s142ag-mouthdog-one-way-protection
+    paths:
+      - ".github/workflows/atomic-build-s142ag.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Write transient build specification
+        shell: bash
+        run: |
+          cat > /tmp/S1.42AG.json <<'JSON'
+          {
+            "enabled": true,
+            "build_id": "S1.42AG",
+            "base_profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
+            "base_sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
+            "output_profile": "Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z",
+            "profile_name": "LC V1 S1.42AG Mouth Dog Fix",
+            "overwrite": false,
+            "mod_state_changes": [],
+            "mod_additions": [],
+            "mod_removals": [],
+            "config_patches": [],
+            "local_plugin_builds": [
+              {
+                "project": "Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj",
+                "configuration": "Release",
+                "built_file": "Patches/S139CompatibilityFixes/bin/Release/netstandard2.1/S139CompatibilityFixes.dll",
+                "archive_path": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+              }
+            ],
+            "text_assertions": [
+              {"path": "BepInEx/config/CodeRebirth.cfg", "contains": "Functional Microwave | Allow Editing Config = true"},
+              {"path": "BepInEx/config/CodeRebirth.cfg", "contains": "Functional Microwave | Volume = 0.15"},
+              {"path": "BepInEx/config/NoteBoxz.LethalMin.cfg", "contains": "Eyeless Dog Bite Cooldown = 5.5"},
+              {"path": "BepInEx/config/NoteBoxz.LethalMin.cfg", "contains": "Eyeless Dog Bite Limit = 7"}
+            ]
+          }
+          JSON
+
+      - name: Build and verify S1.42AG profile
+        run: python BuildSystem/profile_builder.py /tmp/S1.42AG.json
+
+      - name: Validate one-variable archive delta and derive candidate hashes
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          result = json.loads(Path('Current/AUTO_BUILD_RESULT.json').read_text(encoding='utf-8'))
+          expected_changed = {
+              'export.r2x',
+              'BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll',
+          }
+          changed = set(result.get('changed_existing_members', []))
+          added = result.get('added_members', [])
+          if changed != expected_changed:
+              raise SystemExit(f'Unexpected changed existing members: {sorted(changed)}')
+          if added != []:
+              raise SystemExit(f'Unexpected added members: {added}')
+          if result.get('mod_state_changes') not in ([], None):
+              raise SystemExit(f'Unexpected mod state changes: {result.get("mod_state_changes")}')
+          if result.get('mod_additions') not in ([], None):
+              raise SystemExit(f'Unexpected mod additions: {result.get("mod_additions")}')
+          if result.get('mod_removals') not in ([], None):
+              raise SystemExit(f'Unexpected mod removals: {result.get("mod_removals")}')
+
+          index = json.loads(Path('ProfileSources/S1.42AG/FILE_INDEX.json').read_text(encoding='utf-8'))
+          target = 'BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll'
+          matches = [x for x in index if x.get('path') == target]
+          if len(matches) != 1:
+              raise SystemExit(f'Expected exactly one compatibility DLL in FILE_INDEX, got {len(matches)}')
+          plugin_sha = matches[0]['sha256']
+          output_sha = result['output_sha256']
+          Path('/tmp/s142ag_hashes.json').write_text(json.dumps({'profile_sha256': output_sha, 'plugin_sha256': plugin_sha}), encoding='utf-8')
+          print('S1.42AG profile SHA-256:', output_sha)
+          print('S1.42AG compatibility DLL SHA-256:', plugin_sha)
+          PY
+
+      - name: Promote successful artifact to active runtime candidate atomically
+        shell: bash
+        env:
+          BUILD_RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          hashes = json.loads(Path('/tmp/s142ag_hashes.json').read_text(encoding='utf-8'))
+          profile_sha = hashes['profile_sha256']
+          plugin_sha = hashes['plugin_sha256']
+          run_id = int(os.environ['BUILD_RUN_ID'])
+          profile = 'Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z'
+          candidate_record = 'Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md'
+          project_status = 'Current/Projektstatus_S1.42AG_CANDIDATE.json'
+          plan_path = 'BuildSpecs/S1.42AG_PLAN.md'
+          source_root = 'ProfileSources/S1.42AG/'
+          file_index = 'ProfileSources/S1.42AG/FILE_INDEX.json'
+
+          # Persistent controller is disabled at every repository checkpoint.
+          disabled = {
+              'enabled': False,
+              'build_id': 'IDLE_AFTER_S1.42AG_BUILD_AWAITING_RUNTIME_VALIDATION',
+              'base_profile': profile,
+              'base_sha256': profile_sha,
+              'output_profile': 'Profiles/DO_NOT_BUILD.r2z',
+              'profile_name': 'DO_NOT_BUILD',
+              'overwrite': False,
+              'mod_state_changes': [],
+              'mod_additions': [],
+              'mod_removals': [],
+              'config_patches': [],
+              'local_plugin_builds': [],
+              'text_assertions': []
+          }
+          Path('BuildSpecs/current.json').write_text(json.dumps(disabled, indent=2) + '\n', encoding='utf-8')
+          Path('RuntimeInbox/ACTIVE_BUILD.txt').write_text('S1.42AG\n', encoding='utf-8')
+
+          state_path = Path('Current/CURRENT_STATE.json')
+          state = json.loads(state_path.read_text(encoding='utf-8'))
+          latest = {
+              'build_id': 'S1.42AG',
+              'title': 'Mouth Dog Pikmin One-Way Protection',
+              'status': 'BUILD_PASS_RUNTIME_VALIDATION_OUTSTANDING',
+              'profile': profile,
+              'sha256': profile_sha,
+              'candidate_record': candidate_record,
+              'project_status': project_status,
+              'build_plan': plan_path,
+              'profile_sources': source_root,
+              'file_index': file_index,
+              'workflow_run': run_id,
+              'build_commit': '__BUILD_COMMIT__',
+              'plugin_dll_sha256': plugin_sha
+          }
+          candidate = dict(latest)
+          candidate['status'] = 'ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED'
+          state['latest_built_artifact'] = latest
+          state['active_candidate'] = candidate
+          state['runtime_test_outstanding'] = True
+          state['selected_scope']['status'] = 'BUILT_ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED'
+          state['selected_scope']['profile'] = profile
+          state['selected_scope']['sha256'] = profile_sha
+          state['selected_scope']['candidate_record'] = candidate_record
+          state['selected_scope']['project_status'] = project_status
+          state['next_action'] = 'Import S1.42AG with the canonical Gale v2.4 replacement helper, then runtime-test the exact Mouth Dog / Eyeless Dog -> Pikmin one-way protection under the full normal stack. Require no MouthDog Pikmin bite/grab/death-timer path, preserve Pikmin -> Mouth Dog attack/latch/death cleanup and Mouth Dog -> player attacks, exercise repeated lunge cycles, confirm normal startup/generation and preserved S1.42AF Microwave health, then upload the complete fresh S1.42AG LogOutput.log with the build-specific uploader from Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md.'
+          state['controllers']['build_enabled'] = False
+          state['controllers']['build_id'] = disabled['build_id']
+          state['controllers']['build_base_profile'] = profile
+          state['controllers']['build_base_sha256'] = profile_sha
+          state['controllers']['runtime_active_build'] = 'S1.42AG'
+          state_path.write_text(json.dumps(state, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+          lineage_path = Path('Current/BUILD_LINEAGE.json')
+          lineage = json.loads(lineage_path.read_text(encoding='utf-8'))
+          lineage['active_candidate_build_id'] = 'S1.42AG'
+          lineage['latest_built_artifact_id'] = 'S1.42AG'
+          lineage['builds'] = [b for b in lineage.get('builds', []) if b.get('id') != 'S1.42AG']
+          lineage['builds'].append({
+              'id': 'S1.42AG',
+              'title': 'Mouth Dog Pikmin One-Way Protection',
+              'status': 'active-candidate',
+              'parent': 'S1.42AF',
+              'profile': profile,
+              'sha256': profile_sha,
+              'build_plan': plan_path,
+              'candidate_record': candidate_record,
+              'project_status': project_status,
+              'workflow_run': run_id,
+              'build_commit': '__BUILD_COMMIT__',
+              'safe_as_gameplay_base': False,
+              'principal_feature': 'exact Priority.First MouthDogPikminEnemy.DoCheckInterval prevention before Pikmin target/bite/grab mutation'
+          })
+          lineage.setdefault('feature_index', {})['MouthDog_to_Pikmin_one_way_protection_candidate'] = 'S1.42AG'
+          inv = 'S1.42AG is built directly from accepted S1.42AF and blocks exact MouthDogPikminEnemy.DoCheckInterval before Pikmin target collection/bite/grab dispatch while keeping the adapter enabled; it remains not accepted until runtime validation.'
+          if inv not in lineage.setdefault('lineage_invariants', []):
+              lineage['lineage_invariants'].append(inv)
+          lineage_path.write_text(json.dumps(lineage, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+          plan = Path(plan_path)
+          ptxt = plan.read_text(encoding='utf-8')
+          ptxt = ptxt.replace('**Status:** IMPLEMENTED / BUILD ARMED / ARTIFACT PENDING', '**Status:** BUILT / ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED', 1)
+          ptxt = ptxt.replace('**Status:** PLANNED / NOT BUILT / NOT ARMED', '**Status:** BUILT / ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED', 1)
+          if '## Built candidate identity' not in ptxt:
+              ptxt += f'''\n## Built candidate identity\n\n- Profile: `{profile}`\n- SHA-256: `{profile_sha}`\n- Compatibility DLL SHA-256: `{plugin_sha}`\n- Atomic build workflow run: `{run_id}`\n- Exact archive delta vs S1.42AF: `export.r2x` plus existing `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`; no added members, package changes, or config patches.\n- Runtime status: outstanding / not accepted.\n'''
+          plan.write_text(ptxt, encoding='utf-8')
+
+          gale = "$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfileV24.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content"
+          uploader = "$src=Join-Path $env:APPDATA 'com.kesomannen.gale\\lethal-company\\profiles\\LC V1 S1.42AG Mouth Dog Fix\\BepInEx\\LogOutput.log';if(!(Test-Path -LiteralPath $src)){throw \"Log not found: $src\"};$gh=(Get-Command gh -ErrorAction SilentlyContinue).Source;if(!$gh){$gh=@(\"$env:ProgramFiles\\GitHub CLI\\gh.exe\",\"$env:LOCALAPPDATA\\Programs\\GitHub CLI\\gh.exe\",\"${env:ProgramFiles(x86)}\\GitHub CLI\\gh.exe\")|Where-Object{$_ -and (Test-Path -LiteralPath $_)}|Select-Object -First 1};if(!$gh){winget install --id GitHub.cli -e --source winget --accept-package-agreements --accept-source-agreements;$gh=(Get-Command gh -ErrorAction SilentlyContinue).Source;if(!$gh){$gh=@(\"$env:ProgramFiles\\GitHub CLI\\gh.exe\",\"$env:LOCALAPPDATA\\Programs\\GitHub CLI\\gh.exe\",\"${env:ProgramFiles(x86)}\\GitHub CLI\\gh.exe\")|Where-Object{$_ -and (Test-Path -LiteralPath $_)}|Select-Object -First 1}};if(!$gh){throw 'GitHub CLI gh.exe could not be found after resolution/install attempt'};& $gh auth status --hostname github.com *> $null;if($LASTEXITCODE -ne 0){& $gh auth login --hostname github.com --git-protocol https --web;if($LASTEXITCODE -ne 0){throw 'GitHub authentication failed'}};$repo='Tendas240/Lethal-Company-AI-Modding-Project';$dst='RuntimeInbox/Current/LogOutput.log';$sha=(& $gh api \"repos/$repo/contents/$dst\" --jq '.sha' 2>$null);$p=@{message='Upload S1.42AG runtime log';content=[Convert]::ToBase64String([IO.File]::ReadAllBytes($src));branch='main'};if($sha){$p['sha']=$sha};($p|ConvertTo-Json -Compress)|& $gh api --method PUT \"repos/$repo/contents/$dst\" --input -;if($LASTEXITCODE -ne 0){throw 'Runtime log upload failed'}"
+          candidate_md = f'''# S1.42AG Build Candidate — Mouth Dog Pikmin One-Way Protection\n\n**Date:** 2026-09-06  \n**Status:** ACTIVE RUNTIME CANDIDATE / BUILD PASS / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED  \n**Accepted baseline:** S1.42AF — Path-Length-Safe Microwave Packaging\n\n## Candidate identity\n\n- Profile: `{profile}`\n- Gale profile name: `LC V1 S1.42AG Mouth Dog Fix`\n- Profile SHA-256: `{profile_sha}`\n- Compatibility DLL: `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`\n- Compatibility DLL SHA-256: `{plugin_sha}`\n- Atomic build workflow run: `{run_id}`\n- Build artifact commit: `__BUILD_COMMIT__`\n- Plan: `{plan_path}`\n- Snapshot: `{source_root}`\n\n## Exact build delta\n\nS1.42AG is built directly from accepted S1.42AF. Automated build verification requires exactly two changed existing ZIP members:\n\n- `export.r2x` — profile identity only;\n- `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll` — the cumulative compatibility plugin containing the new guard.\n\nThere are no added ZIP members, package state changes, package additions/removals, or config patches. Existing S1.42AF Microwave configuration and LethalMin Eyeless Dog bite cooldown/limit remain unchanged.\n\n## Patch contract\n\nThe cumulative compatibility plugin resolves exact `LethalMin.MouthDogPikminEnemy`, resolves exact declared instance `DoCheckInterval()` with zero parameters and `void` return, requires a non-null method body, and installs a `Harmony Priority.First` prefix. Contract mismatch fails closed with no guessed fallback. The prefix returns `false` before Pikmin proximity target collection, bite RPC dispatch, `GrabbedPikmin.Add`, or `PikminAI.GrabPikmin(mouthGrip, 2.5f, 5)`. The `MouthDogPikminEnemy` adapter remains enabled, so native Pikmin -> Mouth Dog combat/latch/death cleanup remains owned by LethalMin. Mouth Dog -> player behavior is not patched.\n\n## Runtime gate\n\nTest the full normal stack, not an isolated diagnostic profile. Exercise repeated real Mouth Dog lunges with Pikmin nearby and require:\n\n1. no Mouth Dog / Eyeless Dog Pikmin target/bite/grab/death-timer path;\n2. no `Biting N Pikmin` event attributable to Mouth Dog and no Pikmin attachment to `EnemyAttackMouth` / 2.5-second grab timer;\n3. no post-bite `Work state with no task assigned!` burst attributable to this interaction;\n4. Pikmin can still attack/latch a Mouth Dog and native death/unlatch/task cleanup completes when the Dog dies;\n5. Mouth Dog can still attack a player normally;\n6. repeat the interaction across multiple lunge opportunities rather than relying on one non-event;\n7. normal BepInEx/main-menu/lobby and ordinary moon/interior generation remain healthy;\n8. preserved S1.42AF Functional Microwave runtime markers remain healthy;\n9. no new fatal or project-critical regression.\n\n## Exact ready-to-test commands\n\nCanonical Gale v2.4 replacement/import one-liner:\n\n```powershell\n{gale}\n```\n\nAfter the runtime test, upload the complete fresh S1.42AG log with this exact self-contained one-liner:\n\n```powershell\n{uploader}\n```\n\n## Acceptance boundary\n\nS1.42AG is not accepted until the runtime evidence proves both the blocked Mouth Dog -> Pikmin direction and the preserved reverse/player/lifecycle behavior. S1.42AF remains the accepted full-normal-stack baseline until then.\n'''
+          Path(candidate_record).write_text(candidate_md, encoding='utf-8')
+
+          status = {
+              'schema_version': 3,
+              'date': '2026-09-06',
+              'repository_is_source_of_truth': True,
+              'accepted_baseline': {
+                  'build_id': 'S1.42AF',
+                  'profile': 'Profiles/LC V1 S1.42AF Microwave Fix.r2z',
+                  'sha256': '6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0',
+                  'status': 'ACCEPTED_FULL_NORMAL_STACK',
+                  'acceptance_record': 'Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md',
+                  'runtime_evidence': 'RuntimeEvidence/S1.42AF/20260905T223738Z/'
+              },
+              'active_runtime_candidate': {
+                  'build_id': 'S1.42AG',
+                  'title': 'Mouth Dog Pikmin One-Way Protection',
+                  'profile': profile,
+                  'profile_name': 'LC V1 S1.42AG Mouth Dog Fix',
+                  'sha256': profile_sha,
+                  'status': 'BUILD_PASS_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED',
+                  'successful_build_run': run_id,
+                  'automated_build_commit': '__BUILD_COMMIT__',
+                  'candidate_record': candidate_record,
+                  'plan': plan_path,
+                  'patch_source': 'Patches/S139CompatibilityFixes/Plugin.cs',
+                  'snapshot': source_root,
+                  'changed_existing_members': ['export.r2x', 'BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll'],
+                  'added_members': [],
+                  'mod_state_changes': [],
+                  'mod_additions': [],
+                  'mod_removals': [],
+                  'config_changes': [],
+                  'plugin_dll_sha256': plugin_sha,
+                  'target_semantics': 'Block exact MouthDogPikminEnemy.DoCheckInterval before Mouth Dog -> Pikmin target/bite/grab mutation while preserving enabled adapter reverse lifecycle and Mouth Dog -> player behavior.'
+              },
+              'runtime_gate': {
+                  'mouthdog_to_pikmin_bite_grab': 'MUST_BE_0',
+                  'enemy_attack_mouth_2_5s_timer': 'MUST_BE_0',
+                  'post_interaction_work_state_warning_burst': 'MUST_BE_0',
+                  'pikmin_to_mouthdog_attack_latch': 'MUST_REMAIN_FUNCTIONAL',
+                  'mouthdog_death_unlatch_cleanup': 'MUST_REMAIN_FUNCTIONAL',
+                  'mouthdog_to_player_attack': 'MUST_REMAIN_FUNCTIONAL',
+                  'repetition': 'REQUIRED',
+                  'normal_startup_generation': 'REQUIRED',
+                  's1_42af_microwave_regression_check': 'REQUIRED',
+                  'fatal': 'MUST_BE_0'
+              },
+              'controllers': {
+                  'buildspec_current_enabled': False,
+                  'buildspec_current_id': disabled['build_id'],
+                  'buildspec_base_profile': profile,
+                  'buildspec_base_sha256': profile_sha,
+                  'runtime_active_build': 'S1.42AG',
+                  'successor_armed': False
+              },
+              'exact_next_step': state['next_action']
+          }
+          Path(project_status).write_text(json.dumps(status, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+          lifecycle = Path('Knowledge/CURRENT_LIFECYCLE.md')
+          ltxt = lifecycle.read_text(encoding='utf-8')
+          evidence_old = '**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`, `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `Current/Projektstatus_S1.42AF_ACCEPTED.json`'
+          evidence_new = evidence_old + ', `Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt`, `Current/131_MOUTHDOG_PIKMIN_PATCH_BOUNDARY_AND_SUCCESSOR_PLAN.md`, `Current/132_MOUTHDOG_PATCH_SAFETY_REVIEW.md`, `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`, `Current/Projektstatus_S1.42AG_CANDIDATE.json`'
+          if evidence_old in ltxt:
+              ltxt = ltxt.replace(evidence_old, evidence_new, 1)
+          start = ltxt.index('## Active candidate / runtime state')
+          end = ltxt.index('## Current open compatibility finding')
+          active_section = f'''## Active candidate / runtime state\n\n**S1.42AG — Mouth Dog Pikmin One-Way Protection — ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED.**\n\n- Profile: `{profile}`\n- SHA-256: `{profile_sha}`\n- Compatibility DLL SHA-256: `{plugin_sha}`\n- Candidate: `{candidate_record}`\n- Project status: `{project_status}`\n- Runtime test outstanding: **yes**.\n- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG`.\n- `BuildSpecs/current.json` is disabled and guards the S1.42AG artifact while runtime validation is open.\n\nThe exact source contract is proved by `Current/130`, the authorized patch boundary by `Current/131`, and the pre-build safety review by `Current/132`. S1.42AG blocks exact declared `MouthDogPikminEnemy.DoCheckInterval()` with `Priority.First` before Pikmin target collection/bite/grab dispatch while keeping the adapter enabled.\n\nThe next action is the full-normal runtime gate described in `Current/133`, followed by the build-specific log uploader. S1.42AF remains accepted until that evidence passes.\n\n'''
+          ltxt = ltxt[:start] + active_section + ltxt[end:]
+          ctrl_start = ltxt.index('## Current controllers')
+          next_start = ltxt.index('## Exact next project action')
+          ctrl = f'''## Current controllers\n\n- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG`.\n- `BuildSpecs/current.json` is disabled.\n- Controller id: `{disabled['build_id']}`.\n- Guarded candidate: `{profile}` / `{profile_sha}`.\n- No successor beyond S1.42AG is armed.\n\n'''
+          exact = f'''## Exact next project action\n\nImport and runtime-test S1.42AG using `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`. Exercise repeated Mouth Dog lunges around Pikmin, prove the Dog -> Pikmin bite/grab/death-timer path is absent, prove Pikmin -> Dog attack/latch/death cleanup and Dog -> player attacks remain functional, confirm normal full-stack startup/generation and the accepted S1.42AF Microwave contract, then upload the complete fresh S1.42AG log. **Do not accept S1.42AG from build/startup success alone.**\n'''
+          ltxt = ltxt[:ctrl_start] + ctrl + exact
+          lifecycle.write_text(ltxt, encoding='utf-8')
+
+          pik = Path('Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md')
+          p = pik.read_text(encoding='utf-8')
+          p = p.replace('**Evidence:** `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`, `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`, `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/`', '**Evidence:** `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`, `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`, `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt`, `Current/131_MOUTHDOG_PIKMIN_PATCH_BOUNDARY_AND_SUCCESSOR_PLAN.md`, `Current/132_MOUTHDOG_PATCH_SAFETY_REVIEW.md`, `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/`', 1)
+          mouth_start = p.index('## Mouth Dog / Eyeless Dog')
+          code_start = p.index('## CodeRebirth utility kills')
+          mouth = f'''## Mouth Dog / Eyeless Dog — S1.42AG active candidate\n\nThe S1.42AF acceptance run exposed the inherited Mouth Dog -> Pikmin gap recorded in `Current/129`. Exact LethalMin 1.1.108 decompile evidence in `Current/130` proves `MouthDogPikminEnemy.DoCheckInterval()` is the adapter-specific target/bite dispatcher and that `BiteNearbyPikmin` mutates `GrabbedPikmin` before calling `PikminAI.GrabPikmin(mouthGrip, 2.5f, 5)`. Therefore extending only the common GrabPikmin snap-position guard would be too late for the complete one-way contract.\n\nS1.42AG is now the **built active runtime candidate**. It installs a fail-closed `Priority.First` prefix on exact declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` and returns `false` before Pikmin target collection, bite RPC dispatch, adapter grab bookkeeping, or Pikmin grab/death-timer state mutation. The adapter remains enabled; native Pikmin -> Mouth Dog combat/latch/death cleanup and Mouth Dog -> player attacks remain outside this patch.\n\nRuntime acceptance is still required. See `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`.\n\n'''
+          p = p[:mouth_start] + mouth + p[code_start:]
+          pik.write_text(p, encoding='utf-8')
+
+          lineage_md = Path('Current/BUILD_LINEAGE.md')
+          m = lineage_md.read_text(encoding='utf-8')
+          insertion = m.index('## Feature/fix lookup')
+          section = f'''### S1.42AG — active Mouth Dog Pikmin one-way protection candidate\n\n- Parent: accepted S1.42AF.\n- Profile: `{profile}`\n- SHA-256: `{profile_sha}`\n- Candidate: `{candidate_record}`\n- Project status: `{project_status}`\n- Plan: `{plan_path}`\n- Atomic build workflow run: `{run_id}`\n- Build commit: `__BUILD_COMMIT__`\n- Compatibility DLL SHA-256: `{plugin_sha}`\n- Exact patch: `Priority.First` prevention on declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()`; adapter stays enabled.\n- Status: build pass / runtime validation outstanding / not accepted.\n\n'''
+          if '### S1.42AG — active Mouth Dog Pikmin one-way protection candidate' not in m:
+              m = m[:insertion] + section + m[insertion:]
+          m = m.replace('| Functional Microwave path-length-safe packaging | S1.42AF |', '| Functional Microwave path-length-safe packaging | S1.42AF |\n| Mouth Dog -> Pikmin exact one-way prevention candidate | S1.42AG |', 1)
+          m = m.replace('- S1.42AF was built **directly from accepted S1.42AC**, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and is now the accepted full-normal-stack gameplay base after explicit runtime acceptance in `Current/128...`.', '- S1.42AF was built **directly from accepted S1.42AC**, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and is now the accepted full-normal-stack gameplay base after explicit runtime acceptance in `Current/128...`.\n- S1.42AG is built **directly from accepted S1.42AF**. It changes only the existing cumulative compatibility DLL plus profile identity and remains an active runtime candidate until the exact Mouth Dog/Pikmin bidirectional regression gate passes.', 1)
+          lineage_md.write_text(m, encoding='utf-8')
+          PY
+
+      - name: Render current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Commit artifact candidate checkpoint and capture provenance SHA
+        shell: bash
+        run: |
+          rm .github/workflows/atomic-build-s142ag.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            Patches/S139CompatibilityFixes/Plugin.cs \
+            BuildSpecs/S1.42AG_PLAN.md BuildSpecs/current.json \
+            Profiles/'LC V1 S1.42AG Mouth Dog Fix.r2z' ProfileSources/S1.42AG \
+            Current/AUTO_BUILD_RESULT.json Current/AUTO_BUILD_RESULT.md \
+            Current/CURRENT_STATE.json Current/BUILD_LINEAGE.json Current/BUILD_LINEAGE.md \
+            Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md \
+            Current/Projektstatus_S1.42AG_CANDIDATE.json \
+            RuntimeInbox/ACTIVE_BUILD.txt \
+            Knowledge/CURRENT_LIFECYCLE.md Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md \
+            README.md START_HERE_ChatGPT_Masterprompt.txt Current/00_CURRENT_STATE.md Current/01_HANDOVER_CORE.md \
+            .github/workflows/atomic-build-s142ag.yml
+          git commit -m "Build S1.42AG Mouth Dog one-way protection candidate"
+          BUILD_COMMIT=$(git rev-parse HEAD)
+          echo "$BUILD_COMMIT" > /tmp/s142ag_build_commit.txt
+
+      - name: Record exact build commit provenance
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          sha = Path('/tmp/s142ag_build_commit.txt').read_text().strip()
+          for path in ['Current/CURRENT_STATE.json', 'Current/BUILD_LINEAGE.json', 'Current/Projektstatus_S1.42AG_CANDIDATE.json']:
+              p = Path(path)
+              text = p.read_text(encoding='utf-8').replace('__BUILD_COMMIT__', sha)
+              p.write_text(text, encoding='utf-8')
+          for path in ['Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md', 'Current/BUILD_LINEAGE.md']:
+              p = Path(path)
+              p.write_text(p.read_text(encoding='utf-8').replace('__BUILD_COMMIT__', sha), encoding='utf-8')
+          PY
+          python RepositoryTools/render_current_navigation.py
+          git add Current/CURRENT_STATE.json Current/BUILD_LINEAGE.json Current/BUILD_LINEAGE.md Current/Projektstatus_S1.42AG_CANDIDATE.json Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md README.md START_HERE_ChatGPT_Masterprompt.txt Current/00_CURRENT_STATE.md Current/01_HANDOVER_CORE.md
+          git commit -m "Record S1.42AG build provenance"
+          git push
+
+      - name: Verify repository checkpoint after atomic build
+        run: |
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/knowledge_architecture_validator.py
