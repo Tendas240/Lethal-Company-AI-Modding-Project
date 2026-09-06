@@ -50,9 +50,9 @@
     "code": "Patches/S139CompatibilityFixes/Plugin.cs",
     "source_inspection_tool": "AnalysisTools/InspectMouthDogV81.ps1",
     "source_inspection_tool_introduced_commit": "9bda16c9be86ad4c0d752f08aebb9cf6cf8fcad5",
-    "source_inspection_tool_current_hardened_commit": "6781b8c881759417fac9987629826fa5de1542cf",
+    "source_inspection_tool_current_hardened_commit": "553577cc493f00d7908837f5b016f2bb30ed3fdd",
     "source_capture_hardening_record": "Current/135_MOUTHDOG_V81_SOURCE_CAPTURE_TOOL_WINDOWS_HARDENING_STATE.md",
-    "source_capture_execution_status": "CAPTURE_TOOL_HARDENED_AFTER_THREE_WINDOWS_BOOTSTRAP_FAILURES_AWAITING_RETRY",
+    "source_capture_execution_status": "CAPTURE_TOOL_HARDENED_AFTER_THREE_BOOTSTRAP_AND_TWO_POSTPROCESSING_FAILURES_AWAITING_RETRY",
     "source_capture_command": "$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/AnalysisTools/InspectMouthDogV81.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content",
     "source_capture_resolved_failures": [
       {
@@ -71,6 +71,18 @@
         "observed_error": "You must install or update .NET to run this application.",
         "fix_commit": "6781b8c881759417fac9987629826fa5de1542cf",
         "resolution": "Run exactly one installed ilspycmd.dll through the exact selected or bootstrapped temporary dotnet.exe via a temporary launcher."
+      },
+      {
+        "failure": "FOCUSED_REPORT_BLANK_LINE_PARAMETER_BINDING",
+        "observed_error": "Cannot bind argument to parameter 'Lines' because it is an empty string.",
+        "fix_commit": "0b3da73c5aad2efc26a0aba65863a552f2bc0af9",
+        "resolution": "Allow legitimate blank decompiler source lines through the exact Find-MethodStart string-array parameter without changing the decompile or publication scope."
+      },
+      {
+        "failure": "FOCUSED_EXTRACTION_SAFETY_CEILING_OVERCOUNT",
+        "observed_error": "Focused extraction expanded to 657 source lines, above the 500-line safety ceiling. Refusing to publish an over-broad decompile.",
+        "fix_commit": "553577cc493f00d7908837f5b016f2bb30ed3fdd",
+        "resolution": "Remove the unconditional 73-line minimum expansion, keep only source from the nearest method declaration through 28 lines after the last relevant marker, merge overlapping windows, and apply the unchanged 500-line publication ceiling to unique selected source lines."
       }
     ],
     "source_evidence_status": "CAPTURE_TOOL_READY_EVIDENCE_NOT_YET_CAPTURED",
@@ -85,7 +97,7 @@
       "Do not build or arm a successor before the native Mouth Dog -> Pikmin boundary is proved."
     ],
     "finding": "The S1.42AG Priority.First DoCheckInterval guard successfully blocks the LethalMin Mouth Dog bite/grab/death-timer mutation path, but a Mouth Dog still visibly targeted and attacked a scrap-carrying Purple Pikmin through an unresolved path. Reverse-direction Pikmin -> Mouth Dog combat/latch was not actively exercised in this run; passive follower Pikmin remaining non-aggressive is expected behavior and is not evidence of a defect.",
-    "analysis_contract": "First successfully re-run the current hardened AnalysisTools/InspectMouthDogV81.ps1 and capture provenance-safe focused native V81 MouthDogAI source evidence. Three prior Windows bootstrap failures are already fixed and are implementation history unless they recur. No SourceEvidence/VanillaV81/MouthDogAI evidence is currently authoritative. After capture, verify the exact evidence branch/commit, MANIFEST.json and MOUTHDOGAI_FOCUSED_DECOMPILE.txt, then identify the exact remaining owner/method/path for Mouth Dog targeting/attack of Pikmin and prove or reject the carried-scrap/noise hypothesis without guessing. Preserve the enabled MouthDogPikminEnemy adapter, native Pikmin -> Mouth Dog combat/lifecycle, Mouth Dog -> player behavior and the proven prevention-before-mutation concept where still applicable. Treat reverse-direction combat as a future deliberate runtime validation gate, not as a current failure signal. Do not build a successor until the exact remaining Mouth Dog -> Pikmin boundary is proved."
+    "analysis_contract": "First successfully re-run the current hardened AnalysisTools/InspectMouthDogV81.ps1 and capture provenance-safe focused native V81 MouthDogAI source evidence. Three bootstrap failures and two later focused-report post-processing failures are already fixed and are implementation history unless they recur. No SourceEvidence/VanillaV81/MouthDogAI evidence is currently authoritative. After capture, verify the exact evidence branch/commit, MANIFEST.json and MOUTHDOGAI_FOCUSED_DECOMPILE.txt, then identify the exact remaining owner/method/path for Mouth Dog targeting/attack of Pikmin and prove or reject the carried-scrap/noise hypothesis without guessing. Preserve the enabled MouthDogPikminEnemy adapter, native Pikmin -> Mouth Dog combat/lifecycle, Mouth Dog -> player behavior and the proven prevention-before-mutation concept where still applicable. Treat reverse-direction combat as a future deliberate runtime validation gate, not as a current failure signal. Do not build a successor until the exact remaining Mouth Dog -> Pikmin boundary is proved."
   },
   "next_action": "Re-run the currently hardened AnalysisTools/InspectMouthDogV81.ps1 from repository main against the user's installed Lethal Company_Data/Managed/Assembly-CSharp.dll using default Steam auto-detection. Three real Windows bootstrap failures are already fixed in repository history and must not be re-investigated unless they recur: disabled/missing NuGet sources, dotnet-install.ps1 output contaminating the helper return value, and the generated ilspycmd.exe shim failing to resolve the temporary .NET runtime. The current tool revision instead uses an isolated nuget.org-only config, output isolation, and an explicit launcher for ilspycmd.dll through the selected/bootstrapped dotnet.exe. No authoritative SourceEvidence/VanillaV81/MouthDogAI evidence exists yet. After a successful run creates source-evidence/mouthdog-v81-*, verify its branch/commit plus MANIFEST.json and MOUTHDOGAI_FOCUSED_DECOMPILE.txt, then prove the exact native perception/noise/target/lunge/collision owner/method boundary and the scrap/noise hypothesis before proposing or arming any successor. Do not build or start a runtime test before that boundary is proved.",
   "controllers": {
