@@ -3,9 +3,9 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** accepted interior-selection architecture and deferred compatibility exceptions  
 **Canonical-For:** `interiors_and_lll`  
-**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`  
-**Related:** `ProfileSources/S1.42AB/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-09-04
+**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`  
+**Related:** `ProfileSources/S1.42AG/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
+**Last-Validated:** 2026-09-06
 
 ## Accepted architecture
 
@@ -33,6 +33,18 @@ Accepted S1.42AB Offense evidence:
 - `Expanded facility` generated successfully;
 - no user-visible S1.42AB regression was reported.
 
+Later S1.42AF full-normal-stack runtime evidence preserved the same architecture and exposed a 41-entry viable Offense pool. Both Wesley interiors in question were present before and after project-local normalization:
+
+- `Art Gallery (MuseumInteriorFlow)` -> viable `100` -> final effective `100`;
+- `Rubber Rooms (RubberRoomsFlow)` -> viable `100` -> final effective `100`.
+
+DawnLib also resolved both exact flow assets in the same runtime:
+
+- `magic_wesleysmod:museuminteriorflow -> MuseumInteriorFlow`;
+- `therubberrooms:rubberroomsflow -> RubberRoomsFlow`.
+
+This proves that the current profile does not suppress Art Gallery or Rubber Rooms through a bad rarity setting or failed registration. A lack of observed player rolls is compatible with a very large equal-weight pool and is not, by itself, evidence of a configuration bug.
+
 Authoritative runtime marker:
 
 `[InteriorWeightNormalization] Final effective viable pool for <moon>: ...`
@@ -42,6 +54,40 @@ Authoritative runtime marker:
 The project target is equal **effective** probability for every viable registered interior, not equal package shares and not theme-weighted author defaults. A package containing multiple flows contributes multiple independently normalized flows.
 
 A technical author hard block is not a desired balancing exception. Do not blindly override one until its compatibility reason is understood and runtime-tested.
+
+## Wesley's Interiors boundary
+
+Current package state includes `Magic_Wesley-WesleysInteriors 4.1.15` and `Zaggy1024-DunGenReferenceFixer 0.0.1` under the full normal stack.
+
+For Art Gallery and Rubber Rooms specifically, current repository runtime evidence proves:
+
+- registration succeeds;
+- exact flows are resolved;
+- both are viable on Offense;
+- both reach the final normalized pool at effective rarity `100`.
+
+Therefore do **not** increase their weights or add Wesley-specific compatibility packages merely because the user has not yet encountered them naturally.
+
+Actual successful generation of each exact Wesley flow is a stronger compatibility question than registration/weighting and requires a real selected dungeon run. Keep that separate from spawn-weight diagnosis.
+
+Do not fold any replacement/fork evaluation for DunGenReferenceFixer into unrelated interior additions without a reproducible need.
+
+## LC Office deferred integration
+
+LC Office is now a documented deferred compatibility/integration scope in `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`.
+
+Planned package contract:
+
+- add `Piggy-LC_Office 2.3.4`;
+- add `MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix 2.0.0`;
+- add `JacobG5-DestroyItemInSlotFix 1.0.0`;
+- transition `Alice-DungeonGenerationPlus 1.5.0 -> 1.5.1`;
+- preserve `IAmBatby-LethalLevelLoader 1.7.12` as the sole LLL owner;
+- explicitly forbid `pacoito-LethalLevelLoaderUpdated` from the final profile/export.
+
+The initial compatibility candidate must not simultaneously force LC Office onto all moons. First prove registration, default/modern-LLL viability, effective normalization to `100`, actual dungeon generation, traversal, elevator/power behavior and ordinary enemy navigation. Any later universal-availability tuning is a separate balance/configuration scope.
+
+This LC Office work is **not armed** while S1.42AG remains an unaccepted active runtime candidate.
 
 ## Shatteredrooms restriction
 
@@ -68,15 +114,18 @@ Avoid:
 
 - pack + standalone duplication;
 - LLL registration for content already owned by DawnLib/JLL/native configuration;
-- duplicate Black Mesa registration.
+- duplicate Black Mesa registration;
+- parallel `IAmBatby-LethalLevelLoader` plus `pacoito-LethalLevelLoaderUpdated` ownership.
 
 ## Deferred interior work
 
 Keep separate from the already accepted S1.42AB weighting architecture:
 
+- LC Office V81 integration under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md` after the active S1.42AG gate closes;
 - CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - MelanieMausoleum fog reduction only for that interior;
 - Black Mesa/interior/Pikmin route recovery;
-- any future attempt to remove the Shatteredrooms Experimentation/Embrion safety restriction.
+- any future attempt to remove the Shatteredrooms Experimentation/Embrion safety restriction;
+- any future LC Office universal-moon availability tuning after compatibility acceptance.
 
 Package-specific historical research remains in `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`; this topic file is the current authority for the live interior-selection rule.
