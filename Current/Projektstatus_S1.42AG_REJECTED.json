@@ -12,7 +12,7 @@
   "decision": "Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md",
   "partial_fix_proven": true,
   "blocked_path": "LethalMin.MouthDogPikminEnemy.DoCheckInterval() bite/grab/death-timer mutation path",
-  "remaining_failure": "Mouth Dog can still visibly target/attack a scrap-carrying Pikmin through an unresolved path outside the blocked LethalMin dispatcher; reverse-direction Pikmin -> Mouth Dog combat/latch preservation was not positively proven in this run.",
-  "next_action": "Targeted repository-native analysis of the remaining Mouth Dog target/attack path; do not build a successor until the exact owner/method boundary is proved.",
+  "remaining_failure": "Mouth Dog can still visibly target/attack a scrap-carrying Pikmin through an unresolved path outside the blocked LethalMin dispatcher. Reverse-direction Pikmin -> Mouth Dog combat/latch was not actively exercised in this run; passive follower non-aggression is expected behavior and is not evidence of a defect.",
+  "next_action": "Targeted repository-native analysis of the remaining Mouth Dog -> Pikmin target/attack path; reserve deliberate Pikmin -> Mouth Dog attack/latch validation for a future runtime candidate; do not build a successor until the exact remaining owner/method boundary is proved.",
   "accepted": false
 }
