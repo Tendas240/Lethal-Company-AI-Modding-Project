@@ -528,7 +528,7 @@
       "candidate_record": "Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md",
       "project_status": "Current/Projektstatus_S1.42AG_CANDIDATE.json",
       "workflow_run": 34004938402,
-      "build_commit": "__BUILD_COMMIT__",
+      "build_commit": "bb23701839d4c94bcad053a282f905ca571fc524",
       "safe_as_gameplay_base": false,
       "principal_feature": "exact Priority.First MouthDogPikminEnemy.DoCheckInterval prevention before Pikmin target/bite/grab mutation"
     }

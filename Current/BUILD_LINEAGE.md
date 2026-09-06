@@ -178,7 +178,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Project status: `Current/Projektstatus_S1.42AG_CANDIDATE.json`
 - Plan: `BuildSpecs/S1.42AG_PLAN.md`
 - Atomic build workflow run: `34004938402`
-- Build commit: `__BUILD_COMMIT__`
+- Build commit: `bb23701839d4c94bcad053a282f905ca571fc524`
 - Compatibility DLL SHA-256: `976264a31b85bf3d913d3ad703fa770a666957664d0de5b848a5073b0883d064`
 - Exact patch: `Priority.First` prevention on declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()`; adapter stays enabled.
 - Status: build pass / runtime validation outstanding / not accepted.

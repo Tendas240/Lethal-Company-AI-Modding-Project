@@ -29,7 +29,7 @@
     "profile_sources": "ProfileSources/S1.42AG/",
     "file_index": "ProfileSources/S1.42AG/FILE_INDEX.json",
     "workflow_run": 34004938402,
-    "build_commit": "__BUILD_COMMIT__",
+    "build_commit": "bb23701839d4c94bcad053a282f905ca571fc524",
     "plugin_dll_sha256": "976264a31b85bf3d913d3ad703fa770a666957664d0de5b848a5073b0883d064"
   },
   "active_candidate": {
@@ -44,7 +44,7 @@
     "profile_sources": "ProfileSources/S1.42AG/",
     "file_index": "ProfileSources/S1.42AG/FILE_INDEX.json",
     "workflow_run": 34004938402,
-    "build_commit": "__BUILD_COMMIT__",
+    "build_commit": "bb23701839d4c94bcad053a282f905ca571fc524",
     "plugin_dll_sha256": "976264a31b85bf3d913d3ad703fa770a666957664d0de5b848a5073b0883d064"
   },
   "runtime_test_outstanding": true,

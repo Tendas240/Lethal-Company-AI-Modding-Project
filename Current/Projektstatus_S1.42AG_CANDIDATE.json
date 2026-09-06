@@ -18,7 +18,7 @@
     "sha256": "3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee",
     "status": "BUILD_PASS_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
     "successful_build_run": 34004938402,
-    "automated_build_commit": "__BUILD_COMMIT__",
+    "automated_build_commit": "bb23701839d4c94bcad053a282f905ca571fc524",
     "candidate_record": "Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md",
     "plan": "BuildSpecs/S1.42AG_PLAN.md",
     "patch_source": "Patches/S139CompatibilityFixes/Plugin.cs",
