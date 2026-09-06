@@ -1,0 +1,32 @@
+# Lethal Company V81 EnemyAI collision focused source evidence
+
+Purpose: prove the exact Vanilla V81 EnemyAI.OnCollideWithEnemy() base contract and any directly named standard enemy-collision helper before a MouthDogAI collision Harmony boundary is considered.
+
+## Provenance
+- Assembly: `Lethal Company_Data/Managed/Assembly-CSharp.dll`
+- Assembly SHA-256: `5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731`
+- Lethal Company executable SHA-256: `24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1`
+- Steam appmanifest buildid: `22825947`
+- Steam appmanifest SHA-256: `fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432`
+- Decompiler: `ilspycmd 11.0.0.9375`
+- Decompiled type: `EnemyAI`
+- Full local type-decompile SHA-256: `ef09a8a61e87d241b0bdea688aaa6b36ae501cd9dd02e0b1595a1a275a2d0faa`
+- Capture UTC: `2026-09-06T20:45:35Z`
+- Repository main at capture: `9cff45e603ca3f06118868ac1c1f899ef0292d1f`
+- Bound to prior MouthDog capture manifest: `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json`
+
+Absolute local paths, Windows user names, Assembly-CSharp.dll and the full EnemyAI type decompile are intentionally excluded.
+
+## Marker index
+- `OnCollideWithEnemy` at local EnemyAI type line 384
+
+## Exact focused method blocks
+
+--- BLOCK 1 / local lines 384-390 ---
+  384: 	public virtual void OnCollideWithEnemy(Collider other, EnemyAI collidedEnemy = null)
+  385: 	{
+  386: 		if (base.IsServer && debugEnemyAI)
+  387: 		{
+  388: 			Debug.Log(base.gameObject.name + " collided with enemy!: " + other.gameObject.name);
+  389: 		}
+  390: 	}
