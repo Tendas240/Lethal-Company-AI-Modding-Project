@@ -237,7 +237,7 @@ function Build-FocusedReport {
             if ($lines[$i].IndexOf($pattern, [StringComparison]::OrdinalIgnoreCase) -ge 0) {
                 $hits += [pscustomobject]@{ Marker = $pattern; Line = ($i + 1) }
                 $start = Find-MethodStart -Lines $lines -HitIndex $i
-                $end = [Math]::Min($lines.Count - 1, [Math]::Max($i + 28, $start + 72))
+                $end = [Math]::Min($lines.Count - 1, $i + 28)
                 $key = [string]$start
                 if (-not $windowByStart.ContainsKey($key) -or $end -gt $windowByStart[$key]) {
                     $windowByStart[$key] = $end
@@ -251,12 +251,38 @@ function Build-FocusedReport {
     }
 
     $starts = @($windowByStart.Keys | ForEach-Object { [int]$_ } | Sort-Object)
-    $selectedLineCount = 0
+    $windows = @()
     foreach ($start in $starts) {
-        $selectedLineCount += ($windowByStart[[string]$start] - $start + 1)
+        $windows += [pscustomobject]@{
+            Start = [int]$start
+            End = [int]$windowByStart[[string]$start]
+        }
+    }
+
+    $mergedWindows = @()
+    foreach ($window in ($windows | Sort-Object Start)) {
+        if ($mergedWindows.Count -eq 0) {
+            $mergedWindows += [pscustomobject]@{ Start = $window.Start; End = $window.End }
+            continue
+        }
+
+        $last = $mergedWindows[$mergedWindows.Count - 1]
+        if ($window.Start -le ($last.End + 1)) {
+            if ($window.End -gt $last.End) {
+                $last.End = $window.End
+            }
+            continue
+        }
+
+        $mergedWindows += [pscustomobject]@{ Start = $window.Start; End = $window.End }
+    }
+
+    $selectedLineCount = 0
+    foreach ($window in $mergedWindows) {
+        $selectedLineCount += ($window.End - $window.Start + 1)
     }
     if ($selectedLineCount -gt 500) {
-        throw "Focused extraction expanded to $selectedLineCount source lines, above the 500-line safety ceiling. Refusing to publish an over-broad decompile."
+        throw "Focused extraction expanded to $selectedLineCount unique source lines, above the 500-line safety ceiling. Refusing to publish an over-broad decompile."
     }
 
     $builder = New-Object System.Text.StringBuilder
@@ -286,12 +312,13 @@ function Build-FocusedReport {
     }
     [void]$builder.AppendLine('')
     [void]$builder.AppendLine('## Focused source windows')
-    [void]$builder.AppendLine('Each window begins at the nearest decompiled method declaration found before a requested marker/callsite. Unrelated MouthDogAI source is excluded.')
+    [void]$builder.AppendLine('Each marker window begins at the nearest decompiled method declaration and extends through 28 lines after the last relevant marker in that method. Overlapping windows are merged before the 500-line safety ceiling is applied.')
 
     $block = 0
-    foreach ($start in $starts) {
+    foreach ($window in $mergedWindows) {
         $block++
-        $end = [int]$windowByStart[[string]$start]
+        $start = [int]$window.Start
+        $end = [int]$window.End
         [void]$builder.AppendLine('')
         [void]$builder.AppendLine(('--- BLOCK ' + $block + ' / local lines ' + ($start + 1) + '-' + ($end + 1) + ' ---'))
         for ($i = $start; $i -le $end; $i++) {

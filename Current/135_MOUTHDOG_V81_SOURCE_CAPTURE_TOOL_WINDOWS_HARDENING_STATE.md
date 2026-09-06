@@ -9,7 +9,7 @@
 
 ## Purpose
 
-This record prevents a successor ChatGPT chat from re-investigating source-capture bootstrap failures that were already reproduced on the user's actual Windows machine and fixed repository-native.
+This record prevents a successor ChatGPT chat from re-investigating source-capture failures that were already reproduced on the user's actual Windows machine and fixed repository-native.
 
 It does **not** claim that Vanilla V81 MouthDogAI source evidence has already been captured. No authoritative `SourceEvidence/VanillaV81/MouthDogAI/` report or manifest exists yet.
 
@@ -20,9 +20,12 @@ Across the user's real Windows runs, the tool has already proved that:
 - Steam/Lethal Company auto-detection locates the installed `Lethal Company_Data/Managed/Assembly-CSharp.dll` without `-AssemblyPath`;
 - the local assembly can be SHA-256 hashed successfully;
 - the temporary .NET 10 bootstrap can complete;
-- `ilspycmd 11.0.0.9375` can be installed into the temporary tool directory.
+- `ilspycmd 11.0.0.9375` can be installed into the temporary tool directory;
+- the exact selected/bootstrapped `dotnet.exe` can execute the installed `ilspycmd.dll`;
+- `MouthDogAI` can be located and decompiled successfully from the user's actual `Assembly-CSharp.dll`;
+- the focused report builder now accepts legitimate blank decompiler source lines.
 
-Therefore the next chat must not treat Steam discovery, the assembly path, NuGet availability, .NET installation, or ILSpy package installation as unresolved design questions unless the latest hardened tool actually reproduces one of those failures again.
+Therefore the next chat must not treat Steam discovery, the assembly path, NuGet availability, .NET installation, ILSpy package installation, temporary runtime resolution, or basic `MouthDogAI` decompilation as unresolved design questions unless the latest hardened tool actually reproduces one of those failures again.
 
 ## Three observed Windows bootstrap failures and their repository fixes
 
@@ -62,17 +65,54 @@ Repository fix merged on commit:
 
 `6781b8c881759417fac9987629826fa5de1542cf`
 
-The current tool now finds exactly one installed `ilspycmd.dll`, fails closed if that contract is not exact, and generates a temporary launcher that executes that DLL through the exact `dotnet.exe` selected or bootstrapped by the helper. It no longer depends on global .NET runtime resolution.
+The tool now finds exactly one installed `ilspycmd.dll`, fails closed if that contract is not exact, and generates a temporary launcher that executes that DLL through the exact `dotnet.exe` selected or bootstrapped by the helper. It no longer depends on global .NET runtime resolution.
+
+## Two observed focused-report post-processing failures and their repository fixes
+
+### 4. Legitimate blank source line rejected by `Find-MethodStart`
+
+Once the launcher fix was active, the real Windows run successfully reached native `MouthDogAI` decompilation. `Build-FocusedReport` then failed with:
+
+`Cannot bind argument to parameter 'Lines' because it is an empty string.`
+
+The decompiler output itself was valid. The split source array naturally contained blank C# source lines, while Windows PowerShell 5.1 rejected those values for the mandatory helper parameter.
+
+Repository fix merged on commit:
+
+`0b3da73c5aad2efc26a0aba65863a552f2bc0af9`
+
+`Find-MethodStart` now explicitly permits empty strings in its source-line array. This changes neither decompile scope nor publication scope.
+
+### 5. Focused extraction exceeded the 500-line publication ceiling
+
+After the blank-line fix, the next real Windows run again reached and completed `MouthDogAI` decompilation. The report builder then failed closed with:
+
+`Focused extraction expanded to 657 source lines, above the 500-line safety ceiling. Refusing to publish an over-broad decompile.`
+
+The problem was not that the safety ceiling was too strict. Each marker-derived window was being expanded to at least 73 lines (`method start` through `start + 72`) even when substantially less source was required, and overlapping windows were counted/output independently.
+
+Repository fix commit:
+
+`553577cc493f00d7908837f5b016f2bb30ed3fdd`
+
+The current tool now:
+
+- removes that unconditional 73-line minimum expansion;
+- keeps each method-grouped marker window only from the nearest decompiled method declaration through 28 lines after the last relevant marker in that method;
+- merges overlapping/adjacent selected windows before counting and publication;
+- continues to fail closed if the resulting **unique** selected source still exceeds the unchanged 500-line ceiling.
+
+The 500-line publication safety limit has **not** been raised or bypassed.
 
 ## Current execution status
 
-**Current hardened tool revision:** repository `main` at or after `6781b8c881759417fac9987629826fa5de1542cf`.
+**Current hardened tool revision:** repository `main` after merge of the fix containing `553577cc493f00d7908837f5b016f2bb30ed3fdd`.
 
-**Evidence capture status:** `CAPTURE_TOOL_HARDENED_AFTER_THREE_WINDOWS_BOOTSTRAP_FAILURES_AWAITING_RETRY`.
+**Evidence capture status:** `CAPTURE_TOOL_HARDENED_AFTER_THREE_BOOTSTRAP_AND_TWO_POSTPROCESSING_FAILURES_AWAITING_RETRY`.
 
 **Authoritative source evidence status:** `NOT YET CAPTURED`.
 
-The current hardened revision has **not yet been re-run by the user after the third fix**. Therefore there is still no successful `source-evidence/mouthdog-v81-*` branch and no authoritative:
+The latest hardened revision has **not yet been re-run by the user after the focused-window narrowing/merge fix**. Therefore there is still no successful `source-evidence/mouthdog-v81-*` branch and no authoritative:
 
 - `MOUTHDOGAI_FOCUSED_DECOMPILE.txt`;
 - `MANIFEST.json`.
@@ -115,7 +155,7 @@ Unless the hardened tool produces a new concrete failure, do not ask the user to
 - upload another S1.42AG runtime log;
 - build or arm a successor.
 
-The prior three Windows bootstrap errors are **resolved implementation history**, not current blockers.
+The three bootstrap failures and the two focused-report post-processing failures above are **resolved implementation history**, not current blockers.
 
 ## Gameplay/lifecycle boundary remains unchanged
 
