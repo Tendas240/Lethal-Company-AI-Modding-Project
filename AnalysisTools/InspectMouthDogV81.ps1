@@ -10,6 +10,7 @@ Set-StrictMode -Version 2.0
 $Repository = 'https://github.com/Tendas240/Lethal-Company-AI-Modding-Project.git'
 $RepositoryName = 'Tendas240/Lethal-Company-AI-Modding-Project'
 $IlSpyVersion = '11.0.0.9375'
+$NuGetSource = 'https://api.nuget.org/v3/index.json'
 $SteamAppId = '1966720'
 $EvidenceRoot = 'SourceEvidence/VanillaV81/MouthDogAI'
 
@@ -126,10 +127,22 @@ function Ensure-DotNetAndIlSpy {
         $dotnetExe = Join-Path $dotnetDir 'dotnet.exe'
     }
 
-    Write-Step "Installing isolated ilspycmd $IlSpyVersion."
-    & $dotnetExe tool install ilspycmd --tool-path $toolDir --version $IlSpyVersion --disable-parallel 2>&1 | ForEach-Object { Write-Host $_ }
+    $nugetConfig = Join-Path $TempRoot 'nuget.config'
+    $nugetConfigText = @"
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <clear />
+    <add key="nuget.org" value="$NuGetSource" protocolVersion="3" />
+  </packageSources>
+</configuration>
+"@
+    [IO.File]::WriteAllText($nugetConfig, $nugetConfigText, (New-Object Text.UTF8Encoding($false)))
+
+    Write-Step "Installing isolated ilspycmd $IlSpyVersion using an isolated NuGet config."
+    & $dotnetExe tool install ilspycmd --tool-path $toolDir --version $IlSpyVersion --configfile $nugetConfig --disable-parallel 2>&1 | ForEach-Object { Write-Host $_ }
     if ($LASTEXITCODE -ne 0) {
-        throw "Failed to install ilspycmd $IlSpyVersion."
+        throw "Failed to install ilspycmd $IlSpyVersion from explicit source $NuGetSource."
     }
 
     $ilspy = Join-Path $toolDir 'ilspycmd.exe'
@@ -406,6 +419,7 @@ try {
             decompiler = [ordered]@{
                 tool = 'ilspycmd'
                 package_version = $IlSpyVersion
+                package_source = $NuGetSource
                 version_output = $ilspyVersionText
                 type = $typeName
                 full_local_type_decompile_sha256 = $fullTypeSourceSha
