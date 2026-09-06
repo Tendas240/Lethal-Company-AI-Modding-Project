@@ -10,27 +10,47 @@
 
 Accepted baseline is **S1.42AF — Path-Length-Safe Microwave Packaging — ACCEPTED FULL NORMAL STACK**, `Profiles/LC V1 S1.42AF Microwave Fix.r2z`, SHA-256 `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`. Acceptance: `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`. Fresh acceptance evidence: `RuntimeEvidence/S1.42AF/20260905T223738Z/`.
 
-S1.42AF passed the shortened-path packaging gate and the Functional Microwave runtime contract: the nested SoundAPI LethalCompany binding was present and non-empty at a 226-character path, normal BepInEx/game startup succeeded, CodeRebirth `1.6.9` and DawnLib/Dusk `0.9.25` were validated, and exactly 18 Moon/tag curves were scaled by `0.5` while 18 Interior curves remained validation-only.
+Latest built artifact and active runtime candidate is **S1.42AG — Mouth Dog Pikmin One-Way Protection — BUILD PASS / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED**, `Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z`, SHA-256 `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`. Candidate authority: `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`.
 
-There is **no active candidate**, **no runtime test outstanding**, and **no successor armed**. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF` remains the runtime-evidence attribution pointer. `BuildSpecs/current.json` is disabled with controller id `IDLE_AFTER_S1.42AF_ACCEPTANCE_MOUTHDOG_ANALYSIS` and guards accepted S1.42AF as the base.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG`. `BuildSpecs/current.json` is disabled with controller id `IDLE_AFTER_S1.42AG_BUILD_AWAITING_RUNTIME_VALIDATION`. No successor beyond S1.42AG is armed.
 
-## Current open compatibility issue
+## Current open runtime gate
 
-The S1.42AF acceptance run also exposed a separate inherited Mouth Dog / Eyeless Dog -> Pikmin compatibility gap. Runtime evidence confirms `Biting 2 Pikmin`, attachment to `EnemyAttackMouth`, and 2.5-second death timers. Pikmin invincibility prevented the final kill but did not prevent grab/death-timer state mutation; the two affected White Pikmin then generated 707 `Work state with no task assigned!` warnings.
+S1.42AG exists to prevent only Mouth Dog / Eyeless Dog -> Pikmin target/bite/grab behavior before harmful state mutation while preserving the enabled LethalMin adapter, native Pikmin -> Mouth Dog combat/lifecycle and Mouth Dog -> player behavior.
 
-This is **not classified as an S1.42AF regression** because AF changed no LethalMin package/config state. It is tracked as a baseline-resident compatibility finding in `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md` and `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`.
+The S1.42AF acceptance run had exposed the inherited compatibility gap: `Biting 2 Pikmin`, attachment to `EnemyAttackMouth`, 2.5-second death timers, and then 707 `Work state with no task assigned!` warnings from the affected White Pikmin. S1.42AG implements the exact prevention patch selected after source-contract analysis and safety review.
 
 ## Exact next action
 
-Perform focused source/contract analysis before authorizing any successor build:
+Perform the outstanding **full-normal-stack S1.42AG runtime test** according to `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`:
 
-1. inspect the exact LethalMin MouthDog/EyelessDog owner, targeting/bite method, inheritance and native configuration surface;
-2. determine whether native configuration can block Mouth Dog -> Pikmin targeting/bite/grab while preserving Pikmin -> Mouth Dog combat;
-3. confirm whether the harmful path reaches exact `PikminAI.GrabPikmin(Transform,float,int)` before all harmful state mutation;
-4. if a project-local patch is required, prefer the smallest prevention-before-mutation extension under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
-5. preserve native Pikmin -> Mouth Dog behavior and define adjacent/repetition/lifecycle regression checks before arming a build.
+1. import the exact S1.42AG profile with the canonical Gale v2.4 replacement helper;
+2. exercise repeated real Mouth Dog lunge opportunities with Pikmin nearby;
+3. prove no Mouth Dog -> Pikmin bite/grab/`EnemyAttackMouth`/2.5-second death-timer path occurs;
+4. prove Pikmin can still attack/latch the Dog and native death/unlatch/task cleanup works;
+5. prove the Mouth Dog still attacks players normally;
+6. confirm normal startup, lobby, moon/interior generation and inherited S1.42AF Functional Microwave health;
+7. upload the complete fresh S1.42AG `LogOutput.log` with the build-specific uploader from `Current/133...`;
+8. only then decide S1.42AG acceptance or rejection/targeted analysis.
 
-No new runtime run or log upload is currently required.
+A clean startup without exercising the interaction is not acceptance. Do not build a successor before this gate closes.
+
+## Interior findings / deferred LC Office scope
+
+Current full-normal-stack runtime evidence proves that Wesley's `Art Gallery (MuseumInteriorFlow)` and `Rubber Rooms (RubberRoomsFlow)` both register successfully, are viable on Offense, and reach the final project-local normalized pool at effective rarity `100`. Their lack of observed natural player rolls is therefore not evidence of a bad spawn-weight configuration.
+
+LC Office is now documented as a **deferred, not armed** integration scope in `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`.
+
+Planned package boundary after the active S1.42AG lifecycle closes:
+
+- `Piggy-LC_Office 2.3.4`;
+- `MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix 2.0.0`;
+- `JacobG5-DestroyItemInSlotFix 1.0.0`;
+- `Alice-DungeonGenerationPlus 1.5.0 -> 1.5.1`;
+- preserve `IAmBatby-LethalLevelLoader 1.7.12` as sole owner;
+- explicitly forbid `pacoito-LethalLevelLoaderUpdated` from the final profile/export;
+- preserve the accepted S1.42AB equal-effective-weight architecture;
+- do not combine Wesley changes, DunGenReferenceFixer replacement, or universal LC Office moon forcing with the first compatibility candidate.
 
 ## Historical Microwave boundary
 
@@ -38,4 +58,4 @@ S1.42AD remains runtime-rejected because its frozen provider contract incorrectl
 
 ## Remaining open/deferred work
 
-Route scope decisions through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. Deferred items remain CullFactory junkrooms/shatteredrooms exceptions, Mausoleum fog, Black Mesa/Pikmin routing, isolated LethalEscapeUpdated evaluation, final long full-stack acceptance, evidence-driven AdditionalNetworking repair, and broader LethalMin teardown/despawn repair where supported by stronger evidence.
+Route scope decisions through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. Deferred items include LC Office V81 integration, CullFactory junkrooms/shatteredrooms exceptions, Mausoleum fog reduction, Black Mesa/Pikmin routing, isolated LethalEscapeUpdated evaluation, final long full-stack acceptance, evidence-driven AdditionalNetworking repair, broader LethalMin teardown/despawn repair where supported by stronger evidence, and any later LC Office universal-availability tuning after compatibility is proven.
