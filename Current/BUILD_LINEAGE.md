@@ -9,9 +9,9 @@
 ## Current lineage head
 
 - **Accepted gameplay baseline:** S1.42AF — Path-Length-Safe Microwave Packaging.
-- **Latest built artifact:** S1.42AF — Path-Length-Safe Microwave Packaging — runtime accepted.
-- **Active candidate:** none.
-- **Next build:** none armed; controller is idle while Mouth Dog / Eyeless Dog -> Pikmin source-contract analysis is selected.
+- **Latest built artifact:** S1.42AG — Mouth Dog Pikmin One-Way Protection — build pass / runtime validation outstanding / not accepted.
+- **Active candidate:** S1.42AG.
+- **Next build:** none armed; controller is idle while the S1.42AG full-normal runtime gate is outstanding.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -60,6 +60,7 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AD | **REJECTED** | Functional Microwave half-frequency attempt. Runtime exposed 18 Interior/tag curves instead of the frozen zero-Interior assumption; fail-closed refusal prevented the `0.5` mutation from applying. |
 | S1.42AE | **SUPERSEDED — PATH-LENGTH BLOCKED, NOT GAMEPLAY-REJECTED** | Corrected provider code was never reached; v2.4 plus direct filesystem checks proved the 40,960-byte LC SoundAPI binding existed while its full path measured 262 characters and BepInEx/Mono still failed before chainloader startup. |
 | S1.42AF | **ACCEPTED CURRENT BASELINE** | Path-length-safe packaging successor built directly from S1.42AC. Runtime proved the nested LC SoundAPI binding at 226 characters, normal startup, and the exact 18 Moon / 18 Interior Functional Microwave contract with only the 18 Moon/tag curves scaled by `0.5`. |
+| S1.42AG | **ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED** | Exact Mouth Dog -> Pikmin one-way prevention candidate; full-normal runtime validation outstanding. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
