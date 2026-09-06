@@ -101,4 +101,4 @@ Do **not** arm/build a successor or start a runtime test before this safety revi
 
 ## Canonical Gale workflow
 
-No runtime test is currently pending. When a later candidate reaches runtime testing, use the then-current canonical Gale workflow under `Knowledge/GALE_PROFILE_WORKFLOW.md` and include both the required replacement/import one-liner and the exact build-specific runtime-log uploader in the same response as the test instructions.
+The current repository-driven Gale replacement/import workflow remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. No runtime test is currently pending, but any future candidate that requires Gale replacement must continue to use this canonical v2.4 path unless a later validated workflow authority explicitly supersedes it.
