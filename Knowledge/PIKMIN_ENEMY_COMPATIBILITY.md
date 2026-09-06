@@ -53,7 +53,7 @@ Runtime evidence now proves that this narrow guard **does work for the LethalMin
 
 But S1.42AG is **runtime rejected** because the full asymmetric interaction contract was not achieved. The user directly observed a Mouth Dog visibly target and attack a scrap-carrying Purple Pikmin even though the Pikmin was not harmed by the blocked LethalMin mutation path. The encounter also contains repeated native Mouth Dog noise-targeting diagnostics. These are evidence of a remaining behavior outside the proven `DoCheckInterval()` mutation boundary, but they are not yet sufficient to identify the exact root owner/method.
 
-The same run did not positively prove the intended Pikmin -> Mouth Dog attack/latch path either. Do not infer that reverse-direction behavior is broken merely from a non-event, but treat it as an open validation question for the targeted analysis.
+Reverse-direction Pikmin -> Mouth Dog combat was **not actively tested** in this run. No Pikmin was deliberately thrown/assigned onto the Mouth Dog. Nearby follower Pikmin remaining passive is expected normal behavior, so it is not a regression signal and must not be used to infer that reverse-direction combat is broken. Deliberate Pikmin -> Mouth Dog attack/latch/death-unlatch validation remains a future runtime gate for any successor candidate.
 
 Current rule:
 
@@ -63,7 +63,8 @@ Current rule:
 - Do not accept that guard as the complete solution because a separate Mouth Dog target/attack path remains unresolved.
 - Do not disable `MouthDogPikminEnemy`; native reverse-direction lifecycle ownership must remain intact unless exact source evidence proves a different boundary is required.
 - Do not add guessed fallbacks or broad EnemyAI scanning.
-- Before any successor build, identify the exact current owner/method/path for the remaining target/attack behavior, including whether a carried scrap object's noise/threat behavior is the trigger.
+- Before any successor build, identify the exact current owner/method/path for the remaining Mouth Dog -> Pikmin target/attack behavior, including whether a carried scrap object's noise/threat behavior is the trigger.
+- When a successor reaches runtime validation, deliberately command/throw Pikmin onto the Mouth Dog to test Pikmin -> Mouth Dog attack/latch/death-unlatch behavior; passive follower non-aggression is not that test.
 
 Rejection authority: `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`.
 
