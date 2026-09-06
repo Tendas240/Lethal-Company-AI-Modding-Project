@@ -1,7 +1,7 @@
 # Artifact and Runtime Evidence Integrity
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
-**Authority:** active/accepted profile readability, important DLL provenance, critical runtime-evidence retrieval  
+**Authority:** active/accepted/profile-decision readability, important DLL provenance, critical runtime-evidence retrieval  
 **Machine mirror:** `Current/ARTIFACT_EVIDENCE_INTEGRITY.json`  
 **Last-Validated:** 2026-09-06
 
@@ -15,9 +15,27 @@
 - Acceptance: `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`
 - Runtime index: `RuntimeEvidence/S1.42AF/20260905T223738Z/INDEX.json`
 - Raw runtime log SHA-256: `63df88a3acb0c455bab914fd844767cb50b7384ab4b1ede8bd7cbcb63537d956`
-- Build-specific DLL SHA-256: `41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f`
+- Build-specific Functional Microwave DLL SHA-256: `41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f`
 
 The accepted runtime evidence proves the shortened nested SoundAPI LethalCompany binding path at 226 characters, normal BepInEx/game startup, and the exact Functional Microwave provider contract: CodeRebirth `1.6.9`, DawnLib/Dusk `0.9.25`, `PrioritiseMoons=true`, 18 Moon/tag curves and 18 Interior/tag curves, with only the 18 Moon/tag curves scaled by `0.5`.
+
+## Latest built artifact: S1.42AG — runtime rejected partial fix
+
+- Artifact: `Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z`
+- SHA-256: `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`
+- Readable snapshot: `ProfileSources/S1.42AG/`
+- File index: `ProfileSources/S1.42AG/FILE_INDEX.json`
+- Readable manifest/export: `ProfileSources/S1.42AG/export.r2x`
+- Candidate: `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`
+- Rejection: `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`
+- Project status: `Current/Projektstatus_S1.42AG_REJECTED.json`
+- Runtime index: `RuntimeEvidence/S1.42AG/20260906T085500Z/INDEX.json`
+- Raw runtime log SHA-256: `3e8ca4c8fe045bbd2c62576dbbd5aaba2a226990e6b4af4149481f2672c35dfe`
+- Candidate compatibility DLL SHA-256: `976264a31b85bf3d913d3ad703fa770a666957664d0de5b848a5073b0883d064`
+
+This evidence proves a **partial fix only**. The S1.42AG `Priority.First` prevention guard on exact `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` armed and executed, the prior LethalMin bite/grab/death-timer mutation signature was absent, and `Work state with no task assigned!` fell from 707 in the S1.42AF exposure run to 0. However, the user directly observed a Mouth Dog still visibly targeting and attacking a scrap-carrying Purple Pikmin, and reverse-direction Pikmin -> Mouth Dog combat/latch preservation was not positively proven. S1.42AG is therefore not accepted and is not a safe gameplay base.
+
+The S1.42AG candidate compatibility DLL SHA above is retained as rejected-build provenance only. It does **not** replace any accepted DLL authority below.
 
 ## Accepted predecessor: S1.42AC
 
@@ -54,6 +72,8 @@ The older S1.42AC rejection-era runtime root remains preserved for provenance an
 Source: `Patches/S139CompatibilityFixes/`  
 Accepted DLL SHA-256: `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960`  
 Runtime acceptance reference: `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`
+
+S1.42AG rebuilt the cumulative compatibility DLL as a rejected candidate. Its candidate SHA is retained above and in `Current/133` / `Current/134`; it does not silently replace this accepted-binary provenance entry.
 
 ### S1.42AB interior-normalization DLL inherited through S1.42AF
 
