@@ -32,20 +32,20 @@ ACCEPTED BASELINE
 
 LATEST BUILT ARTIFACT
 - S1.42AG — Mouth Dog Pikmin One-Way Protection
-- status: BUILD PASS RUNTIME VALIDATION OUTSTANDING
+- status: RUNTIME REJECTED PARTIAL FIX
 - SHA-256: 3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee
 - candidate record: Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md
 
 CURRENT EXECUTION STATE
-- active candidate: S1.42AG
-- runtime test outstanding: YES
+- active candidate: NONE
+- runtime test outstanding: NO
 - successor armed: NO
 - BuildSpecs/current.json enabled: false
-- build controller id: IDLE_AFTER_S1.42AG_BUILD_AWAITING_RUNTIME_VALIDATION
+- build controller id: IDLE_AFTER_S1.42AG_RUNTIME_REJECTION_AWAITING_TARGETED_ANALYSIS
 - RuntimeInbox/ACTIVE_BUILD.txt: S1.42AG
 
 EXACT NEXT ACTION
-Import S1.42AG with the canonical Gale v2.4 replacement helper, then runtime-test the exact Mouth Dog / Eyeless Dog -> Pikmin one-way protection under the full normal stack. Require no MouthDog Pikmin bite/grab/death-timer path, preserve Pikmin -> Mouth Dog attack/latch/death cleanup and Mouth Dog -> player attacks, exercise repeated lunge cycles, confirm normal startup/generation and preserved S1.42AF Microwave health, then upload the complete fresh S1.42AG LogOutput.log with the build-specific uploader from Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md.
+Perform targeted repository-native analysis of the remaining Mouth Dog targeting/attack path exposed by the S1.42AG runtime rejection. Use exact current source/runtime evidence to determine why a scrap-carrying Purple Pikmin can still be selected/attacked despite the successful MouthDogPikminEnemy.DoCheckInterval prevention guard, and determine whether the intended Pikmin -> Mouth Dog combat/latch path remains functional. Do not build or arm a successor until the exact owner/method boundary is proved.
 
 RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
