@@ -38,9 +38,9 @@ Use this map before repository search. Open only the topic that matches the user
 
 The current accepted gameplay baseline is **S1.42AF — Path-Length-Safe Microwave Packaging**. The latest built artifact is **S1.42AG — Mouth Dog Pikmin One-Way Protection — runtime rejected / partial fix**. There is no active runtime candidate and no successor is armed.
 
-The previously pending Vanilla V81 MouthDogAI capture has completed successfully. Current Mouth Dog analysis authority is `Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md`, with provenance-safe source evidence under `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/`. `Current/135_MOUTHDOG_V81_SOURCE_CAPTURE_TOOL_WINDOWS_HARDENING_STATE.md` is resolved capture-tool history.
+The MouthDog pre-successor source-analysis gates are now closed. Current analysis authority is `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`. Provenance-safe Vanilla evidence lives under `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/` and `SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/`; exact LethalMin carry/audio evidence remains in `Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt` and `Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`.
 
-The exact next action is the targeted source-evidence extension registered in `Knowledge/CURRENT_LIFECYCLE.md` and `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`: prove Vanilla V81 `EnemyAI.OnCollideWithEnemy()` base behavior and exact LethalMin 1.1.108 `PikminItem.CarryNumerator()` / carry-audio-noise callsites before any successor safety review or build.
+The exact next action is the **successor-specific MouthDog Patch Safety Review** registered in `Knowledge/CURRENT_LIFECYCLE.md` and `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md` under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`. Do not repeat the completed source captures, arm/build a successor, or start a gameplay test before that review closes the exact patch boundary and regression contract.
 
 ## Authority rule
 
@@ -73,7 +73,7 @@ Repository/code search is appropriate for unknown symbols, exact error strings o
 
 The following retained files contain valuable historical/durable evidence but must not be treated as unqualified current-state authority after the overhaul:
 
-- `Current/02_TECHNICAL_BASELINE.md` — mixes durable facts with obsolete S1.41/S1.42S/T current wording;
+- `Current/02_TECHNICAL_BASELINE.md` — mixes durable facts with obsolete S1.41/S1.42S current wording;
 - `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md` — mixes durable/binding interior research with obsolete S1.42U/S1.42V current checkpoint wording.
 
 Their still-live facts have been extracted into semantic topics above; the original files remain provenance/history.
