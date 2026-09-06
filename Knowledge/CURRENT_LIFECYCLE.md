@@ -50,9 +50,11 @@ The corrected provider code was never reached during AE's failing launches. v2.4
 
 The exact S1.42AG `Priority.First` guard on declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` did arm and execute. Runtime proves it successfully blocks the LethalMin Pikmin target/bite/grab/death-timer mutation path before `GrabbedPikmin` bookkeeping or `PikminAI.GrabPikmin(...)`. The accepted S1.42AF run had produced `Biting 2 Pikmin`, `EnemyAttackMouth` attachments, 2.5-second death timers and then 707 `Work state with no task assigned!` warnings. In S1.42AG that warning count is `0`, and the harmful bite/grab signature is absent.
 
-However, the runtime contract was broader than state-mutation prevention. During the S1.42AG test a Mouth Dog visibly targeted and attacked a scrap-carrying Purple Pikmin. The same encounter contains repeated native Mouth Dog noise-targeting diagnostics (`Heard noise!`, `targetPos`, `lastheardnoisePosition`). Those diagnostics are consistent with, but do not by themselves prove, a remaining target/attack path outside the blocked LethalMin dispatcher. The intended reverse direction — Pikmin attacking/latching the Mouth Dog with native death/unlatch/task cleanup — was also not positively proven in that run.
+However, the runtime contract was broader than state-mutation prevention. During the S1.42AG test a Mouth Dog visibly targeted and attacked a scrap-carrying Purple Pikmin. The same encounter contains repeated native Mouth Dog noise-targeting diagnostics (`Heard noise!`, `targetPos`, `lastheardnoisePosition`). Those diagnostics are consistent with, but do not by themselves prove, a remaining target/attack path outside the blocked LethalMin dispatcher.
 
-Therefore S1.42AG is rejected as a partial fix and is **not** a safe gameplay base.
+Reverse-direction Pikmin -> Mouth Dog combat was **not actively exercised** in this run. No Pikmin was deliberately thrown/assigned onto the Mouth Dog for an attack/latch test. Nearby follower Pikmin merely remaining passive is expected normal behavior and is not evidence of a reverse-direction defect. That direction therefore has no pass/fail result from S1.42AG and must be validated deliberately in a future runtime candidate.
+
+Therefore S1.42AG is rejected as a partial fix because the observed Mouth Dog -> Pikmin targeting/attack behavior alone violates the intended one-way contract; S1.42AG is **not** a safe gameplay base.
 
 The inherited S1.42AF Functional Microwave gate remained healthy in S1.42AG: `PrioritiseMoons=true`, 18 Moon/tag curves, 18 Interior/tag curves, 18 Moon/tag curves scaled by `0.5`, Interior curves validation-only. The SoundAPI `RoundManagerPatch::Reporting()` `TypeLoadException` also existed in the accepted S1.42AF evidence and is not classified as an S1.42AG regression.
 
@@ -70,6 +72,8 @@ The current repository-driven Gale replacement/import workflow remains `RuntimeT
 
 ## Exact next project action
 
-Perform **targeted repository-native analysis of the remaining Mouth Dog targeting/attack path** exposed by the S1.42AG rejection. Use exact current source and runtime evidence to determine why a scrap-carrying Purple Pikmin can still be selected/attacked despite the successful `MouthDogPikminEnemy.DoCheckInterval()` prevention guard, and determine whether the intended Pikmin -> Mouth Dog attack/latch path remains functional.
+Perform **targeted repository-native analysis of the remaining Mouth Dog targeting/attack path** exposed by the S1.42AG rejection. Use exact current source and runtime evidence to determine why a scrap-carrying Purple Pikmin can still be selected/attacked despite the successful `MouthDogPikminEnemy.DoCheckInterval()` prevention guard.
 
-Do **not** guess a fallback, do **not** disable the `MouthDogPikminEnemy` adapter, and do **not** build or arm a successor until the exact owner/method boundary is proved under the project-local patch safety policy.
+Reverse-direction Pikmin -> Mouth Dog combat is **not a current failure signal**. Passive follower non-aggression is expected. Reserve a deliberate player-directed Pikmin attack/latch/death-unlatch validation for a future runtime candidate after the remaining Mouth Dog -> Pikmin owner/method boundary has been proved.
+
+Do **not** guess a fallback, do **not** disable the `MouthDogPikminEnemy` adapter, and do **not** build or arm a successor until the exact remaining Mouth Dog -> Pikmin owner/method boundary is proved under the project-local patch safety policy.

@@ -28,16 +28,18 @@ S1.42AG proved a useful but incomplete boundary:
 - the prior 707 `Work state with no task assigned!` warning aftermath fell to 0;
 - the inherited S1.42AF Functional Microwave contract remained healthy.
 
-However, the user directly observed a Mouth Dog visibly target and attack a scrap-carrying Purple Pikmin. The same encounter contains repeated native Mouth Dog `Heard noise!` / `targetPos` diagnostics. Those lines support investigation of a second/native path but do not yet prove its exact owner or whether the carried scrap was the trigger. The reverse-direction Pikmin -> Mouth Dog attack/latch behavior also was not positively proven in this run.
+However, the user directly observed a Mouth Dog visibly target and attack a scrap-carrying Purple Pikmin. The same encounter contains repeated native Mouth Dog `Heard noise!` / `targetPos` diagnostics. Those lines support investigation of a second/native path but do not yet prove its exact owner or whether the carried scrap was the trigger.
 
-The next analysis must therefore determine the exact current owner/method/path for this remaining target/attack behavior, including the carried-scrap/noise possibility, while preserving:
+Reverse-direction Pikmin -> Mouth Dog combat was **not actively exercised** in this run. No Pikmin was deliberately thrown/assigned onto the Mouth Dog; nearby follower Pikmin remaining passive is expected normal behavior and is not evidence of a defect. Reverse-direction attack/latch/death-unlatch behavior therefore remains a future deliberate runtime validation gate, not part of the current failure finding.
+
+The next analysis must therefore determine the exact current owner/method/path for the remaining Mouth Dog -> Pikmin target/attack behavior, including the carried-scrap/noise possibility, while preserving:
 
 - the enabled `MouthDogPikminEnemy` adapter;
 - native Pikmin -> Mouth Dog combat/latch/death cleanup;
 - Mouth Dog -> player attacks;
 - the proven S1.42AG prevention-before-mutation concept where it remains valid.
 
-Do not add guessed fallbacks, broad EnemyAI scanning, or a whole-component disable. Do not arm/build a successor until the exact boundary is proved under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
+Do not add guessed fallbacks, broad EnemyAI scanning, or a whole-component disable. Do not arm/build a successor until the exact remaining Mouth Dog -> Pikmin boundary is proved under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
 
 ## Remaining deferred independent gameplay/compatibility scopes
 

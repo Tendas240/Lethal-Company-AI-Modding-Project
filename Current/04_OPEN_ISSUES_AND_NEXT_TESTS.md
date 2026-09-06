@@ -27,22 +27,22 @@ S1.42AG successfully proved a narrow partial fix:
 
 S1.42AG is nevertheless rejected because the full one-way interaction contract failed: the user directly observed a Mouth Dog visibly target and attack a scrap-carrying Purple Pikmin. The Pikmin was not visibly harmed, which is consistent with the successful mutation guard, but the Dog should not have selected/attacked it at all. The same encounter contains native Mouth Dog `Heard noise!` / `targetPos` diagnostics. Those diagnostics are investigation evidence, not yet a proved root cause.
 
-The same run also did not positively prove that follower Pikmin could still attack/latch the Mouth Dog and complete native death/unlatch/task cleanup. Do not infer breakage solely from the non-event; this remains a targeted validation question.
+Reverse-direction Pikmin -> Mouth Dog combat was **not actively exercised** in this run. No Pikmin was deliberately thrown/assigned onto the Mouth Dog. Nearby follower Pikmin remaining passive is expected normal behavior and is not evidence of a defect. Reverse-direction attack/latch/death-unlatch therefore remains a future deliberate runtime validation gate for a successor candidate.
 
 ## Exact next action
 
-Perform **targeted repository-native analysis** of the remaining Mouth Dog targeting/attack path:
+Perform **targeted repository-native analysis** of the remaining Mouth Dog -> Pikmin targeting/attack path:
 
 1. start from `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md` and `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`;
 2. inspect exact current source/runtime ownership for the native Mouth Dog target/noise/attack path outside `MouthDogPikminEnemy.DoCheckInterval()`;
 3. explicitly test the hypothesis that a scrap-carrying Pikmin or carried scrap noise/threat representation can attract the Dog, but do not assume it without source evidence;
-4. determine whether the intended native Pikmin -> Mouth Dog combat/latch path is still present and what exact method/adapter owns it;
+4. preserve native Pikmin -> Mouth Dog combat/latch ownership, but do not treat passive follower non-aggression as a current failure or require a reverse-direction gameplay rerun during this analysis segment;
 5. preserve Mouth Dog -> player attacks and the enabled `MouthDogPikminEnemy` adapter;
 6. preserve the proven prevention-before-mutation concept from S1.42AG where valid;
 7. do not add guessed fallback patches, broad EnemyAI scanning, manual Pikmin state reconstruction, or whole-component disable;
-8. do not arm or build a successor until the exact remaining owner/method boundary is proved and reviewed under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
+8. do not arm or build a successor until the exact remaining Mouth Dog -> Pikmin owner/method boundary is proved and reviewed under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
 
-No new gameplay run is required at this point. The next step is source/runtime analysis, not another blind runtime retry.
+No new gameplay run is required at this point. The next step is source/runtime analysis of the remaining Dog -> Pikmin path, not another blind runtime retry. A future candidate's runtime gate must deliberately command/throw Pikmin onto the Mouth Dog to validate Pikmin -> Mouth Dog attack/latch/death-unlatch behavior.
 
 ## Interior findings / deferred LC Office scope
 

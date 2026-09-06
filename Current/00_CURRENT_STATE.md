@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform targeted repository-native analysis of the remaining Mouth Dog targeting/attack path exposed by the S1.42AG runtime rejection. Use exact current source/runtime evidence to determine why a scrap-carrying Purple Pikmin can still be selected/attacked despite the successful MouthDogPikminEnemy.DoCheckInterval prevention guard, and determine whether the intended Pikmin -> Mouth Dog combat/latch path remains functional. Do not build or arm a successor until the exact owner/method boundary is proved.
+Perform targeted repository-native analysis of the remaining Mouth Dog targeting/attack path exposed by the S1.42AG runtime rejection. Use exact current source/runtime evidence to determine why a scrap-carrying Purple Pikmin can still be selected/attacked despite the successful MouthDogPikminEnemy.DoCheckInterval prevention guard. Reverse-direction Pikmin -> Mouth Dog combat was not actively tested in this run; passive follower non-aggression is expected and must not be treated as a defect. Reserve deliberate Pikmin -> Mouth Dog attack/latch validation for a future runtime candidate. Do not build or arm a successor until the exact remaining Mouth Dog -> Pikmin owner/method boundary is proved.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

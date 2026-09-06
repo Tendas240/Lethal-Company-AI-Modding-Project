@@ -32,7 +32,7 @@ Accepted: **S1.42AF — Path-Length-Safe Microwave Packaging**, SHA-256 `6a82a42
 Latest built: **S1.42AG — Mouth Dog Pikmin One-Way Protection**, SHA-256 `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`, status **RUNTIME REJECTED PARTIAL FIX**.  
 Active candidate: **none**. Runtime test: **none pending**. Successor: **not armed**.
 
-Exact next action: Perform targeted repository-native analysis of the remaining Mouth Dog targeting/attack path exposed by the S1.42AG runtime rejection. Use exact current source/runtime evidence to determine why a scrap-carrying Purple Pikmin can still be selected/attacked despite the successful MouthDogPikminEnemy.DoCheckInterval prevention guard, and determine whether the intended Pikmin -> Mouth Dog combat/latch path remains functional. Do not build or arm a successor until the exact owner/method boundary is proved.
+Exact next action: Perform targeted repository-native analysis of the remaining Mouth Dog targeting/attack path exposed by the S1.42AG runtime rejection. Use exact current source/runtime evidence to determine why a scrap-carrying Purple Pikmin can still be selected/attacked despite the successful MouthDogPikminEnemy.DoCheckInterval prevention guard. Reverse-direction Pikmin -> Mouth Dog combat was not actively tested in this run; passive follower non-aggression is expected and must not be treated as a defect. Reserve deliberate Pikmin -> Mouth Dog attack/latch validation for a future runtime candidate. Do not build or arm a successor until the exact remaining Mouth Dog -> Pikmin owner/method boundary is proved.
 
 ## Mandatory runtime-test UX
 
