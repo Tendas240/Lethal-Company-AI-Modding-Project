@@ -41,11 +41,11 @@ CURRENT EXECUTION STATE
 - runtime test outstanding: NO
 - successor armed: NO
 - BuildSpecs/current.json enabled: false
-- build controller id: IDLE_AFTER_MOUTHDOG_V81_CAPTURE_AWAITING_TARGETED_SOURCE_EXTENSION
+- build controller id: IDLE_AFTER_MOUTHDOG_SOURCE_BOUNDARIES_AWAITING_PATCH_SAFETY_REVIEW
 - RuntimeInbox/ACTIVE_BUILD.txt: S1.42AG
 
 EXACT NEXT ACTION
-Extend source evidence repository-natively before any successor: inspect the exact Vanilla V81 EnemyAI.OnCollideWithEnemy() base contract and exact LethalMin 1.1.108 PikminItem.CarryNumerator()/carry-item audio/noise callsites. Current V81 MouthDogAI evidence already proves DetectNoise is position-based and OnCollideWithEnemy can lunge/HitEnemy(2) against generic EnemyAI; exact LethalMin evidence proves PikminAI inherits EnemyAI and can emit PlayAudibleNoise while the current config has Dont Make Audible Noises=false. The observed Purple Pikmin carried GoldBar(Clone), but the GoldBar itself as the causal noise source is not yet proved or excluded. Do not repeat the successful MouthDog capture, do not build or arm a successor, and do not start a gameplay test until the base-method and carry/noise boundaries are proved and patch-safety review is complete.
+Complete the successor-specific Mouth Dog Patch Safety Review under Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md using the now-closed source boundaries. Exact Vanilla V81 EnemyAI.OnCollideWithEnemy() is proven debug-only with no gameplay/lifecycle mutation. Exact LethalMin 1.1.108 PikminItem.CarryNumerator() repeatedly plays ItemCarry through each carrying Pikmin, and with Dont Make Audible Noises=false those Pikmin sounds can emit audible noise at the carrier position. Keep S1.42AF as the accepted base and S1.42AG as the rejected partial fix. Define the smallest exact Harmony boundary, preserve Mouth Dog -> player and native Pikmin -> Mouth Dog lifecycle, and specify one-variable build/runtime regression gates including deliberate reverse-direction validation. Do not arm/build a successor or start a runtime test until the safety review is complete.
 
 RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
