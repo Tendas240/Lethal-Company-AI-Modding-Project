@@ -38,9 +38,9 @@
   "active_candidate": null,
   "runtime_test_outstanding": false,
   "selected_scope": {
-    "scope_id": "MOUTHDOG_REMAINING_TARGETING_PATH_ANALYSIS",
-    "title": "Remaining Mouth Dog Pikmin Native Collision / Noise Source Boundary",
-    "status": "TARGETED_SOURCE_EXTENSION_REQUIRED_NOT_ARMED_FOR_BUILD",
+    "scope_id": "MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW",
+    "title": "Mouth Dog Pikmin One-Way Protection Successor Safety Review",
+    "status": "SOURCE_BOUNDARIES_PROVED_AWAITING_PATCH_SAFETY_REVIEW_NOT_ARMED_FOR_BUILD",
     "accepted_baseline": "S1.42AF",
     "rejected_candidate": "S1.42AG",
     "runtime_rejection": "Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md",
@@ -48,68 +48,41 @@
     "topic_authority": "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md",
     "patch_safety_policy": "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md",
     "code": "Patches/S139CompatibilityFixes/Plugin.cs",
-    "source_inspection_tool": "AnalysisTools/InspectMouthDogV81.ps1",
-    "source_inspection_tool_introduced_commit": "9bda16c9be86ad4c0d752f08aebb9cf6cf8fcad5",
-    "source_inspection_tool_current_hardened_commit": "553577cc493f00d7908837f5b016f2bb30ed3fdd",
-    "source_capture_hardening_record": "Current/135_MOUTHDOG_V81_SOURCE_CAPTURE_TOOL_WINDOWS_HARDENING_STATE.md",
-    "current_analysis_record": "Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md",
-    "source_capture_execution_status": "SUCCESS_CAPTURED_AND_PROVENANCE_VERIFIED",
-    "source_capture_command": "$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/AnalysisTools/InspectMouthDogV81.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content",
-    "source_capture_resolved_failures": [
-      {
-        "failure": "LOCAL_NUGET_SOURCES_DISABLED_OR_ABSENT",
-        "observed_error": "No NuGet sources are defined or enabled",
-        "fix_commit": "85ab213ca52f50ff629110429ee26b547fff108f",
-        "resolution": "Use a temporary explicit nuget.org-only config for the isolated ilspycmd installation without modifying global NuGet configuration."
-      },
-      {
-        "failure": "DOTNET_INSTALL_OUTPUT_CONTAMINATED_HELPER_RETURN_VALUE",
-        "fix_commit": "cbc66e95ff4311f41fb3943230cc1de801742880",
-        "resolution": "Capture dotnet-install output and re-emit it only through Write-Host; fail closed unless the helper returns exactly one launcher path."
-      },
-      {
-        "failure": "ILSPYCMD_EXE_SHIM_COULD_NOT_RESOLVE_TEMPORARY_DOTNET_RUNTIME",
-        "observed_error": "You must install or update .NET to run this application.",
-        "fix_commit": "6781b8c881759417fac9987629826fa5de1542cf",
-        "resolution": "Run exactly one installed ilspycmd.dll through the exact selected or bootstrapped temporary dotnet.exe via a temporary launcher."
-      },
-      {
-        "failure": "FOCUSED_REPORT_BLANK_LINE_PARAMETER_BINDING",
-        "observed_error": "Cannot bind argument to parameter 'Lines' because it is an empty string.",
-        "fix_commit": "0b3da73c5aad2efc26a0aba65863a552f2bc0af9",
-        "resolution": "Allow legitimate blank decompiler source lines through the exact Find-MethodStart string-array parameter without changing the decompile or publication scope."
-      },
-      {
-        "failure": "FOCUSED_EXTRACTION_SAFETY_CEILING_OVERCOUNT",
-        "observed_error": "Focused extraction expanded to 657 source lines, above the 500-line safety ceiling. Refusing to publish an over-broad decompile.",
-        "fix_commit": "553577cc493f00d7908837f5b016f2bb30ed3fdd",
-        "resolution": "Remove the unconditional 73-line minimum expansion, keep only source from the nearest method declaration through 28 lines after the last relevant marker, merge overlapping windows, and apply the unchanged 500-line publication ceiling to unique selected source lines."
-      }
-    ],
-    "source_evidence_status": "AUTHORITATIVE_CAPTURE_AVAILABLE",
-    "source_evidence_root": "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/",
-    "source_evidence_branch": "source-evidence/mouthdog-v81-20260906t121738z",
-    "source_evidence_commit": "a618b19bfc30234ca556c924d681d43b2c13d1d9",
-    "source_evidence_manifest": "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json",
-    "source_evidence_report": "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MOUTHDOGAI_FOCUSED_DECOMPILE.txt",
+    "current_analysis_record": "Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md",
+    "mouthdog_source_analysis_record": "Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md",
+    "mouthdog_source_evidence_root": "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/",
+    "mouthdog_source_evidence_commit": "a618b19bfc30234ca556c924d681d43b2c13d1d9",
+    "enemyai_collision_source_tool": "AnalysisTools/InspectEnemyAICollisionV81.ps1",
+    "enemyai_collision_capture_status": "SUCCESS_CAPTURED_PROVENANCE_VERIFIED_AND_INTEGRATED",
+    "enemyai_collision_evidence_root": "SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/",
+    "enemyai_collision_evidence_branch": "source-evidence/enemyai-collision-v81-20260906t204535z",
+    "enemyai_collision_evidence_commit": "131ba3f33d443466b6f122eadb35e83064e5d59d",
+    "enemyai_collision_integrated_main": "bc84c9d33ab632c1b48207112a3485878e9129e2",
+    "enemyai_collision_evidence_manifest": "SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/MANIFEST.json",
+    "enemyai_collision_evidence_report": "SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/ENEMYAI_ONCOLLIDEWITHENEMY_FOCUSED_DECOMPILE.txt",
+    "enemyai_collision_published_report_sha256": "7ee45c2dd113b413ba1614a51b453b1c7b2953cd055f82ff75debf824a1da2b6",
     "source_assembly_sha256": "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
     "steam_buildid": "22825947",
-    "published_report_sha256": "0768404f72cb2c7a56b78e63519f6ed03610e6046c6d21fed7ba0c2668864097",
+    "lethalmin_carry_source_evidence": "Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt",
+    "lethalmin_audio_source_evidence": "Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt",
+    "carry_noise_contract_status": "PROVED_CARRIER_PIKMIN_AUDIBLE_NOISE_CAPABILITY",
     "currently_irrelevant_actions": [
-      "Do not repeat the successful InspectMouthDogV81.ps1 capture merely to reproduce existing evidence.",
-      "Do not configure global NuGet sources or manually install .NET/ILSpy unless a future tool revision newly proves that necessary.",
-      "Do not pass -AssemblyPath or ask for a local repository clone/manual Assembly-CSharp.dll upload for the already captured MouthDogAI evidence.",
+      "Do not repeat the successful InspectMouthDogV81.ps1 capture.",
+      "Do not repeat the successful InspectEnemyAICollisionV81.ps1 capture merely to reproduce integrated evidence.",
+      "Do not configure global NuGet sources or manually install .NET/ILSpy for the already closed source proofs.",
+      "Do not pass -AssemblyPath or ask for a local repository clone/manual Assembly-CSharp.dll upload for the already closed source proofs.",
       "Do not repeat the S1.42AG gameplay run or request another S1.42AG runtime-log upload.",
-      "Do not build or arm a successor before the remaining base EnemyAI collision contract and carry/noise contract are proved."
+      "Do not perform another source-capture step before the successor-specific patch-safety review unless the review identifies a genuinely new unresolved source boundary.",
+      "Do not build or arm a successor before the patch-safety review is complete."
     ],
-    "finding": "Provenance-safe Vanilla V81 evidence now proves a position-based MouthDogAI noise path through DetectNoise/noisePositionGuess and a separate generic MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI) lunge/damage path. Exact LethalMin 1.1.108 evidence proves PikminAI inherits EnemyAI and can emit RoundManager.PlayAudibleNoise at its own position while the accepted config has Dont Make Audible Noises=false. A Purple Pikmin did carry GoldBar(Clone), but the carried GoldBar itself as the causal Mouth Dog noise source is not yet proved or excluded. S1.42AG remains rejected; reverse-direction Pikmin -> Mouth Dog combat remains a future deliberate runtime gate.",
-    "analysis_contract": "Before any successor, extend source evidence only far enough to prove two remaining contracts: Vanilla V81 EnemyAI.OnCollideWithEnemy() base behavior/side effects, because MouthDogAI.OnCollideWithEnemy() calls base before its generic EnemyAI lunge/damage logic; and exact LethalMin 1.1.108 PikminItem.CarryNumerator()/carry-item audio and PlayAudibleNoise callsites, so the narrower carried-scrap/noise causality is proved or rejected rather than inferred. Then apply the project-local patch safety policy and complete a successor-specific safety review. Preserve the enabled MouthDogPikminEnemy adapter, the proven S1.42AG prevention-before-mutation concept where still applicable, native Pikmin -> Mouth Dog combat/lifecycle and Mouth Dog -> player behavior. Do not arm/build or start a runtime test before those source boundaries are proved."
+    "finding": "All source boundaries required by the prior pre-successor analysis are now closed. Exact Vanilla V81 EnemyAI.OnCollideWithEnemy() is debug-only and has no gameplay/lifecycle mutation. Exact LethalMin 1.1.108 PikminItem.CarryNumerator() repeatedly calls PikminAI.PlayAudioOnLocalClient(\"ItemCarry\", ...) for each carrier; with Dont Make Audible Noises=false, Pikmin audio can emit RoundManager.PlayAudibleNoise at the carrying Pikmin's position. Vanilla MouthDogAI remains position-based for noise pursuit and has an independent generic EnemyAI collision lunge/damage path; PikminAI inherits EnemyAI. The stronger semantic GoldBar-target hypothesis is unsupported/rejected, while exact runtime causality of the observed S1.42AG pursuit remains unproved. S1.42AG remains rejected partial fix; S1.42AF remains the accepted base.",
+    "analysis_contract": "Next perform the successor-specific Patch Safety Review under Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md. Determine the smallest exact Harmony boundary for MouthDog -> Pikmin protection, including exact declaring type/signature/Pikmin identification, base/inheritance/lifecycle responsibilities, whether the proven S1.42AG DoCheckInterval prevention guard remains part of the successor, and explicit preservation of MouthDog -> player plus native Pikmin -> MouthDog attack/latch/death/unlatch/task ownership. Define one-variable build delta and mandatory runtime regression gates including deliberate reverse-direction Pikmin -> MouthDog validation. Do not arm/build or start a runtime test until this review is complete."
   },
-  "next_action": "Extend source evidence repository-natively before any successor: inspect the exact Vanilla V81 EnemyAI.OnCollideWithEnemy() base contract and exact LethalMin 1.1.108 PikminItem.CarryNumerator()/carry-item audio/noise callsites. Current V81 MouthDogAI evidence already proves DetectNoise is position-based and OnCollideWithEnemy can lunge/HitEnemy(2) against generic EnemyAI; exact LethalMin evidence proves PikminAI inherits EnemyAI and can emit PlayAudibleNoise while the current config has Dont Make Audible Noises=false. The observed Purple Pikmin carried GoldBar(Clone), but the GoldBar itself as the causal noise source is not yet proved or excluded. Do not repeat the successful MouthDog capture, do not build or arm a successor, and do not start a gameplay test until the base-method and carry/noise boundaries are proved and patch-safety review is complete.",
+  "next_action": "Complete the successor-specific Mouth Dog Patch Safety Review under Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md using the now-closed source boundaries. Exact Vanilla V81 EnemyAI.OnCollideWithEnemy() is proven debug-only with no gameplay/lifecycle mutation. Exact LethalMin 1.1.108 PikminItem.CarryNumerator() repeatedly plays ItemCarry through each carrying Pikmin, and with Dont Make Audible Noises=false those Pikmin sounds can emit audible noise at the carrier position. Keep S1.42AF as the accepted base and S1.42AG as the rejected partial fix. Define the smallest exact Harmony boundary, preserve Mouth Dog -> player and native Pikmin -> Mouth Dog lifecycle, and specify one-variable build/runtime regression gates including deliberate reverse-direction validation. Do not arm/build a successor or start a runtime test until the safety review is complete.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
-    "build_id": "IDLE_AFTER_MOUTHDOG_V81_CAPTURE_AWAITING_TARGETED_SOURCE_EXTENSION",
+    "build_id": "IDLE_AFTER_MOUTHDOG_SOURCE_BOUNDARIES_AWAITING_PATCH_SAFETY_REVIEW",
     "build_base_profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
     "build_base_sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",
