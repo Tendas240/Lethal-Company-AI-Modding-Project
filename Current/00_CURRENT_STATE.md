@@ -34,14 +34,14 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
-- Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_S1.42AG_PLANNED_NOT_ARMED`)
+- Successor armed: **yes**
+- `BuildSpecs/current.json`: enabled (`S1.42AG`)
 - Guarded build base: `Profiles/LC V1 S1.42AF Microwave Fix.r2z` / `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF`
 
 ## Exact next action
 
-Implement the exact validated LethalMin.MouthDogPikminEnemy.DoCheckInterval() Priority.First prevention-only guard in Patches/S139CompatibilityFixes/Plugin.cs, prepare/arm the S1.42AG build specification atomically from accepted S1.42AF, and build S1.42AG repository-native. Do not declare a runtime test outstanding until a successful S1.42AG artifact exists.
+Build the armed S1.42AG profile repository-native from accepted S1.42AF. Validate that only export.r2x and the existing S139CompatibilityFixes DLL member change, with no package/config drift. Do not declare a runtime test outstanding until the successful artifact hash and injected DLL hash are recorded and the build controller is returned to disabled.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

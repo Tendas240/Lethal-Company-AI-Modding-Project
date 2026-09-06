@@ -1,15 +1,39 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_S1.42AG_PLANNED_NOT_ARMED",
+  "enabled": true,
+  "build_id": "S1.42AG",
   "base_profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
   "base_sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z",
+  "profile_name": "LC V1 S1.42AG Mouth Dog Fix",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
   "config_patches": [],
-  "local_plugin_builds": [],
-  "text_assertions": []
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S139CompatibilityFixes/bin/Release/netstandard2.1/S139CompatibilityFixes.dll",
+      "archive_path": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "contains": "Functional Microwave | Allow Editing Config = true"
+    },
+    {
+      "path": "BepInEx/config/CodeRebirth.cfg",
+      "contains": "Functional Microwave | Volume = 0.15"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Eyeless Dog Bite Cooldown = 5.5"
+    },
+    {
+      "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "contains": "Eyeless Dog Bite Limit = 7"
+    }
+  ]
 }

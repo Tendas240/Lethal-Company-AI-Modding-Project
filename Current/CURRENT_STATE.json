@@ -39,7 +39,7 @@
   "selected_scope": {
     "build_id": "S1.42AG",
     "title": "Mouth Dog Pikmin One-Way Protection",
-    "status": "PLANNED_NOT_BUILT_NOT_ARMED",
+    "status": "IMPLEMENTED_BUILD_ARMED_ARTIFACT_PENDING",
     "finding": "Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md",
     "source_evidence": "Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt",
     "patch_boundary": "Current/131_MOUTHDOG_PIKMIN_PATCH_BOUNDARY_AND_SUCCESSOR_PLAN.md",
@@ -48,13 +48,14 @@
     "topic_authority": "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md",
     "patch_safety_policy": "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md",
     "code": "Patches/S139CompatibilityFixes/Plugin.cs",
-    "target_contract": "Block exact LethalMin.MouthDogPikminEnemy.DoCheckInterval() before Mouth Dog -> Pikmin target collection/bite/grab dispatch while preserving the enabled adapter, native Pikmin -> Mouth Dog combat/lifecycle, and Mouth Dog -> player behavior."
+    "target_contract": "Block exact LethalMin.MouthDogPikminEnemy.DoCheckInterval() before Mouth Dog -> Pikmin target collection/bite/grab dispatch while preserving the enabled adapter, native Pikmin -> Mouth Dog combat/lifecycle, and Mouth Dog -> player behavior.",
+    "profile": "Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z"
   },
-  "next_action": "Implement the exact validated LethalMin.MouthDogPikminEnemy.DoCheckInterval() Priority.First prevention-only guard in Patches/S139CompatibilityFixes/Plugin.cs, prepare/arm the S1.42AG build specification atomically from accepted S1.42AF, and build S1.42AG repository-native. Do not declare a runtime test outstanding until a successful S1.42AG artifact exists.",
+  "next_action": "Build the armed S1.42AG profile repository-native from accepted S1.42AF. Validate that only export.r2x and the existing S139CompatibilityFixes DLL member change, with no package/config drift. Do not declare a runtime test outstanding until the successful artifact hash and injected DLL hash are recorded and the build controller is returned to disabled.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
-    "build_enabled": false,
-    "build_id": "IDLE_S1.42AG_PLANNED_NOT_ARMED",
+    "build_enabled": true,
+    "build_id": "S1.42AG",
     "build_base_profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
     "build_base_sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",

@@ -29,9 +29,9 @@ SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
 Latest built artifact: **S1.42AF — Path-Length-Safe Microwave Packaging — RUNTIME ACCEPTED**  
 SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
 
-Active candidate: **none**. Runtime test outstanding: **no**. Build successor armed: **no**.
+Active candidate: **none**. Runtime test outstanding: **no**. Build successor armed: **yes**.
 
-Exact next action: Implement the exact validated LethalMin.MouthDogPikminEnemy.DoCheckInterval() Priority.First prevention-only guard in Patches/S139CompatibilityFixes/Plugin.cs, prepare/arm the S1.42AG build specification atomically from accepted S1.42AF, and build S1.42AG repository-native. Do not declare a runtime test outstanding until a successful S1.42AG artifact exists.
+Exact next action: Build the armed S1.42AG profile repository-native from accepted S1.42AF. Validate that only export.r2x and the existing S139CompatibilityFixes DLL member change, with no package/config drift. Do not declare a runtime test outstanding until the successful artifact hash and injected DLL hash are recorded and the build controller is returned to disabled.
 
 ## Semantic navigation
 

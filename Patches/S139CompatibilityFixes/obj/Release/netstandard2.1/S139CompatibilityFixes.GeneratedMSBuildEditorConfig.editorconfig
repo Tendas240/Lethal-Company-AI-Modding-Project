@@ -1,0 +1,8 @@
+is_global = true
+build_property.RootNamespace = S139CompatibilityFixes
+build_property.ProjectDir = /home/runner/work/Lethal-Company-AI-Modding-Project/Lethal-Company-AI-Modding-Project/Patches/S139CompatibilityFixes/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 

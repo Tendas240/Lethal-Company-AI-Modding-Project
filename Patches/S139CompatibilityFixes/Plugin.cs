@@ -79,6 +79,7 @@ namespace S139CompatibilityFixes
             // is an optional runtime dependency and does not need a compile-time DLL.
             yield return null;
             PatchLethalMinEnemyGrabPrevention();
+            PatchMouthDogPikminProtection();
             PatchBaboonHawkPikminProtection();
         }
 
@@ -148,6 +149,65 @@ namespace S139CompatibilityFixes
             {
                 Logger.LogError(
                     $"[LethalMinEnemyGrabGuard] Failed to patch exact PikminAI.GrabPikmin: " +
+                    $"{ex.GetType().Name}: {ex.Message}");
+            }
+        }
+
+        private void PatchMouthDogPikminProtection()
+        {
+            Type mouthDogPikminEnemyType = AccessTools.TypeByName("LethalMin.MouthDogPikminEnemy");
+            if (mouthDogPikminEnemyType == null)
+            {
+                Logger.LogError(
+                    "[MouthDogPikminGuard] LethalMin.MouthDogPikminEnemy was not found. " +
+                    "Exact Mouth Dog -> Pikmin prevention is NOT active.");
+                return;
+            }
+
+            MethodInfo doCheckInterval = mouthDogPikminEnemyType.GetMethod(
+                "DoCheckInterval",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly,
+                null,
+                Type.EmptyTypes,
+                null);
+
+            bool valid =
+                doCheckInterval != null &&
+                doCheckInterval.DeclaringType == mouthDogPikminEnemyType &&
+                !doCheckInterval.IsStatic &&
+                doCheckInterval.ReturnType == typeof(void) &&
+                doCheckInterval.GetParameters().Length == 0 &&
+                doCheckInterval.GetMethodBody() != null;
+
+            if (!valid)
+            {
+                Logger.LogError(
+                    "[MouthDogPikminGuard] Exact declared instance " +
+                    "LethalMin.MouthDogPikminEnemy.DoCheckInterval() contract did not validate. " +
+                    "Refusing to install a guessed fallback.");
+                return;
+            }
+
+            try
+            {
+                Harmony.Patch(
+                    doCheckInterval,
+                    prefix: new HarmonyMethod(
+                        typeof(MouthDogPikminProtection),
+                        nameof(MouthDogPikminProtection.Prefix))
+                    {
+                        priority = Priority.First
+                    });
+
+                Logger.LogInfo(
+                    "[MouthDogPikminGuard] Patched exact declared " +
+                    "LethalMin.MouthDogPikminEnemy.DoCheckInterval() with a Priority.First prevention-only prefix. " +
+                    "The adapter remains enabled; native Pikmin -> Mouth Dog combat/lifecycle and Mouth Dog -> player behavior remain owned by their native paths.");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(
+                    $"[MouthDogPikminGuard] Failed to patch exact MouthDogPikminEnemy.DoCheckInterval: " +
                     $"{ex.GetType().Name}: {ex.Message}");
             }
         }
@@ -1339,6 +1399,28 @@ namespace S139CompatibilityFixes
 
             if (value is UnityEngine.Object unityObject)
                 return unityObject == null;
+
+            return false;
+        }
+    }
+
+    internal static class MouthDogPikminProtection
+    {
+        private static readonly HashSet<int> LoggedAdapterIds = new HashSet<int>();
+
+        public static bool Prefix(object __instance)
+        {
+            int id = 0;
+            if (__instance is UnityEngine.Object unityObject && unityObject != null)
+                id = unityObject.GetInstanceID();
+
+            if (id == 0 || LoggedAdapterIds.Add(id))
+            {
+                Plugin.Log.LogWarning(
+                    "[MouthDogPikminGuard] Blocked LethalMin MouthDogPikminEnemy.DoCheckInterval before " +
+                    "Pikmin target collection, bite RPC dispatch, GrabbedPikmin bookkeeping, or GrabPikmin state mutation. " +
+                    "MouthDogPikminEnemy remains enabled for native reverse-direction lifecycle handling.");
+            }
 
             return false;
         }

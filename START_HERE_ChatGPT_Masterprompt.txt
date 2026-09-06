@@ -40,13 +40,13 @@ LATEST BUILT ARTIFACT
 CURRENT EXECUTION STATE
 - active candidate: NONE
 - runtime test outstanding: NO
-- successor armed: NO
-- BuildSpecs/current.json enabled: false
-- build controller id: IDLE_S1.42AG_PLANNED_NOT_ARMED
+- successor armed: YES
+- BuildSpecs/current.json enabled: true
+- build controller id: S1.42AG
 - RuntimeInbox/ACTIVE_BUILD.txt: S1.42AF
 
 EXACT NEXT ACTION
-Implement the exact validated LethalMin.MouthDogPikminEnemy.DoCheckInterval() Priority.First prevention-only guard in Patches/S139CompatibilityFixes/Plugin.cs, prepare/arm the S1.42AG build specification atomically from accepted S1.42AF, and build S1.42AG repository-native. Do not declare a runtime test outstanding until a successful S1.42AG artifact exists.
+Build the armed S1.42AG profile repository-native from accepted S1.42AF. Validate that only export.r2x and the existing S139CompatibilityFixes DLL member change, with no package/config drift. Do not declare a runtime test outstanding until the successful artifact hash and injected DLL hash are recorded and the build controller is returned to disabled.
 
 RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
