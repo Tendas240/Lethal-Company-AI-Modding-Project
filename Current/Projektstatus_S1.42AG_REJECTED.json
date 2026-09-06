@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "build_id": "S1.42AG",
+  "title": "Mouth Dog Pikmin One-Way Protection",
+  "status": "RUNTIME_REJECTED_PARTIAL_FIX",
+  "accepted_baseline": "S1.42AF",
+  "profile": "Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z",
+  "profile_sha256": "3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee",
+  "compatibility_dll_sha256": "976264a31b85bf3d913d3ad703fa770a666957664d0de5b848a5073b0883d064",
+  "runtime_evidence": "RuntimeEvidence/S1.42AG/20260906T085500Z/",
+  "runtime_log_sha256": "3e8ca4c8fe045bbd2c62576dbbd5aaba2a226990e6b4af4149481f2672c35dfe",
+  "decision": "Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md",
+  "partial_fix_proven": true,
+  "blocked_path": "LethalMin.MouthDogPikminEnemy.DoCheckInterval() bite/grab/death-timer mutation path",
+  "remaining_failure": "Mouth Dog can still visibly target/attack a scrap-carrying Pikmin through an unresolved path outside the blocked LethalMin dispatcher; reverse-direction Pikmin -> Mouth Dog combat/latch preservation was not positively proven in this run.",
+  "next_action": "Targeted repository-native analysis of the remaining Mouth Dog target/attack path; do not build a successor until the exact owner/method boundary is proved.",
+  "accepted": false
+}
