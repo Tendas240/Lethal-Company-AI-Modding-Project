@@ -198,7 +198,7 @@ function Find-MouthDogTypeName {
 
 function Find-MethodStart {
     param(
-        [Parameter(Mandatory = $true)][string[]]$Lines,
+        [Parameter(Mandatory = $true)][AllowEmptyString()][string[]]$Lines,
         [Parameter(Mandatory = $true)][int]$HitIndex
     )
 
