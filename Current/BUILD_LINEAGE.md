@@ -9,9 +9,9 @@
 ## Current lineage head
 
 - **Accepted gameplay baseline:** S1.42AF — Path-Length-Safe Microwave Packaging.
-- **Latest built artifact:** S1.42AG — Mouth Dog Pikmin One-Way Protection — build pass / runtime validation outstanding / not accepted.
-- **Active candidate:** S1.42AG.
-- **Next build:** none armed; controller is idle while the S1.42AG full-normal runtime gate is outstanding.
+- **Latest built artifact:** S1.42AG — Mouth Dog Pikmin One-Way Protection — **runtime rejected / partial fix**.
+- **Active candidate:** none.
+- **Next build:** none armed; controller is idle on accepted S1.42AF while targeted analysis of the remaining Mouth Dog targeting/attack path is required.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -60,7 +60,7 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AD | **REJECTED** | Functional Microwave half-frequency attempt. Runtime exposed 18 Interior/tag curves instead of the frozen zero-Interior assumption; fail-closed refusal prevented the `0.5` mutation from applying. |
 | S1.42AE | **SUPERSEDED — PATH-LENGTH BLOCKED, NOT GAMEPLAY-REJECTED** | Corrected provider code was never reached; v2.4 plus direct filesystem checks proved the 40,960-byte LC SoundAPI binding existed while its full path measured 262 characters and BepInEx/Mono still failed before chainloader startup. |
 | S1.42AF | **ACCEPTED CURRENT BASELINE** | Path-length-safe packaging successor built directly from S1.42AC. Runtime proved the nested LC SoundAPI binding at 226 characters, normal startup, and the exact 18 Moon / 18 Interior Functional Microwave contract with only the 18 Moon/tag curves scaled by `0.5`. |
-| S1.42AG | **ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED** | Exact Mouth Dog -> Pikmin one-way prevention candidate; full-normal runtime validation outstanding. |
+| S1.42AG | **RUNTIME REJECTED / PARTIAL FIX** | `MouthDogPikminEnemy.DoCheckInterval()` prevention successfully removed the LethalMin bite/grab/death-timer mutation path and the 707-warning aftermath, but a Mouth Dog still targeted/attacked a scrap-carrying Purple Pikmin through an unresolved path; reverse-direction Pikmin -> Dog behavior was not positively proven. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -170,19 +170,23 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Status: accepted full normal stack.
 - Separate inherited Mouth Dog / Pikmin compatibility finding: `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`.
 
-### S1.42AG — active Mouth Dog Pikmin one-way protection candidate
+### S1.42AG — rejected Mouth Dog Pikmin one-way protection candidate
 
 - Parent: accepted S1.42AF.
 - Profile: `Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z`
 - SHA-256: `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`
 - Candidate: `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`
-- Project status: `Current/Projektstatus_S1.42AG_CANDIDATE.json`
+- Rejection: `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`
+- Project status: `Current/Projektstatus_S1.42AG_REJECTED.json`
+- Runtime evidence: `RuntimeEvidence/S1.42AG/20260906T085500Z/`
+- Runtime log SHA-256: `3e8ca4c8fe045bbd2c62576dbbd5aaba2a226990e6b4af4149481f2672c35dfe`
 - Plan: `BuildSpecs/S1.42AG_PLAN.md`
 - Atomic build workflow run: `34004938402`
 - Build commit: `bb23701839d4c94bcad053a282f905ca571fc524`
 - Compatibility DLL SHA-256: `976264a31b85bf3d913d3ad703fa770a666957664d0de5b848a5073b0883d064`
-- Exact patch: `Priority.First` prevention on declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()`; adapter stays enabled.
-- Status: build pass / runtime validation outstanding / not accepted.
+- Proven partial fix: `Priority.First` prevention on declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` successfully blocked the LethalMin Pikmin bite/grab/death-timer mutation path and eliminated the associated `Work state with no task assigned!` burst.
+- Rejection reason: a Mouth Dog still visibly targeted and attacked a scrap-carrying Purple Pikmin through an unresolved path outside that dispatcher; intended Pikmin -> Mouth Dog attack/latch preservation was not positively proven.
+- Status: runtime rejected / partial fix / not a safe gameplay base.
 
 ## Feature/fix lookup
 
@@ -208,7 +212,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 | Functional Microwave 0-Interior provider assumption disproved | S1.42AD runtime rejection |
 | Functional Microwave corrected 18 Moon / 18 Interior contract | S1.42AE source, runtime-proved and accepted in S1.42AF |
 | Functional Microwave path-length-safe packaging | S1.42AF |
-| Mouth Dog -> Pikmin exact one-way prevention candidate | S1.42AG |
+| Mouth Dog LethalMin bite/grab/death-timer path prevention partial fix | S1.42AG rejection evidence / `Current/134...` |
 
 ## Parentage rules that matter
 
@@ -219,6 +223,6 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - S1.42AD was built **directly from accepted S1.42AC** and is rejected. It must not be used as a successor build base.
 - S1.42AE was built **directly from accepted S1.42AC**, not from rejected S1.42AD. Its provider code was never reached during the preloader failures; it is superseded for packaging/path-length reasons and is not a safe gameplay base.
 - S1.42AF was built **directly from accepted S1.42AC**, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and is now the accepted full-normal-stack gameplay base after explicit runtime acceptance in `Current/128...`.
-- S1.42AG is built **directly from accepted S1.42AF**. It changes only the existing cumulative compatibility DLL plus profile identity and remains an active runtime candidate until the exact Mouth Dog/Pikmin bidirectional regression gate passes.
+- S1.42AG was built **directly from accepted S1.42AF**. Its `DoCheckInterval()` guard is a proven partial fix, but the build is runtime-rejected because a remaining targeting/attack path still allowed a Mouth Dog to select/attack a scrap-carrying Purple Pikmin. Do not use S1.42AG as a gameplay base; targeted analysis must precede any successor build.
 
 When an exact artifact/hash/status is not indexed here or in `Current/BUILD_LINEAGE.json`, open the linked build-specific record rather than inferring it from build-name order.

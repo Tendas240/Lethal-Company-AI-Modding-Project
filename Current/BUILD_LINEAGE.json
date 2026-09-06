@@ -4,7 +4,7 @@
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AF",
-  "active_candidate_build_id": "S1.42AG",
+  "active_candidate_build_id": null,
   "latest_built_artifact_id": "S1.42AG",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
@@ -520,17 +520,20 @@
     {
       "id": "S1.42AG",
       "title": "Mouth Dog Pikmin One-Way Protection",
-      "status": "active-candidate",
+      "status": "runtime-rejected-partial-fix",
       "parent": "S1.42AF",
       "profile": "Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z",
       "sha256": "3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee",
       "build_plan": "BuildSpecs/S1.42AG_PLAN.md",
       "candidate_record": "Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md",
-      "project_status": "Current/Projektstatus_S1.42AG_CANDIDATE.json",
+      "decision_record": "Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md",
+      "project_status": "Current/Projektstatus_S1.42AG_REJECTED.json",
+      "runtime_evidence": "RuntimeEvidence/S1.42AG/20260906T085500Z/",
+      "runtime_log_sha256": "3e8ca4c8fe045bbd2c62576dbbd5aaba2a226990e6b4af4149481f2672c35dfe",
       "workflow_run": 34004938402,
       "build_commit": "bb23701839d4c94bcad053a282f905ca571fc524",
       "safe_as_gameplay_base": false,
-      "principal_feature": "exact Priority.First MouthDogPikminEnemy.DoCheckInterval prevention before Pikmin target/bite/grab mutation"
+      "principal_feature": "partial fix: exact Priority.First MouthDogPikminEnemy.DoCheckInterval prevention blocks LethalMin bite/grab/death-timer mutation, but runtime still exposed Mouth Dog targeting/attacking a scrap-carrying Purple Pikmin through an unresolved path"
     }
   ],
   "feature_index": {
@@ -554,7 +557,7 @@
     "Functional_Microwave_provider_contract_drift_proved": "S1.42AD",
     "Functional_Microwave_corrected_18_Moon_18_Interior_contract": "S1.42AF",
     "Functional_Microwave_path_length_safe_packaging": "S1.42AF",
-    "MouthDog_to_Pikmin_one_way_protection_candidate": "S1.42AG"
+    "MouthDog_to_Pikmin_one_way_protection_partial_fix_rejected": "S1.42AG"
   },
   "lineage_invariants": [
     "S1.42C is the canonical normal enemy-spawn/config restore baseline after S1.42B diagnostic divergence.",
@@ -565,6 +568,6 @@
     "S1.42AE was built directly from accepted S1.42AC, not from rejected S1.42AD. It established the corrected exact 18 Moon/tag and 18 Interior/tag source contract and scales only the 18 Moon/tag curves by 0.5; its code was not reached during AE runtime because the preloader failed first.",
     "S1.42AE was superseded for packaging/path-length reasons, not runtime-rejected for Microwave logic; its corrected source contract was reused by S1.42AF.",
     "S1.42AF was built directly from accepted S1.42AC, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and is the current accepted gameplay baseline after explicit runtime acceptance in Current/128.",
-    "S1.42AG is built directly from accepted S1.42AF and blocks exact MouthDogPikminEnemy.DoCheckInterval before Pikmin target collection/bite/grab dispatch while keeping the adapter enabled; it remains not accepted until runtime validation."
+    "S1.42AG was built directly from accepted S1.42AF. Runtime proved its exact MouthDogPikminEnemy.DoCheckInterval guard blocks the LethalMin bite/grab/death-timer mutation path, but the candidate is rejected because a Mouth Dog still targeted/attacked a scrap-carrying Purple Pikmin through an unresolved path; S1.42AF therefore remains the safe gameplay base."
   ]
 }
