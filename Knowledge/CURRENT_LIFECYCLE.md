@@ -5,7 +5,7 @@
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
 **Evidence:** `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/135_MOUTHDOG_V81_SOURCE_CAPTURE_TOOL_WINDOWS_HARDENING_STATE.md`, `Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MOUTHDOGAI_FOCUSED_DECOMPILE.txt`, `RuntimeEvidence/S1.42AG/20260906T085500Z/`  
-**Related:** `Current/CURRENT_STATE.json`, `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
+**Related:** `Current/CURRENT_STATE.json`, `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Knowledge/GALE_PROFILE_WORKFLOW.md`, `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`  
 **Last-Validated:** 2026-09-06
 
 ## Accepted baseline
@@ -88,6 +88,10 @@ Prove exactly two remaining contracts:
 Only after those two source boundaries are proved may a successor-specific safety review be performed under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
 
 Do **not** build or arm a successor, start a runtime test, disable `MouthDogPikminEnemy`, add broad `EnemyAI` scanning, guess a Harmony boundary, alter Mouth Dog -> player behavior, or suppress native Pikmin -> Mouth Dog combat/latch/death-unlatch ownership before that proof is complete.
+
+## Canonical Gale workflow
+
+The current repository-driven Gale replacement/import workflow remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. No runtime test is currently pending, but any future candidate that requires Gale replacement must continue to use this canonical v2.4 path unless a later validated workflow authority explicitly supersedes it.
 
 ## Historical Microwave boundary
 
