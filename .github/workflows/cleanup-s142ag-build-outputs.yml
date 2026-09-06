@@ -1,0 +1,29 @@
+name: Clean S1.42AG build outputs
+
+on:
+  push:
+    branches:
+      - build/s142ag-mouthdog-one-way-protection
+    paths:
+      - ".github/workflows/cleanup-s142ag-build-outputs.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Remove generated compile outputs from branch
+        shell: bash
+        run: |
+          git rm -r --ignore-unmatch Patches/S139CompatibilityFixes/bin Patches/S139CompatibilityFixes/obj
+          rm .github/workflows/cleanup-s142ag-build-outputs.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Clean generated S1.42AG compile outputs"
+          git push
