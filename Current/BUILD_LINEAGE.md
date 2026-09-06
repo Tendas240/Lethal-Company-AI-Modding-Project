@@ -169,6 +169,20 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Status: accepted full normal stack.
 - Separate inherited Mouth Dog / Pikmin compatibility finding: `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`.
 
+### S1.42AG — active Mouth Dog Pikmin one-way protection candidate
+
+- Parent: accepted S1.42AF.
+- Profile: `Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z`
+- SHA-256: `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`
+- Candidate: `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`
+- Project status: `Current/Projektstatus_S1.42AG_CANDIDATE.json`
+- Plan: `BuildSpecs/S1.42AG_PLAN.md`
+- Atomic build workflow run: `34004938402`
+- Build commit: `bb23701839d4c94bcad053a282f905ca571fc524`
+- Compatibility DLL SHA-256: `976264a31b85bf3d913d3ad703fa770a666957664d0de5b848a5073b0883d064`
+- Exact patch: `Priority.First` prevention on declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()`; adapter stays enabled.
+- Status: build pass / runtime validation outstanding / not accepted.
+
 ## Feature/fix lookup
 
 | Feature / decision | Established by |
@@ -193,6 +207,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 | Functional Microwave 0-Interior provider assumption disproved | S1.42AD runtime rejection |
 | Functional Microwave corrected 18 Moon / 18 Interior contract | S1.42AE source, runtime-proved and accepted in S1.42AF |
 | Functional Microwave path-length-safe packaging | S1.42AF |
+| Mouth Dog -> Pikmin exact one-way prevention candidate | S1.42AG |
 
 ## Parentage rules that matter
 
@@ -203,5 +218,6 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - S1.42AD was built **directly from accepted S1.42AC** and is rejected. It must not be used as a successor build base.
 - S1.42AE was built **directly from accepted S1.42AC**, not from rejected S1.42AD. Its provider code was never reached during the preloader failures; it is superseded for packaging/path-length reasons and is not a safe gameplay base.
 - S1.42AF was built **directly from accepted S1.42AC**, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and is now the accepted full-normal-stack gameplay base after explicit runtime acceptance in `Current/128...`.
+- S1.42AG is built **directly from accepted S1.42AF**. It changes only the existing cumulative compatibility DLL plus profile identity and remains an active runtime candidate until the exact Mouth Dog/Pikmin bidirectional regression gate passes.
 
 When an exact artifact/hash/status is not indexed here or in `Current/BUILD_LINEAGE.json`, open the linked build-specific record rather than inferring it from build-name order.

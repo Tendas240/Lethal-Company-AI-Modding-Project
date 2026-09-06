@@ -4,7 +4,7 @@
 **Authority:** current lifecycle router; detailed acceptance/rejection remains in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
-**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`, `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `Current/Projektstatus_S1.42AF_ACCEPTED.json`  
+**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`, `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`, `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`, `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `Current/Projektstatus_S1.42AF_ACCEPTED.json`, `Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt`, `Current/131_MOUTHDOG_PIKMIN_PATCH_BOUNDARY_AND_SUCCESSOR_PLAN.md`, `Current/132_MOUTHDOG_PATCH_SAFETY_REVIEW.md`, `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`, `Current/Projektstatus_S1.42AG_CANDIDATE.json`  
 **Related:** `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/CODEREBIRTH.md`, `Knowledge/ITEM_TUNING.md`, `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
 **Last-Validated:** 2026-09-06
 
@@ -35,11 +35,22 @@ The corrected provider code was never reached during AE's failing launches. v2.4
 
 ## Active candidate / runtime state
 
-There is **no active build candidate** and **no runtime test outstanding**.
+**S1.42AG — Mouth Dog Pikmin One-Way Protection — ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED.**
 
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF` remains the runtime-evidence attribution pointer; it is not a separate acceptance authority. The completed S1.42AF log is already ingested, so no upload or repeat run is pending.
+- Profile: `Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z`
+- SHA-256: `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`
+- Compatibility DLL SHA-256: `976264a31b85bf3d913d3ad703fa770a666957664d0de5b848a5073b0883d064`
+- Candidate: `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`
+- Project status: `Current/Projektstatus_S1.42AG_CANDIDATE.json`
+- Runtime test outstanding: **yes**.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG`.
+- `BuildSpecs/current.json` is disabled and guards the S1.42AG artifact while runtime validation is open.
 
-The canonical Gale replacement/import helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. No Gale re-import is currently required because S1.42AF is already accepted and its runtime evidence is complete.
+The exact source contract is proved by `Current/130`, the authorized patch boundary by `Current/131`, and the pre-build safety review by `Current/132`. S1.42AG blocks exact declared `MouthDogPikminEnemy.DoCheckInterval()` with `Priority.First` before Pikmin target collection/bite/grab dispatch while keeping the adapter enabled.
+
+The canonical Gale replacement/import helper for this runtime gate is `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`.
+
+The next action is the full-normal runtime gate described in `Current/133`, followed by the build-specific log uploader. S1.42AF remains accepted until that evidence passes.
 
 ## Current open compatibility finding
 
@@ -53,19 +64,12 @@ It is not classified as an S1.42AF regression: AF was built directly from S1.42A
 
 ## Current controllers
 
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AF`.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG`.
 - `BuildSpecs/current.json` is disabled.
-- Controller id: `IDLE_AFTER_S1.42AF_ACCEPTANCE_MOUTHDOG_ANALYSIS`.
-- Guarded base: `Profiles/LC V1 S1.42AF Microwave Fix.r2z` / `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`.
-- No successor is armed.
+- Controller id: `IDLE_AFTER_S1.42AG_BUILD_AWAITING_RUNTIME_VALIDATION`.
+- Guarded candidate: `Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z` / `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`.
+- No successor beyond S1.42AG is armed.
 
 ## Exact next project action
 
-Perform focused source/contract analysis of the confirmed MouthDog/EyelessDog -> Pikmin path under:
-
-- `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`;
-- `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`;
-- `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`;
-- `Patches/S139CompatibilityFixes/Plugin.cs`.
-
-Determine the exact LethalMin owner/method/inheritance/config contract for Mouth Dog targeting/bite/grab and whether native configuration can enforce the desired one-way noninteraction. If not, prove whether the existing exact `PikminAI.GrabPikmin(Transform,float,int)` prevention-only boundary can safely cover MouthDog/EyelessDog before harmful state mutation. Preserve native Pikmin -> Mouth Dog behavior. **Do not arm or build a successor until that contract is proved.**
+Import and runtime-test S1.42AG using `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`. Exercise repeated Mouth Dog lunges around Pikmin, prove the Dog -> Pikmin bite/grab/death-timer path is absent, prove Pikmin -> Dog attack/latch/death cleanup and Dog -> player attacks remain functional, confirm normal full-stack startup/generation and the accepted S1.42AF Microwave contract, then upload the complete fresh S1.42AG log. **Do not accept S1.42AG from build/startup success alone.**
