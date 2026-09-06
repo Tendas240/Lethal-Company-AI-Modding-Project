@@ -43,6 +43,19 @@
       "candidate_record": "Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md",
       "runtime_index": "RuntimeEvidence/S1.42AF/20260905T223738Z/INDEX.json",
       "runtime_log_sha256": "63df88a3acb0c455bab914fd844767cb50b7384ab4b1ede8bd7cbcb63537d956"
+    },
+    {
+      "build_id": "S1.42AG",
+      "role": "RUNTIME_REJECTED_PARTIAL_FIX",
+      "profile": "Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z",
+      "profile_sha256": "3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee",
+      "profile_sources": "ProfileSources/S1.42AG/",
+      "file_index": "ProfileSources/S1.42AG/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AG/export.r2x",
+      "candidate_record": "Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md",
+      "rejection": "Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md",
+      "runtime_index": "RuntimeEvidence/S1.42AG/20260906T085500Z/INDEX.json",
+      "runtime_log_sha256": "3e8ca4c8fe045bbd2c62576dbbd5aaba2a226990e6b4af4149481f2672c35dfe"
     }
   ],
   "important_project_dlls": [
@@ -53,7 +66,7 @@
       "accepted_version": "1.3.14",
       "accepted_sha256": "3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960",
       "evidence": "Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md",
-      "note": "Executable behavior and accepted runtime evidence are authoritative; historical comments are non-normative."
+      "note": "Executable behavior and accepted runtime evidence are authoritative; historical comments are non-normative. S1.42AG rebuilt this cumulative DLL as a rejected candidate; its candidate SHA remains documented in Current/133 and Current/134 but does not replace this accepted-binary authority."
     },
     {
       "name": "S1.42AB interior normalization injected DLL",
@@ -82,10 +95,12 @@
     "ProfileSources/S1.42AB contains FILE_INDEX.json and export.r2x.",
     "ProfileSources/S1.42AC contains FILE_INDEX.json and export.r2x.",
     "ProfileSources/S1.42AF contains FILE_INDEX.json and export.r2x.",
+    "ProfileSources/S1.42AG contains FILE_INDEX.json and export.r2x.",
     "RuntimeEvidence/S1.42AB/20260904T174010Z contains INDEX.json, analysis/, and raw/.",
     "RuntimeEvidence/S1.42AC/20260904T181854Z contains INDEX.json, analysis/, and raw/ as preserved historical rejection-era evidence.",
     "RuntimeEvidence/S1.42AC/20260904T235720Z contains INDEX.json, analysis/, and raw/ and is the fresh corrected-acceptance runtime evidence.",
-    "RuntimeEvidence/S1.42AF/20260905T223738Z contains INDEX.json, analysis/, and raw/ and is the S1.42AF acceptance runtime evidence."
+    "RuntimeEvidence/S1.42AF/20260905T223738Z contains INDEX.json, analysis/, and raw/ and is the S1.42AF acceptance runtime evidence.",
+    "RuntimeEvidence/S1.42AG/20260906T085500Z contains INDEX.json, analysis/, and raw/ and is the S1.42AG runtime-rejection evidence."
   ],
   "last_validated": "2026-09-06"
 }
