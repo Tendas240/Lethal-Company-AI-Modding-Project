@@ -26,12 +26,12 @@ Accepted baseline: **S1.42AF — Path-Length-Safe Microwave Packaging**
 Profile: `Profiles/LC V1 S1.42AF Microwave Fix.r2z`  
 SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
 
-Latest built artifact: **S1.42AF — Path-Length-Safe Microwave Packaging — RUNTIME ACCEPTED**  
-SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
+Latest built artifact: **S1.42AG — Mouth Dog Pikmin One-Way Protection — BUILD PASS RUNTIME VALIDATION OUTSTANDING**  
+SHA-256: `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`
 
-Active candidate: **none**. Runtime test outstanding: **no**. Build successor armed: **yes**.
+Active candidate: **S1.42AG**. Runtime test outstanding: **yes**. Build successor armed: **no**.
 
-Exact next action: Build the armed S1.42AG profile repository-native from accepted S1.42AF. Validate that only export.r2x and the existing S139CompatibilityFixes DLL member change, with no package/config drift. Do not declare a runtime test outstanding until the successful artifact hash and injected DLL hash are recorded and the build controller is returned to disabled.
+Exact next action: Import S1.42AG with the canonical Gale v2.4 replacement helper, then runtime-test the exact Mouth Dog / Eyeless Dog -> Pikmin one-way protection under the full normal stack. Require no MouthDog Pikmin bite/grab/death-timer path, preserve Pikmin -> Mouth Dog attack/latch/death cleanup and Mouth Dog -> player attacks, exercise repeated lunge cycles, confirm normal startup/generation and preserved S1.42AF Microwave health, then upload the complete fresh S1.42AG LogOutput.log with the build-specific uploader from Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md.
 
 ## Semantic navigation
 

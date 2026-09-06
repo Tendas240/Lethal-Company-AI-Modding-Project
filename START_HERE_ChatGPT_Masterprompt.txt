@@ -31,22 +31,21 @@ ACCEPTED BASELINE
 - acceptance: Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md
 
 LATEST BUILT ARTIFACT
-- S1.42AF — Path-Length-Safe Microwave Packaging
-- status: RUNTIME ACCEPTED
-- SHA-256: 6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0
-- acceptance: Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md
-- candidate record: Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md
+- S1.42AG — Mouth Dog Pikmin One-Way Protection
+- status: BUILD PASS RUNTIME VALIDATION OUTSTANDING
+- SHA-256: 3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee
+- candidate record: Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md
 
 CURRENT EXECUTION STATE
-- active candidate: NONE
-- runtime test outstanding: NO
-- successor armed: YES
-- BuildSpecs/current.json enabled: true
-- build controller id: S1.42AG
-- RuntimeInbox/ACTIVE_BUILD.txt: S1.42AF
+- active candidate: S1.42AG
+- runtime test outstanding: YES
+- successor armed: NO
+- BuildSpecs/current.json enabled: false
+- build controller id: IDLE_AFTER_S1.42AG_BUILD_AWAITING_RUNTIME_VALIDATION
+- RuntimeInbox/ACTIVE_BUILD.txt: S1.42AG
 
 EXACT NEXT ACTION
-Build the armed S1.42AG profile repository-native from accepted S1.42AF. Validate that only export.r2x and the existing S139CompatibilityFixes DLL member change, with no package/config drift. Do not declare a runtime test outstanding until the successful artifact hash and injected DLL hash are recorded and the build controller is returned to disabled.
+Import S1.42AG with the canonical Gale v2.4 replacement helper, then runtime-test the exact Mouth Dog / Eyeless Dog -> Pikmin one-way protection under the full normal stack. Require no MouthDog Pikmin bite/grab/death-timer path, preserve Pikmin -> Mouth Dog attack/latch/death cleanup and Mouth Dog -> player attacks, exercise repeated lunge cycles, confirm normal startup/generation and preserved S1.42AF Microwave health, then upload the complete fresh S1.42AG LogOutput.log with the build-specific uploader from Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md.
 
 RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.

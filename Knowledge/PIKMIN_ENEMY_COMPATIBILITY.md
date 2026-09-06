@@ -40,25 +40,13 @@ Do not revert to complete two-way noninteraction. Pikmin counterattack remains i
 
 Puffer -> Pikmin smoke/effect interaction is protected by removing the LethalMin-injected Pikmin effect-trigger components from Puffer smoke. This is targeted protection, not a broad enemy disable.
 
-## Mouth Dog / Eyeless Dog — source contract proved, successor planned
+## Mouth Dog / Eyeless Dog — S1.42AG active candidate
 
-The accepted S1.42AF runtime run exposed a separate inherited Mouth Dog -> Pikmin compatibility gap. LethalMin logged `Biting 2 Pikmin`, both White Pikmin attaching to `EnemyAttackMouth`, and 2.5-second death timers. Pikmin invincibility prevented the final enemy-attack kill, but the grab/death-timer mutation had already happened and the two affected Pikmin subsequently generated 707 `Work state with no task assigned!` warnings.
+The S1.42AF acceptance run exposed the inherited Mouth Dog -> Pikmin gap recorded in `Current/129`. Exact LethalMin 1.1.108 decompile evidence in `Current/130` proves `MouthDogPikminEnemy.DoCheckInterval()` is the adapter-specific target/bite dispatcher and that `BiteNearbyPikmin` mutates `GrabbedPikmin` before calling `PikminAI.GrabPikmin(mouthGrip, 2.5f, 5)`. Therefore extending only the common GrabPikmin snap-position guard would be too late for the complete one-way contract.
 
-Exact LethalMinNightly 1.1.108 source evidence now proves:
+S1.42AG is now the **built active runtime candidate**. It installs a fail-closed `Priority.First` prefix on exact declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` and returns `false` before Pikmin target collection, bite RPC dispatch, adapter grab bookkeeping, or Pikmin grab/death-timer state mutation. The adapter remains enabled; native Pikmin -> Mouth Dog combat/latch/death cleanup and Mouth Dog -> player attacks remain outside this patch.
 
-- adapter ownership is `MouthDogAI -> MouthDogPikminEnemy : PikminEnemy`;
-- no native boolean config exists to disable only Dog -> Pikmin interaction;
-- `Eyeless Dog Bite Limit = 0` is not a valid disable contract because a Pikmin is admitted before the limit check;
-- `MouthDogPikminEnemy.LateUpdate()` enters `DoCheckInterval()` during a valid Dog lunge;
-- `DoCheckInterval()` is the exact MouthDog-specific nearby-Pikmin selection/dispatch point;
-- downstream `BiteNearbyPikmin(List<PikminAI>)` performs `GrabbedPikmin.Add(Pikmin)` and then `PikminAI.GrabPikmin(mouthDogAI.mouthGrip, 2.5f, 5)` before starting the bite animation;
-- core Pikmin grabbed/death-timer/task/leader/latch mutation occurs inside `PikminAI.GrabPikmin(Transform,float,int)`.
-
-The existing exact `PikminAI.GrabPikmin` `Priority.First` guard is correctly before core Pikmin mutation, but it is too late to be the preferred complete Mouth Dog fix because MouthDog adapter bookkeeping and bite dispatch have already begun.
-
-The approved implementation boundary is therefore exact declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` with a fail-closed `Priority.First` prevention-only prefix. The adapter must stay enabled so inherited `PikminEnemy.Update()` lifecycle and native Pikmin -> Mouth Dog combat remain intact.
-
-Planned successor: **S1.42AG — Mouth Dog Pikmin One-Way Protection**. It is planned only; no artifact, active candidate or runtime test exists yet. See `Current/131_MOUTHDOG_PIKMIN_PATCH_BOUNDARY_AND_SUCCESSOR_PLAN.md`, `Current/132_MOUTHDOG_PATCH_SAFETY_REVIEW.md` and `BuildSpecs/S1.42AG_PLAN.md`.
+Runtime acceptance is still required. See `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`.
 
 ## CodeRebirth utility kills
 
