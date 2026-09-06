@@ -1,0 +1,134 @@
+name: Apply S1.42AG MouthDog implementation
+
+on:
+  push:
+    branches:
+      - build/s142ag-mouthdog-one-way-protection
+    paths:
+      - ".github/workflows/apply-s142ag-build.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Apply exact S1.42AG source and controller delta
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          plugin_path = Path('Patches/S139CompatibilityFixes/Plugin.cs')
+          text = plugin_path.read_text(encoding='utf-8')
+
+          old_delayed = '''            PatchLethalMinEnemyGrabPrevention();\n            PatchBaboonHawkPikminProtection();'''
+          new_delayed = '''            PatchLethalMinEnemyGrabPrevention();\n            PatchMouthDogPikminProtection();\n            PatchBaboonHawkPikminProtection();'''
+          if text.count(old_delayed) != 1:
+              raise SystemExit(f'Expected exactly one DelayedLethalMinPatches insertion point, got {text.count(old_delayed)}')
+          text = text.replace(old_delayed, new_delayed, 1)
+
+          method_marker = '        private void PatchLethalMinLatchedDeadTargetCompletion()\n'
+          method = '''        private void PatchMouthDogPikminProtection()\n        {\n            Type mouthDogPikminEnemyType = AccessTools.TypeByName("LethalMin.MouthDogPikminEnemy");\n            if (mouthDogPikminEnemyType == null)\n            {\n                Logger.LogError(\n                    "[MouthDogPikminGuard] LethalMin.MouthDogPikminEnemy was not found. " +\n                    "Exact Mouth Dog -> Pikmin prevention is NOT active.");\n                return;\n            }\n\n            MethodInfo doCheckInterval = mouthDogPikminEnemyType.GetMethod(\n                "DoCheckInterval",\n                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly,\n                null,\n                Type.EmptyTypes,\n                null);\n\n            bool valid =\n                doCheckInterval != null &&\n                doCheckInterval.DeclaringType == mouthDogPikminEnemyType &&\n                !doCheckInterval.IsStatic &&\n                doCheckInterval.ReturnType == typeof(void) &&\n                doCheckInterval.GetParameters().Length == 0 &&\n                doCheckInterval.GetMethodBody() != null;\n\n            if (!valid)\n            {\n                Logger.LogError(\n                    "[MouthDogPikminGuard] Exact declared instance " +\n                    "LethalMin.MouthDogPikminEnemy.DoCheckInterval() contract did not validate. " +\n                    "Refusing to install a guessed fallback.");\n                return;\n            }\n\n            try\n            {\n                Harmony.Patch(\n                    doCheckInterval,\n                    prefix: new HarmonyMethod(\n                        typeof(MouthDogPikminProtection),\n                        nameof(MouthDogPikminProtection.Prefix))\n                    {\n                        priority = Priority.First\n                    });\n\n                Logger.LogInfo(\n                    "[MouthDogPikminGuard] Patched exact declared " +\n                    "LethalMin.MouthDogPikminEnemy.DoCheckInterval() with a Priority.First prevention-only prefix. " +\n                    "The adapter remains enabled; native Pikmin -> Mouth Dog combat/lifecycle and Mouth Dog -> player behavior remain owned by their native paths.");\n            }\n            catch (Exception ex)\n            {\n                Logger.LogError(\n                    $"[MouthDogPikminGuard] Failed to patch exact MouthDogPikminEnemy.DoCheckInterval: " +\n                    $"{ex.GetType().Name}: {ex.Message}");\n            }\n        }\n\n'''
+          if text.count(method_marker) != 1:
+              raise SystemExit(f'Expected exactly one method insertion marker, got {text.count(method_marker)}')
+          text = text.replace(method_marker, method + method_marker, 1)
+
+          class_marker = '    internal static class BaboonHawkPikminProtection\n'
+          guard_class = '''    internal static class MouthDogPikminProtection\n    {\n        private static readonly HashSet<int> LoggedAdapterIds = new HashSet<int>();\n\n        public static bool Prefix(object __instance)\n        {\n            int id = 0;\n            if (__instance is UnityEngine.Object unityObject && unityObject != null)\n                id = unityObject.GetInstanceID();\n\n            if (id == 0 || LoggedAdapterIds.Add(id))\n            {\n                Plugin.Log.LogWarning(\n                    "[MouthDogPikminGuard] Blocked LethalMin MouthDogPikminEnemy.DoCheckInterval before " +\n                    "Pikmin target collection, bite RPC dispatch, GrabbedPikmin bookkeeping, or GrabPikmin state mutation. " +\n                    "MouthDogPikminEnemy remains enabled for native reverse-direction lifecycle handling.");\n            }\n\n            return false;\n        }\n    }\n\n'''
+          if text.count(class_marker) != 1:
+              raise SystemExit(f'Expected exactly one class insertion marker, got {text.count(class_marker)}')
+          text = text.replace(class_marker, guard_class + class_marker, 1)
+          plugin_path.write_text(text, encoding='utf-8')
+
+          spec = {
+              'enabled': True,
+              'build_id': 'S1.42AG',
+              'base_profile': 'Profiles/LC V1 S1.42AF Microwave Fix.r2z',
+              'base_sha256': '6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0',
+              'output_profile': 'Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z',
+              'profile_name': 'LC V1 S1.42AG Mouth Dog Fix',
+              'overwrite': False,
+              'mod_state_changes': [],
+              'mod_additions': [],
+              'mod_removals': [],
+              'config_patches': [],
+              'local_plugin_builds': [
+                  {
+                      'project': 'Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj',
+                      'configuration': 'Release',
+                      'built_file': 'Patches/S139CompatibilityFixes/bin/Release/netstandard2.1/S139CompatibilityFixes.dll',
+                      'archive_path': 'BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll'
+                  }
+              ],
+              'text_assertions': [
+                  {
+                      'path': 'BepInEx/config/CodeRebirth.cfg',
+                      'contains': 'Functional Microwave | Allow Editing Config = true'
+                  },
+                  {
+                      'path': 'BepInEx/config/CodeRebirth.cfg',
+                      'contains': 'Functional Microwave | Volume = 0.15'
+                  },
+                  {
+                      'path': 'BepInEx/config/NoteBoxz.LethalMin.cfg',
+                      'contains': 'Eyeless Dog Bite Cooldown = 5.5'
+                  },
+                  {
+                      'path': 'BepInEx/config/NoteBoxz.LethalMin.cfg',
+                      'contains': 'Eyeless Dog Bite Limit = 7'
+                  }
+              ]
+          }
+          Path('BuildSpecs/current.json').write_text(json.dumps(spec, indent=2) + '\n', encoding='utf-8')
+
+          plan = Path('BuildSpecs/S1.42AG_PLAN.md')
+          plan_text = plan.read_text(encoding='utf-8')
+          plan_text = plan_text.replace('**Status:** PLANNED / NOT BUILT / NOT ARMED', '**Status:** IMPLEMENTED / BUILD ARMED / ARTIFACT PENDING', 1)
+          if '## Armed profile identity' not in plan_text:
+              plan_text += '''\n## Armed profile identity\n\n- Output: `Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z`\n- Gale profile name: `LC V1 S1.42AG Mouth Dog Fix`\n- Local plugin project: `Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj`\n- Replaced archive member: `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll`\n\nThe short profile identity deliberately preserves the path-length margin validated by S1.42AF.\n'''
+          plan.write_text(plan_text, encoding='utf-8')
+
+          state_path = Path('Current/CURRENT_STATE.json')
+          state = json.loads(state_path.read_text(encoding='utf-8'))
+          state['active_candidate'] = None
+          state['runtime_test_outstanding'] = False
+          state['selected_scope']['status'] = 'IMPLEMENTED_BUILD_ARMED_ARTIFACT_PENDING'
+          state['selected_scope']['profile'] = 'Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z'
+          state['next_action'] = 'Build the armed S1.42AG profile repository-native from accepted S1.42AF. Validate that only export.r2x and the existing S139CompatibilityFixes DLL member change, with no package/config drift. Do not declare a runtime test outstanding until the successful artifact hash and injected DLL hash are recorded and the build controller is returned to disabled.'
+          state['controllers']['build_enabled'] = True
+          state['controllers']['build_id'] = 'S1.42AG'
+          state['controllers']['build_base_profile'] = 'Profiles/LC V1 S1.42AF Microwave Fix.r2z'
+          state['controllers']['build_base_sha256'] = '6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0'
+          state_path.write_text(json.dumps(state, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+          PY
+
+      - name: Compile compatibility plugin
+        run: dotnet build Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj -c Release
+
+      - name: Render protected current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Remove temporary workflow and commit atomic build request
+        shell: bash
+        run: |
+          rm .github/workflows/apply-s142ag-build.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Implement and arm S1.42AG Mouth Dog one-way protection"
+          git push
