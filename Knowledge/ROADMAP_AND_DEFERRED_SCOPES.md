@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only; historical build sequencing remains in chronology/lineage  
 **Canonical-For:** `roadmap_and_deferred_scopes`  
-**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MOUTHDOGAI_FOCUSED_DECOMPILE.txt`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`  
+**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md`, `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md`, `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/`, `SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`  
 **Related:** `Knowledge/BCMER.md`, `Knowledge/INTERIORS_AND_LLL.md`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ITEM_TUNING.md`, `Knowledge/CODEREBIRTH.md`, `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`  
 **Last-Validated:** 2026-09-06
 
@@ -13,60 +13,50 @@ Accepted gameplay baseline: **S1.42AF — Path-Length-Safe Microwave Packaging �
 
 Latest built artifact: **S1.42AG — Mouth Dog Pikmin One-Way Protection — RUNTIME REJECTED / PARTIAL FIX / NOT ACCEPTED**. Profile SHA-256: `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`.
 
-There is no active runtime candidate and no successor armed. `BuildSpecs/current.json` is disabled with controller id `IDLE_AFTER_MOUTHDOG_V81_CAPTURE_AWAITING_TARGETED_SOURCE_EXTENSION`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG` remains evidence-attribution only.
+There is no active runtime candidate and no successor armed. `BuildSpecs/current.json` is disabled with controller id `IDLE_AFTER_MOUTHDOG_SOURCE_BOUNDARIES_AWAITING_PATCH_SAFETY_REVIEW`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG` remains evidence-attribution only.
 
-## Completed Mouth Dog analysis milestone
+## Completed MouthDog source-analysis milestone
 
-The provenance-safe Vanilla V81 MouthDogAI capture has succeeded. The prior `Current/135...AWAITING_RETRY` work state is resolved history; current analysis authority is `Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md`.
+All source boundaries required before successor design are now closed. Current analysis authority is `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`.
 
-Authoritative capture:
+Proven boundaries:
 
-- branch `source-evidence/mouthdog-v81-20260906t121738z`;
-- commit `a618b19bfc30234ca556c924d681d43b2c13d1d9`;
-- assembly SHA-256 `5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731`;
-- Steam buildid `22825947`;
-- evidence under `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/`.
+- Vanilla `MouthDogAI.DetectNoise(...)` is position-based and can drive pursuit/lunge through `noisePositionGuess`.
+- Vanilla `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` is an independent generic collision attack surface.
+- Exact LethalMin 1.1.108 proves `PikminAI : EnemyAI`.
+- Exact Vanilla V81 `EnemyAI.OnCollideWithEnemy()` is debug-only and has no gameplay/lifecycle mutation.
+- Exact LethalMin `PikminItem.CarryNumerator()` repeatedly plays `ItemCarry` through the carrying Pikmin; with current audible-noise configuration, Pikmin sounds can emit `RoundManager.PlayAudibleNoise(...)` at the carrier position.
 
-The source now proves two native surfaces outside the LethalMin-specific `DoCheckInterval()` mutation dispatcher:
+The stronger claim that Vanilla MouthDogAI semantically targets a Purple Pikmin because it carries `GoldBar(Clone)`, or that the GoldBar itself is the proved recurring carry-noise emitter, is unsupported/rejected. The exact audible event that caused the observed S1.42AG pursuit remains runtime-causally unproved.
 
-- position-based noise pursuit through `MouthDogAI.DetectNoise(...)`, `noisePositionGuess` and the native lunge transition;
-- generic `EnemyAI` collision/lunge/damage through `MouthDogAI.OnCollideWithEnemy(...)`.
-
-Exact LethalMin evidence proves `PikminAI : EnemyAI` and also proves Pikmin can emit `RoundManager.PlayAudibleNoise(...)` at their own position while the current config has `Dont Make Audible Noises = false`.
-
-The runtime evidence proves a Purple Pikmin carried `GoldBar(Clone)`, but the carried GoldBar itself as the causal noise emitter remains unproved and unexcluded.
+No additional local source capture is currently required.
 
 ## Exact next scope
 
-The selected work is now a **targeted source-evidence extension**, not another capture retry, not a new build and not a gameplay run.
+The selected work is now the **successor-specific MouthDog Patch Safety Review** under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
 
-Prove only these two remaining contracts:
-
-1. exact Vanilla V81 `EnemyAI.OnCollideWithEnemy()` base behavior and side effects, because the MouthDog override calls the base method before its own generic `EnemyAI` lunge/damage logic;
-2. exact LethalMin 1.1.108 `PikminItem.CarryNumerator()` and carry-item audio / `RoundManager.PlayAudibleNoise(...)` callsites, so the narrower carried-scrap/noise causality can be proved or rejected.
-
-Then apply `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` and perform a successor-specific safety review. Do not arm/build a successor until that review closes the boundary.
-
-Preserve:
+Before any successor is armed, the review must define the smallest exact Harmony boundary, its declaring type/signature/Pikmin identification, inheritance and secondary responsibilities, and the exact regression contract. It must preserve:
 
 - S1.42AF as the guarded gameplay base;
-- the useful S1.42AG prevention-before-mutation result on `MouthDogPikminEnemy.DoCheckInterval()` where applicable;
-- enabled native LethalMin ownership for Pikmin -> Mouth Dog attack/latch/death/unlatch/task lifecycle;
-- Mouth Dog -> player behavior;
+- the useful S1.42AG prevention-before-mutation result on `MouthDogPikminEnemy.DoCheckInterval()` where still applicable;
+- enabled native LethalMin ownership for Pikmin -> MouthDog attack/latch/death/unlatch/task lifecycle;
+- MouthDog -> player behavior;
 - passive follower non-aggression as normal behavior.
 
-Do not add guessed Harmony targets, broad `EnemyAI` scanning, whole-component disables or manual Pikmin state reconstruction.
+The future successor must remain a one-variable risky-patch delta and its runtime gate must deliberately test reverse-direction Pikmin -> MouthDog behavior.
+
+Do not add guessed Harmony targets, broad `EnemyAI` scanning, whole-component disables or manual Pikmin state reconstruction. Do not arm/build a successor or start a gameplay test until the safety review closes.
 
 ## Remaining deferred independent gameplay/compatibility scopes
 
-- **LC Office V81 integration** under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`: add `Piggy-LC_Office 2.3.4` with `MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix 2.0.0`, `JacobG5-DestroyItemInSlotFix 1.0.0` and `Alice-DungeonGenerationPlus 1.5.1`; preserve `IAmBatby-LethalLevelLoader 1.7.12` as sole owner; explicitly forbid `pacoito-LethalLevelLoaderUpdated`; do not arm while the selected Mouth Dog compatibility scope remains open;
+- **LC Office V81 integration** under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`: add `Piggy-LC_Office 2.3.4` with `MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix 2.0.0`, `JacobG5-DestroyItemInSlotFix 1.0.0` and `Alice-DungeonGenerationPlus 1.5.1`; preserve `IAmBatby-LethalLevelLoader 1.7.12` as sole owner; explicitly forbid `pacoito-LethalLevelLoaderUpdated`; do not arm while the selected MouthDog compatibility scope remains open;
 - CullFactory disable-culling exceptions for exact IDs `junkrooms` / `shatteredrooms`;
 - MelanieMausoleum fog reduction only for that interior;
 - Black Mesa/interior/Pikmin route recovery;
 - isolated evaluation of `woah25-LethalEscapeUpdated 2.5.0`;
 - final long full-stack acceptance;
 - AdditionalNetworking repair only with reproducible user-facing evidence;
-- broader LethalMin teardown/despawn repair only with stronger evidence beyond the selected Mouth Dog interaction.
+- broader LethalMin teardown/despawn repair only with stronger evidence beyond the selected MouthDog interaction.
 
 ## BCMER scope boundary
 
