@@ -34,13 +34,13 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AG_RUNTIME_REJECTION_AWAITING_TARGETED_ANALYSIS`)
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_MOUTHDOG_V81_CAPTURE_AWAITING_TARGETED_SOURCE_EXTENSION`)
 - Guarded build base: `Profiles/LC V1 S1.42AF Microwave Fix.r2z` / `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG`
 
 ## Exact next action
 
-Re-run the currently hardened AnalysisTools/InspectMouthDogV81.ps1 from repository main against the user's installed Lethal Company_Data/Managed/Assembly-CSharp.dll using default Steam auto-detection. Three real Windows bootstrap failures are already fixed in repository history and must not be re-investigated unless they recur: disabled/missing NuGet sources, dotnet-install.ps1 output contaminating the helper return value, and the generated ilspycmd.exe shim failing to resolve the temporary .NET runtime. The current tool revision instead uses an isolated nuget.org-only config, output isolation, and an explicit launcher for ilspycmd.dll through the selected/bootstrapped dotnet.exe. No authoritative SourceEvidence/VanillaV81/MouthDogAI evidence exists yet. After a successful run creates source-evidence/mouthdog-v81-*, verify its branch/commit plus MANIFEST.json and MOUTHDOGAI_FOCUSED_DECOMPILE.txt, then prove the exact native perception/noise/target/lunge/collision owner/method boundary and the scrap/noise hypothesis before proposing or arming any successor. Do not build or start a runtime test before that boundary is proved.
+Extend source evidence repository-natively before any successor: inspect the exact Vanilla V81 EnemyAI.OnCollideWithEnemy() base contract and exact LethalMin 1.1.108 PikminItem.CarryNumerator()/carry-item audio/noise callsites. Current V81 MouthDogAI evidence already proves DetectNoise is position-based and OnCollideWithEnemy can lunge/HitEnemy(2) against generic EnemyAI; exact LethalMin evidence proves PikminAI inherits EnemyAI and can emit PlayAudibleNoise while the current config has Dont Make Audible Noises=false. The observed Purple Pikmin carried GoldBar(Clone), but the GoldBar itself as the causal noise source is not yet proved or excluded. Do not repeat the successful MouthDog capture, do not build or arm a successor, and do not start a gameplay test until the base-method and carry/noise boundaries are proved and patch-safety review is complete.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

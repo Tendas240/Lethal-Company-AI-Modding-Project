@@ -1,0 +1,51 @@
+{
+    "schema_version":  1,
+    "purpose":  "V81 MouthDogAI focused native source evidence for S1.42AG remaining targeting-path analysis",
+    "capture_utc":  "2026-09-06T12:17:38Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "repository_main_at_capture":  "3049b0fa52af79db39efb075d94684d229eed3c6",
+    "game_contract":  "Lethal Company V81 project-local installation; Steam buildid is recorded for provenance checking",
+    "source_assembly":  {
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll",
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "size_bytes":  2034688,
+                            "last_write_utc":  "2026-08-21T13:33:04.3339518Z"
+                        },
+    "game_executable":  {
+                            "logical_path":  "Lethal Company.exe",
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1"
+                        },
+    "steam":  {
+                  "app_id":  "1966720",
+                  "appmanifest_logical_name":  "appmanifest_1966720.acf",
+                  "appmanifest_sha256":  "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                  "buildid":  "22825947"
+              },
+    "decompiler":  {
+                       "tool":  "ilspycmd",
+                       "package_version":  "11.0.0.9375",
+                       "package_source":  "https://api.nuget.org/v3/index.json",
+                       "version_output":  "ilspycmd: 11.0.0.9375\r\nICSharpCode.Decompiler: 11.0.0.9375",
+                       "type":  "MouthDogAI",
+                       "full_local_type_decompile_sha256":  "d00491dcffd4b91c60cb9c43e8108f558da69ee6dba6f0b71f53c8f0035892bd"
+                   },
+    "published_evidence":  {
+                               "file":  "MOUTHDOGAI_FOCUSED_DECOMPILE.txt",
+                               "sha256":  "0768404f72cb2c7a56b78e63519f6ed03610e6046c6d21fed7ba0c2668864097",
+                               "scope":  [
+                                             "Heard noise!",
+                                             "Mouth dog targetPos",
+                                             "lastheardnoisePosition",
+                                             "DetectNoise",
+                                             "EnterLunge",
+                                             "OnCollideWithEnemy",
+                                             "OnCollideWithPlayer"
+                                         ],
+                               "excludes":  [
+                                                "Assembly-CSharp.dll",
+                                                "full Assembly-CSharp decompile",
+                                                "absolute local paths",
+                                                "Windows user name"
+                                            ]
+                           }
+}
