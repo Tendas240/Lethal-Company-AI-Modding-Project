@@ -120,8 +120,12 @@ function Ensure-DotNetAndIlSpy {
         $dotnetDir = Join-Path $TempRoot 'dotnet'
         $installer = Join-Path $TempRoot 'dotnet-install.ps1'
         Invoke-WebRequest -UseBasicParsing 'https://dot.net/v1/dotnet-install.ps1' -OutFile $installer
-        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $installer -Channel '10.0' -InstallDir $dotnetDir -NoPath
-        if ($LASTEXITCODE -ne 0) {
+        $dotnetInstallOutput = @(& powershell.exe -NoProfile -ExecutionPolicy Bypass -File $installer -Channel '10.0' -InstallDir $dotnetDir -NoPath 2>&1)
+        $dotnetInstallExitCode = $LASTEXITCODE
+        foreach ($line in $dotnetInstallOutput) {
+            Write-Host ([string]$line)
+        }
+        if ($dotnetInstallExitCode -ne 0) {
             throw 'Failed to bootstrap the temporary .NET 10 SDK.'
         }
         $dotnetExe = Join-Path $dotnetDir 'dotnet.exe'
@@ -320,7 +324,11 @@ try {
         throw 'git.exe is required to publish the focused evidence branch, but Git is not available on PATH.'
     }
 
-    $ilspy = Ensure-DotNetAndIlSpy -TempRoot $tempRoot
+    $ilspyResult = @(Ensure-DotNetAndIlSpy -TempRoot $tempRoot)
+    if ($ilspyResult.Count -ne 1) {
+        throw ('Ensure-DotNetAndIlSpy returned an unexpected output count: ' + $ilspyResult.Count)
+    }
+    $ilspy = [string]$ilspyResult[0]
     $ilspyVersionText = (& $ilspy --version 2>&1 | Out-String).Trim()
     $typeName = Find-MouthDogTypeName -IlSpy $ilspy -Assembly $resolvedAssembly
 
