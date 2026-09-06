@@ -1,0 +1,33 @@
+name: Render S1.42AG planning navigation
+
+on:
+  push:
+    branches:
+      - analysis/s142ag-mouthdog-planning-clean
+    paths:
+      - ".github/workflows/render-s142ag-planning.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Render current navigation
+        run: python3 RepositoryTools/render_current_navigation.py
+      - name: Commit generated navigation
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md START_HERE_ChatGPT_Masterprompt.txt Current/00_CURRENT_STATE.md Current/01_HANDOVER_CORE.md
+          if git diff --cached --quiet; then
+            echo "No generated changes."
+          else
+            git commit -m "Render S1.42AG planning navigation [skip ci]"
+            git push
+          fi
