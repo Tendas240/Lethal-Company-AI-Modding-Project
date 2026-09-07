@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-06  
+**Updated:** 2026-09-07  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -34,13 +34,13 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_MOUTHDOG_SOURCE_BOUNDARIES_AWAITING_PATCH_SAFETY_REVIEW`)
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_MOUTHDOG_PATCH_SAFETY_REVIEW_AWAITING_SUCCESSOR_IMPLEMENTATION`)
 - Guarded build base: `Profiles/LC V1 S1.42AF Microwave Fix.r2z` / `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG`
 
 ## Exact next action
 
-Complete the successor-specific Mouth Dog Patch Safety Review under Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md using the now-closed source boundaries. Exact Vanilla V81 EnemyAI.OnCollideWithEnemy() is proven debug-only with no gameplay/lifecycle mutation. Exact LethalMin 1.1.108 PikminItem.CarryNumerator() repeatedly plays ItemCarry through each carrying Pikmin, and with Dont Make Audible Noises=false those Pikmin sounds can emit audible noise at the carrier position. Keep S1.42AF as the accepted base and S1.42AG as the rejected partial fix. Define the smallest exact Harmony boundary, preserve Mouth Dog -> player and native Pikmin -> Mouth Dog lifecycle, and specify one-variable build/runtime regression gates including deliberate reverse-direction validation. Do not arm/build a successor or start a runtime test until the safety review is complete.
+In the next explicit project segment, implement the PASS-reviewed MouthDog successor as a one-variable risky-patch delta against accepted S1.42AF: retain the exact Priority.First LethalMin.MouthDogPikminEnemy.DoCheckInterval() prevention guard and add an exact Priority.First Vanilla MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI) prefix that skips only for a validated LethalMin.PikminAI collidedEnemy. Keep DetectNoise, MouthDog -> player, native Pikmin -> MouthDog attack/latch/death/unlatch/task ownership, packages and unrelated configs unchanged. Prepare/arm and build the successor repository-native only after the implementation contract validates; no runtime test is pending until a successful candidate artifact exists.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

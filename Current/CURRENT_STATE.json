@@ -1,6 +1,6 @@
 {
   "schema_version": 7,
-  "updated": "2026-09-06",
+  "updated": "2026-09-07",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "game": "Lethal Company V81",
@@ -38,17 +38,19 @@
   "active_candidate": null,
   "runtime_test_outstanding": false,
   "selected_scope": {
-    "scope_id": "MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW",
-    "title": "Mouth Dog Pikmin One-Way Protection Successor Safety Review",
-    "status": "SOURCE_BOUNDARIES_PROVED_AWAITING_PATCH_SAFETY_REVIEW_NOT_ARMED_FOR_BUILD",
+    "scope_id": "MOUTHDOG_SUCCESSOR_IMPLEMENTATION",
+    "title": "Mouth Dog Pikmin One-Way Protection Successor Implementation",
+    "status": "PATCH_SAFETY_REVIEW_PASS_SUCCESSOR_NOT_ARMED_FOR_BUILD",
     "accepted_baseline": "S1.42AF",
     "rejected_candidate": "S1.42AG",
     "runtime_rejection": "Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md",
     "runtime_evidence": "RuntimeEvidence/S1.42AG/20260906T085500Z/",
     "topic_authority": "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md",
     "patch_safety_policy": "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md",
+    "patch_safety_review": "Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md",
     "code": "Patches/S139CompatibilityFixes/Plugin.cs",
-    "current_analysis_record": "Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md",
+    "current_analysis_record": "Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md",
+    "source_boundary_record": "Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md",
     "mouthdog_source_analysis_record": "Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md",
     "mouthdog_source_evidence_root": "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/",
     "mouthdog_source_evidence_commit": "a618b19bfc30234ca556c924d681d43b2c13d1d9",
@@ -66,23 +68,34 @@
     "lethalmin_carry_source_evidence": "Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt",
     "lethalmin_audio_source_evidence": "Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt",
     "carry_noise_contract_status": "PROVED_CARRIER_PIKMIN_AUDIBLE_NOISE_CAPABILITY",
+    "patch_boundary": {
+      "retain": "LethalMin.MouthDogPikminEnemy.DoCheckInterval() Priority.First prevention-only prefix",
+      "add": "MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI) Priority.First prefix that skips only when collidedEnemy is exact/derived LethalMin.PikminAI",
+      "do_not_patch": [
+        "MouthDogAI.DetectNoise(...)",
+        "MouthDogAI.OnCollideWithPlayer(...)",
+        "EnemyAI.OnCollideWithEnemy(...)",
+        "LethalMin.PikminEnemy lifecycle",
+        "LethalMin.PikminAI attack/task/latch lifecycle"
+      ]
+    },
     "currently_irrelevant_actions": [
       "Do not repeat the successful InspectMouthDogV81.ps1 capture.",
       "Do not repeat the successful InspectEnemyAICollisionV81.ps1 capture merely to reproduce integrated evidence.",
       "Do not configure global NuGet sources or manually install .NET/ILSpy for the already closed source proofs.",
       "Do not pass -AssemblyPath or ask for a local repository clone/manual Assembly-CSharp.dll upload for the already closed source proofs.",
       "Do not repeat the S1.42AG gameplay run or request another S1.42AG runtime-log upload.",
-      "Do not perform another source-capture step before the successor-specific patch-safety review unless the review identifies a genuinely new unresolved source boundary.",
-      "Do not build or arm a successor before the patch-safety review is complete."
+      "Do not repeat the successor Patch Safety Review unless new source/target evidence invalidates its exact contract.",
+      "Do not start a runtime test until a later successor candidate is actually built and marked ready."
     ],
-    "finding": "All source boundaries required by the prior pre-successor analysis are now closed. Exact Vanilla V81 EnemyAI.OnCollideWithEnemy() is debug-only and has no gameplay/lifecycle mutation. Exact LethalMin 1.1.108 PikminItem.CarryNumerator() repeatedly calls PikminAI.PlayAudioOnLocalClient(\"ItemCarry\", ...) for each carrier; with Dont Make Audible Noises=false, Pikmin audio can emit RoundManager.PlayAudibleNoise at the carrying Pikmin's position. Vanilla MouthDogAI remains position-based for noise pursuit and has an independent generic EnemyAI collision lunge/damage path; PikminAI inherits EnemyAI. The stronger semantic GoldBar-target hypothesis is unsupported/rejected, while exact runtime causality of the observed S1.42AG pursuit remains unproved. S1.42AG remains rejected partial fix; S1.42AF remains the accepted base.",
-    "analysis_contract": "Next perform the successor-specific Patch Safety Review under Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md. Determine the smallest exact Harmony boundary for MouthDog -> Pikmin protection, including exact declaring type/signature/Pikmin identification, base/inheritance/lifecycle responsibilities, whether the proven S1.42AG DoCheckInterval prevention guard remains part of the successor, and explicit preservation of MouthDog -> player plus native Pikmin -> MouthDog attack/latch/death/unlatch/task ownership. Define one-variable build delta and mandatory runtime regression gates including deliberate reverse-direction Pikmin -> MouthDog validation. Do not arm/build or start a runtime test until this review is complete."
+    "finding": "The successor-specific Patch Safety Review is PASS_FOR_IMPLEMENTATION. Keep the proven S1.42AG Priority.First prevention guard on exact LethalMin.MouthDogPikminEnemy.DoCheckInterval(), and add one exact Priority.First prefix on declared Vanilla V81 MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI) that skips only when the supplied collidedEnemy is a validated LethalMin.PikminAI. Do not patch DetectNoise: Vanilla noise pursuit is position-based and may legitimately move toward audible Pikmin positions without semantic Pikmin targeting. Keep MouthDog -> player and native Pikmin -> MouthDog attack/latch/death/unlatch/task lifecycle unchanged. Build must be a one-variable risky-patch delta against accepted S1.42AF.",
+    "analysis_contract": "In the next explicit project segment, implement the reviewed dual prevention-only contract in Patches/S139CompatibilityFixes/Plugin.cs and prepare/arm the successor build repository-native from exact accepted S1.42AF. Validate exact declaring types/signatures/method bodies and LethalMin.PikminAI : EnemyAI, install no guessed fallback, keep all unrelated package/config state unchanged, record DLL/archive diagnostics, and do not start runtime testing until a successful candidate artifact exists. Future runtime acceptance must deliberately test MouthDog -> Pikmin protection, Pikmin -> MouthDog attack/latch/death/unlatch/task lifecycle, MouthDog -> player behavior, repetition, neighbor behavior and logs."
   },
-  "next_action": "Complete the successor-specific Mouth Dog Patch Safety Review under Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md using the now-closed source boundaries. Exact Vanilla V81 EnemyAI.OnCollideWithEnemy() is proven debug-only with no gameplay/lifecycle mutation. Exact LethalMin 1.1.108 PikminItem.CarryNumerator() repeatedly plays ItemCarry through each carrying Pikmin, and with Dont Make Audible Noises=false those Pikmin sounds can emit audible noise at the carrier position. Keep S1.42AF as the accepted base and S1.42AG as the rejected partial fix. Define the smallest exact Harmony boundary, preserve Mouth Dog -> player and native Pikmin -> Mouth Dog lifecycle, and specify one-variable build/runtime regression gates including deliberate reverse-direction validation. Do not arm/build a successor or start a runtime test until the safety review is complete.",
+  "next_action": "In the next explicit project segment, implement the PASS-reviewed MouthDog successor as a one-variable risky-patch delta against accepted S1.42AF: retain the exact Priority.First LethalMin.MouthDogPikminEnemy.DoCheckInterval() prevention guard and add an exact Priority.First Vanilla MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI) prefix that skips only for a validated LethalMin.PikminAI collidedEnemy. Keep DetectNoise, MouthDog -> player, native Pikmin -> MouthDog attack/latch/death/unlatch/task ownership, packages and unrelated configs unchanged. Prepare/arm and build the successor repository-native only after the implementation contract validates; no runtime test is pending until a successful candidate artifact exists.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
-    "build_id": "IDLE_AFTER_MOUTHDOG_SOURCE_BOUNDARIES_AWAITING_PATCH_SAFETY_REVIEW",
+    "build_id": "IDLE_AFTER_MOUTHDOG_PATCH_SAFETY_REVIEW_AWAITING_SUCCESSOR_IMPLEMENTATION",
     "build_base_profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
     "build_base_sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",
