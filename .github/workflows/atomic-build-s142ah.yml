@@ -1,0 +1,112 @@
+name: Atomic build S1.42AH candidate
+
+on:
+  push:
+    branches:
+      - build/s142ah-mouthdog-dual-prevention
+    paths:
+      - ".github/workflows/atomic-build-s142ah.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atomic-build-s142ah
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout build branch
+        uses: actions/checkout@v4
+        with:
+          ref: build/s142ah-mouthdog-dual-prevention
+          fetch-depth: 0
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build, validate, and prepare atomic candidate checkpoint
+        run: python RepositoryTools/_temporary_build_s142ah.py
+
+      - name: Commit candidate checkpoint and remove temporary machinery
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm .github/workflows/atomic-build-s142ah.yml
+          rm RepositoryTools/_temporary_build_s142ah.py
+          git add -A -- \
+            Patches/S139CompatibilityFixes/Plugin.cs \
+            BuildSpecs/S1.42AH_PLAN.md BuildSpecs/current.json \
+            Profiles/'LC V1 S1.42AH Mouth Dog Fix.r2z' ProfileSources/S1.42AH \
+            Current/AUTO_BUILD_RESULT.json Current/AUTO_BUILD_RESULT.md \
+            Current/CURRENT_STATE.json Current/BUILD_LINEAGE.json Current/BUILD_LINEAGE.md \
+            Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md \
+            Current/Projektstatus_S1.42AH_CANDIDATE.json \
+            RuntimeInbox/ACTIVE_BUILD.txt \
+            Knowledge/CURRENT_LIFECYCLE.md Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md \
+            README.md START_HERE_ChatGPT_Masterprompt.txt Current/00_CURRENT_STATE.md Current/01_HANDOVER_CORE.md \
+            .github/workflows/atomic-build-s142ah.yml RepositoryTools/_temporary_build_s142ah.py
+          git diff --cached --check
+          git commit -m "Build S1.42AH Mouth Dog dual prevention candidate"
+          BUILD_COMMIT=$(git rev-parse HEAD)
+          echo "$BUILD_COMMIT" > /tmp/s142ah_build_commit.txt
+
+      - name: Record exact build provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          BUILD_COMMIT=$(cat /tmp/s142ah_build_commit.txt)
+          python - "$BUILD_COMMIT" <<'PY'
+          import sys
+          from pathlib import Path
+          sha = sys.argv[1]
+          paths = [
+              'Current/CURRENT_STATE.json',
+              'Current/BUILD_LINEAGE.json',
+              'Current/BUILD_LINEAGE.md',
+              'Current/Projektstatus_S1.42AH_CANDIDATE.json',
+              'Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md',
+              'BuildSpecs/S1.42AH_PLAN.md',
+              'Knowledge/CURRENT_LIFECYCLE.md',
+          ]
+          for name in paths:
+              p = Path(name)
+              text = p.read_text(encoding='utf-8')
+              if '__BUILD_COMMIT__' in text:
+                  p.write_text(text.replace('__BUILD_COMMIT__', sha), encoding='utf-8')
+          PY
+          python RepositoryTools/render_current_navigation.py
+          git add Current/CURRENT_STATE.json Current/BUILD_LINEAGE.json Current/BUILD_LINEAGE.md \
+            Current/Projektstatus_S1.42AH_CANDIDATE.json Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md \
+            BuildSpecs/S1.42AH_PLAN.md Knowledge/CURRENT_LIFECYCLE.md \
+            README.md START_HERE_ChatGPT_Masterprompt.txt Current/00_CURRENT_STATE.md Current/01_HANDOVER_CORE.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Record S1.42AH build provenance"
+          fi
+
+      - name: Verify repository checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/knowledge_architecture_validator.py
+          test "$(python -c 'import json; print(str(json.load(open("BuildSpecs/current.json"))["enabled"]).lower())')" = "false"
+          test "$(cat RuntimeInbox/ACTIVE_BUILD.txt)" = "S1.42AH"
+          test ! -e .github/workflows/atomic-build-s142ah.yml
+          test ! -e RepositoryTools/_temporary_build_s142ah.py
+          git status --short
+          test -z "$(git status --porcelain)"
+
+      - name: Push validated candidate checkpoint
+        run: git push origin HEAD:build/s142ah-mouthdog-dual-prevention
