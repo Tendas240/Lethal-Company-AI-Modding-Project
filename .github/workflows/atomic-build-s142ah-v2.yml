@@ -1,0 +1,111 @@
+name: Atomic build S1.42AH candidate v2
+
+on:
+  push:
+    branches:
+      - build/s142ah-mouthdog-dual-prevention
+    paths:
+      - ".github/workflows/atomic-build-s142ah-v2.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atomic-build-s142ah-v2
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout build branch
+        uses: actions/checkout@v4
+        with:
+          ref: build/s142ah-mouthdog-dual-prevention
+          fetch-depth: 0
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build, validate, and prepare atomic candidate checkpoint
+        run: python RepositoryTools/_temporary_build_s142ah_v2.py
+
+      - name: Commit candidate checkpoint and remove temporary machinery
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm .github/workflows/atomic-build-s142ah.yml
+          rm .github/workflows/atomic-build-s142ah-v2.yml
+          rm RepositoryTools/_temporary_build_s142ah.py
+          rm RepositoryTools/_temporary_build_s142ah_v2.py
+          git add -A
+          git diff --cached --check
+          git commit -m "Build S1.42AH Mouth Dog dual prevention candidate"
+          git rev-parse HEAD > /tmp/s142ah_build_commit.txt
+
+      - name: Record exact build provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          BUILD_COMMIT=$(cat /tmp/s142ah_build_commit.txt)
+          python - "$BUILD_COMMIT" <<'PY'
+          import sys
+          from pathlib import Path
+          sha = sys.argv[1]
+          paths = [
+              'Current/CURRENT_STATE.json',
+              'Current/BUILD_LINEAGE.json',
+              'Current/BUILD_LINEAGE.md',
+              'Current/Projektstatus_S1.42AH_CANDIDATE.json',
+              'Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md',
+              'BuildSpecs/S1.42AH_PLAN.md',
+              'Knowledge/CURRENT_LIFECYCLE.md',
+          ]
+          for name in paths:
+              p = Path(name)
+              text = p.read_text(encoding='utf-8')
+              if '__BUILD_COMMIT__' in text:
+                  p.write_text(text.replace('__BUILD_COMMIT__', sha), encoding='utf-8')
+          PY
+          python RepositoryTools/render_current_navigation.py
+          git add -A
+          if ! git diff --cached --quiet; then
+            git diff --cached --check
+            git commit -m "Record S1.42AH build provenance"
+          fi
+
+      - name: Verify repository checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/knowledge_architecture_validator.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          spec = json.loads(Path('BuildSpecs/current.json').read_text(encoding='utf-8'))
+          state = json.loads(Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          assert spec['enabled'] is False
+          assert spec['build_id'] == 'IDLE_AFTER_S1.42AH_BUILD_AWAITING_RUNTIME_VALIDATION'
+          assert state['accepted_baseline']['build_id'] == 'S1.42AF'
+          assert state['active_candidate']['build_id'] == 'S1.42AH'
+          assert state['runtime_test_outstanding'] is True
+          assert Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AH'
+          assert not Path('.github/workflows/atomic-build-s142ah.yml').exists()
+          assert not Path('.github/workflows/atomic-build-s142ah-v2.yml').exists()
+          assert not Path('RepositoryTools/_temporary_build_s142ah.py').exists()
+          assert not Path('RepositoryTools/_temporary_build_s142ah_v2.py').exists()
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Push validated candidate checkpoint
+        run: git push origin HEAD:build/s142ah-mouthdog-dual-prevention
