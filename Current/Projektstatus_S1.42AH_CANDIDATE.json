@@ -1,0 +1,71 @@
+{
+  "schema_version": 4,
+  "date": "2026-09-07",
+  "repository_is_source_of_truth": true,
+  "accepted_baseline": {
+    "build_id": "S1.42AF",
+    "title": "Path-Length-Safe Microwave Packaging",
+    "status": "ACCEPTED_FULL_NORMAL_STACK",
+    "profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
+    "sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
+    "acceptance": "Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md",
+    "project_status": "Current/Projektstatus_S1.42AF_ACCEPTED.json",
+    "runtime_evidence": "RuntimeEvidence/S1.42AF/20260905T223738Z/",
+    "profile_sources": "ProfileSources/S1.42AF/",
+    "file_index": "ProfileSources/S1.42AF/FILE_INDEX.json"
+  },
+  "active_runtime_candidate": {
+    "build_id": "S1.42AH",
+    "title": "Mouth Dog Pikmin Dual Prevention",
+    "status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
+    "sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
+    "candidate_record": "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md",
+    "project_status": "Current/Projektstatus_S1.42AH_CANDIDATE.json",
+    "build_plan": "BuildSpecs/S1.42AH_PLAN.md",
+    "profile_sources": "ProfileSources/S1.42AH/",
+    "file_index": "ProfileSources/S1.42AH/FILE_INDEX.json",
+    "workflow_run": 34141360051,
+    "build_commit": "__BUILD_COMMIT__",
+    "plugin_dll_sha256": "bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573",
+    "parent": "S1.42AF"
+  },
+  "runtime_gate": {
+    "adapter_path_protection": "MUST_PASS",
+    "vanilla_collision_block_marker": "MUST_APPEAR",
+    "mouthdog_pikmin_bite_grab": "MUST_BE_0",
+    "mouthdog_pikmin_hit_enemy_2": "MUST_BE_0",
+    "reverse_direction_explicit_command_or_throw": "REQUIRED",
+    "pikmin_latch_attack": "MUST_REMAIN_FUNCTIONAL",
+    "mouthdog_death_unlatch_task_cleanup": "MUST_REMAIN_FUNCTIONAL",
+    "mouthdog_to_player": "MUST_REMAIN_FUNCTIONAL",
+    "non_pikmin_neighbor_behavior": "MUST_REMAIN_FUNCTIONAL",
+    "repetition": "REQUIRED",
+    "noise_position_pursuit": "ALLOWED_NOT_A_FAILURE_BY_ITSELF",
+    "work_state_warning_burst": "MUST_BE_0",
+    "leader_null_following": "MUST_BE_0",
+    "project_patch_errors": "MUST_BE_0",
+    "fatal": "MUST_BE_0"
+  },
+  "archive_gate": {
+    "parent": "S1.42AF",
+    "changed_existing_members": [
+      "export.r2x",
+      "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+    ],
+    "added_members": [],
+    "removed_members": [],
+    "unrelated_members_byte_preserved": true,
+    "profile_sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
+    "plugin_dll_sha256": "bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573"
+  },
+  "controllers": {
+    "buildspec_current_enabled": false,
+    "buildspec_current_id": "IDLE_AFTER_S1.42AH_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "buildspec_base_profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
+    "buildspec_base_sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
+    "runtime_active_build": "S1.42AH",
+    "successor_armed": false
+  },
+  "exact_next_step": "Import S1.42AH with the canonical Gale v2.4 replacement helper and run the full-normal MouthDog/Pikmin regression gate from Current/139. Deliberately provoke MouthDog/Pikmin collision, explicitly command/throw Pikmin onto the MouthDog for reverse-direction latch/attack/death/unlatch/task cleanup, verify MouthDog -> player and non-Pikmin neighbor behavior, repeat protected collisions, then upload the complete fresh S1.42AH LogOutput.log with the build-specific uploader in Current/139. Do not accept S1.42AH from build/startup success alone."
+}

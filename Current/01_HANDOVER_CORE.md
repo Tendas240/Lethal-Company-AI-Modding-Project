@@ -29,10 +29,10 @@ When the user later requests transfer to another ChatGPT chat, execute `Current/
 ## Current anchors
 
 Accepted: **S1.42AF — Path-Length-Safe Microwave Packaging**, SHA-256 `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`.  
-Latest built: **S1.42AG — Mouth Dog Pikmin One-Way Protection**, SHA-256 `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`, status **RUNTIME REJECTED PARTIAL FIX**.  
-Active candidate: **none**. Runtime test: **none pending**. Successor: **not armed**.
+Latest built: **S1.42AH — Mouth Dog Pikmin Dual Prevention**, SHA-256 `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`, status **BUILD PASS RUNTIME VALIDATION OUTSTANDING**.  
+Active candidate: **S1.42AH**. Runtime test: **pending**. Successor: **not armed**.
 
-Exact next action: In the next explicit project segment, implement the PASS-reviewed MouthDog successor as a one-variable risky-patch delta against accepted S1.42AF: retain the exact Priority.First LethalMin.MouthDogPikminEnemy.DoCheckInterval() prevention guard and add an exact Priority.First Vanilla MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI) prefix that skips only for a validated LethalMin.PikminAI collidedEnemy. Keep DetectNoise, MouthDog -> player, native Pikmin -> MouthDog attack/latch/death/unlatch/task ownership, packages and unrelated configs unchanged. Prepare/arm and build the successor repository-native only after the implementation contract validates; no runtime test is pending until a successful candidate artifact exists.
+Exact next action: Import S1.42AH with the canonical Gale v2.4 replacement helper and run the full-normal MouthDog/Pikmin regression gate from Current/139. Deliberately provoke MouthDog/Pikmin collision, explicitly command/throw Pikmin onto the MouthDog for reverse-direction latch/attack/death/unlatch/task cleanup, verify MouthDog -> player and non-Pikmin neighbor behavior, repeat protected collisions, then upload the complete fresh S1.42AH LogOutput.log with the build-specific uploader in Current/139. Do not accept S1.42AH from build/startup success alone.
 
 ## Mandatory runtime-test UX
 

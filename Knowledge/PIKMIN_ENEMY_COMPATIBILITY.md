@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** accepted interaction ownership and permanent anti-regression rules  
 **Canonical-For:** `pikmin_enemy_compatibility`  
-**Evidence:** `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`, `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`, `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt`, `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`, `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/`, `SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/`, `RuntimeEvidence/S1.42AF/20260905T223738Z/`, `RuntimeEvidence/S1.42AG/20260906T085500Z/`  
+**Evidence:** `Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md`, `Current/66_S1.42R_RUNTIME_BABOON_ADAPTER_LIFECYCLE_ROOT_CAUSE.md`, `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`, `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`, `Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt`, `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`, `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`, `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/`, `SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/`, `RuntimeEvidence/S1.42AF/20260905T223738Z/`, `RuntimeEvidence/S1.42AG/20260906T085500Z/`  
 **Code:** `Patches/S139CompatibilityFixes/Plugin.cs`  
 **Related:** `Knowledge/ENEMY_SPAWN_BASELINE.md`, `Knowledge/CURRENT_LIFECYCLE.md`  
 **Last-Validated:** 2026-09-07
@@ -31,133 +31,29 @@ The proven Enemy -> Pikmin broken grab path is blocked before it mutates leader/
 
 Puffer -> Pikmin smoke/effect interaction is protected through a targeted compatibility boundary, not a broad enemy disable.
 
-## Mouth Dog / Eyeless Dog — current boundary
+## Mouth Dog / Eyeless Dog — S1.42AH active candidate
 
-S1.42AF remains the accepted gameplay base. S1.42AG remains **runtime rejected / partial fix / not accepted**.
+S1.42AF remains accepted. S1.42AG remains rejected partial-fix evidence. **S1.42AH is now the built active runtime candidate and is not accepted.**
 
-Current successor safety authority:
+S1.42AH implements the exact reviewed dual prevention architecture from `Current/138`: retain `Priority.First` prevention on declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` and add `Priority.First` prevention on declared `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` only when the supplied object is validated runtime `LethalMin.PikminAI`.
 
-`Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`
+The complete target/signature/method-body/inheritance contract fails closed with no guessed fallback. The adapter stays enabled. `DetectNoise`, MouthDog -> player, non-Pikmin EnemyAI collision behavior and native Pikmin attack/latch/death/unlatch/task ownership remain unchanged.
 
-Status:
+Candidate: `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`  
+Profile SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`  
+DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`
 
-**PASS FOR IMPLEMENTATION / SUCCESSOR NOT ARMED / NO BUILD YET**
+The archive was built directly from S1.42AF. Only `export.r2x` and the cumulative compatibility DLL differ; all unrelated members are byte-identical.
 
-### Proven S1.42AG partial fix
-
-Exact LethalMin 1.1.108 source proves `MouthDogPikminEnemy.DoCheckInterval()` is the adapter-specific target/bite dispatcher.
-
-S1.42AG's exact `Priority.First` prevention Prefix armed and executed. Runtime evidence proves it removed the prior `Biting N Pikmin` / `EnemyAttackMouth` / 2.5-second grab/death-timer signature and reduced `Work state with no task assigned!` from 707 in the S1.42AF exposure run to 0.
-
-This guard remains part of the reviewed successor contract.
-
-### Proven Vanilla V81 noise-position path
-
-`MouthDogAI.DetectNoise(...)` consumes a world-space position. `noisePositionGuess` can drive pursuit/lunge behavior.
-
-A carrying Pikmin can source recurring audible noise at its own transform when audible-noise suppression is disabled, as it is in accepted S1.42AF.
-
-Therefore a Dog moving toward a Pikmin's current/recent position is not by itself proof of semantic Pikmin targeting. The successor must not patch `DetectNoise()` based on inferred source identity.
-
-### Proven Vanilla V81 generic EnemyAI collision path
-
-Vanilla declares:
-
-`MouthDogAI.OnCollideWithEnemy(Collider other, EnemyAI collidedEnemy = null)`
-
-For a different enemy type after cooldown it can lunge and call:
-
-`collidedEnemy.HitEnemy(2, ...)`
-
-Exact LethalMin source proves:
-
-`PikminAI : EnemyAI`
-
-So Pikmin can enter this native generic-enemy path solely through inheritance.
-
-### Proven base contract
-
-Exact V81 `EnemyAI.OnCollideWithEnemy()` is debug-only. It performs no gameplay, targeting, navigation, damage, grab, cleanup or lifecycle mutation.
-
-This makes a Pikmin-only skip of the MouthDog override safe with respect to hidden base gameplay responsibilities.
-
-## Reviewed successor architecture
-
-The minimum exact successor is:
-
-1. **retain** exact `Priority.First` Prefix on declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()`;
-2. **add** exact `Priority.First` Prefix on declared `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)`;
-3. skip that Vanilla override only when the actual `collidedEnemy` is a validated runtime `LethalMin.PikminAI`.
-
-Required fail-closed behavior:
-
-- declared-only exact target resolution;
-- exact declaring type;
-- exact return/parameter contract;
-- non-null method body;
-- validate `LethalMin.PikminAI` derives from `EnemyAI`;
-- no guessed target fallback.
-
-Forbidden:
-
-- name heuristics;
-- global `EnemyAI` scanning;
-- broad reflection patching;
-- whole `MouthDogPikminEnemy` disable;
-- manual Pikmin-state repair;
-- patching `DetectNoise()`;
-- patching `OnCollideWithPlayer()`;
-- building from rejected S1.42AG.
-
-## Lifecycle preservation
-
-`MouthDogPikminEnemy` remains enabled so inherited `PikminEnemy` lifecycle remains active.
-
-Native LethalMin continues to own:
-
-- Pikmin -> MouthDog latch/attack;
-- enemy death detection;
-- trigger removal;
-- unlatch/release;
-- task completion;
-- follow/idle restoration;
-- dead-body/carry lifecycle.
-
-MouthDog -> player remains a separate unpatched Vanilla path.
-
-Non-Pikmin `EnemyAI` collisions pass through unchanged.
-
-## One-variable successor rule
-
-The successor must be a risky-patch delta against exact accepted S1.42AF.
-
-Only the local compatibility DLL may change functionally, plus the necessary profile identity metadata. Packages and unrelated configs remain unchanged.
-
-No candidate currently exists.
-
-## Future runtime gates
-
-A later candidate must deliberately verify:
-
-- adapter-path Dog -> Pikmin protection;
-- Vanilla-collision Dog -> Pikmin protection;
-- native Pikmin -> Dog latch/attack/death/unlatch/task completion;
-- Dog -> player;
-- repeated protected collisions;
-- non-Pikmin neighbor behavior;
-- logs.
-
-A passive follower is not a reverse-direction test. A noise-driven lunge toward an audible Pikmin position is not automatically a failure.
+Runtime acceptance must deliberately prove the protected collision marker, absence of adapter/grab/HitEnemy mutation, explicit reverse-direction Pikmin command/throw latch/attack/death cleanup, MouthDog -> player, non-Pikmin neighbor behavior, repetition and clean logs. Noise-position pursuit alone is not failure evidence.
 
 ## Current lifecycle
 
 - accepted: S1.42AF;
-- latest built: S1.42AG, rejected partial fix;
-- active candidate: none;
-- successor armed: no;
-- runtime test pending: no.
-
-Exact next action is implementation/build preparation of the reviewed successor from S1.42AF in a later explicit project segment.
+- latest built: S1.42AH, build pass / active candidate / not accepted;
+- active candidate: S1.42AH;
+- runtime test pending: yes;
+- successor beyond S1.42AH: not armed.
 
 ## CodeRebirth utility kills
 

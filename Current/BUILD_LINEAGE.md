@@ -9,9 +9,10 @@
 ## Current lineage head
 
 - **Accepted gameplay baseline:** S1.42AF — Path-Length-Safe Microwave Packaging.
-- **Latest built artifact:** S1.42AG — Mouth Dog Pikmin One-Way Protection — **runtime rejected / partial fix**.
-- **Active candidate:** none.
-- **Next build:** none armed; controller is idle on accepted S1.42AF while targeted analysis of the remaining Mouth Dog targeting/attack path is required.
+- **Latest built artifact:** S1.42AH — Mouth Dog Pikmin Dual Prevention — **build pass / active runtime candidate / not accepted**.
+- **Active candidate:** S1.42AH.
+- **Accepted gameplay baseline:** S1.42AF remains unchanged until runtime acceptance.
+- **Next build:** none armed; runtime validation of S1.42AH is outstanding.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -61,6 +62,7 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AE | **SUPERSEDED — PATH-LENGTH BLOCKED, NOT GAMEPLAY-REJECTED** | Corrected provider code was never reached; v2.4 plus direct filesystem checks proved the 40,960-byte LC SoundAPI binding existed while its full path measured 262 characters and BepInEx/Mono still failed before chainloader startup. |
 | S1.42AF | **ACCEPTED CURRENT BASELINE** | Path-length-safe packaging successor built directly from S1.42AC. Runtime proved the nested LC SoundAPI binding at 226 characters, normal startup, and the exact 18 Moon / 18 Interior Functional Microwave contract with only the 18 Moon/tag curves scaled by `0.5`. |
 | S1.42AG | **RUNTIME REJECTED / PARTIAL FIX** | `MouthDogPikminEnemy.DoCheckInterval()` prevention successfully removed the LethalMin bite/grab/death-timer mutation path and the 707-warning aftermath, but a Mouth Dog still targeted/attacked a scrap-carrying Purple Pikmin through an unresolved path; reverse-direction Pikmin -> Dog behavior was not positively proven. |
+| S1.42AH | **ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED** | Dual exact MouthDog adapter + Vanilla Pikmin collision prevention built directly from accepted S1.42AF; only profile identity and cumulative compatibility DLL differ. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -187,6 +189,19 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Proven partial fix: `Priority.First` prevention on declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` successfully blocked the LethalMin Pikmin bite/grab/death-timer mutation path and eliminated the associated `Work state with no task assigned!` burst.
 - Rejection reason: a Mouth Dog still visibly targeted and attacked a scrap-carrying Purple Pikmin through an unresolved path outside that dispatcher; intended Pikmin -> Mouth Dog attack/latch preservation was not positively proven.
 - Status: runtime rejected / partial fix / not a safe gameplay base.
+
+### S1.42AH — active Mouth Dog Pikmin dual prevention candidate
+
+- Parent: accepted S1.42AF, never rejected S1.42AG.
+- Profile: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`
+- SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
+- DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`
+- Candidate: `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`
+- Plan: `BuildSpecs/S1.42AH_PLAN.md`
+- Build workflow run: `34141360051`
+- Build commit: `__BUILD_COMMIT__`
+- Archive delta: `export.r2x` + compatibility DLL only; all other members byte-identical to S1.42AF.
+- Status: build pass / runtime validation outstanding / not accepted.
 
 ## Feature/fix lookup
 
