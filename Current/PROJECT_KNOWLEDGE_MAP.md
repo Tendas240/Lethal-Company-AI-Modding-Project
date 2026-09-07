@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`  
 **Current State:** `Current/00_CURRENT_STATE.md`  
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
-**Last-Validated:** 2026-09-06
+**Last-Validated:** 2026-09-07
 
 Before performing project work, every ChatGPT chat must read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Use this map for the semantic content route inside each execution segment.
 
@@ -36,11 +36,13 @@ Use this map before repository search. Open only the topic that matches the user
 | Where is the untouched pre-overhaul recovery point? | `pre_overhaul_backup_and_recovery` | `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md` |
 | Which build introduced/rejected/fixed something? What came before build X? | `build_lineage` | `Current/BUILD_LINEAGE.md` |
 
-The current accepted gameplay baseline is **S1.42AF — Path-Length-Safe Microwave Packaging**. The latest built artifact is **S1.42AG — Mouth Dog Pikmin One-Way Protection — runtime rejected / partial fix**. There is no active runtime candidate and no successor is armed.
+The current accepted gameplay baseline is **S1.42AF — Path-Length-Safe Microwave Packaging**. The latest built artifact is **S1.42AG — Mouth Dog Pikmin One-Way Protection — runtime rejected / partial fix**. There is no active runtime candidate, no successor is armed and no runtime test is pending.
 
-The MouthDog pre-successor source-analysis gates are now closed. Current analysis authority is `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`. Provenance-safe Vanilla evidence lives under `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/` and `SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/`; exact LethalMin carry/audio evidence remains in `Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt` and `Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`.
+The MouthDog pre-successor source gates and successor-specific Patch Safety Review are now closed. Current safety authority is `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`; source-boundary provenance remains in `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/`, `SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/`, `Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt` and `Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`.
 
-The exact next action is the **successor-specific MouthDog Patch Safety Review** registered in `Knowledge/CURRENT_LIFECYCLE.md` and `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md` under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`. Do not repeat the completed source captures, arm/build a successor, or start a gameplay test before that review closes the exact patch boundary and regression contract.
+The reviewed successor architecture is: retain the exact `Priority.First` `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` prevention guard and add one exact `Priority.First` `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` Prefix that skips only for a validated `LethalMin.PikminAI` collision. Do not patch `DetectNoise()`; position-based audible-noise pursuit is not itself semantic Pikmin targeting.
+
+The exact next action is a later explicit implementation/build segment from accepted S1.42AF. The persistent controller remains disabled until that work is deliberately started. Do not start a runtime test before a successful successor artifact exists.
 
 ## Authority rule
 
