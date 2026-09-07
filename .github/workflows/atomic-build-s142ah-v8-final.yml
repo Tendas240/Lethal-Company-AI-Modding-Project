@@ -1,0 +1,205 @@
+name: Finalize S1.42AH candidate v8
+
+on:
+  push:
+    branches:
+      - build/s142ah-mouthdog-dual-prevention
+    paths:
+      - ".github/workflows/atomic-build-s142ah-v8-final.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atomic-build-s142ah-v8-final
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout build branch
+        uses: actions/checkout@v4
+        with:
+          ref: build/s142ah-mouthdog-dual-prevention
+          fetch-depth: 0
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build and validate S1.42AH candidate
+        run: python RepositoryTools/_temporary_build_s142ah_v2.py
+
+      - name: Commit validated candidate checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -rf Patches/S139CompatibilityFixes/bin Patches/S139CompatibilityFixes/obj
+          rm -f .github/workflows/atomic-build-s142ah.yml
+          rm -f .github/workflows/atomic-build-s142ah-v2.yml
+          rm -f .github/workflows/atomic-build-s142ah-v3.yml
+          rm -f .github/workflows/atomic-build-s142ah-v4.yml
+          rm -f .github/workflows/atomic-build-s142ah-v5.yml
+          rm -f .github/workflows/atomic-build-s142ah-v6-diagnostic.yml
+          rm -f .github/workflows/atomic-build-s142ah-v7-diagnostic.yml
+          rm -f .github/workflows/atomic-build-s142ah-v8-final.yml
+          rm -f RepositoryTools/_temporary_build_s142ah.py
+          rm -f RepositoryTools/_temporary_build_s142ah_v2.py
+          rm -f RepositoryTools/_temporary_rerun_s142ah.py
+          rm -f Current/TEMP_S1.42AH_PROMOTION_DIAGNOSTIC.txt
+          rm -f Current/TEMP_S1.42AH_PROMOTION_DIAGNOSTIC_V7.txt
+          git add -A
+          git add -f -- "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z"
+          if git diff --cached --quiet; then
+            echo "No candidate changes were staged" >&2
+            exit 1
+          fi
+          git commit -m "Build S1.42AH Mouth Dog dual prevention candidate"
+          git rev-parse HEAD > /tmp/s142ah_build_commit.txt
+
+      - name: Record exact build provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          BUILD_COMMIT=$(cat /tmp/s142ah_build_commit.txt)
+          python - "$BUILD_COMMIT" <<'PY'
+          import sys
+          from pathlib import Path
+          sha = sys.argv[1]
+          paths = [
+              'Current/CURRENT_STATE.json',
+              'Current/BUILD_LINEAGE.json',
+              'Current/BUILD_LINEAGE.md',
+              'Current/Projektstatus_S1.42AH_CANDIDATE.json',
+              'Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md',
+              'BuildSpecs/S1.42AH_PLAN.md',
+              'Knowledge/CURRENT_LIFECYCLE.md',
+          ]
+          found = 0
+          for name in paths:
+              p = Path(name)
+              text = p.read_text(encoding='utf-8')
+              count = text.count('__BUILD_COMMIT__')
+              if count:
+                  found += count
+                  p.write_text(text.replace('__BUILD_COMMIT__', sha), encoding='utf-8')
+          if found == 0:
+              raise SystemExit('No build provenance placeholders found')
+          print(f'Replaced {found} build provenance placeholder(s) with {sha}')
+          PY
+          python RepositoryTools/render_current_navigation.py
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Record S1.42AH build provenance"
+          fi
+
+      - name: Run 12 permanent repository gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/handover_workflow_validator.py
+          python RepositoryTools/segmented_execution_policy_validator.py
+          python RepositoryTools/artifact_byte_integrity_validator.py
+          python RepositoryTools/repository_integrity_guard.py
+          python RepositoryTools/gale_import_helper_validator.py
+          python RepositoryTools/runtime_sha_provenance_validator.py
+          python RepositoryTools/phase_checkpoint_validator.py
+          python RepositoryTools/overhaul_contract_validator.py
+          python RepositoryTools/answerability_regression.py
+          python RepositoryTools/validator_selftest.py
+
+      - name: Verify S1.42AH build and repository invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import zipfile
+          from pathlib import Path
+
+          profile = Path('Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z')
+          base = Path('Profiles/LC V1 S1.42AF Microwave Fix.r2z')
+          dll_path = 'BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll'
+          spec = json.loads(Path('BuildSpecs/current.json').read_text(encoding='utf-8'))
+          state = json.loads(Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          result = json.loads(Path('Current/AUTO_BUILD_RESULT.json').read_text(encoding='utf-8'))
+          index = json.loads(Path('ProfileSources/S1.42AH/FILE_INDEX.json').read_text(encoding='utf-8'))
+          actual_profile_sha = hashlib.sha256(profile.read_bytes()).hexdigest()
+          dll_entries = [e for e in index if e.get('path') == dll_path]
+
+          assert spec['enabled'] is False
+          assert spec['build_id'] == 'IDLE_AFTER_S1.42AH_BUILD_AWAITING_RUNTIME_VALIDATION'
+          assert state['accepted_baseline']['build_id'] == 'S1.42AF'
+          assert state['active_candidate']['build_id'] == 'S1.42AH'
+          assert state['runtime_test_outstanding'] is True
+          assert result['build_id'] == 'S1.42AH'
+          assert result['base_sha256'] == '6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0'
+          assert result['output_sha256'] == actual_profile_sha
+          assert state['active_candidate']['sha256'] == actual_profile_sha
+          assert state['latest_built_artifact']['sha256'] == actual_profile_sha
+          assert spec['base_sha256'] == actual_profile_sha
+          assert set(result['changed_existing_members']) == {
+              'export.r2x',
+              dll_path,
+          }
+          assert result['added_members'] == []
+          assert result['mod_state_changes'] == []
+          assert result['mod_additions'] == []
+          assert result['mod_removals'] == []
+          assert len(dll_entries) == 1
+          assert Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AH'
+
+          with zipfile.ZipFile(base, 'r') as bz, zipfile.ZipFile(profile, 'r') as nz:
+              assert set(bz.namelist()) == set(nz.namelist())
+              allowed = {'export.r2x', dll_path}
+              for name in set(bz.namelist()) - allowed:
+                  assert bz.read(name) == nz.read(name), name
+              assert hashlib.sha256(nz.read(dll_path)).hexdigest() == dll_entries[0]['sha256']
+
+          assert not Path('Patches/S139CompatibilityFixes/bin').exists()
+          assert not Path('Patches/S139CompatibilityFixes/obj').exists()
+          for path in [
+              '.github/workflows/atomic-build-s142ah.yml',
+              '.github/workflows/atomic-build-s142ah-v2.yml',
+              '.github/workflows/atomic-build-s142ah-v3.yml',
+              '.github/workflows/atomic-build-s142ah-v4.yml',
+              '.github/workflows/atomic-build-s142ah-v5.yml',
+              '.github/workflows/atomic-build-s142ah-v6-diagnostic.yml',
+              '.github/workflows/atomic-build-s142ah-v7-diagnostic.yml',
+              '.github/workflows/atomic-build-s142ah-v8-final.yml',
+              'RepositoryTools/_temporary_build_s142ah.py',
+              'RepositoryTools/_temporary_build_s142ah_v2.py',
+              'RepositoryTools/_temporary_rerun_s142ah.py',
+              'Current/TEMP_S1.42AH_PROMOTION_DIAGNOSTIC.txt',
+              'Current/TEMP_S1.42AH_PROMOTION_DIAGNOSTIC_V7.txt',
+          ]:
+              assert not Path(path).exists(), path
+          for path in [
+              'Current/CURRENT_STATE.json',
+              'Current/BUILD_LINEAGE.json',
+              'Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md',
+              'Current/Projektstatus_S1.42AH_CANDIDATE.json',
+          ]:
+              assert '__BUILD_COMMIT__' not in Path(path).read_text(encoding='utf-8'), path
+
+          print('S1.42AH candidate checkpoint: PASS')
+          print('Profile SHA-256:', actual_profile_sha)
+          print('DLL SHA-256:', dll_entries[0]['sha256'])
+          print('Archive byte-preservation: PASS')
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Push validated candidate checkpoint
+        run: git push origin HEAD:build/s142ah-mouthdog-dual-prevention
