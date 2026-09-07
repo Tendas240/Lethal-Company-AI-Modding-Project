@@ -100,6 +100,6 @@ Passive follower non-aggression is not a reverse-direction test. Position-based 
 
 ## Canonical Gale workflow
 
-The canonical Gale workflow remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` under `Knowledge/GALE_PROFILE_WORKFLOW.md`.
+The current repository-driven Gale replacement/import workflow remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`.
 
-No runtime test is currently pending. When a future candidate is ready, the same response that explains the test must include the Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell log uploader.
+No runtime test is currently pending. Any future candidate requiring Gale replacement must continue to use this canonical v2.4 path unless a later validated workflow authority explicitly supersedes it. When a future candidate is ready, the same response that explains the test must include the Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell log uploader.
