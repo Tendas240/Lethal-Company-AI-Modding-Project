@@ -29,7 +29,7 @@
     "profile_sources": "ProfileSources/S1.42AH/",
     "file_index": "ProfileSources/S1.42AH/FILE_INDEX.json",
     "workflow_run": 34141360051,
-    "build_commit": "__BUILD_COMMIT__",
+    "build_commit": "fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5",
     "plugin_dll_sha256": "bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573",
     "parent": "S1.42AF"
   },
@@ -45,7 +45,7 @@
     "profile_sources": "ProfileSources/S1.42AH/",
     "file_index": "ProfileSources/S1.42AH/FILE_INDEX.json",
     "workflow_run": 34141360051,
-    "build_commit": "__BUILD_COMMIT__",
+    "build_commit": "fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5",
     "plugin_dll_sha256": "bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573",
     "parent": "S1.42AF"
   },

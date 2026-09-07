@@ -199,7 +199,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Candidate: `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`
 - Plan: `BuildSpecs/S1.42AH_PLAN.md`
 - Build workflow run: `34141360051`
-- Build commit: `__BUILD_COMMIT__`
+- Build commit: `fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5`
 - Archive delta: `export.r2x` + compatibility DLL only; all other members byte-identical to S1.42AF.
 - Status: build pass / runtime validation outstanding / not accepted.
 

@@ -31,7 +31,7 @@ S1.42AF remains the only accepted gameplay base.
 - Compatibility DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`
 - Candidate: `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`
 - Build workflow run: `34141360051`
-- Build commit: `__BUILD_COMMIT__`
+- Build commit: `fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5`
 - Exact archive delta: `export.r2x` + compatibility DLL only; every unrelated member byte-identical to S1.42AF.
 
 S1.42AF remains the only accepted gameplay base until S1.42AH passes runtime validation.

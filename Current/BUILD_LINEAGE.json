@@ -546,7 +546,7 @@
       "candidate_record": "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md",
       "project_status": "Current/Projektstatus_S1.42AH_CANDIDATE.json",
       "workflow_run": 34141360051,
-      "build_commit": "__BUILD_COMMIT__",
+      "build_commit": "fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5",
       "safe_as_gameplay_base": false,
       "principal_feature": "dual prevention on exact LethalMin MouthDog adapter plus exact Vanilla MouthDogAI Pikmin collision path"
     }
