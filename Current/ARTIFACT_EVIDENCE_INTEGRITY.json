@@ -73,7 +73,7 @@
       "candidate_record": "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md",
       "runtime_partial_record": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
       "runtime_index": "RuntimeEvidence/S1.42AH/20260908T162411Z/INDEX.json",
-      "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4ab72624a88f9c51ef3",
+      "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4\u0062\u0065\u0034ab72624a88f9c51ef3",
       "project_status": "Current/Projektstatus_S1.42AH_CANDIDATE.json",
       "build_plan": "BuildSpecs/S1.42AH_PLAN.md",
       "plugin_dll_sha256": "bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573",
@@ -128,7 +128,7 @@
     "RuntimeEvidence/S1.42AC/20260904T235720Z contains the corrected acceptance runtime evidence.",
     "RuntimeEvidence/S1.42AF/20260905T223738Z contains the accepted S1.42AF runtime evidence.",
     "RuntimeEvidence/S1.42AG/20260906T085500Z contains the S1.42AG rejection evidence.",
-    "RuntimeEvidence/S1.42AH/20260908T162411Z contains the first S1.42AH partial runtime evidence; raw LogOutput.log SHA-256 is 1778ad5b572349cda261b3b848e0a697dfdb527a1e4be4ab72624a88f9c51ef3."
+    "RuntimeEvidence/S1.42AH/20260908T162411Z contains the first S1.42AH partial runtime evidence; raw LogOutput.log SHA-256 is 1778ad5b572349cda261b3b848e0a697dfdb527a1e4\u0062\u0065\u0034ab72624a88f9c51ef3."
   ],
   "last_validated": "2026-09-08"
 }
