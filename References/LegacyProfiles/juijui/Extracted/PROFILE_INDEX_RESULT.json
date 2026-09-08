@@ -8,5 +8,6 @@
   "snapshot": {
     "entries": 444,
     "text_entries": 444
-  }
+  },
+  "build_id_resolution": "LEGACY_FILENAME"
 }
