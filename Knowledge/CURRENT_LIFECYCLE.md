@@ -1,12 +1,13 @@
+<!-- LIVE_STATE: accepted=S1.42AF latest=S1.42AH candidate=S1.42AH runtime_test_outstanding=true -->
 # Current Project Lifecycle
 
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed acceptance/rejection remains in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Topics:** `accepted_baseline`, `active_candidate_and_next_test`  
-**Evidence:** `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`, `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`, `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/`, `SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/`, `RuntimeEvidence/S1.42AG/20260906T085500Z/`  
-**Related:** `Current/CURRENT_STATE.json`, `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`, `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`  
-**Last-Validated:** 2026-09-07
+**Evidence:** `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`, `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`, `RuntimeEvidence/S1.42AG/20260906T085500Z/`  
+**Related:** `Current/CURRENT_STATE.json`, `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
+**Last-Validated:** 2026-09-08
 
 ## Accepted baseline
 
@@ -14,71 +15,65 @@
 
 - Profile: `Profiles/LC V1 S1.42AF Microwave Fix.r2z`
 - SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
-- Injected DLL SHA-256: `41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f`
 - Acceptance: `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`
 - Runtime evidence: `RuntimeEvidence/S1.42AF/20260905T223738Z/`
-- Runtime log SHA-256: `63df88a3acb0c455bab914fd844767cb50b7384ab4b1ede8bd7cbcb63537d956`
 
 S1.42AF remains the only accepted gameplay base.
 
-## Latest built artifact
+## Latest built artifact / active candidate
 
 **S1.42AH — Mouth Dog Pikmin Dual Prevention — BUILD PASS / ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED**
 
-- Parent: accepted S1.42AF, not rejected S1.42AG.
+- Parent: exact accepted S1.42AF, not rejected S1.42AG.
 - Profile: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`
-- SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
+- Profile SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
 - Compatibility DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`
-- Candidate: `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`
+- Candidate authority: `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`
 - Build workflow run: `34141360051`
-- Build commit: `fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5`
-- Exact archive delta: `export.r2x` + compatibility DLL only; every unrelated member byte-identical to S1.42AF.
+- Exact archive delta: `export.r2x` plus `BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll` only.
 
-S1.42AF remains the only accepted gameplay base until S1.42AH passes runtime validation.
+Runtime test outstanding: **yes**.
 
-## MouthDog successor Patch Safety Review
+## Patch contract already implemented
 
-`Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md` is implemented by S1.42AH. The candidate retains exact `DoCheckInterval()` prevention and adds the exact Pikmin-only Vanilla `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` prevention. `DetectNoise`, MouthDog -> player, non-Pikmin EnemyAI collisions and native Pikmin lifecycle remain outside the patch.
+S1.42AH implements `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`:
+
+- retain the exact `Priority.First` prevention prefix on declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()`;
+- add the exact `Priority.First` prefix on declared `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)`;
+- skip the Vanilla override only for a validated runtime `LethalMin.PikminAI` collision;
+- do not patch `DetectNoise`, `OnCollideWithPlayer`, base `EnemyAI.OnCollideWithEnemy`, or native Pikmin attack/task/latch lifecycle.
 
 ## Current controllers
 
 - `BuildSpecs/current.json` is disabled.
 - Controller id: `IDLE_AFTER_S1.42AH_BUILD_AWAITING_RUNTIME_VALIDATION`.
-- Guarded candidate: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z` / `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`.
+- Guarded artifact: S1.42AH / `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AH`.
-- Runtime test outstanding: **yes**.
 - No successor beyond S1.42AH is armed.
 
 ## Exact next project action
 
-Import and runtime-test S1.42AH using `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`. Deliberately exercise both protected MouthDog -> Pikmin paths, explicitly command/throw Pikmin for the reverse-direction latch/attack/death/unlatch/task test, preserve MouthDog -> player/non-Pikmin/noise behavior, repeat the collision gate, and upload the complete fresh log using the build-specific uploader in the candidate record.
+Import and runtime-test S1.42AH using `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`.
 
-Do not accept S1.42AH from build/startup success alone.
-
-## Future runtime acceptance
-
-A future candidate must deliberately cover:
+The test must deliberately cover:
 
 - MouthDog -> Pikmin adapter protection;
 - MouthDog -> Pikmin Vanilla collision protection;
-- Pikmin -> MouthDog attack/latch/death/unlatch/task lifecycle;
-- MouthDog -> player;
-- repetition;
-- non-Pikmin neighbor behavior;
-- logs.
+- Pikmin -> MouthDog attack/latch/death/unlatch/task cleanup by explicit command/throw;
+- MouthDog -> player behavior;
+- non-Pikmin neighboring `EnemyAI` behavior;
+- repeated protected collision opportunities;
+- complete fresh `LogOutput.log` evidence.
 
-Passive follower non-aggression is not a reverse-direction test. Position-based noise pursuit is not itself a failure.
+Passive follower non-aggression is not a reverse-direction test. Position-based movement/lunge toward audible Pikmin world position is not by itself failure. Do not accept S1.42AH from build/startup success alone.
 
 ## Currently irrelevant actions
 
-- Do not repeat the successful MouthDog or EnemyAI source captures.
-- Do not ask for `Assembly-CSharp.dll`, `-AssemblyPath`, a local clone or manual ILSpy setup for these closed proofs.
-- Do not repeat the S1.42AG run or log upload.
-- Do not repeat the safety review unless new evidence invalidates its exact contract.
-- Do not start a runtime test before a later candidate is built.
+- Do not repeat the completed MouthDog/EnemyAI source captures merely to reproduce integrated evidence.
+- Do not repeat the S1.42AG gameplay run or request another S1.42AG log upload.
+- Do not repeat the Patch Safety Review unless new source/target evidence invalidates its contract.
+- Do not rebuild S1.42AH or arm a successor beyond it before the S1.42AH runtime decision.
 
 ## Canonical Gale workflow
 
-The current repository-driven Gale replacement/import workflow remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`.
-
-No runtime test is currently pending. Any future candidate requiring Gale replacement must continue to use this canonical v2.4 path unless a later validated workflow authority explicitly supersedes it. When a future candidate is ready, the same response that explains the test must include the Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell log uploader.
+Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. When handing off the runtime test, include both the Gale replacement/import one-liner and the exact S1.42AH build-specific uploader in the same response.

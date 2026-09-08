@@ -1,3 +1,4 @@
+<!-- LIVE_STATE: accepted=S1.42AF latest=S1.42AH candidate=S1.42AH runtime_test_outstanding=true -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER  
@@ -6,76 +7,62 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`  
 **Current State:** `Current/00_CURRENT_STATE.md`  
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
-**Last-Validated:** 2026-09-07
+**Last-Validated:** 2026-09-08
 
-Before performing project work, every ChatGPT chat must read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Use this map for the semantic content route inside each execution segment.
-
-Use this map before repository search. Open only the topic that matches the user's question, then follow its evidence/config/code links as needed.
+Before performing project work, every ChatGPT chat must read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Use this map for semantic routing; current lifecycle facts come from `Current/CURRENT_STATE.json` plus the routed canonical topic, not from historical handovers.
 
 ## Immediate routing
 
 | User question / topic | Topic ID | Canonical source |
 |---|---|---|
-| How must ChatGPT divide and execute project work? When must it stop and wait for `weiter`? | `chatgpt_segmented_execution` | `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` |
-| What is the accepted build? What is active? What must I test or analyze next? | `accepted_baseline`, `active_candidate_and_next_test` | `Knowledge/CURRENT_LIFECYCLE.md` |
-| How do I hand the project over to a new ChatGPT chat? What should happen when the user signals a handover? | `chat_handover` | `Current/HANDOVER_PREPARATION_PROMPT.md` |
-| How are profiles built in GitHub? Where is the runtime uploader/ingest? | `build_pipeline`, `runtime_upload_and_ingest` | `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` |
+| How must ChatGPT divide and execute project work? | `chatgpt_segmented_execution` | `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` |
+| What is accepted/active and what happens next? | `accepted_baseline`, `active_candidate_and_next_test` | `Knowledge/CURRENT_LIFECYCLE.md` |
+| How do I hand the project to a new ChatGPT chat? | `chat_handover` | `Current/HANDOVER_PREPARATION_PROMPT.md` |
+| How are profiles built and runtime logs ingested? | `build_pipeline`, `runtime_upload_and_ingest` | `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` |
 | How do I replace/import the active Gale profile? | `gale_import` | `Knowledge/GALE_PROFILE_WORKFLOW.md` |
-| Which BCMER version/settings are allowed? Are EventTypes equally likely? | `bcmer` | `Knowledge/BCMER.md` |
-| How do interior weights work? LLL? Shatteredrooms? CullFactory? Black Mesa registration? | `interiors_and_lll` | `Knowledge/INTERIORS_AND_LLL.md` |
-| What is the normal enemy spawn baseline / ownership architecture? | `enemy_spawn_baseline` | `Knowledge/ENEMY_SPAWN_BASELINE.md` |
-| How should Thumper/Puffer/Baboon Hawk/Mouth Dog/Eyeless Dog interact with Pikmin? | `pikmin_enemy_compatibility` | `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md` |
-| What are the accepted Jetpack values and owner? | `jetpack` | `Knowledge/JETPACK.md` |
-| How is CodeRebirth/DawnLib configured/tuned? | `coderebirth` | `Knowledge/CODEREBIRTH.md` |
-| What are Microwave/Snail values? What is still deferred? | `functional_microwave`, `immortal_snail` | `Knowledge/ITEM_TUNING.md` |
-| Which errors/warnings should only be monitored? | `monitor_only_errors` | `Knowledge/MONITOR_ONLY_ERRORS.md` |
+| Which BCMER settings/weight rules are current? | `bcmer` | `Knowledge/BCMER.md` |
+| How do interiors/LLL/CullFactory work? | `interiors_and_lll` | `Knowledge/INTERIORS_AND_LLL.md` |
+| What is the normal enemy-spawn baseline? | `enemy_spawn_baseline` | `Knowledge/ENEMY_SPAWN_BASELINE.md` |
+| How should Pikmin interact with enemies including Mouth Dog? | `pikmin_enemy_compatibility` | `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md` |
+| What are the accepted Jetpack values? | `jetpack` | `Knowledge/JETPACK.md` |
+| How is CodeRebirth/DawnLib configured? | `coderebirth` | `Knowledge/CODEREBIRTH.md` |
+| What are Microwave/Snail values? | `functional_microwave`, `immortal_snail` | `Knowledge/ITEM_TUNING.md` |
+| Which errors/warnings are monitor-only? | `monitor_only_errors` | `Knowledge/MONITOR_ONLY_ERRORS.md` |
 | What is the Black Mesa/Pikmin routing problem? | `black_mesa_pikmin_routing` | `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md` |
 | What remains on the live roadmap? | `roadmap_and_deferred_scopes` | `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md` |
-| What rules govern project-local Harmony/runtime patches? | `patch_safety_policy` | `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` |
-| What is happening with the repository overhaul? | `repository_overhaul` | `Knowledge/REPOSITORY_OVERHAUL.md` |
-| Where is the untouched pre-overhaul recovery point? | `pre_overhaul_backup_and_recovery` | `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md` |
-| Which build introduced/rejected/fixed something? What came before build X? | `build_lineage` | `Current/BUILD_LINEAGE.md` |
+| What rules govern project-local patches? | `patch_safety_policy` | `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` |
+| What is the repository-overhaul/recovery state? | `repository_overhaul`, `pre_overhaul_backup_and_recovery` | `Knowledge/REPOSITORY_OVERHAUL.md`, `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md` |
+| Which build introduced/rejected/fixed something? | `build_lineage` | `Current/BUILD_LINEAGE.md` |
 
-The current accepted gameplay baseline is **S1.42AF — Path-Length-Safe Microwave Packaging**. The latest built artifact is **S1.42AG — Mouth Dog Pikmin One-Way Protection — runtime rejected / partial fix**. There is no active runtime candidate, no successor is armed and no runtime test is pending.
+## Current lifecycle anchor
 
-The MouthDog pre-successor source gates and successor-specific Patch Safety Review are now closed. Current safety authority is `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`; source-boundary provenance remains in `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`, `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/`, `SourceEvidence/VanillaV81/EnemyAIOnCollideWithEnemy/20260906T204535Z/`, `Current/130_LETHALMIN_1.1.108_MOUTHDOG_SOURCE_CONTRACT_DECOMPILE.txt` and `Current/61_LETHALMIN_1.1.108_ATTACK_TASK_DECOMPILE.txt`.
+Accepted gameplay baseline: **S1.42AF — Path-Length-Safe Microwave Packaging**.
 
-The reviewed successor architecture is: retain the exact `Priority.First` `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` prevention guard and add one exact `Priority.First` `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` Prefix that skips only for a validated `LethalMin.PikminAI` collision. Do not patch `DetectNoise()`; position-based audible-noise pursuit is not itself semantic Pikmin targeting.
+Latest built artifact and active runtime candidate: **S1.42AH — Mouth Dog Pikmin Dual Prevention — BUILD PASS / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED**.
 
-The exact next action is a later explicit implementation/build segment from accepted S1.42AF. The persistent controller remains disabled until that work is deliberately started. Do not start a runtime test before a successful successor artifact exists.
+Runtime test outstanding: **yes**. No successor beyond S1.42AH is armed. `BuildSpecs/current.json` is disabled and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AH`.
+
+S1.42AH already implements the reviewed dual-prevention architecture from `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`. The exact next gameplay action is the full-normal runtime gate documented in `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`; do not rebuild the candidate or repeat the S1.42AG run first.
 
 ## Authority rule
 
-For current questions:
+1. `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` controls execution cadence.
+2. `Current/CURRENT_STATE.json` is the global machine lifecycle authority; `Current/00_CURRENT_STATE.md` is its concise generated human mirror.
+3. This map chooses the semantic topic; it intentionally avoids duplicating volatile per-build evidence lists in its machine mirror.
+4. The canonical topic states current rules and points to provenance.
+5. Build-specific acceptance/rejection/candidate records and RuntimeEvidence prove historical decisions.
+6. Historical files never override the current machine state or a later explicit decision.
 
-1. `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` controls execution cadence for project work.
-2. `Current/00_CURRENT_STATE.md` is the sole concise human current-state declaration.
-3. This Knowledge Map chooses the semantic topic.
-4. The topic canonical source states the current rule/value and points to provenance.
-5. Build-specific acceptance/rejection/diagnostic records and RuntimeEvidence prove historical decisions.
-6. Historical files may accurately describe what was current **at that time** but do not override current semantic topics.
-
-Machine lifecycle authority is `Current/CURRENT_STATE.json`. `BuildSpecs/current.json` and `RuntimeInbox/ACTIVE_BUILD.txt` are controller inputs whose lifecycle must remain consistent with that canonical machine state.
-
-When the user requests transfer to a new ChatGPT chat, route directly to `Current/HANDOVER_PREPARATION_PROMPT.md`; that procedure resolves the then-current state and generates a fresh new-chat start prompt while remaining subject to the segmented-execution continuation gate.
+When the user requests transfer to a new ChatGPT chat, route directly to `Current/HANDOVER_PREPARATION_PROMPT.md` and re-verify the current repository state before producing the handover.
 
 ## Historical navigation
 
 - Project chronology: `Current/03_PROJECT_CHRONOLOGY.md`
 - Failed/obsolete approaches: `Current/05_FAILED_AND_OBSOLETE_APPROACHES.md`
 - Build lineage: `Current/BUILD_LINEAGE.md` / `.json`
-- Exact build records: numbered `Current/*S1.*` candidate/acceptance/rejection/runtime files
+- Build-specific records: numbered `Current/*S1.*` files
 - Historical profile evidence: `ProfileSources/<build>/`
 - Runtime evidence: `RuntimeEvidence/<build>/<timestamp>/`
 - Deep archival fallback: `Archive/`, `Logs/`, `References/`
 
-Repository/code search is appropriate for unknown symbols, exact error strings or deep historical reconstruction, but ordinary canonical questions should route through this map first.
-
-## Current authority exclusions
-
-The following retained files contain valuable historical/durable evidence but must not be treated as unqualified current-state authority after the overhaul:
-
-- `Current/02_TECHNICAL_BASELINE.md` — mixes durable facts with obsolete S1.41/S1.42S current wording;
-- `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md` — mixes durable/binding interior research with obsolete S1.42U/S1.42V current checkpoint wording.
-
-Their still-live facts have been extracted into semantic topics above; the original files remain provenance/history.
+`Current/02_TECHNICAL_BASELINE.md` and `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md` remain historical/durable evidence only and are not unqualified current-state authority.

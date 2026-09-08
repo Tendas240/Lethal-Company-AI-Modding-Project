@@ -23,6 +23,7 @@ on:
       - 'RuntimeTools/**'
       - 'ExecutionCheckpoints/**'
       - '.github/workflows/knowledge-architecture.yml'
+      - '.github/workflows/profile-index.yml'
   pull_request:
     paths:
       - 'README.md'
@@ -43,6 +44,7 @@ on:
       - 'RuntimeTools/**'
       - 'ExecutionCheckpoints/**'
       - '.github/workflows/knowledge-architecture.yml'
+      - '.github/workflows/profile-index.yml'
 
 permissions:
   contents: read
@@ -63,6 +65,9 @@ jobs:
 
       - name: Check generated current navigation
         run: python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate current live-state semantics
+        run: python RepositoryTools/current_state_semantic_validator.py
 
       - name: Validate repository knowledge architecture
         run: python RepositoryTools/knowledge_architecture_validator.py

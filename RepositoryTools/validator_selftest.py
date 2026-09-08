@@ -6,6 +6,7 @@ import json
 import tempfile
 from pathlib import Path
 
+import current_state_semantic_validator as cssv
 import phase_checkpoint_validator as pcv
 import repository_integrity_guard as rig
 
@@ -80,6 +81,49 @@ def test_phase_without_predecessor_fails() -> None:
         assert_true(bool(errors), "phase 5 without phase 4 checkpoint must fail")
 
 
+def test_stale_live_runtime_instruction_fails() -> None:
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        state = {
+            "accepted_baseline": {"build_id": "S1.A", "sha256": "a"},
+            "latest_built_artifact": {"build_id": "S1.B", "sha256": "b"},
+            "active_candidate": {
+                "build_id": "S1.B", "sha256": "b", "profile": "Profiles/S1.B.r2z",
+                "profile_sources": "ProfileSources/S1.B/"
+            },
+            "runtime_test_outstanding": True,
+            "selected_scope": {
+                "candidate_build_id": "S1.B",
+                "analysis_contract": "Run S1.B runtime validation.",
+                "currently_irrelevant_actions": []
+            }
+        }
+        write_json(root / "Current/CURRENT_STATE.json", state)
+        write_json(root / "Current/PROJECT_KNOWLEDGE_MAP.json", {"topics": [
+            {"id": "accepted_baseline", "canonical": "Knowledge/CURRENT_LIFECYCLE.md"},
+            {"id": "active_candidate_and_next_test", "canonical": "Knowledge/CURRENT_LIFECYCLE.md", "machine_state": []},
+            {"id": "pikmin_enemy_compatibility", "canonical": "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md"},
+            {"id": "roadmap_and_deferred_scopes", "canonical": "Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md"},
+        ]})
+        write_json(root / "Current/ARTIFACT_EVIDENCE_INTEGRITY.json", {
+            "profiles": [{"build_id": "S1.A", "profile_sha256": "a"}],
+            "pending_profiles": [
+                {"build_id": "S1.B", "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING", "runtime_evidence_required": False,
+                 "profile": "Profiles/S1.B.r2z", "profile_sha256": "b", "profile_sources": "ProfileSources/S1.B/"}
+            ]
+        })
+        marker = cssv.expected_marker(state)
+        for rel in cssv.LIVE_DOCS:
+            path = root / rel
+            path.parent.mkdir(parents=True, exist_ok=True)
+            body = f"{marker}\nAccepted S1.A. Latest S1.B. Candidate S1.B. Runtime test outstanding: yes.\n"
+            if rel == "Knowledge/CURRENT_LIFECYCLE.md":
+                body += "No runtime test is currently pending.\n"
+            path.write_text(body, encoding="utf-8")
+        errors = cssv.validate_live_state(root)
+        assert_true(any("stale runtime-pending contradiction" in x for x in errors), "stale live runtime instruction must fail")
+
+
 def main() -> int:
     tests = [
         test_unqualified_bad_sha_fails,
@@ -87,6 +131,7 @@ def main() -> int:
         test_duplicate_current_authority_fails,
         test_orphan_topic_fails,
         test_phase_without_predecessor_fails,
+        test_stale_live_runtime_instruction_fails,
     ]
     for test in tests:
         test()
