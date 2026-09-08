@@ -20,6 +20,22 @@ def write_json(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, indent=2), encoding="utf-8")
 
 
+def write_queue_redirect(root: Path, extra: str = "") -> None:
+    path = root / cssv.WORK_QUEUE_REDIRECT
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        "Current/CURRENT_STATE.json\n"
+        "runtime_test_outstanding\n"
+        "selected_scope\n"
+        "next_action\n"
+        "controllers\n"
+        "Current/PROJECT_KNOWLEDGE_MAP.md\n"
+        "Knowledge/CURRENT_LIFECYCLE.md\n"
+        + extra,
+        encoding="utf-8",
+    )
+
+
 def assert_true(condition: bool, message: str) -> None:
     if not condition:
         raise AssertionError(message)
@@ -138,8 +154,18 @@ def test_stale_live_runtime_instruction_fails() -> None:
             if rel == "Knowledge/CURRENT_LIFECYCLE.md":
                 body += "No runtime test is currently pending.\n"
             path.write_text(body, encoding="utf-8")
+        write_queue_redirect(root)
         errors = cssv.validate_live_state(root)
         assert_true(any("stale runtime-pending contradiction" in x for x in errors), "stale live runtime instruction must fail")
+
+
+def test_live_queue_duplication_fails() -> None:
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        errors: list[str] = []
+        write_queue_redirect(root, "<!-- LIVE_STATE: accepted=S1.A latest=S1.B candidate=S1.B runtime_test_outstanding=true -->\n")
+        cssv.validate_work_queue_redirect(root, errors)
+        assert_true(any("state-neutral" in x for x in errors), "work queue must reject duplicated live-state snapshots")
 
 
 def main() -> int:
@@ -151,6 +177,7 @@ def main() -> int:
         test_orphan_topic_fails,
         test_phase_without_predecessor_fails,
         test_stale_live_runtime_instruction_fails,
+        test_live_queue_duplication_fails,
     ]
     for test in tests:
         test()
