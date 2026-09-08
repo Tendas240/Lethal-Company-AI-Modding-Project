@@ -85,9 +85,15 @@ def verify_profile(entry: dict[str, Any], errors: list[str]) -> bool:
 def verify_runtime(entry: dict[str, Any], errors: list[str]) -> bool:
     build_id = str(entry.get("build_id", "<missing-build-id>"))
     index_rel = entry.get("runtime_index")
-    expected_log_sha = normalized_sha256(entry.get("runtime_log_sha256"))
+    expected_log_sha_raw = entry.get("runtime_log_sha256")
+    expected_log_sha = normalized_sha256(expected_log_sha_raw)
     if not index_rel or not expected_log_sha:
-        errors.append(f"{build_id}: runtime index/log SHA missing or malformed in artifact evidence entry")
+        raw_text = str(expected_log_sha_raw)
+        codepoints = " ".join(f"U+{ord(ch):04X}" for ch in raw_text)
+        errors.append(
+            f"{build_id}: runtime index/log SHA missing or malformed in artifact evidence entry; "
+            f"raw={expected_log_sha_raw!r} len={len(raw_text)} codepoints={codepoints}"
+        )
         return False
 
     index_path = ROOT / str(index_rel)
