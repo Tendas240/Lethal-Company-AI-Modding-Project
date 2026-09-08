@@ -80,6 +80,7 @@ namespace S139CompatibilityFixes
             yield return null;
             PatchLethalMinEnemyGrabPrevention();
             PatchMouthDogPikminProtection();
+            PatchMouthDogVanillaCollisionProtection();
             PatchBaboonHawkPikminProtection();
         }
 
@@ -212,6 +213,82 @@ namespace S139CompatibilityFixes
             }
         }
 
+        private void PatchMouthDogVanillaCollisionProtection()
+        {
+            Type pikminAiType = AccessTools.TypeByName("LethalMin.PikminAI");
+            if (pikminAiType == null ||
+                !string.Equals(pikminAiType.FullName, "LethalMin.PikminAI", StringComparison.Ordinal) ||
+                !typeof(EnemyAI).IsAssignableFrom(pikminAiType))
+            {
+                Logger.LogError(
+                    "[MouthDogVanillaCollisionGuard] Exact runtime LethalMin.PikminAI : EnemyAI contract did not validate. " +
+                    "Vanilla MouthDog collision protection is NOT active; refusing a guessed fallback.");
+                return;
+            }
+
+            Type mouthDogType = typeof(MouthDogAI);
+            MethodInfo onCollideWithEnemy = mouthDogType.GetMethod(
+                "OnCollideWithEnemy",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly,
+                null,
+                new Type[] { typeof(Collider), typeof(EnemyAI) },
+                null);
+
+            ParameterInfo[] parameters = onCollideWithEnemy?.GetParameters();
+            bool valid =
+                onCollideWithEnemy != null &&
+                onCollideWithEnemy.DeclaringType == mouthDogType &&
+                !onCollideWithEnemy.IsStatic &&
+                onCollideWithEnemy.ReturnType == typeof(void) &&
+                parameters != null &&
+                parameters.Length == 2 &&
+                parameters[0].ParameterType == typeof(Collider) &&
+                parameters[1].ParameterType == typeof(EnemyAI) &&
+                onCollideWithEnemy.GetMethodBody() != null;
+
+            if (!valid)
+            {
+                Logger.LogError(
+                    "[MouthDogVanillaCollisionGuard] Exact declared instance " +
+                    "MouthDogAI.OnCollideWithEnemy(Collider,EnemyAI) contract did not validate. " +
+                    "Vanilla MouthDog collision protection is NOT active; refusing a guessed fallback.");
+                return;
+            }
+
+            MouthDogVanillaCollisionProtection.PikminAiType = pikminAiType;
+
+            try
+            {
+                Harmony.Patch(
+                    onCollideWithEnemy,
+                    prefix: new HarmonyMethod(
+                        typeof(MouthDogVanillaCollisionProtection),
+                        nameof(MouthDogVanillaCollisionProtection.Prefix))
+                    {
+                        priority = Priority.First
+                    });
+
+                Logger.LogInfo(
+                    "[MouthDogVanillaCollisionGuard] Patched exact declared " +
+                    "MouthDogAI.OnCollideWithEnemy(Collider,EnemyAI) with a Priority.First prevention-only prefix. " +
+                    "Only validated runtime LethalMin.PikminAI collisions are skipped; player and non-Pikmin EnemyAI paths pass through unchanged.");
+
+                Patches patchInfo = Harmony.GetPatchInfo(onCollideWithEnemy);
+                string owners = patchInfo == null
+                    ? "<none>"
+                    : string.Join(",", patchInfo.Owners.OrderBy(owner => owner, StringComparer.Ordinal).Take(16));
+                Logger.LogInfo(
+                    $"[MouthDogVanillaCollisionGuard] Exact-target Harmony co-patch owners=[{owners}].");
+            }
+            catch (Exception ex)
+            {
+                MouthDogVanillaCollisionProtection.PikminAiType = null;
+                Logger.LogError(
+                    $"[MouthDogVanillaCollisionGuard] Failed to patch exact MouthDogAI.OnCollideWithEnemy(Collider,EnemyAI): " +
+                    $"{ex.GetType().Name}: {ex.Message}");
+            }
+        }
+
         private void PatchLethalMinLatchedDeadTargetCompletion()
         {
             // Exact upstream LethalMinNightly 1.1.108 behavior:
@@ -321,15 +398,6 @@ namespace S139CompatibilityFixes
 
         private void PatchBaboonHawkPikminProtection()
         {
-            // Asymmetric gameplay rule:
-            // Pikmin -> Baboon Hawk remains fully native LethalMin.
-            // Baboon Hawk -> Pikmin collision/bite/grab is blocked.
-            //
-            // IMPORTANT S1.42S correction:
-            // Never disable BaboonBirdPikminEnemy itself. It inherits PikminEnemy.Update(),
-            // whose native death path calls RemoveAndDisableTriggers() and therefore unlatches
-            // Pikmin when the Hawk dies. S1.42R disabled the entire adapter and accidentally
-            // suppressed that lifecycle.
             Type adapterType = AccessTools.TypeByName("LethalMin.BaboonBirdPikminEnemy");
             Type pikminAiType = AccessTools.TypeByName("LethalMin.PikminAI");
             if (adapterType == null || pikminAiType == null)
@@ -567,12 +635,6 @@ namespace S139CompatibilityFixes
 
         private void PatchJetpackCapacityTarget()
         {
-            // S1.42D showed JetpackItem does not declare Start; AccessTools.Method
-            // resolved inherited GrabbableObject.Start and HarmonyX warned about the
-            // overly broad target. Do not patch an inherited lifecycle method.
-            //
-            // The battery duration lives on the loaded Jetpack Item asset, so retry
-            // that narrow asset mutation from Update until the content is available.
             JetpackCapacityGuard.ApplyToLoadedItems(logIfMissing: true);
             Logger.LogInfo(
                 "[Jetpack140] Using loaded Jetpack Item asset targeting only; no GrabbableObject.Start Harmony patch.");
@@ -823,9 +885,6 @@ namespace S139CompatibilityFixes
             changed |= FilterPool(level, "OutsideEnemies", OutdoorTargets, ensureTargets: true);
             changed |= FilterPool(level, "DaytimeEnemies", new HashSet<string>(StringComparer.OrdinalIgnoreCase), ensureTargets: false);
 
-            // This is a diagnostic profile whose purpose is to produce actual target
-            // encounters. Keep at least two indoor spawn attempts and one outside attempt
-            // available even when another balance mod leaves a very low curve.
             if (IsServer() && RoundManager.Instance != null)
             {
                 if (RoundManager.Instance.minEnemiesToSpawn < 2)
@@ -973,8 +1032,6 @@ namespace S139CompatibilityFixes
 
             foreach (string targetName in targetNames)
             {
-                // Alias pairs point to the same actual EnemyType. Do not add duplicates:
-                // Crawler/Thumper, Puffer/SporeLizard, BaboonHawk/BaboonBird.
                 if (present.Contains(targetName))
                     continue;
 
@@ -1061,9 +1118,6 @@ namespace S139CompatibilityFixes
             {
                 object entry = null;
 
-                // V81 SpawnableEnemyWithRarity has no parameterless constructor. Prefer
-                // its EnemyType/int constructor and fall back to cloning an existing
-                // pool entry so the diagnostic layer never enters an exception loop.
                 ConstructorInfo ctor = entryType.GetConstructor(
                     BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
                     null,
@@ -1265,7 +1319,6 @@ namespace S139CompatibilityFixes
         }
     }
 
-
     internal static class DiagnosticEnemyIsolationLifecycle
     {
         public static void FinishGenerationPostfix()
@@ -1275,15 +1328,11 @@ namespace S139CompatibilityFixes
 
         public static void PredictOutsidePrefix()
         {
-            // Spawn Cycle Fixes replaces PredictAllOutsideEnemies with a Prefix.
-            // Reassert our final pool first so its predictor sees only Baboon Hawk.
             Apply("PredictAllOutsideEnemies/Prefix");
         }
 
         public static void BeginEnemySpawningPrefix()
         {
-            // Reassert once more immediately before the normal enemy spawning phase,
-            // covering mods that mutate indoor pools late in dungeon setup.
             Apply("BeginEnemySpawning/Prefix");
         }
 
@@ -1342,12 +1391,7 @@ namespace S139CompatibilityFixes
                     return true;
 
                 if (PendingTasks.TryGetValue(__instance, out _))
-                {
-                    // The native RPC has already been requested for this exact task.
-                    // Skip the broken upstream branch until its FinishTaskClientRpc
-                    // removes the task.
                     return false;
-                }
 
                 PendingTasks.Add(__instance, new PendingMarker());
 
@@ -1420,6 +1464,32 @@ namespace S139CompatibilityFixes
                     "[MouthDogPikminGuard] Blocked LethalMin MouthDogPikminEnemy.DoCheckInterval before " +
                     "Pikmin target collection, bite RPC dispatch, GrabbedPikmin bookkeeping, or GrabPikmin state mutation. " +
                     "MouthDogPikminEnemy remains enabled for native reverse-direction lifecycle handling.");
+            }
+
+            return false;
+        }
+    }
+
+    internal static class MouthDogVanillaCollisionProtection
+    {
+        internal static Type PikminAiType;
+        private static readonly HashSet<int> LoggedPikminIds = new HashSet<int>();
+
+        public static bool Prefix(EnemyAI collidedEnemy)
+        {
+            Type pikminAiType = PikminAiType;
+            if (collidedEnemy == null ||
+                pikminAiType == null ||
+                !pikminAiType.IsInstanceOfType(collidedEnemy))
+                return true;
+
+            int id = collidedEnemy.GetInstanceID();
+            if (id == 0 || LoggedPikminIds.Add(id))
+            {
+                Plugin.Log.LogWarning(
+                    $"[MouthDogVanillaCollisionGuard] Blocked MouthDogAI.OnCollideWithEnemy for validated " +
+                    $"{collidedEnemy.GetType().FullName} before generic enemy lunge/cooldown/HitEnemy(2) mutation. " +
+                    "MouthDog -> player, non-Pikmin EnemyAI collisions, DetectNoise, and native Pikmin -> MouthDog lifecycle remain unchanged.");
             }
 
             return false;
@@ -1612,9 +1682,6 @@ namespace S139CompatibilityFixes
             int removed = 0;
             HashSet<GameObject> candidates = new HashSet<GameObject>();
 
-            // The nightly LethalMin build injects a Pikmin effect trigger into the
-            // Puffer's smoke prefab. Inspect smoke-named GameObject/Component fields
-            // plus smoke-named children so this stays resilient to field-name changes.
             foreach (FieldInfo field in typeof(PufferAI).GetFields(
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
             {
@@ -1931,7 +1998,6 @@ namespace S139CompatibilityFixes
             FilterState state = new FilterState();
             List<string> removed = new List<string>();
 
-            // V81's active hazard path uses IndoorMapHazard[].
             if (level.indoorMapHazards != null && level.indoorMapHazards.Length > 0)
             {
                 IndoorMapHazard[] originalHazards = level.indoorMapHazards;
@@ -1959,7 +2025,6 @@ namespace S139CompatibilityFixes
                 }
             }
 
-            // Keep the legacy SpawnableMapObject[] path covered as well for mods/moons that still use it.
             if (level.spawnableMapObjects != null && level.spawnableMapObjects.Length > 0)
             {
                 SpawnableMapObject[] originalLegacy = level.spawnableMapObjects;
@@ -2145,10 +2210,6 @@ namespace S139CompatibilityFixes
 
             bool closed = round.hangarDoorsClosed;
 
-            // BCMER DoorFailure ("Door System: ERROR") intentionally forces the ship
-            // door open with zero hydraulic power and disabled buttons every Update.
-            // Do not log its SetDoorOpen call stack every frame and do not fight the
-            // intended forced-open state. Only record transitions into/out of it.
             bool forcedOpenZeroPower =
                 !closed &&
                 __instance.doorPower <= 0.001f &&
