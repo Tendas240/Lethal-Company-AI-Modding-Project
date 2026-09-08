@@ -21,7 +21,7 @@ Runtime evidence: `RuntimeEvidence/S1.42AF/20260905T223738Z/`
 
 ## Latest built artifact
 
-**S1.42AH — Mouth Dog Pikmin Dual Prevention — BUILD PASS PARTIAL RUNTIME PASS REMAINDER OUTSTANDING**
+**S1.42AH — Mouth Dog Pikmin Dual Prevention — BUILD PASS EXTENDED PARTIAL RUNTIME PASS FINAL NEIGHBOR REMAINDER OUTSTANDING**
 
 Profile: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`  
 SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`  
@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Run only the targeted remainder of the S1.42AH runtime gate documented in Current/140: explicitly command/throw Pikmin onto a MouthDog and prove native latch/attack/damage/death plus unlatch/release/task cleanup; exercise the adapter-side bite-protection path; preserve Paw-initiated BiteKillEnemyAI, non-Pikmin neighboring EnemyAI behavior and combat/UI invariants. If all remaining required checks pass, accept S1.42AH; if a targeted required check fails, reject it and return to an S1.42AF-derived follow-up. Do not rebuild S1.42AH or repeat already-proven startup/Vanilla collision/player-maul coverage merely to obtain the missing evidence.
+Run only the final S1.42AH non-Pikmin neighbor remainder: deliberately exercise a MouthDog/Paw collision against a non-Pikmin EnemyAI and prove native Paw-initiated BiteKillEnemyAI / generic non-Pikmin collision behavior remains functional and is not filtered by the Pikmin-only prefix. Then upload the complete fresh S1.42AH LogOutput.log. Do not rebuild S1.42AH or repeat already-proven Pikmin -> MouthDog attack/death/cleanup, adapter protection, Vanilla Pikmin collision blocking, startup, or player-maul coverage. If this final required check passes, explicitly accept S1.42AH; if it fails, explicitly reject S1.42AH and return to an S1.42AF-derived follow-up.
 
 A runtime test is pending for S1.42AH. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
