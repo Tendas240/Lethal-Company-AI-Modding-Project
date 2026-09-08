@@ -1,3 +1,6 @@
+<!-- HISTORICAL_CURRENT_QUALIFIED -->
+> **Supersession notice:** This document preserves the MouthDog successor Patch Safety Review and its lifecycle snapshot as of 2026-09-07. The reviewed patch-safety contract remains valid provenance and is implemented by S1.42AH, but this document's `CURRENT`, "no build yet", candidate/runtime and `exact next project action` wording is historical and must not be used as present lifecycle authority. Current lifecycle authority is `Current/CURRENT_STATE.json` plus `Knowledge/CURRENT_LIFECYCLE.md`; current MouthDog semantics are routed through `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`.
+
 # MouthDog Successor Patch Safety Review — PASS
 
 **Status:** CURRENT / PASS FOR IMPLEMENTATION / SUCCESSOR NOT ARMED / NO BUILD YET  

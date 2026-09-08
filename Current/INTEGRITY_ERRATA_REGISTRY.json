@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "date": "2026-09-05",
+  "schema_version": 2,
+  "date": "2026-09-08",
   "status": "CURRENT_CANONICAL_INTEGRITY_ERRATA_REGISTRY",
   "registry_path": "Current/INTEGRITY_ERRATA_REGISTRY.json",
   "authority_level": "CURRENT_INTEGRITY_AUTHORITY",
@@ -37,6 +37,46 @@
         "provenance correction",
         "do not use",
         "not authoritative"
+      ]
+    }
+  ],
+  "historical_current_documents": [
+    {
+      "id": "MOUTHDOG_136_STALE_CURRENT_ANALYSIS",
+      "path": "Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md",
+      "classification": "HISTORICAL_CURRENT_ANALYSIS_SNAPSHOT_SUPERSEDED",
+      "required_marker": "<!-- HISTORICAL_CURRENT_QUALIFIED -->",
+      "reason": "The source analysis remains provenance evidence, but its remaining-proof/current/next-action wording was superseded by later source closure, safety review and S1.42AH build state.",
+      "current_targets": [
+        "Current/CURRENT_STATE.json",
+        "Knowledge/CURRENT_LIFECYCLE.md",
+        "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md"
+      ]
+    },
+    {
+      "id": "MOUTHDOG_137_STALE_CURRENT_SOURCE_BOUNDARY",
+      "path": "Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md",
+      "classification": "HISTORICAL_CURRENT_SOURCE_BOUNDARY_SNAPSHOT_SUPERSEDED",
+      "required_marker": "<!-- HISTORICAL_CURRENT_QUALIFIED -->",
+      "reason": "The source-boundary findings remain provenance evidence, but the pre-review lifecycle/current/next-action wording was superseded by Current/138 and the built S1.42AH candidate.",
+      "current_targets": [
+        "Current/CURRENT_STATE.json",
+        "Knowledge/CURRENT_LIFECYCLE.md",
+        "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md",
+        "Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md"
+      ]
+    },
+    {
+      "id": "MOUTHDOG_138_STALE_CURRENT_PATCH_SAFETY_LIFECYCLE",
+      "path": "Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md",
+      "classification": "HISTORICAL_PATCH_SAFETY_DECISION_LIFECYCLE_SUPERSEDED",
+      "required_marker": "<!-- HISTORICAL_CURRENT_QUALIFIED -->",
+      "reason": "The reviewed dual-prevention contract remains S1.42AH implementation provenance, but the no-build/no-candidate/no-runtime-test lifecycle snapshot was superseded once S1.42AH was built.",
+      "current_targets": [
+        "Current/CURRENT_STATE.json",
+        "Knowledge/CURRENT_LIFECYCLE.md",
+        "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md",
+        "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md"
       ]
     }
   ],
@@ -79,11 +119,11 @@
     "runtime_controller": "RuntimeInbox/ACTIVE_BUILD.txt",
     "rule": "Do not independently hand-maintain accepted build, active candidate, runtime gate, successor state or controller summaries in generated bootstrap files."
   },
-  "history_policy": "Preserve historical evidence. Correct concrete historical errors through explicit errata/supersession classification instead of silently rewriting history.",
+  "history_policy": "Preserve historical evidence. Correct concrete historical errors or stale-current presentation through explicit errata/supersession classification and local qualification instead of silently rewriting history.",
   "severity_classes": [
     "BLOCKER",
     "NON-BLOCKING INTEGRITY ISSUE",
     "OPTIONAL HARDENING"
   ],
-  "last_validated": "2026-09-05"
+  "last_validated": "2026-09-08"
 }

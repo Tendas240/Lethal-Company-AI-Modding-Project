@@ -1,6 +1,6 @@
 {
-  "schema_version": 5,
-  "updated": "2026-09-05",
+  "schema_version": 6,
+  "updated": "2026-09-08",
   "status": "CURRENT_CANONICAL_AUTHORITY_REGISTRY",
   "authority_precedence": [
     "Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md for project-work cadence/checkpointing",
@@ -19,6 +19,7 @@
     "A newer source-level analysis may supersede the interpretation of an older verdict without deleting the historical verdict.",
     "A later explicit acceptance or rejection decision may supersede an older lifecycle verdict while preserving the older record as historical evidence.",
     "Known concrete bad/superseded values are qualified by Current/INTEGRITY_ERRATA_REGISTRY.json and must not be treated as current authority merely because they remain in historical evidence.",
+    "Historical documents registered in Current/INTEGRITY_ERRATA_REGISTRY.json as historical_current_documents must carry their required local qualification marker so direct readers cannot mistake stale CURRENT/next-action wording for live authority.",
     "BuildSpecs/current.json and RuntimeInbox/ACTIVE_BUILD.txt are controllers, not narrative authority for unrelated topics.",
     "Only Current/CURRENT_STATE.json and Current/00_CURRENT_STATE.md declare the concise global current state after the overhaul.",
     "Ordinary topic questions route through Current/PROJECT_KNOWLEDGE_MAP.json to one canonical topic/workflow source.",
@@ -133,6 +134,24 @@
       "current_targets": ["Current/00_CURRENT_STATE.md", "Current/PROJECT_KNOWLEDGE_MAP.md"]
     },
     {
+      "path": "Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md",
+      "classification": "HISTORICAL_CURRENT_ANALYSIS_SNAPSHOT_SUPERSEDED",
+      "reason": "Preserves the 2026-09-06 native-source analysis state. Its remaining-proof/current/next-action wording was superseded by later source closure, safety review and S1.42AH build state.",
+      "current_targets": ["Current/CURRENT_STATE.json", "Knowledge/CURRENT_LIFECYCLE.md", "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md"]
+    },
+    {
+      "path": "Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md",
+      "classification": "HISTORICAL_CURRENT_SOURCE_BOUNDARY_SNAPSHOT_SUPERSEDED",
+      "reason": "Preserves the 2026-09-06 source-boundary closure state. Its pre-review lifecycle/current/next-action wording was superseded by Current/138 and the built S1.42AH candidate.",
+      "current_targets": ["Current/CURRENT_STATE.json", "Knowledge/CURRENT_LIFECYCLE.md", "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md", "Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md"]
+    },
+    {
+      "path": "Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md",
+      "classification": "HISTORICAL_PATCH_SAFETY_DECISION_LIFECYCLE_SUPERSEDED",
+      "reason": "The reviewed dual-prevention patch-safety contract remains implementation provenance for S1.42AH, but its no-build/no-candidate/no-runtime-test lifecycle snapshot was superseded once S1.42AH was built.",
+      "current_targets": ["Current/CURRENT_STATE.json", "Knowledge/CURRENT_LIFECYCLE.md", "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md", "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md"]
+    },
+    {
       "path": "OVERHAUL_START_HERE_ChatGPT.txt",
       "classification": "COMPLETED_EXECUTION_CONTRACT_SNAPSHOT",
       "reason": "One-time pre-overhaul execution entry point retained as the binding historical contract; the overhaul is complete and must not be re-run merely because the original instructions remain below the completion banner.",
@@ -179,5 +198,5 @@
     ],
     "provenance_rule": "Do not edit accepted patch source solely to modernize comments unless the accepted binary/profile provenance is rebuilt and revalidated; use authority metadata to classify non-normative historical comments."
   },
-  "last_validated": "2026-09-05"
+  "last_validated": "2026-09-08"
 }

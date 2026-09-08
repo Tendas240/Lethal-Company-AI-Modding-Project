@@ -1,3 +1,6 @@
+<!-- HISTORICAL_CURRENT_QUALIFIED -->
+> **Supersession notice:** This document preserves the MouthDog analysis/lifecycle snapshot that was current on 2026-09-06. Its `CURRENT`, remaining-proof, `Exact next action`, candidate/runtime and prohibition wording is historical and must not be used as present lifecycle authority. Current lifecycle authority is `Current/CURRENT_STATE.json` plus `Knowledge/CURRENT_LIFECYCLE.md`; current MouthDog semantics are routed through `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`.
+
 # MouthDog V81 Source Capture and Native Path Analysis
 
 **Status:** CURRENT / HANDOVER-CRITICAL ANALYSIS STATE  

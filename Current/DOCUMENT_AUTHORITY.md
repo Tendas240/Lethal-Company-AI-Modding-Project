@@ -4,7 +4,7 @@
 **Authority:** repository knowledge-source precedence  
 **Canonical-For:** authority resolution, historical/current classification  
 **Related:** `Current/DOCUMENT_AUTHORITY.json`, `Current/PROJECT_KNOWLEDGE_MAP.md`, `Current/CURRENT_STATE.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`, `Current/HANDOVER_PREPARATION_PROMPT.md`, `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
-**Last-Validated:** 2026-09-05
+**Last-Validated:** 2026-09-08
 
 ## Precedence
 
@@ -82,6 +82,16 @@ The old S1.42U/S1.42V progress block is preserved as chronology. Current policy/
 - `Knowledge/BCMER.md`
 - `Knowledge/INTERIORS_AND_LLL.md`
 - `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`
+
+### MouthDog source/safety snapshots `Current/136`, `137`, `138`
+
+These three numbered records preserve a sequential analysis/review chain from before S1.42AH existed. Their embedded `CURRENT`, lifecycle and `Exact next action` wording is **historical**, even though the source findings and the `Current/138` patch-safety contract remain valuable evidence.
+
+- `Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md` — historical native-source analysis snapshot; its remaining-proof/next-action wording was superseded by `Current/137` and later work.
+- `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md` — historical source-boundary closure snapshot; its pre-review lifecycle and next-action wording was superseded by `Current/138` and the built S1.42AH candidate.
+- `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md` — historical Patch Safety Review decision record. Its reviewed dual-prevention contract remains implementation provenance for S1.42AH, but its "no build yet" / no-candidate / no-runtime-test lifecycle snapshot was superseded once S1.42AH was built.
+
+Each file carries `<!-- HISTORICAL_CURRENT_QUALIFIED -->` at its top. Current lifecycle authority is `Current/CURRENT_STATE.json` plus `Knowledge/CURRENT_LIFECYCLE.md`; current MouthDog semantics route through `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`. Machine classification is additionally registered in `Current/DOCUMENT_AUTHORITY.json` and `Current/INTEGRITY_ERRATA_REGISTRY.json`.
 
 ### S1.42AC rejection and later acceptance
 

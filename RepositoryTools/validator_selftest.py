@@ -43,6 +43,24 @@ def test_registered_historical_bad_sha_passes() -> None:
         assert_true(not errors, f"registered historical SHA should pass: {errors}")
 
 
+def test_historical_current_marker_required() -> None:
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        doc = root / "Current" / "old_current.md"
+        doc.parent.mkdir(parents=True, exist_ok=True)
+        doc.write_text("**Status:** CURRENT\nExact next action: stale.\n", encoding="utf-8")
+        target = root / "Current" / "CURRENT_STATE.json"
+        target.write_text("{}\n", encoding="utf-8")
+        registry = {"historical_current_documents": [{
+            "id": "stale-current",
+            "path": "Current/old_current.md",
+            "required_marker": "<!-- HISTORICAL_CURRENT_QUALIFIED -->",
+            "current_targets": ["Current/CURRENT_STATE.json"],
+        }]}
+        errors = rig.historical_current_qualification_errors(root, registry)
+        assert_true(any("lacks required qualification marker" in x for x in errors), "registered stale-current document without marker must fail")
+
+
 def test_duplicate_current_authority_fails() -> None:
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
@@ -128,6 +146,7 @@ def main() -> int:
     tests = [
         test_unqualified_bad_sha_fails,
         test_registered_historical_bad_sha_passes,
+        test_historical_current_marker_required,
         test_duplicate_current_authority_fails,
         test_orphan_topic_fails,
         test_phase_without_predecessor_fails,
