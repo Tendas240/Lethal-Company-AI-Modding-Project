@@ -18,11 +18,6 @@ def status_text(value):
     return str(value).replace("_", " ")
 
 
-def opt_line(obj, key, label):
-    value = obj.get(key)
-    return f"- {label}: {value}\n" if value else ""
-
-
 def policy_path(s):
     return s["canonical_navigation"]["segmented_execution_policy"]
 
@@ -96,7 +91,7 @@ SEGMENTED EXECUTION RULE
 For every project request that requires work, follow {p}. Execute only the current segment, report Completed / Findings / Remaining / Next segment, then STOP and wait for the user's explicit continuation signal before beginning the next non-final segment. A genuinely short atomic task may be Segment 1/1. Never split an atomic change so the repository/controllers are knowingly left inconsistent.
 
 ROUTING RULE
-Use Current/CURRENT_STATE.json for volatile live project state. Route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the registered canonical topic plus linked evidence/config/code needed for the task. Use Current/DOCUMENT_AUTHORITY.md only when current-vs-history precedence is actually in question. Use Current/BUILD_LINEAGE.md only for build-history questions.
+Use Current/CURRENT_STATE.json for volatile live project state. Route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the registered canonical topic plus linked evidence/config/code needed for the task. Human-readable live-state mirror: Current/00_CURRENT_STATE.md; it is optional when the machine state already answers the task. Use Current/DOCUMENT_AUTHORITY.md only when current-vs-history precedence is actually in question. Use Current/BUILD_LINEAGE.md only for build-history questions.
 
 HANDOVER SIGNAL
 When the user explicitly requests transfer to a new ChatGPT chat, execute {h} under the same segmented-execution policy. Verify then-current main/CI/controllers and generate a fresh compact new-chat prompt from repository authority instead of reusing stale conversation memory.
