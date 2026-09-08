@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "date": "2026-09-08",
   "status": "CURRENT_CANONICAL_VALIDATOR_COVERAGE",
   "rule": "A green validator is evidence only for the obligations it explicitly checks. Do not infer coverage of unlisted semantics or runtime behavior.",
@@ -42,8 +42,8 @@
     },
     {
       "path": "RepositoryTools/repository_integrity_guard.py",
-      "checks": ["Central known-bad-value registry", "duplicate same-level current authority claims", "orphan Knowledge topics", "generated-file protection markers"],
-      "does_not_check": ["Arbitrary unknown bad values", "gameplay correctness"]
+      "checks": ["Central known-bad-value registry", "registered historical-current documents carry their required local supersession marker and resolve to existing current targets", "duplicate same-level current authority claims", "orphan Knowledge topics", "generated-file protection markers"],
+      "does_not_check": ["Arbitrary unknown bad values", "unregistered future stale-current prose outside modeled current authorities", "gameplay correctness"]
     },
     {
       "path": "RepositoryTools/gale_import_helper_validator.py",
@@ -67,7 +67,7 @@
     },
     {
       "path": "RepositoryTools/validator_selftest.py",
-      "checks": ["Representative negative fixtures fail: unqualified bad SHA, duplicate authority, orphan topic, phase without predecessor and stale live runtime instruction; registered historical SHA passes."],
+      "checks": ["Representative negative fixtures fail: unqualified bad SHA, registered stale-current document without its qualification marker, duplicate authority, orphan topic, phase without predecessor and stale live runtime instruction; registered historical SHA passes."],
       "does_not_check": ["Formal proof of every validator branch"]
     }
   ],

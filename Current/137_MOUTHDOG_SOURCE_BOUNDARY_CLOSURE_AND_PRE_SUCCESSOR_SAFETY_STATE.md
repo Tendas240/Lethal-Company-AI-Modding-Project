@@ -1,3 +1,6 @@
+<!-- HISTORICAL_CURRENT_QUALIFIED -->
+> **Supersession notice:** This document preserves the MouthDog source-boundary/lifecycle snapshot that was current on 2026-09-06. Its `CURRENT`, `Exact next action`, candidate/runtime, controller and "do not build/test yet" wording is historical and must not be used as present lifecycle authority. The source-boundary findings remain provenance evidence. Current lifecycle authority is `Current/CURRENT_STATE.json` plus `Knowledge/CURRENT_LIFECYCLE.md`; current MouthDog semantics are routed through `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`.
+
 # MouthDog Source-Boundary Closure and Pre-Successor Safety State
 
 **Status:** CURRENT / HANDOVER-CRITICAL ANALYSIS STATE  

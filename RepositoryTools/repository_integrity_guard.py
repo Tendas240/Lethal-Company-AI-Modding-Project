@@ -68,6 +68,40 @@ def scan_known_bad_values(root: Path, registry: dict[str, Any]) -> list[str]:
     return errors
 
 
+def historical_current_qualification_errors(root: Path, registry: dict[str, Any]) -> list[str]:
+    """Require explicit local qualification on registered historical documents that retain stale CURRENT wording."""
+    errors: list[str] = []
+    seen_paths: set[str] = set()
+    for item in registry.get("historical_current_documents", []):
+        item_id = str(item.get("id", "<missing-id>"))
+        rel = str(item.get("path", ""))
+        marker = str(item.get("required_marker", ""))
+        targets = [str(x) for x in item.get("current_targets", []) if str(x)]
+        if not rel:
+            errors.append(f"{item_id}: historical-current registry entry has no path")
+            continue
+        if rel in seen_paths:
+            errors.append(f"{item_id}: duplicate historical-current registry path: {rel}")
+        seen_paths.add(rel)
+        path = root / rel
+        if not path.is_file():
+            errors.append(f"{item_id}: registered historical-current document missing: {rel}")
+            continue
+        if not marker:
+            errors.append(f"{item_id}: historical-current registry entry has no required_marker")
+        else:
+            text = path.read_text(encoding="utf-8", errors="replace")
+            if marker not in text[:2000]:
+                errors.append(f"{item_id}: historical-current document lacks required qualification marker: {rel}")
+        if not targets:
+            errors.append(f"{item_id}: historical-current registry entry has no current_targets")
+        else:
+            for target in targets:
+                if not (root / target).exists():
+                    errors.append(f"{item_id}: current target does not exist: {target}")
+    return errors
+
+
 def authority_errors(root: Path, authority: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     seen: dict[tuple[str, str], str] = {}
@@ -121,6 +155,7 @@ def main() -> int:
     registry = load_json(registry_path)
     errors: list[str] = []
     errors.extend(scan_known_bad_values(ROOT, registry))
+    errors.extend(historical_current_qualification_errors(ROOT, registry))
 
     authority_path = ROOT / "Current/DOCUMENT_AUTHORITY.json"
     if not authority_path.is_file():
@@ -139,7 +174,7 @@ def main() -> int:
         print("ERROR:", error)
     if errors:
         return 1
-    print("PASS: repository-wide integrity guard found no unqualified known-bad values, authority collisions, orphan topics, or generated-file marker drift")
+    print("PASS: repository-wide integrity guard found no unqualified known-bad values, unqualified registered stale-current documents, authority collisions, orphan topics, or generated-file marker drift")
     return 0
 
 
