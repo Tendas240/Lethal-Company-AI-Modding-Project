@@ -19,17 +19,23 @@ S1.42AF remains the sole accepted gameplay base.
 
 ## Active runtime candidate: S1.42AH
 
-- Status: **ACTIVE_RUNTIME_CANDIDATE_PENDING / NOT ACCEPTED**
+- Status: **ACTIVE_RUNTIME_CANDIDATE_PENDING / PARTIAL RUNTIME PASS / NOT ACCEPTED**
 - Artifact: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`
 - SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
 - Readable snapshot: `ProfileSources/S1.42AH/`
 - File index: `ProfileSources/S1.42AH/FILE_INDEX.json`
 - Export: `ProfileSources/S1.42AH/export.r2x`
 - Candidate record: `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`
+- Partial runtime record: `Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md`
 - Project status: `Current/Projektstatus_S1.42AH_CANDIDATE.json`
 - Compatibility DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`
+- Runtime evidence root: `RuntimeEvidence/S1.42AH/20260908T162411Z/`
+- Runtime index: `RuntimeEvidence/S1.42AH/20260908T162411Z/INDEX.json`
+- Runtime log SHA-256: `1778ad5b572349cda261b3b848e0a697dfdb527a1e4be4ab72624a88f9c51ef3`
 
-Runtime test outstanding: **yes**. No S1.42AH runtime index or runtime-log SHA is expected yet. The byte-integrity gate must verify the candidate profile and readable snapshot now; runtime evidence becomes mandatory only after an explicit runtime decision.
+Runtime test outstanding: **yes**. The first S1.42AH runtime run has now been ingested and is reasoning-critical. It positively proves patch installation, repeated live Vanilla MouthDog -> Pikmin collision blocking and exercised MouthDog -> player maul/kill preservation, while the targeted reverse-direction/adapter/cleanup remainder is still open.
+
+S1.42AH therefore remains in the pending-candidate lifecycle set. The presence of an `INDEX.json` and raw-log SHA does **not** make it a completed profile decision: acceptance/rejection requires an explicit final runtime decision after the remaining gate.
 
 ## Rejected predecessor: S1.42AG
 
@@ -44,7 +50,7 @@ S1.42AG remains preserved as `RUNTIME_REJECTED_PARTIAL_FIX` with profile SHA-256
 
 ### S139CompatibilityFixes.dll
 
-Accepted historical binary provenance remains SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960` from the earlier accepted compatibility lifecycle. S1.42AH rebuilds the cumulative DLL as candidate SHA-256 `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`; this candidate SHA does not become accepted-binary authority until runtime acceptance.
+Accepted historical binary provenance remains SHA-256 `3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960` from the earlier accepted compatibility lifecycle. S1.42AH rebuilds the cumulative DLL as candidate SHA-256 `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`; this candidate SHA does not become accepted-binary authority until explicit runtime acceptance.
 
 ### S1.42AB interior normalization DLL
 
@@ -58,4 +64,4 @@ Accepted DLL SHA-256: `41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0
 
 No future decision may depend only on opaque `.r2z`, DLL or giant-log bytes. A reasoning-critical fact must also be represented in at least one readable indexed form: `ProfileSources`, `FILE_INDEX`, runtime `INDEX/analysis`, project source, build record, or canonical current-state/Knowledge documentation.
 
-For an `ACTIVE_RUNTIME_CANDIDATE_PENDING`, profile bytes and readable snapshot are current-critical before runtime. Runtime `INDEX`/raw-log bytes become mandatory after the first explicit runtime decision.
+For an `ACTIVE_RUNTIME_CANDIDATE_PENDING`, profile bytes and readable snapshot remain current-critical. When partial runtime evidence already exists, its `INDEX`, raw-log SHA and explicit partial-decision record are also current-critical even though the candidate remains in `pending_profiles` until a final acceptance/rejection decision.
