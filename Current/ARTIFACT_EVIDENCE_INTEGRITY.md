@@ -31,7 +31,7 @@ S1.42AF remains the sole accepted gameplay base.
 - Compatibility DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`
 - Runtime evidence root: `RuntimeEvidence/S1.42AH/20260908T162411Z/`
 - Runtime index: `RuntimeEvidence/S1.42AH/20260908T162411Z/INDEX.json`
-- Runtime log SHA-256: `1778ad5b572349cda261b3b848e0a697dfdb527a1e4be4ab72624a88f9c51ef3`
+- Runtime log SHA-256 (8-hex groups): `1778ad5b 572349cd a261b3b8 48e0a697 dfdb527a 1e4be4ab 72624a88 f9c51ef3`
 
 Runtime test outstanding: **yes**. The first S1.42AH runtime run has now been ingested and is reasoning-critical. It positively proves patch installation, repeated live Vanilla MouthDog -> Pikmin collision blocking and exercised MouthDog -> player maul/kill preservation, while the targeted reverse-direction/adapter/cleanup remainder is still open.
 
