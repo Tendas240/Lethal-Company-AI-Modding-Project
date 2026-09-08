@@ -32,7 +32,7 @@ ACCEPTED BASELINE
 
 LATEST BUILT ARTIFACT
 - S1.42AH — Mouth Dog Pikmin Dual Prevention
-- status: BUILD PASS PARTIAL RUNTIME PASS REMAINDER OUTSTANDING
+- status: BUILD PASS EXTENDED PARTIAL RUNTIME PASS FINAL NEIGHBOR REMAINDER OUTSTANDING
 - SHA-256: 06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e
 - candidate record: Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md
 
@@ -45,7 +45,7 @@ CURRENT EXECUTION STATE
 - RuntimeInbox/ACTIVE_BUILD.txt: S1.42AH
 
 EXACT NEXT ACTION
-Run only the targeted remainder of the S1.42AH runtime gate documented in Current/140: explicitly command/throw Pikmin onto a MouthDog and prove native latch/attack/damage/death plus unlatch/release/task cleanup; exercise the adapter-side bite-protection path; preserve Paw-initiated BiteKillEnemyAI, non-Pikmin neighboring EnemyAI behavior and combat/UI invariants. If all remaining required checks pass, accept S1.42AH; if a targeted required check fails, reject it and return to an S1.42AF-derived follow-up. Do not rebuild S1.42AH or repeat already-proven startup/Vanilla collision/player-maul coverage merely to obtain the missing evidence.
+Run only the final S1.42AH non-Pikmin neighbor remainder: deliberately exercise a MouthDog/Paw collision against a non-Pikmin EnemyAI and prove native Paw-initiated BiteKillEnemyAI / generic non-Pikmin collision behavior remains functional and is not filtered by the Pikmin-only prefix. Then upload the complete fresh S1.42AH LogOutput.log. Do not rebuild S1.42AH or repeat already-proven Pikmin -> MouthDog attack/death/cleanup, adapter protection, Vanilla Pikmin collision blocking, startup, or player-maul coverage. If this final required check passes, explicitly accept S1.42AH; if it fails, explicitly reject S1.42AH and return to an S1.42AF-derived follow-up.
 
 RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.

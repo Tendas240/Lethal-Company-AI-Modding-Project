@@ -29,10 +29,10 @@ When the user later requests transfer to another ChatGPT chat, execute `Current/
 ## Current anchors
 
 Accepted: **S1.42AF — Path-Length-Safe Microwave Packaging**, SHA-256 `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`.  
-Latest built: **S1.42AH — Mouth Dog Pikmin Dual Prevention**, SHA-256 `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`, status **BUILD PASS PARTIAL RUNTIME PASS REMAINDER OUTSTANDING**.  
+Latest built: **S1.42AH — Mouth Dog Pikmin Dual Prevention**, SHA-256 `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`, status **BUILD PASS EXTENDED PARTIAL RUNTIME PASS FINAL NEIGHBOR REMAINDER OUTSTANDING**.  
 Active candidate: **S1.42AH**. Runtime test: **pending**. Successor: **not armed**.
 
-Exact next action: Run only the targeted remainder of the S1.42AH runtime gate documented in Current/140: explicitly command/throw Pikmin onto a MouthDog and prove native latch/attack/damage/death plus unlatch/release/task cleanup; exercise the adapter-side bite-protection path; preserve Paw-initiated BiteKillEnemyAI, non-Pikmin neighboring EnemyAI behavior and combat/UI invariants. If all remaining required checks pass, accept S1.42AH; if a targeted required check fails, reject it and return to an S1.42AF-derived follow-up. Do not rebuild S1.42AH or repeat already-proven startup/Vanilla collision/player-maul coverage merely to obtain the missing evidence.
+Exact next action: Run only the final S1.42AH non-Pikmin neighbor remainder: deliberately exercise a MouthDog/Paw collision against a non-Pikmin EnemyAI and prove native Paw-initiated BiteKillEnemyAI / generic non-Pikmin collision behavior remains functional and is not filtered by the Pikmin-only prefix. Then upload the complete fresh S1.42AH LogOutput.log. Do not rebuild S1.42AH or repeat already-proven Pikmin -> MouthDog attack/death/cleanup, adapter protection, Vanilla Pikmin collision blocking, startup, or player-maul coverage. If this final required check passes, explicitly accept S1.42AH; if it fails, explicitly reject S1.42AH and return to an S1.42AF-derived follow-up.
 
 ## Mandatory runtime-test UX
 
