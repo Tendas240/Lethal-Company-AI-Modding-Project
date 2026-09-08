@@ -23,6 +23,8 @@ on:
       - 'BuildSystem/**'
       - 'RuntimeTools/**'
       - 'ExecutionCheckpoints/**'
+      - 'Archive/**'
+      - 'Logs/**'
       - '.github/workflows/knowledge-architecture.yml'
       - '.github/workflows/profile-index.yml'
   pull_request:
@@ -45,6 +47,8 @@ on:
       - 'BuildSystem/**'
       - 'RuntimeTools/**'
       - 'ExecutionCheckpoints/**'
+      - 'Archive/**'
+      - 'Logs/**'
       - '.github/workflows/knowledge-architecture.yml'
       - '.github/workflows/profile-index.yml'
 
@@ -100,6 +104,9 @@ jobs:
 
       - name: Run answerability routing regression
         run: python RepositoryTools/answerability_regression.py
+
+      - name: Validate cold-history externalization
+        run: python RepositoryTools/cold_history_storage_validator.py
 
       - name: Run validator negative self-tests
         run: python RepositoryTools/validator_selftest.py

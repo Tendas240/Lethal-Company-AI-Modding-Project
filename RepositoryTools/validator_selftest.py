@@ -6,6 +6,7 @@ import json
 import tempfile
 from pathlib import Path
 
+import cold_history_storage_validator as chsv
 import current_state_semantic_validator as cssv
 import phase_checkpoint_validator as pcv
 import repository_integrity_guard as rig
@@ -34,6 +35,47 @@ def write_queue_redirect(root: Path, extra: str = "") -> None:
         + extra,
         encoding="utf-8",
     )
+
+
+def cold_manifest() -> dict:
+    return {
+        "status": "CURRENT_CANONICAL_COLD_HISTORY_STORAGE",
+        "history_rewrite": False,
+        "recovery_repository": chsv.EXPECTED_RECOVERY_REPOSITORY,
+        "recovery_commit": chsv.EXPECTED_RECOVERY_COMMIT,
+        "path_mapping_rule": "Archive/ and Logs/ use the same relative path in the recovery repository.",
+        "allowed_primary_files": ["Archive/README.md", "Logs/README.md"],
+        "legacy_reference_files": [],
+        "infrastructure_reference_files": [],
+        "allowed_reference_files": [],
+        "externalized_trees": {
+            root: {
+                "source_tree_sha": sha,
+                "backup_tree_sha": sha,
+                "recovery_repository": chsv.EXPECTED_RECOVERY_REPOSITORY,
+                "recovery_commit": chsv.EXPECTED_RECOVERY_COMMIT,
+                "recovery_prefix": root + "/",
+                "primary_pointer": root + "/README.md",
+            }
+            for root, sha in chsv.EXPECTED_TREES.items()
+        },
+    }
+
+
+def write_cold_fixture(root: Path, manifest: dict | None = None) -> None:
+    manifest = manifest or cold_manifest()
+    write_json(root / chsv.MANIFEST_REL, manifest)
+    write_json(root / "Current/REPOSITORY_MIGRATION_MANIFEST.json", {
+        "cold_history_manifest": chsv.MANIFEST_REL,
+        "history_rewrite": False,
+    })
+    for cold_root, sha in chsv.EXPECTED_TREES.items():
+        pointer = root / cold_root / "README.md"
+        pointer.parent.mkdir(parents=True, exist_ok=True)
+        pointer.write_text(
+            f"{sha}\n{chsv.EXPECTED_RECOVERY_REPOSITORY}\n{chsv.EXPECTED_RECOVERY_COMMIT}\n{chsv.MANIFEST_REL}\n",
+            encoding="utf-8",
+        )
 
 
 def assert_true(condition: bool, message: str) -> None:
@@ -168,6 +210,27 @@ def test_live_queue_duplication_fails() -> None:
         assert_true(any("state-neutral" in x for x in errors), "work queue must reject duplicated live-state snapshots")
 
 
+def test_cold_history_payload_reintroduction_fails() -> None:
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        write_cold_fixture(root)
+        payload = root / "Archive" / "old.bin"
+        payload.write_bytes(b"legacy")
+        errors = chsv.validate_strict(root, refs=[])
+        assert_true(any("unexpected payload remains" in x for x in errors), "cold-history gate must reject reintroduced payload bytes")
+
+
+def test_cold_history_unregistered_reference_fails() -> None:
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        write_cold_fixture(root)
+        doc = root / "Current" / "new_ref.md"
+        doc.write_text("legacy path: " + "Archive" + "/old.txt\n", encoding="utf-8")
+        refs = chsv.inventory_references(root)
+        errors = chsv.validate_strict(root, refs=refs)
+        assert_true(any("unmigrated inbound" in x for x in errors), "cold-history gate must reject unregistered inbound references")
+
+
 def main() -> int:
     tests = [
         test_unqualified_bad_sha_fails,
@@ -178,6 +241,8 @@ def main() -> int:
         test_phase_without_predecessor_fails,
         test_stale_live_runtime_instruction_fails,
         test_live_queue_duplication_fails,
+        test_cold_history_payload_reintroduction_fails,
+        test_cold_history_unregistered_reference_fails,
     ]
     for test in tests:
         test()

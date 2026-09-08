@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL AUTHORITY REGISTRY  
 **Authority:** repository knowledge-source precedence  
 **Canonical-For:** authority resolution, historical/current classification  
-**Related:** `Current/DOCUMENT_AUTHORITY.json`, `Current/PROJECT_KNOWLEDGE_MAP.md`, `Current/CURRENT_STATE.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`, `Current/HANDOVER_PREPARATION_PROMPT.md`, `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
+**Related:** `Current/DOCUMENT_AUTHORITY.json`, `Current/PROJECT_KNOWLEDGE_MAP.md`, `Current/CURRENT_STATE.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`, `Current/COLD_HISTORY_STORAGE.json`, `Current/HANDOVER_PREPARATION_PROMPT.md`, `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
 **Last-Validated:** 2026-09-08
 
 ## Precedence
@@ -33,6 +33,7 @@ A later explicit acceptance or rejection may supersede an older lifecycle verdic
 - `Current/BUILD_LINEAGE.md/.json` — build history / introduced-by / rejected-build reasoning.
 - `Current/INTEGRITY_ERRATA_REGISTRY.json` — known-bad values and supersession/provenance qualifications.
 - `Current/VALIDATOR_COVERAGE.json` — explicit validator scope and blindspots.
+- `Current/COLD_HISTORY_STORAGE.json` — canonical translation/recovery contract for externalized legacy `Archive/` and `Logs/` paths.
 - `Current/MULTIPHASE_CHECKPOINT_POLICY.json` — future ordered-workflow checkpoint policy.
 - `BuildSpecs/current.json` — currently armed build controller only.
 - `RuntimeInbox/ACTIVE_BUILD.txt` — runtime active-build controller only.
@@ -83,6 +84,12 @@ The old S1.42U/S1.42V progress block is preserved as chronology. Current policy/
 - `Knowledge/INTERIORS_AND_LLL.md`
 - `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`
 
+### `Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt`
+
+**HISTORICAL OPTIMIZATION PLAN — OLD "CURRENT STATUS" / "PENDING" WORDING IS NOT CURRENT AUTHORITY.**
+
+This file remains useful as the 2026-09-03 design history for repository optimization, but its S1.42S/S1.42T timing and pending-state wording are chronology only. Current migration/deletion authority is `Current/REPOSITORY_MIGRATION_MANIFEST.md/.json`; externalized legacy payload recovery is controlled by `Current/COLD_HISTORY_STORAGE.json`.
+
 ### MouthDog source/safety snapshots `Current/136`, `137`, `138`
 
 These three numbered records preserve a sequential analysis/review chain from before S1.42AH existed. Their embedded `CURRENT`, lifecycle and `Exact next action` wording is **historical**, even though the source findings and the `Current/138` patch-safety contract remain valuable evidence.
@@ -91,7 +98,7 @@ These three numbered records preserve a sequential analysis/review chain from be
 - `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md` — historical source-boundary closure snapshot; its pre-review lifecycle and next-action wording was superseded by `Current/138` and the built S1.42AH candidate.
 - `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md` — historical Patch Safety Review decision record. Its reviewed dual-prevention contract remains implementation provenance for S1.42AH, but its "no build yet" / no-candidate / no-runtime-test lifecycle snapshot was superseded once S1.42AH was built.
 
-Each file carries `<!-- HISTORICAL_CURRENT_QUALIFIED -->` at its top. Current lifecycle authority is `Current/CURRENT_STATE.json` plus `Knowledge/CURRENT_LIFECYCLE.md`; current MouthDog semantics route through `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`. Machine classification is additionally registered in `Current/DOCUMENT_AUTHORITY.json` and `Current/INTEGRITY_ERRATA_REGISTRY.json`.
+Each MouthDog file carries `<!-- HISTORICAL_CURRENT_QUALIFIED -->` at its top. Current lifecycle authority is `Current/CURRENT_STATE.json` plus `Knowledge/CURRENT_LIFECYCLE.md`; current MouthDog semantics route through `Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md`. Machine classification is additionally registered in `Current/DOCUMENT_AUTHORITY.json` and `Current/INTEGRITY_ERRATA_REGISTRY.json`.
 
 ### S1.42AC rejection and later acceptance
 
@@ -113,9 +120,9 @@ Treat these as history/evidence unless the Knowledge Map explicitly promotes one
 - old `Current/Projektstatus_*.json`
 - old `BuildSpecs/S*` plans
 - `RuntimeEvidence/**`
-- `Archive/**`
+- legacy `Archive/**` and `Logs/**` references, whose payload bytes are externalized and deterministically mapped by `Current/COLD_HISTORY_STORAGE.json`.
 
-These files are intentionally retained because they contain provenance, failed approaches and runtime evidence.
+The numbered records and current RuntimeEvidence are intentionally retained in the primary repository because they contain active provenance, failed approaches and runtime evidence. The frozen legacy `Archive/` and `Logs/` payloads are the exception: after a positive deletion audit they were removed from current HEAD while remaining byte-for-byte available in primary Git history and the verified recovery repository.
 
 ## Code-comment drift rule
 
@@ -136,10 +143,10 @@ Do **not** edit accepted patch source solely to modernize comments unless the ac
 
 A newer source may supersede an interpretation or lifecycle verdict without deleting history. When that happens:
 
-- preserve the old file;
+- preserve the old file or preserve its exact bytes through a verified recovery mapping before externalization;
 - register its classification here, in the migration map, or in `Current/INTEGRITY_ERRATA_REGISTRY.json`;
 - route current questions to the new source;
-- keep the old source reachable for "why did we think that?" questions.
+- keep the old source recoverable for "why did we think that?" questions.
 
 Known concrete bad values must be locally qualified or explicitly registered; an unqualified occurrence is a CI failure.
 

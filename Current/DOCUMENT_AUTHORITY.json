@@ -1,5 +1,5 @@
 {
-  "schema_version": 6,
+  "schema_version": 7,
   "updated": "2026-09-08",
   "status": "CURRENT_CANONICAL_AUTHORITY_REGISTRY",
   "authority_precedence": [
@@ -23,6 +23,7 @@
     "BuildSpecs/current.json and RuntimeInbox/ACTIVE_BUILD.txt are controllers, not narrative authority for unrelated topics.",
     "Only Current/CURRENT_STATE.json and Current/00_CURRENT_STATE.md declare the concise global current state after the overhaul.",
     "Ordinary topic questions route through Current/PROJECT_KNOWLEDGE_MAP.json to one canonical topic/workflow source.",
+    "Legacy Archive/ and Logs/ path references resolve through Current/COLD_HISTORY_STORAGE.json to the identical same-relative-path object in the verified frozen recovery repository; those cold payloads are not current authority.",
     "When the user explicitly requests transfer to a new ChatGPT chat, Current/HANDOVER_PREPARATION_PROMPT.md is the current workflow authority and must resolve then-current repository facts rather than reuse a stale static handover snapshot; the handover workflow itself remains subject to the segmented execution policy."
   ],
   "canonical": [
@@ -82,6 +83,11 @@
       "canonical_for": ["validator_coverage_and_blindspots"]
     },
     {
+      "path": "Current/COLD_HISTORY_STORAGE.json",
+      "authority": "CURRENT_COLD_HISTORY_RECOVERY_MAP",
+      "canonical_for": ["externalized_archive_recovery", "externalized_legacy_logs_recovery", "cold_history_reference_mapping"]
+    },
+    {
       "path": "Current/MULTIPHASE_CHECKPOINT_POLICY.json",
       "authority": "CURRENT_POLICY",
       "canonical_for": ["future_multiphase_checkpoint_policy"]
@@ -116,6 +122,12 @@
       "classification": "HISTORICAL_ROADMAP_SNAPSHOT_WITH_EXTRACTED_BINDING_RULES",
       "reason": "Contains valuable BCMER/interior policy plus obsolete S1.42U/S1.42V current-progress wording.",
       "current_targets": ["Knowledge/BCMER.md", "Knowledge/INTERIORS_AND_LLL.md", "Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md"]
+    },
+    {
+      "path": "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt",
+      "classification": "HISTORICAL_OPTIMIZATION_PLAN_PENDING_WORDING_SUPERSEDED",
+      "reason": "Preserves the 2026-09-03 repository-optimization design and old S1.42S/S1.42T scheduling context; its CURRENT STATUS/PENDING wording is not current after the completed information-architecture overhaul and later cold-history cleanup.",
+      "current_targets": ["Current/REPOSITORY_MIGRATION_MANIFEST.json", "Current/COLD_HISTORY_STORAGE.json", "Knowledge/REPOSITORY_OVERHAUL.md"]
     },
     {
       "path": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
@@ -184,7 +196,7 @@
     "Current/*RUNTIME_REJECTION*.md",
     "Current/Projektstatus_*.json except state files explicitly referenced by CURRENT_STATE.json",
     "BuildSpecs/S*.md and BuildSpecs/S*.json except BuildSpecs/current.json",
-    "RuntimeEvidence/** and Archive/** are evidence/history, never concise current-state authority"
+    "RuntimeEvidence/** is evidence/history unless explicitly linked by current state; legacy Archive/** and Logs/** references are externalized cold history mapped by Current/COLD_HISTORY_STORAGE.json"
   ],
   "code_comment_drift": {
     "path": "Patches/S139CompatibilityFixes/Plugin.cs",

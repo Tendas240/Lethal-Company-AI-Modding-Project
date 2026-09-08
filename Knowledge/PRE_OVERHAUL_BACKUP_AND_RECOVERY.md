@@ -3,9 +3,9 @@
 **Status:** CURRENT / VERIFIED RECOVERY TOPIC  
 **Authority:** semantic recovery router; machine proof is `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json`  
 **Canonical-For:** `pre_overhaul_backup_and_recovery`  
-**Evidence:** `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json`, reciprocal backup `PRE_OVERHAUL_BACKUP_MANIFEST.json`  
+**Evidence:** `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json`, `Current/COLD_HISTORY_STORAGE.json`, reciprocal backup `PRE_OVERHAUL_BACKUP_MANIFEST.json`  
 **Related:** `Knowledge/REPOSITORY_OVERHAUL.md`, `Current/OVERHAUL_EXECUTION_STATE.json`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-09-08
 
 ## Frozen recovery point
 
@@ -29,6 +29,19 @@ The exact frozen commit and exact frozen tree are present in that independent re
 
 The backup repository has one archival provenance-manifest commit on top of the exact frozen source commit so it can identify its recovery purpose and primary repository.
 
+## Cold-history externalization
+
+The legacy `Archive/` and `Logs/` payload trees were later removed from the current primary-repository HEAD after a positive deletion audit. They are **not lost** and this is not a history rewrite.
+
+Immediately before externalization, the primary repository and the verified frozen backup had identical Git tree identities:
+
+- `Archive/`: `0dd155347e3174d5bdef7b27922ff738a9a11f35`
+- `Logs/`: `9e67fc1a098b869dab9ba86063f5c2396d69c03f`
+
+For any historical reference beginning with either prefix, use the same relative path in the standalone backup at frozen commit `5dbd0e637a480d8591773e422bbca4b0654cad20`. Exact mapping, allowed historical references and the deletion-gate proof are canonical in `Current/COLD_HISTORY_STORAGE.json`.
+
+Only lightweight pointer READMEs remain at those two primary-repository roots. Current runtime evidence continues to live under `RuntimeEvidence/`; these cold trees are not current gameplay or lifecycle authority.
+
 ## Mirror limitation
 
 During the user-run `git push --mirror`, GitHub rejected hidden `refs/pull/*` refs because GitHub manages those refs internally and denies updates to them. Normal branches were preserved, no tags were missing, and the exact frozen source commit/tree identity was independently verified.
@@ -48,11 +61,12 @@ The primary repository remains the current Source of Truth.
 
 ## Rollback use
 
-If the information-architecture migration loses information, produces ambiguous authority, breaks navigation or fails validation:
+If an information-architecture migration loses information, produces ambiguous authority, breaks navigation or fails validation:
 
 1. stop further destructive migration;
 2. compare against the standalone backup/frozen checkpoint;
 3. restore missing knowledge/references;
 4. revert/replan if necessary rather than continuing cleanup for appearance.
 
-Machine provenance and exact verification details: `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json`.
+Machine provenance and exact verification details: `Current/PRE_OVERHAUL_BACKUP_MANIFEST.json`.  
+Cold-history path translation and deletion proof: `Current/COLD_HISTORY_STORAGE.json`.

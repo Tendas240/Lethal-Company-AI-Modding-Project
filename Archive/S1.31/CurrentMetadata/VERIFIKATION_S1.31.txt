@@ -1,9 +1,0 @@
-﻿LETHAL COMPANY REPOSITORY VERIFICATION - S1.31
-Generated: 2026-09-02 10:18:01
-
-- Markdown-first current handover files installed.
-- Current PDF/DOCX documents moved to Current/HumanReadable/.
-- Profiles, Logs, References and Archive preserved.
-- Current gameplay profile remains: Profiles/LC V1 S1.31 Indoor Power Trim -4.r2z
-- No gameplay profile/config was modified by this repository-layout upgrade.
-- SHA256SUMS_S1.31.txt is regenerated below from the final repository files (excluding .git and the hash file itself).

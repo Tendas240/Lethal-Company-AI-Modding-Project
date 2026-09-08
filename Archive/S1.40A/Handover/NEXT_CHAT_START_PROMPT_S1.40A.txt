@@ -1,9 +1,0 @@
-Nutze dieses Repository als vollständige Projektübergabe:
-https://github.com/Tendas240/Lethal-Company-AI-Modding-Project
-
-Lies zuerst START_HERE_ChatGPT_Masterprompt.txt und anschließend README.md sowie alle dort unter "ChatGPT — read first" genannten Dateien vollständig, bevor du Änderungen vorschlägst. Der chronologisch neueste bestätigte Stand ist verbindlich.
-
-Aktueller kanonischer Build-/Testkandidat: S1.40A — "LC V1 S1.40A CodeRebirth Config Cleanup Fix".
-Letzter tatsächlich runtime-getesteter Stand: S1.40 — Acceptance fehlgeschlagen.
-
-Wichtig: Teste/diagnostiziere zuerst S1.40A. BCMER bleibt bis zur erfolgreichen Currency-/Flash-Turret-Abnahme deaktiviert. Danach gilt die verbindliche Roadmap aus Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md.

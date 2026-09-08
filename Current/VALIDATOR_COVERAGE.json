@@ -1,17 +1,17 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "date": "2026-09-08",
   "status": "CURRENT_CANONICAL_VALIDATOR_COVERAGE",
   "rule": "A green validator is evidence only for the obligations it explicitly checks. Do not infer coverage of unlisted semantics or runtime behavior.",
   "validators": [
     {
       "path": "RepositoryTools/render_current_navigation.py",
-      "checks": ["Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json.", "Generated accepted/latest/candidate/controller/next-action summaries are state-driven."],
+      "checks": ["Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json.", "Generated navigation remains state-driven rather than independently hand-maintained."],
       "does_not_check": ["Gameplay correctness", "semantic truth of hand-maintained Knowledge/current topic documents"]
     },
     {
       "path": "RepositoryTools/current_state_semantic_validator.py",
-      "checks": ["Live-state markers in lifecycle, Knowledge Map, roadmap, live work queue and artifact-evidence human index match CURRENT_STATE accepted/latest/candidate/runtime-pending identity.", "Known pre-build/pre-runtime contradictory instructions are forbidden from live authorities while a candidate runtime test is pending.", "CURRENT_STATE selected_scope describes the already-built active candidate rather than asking to implement it again.", "Active Knowledge Map routes do not retain rejected-candidate machine-state routing.", "Artifact evidence contains accepted baseline and active pending candidate identities matching CURRENT_STATE.", "A filename-derived duplicate ProfileSources snapshot for the active candidate is forbidden when a canonical build-id snapshot exists."],
+      "checks": ["Live-state markers in lifecycle, Knowledge Map, roadmap and artifact-evidence human index match CURRENT_STATE accepted/latest/candidate/runtime-pending identity.", "Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md remains a state-neutral work-queue redirect rather than a duplicated live-state snapshot.", "Known pre-build/pre-runtime contradictory instructions are forbidden from live authorities while a candidate runtime test is pending.", "CURRENT_STATE selected_scope describes the already-built active candidate rather than asking to implement it again.", "Active Knowledge Map routes do not retain rejected-candidate machine-state routing.", "Artifact evidence contains accepted baseline and active pending candidate identities matching CURRENT_STATE.", "A filename-derived duplicate ProfileSources snapshot for the active candidate is forbidden when a canonical build-id snapshot exists."],
       "scan_scope": ["Current/CURRENT_STATE.json", "Knowledge/CURRENT_LIFECYCLE.md", "Current/PROJECT_KNOWLEDGE_MAP.md/.json", "Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md", "Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md", "Current/ARTIFACT_EVIDENCE_INTEGRITY.md/.json", "active-candidate ProfileSources paths"],
       "does_not_check": ["Gameplay correctness", "future contradictory wording not represented by markers/structural checks or the maintained stale-phrase set", "GitHub Actions status of a commit"]
     },
@@ -22,7 +22,7 @@
     },
     {
       "path": "RepositoryTools/handover_workflow_validator.py",
-      "checks": ["Canonical handover prompt/cross-links/authority/answerability route exist and preserve fresh-state plus completed-run upload semantics."],
+      "checks": ["Canonical handover prompt/cross-links/authority/answerability route exist and preserve fresh-state plus completed-run upload semantics.", "Handover bootstrap remains minimal and does not require the former bulk fixed-file read or duplicate the full live-state snapshot into the ready-to-copy prompt."],
       "does_not_check": ["Truth of a future handover response before it is produced", "GitHub Actions status at a future handover moment"]
     },
     {
@@ -66,8 +66,13 @@
       "does_not_check": ["Truth of every routed source; live truth is separately covered by current_state_semantic_validator.py"]
     },
     {
+      "path": "RepositoryTools/cold_history_storage_validator.py",
+      "checks": ["Legacy Archive/ and Logs/ roots contain only their controlled recovery README pointers in current HEAD.", "Current/COLD_HISTORY_STORAGE.json preserves the exact verified pre-externalization Git tree SHAs for Archive/ and Logs/ and the frozen recovery repository/commit.", "Pointer READMEs expose the matching tree SHA, recovery repository/commit and machine recovery authority.", "Every direct textual Archive/ or Logs/ reference outside the cold roots occurs only in an explicitly registered legacy or infrastructure reference file.", "The registered reference sets are complete and existing, and Current/REPOSITORY_MIGRATION_MANIFEST.json points to the cold-history authority with history_rewrite=false."],
+      "does_not_check": ["Gameplay correctness", "Remote backup availability at an arbitrary future moment; backup identity/provenance is separately evidenced by Current/PRE_OVERHAUL_BACKUP_MANIFEST.json and the frozen tree identities", "Untracked local files outside GitHub Actions checkout"]
+    },
+    {
       "path": "RepositoryTools/validator_selftest.py",
-      "checks": ["Representative negative fixtures fail: unqualified bad SHA, registered stale-current document without its qualification marker, duplicate authority, orphan topic, phase without predecessor and stale live runtime instruction; registered historical SHA passes."],
+      "checks": ["Representative negative fixtures fail: unqualified bad SHA, registered stale-current document without its qualification marker, duplicate authority, orphan topic, phase without predecessor, stale live runtime instruction, duplicated live work-queue state, reintroduced cold-history payload bytes and unregistered cold-history references; registered historical SHA passes."],
       "does_not_check": ["Formal proof of every validator branch"]
     }
   ],
