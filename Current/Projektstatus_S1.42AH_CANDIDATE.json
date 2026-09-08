@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "date": "2026-09-07",
+  "date": "2026-09-08",
   "repository_is_source_of_truth": true,
   "accepted_baseline": {
     "build_id": "S1.42AF",
@@ -17,10 +17,13 @@
   "active_runtime_candidate": {
     "build_id": "S1.42AH",
     "title": "Mouth Dog Pikmin Dual Prevention",
-    "status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "status": "ACTIVE_RUNTIME_CANDIDATE_PARTIAL_PASS_NOT_ACCEPTED",
     "profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
     "sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
     "candidate_record": "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md",
+    "runtime_partial_record": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
+    "runtime_index": "RuntimeEvidence/S1.42AH/20260908T162411Z/INDEX.json",
+    "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4be4ab72624a88f9c51ef3",
     "project_status": "Current/Projektstatus_S1.42AH_CANDIDATE.json",
     "build_plan": "BuildSpecs/S1.42AH_PLAN.md",
     "profile_sources": "ProfileSources/S1.42AH/",
@@ -28,24 +31,49 @@
     "workflow_run": 34141360051,
     "build_commit": "fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5",
     "plugin_dll_sha256": "bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573",
-    "parent": "S1.42AF"
+    "parent": "S1.42AF",
+    "accepted": false,
+    "rejected": false,
+    "runtime_test_outstanding": true
   },
   "runtime_gate": {
-    "adapter_path_protection": "MUST_PASS",
-    "vanilla_collision_block_marker": "MUST_APPEAR",
-    "mouthdog_pikmin_bite_grab": "MUST_BE_0",
-    "mouthdog_pikmin_hit_enemy_2": "MUST_BE_0",
-    "reverse_direction_explicit_command_or_throw": "REQUIRED",
-    "pikmin_latch_attack": "MUST_REMAIN_FUNCTIONAL",
-    "mouthdog_death_unlatch_task_cleanup": "MUST_REMAIN_FUNCTIONAL",
-    "mouthdog_to_player": "MUST_REMAIN_FUNCTIONAL",
-    "non_pikmin_neighbor_behavior": "MUST_REMAIN_FUNCTIONAL",
-    "repetition": "REQUIRED",
+    "adapter_path_protection": "REMAINDER_REQUIRES_BEHAVIORAL_OBSERVATION",
+    "adapter_patch_installation": "PASS_FIRST_RUNTIME_RUN",
+    "vanilla_collision_block_marker": "PASS_FIRST_RUNTIME_RUN_REPEATED",
+    "mouthdog_pikmin_bite_grab": "REMAINDER_MUST_BE_0_ON_EXERCISED_ADAPTER_PATH",
+    "mouthdog_pikmin_hit_enemy_2": "REMAINDER_MUST_BE_0_ON_EXERCISED_ADAPTER_PATH",
+    "reverse_direction_explicit_command_or_throw": "REQUIRED_REMAINDER",
+    "pikmin_latch_attack": "MUST_REMAIN_FUNCTIONAL_REMAINDER",
+    "mouthdog_death_unlatch_task_cleanup": "MUST_REMAIN_FUNCTIONAL_REMAINDER",
+    "mouthdog_to_player": "PASS_FIRST_RUNTIME_RUN",
+    "non_pikmin_neighbor_behavior": "REQUIRES_REMAINDER_CONFIRMATION",
+    "repetition": "PASS_FOR_VANILLA_COLLISION_BLOCK_REMAINDER_FOR_OTHER_TARGETED_PATHS",
     "noise_position_pursuit": "ALLOWED_NOT_A_FAILURE_BY_ITSELF",
-    "work_state_warning_burst": "MUST_BE_0",
-    "leader_null_following": "MUST_BE_0",
-    "project_patch_errors": "MUST_BE_0",
-    "fatal": "MUST_BE_0"
+    "work_state_warning_burst": "RECHECK_ON_REMAINDER",
+    "leader_null_following": "RECHECK_ON_REMAINDER",
+    "project_patch_errors": "RECHECK_ON_REMAINDER",
+    "fatal": "RECHECK_ON_REMAINDER"
+  },
+  "runtime_gate_progress": {
+    "status": "PARTIAL_RUNTIME_PASS_TARGETED_REMAINDER_OUTSTANDING",
+    "evidence_root": "RuntimeEvidence/S1.42AH/20260908T162411Z/",
+    "runtime_index": "RuntimeEvidence/S1.42AH/20260908T162411Z/INDEX.json",
+    "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4ab72624a88f9c51ef3",
+    "decision_record": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
+    "proven": [
+      "Adapter-side EatPikmin and HandleEnemyBite patch-installation markers appear.",
+      "Project-local Vanilla MouthDogAI.OnCollideWithEnemy prefix installs.",
+      "Genuine Vanilla MouthDog -> Pikmin collision handling is blocked repeatedly in live gameplay.",
+      "MouthDog -> player attack remains functional in the exercised run, including a Mauling player death."
+    ],
+    "remaining": [
+      "Explicit command/throw Pikmin -> MouthDog latch/attack/damage.",
+      "MouthDog death through Pikmin attack plus unlatch/release/task cleanup.",
+      "Behavioral observation of adapter-side bite protection preventing Paw/Pikmin bite/grab/death-timer mutation.",
+      "Preservation of Paw-initiated BiteKillEnemyAI behavior.",
+      "Non-Pikmin neighboring EnemyAI behavior and combat/UI membership invariants on the targeted path.",
+      "Known regression-marker re-check around the reverse-direction/death-cleanup sequence."
+    ]
   },
   "archive_gate": {
     "parent": "S1.42AF",
@@ -67,5 +95,5 @@
     "runtime_active_build": "S1.42AH",
     "successor_armed": false
   },
-  "exact_next_step": "Import S1.42AH with the canonical Gale v2.4 replacement helper and run the full-normal MouthDog/Pikmin regression gate from Current/139. Deliberately provoke MouthDog/Pikmin collision, explicitly command/throw Pikmin onto the MouthDog for reverse-direction latch/attack/death/unlatch/task cleanup, verify MouthDog -> player and non-Pikmin neighbor behavior, repeat protected collisions, then upload the complete fresh S1.42AH LogOutput.log with the build-specific uploader in Current/139. Do not accept S1.42AH from build/startup success alone."
+  "exact_next_step": "Run only the targeted remainder of the S1.42AH runtime gate from Current/140: explicitly command/throw Pikmin onto a MouthDog and prove native latch/attack/damage/death plus unlatch/release/task cleanup; exercise the adapter-side bite-protection path; preserve Paw-initiated BiteKillEnemyAI, non-Pikmin neighboring EnemyAI behavior and combat/UI invariants. Do not rebuild S1.42AH or repeat already-proven startup/Vanilla-collision/player-maul coverage merely to obtain the missing evidence."
 }
