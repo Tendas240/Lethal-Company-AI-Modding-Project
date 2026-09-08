@@ -38,11 +38,11 @@ Before performing project work, every ChatGPT chat must read and follow `Current
 
 Accepted gameplay baseline: **S1.42AF — Path-Length-Safe Microwave Packaging**.
 
-Latest built artifact and active runtime candidate: **S1.42AH — Mouth Dog Pikmin Dual Prevention — BUILD PASS / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED**.
+Latest built artifact and active runtime candidate: **S1.42AH — Mouth Dog Pikmin Dual Prevention — BUILD PASS / PARTIAL RUNTIME PASS / TARGETED REMAINDER OUTSTANDING / NOT ACCEPTED**.
 
-Runtime test outstanding: **yes**. No successor beyond S1.42AH is armed. `BuildSpecs/current.json` is disabled and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AH`.
+Runtime test outstanding: **yes**. S1.42AH is neither accepted nor rejected. No successor beyond S1.42AH is armed. `BuildSpecs/current.json` is disabled and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AH`.
 
-S1.42AH already implements the reviewed dual-prevention architecture from `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`. The exact next gameplay action is the full-normal runtime gate documented in `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`; do not rebuild the candidate or repeat the S1.42AG run first.
+S1.42AH already implements the reviewed dual-prevention architecture from `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`. Its first ingested run, recorded in `Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md`, positively proves patch installation, repeated live Vanilla MouthDog -> Pikmin collision blocking, and exercised MouthDog -> player maul/kill preservation. The exact next gameplay action is only the targeted reverse-direction/adapter/cleanup remainder documented in `Current/140`; do not rebuild the candidate, repeat the S1.42AG run, or repeat already-proven AH coverage first.
 
 ## Authority rule
 
@@ -50,7 +50,7 @@ S1.42AH already implements the reviewed dual-prevention architecture from `Curre
 2. `Current/CURRENT_STATE.json` is the global machine lifecycle authority; `Current/00_CURRENT_STATE.md` is its concise generated human mirror.
 3. This map chooses the semantic topic; it intentionally avoids duplicating volatile per-build evidence lists in its machine mirror.
 4. The canonical topic states current rules and points to provenance.
-5. Build-specific acceptance/rejection/candidate records and RuntimeEvidence prove historical decisions.
+5. Build-specific acceptance/rejection/candidate/partial-runtime records and RuntimeEvidence prove historical or pending decisions.
 6. Historical files never override the current machine state or a later explicit decision.
 
 When the user requests transfer to a new ChatGPT chat, route directly to `Current/HANDOVER_PREPARATION_PROMPT.md` and re-verify the current repository state before producing the handover.
