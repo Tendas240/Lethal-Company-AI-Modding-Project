@@ -20,11 +20,15 @@
   "latest_built_artifact": {
     "build_id": "S1.42AH",
     "title": "Mouth Dog Pikmin Dual Prevention",
-    "status": "BUILD_PASS_RUNTIME_VALIDATION_OUTSTANDING",
+    "status": "BUILD_PASS_PARTIAL_RUNTIME_PASS_REMAINDER_OUTSTANDING",
     "profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
     "sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
     "candidate_record": "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md",
     "project_status": "Current/Projektstatus_S1.42AH_CANDIDATE.json",
+    "runtime_partial_record": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
+    "runtime_evidence": "RuntimeEvidence/S1.42AH/20260908T162411Z/",
+    "runtime_index": "RuntimeEvidence/S1.42AH/20260908T162411Z/INDEX.json",
+    "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4\u0062\u0065\u0034ab72624a88f9c51ef3",
     "build_plan": "BuildSpecs/S1.42AH_PLAN.md",
     "profile_sources": "ProfileSources/S1.42AH/",
     "file_index": "ProfileSources/S1.42AH/FILE_INDEX.json",
@@ -36,11 +40,15 @@
   "active_candidate": {
     "build_id": "S1.42AH",
     "title": "Mouth Dog Pikmin Dual Prevention",
-    "status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "status": "ACTIVE_RUNTIME_CANDIDATE_PARTIAL_PASS_NOT_ACCEPTED",
     "profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
     "sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
     "candidate_record": "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md",
     "project_status": "Current/Projektstatus_S1.42AH_CANDIDATE.json",
+    "runtime_partial_record": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
+    "runtime_evidence": "RuntimeEvidence/S1.42AH/20260908T162411Z/",
+    "runtime_index": "RuntimeEvidence/S1.42AH/20260908T162411Z/INDEX.json",
+    "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4\u0062\u0065\u0034ab72624a88f9c51ef3",
     "build_plan": "BuildSpecs/S1.42AH_PLAN.md",
     "profile_sources": "ProfileSources/S1.42AH/",
     "file_index": "ProfileSources/S1.42AH/FILE_INDEX.json",
@@ -51,13 +59,17 @@
   },
   "runtime_test_outstanding": true,
   "selected_scope": {
-    "scope_id": "S142AH_MOUTHDOG_RUNTIME_VALIDATION",
-    "title": "S1.42AH Mouth Dog Pikmin Dual Prevention Runtime Validation",
-    "status": "BUILT_ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "scope_id": "S142AH_MOUTHDOG_RUNTIME_VALIDATION_REMAINDER",
+    "title": "S1.42AH Mouth Dog Pikmin Dual Prevention Targeted Runtime Remainder",
+    "status": "PARTIAL_RUNTIME_PASS_TARGETED_REMAINDER_OUTSTANDING",
     "accepted_baseline": "S1.42AF",
     "rejected_predecessor": "S1.42AG",
     "candidate_build_id": "S1.42AH",
     "candidate_record": "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md",
+    "runtime_partial_record": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
+    "runtime_evidence": "RuntimeEvidence/S1.42AH/20260908T162411Z/",
+    "runtime_index": "RuntimeEvidence/S1.42AH/20260908T162411Z/INDEX.json",
+    "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4\u0062\u0065\u0034ab72624a88f9c51ef3",
     "project_status": "Current/Projektstatus_S1.42AH_CANDIDATE.json",
     "build_plan": "BuildSpecs/S1.42AH_PLAN.md",
     "profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
@@ -85,16 +97,29 @@
         "LethalMin.PikminAI attack/task/latch lifecycle"
       ]
     },
+    "partial_runtime_proven": [
+      "Adapter-side EatPikmin and HandleEnemyBite patches plus the project-local Vanilla MouthDogAI.OnCollideWithEnemy prefix install in the fresh S1.42AH run.",
+      "Repeated genuine Vanilla MouthDog -> Pikmin collision handling is blocked by MouthDogVanillaCollisionGuard in live gameplay.",
+      "MouthDog -> player attack remains functional in the exercised run, including a real player death with cause Mauling."
+    ],
+    "runtime_gate_remaining": [
+      "Explicitly command/throw Pikmin onto a MouthDog and prove native Pikmin -> MouthDog latch/attack/damage.",
+      "Prove MouthDog death through the Pikmin attack path plus death-triggered unlatch/release, task finish and follow/idle cleanup.",
+      "Exercise the adapter-side MouthDog bite-protection path itself and prove Paw/Pikmin bite/grab/death-timer mutation is prevented.",
+      "Preserve Paw-initiated BiteKillEnemyAI behavior and native ownership boundaries.",
+      "Re-check combat/UI membership invariants, known regression markers, non-Pikmin neighboring EnemyAI behavior and ordinary audible-noise response on the targeted path."
+    ],
     "currently_irrelevant_actions": [
       "Do not repeat the completed Vanilla MouthDog or EnemyAI source captures merely to reproduce integrated evidence.",
       "Do not repeat the S1.42AG gameplay run or request another S1.42AG runtime-log upload.",
       "Do not repeat the successor Patch Safety Review unless new source or target evidence invalidates its exact contract.",
-      "Do not rebuild S1.42AH or arm a successor beyond S1.42AH before the documented S1.42AH runtime gate is resolved."
+      "Do not rebuild S1.42AH or arm a successor beyond S1.42AH before the documented S1.42AH runtime gate is resolved.",
+      "Do not repeat already-proven S1.42AH startup/patch-install and Vanilla MouthDog -> Pikmin collision-block coverage merely to obtain the missing reverse-direction evidence."
     ],
-    "finding": "S1.42AH implements the PASS-reviewed dual prevention-only MouthDog contract from exact accepted S1.42AF. The build changes only export.r2x profile identity and the cumulative S139CompatibilityFixes DLL; all other archive members are byte-preserved. Runtime acceptance is outstanding.",
-    "analysis_contract": "Run the documented S1.42AH full-normal runtime gate only after repository handover/integrity authorities are internally consistent and validated. The runtime gate must deliberately test MouthDog -> Pikmin adapter and Vanilla collision protection, Pikmin -> MouthDog attack/latch/death/unlatch/task cleanup, MouthDog -> player behavior, non-Pikmin neighbor behavior, repetition and complete log evidence. Passive follower non-aggression is not a reverse-direction test; position-based audible-noise pursuit is not itself failure."
+    "finding": "S1.42AH remains the active runtime candidate from exact accepted S1.42AF. Its first ingested runtime run positively proves the intended patch installation, repeated Vanilla MouthDog -> Pikmin collision blocking and exercised MouthDog -> player maul/kill preservation. The reverse-direction Pikmin -> MouthDog attack/death/cleanup path and adapter-side bite-protection behavior remain insufficiently evidenced, so S1.42AH is neither accepted nor rejected.",
+    "analysis_contract": "Run only the targeted remainder of the S1.42AH runtime gate. Explicitly command/throw Pikmin onto the MouthDog and prove native latch/attack/damage/death/unlatch/task cleanup; exercise the adapter-side bite-protection path; preserve Paw-initiated BiteKillEnemyAI, non-Pikmin neighbor behavior and combat/UI invariants. Do not infer acceptance from the first partial pass and do not rebuild S1.42AH while this runtime decision remains open."
   },
-  "next_action": "Import S1.42AH with the canonical Gale v2.4 replacement helper and run the full-normal MouthDog/Pikmin regression gate from Current/139. Deliberately provoke MouthDog/Pikmin collision, explicitly command/throw Pikmin onto the MouthDog for reverse-direction latch/attack/death/unlatch/task cleanup, verify MouthDog -> player and non-Pikmin neighbor behavior, repeat protected collisions, then upload the complete fresh S1.42AH LogOutput.log with the build-specific uploader in Current/139. Do not accept S1.42AH from build/startup success alone.",
+  "next_action": "Run only the targeted remainder of the S1.42AH runtime gate documented in Current/140: explicitly command/throw Pikmin onto a MouthDog and prove native latch/attack/damage/death plus unlatch/release/task cleanup; exercise the adapter-side bite-protection path; preserve Paw-initiated BiteKillEnemyAI, non-Pikmin neighboring EnemyAI behavior and combat/UI invariants. If all remaining required checks pass, accept S1.42AH; if a targeted required check fails, reject it and return to an S1.42AF-derived follow-up. Do not rebuild S1.42AH or repeat already-proven startup/Vanilla collision/player-maul coverage merely to obtain the missing evidence.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,

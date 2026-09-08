@@ -32,8 +32,8 @@
     },
     {
       "path": "RepositoryTools/artifact_byte_integrity_validator.py",
-      "checks": ["Actual SHA-256 of every indexed profile", "readable snapshot/FILE_INDEX existence", "completed runtime INDEX/raw-log SHA and size agreement", "pending runtime candidates validate profile/snapshot/candidate references without requiring nonexistent runtime evidence"],
-      "does_not_check": ["Gameplay semantics", "whether a pending candidate should be promoted"]
+      "checks": ["Actual SHA-256 of every indexed profile", "readable snapshot/FILE_INDEX and referenced decision-record existence", "completed runtime INDEX/raw-log SHA and size agreement", "pending runtime candidate profile/snapshot integrity", "when a pending candidate declares partial runtime evidence before final promotion/rejection, paired runtime INDEX/log-SHA declaration plus raw-log SHA/size/analysis-source agreement"],
+      "does_not_check": ["Gameplay semantics", "whether a pending candidate should be promoted", "whether partial runtime observations satisfy a gameplay gate beyond byte/provenance integrity"]
     },
     {
       "path": "RepositoryTools/runtime_sha_provenance_validator.py",

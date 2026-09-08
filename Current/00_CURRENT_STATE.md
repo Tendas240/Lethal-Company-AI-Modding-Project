@@ -21,7 +21,7 @@ Runtime evidence: `RuntimeEvidence/S1.42AF/20260905T223738Z/`
 
 ## Latest built artifact
 
-**S1.42AH — Mouth Dog Pikmin Dual Prevention — BUILD PASS RUNTIME VALIDATION OUTSTANDING**
+**S1.42AH — Mouth Dog Pikmin Dual Prevention — BUILD PASS PARTIAL RUNTIME PASS REMAINDER OUTSTANDING**
 
 Profile: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`  
 SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`  
@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Import S1.42AH with the canonical Gale v2.4 replacement helper and run the full-normal MouthDog/Pikmin regression gate from Current/139. Deliberately provoke MouthDog/Pikmin collision, explicitly command/throw Pikmin onto the MouthDog for reverse-direction latch/attack/death/unlatch/task cleanup, verify MouthDog -> player and non-Pikmin neighbor behavior, repeat protected collisions, then upload the complete fresh S1.42AH LogOutput.log with the build-specific uploader in Current/139. Do not accept S1.42AH from build/startup success alone.
+Run only the targeted remainder of the S1.42AH runtime gate documented in Current/140: explicitly command/throw Pikmin onto a MouthDog and prove native latch/attack/damage/death plus unlatch/release/task cleanup; exercise the adapter-side bite-protection path; preserve Paw-initiated BiteKillEnemyAI, non-Pikmin neighboring EnemyAI behavior and combat/UI invariants. If all remaining required checks pass, accept S1.42AH; if a targeted required check fails, reject it and return to an S1.42AF-derived follow-up. Do not rebuild S1.42AH or repeat already-proven startup/Vanilla collision/player-maul coverage merely to obtain the missing evidence.
 
 A runtime test is pending for S1.42AH. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

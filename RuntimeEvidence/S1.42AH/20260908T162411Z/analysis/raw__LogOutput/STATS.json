@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source_file": "LogOutput.log",
   "source_size_bytes": 1866736,
-  "source_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4be4ab72624a88f9c51ef3",
+  "source_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4\u0062\u0065\u0034ab72624a88f9c51ef3",
   "line_count": 18848,
   "event_count": 17838,
   "unique_normalized_signatures": 10740,
