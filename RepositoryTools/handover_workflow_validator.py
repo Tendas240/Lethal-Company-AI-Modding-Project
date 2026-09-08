@@ -89,22 +89,36 @@ def main() -> int:
     required_prompt_fragments = [
         "PART 1 — HANDOVER COMPLETION",
         "PART 2 — READY-TO-COPY START PROMPT FOR THE NEW CHAT",
+        "Step 1 — Minimal authority read",
+        "Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md",
         "Current/CURRENT_STATE.json",
         "Current/PROJECT_KNOWLEDGE_MAP.md",
-        "Current/INTEGRITY_ERRATA_REGISTRY.json",
+        "BuildSpecs/current.json",
+        "RuntimeInbox/ACTIVE_BUILD.txt",
         "Knowledge/BUILD_AND_RUNTIME_PIPELINE.md",
         "exact build-specific self-contained PowerShell one-line runtime-log uploader",
         "completed runtime log",
         "runtime-active/evidence-attribution",
-        "full-repository audit by default",
+        "Do not perform a manual full-repository audit by default",
+        "Do not duplicate the accepted baseline",
+        "Do not copy the entire live-state object",
         "when the user later signals another handover",
+        "instruct the new chat to read `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` before performing project work",
     ]
     lowered = prompt.lower()
     for fragment in required_prompt_fragments:
         if fragment.lower() not in lowered:
             fail(f"handover prompt missing required contract fragment: {fragment}")
 
-    if "hard-coding the current accepted build" not in lowered:
+    stale_bulk_read = (
+        "1. `README.md`\n"
+        "2. `START_HERE_ChatGPT_Masterprompt.txt`\n"
+        "3. `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`"
+    )
+    if stale_bulk_read.lower() in lowered:
+        fail("handover prompt reintroduced the obsolete broad bootstrap reread list")
+
+    if "hard-code the current accepted build" not in lowered:
         fail("handover prompt does not explicitly prohibit hard-coded current-state snapshots")
 
     print("Persistent ChatGPT handover workflow validation")
