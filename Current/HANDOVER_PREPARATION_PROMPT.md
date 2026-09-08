@@ -94,7 +94,9 @@ Report the final verified repository state compactly:
 - any material controller/runtime fact that cannot be safely inferred by simply reading `Current/CURRENT_STATE.json`;
 - whether the user must perform any manual repository action.
 
-Do **not** duplicate the accepted baseline, latest artifact, candidate, every SHA, runtime gate and exact next action merely because they exist. Point to `Current/CURRENT_STATE.json` for the complete volatile state, and repeat a live fact only when it materially prevents ambiguity in the handover.
+If no repository change was needed, say so explicitly.
+
+Do not duplicate the accepted baseline, latest artifact, candidate, every SHA, runtime gate and exact next action merely because they exist. Point to `Current/CURRENT_STATE.json` for the complete volatile state, and repeat a live fact only when it materially prevents ambiguity in the handover.
 
 ### PART 2 — READY-TO-COPY START PROMPT FOR THE NEW CHAT
 
