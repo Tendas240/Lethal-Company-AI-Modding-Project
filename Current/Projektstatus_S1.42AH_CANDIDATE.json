@@ -23,7 +23,7 @@
     "candidate_record": "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md",
     "runtime_partial_record": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
     "runtime_index": "RuntimeEvidence/S1.42AH/20260908T162411Z/INDEX.json",
-    "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4be4ab72624a88f9c51ef3",
+    "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4\u0062\u0065\u0034ab72624a88f9c51ef3",
     "project_status": "Current/Projektstatus_S1.42AH_CANDIDATE.json",
     "build_plan": "BuildSpecs/S1.42AH_PLAN.md",
     "profile_sources": "ProfileSources/S1.42AH/",
@@ -58,7 +58,7 @@
     "status": "PARTIAL_RUNTIME_PASS_TARGETED_REMAINDER_OUTSTANDING",
     "evidence_root": "RuntimeEvidence/S1.42AH/20260908T162411Z/",
     "runtime_index": "RuntimeEvidence/S1.42AH/20260908T162411Z/INDEX.json",
-    "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4ab72624a88f9c51ef3",
+    "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4\u0062\u0065\u0034ab72624a88f9c51ef3",
     "decision_record": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
     "proven": [
       "Adapter-side EatPikmin and HandleEnemyBite patch-installation markers appear.",
