@@ -28,12 +28,7 @@ def sha256_file(path: Path) -> str:
 
 
 def normalized_sha256(value: Any) -> str:
-    """Canonicalize textual SHA metadata before comparison.
-
-    Runtime ingestion metadata may preserve harmless surrounding Unicode whitespace from
-    transport/serialization. Byte integrity is governed by the 64 hexadecimal digits, so all
-    comparisons use stripped lowercase textual form while still rejecting malformed values.
-    """
+    """Canonicalize textual SHA metadata before comparison."""
     text = str(value).strip().lower()
     if len(text) != 64 or any(ch not in "0123456789abcdef" for ch in text):
         return ""
@@ -82,6 +77,21 @@ def verify_profile(entry: dict[str, Any], errors: list[str]) -> bool:
     return True
 
 
+def resolve_runtime_log(index_rel: Any) -> tuple[dict[str, Any] | None, Path | None]:
+    if not index_rel:
+        return None, None
+    index_path = ROOT / str(index_rel)
+    if not index_path.is_file():
+        return None, None
+    index = load_json(index_path)
+    sources = [a.get("source") for a in index.get("analysis", []) if a.get("source")]
+    log_source = next((s for s in sources if str(s).endswith("/raw/LogOutput.log")), None)
+    if log_source is None:
+        log_source = (Path(str(index_rel)).parent / "raw" / "LogOutput.log").as_posix()
+    log_path = ROOT / str(log_source)
+    return index, log_path if log_path.is_file() else None
+
+
 def verify_runtime(entry: dict[str, Any], errors: list[str]) -> bool:
     build_id = str(entry.get("build_id", "<missing-build-id>"))
     index_rel = entry.get("runtime_index")
@@ -90,18 +100,21 @@ def verify_runtime(entry: dict[str, Any], errors: list[str]) -> bool:
     if not index_rel or not expected_log_sha:
         raw_text = str(expected_log_sha_raw)
         codepoints = " ".join(f"U+{ord(ch):04X}" for ch in raw_text)
+        diagnostic = ""
+        _, diagnostic_log_path = resolve_runtime_log(index_rel)
+        if diagnostic_log_path is not None:
+            diagnostic = f" actual_raw_sha256={sha256_file(diagnostic_log_path)}"
         errors.append(
             f"{build_id}: runtime index/log SHA missing or malformed in artifact evidence entry; "
-            f"raw={expected_log_sha_raw!r} len={len(raw_text)} codepoints={codepoints}"
+            f"raw={expected_log_sha_raw!r} len={len(raw_text)} codepoints={codepoints}{diagnostic}"
         )
         return False
 
-    index_path = ROOT / str(index_rel)
-    if not index_path.is_file():
+    index, log_path = resolve_runtime_log(index_rel)
+    if index is None:
         errors.append(f"{build_id}: runtime index missing: {index_rel}")
         return False
 
-    index = load_json(index_path)
     log_entries = [x for x in index.get("files", []) if x.get("name") == "LogOutput.log"]
     if len(log_entries) != 1:
         errors.append(f"{build_id}: expected exactly one LogOutput.log in {index_rel}")
@@ -113,13 +126,8 @@ def verify_runtime(entry: dict[str, Any], errors: list[str]) -> bool:
     elif indexed_sha != expected_log_sha:
         errors.append(f"{build_id}: artifact index/runtime INDEX SHA mismatch: {expected_log_sha} != {indexed_sha}")
 
-    sources = [a.get("source") for a in index.get("analysis", []) if a.get("source")]
-    log_source = next((s for s in sources if str(s).endswith("/raw/LogOutput.log")), None)
-    if log_source is None:
-        log_source = (Path(str(index_rel)).parent / "raw" / "LogOutput.log").as_posix()
-    log_path = ROOT / str(log_source)
-    if not log_path.is_file():
-        errors.append(f"{build_id}: raw runtime log bytes missing: {log_source}")
+    if log_path is None:
+        errors.append(f"{build_id}: raw runtime log bytes missing for {index_rel}")
         return False
 
     actual_log_sha = sha256_file(log_path)
