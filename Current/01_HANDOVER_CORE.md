@@ -7,7 +7,7 @@
 **Topic router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
 **Authority registry:** `Current/DOCUMENT_AUTHORITY.md`  
 **Current-chat handover procedure:** `Current/HANDOVER_PREPARATION_PROMPT.md`  
-**Last-Validated:** 2026-09-07
+**Last-Validated:** 2026-09-08
 
 ## Fresh-session procedure
 
