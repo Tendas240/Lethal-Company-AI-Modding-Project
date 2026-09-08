@@ -398,6 +398,15 @@ namespace S139CompatibilityFixes
 
         private void PatchBaboonHawkPikminProtection()
         {
+            // Asymmetric gameplay rule:
+            // Pikmin -> Baboon Hawk remains fully native LethalMin.
+            // Baboon Hawk -> Pikmin collision/bite/grab is blocked.
+            //
+            // IMPORTANT S1.42S correction:
+            // Never disable BaboonBirdPikminEnemy itself. It inherits PikminEnemy.Update(),
+            // whose native death path calls RemoveAndDisableTriggers() and therefore unlatches
+            // Pikmin when the Hawk dies. S1.42R disabled the entire adapter and accidentally
+            // suppressed that lifecycle.
             Type adapterType = AccessTools.TypeByName("LethalMin.BaboonBirdPikminEnemy");
             Type pikminAiType = AccessTools.TypeByName("LethalMin.PikminAI");
             if (adapterType == null || pikminAiType == null)
@@ -635,6 +644,12 @@ namespace S139CompatibilityFixes
 
         private void PatchJetpackCapacityTarget()
         {
+            // S1.42D showed JetpackItem does not declare Start; AccessTools.Method
+            // resolved inherited GrabbableObject.Start and HarmonyX warned about the
+            // overly broad target. Do not patch an inherited lifecycle method.
+            //
+            // The battery duration lives on the loaded Jetpack Item asset, so retry
+            // that narrow asset mutation from Update until the content is available.
             JetpackCapacityGuard.ApplyToLoadedItems(logIfMissing: true);
             Logger.LogInfo(
                 "[Jetpack140] Using loaded Jetpack Item asset targeting only; no GrabbableObject.Start Harmony patch.");
@@ -885,6 +900,9 @@ namespace S139CompatibilityFixes
             changed |= FilterPool(level, "OutsideEnemies", OutdoorTargets, ensureTargets: true);
             changed |= FilterPool(level, "DaytimeEnemies", new HashSet<string>(StringComparer.OrdinalIgnoreCase), ensureTargets: false);
 
+            // This is a diagnostic profile whose purpose is to produce actual target
+            // encounters. Keep at least two indoor spawn attempts and one outside attempt
+            // available even when another balance mod leaves a very low curve.
             if (IsServer() && RoundManager.Instance != null)
             {
                 if (RoundManager.Instance.minEnemiesToSpawn < 2)
@@ -1032,6 +1050,8 @@ namespace S139CompatibilityFixes
 
             foreach (string targetName in targetNames)
             {
+                // Alias pairs point to the same actual EnemyType. Do not add duplicates:
+                // Crawler/Thumper, Puffer/SporeLizard, BaboonHawk/BaboonBird.
                 if (present.Contains(targetName))
                     continue;
 
@@ -1118,6 +1138,9 @@ namespace S139CompatibilityFixes
             {
                 object entry = null;
 
+                // V81 SpawnableEnemyWithRarity has no parameterless constructor. Prefer
+                // its EnemyType/int constructor and fall back to cloning an existing
+                // pool entry so the diagnostic layer never enters an exception loop.
                 ConstructorInfo ctor = entryType.GetConstructor(
                     BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
                     null,
@@ -1319,6 +1342,7 @@ namespace S139CompatibilityFixes
         }
     }
 
+
     internal static class DiagnosticEnemyIsolationLifecycle
     {
         public static void FinishGenerationPostfix()
@@ -1328,11 +1352,15 @@ namespace S139CompatibilityFixes
 
         public static void PredictOutsidePrefix()
         {
+            // Spawn Cycle Fixes replaces PredictAllOutsideEnemies with a Prefix.
+            // Reassert our final pool first so its predictor sees only Baboon Hawk.
             Apply("PredictAllOutsideEnemies/Prefix");
         }
 
         public static void BeginEnemySpawningPrefix()
         {
+            // Reassert once more immediately before the normal enemy spawning phase,
+            // covering mods that mutate indoor pools late in dungeon setup.
             Apply("BeginEnemySpawning/Prefix");
         }
 
@@ -1391,7 +1419,12 @@ namespace S139CompatibilityFixes
                     return true;
 
                 if (PendingTasks.TryGetValue(__instance, out _))
+                {
+                    // The native RPC has already been requested for this exact task.
+                    // Skip the broken upstream branch until its FinishTaskClientRpc
+                    // removes the task.
                     return false;
+                }
 
                 PendingTasks.Add(__instance, new PendingMarker());
 
@@ -1682,6 +1715,9 @@ namespace S139CompatibilityFixes
             int removed = 0;
             HashSet<GameObject> candidates = new HashSet<GameObject>();
 
+            // The nightly LethalMin build injects a Pikmin effect trigger into the
+            // Puffer's smoke prefab. Inspect smoke-named GameObject/Component fields
+            // plus smoke-named children so this stays resilient to field-name changes.
             foreach (FieldInfo field in typeof(PufferAI).GetFields(
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
             {
@@ -1998,6 +2034,7 @@ namespace S139CompatibilityFixes
             FilterState state = new FilterState();
             List<string> removed = new List<string>();
 
+            // V81's active hazard path uses IndoorMapHazard[].
             if (level.indoorMapHazards != null && level.indoorMapHazards.Length > 0)
             {
                 IndoorMapHazard[] originalHazards = level.indoorMapHazards;
@@ -2025,6 +2062,7 @@ namespace S139CompatibilityFixes
                 }
             }
 
+            // Keep the legacy SpawnableMapObject[] path covered as well for mods/moons that still use it.
             if (level.spawnableMapObjects != null && level.spawnableMapObjects.Length > 0)
             {
                 SpawnableMapObject[] originalLegacy = level.spawnableMapObjects;
@@ -2210,6 +2248,10 @@ namespace S139CompatibilityFixes
 
             bool closed = round.hangarDoorsClosed;
 
+            // BCMER DoorFailure ("Door System: ERROR") intentionally forces the ship
+            // door open with zero hydraulic power and disabled buttons every Update.
+            // Do not log its SetDoorOpen call stack every frame and do not fight the
+            // intended forced-open state. Only record transitions into/out of it.
             bool forcedOpenZeroPower =
                 !closed &&
                 __instance.doorPower <= 0.001f &&
