@@ -27,6 +27,19 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def normalized_sha256(value: Any) -> str:
+    """Canonicalize textual SHA metadata before comparison.
+
+    Runtime ingestion metadata may preserve harmless surrounding Unicode whitespace from
+    transport/serialization. Byte integrity is governed by the 64 hexadecimal digits, so all
+    comparisons use stripped lowercase textual form while still rejecting malformed values.
+    """
+    text = str(value).strip().lower()
+    if len(text) != 64 or any(ch not in "0123456789abcdef" for ch in text):
+        return ""
+    return text
+
+
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -53,16 +66,16 @@ def require_readable_profile_artifacts(entry: dict[str, Any], build_id: str, err
 def verify_profile(entry: dict[str, Any], errors: list[str]) -> bool:
     build_id = str(entry.get("build_id", "<missing-build-id>"))
     profile_rel = entry.get("profile")
-    expected_profile_sha = entry.get("profile_sha256")
+    expected_profile_sha = normalized_sha256(entry.get("profile_sha256"))
     if not profile_rel or not expected_profile_sha:
-        errors.append(f"{build_id}: profile path/SHA missing from artifact evidence index")
+        errors.append(f"{build_id}: profile path/SHA missing or malformed in artifact evidence index")
         return False
     profile_path = ROOT / str(profile_rel)
     if not profile_path.is_file():
         errors.append(f"{build_id}: profile bytes missing: {profile_rel}")
         return False
     actual = sha256_file(profile_path)
-    if actual != str(expected_profile_sha).lower():
+    if actual != expected_profile_sha:
         errors.append(f"{build_id}: profile byte SHA mismatch: {actual} != {expected_profile_sha}")
         return False
     require_readable_profile_artifacts(entry, build_id, errors)
@@ -72,9 +85,9 @@ def verify_profile(entry: dict[str, Any], errors: list[str]) -> bool:
 def verify_runtime(entry: dict[str, Any], errors: list[str]) -> bool:
     build_id = str(entry.get("build_id", "<missing-build-id>"))
     index_rel = entry.get("runtime_index")
-    expected_log_sha = entry.get("runtime_log_sha256")
+    expected_log_sha = normalized_sha256(entry.get("runtime_log_sha256"))
     if not index_rel or not expected_log_sha:
-        errors.append(f"{build_id}: runtime index/log SHA missing from artifact evidence entry")
+        errors.append(f"{build_id}: runtime index/log SHA missing or malformed in artifact evidence entry")
         return False
 
     index_path = ROOT / str(index_rel)
@@ -88,8 +101,10 @@ def verify_runtime(entry: dict[str, Any], errors: list[str]) -> bool:
         errors.append(f"{build_id}: expected exactly one LogOutput.log in {index_rel}")
         return False
 
-    indexed_sha = log_entries[0].get("sha256")
-    if indexed_sha != expected_log_sha:
+    indexed_sha = normalized_sha256(log_entries[0].get("sha256"))
+    if not indexed_sha:
+        errors.append(f"{build_id}: runtime INDEX contains malformed LogOutput.log SHA")
+    elif indexed_sha != expected_log_sha:
         errors.append(f"{build_id}: artifact index/runtime INDEX SHA mismatch: {expected_log_sha} != {indexed_sha}")
 
     sources = [a.get("source") for a in index.get("analysis", []) if a.get("source")]
@@ -108,9 +123,13 @@ def verify_runtime(entry: dict[str, Any], errors: list[str]) -> bool:
     if isinstance(expected_size, int) and log_path.stat().st_size != expected_size:
         errors.append(f"{build_id}: raw runtime-log byte size mismatch: {log_path.stat().st_size} != {expected_size}")
     for analysis in index.get("analysis", []):
-        source_sha = analysis.get("stats", {}).get("source_sha256")
-        if source_sha and source_sha != actual_log_sha:
-            errors.append(f"{build_id}: embedded analysis source_sha256 disagrees with raw bytes")
+        source_sha_raw = analysis.get("stats", {}).get("source_sha256")
+        if source_sha_raw:
+            source_sha = normalized_sha256(source_sha_raw)
+            if not source_sha:
+                errors.append(f"{build_id}: embedded analysis source_sha256 is malformed")
+            elif source_sha != actual_log_sha:
+                errors.append(f"{build_id}: embedded analysis source_sha256 disagrees with raw bytes")
     return True
 
 
