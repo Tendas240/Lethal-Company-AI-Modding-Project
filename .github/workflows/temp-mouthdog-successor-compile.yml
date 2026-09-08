@@ -1,0 +1,31 @@
+name: Temporary MouthDog Successor Compile Check
+
+on:
+  push:
+    branches:
+      - "work/mouthdog-successor-implementation"
+
+permissions:
+  contents: write
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: "work/mouthdog-successor-implementation"
+          fetch-depth: 0
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - name: Compile compatibility plugin
+        run: dotnet build Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj -c Release --nologo
+      - name: Remove temporary compile workflow
+        run: |
+          rm -f .github/workflows/temp-mouthdog-successor-compile.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -u .github/workflows/temp-mouthdog-successor-compile.yml
+          git commit -m 'Remove temporary MouthDog compile workflow'
+          git push origin HEAD:work/mouthdog-successor-implementation
