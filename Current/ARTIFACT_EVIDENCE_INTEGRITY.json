@@ -63,16 +63,21 @@
       "build_id": "S1.42AH",
       "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
       "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": true,
+      "runtime_evidence_status": "PARTIAL_RUNTIME_PASS_TARGETED_REMAINDER_OUTSTANDING",
       "profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
       "profile_sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
       "profile_sources": "ProfileSources/S1.42AH/",
       "file_index": "ProfileSources/S1.42AH/FILE_INDEX.json",
       "export": "ProfileSources/S1.42AH/export.r2x",
       "candidate_record": "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md",
+      "runtime_partial_record": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
+      "runtime_index": "RuntimeEvidence/S1.42AH/20260908T162411Z/INDEX.json",
+      "runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4ab72624a88f9c51ef3",
       "project_status": "Current/Projektstatus_S1.42AH_CANDIDATE.json",
       "build_plan": "BuildSpecs/S1.42AH_PLAN.md",
       "plugin_dll_sha256": "bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573",
-      "note": "Profile/snapshot bytes are current-critical now; move this entry into profiles with runtime_index/runtime_log_sha256 after the first explicit runtime decision."
+      "note": "A first runtime run is ingested and indexed, but S1.42AH remains pending because no final acceptance/rejection decision exists. Keep runtime_evidence_required=false for validator lifecycle semantics until the explicit final runtime decision; the present INDEX/log SHA/partial record are nevertheless current-critical evidence."
     }
   ],
   "important_project_dlls": [
@@ -86,7 +91,8 @@
       "active_candidate": "S1.42AH",
       "evidence": "Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md",
       "candidate_evidence": "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md",
-      "note": "Accepted historical binary provenance remains unchanged until S1.42AH receives an explicit runtime decision; the S1.42AH DLL hash is candidate provenance only."
+      "candidate_partial_runtime_evidence": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
+      "note": "Accepted historical binary provenance remains unchanged until S1.42AH receives an explicit runtime acceptance; the S1.42AH DLL hash remains candidate provenance even though partial runtime evidence is positive."
     },
     {
       "name": "S1.42AB interior normalization injected DLL",
@@ -111,17 +117,18 @@
     "pending_profiles_array": "pending_profiles",
     "runtime_evidence_required_by_default_for_completed_profiles": true,
     "pending_candidate_role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
-    "pending_candidate_runtime_requirement": "Profile bytes, profile SHA, readable snapshot, FILE_INDEX and candidate record are mandatory before runtime; runtime INDEX/log SHA become mandatory only after an explicit runtime decision.",
+    "pending_candidate_runtime_requirement": "Profile bytes, profile SHA, readable snapshot, FILE_INDEX and candidate record are mandatory before runtime. If partial runtime evidence exists before a final decision, its INDEX/log SHA and partial decision record are also current-critical while the build remains in pending_profiles. Move to completed profiles only after an explicit final runtime decision.",
     "analysis_directory_required_for_completed_runtime_runs": true,
     "binary_only_fact_policy": "Any fact required for future reasoning must also exist in readable ProfileSources, FILE_INDEX, runtime INDEX/analysis, source, build record, or canonical documentation."
   },
   "verified_repository_api_observations": [
     "ProfileSources/S1.42AB, S1.42AC, S1.42AF, S1.42AG and S1.42AH contain FILE_INDEX.json and export.r2x.",
-    "S1.42AH is built and has no runtime evidence yet by design.",
+    "S1.42AH is built and has partial runtime evidence at RuntimeEvidence/S1.42AH/20260908T162411Z; a final runtime decision is still outstanding.",
     "RuntimeEvidence/S1.42AB/20260904T174010Z contains INDEX.json, analysis/, and raw/.",
     "RuntimeEvidence/S1.42AC/20260904T235720Z contains the corrected acceptance runtime evidence.",
     "RuntimeEvidence/S1.42AF/20260905T223738Z contains the accepted S1.42AF runtime evidence.",
-    "RuntimeEvidence/S1.42AG/20260906T085500Z contains the S1.42AG rejection evidence."
+    "RuntimeEvidence/S1.42AG/20260906T085500Z contains the S1.42AG rejection evidence.",
+    "RuntimeEvidence/S1.42AH/20260908T162411Z contains the first S1.42AH partial runtime evidence; raw LogOutput.log SHA-256 is 1778ad5b572349cda261b3b848e0a697dfdb527a1e4be4ab72624a88f9c51ef3."
   ],
   "last_validated": "2026-09-08"
 }
