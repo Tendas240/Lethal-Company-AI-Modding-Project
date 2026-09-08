@@ -2,8 +2,9 @@
 """Recompute current critical profile/runtime SHA-256 values from repository bytes.
 
 Completed profile decisions live under `profiles`. Runtime-pending candidates live under
-`pending_profiles`: their profile bytes and readable snapshot are mandatory before runtime,
-while runtime evidence becomes mandatory only after an explicit runtime decision.
+`pending_profiles`: their profile bytes and readable snapshot are mandatory before runtime.
+A pending candidate may also carry indexed partial runtime evidence before its final explicit
+acceptance/rejection decision; when present, those runtime bytes are verified here as well.
 """
 from __future__ import annotations
 
@@ -43,7 +44,7 @@ def require_readable_profile_artifacts(entry: dict[str, Any], build_id: str, err
     if export_rel and not (ROOT / str(export_rel)).is_file():
         errors.append(f"{build_id}: readable export missing: {export_rel}")
 
-    for field in ("candidate_record", "project_status", "acceptance", "rejection", "build_plan"):
+    for field in ("candidate_record", "project_status", "acceptance", "rejection", "build_plan", "runtime_partial_record"):
         rel = entry.get(field)
         if rel and not (ROOT / str(rel)).exists():
             errors.append(f"{build_id}: referenced {field} missing: {rel}")
@@ -73,7 +74,7 @@ def verify_runtime(entry: dict[str, Any], errors: list[str]) -> bool:
     index_rel = entry.get("runtime_index")
     expected_log_sha = entry.get("runtime_log_sha256")
     if not index_rel or not expected_log_sha:
-        errors.append(f"{build_id}: runtime index/log SHA missing from completed artifact evidence entry")
+        errors.append(f"{build_id}: runtime index/log SHA missing from artifact evidence entry")
         return False
 
     index_path = ROOT / str(index_rel)
@@ -125,6 +126,7 @@ def main() -> int:
     completed_profiles_checked = 0
     completed_logs_checked = 0
     pending_profiles_checked = 0
+    pending_partial_logs_checked = 0
 
     for entry in completed:
         if verify_profile(entry, errors):
@@ -137,9 +139,21 @@ def main() -> int:
         if entry.get("role") != PENDING_ROLE:
             errors.append(f"{build_id}: pending_profiles entry must use role {PENDING_ROLE}")
         if entry.get("runtime_evidence_required") is not False:
-            errors.append(f"{build_id}: pending candidate must explicitly set runtime_evidence_required=false")
-        if entry.get("runtime_index") or entry.get("runtime_log_sha256"):
-            errors.append(f"{build_id}: pending candidate must not predeclare runtime evidence before a runtime decision")
+            errors.append(f"{build_id}: pending candidate must explicitly set runtime_evidence_required=false until final runtime decision")
+
+        index_present = bool(entry.get("runtime_index"))
+        sha_present = bool(entry.get("runtime_log_sha256"))
+        partial_declared = entry.get("partial_runtime_evidence_present") is True
+        if index_present != sha_present:
+            errors.append(f"{build_id}: pending partial runtime evidence must declare both runtime_index and runtime_log_sha256")
+        elif index_present:
+            if not partial_declared:
+                errors.append(f"{build_id}: pending runtime evidence requires partial_runtime_evidence_present=true")
+            if verify_runtime(entry, errors):
+                pending_partial_logs_checked += 1
+        elif partial_declared:
+            errors.append(f"{build_id}: partial_runtime_evidence_present=true but runtime_index/runtime_log_sha256 are missing")
+
         if verify_profile(entry, errors):
             pending_profiles_checked += 1
 
@@ -149,8 +163,9 @@ def main() -> int:
         return 1
     print(
         "PASS: actual bytes verified for "
-        f"{completed_profiles_checked} completed profiles/{completed_logs_checked} runtime logs "
-        f"and {pending_profiles_checked} pending runtime candidate profile(s)"
+        f"{completed_profiles_checked} completed profiles/{completed_logs_checked} completed runtime logs, "
+        f"{pending_profiles_checked} pending runtime candidate profile(s), and "
+        f"{pending_partial_logs_checked} pending partial runtime log(s)"
     )
     return 0
 
