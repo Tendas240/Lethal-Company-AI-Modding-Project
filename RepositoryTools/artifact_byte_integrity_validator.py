@@ -103,7 +103,12 @@ def verify_runtime(entry: dict[str, Any], errors: list[str]) -> bool:
         diagnostic = ""
         _, diagnostic_log_path = resolve_runtime_log(index_rel)
         if diagnostic_log_path is not None:
-            diagnostic = f" actual_raw_sha256={sha256_file(diagnostic_log_path)}"
+            actual_raw_sha = sha256_file(diagnostic_log_path)
+            actual_codepoints = " ".join(f"{i}:{ord(ch):02X}" for i, ch in enumerate(actual_raw_sha))
+            diagnostic = (
+                f" actual_raw_sha256={actual_raw_sha} actual_len={len(actual_raw_sha)}"
+                f" actual_codepoints={actual_codepoints}"
+            )
         errors.append(
             f"{build_id}: runtime index/log SHA missing or malformed in artifact evidence entry; "
             f"raw={expected_log_sha_raw!r} len={len(raw_text)} codepoints={codepoints}{diagnostic}"
