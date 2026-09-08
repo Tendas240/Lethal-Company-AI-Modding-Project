@@ -9,7 +9,7 @@
   "recovery_commit": "5dbd0e637a480d8591773e422bbca4b0654cad20",
   "recovery_tree": "0e17aac410cf600a164396b5586b5b50f084df22",
   "backup_manifest": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
-  "path_mapping_rule": "For every historical reference beginning Archive/ or Logs/, resolve the identical relative path in recovery_repository at recovery_commit. The same bytes also remain reachable in primary-repository Git history because no history rewrite occurred.",
+  "path_mapping_rule": "For every historical reference beginning Archive/ or Logs/, resolve the identical same relative path in recovery_repository at recovery_commit. The same bytes also remain reachable in primary-repository Git history because no history rewrite occurred.",
   "externalized_trees": {
     "Archive": {
       "source_tree_sha": "0dd155347e3174d5bdef7b27922ff738a9a11f35",
@@ -35,6 +35,7 @@
   "legacy_reference_files": [
     "Current/17_REPO_HANDOVER_CLEANUP_S1.42C.md",
     "Current/16_HANDOVER_S1.42C_TO_NEXT.md",
+    "Current/05_FAILED_AND_OBSOLETE_APPROACHES.md",
     "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt",
     "Current/VERIFIKATION_S1.42C.txt",
     "Current/DATEIINVENTAR_S1.42C.txt",
@@ -46,6 +47,7 @@
   ],
   "infrastructure_reference_files": [
     "RepositoryTools/cold_history_storage_validator.py",
+    "RepositoryTools/validator_selftest.py",
     "Current/COLD_HISTORY_STORAGE.json",
     "Current/REPOSITORY_MIGRATION_MANIFEST.md",
     "Current/REPOSITORY_MIGRATION_MANIFEST.json",
@@ -57,6 +59,7 @@
   ],
   "allowed_reference_files": [
     "RepositoryTools/cold_history_storage_validator.py",
+    "RepositoryTools/validator_selftest.py",
     "Current/COLD_HISTORY_STORAGE.json",
     "Current/REPOSITORY_MIGRATION_MANIFEST.md",
     "Current/REPOSITORY_MIGRATION_MANIFEST.json",
@@ -67,6 +70,7 @@
     ".github/workflows/knowledge-architecture.yml",
     "Current/17_REPO_HANDOVER_CLEANUP_S1.42C.md",
     "Current/16_HANDOVER_S1.42C_TO_NEXT.md",
+    "Current/05_FAILED_AND_OBSOLETE_APPROACHES.md",
     "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt",
     "Current/VERIFIKATION_S1.42C.txt",
     "Current/DATEIINVENTAR_S1.42C.txt",
@@ -78,7 +82,7 @@
   ],
   "deletion_gate": {
     "unique_fact_evidence": "PASS: both primary subtrees were byte-identical by Git tree SHA to the verified frozen recovery repository before externalization; no unique bytes existed only in current HEAD.",
-    "inbound_reference_audit": "PASS: repository-native CI inventory found 34 reference lines before externalization. Historical references remain valid through the deterministic same-relative-path recovery mapping; current/infrastructure references are explicitly registered.",
+    "inbound_reference_audit": "PASS: repository-native CI inventory found 34 reference lines before externalization. Historical references remain valid through the deterministic same-relative-path recovery mapping; current/infrastructure references are explicitly registered and future unregistered references fail CI.",
     "semantic_replacement": "PASS: normal current questions route through Current/CURRENT_STATE.json and Current/PROJECT_KNOWLEDGE_MAP; recovery routes through Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md and this manifest.",
     "history_preservation": "PASS: no Git history rewrite; exact pre-cleanup bytes remain in primary history and independently in the verified recovery repository.",
     "validation_required": [
