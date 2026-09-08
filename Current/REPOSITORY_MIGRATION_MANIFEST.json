@@ -1,12 +1,39 @@
 {
-  "schema_version": 2,
-  "updated": "2026-09-04",
+  "schema_version": 3,
+  "updated": "2026-09-08",
   "status": "CURRENT_CANONICAL_OVERHAUL_MIGRATION_MANIFEST",
-  "migration_policy": "NON_DESTRUCTIVE_SEMANTIC_MIGRATION",
+  "migration_policy": "SEMANTIC_MIGRATION_WITH_VERIFIED_COLD_HISTORY_EXTERNALIZATION",
   "backup_manifest": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
+  "cold_history_manifest": "Current/COLD_HISTORY_STORAGE.json",
   "new_semantic_root": "Knowledge/",
   "moved_paths": [],
-  "deleted_paths": [],
+  "deleted_paths": [
+    "Archive/** payload except Archive/README.md",
+    "Logs/** payload except Logs/README.md"
+  ],
+  "cold_history_externalizations": [
+    {
+      "path": "Archive/",
+      "pre_externalization_tree_sha": "0dd155347e3174d5bdef7b27922ff738a9a11f35",
+      "verified_backup_tree_sha": "0dd155347e3174d5bdef7b27922ff738a9a11f35",
+      "recovery_repository": "Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904",
+      "recovery_commit": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+      "replacement": "Archive/README.md + Current/COLD_HISTORY_STORAGE.json",
+      "unique_fact_audit": "PASS_IDENTICAL_TREE_IN_VERIFIED_BACKUP",
+      "inbound_reference_audit": "PASS_ALL_REFERENCES_MAPPED_TO_SAME_RELATIVE_BACKUP_PATH"
+    },
+    {
+      "path": "Logs/",
+      "pre_externalization_tree_sha": "9e67fc1a098b869dab9ba86063f5c2396d69c03f",
+      "verified_backup_tree_sha": "9e67fc1a098b869dab9ba86063f5c2396d69c03f",
+      "recovery_repository": "Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904",
+      "recovery_commit": "5dbd0e637a480d8591773e422bbca4b0654cad20",
+      "replacement": "Logs/README.md + Current/COLD_HISTORY_STORAGE.json",
+      "unique_fact_audit": "PASS_IDENTICAL_TREE_IN_VERIFIED_BACKUP",
+      "inbound_reference_audit": "PASS_ALL_REFERENCES_MAPPED_TO_SAME_RELATIVE_BACKUP_PATH"
+    }
+  ],
+  "history_rewrite": false,
   "compacted_live_paths": [
     {
       "path": "Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md",
@@ -15,13 +42,15 @@
       "unique_fact_audit": "PASS_NO_UNIQUE_FACT_LOSS"
     }
   ],
-  "deletion_decision": "No legacy evidence or historical document was deleted during the overhaul. The verified standalone pre-overhaul repository exists, but preservation in the primary repository remains preferable while historical references are still valuable and storage pressure does not justify destructive cleanup.",
+  "deletion_decision": "The original overhaul performed no destructive cleanup. On 2026-09-08 a later positive deletion audit proved the frozen Archive/ and Logs/ payload subtrees byte-identical by Git tree SHA to the verified standalone recovery repository, inventoried every inbound textual reference, established deterministic same-relative-path recovery mapping, and retained current semantic replacements. Those two cold payload trees were therefore externalized from current HEAD while remaining present in primary Git history and the independent recovery repository.",
   "redirects_and_supersessions": [
     {"legacy":"Current/02_TECHNICAL_BASELINE.md","classification":"historical_mixed_snapshot","current_targets":["Current/00_CURRENT_STATE.md","Knowledge/ENEMY_SPAWN_BASELINE.md","Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md","Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md"]},
     {"legacy":"Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md","classification":"historical_roadmap_snapshot","current_targets":["Knowledge/BCMER.md","Knowledge/INTERIORS_AND_LLL.md","Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md"]},
     {"legacy":"Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md","classification":"historical_decision_interpretation_superseded","current_targets":["Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md","Knowledge/BCMER.md"]},
     {"legacy":"Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md","classification":"historical_handover","current_targets":["Current/01_HANDOVER_CORE.md","Current/00_CURRENT_STATE.md"]},
-    {"legacy":"Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md","classification":"historical_handover_audit","current_targets":["Current/00_CURRENT_STATE.md","Current/PROJECT_KNOWLEDGE_MAP.md"]}
+    {"legacy":"Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md","classification":"historical_handover_audit","current_targets":["Current/00_CURRENT_STATE.md","Current/PROJECT_KNOWLEDGE_MAP.md"]},
+    {"legacy_prefix":"Archive/","classification":"externalized_cold_history","current_target":"Current/COLD_HISTORY_STORAGE.json","recovery_rule":"same relative path in verified recovery repository at frozen commit"},
+    {"legacy_prefix":"Logs/","classification":"externalized_cold_history","current_target":"Current/COLD_HISTORY_STORAGE.json","recovery_rule":"same relative path in verified recovery repository at frozen commit"}
   ],
   "new_artifact_families": [
     "Knowledge/*.md semantic topic authority",
@@ -31,16 +60,17 @@
     "Current/CURRENT_STATE.json",
     "Current/ARTIFACT_EVIDENCE_INTEGRITY.md and .json",
     "Current/CURRENT_STATE_TRANSITION_POLICY.md",
+    "Current/COLD_HISTORY_STORAGE.json",
     "RepositoryTools knowledge validation and answerability regression",
     "Current final overhaul validation/acceptance artifacts"
   ],
   "retention_rationale": [
     "Historical handovers show exact state transitions and user decisions.",
     "Rejected candidates preserve anti-regression evidence and failed approaches.",
-    "Runtime evidence is required for causal verification and later comparison.",
-    "Old roadmap/baseline files contain chronology and implementation context even where their current wording is stale; Current/DOCUMENT_AUTHORITY.* explicitly prevents them from overriding live state.",
-    "No unique-fact/reference audit justified deletion of any legacy file during this pass."
+    "Current RuntimeEvidence is required for causal verification and later comparison and remains in the primary repository.",
+    "Old roadmap/baseline files contain chronology and implementation context even where their current wording is stale; Current/DOCUMENT_AUTHORITY.* prevents them from overriding live state.",
+    "Cold Archive/ and Logs/ payloads are recoverable byte-for-byte from both primary Git history and the verified standalone recovery repository, so duplicating those frozen payloads in current HEAD no longer adds unique evidentiary value."
   ],
-  "safe_cleanup_after_overhaul": "Future cleanup may remove a legacy file only after proving no unique fact remains, all inbound references are migrated or redirected, the Knowledge/lineage replacements preserve the needed information, and validator/answerability suites remain green.",
-  "last_validated": "2026-09-04"
+  "safe_cleanup_after_overhaul": "Future cleanup may remove another legacy file only after proving no unique fact remains, all inbound references are migrated or deterministically redirected, semantic/lineage replacements preserve required information, and validator/answerability suites remain green.",
+  "last_validated": "2026-09-08"
 }
