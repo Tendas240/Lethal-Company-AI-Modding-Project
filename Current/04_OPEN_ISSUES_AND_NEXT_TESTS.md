@@ -1,72 +1,51 @@
+<!-- LIVE_STATE: accepted=S1.42AF latest=S1.42AH candidate=S1.42AH runtime_test_outstanding=true -->
 # 04 — Open Issues and Next Tests
 
 **Status:** CURRENT / LIVE WORK QUEUE  
 **Authority:** concise current work queue only  
 **Machine state:** `Current/CURRENT_STATE.json`  
 **Topic router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
-**Last-Validated:** 2026-09-06
+**Last-Validated:** 2026-09-08
 
 ## Current gameplay state
 
-Accepted baseline is **S1.42AF — Path-Length-Safe Microwave Packaging — ACCEPTED FULL NORMAL STACK**, `Profiles/LC V1 S1.42AF Microwave Fix.r2z`, SHA-256 `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`.
+Accepted baseline: **S1.42AF — Path-Length-Safe Microwave Packaging — ACCEPTED FULL NORMAL STACK**, SHA-256 `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`.
 
-Latest built artifact is **S1.42AG — Mouth Dog Pikmin One-Way Protection — RUNTIME REJECTED / PARTIAL FIX / NOT ACCEPTED**, `Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z`, SHA-256 `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`.
+Latest built artifact / active runtime candidate: **S1.42AH — Mouth Dog Pikmin Dual Prevention — BUILD PASS / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED**, SHA-256 `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`.
 
-There is no active candidate. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AG` remains evidence-attribution only. `BuildSpecs/current.json` is disabled with controller id `IDLE_AFTER_MOUTHDOG_SOURCE_BOUNDARIES_AWAITING_PATCH_SAFETY_REVIEW`, guarding accepted S1.42AF. No successor is armed and no runtime test is pending.
+Runtime test outstanding: **yes**. `BuildSpecs/current.json` is disabled with controller id `IDLE_AFTER_S1.42AH_BUILD_AWAITING_RUNTIME_VALIDATION`; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AH`. No successor beyond S1.42AH is armed.
 
-## Closed S1.42AG runtime gate
+## Closed predecessor/source/safety gates
 
-S1.42AG proved a narrow useful prevention result on exact `LethalMin.MouthDogPikminEnemy.DoCheckInterval()`:
+- S1.42AG is runtime-rejected historical evidence only. Its exact `DoCheckInterval()` guard removed the LethalMin bite/grab/death-timer mutation path but did not close the remaining Vanilla MouthDog collision path.
+- Vanilla MouthDog and base EnemyAI collision source boundaries are captured and integrated.
+- `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md` passed and is already implemented by S1.42AH.
+- No additional local source capture or repeat Patch Safety Review is required unless new evidence invalidates the exact contract.
 
-- intended Priority.First guard armed and executed;
-- prior `Biting N Pikmin` / `EnemyAttackMouth` / 2.5-second grab/death-timer mutation signature disappeared;
-- `Work state with no task assigned!` fell from 707 in the S1.42AF exposure evidence to 0;
-- inherited S1.42AF behavior remained otherwise healthy in the tested run.
+## Exact next test
 
-S1.42AG remains rejected because a Mouth Dog still visibly pursued/attacked a scrap-carrying Purple Pikmin through a path outside that adapter dispatcher.
+Perform the **S1.42AH full-normal runtime gate** from `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`.
 
-Reverse-direction Pikmin -> Mouth Dog combat was not deliberately tested.
+Required coverage:
 
-## Closed source-proof gates
+1. Provoke real MouthDog/Pikmin collision repeatedly and require the bounded Vanilla collision-block marker.
+2. Require no Dog -> Pikmin LethalMin adapter bite/grab/death-timer mutation (`Biting N Pikmin`, `EnemyAttackMouth`, 2.5-second `GrabPikmin`, Dog-path Pikmin `HitEnemy(2)`).
+3. Explicitly command/throw Pikmin onto a MouthDog; passive followers do not count.
+4. Prove native Pikmin latch/attack, MouthDog death, death-triggered unlatch, attack-task finish and follow/idle cleanup.
+5. Prove MouthDog -> player remains functional.
+6. Verify non-Pikmin neighboring `EnemyAI` collisions remain unfiltered.
+7. Preserve ordinary position-based audible-noise response; movement toward a Pikmin world position alone is not failure.
+8. Upload the complete fresh S1.42AH `LogOutput.log` with the build-specific uploader in Current/139.
 
-Current source-boundary authority is `Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md`.
-
-The required proofs are now complete:
-
-1. Vanilla V81 `MouthDogAI.DetectNoise(...)` is position-based and native pursuit can lunge near `noisePositionGuess`.
-2. Vanilla V81 `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` is an independent generic enemy collision/lunge/damage surface.
-3. Exact LethalMin proves `PikminAI : EnemyAI`.
-4. Exact V81 `EnemyAI.OnCollideWithEnemy()` is debug-only and has no gameplay/lifecycle mutation.
-5. Exact LethalMin `PikminItem.CarryNumerator()` repeatedly calls `PlayAudioOnLocalClient("ItemCarry", ...)` for each carrier; with `Dont Make Audible Noises = false`, Pikmin audio can emit audible noise at the carrier's position.
-
-The stronger GoldBar-specific semantic-target hypothesis is unsupported/rejected. The source does not prove which exact audible event caused the observed S1.42AG pursuit.
-
-No additional local source capture is currently required.
-
-## Exact next action
-
-Perform the **successor-specific Patch Safety Review** under `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`.
-
-The review must define the smallest exact Harmony boundary and document:
-
-- exact owner/type/method/signature and Pikmin identification;
-- base/inheritance/lifecycle responsibilities;
-- whether the proven S1.42AG `DoCheckInterval()` guard remains part of the successor;
-- preservation of MouthDog -> player behavior;
-- preservation of native Pikmin -> MouthDog attack/latch/death/unlatch/task ownership;
-- one-variable build delta against accepted S1.42AF;
-- build diagnostics and archive-diff checks;
-- runtime target/adjacent/repetition/neighbor/log checks;
-- deliberate reverse-direction Pikmin -> MouthDog validation.
-
-Do not arm/build a successor or start a runtime test until this review is complete.
+Do not accept S1.42AH from startup/build success alone.
 
 ## Currently irrelevant actions
 
-- Do not repeat either completed Vanilla capture merely to reproduce evidence.
-- Do not ask for `Assembly-CSharp.dll`, full decompiles, `-AssemblyPath`, manual .NET/ILSpy installation or a user-side repository clone for the closed source boundaries.
-- Do not repeat the S1.42AG gameplay run or request another S1.42AG log upload.
+- Do not repeat the completed Vanilla source captures.
+- Do not request another S1.42AG runtime run/log.
+- Do not repeat the Patch Safety Review without new contradicting source evidence.
+- Do not rebuild S1.42AH or arm another gameplay build while this runtime gate is unresolved.
 
 ## Deferred independent scopes
 
-Route scope decisions through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. Deferred items remain LC Office V81 integration, CullFactory `junkrooms`/`shatteredrooms` exceptions, Mausoleum fog reduction, Black Mesa/Pikmin routing, isolated LethalEscapeUpdated evaluation, final long full-stack acceptance, evidence-driven AdditionalNetworking repair and broader LethalMin teardown/despawn repair only with stronger evidence.
+Route through `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`: LC Office V81 integration, CullFactory `junkrooms`/`shatteredrooms` exceptions, Mausoleum fog reduction, Black Mesa/Pikmin routing, isolated LethalEscapeUpdated evaluation, final long full-stack acceptance, evidence-driven AdditionalNetworking repair, and broader LethalMin teardown/despawn work only with stronger evidence.
