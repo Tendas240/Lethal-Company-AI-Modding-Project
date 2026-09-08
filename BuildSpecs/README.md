@@ -13,7 +13,7 @@ This directory is the online control plane for profile builds.
 5. The workflow commits the generated profile to `Profiles/`, a readable text snapshot to `ProfileSources/<build_id>/`, and machine-readable results to `Current/AUTO_BUILD_RESULT.*`.
 6. ChatGPT reads the result and continues without a local repository copy or local build script.
 
-`enabled: false` means no build is requested. The repository migration is complete. After a successful candidate build, `current.json` should be returned to an idle/disabled guard rather than left enabled against an already-existing output.
+`enabled: false` means no build is requested. After a successful candidate build, `current.json` should be returned to an idle/disabled guard rather than left enabled against an already-existing output.
 
 ## Spec fields
 
@@ -34,14 +34,20 @@ The current builder supports:
 - `mod_state_changes`: enable/disable an existing exact package version;
 - `mod_additions`: add an exact Thunderstore package/version to the Gale export;
 - `mod_removals`: remove an exact package/version;
-- `config_patches`: change or create BepInEx section/key values;
+- `config_patches`: change or create BepInEx section/key-value edits;
 - `file_injections`: inject a repository-hosted binary/text file into the profile;
 - `local_plugin_builds`: compile a repository-hosted .NET project on GitHub Actions and inject its output;
 - `text_assertions`: verify required/forbidden output text.
 
 For new Thunderstore content, ChatGPT should research and pin the intended package plus any dependencies required by the chosen build architecture. The user should not have to install those packages manually before the profile is built.
 
+## Live-state authority
 
-## Current planned next stage
+This README documents build mechanics only. It must not declare the current accepted baseline, active candidate, latest artifact or next build.
 
-`S1.42A_PLAN.md` now records the completed S1.42A automated build and its pending runtime config-generation seed gate. The current accepted gameplay baseline remains S1.41 until runtime evidence advances acceptance.
+Use:
+
+- `Current/CURRENT_STATE.json` for live project/build/runtime state;
+- `BuildSpecs/current.json` only as the build controller;
+- `Current/BUILD_LINEAGE.json` for build history;
+- `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` for the canonical build/runtime workflow.
