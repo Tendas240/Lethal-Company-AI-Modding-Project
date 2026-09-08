@@ -76,4 +76,4 @@ Passive follower non-aggression is not a reverse-direction test. Position-based 
 
 ## Canonical Gale workflow
 
-Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. When handing off the runtime test, include both the Gale replacement/import one-liner and the exact S1.42AH build-specific uploader in the same response.
+Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. When handing off the runtime test, include both the Gale replacement/import one-liner and the exact S1.42AH build-specific uploader in the same response.
