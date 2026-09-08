@@ -105,8 +105,8 @@ jobs:
       - name: Run answerability routing regression
         run: python RepositoryTools/answerability_regression.py
 
-      - name: Inventory cold-history inbound references
-        run: python RepositoryTools/cold_history_storage_validator.py --inventory
+      - name: Validate cold-history externalization
+        run: python RepositoryTools/cold_history_storage_validator.py
 
       - name: Run validator negative self-tests
         run: python RepositoryTools/validator_selftest.py
