@@ -8,7 +8,7 @@
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
 **Last-Validated:** 2026-09-08
 
-Before project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
+Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
 ## Immediate routing
 
