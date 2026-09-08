@@ -1,16 +1,16 @@
 # Human-readable handover status
 
-The current project handover is intentionally **Markdown/TXT/JSON-first**.
+This directory contains legacy human-readable handover material and is **not** an independent current-state authority.
 
-Canonical current files are listed in the repository root `README.md` under **ChatGPT — read first**.
+For current project state use:
 
-The current canonical/runtime-accepted state is **S1.41**. The next binding stage is **S1.42A Interior Config Seed**.
+- `Current/CURRENT_STATE.json` — canonical machine lifecycle state;
+- `Current/00_CURRENT_STATE.md` — generated human mirror;
+- `Current/PROJECT_KNOWLEDGE_MAP.md` — topic router;
+- `Current/01_HANDOVER_CORE.md` — fresh-session takeover router.
 
-Primary current handover:
-- `Current/12_HANDOVER_S1.41_TO_S1.42A.md`
-- `Current/README_Handover_S1.41.txt`
-- `Current/Projektstatus_S1.41.json`
+For transfer to another ChatGPT chat use `Current/HANDOVER_PREPARATION_PROMPT.md` under `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`.
 
-Older DOCX/PDF handover documents are historical and remain under `Archive/` where applicable.
+Older PDF/DOCX and legacy-log payloads are historical recovery material. Their deterministic recovery mapping is documented in `Current/COLD_HISTORY_STORAGE.json` and `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md`.
 
-No new S1.41 DOCX/PDF is required for project continuity because the GitHub repository itself is the canonical source and the machine-readable current files contain the complete accepted state, runtime evidence, failed approaches, build automation rules, and binding roadmap.
+Do not infer an accepted build, active candidate or exact next action from files in this directory.
