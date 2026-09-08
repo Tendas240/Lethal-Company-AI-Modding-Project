@@ -53,4 +53,4 @@ If the final neighbor check passes, explicitly accept S1.42AH. If it fails, expl
 
 ## Canonical Gale workflow
 
-Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. Whenever the remaining runtime test is explained to the user, include both the Gale replacement/import one-liner and the exact S1.42AH build-specific log uploader in the same response.
+Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`, as governed by `Knowledge/GALE_PROFILE_WORKFLOW.md`. Whenever the remaining runtime test is explained to the user, include both the Gale replacement/import one-liner and the exact S1.42AH build-specific log uploader in the same response.
