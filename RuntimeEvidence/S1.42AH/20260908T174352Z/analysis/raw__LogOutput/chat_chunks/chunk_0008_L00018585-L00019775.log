@@ -1,0 +1,1191 @@
+[17:41:15.1813874] [Debug  : LethalMin] Generated Route Nodes: FusedType: 0, 4, 8, 5, 1, 7
+[17:41:15.1813874] [Info   : LethalMin] MouthDogBody(Clone) has created a route
+[17:41:15.2965902] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Thrown with force: (5.66, 1.14, -21.23)
+[17:41:15.2965902] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting collision mode to 2
+[17:41:15.2975948] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Removed Leader
+[17:41:15.3608101] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:15.5187555] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Collision with Grid.001
+[17:41:15.5187555] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting collision mode to 1
+[17:41:15.5187555] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting to idle on local client
+[17:41:15.5187555] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Removed Leader
+[17:41:15.5898735] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Found item: MouthDogBody(Clone)
+[17:41:15.5898735] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: targeting item MouthDogBody(Clone) at GrabPosition_48
+[17:41:15.5898735] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Setting current task to CarryItem
+[17:41:15.7908597] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting collision mode to 0
+[17:41:15.7908597] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Grabbed item MouthDogBody(Clone) Speed is now: 4.225962
+[17:41:16.5042873] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:16.7775691] [Info   :S1.39 Compatibility Fixes] [BaboonHawkCorpseGuard] Living Baboon Hawk ignored corpse item BaboonHawkBody(Clone) / Dead Baboon Hawk. Pikmin/player carrying remains allowed.
+[17:41:16.9189410] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:17.2789794] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:17.3819690] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:17.8808990] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[17:41:17.8929149] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[17:41:18.5226663] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:19.0773545] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:19.6856548] [Info   : Unity Log] Anomaly random yrotation farthest: -11
+[17:41:20.1040065] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:20.2420336] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:20.6564024] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[17:41:21.2749479] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:21.6275491] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:21.6876848] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:22.1809059] [Info   :ReservedItemSlotCore-2.0.41] Focusing reserved hotbar slots. NewIndex: 10 OldIndex: 1 ReservedStartIndex: 4
+[17:41:22.1809059] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:23.1929267] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:23.2592154] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:23.9777092] [Info   : Unity Log] Baboon #42: Grabbing item!!! TragedyMask(Clone)
+[17:41:24.2142272] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:24.6518120] [Info   : Unity Log] Threat type : Player; threat level: 3 ; with distance: 1.407243 [NCS:600-69952]
+[17:41:24.8276640] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:25.1792196] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:25.9666771] [Info   : Unity Log] Baboon #42: Dropped item
+[17:41:26.1340957] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:26.4239702] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:26.4516549] [Info   :TooManyEmotes-2.3.17] Calculating if the masked enemy (MaskedPlayerEnemy(Clone)) should emote: False
+[17:41:26.5551536] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[17:41:26.7675036] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:27.9967214] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:28.8901161] [Info   : Unity Log] dog 'MouthDog(Clone)': Heard noise! Distance: 10.4198 meters [NCS:480-70262]
+[17:41:29.0631672] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:29.1042319] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:29.3418408] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:29.5642480] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:30.8758953] [Info   : Unity Log] Mouth dog targetPos 1: (55.88, 9.98, -93.59); distanceToNoise: 21.1169 [NCS:480-70404]
+[17:41:30.8758953] [Info   : Unity Log] Mouth dog targetPos 2: (57.70, 9.58, -95.46) [NCS:480-70404]
+[17:41:30.8758953] [Info   : Unity Log] Dog lastheardnoisePosition: (57.70, 9.58, -95.46) [NCS:480-70404]
+[17:41:31.1472814] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:31.4681871] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[17:41:32.0765873] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:32.7309309] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:32.9640370] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:32.9820742] [Info   : Unity Log] Threat type : RadMech; threat level: 4 ; with distance: 0.5820827 [NCS:600-70556]
+[17:41:33.9014415] [Debug  :Buttery Fixes] Player "MasaeAhmya" is bunnyhopping with dogs outside; creating noise
+[17:41:34.3222621] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:34.3993132] [Debug  :   Coroner] Querying target player parameters pre-death...
+[17:41:34.3993132] [Debug  :   Coroner] Query successful!True
+[17:41:34.6442676] [Debug  :   Coroner] Querying target player parameters pre-death...
+[17:41:34.6442676] [Debug  :   Coroner] Query successful!True
+[17:41:34.6442676] [Debug  :Buttery Fixes] Player "MasaeAhmya" landed from bunnyhop
+[17:41:34.9486130] [Info   : Unity Log] Noise heard relative loudness: 0.06163235 [NCS:300-70704]
+[17:41:35.0391135] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:35.6653764] [Info   : Unity Log] dog 'MouthDog(Clone)': Heard noise! Distance: 12.12745 meters [NCS:480-70762]
+[17:41:35.8953073] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:36.7079866] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[17:41:36.8677656] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:37.4769627] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:37.6812335] [Info   : Unity Log] Mouth dog targetPos 1: (72.17, 15.00, -62.13); distanceToNoise: 17.26106 [NCS:480-70929]
+[17:41:37.6812335] [Info   : Unity Log] Mouth dog targetPos 2: (74.16, 15.00, -60.82) [NCS:480-70929]
+[17:41:37.6812335] [Info   : Unity Log] Dog lastheardnoisePosition: (74.16, 15.00, -60.82) [NCS:480-70929]
+[17:41:37.9953103] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:38.5752923] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:38.5978339] [Debug  :Enemy Sound Fixes] Eyeless dog #-2138954: Cached 0.9180308x voice pitch (kill animation will start)
+[17:41:38.5978339] [Warning:Enemy Sound Fixes] Eyeless dog #-2138954: Tried to initiate kill animation before ending previous kill animation
+[17:41:38.5978339] [Info   : Unity Log] Kill player rpc
+[17:41:38.5978339] [Debug  :   Coroner] Querying target player parameters pre-death...
+[17:41:38.5978339] [Debug  :   Coroner] Query successful!True
+[17:41:38.5978339] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.5993367] [Info   : Unity Log] killing player A
+[17:41:38.5993367] [Info   : Unity Log] killing player B
+[17:41:38.6003409] [Debug  :   Coroner] Player is dying! Unknown precise cause of death in final hook (Mauling)...
+[17:41:38.6023402] [Debug  : LethalMin] Yellow Pikmin_iTSzvu7: Setting to idle on local client
+[17:41:38.6023402] [Debug  : LethalMin] Yellow Pikmin_iTSzvu7: Removed Leader
+[17:41:38.6023402] [Info   : Unity Log] KILL LOCAL PLAYER!
+[17:41:38.6053408] [Info   : Unity Log] Body spawned with id 0: PlayerRagdoll(Clone)
+[17:41:38.6053408] [Warning: Unity Log] Setting linear velocity of a kinematic body is not supported.
+[17:41:38.6068444] [Info   : Unity Log] Running kill player function for LOCAL client, player object: Player
+[17:41:38.6093636] [Debug  :ainavt.lc.lethalconfig] Registered config "Matty's Fixes/Vanilla/Body"
+[17:41:38.6093636] [Debug  : LethalMin] IsClientRpcPrefixValid (No): RpcExecStage is Send, IsClient: True, IsHost: True KillPlayerClientRpcPrefix
+[17:41:38.6103630] [Debug  : LethalMin] IsClientRpcPrefixValid (Yes): RpcExecStage is Execute, IsClient: True, IsHost: True KillPlayerClientRpcPrefix
+[17:41:38.6103630] [Info   : Unity Log] A player died. player object: Player
+[17:41:38.6133630] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[17:41:38.6143632] [Info   : Unity Log] Switch camera to 'SpectateCamera'
+[17:41:38.6143632] [Info   : Unity Log] Override drop items : False; overridedontspawnbody: False
+[17:41:38.6143632] [Info   : Unity Log] DropAllHeldItems called on player 'MasaeAhmya'; itemsFall: True; disconnecting: False; ItemSlots length: 11; isHoldingObject: False
+[17:41:38.6143632] [Info   : Unity Log] DropAllHeldItems; player pos: (72.36, 15.00, -61.81)
+[17:41:38.6143632] [Info   : Unity Log] Item slot #0 null?: False
+[17:41:38.6143632] [Info   : Unity Log] Setting DropHeldItem on item #0: 'Detonator(Clone)
+[17:41:38.6143632] [Info   : Unity Log] Drop item 'Detonator(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[17:41:38.6153623] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[17:41:38.6153623] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:41:38.6153623] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:41:38.6153623] [Info   : Unity Log] DropHeldItem A; placeObject:False (89.90, 9.25, -46.18); item parent: Props (UnityEngine.Transform); (89.90, 9.25, -46.18); (72.47, 16.86, -62.65)
+[17:41:38.6153623] [Debug  : LightsOut] DiscardItem Remote Detonator
+[17:41:38.6153623] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:41:38.6153623] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:41:38.6153623] [Info   : Unity Log] Item slot #1 null?: False
+[17:41:38.6153623] [Info   : Unity Log] Setting DropHeldItem on item #1: 'FishTestProp(Clone)
+[17:41:38.6153623] [Info   : Unity Log] Drop item 'FishTestProp(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[17:41:38.6153623] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[17:41:38.6153623] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:41:38.6153623] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:41:38.6153623] [Info   : Unity Log] DropHeldItem A; placeObject:False (89.75, 9.49, -45.96); item parent: Props (UnityEngine.Transform); (89.75, 9.49, -45.96); (72.31, 17.10, -62.43)
+[17:41:38.6153623] [Debug  : LightsOut] DiscardItem Plastic fish
+[17:41:38.6153623] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:41:38.6153623] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:41:38.6153623] [Info   : Unity Log] Item slot #2 null?: True
+[17:41:38.6153623] [Info   : Unity Log] Item slot #3 null?: True
+[17:41:38.6153623] [Info   : Unity Log] Item slot #4 null?: False
+[17:41:38.6153623] [Info   : Unity Log] Setting DropHeldItem on item #4: 'FlashlightItem(Clone)
+[17:41:38.6153623] [Info   : Unity Log] Drop item 'FlashlightItem(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[17:41:38.6153623] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[17:41:38.6153623] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:41:38.6153623] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:41:38.6153623] [Info   : Unity Log] DropHeldItem A; placeObject:False (89.59, 9.63, -45.37); item parent: Props (UnityEngine.Transform); (89.59, 9.63, -45.37); (72.15, 17.24, -61.84)
+[17:41:38.6153623] [Debug  : LightsOut] DiscardItem Pro-flashlight
+[17:41:38.6163624] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:41:38.6163624] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:41:38.6163624] [Info   : Unity Log] Item slot #5 null?: True
+[17:41:38.6163624] [Info   : Unity Log] Item slot #6 null?: True
+[17:41:38.6163624] [Info   : Unity Log] Item slot #7 null?: True
+[17:41:38.6163624] [Info   : Unity Log] Item slot #8 null?: True
+[17:41:38.6163624] [Info   : Unity Log] Item slot #9 null?: True
+[17:41:38.6163624] [Info   : Unity Log] Item slot #10 null?: False
+[17:41:38.6163624] [Info   : Unity Log] Setting DropHeldItem on item #10: 'Key(Clone)
+[17:41:38.6163624] [Info   : Unity Log] Drop item 'Key(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[17:41:38.6168663] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[17:41:38.6168663] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:41:38.6168663] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:41:38.6168663] [Info   : Unity Log] DropHeldItem A; placeObject:False (89.82, 9.45, -46.12); item parent: Props (UnityEngine.Transform); (89.82, 9.45, -46.12); (72.38, 17.06, -62.59)
+[17:41:38.6168663] [Debug  : LightsOut] DiscardItem Key
+[17:41:38.6168663] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:41:38.6168663] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:41:38.6168663] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[17:41:38.6178714] [Info   : Unity Log] PlayerScript set for body with id 0 PlayerRagdoll(Clone)
+[17:41:38.6193766] [Debug  :Buttery Fixes] Badges added to player corpse
+[17:41:38.6193766] [Debug  :Matty's Fixes] Vanilla/Body(636) needs to compute vertical offset - scheduled
+[17:41:38.6193766] [Info   : LethalMin] Creating PikminItemNode for RagdollGrabbableObject(Clone) at (-17.22, 9.55, -30.56)...
+[17:41:38.6193766] [Debug  : LethalMin] Initializing PikminItem PikminItemNode(Clone) with item PikminItemNode(Clone) (True)
+[17:41:38.6193766] [Info   : LethalMin] PikminItem PikminItemNode(Clone) has no carry strength set, setting to default
+[17:41:38.6193766] [Debug  : LethalMin] Calculated weight for Body: 11 lb, Devided weight: 4.4 lb
+[17:41:38.6193766] [Debug  : LethalMin] A True, B True rename reasons
+[17:41:38.6193766] [Debug  : LethalMin] (Body (PikminItem Node)) Colider: RagdollGrabbableObject(Clone) (UnityEngine.BoxCollider)
+[17:41:38.6193766] [Debug  : LethalMin] (Body (PikminItem Node)) Center: (-17.22, 9.55, -30.56)
+[17:41:38.6454203] [Info   : Unity Log] !!!! DISABLING CAMERA FOR PLAYER: Player
+[17:41:38.6454203] [Info   : Unity Log] !!!! connectedPlayersAmount: 0
+[17:41:38.6454203] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player has died
+[17:41:38.6554413] [Debug  : LethalMin] Animator Controller changed from metarig to metarigOtherPlayers
+[17:41:38.6554413] [Info   : LethalMin] Yellow Pikmin_iTSzvu7: Found item: Key(Clone)
+[17:41:38.6554413] [Info   : LethalMin] Yellow Pikmin_iTSzvu7: targeting item Key(Clone) at GrabPosition_0
+[17:41:38.6554413] [Info   : LethalMin] Yellow Pikmin_iTSzvu7: Setting current task to CarryItem
+[17:41:38.6569450] [Debug  : LethalMin] Creating counter for Body (PikminItem Node)
+[17:41:38.6634578] [Info   :LethalPerformance.Patcher] Saved 1 config(s)
+[17:41:38.6905133] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Insane to 6843
+[17:41:38.6905133] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryBad to 506
+[17:41:38.6905133] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Bad to 355
+[17:41:38.6905133] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Neutral to 1368
+[17:41:38.6905133] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Good to 1244
+[17:41:38.6905133] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryGood to 2737
+[17:41:38.6905133] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Rare to 27375
+[17:41:38.6905133] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Remove to 883
+[17:41:38.7106829] [Info   :BrutalCompanyMinusExtraReborn] Executing OnShipLeave for all events()
+[17:41:38.7126833] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:41:38.7126833] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:41:38.7146828] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:41:38.7146828] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:41:38.7146828] [Info   :BrutalCompanyMinusExtraReborn] Restoring un-modified level enemy spawns on current level.
+[17:41:38.7156822] [Info   : LethalMin] Game Ended, Deinitializing PikminManager
+[17:41:38.7156822] [Info   : LethalMin] Pikmin Yellow Pikmin_8LNgEB is outside and not dead/dying, checking if it can leave
+[17:41:38.7156822] [Info   : LethalMin] Yellow Pikmin_8LNgEB: Dropped item MouthDogBody(Clone)
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Removed Leader
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7156822] [Info   : LethalMin] Pikmin Yellow Pikmin_G5l3h is outside and not dead/dying, checking if it can leave
+[17:41:38.7156822] [Info   : LethalMin] Yellow Pikmin_G5l3h: Dropped item MouthDogBody(Clone)
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Removed Leader
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7156822] [Info   : LethalMin] Pikmin Yellow Pikmin_VhJAgo is outside and not dead/dying, checking if it can leave
+[17:41:38.7156822] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Dropped item MouthDogBody(Clone)
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Removed Leader
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7156822] [Info   : LethalMin] Pikmin Yellow Pikmin_khCd is outside and not dead/dying, checking if it can leave
+[17:41:38.7156822] [Info   : LethalMin] Yellow Pikmin_khCd: Dropped item MouthDogBody(Clone)
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_khCd: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_khCd: Removed Leader
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_khCd: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_khCd: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7156822] [Info   : LethalMin] Pikmin Yellow Pikmin_LuMKh is outside and not dead/dying, checking if it can leave
+[17:41:38.7156822] [Info   : LethalMin] Yellow Pikmin_LuMKh: Dropped item MouthDogBody(Clone)
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Removed Leader
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7156822] [Info   : LethalMin] Pikmin Yellow Pikmin_PerDu is outside and not dead/dying, checking if it can leave
+[17:41:38.7156822] [Info   : LethalMin] Yellow Pikmin_PerDu: Dropped item MouthDogBody(Clone)
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_PerDu: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_PerDu: Removed Leader
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_PerDu: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_PerDu: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7156822] [Info   : LethalMin] Pikmin Yellow Pikmin_ruCpzY is outside and not dead/dying, checking if it can leave
+[17:41:38.7156822] [Info   : LethalMin] Yellow Pikmin_ruCpzY: Dropped item MouthDogBody(Clone)
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Setting collision mode to 1
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Removed Leader
+[17:41:38.7156822] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_XYErHj is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_XYErHj: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_pxom is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_pxom: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_pxom: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_pxom: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_pxom: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_pxom: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_apYy5 is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_apYy5: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_apYy5: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_apYy5: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_apYy5: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_apYy5: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_3wnH is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_3wnH: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_3wnH: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_3wnH: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_3wnH: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_3wnH: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_2nE2lyy is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_2nE2lyy: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_Aq9v9 is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_Aq9v9: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_hcRGph is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_hcRGph: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_IkVZWQe is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_iTSzvu7 is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_iTSzvu7: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_iTSzvu7: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_iTSzvu7: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_4BXv3 is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_4BXv3: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_4BXv3: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_4BXv3: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_4BXv3: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_4BXv3: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_lMw922 is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_lMw922: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_lMw922: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_lMw922: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_lMw922: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_lMw922: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_6iu7kr is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_6iu7kr: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_6iu7kr: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_6iu7kr: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_6iu7kr: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_6iu7kr: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : LethalMin] Pikmin Yellow Pikmin_GOOb5H is outside and not dead/dying, checking if it can leave
+[17:41:38.7166825] [Info   : LethalMin] Yellow Pikmin_GOOb5H: Dropped item MouthDogBody(Clone)
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_GOOb5H: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_GOOb5H: Removed Leader
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_GOOb5H: Setting collision mode to 1
+[17:41:38.7166825] [Debug  : LethalMin] Yellow Pikmin_GOOb5H: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:41:38.7166825] [Info   : Unity Log] [F] The ship is leaving.................
+[17:41:38.7166825] [Info   :HerobrineMod] The ship is leaving.................
+[17:41:38.7267397] [Debug  :   Coroner] Eyeless Dog killed Player! Setting cause of death...
+[17:41:38.7267397] [Debug  :   Coroner] Serializing AdvancedCauseOfDeath(DeathEnemyEyelessDog) to DeathEnemyEyelessDog
+[17:41:38.7292472] [Debug  :   Coroner] Server received cause of death via RPC: (0, DeathEnemyEyelessDog)
+[17:41:38.7292472] [Debug  :   Coroner] Client received cause of death via RPC: (0, DeathEnemyEyelessDog)
+[17:41:38.7292472] [Debug  :   Coroner] Deserialized cause of death to AdvancedCauseOfDeath(DeathEnemyEyelessDog)
+[17:41:38.7292472] [Debug  :   Coroner] Player 0 has no custom cause of death stored! Returning null...
+[17:41:38.7292472] [Debug  :   Coroner] Storing cause of death DeathEnemyEyelessDog (overriding null) for player 0!
+[17:41:38.7292472] [Debug  :   Coroner] Player 0 has custom cause of death stored! DeathEnemyEyelessDog
+[17:41:38.7292472] [Warning:   Coroner] Player 0 already has a cause of death set (DeathEnemyEyelessDog), not overwriting it with DeathEnemyEyelessDog.
+[17:41:38.7292472] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.7302506] [Info   : Unity Log] Anomaly random yrotation farthest: 12
+[17:41:38.7302506] [Debug  :Matty's Fixes] Vanilla/Body(636) is computing vertical offset
+[17:41:38.7302506] [Debug  :Matty's Fixes] Vanilla/Body original offset is 0.3
+[17:41:38.7352513] [Warning: Unity Log] Setting linear velocity of a kinematic body is not supported.
+[17:41:38.7352513] [Warning: Unity Log] Setting angular velocity of a kinematic body is not supported.
+[17:41:38.7552858] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship has taken off
+[17:41:38.7552858] [Debug  :PizzaTowerEscapeMusic ScriptManager] Conditions for a script event have been met!
+ Script Event Type: StopMusic
+   Game Event Type: ShipTakeOff
+           Comment: StopMusic quand ShipTakeOff
+[17:41:38.7613019] [Info   : LethalMin] MouthDogBody(Clone) is not carrying enough pikmin and is dropping it
+[17:41:38.7633013] [Info   : LethalMin] Adjusted target floor position: (67.80, -9.75, -43.75)
+[17:41:38.7652999] [Info   : LethalMin] MouthDogBody(Clone) is dropping an item on local client
+[17:41:38.7652999] [Info   : LethalMin] PrimaryLeader: MasaeAhmya
+[17:41:38.7652999] [Info   : LethalMin] MouthDogBody(Clone) dropped an item on a non-physics region parent
+[17:41:38.7652999] [Info   : LethalMin] MouthDogBody(Clone) has cleared its route
+[17:41:38.7678079] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.7678079] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.7953511] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.7953511] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.8119492] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 0
+[17:41:38.8149495] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.8149495] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.8312718] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.8312718] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.8468818] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.8468818] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.8604078] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.8604078] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.8769373] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.8769373] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.8924667] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[17:41:38.8934657] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.8934657] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.9090026] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.9090026] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.9222323] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.9222323] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.9391464] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.9391464] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.9526959] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.9526959] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.9677077] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.9677077] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.9823129] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.9823129] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:38.9953262] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:38.9953262] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.0078507] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.0078507] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.0223745] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.0223745] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.0331979] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.0331979] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.0467166] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.0467166] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.0552446] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:39.0592566] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.0592566] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.0712759] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.0712759] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.0843294] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.0843294] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.0978507] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.0978507] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.1093684] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.1093684] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.1224511] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.1224511] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.1354689] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.1354689] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.1502124] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.1502124] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.1622267] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.1622267] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.1732386] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.1732386] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.1867566] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.1867566] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.1992794] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.1992794] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.2102991] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.2102991] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.2248255] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.2248255] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.2393491] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.2393491] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.2513958] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.2513958] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.2634132] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.2634132] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.2749331] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.2749331] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.2879537] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.2879537] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.3024832] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.3024832] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.3145045] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.3145045] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.3275288] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.3275288] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.3400401] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.3400401] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.3513977] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.3513977] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.3644146] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.3644146] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.3793308] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.3803305] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.3913471] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.3913471] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.4043642] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.4043642] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.4173861] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.4173861] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.4280154] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.4280154] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.4445376] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.4445376] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.4570753] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.4570753] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.4675854] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.4675854] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.4811060] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.4811060] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.4921424] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.4921424] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.5053535] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.5053535] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.5173460] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.5173460] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.5278641] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.5278641] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.5413894] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.5413894] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.5519566] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.5519566] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.5644797] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.5644797] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.5764950] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.5764950] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.5870152] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.5870152] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.5995395] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.5995395] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.6100526] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.6100526] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.6250683] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.6250683] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.6381700] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.6381700] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.6511868] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.6511868] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.6642027] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.6642027] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.6752196] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.6752196] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.6877413] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.6877413] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.6992618] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.6992618] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.7127913] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.7127913] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.7269531] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.7269531] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.7394800] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.7394800] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.7535031] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.7535031] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.7655151] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.7655151] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.7780416] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.7780416] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.7910560] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.7910560] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.8051702] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.8051702] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.8203457] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.8203457] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.8333956] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.8333956] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.8454152] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.8454152] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.8614540] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.8614540] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.8734688] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.8734688] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.8854906] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.8854906] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.8980148] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.8980148] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.9105380] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.9105380] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.9230586] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.9230586] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.9350812] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.9350812] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.9508280] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.9508280] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.9653543] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.9653543] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.9768746] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.9768746] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:39.9911047] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:39.9911047] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.0032806] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.0032806] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.0148078] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.0148078] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.0268190] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.0268190] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.0394209] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.0394209] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.0504453] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.0504453] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.0614628] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.0614628] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.0724777] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.0724777] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.0845006] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.0845006] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.0970185] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.0970185] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.1080415] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.1080415] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.1200650] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.1200650] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.1200650] [Info   : Unity Log] SET SPECTATED PLAYER EFFECTS; True
+[17:41:40.1200650] [Info   : Unity Log] Enable sun direct light
+[17:41:40.1200650] [Info   : Unity Log] All players dead; set reverb to preset #3
+[17:41:40.1312467] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.1312467] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.1442650] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.1442650] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.1552795] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.1552795] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.1678032] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.1678032] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.1813260] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.1813260] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.1933457] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.1933457] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.2053619] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.2053619] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.2179361] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.2179361] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.2279553] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.2279553] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.2429811] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.2429811] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.2545001] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.2545001] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.2670219] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.2670219] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.2780420] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.2780420] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.2891420] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.2891420] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.3011518] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.3011518] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.3122801] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.3122801] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.3268167] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.3268167] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.3479243] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.3479243] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.3624530] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.3624530] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.3779794] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.3779794] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.3930586] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.3930586] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.4078070] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.4078070] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.4224738] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.4224738] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.4359946] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.4359946] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.4518488] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.4518488] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.4667570] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.4667570] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.4792842] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.4792842] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.4933870] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.4933870] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.5079138] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.5079138] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.5224898] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.5224898] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.5345032] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.5345032] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.5477482] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.5477482] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.5613960] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.5613960] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.5724144] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.5724144] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.5869408] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.5869408] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.6002686] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.6002686] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.6132834] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.6132834] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.6270635] [Warning:   Coroner] Could not access dying player: Player already had a precise cause of death!
+[17:41:40.6270635] [Debug  :   Coroner] Post step action done: CauseOfDeathPatchState(0:True, False==false?)
+[17:41:40.6367550] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:40.7435202] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:40.9069000] [Info   :GoldenKitten.FairAI] Turret: Detected enemy 'Aloe', entering charging mode.
+[17:41:40.9843274] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:41.1223716] [Info   : Unity Log] Is in elevator D?: False
+[17:41:41.6493976] [Debug  :Spawn Cycle Fixes] Enemy "RadMech" has no nests present on map
+[17:41:41.6493976] [Debug  :Spawn Cycle Fixes] Enemy "RadMech" ignored, as natural spawns are still not finished
+[17:41:41.6579146] [Info   : Unity Log] Spawned enemy: MouthDog
+[17:41:41.6624218] [Debug  :Spawn Cycle Fixes] Enemy "RadMech" has no nests present on map
+[17:41:41.6624218] [Debug  :Spawn Cycle Fixes] Enemy "RadMech" ignored, as natural spawns are still not finished
+[17:41:41.6669257] [Info   : Unity Log] Spawned enemy: MouthDog
+[17:41:41.6669257] [Info   : Unity Log] Could not spawn more enemies; vents #: 5. CannotSpawnMoreInsideEnemies: True
+[17:41:41.6794531] [Debug  :Enemy Sound Fixes] Eyeless dog: Reroll voice pitch (seeded random)
+[17:41:41.6794531] [Info   :qwbarch.Mirage] MouthDogAI(ddf880a8-c601-437a-b0d4-e78b0bb8d85e) - Mimicking player #0
+[17:41:41.6944748] [Debug  :Enemy Sound Fixes] Eyeless dog: Reroll voice pitch (seeded random)
+[17:41:41.6954764] [Info   :qwbarch.Mirage] MouthDogAI(9ce405bf-29cf-4072-b0bc-1c96c182ab66) - Mimicking player #0
+[17:41:41.8055322] [Info   : Unity Log] Threat type : EyelessDog; threat level: 4 ; with distance: 0.3302063 [NCS:600-71235]
+[17:41:42.2244467] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:41:42.2454787] [Info   : Unity Log] Leaving current lobby
+[17:41:42.2469816] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[17:41:42.2750886] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[17:41:42.2750886] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[17:41:42.2750886] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[17:41:42.2750886] [Info   :Rolling Giant] Resetting all rolling giants!
+[17:41:42.2750886] [Message:Rolling Giant] Reverting sync
+[17:41:42.2770891] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[17:41:42.2770891] [Debug  :MrHat.BasedItemSaving] Saved 26 exact item poses
+[17:41:42.2783504] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[17:41:42.2793484] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[17:41:42.2803479] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[17:41:42.3143946] [Info   :LethalPerformance] Saved 2 save(s)
+[17:41:42.3244573] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[17:41:42.3625270] [Debug  : LethalMin] Yellow Pikmin_GOOb5H: Removed Leader
+[17:41:42.3635280] [Debug  : LethalMin] Yellow Pikmin_6iu7kr: Removed Leader
+[17:41:42.3635280] [Debug  : LethalMin] Yellow Pikmin_lMw922: Removed Leader
+[17:41:42.3635280] [Debug  : LethalMin] Yellow Pikmin_4BXv3: Removed Leader
+[17:41:42.3635280] [Debug  : LethalMin] Yellow Pikmin_iTSzvu7: Removed Leader
+[17:41:42.3645285] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Removed Leader
+[17:41:42.3645285] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Removed Leader
+[17:41:42.3645285] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Removed Leader
+[17:41:42.3645285] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Removed Leader
+[17:41:42.3645285] [Debug  : LethalMin] Yellow Pikmin_3wnH: Removed Leader
+[17:41:42.3655271] [Debug  : LethalMin] Yellow Pikmin_apYy5: Removed Leader
+[17:41:42.3670314] [Debug  : LethalMin] Yellow Pikmin_pxom: Removed Leader
+[17:41:42.3670314] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Removed Leader
+[17:41:42.3670314] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Removed Leader
+[17:41:42.3680364] [Debug  : LethalMin] Yellow Pikmin_PerDu: Removed Leader
+[17:41:42.3680364] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Removed Leader
+[17:41:42.3680364] [Debug  : LethalMin] Yellow Pikmin_khCd: Removed Leader
+[17:41:42.3680364] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Removed Leader
+[17:41:42.3680364] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Removed Leader
+[17:41:42.3680364] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Removed Leader
+[17:41:42.3695397] [Info   : LethalMin] White Pikmin_YBJgMQ: Removing current task
+[17:41:42.3695397] [Debug  : LethalMin] White Pikmin_YBJgMQ: Removed Leader
+[17:41:42.3695397] [Info   : LethalMin] Purple Pikmin_FU5E: Removing current task
+[17:41:42.3695397] [Debug  : LethalMin] Purple Pikmin_FU5E: Removed Leader
+[17:41:42.3695397] [Debug  : LethalMin] White Pikmin_xmsmcW: Removed Leader
+[17:41:42.3695397] [Debug  : LethalMin] Purple Pikmin_f5fK: Removed Leader
+[17:41:42.3695397] [Info   : LethalMin] White Pikmin_NOSsrd: Removing current task
+[17:41:42.3695397] [Debug  : LethalMin] White Pikmin_NOSsrd: Removed Leader
+[17:41:42.3705456] [Info   : LethalMin] White Pikmin_5gEQ: Removing current task
+[17:41:42.3705456] [Debug  : LethalMin] White Pikmin_5gEQ: Removed Leader
+[17:41:42.3835627] [Info   : LethalMin] ShipOnion: saved 38 pikmin to disk on despawn.
+[17:41:42.4131898] [Info   :LobbyControl] 0 disconnected
+[17:41:42.4141891] [Info   : Unity Log] Disconnect callback called
+[17:41:42.4141891] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[17:41:42.4141891] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[17:41:42.4141891] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[17:41:42.4182150] [Debug  :Starlancer AI Fix] MouthDog(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 7
+[17:41:42.4182150] [Debug  :Starlancer AI Fix] Removing MouthDog(Clone)'s power (2) from the RoundManager; 
+Current exterior power level is 5
+[17:41:42.4237251] [Debug  :Starlancer AI Fix] MouthDog(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 5
+[17:41:42.4237251] [Debug  :Starlancer AI Fix] Removing MouthDog(Clone)'s power (2) from the RoundManager; 
+Current exterior power level is 3
+[17:41:42.4247252] [Debug  :Starlancer AI Fix] MouthDog(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 3
+[17:41:42.4247252] [Debug  :Starlancer AI Fix] Removing MouthDog(Clone)'s power (2) from the RoundManager; 
+Current exterior power level is 1
+[17:41:42.4247252] [Debug  :Enemy Sound Fixes] Eyeless dog #-2138954: Died mid kill animation (clean up cached reference)
+[17:41:42.4257249] [Debug  :Starlancer AI Fix] BaboonHawkEnemy(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 1
+[17:41:42.4257249] [Debug  :Starlancer AI Fix] Removing BaboonHawkEnemy(Clone)'s power (0.5) from the RoundManager; 
+Current exterior power level is 0.5
+[17:41:42.4267248] [Debug  :Starlancer AI Fix] BaboonHawkEnemy(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 0.5
+[17:41:42.4267248] [Debug  :Starlancer AI Fix] Removing BaboonHawkEnemy(Clone)'s power (0.5) from the RoundManager; 
+Current exterior power level is 0
+[17:41:42.4292780] [Debug  :Starlancer AI Fix] Blob(Clone) from the interior enemy list has died; 
+Previous interior power level is 20
+[17:41:42.4292780] [Debug  :Starlancer AI Fix] Removing Blob(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 19
+[17:41:42.4292780] [Debug  :Starlancer AI Fix] JesterEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 19
+[17:41:42.4302818] [Debug  :Starlancer AI Fix] Removing JesterEnemy(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 16
+[17:41:42.4302818] [Debug  :Starlancer AI Fix] Crawler(Clone) from the interior enemy list has died; 
+Previous interior power level is 16
+[17:41:42.4302818] [Debug  :Starlancer AI Fix] Removing Crawler(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 13
+[17:41:42.4302818] [Debug  :Starlancer AI Fix] ButlerEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 13
+[17:41:42.4302818] [Debug  :Starlancer AI Fix] Removing ButlerEnemy(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 11
+[17:41:42.4312824] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 11
+[17:41:42.4312824] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 10
+[17:41:42.4352816] [Debug  :   Coroner] Handling Masked Player death...
+[17:41:42.4367867] [Debug  :   Coroner] Handling Masked Player death...
+[17:41:42.4377907] [Debug  :Starlancer AI Fix] menstalker_prefab(Clone) from the interior enemy list has died; 
+Previous interior power level is 9
+[17:41:42.4377907] [Debug  :Starlancer AI Fix] Removing menstalker_prefab(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 6
+[17:41:42.4377907] [Debug  :Starlancer AI Fix] Blob(Clone) from the interior enemy list has died; 
+Previous interior power level is 6
+[17:41:42.4377907] [Debug  :Starlancer AI Fix] Removing Blob(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 5
+[17:41:42.4392933] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 5
+[17:41:42.4392933] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 4
+[17:41:42.4402984] [Debug  :Starlancer AI Fix] default_snail(Clone) from the interior enemy list has died; 
+Previous interior power level is 4
+[17:41:42.4402984] [Debug  :Starlancer AI Fix] Removing default_snail(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 3
+[17:41:42.4402984] [Debug  :Starlancer AI Fix] AloeBracken(Clone) from the interior enemy list has died; 
+Previous interior power level is 3
+[17:41:42.4412989] [Debug  :Starlancer AI Fix] Removing AloeBracken(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 2
+[17:41:42.4412989] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 2
+[17:41:42.4412989] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4422994] [Debug  :Starlancer AI Fix] Yellow Pikmin_GOOb5H from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4422994] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_GOOb5H's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4432990] [Debug  :Starlancer AI Fix] Yellow Pikmin_6iu7kr from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4432990] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_6iu7kr's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4432990] [Debug  :Starlancer AI Fix] Yellow Pikmin_lMw922 from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4432990] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_lMw922's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4432990] [Debug  :Starlancer AI Fix] Yellow Pikmin_4BXv3 from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4432990] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_4BXv3's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4442997] [Debug  :Starlancer AI Fix] Yellow Pikmin_iTSzvu7 from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4442997] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_iTSzvu7's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4442997] [Debug  :Starlancer AI Fix] Yellow Pikmin_IkVZWQe from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4442997] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_IkVZWQe's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4452985] [Debug  :Starlancer AI Fix] Yellow Pikmin_hcRGph from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4452985] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_hcRGph's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4452985] [Debug  :Starlancer AI Fix] Yellow Pikmin_Aq9v9 from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4452985] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_Aq9v9's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4452985] [Debug  :Starlancer AI Fix] Yellow Pikmin_2nE2lyy from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4452985] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_2nE2lyy's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4452985] [Debug  :Starlancer AI Fix] Yellow Pikmin_3wnH from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4452985] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_3wnH's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4468024] [Debug  :Starlancer AI Fix] Yellow Pikmin_apYy5 from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4468024] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_apYy5's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4468024] [Debug  :Starlancer AI Fix] Yellow Pikmin_pxom from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4468024] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_pxom's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4468024] [Debug  :Starlancer AI Fix] Yellow Pikmin_XYErHj from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4468024] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_XYErHj's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4478059] [Debug  :Starlancer AI Fix] Yellow Pikmin_ruCpzY from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4478059] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_ruCpzY's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4478059] [Debug  :Starlancer AI Fix] Yellow Pikmin_PerDu from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4478059] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_PerDu's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4478059] [Debug  :Starlancer AI Fix] Yellow Pikmin_LuMKh from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4478059] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_LuMKh's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4478059] [Debug  :Starlancer AI Fix] Yellow Pikmin_khCd from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4478059] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_khCd's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4493103] [Debug  :Starlancer AI Fix] Yellow Pikmin_VhJAgo from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4493103] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_VhJAgo's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4493103] [Debug  :Starlancer AI Fix] Yellow Pikmin_G5l3h from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4493103] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_G5l3h's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4493103] [Debug  :Starlancer AI Fix] Yellow Pikmin_8LNgEB from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4493103] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_8LNgEB's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4503129] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[17:41:42.4503129] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[17:41:42.4503129] [Info   : Unity Log] Interact trigger destroying! name: trigger (1)
+[17:41:42.4503129] [Info   : Unity Log] Interact trigger destroying! name: trigger (2)
+[17:41:42.4503129] [Info   : Unity Log] Interact trigger destroying! name: trigger (3)
+[17:41:42.4503129] [Info   : Unity Log] Interact trigger destroying! name: trigger (4)
+[17:41:42.4503129] [Debug  :Starlancer AI Fix] White Pikmin_YBJgMQ from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4503129] [Debug  :Starlancer AI Fix] Removing White Pikmin_YBJgMQ's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4513166] [Debug  :Starlancer AI Fix] Purple Pikmin_FU5E from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4513166] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_FU5E's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4513166] [Debug  :Starlancer AI Fix] White Pikmin_xmsmcW from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4513166] [Debug  :Starlancer AI Fix] Removing White Pikmin_xmsmcW's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4513166] [Debug  :Starlancer AI Fix] Purple Pikmin_f5fK from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4513166] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_f5fK's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4513166] [Debug  :Starlancer AI Fix] White Pikmin_NOSsrd from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4513166] [Debug  :Starlancer AI Fix] Removing White Pikmin_NOSsrd's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4523175] [Debug  :Starlancer AI Fix] White Pikmin_5gEQ from the interior enemy list has died; 
+Previous interior power level is 1
+[17:41:42.4523175] [Debug  :Starlancer AI Fix] Removing White Pikmin_5gEQ's power (0) from the RoundManager; 
+Current interior power level is 1
+[17:41:42.4523175] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4523175] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4523175] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4523175] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4523175] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4523175] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4523175] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4523175] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4523175] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4538212] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4538212] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4538212] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4538212] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4538212] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4538212] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4538212] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4538212] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4538212] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4538212] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4538212] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4548256] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4548256] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4548256] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4548256] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4548256] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4548256] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4548256] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4548256] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4548256] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4548256] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4558254] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4558254] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4558254] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4558254] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4558254] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4558254] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4558254] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4558254] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4568257] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4568257] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4568257] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4568257] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4573298] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4573298] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4573298] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4633335] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4633335] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4633335] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4633335] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4633335] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4633335] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4643338] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch1
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch2
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch3
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch4
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch5
+[17:41:42.4653337] [Info   : Unity Log] Interact trigger destroying! name: PowerBoxDoor
+[17:41:42.4668394] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4668394] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4678435] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Trigger (close)
+[17:41:42.4693477] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4703529] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4703529] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4703529] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4703529] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4703529] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4703529] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4713524] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4713524] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4713524] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4713524] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4713524] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4713524] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4723529] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4723529] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4723529] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4723529] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4733527] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.4733527] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4733527] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4733527] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4733527] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4733527] [Info   : Unity Log] Interact trigger destroying! name: Metal Crate(Clone)
+[17:41:42.4833654] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4833654] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[17:41:42.4833654] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4833654] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[17:41:42.4833654] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4833654] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[17:41:42.4833654] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4833654] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[17:41:42.4833654] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4843668] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[17:41:42.4843668] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4853652] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[17:41:42.4853652] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4853652] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[17:41:42.4853652] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4853652] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[17:41:42.4853652] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4853652] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[17:41:42.4853652] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4853652] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[17:41:42.4853652] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4853652] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[17:41:42.4853652] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:41:42.4853652] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[17:41:42.4853652] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[17:41:42.4853652] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:41:42.4853652] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4878721] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.4968829] [Info   : Unity Log] Resetting unlockables list!
+[17:41:42.4978863] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[17:41:42.4993902] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:41:42.5003958] [Info   : Unity Log] Scene manager is null
+[17:41:42.5199156] [Info   :LethalPerformance] Saved 1 save(s)
+[17:41:42.5634878] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:41:42.5654885] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[17:41:42.5759956] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[17:41:42.5982890] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:41:42.5982890] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:41:42.5982890] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[17:41:42.5982890] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[17:41:42.6032910] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.6083056] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:41:42.6103098] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:41:42.6103098] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:41:42.6103098] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:41:42.6103098] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[17:41:42.6103098] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[17:41:42.6103098] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[17:41:42.6103098] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[17:41:42.6448736] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:41:42.6448736] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[17:41:42.6448736] [Info   : Unity Log] Interact trigger destroying! name: stinger trigger random
+[17:41:42.6448736] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[17:41:42.6448736] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:41:42.6448736] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[17:41:42.6473778] [Info   : Unity Log] Interact trigger destroying! name: Dumb thing
+[17:41:42.6473778] [Info   : Unity Log] Interact trigger destroying! name: Tele in Trigger
+[17:41:42.6473778] [Info   : Unity Log] Interact trigger destroying! name: Tele in Trigger
+[17:41:42.7112338] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[17:41:42.7238775] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[17:41:42.7333819] [Info   :MoreCompany] LANMenu startLAN Patched
+[17:41:43.0303938] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[17:41:44.3489078] [Info   : Unity Log] Returning week num: 143
+[17:41:44.3489078] [Info   : Unity Log] week num: 143
+[17:41:44.3562248] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[17:41:44.3562248] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[17:41:44.3667389] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[17:41:44.3748790] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[17:41:44.3748790] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[17:41:44.3773803] [Info   :LethalPerformance] Saved 1 save(s)
+[17:41:45.6002081] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[17:41:45.6137107] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[17:41:50.0188263] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[17:41:50.0198266] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[17:41:50.0198266] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
