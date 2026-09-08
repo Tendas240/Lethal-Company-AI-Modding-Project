@@ -31,21 +31,21 @@ ACCEPTED BASELINE
 - acceptance: Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md
 
 LATEST BUILT ARTIFACT
-- S1.42AG — Mouth Dog Pikmin One-Way Protection
-- status: RUNTIME REJECTED PARTIAL FIX
-- SHA-256: 3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee
-- candidate record: Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md
+- S1.42AH — Mouth Dog Pikmin Dual Prevention
+- status: BUILD PASS RUNTIME VALIDATION OUTSTANDING
+- SHA-256: 06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e
+- candidate record: Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md
 
 CURRENT EXECUTION STATE
-- active candidate: NONE
-- runtime test outstanding: NO
+- active candidate: S1.42AH
+- runtime test outstanding: YES
 - successor armed: NO
 - BuildSpecs/current.json enabled: false
-- build controller id: IDLE_AFTER_MOUTHDOG_PATCH_SAFETY_REVIEW_AWAITING_SUCCESSOR_IMPLEMENTATION
-- RuntimeInbox/ACTIVE_BUILD.txt: S1.42AG
+- build controller id: IDLE_AFTER_S1.42AH_BUILD_AWAITING_RUNTIME_VALIDATION
+- RuntimeInbox/ACTIVE_BUILD.txt: S1.42AH
 
 EXACT NEXT ACTION
-In the next explicit project segment, implement the PASS-reviewed MouthDog successor as a one-variable risky-patch delta against accepted S1.42AF: retain the exact Priority.First LethalMin.MouthDogPikminEnemy.DoCheckInterval() prevention guard and add an exact Priority.First Vanilla MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI) prefix that skips only for a validated LethalMin.PikminAI collidedEnemy. Keep DetectNoise, MouthDog -> player, native Pikmin -> MouthDog attack/latch/death/unlatch/task ownership, packages and unrelated configs unchanged. Prepare/arm and build the successor repository-native only after the implementation contract validates; no runtime test is pending until a successful candidate artifact exists.
+Import S1.42AH with the canonical Gale v2.4 replacement helper and run the full-normal MouthDog/Pikmin regression gate from Current/139. Deliberately provoke MouthDog/Pikmin collision, explicitly command/throw Pikmin onto the MouthDog for reverse-direction latch/attack/death/unlatch/task cleanup, verify MouthDog -> player and non-Pikmin neighbor behavior, repeat protected collisions, then upload the complete fresh S1.42AH LogOutput.log with the build-specific uploader in Current/139. Do not accept S1.42AH from build/startup success alone.
 
 RUNTIME-TEST UX RULE
 Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
