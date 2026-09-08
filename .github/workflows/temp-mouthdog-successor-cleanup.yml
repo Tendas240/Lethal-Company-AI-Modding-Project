@@ -1,0 +1,20 @@
+name: Temporary MouthDog Successor Cleanup
+
+on:
+  push:
+    branches:
+      - "work/mouthdog-successor-implementation"
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: "work/mouthdog-successor-implementation"
+          fetch-depth: 0
+      - name: Normalize source delta
+        run: python3 RepositoryTools/temp_mouthdog_successor_cleanup.py
