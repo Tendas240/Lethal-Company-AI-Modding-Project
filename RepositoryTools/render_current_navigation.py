@@ -18,11 +18,6 @@ def status_text(value):
     return str(value).replace("_", " ")
 
 
-def opt_line(obj, key, label):
-    value = obj.get(key)
-    return f"- {label}: {value}\n" if value else ""
-
-
 def policy_path(s):
     return s["canonical_navigation"]["segmented_execution_policy"]
 
@@ -49,13 +44,12 @@ def runtime_note(s):
 
 
 def render_readme(s):
-    a, l, o, c = s["accepted_baseline"], s["latest_built_artifact"], s["overhaul"], s["controllers"]
     h = s["canonical_navigation"]["handover_preparation_prompt"]
     p = policy_path(s)
     return f"""{MARKER_MD}
 # Lethal Company AI Modding Project
 
-GitHub is the canonical Source of Truth and build/handover workspace for **Lethal Company V81**.
+GitHub is the canonical Source of Truth and repository-native build/handover workspace for **{s['game']}**.
 
 ## Fast takeover
 
@@ -63,63 +57,22 @@ Read, in order:
 
 1. `START_HERE_ChatGPT_Masterprompt.txt`
 2. `{p}`
-3. `Current/00_CURRENT_STATE.md`
+3. `Current/CURRENT_STATE.json`
 4. `Current/PROJECT_KNOWLEDGE_MAP.md`
 
-Every ChatGPT chat performing project work must follow `{p}`: execute one bounded segment, report the checkpoint, then stop and wait for explicit user continuation before the next non-final segment. Short atomic work may be one segment.
+Then route the request through the Knowledge Map and open only the canonical topic/evidence needed for that task. Do not read historical handovers or the full repository by default.
 
-Then open only the topic/evidence needed for the user's question. Do not read the entire historical repository by default.
+Human-readable live-state mirror: `Current/00_CURRENT_STATE.md`.
 
-Machine-readable live state: `Current/CURRENT_STATE.json`.
+Current-chat handover procedure: `{h}`. Every project task, including handover work, remains continuation-gated by `{p}`.
 
-Current-chat handover procedure: `{h}`. Handover work is also continuation-gated by `{p}`.
-
-## Current state
-
-Accepted baseline: **{a['build_id']} — {a['title']}**  
-Profile: `{a['profile']}`  
-SHA-256: `{a['sha256']}`
-
-Latest built artifact: **{l['build_id']} — {l['title']} — {status_text(l['status'])}**  
-SHA-256: `{l['sha256']}`
-
-Active candidate: **{active_candidate_id(s)}**. Runtime test outstanding: **{yes_no(s.get('runtime_test_outstanding'))}**. Build successor armed: **{yes_no(c.get('build_enabled'))}**.
-
-Exact next action: {s['next_action']}
-
-## Semantic navigation
-
-- ChatGPT segmented execution: `{p}`
-- Topic router: `Current/PROJECT_KNOWLEDGE_MAP.md` / `.json`
-- Chat handover procedure: `{h}`
-- Build history: `Current/BUILD_LINEAGE.md` / `.json`
-- Authority/history classification: `Current/DOCUMENT_AUTHORITY.md` / `.json`
-- Artifact/runtime-evidence integrity: `Current/ARTIFACT_EVIDENCE_INTEGRITY.md` / `.json`
-- Deferred work: `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`
-- Patch safety: `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`
-
-Historical handovers, candidate notes, rejection records and runtime decisions are preserved as evidence, but they do not override the current state/topic authority graph or a later explicit acceptance decision.
-
-## Repository overhaul
-
-Status: **{o['status']}**.  
-Verified pre-overhaul recovery repository: `{o['pre_overhaul_backup']}` at frozen source commit `{o['frozen_source_commit']}`.  
-Manifest: `{o['backup_manifest']}`.
-
-No local repository clone or local profile build should be required from the user while repository-native artifacts and automation are sufficient.
+No local repository clone or local profile build should be required from the user while repository-native infrastructure is sufficient.
 """
 
 
 def render_start(s):
-    a, l, c = s["accepted_baseline"], s["latest_built_artifact"], s["controllers"]
     h = s["canonical_navigation"]["handover_preparation_prompt"]
     p = policy_path(s)
-    latest_details = (
-        opt_line(l, "acceptance", "acceptance")
-        + opt_line(l, "candidate_record", "candidate record")
-        + opt_line(l, "original_rejection", "historical rejection")
-        + opt_line(l, "corrected_analysis", "corrected BCMER analysis")
-    ).rstrip()
     return f"""======================================================================
 CURRENT CANONICAL TAKEOVER — GENERATED FROM Current/CURRENT_STATE.json
 ======================================================================
@@ -131,68 +84,23 @@ Repository is the Source of Truth.
 
 READ FIRST:
 1. {p}
-2. Current/00_CURRENT_STATE.md
+2. Current/CURRENT_STATE.json
 3. Current/PROJECT_KNOWLEDGE_MAP.md
-4. Current/01_HANDOVER_CORE.md
 
 SEGMENTED EXECUTION RULE
-For every project request that requires work, follow {p}. Divide non-trivial work into bounded segments. Execute only the current segment, report Completed / Findings / Remaining / Next segment, then STOP and wait for the user's explicit continuation signal before beginning the next non-final segment. A genuinely short atomic task may be Segment 1/1. Never split an atomic change so the repository/controllers are knowingly left inconsistent.
+For every project request that requires work, follow {p}. Execute only the current segment, report Completed / Findings / Remaining / Next segment, then STOP and wait for the user's explicit continuation signal before beginning the next non-final segment. A genuinely short atomic task may be Segment 1/1. Never split an atomic change so the repository/controllers are knowingly left inconsistent.
 
-Then route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the relevant Knowledge topic plus linked evidence/config/code.
-Use Current/DOCUMENT_AUTHORITY.md when old files contain stale "current" wording.
-Use Current/BUILD_LINEAGE.md for "which build introduced/rejected/accepted this?" questions.
+ROUTING RULE
+Use Current/CURRENT_STATE.json for volatile live project state. Route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the registered canonical topic plus linked evidence/config/code needed for the task. Human-readable live-state mirror: Current/00_CURRENT_STATE.md; it is optional when the machine state already answers the task. Use Current/DOCUMENT_AUTHORITY.md only when current-vs-history precedence is actually in question. Use Current/BUILD_LINEAGE.md only for build-history questions.
 
 HANDOVER SIGNAL
-When the user explicitly requests transfer to a new ChatGPT chat, execute {h} under the same segmented execution policy. Verify the then-current main/CI/controllers and generate a fresh new-chat start prompt from repository authority instead of reusing stale conversation memory.
-
-ACCEPTED BASELINE
-- {a['build_id']} — {a['title']}
-- status: {status_text(a['status'])}
-- profile: {a['profile']}
-- SHA-256: {a['sha256']}
-- acceptance: {a['acceptance']}
-
-LATEST BUILT ARTIFACT
-- {l['build_id']} — {l['title']}
-- status: {status_text(l['status'])}
-- SHA-256: {l['sha256']}
-{latest_details}
-
-CURRENT EXECUTION STATE
-- active candidate: {active_candidate_id(s).upper()}
-- runtime test outstanding: {yes_no(s.get('runtime_test_outstanding')).upper()}
-- successor armed: {yes_no(c.get('build_enabled')).upper()}
-- BuildSpecs/current.json enabled: {str(c['build_enabled']).lower()}
-- build controller id: {c['build_id']}
-- RuntimeInbox/ACTIVE_BUILD.txt: {c['runtime_active_build']}
-
-EXACT NEXT ACTION
-{s['next_action']}
+When the user explicitly requests transfer to a new ChatGPT chat, execute {h} under the same segmented-execution policy. Verify then-current main/CI/controllers and generate a fresh compact new-chat prompt from repository authority instead of reusing stale conversation memory.
 
 RUNTIME-TEST UX RULE
-Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
-
-PERMANENT POLICY ROUTES
-- Segmented ChatGPT execution: {p}
-- Chat handover: {h}
-- BCMER: Knowledge/BCMER.md
-- Interiors/LLL: Knowledge/INTERIORS_AND_LLL.md
-- Enemy spawn baseline: Knowledge/ENEMY_SPAWN_BASELINE.md
-- Pikmin/enemy compatibility: Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md
-- Jetpack: Knowledge/JETPACK.md
-- CodeRebirth/item tuning: Knowledge/CODEREBIRTH.md and Knowledge/ITEM_TUNING.md
-- Monitor-only errors: Knowledge/MONITOR_ONLY_ERRORS.md
-- Black Mesa/Pikmin routing: Knowledge/BLACK_MESA_PIKMIN_ROUTING.md
-- Roadmap: Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md
-- Patch safety: Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+Whenever a future runtime test is outstanding, the response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
 
 HISTORY RULE
-Do not delete or reinterpret history to match current truth. Historical decisions remain evidence. A later explicit decision may supersede a historical lifecycle verdict while preserving the original record and its observations. Current/CURRENT_STATE.json plus the build-specific current decision record determine live status.
-
-REPOSITORY OVERHAUL
-Architecture status: {s['overhaul']['status']}
-Recovery repository: {s['overhaul']['pre_overhaul_backup']}
-Frozen source commit: {s['overhaul']['frozen_source_commit']}
+Historical decisions remain evidence but never override Current/CURRENT_STATE.json or the canonical topic graph merely because an old file says "current".
 
 Do not require the user to make a local clone/build while repository-native infrastructure is sufficient.
 """
@@ -265,7 +173,6 @@ Frozen source commit: `{s['overhaul']['frozen_source_commit']}`.
 
 
 def render_handover(s):
-    a, l, c = s["accepted_baseline"], s["latest_built_artifact"], s["controllers"]
     h = s["canonical_navigation"]["handover_preparation_prompt"]
     p = policy_path(s)
     return f"""{MARKER_MD}
@@ -275,48 +182,29 @@ def render_handover(s):
 **Machine state:** `Current/CURRENT_STATE.json`  
 **Project execution policy:** `{p}`  
 **Topic router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
-**Authority registry:** `Current/DOCUMENT_AUTHORITY.md`  
 **Current-chat handover procedure:** `{h}`  
 **Last-Validated:** {s['updated']}
 
 ## Fresh-session procedure
 
 1. Read `{p}` and follow it for every project task.
-2. Read `Current/00_CURRENT_STATE.md`.
+2. Read `Current/CURRENT_STATE.json`.
 3. Read `Current/PROJECT_KNOWLEDGE_MAP.md`.
-4. Route the user's question to the registered semantic topic.
-5. Open linked config/code/runtime/history only when needed.
-6. Use `Current/BUILD_LINEAGE.md` for build-history questions and `Current/DOCUMENT_AUTHORITY.md` when an older file says "current".
+4. Route the request to the registered canonical topic and open only linked evidence/config/code that is actually needed.
 
 For non-trivial work, execute one bounded segment per assistant turn, report the checkpoint, stop, and wait for explicit user continuation before the next segment. Short atomic work may be Segment 1/1; never create a knowingly inconsistent checkpoint.
 
-Do not require a local repository clone or local profile build while repository-native artifacts and automation are sufficient.
+Use `Current/DOCUMENT_AUTHORITY.md` only when old/current wording conflicts, and `Current/BUILD_LINEAGE.md` only for build-history questions. Human-readable state is available in `Current/00_CURRENT_STATE.md` but does not need to be reread when `Current/CURRENT_STATE.json` already answers the task.
 
 ## Future handover signal
 
-When the user later requests transfer to another ChatGPT chat, execute `{h}` under `{p}`. That procedure verifies the then-current repository/CI/controller state and generates the new chat's start prompt from current authority; do not reuse an old static handover snapshot.
+When the user later requests transfer to another ChatGPT chat, execute `{h}` under `{p}`. Verify then-current repository/CI/controller reality and generate the compact new-chat prompt from current authority; do not reuse an old static handover snapshot.
 
-## Current anchors
+## Runtime-test UX
 
-Accepted: **{a['build_id']} — {a['title']}**, SHA-256 `{a['sha256']}`.  
-Latest built: **{l['build_id']} — {l['title']}**, SHA-256 `{l['sha256']}`, status **{status_text(l['status'])}**.  
-Active candidate: **{active_candidate_id(s)}**. Runtime test: **{'pending' if s.get('runtime_test_outstanding') else 'none pending'}**. Successor: **{'armed' if c.get('build_enabled') else 'not armed'}**.
+Whenever a runtime test is outstanding, the test instructions must include the repository-driven Gale replacement/import one-liner when required and the exact build-specific one-line PowerShell log uploader. If a completed run still needs ingestion, provide the uploader for the runtime-active build without requiring another test run.
 
-Exact next action: {s['next_action']}
-
-## Mandatory runtime-test UX
-
-Whenever a future runtime test becomes outstanding, the response that explains what to test must include the repository-driven Gale replacement/import one-liner when required and the exact build-specific one-line PowerShell log uploader in the same response. If a run is already complete but its log is not yet ingested, provide the uploader for the runtime-active build without requiring another test run.
-
-## Historical authority warning
-
-Old final handovers, audits, candidate notes, rejection records, `Current/02_TECHNICAL_BASELINE.md`, and the old progress blocks in `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md` are retained history. They do not override the current-state/topic graph or a later explicit acceptance decision. See `Current/DOCUMENT_AUTHORITY.md` and `Current/REPOSITORY_MIGRATION_MANIFEST.md`.
-
-## Recovery
-
-Verified pre-overhaul repository: `{s['overhaul']['pre_overhaul_backup']}`  
-Frozen source commit: `{s['overhaul']['frozen_source_commit']}`  
-Manifest: `{s['overhaul']['backup_manifest']}`
+Do not require a local repository clone or local profile build while repository-native infrastructure is sufficient.
 """
 
 

@@ -9,67 +9,22 @@ Repository is the Source of Truth.
 
 READ FIRST:
 1. Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md
-2. Current/00_CURRENT_STATE.md
+2. Current/CURRENT_STATE.json
 3. Current/PROJECT_KNOWLEDGE_MAP.md
-4. Current/01_HANDOVER_CORE.md
 
 SEGMENTED EXECUTION RULE
-For every project request that requires work, follow Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md. Divide non-trivial work into bounded segments. Execute only the current segment, report Completed / Findings / Remaining / Next segment, then STOP and wait for the user's explicit continuation signal before beginning the next non-final segment. A genuinely short atomic task may be Segment 1/1. Never split an atomic change so the repository/controllers are knowingly left inconsistent.
+For every project request that requires work, follow Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md. Execute only the current segment, report Completed / Findings / Remaining / Next segment, then STOP and wait for the user's explicit continuation signal before beginning the next non-final segment. A genuinely short atomic task may be Segment 1/1. Never split an atomic change so the repository/controllers are knowingly left inconsistent.
 
-Then route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the relevant Knowledge topic plus linked evidence/config/code.
-Use Current/DOCUMENT_AUTHORITY.md when old files contain stale "current" wording.
-Use Current/BUILD_LINEAGE.md for "which build introduced/rejected/accepted this?" questions.
+ROUTING RULE
+Use Current/CURRENT_STATE.json for volatile live project state. Route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the registered canonical topic plus linked evidence/config/code needed for the task. Human-readable live-state mirror: Current/00_CURRENT_STATE.md; it is optional when the machine state already answers the task. Use Current/DOCUMENT_AUTHORITY.md only when current-vs-history precedence is actually in question. Use Current/BUILD_LINEAGE.md only for build-history questions.
 
 HANDOVER SIGNAL
-When the user explicitly requests transfer to a new ChatGPT chat, execute Current/HANDOVER_PREPARATION_PROMPT.md under the same segmented execution policy. Verify the then-current main/CI/controllers and generate a fresh new-chat start prompt from repository authority instead of reusing stale conversation memory.
-
-ACCEPTED BASELINE
-- S1.42AF — Path-Length-Safe Microwave Packaging
-- status: ACCEPTED FULL NORMAL STACK
-- profile: Profiles/LC V1 S1.42AF Microwave Fix.r2z
-- SHA-256: 6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0
-- acceptance: Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md
-
-LATEST BUILT ARTIFACT
-- S1.42AH — Mouth Dog Pikmin Dual Prevention
-- status: BUILD PASS EXTENDED PARTIAL RUNTIME PASS FINAL NEIGHBOR REMAINDER OUTSTANDING
-- SHA-256: 06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e
-- candidate record: Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md
-
-CURRENT EXECUTION STATE
-- active candidate: S1.42AH
-- runtime test outstanding: YES
-- successor armed: NO
-- BuildSpecs/current.json enabled: false
-- build controller id: IDLE_AFTER_S1.42AH_BUILD_AWAITING_RUNTIME_VALIDATION
-- RuntimeInbox/ACTIVE_BUILD.txt: S1.42AH
-
-EXACT NEXT ACTION
-Run only the final S1.42AH non-Pikmin neighbor remainder: deliberately exercise a MouthDog/Paw collision against a non-Pikmin EnemyAI and prove native Paw-initiated BiteKillEnemyAI / generic non-Pikmin collision behavior remains functional and is not filtered by the Pikmin-only prefix. Then upload the complete fresh S1.42AH LogOutput.log. Do not rebuild S1.42AH or repeat already-proven Pikmin -> MouthDog attack/death/cleanup, adapter protection, Vanilla Pikmin collision blocking, startup, or player-maul coverage. If this final required check passes, explicitly accept S1.42AH; if it fails, explicitly reject S1.42AH and return to an S1.42AF-derived follow-up.
+When the user explicitly requests transfer to a new ChatGPT chat, execute Current/HANDOVER_PREPARATION_PROMPT.md under the same segmented-execution policy. Verify then-current main/CI/controllers and generate a fresh compact new-chat prompt from repository authority instead of reusing stale conversation memory.
 
 RUNTIME-TEST UX RULE
-Whenever a future runtime test is outstanding, the same response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
-
-PERMANENT POLICY ROUTES
-- Segmented ChatGPT execution: Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md
-- Chat handover: Current/HANDOVER_PREPARATION_PROMPT.md
-- BCMER: Knowledge/BCMER.md
-- Interiors/LLL: Knowledge/INTERIORS_AND_LLL.md
-- Enemy spawn baseline: Knowledge/ENEMY_SPAWN_BASELINE.md
-- Pikmin/enemy compatibility: Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md
-- Jetpack: Knowledge/JETPACK.md
-- CodeRebirth/item tuning: Knowledge/CODEREBIRTH.md and Knowledge/ITEM_TUNING.md
-- Monitor-only errors: Knowledge/MONITOR_ONLY_ERRORS.md
-- Black Mesa/Pikmin routing: Knowledge/BLACK_MESA_PIKMIN_ROUTING.md
-- Roadmap: Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md
-- Patch safety: Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md
+Whenever a future runtime test is outstanding, the response that explains the test MUST include the repository-driven Gale replacement/import one-liner when required and the exact build-specific self-contained PowerShell one-line runtime-log uploader. A completed run may still require its build-specific uploader even when no new runtime test is outstanding; do not ask the user to rerun solely because evidence upload is pending.
 
 HISTORY RULE
-Do not delete or reinterpret history to match current truth. Historical decisions remain evidence. A later explicit decision may supersede a historical lifecycle verdict while preserving the original record and its observations. Current/CURRENT_STATE.json plus the build-specific current decision record determine live status.
-
-REPOSITORY OVERHAUL
-Architecture status: OVERHAUL_COMPLETE_VALIDATED
-Recovery repository: Tendas240/Lethal-Company-AI-Modding-Project-PreOverhaul-20260904
-Frozen source commit: 5dbd0e637a480d8591773e422bbca4b0654cad20
+Historical decisions remain evidence but never override Current/CURRENT_STATE.json or the canonical topic graph merely because an old file says "current".
 
 Do not require the user to make a local clone/build while repository-native infrastructure is sufficient.
