@@ -17,8 +17,23 @@ LIVE_DOCS = (
     "Knowledge/CURRENT_LIFECYCLE.md",
     "Current/PROJECT_KNOWLEDGE_MAP.md",
     "Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md",
-    "Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md",
     "Current/ARTIFACT_EVIDENCE_INTEGRITY.md",
+)
+WORK_QUEUE_REDIRECT = "Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md"
+WORK_QUEUE_REQUIRED_FRAGMENTS = (
+    "Current/CURRENT_STATE.json",
+    "runtime_test_outstanding",
+    "selected_scope",
+    "next_action",
+    "controllers",
+    "Current/PROJECT_KNOWLEDGE_MAP.md",
+    "Knowledge/CURRENT_LIFECYCLE.md",
+)
+WORK_QUEUE_FORBIDDEN_PATTERNS = (
+    r"<!--\s*LIVE_STATE:",
+    r"\bS1\.\d",
+    r"\bSHA-?256\b",
+    r"RuntimeInbox/ACTIVE_BUILD\.txt\s*=",
 )
 STALE_RUNTIME_PENDING_PHRASES = (
     "no runtime test is currently pending",
@@ -60,6 +75,20 @@ def expected_marker(state: dict[str, Any]) -> str:
     return f"<!-- LIVE_STATE: accepted={accepted} latest={latest} candidate={candidate_id} runtime_test_outstanding={pending} -->"
 
 
+def validate_work_queue_redirect(root: Path, errors: list[str]) -> None:
+    text = read_text(root, WORK_QUEUE_REDIRECT, errors)
+    if not text:
+        return
+    for fragment in WORK_QUEUE_REQUIRED_FRAGMENTS:
+        if fragment not in text:
+            errors.append(f"{WORK_QUEUE_REDIRECT}: missing routing fragment {fragment!r}")
+    for pattern in WORK_QUEUE_FORBIDDEN_PATTERNS:
+        if re.search(pattern, text, re.I):
+            errors.append(
+                f"{WORK_QUEUE_REDIRECT}: must remain state-neutral; forbidden live-state duplication matched {pattern!r}"
+            )
+
+
 def validate_live_state(root: Path) -> list[str]:
     errors: list[str] = []
     state = load_json(root, "Current/CURRENT_STATE.json", errors)
@@ -96,6 +125,8 @@ def validate_live_state(root: Path) -> list[str]:
                     errors.append(f"{rel}: stale runtime-pending contradiction: {phrase!r}")
             if latest_id.casefold() != "s1.42ag" and re.search(r"latest built artifact[^\n]*s1\.42ag", lowered):
                 errors.append(f"{rel}: still declares S1.42AG as latest built artifact")
+
+    validate_work_queue_redirect(root, errors)
 
     selected = state.get("selected_scope", {})
     if runtime_pending and candidate_id:
@@ -169,7 +200,7 @@ def main() -> int:
         print("ERROR:", error)
     if errors:
         return 1
-    print("PASS: current/live authorities agree semantically with CURRENT_STATE and pending-candidate evidence")
+    print("PASS: current/live authorities agree semantically with CURRENT_STATE; work queue remains state-neutral")
     return 0
 
 
