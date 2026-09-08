@@ -17,7 +17,7 @@ Runtime test outstanding: **yes**. S1.42AH is neither accepted nor rejected. `Bu
 
 ## First S1.42AH runtime run — already closed
 
-`Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md` records the first ingested S1.42AH run at `RuntimeEvidence/S1.42AH/20260908T162411Z/`, raw-log SHA-256 `1778ad5b572349cda261b3b848e0a697dfdb527a1e4be4ab72624a88f9c51ef3`.
+`Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md` records the first ingested S1.42AH run at `RuntimeEvidence/S1.42AH/20260908T162411Z/`; authoritative raw-log SHA-256 is in its `INDEX.json` and groups as `1778ad5b 572349cd a261b3b8 48e0a697 dfdb527a 1e4be4ab 72624a88 f9c51ef3`.
 
 Already positively evidenced:
 
