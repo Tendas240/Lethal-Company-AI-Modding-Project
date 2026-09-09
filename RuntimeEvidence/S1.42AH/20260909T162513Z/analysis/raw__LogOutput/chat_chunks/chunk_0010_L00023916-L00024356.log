@@ -1,0 +1,441 @@
+[16:24:27.8897811] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Good to 1244
+[16:24:27.8897811] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryGood to 2737
+[16:24:27.8897811] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Rare to 27375
+[16:24:27.8897811] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Remove to 883
+[16:24:27.9096543] [Info   :BrutalCompanyMinusExtraReborn] Executing OnShipLeave for all events()
+[16:24:27.9116542] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[16:24:27.9116542] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[16:24:27.9136539] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[16:24:27.9136539] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[16:24:27.9136539] [Info   :BrutalCompanyMinusExtraReborn] Restoring un-modified level enemy spawns on current level.
+[16:24:27.9151581] [Info   : LethalMin] Game Ended, Deinitializing PikminManager
+[16:24:27.9151581] [Info   : Unity Log] [F] The ship is leaving.................
+[16:24:27.9151581] [Info   :HerobrineMod] The ship is leaving.................
+[16:24:27.9541210] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship has taken off
+[16:24:27.9551236] [Debug  :PizzaTowerEscapeMusic ScriptManager] Conditions for a script event have been met!
+ Script Event Type: StopMusic
+   Game Event Type: ShipTakeOff
+           Comment: StopMusic quand ShipTakeOff
+[16:24:27.9822931] [Info   : Unity Log] Anomaly random yrotation farthest: -5
+[16:24:28.0266832] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 0
+[16:24:28.4101530] [Info   :GoldenKitten.FairAI] Turret: Detected enemy 'Bunker Spider', entering charging mode.
+[16:24:28.4814480] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[16:24:28.9768653] [Info   :GoldenKitten.FairAI] Turret: Detected enemy 'Butler', entering charging mode.
+[16:24:29.0939600] [Debug  :GeneralImprovements] Updated time display.
+[16:24:29.2099426] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[16:24:29.5076631] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[16:24:29.6157473] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[16:24:29.8031889] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-106938]
+[16:24:29.9310475] [Info   :GoldenKitten.FairAI] Turret: Lost LOS during charge wind-up, returning to detection.
+[16:24:30.4023328] [Info   : Unity Log] Is in elevator D?: True
+[16:24:30.4964920] [Info   :GoldenKitten.FairAI] Turret: Charge complete, opening fire.
+[16:24:30.5150459] [Info   : Unity Log] Butler: pinged attention to position
+[16:24:30.7278881] [Info   : Unity Log] Local client hit enemy ButlerEnemy(Clone) #36 with force of 1.
+[16:24:30.8240351] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[16:24:30.9249899] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[16:24:30.9249899] [Debug  : LightsOut] DiscardItem Shovel
+[16:24:30.9249899] [Debug  : LightsOut] Shovel is not a predefined type
+[16:24:30.9591278] [Info   : Unity Log] Local client hit enemy ButlerEnemy(Clone) #36 with force of 1.
+[16:24:31.1070113] [Info   :GeneralImprovements] Updated remaining scrap display.
+[16:24:31.1728007] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[16:24:31.1894281] [Info   : Unity Log] Local client hit enemy ButlerEnemy(Clone) #36 with force of 1.
+[16:24:31.1894281] [Info   : Unity Log] Kill enemy called! destroy: False
+[16:24:31.1894281] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[16:24:31.1894281] [Info   : Unity Log] Playing death sound for enemy: Butler
+[16:24:31.1894281] [Debug  :Starlancer AI Fix] ButlerEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 20
+[16:24:31.1894281] [Debug  :Starlancer AI Fix] Removing ButlerEnemy(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 18
+[16:24:31.1894281] [Debug  :GeneralImprovements] Updated danger level display.
+[16:24:31.2035289] [Info   : Unity Log] Kill enemy server rpc called with destroy False
+[16:24:31.2035289] [Info   : Unity Log] Kill enemy client rpc called; False
+[16:24:31.2035289] [Info   :GoldenKitten.FairAI] Turret: Target died, no new targets — returning to detection.
+[16:24:32.1251983] [Debug  :GeneralImprovements] Updated time display.
+[16:24:32.3286506] [Debug  :Matty's Fixes] Vanilla/Kitchen knife(629) needs to compute vertical offset - scheduled
+[16:24:32.3688716] [Debug  :GeneralImprovements] Updated danger level display.
+[16:24:32.3959107] [Debug  : LethalMin] Initializing PikminItem KnifeItem(Clone) with item KnifeItem(Clone) (True)
+[16:24:32.4180148] [Debug  :Enemy Sound Fixes] Butler: Stop buzzing (bugs are free)
+[16:24:32.4180148] [Debug  :Matty's Fixes] Vanilla/Kitchen knife(629) is computing vertical offset
+[16:24:32.4180148] [Debug  :Matty's Fixes] Vanilla/Kitchen knife new offset is 0.02288883
+[16:24:32.4180148] [Debug  :Matty's Fixes] Vanilla/Kitchen knife(629) position updated [(0.00, 0.00, 0.00)] -> [(0.00, -0.05, 0.00)]
+[16:24:32.5869904] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[16:24:32.8291572] [Info   :GoldenKitten.FairAI] Turret: Detected enemy 'Butler Bees', entering charging mode.
+[16:24:32.9750505] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-107119]
+[16:24:33.1685983] [Info   : Unity Log] Leaving current lobby
+[16:24:33.1685983] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[16:24:33.1961816] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[16:24:33.1961816] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[16:24:33.1961816] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[16:24:33.1961816] [Info   :Rolling Giant] Resetting all rolling giants!
+[16:24:33.1961816] [Message:Rolling Giant] Reverting sync
+[16:24:33.1961816] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[16:24:33.1961816] [Debug  :MrHat.BasedItemSaving] Saved 26 exact item poses
+[16:24:33.1961816] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[16:24:33.1961816] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[16:24:33.1961816] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[16:24:33.2323263] [Info   :LethalPerformance] Saved 2 save(s)
+[16:24:33.2418374] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[16:24:33.2763468] [Debug  : LethalMin] Bulbmin_mZ0A: Removed Leader
+[16:24:33.2763468] [Debug  : LethalMin] White Pikmin_UsnibT: Removed Leader
+[16:24:33.2773440] [Debug  : LethalMin] Bulbmin_BAZG: Removed Leader
+[16:24:33.2773440] [Info   : LethalMin] White Pikmin_tTMorZ: Removing current task
+[16:24:33.2773440] [Debug  : LethalMin] White Pikmin_tTMorZ: Removed Leader
+[16:24:33.2783432] [Debug  : LethalMin] Bulbmin_bm9M: Removed Leader
+[16:24:33.2783432] [Debug  : LethalMin] Purple Pikmin_J4wu6: Removed Leader
+[16:24:33.2783432] [Debug  : LethalMin] Bulbmin_1NiSEEL: Removed Leader
+[16:24:33.2894114] [Info   : LethalMin] ShipOnion: saved 38 pikmin to disk on despawn.
+[16:24:33.3179678] [Info   :LobbyControl] 0 disconnected
+[16:24:33.3179678] [Info   : Unity Log] Disconnect callback called
+[16:24:33.3179678] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[16:24:33.3179678] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[16:24:33.3179678] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[16:24:33.3194759] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[16:24:33.3214759] [Debug  :Starlancer AI Fix] ButlerBees(Clone) from the interior enemy list has died; 
+Previous interior power level is 18
+[16:24:33.3214759] [Debug  :Starlancer AI Fix] Removing ButlerBees(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 16
+[16:24:33.3214759] [Debug  :GeneralImprovements] Updated danger level display.
+[16:24:33.3234767] [Debug  :   Coroner] Handling Masked Player death...
+[16:24:33.3269840] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 15
+[16:24:33.3269840] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 14
+[16:24:33.3289883] [Debug  :Starlancer AI Fix] MouthDog(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 2
+[16:24:33.3289883] [Debug  :Starlancer AI Fix] Removing MouthDog(Clone)'s power (2) from the RoundManager; 
+Current exterior power level is 0
+[16:24:33.3329885] [Debug  :GeneralImprovements] Updated danger level display.
+[16:24:33.3339886] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 14
+[16:24:33.3339886] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 13
+[16:24:33.3349890] [Debug  :Starlancer AI Fix] ButlerEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 13
+[16:24:33.3349890] [Debug  :Starlancer AI Fix] Removing ButlerEnemy(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 11
+[16:24:33.3349890] [Debug  :Starlancer AI Fix] Blob(Clone) from the interior enemy list has died; 
+Previous interior power level is 11
+[16:24:33.3349890] [Debug  :Starlancer AI Fix] Removing Blob(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 10
+[16:24:33.3349890] [Debug  :Starlancer AI Fix] PufferEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 10
+[16:24:33.3349890] [Debug  :Starlancer AI Fix] Removing PufferEnemy(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 9
+[16:24:33.3363452] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 9
+[16:24:33.3363452] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 8
+[16:24:33.3373457] [Debug  :Starlancer AI Fix] HoarderBug(Clone) from the interior enemy list has died; 
+Previous interior power level is 8
+[16:24:33.3373457] [Debug  :Starlancer AI Fix] Removing HoarderBug(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 7
+[16:24:33.3393460] [Debug  :Starlancer AI Fix] SandSpider(Clone) from the interior enemy list has died; 
+Previous interior power level is 7
+[16:24:33.3393460] [Debug  :Starlancer AI Fix] Removing SandSpider(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 5
+[16:24:33.3393460] [Debug  :GeneralImprovements] Updated danger level display.
+[16:24:33.3393460] [Message:SpiderPositionFix] Cleared Bunker Spider #43's data
+[16:24:33.3403462] [Debug  :Starlancer AI Fix] SpringMan(Clone) from the interior enemy list has died; 
+Previous interior power level is 5
+[16:24:33.3403462] [Debug  :Starlancer AI Fix] Removing SpringMan(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 3
+[16:24:33.3413454] [Debug  :Starlancer AI Fix] Blob(Clone) from the interior enemy list has died; 
+Previous interior power level is 3
+[16:24:33.3413454] [Debug  :Starlancer AI Fix] Removing Blob(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 2
+[16:24:33.3423459] [Debug  :Starlancer AI Fix] Nancy(Clone) from the interior enemy list has died; 
+Previous interior power level is 2
+[16:24:33.3423459] [Debug  :Starlancer AI Fix] Removing Nancy(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 1
+[16:24:33.3423459] [Debug  :Starlancer AI Fix] ManorLord(Clone) from the interior enemy list has died; 
+Previous interior power level is 1
+[16:24:33.3423459] [Debug  :Starlancer AI Fix] Removing ManorLord(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3433453] [Debug  :Starlancer AI Fix] HoarderBug(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3433453] [Debug  :Starlancer AI Fix] Removing HoarderBug(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3433453] [Debug  :GeneralImprovements] Updated danger level display.
+[16:24:33.3463788] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[16:24:33.3463788] [Debug  :Starlancer AI Fix] Bulbmin_mZ0A from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3463788] [Debug  :Starlancer AI Fix] Removing Bulbmin_mZ0A's power (0) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3473788] [Debug  :Starlancer AI Fix] White Pikmin_UsnibT from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3473788] [Debug  :Starlancer AI Fix] Removing White Pikmin_UsnibT's power (0) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3473788] [Debug  :Starlancer AI Fix] Bulbmin_BAZG from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3473788] [Debug  :Starlancer AI Fix] Removing Bulbmin_BAZG's power (0) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3483796] [Debug  :Starlancer AI Fix] White Pikmin_tTMorZ from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3483796] [Debug  :Starlancer AI Fix] Removing White Pikmin_tTMorZ's power (0) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3483796] [Debug  :Starlancer AI Fix] Bulbmin_bm9M from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3483796] [Debug  :Starlancer AI Fix] Removing Bulbmin_bm9M's power (0) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3483796] [Debug  :Starlancer AI Fix] Purple Pikmin_J4wu6 from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3483796] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_J4wu6's power (0) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3493797] [Debug  :Starlancer AI Fix] Bulbmin_1NiSEEL from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3493797] [Debug  :Starlancer AI Fix] Removing Bulbmin_1NiSEEL's power (0) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3493797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3493797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3493797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3493797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3493797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3493797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3493797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3503790] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3503790] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3503790] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3503790] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3503790] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3503790] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3503790] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3503790] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3503790] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3503790] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3513797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3513797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3513797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3513797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3513797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3513797] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3523807] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3523807] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3523807] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3523807] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3523807] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3533796] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3533796] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3533796] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3533796] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3533796] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3533796] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3543803] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3543803] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3543803] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3543803] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3543803] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3543803] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3543803] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3553785] [Debug  :Starlancer AI Fix] HoarderBug(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3553785] [Debug  :Starlancer AI Fix] Removing HoarderBug(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3574502] [Debug  :Starlancer AI Fix] HoarderBug(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3574502] [Debug  :Starlancer AI Fix] Removing HoarderBug(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3594496] [Debug  :Starlancer AI Fix] NutcrackerEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3594496] [Debug  :Starlancer AI Fix] Removing NutcrackerEnemy(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3594496] [Debug  :Starlancer AI Fix] SandSpider(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[16:24:33.3594496] [Debug  :Starlancer AI Fix] Removing SandSpider(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 0
+[16:24:33.3594496] [Message:SpiderPositionFix] Cleared Bunker Spider #0's data
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch1
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch2
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch3
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch4
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch5
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: PowerBoxDoor
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3669587] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3684635] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3684635] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3684635] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3684635] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3684635] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3684635] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3694680] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3694680] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3694680] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.3694680] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3694680] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3694680] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3694680] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3694680] [Info   : Unity Log] Interact trigger destroying! name: Mimic Metal Crate(Clone)
+[16:24:33.3704675] [Info   : Unity Log] Interact trigger destroying! name: Metal Crate(Clone)
+[16:24:33.3704675] [Info   : Unity Log] Interact trigger destroying! name: Metal Crate(Clone)
+[16:24:33.3749724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3749724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[16:24:33.3749724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3749724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[16:24:33.3749724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3749724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[16:24:33.3749724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3749724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[16:24:33.3749724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3749724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[16:24:33.3749724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3749724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[16:24:33.3749724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3749724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[16:24:33.3749724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3749724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[16:24:33.3759769] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3759769] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3769767] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3769767] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3769767] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3769767] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3769767] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3769767] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3769767] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3769767] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3769767] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3769767] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:24:33.3769767] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[16:24:33.3769767] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[16:24:33.3955151] [Info   : Unity Log] Resetting unlockables list!
+[16:24:33.3955151] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[16:24:33.3955151] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[16:24:33.3955151] [Info   : Unity Log] Scene manager is null
+[16:24:33.4100573] [Info   :LethalPerformance] Saved 1 save(s)
+[16:24:33.4887753] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[16:24:33.4887753] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.4927764] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.4927764] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.4927764] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[16:24:33.4927764] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[16:24:33.5053055] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[16:24:33.5103130] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[16:24:33.5113138] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[16:24:33.5263877] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[16:24:33.5263877] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[16:24:33.5263877] [Info   : Unity Log] Interact trigger destroying! name: stinger trigger random
+[16:24:33.5263877] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[16:24:33.5263877] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.5263877] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.5263877] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.5273886] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.5283881] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[16:24:33.5283881] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[16:24:33.5293892] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (2)
+[16:24:33.5293892] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[16:24:33.5303892] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[16:24:33.5303892] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.5303892] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:24:33.5513022] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[16:24:33.5838530] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[16:24:33.5993954] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[16:24:33.6084344] [Info   :MoreCompany] LANMenu startLAN Patched
+[16:24:33.9541738] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[16:24:35.7821307] [Info   : Unity Log] Returning week num: 143
+[16:24:35.7821307] [Info   : Unity Log] week num: 143
+[16:24:35.7896438] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[16:24:35.7896438] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[16:24:35.8036700] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[16:24:35.8116820] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[16:24:35.8116820] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[16:24:35.8116820] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[16:24:35.8136834] [Info   :LethalPerformance] Saved 1 save(s)
+[16:24:37.4386098] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[16:24:37.4526145] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[16:24:38.4415408] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[16:24:38.4435439] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[16:24:38.4435439] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
