@@ -3,9 +3,9 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** accepted interaction ownership and permanent anti-regression rules  
 **Canonical-For:** `pikmin_enemy_compatibility`  
-**Evidence:** `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`, `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`, `Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md`, `Current/141_S1.42AH_RUNTIME_PARTIAL_VALIDATION_REVERSE_DIRECTION_ADAPTER.md`, `RuntimeEvidence/S1.42AH/20260908T162411Z/`, `RuntimeEvidence/S1.42AH/20260908T174352Z/`  
+**Evidence:** `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`, `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`, `Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md`, `Current/141_S1.42AH_RUNTIME_PARTIAL_VALIDATION_REVERSE_DIRECTION_ADAPTER.md`, `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`, `RuntimeEvidence/S1.42AH/20260909T162513Z/`  
 **Code:** `Patches/S139CompatibilityFixes/Plugin.cs`  
-**Last-Validated:** 2026-09-08
+**Last-Validated:** 2026-09-09
 
 ## Ownership principle
 
@@ -17,47 +17,82 @@ Native LethalMin owns normal Pikmin -> enemy combat, enemy death handling, latch
 - Thumper/Crawler retain their accepted compatibility behavior; Thumper Bite Limit remains 3 and Crawler remains available for Pikmin counterattack.
 - Puffer protection remains targeted rather than a broad enemy disable.
 
-## Mouth Dog / Eyeless Dog — S1.42AH active candidate
+## Mouth Dog / Eyeless Dog — S1.42AH accepted
 
-S1.42AF remains accepted. S1.42AG remains rejected partial-fix evidence. **S1.42AH is the built active runtime candidate; two ingested runs now form an extended positive partial pass, but S1.42AH is still neither accepted nor rejected.**
+**S1.42AH — Mouth Dog Pikmin Dual Prevention is ACCEPTED FULL NORMAL STACK.**
 
-S1.42AH retains `Priority.First` prevention on exact `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` and adds `Priority.First` prevention on exact `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` only when the supplied object is validated runtime `LethalMin.PikminAI`. The adapter stays enabled. `DetectNoise`, MouthDog -> player, non-Pikmin EnemyAI collisions and native Pikmin attack/latch/death/unlatch/task ownership remain outside the new patch boundary.
-
-Candidate: `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`  
-Latest partial runtime decision: `Current/141_S1.42AH_RUNTIME_PARTIAL_VALIDATION_REVERSE_DIRECTION_ADAPTER.md`  
-Latest runtime evidence: `RuntimeEvidence/S1.42AH/20260908T174352Z/`  
-Latest runtime log SHA-256: `6fca32623eb350c53b4f81c98ea3ef1218dee9a4256a4bb70a8950f1b3ab06a6`  
-Prior partial decision/evidence: `Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md` / `RuntimeEvidence/S1.42AH/20260908T162411Z/`  
+Profile: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`  
 Profile SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`  
-DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`
+Compatibility DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`  
+Acceptance: `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`  
+Final decisive runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`  
+Final raw-log SHA-256: `ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729`
 
-### Runtime coverage now proven
+S1.42AF is the accepted predecessor/rollback point. S1.42AG remains rejected historical partial-fix evidence.
 
-Across the first and second S1.42AH runs:
+### Accepted patch boundary
 
-- both intended patch boundaries install;
-- repeated real Vanilla MouthDog -> Pikmin collision blocks occur;
-- MouthDog -> player behavior remains functional;
-- explicitly thrown Pikmin latch onto the MouthDog, enter `AttackEnemy`, and damage it;
-- Pikmin combat kills the MouthDog;
-- native death cleanup sets attackers idle, removes their attack task/leader and unlatches them;
-- the dead MouthDog transitions into Pikmin corpse carrying;
-- the adapter prevention executes live before bite/grab mutation with no known harmful adapter mutation signature in the targeted interval;
-- ordinary MouthDog noise response remains available;
-- known project-local regression markers remain clean.
+S1.42AH retains `Priority.First` prevention on exact `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` and adds `Priority.First` prevention on exact `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` only when the supplied object is validated runtime `LethalMin.PikminAI`.
 
-### Final targeted remainder
+The collision prefix contract is exact:
 
-Only one adjacent contract still needs deliberate proof: **MouthDog/Paw -> non-Pikmin `EnemyAI` pass-through**. Deliberately exercise that interaction and prove native Paw-initiated `BiteKillEnemyAI` / generic non-Pikmin collision behavior remains functional and is not filtered by the Pikmin-only prefix.
+- `collidedEnemy == null` -> pass through;
+- unresolved Pikmin type -> pass through/fail-safe rather than broad blocking;
+- non-`LethalMin.PikminAI` `EnemyAI` -> pass through;
+- validated `LethalMin.PikminAI` -> skip only the Dog override before its generic enemy lunge/cooldown/`HitEnemy(2)` mutation.
 
-Do not repeat the already-proven Pikmin -> MouthDog attack/death/unlatch/task-cleanup or adapter-protection sequence solely to obtain that final neighboring evidence.
+The adapter stays enabled. Do **not** patch or suppress:
+
+- `MouthDogAI.DetectNoise(...)`;
+- `MouthDogAI.OnCollideWithPlayer(...)`;
+- base `EnemyAI.OnCollideWithEnemy(...)`;
+- `LethalMin.PikminEnemy` lifecycle;
+- native Pikmin attack/task/latch/death/carry lifecycle.
+
+### Accepted runtime coverage
+
+Across the targeted S1.42AH evidence:
+
+1. both intended patch boundaries install;
+2. repeated live Vanilla MouthDog -> Pikmin collision blocks occur;
+3. MouthDog -> player behavior remains functional, including mauling/death coverage;
+4. explicitly thrown Pikmin latch onto MouthDog, enter `AttackEnemy`, and repeatedly damage it;
+5. Pikmin combat kills MouthDog;
+6. native death cleanup sets attackers idle, removes attack task/leader and unlatches them;
+7. dead MouthDog body becomes a Pikmin item and native corpse carrying begins;
+8. adapter prevention executes before bite/grab mutation;
+9. ordinary MouthDog audible-noise response remains present;
+10. known project-local regression markers remain clean in the focused evidence;
+11. the final deliberate non-Pikmin neighbor run includes MouthDogs and a Redwood Titan, followed by normal Redwood Titan death while the collision guard remains Pikmin-only.
+
+The user directed the final decision to use only the last gameplay run of the final uploaded log. The user reported that a Mouth Dog appeared to kill the Redwood Titan; the log independently proves the relevant entities were present and the Redwood Titan reached the normal enemy-death path. The death line does not encode attacker identity, so do not misrepresent it as a per-hit attacker log.
+
+### Exact native neighbor semantics
+
+Exact Vanilla V81 source authority proves `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` calls:
+
+`collidedEnemy.HitEnemy(2, null, playHitSFX: true)`
+
+for the eligible non-same-type collision path, with lunge behavior when its state permits.
+
+Earlier current-state text used `BiteKillEnemyAI` as shorthand for the final neighbor check. That is not the exact method name exposed by the focused V81 source evidence. Future reasoning should use the exact **`OnCollideWithEnemy` -> `HitEnemy(2)`** contract.
+
+## Permanent MouthDog anti-regression rules
+
+- Never restore S1.42AG as a gameplay base.
+- Never disable the whole LethalMin MouthDog adapter merely to block MouthDog -> Pikmin behavior.
+- Never broaden the S1.42AH collision prefix from runtime `LethalMin.PikminAI` to arbitrary `EnemyAI`.
+- Preserve MouthDog -> player behavior and non-Pikmin `EnemyAI` pass-through.
+- Preserve native Pikmin -> MouthDog combat/death/unlatch/task/carry ownership.
+- A future change to either exact MouthDog hook requires a new patch-safety review and targeted regression evidence.
 
 ## Current lifecycle
 
-- accepted: S1.42AF;
-- latest built/active candidate: S1.42AH, extended partial runtime pass, final non-Pikmin neighbor remainder outstanding, not accepted;
-- runtime test pending: yes;
-- successor beyond S1.42AH: not armed.
+- accepted baseline: **S1.42AH**;
+- latest built artifact: **S1.42AH**;
+- active candidate: none;
+- runtime test pending: no;
+- next independent scope: BCMER ShyGuy interior-only correction under `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`.
 
 ## Patch safety
 
