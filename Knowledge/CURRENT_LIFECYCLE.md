@@ -42,6 +42,10 @@ This closes the final neighboring-path requirement under the permanent patch-saf
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AH` remains the runtime/evidence-attribution pointer.
 - No successor has yet been built or armed.
 
+## Canonical Gale workflow
+
+The current Gale active-profile replacement/import workflow remains the repository-driven **v2.4** path in `Knowledge/GALE_PROFILE_WORKFLOW.md`, implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`. Do not regress current lifecycle guidance to the older v2.2/v2.3 paths. When a future successor becomes ready for runtime testing, pair that canonical v2.4 launcher with the exact build-specific runtime-log uploader required by `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`.
+
 ## Exact next project action
 
 Prepare and arm a **single-variable BCMER/config successor from accepted S1.42AH** implementing only `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`:
