@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AF latest=S1.42AH candidate=S1.42AH runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AH candidate=none runtime_test_outstanding=false -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER  
@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`  
 **Current State:** `Current/00_CURRENT_STATE.md`  
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
-**Last-Validated:** 2026-09-08
+**Last-Validated:** 2026-09-09
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -34,15 +34,15 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 ## Current lifecycle anchor
 
-Accepted gameplay baseline: **S1.42AF — Path-Length-Safe Microwave Packaging**.
+Accepted gameplay baseline and latest built artifact: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
 
-Latest built artifact / active candidate: **S1.42AH — Mouth Dog Pikmin Dual Prevention — BUILD PASS / EXTENDED PARTIAL RUNTIME PASS / FINAL NON-PIKMIN NEIGHBOR REMAINDER OUTSTANDING / NOT ACCEPTED**.
+Acceptance: `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`. Final decisive runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`.
 
-Runtime test outstanding: **yes**. S1.42AH remains neither accepted nor rejected; `BuildSpecs/current.json` is disabled; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AH`; no successor is armed.
+Active candidate: **none**. Runtime test outstanding: **no**. `BuildSpecs/current.json` is disabled; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AH`; no successor is currently armed.
 
-`Current/140` proves first-run installation/collision/player preservation. `Current/141_S1.42AH_RUNTIME_PARTIAL_VALIDATION_REVERSE_DIRECTION_ADAPTER.md` advances the runtime gate by proving explicit native Pikmin -> MouthDog attack/death/unlatch/task cleanup, corpse carry, live adapter prevention, preserved noise response and clean known project regression markers.
+S1.42AH acceptance incorporates the earlier MouthDog/Pikmin targeted coverage plus the final deliberate non-Pikmin neighbor run. The exact current Vanilla V81 neighbor contract is `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` -> `collidedEnemy.HitEnemy(2, ...)`; earlier `BiteKillEnemyAI` wording was shorthand rather than the exact source method name.
 
-The exact next action is only the final **MouthDog/Paw -> non-Pikmin `EnemyAI` / native `BiteKillEnemyAI` pass-through** remainder documented in `Current/141`. Do not rebuild or repeat already-proven S1.42AH coverage first.
+The exact next action is to prepare the single-variable **BCMER ShyGuy interior-only correction** from accepted S1.42AH under `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`. No gameplay test is pending until that successor has been built and designated ready.
 
 ## Authority rule
 

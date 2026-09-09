@@ -4,15 +4,15 @@
 **Authority:** human build-history router; exact build evidence remains in candidate/acceptance/rejection/runtime records  
 **Canonical-For:** `build_lineage`  
 **Machine Mirror:** `Current/BUILD_LINEAGE.json`  
-**Last-Validated:** 2026-09-06
+**Last-Validated:** 2026-09-09
 
 ## Current lineage head
 
-- **Accepted gameplay baseline:** S1.42AF — Path-Length-Safe Microwave Packaging.
-- **Latest built artifact:** S1.42AH — Mouth Dog Pikmin Dual Prevention — **build pass / active runtime candidate / not accepted**.
-- **Active candidate:** S1.42AH.
-- **Accepted gameplay baseline:** S1.42AF remains unchanged until runtime acceptance.
-- **Next build:** none armed; runtime validation of S1.42AH is outstanding.
+- **Accepted gameplay baseline:** S1.42AH — Mouth Dog Pikmin Dual Prevention — **ACCEPTED FULL NORMAL STACK**.
+- **Latest built artifact:** S1.42AH.
+- **Active candidate:** none.
+- **Accepted predecessor / rollback point:** S1.42AF — Path-Length-Safe Microwave Packaging.
+- **Next build:** none armed; BCMER ShyGuy interior-only successor preparation is next.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -60,9 +60,9 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AC | accepted predecessor to AF | Equal BCMER static EventType probability. Historical per-event-equality rejection is retained, but `Current/109` corrected its interpretation and `Current/118` explicitly accepted the artifact. |
 | S1.42AD | **REJECTED** | Functional Microwave half-frequency attempt. Runtime exposed 18 Interior/tag curves instead of the frozen zero-Interior assumption; fail-closed refusal prevented the `0.5` mutation from applying. |
 | S1.42AE | **SUPERSEDED — PATH-LENGTH BLOCKED, NOT GAMEPLAY-REJECTED** | Corrected provider code was never reached; v2.4 plus direct filesystem checks proved the 40,960-byte LC SoundAPI binding existed while its full path measured 262 characters and BepInEx/Mono still failed before chainloader startup. |
-| S1.42AF | **ACCEPTED CURRENT BASELINE** | Path-length-safe packaging successor built directly from S1.42AC. Runtime proved the nested LC SoundAPI binding at 226 characters, normal startup, and the exact 18 Moon / 18 Interior Functional Microwave contract with only the 18 Moon/tag curves scaled by `0.5`. |
+| S1.42AF | **ACCEPTED PREDECESSOR TO AH** | Path-length-safe packaging successor built directly from S1.42AC. Runtime proved the nested LC SoundAPI binding at 226 characters, normal startup, and the exact 18 Moon / 18 Interior Functional Microwave contract with only the 18 Moon/tag curves scaled by `0.5`. |
 | S1.42AG | **RUNTIME REJECTED / PARTIAL FIX** | `MouthDogPikminEnemy.DoCheckInterval()` prevention successfully removed the LethalMin bite/grab/death-timer mutation path and the 707-warning aftermath, but a Mouth Dog still targeted/attacked a scrap-carrying Purple Pikmin through an unresolved path; reverse-direction Pikmin -> Dog behavior was not positively proven. |
-| S1.42AH | **ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED** | Dual exact MouthDog adapter + Vanilla Pikmin collision prevention built directly from accepted S1.42AF; only profile identity and cumulative compatibility DLL differ. |
+| S1.42AH | **ACCEPTED CURRENT BASELINE** | Dual exact MouthDog adapter + Vanilla Pikmin collision prevention; targeted runtime preserved player, reverse Pikmin lifecycle and final non-Pikmin EnemyAI neighbor behavior. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -151,7 +151,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Status: superseded for path-length-safe packaging; provider code never executed; not accepted and not classified as a Microwave gameplay/runtime rejection.
 - Supersession: `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`
 
-### S1.42AF — current accepted baseline
+### S1.42AF — accepted predecessor to S1.42AH
 
 - Profile: `Profiles/LC V1 S1.42AF Microwave Fix.r2z`
 - Gale profile name: `LC V1 S1.42AF Microwave Fix`
@@ -169,7 +169,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Parent: accepted S1.42AC, not S1.42AE.
 - Runtime path gate: nested `me.loaforc.soundapi.lethalcompany.dll` existed with 40960 bytes at a 226-character full path; normal BepInEx/game startup succeeded.
 - Functional Microwave gate: CodeRebirth `1.6.9`, DawnLib/Dusk `0.9.25`, `PrioritiseMoons=true`, 18 Moon/tag curves and 18 Interior/tag curves; 18 Moon/tag curves scaled by `0.5`, Interior curves validation-only and not mutated.
-- Status: accepted full normal stack.
+- Status: accepted predecessor / safe rollback point.
 - Separate inherited Mouth Dog / Pikmin compatibility finding: `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`.
 
 ### S1.42AG — rejected Mouth Dog Pikmin one-way protection candidate
@@ -190,18 +190,24 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Rejection reason: a Mouth Dog still visibly targeted and attacked a scrap-carrying Purple Pikmin through an unresolved path outside that dispatcher; intended Pikmin -> Mouth Dog attack/latch preservation was not positively proven.
 - Status: runtime rejected / partial fix / not a safe gameplay base.
 
-### S1.42AH — active Mouth Dog Pikmin dual prevention candidate
+### S1.42AH — accepted Mouth Dog Pikmin dual prevention baseline
 
 - Parent: accepted S1.42AF, never rejected S1.42AG.
 - Profile: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`
 - SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
 - DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`
 - Candidate: `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`
+- Partial decisions: `Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md`, `Current/141_S1.42AH_RUNTIME_PARTIAL_VALIDATION_REVERSE_DIRECTION_ADAPTER.md`
+- Acceptance: `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`
+- Project status: `Current/Projektstatus_S1.42AH_ACCEPTED.json`
+- Final decisive runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
+- Final raw-log SHA-256: `ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729`
 - Plan: `BuildSpecs/S1.42AH_PLAN.md`
 - Build workflow run: `34141360051`
 - Build commit: `fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5`
 - Archive delta: `export.r2x` + compatibility DLL only; all other members byte-identical to S1.42AF.
-- Status: build pass / runtime validation outstanding / not accepted.
+- Final neighbor evidence: deliberate last-run MouthDog/non-Pikmin test included MouthDogs and a Redwood Titan followed by normal Redwood Titan death. Exact V81 source plus the S1.42AH type gate prove non-Pikmin `EnemyAI` pass-through through `MouthDogAI.OnCollideWithEnemy` -> `HitEnemy(2)`; the death line itself does not encode attacker identity.
+- Status: **accepted full normal stack / current safe gameplay base**.
 
 ## Feature/fix lookup
 
@@ -228,6 +234,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 | Functional Microwave corrected 18 Moon / 18 Interior contract | S1.42AE source, runtime-proved and accepted in S1.42AF |
 | Functional Microwave path-length-safe packaging | S1.42AF |
 | Mouth Dog LethalMin bite/grab/death-timer path prevention partial fix | S1.42AG rejection evidence / `Current/134...` |
+| Mouth Dog dual Pikmin prevention with native reverse and non-Pikmin neighbor behavior preserved | S1.42AH / `Current/142...` |
 
 ## Parentage rules that matter
 
@@ -237,7 +244,8 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - S1.42AC was built **directly from accepted S1.42AB**. Its original rejection remains historical evidence, `Current/109` corrected the per-event-weight interpretation, and `Current/118` is the explicit later acceptance decision.
 - S1.42AD was built **directly from accepted S1.42AC** and is rejected. It must not be used as a successor build base.
 - S1.42AE was built **directly from accepted S1.42AC**, not from rejected S1.42AD. Its provider code was never reached during the preloader failures; it is superseded for packaging/path-length reasons and is not a safe gameplay base.
-- S1.42AF was built **directly from accepted S1.42AC**, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and is now the accepted full-normal-stack gameplay base after explicit runtime acceptance in `Current/128...`.
-- S1.42AG was built **directly from accepted S1.42AF**. Its `DoCheckInterval()` guard is a proven partial fix, but the build is runtime-rejected because a remaining targeting/attack path still allowed a Mouth Dog to select/attack a scrap-carrying Purple Pikmin. Do not use S1.42AG as a gameplay base; targeted analysis must precede any successor build.
+- S1.42AF was built **directly from accepted S1.42AC**, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and is now the accepted predecessor/rollback point after S1.42AH promotion.
+- S1.42AG was built **directly from accepted S1.42AF**. Its `DoCheckInterval()` guard is a proven partial fix, but the build is runtime-rejected because a remaining targeting/attack path still allowed a Mouth Dog to select/attack a scrap-carrying Purple Pikmin. Do not use S1.42AG as a gameplay base.
+- S1.42AH was built **directly from accepted S1.42AF**, not from rejected S1.42AG. Targeted runtime coverage plus the final non-Pikmin neighbor pass are explicitly accepted in `Current/142...`; S1.42AH is the current full-normal-stack gameplay baseline.
 
 When an exact artifact/hash/status is not indexed here or in `Current/BUILD_LINEAGE.json`, open the linked build-specific record rather than inferring it from build-name order.
