@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-09",
+  "build": "S1.42AH",
+  "title": "Mouth Dog Pikmin Dual Prevention",
+  "status": "ACCEPTED_FULL_NORMAL_STACK",
+  "profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
+  "profile_sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
+  "plugin_dll_sha256": "bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573",
+  "build_workflow_run": 34141360051,
+  "build_commit": "fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5",
+  "acceptance_record": "Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md",
+  "runtime_evidence": "RuntimeEvidence/S1.42AH/20260909T162513Z/",
+  "runtime_log_sha256": "ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729",
+  "previous_accepted_baseline": "S1.42AF",
+  "runtime_coverage": {
+    "mouthdog_to_pikmin_blocked": true,
+    "mouthdog_to_player_preserved": true,
+    "pikmin_to_mouthdog_attack_preserved": true,
+    "mouthdog_death_cleanup_preserved": true,
+    "mouthdog_corpse_carry_preserved": true,
+    "adapter_prevention_before_mutation": true,
+    "mouthdog_to_non_pikmin_enemy_pass_through": true,
+    "final_neighbor_target": "Redwood Titan",
+    "exact_native_neighbor_contract": "MouthDogAI.OnCollideWithEnemy(Collider,EnemyAI) -> collidedEnemy.HitEnemy(2, null, playHitSFX:true)"
+  },
+  "runtime_test_outstanding": false,
+  "successor_armed": false,
+  "next_scope": "BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md",
+  "next_action": "Prepare the first eligible independent BCMER/config successor from accepted S1.42AH that keeps the ShyGuy event enabled and interior values unchanged while setting only its three exterior values to 0, 0, 0, 0. Do not enable ordinary Scopophobia SpawnOutside."
+}
