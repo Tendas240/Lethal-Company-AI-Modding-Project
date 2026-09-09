@@ -1,15 +1,51 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42AH_ACCEPTANCE_PREP_SHYGUY_CONFIG_SUCCESSOR",
+  "enabled": true,
+  "build_id": "S1.42AI",
   "base_profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
   "base_sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+  "profile_name": "LC V1 S1.42AI ShyGuy Interior Only",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "config_patches": [],
+  "config_patches": [
+    {
+      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/ModdedEvents.cfg",
+      "section": "ShyGuy",
+      "key": "ShyGuyDef OutsideEnemyRarity",
+      "value": "0, 0, 0, 0"
+    },
+    {
+      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/ModdedEvents.cfg",
+      "section": "ShyGuy",
+      "key": "ShyGuyDef MinOutsideEnemy",
+      "value": "0, 0, 0, 0"
+    },
+    {
+      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/ModdedEvents.cfg",
+      "section": "ShyGuy",
+      "key": "ShyGuyDef MaxOutsideEnemy",
+      "value": "0, 0, 0, 0"
+    }
+  ],
   "local_plugin_builds": [],
-  "text_assertions": []
+  "text_assertions": [
+    {
+      "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/ModdedEvents.cfg",
+      "regex": "(?ms)^\\[ShyGuy\\]\\s*$.*?^Event Type = VeryBad\\s*$.*?^Event Enabled\\? = true\\s*$.*?^ShyGuyDef InsideEnemyRarity = 20, 0\\.8, 20, 100\\s*$.*?^ShyGuyDef OutsideEnemyRarity = 0, 0, 0, 0\\s*$.*?^ShyGuyDef MinInsideEnemy = 2, 0\\.04, 2, 6\\s*$.*?^ShyGuyDef MaxInsideEnemy = 2, 0\\.04, 2, 6\\s*$.*?^ShyGuyDef MinOutsideEnemy = 0, 0, 0, 0\\s*$.*?^ShyGuyDef MaxOutsideEnemy = 0, 0, 0, 0\\s*$.*?^\\["
+    },
+    {
+      "path": "BepInEx/config/Scopophobia.cfg",
+      "contains": "## Settings file was created by plugin Scopophobia v1.3.4"
+    },
+    {
+      "path": "BepInEx/config/Scopophobia.cfg",
+      "contains": "SpawnOutside = false"
+    },
+    {
+      "path": "BepInEx/config/Scopophobia.cfg",
+      "not_contains": "SpawnOutside = true"
+    }
+  ]
 }
