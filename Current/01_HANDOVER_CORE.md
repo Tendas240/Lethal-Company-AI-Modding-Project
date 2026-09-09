@@ -6,7 +6,7 @@
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
 **Topic router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
 **Current-chat handover procedure:** `Current/HANDOVER_PREPARATION_PROMPT.md`  
-**Last-Validated:** 2026-09-08
+**Last-Validated:** 2026-09-09
 
 ## Fresh-session procedure
 
