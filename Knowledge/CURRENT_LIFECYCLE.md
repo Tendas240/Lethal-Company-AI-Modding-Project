@@ -44,7 +44,7 @@ This closes the final neighboring-path requirement under the permanent patch-saf
 
 ## Canonical Gale workflow
 
-The current Gale active-profile replacement/import workflow remains the repository-driven **v2.4** path in `Knowledge/GALE_PROFILE_WORKFLOW.md`, implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`. Do not regress current lifecycle guidance to the older v2.2/v2.3 paths. When a future successor becomes ready for runtime testing, pair that canonical v2.4 launcher with the exact build-specific runtime-log uploader required by `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`.
+The current Gale active-profile replacement/import workflow remains the repository-driven **v2.4** path in `Knowledge/GALE_PROFILE_WORKFLOW.md`, implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at canonical helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. Do not regress current lifecycle guidance to the older v2.2/v2.3 paths. When a future successor becomes ready for runtime testing, pair that canonical v2.4 launcher with the exact build-specific runtime-log uploader required by `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`.
 
 ## Exact next project action
 
