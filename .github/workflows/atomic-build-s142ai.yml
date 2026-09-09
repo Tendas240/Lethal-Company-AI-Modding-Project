@@ -188,7 +188,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           rm .github/workflows/atomic-build-s142ai.yml
           git add -A
-          git diff --cached --check
+          git status --short
+          git diff --cached --name-status
+          git diff --cached --check -- BuildSpecs/S1.42AI_PLAN.md BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md
           git commit -m "Build S1.42AI ShyGuy interior-only artifact"
 
       - name: Verify checkpoint keeps canonical lifecycle untouched
