@@ -104,6 +104,9 @@ def main() -> int:
         "Do not copy the entire live-state object",
         "when the user later signals another handover",
         "instruct the new chat to read `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` before performing project work",
+        "exact-head",
+        "A `workflow_dispatch` run is acceptable only",
+        "never claim that a `workflow_dispatch` exact-head run was a `push` run",
     ]
     lowered = prompt.lower()
     for fragment in required_prompt_fragments:
@@ -120,6 +123,36 @@ def main() -> int:
 
     if "hard-code the current accepted build" not in lowered:
         fail("handover prompt does not explicitly prohibit hard-coded current-state snapshots")
+
+    profile_index_path = ROOT / ".github/workflows/profile-index.yml"
+    if not profile_index_path.is_file():
+        fail("missing profile-index workflow")
+    else:
+        profile_index = profile_index_path.read_text(encoding="utf-8", errors="replace")
+        required_profile_index_fragments = [
+            "actions: write",
+            "id: snapshot_commit",
+            "Dispatch exact-head Knowledge Architecture validation",
+            "EXPECTED_HEAD",
+            "knowledge-architecture.yml/dispatches",
+            "event=workflow_dispatch&branch=main",
+            ".head_sha",
+        ]
+        for fragment in required_profile_index_fragments:
+            if fragment not in profile_index:
+                fail(f"profile-index workflow missing exact-head CI contract fragment: {fragment}")
+        if "[skip ci]" in profile_index.lower():
+            fail("profile-index workflow reintroduced [skip ci] on generated snapshot commits")
+
+    knowledge_workflow_path = ROOT / ".github/workflows/knowledge-architecture.yml"
+    if not knowledge_workflow_path.is_file():
+        fail("missing Knowledge Architecture workflow")
+    else:
+        knowledge_workflow = knowledge_workflow_path.read_text(encoding="utf-8", errors="replace")
+        if "workflow_dispatch:" not in knowledge_workflow:
+            fail("Knowledge Architecture workflow is not dispatchable for bot-generated exact-head validation")
+        if "ProfileSources/**" not in knowledge_workflow:
+            fail("Knowledge Architecture workflow no longer covers ProfileSources paths")
 
     print("Persistent ChatGPT handover workflow validation")
     print(f"errors={len(ERRORS)}")
