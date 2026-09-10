@@ -6,7 +6,7 @@
 **Evidence:** `Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md`, `Current/111_REPOSITORY_OVERHAUL_POST_ACCEPTANCE_AUDIT.md`, `Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md`, `Current/117_REPOSITORY_INTEGRITY_HARDENING_20260905.md`, `Current/OVERHAUL_VALIDATION_RESULTS.json`, `Current/REPOSITORY_KNOWLEDGE_ARCHITECTURE_REQUIREMENTS.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`  
 **Machine State:** `Current/OVERHAUL_EXECUTION_STATE.json`  
 **Related:** `Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md`, `Current/REPOSITORY_MIGRATION_MANIFEST.md`, `Current/DOCUMENT_AUTHORITY.md`, `Current/VALIDATOR_COVERAGE.json`, `Current/HANDOVER_PREPARATION_PROMPT.md`  
-**Last-Validated:** 2026-09-05
+**Last-Validated:** 2026-09-10
 
 ## Result
 
@@ -39,7 +39,7 @@ The independent 2026-09-05 re-audit distinguishes deliverable completion from hi
 
 Do not restate "all phases completed in order" as an independently proven historical fact without this qualification.
 
-The implementation remained non-destructive: no legacy evidence files were mass-moved or deleted, and gameplay/config/mod/profile/project-local patch behavior was not changed.
+The original overhaul execution remained non-destructive: it did not mass-move or delete legacy evidence, and it did not change gameplay/config/mod/profile/project-local patch behavior. A later 2026-09-08 maintenance pass independently satisfied the positive deletion gate for the frozen `Archive/` and `Logs/` payload roots and externalized those payload bytes from current HEAD while preserving deterministic recovery through Git history and the standalone backup.
 
 ## Recovery gate
 
@@ -83,20 +83,11 @@ The workflow is discoverable from generated `README.md`, `START_HERE_ChatGPT_Mas
 
 This avoids maintaining a second stale build-specific handover truth while still allowing the handover procedure itself to evolve when repository workflow or authority policy changes.
 
-The permanent CI now runs:
+## Permanent CI authority
 
-1. generated current-navigation validation;
-2. repository knowledge/state/reference validation;
-3. persistent ChatGPT handover-workflow validation;
-4. actual artifact/runtime byte integrity validation;
-5. repository-wide integrity/authority/known-bad-value validation;
-6. S1.42AC runtime-SHA provenance validation;
-7. future multi-phase checkpoint validation;
-8. strict frozen original-overhaul-contract validation;
-9. semantic answerability routing regression;
-10. negative validator self-tests.
+Permanent gate composition is intentionally not duplicated in this topic. The executable gate list is defined by `.github/workflows/knowledge-architecture.yml`; machine-readable validator coverage and explicit blindspots are defined by `Current/VALIDATOR_COVERAGE.json`.
 
-Coverage and explicit blindspots are documented in `Current/VALIDATOR_COVERAGE.json` so a green run is not interpreted as proof of obligations a validator does not test.
+This keeps the architecture topic stable when validators are added, split or renamed and prevents a descriptive gate-count snapshot from becoming another competing current truth.
 
 ## Historical execution-contract rule
 
@@ -117,8 +108,8 @@ When the user later requests transfer again, the active chat must execute `Curre
 - every future architecture change remains subject to `.github/workflows/knowledge-architecture.yml`;
 - rollback/compare against the verified standalone backup if routing, authority or discoverability regresses.
 
-## Current gameplay handoff
+## Live lifecycle boundary
 
-The overhaul itself is closed. Accepted gameplay baseline remains **S1.42AB**. S1.42AC remains formally rejected/not promoted, with its old BCMER weight interpretation superseded by `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`.
+This architecture topic is deliberately state-neutral. It does not declare the current accepted build, latest artifact, active candidate, runtime-test status or exact gameplay next action.
 
-No runtime test is outstanding and no successor is armed. Resume normal project work from `Current/CURRENT_STATE.json` and `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
+For live project state and the next action, use `Current/CURRENT_STATE.json` and `Knowledge/CURRENT_LIFECYCLE.md`, routed through `Current/PROJECT_KNOWLEDGE_MAP.md`. Historical lifecycle snapshots inside the audit and execution records remain provenance only and never override those current authorities.
