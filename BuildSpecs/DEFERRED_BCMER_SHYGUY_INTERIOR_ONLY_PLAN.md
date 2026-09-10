@@ -1,12 +1,18 @@
 # Deferred BCMER ShyGuy Interior-Only Event Correction
 
-**Status:** IMPLEMENTED AS S1.42AI / STATIC-VERIFIED / RUNTIME VALIDATION PENDING
+**Status:** CORRECTION BUILT AS S1.42AI / DIAGNOSTIC ISOLATION REVISION PLANNED / FULL-NORMAL VALIDATION OUTSTANDING
 **Scope owner:** BCMER event configuration only  
 **Observed build:** `S1.42AH`  
 **Runtime evidence:** `RuntimeEvidence/S1.42AH/20260908T202138Z/`  
 **Raw-log SHA-256:** `f2a0316815d411c6e37bf91651bf2e4602b9b2a7697e9327a010b28be4af6883`  
 **Current source snapshot:** `ProfileSources/S1.42AH/`  
 **Last-Validated:** 2026-09-10
+
+## Current diagnostic amendment — 2026-09-10
+
+The user requested a temporary ShyGuy-only enemy and BCMER event isolation revision before the next gameplay run. The current preparation authority is `BuildSpecs/S1.42AI_PLAN.md` (planned `S1.42AI-DIAG1`, not built). The existing S1.42AI artifact and its full-normal runtime gate remain intact and unaccepted; diagnostic success cannot replace full-normal acceptance.
+
+The preservation rules below define the original full-normal correction. The diagnostic plan explicitly permits temporary enemy isolation and disabling every BCMER event except ShyGuy; restore those diagnostic changes afterward. It does not permit re-enabling exterior Shy Guy spawns or mixing independent scopes.
 
 ## Runtime finding
 
@@ -78,7 +84,7 @@ SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
 Static evidence: `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`
 Candidate authority: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`
 
-The pending decision is now runtime-only. Do not mix LC Office, CullFactory, fog, Black Mesa, LethalEscape or other deferred scopes into S1.42AI. A final acceptance/rejection must preserve S1.42AH as the rollback/provenance base until S1.42AI explicitly passes.
+The correction's acceptance decision still requires runtime evidence. The next preparation step is the planned diagnostic isolation revision, before asking for another run. Do not mix LC Office, CullFactory, fog, Black Mesa, LethalEscape or other deferred scopes into S1.42AI. A final acceptance/rejection must preserve S1.42AH as the rollback/provenance base until S1.42AI explicitly passes.
 
 This preserves provenance while ensuring the defect is not lost.
 ## Validation contract for S1.42AI
