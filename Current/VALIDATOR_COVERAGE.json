@@ -16,6 +16,12 @@
       "does_not_check": ["Gameplay correctness", "future contradictory wording not represented by markers/structural checks or the maintained stale-phrase set", "GitHub Actions status of a commit"]
     },
     {
+      "path": "RepositoryTools/state_neutral_authority_validator.py",
+      "checks": ["Knowledge/REPOSITORY_OVERHAUL.md does not duplicate volatile accepted/latest/candidate/runtime-pending lifecycle declarations.", "The repository-overhaul topic routes live lifecycle truth to Current/CURRENT_STATE.json and Knowledge/CURRENT_LIFECYCLE.md instead of carrying a build-specific gameplay handoff.", "The repository-overhaul topic routes executable permanent-CI composition to .github/workflows/knowledge-architecture.yml and coverage semantics to Current/VALIDATOR_COVERAGE.json instead of duplicating a stale gate inventory.", "A built-in negative fixture proves representative live-state duplication is rejected."],
+      "scan_scope": ["Knowledge/REPOSITORY_OVERHAUL.md"],
+      "does_not_check": ["Gameplay correctness", "truth of the routed lifecycle authorities", "state-neutrality of architecture documents not registered in this validator"]
+    },
+    {
       "path": "RepositoryTools/knowledge_architecture_validator.py",
       "checks": ["Promotion-safe current-state/controller/lineage consistency", "Accepted baseline status/SHA/decision/safe-base agreement with BUILD_LINEAGE", "ACTIVE_BUILD and BuildSpecs controller coherence", "AUTO_BUILD_RESULT/lineage parent coherence", "canonical path existence and Knowledge topic routing/orphans", "S1.42AC historical/fresh runtime SHA provenance chain"],
       "does_not_check": ["Actual profile/runtime raw byte SHA values", "gameplay correctness", "all natural-language semantic contradictions; current live-state semantics are covered by current_state_semantic_validator.py"]
