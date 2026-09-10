@@ -75,6 +75,12 @@ jobs:
       - name: Validate current live-state semantics
         run: python RepositoryTools/current_state_semantic_validator.py
 
+      - name: Validate state-neutral architecture authorities
+        run: python RepositoryTools/state_neutral_authority_validator.py
+
+      - name: Self-test state-neutral architecture authority guard
+        run: python RepositoryTools/state_neutral_authority_validator.py --self-test
+
       - name: Validate repository knowledge architecture
         run: python RepositoryTools/knowledge_architecture_validator.py
 

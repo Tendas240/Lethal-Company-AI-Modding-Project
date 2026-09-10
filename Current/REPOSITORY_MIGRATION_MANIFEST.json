@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "updated": "2026-09-08",
+  "updated": "2026-09-10",
   "status": "CURRENT_CANONICAL_OVERHAUL_MIGRATION_MANIFEST",
   "migration_policy": "SEMANTIC_MIGRATION_WITH_VERIFIED_COLD_HISTORY_EXTERNALIZATION",
   "backup_manifest": "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json",
@@ -40,6 +40,18 @@
       "reason": "Removed duplicated historical/current-state prose after durable facts were routed to Current/CURRENT_STATE.json, Knowledge topics, build records and runtime evidence.",
       "pre_overhaul_copy": "verified standalone pre-overhaul repository and Git history",
       "unique_fact_audit": "PASS_NO_UNIQUE_FACT_LOSS"
+    },
+    {
+      "path": "Knowledge/REPOSITORY_OVERHAUL.md",
+      "reason": "Removed duplicated volatile gameplay handoff and permanent-CI gate inventory from the canonical architecture topic; live lifecycle and executable CI composition now route to their dedicated authorities.",
+      "replacement_targets": [
+        "Current/CURRENT_STATE.json",
+        "Knowledge/CURRENT_LIFECYCLE.md",
+        ".github/workflows/knowledge-architecture.yml",
+        "Current/VALIDATOR_COVERAGE.json"
+      ],
+      "regression_guard": "RepositoryTools/state_neutral_authority_validator.py",
+      "unique_fact_audit": "PASS_HISTORICAL_OVERHAUL_FACTS_RETAINED"
     }
   ],
   "deletion_decision": "The original overhaul performed no destructive cleanup. On 2026-09-08 a later positive deletion audit proved the frozen Archive/ and Logs/ payload subtrees byte-identical by Git tree SHA to the verified standalone recovery repository, inventoried every inbound textual reference, established deterministic same-relative-path recovery mapping, and retained current semantic replacements. Those two cold payload trees were therefore externalized from current HEAD while remaining present in primary Git history and the independent recovery repository.",
@@ -71,5 +83,5 @@
     "Cold Archive/ and Logs/ payloads are recoverable byte-for-byte from both primary Git history and the verified standalone recovery repository, so duplicating those frozen payloads in current HEAD no longer adds unique evidentiary value."
   ],
   "safe_cleanup_after_overhaul": "Future cleanup may remove another legacy file only after proving no unique fact remains, all inbound references are migrated or deterministically redirected, semantic/lineage replacements preserve required information, and validator/answerability suites remain green.",
-  "last_validated": "2026-09-08"
+  "last_validated": "2026-09-10"
 }
