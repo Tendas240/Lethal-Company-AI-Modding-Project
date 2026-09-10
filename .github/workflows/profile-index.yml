@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: profile-index
@@ -66,6 +67,7 @@ jobs:
           PY
 
       - name: Commit readable profile snapshots
+        id: snapshot_commit
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
@@ -73,10 +75,52 @@ jobs:
           git add -A
           if git diff --cached --quiet; then
             echo "No profile snapshot changes to commit."
+            echo "created=false" >> "$GITHUB_OUTPUT"
           else
-            # Do not use [skip ci]. ProfileSources/** is part of the permanent
-            # Knowledge Architecture trigger set, so the resulting main HEAD must
-            # receive its own integrity validation.
+            # GitHub suppresses normal follow-up push workflows when this workflow
+            # pushes with GITHUB_TOKEN. The next step therefore performs an
+            # explicit exact-head workflow_dispatch for Knowledge Architecture.
             git commit -m "Index uploaded profile"
+            expected_head="$(git rev-parse HEAD)"
             git push
+            remote_head="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+            if [[ "$remote_head" != "$expected_head" ]]; then
+              echo "::error::main moved after the profile-index commit; refusing to dispatch validation for a different head"
+              exit 1
+            fi
+            echo "created=true" >> "$GITHUB_OUTPUT"
+            echo "head_sha=$expected_head" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Dispatch exact-head Knowledge Architecture validation
+        if: steps.snapshot_commit.outputs.created == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_HEAD: ${{ steps.snapshot_commit.outputs.head_sha }}
+        run: |
+          current_head="$(gh api "repos/${GITHUB_REPOSITORY}/branches/main" --jq '.commit.sha')"
+          if [[ "$current_head" != "$EXPECTED_HEAD" ]]; then
+            echo "::error::main no longer equals the indexed commit; refusing to dispatch a mismatched validation run"
+            exit 1
+          fi
+
+          gh api --method POST \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows/knowledge-architecture.yml/dispatches" \
+            -f ref=main
+
+          run_id=""
+          for attempt in {1..30}; do
+            run_id="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/knowledge-architecture.yml/runs?event=workflow_dispatch&branch=main&per_page=20" --jq ".workflow_runs[] | select(.head_sha == \"${EXPECTED_HEAD}\") | .id" | head -n 1)"
+            if [[ -n "$run_id" ]]; then
+              break
+            fi
+            sleep 2
+          done
+
+          if [[ -z "$run_id" ]]; then
+            echo "::error::No Knowledge Architecture workflow_dispatch run was registered for exact head $EXPECTED_HEAD"
+            exit 1
+          fi
+
+          echo "Registered Knowledge Architecture exact-head run $run_id for $EXPECTED_HEAD"

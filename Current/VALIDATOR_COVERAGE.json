@@ -1,6 +1,6 @@
 {
   "schema_version": 5,
-  "date": "2026-09-08",
+  "date": "2026-09-10",
   "status": "CURRENT_CANONICAL_VALIDATOR_COVERAGE",
   "rule": "A green validator is evidence only for the obligations it explicitly checks. Do not infer coverage of unlisted semantics or runtime behavior.",
   "validators": [
@@ -22,8 +22,8 @@
     },
     {
       "path": "RepositoryTools/handover_workflow_validator.py",
-      "checks": ["Canonical handover prompt/cross-links/authority/answerability route exist and preserve fresh-state plus completed-run upload semantics.", "Handover bootstrap remains minimal and does not require the former bulk fixed-file read or duplicate the full live-state snapshot into the ready-to-copy prompt."],
-      "does_not_check": ["Truth of a future handover response before it is produced", "GitHub Actions status at a future handover moment"]
+      "checks": ["Canonical handover prompt/cross-links/authority/answerability route exist and preserve fresh-state plus completed-run upload semantics.", "Handover bootstrap remains minimal and does not require the former bulk fixed-file read or duplicate the full live-state snapshot into the ready-to-copy prompt.", "Handover requires exact-head Knowledge Architecture evidence and distinguishes ordinary push validation from the explicit workflow_dispatch exception for bot-generated profile-index follow-up commits.", "Profile-index statically retains actions-write permission, expected-head verification, explicit Knowledge Architecture dispatch registration and ProfileSources trigger coverage needed for that exact-head follow-up contract."],
+      "does_not_check": ["Truth of a future handover response before it is produced", "Whether GitHub actually creates or successfully completes a future exact-head Actions run; live Actions state must still be verified at handover time", "Gameplay correctness"]
     },
     {
       "path": "RepositoryTools/segmented_execution_policy_validator.py",
@@ -77,5 +77,5 @@
     }
   ],
   "permanent_ci_workflow": ".github/workflows/knowledge-architecture.yml",
-  "last_validated": "2026-09-08"
+  "last_validated": "2026-09-10"
 }

@@ -6,7 +6,7 @@
 **Execution cadence:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
 **Machine State:** `Current/CURRENT_STATE.json`  
 **Topic Router:** `Current/PROJECT_KNOWLEDGE_MAP.md`  
-**Last-Validated:** 2026-09-08
+**Last-Validated:** 2026-09-10
 
 ## Purpose
 
@@ -47,14 +47,14 @@ Use these only when relevant:
 Before the final handover output, verify directly:
 
 - current `main` HEAD;
-- latest relevant `Knowledge Architecture` push run for that HEAD and whether every permanent gate passed;
+- latest relevant `Knowledge Architecture` **exact-head** run for that HEAD and whether every permanent gate passed. For ordinary commits this must be a `push` run. A `workflow_dispatch` run is acceptable only for a bot-generated follow-up commit when repository workflow wiring explicitly dispatches Knowledge Architecture because GitHub suppresses recursive `GITHUB_TOKEN` push workflows; its `head_sha` must exactly equal final `main`;
 - open relevant PRs;
 - `BuildSpecs/current.json`;
 - `RuntimeInbox/ACTIVE_BUILD.txt`;
 - agreement of those controllers with `Current/CURRENT_STATE.json` and the routed lifecycle/topic authority;
 - any hashes or evidence paths that are material to the exact next action.
 
-`RuntimeInbox/ACTIVE_BUILD.txt` is runtime-active/evidence-attribution state, not acceptance authority. Do not claim CI proves runtime/gameplay behavior beyond documented validator coverage.
+For a bot-generated ProfileSources follow-up from `.github/workflows/profile-index.yml`, verify the explicitly registered exact-head `workflow_dispatch` run rather than pretending a `push` run exists. `RuntimeInbox/ACTIVE_BUILD.txt` is runtime-active/evidence-attribution state, not acceptance authority. Do not claim CI proves runtime/gameplay behavior beyond documented validator coverage.
 
 ## Step 3 — Repair only genuine drift
 
@@ -67,7 +67,7 @@ If genuine handover-critical drift exists:
 3. do not change gameplay/config/profile/runtime behavior solely for handover cleanup;
 4. use a dedicated branch and PR;
 5. merge only after the relevant CI gate is green;
-6. verify the resulting `main` push gate before the final handover.
+6. verify the resulting `main` exact-head gate before the final handover.
 
 If `Current/CURRENT_STATE.json` changes, regenerate renderer-controlled files with `RepositoryTools/render_current_navigation.py`; do not hand-edit those generated files independently.
 
@@ -88,7 +88,7 @@ Only the final handover segment produces these two parts.
 Report the final verified repository state compactly:
 
 - final `main` commit;
-- final relevant green CI run and permanent-gate result;
+- final relevant green exact-head CI run, its event type, and permanent-gate result;
 - whether a relevant open PR remains;
 - whether repository repair was required;
 - any material controller/runtime fact that cannot be safely inferred by simply reading `Current/CURRENT_STATE.json`;
@@ -108,7 +108,7 @@ The new-chat prompt must:
 - instruct the new chat to read `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` before performing project work;
 - require bounded segments, checkpoint reporting and waiting for user continuation between non-final segments;
 - use this initial read order: `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`, `Current/CURRENT_STATE.json`, `Current/PROJECT_KNOWLEDGE_MAP.md`;
-- include the final verified `main` commit and relevant green CI run;
+- include the final verified `main` commit and relevant green exact-head CI run; if the exact-head run is the allowed bot-follow-up `workflow_dispatch`, state that event type explicitly rather than describing it as a push run;
 - tell the new chat to route the task through the Topic Router and read only the required canonical topic/evidence;
 - tell the new chat not to perform a full-repository audit by default and not to treat historical "current" wording as live authority;
 - preserve the runtime import/uploader rule and the completed-log rule;
@@ -124,6 +124,7 @@ During handover:
 - never promote or reject a build implicitly;
 - never treat `RuntimeInbox/ACTIVE_BUILD.txt` as acceptance authority;
 - never fabricate missing provenance;
+- never claim that a `workflow_dispatch` exact-head run was a `push` run;
 - never rewrite historical evidence merely to make search results look clean;
 - never create a successor merely to make the handover appear active;
 - never bypass the continuation gate when safe segmentation is available.
