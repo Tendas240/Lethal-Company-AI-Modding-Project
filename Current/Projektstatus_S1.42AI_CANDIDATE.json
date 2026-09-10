@@ -1,0 +1,65 @@
+{
+  "schema_version": 4,
+  "date": "2026-09-10",
+  "repository_is_source_of_truth": true,
+  "accepted_baseline": {
+    "build_id": "S1.42AH",
+    "title": "Mouth Dog Pikmin Dual Prevention",
+    "status": "ACCEPTED_FULL_NORMAL_STACK",
+    "profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
+    "sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
+    "acceptance": "Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md",
+    "project_status": "Current/Projektstatus_S1.42AH_ACCEPTED.json",
+    "runtime_evidence": "RuntimeEvidence/S1.42AH/20260909T162513Z/",
+    "profile_sources": "ProfileSources/S1.42AH/",
+    "file_index": "ProfileSources/S1.42AH/FILE_INDEX.json"
+  },
+  "active_runtime_candidate": {
+    "build_id": "S1.42AI",
+    "title": "BCMER ShyGuy Interior-Only Event Correction",
+    "status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+    "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+    "candidate_record": "Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md",
+    "project_status": "Current/Projektstatus_S1.42AI_CANDIDATE.json",
+    "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
+    "profile_sources": "ProfileSources/S1.42AI/",
+    "file_index": "ProfileSources/S1.42AI/FILE_INDEX.json",
+    "workflow_run": 34496960816,
+    "build_commit": "2dea753ec48ea2a8f417491ae9a13cf7a6d7b8b9",
+    "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+    "parent": "S1.42AH"
+  },
+  "runtime_gate": {
+    "bcmer_1_71_0": "MUST_LOAD_EXACT",
+    "shyguy_event_selected_executed": "MUST_OBSERVE",
+    "interior_shyguy_available": "MUST_OBSERVE",
+    "bcmer_shyguy_exterior_spawn_or_list": "MUST_BE_0",
+    "shyguy_exterior_ai_marker_from_event": "MUST_BE_0",
+    "scopophobia_ordinary_spawnoutside": "MUST_REMAIN_FALSE",
+    "inherited_s1_42ah_contracts": "MUST_REMAIN_FUNCTIONAL",
+    "project_patch_errors": "MUST_BE_0",
+    "fatal_or_retry_flood": "MUST_BE_0"
+  },
+  "archive_gate": {
+    "parent": "S1.42AH",
+    "changed_existing_members": [
+      "BepInEx/config/BrutalCompanyMinusExtraReborn/ModdedEvents.cfg",
+      "export.r2x"
+    ],
+    "added_members": [],
+    "removed_members": [],
+    "unrelated_members_byte_preserved": true,
+    "profile_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+    "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md"
+  },
+  "controllers": {
+    "buildspec_current_enabled": false,
+    "buildspec_current_id": "IDLE_AFTER_S1.42AI_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "buildspec_base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+    "buildspec_base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+    "runtime_active_build": "S1.42AI",
+    "successor_armed": false
+  },
+  "exact_next_step": "Import S1.42AI with the canonical Gale v2.4 replacement helper and run the full-normal BCMER ShyGuy runtime gate from Current/143. Positively obtain or force the BCMER ShyGuy event, confirm ShyGuy remains available through the intended interior event path, verify that BCMER adds no ShyGuy to the exterior path and that no 'ShyGuy(Clone) spawned outside; Switching to exterior AI' marker occurs from that event, then upload the complete fresh S1.42AI LogOutput.log with the build-specific uploader in Current/143. Do not accept S1.42AI from static/build success alone."
+}

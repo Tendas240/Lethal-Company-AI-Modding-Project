@@ -1,12 +1,12 @@
 # Deferred BCMER ShyGuy Interior-Only Event Correction
 
-**Status:** DEFERRED / CONFIRMED RUNTIME DEFECT / NOT ARMED  
+**Status:** IMPLEMENTED AS S1.42AI / STATIC-VERIFIED / RUNTIME VALIDATION PENDING
 **Scope owner:** BCMER event configuration only  
 **Observed build:** `S1.42AH`  
 **Runtime evidence:** `RuntimeEvidence/S1.42AH/20260908T202138Z/`  
 **Raw-log SHA-256:** `f2a0316815d411c6e37bf91651bf2e4602b9b2a7697e9327a010b28be4af6883`  
 **Current source snapshot:** `ProfileSources/S1.42AH/`  
-**Last-Validated:** 2026-09-09
+**Last-Validated:** 2026-09-10
 
 ## Runtime finding
 
@@ -71,16 +71,17 @@ Do not solve this by setting Scopophobia `SpawnOutside = true`. The target is sp
 
 ## Lifecycle / provenance boundary
 
-S1.42AH is already a built, checksum-fixed active runtime candidate. Do **not** edit its `.r2z`, `ProfileSources/S1.42AH/`, build metadata, or controller state to retroactively apply this correction.
+The S1.42AH MouthDog lifecycle gate is closed and S1.42AH remains the accepted gameplay baseline. This independent correction has been implemented as active runtime candidate S1.42AI without modifying S1.42AH bytes or readable snapshot.
 
-The current S1.42AH MouthDog final non-Pikmin-neighbor runtime gate remains authoritative and must close first.
+S1.42AI profile: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`
+SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
+Static evidence: `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`
+Candidate authority: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`
 
-- If S1.42AH is accepted, this correction is eligible as the next independent BCMER/config successor scope.
-- If S1.42AH is rejected, first follow the canonical S1.42AF-derived MouthDog recovery path. Do not silently mix this unrelated BCMER correction into a rejection-recovery build unless the lifecycle explicitly arms a combined scope. Keep this correction pending and mandatory for the first eligible independent successor afterward.
+The pending decision is now runtime-only. Do not mix LC Office, CullFactory, fog, Black Mesa, LethalEscape or other deferred scopes into S1.42AI. A final acceptance/rejection must preserve S1.42AH as the rollback/provenance base until S1.42AI explicitly passes.
 
 This preserves provenance while ensuring the defect is not lost.
-
-## Validation contract for the future corrected build
+## Validation contract for S1.42AI
 
 Static validation must prove:
 

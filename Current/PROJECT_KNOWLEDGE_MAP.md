@@ -1,12 +1,12 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AH candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI candidate=S1.42AI runtime_test_outstanding=true -->
 # Project Knowledge Map
 
-**Status:** CURRENT / CANONICAL ROUTER  
-**Authority:** primary human topic router for repository knowledge  
-**Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`  
-**Current State:** `Current/00_CURRENT_STATE.md`  
-**Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`  
-**Last-Validated:** 2026-09-09
+**Status:** CURRENT / CANONICAL ROUTER
+**Authority:** primary human topic router for repository knowledge
+**Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
+**Current State:** `Current/00_CURRENT_STATE.md`
+**Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
+**Last-Validated:** 2026-09-10
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -34,15 +34,13 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 ## Current lifecycle anchor
 
-Accepted gameplay baseline and latest built artifact: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
+Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
 
-Acceptance: `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`. Final decisive runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`.
+Latest built artifact and active runtime candidate: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — NOT ACCEPTED**. Runtime validation is outstanding. Candidate authority: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`; static evidence: `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`.
 
-Active candidate: **none**. Runtime test outstanding: **no**. `BuildSpecs/current.json` is disabled; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AH`; no successor is currently armed.
+`BuildSpecs/current.json` is disabled and guards S1.42AI; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` attributes the next runtime evidence to the candidate.
 
-S1.42AH acceptance incorporates the earlier MouthDog/Pikmin targeted coverage plus the final deliberate non-Pikmin neighbor run. The exact current Vanilla V81 neighbor contract is `MouthDogAI.OnCollideWithEnemy(Collider, EnemyAI)` -> `collidedEnemy.HitEnemy(2, ...)`; earlier `BiteKillEnemyAI` wording was shorthand rather than the exact source method name.
-
-The exact next action is to prepare the single-variable **BCMER ShyGuy interior-only correction** from accepted S1.42AH under `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`. No gameplay test is pending until that successor has been built and designated ready.
+The exact next action is the S1.42AI full-normal BCMER ShyGuy runtime gate: positively exercise the event, preserve interior ShyGuy behavior and prove the BCMER exterior path/marker is absent. Use `Knowledge/CURRENT_LIFECYCLE.md` and `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` for the exact test/upload contract.
 
 ## Authority rule
 

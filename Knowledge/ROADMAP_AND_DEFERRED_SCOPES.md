@@ -1,44 +1,26 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AH candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI candidate=S1.42AI runtime_test_outstanding=true -->
 # Live Roadmap and Deferred Scopes
 
-**Status:** CURRENT / CANONICAL TOPIC  
-**Authority:** live selected/deferred-scope list only  
-**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`, `RuntimeEvidence/S1.42AH/20260909T162513Z/`, `RuntimeEvidence/S1.42AH/20260908T202138Z/`, `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`  
-**Last-Validated:** 2026-09-09
+**Status:** CURRENT / CANONICAL TOPIC
+**Authority:** live selected/deferred-scope list only
+**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`
+**Last-Validated:** 2026-09-10
 
 ## Current position
 
-Accepted gameplay baseline and latest built artifact: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**, SHA-256 `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`.
+Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**, SHA-256 `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`.
 
-Active candidate: **none**. Runtime test outstanding: **no**. `BuildSpecs/current.json` is disabled (`IDLE_AFTER_S1.42AH_ACCEPTANCE_PREP_SHYGUY_CONFIG_SUCCESSOR`); `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AH`; no successor has yet been built or armed.
+Latest built artifact and active runtime candidate: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Runtime validation is outstanding; S1.42AI is not yet accepted.
 
-S1.42AF remains the accepted predecessor/rollback point. S1.42AG remains rejected historical evidence only.
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI_BUILD_AWAITING_RUNTIME_VALIDATION`; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI`.
 
-## Completed S1.42AH MouthDog scope
+## Active independent scope — S1.42AI BCMER ShyGuy interior-only correction
 
-`Current/140` proves patch installation, repeated live Vanilla MouthDog -> Pikmin collision blocking and MouthDog -> player preservation. `Current/141` additionally proves explicit native Pikmin -> MouthDog latch/attack/damage, MouthDog death, native task-removal/unlatch cleanup, corpse carry, live adapter prevention, preserved noise response and clean known project regression markers.
+S1.42AI implements the previously selected config-only correction directly from accepted S1.42AH. Static verification proves the only semantic gameplay/config change is the `[ShyGuy]` exterior triplet becoming zero while Event Enabled, EventType, all three interior values and ordinary Scopophobia `SpawnOutside = false` remain unchanged. Every unrelated archive member is byte-identical to S1.42AH.
 
-The final deliberate neighbor test in `RuntimeEvidence/S1.42AH/20260909T162513Z/`, analyzed under `Current/142`, closes non-Pikmin `EnemyAI` pass-through. In the decisive last gameplay run MouthDogs and a Redwood Titan are present and the Redwood Titan reaches the normal enemy-death path. The user reported observing what appeared to be a Mouth Dog killing it. The raw death line does not encode attacker identity, so current authority relies on that deliberate observation together with the exact S1.42AH type gate and Vanilla V81 `MouthDogAI.OnCollideWithEnemy` -> `HitEnemy(2)` source contract rather than inventing an attacker field.
+The current gate is runtime-only: positively execute the BCMER ShyGuy event, prove intended interior ShyGuy availability, and prove BCMER does not create an exterior ShyGuy or emit the prior exterior-AI marker from that event. Exact authority is `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
 
-S1.42AH is therefore explicitly accepted and its runtime gate is closed.
-
-## Selected next independent scope — BCMER ShyGuy interior-only correction
-
-The next project action is the already documented correction under `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`.
-
-Prepare a single-variable BCMER/config successor from accepted S1.42AH that:
-
-- keeps `[ShyGuy] Event Enabled? = true`;
-- keeps its EventType and all three interior values unchanged;
-- sets `ShyGuyDef OutsideEnemyRarity = 0, 0, 0, 0`;
-- sets `ShyGuyDef MinOutsideEnemy = 0, 0, 0, 0`;
-- sets `ShyGuyDef MaxOutsideEnemy = 0, 0, 0, 0`;
-- keeps ordinary Scopophobia `SpawnOutside = false`;
-- changes no unrelated package/config/gameplay scope.
-
-This correction is now eligible because the S1.42AH lifecycle gate is closed, but no successor is armed by the acceptance itself. Static archive-delta validation comes before any new runtime test.
-
-The user-observed exterior ShyGuy invisibility remains a symptom with an unproven exact renderer/material mechanism. The proven defect is the BCMER event forcing an exterior ShyGuy despite the ordinary Scopophobia location contract.
+The earlier user-observed invisible exterior ShyGuy remains a symptom whose exact renderer/material mechanism was not proven; S1.42AI claims only to correct the proven BCMER exterior-spawn configuration defect.
 
 ## Remaining deferred independent scopes
 

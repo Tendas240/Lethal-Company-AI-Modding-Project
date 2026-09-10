@@ -4,15 +4,15 @@
 **Authority:** human build-history router; exact build evidence remains in candidate/acceptance/rejection/runtime records  
 **Canonical-For:** `build_lineage`  
 **Machine Mirror:** `Current/BUILD_LINEAGE.json`  
-**Last-Validated:** 2026-09-09
+**Last-Validated:** 2026-09-10
 
 ## Current lineage head
 
 - **Accepted gameplay baseline:** S1.42AH — Mouth Dog Pikmin Dual Prevention — **ACCEPTED FULL NORMAL STACK**.
-- **Latest built artifact:** S1.42AH.
-- **Active candidate:** none.
+- **Latest built artifact:** S1.42AI — BCMER ShyGuy Interior-Only Event Correction.
+- **Active candidate:** S1.42AI — **RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED**.
 - **Accepted predecessor / rollback point:** S1.42AF — Path-Length-Safe Microwave Packaging.
-- **Next build:** none armed; BCMER ShyGuy interior-only successor preparation is next.
+- **Current gate:** run the S1.42AI full-normal BCMER ShyGuy runtime validation from `Current/143`.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -63,6 +63,7 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AF | **ACCEPTED PREDECESSOR TO AH** | Path-length-safe packaging successor built directly from S1.42AC. Runtime proved the nested LC SoundAPI binding at 226 characters, normal startup, and the exact 18 Moon / 18 Interior Functional Microwave contract with only the 18 Moon/tag curves scaled by `0.5`. |
 | S1.42AG | **RUNTIME REJECTED / PARTIAL FIX** | `MouthDogPikminEnemy.DoCheckInterval()` prevention successfully removed the LethalMin bite/grab/death-timer mutation path and the 707-warning aftermath, but a Mouth Dog still targeted/attacked a scrap-carrying Purple Pikmin through an unresolved path; reverse-direction Pikmin -> Dog behavior was not positively proven. |
 | S1.42AH | **ACCEPTED CURRENT BASELINE** | Dual exact MouthDog adapter + Vanilla Pikmin collision prevention; targeted runtime preserved player, reverse Pikmin lifecycle and final non-Pikmin EnemyAI neighbor behavior. |
+| S1.42AI | **ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED** | Single-variable BCMER ShyGuy interior-only correction from accepted S1.42AH; exact static delta verified, runtime gate outstanding. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
