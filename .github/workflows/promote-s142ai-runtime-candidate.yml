@@ -32,6 +32,19 @@ jobs:
       - name: Write atomic S1.42AI candidate state
         run: python RepositoryTools/_tmp_promote_s142ai.py
 
+      - name: Pin canonical Gale v2.4 revision in lifecycle
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('Knowledge/CURRENT_LIFECYCLE.md')
+          text = p.read_text(encoding='utf-8')
+          needle = 'implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`. For this candidate'
+          replacement = 'implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at canonical helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. For this candidate'
+          assert needle in text
+          p.write_text(text.replace(needle, replacement, 1), encoding='utf-8')
+          PY
+
       - name: Render generated current navigation
         run: python RepositoryTools/render_current_navigation.py
 
