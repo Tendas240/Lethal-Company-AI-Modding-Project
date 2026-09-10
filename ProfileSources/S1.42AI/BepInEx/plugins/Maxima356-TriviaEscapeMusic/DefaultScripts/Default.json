@@ -1,0 +1,93 @@
+{
+    "comment": "Script contenant ShipTakeOff est ApparatusTaken",
+    "isAddon": true,
+    "volumeGroups": [
+        {
+            "tag": "EscapeMusic",
+            "volumeLerpSpeed": 2,
+            "stoppingVolumeLerpSpeed": 0.25,
+            "volumeRules": [
+                {
+                    "comment": "Spectator volume",
+                    "volume": 0.5,
+                    "condition": {
+                        "conditionType": "Not",
+                        "condition": {
+                            "conditionType": "PlayerAlive"
+                        }
+                    }
+                },
+                {
+                    "comment": "Inside facility volume",
+                    "volume": 1.4,
+                    "condition": {
+                        "conditionType": "PlayerLocation",
+                        "location": "Facility"
+                    }
+                },
+                {
+                    "comment": "Inside ship volume",
+                    "volume": 0.6,
+                    "condition": {
+                        "conditionType": "PlayerLocation",
+                        "location": "Ship"
+                    }
+                },
+                {
+                    "comment": "Default volume",
+                    "volume": 0.8
+                }
+            ],
+            "volumeModifiers": [
+                {
+                    "comment": "Crouching volume scale",
+                    "volumeScale": 1.0,
+                    "condition": {
+                        "conditionType": "PlayerCrouching"
+                    }
+                }
+            ]
+        }
+    ],
+    "scriptEvents": [
+        {
+            "comment": "Musique aléatoire ApparatusTaken",
+            "scriptEventType": "PlayMusic",
+            "gameEventType": "ApparatusTaken",
+            "overlapHandling": "OverrideTag",
+            "tag": "EscapeMusic",
+            "musicNames": [
+                "Alarm_01.ogg",
+                "Alarm_02.ogg",
+                "Alarm_03.ogg",
+                "Alarm_04.ogg",
+                "Alarm_05.ogg"
+            ]
+        },
+        {
+            "comment": "StopMusic quand ShipTakeOff",
+            "scriptEventType": "StopMusic",
+            "gameEventType": "ShipTakeOff",
+            "conditions": [],
+            "targetTags": [
+                "EscapeMusic"
+            ]
+        },
+        {
+            "comment": "Quand ShipTakeOff, joueur Facility, PlayMusic ByeByeThere.ogg",
+            "scriptEventType": "PlayMusic",
+            "gameEventType": "ShipTakeOff",
+            "conditions": [
+                {
+                    "conditionType": "PlayerLocation",
+                    "location": "Facility"
+                }
+            ],
+            "overlapHandling": "OverrideTag",
+            "tag": "EscapeMusic",
+            "musicNames": [
+                "ByeByeThere.ogg"
+            ]
+        }
+    ]
+}

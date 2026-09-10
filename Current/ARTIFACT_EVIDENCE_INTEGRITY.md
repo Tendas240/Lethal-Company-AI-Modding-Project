@@ -1,40 +1,37 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AH candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI candidate=S1.42AI runtime_test_outstanding=true -->
 # Artifact and Runtime Evidence Integrity
 
-**Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
-**Machine mirror:** `Current/ARTIFACT_EVIDENCE_INTEGRITY.json`  
-**Last-Validated:** 2026-09-09
+**Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX
+**Machine mirror:** `Current/ARTIFACT_EVIDENCE_INTEGRITY.json`
+**Last-Validated:** 2026-09-10
 
-## Current accepted profile: S1.42AH
+## Accepted gameplay baseline: S1.42AH
 
-Artifact: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`  
-SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`  
-Compatibility DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`  
-Acceptance: `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`  
-Final decisive evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`  
-Final raw-log SHA-256: `ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729`
+Artifact: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`
+SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
+Acceptance: `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`
+Final decisive evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
 
-S1.42AH is the accepted full-normal-stack gameplay base and latest built artifact. There is no active runtime candidate and no runtime test outstanding.
+S1.42AH remains the accepted full-normal-stack gameplay base while the independent ShyGuy correction is runtime-validated.
 
-## Preserved S1.42AH evidence chain
+## Latest built artifact / active runtime candidate: S1.42AI
 
-- Candidate: `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`.
-- First partial decision/evidence: `Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md` / `RuntimeEvidence/S1.42AH/20260908T162411Z/`, raw-log SHA-256 `1778ad5b572349cda261b3b848e0a697dfdb527a1e4be4ab72624a88f9c51ef3`.
-- Second partial decision/evidence: `Current/141_S1.42AH_RUNTIME_PARTIAL_VALIDATION_REVERSE_DIRECTION_ADAPTER.md` / `RuntimeEvidence/S1.42AH/20260908T174352Z/`, raw-log SHA-256 `6fca32623eb350c53b4f81c98ea3ef1218dee9a4256a4bb70a8950f1b3ab06a6`.
-- Final acceptance/evidence: `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md` / `RuntimeEvidence/S1.42AH/20260909T162513Z/`, raw-log SHA-256 `ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729`.
+Artifact: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`
+SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
+Candidate record: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`
+Project status: `Current/Projektstatus_S1.42AI_CANDIDATE.json`
+Build plan: `BuildSpecs/S1.42AI_PLAN.md`
+Static evidence: `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`
+Readable snapshot: `ProfileSources/S1.42AI/`
 
-The final decision uses only the last gameplay run of the final uploaded log, per user instruction. That last run contains MouthDogs and a Redwood Titan followed by normal Redwood Titan death. The log does not encode the attacker identity on the Titan death line; the explicit acceptance record preserves the exact evidence boundary.
+S1.42AI is build-pass and static-delta-verified. Runtime validation is outstanding, so it is indexed in `pending_profiles` with `runtime_evidence_required=false` until a final explicit acceptance or rejection decision exists.
 
-## Accepted predecessor / rejected predecessor
+The exact static delta from S1.42AH changes only `export.r2x` and `BepInEx/config/BrutalCompanyMinusExtraReborn/ModdedEvents.cfg`; the semantic config change is exactly the three `[ShyGuy]` exterior values set to zero. Every other archive member is byte-identical to S1.42AH, including `Scopophobia.cfg`.
 
-S1.42AF remains an accepted historical predecessor and rollback/provenance point.
+## Preserved accepted/rejected evidence chain
 
-S1.42AG remains `RUNTIME_REJECTED_PARTIAL_FIX` and must not be used as a gameplay/build base.
-
-## DLL provenance
-
-The S1.42AH cumulative `S139CompatibilityFixes.dll` SHA-256 `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573` is now accepted binary provenance for the current gameplay baseline. Its exact source remains `Patches/S139CompatibilityFixes/Plugin.cs`.
+S1.42AH retains its three-stage runtime evidence chain and remains the accepted baseline. S1.42AF remains an accepted historical predecessor/rollback point. S1.42AG remains `RUNTIME_REJECTED_PARTIAL_FIX` and is not a gameplay/build base.
 
 ## Retrieval invariant
 
-No future decision may depend only on opaque `.r2z`, DLL or giant-log bytes. A reasoning-critical fact must also exist in readable `ProfileSources`, `FILE_INDEX`, runtime `INDEX`/analysis, source, build record, or canonical documentation. Completed runtime decisions retain exact evidence paths and SHA-256 provenance; historical partial runs remain preserved when they prove distinct parts of an accepted contract.
+No future decision may depend only on opaque `.r2z`, DLL or giant-log bytes. A reasoning-critical fact must also exist in readable `ProfileSources`, `FILE_INDEX`, runtime `INDEX`/analysis, source, build record, or canonical documentation. The pending S1.42AI entry deliberately contains no runtime-log claim before the user performs the authorized runtime gate.

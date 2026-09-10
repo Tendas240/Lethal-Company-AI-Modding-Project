@@ -5,7 +5,7 @@
 **Canonical-For:** `bcmer`  
 **Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`, `Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`, S1.42AC ProfileSources/runtime evidence, `RuntimeEvidence/S1.42AH/20260908T202138Z/`, `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`  
 **Related:** `Knowledge/CURRENT_LIFECYCLE.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-09-09
+**Last-Validated:** 2026-09-10
 
 ## Version invariant
 
@@ -39,19 +39,13 @@ Accepted BCMER rain-event routes remain disabled:
 
 Natural vanilla Rainy weather remains allowed. The requirement concerns BCMER event routes, not all rain in the game.
 
-## ShyGuy event exterior-spawn guard — confirmed correction pending
+## ShyGuy event exterior-spawn guard — S1.42AI active runtime candidate
 
-S1.42AH runtime evidence `RuntimeEvidence/S1.42AH/20260908T202138Z/` proves that the first gameplay run selected BCMER event `ShyGuy` and then produced `ShyGuy(Clone) spawned outside; Switching to exterior AI`. This is an event-specific exterior spawn, not ordinary Scopophobia spawn ownership.
+S1.42AH runtime evidence `RuntimeEvidence/S1.42AH/20260908T202138Z/` proved that BCMER event `ShyGuy` could create `ShyGuy(Clone) spawned outside; Switching to exterior AI` even while ordinary Scopophobia v1.3.4 retained `SpawnOutside = false`.
 
-The current Scopophobia v1.3.4 configuration retains its ordinary contract `SpawnInside = true` and `SpawnOutside = false`, with `false` recorded as the plugin default for ordinary exterior spawning. In contrast, the current S1.42AH BCMER `[ShyGuy]` event carries positive exterior values:
+S1.42AI is now built directly from accepted S1.42AH to correct only that proven event configuration defect. Its exact static evidence is `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md` and its active candidate authority is `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
 
-```text
-ShyGuyDef OutsideEnemyRarity = 10, 0.4, 10, 50
-ShyGuyDef MinOutsideEnemy = 1, 0.02, 1, 3
-ShyGuyDef MaxOutsideEnemy = 2, 0.04, 2, 6
-```
-
-The first eligible independent BCMER/config successor after the S1.42AH lifecycle gate closes must preserve the enabled `[ShyGuy]` event, its EventType and its current interior values, but set only that exterior triplet to:
+The S1.42AI `[ShyGuy]` event retains `Event Enabled? = true`, `Event Type = VeryBad`, and all three accepted interior values, while the exterior triplet is exactly:
 
 ```text
 ShyGuyDef OutsideEnemyRarity = 0, 0, 0, 0
@@ -59,14 +53,13 @@ ShyGuyDef MinOutsideEnemy = 0, 0, 0, 0
 ShyGuyDef MaxOutsideEnemy = 0, 0, 0, 0
 ```
 
-Do not mutate the already-built/checksum-fixed S1.42AH profile or readable source snapshot. Do not set Scopophobia `SpawnOutside = true` as a workaround. The exact renderer/material reason for the user-observed invisible exterior ShyGuy is not proven and must not be overstated.
+`Scopophobia.cfg` is byte-identical to accepted S1.42AH, so ordinary `SpawnInside = true` / `SpawnOutside = false` ownership is preserved. No package state or unrelated BCMER event changed.
 
-If S1.42AH is rejected, the canonical S1.42AF-derived MouthDog recovery path takes precedence; this unrelated BCMER correction remains pending for the first eligible independent successor unless a later lifecycle explicitly arms a combined scope.
+Runtime validation is now outstanding and must positively exercise the BCMER ShyGuy event, preserve intended interior ShyGuy availability, and prove no BCMER exterior ShyGuy path/marker from that event. The exact renderer/material cause of the prior invisible exterior symptom remains unproven and must not be overstated.
 
-The deferred `woah25-LethalEscapeUpdated 2.5.0` evaluation is separate: an enemy spawning inside and later transitioning outside is not equivalent to normal exterior spawning. A future ShyGuy/LethalEscape evaluation must validate the transition, visibility/material state, navigation, targeting, networking and cleanup without using ordinary `SpawnOutside = true` as a substitute.
+The deferred `woah25-LethalEscapeUpdated 2.5.0` evaluation remains separate: inside -> outside transition compatibility is not equivalent to ordinary exterior spawning and must not be emulated by changing Scopophobia `SpawnOutside`.
 
-Full implementation and validation contract: `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`.
-
+Full contract: `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`.
 ## Accepted equal EventType static model — S1.42AC
 
 The accepted static base distribution is eight EventTypes at equal probability. S1.42AC implements constant scales:

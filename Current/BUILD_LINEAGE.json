@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "date": "2026-09-09",
+  "date": "2026-09-10",
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AH",
-  "active_candidate_build_id": null,
-  "latest_built_artifact_id": "S1.42AH",
+  "active_candidate_build_id": "S1.42AI",
+  "latest_built_artifact_id": "S1.42AI",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
     {
@@ -553,6 +553,23 @@
       "build_commit": "fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5",
       "safe_as_gameplay_base": true,
       "principal_feature": "accepted dual prevention on exact LethalMin MouthDog adapter plus exact Vanilla MouthDogAI Pikmin collision path; final non-Pikmin EnemyAI neighbor pass-through closed with deliberate Redwood Titan runtime evidence"
+    },
+    {
+      "id": "S1.42AI",
+      "title": "BCMER ShyGuy Interior-Only Event Correction",
+      "status": "active-runtime-candidate",
+      "parent": "S1.42AH",
+      "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+      "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+      "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
+      "candidate_record": "Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md",
+      "decision_record": "Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md",
+      "project_status": "Current/Projektstatus_S1.42AI_CANDIDATE.json",
+      "workflow_run": 34496960816,
+      "build_commit": "2dea753ec48ea2a8f417491ae9a13cf7a6d7b8b9",
+      "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "single-variable BCMER ShyGuy interior-only event correction; three exterior event values zeroed while all interior/event/type and Scopophobia contracts remain unchanged"
     }
   ],
   "feature_index": {
@@ -577,7 +594,8 @@
     "Functional_Microwave_corrected_18_Moon_18_Interior_contract": "S1.42AF",
     "Functional_Microwave_path_length_safe_packaging": "S1.42AF",
     "MouthDog_to_Pikmin_one_way_protection_partial_fix_rejected": "S1.42AG",
-    "MouthDog_to_Pikmin_dual_prevention_accepted": "S1.42AH"
+    "MouthDog_to_Pikmin_dual_prevention_accepted": "S1.42AH",
+    "BCMER_ShyGuy_interior_only_event_correction": "S1.42AI"
   },
   "lineage_invariants": [
     "S1.42C is the canonical normal enemy-spawn/config restore baseline after S1.42B diagnostic divergence.",
