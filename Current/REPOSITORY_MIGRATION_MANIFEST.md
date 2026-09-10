@@ -5,7 +5,7 @@
 **Canonical-For:** moved/redirected/deleted-files rationale  
 **Machine mirror:** `Current/REPOSITORY_MIGRATION_MANIFEST.json`  
 **Cold-history mapping:** `Current/COLD_HISTORY_STORAGE.json`  
-**Last-Validated:** 2026-09-08
+**Last-Validated:** 2026-09-10
 
 ## Migration model
 
@@ -50,6 +50,10 @@ Before compaction:
 - controller truth remained in `Current/CURRENT_STATE.json`, `BuildSpecs/current.json`, and `RuntimeInbox/ACTIVE_BUILD.txt`.
 
 Result: no unique fact was lost, while ordinary current-state navigation no longer requires reconciling another large duplicate declaration.
+
+`Knowledge/REPOSITORY_OVERHAUL.md` was later compacted semantically on 2026-09-10 by removing its duplicated volatile gameplay handoff and duplicated permanent-CI gate inventory. Historical overhaul/audit facts remain in that topic and its linked evidence; live lifecycle truth now routes exclusively to `Current/CURRENT_STATE.json` plus `Knowledge/CURRENT_LIFECYCLE.md`, while executable CI composition routes to `.github/workflows/knowledge-architecture.yml` and coverage semantics to `Current/VALIDATOR_COVERAGE.json`.
+
+Result: the canonical architecture topic remains useful for repository-overhaul questions without becoming another build-specific lifecycle or gate-count authority. `RepositoryTools/state_neutral_authority_validator.py` permanently guards this boundary and includes a negative regression fixture.
 
 ## Explicit supersession / recovery routes
 
