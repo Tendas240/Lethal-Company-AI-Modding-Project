@@ -41,10 +41,16 @@ Static verification proves exactly two changed existing archive members: `export
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` is the runtime/evidence-attribution pointer.
 - S1.42AI is not accepted until an explicit runtime decision closes the gate.
 
+## Diagnostic preparation priority
+
+The user requested a temporary ShyGuy-only enemy and BCMER event isolation revision before the next gameplay run. The current preparation authority is `BuildSpecs/S1.42AI_PLAN.md` (planned `S1.42AI-DIAG1`, not built). The existing S1.42AI artifact and its full-normal runtime gate remain intact and unaccepted; diagnostic success cannot replace full-normal acceptance.
+
+The existing S1.42AI import/upload pair below belongs to the existing full-normal artifact. Do not present it as an isolation build. Keep both controllers unchanged during plan preparation and preserve upload access for already-completed S1.42AI tests.
+
 ## Canonical Gale workflow
 
 Use the repository-driven **v2.4** Gale replacement path in `Knowledge/GALE_PROFILE_WORKFLOW.md`, implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at canonical helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. For this candidate, pair it with the exact S1.42AI runtime-log uploader recorded in `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, as required by `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`.
 
 ## Exact next project action
 
-Import S1.42AI with the canonical Gale v2.4 replacement helper and run the full-normal BCMER ShyGuy runtime gate from Current/143. Positively obtain or force the BCMER ShyGuy event, confirm ShyGuy remains available through the intended interior event path, verify that BCMER adds no ShyGuy to the exterior path and that no 'ShyGuy(Clone) spawned outside; Switching to exterior AI' marker occurs from that event, then upload the complete fresh S1.42AI LogOutput.log with the build-specific uploader in Current/143. Do not accept S1.42AI from static/build success alone.
+Prepare the temporary S1.42AI-DIAG1 ShyGuy-only enemy and BCMER event isolation described in BuildSpecs/S1.42AI_PLAN.md before requesting another gameplay run. Preserve the existing S1.42AI artifact and its still-open full-normal runtime gate. Complete the exact spawn/forced-event interception safety review, then implement and build the separately identified diagnostic revision through repository-native infrastructure. Do not import the existing S1.42AI profile as if it already contained isolation. Keep build and runtime controllers unchanged until an atomic validated candidate transition; ingest any already-completed S1.42AI test without requiring a repeat.

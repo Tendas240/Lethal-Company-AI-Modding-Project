@@ -40,7 +40,7 @@ Latest built artifact and active runtime candidate: **S1.42AI — BCMER ShyGuy I
 
 `BuildSpecs/current.json` is disabled and guards S1.42AI; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` attributes the next runtime evidence to the candidate.
 
-The exact next action is the S1.42AI full-normal BCMER ShyGuy runtime gate: positively exercise the event, preserve interior ShyGuy behavior and prove the BCMER exterior path/marker is absent. Use `Knowledge/CURRENT_LIFECYCLE.md` and `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` for the exact test/upload contract.
+The exact next action is to prepare the ShyGuy-only enemy/event diagnostic revision planned in `BuildSpecs/S1.42AI_PLAN.md` before another gameplay run. S1.42AI-DIAG1 is planned, not built; existing S1.42AI remains the unaccepted candidate with its normal-stack runtime gate outstanding. Use `Knowledge/CURRENT_LIFECYCLE.md` for execution order and `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` for the retained full-normal gate and existing-artifact uploader.
 
 ## Authority rule
 

@@ -61,5 +61,18 @@
     "runtime_active_build": "S1.42AI",
     "successor_armed": false
   },
-  "exact_next_step": "Import S1.42AI with the canonical Gale v2.4 replacement helper and run the full-normal BCMER ShyGuy runtime gate from Current/143. Positively obtain or force the BCMER ShyGuy event, confirm ShyGuy remains available through the intended interior event path, verify that BCMER adds no ShyGuy to the exterior path and that no 'ShyGuy(Clone) spawned outside; Switching to exterior AI' marker occurs from that event, then upload the complete fresh S1.42AI LogOutput.log with the build-specific uploader in Current/143. Do not accept S1.42AI from static/build success alone."
+  "exact_next_step": "Prepare the temporary S1.42AI-DIAG1 ShyGuy-only enemy and BCMER event isolation described in BuildSpecs/S1.42AI_PLAN.md before requesting another gameplay run. Preserve the existing S1.42AI artifact and its still-open full-normal runtime gate. Complete the exact spawn/forced-event interception safety review, then implement and build the separately identified diagnostic revision through repository-native infrastructure. Do not import the existing S1.42AI profile as if it already contained isolation. Keep build and runtime controllers unchanged until an atomic validated candidate transition; ingest any already-completed S1.42AI test without requiring a repeat.",
+  "diagnostic_revision": {
+    "build_id": "S1.42AI-DIAG1",
+    "status": "PLANNED_NOT_BUILT",
+    "plan": "BuildSpecs/S1.42AI_PLAN.md",
+    "base_build_id": "S1.42AI",
+    "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+    "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+    "enemy_allowlist": "Shy Guy only; exact runtime identity resolution required before implementation",
+    "bcmer_event_allowlist": [
+      "ShyGuy"
+    ],
+    "full_normal_validation": "DEFERRED_UNTIL_AFTER_DIAGNOSTIC_NOT_WAIVED"
+  }
 }

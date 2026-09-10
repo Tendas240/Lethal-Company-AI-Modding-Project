@@ -55,7 +55,9 @@ ShyGuyDef MaxOutsideEnemy = 0, 0, 0, 0
 
 `Scopophobia.cfg` is byte-identical to accepted S1.42AH, so ordinary `SpawnInside = true` / `SpawnOutside = false` ownership is preserved. No package state or unrelated BCMER event changed.
 
-Runtime validation is now outstanding and must positively exercise the BCMER ShyGuy event, preserve intended interior ShyGuy availability, and prove no BCMER exterior ShyGuy path/marker from that event. The exact renderer/material cause of the prior invisible exterior symptom remains unproven and must not be overstated.
+The user requested a temporary ShyGuy-only enemy and BCMER event isolation revision before the next gameplay run. The current preparation authority is `BuildSpecs/S1.42AI_PLAN.md` (planned `S1.42AI-DIAG1`, not built). The existing S1.42AI artifact and its full-normal runtime gate remain intact and unaccepted; diagnostic success cannot replace full-normal acceptance.
+
+The diagnostic must keep only `[ShyGuy]` enabled and executable, close forced/side-event bypasses, use one event draw with no bonus draws, and prevent non-ShyGuy enemy spawns. Do not mask an unexpected exterior Shy Guy by removing it. The underlying correction still requires positive interior event execution and absence of its exterior spawn/AI defect. The exact renderer/material cause of the prior invisible exterior symptom remains unproven and must not be overstated.
 
 The deferred `woah25-LethalEscapeUpdated 2.5.0` evaluation remains separate: inside -> outside transition compatibility is not equivalent to ordinary exterior spawning and must not be emulated by changing Scopophobia `SpawnOutside`.
 

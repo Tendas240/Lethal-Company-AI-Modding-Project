@@ -53,22 +53,35 @@
   "selected_scope": {
     "scope_id": "BCMER_SHYGUY_INTERIOR_ONLY_CORRECTION",
     "title": "BCMER ShyGuy Interior-Only Event Correction",
-    "status": "BUILT_ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "status": "DIAGNOSTIC_REVISION_PLANNED_EXISTING_CANDIDATE_UNACCEPTED",
     "accepted_baseline": "S1.42AH",
     "plan": "BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md",
     "topic_authority": "Knowledge/BCMER.md",
     "runtime_finding": "RuntimeEvidence/S1.42AH/20260908T202138Z/",
     "finding": "S1.42AI is built directly from accepted S1.42AH with an exact static single-config delta: only export.r2x profile identity and the BCMER ModdedEvents.cfg member changed, and the semantic config delta is exactly the three ShyGuy exterior values set to zero. Every other archive member is byte-identical to S1.42AH, including Scopophobia.cfg. Runtime validation is now required before any acceptance.",
-    "analysis_contract": "Runtime-validate S1.42AI as the active candidate under the full normal stack. Positively exercise the BCMER ShyGuy event, prove intended interior ShyGuy availability, verify no BCMER ShyGuy exterior spawn/list path and no exterior-AI marker from that event, preserve the enabled event, EventType, interior values, ordinary Scopophobia SpawnOutside=false contract and inherited S1.42AH behavior, and require no new project regression markers. Do not mix unrelated deferred scopes.",
+    "analysis_contract": "Prepare the S1.42AI-DIAG1 ShyGuy-only diagnostic revision under BuildSpecs/S1.42AI_PLAN.md while preserving existing S1.42AI and its outstanding full-normal runtime gate. Prove exact enemy-spawn and BCMER event-execution coverage, including forced/side events, without masking exterior Shy Guy failures. Diagnostic success is not full-normal acceptance.",
     "candidate_build_id": "S1.42AI",
     "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
     "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
     "candidate_record": "Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md",
     "project_status": "Current/Projektstatus_S1.42AI_CANDIDATE.json",
     "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
-    "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md"
+    "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+    "diagnostic_revision": {
+      "build_id": "S1.42AI-DIAG1",
+      "status": "PLANNED_NOT_BUILT",
+      "plan": "BuildSpecs/S1.42AI_PLAN.md",
+      "base_build_id": "S1.42AI",
+      "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+      "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+      "enemy_allowlist": "Shy Guy only; exact runtime identity resolution required before implementation",
+      "bcmer_event_allowlist": [
+        "ShyGuy"
+      ],
+      "full_normal_validation": "DEFERRED_UNTIL_AFTER_DIAGNOSTIC_NOT_WAIVED"
+    }
   },
-  "next_action": "Import S1.42AI with the canonical Gale v2.4 replacement helper and run the full-normal BCMER ShyGuy runtime gate from Current/143. Positively obtain or force the BCMER ShyGuy event, confirm ShyGuy remains available through the intended interior event path, verify that BCMER adds no ShyGuy to the exterior path and that no 'ShyGuy(Clone) spawned outside; Switching to exterior AI' marker occurs from that event, then upload the complete fresh S1.42AI LogOutput.log with the build-specific uploader in Current/143. Do not accept S1.42AI from static/build success alone.",
+  "next_action": "Prepare the temporary S1.42AI-DIAG1 ShyGuy-only enemy and BCMER event isolation described in BuildSpecs/S1.42AI_PLAN.md before requesting another gameplay run. Preserve the existing S1.42AI artifact and its still-open full-normal runtime gate. Complete the exact spawn/forced-event interception safety review, then implement and build the separately identified diagnostic revision through repository-native infrastructure. Do not import the existing S1.42AI profile as if it already contained isolation. Keep build and runtime controllers unchanged until an atomic validated candidate transition; ingest any already-completed S1.42AI test without requiring a repeat.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,

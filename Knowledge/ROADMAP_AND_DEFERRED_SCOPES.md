@@ -18,7 +18,9 @@ Latest built artifact and active runtime candidate: **S1.42AI — BCMER ShyGuy I
 
 S1.42AI implements the previously selected config-only correction directly from accepted S1.42AH. Static verification proves the only semantic gameplay/config change is the `[ShyGuy]` exterior triplet becoming zero while Event Enabled, EventType, all three interior values and ordinary Scopophobia `SpawnOutside = false` remain unchanged. Every unrelated archive member is byte-identical to S1.42AH.
 
-The current gate is runtime-only: positively execute the BCMER ShyGuy event, prove intended interior ShyGuy availability, and prove BCMER does not create an exterior ShyGuy or emit the prior exterior-AI marker from that event. Exact authority is `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
+The user requested a temporary ShyGuy-only enemy and BCMER event isolation revision before the next gameplay run. The current preparation authority is `BuildSpecs/S1.42AI_PLAN.md` (planned `S1.42AI-DIAG1`, not built). The existing S1.42AI artifact and its full-normal runtime gate remain intact and unaccepted; diagnostic success cannot replace full-normal acceptance.
+
+After the diagnostic stage, the retained normal-stack gate must positively exercise ShyGuy and prove its interior availability and absence of the exterior defect. Exact acceptance authority remains `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
 
 The earlier user-observed invisible exterior ShyGuy remains a symptom whose exact renderer/material mechanism was not proven; S1.42AI claims only to correct the proven BCMER exterior-spawn configuration defect.
 
