@@ -83,13 +83,13 @@ for package in package_ids:
             package_record["assemblies"].append({"member": member, "sha256": sha(data), "types": types})
             write(package + "-types.json", json.dumps(package_record, indent=2) + "\n")
             if "Scopophobia" in package:
-                selected = [t for t in types if re.search(r"(^|\.)((ShyGuy[^.]*)|(Plugin))$", t)]
+                selected = [t for t in types if t in ("ShyGuy.AI.ShyGuyAI", "Scopophobia.ScopophobiaPlugin", "Scopophobia.EnemyDataManager", "Scopophobia.EnemyHelper", "Scopophobia.Patches.GetShyGuyPrefabForLaterUse", "Scopophobia.ShyGuyPaintingProp")]
                 markers = r"class |EnemyType|enemyName|enemyPrefab|ShyGuy|Register|Spawn|spawn|Awake\(|Start\(|OnNetwork"
             else:
                 selected = [t for t in types if t in ("BrutalCompanyMinus.Minus.Events.ShyGuy",
                     "BrutalCompanyMinus.Minus.EventManager", "BrutalCompanyMinus.Minus.Manager",
                     "BrutalCompanyMinus.Minus.MEvent", "BrutalCompanyMinus.Assets")]
-                markers = r"class |ShyGuy|GetEnemy\(|ChooseEvents|RandomWeightedEvent|ApplyEvents|forcedEvents|EventsToSpawnWith|Execute\(|InsideEnemies\(|OutsideEnemies\(|DoSpawn|Instantiate|AddEnemyToPool"
+                markers = r"class |ShyGuy|GetEnemy\(|EnemyList|ChooseEvents|RandomWeightedEvent|ApplyEvents|forcedEvents|EventsToSpawnWith|Execute\(|InsideEnemies\(|OutsideEnemies\(|DoSpawn|Instantiate|AddEnemyToPool"
             for typename in selected:
                 source = run(["ilspycmd", "-t", typename, str(dll)])
                 name = re.sub(r"[^A-Za-z0-9_.-]", "_", package + "-" + typename) + ".txt"
