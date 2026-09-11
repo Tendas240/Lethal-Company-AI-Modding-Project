@@ -22,6 +22,7 @@ $EvidenceRoot = 'SourceEvidence/VanillaV81/VentNestLifecycle'
 $ReportName = 'V81_VENT_NEST_LIFECYCLE_FOCUSED_IL.txt'
 $Utf8 = New-Object System.Text.UTF8Encoding($false)
 $LifecycleNames = @('Awake', 'Start', 'Update', 'LateUpdate', 'FixedUpdate', 'OnEnable', 'OnDisable', 'OnDestroy', 'OnNetworkSpawn', 'OnNetworkDespawn')
+$MaxBaseDepth = 12
 
 function Write-Step { param([string]$Message) Write-Host ('[VentNestV81] ' + $Message) -ForegroundColor Cyan }
 function Get-Sha256Lower {
@@ -169,9 +170,16 @@ function Ensure-DotNetAndIlSpy {
     return [pscustomobject]@{ DotNet = $dotnetExe; IlSpyDll = $ilspyDllMatches[0].FullName }
 }
 
+function Get-IlSimpleTypeName {
+    param([Parameter(Mandatory = $true)][string]$TypeName)
+    $normalized = $TypeName -replace '/', '.'
+    $parts = @($normalized -split '\.')
+    return $parts[$parts.Count - 1]
+}
 function Get-IlTypeModel {
     param([Parameter(Mandatory = $true)][string]$Il, [Parameter(Mandatory = $true)][string]$TypeName)
-    $endPattern = '(?m)^[\t ]*\}\s*// end of method ' + [regex]::Escape($TypeName) + '::(?<name>[^\r\n]+?)\s*$'
+    $simpleName = Get-IlSimpleTypeName -TypeName $TypeName
+    $endPattern = '(?m)^[\t ]*\}\s*// end of method ' + [regex]::Escape($simpleName) + '::(?<name>[^\r\n]+?)\s*$'
     $endMatches = [regex]::Matches($Il, $endPattern)
     if ($endMatches.Count -eq 0) { throw ($TypeName + ': no exact IL method end markers were found.') }
     $methods = @()
@@ -193,9 +201,10 @@ function Get-IlTypeModel {
             Index = $start
         }
     }
-    $headerMatch = [regex]::Match($Il, '(?ms)^[\t ]*\.class\b.*?\b' + [regex]::Escape($TypeName) + '\b.*?^[\t ]*\{')
-    $header = if ($headerMatch.Success) { $headerMatch.Value.TrimEnd('{').Trim() } else { '.class ' + $TypeName }
-    return [pscustomobject]@{ TypeName = $TypeName; Header = $header; Methods = @($methods) }
+    $headerMatch = [regex]::Match($Il, '(?ms)^[\t ]*\.class\b.*?\b' + [regex]::Escape($simpleName) + '\b.*?^[\t ]*\{')
+    if (-not $headerMatch.Success) { throw ($TypeName + ': exact IL class header was not found.') }
+    $header = $headerMatch.Value.TrimEnd('{').Trim()
+    return [pscustomobject]@{ TypeName = $TypeName; SimpleName = $simpleName; Header = $header; Methods = @($methods) }
 }
 function Get-ExactIlMethod {
     param([Parameter(Mandatory = $true)]$Model, [Parameter(Mandatory = $true)][string]$Name, [Parameter(Mandatory = $true)][string]$SignaturePattern)
@@ -205,6 +214,7 @@ function Get-ExactIlMethod {
 }
 function Get-IlOneHopContext {
     param([Parameter(Mandatory = $true)]$Model, [Parameter(Mandatory = $true)][object[]]$Seeds, [int]$MaxLines = 1600)
+    if ($Seeds.Count -eq 0) { return @() }
     $selected = @{}
     foreach ($seed in $Seeds) { $selected[[string]$seed.Index] = $seed }
     foreach ($candidate in $Model.Methods) {
@@ -221,16 +231,101 @@ function Get-IlOneHopContext {
     $lineCount = 0
     foreach ($method in $result) { $lineCount += @($method.Text -split '\r?\n').Count }
     if ($lineCount -gt $MaxLines) { throw ($Model.TypeName + ': focused IL extraction is ' + $lineCount + ' lines; limit ' + $MaxLines + '. No evidence was uploaded.') }
-    if ($result.Count -eq 0) { throw ($Model.TypeName + ': focused IL extraction is empty.') }
     return $result
 }
-function Get-IlLifecycleSeeds {
+function Get-DeclaredLifecycleInfo {
     param([Parameter(Mandatory = $true)]$Model)
     $awake = @($Model.Methods | Where-Object { $_.Name -eq 'Awake' })
-    if ($awake.Count -ne 1) { throw ($Model.TypeName + ': expected exactly one declared IL Awake method, found ' + $awake.Count + '.') }
+    if ($awake.Count -gt 1) { throw ($Model.TypeName + ': expected at most one declared IL Awake method, found ' + $awake.Count + '.') }
     $seeds = @($Model.Methods | Where-Object { $LifecycleNames -contains $_.Name })
-    if (@($seeds | Where-Object { $_.Name -eq 'Awake' }).Count -ne 1) { throw ($Model.TypeName + ': Awake was not retained in IL lifecycle selection.') }
-    return $seeds
+    return [pscustomobject]@{
+        AwakeCount = $awake.Count
+        AwakeSignature = if ($awake.Count -eq 1) { $awake[0].Signature } else { $null }
+        Seeds = @($seeds)
+    }
+}
+function Get-IlBaseTypeReference {
+    param([Parameter(Mandatory = $true)]$Model)
+    $match = [regex]::Match($Model.Header, '(?ms)\bextends\s+(?:\[(?<assembly>[^\]]+)\])?(?<type>[^\s\{]+)')
+    if (-not $match.Success) { return $null }
+    $typeName = $match.Groups['type'].Value.Trim()
+    if ([string]::IsNullOrWhiteSpace($typeName)) { throw ($Model.TypeName + ': IL extends clause contained no base type.') }
+    return [pscustomobject]@{
+        AssemblyName = $match.Groups['assembly'].Value.Trim()
+        TypeName = $typeName
+    }
+}
+function Resolve-ReferencedAssemblyPath {
+    param(
+        [Parameter(Mandatory = $true)][string]$ManagedDir,
+        [AllowEmptyString()][string]$AssemblyName,
+        [Parameter(Mandatory = $true)][string]$CurrentAssemblyPath
+    )
+    if ([string]::IsNullOrWhiteSpace($AssemblyName)) { return $CurrentAssemblyPath }
+    $leaf = $AssemblyName + '.dll'
+    $matches = @(Get-ChildItem -LiteralPath $ManagedDir -File | Where-Object { $_.Name -ceq $leaf })
+    if ($matches.Count -ne 1) { throw ('Base assembly ' + $leaf + ': expected exactly one installed Managed DLL, found ' + $matches.Count + '.') }
+    return $matches[0].FullName
+}
+function Get-InstalledIlType {
+    param(
+        [Parameter(Mandatory = $true)]$IlSpy,
+        [Parameter(Mandatory = $true)][string]$ManagedDir,
+        [Parameter(Mandatory = $true)][string]$AssemblyPath,
+        [Parameter(Mandatory = $true)][string]$TypeName
+    )
+    $assemblyLeaf = Split-Path -Leaf $AssemblyPath
+    Write-Step ('Decompiling installed base IL type ' + $TypeName + ' from ' + $assemblyLeaf + '.')
+    $il = Invoke-CheckedNativeProcess -FilePath $IlSpy.DotNet -Arguments @($IlSpy.IlSpyDll, '-il', '-t', $TypeName, '-r', $ManagedDir, $AssemblyPath) -Label ($TypeName + ' IL decompile')
+    if ([string]::IsNullOrWhiteSpace($il)) { throw ($TypeName + ': IL decompiler returned empty source.') }
+    return [pscustomobject]@{
+        AssemblyPath = $AssemblyPath
+        AssemblyFile = $assemblyLeaf
+        AssemblySha256 = Get-Sha256Lower $AssemblyPath
+        Il = $il
+        IlSha256 = Get-TextSha256 $il
+        Model = Get-IlTypeModel -Il $il -TypeName $TypeName
+    }
+}
+function Get-BaseLifecycleChain {
+    param(
+        [Parameter(Mandatory = $true)]$IlSpy,
+        [Parameter(Mandatory = $true)][string]$ManagedDir,
+        [Parameter(Mandatory = $true)]$RootModel,
+        [Parameter(Mandatory = $true)][string]$RootAssemblyPath,
+        [int]$MaxDepth = $MaxBaseDepth
+    )
+    $result = @()
+    $visited = @{}
+    $currentModel = $RootModel
+    $currentAssemblyPath = $RootAssemblyPath
+    for ($depth = 1; $depth -le $MaxDepth; $depth++) {
+        $baseRef = Get-IlBaseTypeReference -Model $currentModel
+        if ($null -eq $baseRef) { return @($result) }
+        $key = ($baseRef.AssemblyName + '|' + $baseRef.TypeName).ToLowerInvariant()
+        if ($visited.ContainsKey($key)) { throw ('Base type cycle detected at ' + $baseRef.TypeName + '.') }
+        $visited[$key] = $true
+        if ($baseRef.TypeName -match '^(System\.)?Object$') {
+            $result += [pscustomobject]@{
+                Depth = $depth; TypeName = $baseRef.TypeName; AssemblyFile = $baseRef.AssemblyName; AssemblySha256 = $null
+                Header = ('terminal base ' + $baseRef.TypeName); FullIlSha256 = $null; AwakeCount = 0; AwakeSignature = $null
+                LifecycleSignatures = @(); Methods = @(); Terminal = $true
+            }
+            return @($result)
+        }
+        $assemblyPath = Resolve-ReferencedAssemblyPath -ManagedDir $ManagedDir -AssemblyName $baseRef.AssemblyName -CurrentAssemblyPath $currentAssemblyPath
+        $resolved = Get-InstalledIlType -IlSpy $IlSpy -ManagedDir $ManagedDir -AssemblyPath $assemblyPath -TypeName $baseRef.TypeName
+        $lifecycle = Get-DeclaredLifecycleInfo -Model $resolved.Model
+        $context = @(Get-IlOneHopContext -Model $resolved.Model -Seeds $lifecycle.Seeds -MaxLines 500)
+        $result += [pscustomobject]@{
+            Depth = $depth; TypeName = $baseRef.TypeName; AssemblyFile = $resolved.AssemblyFile; AssemblySha256 = $resolved.AssemblySha256
+            Header = $resolved.Model.Header; FullIlSha256 = $resolved.IlSha256; AwakeCount = $lifecycle.AwakeCount; AwakeSignature = $lifecycle.AwakeSignature
+            LifecycleSignatures = @($lifecycle.Seeds | ForEach-Object { $_.Signature }); Methods = @($context); Terminal = $false
+        }
+        $currentModel = $resolved.Model
+        $currentAssemblyPath = $assemblyPath
+    }
+    throw ('Base type chain exceeded maximum depth ' + $MaxDepth + '. Refusing incomplete lifecycle evidence.')
 }
 function New-EvidenceTreeEntries {
     param([string]$Directory, [string]$Report, [string]$Manifest)
@@ -317,24 +412,14 @@ function Invoke-ExtractorSelfTest {
     if (@($roundContext | Where-Object { $_.Signature -match '\(\s*int32\b' }).Count -ne 0) { throw 'Wrong RoundManager overload leaked into IL exact selection.' }
 
     $nestFixture = @'
-.class public auto ansi beforefieldinit EnemyAINestSpawnObject extends [mscorlib]System.Object
+.class public auto ansi beforefieldinit EnemyAINestSpawnObject extends [GameBase]Example.NestBase
 {
-    .method private hidebysig instance void Awake () cil managed
-    {
-        IL_0000: ldarg.0
-        IL_0001: call instance void EnemyAINestSpawnObject::RegisterNest()
-        IL_0006: ret
-    } // end of method EnemyAINestSpawnObject::Awake
     .method private hidebysig instance void OnDestroy () cil managed
     {
         IL_0000: ldarg.0
         IL_0001: call instance void EnemyAINestSpawnObject::CleanupNest()
         IL_0006: ret
     } // end of method EnemyAINestSpawnObject::OnDestroy
-    .method private hidebysig instance void RegisterNest () cil managed
-    {
-        IL_0000: ret
-    } // end of method EnemyAINestSpawnObject::RegisterNest
     .method private hidebysig instance void CleanupNest () cil managed
     {
         IL_0000: ret
@@ -342,14 +427,56 @@ function Invoke-ExtractorSelfTest {
 }
 '@
     $nest = Get-IlTypeModel -Il $nestFixture -TypeName 'EnemyAINestSpawnObject'
-    $nestSeeds = @(Get-IlLifecycleSeeds -Model $nest)
-    $nestContext = @(Get-IlOneHopContext -Model $nest -Seeds $nestSeeds)
+    $nestLifecycle = Get-DeclaredLifecycleInfo -Model $nest
+    if ($nestLifecycle.AwakeCount -ne 0 -or $null -ne $nestLifecycle.AwakeSignature) { throw 'Declared Awake absence was not retained as valid evidence.' }
+    $nestContext = @(Get-IlOneHopContext -Model $nest -Seeds $nestLifecycle.Seeds)
     $nestNames = @($nestContext | ForEach-Object { $_.Name })
-    foreach ($required in @('Awake', 'OnDestroy', 'RegisterNest', 'CleanupNest')) { if ($nestNames -notcontains $required) { throw ('Nest IL lifecycle context missing ' + $required) } }
-    $missingAwake = $nestFixture -replace '(?ms)\s*\.method private hidebysig instance void Awake \(\) cil managed.*?// end of method EnemyAINestSpawnObject::Awake\s*', "`n"
+    foreach ($required in @('OnDestroy', 'CleanupNest')) { if ($nestNames -notcontains $required) { throw ('Nest IL lifecycle context missing ' + $required) } }
+    $baseRef = Get-IlBaseTypeReference -Model $nest
+    if ($null -eq $baseRef -or $baseRef.AssemblyName -cne 'GameBase' -or $baseRef.TypeName -cne 'Example.NestBase') { throw 'Nest IL base-type reference parsing failed.' }
+
+    $baseFixture = @'
+.class public auto ansi beforefieldinit Example.NestBase extends [mscorlib]System.Object
+{
+    .method family hidebysig instance void Awake () cil managed
+    {
+        IL_0000: ldarg.0
+        IL_0001: call instance void Example.NestBase::RegisterBase()
+        IL_0006: ret
+    } // end of method NestBase::Awake
+    .method family hidebysig instance void Start () cil managed
+    {
+        IL_0000: ret
+    } // end of method NestBase::Start
+    .method private hidebysig instance void RegisterBase () cil managed
+    {
+        IL_0000: ret
+    } // end of method NestBase::RegisterBase
+}
+'@
+    $base = Get-IlTypeModel -Il $baseFixture -TypeName 'Example.NestBase'
+    $baseLifecycle = Get-DeclaredLifecycleInfo -Model $base
+    if ($baseLifecycle.AwakeCount -ne 1 -or [string]::IsNullOrWhiteSpace($baseLifecycle.AwakeSignature)) { throw 'Base declared Awake lifecycle parsing failed.' }
+    $baseContext = @(Get-IlOneHopContext -Model $base -Seeds $baseLifecycle.Seeds)
+    $baseNames = @($baseContext | ForEach-Object { $_.Name })
+    foreach ($required in @('Awake', 'Start', 'RegisterBase')) { if ($baseNames -notcontains $required) { throw ('Base lifecycle context missing ' + $required) } }
+
+    $duplicateAwakeFixture = @'
+.class public auto ansi beforefieldinit Example.DuplicateBase extends [mscorlib]System.Object
+{
+    .method family hidebysig instance void Awake () cil managed
+    {
+        IL_0000: ret
+    } // end of method DuplicateBase::Awake
+    .method family hidebysig instance void Awake (int32 fake) cil managed
+    {
+        IL_0000: ret
+    } // end of method DuplicateBase::Awake
+}
+'@
     $failed = $false
-    try { Get-IlLifecycleSeeds -Model (Get-IlTypeModel -Il $missingAwake -TypeName 'EnemyAINestSpawnObject') | Out-Null } catch { $failed = $true }
-    if (-not $failed) { throw 'Missing declared IL Awake rejection failed.' }
+    try { Get-DeclaredLifecycleInfo -Model (Get-IlTypeModel -Il $duplicateAwakeFixture -TypeName 'Example.DuplicateBase') | Out-Null } catch { $failed = $true }
+    if (-not $failed) { throw 'Duplicate declared IL Awake rejection failed.' }
 
     $enemyFixture = @'
 .class public auto ansi beforefieldinit EnemyAI extends [mscorlib]System.Object
@@ -391,7 +518,7 @@ function Invoke-ExtractorSelfTest {
     if (-not $failed) { throw 'IL size-limit rejection failed.' }
     $entries = @(New-EvidenceTreeEntries -Directory 'SourceEvidence/VanillaV81/VentNestLifecycle/20260911T000000Z-abcdef12' -Report 'report' -Manifest '{}')
     if ($entries.Count -ne 2 -or @($entries | Where-Object { $_.path -match '\.(dll|exe|zip|r2z|cs|il)$' }).Count -ne 0) { throw 'Publication allowlist test failed.' }
-    Write-Host 'PASS: IL exact overloads, declared Awake lifecycle, one-hop caller/downstream context, limits and two-file publication.'
+    Write-Host 'PASS: IL exact overloads, valid declared-Awake absence, base lifecycle parsing, duplicate-Awake rejection, one-hop context, limits and two-file publication.'
 }
 function Invoke-BootstrapSelfTest {
     $temp = Join-Path ([IO.Path]::GetTempPath()) ('lc-ventnest-bootstrap-' + [guid]::NewGuid().ToString('N'))
@@ -480,8 +607,9 @@ try {
 
     $assign = Get-ExactIlMethod -Model $modelByType['RoundManager'] -Name 'AssignRandomEnemyToVent' -SignaturePattern '\(\s*class EnemyVent\b[^,]*,\s*float32\b'
     $roundContext = @(Get-IlOneHopContext -Model $modelByType['RoundManager'] -Seeds @($assign))
-    $nestSeeds = @(Get-IlLifecycleSeeds -Model $modelByType['EnemyAINestSpawnObject'])
-    $nestContext = @(Get-IlOneHopContext -Model $modelByType['EnemyAINestSpawnObject'] -Seeds $nestSeeds)
+    $nestLifecycle = Get-DeclaredLifecycleInfo -Model $modelByType['EnemyAINestSpawnObject']
+    $nestContext = @(Get-IlOneHopContext -Model $modelByType['EnemyAINestSpawnObject'] -Seeds $nestLifecycle.Seeds)
+    $nestBaseChain = @(Get-BaseLifecycleChain -IlSpy $ilspy -ManagedDir $managedDir -RootModel $modelByType['EnemyAINestSpawnObject'] -RootAssemblyPath $assemblyPath)
     $useNest = Get-ExactIlMethod -Model $modelByType['EnemyAI'] -Name 'UseNestSpawnObject' -SignaturePattern '\(\s*class EnemyAINestSpawnObject\b'
     $enemyContext = @(Get-IlOneHopContext -Model $modelByType['EnemyAI'] -Seeds @($useNest))
 
@@ -492,10 +620,18 @@ try {
     [void]$builder.AppendLine('Steam buildid: ' + $steamIdentity.BuildId)
     [void]$builder.AppendLine('Repository main at capture: ' + $repositoryMain)
     [void]$builder.AppendLine('Decompiler: ilspycmd ' + $IlSpyVersion + ' IL mode')
-    [void]$builder.AppendLine('Scope: exact AssignRandomEnemyToVent(EnemyVent,float), declared EnemyAINestSpawnObject lifecycle including exact Awake, exact EnemyAI.UseNestSpawnObject(EnemyAINestSpawnObject), and one-hop same-type caller/downstream context only.')
-    [void]$builder.AppendLine('IL is used deliberately so a valid declared Unity lifecycle method cannot be lost because of C# rendering/parser shape.')
+    [void]$builder.AppendLine('Scope: exact AssignRandomEnemyToVent(EnemyVent,float), declared EnemyAINestSpawnObject lifecycle, installed base-type lifecycle chain, exact EnemyAI.UseNestSpawnObject(EnemyAINestSpawnObject), and bounded one-hop caller/downstream context.')
+    [void]$builder.AppendLine('A missing declared EnemyAINestSpawnObject.Awake is preserved as evidence rather than treated as an extraction failure; ambiguous/multiple Awake definitions, unresolved base assemblies, cycles and excessive scope remain fail-closed.')
     [void]$builder.AppendLine('This supplements the completed 27-block RoundManager capture; it does not repeat that capture and is not gameplay acceptance.')
     [void]$builder.AppendLine('Game binaries, full type IL decompiles, absolute local paths and user names are excluded.')
+    [void]$builder.AppendLine('')
+    [void]$builder.AppendLine('EnemyAINestSpawnObject declared Awake count: ' + $nestLifecycle.AwakeCount)
+    if ($nestLifecycle.AwakeCount -eq 0) {
+        [void]$builder.AppendLine('EnemyAINestSpawnObject declared Awake status: ABSENT_IN_INSTALLED_V81_TYPE')
+    }
+    else {
+        [void]$builder.AppendLine('EnemyAINestSpawnObject declared Awake signature: ' + ($nestLifecycle.AwakeSignature -replace '\r?\n', ' '))
+    }
 
     $groups = @(
         [pscustomobject]@{ Name = 'RoundManager'; Model = $modelByType['RoundManager']; Methods = $roundContext },
@@ -506,22 +642,40 @@ try {
         [void]$builder.AppendLine('')
         [void]$builder.AppendLine('=== TYPE ' + $group.Name + ' ===')
         [void]$builder.AppendLine($group.Model.Header)
+        if ($group.Methods.Count -eq 0) { [void]$builder.AppendLine('(no selected declared lifecycle/caller/downstream methods)') }
         foreach ($method in $group.Methods) {
             [void]$builder.AppendLine('')
             [void]$builder.AppendLine('--- ' + ($method.Signature -replace '\r?\n', ' ') + ' / local IL line ' + $method.SourceLine + ' ---')
             [void]$builder.AppendLine($method.Text)
         }
     }
+
+    [void]$builder.AppendLine('')
+    [void]$builder.AppendLine('=== EnemyAINestSpawnObject INSTALLED BASE LIFECYCLE CHAIN ===')
+    foreach ($base in $nestBaseChain) {
+        [void]$builder.AppendLine('')
+        [void]$builder.AppendLine('--- BASE DEPTH ' + $base.Depth + ': ' + $base.TypeName + ' / assembly ' + $base.AssemblyFile + ' ---')
+        [void]$builder.AppendLine($base.Header)
+        [void]$builder.AppendLine('Declared Awake count: ' + $base.AwakeCount)
+        if ($base.AwakeCount -eq 1) { [void]$builder.AppendLine('Declared Awake signature: ' + ($base.AwakeSignature -replace '\r?\n', ' ')) }
+        if ($base.Terminal) { [void]$builder.AppendLine('(terminal base; no further decompile)'); continue }
+        if ($base.Methods.Count -eq 0) { [void]$builder.AppendLine('(no declared configured lifecycle methods selected)') }
+        foreach ($method in $base.Methods) {
+            [void]$builder.AppendLine('')
+            [void]$builder.AppendLine('--- ' + ($method.Signature -replace '\r?\n', ' ') + ' / local IL line ' + $method.SourceLine + ' ---')
+            [void]$builder.AppendLine($method.Text)
+        }
+    }
     $report = $builder.ToString()
-    if (@($report -split '\r?\n').Count -gt 1800) { throw 'Combined focused IL report exceeded 1800 lines. No evidence was uploaded.' }
+    if (@($report -split '\r?\n').Count -gt 2600) { throw 'Combined focused IL report exceeded 2600 lines. No evidence was uploaded.' }
 
     $stamp = [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssZ')
     $suffix = [guid]::NewGuid().ToString('N').Substring(0, 8)
     $directory = $EvidenceRoot + '/' + $stamp + '-' + $suffix
     $branch = 'source-evidence/v81-vent-nest-' + $stamp.ToLowerInvariant() + '-' + $suffix
     $metadata = [ordered]@{
-        schema_version = 2
-        purpose = 'Supplemental installed V81 vent assignment and nest lifecycle IL evidence for S1.42AI-DIAG1 patch safety'
+        schema_version = 3
+        purpose = 'Supplemental installed V81 vent assignment, nest declared-lifecycle and installed base-lifecycle evidence for S1.42AI-DIAG1 patch safety'
         capture_utc = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
         repository = $RepositoryName
         repository_main_at_capture = $repositoryMain
@@ -533,22 +687,40 @@ try {
             tool = 'ilspycmd'
             version = $IlSpyVersion
             mode = 'IL'
-            types = @(
-                @{ name = 'RoundManager'; full_local_type_il_sha256 = (Get-TextSha256 $ilByType['RoundManager']) },
-                @{ name = 'EnemyAINestSpawnObject'; full_local_type_il_sha256 = (Get-TextSha256 $ilByType['EnemyAINestSpawnObject']) },
-                @{ name = 'EnemyAI'; full_local_type_il_sha256 = (Get-TextSha256 $ilByType['EnemyAI']) }
+            root_types = @(
+                @{ name = 'RoundManager'; assembly_file = 'Assembly-CSharp.dll'; full_local_type_il_sha256 = (Get-TextSha256 $ilByType['RoundManager']) },
+                @{ name = 'EnemyAINestSpawnObject'; assembly_file = 'Assembly-CSharp.dll'; full_local_type_il_sha256 = (Get-TextSha256 $ilByType['EnemyAINestSpawnObject']) },
+                @{ name = 'EnemyAI'; assembly_file = 'Assembly-CSharp.dll'; full_local_type_il_sha256 = (Get-TextSha256 $ilByType['EnemyAI']) }
             )
         }
         selection = @{
             caller_downstream_depth = 1
             roundmanager_exact_signature = $assign.Signature
             roundmanager_selected_signatures = @($roundContext | ForEach-Object { $_.Signature })
-            nest_lifecycle_seed_signatures = @($nestSeeds | ForEach-Object { $_.Signature })
+            nest_declared_awake_count = $nestLifecycle.AwakeCount
+            nest_declared_awake_signature = $nestLifecycle.AwakeSignature
+            nest_declared_lifecycle_seed_signatures = @($nestLifecycle.Seeds | ForEach-Object { $_.Signature })
             nest_selected_signatures = @($nestContext | ForEach-Object { $_.Signature })
+            nest_base_chain = @($nestBaseChain | ForEach-Object {
+                [ordered]@{
+                    depth = $_.Depth
+                    type_name = $_.TypeName
+                    assembly_file = $_.AssemblyFile
+                    assembly_sha256 = $_.AssemblySha256
+                    full_local_type_il_sha256 = $_.FullIlSha256
+                    declared_awake_count = $_.AwakeCount
+                    declared_awake_signature = $_.AwakeSignature
+                    declared_lifecycle_signatures = @($_.LifecycleSignatures)
+                    selected_signatures = @($_.Methods | ForEach-Object { $_.Signature })
+                    terminal = $_.Terminal
+                }
+            })
             enemyai_exact_signature = $useNest.Signature
             enemyai_selected_signatures = @($enemyContext | ForEach-Object { $_.Signature })
-            per_type_max_source_lines = 1600
-            combined_max_report_lines = 1800
+            per_root_type_max_source_lines = 1600
+            per_base_type_max_source_lines = 500
+            max_base_depth = $MaxBaseDepth
+            combined_max_report_lines = 2600
         }
         report = @{ file = $ReportName; sha256 = (Get-TextSha256 $report); excludes = @('game binaries', 'full type IL decompiles', 'absolute local paths', 'user names') }
     }
