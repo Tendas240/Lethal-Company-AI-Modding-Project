@@ -213,7 +213,7 @@ function Get-ExactIlMethod {
     return $found[0]
 }
 function Get-IlOneHopContext {
-    param([Parameter(Mandatory = $true)]$Model, [Parameter(Mandatory = $true)][object[]]$Seeds, [int]$MaxLines = 1600)
+    param([Parameter(Mandatory = $true)]$Model, [Parameter(Mandatory = $true)][AllowEmptyCollection()][object[]]$Seeds, [int]$MaxLines = 1600)
     if ($Seeds.Count -eq 0) { return @() }
     $selected = @{}
     foreach ($seed in $Seeds) { $selected[[string]$seed.Index] = $seed }
@@ -429,6 +429,8 @@ function Invoke-ExtractorSelfTest {
     $nest = Get-IlTypeModel -Il $nestFixture -TypeName 'EnemyAINestSpawnObject'
     $nestLifecycle = Get-DeclaredLifecycleInfo -Model $nest
     if ($nestLifecycle.AwakeCount -ne 0 -or $null -ne $nestLifecycle.AwakeSignature) { throw 'Declared Awake absence was not retained as valid evidence.' }
+    $emptyContext = @(Get-IlOneHopContext -Model $nest -Seeds @())
+    if ($emptyContext.Count -ne 0) { throw 'Empty lifecycle seed set must return empty context without parameter-binding failure.' }
     $nestContext = @(Get-IlOneHopContext -Model $nest -Seeds $nestLifecycle.Seeds)
     $nestNames = @($nestContext | ForEach-Object { $_.Name })
     foreach ($required in @('OnDestroy', 'CleanupNest')) { if ($nestNames -notcontains $required) { throw ('Nest IL lifecycle context missing ' + $required) } }
@@ -518,7 +520,7 @@ function Invoke-ExtractorSelfTest {
     if (-not $failed) { throw 'IL size-limit rejection failed.' }
     $entries = @(New-EvidenceTreeEntries -Directory 'SourceEvidence/VanillaV81/VentNestLifecycle/20260911T000000Z-abcdef12' -Report 'report' -Manifest '{}')
     if ($entries.Count -ne 2 -or @($entries | Where-Object { $_.path -match '\.(dll|exe|zip|r2z|cs|il)$' }).Count -ne 0) { throw 'Publication allowlist test failed.' }
-    Write-Host 'PASS: IL exact overloads, valid declared-Awake absence, base lifecycle parsing, duplicate-Awake rejection, one-hop context, limits and two-file publication.'
+    Write-Host 'PASS: IL exact overloads, valid declared-Awake absence, empty-seed binding, base lifecycle parsing, duplicate-Awake rejection, one-hop context, limits and two-file publication.'
 }
 function Invoke-BootstrapSelfTest {
     $temp = Join-Path ([IO.Path]::GetTempPath()) ('lc-ventnest-bootstrap-' + [guid]::NewGuid().ToString('N'))
