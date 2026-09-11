@@ -1,0 +1,22 @@
+name: Preserve native spawn-owner evidence
+on:
+  push:
+    branches: [analysis/s142ai-native-spawn-owners]
+    paths:
+      - 'AnalysisTools/persist_native_owner_evidence.py'
+      - '.github/workflows/native-owner-evidence-persist.yml'
+permissions:
+  contents: read
+jobs:
+  preserve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify artifact and preserve text on analysis branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python AnalysisTools/persist_native_owner_evidence.py
