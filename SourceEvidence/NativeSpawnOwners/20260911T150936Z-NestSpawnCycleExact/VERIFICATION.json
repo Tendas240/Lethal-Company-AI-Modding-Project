@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "purpose": "S1.42AI-DIAG1 exact NestFix 1.3.0 and SpawnCycleFixes 1.2.2 patch-body review",
+  "analysis_branch": "analysis/s142ai-nest-spawncycle-exact",
+  "analysis_head": "39a7ad8f1dc0782b96a1903ac9f3c246d880ac63",
+  "workflow_run": 34614454120,
+  "artifact_id": 10269567481,
+  "artifact_name": "s142ai-nest-spawncycle-exact",
+  "artifact_zip_sha256": "875a6860f73d9ec785ea8fd0f848e0a9afb25bbeade1e4961c077e76dfcd51ba",
+  "decompiler": {
+    "tool": "ilspycmd",
+    "version": "11.0.0.9375"
+  },
+  "packages": [
+    {
+      "package": "PureFPSZac-NestFix",
+      "version": "1.3.0",
+      "package_zip_sha256": "a9cf704b463fab1cc988f6872ba4faa641ac9eb6dae52372fa13d61b80a28a4c",
+      "assembly": "NestFix.dll",
+      "assembly_sha256": "0a4072618c2a089283933b8aeebe4962c4e45d465518760c90b4c18eb2b70f20",
+      "decompiled_source_sha256": "0e986b4d7d968c914b3d1c9376e5bfe739b3d6e56f94292a139f7d40246982b0",
+      "merged_discovery_source_sha256": "0e986b4d7d968c914b3d1c9376e5bfe739b3d6e56f94292a139f7d40246982b0",
+      "il_sha256": "9ad10e7e7e00b0af77794930a9ae4291e3a784acc3635492e4be1d00463fa796",
+      "source_lines": 364,
+      "il_lines": 817
+    },
+    {
+      "package": "ButteryStancakes-SpawnCycleFixes",
+      "version": "1.2.2",
+      "package_zip_sha256": "ccc66892f996890c9a24dbe430d394262911ad576d2dd797d5535daf196e1c2f",
+      "assembly": "SpawnCycleFixes.dll",
+      "assembly_sha256": "aa41f4bb8a8e2dedd75f7987d85c0e0a6792d92bd1fecbffa278f5f4dc9c52a0",
+      "decompiled_source_sha256": "c7a7e300be873f5d4271fb673332143a1eb9c5e0dd1521dc2787aa07ed939651",
+      "merged_discovery_source_sha256": "c7a7e300be873f5d4271fb673332143a1eb9c5e0dd1521dc2787aa07ed939651",
+      "il_sha256": "9a39296e9c892b97a6d53e0eca91e6c175a7effce9157f4e1cd764f62dbcf06a",
+      "source_lines": 877,
+      "il_lines": 3534
+    }
+  ],
+  "active_s142ai_spawncycle_config": {
+    "Consistent Spawn Times": true,
+    "Limit Old Birds": true,
+    "Mask Hornets Power": false,
+    "Cadaver Growths Subtract": true,
+    "profile_config_sha256": "b0cc33ff730335145d1fbb5f768672db9f2e9133baf94afd83137dd39dd0b4e8"
+  },
+  "qualification": "The Actions artifact contains complete C# decompiles and IL for the two exact SHA-anchored assemblies. The repository preserves hashes, method-level review and consequences rather than copying the full third-party decompile. This closes this two-package body/ordering review only; it does not authorize S1.42AI-DIAG1 implementation, build or gameplay testing."
+}
