@@ -1,0 +1,274 @@
+8: using Unity.Netcode;
+9: using UnityEngine;
+10: using UnityEngine.Rendering.HighDefinition;
+11: using UnityEngine.SceneManagement;
+12: 
+13: namespace BrutalCompanyMinus;
+14: 
+15: [HarmonyPatch]
+16: public class Assets
+17: {
+18: 	public enum EnemyName
+19: 	{
+20: 		Bracken,
+21: 		HoardingBug,
+22: 		CoilHead,
+23: 		Thumper,
+24: 		BunkerSpider,
+25: 		Jester,
+26: 		SnareFlea,
+27: 		Hygrodere,
+28: 		GhostGirl,
+29: 		SporeLizard,
+30: 		NutCracker,
+31: 		Masked,
+32: 		EyelessDog,
+33: 		ForestKeeper,
+34: 		EarthLeviathan,
+35: 		BaboonHawk,
+36: 		RoamingLocust,
+37: 		Manticoil,
+38: 		CircuitBee,
+39: 		Lasso,
+40: 		Butler,
+41: 		OldBird,
+42: 		FlowerSnake,
+43: 		Maneater,
+44: 		Barber,
+45: 		GiantKiwi,
+46: 		CadaverGrowths,
+47: 		BushWolf,
+48: 		CadaverBloom,
+49: 		Puma,
+50: 		Stingray
+51: 	}
+626: 			"flooded"
+627: 		},
+628: 		{
+629: 			AtmosphereName.Eclipsed,
+630: 			"eclipsed"
+631: 		}
+632: 	};
+633: 
+634: 	public static Dictionary<string, EnemyType> EnemyList = new Dictionary<string, EnemyType>();
+635: 
+636: 	public static Dictionary<string, Item> ItemList = new Dictionary<string, Item>();
+637: 
+638: 	public static Dictionary<string, GameObject> ObjectList = new Dictionary<string, GameObject>();
+639: 
+640: 	internal static List<float> factorySizeMultiplierList = new List<float>();
+641: 
+642: 	internal static List<SpawnableMapObject[]> spawnableMapObjects = new List<SpawnableMapObject[]>();
+643: 
+644: 	internal static List<float> averageScrapValueList = new List<float>();
+645: 
+646: 	internal static List<AnimationCurve> insideSpawnChanceCurves = new List<AnimationCurve>();
+647: 
+648: 	internal static List<AnimationCurve> outsideSpawnChanceCurves = new List<AnimationCurve>();
+649: 
+650: 	internal static List<AnimationCurve> daytimeSpawnChanceCurves = new List<AnimationCurve>();
+651: 
+652: 	internal static List<int> insideMaxPowerCounts = new List<int>();
+653: 
+654: 	internal static List<int> outsideMaxPowerCounts = new List<int>();
+655: 
+656: 	internal static List<int> daytimeMaxPowerCounts = new List<int>();
+657: 
+658: 	internal static StormyWeather stormy;
+659: 
+660: 	internal static FloodWeather flooded;
+661: 
+662: 	public static EnemyType antiCoilHead;
+663: 
+664: 	public static EnemyType nutSlayer;
+665: 
+666: 	public static EnemyType kamikazieBug;
+667: 
+668: 	public static Item slayerShotgun;
+669: 
+780: 		//IL_0041: Unknown result type (might be due to invalid IL or missing references)
+781: 		//IL_0074: Unknown result type (might be due to invalid IL or missing references)
+782: 		//IL_0079: Unknown result type (might be due to invalid IL or missing references)
+783: 		//IL_0084: Unknown result type (might be due to invalid IL or missing references)
+784: 		//IL_008b: Unknown result type (might be due to invalid IL or missing references)
+785: 		//IL_0092: Unknown result type (might be due to invalid IL or missing references)
+786: 		//IL_0099: Unknown result type (might be due to invalid IL or missing references)
+787: 		//IL_00a5: Expected O, but got Unknown
+788: 		GameObject val = Object.Instantiate<GameObject>(bloodRain);
+789: 		LocalVolumetricFog component = ((Component)val.transform.Find("Foggy")).GetComponent<LocalVolumetricFog>();
+790: 		component.parameters.albedo = new Color(0.25f, 0.35f, 0.55f, 1f);
+791: 		component.parameters.meanFreePath = 80f;
+792: 		component.parameters.size.y = 255f;
+793: 		__instance.effects = __instance.effects.Add(new WeatherEffect
+794: 		{
+795: 			name = "bloodyrain",
+796: 			effectObject = val,
+797: 			effectPermanentObject = null,
+798: 			lerpPosition = false,
+799: 			effectEnabled = false
+800: 		});
+801: 	}
+802: 
+803: 	[HarmonyPrefix]
+804: 	[HarmonyPatch(typeof(StartOfRound), "Start")]
+805: 	private static void OnStartOfRoundStart()
+806: 	{
+807: 		StartOfRound.Instance.allItemsList.itemsList.AddRange(new List<Item> { slayerShotgun, grabbableTurret, grabbableLandmine });
+808: 	}
+809: 
+810: 	internal static void Load()
+811: 	{
+812: 		bundle = LoadAssetBundle("bcm_assets");
+813: 		customAssetBundle = LoadAssetBundle("bcm_customassets");
+814: 		SceneManager.sceneLoaded += OnSceneLoaded;
+815: 	}
+816: 
+817: 	private static AssetBundle LoadAssetBundle(string fileName)
+818: 	{
+819: 		try
+820: 		{
+821: 			string directoryName = Path.GetDirectoryName(((BaseUnityPlugin)Plugin.Instance).Info.Location);
+822: 			string text = Path.Combine(directoryName, fileName);
+823: 			return AssetBundle.LoadFromFile(text);
+844: 		if (array2.Length != 0)
+845: 		{
+846: 			flooded = array2[0];
+847: 		}
+848: 		if (generatedList)
+849: 		{
+850: 			return;
+851: 		}
+852: 		Log.LogInfo("Generating 'EnemyList'");
+853: 		EnemyType[] array3 = Resources.FindObjectsOfTypeAll<EnemyType>().Concat(Object.FindObjectsByType<EnemyType>((FindObjectsInactive)1, (FindObjectsSortMode)1)).ToArray();
+854: 		Array.Reverse(array3);
+855: 		array3 = (from x in array3
+856: 			group x by ((Object)x).name into x
+857: 			select x.FirstOrDefault()).ToArray();
+858: 		for (int num = 0; num < array3.Length; num++)
+859: 		{
+860: 			if (!ReadSettingEarly(Paths.ConfigPath + "\\BrutalCompanyMinusExtraReborn\\CoreProperties.cfg", "Silence Prefab Warnings?") && (Object)(object)array3[num].enemyPrefab == (Object)null)
+861: 			{
+862: 				Log.LogWarning($"Enemy:{((Object)array3[num]).name}, prefab is null, this may cause issues...");
+863: 			}
+864: 			EnemyList.Add(((Object)array3[num]).name, array3[num]);
+865: 		}
+866: 		EnemyList.Remove("RedPillEnemyType");
+867: 		foreach (KeyValuePair<string, EnemyType> enemy in EnemyList)
+868: 		{
+869: 			bool flag = false;
+870: 			foreach (KeyValuePair<EnemyName, string> enemyName in EnemyNameList)
+871: 			{
+872: 				if (enemy.Key == enemyName.Value)
+873: 				{
+874: 					flag = true;
+875: 					break;
+876: 				}
+877: 			}
+878: 			if (!ReadSettingEarly(Paths.ConfigPath + "\\BrutalCompanyMinusExtraReborn\\CoreProperties.cfg", "Silence Enum Warnings?") && !flag)
+879: 			{
+880: 				Log.LogWarning($"Enemy:'{enemy.Key}', isn't matched with enum, this may cause issues...");
+881: 			}
+882: 		}
+883: 		Log.LogInfo($"Finished generating 'EnemyList', Count:{EnemyList.Count}");
+884: 		Log.LogInfo("Generating 'ItemList'");
+885: 		Item[] array4 = Resources.FindObjectsOfTypeAll<Item>().Concat(Object.FindObjectsByType<Item>((FindObjectsInactive)1, (FindObjectsSortMode)1)).ToArray();
+886: 		Array.Reverse(array4);
+887: 		array4 = (from x in array4
+888: 			group x by ((Object)x).name into x
+889: 			select x.FirstOrDefault()).ToArray();
+890: 		for (int num2 = 0; num2 < array4.Length; num2++)
+891: 		{
+892: 			if (!ReadSettingEarly(Paths.ConfigPath + "\\BrutalCompanyMinusExtraReborn\\CoreProperties.cfg", "Silence Prefab Warnings?") && (Object)(object)array4[num2].spawnPrefab == (Object)null)
+893: 			{
+894: 				Log.LogWarning($"Item:{((Object)array4[num2]).name}, prefab is null, this may cause issues...");
+895: 			}
+896: 			ItemList.Add(((Object)array4[num2]).name, array4[num2]);
+897: 		}
+898: 		foreach (KeyValuePair<string, Item> item in ItemList)
+899: 		{
+900: 			bool flag2 = false;
+901: 			foreach (KeyValuePair<ItemName, string> itemName in ItemNameList)
+902: 			{
+903: 				if (item.Key == itemName.Value)
+904: 				{
+905: 					flag2 = true;
+906: 					break;
+907: 				}
+908: 			}
+909: 			if (!ReadSettingEarly(Paths.ConfigPath + "\\BrutalCompanyMinusExtraReborn\\CoreProperties.cfg", "Silence Enum Warnings?") && !flag2)
+910: 			{
+911: 				Log.LogWarning($"Item:'{item.Key}', isn't matched with enum, this may cause issues...");
+912: 			}
+913: 		}
+914: 		Log.LogInfo($"Finished generating 'ItemList', Count:{ItemList.Count}");
+915: 		Log.LogInfo("Generating 'ObjectList'");
+916: 		List<SpawnableMapObject> list = new List<SpawnableMapObject>();
+917: 		List<SpawnableOutsideObjectWithRarity> list2 = new List<SpawnableOutsideObjectWithRarity>();
+918: 		SelectableLevel[] levels = StartOfRound.Instance.levels;
+1039: 			insideMaxPowerCounts.Add(val.maxEnemyPowerCount);
+1040: 			outsideMaxPowerCounts.Add(val.maxOutsideEnemyPowerCount);
+1041: 			daytimeMaxPowerCounts.Add(val.maxDaytimeEnemyPowerCount);
+1042: 			spawnableMapObjects.Add(val.spawnableMapObjects);
+1043: 		}
+1044: 		generatedOrignalValuesList = true;
+1045: 	}
+1046: 
+1047: 	public static EnemyType GetEnemy(EnemyName name)
+1048: 	{
+1049: 		return GetEnemy(EnemyNameList[name]);
+1050: 	}
+1051: 
+1052: 	public static EnemyType GetEnemy(string name)
+1053: 	{
+1054: 		if (EnemyList.TryGetValue(name, out EnemyType value))
+1055: 		{
+1056: 			return value;
+1057: 		}
+1058: 		if (!ReadSettingEarly(Paths.ConfigPath + "\\BrutalCompanyMinusExtraReborn\\CoreProperties.cfg", "Silence Get Method Warnings?"))
+1059: 		{
+1060: 			Log.LogWarning("GetEnemy(" + name + ") failed, returning an empty enemy type");
+1061: 		}
+1062: 		EnemyType val = ScriptableObject.CreateInstance<EnemyType>();
+1063: 		val.enemyName = name;
+1064: 		((Object)val).name = name;
+1065: 		return val;
+1066: 	}
+1067: 
+1068: 	public static EnemyType GetEnemyOrDefault(string name)
+1069: 	{
+1070: 		if (EnemyList.TryGetValue(name, out EnemyType value))
+1071: 		{
+1072: 			return value;
+1073: 		}
+1074: 		if (!ReadSettingEarly(Paths.ConfigPath + "\\BrutalCompanyMinusExtraReborn\\CoreProperties.cfg", "Silence Get Method Warnings?"))
+1075: 		{
+1076: 			Log.LogWarning("GetEnemyOrDefault(" + name + ") failed, returning kamikazie bug.");
+1077: 		}
+1078: 		return kamikazieBug;
+1079: 	}
+1080: 
+1081: 	public static Item GetItem(ItemName name)
+1082: 	{
+1083: 		return GetItem(ItemNameList[name]);
+1084: 	}
+1085: 
+1086: 	public static Item GetItem(string name)
+1087: 	{
+1088: 		if (ItemList.TryGetValue(name, out Item value))
+1089: 		{
+1090: 			return value;
+1091: 		}
+1092: 		if (!ReadSettingEarly(Paths.ConfigPath + "\\BrutalCompanyMinusExtraReborn\\CoreProperties.cfg", "Silence Get Method Warnings?"))
+1093: 		{
+1094: 			Log.LogWarning("GetItem(" + name + ") failed, returning an empty item");
+1095: 		}
+1096: 		Item val = ScriptableObject.CreateInstance<Item>();
+1097: 		val.itemName = name;
+1098: 		((Object)val).name = name;
+1099: 		return val;
+1100: 	}
+1101: 
+1102: 	[Obsolete("Causes the mod to fail, do not use on modded item events", false)]
+1103: 	public static Item GetItemByName(string itemName, bool matchCase = true)
+1104: 	{
+1105: 		StringComparison comparisonType = ((!matchCase) ? StringComparison.OrdinalIgnoreCase : StringComparison.CurrentCulture);

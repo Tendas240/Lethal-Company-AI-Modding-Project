@@ -1,0 +1,26 @@
+1: using HarmonyLib;
+2: 
+3: namespace Scopophobia.Patches;
+4: 
+5: [HarmonyPatch]
+6: internal class GetShyGuyPrefabForLaterUse
+7: {
+8: 	[HarmonyPatch(typeof(Terminal), "Start")]
+9: 	[HarmonyPostfix]
+10: 	private static void SavesPrefabForLaterUse(ref SelectableLevel[] ___moonsCatalogueList)
+11: 	{
+12: 		SelectableLevel[] array = ___moonsCatalogueList;
+13: 		SelectableLevel[] array2 = array;
+14: 		SelectableLevel[] array3 = array2;
+15: 		foreach (SelectableLevel val in array3)
+16: 		{
+17: 			foreach (SpawnableEnemyWithRarity enemy in val.Enemies)
+18: 			{
+19: 				if (enemy.enemyType.enemyName.ToLower() == "shy guy")
+20: 				{
+21: 					ScopophobiaPlugin.shyPrefab = enemy;
+22: 				}
+23: 			}
+24: 		}
+25: 	}
+26: }

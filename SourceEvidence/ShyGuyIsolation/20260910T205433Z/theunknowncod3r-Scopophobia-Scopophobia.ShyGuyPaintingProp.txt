@@ -1,0 +1,322 @@
+1: using System.Collections;
+2: using System.Collections.Generic;
+3: using GameNetcodeStuff;
+4: using ShyGuy.AI;
+5: using Unity.Netcode;
+6: using UnityEngine;
+7: 
+8: namespace Scopophobia;
+9: 
+10: public class ShyGuyPaintingProp : GrabbableObject
+11: {
+12: 	[Header("Painting Settings")]
+13: 	public List<PlayerControllerB> oldTarget = new List<PlayerControllerB>();
+14: 
+15: 	public PlayerControllerB targetPlayer;
+16: 
+17: 	public int randomChance;
+18: 
+19: 	private bool updatedScannode;
+20: 
+21: 	private bool isTriggered;
+22: 
+23: 	public bool hasSpawnedFromPickup;
+24: 
+25: 	public bool hasSpawnedFromBeltBag;
+26: 
+27: 	public bool hasSpawnedFromInteract;
+28: 
+29: 	private bool isForceSpawn;
+30: 
+31: 	private ScanNodeProperties scanNode;
+32: 
+33: 	public AudioSource PaintingSound;
+34: 
+35: 	private float useCooldown = 30f;
+36: 
+37: 	[Header("Painting Audio")]
+38: 	public AudioClip[] PaintingCrySFX;
+39: 
+40: 	public AudioClip[] fearSFX;
+41: 
+42: 	private float lastUseTime;
+43: 
+44: 	public override int GetItemDataToSave()
+45: 	{
+46: 		return ((GrabbableObject)this).GetItemDataToSave();
+47: 	}
+48: 
+49: 	public void Awake()
+50: 	{
+51: 	}
+52: 
+53: 	public override void Start()
+54: 	{
+55: 		((GrabbableObject)this).Start();
+56: 		try
+57: 		{
+58: 			scanNode = ((Component)this).GetComponentInChildren<ScanNodeProperties>();
+59: 			if (Config.hidePaintingName)
+60: 			{
+61: 				UpdateScannode();
+62: 			}
+63: 		}
+64: 		catch
+65: 		{
+66: 			ScopophobiaPlugin.Instance.LogInfoExtended("Failed to Init Shy Guy Painting");
+67: 		}
+68: 	}
+69: 
+70: 	public override void GrabItem()
+71: 	{
+72: 		((GrabbableObject)this).GrabItem();
+73: 		ScopophobiaPlugin.logger.LogInfo((object)$"Shy Guy Painting Grabbed. Am I Owner?: {((NetworkBehaviour)this).IsOwner}");
+74: 	}
+75: 
+76: 	public void UpdateScannode(int which = 1)
+77: 	{
+78: 		switch (which)
+79: 		{
+80: 		case 1:
+81: 			scanNode.headerText = ((Config.hidePaintingName && !string.IsNullOrWhiteSpace(Config.nameToUseForPainting)) ? Config.nameToUseForPainting : "Painting");
+82: 			break;
+83: 		case 2:
+84: 			scanNode.headerText = "Odd Painting of SCP-096";
+85: 			updatedScannode = true;
+86: 			break;
+87: 		}
+88: 	}
+89: 
+90: 	public void TriggerFromBeltBag(PlayerControllerB player)
+91: 	{
+92: 		if (!hasSpawnedFromBeltBag && !isTriggered && !base.isHeldByEnemy && oldTarget.Contains(player) && StartOfRound.Instance.shipHasLanded && StartOfRound.Instance.timeSinceRoundStarted >= 2f && StartOfRound.Instance.currentLevel.spawnEnemiesAndScrap)
+93: 		{
+94: 			return;
+95: 		}
+96: 		isTriggered = true;
+97: 		targetPlayer = player;
+98: 		ScopophobiaPlugin.Instance.LogInfoExtended($"Shy Guy Painting triggered by {targetPlayer.playerClientId}");
+99: 		randomChance = Random.Range(0, 100);
+100: 		ShyGuyAI shyGuyAI = Object.FindFirstObjectByType<ShyGuyAI>();
+101: 		if ((Object)(object)shyGuyAI != (Object)null && randomChance < Mathf.Clamp(Config.ChanceOfShyGuy, 0, 100) && !hasSpawnedFromBeltBag && shyGuyAI.hasBeenSpawned)
+102: 		{
+103: 			if (((EnemyAI)shyGuyAI).currentBehaviourStateIndex != 1)
+104: 			{
+105: 				((EnemyAI)shyGuyAI).SwitchToBehaviourState(1);
+106: 			}
+107: 			oldTarget.Add(base.playerHeldBy);
+108: 			((MonoBehaviour)this).StartCoroutine(InitializeAI(shyGuyAI, base.playerHeldBy));
+109: 			ScopophobiaPlugin.Instance.LogInfoExtended("Triggering Already Spawned Shy Guy from Belt Bag!");
+110: 		}
+111: 		else if (randomChance < Mathf.Clamp(Config.ChanceOfShyGuy, 0, 100) && !hasSpawnedFromBeltBag && (Object)(object)shyGuyAI == (Object)null)
+112: 		{
+113: 			PlayAudioFX(fearSFX);
+114: 			StartSpawnShyGuy((int)targetPlayer.playerClientId);
+115: 			hasSpawnedFromBeltBag = true;
+116: 			ScopophobiaPlugin.Instance.LogInfoExtended("Random chance met, spawning a shy guy from Belt Bag");
+117: 		}
+118: 		else
+119: 		{
+120: 			PlayAudioFX(PaintingCrySFX);
+121: 			ResetSpawnState();
+122: 			ScopophobiaPlugin.Instance.LogInfoExtended($"Survived Spawn Attempt. Random chance was: {randomChance}");
+123: 			if (((NetworkBehaviour)this).IsOwner)
+124: 			{
+125: 				HUDManager.Instance.DisplayTip("Shy Guy Painting", "There's an odd Cry emanating from the Belt Bag, better be careful!", false, false, "LC_ShyGuyPaintingTip2");
+126: 			}
+127: 		}
+128: 	}
+129: 
+130: 	private bool CanTriggerPainting()
+131: 	{
+132: 		if (base.isHeld && !hasSpawnedFromPickup && !isTriggered && !base.isHeldByEnemy && (Object)(object)base.playerHeldBy != (Object)null && ((NetworkBehaviour)this).IsOwner && !oldTarget.Contains(base.playerHeldBy) && StartOfRound.Instance.shipHasLanded && StartOfRound.Instance.timeSinceRoundStarted >= 2f)
+133: 		{
+134: 			return StartOfRound.Instance.currentLevel.spawnEnemiesAndScrap;
+135: 		}
+136: 		return false;
+137: 	}
+138: 
+139: 	public override void Update()
+140: 	{
+141: 		((GrabbableObject)this).Update();
+142: 		if (!CanTriggerPainting())
+143: 		{
+144: 			return;
+145: 		}
+146: 		if (!updatedScannode)
+147: 		{
+148: 			UpdateScannode(2);
+149: 		}
+150: 		isTriggered = true;
+151: 		targetPlayer = GameNetworkManager.Instance.localPlayerController;
+152: 		ScopophobiaPlugin.Instance.LogInfoExtended("Shy Guy Painting triggered by " + targetPlayer.playerUsername);
+153: 		randomChance = Random.Range(0, 100);
+154: 		ShyGuyAI shyGuyAI = Object.FindFirstObjectByType<ShyGuyAI>();
+155: 		if ((Object)(object)shyGuyAI != (Object)null && randomChance < Mathf.Clamp(Config.ChanceOfShyGuy, 0, 100) && !hasSpawnedFromPickup && shyGuyAI.hasBeenSpawned)
+156: 		{
+157: 			if (((EnemyAI)shyGuyAI).currentBehaviourStateIndex != 1)
+158: 			{
+159: 				((EnemyAI)shyGuyAI).SwitchToBehaviourState(1);
+160: 			}
+161: 			oldTarget.Add(base.playerHeldBy);
+162: 			((MonoBehaviour)this).StartCoroutine(InitializeAI(shyGuyAI, base.playerHeldBy));
+163: 			ScopophobiaPlugin.Instance.LogInfoExtended("Triggering Already Spawned Shy Guy!");
+164: 		}
+165: 		else if (randomChance < Mathf.Clamp(Config.ChanceOfShyGuy, 0, 100) && !hasSpawnedFromPickup && (Object)(object)shyGuyAI == (Object)null)
+166: 		{
+167: 			PlayAudioFX(fearSFX);
+168: 			StartSpawnShyGuy();
+169: 			hasSpawnedFromPickup = true;
+170: 			oldTarget.Add(base.playerHeldBy);
+171: 			ScopophobiaPlugin.Instance.LogInfoExtended("Random chance met, spawning a shy guy from Pickup");
+172: 		}
+173: 		else
+174: 		{
+175: 			PlayAudioFX(PaintingCrySFX);
+176: 			ResetSpawnState();
+177: 			ScopophobiaPlugin.Instance.LogInfoExtended("Survived Spawn Attempt");
+178: 			if (((NetworkBehaviour)this).IsOwner)
+179: 			{
+180: 				HUDManager.Instance.DisplayTip("There's an odd sound", "There's an odd sound emanating from the painting, better be careful!", false, false, "LC_ShyGuyPaintingTip1");
+181: 			}
+182: 		}
+183: 	}
+184: 
+185: 	public void PlayAudioFX(AudioClip[] clip)
+186: 	{
+187: 		if (!((Object)(object)PaintingSound == (Object)null) && clip != null)
+188: 		{
+189: 			int num = Random.Range(0, clip.Length);
+190: 			PaintingSound.clip = clip[num];
+191: 			PaintingSound.volume = 0.3f;
+192: 			PaintingSound.Play();
+193: 		}
+194: 	}
+195: 
+196: 	public void StartSpawnShyGuy(int? explicitTargetClientId = null)
+197: 	{
+198: 		//IL_0033: Unknown result type (might be due to invalid IL or missing references)
+199: 		//IL_0039: Unknown result type (might be due to invalid IL or missing references)
+200: 		if (NetworkUtils.IsServer)
+201: 		{
+202: 			int targetClientId = explicitTargetClientId ?? ((int)base.playerHeldBy.playerClientId);
+203: 			SpawnEnemyOnServer(targetClientId);
+204: 		}
+205: 		else
+206: 		{
+207: 			SpawnEnemyServerRpc();
+208: 		}
+209: 	}
+210: 
+211: 	[ServerRpc(RequireOwnership = false)]
+212: 	public void SpawnEnemyServerRpc(ServerRpcParams rpcParams = default(ServerRpcParams))
+213: 	{
+214: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+215: 		//IL_002e: Invalid comparison between Unknown and I4
+216: 		//IL_008c: Unknown result type (might be due to invalid IL or missing references)
+217: 		//IL_0096: Invalid comparison between Unknown and I4
+218: 		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+219: 		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+220: 		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+221: 		//IL_007c: Unknown result type (might be due to invalid IL or missing references)
+222: 		//IL_00c1: Unknown result type (might be due to invalid IL or missing references)
+223: 		//IL_00c6: Unknown result type (might be due to invalid IL or missing references)
+224: 		//IL_00c7: Unknown result type (might be due to invalid IL or missing references)
+225: 		NetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;
+226: 		if (networkManager != null && networkManager.IsListening)
+227: 		{
+228: 			if ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))
+229: 			{
+230: 				FastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(2726291106u, rpcParams, (RpcDelivery)0);
+231: 				((NetworkBehaviour)this).__endSendServerRpc(ref val, 2726291106u, rpcParams, (RpcDelivery)0);
+232: 			}
+233: 			if ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))
+234: 			{
+235: 				((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;
+236: 				int targetClientId = (int)rpcParams.Receive.SenderClientId;
+237: 				SpawnEnemyOnServer(targetClientId);
+238: 			}
+239: 		}
+240: 	}
+241: 
+242: 	public void ResetSpawnState()
+243: 	{
+244: 		isTriggered = false;
+245: 		if ((Object)(object)targetPlayer != (Object)null && !oldTarget.Contains(targetPlayer))
+246: 		{
+247: 			oldTarget.Add(targetPlayer);
+248: 		}
+249: 		targetPlayer = null;
+250: 		randomChance = 0;
+251: 	}
+252: 
+253: 	public void SpawnEnemyOnServer(int targetClientId)
+254: 	{
+255: 		//IL_0018: Unknown result type (might be due to invalid IL or missing references)
+256: 		//IL_0027: Unknown result type (might be due to invalid IL or missing references)
+257: 		//IL_002c: Unknown result type (might be due to invalid IL or missing references)
+258: 		//IL_0031: Unknown result type (might be due to invalid IL or missing references)
+259: 		//IL_00a9: Unknown result type (might be due to invalid IL or missing references)
+260: 		//IL_00b6: Unknown result type (might be due to invalid IL or missing references)
+261: 		PlayerControllerB val = StartOfRound.Instance.allPlayerScripts[targetClientId];
+262: 		Vector3 randomNavMeshPositionInRadius = RoundManager.Instance.GetRandomNavMeshPositionInRadius(((Component)val).transform.position, 15f, RoundManager.Instance.navHit);
+263: 		ScopophobiaPlugin.Instance.LogInfoExtended($"[SpawnEnemyOnServer] Triggered by client {targetClientId} ({StartOfRound.Instance.allPlayerScripts[targetClientId].playerUsername})");
+264: 		SpawnableEnemyWithRarity val2 = RoundManager.Instance.currentLevel.Enemies.Find((SpawnableEnemyWithRarity x) => x.enemyType.enemyName.ToLower() == "shy guy");
+265: 		if (val2 == null)
+266: 		{
+267: 			ScopophobiaPlugin.Instance.LogInfoExtended("Shy Guy Enemy Not found");
+268: 			return;
+269: 		}
+270: 		GameObject val3 = NetworkObjectReference.op_Implicit(RoundManager.Instance.SpawnEnemyGameObject(randomNavMeshPositionInRadius, 0f, 1, val2.enemyType));
+271: 		ShyGuyAI component = val3.GetComponent<ShyGuyAI>();
+272: 		if (((EnemyAI)component).currentBehaviourStateIndex != 1)
+273: 		{
+274: 			((EnemyAI)component).SwitchToBehaviourState(1);
+275: 		}
+276: 		((MonoBehaviour)this).StartCoroutine(InitializeAI(component, val));
+277: 	}
+278: 
+279: 	private IEnumerator InitializeAI(ShyGuyAI ai, PlayerControllerB target)
+280: 	{
+281: 		yield return (object)new WaitForSeconds(Config.triggerTime);
+282: 		ai.AddTargetToList((int)target.actualClientId);
+283: 		((EnemyAI)ai).ChangeOwnershipOfEnemy(target.actualClientId);
+284: 		ResetSpawnState();
+285: 	}
+286: 
+287: 	protected override void __initializeVariables()
+288: 	{
+289: 		((GrabbableObject)this).__initializeVariables();
+290: 	}
+291: 
+292: 	protected override void __initializeRpcs()
+293: 	{
+294: 		//IL_000d: Unknown result type (might be due to invalid IL or missing references)
+295: 		//IL_001c: Expected O, but got Unknown
+296: 		((NetworkBehaviour)this).__registerRpc(2726291106u, new RpcReceiveHandler(__rpc_handler_2726291106), "SpawnEnemyServerRpc");
+297: 		((GrabbableObject)this).__initializeRpcs();
+298: 	}
+299: 
+300: 	private static void __rpc_handler_2726291106(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)
+301: 	{
+302: 		//IL_0023: Unknown result type (might be due to invalid IL or missing references)
+303: 		//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+304: 		//IL_0029: Unknown result type (might be due to invalid IL or missing references)
+305: 		//IL_0033: Unknown result type (might be due to invalid IL or missing references)
+306: 		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
+307: 		//IL_004d: Unknown result type (might be due to invalid IL or missing references)
+308: 		NetworkManager networkManager = target.NetworkManager;
+309: 		if (networkManager != null && networkManager.IsListening)
+310: 		{
+311: 			ServerRpcParams server = rpcParams.Server;
+312: 			target.__rpc_exec_stage = (__RpcExecStage)1;
+313: 			((ShyGuyPaintingProp)(object)target).SpawnEnemyServerRpc(server);
+314: 			target.__rpc_exec_stage = (__RpcExecStage)0;
+315: 		}
+316: 	}
+317: 
+318: 	protected internal override string __getTypeName()
+319: 	{
+320: 		return "ShyGuyPaintingProp";
+321: 	}
+322: }

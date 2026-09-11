@@ -1,0 +1,126 @@
+9: using Scopophobia.Dependencies;
+10: using Scopophobia.Patches;
+11: using UnityEngine;
+12: 
+13: namespace Scopophobia;
+14: 
+15: [BepInPlugin("Scopophobia", "Scopophobia", "1.3.4")]
+16: [BepInDependency(/*Could not decode attribute arguments.*/)]
+17: public class ScopophobiaPlugin : BaseUnityPlugin
+18: {
+19: 	private readonly Harmony harmony;
+20: 
+21: 	public static EnemyType shyGuy;
+22: 
+23: 	public static AssetBundle Assets;
+24: 
+25: 	internal static ScopophobiaPlugin Instance;
+26: 
+27: 	public static SpawnableEnemyWithRarity maskedPrefab;
+28: 
+29: 	public static SpawnableEnemyWithRarity shyEnemy;
+30: 
+31: 	public static Item ShyGuyPainting1;
+32: 
+33: 	public static SpawnableItemWithRarity shyPainting1Prefab;
+34: 
+35: 	public static ManualLogSource logger;
+36: 
+37: 	public static float ShyGuyVolume;
+38: 
+39: 	public static SpawnableEnemyWithRarity shyPrefab;
+40: 
+41: 	public static Config MyConfig { get; internal set; }
+42: 
+43: 	internal Assembly assembly => Assembly.GetExecutingAssembly();
+44: 
+45: 	internal string GetFilePath(string path)
+46: 	{
+47: 		return assembly.Location.Replace(assembly.GetName().Name + ".dll", path);
+48: 	}
+49: 
+50: 	private void LoadAssets()
+51: 	{
+52: 		try
+53: 		{
+54: 			Assets = AssetBundle.LoadFromFile(GetFilePath("scp096"));
+55: 		}
+56: 		catch (Exception arg)
+57: 		{
+58: 			logger.LogError((object)$"Failed to load asset bundle! {arg}");
+59: 		}
+60: 	}
+61: 
+62: 	private void Awake()
+63: 	{
+64: 		if ((Object)(object)Instance == (Object)null)
+65: 		{
+66: 			Instance = this;
+67: 		}
+68: 		NetcodePatchAwake();
+69: 		LoadAssets();
+70: 		logger = ((BaseUnityPlugin)this).Logger;
+71: 		MyConfig = new Config(((BaseUnityPlugin)this).Config);
+72: 		ConfigEntry<bool> val = default(ConfigEntry<bool>);
+73: 		((BaseUnityPlugin)this).Config.TryGetEntry<bool>("General", "Enable the Shy Guy", ref val);
+74: 		if (val.Value)
+75: 		{
+76: 			ShyGuyVolume = Config.VolumeConfig.Value;
+77: 			shyGuy = Assets.LoadAsset<EnemyType>("ShyGuyDef.asset");
+78: 			TerminalNode val2 = Assets.LoadAsset<TerminalNode>("ShyGuyTerminal.asset");
+79: 			TerminalKeyword val3 = Assets.LoadAsset<TerminalKeyword>("ShyGuyKeyword.asset");
+80: 			Item val4 = Assets.LoadAsset<Item>("ShyGuyPainting.asset");
+81: 			NetworkPrefabs.RegisterNetworkPrefab(shyGuy.enemyPrefab);
+82: 			NetworkPrefabs.RegisterNetworkPrefab(val4.spawnPrefab);
+83: 			Items.RegisterScrap(val4, Config.PaintingSpawnRate, (LevelTypes)(-1));
+84: 			Enemies.RegisterEnemy(shyGuy, 15, (LevelTypes)(-1), (SpawnType)0, val2, val3);
+85: 			logger.LogInfo((object)"Scopophobia | SCP-096 has entered the facility. All remaining personnel proceed with caution.");
+86: 			harmony.PatchAll(typeof(Plugin));
+87: 			harmony.PatchAll(typeof(GetShyGuyPrefabForLaterUse));
+88: 			harmony.PatchAll(typeof(AudioSpatializerDisabler));
+89: 			harmony.PatchAll(typeof(RoundManagerPatch));
+90: 			harmony.PatchAll(typeof(StartOfRoundPatch));
+91: 			harmony.PatchAll(typeof(BeltBagItemPatch));
+92: 			if (CoronerProxy.Enabled)
+93: 			{
+94: 				CoronerProxy.Initialize();
+95: 			}
+96: 		}
+97: 	}
+98: 
+99: 	private static void NetcodePatchAwake()
+100: 	{
+101: 		Type[] types = Assembly.GetExecutingAssembly().GetTypes();
+102: 		Type[] array = types;
+103: 		foreach (Type type in array)
+104: 		{
+105: 			MethodInfo[] methods = type.GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.NonPublic);
+106: 			MethodInfo[] array2 = methods;
+107: 			foreach (MethodInfo methodInfo in array2)
+108: 			{
+109: 				object[] customAttributes = methodInfo.GetCustomAttributes(typeof(RuntimeInitializeOnLoadMethodAttribute), inherit: false);
+110: 				if (customAttributes.Length != 0)
+111: 				{
+112: 					methodInfo.Invoke(null, null);
+113: 				}
+114: 			}
+115: 		}
+116: 	}
+117: 
+118: 	public void LogInfoExtended(object data)
+119: 	{
+120: 		if (Config.ExtendedLogging)
+121: 		{
+122: 			logger.LogInfo(data);
+123: 		}
+124: 	}
+125: 
+126: 	public void LogErrorExtended(object data)
+127: 	{
+128: 		if (Config.ExtendedLogging)
+129: 		{
+130: 			logger.LogError(data);
+131: 		}
+132: 	}
+133: 
+134: 	public void LogWarningExtended(object data)

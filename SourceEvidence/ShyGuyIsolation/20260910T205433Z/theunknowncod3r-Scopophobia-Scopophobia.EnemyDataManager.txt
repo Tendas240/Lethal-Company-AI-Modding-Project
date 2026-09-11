@@ -1,0 +1,132 @@
+1: using System.Collections.Generic;
+2: using LethalLib;
+3: using Scopophobia.Data;
+4: using UnityEngine;
+5: 
+6: namespace Scopophobia;
+7: 
+8: internal static class EnemyDataManager
+9: {
+10: 	public const string EnemyName = "Shy guy";
+11: 
+12: 	private static bool _initialized;
+13: 
+14: 	public static List<EnemyData> EnemyDataList { get; private set; } = new List<EnemyData>();
+15: 
+16: 	public static void Initialize()
+17: 	{
+18: 		if (!_initialized)
+19: 		{
+20: 			_initialized = true;
+21: 			InitializeEnemyDataList();
+22: 		}
+23: 	}
+24: 
+25: 	private static void InitializeEnemyDataList()
+26: 	{
+27: 		if ((Object)(object)StartOfRound.Instance == (Object)null)
+28: 		{
+29: 			Plugin.logger.LogError((object)"Failed to initialize enemy data list. StartOfRound Instance is null. (EnemyName: Shy guy)");
+30: 			return;
+31: 		}
+32: 		EnemyType enemyType = EnemyHelper.GetEnemyType("Shy guy");
+33: 		if ((Object)(object)enemyType == (Object)null)
+34: 		{
+35: 			Plugin.logger.LogError((object)"Failed to initialize enemy data list. EnemyType is null. (EnemyName: Shy guy)");
+36: 			return;
+37: 		}
+38: 		EnemyHelper.SetProbabilityCurve("Shy guy", Utils.ToFloatsArray(Config.SpawnProbabilityCurve));
+39: 		SelectableLevel[] levels = StartOfRound.Instance.levels;
+40: 		foreach (SelectableLevel val in levels)
+41: 		{
+42: 			if (val.spawnEnemiesAndScrap)
+43: 			{
+44: 				AddEnemyData(val);
+45: 			}
+46: 		}
+47: 		foreach (EnemyData enemyData in EnemyDataList)
+48: 		{
+49: 			int value = enemyData.ConfigData.SpawnWeight.Value;
+50: 			if (enemyData.ConfigData.SpawnInside.Value)
+51: 			{
+52: 				LevelHelper.AddEnemyToLevel(enemyData.PlanetName, "Shy guy", value, EnemyListType.Inside);
+53: 			}
+54: 			else
+55: 			{
+56: 				LevelHelper.RemoveEnemyFromLevel(enemyData.PlanetName, "Shy guy", EnemyListType.Inside);
+57: 			}
+58: 			if (enemyData.ConfigData.SpawnOutside.Value)
+59: 			{
+60: 				LevelHelper.AddEnemyToLevel(enemyData.PlanetName, "Shy guy", value, EnemyListType.Outside);
+61: 			}
+62: 			else
+63: 			{
+64: 				LevelHelper.RemoveEnemyFromLevel(enemyData.PlanetName, "Shy guy", EnemyListType.Outside);
+65: 			}
+66: 		}
+67: 	}
+68: 
+69: 	public static void AddEnemyData(SelectableLevel level)
+70: 	{
+71: 		if (HasEnemyData(level.PlanetName))
+72: 		{
+73: 			Plugin.logger.LogWarning((object)("Failed to add enemy data for level \"" + level.PlanetName + "\". Enemy data already exists for SelectableLevel."));
+74: 			return;
+75: 		}
+76: 		EnemyType enemyType = EnemyHelper.GetEnemyType("Shy guy");
+77: 		if ((Object)(object)enemyType == (Object)null)
+78: 		{
+79: 			Plugin.logger.LogError((object)("Failed to add enemy data for level \"" + level.PlanetName + "\". EnemyType is null"));
+80: 			return;
+81: 		}
+82: 		bool flag = LevelHelper.LevelHasEnemy(level.PlanetName, "Shy guy", EnemyListType.Inside, out var spawnWeight);
+83: 		bool flag2 = LevelHelper.LevelHasEnemy(level.PlanetName, "Shy guy", EnemyListType.Outside, out var spawnWeight2);
+84: 		int spawnWeight3 = 0;
+85: 		if (flag & flag2)
+86: 		{
+87: 			spawnWeight3 = Mathf.Max(spawnWeight, spawnWeight2);
+88: 		}
+89: 		else if (flag)
+90: 		{
+91: 			spawnWeight3 = spawnWeight;
+92: 		}
+93: 		else if (flag2)
+94: 		{
+95: 			spawnWeight3 = spawnWeight2;
+96: 		}
+97: 		EnemyConfigDataDefault defaultConfigValues = new EnemyConfigDataDefault(spawnWeight3, enemyType.MaxCount, flag, flag2);
+98: 		EnemyData enemyData = new EnemyData(level.PlanetName, defaultConfigValues);
+99: 		enemyData.BindConfigs();
+100: 		EnemyDataList.Add(enemyData);
+101: 	}
+102: 
+103: 	public static EnemyData GetEnemyData(string planetName)
+104: 	{
+105: 		foreach (EnemyData enemyData in EnemyDataList)
+106: 		{
+107: 			if (enemyData.PlanetName == planetName)
+108: 			{
+109: 				return enemyData;
+110: 			}
+111: 		}
+112: 		return null;
+113: 	}
+114: 
+115: 	public static bool HasEnemyData(string planetName)
+116: 	{
+117: 		return GetEnemyData(planetName) != null;
+118: 	}
+119: 
+120: 	public static void SetEnemyDataForCurrentLevel()
+121: 	{
+122: 		EnemyData enemyData = GetEnemyData(LevelHelper.CurrentPlanetName);
+123: 		if (enemyData == null)
+124: 		{
+125: 			Plugin.logger.LogError((object)("Failed to set enemy data for current level. EnemyData is null. (PlanetName: " + LevelHelper.CurrentPlanetName + ")"));
+126: 		}
+127: 		else
+128: 		{
+129: 			EnemyHelper.SetMaxSpawnCount("Shy guy", enemyData.ConfigData.MaxSpawnCount.Value, LevelHelper.CurrentPlanetName);
+130: 		}
+131: 	}
+132: }

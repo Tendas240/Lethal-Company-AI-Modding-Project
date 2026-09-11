@@ -1,0 +1,32 @@
+name: Inspect ShyGuy isolation contracts
+on:
+  push:
+    branches: [analysis/s142ai-shyguy-contracts]
+    paths:
+      - 'AnalysisTools/inspect_shyguy_isolation.py'
+      - '.github/workflows/shyguy-isolation-inspect.yml'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Restore exact project reference dependencies
+        run: dotnet restore Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj --configfile Patches/S139CompatibilityFixes/NuGet.Config
+      - name: Install pinned decompiler
+        run: dotnet tool install --global ilspycmd --version 11.0.0.9375
+      - name: Capture exact profile and package contracts
+        run: python AnalysisTools/inspect_shyguy_isolation.py
+      - name: Preserve bounded inspection evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-shyguy-isolation-contracts
+          path: inspection-output/
+          if-no-files-found: error
+          retention-days: 90
