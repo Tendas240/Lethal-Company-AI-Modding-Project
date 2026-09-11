@@ -19,7 +19,7 @@ $ReviewedAppManifestSha256 = @(
 $ManifestReview = 'AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md'
 $PriorManifest = 'SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9/MANIFEST.json'
 $EvidenceRoot = 'SourceEvidence/VanillaV81/VentNestLifecycle'
-$ReportName = 'V81_VENT_NEST_LIFECYCLE_FOCUSED_DECOMPILE.txt'
+$ReportName = 'V81_VENT_NEST_LIFECYCLE_FOCUSED_IL.txt'
 $Utf8 = New-Object System.Text.UTF8Encoding($false)
 $LifecycleNames = @('Awake', 'Start', 'Update', 'LateUpdate', 'FixedUpdate', 'OnEnable', 'OnDisable', 'OnDestroy', 'OnNetworkSpawn', 'OnNetworkDespawn')
 
@@ -169,77 +169,41 @@ function Ensure-DotNetAndIlSpy {
     return [pscustomobject]@{ DotNet = $dotnetExe; IlSpyDll = $ilspyDllMatches[0].FullName }
 }
 
-function Get-CodeMask {
-    param([Parameter(Mandatory = $true)][string]$Text)
-    if ($Text.Contains('"""')) { throw 'Raw C# strings are outside this focused extractor contract.' }
-    $pattern = @'
-(?s)/\*.*?\*/|//[^\r\n]*|@"(?:""|[^"])*"|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'
-'@
-    return [regex]::Replace($Text, $pattern.Trim(), [System.Text.RegularExpressions.MatchEvaluator]{
-        param($m)
-        return [regex]::Replace($m.Value, '[^\r\n]', ' ')
-    })
-}
-function Get-TypeModel {
-    param([Parameter(Mandatory = $true)][string]$Source, [Parameter(Mandatory = $true)][string]$TypeName)
-    $mask = Get-CodeMask $Source
-    $typePattern = '\bclass\s+' + [regex]::Escape($TypeName) + '\b[^\{]*\{'
-    $classMatch = [regex]::Match($mask, $typePattern)
-    if (-not $classMatch.Success) { throw ($TypeName + ' class declaration absent.') }
-    $depths = New-Object 'int[]' ($mask.Length + 1)
-    $depth = 0
-    for ($i = 0; $i -lt $mask.Length; $i++) {
-        $depths[$i] = $depth
-        if ($mask[$i] -eq '{') { $depth++ }
-        elseif ($mask[$i] -eq '}') { $depth-- }
-        if ($depth -lt 0) { throw 'Unbalanced C# braces.' }
-    }
-    $depths[$mask.Length] = $depth
-    if ($depth -ne 0) { throw 'Unbalanced C# braces at end of source.' }
-    $classBrace = $classMatch.Index + $classMatch.Length - 1
-    $methodDepth = $depths[$classBrace] + 1
-    $decls = [regex]::Matches($mask, '(?m)^[\t ]*(?:public|private|protected|internal)\s+[^\r\n{};=]*?\b(?<name>[A-Za-z_][A-Za-z0-9_]*)\s*\(')
+function Get-IlTypeModel {
+    param([Parameter(Mandatory = $true)][string]$Il, [Parameter(Mandatory = $true)][string]$TypeName)
+    $endPattern = '(?m)^[\t ]*\}\s*// end of method ' + [regex]::Escape($TypeName) + '::(?<name>[^\r\n]+?)\s*$'
+    $endMatches = [regex]::Matches($Il, $endPattern)
+    if ($endMatches.Count -eq 0) { throw ($TypeName + ': no exact IL method end markers were found.') }
     $methods = @()
-    foreach ($decl in $decls) {
-        if ($depths[$decl.Index] -ne $methodDepth) { continue }
-        $openParen = $decl.Index + $decl.Length - 1
-        $paren = 1
-        $pos = $openParen + 1
-        while ($pos -lt $mask.Length -and $paren -gt 0) {
-            if ($mask[$pos] -eq '(') { $paren++ }
-            elseif ($mask[$pos] -eq ')') { $paren-- }
-            $pos++
-        }
-        if ($paren -ne 0) { throw ($TypeName + ': unbalanced method signature.') }
-        while ($pos -lt $mask.Length -and [char]::IsWhiteSpace($mask[$pos])) { $pos++ }
-        if ($pos -ge $mask.Length -or $mask[$pos] -ne '{') { continue }
-        $bodyStart = $pos
-        $end = $bodyStart + 1
-        while ($end -lt $mask.Length -and -not ($mask[$end] -eq '}' -and $depths[$end] -eq ($methodDepth + 1))) { $end++ }
-        if ($end -ge $mask.Length) { throw ($TypeName + ': method body did not close.') }
+    foreach ($endMatch in $endMatches) {
+        $prefix = $Il.Substring(0, $endMatch.Index)
+        $starts = [regex]::Matches($prefix, '(?m)^[\t ]*\.method\b')
+        if ($starts.Count -eq 0) { throw ($TypeName + ': IL method start missing before ' + $endMatch.Groups['name'].Value + '.') }
+        $start = $starts[$starts.Count - 1].Index
+        $end = $endMatch.Index + $endMatch.Length
+        $text = $Il.Substring($start, $end - $start)
+        $brace = $text.IndexOf('{')
+        if ($brace -lt 0) { throw ($TypeName + ': IL method body opener missing for ' + $endMatch.Groups['name'].Value + '.') }
         $methods += [pscustomobject]@{
-            Name = $decl.Groups['name'].Value
-            Signature = $Source.Substring($decl.Index, $bodyStart - $decl.Index).Trim()
-            Text = $Source.Substring($decl.Index, $end - $decl.Index + 1)
-            Body = $mask.Substring($bodyStart + 1, $end - $bodyStart - 1)
-            SourceLine = ([regex]::Matches($Source.Substring(0, $decl.Index), '\n')).Count + 1
-            Index = $decl.Index
+            Name = $endMatch.Groups['name'].Value.Trim()
+            Signature = $text.Substring(0, $brace).Trim()
+            Text = $text
+            Body = $text.Substring($brace + 1)
+            SourceLine = ([regex]::Matches($Il.Substring(0, $start), '\n')).Count + 1
+            Index = $start
         }
     }
-    return [pscustomobject]@{
-        TypeName = $TypeName
-        Header = $Source.Substring($classMatch.Index, $classBrace - $classMatch.Index + 1).Trim()
-        Methods = @($methods)
-    }
+    $headerMatch = [regex]::Match($Il, '(?ms)^[\t ]*\.class\b.*?\b' + [regex]::Escape($TypeName) + '\b.*?^[\t ]*\{')
+    $header = if ($headerMatch.Success) { $headerMatch.Value.TrimEnd('{').Trim() } else { '.class ' + $TypeName }
+    return [pscustomobject]@{ TypeName = $TypeName; Header = $header; Methods = @($methods) }
 }
-function Get-ExactMethod {
+function Get-ExactIlMethod {
     param([Parameter(Mandatory = $true)]$Model, [Parameter(Mandatory = $true)][string]$Name, [Parameter(Mandatory = $true)][string]$SignaturePattern)
     $found = @($Model.Methods | Where-Object { $_.Name -eq $Name -and $_.Signature -match $SignaturePattern })
-    if ($found.Count -ne 1) { throw ($Model.TypeName + ': expected exactly one exact method ' + $Name + ', found ' + $found.Count + '.') }
-    if ($found[0].Body -match '^\s*throw\s+null\s*;\s*$') { throw ($Model.TypeName + ': reference-only throw-null stub rejected: ' + $found[0].Signature) }
+    if ($found.Count -ne 1) { throw ($Model.TypeName + ': expected exactly one exact IL method ' + $Name + ', found ' + $found.Count + '.') }
     return $found[0]
 }
-function Get-OneHopContext {
+function Get-IlOneHopContext {
     param([Parameter(Mandatory = $true)]$Model, [Parameter(Mandatory = $true)][object[]]$Seeds, [int]$MaxLines = 1600)
     $selected = @{}
     foreach ($seed in $Seeds) { $selected[[string]$seed.Index] = $seed }
@@ -247,26 +211,25 @@ function Get-OneHopContext {
         if ($selected.ContainsKey([string]$candidate.Index)) { continue }
         $include = $false
         foreach ($seed in $Seeds) {
-            if ($candidate.Body -match ('\b' + [regex]::Escape($seed.Name) + '\s*\(')) { $include = $true; break }
-            if ($seed.Body -match ('\b' + [regex]::Escape($candidate.Name) + '\s*\(')) { $include = $true; break }
+            $seedPattern = '::' + [regex]::Escape($seed.Name) + '\s*\('
+            $candidatePattern = '::' + [regex]::Escape($candidate.Name) + '\s*\('
+            if ($candidate.Body -match $seedPattern -or $seed.Body -match $candidatePattern) { $include = $true; break }
         }
         if ($include) { $selected[[string]$candidate.Index] = $candidate }
     }
     $result = @($selected.Values | Sort-Object Index)
     $lineCount = 0
     foreach ($method in $result) { $lineCount += @($method.Text -split '\r?\n').Count }
-    if ($lineCount -gt $MaxLines) { throw ($Model.TypeName + ': focused extraction is ' + $lineCount + ' lines; limit ' + $MaxLines + '. No evidence was uploaded.') }
-    if ($result.Count -eq 0) { throw ($Model.TypeName + ': focused extraction is empty.') }
+    if ($lineCount -gt $MaxLines) { throw ($Model.TypeName + ': focused IL extraction is ' + $lineCount + ' lines; limit ' + $MaxLines + '. No evidence was uploaded.') }
+    if ($result.Count -eq 0) { throw ($Model.TypeName + ': focused IL extraction is empty.') }
     return $result
 }
-function Get-LifecycleSeeds {
+function Get-IlLifecycleSeeds {
     param([Parameter(Mandatory = $true)]$Model)
-    $awake = Get-ExactMethod -Model $Model -Name 'Awake' -SignaturePattern 'Awake\s*\(\s*\)'
+    $awake = @($Model.Methods | Where-Object { $_.Name -eq 'Awake' })
+    if ($awake.Count -ne 1) { throw ($Model.TypeName + ': expected exactly one declared IL Awake method, found ' + $awake.Count + '.') }
     $seeds = @($Model.Methods | Where-Object { $LifecycleNames -contains $_.Name })
-    if (@($seeds | Where-Object { $_.Index -eq $awake.Index }).Count -ne 1) { throw ($Model.TypeName + ': Awake was not retained in lifecycle selection.') }
-    foreach ($seed in $seeds) {
-        if ($seed.Body -match '^\s*throw\s+null\s*;\s*$') { throw ($Model.TypeName + ': lifecycle throw-null stub rejected: ' + $seed.Signature) }
-    }
+    if (@($seeds | Where-Object { $_.Name -eq 'Awake' }).Count -ne 1) { throw ($Model.TypeName + ': Awake was not retained in IL lifecycle selection.') }
     return $seeds
 }
 function New-EvidenceTreeEntries {
@@ -317,62 +280,118 @@ function Invoke-ProvenanceSelfTest {
 }
 function Invoke-ExtractorSelfTest {
     $roundFixture = @'
-public class RoundManager {
-    public int AssignRandomEnemyToVent(EnemyVent vent, float spawnTime) {
-        return PickEnemy(vent);
-    }
-    public int AssignRandomEnemyToVent(int fake) { return fake; }
-    private int PickEnemy(EnemyVent vent) { return 1; }
-    private void BeginEnemySpawning() { AssignRandomEnemyToVent(null, 1f); }
-    private void Unrelated() { var x = "AssignRandomEnemyToVent(null, 2f)"; }
+.class public auto ansi beforefieldinit RoundManager extends [mscorlib]System.Object
+{
+    .method public hidebysig instance bool AssignRandomEnemyToVent (class EnemyVent vent, float32 spawnTime) cil managed
+    {
+        IL_0000: ldarg.0
+        IL_0001: call instance bool RoundManager::PickEnemy(class EnemyVent)
+        IL_0006: ret
+    } // end of method RoundManager::AssignRandomEnemyToVent
+    .method public hidebysig instance bool AssignRandomEnemyToVent (int32 fake) cil managed
+    {
+        IL_0000: ldc.i4.0
+        IL_0001: ret
+    } // end of method RoundManager::AssignRandomEnemyToVent
+    .method private hidebysig instance bool PickEnemy (class EnemyVent vent) cil managed
+    {
+        IL_0000: ldc.i4.1
+        IL_0001: ret
+    } // end of method RoundManager::PickEnemy
+    .method private hidebysig instance void BeginEnemySpawning () cil managed
+    {
+        IL_0000: ldarg.0
+        IL_0001: ldnull
+        IL_0002: ldc.r4 1
+        IL_0007: call instance bool RoundManager::AssignRandomEnemyToVent(class EnemyVent, float32)
+        IL_000c: pop
+        IL_000d: ret
+    } // end of method RoundManager::BeginEnemySpawning
 }
 '@
-    $round = Get-TypeModel -Source $roundFixture -TypeName 'RoundManager'
-    $assign = Get-ExactMethod -Model $round -Name 'AssignRandomEnemyToVent' -SignaturePattern 'AssignRandomEnemyToVent\s*\(\s*EnemyVent\b[^,]*,\s*float\b[^\)]*\)'
-    $roundContext = @(Get-OneHopContext -Model $round -Seeds @($assign))
+    $round = Get-IlTypeModel -Il $roundFixture -TypeName 'RoundManager'
+    $assign = Get-ExactIlMethod -Model $round -Name 'AssignRandomEnemyToVent' -SignaturePattern '\(\s*class EnemyVent\b[^,]*,\s*float32\b'
+    $roundContext = @(Get-IlOneHopContext -Model $round -Seeds @($assign))
     $roundNames = @($roundContext | ForEach-Object { $_.Name })
-    foreach ($required in @('AssignRandomEnemyToVent', 'PickEnemy', 'BeginEnemySpawning')) { if ($roundNames -notcontains $required) { throw ('RoundManager context missing ' + $required) } }
-    if (@($roundContext | Where-Object { $_.Signature -match 'AssignRandomEnemyToVent\s*\(\s*int\b' }).Count -ne 0) { throw 'Wrong overload leaked into exact selection.' }
+    foreach ($required in @('AssignRandomEnemyToVent', 'PickEnemy', 'BeginEnemySpawning')) { if ($roundNames -notcontains $required) { throw ('RoundManager IL context missing ' + $required) } }
+    if (@($roundContext | Where-Object { $_.Signature -match '\(\s*int32\b' }).Count -ne 0) { throw 'Wrong RoundManager overload leaked into IL exact selection.' }
 
     $nestFixture = @'
-public class EnemyAINestSpawnObject : NetworkBehaviour {
-    private void Awake() { RegisterNest(); }
-    private void OnDestroy() { CleanupNest(); }
-    private void RegisterNest() { }
-    private void CleanupNest() { }
-    private void Utility() { }
+.class public auto ansi beforefieldinit EnemyAINestSpawnObject extends [mscorlib]System.Object
+{
+    .method private hidebysig instance void Awake () cil managed
+    {
+        IL_0000: ldarg.0
+        IL_0001: call instance void EnemyAINestSpawnObject::RegisterNest()
+        IL_0006: ret
+    } // end of method EnemyAINestSpawnObject::Awake
+    .method private hidebysig instance void OnDestroy () cil managed
+    {
+        IL_0000: ldarg.0
+        IL_0001: call instance void EnemyAINestSpawnObject::CleanupNest()
+        IL_0006: ret
+    } // end of method EnemyAINestSpawnObject::OnDestroy
+    .method private hidebysig instance void RegisterNest () cil managed
+    {
+        IL_0000: ret
+    } // end of method EnemyAINestSpawnObject::RegisterNest
+    .method private hidebysig instance void CleanupNest () cil managed
+    {
+        IL_0000: ret
+    } // end of method EnemyAINestSpawnObject::CleanupNest
 }
 '@
-    $nest = Get-TypeModel -Source $nestFixture -TypeName 'EnemyAINestSpawnObject'
-    $lifecycle = @(Get-LifecycleSeeds -Model $nest)
-    $nestContext = @(Get-OneHopContext -Model $nest -Seeds $lifecycle)
+    $nest = Get-IlTypeModel -Il $nestFixture -TypeName 'EnemyAINestSpawnObject'
+    $nestSeeds = @(Get-IlLifecycleSeeds -Model $nest)
+    $nestContext = @(Get-IlOneHopContext -Model $nest -Seeds $nestSeeds)
     $nestNames = @($nestContext | ForEach-Object { $_.Name })
-    foreach ($required in @('Awake', 'OnDestroy', 'RegisterNest', 'CleanupNest')) { if ($nestNames -notcontains $required) { throw ('Nest lifecycle context missing ' + $required) } }
+    foreach ($required in @('Awake', 'OnDestroy', 'RegisterNest', 'CleanupNest')) { if ($nestNames -notcontains $required) { throw ('Nest IL lifecycle context missing ' + $required) } }
+    $missingAwake = $nestFixture -replace '(?ms)\s*\.method private hidebysig instance void Awake \(\) cil managed.*?// end of method EnemyAINestSpawnObject::Awake\s*', "`n"
+    $failed = $false
+    try { Get-IlLifecycleSeeds -Model (Get-IlTypeModel -Il $missingAwake -TypeName 'EnemyAINestSpawnObject') | Out-Null } catch { $failed = $true }
+    if (-not $failed) { throw 'Missing declared IL Awake rejection failed.' }
 
     $enemyFixture = @'
-public class EnemyAI : NetworkBehaviour {
-    public void UseNestSpawnObject(EnemyAINestSpawnObject nest) { ReleasePreviousNest(); }
-    public void UseNestSpawnObject(int fake) { }
-    private void Start() { UseNestSpawnObject(null); }
-    private void ReleasePreviousNest() { }
-    private void Unrelated() { }
+.class public auto ansi beforefieldinit EnemyAI extends [mscorlib]System.Object
+{
+    .method public hidebysig instance void UseNestSpawnObject (class EnemyAINestSpawnObject nest) cil managed
+    {
+        IL_0000: ldarg.0
+        IL_0001: call instance void EnemyAI::ReleasePreviousNest()
+        IL_0006: ret
+    } // end of method EnemyAI::UseNestSpawnObject
+    .method public hidebysig instance void UseNestSpawnObject (int32 fake) cil managed
+    {
+        IL_0000: ret
+    } // end of method EnemyAI::UseNestSpawnObject
+    .method private hidebysig instance void Start () cil managed
+    {
+        IL_0000: ldarg.0
+        IL_0001: ldnull
+        IL_0002: call instance void EnemyAI::UseNestSpawnObject(class EnemyAINestSpawnObject)
+        IL_0007: ret
+    } // end of method EnemyAI::Start
+    .method private hidebysig instance void ReleasePreviousNest () cil managed
+    {
+        IL_0000: ret
+    } // end of method EnemyAI::ReleasePreviousNest
 }
 '@
-    $enemy = Get-TypeModel -Source $enemyFixture -TypeName 'EnemyAI'
-    $useNest = Get-ExactMethod -Model $enemy -Name 'UseNestSpawnObject' -SignaturePattern 'UseNestSpawnObject\s*\(\s*EnemyAINestSpawnObject\b[^\)]*\)'
-    $enemyContext = @(Get-OneHopContext -Model $enemy -Seeds @($useNest))
+    $enemy = Get-IlTypeModel -Il $enemyFixture -TypeName 'EnemyAI'
+    $useNest = Get-ExactIlMethod -Model $enemy -Name 'UseNestSpawnObject' -SignaturePattern '\(\s*class EnemyAINestSpawnObject\b'
+    $enemyContext = @(Get-IlOneHopContext -Model $enemy -Seeds @($useNest))
     $enemyNames = @($enemyContext | ForEach-Object { $_.Name })
-    foreach ($required in @('UseNestSpawnObject', 'Start', 'ReleasePreviousNest')) { if ($enemyNames -notcontains $required) { throw ('EnemyAI context missing ' + $required) } }
+    foreach ($required in @('UseNestSpawnObject', 'Start', 'ReleasePreviousNest')) { if ($enemyNames -notcontains $required) { throw ('EnemyAI IL context missing ' + $required) } }
 
     $failed = $false
-    try { Get-ExactMethod -Model $round -Name 'Missing' -SignaturePattern 'Missing\s*\(' | Out-Null } catch { $failed = $true }
-    if (-not $failed) { throw 'Missing-target rejection failed.' }
+    try { Get-ExactIlMethod -Model $round -Name 'Missing' -SignaturePattern 'Missing' | Out-Null } catch { $failed = $true }
+    if (-not $failed) { throw 'Missing IL target rejection failed.' }
     $failed = $false
-    try { Get-OneHopContext -Model $round -Seeds @($assign) -MaxLines 1 | Out-Null } catch { $failed = $true }
-    if (-not $failed) { throw 'Size-limit rejection failed.' }
+    try { Get-IlOneHopContext -Model $round -Seeds @($assign) -MaxLines 1 | Out-Null } catch { $failed = $true }
+    if (-not $failed) { throw 'IL size-limit rejection failed.' }
     $entries = @(New-EvidenceTreeEntries -Directory 'SourceEvidence/VanillaV81/VentNestLifecycle/20260911T000000Z-abcdef12' -Report 'report' -Manifest '{}')
-    if ($entries.Count -ne 2 -or @($entries | Where-Object { $_.path -match '\.(dll|exe|zip|r2z|cs)$' }).Count -ne 0) { throw 'Publication allowlist test failed.' }
-    Write-Host 'PASS: exact overloads, lifecycle selection, one-hop caller/downstream context, limits and two-file publication.'
+    if ($entries.Count -ne 2 -or @($entries | Where-Object { $_.path -match '\.(dll|exe|zip|r2z|cs|il)$' }).Count -ne 0) { throw 'Publication allowlist test failed.' }
+    Write-Host 'PASS: IL exact overloads, declared Awake lifecycle, one-hop caller/downstream context, limits and two-file publication.'
 }
 function Invoke-BootstrapSelfTest {
     $temp = Join-Path ([IO.Path]::GetTempPath()) ('lc-ventnest-bootstrap-' + [guid]::NewGuid().ToString('N'))
@@ -449,33 +468,34 @@ try {
     if ($prior.source_assembly.sha256 -ne $ExpectedAssemblySha256 -or $prior.game_executable.sha256 -ne $ExpectedExeSha256 -or $prior.steam.buildid -ne $ExpectedSteamBuildId -or $prior.steam.app_id -ne $SteamAppId -or $ReviewedAppManifestSha256 -notcontains $prior.steam.appmanifest_sha256) { throw 'Current repository prior V81 evidence disagrees with the pinned installed-game contract.' }
 
     $ilspy = Ensure-DotNetAndIlSpy -TempRoot $script:CaptureTempRoot
-    $sourceByType = @{}
+    $ilByType = @{}
     $modelByType = @{}
     foreach ($typeName in @('RoundManager', 'EnemyAINestSpawnObject', 'EnemyAI')) {
-        Write-Step ('Decompiling exact type ' + $typeName + '.')
-        $source = Invoke-CheckedNativeProcess -FilePath $ilspy.DotNet -Arguments @($ilspy.IlSpyDll, '-t', $typeName, '-r', $managedDir, $assemblyPath) -Label ($typeName + ' decompile')
-        if ([string]::IsNullOrWhiteSpace($source)) { throw ($typeName + ': decompiler returned empty source.') }
-        $sourceByType[$typeName] = $source
-        $modelByType[$typeName] = Get-TypeModel -Source $source -TypeName $typeName
+        Write-Step ('Decompiling exact installed IL type ' + $typeName + '.')
+        $il = Invoke-CheckedNativeProcess -FilePath $ilspy.DotNet -Arguments @($ilspy.IlSpyDll, '-il', '-t', $typeName, '-r', $managedDir, $assemblyPath) -Label ($typeName + ' IL decompile')
+        if ([string]::IsNullOrWhiteSpace($il)) { throw ($typeName + ': IL decompiler returned empty source.') }
+        $ilByType[$typeName] = $il
+        $modelByType[$typeName] = Get-IlTypeModel -Il $il -TypeName $typeName
     }
 
-    $assign = Get-ExactMethod -Model $modelByType['RoundManager'] -Name 'AssignRandomEnemyToVent' -SignaturePattern 'AssignRandomEnemyToVent\s*\(\s*EnemyVent\b[^,]*,\s*float\b[^\)]*\)'
-    $roundContext = @(Get-OneHopContext -Model $modelByType['RoundManager'] -Seeds @($assign))
-    $nestSeeds = @(Get-LifecycleSeeds -Model $modelByType['EnemyAINestSpawnObject'])
-    $nestContext = @(Get-OneHopContext -Model $modelByType['EnemyAINestSpawnObject'] -Seeds $nestSeeds)
-    $useNest = Get-ExactMethod -Model $modelByType['EnemyAI'] -Name 'UseNestSpawnObject' -SignaturePattern 'UseNestSpawnObject\s*\(\s*EnemyAINestSpawnObject\b[^\)]*\)'
-    $enemyContext = @(Get-OneHopContext -Model $modelByType['EnemyAI'] -Seeds @($useNest))
+    $assign = Get-ExactIlMethod -Model $modelByType['RoundManager'] -Name 'AssignRandomEnemyToVent' -SignaturePattern '\(\s*class EnemyVent\b[^,]*,\s*float32\b'
+    $roundContext = @(Get-IlOneHopContext -Model $modelByType['RoundManager'] -Seeds @($assign))
+    $nestSeeds = @(Get-IlLifecycleSeeds -Model $modelByType['EnemyAINestSpawnObject'])
+    $nestContext = @(Get-IlOneHopContext -Model $modelByType['EnemyAINestSpawnObject'] -Seeds $nestSeeds)
+    $useNest = Get-ExactIlMethod -Model $modelByType['EnemyAI'] -Name 'UseNestSpawnObject' -SignaturePattern '\(\s*class EnemyAINestSpawnObject\b'
+    $enemyContext = @(Get-IlOneHopContext -Model $modelByType['EnemyAI'] -Seeds @($useNest))
 
     $builder = New-Object Text.StringBuilder
-    [void]$builder.AppendLine('# Installed Lethal Company V81 vent/nest lifecycle evidence')
+    [void]$builder.AppendLine('# Installed Lethal Company V81 vent/nest lifecycle IL evidence')
     [void]$builder.AppendLine('')
     [void]$builder.AppendLine('Source Assembly-CSharp SHA-256: ' + $assemblySha)
     [void]$builder.AppendLine('Steam buildid: ' + $steamIdentity.BuildId)
     [void]$builder.AppendLine('Repository main at capture: ' + $repositoryMain)
-    [void]$builder.AppendLine('Decompiler: ilspycmd ' + $IlSpyVersion)
-    [void]$builder.AppendLine('Scope: exact AssignRandomEnemyToVent(EnemyVent,float), EnemyAINestSpawnObject lifecycle including Awake, exact EnemyAI.UseNestSpawnObject(EnemyAINestSpawnObject), and one-hop same-type caller/downstream context only.')
+    [void]$builder.AppendLine('Decompiler: ilspycmd ' + $IlSpyVersion + ' IL mode')
+    [void]$builder.AppendLine('Scope: exact AssignRandomEnemyToVent(EnemyVent,float), declared EnemyAINestSpawnObject lifecycle including exact Awake, exact EnemyAI.UseNestSpawnObject(EnemyAINestSpawnObject), and one-hop same-type caller/downstream context only.')
+    [void]$builder.AppendLine('IL is used deliberately so a valid declared Unity lifecycle method cannot be lost because of C# rendering/parser shape.')
     [void]$builder.AppendLine('This supplements the completed 27-block RoundManager capture; it does not repeat that capture and is not gameplay acceptance.')
-    [void]$builder.AppendLine('Game binaries, full type decompiles and absolute local paths are excluded.')
+    [void]$builder.AppendLine('Game binaries, full type IL decompiles, absolute local paths and user names are excluded.')
 
     $groups = @(
         [pscustomobject]@{ Name = 'RoundManager'; Model = $modelByType['RoundManager']; Methods = $roundContext },
@@ -488,20 +508,20 @@ try {
         [void]$builder.AppendLine($group.Model.Header)
         foreach ($method in $group.Methods) {
             [void]$builder.AppendLine('')
-            [void]$builder.AppendLine('--- ' + $method.Signature + ' / local type line ' + $method.SourceLine + ' ---')
+            [void]$builder.AppendLine('--- ' + ($method.Signature -replace '\r?\n', ' ') + ' / local IL line ' + $method.SourceLine + ' ---')
             [void]$builder.AppendLine($method.Text)
         }
     }
     $report = $builder.ToString()
-    if (@($report -split '\r?\n').Count -gt 1800) { throw 'Combined focused report exceeded 1800 lines. No evidence was uploaded.' }
+    if (@($report -split '\r?\n').Count -gt 1800) { throw 'Combined focused IL report exceeded 1800 lines. No evidence was uploaded.' }
 
     $stamp = [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssZ')
     $suffix = [guid]::NewGuid().ToString('N').Substring(0, 8)
     $directory = $EvidenceRoot + '/' + $stamp + '-' + $suffix
     $branch = 'source-evidence/v81-vent-nest-' + $stamp.ToLowerInvariant() + '-' + $suffix
     $metadata = [ordered]@{
-        schema_version = 1
-        purpose = 'Supplemental installed V81 vent assignment and nest lifecycle evidence for S1.42AI-DIAG1 patch safety'
+        schema_version = 2
+        purpose = 'Supplemental installed V81 vent assignment and nest lifecycle IL evidence for S1.42AI-DIAG1 patch safety'
         capture_utc = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
         repository = $RepositoryName
         repository_main_at_capture = $repositoryMain
@@ -512,10 +532,11 @@ try {
         decompiler = @{
             tool = 'ilspycmd'
             version = $IlSpyVersion
+            mode = 'IL'
             types = @(
-                @{ name = 'RoundManager'; full_local_type_source_sha256 = (Get-TextSha256 $sourceByType['RoundManager']) },
-                @{ name = 'EnemyAINestSpawnObject'; full_local_type_source_sha256 = (Get-TextSha256 $sourceByType['EnemyAINestSpawnObject']) },
-                @{ name = 'EnemyAI'; full_local_type_source_sha256 = (Get-TextSha256 $sourceByType['EnemyAI']) }
+                @{ name = 'RoundManager'; full_local_type_il_sha256 = (Get-TextSha256 $ilByType['RoundManager']) },
+                @{ name = 'EnemyAINestSpawnObject'; full_local_type_il_sha256 = (Get-TextSha256 $ilByType['EnemyAINestSpawnObject']) },
+                @{ name = 'EnemyAI'; full_local_type_il_sha256 = (Get-TextSha256 $ilByType['EnemyAI']) }
             )
         }
         selection = @{
@@ -529,14 +550,14 @@ try {
             per_type_max_source_lines = 1600
             combined_max_report_lines = 1800
         }
-        report = @{ file = $ReportName; sha256 = (Get-TextSha256 $report); excludes = @('game binaries', 'full type decompiles', 'absolute local paths', 'user names') }
+        report = @{ file = $ReportName; sha256 = (Get-TextSha256 $report); excludes = @('game binaries', 'full type IL decompiles', 'absolute local paths', 'user names') }
     }
     $metadataJson = ($metadata | ConvertTo-Json -Depth 12) + [Environment]::NewLine
     $entries = @(New-EvidenceTreeEntries -Directory $directory -Report $report -Manifest $metadataJson)
 
-    Write-Step ('Publishing focused vent/nest evidence on new branch ' + $branch + '.')
+    Write-Step ('Publishing focused vent/nest IL evidence on new branch ' + $branch + '.')
     $treeResult = Invoke-RepoApi -Endpoint 'git/trees' -Method 'POST' -Body @{ base_tree = $mainCommit.tree.sha; tree = $entries }
-    $commitResult = Invoke-RepoApi -Endpoint 'git/commits' -Method 'POST' -Body @{ message = ('Capture exact V81 vent and nest lifecycle evidence ' + $stamp); tree = $treeResult.sha; parents = @($repositoryMain) }
+    $commitResult = Invoke-RepoApi -Endpoint 'git/commits' -Method 'POST' -Body @{ message = ('Capture exact V81 vent and nest lifecycle IL evidence ' + $stamp); tree = $treeResult.sha; parents = @($repositoryMain) }
     $refResult = Invoke-RepoApi -Endpoint 'git/refs' -Method 'POST' -Body @{ ref = ('refs/heads/' + $branch); sha = $commitResult.sha }
     if ($refResult.object.sha -ne $commitResult.sha) { throw 'Published branch response did not match the evidence commit.' }
 
@@ -545,7 +566,7 @@ try {
     Write-Host ('Evidence branch: ' + $branch)
     Write-Host ('Evidence commit: ' + $commitResult.sha)
     Write-Host ('Report: https://github.com/' + $RepositoryName + '/blob/' + $commitResult.sha + '/' + $directory + '/' + $ReportName)
-    Write-Host 'Only the focused text report and manifest were uploaded. No gameplay run, local repository clone, profile build, or controller change was performed.'
+    Write-Host 'Only the focused IL text report and manifest were uploaded. No gameplay run, local repository clone, profile build, or controller change was performed.'
 }
 finally {
     if (Test-Path -LiteralPath $script:CaptureTempRoot) { Remove-Item -LiteralPath $script:CaptureTempRoot -Recurse -Force -ErrorAction SilentlyContinue }
