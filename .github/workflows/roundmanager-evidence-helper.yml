@@ -23,3 +23,14 @@ jobs:
           if ($PSVersionTable.PSVersion.Major -ne 5) { throw 'Expected Windows PowerShell 5.1' }
           & ./AnalysisTools/InspectRoundManagerSpawningV81.ps1 -SelfTest
           if (-not $?) { throw 'Helper self-test failed' }
+  bootstrap51:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install isolated SDK and pinned ILSpy under Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          if ($PSVersionTable.PSVersion.Major -ne 5) { throw 'Expected Windows PowerShell 5.1' }
+          & ./AnalysisTools/InspectRoundManagerSpawningV81.ps1 -BootstrapSelfTest
+          if (-not $?) { throw 'Bootstrap self-test failed' }
