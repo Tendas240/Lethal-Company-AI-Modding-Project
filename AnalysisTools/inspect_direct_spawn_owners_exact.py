@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Capture complete exact decompiles for S1.42AI-DIAG1 direct-owner patch-safety review.
+"""Capture exact decompiles for S1.42AI-DIAG1 direct-owner patch-safety review.
 
 Fail closed against the SHA-anchored NativeSpawnOwners discovery for LethalMin,
-CodeRebirth and DawnLib/Dusk. Read-only evidence generation; no profile mutation.
+CodeRebirth and DawnLib/Dusk. Also probe the exact project V81 reference for the
+remaining native vent/nest methods, explicitly without treating reference stubs as
+installed-game source. Read-only evidence generation; no profile mutation.
 """
 from __future__ import annotations
 
@@ -98,12 +100,14 @@ def download(url: str, path: Path) -> bytes:
 
 verification = {
     "schema_version": 1,
-    "purpose": "S1.42AI-DIAG1 exact LethalMin/CodeRebirth/DawnLib-Dusk direct-owner review",
+    "purpose": "S1.42AI-DIAG1 exact LethalMin/CodeRebirth/DawnLib-Dusk direct-owner and native-reference-gap review",
     "repository_commit": os.environ.get("GITHUB_SHA"),
     "decompiler": {"tool": "ilspycmd", "version": "11.0.0.9375"},
     "assemblies": [],
+    "game_reference": {},
     "qualification": (
-        "Complete decompile/IL capture of five exact SHA-anchored assemblies for bounded patch-safety review. "
+        "Complete decompile/IL capture of five exact SHA-anchored mod assemblies for bounded patch-safety review. "
+        "The V81 NuGet reference probe is metadata/reference evidence only and is not installed-game source. "
         "This evidence does not itself authorize a diagnostic build or gameplay test."
     ),
 }
@@ -153,6 +157,39 @@ for item in EXPECTED:
         "il_stderr": il_stderr.decode("utf-8", errors="replace"),
         "outputs": [cs_name, il_name],
     })
+
+# Probe only the exact project reference version already restored by the project csproj.
+cache = Path.home() / ".nuget/packages/lethalcompany.gamelibs.steam/81.0.5-ngd.0"
+game_dlls = list(cache.rglob("Assembly-CSharp.dll"))
+if len(game_dlls) != 1:
+    raise RuntimeError(f"Expected one exact V81 reference Assembly-CSharp, found {len(game_dlls)}")
+game_dll = game_dlls[0]
+reference_record = {
+    "package": "LethalCompany.GameLibs.Steam",
+    "version": "81.0.5-ngd.0",
+    "assembly_sha256": sha256(game_dll.read_bytes()),
+    "types": [],
+    "qualification": "Reference metadata only; stub bodies do not close installed V81 patch safety.",
+}
+for type_name in ("RoundManager", "EnemyAINestSpawnObject"):
+    source, stderr = run(["ilspycmd", "-t", type_name, str(game_dll)])
+    name = "V81_REFERENCE_" + type_name + ".cs"
+    (OUT / name).write_bytes(source)
+    text = source.decode("utf-8", errors="replace")
+    reference_record["types"].append({
+        "type": type_name,
+        "source_sha256": sha256(source),
+        "source_bytes": len(source),
+        "source_lines": len(text.splitlines()),
+        "throw_null_count": text.count("throw null"),
+        "contains_AssignRandomEnemyToVent": "AssignRandomEnemyToVent" in text,
+        "contains_specialEnemyRarity": "specialEnemyRarity" in text,
+        "contains_Awake": "Awake(" in text,
+        "contains_UseNestSpawnObject": "UseNestSpawnObject" in text,
+        "stderr": stderr.decode("utf-8", errors="replace"),
+        "output": name,
+    })
+verification["game_reference"] = reference_record
 
 (OUT / "VERIFICATION.json").write_text(json.dumps(verification, indent=2) + "\n", encoding="utf-8")
 print(json.dumps(verification, indent=2))
