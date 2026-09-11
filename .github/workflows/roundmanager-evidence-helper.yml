@@ -1,0 +1,25 @@
+name: Validate V81 spawn evidence helper
+on:
+  pull_request:
+    paths:
+      - 'AnalysisTools/InspectRoundManagerSpawningV81.ps1'
+      - '.github/workflows/roundmanager-evidence-helper.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'AnalysisTools/InspectRoundManagerSpawningV81.ps1'
+      - '.github/workflows/roundmanager-evidence-helper.yml'
+permissions:
+  contents: read
+jobs:
+  powershell51:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate extractor and upload package under Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          if ($PSVersionTable.PSVersion.Major -ne 5) { throw 'Expected Windows PowerShell 5.1' }
+          & ./AnalysisTools/InspectRoundManagerSpawningV81.ps1 -SelfTest
+          if (-not $?) { throw 'Helper self-test failed' }
