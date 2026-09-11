@@ -1,0 +1,484 @@
+9: using Unity.Collections;
+10: using Unity.Netcode;
+11: using UnityEngine;
+12: using UnityEngine.AI;
+13: 
+14: namespace BrutalCompanyMinus.Minus;
+15: 
+16: [HarmonyPatch]
+17: public class Manager
+18: {
+19: 	public static class Spawn
+20: 	{
+21: 		internal static int randomSeedValue = 0;
+22: 
+23: 		private static List<Vector3> spawnDenialPoints = new List<Vector3>();
+24: 
+25: 		private static int seed = 0;
+26: 
+27: 		public static void OutsideObjects(GameObject obj, Vector3 offset, float density, float radius = -1f, int objectCap = 1000)
+28: 		{
+29: 			//IL_0001: Unknown result type (might be due to invalid IL or missing references)
+30: 			BatchOutsideObjects(obj, offset, density, radius, objectCap);
+31: 		}
+32: 
+33: 		public static void OutsideObjects(Assets.ObjectName objName, Vector3 offset, float density, float radius = -1f, int objectCap = 1000)
+34: 		{
+35: 			//IL_0006: Unknown result type (might be due to invalid IL or missing references)
+36: 			BatchOutsideObjects(Assets.GetObject(objName), offset, density, radius, objectCap);
+37: 		}
+38: 
+39: 		private static void BatchOutsideObjects(GameObject obj, Vector3 offset, float density, float radius, int objectCap)
+40: 		{
+41: 			//IL_008b: Unknown result type (might be due to invalid IL or missing references)
+42: 			//IL_00e1: Unknown result type (might be due to invalid IL or missing references)
+43: 			if (!((Object)(object)obj == (Object)null))
+44: 			{
+45: 				spawnDenialPoints = Helper.GetSpawnDenialNodes();
+46: 				int num = (int)Mathf.Clamp(density * terrainArea, 0f, (float)objectCap);
+47: 				Log.LogInfo($"Spawning: {((Object)obj).name}, Count:{num}");
+48: 				int num2 = 8;
+49: 				int num3 = num / num2;
+50: 				int item = num % num2;
+51: 				for (int i = 0; i < num3; i++)
+52: 				{
+53: 					Net.Instance.objectsToSpawn.Add(obj);
+54: 					Net.Instance.objectsToSpawnRadius.Add(radius);
+57: 				}
+58: 				Net.Instance.objectsToSpawn.Add(obj);
+59: 				Net.Instance.objectsToSpawnRadius.Add(radius);
+60: 				Net.Instance.objectsToSpawnOffsets.Add(offset);
+61: 				Net.Instance.objectsToSpawnAmount.Add(item);
+62: 			}
+63: 		}
+64: 
+65: 		public static void DoSpawnOutsideObjects(int count, float radius, Vector3 offset, GameObject obj)
+66: 		{
+67: 			//IL_00b8: Unknown result type (might be due to invalid IL or missing references)
+68: 			//IL_00c4: Unknown result type (might be due to invalid IL or missing references)
+69: 			//IL_00ca: Unknown result type (might be due to invalid IL or missing references)
+70: 			//IL_00cc: Unknown result type (might be due to invalid IL or missing references)
+71: 			//IL_00d1: Unknown result type (might be due to invalid IL or missing references)
+72: 			//IL_0084: Unknown result type (might be due to invalid IL or missing references)
+73: 			//IL_008c: Unknown result type (might be due to invalid IL or missing references)
+74: 			//IL_0092: Unknown result type (might be due to invalid IL or missing references)
+75: 			//IL_0094: Unknown result type (might be due to invalid IL or missing references)
+76: 			//IL_0099: Unknown result type (might be due to invalid IL or missing references)
+77: 			//IL_00d9: Unknown result type (might be due to invalid IL or missing references)
+78: 			//IL_00de: Unknown result type (might be due to invalid IL or missing references)
+79: 			//IL_00e2: Unknown result type (might be due to invalid IL or missing references)
+80: 			//IL_00e3: Unknown result type (might be due to invalid IL or missing references)
+81: 			//IL_00e8: Unknown result type (might be due to invalid IL or missing references)
+82: 			//IL_015a: Unknown result type (might be due to invalid IL or missing references)
+83: 			//IL_015f: Unknown result type (might be due to invalid IL or missing references)
+84: 			//IL_0162: Unknown result type (might be due to invalid IL or missing references)
+85: 			//IL_0163: Unknown result type (might be due to invalid IL or missing references)
+86: 			//IL_01ad: Unknown result type (might be due to invalid IL or missing references)
+87: 			//IL_01bc: Unknown result type (might be due to invalid IL or missing references)
+88: 			//IL_01bd: Unknown result type (might be due to invalid IL or missing references)
+89: 			//IL_01be: Unknown result type (might be due to invalid IL or missing references)
+90: 			//IL_01c3: Unknown result type (might be due to invalid IL or missing references)
+91: 			//IL_01c7: Unknown result type (might be due to invalid IL or missing references)
+92: 			//IL_01e2: Unknown result type (might be due to invalid IL or missing references)
+93: 			//IL_01e7: Unknown result type (might be due to invalid IL or missing references)
+94: 			//IL_01f3: Unknown result type (might be due to invalid IL or missing references)
+95: 			//IL_01f4: Unknown result type (might be due to invalid IL or missing references)
+96: 			Vector3 val = default(Vector3);
+97: 			RaycastHit val2 = default(RaycastHit);
+98: 			for (int i = 0; i < count; i++)
+99: 			{
+100: 				randomSeedValue++;
+121: 						flag = true;
+122: 					}
+123: 				}
+124: 				if (!flag)
+125: 				{
+126: 					val.y = ((RaycastHit)(ref val2)).point.y;
+127: 					val += offset;
+128: 					((Quaternion)(ref rotation)).eulerAngles = ((Quaternion)(ref rotation)).eulerAngles + new Vector3(0f, (float)Random.Range(0, 360), 0f);
+129: 					GameObject val3 = Object.Instantiate<GameObject>(obj, val, rotation);
+130: 					NetworkObject component = val3.GetComponent<NetworkObject>();
+131: 					if ((Object)(object)component != (Object)null)
+132: 					{
+133: 						val3.GetComponent<NetworkObject>().Spawn(true);
+134: 					}
+135: 					objectsToClear.Add(val3);
+136: 				}
+137: 			}
+138: 		}
+139: 
+140: 		public static void OutsideEnemies(GameObject enemy, int count)
+141: 		{
+142: 			enemiesToSpawnOutside.Add(new ObjectInfo(enemy, count));
+143: 		}
+144: 
+145: 		public static void OutsideEnemies(EnemyType enemy, int count)
+146: 		{
+147: 			enemiesToSpawnOutside.Add(new ObjectInfo(enemy.enemyPrefab, count));
+148: 		}
+149: 
+150: 		public static void OutsideEnemies(Assets.EnemyName enemyName, int count)
+151: 		{
+152: 			enemiesToSpawnOutside.Add(new ObjectInfo(Assets.GetEnemy(enemyName).enemyPrefab, count));
+153: 		}
+154: 
+155: 		public static void InsideEnemies(GameObject enemy, int count, float radius = 0f)
+156: 		{
+157: 			enemiesToSpawnInside.Add(new ObjectInfo(enemy, count, 0f, radius));
+158: 		}
+159: 
+160: 		public static void InsideEnemies(EnemyType enemy, int count, float radius = 0f)
+161: 		{
+162: 			enemiesToSpawnInside.Add(new ObjectInfo(enemy.enemyPrefab, count, 0f, radius));
+163: 		}
+164: 
+165: 		public static void InsideEnemies(Assets.EnemyName enemyName, int count, float radius = 0f)
+166: 		{
+167: 			enemiesToSpawnInside.Add(new ObjectInfo(Assets.GetEnemy(enemyName).enemyPrefab, count, 0f, radius));
+168: 		}
+169: 
+170: 		public static void OutsideScrap(int Amount)
+171: 		{
+172: 			randomItemsToSpawnOutsideCount += Amount;
+173: 		}
+174: 
+175: 		public static List<EnemyAI> DoSpawnOutsideEnemies()
+176: 		{
+177: 			//IL_0096: Unknown result type (might be due to invalid IL or missing references)
+178: 			//IL_009b: Unknown result type (might be due to invalid IL or missing references)
+179: 			//IL_00a0: Unknown result type (might be due to invalid IL or missing references)
+180: 			if (SafeOutside.Active)
+181: 			{
+182: 				Log.LogInfo("Outside spawning prevented by OutsideSafe");
+183: 				return new List<EnemyAI>();
+184: 			}
+185: 			List<EnemyAI> list = new List<EnemyAI>();
+186: 			List<Vector3> outsideNodes = Helper.GetOutsideNodes();
+187: 			List<Vector3> spawnDenialNodes = Helper.GetSpawnDenialNodes();
+188: 			for (int i = 0; i < enemiesToSpawnOutside.Count; i++)
+189: 			{
+190: 				for (int j = 0; j < enemiesToSpawnOutside[i].count; j++)
+191: 				{
+192: 					if ((Object)(object)enemiesToSpawnOutside[i].obj == (Object)null)
+193: 					{
+194: 						Log.LogError("Enemy prefab on DoSpawnOutsideEnemies() is null, continuing.");
+195: 						continue;
+196: 					}
+197: 					GameObject val = Object.Instantiate<GameObject>(enemiesToSpawnOutside[i].obj, Helper.GetSafePosition(outsideNodes, spawnDenialNodes, 20f, seed++), Quaternion.Euler(Vector3.zero));
+198: 					EnemyAI component = val.GetComponent<EnemyAI>();
+199: 					list.Add(component);
+200: 					RoundManager.Instance.SpawnedEnemies.Add(component);
+201: 					val.gameObject.GetComponentInChildren<NetworkObject>().Spawn(true);
+202: 				}
+203: 			}
+204: 			enemiesToSpawnOutside.Clear();
+205: 			return list;
+206: 		}
+207: 
+208: 		public static List<EnemyAI> DoSpawnInsideEnemies()
+209: 		{
+210: 			//IL_0068: Unknown result type (might be due to invalid IL or missing references)
+211: 			//IL_006d: Unknown result type (might be due to invalid IL or missing references)
+212: 			//IL_0074: Unknown result type (might be due to invalid IL or missing references)
+213: 			//IL_008b: Unknown result type (might be due to invalid IL or missing references)
+214: 			//IL_0090: Unknown result type (might be due to invalid IL or missing references)
+215: 			//IL_0095: Unknown result type (might be due to invalid IL or missing references)
+216: 			//IL_00ad: Unknown result type (might be due to invalid IL or missing references)
+217: 			//IL_00bc: Unknown result type (might be due to invalid IL or missing references)
+218: 			//IL_00c1: Unknown result type (might be due to invalid IL or missing references)
+219: 			//IL_00d3: Unknown result type (might be due to invalid IL or missing references)
+220: 			//IL_00d5: Unknown result type (might be due to invalid IL or missing references)
+221: 			List<EnemyAI> list = new List<EnemyAI>();
+222: 			for (int i = 0; i < enemiesToSpawnInside.Count; i++)
+223: 			{
+224: 				for (int j = 0; j < enemiesToSpawnInside[i].count; j++)
+225: 				{
+226: 					if ((Object)(object)enemiesToSpawnInside[i].obj == (Object)null)
+227: 					{
+228: 						Log.LogError("Enemy prefab on DoSpawnInsideEnemies() is null, continuing.");
+229: 						continue;
+230: 					}
+231: 					int num = Random.Range(0, RoundManager.Instance.allEnemyVents.Length);
+232: 					Vector3 position = RoundManager.Instance.allEnemyVents[num].floorNode.position;
+233: 					position = RoundManager.Instance.GetRandomNavMeshPositionInRadius(position, enemiesToSpawnInside[i].radius, RoundManager.Instance.navHit);
+234: 					Quaternion val = Quaternion.Euler(0f, RoundManager.Instance.allEnemyVents[num].floorNode.eulerAngles.y, 0f);
+235: 					GameObject val2 = Object.Instantiate<GameObject>(enemiesToSpawnInside[i].obj, position, val);
+236: 					val2.GetComponentInChildren<NetworkObject>().Spawn(true);
+237: 					EnemyAI component = val2.GetComponent<EnemyAI>();
+238: 					list.Add(component);
+239: 					RoundManager.Instance.SpawnedEnemies.Add(component);
+240: 				}
+241: 			}
+242: 			enemiesToSpawnInside.Clear();
+243: 			return list;
+244: 		}
+245: 
+246: 		public static ScrapSpawnInfo DoSpawnScrapOutside(int Amount)
+247: 		{
+248: 			//IL_00b5: Unknown result type (might be due to invalid IL or missing references)
+249: 			//IL_00c0: Unknown result type (might be due to invalid IL or missing references)
+250: 			//IL_00cc: Unknown result type (might be due to invalid IL or missing references)
+251: 			//IL_00d1: Unknown result type (might be due to invalid IL or missing references)
+252: 			//IL_00e0: Unknown result type (might be due to invalid IL or missing references)
+253: 			//IL_00e2: Unknown result type (might be due to invalid IL or missing references)
+254: 			//IL_010b: Unknown result type (might be due to invalid IL or missing references)
+255: 			//IL_0110: Unknown result type (might be due to invalid IL or missing references)
+256: 			//IL_01bb: Unknown result type (might be due to invalid IL or missing references)
+257: 			if (Amount <= 0)
+258: 			{
+259: 				return new ScrapSpawnInfo((NetworkObjectReference[])(object)new NetworkObjectReference[0], new int[0]);
+260: 			}
+261: 			RoundManager instance = RoundManager.Instance;
+262: 			Random random = new Random();
+263: 			List<Item> scrapToSpawn = GetScrapToSpawn((int)((float)Amount * instance.scrapAmountMultiplier * scrapAmountMultiplier));
+264: 			List<int> list = new List<int>();
+265: 			List<NetworkObjectReference> list2 = new List<NetworkObjectReference>();
+266: 			List<Vector3> outsideNodes = Helper.GetOutsideNodes();
+267: 			Log.LogInfo($"Spawning {scrapToSpawn.Count} outside");
+268: 			for (int i = 0; i < scrapToSpawn.Count; i++)
+269: 			{
+270: 				if ((Object)(object)scrapToSpawn[i] == (Object)null)
+271: 				{
+272: 					Log.LogError("Found null element in list ScrapToSpawn. Skipping it.");
+273: 					continue;
+274: 				}
+275: 				Vector3 randomNavMeshPositionInBoxPredictable = instance.GetRandomNavMeshPositionInBoxPredictable(outsideNodes[Random.Range(0, outsideNodes.Count)], 10f, instance.navHit, random, -1, 1f);
+276: 				GameObject val = Object.Instantiate<GameObject>(scrapToSpawn[i].spawnPrefab, randomNavMeshPositionInBoxPredictable, Quaternion.identity, instance.spawnedScrapContainer);
+277: 				GrabbableObject component = val.GetComponent<GrabbableObject>();
+278: 				((Component)component).transform.rotation = Quaternion.Euler(component.itemProperties.restingRotation);
+279: 				component.fallTime = 0f;
+280: 				component.itemProperties.weight = scrapToSpawn[i].weight;
+281: 				component.itemProperties.isConductiveMetal = scrapToSpawn[i].isConductiveMetal;
+282: 				list.Add((int)((float)Random.Range(scrapToSpawn[i].minValue, scrapToSpawn[i].maxValue + 1) * instance.scrapValueMultiplier * scrapValueMultiplier));
+283: 				component.scrapValue = list[list.Count - 1];
+284: 				NetworkObject component2 = val.GetComponent<NetworkObject>();
+285: 				component2.Spawn(false);
+286: 				list2.Add(NetworkObjectReference.op_Implicit(component2));
+287: 			}
+288: 			return new ScrapSpawnInfo(list2.ToArray(), list.ToArray());
+289: 		}
+290: 
+291: 		public static ScrapSpawnInfo DoSpawnScrapInside(int Amount)
+292: 		{
+293: 			//IL_027b: Unknown result type (might be due to invalid IL or missing references)
+294: 			//IL_0287: Unknown result type (might be due to invalid IL or missing references)
+295: 			//IL_0293: Unknown result type (might be due to invalid IL or missing references)
+296: 			//IL_0298: Unknown result type (might be due to invalid IL or missing references)
+297: 			//IL_02ba: Unknown result type (might be due to invalid IL or missing references)
+298: 			//IL_02bf: Unknown result type (might be due to invalid IL or missing references)
+299: 			//IL_02c4: Unknown result type (might be due to invalid IL or missing references)
+300: 			//IL_0269: Unknown result type (might be due to invalid IL or missing references)
+301: 			//IL_026e: Unknown result type (might be due to invalid IL or missing references)
+302: 			//IL_0323: Unknown result type (might be due to invalid IL or missing references)
+303: 			//IL_0325: Unknown result type (might be due to invalid IL or missing references)
+304: 			//IL_034e: Unknown result type (might be due to invalid IL or missing references)
+305: 			//IL_0353: Unknown result type (might be due to invalid IL or missing references)
+306: 			//IL_040e: Unknown result type (might be due to invalid IL or missing references)
+307: 			if (Amount <= 0)
+308: 			{
+309: 				return new ScrapSpawnInfo((NetworkObjectReference[])(object)new NetworkObjectReference[0], new int[0]);
+310: 			}
+311: 			RoundManager instance = RoundManager.Instance;
+312: 			Random random = new Random();
+313: 			RandomScrapSpawn val = null;
+314: 			RandomScrapSpawn[] source = Object.FindObjectsOfType<RandomScrapSpawn>();
+315: 			List<RandomScrapSpawn> usedSpawns = new List<RandomScrapSpawn>();
+316: 			List<Item> ScrapToSpawn = GetScrapToSpawn(Amount);
+317: 			List<int> list = new List<int>();
+318: 			List<NetworkObjectReference> list2 = new List<NetworkObjectReference>();
+319: 			Log.LogInfo($"Spawning {ScrapToSpawn.Count} inside");
+320: 			int i;
+321: 			for (i = 0; i < ScrapToSpawn.Count; i++)
+322: 			{
+323: 				if ((Object)(object)ScrapToSpawn[i] == (Object)null)
+324: 				{
+325: 					Log.LogError("Null entry in scrapToSpawn, skipping entry");
+326: 					continue;
+353: 				{
+354: 					val2 = instance.GetRandomNavMeshPositionInBoxPredictable(((Component)val).transform.position, val.itemSpawnRange, instance.navHit, random, -1, 1f) + Vector3.up * ScrapToSpawn[i].verticalOffset;
+355: 				}
+356: 				if ((Object)(object)ScrapToSpawn[i].spawnPrefab.GetComponent<GrabbableObject>() == (Object)null)
+357: 				{
+358: 					Log.LogError("GrabbableObject is null in scrapToSpawn, skipping entry.");
+359: 					continue;
+360: 				}
+361: 				GameObject val3 = Object.Instantiate<GameObject>(ScrapToSpawn[i].spawnPrefab, val2, Quaternion.identity, instance.spawnedScrapContainer);
+362: 				GrabbableObject component = val3.GetComponent<GrabbableObject>();
+363: 				((Component)component).transform.rotation = Quaternion.Euler(component.itemProperties.restingRotation);
+364: 				component.fallTime = 0f;
+365: 				int num = (int)((float)Random.Range(ScrapToSpawn[i].minValue, ScrapToSpawn[i].maxValue + 1) * instance.scrapValueMultiplier * scrapValueMultiplier);
+366: 				list.Add(num);
+367: 				component.scrapValue = num;
+368: 				component.itemProperties.weight = ScrapToSpawn[i].weight;
+369: 				NetworkObject component2 = val3.GetComponent<NetworkObject>();
+370: 				component2.Spawn(false);
+371: 				list2.Add(NetworkObjectReference.op_Implicit(component2));
+372: 			}
+373: 			return new ScrapSpawnInfo(list2.ToArray(), list.ToArray());
+374: 		}
+375: 
+376: 		private static List<Item> GetScrapToSpawn(int Amount)
+377: 		{
+378: 			RoundManager instance = RoundManager.Instance;
+379: 			Random random = new Random(StartOfRound.Instance.randomMapSeed + seed);
+380: 			seed++;
+381: 			List<Item> list = new List<Item>();
+382: 			List<int> list2 = new List<int>();
+383: 			for (int i = 0; i < instance.currentLevel.spawnableScrap.Count; i++)
+384: 			{
+385: 				if (i == instance.increasedScrapSpawnRateIndex)
+386: 				{
+387: 					list2.Add(i);
+388: 				}
+389: 				else
+390: 				{
+391: 					list2.Add(instance.currentLevel.spawnableScrap[i].rarity);
+392: 				}
+393: 			}
+394: 			int[] array = list2.ToArray();
+395: 			for (int j = 0; j < Amount; j++)
+396: 			{
+906: 			if (((Object)val9).name == terrainName)
+907: 			{
+908: 				val8 = val9;
+909: 			}
+910: 		}
+911: 		terrainObject = val8;
+912: 	}
+913: 
+914: 	public static void AddEnemyToPoolWithRarity(ref List<SpawnableEnemyWithRarity> list, EnemyType enemy, int rarity)
+915: 	{
+916: 		DoAddEnemyToPoolWithRarity(ref list, enemy, rarity);
+917: 	}
+918: 
+919: 	public static void AddEnemyToPoolWithRarity(ref List<SpawnableEnemyWithRarity> list, Assets.EnemyName enemy, int rarity)
+920: 	{
+921: 		DoAddEnemyToPoolWithRarity(ref list, Assets.GetEnemy(enemy), rarity);
+922: 	}
+923: 
+924: 	public static void AddEnemyToPoolWithRarity(ref List<SpawnableEnemyWithRarity> list, string enemy, int rarity)
+925: 	{
+926: 		DoAddEnemyToPoolWithRarity(ref list, Assets.GetEnemy(enemy), rarity);
+927: 	}
+928: 
+929: 	private static void DoAddEnemyToPoolWithRarity(ref List<SpawnableEnemyWithRarity> list, EnemyType enemy, int rarity)
+930: 	{
+931: 		//IL_0022: Unknown result type (might be due to invalid IL or missing references)
+932: 		//IL_0028: Expected O, but got Unknown
+933: 		try
+934: 		{
+935: 			if ((Object)(object)enemy.enemyPrefab == (Object)null)
+936: 			{
+937: 				Log.LogError("Enemy prefab is null on AddEnemyToPoolWithRarity(), returning.");
+938: 				return;
+939: 			}
+940: 			SpawnableEnemyWithRarity item = new SpawnableEnemyWithRarity(enemy, rarity);
+941: 			list.Add(item);
+942: 		}
+943: 		catch (Exception ex)
+944: 		{
+945: 			Log.LogError("DoAddEnemyToPoolWithRarity failed: " + ex);
+946: 		}
+947: 		finally
+948: 		{
+949: 			LunarConfigCompat.DoAddEnemyToPoolWithRarityPostfix(ref list, enemy, rarity);
+950: 		}
+951: 	}
+952: 
+953: 	public static void SetAtmosphere(string name, bool state)
+954: 	{
+955: 		//IL_000b: Unknown result type (might be due to invalid IL or missing references)
+956: 		Net.Instance.currentWeatherEffects.Add(new Net.CurrentWeatherEffect(FixedString128Bytes.op_Implicit(name), state));
+957: 	}
+958: 
+959: 	public static void SetAtmosphere(Assets.AtmosphereName name, bool state)
+960: 	{
+961: 		//IL_0015: Unknown result type (might be due to invalid IL or missing references)
+962: 		Net.Instance.currentWeatherEffects.Add(new Net.CurrentWeatherEffect(FixedString128Bytes.op_Implicit(Assets.AtmosphereNameList[name]), state));
+963: 	}
+964: 
+965: 	public static void RemoveSpawn(string name)
+966: 	{
+967: 		DoRemoveSpawn(name);
+968: 	}
+969: 
+970: 	public static void RemoveSpawn(Assets.EnemyName name)
+971: 	{
+972: 		DoRemoveSpawn(Assets.EnemyNameList[name]);
+973: 	}
+974: 
+975: 	private static void DoRemoveSpawn(string Name)
+976: 	{
+977: 		int num = 0;
+978: 		try
+979: 		{
+980: 			try
+981: 			{
+982: 				num += RoundManager.Instance.currentLevel.Enemies.RemoveAll((SpawnableEnemyWithRarity x) => ((Object)x.enemyType).name.ToUpper() == Name.ToUpper());
+983: 			}
+984: 			catch
+1013: 		finally
+1014: 		{
+1015: 			LunarConfigCompat.DoRemoveSpawnPostfix(Name);
+1016: 		}
+1017: 	}
+1018: 
+1019: 	public static bool SpawnExists(string name)
+1020: 	{
+1021: 		return DoSpawnExists(name);
+1022: 	}
+1023: 
+1024: 	public static bool SpawnExists(Assets.EnemyName name)
+1025: 	{
+1026: 		return DoSpawnExists(Assets.EnemyNameList[name]);
+1027: 	}
+1028: 
+1029: 	private static bool DoSpawnExists(string name)
+1030: 	{
+1031: 		try
+1032: 		{
+1033: 			if (RoundManager.Instance.currentLevel.Enemies.Exists((SpawnableEnemyWithRarity x) => ((Object)x.enemyType).name == name))
+1034: 			{
+1035: 				return true;
+1036: 			}
+1037: 		}
+1038: 		catch
+1039: 		{
+1040: 			Log.LogError("Exists() on insideEnemies failed");
+1041: 		}
+1042: 		try
+1043: 		{
+1044: 			if (RoundManager.Instance.currentLevel.OutsideEnemies.Exists((SpawnableEnemyWithRarity x) => ((Object)x.enemyType).name == name))
+1045: 			{
+1046: 				return true;
+1047: 			}
+1048: 		}
+1049: 		catch
+1050: 		{
+1051: 			Log.LogError("Exists() on outsideEnemies failed");
+1052: 		}
+1053: 		try
+1054: 		{
+1055: 			if (RoundManager.Instance.currentLevel.DaytimeEnemies.Exists((SpawnableEnemyWithRarity x) => ((Object)x.enemyType).name == name))
+1056: 			{
+1057: 				return true;
+1058: 			}
+1059: 		}
+1060: 		catch
+1061: 		{
+1062: 			Log.LogError("Exists() on daytimeEnemies failed");
+1063: 		}
+1064: 		return false;
+1590: 
+1591: 	[HarmonyPostfix]
+1592: 	[HarmonyPatch(typeof(RoundManager), "RefreshEnemyVents")]
+1593: 	private static void OnRefreshEnemyVents()
+1594: 	{
+1595: 		if (RoundManager.Instance.allEnemyVents.Length != 0)
+1596: 		{
+1597: 			List<EnemyAI> list = new List<EnemyAI>();
+1598: 			list.AddRange(Spawn.DoSpawnInsideEnemies());
+1599: 			list.AddRange(Spawn.DoSpawnOutsideEnemies());
+1600: 		}
+1601: 	}
+1602: }

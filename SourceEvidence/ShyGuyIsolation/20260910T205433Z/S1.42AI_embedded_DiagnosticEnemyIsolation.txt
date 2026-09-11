@@ -1,0 +1,381 @@
+3: using System.Collections.Generic;
+4: using System.Linq;
+5: using System.Reflection;
+6: using HarmonyLib;
+7: using UnityEngine;
+8: 
+9: namespace S139CompatibilityFixes;
+10: 
+11: internal static class DiagnosticEnemyIsolation
+12: {
+13: 	internal static bool Enabled;
+14: 
+15: 	private static readonly HashSet<string> IndoorTargets = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "crawler", "thumper", "puffer", "sporelizard" };
+16: 
+17: 	private static readonly HashSet<string> OutdoorTargets = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "baboonhawk", "baboonbird" };
+18: 
+19: 	private static readonly HashSet<int> RemovedLiveIds = new HashSet<int>();
+20: 
+21: 	private static readonly HashSet<string> MissingTypeWarnings = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+22: 
+23: 	private static bool LoggedGordionSkip;
+24: 
+25: 	internal static bool ShouldRunForCurrentLevel()
+26: 	{
+27: 		if (!Enabled || (Object)(object)RoundManager.Instance == (Object)null || (Object)(object)RoundManager.Instance.currentLevel == (Object)null)
+28: 		{
+29: 			return false;
+30: 		}
+31: 		if ((RoundManager.Instance.currentLevel.PlanetName ?? string.Empty).IndexOf("Gordion", StringComparison.OrdinalIgnoreCase) >= 0)
+32: 		{
+33: 			if (!LoggedGordionSkip)
+34: 			{
+35: 				LoggedGordionSkip = true;
+36: 				Plugin.Log.LogInfo((object)"[EnemyIsolation] Skipping diagnostic pool work on Gordion/Company while in orbit.");
+37: 			}
+38: 			return false;
+39: 		}
+40: 		return true;
+41: 	}
+42: 
+43: 	internal static void ApplyToCurrentLevel(string stage)
+44: 	{
+45: 		if (!ShouldRunForCurrentLevel())
+46: 		{
+47: 			return;
+48: 		}
+49: 		SelectableLevel currentLevel = RoundManager.Instance.currentLevel;
+50: 		bool flag = false;
+51: 		flag |= FilterPool(currentLevel, "Enemies", IndoorTargets, ensureTargets: true);
+52: 		flag |= FilterPool(currentLevel, "OutsideEnemies", OutdoorTargets, ensureTargets: true);
+53: 		flag |= FilterPool(currentLevel, "DaytimeEnemies", new HashSet<string>(StringComparer.OrdinalIgnoreCase), ensureTargets: false);
+54: 		if (IsServer() && (Object)(object)RoundManager.Instance != (Object)null)
+55: 		{
+56: 			if (RoundManager.Instance.minEnemiesToSpawn < 2)
+57: 			{
+58: 				RoundManager.Instance.minEnemiesToSpawn = 2;
+59: 			}
+60: 			if (RoundManager.Instance.minOutsideEnemiesToSpawn < 1)
+61: 			{
+62: 				RoundManager.Instance.minOutsideEnemiesToSpawn = 1;
+63: 			}
+64: 		}
+65: 		Plugin.Log.LogInfo((object)("[EnemyIsolation] " + stage + ": isolated pools " + (flag ? "changed" : "verified") + " on '" + currentLevel.PlanetName + "'. Indoor=[" + DescribePool(currentLevel, "Enemies") + "]; Outdoor=[" + DescribePool(currentLevel, "OutsideEnemies") + "]; " + string.Format("Daytime=[{0}]; minInside={1}; ", DescribePool(currentLevel, "DaytimeEnemies"), RoundManager.Instance.minEnemiesToSpawn) + $"minOutside={RoundManager.Instance.minOutsideEnemiesToSpawn}; {DescribeSpawnCurves(currentLevel)}"));
+66: 	}
+67: 
+68: 	private static string DescribePool(SelectableLevel level, string memberName)
+69: 	{
+70: 		object obj = null;
+71: 		FieldInfo fieldInfo = AccessTools.Field(((object)level).GetType(), memberName);
+72: 		PropertyInfo propertyInfo = ((fieldInfo == null) ? AccessTools.Property(((object)level).GetType(), memberName) : null);
+73: 		try
+74: 		{
+75: 			obj = ((fieldInfo != null) ? fieldInfo.GetValue(level) : propertyInfo?.GetValue(level, null));
+76: 		}
+77: 		catch
+78: 		{
+79: 			return "<unreadable>";
+80: 		}
+81: 		if (!(obj is IList list))
+82: 		{
+83: 			return "<missing>";
+84: 		}
+85: 		List<string> list2 = new List<string>();
+86: 		for (int i = 0; i < list.Count; i++)
+87: 		{
+88: 			object entry = list[i];
+89: 			EnemyType enemyType = GetEnemyType(entry);
+90: 			if (!((Object)(object)enemyType == (Object)null))
+91: 			{
+92: 				list2.Add($"{enemyType.enemyName}:{GetRarity(entry)}");
+93: 			}
+94: 		}
+95: 		if (list2.Count != 0)
+96: 		{
+97: 			return string.Join(",", list2);
+98: 		}
+99: 		return "<empty>";
+100: 	}
+114: 			return (obj == null) ? (-1) : Convert.ToInt32(obj);
+115: 		}
+116: 		catch
+117: 		{
+118: 			return -1;
+119: 		}
+120: 	}
+121: 
+122: 	private static string DescribeSpawnCurves(SelectableLevel level)
+123: 	{
+124: 		return string.Format("insideCurve@0.5={0:0.###}; ", EvaluateCurve(level, "enemySpawnChanceThroughoutDay")) + string.Format("outsideCurve@0.5={0:0.###}", EvaluateCurve(level, "outsideEnemySpawnChanceThroughDay"));
+125: 	}
+126: 
+127: 	private static float EvaluateCurve(SelectableLevel level, string memberName)
+128: 	{
+129: 		FieldInfo fieldInfo = AccessTools.Field(((object)level).GetType(), memberName);
+130: 		PropertyInfo propertyInfo = ((fieldInfo == null) ? AccessTools.Property(((object)level).GetType(), memberName) : null);
+131: 		try
+132: 		{
+133: 			object? obj = ((fieldInfo != null) ? fieldInfo.GetValue(level) : propertyInfo?.GetValue(level, null));
+134: 			AnimationCurve val = (AnimationCurve)((obj is AnimationCurve) ? obj : null);
+135: 			return (val != null) ? val.Evaluate(0.5f) : float.NaN;
+136: 		}
+137: 		catch
+138: 		{
+139: 			return float.NaN;
+140: 		}
+141: 	}
+142: 
+143: 	private static bool FilterPool(SelectableLevel level, string memberName, HashSet<string> targetNames, bool ensureTargets)
+144: 	{
+145: 		object obj = null;
+146: 		Type type = ((object)level).GetType();
+147: 		FieldInfo fieldInfo = AccessTools.Field(type, memberName);
+148: 		PropertyInfo propertyInfo = ((fieldInfo == null) ? AccessTools.Property(type, memberName) : null);
+149: 		try
+150: 		{
+151: 			obj = ((fieldInfo != null) ? fieldInfo.GetValue(level) : propertyInfo?.GetValue(level, null));
+152: 		}
+153: 		catch
+154: 		{
+155: 			return false;
+156: 		}
+157: 		if (!(obj is IList list))
+158: 		{
+159: 			return false;
+160: 		}
+161: 		bool result = false;
+162: 		HashSet<string> hashSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+163: 		object templateEntry = ((list.Count > 0) ? list[0] : null);
+164: 		for (int num = list.Count - 1; num >= 0; num--)
+165: 		{
+166: 			object entry = list[num];
+167: 			EnemyType enemyType = GetEnemyType(entry);
+168: 			string text = NormalizeEnemyName(((Object)(object)enemyType != (Object)null) ? enemyType.enemyName : null);
+169: 			if (!IsPikminFamily(text))
+170: 			{
+171: 				if (!targetNames.Contains(text))
+172: 				{
+173: 					list.RemoveAt(num);
+174: 					result = true;
+175: 				}
+176: 				else
+177: 				{
+178: 					hashSet.Add(text);
+179: 					SetRarity(entry, 100);
+180: 				}
+181: 			}
+182: 		}
+183: 		if (!ensureTargets)
+184: 		{
+185: 			return result;
+186: 		}
+187: 		foreach (string targetName in targetNames)
+188: 		{
+189: 			if (hashSet.Contains(targetName) || (targetName == "thumper" && hashSet.Contains("crawler")) || (targetName == "crawler" && hashSet.Contains("thumper")) || (targetName == "sporelizard" && hashSet.Contains("puffer")) || (targetName == "puffer" && hashSet.Contains("sporelizard")) || (targetName == "baboonbird" && hashSet.Contains("baboonhawk")) || (targetName == "baboonhawk" && hashSet.Contains("baboonbird")))
+190: 			{
+191: 				continue;
+192: 			}
+193: 			EnemyType val = FindEnemyType(targetName);
+194: 			if (!((Object)(object)val == (Object)null))
+195: 			{
+196: 				object obj3 = CreateSpawnEntry(list, templateEntry, val, 100);
+197: 				if (obj3 != null)
+198: 				{
+199: 					list.Add(obj3);
+200: 					hashSet.Add(NormalizeEnemyName(val.enemyName));
+201: 					result = true;
+202: 				}
+203: 			}
+204: 		}
+205: 		return result;
+206: 	}
+207: 
+208: 	private static EnemyType GetEnemyType(object entry)
+209: 	{
+210: 		if (entry == null)
+211: 		{
+212: 			return null;
+213: 		}
+214: 		Type type = entry.GetType();
+215: 		FieldInfo fieldInfo = AccessTools.Field(type, "enemyType");
+216: 		if (fieldInfo != null)
+217: 		{
+218: 			object? value = fieldInfo.GetValue(entry);
+219: 			return (EnemyType)((value is EnemyType) ? value : null);
+220: 		}
+221: 		object? obj = (AccessTools.Property(type, "enemyType") ?? AccessTools.Property(type, "EnemyType"))?.GetValue(entry, null);
+222: 		return (EnemyType)((obj is EnemyType) ? obj : null);
+223: 	}
+224: 
+225: 	private static void SetRarity(object entry, int rarity)
+226: 	{
+227: 		if (entry == null)
+228: 		{
+229: 			return;
+230: 		}
+231: 		Type type = entry.GetType();
+251: 		{
+252: 			propertyInfo.SetValue(entry, Convert.ChangeType(rarity, propertyInfo.PropertyType), null);
+253: 		}
+254: 		catch
+255: 		{
+256: 		}
+257: 	}
+258: 
+259: 	private static object CreateSpawnEntry(IList list, object templateEntry, EnemyType enemyType, int rarity)
+260: 	{
+261: 		Type type = list.GetType();
+262: 		Type type2 = (type.IsGenericType ? type.GetGenericArguments().FirstOrDefault() : null);
+263: 		if (type2 == null)
+264: 		{
+265: 			return null;
+266: 		}
+267: 		try
+268: 		{
+269: 			object obj = null;
+270: 			ConstructorInfo constructor = type2.GetConstructor(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, new Type[2]
+271: 			{
+272: 				typeof(EnemyType),
+273: 				typeof(int)
+274: 			}, null);
+275: 			if (constructor != null)
+276: 			{
+277: 				obj = constructor.Invoke(new object[2] { enemyType, rarity });
+278: 			}
+279: 			if (obj == null && templateEntry != null && type2.IsInstanceOfType(templateEntry))
+280: 			{
+281: 				obj = typeof(object).GetMethod("MemberwiseClone", BindingFlags.Instance | BindingFlags.NonPublic)?.Invoke(templateEntry, null);
+282: 			}
+283: 			if (obj == null)
+284: 			{
+285: 				throw new MissingMethodException("No usable EnemyType/int constructor or clone template exists for " + type2.FullName + ".");
+286: 			}
+287: 			FieldInfo fieldInfo = AccessTools.Field(type2, "enemyType");
+288: 			if (fieldInfo != null)
+289: 			{
+290: 				fieldInfo.SetValue(obj, enemyType);
+291: 			}
+292: 			else
+293: 			{
+294: 				PropertyInfo propertyInfo = AccessTools.Property(type2, "enemyType") ?? AccessTools.Property(type2, "EnemyType");
+337: 		}
+338: 		if (MissingTypeWarnings.Add(normalizedTarget))
+339: 		{
+340: 			Plugin.Log.LogWarning((object)("[EnemyIsolation] EnemyType '" + normalizedTarget + "' is not loaded yet; the diagnostic filter will retry."));
+341: 		}
+342: 		return null;
+343: 	}
+344: 
+345: 	internal static void RemoveEscapedLiveEnemies()
+346: 	{
+347: 		if (!Enabled || !IsServer())
+348: 		{
+349: 			return;
+350: 		}
+351: 		EnemyAI[] array = Object.FindObjectsOfType<EnemyAI>();
+352: 		foreach (EnemyAI val in array)
+353: 		{
+354: 			if ((Object)(object)val == (Object)null)
+355: 			{
+356: 				continue;
+357: 			}
+358: 			string text = (((Object)(object)val.enemyType != (Object)null) ? val.enemyType.enemyName : ((object)val).GetType().Name);
+359: 			if (!IsAllowedLiveEnemy(NormalizeEnemyName(text)))
+360: 			{
+361: 				int instanceID = ((Object)val).GetInstanceID();
+362: 				if (!RemovedLiveIds.Contains(instanceID) && TryDespawn(val))
+363: 				{
+364: 					RemovedLiveIds.Add(instanceID);
+365: 					Plugin.Log.LogWarning((object)("[EnemyIsolation] Despawned non-allowlisted live enemy '" + text + "' that bypassed the filtered spawn pools."));
+366: 				}
+367: 			}
+368: 		}
+369: 	}
+370: 
+371: 	private static bool TryDespawn(EnemyAI enemy)
+372: 	{
+373: 		Type type = AccessTools.TypeByName("Unity.Netcode.NetworkObject");
+374: 		if (type == null)
+375: 		{
+376: 			return false;
+377: 		}
+378: 		Component component = ((Component)enemy).GetComponent(type);
+379: 		if ((Object)(object)component == (Object)null)
+380: 		{
+381: 			return false;
+382: 		}
+383: 		PropertyInfo propertyInfo = AccessTools.Property(type, "IsSpawned");
+384: 		if (propertyInfo != null)
+385: 		{
+386: 			try
+387: 			{
+388: 				if (!(bool)propertyInfo.GetValue(component, null))
+389: 				{
+390: 					return false;
+391: 				}
+392: 			}
+393: 			catch
+394: 			{
+395: 			}
+396: 		}
+397: 		MethodInfo methodInfo = AccessTools.Method(type, "Despawn", new Type[1] { typeof(bool) }, (Type[])null);
+398: 		if (methodInfo == null)
+399: 		{
+400: 			return false;
+401: 		}
+402: 		try
+403: 		{
+404: 			methodInfo.Invoke(component, new object[1] { true });
+405: 			return true;
+406: 		}
+407: 		catch (Exception ex)
+408: 		{
+409: 			Plugin.Log.LogWarning((object)("[EnemyIsolation] Failed to despawn '" + (((enemy != null) ? ((Object)enemy).name : null) ?? "<unknown>") + "': " + ex.GetType().Name + ": " + ex.Message));
+410: 			return false;
+411: 		}
+412: 	}
+413: 
+414: 	private static bool IsServer()
+415: 	{
+416: 		Type type = AccessTools.TypeByName("Unity.Netcode.NetworkManager");
+417: 		if (type == null)
+418: 		{
+433: 			return (bool)propertyInfo.GetValue(obj, null);
+434: 		}
+435: 		catch
+436: 		{
+437: 			return false;
+438: 		}
+439: 	}
+440: 
+441: 	internal static bool IsPikminFamily(string normalized)
+442: 	{
+443: 		if (string.IsNullOrEmpty(normalized))
+444: 		{
+445: 			return false;
+446: 		}
+447: 		if (normalized.IndexOf("pikmin", StringComparison.OrdinalIgnoreCase) < 0 && normalized.IndexOf("puffmin", StringComparison.OrdinalIgnoreCase) < 0)
+448: 		{
+449: 			return normalized.IndexOf("bulbmin", StringComparison.OrdinalIgnoreCase) >= 0;
+450: 		}
+451: 		return true;
+452: 	}
+453: 
+454: 	private static bool IsAllowedLiveEnemy(string normalized)
+455: 	{
+456: 		if (!IndoorTargets.Contains(normalized) && !OutdoorTargets.Contains(normalized))
+457: 		{
+458: 			return IsPikminFamily(normalized);
+459: 		}
+460: 		return true;
+461: 	}
+462: 
+463: 	internal static string NormalizeEnemyName(string value)
+464: 	{
+465: 		if (string.IsNullOrWhiteSpace(value))
+466: 		{
+467: 			return string.Empty;
+468: 		}
+469: 		return new string(value.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
+470: 	}
+471: }

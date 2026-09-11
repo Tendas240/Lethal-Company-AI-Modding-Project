@@ -1,0 +1,353 @@
+10: using GameNetcodeStuff;
+11: using TMPro;
+12: using Unity.AI.Navigation;
+13: using Unity.Netcode;
+14: using UnityEngine;
+15: using UnityEngine.AI;
+16: using UnityEngine.Rendering.HighDefinition;
+17: 
+18: public class RoundManager : NetworkBehaviour
+19: {
+20: 	[CompilerGenerated]
+21: 	private sealed class <BakeDungenNavMeshOnDelay>d__171 : IEnumerator<object>, IEnumerator, IDisposable
+22: 	{
+23: 		private int <>1__state;
+24: 
+25: 		private object <>2__current;
+26: 
+27: 		public RoundManager <>4__this;
+28: 
+29: 		object IEnumerator<object>.Current
+30: 		{
+31: 			[MethodImpl(MethodImplOptions.NoInlining)]
+32: 			[DebuggerHidden]
+33: 			get
+34: 			{
+35: 				throw null;
+36: 			}
+37: 		}
+38: 
+39: 		object IEnumerator.Current
+40: 		{
+41: 			[MethodImpl(MethodImplOptions.NoInlining)]
+42: 			[DebuggerHidden]
+43: 			get
+44: 			{
+45: 				throw null;
+46: 			}
+47: 		}
+48: 
+49: 		[MethodImpl(MethodImplOptions.NoInlining)]
+50: 		[DebuggerHidden]
+51: 		public <BakeDungenNavMeshOnDelay>d__171(int <>1__state)
+52: 		{
+53: 			throw null;
+700: 	public List<GrabbableObject> scrapDroppedInShip;
+701: 
+702: 	public SelectableLevel currentLevel;
+703: 
+704: 	public Random LevelRandom;
+705: 
+706: 	public Random AnomalyRandom;
+707: 
+708: 	public Random EnemySpawnRandom;
+709: 
+710: 	public Random IndoorEnemySpawnPlacementRandom;
+711: 
+712: 	public Random DaytimeEnemySpawnRandom;
+713: 
+714: 	public Random DaytimeEnemySpawnPlacementRandom;
+715: 
+716: 	public Random OutsideEnemySpawnRandom;
+717: 
+718: 	public Random OutsideEnemySpawnPlacementRandom;
+719: 
+720: 	public Random WeedEnemySpawnRandom;
+721: 
+722: 	public Random WeedEnemySpawnPlacementRandom;
+723: 
+724: 	public Random BreakerBoxRandom;
+725: 
+726: 	public Random ScrapValuesRandom;
+727: 
+728: 	public Random ChallengeMoonRandom;
+729: 
+730: 	public bool powerOffPermanently;
+731: 
+732: 	public bool hasInitializedLevelRandomSeed;
+733: 
+734: 	public List<ulong> playersFinishedGeneratingFloor;
+735: 
+736: 	public PowerSwitchEvent onPowerSwitch;
+737: 
+738: 	public List<Animator> allPoweredLightsAnimators;
+739: 
+740: 	public List<Light> allPoweredLights;
+741: 
+742: 	public List<GameObject> spawnedSyncedObjects;
+743: 
+744: 	public SteamValveHazard[] steamValves;
+745: 
+746: 	public float stabilityMeter;
+747: 
+748: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(FieldAttributes.Private)]
+749: 	public Coroutine elevatorRunningCoroutine;
+750: 
+751: 	public int collisionsMask;
+752: 
+753: 	public bool cannotSpawnMoreInsideEnemies;
+754: 
+755: 	public Collider[] tempColliderResults;
+993: 	[MethodImpl(MethodImplOptions.NoInlining)]
+994: 	public override void OnDestroy()
+995: 	{
+996: 		throw null;
+997: 	}
+998: 
+999: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1000: 	[ServerRpc]
+1001: 	public void FinishGeneratingNewLevelServerRpc()
+1002: 	{
+1003: 		throw null;
+1004: 	}
+1005: 
+1006: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1007: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1008: 	public void SetToCurrentLevelWeather()
+1009: 	{
+1010: 		throw null;
+1011: 	}
+1012: 
+1013: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1014: 	[ClientRpc]
+1015: 	public void FinishGeneratingNewLevelClientRpc()
+1016: 	{
+1017: 		throw null;
+1018: 	}
+1019: 
+1020: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1021: 	public void PredictAllOutsideEnemies()
+1022: 	{
+1023: 		throw null;
+1024: 	}
+1025: 
+1026: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1027: 	public void SpawnNestObjectForOutsideEnemy(EnemyType enemyType, Random randomSeed)
+1028: 	{
+1029: 		throw null;
+1030: 	}
+1031: 
+1032: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1033: 	[ServerRpc]
+1034: 	public void SyncNestSpawnObjectsOrderServerRpc(NetworkObjectReference[] nestObjects)
+1035: 	{
+1036: 		throw null;
+1037: 	}
+1038: 
+1039: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1040: 	[ClientRpc]
+1041: 	public void SyncNestSpawnPositionsClientRpc(NetworkObjectReference[] nestObjects)
+1042: 	{
+1043: 		throw null;
+1044: 	}
+1045: 
+1046: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1047: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1048: 	public void ResetEnemySpawningVariables()
+1049: 	{
+1050: 		throw null;
+1051: 	}
+1052: 
+1053: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1054: 	public void ResetEnemyVariables()
+1055: 	{
+1056: 		throw null;
+1072: 	[IteratorStateMachine(typeof(<DetectElevatorRunning>d__188))]
+1073: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1074: 	public IEnumerator DetectElevatorRunning()
+1075: 	{
+1076: 		throw null;
+1077: 	}
+1078: 
+1079: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1080: 	public void BeginEnemySpawning()
+1081: 	{
+1082: 		throw null;
+1083: 	}
+1084: 
+1085: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1086: 	public void SpawnEnemiesOutside()
+1087: 	{
+1088: 		throw null;
+1089: 	}
+1090: 
+1091: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1092: 	public void SpawnWeedEnemies()
+1093: 	{
+1094: 		throw null;
+1095: 	}
+1096: 
+1097: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1098: 	public bool SpawnRandomWeedEnemy(float timeUpToCurrentHour, int numberOfWeeds)
+1099: 	{
+1100: 		throw null;
+1101: 	}
+1102: 
+1103: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1104: 	public void SpawnDaytimeEnemiesOutside()
+1105: 	{
+1106: 		throw null;
+1107: 	}
+1108: 
+1109: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1110: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1111: 	public bool SpawnRandomDaytimeEnemy(float timeUpToCurrentHour)
+1112: 	{
+1113: 		throw null;
+1114: 	}
+1115: 
+1116: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1117: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1118: 	public bool SpawnRandomOutsideEnemy(float timeUpToCurrentHour)
+1119: 	{
+1120: 		throw null;
+1121: 	}
+1122: 
+1123: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1124: 	public int GetLayermaskForEnemySizeLimit(EnemyType enemyType, bool supplyExistingMask = false, int enemyMask = -1)
+1125: 	{
+1126: 		throw null;
+1127: 	}
+1128: 
+1129: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1130: 	public Vector3 PositionWithDenialPointsChecked(Vector3 spawnPosition, GameObject[] spawnPoints, EnemyType enemyType, float distanceFromShip = -1f, Random randomSeed = null)
+1131: 	{
+1132: 		throw null;
+1133: 	}
+1134: 
+1135: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1136: 	public void PlotOutEnemiesForNextHour()
+1137: 	{
+1138: 		throw null;
+1139: 	}
+1140: 
+1141: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1142: 	public void LogEnemySpawnTimes(bool couldNotFinish)
+1143: 	{
+1144: 		throw null;
+1145: 	}
+1146: 
+1147: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1148: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1149: 	public int RoundUpToNearestTen(float x)
+1150: 	{
+1151: 		throw null;
+1152: 	}
+1153: 
+1167: 
+1168: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1169: 	public void InitializeRandomNumberGenerators()
+1170: 	{
+1171: 		throw null;
+1172: 	}
+1173: 
+1174: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1175: 	public void SpawnEnemyFromVent(EnemyVent vent)
+1176: 	{
+1177: 		throw null;
+1178: 	}
+1179: 
+1180: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1181: 	public void SpawnEnemyOnServer(Vector3 spawnPosition, float yRot, int enemyNumber = -1)
+1182: 	{
+1183: 		throw null;
+1184: 	}
+1185: 
+1186: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1187: 	[ServerRpc]
+1188: 	public void SpawnEnemyServerRpc(Vector3 spawnPosition, float yRot, int enemyNumber)
+1189: 	{
+1190: 		throw null;
+1191: 	}
+1192: 
+1193: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1194: 	public NetworkObjectReference SpawnEnemyGameObject(Vector3 spawnPosition, float yRot, int enemyNumber, EnemyType enemyType = null)
+1195: 	{
+1196: 		throw null;
+1197: 	}
+1198: 
+1199: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1200: 	public void DespawnEnemyOnServer(NetworkObject enemyNetworkObject)
+1201: 	{
+1202: 		throw null;
+1203: 	}
+1204: 
+1205: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1206: 	[ServerRpc(RequireOwnership = false)]
+1207: 	public void DespawnEnemyServerRpc(NetworkObjectReference enemyNetworkObject)
+1208: 	{
+1209: 		throw null;
+1210: 	}
+1211: 
+1212: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1213: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1214: 	public void DespawnEnemyGameObject(NetworkObjectReference enemyNetworkObject)
+1215: 	{
+1216: 		throw null;
+1217: 	}
+1218: 
+1219: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1220: 	public void SwitchPower(bool on)
+1221: 	{
+1222: 		throw null;
+1223: 	}
+1224: 
+1225: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1226: 	[ClientRpc]
+1227: 	public void PowerSwitchOnClientRpc()
+1228: 	{
+1229: 		throw null;
+1334: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1335: 	public Vector3 PositionEdgeCheck(Vector3 position, float width, int areaMask = -1, Vector3 originalPosition = default(Vector3))
+1336: 	{
+1337: 		throw null;
+1338: 	}
+1339: 
+1340: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1341: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1342: 	public void SpawnRandomStoryLogs()
+1343: 	{
+1344: 		throw null;
+1345: 	}
+1346: 
+1347: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1348: 	public void SetLevelObjectVariables()
+1349: 	{
+1350: 		throw null;
+1351: 	}
+1352: 
+1353: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1354: 	[IteratorStateMachine(typeof(<waitForMainEntranceTeleportToSpawn>d__231))]
+1355: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1356: 	public IEnumerator waitForMainEntranceTeleportToSpawn()
+1357: 	{
+1358: 		throw null;
+1359: 	}
+1360: 
+1361: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1362: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1363: 	public void SetPowerOffAtStart()
+1364: 	{
+1365: 		throw null;
+1366: 	}
+1367: 
+1368: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1369: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1370: 	public void SetBigDoorCodes(Vector3 mainEntrancePosition)
+1371: 	{
+1372: 		throw null;
+1373: 	}
+1374: 
+1375: 	[MethodImpl(MethodImplOptions.NoInlining)]
+1376: 	[BepInEx.AssemblyPublicizer.OriginalAttributes(MethodAttributes.Private)]
+1377: 	public void SetExitIDs(Vector3 mainEntrancePosition)

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "run_id": 34529045495,
+  "artifact_id": 10172755960,
+  "capture_commit": "0eb3080303eca3eec415e5ab9e653f8dc47cd65f",
+  "artifact_zip_sha256": "ab4bb578bbb28b8ab8c4fc4284039eba5595d54b354460edb1d973a5e78bb123",
+  "files": [
+    {
+      "path": "MANIFEST.json",
+      "sha256": "8d1a22145296d85da4bc90c603bdd76c9f955af1bb9355c77b29d04032afcdb6",
+      "size_bytes": 36339
+    },
+    {
+      "path": "S1.42AI_embedded_DiagnosticEnemyIsolation.txt",
+      "sha256": "8d86056441034796e5e735ee8ac08f4b1a6af9477519aaf9251084f56c5b1d5b",
+      "size_bytes": 13488
+    },
+    {
+      "path": "SoftDiamond-BrutalCompanyMinusExtraReborn-BrutalCompanyMinus.Assets.txt",
+      "sha256": "c2fdb23c513a627a2fc5f584cef99c7df6e421bc0266423586f7f3827f222052",
+      "size_bytes": 10293
+    },
+    {
+      "path": "SoftDiamond-BrutalCompanyMinusExtraReborn-BrutalCompanyMinus.Minus.EventManager.txt",
+      "sha256": "9752050ace3833cc4f600ff1fd88292ca3c788441b433deef2d83f092c9c77da",
+      "size_bytes": 14617
+    },
+    {
+      "path": "SoftDiamond-BrutalCompanyMinusExtraReborn-BrutalCompanyMinus.Minus.Events.ShyGuy.txt",
+      "sha256": "e5731e82de1ef6224d01a594269f5844ddd30aff24763efe1881b587b2a55376",
+      "size_bytes": 1022
+    },
+    {
+      "path": "SoftDiamond-BrutalCompanyMinusExtraReborn-BrutalCompanyMinus.Minus.MEvent.txt",
+      "sha256": "bac4f2623f404ac58a38c930fdd2b4628b27ead179060660ea15ac9928a74b5a",
+      "size_bytes": 7849
+    },
+    {
+      "path": "SoftDiamond-BrutalCompanyMinusExtraReborn-BrutalCompanyMinus.Minus.Manager.txt",
+      "sha256": "f355f5ceafced6a3802bca98c6f7f5494500a2c397a054e6d09d8bfd44b434e1",
+      "size_bytes": 22706
+    },
+    {
+      "path": "SoftDiamond-BrutalCompanyMinusExtraReborn-types.json",
+      "sha256": "0bbdde29c348d2f1a4495bed299fa3340ec9bd7538685709ed18054eae5fab00",
+      "size_bytes": 26311
+    },
+    {
+      "path": "V81_REFERENCE_RoundManager.txt",
+      "sha256": "ccd373d21c7fe82bf37408ecd35a7b3dc8280968d548911fa7b09c49eac47776",
+      "size_bytes": 10204
+    },
+    {
+      "path": "theunknowncod3r-Scopophobia-Scopophobia.EnemyDataManager.txt",
+      "sha256": "2ab7264c12b6fa7a471ad50d914a054266a7437c25043098653bd03b5869c545",
+      "size_bytes": 4425
+    },
+    {
+      "path": "theunknowncod3r-Scopophobia-Scopophobia.EnemyHelper.txt",
+      "sha256": "53169bbb3e6ab6d84ae49c1cead8acdda5ec68d090e3da8c3c66a18b33dba4ec",
+      "size_bytes": 6903
+    },
+    {
+      "path": "theunknowncod3r-Scopophobia-Scopophobia.Patches.GetShyGuyPrefabForLaterUse.txt",
+      "sha256": "d5d339795769ade58a1d10fe734f72876180ff5b33aefa08c2e595e33e5194fb",
+      "size_bytes": 718
+    },
+    {
+      "path": "theunknowncod3r-Scopophobia-Scopophobia.ScopophobiaPlugin.txt",
+      "sha256": "e43634df47c333a7d9e523b45c33835e10e3d3d11b20e0e3aa3de9ee63c0a07d",
+      "size_bytes": 4112
+    },
+    {
+      "path": "theunknowncod3r-Scopophobia-Scopophobia.ShyGuyPaintingProp.txt",
+      "sha256": "67f4753f3dd06fa1b479869645ab43059820bbee3a2a237b2838748bf3046c20",
+      "size_bytes": 13519
+    },
+    {
+      "path": "theunknowncod3r-Scopophobia-ShyGuy.AI.ShyGuyAI.txt",
+      "sha256": "f5fd7e0f75b6ff06cd4675e9d637424c1213bf8c77ae399758549fa1fb204059",
+      "size_bytes": 25402
+    },
+    {
+      "path": "theunknowncod3r-Scopophobia-types.json",
+      "sha256": "819d203192ac7c4558cb1926d7caa257a4dd6147fb97ec4c07a324e3fbba662f",
+      "size_bytes": 2283
+    }
+  ]
+}
