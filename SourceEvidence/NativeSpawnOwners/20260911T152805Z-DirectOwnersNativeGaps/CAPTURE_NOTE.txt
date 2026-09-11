@@ -1,0 +1,1 @@
+Run 34616289395 preserved full exact third-party C#/IL only in GitHub Actions artifact 10270990899. Repository evidence intentionally retains hashes/review rather than copying those full decompiles.
