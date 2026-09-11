@@ -1,0 +1,308 @@
+{
+  "package": "ButteryStancakes-SpawnCycleFixes",
+  "version": "1.2.2",
+  "member": "SpawnCycleFixes.dll",
+  "assembly_sha256": "aa41f4bb8a8e2dedd75f7987d85c0e0a6792d92bd1fecbffa278f5f4dc9c52a0",
+  "source_sha256": "c7a7e300be873f5d4271fb673332143a1eb9c5e0dd1521dc2787aa07ed939651",
+  "source_line_count": 877,
+  "class_listing": [
+    "Class <Module>",
+    "Class Microsoft.CodeAnalysis.EmbeddedAttribute",
+    "Class System.Runtime.CompilerServices.RefSafetyRulesAttribute",
+    "Class SpawnCycleFixes.LobbyCompatibility",
+    "Class SpawnCycleFixes.Patches",
+    "Class SpawnCycleFixes.Plugin",
+    "Class SpawnCycleFixes.Utilities",
+    "Class SpawnCycleFixes.PluginInfo",
+    "Class System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute",
+    "Class <PrivateImplementationDetails>",
+    "Class <>z__ReadOnlyArray`1",
+    "Class SpawnCycleFixes.Patches+<>c",
+    "Class SpawnCycleFixes.Patches+<>c__DisplayClass14_0",
+    "Class SpawnCycleFixes.Utilities+<>c__DisplayClass0_0"
+  ],
+  "declarations": [
+    {
+      "line": 39,
+      "text": "namespace Microsoft.CodeAnalysis"
+    },
+    {
+      "line": 43,
+      "text": "\tinternal sealed class EmbeddedAttribute : Attribute"
+    },
+    {
+      "line": 47,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 52,
+      "text": "\tinternal sealed class RefSafetyRulesAttribute : Attribute"
+    },
+    {
+      "line": 62,
+      "text": "namespace SpawnCycleFixes"
+    },
+    {
+      "line": 64,
+      "text": "\tinternal static class LobbyCompatibility"
+    },
+    {
+      "line": 72,
+      "text": "\tinternal static class Patches"
+    },
+    {
+      "line": 584,
+      "text": "\tpublic class Plugin : BaseUnityPlugin"
+    },
+    {
+      "line": 624,
+      "text": "\tpublic static class Utilities"
+    },
+    {
+      "line": 716,
+      "text": "\tpublic static class PluginInfo"
+    },
+    {
+      "line": 725,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 728,
+      "text": "\tinternal sealed class IgnoresAccessChecksToAttribute : Attribute"
+    },
+    {
+      "line": 736,
+      "text": "internal sealed class <>z__ReadOnlyArray<T> : IEnumerable, ICollection, IList, IEnumerable<T>, IReadOnlyCollection<T>, IReadOnlyList<T>, ICollection<T>, IList<T>"
+    }
+  ],
+  "spawn_surface_hits": [],
+  "owner_or_patch_hits": [
+    {
+      "line": 71,
+      "text": "\t[HarmonyPatch]"
+    },
+    {
+      "line": 74,
+      "text": "\t\tprivate static readonly FieldInfo SPAWN_PROBABILITIES = AccessTools.Field(typeof(RoundManager), \"SpawnProbabilities\");"
+    },
+    {
+      "line": 76,
+      "text": "\t\tprivate static readonly FieldInfo CURRENT_LEVEL = AccessTools.Field(typeof(RoundManager), \"currentLevel\");"
+    },
+    {
+      "line": 78,
+      "text": "\t\tprivate static readonly FieldInfo CURRENT_HOUR = AccessTools.Field(typeof(RoundManager), \"currentHour\");"
+    },
+    {
+      "line": 80,
+      "text": "\t\tprivate static readonly FieldInfo TIME_SCRIPT = AccessTools.Field(typeof(RoundManager), \"timeScript\");"
+    },
+    {
+      "line": 86,
+      "text": "\t\t[HarmonyPatch(/*Could not decode attribute arguments.*/)]"
+    },
+    {
+      "line": 97,
+      "text": "\t\t\tMethodInfo methodInfo = AccessTools.Method(typeof(RoundManager), \"SpawnEnemyGameObject\", (Type[])null, (Type[])null);"
+    },
+    {
+      "line": 130,
+      "text": "\t\t\tFieldInfo fieldInfo = AccessTools.Field(typeof(RoundManager), firstTime);"
+    },
+    {
+      "line": 157,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"AssignRandomEnemyToVent\")]"
+    },
+    {
+      "line": 164,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"SpawnRandomOutsideEnemy\")]"
+    },
+    {
+      "line": 171,
+      "text": "\t\t[HarmonyPatch(typeof(EnemyAI), \"SubtractFromPowerLevel\")]"
+    },
+    {
+      "line": 174,
+      "text": "\t\tprivate static void EnemyAI_Pre_SubtractFromPowerLevel(EnemyAI __instance, ref object[] __state)"
+    },
+    {
+      "line": 179,
+      "text": "\t\t\t\tRoundManager.Instance.currentEnemyPower,"
+    },
+    {
+      "line": 180,
+      "text": "\t\t\t\tRoundManager.Instance.currentOutsideEnemyPower,"
+    },
+    {
+      "line": 181,
+      "text": "\t\t\t\tRoundManager.Instance.currentDaytimeEnemyPower"
+    },
+    {
+      "line": 185,
+      "text": "\t\t[HarmonyPatch(typeof(EnemyAI), \"SubtractFromPowerLevel\")]"
+    },
+    {
+      "line": 188,
+      "text": "\t\tprivate static void EnemyAI_Post_SubtractFromPowerLevel(EnemyAI __instance, object[] __state)"
+    },
+    {
+      "line": 200,
+      "text": "\t\t\tif (powerLevel <= 0f || ((EnemyAI)val).enemyType.PowerLevel <= 0f)"
+    },
+    {
+      "line": 207,
+      "text": "\t\t\tif (RoundManager.Instance.currentEnemyPower < num)"
+    },
+    {
+      "line": 210,
+      "text": "\t\t\t\tRoundManager instance = RoundManager.Instance;"
+    },
+    {
+      "line": 213,
+      "text": "\t\t\t\tif (!RoundManager.Instance.cannotSpawnMoreInsideEnemies && RoundManager.Instance.currentEnemyPower >= RoundManager.Instance.currentMaxInsidePower)"
+    },
+    {
+      "line": 215,
+      "text": "\t\t\t\t\tRoundManager.Instance.cannotSpawnMoreInsideEnemies = true;"
+    },
+    {
+      "line": 216,
+      "text": "\t\t\t\t\tPlugin.Logger.LogDebug((object)$\"Mask hornets canceled vent spawns again ({RoundManager.Instance.currentEnemyPower} > {RoundManager.Instance.currentMaxInsidePower})\");"
+    },
+    {
+      "line": 219,
+      "text": "\t\t\telse if (RoundManager.Instance.currentOutsideEnemyPower < num2)"
+    },
+    {
+      "line": 222,
+      "text": "\t\t\t\tRoundManager instance2 = RoundManager.Instance;"
+    },
+    {
+      "line": 226,
+      "text": "\t\t\telse if (RoundManager.Instance.currentDaytimeEnemyPower < num3)"
+    },
+    {
+      "line": 229,
+      "text": "\t\t\t\tRoundManager instance3 = RoundManager.Instance;"
+    },
+    {
+      "line": 239,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"BeginEnemySpawning\")]"
+    },
+    {
+      "line": 242,
+      "text": "\t\tprivate static void RoundManager_Pre_BeginEnemySpawning(RoundManager __instance)"
+    },
+    {
+      "line": 279,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"AssignRandomEnemyToVent\")]"
+    },
+    {
+      "line": 281,
+      "text": "\t\tprivate static bool RoundManager_Pre_AssignRandomEnemyToVent(RoundManager __instance, ref EnemyVent vent, ref float spawnTime, ref bool __result)"
+    },
+    {
+      "line": 286,
+      "text": "\t\t\t\tList<EnemyVent> list = __instance.allEnemyVents.Where((EnemyVent enemyVent) => !enemyVent.occupied).ToList();"
+    },
+    {
+      "line": 299,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"AssignRandomEnemyToVent\")]"
+    },
+    {
+      "line": 301,
+      "text": "\t\tprivate static void RoundManager_Post_AssignRandomEnemyToVent(RoundManager __instance, EnemyVent vent, bool __result)"
+    },
+    {
+      "line": 324,
+      "text": "\t\t\t\tList<EnemyVent> list = __instance.allEnemyVents.Where((EnemyVent enemyVent) => !enemyVent.occupied).ToList();"
+    },
+    {
+      "line": 343,
+      "text": "\t\t\t\t\tEnemyVent val = list[__instance.IndoorEnemySpawnPlacementRandom.Next(0, list.Count)];"
+    },
+    {
+      "line": 368,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"PlotOutEnemiesForNextHour\")]"
+    },
+    {
+      "line": 370,
+      "text": "\t\tprivate static void RoundManager_Post_PlotOutEnemiesForNextHour(RoundManager __instance)"
+    },
+    {
+      "line": 377,
+      "text": "\t\t\tEnemyVent[] allEnemyVents = __instance.allEnemyVents;"
+    },
+    {
+      "line": 378,
+      "text": "\t\t\tforeach (EnemyVent val in allEnemyVents)"
+    },
+    {
+      "line": 392,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"PredictAllOutsideEnemies\")]"
+    },
+    {
+      "line": 394,
+      "text": "\t\tprivate static bool RoundManager_Pre_PredictAllOutsideEnemies(RoundManager __instance)"
+    },
+    {
+      "line": 525,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"PlotOutEnemiesForNextHour\")]"
+    },
+    {
+      "line": 530,
+      "text": "\t\t\tFieldInfo fieldInfo = AccessTools.Field(typeof(RoundManager), \"EnemySpawnRandom\");"
+    },
+    {
+      "line": 531,
+      "text": "\t\t\tFieldInfo operand = AccessTools.Field(typeof(RoundManager), \"IndoorEnemySpawnPlacementRandom\");"
+    },
+    {
+      "line": 532,
+      "text": "\t\t\tMethodInfo methodInfo = AccessTools.DeclaredPropertyGetter(typeof(List<EnemyVent>), \"Count\");"
+    },
+    {
+      "line": 550,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"SpawnEnemiesOutside\")]"
+    },
+    {
+      "line": 557,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"SpawnDaytimeEnemiesOutside\")]"
+    },
+    {
+      "line": 564,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"SpawnWeedEnemies\")]"
+    },
+    {
+      "line": 571,
+      "text": "\t\t[HarmonyPatch(typeof(CadaverGrowthAI), \"RemoveWeedFromTile\")]"
+    },
+    {
+      "line": 577,
+      "text": "\t\t\t\t((EnemyAI)__instance).SubtractFromPowerLevel();"
+    },
+    {
+      "line": 635,
+      "text": "\t\t\t\tif (enemyType.isOutsideEnemy && enemyType.requireNestObjectsToSpawn && spawnProbabilities[i] > 0 && !Object.FindObjectsByType<EnemyAINestSpawnObject>((FindObjectsSortMode)0).Any((EnemyAINestSpawnObject nest) => (Object)(object)nest.enemyType == (Object)(object)enemyType))"
+    },
+    {
+      "line": 638,
+      "text": "\t\t\t\t\tif (RoundManager.Instance.currentMaxOutsidePower <= RoundManager.Instance.currentOutsideEnemyPowerNoDeaths)"
+    },
+    {
+      "line": 659,
+      "text": "\t\t\t\t\tRoundManager instance = RoundManager.Instance;"
+    },
+    {
+      "line": 664,
+      "text": "\t\t\t\t\tRoundManager instance2 = RoundManager.Instance;"
+    },
+    {
+      "line": 669,
+      "text": "\t\t\t\t\tRoundManager instance3 = RoundManager.Instance;"
+    }
+  ],
+  "decompiler_stderr": "",
+  "decompiler_annotation_count": 36,
+  "qualification": "Source token discovery only: hits include non-enemy spawns, declarations and inactive code. No patch approval or exhaustive game/mod coverage. Dependencies may remain unresolved."
+}

@@ -1,0 +1,2346 @@
+{
+  "package": "TeamXiaolan-DawnLib",
+  "version": "0.9.25",
+  "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.dll",
+  "assembly_sha256": "9b4826a16eec1fa5091fb4246d010005bc9c3e04282034e8d067b499ab5c125b",
+  "source_sha256": "f9a1f2311803a02f67eeba3ed367fcbcd7d6aed8947f9fab709306391eae075e",
+  "source_line_count": 23098,
+  "class_listing": [
+    "Class <Module>",
+    "Class <>z__ReadOnlyArray`1",
+    "Class <>z__ReadOnlySingleElementList`1",
+    "Class <>z__ReadOnlySingleElementList`1+Enumerator",
+    "Class Microsoft.CodeAnalysis.EmbeddedAttribute",
+    "Class System.Runtime.CompilerServices.NullableAttribute",
+    "Class System.Runtime.CompilerServices.NullableContextAttribute",
+    "Class System.Runtime.CompilerServices.RefSafetyRulesAttribute",
+    "Class Vector3Converter",
+    "Class DawnMapObjectNamespacedKeyContainer",
+    "Class DawnStoryLogNamespacedKeyContainer",
+    "Class Dawn.BaseInfoBuilder",
+    "Class Dawn.BaseInfoBuilder`3",
+    "Class Dawn.DataContainer",
+    "Class Dawn.DataContainer+NoOpDisposable",
+    "Class Dawn.FrozenEmptyDataContainer",
+    "Class Dawn.JSONTagDefinition",
+    "Class Dawn.NamespacedKey",
+    "Class Dawn.NamespacedKey`1",
+    "Class Dawn.NamespacedKeyConverter",
+    "Class Dawn.NamespacedKeyDictionaryConverter",
+    "Class Dawn.PersistentDataContainer",
+    "Class Dawn.PersistentDataContainer+EditContext",
+    "Class Dawn.PersistentDataContainer+<>c",
+    "Class Dawn.ChildPersistentDataContainer",
+    "Class Dawn.DawnBaseInfo`1",
+    "Class Dawn.DawnInfoContainer`1",
+    "Class Dawn.DawnLib",
+    "Class Dawn.DawnLib+<>c__DisplayClass20_0",
+    "Class Dawn.DawnLib+<>c__DisplayClass20_1`1",
+    "Class Dawn.DawnNamespacedKeyContainer`1",
+    "Class Dawn.DungeonRegistrationHandler",
+    "Class Dawn.DungeonRegistrationHandler+<>O",
+    "Class Dawn.DungeonRegistrationHandler+<>c",
+    "Class Dawn.DungeonRegistrationHandler+<LoadDungeonBundle>d__11",
+    "Class Dawn.DungeonRegistrationHandler+<UnloadDungeonBundleForAllPlayers>d__10",
+    "Class Dawn.DawnArchetypeInfo",
+    "Class Dawn.DawnDungeonInfo",
+    "Class Dawn.DawnStingerDetail",
+    "Class Dawn.DawnTileSetInfo",
+    "Class Dawn.DungeonArchetypeExtensions",
+    "Class Dawn.DungeonFlowExtensions",
+    "Class Dawn.DungeonFlowInfoBuilder",
+    "Class Dawn.DungeonFlowInfoBuilder+<>c",
+    "Class Dawn.TileSetExtensions",
+    "Class Dawn.TilesetInfoBuilder",
+    "Class Dawn.EnemyRegistrationHandler",
+    "Class Dawn.EnemyRegistrationHandler+<>O",
+    "Class Dawn.EnemyRegistrationHandler+<>c",
+    "Class Dawn.EnemyRegistrationHandler+<>c__DisplayClass10_0",
+    "Class Dawn.EnemyRegistrationHandler+<>c__DisplayClass14_0",
+    "Class Dawn.EnemyRegistrationHandler+<>c__DisplayClass2_0",
+    "Class Dawn.DawnEnemyInfo",
+    "Class Dawn.DawnEnemyInfo+<GetAllSpawned>d__22`1",
+    "Class Dawn.DawnEnemyLocationInfo",
+    "Class Dawn.EnemyInfoBuilder",
+    "Class Dawn.EnemyInfoBuilder+EnemyLocationBuilder",
+    "Class Dawn.EnemyTypeExtensions",
+    "Class Dawn.BundleException",
+    "Class Dawn.MalformedAnimationCurveConfigException",
+    "Class Dawn.MalformedAnimationCurveConfigException+<>c",
+    "Class Dawn.ConstantPredicate",
+    "Class Dawn.SimpleProvider`1",
+    "Class Dawn.ConfigEntryProvider`1",
+    "Class Dawn.FuncProvider`1",
+    "Class Dawn.ItemRegistrationHandler",
+    "Class Dawn.ItemRegistrationHandler+<>O",
+    "Class Dawn.ItemRegistrationHandler+<>c",
+    "Class Dawn.ItemRegistrationHandler+<>c__DisplayClass7_0",
+    "Class Dawn.ItemRegistrationHandler+<>c__DisplayClass8_0",
+    "Class Dawn.ItemRegistrationHandler+<>c__DisplayClass8_1",
+    "Class Dawn.AutoItemGroupTagger",
+    "Class Dawn.AutoNonInteractableTagger",
+    "Class Dawn.AutoValueTagger",
+    "Class Dawn.AutoWeightTagger",
+    "Class Dawn.DawnItemInfo",
+    "Class Dawn.DawnScrapItemInfo",
+    "Class Dawn.DawnShopItemInfo",
+    "Class Dawn.ItemExtensions",
+    "Class Dawn.ItemInfoBuilder",
+    "Class Dawn.ItemInfoBuilder+ScrapBuilder",
+    "Class Dawn.ItemInfoBuilder+ShopBuilder",
+    "Class Dawn.LethalContent",
+    "Class Dawn.DawnLibTags",
+    "Class Dawn.MapObjectRegistrationHandler",
+    "Class Dawn.MapObjectRegistrationHandler+<>O",
+    "Class Dawn.MapObjectRegistrationHandler+<>c",
+    "Class Dawn.MapObjectRegistrationHandler+<>c__DisplayClass10_0",
+    "Class Dawn.MapObjectRegistrationHandler+<>c__DisplayClass11_0",
+    "Class Dawn.DawnInsideMapObjectInfo",
+    "Class Dawn.DawnMapObjectInfo",
+    "Class Dawn.DawnOutsideMapObjectInfo",
+    "Class Dawn.IndoorMapHazardTypeExtensions",
+    "Class Dawn.InsideMapObjectSettings",
+    "Class Dawn.MapObjectInfoBuilder",
+    "Class Dawn.MapObjectInfoBuilder+InsideBuilder",
+    "Class Dawn.MapObjectInfoBuilder+OutsideBuilder",
+    "Class Dawn.OutsideMapObjectSettings",
+    "Class Dawn.SpawnableOutsideObjectExtensions",
+    "Class Dawn.MoonRegistrationHandler",
+    "Class Dawn.MoonRegistrationHandler+<>O",
+    "Class Dawn.MoonRegistrationHandler+<>c",
+    "Class Dawn.MoonRegistrationHandler+<>c__DisplayClass8_0",
+    "Class Dawn.MoonRegistrationHandler+<DelayTravelEffects>d__17",
+    "Class Dawn.MoonRegistrationHandler+<DoHotloadSceneStuff>d__21",
+    "Class Dawn.DawnMoonInfo",
+    "Class Dawn.MoonGroup",
+    "Class Dawn.VisibleFilterStep",
+    "Class Dawn.VisibleFilterStep+<>c",
+    "Class Dawn.TagFilterStep",
+    "Class Dawn.FixedGroupSizeGroupingAlgorithm",
+    "Class Dawn.FixedGroupSizeGroupingAlgorithm+<>c",
+    "Class Dawn.RankOrderingStep",
+    "Class Dawn.PriceOrderingStep",
+    "Class Dawn.IndexBasedOrderingStep",
+    "Class Dawn.MainGroupAlgorithm",
+    "Class Dawn.MoonInfoBuilder",
+    "Class Dawn.VanillaMoonSceneInfo",
+    "Class Dawn.CustomMoonSceneInfo",
+    "Class Dawn.SelectableLevelExtensions",
+    "Class Dawn.RegistryFrozenException",
+    "Class Dawn.Registry`1",
+    "Class Dawn.Registry`1+<>c",
+    "Class Dawn.Registry`1+<>c__DisplayClass6_0",
+    "Class Dawn.Registry`1+<>c__DisplayClass9_0",
+    "Class Dawn.StoryLogRegistrationHandler",
+    "Class Dawn.StoryLogRegistrationHandler+<>O",
+    "Class Dawn.StoryLogRegistrationHandler+<>c",
+    "Class Dawn.DawnStoryLogInfo",
+    "Class Dawn.StoryLogInfoBuilder",
+    "Class Dawn.SurfaceRegistrationHandler",
+    "Class Dawn.SurfaceRegistrationHandler+<>O",
+    "Class Dawn.SurfaceRegistrationHandler+<>c",
+    "Class Dawn.SurfaceRegistrationHandler+<>c__DisplayClass5_0",
+    "Class Dawn.SurfaceRegistrationHandler+<>c__DisplayClass5_1",
+    "Class Dawn.SurfaceRegistrationHandler+<>c__DisplayClass7_0",
+    "Class Dawn.DawnSurfaceInfo",
+    "Class Dawn.FootstepVFXPool",
+    "Class Dawn.FootstepVFXPool+<>c",
+    "Class Dawn.FootstepVFXPool+<>c__DisplayClass2_0",
+    "Class Dawn.PooledFootstepVFX",
+    "Class Dawn.MaskedPlayerEnemyExtensions",
+    "Class Dawn.PlayerControllerBExtensions",
+    "Class Dawn.SurfaceExtensions",
+    "Class Dawn.SurfaceInfoBuilder",
+    "Class Dawn.TaggedRegistry`1",
+    "Class Dawn.TaggedRegistry`1+<>c",
+    "Class Dawn.AllAutoTagger`1",
+    "Class Dawn.CustomAutoTagger`1",
+    "Class Dawn.SimpleAutoTagger`1",
+    "Class Dawn.Tags",
+    "Class Dawn.VanillaAutoTagger`1",
+    "Class Dawn.DawnPurchaseInfo",
+    "Class Dawn.ConstantTerminalPredicate",
+    "Class Dawn.LethalLevelLoaderTerminalPredicate",
+    "Class Dawn.LethalLevelLoaderTerminalPredicate+<>c",
+    "Class Dawn.TerminalKeywordBuilder",
+    "Class Dawn.TerminalNodeBuilder",
+    "Class Dawn.TerminalPurchaseResult",
+    "Class Dawn.TerminalPurchaseResult+SuccessPurchaseResult",
+    "Class Dawn.TerminalPurchaseResult+FailedPurchaseResult",
+    "Class Dawn.TerminalPurchaseResult+HiddenPurchaseResult",
+    "Class Dawn.TerminalTextModifier",
+    "Class Dawn.TerminalTextModifier+<>c__DisplayClass16_0",
+    "Class Dawn.TerminalCommandRegistration",
+    "Class Dawn.TerminalCommandRegistration+<>O",
+    "Class Dawn.TerminalCommandRegistration+<>c",
+    "Class Dawn.DawnCommands",
+    "Class Dawn.DawnCommands+<>O",
+    "Class Dawn.DawnCommands+<>c",
+    "Class Dawn.DawnCommands+<>c__DisplayClass2_0",
+    "Class Dawn.DawnComplexCommandInfo",
+    "Class Dawn.DawnComplexQueryCommandInfo",
+    "Class Dawn.DawnEventDrivenCommandInfo",
+    "Class Dawn.DawnInputCommandInfo",
+    "Class Dawn.DawnSimpleCommandInfo",
+    "Class Dawn.DawnSimpleQueryCommandInfo",
+    "Class Dawn.DawnTerminalCommandInfo",
+    "Class Dawn.DawnTerminalObjectCommandInfo",
+    "Class Dawn.TerminalCommandBasicInformation",
+    "Class Dawn.TerminalCommandInfoBuilder",
+    "Class Dawn.TerminalCommandInfoBuilder+ComplexQueryCommandBuilder",
+    "Class Dawn.TerminalCommandInfoBuilder+ComplexQueryCommandBuilder+<>c",
+    "Class Dawn.TerminalCommandInfoBuilder+SimpleQueryCommandBuilder",
+    "Class Dawn.TerminalCommandInfoBuilder+SimpleQueryCommandBuilder+<>c",
+    "Class Dawn.TerminalCommandInfoBuilder+ComplexCommandBuilder",
+    "Class Dawn.TerminalCommandInfoBuilder+SimpleCommandBuilder",
+    "Class Dawn.TerminalCommandInfoBuilder+TerminalObjectCommandBuilder",
+    "Class Dawn.TerminalCommandInfoBuilder+EventDrivenCommandBuilder",
+    "Class Dawn.TerminalCommandInfoBuilder+InputCommandBuilder",
+    "Class Dawn.TerminalNodeExtensions",
+    "Class Dawn.VanillaTerminalEvents",
+    "Class Dawn.VanillaTerminalEvents+<>O",
+    "Class Dawn.UnlockableRegistrationHandler",
+    "Class Dawn.UnlockableRegistrationHandler+<>O",
+    "Class Dawn.UnlockableRegistrationHandler+<>c",
+    "Class Dawn.UnlockableRegistrationHandler+<>c__DisplayClass6_0",
+    "Class Dawn.UnlockableRegistrationHandler+<>c__DisplayClass6_1",
+    "Class Dawn.DawnPlaceableObjectInfo",
+    "Class Dawn.DawnSuitInfo",
+    "Class Dawn.DawnUnlockableItemInfo",
+    "Class Dawn.UnlockableItemExtensions",
+    "Class Dawn.UnlockableInfoBuilder",
+    "Class Dawn.UnlockableInfoBuilder+SuitBuilder",
+    "Class Dawn.UnlockableInfoBuilder+PlaceableObjectBuilder",
+    "Class Dawn.DawnVehicleInfo",
+    "Class Dawn.WeatherRegistrationHandler",
+    "Class Dawn.WeatherRegistrationHandler+<>O",
+    "Class Dawn.DawnWeatherEffectInfo",
+    "Class Dawn.WeatherEffectExtensions",
+    "Class Dawn.CurveTableBuilder`2",
+    "Class Dawn.ProviderTable`2",
+    "Class Dawn.ProviderTable`3",
+    "Class Dawn.ProviderTableSpawnWeightExtensions",
+    "Class Dawn.SimpleWeighted",
+    "Class Dawn.WeightedExtensions",
+    "Class Dawn.SimpleContextualProvider`3",
+    "Class Dawn.MatchingKeyContextualProvider`3",
+    "Class Dawn.HasTagContextualProvider`3",
+    "Class Dawn.MatchingKeyWeightContextualProvider`2",
+    "Class Dawn.HasTagWeightContextualProvider`2",
+    "Class Dawn.SimpleWeightContextualProvider`2",
+    "Class Dawn.SpawnWeightExtraKeys",
+    "Class Dawn.WeightTableBuilder`2",
+    "Class Dawn.DawnConstants",
+    "Class Dawn.DawnKeys",
+    "Class Dawn.DawnPlugin",
+    "Class Dawn.DawnPlugin+<>c",
+    "Class Dawn.DawnPlugin+<>c__DisplayClass13_0`1",
+    "Class Dawn.DawnTesting",
+    "Class Dawn.DawnTesting+<>O",
+    "Class Dawn.DawnTesting+<>c",
+    "Class Dawn.DawnTesting+<>c__DisplayClass1_0",
+    "Class Dawn.DawnEvent",
+    "Class Dawn.DawnEvent`1",
+    "Class Dawn.DawnEvent`2",
+    "Class Dawn.DawnEvent`3",
+    "Class Dawn.DawnEvent`4",
+    "Class Dawn.DawnEvent`5",
+    "Class Dawn.DawnEvent`6",
+    "Class Dawn.MyPluginInfo",
+    "Class Dawn.MoonKeys",
+    "Class Dawn.WeatherKeys",
+    "Class Dawn.EnemyKeys",
+    "Class Dawn.UnlockableItemKeys",
+    "Class Dawn.ItemKeys",
+    "Class Dawn.DungeonKeys",
+    "Class Dawn.DungeonTileSetKeys",
+    "Class Dawn.DungeonArchetypeKeys",
+    "Class Dawn.MapObjectKeys",
+    "Class Dawn.StoryLogKeys",
+    "Class Dawn.SurfaceKeys",
+    "Class Dawn.TerminalCommandKeys",
+    "Class Dawn.Internal.DawnConfig",
+    "Class Dawn.Internal.DawnDungeonNetworker",
+    "Class Dawn.Internal.DawnDungeonNetworker+<>c",
+    "Class Dawn.Internal.DawnDungeonNetworker+<>c__DisplayClass12_0",
+    "Class Dawn.Internal.DawnDungeonNetworker+<DoDungeonBundleLoading>d__15",
+    "Class Dawn.Internal.DawnDungeonNetworker+<UnloadExisting>d__18",
+    "Class Dawn.Internal.DawnMoonNetworker",
+    "Class Dawn.Internal.DawnMoonNetworker+<>c",
+    "Class Dawn.Internal.DawnMoonNetworker+<>c__DisplayClass16_0",
+    "Class Dawn.Internal.DawnMoonNetworker+<>c__DisplayClass19_0",
+    "Class Dawn.Internal.DawnMoonNetworker+<DoMoonSceneLoading>d__21",
+    "Class Dawn.Internal.DawnMoonNetworker+<UnloadExisting>d__25",
+    "Class Dawn.Internal.DawnMoonNetworker+<UnlockLever>d__28",
+    "Class Dawn.Internal.DawnNetworker",
+    "Class Dawn.Internal.DawnNetworker+<>c",
+    "Class Dawn.Internal.Debuggers",
+    "Class Dawn.Internal.DebugLogSource",
+    "Class Dawn.Internal.AnimationCurveConverter",
+    "Class Dawn.Internal.AnimationCurveConverter+<>c",
+    "Class Dawn.Internal.BoundedRangeConverter",
+    "Class Dawn.Internal.NamespacedKeyConverter",
+    "Class Dawn.Internal.TOMLConverter",
+    "Class Dawn.Internal.TOMLConverter`1",
+    "Class Dawn.Internal.ExtendedTOML",
+    "Class Dawn.Internal.ExtendedTOML+<>O",
+    "Class Dawn.Internal.ExtendedTOML+<>c",
+    "Class Dawn.Internal.ExtendedTOML+<>c__DisplayClass6_0",
+    "Class Dawn.Internal.ItemSaveDataHandler",
+    "Class Dawn.Internal.ItemSaveDataHandler+<>c__DisplayClass8_0",
+    "Class Dawn.Internal.ItemSaveDataHandler+<EnsureItemRotatedCorrectly>d__10",
+    "Class Dawn.Internal.DawnItemSaveEvents",
+    "Class Dawn.Internal.DungeonGenerationPlusCompat",
+    "Class Dawn.Internal.GoodItemScanCompat",
+    "Class Dawn.Internal.LCBetterSaveCompat",
+    "Class Dawn.Internal.LCBetterSaveCompat+<>O",
+    "Class Dawn.Internal.LethalConfigCompat",
+    "Class Dawn.Internal.LethalConfigCompat+<>O",
+    "Class Dawn.Internal.LethalConfigCompat+<>c__DisplayClass6_0",
+    "Class Dawn.Internal.LethalLevelLoaderCompat",
+    "Class Dawn.Internal.LethalLevelLoaderCompat+<>O",
+    "Class Dawn.Internal.LethalLibCompat",
+    "Class Dawn.Internal.LethalQuantitiesCompat",
+    "Class Dawn.Internal.LethalQuantitiesCompat+<>O",
+    "Class Dawn.Internal.MoonDaySpeedMultiplierPatcherCompat",
+    "Class Dawn.Internal.StarlancerAIFixCompat",
+    "Class Dawn.Internal.TerminalFormatterCompat",
+    "Class Dawn.Internal.TerminalFormatterCompat+<>O",
+    "Class Dawn.Internal.WeatherRegistryCompat",
+    "Class Dawn.Internal.WeatherRegistryCompat+<>O",
+    "Class Dawn.Internal.NetworkVariableInitalizer",
+    "Class Dawn.Internal.DebugPatches",
+    "Class Dawn.Internal.DebugPatches+<>O",
+    "Class Dawn.Internal.EnemyDataPatch",
+    "Class Dawn.Internal.EnemyDataPatch+<>O",
+    "Class Dawn.Internal.ExtraItemEventsPatch",
+    "Class Dawn.Internal.ExtraItemEventsPatch+<>O",
+    "Class Dawn.Internal.ExtraScanEventsPatch",
+    "Class Dawn.Internal.ExtraScanEventsPatch+<>O",
+    "Class Dawn.Internal.HandleCorruptedDataPatch",
+    "Class Dawn.Internal.HandleCorruptedDataPatch+<>O",
+    "Class Dawn.Internal.HandleCorruptedDataPatch+<DelayedClose>d__2",
+    "Class Dawn.Internal.MiscFixesPatch",
+    "Class Dawn.Internal.MiscFixesPatch+<>O",
+    "Class Dawn.Internal.MiscFixesPatch+<>c",
+    "Class Dawn.Internal.SaveDataPatch",
+    "Class Dawn.Internal.SaveDataPatch+<>O",
+    "Class Dawn.Internal.SaveDataPatch+<>c",
+    "Class Dawn.Internal.SaveDataPatch+<>c__DisplayClass6_0",
+    "Class Dawn.Internal.TerminalPatches",
+    "Class Dawn.Internal.TerminalPatches+<>O",
+    "Class Dawn.Internal.TerminalPatches+<>c",
+    "Class Dawn.Internal.TerminalPatches+<>c__DisplayClass6_0",
+    "Class Dawn.Internal.PersistentDataHandler",
+    "Class Dawn.Internal.ItemDropshipRefs",
+    "Class Dawn.Internal.QuickMenuManagerRefs",
+    "Class Dawn.Internal.RoundManagerRefs",
+    "Class Dawn.Internal.StartMatchLeverRefs",
+    "Class Dawn.Internal.StartOfRoundRefs",
+    "Class Dawn.Internal.TerminalRefs",
+    "Class Dawn.Internal.TerminalRefs+<>c",
+    "Class Dawn.Internal.TimeOfDayRefs",
+    "Class Dawn.Internal.DawnNetworkSceneManager",
+    "Class Dawn.Internal.DawnNetworkSceneManager+<>O",
+    "Class Dawn.Internal.TagExporter",
+    "Class Dawn.Internal.TagExporter+<>c",
+    "Class Dawn.Internal.TagExporter+<>c__5`1",
+    "Class Dawn.Internal.TagExporter+<>c__DisplayClass5_0`1",
+    "Class Dawn.Internal.StringEvent",
+    "Class Dawn.Internal.FloatEvent",
+    "Class Dawn.Internal.IntEvent",
+    "Class Dawn.Internal.BoolEvent",
+    "Class Dawn.Internal.Vector3Event",
+    "Class Dawn.Internal.ColorEvent",
+    "Class Dawn.Internal.AnimationCurveEvent",
+    "Class Dawn.Internal.BoundedRangeEvent",
+    "Class Dawn.Internal.PlayerNameplateUI",
+    "Class Dawn.Internal.RouteProgressUI",
+    "Class Dawn.Internal.RouteProgressUI+BundleStateColour",
+    "Class Dawn.Internal.RouteProgressUI+<>c__DisplayClass14_0",
+    "Class Dawn.Internal.UnlockableSaveDataHandler",
+    "Class Dawn.Internal.UnlockableSaveDataHandler+<>c__DisplayClass1_0",
+    "Class Dawn.Utils.DawnStoryLogSpawner",
+    "Class Dawn.Utils.DawnSurface",
+    "Class Dawn.Utils.AssetBundleUtils",
+    "Class Dawn.Utils.BoundedRange",
+    "Class Dawn.Utils.CompatibilityBoolExtensions",
+    "Class Dawn.Utils.DawnEnemyAdditionalData",
+    "Class Dawn.Utils.AssemblyExtensions",
+    "Class Dawn.Utils.AssemblyExtensions+<>c",
+    "Class Dawn.Utils.BepInPluginExtensions",
+    "Class Dawn.Utils.ConfigFileExtensions",
+    "Class Dawn.Utils.HUDManagerExtensions",
+    "Class Dawn.Utils.IEnumerableExtensions",
+    "Class Dawn.Utils.IEnumerableExtensions+<WithIndex>d__1`1",
+    "Class Dawn.Utils.ILCursorExtensions",
+    "Class Dawn.Utils.IListExtensions",
+    "Class Dawn.Utils.MathfExtensions",
+    "Class Dawn.Utils.NetworkObjectExtensions",
+    "Class Dawn.Utils.NetworkObjectExtensions+<>c__DisplayClass0_0",
+    "Class Dawn.Utils.NetworkObjectExtensions+<RunActionAfterSpawned>d__1",
+    "Class Dawn.Utils.NetworkObjectExtensions+<WaitUntilSpawned>d__0",
+    "Class Dawn.Utils.PlayerControllerBExtensions",
+    "Class Dawn.Utils.RandomExtensions",
+    "Class Dawn.Utils.RandomExtensions+<>c__8`1",
+    "Class Dawn.Utils.RandomExtensions+<>c__DisplayClass9_0`2",
+    "Class Dawn.Utils.SpawnSyncedObjectExtensions",
+    "Class Dawn.Utils.StringExtensions",
+    "Class Dawn.Utils.StringExtensions+<>c",
+    "Class Dawn.Utils.TerminalExtensions",
+    "Class Dawn.Utils.TerminalExtensions+<>c",
+    "Class Dawn.Utils.TerminalExtensions+<>c__DisplayClass14_0",
+    "Class Dawn.Utils.TerminalExtensions+<>c__DisplayClass16_0",
+    "Class Dawn.Utils.TerminalExtensions+<>c__DisplayClass19_0",
+    "Class Dawn.Utils.TerminalExtensions+<>c__DisplayClass23_0",
+    "Class Dawn.Utils.TerminalExtensions+<>c__DisplayClass25_0",
+    "Class Dawn.Utils.TransformExtensions",
+    "Class Dawn.Utils.HUDDisplayTip",
+    "Class Dawn.Utils.PlayerControllerReference",
+    "Class Dawn.Utils.IProgressExtensions",
+    "Class Dawn.Utils.AmbientNoisePlayer",
+    "Class Dawn.Utils.AnimationEventData",
+    "Class Dawn.Utils.MaterialsWithRenderer",
+    "Class Dawn.Utils.MaterialRendererVariantWithWeight",
+    "Class Dawn.Utils.ApplyRendererVariants",
+    "Class Dawn.Utils.AudioClipsWithTime",
+    "Class Dawn.Utils.AudioSourceWithClips",
+    "Class Dawn.Utils.AutoRotate",
+    "Class Dawn.Utils.ChanceScript",
+    "Class Dawn.Utils.ChanceScript+<>c",
+    "Class Dawn.Utils.ChanceScript+<DelayRandomThing>d__4",
+    "Class Dawn.Utils.ClientNetworkTransform",
+    "Class Dawn.Utils.DawnDustCloudsOverride",
+    "Class Dawn.Utils.DawnEclipsedOverride",
+    "Class Dawn.Utils.DawnFloodedOverride",
+    "Class Dawn.Utils.DawnFoggyOverride",
+    "Class Dawn.Utils.DawnLibObjectTypeWithRarity",
+    "Class Dawn.Utils.DawnLibUtilities",
+    "Class Dawn.Utils.DawnLibUtilities+<>c__0`1",
+    "Class Dawn.Utils.DawnRainyOverride",
+    "Class Dawn.Utils.DawnStormyOverride",
+    "Class Dawn.Utils.EnemyOnlyTriggers",
+    "Class Dawn.Utils.ExtraEnemyEvents",
+    "Class Dawn.Utils.ExtraItemEvents",
+    "Class Dawn.Utils.ExtraScanEvents",
+    "Class Dawn.Utils.ForceScanColorOnItem",
+    "Class Dawn.Utils.NetworkAudioSource",
+    "Class Dawn.Utils.NetworkAudioSource+PlayPacket",
+    "Class Dawn.Utils.OwnerNetworkAnimator",
+    "Class Dawn.Utils.PlayerOnlyTriggers",
+    "Class Dawn.Utils.ScanNodeAdditionalData",
+    "Class Dawn.Utils.SpawnSyncedDawnLibObject",
+    "Class Dawn.Utils.SpawnSyncedDawnLibObject+<>c",
+    "Class Dawn.Utils.WeightedOutcomeScript",
+    "Class Dawn.Utils.WeightedOutcomeScript+Outcome",
+    "Class Dawn.Utils.MoreLayerMasks",
+    "Class Dawn.Utils.NetworkSingleton`1",
+    "Class Dawn.Utils.SmartAgentNavigator",
+    "Class Dawn.Utils.SmartAgentNavigator+<>c",
+    "Class Dawn.Utils.SmartAgentNavigator+<>c__35`1",
+    "Class Dawn.Utils.SmartAgentNavigator+<CheckPathsCoroutine>d__35`1",
+    "Class Dawn.Utils.SmartAgentNavigator+<ClearProximityNodes>d__52",
+    "Class Dawn.Utils.SmartAgentNavigator+<GetSetOfAcceptableNodesForRoaming>d__51",
+    "Class Dawn.Utils.SmartAgentNavigator+<SearchAlgorithm>d__50",
+    "Class Dawn.Utils.TMPDropDownFixer",
+    "Class Dawn.Utils.ReflectionUtils",
+    "Class Dawn.Utils.Singleton`1",
+    "Class Dawn.Utils.ThunderstoreManifest",
+    "Class Dawn.Utils.MarqueeUI",
+    "Class Dawn.Utils.MarqueeUI+<DoAnimation>d__7",
+    "Class System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute",
+    "Class System.Diagnostics.CodeAnalysis.MemberNotNullAttribute",
+    "Class System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute",
+    "Class __GEN.NetworkVariableSerializationHelper",
+    "Class com.github.teamxiaolan.dawnlib.NetcodePatcher.NetcodePatchedAssemblyAttribute"
+  ],
+  "declarations": [
+    {
+      "line": 189,
+      "text": "internal sealed class <>z__ReadOnlyArray<T> : IEnumerable, ICollection, IList, IEnumerable<T>, IReadOnlyCollection<T>, IReadOnlyList<T>, ICollection<T>, IList<T>"
+    },
+    {
+      "line": 332,
+      "text": "internal sealed class <>z__ReadOnlySingleElementList<T> : IEnumerable, ICollection, IList, IEnumerable<T>, IReadOnlyCollection<T>, IReadOnlyList<T>, ICollection<T>, IList<T>"
+    },
+    {
+      "line": 334,
+      "text": "\tprivate sealed class Enumerator : IDisposable, IEnumerator, IEnumerator<T>"
+    },
+    {
+      "line": 536,
+      "text": "namespace Microsoft.CodeAnalysis"
+    },
+    {
+      "line": 540,
+      "text": "\tinternal sealed class EmbeddedAttribute : Attribute"
+    },
+    {
+      "line": 544,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 549,
+      "text": "\tinternal sealed class NullableAttribute : Attribute"
+    },
+    {
+      "line": 566,
+      "text": "\tinternal sealed class NullableContextAttribute : Attribute"
+    },
+    {
+      "line": 578,
+      "text": "\tinternal sealed class RefSafetyRulesAttribute : Attribute"
+    },
+    {
+      "line": 588,
+      "text": "public sealed class Vector3Converter : JsonConverter<Vector3>"
+    },
+    {
+      "line": 645,
+      "text": "public class DawnMapObjectNamespacedKeyContainer : MonoBehaviour"
+    },
+    {
+      "line": 655,
+      "text": "public class DawnStoryLogNamespacedKeyContainer : MonoBehaviour"
+    },
+    {
+      "line": 660,
+      "text": "namespace Dawn"
+    },
+    {
+      "line": 662,
+      "text": "\tpublic abstract class BaseInfoBuilder"
+    },
+    {
+      "line": 666,
+      "text": "\tpublic abstract class BaseInfoBuilder<TInfo, T, TBuilder> : BaseInfoBuilder where TInfo : INamespaced<TInfo> where TBuilder : BaseInfoBuilder<TInfo, T, TBuilder>"
+    },
+    {
+      "line": 715,
+      "text": "\tpublic class DataContainer : IDataContainer"
+    },
+    {
+      "line": 717,
+      "text": "\t\tprivate class NoOpDisposable : IDisposable"
+    },
+    {
+      "line": 825,
+      "text": "\tpublic class FrozenEmptyDataContainer : IDataContainer"
+    },
+    {
+      "line": 915,
+      "text": "\tpublic class JSONTagDefinition"
+    },
+    {
+      "line": 922,
+      "text": "\tpublic class NamespacedKey : INetworkSerializable"
+    },
+    {
+      "line": 1228,
+      "text": "\tpublic class NamespacedKey<T> : NamespacedKey where T : INamespaced"
+    },
+    {
+      "line": 1264,
+      "text": "\tpublic class NamespacedKeyConverter : JsonConverter"
+    },
+    {
+      "line": 1319,
+      "text": "\tpublic class NamespacedKeyDictionaryConverter : JsonConverter"
+    },
+    {
+      "line": 1364,
+      "text": "\tpublic class PersistentDataContainer : DataContainer"
+    },
+    {
+      "line": 1366,
+      "text": "\t\tpublic class EditContext : IDisposable"
+    },
+    {
+      "line": 1512,
+      "text": "\tpublic class ChildPersistentDataContainer : DataContainer"
+    },
+    {
+      "line": 1543,
+      "text": "\tpublic abstract class DawnBaseInfo<T> : INamespaced<T>, INamespaced, ITaggable, IRegistryEvents where T : DawnBaseInfo<T>"
+    },
+    {
+      "line": 1614,
+      "text": "\tpublic class DawnInfoContainer<T> : MonoBehaviour where T : DawnBaseInfo<T>"
+    },
+    {
+      "line": 1618,
+      "text": "\tpublic static class DawnLib"
+    },
+    {
+      "line": 1853,
+      "text": "\tpublic class DawnNamespacedKeyContainer<T> : MonoBehaviour where T : NamespacedKey"
+    },
+    {
+      "line": 1857,
+      "text": "\tinternal static class DungeonRegistrationHandler"
+    },
+    {
+      "line": 1860,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 1891,
+      "text": "\t\tprivate sealed class <>c"
+    },
+    {
+      "line": 2766,
+      "text": "\tpublic class DawnArchetypeInfo : DawnBaseInfo<DawnArchetypeInfo>"
+    },
+    {
+      "line": 2791,
+      "text": "\tpublic class DawnDungeonInfo : DawnBaseInfo<DawnDungeonInfo>"
+    },
+    {
+      "line": 2941,
+      "text": "\tpublic class DawnStingerDetail(AudioClip? firstTimeAudio, bool playsMoreThanOnce, float playChance, FuncProvider<bool> allowStingerToPlay)"
+    },
+    {
+      "line": 2951,
+      "text": "\tpublic class DawnTileSetInfo : DawnBaseInfo<DawnTileSetInfo>"
+    },
+    {
+      "line": 2970,
+      "text": "\tpublic static class DungeonArchetypeExtensions"
+    },
+    {
+      "line": 2989,
+      "text": "\tpublic static class DungeonFlowExtensions"
+    },
+    {
+      "line": 3015,
+      "text": "\tpublic class DungeonFlowInfoBuilder : BaseInfoBuilder<DawnDungeonInfo, DungeonFlow, DungeonFlowInfoBuilder>"
+    },
+    {
+      "line": 3178,
+      "text": "\tpublic static class TileSetExtensions"
+    },
+    {
+      "line": 3197,
+      "text": "\tpublic class TilesetInfoBuilder : BaseInfoBuilder<DawnTileSetInfo, TileSet, TilesetInfoBuilder>"
+    },
+    {
+      "line": 3237,
+      "text": "\tinternal static class EnemyRegistrationHandler"
+    },
+    {
+      "line": 3240,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 3945,
+      "text": "\tpublic sealed class DawnEnemyInfo : DawnBaseInfo<DawnEnemyInfo>"
+    },
+    {
+      "line": 3993,
+      "text": "\tpublic sealed class DawnEnemyLocationInfo"
+    },
+    {
+      "line": 4004,
+      "text": "\tpublic class EnemyInfoBuilder : BaseInfoBuilder<DawnEnemyInfo, EnemyType, EnemyInfoBuilder>"
+    },
+    {
+      "line": 4006,
+      "text": "\t\tpublic class EnemyLocationBuilder"
+    },
+    {
+      "line": 4098,
+      "text": "\tpublic static class EnemyTypeExtensions"
+    },
+    {
+      "line": 4117,
+      "text": "\tpublic class BundleException(AssetBundle bundle, string message) : Exception(message)"
+    },
+    {
+      "line": 4121,
+      "text": "\tpublic class MalformedAnimationCurveConfigException(string pair) : Exception"
+    },
+    {
+      "line": 4160,
+      "text": "\tpublic class ConstantPredicate : IPredicate"
+    },
+    {
+      "line": 4182,
+      "text": "\tpublic class SimpleProvider<T>(T value) : IProvider<T>"
+    },
+    {
+      "line": 4189,
+      "text": "\tpublic class ConfigEntryProvider<T>(ConfigEntry<T> configEntry) : IProvider<T>"
+    },
+    {
+      "line": 4196,
+      "text": "\tpublic class FuncProvider<T>(Func<T> function) : IProvider<T>"
+    },
+    {
+      "line": 4203,
+      "text": "\tinternal static class ItemRegistrationHandler"
+    },
+    {
+      "line": 4206,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 4649,
+      "text": "\tpublic class AutoItemGroupTagger(NamespacedKey tag, string itemGroupName) : IAutoTagger<DawnItemInfo>"
+    },
+    {
+      "line": 4673,
+      "text": "\tpublic class AutoNonInteractableTagger : IAutoTagger<DawnItemInfo>"
+    },
+    {
+      "line": 4687,
+      "text": "\tpublic class AutoValueTagger(NamespacedKey tag, BoundedRange range) : IAutoTagger<DawnItemInfo>"
+    },
+    {
+      "line": 4697,
+      "text": "\tpublic class AutoWeightTagger(NamespacedKey tag, BoundedRange range) : IAutoTagger<DawnItemInfo>"
+    },
+    {
+      "line": 4706,
+      "text": "\tpublic sealed class DawnItemInfo : DawnBaseInfo<DawnItemInfo>"
+    },
+    {
+      "line": 4730,
+      "text": "\tpublic sealed class DawnScrapItemInfo"
+    },
+    {
+      "line": 4741,
+      "text": "\tpublic sealed class DawnShopItemInfo"
+    },
+    {
+      "line": 4780,
+      "text": "\tpublic static class ItemExtensions"
+    },
+    {
+      "line": 4799,
+      "text": "\tpublic class ItemInfoBuilder : BaseInfoBuilder<DawnItemInfo, Item, ItemInfoBuilder>"
+    },
+    {
+      "line": 4801,
+      "text": "\t\tpublic class ScrapBuilder"
+    },
+    {
+      "line": 4831,
+      "text": "\t\tpublic class ShopBuilder"
+    },
+    {
+      "line": 4945,
+      "text": "\tpublic static class LethalContent"
+    },
+    {
+      "line": 4971,
+      "text": "\tpublic static class DawnLibTags"
+    },
+    {
+      "line": 4979,
+      "text": "\tinternal static class MapObjectRegistrationHandler"
+    },
+    {
+      "line": 4982,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 5632,
+      "text": "\tpublic sealed class DawnInsideMapObjectInfo"
+    },
+    {
+      "line": 5646,
+      "text": "\tpublic sealed class DawnMapObjectInfo : DawnBaseInfo<DawnMapObjectInfo>"
+    },
+    {
+      "line": 5684,
+      "text": "\tpublic sealed class DawnOutsideMapObjectInfo"
+    },
+    {
+      "line": 5704,
+      "text": "\tpublic static class IndoorMapHazardTypeExtensions"
+    },
+    {
+      "line": 5724,
+      "text": "\tpublic class InsideMapObjectSettings"
+    },
+    {
+      "line": 5740,
+      "text": "\tpublic class MapObjectInfoBuilder : BaseInfoBuilder<DawnMapObjectInfo, GameObject, MapObjectInfoBuilder>"
+    },
+    {
+      "line": 5742,
+      "text": "\t\tpublic class InsideBuilder"
+    },
+    {
+      "line": 5838,
+      "text": "\t\tpublic class OutsideBuilder"
+    },
+    {
+      "line": 5973,
+      "text": "\tpublic class OutsideMapObjectSettings"
+    },
+    {
+      "line": 6005,
+      "text": "\tpublic static class SpawnableOutsideObjectExtensions"
+    },
+    {
+      "line": 6025,
+      "text": "\tinternal static class MoonRegistrationHandler"
+    },
+    {
+      "line": 6028,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 6768,
+      "text": "\tpublic class DawnMoonInfo : DawnBaseInfo<DawnMoonInfo>"
+    },
+    {
+      "line": 6880,
+      "text": "\tpublic class MoonGroup"
+    },
+    {
+      "line": 6900,
+      "text": "\tpublic class VisibleFilterStep : IMoonFilterStep"
+    },
+    {
+      "line": 6907,
+      "text": "\tpublic class TagFilterStep(NamespacedKey tag) : IMoonFilterStep"
+    },
+    {
+      "line": 6914,
+      "text": "\tpublic class FixedGroupSizeGroupingAlgorithm(int groupSize = 3) : IMoonGroupingAlgorithm"
+    },
+    {
+      "line": 6949,
+      "text": "\tpublic class RankOrderingStep : IMoonOrderingStep"
+    },
+    {
+      "line": 6983,
+      "text": "\tpublic class PriceOrderingStep : IMoonOrderingStep"
+    },
+    {
+      "line": 7008,
+      "text": "\tpublic class IndexBasedOrderingStep : IMoonOrderingStep"
+    },
+    {
+      "line": 7033,
+      "text": "\tpublic class MainGroupAlgorithm"
+    },
+    {
+      "line": 7067,
+      "text": "\tpublic class MoonInfoBuilder(NamespacedKey<DawnMoonInfo> key, SelectableLevel value) : BaseInfoBuilder<DawnMoonInfo, SelectableLevel, MoonInfoBuilder>(key, value)"
+    },
+    {
+      "line": 7213,
+      "text": "\tpublic class VanillaMoonSceneInfo : IMoonSceneInfo, INamespaced<IMoonSceneInfo>, INamespaced"
+    },
+    {
+      "line": 7234,
+      "text": "\tpublic class CustomMoonSceneInfo : IMoonSceneInfo, INamespaced<IMoonSceneInfo>, INamespaced"
+    },
+    {
+      "line": 7264,
+      "text": "\tpublic static class SelectableLevelExtensions"
+    },
+    {
+      "line": 7283,
+      "text": "\tpublic class RegistryFrozenException : Exception"
+    },
+    {
+      "line": 7290,
+      "text": "\tpublic class Registry<T> : IReadOnlyDictionary<NamespacedKey<T>, T>, IEnumerable<KeyValuePair<NamespacedKey<T>, T>>, IEnumerable, IReadOnlyCollection<KeyValuePair<NamespacedKey<T>, T>> where T : INamespaced<T>"
+    },
+    {
+      "line": 7417,
+      "text": "\tinternal static class StoryLogRegistrationHandler"
+    },
+    {
+      "line": 7420,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 7537,
+      "text": "\tpublic sealed class DawnStoryLogInfo : DawnBaseInfo<DawnStoryLogInfo>"
+    },
+    {
+      "line": 7553,
+      "text": "\tpublic class StoryLogInfoBuilder(NamespacedKey<DawnStoryLogInfo> key, GameObject value) : BaseInfoBuilder<DawnStoryLogInfo, GameObject, StoryLogInfoBuilder>(key, value)"
+    },
+    {
+      "line": 7604,
+      "text": "\tinternal static class SurfaceRegistrationHandler"
+    },
+    {
+      "line": 7607,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 8553,
+      "text": "\tpublic sealed class DawnSurfaceInfo : DawnBaseInfo<DawnSurfaceInfo>"
+    },
+    {
+      "line": 8598,
+      "text": "\tpublic sealed class FootstepVFXPool : Singleton<FootstepVFXPool>"
+    },
+    {
+      "line": 8656,
+      "text": "\tpublic sealed class PooledFootstepVFX : MonoBehaviour"
+    },
+    {
+      "line": 8696,
+      "text": "\tpublic static class MaskedPlayerEnemyExtensions"
+    },
+    {
+      "line": 8711,
+      "text": "\tpublic static class PlayerControllerBExtensions"
+    },
+    {
+      "line": 8726,
+      "text": "\tpublic static class SurfaceExtensions"
+    },
+    {
+      "line": 8745,
+      "text": "\tpublic class SurfaceInfoBuilder : BaseInfoBuilder<DawnSurfaceInfo, FootstepSurface, SurfaceInfoBuilder>"
+    },
+    {
+      "line": 8814,
+      "text": "\tpublic class TaggedRegistry<T> : Registry<T> where T : DawnBaseInfo<T>"
+    },
+    {
+      "line": 8863,
+      "text": "\tpublic class AllAutoTagger<T> : IAutoTagger<T> where T : INamespaced<T>, ITaggable"
+    },
+    {
+      "line": 8872,
+      "text": "\tpublic class CustomAutoTagger<T> : IAutoTagger<T> where T : INamespaced<T>, ITaggable"
+    },
+    {
+      "line": 8893,
+      "text": "\tpublic class SimpleAutoTagger<T>(NamespacedKey tag, Func<T, bool> predicate) : IAutoTagger<T> where T : DawnBaseInfo<T>"
+    },
+    {
+      "line": 8903,
+      "text": "\tpublic static class Tags"
+    },
+    {
+      "line": 9103,
+      "text": "\tpublic class VanillaAutoTagger<T> : IAutoTagger<T> where T : INamespaced<T>, ITaggable"
+    },
+    {
+      "line": 9112,
+      "text": "\tpublic sealed class DawnPurchaseInfo : ITerminalPurchase"
+    },
+    {
+      "line": 9149,
+      "text": "\tinternal class ConstantTerminalPredicate(TerminalPurchaseResult result) : ITerminalPurchasePredicate"
+    },
+    {
+      "line": 9156,
+      "text": "\tinternal class LethalLevelLoaderTerminalPredicate(object extendedLevelObject) : ITerminalPurchasePredicate"
+    },
+    {
+      "line": 9190,
+      "text": "\tpublic class TerminalKeywordBuilder"
+    },
+    {
+      "line": 9346,
+      "text": "\tpublic class TerminalNodeBuilder"
+    },
+    {
+      "line": 9454,
+      "text": "\tpublic abstract class TerminalPurchaseResult"
+    },
+    {
+      "line": 9456,
+      "text": "\t\tpublic class SuccessPurchaseResult : TerminalPurchaseResult"
+    },
+    {
+      "line": 9465,
+      "text": "\t\tpublic class FailedPurchaseResult : TerminalPurchaseResult"
+    },
+    {
+      "line": 9487,
+      "text": "\t\tpublic class HiddenPurchaseResult : TerminalPurchaseResult"
+    },
+    {
+      "line": 9541,
+      "text": "\tpublic class TerminalTextModifier"
+    },
+    {
+      "line": 9647,
+      "text": "\tinternal static class TerminalCommandRegistration"
+    },
+    {
+      "line": 9650,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 10135,
+      "text": "\tpublic static class DawnCommands"
+    },
+    {
+      "line": 10369,
+      "text": "\tpublic sealed class DawnComplexCommandInfo"
+    },
+    {
+      "line": 10421,
+      "text": "\tpublic sealed class DawnComplexQueryCommandInfo"
+    },
+    {
+      "line": 10494,
+      "text": "\tpublic sealed class DawnEventDrivenCommandInfo"
+    },
+    {
+      "line": 10535,
+      "text": "\tpublic sealed class DawnInputCommandInfo"
+    },
+    {
+      "line": 10595,
+      "text": "\tpublic sealed class DawnSimpleCommandInfo"
+    },
+    {
+      "line": 10633,
+      "text": "\tpublic sealed class DawnSimpleQueryCommandInfo"
+    },
+    {
+      "line": 10702,
+      "text": "\tpublic sealed class DawnTerminalCommandInfo : DawnBaseInfo<DawnTerminalCommandInfo>"
+    },
+    {
+      "line": 10835,
+      "text": "\tpublic sealed class DawnTerminalObjectCommandInfo"
+    },
+    {
+      "line": 10878,
+      "text": "\tpublic class TerminalCommandBasicInformation(string commandName, string categoryName, string description, ClearText clearTextFlags)"
+    },
+    {
+      "line": 10892,
+      "text": "\tpublic class TerminalCommandInfoBuilder : BaseInfoBuilder<DawnTerminalCommandInfo, TerminalCommandBasicInformation, TerminalCommandInfoBuilder>"
+    },
+    {
+      "line": 10894,
+      "text": "\t\tpublic class ComplexQueryCommandBuilder"
+    },
+    {
+      "line": 11006,
+      "text": "\t\tpublic class SimpleQueryCommandBuilder"
+    },
+    {
+      "line": 11108,
+      "text": "\t\tpublic class ComplexCommandBuilder"
+    },
+    {
+      "line": 11160,
+      "text": "\t\tpublic class SimpleCommandBuilder"
+    },
+    {
+      "line": 11185,
+      "text": "\t\tpublic class TerminalObjectCommandBuilder"
+    },
+    {
+      "line": 11200,
+      "text": "\t\tpublic class EventDrivenCommandBuilder"
+    },
+    {
+      "line": 11248,
+      "text": "\t\tpublic class InputCommandBuilder"
+    },
+    {
+      "line": 11382,
+      "text": "\tpublic static class TerminalNodeExtensions"
+    },
+    {
+      "line": 11430,
+      "text": "\tpublic class VanillaTerminalEvents"
+    },
+    {
+      "line": 11469,
+      "text": "\tinternal static class UnlockableRegistrationHandler"
+    },
+    {
+      "line": 11472,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 11780,
+      "text": "\tpublic sealed class DawnPlaceableObjectInfo"
+    },
+    {
+      "line": 11788,
+      "text": "\tpublic sealed class DawnSuitInfo"
+    },
+    {
+      "line": 11802,
+      "text": "\tpublic sealed class DawnUnlockableItemInfo : DawnBaseInfo<DawnUnlockableItemInfo>"
+    },
+    {
+      "line": 11841,
+      "text": "\tpublic static class UnlockableItemExtensions"
+    },
+    {
+      "line": 11860,
+      "text": "\tpublic class UnlockableInfoBuilder : BaseInfoBuilder<DawnUnlockableItemInfo, UnlockableItem, UnlockableInfoBuilder>"
+    },
+    {
+      "line": 11862,
+      "text": "\t\tpublic class SuitBuilder"
+    },
+    {
+      "line": 11898,
+      "text": "\t\tpublic class PlaceableObjectBuilder"
+    },
+    {
+      "line": 12022,
+      "text": "\tpublic sealed class DawnVehicleInfo : DawnBaseInfo<DawnVehicleInfo>"
+    },
+    {
+      "line": 12049,
+      "text": "\tinternal static class WeatherRegistrationHandler"
+    },
+    {
+      "line": 12052,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 12174,
+      "text": "\tpublic class DawnWeatherEffectInfo : DawnBaseInfo<DawnWeatherEffectInfo>"
+    },
+    {
+      "line": 12184,
+      "text": "\tpublic static class WeatherEffectExtensions"
+    },
+    {
+      "line": 12203,
+      "text": "\tpublic class CurveTableBuilder<TBase, TContext> where TBase : INamespaced<TBase>, ITaggable"
+    },
+    {
+      "line": 12261,
+      "text": "\tpublic class ProviderTable<T, TBase> where TBase : INamespaced<TBase>"
+    },
+    {
+      "line": 12288,
+      "text": "\tpublic sealed class ProviderTable<T, TBase, TContext> where TBase : INamespaced<TBase>"
+    },
+    {
+      "line": 12315,
+      "text": "\tpublic static class ProviderTableSpawnWeightExtensions"
+    },
+    {
+      "line": 12326,
+      "text": "\tpublic class SimpleWeighted(int weight) : IWeighted"
+    },
+    {
+      "line": 12337,
+      "text": "\tpublic static class WeightedExtensions"
+    },
+    {
+      "line": 12348,
+      "text": "\tpublic class SimpleContextualProvider<T, TBase, TContext>(T value) : IContextualProvider<T, TBase, TContext> where TBase : INamespaced<TBase>"
+    },
+    {
+      "line": 12355,
+      "text": "\tpublic class MatchingKeyContextualProvider<T, TBase, TContext>(NamespacedKey<TBase> targetKey, T value) : IContextualProvider<T?, TBase, TContext> where TBase : INamespaced<TBase>"
+    },
+    {
+      "line": 12366,
+      "text": "\tpublic class HasTagContextualProvider<T, TBase, TContext>(NamespacedKey tag, T value) : IContextualProvider<T?, TBase, TContext> where TBase : INamespaced<TBase>"
+    },
+    {
+      "line": 12381,
+      "text": "\tpublic sealed class MatchingKeyWeightContextualProvider<TBase, TContext>(NamespacedKey<TBase> targetKey, IWeighted weight) : IContextualProvider<int?, TBase, TContext> where TBase : INamespaced<TBase>"
+    },
+    {
+      "line": 12392,
+      "text": "\tpublic sealed class HasTagWeightContextualProvider<TBase, TContext>(NamespacedKey tag, IWeighted weight) : IContextualProvider<int?, TBase, TContext> where TBase : INamespaced<TBase>, ITaggable"
+    },
+    {
+      "line": 12403,
+      "text": "\tpublic sealed class SimpleWeightContextualProvider<TBase, TContext>(IWeighted weight) : IContextualProvider<int?, TBase, TContext> where TBase : INamespaced<TBase>"
+    },
+    {
+      "line": 12457,
+      "text": "\tpublic static class SpawnWeightExtraKeys"
+    },
+    {
+      "line": 12481,
+      "text": "\tpublic class WeightTableBuilder<TBase, TContext> where TBase : INamespaced<TBase>, ITaggable"
+    },
+    {
+      "line": 12542,
+      "text": "\tinternal static class DawnConstants"
+    },
+    {
+      "line": 12560,
+      "text": "\tpublic static class DawnKeys"
+    },
+    {
+      "line": 12580,
+      "text": "\tpublic class DawnPlugin : BaseUnityPlugin"
+    },
+    {
+      "line": 12689,
+      "text": "\tinternal class DawnTesting"
+    },
+    {
+      "line": 12829,
+      "text": "\tpublic class DawnEvent"
+    },
+    {
+      "line": 12838,
+      "text": "\tpublic class DawnEvent<T>"
+    },
+    {
+      "line": 12847,
+      "text": "\tpublic class DawnEvent<T1, T2>"
+    },
+    {
+      "line": 12856,
+      "text": "\tpublic class DawnEvent<T1, T2, T3>"
+    },
+    {
+      "line": 12865,
+      "text": "\tpublic class DawnEvent<T1, T2, T3, T4>"
+    },
+    {
+      "line": 12874,
+      "text": "\tpublic class DawnEvent<T1, T2, T3, T4, T5>"
+    },
+    {
+      "line": 12883,
+      "text": "\tpublic class DawnEvent<T1, T2, T3, T4, T5, T6>"
+    },
+    {
+      "line": 12892,
+      "text": "\tinternal static class MyPluginInfo"
+    },
+    {
+      "line": 12901,
+      "text": "\tpublic static class MoonKeys"
+    },
+    {
+      "line": 12937,
+      "text": "\tpublic static class WeatherKeys"
+    },
+    {
+      "line": 12959,
+      "text": "\tpublic static class EnemyKeys"
+    },
+    {
+      "line": 13033,
+      "text": "\tpublic static class UnlockableItemKeys"
+    },
+    {
+      "line": 13109,
+      "text": "\tpublic static class ItemKeys"
+    },
+    {
+      "line": 13303,
+      "text": "\tpublic static class DungeonKeys"
+    },
+    {
+      "line": 13321,
+      "text": "\tpublic static class DungeonTileSetKeys"
+    },
+    {
+      "line": 13361,
+      "text": "\tpublic static class DungeonArchetypeKeys"
+    },
+    {
+      "line": 13383,
+      "text": "\tpublic static class MapObjectKeys"
+    },
+    {
+      "line": 13431,
+      "text": "\tpublic static class StoryLogKeys"
+    },
+    {
+      "line": 13471,
+      "text": "\tpublic static class SurfaceKeys"
+    },
+    {
+      "line": 13507,
+      "text": "\tpublic static class TerminalCommandKeys"
+    },
+    {
+      "line": 13687,
+      "text": "namespace Dawn.Internal"
+    },
+    {
+      "line": 13689,
+      "text": "\tinternal static class DawnConfig"
+    },
+    {
+      "line": 13722,
+      "text": "\tpublic class DawnDungeonNetworker : NetworkSingleton<DawnDungeonNetworker>"
+    },
+    {
+      "line": 14220,
+      "text": "\tpublic class DawnMoonNetworker : NetworkSingleton<DawnMoonNetworker>"
+    },
+    {
+      "line": 14774,
+      "text": "\tpublic class DawnNetworker : NetworkSingleton<DawnNetworker>"
+    },
+    {
+      "line": 15169,
+      "text": "\tinternal static class Debuggers"
+    },
+    {
+      "line": 15243,
+      "text": "\tinternal class DebugLogSource(string title)"
+    },
+    {
+      "line": 15250,
+      "text": "\tinternal class AnimationCurveConverter : TOMLConverter<AnimationCurve>"
+    },
+    {
+      "line": 15324,
+      "text": "\tinternal class BoundedRangeConverter : TOMLConverter<BoundedRange>"
+    },
+    {
+      "line": 15343,
+      "text": "\tinternal class NamespacedKeyConverter : TOMLConverter<NamespacedKey>"
+    },
+    {
+      "line": 15355,
+      "text": "\tpublic abstract class TOMLConverter"
+    },
+    {
+      "line": 15368,
+      "text": "\tpublic abstract class TOMLConverter<T> : TOMLConverter where T : notnull"
+    },
+    {
+      "line": 15386,
+      "text": "\tinternal static class ExtendedTOML"
+    },
+    {
+      "line": 15389,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 15482,
+      "text": "\tpublic static class ItemSaveDataHandler"
+    },
+    {
+      "line": 15775,
+      "text": "\tpublic static class DawnItemSaveEvents"
+    },
+    {
+      "line": 15799,
+      "text": "\tinternal static class DungeonGenerationPlusCompat"
+    },
+    {
+      "line": 15856,
+      "text": "\tinternal static class GoodItemScanCompat"
+    },
+    {
+      "line": 15912,
+      "text": "\tinternal static class LCBetterSaveCompat"
+    },
+    {
+      "line": 15939,
+      "text": "\tinternal static class LethalConfigCompat"
+    },
+    {
+      "line": 16011,
+      "text": "\tinternal static class LethalLevelLoaderCompat"
+    },
+    {
+      "line": 16291,
+      "text": "\tinternal static class LethalLibCompat"
+    },
+    {
+      "line": 16388,
+      "text": "\tinternal static class LethalQuantitiesCompat"
+    },
+    {
+      "line": 16391,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 16457,
+      "text": "\tinternal static class MoonDaySpeedMultiplierPatcherCompat"
+    },
+    {
+      "line": 16461,
+      "text": "\tinternal static class StarlancerAIFixCompat"
+    },
+    {
+      "line": 16465,
+      "text": "\tinternal static class TerminalFormatterCompat"
+    },
+    {
+      "line": 16468,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 16504,
+      "text": "\tinternal static class WeatherRegistryCompat"
+    },
+    {
+      "line": 16553,
+      "text": "\tinternal static class NetworkVariableInitalizer"
+    },
+    {
+      "line": 16575,
+      "text": "\tinternal static class DebugPatches"
+    },
+    {
+      "line": 16578,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 16651,
+      "text": "\tinternal static class EnemyDataPatch"
+    },
+    {
+      "line": 16654,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 16752,
+      "text": "\tinternal static class ExtraItemEventsPatch"
+    },
+    {
+      "line": 16755,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 16784,
+      "text": "\tinternal static class ExtraScanEventsPatch"
+    },
+    {
+      "line": 16787,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 16818,
+      "text": "\tinternal static class HandleCorruptedDataPatch"
+    },
+    {
+      "line": 16821,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 16895,
+      "text": "\tinternal static class MiscFixesPatch"
+    },
+    {
+      "line": 16898,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 17345,
+      "text": "\tinternal static class SaveDataPatch"
+    },
+    {
+      "line": 17348,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 17603,
+      "text": "\tinternal static class TerminalPatches"
+    },
+    {
+      "line": 17608,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 17939,
+      "text": "\tinternal static class PersistentDataHandler"
+    },
+    {
+      "line": 17962,
+      "text": "\tpublic static class ItemDropshipRefs"
+    },
+    {
+      "line": 17978,
+      "text": "\tpublic static class QuickMenuManagerRefs"
+    },
+    {
+      "line": 17994,
+      "text": "\tpublic static class RoundManagerRefs"
+    },
+    {
+      "line": 18017,
+      "text": "\tpublic static class StartMatchLeverRefs"
+    },
+    {
+      "line": 18033,
+      "text": "\tpublic static class StartOfRoundRefs"
+    },
+    {
+      "line": 18056,
+      "text": "\tpublic static class TerminalRefs"
+    },
+    {
+      "line": 18108,
+      "text": "\tpublic static class TimeOfDayRefs"
+    },
+    {
+      "line": 18144,
+      "text": "\tinternal static class DawnNetworkSceneManager"
+    },
+    {
+      "line": 18147,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 18280,
+      "text": "\tinternal static class TagExporter"
+    },
+    {
+      "line": 18337,
+      "text": "\tpublic class StringEvent : UnityEvent<string>"
+    },
+    {
+      "line": 18341,
+      "text": "\tpublic class FloatEvent : UnityEvent<float>"
+    },
+    {
+      "line": 18345,
+      "text": "\tpublic class IntEvent : UnityEvent<int>"
+    },
+    {
+      "line": 18349,
+      "text": "\tpublic class BoolEvent : UnityEvent<bool>"
+    },
+    {
+      "line": 18353,
+      "text": "\tpublic class Vector3Event : UnityEvent<Vector3>"
+    },
+    {
+      "line": 18357,
+      "text": "\tpublic class ColorEvent : UnityEvent<Color>"
+    },
+    {
+      "line": 18361,
+      "text": "\tpublic class AnimationCurveEvent : UnityEvent<AnimationCurve>"
+    },
+    {
+      "line": 18365,
+      "text": "\tpublic class BoundedRangeEvent : UnityEvent<BoundedRange>"
+    },
+    {
+      "line": 18368,
+      "text": "\tpublic class PlayerNameplateUI : MonoBehaviour"
+    },
+    {
+      "line": 18405,
+      "text": "\tpublic class RouteProgressUI : Singleton<RouteProgressUI>"
+    },
+    {
+      "line": 18408,
+      "text": "\t\tpublic class BundleStateColour"
+    },
+    {
+      "line": 18534,
+      "text": "\tpublic static class UnlockableSaveDataHandler"
+    },
+    {
+      "line": 18926,
+      "text": "namespace Dawn.Utils"
+    },
+    {
+      "line": 18929,
+      "text": "\tpublic class DawnStoryLogSpawner : MonoBehaviour"
+    },
+    {
+      "line": 18955,
+      "text": "\tpublic class DawnSurface : MonoBehaviour"
+    },
+    {
+      "line": 19090,
+      "text": "\tpublic static class AssetBundleUtils"
+    },
+    {
+      "line": 19110,
+      "text": "\tpublic class BoundedRange"
+    },
+    {
+      "line": 19155,
+      "text": "\tpublic static class CompatibilityBoolExtensions"
+    },
+    {
+      "line": 19169,
+      "text": "\tpublic class DawnEnemyAdditionalData : MonoBehaviour"
+    },
+    {
+      "line": 19204,
+      "text": "\tpublic static class AssemblyExtensions"
+    },
+    {
+      "line": 19222,
+      "text": "\tpublic static class BepInPluginExtensions"
+    },
+    {
+      "line": 19229,
+      "text": "\tpublic static class ConfigFileExtensions"
+    },
+    {
+      "line": 19261,
+      "text": "\tpublic static class HUDManagerExtensions"
+    },
+    {
+      "line": 19268,
+      "text": "\tpublic static class IEnumerableExtensions"
+    },
+    {
+      "line": 19359,
+      "text": "\tpublic static class ILCursorExtensions"
+    },
+    {
+      "line": 19412,
+      "text": "\tpublic static class IListExtensions"
+    },
+    {
+      "line": 19431,
+      "text": "\tpublic static class MathfExtensions"
+    },
+    {
+      "line": 19438,
+      "text": "\tpublic static class NetworkObjectExtensions"
+    },
+    {
+      "line": 19456,
+      "text": "\tpublic static class PlayerControllerBExtensions"
+    },
+    {
+      "line": 19463,
+      "text": "\tpublic static class RandomExtensions"
+    },
+    {
+      "line": 19546,
+      "text": "\tpublic static class SpawnSyncedObjectExtensions"
+    },
+    {
+      "line": 19561,
+      "text": "\tpublic static class StringExtensions"
+    },
+    {
+      "line": 19723,
+      "text": "\tpublic static class TerminalExtensions"
+    },
+    {
+      "line": 20065,
+      "text": "\tpublic static class TransformExtensions"
+    },
+    {
+      "line": 20076,
+      "text": "\tpublic class HUDDisplayTip : INetworkSerializable"
+    },
+    {
+      "line": 20122,
+      "text": "\tpublic class PlayerControllerReference : INetworkSerializable, IEquatable<PlayerControllerReference>"
+    },
+    {
+      "line": 20226,
+      "text": "\tpublic static class IProgressExtensions"
+    },
+    {
+      "line": 20244,
+      "text": "\tpublic class AmbientNoisePlayer : MonoBehaviour"
+    },
+    {
+      "line": 20326,
+      "text": "\tpublic class AnimationEventData"
+    },
+    {
+      "line": 20351,
+      "text": "\tpublic class MaterialsWithRenderer"
+    },
+    {
+      "line": 20358,
+      "text": "\tpublic class MaterialRendererVariantWithWeight : IWeighted"
+    },
+    {
+      "line": 20371,
+      "text": "\tpublic class ApplyRendererVariants : NetworkBehaviour"
+    },
+    {
+      "line": 20424,
+      "text": "\tpublic class AudioClipsWithTime"
+    },
+    {
+      "line": 20433,
+      "text": "\tpublic class AudioSourceWithClips"
+    },
+    {
+      "line": 20448,
+      "text": "\tpublic class AutoRotate : MonoBehaviour"
+    },
+    {
+      "line": 20490,
+      "text": "\tpublic class ChanceScript : NetworkBehaviour"
+    },
+    {
+      "line": 20570,
+      "text": "\tpublic class ClientNetworkTransform : NetworkTransform"
+    },
+    {
+      "line": 20604,
+      "text": "\tpublic class DawnDustCloudsOverride : MonoBehaviour"
+    },
+    {
+      "line": 20659,
+      "text": "\tpublic class DawnEclipsedOverride : MonoBehaviour"
+    },
+    {
+      "line": 20682,
+      "text": "\tpublic class DawnFloodedOverride : MonoBehaviour"
+    },
+    {
+      "line": 20730,
+      "text": "\tpublic class DawnFoggyOverride : MonoBehaviour"
+    },
+    {
+      "line": 20785,
+      "text": "\tpublic class DawnLibObjectTypeWithRarity"
+    },
+    {
+      "line": 20791,
+      "text": "\tpublic static class DawnLibUtilities"
+    },
+    {
+      "line": 20822,
+      "text": "\tpublic class DawnRainyOverride : MonoBehaviour"
+    },
+    {
+      "line": 20869,
+      "text": "\tpublic class DawnStormyOverride : MonoBehaviour"
+    },
+    {
+      "line": 20991,
+      "text": "\tpublic class EnemyOnlyTriggers : MonoBehaviour"
+    },
+    {
+      "line": 21006,
+      "text": "\tpublic class ExtraEnemyEvents : MonoBehaviour"
+    },
+    {
+      "line": 21039,
+      "text": "\tpublic class ExtraItemEvents : MonoBehaviour"
+    },
+    {
+      "line": 21058,
+      "text": "\tpublic class ExtraScanEvents : MonoBehaviour"
+    },
+    {
+      "line": 21089,
+      "text": "\tpublic class ForceScanColorOnItem : MonoBehaviour"
+    },
+    {
+      "line": 21168,
+      "text": "\tpublic class NetworkAudioSource : NetworkBehaviour"
+    },
+    {
+      "line": 21170,
+      "text": "\t\tprivate class PlayPacket : INetworkSerializable"
+    },
+    {
+      "line": 21491,
+      "text": "\tpublic class OwnerNetworkAnimator : NetworkAnimator"
+    },
+    {
+      "line": 21515,
+      "text": "\tpublic class PlayerOnlyTriggers : MonoBehaviour"
+    },
+    {
+      "line": 21528,
+      "text": "\tpublic class ScanNodeAdditionalData"
+    },
+    {
+      "line": 21580,
+      "text": "\tpublic class SpawnSyncedDawnLibObject : MonoBehaviour"
+    },
+    {
+      "line": 21639,
+      "text": "\tpublic class WeightedOutcomeScript : NetworkBehaviour"
+    },
+    {
+      "line": 21642,
+      "text": "\t\tpublic class Outcome"
+    },
+    {
+      "line": 21899,
+      "text": "\tpublic static class MoreLayerMasks"
+    },
+    {
+      "line": 21998,
+      "text": "\tpublic abstract class NetworkSingleton<T> : NetworkBehaviour where T : NetworkSingleton<T>"
+    },
+    {
+      "line": 22060,
+      "text": "\tpublic class SmartAgentNavigator : NetworkBehaviour"
+    },
+    {
+      "line": 22872,
+      "text": "\tpublic class TMPDropDownFixer : MonoBehaviour"
+    },
+    {
+      "line": 22896,
+      "text": "\tpublic static class ReflectionUtils"
+    },
+    {
+      "line": 22905,
+      "text": "\tpublic abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>"
+    },
+    {
+      "line": 22941,
+      "text": "\tpublic class ThunderstoreManifest"
+    },
+    {
+      "line": 22956,
+      "text": "\tpublic class MarqueeUI : MonoBehaviour"
+    },
+    {
+      "line": 23029,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 23032,
+      "text": "\tinternal sealed class IgnoresAccessChecksToAttribute : Attribute"
+    },
+    {
+      "line": 23039,
+      "text": "namespace System.Diagnostics.CodeAnalysis"
+    },
+    {
+      "line": 23044,
+      "text": "\tinternal sealed class MemberNotNullAttribute : Attribute"
+    },
+    {
+      "line": 23061,
+      "text": "\tinternal sealed class MemberNotNullWhenAttribute : Attribute"
+    },
+    {
+      "line": 23080,
+      "text": "namespace __GEN"
+    },
+    {
+      "line": 23082,
+      "text": "\tinternal class NetworkVariableSerializationHelper"
+    },
+    {
+      "line": 23092,
+      "text": "namespace com.github.teamxiaolan.dawnlib.NetcodePatcher"
+    },
+    {
+      "line": 23095,
+      "text": "\tinternal class NetcodePatchedAssemblyAttribute : Attribute"
+    }
+  ],
+  "spawn_surface_hits": [
+    {
+      "line": 5493,
+      "text": "\t\t\t\tGameObject val6 = Object.Instantiate<GameObject>(prefabToSpawn, val4, Quaternion.identity, RoundManager.Instance.mapPropsContainer.transform);"
+    },
+    {
+      "line": 5516,
+      "text": "\t\t\t\t\tval6.GetComponent<NetworkObject>().Spawn(true);"
+    },
+    {
+      "line": 6336,
+      "text": "\t\t\tObject.Instantiate<GameObject>(RouteProgressUIPrefab, ((Component)self.radarCanvas).transform);"
+    },
+    {
+      "line": 8633,
+      "text": "\t\t\t\tGameObject val2 = Object.Instantiate<GameObject>(prefab, ((Component)this).transform);"
+    },
+    {
+      "line": 15690,
+      "text": "\t\t\t\tGrabbableObject grabbable = Object.Instantiate<GameObject>(value.Item.spawnPrefab, position, Quaternion.Euler(val4), StartOfRoundRefs.Instance.elevatorTransform).GetComponent<GrabbableObject>();"
+    },
+    {
+      "line": 15700,
+      "text": "\t\t\t\t((NetworkBehaviour)grabbable).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 18521,
+      "text": "\t\t\tPlayerNameplateUI playerNameplateUI = Object.Instantiate<PlayerNameplateUI>(_nameplatePrefab, _nameplateParent);"
+    },
+    {
+      "line": 18949,
+      "text": "\t\t\tGameObject val = Object.Instantiate<GameObject>(value.StoryLogGameObject, ((Component)this).transform.position, ((Component)this).transform.rotation, ((Component)this).transform);"
+    },
+    {
+      "line": 18950,
+      "text": "\t\t\tval.GetComponent<NetworkObject>().Spawn(true);"
+    },
+    {
+      "line": 20709,
+      "text": "\t\t\t\t_newFloodInstance = Object.Instantiate<GameObject>(NewFloodedPrefab, _oldFloodedPrefab.transform);"
+    },
+    {
+      "line": 20851,
+      "text": "\t\t\t\t_rainyOverridePrefab = Object.Instantiate<GameObject>(NewRainyPrefab, effectObject.transform);"
+    },
+    {
+      "line": 20923,
+      "text": "\t\t\t\tcomponent.explosionEffectParticle = Object.Instantiate<ParticleSystem>(NewStormyLightningStrikeExplosionPrefab, _stormyObject.transform);"
+    },
+    {
+      "line": 20928,
+      "text": "\t\t\t\tcomponent.staticElectricityParticle = Object.Instantiate<ParticleSystem>(NewStormyStaticElectricityPrefab, _stormyObject.transform);"
+    },
+    {
+      "line": 20948,
+      "text": "\t\t\t\t_newStormyRainInstance = Object.Instantiate<GameObject>(NewStormyRainPrefab, gameObject.transform.parent);"
+    },
+    {
+      "line": 21633,
+      "text": "\t\t\tGameObject val3 = Object.Instantiate<GameObject>(val, ((Component)this).transform.position, ((Component)this).transform.rotation, ((Component)this).transform);"
+    },
+    {
+      "line": 21634,
+      "text": "\t\t\tval3.GetComponent<NetworkObject>().Spawn(true);"
+    }
+  ],
+  "owner_or_patch_hits": [
+    {
+      "line": 1933,
+      "text": "\t\t\tinternal void <Init>b__0_0(orig_GenerateNewFloor orig, RoundManager self)"
+    },
+    {
+      "line": 1959,
+      "text": "\t\t\t\treturn ILPatternMatchingExt.MatchLdfld<RoundManager>(instr, \"currentDungeonType\");"
+    },
+    {
+      "line": 2000,
+      "text": "\t\t\t\treturn ILPatternMatchingExt.MatchLdfld<RoundManager>(i, \"dungeonGenerator\");"
+    },
+    {
+      "line": 2147,
+      "text": "\t\t\tRoundManager.SpawnScrapInLevel += (Manipulator)obj6;"
+    },
+    {
+      "line": 2151,
+      "text": "\t\t\t\thook_GenerateNewFloor val9 = delegate(orig_GenerateNewFloor orig, RoundManager self)"
+    },
+    {
+      "line": 2159,
+      "text": "\t\t\tRoundManager.GenerateNewFloor += (hook_GenerateNewFloor)obj7;"
+    },
+    {
+      "line": 2236,
+      "text": "\t\t\t\t(Instruction instr) => ILPatternMatchingExt.MatchLdfld<RoundManager>(instr, \"currentDungeonType\"),"
+    },
+    {
+      "line": 2249,
+      "text": "\t\t\t\tDawnPlugin.Logger.LogWarning((object)\"Failed to find IL for RoundManager.SpawnScrapInLevel (MakeExtraScrapGenerationMoreModular).\");"
+    },
+    {
+      "line": 2261,
+      "text": "\t\t\treturn (RoundManager.Instance.dungeonGenerator?.Generator?.DungeonFlow?.GetDawnInfo())?.ExtraScrapGeneration ?? 0;"
+    },
+    {
+      "line": 2269,
+      "text": "\t\t\t\tDawnDungeonInfo dawnDungeonInfo = RoundManager.Instance.dungeonGenerator?.Generator?.DungeonFlow.GetDawnInfo();"
+    },
+    {
+      "line": 2345,
+      "text": "\t\t\t\tRoundManager.GenerateNewFloor += (Manipulator)obj;"
+    },
+    {
+      "line": 2383,
+      "text": "\t\t\t\t(Instruction i) => ILPatternMatchingExt.MatchLdfld<RoundManager>(i, \"dungeonGenerator\"),"
+    },
+    {
+      "line": 2429,
+      "text": "\t\t\tDawnDungeonInfo dungeonInfo = RoundManager.Instance.dungeonGenerator.Generator.DungeonFlow.GetDawnInfo();"
+    },
+    {
+      "line": 2453,
+      "text": "\t\t\tRoundManager.Instance.dungeonGenerator.Generator.LengthMultiplier = Mathf.Clamp(RoundManager.Instance.dungeonGenerator.Generator.LengthMultiplier, boundedRange.Min, boundedRange.Max);"
+    },
+    {
+      "line": 2454,
+      "text": "\t\t\tRoundManager.Instance.dungeonGenerator.Generate();"
+    },
+    {
+      "line": 3332,
+      "text": "\t\t\tRoundManager.RefreshEnemiesList += (hook_RefreshEnemiesList)obj;"
+    },
+    {
+      "line": 3340,
+      "text": "\t\t\tRoundManager.AssignRandomEnemyToVent += (hook_AssignRandomEnemyToVent)obj2;"
+    },
+    {
+      "line": 3356,
+      "text": "\t\t\tEnemyAI.Start += (hook_Start)obj4;"
+    },
+    {
+      "line": 3372,
+      "text": "\t\t\tRoundManager.SpawnRandomDaytimeEnemy += (Manipulator)obj6;"
+    },
+    {
+      "line": 3380,
+      "text": "\t\t\tRoundManager.AssignRandomEnemyToVent += (Manipulator)obj7;"
+    },
+    {
+      "line": 3388,
+      "text": "\t\t\tRoundManager.SpawnRandomOutsideEnemy += (Manipulator)obj8;"
+    },
+    {
+      "line": 3396,
+      "text": "\t\t\tRoundManager.SpawnRandomWeedEnemy += (Manipulator)obj9;"
+    },
+    {
+      "line": 3404,
+      "text": "\t\t\tRoundManager.PredictAllOutsideEnemies += (Manipulator)obj10;"
+    },
+    {
+      "line": 3512,
+      "text": "\t\tprivate static bool CheckIfEnemyCanSpawn(orig_AssignRandomEnemyToVent orig, RoundManager self, EnemyVent vent, float spawnTime)"
+    },
+    {
+      "line": 3552,
+      "text": "\t\t\tEnemyAI val = default(EnemyAI);"
+    },
+    {
+      "line": 3555,
+      "text": "\t\t\t\tif (prefab.Prefab.TryGetComponent<EnemyAI>(ref val) && !((Object)(object)val.enemyType == (Object)null) && !_networkPrefabEnemyTypes.Contains(val.enemyType))"
+    },
+    {
+      "line": 3628,
+      "text": "\t\tprivate static void EnsureCorrectEnemyVariables(orig_Start orig, EnemyAI self)"
+    },
+    {
+      "line": 3651,
+      "text": "\t\t\tGameObject[] insideAINodes = RoundManager.Instance.insideAINodes;"
+    },
+    {
+      "line": 3652,
+      "text": "\t\t\tGameObject[] outsideAINodes = RoundManager.Instance.outsideAINodes;"
+    },
+    {
+      "line": 3707,
+      "text": "\t\tprivate static void UpdateEnemyWeights(orig_RefreshEnemiesList orig, RoundManager self)"
+    },
+    {
+      "line": 3731,
+      "text": "\t\t\tDungeonFlow val = RoundManager.Instance.dungeonGenerator?.Generator?.DungeonFlow;"
+    },
+    {
+      "line": 3982,
+      "text": "\t\tpublic IEnumerable<T> GetAllSpawned<T>() where T : EnemyAI"
+    },
+    {
+      "line": 3984,
+      "text": "\t\t\tforeach (EnemyAI spawnedEnemy in RoundManager.Instance.SpawnedEnemies)"
+    },
+    {
+      "line": 4274,
+      "text": "\t\t\t\tRoundManager.SpawnScrapInLevel += (hook_SpawnScrapInLevel)obj3;"
+    },
+    {
+      "line": 4334,
+      "text": "\t\tprivate static void UpdateItemWeights(orig_SpawnScrapInLevel orig, RoundManager self)"
+    },
+    {
+      "line": 4380,
+      "text": "\t\t\t\t\tSpawnWeightContext ctx = new SpawnWeightContext(level.GetDawnInfo(), RoundManager.Instance.dungeonGenerator?.Generator?.DungeonFlow?.GetDawnInfo(), TimeOfDayRefs.GetCurrentWeatherEffect(level)?.GetDawnInfo()).WithExtra(SpawnWeightExtraKeys.RoutingPriceKey, level.GetDawnInfo().DawnPurchaseInfo.Cost.Provide());"
+    },
+    {
+      "line": 5025,
+      "text": "\t\t\tRoundManager.SpawnOutsideHazards += (hook_SpawnOutsideHazards)obj;"
+    },
+    {
+      "line": 5033,
+      "text": "\t\t\tRoundManager.SpawnOutsideHazards += (Manipulator)obj2;"
+    },
+    {
+      "line": 5049,
+      "text": "\t\t\tRoundManager.SpawnMapObjects += (hook_SpawnMapObjects)obj4;"
+    },
+    {
+      "line": 5143,
+      "text": "\t\t\t\tDawnPlugin.Logger.LogWarning((object)\"Failed to apply RoundManager.SpawnOutsideHazards patch (1)!\");"
+    },
+    {
+      "line": 5151,
+      "text": "\t\t\t\tDawnPlugin.Logger.LogWarning((object)\"Failed to apply RoundManager.SpawnOutsideHazards patch (2)!\");"
+    },
+    {
+      "line": 5266,
+      "text": "\t\tprivate static void UpdateMapObjectSpawnWeights(orig_SpawnMapObjects orig, RoundManager self)"
+    },
+    {
+      "line": 5272,
+      "text": "\t\tprivate static void SpawnOutsideMapObjects(orig_SpawnOutsideHazards orig, RoundManager self)"
+    },
+    {
+      "line": 5279,
+      "text": "\t\t\tTransform[] shipSpawnPathPoints = RoundManager.Instance.shipSpawnPathPoints;"
+    },
+    {
+      "line": 5351,
+      "text": "\t\t\tif (RoundManager.Instance.outsideAINodes.Length <= outsideInfo.MinimumAINodeSpawnRequirement)"
+    },
+    {
+      "line": 5355,
+      "text": "\t\t\tSelectableLevel currentLevel = RoundManager.Instance.currentLevel;"
+    },
+    {
+      "line": 5358,
+      "text": "\t\t\tSpawnWeightContext ctx = new SpawnWeightContext(currentLevel.GetDawnInfo(), RoundManager.Instance.dungeonGenerator.Generator.DungeonFlow.GetDawnInfo(), TimeOfDayRefs.GetCurrentWeatherEffect(currentLevel)?.GetDawnInfo()).WithExtra(SpawnWeightExtraKeys.RoutingPriceKey, currentLevel.GetDawnInfo().DawnPurchaseInfo.Cost.Provide());"
+    },
+    {
+      "line": 5388,
+      "text": "\t\t\t\tGameObject val2 = RoundManager.Instance.outsideAINodes[random.Next(0, RoundManager.Instance.outsideAINodes.Length)];"
+    },
+    {
+      "line": 5395,
+      "text": "\t\t\t\tposition = RoundManager.Instance.GetRandomNavMeshPositionInBoxPredictable(position, 10f, default(NavMeshHit), random, -1, 1f) + Vector3.up * 2f;"
+    },
+    {
+      "line": 5432,
+      "text": "\t\t\t\tVector3 val4 = RoundManager.Instance.PositionEdgeCheck(((RaycastHit)(ref val3)).point, num4, -1, default(Vector3));"
+    },
+    {
+      "line": 5493,
+      "text": "\t\t\t\tGameObject val6 = Object.Instantiate<GameObject>(prefabToSpawn, val4, Quaternion.identity, RoundManager.Instance.mapPropsContainer.transform);"
+    },
+    {
+      "line": 5502,
+      "text": "\t\t\t\t\tfloat y = RoundManager.Instance.YRotationThatFacesTheFarthestFromPosition(val4 + Vector3.up * 0.2f, 25f, 6);"
+    },
+    {
+      "line": 5535,
+      "text": "\t\t\t\t\t\tRoundManager.Instance.DestroyTreeAtPosition(list[num8].transform.position, 5f);"
+    },
+    {
+      "line": 5577,
+      "text": "\t\t\t\t\tSpawnWeightContext ctx = new SpawnWeightContext(level.GetDawnInfo(), RoundManager.Instance.dungeonGenerator?.Generator?.DungeonFlow?.GetDawnInfo(), TimeOfDayRefs.GetCurrentWeatherEffect(level)?.GetDawnInfo()).WithExtra(SpawnWeightExtraKeys.RoutingPriceKey, level.GetDawnInfo().DawnPurchaseInfo.Cost.Provide());"
+    },
+    {
+      "line": 6024,
+      "text": "\t[HarmonyPatch]"
+    },
+    {
+      "line": 6204,
+      "text": "\t\t\t\tRoundManager.PredictAllOutsideEnemies += (Manipulator)obj10;"
+    },
+    {
+      "line": 6259,
+      "text": "\t\t\t\tDawnPlugin.Logger.LogWarning((object)\"Failed to apply RoundManager.PredictAllOutsideEnemies patch (1)\");"
+    },
+    {
+      "line": 6275,
+      "text": "\t\t\t\tDawnPlugin.Logger.LogWarning((object)\"Failed to apply RoundManager.PredictAllOutsideEnemies patch (2)\");"
+    },
+    {
+      "line": 6444,
+      "text": "\t\t[HarmonyPatch(typeof(StartOfRound), \"Start\")]"
+    },
+    {
+      "line": 6506,
+      "text": "\t\t\t\tEnemyType val = value.Level.specialEnemyRarity?.overrideEnemy;"
+    },
+    {
+      "line": 7603,
+      "text": "\t[HarmonyPatch]"
+    },
+    {
+      "line": 8043,
+      "text": "\t\t\t\tSelectableLevel currentLevel = RoundManager.Instance.currentLevel;"
+    },
+    {
+      "line": 8300,
+      "text": "\t\t[HarmonyPatch(typeof(MaskedPlayerEnemy), \"GetMaterialStandingOn\")]"
+    },
+    {
+      "line": 8403,
+      "text": "\t\t[HarmonyPatch(typeof(Shovel), \"HitShovel\")]"
+    },
+    {
+      "line": 8471,
+      "text": "\t\t[HarmonyPatch(typeof(KnifeItem), \"HitKnife\")]"
+    },
+    {
+      "line": 9646,
+      "text": "\t[HarmonyPatch]"
+    },
+    {
+      "line": 9793,
+      "text": "\t\t[HarmonyPatch(typeof(Terminal), \"RunTerminalEvents\")]"
+    },
+    {
+      "line": 11468,
+      "text": "\t[HarmonyPatch]"
+    },
+    {
+      "line": 11692,
+      "text": "\t\t[HarmonyPatch(typeof(StartOfRound), \"Start\")]"
+    },
+    {
+      "line": 16028,
+      "text": "\t\t\tPatches.InjectHostDungeonSizeSelection(RoundManager.Instance);"
+    },
+    {
+      "line": 16105,
+      "text": "\t\t\tMethodBase method = typeof(RoundManager).GetMethod(\"GenerateNewFloor\");"
+    },
+    {
+      "line": 16393,
+      "text": "\t\t\tpublic static Action<Action<RoundManager>, RoundManager> <0>__MarkShouldUseLQConverter;"
+    },
+    {
+      "line": 16421,
+      "text": "\t\t\t\tDawnPlugin.Hooks.Add(new Hook((MethodBase)methodInfo, (Delegate)new Action<Action<RoundManager>, RoundManager>(MarkShouldUseLQConverter)));"
+    },
+    {
+      "line": 16450,
+      "text": "\t\tprivate static void MarkShouldUseLQConverter(Action<RoundManager> orig, RoundManager __instance)"
+    },
+    {
+      "line": 16681,
+      "text": "\t\t\tEnemyAI.Start += (hook_Start)obj;"
+    },
+    {
+      "line": 16689,
+      "text": "\t\t\tEnemyAI.HitEnemy += (hook_HitEnemy)obj2;"
+    },
+    {
+      "line": 16697,
+      "text": "\t\t\tEnemyAI.SetClientCalculatingAI += (hook_SetClientCalculatingAI)obj3;"
+    },
+    {
+      "line": 16700,
+      "text": "\t\tprivate static void HandleClientCalculatingAI(orig_SetClientCalculatingAI orig, EnemyAI self, bool enable)"
+    },
+    {
+      "line": 16720,
+      "text": "\t\tprivate static void HandleEnemyDeathData(orig_HitEnemy orig, EnemyAI self, int force, PlayerControllerB playerWhoHit, bool playHitSFX, int hitID)"
+    },
+    {
+      "line": 16746,
+      "text": "\t\tprivate static void CreateAdditionalEnemyData(orig_Start orig, EnemyAI self)"
+    },
+    {
+      "line": 16906,
+      "text": "\t\t\tpublic static Action<Action<EnemyAINestSpawnObject>, EnemyAINestSpawnObject> <3>__FixNestBlankReferences;"
+    },
+    {
+      "line": 16994,
+      "text": "\t\t\tDawnPlugin.Hooks.Add(new Hook((MethodBase)AccessTools.DeclaredMethod(typeof(EnemyAINestSpawnObject), \"Awake\", (Type[])null, (Type[])null), (Delegate)new Action<Action<EnemyAINestSpawnObject>, EnemyAINestSpawnObject>(FixNestBlankReferences)));"
+    },
+    {
+      "line": 17202,
+      "text": "\t\tprivate static void FixNestBlankReferences(Action<EnemyAINestSpawnObject> orig, EnemyAINestSpawnObject self)"
+    },
+    {
+      "line": 17344,
+      "text": "\t[HarmonyPatch]"
+    },
+    {
+      "line": 17540,
+      "text": "\t\t[HarmonyPatch(typeof(StartOfRound), \"LoadUnlockables\")]"
+    },
+    {
+      "line": 17556,
+      "text": "\t\t[HarmonyPatch(typeof(StartOfRound), \"LoadShipGrabbableItems\")]"
+    },
+    {
+      "line": 17575,
+      "text": "\t\t[HarmonyPatch(typeof(GameNetworkManager), \"SaveItemsInShip\")]"
+    },
+    {
+      "line": 17996,
+      "text": "\t\tprivate static RoundManager _instance;"
+    },
+    {
+      "line": 17998,
+      "text": "\t\tpublic static RoundManager Instance"
+    },
+    {
+      "line": 18004,
+      "text": "\t\t\t\t\tif ((Object)(object)RoundManager.Instance != (Object)null)"
+    },
+    {
+      "line": 18006,
+      "text": "\t\t\t\t\t\t_instance = RoundManager.Instance;"
+    },
+    {
+      "line": 18010,
+      "text": "\t\t\t\t\t\t_instance = Object.FindFirstObjectByType<RoundManager>();"
+    },
+    {
+      "line": 19171,
+      "text": "\t\tprivate static readonly Dictionary<EnemyAI, DawnEnemyAdditionalData> _additionalData = new Dictionary<EnemyAI, DawnEnemyAdditionalData>();"
+    },
+    {
+      "line": 19173,
+      "text": "\t\tprivate EnemyAI _enemy;"
+    },
+    {
+      "line": 19190,
+      "text": "\t\tpublic static DawnEnemyAdditionalData CreateOrGet(EnemyAI enemyAI)"
+    },
+    {
+      "line": 20993,
+      "text": "\t\tpublic EnemyAI mainScript;"
+    },
+    {
+      "line": 21004,
+      "text": "\t[RequireComponent(typeof(EnemyAI))]"
+    },
+    {
+      "line": 21008,
+      "text": "\t\tinternal static Dictionary<EnemyAI, ExtraEnemyEvents> eventListeners = new Dictionary<EnemyAI, ExtraEnemyEvents>();"
+    },
+    {
+      "line": 21016,
+      "text": "\t\tprivate EnemyAI enemyAI;"
+    },
+    {
+      "line": 21020,
+      "text": "\t\t\tenemyAI = ((Component)this).GetComponent<EnemyAI>();"
+    },
+    {
+      "line": 21517,
+      "text": "\t\tpublic EnemyAI mainScript;"
+    },
+    {
+      "line": 22700,
+      "text": "\t\t\t\tif (RoundManager.Instance.insideAINodes != null)"
+    },
+    {
+      "line": 22702,
+      "text": "\t\t\t\t\t_roamingPointsVectorList.AddRange(RoundManager.Instance.insideAINodes.Where((GameObject x) => (Object)(object)x != (Object)null).Select(delegate(GameObject x)"
+    },
+    {
+      "line": 22708,
+      "text": "\t\t\t\tif (RoundManager.Instance.outsideAINodes != null)"
+    },
+    {
+      "line": 22710,
+      "text": "\t\t\t\t\t_roamingPointsVectorList.AddRange(RoundManager.Instance.outsideAINodes.Where((GameObject x) => (Object)(object)x != (Object)null).Select(delegate(GameObject x)"
+    },
+    {
+      "line": 22719,
+      "text": "\t\t\t\tif (RoundManager.Instance.outsideAINodes != null)"
+    },
+    {
+      "line": 22721,
+      "text": "\t\t\t\t\t_roamingPointsVectorList.AddRange(RoundManager.Instance.outsideAINodes.Where((GameObject x) => (Object)(object)x != (Object)null).Select(delegate(GameObject x)"
+    },
+    {
+      "line": 22728,
+      "text": "\t\t\telse if (RoundManager.Instance.insideAINodes != null)"
+    },
+    {
+      "line": 22730,
+      "text": "\t\t\t\t_roamingPointsVectorList.AddRange(RoundManager.Instance.insideAINodes.Where((GameObject x) => (Object)(object)x != (Object)null).Select(delegate(GameObject x)"
+    },
+    {
+      "line": 22740,
+      "text": "\t\t\t\t\t_roamingPointsVectorList.Add(RoundManager.Instance.GetRandomNavMeshPositionInRadius(((Component)this).transform.position, radius, default(NavMeshHit)));"
+    }
+  ],
+  "decompiler_stderr": "",
+  "decompiler_annotation_count": 1592,
+  "qualification": "Source token discovery only: hits include non-enemy spawns, declarations and inactive code. No patch approval or exhaustive game/mod coverage. Dependencies may remain unresolved."
+}

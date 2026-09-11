@@ -1,0 +1,409 @@
+{
+  "package": "SoftDiamond-RollingGiant",
+  "version": "2.6.3",
+  "member": "RollingGiant.dll",
+  "assembly_sha256": "9eab318d3ea03a0c9fb13d1603615ccda2206c973a1fd798535348a5dffc95dd",
+  "source_sha256": "505393abd31720f459767fe041d2f3c791bec27c86683349f351fd6f8d66872c",
+  "source_line_count": 3037,
+  "class_listing": [
+    "Class <Module>",
+    "Class Microsoft.CodeAnalysis.EmbeddedAttribute",
+    "Class System.Runtime.CompilerServices.NullableAttribute",
+    "Class System.Runtime.CompilerServices.NullableContextAttribute",
+    "Class System.Runtime.CompilerServices.RefSafetyRulesAttribute",
+    "Class RollingGiant.NetworkHandler",
+    "Class RollingGiant.Plugin",
+    "Class RollingGiant.RollingGiantAiTypeExtensions",
+    "Class RollingGiant.Poster",
+    "Class RollingGiant.RollingGiantAI",
+    "Class RollingGiant.RollingGiantDeadBody",
+    "Class RollingGiant.Utility",
+    "Class RollingGiant.Settings.CustomConfig",
+    "Class RollingGiant.Settings.GeneralSettings",
+    "Class RollingGiant.Settings.SyncedInstance`1",
+    "Class RollingGiant.Patches.EnemyPatches",
+    "Class RollingGiant.Patches.EnemyPatches+<>c",
+    "Class RollingGiant.Patches.EnemyPatches+<>c__DisplayClass4_0",
+    "Class RollingGiant.Patches.MapPatches",
+    "Class RollingGiant.Patches.NetworkPatches",
+    "Class RollingGiant.Patches.NetworkPatches+<>O",
+    "Class RollingGiant.Patches.StartOfRoundPatches",
+    "Class RollingGiant.Patches.StartOfRoundPatches+<>O",
+    "Class RollingGiant.Patches.StartOfRoundPatches+<>c",
+    "Class RollingGiant.Patches.TerminalPatches",
+    "Class RollingGiant.Patches.TerminalPatches+<>c",
+    "Class RollingGiant.Patches.TerminalPatches+<>c__DisplayClass0_0",
+    "Class System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute",
+    "Class __GEN.NetworkVariableSerializationHelper",
+    "Class RollingGiant.NetcodePatcher.NetcodePatchedAssemblyAttribute"
+  ],
+  "declarations": [
+    {
+      "line": 49,
+      "text": "namespace Microsoft.CodeAnalysis"
+    },
+    {
+      "line": 53,
+      "text": "\tinternal sealed class EmbeddedAttribute : Attribute"
+    },
+    {
+      "line": 57,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 62,
+      "text": "\tinternal sealed class NullableAttribute : Attribute"
+    },
+    {
+      "line": 79,
+      "text": "\tinternal sealed class NullableContextAttribute : Attribute"
+    },
+    {
+      "line": 91,
+      "text": "\tinternal sealed class RefSafetyRulesAttribute : Attribute"
+    },
+    {
+      "line": 101,
+      "text": "namespace RollingGiant"
+    },
+    {
+      "line": 103,
+      "text": "\tpublic class NetworkHandler : NetworkBehaviour"
+    },
+    {
+      "line": 300,
+      "text": "\tpublic class Plugin : BaseUnityPlugin"
+    },
+    {
+      "line": 484,
+      "text": "\tpublic static class RollingGiantAiTypeExtensions"
+    },
+    {
+      "line": 567,
+      "text": "\tpublic class Poster : PhysicsProp"
+    },
+    {
+      "line": 594,
+      "text": "\tpublic class RollingGiantAI : EnemyAI"
+    },
+    {
+      "line": 1782,
+      "text": "\tpublic class RollingGiantDeadBody : MonoBehaviour"
+    },
+    {
+      "line": 1785,
+      "text": "\tpublic static class Utility"
+    },
+    {
+      "line": 1836,
+      "text": "namespace RollingGiant.Settings"
+    },
+    {
+      "line": 1905,
+      "text": "\tpublic class CustomConfig : SyncedInstance<CustomConfig>"
+    },
+    {
+      "line": 2361,
+      "text": "\tpublic class GeneralSettings"
+    },
+    {
+      "line": 2411,
+      "text": "\tpublic class SyncedInstance<T>"
+    },
+    {
+      "line": 2479,
+      "text": "namespace RollingGiant.Patches"
+    },
+    {
+      "line": 2482,
+      "text": "\tpublic static class EnemyPatches"
+    },
+    {
+      "line": 2694,
+      "text": "\tpublic static class MapPatches"
+    },
+    {
+      "line": 2698,
+      "text": "\tpublic static class NetworkPatches"
+    },
+    {
+      "line": 2701,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 2801,
+      "text": "\tpublic class StartOfRoundPatches"
+    },
+    {
+      "line": 2804,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 2955,
+      "text": "\tpublic static class TerminalPatches"
+    },
+    {
+      "line": 3007,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 3010,
+      "text": "\tinternal sealed class IgnoresAccessChecksToAttribute : Attribute"
+    },
+    {
+      "line": 3017,
+      "text": "namespace __GEN"
+    },
+    {
+      "line": 3019,
+      "text": "\tinternal class NetworkVariableSerializationHelper"
+    },
+    {
+      "line": 3031,
+      "text": "namespace RollingGiant.NetcodePatcher"
+    },
+    {
+      "line": 3034,
+      "text": "\tinternal class NetcodePatchedAssemblyAttribute : Attribute"
+    }
+  ],
+  "spawn_surface_hits": [
+    {
+      "line": 2486,
+      "text": "\t\tprivate static void RegisterEnemy(StartOfRound __instance)"
+    },
+    {
+      "line": 2741,
+      "text": "\t\t\t\tGameObject val = Object.Instantiate<GameObject>(_networkPrefab, Vector3.zero, Quaternion.identity);"
+    },
+    {
+      "line": 2742,
+      "text": "\t\t\t\tval.GetComponent<NetworkObject>().Spawn(false);"
+    }
+  ],
+  "owner_or_patch_hits": [
+    {
+      "line": 594,
+      "text": "\tpublic class RollingGiantAI : EnemyAI"
+    },
+    {
+      "line": 645,
+      "text": "\t\t\tif (!Object.op_Implicit((Object)(object)RoundManager.Instance) || RoundManager.Instance.LevelRandom == null)"
+    },
+    {
+      "line": 649,
+      "text": "\t\t\treturn (float)RoundManager.Instance.LevelRandom.NextDouble();"
+    },
+    {
+      "line": 655,
+      "text": "\t\t\t((EnemyAI)this).Start();"
+    },
+    {
+      "line": 698,
+      "text": "\t\t\t\t((EnemyAI)this).SwitchToBehaviourState(0);"
+    },
+    {
+      "line": 737,
+      "text": "\t\t\t((EnemyAI)this).DaytimeEnemyLeave();"
+    },
+    {
+      "line": 773,
+      "text": "\t\t\t((EnemyAI)this).DoAIInterval();"
+    },
+    {
+      "line": 784,
+      "text": "\t\t\t\t\t((EnemyAI)this).ChangeOwnershipOfEnemy(StartOfRound.Instance.allPlayerScripts[0].actualClientId);"
+    },
+    {
+      "line": 789,
+      "text": "\t\t\t\t\t((EnemyAI)this).StartSearch(((Component)this).transform.position, _searchForPlayers);"
+    },
+    {
+      "line": 796,
+      "text": "\t\t\t\t\tif (!val.isPlayerDead && ((NetworkBehaviour)val).IsSpawned && base.isOutside != val.isInsideFactory && (base.isOutside || ((EnemyAI)this).PlayerIsTargetable(val, false, false, true)))"
+    },
+    {
+      "line": 802,
+      "text": "\t\t\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourState(1);"
+    },
+    {
+      "line": 812,
+      "text": "\t\t\t\tPlayerControllerB closestPlayer = ((EnemyAI)this).GetClosestPlayer(false, false, false);"
+    },
+    {
+      "line": 819,
+      "text": "\t\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourState(1);"
+    },
+    {
+      "line": 826,
+      "text": "\t\t\t\tif (!((EnemyAI)this).TargetClosestPlayer(1.5f, false, 70f, false, false, true))"
+    },
+    {
+      "line": 831,
+      "text": "\t\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourState(0);"
+    },
+    {
+      "line": 837,
+      "text": "\t\t\t\t\t((EnemyAI)this).StopSearch(_searchForPlayers, true);"
+    },
+    {
+      "line": 881,
+      "text": "\t\t\t((EnemyAI)this).Update();"
+    },
+    {
+      "line": 916,
+      "text": "\t\t\t\t\tRoundManager.PlayRandomClip(base.creatureVoice, _stopNoises, false, 1f, 0, 1000);"
+    },
+    {
+      "line": 944,
+      "text": "\t\t\t\tif (((NetworkBehaviour)this).IsOwner && ((EnemyAI)this).TargetClosestPlayer(1.5f, true, 70f, false, false, true) && !_wantsToChaseThisClient)"
+    },
+    {
+      "line": 981,
+      "text": "\t\t\t\t\tif (!base.isOutside && !((EnemyAI)this).TargetClosestPlayer(1.5f, false, 70f, false, false, true))"
+    },
+    {
+      "line": 983,
+      "text": "\t\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourState(0);"
+    },
+    {
+      "line": 988,
+      "text": "\t\t\t\t\tif (base.isOutside && !((EnemyAI)this).TargetClosestPlayer(1.5f, false, 70f, false, false, true))"
+    },
+    {
+      "line": 990,
+      "text": "\t\t\t\t\t\tPlayerControllerB closestPlayer = ((EnemyAI)this).GetClosestPlayer(false, false, false);"
+    },
+    {
+      "line": 993,
+      "text": "\t\t\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourState(0);"
+    },
+    {
+      "line": 1060,
+      "text": "\t\t\t\t\t((EnemyAI)this).SetMovingTowardsTargetPlayer(base.targetPlayer);"
+    },
+    {
+      "line": 1081,
+      "text": "\t\t\t((EnemyAI)this).OnCollideWithPlayer(other);"
+    },
+    {
+      "line": 1084,
+      "text": "\t\t\t\tPlayerControllerB val = ((EnemyAI)this).MeetsStandardPlayerCollisionConditions(other, false, false);"
+    },
+    {
+      "line": 1299,
+      "text": "\t\t\t\tif ((base.isOutside || ((EnemyAI)this).PlayerIsTargetable(val, false, false, true)) && !val.isPlayerDead && ((NetworkBehaviour)val).IsSpawned && val.HasLineOfSightToPosition(((Component)this).transform.position + Vector3.up * 1.6f, 68f, 60, -1f, -1))"
+    },
+    {
+      "line": 1315,
+      "text": "\t\t\treturn Object.op_Implicit((Object)(object)player) && ((EnemyAI)this).CheckLineOfSightForPosition(((Component)player.gameplayCamera).transform.position, 68f, 60, -1f, (Transform)null);"
+    },
+    {
+      "line": 1409,
+      "text": "\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(1);"
+    },
+    {
+      "line": 1411,
+      "text": "\t\t\t\t\t((EnemyAI)this).SetMovingTowardsTargetPlayer(movingTowardsTargetPlayer);"
+    },
+    {
+      "line": 1470,
+      "text": "\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(0);"
+    },
+    {
+      "line": 1642,
+      "text": "\t\t\t((EnemyAI)this).__initializeVariables();"
+    },
+    {
+      "line": 1668,
+      "text": "\t\t\t((EnemyAI)this).__initializeRpcs();"
+    },
+    {
+      "line": 2342,
+      "text": "\t\t\tif ((!NetworkManager.Singleton.IsHost && !NetworkManager.Singleton.IsServer) || !Object.op_Implicit((Object)(object)RoundManager.Instance))"
+    },
+    {
+      "line": 2346,
+      "text": "\t\t\tList<EnemyAI> spawnedEnemies = RoundManager.Instance.SpawnedEnemies;"
+    },
+    {
+      "line": 2352,
+      "text": "\t\t\tforeach (EnemyAI item in spawnedEnemies)"
+    },
+    {
+      "line": 2481,
+      "text": "\t[HarmonyPatch]"
+    },
+    {
+      "line": 2484,
+      "text": "\t\t[HarmonyPatch(typeof(StartOfRound), \"Awake\")]"
+    },
+    {
+      "line": 2494,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"Start\")]"
+    },
+    {
+      "line": 2497,
+      "text": "\t\tprivate static void RegisterEnemy2(RoundManager __instance)"
+    },
+    {
+      "line": 2657,
+      "text": "\t\t[HarmonyPatch(typeof(QuickMenuManager), \"Debug_SetEnemyDropdownOptions\")]"
+    },
+    {
+      "line": 2697,
+      "text": "\t[HarmonyPatch]"
+    },
+    {
+      "line": 2717,
+      "text": "\t\t[HarmonyPatch(typeof(GameNetworkManager), \"Start\")]"
+    },
+    {
+      "line": 2734,
+      "text": "\t\t[HarmonyPatch(typeof(StartOfRound), \"Awake\")]"
+    },
+    {
+      "line": 2747,
+      "text": "\t\t[HarmonyPatch(typeof(PlayerControllerB), \"ConnectClientToPlayerObject\")]"
+    },
+    {
+      "line": 2792,
+      "text": "\t\t[HarmonyPatch(typeof(GameNetworkManager), \"StartDisconnect\")]"
+    },
+    {
+      "line": 2800,
+      "text": "\t[HarmonyPatch]"
+    },
+    {
+      "line": 2813,
+      "text": "\t\t[HarmonyPatch(typeof(StartOfRound), \"Awake\")]"
+    },
+    {
+      "line": 2826,
+      "text": "\t\t[HarmonyPatch(typeof(StartOfRound), \"StartGame\")]"
+    },
+    {
+      "line": 2912,
+      "text": "\t\t[HarmonyPatch(typeof(DeadBodyInfo), \"Start\")]"
+    },
+    {
+      "line": 2925,
+      "text": "\t\t[HarmonyPatch(typeof(GameNetworkManager), \"Start\")]"
+    },
+    {
+      "line": 2954,
+      "text": "\t[HarmonyPatch]"
+    },
+    {
+      "line": 2957,
+      "text": "\t\t[HarmonyPatch(typeof(Terminal), \"Start\")]"
+    },
+    {
+      "line": 2990,
+      "text": "\t\t[HarmonyPatch(typeof(Terminal), \"Start\")]"
+    }
+  ],
+  "decompiler_stderr": "",
+  "decompiler_annotation_count": 253,
+  "qualification": "Source token discovery only: hits include non-enemy spawns, declarations and inactive code. No patch approval or exhaustive game/mod coverage. Dependencies may remain unresolved."
+}
