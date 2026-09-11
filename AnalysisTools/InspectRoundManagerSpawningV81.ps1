@@ -11,6 +11,11 @@ $ExpectedAssemblySha256 = '5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a
 $ExpectedExeSha256 = '24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1'
 $ExpectedSteamBuildId = '22825947'
 $ExpectedAppManifestSha256 = 'fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432'
+$ReviewedAppManifestSha256 = @(
+    $ExpectedAppManifestSha256,
+    'b431704ad9cf0e44cba506274f6059d021e35f434af6ef27f3abd44c5d1e6ae3'
+)
+$ManifestReview = 'AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md'
 $PriorManifest = 'SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json'
 $EvidenceRoot = 'SourceEvidence/VanillaV81/RoundManagerSpawning'
 $ReportName = 'ROUNDMANAGER_SPAWNING_FOCUSED_DECOMPILE.txt'
@@ -35,6 +40,27 @@ function Get-TextSha256 {
     try { return ([BitConverter]::ToString($hash.ComputeHash($Utf8.GetBytes($Text)))).Replace('-', '').ToLowerInvariant() }
     finally { $hash.Dispose() }
 }
+function Get-SteamBuildIdentity {
+    param([Parameter(Mandatory = $true)][string]$Text)
+    $appMatches = [regex]::Matches($Text, '"appid"\s+"([^"]+)"')
+    $buildMatches = [regex]::Matches($Text, '"buildid"\s+"([^"]+)"')
+    if ($appMatches.Count -ne 1 -or $buildMatches.Count -ne 1) {
+        throw 'Steam appid and buildid must each occur exactly once.'
+    }
+    return [pscustomobject]@{
+        AppId = $appMatches[0].Groups[1].Value
+        BuildId = $buildMatches[0].Groups[1].Value
+    }
+}
+function Assert-InstalledGameProvenance {
+    param([string]$AssemblySha, [string]$ExeSha, [string]$ManifestSha, [string]$AppId, [string]$BuildId)
+    if ($AssemblySha -ne $ExpectedAssemblySha256) { throw "Installed Assembly-CSharp SHA mismatch: $AssemblySha. Expected $ExpectedAssemblySha256." }
+    if ($ExeSha -ne $ExpectedExeSha256) { throw "Game executable SHA mismatch: $ExeSha." }
+    if ($AppId -cne $SteamAppId) { throw "Steam appid mismatch: $AppId." }
+    if ($BuildId -cne $ExpectedSteamBuildId) { throw "Steam buildid mismatch: $BuildId." }
+    if ($ReviewedAppManifestSha256 -notcontains $ManifestSha) { throw "Steam appmanifest SHA mismatch: $ManifestSha. Refusing unreviewed provenance drift." }
+}
+
 function Get-SteamRoots {
     $roots = @()
 
@@ -247,6 +273,41 @@ function New-EvidenceTreeEntries {
         @{ path = ($Directory + '/MANIFEST.json'); mode = '100644'; type = 'blob'; content = $Manifest }
     )
 }
+
+function Invoke-ProvenanceSelfTest {
+    $valid = @{
+        AssemblySha = $ExpectedAssemblySha256
+        ExeSha = $ExpectedExeSha256
+        ManifestSha = $ExpectedAppManifestSha256
+        AppId = $SteamAppId
+        BuildId = $ExpectedSteamBuildId
+    }
+    foreach ($approvedHash in $ReviewedAppManifestSha256) {
+        $valid.ManifestSha = $approvedHash
+        Assert-InstalledGameProvenance @valid
+        foreach ($key in @('AssemblySha', 'ExeSha', 'ManifestSha', 'AppId', 'BuildId')) {
+            $bad = $valid.Clone()
+            $bad[$key] = 'unreviewed'
+            $rejected = $false
+            try { Assert-InstalledGameProvenance @bad } catch { $rejected = $true }
+            if (-not $rejected) { throw ('Provenance rejection failed for ' + $key) }
+        }
+    }
+    $identity = Get-SteamBuildIdentity -Text ('"appid" "' + $SteamAppId + '" "buildid" "' + $ExpectedSteamBuildId + '"')
+    if ($identity.AppId -cne $SteamAppId -or $identity.BuildId -cne $ExpectedSteamBuildId) { throw 'Steam identity extraction failed.' }
+    foreach ($badText in @(
+        '"appid" "1966720"',
+        '"buildid" "22825947"',
+        '"appid" "1966720" "appid" "1966720" "buildid" "22825947"',
+        '"appid" "1966720" "buildid" "22825947" "buildid" "22825947"'
+    )) {
+        $rejected = $false
+        try { Get-SteamBuildIdentity -Text $badText | Out-Null } catch { $rejected = $true }
+        if (-not $rejected) { throw 'Missing/duplicate Steam identity rejection failed.' }
+    }
+    Write-Host 'PASS: both reviewed manifests; rejection of unknown hashes, wrong binaries/app/build and missing/duplicate Steam identity.'
+}
+
 function Invoke-ExtractorSelfTest {
     $fixture = @'
 public class RoundManager {
@@ -318,7 +379,7 @@ function Invoke-RepoApi {
     if ($LASTEXITCODE -ne 0) { throw ('GitHub API operation failed: ' + $Method + ' ' + $Endpoint + '. No main-branch write was attempted.') }
     return (($output -join [Environment]::NewLine) | ConvertFrom-Json)
 }
-if ($SelfTest) { Invoke-ExtractorSelfTest; return }
+if ($SelfTest) { Invoke-ProvenanceSelfTest; Invoke-ExtractorSelfTest; return }
 $script:CaptureTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('lc-roundmanager-v81-' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $script:CaptureTempRoot -Force | Out-Null
 try {
@@ -333,13 +394,13 @@ try {
     $assemblySha = Get-Sha256Lower $assemblyPath
     $exeSha = Get-Sha256Lower $exePath
     $manifestSha = Get-Sha256Lower $appManifest
-    if ($assemblySha -ne $ExpectedAssemblySha256) { throw "Installed Assembly-CSharp SHA mismatch: $assemblySha. Expected $ExpectedAssemblySha256." }
-    if ($exeSha -ne $ExpectedExeSha256) { throw "Game executable SHA mismatch: $exeSha." }
-    if ($manifestSha -ne $ExpectedAppManifestSha256) { throw "Steam appmanifest SHA mismatch: $manifestSha. Refusing unreviewed provenance drift." }
     $manifestText = Get-Content -LiteralPath $appManifest -Raw
-    if ($manifestText -notmatch '"buildid"\s+"([0-9]+)"') { throw 'Steam buildid is absent.' }
-    $buildId = $Matches[1]
-    if ($buildId -ne $ExpectedSteamBuildId) { throw "Steam buildid mismatch: $buildId." }
+    $steamIdentity = Get-SteamBuildIdentity -Text $manifestText
+    $buildId = $steamIdentity.BuildId
+    Assert-InstalledGameProvenance -AssemblySha $assemblySha -ExeSha $exeSha -ManifestSha $manifestSha -AppId $steamIdentity.AppId -BuildId $buildId
+    if ($manifestSha -ne $ExpectedAppManifestSha256) {
+        Write-Step ('Using the explicitly reviewed alternative Steam manifest: ' + $manifestSha)
+    }
     $script:GhPath = Resolve-GitHubCli
     & $script:GhPath auth status --hostname github.com *> $null
     if ($LASTEXITCODE -ne 0) {
@@ -351,7 +412,7 @@ try {
     $mainCommit = Invoke-RepoApi ('git/commits/' + $repositoryMain)
     $priorFile = Invoke-RepoApi ('contents/' + $PriorManifest + '?ref=' + $repositoryMain)
     $prior = $Utf8.GetString([Convert]::FromBase64String($priorFile.content)) | ConvertFrom-Json
-    if ($prior.source_assembly.sha256 -ne $ExpectedAssemblySha256 -or $prior.game_executable.sha256 -ne $ExpectedExeSha256 -or $prior.steam.buildid -ne $ExpectedSteamBuildId) { throw 'Current repository prior evidence disagrees with the pinned installed-game contract.' }
+    if ($prior.source_assembly.sha256 -ne $ExpectedAssemblySha256 -or $prior.game_executable.sha256 -ne $ExpectedExeSha256 -or $prior.steam.buildid -ne $ExpectedSteamBuildId -or $prior.steam.app_id -ne $SteamAppId -or $prior.steam.appmanifest_sha256 -ne $ExpectedAppManifestSha256) { throw 'Current repository prior evidence disagrees with the pinned installed-game contract.' }
     $ilspyResult = @(Ensure-DotNetAndIlSpy -TempRoot $script:CaptureTempRoot)
     if ($ilspyResult.Count -ne 1) { throw 'Decompiler bootstrap returned unexpected output.' }
     $ilspy = [string]$ilspyResult[0]
@@ -390,7 +451,14 @@ try {
         bound_prior_evidence = $PriorManifest
         source_assembly = @{ logical_path = 'Lethal Company_Data/Managed/Assembly-CSharp.dll'; sha256 = $assemblySha }
         game_executable = @{ logical_path = 'Lethal Company.exe'; sha256 = $exeSha }
-        steam = @{ app_id = $SteamAppId; buildid = $buildId; appmanifest_sha256 = $manifestSha }
+        steam = @{
+            app_id = $steamIdentity.AppId
+            buildid = $buildId
+            appmanifest_sha256 = $manifestSha
+            prior_appmanifest_sha256 = $ExpectedAppManifestSha256
+            matches_prior_appmanifest = ($manifestSha -eq $ExpectedAppManifestSha256)
+            manifest_review = $ManifestReview
+        }
         decompiler = @{ tool = 'ilspycmd'; version = $IlSpyVersion; type = 'RoundManager'; full_local_type_source_sha256 = (Get-TextSha256 $source) }
         selection = @{ required_methods = $RequiredMethods; selected_signatures = @($methods | ForEach-Object { $_.Signature }); max_source_lines = 3000; direct_caller_depth = 1 }
         report = @{ file = $ReportName; sha256 = (Get-TextSha256 $report); excludes = @('game binaries', 'full type decompile', 'absolute local paths', 'user names') }
