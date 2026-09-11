@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "run": 34611826588,
+  "analysis_commit": "71973b25c395cef4d0022a0054975cdab44e37d2",
+  "artifact_id": 10268522778,
+  "artifact_zip_sha256": "40d5c51d3211f8a31388e91592ca08d07c61a9a792247307f90a14b10b660e06",
+  "publication_parent": "9f483960b8b10d05d105dd366c8eb854a8259e1f",
+  "files": [
+    {
+      "file": "ButteryStancakes-SpawnCycleFixes-0-DISCOVERY.json",
+      "bytes": 10115,
+      "sha256": "a458e120c28163da0bd77fc82c94179d67712c9c7d9326dff7c69feb66dad5cd"
+    },
+    {
+      "file": "Ccode_lang-SirenHead-0-DISCOVERY.json",
+      "bytes": 4080,
+      "sha256": "1444c220c9700e3595fc26043e7a09f075560e3589873bdfc029354fd07d5896"
+    },
+    {
+      "file": "MANIFEST.json",
+      "bytes": 9938,
+      "sha256": "f2c89adfffc18d2480a66cab6f863a3803a859d5b41dcd61d521b4f2790abc77"
+    },
+    {
+      "file": "NotezyTeam-LethalMinNightly-0-DISCOVERY.json",
+      "bytes": 144706,
+      "sha256": "934d8348addf1af79bcef717aa109ade8098e612dd1f050fc0fea8b481757223"
+    },
+    {
+      "file": "PROFILE_PACKAGE_INVENTORY.json",
+      "bytes": 27317,
+      "sha256": "f9dfbf641c8a603eccb76753c66e83b18d8b4a3f49c02ad6c634ced29a3e14b4"
+    },
+    {
+      "file": "PureFPSZac-NestFix-0-DISCOVERY.json",
+      "bytes": 3039,
+      "sha256": "fee13fee31c37738125f92d3098882a2b2a9c8c242eef5655c952957dadef988"
+    },
+    {
+      "file": "SoftDiamond-RollingGiant-0-DISCOVERY.json",
+      "bytes": 12216,
+      "sha256": "c927081593fe221ff35c4bf7fb0e0de94162f666b50f7a1d866aeb2282161855"
+    },
+    {
+      "file": "TeamXiaolan-DawnLib-0-DISCOVERY.json",
+      "bytes": 76027,
+      "sha256": "612e43961452a747fc6a67330541d90e9215797f84e83751470de8898a855842"
+    },
+    {
+      "file": "TeamXiaolan-DawnLib-1-DISCOVERY.json",
+      "bytes": 44239,
+      "sha256": "75a12a88e36aefb0d6904f5cf2f77217360140ba21b1541bbb413dd5a99500ba"
+    },
+    {
+      "file": "TeamXiaolan-DawnLib-2-DISCOVERY.json",
+      "bytes": 2709,
+      "sha256": "7482d78b305dfbe73fc98260db9efdfed3bd54c6d86daefbbfe921ae340e586d"
+    },
+    {
+      "file": "TeamXiaolan-DawnLib-3-DISCOVERY.json",
+      "bytes": 2405,
+      "sha256": "45afe821fecc781bd6a2d6413b235ce7b5cbee0a43730db83b4b4d26abfe7e8d"
+    },
+    {
+      "file": "XuXiaolan-CodeRebirth-0-DISCOVERY.json",
+      "bytes": 282452,
+      "sha256": "470117528dc080aee69d79ef2407365bd9b55647e7ed8a98af2f16da4df76c23"
+    },
+    {
+      "file": "XuXiaolan-CodeRebirth-1-DISCOVERY.json",
+      "bytes": 20971,
+      "sha256": "3d869e6ca234cbd1b56f9d617d9be1e673b4e34a11099e05a41a6e66e0d74cc5"
+    }
+  ]
+}

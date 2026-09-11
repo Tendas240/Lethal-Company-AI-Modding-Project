@@ -1,0 +1,80 @@
+{
+  "package": "TeamXiaolan-DawnLib",
+  "version": "0.9.25",
+  "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.compatibility.dll",
+  "assembly_sha256": "bf15598803ef262a7be4760f547b23f70fc3ae6b067b2ab18100584d399f23e4",
+  "source_sha256": "5772a1ab2e2b98f59d5cc389dab1a3827d409722f9a443ada3eb7fce67e13b58",
+  "source_line_count": 147,
+  "class_listing": [
+    "Class <Module>",
+    "Class Microsoft.CodeAnalysis.EmbeddedAttribute",
+    "Class System.Runtime.CompilerServices.NullableAttribute",
+    "Class System.Runtime.CompilerServices.NullableContextAttribute",
+    "Class System.Runtime.CompilerServices.RefSafetyRulesAttribute",
+    "Class Dawn.Compatibility.DawnCompatibilityPlugin",
+    "Class Dawn.Compatibility.DawnTaggableCondition",
+    "Class Dawn.Compatibility.SoundAPICompat",
+    "Class Dawn.Compatibility.MyPluginInfo",
+    "Class Dawn.Compatibility.SoundAPICompat+<>c"
+  ],
+  "declarations": [
+    {
+      "line": 30,
+      "text": "namespace Microsoft.CodeAnalysis"
+    },
+    {
+      "line": 34,
+      "text": "\tinternal sealed class EmbeddedAttribute : Attribute"
+    },
+    {
+      "line": 38,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 43,
+      "text": "\tinternal sealed class NullableAttribute : Attribute"
+    },
+    {
+      "line": 60,
+      "text": "\tinternal sealed class NullableContextAttribute : Attribute"
+    },
+    {
+      "line": 72,
+      "text": "\tinternal sealed class RefSafetyRulesAttribute : Attribute"
+    },
+    {
+      "line": 82,
+      "text": "namespace Dawn.Compatibility"
+    },
+    {
+      "line": 87,
+      "text": "\tpublic class DawnCompatibilityPlugin : BaseUnityPlugin"
+    },
+    {
+      "line": 101,
+      "text": "\tinternal class DawnTaggableCondition(Func<ITaggable?> generator) : Condition"
+    },
+    {
+      "line": 121,
+      "text": "\tinternal static class SoundAPICompat"
+    },
+    {
+      "line": 139,
+      "text": "\tpublic static class MyPluginInfo"
+    }
+  ],
+  "spawn_surface_hits": [],
+  "owner_or_patch_hits": [
+    {
+      "line": 131,
+      "text": "\t\t\t\tif (!Object.op_Implicit((Object)(object)RoundManager.Instance))"
+    },
+    {
+      "line": 135,
+      "text": "\t\t\t\treturn (ITaggable?)(object)((!Object.op_Implicit((Object)(object)RoundManager.Instance.dungeonGenerator)) ? null : DungeonFlowExtensions.GetDawnInfo(RoundManager.Instance.dungeonGenerator.Generator.DungeonFlow));"
+    }
+  ],
+  "decompiler_stderr": "",
+  "decompiler_annotation_count": 0,
+  "qualification": "Source token discovery only: hits include non-enemy spawns, declarations and inactive code. No patch approval or exhaustive game/mod coverage. Dependencies may remain unresolved."
+}

@@ -1,0 +1,506 @@
+{
+  "package": "XuXiaolan-CodeRebirth",
+  "version": "1.6.9",
+  "member": "plugins/CodeRebirth/com.local.Rodriguez.DuskReplacementEntities.CodeRebirth.dll",
+  "assembly_sha256": "308ddf095d807b719c204c48bee3ce26795281c6b399baf3ac105e6b9d258163",
+  "source_sha256": "c8acb8d1c4f1bc6f2810ae660170910abce9181bf979d3896e46dedcff46338b",
+  "source_line_count": 1750,
+  "class_listing": [
+    "Class <Module>",
+    "Class Microsoft.CodeAnalysis.EmbeddedAttribute",
+    "Class System.Runtime.CompilerServices.NullableAttribute",
+    "Class System.Runtime.CompilerServices.NullableContextAttribute",
+    "Class System.Runtime.CompilerServices.RefSafetyRulesAttribute",
+    "Class DuskReplacementEntities.MyPluginInfo",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_CactusBudling",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_CutieFlyAI",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_DriftwoodMenaceAI",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Duck",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Guardsman",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Janitor",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Mistress",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Monarch",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Nancy",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_PeaceKeeper",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Puppeteer",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_RabbitMagician",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_RedwoodTitanAI",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_SnailCatAI",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Transporter",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Maps_Money",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Unlockables_CruiserGalAI",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Unlockables_SeamineGalAI",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Unlockables_ShockwaveGalAI",
+    "Class Dusk.DuskEntityReplacementDefinition_CodeRebirth_src_Content_Unlockables_TerminalGalAI",
+    "Class System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute"
+  ],
+  "declarations": [
+    {
+      "line": 110,
+      "text": "namespace Microsoft.CodeAnalysis"
+    },
+    {
+      "line": 114,
+      "text": "\tinternal sealed class EmbeddedAttribute : Attribute"
+    },
+    {
+      "line": 118,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 123,
+      "text": "\tinternal sealed class NullableAttribute : Attribute"
+    },
+    {
+      "line": 140,
+      "text": "\tinternal sealed class NullableContextAttribute : Attribute"
+    },
+    {
+      "line": 152,
+      "text": "\tinternal sealed class RefSafetyRulesAttribute : Attribute"
+    },
+    {
+      "line": 162,
+      "text": "namespace DuskReplacementEntities"
+    },
+    {
+      "line": 164,
+      "text": "\tpublic static class MyPluginInfo"
+    },
+    {
+      "line": 173,
+      "text": "namespace Dusk"
+    },
+    {
+      "line": 176,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_CactusBudling : DuskEnemyReplacementDefinition<CactusBudling>"
+    },
+    {
+      "line": 229,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_CutieFlyAI : DuskEnemyReplacementDefinition<CutieFlyAI>"
+    },
+    {
+      "line": 276,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_DriftwoodMenaceAI : DuskEnemyReplacementDefinition<DriftwoodMenaceAI>"
+    },
+    {
+      "line": 329,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Duck : DuskEnemyReplacementDefinition<Duck>"
+    },
+    {
+      "line": 412,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Guardsman : DuskEnemyReplacementDefinition<Guardsman>"
+    },
+    {
+      "line": 492,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Janitor : DuskEnemyReplacementDefinition<Janitor>"
+    },
+    {
+      "line": 574,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Mistress : DuskEnemyReplacementDefinition<Mistress>"
+    },
+    {
+      "line": 634,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Monarch : DuskEnemyReplacementDefinition<Monarch>"
+    },
+    {
+      "line": 694,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Nancy : DuskEnemyReplacementDefinition<Nancy>"
+    },
+    {
+      "line": 774,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_PeaceKeeper : DuskEnemyReplacementDefinition<PeaceKeeper>"
+    },
+    {
+      "line": 857,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Puppeteer : DuskEnemyReplacementDefinition<Puppeteer>"
+    },
+    {
+      "line": 955,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_RabbitMagician : DuskEnemyReplacementDefinition<RabbitMagician>"
+    },
+    {
+      "line": 1035,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_RedwoodTitanAI : DuskEnemyReplacementDefinition<RedwoodTitanAI>"
+    },
+    {
+      "line": 1190,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_SnailCatAI : DuskEnemyReplacementDefinition<SnailCatAI>"
+    },
+    {
+      "line": 1244,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Transporter : DuskEnemyReplacementDefinition<Transporter>"
+    },
+    {
+      "line": 1316,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Maps_Money : DuskItemReplacementDefinition<Money>"
+    },
+    {
+      "line": 1351,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Unlockables_CruiserGalAI : DuskUnlockableReplacementDefinition<DuskUnlockable>"
+    },
+    {
+      "line": 1444,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Unlockables_SeamineGalAI : DuskUnlockableReplacementDefinition<DuskUnlockable>"
+    },
+    {
+      "line": 1555,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Unlockables_ShockwaveGalAI : DuskUnlockableReplacementDefinition<DuskUnlockable>"
+    },
+    {
+      "line": 1630,
+      "text": "\tpublic class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Unlockables_TerminalGalAI : DuskUnlockableReplacementDefinition<DuskUnlockable>"
+    },
+    {
+      "line": 1741,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 1744,
+      "text": "\tinternal sealed class IgnoresAccessChecksToAttribute : Attribute"
+    }
+  ],
+  "spawn_surface_hits": [
+    {
+      "line": 474,
+      "text": "\t\t\t\t\tGameObject val = Object.Instantiate<GameObject>(((Component)dustParticleSystem).gameObject, ((Component)dustParticleSystem2).transform.parent);"
+    },
+    {
+      "line": 1017,
+      "text": "\t\t\t\t\tGameObject val = Object.Instantiate<GameObject>(((Component)confettiParticles).gameObject, ((Component)confettiParticles2).transform.parent);"
+    },
+    {
+      "line": 1113,
+      "text": "\t\t\t\t\tGameObject val = Object.Instantiate<GameObject>(((Component)dustParticlesLeft).gameObject, ((Component)dustParticlesLeft2).transform.parent);"
+    },
+    {
+      "line": 1125,
+      "text": "\t\t\t\t\tGameObject val2 = Object.Instantiate<GameObject>(((Component)dustParticlesRight).gameObject, ((Component)dustParticlesRight2).transform.parent);"
+    },
+    {
+      "line": 1137,
+      "text": "\t\t\t\t\tGameObject val3 = Object.Instantiate<GameObject>(((Component)forestKeeperParticles).gameObject, ((Component)forestKeeperParticles2).transform.parent);"
+    },
+    {
+      "line": 1149,
+      "text": "\t\t\t\t\tGameObject val4 = Object.Instantiate<GameObject>(((Component)driftwoodGiantParticles).gameObject, ((Component)driftwoodGiantParticles2).transform.parent);"
+    },
+    {
+      "line": 1161,
+      "text": "\t\t\t\t\tGameObject val5 = Object.Instantiate<GameObject>(((Component)oldBirdParticles).gameObject, ((Component)oldBirdParticles2).transform.parent);"
+    },
+    {
+      "line": 1173,
+      "text": "\t\t\t\t\tGameObject val6 = Object.Instantiate<GameObject>(((Component)deathParticles).gameObject, ((Component)deathParticles2).transform.parent);"
+    },
+    {
+      "line": 1342,
+      "text": "\t\t\t\t\tGameObject val = Object.Instantiate<GameObject>(((Component)moneyParticles).gameObject, ((Component)moneyParticles2).transform.parent);"
+    }
+  ],
+  "owner_or_patch_hits": [
+    {
+      "line": 202,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 204,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 206,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 208,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 216,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 249,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 251,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 253,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 255,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 263,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 298,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 300,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 302,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 304,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 316,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 365,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 367,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 369,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 371,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 399,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 444,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 446,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 448,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 450,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 466,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 542,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 544,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 546,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 548,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 556,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 602,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 604,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 606,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 608,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 620,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 666,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 668,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 670,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 672,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 680,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 744,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 746,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 748,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 750,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 758,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 814,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 816,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 818,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 820,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 844,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 905,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 907,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 909,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 911,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 939,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 987,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 989,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 991,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 993,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 1009,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 1079,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 1081,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 1083,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 1085,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 1105,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 1216,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 1218,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 1220,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 1222,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 1230,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    },
+    {
+      "line": 1276,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+    },
+    {
+      "line": 1278,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+    },
+    {
+      "line": 1280,
+      "text": "\t\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+    },
+    {
+      "line": 1282,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+    },
+    {
+      "line": 1302,
+      "text": "\t\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+    }
+  ],
+  "decompiler_stderr": "",
+  "decompiler_annotation_count": 30,
+  "qualification": "Source token discovery only: hits include non-enemy spawns, declarations and inactive code. No patch approval or exhaustive game/mod coverage. Dependencies may remain unresolved."
+}

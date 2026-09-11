@@ -1,0 +1,146 @@
+{
+  "package": "Ccode_lang-SirenHead",
+  "version": "2.0.7",
+  "member": "LethalSirenHead.dll",
+  "assembly_sha256": "fbffe4c39da5d6bc278715213d13602804ac80165032f2262dd6db0e90312573",
+  "source_sha256": "cebc30d64011c2d9e13646c0aad74cfabec18f4968e8ec0a5ea9882a63370595",
+  "source_line_count": 1315,
+  "class_listing": [
+    "Class <Module>",
+    "Class LethalSirenHead.Plugin",
+    "Class LethalSirenHead.Assets",
+    "Class LethalSirenHead.Utils",
+    "Class LethalSirenHead.Enemy.SirenHeadAI",
+    "Class LethalSirenHead.Enemy.SirenHeadAI+<EatPlayer>d__35",
+    "Class LethalSirenHead.Enemy.SirenHeadAI+<UntreeAndSwitch>d__33",
+    "Class LethalSirenHead.Enemy.SirenHeadAnimationCalls",
+    "Class LethalSirenHead.Enemy.SirenHeadVars",
+    "Class __GEN.NetworkVariableSerializationHelper",
+    "Class LethalSirenHead.NetcodePatcher.NetcodePatchedAssemblyAttribute"
+  ],
+  "declarations": [
+    {
+      "line": 40,
+      "text": "namespace LethalSirenHead"
+    },
+    {
+      "line": 44,
+      "text": "\tpublic class Plugin : BaseUnityPlugin"
+    },
+    {
+      "line": 166,
+      "text": "\tpublic static class Assets"
+    },
+    {
+      "line": 180,
+      "text": "\tinternal class Utils"
+    },
+    {
+      "line": 197,
+      "text": "namespace LethalSirenHead.Enemy"
+    },
+    {
+      "line": 199,
+      "text": "\tpublic class SirenHeadAI : EnemyAI"
+    },
+    {
+      "line": 1285,
+      "text": "\tpublic class SirenHeadAnimationCalls : MonoBehaviour"
+    },
+    {
+      "line": 1292,
+      "text": "\tinternal class SirenHeadVars : MonoBehaviour"
+    },
+    {
+      "line": 1299,
+      "text": "namespace __GEN"
+    },
+    {
+      "line": 1301,
+      "text": "\tinternal class NetworkVariableSerializationHelper"
+    },
+    {
+      "line": 1309,
+      "text": "namespace LethalSirenHead.NetcodePatcher"
+    },
+    {
+      "line": 1312,
+      "text": "\tinternal class NetcodePatchedAssemblyAttribute : Attribute"
+    }
+  ],
+  "spawn_surface_hits": [
+    {
+      "line": 107,
+      "text": "\t\t\tEnemies.RegisterEnemy(SirenEnemy, dictionary, dictionary2, val, val2);"
+    }
+  ],
+  "owner_or_patch_hits": [
+    {
+      "line": 199,
+      "text": "\tpublic class SirenHeadAI : EnemyAI"
+    },
+    {
+      "line": 230,
+      "text": "\t\t\t((EnemyAI)this).Start();"
+    },
+    {
+      "line": 288,
+      "text": "\t\t\t\tif (!((EnemyAI)this).PlayerIsTargetable(StartOfRound.Instance.allPlayerScripts[i], false, false, true))"
+    },
+    {
+      "line": 503,
+      "text": "\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourClientRpc(1);"
+    },
+    {
+      "line": 534,
+      "text": "\t\t\t\t\t((EnemyAI)this).StartSearch(((Component)this).transform.position, wander);"
+    },
+    {
+      "line": 535,
+      "text": "\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourClientRpc(0);"
+    },
+    {
+      "line": 566,
+      "text": "\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourClientRpc(2);"
+    },
+    {
+      "line": 574,
+      "text": "\t\t\t((EnemyAI)this).DoAIInterval();"
+    },
+    {
+      "line": 582,
+      "text": "\t\t\t\t\t((EnemyAI)this).StopSearch(wander, true);"
+    },
+    {
+      "line": 606,
+      "text": "\t\t\t\t\t((EnemyAI)this).SetDestinationToPosition(((Component)players[0]).transform.position, false);"
+    },
+    {
+      "line": 617,
+      "text": "\t\t\t((EnemyAI)this).Update();"
+    },
+    {
+      "line": 675,
+      "text": "\t\t\t((EnemyAI)this).OnCollideWithPlayer(other);"
+    },
+    {
+      "line": 689,
+      "text": "\t\t\t\tbase.inSpecialAnimationWithPlayer.inAnimationWithEnemy = (EnemyAI)(object)this;"
+    },
+    {
+      "line": 1024,
+      "text": "\t\t\t((EnemyAI)this)..ctor();"
+    },
+    {
+      "line": 1029,
+      "text": "\t\t\t((EnemyAI)this).__initializeVariables();"
+    },
+    {
+      "line": 1073,
+      "text": "\t\t\t((EnemyAI)this).__initializeRpcs();"
+    }
+  ],
+  "decompiler_stderr": "",
+  "decompiler_annotation_count": 216,
+  "qualification": "Source token discovery only: hits include non-enemy spawns, declarations and inactive code. No patch approval or exhaustive game/mod coverage. Dependencies may remain unresolved."
+}

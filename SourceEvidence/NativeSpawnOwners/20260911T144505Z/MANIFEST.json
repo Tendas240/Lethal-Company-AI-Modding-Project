@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "purpose": "S1.42AI-DIAG1 bounded native spawn-owner discovery, batch 1",
+  "repository_commit": "71973b25c395cef4d0022a0054975cdab44e37d2",
+  "profile": {
+    "path": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+    "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+    "export_sha256": "d74a4867253b5090c5144d3d522c4ad63535e305980bd0294044fc31de2b9685"
+  },
+  "decompiler": {
+    "tool": "ilspycmd",
+    "version": "11.0.0.9375"
+  },
+  "selected_packages": [
+    "NotezyTeam-LethalMinNightly",
+    "XuXiaolan-CodeRebirth",
+    "TeamXiaolan-DawnLib",
+    "SoftDiamond-RollingGiant",
+    "Ccode_lang-SirenHead",
+    "PureFPSZac-NestFix",
+    "ButteryStancakes-SpawnCycleFixes"
+  ],
+  "packages": [
+    {
+      "package": "NotezyTeam-LethalMinNightly",
+      "version": "1.1.108",
+      "url": "https://gcdn.thunderstore.io/live/repository/packages/NotezyTeam-LethalMinNightly-1.1.108.zip",
+      "zip_sha256": "7e5c62ecf39c950a6fa46c722ce3a77e3efd7328a71c32a6c5e4cf87a1f50fe1",
+      "zip_bytes": 83503144,
+      "assemblies": [
+        {
+          "member": "NoteBoxz.LethalMin.dll",
+          "sha256": "9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df",
+          "source_sha256": "6eb8f99dc6b6d72a705959aa2dfd452638561e1b4376b3c1e662ddd7d8c67939",
+          "report": "NotezyTeam-LethalMinNightly-0-DISCOVERY.json",
+          "spawn_hits": 130,
+          "owner_hits": 590,
+          "classes": 443
+        }
+      ]
+    },
+    {
+      "package": "XuXiaolan-CodeRebirth",
+      "version": "1.6.9",
+      "url": "https://gcdn.thunderstore.io/live/repository/packages/XuXiaolan-CodeRebirth-1.6.9.zip",
+      "zip_sha256": "a44a47d3f9eb049ccea83f8483c257f4faa2bf927a6df7e0bb70ff1504b2a5d6",
+      "zip_bytes": 263010364,
+      "assemblies": [
+        {
+          "member": "plugins/CodeRebirth/CodeRebirth.dll",
+          "sha256": "a35a06cf55a42dd1db9f3bcf68448d74590fdac8d9e80f57a811e78628c8fd36",
+          "source_sha256": "da9399bca105f905c5c1995a222534f1c3672f971bd322ca9bd36aebb34614f3",
+          "report": "XuXiaolan-CodeRebirth-0-DISCOVERY.json",
+          "spawn_hits": 118,
+          "owner_hits": 1267,
+          "classes": 709
+        },
+        {
+          "member": "plugins/CodeRebirth/com.local.Rodriguez.DuskReplacementEntities.CodeRebirth.dll",
+          "sha256": "308ddf095d807b719c204c48bee3ce26795281c6b399baf3ac105e6b9d258163",
+          "source_sha256": "c8acb8d1c4f1bc6f2810ae660170910abce9181bf979d3896e46dedcff46338b",
+          "report": "XuXiaolan-CodeRebirth-1-DISCOVERY.json",
+          "spawn_hits": 9,
+          "owner_hits": 75,
+          "classes": 27
+        }
+      ]
+    },
+    {
+      "package": "TeamXiaolan-DawnLib",
+      "version": "0.9.25",
+      "url": "https://gcdn.thunderstore.io/live/repository/packages/TeamXiaolan-DawnLib-0.9.25.zip",
+      "zip_sha256": "c33c608869763f916f07e5ddf47224134f98bab15d044bd809a46ef2d3d538c3",
+      "zip_bytes": 879225,
+      "assemblies": [
+        {
+          "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.dll",
+          "sha256": "9b4826a16eec1fa5091fb4246d010005bc9c3e04282034e8d067b499ab5c125b",
+          "source_sha256": "f9a1f2311803a02f67eeba3ed367fcbcd7d6aed8947f9fab709306391eae075e",
+          "report": "TeamXiaolan-DawnLib-0-DISCOVERY.json",
+          "spawn_hits": 16,
+          "owner_hits": 110,
+          "classes": 447
+        },
+        {
+          "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.dusk.dll",
+          "sha256": "3582f1a35efe3753004d7b209aea355a6c02b646b61cc1629c53a311ba8d1f03",
+          "source_sha256": "84aff93064e8bb27b05b80222fe0198bd631a7811547cd809651ce1b021072cb",
+          "report": "TeamXiaolan-DawnLib-1-DISCOVERY.json",
+          "spawn_hits": 18,
+          "owner_hits": 41,
+          "classes": 254
+        },
+        {
+          "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.compatibility.dll",
+          "sha256": "bf15598803ef262a7be4760f547b23f70fc3ae6b067b2ab18100584d399f23e4",
+          "source_sha256": "5772a1ab2e2b98f59d5cc389dab1a3827d409722f9a443ada3eb7fce67e13b58",
+          "report": "TeamXiaolan-DawnLib-2-DISCOVERY.json",
+          "spawn_hits": 0,
+          "owner_hits": 2,
+          "classes": 10
+        },
+        {
+          "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.interfaces.dll",
+          "sha256": "cc60c29da1057597dc51a2bba9eec3b895e4cfaff894384b1eb58b5b1ef12960",
+          "source_sha256": "e9040de62ea17db9868367204fb84e87e3e39ed9b9de6514bab293803d3c7239",
+          "report": "TeamXiaolan-DawnLib-3-DISCOVERY.json",
+          "spawn_hits": 0,
+          "owner_hits": 3,
+          "classes": 7
+        }
+      ]
+    },
+    {
+      "package": "SoftDiamond-RollingGiant",
+      "version": "2.6.3",
+      "url": "https://gcdn.thunderstore.io/live/repository/packages/SoftDiamond-RollingGiant-2.6.3.zip",
+      "zip_sha256": "3cc116f1c9e3758a786995248509a3c34476b24dc1c58cb43ced7d4af812e422",
+      "zip_bytes": 8510459,
+      "assemblies": [
+        {
+          "member": "RollingGiant.dll",
+          "sha256": "9eab318d3ea03a0c9fb13d1603615ccda2206c973a1fd798535348a5dffc95dd",
+          "source_sha256": "505393abd31720f459767fe041d2f3c791bec27c86683349f351fd6f8d66872c",
+          "report": "SoftDiamond-RollingGiant-0-DISCOVERY.json",
+          "spawn_hits": 3,
+          "owner_hits": 55,
+          "classes": 30
+        }
+      ]
+    },
+    {
+      "package": "Ccode_lang-SirenHead",
+      "version": "2.0.7",
+      "url": "https://gcdn.thunderstore.io/live/repository/packages/Ccode_lang-SirenHead-2.0.7.zip",
+      "zip_sha256": "1d265165ff9081d13228e83b3dd91f09c705443a9b2332e64a9a547ade1bc595",
+      "zip_bytes": 9108001,
+      "assemblies": [
+        {
+          "member": "LethalSirenHead.dll",
+          "sha256": "fbffe4c39da5d6bc278715213d13602804ac80165032f2262dd6db0e90312573",
+          "source_sha256": "cebc30d64011c2d9e13646c0aad74cfabec18f4968e8ec0a5ea9882a63370595",
+          "report": "Ccode_lang-SirenHead-0-DISCOVERY.json",
+          "spawn_hits": 1,
+          "owner_hits": 16,
+          "classes": 11
+        }
+      ]
+    },
+    {
+      "package": "PureFPSZac-NestFix",
+      "version": "1.3.0",
+      "url": "https://gcdn.thunderstore.io/live/repository/packages/PureFPSZac-NestFix-1.3.0.zip",
+      "zip_sha256": "a9cf704b463fab1cc988f6872ba4faa641ac9eb6dae52372fa13d61b80a28a4c",
+      "zip_bytes": 119152,
+      "assemblies": [
+        {
+          "member": "NestFix.dll",
+          "sha256": "0a4072618c2a089283933b8aeebe4962c4e45d465518760c90b4c18eb2b70f20",
+          "source_sha256": "0e986b4d7d968c914b3d1c9376e5bfe739b3d6e56f94292a139f7d40246982b0",
+          "report": "PureFPSZac-NestFix-0-DISCOVERY.json",
+          "spawn_hits": 2,
+          "owner_hits": 7,
+          "classes": 5
+        }
+      ]
+    },
+    {
+      "package": "ButteryStancakes-SpawnCycleFixes",
+      "version": "1.2.2",
+      "url": "https://gcdn.thunderstore.io/live/repository/packages/ButteryStancakes-SpawnCycleFixes-1.2.2.zip",
+      "zip_sha256": "ccc66892f996890c9a24dbe430d394262911ad576d2dd797d5535daf196e1c2f",
+      "zip_bytes": 70407,
+      "assemblies": [
+        {
+          "member": "SpawnCycleFixes.dll",
+          "sha256": "aa41f4bb8a8e2dedd75f7987d85c0e0a6792d92bd1fecbffa278f5f4dc9c52a0",
+          "source_sha256": "c7a7e300be873f5d4271fb673332143a1eb9c5e0dd1521dc2787aa07ed939651",
+          "report": "ButteryStancakes-SpawnCycleFixes-0-DISCOVERY.json",
+          "spawn_hits": 0,
+          "owner_hits": 56,
+          "classes": 14
+        }
+      ]
+    }
+  ],
+  "reports": [
+    {
+      "file": "PROFILE_PACKAGE_INVENTORY.json",
+      "sha256": "f9dfbf641c8a603eccb76753c66e83b18d8b4a3f49c02ad6c634ced29a3e14b4",
+      "bytes": 27317
+    },
+    {
+      "file": "NotezyTeam-LethalMinNightly-0-DISCOVERY.json",
+      "sha256": "934d8348addf1af79bcef717aa109ade8098e612dd1f050fc0fea8b481757223",
+      "bytes": 144706
+    },
+    {
+      "file": "XuXiaolan-CodeRebirth-0-DISCOVERY.json",
+      "sha256": "470117528dc080aee69d79ef2407365bd9b55647e7ed8a98af2f16da4df76c23",
+      "bytes": 282452
+    },
+    {
+      "file": "XuXiaolan-CodeRebirth-1-DISCOVERY.json",
+      "sha256": "3d869e6ca234cbd1b56f9d617d9be1e673b4e34a11099e05a41a6e66e0d74cc5",
+      "bytes": 20971
+    },
+    {
+      "file": "TeamXiaolan-DawnLib-0-DISCOVERY.json",
+      "sha256": "612e43961452a747fc6a67330541d90e9215797f84e83751470de8898a855842",
+      "bytes": 76027
+    },
+    {
+      "file": "TeamXiaolan-DawnLib-1-DISCOVERY.json",
+      "sha256": "75a12a88e36aefb0d6904f5cf2f77217360140ba21b1541bbb413dd5a99500ba",
+      "bytes": 44239
+    },
+    {
+      "file": "TeamXiaolan-DawnLib-2-DISCOVERY.json",
+      "sha256": "7482d78b305dfbe73fc98260db9efdfed3bd54c6d86daefbbfe921ae340e586d",
+      "bytes": 2709
+    },
+    {
+      "file": "TeamXiaolan-DawnLib-3-DISCOVERY.json",
+      "sha256": "45afe821fecc781bd6a2d6413b235ce7b5cbee0a43730db83b4b4d26abfe7e8d",
+      "bytes": 2405
+    },
+    {
+      "file": "SoftDiamond-RollingGiant-0-DISCOVERY.json",
+      "sha256": "c927081593fe221ff35c4bf7fb0e0de94162f666b50f7a1d866aeb2282161855",
+      "bytes": 12216
+    },
+    {
+      "file": "Ccode_lang-SirenHead-0-DISCOVERY.json",
+      "sha256": "1444c220c9700e3595fc26043e7a09f075560e3589873bdfc029354fd07d5896",
+      "bytes": 4080
+    },
+    {
+      "file": "PureFPSZac-NestFix-0-DISCOVERY.json",
+      "sha256": "fee13fee31c37738125f92d3098882a2b2a9c8c242eef5655c952957dadef988",
+      "bytes": 3039
+    },
+    {
+      "file": "ButteryStancakes-SpawnCycleFixes-0-DISCOVERY.json",
+      "sha256": "a458e120c28163da0bd77fc82c94179d67712c9c7d9326dff7c69feb66dad5cd",
+      "bytes": 10115
+    }
+  ],
+  "qualification": "Source token discovery only: hits include non-enemy spawns, declarations and inactive code. No patch approval or exhaustive game/mod coverage. Dependencies may remain unresolved."
+}

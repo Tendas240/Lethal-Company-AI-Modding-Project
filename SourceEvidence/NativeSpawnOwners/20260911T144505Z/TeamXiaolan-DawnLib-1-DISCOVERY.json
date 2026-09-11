@@ -1,0 +1,1313 @@
+{
+  "package": "TeamXiaolan-DawnLib",
+  "version": "0.9.25",
+  "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.dusk.dll",
+  "assembly_sha256": "3582f1a35efe3753004d7b209aea355a6c02b646b61cc1629c53a311ba8d1f03",
+  "source_sha256": "84aff93064e8bb27b05b80222fe0198bd631a7811547cd809651ce1b021072cb",
+  "source_line_count": 12404,
+  "class_listing": [
+    "Class <Module>",
+    "Class <>f__AnonymousType0`2",
+    "Class <>z__ReadOnlySingleElementList`1",
+    "Class <>z__ReadOnlySingleElementList`1+Enumerator",
+    "Class Microsoft.CodeAnalysis.EmbeddedAttribute",
+    "Class System.Runtime.CompilerServices.NullableAttribute",
+    "Class System.Runtime.CompilerServices.NullableContextAttribute",
+    "Class System.Runtime.CompilerServices.RefSafetyRulesAttribute",
+    "Class Dawn.Internal.DuskLethalConfigCompat",
+    "Class Dusk.AssetBundleData",
+    "Class Dusk.AssetBundleLoader`1",
+    "Class Dusk.AssetBundleLoader`1+<>c",
+    "Class Dusk.AssetBundleLoader`1+<>c__DisplayClass7_0",
+    "Class Dusk.AssetBundleReference",
+    "Class Dusk.ContentContainer",
+    "Class Dusk.DefaultBundle",
+    "Class Dusk.LoadFromBundleAttribute",
+    "Class Dusk.AssertAssetInCorrectBundle",
+    "Class Dusk.AssertFieldNotNull",
+    "Class Dusk.AssertNotEmpty",
+    "Class Dusk.ContentOrderAttribute",
+    "Class Dusk.DefaultKeySourceAttribute",
+    "Class Dusk.DontDrawIfEmpty",
+    "Class Dusk.UnlockedNamespacedKey",
+    "Class Dusk.AutoDuskModHandler",
+    "Class Dusk.DefaultContentHandler",
+    "Class Dusk.DuskModInformation",
+    "Class Dusk.ConfigContext",
+    "Class Dusk.ConfigManager",
+    "Class Dusk.ConfigManager+<>c",
+    "Class Dusk.ConfigManager+<>c__DisplayClass11_0",
+    "Class Dusk.ConfigReaderTypeUtility",
+    "Class Dusk.ConfigReader",
+    "Class Dusk.DuskBaseConfig",
+    "Class Dusk.DuskDynamicConfig",
+    "Class Dusk.IntComparison",
+    "Class Dusk.IntComparisonConfigWeight",
+    "Class Dusk.ContentHandler",
+    "Class Dusk.ContentHandler`1",
+    "Class Dusk.AchievementSaveData",
+    "Class Dusk.AchievementTriggers",
+    "Class Dusk.AchievementModUIElement",
+    "Class Dusk.AchievementModUIElement+<>c",
+    "Class Dusk.AchievementModUIElement+<>c__DisplayClass9_0",
+    "Class Dusk.AchievementUICanvas",
+    "Class Dusk.AchievementUICanvas+<>c__DisplayClass10_0",
+    "Class Dusk.AchievementUIElement",
+    "Class Dusk.AchievementUIGetCanvas",
+    "Class Dusk.AchievementUIGetCanvas+<ShowNextAchievement>d__7",
+    "Class Dusk.DuskAchievementDefinition",
+    "Class Dusk.DuskAchievementExtensions",
+    "Class Dusk.DuskAchievementHandler",
+    "Class Dusk.DuskAchievementReference",
+    "Class Dusk.DuskDiscoveryAchievement",
+    "Class Dusk.DuskDiscoveryAchievement+DiscoverySaveData",
+    "Class Dusk.DuskInstantAchievement",
+    "Class Dusk.DuskParentAchievement",
+    "Class Dusk.DuskParentAchievement+<>c__DisplayClass4_0",
+    "Class Dusk.DuskStatAchievement",
+    "Class Dusk.DuskStatAchievement+StatSaveData",
+    "Class Dusk.DungeonConfig",
+    "Class Dusk.DuskAdditionalTilesDefinition",
+    "Class Dusk.DuskAdditionalTilesDefinition+<>c",
+    "Class Dusk.DuskAdditionalTilesDefinition+<>c__DisplayClass14_0",
+    "Class Dusk.DuskAdditionalTilesReference",
+    "Class Dusk.DuskDungeonDefinition",
+    "Class Dusk.DuskDungeonDefinition+<>c__DisplayClass72_0",
+    "Class Dusk.DuskDungeonReference",
+    "Class Dusk.DuskContentDefinition",
+    "Class Dusk.DuskContentDefinition`1",
+    "Class Dusk.DuskContentReference",
+    "Class Dusk.DuskContentReference`2",
+    "Class Dusk.DuskEnemyDefinition",
+    "Class Dusk.DuskEnemyReference",
+    "Class Dusk.EnemyConfig",
+    "Class Dusk.AnimationClipReplacement",
+    "Class Dusk.AnimationClipReplacement+<Apply>d__12",
+    "Class Dusk.GameObjectEditorAction",
+    "Class Dusk.GameObjectEditorAction+<Apply>d__16",
+    "Class Dusk.Hierarchy",
+    "Class Dusk.ParticleSystemReplacement",
+    "Class Dusk.ParticleSystemReplacement+<Apply>d__4",
+    "Class Dusk.SkinnedMeshReplacement",
+    "Class Dusk.SkinnedMeshReplacement+<Apply>d__4",
+    "Class Dusk.MeshReplacement",
+    "Class Dusk.MeshReplacement+<Apply>d__4",
+    "Class Dusk.MaterialsReplacement",
+    "Class Dusk.MaterialsReplacement+<Apply>d__4",
+    "Class Dusk.TextureReplacement",
+    "Class Dusk.TextureReplacement+<Apply>d__4",
+    "Class Dusk.MaterialPropertiesWithIndex",
+    "Class Dusk.ScanNodePropertiesReplacement",
+    "Class Dusk.ScanNodePropertiesReplacement+<Apply>d__24",
+    "Class Dusk.VisualEffectReplacement",
+    "Class Dusk.VisualEffectReplacement+<Apply>d__4",
+    "Class Dusk.WaitAction",
+    "Class Dusk.WaitAction+<Apply>d__8",
+    "Class Dusk.DuskEntityReplacementDefinition",
+    "Class Dusk.DuskEntityReplacementDefinition+<>c",
+    "Class Dusk.DuskEntityReplacementDefinition`1",
+    "Class Dusk.DuskEntityReplacementDefinition`1+<ApplyReplacementAndAddons>d__1",
+    "Class Dusk.DuskEnemyReplacementDefinition",
+    "Class Dusk.DuskEnemyReplacementDefinition+<Apply>d__20",
+    "Class Dusk.DuskEnemyReplacementDefinition+<ApplyNest>d__21",
+    "Class Dusk.DuskEnemyReplacementDefinition`1",
+    "Class Dusk.DuskEnemyReplacementDefinition`1+<Apply>d__1",
+    "Class Dusk.EnemyAIExtensions",
+    "Class Dusk.EnemyAINestSpawnObjectExtensions",
+    "Class Dusk.EntityReplacementConfig",
+    "Class Dusk.EntityReplacementsExtensions",
+    "Class Dusk.DuskItemReplacementDefinition",
+    "Class Dusk.DuskItemReplacementDefinition+<Apply>d__40",
+    "Class Dusk.DuskItemReplacementDefinition`1",
+    "Class Dusk.DuskItemReplacementDefinition`1+<Apply>d__1",
+    "Class Dusk.GrabbableObjectExtensions",
+    "Class Dusk.DuskMapObject",
+    "Class Dusk.DuskMapObject+<>c__DisplayClass7_0",
+    "Class Dusk.DuskMapObjectReplacementDefinition",
+    "Class Dusk.DuskMapObjectReplacementDefinition+<Apply>d__0",
+    "Class Dusk.DuskMapObjectReplacementDefinition`1",
+    "Class Dusk.DuskMapObjectReplacementDefinition`1+<Apply>d__1",
+    "Class Dusk.DuskUnlockable",
+    "Class Dusk.DuskUnlockable+<>c__DisplayClass16_0",
+    "Class Dusk.DuskUnlockableReplacementDefinition",
+    "Class Dusk.DuskUnlockableReplacementDefinition+<Apply>d__0",
+    "Class Dusk.DuskUnlockableReplacementDefinition`1",
+    "Class Dusk.DuskUnlockableReplacementDefinition`1+<Apply>d__1",
+    "Class Dusk.GameObjectWithPath",
+    "Class Dusk.MaterialWithIndex",
+    "Class Dusk.DuskItemDefinition",
+    "Class Dusk.DuskItemReference",
+    "Class Dusk.ItemConfig",
+    "Class Dusk.ItemUpgradeScrap",
+    "Class Dusk.ShopItemPreset",
+    "Class Dusk.DuskMapObjectDefinition",
+    "Class Dusk.DuskMapObjectDefinition+<>c__DisplayClass80_0",
+    "Class Dusk.DuskMapObjectDefinition+<>c__DisplayClass80_1",
+    "Class Dusk.DuskMapObjectReference",
+    "Class Dusk.MapObjectConfig",
+    "Class Dusk.MapObjectSpawnMechanics",
+    "Class Dusk.NamespacedKeyWithAnimationCurve",
+    "Class Dusk.DuskMoonDefinition",
+    "Class Dusk.DuskMoonDefinition+<>c__DisplayClass57_0",
+    "Class Dusk.DuskMoonSceneData",
+    "Class Dusk.DuskMoonReference",
+    "Class Dusk.MoonConfig",
+    "Class Dusk.MoonSceneConfig",
+    "Class Dusk.MoonProgressiveScrap",
+    "Class Dusk.PlanetUnlocker",
+    "Class Dusk.PlanetUnlocker+<WaitToDespawn>d__7",
+    "Class Dusk.DuskStoryLogDefinition",
+    "Class Dusk.DuskStoryLogReference",
+    "Class Dusk.DuskSurfaceDefinition",
+    "Class Dusk.DuskSurfaceReference",
+    "Class Dusk.SimpleQueryCommand",
+    "Class Dusk.ComplexQueryCommand",
+    "Class Dusk.ComplexCommand",
+    "Class Dusk.SimpleCommand",
+    "Class Dusk.SimpleInputCommand",
+    "Class Dusk.StoryLogCommand",
+    "Class Dusk.DuskTerminalCommandDefinition",
+    "Class Dusk.DuskTerminalCommandDefinition+<>c__DisplayClass32_0",
+    "Class Dusk.DuskTerminalCommandDefinition+<>c__DisplayClass32_1",
+    "Class Dusk.DuskTerminalCommandReference",
+    "Class Dusk.DuskUnlockableDefinition",
+    "Class Dusk.DuskUnlockableReference",
+    "Class Dusk.UnlockableUpgradeScrap",
+    "Class Dusk.UnlockableConfig",
+    "Class Dusk.BuyableVehicleExtensions",
+    "Class Dusk.BuyableVehiclePreset",
+    "Class Dusk.DuskVehicleDefinition",
+    "Class Dusk.DuskVehicleDefinition+<>c__DisplayClass42_0",
+    "Class Dusk.DuskVehicleReference",
+    "Class Dusk.VehicleConfig",
+    "Class Dusk.StationBase",
+    "Class Dusk.VehicleBase",
+    "Class Dusk.DuskWeatherDefinition",
+    "Class Dusk.DuskWeatherReference",
+    "Class Dusk.DuskMod",
+    "Class Dusk.DuskMod+<>c",
+    "Class Dusk.DuskMod+<>c__DisplayClass36_0",
+    "Class Dusk.DuskModConstants",
+    "Class Dusk.DuskModContent",
+    "Class Dusk.DatePredicate",
+    "Class Dusk.DawnDateTime",
+    "Class Dusk.DuskPredicate",
+    "Class Dusk.PredicateCollection",
+    "Class Dusk.MultipleContentDefinitionsInBundle",
+    "Class Dusk.NoContentDefinitionInBundle",
+    "Class Dusk.DailyPricingStrategy",
+    "Class Dusk.DuskPricingStrategy",
+    "Class Dusk.AchievementPredicate",
+    "Class Dusk.DuskTerminalPredicate",
+    "Class Dusk.ProgressiveStates",
+    "Class Dusk.ProgressivePredicate",
+    "Class Dusk.TerminalPredicateCollection",
+    "Class Dusk.DuskKeys",
+    "Class Dusk.DuskPlugin",
+    "Class Dusk.DuskPlugin+DawnLibMainNetworkAssets",
+    "Class Dusk.DuskPlugin+DuskMainAssets",
+    "Class Dusk.DuskPlugin+DawnLibMainVanillaAssets",
+    "Class Dusk.MyPluginInfo",
+    "Class Dusk.Utils.DungeonFlowReference",
+    "Class Dusk.Utils.DungeonFlowReference+ArchetypeTileSetMapping",
+    "Class Dusk.Utils.MenuUtils",
+    "Class Dusk.Utils.MenuUtils+<>c",
+    "Class Dusk.Utils.MenuUtils+<>c__DisplayClass0_0",
+    "Class Dusk.Utils.CommitKeyToSave",
+    "Class Dusk.Utils.CommitKeyToSave+<>O",
+    "Class Dusk.Utils.UnlockProgressiveObject",
+    "Class Dusk.Utils.SceneReference",
+    "Class Dusk.Internal.DuskNetworker",
+    "Class Dusk.Internal.DuskNetworker+<>c",
+    "Class Dusk.Internal.DuskNetworker+<>c__DisplayClass1_0",
+    "Class Dusk.Internal.DuskNetworker+<Start>d__0",
+    "Class Dusk.Internal.AchievementRegistrationPatch",
+    "Class Dusk.Internal.AchievementRegistrationPatch+<>O",
+    "Class Dusk.Internal.DuskSaveIntegration",
+    "Class Dusk.Internal.DuskSaveIntegration+<>O",
+    "Class Dusk.Internal.EntityReplacementRegistrationPatch",
+    "Class Dusk.Internal.EntityReplacementRegistrationPatch+<>O",
+    "Class Dusk.Internal.EntityReplacementRegistrationPatch+<>c",
+    "Class Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass21_0",
+    "Class Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass25_0",
+    "Class Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass26_0",
+    "Class Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass27_0",
+    "Class Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass28_0",
+    "Class Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass29_0",
+    "Class Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass31_0",
+    "Class Dusk.Internal.NetworkerPatch",
+    "Class Dusk.Internal.NetworkerPatch+<>O",
+    "Class Dusk.Internal.VehicleRegistrationPatch",
+    "Class Dusk.Internal.VehicleRegistrationPatch+<>O",
+    "Class Dusk.Internal.VehicleRegistrationPatch+<>c",
+    "Class Dusk.Weights.MoonRule",
+    "Class Dusk.Weights.InteriorRule",
+    "Class Dusk.Weights.WeatherRule",
+    "Class Dusk.Weights.ExtraValueRule`1",
+    "Class Dusk.Weights.RoutePriceRule",
+    "Class Dusk.Weights.NamespacedConfigWeight",
+    "Class Dusk.Weights.SpawnWeightContextFactory",
+    "Class Dusk.Weights.SpawnWeightsPreset",
+    "Class Dusk.Weights.SpawnWeightsPreset+<>c",
+    "Class Dusk.Weights.InteriorWeightTransformer",
+    "Class Dusk.Weights.MoonWeightTransformer",
+    "Class Dusk.Weights.RoutePriceWeightTransformer",
+    "Class Dusk.Weights.RoutePriceWeightTransformer+<>c",
+    "Class Dusk.Weights.WeatherWeightTransformer",
+    "Class Dusk.Weights.WeightTransformer`1",
+    "Class Dusk.Weights.WeightTransformerTagLogic",
+    "Class Dusk.Weights.WeightTransformerTagLogic+<>c__DisplayClass2_0`1",
+    "Class System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute",
+    "Class __GEN.NetworkVariableSerializationHelper",
+    "Class com.github.teamxiaolan.dawnlib.dusk.NetcodePatcher.NetcodePatchedAssemblyAttribute"
+  ],
+  "declarations": [
+    {
+      "line": 157,
+      "text": "internal sealed class <>z__ReadOnlySingleElementList<T> : IEnumerable, ICollection, IList, IEnumerable<T>, IReadOnlyCollection<T>, IReadOnlyList<T>, ICollection<T>, IList<T>"
+    },
+    {
+      "line": 159,
+      "text": "\tprivate sealed class Enumerator : IDisposable, IEnumerator, IEnumerator<T>"
+    },
+    {
+      "line": 361,
+      "text": "namespace Microsoft.CodeAnalysis"
+    },
+    {
+      "line": 365,
+      "text": "\tinternal sealed class EmbeddedAttribute : Attribute"
+    },
+    {
+      "line": 369,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 374,
+      "text": "\tinternal sealed class NullableAttribute : Attribute"
+    },
+    {
+      "line": 391,
+      "text": "\tinternal sealed class NullableContextAttribute : Attribute"
+    },
+    {
+      "line": 403,
+      "text": "\tinternal sealed class RefSafetyRulesAttribute : Attribute"
+    },
+    {
+      "line": 413,
+      "text": "namespace Dawn.Internal"
+    },
+    {
+      "line": 415,
+      "text": "\tinternal static class DuskLethalConfigCompat"
+    },
+    {
+      "line": 472,
+      "text": "namespace Dusk"
+    },
+    {
+      "line": 475,
+      "text": "\tpublic class AssetBundleData"
+    },
+    {
+      "line": 485,
+      "text": "\tpublic abstract class AssetBundleLoader<TLoader> : IAssetBundleLoader where TLoader : AssetBundleLoader<TLoader>"
+    },
+    {
+      "line": 667,
+      "text": "\tpublic class AssetBundleReference : PropertyAttribute"
+    },
+    {
+      "line": 671,
+      "text": "\tpublic class ContentContainer : ScriptableObject"
+    },
+    {
+      "line": 675,
+      "text": "\tpublic class DefaultBundle : AssetBundleLoader<DefaultBundle>"
+    },
+    {
+      "line": 694,
+      "text": "\tpublic class LoadFromBundleAttribute(string bundleFile) : Attribute"
+    },
+    {
+      "line": 699,
+      "text": "\tpublic class AssertAssetInCorrectBundle : PropertyAttribute"
+    },
+    {
+      "line": 703,
+      "text": "\tpublic class AssertFieldNotNull : PropertyAttribute"
+    },
+    {
+      "line": 707,
+      "text": "\tpublic class AssertNotEmpty : PropertyAttribute"
+    },
+    {
+      "line": 711,
+      "text": "\tpublic sealed class ContentOrderAttribute(int order) : Attribute"
+    },
+    {
+      "line": 716,
+      "text": "\tpublic sealed class DefaultKeySourceAttribute(string memberName, bool normalize = true) : PropertyAttribute"
+    },
+    {
+      "line": 723,
+      "text": "\tpublic class DontDrawIfEmpty(string? groupId = null, string? header = null) : PropertyAttribute"
+    },
+    {
+      "line": 730,
+      "text": "\tpublic class UnlockedNamespacedKey : PropertyAttribute"
+    },
+    {
+      "line": 733,
+      "text": "\tpublic class AutoDuskModHandler"
+    },
+    {
+      "line": 761,
+      "text": "\tpublic class DefaultContentHandler : ContentHandler"
+    },
+    {
+      "line": 805,
+      "text": "\tpublic class DuskModInformation : ScriptableObject"
+    },
+    {
+      "line": 842,
+      "text": "\tpublic class ConfigContext(ConfigFile file, string heading) : IDisposable"
+    },
+    {
+      "line": 853,
+      "text": "\tpublic class ConfigManager(ConfigFile file)"
+    },
+    {
+      "line": 941,
+      "text": "\tpublic static class ConfigReaderTypeUtility"
+    },
+    {
+      "line": 1033,
+      "text": "\tpublic class ConfigReader : MonoBehaviour"
+    },
+    {
+      "line": 1235,
+      "text": "\tpublic abstract class DuskBaseConfig"
+    },
+    {
+      "line": 1279,
+      "text": "\tpublic class DuskDynamicConfig"
+    },
+    {
+      "line": 1315,
+      "text": "\tpublic class IntComparison"
+    },
+    {
+      "line": 1324,
+      "text": "\tpublic class IntComparisonConfigWeight : IOperationWithValue"
+    },
+    {
+      "line": 1470,
+      "text": "\tpublic abstract class ContentHandler(DuskMod mod)"
+    },
+    {
+      "line": 1560,
+      "text": "\tpublic abstract class ContentHandler<T> : ContentHandler where T : ContentHandler<T>"
+    },
+    {
+      "line": 1570,
+      "text": "\tpublic class AchievementSaveData(bool completed)"
+    },
+    {
+      "line": 1575,
+      "text": "\tpublic class AchievementTriggers : MonoBehaviour"
+    },
+    {
+      "line": 1669,
+      "text": "\tpublic class AchievementModUIElement : MonoBehaviour"
+    },
+    {
+      "line": 1749,
+      "text": "\tpublic class AchievementUICanvas : Singleton<AchievementUICanvas>"
+    },
+    {
+      "line": 1818,
+      "text": "\tpublic class AchievementUIElement : MonoBehaviour"
+    },
+    {
+      "line": 1880,
+      "text": "\tpublic class AchievementUIGetCanvas : Singleton<AchievementUIGetCanvas>"
+    },
+    {
+      "line": 1932,
+      "text": "\tpublic abstract class DuskAchievementDefinition : DuskContentDefinition, INamespaced<DuskAchievementDefinition>, INamespaced"
+    },
+    {
+      "line": 2069,
+      "text": "\tpublic static class DuskAchievementExtensions"
+    },
+    {
+      "line": 2129,
+      "text": "\tinternal static class DuskAchievementHandler"
+    },
+    {
+      "line": 2224,
+      "text": "\tpublic class DuskAchievementReference : DuskContentReference<DuskAchievementDefinition, DuskAchievementDefinition>"
+    },
+    {
+      "line": 2246,
+      "text": "\tpublic class DuskDiscoveryAchievement : DuskAchievementDefinition, IProgress"
+    },
+    {
+      "line": 2248,
+      "text": "\t\tpublic class DiscoverySaveData(bool completed, List<string> currentlyCollectedUniqueStringIDs) : AchievementSaveData(completed)"
+    },
+    {
+      "line": 2332,
+      "text": "\tpublic class DuskInstantAchievement : DuskAchievementDefinition"
+    },
+    {
+      "line": 2351,
+      "text": "\tpublic class DuskParentAchievement : DuskAchievementDefinition, IProgress"
+    },
+    {
+      "line": 2412,
+      "text": "\tpublic class DuskStatAchievement : DuskAchievementDefinition, IProgress"
+    },
+    {
+      "line": 2414,
+      "text": "\t\tpublic class StatSaveData(bool completed, float currentProgress) : AchievementSaveData(completed)"
+    },
+    {
+      "line": 2465,
+      "text": "\tpublic class DungeonConfig : DuskBaseConfig"
+    },
+    {
+      "line": 2492,
+      "text": "\tpublic class DuskAdditionalTilesDefinition : DuskContentDefinition<DawnTileSetInfo>"
+    },
+    {
+      "line": 2566,
+      "text": "\tpublic class DuskAdditionalTilesReference : DuskContentReference<DuskAdditionalTilesDefinition, DawnTileSetInfo>"
+    },
+    {
+      "line": 2588,
+      "text": "\tpublic class DuskDungeonDefinition : DuskContentDefinition<DawnDungeonInfo>"
+    },
+    {
+      "line": 2763,
+      "text": "\tpublic class DuskDungeonReference : DuskContentReference<DuskDungeonDefinition, DawnDungeonInfo>"
+    },
+    {
+      "line": 2784,
+      "text": "\tpublic abstract class DuskContentDefinition : ScriptableObject"
+    },
+    {
+      "line": 2857,
+      "text": "\tpublic abstract class DuskContentDefinition<TInfo> : DuskContentDefinition where TInfo : INamespaced<TInfo>"
+    },
+    {
+      "line": 2864,
+      "text": "\tpublic abstract class DuskContentReference : INetworkSerializable"
+    },
+    {
+      "line": 2878,
+      "text": "\tpublic abstract class DuskContentReference<TDef, TInfo> : DuskContentReference where TDef : DuskContentDefinition where TInfo : INamespaced<TInfo>"
+    },
+    {
+      "line": 2917,
+      "text": "\tpublic class DuskEnemyDefinition : DuskContentDefinition<DawnEnemyInfo>"
+    },
+    {
+      "line": 3118,
+      "text": "\tpublic class DuskEnemyReference : DuskContentReference<DuskEnemyDefinition, DawnEnemyInfo>"
+    },
+    {
+      "line": 3139,
+      "text": "\tpublic class EnemyConfig : DuskBaseConfig"
+    },
+    {
+      "line": 3169,
+      "text": "\tpublic class AnimationClipReplacement : Hierarchy"
+    },
+    {
+      "line": 3206,
+      "text": "\tpublic class GameObjectEditorAction : Hierarchy"
+    },
+    {
+      "line": 3286,
+      "text": "\tpublic abstract class Hierarchy : ScriptableObject"
+    },
+    {
+      "line": 3294,
+      "text": "\tpublic class ParticleSystemReplacement : Hierarchy"
+    },
+    {
+      "line": 3312,
+      "text": "\tpublic class SkinnedMeshReplacement : Hierarchy"
+    },
+    {
+      "line": 3373,
+      "text": "\tpublic class MeshReplacement : Hierarchy"
+    },
+    {
+      "line": 3394,
+      "text": "\tpublic class MaterialsReplacement : Hierarchy"
+    },
+    {
+      "line": 3457,
+      "text": "\tpublic class TextureReplacement : Hierarchy"
+    },
+    {
+      "line": 3503,
+      "text": "\tpublic class MaterialPropertiesWithIndex"
+    },
+    {
+      "line": 3548,
+      "text": "\tpublic class ScanNodePropertiesReplacement : Hierarchy"
+    },
+    {
+      "line": 3604,
+      "text": "\tpublic class VisualEffectReplacement : Hierarchy"
+    },
+    {
+      "line": 3620,
+      "text": "\tpublic class WaitAction : Hierarchy"
+    },
+    {
+      "line": 3636,
+      "text": "\tpublic abstract class DuskEntityReplacementDefinition : DuskContentDefinition, INamespaced<DuskEntityReplacementDefinition>, INamespaced"
+    },
+    {
+      "line": 3829,
+      "text": "\tpublic abstract class DuskEntityReplacementDefinition<TAI> : DuskEntityReplacementDefinition where TAI : class"
+    },
+    {
+      "line": 3863,
+      "text": "\tpublic class DuskEnemyReplacementDefinition : DuskEntityReplacementDefinition<EnemyAI>"
+    },
+    {
+      "line": 3908,
+      "text": "\tpublic abstract class DuskEnemyReplacementDefinition<T> : DuskEnemyReplacementDefinition where T : EnemyAI"
+    },
+    {
+      "line": 3931,
+      "text": "\tpublic static class EnemyAIExtensions"
+    },
+    {
+      "line": 3953,
+      "text": "\tpublic static class EnemyAINestSpawnObjectExtensions"
+    },
+    {
+      "line": 3972,
+      "text": "\tpublic class EntityReplacementConfig : DuskBaseConfig"
+    },
+    {
+      "line": 3998,
+      "text": "\tpublic static class EntityReplacementsExtensions"
+    },
+    {
+      "line": 4014,
+      "text": "\tpublic class DuskItemReplacementDefinition : DuskEntityReplacementDefinition<GrabbableObject>"
+    },
+    {
+      "line": 4113,
+      "text": "\tpublic abstract class DuskItemReplacementDefinition<T> : DuskItemReplacementDefinition where T : GrabbableObject"
+    },
+    {
+      "line": 4136,
+      "text": "\tpublic static class GrabbableObjectExtensions"
+    },
+    {
+      "line": 4158,
+      "text": "\tpublic class DuskMapObject : MonoBehaviour, ICurrentEntityReplacement"
+    },
+    {
+      "line": 4260,
+      "text": "\tpublic class DuskMapObjectReplacementDefinition : DuskEntityReplacementDefinition<DuskMapObject>"
+    },
+    {
+      "line": 4267,
+      "text": "\tpublic abstract class DuskMapObjectReplacementDefinition<T> : DuskMapObjectReplacementDefinition where T : DuskMapObject"
+    },
+    {
+      "line": 4314,
+      "text": "\tpublic class DuskUnlockable : MonoBehaviour, ICurrentEntityReplacement, IDawnSaveData"
+    },
+    {
+      "line": 4429,
+      "text": "\tpublic class DuskUnlockableReplacementDefinition : DuskEntityReplacementDefinition<DuskUnlockable>"
+    },
+    {
+      "line": 4436,
+      "text": "\tpublic abstract class DuskUnlockableReplacementDefinition<T> : DuskUnlockableReplacementDefinition where T : DuskUnlockable"
+    },
+    {
+      "line": 4460,
+      "text": "\tpublic class GameObjectWithPath"
+    },
+    {
+      "line": 4523,
+      "text": "\tpublic class MaterialWithIndex"
+    },
+    {
+      "line": 4532,
+      "text": "\tpublic class DuskItemDefinition : DuskContentDefinition<DawnItemInfo>"
+    },
+    {
+      "line": 4765,
+      "text": "\tpublic class DuskItemReference : DuskContentReference<DuskItemDefinition, DawnItemInfo>"
+    },
+    {
+      "line": 4786,
+      "text": "\tpublic class ItemConfig : DuskBaseConfig"
+    },
+    {
+      "line": 4828,
+      "text": "\tpublic class ItemUpgradeScrap : GrabbableObject"
+    },
+    {
+      "line": 4850,
+      "text": "\tpublic class ShopItemPreset"
+    },
+    {
+      "line": 4862,
+      "text": "\tpublic class DuskMapObjectDefinition : DuskContentDefinition<DawnMapObjectInfo>"
+    },
+    {
+      "line": 5156,
+      "text": "\tpublic class DuskMapObjectReference : DuskContentReference<DuskMapObjectDefinition, DawnMapObjectInfo>"
+    },
+    {
+      "line": 5177,
+      "text": "\tpublic class MapObjectConfig : DuskBaseConfig"
+    },
+    {
+      "line": 5212,
+      "text": "\tpublic class MapObjectSpawnMechanics : IContextualProvider<AnimationCurve?, DawnMoonInfo, SpawnWeightContext>"
+    },
+    {
+      "line": 5358,
+      "text": "\tpublic class NamespacedKeyWithAnimationCurve"
+    },
+    {
+      "line": 5370,
+      "text": "\tpublic class DuskMoonDefinition : DuskContentDefinition<DawnMoonInfo>"
+    },
+    {
+      "line": 5521,
+      "text": "\tpublic class DuskMoonSceneData"
+    },
+    {
+      "line": 5590,
+      "text": "\tpublic class DuskMoonReference : DuskContentReference<DuskMoonDefinition, DawnMoonInfo>"
+    },
+    {
+      "line": 5611,
+      "text": "\tpublic class MoonConfig : DuskBaseConfig"
+    },
+    {
+      "line": 5664,
+      "text": "\tpublic class MoonSceneConfig : DuskBaseConfig"
+    },
+    {
+      "line": 5682,
+      "text": "\tpublic class MoonProgressiveScrap : GrabbableObject"
+    },
+    {
+      "line": 5704,
+      "text": "\tpublic class PlanetUnlocker : GrabbableObject"
+    },
+    {
+      "line": 5791,
+      "text": "\tpublic class DuskStoryLogDefinition : DuskContentDefinition<DawnStoryLogInfo>"
+    },
+    {
+      "line": 5835,
+      "text": "\tpublic class DuskStoryLogReference : DuskContentReference<DuskStoryLogDefinition, DawnStoryLogInfo>"
+    },
+    {
+      "line": 5857,
+      "text": "\tpublic class DuskSurfaceDefinition : DuskContentDefinition<DawnSurfaceInfo>"
+    },
+    {
+      "line": 5939,
+      "text": "\tpublic class DuskSurfaceReference : DuskContentReference<DuskSurfaceDefinition, DawnSurfaceInfo>"
+    },
+    {
+      "line": 5961,
+      "text": "\tpublic class SimpleQueryCommand"
+    },
+    {
+      "line": 5985,
+      "text": "\tpublic class ComplexQueryCommand"
+    },
+    {
+      "line": 6002,
+      "text": "\tpublic class ComplexCommand"
+    },
+    {
+      "line": 6015,
+      "text": "\tpublic class SimpleCommand"
+    },
+    {
+      "line": 6025,
+      "text": "\tpublic class SimpleInputCommand"
+    },
+    {
+      "line": 6042,
+      "text": "\tpublic class StoryLogCommand"
+    },
+    {
+      "line": 6103,
+      "text": "\tpublic class DuskTerminalCommandDefinition : DuskContentDefinition<DawnTerminalCommandInfo>"
+    },
+    {
+      "line": 6221,
+      "text": "\tpublic class DuskTerminalCommandReference : DuskContentReference<DuskTerminalCommandDefinition, DawnTerminalCommandInfo>"
+    },
+    {
+      "line": 6243,
+      "text": "\tpublic class DuskUnlockableDefinition : DuskContentDefinition<DawnUnlockableItemInfo>"
+    },
+    {
+      "line": 6389,
+      "text": "\tpublic class DuskUnlockableReference : DuskContentReference<DuskUnlockableDefinition, DawnUnlockableItemInfo>"
+    },
+    {
+      "line": 6411,
+      "text": "\tpublic class UnlockableUpgradeScrap : GrabbableObject"
+    },
+    {
+      "line": 6432,
+      "text": "\tpublic class UnlockableConfig : DuskBaseConfig"
+    },
+    {
+      "line": 6458,
+      "text": "\tpublic static class BuyableVehicleExtensions"
+    },
+    {
+      "line": 6488,
+      "text": "\tpublic class BuyableVehiclePreset"
+    },
+    {
+      "line": 6503,
+      "text": "\tpublic class DuskVehicleDefinition : DuskContentDefinition<DawnVehicleInfo>, INamespaced<DuskVehicleDefinition>, INamespaced"
+    },
+    {
+      "line": 6677,
+      "text": "\tpublic class DuskVehicleReference : DuskContentReference<DuskVehicleDefinition, DuskVehicleDefinition>"
+    },
+    {
+      "line": 6698,
+      "text": "\tpublic class VehicleConfig : DuskBaseConfig"
+    },
+    {
+      "line": 6770,
+      "text": "\tpublic abstract class StationBase : NetworkBehaviour, IStation, IAnchorModule"
+    },
+    {
+      "line": 6854,
+      "text": "\tpublic abstract class VehicleBase : NetworkBehaviour, IVehicle, IDropShipAttachment"
+    },
+    {
+      "line": 7004,
+      "text": "\tpublic class DuskWeatherDefinition : DuskContentDefinition<DawnWeatherEffectInfo>"
+    },
+    {
+      "line": 7192,
+      "text": "\tpublic class DuskWeatherReference : DuskContentReference<DuskWeatherDefinition, DawnWeatherEffectInfo>"
+    },
+    {
+      "line": 7213,
+      "text": "\tpublic class DuskMod"
+    },
+    {
+      "line": 7389,
+      "text": "\tinternal static class DuskModConstants"
+    },
+    {
+      "line": 7411,
+      "text": "\tpublic static class DuskModContent"
+    },
+    {
+      "line": 7430,
+      "text": "\tpublic class DatePredicate : DuskPredicate"
+    },
+    {
+      "line": 7509,
+      "text": "\tpublic class DawnDateTime"
+    },
+    {
+      "line": 7535,
+      "text": "\tpublic abstract class DuskPredicate : ScriptableObject, IPredicate"
+    },
+    {
+      "line": 7542,
+      "text": "\tpublic class PredicateCollection : DuskPredicate"
+    },
+    {
+      "line": 7575,
+      "text": "\tpublic class MultipleContentDefinitionsInBundle : BundleException"
+    },
+    {
+      "line": 7582,
+      "text": "\tpublic class NoContentDefinitionInBundle : BundleException"
+    },
+    {
+      "line": 7611,
+      "text": "\tpublic class DailyPricingStrategy : DuskPricingStrategy"
+    },
+    {
+      "line": 7628,
+      "text": "\tpublic abstract class DuskPricingStrategy : ScriptableObject, IProvider<int>"
+    },
+    {
+      "line": 7635,
+      "text": "\tpublic class AchievementPredicate : DuskTerminalPredicate"
+    },
+    {
+      "line": 7672,
+      "text": "\tpublic abstract class DuskTerminalPredicate : ScriptableObject, ITerminalPurchasePredicate"
+    },
+    {
+      "line": 7679,
+      "text": "\tpublic class ProgressiveStates(bool isUnlocked, bool isHidden)"
+    },
+    {
+      "line": 7686,
+      "text": "\tpublic class ProgressivePredicate : DuskTerminalPredicate"
+    },
+    {
+      "line": 7833,
+      "text": "\tpublic class TerminalPredicateCollection : DuskTerminalPredicate"
+    },
+    {
+      "line": 7866,
+      "text": "\tpublic static class DuskKeys"
+    },
+    {
+      "line": 7874,
+      "text": "\tpublic class DuskPlugin : BaseUnityPlugin"
+    },
+    {
+      "line": 7876,
+      "text": "\t\tinternal class DawnLibMainNetworkAssets : AssetBundleLoader<DawnLibMainNetworkAssets>"
+    },
+    {
+      "line": 7887,
+      "text": "\t\tinternal class DuskMainAssets : AssetBundleLoader<DuskMainAssets>"
+    },
+    {
+      "line": 7901,
+      "text": "\t\tinternal class DawnLibMainVanillaAssets : AssetBundleLoader<DawnLibMainVanillaAssets>"
+    },
+    {
+      "line": 7952,
+      "text": "\tpublic static class MyPluginInfo"
+    },
+    {
+      "line": 7961,
+      "text": "namespace Dusk.Utils"
+    },
+    {
+      "line": 7964,
+      "text": "\tpublic class DungeonFlowReference"
+    },
+    {
+      "line": 7967,
+      "text": "\t\tpublic class ArchetypeTileSetMapping"
+    },
+    {
+      "line": 8025,
+      "text": "\tinternal static class MenuUtils"
+    },
+    {
+      "line": 8072,
+      "text": "\tpublic class CommitKeyToSave : MonoBehaviour"
+    },
+    {
+      "line": 8075,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 8209,
+      "text": "\tpublic class UnlockProgressiveObject : NetworkBehaviour"
+    },
+    {
+      "line": 8496,
+      "text": "\tpublic class SceneReference"
+    },
+    {
+      "line": 8531,
+      "text": "namespace Dusk.Internal"
+    },
+    {
+      "line": 8533,
+      "text": "\tpublic class DuskNetworker : NetworkSingleton<DuskNetworker>"
+    },
+    {
+      "line": 9431,
+      "text": "\tinternal static class AchievementRegistrationPatch"
+    },
+    {
+      "line": 9434,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 9558,
+      "text": "\tinternal static class DuskSaveIntegration"
+    },
+    {
+      "line": 9597,
+      "text": "\tinternal static class EntityReplacementRegistrationPatch"
+    },
+    {
+      "line": 9600,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 9633,
+      "text": "\t\tprivate sealed class <>c"
+    },
+    {
+      "line": 11289,
+      "text": "\tinternal static class NetworkerPatch"
+    },
+    {
+      "line": 11292,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 11324,
+      "text": "\tinternal static class VehicleRegistrationPatch"
+    },
+    {
+      "line": 11327,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 11638,
+      "text": "namespace Dusk.Weights"
+    },
+    {
+      "line": 11654,
+      "text": "\tpublic class MoonRule(MoonWeightTransformer transformer) : ISpawnWeightRule"
+    },
+    {
+      "line": 11686,
+      "text": "\tpublic class InteriorRule(InteriorWeightTransformer transformer) : ISpawnWeightRule"
+    },
+    {
+      "line": 11718,
+      "text": "\tpublic class WeatherRule(WeatherWeightTransformer transformer) : ISpawnWeightRule"
+    },
+    {
+      "line": 11750,
+      "text": "\tpublic class ExtraValueRule<T>(NamespacedKey extraKey, WeightTransformer<T> transformer) : ISpawnWeightRule"
+    },
+    {
+      "line": 11806,
+      "text": "\tpublic sealed class RoutePriceRule : ExtraValueRule<int>"
+    },
+    {
+      "line": 11814,
+      "text": "\tpublic class NamespacedConfigWeight : IOperationWithValue"
+    },
+    {
+      "line": 11930,
+      "text": "\tpublic static class SpawnWeightContextFactory"
+    },
+    {
+      "line": 12004,
+      "text": "\tpublic class SpawnWeightsPreset : IWeighted, IContextualWeighted<SpawnWeightContext>"
+    },
+    {
+      "line": 12095,
+      "text": "\tpublic class InteriorWeightTransformer : WeightTransformer<DawnDungeonInfo>"
+    },
+    {
+      "line": 12139,
+      "text": "\tpublic class MoonWeightTransformer : WeightTransformer<DawnMoonInfo>"
+    },
+    {
+      "line": 12183,
+      "text": "\tpublic class RoutePriceWeightTransformer : WeightTransformer<int>"
+    },
+    {
+      "line": 12243,
+      "text": "\tpublic class WeatherWeightTransformer : WeightTransformer<DawnWeatherEffectInfo?>"
+    },
+    {
+      "line": 12290,
+      "text": "\tpublic abstract class WeightTransformer<TContext>"
+    },
+    {
+      "line": 12320,
+      "text": "\tinternal static class WeightTransformerTagLogic"
+    },
+    {
+      "line": 12378,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 12381,
+      "text": "\tinternal sealed class IgnoresAccessChecksToAttribute : Attribute"
+    },
+    {
+      "line": 12388,
+      "text": "namespace __GEN"
+    },
+    {
+      "line": 12390,
+      "text": "\tinternal class NetworkVariableSerializationHelper"
+    },
+    {
+      "line": 12398,
+      "text": "namespace com.github.teamxiaolan.dawnlib.dusk.NetcodePatcher"
+    },
+    {
+      "line": 12401,
+      "text": "\tinternal class NetcodePatchedAssemblyAttribute : Attribute"
+    }
+  ],
+  "spawn_surface_hits": [
+    {
+      "line": 1720,
+      "text": "\t\t\t\tGameObject val = Object.Instantiate<GameObject>(_achievementUIElementPrefab, _achievementsContainer.transform);"
+    },
+    {
+      "line": 1792,
+      "text": "\t\t\t\t\tGameObject val = Object.Instantiate<GameObject>(_achievementModUIElementPrefab, _modContents.transform);"
+    },
+    {
+      "line": 1917,
+      "text": "\t\t\t\tGameObject achievementElement = Object.Instantiate<GameObject>(_achievementGetUIElementPrefab, achievementContent.transform);"
+    },
+    {
+      "line": 3306,
+      "text": "\t\t\tGameObject val2 = Object.Instantiate<GameObject>(((Component)NewParticleSystem).gameObject, val.transform.parent);"
+    },
+    {
+      "line": 3798,
+      "text": "\t\t\t\tDatePredicate = Object.Instantiate<DatePredicate>(DatePredicate);"
+    },
+    {
+      "line": 3852,
+      "text": "\t\t\t\t\tGameObject val3 = Object.Instantiate<GameObject>(gameObjectAddon.GameObjectToCreate, val.transform);"
+    },
+    {
+      "line": 3857,
+      "text": "\t\t\t\t\t\tval2.Spawn(false);"
+    },
+    {
+      "line": 7118,
+      "text": "\t\t\t\tval = Object.Instantiate<GameObject>(TemporaryEffectObject);"
+    },
+    {
+      "line": 7128,
+      "text": "\t\t\t\tval2 = Object.Instantiate<GameObject>(PermanentEffectObject);"
+    },
+    {
+      "line": 8041,
+      "text": "\t\t\tGameObject clonedButton = Object.Instantiate<GameObject>(quitButton, mainButtonsTransform);"
+    },
+    {
+      "line": 9507,
+      "text": "\t\t\t\tObject.Instantiate<GameObject>(DuskPlugin.DuskMain.AchievementGetUICanvasPrefab);"
+    },
+    {
+      "line": 9530,
+      "text": "\t\t\tGameObject val = Object.Instantiate<GameObject>(DuskPlugin.DuskMain.AchievementUICanvasPrefab, ((Component)menuManager).transform.parent.Find(\"MenuContainer\"));"
+    },
+    {
+      "line": 9534,
+      "text": "\t\t\t\tObject.Instantiate<GameObject>(DuskPlugin.DuskMain.AchievementGetUICanvasPrefab);"
+    },
+    {
+      "line": 11318,
+      "text": "\t\t\t\tGameObject val = Object.Instantiate<GameObject>(DuskPlugin.DawnLibMainNetwork.NetworkerPrefab);"
+    },
+    {
+      "line": 11320,
+      "text": "\t\t\t\tval.GetComponent<NetworkObject>().Spawn(false);"
+    },
+    {
+      "line": 11521,
+      "text": "\t\t\tGameObject val = Object.Instantiate<GameObject>(vehicleDefinition.BuyableVehiclePreset.VehiclePrefab, RoundManager.Instance.VehiclesContainer);"
+    },
+    {
+      "line": 11522,
+      "text": "\t\t\tval.GetComponent<NetworkObject>().Spawn(false);"
+    },
+    {
+      "line": 11525,
+      "text": "\t\t\t\tObject.Instantiate<GameObject>(vehicleDefinition.BuyableVehiclePreset.SecondaryPrefab, RoundManager.Instance.VehiclesContainer).GetComponent<NetworkObject>().Spawn(false);"
+    }
+  ],
+  "owner_or_patch_hits": [
+    {
+      "line": 3863,
+      "text": "\tpublic class DuskEnemyReplacementDefinition : DuskEntityReplacementDefinition<EnemyAI>"
+    },
+    {
+      "line": 3882,
+      "text": "\t\tpublic override IEnumerator Apply(EnemyAI ai, bool immediate = false)"
+    },
+    {
+      "line": 3887,
+      "text": "\t\tpublic virtual IEnumerator ApplyNest(EnemyAINestSpawnObject nest, bool immediate = false)"
+    },
+    {
+      "line": 3908,
+      "text": "\tpublic abstract class DuskEnemyReplacementDefinition<T> : DuskEnemyReplacementDefinition where T : EnemyAI"
+    },
+    {
+      "line": 3912,
+      "text": "\t\tpublic override IEnumerator Apply(EnemyAI enemyAI, bool immediate = false)"
+    },
+    {
+      "line": 3933,
+      "text": "\t\tpublic static bool TryGetEnemyReplacement(this EnemyAI enemyAI, [NotNullWhen(true)] out DuskEnemyReplacementDefinition? replacement)"
+    },
+    {
+      "line": 3941,
+      "text": "\t\tpublic static DuskEnemyReplacementDefinition? GetEnemyReplacement(this EnemyAI enemyAI)"
+    },
+    {
+      "line": 3947,
+      "text": "\t\tinternal static void SetEnemyReplacement(this EnemyAI enemyAI, DuskEnemyReplacementDefinition enemyReplacementDefinition)"
+    },
+    {
+      "line": 3955,
+      "text": "\t\tpublic static DuskEnemyReplacementDefinition? GetNestReplacement(this EnemyAINestSpawnObject nest)"
+    },
+    {
+      "line": 3961,
+      "text": "\t\tinternal static bool HasNestReplacement(this EnemyAINestSpawnObject nest)"
+    },
+    {
+      "line": 3966,
+      "text": "\t\tinternal static void SetNestReplacement(this EnemyAINestSpawnObject nestSpawnObject, DuskEnemyReplacementDefinition enemyReplacementDefinition)"
+    },
+    {
+      "line": 4208,
+      "text": "\t\t\t\tDawnMoonInfo dawnInfo = SelectableLevelExtensions.GetDawnInfo(RoundManager.Instance.currentLevel);"
+    },
+    {
+      "line": 4209,
+      "text": "\t\t\t\tRuntimeDungeon dungeonGenerator = RoundManager.Instance.dungeonGenerator;"
+    },
+    {
+      "line": 4389,
+      "text": "\t\t\t\tDawnMoonInfo dawnInfo = SelectableLevelExtensions.GetDawnInfo(RoundManager.Instance.currentLevel);"
+    },
+    {
+      "line": 9622,
+      "text": "\t\t\tpublic static Action<Action<EnemyAINestSpawnObject>, EnemyAINestSpawnObject> <10>__OnNestSpawnAwake;"
+    },
+    {
+      "line": 9659,
+      "text": "\t\t\tpublic static Func<AudioClip[], EnemyAI, AudioClip[]> <>9__24_0;"
+    },
+    {
+      "line": 9729,
+      "text": "\t\t\tinternal AudioClip[] <DynamicallyReplaceAudioClips>b__24_0(AudioClip[] existingAudioClips, EnemyAI self)"
+    },
+    {
+      "line": 9861,
+      "text": "\t\tprivate static readonly Dictionary<string, Func<AudioClip, EnemyAI, AudioClip?>> clipReplacerFunctions = new Dictionary<string, Func<AudioClip, EnemyAI, AudioClip>>"
+    },
+    {
+      "line": 10103,
+      "text": "\t\t\t\tEnemyAI.Start += (hook_Start)obj2;"
+    },
+    {
+      "line": 10119,
+      "text": "\t\t\t\tEnemyAI.UseNestSpawnObject += (hook_UseNestSpawnObject)obj4;"
+    },
+    {
+      "line": 10165,
+      "text": "\t\t\tDawnPlugin.Hooks.Add(new Hook((MethodBase)AccessTools.DeclaredMethod(typeof(EnemyAINestSpawnObject), \"Awake\", (Type[])null, (Type[])null), (Delegate)new Action<Action<EnemyAINestSpawnObject>, EnemyAINestSpawnObject>(OnNestSpawnAwake)));"
+    },
+    {
+      "line": 10174,
+      "text": "\t\t\tEnemyAI.HitEnemy += (Manipulator)obj8;"
+    },
+    {
+      "line": 10182,
+      "text": "\t\t\tEnemyAI.SetEnemyStunned += (Manipulator)obj9;"
+    },
+    {
+      "line": 10969,
+      "text": "\t\t\tDawnMoonInfo dawnInfo = SelectableLevelExtensions.GetDawnInfo(RoundManager.Instance.currentLevel);"
+    },
+    {
+      "line": 10970,
+      "text": "\t\t\tRuntimeDungeon dungeonGenerator = RoundManager.Instance.dungeonGenerator;"
+    },
+    {
+      "line": 11017,
+      "text": "\t\tprivate static void ReplaceEnemyEntityUsingNest(orig_UseNestSpawnObject orig, EnemyAI self, EnemyAINestSpawnObject nestSpawnObject)"
+    },
+    {
+      "line": 11051,
+      "text": "\t\t\t\t\t\tval.EmitDelegate<Func<AudioClip[], EnemyAI, AudioClip[]>>((Func<AudioClip[], EnemyAI, AudioClip[]>)((AudioClip[] existingAudioClips, EnemyAI self) => (!self.TryGetEnemyReplacement(out DuskEnemyReplacementDefinition replacement)) ? existingAudioClips : replacement.AudioClips));"
+    },
+    {
+      "line": 11062,
+      "text": "\t\t\t\t\t\t\t\tval.EmitDelegate<Func<AudioClip, EnemyAI, AudioClip>>(func2);"
+    },
+    {
+      "line": 11073,
+      "text": "\t\tprivate static Func<AudioClip?, EnemyAI, AudioClip?> GenerateAudioClipReplacer(Func<DuskEnemyReplacementDefinition, AudioClip?> generator)"
+    },
+    {
+      "line": 11075,
+      "text": "\t\t\treturn delegate(AudioClip? existing, EnemyAI self)"
+    },
+    {
+      "line": 11120,
+      "text": "\t\tprivate static void OnNestSpawnAwake(Action<EnemyAINestSpawnObject> orig, EnemyAINestSpawnObject self)"
+    },
+    {
+      "line": 11146,
+      "text": "\t\t\tDawnMoonInfo dawnInfo = SelectableLevelExtensions.GetDawnInfo(RoundManager.Instance.currentLevel);"
+    },
+    {
+      "line": 11147,
+      "text": "\t\t\tRuntimeDungeon dungeonGenerator = RoundManager.Instance.dungeonGenerator;"
+    },
+    {
+      "line": 11214,
+      "text": "\t\tprivate static void ReplaceEnemyEntity(orig_Start orig, EnemyAI self)"
+    },
+    {
+      "line": 11241,
+      "text": "\t\t\t\tDawnMoonInfo dawnInfo = SelectableLevelExtensions.GetDawnInfo(RoundManager.Instance.currentLevel);"
+    },
+    {
+      "line": 11242,
+      "text": "\t\t\t\tRuntimeDungeon dungeonGenerator = RoundManager.Instance.dungeonGenerator;"
+    },
+    {
+      "line": 11521,
+      "text": "\t\t\tGameObject val = Object.Instantiate<GameObject>(vehicleDefinition.BuyableVehiclePreset.VehiclePrefab, RoundManager.Instance.VehiclesContainer);"
+    },
+    {
+      "line": 11525,
+      "text": "\t\t\t\tObject.Instantiate<GameObject>(vehicleDefinition.BuyableVehiclePreset.SecondaryPrefab, RoundManager.Instance.VehiclesContainer).GetComponent<NetworkObject>().Spawn(false);"
+    },
+    {
+      "line": 11943,
+      "text": "\t\t\tRoundManager instance = RoundManager.Instance;"
+    },
+    {
+      "line": 11955,
+      "text": "\t\t\tRoundManager instance2 = RoundManager.Instance;"
+    },
+    {
+      "line": 11989,
+      "text": "\t\t\tSelectableLevel val5 = RoundManager.Instance?.currentLevel;"
+    }
+  ],
+  "decompiler_stderr": "",
+  "decompiler_annotation_count": 836,
+  "qualification": "Source token discovery only: hits include non-enemy spawns, declarations and inactive code. No patch approval or exhaustive game/mod coverage. Dependencies may remain unresolved."
+}
