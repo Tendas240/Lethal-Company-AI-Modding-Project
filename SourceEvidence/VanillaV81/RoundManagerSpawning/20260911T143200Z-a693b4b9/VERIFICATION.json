@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "CAPTURE_BYTES_AND_DECLARATION_INVENTORY_VERIFIED",
+  "capture_commit": "fa7c090b075d84b6a2e9e8674aa19fea339c788e",
+  "repository_main_at_capture": "49337f84356c68a7a52ad3d3937d8b039ca1070a",
+  "checks": {
+    "all_required_methods_present": true,
+    "app_build_match_prior": true,
+    "assembly_matches_prior": true,
+    "capture_parent_matches_current_main": true,
+    "exact_report_signature_list": true,
+    "exe_matches_prior": true,
+    "no_throw_null_stub": true,
+    "reviewed_manifest": true,
+    "within_line_cap": true
+  },
+  "selected_method_blocks": 27,
+  "required_method_names": 19,
+  "files": [
+    {
+      "file": "ROUNDMANAGER_SPAWNING_FOCUSED_DECOMPILE.txt",
+      "bytes": 43505,
+      "sha256": "5317509a39e072db2c3df95de1cb9091dd9f7ff7e1a3bfe231045dea9cfc974f",
+      "git_blob_sha1": "c0f73d41650512af9437e74f4e4a1b9d5a7e62ed"
+    },
+    {
+      "file": "MANIFEST.json",
+      "bytes": 7203,
+      "sha256": "6aee2ac7700df0cfdddc419c88e6c547f0a8963b5b777ad5d36cf572cad1aa25",
+      "git_blob_sha1": "c2f3adeb764309ca7af71cd8114f6979e9318b64"
+    }
+  ],
+  "limitations": [
+    "Full local type source and game binaries are excluded; their recorded hashes are not independently rehashed from this upload.",
+    "Focused method bodies do not prove exhaustive game/mod spawn ownership or complete patch safety.",
+    "No gameplay acceptance or diagnostic build."
+  ]
+}
