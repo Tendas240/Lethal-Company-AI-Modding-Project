@@ -1,6 +1,6 @@
 #requires -Version 5.1
 [CmdletBinding()]
-param([switch]$SelfTest)
+param([switch]$SelfTest, [switch]$BootstrapSelfTest)
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 2.0
 $RepositoryName = 'Tendas240/Lethal-Company-AI-Modding-Project'
@@ -122,17 +122,61 @@ function Resolve-AssemblyPath {
     return $unique[0]
 }
 
+function ConvertTo-NativeArgument {
+    param([AllowEmptyString()][string]$Value)
+    $escaped = [regex]::Replace($Value, '(\\*)"', '$1$1\"')
+    return '"' + [regex]::Replace($escaped, '(\\+)$', '$1$1') + '"'
+}
+function Invoke-NativeProcess {
+    param([string]$FilePath, [string[]]$Arguments)
+    $start = New-Object Diagnostics.ProcessStartInfo
+    $start.FileName = $FilePath
+    $start.Arguments = (($Arguments | ForEach-Object { ConvertTo-NativeArgument $_ }) -join ' ')
+    $start.UseShellExecute = $false
+    $start.CreateNoWindow = $true
+    $start.RedirectStandardOutput = $true
+    $start.RedirectStandardError = $true
+    $process = New-Object Diagnostics.Process
+    $process.StartInfo = $start
+    try {
+        if (-not $process.Start()) { throw ('Failed to start native executable: ' + $FilePath) }
+        $stdoutTask = $process.StandardOutput.ReadToEndAsync()
+        $stderrTask = $process.StandardError.ReadToEndAsync()
+        $process.WaitForExit()
+        return [pscustomobject]@{
+            ExitCode = $process.ExitCode
+            StdOut = $stdoutTask.GetAwaiter().GetResult()
+            StdErr = $stderrTask.GetAwaiter().GetResult()
+        }
+    }
+    finally { $process.Dispose() }
+}
+function Invoke-CheckedNativeProcess {
+    param([string]$FilePath, [string[]]$Arguments, [string]$Label)
+    $result = Invoke-NativeProcess -FilePath $FilePath -Arguments $Arguments
+    if (-not [string]::IsNullOrWhiteSpace($result.StdErr)) {
+        Write-Host ($Label + ' stderr:') -ForegroundColor Yellow
+        Write-Host $result.StdErr
+    }
+    if ($result.ExitCode -ne 0) {
+        if (-not [string]::IsNullOrWhiteSpace($result.StdOut)) { Write-Host $result.StdOut }
+        throw ($Label + ' failed with exit code ' + $result.ExitCode + '. See captured output above.')
+    }
+    return $result.StdOut
+}
+
 function Ensure-DotNetAndIlSpy {
-    param([Parameter(Mandatory = $true)][string]$TempRoot)
+    param([Parameter(Mandatory = $true)][string]$TempRoot, [switch]$ForceIsolatedSdk)
 
     $toolDir = Join-Path $TempRoot 'ilspy-tool'
     New-Item -ItemType Directory -Path $toolDir -Force | Out-Null
 
     $dotnetExe = $null
     $dotnet = Get-Command dotnet -ErrorAction SilentlyContinue
-    if ($dotnet) {
-        $sdkList = & $dotnet.Source --list-sdks 2>$null
-        if ($LASTEXITCODE -eq 0 -and @($sdkList | Where-Object { $_ -match '^10\.' }).Count -gt 0) {
+    if ($dotnet -and -not $ForceIsolatedSdk) {
+        $sdkResult = Invoke-NativeProcess -FilePath $dotnet.Source -Arguments @('--list-sdks')
+        $sdkList = $sdkResult.StdOut -split '\r?\n'
+        if ($sdkResult.ExitCode -eq 0 -and @($sdkList | Where-Object { $_ -match '^10\.' }).Count -gt 0) {
             $dotnetExe = $dotnet.Source
         }
     }
@@ -142,14 +186,12 @@ function Ensure-DotNetAndIlSpy {
         $dotnetDir = Join-Path $TempRoot 'dotnet'
         $installer = Join-Path $TempRoot 'dotnet-install.ps1'
         Invoke-WebRequest -UseBasicParsing 'https://dot.net/v1/dotnet-install.ps1' -OutFile $installer
-        $dotnetInstallOutput = @(& powershell.exe -NoProfile -ExecutionPolicy Bypass -File $installer -Channel '10.0' -InstallDir $dotnetDir -NoPath 2>&1)
-        $dotnetInstallExitCode = $LASTEXITCODE
-        foreach ($line in $dotnetInstallOutput) {
-            Write-Host ([string]$line)
-        }
-        if ($dotnetInstallExitCode -ne 0) {
-            throw 'Failed to bootstrap the temporary .NET 10 SDK.'
-        }
+        $powershellExe = (Get-Command powershell.exe -ErrorAction Stop).Source
+        $dotnetInstallOutput = Invoke-CheckedNativeProcess -FilePath $powershellExe -Arguments @(
+            '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $installer,
+            '-Channel', '10.0', '-InstallDir', $dotnetDir, '-NoPath'
+        ) -Label 'Isolated .NET SDK installation'
+        Write-Host $dotnetInstallOutput
         $dotnetExe = Join-Path $dotnetDir 'dotnet.exe'
     }
 
@@ -166,20 +208,18 @@ function Ensure-DotNetAndIlSpy {
     [IO.File]::WriteAllText($nugetConfig, $nugetConfigText, (New-Object Text.UTF8Encoding($false)))
 
     Write-Step "Installing isolated ilspycmd $IlSpyVersion using an isolated NuGet config."
-    & $dotnetExe tool install ilspycmd --tool-path $toolDir --version $IlSpyVersion --configfile $nugetConfig --disable-parallel 2>&1 | ForEach-Object { Write-Host $_ }
-    if ($LASTEXITCODE -ne 0) {
-        throw "Failed to install ilspycmd $IlSpyVersion from explicit source $NuGetSource."
-    }
+    $toolInstallOutput = Invoke-CheckedNativeProcess -FilePath $dotnetExe -Arguments @(
+        'tool', 'install', 'ilspycmd', '--tool-path', $toolDir, '--version',
+        $IlSpyVersion, '--configfile', $nugetConfig, '--disable-parallel'
+    ) -Label 'ILSpy installation'
+    Write-Host $toolInstallOutput
 
     $ilspyDllMatches = @(Get-ChildItem -LiteralPath $toolDir -Recurse -File -Filter 'ilspycmd.dll')
     if ($ilspyDllMatches.Count -ne 1) {
         throw ('Expected exactly one ilspycmd.dll in the isolated tool directory, found: ' + $ilspyDllMatches.Count)
     }
 
-    $launcher = Join-Path $TempRoot 'run-ilspycmd.cmd'
-    $launcherText = "@echo off`r`n`"$dotnetExe`" `"$($ilspyDllMatches[0].FullName)`" %*`r`nexit /b %ERRORLEVEL%`r`n"
-    [IO.File]::WriteAllText($launcher, $launcherText, (New-Object Text.ASCIIEncoding))
-    return $launcher
+    return [pscustomobject]@{ DotNet = $dotnetExe; IlSpyDll = $ilspyDllMatches[0].FullName }
 }
 
 
@@ -272,6 +312,60 @@ function New-EvidenceTreeEntries {
         @{ path = ($Directory + '/' + $ReportName); mode = '100644'; type = 'blob'; content = $Report },
         @{ path = ($Directory + '/MANIFEST.json'); mode = '100644'; type = 'blob'; content = $Manifest }
     )
+}
+
+
+function Invoke-NativeProcessSelfTest {
+    $temp = Join-Path ([IO.Path]::GetTempPath()) ('lc-native test-' + [guid]::NewGuid().ToString('N'))
+    New-Item -ItemType Directory -Path $temp -Force | Out-Null
+    try {
+        $fixture = Join-Path $temp 'native fixture.ps1'
+        $fixtureText = @'
+param([int]$Code, [string]$Value)
+[Console]::Out.WriteLine('OUT:' + $Value)
+[Console]::Error.WriteLine('ERR:diagnostic')
+exit $Code
+'@
+        [IO.File]::WriteAllText($fixture, $fixtureText, $Utf8)
+        $exe = (Get-Command powershell.exe -ErrorAction Stop).Source
+        foreach ($value in @('', 'space value', 'a"b', 'backslash\"quote', 'trailing\', 'two\\')) {
+            $arguments = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $fixture, '-Code', '0', '-Value', $value)
+            $result = Invoke-NativeProcess -FilePath $exe -Arguments $arguments
+            if ($result.ExitCode -ne 0 -or $result.StdOut.TrimEnd() -cne ('OUT:' + $value) -or $result.StdErr.TrimEnd() -cne 'ERR:diagnostic') {
+                throw 'Native stdout/stderr/argument preservation test failed.'
+            }
+        }
+        $arguments = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $fixture, '-Code', '0', '-Value', 'checked')
+        $output = Invoke-CheckedNativeProcess -FilePath $exe -Arguments $arguments -Label 'Success with stderr fixture'
+        if ($output.TrimEnd() -cne 'OUT:checked') { throw 'Successful stderr incorrectly rejected.' }
+        $arguments[6] = '7'
+        $rejected = $false
+        try { Invoke-CheckedNativeProcess -FilePath $exe -Arguments $arguments -Label 'Failure fixture' | Out-Null }
+        catch {
+            if ($_.Exception.Message -notmatch 'exit code 7') { throw }
+            $rejected = $true
+        }
+        if (-not $rejected) { throw 'Nonzero native exit was not rejected.' }
+        $rejected = $false
+        try { Invoke-NativeProcess -FilePath (Join-Path $temp 'missing.exe') -Arguments @() | Out-Null } catch { $rejected = $true }
+        if (-not $rejected) { throw 'Native launch failure was not rejected.' }
+        Write-Host 'PASS: native stdout/stderr, argument boundaries, successful stderr, nonzero exit and launch failure.'
+    }
+    finally { Remove-Item -LiteralPath $temp -Recurse -Force -ErrorAction SilentlyContinue }
+}
+function Invoke-BootstrapSelfTest {
+    $temp = Join-Path ([IO.Path]::GetTempPath()) ('lc-bootstrap test-' + [guid]::NewGuid().ToString('N'))
+    New-Item -ItemType Directory -Path $temp -Force | Out-Null
+    try {
+        $tool = Ensure-DotNetAndIlSpy -TempRoot $temp -ForceIsolatedSdk
+        $version = Invoke-CheckedNativeProcess -FilePath $tool.DotNet -Arguments @($tool.IlSpyDll, '--version') -Label 'ILSpy version'
+        Write-Host $version
+        if ($version -notmatch ('(?m)^ilspycmd: ' + [regex]::Escape($IlSpyVersion) + '\s*$')) {
+            throw 'Installed ILSpy did not report the pinned version.'
+        }
+        Write-Host 'PASS: fresh isolated .NET 10 SDK, pinned ILSpy installation and direct version execution.'
+    }
+    finally { Remove-Item -LiteralPath $temp -Recurse -Force -ErrorAction SilentlyContinue }
 }
 
 function Invoke-ProvenanceSelfTest {
@@ -379,7 +473,9 @@ function Invoke-RepoApi {
     if ($LASTEXITCODE -ne 0) { throw ('GitHub API operation failed: ' + $Method + ' ' + $Endpoint + '. No main-branch write was attempted.') }
     return (($output -join [Environment]::NewLine) | ConvertFrom-Json)
 }
-if ($SelfTest) { Invoke-ProvenanceSelfTest; Invoke-ExtractorSelfTest; return }
+if ($SelfTest -and $BootstrapSelfTest) { throw 'Select only one self-test mode.' }
+if ($SelfTest) { Invoke-NativeProcessSelfTest; Invoke-ProvenanceSelfTest; Invoke-ExtractorSelfTest; return }
+if ($BootstrapSelfTest) { Invoke-BootstrapSelfTest; return }
 $script:CaptureTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('lc-roundmanager-v81-' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $script:CaptureTempRoot -Force | Out-Null
 try {
@@ -413,14 +509,11 @@ try {
     $priorFile = Invoke-RepoApi ('contents/' + $PriorManifest + '?ref=' + $repositoryMain)
     $prior = $Utf8.GetString([Convert]::FromBase64String($priorFile.content)) | ConvertFrom-Json
     if ($prior.source_assembly.sha256 -ne $ExpectedAssemblySha256 -or $prior.game_executable.sha256 -ne $ExpectedExeSha256 -or $prior.steam.buildid -ne $ExpectedSteamBuildId -or $prior.steam.app_id -ne $SteamAppId -or $prior.steam.appmanifest_sha256 -ne $ExpectedAppManifestSha256) { throw 'Current repository prior evidence disagrees with the pinned installed-game contract.' }
-    $ilspyResult = @(Ensure-DotNetAndIlSpy -TempRoot $script:CaptureTempRoot)
-    if ($ilspyResult.Count -ne 1) { throw 'Decompiler bootstrap returned unexpected output.' }
-    $ilspy = [string]$ilspyResult[0]
+    $ilspy = Ensure-DotNetAndIlSpy -TempRoot $script:CaptureTempRoot
     Write-Step 'Extracting the exact RoundManager type locally.'
-    $stderr = Join-Path $script:CaptureTempRoot 'decompiler-error.txt'
-    $sourceLines = & $ilspy -t 'RoundManager' -r $managedDir $assemblyPath 2>$stderr
-    if ($LASTEXITCODE -ne 0) { throw 'RoundManager decompile failed. No evidence was uploaded.' }
-    $source = $sourceLines -join [Environment]::NewLine
+    $source = Invoke-CheckedNativeProcess -FilePath $ilspy.DotNet -Arguments @(
+        $ilspy.IlSpyDll, '-t', 'RoundManager', '-r', $managedDir, $assemblyPath
+    ) -Label 'RoundManager decompile'
     if ([string]::IsNullOrWhiteSpace($source)) { throw 'Decompiler returned empty source.' }
     $methods = @(Get-FocusedMethods -Source $source -Required $RequiredMethods)
     $builder = New-Object Text.StringBuilder
