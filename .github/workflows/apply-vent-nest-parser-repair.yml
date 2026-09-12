@@ -20,11 +20,8 @@ jobs:
           from pathlib import Path
           path = Path('AnalysisTools/InspectVentNestLifecycleV81.ps1')
           text = path.read_text(encoding='utf-8')
-          old = '''        $declaredName = $nameMatch.Groups['name'].Value.Trim("'")
-              if ($declaredName -ceq $simpleName) { $headers += $candidate }'''.replace('              ', '        ')
-          new = '''        $declaredName = $nameMatch.Groups['name'].Value.Trim("'")
-              $declaredSimpleName = Get-IlSimpleTypeName -TypeName $declaredName
-              if ($declaredSimpleName -ceq $simpleName) { $headers += $candidate }'''.replace('              ', '        ')
+          old = "        if ($declaredName -ceq $simpleName) { $headers += $candidate }"
+          new = "        $declaredSimpleName = Get-IlSimpleTypeName -TypeName $declaredName\n        if ($declaredSimpleName -ceq $simpleName) { $headers += $candidate }"
           count = text.count(old)
           if count != 1:
               raise SystemExit(f'expected exactly one declared-name comparison, found {count}')
