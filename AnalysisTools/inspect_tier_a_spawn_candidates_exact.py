@@ -66,7 +66,7 @@ EXPECTED = (
         "version": "1.13.1",
         "zip_sha256": "60c64b5df528d62491b7f584d8ec3d14c41c9c3cd46b8d9c3fb1f6e230dec95b",
         "member": "Snowlance.SnowyLib.dll",
-        "dll_sha256": "cdbb80c8b0afa3e65acae83e25bd00fb704cefb2e14ccc561f1d959b0c3c95",
+        "dll_sha256": "cdbb80c8b0afa3e65acae83e25bd00fb704cefbeb2e14ccc561f1d959b0c3c95",
         "source_sha256": "0b9b13fdc95cfb827eb5de2cdbd3ba94b6405d315af29e5ba1b13210f1e68d36",
         "stem": "SnowyLib-1.13.1",
     },
