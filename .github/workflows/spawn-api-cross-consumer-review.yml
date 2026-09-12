@@ -1,0 +1,69 @@
+name: Review S1.42AI spawn API cross-assembly consumers
+
+on:
+  push:
+    branches:
+      - analysis/s142ai-cross-assembly-consumers
+    paths:
+      - 'AnalysisTools/inspect_spawn_api_cross_consumers.py'
+      - '.github/workflows/spawn-api-cross-consumer-review.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    name: scan shard ${{ matrix.shard }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Install pinned ILSpy
+        run: dotnet tool install --global ilspycmd --version 11.0.0.9375
+      - name: Scan exact enabled package and embedded DLL bytes
+        env:
+          SHARD_INDEX: ${{ matrix.shard }}
+          SHARD_COUNT: 12
+          CONSUMER_OUTPUT: cross-consumer-output
+        run: python AnalysisTools/inspect_spawn_api_cross_consumers.py
+      - name: Preserve shard evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-cross-consumer-shard-${{ matrix.shard }}
+          path: cross-consumer-output/
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    name: verify complete cross-assembly consumer coverage
+    needs: scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download all shard evidence
+        uses: actions/download-artifact@v4
+        with:
+          pattern: s142ai-cross-consumer-shard-*
+          path: cross-consumer-shards
+      - name: Verify exact coverage and aggregate consumers
+        run: python AnalysisTools/inspect_spawn_api_cross_consumers.py --aggregate cross-consumer-shards --shard-count 12 --output cross-consumer-aggregate
+      - name: Preserve aggregate evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-spawn-api-cross-consumer-review
+          path: cross-consumer-aggregate/
+          if-no-files-found: error
+          retention-days: 90
