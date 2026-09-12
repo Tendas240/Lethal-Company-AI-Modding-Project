@@ -34,7 +34,7 @@ jobs:
           SHARD_INDEX: ${{ matrix.shard }}
           SHARD_COUNT: 12
           OWNER_OUTPUT: remaining-owner-output
-        run: python AnalysisTools/inspect_remaining_spawn_owners.py
+        run: python -c "import AnalysisTools.inspect_remaining_spawn_owners as m; m.MAX_DLL_BYTES=512*1024*1024; m.main()"
       - name: Preserve shard evidence
         if: always()
         uses: actions/upload-artifact@v4
