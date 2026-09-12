@@ -1,0 +1,70 @@
+name: S1.42AI S139 Source-DLL Exact Rebuild Review
+
+on:
+  push:
+    branches:
+      - analysis/s142ai-s139-source-dll-rebuild-exact
+    paths:
+      - "AnalysisTools/inspect_s139_source_dll_rebuild_exact.py"
+      - ".github/workflows/s139-source-dll-rebuild-exact-review.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: s142ai-s139-source-dll-rebuild-exact
+  cancel-in-progress: false
+
+jobs:
+  exact-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact analysis head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up historical build .NET line
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Install pinned ILSpy
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .tools
+          dotnet tool install ilspycmd --tool-path .tools --version 11.0.0.9375
+          ./.tools/ilspycmd --version
+
+      - name: Rebuild and compare exact S139 runtime DLL
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/s139-source-dll-rebuild-exact"
+          rm -rf "$OUT"
+          python AnalysisTools/inspect_s139_source_dll_rebuild_exact.py \
+            --output-dir "$OUT" \
+            --ilspy .tools/ilspycmd
+
+      - name: Verify analysis did not mutate tracked repository state
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=no)"
+
+      - name: Upload exact rebuild evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-s139-source-dll-rebuild-exact
+          if-no-files-found: error
+          retention-days: 30
+          path: ${{ runner.temp }}/s139-source-dll-rebuild-exact
