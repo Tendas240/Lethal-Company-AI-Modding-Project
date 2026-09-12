@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_TIER_F_REVIEW_COMPLETE_PATCH_SAFETY_PARTIAL_NOT_BUILD_READY",
+  "canonical_main": "2eac9f13eeadeb37989f397afa0e07d7c03a01fe",
+  "exact_review": {
+    "run_id": 34714066827,
+    "run_number": 1,
+    "head": "acc5d96b1a1b4b2a31d720a2cbce57d7785f0d69",
+    "artifact_id": 10304281875,
+    "artifact_name": "s142ai-tier-f-spawn-candidates-exact",
+    "artifact_zip_sha256": "69c00cbbb6b543a6396e96d1a268801203b1ebd3182742260ebf0494de909858",
+    "discovery_run": 34705334804,
+    "discovery_head": "45d22c3fa1abb3bbd95dd137cd3903eb053f87c7",
+    "decompiler": {
+      "tool": "ilspycmd",
+      "version": "11.0.0.9375"
+    },
+    "provenance_gates": [
+      "exact_package_zip_sha256",
+      "exact_dll_member_and_sha256",
+      "exact_discovery_il_sha256",
+      "exact_discovery_complete_source_sha256"
+    ]
+  },
+  "packages_reviewed": 6,
+  "assemblies_reviewed": 6,
+  "assemblies": [
+    {
+      "package": "zealsprince-Locker",
+      "version": "1.6.3",
+      "package_zip_sha256": "3311242edb634841aacf9977185d42d4077d6c28c8bec9e6381fac729ed0b61c",
+      "member": "Locker.dll",
+      "dll_sha256": "b8ab49f52e3d3cb9f7d9c7cdbca191559de84bd11df5a458669393a78d1e424d",
+      "source_sha256": "bdc94c00806d2223e6b87c5cef0322fc413ae88cf6e3dfdaffb472c23106730f",
+      "il_sha256": "25b006b8acd875797e5fe545dbaf8dcccf629adf595ea59fee0808cf14d4f8b1",
+      "classification": "ENEMY_DEFINITION_AND_LETHALLIB_REGISTRATION_OWNER_NO_DIRECT_INSTANCE_SPAWN",
+      "exact_behavior": [
+        "loads Locker EnemyType and registers enemyPrefab with LethalLib NetworkPrefabs",
+        "sets PowerLevel and MaxCount and registers the EnemyType into LethalLib level pools",
+        "defines LockerAI deriving from EnemyAI",
+        "generic Assets.SpawnPrefab helper instantiates from an internal prefab dictionary but has no internal caller",
+        "other Instantiate site creates StartOfRound explosionPrefab"
+      ]
+    },
+    {
+      "package": "Cabinet_crew-TheCabinet",
+      "version": "1.12.1",
+      "package_zip_sha256": "7376507414dad60a25caa50977f34a43b5639cfe0fa5fa810f12b45be057361d",
+      "member": "plugins/TheCabinet/VectorV.TheCabinet.dll",
+      "dll_sha256": "c3effc72f5c845437998bf4e5765d2a7474f5ef99196eda9b41d0b50dc5ef134",
+      "source_sha256": "0bedfe8ec64b0a39090f6abf45d8ecfbdc79d5d5c18f29acc38db0087dc34f4f",
+      "il_sha256": "40ecf6f3b75216ed0d855abe2c9e1a74a42ba16be7f2460f95db9669762e7864",
+      "classification": "ENEMY_DEFINITION_AND_LETHALLIB_REGISTRATION_OWNER_NO_DIRECT_INSTANCE_SPAWN",
+      "exact_behavior": [
+        "loads TheCabinet EnemyType and registers enemyPrefab with LethalLib NetworkPrefabs",
+        "registers the EnemyType through LethalLib Enemies.RegisterEnemy with configured moon rarity maps",
+        "defines TheCabinetAI deriving from EnemyAI",
+        "sole Instantiate site creates a blood decal effect"
+      ]
+    },
+    {
+      "package": "Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior",
+      "version": "3.4.4",
+      "package_zip_sha256": "12921825bee51bfd46582989322a1f31183b65f59293c73654a102fb68d068b7",
+      "member": "BepInEx/plugins/BlackMesa.dll",
+      "dll_sha256": "a90f157becdc68ab7fe6898eefc2feaee98352a0f04b2cda414741729a048eef",
+      "source_sha256": "c7f18a074701a8b5bd41f8576cd6fcd83e736262f2ff87b8368c1a2bcc6cb376",
+      "il_sha256": "5ecbfe20d57ff3927ca844726dee9fc4e0eafae2ddca781ea0e8d67d555ba362",
+      "classification": "INTERIOR_HAZARD_ENEMYAI_ADAPTER_AND_DOWNSTREAM_LIFECYCLE_TRACKING_NOT_DIRECT_CREATOR",
+      "exact_behavior": [
+        "declares DummyEnemyAI deriving from EnemyAI as an adapter around IDumbEnemy hazards",
+        "DummyEnemyAI Start is empty and damage/stun/kill operations delegate to the wrapped hazard",
+        "DummyEnemyAI OnDestroy removes the adapter from RoundManager.SpawnedEnemies",
+        "Harmony postfixes track already-created EnemyAI instances at Start and OnDestroy",
+        "Instantiate sites create StartOfRound explosionPrefab and BlackMesaInterior.GenerationRulesPrefab",
+        "PatchNetworkManager.AddNetworkPrefab helper has no internal caller"
+      ]
+    },
+    {
+      "package": "NotezyTeam-EnemyHealthBars",
+      "version": "1.4.0",
+      "package_zip_sha256": "5fa0bec01e4a94595a280eecd2628a2c0bfe3dacba6be0e879d50478b2ded9d6",
+      "member": "NoteBoxz.EnemyHealthBars.dll",
+      "dll_sha256": "908095cee2d95e3c0cfcb11889d3fbd153cabb55e0578277eb69dac04c778bcc",
+      "source_sha256": "468a31ea8390433167755965bbab8142822cac11b14505e891aa57d393625079",
+      "il_sha256": "acd63d39f26849c2bd29b8a985489c51a1bdcc2514052774e197630b0c670741",
+      "classification": "DOWNSTREAM_ENEMY_START_UI_ATTACHMENT_NOT_CREATOR",
+      "exact_behavior": [
+        "Harmony postfix on EnemyAI.Start operates on an already-created EnemyAI instance",
+        "Instantiate site creates HPBarPrefab as a child of the existing enemy",
+        "no EnemyType registration or enemy creation primitive"
+      ]
+    },
+    {
+      "package": "DiggC-CruiserImproved",
+      "version": "1.6.3",
+      "package_zip_sha256": "a0e40bbe0f7fbb156694960396ea03321511b3149007fc7d9fb09ba5b4d815dc",
+      "member": "BepInEx/plugins/CruiserImproved/DiggC.CruiserImproved.dll",
+      "dll_sha256": "b161c2f87431e9265d6b909728157e52bfdbbfaa1f707ac2306ebd21aa3eef1e",
+      "source_sha256": "cd43cf6d8b914201e8c2559ba8e3c6e8b7255bc37fe6f0b01644405d7784c117",
+      "il_sha256": "9c34778c649fdcb03f589103274afa7125a215f82fa4a7421cccb4486507f02f",
+      "classification": "DOWNSTREAM_VEHICLE_ENEMY_COLLISION_AND_DAMAGE_COMPATIBILITY_NOT_CREATOR",
+      "exact_behavior": [
+        "reads existing EnemyAICollisionDetect and EnemyAI hit/death state for vehicle collision and damage compatibility",
+        "Instantiate sites create cruiser exhaust particle and copied cabin-light control objects",
+        "NetworkObject references synchronize existing vehicle state; no NetworkObject.Spawn call is present"
+      ]
+    },
+    {
+      "package": "Zaggy1024-OpenBodyCams",
+      "version": "3.0.12",
+      "package_zip_sha256": "4e4da7b1775e9b1fb0049f42c05c486f27f4413f0929b2ec8cd17986f0f4e2b5",
+      "member": "OpenBodyCams.dll",
+      "dll_sha256": "24bfe62ca0e76e4bc08366c92264fea02a8bc7f44f0fff23d570e061e1c1b3be",
+      "source_sha256": "8d2d0ff886698fb1ce83777647aa74037e2147ad1cc7118aca8f8da60f9b0068",
+      "il_sha256": "0e4ce66a93a6e2ba7211e6e99258ad423c049f2e2f3323df21f9036422813784",
+      "classification": "DOWNSTREAM_ENEMY_TRACKING_CAMERA_AND_SHIP_NETWORK_INFRASTRUCTURE_NOT_CREATOR",
+      "exact_behavior": [
+        "EnemyAI.Start postfix adds target trackers to an already-created enemy NetworkObject transform",
+        "EnemyAI.OnDestroy prefix performs FlowerSnake and Centipede attachment cleanup",
+        "Instantiate sites create night-vision, map-camera, weather, UI and overlay objects",
+        "registered NetworkPrefab is the BodyCam ship-upgrade antenna prefab",
+        "no direct NetworkObject.Spawn or enemy creation call is present"
+      ]
+    }
+  ],
+  "shared_exact_source_facts": {
+    "spawn_enemy_on_server_occurrences_all_reviewed_assemblies": 0,
+    "spawn_enemy_game_object_occurrences_all_reviewed_assemblies": 0,
+    "networkobject_spawn_creation_calls_all_reviewed_assemblies": 0,
+    "direct_enemy_instance_creation_sites_all_reviewed_assemblies": 0,
+    "locker_enemytype_registration_owner_present": true,
+    "locker_generic_spawnprefab_helper_no_internal_caller": true,
+    "thecabinet_enemytype_registration_owner_present": true,
+    "blackmesa_dummy_enemyai_adapter_present": true,
+    "blackmesa_enemyai_start_destroy_tracking_present": true,
+    "enemyhealthbars_enemyai_start_ui_consumer_present": true,
+    "cruiserimproved_enemy_collision_damage_consumer_present": true,
+    "openbodycams_enemyai_start_destroy_tracking_present": true,
+    "qualification": "No reviewed Tier-F assembly directly creates an EnemyAI instance. Locker and TheCabinet are real enemy-definition/LethalLib-registration owners, while Black Mesa, EnemyHealthBars, CruiserImproved and OpenBodyCams prove additional legitimate downstream EnemyAI/lifecycle/non-enemy responsibilities."
+  },
+  "remaining_unreviewed_discovery_positive_packages": 7,
+  "remaining_unreviewed_packages": [
+    "XuXiaolan-ImmersiveScrap 1.4.2",
+    "FlipMods-TooManyEmotes 2.3.17",
+    "BunyaPineTree-ModelReplacementAPI 2.4.20",
+    "mattymatty-LobbyControl 2.5.12",
+    "darmuh-darmuhsTerminalStuff 3.10.2",
+    "Beaniebe-Beanie_Lib 1.0.9",
+    "fumiko-CullFactory 2.0.7"
+  ],
+  "snowylib_cross_assembly_consumer_gate_open": true,
+  "interactive_terminal_api_cross_assembly_consumer_gate_open": true,
+  "bcmer_forced_additional_runtime_custom_gate_open": true,
+  "shyguy_source_to_dll_provenance_gate_open": true,
+  "diag1_build_authorized": false,
+  "qualification": "Exact review of six discovery-positive packages / six managed DLLs only. Patch safety remains partial; no DIAG1 implementation, build, controller transition, Gale import or gameplay test is authorized."
+}
