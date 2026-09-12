@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_DIRECT_CANDIDATE_REVIEW_COMPLETE_PATCH_SAFETY_PARTIAL_NOT_BUILD_READY",
+  "canonical_main": "a9e508aabb2111f511ddf2790c0a4929092bdb15",
+  "discovery": {
+    "run_id": 34705334804,
+    "head": "45d22c3fa1abb3bbd95dd137cd3903eb053f87c7",
+    "aggregate_artifact_id": 10301363891,
+    "aggregate_artifact_sha256": "de218a23690b4d1b1453f7428e8245d84b347cdf1181fe235c63964a4d9eea96",
+    "remaining_packages_scanned": 174,
+    "positive_candidate_packages": 53,
+    "direct_spawn_enemy_game_object_candidate_packages": 10
+  },
+  "exact_review": {
+    "run_id": 34705834727,
+    "head": "72f00e1b3ab7aa6109d82087b1a0ecf337739f94",
+    "conclusion": "success",
+    "artifact_id": 10301920176,
+    "artifact_name": "s142ai-direct-spawn-candidates-exact",
+    "artifact_sha256": "83c17bdb05d520fcdf9425e38d01ec10125914e2b5311161f80306e67fb04b6e",
+    "decompiler": "ilspycmd 11.0.0.9375"
+  },
+  "assemblies": [
+    {"package":"Zigzag-PremiumScraps","version":"2.5.0","member":"plugins/PremiumScraps.dll","zip_sha256":"5004b52dd80f31d436cebaedddfc72de31ae6406cb3eeccb40485cc61d29b602","dll_sha256":"380ffa37ff53576f561c27a9d06c30ecd35d9195606e142122647a0df583bf96","source_sha256":"78baada0c26f265fc3185348ce4be90b981f0b2b3d6e19580539532fd642fac4","classification":"CONFIRMED_ACTIVE_OWNER_FAMILY_CENTRAL_PLUS_DIRECT_INSTANTIATE_NETWORK_SPAWN"},
+    {"package":"Zigzag-ChillaxScraps","version":"1.6.6","member":"ChillaxScraps/ChillaxScraps.dll","zip_sha256":"dba051732612189f6317d6ae6dbcbb52011241aa771361ae4d13f34dbb052b79","dll_sha256":"1a448aaf93af58da00f16e7e7acf0c7e69b1bb564f084dc64020d06101bbb7d0","source_sha256":"cd320fdf6fc9bc7d2f10282ab7cd46cd079fb8cd2bdd155a4f9bb187c0cd2f32","classification":"CONFIRMED_ACTIVE_OWNER_FAMILY_CENTRAL_PLUS_DIRECT_INSTANTIATE_NETWORK_SPAWN"},
+    {"package":"rectorado-KenjiLib","version":"0.7.0","member":"KenjiLib.dll","zip_sha256":"af37ae5f1bec456943b8961cbf4304157cc3192c4077acfeaf26128e5d92bb71","dll_sha256":"3425ef267033ade207e7fb75bd9274ef4433a907e507a981c85b4050f550cccd","source_sha256":"1c30443a0eb72980f31abef9b73eff86440fbfb953926064cf34d433d0a3cd4a","classification":"CONFIRMED_STATEFUL_EVENT_OWNER"},
+    {"package":"pacoito-itolib","version":"0.9.3","member":"BepInEx/plugins/itolib.dll","zip_sha256":"d4f30087aeae04963a20e8f2decff7f3c2446d35a1df5989f77069e51cb00f11","dll_sha256":"f454dcb67041914124f0f3ee415282b078409bb413ef51e3e9639a9d8dcb07d6","source_sha256":"b03d294bb202b502c3ae33094c869e765fc15bd5c8ba729c7a2d58b19121fb51","classification":"CONFIRMED_STATEFUL_APPARATUS_OWNER"},
+    {"package":"notnotnotswipez-MoreCompany","version":"1.14.0","member":"BepInEx/plugins/MoreCompany.dll","zip_sha256":"dba111a2744478ce927cf2493ace871214c11339f3a6768bdc552b1d5554a1dc","dll_sha256":"d1947db8908fdf5b2d20a3e40c571099c656f6880434594e6997b20ec57b7fd7","source_sha256":"4eb4c63fd12a85108b31fa90290955bfabda06640d384ac862fda1af56a47cbd","classification":"CONFIRMED_DIRECT_DEBUG_COMMAND_ROUTE_INTERNALLY_DORMANT_UNLESS_ENABLED_EXTERNALLY"},
+    {"package":"lethal_coder-31Arcadia_UPDATED","version":"1.0.2","member":"ArcadiaMoonPlugin.dll","zip_sha256":"287c00db1c9829251f7805c682f659521e7933cafb498c43bd9e26a9884e9ee6","dll_sha256":"c71866c7a2e4a0e1f2af1eb392aa41a428e584753f263ddc50efa8d7e75af4a0","source_sha256":"7ef9eacc421c6d2c6dd89c85cddea4eb170b88aff5acb5543cdece4e4c920dfd","classification":"CONFIRMED_DETERMINISTIC_HOST_OWNER"},
+    {"package":"Kittenji-Herobrine","version":"1.3.9","member":"BepInEx/plugins/HerobrineMod.dll","zip_sha256":"ad01126dc687b1ae72dc36aff026eee6d8159396b95904eadf28168ff7de332e","dll_sha256":"d4d7f4fa19ef1a9ceb0b1ef5b7108f39001e834deefc2247feb5af458211524e","source_sha256":"80116b6e7ee8bae34dd638dcdb9e1fb7aafe8b8e302377b5529ac3ea00e05ecb","classification":"CONFIRMED_STATEFUL_GAMEPLAY_OWNER_PLUS_DEV_COMMAND_OWNER"},
+    {"package":"Kittenji-Football","version":"1.1.14","member":"BepInEx/plugins/FootballEntity.dll","zip_sha256":"d12933f4795923e483960a835bcb0fae525f351f71d7db1e45e3a3e82e4492f2","dll_sha256":"7add08cb69f0d1d0ea83c229f23a44e1918d4753281b0117c768955beda02044","source_sha256":"fb318ff8d319e3e9185c35c6d63c15116ef5ea41642d9db9e56582e7fea151f8","classification":"CONFIRMED_STATEFUL_GAMEPLAY_OWNER"},
+    {"package":"JacobG5-JLL","version":"1.10.1","member":"BepInEx/plugins/JLL/JLL.dll","zip_sha256":"3fdd0ab7503890b0a12ecac2331c460fed3a3777ede0d30b27510fcf12636f45","dll_sha256":"bbe20f86805f8cb90cf8c88893b27b664d39ea79107edc826e1089f0ac473f5a","source_sha256":"e72ba7929dae63e07127a88e6029a12b89935d8a81edb03c671151ab792ad77a","classification":"CONFIRMED_GENERIC_CONFIGURABLE_OWNER_WITH_NEST_AND_SPAWNED_EVENT_CONTRACT"},
+    {"package":"super_fucking_cool_and_badass_team-Biodiversity","version":"0.2.9","member":"BepInEx/plugins/Biodiversity/com.github.biodiversitylc.Biodiversity.dll","zip_sha256":"fcb2a5160a75b82c0410b69d30cc610145abe9f6d32bbf3053c5c44c1ad214a1","dll_sha256":"6853a6430674721ffbc6ab13de0e85b2f921f05339bf33f167e8f391debf9f28","source_sha256":"d9fdd09370586c0b1eea1c5b3eaf6adc6b81a689e448c98844658ed447c4f306","classification":"CONFIRMED_NETWORKED_MASKED_OWNER_WITH_POST_SPAWN_CLIENT_STATE"}
+  ],
+  "conclusions": {
+    "all_ten_are_real_source_call_paths": true,
+    "central_roundmanager_blanket_deny_safe": false,
+    "premium_and_chillax_have_separate_direct_instantiate_network_spawn_paths": true,
+    "morecompany_route_is_internal_debug_command_and_no_internal_commandEnabled_assignment_was_found": true,
+    "other_discovery_positive_packages_remaining_for_triage": 43,
+    "diag1_build_authorized": false
+  }
+}
