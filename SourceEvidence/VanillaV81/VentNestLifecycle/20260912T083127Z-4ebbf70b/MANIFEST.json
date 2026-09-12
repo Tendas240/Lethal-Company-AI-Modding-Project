@@ -1,0 +1,168 @@
+{
+    "schema_version":  3,
+    "purpose":  "Supplemental installed V81 vent assignment, nest declared-lifecycle and installed base-lifecycle evidence for S1.42AI-DIAG1 patch safety",
+    "capture_utc":  "2026-09-12T08:31:27Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "repository_main_at_capture":  "bfbd7eb79395ad6baff6ab2ea19209877267f5c5",
+    "bound_prior_evidence":  "SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9/MANIFEST.json",
+    "source_assembly":  {
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll"
+                        },
+    "game_executable":  {
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+                            "logical_path":  "Lethal Company.exe"
+                        },
+    "steam":  {
+                  "app_id":  "1966720",
+                  "buildid":  "22825947",
+                  "reviewed_manifest_hashes":  [
+                                                   "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                                                   "b431704ad9cf0e44cba506274f6059d021e35f434af6ef27f3abd44c5d1e6ae3"
+                                               ],
+                  "appmanifest_sha256":  "b431704ad9cf0e44cba506274f6059d021e35f434af6ef27f3abd44c5d1e6ae3",
+                  "manifest_review":  "AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md"
+              },
+    "decompiler":  {
+                       "root_types":  [
+                                          {
+                                              "assembly_file":  "Assembly-CSharp.dll",
+                                              "full_local_type_il_sha256":  "a4b610c9a3b26521cbe3a20811e7156de38286a3722c6d80233cc8adb716abf1",
+                                              "name":  "RoundManager"
+                                          },
+                                          {
+                                              "assembly_file":  "Assembly-CSharp.dll",
+                                              "full_local_type_il_sha256":  "a4b610c9a3b26521cbe3a20811e7156de38286a3722c6d80233cc8adb716abf1",
+                                              "name":  "EnemyAINestSpawnObject"
+                                          },
+                                          {
+                                              "assembly_file":  "Assembly-CSharp.dll",
+                                              "full_local_type_il_sha256":  "a4b610c9a3b26521cbe3a20811e7156de38286a3722c6d80233cc8adb716abf1",
+                                              "name":  "EnemyAI"
+                                          }
+                                      ],
+                       "tool":  "ilspycmd",
+                       "mode":  "IL",
+                       "version":  "11.0.0.9375"
+                   },
+    "selection":  {
+                      "nest_declared_awake_count":  0,
+                      "nest_declared_lifecycle_seed_signatures":  [
+
+                                                                  ],
+                      "nest_base_chain":  [
+                                              {
+                                                  "depth":  1,
+                                                  "type_name":  "UnityEngine.MonoBehaviour",
+                                                  "assembly_file":  "UnityEngine.CoreModule.dll",
+                                                  "assembly_sha256":  "80d43e5f8d52964e3ec0ac514076c3e2ee032af8d9c0c3ef511dfdd9067eee8e",
+                                                  "full_local_type_il_sha256":  "466e828934e2dcad5235b3a9632b9be399120f9e75e966875ea04de015fd871e",
+                                                  "declared_awake_count":  0,
+                                                  "declared_awake_signature":  null,
+                                                  "declared_lifecycle_signatures":  [
+
+                                                                                    ],
+                                                  "selected_signatures":  [
+
+                                                                          ],
+                                                  "terminal":  false
+                                              },
+                                              {
+                                                  "depth":  2,
+                                                  "type_name":  "UnityEngine.Behaviour",
+                                                  "assembly_file":  "UnityEngine.CoreModule.dll",
+                                                  "assembly_sha256":  "80d43e5f8d52964e3ec0ac514076c3e2ee032af8d9c0c3ef511dfdd9067eee8e",
+                                                  "full_local_type_il_sha256":  "466e828934e2dcad5235b3a9632b9be399120f9e75e966875ea04de015fd871e",
+                                                  "declared_awake_count":  0,
+                                                  "declared_awake_signature":  null,
+                                                  "declared_lifecycle_signatures":  [
+
+                                                                                    ],
+                                                  "selected_signatures":  [
+
+                                                                          ],
+                                                  "terminal":  false
+                                              },
+                                              {
+                                                  "depth":  3,
+                                                  "type_name":  "UnityEngine.Component",
+                                                  "assembly_file":  "UnityEngine.CoreModule.dll",
+                                                  "assembly_sha256":  "80d43e5f8d52964e3ec0ac514076c3e2ee032af8d9c0c3ef511dfdd9067eee8e",
+                                                  "full_local_type_il_sha256":  "466e828934e2dcad5235b3a9632b9be399120f9e75e966875ea04de015fd871e",
+                                                  "declared_awake_count":  0,
+                                                  "declared_awake_signature":  null,
+                                                  "declared_lifecycle_signatures":  [
+
+                                                                                    ],
+                                                  "selected_signatures":  [
+
+                                                                          ],
+                                                  "terminal":  false
+                                              },
+                                              {
+                                                  "depth":  4,
+                                                  "type_name":  "UnityEngine.Object",
+                                                  "assembly_file":  "UnityEngine.CoreModule.dll",
+                                                  "assembly_sha256":  "80d43e5f8d52964e3ec0ac514076c3e2ee032af8d9c0c3ef511dfdd9067eee8e",
+                                                  "full_local_type_il_sha256":  "466e828934e2dcad5235b3a9632b9be399120f9e75e966875ea04de015fd871e",
+                                                  "declared_awake_count":  0,
+                                                  "declared_awake_signature":  null,
+                                                  "declared_lifecycle_signatures":  [
+
+                                                                                    ],
+                                                  "selected_signatures":  [
+
+                                                                          ],
+                                                  "terminal":  false
+                                              },
+                                              {
+                                                  "depth":  5,
+                                                  "type_name":  "System.Object",
+                                                  "assembly_file":  "netstandard",
+                                                  "assembly_sha256":  null,
+                                                  "full_local_type_il_sha256":  null,
+                                                  "declared_awake_count":  0,
+                                                  "declared_awake_signature":  null,
+                                                  "declared_lifecycle_signatures":  [
+
+                                                                                    ],
+                                                  "selected_signatures":  [
+
+                                                                          ],
+                                                  "terminal":  true
+                                              }
+                                          ],
+                      "enemyai_exact_signature":  ".method public hidebysig newslot virtual \r\n\t\tinstance void UseNestSpawnObject (\r\n\t\t\tclass EnemyAINestSpawnObject nestSpawnObject\r\n\t\t) cil managed",
+                      "combined_max_report_lines":  2600,
+                      "roundmanager_selected_signatures":  [
+                                                               ".method public hidebysig specialname static \r\n\t\tclass RoundManager get_Instance () cil managed",
+                                                               ".method public hidebysig \r\n\t\tinstance void PlotOutEnemiesForNextHour () cil managed",
+                                                               ".method private hidebysig \r\n\t\tinstance bool AssignRandomEnemyToVent (\r\n\t\t\tclass EnemyVent vent,\r\n\t\t\tfloat32 spawnTime\r\n\t\t) cil managed",
+                                                               ".method private hidebysig \r\n\t\tinstance bool InsideEnemyCannotBeSpawned (\r\n\t\t\tint32 enemyIndex,\r\n\t\t\tfloat32 currentPowerLevel\r\n\t\t) cil managed",
+                                                               ".method public hidebysig \r\n\t\tinstance int32 GetRandomWeightedIndex (\r\n\t\t\tint32[] weights,\r\n\t\t\t[opt] class [netstandard]System.Random randomSeed\r\n\t\t) cil managed"
+                                                           ],
+                      "per_base_type_max_source_lines":  500,
+                      "caller_downstream_depth":  1,
+                      "enemyai_selected_signatures":  [
+                                                          ".method public hidebysig newslot virtual \r\n\t\tinstance void UseNestSpawnObject (\r\n\t\t\tclass EnemyAINestSpawnObject nestSpawnObject\r\n\t\t) cil managed",
+                                                          ".method public hidebysig newslot virtual \r\n\t\tinstance void Start () cil managed"
+                                                      ],
+                      "roundmanager_exact_signature":  ".method private hidebysig \r\n\t\tinstance bool AssignRandomEnemyToVent (\r\n\t\t\tclass EnemyVent vent,\r\n\t\t\tfloat32 spawnTime\r\n\t\t) cil managed",
+                      "max_base_depth":  12,
+                      "nest_selected_signatures":  [
+
+                                                   ],
+                      "per_root_type_max_source_lines":  1600,
+                      "nest_declared_awake_signature":  null
+                  },
+    "report":  {
+                   "sha256":  "91c870dc48cffe5789d3e6a90ead6cfda4798cef37b41ee3926b6afcbd8ce6e7",
+                   "file":  "V81_VENT_NEST_LIFECYCLE_FOCUSED_IL.txt",
+                   "excludes":  [
+                                    "game binaries",
+                                    "full type IL decompiles",
+                                    "absolute local paths",
+                                    "user names"
+                                ]
+               }
+}
