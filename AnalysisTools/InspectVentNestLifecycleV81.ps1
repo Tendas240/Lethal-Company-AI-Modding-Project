@@ -201,9 +201,18 @@ function Get-IlTypeModel {
             Index = $start
         }
     }
-    $headerMatch = [regex]::Match($Il, '(?ms)^[\t ]*\.class\b.*?\b' + [regex]::Escape($simpleName) + '\b.*?^[\t ]*\{')
-    if (-not $headerMatch.Success) { throw ($TypeName + ': exact IL class header was not found.') }
-    $header = $headerMatch.Value.TrimEnd('{').Trim()
+    $classMatches = [regex]::Matches($Il, '(?ms)^[\t ]*\.class\b(?<header>(?:(?!^[\t ]*\.class\b).)*?)^[\t ]*\{')
+    $headers = @()
+    foreach ($classMatch in $classMatches) {
+        $candidate = $classMatch.Value.TrimEnd('{').Trim()
+        $nameMatch = [regex]::Match($candidate, '(?ms)(?<name>[^\s]+)\s+extends\b')
+        if (-not $nameMatch.Success) { continue }
+        $declaredName = $nameMatch.Groups['name'].Value.Trim("'")
+        $declaredSimpleName = Get-IlSimpleTypeName -TypeName $declaredName
+        if ($declaredSimpleName -ceq $simpleName) { $headers += $candidate }
+    }
+    if ($headers.Count -ne 1) { throw ($TypeName + ': expected exactly one exact IL class header, found ' + $headers.Count + '.') }
+    $header = $headers[0]
     return [pscustomobject]@{ TypeName = $TypeName; SimpleName = $simpleName; Header = $header; Methods = @($methods) }
 }
 function Get-ExactIlMethod {
@@ -437,6 +446,26 @@ function Invoke-ExtractorSelfTest {
     $baseRef = Get-IlBaseTypeReference -Model $nest
     if ($null -eq $baseRef -or $baseRef.AssemblyName -cne 'GameBase' -or $baseRef.TypeName -cne 'Example.NestBase') { throw 'Nest IL base-type reference parsing failed.' }
 
+    $prefixedHeaderFixture = @'
+.class public auto ansi sealed beforefieldinit NoiseAttribute extends [netstandard]System.Attribute
+{
+    .method public hidebysig specialname rtspecialname instance void .ctor () cil managed
+    {
+        IL_0000: ret
+    } // end of method NoiseAttribute::.ctor
+}
+.class public auto ansi beforefieldinit MonoBehaviour extends [UnityEngine.CoreModule]UnityEngine.Behaviour
+{
+    .method family hidebysig instance void Awake () cil managed
+    {
+        IL_0000: ret
+    } // end of method MonoBehaviour::Awake
+}
+'@
+    $prefixedHeader = Get-IlTypeModel -Il $prefixedHeaderFixture -TypeName 'UnityEngine.MonoBehaviour'
+    $prefixedBaseRef = Get-IlBaseTypeReference -Model $prefixedHeader
+    if ($null -eq $prefixedBaseRef -or $prefixedBaseRef.AssemblyName -cne 'UnityEngine.CoreModule' -or $prefixedBaseRef.TypeName -cne 'UnityEngine.Behaviour') { throw 'Prefixed foreign-class header isolation failed.' }
+
     $baseFixture = @'
 .class public auto ansi beforefieldinit Example.NestBase extends [mscorlib]System.Object
 {
@@ -520,7 +549,7 @@ function Invoke-ExtractorSelfTest {
     if (-not $failed) { throw 'IL size-limit rejection failed.' }
     $entries = @(New-EvidenceTreeEntries -Directory 'SourceEvidence/VanillaV81/VentNestLifecycle/20260911T000000Z-abcdef12' -Report 'report' -Manifest '{}')
     if ($entries.Count -ne 2 -or @($entries | Where-Object { $_.path -match '\.(dll|exe|zip|r2z|cs|il)$' }).Count -ne 0) { throw 'Publication allowlist test failed.' }
-    Write-Host 'PASS: IL exact overloads, valid declared-Awake absence, empty-seed binding, base lifecycle parsing, duplicate-Awake rejection, one-hop context, limits and two-file publication.'
+    Write-Host 'PASS: IL exact overloads, exact class-header isolation, valid declared-Awake absence, empty-seed binding, base lifecycle parsing, duplicate-Awake rejection, one-hop context, limits and two-file publication.'
 }
 function Invoke-BootstrapSelfTest {
     $temp = Join-Path ([IO.Path]::GetTempPath()) ('lc-ventnest-bootstrap-' + [guid]::NewGuid().ToString('N'))
