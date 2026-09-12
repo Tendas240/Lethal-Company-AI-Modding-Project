@@ -1,0 +1,69 @@
+name: Discover remaining S1.42AI spawn owners
+
+on:
+  push:
+    branches:
+      - analysis/s142ai-remaining-spawn-owner-discovery
+    paths:
+      - 'AnalysisTools/inspect_remaining_spawn_owners.py'
+      - '.github/workflows/remaining-spawn-owner-discovery.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    name: scan shard ${{ matrix.shard }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Install pinned ILSpy
+        run: dotnet tool install --global ilspycmd --version 11.0.0.9375
+      - name: Scan exact remaining enabled package bytes
+        env:
+          SHARD_INDEX: ${{ matrix.shard }}
+          SHARD_COUNT: 12
+          OWNER_OUTPUT: remaining-owner-output
+        run: python AnalysisTools/inspect_remaining_spawn_owners.py
+      - name: Preserve shard evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-remaining-owner-shard-${{ matrix.shard }}
+          path: remaining-owner-output/
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    name: verify complete discovery coverage
+    needs: inspect
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download all successful shard evidence
+        uses: actions/download-artifact@v4
+        with:
+          pattern: s142ai-remaining-owner-shard-*
+          path: remaining-owner-shards
+      - name: Fail closed unless every remaining package is covered exactly once
+        run: python AnalysisTools/inspect_remaining_spawn_owners.py --aggregate remaining-owner-shards --shard-count 12 --output remaining-owner-aggregate
+      - name: Preserve aggregate candidate inventory
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-remaining-spawn-owner-discovery
+          path: remaining-owner-aggregate/
+          if-no-files-found: error
+          retention-days: 90
