@@ -1,0 +1,62 @@
+name: Review S1.42AI BCMER external event consumers
+
+on:
+  push:
+    branches:
+      - analysis/s142ai-bcmer-execution-exact
+    paths:
+      - 'AnalysisTools/inspect_bcmer_external_event_consumers.py'
+      - '.github/workflows/bcmer-external-event-consumer-review.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Install pinned ILSpy
+        run: dotnet tool install --global ilspycmd --version 11.0.0.9375
+      - name: Scan exact enabled package and embedded DLL bytes
+        run: python AnalysisTools/inspect_bcmer_external_event_consumers.py --mode shard --shard-index ${{ matrix.shard }} --shard-count 12 --output "bcmer-consumer-shard-${{ matrix.shard }}"
+      - name: Preserve shard evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: bcmer-event-consumer-shard-${{ matrix.shard }}
+          path: bcmer-consumer-shard-${{ matrix.shard }}/
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    needs: scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download all shard evidence
+        uses: actions/download-artifact@v4
+        with:
+          pattern: bcmer-event-consumer-shard-*
+          path: shard-evidence
+      - name: Verify complete consumer coverage
+        run: python AnalysisTools/inspect_bcmer_external_event_consumers.py --mode aggregate --input-root shard-evidence --output bcmer-event-consumer-output
+      - name: Preserve aggregate evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-bcmer-external-event-consumers
+          path: bcmer-event-consumer-output/
+          if-no-files-found: error
+          retention-days: 90

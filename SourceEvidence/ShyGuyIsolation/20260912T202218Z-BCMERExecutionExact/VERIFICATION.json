@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "status": "BCMER_EXECUTION_REVIEW_COMPLETE_GATE_CLOSED_NO_EVENT_EXECUTION_PATCH_REQUIRED_PATCH_SAFETY_PARTIAL_NOT_BUILD_READY",
+  "canonical_main": "15cd35a62a995b1895634d40a661a880aa6f087d",
+  "profile": {
+    "build_id": "S1.42AI",
+    "path": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+    "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2"
+  },
+  "analysis_branch": "analysis/s142ai-bcmer-execution-exact",
+  "full_assembly_review": {
+    "run_id": 34716488701,
+    "run_number": 1,
+    "event": "push",
+    "conclusion": "success",
+    "head": "49521b08e1c1a268aedc2153b4ab01e6fa93c132",
+    "artifact_id": 10304724235,
+    "artifact_name": "s142ai-bcmer-execution-exact",
+    "artifact_zip_sha256": "35ca8ec171fc40f8d9b0c9d2a9f1af3ad062f54c56c63a22e1424012c20cc116",
+    "artifact_zip_sha256_recomputed": "35ca8ec171fc40f8d9b0c9d2a9f1af3ad062f54c56c63a22e1424012c20cc116",
+    "package": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+    "version": "1.71.0",
+    "package_zip_sha256": "fa3d7727eef5ff023291caa7b0a306194b3a3826b8361af5bc42c7a6b58b1534",
+    "member": "BrutalCompanyMinus.dll",
+    "dll_sha256": "c344d3fdddd1f4ac32c80d3ec24eee54810c4cfd91a13594d88579fa23bbf148",
+    "decompiler": {
+      "tool": "ilspycmd",
+      "version": "11.0.0.9375"
+    },
+    "source_sha256": "ea8f0415d25cf5a468e6ba276ead7b4586819e531eaa6ed7b5ab6bafca6d3fb4",
+    "source_lines": 38858,
+    "il_sha256": "4a7d6e9059ef7344c00f0e419d42a2d238e8bed669a4963ab814907686169ace",
+    "il_lines": 164206,
+    "direct_mevent_execute_il_call_sites": [44153, 46848, 46865],
+    "direct_mevent_execute_call_site_count": 3,
+    "directory_getfiles_custom_events_folder_occurrences": 1,
+    "filesystemwatcher_occurrences": 0
+  },
+  "external_consumer_review": {
+    "run_id": 34716828573,
+    "run_number": 1,
+    "event": "push",
+    "conclusion": "success",
+    "head": "11959ac47e056394710b62070dd80e228c9eb3f5",
+    "artifact_id": 10303989823,
+    "artifact_name": "s142ai-bcmer-external-event-consumers",
+    "artifact_zip_sha256": "74303c27f635690df1178e30be7430c0146510cd3187ce42465b15f101fe4b3d",
+    "artifact_zip_sha256_recomputed": "74303c27f635690df1178e30be7430c0146510cd3187ce42465b15f101fe4b3d",
+    "enabled_packages_scanned": 183,
+    "embedded_project_dlls_scanned": 5,
+    "managed_dlls_scanned": 224,
+    "raw_candidate_assemblies": 1,
+    "external_candidate_assemblies": 0,
+    "external_direct_call_assemblies": {
+      "api_force_events": 0,
+      "api_regenerate_events": 0,
+      "mevent_execute": 0,
+      "mevent_get_event": 0,
+      "general_custom_event_ctor": 0
+    },
+    "external_reflection_candidate_assemblies": 0,
+    "provider_self_candidate_count": 1,
+    "provider_self_dll_sha256": "c344d3fdddd1f4ac32c80d3ec24eee54810c4cfd91a13594d88579fa23bbf148",
+    "provider_self_source_sha256": "ea8f0415d25cf5a468e6ba276ead7b4586819e531eaa6ed7b5ab6bafca6d3fb4",
+    "provider_self_il_sha256": "4a7d6e9059ef7344c00f0e419d42a2d238e8bed669a4963ab814907686169ace",
+    "qualification": "Complete exact enabled-package plus embedded-DLL static scan for BCMER event-execution API/type metadata markers. Direct IL calls and reflection-like contexts are exact for captured binaries; arbitrary runtime-generated reflection strings are outside static proof."
+  },
+  "execution_topology": {
+    "normal_selected_events": "EventManager.ModifyLevel -> EventManager.ApplyEvents -> MEvent.Execute",
+    "normal_additional_events": "EventManager.ModifyLevel -> EventManager.ApplyEvents(additionalEvents) -> MEvent.Execute",
+    "forced_events": "EventManager.ModifyLevel -> forcedEvents iteration -> MEvent.Execute",
+    "forced_side_events": "EventManager.ModifyLevel -> forcedEvent.EventsToSpawnWith -> MEvent.GetEvent -> MEvent.Execute",
+    "api_force_events_resolution": "EventManager.GetEventsByName against active EventManager.events only",
+    "heat_force_resolution": "EventManager.GetEventsByName against active EventManager.events only",
+    "terminal_mevent_resolution": "iterates active EventManager.events only",
+    "mevent_getevent_resolution": "searches active EventManager.events only and returns Nothing when absent",
+    "disabled_event_filter": "Configuration.CreateConfig replaces EventManager.events with enabled events and records disabled events separately",
+    "custom_json_loading": "Configuration initialization only when Enable Custom Events is true; no FileSystemWatcher or second customEventsFolder Directory.GetFiles path found in complete assembly"
+  },
+  "diag1_configuration_preconditions": {
+    "only_shyguy_event_enabled": true,
+    "shyguy_events_to_spawn_with_empty": true,
+    "enable_custom_events": false,
+    "scale_by_heat": false,
+    "force_event_at_max_heat": false,
+    "heat_force_list_empty": true,
+    "normal_event_draw_count": 1,
+    "bonus_event_draws": 0
+  },
+  "gates": {
+    "bcmer_forced_forced_side_additional_runtime_custom_execution_gate_open": false,
+    "dedicated_bcmer_event_execution_patch_required": false,
+    "broad_mevent_execute_patch_allowed": false,
+    "broad_eventmanager_modifylevel_skip_allowed": false,
+    "broad_bcmer_selection_execution_lifecycle_patch_allowed": false,
+    "shyguy_runtime_identity_source_to_dll_provenance_gate_open": true,
+    "final_host_client_safe_interception_selection_gate_open": true,
+    "patch_safety_build_ready": false,
+    "diag1_build_authorized": false
+  },
+  "controllers_expected_unchanged": {
+    "BuildSpecs/current.json": "disabled / IDLE_AFTER_S1.42AI_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "RuntimeInbox/ACTIVE_BUILD.txt": "S1.42AI"
+  },
+  "qualification": "The BCMER forced/forced-side/additional/runtime-custom execution gate is closed only for the exact static S1.42AI installed stack under the stated DIAG1 configuration preconditions. Arbitrary runtime-generated reflection is outside static proof. No static external consumer or reflection indicator was found. Overall patch safety remains PARTIAL / NOT_BUILD_READY and no DIAG1 implementation, build, controller transition, Gale import or gameplay test is authorized."
+}
