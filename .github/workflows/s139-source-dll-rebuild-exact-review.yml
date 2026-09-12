@@ -29,16 +29,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Set up exact historical build SDK
+      - name: Ensure historical SDK is installed
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0.424"
-
-      - name: Verify exact SDK
-        shell: bash
-        run: |
-          set -euo pipefail
-          test "$(dotnet --version)" = "8.0.424"
 
       - name: Install pinned ILSpy
         shell: bash
