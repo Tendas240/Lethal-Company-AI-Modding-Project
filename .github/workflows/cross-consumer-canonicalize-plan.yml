@@ -1,0 +1,34 @@
+name: Canonicalize cross-consumer plan checkpoint
+
+on:
+  push:
+    branches:
+      - analysis/s142ai-cross-assembly-consumers
+    paths:
+      - 'AnalysisTools/canonicalize_cross_consumer_plan.py'
+      - '.github/workflows/cross-consumer-canonicalize-plan.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  canonicalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply bounded plan checkpoint
+        run: |
+          python AnalysisTools/canonicalize_cross_consumer_plan.py
+          git diff --check
+          test "$(git diff --name-only)" = "BuildSpecs/S1.42AI_PLAN.md"
+      - name: Commit plan and remove transient helpers
+        run: |
+          git config user.name "Tendas240"
+          git config user.email "71498430+Tendas240@users.noreply.github.com"
+          git add BuildSpecs/S1.42AI_PLAN.md
+          git rm AnalysisTools/canonicalize_cross_consumer_plan.py .github/workflows/cross-consumer-canonicalize-plan.yml
+          git commit -m "Update S1.42AI plan after cross-consumer review"
+          git push origin HEAD:analysis/s142ai-cross-assembly-consumers
