@@ -208,7 +208,8 @@ function Get-IlTypeModel {
         $nameMatch = [regex]::Match($candidate, '(?ms)(?<name>[^\s]+)\s+extends\b')
         if (-not $nameMatch.Success) { continue }
         $declaredName = $nameMatch.Groups['name'].Value.Trim("'")
-        if ($declaredName -ceq $simpleName) { $headers += $candidate }
+        $declaredSimpleName = Get-IlSimpleTypeName -TypeName $declaredName
+        if ($declaredSimpleName -ceq $simpleName) { $headers += $candidate }
     }
     if ($headers.Count -ne 1) { throw ($TypeName + ': expected exactly one exact IL class header, found ' + $headers.Count + '.') }
     $header = $headers[0]
