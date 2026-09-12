@@ -1,0 +1,45 @@
+name: Apply one-shot V81 class-name normalization repair
+on:
+  push:
+    branches:
+      - work/v81-vent-nest-class-header-fix
+    paths:
+      - '.github/workflows/apply-vent-nest-parser-repair.yml'
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Normalize declared IL type to simple name before exact comparison
+        shell: python
+        run: |
+          from pathlib import Path
+          path = Path('AnalysisTools/InspectVentNestLifecycleV81.ps1')
+          text = path.read_text(encoding='utf-8')
+          old = '''        $declaredName = $nameMatch.Groups['name'].Value.Trim("'")
+              if ($declaredName -ceq $simpleName) { $headers += $candidate }'''.replace('              ', '        ')
+          new = '''        $declaredName = $nameMatch.Groups['name'].Value.Trim("'")
+              $declaredSimpleName = Get-IlSimpleTypeName -TypeName $declaredName
+              if ($declaredSimpleName -ceq $simpleName) { $headers += $candidate }'''.replace('              ', '        ')
+          count = text.count(old)
+          if count != 1:
+              raise SystemExit(f'expected exactly one declared-name comparison, found {count}')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8', newline='')
+      - name: Verify focused diff
+        shell: bash
+        run: |
+          git diff --check
+          git diff -- AnalysisTools/InspectVentNestLifecycleV81.ps1
+          test -n "$(git status --porcelain -- AnalysisTools/InspectVentNestLifecycleV81.ps1)"
+      - name: Commit normalization repair
+        shell: bash
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add AnalysisTools/InspectVentNestLifecycleV81.ps1
+          git commit -m 'Normalize exact IL class names before header comparison'
+          git push origin HEAD:${{ github.ref_name }}
