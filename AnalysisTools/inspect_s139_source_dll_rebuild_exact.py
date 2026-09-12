@@ -98,10 +98,10 @@ def main():
         wf=SHOW(PRE,".github/workflows/atomic-build-s142ah-v8-final.yml").decode()
         pb=SHOW(PRE,"BuildSystem/profile_builder.py").decode()
         if 'dotnet-version: "8.0.x"' not in wf or 'subprocess.run(["dotnet", "build", str(project), "-c", config], check=True)' not in pb:
-            raise RuntimeError&¢historical build contract mismatch")
+            raise RuntimeError("historical build contract mismatch")
         ref=out/"reference"; rb=out/"rebuilt"; ah=ref/"S1.42AH/S139CompatibilityFixes.dll"; ai=ref/"S1.42AI/S139CompatibilityFixes.dll"
         EXTRACT(*AH,ah); EXTRACT(*AI,ai)
-        if ah.read_bytes()!=ai.read_bytes(): raise RuntimeError(šAH/AI runtime DLL mismatch")
+        if ah.read_bytes()!=ai.read_bytes(): raise RuntimeError("AH/AI runtime DLL mismatch")
         out.joinpath("HOST_DOTNET_SDKS.txt").write_text(OK(R(["dotnet","--list-sdks"]),"list sdks"))
         if wt.exists(): subprocess.run(["git","worktree","remove","--force",str(wt)],cwd=ROOT,capture_output=True)
         OK(R(["git","worktree","add","--detach",str(wt),PRE]),"worktree")
