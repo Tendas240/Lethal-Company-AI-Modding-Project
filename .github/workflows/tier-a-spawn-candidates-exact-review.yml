@@ -1,0 +1,34 @@
+name: Exact review Tier-A S1.42AI spawn candidates
+
+on:
+  push:
+    branches:
+      - analysis/s142ai-tier-a-exact
+    paths:
+      - 'AnalysisTools/inspect_tier_a_spawn_candidates_exact.py'
+      - '.github/workflows/tier-a-spawn-candidates-exact-review.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Install pinned ILSpy
+        run: dotnet tool install --global ilspycmd --version 11.0.0.9375
+      - name: Capture exact Tier-A full-source review evidence
+        run: python AnalysisTools/inspect_tier_a_spawn_candidates_exact.py
+      - name: Preserve exact Tier-A review artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-tier-a-spawn-candidates-exact
+          path: tier-a-spawn-candidates-output/
+          if-no-files-found: error
+          retention-days: 90
