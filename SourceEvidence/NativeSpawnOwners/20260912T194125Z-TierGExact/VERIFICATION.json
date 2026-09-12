@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_TIER_G_REVIEW_COMPLETE_DISCOVERY_POSITIVE_INVENTORY_EXHAUSTED_PATCH_SAFETY_PARTIAL_NOT_BUILD_READY",
+  "canonical_main": "a3844ed8f708b0c5834ba1792ac331b3bc3c8d84",
+  "exact_review": {
+    "run_id": 34714900794,
+    "run_number": 1,
+    "head": "cc00992cf7db111d0ee8e6d605903867f3d826c1",
+    "artifact_id": 10304018023,
+    "artifact_name": "s142ai-tier-g-spawn-candidates-exact",
+    "artifact_zip_sha256": "179f35e60d4020ad6033320bab93c8e6d6f440e248e19c06984ca49ff8f49d65",
+    "discovery_run": 34705334804,
+    "discovery_head": "45d22c3fa1abb3bbd95dd137cd3903eb053f87c7",
+    "decompiler": {
+      "tool": "ilspycmd",
+      "version": "11.0.0.9375"
+    },
+    "provenance_gates": [
+      "exact_package_zip_sha256",
+      "exact_dll_member_and_sha256",
+      "exact_discovery_il_sha256",
+      "exact_discovery_complete_source_sha256_for_all_seven_positive_dlls",
+      "full_csharp_and_il_capture_for_cullfactory_secondary_managed_dll"
+    ]
+  },
+  "packages_reviewed": 7,
+  "assemblies_reviewed": 8,
+  "assemblies": [
+    {
+      "package": "XuXiaolan-ImmersiveScrap",
+      "version": "1.4.2",
+      "member": "plugins/ImmersiveScrap/ImmersiveScrap.dll",
+      "package_zip_sha256": "35140d4b44fb86722e78f3f0ac59b8147441af95ddf12fcb227dcd29d205616e",
+      "dll_sha256": "34ab563c0b31be2ff11355607d2f051e473fd03b97ca669761b0bca322fc7443",
+      "source_sha256": "32ecbea94db92e370c0d9297857308b7d63745a038b060c87f34f2523289cc13",
+      "il_sha256": "0409a1197ba8602af7e04dd8a53f9bb7d3a4a97dd80cb0f994f5c1f335ee94ba",
+      "classification": "DOWNSTREAM_EXISTING_ENEMY_TELEPORT_HIT_AND_EXPLOSION_EFFECT_NOT_CREATOR"
+    },
+    {
+      "package": "FlipMods-TooManyEmotes",
+      "version": "2.3.17",
+      "member": "plugins/TooManyEmotes.dll",
+      "package_zip_sha256": "a195a71e9c02c02ab58aa5eecf20ef735424753e6d92da47cf84a88eb8cbf91a",
+      "dll_sha256": "d122e10e6eb942d001607b08f31f315f194ba9367f6437b749841473f5ac9131",
+      "source_sha256": "3ae4d6b3180591332da396b9d3a6312c5efbc294686778be0e1ac0436a747c0d",
+      "il_sha256": "5cca9fffb5b08634cecca8d09a2c5a610cc5ea6691a5d02dec4b06a868a0afee",
+      "classification": "DOWNSTREAM_MASKED_EMOTE_RPC_VISUAL_AND_UI_INFRASTRUCTURE_NOT_CREATOR"
+    },
+    {
+      "package": "darmuh-darmuhsTerminalStuff",
+      "version": "3.10.2",
+      "member": "darmuhsTerminalStuff.dll",
+      "package_zip_sha256": "b22c27a6693201ec37c49f9fe8db85a80c7f3abe67b3abb60b296045dc063ce6",
+      "dll_sha256": "ddb2b92dc1817d77975e079a0ea2c3ac239dbe4d2983e7e8e0cb7b01a88f6020",
+      "source_sha256": "3ff945aca2ab99f80b2834b2f4ebcaa6dff5e769650218f93fa6fa398436cba6",
+      "il_sha256": "280947a7f63c6702f46ae6b850b0c98bb7044ed205c120d0cd2b22102fc56a96",
+      "classification": "DOWNSTREAM_BIOSCAN_AND_TERMINAL_UI_OVER_EXISTING_SPAWNEDENEMIES_NOT_CREATOR"
+    },
+    {
+      "package": "BunyaPineTree-ModelReplacementAPI",
+      "version": "2.4.20",
+      "member": "ModelReplacementAPI.dll",
+      "package_zip_sha256": "27128446ab809293c3a1ce4f88e48b9f9cceaa66b10509562087ba7722f5fb20",
+      "dll_sha256": "0334ebac744b1cf84c53501516e3d1034cf7c39f328fd71861d6261b608fe844",
+      "source_sha256": "5bca86a59f25ef003343d6784b753c682990865cb2e54969f21ebce182701bee",
+      "il_sha256": "5e27bd4c232be8cfc36d7dde9c8ffd92e7f57311ecb85c985810ddee1bae487d",
+      "classification": "DOWNSTREAM_PLAYER_MASKED_MODEL_REPLACEMENT_AND_ENEMY_HIT_OBSERVER_NOT_CREATOR"
+    },
+    {
+      "package": "Beaniebe-Beanie_Lib",
+      "version": "1.0.9",
+      "member": "LethalGravityControl.dll",
+      "package_zip_sha256": "ec96359194b3c3b6384715419373a8d8d24a85043cbf122e27f837314dcd1662",
+      "dll_sha256": "6d95757edf8e772474979ac191fd188beab9e361434e644d781e7729d2864324",
+      "source_sha256": "4b68f7c306938fef8865ce8e55ee66cf1d240993715d0887d30c938538b82380",
+      "il_sha256": "13333d1e4659cc4487ffd7f68491db0aef1bdeb5426a01e4e54e9182897aa35b",
+      "classification": "GENERIC_UNCALLED_GAMEOBJECT_LAUNCH_HELPER_PLUS_DOWNSTREAM_ENEMY_INTERACTION_NOT_CONFIRMED_CREATOR"
+    },
+    {
+      "package": "mattymatty-LobbyControl",
+      "version": "2.5.12",
+      "member": "BepInEx/plugins/LobbyControl.dll",
+      "package_zip_sha256": "0966822d12c62df0caa10fc69857363413f822a67eff922f80d725467ed9d1f4",
+      "dll_sha256": "78270a61e22fa7a3d8a7120ab7a4e62d7748772fa3f621f8ce66e8631be8d346",
+      "source_sha256": "70b8f56260d5b83385f5bfb7643e49625a6883e69d29b6e67913961456c98de3",
+      "il_sha256": "af4e3df01ff1c055276fee1804e6175d1a39e782f979709588ef80f95c7c5b15",
+      "classification": "LOBBY_NETWORK_CONTROL_AND_DEAD_ENEMY_AI_GUARD_NOT_CREATOR"
+    },
+    {
+      "package": "fumiko-CullFactory",
+      "version": "2.0.7",
+      "member": "CullFactory.dll",
+      "package_zip_sha256": "2918e9b97347f62bc28bd1cbc6923b04c2a522d3af50bd4c656da26a00534073",
+      "dll_sha256": "4bcc863c3b067a8f856d14a43cb828a708bc7090c68ac884fe4f24c59c8ec6bc",
+      "source_sha256": "7f3a7e499ceb997834cbce5fc467113db1836a26e1ebd99a0458e8fa6d714044",
+      "il_sha256": "399042ddbf520fd44e0f48fe46ec776634811d58c7f8f354eaaf84abd7930f83",
+      "classification": "DOWNSTREAM_DYNAMIC_CULLING_ENEMY_TELEPORT_ITEM_TRACKING_AND_BURST_GEOMETRY_NOT_CREATOR"
+    },
+    {
+      "package": "fumiko-CullFactory",
+      "version": "2.0.7",
+      "member": "CullFactoryBurstPlugin.dll",
+      "package_zip_sha256": "2918e9b97347f62bc28bd1cbc6923b04c2a522d3af50bd4c656da26a00534073",
+      "dll_sha256": "578a556b3c088f32ddad8ebcf411ce74a9cf3937d6c889d2e2df09bf6456ea1e",
+      "source_sha256": "abec045a000c5a8be2ac3c2d94e9487a22471010b57bff3c5a93e4ec76434ab4",
+      "il_sha256": "f95ff93b348904f853bde9c57664fb70a38f03d2bc342e42c075364e88c2c9c8",
+      "classification": "DOWNSTREAM_DYNAMIC_CULLING_ENEMY_TELEPORT_ITEM_TRACKING_AND_BURST_GEOMETRY_NOT_CREATOR"
+    }
+  ],
+  "shared_exact_source_facts": {
+    "enemy_type_occurrences_all_reviewed_assemblies": 0,
+    "enemy_prefab_occurrences_all_reviewed_assemblies": 0,
+    "spawn_enemy_on_server_occurrences_all_reviewed_assemblies": 0,
+    "spawn_enemy_game_object_occurrences_all_reviewed_assemblies": 0,
+    "confirmed_direct_networkobject_spawn_enemy_creation_routes": 0,
+    "confirmed_direct_enemy_instance_creation_sites": 0,
+    "beanie_lib_launchobject_internal_callers": 0,
+    "cullfactory_secondary_managed_dll_reviewed": true
+  },
+  "remaining_unreviewed_discovery_positive_packages": 0,
+  "discovery_positive_exact_review_inventory_complete": true,
+  "snowylib_cross_assembly_consumer_gate_open": true,
+  "interactive_terminal_api_cross_assembly_consumer_gate_open": true,
+  "bcmer_forced_additional_runtime_custom_gate_open": true,
+  "shyguy_runtime_identity_source_to_dll_provenance_gate_open": true,
+  "final_host_client_safe_interception_selection_gate_open": true,
+  "diag1_build_authorized": false,
+  "qualification": "Tier-G exhausts the seven-package discovery-positive remainder only. Patch safety remains partial; cross-assembly consumer, BCMER execution, Shy Guy provenance/identity and final narrow interception gates remain open. No DIAG1 implementation, build, controller transition, Gale import or gameplay test is authorized."
+}
