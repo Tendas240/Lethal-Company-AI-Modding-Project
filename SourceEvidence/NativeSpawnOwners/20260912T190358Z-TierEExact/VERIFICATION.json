@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_TIER_E_REVIEW_COMPLETE_PATCH_SAFETY_PARTIAL_NOT_BUILD_READY",
+  "canonical_main": "fce6d19de0a8810fe457b0436a44f948c51701cf",
+  "exact_review": {
+    "run_id": 34713018420,
+    "run_number": 1,
+    "head": "c80173f8718869117f3ab4309347bb14f69cd055",
+    "artifact_id": 10304290416,
+    "artifact_name": "s142ai-tier-e-spawn-candidates-exact",
+    "artifact_zip_sha256": "a4c61ef958aba55a2573c296f0ab16904693d1f4e96b156ba6d48802fae0348a",
+    "discovery_run": 34705334804,
+    "discovery_head": "45d22c3fa1abb3bbd95dd137cd3903eb053f87c7",
+    "decompiler": {
+      "tool": "ilspycmd",
+      "version": "11.0.0.9375"
+    }
+  },
+  "packages_reviewed": 6,
+  "assemblies_reviewed": 8,
+  "assemblies": [
+    {
+      "package": "DiFFoZ-LethalPerformance",
+      "version": "1.2.6",
+      "package_zip_sha256": "b43e4358e79917ae181b9912f2fe52ae8d0ef1680da27824aa12b890fe4a5c2b",
+      "member": "BepInEx/patchers/LethalPerformance/LethalPerformance.Patcher.dll",
+      "dll_sha256": "a7673b28042d2a95e169eb46d1149e3203b6a0975d038783124a4219c6e00b2a",
+      "source_sha256": "3520716b27a0d5c78a65f6a57dd60eb117e4658bd8b781942c237cc69b6143bd",
+      "il_sha256": "039f51549da2c742bb0cec07314947be8a3fc4f98fe5a79ac2c36c85b175b471",
+      "classification": "PERFORMANCE_PRELOADER_PATCHER_SUPPORT_NOT_ENEMY_CREATOR"
+    },
+    {
+      "package": "DiFFoZ-LethalPerformance",
+      "version": "1.2.6",
+      "package_zip_sha256": "b43e4358e79917ae181b9912f2fe52ae8d0ef1680da27824aa12b890fe4a5c2b",
+      "member": "BepInEx/plugins/LethalPerformance/LethalPerformance.dll",
+      "dll_sha256": "ebc853ad5f1b6469f7db9a33bfc4480dbc7d532b83133aab524c2dd28761f55c",
+      "source_sha256": "cc4540013413c86edfa8a9738cba24e477959a81cc47342a812d9bd266c9632b",
+      "il_sha256": "a6451014d26ec8677c93839ea081fb13b8508d128c3fe0a7b4ef5a90cda65e6d",
+      "classification": "PERFORMANCE_CACHING_AND_SHARED_LIFECYCLE_TRANSPILER_INFRASTRUCTURE_NOT_CREATOR",
+      "exact_behavior": [
+        "transpiles EnemyVent.Start through shared NetworkBehaviour/object lookup caching",
+        "rewrites at least one EnemyAI FindObjectsOfType lookup to RoundManager.SpawnedEnemies-backed access"
+      ]
+    },
+    {
+      "package": "DiFFoZ-LethalPerformance",
+      "version": "1.2.6",
+      "package_zip_sha256": "b43e4358e79917ae181b9912f2fe52ae8d0ef1680da27824aa12b890fe4a5c2b",
+      "member": "BepInEx/plugins/LethalPerformance/LethalPerformance.Unity.dll",
+      "dll_sha256": "c74f42554f49c6fe24fafe6da40d7ec66fd5ac71d68d77314af2296b171cd75e",
+      "source_sha256": "15da29b02b251ed8d5dc3e6b1e4e0b4b18ea7501f04b899c0f5bf115bc13f2cb",
+      "il_sha256": "e277841eb91d034b65493ca5b1bca55c9cc7aab9207254f4d8e893d45558bd53",
+      "classification": "UNITY_PERFORMANCE_SUPPORT_LIBRARY_NOT_ENEMY_CREATOR"
+    },
+    {
+      "package": "Scoops-LethalSponge",
+      "version": "1.4.3",
+      "package_zip_sha256": "dcd9e94b1c5747875edba95e9f9f49ba3a1c77b33d3d8ba2af099a153b61633e",
+      "member": "LethalSponge/LethalSponge.dll",
+      "dll_sha256": "d0fdf6b3f4ab1669f6dd523f506256d2322a3910e0045bf54030f322ab381ec0",
+      "source_sha256": "eb1c4767142bc58a9c9abf8b21e5d8779e04f9bb3384e53e61994ba7bbe58813",
+      "il_sha256": "07b422e567464d59db15cbc2ca3f2a10607ee007efc15821bbd5c2881ed0baf3",
+      "classification": "PERFORMANCE_CLEANUP_AND_AUDIO_DEDUP_INFRASTRUCTURE_NOT_CREATOR",
+      "exact_behavior": [
+        "enumerates EnemyVent and EnemyType assets for audio deduplication",
+        "no actual Object.Instantiate enemy creation site; the source substring count includes 'Instantiated' in a configuration property name"
+      ]
+    },
+    {
+      "package": "ButteryStancakes-BarberFixes",
+      "version": "1.3.1",
+      "package_zip_sha256": "5dfc72cfe3b6e729da839cde8b24d2962abe7a5097c86cdaffa8dd12bb6ac41f",
+      "member": "BarberFixes.dll",
+      "dll_sha256": "ce625861badbe0946fcaa0456272ad3a7074704bf998a8d1cff223cce7ae4ae8",
+      "source_sha256": "2c84428becdfb7e9cb022e17177cc2d116ea232bfacd491e0a22ae4a212f67a7",
+      "il_sha256": "d1fd8b9386fc3ffd144b4104a3fd226d876eb97af715c70cae5ad44f9899cb39",
+      "classification": "CONDITIONAL_SERVER_SIDE_CLAYSURGEON_SPAWN_PARAMETER_MUTATOR_NOT_INSTANCE_CREATOR",
+      "exact_behavior": [
+        "Harmony prefix on RoundManager.AdvanceHourAndSpawnNewBatchOfEnemies",
+        "server-only and conditional on configApplySpawningSettings",
+        "mutates ClaySurgeon EnemyType.spawnInGroupsOf and MaxCount before native spawning"
+      ],
+      "config_apply_spawning_settings_code_default": false
+    },
+    {
+      "package": "Wexop-RandomEnemiesSize",
+      "version": "1.1.20",
+      "package_zip_sha256": "48d3e16fe2c26e36a6b476467d53f641aed93880f712df09bf2a1ed0d8ca44cd",
+      "member": "RandomEnemiesSize.dll",
+      "dll_sha256": "8f9723eeac8f2c3281be2b1e3866475cad6110cc10b2e95b1632db051fb94b8e",
+      "source_sha256": "17fb86400d1f99603e95fe9a05279abcaf73b535bf7e01b20468b553822aeaef",
+      "il_sha256": "31b7ea2da68da24107006899a7cd4909cdcf864db3df525b43722a988eeb0006",
+      "classification": "DOWNSTREAM_ENEMY_START_SCALE_AND_RPC_SYNC_NOT_CREATOR",
+      "exact_behavior": [
+        "postfixes EnemyAI.Start and MaskedPlayerEnemy.Start",
+        "scales an already-created enemy and synchronizes scale through RPC",
+        "Instantiate sites clone Item metadata for GiantKiwi egg / bee hive support rather than enemy prefabs"
+      ]
+    },
+    {
+      "package": "TheFluff-FairAI",
+      "version": "1.6.1",
+      "package_zip_sha256": "a8baf78603fffa98581659823babdcef8b3f65fbdcef8afbcc827a4e8f9738ec",
+      "member": "FairAI.dll",
+      "dll_sha256": "807efe10eab10168dcfbb08185688930bba212580c48c61e9f4dec9260b4d6e1",
+      "source_sha256": "9bfa351fe392fe2bfa6b614fa3dad7d6db4ab7a0e870f89613dc235837d8b05a",
+      "il_sha256": "7649b15b6fbbb0a924fc75509ae0a701046384af31d4eb11676e4b64862dc5fd",
+      "classification": "DOWNSTREAM_ENEMY_COMBAT_AND_HAZARD_COMPATIBILITY_NOT_CREATOR",
+      "exact_behavior": [
+        "patches enemy/hazard combat interactions on already-existing actors",
+        "sole Instantiate site creates StartOfRound.Instance.explosionPrefab"
+      ]
+    },
+    {
+      "package": "ButteryStancakes-MaskFixes",
+      "version": "1.6.2",
+      "package_zip_sha256": "c621c5deb337511983c257ada68631d75ae2660bf3ddc26ac3efd362a9250901",
+      "member": "MaskFixes.dll",
+      "dll_sha256": "9c992664706513c11b6cc26b2f7281dead2f67afefaf6fe5012b2d780d095921",
+      "source_sha256": "da6c9d7fc99f44e3a045d989428c4dab6cf055ee494cb5d749ae58012a29f9f6",
+      "il_sha256": "5d76ee08739e3ba0695b1fb0f3577948558fda3dc9035e3dd99dfa249fa446d8",
+      "classification": "DOWNSTREAM_MASKED_START_STATE_VISUAL_AND_SPAWNEDENEMIES_REPAIR_NOT_CREATOR",
+      "exact_behavior": [
+        "MaskedPlayerEnemy.Start postfix repairs an already-existing masked enemy and adds it to RoundManager.SpawnedEnemies if missing",
+        "Instantiate sites create suit/costume visual objects only"
+      ]
+    }
+  ],
+  "shared_exact_source_facts": {
+    "spawn_enemy_on_server_occurrences_all_reviewed_assemblies": 0,
+    "spawn_enemy_game_object_occurrences_all_reviewed_assemblies": 0,
+    "enemy_prefab_occurrences_all_reviewed_assemblies": 0,
+    "lethalperformance_enemyvent_start_transpiler_target_present": true,
+    "lethalperformance_spawned_enemies_lookup_rewrite_present": true,
+    "lethalsponge_enemyvent_and_enemytype_audio_dedup_present": true,
+    "barberfixes_roundmanager_advance_hour_prefix_present": true,
+    "barberfixes_apply_spawning_settings_default": false,
+    "barberfixes_claysurgeon_spawn_parameter_mutation_present": true,
+    "randomenemiessize_enemyai_and_masked_start_postfix_present": true,
+    "randomenemiessize_item_metadata_clone_instantiate_only": true,
+    "fairai_explosion_prefab_instantiate_present": true,
+    "maskfixes_masked_start_existing_instance_spawned_enemies_repair_present": true,
+    "maskfixes_costume_visual_instantiates_only": true,
+    "qualification": "No reviewed Tier-E assembly directly creates an EnemyAI instance. Several patch shared/native enemy lifecycle or bookkeeping surfaces after/before native creation, so those surfaces are not safe blanket suppression points."
+  },
+  "remaining_unreviewed_discovery_positive_packages": 13,
+  "snowylib_cross_assembly_consumer_gate_open": true,
+  "interactive_terminal_api_cross_assembly_consumer_gate_open": true,
+  "bcmer_forced_additional_runtime_custom_gate_open": true,
+  "shyguy_source_to_dll_provenance_gate_open": true,
+  "diag1_build_authorized": false,
+  "qualification": "Exact review of six discovery-positive packages / eight managed DLLs only. Patch safety remains partial; no DIAG1 implementation, build, controller transition, Gale import or gameplay test is authorized."
+}
