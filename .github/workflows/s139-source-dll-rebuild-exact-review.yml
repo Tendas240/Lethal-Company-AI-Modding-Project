@@ -29,10 +29,16 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Set up historical build .NET line
+      - name: Set up exact historical build SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "8.0.x"
+          dotnet-version: "8.0.424"
+
+      - name: Verify exact SDK
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(dotnet --version)" = "8.0.424"
 
       - name: Install pinned ILSpy
         shell: bash
@@ -42,12 +48,12 @@ jobs:
           dotnet tool install ilspycmd --tool-path .tools --version 11.0.0.9375
           ./.tools/ilspycmd --version
 
-      - name: Rebuild and compare exact S139 runtime DLL
+      - name: Rebuild historical S139 head and compare runtime DLL
         shell: bash
         run: |
           set -euo pipefail
           OUT="$RUNNER_TEMP/s139-source-dll-rebuild-exact"
-          rm -rf "$OUT"
+          rm -rf "$OUT" "$RUNNER_TEMP/s139-historical-prebuild-worktree"
           python AnalysisTools/inspect_s139_source_dll_rebuild_exact.py \
             --output-dir "$OUT" \
             --ilspy .tools/ilspycmd
