@@ -1,4 +1,4 @@
-name: Repair S1.42AI-DIAG1 static validator assembly binding
+name: Finalize S1.42AI-DIAG1 build-ready source state
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  repair:
+  finalize:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -19,74 +19,68 @@ jobs:
           ref: work/s142ai-diag1-implementation
           fetch-depth: 1
 
-      - name: Bind exact owner namespaces to exact profile assembly basenames
+      - name: Activate post-static-gate safety latch and final gate expectation
         run: |
           python - <<'PY'
           from pathlib import Path
-          import re
 
-          path = Path('AnalysisTools/validate_s142ai_diag1_static.py')
-          text = path.read_text(encoding='utf-8')
-          pattern = re.compile(
-              r'''    def list_one\(record\):.*?    source_cache: dict\[tuple\[str, str\], str\] = \{\}\n''',
-              re.S,
-          )
-          replacement = '''    owner_assembly_names = {
-        "SlendermanMod.": "SlendermanMod.dll",
-        "Kittenji.FootballEntity.": "FootballEntity.dll",
-        "Kittenji.HerobrineMod.": "HerobrineMod.dll",
-        "MoreShipUpgrades.": "MoreShipUpgrades.dll",
-        "PremiumScraps.": "PremiumScraps.dll",
-        "ChillaxScraps.": "ChillaxScraps.dll",
-        "JLL.": "JLL.dll",
-        "KenjiLib.": "KenjiLib.dll",
-        "itolib.": "itolib.dll",
-        "CodeRebirth.": "CodeRebirth.dll",
-        "LethalMin.": "LethalMin.dll",
-    }
-
-    by_basename: dict[str, list[tuple[str, Path, str]]] = {}
-    for record in dll_records:
-        archive_name, path, digest = record
-        by_basename.setdefault(Path(archive_name).name.casefold(), []).append(record)
-
-    type_to_assembly = {}
-    type_names = sorted({t[0] for t in TARGETS})
-    for type_name in type_names:
-        assembly_name = next(
-            (dll for prefix, dll in owner_assembly_names.items() if type_name.startswith(prefix)),
-            None,
-        )
-        if assembly_name is None:
-            fail(f"No exact profile assembly binding declared for target type {type_name}")
-        matches = by_basename.get(assembly_name.casefold(), [])
-        if len(matches) != 1:
-            fail(
-                f"Expected exactly one base-profile assembly named {assembly_name} for {type_name}, "
-                f"found {len(matches)}"
-            )
-        type_to_assembly[type_name] = matches[0]
-
-    source_cache: dict[tuple[str, str], str] = {}
+          plugin = Path('Patches/S142AIDiag1Isolation/Plugin.cs')
+          text = plugin.read_text(encoding='utf-8')
+          old = '''        // Work-branch safety latch. Keep false until the approved DIAG1 config overlay,
+        // config assertions and repository-native compile/static build gate are complete.
+        // A manually copied intermediate DLL therefore cannot install any Harmony hooks.
+        private const bool ImplementationComplete = false;
 '''
-          updated, count = pattern.subn(replacement, text)
-          if count != 1:
-              raise RuntimeError(f'{path}: expected exactly one locator block match, got {count}')
-          path.write_text(updated, encoding='utf-8')
-          print(f'repaired {path}')
+          new = '''        // Build-ready safety latch. This may be true only after the approved DIAG1 config
+        // overlay, config assertions and repository-native compile/static gate have passed.
+        // Diagnostic activation still remains default-off and config-gated at runtime.
+        private const bool ImplementationComplete = true;
+'''
+          if text.count(old) != 1:
+              raise RuntimeError(f'{plugin}: expected exactly one pre-gate safety-latch block')
+          plugin.write_text(text.replace(old, new), encoding='utf-8')
+
+          validator = Path('AnalysisTools/validate_s142ai_diag1_static.py')
+          text = validator.read_text(encoding='utf-8')
+          old = '''    if "private const bool ImplementationComplete = false;" not in source:
+        fail("Work-branch ImplementationComplete safety latch is not false")
+'''
+          new = '''    if "private const bool ImplementationComplete = true;" not in source:
+        fail("Post-static-gate ImplementationComplete safety latch is not true")
+'''
+          if text.count(old) != 1:
+              raise RuntimeError(f'{validator}: expected exactly one pre-gate latch assertion')
+          text = text.replace(old, new)
+          old_report = '        "implementation_complete_latch": False,\n'
+          new_report = '        "implementation_complete_latch": True,\n'
+          if text.count(old_report) != 1:
+              raise RuntimeError(f'{validator}: expected exactly one latch report field')
+          validator.write_text(text.replace(old_report, new_report), encoding='utf-8')
           PY
 
-      - name: Verify repair diff is validator-only
-        run: |
-          changed="$(git diff --name-only)"
-          test "$changed" = 'AnalysisTools/validate_s142ai_diag1_static.py'
-          git diff --check
-          git diff -- AnalysisTools/validate_s142ai_diag1_static.py
+      - name: Remove completed one-shot finalizer
+        run: git rm .github/workflows/s142ai-diag1-source-repair.yml
 
-      - name: Commit exact validator repair
+      - name: Verify exact finalization diff
+        run: |
+          python - <<'PY'
+          import subprocess
+          expected = {
+              '.github/workflows/s142ai-diag1-source-repair.yml',
+              'AnalysisTools/validate_s142ai_diag1_static.py',
+              'Patches/S142AIDiag1Isolation/Plugin.cs',
+          }
+          actual = set(subprocess.check_output(['git', 'diff', '--name-only', 'HEAD'], text=True).splitlines())
+          if actual != expected:
+              raise RuntimeError(f'unexpected finalization diff: {sorted(actual)}')
+          PY
+          git diff --check
+          git diff -- AnalysisTools/validate_s142ai_diag1_static.py Patches/S142AIDiag1Isolation/Plugin.cs
+
+      - name: Commit build-ready source state
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add AnalysisTools/validate_s142ai_diag1_static.py
-          git commit -m 'Bind DIAG1 owner types to exact profile assemblies'
+          git add -A -- .github/workflows/s142ai-diag1-source-repair.yml AnalysisTools/validate_s142ai_diag1_static.py Patches/S142AIDiag1Isolation/Plugin.cs
+          git commit -m 'Finalize DIAG1 build-ready safety latch'
           git push origin HEAD:work/s142ai-diag1-implementation
