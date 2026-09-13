@@ -19,9 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      DIAG1_VALIDATION_PROFILE: ${{ runner.temp }}/diag1-validation/S1.42AI-DIAG1.validation.r2z
-      DIAG1_VALIDATION_RESULT: ${{ runner.temp }}/diag1-validation-result.json
-      DIAG1_STATIC_OUT: ${{ runner.temp }}/diag1-static-out
+      DIAG1_VALIDATION_PROFILE: ValidationArtifacts/S1.42AI-DIAG1.validation.r2z
+      DIAG1_VALIDATION_RESULT: ValidationArtifacts/diag1-validation-result.json
+      DIAG1_STATIC_OUT: ValidationArtifacts/static-out
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,7 +46,7 @@ jobs:
       - name: Prepare isolated validation-only build spec
         shell: bash
         run: |
-          mkdir -p "$(dirname "$DIAG1_VALIDATION_PROFILE")"
+          mkdir -p ValidationArtifacts
           python - <<'PY'
           import json, os
           from pathlib import Path
@@ -56,17 +56,17 @@ jobs:
               raise RuntimeError('Generated draft must be disabled before validation override')
           spec['enabled'] = True
           spec['output_profile'] = os.environ['DIAG1_VALIDATION_PROFILE']
-          spec['snapshot_dir'] = str(Path(os.environ['RUNNER_TEMP']) / 'diag1-profile-snapshot')
+          spec['snapshot_dir'] = 'ValidationArtifacts/profile-snapshot'
           spec['result_json'] = os.environ['DIAG1_VALIDATION_RESULT']
-          spec['result_md'] = str(Path(os.environ['RUNNER_TEMP']) / 'diag1-validation-result.md')
+          spec['result_md'] = 'ValidationArtifacts/diag1-validation-result.md'
           spec['overwrite'] = False
-          out = Path(os.environ['RUNNER_TEMP']) / 'diag1-validation-spec.json'
+          out = Path('ValidationArtifacts/diag1-validation-spec.json')
           out.write_text(json.dumps(spec, indent=2) + '\n', encoding='utf-8')
           print(out)
           PY
 
       - name: Build ephemeral validation profile through canonical builder
-        run: python BuildSystem/profile_builder.py "$RUNNER_TEMP/diag1-validation-spec.json"
+        run: python BuildSystem/profile_builder.py ValidationArtifacts/diag1-validation-spec.json
 
       - name: Run exact DIAG1 static gate
         run: python AnalysisTools/validate_s142ai_diag1_static.py
@@ -80,9 +80,9 @@ jobs:
         with:
           name: s142ai-diag1-static-validation
           path: |
-            ${{ runner.temp }}/diag1-static-out/
+            ValidationArtifacts/static-out/
             BuildSpecs/S1.42AI-DIAG1_DRAFT.json
-            ${{ runner.temp }}/diag1-validation-result.json
-            ${{ runner.temp }}/diag1-validation-result.md
+            ValidationArtifacts/diag1-validation-result.json
+            ValidationArtifacts/diag1-validation-result.md
           if-no-files-found: warn
           retention-days: 90
