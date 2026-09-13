@@ -1,314 +1,203 @@
 #!/usr/bin/env python3
-"""Bounded S1.42AI-DIAG1 enemy-spawn callsite coverage inventory.
+"""Analysis-only exact enemy-spawn callsite coverage for S1.42AI-DIAG1.
 
-Analysis-only. Consumes exact prior GitHub Actions source artifacts plus the preserved
-installed-V81 source captures and emits a machine-readable interception matrix.
-It does not implement patches or alter build/runtime controllers.
+Consumes only prior exact-review Actions artifacts and preserved Installed-V81 source
+captures. Emits an auditable callsite matrix; never modifies profiles/controllers.
 """
 from __future__ import annotations
-
-import argparse
-import hashlib
-import json
-import re
+import argparse, hashlib, json, re
 from pathlib import Path
-from typing import Iterable
 
-RUN_LABELS = {
-    "34529045495": "shyguy_exact_package",
-    "34614454120": "nest_spawncycle_exact",
-    "34616289395": "direct_owners_exact",
-    "34705834727": "direct_spawn_candidates_exact",
-    "34708556035": "tier_a_exact",
-    "34709775849": "tier_b_exact",
-    "34710724733": "tier_c_exact",
-    "34711742173": "tier_d_exact",
-    "34713018420": "tier_e_exact",
-    "34714066827": "tier_f_exact",
-    "34714900794": "tier_g_exact",
-    "34716488701": "bcmer_execution_exact",
+RUNS = {
+  "34529045495":"shyguy_exact_package", "34614454120":"nest_spawncycle_exact",
+  "34616289395":"direct_owners_exact", "34705834727":"direct_spawn_candidates_exact",
+  "34708556035":"tier_a_exact", "34709775849":"tier_b_exact",
+  "34710724733":"tier_c_exact", "34711742173":"tier_d_exact",
+  "34713018420":"tier_e_exact", "34714066827":"tier_f_exact",
+  "34714900794":"tier_g_exact", "34716488701":"bcmer_execution_exact",
 }
-REQUIRED_SOURCE_RUNS = set(RUN_LABELS)
-CONTROL_PREFIXES = (
-    "if ", "if(", "for ", "for(", "foreach ", "foreach(", "while ", "while(",
-    "switch ", "switch(", "catch ", "catch(", "using ", "using(", "lock ", "lock(",
-)
-PRIMITIVE_PATTERNS = {
-    "roundmanager_spawn_enemy_game_object": re.compile(r"\bSpawnEnemyGameObject\s*\("),
-    "roundmanager_spawn_enemy_on_server": re.compile(r"\bSpawnEnemyOnServer\s*\("),
-    "roundmanager_spawn_enemy_server_rpc": re.compile(r"\bSpawnEnemyServerRpc\s*\("),
-    "enemy_prefab_instantiate": re.compile(r"enemyPrefab[\s\S]{0,1200}?\bInstantiate\s*\(|\bInstantiate\s*\([\s\S]{0,1200}?enemyPrefab", re.I),
-    "enemytype_reference": re.compile(r"\bEnemyType\b|\benemyType\b"),
-    "network_spawn": re.compile(r"\bNetworkObject\b[\s\S]{0,900}?\.Spawn\s*\(|\.Spawn\s*\(\s*true\s*\)"),
-    "pikmin_spawn_api": re.compile(r"\bSpawnPikminOnServer\s*\("),
-    "enemy_revival": re.compile(r"\bReviveEnemy\s*\("),
-    "vent_enemy_assignment": re.compile(r"enemyTypeIndex|\.enemyType\s*=|\.occupied\s*=|\.spawnTime\s*="),
-    "pool_mutation": re.compile(r"OutsideEnemies|DaytimeEnemies|WeedEnemies|currentLevel\.Enemies|\.Enemies\b"),
+CONTROL=("if ","if(","for ","for(","foreach ","foreach(","while ","while(","switch ","switch(","catch ","catch(","using ","using(","lock ","lock(")
+PATS={
+ "spawn_game_object":re.compile(r"\bSpawnEnemyGameObject\s*\("),
+ "spawn_on_server":re.compile(r"\bSpawnEnemyOnServer\s*\("),
+ "spawn_server_rpc":re.compile(r"\bSpawnEnemyServerRpc\s*\("),
+ "enemy_prefab_instantiate":re.compile(r"(?:enemyPrefab[\s\S]{0,1400}?\bInstantiate(?:<[^>]+>)?\s*\(|\bInstantiate(?:<[^>]+>)?\s*\([\s\S]{0,1400}?enemyPrefab)",re.I),
+ "network_spawn":re.compile(r"(?:GetComponent(?:InChildren)?<NetworkObject>\s*\(\)[\s\S]{0,300}?\.Spawn\s*\(|\bNetworkObject\b[\s\S]{0,900}?\.Spawn\s*\(|\.Spawn\s*\(\s*true\s*\))"),
+ "enemy_type":re.compile(r"\bEnemyType\b|\benemyType\b|enemyPrefab"),
+ "pikmin_spawn":re.compile(r"\bSpawnPikminOnServer\s*\("),
+ "enemy_revival":re.compile(r"\bReviveEnemy\s*\("),
+ "vent_state":re.compile(r"enemyTypeIndex|\.enemyType\s*=|\.occupied\s*=|\.spawnTime\s*="),
 }
-NATIVE_POOL_METHODS = {
-    "SpawnRandomOutsideEnemy", "SpawnRandomDaytimeEnemy", "SpawnRandomWeedEnemy",
-    "SpawnEnemiesOutside", "SpawnDaytimeEnemiesOutside", "SpawnWeedEnemies",
-    "PredictAllOutsideEnemies", "BeginEnemySpawning", "PlotOutEnemiesForNextHour",
+NATIVE_POOL={"SpawnRandomOutsideEnemy","SpawnRandomDaytimeEnemy","SpawnRandomWeedEnemy"}
+NATIVE_SHARED={"SpawnEnemyGameObject","SpawnEnemyOnServer","SpawnEnemyServerRpc"}
+SCHEDULER_RULES={
+ ("ButteRyBalance-0.7.0.cs","InfestationOverrides","SpawnInfestationWave"),
+ ("SpawnCycleFixes-1.2.2.cs","Patches","RoundManager_Post_AssignRandomEnemyToVent"),
 }
-NATIVE_STATEFUL_SELECTION = {"AssignRandomEnemyToVent", "SpawnEnemyFromVent"}
-SHARED_SINK_METHODS = {"SpawnEnemyGameObject", "SpawnEnemyOnServer", "SpawnEnemyServerRpc"}
-RUNTIME_GATED_RULES = [
-    ("MoreCompany", "DebugCommandRegistry", "HandleCommand", "public commandEnabled flag; no internal assignment in exact assembly"),
-    ("SnowyLib", "Utils", "ChatCommand", "Debugging / Testing config must remain false; cross-assembly consumers separately closed"),
-    ("Bozoros", "EmergencyDice", "", "Theronguard.EmergencyDice provider gate; exact package inventory did not identify provider"),
-]
-ALLOW_SHYGUY_RULES = [
-    ("Scopophobia", "ShyGuyPaintingProp", "SpawnEnemyOnServer"),
-    ("BrutalCompanyMinus", "ShyGuy", "Execute"),
-]
+NO_ACTIVE_CONSUMER_RULES={
+ ("InteractiveTerminalAPI-1.3.3.cs","Tools","SpawnMob"),
+}
+RUNTIME_GATED_METHODS={
+ ("MoreCompany-1.14.0.cs","HandleCommand"):"host debug command; exact assembly has no internal commandEnabled assignment",
+ ("Bozoros-2.9.3.cs","SpawnPufferServerRpc"):"EmergencyDice provider-gated; provider not identified in exact S1.42AI package inventory",
+ ("Bozoros-2.9.3.cs","SpawnButlerServerRpc"):"EmergencyDice provider-gated; provider not identified in exact S1.42AI package inventory",
+}
+PARENT_METHODS={
+ ("Haunted_Harpist-1.3.24.cs","SpawnEscorts"),
+ ("CodeRebirth-1.6.9.cs","HandleSpawningMonarch"),
+ ("CodeRebirth-1.6.9.cs","OnNetworkSpawn"),
+}
 
-def sha256_bytes(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
+def h(b:bytes)->str:return hashlib.sha256(b).hexdigest()
 
-def strip_comments_for_header(s: str) -> str:
-    return re.sub(r"//.*", "", s).strip()
-
-def class_context(lines: list[str], idx: int) -> tuple[str, bool]:
-    pat = re.compile(r"\b(class|struct)\s+([A-Za-z_][\w`<>.]*)\s*(?::\s*([^\{]+))?")
-    for j in range(idx, max(-1, idx - 1200), -1):
-        m = pat.search(lines[j])
-        if m:
-            name = m.group(2)
-            bases = m.group(3) or ""
-            enemy_ai = "EnemyAI" in bases or name.endswith("EnemyAI") or name.endswith("AIServer")
-            return name, enemy_ai
-    return "<unknown>", False
-
-def method_name_from_header(header: str) -> str | None:
-    h = strip_comments_for_header(header)
-    if not h or "(" not in h or ")" not in h:
-        return None
-    lower = h.lstrip().lower()
-    if lower.startswith(CONTROL_PREFIXES):
-        return None
-    pre = h.split("(", 1)[0].strip()
-    token = re.split(r"\s+", pre)[-1].split(".")[-1].split("<", 1)[0].strip()
-    if not re.match(r"^[A-Za-z_][\w`]*$", token) or token in {"new", "return", "typeof", "nameof", "default"}:
-        return None
-    return token
-
-def extract_cs_methods(text: str) -> list[dict]:
-    lines = text.splitlines()
-    out: list[dict] = []
-    i = 0
-    while i < len(lines):
-        if "(" not in lines[i]:
-            i += 1
-            continue
-        start = i
-        header_lines = [lines[i]]
-        k = i
-        while k < len(lines) and k < i + 10 and "{" not in "\n".join(header_lines):
-            k += 1
-            if k < len(lines):
-                header_lines.append(lines[k])
-        header = " ".join(x.strip() for x in header_lines)
-        if "{" not in header:
-            i += 1
-            continue
-        name = method_name_from_header(header)
-        if not name:
-            i += 1
-            continue
-        brace_pos_line = next((n for n in range(start, min(len(lines), k + 1)) if "{" in lines[n]), None)
-        if brace_pos_line is None:
-            i += 1
-            continue
-        depth = 0
-        seen = False
-        end = brace_pos_line
-        for j in range(brace_pos_line, len(lines)):
-            opens = lines[j].count("{")
-            closes = lines[j].count("}")
-            if opens:
-                seen = True
-            depth += opens - closes
-            if seen and depth <= 0:
-                end = j
-                break
-        if end <= brace_pos_line:
-            i += 1
-            continue
-        body = "\n".join(lines[start:end + 1])
-        cls, enemy_ai = class_context(lines, start)
-        out.append({"method": name, "class": cls, "class_enemy_ai_like": enemy_ai,
-                    "signature": " ".join(header.split())[:600], "start_line": start + 1,
-                    "end_line": end + 1, "body": body})
-        i = end + 1
+def class_ranges(lines:list[str]):
+    decl=re.compile(r"\bclass\s+([A-Za-z_][\w`]*)\s*(?::\s*([^\{]+))?")
+    out=[]
+    for i,line in enumerate(lines):
+        m=decl.search(line)
+        if not m: continue
+        # opening brace may be same/next few lines
+        k=i
+        while k<min(len(lines),i+5) and "{" not in lines[k]: k+=1
+        if k>=len(lines) or "{" not in lines[k]: continue
+        depth=0; end=k
+        for j in range(k,len(lines)):
+            depth+=lines[j].count("{")-lines[j].count("}")
+            if depth<=0 and j>k: end=j; break
+        bases=m.group(2) or ""
+        out.append((i,end,m.group(1),"EnemyAI" in bases or m.group(1).endswith(("EnemyAI","AIServer"))))
     return out
 
-def extract_il_methods(text: str) -> list[dict]:
-    lines = text.splitlines()
-    out = []
-    i = 0
-    while i < len(lines):
-        if not lines[i].lstrip().startswith(".method"):
-            i += 1
-            continue
-        start = i
-        header_parts = [lines[i].strip()]
-        k = i
-        while k + 1 < len(lines) and "{" not in lines[k] and k < i + 12:
-            k += 1
-            header_parts.append(lines[k].strip())
-            if "{" in lines[k]:
-                break
-        header = " ".join(header_parts)
-        m = re.search(r"([A-Za-z_][\w`<>.]*)\s*\(", header)
-        name = m.group(1).split(".")[-1] if m else "<unknown>"
-        depth = 0
-        seen = False
-        end = k
-        for j in range(k, len(lines)):
-            opens = lines[j].count("{")
-            closes = lines[j].count("}")
-            if opens:
-                seen = True
-            depth += opens - closes
-            if seen and depth <= 0:
-                end = j
-                break
-        body = "\n".join(lines[start:end + 1])
-        out.append({"method": name, "class": "<il>", "class_enemy_ai_like": False,
-                    "signature": header[:600], "start_line": start + 1, "end_line": end + 1,
-                    "body": body})
-        i = end + 1
+def enclosing_class(ranges,idx):
+    c=[x for x in ranges if x[0]<=idx<=x[1]]
+    if not c:return "<unknown>",False
+    x=max(c,key=lambda q:q[0]); return x[2],x[3]
+
+def method_name(header:str):
+    s=re.sub(r"//.*","",header).strip()
+    if "(" not in s or ")" not in s or s.lower().startswith(CONTROL): return None
+    pre=s.split("(",1)[0].strip(); tok=re.split(r"\s+",pre)[-1].split(".")[-1].split("<",1)[0]
+    return tok if re.fullmatch(r"[A-Za-z_][\w`]*",tok or "") and tok not in {"new","return","typeof","nameof"} else None
+
+def cs_methods(text:str):
+    lines=text.splitlines(); ranges=class_ranges(lines); out=[]; i=0
+    while i<len(lines):
+        if "(" not in lines[i]: i+=1; continue
+        start=i; parts=[lines[i].strip()]; k=i
+        while k<min(len(lines)-1,i+9) and "{" not in " ".join(parts): k+=1; parts.append(lines[k].strip())
+        header=" ".join(parts); name=method_name(header)
+        if not name or "{" not in header: i+=1; continue
+        op=next((n for n in range(start,k+1) if "{" in lines[n]),None)
+        if op is None: i+=1; continue
+        depth=0; end=op
+        for j in range(op,len(lines)):
+            depth+=lines[j].count("{")-lines[j].count("}")
+            if depth<=0 and j>op: end=j; break
+        body="\n".join(lines[start:end+1]); cls,enemy=enclosing_class(ranges,start)
+        out.append({"method":name,"class":cls,"class_enemy_ai_like":enemy,"signature":" ".join(header.split())[:700],"start_line":start+1,"end_line":end+1,"body":body})
+        i=end+1
     return out
 
-def primitive_flags(body: str) -> list[str]:
-    return sorted(name for name, pat in PRIMITIVE_PATTERNS.items() if pat.search(body))
+def il_methods(text:str):
+    lines=text.splitlines(); out=[]; i=0
+    while i<len(lines):
+        if not lines[i].lstrip().startswith(".method"): i+=1; continue
+        start=i; parts=[lines[i].strip()]; k=i
+        while k<min(len(lines)-1,i+12) and "{" not in " ".join(parts): k+=1; parts.append(lines[k].strip())
+        hdr=" ".join(parts); names=re.findall(r"([A-Za-z_][\w`]*)\s*\(",hdr); name=names[-1] if names else "<unknown>"
+        depth=0; end=k
+        for j in range(k,len(lines)):
+            depth+=lines[j].count("{")-lines[j].count("}")
+            if depth<=0 and j>k: end=j; break
+        out.append({"method":name,"class":"RoundManager" if "RoundManager" in text[max(0,text.find(hdr)-500):text.find(hdr)+50] else "<il>","class_enemy_ai_like":False,"signature":hdr[:700],"start_line":start+1,"end_line":end+1,"body":"\n".join(lines[start:end+1])})
+        i=end+1
+    return out
 
-def is_relevant(flags: list[str]) -> bool:
-    f = set(flags)
-    if f & {"roundmanager_spawn_enemy_game_object", "roundmanager_spawn_enemy_on_server",
-            "roundmanager_spawn_enemy_server_rpc", "pikmin_spawn_api", "enemy_revival"}:
-        return True
-    if "enemy_prefab_instantiate" in f and ("network_spawn" in f or "enemytype_reference" in f):
-        return True
-    return "vent_enemy_assignment" in f and "enemytype_reference" in f
+def flags(body):return sorted(k for k,p in PATS.items() if p.search(body))
 
-def source_tag(path: Path) -> tuple[str, str]:
-    run_id = next((p for p in path.parts if p in RUN_LABELS), "repo")
-    return run_id, RUN_LABELS.get(run_id, "repository_source")
+def direct_relevant(f):
+    s=set(f)
+    if s & {"spawn_game_object","spawn_on_server","spawn_server_rpc","pikmin_spawn","enemy_revival"}: return True
+    return "enemy_prefab_instantiate" in s and "network_spawn" in s
 
-def classify(row: dict) -> tuple[str, str]:
-    joined = f"{row['source_file']} {row['class']} {row['method']} {row['signature']}"
-    for src, c, m in ALLOW_SHYGUY_RULES:
-        if src.lower() in joined.lower() and c.lower() in joined.lower() and m.lower() in row["method"].lower():
-            return "ALLOW_EXACT_SHYGUY_OWNER", "exact Shy Guy identity owner; do not location-filter exterior Shy Guy"
-    if row.get("source_kind") == "native_v81":
-        if row["method"] in SHARED_SINK_METHODS:
-            return "SHARED_SINK_FORBIDDEN", "shared native spawn/RPC sink has mixed caller contracts; never blanket-deny"
-        if row["method"] in NATIVE_POOL_METHODS:
-            return "POOL_QUARANTINE_COVERED", "ShyGuy-only pool quarantine must run before this native selection/batch path"
-        if row["method"] in NATIVE_STATEFUL_SELECTION:
-            return "NATIVE_SELECTOR_GUARD_REQUIRED", "stateful vent/queued identity path requires narrow identity-safe handling; whole-method skip forbidden"
-    for src, c, m, why in RUNTIME_GATED_RULES:
-        if src.lower() in joined.lower() and c.lower() in joined.lower() and (not m or m.lower() in row["method"].lower()):
-            return "RUNTIME_GATED_OR_DORMANT", why
-    if row.get("class_enemy_ai_like") and "enemy_prefab_instantiate" in row["primitive_flags"]:
-        return "PARENT_PREVENTION_CANDIDATE", "direct child spawn owned by an EnemyAI-like parent; prove parent cannot exist under ShyGuy-only guard before omitting child guard"
-    if "BrutalCompany" in joined or "BCMER" in joined:
-        return "BCMER_EVENT_CONSTRAINED", "BCMER execution gate is already closed to ShyGuy; retain config/static assertions rather than broad Harmony execution patch"
-    return "OWNER_GUARD_REQUIRED", "direct/explicit enemy creation or stateful spawn API requires exact owner-level prevention before non-ShyGuy side effects"
+def source_run(path:Path):
+    rid=next((x for x in path.parts if x in RUNS),"repo"); return rid,RUNS.get(rid,"repository_source")
 
-def iter_source_files(artifacts_root: Path, repo_root: Path) -> Iterable[tuple[Path, str]]:
-    for p in sorted(artifacts_root.rglob("*")):
-        if p.is_file() and p.suffix.lower() in {".cs", ".il", ".txt"}:
-            yield p, "artifact"
-    native_files = [
-        repo_root / "SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9/ROUNDMANAGER_SPAWNING_FOCUSED_DECOMPILE.txt",
-        repo_root / "SourceEvidence/VanillaV81/VentNestLifecycle/20260912T083127Z-4ebbf70b/V81_VENT_NEST_LIFECYCLE_FOCUSED_IL.txt",
+def classify(r):
+    fn,cls,m=r["source_file"],r["class"],r["method"]
+    joined=f"{fn} {cls} {m} {r['signature']}"
+    if fn.startswith("theunknowncod3r-Scopophobia-") and cls=="ShyGuyPaintingProp":
+        return "ALLOW_EXACT_SHYGUY_OWNER","painting route resolves exact Shy Guy; allowed by identity but cannot prove BCMER event execution"
+    if fn=="BrutalCompanyMinus-1.71.0.cs":
+        return "BCMER_EVENT_CONFIG_CONSTRAINED","exact BCMER execution gate is closed to ShyGuy-only config; no broad MEvent/EventManager Harmony patch"
+    if r["source_kind"]=="native_v81":
+        if m in NATIVE_SHARED:return "SHARED_SINK_FORBIDDEN","mixed caller/return/state contracts; never blanket-deny"
+        if m in NATIVE_POOL:return "POOL_QUARANTINE_COVERED","identity comes from quarantined native pool before direct creation"
+        if m=="AssignRandomEnemyToVent":return "NATIVE_SELECTOR_GUARD_REQUIRED","stateful vent assignment must reject non-ShyGuy identity without skipping assignment lifecycle wholesale"
+        if m=="SpawnEnemyFromVent":return "NATIVE_QUEUE_CONSUMER_COVERED","safe only after vent assignment queue is proven ShyGuy-only; preserve vent completion"
+    if (fn,m) in RUNTIME_GATED_METHODS:return "RUNTIME_GATED_ASSERTION",RUNTIME_GATED_METHODS[(fn,m)]
+    if fn=="SnowyLib-1.13.1.cs" and m in {"SpawnEnemy","SpawnEnemyRpc","ChatCommand"}:
+        return "NO_ACTIVE_CONSUMER_STATIC_SET","cross-assembly review found zero external SnowyLib spawn API consumers; internal chat route requires Testing=false assertion"
+    if (fn,cls,m) in NO_ACTIVE_CONSUMER_RULES:
+        return "NO_ACTIVE_CONSUMER_STATIC_SET","installed-set review found zero external InteractiveTerminalAPI.Tools.SpawnMob consumers and exact DLL has no autonomous caller"
+    if (fn,cls,m) in SCHEDULER_RULES:
+        return "STATEFUL_SCHEDULER_GUARD_REQUIRED","queues/reserves non-ShyGuy identity before native spawn; guard must precede committed vent/power/count state"
+    if (fn,m) in PARENT_METHODS or (r["class_enemy_ai_like"] and "enemy_prefab_instantiate" in r["primitive_flags"]):
+        return "PARENT_PREVENTION_CANDIDATE","child creation owned by non-ShyGuy EnemyAI-like parent; must prove parent cannot exist before omitting child guard"
+    return "OWNER_GUARD_REQUIRED","direct/explicit enemy creation path requires exact owner-level prevention before destructive/stateful side effects"
+
+def sources(root:Path,repo:Path):
+    # Inventory every exact artifact source, but analyze C# as primary. Earlier ShyGuy capture is text-only.
+    for p in sorted(root.rglob("*")):
+        if not p.is_file() or p.suffix.lower() not in {".cs",".il",".txt"}: continue
+        analyze=False
+        if p.suffix.lower()==".cs" and not p.name.startswith("V81_REFERENCE_"): analyze=True
+        if "34529045495" in p.parts and p.suffix.lower()==".txt" and "Scopophobia" in p.name: analyze=True
+        if analyze: yield p,"artifact",True
+        else: yield p,"artifact",False
+    native=[
+      repo/"SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9/ROUNDMANAGER_SPAWNING_FOCUSED_DECOMPILE.txt",
+      repo/"SourceEvidence/VanillaV81/VentNestLifecycle/20260912T083127Z-4ebbf70b/V81_VENT_NEST_LIFECYCLE_FOCUSED_IL.txt",
     ]
-    for p in native_files:
-        if not p.is_file():
-            raise SystemExit(f"required native source evidence missing: {p}")
-        yield p, "native_v81"
+    for p in native:
+        if not p.is_file(): raise SystemExit(f"missing native source evidence: {p}")
+        yield p,"native_v81",True
 
-def main() -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--artifacts-root", required=True)
-    ap.add_argument("--repo-root", required=True)
-    ap.add_argument("--out-dir", required=True)
-    args = ap.parse_args()
-    artifacts_root = Path(args.artifacts_root).resolve()
-    repo_root = Path(args.repo_root).resolve()
-    out_dir = Path(args.out_dir).resolve()
-    out_dir.mkdir(parents=True, exist_ok=True)
-    present_runs = {p.name for p in artifacts_root.iterdir() if p.is_dir()}
-    missing_runs = sorted(REQUIRED_SOURCE_RUNS - present_runs)
-    if missing_runs:
-        raise SystemExit(f"missing exact source artifact run directories: {missing_runs}")
-    source_inventory = []
-    rows = []
-    seen_content = set()
-    for path, kind in iter_source_files(artifacts_root, repo_root):
-        data = path.read_bytes()
-        digest = sha256_bytes(data)
-        run_id, run_label = source_tag(path)
-        source_inventory.append({"path": str(path.relative_to(repo_root) if kind == "native_v81" else path.relative_to(artifacts_root)),
-                                 "kind": kind, "run_id": run_id, "run_label": run_label,
-                                 "sha256": digest, "bytes": len(data)})
-        key = (path.name, digest)
-        if key in seen_content:
-            continue
-        seen_content.add(key)
-        text = data.decode("utf-8", errors="replace")
-        methods = extract_il_methods(text) if path.suffix.lower() == ".il" else extract_cs_methods(text)
-        for m in methods:
-            flags = primitive_flags(m["body"])
-            if not is_relevant(flags):
-                continue
-            row = {"source_file": path.name, "source_path": source_inventory[-1]["path"],
-                   "source_sha256": digest, "source_kind": kind, "run_id": run_id,
-                   "run_label": run_label, "class": m["class"],
-                   "class_enemy_ai_like": m["class_enemy_ai_like"], "method": m["method"],
-                   "signature": m["signature"], "start_line": m["start_line"],
-                   "end_line": m["end_line"],
-                   "method_body_sha256": sha256_bytes(m["body"].encode("utf-8")),
-                   "primitive_flags": flags}
-            row["coverage_category"], row["coverage_rationale"] = classify(row)
-            rows.append(row)
-    dedup = {}
-    for row in rows:
-        key = (row["source_sha256"], row["class"], row["method"], row["method_body_sha256"])
-        dedup[key] = row
-    rows = sorted(dedup.values(), key=lambda r: (r["coverage_category"], r["source_file"], r["class"], r["method"], r["start_line"]))
-    categories = {}
-    for r in rows:
-        categories[r["coverage_category"]] = categories.get(r["coverage_category"], 0) + 1
-    unclassified = [r for r in rows if r["coverage_category"] == "UNCLASSIFIED"]
-    matrix = {"schema_version": 2, "scope": "S1.42AI-DIAG1 exact enemy-spawn callsite coverage",
-              "analysis_only": True, "base_contract": "BuildSpecs/S1.42AI_PLAN.md",
-              "source_runs": RUN_LABELS, "source_file_count": len(source_inventory),
-              "unique_relevant_callsite_count": len(rows), "category_counts": categories,
-              "unclassified_count": len(unclassified), "rows": rows}
-    (out_dir / "CALLSITE_MATRIX.json").write_text(json.dumps(matrix, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    (out_dir / "SOURCE_INVENTORY.json").write_text(json.dumps(source_inventory, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    md = ["# S1.42AI-DIAG1 Exact Spawn Callsite Coverage Matrix", "",
-          "**Status:** ANALYSIS-ONLY / NO IMPLEMENTATION / NO BUILD AUTHORIZATION", "",
-          f"Unique relevant callsites: **{len(rows)}**", f"Source files inventoried: **{len(source_inventory)}**",
-          f"Unclassified: **{len(unclassified)}**", "", "## Coverage categories", ""]
-    for k in sorted(categories):
-        md.append(f"- `{k}`: {categories[k]}")
-    md += ["", "## Callsites", "", "| Category | Source | Class | Method | Primitives |", "|---|---|---|---|---|"]
-    for r in rows:
-        md.append(f"| `{r['coverage_category']}` | `{r['source_file']}` | `{r['class']}` | `{r['method']}` | {', '.join(r['primitive_flags'])} |")
-    md += ["", "## Interpretation guard", "",
-           "This matrix is a coverage inventory, not patch approval. `OWNER_GUARD_REQUIRED` means the exact owner transaction must be reviewed before coding; `PARENT_PREVENTION_CANDIDATE` must be proven unreachable after parent prevention before omitting a child guard; shared sinks remain forbidden broad targets. Exact Shy Guy owners are allowed by identity regardless of interior/exterior location so an unexpected exterior Shy Guy remains visible and fails the correction gate."]
-    (out_dir / "CALLSITE_MATRIX.md").write_text("\n".join(md) + "\n", encoding="utf-8")
-    print(json.dumps({"source_file_count": len(source_inventory), "unique_relevant_callsite_count": len(rows),
-                      "category_counts": categories, "unclassified_count": len(unclassified)}, indent=2, sort_keys=True))
-    if unclassified:
-        return 2
-    if not rows:
-        return 3
+def main():
+    ap=argparse.ArgumentParser(); ap.add_argument("--artifacts-root",required=True); ap.add_argument("--repo-root",required=True); ap.add_argument("--out-dir",required=True); a=ap.parse_args()
+    root=Path(a.artifacts_root).resolve(); repo=Path(a.repo_root).resolve(); out=Path(a.out_dir).resolve(); out.mkdir(parents=True,exist_ok=True)
+    missing=set(RUNS)-{p.name for p in root.iterdir() if p.is_dir()}
+    if missing: raise SystemExit(f"missing exact run dirs: {sorted(missing)}")
+    inventory=[]; rows=[]; seen=set()
+    for p,kind,analyze in sources(root,repo):
+        b=p.read_bytes(); digest=h(b); rid,label=source_run(p)
+        rel=str(p.relative_to(repo) if kind=="native_v81" else p.relative_to(root))
+        inventory.append({"path":rel,"kind":kind,"run_id":rid,"run_label":label,"sha256":digest,"bytes":len(b),"analyzed":analyze})
+        if not analyze or (p.name,digest) in seen: continue
+        seen.add((p.name,digest)); text=b.decode("utf-8","replace")
+        methods=il_methods(text) if p.name.endswith("V81_VENT_NEST_LIFECYCLE_FOCUSED_IL.txt") else cs_methods(text)
+        for x in methods:
+            f=flags(x["body"])
+            explicit_scheduler=(p.name,x["class"],x["method"]) in SCHEDULER_RULES
+            if not direct_relevant(f) and not explicit_scheduler and not (kind=="native_v81" and x["method"] in {"AssignRandomEnemyToVent","SpawnEnemyFromVent"}): continue
+            if x["method"].startswith("__rpc_handler_"): continue
+            r={"source_file":p.name,"source_path":rel,"source_sha256":digest,"source_kind":kind,"run_id":rid,"run_label":label,"class":x["class"],"class_enemy_ai_like":x["class_enemy_ai_like"],"method":x["method"],"signature":x["signature"],"start_line":x["start_line"],"end_line":x["end_line"],"method_body_sha256":h(x["body"].encode()),"primitive_flags":f}
+            r["coverage_category"],r["coverage_rationale"]=classify(r); rows.append(r)
+    # semantic C# matrix: one row per exact source method/body, no C#/IL duplicate inflation
+    dedup={(r["source_sha256"],r["class"],r["method"],r["method_body_sha256"]):r for r in rows}; rows=sorted(dedup.values(),key=lambda r:(r["coverage_category"],r["source_file"],r["class"],r["method"],r["start_line"]))
+    counts={}
+    for r in rows: counts[r["coverage_category"]]=counts.get(r["coverage_category"],0)+1
+    matrix={"schema_version":3,"scope":"S1.42AI-DIAG1 exact enemy-spawn callsite coverage","analysis_only":True,"base_contract":"BuildSpecs/S1.42AI_PLAN.md","source_runs":RUNS,"source_file_count":len(inventory),"analyzed_source_file_count":sum(1 for i in inventory if i["analyzed"]),"unique_relevant_callsite_count":len(rows),"category_counts":counts,"unclassified_count":0,"rows":rows}
+    (out/"CALLSITE_MATRIX.json").write_text(json.dumps(matrix,indent=2,sort_keys=True)+"\n")
+    (out/"SOURCE_INVENTORY.json").write_text(json.dumps(inventory,indent=2,sort_keys=True)+"\n")
+    md=["# S1.42AI-DIAG1 Exact Spawn Callsite Coverage Matrix","","**Status:** ANALYSIS-ONLY / NO IMPLEMENTATION / NO BUILD AUTHORIZATION","",f"Relevant semantic callsites: **{len(rows)}**",f"Analyzed primary source files: **{matrix['analyzed_source_file_count']}** / inventoried exact source files: **{len(inventory)}**","Unclassified: **0**","","## Categories",""]
+    for k in sorted(counts): md.append(f"- `{k}`: {counts[k]}")
+    md += ["","## Callsites","","| Category | Source | Class | Method | Primitives |","|---|---|---|---|---|"]
+    for r in rows: md.append(f"| `{r['coverage_category']}` | `{r['source_file']}` | `{r['class']}` | `{r['method']}` | {', '.join(r['primitive_flags'])} |")
+    md += ["","## Guard","","This is a callsite coverage matrix, not implementation approval. Parent-prevention candidates require explicit reachability proof before their child guard may be omitted. Runtime-gated/no-consumer rows require static/runtime assertions in DIAG1. Shared native sinks remain forbidden blanket targets. Exact Shy Guy is allowed by identity regardless of interior/exterior location; an exterior Shy Guy must remain visible and fail the correction gate."]
+    (out/"CALLSITE_MATRIX.md").write_text("\n".join(md)+"\n")
+    print(json.dumps({k:matrix[k] for k in ("source_file_count","analyzed_source_file_count","unique_relevant_callsite_count","category_counts","unclassified_count")},indent=2,sort_keys=True))
+    if not rows:return 3
     return 0
 
-if __name__ == "__main__":
-    raise SystemExit(main())
+if __name__=="__main__": raise SystemExit(main())
