@@ -1,5 +1,5 @@
 name: Validate S1.42AI-DIAG1 static gate
-# Revalidation trigger after exact HarmonyX 2.10.2 overload normalization.
+# Revalidation trigger after preserving exact profile DLL archive paths.
 
 on:
   push:
