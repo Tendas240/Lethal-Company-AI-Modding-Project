@@ -154,7 +154,8 @@
     "pending_candidate_role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
     "pending_candidate_runtime_requirement": "Profile bytes, profile SHA, readable snapshot, FILE_INDEX and candidate record are mandatory before runtime. If partial runtime evidence exists before a final decision, its latest INDEX/log SHA and partial decision record are current-critical; prior partial runs remain preserved evidence. Move to completed profiles only after an explicit final runtime decision.",
     "analysis_directory_required_for_completed_runtime_runs": true,
-    "binary_only_fact_policy": "Any fact required for future reasoning must also exist in readable ProfileSources, FILE_INDEX, runtime INDEX/analysis, source, build record, or canonical documentation."
+    "binary_only_fact_policy": "Any fact required for future reasoning must also exist in readable ProfileSources, FILE_INDEX, runtime INDEX/analysis, source, build record, or canonical documentation.",
+    "deferred_pending_candidate_role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED"
   },
   "verified_repository_api_observations": [
     "ProfileSources/S1.42AB, S1.42AC, S1.42AF, S1.42AG and S1.42AH contain FILE_INDEX.json and export.r2x.",

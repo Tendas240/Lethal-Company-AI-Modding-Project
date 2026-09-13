@@ -16,7 +16,10 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 INTEGRITY_PATH = ROOT / "Current/ARTIFACT_EVIDENCE_INTEGRITY.json"
-PENDING_ROLE = "ACTIVE_RUNTIME_CANDIDATE_PENDING"
+PENDING_ROLES = {
+    "ACTIVE_RUNTIME_CANDIDATE_PENDING",
+    "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED",
+}
 
 
 def sha256_file(path: Path) -> str:
@@ -174,8 +177,11 @@ def main() -> int:
 
     for entry in pending:
         build_id = str(entry.get("build_id", "<missing-build-id>"))
-        if entry.get("role") != PENDING_ROLE:
-            errors.append(f"{build_id}: pending_profiles entry must use role {PENDING_ROLE}")
+        if entry.get("role") not in PENDING_ROLES:
+            errors.append(
+                f"{build_id}: pending_profiles entry role {entry.get('role')!r} is not one of "
+                f"{sorted(PENDING_ROLES)}"
+            )
         if entry.get("runtime_evidence_required") is not False:
             errors.append(f"{build_id}: pending candidate must explicitly set runtime_evidence_required=false until final runtime decision")
 
