@@ -1,5 +1,5 @@
 name: Validate S1.42AI-DIAG1 static gate
-# Revalidation trigger with exact reviewed owner-assembly binding.
+# Final build-ready latch revalidation trigger with exact reviewed owner-assembly binding.
 
 on:
   push:
