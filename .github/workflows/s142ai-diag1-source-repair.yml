@@ -24,38 +24,22 @@ jobs:
           python - <<'PY'
           from pathlib import Path
 
+          def replace_once(path, old, new):
+              text = path.read_text(encoding='utf-8')
+              if text.count(old) != 1:
+                  raise RuntimeError(f'{path}: expected exactly one occurrence of {old!r}')
+              path.write_text(text.replace(old, new), encoding='utf-8')
+
           plugin = Path('Patches/S142AIDiag1Isolation/Plugin.cs')
-          text = plugin.read_text(encoding='utf-8')
-          old = '''        // Work-branch safety latch. Keep false until the approved DIAG1 config overlay,
-        // config assertions and repository-native compile/static build gate are complete.
-        // A manually copied intermediate DLL therefore cannot install any Harmony hooks.
-        private const bool ImplementationComplete = false;
-'''
-          new = '''        // Build-ready safety latch. This may be true only after the approved DIAG1 config
-        // overlay, config assertions and repository-native compile/static gate have passed.
-        // Diagnostic activation still remains default-off and config-gated at runtime.
-        private const bool ImplementationComplete = true;
-'''
-          if text.count(old) != 1:
-              raise RuntimeError(f'{plugin}: expected exactly one pre-gate safety-latch block')
-          plugin.write_text(text.replace(old, new), encoding='utf-8')
+          replace_once(plugin, '        // Work-branch safety latch. Keep false until the approved DIAG1 config overlay,', '        // Build-ready safety latch. This may be true only after the approved DIAG1 config')
+          replace_once(plugin, '        // config assertions and repository-native compile/static build gate are complete.', '        // overlay, config assertions and repository-native compile/static gate have passed.')
+          replace_once(plugin, '        // A manually copied intermediate DLL therefore cannot install any Harmony hooks.', '        // Diagnostic activation still remains default-off and config-gated at runtime.')
+          replace_once(plugin, '        private const bool ImplementationComplete = false;', '        private const bool ImplementationComplete = true;')
 
           validator = Path('AnalysisTools/validate_s142ai_diag1_static.py')
-          text = validator.read_text(encoding='utf-8')
-          old = '''    if "private const bool ImplementationComplete = false;" not in source:
-        fail("Work-branch ImplementationComplete safety latch is not false")
-'''
-          new = '''    if "private const bool ImplementationComplete = true;" not in source:
-        fail("Post-static-gate ImplementationComplete safety latch is not true")
-'''
-          if text.count(old) != 1:
-              raise RuntimeError(f'{validator}: expected exactly one pre-gate latch assertion')
-          text = text.replace(old, new)
-          old_report = '        "implementation_complete_latch": False,\n'
-          new_report = '        "implementation_complete_latch": True,\n'
-          if text.count(old_report) != 1:
-              raise RuntimeError(f'{validator}: expected exactly one latch report field')
-          validator.write_text(text.replace(old_report, new_report), encoding='utf-8')
+          replace_once(validator, '    if "private const bool ImplementationComplete = false;" not in source:', '    if "private const bool ImplementationComplete = true;" not in source:')
+          replace_once(validator, '        fail("Work-branch ImplementationComplete safety latch is not false")', '        fail("Post-static-gate ImplementationComplete safety latch is not true")')
+          replace_once(validator, '        "implementation_complete_latch": False,', '        "implementation_complete_latch": True,')
           PY
 
       - name: Remove completed one-shot finalizer
