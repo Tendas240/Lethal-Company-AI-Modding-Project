@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
 **Current State:** `Current/00_CURRENT_STATE.md`
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
-**Last-Validated:** 2026-09-10
+**Last-Validated:** 2026-09-13
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -40,7 +40,7 @@ Latest built artifact and active runtime candidate: **S1.42AI — BCMER ShyGuy I
 
 `BuildSpecs/current.json` is disabled and guards S1.42AI; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` attributes the next runtime evidence to the candidate.
 
-The exact next action is to prepare the ShyGuy-only enemy/event diagnostic revision planned in `BuildSpecs/S1.42AI_PLAN.md` before another gameplay run. S1.42AI-DIAG1 is planned, not built; existing S1.42AI remains the unaccepted candidate with its normal-stack runtime gate outstanding. Use `Knowledge/CURRENT_LIFECYCLE.md` for execution order and `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` for the retained full-normal gate and existing-artifact uploader.
+The exact spawn/event callsite review and minimal guard reduction for S1.42AI-DIAG1 are complete. The exact next action is to implement the temporary default-off diagnostic plugin and approved config overlay from `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md`, then run repository-native static/build validation. S1.42AI-DIAG1 is implementation-ready but not built; existing S1.42AI remains the unaccepted candidate with its normal-stack runtime gate outstanding. Use `Knowledge/CURRENT_LIFECYCLE.md` for execution order and `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` for the retained full-normal gate and existing-artifact uploader.
 
 ## Authority rule
 

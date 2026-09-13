@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-10  
+**Updated:** 2026-09-13  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Prepare the temporary S1.42AI-DIAG1 ShyGuy-only enemy and BCMER event isolation described in BuildSpecs/S1.42AI_PLAN.md before requesting another gameplay run. Preserve the existing S1.42AI artifact and its still-open full-normal runtime gate. Complete the exact spawn/forced-event interception safety review, then implement and build the separately identified diagnostic revision through repository-native infrastructure. Do not import the existing S1.42AI profile as if it already contained isolation. Keep build and runtime controllers unchanged until an atomic validated candidate transition; ingest any already-completed S1.42AI test without requiring a repeat.
+Implement the temporary default-off S1.42AI-DIAG1 diagnostic plugin and approved config overlay exactly from AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md on a clean work branch, then run repository-native static/build validation. The exact spawn/event callsite inventory and minimal guard reduction are already complete; do not repeat that review unless new evidence invalidates the contract. Preserve the existing S1.42AI artifact and its still-open full-normal runtime gate. Do not import or test the existing S1.42AI profile as if it already contained isolation. Keep BuildSpecs/current.json disabled and RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI until an atomic validated diagnostic-candidate transition; ingest any already-completed S1.42AI test without requiring a repeat.
 
 A runtime test is pending for S1.42AI. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
