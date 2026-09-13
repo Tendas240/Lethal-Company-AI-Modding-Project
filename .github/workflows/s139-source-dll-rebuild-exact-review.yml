@@ -1,4 +1,4 @@
-name: S1.42AI S139 Compiler Reference Provenance Inventory
+name: S1.42AI S139 Clean-Room NuGet Restore Review
 
 on:
   push:
@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  compiler-reference-provenance:
+  clean-room-nuget-restore:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout exact analysis head
@@ -28,11 +28,11 @@ jobs:
         with:
           dotnet-version: "8.0.424"
 
-      - name: Build historical S139 context and inventory compiler inputs
+      - name: Compare warm-cache and clean-room restores
         shell: bash
         run: |
           set -euo pipefail
-          OUT="$RUNNER_TEMP/s139-compiler-reference-provenance"
+          OUT="$RUNNER_TEMP/s139-clean-room-nuget"
           PRE="af415c8d6fdb69b0b7c88102e714764f3dc24b57"
           HISTORICAL_BRANCH="build/s142ah-mouthdog-dual-prevention"
           EXPECTED_SDK="10.0.400"
@@ -41,11 +41,12 @@ jobs:
           MEMBER="BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
           PROJECT="Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj"
           PROJECT_DIR="Patches/S139CompatibilityFixes"
-          OBJ="$PROJECT_DIR/obj/Release/netstandard2.1"
           REBUILT="$PROJECT_DIR/bin/Release/netstandard2.1/S139CompatibilityFixes.dll"
+          PACKAGES="$HOME/.nuget/packages"
           ANALYSIS_HEAD="$(git rev-parse HEAD)"
+
           rm -rf "$OUT"
-          mkdir -p "$OUT/reference" "$OUT/rebuilt" "$OUT/generated"
+          mkdir -p "$OUT/reference" "$OUT/warm" "$OUT/clean"
 
           restore_checkout() {
             rm -rf "$PROJECT_DIR/bin" "$PROJECT_DIR/obj"
@@ -69,179 +70,172 @@ jobs:
           open(target, "wb").write(data)
           PY
 
-          dotnet --list-sdks > "$OUT/HOST_DOTNET_SDKS.txt"
           git update-ref "refs/remotes/origin/$HISTORICAL_BRANCH" "$PRE"
           git checkout --force -B "$HISTORICAL_BRANCH" "refs/remotes/origin/$HISTORICAL_BRANCH"
           git branch --set-upstream-to="origin/$HISTORICAL_BRANCH" "$HISTORICAL_BRANCH"
           test "$(git rev-parse HEAD)" = "$PRE"
           test "$(git symbolic-ref --short HEAD)" = "$HISTORICAL_BRANCH"
           test ! -e global.json
-
-          SELECTED_SDK="$(dotnet --version)"
-          test "$SELECTED_SDK" = "$EXPECTED_SDK"
-          printf '%s\n' "$SELECTED_SDK" > "$OUT/SELECTED_DOTNET_SDK.txt"
+          test "$(dotnet --version)" = "$EXPECTED_SDK"
           dotnet --info > "$OUT/DOTNET_INFO.txt"
+          dotnet --list-sdks > "$OUT/HOST_DOTNET_SDKS.txt"
 
+          # Phase A: reproduce the current warm global-packages-cache build.
           rm -rf "$PROJECT_DIR/bin" "$PROJECT_DIR/obj"
-          dotnet build "$PROJECT" -c Release -v:diag > "$OUT/BUILD_DIAGNOSTIC.txt" 2> "$OUT/BUILD_STDERR.txt"
+          dotnet build "$PROJECT" -c Release -v:diag > "$OUT/warm/BUILD_DIAGNOSTIC.txt" 2> "$OUT/warm/BUILD_STDERR.txt"
           test -f "$REBUILT"
-          cp "$REBUILT" "$OUT/rebuilt/S139CompatibilityFixes.dll"
+          cp "$REBUILT" "$OUT/warm/S139CompatibilityFixes.dll"
+          cp "$PROJECT_DIR/obj/project.assets.json" "$OUT/warm/project.assets.json"
 
-          for f in \
-            "$OBJ/S139CompatibilityFixes.sourcelink.json" \
-            "$OBJ/S139CompatibilityFixes.GeneratedMSBuildEditorConfig.editorconfig" \
-            "$OBJ/S139CompatibilityFixes.AssemblyInfo.cs" \
-            "$OBJ/.NETStandard,Version=v2.1.AssemblyAttributes.cs" \
-            "$PROJECT_DIR/obj/project.assets.json" \
-            "$PROJECT_DIR/obj/S139CompatibilityFixes.csproj.nuget.dgspec.json"
-          do
-            test -f "$f"
-            cp "$f" "$OUT/generated/$(basename "$f")"
-          done
-
-          python - "$OUT" "$EXPECTED_RUNTIME_SHA" "$SELECTED_SDK" <<'PY'
-          import hashlib, json, os, pathlib, re, sys
-
-          out = pathlib.Path(sys.argv[1])
-          expected_runtime_sha, selected_sdk = sys.argv[2:]
-          diag = (out / "BUILD_DIAGNOSTIC.txt").read_text(encoding="utf-8", errors="replace")
-          lines = diag.splitlines()
+          python - "$OUT/warm" "$PACKAGES" <<'PY'
+          import hashlib, json, pathlib, sys
+          out, package_root = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
           h = lambda b: hashlib.sha256(b).hexdigest()
-
-          runtime = (out / "reference/S139CompatibilityFixes.dll").read_bytes()
-          rebuilt = (out / "rebuilt/S139CompatibilityFixes.dll").read_bytes()
-          if h(runtime) != expected_runtime_sha:
-              raise SystemExit("runtime reference hash changed")
-
-          start = next(i for i, line in enumerate(lines) if 'Task "Csc"' in line)
-          end = next(i for i in range(start + 1, len(lines)) if 'Done executing task "Csc"' in lines[i])
-          csc = lines[start:end + 1]
-          refs = []
-          in_refs = False
-          for line in csc:
-              stripped = line.strip()
-              if stripped == "References=":
-                  in_refs = True
+          diag = (out / 'BUILD_DIAGNOSTIC.txt').read_text(encoding='utf-8', errors='replace').splitlines()
+          start = next(i for i, line in enumerate(diag) if 'Task "Csc"' in line)
+          end = next(i for i in range(start + 1, len(diag)) if 'Done executing task "Csc"' in diag[i])
+          refs, active = [], False
+          for line in diag[start:end + 1]:
+              s = line.strip()
+              if s == 'References=':
+                  active = True
                   continue
-              if in_refs and stripped.startswith("Task Parameter:"):
+              if active and s.startswith('Task Parameter:'):
                   break
-              if in_refs and stripped.startswith("/") and stripped.endswith(".dll"):
-                  refs.append(stripped)
+              if active and s.startswith('/') and s.endswith('.dll'):
+                  refs.append(s)
           refs = list(dict.fromkeys(refs))
-          if not refs:
-              raise SystemExit("no Csc reference paths captured")
-
-          def classify(path):
-              p = path.replace('\\', '/')
-              nuget = '/.nuget/packages/'
-              packs = '/dotnet/packs/'
-              if nuget in p:
-                  tail = p.split(nuget, 1)[1]
-                  parts = tail.split('/')
-                  return {"kind": "nuget", "package_id": parts[0], "package_version": parts[1] if len(parts) > 1 else None}
-              if packs in p:
-                  tail = p.split(packs, 1)[1]
-                  parts = tail.split('/')
-                  return {"kind": "dotnet_pack", "pack_id": parts[0], "pack_version": parts[1] if len(parts) > 1 else None}
-              return {"kind": "other"}
-
-          reference_inventory = []
+          inventory = []
           for raw in refs:
               p = pathlib.Path(raw)
-              if not p.is_file():
-                  raise SystemExit(f"Csc reference missing: {raw}")
-              item = {"path": raw, "size": p.stat().st_size, "sha256": h(p.read_bytes())}
-              item.update(classify(raw))
-              reference_inventory.append(item)
-
-          sdk_root = pathlib.Path('/usr/share/dotnet/sdk') / selected_sdk
-          compiler_rel = [
-              'Roslyn/bincore/csc.dll',
-              'Roslyn/bincore/Microsoft.CodeAnalysis.dll',
-              'Roslyn/bincore/Microsoft.CodeAnalysis.CSharp.dll',
-              'Roslyn/bincore/VBCSCompiler.dll',
-              'Roslyn/bincore/csc.runtimeconfig.json',
-              'MSBuild.dll',
-              'Microsoft.Build.dll',
-              'Microsoft.Build.Framework.dll',
-              'Microsoft.Build.Tasks.Core.dll',
-              'Microsoft.Build.Utilities.Core.dll',
-          ]
-          compiler_inventory = []
-          for rel in compiler_rel:
-              p = sdk_root / rel
-              if not p.is_file():
-                  raise SystemExit(f"compiler/SDK file missing: {p}")
-              compiler_inventory.append({"path": str(p), "size": p.stat().st_size, "sha256": h(p.read_bytes())})
-
-          assets = json.loads((out / 'generated/project.assets.json').read_text(encoding='utf-8'))
+              if not p.is_file(): raise SystemExit(f'missing reference: {raw}')
+              inventory.append({'path': raw, 'size': p.stat().st_size, 'sha256': h(p.read_bytes())})
+          assets = json.loads((out / 'project.assets.json').read_text())
           packages = []
-          package_root = pathlib.Path('/home/runner/.nuget/packages')
           for key, value in sorted(assets.get('libraries', {}).items()):
-              if value.get('type') != 'package':
-                  continue
+              if value.get('type') != 'package': continue
               package_id, version = key.rsplit('/', 1)
               pdir = package_root / package_id.lower() / version.lower()
-              sha_file = pdir / f"{package_id.lower()}.{version.lower()}.nupkg.sha512"
-              sha_text = sha_file.read_text(encoding='utf-8').strip() if sha_file.is_file() else None
+              sha_file = pdir / f'{package_id.lower()}.{version.lower()}.nupkg.sha512'
+              meta_file = pdir / '.nupkg.metadata'
+              cache_sha = sha_file.read_text().strip() if sha_file.is_file() else None
+              meta = json.loads(meta_file.read_text()) if meta_file.is_file() else {}
               packages.append({
-                  "id": package_id,
-                  "version": version,
-                  "assets_sha512": value.get('sha512'),
-                  "cache_sha512": sha_text,
-                  "sha512_match": sha_text == value.get('sha512') if sha_text is not None else None,
-                  "package_path": value.get('path'),
+                  'id': package_id, 'version': version,
+                  'assets_sha512': value.get('sha512'), 'cache_sha512': cache_sha,
+                  'sha512_match': cache_sha == value.get('sha512') if cache_sha is not None else None,
+                  'metadata_contentHash': meta.get('contentHash'), 'metadata_source': meta.get('source'),
               })
-
-          def aggregate(items):
-              blob = ''.join(f"{x['path']}\0{x['size']}\0{x['sha256']}\n" for x in sorted(items, key=lambda x: x['path'])).encode()
-              return h(blob)
-
-          host_version = None
-          info = (out / 'DOTNET_INFO.txt').read_text(encoding='utf-8', errors='replace')
-          m = re.search(r'^ Host:\s*\n\s*Version:\s*([^\s]+)', info, re.M)
-          if m:
-              host_version = m.group(1)
-
-          verification = {
-              "schema_version": 8,
-              "status": "COMPILER_REFERENCE_PROVENANCE_CAPTURED_BYTE_DIFF_REMAINS" if runtime != rebuilt else "PASS_BYTE_IDENTICAL",
-              "historical_prebuild_commit": "af415c8d6fdb69b0b7c88102e714764f3dc24b57",
-              "selected_sdk": selected_sdk,
-              "dotnet_host_version": host_version,
-              "reference_count": len(reference_inventory),
-              "reference_aggregate_sha256": aggregate(reference_inventory),
-              "compiler_file_count": len(compiler_inventory),
-              "compiler_aggregate_sha256": aggregate(compiler_inventory),
-              "package_count": len(packages),
-              "all_package_sha512_cache_matches_assets": all(x['sha512_match'] is True for x in packages),
-              "runtime_sha256": h(runtime),
-              "rebuilt_sha256": h(rebuilt),
-              "byte_identical": runtime == rebuilt,
-          }
-          (out / 'CSC_REFERENCE_INVENTORY.json').write_text(json.dumps(reference_inventory, indent=2) + '\n')
-          (out / 'COMPILER_SDK_FILE_INVENTORY.json').write_text(json.dumps(compiler_inventory, indent=2) + '\n')
+          (out / 'CSC_REFERENCE_INVENTORY.json').write_text(json.dumps(inventory, indent=2) + '\n')
           (out / 'NUGET_PACKAGE_PROVENANCE.json').write_text(json.dumps(packages, indent=2) + '\n')
-          (out / 'VERIFICATION.json').write_text(json.dumps(verification, indent=2) + '\n')
-          (out / 'SUMMARY.md').write_text(
-              '# S139 Compiler Reference Provenance Inventory\n\n'
-              f"- Status: `{verification['status']}`\n"
-              f"- Selected SDK: `{selected_sdk}`\n"
-              f"- .NET host runtime: `{host_version}`\n"
-              f"- Actual Csc references: `{len(reference_inventory)}`\n"
-              f"- Reference aggregate SHA-256: `{verification['reference_aggregate_sha256']}`\n"
-              f"- Compiler/SDK files hashed: `{len(compiler_inventory)}`\n"
-              f"- Compiler aggregate SHA-256: `{verification['compiler_aggregate_sha256']}`\n"
-              f"- NuGet packages: `{len(packages)}`\n"
-              f"- All package cache SHA512 values match project.assets.json: `{verification['all_package_sha512_cache_matches_assets']}`\n"
-              f"- Runtime DLL SHA-256: `{verification['runtime_sha256']}`\n"
-              f"- Rebuild DLL SHA-256: `{verification['rebuilt_sha256']}`\n\n"
-              'Analysis evidence only; source-to-DLL byte provenance remains open while the rebuilt DLL differs.\n',
-              encoding='utf-8'
-          )
-          print(json.dumps(verification, indent=2))
-          if runtime != rebuilt:
-              raise SystemExit(2)
+          PY
+
+          # Phase B: erase the global package cache and restore from the repository's exact NuGet.Config.
+          rm -rf "$PROJECT_DIR/bin" "$PROJECT_DIR/obj"
+          rm -rf "$PACKAGES"
+          mkdir -p "$PACKAGES"
+          dotnet restore "$PROJECT" --force --no-cache -v:diag > "$OUT/clean/RESTORE_DIAGNOSTIC.txt" 2> "$OUT/clean/RESTORE_STDERR.txt"
+          cp "$PROJECT_DIR/obj/project.assets.json" "$OUT/clean/project.assets.json"
+          dotnet build "$PROJECT" -c Release --no-restore -v:diag > "$OUT/clean/BUILD_DIAGNOSTIC.txt" 2> "$OUT/clean/BUILD_STDERR.txt"
+          test -f "$REBUILT"
+          cp "$REBUILT" "$OUT/clean/S139CompatibilityFixes.dll"
+
+          python - "$OUT/clean" "$PACKAGES" <<'PY'
+          import hashlib, json, pathlib, sys
+          out, package_root = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+          h = lambda b: hashlib.sha256(b).hexdigest()
+          diag = (out / 'BUILD_DIAGNOSTIC.txt').read_text(encoding='utf-8', errors='replace').splitlines()
+          start = next(i for i, line in enumerate(diag) if 'Task "Csc"' in line)
+          end = next(i for i in range(start + 1, len(diag)) if 'Done executing task "Csc"' in diag[i])
+          refs, active = [], False
+          for line in diag[start:end + 1]:
+              s = line.strip()
+              if s == 'References=':
+                  active = True
+                  continue
+              if active and s.startswith('Task Parameter:'):
+                  break
+              if active and s.startswith('/') and s.endswith('.dll'):
+                  refs.append(s)
+          refs = list(dict.fromkeys(refs))
+          inventory = []
+          for raw in refs:
+              p = pathlib.Path(raw)
+              if not p.is_file(): raise SystemExit(f'missing reference: {raw}')
+              inventory.append({'path': raw, 'size': p.stat().st_size, 'sha256': h(p.read_bytes())})
+          assets = json.loads((out / 'project.assets.json').read_text())
+          packages = []
+          for key, value in sorted(assets.get('libraries', {}).items()):
+              if value.get('type') != 'package': continue
+              package_id, version = key.rsplit('/', 1)
+              pdir = package_root / package_id.lower() / version.lower()
+              sha_file = pdir / f'{package_id.lower()}.{version.lower()}.nupkg.sha512'
+              meta_file = pdir / '.nupkg.metadata'
+              cache_sha = sha_file.read_text().strip() if sha_file.is_file() else None
+              meta = json.loads(meta_file.read_text()) if meta_file.is_file() else {}
+              packages.append({
+                  'id': package_id, 'version': version,
+                  'assets_sha512': value.get('sha512'), 'cache_sha512': cache_sha,
+                  'sha512_match': cache_sha == value.get('sha512') if cache_sha is not None else None,
+                  'metadata_contentHash': meta.get('contentHash'), 'metadata_source': meta.get('source'),
+              })
+          (out / 'CSC_REFERENCE_INVENTORY.json').write_text(json.dumps(inventory, indent=2) + '\n')
+          (out / 'NUGET_PACKAGE_PROVENANCE.json').write_text(json.dumps(packages, indent=2) + '\n')
+          PY
+
+          # Install ILSpy only after both package-cache build phases so it cannot perturb either restore.
+          mkdir -p .tools
+          dotnet tool install ilspycmd --tool-path .tools --version 11.0.0.9375 >/dev/null
+          ./.tools/ilspycmd --ilcode "$OUT/reference/S139CompatibilityFixes.dll" > "$OUT/reference/FULL_IL.txt"
+          ./.tools/ilspycmd --ilcode "$OUT/warm/S139CompatibilityFixes.dll" > "$OUT/warm/FULL_IL.txt"
+          ./.tools/ilspycmd --ilcode "$OUT/clean/S139CompatibilityFixes.dll" > "$OUT/clean/FULL_IL.txt"
+
+          python - "$OUT" "$EXPECTED_RUNTIME_SHA" <<'PY'
+          import hashlib, json, pathlib, sys
+          out = pathlib.Path(sys.argv[1]); expected = sys.argv[2]
+          h = lambda b: hashlib.sha256(b).hexdigest()
+          runtime = (out/'reference/S139CompatibilityFixes.dll').read_bytes()
+          warm = (out/'warm/S139CompatibilityFixes.dll').read_bytes()
+          clean = (out/'clean/S139CompatibilityFixes.dll').read_bytes()
+          if h(runtime) != expected: raise SystemExit('runtime SHA changed')
+          warm_refs = json.loads((out/'warm/CSC_REFERENCE_INVENTORY.json').read_text())
+          clean_refs = json.loads((out/'clean/CSC_REFERENCE_INVENTORY.json').read_text())
+          warm_pkgs = json.loads((out/'warm/NUGET_PACKAGE_PROVENANCE.json').read_text())
+          clean_pkgs = json.loads((out/'clean/NUGET_PACKAGE_PROVENANCE.json').read_text())
+          wr = {x['path']: x for x in warm_refs}; cr = {x['path']: x for x in clean_refs}
+          changed_refs = []
+          for path in sorted(set(wr)|set(cr)):
+              a,b = wr.get(path),cr.get(path)
+              if a is None or b is None or a['sha256'] != b['sha256'] or a['size'] != b['size']:
+                  changed_refs.append({'path':path,'warm':a,'clean':b})
+          wp = {(x['id'],x['version']):x for x in warm_pkgs}; cp = {(x['id'],x['version']):x for x in clean_pkgs}
+          changed_pkgs = []
+          for key in sorted(set(wp)|set(cp)):
+              a,b=wp.get(key),cp.get(key)
+              if a != b: changed_pkgs.append({'id':key[0],'version':key[1],'warm':a,'clean':b})
+          runtime_il=(out/'reference/FULL_IL.txt').read_bytes(); warm_il=(out/'warm/FULL_IL.txt').read_bytes(); clean_il=(out/'clean/FULL_IL.txt').read_bytes()
+          status = ('PASS_CLEAN_RESTORE_BYTE_IDENTICAL' if clean == runtime else
+                    'CLEAN_RESTORE_CHANGED_BUILD_BYTE_DIFF_REMAINS' if clean != warm else
+                    'CLEAN_RESTORE_NO_BUILD_EFFECT_BYTE_DIFF_REMAINS')
+          result={
+            'schema_version':9,'status':status,
+            'runtime_sha256':h(runtime),'warm_sha256':h(warm),'clean_sha256':h(clean),
+            'warm_equals_clean':warm==clean,'clean_equals_runtime':clean==runtime,
+            'runtime_il_sha256':h(runtime_il),'warm_il_sha256':h(warm_il),'clean_il_sha256':h(clean_il),
+            'warm_il_equals_runtime':warm_il==runtime_il,'clean_il_equals_runtime':clean_il==runtime_il,
+            'warm_reference_count':len(warm_refs),'clean_reference_count':len(clean_refs),
+            'changed_reference_count':len(changed_refs),'changed_package_provenance_count':len(changed_pkgs),
+            'warm_package_sha512_all_match':all(x['sha512_match'] is True for x in warm_pkgs),
+            'clean_package_sha512_all_match':all(x['sha512_match'] is True for x in clean_pkgs),
+          }
+          (out/'CHANGED_REFERENCES.json').write_text(json.dumps(changed_refs,indent=2)+'\n')
+          (out/'CHANGED_PACKAGE_PROVENANCE.json').write_text(json.dumps(changed_pkgs,indent=2)+'\n')
+          (out/'VERIFICATION.json').write_text(json.dumps(result,indent=2)+'\n')
+          (out/'SUMMARY.md').write_text(
+            '# S139 Clean-Room NuGet Restore Review\n\n'+
+            '\n'.join(f'- {k}: `{v}`' for k,v in result.items())+'\n')
+          print(json.dumps(result,indent=2))
+          if clean != runtime: raise SystemExit(2)
           PY
 
       - name: Verify analysis checkout restored cleanly
@@ -252,11 +246,11 @@ jobs:
           git diff --exit-code
           test -z "$(git status --porcelain --untracked-files=no)"
 
-      - name: Upload compiler reference provenance evidence
+      - name: Upload clean-room NuGet evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: s142ai-s139-compiler-reference-provenance
+          name: s142ai-s139-clean-room-nuget
           if-no-files-found: error
           retention-days: 30
-          path: ${{ runner.temp }}/s139-compiler-reference-provenance
+          path: ${{ runner.temp }}/s139-clean-room-nuget
