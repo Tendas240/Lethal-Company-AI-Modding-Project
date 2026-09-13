@@ -401,7 +401,8 @@ def main() -> int:
     for idx, (name, data) in enumerate(base.items()):
         if not name.lower().endswith(".dll"):
             continue
-        dest = dll_root / f"{idx:04d}-{Path(name).name}"
+        dest = dll_root / Path(name)
+        dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes(data)
         dll_records.append((name, dest, sha256_bytes(data)))
 
