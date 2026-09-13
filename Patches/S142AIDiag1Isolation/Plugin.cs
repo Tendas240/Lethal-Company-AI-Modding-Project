@@ -18,10 +18,10 @@ namespace S142AIDiag1Isolation
         public const string PluginName = "S1.42AI-DIAG1 ShyGuy Isolation";
         public const string PluginVersion = "0.1.0";
 
-        // Work-branch safety latch. Keep false until the approved DIAG1 config overlay,
-        // config assertions and repository-native compile/static build gate are complete.
-        // A manually copied intermediate DLL therefore cannot install any Harmony hooks.
-        private const bool ImplementationComplete = false;
+        // Build-ready safety latch. This may be true only after the approved DIAG1 config
+        // overlay, config assertions and repository-native compile/static gate have passed.
+        // Diagnostic activation still remains default-off and config-gated at runtime.
+        private const bool ImplementationComplete = true;
 
         internal static ManualLogSource Log;
         internal static Harmony Harmony;

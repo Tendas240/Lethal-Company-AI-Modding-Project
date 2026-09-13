@@ -275,8 +275,8 @@ def main() -> int:
     }
 
     source = "\n".join(p.read_text(encoding="utf-8") for p in sorted(PLUGIN_DIR.glob("*.cs")))
-    if "private const bool ImplementationComplete = false;" not in source:
-        fail("Work-branch ImplementationComplete safety latch is not false")
+    if "private const bool ImplementationComplete = true;" not in source:
+        fail("Post-static-gate ImplementationComplete safety latch is not true")
     if not re.search(r'Config\.Bind\(\s*"Diagnostics"\s*,\s*"S1\.42AI-DIAG1 Enabled"\s*,\s*false\s*,', source, re.S):
         fail("Diagnostic config is not default-off")
     if "PatchAll(" in source:
@@ -310,7 +310,7 @@ def main() -> int:
         if marker not in source:
             fail(f"Required static/startup marker missing: {marker}")
     report["checks"]["plugin_source"] = {
-        "implementation_complete_latch": False,
+        "implementation_complete_latch": True,
         "diagnostic_default": False,
         "required_markers_present": True,
         "forbidden_broad_target_labels_absent": True,
