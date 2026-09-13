@@ -56,7 +56,6 @@ def class_ranges(lines:list[str]):
     for i,line in enumerate(lines):
         m=decl.search(line)
         if not m: continue
-        # opening brace may be same/next few lines
         k=i
         while k<min(len(lines),i+5) and "{" not in lines[k]: k+=1
         if k>=len(lines) or "{" not in lines[k]: continue
@@ -76,7 +75,9 @@ def enclosing_class(ranges,idx):
 def method_name(header:str):
     s=re.sub(r"//.*","",header).strip()
     if "(" not in s or ")" not in s or s.lower().startswith(CONTROL): return None
-    pre=s.split("(",1)[0].strip(); tok=re.split(r"\s+",pre)[-1].split(".")[-1].split("<",1)[0]
+    pre=s.split("(",1)[0].strip()
+    if "=" in pre: return None
+    tok=re.split(r"\s+",pre)[-1].split(".")[-1].split("<",1)[0]
     return tok if re.fullmatch(r"[A-Za-z_][\w`]*",tok or "") and tok not in {"new","return","typeof","nameof"} else None
 
 def cs_methods(text:str):
@@ -125,7 +126,6 @@ def source_run(path:Path):
 
 def classify(r):
     fn,cls,m=r["source_file"],r["class"],r["method"]
-    joined=f"{fn} {cls} {m} {r['signature']}"
     if fn.startswith("theunknowncod3r-Scopophobia-") and cls=="ShyGuyPaintingProp":
         return "ALLOW_EXACT_SHYGUY_OWNER","painting route resolves exact Shy Guy; allowed by identity but cannot prove BCMER event execution"
     if fn=="BrutalCompanyMinus-1.71.0.cs":
@@ -147,7 +147,6 @@ def classify(r):
     return "OWNER_GUARD_REQUIRED","direct/explicit enemy creation path requires exact owner-level prevention before destructive/stateful side effects"
 
 def sources(root:Path,repo:Path):
-    # Inventory every exact artifact source, but analyze C# as primary. Earlier ShyGuy capture is text-only.
     for p in sorted(root.rglob("*")):
         if not p.is_file() or p.suffix.lower() not in {".cs",".il",".txt"}: continue
         analyze=False
@@ -183,11 +182,10 @@ def main():
             if x["method"].startswith("__rpc_handler_"): continue
             r={"source_file":p.name,"source_path":rel,"source_sha256":digest,"source_kind":kind,"run_id":rid,"run_label":label,"class":x["class"],"class_enemy_ai_like":x["class_enemy_ai_like"],"method":x["method"],"signature":x["signature"],"start_line":x["start_line"],"end_line":x["end_line"],"method_body_sha256":h(x["body"].encode()),"primitive_flags":f}
             r["coverage_category"],r["coverage_rationale"]=classify(r); rows.append(r)
-    # semantic C# matrix: one row per exact source method/body, no C#/IL duplicate inflation
     dedup={(r["source_sha256"],r["class"],r["method"],r["method_body_sha256"]):r for r in rows}; rows=sorted(dedup.values(),key=lambda r:(r["coverage_category"],r["source_file"],r["class"],r["method"],r["start_line"]))
     counts={}
     for r in rows: counts[r["coverage_category"]]=counts.get(r["coverage_category"],0)+1
-    matrix={"schema_version":3,"scope":"S1.42AI-DIAG1 exact enemy-spawn callsite coverage","analysis_only":True,"base_contract":"BuildSpecs/S1.42AI_PLAN.md","source_runs":RUNS,"source_file_count":len(inventory),"analyzed_source_file_count":sum(1 for i in inventory if i["analyzed"]),"unique_relevant_callsite_count":len(rows),"category_counts":counts,"unclassified_count":0,"rows":rows}
+    matrix={"schema_version":4,"scope":"S1.42AI-DIAG1 exact enemy-spawn callsite coverage","analysis_only":True,"base_contract":"BuildSpecs/S1.42AI_PLAN.md","source_runs":RUNS,"source_file_count":len(inventory),"analyzed_source_file_count":sum(1 for i in inventory if i["analyzed"]),"unique_relevant_callsite_count":len(rows),"category_counts":counts,"unclassified_count":0,"rows":rows}
     (out/"CALLSITE_MATRIX.json").write_text(json.dumps(matrix,indent=2,sort_keys=True)+"\n")
     (out/"SOURCE_INVENTORY.json").write_text(json.dumps(inventory,indent=2,sort_keys=True)+"\n")
     md=["# S1.42AI-DIAG1 Exact Spawn Callsite Coverage Matrix","","**Status:** ANALYSIS-ONLY / NO IMPLEMENTATION / NO BUILD AUTHORIZATION","",f"Relevant semantic callsites: **{len(rows)}**",f"Analyzed primary source files: **{matrix['analyzed_source_file_count']}** / inventoried exact source files: **{len(inventory)}**","Unclassified: **0**","","## Categories",""]
