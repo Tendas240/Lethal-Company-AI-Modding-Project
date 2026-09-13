@@ -1,4 +1,4 @@
-name: Repair S1.42AI-DIAG1 HarmonyX overloads
+name: Repair S1.42AI-DIAG1 static validator extraction
 
 on:
   push:
@@ -19,44 +19,33 @@ jobs:
           ref: work/s142ai-diag1-implementation
           fetch-depth: 1
 
-      - name: Apply exact HarmonyX 2.10.2 six-argument Patch repairs
+      - name: Preserve original archive paths for exact DLL inspection
         run: |
           python - <<'PY'
           from pathlib import Path
 
-          repairs = [
-              (
-                  Path('Patches/S142AIDiag1Isolation/Plugin.cs'),
-                  'harmony.Patch(original, prefix, postfix, null, finalizer);',
-                  'harmony.Patch(original, prefix, postfix, null, finalizer, null);',
-              ),
-              (
-                  Path('Patches/S142AIDiag1Isolation/ComplexOwnerGuardInstaller.cs'),
-                  '''harmony.Patch(\n                        target.Original,\n                        prefix: target.Prefix,\n                        postfix: null,\n                        transpiler: target.Transpiler,\n                        finalizer: null);''',
-                  '''harmony.Patch(\n                        target.Original,\n                        prefix: target.Prefix,\n                        postfix: null,\n                        transpiler: target.Transpiler,\n                        finalizer: null,\n                        ilmanipulator: null);''',
-              ),
-          ]
-
-          for path, old, new in repairs:
-              text = path.read_text(encoding='utf-8')
-              count = text.count(old)
-              if count != 1:
-                  raise RuntimeError(f'{path}: expected exactly one repair match, got {count}')
-              path.write_text(text.replace(old, new), encoding='utf-8')
-              print(f'repaired {path}')
+          path = Path('AnalysisTools/validate_s142ai_diag1_static.py')
+          text = path.read_text(encoding='utf-8')
+          old = '''        dest = dll_root / f"{idx:04d}-{Path(name).name}"\n        dest.write_bytes(data)'''
+          new = '''        dest = dll_root / Path(name)\n        dest.parent.mkdir(parents=True, exist_ok=True)\n        dest.write_bytes(data)'''
+          count = text.count(old)
+          if count != 1:
+              raise RuntimeError(f'{path}: expected exactly one extraction repair match, got {count}')
+          path.write_text(text.replace(old, new), encoding='utf-8')
+          print(f'repaired {path}')
           PY
 
-      - name: Verify repair diff is limited to the two DIAG1 source files
+      - name: Verify repair diff is validator-only
         run: |
           changed="$(git diff --name-only)"
-          test "$changed" = $'Patches/S142AIDiag1Isolation/ComplexOwnerGuardInstaller.cs\nPatches/S142AIDiag1Isolation/Plugin.cs'
+          test "$changed" = 'AnalysisTools/validate_s142ai_diag1_static.py'
           git diff --check
-          git diff -- Patches/S142AIDiag1Isolation/Plugin.cs Patches/S142AIDiag1Isolation/ComplexOwnerGuardInstaller.cs
+          git diff -- AnalysisTools/validate_s142ai_diag1_static.py
 
-      - name: Commit exact source repair
+      - name: Commit exact validator repair
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add Patches/S142AIDiag1Isolation/Plugin.cs Patches/S142AIDiag1Isolation/ComplexOwnerGuardInstaller.cs
-          git commit -m 'Use HarmonyX six-argument Patch overloads'
+          git add AnalysisTools/validate_s142ai_diag1_static.py
+          git commit -m 'Preserve profile DLL paths in DIAG1 validator'
           git push origin HEAD:work/s142ai-diag1-implementation
