@@ -4,9 +4,18 @@ Project-local cumulative plugin for the Tendas Lethal Company profile.
 
 Current source version: **1.2.0**
 
-Current runtime-tested embedded binary reference:
-- profile: `Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z`
-- embedded DLL SHA-256: `c3da6ee8220bec3b954ac62ca1a4d813efcb292eefd9b70fc0616a76e2f37af3`
+Accepted runtime-tested embedded binary reference:
+- accepted profile: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`
+- inherited unchanged by: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`
+- embedded DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`
+- reproducibility provenance: `Current/144_S139_SOURCE_DLL_REPRODUCIBILITY_PROVENANCE.md`
+
+Exact source-to-DLL reproducibility contract:
+
+- The accepted historical binary is byte-reproducible with .NET SDK `10.0.400` **and** .NET Host/Runtime `10.0.11` in the recorded historical build context.
+- SDK `10.0.400` under Host `10.0.12` produces identical managed IL but a different deterministic DLL/PDB identity and reproducibly yields DLL SHA-256 `912e097ae61d3af394f0132115327478b714ee83a4b5b73bbacba7c86dff8de7`.
+- Therefore the Host patch level is part of the exact binary provenance; pinning only the SDK is insufficient when byte identity is required.
+- The decisive repository-native proof, supporting exclusion evidence and exact deterministic identities are recorded in `Current/144_S139_SOURCE_DLL_REPRODUCIBILITY_PROVENANCE.md`.
 
 Functions:
 
@@ -23,8 +32,8 @@ Functions:
 Gale import rule:
 
 - Import any current project `.r2z` containing this plugin with **Advanced options -> Import all files** so the embedded DLL is extracted.
-- The current source is compiled directly by the repository-first GitHub Actions profile build and injected into the generated profile.
-- **Do not use `Tendas-S139CompatibilityFixes-1.0.0.zip` or the standalone `S139CompatibilityFixes.dll` in this folder as a current fallback.** Those binary artifacts are historical v1.0.0-era files and do not contain the later LethalModDataLib/Puffer guards. They remain only for historical reconstruction; the authoritative current implementation is `Plugin.cs` compiled by the build workflow.
+- The authoritative implementation is `Plugin.cs`; repository-native profile builds compile it and inject the resulting binary into the generated profile.
+- **Do not use `Tendas-S139CompatibilityFixes-1.0.0.zip` or the standalone `S139CompatibilityFixes.dll` in this folder as a current fallback.** Those binary artifacts are historical v1.0.0-era files and do not contain the later LethalModDataLib/Puffer guards. They remain only for historical reconstruction.
 
 Expected runtime markers:
 
@@ -36,4 +45,4 @@ When LethalModDataLib is present:
 
 The next validation must also confirm LethalModDataLib continues past registration and logs its normal save/load-hook initialization.
 
-Build status: cumulative compatibility plugin; every version bump must be compiled by the repository-first profile workflow and runtime-validated in the corresponding candidate.
+Build status: cumulative compatibility plugin; every version bump must be compiled by the repository-first profile workflow and runtime-validated in the corresponding candidate. Exact reproduction of the accepted historical DLL additionally requires the provenance contract above.

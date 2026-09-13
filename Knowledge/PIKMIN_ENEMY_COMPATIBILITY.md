@@ -3,9 +3,9 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** accepted interaction ownership and permanent anti-regression rules  
 **Canonical-For:** `pikmin_enemy_compatibility`  
-**Evidence:** `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`, `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`, `Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md`, `Current/141_S1.42AH_RUNTIME_PARTIAL_VALIDATION_REVERSE_DIRECTION_ADAPTER.md`, `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`, `RuntimeEvidence/S1.42AH/20260909T162513Z/`  
+**Evidence:** `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`, `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`, `Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md`, `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`, `Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md`, `Current/141_S1.42AH_RUNTIME_PARTIAL_VALIDATION_REVERSE_DIRECTION_ADAPTER.md`, `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`, `Current/144_S139_SOURCE_DLL_REPRODUCIBILITY_PROVENANCE.md`, `RuntimeEvidence/S1.42AH/20260909T162513Z/`  
 **Code:** `Patches/S139CompatibilityFixes/Plugin.cs`  
-**Last-Validated:** 2026-09-09
+**Last-Validated:** 2026-09-13
 
 ## Ownership principle
 
@@ -29,6 +29,12 @@ Final decisive runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
 Final raw-log SHA-256: `ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729`
 
 S1.42AF is the accepted predecessor/rollback point. S1.42AG remains rejected historical partial-fix evidence.
+
+### Source-to-DLL reproducibility
+
+The accepted S139 compatibility DLL is now independently reproducible from its historical source/build context. `Current/144_S139_SOURCE_DLL_REPRODUCIBILITY_PROVENANCE.md` records the decisive repository-native proof that .NET SDK `10.0.400` plus Host/Runtime `10.0.11` reproduces DLL SHA-256 `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573` byte-for-byte, including deterministic MVID/CodeView/PDB identities.
+
+Host `10.0.12` with the same SDK and reproduced source/workspace/branch/SourceLink/compiler-reference context retains identical managed IL but produces a different deterministic binary (`912e097ae61d3af394f0132115327478b714ee83a4b5b73bbacba7c86dff8de7`). Exact historical binary reproduction therefore requires the recorded Host `10.0.11` contract; SDK pinning alone is not sufficient.
 
 ### Accepted patch boundary
 
@@ -86,13 +92,9 @@ Earlier current-state text used `BiteKillEnemyAI` as shorthand for the final nei
 - Preserve native Pikmin -> MouthDog combat/death/unlatch/task/carry ownership.
 - A future change to either exact MouthDog hook requires a new patch-safety review and targeted regression evidence.
 
-## Current lifecycle
+## Current lifecycle authority
 
-- accepted baseline: **S1.42AH**;
-- latest built artifact: **S1.42AH**;
-- active candidate: none;
-- runtime test pending: no;
-- next independent scope: BCMER ShyGuy interior-only correction under `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`.
+This topic intentionally does not duplicate volatile accepted/latest/candidate/runtime-next-action state. Resolve the current gameplay lifecycle from `Current/CURRENT_STATE.json` and `Knowledge/CURRENT_LIFECYCLE.md`. The S139 provenance closure above changes no lifecycle or controller state.
 
 ## Patch safety
 
