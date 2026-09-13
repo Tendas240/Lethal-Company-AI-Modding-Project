@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "date": "2026-09-10",
+  "date": "2026-09-13",
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AH",
-  "active_candidate_build_id": "S1.42AI",
-  "latest_built_artifact_id": "S1.42AI",
+  "active_candidate_build_id": "S1.42AI-DIAG1",
+  "latest_built_artifact_id": "S1.42AI-DIAG1",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
     {
@@ -570,6 +570,22 @@
       "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "safe_as_gameplay_base": false,
       "principal_feature": "single-variable BCMER ShyGuy interior-only event correction; three exterior event values zeroed while all interior/event/type and Scopophobia contracts remain unchanged"
+    },
+    {
+      "id": "S1.42AI-DIAG1",
+      "title": "ShyGuy Isolation Diagnostic",
+      "status": "active-diagnostic-runtime-candidate",
+      "parent": "S1.42AI",
+      "profile": "Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z",
+      "sha256": "22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd",
+      "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
+      "candidate_record": "Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md",
+      "decision_record": "Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md",
+      "project_status": "Current/Projektstatus_S1.42AI-DIAG1_CANDIDATE.json",
+      "workflow_run": 34777833867,
+      "build_commit": "1018ac909435a51f1b98ceb9dfdad0599dc4dcc4",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "temporary ShyGuy-only diagnostic isolation using exact reviewed config gates and narrow package/native owner guards"
     }
   ],
   "feature_index": {
@@ -595,7 +611,8 @@
     "Functional_Microwave_path_length_safe_packaging": "S1.42AF",
     "MouthDog_to_Pikmin_one_way_protection_partial_fix_rejected": "S1.42AG",
     "MouthDog_to_Pikmin_dual_prevention_accepted": "S1.42AH",
-    "BCMER_ShyGuy_interior_only_event_correction": "S1.42AI"
+    "BCMER_ShyGuy_interior_only_event_correction": "S1.42AI",
+    "BCMER_ShyGuy_DIAG1_isolation": "S1.42AI-DIAG1"
   },
   "lineage_invariants": [
     "S1.42C is the canonical normal enemy-spawn/config restore baseline after S1.42B diagnostic divergence.",

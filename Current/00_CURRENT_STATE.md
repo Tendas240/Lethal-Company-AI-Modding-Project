@@ -21,28 +21,28 @@ Runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
 
 ## Latest built artifact
 
-**S1.42AI — BCMER ShyGuy Interior-Only Event Correction — BUILD PASS STATIC DELTA VERIFIED RUNTIME VALIDATION OUTSTANDING**
+**S1.42AI-DIAG1 — ShyGuy Isolation Diagnostic — BUILD PASS STATIC AND MATERIALIZED DELTA VERIFIED RUNTIME VALIDATION OUTSTANDING**
 
-Profile: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`  
-SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`  
-Candidate record: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
+Profile: `Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z`  
+SHA-256: `22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd`  
+Candidate record: `Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
 ## Live execution state
 
-- Active candidate: **S1.42AI**
+- Active candidate: **S1.42AI-DIAG1**
 - Runtime test outstanding: **yes**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI_BUILD_AWAITING_RUNTIME_VALIDATION`)
-- Guarded build base: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1_BUILD_AWAITING_RUNTIME_VALIDATION`)
+- Guarded build base: `Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z` / `22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1`
 
 ## Exact next action
 
-Implement the temporary default-off S1.42AI-DIAG1 diagnostic plugin and approved config overlay exactly from AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md on a clean work branch, then run repository-native static/build validation. The exact spawn/event callsite inventory and minimal guard reduction are already complete; do not repeat that review unless new evidence invalidates the contract. Preserve the existing S1.42AI artifact and its still-open full-normal runtime gate. Do not import or test the existing S1.42AI profile as if it already contained isolation. Keep BuildSpecs/current.json disabled and RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI until an atomic validated diagnostic-candidate transition; ingest any already-completed S1.42AI test without requiring a repeat.
+Runtime-test S1.42AI-DIAG1 as the active temporary diagnostic candidate. Verify DIAG1 startup/identity/config/guard markers, exercise the ShyGuy-only round, fail on any DIAG1_ISOLATION_BYPASS or unexpected non-ShyGuy enemy, preserve ShyGuy observability, then upload the exact DIAG1 LogOutput.log. Diagnostic success does not accept S1.42AI; its full-normal BCMER ShyGuy gate remains required afterward.
 
-A runtime test is pending for S1.42AI. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+A runtime test is pending for S1.42AI-DIAG1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 

@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI candidate=S1.42AI runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1 candidate=S1.42AI-DIAG1 runtime_test_outstanding=true -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -36,11 +36,11 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
 
-Latest built artifact and active runtime candidate: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — NOT ACCEPTED**. Runtime validation is outstanding. Candidate authority: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`; static evidence: `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`.
+Latest built artifact and active temporary diagnostic runtime candidate: **S1.42AI-DIAG1 — ShyGuy Isolation Diagnostic — NOT ACCEPTED**. Runtime diagnostic validation is outstanding. Candidate authority: `Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md`; implementation/runtime contract: `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md`.
 
-`BuildSpecs/current.json` is disabled and guards S1.42AI; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` attributes the next runtime evidence to the candidate.
+`BuildSpecs/current.json` is disabled and guards the exact DIAG1 profile/SHA; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1` attributes the next runtime evidence to the diagnostic candidate.
 
-The exact spawn/event callsite review and minimal guard reduction for S1.42AI-DIAG1 are complete. The exact next action is to implement the temporary default-off diagnostic plugin and approved config overlay from `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md`, then run repository-native static/build validation. S1.42AI-DIAG1 is implementation-ready but not built; existing S1.42AI remains the unaccepted candidate with its normal-stack runtime gate outstanding. Use `Knowledge/CURRENT_LIFECYCLE.md` for execution order and `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` for the retained full-normal gate and existing-artifact uploader.
+The DIAG1 implementation/static/build stage is complete. The next action is the bounded DIAG1 runtime diagnostic. The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived; diagnostic success cannot replace it. Use `Knowledge/CURRENT_LIFECYCLE.md` for execution order.
 
 ## Authority rule
 
