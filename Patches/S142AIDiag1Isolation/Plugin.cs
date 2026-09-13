@@ -18,10 +18,9 @@ namespace S142AIDiag1Isolation
         public const string PluginName = "S1.42AI-DIAG1 ShyGuy Isolation";
         public const string PluginVersion = "0.1.0";
 
-        // Segment-1 safety latch. The native guard implementation below is intentionally
-        // not activatable until the package-owner guard set and config overlay are added
-        // in the next implementation segment. This keeps a partially implemented work
-        // branch fail-closed even if somebody manually copies the DLL into a profile.
+        // Work-branch safety latch. Keep false until the approved DIAG1 config overlay,
+        // config assertions and repository-native compile/static build gate are complete.
+        // A manually copied intermediate DLL therefore cannot install any Harmony hooks.
         private const bool ImplementationComplete = false;
 
         internal static ManualLogSource Log;
@@ -46,18 +45,70 @@ namespace S142AIDiag1Isolation
             if (!ImplementationComplete)
             {
                 Logger.LogError(
-                    "[DIAG1_IMPLEMENTATION_INCOMPLETE] Diagnostic enable was requested on a source revision that does not yet contain the full approved owner-guard/config-overlay implementation. No Harmony hooks are installed.");
+                    "[DIAG1_IMPLEMENTATION_INCOMPLETE] Diagnostic enable was requested on a source revision that has not passed the full approved config-overlay/static-build gate. No Harmony hooks are installed.");
                 return;
             }
 
             Logger.LogWarning("[DIAG1_ENABLED] Temporary S1.42AI-DIAG1 Shy Guy isolation is enabled.");
 
             Harmony = new Harmony(PluginGuid);
-            bool nativeInstalled = NativeGuardInstaller.InstallAll(Harmony);
-            if (!nativeInstalled)
+            try
             {
-                DiagnosticIsolation.MarkInvalid(
-                    "One or more exact V81 native guard targets failed validation. No fallback target is permitted.");
+                bool nativeInstalled = NativeGuardInstaller.InstallAll(Harmony);
+                if (!nativeInstalled)
+                {
+                    AbortInstallation(
+                        "One or more exact V81 native guard targets failed validation/installation. No fallback target is permitted.");
+                    return;
+                }
+
+                bool simpleInstalled = PackageOwnerGuardInstaller.InstallSimpleGuards(Harmony);
+                if (!simpleInstalled)
+                {
+                    AbortInstallation(
+                        "One or more exact simple package-owner targets failed validation/installation. No fallback target is permitted.");
+                    return;
+                }
+
+                bool complexInstalled = ComplexOwnerGuardInstaller.InstallComplexGuards(Harmony);
+                if (!complexInstalled)
+                {
+                    AbortInstallation(
+                        "One or more exact complex package-owner targets/transpilers failed validation/installation. No fallback target is permitted.");
+                    return;
+                }
+
+                Logger.LogInfo(
+                    "[DIAG1_GUARD_LAYERS_INSTALLED] native=true, simpleOwners=true, complexOwners=true; " +
+                    "all hooks belong only to the DIAG1 Harmony instance.");
+
+                StartCoroutine(DiagnosticStartupAssertions.RunAfterPluginAwake());
+            }
+            catch (Exception ex)
+            {
+                AbortInstallation(
+                    $"Unexpected exception during exact DIAG1 guard installation: {ex.GetType().Name}: {ex.Message}");
+            }
+        }
+
+        private void AbortInstallation(string reason)
+        {
+            DiagnosticIsolation.MarkInvalid(reason);
+
+            if (Harmony == null)
+                return;
+
+            try
+            {
+                Harmony.UnpatchSelf();
+                Logger.LogError(
+                    "[DIAG1_INSTALL_ROLLED_BACK] Removed all Harmony hooks owned by the DIAG1 Harmony instance after incomplete installation.");
+            }
+            catch (Exception rollbackEx)
+            {
+                Logger.LogError(
+                    $"[DIAG1_INSTALL_ROLLBACK_FAILED] Failed to remove the partially installed DIAG1 Harmony set: " +
+                    $"{rollbackEx.GetType().Name}: {rollbackEx.Message}");
             }
         }
     }
@@ -111,17 +162,27 @@ namespace S142AIDiag1Isolation
 
         private static HarmonyMethod HarmonyMethod(Type owner, string methodName, int priority)
         {
-            MethodInfo method = owner.GetMethod(
-                methodName,
-                BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic,
-                null,
-                null,
-                null);
+            const BindingFlags flags =
+                BindingFlags.Static |
+                BindingFlags.Public |
+                BindingFlags.NonPublic |
+                BindingFlags.DeclaredOnly;
 
-            if (method == null)
-                throw new MissingMethodException(owner.FullName, methodName);
+            MethodInfo[] matches = owner
+                .GetMethods(flags)
+                .Where(method => string.Equals(method.Name, methodName, StringComparison.Ordinal))
+                .ToArray();
 
-            return new HarmonyMethod(method) { priority = priority };
+            if (matches.Length != 1 ||
+                matches[0].DeclaringType != owner ||
+                !matches[0].IsStatic ||
+                matches[0].GetMethodBody() == null)
+            {
+                throw new MissingMethodException(
+                    $"Exact local Harmony patch method {owner.FullName}.{methodName} did not resolve to exactly one declared static method with a body; matches={matches.Length}.");
+            }
+
+            return new HarmonyMethod(matches[0]) { priority = priority };
         }
 
         private static MethodInfo ExactDeclaredMethod(Type owner, string name, Type[] parameters, Type returnType)
