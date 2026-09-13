@@ -1,5 +1,5 @@
 {
-  "enabled": true,
+  "enabled": false,
   "build_id": "S1.42AI-DIAG1",
   "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
   "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
