@@ -58,19 +58,19 @@ jobs:
             mkdir -p ".analysis-artifacts/$run"
             echo "Downloading exact source artifact(s) from run $run"
             gh run download "$run" --repo "${GITHUB_REPOSITORY}" --dir ".analysis-artifacts/$run"
-            find ".analysis-artifacts/$run" -type f -maxdepth 3 -printf '%P\n' | sort
+            find ".analysis-artifacts/$run" -maxdepth 3 -type f -printf '%P\n' | sort
           done
 
       - name: Build machine-verifiable callsite matrix
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf .analysis-output
+          rm -rf analysis-output
           python3 AnalysisTools/s142ai_diag1_callsite_coverage.py \
             --artifacts-root .analysis-artifacts \
             --repo-root . \
-            --out-dir .analysis-output
-          sha256sum .analysis-output/* | tee .analysis-output/SHA256SUMS.txt
+            --out-dir analysis-output
+          sha256sum analysis-output/* | tee analysis-output/SHA256SUMS.txt
 
       - name: Verify repository checkout stayed clean
         shell: bash
@@ -83,6 +83,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: s142ai-diag1-exact-callsite-coverage
-          path: .analysis-output/
+          path: analysis-output/
           if-no-files-found: error
           retention-days: 30
