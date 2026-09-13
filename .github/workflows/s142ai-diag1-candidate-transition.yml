@@ -1,0 +1,481 @@
+name: Finalize S1.42AI-DIAG1 runtime candidate transition
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/s142ai-diag1-candidate-transition.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  transition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Apply atomic DIAG1 lifecycle transition
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, re
+          from pathlib import Path
+
+          ROOT = Path('.')
+          BUILD_ID = 'S1.42AI-DIAG1'
+          TITLE = 'ShyGuy Isolation Diagnostic'
+          PROFILE = 'Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z'
+          SHA = '22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd'
+          PLUGIN_SHA = 'bc8d51121451ecd1b1550e2aa6007991983c7a88ad93c86c38541ec0d358a2b3'
+          PARENT = 'S1.42AI'
+          CANDIDATE = 'Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md'
+          STATUS = 'Current/Projektstatus_S1.42AI-DIAG1_CANDIDATE.json'
+          SOURCES = 'ProfileSources/S1.42AI-DIAG1/'
+          INDEX = 'ProfileSources/S1.42AI-DIAG1/FILE_INDEX.json'
+          CONTRACT = 'AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md'
+          BUILD_RUN = 34777833867
+          BUILD_COMMIT = '1018ac909435a51f1b98ceb9dfdad0599dc4dcc4'
+          OLD_ID = 'S1.42AI'
+          OLD_SHA = 'd993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2'
+
+          def load(path):
+              return json.loads(Path(path).read_text(encoding='utf-8'))
+          def dump(path, obj):
+              Path(path).write_text(json.dumps(obj, indent=2) + '\n', encoding='utf-8')
+
+          auto = load('Current/AUTO_BUILD_RESULT.json')
+          if auto.get('build_id') != BUILD_ID or auto.get('output_sha256') != SHA or auto.get('base_sha256') != OLD_SHA:
+              raise RuntimeError('AUTO_BUILD_RESULT does not match exact DIAG1 build identity/lineage')
+          if not Path(PROFILE).is_file() or not Path(INDEX).is_file():
+              raise RuntimeError('Materialized DIAG1 profile/snapshot is missing')
+          current = load('BuildSpecs/current.json')
+          expected_controller = {
+              'enabled': False,
+              'build_id': 'IDLE_AFTER_S1.42AI-DIAG1_BUILD_AWAITING_RUNTIME_VALIDATION',
+              'base_profile': PROFILE,
+              'base_sha256': SHA,
+          }
+          for key, value in expected_controller.items():
+              if current.get(key) != value:
+                  raise RuntimeError(f'Build controller mismatch for {key}: {current.get(key)!r} != {value!r}')
+
+          candidate_md = f'''# S1.42AI-DIAG1 Build Candidate — ShyGuy Isolation Diagnostic
+
+**Date:** 2026-09-13  
+**Status:** BUILD PASS / EXACT PRE-BUILD STATIC GATE PASS / MATERIALIZED PROFILE DELTA VERIFIED / ACTIVE DIAGNOSTIC RUNTIME CANDIDATE / NOT ACCEPTED  
+**Accepted gameplay baseline:** `S1.42AH`  
+**Parent full-normal candidate:** `S1.42AI`
+
+## Candidate identity
+
+- Build: `{BUILD_ID}`
+- Profile: `{PROFILE}`
+- SHA-256: `{SHA}`
+- Parent: `{PARENT}`
+- Canonical build workflow run: `{BUILD_RUN}`
+- Automated build commit: `{BUILD_COMMIT}`
+- Readable snapshot: `{SOURCES}`
+- File index: `{INDEX}`
+- DIAG1 plugin DLL SHA-256: `{PLUGIN_SHA}`
+- Implementation contract: `{CONTRACT}`
+- Final pre-build exact static gate: run `34764692012`, run number `9`, SUCCESS, artifact `10319769370`
+
+## Proven build boundary
+
+The canonical build completed successfully with no package additions, removals, or state changes. Relative to S1.42AI, the materialized profile changes only the reviewed DIAG1 config overlay / profile identity and adds exactly:
+
+- `BepInEx/config/tendas.s142ai.diag1.isolation.cfg`;
+- `BepInEx/plugins/Tendas-S142AIDiag1Isolation/S142AIDiag1Isolation.dll`.
+
+The generated profile contains 337 unique archive members. All 235 approved config target values and all 47 text assertions were rechecked against the materialized profile with zero failures.
+
+## Runtime diagnostic purpose
+
+This is a **temporary diagnostic candidate**, not an acceptance successor. Its purpose is to isolate the exact Shy Guy identity while preserving the narrow owner/native lifecycle required by `{CONTRACT}`. It must fail visibly rather than repair/hide any non-ShyGuy bypass.
+
+Runtime evidence must establish:
+
+1. diagnostic startup markers confirm the DIAG1 flag, exact Shy Guy identity, config overlay and every exact guard/transpiler contract installed successfully;
+2. no `DIAG1_ISOLATION_BYPASS` marker reports a live non-ShyGuy `EnemyAI`;
+3. no unexpected non-ShyGuy enemy is observed during the diagnostic round;
+4. Shy Guy remains permitted/observable, including exterior Shy Guy if one is produced — location alone must never suppress it;
+5. owner-specific prevention markers, when exercised, remain rate-limited and produce no exception/retry flood;
+6. no broad shared spawn/network lifecycle suppression or unrelated gameplay regression appears.
+
+## Retained full-normal S1.42AI gate
+
+Diagnostic success does **not** accept S1.42AI. The full-normal S1.42AI acceptance gate in `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` remains mandatory after the diagnostic stage and is explicitly deferred, not waived.
+
+## Runtime commands
+
+Canonical Gale v2.4 replacement/import one-liner:
+
+```powershell
+$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfileV24.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
+```
+
+Exact self-contained S1.42AI-DIAG1 runtime-log uploader:
+
+```powershell
+$src=Join-Path $env:APPDATA 'com.kesomannen.gale\\lethal-company\\profiles\\LC V1 S1.42AI-DIAG1 ShyGuy Isolation\\BepInEx\\LogOutput.log';if(!(Test-Path -LiteralPath $src)){{throw "Log not found: $src"}};$gh=(Get-Command gh -ErrorAction SilentlyContinue).Source;if(!$gh){{$gh=@("$env:ProgramFiles\\GitHub CLI\\gh.exe","$env:LOCALAPPDATA\\Programs\\GitHub CLI\\gh.exe","${{env:ProgramFiles(x86)}}\\GitHub CLI\\gh.exe")|Where-Object{{$_ -and (Test-Path -LiteralPath $_)}}|Select-Object -First 1}};if(!$gh){{winget install --id GitHub.cli -e --source winget --accept-package-agreements --accept-source-agreements;$gh=(Get-Command gh -ErrorAction SilentlyContinue).Source;if(!$gh){{$gh=@("$env:ProgramFiles\\GitHub CLI\\gh.exe","$env:LOCALAPPDATA\\Programs\\GitHub CLI\\gh.exe","${{env:ProgramFiles(x86)}}\\GitHub CLI\\gh.exe")|Where-Object{{$_ -and (Test-Path -LiteralPath $_)}}|Select-Object -First 1}}}};if(!$gh){{throw 'GitHub CLI gh.exe could not be found after resolution/install attempt'}};& $gh auth status --hostname github.com *> $null;if($LASTEXITCODE -ne 0){{& $gh auth login --hostname github.com --git-protocol https --web;if($LASTEXITCODE -ne 0){{throw 'GitHub authentication failed'}}}};$repo='Tendas240/Lethal-Company-AI-Modding-Project';$dst='RuntimeInbox/Current/LogOutput.log';$sha=(& $gh api "repos/$repo/contents/$dst" --jq '.sha' 2>$null);$p=@{{message='Upload S1.42AI-DIAG1 runtime log';content=[Convert]::ToBase64String([IO.File]::ReadAllBytes($src));branch='main'}};if($sha){{$p['sha']=$sha}};($p|ConvertTo-Json -Compress)|& $gh api --method PUT "repos/$repo/contents/$dst" --input -;if($LASTEXITCODE -ne 0){{throw 'Runtime log upload failed'}}
+```
+
+## Acceptance boundary
+
+S1.42AH remains the sole accepted gameplay baseline. S1.42AI-DIAG1 may only produce diagnostic evidence; it cannot itself satisfy the retained S1.42AI full-normal acceptance gate.
+'''
+          Path(CANDIDATE).write_text(candidate_md, encoding='utf-8')
+
+          project_status = {
+              'schema_version': 1,
+              'updated': '2026-09-13',
+              'build_id': BUILD_ID,
+              'status': 'ACTIVE_DIAGNOSTIC_RUNTIME_CANDIDATE_NOT_ACCEPTED',
+              'accepted_baseline': 'S1.42AH',
+              'parent': PARENT,
+              'profile': PROFILE,
+              'sha256': SHA,
+              'candidate_record': CANDIDATE,
+              'profile_sources': SOURCES,
+              'file_index': INDEX,
+              'workflow_run': BUILD_RUN,
+              'build_commit': BUILD_COMMIT,
+              'plugin_dll_sha256': PLUGIN_SHA,
+              'guard_contract': CONTRACT,
+              'runtime_test_outstanding': True,
+              'full_normal_s142ai_gate': 'DEFERRED_NOT_WAIVED',
+              'full_normal_candidate_record': 'Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md'
+          }
+          dump(STATUS, project_status)
+
+          state = load('Current/CURRENT_STATE.json')
+          latest = {
+              'build_id': BUILD_ID,
+              'title': TITLE,
+              'status': 'BUILD_PASS_STATIC_AND_MATERIALIZED_DELTA_VERIFIED_RUNTIME_VALIDATION_OUTSTANDING',
+              'profile': PROFILE,
+              'sha256': SHA,
+              'candidate_record': CANDIDATE,
+              'project_status': STATUS,
+              'build_plan': 'BuildSpecs/S1.42AI_PLAN.md',
+              'profile_sources': SOURCES,
+              'file_index': INDEX,
+              'workflow_run': BUILD_RUN,
+              'build_commit': BUILD_COMMIT,
+              'parent': PARENT,
+              'analysis_contract': CONTRACT,
+              'plugin_dll_sha256': PLUGIN_SHA
+          }
+          active = dict(latest)
+          active['status'] = 'ACTIVE_DIAGNOSTIC_RUNTIME_CANDIDATE_NOT_ACCEPTED'
+          state['updated'] = '2026-09-13'
+          state['latest_built_artifact'] = latest
+          state['active_candidate'] = active
+          state['runtime_test_outstanding'] = True
+          selected = state.setdefault('selected_scope', {})
+          selected['status'] = 'DIAGNOSTIC_RUNTIME_VALIDATION_OUTSTANDING_FULL_NORMAL_GATE_DEFERRED_NOT_WAIVED'
+          selected['candidate_build_id'] = BUILD_ID
+          selected['profile'] = PROFILE
+          selected['sha256'] = SHA
+          selected['candidate_record'] = CANDIDATE
+          selected['project_status'] = STATUS
+          selected['analysis_contract'] = CONTRACT
+          selected['analysis_status'] = 'DIAG1_BUILT_AND_STATIC_VALIDATED_RUNTIME_DIAGNOSTIC_OUTSTANDING'
+          selected['finding'] = 'S1.42AI-DIAG1 is built from S1.42AI with the reviewed ShyGuy-only diagnostic overlay and exact narrow guard plugin. Canonical build and materialized profile verification passed; runtime diagnostic evidence is now required. The normal-stack S1.42AI acceptance gate remains deferred and is not waived.'
+          selected['currently_irrelevant_actions'] = []
+          diag = selected.setdefault('diagnostic_revision', {})
+          diag.update({
+              'build_id': BUILD_ID,
+              'status': 'BUILT_ACTIVE_DIAGNOSTIC_RUNTIME_CANDIDATE_NOT_ACCEPTED',
+              'base_build_id': PARENT,
+              'base_profile': 'Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z',
+              'base_sha256': OLD_SHA,
+              'profile': PROFILE,
+              'sha256': SHA,
+              'candidate_record': CANDIDATE,
+              'project_status': STATUS,
+              'workflow_run': BUILD_RUN,
+              'build_commit': BUILD_COMMIT,
+              'plugin_dll_sha256': PLUGIN_SHA,
+              'full_normal_validation': 'DEFERRED_UNTIL_AFTER_DIAGNOSTIC_NOT_WAIVED'
+          })
+          state['next_action'] = 'Runtime-test S1.42AI-DIAG1 as the active temporary diagnostic candidate. Verify DIAG1 startup/identity/config/guard markers, exercise the ShyGuy-only round, fail on any DIAG1_ISOLATION_BYPASS or unexpected non-ShyGuy enemy, preserve ShyGuy observability, then upload the exact DIAG1 LogOutput.log. Diagnostic success does not accept S1.42AI; its full-normal BCMER ShyGuy gate remains required afterward.'
+          ctl = state.setdefault('controllers', {})
+          ctl.update({
+              'buildspec': 'BuildSpecs/current.json',
+              'build_enabled': False,
+              'build_id': 'IDLE_AFTER_S1.42AI-DIAG1_BUILD_AWAITING_RUNTIME_VALIDATION',
+              'build_base_profile': PROFILE,
+              'build_base_sha256': SHA,
+              'runtime_active_build_file': 'RuntimeInbox/ACTIVE_BUILD.txt',
+              'runtime_active_build': BUILD_ID
+          })
+          dump('Current/CURRENT_STATE.json', state)
+          Path('RuntimeInbox/ACTIVE_BUILD.txt').write_text(BUILD_ID + '\n', encoding='utf-8')
+
+          lineage = load('Current/BUILD_LINEAGE.json')
+          lineage['date'] = '2026-09-13'
+          lineage['active_candidate_build_id'] = BUILD_ID
+          lineage['latest_built_artifact_id'] = BUILD_ID
+          builds = lineage.setdefault('builds', [])
+          if any(b.get('id') == BUILD_ID for b in builds):
+              raise RuntimeError('DIAG1 already exists in BUILD_LINEAGE unexpectedly')
+          builds.append({
+              'id': BUILD_ID,
+              'title': TITLE,
+              'status': 'active-diagnostic-runtime-candidate',
+              'parent': PARENT,
+              'profile': PROFILE,
+              'sha256': SHA,
+              'build_plan': 'BuildSpecs/S1.42AI_PLAN.md',
+              'candidate_record': CANDIDATE,
+              'decision_record': CANDIDATE,
+              'project_status': STATUS,
+              'workflow_run': BUILD_RUN,
+              'build_commit': BUILD_COMMIT,
+              'safe_as_gameplay_base': False,
+              'principal_feature': 'temporary ShyGuy-only diagnostic isolation using exact reviewed config gates and narrow package/native owner guards'
+          })
+          lineage.setdefault('feature_index', {})['BCMER_ShyGuy_DIAG1_isolation'] = BUILD_ID
+          dump('Current/BUILD_LINEAGE.json', lineage)
+
+          integrity = load('Current/ARTIFACT_EVIDENCE_INTEGRITY.json')
+          integrity['updated'] = '2026-09-13'
+          pending = integrity.setdefault('pending_profiles', [])
+          for p in pending:
+              if p.get('build_id') == OLD_ID:
+                  p['role'] = 'DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED'
+                  p['note'] = 'Full-normal S1.42AI gate remains mandatory after DIAG1; diagnostic success cannot replace it.'
+          if any(p.get('build_id') == BUILD_ID for p in pending):
+              raise RuntimeError('DIAG1 already exists in pending_profiles unexpectedly')
+          pending.append({
+              'build_id': BUILD_ID,
+              'role': 'ACTIVE_RUNTIME_CANDIDATE_PENDING',
+              'profile': PROFILE,
+              'profile_sha256': SHA,
+              'profile_sources': SOURCES,
+              'file_index': INDEX,
+              'export': SOURCES + 'export.r2x',
+              'candidate_record': CANDIDATE,
+              'project_status': STATUS,
+              'build_plan': 'BuildSpecs/S1.42AI_PLAN.md',
+              'guard_contract': CONTRACT,
+              'plugin_dll_sha256': PLUGIN_SHA,
+              'runtime_evidence_required': False,
+              'partial_runtime_evidence_present': False
+          })
+          dump('Current/ARTIFACT_EVIDENCE_INTEGRITY.json', integrity)
+
+          marker = '<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1 candidate=S1.42AI-DIAG1 runtime_test_outstanding=true -->'
+
+          lifecycle = f'''{marker}
+# Current Project Lifecycle
+
+**Status:** CURRENT / CANONICAL TOPIC  
+**Authority:** current lifecycle router; detailed acceptance/rejection remains in build-specific evidence  
+**Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
+**Evidence:** `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`, `{CANDIDATE}`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `{CONTRACT}`  
+**Last-Validated:** 2026-09-13
+
+## Accepted gameplay baseline
+
+**S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**
+
+Profile: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`  
+SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
+
+S1.42AH remains the sole accepted gameplay base.
+
+## Latest built artifact / active candidate
+
+**{BUILD_ID} — {TITLE} — ACTIVE DIAGNOSTIC RUNTIME CANDIDATE / NOT ACCEPTED**
+
+Profile: `{PROFILE}`  
+SHA-256: `{SHA}`  
+Parent: `{PARENT}`  
+Candidate: `{CANDIDATE}`  
+Project status: `{STATUS}`  
+Canonical build run: `{BUILD_RUN}`  
+Build commit: `{BUILD_COMMIT}`
+
+The materialized build passed the exact pre-build static gate and canonical profile build. It preserves package state, uses the reviewed 235-key DIAG1 config overlay and injects the exact diagnostic plugin recorded by SHA-256 `{PLUGIN_SHA}`.
+
+## Live execution state
+
+- Accepted baseline: **S1.42AH**.
+- Latest built artifact: **{BUILD_ID}**.
+- Active candidate: **{BUILD_ID}**.
+- Runtime test outstanding: **yes**.
+- `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1_BUILD_AWAITING_RUNTIME_VALIDATION` and guards the exact DIAG1 profile/SHA.
+- `RuntimeInbox/ACTIVE_BUILD.txt = {BUILD_ID}` attributes the next runtime evidence to the diagnostic candidate.
+
+## Diagnostic runtime gate
+
+Use `{CONTRACT}` and `{CANDIDATE}`. The run must prove startup/identity/config/guard markers, no `DIAG1_ISOLATION_BYPASS`, no unexpected non-ShyGuy live enemy, and preserved Shy Guy observability. Do not treat exterior location alone as a reason to block Shy Guy.
+
+## Retained full-normal gate
+
+`S1.42AI` remains unaccepted. Its full-normal BCMER ShyGuy acceptance gate in `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` is deferred until after DIAG1 and is **not waived** by diagnostic success.
+
+## Canonical Gale workflow
+
+Use repository-driven Gale v2.4 from `Knowledge/GALE_PROFILE_WORKFLOW.md`. The exact DIAG1 import and log-upload one-liners are recorded in `{CANDIDATE}` and must be supplied together with runtime-test instructions.
+
+## Exact next project action
+
+{state['next_action']}
+'''
+          Path('Knowledge/CURRENT_LIFECYCLE.md').write_text(lifecycle, encoding='utf-8')
+
+          roadmap = f'''{marker}
+# Live Roadmap and Deferred Scopes
+
+**Status:** CURRENT / CANONICAL TOPIC  
+**Authority:** live selected/deferred-scope list only  
+**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `{CANDIDATE}`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `{CONTRACT}`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`  
+**Last-Validated:** 2026-09-13
+
+## Current position
+
+Accepted gameplay baseline: **S1.42AH**. Latest built artifact and active temporary diagnostic candidate: **{BUILD_ID}**, SHA-256 `{SHA}`. Runtime validation is outstanding; DIAG1 is not accepted gameplay state.
+
+`BuildSpecs/current.json` is disabled and guards the exact DIAG1 profile; `RuntimeInbox/ACTIVE_BUILD.txt = {BUILD_ID}`.
+
+## Active scope — ShyGuy diagnostic isolation
+
+Runtime-test the exact DIAG1 profile under `{CONTRACT}`. The diagnostic must isolate exact Shy Guy while preserving narrow native/package-owner lifecycle and must fail visibly on any non-ShyGuy bypass. The ordinary S1.42AI full-normal acceptance gate remains deferred and mandatory afterward.
+
+## Remaining deferred independent scopes
+
+- Full-normal S1.42AI BCMER ShyGuy acceptance after DIAG1; diagnostic success cannot replace it.
+- LC Office V81 integration under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`.
+- CullFactory exceptions for exact IDs `junkrooms` / `shatteredrooms`.
+- MelanieMausoleum fog reduction only for that interior.
+- Black Mesa/interior/Pikmin route recovery.
+- Isolated `woah25-LethalEscapeUpdated 2.5.0` evaluation.
+- Final long full-stack acceptance.
+- AdditionalNetworking repair only with reproducible user-facing evidence.
+- Broader LethalMin teardown/despawn repair only with stronger evidence.
+
+## Repository-integrity boundary
+
+Historical planning files do not override this live roadmap. Runtime promotion requires explicit evidence and a later decision.
+'''
+          Path('Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md').write_text(roadmap, encoding='utf-8')
+
+          integrity_md = f'''{marker}
+# Artifact and Runtime Evidence Integrity
+
+**Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
+**Machine mirror:** `Current/ARTIFACT_EVIDENCE_INTEGRITY.json`  
+**Last-Validated:** 2026-09-13
+
+## Accepted gameplay baseline: S1.42AH
+
+Artifact: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`  
+SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`  
+Acceptance: `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`
+
+## Latest built artifact / active runtime candidate: {BUILD_ID}
+
+Artifact: `{PROFILE}`  
+SHA-256: `{SHA}`  
+Candidate record: `{CANDIDATE}`  
+Project status: `{STATUS}`  
+Readable snapshot: `{SOURCES}`  
+Plugin DLL SHA-256: `{PLUGIN_SHA}`
+
+{BUILD_ID} is build-pass and materialized-delta-verified but has no final runtime decision, so it remains in `pending_profiles` with role `ACTIVE_RUNTIME_CANDIDATE_PENDING`.
+
+## Deferred full-normal S1.42AI gate
+
+S1.42AI remains preserved in `pending_profiles` as `DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED`. Its full-normal runtime acceptance gate must still be completed after the DIAG1 diagnostic stage.
+
+## Retrieval invariant
+
+No future decision may depend only on opaque `.r2z`, DLL or giant-log bytes. Reasoning-critical facts must also exist in readable ProfileSources, FILE_INDEX, runtime INDEX/analysis, source, build record, or canonical documentation.
+'''
+          Path('Current/ARTIFACT_EVIDENCE_INTEGRITY.md').write_text(integrity_md, encoding='utf-8')
+
+          km_path = Path('Current/PROJECT_KNOWLEDGE_MAP.md')
+          km = km_path.read_text(encoding='utf-8')
+          km = re.sub(r'<!-- LIVE_STATE:.*?-->', marker, km, count=1)
+          replacement = f'''## Current lifecycle anchor
+
+Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
+
+Latest built artifact and active temporary diagnostic runtime candidate: **{BUILD_ID} — {TITLE} — NOT ACCEPTED**. Runtime diagnostic validation is outstanding. Candidate authority: `{CANDIDATE}`; implementation/runtime contract: `{CONTRACT}`.
+
+`BuildSpecs/current.json` is disabled and guards the exact DIAG1 profile/SHA; `RuntimeInbox/ACTIVE_BUILD.txt = {BUILD_ID}` attributes the next runtime evidence to the diagnostic candidate.
+
+The exact DIAG1 implementation/static/build stage is complete. The next action is the bounded DIAG1 runtime diagnostic. The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived; diagnostic success cannot replace it. Use `Knowledge/CURRENT_LIFECYCLE.md` for execution order.
+
+'''
+          km, count = re.subn(r'## Current lifecycle anchor\n.*?(?=## Authority rule)', replacement, km, flags=re.S)
+          if count != 1:
+              raise RuntimeError(f'PROJECT_KNOWLEDGE_MAP lifecycle replacement count={count}')
+          km_path.write_text(km, encoding='utf-8')
+
+          lineage_md_path = Path('Current/BUILD_LINEAGE.md')
+          lineage_md = lineage_md_path.read_text(encoding='utf-8')
+          lineage_md = lineage_md.replace('**Last-Validated:** 2026-09-10', '**Last-Validated:** 2026-09-13', 1)
+          lineage_md = re.sub(r'## Current lineage head\n.*?(?=For live lifecycle state)', f'''## Current lineage head
+
+- **Accepted gameplay baseline:** S1.42AH — Mouth Dog Pikmin Dual Prevention — **ACCEPTED FULL NORMAL STACK**.
+- **Latest built artifact:** {BUILD_ID} — {TITLE}.
+- **Active candidate:** {BUILD_ID} — **DIAGNOSTIC RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED**.
+- **Deferred full-normal gate:** S1.42AI — still mandatory after DIAG1.
+- **Accepted predecessor / rollback point:** S1.42AF — Path-Length-Safe Microwave Packaging.
+- **Current gate:** run the DIAG1 runtime isolation validation from `{CANDIDATE}`.
+
+''', lineage_md, count=1, flags=re.S)
+          old_row = '| S1.42AI | **ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED** | Single-variable BCMER ShyGuy interior-only correction from accepted S1.42AH; exact static delta verified, runtime gate outstanding. |'
+          if old_row in lineage_md:
+              lineage_md = lineage_md.replace(old_row, '| S1.42AI | **DEFERRED FULL-NORMAL RUNTIME GATE / NOT ACCEPTED** | Single-variable BCMER ShyGuy interior-only correction; full-normal gate remains mandatory after DIAG1. |\n| S1.42AI-DIAG1 | **ACTIVE DIAGNOSTIC RUNTIME CANDIDATE / NOT ACCEPTED** | Temporary exact ShyGuy isolation diagnostic built from S1.42AI; canonical build/static/materialized delta verified, runtime diagnostic outstanding. |')
+          elif 'S1.42AI-DIAG1 |' not in lineage_md:
+              raise RuntimeError('Expected S1.42AI lineage row not found')
+          lineage_md_path.write_text(lineage_md, encoding='utf-8')
+          PY
+
+      - name: Render generated current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Remove completed one-shot transition workflow
+        run: git rm .github/workflows/s142ai-diag1-candidate-transition.yml
+
+      - name: Validate atomic transitioned repository
+        shell: bash
+        run: |
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/state_neutral_authority_validator.py
+          python RepositoryTools/knowledge_architecture_validator.py
+          git diff --check
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          state=json.loads(Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          assert state['latest_built_artifact']['build_id']=='S1.42AI-DIAG1'
+          assert state['active_candidate']['build_id']=='S1.42AI-DIAG1'
+          assert state['controllers']['runtime_active_build']=='S1.42AI-DIAG1'
+          assert Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text().strip()=='S1.42AI-DIAG1'
+          assert state['controllers']['build_enabled'] is False
+          PY
+
+      - name: Commit atomic DIAG1 runtime candidate transition
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Activate S1.42AI-DIAG1 runtime diagnostic candidate'
+          git push origin HEAD:main
