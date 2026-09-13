@@ -1,0 +1,90 @@
+name: Validate S1.42AI-DIAG1 static gate
+# Final build-ready latch revalidation trigger with exact reviewed owner-assembly binding.
+
+on:
+  push:
+    branches: [work/s142ai-diag1-implementation]
+    paths:
+      - 'Patches/S142AIDiag1Isolation/**'
+      - 'BuildSpecs/S1.42AI-DIAG1_OVERLAY.json'
+      - 'BuildSpecs/generate_s142ai_diag1_spec.py'
+      - 'AnalysisTools/validate_s142ai_diag1_static.py'
+      - 'AnalysisTools/validate_s142ai_diag1_static_bound.py'
+      - '.github/workflows/s142ai-diag1-static-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DIAG1_VALIDATION_PROFILE: ValidationArtifacts/S1.42AI-DIAG1.validation.r2z
+      DIAG1_VALIDATION_RESULT: ValidationArtifacts/diag1-validation-result.json
+      DIAG1_STATIC_OUT: ValidationArtifacts/static-out
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore exact DIAG1 compile dependencies
+        run: dotnet restore Patches/S142AIDiag1Isolation/S142AIDiag1Isolation.csproj --configfile Patches/S142AIDiag1Isolation/NuGet.Config
+
+      - name: Compile diagnostic plugin
+        run: dotnet build Patches/S142AIDiag1Isolation/S142AIDiag1Isolation.csproj -c Release --no-restore
+
+      - name: Install pinned project decompiler
+        run: dotnet tool install --global ilspycmd --version 11.0.0.9375
+
+      - name: Generate disabled DIAG1 draft spec from S1.42AI sources
+        run: python BuildSpecs/generate_s142ai_diag1_spec.py
+
+      - name: Prepare isolated validation-only build spec
+        shell: bash
+        run: |
+          mkdir -p ValidationArtifacts
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          src = Path('BuildSpecs/S1.42AI-DIAG1_DRAFT.json')
+          spec = json.loads(src.read_text(encoding='utf-8'))
+          if spec.get('enabled') is not False:
+              raise RuntimeError('Generated draft must be disabled before validation override')
+          spec['enabled'] = True
+          spec['output_profile'] = os.environ['DIAG1_VALIDATION_PROFILE']
+          spec['snapshot_dir'] = 'ValidationArtifacts/profile-snapshot'
+          spec['result_json'] = os.environ['DIAG1_VALIDATION_RESULT']
+          spec['result_md'] = 'ValidationArtifacts/diag1-validation-result.md'
+          spec['overwrite'] = False
+          out = Path('ValidationArtifacts/diag1-validation-spec.json')
+          out.write_text(json.dumps(spec, indent=2) + '\n', encoding='utf-8')
+          print(out)
+          PY
+
+      - name: Build ephemeral validation profile through canonical builder
+        run: python BuildSystem/profile_builder.py ValidationArtifacts/diag1-validation-spec.json
+
+      - name: Run exact DIAG1 static gate
+        run: python AnalysisTools/validate_s142ai_diag1_static_bound.py
+
+      - name: Assert live controllers/results were not modified
+        run: git diff --exit-code -- BuildSpecs/current.json RuntimeInbox/ACTIVE_BUILD.txt Current/AUTO_BUILD_RESULT.json Current/AUTO_BUILD_RESULT.md
+
+      - name: Upload static-gate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-diag1-static-validation
+          path: |
+            ValidationArtifacts/static-out/
+            BuildSpecs/S1.42AI-DIAG1_DRAFT.json
+            ValidationArtifacts/diag1-validation-result.json
+            ValidationArtifacts/diag1-validation-result.md
+          if-no-files-found: warn
+          retention-days: 90
