@@ -52,6 +52,31 @@ ORIGINAL_RUN = validator.run
 ORIGINAL_READ_ZIP = validator.read_zip
 _HYDRATED: dict[str, tuple[str, bytes, str]] | None = None
 
+# Exact CodeRebirth 1.6.9 reviewed source decompiles this reference-return
+# annotation as `EnemyAI?`. Nullable reference annotations do not change the CLR
+# return type, but this static gate intentionally validates the exact C# source
+# token emitted by pinned ILSpy. Keep the override fail-closed and target-local.
+_code_rebirth_target = (
+    "CodeRebirth.src.MiscScripts.EnemyLevelSpawner",
+    "SpawnRandomEnemy",
+)
+_override_count = 0
+_patched_targets = []
+for type_name, method, ret, params, is_static in validator.TARGETS:
+    if (type_name, method) == _code_rebirth_target:
+        if ret != "EnemyAI":
+            validator.fail(
+                f"Unexpected pre-override return token for {type_name}.{method}: {ret}"
+            )
+        ret = "EnemyAI?"
+        _override_count += 1
+    _patched_targets.append((type_name, method, ret, params, is_static))
+if _override_count != 1:
+    validator.fail(
+        f"Expected exactly one CodeRebirth SpawnRandomEnemy target override, found {_override_count}"
+    )
+validator.TARGETS = _patched_targets
+
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
