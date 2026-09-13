@@ -1,0 +1,1029 @@
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 25
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #25 'SlendermanEnemy' : probability: 0
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 26
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #26 'Cabinet' : probability: 0
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 27
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #27 'Aloe' : probability: 71
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 28
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #28 'RollingGiant' : probability: 23
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 29
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #29 'Shy guy' : probability: 6
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 30
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #30 'Boomba' : probability: 0
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 31
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #31 'Rabbit Magician' : probability: 1
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 32
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #32 'Peace Keeper' : probability: 2
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 33
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #33 'Lord Of The Manor' : probability: 3
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 34
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #34 'Janitor' : probability: 11
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 35
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #35 'Nancy' : probability: 7
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 36
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #36 'Mistress' : probability: 0
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 37
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #37 'Duck' : probability: 0
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 38
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #38 'Transporter' : probability: 0
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 39
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #39 'Shy guy' : probability: 6
+[20:20:37.6673444] [Info   : Unity Log] ADDING ENEMY #19: ImmortalSnail
+[20:20:37.6673444] [Info   : Unity Log] Adding 1 to power level, enemy: ImmortalSnail
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 0
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #0 'Centipede' : probability: 39
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 1
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #1 'Bunker Spider' : probability: 61
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 2
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #2 'Hoarding bug' : probability: 22
+[20:20:37.6673444] [Info   : Unity Log] enemy rush index is -1; current index 3
+[20:20:37.6673444] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #3 'Flowerman' : probability: 3
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 4
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #4 'Crawler' : probability: 39
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 5
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #5 'Blob' : probability: 31
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 6
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #6 'Spring' : probability: 33
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 7
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #7 'Puffer' : probability: 9
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 8
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #8 'Nutcracker' : probability: 8
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 9
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #9 'Maneater' : probability: 3
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 10
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #10 'Stingray' : probability: 15
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 11
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #11 'Masked' : probability: 38
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 12
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #12 'Jester' : probability: 3
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 13
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #13 'Butler' : probability: 16
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 14
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #14 'Clay Surgeon' : probability: 3
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 15
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #15 'Girl' : probability: 1
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 16
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #16 'Football' : probability: 0
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 17
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #17 'Herobrine' : probability: 3
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 18
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #18 'Locker' : probability: 6
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 20
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #20 'HarpGhost' : probability: 0
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 21
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #21 'BagpipeGhost' : probability: 0
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 22
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #22 'EnforcerGhost' : probability: 0
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 23
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #23 'Shy guy' : probability: 3
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 25
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #25 'SlendermanEnemy' : probability: 0
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 26
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #26 'Cabinet' : probability: 0
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 27
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #27 'Aloe' : probability: 71
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 28
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #28 'RollingGiant' : probability: 23
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 29
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #29 'Shy guy' : probability: 6
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 30
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #30 'Boomba' : probability: 0
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 31
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #31 'Rabbit Magician' : probability: 1
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 32
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #32 'Peace Keeper' : probability: 2
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 33
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #33 'Lord Of The Manor' : probability: 3
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 34
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #34 'Janitor' : probability: 11
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 35
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #35 'Nancy' : probability: 7
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 36
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #36 'Mistress' : probability: 0
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 37
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #37 'Duck' : probability: 0
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 38
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #38 'Transporter' : probability: 0
+[20:20:37.6683517] [Info   : Unity Log] enemy rush index is -1; current index 39
+[20:20:37.6683517] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #39 'Shy guy' : probability: 6
+[20:20:37.6683517] [Info   : Unity Log] ADDING ENEMY #14: Clay Surgeon
+[20:20:37.6683517] [Info   : Unity Log] Adding 1 to power level, enemy: Clay Surgeon
+[20:20:37.6683517] [Info   : Unity Log] Adding 1 to diversity level for enemy 'Clay Surgeon'
+[20:20:37.6683517] [Debug  :Spawn Cycle Fixes] Enemy "Clay Surgeon" spawned in vent, requesting group of 2
+[20:20:37.6703502] [Debug  :Spawn Cycle Fixes] Spawning additional "Clay Surgeon" in vent
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 0
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #0 'Centipede' : probability: 39
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 1
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #1 'Bunker Spider' : probability: 61
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 2
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #2 'Hoarding bug' : probability: 22
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 3
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #3 'Flowerman' : probability: 3
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 4
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #4 'Crawler' : probability: 39
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 5
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #5 'Blob' : probability: 31
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 6
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #6 'Spring' : probability: 33
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 7
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #7 'Puffer' : probability: 9
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 8
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #8 'Nutcracker' : probability: 8
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 9
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #9 'Maneater' : probability: 3
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 10
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #10 'Stingray' : probability: 15
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 11
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #11 'Masked' : probability: 38
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 12
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #12 'Jester' : probability: 3
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 13
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #13 'Butler' : probability: 16
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 14
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #14 'Clay Surgeon' : probability: 3
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 15
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #15 'Girl' : probability: 1
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 16
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #16 'Football' : probability: 0
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 17
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #17 'Herobrine' : probability: 3
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 18
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #18 'Locker' : probability: 6
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 20
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #20 'HarpGhost' : probability: 0
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 21
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #21 'BagpipeGhost' : probability: 0
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 22
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #22 'EnforcerGhost' : probability: 0
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 23
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #23 'Shy guy' : probability: 3
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 25
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #25 'SlendermanEnemy' : probability: 0
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 26
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #26 'Cabinet' : probability: 0
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 27
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #27 'Aloe' : probability: 71
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 28
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #28 'RollingGiant' : probability: 23
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 29
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #29 'Shy guy' : probability: 6
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 30
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #30 'Boomba' : probability: 0
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 31
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #31 'Rabbit Magician' : probability: 1
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 32
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #32 'Peace Keeper' : probability: 2
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 33
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #33 'Lord Of The Manor' : probability: 3
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 34
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #34 'Janitor' : probability: 11
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 35
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #35 'Nancy' : probability: 7
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 36
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #36 'Mistress' : probability: 0
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 37
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #37 'Duck' : probability: 0
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 38
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #38 'Transporter' : probability: 0
+[20:20:37.6703502] [Info   : Unity Log] enemy rush index is -1; current index 39
+[20:20:37.6703502] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #39 'Shy guy' : probability: 6
+[20:20:37.6703502] [Info   : Unity Log] ADDING ENEMY #27: Aloe
+[20:20:37.6703502] [Info   : Unity Log] Adding 1 to power level, enemy: Aloe
+[20:20:37.6703502] [Info   : Unity Log] Adding 0 to diversity level for enemy 'Aloe'
+[20:20:38.2114083] [Info   : Unity Log] Anomaly random yrotation farthest: 221
+[20:20:39.7245124] [Info   : Unity Log] Anomaly random yrotation farthest: 156
+[20:20:42.6615344] [Info   : Unity Log] Anomaly random yrotation farthest: 63
+[20:20:42.8302121] [Info   : Unity Log] Called finishopeningentrance (False)
+[20:20:42.8302121] [Info   : Unity Log] 'EntranceTeleportA(Clone)' STOPPING entrancePointAudio
+[20:20:42.8302121] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited facility
+[20:20:42.8302121] [Debug  : LethalMin] Setting pikmin to entrance: False
+[20:20:42.8302121] [Debug  : LethalMin] Setting pikmin to entrance: False
+[20:20:42.8472322] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:20:42.8472322] [Debug  :   Coroner] Query successful!True
+[20:20:45.8257162] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:20:45.8257162] [Debug  :   Coroner] Query successful!True
+[20:20:46.3861294] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:20:46.3861294] [Debug  :   Coroner] Query successful!True
+[20:20:47.3046201] [Warning: Unity Log] Can not play a disabled audio source
+[20:20:47.3046201] [Info   : Unity Log] Anomaly random yrotation farthest: 71
+[20:20:48.0745470] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:20:48.0745470] [Debug  :   Coroner] Query successful!True
+[20:20:48.3447568] [Info   : Unity Log] Anomaly random yrotation farthest: 136
+[20:20:51.5624095] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:20:51.5624095] [Debug  :   Coroner] Query successful!True
+[20:20:53.3645824] [Info   : Unity Log] Found enemy vent which has its time up: VentEntranceCave(Clone). Spawning Blob from vent.
+[20:20:53.3676033] [Info   : Unity Log] Spawned enemy from vent
+[20:20:53.3761126] [Debug  :Starlancer AI Fix] The Enemy Whitelist contains: Blob, Butler, Centipede, Crawler, Flowerman, HoarderBug, Nutcracker, SandSpider, Stingray.
+[20:20:53.3761126] [Debug  :Starlancer AI Fix] Adding IVisibleThreat component to Blob(Clone).
+[20:20:53.6998076] [Info   : Unity Log] Anomaly random yrotation farthest: 58
+[20:20:55.8026848] [Info   : Unity Log] Anomaly random yrotation farthest: 75
+[20:21:00.9308734] [Info   : Unity Log] Anomaly random yrotation farthest: 12
+[20:21:01.5799406] [Debug  :Mask Fixes] Mimic #-377542: VIP enabled
+[20:21:01.5799406] [Debug  :Mask Fixes] Mimic #-377542: Updated level sticker
+[20:21:01.5799406] [Debug  :Enemy Sound Fixes] Mimic: Play door sound
+[20:21:02.2998389] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:21:02.2998389] [Debug  :   Coroner] Query successful!True
+[20:21:02.3008386] [Info   :GeneralImprovements] Applied 3 queued monitor changes.
+[20:21:02.4187603] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:21:02.4187603] [Debug  :   Coroner] Query successful!True
+[20:21:02.4987607] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[20:21:02.5097781] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[20:21:03.0698793] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[20:21:04.6797557] [Warning: Unity Log] Can not play a disabled audio source
+[20:21:04.8360469] [Info   : Unity Log] Update used by player client rpc has been called for interact trigger: TerminalScript
+[20:21:04.8360469] [Info   : Unity Log] Set interminalmenu to true: True
+[20:21:04.8360469] [Message:darmuhsTerminalStuff] Mode set to - [ None ] OnUpdateCamsEvent
+[20:21:04.9512023] [Debug  :GeneralImprovements] Updated time display.
+[20:21:06.7018688] [Info   : Unity Log] Parsed word: enemies
+[20:21:06.7018688] [Info   : Unity Log] noun keyword: enemies ; verb keyword: list ; result null? : False
+[20:21:06.7018688] [Info   : Unity Log] result: 
+[20:21:06.7264078] [Message:darmuhsTerminalStuff] Mode set to - [ None ] OnUpdateCamsEvent
+[20:21:06.7264078] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MHELP
+[20:21:06.7264078] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MEVENT
+[20:21:06.7264078] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MCLEAR
+[20:21:06.7264078] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MEVENTS
+[20:21:06.7264078] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MRANDOM
+[20:21:06.7264078] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MPAY
+[20:21:06.7264078] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MENEMIES
+[20:21:06.7264078] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MITEMS
+[20:21:06.7264078] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MMOONS
+[20:21:06.7264078] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MSCAN
+[20:21:06.7264078] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MHAZARDS
+[20:21:06.8481278] [Error  : Unity Log] InvalidOperationException: Collection was modified; enumeration operation may not execute.
+Stack trace:
+System.Collections.Generic.List`1+Enumerator[T].MoveNextRare () (at <1071a2cb0cb3433aae80a793c277a048>:IL_0013)
+System.Collections.Generic.List`1+Enumerator[T].MoveNext () (at <1071a2cb0cb3433aae80a793c277a048>:IL_004A)
+ShyGuy.AI.ShyGuyAI.DoAIInterval () (at ./ShyGuy/AI/ShyGuyAI.cs:396)
+(wrapper dynamic-method) EnemyAI.DMD<EnemyAI::Update>(EnemyAI)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition.Trampoline<EnemyAI::Update>?-628069500(EnemyAI)
+CodeRebirth.src.Patches.EnemyAIPatch.EnemyAI_Update (On.EnemyAI+orig_Update orig, EnemyAI self) (at ./src/Patches/EnemyAIPatch.cs:110)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition.Hook<EnemyAI::Update>?1755894732(EnemyAI)
+ShyGuy.AI.ShyGuyAI.Update () (at ./ShyGuy/AI/ShyGuyAI.cs:710)
+
+[20:21:07.9590985] [Debug  :GeneralImprovements] Updated time display.
+[20:21:10.9714868] [Debug  :GeneralImprovements] Updated time display.
+[20:21:11.9355080] [Info   : Unity Log] Found enemy vent which has its time up: VentEntranceCave(Clone). Spawning ImmortalSnail from vent.
+[20:21:11.9365143] [Info   : Unity Log] Spawned enemy from vent
+[20:21:13.5719383] [Info   : Unity Log] Anomaly random yrotation farthest: 141
+[20:21:13.9797105] [Debug  :GeneralImprovements] Updated time display.
+[20:21:15.5352196] [Info   : Unity Log] Stop special animation F
+[20:21:15.5367228] [Info   : Unity Log] Stop special animation G
+[20:21:15.5367228] [Info   : Unity Log] Quit terminal; inTerminalMenu true?: {playerScript.inTerminalMenu}
+[20:21:16.8151489] [Error  : Unity Log] InvalidOperationException: Collection was modified; enumeration operation may not execute.
+Stack trace:
+System.Collections.Generic.List`1+Enumerator[T].MoveNextRare () (at <1071a2cb0cb3433aae80a793c277a048>:IL_0013)
+System.Collections.Generic.List`1+Enumerator[T].MoveNext () (at <1071a2cb0cb3433aae80a793c277a048>:IL_004A)
+ShyGuy.AI.ShyGuyAI.DoAIInterval () (at ./ShyGuy/AI/ShyGuyAI.cs:396)
+(wrapper dynamic-method) EnemyAI.DMD<EnemyAI::Update>(EnemyAI)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition.Trampoline<EnemyAI::Update>?-628069500(EnemyAI)
+CodeRebirth.src.Patches.EnemyAIPatch.EnemyAI_Update (On.EnemyAI+orig_Update orig, EnemyAI self) (at ./src/Patches/EnemyAIPatch.cs:110)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition.Hook<EnemyAI::Update>?1755894732(EnemyAI)
+ShyGuy.AI.ShyGuyAI.Update () (at ./ShyGuy/AI/ShyGuyAI.cs:710)
+
+[20:21:16.9943555] [Debug  :GeneralImprovements] Updated time display.
+[20:21:18.6212167] [Info   : Unity Log] Anomaly random yrotation farthest: 156
+[20:21:19.5980732] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[20:21:20.0033121] [Debug  :GeneralImprovements] Updated time display.
+[20:21:22.6807775] [Warning: Unity Log] Can not play a disabled audio source
+[20:21:23.0143886] [Debug  :GeneralImprovements] Updated time display.
+[20:21:23.3643296] [Info   : Unity Log] Found enemy vent which has its time up: VentEntranceCave(Clone). Spawning Men-stalker from vent.
+[20:21:23.3658341] [Info   : Unity Log] Spawned enemy from vent
+[20:21:23.3767033] [Info   :menstalker_yaboiduckisnickerbar] Man-stalker spawned
+[20:21:26.0242205] [Debug  :GeneralImprovements] Updated time display.
+[20:21:26.3082878] [Info   : Unity Log] Anomaly random yrotation farthest: 75
+[20:21:26.3520118] [Info   : Unity Log] Finished snapping to ladder
+[20:21:27.3951544] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[20:21:27.4242273] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[20:21:27.5944789] [Info   : Unity Log] Finished ladder sequence
+[20:21:27.6325165] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:21:27.6325165] [Debug  :   Coroner] Query successful!True
+[20:21:28.8582907] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:21:28.8582907] [Debug  :   Coroner] Query successful!True
+[20:21:29.0331912] [Debug  :GeneralImprovements] Updated time display.
+[20:21:30.4895904] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:21:30.4895904] [Debug  :   Coroner] Query successful!True
+[20:21:32.0454733] [Debug  :GeneralImprovements] Updated time display.
+[20:21:35.0568176] [Debug  :GeneralImprovements] Updated time display.
+[20:21:38.0671721] [Debug  :GeneralImprovements] Updated time display.
+[20:21:38.3626392] [Info   : Unity Log] Found enemy vent which has its time up: VentEntranceCave(Clone). Spawning Aloe from vent.
+[20:21:38.3726598] [Info   : Unity Log] Spawned enemy from vent
+[20:21:41.0767701] [Debug  :GeneralImprovements] Updated time display.
+[20:21:43.0906152] [Info   : Unity Log] Anomaly random yrotation farthest: 63
+[20:21:44.0904352] [Debug  :GeneralImprovements] Updated time display.
+[20:21:47.1040732] [Debug  :GeneralImprovements] Updated time display.
+[20:21:50.1147249] [Debug  :GeneralImprovements] Updated time display.
+[20:21:50.4096523] [Warning: Unity Log] Can not play a disabled audio source
+[20:21:53.1240860] [Debug  :GeneralImprovements] Updated time display.
+[20:21:56.1348697] [Debug  :GeneralImprovements] Updated time display.
+[20:21:59.1422962] [Debug  :GeneralImprovements] Updated time display.
+[20:22:02.1548630] [Debug  :GeneralImprovements] Updated time display.
+[20:22:02.6502057] [Info   : Unity Log] Found enemy vent which has its time up: VentEntranceCave(Clone). Spawning ImmortalSnail from vent.
+[20:22:02.6502057] [Info   : Unity Log] Spawned enemy from vent
+[20:22:02.6512061] [Info   : Unity Log] Found enemy vent which has its time up: VentEntranceCave(Clone). Spawning Clay Surgeon from vent.
+[20:22:02.6522054] [Info   : Unity Log] Spawned enemy from vent
+[20:22:02.6532048] [Info   : Unity Log] Found enemy vent which has its time up: VentEntranceCave(Clone). Spawning Clay Surgeon from vent.
+[20:22:02.6532048] [Info   : Unity Log] Spawned enemy from vent
+[20:22:02.6692304] [Info   :qwbarch.Mirage] ClaySurgeonAI(66c07378-5f5f-4faf-8d9e-7212bb2d2e6a) - Mimicking player #0
+[20:22:02.6752390] [Debug  :GeneralImprovements] Updated danger level display.
+[20:22:02.6752390] [Info   :qwbarch.Mirage] ClaySurgeonAI(3d438c1e-2a87-4a3b-98e2-7a7d95e7e4d1) - Mimicking player #0
+[20:22:03.3974406] [Info   : Unity Log] Spawned enemy: MouthDog
+[20:22:03.3974406] [Info   : Unity Log] enemy rush index is -1; current index 0
+[20:22:03.3974406] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #0 'Centipede' : probability: 39
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 1
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #1 'Bunker Spider' : probability: 61
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 2
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #2 'Hoarding bug' : probability: 22
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 3
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #3 'Flowerman' : probability: 4
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 4
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #4 'Crawler' : probability: 39
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 5
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #5 'Blob' : probability: 31
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 6
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #6 'Spring' : probability: 33
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 7
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #7 'Puffer' : probability: 9
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 8
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #8 'Nutcracker' : probability: 8
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 9
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #9 'Maneater' : probability: 3
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 10
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #10 'Stingray' : probability: 15
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 11
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #11 'Masked' : probability: 38
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 12
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #12 'Jester' : probability: 3
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 13
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #13 'Butler' : probability: 16
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 14
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #14 'Clay Surgeon' : probability: 2
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 15
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #15 'Girl' : probability: 1
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 16
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #16 'Football' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 17
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #17 'Herobrine' : probability: 3
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 18
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #18 'Locker' : probability: 5
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 20
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #20 'HarpGhost' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 21
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #21 'BagpipeGhost' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 22
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #22 'EnforcerGhost' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 23
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #23 'Shy guy' : probability: 3
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 25
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #25 'SlendermanEnemy' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 26
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #26 'Cabinet' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 28
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #28 'RollingGiant' : probability: 22
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 29
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #29 'Shy guy' : probability: 6
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 30
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #30 'Boomba' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 31
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #31 'Rabbit Magician' : probability: 1
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 32
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #32 'Peace Keeper' : probability: 4
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 33
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #33 'Lord Of The Manor' : probability: 3
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 34
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #34 'Janitor' : probability: 10
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 35
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #35 'Nancy' : probability: 6
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 36
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #36 'Mistress' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 37
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #37 'Duck' : probability: 1
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 38
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #38 'Transporter' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 39
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #39 'Shy guy' : probability: 6
+[20:22:03.3989459] [Info   : Unity Log] ADDING ENEMY #39: Shy guy
+[20:22:03.3989459] [Info   : Unity Log] Adding 3 to power level, enemy: Shy guy
+[20:22:03.3989459] [Info   : Unity Log] Adding 0 to diversity level for enemy 'Shy guy'
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 0
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #0 'Centipede' : probability: 39
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 1
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #1 'Bunker Spider' : probability: 61
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 2
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #2 'Hoarding bug' : probability: 22
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 5
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #5 'Blob' : probability: 31
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 6
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #6 'Spring' : probability: 33
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 7
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #7 'Puffer' : probability: 9
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 8
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #8 'Nutcracker' : probability: 8
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 10
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #10 'Stingray' : probability: 15
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 11
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #11 'Masked' : probability: 38
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 13
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #13 'Butler' : probability: 16
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 14
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #14 'Clay Surgeon' : probability: 2
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 15
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #15 'Girl' : probability: 1
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 16
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #16 'Football' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 17
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #17 'Herobrine' : probability: 3
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 18
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #18 'Locker' : probability: 5
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 20
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #20 'HarpGhost' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 21
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #21 'BagpipeGhost' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 25
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #25 'SlendermanEnemy' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 26
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #26 'Cabinet' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 28
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #28 'RollingGiant' : probability: 22
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 30
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #30 'Boomba' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 32
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #32 'Peace Keeper' : probability: 4
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 33
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #33 'Lord Of The Manor' : probability: 3
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 34
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #34 'Janitor' : probability: 10
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 35
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #35 'Nancy' : probability: 6
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 36
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #36 'Mistress' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 37
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #37 'Duck' : probability: 1
+[20:22:03.3989459] [Info   : Unity Log] enemy rush index is -1; current index 38
+[20:22:03.3989459] [Info   : Unity Log] Hours: 540 ; Time: 0.5 | Enemy #38 'Transporter' : probability: 0
+[20:22:03.3989459] [Info   : Unity Log] ADDING ENEMY #13: Butler
+[20:22:03.3989459] [Info   : Unity Log] Adding 2 to power level, enemy: Butler
+[20:22:03.3989459] [Info   : Unity Log] Adding 2 to diversity level for enemy 'Butler'
+[20:22:03.3989459] [Info   : Unity Log] Round manager: No more spawnable enemies. Power count: 20 Max: 20
+[20:22:03.4104826] [Debug  :Enemy Sound Fixes] Eyeless dog: Reroll voice pitch (seeded random)
+[20:22:03.4104826] [Info   :qwbarch.Mirage] MouthDogAI(6fca1fea-d0cf-408d-baf0-9312e1a6d061) - Mimicking player #0
+[20:22:04.0910631] [Info   : Unity Log] Anomaly random yrotation farthest: 3
+[20:22:05.1650667] [Debug  :GeneralImprovements] Updated time display.
+[20:22:07.6428837] [Info   : Unity Log] Anomaly random yrotation farthest: 62
+[20:22:08.1743567] [Debug  :GeneralImprovements] Updated time display.
+[20:22:11.1823166] [Debug  :GeneralImprovements] Updated time display.
+[20:22:12.4669574] [Info   : Unity Log] Anomaly random yrotation farthest: 204
+[20:22:14.1944718] [Debug  :GeneralImprovements] Updated time display.
+[20:22:17.2102662] [Debug  :GeneralImprovements] Updated time display.
+[20:22:18.8435591] [Warning: Unity Log] Can not play a disabled audio source
+[20:22:20.2177185] [Debug  :GeneralImprovements] Updated time display.
+[20:22:23.2260377] [Debug  :GeneralImprovements] Updated time display.
+[20:22:26.2365773] [Debug  :GeneralImprovements] Updated time display.
+[20:22:29.2496416] [Debug  :GeneralImprovements] Updated time display.
+[20:22:32.2617895] [Debug  :GeneralImprovements] Updated time display.
+[20:22:35.2736403] [Debug  :GeneralImprovements] Updated time display.
+[20:22:36.5868314] [Warning: Unity Log] Can not play a disabled audio source
+[20:22:38.2856407] [Debug  :GeneralImprovements] Updated time display.
+[20:22:39.5237883] [Info   : Unity Log] Anomaly random yrotation farthest: 78
+[20:22:41.2938556] [Debug  :GeneralImprovements] Updated time display.
+[20:22:44.3065874] [Debug  :GeneralImprovements] Updated time display.
+[20:22:46.7640598] [Info   : Unity Log] Anomaly random yrotation farthest: -13
+[20:22:47.3149015] [Debug  :GeneralImprovements] Updated time display.
+[20:22:50.3270540] [Debug  :GeneralImprovements] Updated time display.
+[20:22:53.3369561] [Debug  :GeneralImprovements] Updated time display.
+[20:22:54.0826848] [Info   : Unity Log] Found enemy vent which has its time up: VentEntranceCave(Clone). Spawning Butler from vent.
+[20:22:54.1387792] [Info   : Unity Log] Spawned enemy from vent
+[20:22:54.1488011] [Debug  :Starlancer AI Fix] The Enemy Whitelist contains: Blob, Butler, Centipede, Crawler, Flowerman, HoarderBug, Nutcracker, SandSpider, Stingray.
+[20:22:54.1488011] [Debug  :Starlancer AI Fix] Adding IVisibleThreat component to ButlerEnemy(Clone).
+[20:22:55.0868603] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:22:56.3476439] [Debug  :GeneralImprovements] Updated time display.
+[20:22:58.5622508] [Warning: Unity Log] Can not play a disabled audio source
+[20:22:59.3569559] [Debug  :GeneralImprovements] Updated time display.
+[20:23:00.1842177] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:23:02.3695328] [Debug  :GeneralImprovements] Updated time display.
+[20:23:05.3842608] [Debug  :GeneralImprovements] Updated time display.
+[20:23:07.1073166] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:23:08.0466632] [Info   :TooManyEmotes-2.3.17] Calculating if the masked enemy (MaskedPlayerEnemy(Clone)) should emote: False
+[20:23:08.3944352] [Debug  :GeneralImprovements] Updated time display.
+[20:23:11.2243492] [Info   : Unity Log] Found enemy vent which has its time up: VentEntranceCave(Clone). Spawning Shy guy from vent.
+[20:23:11.2253470] [Info   : Unity Log] Spawned enemy from vent
+[20:23:11.4045195] [Debug  :GeneralImprovements] Updated time display.
+[20:23:14.4127533] [Debug  :GeneralImprovements] Updated time display.
+[20:23:14.7225263] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:23:17.4216252] [Debug  :GeneralImprovements] Updated time display.
+[20:23:19.2238262] [Info   :TooManyEmotes-2.3.17] Calculating if the masked enemy (MaskedPlayerEnemy(Clone)) should emote: True
+[20:23:19.2238262] [Info   :TooManyEmotes-2.3.17] Pre-performing emote on MaskedEnemy. Delay: 1.954618 ExtendedStopAndStareDuration: 3.154164
+[20:23:20.3971173] [Warning: Unity Log] Can not play a disabled audio source
+[20:23:20.4291598] [Debug  :GeneralImprovements] Updated time display.
+[20:23:20.4376669] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:23:23.4407297] [Debug  :GeneralImprovements] Updated time display.
+[20:23:24.5890127] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:23:26.4578176] [Debug  :GeneralImprovements] Updated time display.
+[20:23:28.4093546] [Info   : Unity Log] Noise heard relative loudness: 0.07870364 [NCS:300-225869]
+[20:23:29.1092422] [Info   : Unity Log] Could not spawn more enemies; vents #: 10. CannotSpawnMoreInsideEnemies: True
+[20:23:29.4693673] [Debug  :GeneralImprovements] Updated time display.
+[20:23:29.6450167] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:23:29.6450167] [Debug  :   Coroner] Query successful!True
+[20:23:29.8410712] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:23:29.8410712] [Debug  :   Coroner] Query successful!True
+[20:23:31.9996218] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:23:31.9996218] [Debug  :   Coroner] Query successful!True
+[20:23:32.0510178] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:23:32.0620413] [Info   : Unity Log] Noise heard relative loudness: 0.02624288 [NCS:300-226288]
+[20:23:32.4495910] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[20:23:32.4861734] [Debug  :GeneralImprovements] Updated time display.
+[20:23:33.8829450] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.8829450] [Warning:S1.39 Compatibility Fixes] [DoorAudit] Hangar state changed -> CLOSED; doorPower=1.000; landed=True; leaving=False; living=1; livingInsideShip=1
+[20:23:33.8909518] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.8979558] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9059664] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9169862] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9255144] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9340221] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9420362] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9495404] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9570536] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9640988] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9731113] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9796136] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9871216] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:33.9961365] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0031492] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0121660] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0196697] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0291901] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0367063] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0437266] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0525485] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0595474] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0720745] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0810817] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0895908] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.0980984] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.1061122] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.1141494] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.1231623] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.1311879] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.1392978] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.1478051] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.1558154] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.1628269] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.1708389] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:34.1778451] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:23:35.3121099] [Info   :TooManyEmotes-2.3.17] Calculating if the masked enemy (MaskedPlayerEnemy(Clone)) should emote: True
+[20:23:35.3121099] [Info   :TooManyEmotes-2.3.17] Pre-performing emote on MaskedEnemy. Delay: 1.954618 ExtendedStopAndStareDuration: 3.154164
+[20:23:35.4964920] [Debug  :GeneralImprovements] Updated time display.
+[20:23:37.2710721] [Info   :TooManyEmotes-2.3.17] [MaskedPlayerEnemy(Clone)] Performing emote: cheer
+[20:23:37.3320320] [Info   :ReservedItemSlotCore-2.0.41] Beginning grab on reserved item: Shovel Previous item slot: 0
+[20:23:37.4409963] [Debug  : LightsOut] GrabItem Shovel
+[20:23:37.4409963] [Debug  : LightsOut] Shovel is not a predefined type
+[20:23:37.8495980] [Info   :ReservedItemSlotCore-2.0.41] Focusing reserved hotbar slots. NewIndex: 6 OldIndex: 0 ReservedStartIndex: 4
+[20:23:38.3795065] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:23:38.5121261] [Debug  :GeneralImprovements] Updated time display.
+[20:23:39.8711057] [Info   : Unity Log] Player is not targetable [NCS:180-227204]
+[20:23:39.9122633] [Info   : Unity Log] Noise heard relative loudness: 0.2860632 [NCS:300-227208]
+[20:23:39.9162609] [Warning: Unity Log] Can not play a disabled audio source
+[20:23:40.6659455] [Info   :TooManyEmotes-2.3.17] [MaskedPlayerEnemy(Clone)] Stopping emote.
+[20:23:41.5232191] [Debug  :GeneralImprovements] Updated time display.
+[20:23:43.1311288] [Info   : Unity Log] Noise heard relative loudness: 0.2948963 [NCS:300-227598]
+[20:23:43.2098256] [Info   : Unity Log] Player is not targetable [NCS:180-227607]
+[20:23:43.6470647] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:23:44.5422446] [Debug  :GeneralImprovements] Updated time display.
+[20:23:44.7321549] [Info   : Unity Log] Player is not targetable [NCS:180-227787]
+[20:23:44.8945368] [Debug  :Mask Fixes] Mimic #-377542: Claimed hiding spot #0 at coords (9.04, 0.83, -16.59)
+[20:23:46.0457430] [Info   : Unity Log] Noise heard relative loudness: 0.2934166 [NCS:300-227944]
+[20:23:47.4727732] [Info   : Unity Log] Player is not targetable [NCS:180-228116]
+[20:23:47.5542269] [Debug  :GeneralImprovements] Updated time display.
+[20:23:48.9336122] [Info   : Unity Log] Player is not targetable [NCS:180-228296]
+[20:23:49.3254517] [Info   : Unity Log] Noise heard relative loudness: 0.3000088 [NCS:300-228345]
+[20:23:50.5642481] [Debug  :GeneralImprovements] Updated time display.
+[20:23:51.1580307] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:23:51.1736667] [Info   : Unity Log] Player is not targetable [NCS:180-228574]
+[20:23:51.9963519] [Info   : Unity Log] Noise heard relative loudness: 0.2863545 [NCS:300-228668]
+[20:23:52.7284112] [Info   : Unity Log] Player is not targetable [NCS:180-228755]
+[20:23:53.5800334] [Debug  :GeneralImprovements] Updated time display.
+[20:23:54.8999781] [Info   : Unity Log] Noise heard relative loudness: 0.2890373 [NCS:300-229015]
+[20:23:54.9918172] [Info   : Unity Log] Player is not targetable [NCS:180-229027]
+[20:23:55.1962181] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:23:56.4483397] [Info   : Unity Log] Player is not targetable [NCS:180-229207]
+[20:23:56.5873336] [Debug  :GeneralImprovements] Updated time display.
+[20:23:57.7884344] [Info   : Unity Log] Noise heard relative loudness: 0.2986989 [NCS:300-229376]
+[20:23:58.7716898] [Info   : Unity Log] Player is not targetable [NCS:180-229503]
+[20:23:59.6015704] [Debug  :GeneralImprovements] Updated time display.
+[20:24:00.2555714] [Info   : Unity Log] Player is not targetable [NCS:180-229684]
+[20:24:00.5655532] [Warning: Unity Log] Can not play a disabled audio source
+[20:24:00.6156800] [Info   : Unity Log] Noise heard relative loudness: 0.2966131 [NCS:300-229727]
+[20:24:01.2385658] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:24:02.4887282] [Info   : Unity Log] Player is not targetable [NCS:180-229953]
+[20:24:02.6134043] [Debug  :GeneralImprovements] Updated time display.
+[20:24:03.3486045] [Info   : Unity Log] Noise heard relative loudness: 0.2997526 [NCS:300-230060]
+[20:24:03.9487660] [Info   : Unity Log] Player is not targetable [NCS:180-230133]
+[20:24:05.0866864] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:24:05.6257202] [Debug  :GeneralImprovements] Updated time display.
+[20:24:06.2391455] [Info   : Unity Log] Anomaly random yrotation farthest: 204
+[20:24:08.6385642] [Debug  :GeneralImprovements] Updated time display.
+[20:24:08.7817733] [Info   :ReservedItemSlotCore-2.0.41] Unfocusing reserved hotbar slots. NewIndex: 0 OldIndex: 6 ReservedStartIndex: 4
+[20:24:09.7970827] [Info   : Unity Log] Anomaly random yrotation farthest: 213
+[20:24:11.5961669] [Info   : Unity Log] Update used by player client rpc has been called for interact trigger: TerminalScript
+[20:24:11.5961669] [Info   : Unity Log] Set interminalmenu to true: True
+[20:24:11.5961669] [Message:darmuhsTerminalStuff] Mode set to - [ None ] OnUpdateCamsEvent
+[20:24:11.6492354] [Debug  :GeneralImprovements] Updated time display.
+[20:24:12.6969815] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:24:13.5118349] [Info   : Unity Log] Parsed word: enemies
+[20:24:13.5118349] [Info   : Unity Log] noun keyword: enemies ; verb keyword: list ; result null? : False
+[20:24:13.5118349] [Info   : Unity Log] result: 
+[20:24:13.5379538] [Message:darmuhsTerminalStuff] Mode set to - [ None ] OnUpdateCamsEvent
+[20:24:13.5379538] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MHELP
+[20:24:13.5379538] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MEVENT
+[20:24:13.5379538] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MCLEAR
+[20:24:13.5379538] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MEVENTS
+[20:24:13.5379538] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MRANDOM
+[20:24:13.5379538] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MPAY
+[20:24:13.5379538] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MENEMIES
+[20:24:13.5379538] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MITEMS
+[20:24:13.5379538] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MMOONS
+[20:24:13.5379538] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MSCAN
+[20:24:13.5379538] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MHAZARDS
+[20:24:13.7910283] [Info   : Unity Log] Anomaly random yrotation farthest: 213
+[20:24:14.6605053] [Debug  :GeneralImprovements] Updated time display.
+[20:24:15.0620350] [Info   : Unity Log] Anomaly random yrotation farthest: 203
+[20:24:16.2547040] [Info   : Unity Log] Stop special animation F
+[20:24:16.2547040] [Info   : Unity Log] Stop special animation G
+[20:24:16.2547040] [Info   : Unity Log] Quit terminal; inTerminalMenu true?: {playerScript.inTerminalMenu}
+[20:24:16.2647222] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:24:16.2647222] [Debug  :   Coroner] Query successful!True
+[20:24:17.6719817] [Debug  :GeneralImprovements] Updated time display.
+[20:24:19.9749030] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:24:20.6805822] [Debug  :GeneralImprovements] Updated time display.
+[20:24:21.4561069] [Debug  :Mask Fixes] Mimic #-377542: Claimed hiding spot #0 at coords (9.04, 0.83, -16.59)
+[20:24:23.6935193] [Debug  :GeneralImprovements] Updated time display.
+[20:24:25.7206877] [Warning: Unity Log] Can not play a disabled audio source
+[20:24:26.4592411] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:24:26.7078597] [Debug  :GeneralImprovements] Updated time display.
+[20:24:29.7172960] [Debug  :GeneralImprovements] Updated time display.
+[20:24:32.7255448] [Debug  :GeneralImprovements] Updated time display.
+[20:24:33.9452307] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:24:35.7343248] [Debug  :GeneralImprovements] Updated time display.
+[20:24:38.0757191] [Warning:S1.39 Compatibility Fixes] [DoorAudit] Hangar state changed -> OPEN; doorPower=1.000; landed=True; leaving=False; living=1; livingInsideShip=1
+[20:24:38.7472090] [Debug  :GeneralImprovements] Updated time display.
+[20:24:39.3673383] [Info   : Unity Log] Noise heard relative loudness: 0.09308473 [NCS:300-234327]
+[20:24:41.0315972] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.0315972] [Warning:S1.39 Compatibility Fixes] [DoorAudit] Hangar state changed -> CLOSED; doorPower=1.000; landed=True; leaving=False; living=1; livingInsideShip=1
+[20:24:41.0396850] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.0469230] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.0554313] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.0634618] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.0709620] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.0799835] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.0874986] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.0965131] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1045282] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1145843] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1225944] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1305984] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1386096] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1467629] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1562732] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1652775] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1752924] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1833051] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1908115] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.1993228] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2073401] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2153503] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2233591] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2318680] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2393931] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2474050] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2554163] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2625618] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2710750] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2775837] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2866018] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.2961129] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.3031228] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.3111470] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.3186574] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.3267130] [Info   : Unity Log] [Lethal Doors Fixed] Checking for enemies to apply damage
+[20:24:41.7594825] [Debug  :GeneralImprovements] Updated time display.
+[20:24:41.8255578] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:24:44.7758390] [Debug  :GeneralImprovements] Updated time display.
+[20:24:45.3362887] [Info   :ReservedItemSlotCore-2.0.41] Focusing reserved hotbar slots. NewIndex: 6 OldIndex: 0 ReservedStartIndex: 4
+[20:24:46.5834753] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:24:46.8708484] [Info   : Unity Log] Noise heard relative loudness: 0.7449618 [NCS:300-235255]
+[20:24:47.7846865] [Debug  :GeneralImprovements] Updated time display.
+[20:24:47.8147254] [Info   : Unity Log] Player is not targetable [NCS:180-235378]
+[20:24:47.8511169] [Info   : Unity Log] Can't hear noise reason A [NCS:300-235382]
+[20:24:49.5427925] [Info   : Unity Log] Noise heard relative loudness: 0.7271501 [NCS:300-235607]
+[20:24:50.7945411] [Debug  :GeneralImprovements] Updated time display.
+[20:24:51.2375940] [Info   : Unity Log] Can't hear noise reason A [NCS:300-235843]
+[20:24:52.0948164] [Info   : Unity Log] Player is not targetable [NCS:180-235956]
+[20:24:52.2895506] [Info   : Unity Log] Noise heard relative loudness: 0.4784189 [NCS:300-235976]
+[20:24:52.4657102] [Warning: Unity Log] Can not play a disabled audio source
+[20:24:53.8056404] [Debug  :GeneralImprovements] Updated time display.
+[20:24:54.0745159] [Info   : Unity Log] Player is not targetable [NCS:180-236203]
+[20:24:54.0925367] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:24:54.8129197] [Info   : Unity Log] Could not spawn more enemies; vents #: 10. CannotSpawnMoreInsideEnemies: True
+[20:24:55.0188425] [Info   : Unity Log] Noise heard relative loudness: 0.476603 [NCS:300-236315]
+[20:24:55.6346435] [Info   : Unity Log] Player is not targetable [NCS:180-236389]
+[20:24:56.2095728] [Info   : Unity Log] Anomaly random yrotation farthest: 12
+[20:24:56.8185391] [Debug  :GeneralImprovements] Updated time display.
+[20:24:57.0735901] [Info   : Unity Log] Player is not targetable [NCS:180-236570]
+[20:24:57.8267389] [Info   : Unity Log] Can't hear noise reason A [NCS:300-236666]
+[20:24:58.6529235] [Info   : Unity Log] Noise heard relative loudness: 0.66467 [NCS:300-236776]
+[20:24:58.9111611] [Info   : Unity Log] Player is not targetable [NCS:180-236812]
+[20:24:59.8299663] [Debug  :GeneralImprovements] Updated time display.
+[20:25:00.3510488] [Info   : Unity Log] Player is not targetable [NCS:180-237002]
+[20:25:00.6058240] [Info   : Unity Log] Can't hear noise reason A [NCS:300-237032]
+[20:25:01.3161832] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:25:02.8369890] [Debug  :GeneralImprovements] Updated time display.
+[20:25:04.0620837] [Info   :ReservedItemSlotCore-2.0.41] Unfocusing reserved hotbar slots. NewIndex: 0 OldIndex: 6 ReservedStartIndex: 4
+[20:25:05.8559418] [Debug  :GeneralImprovements] Updated time display.
+[20:25:07.0515840] [Info   : Unity Log] Anomaly random yrotation farthest: 279
+[20:25:08.7459186] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:25:08.8651710] [Debug  :GeneralImprovements] Updated time display.
+[20:25:08.9641819] [Debug  :Mask Fixes] Mimic #-377542: Claimed hiding spot #0 at coords (9.04, 0.83, -16.59)
+[20:25:11.8782417] [Debug  :GeneralImprovements] Updated time display.
+[20:25:14.8870291] [Debug  :GeneralImprovements] Updated time display.
+[20:25:16.1430722] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:25:17.8989020] [Debug  :GeneralImprovements] Updated time display.
+[20:25:19.6851041] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:25:20.9101400] [Debug  :GeneralImprovements] Updated time display.
+[20:25:21.2381374] [Warning: Unity Log] Can not play a disabled audio source
+[20:25:23.9218366] [Debug  :GeneralImprovements] Updated time display.
+[20:25:24.5178701] [Warning: Unity Log] Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (SweepingSFX).
+[20:25:26.9352453] [Debug  :GeneralImprovements] Updated time display.
+[20:25:29.3845051] [Info   :GeneralImprovements] Server disconnecting - dropping FlashlightItem(Clone)
+[20:25:29.3865087] [Info   :GeneralImprovements] Server disconnecting - dropping ShovelItem(Clone)
+[20:25:29.3865087] [Info   :GeneralImprovements] Server disconnecting - dropping Key(Clone)
+[20:25:29.3875077] [Info   : Unity Log] Leaving current lobby
+[20:25:29.3875077] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[20:25:29.4155547] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[20:25:29.4155547] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[20:25:29.4155547] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[20:25:29.4155547] [Info   :Rolling Giant] Resetting all rolling giants!
+[20:25:29.4155547] [Message:Rolling Giant] Reverting sync
+[20:25:29.4175592] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[20:25:29.4185586] [Debug  :MrHat.BasedItemSaving] Saved 26 exact item poses
+[20:25:29.4185586] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[20:25:29.4195612] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[20:25:29.4220613] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[20:25:29.4505986] [Info   :LethalPerformance] Saved 2 save(s)
+[20:25:29.4591607] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[20:25:29.4932349] [Info   :PathfindingLib] Unregistering ConfigElev(Clone) (PathfindingLib.Components.MineshaftElevatorAdapter)
+[20:25:29.5032578] [Info   : LethalMin] ShipOnion: saved 38 pikmin to disk on despawn.
+[20:25:29.5318104] [Info   :LobbyControl] 0 disconnected
+[20:25:29.5318104] [Info   : Unity Log] Disconnect callback called
+[20:25:29.5333153] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[20:25:29.5333153] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[20:25:29.5333153] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[20:25:29.5363250] [Debug  :Starlancer AI Fix] ShyGuy(Clone) from the interior enemy list has died; 
+Previous interior power level is 20
+[20:25:29.5363250] [Debug  :Starlancer AI Fix] Removing ShyGuy(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 17
+[20:25:29.6184989] [Debug  :Starlancer AI Fix] ButlerEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 17
+[20:25:29.6184989] [Debug  :Starlancer AI Fix] Removing ButlerEnemy(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 15
+[20:25:29.6194993] [Debug  :Starlancer AI Fix] MouthDog(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 2
+[20:25:29.6194993] [Debug  :Starlancer AI Fix] Removing MouthDog(Clone)'s power (2) from the RoundManager; 
+Current exterior power level is 0
+[20:25:29.6235063] [Debug  :Starlancer AI Fix] ClaySurgeon(Clone) from the interior enemy list has died; 
+Previous interior power level is 15
+[20:25:29.6235063] [Debug  :Starlancer AI Fix] Removing ClaySurgeon(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 14
+[20:25:29.6235063] [Debug  :GeneralImprovements] Updated danger level display.
+[20:25:29.6245107] [Debug  :Starlancer AI Fix] ClaySurgeon(Clone) from the interior enemy list has died; 
+Previous interior power level is 14
+[20:25:29.6245107] [Debug  :Starlancer AI Fix] Removing ClaySurgeon(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 13
+[20:25:29.6255116] [Debug  :Starlancer AI Fix] default_snail(Clone) from the interior enemy list has died; 
+Previous interior power level is 13
+[20:25:29.6255116] [Debug  :Starlancer AI Fix] Removing default_snail(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 12
+[20:25:29.6265120] [Debug  :Starlancer AI Fix] AloeBracken(Clone) from the interior enemy list has died; 
+Previous interior power level is 12
+[20:25:29.6265120] [Debug  :Starlancer AI Fix] Removing AloeBracken(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 11
+[20:25:29.6265120] [Debug  :Starlancer AI Fix] menstalker_prefab(Clone) from the interior enemy list has died; 
+Previous interior power level is 11
+[20:25:29.6265120] [Debug  :Starlancer AI Fix] Removing menstalker_prefab(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 8
+[20:25:29.6275117] [Debug  :Starlancer AI Fix] default_snail(Clone) from the interior enemy list has died; 
+Previous interior power level is 8
+[20:25:29.6275117] [Debug  :Starlancer AI Fix] Removing default_snail(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 7
+[20:25:29.6275117] [Debug  :Starlancer AI Fix] Blob(Clone) from the interior enemy list has died; 
+Previous interior power level is 7
+[20:25:29.6275117] [Debug  :Starlancer AI Fix] Removing Blob(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 6
+[20:25:29.6285109] [Debug  :Starlancer AI Fix] SpringMan(Clone) from the interior enemy list has died; 
+Previous interior power level is 6
+[20:25:29.6285109] [Debug  :Starlancer AI Fix] Removing SpringMan(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 4
+[20:25:29.6295110] [Debug  :Starlancer AI Fix] Crawler(Clone) from the interior enemy list has died; 
+Previous interior power level is 4
+[20:25:29.6295110] [Debug  :Starlancer AI Fix] Removing Crawler(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 1
+[20:25:29.6295110] [Debug  :GeneralImprovements] Updated danger level display.
+[20:25:29.6305151] [Debug  :   Coroner] Handling Masked Player death...
+[20:25:29.6335223] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[20:25:29.6335223] [Debug  :Starlancer AI Fix] ShyGuy(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[20:25:29.6335223] [Debug  :Starlancer AI Fix] Removing ShyGuy(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 0
+[20:25:29.6335223] [Debug  :Starlancer AI Fix] ShyGuy(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[20:25:29.6345279] [Debug  :Starlancer AI Fix] Removing ShyGuy(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 0
+[20:25:29.6345279] [Debug  :GeneralImprovements] Updated danger level display.
+[20:25:29.6385317] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch1
+[20:25:29.6385317] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch2
+[20:25:29.6385317] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch3
+[20:25:29.6385317] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch4
+[20:25:29.6385317] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch5
+[20:25:29.6385317] [Info   : Unity Log] Interact trigger destroying! name: PowerBoxDoor
+[20:25:29.6385317] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA(Clone)
+[20:25:29.6395317] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: LeftCupboardContainer
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: LeftCupboardContainer
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: LeverDud
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: LeverSwitchHandle
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch1
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch2
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch3
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch4
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch5
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: PowerBoxDoor
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch1
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch2
+[20:25:29.6405331] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch3
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch4
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch5
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: PowerBoxDoor
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: LeftCupboardContainer
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: LeftCupboardContainer
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:25:29.6420369] [Info   : Unity Log] Interact trigger destroying! name: Mimic Metal Crate(Clone)
+[20:25:29.6525588] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6525588] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[20:25:29.6525588] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6525588] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[20:25:29.6525588] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6525588] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[20:25:29.6525588] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6525588] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[20:25:29.6525588] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6525588] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[20:25:29.6525588] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6525588] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[20:25:29.6525588] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6525588] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[20:25:29.6525588] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6525588] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[20:25:29.6525588] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6525588] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[20:25:29.6525588] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6525588] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[20:25:29.6525588] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6525588] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[20:25:29.6535634] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6535634] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[20:25:29.6540665] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:25:29.6540665] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[20:25:29.6550708] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[20:25:29.6550708] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:25:29.6550708] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[20:25:29.6560757] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[20:25:29.7416094] [Info   : Unity Log] Resetting unlockables list!
+[20:25:29.7426104] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[20:25:29.7436108] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[20:25:29.7446243] [Info   : Unity Log] Scene manager is null
+[20:25:29.7516274] [Info   :LethalPerformance] Saved 1 save(s)
+[20:25:29.8112310] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:25:29.8112310] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:25:29.8112310] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[20:25:29.8122300] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[20:25:29.8172441] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[20:25:29.8257530] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[20:25:29.8257530] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[20:25:29.8257530] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:25:29.8257530] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:25:29.8257530] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:25:29.8257530] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:25:29.8257530] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[20:25:29.8257530] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[20:25:29.8257530] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[20:25:29.8257530] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[20:25:29.8267533] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[20:25:29.8267533] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[20:25:29.8267533] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[20:25:29.8277531] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[20:25:29.8277531] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[20:25:29.8477698] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[20:25:29.8567889] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:25:29.8587879] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[20:25:29.8587879] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[20:25:29.8587879] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[20:25:29.8587879] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[20:25:29.8587879] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[20:25:29.8587879] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[20:25:29.8587879] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[20:25:29.8662971] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[20:25:29.8778106] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:25:29.8948276] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[20:25:29.9078461] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[20:25:29.9158670] [Info   :MoreCompany] LANMenu startLAN Patched
+[20:25:30.2106909] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[20:25:31.7954509] [Info   : Unity Log] Returning week num: 143
+[20:25:31.7954509] [Info   : Unity Log] week num: 143
+[20:25:31.8019674] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[20:25:31.8019674] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[20:25:31.8124807] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[20:25:31.8194908] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[20:25:31.8194908] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[20:25:31.8194908] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[20:25:31.8224923] [Info   :LethalPerformance] Saved 1 save(s)
+[20:25:33.3119958] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[20:25:33.3255356] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[20:25:34.3609222] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[20:25:34.3619226] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[20:25:34.3619226] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
