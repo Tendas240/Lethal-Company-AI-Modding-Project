@@ -1,4 +1,4 @@
-name: S1.42AI S139 Clean-Room NuGet Restore Review
+name: S1.42AI S139 Historical .NET Host 10.0.11 Review
 
 on:
   push:
@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  clean-room-nuget-restore:
+  historical-dotnet-host:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout exact analysis head
@@ -23,30 +23,72 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Recreate historical setup-dotnet resolution
+      - name: Recreate historical setup-dotnet request
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0.424"
 
-      - name: Compare warm-cache and clean-room restores
+      - name: Force historical .NET 10.0.11 host selection
         shell: bash
         run: |
           set -euo pipefail
-          OUT="$RUNNER_TEMP/s139-clean-room-nuget"
+          OUT="$RUNNER_TEMP/s139-historical-dotnet-host"
+          mkdir -p "$OUT"
+          INSTALLER="$(dirname "$RUNNER_WORKSPACE")/_actions/actions/setup-dotnet/v4/externals/install-dotnet.sh"
+          test -x "$INSTALLER"
+
+          dotnet --info > "$OUT/BEFORE_DOTNET_INFO.txt"
+          dotnet --list-runtimes > "$OUT/BEFORE_DOTNET_RUNTIMES.txt"
+          dotnet --list-sdks > "$OUT/BEFORE_DOTNET_SDKS.txt"
+
+          # The historical runner already had Microsoft.NETCore.App/hostfxr 10.0.11.
+          # Install that exact patch into the same shared root used historically.
+          "$INSTALLER" --skip-non-versioned-files --runtime dotnet --version 10.0.11
+
+          # Current setup-dotnet installs 10.0.12. Hide only that newer patch on this
+          # ephemeral runner so SDK 10.0.400 resolves through the historical 10.0.11
+          # host/runtime while all SDK/pack absolute paths remain /usr/share/dotnet.
+          mkdir -p "$RUNNER_TEMP/dotnet-hidden-10.0.12"
+          if [ -d /usr/share/dotnet/host/fxr/10.0.12 ]; then
+            sudo mv /usr/share/dotnet/host/fxr/10.0.12 "$RUNNER_TEMP/dotnet-hidden-10.0.12/hostfxr-10.0.12"
+          fi
+          if [ -d /usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.12 ]; then
+            sudo mv /usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.12 "$RUNNER_TEMP/dotnet-hidden-10.0.12/Microsoft.NETCore.App-10.0.12"
+          fi
+
+          dotnet --info > "$OUT/AFTER_DOTNET_INFO.txt"
+          dotnet --list-runtimes > "$OUT/AFTER_DOTNET_RUNTIMES.txt"
+          dotnet --list-sdks > "$OUT/AFTER_DOTNET_SDKS.txt"
+          test "$(dotnet --version)" = "10.0.400"
+          python - "$OUT/AFTER_DOTNET_INFO.txt" <<'PY'
+          import pathlib, re, sys
+          text = pathlib.Path(sys.argv[1]).read_text(encoding='utf-8', errors='replace')
+          m = re.search(r'Host:\s*\n\s*Version:\s*([^\s]+)', text)
+          if not m:
+              raise SystemExit('Could not parse dotnet Host Version')
+          print('Selected Host Version:', m.group(1))
+          if m.group(1) != '10.0.11':
+              raise SystemExit(f'Expected Host 10.0.11, got {m.group(1)}')
+          PY
+
+      - name: Rebuild historical S139 under Host 10.0.11 and compare identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/s139-historical-dotnet-host"
           PRE="af415c8d6fdb69b0b7c88102e714764f3dc24b57"
           HISTORICAL_BRANCH="build/s142ah-mouthdog-dual-prevention"
           EXPECTED_SDK="10.0.400"
           EXPECTED_RUNTIME_SHA="bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573"
+          CURRENT_REBUILD_SHA="912e097ae61d3af394f0132115327478b714ee83a4b5b73bbacba7c86dff8de7"
           PROFILE="Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z"
           MEMBER="BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
           PROJECT="Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj"
           PROJECT_DIR="Patches/S139CompatibilityFixes"
+          OBJ="$PROJECT_DIR/obj/Release/netstandard2.1"
           REBUILT="$PROJECT_DIR/bin/Release/netstandard2.1/S139CompatibilityFixes.dll"
-          PACKAGES="$HOME/.nuget/packages"
           ANALYSIS_HEAD="$(git rev-parse HEAD)"
-
-          rm -rf "$OUT"
-          mkdir -p "$OUT/reference" "$OUT/warm" "$OUT/clean"
+          mkdir -p "$OUT/reference" "$OUT/rebuilt" "$OUT/generated"
 
           restore_checkout() {
             rm -rf "$PROJECT_DIR/bin" "$PROJECT_DIR/obj"
@@ -77,165 +119,167 @@ jobs:
           test "$(git symbolic-ref --short HEAD)" = "$HISTORICAL_BRANCH"
           test ! -e global.json
           test "$(dotnet --version)" = "$EXPECTED_SDK"
-          dotnet --info > "$OUT/DOTNET_INFO.txt"
-          dotnet --list-sdks > "$OUT/HOST_DOTNET_SDKS.txt"
 
-          # Phase A: reproduce the current warm global-packages-cache build.
-          rm -rf "$PROJECT_DIR/bin" "$PROJECT_DIR/obj"
-          dotnet build "$PROJECT" -c Release -v:diag > "$OUT/warm/BUILD_DIAGNOSTIC.txt" 2> "$OUT/warm/BUILD_STDERR.txt"
-          test -f "$REBUILT"
-          cp "$REBUILT" "$OUT/warm/S139CompatibilityFixes.dll"
-          cp "$PROJECT_DIR/obj/project.assets.json" "$OUT/warm/project.assets.json"
-
-          python - "$OUT/warm" "$PACKAGES" <<'PY'
-          import hashlib, json, pathlib, sys
-          out, package_root = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
-          h = lambda b: hashlib.sha256(b).hexdigest()
-          diag = (out / 'BUILD_DIAGNOSTIC.txt').read_text(encoding='utf-8', errors='replace').splitlines()
-          start = next(i for i, line in enumerate(diag) if 'Task "Csc"' in line)
-          end = next(i for i in range(start + 1, len(diag)) if 'Done executing task "Csc"' in diag[i])
-          refs, active = [], False
-          for line in diag[start:end + 1]:
-              s = line.strip()
-              if s == 'References=':
-                  active = True
-                  continue
-              if active and s.startswith('Task Parameter:'):
-                  break
-              if active and s.startswith('/') and s.endswith('.dll'):
-                  refs.append(s)
-          refs = list(dict.fromkeys(refs))
-          inventory = []
-          for raw in refs:
-              p = pathlib.Path(raw)
-              if not p.is_file(): raise SystemExit(f'missing reference: {raw}')
-              inventory.append({'path': raw, 'size': p.stat().st_size, 'sha256': h(p.read_bytes())})
-          assets = json.loads((out / 'project.assets.json').read_text())
-          packages = []
-          for key, value in sorted(assets.get('libraries', {}).items()):
-              if value.get('type') != 'package': continue
-              package_id, version = key.rsplit('/', 1)
-              pdir = package_root / package_id.lower() / version.lower()
-              sha_file = pdir / f'{package_id.lower()}.{version.lower()}.nupkg.sha512'
-              meta_file = pdir / '.nupkg.metadata'
-              cache_sha = sha_file.read_text().strip() if sha_file.is_file() else None
-              meta = json.loads(meta_file.read_text()) if meta_file.is_file() else {}
-              packages.append({
-                  'id': package_id, 'version': version,
-                  'assets_sha512': value.get('sha512'), 'cache_sha512': cache_sha,
-                  'sha512_match': cache_sha == value.get('sha512') if cache_sha is not None else None,
-                  'metadata_contentHash': meta.get('contentHash'), 'metadata_source': meta.get('source'),
-              })
-          (out / 'CSC_REFERENCE_INVENTORY.json').write_text(json.dumps(inventory, indent=2) + '\n')
-          (out / 'NUGET_PACKAGE_PROVENANCE.json').write_text(json.dumps(packages, indent=2) + '\n')
+          dotnet --info > "$OUT/BUILD_DOTNET_INFO.txt"
+          python - "$OUT/BUILD_DOTNET_INFO.txt" <<'PY'
+          import pathlib, re, sys
+          text = pathlib.Path(sys.argv[1]).read_text(encoding='utf-8', errors='replace')
+          m = re.search(r'Host:\s*\n\s*Version:\s*([^\s]+)', text)
+          if not m or m.group(1) != '10.0.11':
+              raise SystemExit(f"Build did not retain Host 10.0.11: {m.group(1) if m else 'unparsed'}")
           PY
 
-          # Phase B: erase the global package cache and restore from the repository's exact NuGet.Config.
           rm -rf "$PROJECT_DIR/bin" "$PROJECT_DIR/obj"
-          rm -rf "$PACKAGES"
-          mkdir -p "$PACKAGES"
-          dotnet restore "$PROJECT" --force --no-cache -v:diag > "$OUT/clean/RESTORE_DIAGNOSTIC.txt" 2> "$OUT/clean/RESTORE_STDERR.txt"
-          cp "$PROJECT_DIR/obj/project.assets.json" "$OUT/clean/project.assets.json"
-          dotnet build "$PROJECT" -c Release --no-restore -v:diag > "$OUT/clean/BUILD_DIAGNOSTIC.txt" 2> "$OUT/clean/BUILD_STDERR.txt"
+          dotnet build "$PROJECT" -c Release -v:diag > "$OUT/BUILD_DIAGNOSTIC.txt" 2> "$OUT/BUILD_STDERR.txt"
           test -f "$REBUILT"
-          cp "$REBUILT" "$OUT/clean/S139CompatibilityFixes.dll"
+          cp "$REBUILT" "$OUT/rebuilt/S139CompatibilityFixes.dll"
 
-          python - "$OUT/clean" "$PACKAGES" <<'PY'
-          import hashlib, json, pathlib, sys
-          out, package_root = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+          for f in \
+            "$OBJ/S139CompatibilityFixes.sourcelink.json" \
+            "$OBJ/S139CompatibilityFixes.GeneratedMSBuildEditorConfig.editorconfig" \
+            "$OBJ/S139CompatibilityFixes.AssemblyInfo.cs" \
+            "$OBJ/.NETStandard,Version=v2.1.AssemblyAttributes.cs" \
+            "$PROJECT_DIR/obj/project.assets.json"
+          do
+            test -f "$f"
+            cp "$f" "$OUT/generated/$(basename "$f")"
+          done
+
+          grep -Ei 'Task "Csc"|csc\.dll|sourcelink:|debug:|deterministic|pathmap|References=' \
+            "$OUT/BUILD_DIAGNOSTIC.txt" > "$OUT/COMPILER_INPUT_LINES.txt" || true
+
+          # Decompile after the build; the tool restore cannot affect the tested build.
+          TOOL_DIR="$RUNNER_TEMP/s139-ilspy"
+          rm -rf "$TOOL_DIR"
+          dotnet tool install ilspycmd --tool-path "$TOOL_DIR" --version 11.0.0.9375 >/dev/null
+          "$TOOL_DIR/ilspycmd" --ilcode "$OUT/reference/S139CompatibilityFixes.dll" > "$OUT/reference/FULL_IL.txt"
+          "$TOOL_DIR/ilspycmd" --ilcode "$OUT/rebuilt/S139CompatibilityFixes.dll" > "$OUT/rebuilt/FULL_IL.txt"
+
+          python - "$OUT" "$EXPECTED_RUNTIME_SHA" "$CURRENT_REBUILD_SHA" <<'PY'
+          import hashlib, json, pathlib, struct, sys, uuid
+
+          out = pathlib.Path(sys.argv[1])
+          expected_runtime_sha, prior_rebuild_sha = sys.argv[2:]
+          runtime = (out / 'reference/S139CompatibilityFixes.dll').read_bytes()
+          rebuilt = (out / 'rebuilt/S139CompatibilityFixes.dll').read_bytes()
+          runtime_il = (out / 'reference/FULL_IL.txt').read_bytes()
+          rebuilt_il = (out / 'rebuilt/FULL_IL.txt').read_bytes()
           h = lambda b: hashlib.sha256(b).hexdigest()
-          diag = (out / 'BUILD_DIAGNOSTIC.txt').read_text(encoding='utf-8', errors='replace').splitlines()
-          start = next(i for i, line in enumerate(diag) if 'Task "Csc"' in line)
-          end = next(i for i in range(start + 1, len(diag)) if 'Done executing task "Csc"' in diag[i])
-          refs, active = [], False
-          for line in diag[start:end + 1]:
-              s = line.strip()
-              if s == 'References=':
-                  active = True
-                  continue
-              if active and s.startswith('Task Parameter:'):
-                  break
-              if active and s.startswith('/') and s.endswith('.dll'):
-                  refs.append(s)
-          refs = list(dict.fromkeys(refs))
-          inventory = []
-          for raw in refs:
-              p = pathlib.Path(raw)
-              if not p.is_file(): raise SystemExit(f'missing reference: {raw}')
-              inventory.append({'path': raw, 'size': p.stat().st_size, 'sha256': h(p.read_bytes())})
-          assets = json.loads((out / 'project.assets.json').read_text())
-          packages = []
-          for key, value in sorted(assets.get('libraries', {}).items()):
-              if value.get('type') != 'package': continue
-              package_id, version = key.rsplit('/', 1)
-              pdir = package_root / package_id.lower() / version.lower()
-              sha_file = pdir / f'{package_id.lower()}.{version.lower()}.nupkg.sha512'
-              meta_file = pdir / '.nupkg.metadata'
-              cache_sha = sha_file.read_text().strip() if sha_file.is_file() else None
-              meta = json.loads(meta_file.read_text()) if meta_file.is_file() else {}
-              packages.append({
-                  'id': package_id, 'version': version,
-                  'assets_sha512': value.get('sha512'), 'cache_sha512': cache_sha,
-                  'sha512_match': cache_sha == value.get('sha512') if cache_sha is not None else None,
-                  'metadata_contentHash': meta.get('contentHash'), 'metadata_source': meta.get('source'),
-              })
-          (out / 'CSC_REFERENCE_INVENTORY.json').write_text(json.dumps(inventory, indent=2) + '\n')
-          (out / 'NUGET_PACKAGE_PROVENANCE.json').write_text(json.dumps(packages, indent=2) + '\n')
-          PY
 
-          # Install ILSpy only after both package-cache build phases so it cannot perturb either restore.
-          mkdir -p .tools
-          dotnet tool install ilspycmd --tool-path .tools --version 11.0.0.9375 >/dev/null
-          ./.tools/ilspycmd --ilcode "$OUT/reference/S139CompatibilityFixes.dll" > "$OUT/reference/FULL_IL.txt"
-          ./.tools/ilspycmd --ilcode "$OUT/warm/S139CompatibilityFixes.dll" > "$OUT/warm/FULL_IL.txt"
-          ./.tools/ilspycmd --ilcode "$OUT/clean/S139CompatibilityFixes.dll" > "$OUT/clean/FULL_IL.txt"
+          if h(runtime) != expected_runtime_sha:
+              raise SystemExit('runtime reference hash changed')
 
-          python - "$OUT" "$EXPECTED_RUNTIME_SHA" <<'PY'
-          import hashlib, json, pathlib, sys
-          out = pathlib.Path(sys.argv[1]); expected = sys.argv[2]
-          h = lambda b: hashlib.sha256(b).hexdigest()
-          runtime = (out/'reference/S139CompatibilityFixes.dll').read_bytes()
-          warm = (out/'warm/S139CompatibilityFixes.dll').read_bytes()
-          clean = (out/'clean/S139CompatibilityFixes.dll').read_bytes()
-          if h(runtime) != expected: raise SystemExit('runtime SHA changed')
-          warm_refs = json.loads((out/'warm/CSC_REFERENCE_INVENTORY.json').read_text())
-          clean_refs = json.loads((out/'clean/CSC_REFERENCE_INVENTORY.json').read_text())
-          warm_pkgs = json.loads((out/'warm/NUGET_PACKAGE_PROVENANCE.json').read_text())
-          clean_pkgs = json.loads((out/'clean/NUGET_PACKAGE_PROVENANCE.json').read_text())
-          wr = {x['path']: x for x in warm_refs}; cr = {x['path']: x for x in clean_refs}
-          changed_refs = []
-          for path in sorted(set(wr)|set(cr)):
-              a,b = wr.get(path),cr.get(path)
-              if a is None or b is None or a['sha256'] != b['sha256'] or a['size'] != b['size']:
-                  changed_refs.append({'path':path,'warm':a,'clean':b})
-          wp = {(x['id'],x['version']):x for x in warm_pkgs}; cp = {(x['id'],x['version']):x for x in clean_pkgs}
-          changed_pkgs = []
-          for key in sorted(set(wp)|set(cp)):
-              a,b=wp.get(key),cp.get(key)
-              if a != b: changed_pkgs.append({'id':key[0],'version':key[1],'warm':a,'clean':b})
-          runtime_il=(out/'reference/FULL_IL.txt').read_bytes(); warm_il=(out/'warm/FULL_IL.txt').read_bytes(); clean_il=(out/'clean/FULL_IL.txt').read_bytes()
-          status = ('PASS_CLEAN_RESTORE_BYTE_IDENTICAL' if clean == runtime else
-                    'CLEAN_RESTORE_CHANGED_BUILD_BYTE_DIFF_REMAINS' if clean != warm else
-                    'CLEAN_RESTORE_NO_BUILD_EFFECT_BYTE_DIFF_REMAINS')
-          result={
-            'schema_version':9,'status':status,
-            'runtime_sha256':h(runtime),'warm_sha256':h(warm),'clean_sha256':h(clean),
-            'warm_equals_clean':warm==clean,'clean_equals_runtime':clean==runtime,
-            'runtime_il_sha256':h(runtime_il),'warm_il_sha256':h(warm_il),'clean_il_sha256':h(clean_il),
-            'warm_il_equals_runtime':warm_il==runtime_il,'clean_il_equals_runtime':clean_il==runtime_il,
-            'warm_reference_count':len(warm_refs),'clean_reference_count':len(clean_refs),
-            'changed_reference_count':len(changed_refs),'changed_package_provenance_count':len(changed_pkgs),
-            'warm_package_sha512_all_match':all(x['sha512_match'] is True for x in warm_pkgs),
-            'clean_package_sha512_all_match':all(x['sha512_match'] is True for x in clean_pkgs),
+          def pe_identity(data):
+              u16 = lambda o: struct.unpack_from('<H', data, o)[0]
+              u32 = lambda o: struct.unpack_from('<I', data, o)[0]
+              pe = u32(0x3c)
+              if data[pe:pe+4] != b'PE\0\0':
+                  raise ValueError('not PE')
+              sections_n = u16(pe + 6)
+              coff_timestamp = u32(pe + 8)
+              opt = pe + 24
+              opt_size = u16(pe + 20)
+              magic = u16(opt)
+              dd = opt + (96 if magic == 0x10b else 112)
+              cli_rva = u32(dd + 14 * 8)
+              sec = opt + opt_size
+              sections = []
+              for i in range(sections_n):
+                  s = sec + i * 40
+                  sections.append((u32(s+12), u32(s+8), u32(s+20), u32(s+16)))
+              def rva_off(rva):
+                  for va, vsz, raw, rsz in sections:
+                      if va <= rva < va + max(vsz, rsz):
+                          return raw + (rva - va)
+                  raise ValueError(f'RVA not mapped: {rva:#x}')
+              cli = rva_off(cli_rva)
+              metadata_rva = u32(cli + 8)
+              md = rva_off(metadata_rva)
+              if data[md:md+4] != b'BSJB':
+                  raise ValueError('metadata root missing')
+              version_len = u32(md + 12)
+              cursor = md + 16 + version_len
+              cursor = (cursor + 3) & ~3
+              stream_count = u16(cursor + 2)
+              cursor += 4
+              guid_bytes = None
+              streams = {}
+              for _ in range(stream_count):
+                  rel = u32(cursor); size = u32(cursor + 4); cursor += 8
+                  end = data.index(0, cursor)
+                  name = data[cursor:end].decode('ascii')
+                  cursor = (end + 1 + 3) & ~3
+                  streams[name] = {'offset': md + rel, 'size': size}
+              if '#GUID' in streams and streams['#GUID']['size'] >= 16:
+                  go = streams['#GUID']['offset']
+                  guid_bytes = data[go:go+16]
+              rsds = data.find(b'RSDS')
+              codeview_guid = None; codeview_age = None; pdb_path = None
+              if rsds >= 0 and rsds + 24 <= len(data):
+                  codeview_guid = str(uuid.UUID(bytes_le=data[rsds+4:rsds+20]))
+                  codeview_age = u32(rsds+20)
+                  pend = data.find(b'\0', rsds+24)
+                  pdb_path = data[rsds+24:pend].decode('utf-8', errors='replace') if pend >= 0 else None
+              sha_marker = data.find(b'SHA256\0')
+              pdb_checksum = data[sha_marker+7:sha_marker+39].hex() if sha_marker >= 0 and sha_marker + 39 <= len(data) else None
+              return {
+                  'coff_reproducible_timestamp_hex': f'{coff_timestamp:08x}',
+                  'mvid': str(uuid.UUID(bytes_le=guid_bytes)) if guid_bytes else None,
+                  'codeview_guid': codeview_guid,
+                  'codeview_age': codeview_age,
+                  'pdb_path': pdb_path,
+                  'pdb_sha256_checksum': pdb_checksum,
+                  'metadata_streams': streams,
+              }
+
+          def diff_ranges(a, b):
+              idx = [i for i in range(min(len(a), len(b))) if a[i] != b[i]]
+              if len(a) != len(b):
+                  idx.extend(range(min(len(a), len(b)), max(len(a), len(b))))
+              if not idx:
+                  return []
+              ranges=[]; start=prev=idx[0]
+              for i in idx[1:]:
+                  if i == prev + 1:
+                      prev = i
+                  else:
+                      ranges.append({'start_hex':hex(start),'end_hex':hex(prev),'length':prev-start+1})
+                      start=prev=i
+              ranges.append({'start_hex':hex(start),'end_hex':hex(prev),'length':prev-start+1})
+              return ranges
+
+          rid = pe_identity(runtime)
+          bid = pe_identity(rebuilt)
+          result = {
+              'schema_version': 10,
+              'status': 'PASS_HISTORICAL_HOST_BYTE_IDENTICAL' if runtime == rebuilt else (
+                  'HISTORICAL_HOST_CHANGED_BINARY_BYTE_DIFF_REMAINS' if h(rebuilt) != prior_rebuild_sha else
+                  'HISTORICAL_HOST_NO_BINARY_EFFECT_BYTE_DIFF_REMAINS'
+              ),
+              'selected_sdk': '10.0.400',
+              'selected_host_runtime': '10.0.11',
+              'runtime_sha256': h(runtime),
+              'rebuilt_sha256': h(rebuilt),
+              'prior_host_10_0_12_rebuild_sha256': prior_rebuild_sha,
+              'byte_identical': runtime == rebuilt,
+              'rebuilt_changed_vs_host_10_0_12': h(rebuilt) != prior_rebuild_sha,
+              'runtime_il_sha256': h(runtime_il),
+              'rebuilt_il_sha256': h(rebuilt_il),
+              'il_identical': runtime_il == rebuilt_il,
+              'runtime_identity': rid,
+              'rebuilt_identity': bid,
+              'differing_byte_count': sum(1 for a,b in zip(runtime,rebuilt) if a != b) + abs(len(runtime)-len(rebuilt)),
+              'differing_ranges': diff_ranges(runtime, rebuilt),
           }
-          (out/'CHANGED_REFERENCES.json').write_text(json.dumps(changed_refs,indent=2)+'\n')
-          (out/'CHANGED_PACKAGE_PROVENANCE.json').write_text(json.dumps(changed_pkgs,indent=2)+'\n')
-          (out/'VERIFICATION.json').write_text(json.dumps(result,indent=2)+'\n')
-          (out/'SUMMARY.md').write_text(
-            '# S139 Clean-Room NuGet Restore Review\n\n'+
-            '\n'.join(f'- {k}: `{v}`' for k,v in result.items())+'\n')
-          print(json.dumps(result,indent=2))
-          if clean != runtime: raise SystemExit(2)
+          (out / 'PE_DEBUG_IDENTITY.json').write_text(json.dumps({'runtime':rid,'rebuilt':bid}, indent=2) + '\n')
+          (out / 'VERIFICATION.json').write_text(json.dumps(result, indent=2) + '\n')
+          (out / 'SUMMARY.md').write_text(
+              '# S139 Historical .NET Host 10.0.11 Review\n\n' +
+              '\n'.join(f'- {k}: `{v}`' for k,v in result.items() if k not in {'runtime_identity','rebuilt_identity','differing_ranges'}) + '\n',
+              encoding='utf-8')
+          print(json.dumps(result, indent=2))
+          if runtime != rebuilt:
+              raise SystemExit(2)
           PY
 
       - name: Verify analysis checkout restored cleanly
@@ -246,11 +290,11 @@ jobs:
           git diff --exit-code
           test -z "$(git status --porcelain --untracked-files=no)"
 
-      - name: Upload clean-room NuGet evidence
+      - name: Upload historical host evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: s142ai-s139-clean-room-nuget
+          name: s142ai-s139-historical-dotnet-host-10-0-11
           if-no-files-found: error
           retention-days: 30
-          path: ${{ runner.temp }}/s139-clean-room-nuget
+          path: ${{ runner.temp }}/s139-historical-dotnet-host
