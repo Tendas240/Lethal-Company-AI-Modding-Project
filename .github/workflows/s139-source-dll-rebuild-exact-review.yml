@@ -1,4 +1,4 @@
-name: S1.42AI S139 Effective Build Input Review
+name: S1.42AI S139 Exact Workspace Path Rebuild Review
 
 on:
   push:
@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  effective-build-input:
+  exact-workspace-path-rebuild:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout exact analysis head
@@ -29,10 +29,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Ensure historical effective SDK candidate is installed
+      - name: Recreate historical setup-dotnet resolution
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "10.0.400"
+          dotnet-version: "8.0.424"
 
       - name: Install pinned ILSpy
         shell: bash
@@ -42,17 +42,145 @@ jobs:
           dotnet tool install ilspycmd --tool-path .tools --version 11.0.0.9375
           ./.tools/ilspycmd --version
 
-      - name: Rebuild historical S139 head and capture effective build inputs
+      - name: Rebuild historical S139 head at exact Actions workspace path
         shell: bash
         run: |
           set -euo pipefail
           OUT="$RUNNER_TEMP/s139-source-dll-rebuild-exact"
-          rm -rf "$OUT" "$RUNNER_TEMP/s139-historical-prebuild-worktree"
-          python AnalysisTools/inspect_s139_source_dll_rebuild_exact.py \
-            --output-dir "$OUT" \
-            --ilspy .tools/ilspycmd
+          PRE="af415c8d6fdb69b0b7c88102e714764f3dc24b57"
+          EXPECTED_SDK="10.0.400"
+          EXPECTED_RUNTIME_SHA="bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573"
+          PROFILE="Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z"
+          MEMBER="BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+          PROJECT="Patches/S139CompatibilityFixes/S139CompatibilityFixes.csproj"
+          PROJECT_DIR="Patches/S139CompatibilityFixes"
+          REBUILT="$PROJECT_DIR/bin/Release/netstandard2.1/S139CompatibilityFixes.dll"
+          EXPECTED_PDB="$GITHUB_WORKSPACE/$PROJECT_DIR/obj/Release/netstandard2.1/S139CompatibilityFixes.pdb"
+          ANALYSIS_HEAD="$(git rev-parse HEAD)"
+          rm -rf "$OUT"
+          mkdir -p "$OUT/reference" "$OUT/rebuilt" "$OUT/restore"
 
-      - name: Verify analysis did not mutate tracked repository state
+          restore_checkout() {
+            rm -rf "$PROJECT_DIR/bin" "$PROJECT_DIR/obj"
+            git checkout --detach "$ANALYSIS_HEAD" >/dev/null 2>&1 || true
+          }
+          trap restore_checkout EXIT
+
+          test "$PWD" = "$GITHUB_WORKSPACE"
+          case "$GITHUB_WORKSPACE" in
+            */Lethal-Company-AI-Modding-Project/Lethal-Company-AI-Modding-Project) ;;
+            *) echo "Unexpected Actions workspace: $GITHUB_WORKSPACE" >&2; exit 1 ;;
+          esac
+
+          python - "$PROFILE" "$MEMBER" "$OUT/reference/S139CompatibilityFixes.dll" "$EXPECTED_RUNTIME_SHA" <<'PY'
+          import hashlib, sys, zipfile
+          profile, member, target, expected = sys.argv[1:]
+          with zipfile.ZipFile(profile) as z:
+              data = z.read(member)
+          actual = hashlib.sha256(data).hexdigest()
+          if actual != expected:
+              raise SystemExit(f"runtime DLL SHA mismatch: {actual}")
+          open(target, "wb").write(data)
+          PY
+
+          dotnet --list-sdks > "$OUT/HOST_DOTNET_SDKS.txt"
+          git checkout --detach "$PRE"
+          test "$(git rev-parse HEAD)" = "$PRE"
+          test ! -e global.json
+
+          SELECTED_SDK="$(dotnet --version)"
+          printf '%s\n' "$SELECTED_SDK" > "$OUT/SELECTED_DOTNET_SDK.txt"
+          test "$SELECTED_SDK" = "$EXPECTED_SDK"
+          dotnet --info > "$OUT/DOTNET_INFO.txt"
+
+          rm -rf "$PROJECT_DIR/bin" "$PROJECT_DIR/obj"
+          dotnet build "$PROJECT" -c Release -v:diag > "$OUT/BUILD_DIAGNOSTIC.txt" 2> "$OUT/BUILD_STDERR.txt"
+          test -f "$REBUILT"
+          cp "$REBUILT" "$OUT/rebuilt/S139CompatibilityFixes.dll"
+
+          dotnet msbuild "$PROJECT" -nologo -p:Configuration=Release \
+            -getProperty:TargetFramework,LangVersion,Optimize,DebugType,DebugSymbols,Deterministic,Nullable,ImplicitUsings,DefineConstants,PathMap,ContinuousIntegrationBuild,SourceRevisionId,InformationalVersion,AssemblyVersion,FileVersion,Version,VersionSuffix,TreatWarningsAsErrors,WarningLevel \
+            > "$OUT/MSBUILD_EFFECTIVE_PROPERTIES.txt"
+
+          for f in \
+            project.assets.json \
+            S139CompatibilityFixes.csproj.nuget.g.props \
+            S139CompatibilityFixes.csproj.nuget.g.targets \
+            S139CompatibilityFixes.csproj.nuget.dgspec.json
+          do
+            test -f "$PROJECT_DIR/obj/$f"
+            cp "$PROJECT_DIR/obj/$f" "$OUT/restore/$f"
+          done
+
+          grep -Ei 'Task "Csc"|CommandLineArguments|CscTool|csc\.dll|langversion|define:|deterministic|pathmap|debug:|optimize|nullable|reference:|analyzer:' \
+            "$OUT/BUILD_DIAGNOSTIC.txt" > "$OUT/CSC_RELEVANT_LINES.txt" || true
+
+          ./.tools/ilspycmd "$OUT/reference/S139CompatibilityFixes.dll" > "$OUT/reference/FULL_CSHARP.txt"
+          ./.tools/ilspycmd "$OUT/rebuilt/S139CompatibilityFixes.dll" > "$OUT/rebuilt/FULL_CSHARP.txt"
+          ./.tools/ilspycmd --ilcode "$OUT/reference/S139CompatibilityFixes.dll" > "$OUT/reference/FULL_IL.txt"
+          ./.tools/ilspycmd --ilcode "$OUT/rebuilt/S139CompatibilityFixes.dll" > "$OUT/rebuilt/FULL_IL.txt"
+
+          python - "$OUT" "$EXPECTED_RUNTIME_SHA" "$EXPECTED_PDB" "$GITHUB_WORKSPACE" "$SELECTED_SDK" <<'PY'
+          import hashlib, json, pathlib, sys
+          out = pathlib.Path(sys.argv[1])
+          expected_runtime_sha, expected_pdb, workspace, sdk = sys.argv[2:]
+          runtime = (out / "reference/S139CompatibilityFixes.dll").read_bytes()
+          rebuilt = (out / "rebuilt/S139CompatibilityFixes.dll").read_bytes()
+          runtime_il = (out / "reference/FULL_IL.txt").read_bytes()
+          rebuilt_il = (out / "rebuilt/FULL_IL.txt").read_bytes()
+          runtime_cs = (out / "reference/FULL_CSHARP.txt").read_bytes()
+          rebuilt_cs = (out / "rebuilt/FULL_CSHARP.txt").read_bytes()
+          h = lambda b: hashlib.sha256(b).hexdigest()
+          if h(runtime) != expected_runtime_sha:
+              raise SystemExit("reference runtime hash changed unexpectedly")
+          verification = {
+              "schema_version": 6,
+              "status": "PASS_EXACT_WORKSPACE_PATH_BYTE_IDENTICAL" if runtime == rebuilt else (
+                  "FAIL_EXACT_WORKSPACE_PATH_IL_IDENTICAL_BYTE_DIFF_REMAINS" if runtime_il == rebuilt_il
+                  else "FAIL_EXACT_WORKSPACE_PATH_IL_DIFF_REMAINS"
+              ),
+              "historical_prebuild_commit": "af415c8d6fdb69b0b7c88102e714764f3dc24b57",
+              "selected_sdk": sdk,
+              "global_json_injected": False,
+              "workspace": workspace,
+              "expected_pdb_path": expected_pdb,
+              "runtime_contains_expected_pdb_path": expected_pdb.encode() in runtime,
+              "rebuilt_contains_expected_pdb_path": expected_pdb.encode() in rebuilt,
+              "comparison": {
+                  "runtime_sha256": h(runtime),
+                  "rebuilt_sha256": h(rebuilt),
+                  "runtime_size": len(runtime),
+                  "rebuilt_size": len(rebuilt),
+                  "byte_identical": runtime == rebuilt,
+                  "csharp_identical": runtime_cs == rebuilt_cs,
+                  "il_identical": runtime_il == rebuilt_il,
+                  "runtime_il_sha256": h(runtime_il),
+                  "rebuilt_il_sha256": h(rebuilt_il),
+              },
+          }
+          (out / "VERIFICATION.json").write_text(json.dumps(verification, indent=2) + "\n")
+          c = verification["comparison"]
+          (out / "SUMMARY.md").write_text(
+              "# S139 Exact-Workspace-Path Rebuild Review\n\n"
+              f"- Status: `{verification['status']}`\n"
+              f"- Selected SDK without global.json: `{sdk}`\n"
+              f"- Workspace: `{workspace}`\n"
+              f"- Expected PDB path: `{expected_pdb}`\n"
+              f"- Runtime contains expected PDB path: `{verification['runtime_contains_expected_pdb_path']}`\n"
+              f"- Rebuild contains expected PDB path: `{verification['rebuilt_contains_expected_pdb_path']}`\n"
+              f"- Runtime SHA: `{c['runtime_sha256']}`\n"
+              f"- Rebuild SHA: `{c['rebuilt_sha256']}`\n"
+              f"- Byte identical: `{c['byte_identical']}`\n"
+              f"- C# identical: `{c['csharp_identical']}`\n"
+              f"- IL identical: `{c['il_identical']}`\n\n"
+              "Analysis evidence only; no DIAG1/build/controller/runtime transition is authorized by this run alone.\n"
+          )
+          print(json.dumps(verification, indent=2))
+          if runtime != rebuilt:
+              raise SystemExit(2)
+          PY
+
+      - name: Verify analysis checkout restored cleanly
         if: always()
         shell: bash
         run: |
@@ -60,11 +188,11 @@ jobs:
           git diff --exit-code
           test -z "$(git status --porcelain --untracked-files=no)"
 
-      - name: Upload effective build input evidence
+      - name: Upload exact workspace path rebuild evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: s142ai-s139-effective-build-input-review
+          name: s142ai-s139-exact-workspace-path-rebuild
           if-no-files-found: error
           retention-days: 30
           path: ${{ runner.temp }}/s139-source-dll-rebuild-exact
