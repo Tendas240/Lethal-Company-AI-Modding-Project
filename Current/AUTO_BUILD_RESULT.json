@@ -1,22 +1,33 @@
 {
-  "build_id": "S1.42AI",
-  "profile_name": "LC V1 S1.42AI ShyGuy Interior Only",
-  "base_profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
-  "base_sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
-  "output_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
-  "output_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
-  "zip_members": 335,
+  "build_id": "S1.42AI-DIAG1",
+  "profile_name": "LC V1 S1.42AI-DIAG1 ShyGuy Isolation",
+  "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+  "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+  "output_profile": "Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z",
+  "output_sha256": "22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd",
+  "zip_members": 337,
   "changed_existing_members": [
+    "BepInEx/config/ArcadiaMoonPlugin.cfg",
+    "BepInEx/config/BrutalCompanyMinusExtraReborn/CoreProperties.cfg",
+    "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
     "BepInEx/config/BrutalCompanyMinusExtraReborn/ModdedEvents.cfg",
+    "BepInEx/config/BrutalCompanyMinusExtraReborn/VanillaEvents.cfg",
+    "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
+    "BepInEx/config/me.biodiversity.junk_radar.cfg",
+    "BepInEx/config/NoteBoxz.LethalMin.cfg",
+    "BepInEx/config/sparble.slendermanmod.cfg",
     "export.r2x"
   ],
-  "added_members": [],
+  "added_members": [
+    "BepInEx/config/tendas.s142ai.diag1.isolation.cfg",
+    "BepInEx/plugins/Tendas-S142AIDiag1Isolation/S142AIDiag1Isolation.dll"
+  ],
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42AI",
+  "snapshot_dir": "ProfileSources/S1.42AI-DIAG1",
   "snapshot": {
-    "entries": 335,
-    "text_entries": 330
+    "entries": 337,
+    "text_entries": 331
   }
 }

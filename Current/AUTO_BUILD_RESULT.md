@@ -1,18 +1,27 @@
-# Automated profile build result - S1.42AI
+# Automated profile build result - S1.42AI-DIAG1
 
-- Profile: LC V1 S1.42AI ShyGuy Interior Only
-- Base: Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z
-- Base SHA-256: 06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e
-- Output: Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z
-- Output SHA-256: d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2
-- ZIP members: 335
-- Text snapshot: ProfileSources/S1.42AI (330 readable files)
+- Profile: LC V1 S1.42AI-DIAG1 ShyGuy Isolation
+- Base: Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z
+- Base SHA-256: d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2
+- Output: Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z
+- Output SHA-256: 22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd
+- ZIP members: 337
+- Text snapshot: ProfileSources/S1.42AI-DIAG1 (331 readable files)
 
 ## Changed existing members
 
+- BepInEx/config/ArcadiaMoonPlugin.cfg
+- BepInEx/config/BrutalCompanyMinusExtraReborn/CoreProperties.cfg
+- BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg
 - BepInEx/config/BrutalCompanyMinusExtraReborn/ModdedEvents.cfg
+- BepInEx/config/BrutalCompanyMinusExtraReborn/VanillaEvents.cfg
+- BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg
+- BepInEx/config/me.biodiversity.junk_radar.cfg
+- BepInEx/config/NoteBoxz.LethalMin.cfg
+- BepInEx/config/sparble.slendermanmod.cfg
 - export.r2x
 
 ## Added members
 
-- none
+- BepInEx/config/tendas.s142ai.diag1.isolation.cfg
+- BepInEx/plugins/Tendas-S142AIDiag1Isolation/S142AIDiag1Isolation.dll
