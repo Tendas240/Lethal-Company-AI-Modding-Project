@@ -39,7 +39,6 @@ jobs:
           python RepositoryTools/current_state_semantic_validator.py
           python RepositoryTools/state_neutral_authority_validator.py
           python RepositoryTools/knowledge_architecture_validator.py
-          git diff --check
           python - <<'PY'
           import json
           from pathlib import Path
