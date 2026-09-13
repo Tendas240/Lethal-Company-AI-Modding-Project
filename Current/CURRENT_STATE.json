@@ -1,6 +1,6 @@
 {
   "schema_version": 8,
-  "updated": "2026-09-10",
+  "updated": "2026-09-13",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "game": "Lethal Company V81",
@@ -53,13 +53,14 @@
   "selected_scope": {
     "scope_id": "BCMER_SHYGUY_INTERIOR_ONLY_CORRECTION",
     "title": "BCMER ShyGuy Interior-Only Event Correction",
-    "status": "DIAGNOSTIC_REVISION_PLANNED_EXISTING_CANDIDATE_UNACCEPTED",
+    "status": "DIAGNOSTIC_IMPLEMENTATION_READY_EXISTING_CANDIDATE_UNACCEPTED",
     "accepted_baseline": "S1.42AH",
     "plan": "BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md",
     "topic_authority": "Knowledge/BCMER.md",
     "runtime_finding": "RuntimeEvidence/S1.42AH/20260908T202138Z/",
     "finding": "S1.42AI is built directly from accepted S1.42AH with an exact static single-config delta: only export.r2x profile identity and the BCMER ModdedEvents.cfg member changed, and the semantic config delta is exactly the three ShyGuy exterior values set to zero. Every other archive member is byte-identical to S1.42AH, including Scopophobia.cfg. Runtime validation is now required before any acceptance.",
-    "analysis_contract": "Prepare the S1.42AI-DIAG1 ShyGuy-only diagnostic revision under BuildSpecs/S1.42AI_PLAN.md while preserving existing S1.42AI and its outstanding full-normal runtime gate. Prove exact enemy-spawn and BCMER event-execution coverage, including forced/side events, without masking exterior Shy Guy failures. Diagnostic success is not full-normal acceptance.",
+    "analysis_contract": "AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md",
+    "analysis_status": "CALLSITE_COMPLETENESS_AND_GUARD_REDUCTION_COMPLETE",
     "candidate_build_id": "S1.42AI",
     "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
     "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
@@ -69,19 +70,20 @@
     "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
     "diagnostic_revision": {
       "build_id": "S1.42AI-DIAG1",
-      "status": "PLANNED_NOT_BUILT",
+      "status": "IMPLEMENTATION_READY_NOT_BUILT",
       "plan": "BuildSpecs/S1.42AI_PLAN.md",
+      "guard_contract": "AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md",
       "base_build_id": "S1.42AI",
       "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
       "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
-      "enemy_allowlist": "Shy Guy only; exact runtime identity resolution required before implementation",
+      "enemy_allowlist": "Exact Shy Guy identity only: ShyGuyDef asset, enemyName Shy Guy, prefab component ShyGuy.AI.ShyGuyAI; fail closed if the identity triple is missing, ambiguous or contradictory",
       "bcmer_event_allowlist": [
         "ShyGuy"
       ],
       "full_normal_validation": "DEFERRED_UNTIL_AFTER_DIAGNOSTIC_NOT_WAIVED"
     }
   },
-  "next_action": "Prepare the temporary S1.42AI-DIAG1 ShyGuy-only enemy and BCMER event isolation described in BuildSpecs/S1.42AI_PLAN.md before requesting another gameplay run. Preserve the existing S1.42AI artifact and its still-open full-normal runtime gate. Complete the exact spawn/forced-event interception safety review, then implement and build the separately identified diagnostic revision through repository-native infrastructure. Do not import the existing S1.42AI profile as if it already contained isolation. Keep build and runtime controllers unchanged until an atomic validated candidate transition; ingest any already-completed S1.42AI test without requiring a repeat.",
+  "next_action": "Implement the temporary default-off S1.42AI-DIAG1 diagnostic plugin and approved config overlay exactly from AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md on a clean work branch, then run repository-native static/build validation. The exact spawn/event callsite inventory and minimal guard reduction are already complete; do not repeat that review unless new evidence invalidates the contract. Preserve the existing S1.42AI artifact and its still-open full-normal runtime gate. Do not import or test the existing S1.42AI profile as if it already contained isolation. Keep BuildSpecs/current.json disabled and RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI until an atomic validated diagnostic-candidate transition; ingest any already-completed S1.42AI test without requiring a repeat.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,

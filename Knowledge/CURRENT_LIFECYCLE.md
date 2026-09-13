@@ -4,8 +4,8 @@
 **Status:** CURRENT / CANONICAL TOPIC
 **Authority:** current lifecycle router; detailed acceptance/rejection remains in build-specific evidence
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action
-**Evidence:** `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`
-**Last-Validated:** 2026-09-10
+**Evidence:** `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`, `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md`
+**Last-Validated:** 2026-09-13
 
 ## Accepted gameplay baseline
 
@@ -43,14 +43,16 @@ Static verification proves exactly two changed existing archive members: `export
 
 ## Diagnostic preparation priority
 
-The user requested a temporary ShyGuy-only enemy and BCMER event isolation revision before the next gameplay run. The current preparation authority is `BuildSpecs/S1.42AI_PLAN.md` (planned `S1.42AI-DIAG1`, not built). The existing S1.42AI artifact and its full-normal runtime gate remain intact and unaccepted; diagnostic success cannot replace full-normal acceptance.
+The temporary ShyGuy-only enemy and BCMER event isolation revision remains `S1.42AI-DIAG1`, derived from the existing unaccepted S1.42AI artifact. The exact spawn/event callsite inventory and minimal guard reduction are now complete. The implementation authority is `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md`; it reduces the closed 70-transaction inventory to the exact temporary config gates and minimal package/native guard set, while keeping exterior Shy Guy observable and forbidding broad shared spawn/network lifecycle suppression.
 
-The existing S1.42AI import/upload pair below belongs to the existing full-normal artifact. Do not present it as an isolation build. Keep both controllers unchanged during plan preparation and preserve upload access for already-completed S1.42AI tests.
+`S1.42AI-DIAG1` is **implementation-ready but not built**. Earlier `PARTIAL` / `NOT_BUILD_READY` checkpoints retained inside `BuildSpecs/S1.42AI_PLAN.md` are historical analysis checkpoints and are superseded for current readiness by the later guard contract above. Diagnostic success cannot replace the still-required full-normal S1.42AI acceptance run.
+
+The existing S1.42AI import/upload pair belongs to the existing full-normal artifact. Do not present it as an isolation build. Keep both controllers unchanged through implementation/static validation and preserve upload access for already-completed S1.42AI tests.
 
 ## Canonical Gale workflow
 
-Use the repository-driven **v2.4** Gale replacement path in `Knowledge/GALE_PROFILE_WORKFLOW.md`, implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at canonical helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. For this candidate, pair it with the exact S1.42AI runtime-log uploader recorded in `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, as required by `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`.
+Use the repository-driven **v2.4** Gale replacement path in `Knowledge/GALE_PROFILE_WORKFLOW.md`, implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at canonical helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. For the existing S1.42AI candidate, pair it with the exact S1.42AI runtime-log uploader recorded in `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, as required by `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`. A future DIAG1 runtime-ready transition must produce its own exact import/uploader pair.
 
 ## Exact next project action
 
-Prepare the temporary S1.42AI-DIAG1 ShyGuy-only enemy and BCMER event isolation described in BuildSpecs/S1.42AI_PLAN.md before requesting another gameplay run. Preserve the existing S1.42AI artifact and its still-open full-normal runtime gate. Complete the exact spawn/forced-event interception safety review, then implement and build the separately identified diagnostic revision through repository-native infrastructure. Do not import the existing S1.42AI profile as if it already contained isolation. Keep build and runtime controllers unchanged until an atomic validated candidate transition; ingest any already-completed S1.42AI test without requiring a repeat.
+Implement the temporary default-off S1.42AI-DIAG1 diagnostic plugin and approved config overlay exactly from `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md` on a clean work branch, then run repository-native static/build validation. Do not repeat the already-closed spawn/event callsite or guard-reduction review unless new evidence invalidates that contract. Preserve the existing S1.42AI artifact and its still-open full-normal runtime gate. Do not import or test the existing S1.42AI profile as if it already contained isolation. Keep `BuildSpecs/current.json` disabled and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` until an atomic validated diagnostic-candidate transition; ingest any already-completed S1.42AI test without requiring a repeat.
