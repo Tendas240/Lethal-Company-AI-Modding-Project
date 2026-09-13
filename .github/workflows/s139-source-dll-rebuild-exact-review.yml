@@ -1,11 +1,10 @@
-name: S1.42AI S139 Historical Branch Context Rebuild Review
+name: S1.42AI S139 Compiler Reference Provenance Inventory
 
 on:
   push:
     branches:
       - analysis/s142ai-s139-source-dll-rebuild-exact
     paths:
-      - "AnalysisTools/inspect_s139_source_dll_rebuild_exact.py"
       - ".github/workflows/s139-source-dll-rebuild-exact-review.yml"
 
 permissions:
@@ -16,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  historical-branch-context-rebuild:
+  compiler-reference-provenance:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout exact analysis head
@@ -24,29 +23,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
       - name: Recreate historical setup-dotnet resolution
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0.424"
 
-      - name: Install pinned ILSpy
+      - name: Build historical S139 context and inventory compiler inputs
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p .tools
-          dotnet tool install ilspycmd --tool-path .tools --version 11.0.0.9375
-          ./.tools/ilspycmd --version
-
-      - name: Rebuild historical S139 head in historical branch context
-        shell: bash
-        run: |
-          set -euo pipefail
-          OUT="$RUNNER_TEMP/s139-source-dll-rebuild-exact"
+          OUT="$RUNNER_TEMP/s139-compiler-reference-provenance"
           PRE="af415c8d6fdb69b0b7c88102e714764f3dc24b57"
           HISTORICAL_BRANCH="build/s142ah-mouthdog-dual-prevention"
           EXPECTED_SDK="10.0.400"
@@ -57,7 +43,6 @@ jobs:
           PROJECT_DIR="Patches/S139CompatibilityFixes"
           OBJ="$PROJECT_DIR/obj/Release/netstandard2.1"
           REBUILT="$PROJECT_DIR/bin/Release/netstandard2.1/S139CompatibilityFixes.dll"
-          EXPECTED_PDB="$GITHUB_WORKSPACE/$OBJ/S139CompatibilityFixes.pdb"
           ANALYSIS_HEAD="$(git rev-parse HEAD)"
           rm -rf "$OUT"
           mkdir -p "$OUT/reference" "$OUT/rebuilt" "$OUT/generated"
@@ -71,10 +56,7 @@ jobs:
           trap restore_checkout EXIT
 
           test "$PWD" = "$GITHUB_WORKSPACE"
-          case "$GITHUB_WORKSPACE" in
-            */Lethal-Company-AI-Modding-Project/Lethal-Company-AI-Modding-Project) ;;
-            *) echo "Unexpected Actions workspace: $GITHUB_WORKSPACE" >&2; exit 1 ;;
-          esac
+          test ! -e global.json
 
           python - "$PROFILE" "$MEMBER" "$OUT/reference/S139CompatibilityFixes.dll" "$EXPECTED_RUNTIME_SHA" <<'PY'
           import hashlib, sys, zipfile
@@ -88,9 +70,6 @@ jobs:
           PY
 
           dotnet --list-sdks > "$OUT/HOST_DOTNET_SDKS.txt"
-
-          # Reproduce actions/checkout historical state: a local branch tracking the
-          # same-named origin branch, both pointing at the exact pre-build commit.
           git update-ref "refs/remotes/origin/$HISTORICAL_BRANCH" "$PRE"
           git checkout --force -B "$HISTORICAL_BRANCH" "refs/remotes/origin/$HISTORICAL_BRANCH"
           git branch --set-upstream-to="origin/$HISTORICAL_BRANCH" "$HISTORICAL_BRANCH"
@@ -98,17 +77,9 @@ jobs:
           test "$(git symbolic-ref --short HEAD)" = "$HISTORICAL_BRANCH"
           test ! -e global.json
 
-          {
-            echo "HEAD=$(git rev-parse HEAD)"
-            echo "BRANCH=$(git symbolic-ref --short HEAD)"
-            echo "UPSTREAM=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}')"
-            echo "REMOTE_ORIGIN=$(git remote get-url origin)"
-            git status --short --branch
-          } > "$OUT/GIT_CONTEXT.txt"
-
           SELECTED_SDK="$(dotnet --version)"
-          printf '%s\n' "$SELECTED_SDK" > "$OUT/SELECTED_DOTNET_SDK.txt"
           test "$SELECTED_SDK" = "$EXPECTED_SDK"
+          printf '%s\n' "$SELECTED_SDK" > "$OUT/SELECTED_DOTNET_SDK.txt"
           dotnet --info > "$OUT/DOTNET_INFO.txt"
 
           rm -rf "$PROJECT_DIR/bin" "$PROJECT_DIR/obj"
@@ -116,91 +87,157 @@ jobs:
           test -f "$REBUILT"
           cp "$REBUILT" "$OUT/rebuilt/S139CompatibilityFixes.dll"
 
-          dotnet msbuild "$PROJECT" -nologo -p:Configuration=Release \
-            -getProperty:TargetFramework,LangVersion,Optimize,DebugType,DebugSymbols,Deterministic,Nullable,ImplicitUsings,DefineConstants,PathMap,ContinuousIntegrationBuild,SourceRevisionId,RepositoryUrl,RepositoryType,PublishRepositoryUrl,EmbedUntrackedSources,DeterministicSourcePaths,InformationalVersion,AssemblyVersion,FileVersion,Version,VersionSuffix,TreatWarningsAsErrors,WarningLevel \
-            > "$OUT/MSBUILD_EFFECTIVE_PROPERTIES.txt"
-
           for f in \
             "$OBJ/S139CompatibilityFixes.sourcelink.json" \
             "$OBJ/S139CompatibilityFixes.GeneratedMSBuildEditorConfig.editorconfig" \
             "$OBJ/S139CompatibilityFixes.AssemblyInfo.cs" \
             "$OBJ/.NETStandard,Version=v2.1.AssemblyAttributes.cs" \
             "$PROJECT_DIR/obj/project.assets.json" \
-            "$PROJECT_DIR/obj/S139CompatibilityFixes.csproj.nuget.g.props" \
-            "$PROJECT_DIR/obj/S139CompatibilityFixes.csproj.nuget.g.targets" \
             "$PROJECT_DIR/obj/S139CompatibilityFixes.csproj.nuget.dgspec.json"
           do
             test -f "$f"
             cp "$f" "$OUT/generated/$(basename "$f")"
           done
 
-          grep -Ei 'SourceLink|SourceRoot|SourceRevisionId|RevisionId|BranchName|RepositoryUrl|GeneratedMSBuildEditorConfig|editorconfig|Task "Csc"|CommandLineArguments|csc\.dll|sourcelink:|pathmap|debug:|deterministic|checksumalgorithm' \
-            "$OUT/BUILD_DIAGNOSTIC.txt" > "$OUT/DETERMINISTIC_INPUT_LINES.txt" || true
+          python - "$OUT" "$EXPECTED_RUNTIME_SHA" "$SELECTED_SDK" <<'PY'
+          import hashlib, json, os, pathlib, re, sys
 
-          ./.tools/ilspycmd "$OUT/reference/S139CompatibilityFixes.dll" > "$OUT/reference/FULL_CSHARP.txt"
-          ./.tools/ilspycmd "$OUT/rebuilt/S139CompatibilityFixes.dll" > "$OUT/rebuilt/FULL_CSHARP.txt"
-          ./.tools/ilspycmd --ilcode "$OUT/reference/S139CompatibilityFixes.dll" > "$OUT/reference/FULL_IL.txt"
-          ./.tools/ilspycmd --ilcode "$OUT/rebuilt/S139CompatibilityFixes.dll" > "$OUT/rebuilt/FULL_IL.txt"
-
-          python - "$OUT" "$EXPECTED_RUNTIME_SHA" "$EXPECTED_PDB" "$GITHUB_WORKSPACE" "$SELECTED_SDK" "$HISTORICAL_BRANCH" <<'PY'
-          import hashlib, json, pathlib, sys
           out = pathlib.Path(sys.argv[1])
-          expected_runtime_sha, expected_pdb, workspace, sdk, branch = sys.argv[2:]
+          expected_runtime_sha, selected_sdk = sys.argv[2:]
+          diag = (out / "BUILD_DIAGNOSTIC.txt").read_text(encoding="utf-8", errors="replace")
+          lines = diag.splitlines()
+          h = lambda b: hashlib.sha256(b).hexdigest()
+
           runtime = (out / "reference/S139CompatibilityFixes.dll").read_bytes()
           rebuilt = (out / "rebuilt/S139CompatibilityFixes.dll").read_bytes()
-          runtime_il = (out / "reference/FULL_IL.txt").read_bytes()
-          rebuilt_il = (out / "rebuilt/FULL_IL.txt").read_bytes()
-          runtime_cs = (out / "reference/FULL_CSHARP.txt").read_bytes()
-          rebuilt_cs = (out / "rebuilt/FULL_CSHARP.txt").read_bytes()
-          sourcelink = (out / "generated/S139CompatibilityFixes.sourcelink.json").read_bytes()
-          editorconfig = (out / "generated/S139CompatibilityFixes.GeneratedMSBuildEditorConfig.editorconfig").read_bytes()
-          h = lambda b: hashlib.sha256(b).hexdigest()
           if h(runtime) != expected_runtime_sha:
-              raise SystemExit("reference runtime hash changed unexpectedly")
+              raise SystemExit("runtime reference hash changed")
+
+          start = next(i for i, line in enumerate(lines) if 'Task "Csc"' in line)
+          end = next(i for i in range(start + 1, len(lines)) if 'Done executing task "Csc"' in lines[i])
+          csc = lines[start:end + 1]
+          refs = []
+          in_refs = False
+          for line in csc:
+              stripped = line.strip()
+              if stripped == "References=":
+                  in_refs = True
+                  continue
+              if in_refs and stripped.startswith("Task Parameter:"):
+                  break
+              if in_refs and stripped.startswith("/") and stripped.endswith(".dll"):
+                  refs.append(stripped)
+          refs = list(dict.fromkeys(refs))
+          if not refs:
+              raise SystemExit("no Csc reference paths captured")
+
+          def classify(path):
+              p = path.replace('\\', '/')
+              nuget = '/.nuget/packages/'
+              packs = '/dotnet/packs/'
+              if nuget in p:
+                  tail = p.split(nuget, 1)[1]
+                  parts = tail.split('/')
+                  return {"kind": "nuget", "package_id": parts[0], "package_version": parts[1] if len(parts) > 1 else None}
+              if packs in p:
+                  tail = p.split(packs, 1)[1]
+                  parts = tail.split('/')
+                  return {"kind": "dotnet_pack", "pack_id": parts[0], "pack_version": parts[1] if len(parts) > 1 else None}
+              return {"kind": "other"}
+
+          reference_inventory = []
+          for raw in refs:
+              p = pathlib.Path(raw)
+              if not p.is_file():
+                  raise SystemExit(f"Csc reference missing: {raw}")
+              item = {"path": raw, "size": p.stat().st_size, "sha256": h(p.read_bytes())}
+              item.update(classify(raw))
+              reference_inventory.append(item)
+
+          sdk_root = pathlib.Path('/usr/share/dotnet/sdk') / selected_sdk
+          compiler_rel = [
+              'Roslyn/bincore/csc.dll',
+              'Roslyn/bincore/Microsoft.CodeAnalysis.dll',
+              'Roslyn/bincore/Microsoft.CodeAnalysis.CSharp.dll',
+              'Roslyn/bincore/VBCSCompiler.dll',
+              'Roslyn/bincore/csc.runtimeconfig.json',
+              'MSBuild.dll',
+              'Microsoft.Build.dll',
+              'Microsoft.Build.Framework.dll',
+              'Microsoft.Build.Tasks.Core.dll',
+              'Microsoft.Build.Utilities.Core.dll',
+          ]
+          compiler_inventory = []
+          for rel in compiler_rel:
+              p = sdk_root / rel
+              if not p.is_file():
+                  raise SystemExit(f"compiler/SDK file missing: {p}")
+              compiler_inventory.append({"path": str(p), "size": p.stat().st_size, "sha256": h(p.read_bytes())})
+
+          assets = json.loads((out / 'generated/project.assets.json').read_text(encoding='utf-8'))
+          packages = []
+          package_root = pathlib.Path('/home/runner/.nuget/packages')
+          for key, value in sorted(assets.get('libraries', {}).items()):
+              if value.get('type') != 'package':
+                  continue
+              package_id, version = key.rsplit('/', 1)
+              pdir = package_root / package_id.lower() / version.lower()
+              sha_file = pdir / f"{package_id.lower()}.{version.lower()}.nupkg.sha512"
+              sha_text = sha_file.read_text(encoding='utf-8').strip() if sha_file.is_file() else None
+              packages.append({
+                  "id": package_id,
+                  "version": version,
+                  "assets_sha512": value.get('sha512'),
+                  "cache_sha512": sha_text,
+                  "sha512_match": sha_text == value.get('sha512') if sha_text is not None else None,
+                  "package_path": value.get('path'),
+              })
+
+          def aggregate(items):
+              blob = ''.join(f"{x['path']}\0{x['size']}\0{x['sha256']}\n" for x in sorted(items, key=lambda x: x['path'])).encode()
+              return h(blob)
+
+          host_version = None
+          info = (out / 'DOTNET_INFO.txt').read_text(encoding='utf-8', errors='replace')
+          m = re.search(r'^ Host:\s*\n\s*Version:\s*([^\s]+)', info, re.M)
+          if m:
+              host_version = m.group(1)
+
           verification = {
-              "schema_version": 7,
-              "status": "PASS_HISTORICAL_BRANCH_CONTEXT_BYTE_IDENTICAL" if runtime == rebuilt else (
-                  "FAIL_HISTORICAL_BRANCH_CONTEXT_IL_IDENTICAL_BYTE_DIFF_REMAINS" if runtime_il == rebuilt_il
-                  else "FAIL_HISTORICAL_BRANCH_CONTEXT_IL_DIFF_REMAINS"
-              ),
+              "schema_version": 8,
+              "status": "COMPILER_REFERENCE_PROVENANCE_CAPTURED_BYTE_DIFF_REMAINS" if runtime != rebuilt else "PASS_BYTE_IDENTICAL",
               "historical_prebuild_commit": "af415c8d6fdb69b0b7c88102e714764f3dc24b57",
-              "selected_sdk": sdk,
-              "global_json_injected": False,
-              "workspace": workspace,
-              "branch": branch,
-              "expected_pdb_path": expected_pdb,
-              "runtime_contains_expected_pdb_path": expected_pdb.encode() in runtime,
-              "rebuilt_contains_expected_pdb_path": expected_pdb.encode() in rebuilt,
-              "sourcelink_sha256": h(sourcelink),
-              "generated_editorconfig_sha256": h(editorconfig),
-              "comparison": {
-                  "runtime_sha256": h(runtime),
-                  "rebuilt_sha256": h(rebuilt),
-                  "runtime_size": len(runtime),
-                  "rebuilt_size": len(rebuilt),
-                  "byte_identical": runtime == rebuilt,
-                  "csharp_identical": runtime_cs == rebuilt_cs,
-                  "il_identical": runtime_il == rebuilt_il,
-                  "runtime_il_sha256": h(runtime_il),
-                  "rebuilt_il_sha256": h(rebuilt_il),
-              },
+              "selected_sdk": selected_sdk,
+              "dotnet_host_version": host_version,
+              "reference_count": len(reference_inventory),
+              "reference_aggregate_sha256": aggregate(reference_inventory),
+              "compiler_file_count": len(compiler_inventory),
+              "compiler_aggregate_sha256": aggregate(compiler_inventory),
+              "package_count": len(packages),
+              "all_package_sha512_cache_matches_assets": all(x['sha512_match'] is True for x in packages),
+              "runtime_sha256": h(runtime),
+              "rebuilt_sha256": h(rebuilt),
+              "byte_identical": runtime == rebuilt,
           }
-          (out / "VERIFICATION.json").write_text(json.dumps(verification, indent=2) + "\n")
-          c = verification["comparison"]
-          (out / "SUMMARY.md").write_text(
-              "# S139 Historical-Branch-Context Rebuild Review\n\n"
+          (out / 'CSC_REFERENCE_INVENTORY.json').write_text(json.dumps(reference_inventory, indent=2) + '\n')
+          (out / 'COMPILER_SDK_FILE_INVENTORY.json').write_text(json.dumps(compiler_inventory, indent=2) + '\n')
+          (out / 'NUGET_PACKAGE_PROVENANCE.json').write_text(json.dumps(packages, indent=2) + '\n')
+          (out / 'VERIFICATION.json').write_text(json.dumps(verification, indent=2) + '\n')
+          (out / 'SUMMARY.md').write_text(
+              '# S139 Compiler Reference Provenance Inventory\n\n'
               f"- Status: `{verification['status']}`\n"
-              f"- Historical branch: `{branch}`\n"
-              f"- Selected SDK without global.json: `{sdk}`\n"
-              f"- Workspace: `{workspace}`\n"
-              f"- Runtime SHA: `{c['runtime_sha256']}`\n"
-              f"- Rebuild SHA: `{c['rebuilt_sha256']}`\n"
-              f"- Byte identical: `{c['byte_identical']}`\n"
-              f"- C# identical: `{c['csharp_identical']}`\n"
-              f"- IL identical: `{c['il_identical']}`\n"
-              f"- SourceLink SHA: `{verification['sourcelink_sha256']}`\n"
-              f"- Generated editorconfig SHA: `{verification['generated_editorconfig_sha256']}`\n\n"
-              "Analysis evidence only; no DIAG1/build/controller/runtime transition is authorized by this run alone.\n"
+              f"- Selected SDK: `{selected_sdk}`\n"
+              f"- .NET host runtime: `{host_version}`\n"
+              f"- Actual Csc references: `{len(reference_inventory)}`\n"
+              f"- Reference aggregate SHA-256: `{verification['reference_aggregate_sha256']}`\n"
+              f"- Compiler/SDK files hashed: `{len(compiler_inventory)}`\n"
+              f"- Compiler aggregate SHA-256: `{verification['compiler_aggregate_sha256']}`\n"
+              f"- NuGet packages: `{len(packages)}`\n"
+              f"- All package cache SHA512 values match project.assets.json: `{verification['all_package_sha512_cache_matches_assets']}`\n"
+              f"- Runtime DLL SHA-256: `{verification['runtime_sha256']}`\n"
+              f"- Rebuild DLL SHA-256: `{verification['rebuilt_sha256']}`\n\n"
+              'Analysis evidence only; source-to-DLL byte provenance remains open while the rebuilt DLL differs.\n',
+              encoding='utf-8'
           )
           print(json.dumps(verification, indent=2))
           if runtime != rebuilt:
@@ -215,11 +252,11 @@ jobs:
           git diff --exit-code
           test -z "$(git status --porcelain --untracked-files=no)"
 
-      - name: Upload historical branch context evidence
+      - name: Upload compiler reference provenance evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: s142ai-s139-historical-branch-context-rebuild
+          name: s142ai-s139-compiler-reference-provenance
           if-no-files-found: error
           retention-days: 30
-          path: ${{ runner.temp }}/s139-source-dll-rebuild-exact
+          path: ${{ runner.temp }}/s139-compiler-reference-provenance
