@@ -1,5 +1,5 @@
 name: Validate S1.42AI-DIAG1 static gate
-# Revalidation trigger after preserving exact profile DLL archive paths.
+# Revalidation trigger with exact reviewed owner-assembly binding.
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
       - 'BuildSpecs/S1.42AI-DIAG1_OVERLAY.json'
       - 'BuildSpecs/generate_s142ai_diag1_spec.py'
       - 'AnalysisTools/validate_s142ai_diag1_static.py'
+      - 'AnalysisTools/validate_s142ai_diag1_static_bound.py'
       - '.github/workflows/s142ai-diag1-static-validation.yml'
   workflow_dispatch:
 
@@ -70,7 +71,7 @@ jobs:
         run: python BuildSystem/profile_builder.py ValidationArtifacts/diag1-validation-spec.json
 
       - name: Run exact DIAG1 static gate
-        run: python AnalysisTools/validate_s142ai_diag1_static.py
+        run: python AnalysisTools/validate_s142ai_diag1_static_bound.py
 
       - name: Assert live controllers/results were not modified
         run: git diff --exit-code -- BuildSpecs/current.json RuntimeInbox/ACTIVE_BUILD.txt Current/AUTO_BUILD_RESULT.json Current/AUTO_BUILD_RESULT.md
