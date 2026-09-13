@@ -8,9 +8,9 @@ using HarmonyLib;
 namespace S142AIDiag1Isolation
 {
     /// <summary>
-    /// Runtime/startup assertions whose exact facts are already closed by the
-    /// S1.42AI-DIAG1 source reviews. Config-overlay assertions are intentionally
-    /// added with the overlay itself in the next implementation segment.
+    /// Runtime/startup assertions whose exact facts are closed by the S1.42AI-DIAG1
+    /// source reviews and approved temporary config overlay. All checks are read-only;
+    /// a mismatch marks the diagnostic invalid rather than mutating foreign state.
     /// </summary>
     internal static class DiagnosticStartupAssertions
     {
@@ -29,6 +29,7 @@ namespace S142AIDiag1Isolation
             yield return null;
 
             bool valid = true;
+            valid &= DiagnosticConfigAssertions.AssertAll();
             valid &= AssertMoreCompanyCommandDisabled();
             valid &= AssertSnowyLibTestingDisabled();
             AnchorInteractiveTerminalNoConsumerEvidence();
@@ -38,15 +39,15 @@ namespace S142AIDiag1Isolation
             if (valid)
             {
                 Plugin.Log.LogInfo(
-                    "[DIAG1_STARTUP_ASSERTIONS_OK] MoreCompany debug command disabled; SnowyLib testing disabled; " +
-                    "InteractiveTerminal/SnowyLib no-consumer evidence anchored; EmergencyDice provider absent; " +
-                    "legacy S139 isolated-enemy diagnostic disabled.");
+                    "[DIAG1_STARTUP_ASSERTIONS_OK] approved config overlay verified; MoreCompany debug command disabled; " +
+                    "SnowyLib testing disabled; InteractiveTerminal/SnowyLib no-consumer evidence anchored; " +
+                    "EmergencyDice provider absent; legacy S139 isolated-enemy diagnostic disabled.");
                 yield break;
             }
 
             DiagnosticIsolation.MarkInvalid(
-                "One or more exact DIAG1 startup/environment assertions failed. " +
-                "The run is diagnostic-invalid; no fallback or widened patch set is permitted.");
+                "One or more exact DIAG1 startup/environment/config assertions failed. " +
+                "The run is diagnostic-invalid; no fallback, repair or widened patch set is permitted.");
         }
 
         private static bool AssertMoreCompanyCommandDisabled()
