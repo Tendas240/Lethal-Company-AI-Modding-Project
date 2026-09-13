@@ -187,7 +187,8 @@ namespace S142AIDiag1Isolation
                         prefix: target.Prefix,
                         postfix: null,
                         transpiler: target.Transpiler,
-                        finalizer: null);
+                        finalizer: null,
+                        ilmanipulator: null);
                     Plugin.Log.LogInfo($"[DIAG1_COMPLEX_TARGET_INSTALLED] {target.Label}");
                 }
                 catch (Exception ex)

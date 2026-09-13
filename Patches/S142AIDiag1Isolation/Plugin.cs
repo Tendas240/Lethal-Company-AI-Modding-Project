@@ -238,7 +238,7 @@ namespace S142AIDiag1Isolation
 
             try
             {
-                harmony.Patch(original, prefix, postfix, null, finalizer);
+                harmony.Patch(original, prefix, postfix, null, finalizer, null);
                 Plugin.Log.LogInfo($"[DIAG1_TARGET_INSTALLED] {label}");
                 return true;
             }
