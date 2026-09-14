@@ -29,7 +29,7 @@ The build/static/materialization stage passed, but the first runtime diagnostic 
 - Latest built artifact: **S1.42AI-DIAG1**, failed diagnostic evidence.
 - Active candidate: **none**.
 - Runtime test outstanding: **no**.
-- `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1_RUNTIME_FAILURE_AWAITING_REPAIR` and guards the exact DIAG1 profile/SHA as the current repair base.
+- `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1_RUNTIME_FAILURE_AWAITING_REPAIR` and guards the accepted **S1.42AH** profile/SHA while no runtime candidate is active.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1` remains the last runtime-evidence attribution pointer only; it does not make DIAG1 active or accepted.
 
 ## Diagnostic runtime result
@@ -47,6 +47,10 @@ Those observations are useful evidence, but they cannot prove the S1.42AI interi
 ## Retained full-normal gate
 
 S1.42AI remains unaccepted. Its full-normal BCMER ShyGuy gate in `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` remains mandatory and is **deferred, not waived**.
+
+## Canonical Gale workflow
+
+Whenever a future repaired successor becomes ready for runtime testing, use the repository-driven **Gale v2.4** replacement/import workflow in `Knowledge/GALE_PROFILE_WORKFLOW.md`, implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`. The ready-to-test response must supply that repository-driven import one-liner together with the exact successor-build-specific one-line PowerShell runtime-log uploader. No Gale import or new gameplay run is required while the DIAG1 repair is still pending.
 
 ## Exact next project action
 
