@@ -38,6 +38,19 @@ jobs:
       - name: Apply exact repair
         run: python RepositoryTools/apply_s142ai_diag1_applicability_repair.py
 
+      - name: Correct exact LethalMin Patch staticness proof
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('AnalysisTools/validate_s142ai_diag1_static.py')
+          text = path.read_text(encoding='utf-8')
+          old = 'method_signature(plugin_source, "Patch", "void", [], False)'
+          new = 'method_signature(plugin_source, "Patch", "void", [], True)'
+          if text.count(old) != 1:
+              raise RuntimeError(f'Expected one Patch staticness anchor, found {text.count(old)}')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+
       - name: Python syntax check
         run: |
           python -m py_compile AnalysisTools/validate_s142ai_diag1_static.py
