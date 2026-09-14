@@ -96,12 +96,10 @@
       "runtime_index": "RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z/INDEX.json",
       "runtime_log_sha256": "0125f1ff1f16b99fa2531374bbfbc1a1294ec4918b22e67aed804ad1e41ebe49",
       "note": "Diagnostic runtime failed during exact owner prevalidation and DIAG1 rolled back all of its own Harmony hooks. Repair is required before a successor diagnostic runtime test."
-    }
-  ],
-  "pending_profiles": [
+    },
     {
       "build_id": "S1.42AI-DIAG1R1",
-      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
+      "role": "RUNTIME_FAILED_DIAGNOSTIC_REPAIR_REQUIRED",
       "profile": "Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z",
       "profile_sha256": "b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd",
       "profile_sources": "ProfileSources/S1.42AI-DIAG1R1/",
@@ -109,14 +107,17 @@
       "export": "ProfileSources/S1.42AI-DIAG1R1/export.r2x",
       "candidate_record": "Current/146_S1.42AI-DIAG1R1_BUILD_CANDIDATE_OWNER_TYPE_RESOLUTION_REPAIR.md",
       "project_status": "Current/Projektstatus_S1.42AI-DIAG1R1_CANDIDATE.json",
+      "rejection": "Current/147_S1.42AI-DIAG1R1_RUNTIME_FAILURE_COMPLEX_OWNER_TARGET_RESOLUTION.md",
       "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
       "guard_contract": "AnalysisEvidence/S1.42AI-DIAG1R1/MINIMAL_GUARD_CONTRACT.md",
       "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R1/MATERIALIZED_VALIDATION.json",
       "plugin_dll_sha256": "2d1b6e8a002eb55e0e6d935e36c0a619d1c875651b94afb9e748663af93c1de0",
-      "runtime_evidence_required": false,
-      "partial_runtime_evidence_present": false,
-      "note": "Repaired DIAG1 successor. Exact profile bytes/readable snapshot and static/materialized validation are complete; runtime evidence is now outstanding before any diagnostic decision."
-    },
+      "runtime_index": "RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z/INDEX.json",
+      "runtime_log_sha256": "173eefaea3a81f84e82f210066a2b034655220d951b5a66c7bb7614895737635",
+      "note": "Runtime proved the metadata-derived LethalMin owner type repair, then failed strict complex-owner prevalidation because ElevatorMod.Patches.EndlessElevator was absent. DIAG1 invalidated and rolled back all owned Harmony hooks; repair analysis is required before any successor diagnostic runtime test."
+    }
+  ],
+  "pending_profiles": [
     {
       "build_id": "S1.42AI",
       "role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED",
@@ -178,13 +179,14 @@
     "deferred_pending_candidate_role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED"
   },
   "verified_repository_api_observations": [
-    "ProfileSources/S1.42AB, S1.42AC, S1.42AF, S1.42AG, S1.42AH and S1.42AI-DIAG1 contain FILE_INDEX.json and export.r2x.",
+    "ProfileSources/S1.42AB, S1.42AC, S1.42AF, S1.42AG, S1.42AH, S1.42AI-DIAG1 and S1.42AI-DIAG1R1 contain FILE_INDEX.json and export.r2x.",
     "S1.42AH final accepted runtime evidence is RuntimeEvidence/S1.42AH/20260909T162513Z with raw LogOutput.log SHA-256 ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729.",
     "S1.42AH prior targeted runtime evidence remains preserved at RuntimeEvidence/S1.42AH/20260908T174352Z and RuntimeEvidence/S1.42AH/20260908T162411Z.",
     "RuntimeEvidence/S1.42AF/20260905T223738Z contains accepted predecessor evidence.",
     "RuntimeEvidence/S1.42AG/20260906T085500Z contains S1.42AG rejection evidence.",
     "RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z contains the failed DIAG1 diagnostic runtime log with SHA-256 0125f1ff1f16b99fa2531374bbfbc1a1294ec4918b22e67aed804ad1e41ebe49.",
-    "S1.42AI-DIAG1R1 is materialized at Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z SHA-256 b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd with readable ProfileSources/S1.42AI-DIAG1R1 and post-build validation run 34822644436 SUCCESS."
+    "RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z contains the failed R1 diagnostic runtime log with SHA-256 173eefaea3a81f84e82f210066a2b034655220d951b5a66c7bb7614895737635.",
+    "S1.42AI-DIAG1R1 remains materialized at Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z SHA-256 b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd with readable ProfileSources/S1.42AI-DIAG1R1 and post-build validation run 34822644436 SUCCESS; runtime subsequently failed the complex-owner target contract."
   ],
   "last_validated": "2026-09-14"
 }

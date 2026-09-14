@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R1 candidate=S1.42AI-DIAG1R1 runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R1 candidate=none runtime_test_outstanding=false -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -36,11 +36,13 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
 
-Latest built artifact and active diagnostic runtime candidate: **S1.42AI-DIAG1R1 — ShyGuy Isolation Diagnostic Owner Type Resolution Repair — NOT ACCEPTED**. Runtime test outstanding: **yes**. Candidate authority: `Current/146_S1.42AI-DIAG1R1_BUILD_CANDIDATE_OWNER_TYPE_RESOLUTION_REPAIR.md`; runtime contract: `AnalysisEvidence/S1.42AI-DIAG1R1/MINIMAL_GUARD_CONTRACT.md`; materialized validation: `AnalysisEvidence/S1.42AI-DIAG1R1/MATERIALIZED_VALIDATION.md`.
+Latest built artifact: **S1.42AI-DIAG1R1 — ShyGuy Isolation Diagnostic Owner Type Resolution Repair — RUNTIME DIAGNOSTIC FAILED / REPAIR ANALYSIS REQUIRED / NOT ACCEPTED**. There is **no active runtime candidate** and no new runtime test is outstanding. Failure authority: `Current/147_S1.42AI-DIAG1R1_RUNTIME_FAILURE_COMPLEX_OWNER_TARGET_RESOLUTION.md`; runtime evidence: `RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z/`.
 
-`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1R1_BUILD_AWAITING_RUNTIME`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R1` and `Current/AUTO_BUILD_RESULT.json.build_id = S1.42AI-DIAG1R1` identify the exact ready candidate for import and evidence attribution.
+R1 proved the repaired metadata-derived owner type path works, then failed because exact complex-owner type `ElevatorMod.Patches.EndlessElevator` was absent at runtime. DIAG1 invalidated and rolled back all owned Harmony hooks. Non-ShyGuy gameplay spawns therefore occurred after rollback and do not represent an armed-isolation bypass.
 
-The next action is one R1 diagnostic gameplay run followed by the exact R1 log upload and repository-native ingestion. The failed predecessor S1.42AI-DIAG1 must not be rerun unchanged. The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived.
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1R1_RUNTIME_FAILURE_AWAITING_REPAIR_ANALYSIS` and guards accepted S1.42AH. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R1` remains evidence-attribution metadata only.
+
+The next action is focused repository-native analysis of the exact EndlessElevator complex-owner/static-materialized contract before any successor diagnostic build. The failed S1.42AI-DIAG1 and S1.42AI-DIAG1R1 profiles must not be rerun unchanged. The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived.
 
 ## Authority rule
 

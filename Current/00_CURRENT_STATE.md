@@ -21,7 +21,7 @@ Runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
 
 ## Latest built artifact
 
-**S1.42AI-DIAG1R1 — ShyGuy Isolation Diagnostic Owner Type Resolution Repair — BUILD PASS STATIC AND MATERIALIZED VALIDATION PASS RUNTIME PENDING NOT ACCEPTED**
+**S1.42AI-DIAG1R1 — ShyGuy Isolation Diagnostic Owner Type Resolution Repair — RUNTIME DIAGNOSTIC FAILED COMPLEX OWNER TARGET RESOLUTION REPAIR ANALYSIS REQUIRED NOT ACCEPTED**
 
 Profile: `Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z`  
 SHA-256: `b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd`  
@@ -31,18 +31,18 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Live execution state
 
-- Active candidate: **S1.42AI-DIAG1R1**
-- Runtime test outstanding: **yes**
+- Active candidate: **none**
+- Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1R1_BUILD_AWAITING_RUNTIME`)
-- Guarded build base: `Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z` / `b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1R1_RUNTIME_FAILURE_AWAITING_REPAIR_ANALYSIS`)
+- Guarded build base: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z` / `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R1`
 
 ## Exact next action
 
-Run the active S1.42AI-DIAG1R1 diagnostic gameplay gate. Confirm the repaired owner type-resolution path arms without DIAG1 invalidation/rollback, verify the exact Shy Guy-only isolation contract under exercised gameplay, then upload the fresh complete R1 LogOutput.log for repository-native ingestion and decision. Do not rerun failed S1.42AI-DIAG1, and do not execute the deferred full-normal S1.42AI gate yet.
+Analyze repository-native why S1.42AI-DIAG1R1 required the exact complex-owner type ElevatorMod.Patches.EndlessElevator although that type was absent at runtime. Reconcile the installed profile/package reality with the static/materialized validation contract, determine the exact safe repair without guessed CLR identities, and only then build/validate a successor diagnostic candidate if required. No gameplay test is currently outstanding. The full-normal S1.42AI gate remains deferred, not waived.
 
-A runtime test is pending for S1.42AI-DIAG1R1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
