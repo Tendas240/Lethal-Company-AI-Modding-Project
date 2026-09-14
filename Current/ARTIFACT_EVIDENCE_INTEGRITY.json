@@ -100,6 +100,24 @@
   ],
   "pending_profiles": [
     {
+      "build_id": "S1.42AI-DIAG1R1",
+      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
+      "profile": "Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z",
+      "profile_sha256": "b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd",
+      "profile_sources": "ProfileSources/S1.42AI-DIAG1R1/",
+      "file_index": "ProfileSources/S1.42AI-DIAG1R1/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AI-DIAG1R1/export.r2x",
+      "candidate_record": "Current/146_S1.42AI-DIAG1R1_BUILD_CANDIDATE_OWNER_TYPE_RESOLUTION_REPAIR.md",
+      "project_status": "Current/Projektstatus_S1.42AI-DIAG1R1_CANDIDATE.json",
+      "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
+      "guard_contract": "AnalysisEvidence/S1.42AI-DIAG1R1/MINIMAL_GUARD_CONTRACT.md",
+      "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R1/MATERIALIZED_VALIDATION.json",
+      "plugin_dll_sha256": "2d1b6e8a002eb55e0e6d935e36c0a619d1c875651b94afb9e748663af93c1de0",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false,
+      "note": "Repaired DIAG1 successor. Exact profile bytes/readable snapshot and static/materialized validation are complete; runtime evidence is now outstanding before any diagnostic decision."
+    },
+    {
       "build_id": "S1.42AI",
       "role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED",
       "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
@@ -165,7 +183,8 @@
     "S1.42AH prior targeted runtime evidence remains preserved at RuntimeEvidence/S1.42AH/20260908T174352Z and RuntimeEvidence/S1.42AH/20260908T162411Z.",
     "RuntimeEvidence/S1.42AF/20260905T223738Z contains accepted predecessor evidence.",
     "RuntimeEvidence/S1.42AG/20260906T085500Z contains S1.42AG rejection evidence.",
-    "RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z contains the failed DIAG1 diagnostic runtime log with SHA-256 0125f1ff1f16b99fa2531374bbfbc1a1294ec4918b22e67aed804ad1e41ebe49."
+    "RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z contains the failed DIAG1 diagnostic runtime log with SHA-256 0125f1ff1f16b99fa2531374bbfbc1a1294ec4918b22e67aed804ad1e41ebe49.",
+    "S1.42AI-DIAG1R1 is materialized at Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z SHA-256 b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd with readable ProfileSources/S1.42AI-DIAG1R1 and post-build validation run 34822644436 SUCCESS."
   ],
   "last_validated": "2026-09-14"
 }

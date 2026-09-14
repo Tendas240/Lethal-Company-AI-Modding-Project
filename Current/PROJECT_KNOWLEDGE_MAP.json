@@ -3,7 +3,12 @@
   "date": "2026-09-08",
   "status": "CURRENT_CANONICAL_ROUTER",
   "human_map": "Current/PROJECT_KNOWLEDGE_MAP.md",
-  "bootstrap": ["README.md", "START_HERE_ChatGPT_Masterprompt.txt", "Current/00_CURRENT_STATE.md", "Current/PROJECT_KNOWLEDGE_MAP.md"],
+  "bootstrap": [
+    "README.md",
+    "START_HERE_ChatGPT_Masterprompt.txt",
+    "Current/00_CURRENT_STATE.md",
+    "Current/PROJECT_KNOWLEDGE_MAP.md"
+  ],
   "authority_rule": [
     "Current/CURRENT_STATE.json is the global machine lifecycle authority.",
     "Current/00_CURRENT_STATE.md is the concise generated human current-state declaration.",
@@ -15,205 +20,474 @@
     {
       "id": "accepted_baseline",
       "title": "Accepted baseline",
-      "aliases": ["aktueller akzeptierter Build", "accepted build", "current baseline", "welcher Build ist aktuell", "S1.42AF"],
+      "aliases": [
+        "aktueller akzeptierter Build",
+        "accepted build",
+        "current baseline",
+        "welcher Build ist aktuell",
+        "S1.42AF"
+      ],
       "canonical": "Knowledge/CURRENT_LIFECYCLE.md",
-      "machine_state": ["Current/CURRENT_STATE.json", "BuildSpecs/current.json", "RuntimeInbox/ACTIVE_BUILD.txt"],
-      "related_topics": ["active_candidate_and_next_test", "build_lineage"],
+      "machine_state": [
+        "Current/CURRENT_STATE.json",
+        "BuildSpecs/current.json",
+        "RuntimeInbox/ACTIVE_BUILD.txt"
+      ],
+      "related_topics": [
+        "active_candidate_and_next_test",
+        "build_lineage"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "active_candidate_and_next_test",
       "title": "Active candidate and exact next test/action",
-      "aliases": ["was muss ich testen", "next test", "nächster Build", "active candidate", "was ist als nächstes dran", "log uploader", "S1.42AH", "Mouth Dog runtime test", "Eyeless Dog Pikmin"],
+      "aliases": [
+        "was muss ich testen",
+        "next test",
+        "nächster Build",
+        "active candidate",
+        "was ist als nächstes dran",
+        "log uploader",
+        "S1.42AH",
+        "Mouth Dog runtime test",
+        "Eyeless Dog Pikmin",
+        "S1.42AI-DIAG1R1",
+        "DIAG1R1",
+        "ShyGuy isolation diagnostic"
+      ],
       "canonical": "Knowledge/CURRENT_LIFECYCLE.md",
-      "machine_state": ["Current/CURRENT_STATE.json", "BuildSpecs/current.json", "RuntimeInbox/ACTIVE_BUILD.txt"],
-      "related_topics": ["accepted_baseline", "pikmin_enemy_compatibility", "roadmap_and_deferred_scopes"],
+      "machine_state": [
+        "Current/CURRENT_STATE.json",
+        "BuildSpecs/current.json",
+        "RuntimeInbox/ACTIVE_BUILD.txt"
+      ],
+      "related_topics": [
+        "accepted_baseline",
+        "pikmin_enemy_compatibility",
+        "roadmap_and_deferred_scopes"
+      ],
       "authority": "CURRENT",
-      "last_validated": "2026-09-08"
+      "last_validated": "2026-09-14"
     },
     {
       "id": "chat_handover",
       "title": "Current-chat preparation for transfer to a new ChatGPT chat",
-      "aliases": ["Übergabe", "neuer ChatGPT Chat", "new chat handover", "handover prompt", "Chat wechseln", "Projekt übergeben"],
+      "aliases": [
+        "Übergabe",
+        "neuer ChatGPT Chat",
+        "new chat handover",
+        "handover prompt",
+        "Chat wechseln",
+        "Projekt übergeben"
+      ],
       "canonical": "Current/HANDOVER_PREPARATION_PROMPT.md",
-      "machine_state": ["Current/CURRENT_STATE.json", "BuildSpecs/current.json", "RuntimeInbox/ACTIVE_BUILD.txt"],
-      "related_topics": ["accepted_baseline", "active_candidate_and_next_test", "build_pipeline", "runtime_upload_and_ingest"],
+      "machine_state": [
+        "Current/CURRENT_STATE.json",
+        "BuildSpecs/current.json",
+        "RuntimeInbox/ACTIVE_BUILD.txt"
+      ],
+      "related_topics": [
+        "accepted_baseline",
+        "active_candidate_and_next_test",
+        "build_pipeline",
+        "runtime_upload_and_ingest"
+      ],
       "authority": "CURRENT_WORKFLOW",
       "last_validated": "2026-09-08"
     },
     {
       "id": "build_pipeline",
       "title": "Repository-first profile build pipeline",
-      "aliases": ["Build bauen", "GitHub Actions build", "profile builder", "BuildSpecs", "AUTO_BUILD_RESULT"],
+      "aliases": [
+        "Build bauen",
+        "GitHub Actions build",
+        "profile builder",
+        "BuildSpecs",
+        "AUTO_BUILD_RESULT"
+      ],
       "canonical": "Knowledge/BUILD_AND_RUNTIME_PIPELINE.md",
-      "machine_state": ["BuildSpecs/current.json", "Current/AUTO_BUILD_RESULT.json"],
-      "related_topics": ["gale_import", "runtime_upload_and_ingest", "active_candidate_and_next_test"],
+      "machine_state": [
+        "BuildSpecs/current.json",
+        "Current/AUTO_BUILD_RESULT.json"
+      ],
+      "related_topics": [
+        "gale_import",
+        "runtime_upload_and_ingest",
+        "active_candidate_and_next_test"
+      ],
       "authority": "CURRENT_POLICY",
       "last_validated": "2026-09-08"
     },
     {
       "id": "gale_import",
       "title": "Gale active-profile replacement/import",
-      "aliases": ["Gale import", "Import all files", "Profil ersetzen", "Missing Profiles", "ReplaceActiveGaleProfile"],
+      "aliases": [
+        "Gale import",
+        "Import all files",
+        "Profil ersetzen",
+        "Missing Profiles",
+        "ReplaceActiveGaleProfile"
+      ],
       "canonical": "Knowledge/GALE_PROFILE_WORKFLOW.md",
-      "machine_state": ["RuntimeInbox/ACTIVE_BUILD.txt", "Current/AUTO_BUILD_RESULT.json"],
-      "related_topics": ["build_pipeline", "runtime_upload_and_ingest"],
+      "machine_state": [
+        "RuntimeInbox/ACTIVE_BUILD.txt",
+        "Current/AUTO_BUILD_RESULT.json"
+      ],
+      "related_topics": [
+        "build_pipeline",
+        "runtime_upload_and_ingest"
+      ],
       "authority": "CURRENT_WORKFLOW",
       "last_validated": "2026-09-08"
     },
     {
       "id": "runtime_upload_and_ingest",
       "title": "Runtime log upload ingest querying retention",
-      "aliases": ["Log hochladen", "runtime log uploader", "RuntimeInbox", "RuntimeEvidence", "großer Log", "runtime-large", "Log analysieren"],
+      "aliases": [
+        "Log hochladen",
+        "runtime log uploader",
+        "RuntimeInbox",
+        "RuntimeEvidence",
+        "großer Log",
+        "runtime-large",
+        "Log analysieren"
+      ],
       "canonical": "Knowledge/BUILD_AND_RUNTIME_PIPELINE.md",
-      "machine_state": ["RuntimeInbox/ACTIVE_BUILD.txt", "RuntimeAnalysis/QUERY.json"],
-      "related_topics": ["build_pipeline", "gale_import", "monitor_only_errors"],
+      "machine_state": [
+        "RuntimeInbox/ACTIVE_BUILD.txt",
+        "RuntimeAnalysis/QUERY.json"
+      ],
+      "related_topics": [
+        "build_pipeline",
+        "gale_import",
+        "monitor_only_errors"
+      ],
       "authority": "CURRENT_POLICY",
       "last_validated": "2026-09-08"
     },
     {
       "id": "bcmer",
       "title": "BCMER 1.71.0 events ownership EventType weighting",
-      "aliases": ["BCMER", "Brutal Company Minus Extra Reborn", "BrutalCompanyMinusExtraReborn", "events gleich wahrscheinlich", "EventType", "12.5%", "Rain events"],
+      "aliases": [
+        "BCMER",
+        "Brutal Company Minus Extra Reborn",
+        "BrutalCompanyMinusExtraReborn",
+        "events gleich wahrscheinlich",
+        "EventType",
+        "12.5%",
+        "Rain events"
+      ],
       "canonical": "Knowledge/BCMER.md",
-      "machine_state": ["Current/CURRENT_STATE.json"],
-      "related_topics": ["active_candidate_and_next_test", "enemy_spawn_baseline", "roadmap_and_deferred_scopes"],
+      "machine_state": [
+        "Current/CURRENT_STATE.json"
+      ],
+      "related_topics": [
+        "active_candidate_and_next_test",
+        "enemy_spawn_baseline",
+        "roadmap_and_deferred_scopes"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "interiors_and_lll",
       "title": "Interiors LLL equal effective weighting compatibility restrictions",
-      "aliases": ["Interior Gewichte", "interiors gleich wahrscheinlich", "LLL", "LethalLevelLoader", "Shatteredrooms", "Junkrooms", "CullFactory", "Black Mesa registration"],
+      "aliases": [
+        "Interior Gewichte",
+        "interiors gleich wahrscheinlich",
+        "LLL",
+        "LethalLevelLoader",
+        "Shatteredrooms",
+        "Junkrooms",
+        "CullFactory",
+        "Black Mesa registration"
+      ],
       "canonical": "Knowledge/INTERIORS_AND_LLL.md",
-      "machine_state": ["Current/CURRENT_STATE.json"],
-      "related_topics": ["black_mesa_pikmin_routing", "roadmap_and_deferred_scopes"],
+      "machine_state": [
+        "Current/CURRENT_STATE.json"
+      ],
+      "related_topics": [
+        "black_mesa_pikmin_routing",
+        "roadmap_and_deferred_scopes"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "enemy_spawn_baseline",
       "title": "Enemy spawn baseline ownership",
-      "aliases": ["Enemy Spawn Chance", "PowerLevel", "Indoor Power", "EnemyIsolation", "Spawner", "Crawler", "Thumper"],
+      "aliases": [
+        "Enemy Spawn Chance",
+        "PowerLevel",
+        "Indoor Power",
+        "EnemyIsolation",
+        "Spawner",
+        "Crawler",
+        "Thumper"
+      ],
       "canonical": "Knowledge/ENEMY_SPAWN_BASELINE.md",
-      "machine_state": ["Current/ENEMY_SPAWN_BASELINE_S1.42C.json"],
-      "related_topics": ["pikmin_enemy_compatibility", "bcmer"],
+      "machine_state": [
+        "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+      ],
+      "related_topics": [
+        "pikmin_enemy_compatibility",
+        "bcmer"
+      ],
       "authority": "CURRENT_RESTORE_BASELINE",
       "last_validated": "2026-09-08"
     },
     {
       "id": "pikmin_enemy_compatibility",
       "title": "Pikmin interactions Thumper Puffer Baboon Hawk Mouth Dog Eyeless Dog",
-      "aliases": ["Pikmin Thumper", "Pikmin Puffer", "Baboon Hawk", "BaboonBirdPikminEnemy", "Mouth Dog", "MouthDog", "Eyeless Dog", "EyelessDog", "EnemyAttackMouth", "Biting Pikmin", "Leader is null", "GrabPikmin", "Bite Limit", "S1.42AG", "S1.42AH", "Mouth Dog targeting path"],
+      "aliases": [
+        "Pikmin Thumper",
+        "Pikmin Puffer",
+        "Baboon Hawk",
+        "BaboonBirdPikminEnemy",
+        "Mouth Dog",
+        "MouthDog",
+        "Eyeless Dog",
+        "EyelessDog",
+        "EnemyAttackMouth",
+        "Biting Pikmin",
+        "Leader is null",
+        "GrabPikmin",
+        "Bite Limit",
+        "S1.42AG",
+        "S1.42AH",
+        "Mouth Dog targeting path"
+      ],
       "canonical": "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md",
-      "machine_state": ["Current/CURRENT_STATE.json"],
-      "related_topics": ["enemy_spawn_baseline", "patch_safety_policy", "active_candidate_and_next_test"],
+      "machine_state": [
+        "Current/CURRENT_STATE.json"
+      ],
+      "related_topics": [
+        "enemy_spawn_baseline",
+        "patch_safety_policy",
+        "active_candidate_and_next_test"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "jetpack",
       "title": "Jetpack tuning",
-      "aliases": ["Jetpack acceleration", "Jet Fuel", "Jetpack Thrusters", "ButteRyBalance", "JetpackFixes"],
+      "aliases": [
+        "Jetpack acceleration",
+        "Jet Fuel",
+        "Jetpack Thrusters",
+        "ButteRyBalance",
+        "JetpackFixes"
+      ],
       "canonical": "Knowledge/JETPACK.md",
-      "related_topics": ["patch_safety_policy"],
+      "related_topics": [
+        "patch_safety_policy"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "coderebirth",
       "title": "CodeRebirth DawnLib spawn aerial-defense tuning",
-      "aliases": ["CodeRebirth", "DawnLib", "Currency", "Coin", "Wallet", "Flash Turret", "ACU", "G.R.E.G.", "Autonomous Crane"],
+      "aliases": [
+        "CodeRebirth",
+        "DawnLib",
+        "Currency",
+        "Coin",
+        "Wallet",
+        "Flash Turret",
+        "ACU",
+        "G.R.E.G.",
+        "Autonomous Crane"
+      ],
       "canonical": "Knowledge/CODEREBIRTH.md",
-      "machine_state": ["Current/CURRENT_STATE.json"],
-      "related_topics": ["functional_microwave", "pikmin_enemy_compatibility"],
+      "machine_state": [
+        "Current/CURRENT_STATE.json"
+      ],
+      "related_topics": [
+        "functional_microwave",
+        "pikmin_enemy_compatibility"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "functional_microwave",
       "title": "Functional Microwave tuning",
-      "aliases": ["Microwave", "Mikrowelle", "Functional Microwave", "Microwave volume", "Microwave rarity", "Microwave 0.5", "Microwave half frequency"],
+      "aliases": [
+        "Microwave",
+        "Mikrowelle",
+        "Functional Microwave",
+        "Microwave volume",
+        "Microwave rarity",
+        "Microwave 0.5",
+        "Microwave half frequency"
+      ],
       "canonical": "Knowledge/ITEM_TUNING.md",
-      "machine_state": ["Current/CURRENT_STATE.json"],
-      "related_topics": ["roadmap_and_deferred_scopes", "coderebirth"],
+      "machine_state": [
+        "Current/CURRENT_STATE.json"
+      ],
+      "related_topics": [
+        "roadmap_and_deferred_scopes",
+        "coderebirth"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "immortal_snail",
       "title": "Immortal Snail tuning",
-      "aliases": ["Immortal Snail", "snail rarity", "Max Snails", "Snail"],
+      "aliases": [
+        "Immortal Snail",
+        "snail rarity",
+        "Max Snails",
+        "Snail"
+      ],
       "canonical": "Knowledge/ITEM_TUNING.md",
-      "related_topics": ["roadmap_and_deferred_scopes"],
+      "related_topics": [
+        "roadmap_and_deferred_scopes"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "monitor_only_errors",
       "title": "Monitor-only runtime errors and warnings",
-      "aliases": ["monitor-only", "monitor only", "known errors", "errors", "warnings", "Fehler"],
+      "aliases": [
+        "monitor-only",
+        "monitor only",
+        "known errors",
+        "errors",
+        "warnings",
+        "Fehler"
+      ],
       "canonical": "Knowledge/MONITOR_ONLY_ERRORS.md",
-      "related_topics": ["runtime_upload_and_ingest"],
+      "related_topics": [
+        "runtime_upload_and_ingest"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "black_mesa_pikmin_routing",
       "title": "Black Mesa Pikmin routing recovery",
-      "aliases": ["Black Mesa Pikmin routing", "Black Mesa routing", "NavMesh", "route recovery"],
+      "aliases": [
+        "Black Mesa Pikmin routing",
+        "Black Mesa routing",
+        "NavMesh",
+        "route recovery"
+      ],
       "canonical": "Knowledge/BLACK_MESA_PIKMIN_ROUTING.md",
-      "related_topics": ["interiors_and_lll", "roadmap_and_deferred_scopes"],
+      "related_topics": [
+        "interiors_and_lll",
+        "roadmap_and_deferred_scopes"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "roadmap_and_deferred_scopes",
       "title": "Live roadmap and deferred scopes",
-      "aliases": ["Roadmap", "später geplant", "deferred scopes", "future work", "was steht auf der Roadmap"],
+      "aliases": [
+        "Roadmap",
+        "später geplant",
+        "deferred scopes",
+        "future work",
+        "was steht auf der Roadmap"
+      ],
       "canonical": "Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md",
-      "machine_state": ["Current/CURRENT_STATE.json"],
-      "related_topics": ["active_candidate_and_next_test", "pikmin_enemy_compatibility", "bcmer", "interiors_and_lll"],
+      "machine_state": [
+        "Current/CURRENT_STATE.json"
+      ],
+      "related_topics": [
+        "active_candidate_and_next_test",
+        "pikmin_enemy_compatibility",
+        "bcmer",
+        "interiors_and_lll"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "patch_safety_policy",
       "title": "Project-local patch safety policy",
-      "aliases": ["Patch Safety Review", "Harmony patch", "patch safety", "runtime patch"],
+      "aliases": [
+        "Patch Safety Review",
+        "Harmony patch",
+        "patch safety",
+        "runtime patch"
+      ],
       "canonical": "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md",
-      "related_topics": ["pikmin_enemy_compatibility", "jetpack"],
+      "related_topics": [
+        "pikmin_enemy_compatibility",
+        "jetpack"
+      ],
       "authority": "CURRENT_POLICY",
       "last_validated": "2026-09-08"
     },
     {
       "id": "repository_overhaul",
       "title": "Repository information architecture",
-      "aliases": ["Repository Informationsarchitektur", "Knowledge Map", "repository overhaul", "information architecture"],
+      "aliases": [
+        "Repository Informationsarchitektur",
+        "Knowledge Map",
+        "repository overhaul",
+        "information architecture"
+      ],
       "canonical": "Knowledge/REPOSITORY_OVERHAUL.md",
-      "machine_state": ["Current/OVERHAUL_EXECUTION_STATE.json", "Current/OVERHAUL_VALIDATION_RESULTS.json", "Current/VALIDATOR_COVERAGE.json"],
-      "related_topics": ["pre_overhaul_backup_and_recovery", "patch_safety_policy"],
+      "machine_state": [
+        "Current/OVERHAUL_EXECUTION_STATE.json",
+        "Current/OVERHAUL_VALIDATION_RESULTS.json",
+        "Current/VALIDATOR_COVERAGE.json"
+      ],
+      "related_topics": [
+        "pre_overhaul_backup_and_recovery",
+        "patch_safety_policy"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "pre_overhaul_backup_and_recovery",
       "title": "Pre-overhaul backup and recovery",
-      "aliases": ["pre-overhaul backup Repository", "backup repository", "recovery point", "frozen backup"],
+      "aliases": [
+        "pre-overhaul backup Repository",
+        "backup repository",
+        "recovery point",
+        "frozen backup"
+      ],
       "canonical": "Knowledge/PRE_OVERHAUL_BACKUP_AND_RECOVERY.md",
-      "machine_state": ["Current/PRE_OVERHAUL_BACKUP_MANIFEST.json"],
-      "related_topics": ["repository_overhaul"],
+      "machine_state": [
+        "Current/PRE_OVERHAUL_BACKUP_MANIFEST.json"
+      ],
+      "related_topics": [
+        "repository_overhaul"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     },
     {
       "id": "build_lineage",
       "title": "Build lineage and historical decisions",
-      "aliases": ["welcher Build hat", "Build eingeführt", "Build verworfen", "rejected build", "build history", "was kam vor Build"],
+      "aliases": [
+        "welcher Build hat",
+        "Build eingeführt",
+        "Build verworfen",
+        "rejected build",
+        "build history",
+        "was kam vor Build"
+      ],
       "canonical": "Current/BUILD_LINEAGE.md",
-      "machine_state": ["Current/BUILD_LINEAGE.json", "Current/CURRENT_STATE.json"],
-      "related_topics": ["accepted_baseline", "active_candidate_and_next_test"],
+      "machine_state": [
+        "Current/BUILD_LINEAGE.json",
+        "Current/CURRENT_STATE.json"
+      ],
+      "related_topics": [
+        "accepted_baseline",
+        "active_candidate_and_next_test"
+      ],
       "authority": "CURRENT",
       "last_validated": "2026-09-08"
     }

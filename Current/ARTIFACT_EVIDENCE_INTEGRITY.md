@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1 candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R1 candidate=S1.42AI-DIAG1R1 runtime_test_outstanding=true -->
 # Artifact and Runtime Evidence Integrity
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
@@ -10,23 +10,26 @@
 Artifact: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`  
 SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
 
-## Latest built artifact / failed diagnostic: S1.42AI-DIAG1
+## Latest built artifact / active runtime candidate: S1.42AI-DIAG1R1
 
-Artifact: `Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z`  
-SHA-256: `22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd`  
-Candidate record: `Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md`  
-Runtime failure: `Current/145_S1.42AI-DIAG1_RUNTIME_FAILURE_OWNER_TYPE_RESOLUTION.md`  
-Runtime evidence: `RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z/`  
-Runtime log SHA-256: `0125f1ff1f16b99fa2531374bbfbc1a1294ec4918b22e67aed804ad1e41ebe49`  
-Project status: `Current/Projektstatus_S1.42AI-DIAG1_CANDIDATE.json`  
-Readable snapshot: `ProfileSources/S1.42AI-DIAG1/`  
-Plugin DLL SHA-256: `bc8d51121451ecd1b1550e2aa6007991983c7a88ad93c86c38541ec0d358a2b3`
+Artifact: `Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z`  
+SHA-256: `b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd`  
+Candidate record: `Current/146_S1.42AI-DIAG1R1_BUILD_CANDIDATE_OWNER_TYPE_RESOLUTION_REPAIR.md`  
+Project status: `Current/Projektstatus_S1.42AI-DIAG1R1_CANDIDATE.json`  
+Readable snapshot: `ProfileSources/S1.42AI-DIAG1R1/`  
+Plugin DLL SHA-256: `2d1b6e8a002eb55e0e6d935e36c0a619d1c875651b94afb9e748663af93c1de0`  
+Materialized validation: `AnalysisEvidence/S1.42AI-DIAG1R1/MATERIALIZED_VALIDATION.md`  
+Runtime evidence required now: **yes, pending upload after gameplay**.
 
-S1.42AI-DIAG1 now has an explicit failed diagnostic runtime decision and is indexed as completed failed evidence, not as `ACTIVE_RUNTIME_CANDIDATE_PENDING`.
+The machine index records R1 as `ACTIVE_RUNTIME_CANDIDATE_PENDING` with `runtime_evidence_required=false` until a final runtime decision exists; this sentinel means runtime evidence is intentionally deferred at the artifact-integrity layer, not that gameplay evidence is unnecessary.
+
+## Failed predecessor diagnostic
+
+S1.42AI-DIAG1 remains preserved as completed failed diagnostic evidence under `Current/145_S1.42AI-DIAG1_RUNTIME_FAILURE_OWNER_TYPE_RESOLUTION.md` and `RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z/`.
 
 ## Deferred full-normal S1.42AI gate
 
-S1.42AI remains preserved as `DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED`. Its full-normal runtime acceptance gate remains mandatory after the diagnostic repair path is resolved.
+S1.42AI remains preserved as `DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED`. Its full-normal runtime acceptance gate remains mandatory after the R1 diagnostic decision.
 
 ## Retrieval invariant
 

@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1 candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R1 candidate=S1.42AI-DIAG1R1 runtime_test_outstanding=true -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -36,13 +36,11 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
 
-Latest built artifact: **S1.42AI-DIAG1 — ShyGuy Isolation Diagnostic — runtime diagnostic failed / repair required / NOT ACCEPTED**. There is currently **no active runtime candidate** and **no runtime test outstanding**. Failure authority: `Current/145_S1.42AI-DIAG1_RUNTIME_FAILURE_OWNER_TYPE_RESOLUTION.md`; original build authority: `Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md`; implementation/runtime contract: `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md`.
+Latest built artifact and active diagnostic runtime candidate: **S1.42AI-DIAG1R1 — ShyGuy Isolation Diagnostic Owner Type Resolution Repair — NOT ACCEPTED**. Runtime test outstanding: **yes**. Candidate authority: `Current/146_S1.42AI-DIAG1R1_BUILD_CANDIDATE_OWNER_TYPE_RESOLUTION_REPAIR.md`; runtime contract: `AnalysisEvidence/S1.42AI-DIAG1R1/MINIMAL_GUARD_CONTRACT.md`; materialized validation: `AnalysisEvidence/S1.42AI-DIAG1R1/MATERIALIZED_VALIDATION.md`.
 
-`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1_RUNTIME_FAILURE_AWAITING_REPAIR`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1` is only the last evidence-attribution pointer and does not make DIAG1 an active candidate.
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1R1_BUILD_AWAITING_RUNTIME`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R1` and `Current/AUTO_BUILD_RESULT.json.build_id = S1.42AI-DIAG1R1` identify the exact ready candidate for import and evidence attribution.
 
-The next action is a bounded source/static-gate repair: remove the hardcoded `LethalMin.PikminType` runtime assumption, derive the exact `List<T>` argument from `LethalMin.Onion.WithdrawPikminFromOnion` metadata with fail-closed checks, strengthen the static validator to prove the CLR contract against the materialized LethalMin DLL, and only then build a successor diagnostic candidate. Do not rerun the current DIAG1 profile unchanged.
-
-The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived.
+The next action is one R1 diagnostic gameplay run followed by the exact R1 log upload and repository-native ingestion. The failed predecessor S1.42AI-DIAG1 must not be rerun unchanged. The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived.
 
 ## Authority rule
 
