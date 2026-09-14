@@ -131,28 +131,30 @@ namespace S142AIDiag1Isolation
                 Type.EmptyTypes,
                 expectedStatic: false);
 
-            // LethalMinNightly 1.1.108. Resolve foreign argument types exactly from the
-            // loaded assembly; never fall back to name-fragment method scans.
-            Type pikminType = ResolveRequiredType("LethalMin.PikminType");
+            // LethalMinNightly 1.1.108. Resolve only stable owner/peer identities by
+            // exact CLR full name. The PikminType identity is deliberately derived from
+            // Onion.WithdrawPikminFromOnion metadata rather than guessed by namespace.
+            Type onionType = ResolveRequiredType("LethalMin.Onion");
             Type leaderType = ResolveRequiredType("LethalMin.Leader");
             Type enemyGrabbableType = ResolveRequiredType("LethalMin.EnemyGrabbableObject");
             Type playerControllerType = ResolveRequiredType("GameNetcodeStuff.PlayerControllerB");
+            MethodInfo withdrawPikminMethod = null;
 
-            if (pikminType == null || leaderType == null || enemyGrabbableType == null || playerControllerType == null)
+            if (onionType == null ||
+                leaderType == null ||
+                enemyGrabbableType == null ||
+                playerControllerType == null ||
+                !ResolveLethalMinWithdrawPikminContract(onionType, leaderType, out withdrawPikminMethod))
             {
                 valid = false;
             }
             else
             {
-                Type pikminListType = typeof(List<>).MakeGenericType(pikminType);
-
-                valid &= AddIteratorBlock(
+                valid &= AddResolvedCustomPrefix(
                     targets,
                     "LethalMin Onion.WithdrawPikminFromOnion",
-                    "LethalMin.Onion",
-                    "WithdrawPikminFromOnion",
-                    new[] { pikminListType, typeof(int[]), leaderType },
-                    expectedStatic: false);
+                    withdrawPikminMethod,
+                    nameof(SimpleOwnerGuardPatches.BlockIteratorOwnerPrefix));
 
                 valid &= AddVoidBlock(
                     targets,
@@ -232,6 +234,125 @@ namespace S142AIDiag1Isolation
             return true;
         }
 
+        private static bool ResolveLethalMinWithdrawPikminContract(
+            Type onionType,
+            Type leaderType,
+            out MethodInfo exactMethod)
+        {
+            exactMethod = null;
+
+            if (onionType == null ||
+                onionType.FullName != "LethalMin.Onion" ||
+                leaderType == null ||
+                leaderType.FullName != "LethalMin.Leader")
+            {
+                Plugin.Log.LogError(
+                    "[DIAG1_OWNER_TARGET_INVALID] LethalMin Onion/Leader exact type identities were not available for metadata-bound PikminType resolution.");
+                return false;
+            }
+
+            if (onionType.Assembly != leaderType.Assembly)
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_OWNER_TARGET_INVALID] LethalMin Onion/Leader assembly mismatch: onion='{onionType.Assembly.FullName}', leader='{leaderType.Assembly.FullName}'.");
+                return false;
+            }
+
+            MethodInfo[] namedMethods = onionType
+                .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
+                .Where(method => string.Equals(
+                    method.Name,
+                    "WithdrawPikminFromOnion",
+                    StringComparison.Ordinal))
+                .ToArray();
+
+            if (namedMethods.Length != 1)
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_OWNER_TARGET_INVALID] LethalMin.Onion must declare exactly one instance WithdrawPikminFromOnion method; found {namedMethods.Length}.");
+                return false;
+            }
+
+            MethodInfo candidate = namedMethods[0];
+            if (candidate.DeclaringType != onionType ||
+                candidate.IsStatic ||
+                candidate.ReturnType != typeof(IEnumerator) ||
+                candidate.GetMethodBody() == null)
+            {
+                Plugin.Log.LogError(
+                    "[DIAG1_OWNER_TARGET_INVALID] LethalMin.Onion.WithdrawPikminFromOnion declared method/return/body contract did not validate.");
+                return false;
+            }
+
+            ParameterInfo[] parameters = candidate.GetParameters();
+            if (parameters.Length != 3)
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_OWNER_TARGET_INVALID] LethalMin.Onion.WithdrawPikminFromOnion parameter count mismatch: {parameters.Length} != 3.");
+                return false;
+            }
+
+            Type listType = parameters[0].ParameterType;
+            if (!listType.IsGenericType || listType.GetGenericTypeDefinition() != typeof(List<>))
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_OWNER_TARGET_INVALID] LethalMin.Onion.WithdrawPikminFromOnion parameter 0 is not exact List<T>: '{listType.FullName}'.");
+                return false;
+            }
+
+            Type[] genericArguments = listType.GetGenericArguments();
+            if (genericArguments.Length != 1)
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_OWNER_TARGET_INVALID] LethalMin Onion List<T> generic-argument count mismatch: {genericArguments.Length} != 1.");
+                return false;
+            }
+
+            Type pikminType = genericArguments[0];
+            if (pikminType == null ||
+                pikminType.IsGenericParameter ||
+                pikminType.ContainsGenericParameters ||
+                !string.Equals(pikminType.Name, "PikminType", StringComparison.Ordinal) ||
+                pikminType.Assembly != onionType.Assembly)
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_OWNER_TARGET_INVALID] Metadata-derived PikminType identity/assembly is invalid: type='{pikminType?.FullName ?? "<null>"}', assembly='{pikminType?.Assembly?.FullName ?? "<null>"}', expectedAssembly='{onionType.Assembly.FullName}'.");
+                return false;
+            }
+
+            if (parameters[1].ParameterType != typeof(int[]) ||
+                parameters[2].ParameterType != leaderType)
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_OWNER_TARGET_INVALID] LethalMin.Onion.WithdrawPikminFromOnion parameter contract mismatch: p0='{listType.FullName}', p1='{parameters[1].ParameterType.FullName}', p2='{parameters[2].ParameterType.FullName}'.");
+                return false;
+            }
+
+            Type exactListType = typeof(List<>).MakeGenericType(pikminType);
+            MethodInfo rebound = onionType.GetMethod(
+                "WithdrawPikminFromOnion",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly,
+                null,
+                new[] { exactListType, typeof(int[]), leaderType },
+                null);
+
+            if (rebound == null ||
+                rebound.DeclaringType != onionType ||
+                rebound.ReturnType != typeof(IEnumerator) ||
+                rebound.Module != candidate.Module ||
+                rebound.MetadataToken != candidate.MetadataToken)
+            {
+                Plugin.Log.LogError(
+                    "[DIAG1_OWNER_TARGET_INVALID] Metadata-derived PikminType could not rebind the exact declared LethalMin.Onion.WithdrawPikminFromOnion owner target.");
+                return false;
+            }
+
+            Plugin.Log.LogInfo(
+                $"[DIAG1_OWNER_TYPE_DERIVED] LethalMin.Onion.WithdrawPikminFromOnion List<T> generic argument='{pikminType.FullName}', assembly='{pikminType.Assembly.GetName().Name}'.");
+            exactMethod = rebound;
+            return true;
+        }
+
         private static bool AddVoidBlock(
             List<Target> targets,
             string label,
@@ -290,6 +411,22 @@ namespace S142AIDiag1Isolation
 
             if (original == null)
                 return false;
+
+            return AddResolvedCustomPrefix(targets, label, original, prefixName);
+        }
+
+        private static bool AddResolvedCustomPrefix(
+            List<Target> targets,
+            string label,
+            MethodInfo original,
+            string prefixName)
+        {
+            if (original == null || original.DeclaringType == null || original.GetMethodBody() == null)
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_OWNER_TARGET_INVALID] {label}: pre-resolved original method is null or bodyless.");
+                return false;
+            }
 
             MethodInfo prefix = typeof(SimpleOwnerGuardPatches).GetMethod(
                 prefixName,
@@ -365,9 +502,11 @@ namespace S142AIDiag1Isolation
         private static Type ResolveRequiredType(string fullName)
         {
             Type type = AccessTools.TypeByName(fullName);
-            if (type == null)
+            if (type == null || !string.Equals(type.FullName, fullName, StringComparison.Ordinal))
             {
-                Plugin.Log.LogError($"[DIAG1_OWNER_TARGET_INVALID] Required exact type '{fullName}' was not found.");
+                Plugin.Log.LogError(
+                    $"[DIAG1_OWNER_TARGET_INVALID] Required exact type '{fullName}' was not found with matching CLR FullName; resolved='{type?.FullName ?? "<null>"}'.");
+                return null;
             }
             return type;
         }
