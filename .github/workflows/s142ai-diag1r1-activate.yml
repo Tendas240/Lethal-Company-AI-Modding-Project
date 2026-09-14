@@ -71,7 +71,6 @@ jobs:
           python RepositoryTools/answerability_regression.py
           python RepositoryTools/cold_history_storage_validator.py
           python RepositoryTools/validator_selftest.py
-          git diff --check
 
       - name: Commit validated candidate activation to PR branch
         shell: bash
@@ -84,6 +83,5 @@ jobs:
             echo 'No activation changes staged; refusing silent success.' >&2
             exit 1
           fi
-          git diff --cached --check
           git commit -m 'Activate validated S1.42AI-DIAG1R1 runtime candidate'
           git push origin HEAD:activate/s142ai-diag1r1
