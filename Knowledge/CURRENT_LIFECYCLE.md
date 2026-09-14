@@ -1,49 +1,53 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1 candidate=S1.42AI-DIAG1 runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1 candidate=none runtime_test_outstanding=false -->
 # Current Project Lifecycle
 
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed acceptance/rejection remains in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`, `Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md`  
-**Last-Validated:** 2026-09-13
+**Evidence:** `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`, `Current/145_S1.42AI-DIAG1_RUNTIME_FAILURE_OWNER_TYPE_RESOLUTION.md`, `Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md`  
+**Last-Validated:** 2026-09-14
 
 ## Accepted gameplay baseline
 
 **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**. S1.42AH remains the sole accepted gameplay base.
 
-## Latest built artifact / active candidate
+## Latest built artifact
 
-**S1.42AI-DIAG1 — ShyGuy Isolation Diagnostic — ACTIVE DIAGNOSTIC RUNTIME CANDIDATE / NOT ACCEPTED**  
+**S1.42AI-DIAG1 — ShyGuy Isolation Diagnostic — RUNTIME DIAGNOSTIC FAILED / REPAIR REQUIRED / NOT ACCEPTED**  
 Profile: `Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z`  
 SHA-256: `22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd`  
 Parent: `S1.42AI`  
 Candidate: `Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md`  
-Canonical build run: `34777833867`  
-Build commit: `1018ac909435a51f1b98ceb9dfdad0599dc4dcc4`
+Runtime failure decision: `Current/145_S1.42AI-DIAG1_RUNTIME_FAILURE_OWNER_TYPE_RESOLUTION.md`  
+Runtime evidence: `RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z/`
 
-The canonical build, pre-build static gate, and materialized profile checks passed. Package state is unchanged; the reviewed diagnostic config overlay and exact narrow plugin are present.
+The build/static/materialization stage passed, but the first runtime diagnostic did not arm successfully. Exact owner prevalidation could not resolve the hardcoded type name `LethalMin.PikminType`; DIAG1 marked itself invalid and then removed all Harmony hooks owned by its diagnostic Harmony instance. The fail-closed rollback was correct, but the gameplay portion of that run therefore cannot validate the intended isolation contract.
 
 ## Live execution state
 
 - Accepted baseline: **S1.42AH**.
-- Latest built artifact: **S1.42AI-DIAG1**.
-- Active candidate: **S1.42AI-DIAG1**.
-- Runtime test outstanding: **yes**.
-- `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1_BUILD_AWAITING_RUNTIME_VALIDATION` and guards the exact DIAG1 profile/SHA.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1` attributes the next evidence to DIAG1.
+- Latest built artifact: **S1.42AI-DIAG1**, failed diagnostic evidence.
+- Active candidate: **none**.
+- Runtime test outstanding: **no**.
+- `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1_RUNTIME_FAILURE_AWAITING_REPAIR` and guards the exact DIAG1 profile/SHA as the current repair base.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1` remains the last runtime-evidence attribution pointer only; it does not make DIAG1 active or accepted.
 
-## Diagnostic runtime gate
+## Diagnostic runtime result
 
-Use `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md` and `Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md`. Require successful startup/identity/config/guard markers, no `DIAG1_ISOLATION_BYPASS`, no unexpected non-ShyGuy live enemy, and preserved exact Shy Guy observability.
+The runtime log records the exact failed owner prevalidation, `[DIAG1_INVALID]`, and `[DIAG1_INSTALL_ROLLED_BACK]`. The analyzer also records non-ShyGuy enemy activity after rollback. Operator observation from the run was: additional enemies spawned; two Shy Guys were observed inside; no Shy Guy was observed outside; the two observed interior Shy Guys did not come outside during the observed period.
+
+Those observations are useful evidence, but they cannot prove the S1.42AI interior-only correction because DIAG1 was no longer armed. Use `Current/145_S1.42AI-DIAG1_RUNTIME_FAILURE_OWNER_TYPE_RESOLUTION.md` for the bounded decision and repair contract.
+
+## Required repair
+
+`Patches/S142AIDiag1Isolation/PackageOwnerGuards.cs` currently hardcodes `ResolveRequiredType("LethalMin.PikminType")`. The successor repair must derive the exact `List<T>` generic argument from the declared `LethalMin.Onion.WithdrawPikminFromOnion` metadata and retain fail-closed exactness instead of replacing the string with another guessed namespace.
+
+`AnalysisTools/validate_s142ai_diag1_static.py` must be strengthened in the same repair so it proves the CLR generic-argument contract against the materialized LethalMin DLL, not merely the decompiled short spelling `List<PikminType>`.
 
 ## Retained full-normal gate
 
-S1.42AI remains unaccepted. Its full-normal BCMER ShyGuy gate in `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` is deferred until after DIAG1 and is **not waived**.
-
-## Canonical Gale workflow
-
-Use the repository-driven **v2.4** replacement/import path in `Knowledge/GALE_PROFILE_WORKFLOW.md`, implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at canonical helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. The ready-to-test import and exact S1.42AI-DIAG1 log uploader are recorded in `Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md` and must be supplied together.
+S1.42AI remains unaccepted. Its full-normal BCMER ShyGuy gate in `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` remains mandatory and is **deferred, not waived**.
 
 ## Exact next project action
 
-Runtime-test S1.42AI-DIAG1 as the active temporary diagnostic candidate. Verify DIAG1 startup/identity/config/guard markers, exercise the ShyGuy-only round, fail on any DIAG1_ISOLATION_BYPASS or unexpected non-ShyGuy enemy, preserve ShyGuy observability, then upload the exact DIAG1 LogOutput.log. Diagnostic success does not accept S1.42AI; its full-normal BCMER ShyGuy gate remains required afterward.
+Repair the DIAG1 owner type-resolution contract and the static gate, validate the repair repository-native, then build a successor diagnostic candidate. Do **not** rerun the current S1.42AI-DIAG1 profile unchanged. A new gameplay test is requested only after a repaired successor candidate exists and all static/materialized gates are green.
