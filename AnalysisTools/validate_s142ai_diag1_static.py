@@ -25,6 +25,7 @@ EXPECTED_PREMIUM_SHA = "380ffa37ff53576f561c27a9d06c30ecd35d9195606e142122647a0d
 EXPECTED_CHILLAX_SHA = "1a448aaf93af58da00f16e7e7acf0c7e69b1bb564f084dc64020d06101bbb7d0"
 PLUGIN_ARCHIVE_PATH = "BepInEx/plugins/Tendas-S142AIDiag1Isolation/S142AIDiag1Isolation.dll"
 DIAG_CONFIG_PATH = "BepInEx/config/tendas.s142ai.diag1.isolation.cfg"
+KNOWN_BAD_PIKMIN_RESOLVER = 'ResolveRequiredType("LethalMin.PikminType")'
 
 OUT.mkdir(parents=True, exist_ok=True)
 
@@ -176,6 +177,100 @@ def method_signature(source: str, method: str, expected_return: str, expected_pa
                 return m, source[brace:i+1]
     fail(f"Unclosed method body for {method}")
 
+
+def il_declared_method_header(il_text: str, method: str) -> str:
+    starts = [m.start() for m in re.finditer(r"(?m)^\s*\.method\b", il_text)]
+    matches: list[str] = []
+    method_token = re.compile(r"(?<![A-Za-z0-9_])" + re.escape(method) + r"\s*\(")
+    for index, start in enumerate(starts):
+        limit = starts[index + 1] if index + 1 < len(starts) else len(il_text)
+        body_start = il_text.find("{", start, limit)
+        if body_start < 0:
+            continue
+        header = il_text[start:body_start]
+        if method_token.search(header):
+            matches.append(re.sub(r"\s+", " ", header).strip())
+    if len(matches) != 1:
+        fail(f"Expected exactly one CLR IL declaration for {method}, found {len(matches)}")
+    return matches[0]
+
+
+def prove_lethalmin_withdraw_clr_contract(dll_path: Path, digest: str) -> dict:
+    il = run(
+        ["ilspycmd", "--ilcode", "-t", "LethalMin.Onion", str(dll_path)],
+        timeout=120,
+    ).stdout.decode("utf-8", errors="replace")
+    header = il_declared_method_header(il, "WithdrawPikminFromOnion")
+    signature = re.search(
+        r"(?P<prefix>.*?)\bWithdrawPikminFromOnion\s*\((?P<params>.*)\)\s+cil\s+managed\b",
+        header,
+    )
+    if signature is None:
+        fail("CLR IL signature for LethalMin.Onion.WithdrawPikminFromOnion was not parseable")
+
+    prefix = signature.group("prefix").strip()
+    if re.search(
+        r"\binstance\s+(?:class\s+)?(?:\[[^\]]+\])?System\.Collections\.IEnumerator\s*$",
+        prefix,
+    ) is None:
+        fail(f"CLR return/instance contract mismatch for WithdrawPikminFromOnion: {prefix}")
+
+    params = split_params(signature.group("params"))
+    if len(params) != 3:
+        fail(f"CLR parameter count for WithdrawPikminFromOnion is {len(params)}, expected 3")
+
+    list_match = re.fullmatch(
+        r"(?:class\s+)?(?:\[[^\]]+\])?System\.Collections\.Generic\.List`1<(?P<arg>.+)>\s+\S+",
+        params[0],
+    )
+    if list_match is None:
+        fail(f"CLR parameter 0 is not exact List<T>: {params[0]}")
+
+    generic_arg = re.sub(r"^(?:class|valuetype)\s+", "", list_match.group("arg").strip())
+    if re.match(r"^\[[^\]]+\]", generic_arg):
+        fail(f"PikminType generic argument is assembly-qualified away from LethalMin: {generic_arg}")
+    generic_arg = generic_arg.strip("'")
+    simple_name = re.split(r"[./+]", generic_arg)[-1]
+    if simple_name != "PikminType":
+        fail(f"Metadata-derived List<T> identity is not PikminType: {generic_arg}")
+
+    if re.fullmatch(r"int32\[\]\s+\S+", params[1]) is None:
+        fail(f"CLR parameter 1 is not exact int[]: {params[1]}")
+
+    leader_match = re.fullmatch(r"(?:class|valuetype)\s+(?P<type>\S+)\s+\S+", params[2])
+    if leader_match is None:
+        fail(f"CLR parameter 2 is not parseable as exact Leader type: {params[2]}")
+    leader_type = leader_match.group("type").strip("'")
+    if leader_type.startswith("[") or leader_type != "LethalMin.Leader":
+        fail(f"CLR parameter 2 is not same-assembly LethalMin.Leader: {leader_type}")
+
+    type_probe = run(
+        ["ilspycmd", "--ilcode", "-t", generic_arg, str(dll_path)],
+        timeout=120,
+        check=False,
+    )
+    if type_probe.returncode != 0:
+        fail(
+            f"Metadata-derived PikminType '{generic_arg}' is not resolvable from the same materialized LethalMin DLL: "
+            + type_probe.stderr.decode("utf-8", errors="replace")[-2000:]
+        )
+
+    return {
+        "assembly_sha256": digest,
+        "owner_type": "LethalMin.Onion",
+        "method": "WithdrawPikminFromOnion",
+        "return_type": "System.Collections.IEnumerator",
+        "instance": True,
+        "parameter_count": 3,
+        "parameter_0_generic_definition": "System.Collections.Generic.List`1",
+        "parameter_0_generic_argument": generic_arg,
+        "parameter_0_generic_argument_simple_name": simple_name,
+        "parameter_0_generic_argument_same_assembly": True,
+        "parameter_1": "System.Int32[]",
+        "parameter_2": "LethalMin.Leader",
+    }
+
+
 TARGETS = [
     ("SlendermanMod.Behaviours.SpawnSlendermanEnemyItem", "SpawnSlenderman", "void", [], False),
     ("Kittenji.FootballEntity.TrainProp", "ForceSpawnEnemy", "void", [], False),
@@ -281,6 +376,10 @@ def main() -> int:
         fail("Diagnostic config is not default-off")
     if "PatchAll(" in source:
         fail("Broad Harmony PatchAll is forbidden")
+    if KNOWN_BAD_PIKMIN_RESOLVER in source:
+        fail("Known-bad hardcoded LethalMin PikminType resolver regression is present")
+    if "ResolveLethalMinWithdrawPikminContract" not in source or "[DIAG1_OWNER_TYPE_DERIVED]" not in source:
+        fail("Metadata-bound LethalMin PikminType owner-resolution contract is missing")
     for label in (
         '"RoundManager.SpawnEnemyGameObject(',
         '"RoundManager.SpawnEnemyOnServer(',
@@ -314,6 +413,8 @@ def main() -> int:
         "diagnostic_default": False,
         "required_markers_present": True,
         "forbidden_broad_target_labels_absent": True,
+        "known_bad_hardcoded_pikmin_resolver_absent": True,
+        "metadata_bound_pikmin_resolution_present": True,
     }
 
     base = read_zip(BASE_PROFILE)
@@ -453,6 +554,13 @@ def main() -> int:
             "assembly_sha256": digest,
         })
 
+    lethalmin_archive, lethalmin_dll, lethalmin_digest = type_to_assembly["LethalMin.Onion"]
+    report["checks"]["lethalmin_withdraw_clr_contract"] = prove_lethalmin_withdraw_clr_contract(
+        lethalmin_dll,
+        lethalmin_digest,
+    )
+    report["checks"]["lethalmin_withdraw_clr_contract"]["archive_member"] = lethalmin_archive
+
     premium_record = type_to_assembly["PremiumScraps.Utils.Effects"]
     chillax_record = type_to_assembly["ChillaxScraps.Utils.Effects"]
     if premium_record[2] != EXPECTED_PREMIUM_SHA:
@@ -512,6 +620,8 @@ def main() -> int:
         f"- Ephemeral validation profile SHA-256: `{report['checks']['ephemeral_profile']['output_sha256']}`",
         f"- Diagnostic DLL SHA-256: `{plugin_sha}`",
         f"- Exact owner targets validated: **{len(report['targets'])}**",
+        f"- LethalMin WithdrawPikminFromOnion CLR generic argument: `{report['checks']['lethalmin_withdraw_clr_contract']['parameter_0_generic_argument']}`",
+        "- Known-bad hardcoded LethalMin PikminType resolver: absent",
         f"- S139CompatibilityFixes SHA-256 preserved: `{base_s139}`",
         "- BCMER enabled event sections: `ModdedEvents.cfg:[ShyGuy]` only",
         "- PremiumScraps/Chillax caller-return invariants: re-proven by exact reviewed DLL SHA identity",
