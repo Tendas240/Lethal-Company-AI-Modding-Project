@@ -1,6 +1,7 @@
 name: Validate S1.42AI-DIAG1R1 materialized equivalence
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
@@ -71,9 +72,11 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
+          import difflib
           import hashlib
           import json
           import re
+          import subprocess
           import zipfile
           from pathlib import Path
 
@@ -92,6 +95,25 @@ jobs:
                       h.update(chunk)
               return h.hexdigest()
 
+          def run_text(args):
+              p = subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+              if p.returncode != 0:
+                  raise RuntimeError(
+                      f"{args[0]} failed ({p.returncode}) for {' '.join(args[1:])}: "
+                      + p.stderr.decode('utf-8', errors='replace')[-3000:]
+                  )
+              return p.stdout.decode('utf-8', errors='replace').replace('\r\n', '\n').replace('\r', '\n')
+
+          def normalize_il(text):
+              # PE/PDB identity metadata may differ across otherwise equivalent compilations.
+              # Normalize only recognized non-executable header comments/identifiers; method IL,
+              # type signatures, literals, member references and control flow remain byte-for-byte text checked.
+              text = re.sub(r'(?mi)^\s*//\s*MVID\s*:.*$', '// MVID: <NORMALIZED>', text)
+              text = re.sub(r'(?mi)^\s*//\s*(?:PE|COFF)?\s*Timestamp\s*:.*$', '// Timestamp: <NORMALIZED>', text)
+              text = re.sub(r'(?mi)^\s*//\s*Checksum\s*:.*$', '// Checksum: <NORMALIZED>', text)
+              text = re.sub(r'(?mi)^\s*//\s*PDB.*$', '// PDB: <NORMALIZED>', text)
+              return text
+
           actual_sha = sha(canonical)
           if actual_sha != expected_sha or result.get('output_sha256') != expected_sha:
               raise RuntimeError(f'Canonical DIAG1R1 SHA mismatch: file={actual_sha}, result={result.get("output_sha256")}')
@@ -108,8 +130,9 @@ jobs:
               raise RuntimeError(f'Canonical/ephemeral member-set mismatch: only-canonical={sorted(set(c)-set(e))}, only-ephemeral={sorted(set(e)-set(c))}')
 
           differing = [n for n in sorted(c) if c[n] != e[n]]
-          if differing != ['export.r2x']:
-              raise RuntimeError(f'Unexpected canonical/green-gate byte differences: {differing}')
+          unexpected = sorted(set(differing) - {'export.r2x', plugin})
+          if unexpected:
+              raise RuntimeError(f'Unexpected canonical/green-gate byte differences: {unexpected}')
 
           def normalize_export(data):
               text = data.decode('utf-8-sig').replace('\r\n', '\n').replace('\r', '\n')
@@ -128,13 +151,61 @@ jobs:
           if ename != 'profileName: LC V1 S1.42AI-DIAG1 ShyGuy Isolation':
               raise RuntimeError(f'Unexpected green-gate profileName line: {ename}')
 
+          out = Path('ValidationArtifacts/diag1r1-materialized')
+          out.mkdir(parents=True, exist_ok=True)
+          canonical_dll = out / 'canonical.dll'
+          ephemeral_dll = out / 'green-gate.dll'
+          canonical_dll.write_bytes(c[plugin])
+          ephemeral_dll.write_bytes(e[plugin])
           plugin_sha = hashlib.sha256(c[plugin]).hexdigest()
           ephemeral_plugin_sha = hashlib.sha256(e[plugin]).hexdigest()
           static_plugin_sha = static['checks']['ephemeral_profile']['plugin_sha256']
-          if len({plugin_sha, ephemeral_plugin_sha, static_plugin_sha}) != 1:
+          if ephemeral_plugin_sha != static_plugin_sha:
               raise RuntimeError(
-                  f'Diagnostic plugin byte mismatch: canonical={plugin_sha}, ephemeral={ephemeral_plugin_sha}, static={static_plugin_sha}'
+                  f'Green-gate plugin/result SHA mismatch: profile={ephemeral_plugin_sha}, static={static_plugin_sha}'
               )
+
+          canonical_types = run_text(['ilspycmd', '-l', 'c', str(canonical_dll)])
+          ephemeral_types = run_text(['ilspycmd', '-l', 'c', str(ephemeral_dll)])
+          if canonical_types != ephemeral_types:
+              raise RuntimeError('Canonical/green-gate diagnostic DLL class inventories differ')
+          type_names = []
+          for line in canonical_types.splitlines():
+              stripped = line.strip()
+              if stripped.startswith('Class '):
+                  type_names.append(stripped[6:].strip())
+          if not type_names:
+              raise RuntimeError('Diagnostic DLL class inventory is empty')
+
+          semantic_type_hashes = {}
+          for type_name in type_names:
+              canonical_cs = run_text(['ilspycmd', '-t', type_name, str(canonical_dll)])
+              ephemeral_cs = run_text(['ilspycmd', '-t', type_name, str(ephemeral_dll)])
+              if canonical_cs != ephemeral_cs:
+                  diff = ''.join(difflib.unified_diff(
+                      ephemeral_cs.splitlines(True), canonical_cs.splitlines(True),
+                      fromfile='green-gate.cs', tofile='canonical.cs', n=3
+                  ))[:12000]
+                  raise RuntimeError(f'Decompiled C# semantic mismatch for {type_name}:\n{diff}')
+
+              canonical_il = normalize_il(run_text(['ilspycmd', '--ilcode', '-t', type_name, str(canonical_dll)]))
+              ephemeral_il = normalize_il(run_text(['ilspycmd', '--ilcode', '-t', type_name, str(ephemeral_dll)]))
+              if canonical_il != ephemeral_il:
+                  diff = ''.join(difflib.unified_diff(
+                      ephemeral_il.splitlines(True), canonical_il.splitlines(True),
+                      fromfile='green-gate.il', tofile='canonical.il', n=3
+                  ))[:12000]
+                  raise RuntimeError(f'Normalized IL semantic mismatch for {type_name}:\n{diff}')
+              semantic_type_hashes[type_name] = hashlib.sha256(canonical_il.encode('utf-8')).hexdigest()
+
+          all_canonical_source = '\n'.join(
+              run_text(['ilspycmd', '-t', type_name, str(canonical_dll)]) for type_name in type_names
+          )
+          if 'ResolveRequiredType("LethalMin.PikminType")' in all_canonical_source:
+              raise RuntimeError('Canonical DLL decompiles with known-bad hardcoded LethalMin.PikminType resolver')
+          if '[DIAG1_OWNER_TYPE_DERIVED]' not in all_canonical_source:
+              raise RuntimeError('Canonical DLL is missing metadata-derived owner-type runtime marker')
+
           cfg = c[config].decode('utf-8-sig')
           if 'S1.42AI-DIAG1 Enabled = true' not in cfg:
               raise RuntimeError('Canonical DIAG1 diagnostic config is not enabled')
@@ -152,29 +223,40 @@ jobs:
               'canonical_profile_sha256': actual_sha,
               'ephemeral_sdk8_profile_sha256': sha(ephemeral),
               'static_gate_status': static['status'],
-              'plugin_sha256': plugin_sha,
+              'canonical_plugin_sha256': plugin_sha,
+              'green_gate_plugin_sha256': ephemeral_plugin_sha,
+              'plugin_byte_identical': plugin_sha == ephemeral_plugin_sha,
+              'plugin_class_inventory_identical': True,
+              'plugin_decompiled_csharp_identical_per_type': True,
+              'plugin_normalized_il_identical_per_type': True,
+              'plugin_semantic_type_hashes': semantic_type_hashes,
               'zip_members': len(c),
-              'byte_identical_members_except_export_profile_name': len(c) - 1,
-              'only_differing_member': 'export.r2x',
+              'byte_identical_members_excluding_plugin_and_export': len(c) - 2,
+              'allowed_nonidentical_members': sorted(set(differing)),
               'export_difference': 'profileName only',
               'metadata_derived_pikmin_type': contract['parameter_0_generic_argument'],
               'metadata_derived_pikmin_type_same_assembly': True,
-              'known_bad_hardcoded_resolver_absent': static['checks']['plugin_source']['known_bad_hardcoded_pikmin_resolver_absent'],
+              'known_bad_hardcoded_resolver_absent_from_source_gate': static['checks']['plugin_source']['known_bad_hardcoded_pikmin_resolver_absent'],
+              'known_bad_hardcoded_resolver_absent_from_canonical_dll': True,
           }
-          out = Path('ValidationArtifacts/diag1r1-materialized')
-          out.mkdir(parents=True, exist_ok=True)
           (out / 'MATERIALIZED_VALIDATION.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
           (out / 'MATERIALIZED_VALIDATION.md').write_text(
               '# S1.42AI-DIAG1R1 materialized validation\n\n'
               f"- Status: **{report['status']}**\n"
               f"- Canonical profile SHA-256: `{actual_sha}`\n"
-              f"- Diagnostic DLL SHA-256: `{plugin_sha}`\n"
+              f"- Canonical diagnostic DLL SHA-256: `{plugin_sha}`\n"
+              f"- Green-gate diagnostic DLL SHA-256: `{ephemeral_plugin_sha}`\n"
+              f"- Plugin byte-identical: **{report['plugin_byte_identical']}**\n"
+              f"- Plugin decompiled C# identical for all {len(type_names)} classes: **true**\n"
+              f"- Plugin normalized IL identical for all {len(type_names)} classes: **true**\n"
               f"- ZIP members: **{len(c)}**\n"
-              f"- All members except `export.r2x`: byte-identical to the SDK8 green-gate materialization\n"
+              f"- All non-plugin members except `export.r2x`: byte-identical to the SDK8 green-gate materialization\n"
               f"- `export.r2x`: profileName-only difference\n"
               f"- Metadata-derived PikminType: `{contract['parameter_0_generic_argument']}`\n",
               encoding='utf-8'
           )
+          canonical_dll.unlink()
+          ephemeral_dll.unlink()
           print(json.dumps(report, indent=2))
           PY
 
