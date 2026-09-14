@@ -50,7 +50,7 @@ S1.42AI remains unaccepted. Its full-normal BCMER ShyGuy gate in `Current/143_S1
 
 ## Canonical Gale workflow
 
-Whenever a future repaired successor becomes ready for runtime testing, use the repository-driven **Gale v2.4** replacement/import workflow in `Knowledge/GALE_PROFILE_WORKFLOW.md`, implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`. The ready-to-test response must supply that repository-driven import one-liner together with the exact successor-build-specific one-line PowerShell runtime-log uploader. No Gale import or new gameplay run is required while the DIAG1 repair is still pending.
+Whenever a future repaired successor becomes ready for runtime testing, use the repository-driven **Gale v2.4** replacement/import workflow in `Knowledge/GALE_PROFILE_WORKFLOW.md`, implemented by `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at canonical helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. The ready-to-test response must supply that repository-driven import one-liner together with the exact successor-build-specific one-line PowerShell runtime-log uploader. No Gale import or new gameplay run is required while the DIAG1 repair is still pending.
 
 ## Exact next project action
 
