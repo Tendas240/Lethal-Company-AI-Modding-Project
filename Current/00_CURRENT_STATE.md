@@ -21,7 +21,7 @@ Runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
 
 ## Latest built artifact
 
-**S1.42AI-DIAG1R1 — ShyGuy Isolation Diagnostic Owner Type Resolution Repair — RUNTIME DIAGNOSTIC FAILED COMPLEX OWNER TARGET RESOLUTION REPAIR ANALYSIS REQUIRED NOT ACCEPTED**
+**S1.42AI-DIAG1R1 — ShyGuy Isolation Diagnostic Owner Type Resolution Repair — RUNTIME DIAGNOSTIC FAILED COMPLEX OWNER TARGET RESOLUTION APPLICABILITY REPAIR LANDED NOT ACCEPTED**
 
 Profile: `Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z`  
 SHA-256: `b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd`  
@@ -34,13 +34,13 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1R1_RUNTIME_FAILURE_AWAITING_REPAIR_ANALYSIS`)
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1R1_APPLICABILITY_REPAIR_LANDED_AWAITING_SUCCESSOR_DETERMINATION`)
 - Guarded build base: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z` / `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R1`
 
 ## Exact next action
 
-Analyze repository-native why S1.42AI-DIAG1R1 required the exact complex-owner type ElevatorMod.Patches.EndlessElevator although that type was absent at runtime. Reconcile the installed profile/package reality with the static/materialized validation contract, determine the exact safe repair without guessed CLR identities, and only then build/validate a successor diagnostic candidate if required. No gameplay test is currently outstanding. The full-normal S1.42AI gate remains deferred, not waived.
+The exact EndlessElevator applicability repair is landed on main via PR #91 at ef3842e5e1766afdd5db77c232b34c0e7c7d3105 and its permanent static/materialized gate is green. First verify this canonical Current/Lifecycle transition on the final main Exact-HEAD Knowledge Architecture gate. Only after that, determine repository-native whether a successor diagnostic build is required and permissible and, if so, its exact successor identity/controller transition. Do not build or request gameplay before that determination. The full-normal S1.42AI gate remains deferred, not waived.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
