@@ -10,6 +10,8 @@ on:
       - 'BuildSpecs/generate_s142ai_diag1_spec.py'
       - 'AnalysisTools/validate_s142ai_diag1_static.py'
       - 'AnalysisTools/validate_s142ai_diag1_static_bound.py'
+      - 'AnalysisTools/validate_s142ai_diag1_materialized_applicability.py'
+      - 'AnalysisEvidence/S1.42AI-DIAG1R1/ENDLESS_ELEVATOR_APPLICABILITY.json'
       - '.github/workflows/s142ai-diag1-static-validation.yml'
   workflow_dispatch:
 
@@ -73,6 +75,12 @@ jobs:
       - name: Run exact DIAG1 static gate
         run: python AnalysisTools/validate_s142ai_diag1_static_bound.py
 
+      - name: Prove materialized EndlessElevator applicability semantics
+        env:
+          DIAG1_MATERIALIZED_PROFILE: ${{ env.DIAG1_VALIDATION_PROFILE }}
+          DIAG1_MATERIALIZED_APPLICABILITY_OUT: ValidationArtifacts/materialized-applicability.json
+        run: python AnalysisTools/validate_s142ai_diag1_materialized_applicability.py
+
       - name: Assert live controllers/results were not modified
         run: git diff --exit-code -- BuildSpecs/current.json RuntimeInbox/ACTIVE_BUILD.txt Current/AUTO_BUILD_RESULT.json Current/AUTO_BUILD_RESULT.md
 
@@ -86,5 +94,6 @@ jobs:
             BuildSpecs/S1.42AI-DIAG1_DRAFT.json
             ValidationArtifacts/diag1-validation-result.json
             ValidationArtifacts/diag1-validation-result.md
+            ValidationArtifacts/materialized-applicability.json
           if-no-files-found: warn
           retention-days: 90
