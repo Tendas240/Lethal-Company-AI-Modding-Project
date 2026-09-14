@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-13  
+**Updated:** 2026-09-14  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -21,7 +21,7 @@ Runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
 
 ## Latest built artifact
 
-**S1.42AI-DIAG1 — ShyGuy Isolation Diagnostic — BUILD PASS STATIC AND MATERIALIZED DELTA VERIFIED RUNTIME VALIDATION OUTSTANDING**
+**S1.42AI-DIAG1 — ShyGuy Isolation Diagnostic — RUNTIME DIAGNOSTIC FAILED REPAIR REQUIRED NOT ACCEPTED**
 
 Profile: `Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z`  
 SHA-256: `22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd`  
@@ -31,18 +31,18 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Live execution state
 
-- Active candidate: **S1.42AI-DIAG1**
-- Runtime test outstanding: **yes**
+- Active candidate: **none**
+- Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1_BUILD_AWAITING_RUNTIME_VALIDATION`)
-- Guarded build base: `Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z` / `22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1_RUNTIME_FAILURE_AWAITING_REPAIR`)
+- Guarded build base: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z` / `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1`
 
 ## Exact next action
 
-Runtime-test S1.42AI-DIAG1 as the active temporary diagnostic candidate. Verify DIAG1 startup/identity/config/guard markers, exercise the ShyGuy-only round, fail on any DIAG1_ISOLATION_BYPASS or unexpected non-ShyGuy enemy, preserve ShyGuy observability, then upload the exact DIAG1 LogOutput.log. Diagnostic success does not accept S1.42AI; its full-normal BCMER ShyGuy gate remains required afterward.
+Repair the S1.42AI-DIAG1 owner type-resolution contract and its static gate before any further gameplay test. Remove the hardcoded LethalMin.PikminType assumption, derive and validate the exact List<T> generic argument from the declared LethalMin.Onion.WithdrawPikminFromOnion method metadata with fail-closed checks, harden AnalysisTools/validate_s142ai_diag1_static.py to prove the corresponding CLR parameter contract against the materialized LethalMin DLL, then build and validate a successor diagnostic candidate repository-native. Do not rerun the current S1.42AI-DIAG1 profile unchanged.
 
-A runtime test is pending for S1.42AI-DIAG1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
