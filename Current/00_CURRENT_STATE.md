@@ -35,7 +35,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Runtime test outstanding: **no**
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1_RUNTIME_FAILURE_AWAITING_REPAIR`)
-- Guarded build base: `Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z` / `22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd`
+- Guarded build base: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z` / `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1`
 
 ## Exact next action
