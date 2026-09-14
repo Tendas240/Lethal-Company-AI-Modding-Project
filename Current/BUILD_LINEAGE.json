@@ -1,10 +1,10 @@
 {
   "schema_version": 3,
-  "date": "2026-09-13",
+  "date": "2026-09-14",
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AH",
-  "active_candidate_build_id": "S1.42AI-DIAG1",
+  "active_candidate_build_id": null,
   "latest_built_artifact_id": "S1.42AI-DIAG1",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
@@ -557,7 +557,7 @@
     {
       "id": "S1.42AI",
       "title": "BCMER ShyGuy Interior-Only Event Correction",
-      "status": "active-runtime-candidate",
+      "status": "deferred-full-normal-runtime-gate-not-waived",
       "parent": "S1.42AH",
       "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
       "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
@@ -569,23 +569,25 @@
       "build_commit": "2dea753ec48ea2a8f417491ae9a13cf7a6d7b8b9",
       "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "safe_as_gameplay_base": false,
-      "principal_feature": "single-variable BCMER ShyGuy interior-only event correction; three exterior event values zeroed while all interior/event/type and Scopophobia contracts remain unchanged"
+      "principal_feature": "single-variable BCMER ShyGuy interior-only event correction; full-normal runtime gate remains mandatory but deferred while the diagnostic repair path is resolved"
     },
     {
       "id": "S1.42AI-DIAG1",
       "title": "ShyGuy Isolation Diagnostic",
-      "status": "active-diagnostic-runtime-candidate",
+      "status": "runtime-failed-diagnostic-repair-required",
       "parent": "S1.42AI",
       "profile": "Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z",
       "sha256": "22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd",
       "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
       "candidate_record": "Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md",
-      "decision_record": "Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md",
+      "decision_record": "Current/145_S1.42AI-DIAG1_RUNTIME_FAILURE_OWNER_TYPE_RESOLUTION.md",
       "project_status": "Current/Projektstatus_S1.42AI-DIAG1_CANDIDATE.json",
+      "runtime_evidence": "RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z/",
+      "runtime_log_sha256": "0125f1ff1f16b99fa2531374bbfbc1a1294ec4918b22e67aed804ad1e41ebe49",
       "workflow_run": 34777833867,
       "build_commit": "1018ac909435a51f1b98ceb9dfdad0599dc4dcc4",
       "safe_as_gameplay_base": false,
-      "principal_feature": "temporary ShyGuy-only diagnostic isolation using exact reviewed config gates and narrow package/native owner guards"
+      "principal_feature": "temporary ShyGuy isolation diagnostic; runtime owner prevalidation failed on the hardcoded LethalMin.PikminType assumption and DIAG1 rolled back all of its own Harmony hooks, so source/static-gate repair is required before a successor diagnostic test"
     }
   ],
   "feature_index": {
@@ -624,6 +626,8 @@
     "S1.42AE was superseded for packaging/path-length reasons, not runtime-rejected for Microwave logic; its corrected source contract was reused by S1.42AF.",
     "S1.42AF was built directly from accepted S1.42AC, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and remains the accepted predecessor/rollback point after S1.42AH promotion.",
     "S1.42AG was built directly from accepted S1.42AF. Runtime proved its exact MouthDogPikminEnemy.DoCheckInterval guard blocks the LethalMin bite/grab/death-timer mutation path, but the candidate is rejected because a Mouth Dog still targeted/attacked a scrap-carrying Purple Pikmin through an unresolved path; it is not a safe gameplay base.",
-    "S1.42AH was built directly from accepted S1.42AF, not rejected S1.42AG. Its dual exact MouthDog prevention passed targeted adapter, player, reverse-direction Pikmin lifecycle and final non-Pikmin EnemyAI neighbor coverage; Current/142 explicitly accepts it as the current full-normal-stack gameplay baseline."
+    "S1.42AH was built directly from accepted S1.42AF, not rejected S1.42AG. Its dual exact MouthDog prevention passed targeted adapter, player, reverse-direction Pikmin lifecycle and final non-Pikmin EnemyAI neighbor coverage; Current/142 explicitly accepts it as the current full-normal-stack gameplay baseline.",
+    "S1.42AI remains unaccepted with its full-normal BCMER ShyGuy runtime gate deferred but not waived while the DIAG1 repair path is resolved.",
+    "S1.42AI-DIAG1 has an explicit failed diagnostic runtime decision in Current/145; it must not be rerun unchanged or treated as an active runtime candidate."
   ]
 }
