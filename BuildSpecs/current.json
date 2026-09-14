@@ -1,6 +1,6 @@
 {
   "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42AI-DIAG1_BUILD_AWAITING_RUNTIME_VALIDATION",
+  "build_id": "IDLE_AFTER_S1.42AI-DIAG1_RUNTIME_FAILURE_AWAITING_REPAIR",
   "base_profile": "Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z",
   "base_sha256": "22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",
