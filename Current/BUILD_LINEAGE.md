@@ -9,10 +9,10 @@
 ## Current lineage head
 
 - **Accepted gameplay baseline:** S1.42AH — Mouth Dog Pikmin Dual Prevention — **ACCEPTED FULL NORMAL STACK**.
-- **Latest built artifact:** S1.42AI-DIAG1 — ShyGuy Isolation Diagnostic — **RUNTIME DIAGNOSTIC FAILED / REPAIR REQUIRED / NOT ACCEPTED**.
-- **Active candidate:** none.
-- **Deferred full-normal gate:** S1.42AI — still mandatory after the diagnostic repair path is resolved.
-- **Current action:** repair the DIAG1 owner type-resolution and static-validation contract from `Current/145_S1.42AI-DIAG1_RUNTIME_FAILURE_OWNER_TYPE_RESOLUTION.md`, then build a successor diagnostic candidate. No runtime test is currently outstanding; do not rerun S1.42AI-DIAG1 unchanged.
+- **Latest built artifact:** S1.42AI-DIAG1R1 — ShyGuy Isolation Diagnostic Owner Type Resolution Repair — **ACTIVE DIAGNOSTIC RUNTIME CANDIDATE / NOT ACCEPTED**.
+- **Active candidate:** S1.42AI-DIAG1R1.
+- **Deferred full-normal gate:** S1.42AI — still mandatory after the R1 diagnostic decision.
+- **Current action:** run the R1 diagnostic gameplay gate, then upload the fresh complete R1 `LogOutput.log` for repository-native ingestion and decision. Do not rerun failed S1.42AI-DIAG1 unchanged.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -65,6 +65,7 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AH | **ACCEPTED CURRENT BASELINE** | Dual exact MouthDog adapter + Vanilla Pikmin collision prevention; targeted runtime preserved player, reverse Pikmin lifecycle and final non-Pikmin EnemyAI neighbor behavior. |
 | S1.42AI | **DEFERRED FULL-NORMAL RUNTIME GATE / NOT ACCEPTED** | Single-variable BCMER ShyGuy interior-only correction from accepted S1.42AH; exact static delta verified; full-normal runtime gate remains mandatory but deferred while the diagnostic repair path is resolved. |
 | S1.42AI-DIAG1 | **RUNTIME DIAGNOSTIC FAILED / REPAIR REQUIRED / NOT ACCEPTED** | Temporary exact ShyGuy isolation diagnostic built from S1.42AI. Build/static/materialized delta passed, but runtime owner prevalidation could not resolve the hardcoded `LethalMin.PikminType`, DIAG1 marked itself invalid and rolled back all of its own Harmony hooks. Repair source/static validation before any successor diagnostic test. |
+| S1.42AI-DIAG1R1 | **ACTIVE DIAGNOSTIC RUNTIME CANDIDATE / NOT ACCEPTED** | Repaired DIAG1 successor built directly from S1.42AI. Exact `WithdrawPikminFromOnion` `List<T>` owner type is metadata-derived; strengthened static and materialized equivalence gates pass; runtime evidence is now outstanding. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -237,6 +238,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 | Functional Microwave path-length-safe packaging | S1.42AF |
 | Mouth Dog LethalMin bite/grab/death-timer path prevention partial fix | S1.42AG rejection evidence / `Current/134...` |
 | Mouth Dog dual Pikmin prevention with native reverse and non-Pikmin neighbor behavior preserved | S1.42AH / `Current/142...` |
+| ShyGuy isolation diagnostic owner-type resolution repair | S1.42AI-DIAG1R1 / `Current/146...` |
 
 ## Parentage rules that matter
 
@@ -251,5 +253,6 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - S1.42AH was built **directly from accepted S1.42AF**, not from rejected S1.42AG. Targeted runtime coverage plus the final non-Pikmin neighbor pass are explicitly accepted in `Current/142...`; S1.42AH is the current full-normal-stack gameplay baseline.
 - S1.42AI remains unaccepted; its full-normal BCMER ShyGuy runtime gate is deferred but not waived while the DIAG1 repair path is resolved.
 - S1.42AI-DIAG1 has an explicit failed diagnostic runtime decision in `Current/145...`; it must not be rerun unchanged or treated as an active runtime candidate.
+- S1.42AI-DIAG1R1 was built **directly from S1.42AI**, not from the failed S1.42AI-DIAG1 profile bytes. It repairs only the diagnostic owner type-resolution/static-gate contract and is an active diagnostic runtime candidate, not a safe gameplay base; the deferred full-normal S1.42AI gate remains mandatory.
 
 When an exact artifact/hash/status is not indexed here or in `Current/BUILD_LINEAGE.json`, open the linked build-specific record rather than inferring it from build-name order.

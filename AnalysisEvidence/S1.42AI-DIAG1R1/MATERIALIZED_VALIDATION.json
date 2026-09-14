@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "PASS_CANONICAL_DIAG1R1_MATERIALIZED_EQUIVALENCE",
+  "build_id": "S1.42AI-DIAG1R1",
+  "canonical_profile": "Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z",
+  "canonical_profile_sha256": "b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd",
+  "canonical_build_workflow_run": 34822019162,
+  "canonical_build_commit": "8329579d3481ab27db6407d2659ceb467eebd203",
+  "postbuild_validation_workflow_run": 34822644436,
+  "postbuild_validation_artifact_id": 10338433359,
+  "postbuild_validation_artifact_sha256": "d849de39ddfe0398bbdbdd25d2f26def27af7f36f7bc304e4b337085a2f67c23",
+  "static_gate_status": "PASS_PREBUILD_STATIC_GATE",
+  "canonical_plugin_sha256": "2d1b6e8a002eb55e0e6d935e36c0a619d1c875651b94afb9e748663af93c1de0",
+  "green_gate_plugin_sha256": "557f4e44385570b898f302e2e984f34263cdff3d00f8db68d30dcb25556faf2a",
+  "plugin_byte_identical": false,
+  "plugin_class_inventory_identical": true,
+  "plugin_decompiled_csharp_identical_per_type": true,
+  "plugin_normalized_il_identical_per_type": true,
+  "zip_members": 337,
+  "byte_identical_members_excluding_plugin_and_export": 335,
+  "allowed_nonidentical_members": [
+    "BepInEx/plugins/Tendas-S142AIDiag1Isolation/S142AIDiag1Isolation.dll",
+    "export.r2x"
+  ],
+  "export_difference": "profileName only",
+  "metadata_derived_pikmin_type": "LethalMin.Pikmin.PikminType",
+  "metadata_derived_pikmin_type_same_assembly": true,
+  "known_bad_hardcoded_resolver_absent_from_source_gate": true,
+  "known_bad_hardcoded_resolver_absent_from_canonical_dll": true,
+  "qualification": "The two .NET 8 plugin compilations have different PE bytes, but the post-build gate proves identical class inventory, identical pinned-ILSpy decompiled C# per class, and identical normalized IL per class; all remaining archive members are byte-bound, with export.r2x restricted to profileName-only drift."
+}
