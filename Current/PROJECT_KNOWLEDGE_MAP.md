@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1 candidate=S1.42AI-DIAG1 runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1 candidate=none runtime_test_outstanding=false -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
 **Current State:** `Current/00_CURRENT_STATE.md`
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
-**Last-Validated:** 2026-09-13
+**Last-Validated:** 2026-09-14
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -36,11 +36,13 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
 
-Latest built artifact and active temporary diagnostic runtime candidate: **S1.42AI-DIAG1 — ShyGuy Isolation Diagnostic — NOT ACCEPTED**. Runtime diagnostic validation is outstanding. Candidate authority: `Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md`; implementation/runtime contract: `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md`.
+Latest built artifact: **S1.42AI-DIAG1 — ShyGuy Isolation Diagnostic — runtime diagnostic failed / repair required / NOT ACCEPTED**. There is currently **no active runtime candidate** and **no runtime test outstanding**. Failure authority: `Current/145_S1.42AI-DIAG1_RUNTIME_FAILURE_OWNER_TYPE_RESOLUTION.md`; original build authority: `Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md`; implementation/runtime contract: `AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md`.
 
-`BuildSpecs/current.json` is disabled and guards the exact DIAG1 profile/SHA; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1` attributes the next runtime evidence to the diagnostic candidate.
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1_RUNTIME_FAILURE_AWAITING_REPAIR`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1` is only the last evidence-attribution pointer and does not make DIAG1 an active candidate.
 
-The DIAG1 implementation/static/build stage is complete. The next action is the bounded DIAG1 runtime diagnostic. The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived; diagnostic success cannot replace it. Use `Knowledge/CURRENT_LIFECYCLE.md` for execution order.
+The next action is a bounded source/static-gate repair: remove the hardcoded `LethalMin.PikminType` runtime assumption, derive the exact `List<T>` argument from `LethalMin.Onion.WithdrawPikminFromOnion` metadata with fail-closed checks, strengthen the static validator to prove the CLR contract against the materialized LethalMin DLL, and only then build a successor diagnostic candidate. Do not rerun the current DIAG1 profile unchanged.
+
+The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived.
 
 ## Authority rule
 
