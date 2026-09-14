@@ -1,12 +1,12 @@
-# Automated profile build result - S1.42AI-DIAG1
+# Automated profile build result - S1.42AI-DIAG1R1
 
-- Profile: LC V1 S1.42AI-DIAG1 ShyGuy Isolation
+- Profile: LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair
 - Base: Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z
 - Base SHA-256: d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2
-- Output: Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z
-- Output SHA-256: 22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd
+- Output: Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z
+- Output SHA-256: b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd
 - ZIP members: 337
-- Text snapshot: ProfileSources/S1.42AI-DIAG1 (331 readable files)
+- Text snapshot: ProfileSources/S1.42AI-DIAG1R1 (331 readable files)
 
 ## Changed existing members
 

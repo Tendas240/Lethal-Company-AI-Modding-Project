@@ -1,0 +1,20 @@
+{
+  "modAuthor": "Magic Wesley",
+  "modName": "Hallowed content",
+  "configOptions": [
+    {
+      "configName": "Disable the trials",
+      "configCategory": "Gameplay",
+      "configDescription": "When checked, disables all trial related content",
+      "type": "bool",
+      "defaultValue": "false"
+    },
+    {
+      "configName": "Only on trial moons",
+      "configCategory": "Gameplay",
+      "configDescription": "When checked, only allows trials to spawn on moons tagged with 'Trials'",
+      "type": "bool",
+      "defaultValue": "true"
+    }
+  ]
+}
