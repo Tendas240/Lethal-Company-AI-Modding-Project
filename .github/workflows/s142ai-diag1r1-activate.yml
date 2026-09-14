@@ -46,6 +46,7 @@ jobs:
         run: |
           python RepositoryTools/activate_s142ai_diag1r1.py
           python RepositoryTools/activate_s142ai_diag1r1_lineage.py
+          python RepositoryTools/activate_s142ai_diag1r1_gale_route.py
 
       - name: Render generated live navigation
         run: python RepositoryTools/render_current_navigation.py
