@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using BepInEx.Bootstrap;
 using HarmonyLib;
 using Unity.Netcode;
 using UnityEngine;
@@ -151,25 +152,10 @@ namespace S142AIDiag1Isolation
                 expectedStatic: false,
                 nameof(ComplexOwnerGuardPatches.CodeRebirthXuiTranspiler));
 
-            // LethalMinNightly 1.1.108 remaining iterator owner. Exact installed source
-            // anchors the foreign parameter type as ElevatorMod.Patches.EndlessElevator.
-            Type endlessElevator = ResolveRequiredType("ElevatorMod.Patches.EndlessElevator");
-            if (endlessElevator == null)
-            {
-                valid = false;
-            }
-            else
-            {
-                valid &= AddPrefix(
-                    targets,
-                    "LethalMin EndlessElevatorPatch.WaitRespawnPikmin(EndlessElevator)",
-                    "LethalMin.Compats.EndlessElevatorPatch",
-                    "WaitRespawnPikmin",
-                    new[] { endlessElevator },
-                    typeof(IEnumerator),
-                    expectedStatic: true,
-                    nameof(ComplexOwnerGuardPatches.BlockIteratorOwnerPrefix));
-            }
+            // LethalMinNightly 1.1.108 compiles this compatibility owner even when its
+            // foreign provider is absent. Mirror LethalMin's exact CompatClass gate:
+            // kite.ZelevatorCode absent => NOT_APPLICABLE; present => exact target required.
+            valid &= AddEndlessElevatorCompatTarget(targets);
 
             if (!valid)
             {
@@ -199,6 +185,89 @@ namespace S142AIDiag1Isolation
                 }
             }
 
+            return true;
+        }
+
+        private const string EndlessElevatorDependencyGuid = "kite.ZelevatorCode";
+        private const string EndlessElevatorProviderAssemblyName = "kite.ZelevatorCode";
+        private const string EndlessElevatorProviderTypeName = "ElevatorMod.Patches.EndlessElevator";
+        private const string EndlessElevatorOwnerTypeName = "LethalMin.Compats.EndlessElevatorPatch";
+        private const string EndlessElevatorOwnerAssemblyName = "NoteBoxz.LethalMin";
+
+        private static bool AddEndlessElevatorCompatTarget(List<Target> targets)
+        {
+            const string label = "LethalMin EndlessElevatorPatch.WaitRespawnPikmin(EndlessElevator)";
+
+            // Exact LethalMin 1.1.108 source uses CompatClass("kite.ZelevatorCode") and
+            // IsDependencyLoaded -> Chainloader.PluginInfos.ContainsKey. Do not touch the
+            // foreign CLR type unless that exact dependency is applicable in this runtime.
+            if (!Chainloader.PluginInfos.TryGetValue(EndlessElevatorDependencyGuid, out var pluginInfo))
+            {
+                Plugin.Log.LogInfo(
+                    $"[DIAG1_COMPLEX_TARGET_NOT_APPLICABLE] {label}: exact LethalMin CompatClass dependency '{EndlessElevatorDependencyGuid}' is not loaded.");
+                return true;
+            }
+
+            if (pluginInfo == null ||
+                pluginInfo.Metadata == null ||
+                !string.Equals(pluginInfo.Metadata.GUID, EndlessElevatorDependencyGuid, StringComparison.Ordinal) ||
+                pluginInfo.Instance == null)
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_COMPLEX_TARGET_INVALID] {label}: dependency '{EndlessElevatorDependencyGuid}' is registered but its exact loaded PluginInfo/instance contract did not validate.");
+                return false;
+            }
+
+            Assembly providerAssembly = pluginInfo.Instance.GetType().Assembly;
+            string providerAssemblyName = providerAssembly.GetName().Name;
+            if (!string.Equals(providerAssemblyName, EndlessElevatorProviderAssemblyName, StringComparison.Ordinal))
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_COMPLEX_TARGET_INVALID] {label}: dependency '{EndlessElevatorDependencyGuid}' resolved from assembly '{providerAssemblyName}', expected exact provider assembly '{EndlessElevatorProviderAssemblyName}'.");
+                return false;
+            }
+
+            Type endlessElevator = providerAssembly.GetType(
+                EndlessElevatorProviderTypeName,
+                throwOnError: false,
+                ignoreCase: false);
+            if (endlessElevator == null ||
+                endlessElevator.Assembly != providerAssembly ||
+                !string.Equals(endlessElevator.FullName, EndlessElevatorProviderTypeName, StringComparison.Ordinal))
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_COMPLEX_TARGET_INVALID] {label}: applicable provider assembly '{EndlessElevatorProviderAssemblyName}' did not expose exact CLR type '{EndlessElevatorProviderTypeName}'.");
+                return false;
+            }
+
+            Type owner = ResolveRequiredType(EndlessElevatorOwnerTypeName);
+            if (owner == null ||
+                !string.Equals(owner.Assembly.GetName().Name, EndlessElevatorOwnerAssemblyName, StringComparison.Ordinal))
+            {
+                Plugin.Log.LogError(
+                    $"[DIAG1_COMPLEX_TARGET_INVALID] {label}: exact owner '{EndlessElevatorOwnerTypeName}' was not resolved from assembly '{EndlessElevatorOwnerAssemblyName}'.");
+                return false;
+            }
+
+            MethodInfo original = ResolveExactDeclaredMethod(
+                label,
+                EndlessElevatorOwnerTypeName,
+                "WaitRespawnPikmin",
+                new[] { endlessElevator },
+                typeof(IEnumerator),
+                expectedStatic: true);
+            MethodInfo prefix = ResolveOwnPatchMethod(nameof(ComplexOwnerGuardPatches.BlockIteratorOwnerPrefix));
+            if (original == null || original.DeclaringType != owner || prefix == null)
+                return false;
+
+            targets.Add(new Target
+            {
+                Label = label,
+                Original = original,
+                Prefix = new HarmonyMethod(prefix) { priority = Priority.First }
+            });
+            Plugin.Log.LogInfo(
+                $"[DIAG1_COMPLEX_TARGET_APPLICABLE] {label}: dependency='{EndlessElevatorDependencyGuid}', providerAssembly='{providerAssemblyName}', providerType='{endlessElevator.FullName}'.");
             return true;
         }
 
