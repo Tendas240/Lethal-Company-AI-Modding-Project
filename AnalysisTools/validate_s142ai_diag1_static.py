@@ -26,6 +26,16 @@ EXPECTED_CHILLAX_SHA = "1a448aaf93af58da00f16e7e7acf0c7e69b1bb564f084dc64020d061
 PLUGIN_ARCHIVE_PATH = "BepInEx/plugins/Tendas-S142AIDiag1Isolation/S142AIDiag1Isolation.dll"
 DIAG_CONFIG_PATH = "BepInEx/config/tendas.s142ai.diag1.isolation.cfg"
 KNOWN_BAD_PIKMIN_RESOLVER = 'ResolveRequiredType("LethalMin.PikminType")'
+ENDLESS_APPLICABILITY_EVIDENCE = ROOT / "AnalysisEvidence/S1.42AI-DIAG1R1/ENDLESS_ELEVATOR_APPLICABILITY.json"
+R1_PROFILE = ROOT / "Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z"
+R1_RUNTIME_LOG = ROOT / "RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z/raw/LogOutput.log"
+EXPECTED_R1_PROFILE_SHA = "b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd"
+EXPECTED_R1_RUNTIME_LOG_SHA = "173eefaea3a81f84e82f210066a2b034655220d951b5a66c7bb7614895737635"
+EXPECTED_LETHALMIN_SHA = "9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df"
+ENDLESS_OWNER_TYPE = "LethalMin.Compats.EndlessElevatorPatch"
+ENDLESS_DEPENDENCY_GUID = "kite.ZelevatorCode"
+ENDLESS_PROVIDER_ASSEMBLY = "kite.ZelevatorCode"
+ENDLESS_PROVIDER_TYPE = "ElevatorMod.Patches.EndlessElevator"
 
 OUT.mkdir(parents=True, exist_ok=True)
 
@@ -271,6 +281,98 @@ def prove_lethalmin_withdraw_clr_contract(dll_path: Path, digest: str) -> dict:
     }
 
 
+def prove_endless_elevator_applicability_contract(dll_path: Path, digest: str) -> dict:
+    if digest != EXPECTED_LETHALMIN_SHA:
+        fail(f"LethalMin exact DLL SHA changed: {digest} != {EXPECTED_LETHALMIN_SHA}")
+
+    owner_source = run(
+        ["ilspycmd", "-t", ENDLESS_OWNER_TYPE, str(dll_path)],
+        timeout=120,
+    ).stdout.decode("utf-8", errors="replace")
+    exact_attr = f'[CompatClass("{ENDLESS_DEPENDENCY_GUID}")]'
+    if owner_source.count(exact_attr) != 1:
+        fail(f"EndlessElevator exact CompatClass attribute mismatch: {exact_attr}")
+    if owner_source.count("[HarmonyPatch(typeof(EndlessElevator))]") != 1:
+        fail("EndlessElevator owner no longer has one exact HarmonyPatch(typeof(EndlessElevator)) anchor")
+    method_signature(owner_source, "WaitRespawnPikmin", "IEnumerator", ["EndlessElevator"], True)
+
+    owner_il = run(
+        ["ilspycmd", "--ilcode", "-t", ENDLESS_OWNER_TYPE, str(dll_path)],
+        timeout=120,
+    ).stdout.decode("utf-8", errors="replace")
+    header = il_declared_method_header(owner_il, "WaitRespawnPikmin")
+    exact_typeref = f"[{ENDLESS_PROVIDER_ASSEMBLY}]{ENDLESS_PROVIDER_TYPE}"
+    if exact_typeref not in header:
+        fail(f"EndlessElevator CLR TypeRef mismatch; expected {exact_typeref} in {header}")
+
+    plugin_source = run(
+        ["ilspycmd", "-t", "LethalMin.LethalMin", str(dll_path)],
+        timeout=120,
+    ).stdout.decode("utf-8", errors="replace")
+    _dep_match, dep_body = method_signature(plugin_source, "IsDependencyLoaded", "bool", ["string"], True)
+    dep_compact = re.sub(r"\s+", "", dep_body)
+    if "returnChainloader.PluginInfos.ContainsKey(pluginGUID);" not in dep_compact:
+        fail("LethalMin IsDependencyLoaded no longer maps exactly to Chainloader.PluginInfos.ContainsKey(pluginGUID)")
+
+    _patch_match, patch_body = method_signature(plugin_source, "Patch", "void", [], True)
+    patch_compact = re.sub(r"\s+", "", patch_body)
+    for token in (
+        "GetCustomAttribute<CompatClassAttribute>()",
+        "stringmodGUID=customAttribute.ModGUID;",
+        "if(!IsDependencyLoaded(modGUID))",
+        "Harmony.PatchAll(type);",
+    ):
+        if token not in patch_compact:
+            fail(f"LethalMin CompatClass activation lifecycle drifted; missing token {token}")
+
+    if not ENDLESS_APPLICABILITY_EVIDENCE.exists():
+        fail("Canonical EndlessElevator applicability evidence is missing")
+    evidence = json.loads(ENDLESS_APPLICABILITY_EVIDENCE.read_text(encoding="utf-8"))
+    required = {
+        "dependency_guid": ENDLESS_DEPENDENCY_GUID,
+        "provider_assembly": ENDLESS_PROVIDER_ASSEMBLY,
+        "provider_type": ENDLESS_PROVIDER_TYPE,
+        "owner_type": ENDLESS_OWNER_TYPE,
+        "owner_assembly_sha256": EXPECTED_LETHALMIN_SHA,
+        "r1_profile_sha256": EXPECTED_R1_PROFILE_SHA,
+        "r1_runtime_log_sha256": EXPECTED_R1_RUNTIME_LOG_SHA,
+    }
+    for key, expected in required.items():
+        if evidence.get(key) != expected:
+            fail(f"EndlessElevator applicability evidence drift for {key}: {evidence.get(key)!r} != {expected!r}")
+    if evidence.get("applicability") != "NOT_APPLICABLE_DEPENDENCY_ABSENT":
+        fail("EndlessElevator canonical applicability is not dependency-absent NOT_APPLICABLE")
+
+    if sha256_file(R1_PROFILE) != EXPECTED_R1_PROFILE_SHA:
+        fail("R1 profile SHA drift while proving EndlessElevator applicability")
+    if sha256_file(R1_RUNTIME_LOG) != EXPECTED_R1_RUNTIME_LOG_SHA:
+        fail("R1 runtime log SHA drift while proving EndlessElevator applicability")
+    runtime_text = R1_RUNTIME_LOG.read_text(encoding="utf-8", errors="replace")
+    runtime_needle = (
+        "Skipping method WaitRespawnPikmin due to missing dependency: "
+        "System.IO.FileNotFoundException: Could not load file or assembly 'kite.ZelevatorCode, Version=1.0.0.0"
+    )
+    if runtime_needle not in runtime_text:
+        fail("R1 runtime log no longer proves WaitRespawnPikmin was skipped for missing kite.ZelevatorCode")
+
+    return {
+        "owner_assembly_sha256": digest,
+        "owner_type": ENDLESS_OWNER_TYPE,
+        "method": "WaitRespawnPikmin",
+        "compat_attribute": exact_attr,
+        "dependency_gate": "Chainloader.PluginInfos.ContainsKey(pluginGUID)",
+        "dependency_guid": ENDLESS_DEPENDENCY_GUID,
+        "provider_assembly": ENDLESS_PROVIDER_ASSEMBLY,
+        "provider_type": ENDLESS_PROVIDER_TYPE,
+        "clr_typeref": exact_typeref,
+        "r1_profile_sha256": EXPECTED_R1_PROFILE_SHA,
+        "r1_runtime_log_sha256": EXPECTED_R1_RUNTIME_LOG_SHA,
+        "applicability": "NOT_APPLICABLE_DEPENDENCY_ABSENT",
+        "required_when_dependency_present": True,
+        "missing_or_drifted_target_when_applicable": "FAIL_CLOSED",
+    }
+
+
 TARGETS = [
     ("SlendermanMod.Behaviours.SpawnSlendermanEnemyItem", "SpawnSlenderman", "void", [], False),
     ("Kittenji.FootballEntity.TrainProp", "ForceSpawnEnemy", "void", [], False),
@@ -378,6 +480,10 @@ def main() -> int:
         fail("Broad Harmony PatchAll is forbidden")
     if KNOWN_BAD_PIKMIN_RESOLVER in source:
         fail("Known-bad hardcoded LethalMin PikminType resolver regression is present")
+    if 'ResolveRequiredType("ElevatorMod.Patches.EndlessElevator")' in source:
+        fail("EndlessElevator optional compat regressed to unconditional global type resolution")
+    if "EndlessElevatorDependencyGuid" not in source or "Chainloader.PluginInfos.TryGetValue" not in source:
+        fail("EndlessElevator exact dependency applicability gate is missing from runtime source")
     if "ResolveLethalMinWithdrawPikminContract" not in source or "[DIAG1_OWNER_TYPE_DERIVED]" not in source:
         fail("Metadata-bound LethalMin PikminType owner-resolution contract is missing")
     for label in (
@@ -396,6 +502,8 @@ def main() -> int:
         "[DIAG1_TARGET_INSTALLED]",
         "[DIAG1_OWNER_TARGET_INSTALLED]",
         "[DIAG1_COMPLEX_TARGET_INSTALLED]",
+        "[DIAG1_COMPLEX_TARGET_NOT_APPLICABLE]",
+        "[DIAG1_COMPLEX_TARGET_APPLICABLE]",
         "[DIAG1_TRANSPILER_MATCH]",
         "[DIAG1_CONFIG_VERIFIED]",
         "[DIAG1_CONFIG_OVERLAY_VERIFIED]",
@@ -476,6 +584,10 @@ def main() -> int:
         fail("export.r2x differs by more than one profileName field")
     if "LC V1 S1.42AI-DIAG1 ShyGuy Isolation" not in final_names_hit[0]:
         fail("Validation export profileName mismatch")
+    r1 = read_zip(R1_PROFILE)
+    r1_export, r1_names_hit = normalize_export_without_profile_name(r1["export.r2x"].decode("utf-8-sig"))
+    if len(r1_names_hit) != 1 or r1_export != base_export:
+        fail("R1 runtime profile package/export set differs from exact S1.42AI base package set")
 
     s139_path = "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
     base_s139 = sha256_bytes(base[s139_path])
@@ -560,6 +672,19 @@ def main() -> int:
         lethalmin_digest,
     )
     report["checks"]["lethalmin_withdraw_clr_contract"]["archive_member"] = lethalmin_archive
+    report["checks"]["endless_elevator_applicability"] = prove_endless_elevator_applicability_contract(
+        lethalmin_dll,
+        lethalmin_digest,
+    )
+    report["checks"]["endless_elevator_applicability"]["package_set_binding"] = {
+        "base_profile_sha256": EXPECTED_BASE_SHA,
+        "r1_profile_sha256": EXPECTED_R1_PROFILE_SHA,
+        "validation_export_equals_base_export_except_profile_name": True,
+        "r1_export_equals_base_export_except_profile_name": True,
+        "draft_mod_state_changes": [],
+        "draft_mod_additions": [],
+        "draft_mod_removals": [],
+    }
 
     premium_record = type_to_assembly["PremiumScraps.Utils.Effects"]
     chillax_record = type_to_assembly["ChillaxScraps.Utils.Effects"]
@@ -621,6 +746,7 @@ def main() -> int:
         f"- Diagnostic DLL SHA-256: `{plugin_sha}`",
         f"- Exact owner targets validated: **{len(report['targets'])}**",
         f"- LethalMin WithdrawPikminFromOnion CLR generic argument: `{report['checks']['lethalmin_withdraw_clr_contract']['parameter_0_generic_argument']}`",
+        f"- LethalMin EndlessElevator applicability: **{report['checks']['endless_elevator_applicability']['applicability']}** via `{report['checks']['endless_elevator_applicability']['dependency_guid']}`",
         "- Known-bad hardcoded LethalMin PikminType resolver: absent",
         f"- S139CompatibilityFixes SHA-256 preserved: `{base_s139}`",
         "- BCMER enabled event sections: `ModdedEvents.cfg:[ShyGuy]` only",
