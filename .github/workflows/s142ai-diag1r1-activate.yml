@@ -43,7 +43,9 @@ jobs:
           test "$(jq -r '.digest' <<<"$artifact_json")" = sha256:d849de39ddfe0398bbdbdd25d2f26def27af7f36f7bc304e4b337085a2f67c23
 
       - name: Stage exact candidate activation
-        run: python RepositoryTools/activate_s142ai_diag1r1.py
+        run: |
+          python RepositoryTools/activate_s142ai_diag1r1.py
+          python RepositoryTools/activate_s142ai_diag1r1_lineage.py
 
       - name: Render generated live navigation
         run: python RepositoryTools/render_current_navigation.py
