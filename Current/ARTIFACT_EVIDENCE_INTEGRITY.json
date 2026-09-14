@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "updated": "2026-09-13",
+  "updated": "2026-09-14",
   "status": "CURRENT_CANONICAL_ARTIFACT_EVIDENCE_INDEX",
   "profiles": [
     {
@@ -78,6 +78,24 @@
       "first_runtime_log_sha256": "1778ad5b572349cda261b3b848e0a697dfdb527a1e4be4ab72624a88f9c51ef3",
       "build_plan": "BuildSpecs/S1.42AH_PLAN.md",
       "plugin_dll_sha256": "bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573"
+    },
+    {
+      "build_id": "S1.42AI-DIAG1",
+      "role": "RUNTIME_FAILED_DIAGNOSTIC_REPAIR_REQUIRED",
+      "profile": "Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z",
+      "profile_sha256": "22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd",
+      "profile_sources": "ProfileSources/S1.42AI-DIAG1/",
+      "file_index": "ProfileSources/S1.42AI-DIAG1/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AI-DIAG1/export.r2x",
+      "candidate_record": "Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md",
+      "project_status": "Current/Projektstatus_S1.42AI-DIAG1_CANDIDATE.json",
+      "rejection": "Current/145_S1.42AI-DIAG1_RUNTIME_FAILURE_OWNER_TYPE_RESOLUTION.md",
+      "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
+      "guard_contract": "AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md",
+      "plugin_dll_sha256": "bc8d51121451ecd1b1550e2aa6007991983c7a88ad93c86c38541ec0d358a2b3",
+      "runtime_index": "RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z/INDEX.json",
+      "runtime_log_sha256": "0125f1ff1f16b99fa2531374bbfbc1a1294ec4918b22e67aed804ad1e41ebe49",
+      "note": "Diagnostic runtime failed during exact owner prevalidation and DIAG1 rolled back all of its own Harmony hooks. Repair is required before a successor diagnostic runtime test."
     }
   ],
   "pending_profiles": [
@@ -95,23 +113,7 @@
       "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false,
-      "note": "Full-normal S1.42AI gate remains mandatory after DIAG1; diagnostic success cannot replace it."
-    },
-    {
-      "build_id": "S1.42AI-DIAG1",
-      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
-      "profile": "Profiles/LC V1 S1.42AI-DIAG1 ShyGuy Isolation.r2z",
-      "profile_sha256": "22e2132669a790756f2a1e2bd10b14fd05144b3ecdd55233d8d57f1d6dd9f3fd",
-      "profile_sources": "ProfileSources/S1.42AI-DIAG1/",
-      "file_index": "ProfileSources/S1.42AI-DIAG1/FILE_INDEX.json",
-      "export": "ProfileSources/S1.42AI-DIAG1/export.r2x",
-      "candidate_record": "Current/144_S1.42AI-DIAG1_BUILD_CANDIDATE_SHYGUY_ISOLATION.md",
-      "project_status": "Current/Projektstatus_S1.42AI-DIAG1_CANDIDATE.json",
-      "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
-      "guard_contract": "AnalysisEvidence/S1.42AI-DIAG1/MINIMAL_GUARD_CONTRACT.md",
-      "plugin_dll_sha256": "bc8d51121451ecd1b1550e2aa6007991983c7a88ad93c86c38541ec0d358a2b3",
-      "runtime_evidence_required": false,
-      "partial_runtime_evidence_present": false
+      "note": "Full-normal S1.42AI gate remains mandatory after the diagnostic repair path is resolved; diagnostic work cannot replace it."
     }
   ],
   "important_project_dlls": [
@@ -158,11 +160,12 @@
     "deferred_pending_candidate_role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED"
   },
   "verified_repository_api_observations": [
-    "ProfileSources/S1.42AB, S1.42AC, S1.42AF, S1.42AG and S1.42AH contain FILE_INDEX.json and export.r2x.",
+    "ProfileSources/S1.42AB, S1.42AC, S1.42AF, S1.42AG, S1.42AH and S1.42AI-DIAG1 contain FILE_INDEX.json and export.r2x.",
     "S1.42AH final accepted runtime evidence is RuntimeEvidence/S1.42AH/20260909T162513Z with raw LogOutput.log SHA-256 ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729.",
     "S1.42AH prior targeted runtime evidence remains preserved at RuntimeEvidence/S1.42AH/20260908T174352Z and RuntimeEvidence/S1.42AH/20260908T162411Z.",
     "RuntimeEvidence/S1.42AF/20260905T223738Z contains accepted predecessor evidence.",
-    "RuntimeEvidence/S1.42AG/20260906T085500Z contains S1.42AG rejection evidence."
+    "RuntimeEvidence/S1.42AG/20260906T085500Z contains S1.42AG rejection evidence.",
+    "RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z contains the failed DIAG1 diagnostic runtime log with SHA-256 0125f1ff1f16b99fa2531374bbfbc1a1294ec4918b22e67aed804ad1e41ebe49."
   ],
-  "last_validated": "2026-09-10"
+  "last_validated": "2026-09-14"
 }
