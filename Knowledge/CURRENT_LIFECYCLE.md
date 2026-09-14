@@ -39,6 +39,10 @@ The operator-observed non-ShyGuy enemies are consistent with the confirmed rollb
 
 The operator also observed that a Shy Guy triggered inside did not follow outside. That behavior is separately explained by inherited Scopophobia configuration `Can Exit Facility = false`, which is present in accepted S1.42AH and R1. Inside-to-outside pursuit is not the same contract as the current BCMER interior-only spawn correction and remains a separate scope unless explicitly selected.
 
+## Canonical Gale workflow
+
+Whenever a later runtime candidate is actually armed, import/replace it only through `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` using canonical helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. There is no active runtime candidate now, so this routing rule does not authorize a gameplay run by itself.
+
 ## Retained full-normal gate
 
 S1.42AI remains unaccepted. Its full-normal BCMER ShyGuy gate in `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md` remains mandatory and is **deferred, not waived**. Neither failed diagnostic can replace it.
