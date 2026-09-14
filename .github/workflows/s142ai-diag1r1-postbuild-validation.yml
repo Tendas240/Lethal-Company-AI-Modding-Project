@@ -1,0 +1,192 @@
+name: Validate S1.42AI-DIAG1R1 materialized equivalence
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/s142ai-diag1r1-postbuild-validation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DIAG1_VALIDATION_PROFILE: ValidationArtifacts/S1.42AI-DIAG1R1.sdk8.validation.r2z
+      DIAG1_VALIDATION_RESULT: ValidationArtifacts/diag1r1-sdk8-validation-result.json
+      DIAG1_STATIC_OUT: ValidationArtifacts/diag1r1-static-out
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore exact DIAG1 compile dependencies
+        run: dotnet restore Patches/S142AIDiag1Isolation/S142AIDiag1Isolation.csproj --configfile Patches/S142AIDiag1Isolation/NuGet.Config
+
+      - name: Install pinned project decompiler
+        run: dotnet tool install --global ilspycmd --version 11.0.0.9375
+
+      - name: Regenerate disabled DIAG1 draft
+        run: python BuildSpecs/generate_s142ai_diag1_spec.py
+
+      - name: Prepare SDK8 ephemeral validation profile
+        shell: bash
+        run: |
+          mkdir -p ValidationArtifacts
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          src = Path('BuildSpecs/S1.42AI-DIAG1_DRAFT.json')
+          spec = json.loads(src.read_text(encoding='utf-8'))
+          if spec.get('enabled') is not False or spec.get('build_id') != 'S1.42AI-DIAG1':
+              raise RuntimeError('Unexpected regenerated DIAG1 draft identity')
+          spec['enabled'] = True
+          spec['output_profile'] = os.environ['DIAG1_VALIDATION_PROFILE']
+          spec['snapshot_dir'] = 'ValidationArtifacts/diag1r1-sdk8-snapshot'
+          spec['result_json'] = os.environ['DIAG1_VALIDATION_RESULT']
+          spec['result_md'] = 'ValidationArtifacts/diag1r1-sdk8-validation-result.md'
+          spec['overwrite'] = False
+          Path('ValidationArtifacts/diag1r1-sdk8-validation-spec.json').write_text(
+              json.dumps(spec, indent=2) + '\n', encoding='utf-8'
+          )
+          PY
+
+      - name: Build SDK8 ephemeral profile through canonical builder
+        run: python BuildSystem/profile_builder.py ValidationArtifacts/diag1r1-sdk8-validation-spec.json
+
+      - name: Re-run exact DIAG1 static gate against SDK8 materialization
+        run: python AnalysisTools/validate_s142ai_diag1_static_bound.py
+
+      - name: Prove canonical DIAG1R1 equivalence to green SDK8 gate
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import re
+          import zipfile
+          from pathlib import Path
+
+          canonical = Path('Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z')
+          ephemeral = Path('ValidationArtifacts/S1.42AI-DIAG1R1.sdk8.validation.r2z')
+          result = json.loads(Path('Current/AUTO_BUILD_RESULT.json').read_text(encoding='utf-8'))
+          static = json.loads(Path('ValidationArtifacts/diag1r1-static-out/STATIC_VALIDATION.json').read_text(encoding='utf-8'))
+          expected_sha = 'b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd'
+          plugin = 'BepInEx/plugins/Tendas-S142AIDiag1Isolation/S142AIDiag1Isolation.dll'
+          config = 'BepInEx/config/tendas.s142ai.diag1.isolation.cfg'
+
+          def sha(path):
+              h = hashlib.sha256()
+              with path.open('rb') as f:
+                  for chunk in iter(lambda: f.read(1024 * 1024), b''):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          actual_sha = sha(canonical)
+          if actual_sha != expected_sha or result.get('output_sha256') != expected_sha:
+              raise RuntimeError(f'Canonical DIAG1R1 SHA mismatch: file={actual_sha}, result={result.get("output_sha256")}')
+          if result.get('build_id') != 'S1.42AI-DIAG1R1':
+              raise RuntimeError('AUTO_BUILD_RESULT build_id mismatch')
+          if static.get('status') != 'PASS_PREBUILD_STATIC_GATE':
+              raise RuntimeError(f'Exact SDK8 static gate not green: {static.get("status")}')
+
+          with zipfile.ZipFile(canonical) as z:
+              c = {n: z.read(n) for n in z.namelist() if not n.endswith('/')}
+          with zipfile.ZipFile(ephemeral) as z:
+              e = {n: z.read(n) for n in z.namelist() if not n.endswith('/')}
+          if set(c) != set(e):
+              raise RuntimeError(f'Canonical/ephemeral member-set mismatch: only-canonical={sorted(set(c)-set(e))}, only-ephemeral={sorted(set(e)-set(c))}')
+
+          differing = [n for n in sorted(c) if c[n] != e[n]]
+          if differing != ['export.r2x']:
+              raise RuntimeError(f'Unexpected canonical/green-gate byte differences: {differing}')
+
+          def normalize_export(data):
+              text = data.decode('utf-8-sig').replace('\r\n', '\n').replace('\r', '\n')
+              hits = [line for line in text.split('\n') if re.match(r'^\s*profileName\s*:', line)]
+              if len(hits) != 1:
+                  raise RuntimeError(f'Expected exactly one profileName, found {len(hits)}')
+              normalized = re.sub(r'(?m)^(\s*)profileName\s*:.*$', r'\1profileName: <NORMALIZED>', text)
+              return normalized, hits[0].strip()
+
+          cn, cname = normalize_export(c['export.r2x'])
+          en, ename = normalize_export(e['export.r2x'])
+          if cn != en:
+              raise RuntimeError('export.r2x differs by more than profileName')
+          if cname != 'profileName: LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair':
+              raise RuntimeError(f'Unexpected canonical profileName line: {cname}')
+          if ename != 'profileName: LC V1 S1.42AI-DIAG1 ShyGuy Isolation':
+              raise RuntimeError(f'Unexpected green-gate profileName line: {ename}')
+
+          plugin_sha = hashlib.sha256(c[plugin]).hexdigest()
+          ephemeral_plugin_sha = hashlib.sha256(e[plugin]).hexdigest()
+          static_plugin_sha = static['checks']['ephemeral_profile']['plugin_sha256']
+          if len({plugin_sha, ephemeral_plugin_sha, static_plugin_sha}) != 1:
+              raise RuntimeError(
+                  f'Diagnostic plugin byte mismatch: canonical={plugin_sha}, ephemeral={ephemeral_plugin_sha}, static={static_plugin_sha}'
+              )
+          cfg = c[config].decode('utf-8-sig')
+          if 'S1.42AI-DIAG1 Enabled = true' not in cfg:
+              raise RuntimeError('Canonical DIAG1 diagnostic config is not enabled')
+
+          contract = static['checks']['lethalmin_withdraw_clr_contract']
+          if contract.get('parameter_0_generic_argument') != 'LethalMin.Pikmin.PikminType':
+              raise RuntimeError(f'Unexpected metadata-derived PikminType: {contract.get("parameter_0_generic_argument")}')
+          if contract.get('parameter_0_generic_argument_same_assembly') is not True:
+              raise RuntimeError('LethalMin generic argument same-assembly proof missing')
+
+          report = {
+              'status': 'PASS_CANONICAL_DIAG1R1_MATERIALIZED_EQUIVALENCE',
+              'build_id': 'S1.42AI-DIAG1R1',
+              'canonical_profile': str(canonical),
+              'canonical_profile_sha256': actual_sha,
+              'ephemeral_sdk8_profile_sha256': sha(ephemeral),
+              'static_gate_status': static['status'],
+              'plugin_sha256': plugin_sha,
+              'zip_members': len(c),
+              'byte_identical_members_except_export_profile_name': len(c) - 1,
+              'only_differing_member': 'export.r2x',
+              'export_difference': 'profileName only',
+              'metadata_derived_pikmin_type': contract['parameter_0_generic_argument'],
+              'metadata_derived_pikmin_type_same_assembly': True,
+              'known_bad_hardcoded_resolver_absent': static['checks']['plugin_source']['known_bad_hardcoded_pikmin_resolver_absent'],
+          }
+          out = Path('ValidationArtifacts/diag1r1-materialized')
+          out.mkdir(parents=True, exist_ok=True)
+          (out / 'MATERIALIZED_VALIDATION.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+          (out / 'MATERIALIZED_VALIDATION.md').write_text(
+              '# S1.42AI-DIAG1R1 materialized validation\n\n'
+              f"- Status: **{report['status']}**\n"
+              f"- Canonical profile SHA-256: `{actual_sha}`\n"
+              f"- Diagnostic DLL SHA-256: `{plugin_sha}`\n"
+              f"- ZIP members: **{len(c)}**\n"
+              f"- All members except `export.r2x`: byte-identical to the SDK8 green-gate materialization\n"
+              f"- `export.r2x`: profileName-only difference\n"
+              f"- Metadata-derived PikminType: `{contract['parameter_0_generic_argument']}`\n",
+              encoding='utf-8'
+          )
+          print(json.dumps(report, indent=2))
+          PY
+
+      - name: Upload post-build validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-diag1r1-materialized-validation
+          path: |
+            ValidationArtifacts/diag1r1-materialized/
+            ValidationArtifacts/diag1r1-static-out/
+            ValidationArtifacts/diag1r1-sdk8-validation-result.json
+            ValidationArtifacts/diag1r1-sdk8-validation-result.md
+          if-no-files-found: warn
+          retention-days: 90
