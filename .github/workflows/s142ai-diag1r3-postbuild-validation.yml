@@ -1,0 +1,143 @@
+name: Validate S1.42AI-DIAG1R3 canonical materialization
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/s142ai-diag1r3-postbuild-validation.yml'
+      - '.github/s142ai-diag1r3-postbuild-validate.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/s142ai-diag1r3-postbuild-validation.yml'
+      - '.github/s142ai-diag1r3-postbuild-validate.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: s142ai-diag1r3-postbuild-validation
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DIAG1_VALIDATION_PROFILE: ValidationArtifacts/S1.42AI-DIAG1R3.sdk8.validation.r2z
+      DIAG1_VALIDATION_RESULT: ValidationArtifacts/diag1r3-sdk8-validation-result.json
+      DIAG1_STATIC_OUT: ValidationArtifacts/diag1r3-static-out
+      DIAG1_MATERIALIZED_APPLICABILITY_OUT: ValidationArtifacts/diag1r3-materialized-applicability.json
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Fail closed on exact pre-validation repository state
+        run: python .github/s142ai-diag1r3-postbuild-validate.py precheck
+
+      - name: Restore exact DIAG1 compile dependencies
+        run: dotnet restore Patches/S142AIDiag1Isolation/S142AIDiag1Isolation.csproj --configfile Patches/S142AIDiag1Isolation/NuGet.Config
+
+      - name: Install pinned project decompiler
+        run: dotnet tool install --global ilspycmd --version 11.0.0.9375
+
+      - name: Regenerate disabled DIAG1 draft
+        run: python BuildSpecs/generate_s142ai_diag1_spec.py
+
+      - name: Prepare SDK8 ephemeral validation profile
+        shell: bash
+        run: |
+          mkdir -p ValidationArtifacts
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          src = Path('BuildSpecs/S1.42AI-DIAG1_DRAFT.json')
+          spec = json.loads(src.read_text(encoding='utf-8'))
+          if spec.get('enabled') is not False or spec.get('build_id') != 'S1.42AI-DIAG1':
+              raise RuntimeError('Unexpected regenerated DIAG1 draft identity')
+          if spec.get('base_profile') != 'Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z':
+              raise RuntimeError('Unexpected regenerated DIAG1 base profile')
+          if spec.get('base_sha256') != 'd993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2':
+              raise RuntimeError('Unexpected regenerated DIAG1 base SHA')
+          spec['enabled'] = True
+          spec['output_profile'] = os.environ['DIAG1_VALIDATION_PROFILE']
+          spec['snapshot_dir'] = 'ValidationArtifacts/diag1r3-sdk8-snapshot'
+          spec['result_json'] = os.environ['DIAG1_VALIDATION_RESULT']
+          spec['result_md'] = 'ValidationArtifacts/diag1r3-sdk8-validation-result.md'
+          spec['overwrite'] = False
+          Path('ValidationArtifacts/diag1r3-sdk8-validation-spec.json').write_text(
+              json.dumps(spec, indent=2) + '\n', encoding='utf-8'
+          )
+          PY
+
+      - name: Build SDK8 ephemeral profile through canonical builder
+        run: python BuildSystem/profile_builder.py ValidationArtifacts/diag1r3-sdk8-validation-spec.json
+
+      - name: Re-run exact DIAG1 static gate against SDK8 materialization
+        run: python AnalysisTools/validate_s142ai_diag1_static_bound.py
+
+      - name: Prove materialized applicability against canonical R3 profile
+        env:
+          DIAG1_MATERIALIZED_PROFILE: Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z
+        run: python AnalysisTools/validate_s142ai_diag1_materialized_applicability.py
+
+      - name: Prove canonical R3 equivalence to exact repaired green gate
+        run: python .github/s142ai-diag1r3-postbuild-validate.py compare
+
+      - name: Assert validation did not mutate live controllers
+        run: git diff --exit-code -- BuildSpecs/current.json RuntimeInbox/ACTIVE_BUILD.txt Current/CURRENT_STATE.json Current/AUTO_BUILD_RESULT.json Current/AUTO_BUILD_RESULT.md
+
+      - name: Persist exact R3 validation evidence and self-delete
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          mkdir -p AnalysisEvidence/S1.42AI-DIAG1R3
+          cp ValidationArtifacts/diag1r3-materialized/MATERIALIZED_VALIDATION.json AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json
+          cp ValidationArtifacts/diag1r3-materialized/MATERIALIZED_VALIDATION.md AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.md
+          cp ValidationArtifacts/diag1r3-materialized-applicability.json AnalysisEvidence/S1.42AI-DIAG1R3/ENDLESS_ELEVATOR_MATERIALIZED_APPLICABILITY.json
+          git rm .github/workflows/s142ai-diag1r3-postbuild-validation.yml .github/s142ai-diag1r3-postbuild-validate.py
+          git add AnalysisEvidence/S1.42AI-DIAG1R3
+          python - <<'PY'
+          import subprocess
+          expected = {
+              '.github/workflows/s142ai-diag1r3-postbuild-validation.yml',
+              '.github/s142ai-diag1r3-postbuild-validate.py',
+              'AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json',
+              'AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.md',
+              'AnalysisEvidence/S1.42AI-DIAG1R3/ENDLESS_ELEVATOR_MATERIALIZED_APPLICABILITY.json',
+          }
+          paths = set(subprocess.check_output(['git', 'diff', '--cached', '--name-only'], text=True).splitlines())
+          if paths != expected:
+              raise RuntimeError(f'Unexpected persistence diff: {sorted(paths)}')
+          PY
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Persist S1.42AI-DIAG1R3 post-build validation evidence'
+          git push origin HEAD:main
+
+      - name: Upload post-build validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-diag1r3-materialized-validation-${{ github.run_id }}
+          path: |
+            ValidationArtifacts/diag1r3-materialized/
+            ValidationArtifacts/diag1r3-materialized-applicability.json
+            ValidationArtifacts/diag1r3-static-out/
+            ValidationArtifacts/diag1r3-sdk8-validation-result.json
+            ValidationArtifacts/diag1r3-sdk8-validation-result.md
+          if-no-files-found: warn
+          retention-days: 90
