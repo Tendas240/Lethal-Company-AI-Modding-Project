@@ -1,0 +1,14 @@
+{
+  "status": "PASS_MATERIALIZED_ENDLESS_ELEVATOR_APPLICABILITY",
+  "materialized_profile": "/home/runner/work/Lethal-Company-AI-Modding-Project/Lethal-Company-AI-Modding-Project/Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z",
+  "materialized_profile_sha256": "13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768",
+  "base_profile_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+  "applicability": "NOT_APPLICABLE_DEPENDENCY_ABSENT",
+  "dependency_guid": "kite.ZelevatorCode",
+  "provider_assembly": "kite.ZelevatorCode",
+  "provider_type": "ElevatorMod.Patches.EndlessElevator",
+  "required_when_dependency_present": true,
+  "missing_or_drifted_target_when_applicable": "FAIL_CLOSED",
+  "package_set_equals_bound_base": true,
+  "static_gate_status": "PASS_PREBUILD_STATIC_GATE"
+}
