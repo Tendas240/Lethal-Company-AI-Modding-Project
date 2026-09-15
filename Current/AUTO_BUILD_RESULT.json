@@ -1,10 +1,10 @@
 {
-  "build_id": "S1.42AI-DIAG1R1",
-  "profile_name": "LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair",
+  "build_id": "S1.42AI-DIAG1R2",
+  "profile_name": "LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair",
   "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
   "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
-  "output_profile": "Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z",
-  "output_sha256": "b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd",
+  "output_profile": "Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z",
+  "output_sha256": "9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15",
   "zip_members": 337,
   "changed_existing_members": [
     "BepInEx/config/ArcadiaMoonPlugin.cfg",
@@ -25,7 +25,7 @@
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
-  "snapshot_dir": "ProfileSources/S1.42AI-DIAG1R1",
+  "snapshot_dir": "ProfileSources/S1.42AI-DIAG1R2",
   "snapshot": {
     "entries": 337,
     "text_entries": 331
