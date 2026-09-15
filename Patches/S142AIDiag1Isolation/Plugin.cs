@@ -305,7 +305,7 @@ namespace S142AIDiag1Isolation
     internal static class DiagnosticIsolation
     {
         private const string ExpectedAssetName = "ShyGuyDef";
-        private const string ExpectedEnemyName = "Shy Guy";
+        private const string ExpectedEnemyName = "Shy guy";
         private const string ExpectedAiType = "ShyGuy.AI.ShyGuyAI";
 
         private static readonly HashSet<string> LoggedIdentityFailures =

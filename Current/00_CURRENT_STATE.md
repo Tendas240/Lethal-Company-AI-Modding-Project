@@ -21,7 +21,7 @@ Runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
 
 ## Latest built artifact
 
-**S1.42AI-DIAG1R2 — ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair — BUILD PASS STATIC MATERIALIZED APPLICABILITY EQUIVALENCE PASS RUNTIME PENDING NOT ACCEPTED**
+**S1.42AI-DIAG1R2 — ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair — RUNTIME DIAGNOSTIC FAILED SHYGUY ENEMYNAME IDENTITY CASE MISMATCH REPAIR REQUIRED NOT ACCEPTED**
 
 Profile: `Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z`  
 SHA-256: `9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15`  
@@ -31,18 +31,18 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Live execution state
 
-- Active candidate: **S1.42AI-DIAG1R2**
-- Runtime test outstanding: **yes**
+- Active candidate: **none**
+- Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1R2_BUILD_AWAITING_RUNTIME`)
-- Guarded build base: `Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z` / `9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1R2_RUNTIME_FAILURE_R3_PREPARED_NOT_ARMED`)
+- Guarded build base: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z` / `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R2`
 
 ## Exact next action
 
-Run one exact S1.42AI-DIAG1R2 diagnostic gameplay gate. Require the repaired owner path and dependency-absent EndlessElevator NOT_APPLICABLE path to arm without DIAG1 invalidation/rollback, verify no unexpected non-ShyGuy enemy appears while isolation is armed, and verify exact Shy Guy remains visibly observable including outside when an exterior Shy Guy is present. Then upload the fresh complete R2 LogOutput.log for repository-native ingestion and decision. Do not execute the deferred full-normal S1.42AI gate yet.
+S1.42AI-DIAG1R3 is determined and its exact identity source/static-gate repair plus build request are prepared, but no build is armed. Next perform a separate coordinated repository-native R3 build-controller transition from exact S1.42AI, then verify the generated artifact and materialized semantics before any runtime activation. Do not run gameplay now. The full-normal S1.42AI gate remains deferred, not waived.
 
-A runtime test is pending for S1.42AI-DIAG1R2. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
