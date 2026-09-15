@@ -21,11 +21,10 @@ Runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
 
 ## Latest built artifact
 
-**S1.42AI-DIAG1R2 — ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair — RUNTIME DIAGNOSTIC FAILED SHYGUY ENEMYNAME IDENTITY CASE MISMATCH REPAIR REQUIRED NOT ACCEPTED**
+**S1.42AI-DIAG1R3 — ShyGuy Isolation Diagnostic Exact Identity Repair — BUILT STATIC MATERIALIZED VALIDATED AWAITING RUNTIME CANDIDATE ACTIVATION NOT ACCEPTED**
 
-Profile: `Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z`  
-SHA-256: `9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15`  
-Candidate record: `Current/148_S1.42AI-DIAG1R2_BUILD_CANDIDATE_ENDLESS_ELEVATOR_APPLICABILITY_REPAIR.md`  
+Profile: `Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z`  
+SHA-256: `13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
@@ -34,13 +33,13 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1R2_RUNTIME_FAILURE_R3_PREPARED_NOT_ARMED`)
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1R3_MATERIALIZED_VALIDATION_AWAITING_RUNTIME_CANDIDATE_ACTIVATION`)
 - Guarded build base: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z` / `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R2`
 
 ## Exact next action
 
-S1.42AI-DIAG1R3 is determined and its exact identity source/static-gate repair plus build request are prepared, but no build is armed. Next perform a separate coordinated repository-native R3 build-controller transition from exact S1.42AI, then verify the generated artifact and materialized semantics before any runtime activation. Do not run gameplay now. The full-normal S1.42AI gate remains deferred, not waived.
+S1.42AI-DIAG1R3 is built and repository-natively static/materialized validated. The next project action is a separate coordinated lifecycle transition that re-verifies the exact R3 artifact/evidence and no-candidate state, then activates R3 as the runtime diagnostic candidate, moves RuntimeInbox/ACTIVE_BUILD.txt from completed failed R2 to R3, changes the disabled BuildSpecs guard from accepted S1.42AH to R3, creates/updates R3 candidate/project-state and artifact-integrity authorities, and only then sets runtime_test_outstanding = true. Do not import/test R3 before that transition. The full-normal S1.42AI gate remains deferred, not waived.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
