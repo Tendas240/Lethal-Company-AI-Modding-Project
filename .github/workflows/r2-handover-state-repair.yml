@@ -110,9 +110,7 @@ jobs:
               'Current/PROJECT_KNOWLEDGE_MAP.md',
               'Knowledge/CURRENT_LIFECYCLE.md',
               'Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md',
-              'README.md',
               'RepositoryTools/r2_handover_state_repair.py',
-              'START_HERE_ChatGPT_Masterprompt.txt',
           }
           actual = set(subprocess.check_output(['git', 'diff', '--cached', '--name-only'], text=True).splitlines())
           if actual != expected:
