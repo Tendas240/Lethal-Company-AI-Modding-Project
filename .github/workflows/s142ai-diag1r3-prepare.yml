@@ -1,0 +1,145 @@
+name: S1.42AI-DIAG1R3 Preparation
+
+on:
+  push:
+    branches:
+      - prepare/s142ai-diag1r3
+    paths:
+      - 'RepositoryTools/prepare_s142ai_diag1r3.py'
+      - '.github/workflows/s142ai-diag1r3-prepare.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact preparation branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: prepare/s142ai-diag1r3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify exact branch base
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          test "$(git merge-base HEAD origin/main)" = "bb237637de167c042b406d967715adb06c51dda2"
+
+      - name: Apply R2 failure and R3 preparation transition
+        run: python RepositoryTools/prepare_s142ai_diag1r3.py
+
+      - name: Syntax-check repaired static validator
+        run: python -m py_compile AnalysisTools/validate_s142ai_diag1_static.py
+
+      - name: Check exact prepared ShyGuy identity contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          s = Path('Patches/S142AIDiag1Isolation/Plugin.cs').read_text(encoding='utf-8')
+          required = [
+              'private const string ExpectedAssetName = "ShyGuyDef";',
+              'private const string ExpectedEnemyName = "Shy guy";',
+              'private const string ExpectedAiType = "ShyGuy.AI.ShyGuyAI";',
+              'string.Equals(candidate.enemyName, ExpectedEnemyName, StringComparison.Ordinal);',
+          ]
+          for item in required:
+              assert s.count(item) == 1, (item, s.count(item))
+          assert 'private const string ExpectedEnemyName = "Shy Guy";' not in s
+          print('PASS: exact runtime-proven ShyGuy identity repair is narrow and ordinal')
+          PY
+
+      - name: Check generated current navigation
+        run: python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate current live-state semantics
+        run: python RepositoryTools/current_state_semantic_validator.py
+
+      - name: Validate state-neutral architecture authorities
+        run: python RepositoryTools/state_neutral_authority_validator.py
+
+      - name: Self-test state-neutral architecture authority guard
+        run: python RepositoryTools/state_neutral_authority_validator.py --self-test
+
+      - name: Validate repository knowledge architecture
+        run: python RepositoryTools/knowledge_architecture_validator.py
+
+      - name: Validate persistent ChatGPT handover workflow
+        run: python RepositoryTools/handover_workflow_validator.py
+
+      - name: Validate segmented ChatGPT execution policy
+        run: python RepositoryTools/segmented_execution_policy_validator.py
+
+      - name: Validate actual artifact and runtime bytes
+        run: python RepositoryTools/artifact_byte_integrity_validator.py
+
+      - name: Validate repository-wide integrity registry and authority
+        run: python RepositoryTools/repository_integrity_guard.py
+
+      - name: Validate Gale import helper fail-closed regression contract
+        run: python RepositoryTools/gale_import_helper_validator.py
+
+      - name: Validate S1.42AC runtime SHA provenance
+        run: python RepositoryTools/runtime_sha_provenance_validator.py
+
+      - name: Validate future multi-phase checkpoints
+        run: python RepositoryTools/phase_checkpoint_validator.py
+
+      - name: Validate original overhaul contract
+        run: python RepositoryTools/overhaul_contract_validator.py
+
+      - name: Run answerability routing regression
+        run: python RepositoryTools/answerability_regression.py
+
+      - name: Validate cold-history externalization
+        run: python RepositoryTools/cold_history_storage_validator.py
+
+      - name: Run validator negative self-tests
+        run: python RepositoryTools/validator_selftest.py
+
+      - name: Final diff safety checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat RuntimeInbox/ACTIVE_BUILD.txt)" = "S1.42AI-DIAG1R2"
+          python - <<'PY'
+          import json
+          s=json.load(open('Current/CURRENT_STATE.json', encoding='utf-8'))
+          c=json.load(open('BuildSpecs/current.json', encoding='utf-8'))
+          assert s['accepted_baseline']['build_id']=='S1.42AH'
+          assert s['latest_built_artifact']['build_id']=='S1.42AI-DIAG1R2'
+          assert s['active_candidate'] is None
+          assert s['runtime_test_outstanding'] is False
+          assert s['selected_scope']['successor_build_id']=='S1.42AI-DIAG1R3'
+          assert s['controllers']['build_enabled'] is False
+          assert s['controllers']['runtime_active_build']=='S1.42AI-DIAG1R2'
+          assert c['enabled'] is False
+          assert c['build_id']=='IDLE_AFTER_S1.42AI-DIAG1R2_RUNTIME_FAILURE_R3_PREPARED_NOT_ARMED'
+          print('PASS: no build or runtime candidate armed')
+          PY
+          git diff --check
+
+      - name: Self-delete one-shot preparation machinery and commit prepared state
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f RepositoryTools/prepare_s142ai_diag1r3.py .github/workflows/s142ai-diag1r3-prepare.yml
+          test ! -e RepositoryTools/prepare_s142ai_diag1r3.py
+          test ! -e .github/workflows/s142ai-diag1r3-prepare.yml
+          git add -A
+          git diff --cached --check
+          git diff --cached --quiet && { echo 'ERROR: no prepared state to commit'; exit 1; }
+          git commit -m "Record R2 identity failure and prepare R3 repair"
+          git push origin HEAD:prepare/s142ai-diag1r3
