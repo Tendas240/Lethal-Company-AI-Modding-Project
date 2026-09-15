@@ -64,11 +64,13 @@ jobs:
               Path('Current/ARTIFACT_EVIDENCE_INTEGRITY.md'),
               Path('Knowledge/CURRENT_LIFECYCLE.md'),
               Path('Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md'),
+              Path('BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md'),
+              Path('Current/149_S1.42AI-DIAG1R2_RUNTIME_FAILURE_SHYGUY_IDENTITY_CASE_MISMATCH.md'),
           ]
           for p in paths:
               lines = p.read_text(encoding='utf-8').splitlines()
               p.write_text('\n'.join(line.rstrip() for line in lines) + '\n', encoding='utf-8')
-          print('PASS: normalized trailing whitespace in prepared current-topic markdown')
+          print('PASS: normalized trailing whitespace in all prepared markdown')
           PY
 
       - name: Syntax-check repaired static validator
