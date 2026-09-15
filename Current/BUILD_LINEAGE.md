@@ -4,15 +4,15 @@
 **Authority:** human build-history router; exact build evidence remains in candidate/acceptance/rejection/runtime records  
 **Canonical-For:** `build_lineage`  
 **Machine Mirror:** `Current/BUILD_LINEAGE.json`  
-**Last-Validated:** 2026-09-14
+**Last-Validated:** 2026-09-15
 
 ## Current lineage head
 
 - **Accepted gameplay baseline:** S1.42AH — Mouth Dog Pikmin Dual Prevention — **ACCEPTED FULL NORMAL STACK**.
-- **Latest built artifact:** S1.42AI-DIAG1R1 — ShyGuy Isolation Diagnostic Owner Type Resolution Repair — **RUNTIME DIAGNOSTIC FAILED / REPAIR ANALYSIS REQUIRED / NOT ACCEPTED**.
+- **Latest built artifact:** S1.42AI-DIAG1R2 — ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair — **BUILT + STATIC/MATERIALIZED VALIDATED / AWAITING RUNTIME-CANDIDATE ACTIVATION / NOT ACCEPTED**.
 - **Active candidate:** none.
 - **Deferred full-normal gate:** S1.42AI — still mandatory after the diagnostic repair path is resolved.
-- **Current action:** analyze repository-native why `ElevatorMod.Patches.EndlessElevator` was required by R1 complex-owner prevalidation but absent at runtime; reconcile static/materialized validation with installed runtime reality before any successor build. Do not rerun failed S1.42AI-DIAG1 or S1.42AI-DIAG1R1 unchanged.
+- **Current action:** perform a separate coordinated lifecycle transition to activate exact verified R2 as the runtime diagnostic candidate; do not import/test before `runtime_test_outstanding = true`.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -66,6 +66,7 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AI | **DEFERRED FULL-NORMAL RUNTIME GATE / NOT ACCEPTED** | Single-variable BCMER ShyGuy interior-only correction from accepted S1.42AH; exact static delta verified; full-normal runtime gate remains mandatory but deferred while the diagnostic repair path is resolved. |
 | S1.42AI-DIAG1 | **RUNTIME DIAGNOSTIC FAILED / REPAIR REQUIRED / NOT ACCEPTED** | Temporary exact ShyGuy isolation diagnostic built from S1.42AI. Build/static/materialized delta passed, but runtime owner prevalidation could not resolve the hardcoded `LethalMin.PikminType`, DIAG1 marked itself invalid and rolled back all of its own Harmony hooks. Repair source/static validation before any successor diagnostic test. |
 | S1.42AI-DIAG1R1 | **RUNTIME DIAGNOSTIC FAILED / REPAIR ANALYSIS REQUIRED / NOT ACCEPTED** | R1 repaired the exact `WithdrawPikminFromOnion` metadata-derived owner type and proved that repair at runtime. A later strict complex-owner target then failed because `ElevatorMod.Patches.EndlessElevator` was absent; DIAG1 invalidated and rolled back all owned Harmony hooks. Failure authority: `Current/147...`. |
+| S1.42AI-DIAG1R2 | **BUILT + STATIC/MATERIALIZED VALIDATED / AWAITING RUNTIME ACTIVATION / NOT ACCEPTED** | Rebuilt directly from exact S1.42AI with the landed `kite.ZelevatorCode` applicability repair; canonical profile SHA `9dd67d6e...` passed static, materialized applicability and semantic DLL-equivalence gates. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
