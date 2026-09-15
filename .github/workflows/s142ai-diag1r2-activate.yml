@@ -65,6 +65,25 @@ jobs:
       - name: Apply exact coordinated R2 activation
         run: python RepositoryTools/activate_s142ai_diag1r2.py
 
+      - name: Preserve canonical Gale v2.4 lifecycle routing
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('Knowledge/CURRENT_LIFECYCLE.md')
+          text = path.read_text(encoding='utf-8')
+          needle = '\n## Exact runtime gate\n'
+          route = (
+              '\nCanonical Gale runtime replacement/import route: '
+              '`RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, pinned helper revision '
+              '`2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`.\n'
+          )
+          if text.count(needle) != 1:
+              raise RuntimeError('Could not locate exact lifecycle runtime-gate insertion point')
+          text = text.replace(needle, route + needle, 1)
+          path.write_text(text, encoding='utf-8')
+          PY
+
       - name: Remove one-shot activation tooling
         shell: bash
         run: |
