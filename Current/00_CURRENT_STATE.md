@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-14  
+**Updated:** 2026-09-15  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -21,11 +21,10 @@ Runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
 
 ## Latest built artifact
 
-**S1.42AI-DIAG1R1 — ShyGuy Isolation Diagnostic Owner Type Resolution Repair — RUNTIME DIAGNOSTIC FAILED COMPLEX OWNER TARGET RESOLUTION APPLICABILITY REPAIR LANDED NOT ACCEPTED**
+**S1.42AI-DIAG1R2 — ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair — BUILT STATIC MATERIALIZED VALIDATED AWAITING RUNTIME CANDIDATE ACTIVATION NOT ACCEPTED**
 
-Profile: `Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z`  
-SHA-256: `b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd`  
-Candidate record: `Current/146_S1.42AI-DIAG1R1_BUILD_CANDIDATE_OWNER_TYPE_RESOLUTION_REPAIR.md`  
+Profile: `Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z`  
+SHA-256: `9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
@@ -34,13 +33,13 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1R1_APPLICABILITY_REPAIR_LANDED_AWAITING_SUCCESSOR_DETERMINATION`)
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1R2_MATERIALIZED_VALIDATION_AWAITING_RUNTIME_CANDIDATE_ACTIVATION`)
 - Guarded build base: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z` / `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R1`
 
 ## Exact next action
 
-The exact EndlessElevator applicability repair is landed on main via PR #91 at ef3842e5e1766afdd5db77c232b34c0e7c7d3105 and its permanent static/materialized gate is green. First verify this canonical Current/Lifecycle transition on the final main Exact-HEAD Knowledge Architecture gate. Only after that, determine repository-native whether a successor diagnostic build is required and permissible and, if so, its exact successor identity/controller transition. Do not build or request gameplay before that determination. The full-normal S1.42AI gate remains deferred, not waived.
+S1.42AI-DIAG1R2 is built and repository-natively static/materialized validated. The next project action is a separate coordinated lifecycle transition that, after re-verifying the exact R2 profile/evidence and no-candidate state, activates R2 as the runtime diagnostic candidate, moves RuntimeInbox/ACTIVE_BUILD.txt to R2, changes the disabled BuildSpecs guard from accepted S1.42AH to R2, updates candidate/project-state and artifact-integrity authorities, and only then sets runtime_test_outstanding = true. Do not import/test R2 before that transition. The full-normal S1.42AI gate remains deferred, not waived.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

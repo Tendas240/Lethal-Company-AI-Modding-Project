@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R1 candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R2 candidate=none runtime_test_outstanding=false -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
 **Current State:** `Current/00_CURRENT_STATE.md`
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
-**Last-Validated:** 2026-09-14
+**Last-Validated:** 2026-09-15
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -36,13 +36,11 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
 
-Latest built artifact: **S1.42AI-DIAG1R1 — ShyGuy Isolation Diagnostic Owner Type Resolution Repair — RUNTIME DIAGNOSTIC FAILED / ENDLESSELEVATOR APPLICABILITY REPAIR LANDED / NOT ACCEPTED**. There is **no active runtime candidate** and no new runtime test is outstanding. Historical failure authority: `Current/147_S1.42AI-DIAG1R1_RUNTIME_FAILURE_COMPLEX_OWNER_TARGET_RESOLUTION.md`; runtime evidence: `RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z/`; landed repair evidence: `AnalysisEvidence/S1.42AI-DIAG1R1/ENDLESS_ELEVATOR_APPLICABILITY.md`.
+Latest built artifact: **S1.42AI-DIAG1R2 — ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair — BUILT + STATIC/MATERIALIZED VALIDATED / NOT ACCEPTED**. Exact profile SHA-256: `9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15`. Canonical validation: `AnalysisEvidence/S1.42AI-DIAG1R2/MATERIALIZED_VALIDATION.json` with run `34990530260`.
 
-R1 proved the repaired metadata-derived owner type path works, then failed because it treated `ElevatorMod.Patches.EndlessElevator` as unconditionally required. Repository-native evidence proved the exact LethalMin compat dependency is BepInEx GUID `kite.ZelevatorCode`: dependency absent means only that compat target is `NOT_APPLICABLE`; dependency present keeps the exact provider/owner/signature/install contract REQUIRED and fail-closed. PR #91 landed this permanent repair on `main` at `ef3842e5e1766afdd5db77c232b34c0e7c7d3105`.
+There is **no active runtime candidate** and no new runtime test is outstanding. `BuildSpecs/current.json` is disabled and guards accepted S1.42AH while awaiting the separate R2 runtime-candidate activation transition. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R1` remains attribution for the last completed failed runtime run only.
 
-`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1R1_APPLICABILITY_REPAIR_LANDED_AWAITING_SUCCESSOR_DETERMINATION` and guards accepted S1.42AH. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R1` remains evidence-attribution metadata only.
-
-The next action is to verify the canonical Current/Lifecycle transition on the final `main` Exact-HEAD `Knowledge Architecture` gate. Only after that gate is green may the repository-native successor diagnostic question be determined. Do not build or request gameplay yet. The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived.
+The next action is the coordinated lifecycle transition that explicitly activates exact verified R2 and only then sets `runtime_test_outstanding = true`. Do not import/test R2 before that transition. The ordinary full-normal S1.42AI gate remains deferred and not waived.
 
 ## Authority rule
 
