@@ -36,6 +36,10 @@ R2 is the newly compiled successor of failed R1 and remains directly derived fro
 
 R1 remains a completed failed diagnostic: it proved metadata-derived `LethalMin.Pikmin.PikminType`, then invalidated because it incorrectly required `ElevatorMod.Patches.EndlessElevator` when dependency GUID `kite.ZelevatorCode` was absent. The permanent source contract is now: dependency absent => only that compat target is `NOT_APPLICABLE`; dependency present => exact provider/type/owner/signature/install remains required and fail-closed. R2 contains and materializes that repaired contract.
 
+## Canonical Gale workflow
+
+Whenever R2 or any later runtime candidate is actually armed, import/replace it only through `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` using canonical helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. There is no active runtime candidate now, so this routing rule does not authorize a gameplay run by itself.
+
 ## Retained full-normal gate
 
 S1.42AI remains unaccepted. Its full-normal BCMER ShyGuy gate remains mandatory and is **deferred, not waived**. Diagnostic success cannot accept the full-normal candidate.
