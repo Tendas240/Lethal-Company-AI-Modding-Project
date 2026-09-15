@@ -54,6 +54,23 @@ jobs:
           print('PASS: preserved canonical Gale v2.4 lifecycle route')
           PY
 
+      - name: Normalize preparation markdown whitespace
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          paths = [
+              Path('Current/ARTIFACT_EVIDENCE_INTEGRITY.md'),
+              Path('Knowledge/CURRENT_LIFECYCLE.md'),
+              Path('Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md'),
+          ]
+          for p in paths:
+              lines = p.read_text(encoding='utf-8').splitlines()
+              p.write_text('\n'.join(line.rstrip() for line in lines) + '\n', encoding='utf-8')
+          print('PASS: normalized trailing whitespace in prepared current-topic markdown')
+          PY
+
       - name: Syntax-check repaired static validator
         run: python -m py_compile AnalysisTools/validate_s142ai_diag1_static.py
 
