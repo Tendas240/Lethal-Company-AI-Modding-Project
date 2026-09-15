@@ -1,0 +1,178 @@
+name: Repair canonical R3 post-build pre-runtime state
+
+on:
+  push:
+    branches:
+      - work/r3-pre-runtime-state-repair
+    paths:
+      - '.github/workflows/r3-pre-runtime-state-repair.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: r3-pre-runtime-state-repair
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fail closed on exact R3 post-build state
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import subprocess
+          from pathlib import Path
+
+          BASE = 'bed4e8aa810c01eec608db24bccea5811fbdc7c8'
+          allowed = {
+              '.github/workflows/r3-pre-runtime-state-repair.yml',
+              'RepositoryTools/r3_pre_runtime_state_repair.py',
+          }
+          subprocess.run(['git', 'merge-base', '--is-ancestor', BASE, 'HEAD'], check=True)
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only', BASE, 'HEAD'], text=True).splitlines())
+          if changed != allowed:
+              raise RuntimeError(f'Unexpected branch drift before repair: {sorted(changed)}')
+
+          state = json.loads(Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          if state.get('accepted_baseline', {}).get('build_id') != 'S1.42AH':
+              raise RuntimeError('Accepted baseline drifted')
+          if state.get('latest_built_artifact', {}).get('build_id') != 'S1.42AI-DIAG1R2':
+              raise RuntimeError('Expected failed R2 as pre-reconciliation latest artifact')
+          if state.get('selected_scope', {}).get('successor_build_id') != 'S1.42AI-DIAG1R3':
+              raise RuntimeError('R3 is not the prepared successor in CURRENT_STATE')
+          if state.get('active_candidate') is not None or state.get('runtime_test_outstanding') is not False:
+              raise RuntimeError('Repair requires no active candidate and no outstanding runtime test')
+          if Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() != 'S1.42AI-DIAG1R2':
+              raise RuntimeError('Runtime attribution moved before R3 pre-runtime reconciliation')
+
+          spec = json.loads(Path('BuildSpecs/current.json').read_text(encoding='utf-8'))
+          expected_spec = {
+              'enabled': True,
+              'build_id': 'S1.42AI-DIAG1R3',
+              'base_profile': 'Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z',
+              'base_sha256': 'd993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2',
+              'output_profile': 'Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z',
+          }
+          for key, value in expected_spec.items():
+              if spec.get(key) != value:
+                  raise RuntimeError(f'BuildSpecs/current.json drift for {key}: {spec.get(key)!r} != {value!r}')
+
+          r3 = Path('Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z')
+          expected_sha = '13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768'
+          h = hashlib.sha256()
+          with r3.open('rb') as f:
+              for chunk in iter(lambda: f.read(1024 * 1024), b''):
+                  h.update(chunk)
+          if h.hexdigest() != expected_sha:
+              raise RuntimeError('Canonical R3 profile SHA drifted')
+
+          auto = json.loads(Path('Current/AUTO_BUILD_RESULT.json').read_text(encoding='utf-8'))
+          if auto.get('build_id') != 'S1.42AI-DIAG1R3' or auto.get('output_sha256') != expected_sha:
+              raise RuntimeError('AUTO_BUILD_RESULT is not exact R3')
+          if auto.get('base_sha256') != 'd993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2':
+              raise RuntimeError('R3 AUTO_BUILD_RESULT base binding drifted')
+
+          validation = json.loads(Path('AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json').read_text(encoding='utf-8'))
+          if validation.get('status') != 'PASS_CANONICAL_DIAG1R3_MATERIALIZED_IDENTITY_APPLICABILITY_EQUIVALENCE':
+              raise RuntimeError('R3 materialized validation is not PASS')
+          if validation.get('canonical_profile_sha256') != expected_sha:
+              raise RuntimeError('R3 validation profile binding drifted')
+          if validation.get('canonical_build_commit') != '19914cff25cb768cffe22694e93df150e45bdd2f':
+              raise RuntimeError('R3 validation build-commit binding drifted')
+          if validation.get('validation_workflow_run') != 35023265624:
+              raise RuntimeError('R3 validation workflow binding drifted')
+          if validation.get('canonical_plugin_sha256') != '98b464e559120dc43e8041f163ceab038506e045f4b3cd4c71be8687e9c5da7a':
+              raise RuntimeError('R3 canonical diagnostic DLL binding drifted')
+          ident = validation.get('shyguy_identity_contract', {})
+          if ident != {
+              'asset': 'ShyGuyDef',
+              'enemyName': 'Shy guy',
+              'aiType': 'ShyGuy.AI.ShyGuyAI',
+              'comparison': 'StringComparison.Ordinal',
+          }:
+              raise RuntimeError(f'R3 exact ShyGuy identity contract drifted: {ident!r}')
+          if validation.get('known_bad_source_identity_literal_absent') is not True:
+              raise RuntimeError('R3 known-bad source literal regression')
+          if validation.get('known_bad_materialized_enemyname_comparator_absent') is not True:
+              raise RuntimeError('R3 known-bad materialized comparator regression')
+          if validation.get('plugin_class_inventory_identical') is not True:
+              raise RuntimeError('R3 plugin class inventory is not semantically equivalent')
+          if validation.get('plugin_decompiled_csharp_identical_per_type') is not True:
+              raise RuntimeError('R3 decompiled C# semantic equivalence failed')
+          if validation.get('plugin_normalized_il_identical_per_type') is not True:
+              raise RuntimeError('R3 normalized IL semantic equivalence failed')
+          if validation.get('runtime_state_modified') is not False:
+              raise RuntimeError('R3 validation unexpectedly modified runtime state')
+          app = validation.get('endless_elevator_applicability', {})
+          if app.get('applicability') != 'NOT_APPLICABLE_DEPENDENCY_ABSENT' or app.get('dependency_guid') != 'kite.ZelevatorCode':
+              raise RuntimeError(f'R3 EndlessElevator applicability drifted: {app!r}')
+          PY
+
+      - name: Canonize R3 post-build pre-runtime state
+        run: python RepositoryTools/r3_pre_runtime_state_repair.py
+
+      - name: Render protected current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Validate reconciled live state before commit
+        shell: bash
+        run: |
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/state_neutral_authority_validator.py
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/artifact_byte_integrity_validator.py
+          python RepositoryTools/repository_integrity_guard.py
+          test "$(cat RuntimeInbox/ACTIVE_BUILD.txt)" = "S1.42AI-DIAG1R2"
+          test "$(python -c 'import json; print(json.load(open("Current/CURRENT_STATE.json"))["runtime_test_outstanding"])')" = "False"
+          test "$(python -c 'import json; print(json.load(open("Current/CURRENT_STATE.json"))["active_candidate"])')" = "None"
+          test "$(python -c 'import json; print(json.load(open("Current/CURRENT_STATE.json"))["latest_built_artifact"]["build_id"])')" = "S1.42AI-DIAG1R3"
+          test "$(python -c 'import json; print(json.load(open("BuildSpecs/current.json"))["enabled"])')" = "False"
+
+      - name: Commit reconciled state and self-delete
+        shell: bash
+        run: |
+          rm .github/workflows/r3-pre-runtime-state-repair.yml RepositoryTools/r3_pre_runtime_state_repair.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          python - <<'PY'
+          import subprocess
+          required = {
+              '.github/workflows/r3-pre-runtime-state-repair.yml',
+              'BuildSpecs/current.json',
+              'Current/00_CURRENT_STATE.md',
+              'Current/ARTIFACT_EVIDENCE_INTEGRITY.md',
+              'Current/BUILD_LINEAGE.json',
+              'Current/BUILD_LINEAGE.md',
+              'Current/CURRENT_STATE.json',
+              'Current/PROJECT_KNOWLEDGE_MAP.md',
+              'Knowledge/CURRENT_LIFECYCLE.md',
+              'Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md',
+              'RepositoryTools/r3_pre_runtime_state_repair.py',
+          }
+          allowed = set(required) | {'Current/01_HANDOVER_CORE.md'}
+          actual = set(subprocess.check_output(['git', 'diff', '--cached', '--name-only'], text=True).splitlines())
+          missing = required - actual
+          unexpected = actual - allowed
+          if missing or unexpected:
+              raise RuntimeError(f'Unexpected staged state-repair paths; missing={sorted(missing)} unexpected={sorted(unexpected)} actual={sorted(actual)}')
+          if 'RuntimeInbox/ACTIVE_BUILD.txt' in actual:
+              raise RuntimeError('Refusing runtime attribution mutation during R3 pre-runtime repair')
+          PY
+          git commit -m 'Canonize verified R3 pre-runtime handover state'
+          git push origin HEAD:work/r3-pre-runtime-state-repair
