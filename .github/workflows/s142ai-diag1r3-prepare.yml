@@ -37,6 +37,23 @@ jobs:
       - name: Apply R2 failure and R3 preparation transition
         run: python RepositoryTools/prepare_s142ai_diag1r3.py
 
+      - name: Preserve canonical Gale v2.4 lifecycle routing
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('Knowledge/CURRENT_LIFECYCLE.md')
+          s = p.read_text(encoding='utf-8')
+          route = "Canonical Gale runtime replacement/import route: `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, pinned helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`.\n\n"
+          assert 'RuntimeTools/ReplaceActiveGaleProfileV24.ps1' not in s
+          assert '2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof' not in s
+          anchor = '## R3 successor boundary\n'
+          assert s.count(anchor) == 1
+          p.write_text(s.replace(anchor, route + anchor, 1), encoding='utf-8')
+          print('PASS: preserved canonical Gale v2.4 lifecycle route')
+          PY
+
       - name: Syntax-check repaired static validator
         run: python -m py_compile AnalysisTools/validate_s142ai_diag1_static.py
 
