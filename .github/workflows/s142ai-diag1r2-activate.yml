@@ -140,9 +140,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           test -n "$(git status --porcelain)"
-          if git diff --cached --name-only | grep -E '^(.github/workflows/s142ai-diag1r2-activate.yml|RepositoryTools/activate_s142ai_diag1r2.py)$'; then
-            echo 'One-shot activation tooling unexpectedly remains in final tree' >&2
-            exit 1
-          fi
+          test ! -e .github/workflows/s142ai-diag1r2-activate.yml
+          test ! -e RepositoryTools/activate_s142ai_diag1r2.py
           git commit -m 'Activate validated S1.42AI-DIAG1R2 runtime candidate'
           git push origin HEAD:activate/s142ai-diag1r2
