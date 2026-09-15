@@ -4,7 +4,7 @@
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AH",
-  "active_candidate_build_id": "S1.42AI-DIAG1R2",
+  "active_candidate_build_id": null,
   "latest_built_artifact_id": "S1.42AI-DIAG1R2",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
@@ -611,17 +611,20 @@
     {
       "id": "S1.42AI-DIAG1R2",
       "title": "ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair",
-      "status": "active-runtime-candidate-pending",
+      "status": "runtime-failed-diagnostic-repair-required",
       "parent": "S1.42AI",
       "profile": "Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z",
       "sha256": "9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15",
       "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
-      "decision_record": "Current/148_S1.42AI-DIAG1R2_BUILD_CANDIDATE_ENDLESS_ELEVATOR_APPLICABILITY_REPAIR.md",
+      "decision_record": "Current/149_S1.42AI-DIAG1R2_RUNTIME_FAILURE_SHYGUY_IDENTITY_CASE_MISMATCH.md",
       "workflow_run": 34958254886,
       "build_commit": "854e4435676ef32648407dae9ba1e2e704a420d1",
       "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R2/MATERIALIZED_VALIDATION.json",
       "safe_as_gameplay_base": false,
-      "principal_feature": "DIAG1 EndlessElevator applicability repair rebuilt and canonical materialization verified before runtime activation"
+      "principal_feature": "R2 preserved and runtime-proved the metadata-derived LethalMin owner repair plus dependency-absent EndlessElevator NOT_APPLICABLE behavior, then failed exact ShyGuy identity classification because source enemyName 'Shy Guy' did not match runtime 'Shy guy'; all bypass markers identified the exact ShyGuy AI object, so R3 exact-literal repair is required before another diagnostic runtime.",
+      "project_status": "Current/Projektstatus_S1.42AI-DIAG1R2_RUNTIME_FAILED.json",
+      "runtime_evidence": "RuntimeEvidence/S1.42AI-DIAG1R2/20260915T164428Z/",
+      "runtime_log_sha256": "6d913ac6788c72b7c2afb5092297a9070f5efb44bc33053d1ff6869a72019232"
     }
   ],
   "feature_index": {
@@ -649,7 +652,9 @@
     "MouthDog_to_Pikmin_dual_prevention_accepted": "S1.42AH",
     "BCMER_ShyGuy_interior_only_event_correction": "S1.42AI",
     "BCMER_ShyGuy_DIAG1_isolation": "S1.42AI-DIAG1",
-    "BCMER_ShyGuy_DIAG1_owner_type_resolution_repair": "S1.42AI-DIAG1R1"
+    "BCMER_ShyGuy_DIAG1_owner_type_resolution_repair": "S1.42AI-DIAG1R1",
+    "BCMER_ShyGuy_DIAG1_endless_elevator_applicability_repair": "S1.42AI-DIAG1R2",
+    "BCMER_ShyGuy_DIAG1_exact_identity_repair_prepared": "BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md"
   },
   "lineage_invariants": [
     "S1.42C is the canonical normal enemy-spawn/config restore baseline after S1.42B diagnostic divergence.",
@@ -664,6 +669,7 @@
     "S1.42AH was built directly from accepted S1.42AF, not rejected S1.42AG. Its dual exact MouthDog prevention passed targeted adapter, player, reverse-direction Pikmin lifecycle and final non-Pikmin EnemyAI neighbor coverage; Current/142 explicitly accepts it as the current full-normal-stack gameplay baseline.",
     "S1.42AI remains unaccepted with its full-normal BCMER ShyGuy runtime gate deferred but not waived while the DIAG1 repair path is resolved.",
     "S1.42AI-DIAG1 has an explicit failed diagnostic runtime decision in Current/145; it must not be rerun unchanged or treated as an active runtime candidate.",
-    "S1.42AI-DIAG1R1 was built directly from S1.42AI, not from the failed DIAG1 profile bytes. Current/147 records its explicit runtime diagnostic failure after the metadata-derived LethalMin owner repair succeeded but ElevatorMod.Patches.EndlessElevator was absent; it is not an active runtime candidate, must not be rerun unchanged, is not a safe gameplay base, and cannot waive the deferred full-normal S1.42AI runtime gate."
+    "S1.42AI-DIAG1R1 was built directly from S1.42AI, not from the failed DIAG1 profile bytes. Current/147 records its explicit runtime diagnostic failure after the metadata-derived LethalMin owner repair succeeded but ElevatorMod.Patches.EndlessElevator was absent; it is not an active runtime candidate, must not be rerun unchanged, is not a safe gameplay base, and cannot waive the deferred full-normal S1.42AI runtime gate.",
+    "S1.42AI-DIAG1R2 was built directly from exact S1.42AI and runtime-failed only after the owner/applicability repairs armed: its ordinal enemyName literal 'Shy Guy' rejected the real ShyGuyDef/Shy guy identity. S1.42AI-DIAG1R3 is determined as a literal-only repair and, when built, must again use exact S1.42AI as the archive base rather than failed R2 bytes."
   ]
 }

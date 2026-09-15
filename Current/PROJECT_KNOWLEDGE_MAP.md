@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R2 candidate=S1.42AI-DIAG1R2 runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R2 candidate=none runtime_test_outstanding=false -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -36,11 +36,13 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
 
-Latest built artifact and active diagnostic runtime candidate: **S1.42AI-DIAG1R2 — ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair — NOT ACCEPTED**. Runtime test outstanding: **yes**. Candidate authority: `Current/148_S1.42AI-DIAG1R2_BUILD_CANDIDATE_ENDLESS_ELEVATOR_APPLICABILITY_REPAIR.md`; repair/applicability contract: `BuildSpecs/S1.42AI-DIAG1R2_REQUEST.md`; preserved guard contract: `AnalysisEvidence/S1.42AI-DIAG1R1/MINIMAL_GUARD_CONTRACT.md`; materialized validation: `AnalysisEvidence/S1.42AI-DIAG1R2/MATERIALIZED_VALIDATION.md`.
+Latest built artifact: **S1.42AI-DIAG1R2 — ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair — RUNTIME FAILED / NOT ACCEPTED**. Active candidate: **none**. Runtime test outstanding: **no**. Failure authority: `Current/149_S1.42AI-DIAG1R2_RUNTIME_FAILURE_SHYGUY_IDENTITY_CASE_MISMATCH.md`; runtime evidence: `RuntimeEvidence/S1.42AI-DIAG1R2/20260915T164428Z/`.
 
-`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1R2_BUILD_AWAITING_RUNTIME`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R2` and `Current/AUTO_BUILD_RESULT.json.build_id = S1.42AI-DIAG1R2` identify the exact ready candidate for import and evidence attribution; ACTIVE_BUILD is not acceptance authority.
+R2 proves the metadata-derived owner repair and dependency-absent EndlessElevator applicability path arm, then fails the exact ShyGuy identity classifier because runtime `enemyName = Shy guy` does not match the old ordinal `Shy Guy` literal. `S1.42AI-DIAG1R3` is the determined successor; `BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md` and the exact source/static-gate literal repair are prepared, but no R3 artifact or runtime candidate exists yet.
 
-The next action is one R2 diagnostic gameplay run followed by the exact R2 log upload and repository-native ingestion. Failed DIAG1/R1 profiles must not be rerun unchanged. The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived.
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1R2_RUNTIME_FAILURE_R3_PREPARED_NOT_ARMED`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R2` remains evidence attribution only and is not acceptance authority.
+
+The next action is a separate coordinated repository-native R3 build-controller transition from exact S1.42AI, followed by generated-artifact/materialized validation. Do not run gameplay until a later lifecycle transition explicitly activates a verified R3 candidate. The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains deferred and not waived.
 
 ## Authority rule
 

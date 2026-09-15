@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "updated": "2026-09-14",
+  "updated": "2026-09-15",
   "status": "CURRENT_CANONICAL_ARTIFACT_EVIDENCE_INDEX",
   "profiles": [
     {
@@ -115,29 +115,30 @@
       "runtime_index": "RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z/INDEX.json",
       "runtime_log_sha256": "173eefaea3a81f84e82f210066a2b034655220d951b5a66c7bb7614895737635",
       "note": "Runtime proved the metadata-derived LethalMin owner type repair, then failed strict complex-owner prevalidation because ElevatorMod.Patches.EndlessElevator was absent. DIAG1 invalidated and rolled back all owned Harmony hooks; repair analysis is required before any successor diagnostic runtime test."
-    }
-  ],
-  "pending_profiles": [
+    },
     {
       "build_id": "S1.42AI-DIAG1R2",
-      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
+      "role": "RUNTIME_FAILED_DIAGNOSTIC_REPAIR_REQUIRED",
       "profile": "Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z",
       "profile_sha256": "9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15",
       "profile_sources": "ProfileSources/S1.42AI-DIAG1R2/",
       "file_index": "ProfileSources/S1.42AI-DIAG1R2/FILE_INDEX.json",
       "export": "ProfileSources/S1.42AI-DIAG1R2/export.r2x",
       "candidate_record": "Current/148_S1.42AI-DIAG1R2_BUILD_CANDIDATE_ENDLESS_ELEVATOR_APPLICABILITY_REPAIR.md",
-      "project_status": "Current/Projektstatus_S1.42AI-DIAG1R2_CANDIDATE.json",
+      "project_status": "Current/Projektstatus_S1.42AI-DIAG1R2_RUNTIME_FAILED.json",
+      "rejection": "Current/149_S1.42AI-DIAG1R2_RUNTIME_FAILURE_SHYGUY_IDENTITY_CASE_MISMATCH.md",
       "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
       "build_request": "BuildSpecs/S1.42AI-DIAG1R2_REQUEST.md",
       "guard_contract": "AnalysisEvidence/S1.42AI-DIAG1R1/MINIMAL_GUARD_CONTRACT.md",
       "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R2/MATERIALIZED_VALIDATION.json",
       "materialized_applicability": "AnalysisEvidence/S1.42AI-DIAG1R2/ENDLESS_ELEVATOR_MATERIALIZED_APPLICABILITY.json",
       "plugin_dll_sha256": "099a54571dc0595638fbd2f338c67137f42734b8aedf80478005dff314a0a3b3",
-      "runtime_evidence_required": false,
-      "partial_runtime_evidence_present": false,
-      "note": "Exact R2 profile/readable snapshot and static/materialized applicability/equivalence validation are complete; runtime evidence is now outstanding before any diagnostic decision."
-    },
+      "runtime_index": "RuntimeEvidence/S1.42AI-DIAG1R2/20260915T164428Z/INDEX.json",
+      "runtime_log_sha256": "6d913ac6788c72b7c2afb5092297a9070f5efb44bc33053d1ff6869a72019232",
+      "note": "R2 armed the repaired owner and dependency-absent EndlessElevator paths without install rollback, then failed exact ShyGuy identity resolution because source enemyName 'Shy Guy' did not match runtime 'Shy guy'. Every isolation-bypass marker identified the exact ShyGuy AI object. R3 exact-literal repair is prepared before any successor build/runtime activation."
+    }
+  ],
+  "pending_profiles": [
     {
       "build_id": "S1.42AI",
       "role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED",

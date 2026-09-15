@@ -39,25 +39,17 @@ Accepted BCMER rain-event routes remain disabled:
 
 Natural vanilla Rainy weather remains allowed. The requirement concerns BCMER event routes, not all rain in the game.
 
-## ShyGuy event exterior-spawn guard — S1.42AI active runtime candidate
+## ShyGuy event exterior-spawn guard — S1.42AI diagnostic repair path
 
 S1.42AH runtime evidence `RuntimeEvidence/S1.42AH/20260908T202138Z/` proved that BCMER event `ShyGuy` could create `ShyGuy(Clone) spawned outside; Switching to exterior AI` even while ordinary Scopophobia v1.3.4 retained `SpawnOutside = false`.
 
-S1.42AI is now built directly from accepted S1.42AH to correct only that proven event configuration defect. Its exact static evidence is `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md` and its active candidate authority is `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
+S1.42AI is built directly from accepted S1.42AH to correct only that proven event configuration defect. The `[ShyGuy]` event retains `Event Enabled? = true`, `Event Type = VeryBad`, and all three accepted interior values, while the exterior triplet is exactly zero. `Scopophobia.cfg` remains byte-identical to accepted S1.42AH, preserving ordinary `SpawnInside = true` / `SpawnOutside = false` ownership.
 
-The S1.42AI `[ShyGuy]` event retains `Event Enabled? = true`, `Event Type = VeryBad`, and all three accepted interior values, while the exterior triplet is exactly:
+The temporary ShyGuy-only diagnostic lineage is evidence, not a replacement for the full-normal gate. DIAG1 failed owner type resolution; R1 repaired that path but failed an incorrectly unconditional optional EndlessElevator target; R2 repaired applicability and runtime proved both predecessor repairs arm without install rollback. R2 then failed only the diagnostic identity contract because its ordinal literal `enemyName = "Shy Guy"` did not match the real runtime `ShyGuyDef/Shy guy` object with AI `ShyGuy.AI.ShyGuyAI`. Failure authority: `Current/149_S1.42AI-DIAG1R2_RUNTIME_FAILURE_SHYGUY_IDENTITY_CASE_MISMATCH.md`.
 
-```text
-ShyGuyDef OutsideEnemyRarity = 0, 0, 0, 0
-ShyGuyDef MinOutsideEnemy = 0, 0, 0, 0
-ShyGuyDef MaxOutsideEnemy = 0, 0, 0, 0
-```
+The user observed no non-ShyGuy enemy, one visible interior ShyGuy, and two ShyGuys in the terminal enemy census. No exterior ShyGuy was observed, so exterior visibility was not exercised in that run. These gameplay observations are directionally positive but do not override the R2 diagnostic identity failure.
 
-`Scopophobia.cfg` is byte-identical to accepted S1.42AH, so ordinary `SpawnInside = true` / `SpawnOutside = false` ownership is preserved. No package state or unrelated BCMER event changed.
-
-The user requested a temporary ShyGuy-only enemy and BCMER event isolation revision before the next gameplay run. The current preparation authority is `BuildSpecs/S1.42AI_PLAN.md` (planned `S1.42AI-DIAG1`, not built). The existing S1.42AI artifact and its full-normal runtime gate remain intact and unaccepted; diagnostic success cannot replace full-normal acceptance.
-
-The diagnostic must keep only `[ShyGuy]` enabled and executable, close forced/side-event bypasses, use one event draw with no bonus draws, and prevent non-ShyGuy enemy spawns. Do not mask an unexpected exterior Shy Guy by removing it. The underlying correction still requires positive interior event execution and absence of its exterior spawn/AI defect. The exact renderer/material cause of the prior invisible exterior symptom remains unproven and must not be overstated.
+R3 is determined by `BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md` as a one-literal exact identity repair: `ExpectedEnemyName = "Shy guy"`; exact asset `ShyGuyDef`, AI type `ShyGuy.AI.ShyGuyAI`, ordinal comparison, reference-equality allowlisting, all spawn-owner guards, BCMER-only event isolation and fail-closed ambiguity behavior remain unchanged. Do not broaden to case-insensitive/substring/alias matching. R3 is not built or active yet, so no gameplay test is currently authorized.
 
 The deferred `woah25-LethalEscapeUpdated 2.5.0` evaluation remains separate: inside -> outside transition compatibility is not equivalent to ordinary exterior spawning and must not be emulated by changing Scopophobia `SpawnOutside`.
 

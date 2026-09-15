@@ -472,6 +472,18 @@ def main() -> int:
     }
 
     source = "\n".join(p.read_text(encoding="utf-8") for p in sorted(PLUGIN_DIR.glob("*.cs")))
+    identity_literals = (
+        'private const string ExpectedAssetName = "ShyGuyDef";',
+        'private const string ExpectedEnemyName = "Shy guy";',
+        'private const string ExpectedAiType = "ShyGuy.AI.ShyGuyAI";',
+    )
+    for literal in identity_literals:
+        if source.count(literal) != 1:
+            fail(f"Exact runtime-proven ShyGuy identity literal missing/ambiguous: {literal}")
+    if 'private const string ExpectedEnemyName = "Shy Guy";' in source:
+        fail("Known-bad pre-R3 Shy Guy enemyName capitalization regression is present")
+    if 'string.Equals(candidate.enemyName, ExpectedEnemyName, StringComparison.Ordinal);' not in source:
+        fail("ShyGuy enemyName comparison is no longer exact ordinal")
     if "private const bool ImplementationComplete = true;" not in source:
         fail("Post-static-gate ImplementationComplete safety latch is not true")
     if not re.search(r'Config\.Bind\(\s*"Diagnostics"\s*,\s*"S1\.42AI-DIAG1 Enabled"\s*,\s*false\s*,', source, re.S):
@@ -523,6 +535,7 @@ def main() -> int:
         "forbidden_broad_target_labels_absent": True,
         "known_bad_hardcoded_pikmin_resolver_absent": True,
         "metadata_bound_pikmin_resolution_present": True,
+        "shyguy_identity_contract": {"asset": "ShyGuyDef", "enemyName": "Shy guy", "aiType": "ShyGuy.AI.ShyGuyAI", "comparison": "StringComparison.Ordinal"},
     }
 
     base = read_zip(BASE_PROFILE)
