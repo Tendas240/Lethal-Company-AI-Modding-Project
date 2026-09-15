@@ -55,7 +55,10 @@
         "Eyeless Dog Pikmin",
         "S1.42AI-DIAG1R1",
         "DIAG1R1",
-        "ShyGuy isolation diagnostic"
+        "ShyGuy isolation diagnostic",
+        "S1.42AI-DIAG1R2",
+        "DIAG1R2",
+        "ShyGuy isolation applicability diagnostic"
       ],
       "canonical": "Knowledge/CURRENT_LIFECYCLE.md",
       "machine_state": [
@@ -69,7 +72,7 @@
         "roadmap_and_deferred_scopes"
       ],
       "authority": "CURRENT",
-      "last_validated": "2026-09-14"
+      "last_validated": "2026-09-15"
     },
     {
       "id": "chat_handover",

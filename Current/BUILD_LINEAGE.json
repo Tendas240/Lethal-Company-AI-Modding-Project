@@ -4,7 +4,7 @@
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AH",
-  "active_candidate_build_id": null,
+  "active_candidate_build_id": "S1.42AI-DIAG1R2",
   "latest_built_artifact_id": "S1.42AI-DIAG1R2",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
@@ -611,12 +611,12 @@
     {
       "id": "S1.42AI-DIAG1R2",
       "title": "ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair",
-      "status": "built-static-materialized-validated-awaiting-runtime-candidate-activation",
+      "status": "active-runtime-candidate-pending",
       "parent": "S1.42AI",
       "profile": "Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z",
       "sha256": "9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15",
       "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
-      "decision_record": "BuildSpecs/S1.42AI-DIAG1R2_REQUEST.md",
+      "decision_record": "Current/148_S1.42AI-DIAG1R2_BUILD_CANDIDATE_ENDLESS_ELEVATOR_APPLICABILITY_REPAIR.md",
       "workflow_run": 34958254886,
       "build_commit": "854e4435676ef32648407dae9ba1e2e704a420d1",
       "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R2/MATERIALIZED_VALIDATION.json",

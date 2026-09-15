@@ -119,6 +119,26 @@
   ],
   "pending_profiles": [
     {
+      "build_id": "S1.42AI-DIAG1R2",
+      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
+      "profile": "Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z",
+      "profile_sha256": "9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15",
+      "profile_sources": "ProfileSources/S1.42AI-DIAG1R2/",
+      "file_index": "ProfileSources/S1.42AI-DIAG1R2/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AI-DIAG1R2/export.r2x",
+      "candidate_record": "Current/148_S1.42AI-DIAG1R2_BUILD_CANDIDATE_ENDLESS_ELEVATOR_APPLICABILITY_REPAIR.md",
+      "project_status": "Current/Projektstatus_S1.42AI-DIAG1R2_CANDIDATE.json",
+      "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
+      "build_request": "BuildSpecs/S1.42AI-DIAG1R2_REQUEST.md",
+      "guard_contract": "AnalysisEvidence/S1.42AI-DIAG1R1/MINIMAL_GUARD_CONTRACT.md",
+      "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R2/MATERIALIZED_VALIDATION.json",
+      "materialized_applicability": "AnalysisEvidence/S1.42AI-DIAG1R2/ENDLESS_ELEVATOR_MATERIALIZED_APPLICABILITY.json",
+      "plugin_dll_sha256": "099a54571dc0595638fbd2f338c67137f42734b8aedf80478005dff314a0a3b3",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false,
+      "note": "Exact R2 profile/readable snapshot and static/materialized applicability/equivalence validation are complete; runtime evidence is now outstanding before any diagnostic decision."
+    },
+    {
       "build_id": "S1.42AI",
       "role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED",
       "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
@@ -186,7 +206,8 @@
     "RuntimeEvidence/S1.42AG/20260906T085500Z contains S1.42AG rejection evidence.",
     "RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z contains the failed DIAG1 diagnostic runtime log with SHA-256 0125f1ff1f16b99fa2531374bbfbc1a1294ec4918b22e67aed804ad1e41ebe49.",
     "RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z contains the failed R1 diagnostic runtime log with SHA-256 173eefaea3a81f84e82f210066a2b034655220d951b5a66c7bb7614895737635.",
-    "S1.42AI-DIAG1R1 remains materialized at Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z SHA-256 b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd with readable ProfileSources/S1.42AI-DIAG1R1 and post-build validation run 34822644436 SUCCESS; runtime subsequently failed the complex-owner target contract."
+    "S1.42AI-DIAG1R1 remains materialized at Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z SHA-256 b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd with readable ProfileSources/S1.42AI-DIAG1R1 and post-build validation run 34822644436 SUCCESS; runtime subsequently failed the complex-owner target contract.",
+    "S1.42AI-DIAG1R2 is materialized at Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z SHA-256 9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15 with readable ProfileSources/S1.42AI-DIAG1R2 and canonical validation run 34990530260 SUCCESS."
   ],
-  "last_validated": "2026-09-14"
+  "last_validated": "2026-09-15"
 }

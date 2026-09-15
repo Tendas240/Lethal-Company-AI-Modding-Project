@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R2 candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R2 candidate=S1.42AI-DIAG1R2 runtime_test_outstanding=true -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -36,11 +36,11 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
 
-Latest built artifact: **S1.42AI-DIAG1R2 — ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair — BUILT + STATIC/MATERIALIZED VALIDATED / NOT ACCEPTED**. Exact profile SHA-256: `9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15`. Canonical validation: `AnalysisEvidence/S1.42AI-DIAG1R2/MATERIALIZED_VALIDATION.json` with run `34990530260`.
+Latest built artifact and active diagnostic runtime candidate: **S1.42AI-DIAG1R2 — ShyGuy Isolation Diagnostic EndlessElevator Applicability Repair — NOT ACCEPTED**. Runtime test outstanding: **yes**. Candidate authority: `Current/148_S1.42AI-DIAG1R2_BUILD_CANDIDATE_ENDLESS_ELEVATOR_APPLICABILITY_REPAIR.md`; repair/applicability contract: `BuildSpecs/S1.42AI-DIAG1R2_REQUEST.md`; preserved guard contract: `AnalysisEvidence/S1.42AI-DIAG1R1/MINIMAL_GUARD_CONTRACT.md`; materialized validation: `AnalysisEvidence/S1.42AI-DIAG1R2/MATERIALIZED_VALIDATION.md`.
 
-There is **no active runtime candidate** and no new runtime test is outstanding. `BuildSpecs/current.json` is disabled and guards accepted S1.42AH while awaiting the separate R2 runtime-candidate activation transition. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R1` remains attribution for the last completed failed runtime run only.
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1R2_BUILD_AWAITING_RUNTIME`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R2` and `Current/AUTO_BUILD_RESULT.json.build_id = S1.42AI-DIAG1R2` identify the exact ready candidate for import and evidence attribution; ACTIVE_BUILD is not acceptance authority.
 
-The next action is the coordinated lifecycle transition that explicitly activates exact verified R2 and only then sets `runtime_test_outstanding = true`. Do not import/test R2 before that transition. The ordinary full-normal S1.42AI gate remains deferred and not waived.
+The next action is one R2 diagnostic gameplay run followed by the exact R2 log upload and repository-native ingestion. Failed DIAG1/R1 profiles must not be rerun unchanged. The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived.
 
 ## Authority rule
 
