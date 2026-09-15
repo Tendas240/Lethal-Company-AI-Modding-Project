@@ -1,0 +1,239 @@
+name: Request canonical S1.42AI-DIAG1R3 build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/s142ai-diag1r3-build-request.yml'
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  request:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Verify exact pre-R3 main transition point
+        shell: bash
+        run: |
+          if [ "${{ github.event.before }}" != "6651194a970ba1f831b15026d98fb57e5744882f" ]; then
+            echo "Unexpected pre-R3 main SHA: ${{ github.event.before }}" >&2
+            exit 1
+          fi
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          def sha256(path: Path) -> str:
+              h = hashlib.sha256()
+              with path.open('rb') as f:
+                  for chunk in iter(lambda: f.read(1024 * 1024), b''):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          current = json.loads(Path('BuildSpecs/current.json').read_text(encoding='utf-8'))
+          if current.get('enabled') is not False:
+              raise RuntimeError('Build controller must be disabled before the R3 request')
+          if current.get('build_id') != 'IDLE_AFTER_S1.42AI-DIAG1R2_RUNTIME_FAILURE_R3_PREPARED_NOT_ARMED':
+              raise RuntimeError(f"Unexpected pre-R3 build controller state: {current.get('build_id')}")
+
+          state = json.loads(Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          if state.get('accepted_baseline', {}).get('build_id') != 'S1.42AH':
+              raise RuntimeError('Accepted baseline drifted before R3 request')
+          if state.get('latest_built_artifact', {}).get('build_id') != 'S1.42AI-DIAG1R2':
+              raise RuntimeError('Latest built artifact drifted before R3 request')
+          if state.get('active_candidate') is not None or state.get('runtime_test_outstanding') is not False:
+              raise RuntimeError('R3 request requires no active candidate and no outstanding runtime test')
+          revision = state.get('selected_scope', {}).get('diagnostic_revision', {})
+          if revision.get('build_id') != 'S1.42AI-DIAG1R3':
+              raise RuntimeError('CURRENT_STATE does not bind R3 as the prepared successor')
+          if revision.get('status') != 'SUCCESSOR_DETERMINED_SOURCE_AND_STATIC_GATE_REPAIR_PREPARED_NOT_BUILT_NOT_RUNTIME_CANDIDATE':
+              raise RuntimeError(f"Unexpected R3 preparation status: {revision.get('status')}")
+          if revision.get('request_record') != 'BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md':
+              raise RuntimeError('CURRENT_STATE R3 request authority drifted')
+          if revision.get('base_profile') != 'Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z':
+              raise RuntimeError('CURRENT_STATE R3 base profile drifted')
+          if revision.get('base_sha256') != 'd993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2':
+              raise RuntimeError('CURRENT_STATE R3 base SHA drifted')
+
+          active_build = Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip()
+          if active_build != 'S1.42AI-DIAG1R2':
+              raise RuntimeError(f'Runtime attribution drifted before R3 build: {active_build!r}')
+
+          result = json.loads(Path('Current/AUTO_BUILD_RESULT.json').read_text(encoding='utf-8'))
+          if result.get('build_id') != 'S1.42AI-DIAG1R2':
+              raise RuntimeError('AUTO_BUILD_RESULT no longer identifies R2 as the latest built artifact')
+
+          base = Path('Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z')
+          expected_base_sha = 'd993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2'
+          actual_base_sha = sha256(base)
+          if actual_base_sha != expected_base_sha:
+              raise RuntimeError(f'R3 base SHA mismatch: {actual_base_sha} != {expected_base_sha}')
+
+          request = Path('BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md').read_text(encoding='utf-8')
+          for needle in (
+              'Build ID: `S1.42AI-DIAG1R3`',
+              'ExpectedAssetName = "ShyGuyDef"',
+              'ExpectedEnemyName = "Shy guy"',
+              'ExpectedAiType = "ShyGuy.AI.ShyGuyAI"',
+              'enemyName comparison = StringComparison.Ordinal',
+          ):
+              if needle not in request:
+                  raise RuntimeError(f'R3 request authority missing exact contract marker: {needle}')
+
+          source = '\n'.join(p.read_text(encoding='utf-8') for p in sorted(Path('Patches/S142AIDiag1Isolation').glob('*.cs')))
+          required_literals = (
+              'private const string ExpectedAssetName = "ShyGuyDef";',
+              'private const string ExpectedEnemyName = "Shy guy";',
+              'private const string ExpectedAiType = "ShyGuy.AI.ShyGuyAI";',
+          )
+          for literal in required_literals:
+              if source.count(literal) != 1:
+                  raise RuntimeError(f'Exact R3 ShyGuy identity literal missing/ambiguous: {literal}')
+          if 'private const string ExpectedEnemyName = "Shy Guy";' in source:
+              raise RuntimeError('Known-bad pre-R3 Shy Guy capitalization is present')
+          if 'string.Equals(candidate.enemyName, ExpectedEnemyName, StringComparison.Ordinal);' not in source:
+              raise RuntimeError('R3 ShyGuy enemyName comparison is not exact ordinal')
+          for needle in (
+              'ResolveLethalMinWithdrawPikminContract',
+              '[DIAG1_OWNER_TYPE_DERIVED]',
+              'EndlessElevatorDependencyGuid = "kite.ZelevatorCode"',
+              'Chainloader.PluginInfos.TryGetValue(EndlessElevatorDependencyGuid',
+              '[DIAG1_COMPLEX_TARGET_NOT_APPLICABLE]',
+              '[DIAG1_COMPLEX_TARGET_APPLICABLE]',
+          ):
+              if needle not in source:
+                  raise RuntimeError(f'Preserved predecessor repair marker missing: {needle}')
+          if 'ResolveRequiredType("ElevatorMod.Patches.EndlessElevator")' in source:
+              raise RuntimeError('Known-bad unconditional EndlessElevator resolver is present')
+
+          output = Path('Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z')
+          snapshot = Path('ProfileSources/S1.42AI-DIAG1R3')
+          if output.exists() or snapshot.exists():
+              raise RuntimeError('R3 output identity already exists; refusing overwrite/reuse')
+          PY
+
+      - name: Clean-compile exact prepared R3 diagnostic source
+        shell: bash
+        run: |
+          dotnet build Patches/S142AIDiag1Isolation/S142AIDiag1Isolation.csproj -c Release --nologo
+          test -f Patches/S142AIDiag1Isolation/bin/Release/netstandard2.1/S142AIDiag1Isolation.dll
+          sha256sum Patches/S142AIDiag1Isolation/bin/Release/netstandard2.1/S142AIDiag1Isolation.dll
+          rm -rf Patches/S142AIDiag1Isolation/bin Patches/S142AIDiag1Isolation/obj
+
+      - name: Regenerate and bind exact R3 build controller
+        shell: bash
+        run: |
+          python BuildSpecs/generate_s142ai_diag1_spec.py
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          draft_path = Path('BuildSpecs/S1.42AI-DIAG1_DRAFT.json')
+          raw = draft_path.read_bytes()
+          expected_draft_sha = '30450b982f33214699780724df06f0caff9d850710e890bf2a655538cdfa5087'
+          actual_draft_sha = hashlib.sha256(raw).hexdigest()
+          if actual_draft_sha != expected_draft_sha:
+              raise RuntimeError(f'DIAG1 draft SHA mismatch: {actual_draft_sha} != {expected_draft_sha}')
+
+          spec = json.loads(raw.decode('utf-8'))
+          if spec.get('enabled') is not False:
+              raise RuntimeError('Validated DIAG1 draft is not disabled')
+          if spec.get('build_id') != 'S1.42AI-DIAG1':
+              raise RuntimeError('Unexpected source DIAG1 build_id')
+          if spec.get('base_profile') != 'Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z':
+              raise RuntimeError('Unexpected DIAG1 base profile')
+          if spec.get('base_sha256') != 'd993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2':
+              raise RuntimeError('Unexpected DIAG1 base SHA')
+          if len(spec.get('config_patches', [])) != 235:
+              raise RuntimeError('Unexpected DIAG1 config patch count')
+          if len(spec.get('text_assertions', [])) != 47:
+              raise RuntimeError('Unexpected DIAG1 assertion count')
+          if spec.get('mod_state_changes') != [] or spec.get('mod_additions') != [] or spec.get('mod_removals') != []:
+              raise RuntimeError('Unexpected DIAG1 package state delta')
+          if len(spec.get('local_plugin_builds', [])) != 1:
+              raise RuntimeError('Unexpected DIAG1 local plugin build count')
+
+          output = Path('Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z')
+          snapshot = Path('ProfileSources/S1.42AI-DIAG1R3')
+          if output.exists() or snapshot.exists():
+              raise RuntimeError('R3 output identity already exists; refusing overwrite/reuse')
+
+          spec['enabled'] = True
+          spec['build_id'] = 'S1.42AI-DIAG1R3'
+          spec['output_profile'] = str(output)
+          spec['profile_name'] = 'LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair'
+          spec['snapshot_dir'] = str(snapshot)
+          Path('BuildSpecs/current.json').write_text(json.dumps(spec, indent=2) + '\n', encoding='utf-8')
+          draft_path.unlink()
+          PY
+
+      - name: Remove completed one-shot request workflow
+        run: git rm .github/workflows/s142ai-diag1r3-build-request.yml
+
+      - name: Verify exact R3 controller transition diff
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected = {
+              '.github/workflows/s142ai-diag1r3-build-request.yml',
+              'BuildSpecs/current.json',
+          }
+          actual = set(subprocess.check_output(['git', 'diff', '--name-only', 'HEAD'], text=True).splitlines())
+          if actual != expected:
+              raise RuntimeError(f'unexpected R3 request diff: {sorted(actual)}')
+
+          spec = json.loads(Path('BuildSpecs/current.json').read_text(encoding='utf-8'))
+          if spec.get('enabled') is not True or spec.get('build_id') != 'S1.42AI-DIAG1R3':
+              raise RuntimeError('Build controller is not the exact enabled DIAG1R3 request')
+          if spec.get('base_profile') != 'Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z':
+              raise RuntimeError('Unexpected R3 base profile')
+          if spec.get('base_sha256') != 'd993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2':
+              raise RuntimeError('Unexpected R3 base SHA')
+          if spec.get('output_profile') != 'Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z':
+              raise RuntimeError('Unexpected R3 output profile')
+          if spec.get('profile_name') != 'LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair':
+              raise RuntimeError('Unexpected R3 profile name')
+          if spec.get('snapshot_dir') != 'ProfileSources/S1.42AI-DIAG1R3':
+              raise RuntimeError('Unexpected R3 snapshot dir')
+          if len(spec.get('local_plugin_builds', [])) != 1:
+              raise RuntimeError('R3 lost the exact diagnostic local-plugin build')
+          if Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() != 'S1.42AI-DIAG1R2':
+              raise RuntimeError('Runtime attribution changed during build-controller transition')
+          PY
+          git diff --check
+
+      - name: Commit exact DIAG1R3 build request
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Request canonical S1.42AI-DIAG1R3 build'
+          git push origin HEAD:main
+
+      - name: Dispatch canonical profile build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run profile-build.yml --ref main
