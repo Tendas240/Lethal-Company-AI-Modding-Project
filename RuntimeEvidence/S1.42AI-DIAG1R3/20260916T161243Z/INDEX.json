@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "build_id": "S1.42AI-DIAG1R3",
+  "ingested_utc": "20260916T161243Z",
+  "pipeline": "runtime_ingest_v2_streaming_analysis",
+  "files": [
+    {
+      "name": "LogOutput.log",
+      "size": 1466997,
+      "sha256": "37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084",
+      "extracted": []
+    }
+  ],
+  "analysis": [
+    {
+      "source": "RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z/raw/LogOutput.log",
+      "analysis": "RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z/analysis/raw__LogOutput",
+      "stats": {
+        "schema_version": 1,
+        "source_file": "LogOutput.log",
+        "source_size_bytes": 1466997,
+        "source_sha256": "37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084",
+        "line_count": 14603,
+        "event_count": 13714,
+        "unique_normalized_signatures": 9662,
+        "first_timestamp": "16:03:40.8606642",
+        "last_timestamp": "16:12:13.9839847",
+        "severity_counts": {
+          "UNPARSED": 1,
+          "Message": 193,
+          "Debug": 8498,
+          "Info": 3186,
+          "Warning": 1537,
+          "Error": 299
+        },
+        "parse_counts": {
+          "continuation_or_unparsed_lines": 890,
+          "parsed_header_lines": 13713
+        },
+        "chat_readable_chunks_created": true,
+        "signature_chunk_count": 11
+      }
+    }
+  ],
+  "retention": {
+    "raw_and_extracted_are_disposable_after_acceptance": true,
+    "keep_before_deletion": [
+      "INDEX.json",
+      "analysis/STATS.json equivalents",
+      "analysis/MARKERS.json equivalents",
+      "analysis/signature index",
+      "canonical runtime acceptance documentation",
+      "SHA-256 values needed for provenance"
+    ]
+  }
+}
