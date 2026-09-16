@@ -33,7 +33,7 @@
     },
     {
       "build_id": "S1.42AF",
-      "role": "ACCEPTED_PREDECESSOR_TO_S1.42AH",
+      "role": "ACCEPTED_HISTORICAL_PREDECESSOR",
       "profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
       "profile_sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
       "profile_sources": "ProfileSources/S1.42AF/",
@@ -59,7 +59,7 @@
     },
     {
       "build_id": "S1.42AH",
-      "role": "ACCEPTED_CURRENT_BASELINE",
+      "role": "ACCEPTED_PREDECESSOR_TO_S1.42AI",
       "profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
       "profile_sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
       "profile_sources": "ProfileSources/S1.42AH/",
@@ -95,7 +95,7 @@
       "plugin_dll_sha256": "bc8d51121451ecd1b1550e2aa6007991983c7a88ad93c86c38541ec0d358a2b3",
       "runtime_index": "RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z/INDEX.json",
       "runtime_log_sha256": "0125f1ff1f16b99fa2531374bbfbc1a1294ec4918b22e67aed804ad1e41ebe49",
-      "note": "Diagnostic runtime failed during exact owner prevalidation and DIAG1 rolled back all of its own Harmony hooks. Repair is required before a successor diagnostic runtime test."
+      "note": "Diagnostic runtime failed during exact owner prevalidation and DIAG1 rolled back all of its own Harmony hooks."
     },
     {
       "build_id": "S1.42AI-DIAG1R1",
@@ -114,7 +114,7 @@
       "plugin_dll_sha256": "2d1b6e8a002eb55e0e6d935e36c0a619d1c875651b94afb9e748663af93c1de0",
       "runtime_index": "RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z/INDEX.json",
       "runtime_log_sha256": "173eefaea3a81f84e82f210066a2b034655220d951b5a66c7bb7614895737635",
-      "note": "Runtime proved the metadata-derived LethalMin owner type repair, then failed strict complex-owner prevalidation because ElevatorMod.Patches.EndlessElevator was absent. DIAG1 invalidated and rolled back all owned Harmony hooks; repair analysis is required before any successor diagnostic runtime test."
+      "note": "R1 repaired the metadata-derived owner type and then failed strict complex-owner prevalidation because the optional EndlessElevator provider was absent."
     },
     {
       "build_id": "S1.42AI-DIAG1R2",
@@ -135,7 +135,7 @@
       "plugin_dll_sha256": "099a54571dc0595638fbd2f338c67137f42734b8aedf80478005dff314a0a3b3",
       "runtime_index": "RuntimeEvidence/S1.42AI-DIAG1R2/20260915T164428Z/INDEX.json",
       "runtime_log_sha256": "6d913ac6788c72b7c2afb5092297a9070f5efb44bc33053d1ff6869a72019232",
-      "note": "R2 armed the repaired owner and dependency-absent EndlessElevator paths without install rollback, then failed exact ShyGuy identity resolution because source enemyName 'Shy Guy' did not match runtime 'Shy guy'. Every isolation-bypass marker identified the exact ShyGuy AI object. R3 exact-literal repair is prepared before any successor build/runtime activation."
+      "note": "R2 repaired applicability and then failed exact ShyGuy identity resolution because source enemyName 'Shy Guy' did not match runtime 'Shy guy'."
     },
     {
       "build_id": "S1.42AI-DIAG1R3",
@@ -152,31 +152,32 @@
       "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json",
       "materialized_applicability": "AnalysisEvidence/S1.42AI-DIAG1R3/ENDLESS_ELEVATOR_MATERIALIZED_APPLICABILITY.json",
       "plugin_dll_sha256": "98b464e559120dc43e8041f163ceab038506e045f4b3cd4c71be8687e9c5da7a",
-      "note": "R3 runtime passed exact identity resolution and ShyGuy-only isolation. Interior ShyGuy visibility was observed; no non-ShyGuy enemy was observed; exterior visibility was not exercised because no exterior ShyGuy occurred. Diagnostic evidence only; not a gameplay base.",
       "decision": "Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md",
       "runtime_index": "RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z/INDEX.json",
       "runtime_log_sha256": "37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084",
-      "exterior_visibility_result": "NOT_EXERCISED_NO_EXTERIOR_SHYGUY_OBSERVED"
-    }
-  ],
-  "pending_profiles": [
+      "exterior_visibility_result": "NOT_EXERCISED_NO_EXTERIOR_SHYGUY_OBSERVED",
+      "note": "R3 passed exact identity resolution and ShyGuy-only isolation; it remains diagnostic evidence only."
+    },
     {
       "build_id": "S1.42AI",
-      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
+      "role": "ACCEPTED_CURRENT_BASELINE",
       "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
       "profile_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
       "profile_sources": "ProfileSources/S1.42AI/",
       "file_index": "ProfileSources/S1.42AI/FILE_INDEX.json",
       "export": "ProfileSources/S1.42AI/export.r2x",
       "candidate_record": "Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md",
-      "project_status": "Current/Projektstatus_S1.42AI_CANDIDATE.json",
+      "acceptance": "Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md",
+      "project_status": "Current/Projektstatus_S1.42AI_ACCEPTED.json",
       "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
       "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
-      "runtime_evidence_required": false,
-      "partial_runtime_evidence_present": false,
-      "note": "The diagnostic path is explicitly complete with R3 pass evidence. The independent full-normal S1.42AI BCMER ShyGuy runtime gate is now active and remains mandatory before acceptance."
+      "runtime_index": "RuntimeEvidence/S1.42AI/20260911T175403Z/INDEX.json",
+      "runtime_log_sha256": "1765a2b65cfa31da049ba415938119f9eb3690d09618a2f85a32209bfad6d9b5",
+      "runtime_decision": "RuntimeEvidence/S1.42AI/20260911T175403Z/RUNTIME_ACCEPTANCE_DECISION.md",
+      "note": "Full-normal runtime acceptance proved the intended ShyGuy interior event path while the BCMER exterior list/spawn contribution remained zero."
     }
   ],
+  "pending_profiles": [],
   "important_project_dlls": [
     {
       "name": "S139CompatibilityFixes.dll",
@@ -190,7 +191,7 @@
       "acceptance": "Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md",
       "prior_partial_runtime_evidence": "Current/141_S1.42AH_RUNTIME_PARTIAL_VALIDATION_REVERSE_DIRECTION_ADAPTER.md",
       "first_partial_runtime_evidence": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
-      "note": "S1.42AH dual MouthDog prevention is accepted. The cumulative compatibility DLL preserves native Pikmin reverse-direction lifecycle while blocking only reviewed MouthDog -> Pikmin entry points."
+      "note": "S1.42AI inherits this accepted cumulative compatibility DLL byte-identically from S1.42AH."
     },
     {
       "name": "S1.42AB interior normalization injected DLL",
@@ -206,7 +207,7 @@
       "accepted_sha256": "41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f",
       "evidence": "Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md",
       "acceptance": "Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md",
-      "note": "Inherited unchanged by accepted S1.42AH."
+      "note": "Inherited unchanged by S1.42AH and S1.42AI."
     }
   ],
   "runtime_evidence_policy": {
@@ -221,17 +222,10 @@
     "deferred_pending_candidate_role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED"
   },
   "verified_repository_api_observations": [
-    "ProfileSources/S1.42AB, S1.42AC, S1.42AF, S1.42AG, S1.42AH, S1.42AI-DIAG1 and S1.42AI-DIAG1R1 contain FILE_INDEX.json and export.r2x.",
+    "ProfileSources/S1.42AB, S1.42AC, S1.42AF, S1.42AG, S1.42AH, S1.42AI and all S1.42AI diagnostic revisions contain readable FILE_INDEX.json/export materialization as applicable.",
     "S1.42AH final accepted runtime evidence is RuntimeEvidence/S1.42AH/20260909T162513Z with raw LogOutput.log SHA-256 ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729.",
-    "S1.42AH prior targeted runtime evidence remains preserved at RuntimeEvidence/S1.42AH/20260908T174352Z and RuntimeEvidence/S1.42AH/20260908T162411Z.",
-    "RuntimeEvidence/S1.42AF/20260905T223738Z contains accepted predecessor evidence.",
-    "RuntimeEvidence/S1.42AG/20260906T085500Z contains S1.42AG rejection evidence.",
-    "RuntimeEvidence/S1.42AI-DIAG1/20260913T202638Z contains the failed DIAG1 diagnostic runtime log with SHA-256 0125f1ff1f16b99fa2531374bbfbc1a1294ec4918b22e67aed804ad1e41ebe49.",
-    "RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z contains the failed R1 diagnostic runtime log with SHA-256 173eefaea3a81f84e82f210066a2b034655220d951b5a66c7bb7614895737635.",
-    "S1.42AI-DIAG1R1 remains materialized at Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z SHA-256 b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd with readable ProfileSources/S1.42AI-DIAG1R1 and post-build validation run 34822644436 SUCCESS; runtime subsequently failed the complex-owner target contract.",
-    "S1.42AI-DIAG1R2 is materialized at Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z SHA-256 9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15 with readable ProfileSources/S1.42AI-DIAG1R2 and canonical validation run 34990530260 SUCCESS.",
-    "S1.42AI-DIAG1R3 is materialized at Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z SHA-256 13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768 with readable ProfileSources/S1.42AI-DIAG1R3 and canonical validation run 35023265624 SUCCESS.",
-    "S1.42AI-DIAG1R3 runtime diagnostic pass evidence is RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z/ with raw LogOutput.log SHA-256 37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084; exterior ShyGuy visibility was not exercised because no exterior ShyGuy occurred."
+    "S1.42AI full-normal accepted runtime evidence is RuntimeEvidence/S1.42AI/20260911T175403Z with raw LogOutput.log SHA-256 1765a2b65cfa31da049ba415938119f9eb3690d09618a2f85a32209bfad6d9b5.",
+    "S1.42AI-DIAG1R3 runtime diagnostic pass evidence is RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z with raw LogOutput.log SHA-256 37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084; it remains diagnostic-only evidence."
   ],
   "last_validated": "2026-09-16"
 }
