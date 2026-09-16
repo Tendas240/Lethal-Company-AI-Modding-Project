@@ -1,0 +1,132 @@
+name: Activate validated S1.42AI-DIAG1R3 candidate
+
+on:
+  push:
+    branches:
+      - activate/s142ai-diag1r3
+    paths:
+      - '.github/workflows/s142ai-diag1r3-activate.yml'
+      - 'RepositoryTools/activate_s142ai_diag1r3.py'
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: s142ai-diag1r3-candidate-activation
+  cancel-in-progress: false
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: activate/s142ai-diag1r3
+          fetch-depth: 0
+          lfs: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fail closed on exact pre-activation branch state
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='8bb0db0b882f2669e494f2d6dd04903c6d3b329a'
+          git merge-base --is-ancestor "$BASE" HEAD
+          mapfile -t changed < <(git diff --name-only "$BASE" HEAD | sort)
+          expected=(
+            '.github/workflows/s142ai-diag1r3-activate.yml'
+            'RepositoryTools/activate_s142ai_diag1r3.py'
+          )
+          if ! diff -u <(printf '%s\n' "${expected[@]}" | sort) <(printf '%s\n' "${changed[@]}"); then
+            echo 'Unexpected branch drift before R3 activation' >&2
+            exit 1
+          fi
+          test "$(git rev-parse "$BASE^{commit}")" = "$BASE"
+
+      - name: Bind exact canonical R3 build and validation runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          run_json="$(gh api repos/Tendas240/Lethal-Company-AI-Modding-Project/actions/runs/35023265624)"
+          test "$(jq -r '.status' <<<"$run_json")" = completed
+          test "$(jq -r '.conclusion' <<<"$run_json")" = success
+          test "$(jq -r '.head_sha' <<<"$run_json")" = cd3bf2c6d4fe08267cf12100b61e4dd9e24dcb61
+          build_json="$(gh api repos/Tendas240/Lethal-Company-AI-Modding-Project/actions/runs/35021307391)"
+          test "$(jq -r '.status' <<<"$build_json")" = completed
+          test "$(jq -r '.conclusion' <<<"$build_json")" = success
+          test "$(jq -r '.head_sha' <<<"$build_json")" = a6bcee14f61ecf42fcfa569851486550a57d649e
+
+      - name: Apply exact coordinated R3 activation
+        run: python RepositoryTools/activate_s142ai_diag1r3.py
+
+      - name: Remove one-shot activation tooling
+        shell: bash
+        run: |
+          rm RepositoryTools/activate_s142ai_diag1r3.py
+          rm .github/workflows/s142ai-diag1r3-activate.yml
+
+      - name: Render protected current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Validate exact activated state before commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/state_neutral_authority_validator.py
+          python RepositoryTools/state_neutral_authority_validator.py --self-test
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/handover_workflow_validator.py
+          python RepositoryTools/segmented_execution_policy_validator.py
+          python RepositoryTools/artifact_byte_integrity_validator.py
+          python RepositoryTools/repository_integrity_guard.py
+          python RepositoryTools/gale_import_helper_validator.py
+          python RepositoryTools/runtime_sha_provenance_validator.py
+          python RepositoryTools/phase_checkpoint_validator.py
+          python RepositoryTools/overhaul_contract_validator.py
+          python RepositoryTools/answerability_regression.py
+          python RepositoryTools/cold_history_storage_validator.py
+          python RepositoryTools/validator_selftest.py
+          test "$(cat RuntimeInbox/ACTIVE_BUILD.txt)" = 'S1.42AI-DIAG1R3'
+          python - <<'PY'
+          import json
+          s=json.load(open('Current/CURRENT_STATE.json', encoding='utf-8'))
+          b=json.load(open('BuildSpecs/current.json', encoding='utf-8'))
+          a=json.load(open('Current/AUTO_BUILD_RESULT.json', encoding='utf-8'))
+          i=json.load(open('Current/ARTIFACT_EVIDENCE_INTEGRITY.json', encoding='utf-8'))
+          assert s['accepted_baseline']['build_id']=='S1.42AH'
+          assert s['latest_built_artifact']['build_id']=='S1.42AI-DIAG1R3'
+          assert s['active_candidate']['build_id']=='S1.42AI-DIAG1R3'
+          assert s['runtime_test_outstanding'] is True
+          assert s['controllers']['runtime_active_build']=='S1.42AI-DIAG1R3'
+          assert s['controllers']['build_base_sha256']=='13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768'
+          assert b['enabled'] is False
+          assert b['build_id']=='IDLE_AFTER_S1.42AI-DIAG1R3_BUILD_AWAITING_RUNTIME'
+          assert b['base_sha256']=='13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768'
+          assert a['build_id']=='S1.42AI-DIAG1R3'
+          assert a['output_sha256']=='13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768'
+          p={x['build_id']:x for x in i['pending_profiles']}
+          assert p['S1.42AI-DIAG1R3']['role']=='ACTIVE_RUNTIME_CANDIDATE_PENDING'
+          assert p['S1.42AI-DIAG1R3']['profile_sha256']=='13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768'
+          PY
+
+      - name: Commit activated state and push branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          test -n "$(git status --porcelain)"
+          test ! -e .github/workflows/s142ai-diag1r3-activate.yml
+          test ! -e RepositoryTools/activate_s142ai_diag1r3.py
+          git commit -m 'Activate validated S1.42AI-DIAG1R3 runtime candidate'
+          git push origin HEAD:activate/s142ai-diag1r3
