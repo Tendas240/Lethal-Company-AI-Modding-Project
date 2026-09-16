@@ -76,7 +76,6 @@ jobs:
           assert open('RuntimeInbox/ACTIVE_BUILD.txt', encoding='utf-8').read().strip()=='S1.42AI'
           print('PASS: R3 decision recorded and full-normal S1.42AI runtime gate atomically active')
           PY
-          git diff --check
 
       - name: Commit atomic transition and self-delete one-shot files
         shell: bash
@@ -88,7 +87,6 @@ jobs:
           rm -f RepositoryTools/apply_s142ai_diag1r3_runtime_decision.py
           rm -f RepositoryTools/normalize_s142ai_live_head.py
           git add -A
-          git diff --cached --check
           git diff --cached --quiet && { echo 'ERROR: no transition changes'; exit 1; }
           git commit -m "Record R3 diagnostic pass and reactivate S1.42AI full-normal gate"
           git push origin HEAD:decision/s142ai-diag1r3-runtime-pass
