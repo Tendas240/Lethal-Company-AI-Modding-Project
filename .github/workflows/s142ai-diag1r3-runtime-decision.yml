@@ -37,6 +37,7 @@ jobs:
         run: |
           set -euo pipefail
           python RepositoryTools/apply_s142ai_diag1r3_runtime_decision.py
+          python RepositoryTools/normalize_s142ai_live_head.py
           python RepositoryTools/render_current_navigation.py
 
       - name: Validate transitioned repository state
@@ -65,7 +66,7 @@ jobs:
           a=json.load(open('Current/AUTO_BUILD_RESULT.json', encoding='utf-8'))
           c=json.load(open('BuildSpecs/current.json', encoding='utf-8'))
           assert s['accepted_baseline']['build_id']=='S1.42AH'
-          assert s['latest_built_artifact']['build_id']=='S1.42AI-DIAG1R3'
+          assert s['latest_built_artifact']['build_id']=='S1.42AI'
           assert s['active_candidate']['build_id']=='S1.42AI'
           assert s['runtime_test_outstanding'] is True
           assert s['controllers']['runtime_active_build']=='S1.42AI'
@@ -84,6 +85,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           rm -f .github/workflows/s142ai-diag1r3-runtime-decision.yml
           rm -f RepositoryTools/apply_s142ai_diag1r3_runtime_decision.py
+          rm -f RepositoryTools/normalize_s142ai_live_head.py
           git add -A
           git diff --cached --check
           git diff --cached --quiet && { echo 'ERROR: no transition changes'; exit 1; }
