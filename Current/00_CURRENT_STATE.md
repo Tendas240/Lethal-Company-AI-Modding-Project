@@ -12,37 +12,38 @@ Every ChatGPT chat performing project work must follow `Current/CHATGPT_SEGMENTE
 
 ## Accepted baseline
 
-**S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**
-
-Profile: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`  
-SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`  
-Acceptance: `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`  
-Runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
-
-## Latest built artifact
-
-**S1.42AI — BCMER ShyGuy Interior-Only Event Correction — BUILD PASS STATIC DELTA VERIFIED FULL NORMAL RUNTIME ACTIVE AFTER DIAG1R3 PASS NOT ACCEPTED**
+**S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**
 
 Profile: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`  
 SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`  
+Acceptance: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
+Runtime evidence: `RuntimeEvidence/S1.42AI/20260911T175403Z/`
+
+## Latest built artifact
+
+**S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**
+
+Profile: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`  
+SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`  
+Acceptance: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
 Candidate record: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
 ## Live execution state
 
-- Active candidate: **S1.42AI**
-- Runtime test outstanding: **yes**
+- Active candidate: **none**
+- Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI_BUILD_AWAITING_RUNTIME_VALIDATION`)
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI_ACCEPTANCE_AWAITING_NEXT_SCOPE`)
 - Guarded build base: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI`
 
 ## Exact next action
 
-Import S1.42AI with the canonical Gale v2.4 replacement helper and run the full-normal BCMER ShyGuy runtime gate from Current/143. Positively obtain or force the BCMER ShyGuy event, confirm ShyGuy remains available through the intended interior event path, verify that BCMER adds no ShyGuy to the exterior path and that no 'ShyGuy(Clone) spawned outside; Switching to exterior AI' marker occurs from that event, then upload the complete fresh S1.42AI LogOutput.log with the build-specific uploader in Current/143. Do not accept S1.42AI from diagnostic success alone.
+Select exactly one remaining deferred independent scope from Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md before preparing or arming any successor. No new runtime test is pending and no successor build is armed.
 
-A runtime test is pending for S1.42AI. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
