@@ -4,7 +4,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `RuntimeEvidence/S1.42AI/20260911T175403Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md`, `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`  
+**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `RuntimeEvidence/S1.42AI/20260916T180452Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md`, `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`  
 **Last-Validated:** 2026-09-16
 
 ## Accepted gameplay baseline
@@ -14,7 +14,7 @@
 Profile: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`  
 SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`  
 Acceptance: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
-Runtime evidence: `RuntimeEvidence/S1.42AI/20260911T175403Z/`
+Runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`
 
 S1.42AH remains the accepted predecessor and rollback provenance baseline, but it is no longer the current gameplay baseline.
 
