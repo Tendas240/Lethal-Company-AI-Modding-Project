@@ -34,7 +34,7 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 ## Current lifecycle anchor
 
-Accepted gameplay baseline and latest built artifact: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Exact profile SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Acceptance authority: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`; runtime evidence: `RuntimeEvidence/S1.42AI/20260911T175403Z/`.
+Accepted gameplay baseline and latest built artifact: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Exact profile SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Acceptance authority: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`; runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`.
 
 S1.42AH is the accepted predecessor/rollback provenance baseline. The S1.42AI-DIAG1/R1/R2/R3 chain remains diagnostic evidence only; R3 passed exact ShyGuy identity/isolation but is not a gameplay baseline.
 
