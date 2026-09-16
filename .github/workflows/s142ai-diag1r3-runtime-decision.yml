@@ -1,3 +1,4 @@
+# one-shot transition runner; self-deletes on validated success
 name: S1.42AI-DIAG1R3 Runtime Decision
 
 on:
