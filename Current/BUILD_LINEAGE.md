@@ -4,16 +4,15 @@
 **Authority:** human build-history router; exact build evidence remains in candidate/acceptance/rejection/runtime records  
 **Canonical-For:** `build_lineage`  
 **Machine Mirror:** `Current/BUILD_LINEAGE.json`  
-**Last-Validated:** 2026-09-15
+**Last-Validated:** 2026-09-16
 
 ## Current lineage head
 
 - **Accepted gameplay baseline:** S1.42AH — Mouth Dog Pikmin Dual Prevention — **ACCEPTED FULL NORMAL STACK**.
-- **Latest built artifact:** S1.42AI-DIAG1R3 — ShyGuy Isolation Diagnostic Exact Identity Repair — **ACTIVE DIAGNOSTIC RUNTIME CANDIDATE / NOT ACCEPTED**.
-- **Active candidate:** S1.42AI-DIAG1R3.
-- **Prepared successor:** none; R3 is the active diagnostic runtime candidate.
-- **Deferred full-normal gate:** S1.42AI — still mandatory after the diagnostic repair path is resolved.
-- **Current action:** run one exact R3 diagnostic gameplay gate, then upload the fresh complete R3 log for repository-native ingestion and decision.
+- **Completed diagnostic evidence:** S1.42AI-DIAG1R3 — runtime diagnostic pass / not gameplay accepted.
+- **Latest built artifact / active candidate:** S1.42AI — full-normal BCMER ShyGuy Interior-Only Event Correction / not accepted.
+- **Diagnostic result:** R3 exact identity and ShyGuy-only isolation passed; exterior visibility was not exercised because no exterior ShyGuy occurred.
+- **Current action:** run the independent full-normal S1.42AI gate from `Current/143...`, then ingest and decide that build.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -242,6 +241,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 | Mouth Dog LethalMin bite/grab/death-timer path prevention partial fix | S1.42AG rejection evidence / `Current/134...` |
 | Mouth Dog dual Pikmin prevention with native reverse and non-Pikmin neighbor behavior preserved | S1.42AH / `Current/142...` |
 | ShyGuy isolation diagnostic owner-type resolution repair, runtime-proved but later complex-owner failure | S1.42AI-DIAG1R1 / `Current/147...` |
+| ShyGuy exact-identity/isolation diagnostic completed; exterior visibility not exercised | S1.42AI-DIAG1R3 / `Current/151...` |
 
 ## Parentage rules that matter
 
@@ -254,7 +254,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - S1.42AF was built **directly from accepted S1.42AC**, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and is now the accepted predecessor/rollback point after S1.42AH promotion.
 - S1.42AG was built **directly from accepted S1.42AF**. Its `DoCheckInterval()` guard is a proven partial fix, but the build is runtime-rejected because a remaining targeting/attack path still allowed a Mouth Dog to select/attack a scrap-carrying Purple Pikmin. Do not use S1.42AG as a gameplay base.
 - S1.42AH was built **directly from accepted S1.42AF**, not from rejected S1.42AG. Targeted runtime coverage plus the final non-Pikmin neighbor pass are explicitly accepted in `Current/142...`; S1.42AH is the current full-normal-stack gameplay baseline.
-- S1.42AI remains unaccepted; its full-normal BCMER ShyGuy runtime gate is deferred but not waived while the DIAG1 repair path is resolved.
+- S1.42AI remains unaccepted; the DIAG1 repair path is now explicitly complete via `Current/151...`, and its independent full-normal BCMER ShyGuy runtime gate is active and not waived.
 - S1.42AI-DIAG1 has an explicit failed diagnostic runtime decision in `Current/145...`; it must not be rerun unchanged or treated as an active runtime candidate.
 - S1.42AI-DIAG1R1 was built **directly from S1.42AI**, not from the failed S1.42AI-DIAG1 profile bytes. `Current/147...` records its explicit runtime diagnostic failure after the owner type-resolution repair succeeded but `ElevatorMod.Patches.EndlessElevator` was absent. It is not an active runtime candidate or safe gameplay base; do not rerun it unchanged. The deferred full-normal S1.42AI gate remains mandatory.
 

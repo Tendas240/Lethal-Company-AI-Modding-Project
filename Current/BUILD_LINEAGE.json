@@ -4,8 +4,8 @@
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AH",
-  "active_candidate_build_id": "S1.42AI-DIAG1R3",
-  "latest_built_artifact_id": "S1.42AI-DIAG1R3",
+  "active_candidate_build_id": "S1.42AI",
+  "latest_built_artifact_id": "S1.42AI",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
     {
@@ -557,7 +557,7 @@
     {
       "id": "S1.42AI",
       "title": "BCMER ShyGuy Interior-Only Event Correction",
-      "status": "deferred-full-normal-runtime-gate-not-waived",
+      "status": "active-full-normal-runtime-candidate-not-accepted",
       "parent": "S1.42AH",
       "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
       "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
@@ -569,7 +569,7 @@
       "build_commit": "2dea753ec48ea2a8f417491ae9a13cf7a6d7b8b9",
       "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "safe_as_gameplay_base": false,
-      "principal_feature": "single-variable BCMER ShyGuy interior-only event correction; full-normal runtime gate remains mandatory but deferred while the diagnostic repair path is resolved"
+      "principal_feature": "single-variable BCMER ShyGuy interior-only event correction; diagnostic repair path is complete and the independent full-normal runtime gate is now active"
     },
     {
       "id": "S1.42AI-DIAG1",
@@ -629,19 +629,21 @@
     {
       "id": "S1.42AI-DIAG1R3",
       "title": "ShyGuy Isolation Diagnostic Exact Identity Repair",
-      "status": "active-runtime-candidate-pending",
+      "status": "runtime-diagnostic-pass-exterior-visibility-not-exercised",
       "parent": "S1.42AI",
       "profile": "Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z",
       "sha256": "13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768",
       "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
-      "decision_record": "Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md",
+      "decision_record": "Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md",
       "workflow_run": 35021307391,
       "build_commit": "19914cff25cb768cffe22694e93df150e45bdd2f",
       "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json",
       "safe_as_gameplay_base": false,
-      "principal_feature": "DIAG1 exact runtime-proven ShyGuy identity literal repair rebuilt and canonical materialization verified before runtime activation",
+      "principal_feature": "R3 proved exact runtime ShyGuy identity resolution and ShyGuy-only isolation; interior visibility observed, exterior visibility not exercised; diagnostic complete and full-normal S1.42AI gate reactivated",
       "candidate_record": "Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md",
-      "project_status": "Current/Projektstatus_S1.42AI-DIAG1R3_CANDIDATE.json"
+      "project_status": "Current/Projektstatus_S1.42AI-DIAG1R3_RUNTIME_PASS.json",
+      "runtime_evidence": "RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z/",
+      "runtime_log_sha256": "37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084"
     }
   ],
   "feature_index": {

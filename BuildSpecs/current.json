@@ -1,8 +1,8 @@
 {
   "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42AI-DIAG1R3_BUILD_AWAITING_RUNTIME",
-  "base_profile": "Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z",
-  "base_sha256": "13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768",
+  "build_id": "IDLE_AFTER_S1.42AI_BUILD_AWAITING_RUNTIME_VALIDATION",
+  "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+  "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",
   "profile_name": "DO_NOT_BUILD",
   "overwrite": false,

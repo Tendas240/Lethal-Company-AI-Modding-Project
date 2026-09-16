@@ -21,28 +21,28 @@ Runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
 
 ## Latest built artifact
 
-**S1.42AI-DIAG1R3 — ShyGuy Isolation Diagnostic Exact Identity Repair — BUILD PASS STATIC MATERIALIZED IDENTITY APPLICABILITY EQUIVALENCE PASS RUNTIME PENDING NOT ACCEPTED**
+**S1.42AI — BCMER ShyGuy Interior-Only Event Correction — BUILD PASS STATIC DELTA VERIFIED FULL NORMAL RUNTIME ACTIVE AFTER DIAG1R3 PASS NOT ACCEPTED**
 
-Profile: `Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z`  
-SHA-256: `13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768`  
-Candidate record: `Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md`  
+Profile: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`  
+SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`  
+Candidate record: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
 ## Live execution state
 
-- Active candidate: **S1.42AI-DIAG1R3**
+- Active candidate: **S1.42AI**
 - Runtime test outstanding: **yes**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI-DIAG1R3_BUILD_AWAITING_RUNTIME`)
-- Guarded build base: `Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z` / `13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R3`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI_BUILD_AWAITING_RUNTIME_VALIDATION`)
+- Guarded build base: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI`
 
 ## Exact next action
 
-Run one exact S1.42AI-DIAG1R3 diagnostic gameplay gate. Require clean DIAG1 owner/applicability/guard-layer startup and repaired exact ShyGuy identity resolution, verify no unexpected non-ShyGuy enemy appears while isolation is armed, and verify an exterior ShyGuy is visible when that condition is exercised. Then upload the fresh complete R3 LogOutput.log for repository-native ingestion and decision. If no exterior ShyGuy is encountered, report it as not exercised rather than passed. Do not execute the deferred full-normal S1.42AI gate yet.
+Import S1.42AI with the canonical Gale v2.4 replacement helper and run the full-normal BCMER ShyGuy runtime gate from Current/143. Positively obtain or force the BCMER ShyGuy event, confirm ShyGuy remains available through the intended interior event path, verify that BCMER adds no ShyGuy to the exterior path and that no 'ShyGuy(Clone) spawned outside; Switching to exterior AI' marker occurs from that event, then upload the complete fresh S1.42AI LogOutput.log with the build-specific uploader in Current/143. Do not accept S1.42AI from diagnostic success alone.
 
-A runtime test is pending for S1.42AI-DIAG1R3. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+A runtime test is pending for S1.42AI. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
