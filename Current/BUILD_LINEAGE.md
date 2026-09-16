@@ -8,11 +8,12 @@
 
 ## Current lineage head
 
-- **Accepted gameplay baseline:** S1.42AH — Mouth Dog Pikmin Dual Prevention — **ACCEPTED FULL NORMAL STACK**.
+- **Accepted gameplay baseline / latest built artifact:** S1.42AI — BCMER ShyGuy Interior-Only Event Correction — **ACCEPTED FULL NORMAL STACK**.
+- **Accepted predecessor / rollback provenance:** S1.42AH — Mouth Dog Pikmin Dual Prevention.
 - **Completed diagnostic evidence:** S1.42AI-DIAG1R3 — runtime diagnostic pass / not gameplay accepted.
-- **Latest built artifact / active candidate:** S1.42AI — full-normal BCMER ShyGuy Interior-Only Event Correction / not accepted.
-- **Diagnostic result:** R3 exact identity and ShyGuy-only isolation passed; exterior visibility was not exercised because no exterior ShyGuy occurred.
-- **Current action:** run the independent full-normal S1.42AI gate from `Current/143...`, then ingest and decide that build.
+- **Active candidate:** none.
+- **Runtime test outstanding:** no.
+- **Current action:** select exactly one remaining deferred independent scope from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md` before preparing a successor.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -60,14 +61,14 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AC | accepted predecessor to AF | Equal BCMER static EventType probability. Historical per-event-equality rejection is retained, but `Current/109` corrected its interpretation and `Current/118` explicitly accepted the artifact. |
 | S1.42AD | **REJECTED** | Functional Microwave half-frequency attempt. Runtime exposed 18 Interior/tag curves instead of the frozen zero-Interior assumption; fail-closed refusal prevented the `0.5` mutation from applying. |
 | S1.42AE | **SUPERSEDED — PATH-LENGTH BLOCKED, NOT GAMEPLAY-REJECTED** | Corrected provider code was never reached; v2.4 plus direct filesystem checks proved the 40,960-byte LC SoundAPI binding existed while its full path measured 262 characters and BepInEx/Mono still failed before chainloader startup. |
-| S1.42AF | **ACCEPTED PREDECESSOR TO AH** | Path-length-safe packaging successor built directly from S1.42AC. Runtime proved the nested LC SoundAPI binding at 226 characters, normal startup, and the exact 18 Moon / 18 Interior Functional Microwave contract with only the 18 Moon/tag curves scaled by `0.5`. |
-| S1.42AG | **RUNTIME REJECTED / PARTIAL FIX** | `MouthDogPikminEnemy.DoCheckInterval()` prevention successfully removed the LethalMin bite/grab/death-timer mutation path and the 707-warning aftermath, but a Mouth Dog still targeted/attacked a scrap-carrying Purple Pikmin through an unresolved path; reverse-direction Pikmin -> Dog behavior was not positively proven. |
-| S1.42AH | **ACCEPTED CURRENT BASELINE** | Dual exact MouthDog adapter + Vanilla Pikmin collision prevention; targeted runtime preserved player, reverse Pikmin lifecycle and final non-Pikmin EnemyAI neighbor behavior. |
-| S1.42AI | **DEFERRED FULL-NORMAL RUNTIME GATE / NOT ACCEPTED** | Single-variable BCMER ShyGuy interior-only correction from accepted S1.42AH; exact static delta verified; full-normal runtime gate remains mandatory but deferred while the diagnostic repair path is resolved. |
-| S1.42AI-DIAG1 | **RUNTIME DIAGNOSTIC FAILED / REPAIR REQUIRED / NOT ACCEPTED** | Temporary exact ShyGuy isolation diagnostic built from S1.42AI. Build/static/materialized delta passed, but runtime owner prevalidation could not resolve the hardcoded `LethalMin.PikminType`, DIAG1 marked itself invalid and rolled back all of its own Harmony hooks. Repair source/static validation before any successor diagnostic test. |
-| S1.42AI-DIAG1R1 | **RUNTIME DIAGNOSTIC FAILED / REPAIR ANALYSIS REQUIRED / NOT ACCEPTED** | R1 repaired the exact `WithdrawPikminFromOnion` metadata-derived owner type and proved that repair at runtime. A later strict complex-owner target then failed because `ElevatorMod.Patches.EndlessElevator` was absent; DIAG1 invalidated and rolled back all owned Harmony hooks. Failure authority: `Current/147...`. |
-| S1.42AI-DIAG1R2 | **RUNTIME DIAGNOSTIC FAILED / REPAIR REQUIRED / NOT ACCEPTED** | R2 armed the owner/applicability repairs, then failed exact ShyGuy identity resolution because source required ordinal `Shy Guy` while runtime proved `Shy guy`; failure authority: `Current/149...`. |
-| S1.42AI-DIAG1R3 | **ACTIVE DIAGNOSTIC RUNTIME CANDIDATE / NOT ACCEPTED** | Built directly from exact S1.42AI with the literal-only runtime-proven `Shy guy` identity repair; canonical profile SHA `13d73d8a...` passed static, materialized applicability, decompiled-C# and normalized-IL semantic gates. Runtime diagnostic is now outstanding. |
+| S1.42AF | **ACCEPTED PREDECESSOR** | Path-length-safe packaging successor built directly from S1.42AC. Runtime proved the nested LC SoundAPI binding at 226 characters, normal startup, and the exact 18 Moon / 18 Interior Functional Microwave contract with only the 18 Moon/tag curves scaled by `0.5`. |
+| S1.42AG | **RUNTIME REJECTED / PARTIAL FIX** | `MouthDogPikminEnemy.DoCheckInterval()` prevention removed the LethalMin bite/grab/death-timer mutation path, but a remaining Mouth Dog targeting/attack path persisted. |
+| S1.42AH | **ACCEPTED PREDECESSOR TO AI** | Dual exact MouthDog adapter + Vanilla Pikmin collision prevention; targeted runtime preserved player, reverse Pikmin lifecycle and final non-Pikmin EnemyAI neighbor behavior. |
+| S1.42AI | **ACCEPTED CURRENT BASELINE** | Single-variable BCMER ShyGuy interior-only correction from accepted S1.42AH; full-normal runtime proved interior event availability with zero BCMER exterior list contribution and no ShyGuy exterior-AI marker. |
+| S1.42AI-DIAG1 | **RUNTIME DIAGNOSTIC FAILED / NOT ACCEPTED** | Temporary exact ShyGuy isolation diagnostic; owner prevalidation failed and the diagnostic rolled back its hooks. |
+| S1.42AI-DIAG1R1 | **RUNTIME DIAGNOSTIC FAILED / NOT ACCEPTED** | Owner type repair succeeded, then strict optional EndlessElevator target prevalidation failed. |
+| S1.42AI-DIAG1R2 | **RUNTIME DIAGNOSTIC FAILED / NOT ACCEPTED** | Applicability repair succeeded, then exact ShyGuy identity failed because source `Shy Guy` did not match runtime `Shy guy`. |
+| S1.42AI-DIAG1R3 | **RUNTIME DIAGNOSTIC PASS / NOT GAMEPLAY ACCEPTED** | Exact `Shy guy` identity/isolation passed; interior visibility observed, exterior visibility not exercised. Diagnostic evidence only. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -120,98 +121,45 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Historical rejection: `Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
 - Corrected source analysis: `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`
 - Corrected acceptance: `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`
-- Original runtime evidence: `RuntimeEvidence/S1.42AC/20260904T181854Z/`
 - Fresh acceptance runtime evidence: `RuntimeEvidence/S1.42AC/20260904T235720Z/`
 - Fresh raw-log SHA-256: `98170374c4ffb6f40322a8019ad7f7f807e900525717dfdf7e70698bd7f28fa8`
-- Build workflow run: `33903271224`
-- Build commit: `a30b327580e28f42e55281e91abe03d32ae41363`
 
-### S1.42AD — rejected Functional Microwave candidate
-
-- Profile: `Profiles/LC V1 S1.42AD Functional Microwave Spawn Rarity Reduction.r2z`
-- SHA-256: `9fea61e677a154cbfe68380e7c9d6a1b9285ca821d7dcec93772413ede27cf8c`
-- Candidate: `Current/120_S1.42AD_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_SPAWN_RARITY_REDUCTION.md`
-- Rejection: `Current/121_S1.42AD_RUNTIME_REJECTION_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_DRIFT.md`
-- Project status: `Current/Projektstatus_S1.42AD_REJECTED.json`
-- Plan / Patch Safety Review: `BuildSpecs/S1.42AD_PLAN.md`
-- Build workflow run: `33959742235`
-- Build commit: `1463a6cde5e8cb7655dd233f83da5157c91b036e`
-- DLL SHA-256: `45f22f9b27e3ab7c853fe742bb7c2ce9bc94abc5a0856bb278c747076a2f99c7`
-- Runtime evidence: `RuntimeEvidence/S1.42AD/20260905T103333Z/`
-- Raw log SHA-256: `30c69254c4a4fd6bea1ec83cda075c168742c9060b88b09c22025973b074b3e8`
-- Result: dependency validation passed, but provider contract failed closed on 18 unexpected Interior/tag curves; no x0.5 application marker.
-
-### S1.42AE — superseded Functional Microwave correction candidate
-
-- Profile: `Profiles/LC V1 S1.42AE Functional Microwave Provider Contract Correction.r2z`
-- SHA-256: `d07d492b69a528e5af5e575719e88d9166c3f3a0b71ff1006d36e946304a98ee`
-- Candidate: `Current/123_S1.42AE_BUILD_CANDIDATE_FUNCTIONAL_MICROWAVE_PROVIDER_CONTRACT_CORRECTION.md`
-- Analysis: `Current/122_S1.42AE_PROVIDER_CONTRACT_CORRECTION_ANALYSIS.md`
-- Project status: `Current/Projektstatus_S1.42AE_CANDIDATE.json`
-- Plan: `BuildSpecs/S1.42AE_PLAN.md`
-- Build workflow run: `33968217356`
-- Build commit: `85e6caade0edd94ac5d7f409b9dd734fc8613f3f`
-- DLL SHA-256: `f42b25f32dc338617176d6d1d8c76ec3583ab29c7c4a1231c9e5ca4078378357`
-- Parent: accepted S1.42AC, not rejected S1.42AD.
-- Status: superseded for path-length-safe packaging; provider code never executed; not accepted and not classified as a Microwave gameplay/runtime rejection.
-- Supersession: `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`
-
-### S1.42AF — accepted predecessor to S1.42AH
+### S1.42AF — accepted predecessor
 
 - Profile: `Profiles/LC V1 S1.42AF Microwave Fix.r2z`
-- Gale profile name: `LC V1 S1.42AF Microwave Fix`
 - SHA-256: `6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0`
-- Candidate: `Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`
 - Acceptance: `Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md`
-- Supersession/promotion analysis: `Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md`
-- Project status: `Current/Projektstatus_S1.42AF_ACCEPTED.json`
 - Runtime evidence: `RuntimeEvidence/S1.42AF/20260905T223738Z/`
-- Runtime log SHA-256: `63df88a3acb0c455bab914fd844767cb50b7384ab4b1ede8bd7cbcb63537d956`
-- Plan: `BuildSpecs/S1.42AF_PLAN.md`
-- Build workflow run: `33993880634`
-- Build commit: `2cab9044579e74739669440699c763a32f0fe379`
-- DLL SHA-256: `41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f`
-- Parent: accepted S1.42AC, not S1.42AE.
-- Runtime path gate: nested `me.loaforc.soundapi.lethalcompany.dll` existed with 40960 bytes at a 226-character full path; normal BepInEx/game startup succeeded.
-- Functional Microwave gate: CodeRebirth `1.6.9`, DawnLib/Dusk `0.9.25`, `PrioritiseMoons=true`, 18 Moon/tag curves and 18 Interior/tag curves; 18 Moon/tag curves scaled by `0.5`, Interior curves validation-only and not mutated.
-- Status: accepted predecessor / safe rollback point.
-- Separate inherited Mouth Dog / Pikmin compatibility finding: `Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md`.
 
-### S1.42AG — rejected Mouth Dog Pikmin one-way protection candidate
+### S1.42AG — rejected Mouth Dog partial fix
 
-- Parent: accepted S1.42AF.
 - Profile: `Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z`
 - SHA-256: `3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee`
-- Candidate: `Current/133_S1.42AG_BUILD_CANDIDATE_MOUTHDOG_PIKMIN_ONE_WAY_PROTECTION.md`
 - Rejection: `Current/134_S1.42AG_RUNTIME_REJECTION_REMAINING_MOUTHDOG_TARGETING_PATH.md`
-- Project status: `Current/Projektstatus_S1.42AG_REJECTED.json`
 - Runtime evidence: `RuntimeEvidence/S1.42AG/20260906T085500Z/`
-- Runtime log SHA-256: `3e8ca4c8fe045bbd2c62576dbbd5aaba2a226990e6b4af4149481f2672c35dfe`
-- Plan: `BuildSpecs/S1.42AG_PLAN.md`
-- Atomic build workflow run: `34004938402`
-- Build commit: `bb23701839d4c94bcad053a282f905ca571fc524`
-- Compatibility DLL SHA-256: `976264a31b85bf3d913d3ad703fa770a666957664d0de5b848a5073b0883d064`
-- Proven partial fix: `Priority.First` prevention on declared `LethalMin.MouthDogPikminEnemy.DoCheckInterval()` successfully blocked the LethalMin Pikmin bite/grab/death-timer mutation path and eliminated the associated `Work state with no task assigned!` burst.
-- Rejection reason: a Mouth Dog still visibly targeted and attacked a scrap-carrying Purple Pikmin through an unresolved path outside that dispatcher; intended Pikmin -> Mouth Dog attack/latch preservation was not positively proven.
-- Status: runtime rejected / partial fix / not a safe gameplay base.
 
-### S1.42AH — accepted Mouth Dog Pikmin dual prevention baseline
+### S1.42AH — accepted predecessor to S1.42AI
 
 - Parent: accepted S1.42AF, never rejected S1.42AG.
 - Profile: `Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z`
 - SHA-256: `06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e`
-- DLL SHA-256: `bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573`
-- Candidate: `Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md`
-- Partial decisions: `Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md`, `Current/141_S1.42AH_RUNTIME_PARTIAL_VALIDATION_REVERSE_DIRECTION_ADAPTER.md`
 - Acceptance: `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`
-- Project status: `Current/Projektstatus_S1.42AH_ACCEPTED.json`
-- Final decisive runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
+- Final runtime evidence: `RuntimeEvidence/S1.42AH/20260909T162513Z/`
 - Final raw-log SHA-256: `ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729`
-- Plan: `BuildSpecs/S1.42AH_PLAN.md`
-- Build workflow run: `34141360051`
-- Build commit: `fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5`
-- Archive delta: `export.r2x` + compatibility DLL only; all other members byte-identical to S1.42AF.
-- Final neighbor evidence: deliberate last-run MouthDog/non-Pikmin test included MouthDogs and a Redwood Titan followed by normal Redwood Titan death. Exact V81 source plus the S1.42AH type gate prove non-Pikmin `EnemyAI` pass-through through `MouthDogAI.OnCollideWithEnemy` -> `HitEnemy(2)`; the death line itself does not encode attacker identity.
+- Status: accepted predecessor / rollback provenance for S1.42AI.
+
+### S1.42AI — accepted current baseline
+
+- Parent: accepted S1.42AH.
+- Profile: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`
+- SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
+- Candidate: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`
+- Acceptance: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`
+- Project status: `Current/Projektstatus_S1.42AI_ACCEPTED.json`
+- Runtime evidence: `RuntimeEvidence/S1.42AI/20260911T175403Z/`
+- Runtime log SHA-256: `1765a2b65cfa31da049ba415938119f9eb3690d09618a2f85a32209bfad6d9b5`
+- Static evidence: `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`
+- Result: exact BCMER `1.71.0` loaded; ShyGuy event executed; intended interior route remained active; BCMER logged `Adding 0 ShyGuy into list.`; no ShyGuy exterior-AI marker occurred; no new project regression failure attributable to the isolated config delta.
 - Status: **accepted full normal stack / current safe gameplay base**.
 
 ## Feature/fix lookup
@@ -235,27 +183,23 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 | Exact BCMER per-event-weight semantic correction | `Current/109...` analysis |
 | Equal BCMER static EventType probability accepted | S1.42AC / `Current/118...` |
 | Functional Microwave half-frequency target accepted | S1.42AF / `Current/128...` |
-| Functional Microwave 0-Interior provider assumption disproved | S1.42AD runtime rejection |
-| Functional Microwave corrected 18 Moon / 18 Interior contract | S1.42AE source, runtime-proved and accepted in S1.42AF |
-| Functional Microwave path-length-safe packaging | S1.42AF |
-| Mouth Dog LethalMin bite/grab/death-timer path prevention partial fix | S1.42AG rejection evidence / `Current/134...` |
 | Mouth Dog dual Pikmin prevention with native reverse and non-Pikmin neighbor behavior preserved | S1.42AH / `Current/142...` |
-| ShyGuy isolation diagnostic owner-type resolution repair, runtime-proved but later complex-owner failure | S1.42AI-DIAG1R1 / `Current/147...` |
 | ShyGuy exact-identity/isolation diagnostic completed; exterior visibility not exercised | S1.42AI-DIAG1R3 / `Current/151...` |
+| BCMER ShyGuy interior-only event correction accepted | S1.42AI / `Current/152...` |
 
 ## Parentage rules that matter
 
 - S1.42C is the restore baseline after S1.42B's diagnostic divergence.
 - S1.42S is the accepted recovery architecture after the rejected broad Baboon approaches.
 - S1.42AB was built **directly from accepted S1.42Z**, not from rejected S1.42AA.
-- S1.42AC was built **directly from accepted S1.42AB**. Its original rejection remains historical evidence, `Current/109` corrected the per-event-weight interpretation, and `Current/118` is the explicit later acceptance decision.
-- S1.42AD was built **directly from accepted S1.42AC** and is rejected. It must not be used as a successor build base.
-- S1.42AE was built **directly from accepted S1.42AC**, not from rejected S1.42AD. Its provider code was never reached during the preloader failures; it is superseded for packaging/path-length reasons and is not a safe gameplay base.
-- S1.42AF was built **directly from accepted S1.42AC**, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and is now the accepted predecessor/rollback point after S1.42AH promotion.
-- S1.42AG was built **directly from accepted S1.42AF**. Its `DoCheckInterval()` guard is a proven partial fix, but the build is runtime-rejected because a remaining targeting/attack path still allowed a Mouth Dog to select/attack a scrap-carrying Purple Pikmin. Do not use S1.42AG as a gameplay base.
-- S1.42AH was built **directly from accepted S1.42AF**, not from rejected S1.42AG. Targeted runtime coverage plus the final non-Pikmin neighbor pass are explicitly accepted in `Current/142...`; S1.42AH is the current full-normal-stack gameplay baseline.
-- S1.42AI remains unaccepted; the DIAG1 repair path is now explicitly complete via `Current/151...`, and its independent full-normal BCMER ShyGuy runtime gate is active and not waived.
-- S1.42AI-DIAG1 has an explicit failed diagnostic runtime decision in `Current/145...`; it must not be rerun unchanged or treated as an active runtime candidate.
-- S1.42AI-DIAG1R1 was built **directly from S1.42AI**, not from the failed S1.42AI-DIAG1 profile bytes. `Current/147...` records its explicit runtime diagnostic failure after the owner type-resolution repair succeeded but `ElevatorMod.Patches.EndlessElevator` was absent. It is not an active runtime candidate or safe gameplay base; do not rerun it unchanged. The deferred full-normal S1.42AI gate remains mandatory.
+- S1.42AC was built **directly from accepted S1.42AB**; `Current/118` is the explicit corrected acceptance decision.
+- S1.42AD was built **directly from accepted S1.42AC** and is rejected.
+- S1.42AE was built **directly from accepted S1.42AC** and was superseded for packaging/path-length reasons.
+- S1.42AF was built **directly from accepted S1.42AC** and remains an accepted predecessor in the current line.
+- S1.42AG was built **directly from accepted S1.42AF** and is runtime-rejected as a partial fix.
+- S1.42AH was built **directly from accepted S1.42AF**, not from rejected S1.42AG. It is the accepted predecessor and rollback provenance baseline for S1.42AI.
+- S1.42AI was built **directly from accepted S1.42AH**. `Current/152...` explicitly accepts its isolated BCMER ShyGuy interior-only correction after full-normal runtime evidence; it is the current full-normal-stack gameplay baseline.
+- S1.42AI-DIAG1/R1/R2 remain failed diagnostic evidence only.
+- S1.42AI-DIAG1R3 was built **directly from exact S1.42AI** and passed the exact identity/isolation diagnostic; it remains diagnostic evidence only and is not a gameplay base.
 
 When an exact artifact/hash/status is not indexed here or in `Current/BUILD_LINEAGE.json`, open the linked build-specific record rather than inferring it from build-name order.
