@@ -223,7 +223,7 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Candidate: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`
 - Acceptance: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`
 - Project status: `Current/Projektstatus_S1.42AI_ACCEPTED.json`
-- Runtime evidence: `RuntimeEvidence/S1.42AI/20260911T175403Z/`
+- Runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`
 - Runtime log SHA-256: `1765a2b65cfa31da049ba415938119f9eb3690d09618a2f85a32209bfad6d9b5`
 - Build workflow run: `34496960816`
 - Build commit: `2dea753ec48ea2a8f417491ae9a13cf7a6d7b8b9`
