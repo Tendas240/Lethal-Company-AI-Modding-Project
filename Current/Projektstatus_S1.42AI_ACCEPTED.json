@@ -1,0 +1,29 @@
+{
+  "schema_version": 4,
+  "date": "2026-09-16",
+  "repository_is_source_of_truth": true,
+  "accepted_baseline": {
+    "build_id": "S1.42AI",
+    "title": "BCMER ShyGuy Interior-Only Event Correction",
+    "status": "ACCEPTED_FULL_NORMAL_STACK",
+    "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+    "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+    "acceptance": "Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md",
+    "runtime_evidence": "RuntimeEvidence/S1.42AI/20260911T175403Z/",
+    "runtime_log_sha256": "1765a2b65cfa31da049ba415938119f9eb3690d09618a2f85a32209bfad6d9b5",
+    "profile_sources": "ProfileSources/S1.42AI/",
+    "file_index": "ProfileSources/S1.42AI/FILE_INDEX.json",
+    "parent": "S1.42AH"
+  },
+  "active_runtime_candidate": null,
+  "runtime_test_outstanding": false,
+  "successor_armed": false,
+  "controllers": {
+    "buildspec_current_enabled": false,
+    "buildspec_current_id": "IDLE_AFTER_S1.42AI_ACCEPTANCE_AWAITING_NEXT_SCOPE",
+    "buildspec_base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+    "buildspec_base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+    "runtime_active_build": "S1.42AI"
+  },
+  "exact_next_step": "Select exactly one remaining deferred independent scope from Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md before preparing or arming any successor."
+}
