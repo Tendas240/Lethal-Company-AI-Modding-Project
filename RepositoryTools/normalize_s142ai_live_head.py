@@ -52,6 +52,14 @@ p = ROOT / "Knowledge/CURRENT_LIFECYCLE.md"
 text = p.read_text(encoding="utf-8")
 text = text.replace("## Latest built artifact / completed diagnostic", "## Completed diagnostic evidence", 1)
 text = text.replace("- Latest built artifact: **S1.42AI-DIAG1R3** (completed diagnostic evidence).\n- Active runtime candidate: **S1.42AI**.", "- Completed diagnostic evidence: **S1.42AI-DIAG1R3**.\n- Latest built artifact and active runtime candidate: **S1.42AI**.", 1)
+needle = "## Exact full-normal gate"
+assert needle in text
+canonical_gale = """## Canonical Gale workflow
+
+Import/replace the active S1.42AI profile only through `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` using canonical helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. The exact ready-to-test replacement/import command and the exact S1.42AI runtime-log uploader are recorded in `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
+
+"""
+text = text.replace(needle, canonical_gale + needle, 1)
 write(p.relative_to(ROOT), text)
 
 # Knowledge-map lifecycle anchor: do not call completed R3 the live latest artifact.
