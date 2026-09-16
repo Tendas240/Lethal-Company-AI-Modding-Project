@@ -1,0 +1,102 @@
+[
+  {
+    "minute": "16:40",
+    "levels": {
+      "Message": 3,
+      "Debug": 400,
+      "Info": 290,
+      "Warning": 9
+    }
+  },
+  {
+    "minute": "16:41",
+    "levels": {
+      "Info": 660,
+      "Debug": 1667,
+      "Message": 55,
+      "Warning": 351
+    }
+  },
+  {
+    "minute": "16:42",
+    "levels": {
+      "Info": 1165,
+      "Warning": 106,
+      "Debug": 2489,
+      "Error": 20,
+      "Message": 1
+    }
+  },
+  {
+    "minute": "16:44",
+    "levels": {
+      "Info": 598,
+      "Debug": 2998,
+      "Warning": 327,
+      "Error": 9,
+      "Message": 129
+    }
+  },
+  {
+    "minute": "16:45",
+    "levels": {
+      "Warning": 747,
+      "Info": 360,
+      "Debug": 1492,
+      "Message": 23,
+      "Error": 3
+    }
+  },
+  {
+    "minute": "16:46",
+    "levels": {
+      "Debug": 83,
+      "Info": 38,
+      "Warning": 3,
+      "Message": 8
+    }
+  },
+  {
+    "minute": "16:47",
+    "levels": {
+      "Debug": 40,
+      "Info": 9,
+      "Warning": 3,
+      "Message": 2
+    }
+  },
+  {
+    "minute": "16:48",
+    "levels": {
+      "Debug": 25,
+      "Warning": 7,
+      "Info": 14
+    }
+  },
+  {
+    "minute": "16:49",
+    "levels": {
+      "Debug": 104,
+      "Info": 288,
+      "Warning": 85
+    }
+  },
+  {
+    "minute": "16:50",
+    "levels": {
+      "Warning": 223,
+      "Debug": 989,
+      "Info": 325,
+      "Message": 1
+    }
+  },
+  {
+    "minute": "16:51",
+    "levels": {
+      "Warning": 124,
+      "Info": 347,
+      "Debug": 667,
+      "Message": 3
+    }
+  }
+]
