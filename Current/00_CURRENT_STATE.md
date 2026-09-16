@@ -17,7 +17,7 @@ Every ChatGPT chat performing project work must follow `Current/CHATGPT_SEGMENTE
 Profile: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`  
 SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`  
 Acceptance: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
-Runtime evidence: `RuntimeEvidence/S1.42AI/20260911T175403Z/`
+Runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`
 
 ## Latest built artifact
 
