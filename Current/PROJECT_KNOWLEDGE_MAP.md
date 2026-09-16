@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R3 candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R3 candidate=S1.42AI-DIAG1R3 runtime_test_outstanding=true -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -36,13 +36,13 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
 
-Latest built artifact: **S1.42AI-DIAG1R3 — ShyGuy Isolation Diagnostic Exact Identity Repair — BUILT + STATIC/MATERIALIZED VALIDATED / NOT ACCEPTED**. Exact profile SHA-256: `13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768`. Canonical validation: `AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json` with run `35023265624`.
+Latest built artifact and active diagnostic runtime candidate: **S1.42AI-DIAG1R3 — ShyGuy Isolation Diagnostic Exact Identity Repair — NOT ACCEPTED**. Runtime test outstanding: **yes**. Exact profile SHA-256: `13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768`. Candidate authority: `Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md`; build/repair contract: `BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md`; materialized validation: `AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.md`.
 
-R3 was built directly from exact full-normal S1.42AI and binds the runtime-proven exact identity `ShyGuyDef` / `Shy guy` / `ShyGuy.AI.ShyGuyAI` with `StringComparison.Ordinal`. Static, materialized applicability and semantic DLL-equivalence gates are green.
+R3 binds the exact runtime-proven identity `ShyGuyDef` / `Shy guy` / `ShyGuy.AI.ShyGuyAI` with `StringComparison.Ordinal`; owner/applicability and semantic-equivalence gates are green.
 
-There is **no active runtime candidate** and no new runtime test is outstanding. `BuildSpecs/current.json` is disabled and guards accepted S1.42AH while awaiting the separate R3 runtime-candidate activation transition. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R2` remains attribution for the last completed failed runtime run only.
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI-DIAG1R3_BUILD_AWAITING_RUNTIME`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI-DIAG1R3` and `Current/AUTO_BUILD_RESULT.json.build_id = S1.42AI-DIAG1R3` identify the exact ready candidate for import and evidence attribution; ACTIVE_BUILD is not acceptance authority.
 
-The next action is the coordinated lifecycle transition that explicitly activates exact verified R3 and only then sets `runtime_test_outstanding = true`. Do not import/test R3 before that transition. The ordinary full-normal S1.42AI gate remains deferred and not waived.
+The next action is one R3 diagnostic gameplay run followed by the exact R3 log upload and repository-native ingestion. Explicitly confirm no non-ShyGuy enemy appears and exterior ShyGuy visibility when exercised. The ordinary S1.42AI full-normal BCMER ShyGuy acceptance gate remains explicitly deferred and not waived.
 
 ## Authority rule
 

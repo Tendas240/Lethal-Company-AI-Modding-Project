@@ -1,6 +1,6 @@
 {
   "schema_version": 8,
-  "updated": "2026-09-15",
+  "updated": "2026-09-16",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "game": "Lethal Company V81",
@@ -20,7 +20,7 @@
   "latest_built_artifact": {
     "build_id": "S1.42AI-DIAG1R3",
     "title": "ShyGuy Isolation Diagnostic Exact Identity Repair",
-    "status": "BUILT_STATIC_MATERIALIZED_VALIDATED_AWAITING_RUNTIME_CANDIDATE_ACTIVATION_NOT_ACCEPTED",
+    "status": "BUILD_PASS_STATIC_MATERIALIZED_IDENTITY_APPLICABILITY_EQUIVALENCE_PASS_RUNTIME_PENDING_NOT_ACCEPTED",
     "profile": "Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z",
     "sha256": "13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768",
     "request_record": "BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md",
@@ -43,28 +43,52 @@
       "enemyName": "Shy guy",
       "aiType": "ShyGuy.AI.ShyGuyAI",
       "comparison": "StringComparison.Ordinal"
+    },
+    "candidate_record": "Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md",
+    "project_status": "Current/Projektstatus_S1.42AI-DIAG1R3_CANDIDATE.json"
+  },
+  "active_candidate": {
+    "build_id": "S1.42AI-DIAG1R3",
+    "title": "ShyGuy Isolation Diagnostic Exact Identity Repair",
+    "status": "ACTIVE_DIAGNOSTIC_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "profile": "Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z",
+    "sha256": "13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768",
+    "candidate_record": "Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md",
+    "project_status": "Current/Projektstatus_S1.42AI-DIAG1R3_CANDIDATE.json",
+    "profile_sources": "ProfileSources/S1.42AI-DIAG1R3/",
+    "file_index": "ProfileSources/S1.42AI-DIAG1R3/FILE_INDEX.json",
+    "workflow_run": 35021307391,
+    "build_commit": "19914cff25cb768cffe22694e93df150e45bdd2f",
+    "analysis_contract": "BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md",
+    "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json",
+    "materialized_applicability": "AnalysisEvidence/S1.42AI-DIAG1R3/ENDLESS_ELEVATOR_MATERIALIZED_APPLICABILITY.json",
+    "plugin_dll_sha256": "98b464e559120dc43e8041f163ceab038506e045f4b3cd4c71be8687e9c5da7a",
+    "shyguy_identity": {
+      "asset": "ShyGuyDef",
+      "enemyName": "Shy guy",
+      "aiType": "ShyGuy.AI.ShyGuyAI",
+      "comparison": "StringComparison.Ordinal"
     }
   },
-  "active_candidate": null,
-  "runtime_test_outstanding": false,
+  "runtime_test_outstanding": true,
   "selected_scope": {
     "scope_id": "BCMER_SHYGUY_INTERIOR_ONLY_CORRECTION",
     "title": "BCMER ShyGuy Interior-Only Event Correction",
-    "status": "DIAGNOSTIC_R3_BUILT_STATIC_MATERIALIZED_VALIDATED_AWAITING_RUNTIME_CANDIDATE_ACTIVATION_FULL_NORMAL_GATE_DEFERRED_NOT_WAIVED",
+    "status": "DIAGNOSTIC_R3_ACTIVE_RUNTIME_PENDING_FULL_NORMAL_GATE_DEFERRED_NOT_WAIVED",
     "accepted_baseline": "S1.42AH",
     "plan": "BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md",
     "topic_authority": "Knowledge/BCMER.md",
     "prior_runtime_failure": "RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z/",
     "latest_runtime_failure": "RuntimeEvidence/S1.42AI-DIAG1R2/20260915T164428Z/",
-    "finding": "S1.42AI-DIAG1R3 was built directly from exact full-normal S1.42AI after the runtime-proven R2 identity failure. Canonical post-build validation proves the exact ShyGuyDef / enemyName 'Shy guy' / ShyGuy.AI.ShyGuyAI identity contract with StringComparison.Ordinal, preserves metadata-derived LethalMin owner resolution and dependency-absent EndlessElevator NOT_APPLICABLE behavior, and proves decompiled C# plus normalized IL semantic equivalence to the repaired SDK8 green gate. R3 is built and verified but is not yet an active runtime candidate; runtime attribution remains on completed failed R2 until a separate coordinated lifecycle transition explicitly activates R3.",
+    "finding": "S1.42AI-DIAG1R3 is the exact active diagnostic runtime candidate. It was rebuilt directly from S1.42AI after the R2 exact-identity case failure. Canonical validation proves the exact ShyGuyDef / enemyName 'Shy guy' / ShyGuy.AI.ShyGuyAI ordinal identity, preserves metadata-derived owner resolution and dependency-absent EndlessElevator NOT_APPLICABLE behavior, and proves semantic DLL equivalence. Runtime must now prove the repaired identity arms cleanly, no non-ShyGuy enemy appears, and exterior ShyGuy remains visible when exercised.",
     "analysis_contract": "BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md",
-    "analysis_status": "DIAG1R3_BUILT_STATIC_MATERIALIZED_VALIDATED_AWAITING_RUNTIME_CANDIDATE_ACTIVATION",
+    "analysis_status": "DIAG1R3_STATIC_MATERIALIZED_VALIDATION_PASS_RUNTIME_PENDING",
     "failed_candidate_build_id": "S1.42AI-DIAG1R2",
     "profile": "Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z",
     "sha256": "13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768",
-    "candidate_record": "Current/148_S1.42AI-DIAG1R2_BUILD_CANDIDATE_ENDLESS_ELEVATOR_APPLICABILITY_REPAIR.md",
+    "candidate_record": "Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md",
     "runtime_failure_record": "Current/149_S1.42AI-DIAG1R2_RUNTIME_FAILURE_SHYGUY_IDENTITY_CASE_MISMATCH.md",
-    "project_status": "Current/Projektstatus_S1.42AI-DIAG1R2_RUNTIME_FAILED.json",
+    "project_status": "Current/Projektstatus_S1.42AI-DIAG1R3_CANDIDATE.json",
     "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
     "static_evidence": "AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.md",
     "applicability_repair": {
@@ -87,7 +111,7 @@
     },
     "diagnostic_revision": {
       "build_id": "S1.42AI-DIAG1R3",
-      "status": "BUILT_STATIC_MATERIALIZED_VALIDATED_AWAITING_RUNTIME_CANDIDATE_ACTIVATION_NOT_ACCEPTED",
+      "status": "ACTIVE_DIAGNOSTIC_RUNTIME_CANDIDATE_NOT_ACCEPTED",
       "plan": "BuildSpecs/S1.42AI_PLAN.md",
       "request_record": "BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md",
       "base_build_id": "S1.42AI",
@@ -106,7 +130,8 @@
       "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json",
       "materialized_validation_workflow_run": 35023265624,
       "endless_elevator_applicability": "PASS_MATERIALIZED_ENDLESS_ELEVATOR_APPLICABILITY",
-      "identity_validation": "PASS_EXACT_SHYGUY_RUNTIME_IDENTITY_ORDINAL"
+      "identity_validation": "PASS_EXACT_SHYGUY_RUNTIME_IDENTITY_ORDINAL",
+      "candidate_record": "Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md"
     },
     "operator_observations": {
       "non_shyguy_enemies_observed": false,
@@ -117,27 +142,26 @@
       "interpretation": "Gameplay was directionally consistent with ShyGuy-only isolation, but the technical R2 diagnostic still fails because its exact identity allowlist rejected the real ShyGuy enemyName capitalization."
     },
     "currently_irrelevant_actions": [
-      "Do not rerun S1.42AI-DIAG1, S1.42AI-DIAG1R1 or S1.42AI-DIAG1R2 unchanged.",
-      "Do not rebuild S1.42AI-DIAG1R3 unchanged; the exact R3 artifact is already built and static/materialized validated.",
-      "Do not import R3 into Gale or request gameplay until a separate coordinated lifecycle transition makes R3 the active candidate and sets runtime_test_outstanding = true.",
-      "Do not broaden ShyGuy identity matching to case-insensitive, substring, alias, asset-only or AI-type-only matching; R3 preserves the exact runtime-proven ordinal identity triple.",
-      "Do not execute the deferred full-normal S1.42AI acceptance gate before the diagnostic path is resolved; that gate remains mandatory and is not waived.",
-      "Do not treat RuntimeInbox/ACTIVE_BUILD.txt as acceptance authority or as proof that a runtime test is currently outstanding."
+      "Do not rerun S1.42AI-DIAG1, S1.42AI-DIAG1R1 or S1.42AI-DIAG1R2 unchanged; only R3 is the active diagnostic candidate.",
+      "Do not rebuild S1.42AI-DIAG1R3 unchanged; the exact validated artifact is already active for runtime.",
+      "Do not broaden ShyGuy identity matching beyond the exact runtime-proven ordinal triple.",
+      "Do not execute the deferred full-normal S1.42AI acceptance gate until the R3 diagnostic runtime decision is recorded; that gate remains mandatory and is not waived.",
+      "Do not treat RuntimeInbox/ACTIVE_BUILD.txt as acceptance authority; it is runtime/evidence attribution only."
     ],
     "successor_build_id": "S1.42AI-DIAG1R3",
     "build_request_record": "BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md",
-    "candidate_build_id": null,
+    "candidate_build_id": "S1.42AI-DIAG1R3",
     "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json"
   },
-  "next_action": "S1.42AI-DIAG1R3 is built and repository-natively static/materialized validated. The next project action is a separate coordinated lifecycle transition that re-verifies the exact R3 artifact/evidence and no-candidate state, then activates R3 as the runtime diagnostic candidate, moves RuntimeInbox/ACTIVE_BUILD.txt from completed failed R2 to R3, changes the disabled BuildSpecs guard from accepted S1.42AH to R3, creates/updates R3 candidate/project-state and artifact-integrity authorities, and only then sets runtime_test_outstanding = true. Do not import/test R3 before that transition. The full-normal S1.42AI gate remains deferred, not waived.",
+  "next_action": "Run one exact S1.42AI-DIAG1R3 diagnostic gameplay gate. Require clean DIAG1 owner/applicability/guard-layer startup and repaired exact ShyGuy identity resolution, verify no unexpected non-ShyGuy enemy appears while isolation is armed, and verify an exterior ShyGuy is visible when that condition is exercised. Then upload the fresh complete R3 LogOutput.log for repository-native ingestion and decision. If no exterior ShyGuy is encountered, report it as not exercised rather than passed. Do not execute the deferred full-normal S1.42AI gate yet.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
-    "build_id": "IDLE_AFTER_S1.42AI-DIAG1R3_MATERIALIZED_VALIDATION_AWAITING_RUNTIME_CANDIDATE_ACTIVATION",
-    "build_base_profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
-    "build_base_sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
+    "build_id": "IDLE_AFTER_S1.42AI-DIAG1R3_BUILD_AWAITING_RUNTIME",
+    "build_base_profile": "Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z",
+    "build_base_sha256": "13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",
-    "runtime_active_build": "S1.42AI-DIAG1R2"
+    "runtime_active_build": "S1.42AI-DIAG1R3"
   },
   "canonical_navigation": {
     "bootstrap": "START_HERE_ChatGPT_Masterprompt.txt",

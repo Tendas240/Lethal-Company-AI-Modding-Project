@@ -1,10 +1,10 @@
 {
   "schema_version": 3,
-  "date": "2026-09-15",
+  "date": "2026-09-16",
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AH",
-  "active_candidate_build_id": null,
+  "active_candidate_build_id": "S1.42AI-DIAG1R3",
   "latest_built_artifact_id": "S1.42AI-DIAG1R3",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
@@ -629,17 +629,19 @@
     {
       "id": "S1.42AI-DIAG1R3",
       "title": "ShyGuy Isolation Diagnostic Exact Identity Repair",
-      "status": "built-static-materialized-validated-awaiting-runtime-candidate-activation",
+      "status": "active-runtime-candidate-pending",
       "parent": "S1.42AI",
       "profile": "Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z",
       "sha256": "13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768",
       "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
-      "decision_record": "BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md",
+      "decision_record": "Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md",
       "workflow_run": 35021307391,
       "build_commit": "19914cff25cb768cffe22694e93df150e45bdd2f",
       "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json",
       "safe_as_gameplay_base": false,
-      "principal_feature": "DIAG1 exact runtime-proven ShyGuy identity literal repair rebuilt and canonical materialization verified before runtime activation"
+      "principal_feature": "DIAG1 exact runtime-proven ShyGuy identity literal repair rebuilt and canonical materialization verified before runtime activation",
+      "candidate_record": "Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md",
+      "project_status": "Current/Projektstatus_S1.42AI-DIAG1R3_CANDIDATE.json"
     }
   ],
   "feature_index": {
