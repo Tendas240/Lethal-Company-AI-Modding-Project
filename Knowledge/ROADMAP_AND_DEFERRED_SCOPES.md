@@ -1,22 +1,21 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI-DIAG1R3 candidate=S1.42AI-DIAG1R3 runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI candidate=S1.42AI runtime_test_outstanding=true -->
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only  
-**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md`, `BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md`, `AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.md`, `Current/149_S1.42AI-DIAG1R2_RUNTIME_FAILURE_SHYGUY_IDENTITY_CASE_MISMATCH.md`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
+**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
 **Last-Validated:** 2026-09-16
 
 ## Current position
 
-Accepted gameplay baseline: **S1.42AH**. Latest built artifact and active diagnostic candidate: **S1.42AI-DIAG1R3**, SHA-256 `13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768`. Exact ShyGuy identity, static, materialized applicability and semantic-equivalence validation are green; its runtime diagnostic is now outstanding.
+Accepted gameplay baseline: **S1.42AH**. Completed diagnostic evidence: **S1.42AI-DIAG1R3**, with exterior visibility explicitly not exercised because no exterior ShyGuy occurred. Latest built artifact and active full-normal runtime candidate: **S1.42AI**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`.
 
 ## Active scope
 
-Run the R3 ShyGuy-isolation diagnostic, explicitly confirm no non-ShyGuy enemy appears and exterior ShyGuy visibility when exercised, ingest the fresh runtime log, and make an explicit diagnostic decision.
+Run the independent full-normal S1.42AI BCMER ShyGuy gate from `Current/143...`, then ingest the complete fresh S1.42AI log and make an explicit acceptance/rejection decision. R3 must not be rerun merely to force a rare exterior ShyGuy and must not be treated as S1.42AI acceptance.
 
 ## Remaining deferred independent scopes
 
-- Full-normal S1.42AI BCMER ShyGuy acceptance after the R3 diagnostic question is resolved; the diagnostic path cannot replace it.
 - LC Office V81 integration under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`.
 - CullFactory exceptions for exact IDs `junkrooms` / `shatteredrooms`.
 - MelanieMausoleum fog reduction only for that interior.

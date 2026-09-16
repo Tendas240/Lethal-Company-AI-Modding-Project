@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "updated": "2026-09-15",
+  "updated": "2026-09-16",
   "status": "CURRENT_CANONICAL_ARTIFACT_EVIDENCE_INDEX",
   "profiles": [
     {
@@ -136,31 +136,33 @@
       "runtime_index": "RuntimeEvidence/S1.42AI-DIAG1R2/20260915T164428Z/INDEX.json",
       "runtime_log_sha256": "6d913ac6788c72b7c2afb5092297a9070f5efb44bc33053d1ff6869a72019232",
       "note": "R2 armed the repaired owner and dependency-absent EndlessElevator paths without install rollback, then failed exact ShyGuy identity resolution because source enemyName 'Shy Guy' did not match runtime 'Shy guy'. Every isolation-bypass marker identified the exact ShyGuy AI object. R3 exact-literal repair is prepared before any successor build/runtime activation."
-    }
-  ],
-  "pending_profiles": [
+    },
     {
       "build_id": "S1.42AI-DIAG1R3",
-      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
+      "role": "RUNTIME_DIAGNOSTIC_PASS_NOT_GAMEPLAY_BASE",
       "profile": "Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z",
       "profile_sha256": "13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768",
       "profile_sources": "ProfileSources/S1.42AI-DIAG1R3/",
       "file_index": "ProfileSources/S1.42AI-DIAG1R3/FILE_INDEX.json",
       "export": "ProfileSources/S1.42AI-DIAG1R3/export.r2x",
       "candidate_record": "Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md",
-      "project_status": "Current/Projektstatus_S1.42AI-DIAG1R3_CANDIDATE.json",
+      "project_status": "Current/Projektstatus_S1.42AI-DIAG1R3_RUNTIME_PASS.json",
       "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
       "build_request": "BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md",
       "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json",
       "materialized_applicability": "AnalysisEvidence/S1.42AI-DIAG1R3/ENDLESS_ELEVATOR_MATERIALIZED_APPLICABILITY.json",
       "plugin_dll_sha256": "98b464e559120dc43e8041f163ceab038506e045f4b3cd4c71be8687e9c5da7a",
-      "runtime_evidence_required": false,
-      "partial_runtime_evidence_present": false,
-      "note": "Exact R3 profile/readable snapshot plus static/materialized exact-identity, applicability and semantic-equivalence validation are complete; diagnostic runtime evidence is now outstanding before any decision."
-    },
+      "note": "R3 runtime passed exact identity resolution and ShyGuy-only isolation. Interior ShyGuy visibility was observed; no non-ShyGuy enemy was observed; exterior visibility was not exercised because no exterior ShyGuy occurred. Diagnostic evidence only; not a gameplay base.",
+      "decision": "Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md",
+      "runtime_index": "RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z/INDEX.json",
+      "runtime_log_sha256": "37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084",
+      "exterior_visibility_result": "NOT_EXERCISED_NO_EXTERIOR_SHYGUY_OBSERVED"
+    }
+  ],
+  "pending_profiles": [
     {
       "build_id": "S1.42AI",
-      "role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED",
+      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
       "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
       "profile_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
       "profile_sources": "ProfileSources/S1.42AI/",
@@ -172,7 +174,7 @@
       "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false,
-      "note": "Full-normal S1.42AI gate remains mandatory after the diagnostic repair path is resolved; diagnostic work cannot replace it."
+      "note": "The diagnostic path is explicitly complete with R3 pass evidence. The independent full-normal S1.42AI BCMER ShyGuy runtime gate is now active and remains mandatory before acceptance."
     }
   ],
   "important_project_dlls": [
@@ -228,7 +230,8 @@
     "RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z contains the failed R1 diagnostic runtime log with SHA-256 173eefaea3a81f84e82f210066a2b034655220d951b5a66c7bb7614895737635.",
     "S1.42AI-DIAG1R1 remains materialized at Profiles/LC V1 S1.42AI-DIAG1R1 ShyGuy Isolation Repair.r2z SHA-256 b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd with readable ProfileSources/S1.42AI-DIAG1R1 and post-build validation run 34822644436 SUCCESS; runtime subsequently failed the complex-owner target contract.",
     "S1.42AI-DIAG1R2 is materialized at Profiles/LC V1 S1.42AI-DIAG1R2 ShyGuy Isolation Applicability Repair.r2z SHA-256 9dd67d6ea015274596e11651a8c1a842d50c7f7b913332794cce43d389169d15 with readable ProfileSources/S1.42AI-DIAG1R2 and canonical validation run 34990530260 SUCCESS.",
-    "S1.42AI-DIAG1R3 is materialized at Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z SHA-256 13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768 with readable ProfileSources/S1.42AI-DIAG1R3 and canonical validation run 35023265624 SUCCESS."
+    "S1.42AI-DIAG1R3 is materialized at Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z SHA-256 13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768 with readable ProfileSources/S1.42AI-DIAG1R3 and canonical validation run 35023265624 SUCCESS.",
+    "S1.42AI-DIAG1R3 runtime diagnostic pass evidence is RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z/ with raw LogOutput.log SHA-256 37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084; exterior ShyGuy visibility was not exercised because no exterior ShyGuy occurred."
   ],
   "last_validated": "2026-09-16"
 }
