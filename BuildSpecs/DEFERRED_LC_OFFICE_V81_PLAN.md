@@ -9,7 +9,7 @@
 
 Add LC Office as a normal Interior Dungeon under the project's existing LethalLevelLoader ownership and equal-effective-weight architecture, without introducing the deprecated `pacoito-LethalLevelLoaderUpdated` fork and without changing Wesley's Interiors or unrelated interior balance.
 
-This document is now the selected integration contract. Selection alone does not authorize a build: `BuildSpecs/current.json` must remain disabled until the exact S1.42AI package/dependency state is re-verified and a successor spec is explicitly prepared and armed. `RuntimeInbox/ACTIVE_BUILD.txt` remains unchanged until a real runtime candidate exists.
+This document is the selected integration contract. The accepted S1.42AI package/dependency baseline has now been re-verified. `BuildSpecs/current.json` remains disabled until a concrete successor spec is explicitly prepared and armed; `RuntimeInbox/ACTIVE_BUILD.txt` remains unchanged until a real runtime candidate exists.
 
 ## External package contract researched 2026-09-06
 
@@ -32,9 +32,35 @@ The S1.42AG profile examined during the original research already contained comp
 - `Zaggy1024-SmartEnemyPathfinding` `0.0.4`;
 - `Zaggy1024-PathfindingLib` `2.4.1`.
 
-These S1.42AG observations are research provenance only. Before arming the selected successor, verify the exact corresponding package state in accepted S1.42AI rather than assuming inheritance.
-
 `Alice-DungeonGenerationPlus` `1.5.1` is a narrow follow-up to the researched V81-compatible `1.5.0`; its published changelog states that 1.5.1 fixes the first main path not using the main room's doorway groups.
+
+## Accepted S1.42AI pre-build verification — completed 2026-09-17
+
+The accepted S1.42AI export and indexed profile bytes were checked directly before successor preparation.
+
+Confirmed present and enabled at the intended versions:
+
+- `BepInEx-BepInExPack 5.4.2305`;
+- `Evaisa-FixPluginTypesSerialization 1.1.4`;
+- `IAmBatby-LethalLevelLoader 1.7.12`;
+- `MaxWasUnavailable-LethalModDataLib 1.2.2`;
+- `JacobG5-JLL 1.10.1`;
+- `Zaggy1024-SmartEnemyPathfinding 0.0.4`;
+- `Zaggy1024-PathfindingLib 2.4.1`;
+- `Alice-DungeonGenerationPlus 1.5.0`.
+
+Confirmed absent from the accepted export:
+
+- `Piggy-LC_Office`;
+- `MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix`;
+- `JacobG5-DestroyItemInSlotFix`;
+- `pacoito-LethalLevelLoaderUpdated`.
+
+The export contains the intended modern IAmBatby LLL owner and no second LethalLevelLoader package. `pacoito-itolib 0.9.3` is present/enabled but is a separate package from the forbidden `pacoito-LethalLevelLoaderUpdated` fork and must not be removed merely because of the shared author prefix.
+
+The accepted Interior Weight Normalization binary is present at `BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll`, SHA-256 `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`.
+
+Therefore the intended minimal successor delta below is confirmed against exact accepted S1.42AI. The eventual package resolution/build still has to prove that applying this delta does not introduce an unintended dependency-version cascade or a second LLL owner.
 
 ## Hard ownership / packaging guards
 
@@ -50,7 +76,7 @@ The eventual build must preserve all of the following:
 
 ## Intended exact package delta
 
-Relative to accepted S1.42AI, subject to the focused pre-build package/dependency verification:
+Relative to exact accepted S1.42AI, now verified:
 
 ### Add
 
@@ -121,4 +147,4 @@ This scope is not a repair for Wesley's Interiors. Current runtime evidence alre
 
 ## Arming rule
 
-Do not assign a successor build ID in this selection step. The selected successor must be based on exact accepted S1.42AI. Before arming, re-verify the S1.42AI package/dependency state, confirm the intended delta remains narrow and conflict-free, and preserve `BuildSpecs/current.json` as disabled until the final successor spec is ready.
+The S1.42AI package/dependency baseline verification is complete and the minimal delta is fixed above. The next action is to read `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` and `Current/BUILD_LINEAGE.md`, determine the next successor build ID and exact `BuildSpecs/current.json` schema, and prepare exactly one LC Office successor from exact accepted S1.42AI. Keep `BuildSpecs/current.json` disabled until that successor spec is complete; do not arm a runtime test until the built candidate passes static validation.

@@ -87,7 +87,7 @@ Planned package contract:
 
 The initial compatibility candidate must not simultaneously force LC Office onto all moons. First prove registration, default/modern-LLL viability, effective normalization to `100`, actual dungeon generation, traversal, elevator/power behavior and ordinary enemy navigation. Any later universal-availability tuning is a separate balance/configuration scope.
 
-The exact S1.42AI package/dependency state must be re-verified before a successor is armed. Selection alone does not authorize assumptions inherited from the older S1.42AG research snapshot.
+The exact accepted S1.42AI package/dependency baseline was re-verified on 2026-09-17. The required infrastructure versions are already enabled; `Alice-DungeonGenerationPlus 1.5.0` is the version to transition; the three LC Office target additions are absent; `pacoito-LethalLevelLoaderUpdated` is absent; and the accepted `S142ABInteriorWeightNormalization.dll` remains present at SHA-256 `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`. The minimal package delta is therefore fixed in `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; build-time dependency resolution must still prove no unintended cascade or second LLL owner.
 
 ## Shatteredrooms restriction
 

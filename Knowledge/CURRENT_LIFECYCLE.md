@@ -47,6 +47,22 @@ LC Office V81 Integration is explicitly selected under `BuildSpecs/DEFERRED_LC_O
 
 The initial integration remains compatibility-first: preserve modern `IAmBatby-LethalLevelLoader` ownership and the accepted post-viability normalization to effective rarity `100`; do not combine universal LC Office moon availability, Wesley changes, CullFactory work, or other deferred scopes into this successor.
 
+## LC Office pre-build baseline verification
+
+The focused accepted-S1.42AI package/dependency verification is complete.
+
+Repository evidence from `ProfileSources/S1.42AI/export.r2x` confirms the required infrastructure is already enabled at the intended versions, including `BepInEx-BepInExPack 5.4.2305`, `Evaisa-FixPluginTypesSerialization 1.1.4`, `IAmBatby-LethalLevelLoader 1.7.12`, `MaxWasUnavailable-LethalModDataLib 1.2.2`, `JacobG5-JLL 1.10.1`, `Zaggy1024-SmartEnemyPathfinding 0.0.4` and `Zaggy1024-PathfindingLib 2.4.1`.
+
+The accepted export also proves:
+
+- `Alice-DungeonGenerationPlus 1.5.0` is enabled and is the version to transition to `1.5.1`;
+- `Piggy-LC_Office`, `MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix` and `JacobG5-DestroyItemInSlotFix` are absent and therefore remain the three additions;
+- `pacoito-LethalLevelLoaderUpdated` is absent;
+- `pacoito-itolib 0.9.3` is present/enabled and is unrelated to the forbidden LLL fork, so it must not be removed merely because of its author prefix;
+- `ProfileSources/S1.42AI/FILE_INDEX.json` records `BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll` at SHA-256 `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`.
+
+This fixes the intended minimal successor delta to the three package additions plus the `DungeonGenerationPlus 1.5.0 -> 1.5.1` transition. Dependency resolution during the actual build must still prove that no unintended package cascade or second LLL owner was introduced.
+
 ## Permanent Gale profile replacement/import route
 
 For any future runtime candidate that is explicitly armed, the canonical Gale profile replacement/import workflow remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, with the permanent fail-closed helper revision contract `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. The detailed workflow authority is `Knowledge/GALE_PROFILE_WORKFLOW.md`.
@@ -55,4 +71,4 @@ The current S1.42AI state has no runtime test outstanding, so this permanent rou
 
 ## Exact next project action
 
-Perform the focused LC Office V81 pre-build package/dependency verification against accepted S1.42AI and update the selected plan as needed; then prepare and arm exactly one LC Office successor. Do not arm a runtime test yet and do not combine universal interior availability or unrelated deferred scopes.
+Read `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` and `Current/BUILD_LINEAGE.md`, determine the next successor build ID and exact `BuildSpecs/current.json` schema, then prepare and arm exactly one LC Office successor from exact accepted S1.42AI. Do not arm a runtime test until the built candidate passes static validation, and do not combine universal interior availability or unrelated deferred scopes.
