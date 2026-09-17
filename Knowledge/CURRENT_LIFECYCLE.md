@@ -67,4 +67,4 @@ S1.42AJ remains compatibility-first. S1.42AJ-DIAG1 is diagnostic-only and must n
 
 ## Canonical Gale runtime import helper
 
-Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at validated helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. The runtime-active target is now S1.42AJ-DIAG1; this does not promote or replace balanced S1.42AJ.
+Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at validated helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. The runtime-evidence target is now S1.42AJ-DIAG1; this does not promote or replace balanced S1.42AJ.
