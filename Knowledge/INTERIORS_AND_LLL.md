@@ -5,7 +5,7 @@
 **Canonical-For:** `interiors_and_lll`  
 **Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`  
 **Related:** `ProfileSources/S1.42AG/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-09-06
+**Last-Validated:** 2026-09-17
 
 ## Accepted architecture
 
@@ -72,9 +72,9 @@ Actual successful generation of each exact Wesley flow is a stronger compatibili
 
 Do not fold any replacement/fork evaluation for DunGenReferenceFixer into unrelated interior additions without a reproducible need.
 
-## LC Office deferred integration
+## LC Office selected integration
 
-LC Office is now a documented deferred compatibility/integration scope in `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`.
+LC Office V81 Integration is the currently selected compatibility/integration scope under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`. It is **selected but not armed**; `BuildSpecs/current.json` remains disabled and there is no runtime test outstanding.
 
 Planned package contract:
 
@@ -87,7 +87,7 @@ Planned package contract:
 
 The initial compatibility candidate must not simultaneously force LC Office onto all moons. First prove registration, default/modern-LLL viability, effective normalization to `100`, actual dungeon generation, traversal, elevator/power behavior and ordinary enemy navigation. Any later universal-availability tuning is a separate balance/configuration scope.
 
-This LC Office work is **not armed** while S1.42AG remains an unaccepted active runtime candidate.
+The exact S1.42AI package/dependency state must be re-verified before a successor is armed. Selection alone does not authorize assumptions inherited from the older S1.42AG research snapshot.
 
 ## Shatteredrooms restriction
 
@@ -117,11 +117,10 @@ Avoid:
 - duplicate Black Mesa registration;
 - parallel `IAmBatby-LethalLevelLoader` plus `pacoito-LethalLevelLoaderUpdated` ownership.
 
-## Deferred interior work
+## Remaining deferred interior work
 
-Keep separate from the already accepted S1.42AB weighting architecture:
+Keep separate from the selected LC Office compatibility scope and the already accepted S1.42AB weighting architecture:
 
-- LC Office V81 integration under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md` after the active S1.42AG gate closes;
 - CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - MelanieMausoleum fog reduction only for that interior;
 - Black Mesa/interior/Pikmin route recovery;

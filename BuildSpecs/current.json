@@ -1,6 +1,6 @@
 {
   "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42AI_ACCEPTANCE_AWAITING_NEXT_SCOPE",
+  "build_id": "IDLE_AFTER_S1.42AI_ACCEPTANCE_PREP_LC_OFFICE_V81_SUCCESSOR",
   "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
   "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",

@@ -1,6 +1,6 @@
 {
   "schema_version": 8,
-  "updated": "2026-09-16",
+  "updated": "2026-09-17",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "game": "Lethal Company V81",
@@ -42,24 +42,21 @@
   "active_candidate": null,
   "runtime_test_outstanding": false,
   "selected_scope": {
-    "scope_id": "NONE_AFTER_S1_42AI_ACCEPTANCE",
-    "title": "No active successor scope",
-    "status": "AWAITING_EXPLICIT_DEFERRED_SCOPE_SELECTION",
+    "scope_id": "LC_OFFICE_V81_INTEGRATION",
+    "title": "LC Office V81 Integration",
+    "status": "READY_FOR_SUCCESSOR_PREPARATION_NOT_ARMED",
     "accepted_baseline": "S1.42AI",
-    "topic_authority": "Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md",
-    "finding": "S1.42AI passed the full-normal BCMER ShyGuy runtime gate and is now the accepted gameplay baseline. No successor scope is implicitly selected or armed by this acceptance.",
-    "analysis_contract": "Select exactly one deferred independent scope explicitly before preparing or arming a successor build. Do not mix unrelated deferred scopes.",
-    "currently_irrelevant_actions": [
-      "Do not rerun S1.42AI merely to re-prove its accepted full-normal gate.",
-      "Do not revive S1.42AI-DIAG1/R1/R2/R3 as gameplay candidates; they remain diagnostic evidence only.",
-      "Do not arm any deferred successor until its scope is explicitly selected."
-    ]
+    "plan": "BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md",
+    "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
+    "finding": "The user explicitly selected LC Office V81 integration after S1.42AI acceptance. No successor build or runtime test is armed; the integration remains an isolated preparation scope from the accepted S1.42AI baseline.",
+    "analysis_contract": "Re-verify the LC Office V81 package/dependency contract against accepted S1.42AI, then prepare exactly one successor implementing BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md. Preserve IAmBatby-LethalLevelLoader 1.7.12 as the sole LLL owner, forbid pacoito-LethalLevelLoaderUpdated, preserve the accepted interior normalization architecture, and do not mix universal-moon availability or unrelated interior changes into this scope.",
+    "next_action": "Perform the focused LC Office V81 pre-build package/dependency verification against accepted S1.42AI and update the selected plan as needed; then prepare and arm exactly one LC Office successor."
   },
-  "next_action": "Select exactly one remaining deferred independent scope from Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md before preparing or arming any successor. No new runtime test is pending and no successor build is armed.",
+  "next_action": "Perform the focused LC Office V81 pre-build package/dependency verification against accepted S1.42AI and update the selected plan as needed; then prepare and arm exactly one LC Office successor. Do not arm a runtime test yet and do not combine universal interior availability or unrelated deferred scopes.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
-    "build_id": "IDLE_AFTER_S1.42AI_ACCEPTANCE_AWAITING_NEXT_SCOPE",
+    "build_id": "IDLE_AFTER_S1.42AI_ACCEPTANCE_PREP_LC_OFFICE_V81_SUCCESSOR",
     "build_base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
     "build_base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",

@@ -1,15 +1,15 @@
-# Deferred LC Office V81 Integration Plan
+# LC Office V81 Integration Plan
 
-**Status:** DEFERRED / PLANNED / NOT ARMED  
-**Date:** 2026-09-06  
-**Prerequisite:** close the active S1.42AG runtime gate before selecting or arming this scope  
+**Status:** SELECTED / PREPARATION / NOT ARMED  
+**Date:** 2026-09-17  
+**Accepted base:** S1.42AI — `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`  
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`
 
 ## Objective
 
 Add LC Office as a normal Interior Dungeon under the project's existing LethalLevelLoader ownership and equal-effective-weight architecture, without introducing the deprecated `pacoito-LethalLevelLoaderUpdated` fork and without changing Wesley's Interiors or unrelated interior balance.
 
-This document is a deferred integration contract only. It does not authorize a build and must not change `BuildSpecs/current.json` or `RuntimeInbox/ACTIVE_BUILD.txt` while S1.42AG remains the active runtime candidate.
+This document is now the selected integration contract. Selection alone does not authorize a build: `BuildSpecs/current.json` must remain disabled until the exact S1.42AI package/dependency state is re-verified and a successor spec is explicitly prepared and armed. `RuntimeInbox/ACTIVE_BUILD.txt` remains unchanged until a real runtime candidate exists.
 
 ## External package contract researched 2026-09-06
 
@@ -22,7 +22,7 @@ Target package set:
 
 The V81 compatibility fix declares the modern `IAmBatby-LethalLevelLoader` path and explicitly advises removing/disabling `LethalLevelLoaderUpdated`. It also declares LC Office 2.3.4, FixPluginTypesSerialization, LethalModDataLib, DungeonGenerationPlus 1.5.1, SmartEnemyPathfinding, PathfindingLib, JLL and DestroyItemInSlotFix as its compatibility stack.
 
-The current S1.42AG profile already contains compatible/newer versions of the following required infrastructure:
+The S1.42AG profile examined during the original research already contained compatible/newer versions of the following required infrastructure:
 
 - `BepInEx-BepInExPack` `5.4.2305`;
 - `Evaisa-FixPluginTypesSerialization` `1.1.4`;
@@ -32,7 +32,9 @@ The current S1.42AG profile already contains compatible/newer versions of the fo
 - `Zaggy1024-SmartEnemyPathfinding` `0.0.4`;
 - `Zaggy1024-PathfindingLib` `2.4.1`.
 
-`Alice-DungeonGenerationPlus` `1.5.1` is a narrow follow-up to the installed V81-compatible `1.5.0`; its published changelog states that 1.5.1 fixes the first main path not using the main room's doorway groups.
+These S1.42AG observations are research provenance only. Before arming the selected successor, verify the exact corresponding package state in accepted S1.42AI rather than assuming inheritance.
+
+`Alice-DungeonGenerationPlus` `1.5.1` is a narrow follow-up to the researched V81-compatible `1.5.0`; its published changelog states that 1.5.1 fixes the first main path not using the main room's doorway groups.
 
 ## Hard ownership / packaging guards
 
@@ -40,7 +42,7 @@ The eventual build must preserve all of the following:
 
 1. `IAmBatby-LethalLevelLoader` `1.7.12` remains the sole LethalLevelLoader owner in the profile.
 2. `pacoito-LethalLevelLoaderUpdated` must be absent from the final Gale export and must not load at runtime.
-3. If Thunderstore dependency resolution for `Piggy-LC_Office 2.3.4` attempts to add the deprecated fork, the build operation must explicitly remove/refuse it before candidate publication.
+3. If dependency resolution for `Piggy-LC_Office 2.3.4` attempts to add the deprecated fork, the build operation must explicitly remove/refuse it before candidate publication.
 4. Do not replace IAmBatby's LLL with the deprecated fork.
 5. Do not change the accepted S1.42AB Interior Weight Normalization plugin or its post-viability normalization contract.
 6. Do not alter Wesley's Interiors, Art Gallery, Rubber Rooms, Shatteredrooms, Junkrooms, Black Mesa, Mausoleum or other unrelated interior configs as part of this scope.
@@ -48,7 +50,7 @@ The eventual build must preserve all of the following:
 
 ## Intended exact package delta
 
-Relative to whichever profile is the accepted full-normal-stack baseline when this scope is actually selected:
+Relative to accepted S1.42AI, subject to the focused pre-build package/dependency verification:
 
 ### Add
 
@@ -86,7 +88,7 @@ If later evidence shows that LC Office has overly narrow author matching and the
 
 Before publishing a candidate, the build workflow/spec must prove:
 
-- exact guarded accepted base SHA-256;
+- exact guarded accepted S1.42AI base SHA-256;
 - target package versions above are present/enabled as intended;
 - `IAmBatby-LethalLevelLoader 1.7.12` remains present/enabled;
 - `pacoito-LethalLevelLoaderUpdated` is absent from final export text/package state;
@@ -108,7 +110,7 @@ A future LC Office candidate is not accepted from startup or registration alone.
 8. breaker/power interaction is exercised successfully where available;
 9. ordinary enemy spawning/navigation inside the office is healthy, including door/elevator pathing where practical to exercise;
 10. ordinary scrap/interior generation remains healthy;
-11. inherited accepted gameplay contracts remain healthy, including the current accepted Interior Weight Normalization and whichever Mouth Dog/Pikmin state has been accepted before this scope is armed;
+11. inherited accepted gameplay contracts remain healthy, including the current accepted Interior Weight Normalization and current accepted Mouth Dog/Pikmin behavior;
 12. no new project-critical regression or persistent error flood appears.
 
 Because a normal equal-weight pool may contain 40+ viable interiors, a dedicated diagnostic force-selection mechanism may be used to obtain LC Office runtime coverage if necessary. Such diagnostic forcing must be isolated from the final candidate and must never be promoted as the accepted balanced profile.
@@ -119,4 +121,4 @@ This scope is not a repair for Wesley's Interiors. Current runtime evidence alre
 
 ## Arming rule
 
-Do not assign a successor build ID yet. The eventual build must be based on the then-current **accepted** full-normal-stack artifact, not automatically on an unaccepted candidate. If S1.42AG is accepted, it may become that base; if it is rejected, this LC Office plan must wait for the lifecycle to resolve the accepted base first.
+Do not assign a successor build ID in this selection step. The selected successor must be based on exact accepted S1.42AI. Before arming, re-verify the S1.42AI package/dependency state, confirm the intended delta remains narrow and conflict-free, and preserve `BuildSpecs/current.json` as disabled until the final successor spec is ready.

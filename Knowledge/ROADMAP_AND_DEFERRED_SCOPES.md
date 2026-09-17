@@ -14,11 +14,12 @@ There is no active runtime candidate, no outstanding runtime test and no armed s
 
 ## Active scope
 
-None. The next scope must be explicitly selected before any successor preparation or build is armed.
+**LC Office V81 Integration — selected / successor preparation not armed.** Canonical plan: `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
+
+The initial candidate is compatibility-first: preserve modern IAmBatby LLL ownership and accepted equal-effective-weight behavior, prove LC Office registration/viability/generation/traversal/elevator behavior, and keep universal moon availability plus all unrelated interior work outside this scope.
 
 ## Remaining deferred independent scopes
 
-- LC Office V81 integration under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`.
 - Universal interior viability / equal availability: evaluate every registered interior for safe availability on every moon, preserve equal effective probability (`100`) whenever viable, and only remove LLL/author exclusions after compatibility proof including correct entrance/exit pairing, successful generation/traversal, and no door-socket, geometry, routing, elevator or NavMesh regression; document any technically unavoidable exception explicitly.
 - CullFactory exceptions for exact IDs `junkrooms` / `shatteredrooms`.
 - MelanieMausoleum fog reduction only for that interior.
@@ -28,4 +29,4 @@ None. The next scope must be explicitly selected before any successor preparatio
 - AdditionalNetworking repair only with reproducible evidence.
 - Broader LethalMin teardown/despawn repair only with stronger evidence.
 
-Select exactly one of these scopes before preparing a successor; do not combine independent scopes into one build.
+LC Office is the sole selected scope until it is completed, rejected, or explicitly released. Do not combine another independent deferred scope into its successor.

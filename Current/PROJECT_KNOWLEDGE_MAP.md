@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
 **Current State:** `Current/00_CURRENT_STATE.md`
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
-**Last-Validated:** 2026-09-16
+**Last-Validated:** 2026-09-17
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -38,9 +38,9 @@ Accepted gameplay baseline and latest built artifact: **S1.42AI — BCMER ShyGuy
 
 S1.42AH is the accepted predecessor/rollback provenance baseline. The S1.42AI-DIAG1/R1/R2/R3 chain remains diagnostic evidence only; R3 passed exact ShyGuy identity/isolation but is not a gameplay baseline.
 
-There is no active runtime candidate and no outstanding runtime test. `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI_ACCEPTANCE_AWAITING_NEXT_SCOPE`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains evidence attribution only and does not arm a successor.
+There is no active runtime candidate and no outstanding runtime test. LC Office V81 Integration is the sole selected successor scope and remains not armed. `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI_ACCEPTANCE_PREP_LC_OFFICE_V81_SUCCESSOR`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains evidence attribution only and does not arm a successor.
 
-The next action is to select exactly one remaining deferred independent scope from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md` before preparing any successor.
+The next action is the focused LC Office V81 pre-build package/dependency verification against accepted S1.42AI, followed by preparation of exactly one LC Office successor if the guarded delta remains valid.
 
 ## Authority rule
 

@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-16  
+**Updated:** 2026-09-17  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -35,13 +35,13 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI_ACCEPTANCE_AWAITING_NEXT_SCOPE`)
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI_ACCEPTANCE_PREP_LC_OFFICE_V81_SUCCESSOR`)
 - Guarded build base: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI`
 
 ## Exact next action
 
-Select exactly one remaining deferred independent scope from Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md before preparing or arming any successor. No new runtime test is pending and no successor build is armed.
+Perform the focused LC Office V81 pre-build package/dependency verification against accepted S1.42AI and update the selected plan as needed; then prepare and arm exactly one LC Office successor. Do not arm a runtime test yet and do not combine universal interior availability or unrelated deferred scopes.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
