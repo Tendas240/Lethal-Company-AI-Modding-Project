@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "updated": "2026-09-16",
+  "updated": "2026-09-17",
   "status": "CURRENT_CANONICAL_ARTIFACT_EVIDENCE_INDEX",
   "profiles": [
     {
@@ -177,7 +177,23 @@
       "note": "Full-normal runtime acceptance proved the intended ShyGuy interior event path while the BCMER exterior list/spawn contribution remained zero."
     }
   ],
-  "pending_profiles": [],
+  "pending_profiles": [
+    {
+      "build_id": "S1.42AJ",
+      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
+      "profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
+      "profile_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
+      "profile_sources": "ProfileSources/S1.42AJ/",
+      "file_index": "ProfileSources/S1.42AJ/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AJ/export.r2x",
+      "candidate_record": "Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md",
+      "project_status": "Current/Projektstatus_S1.42AJ_CANDIDATE.json",
+      "build_plan": "BuildSpecs/S1.42AJ_PLAN.md",
+      "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false
+    }
+  ],
   "important_project_dlls": [
     {
       "name": "S139CompatibilityFixes.dll",
@@ -227,5 +243,5 @@
     "S1.42AI full-normal accepted runtime evidence is RuntimeEvidence/S1.42AI/20260916T180452Z with raw LogOutput.log SHA-256 1765a2b65cfa31da049ba415938119f9eb3690d09618a2f85a32209bfad6d9b5.",
     "S1.42AI-DIAG1R3 runtime diagnostic pass evidence is RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z with raw LogOutput.log SHA-256 37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084; it remains diagnostic-only evidence."
   ],
-  "last_validated": "2026-09-16"
+  "last_validated": "2026-09-17"
 }

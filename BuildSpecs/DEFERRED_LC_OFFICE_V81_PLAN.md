@@ -1,6 +1,6 @@
 # LC Office V81 Integration Plan
 
-**Status:** SELECTED / PREPARATION / NOT ARMED  
+**Status:** IMPLEMENTED AS S1.42AJ / STATIC VALIDATED / ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED  
 **Date:** 2026-09-17  
 **Accepted base:** S1.42AI — `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`  
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`
@@ -147,4 +147,4 @@ This scope is not a repair for Wesley's Interiors. Current runtime evidence alre
 
 ## Arming rule
 
-The S1.42AI package/dependency baseline verification is complete and the minimal delta is fixed above. The next action is to read `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` and `Current/BUILD_LINEAGE.md`, determine the next successor build ID and exact `BuildSpecs/current.json` schema, and prepare exactly one LC Office successor from exact accepted S1.42AI. Keep `BuildSpecs/current.json` disabled until that successor spec is complete; do not arm a runtime test until the built candidate passes static validation.
+The S1.42AI package/dependency baseline verification, S1.42AJ build/static gate, and separate runtime-arming transition are complete. S1.42AJ is the sole active runtime candidate. The outstanding action is the full-normal runtime acceptance gate above, followed by repository-native log ingestion and an explicit acceptance/rejection decision.

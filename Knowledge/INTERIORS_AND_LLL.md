@@ -74,9 +74,9 @@ Do not fold any replacement/fork evaluation for DunGenReferenceFixer into unrela
 
 ## LC Office selected integration
 
-LC Office V81 Integration is the currently selected compatibility/integration scope under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`. It is **selected but not armed**; `BuildSpecs/current.json` remains disabled and there is no runtime test outstanding.
+LC Office V81 Integration is the currently selected compatibility/integration scope under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`. Exact S1.42AJ is **built, static validated and armed as the sole active runtime candidate**; `BuildSpecs/current.json` remains disabled and full-normal runtime validation is outstanding.
 
-Planned package contract:
+S1.42AJ package contract (statically verified):
 
 - add `Piggy-LC_Office 2.3.4`;
 - add `MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix 2.0.0`;
@@ -85,7 +85,7 @@ Planned package contract:
 - preserve `IAmBatby-LethalLevelLoader 1.7.12` as the sole LLL owner;
 - explicitly forbid `pacoito-LethalLevelLoaderUpdated` from the final profile/export.
 
-The initial compatibility candidate must not simultaneously force LC Office onto all moons. First prove registration, default/modern-LLL viability, effective normalization to `100`, actual dungeon generation, traversal, elevator/power behavior and ordinary enemy navigation. Any later universal-availability tuning is a separate balance/configuration scope.
+The active compatibility candidate does not force LC Office onto all moons. Runtime must now prove registration, default/modern-LLL viability, effective normalization to `100`, actual dungeon generation, traversal, elevator/power behavior and ordinary enemy navigation. Any later universal-availability tuning is a separate balance/configuration scope.
 
 The exact accepted S1.42AI package/dependency baseline was re-verified on 2026-09-17. The required infrastructure versions are already enabled; `Alice-DungeonGenerationPlus 1.5.0` is the version to transition; the three LC Office target additions are absent; `pacoito-LethalLevelLoaderUpdated` is absent; and the accepted `S142ABInteriorWeightNormalization.dll` remains present at SHA-256 `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`. The minimal package delta is therefore fixed in `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; build-time dependency resolution must still prove no unintended cascade or second LLL owner.
 
