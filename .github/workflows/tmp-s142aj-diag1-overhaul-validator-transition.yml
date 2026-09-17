@@ -1,0 +1,62 @@
+name: Temporary S1.42AJ-DIAG1 overhaul validator transition
+
+on:
+  push:
+    branches:
+      - runtime/s142aj-diag1-activation
+    paths:
+      - '.github/workflows/tmp-s142aj-diag1-overhaul-validator-transition.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: runtime/s142aj-diag1-activation
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Patch frozen-contract validator for explicit diagnostic runtime targets
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('RepositoryTools/overhaul_contract_validator.py')
+          text = p.read_text(encoding='utf-8')
+          old1 = '''    known_builds = {b.get("id") for b in lineage.get("builds", []) if isinstance(b, dict) and b.get("id")}\n    if active not in known_builds:\n        error(f"runtime active-build controller points to unknown lineage build: {active!r}")\n    if controllers.get("runtime_active_build") != active:\n        error("runtime active-build controller disagrees with CURRENT_STATE")\n    if controllers.get("build_enabled") is not False:\n        error("CURRENT_STATE controllers.build_enabled unexpectedly true")\n\n    candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None\n'''
+          new1 = '''    known_builds = {b.get("id") for b in lineage.get("builds", []) if isinstance(b, dict) and b.get("id")}\n    candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None\n    selected_scope = state.get("selected_scope", {})\n    diagnostic = selected_scope.get("diagnostic_revision", {}) if isinstance(selected_scope, dict) else {}\n    diagnostic_id = diagnostic.get("build_id") if isinstance(diagnostic, dict) else None\n    diagnostic_is_runtime_target = bool(\n        active\n        and diagnostic_id == active\n        and candidate_id\n        and diagnostic.get("base_build_id") == candidate_id\n        and diagnostic.get("status") == "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED"\n        and diagnostic.get("profile")\n        and diagnostic.get("sha256")\n        and diagnostic.get("publication_evidence")\n    )\n    if active not in known_builds and not diagnostic_is_runtime_target:\n        error(f"runtime active-build controller points to unknown lineage build or explicit diagnostic runtime target: {active!r}")\n    if controllers.get("runtime_active_build") != active:\n        error("runtime active-build controller disagrees with CURRENT_STATE")\n    if controllers.get("build_enabled") is not False:\n        error("CURRENT_STATE controllers.build_enabled unexpectedly true")\n    if diagnostic_is_runtime_target:\n        for key in ("profile", "file_index", "build_result", "static_evidence", "publication_evidence"):\n            value = diagnostic.get(key)\n            if not isinstance(value, str) or not exists(value):\n                error(f"explicit diagnostic runtime target lacks readable {key}: {value!r}")\n\n'''
+          old2 = '''        if active != candidate_id:\n            error("runtime active build does not identify the active candidate")\n'''
+          new2 = '''        if active != candidate_id and not diagnostic_is_runtime_target:\n            error("runtime active build does not identify the active candidate or its explicit diagnostic runtime target")\n'''
+          if old1 not in text:
+              raise SystemExit('first overhaul validator patch anchor not found')
+          if old2 not in text:
+              raise SystemExit('second overhaul validator patch anchor not found')
+          text = text.replace(old1, new1, 1).replace(old2, new2, 1)
+          p.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate final repository state
+        shell: bash
+        run: |
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/state_neutral_authority_validator.py
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/overhaul_contract_validator.py
+
+      - name: Remove temporary workflow and publish patch
+        shell: bash
+        run: |
+          git rm .github/workflows/tmp-s142aj-diag1-overhaul-validator-transition.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add RepositoryTools/overhaul_contract_validator.py
+          git commit -m 'Allow diagnostic runtime target in overhaul validator'
+          git push origin HEAD:runtime/s142aj-diag1-activation
