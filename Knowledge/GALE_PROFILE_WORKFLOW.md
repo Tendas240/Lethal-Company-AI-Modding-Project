@@ -7,7 +7,7 @@
 **Implementation:** `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` (canonical launcher), `RuntimeTools/ReplaceActiveGaleProfile.ps1` (validated v2.2 importer base)  
 **Related:** `Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`, `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`, `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`, `Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`  
 **Last-Validated:** 2026-09-04  
-**Last-Hardened:** 2026-09-17 (`2026-09-17-import-uia-v2.4-diagnostic-runtime-target-materialization-proof`; diagnostic target resolver statically/regression validated, local UI import behavior remains inherited from the previously user-validated path)
+**Last-Hardened:** 2026-09-17 (`2026-09-17-import-uia-v2.4.1-diagnostic-build-result-url-delimiting`; diagnostic target resolver statically/regression validated after the first real DIAG1 import exposed a pre-import PowerShell URL-interpolation defect; local UI import behavior remains inherited from the previously user-validated path)
 
 ## Canonical launcher
 
@@ -24,7 +24,7 @@ Before presenting it, `RuntimeInbox/ACTIVE_BUILD.txt` must resolve fail-closed t
 
 No other `ACTIVE_BUILD` / `AUTO_BUILD_RESULT` mismatch is permitted. The diagnostic exception changes only repository target resolution; it does not promote the diagnostic artifact, replace the balanced candidate or weaken download/import integrity checks.
 
-The v2.4 launcher deliberately wraps the already user-validated v2.2 importer instead of duplicating its UI Automation implementation. It first requires the exact expected v2.2 source-revision signature, replaces only the export-text reader, critical-materialization functions and repository target-resolution block in memory, stamps the v2.4 revision, and then executes the resulting helper. If the underlying v2.2 source drifts, v2.4 refuses to run until that drift is reviewed.
+The v2.4 launcher deliberately wraps the already user-validated v2.2 importer instead of duplicating its UI Automation implementation. It first requires the exact expected v2.2 source-revision signature, replaces only the export-text reader, critical-materialization functions and repository target-resolution block in memory, stamps the current v2.4.x revision, and then executes the resulting helper. If the underlying v2.2 source drifts, v2.4 refuses to run until that drift is reviewed.
 
 ## Validated import path
 
@@ -44,7 +44,7 @@ The underlying helper was fully user-validated during S1.42AA -> S1.42AB on Wind
 - additionally requires project-critical external Thunderstore dependency DLLs to be physically materialized according to the v2.4 package-root contract;
 - removes the temporary `.r2z` only after both export identity and required materialization proof succeed.
 
-After profile number + `y`, no additional Gale click or PowerShell Enter is required on the previously validated happy path. The 2026-09-17 diagnostic resolver is repository-side selection logic and has permanent CI regression coverage; its first real diagnostic import remains runtime/user evidence rather than being retroactively labeled user-validated.
+After profile number + `y`, no additional Gale click or PowerShell Enter is required on the previously validated happy path. The diagnostic resolver is repository-side selection logic. The first real S1.42AJ-DIAG1 import attempt did not reach profile download/import because it exposed the v2.4 dynamic build-result URL defect documented below; the corrected v2.4.1 diagnostic resolver still requires user runtime validation and is not retroactively labeled proven.
 
 ## Why v2.2 was insufficient
 
@@ -66,7 +66,7 @@ A controlled fresh import of accepted S1.42AC proved the contrast: both SoundAPI
 
 ## v2.4 export-read, diagnostic target and critical materialization proof
 
-v2.4 preserves the v2.3 package-root semantics, closes the false-positive path before dependency derivation and now supports an explicitly bound diagnostic runtime target without weakening the normal build guard:
+v2.4 preserves the v2.3 package-root semantics, closes the false-positive path before dependency derivation and supports an explicitly bound diagnostic runtime target without weakening the normal build guard:
 
 - `Get-ZipEntryText` is replaced in-memory and uses the direct four-argument `System.IO.StreamReader` constructor rather than the failing `New-Object ... -ArgumentList` path;
 - constructor/read failures terminate through `throw`;
@@ -79,6 +79,20 @@ v2.4 preserves the v2.3 package-root semantics, closes the false-positive path b
 - a mismatch is accepted only through the exact `CURRENT_STATE.controllers.runtime_active_build` + `selected_scope.diagnostic_revision` binding and its referenced build-result crosschecks;
 - the diagnostic base identity must match the current `AUTO_BUILD_RESULT`, preventing an unrelated or stale diagnostic from being imported;
 - the wrapper refuses if the validated v2.2 helper source revision drifts or if the legacy defective StreamReader constructor or unconditional mismatch-abort path survives the in-memory patch.
+
+## v2.4.1 diagnostic build-result URL repair
+
+The first real S1.42AJ-DIAG1 launcher execution reached the explicit diagnostic resolver and then failed before any candidate profile was downloaded. Windows PowerShell 5.1 parsed the expandable-string fragment `$encodedBuildResultPath?cb=...` as a variable name containing `?`, which PowerShell permits in ordinary variable names. The intended repository path therefore disappeared from the Raw GitHub URL and the request returned HTTP 404. Because the request was not forced terminating, execution then continued far enough to emit the misleading secondary message that the diagnostic build result belonged to an empty build ID.
+
+Revision `2026-09-17-import-uia-v2.4.1-diagnostic-build-result-url-delimiting` repairs that exact path without weakening the authority chain:
+
+- repository-path segments are encoded individually with `[Uri]::EscapeDataString()` while `/` separators are preserved;
+- the interpolated path is explicitly delimited as `${encodedBuildResultPath}` before the `?cb` query delimiter;
+- the diagnostic build-result request uses `-ErrorAction Stop` and converts any HTTP/load failure into one explicit fail-closed error naming the referenced repository path;
+- empty, `.` or `..` path segments are rejected before URL construction;
+- all existing build ID, profile, SHA and base-artifact crosschecks remain unchanged.
+
+The permanent repository regression gate now rejects the original `$encodedBuildResultPath?cb=` interpolation shape and requires the delimited `${encodedBuildResultPath}?cb=` form plus terminating fetch semantics.
 
 The permanent repository regression gate is `RepositoryTools/gale_import_helper_validator.py`, run by `.github/workflows/knowledge-architecture.yml`.
 
@@ -100,6 +114,7 @@ Keep the exact workflow safety constraints from `Current/93_GALE_ACTIVE_PROFILE_
 - exact build/profile matching only;
 - normal build resolution remains exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
 - diagnostic mismatches require exact controller + diagnostic revision + diagnostic status + base-build + build-result agreement; no generic fallback exists;
+- the dynamic diagnostic build-result path must be segment-escaped, explicitly delimited before `?cb`, and its HTTP fetch must terminate on failure;
 - explicit confirmation before deleting a local profile;
 - no direct editing of Gale `data.sqlite3`;
 - no coordinate clicks or blind key navigation;

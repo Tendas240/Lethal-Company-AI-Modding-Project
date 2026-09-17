@@ -1,7 +1,7 @@
 $repo='Tendas240/Lethal-Company-AI-Modding-Project'
 $headers=@{'User-Agent'='LC-Profile-Updater';'Cache-Control'='no-cache'}
 $expectedBaseRevision='$helperRevision=''2026-09-05-import-uia-v2.2-materialization-proof'''
-$replacementRevision='$helperRevision=''2026-09-17-import-uia-v2.4-diagnostic-runtime-target-materialization-proof'''
+$replacementRevision='$helperRevision=''2026-09-17-import-uia-v2.4.1-diagnostic-build-result-url-delimiting'''
 
 $cache=[DateTime]::UtcNow.Ticks
 $baseUrl="https://raw.githubusercontent.com/$repo/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb=$cache"
@@ -180,9 +180,19 @@ else {
 
     $buildResultPath=[string]$diag.build_result
     if([string]::IsNullOrWhiteSpace($buildResultPath)){throw "Diagnostic runtime target '$active' hat keinen build_result authority path"}
-    $encodedBuildResultPath=[Uri]::EscapeUriString($buildResultPath)
+    $buildResultSegments=@($buildResultPath -split '/')
+    if($buildResultSegments.Count -eq 0 -or @($buildResultSegments | Where-Object {[string]::IsNullOrWhiteSpace($_) -or $_ -eq '.' -or $_ -eq '..'}).Count -gt 0){
+        throw "Diagnostic runtime target '$active' hat einen ungültigen build_result repository path: '$buildResultPath'"
+    }
+    $encodedBuildResultPath=(@($buildResultSegments | ForEach-Object {[Uri]::EscapeDataString($_)}) -join '/')
     $cache=[DateTime]::UtcNow.Ticks
-    $diagBuild=Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/$encodedBuildResultPath?cb=$cache" -Headers $headers
+    $diagBuildUrl="https://raw.githubusercontent.com/$repo/main/${encodedBuildResultPath}?cb=$cache"
+    try {
+        $diagBuild=Invoke-RestMethod -UseBasicParsing -Uri $diagBuildUrl -Headers $headers -ErrorAction Stop
+    }
+    catch {
+        throw "Diagnostic build_result konnte nicht geladen werden: '$buildResultPath' ($($_.Exception.Message))"
+    }
     if(([string]$diagBuild.build_id) -ne $active){throw "Diagnostic build_result gehört zu '$($diagBuild.build_id)', erwartet '$active'"}
     if(([string]$diagBuild.output_profile) -ne ([string]$diag.profile) -or ([string]$diagBuild.output_sha256).ToLowerInvariant() -ne ([string]$diag.sha256).ToLowerInvariant()){
         throw "Diagnostic build_result profile/SHA disagree with CURRENT_STATE diagnostic_revision"
@@ -219,5 +229,5 @@ if($patched.IndexOf("AUTO_BUILD_RESULT gehört zu",[System.StringComparison]::Or
     throw 'Refusing to launch: legacy unconditional ACTIVE_BUILD/AUTO_BUILD_RESULT mismatch abort survived the v2.4 patch'
 }
 
-Write-Host 'Launching canonical Gale importer with v2.4 fail-closed diagnostic-target, export-read and recursive package-materialization contract...' -ForegroundColor Cyan
+Write-Host 'Launching canonical Gale importer with v2.4.1 fail-closed diagnostic-target URL delimiting, export-read and recursive package-materialization contract...' -ForegroundColor Cyan
 Invoke-Expression $patched
