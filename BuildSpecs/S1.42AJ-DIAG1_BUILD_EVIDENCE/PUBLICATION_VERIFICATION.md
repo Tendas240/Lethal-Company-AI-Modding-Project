@@ -10,6 +10,7 @@
 - Member-by-member comparison proved all 336 member names/order identical and 335/336 member payloads byte-identical; the diagnostic DLL was the sole byte difference.
 - Publication therefore uses the exact already-reviewed CI artifact rather than accepting a non-byte-identical recompilation.
 - The reviewed artifact was revalidated during publication against exact balanced S1.42AJ, exact archive delta, all 336 FILE_INDEX records, diagnostic DLL identity and accepted normalizer identity.
+- Atomic exact-artifact publication commit: `71ac6fad7eef3eb5e7d84b81e88a553d1032fbdf`; its tree contains the exact reviewed profile/evidence bytes and the restored disabled build controller.
 - `BuildSpecs/current.json` is returned to the pre-publication disabled S1.42AJ idle state. `Current/CURRENT_STATE.json` and `RuntimeInbox/ACTIVE_BUILD.txt` are intentionally unchanged; runtime/lifecycle preparation is a separate atomic step.
 
 Status remains `STATIC_PASS_NOT_RUNTIME_READY`: runtime caller identification, Harmony execution ordering and LC Office generation/gameplay coverage are not yet proven.
