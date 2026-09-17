@@ -1,28 +1,15 @@
 {
-  "enabled": true,
-  "build_id": "S1.42AJ-DIAG1",
+  "enabled": false,
+  "build_id": "IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION",
   "base_profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
   "base_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
-  "output_profile": "Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z",
-  "profile_name": "LC V1 S1.42AJ-DIAG1 LC Office Diagnostic",
+  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
+  "profile_name": "DO_NOT_BUILD",
   "overwrite": false,
   "mod_state_changes": [],
   "mod_additions": [],
   "mod_removals": [],
   "config_patches": [],
-  "file_injections": [],
-  "local_plugin_builds": [
-    {
-      "project": "Patches/S142AJDiag1OfficeSelection/S142AJDiag1OfficeSelection.csproj",
-      "configuration": "Release",
-      "built_file": "Patches/S142AJDiag1OfficeSelection/bin/Release/netstandard2.1/S142AJDiag1OfficeSelection.dll",
-      "archive_path": "BepInEx/plugins/S142AJDiag1OfficeSelection/S142AJDiag1OfficeSelection.dll"
-    }
-  ],
-  "text_assertions": [
-    {
-      "path": "export.r2x",
-      "not_contains": "LethalLevelLoaderUpdated"
-    }
-  ]
+  "local_plugin_builds": [],
+  "text_assertions": []
 }
