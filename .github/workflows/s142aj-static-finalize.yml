@@ -1,0 +1,352 @@
+name: Finalize S1.42AJ static validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/s142aj-static-finalize.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify S1.42AJ and write static lifecycle state
+        shell: bash
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          import re
+          from pathlib import Path
+          import sys
+
+          ROOT = Path('.')
+          sys.path.insert(0, str(ROOT / 'BuildSystem'))
+          from profile_builder import block_version, item_blocks, lines
+
+          BUILD_ID = 'S1.42AJ'
+          BASE_ID = 'S1.42AI'
+          PROFILE = 'Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z'
+          PROFILE_SHA = '7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba'
+          BASE_PROFILE = 'Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z'
+          BASE_SHA = 'd993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2'
+          NORMALIZER = 'BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll'
+          NORMALIZER_SHA = '901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06'
+          BUILD_RUN = 35222275686
+          BUILD_COMMIT = '7fbaae92523637ae3fec6c1e242ec2538918e7b7'
+          STATIC_MD = 'BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md'
+          CANDIDATE_MD = 'Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md'
+          STATUS_JSON = 'Current/Projektstatus_S1.42AJ_STATIC_VALIDATED.json'
+          IDLE_ID = 'IDLE_AFTER_S1.42AJ_STATIC_VALIDATION_READY_FOR_RUNTIME_ARMING'
+
+          def load_json(rel):
+              return json.loads((ROOT / rel).read_text(encoding='utf-8'))
+
+          def write_json(rel, data):
+              p = ROOT / rel
+              p.parent.mkdir(parents=True, exist_ok=True)
+              p.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+          def sha256_file(rel):
+              h = hashlib.sha256()
+              with (ROOT / rel).open('rb') as f:
+                  for chunk in iter(lambda: f.read(1024 * 1024), b''):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          def block_map(text):
+              data = lines(text)
+              out = {}
+              for b in item_blocks(data):
+                  start, end, _indent, name = b
+                  if name in out:
+                      raise RuntimeError(f'duplicate package block: {name}')
+                  raw = '\n'.join(data[start:end])
+                  m_enabled = re.search(r'(?m)^\s*enabled\s*:\s*(true|false)\s*$', raw, re.I)
+                  m_source = re.search(r'(?m)^\s*source\s*:\s*(.+?)\s*$', raw)
+                  out[name] = {
+                      'version': block_version(raw),
+                      'enabled': None if not m_enabled else m_enabled.group(1).lower() == 'true',
+                      'source': None if not m_source else m_source.group(1).strip().strip('"').strip("'"),
+                      'raw': raw,
+                  }
+              return out
+
+          auto = load_json('Current/AUTO_BUILD_RESULT.json')
+          expected_additions = [
+              {'name':'Piggy-LC_Office','version':'2.3.4','enabled':True,'source':'Thunderstore'},
+              {'name':'MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix','version':'2.0.0','enabled':True,'source':'Thunderstore'},
+              {'name':'JacobG5-DestroyItemInSlotFix','version':'1.0.0','enabled':True,'source':'Thunderstore'},
+              {'name':'Alice-DungeonGenerationPlus','version':'1.5.1','enabled':True,'source':'Thunderstore'},
+          ]
+          expected_removals = [{'name':'Alice-DungeonGenerationPlus','version':'1.5.0'}]
+          if auto.get('build_id') != BUILD_ID: raise RuntimeError('AUTO_BUILD_RESULT build_id mismatch')
+          if auto.get('base_profile') != BASE_PROFILE or auto.get('base_sha256') != BASE_SHA: raise RuntimeError('AUTO_BUILD_RESULT base mismatch')
+          if auto.get('output_profile') != PROFILE or auto.get('output_sha256') != PROFILE_SHA: raise RuntimeError('AUTO_BUILD_RESULT output mismatch')
+          if auto.get('changed_existing_members') != ['export.r2x'] or auto.get('added_members') != []: raise RuntimeError('unexpected ZIP member delta')
+          if auto.get('mod_additions') != expected_additions or auto.get('mod_removals') != expected_removals: raise RuntimeError('unexpected package request delta')
+          if sha256_file(PROFILE) != PROFILE_SHA: raise RuntimeError('S1.42AJ profile byte SHA mismatch')
+
+          base_export = (ROOT / 'ProfileSources/S1.42AI/export.r2x').read_text(encoding='utf-8-sig')
+          aj_export = (ROOT / 'ProfileSources/S1.42AJ/export.r2x').read_text(encoding='utf-8-sig')
+          base_blocks = block_map(base_export)
+          aj_blocks = block_map(aj_export)
+          three_new = {
+              'Piggy-LC_Office': ('2.3.4', True, 'Thunderstore'),
+              'MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix': ('2.0.0', True, 'Thunderstore'),
+              'JacobG5-DestroyItemInSlotFix': ('1.0.0', True, 'Thunderstore'),
+          }
+          if set(aj_blocks) != set(base_blocks) | set(three_new):
+              raise RuntimeError(f'unexpected package-name delta: added={sorted(set(aj_blocks)-set(base_blocks))} removed={sorted(set(base_blocks)-set(aj_blocks))}')
+          for name, block in base_blocks.items():
+              if name == 'Alice-DungeonGenerationPlus':
+                  continue
+              if aj_blocks[name]['raw'] != block['raw']:
+                  raise RuntimeError(f'unintended package version/state/source drift: {name}')
+          if base_blocks['Alice-DungeonGenerationPlus']['version'] != '1.5.0' or base_blocks['Alice-DungeonGenerationPlus']['enabled'] is not True:
+              raise RuntimeError('unexpected accepted DungeonGenerationPlus base state')
+          dgp = aj_blocks['Alice-DungeonGenerationPlus']
+          if (dgp['version'], dgp['enabled'], dgp['source']) != ('1.5.1', True, 'Thunderstore'):
+              raise RuntimeError('DungeonGenerationPlus successor state mismatch')
+          for name, expected in three_new.items():
+              b = aj_blocks[name]
+              if (b['version'], b['enabled'], b['source']) != expected:
+                  raise RuntimeError(f'target addition mismatch: {name}')
+          lll = aj_blocks.get('IAmBatby-LethalLevelLoader')
+          if not lll or (lll['version'], lll['enabled'], lll['source']) != ('1.7.12', True, 'Thunderstore'):
+              raise RuntimeError('modern IAmBatby LLL owner drift')
+          lll_names = sorted(n for n in aj_blocks if 'LethalLevelLoader' in n)
+          if lll_names != ['IAmBatby-LethalLevelLoader']:
+              raise RuntimeError(f'second/unexpected LLL owner present: {lll_names}')
+          if 'pacoito-LethalLevelLoaderUpdated' in aj_blocks:
+              raise RuntimeError('forbidden LethalLevelLoaderUpdated present')
+
+          base_index = load_json('ProfileSources/S1.42AI/FILE_INDEX.json')
+          aj_index = load_json('ProfileSources/S1.42AJ/FILE_INDEX.json')
+          base_by_path = {x['path']: x for x in base_index}
+          aj_by_path = {x['path']: x for x in aj_index}
+          if set(base_by_path) != set(aj_by_path):
+              raise RuntimeError('profile member path set changed')
+          hash_drift = sorted(p for p in base_by_path if base_by_path[p]['sha256'] != aj_by_path[p]['sha256'])
+          if hash_drift != ['export.r2x']:
+              raise RuntimeError(f'unexpected member hash drift: {hash_drift}')
+          if aj_by_path[NORMALIZER]['sha256'] != NORMALIZER_SHA:
+              raise RuntimeError('Interior Weight Normalization DLL hash drift')
+
+          Path(STATIC_MD).parent.mkdir(parents=True, exist_ok=True)
+          Path(STATIC_MD).write_text(f'''# {BUILD_ID} Static Verification — LC Office V81 Integration\n\n**Status:** PASS / STATIC VALIDATED / RUNTIME NOT ARMED  \n**Date:** 2026-09-17  \n**Parent:** {BASE_ID}  \n**Build workflow:** `{BUILD_RUN}`  \n**Build commit:** `{BUILD_COMMIT}`\n\n## Verified artifact\n\n- Profile: `{PROFILE}`\n- SHA-256: `{PROFILE_SHA}`\n- Parent profile: `{BASE_PROFILE}`\n- Parent SHA-256: `{BASE_SHA}`\n- Builder result changed exactly one existing ZIP member: `export.r2x`; no ZIP members were added.\n- Independent FILE_INDEX comparison likewise proves `export.r2x` is the only member whose SHA changed.\n\n## Exact package delta\n\n- added/enabled `Piggy-LC_Office 2.3.4`;\n- added/enabled `MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix 2.0.0`;\n- added/enabled `JacobG5-DestroyItemInSlotFix 1.0.0`;\n- transitioned `Alice-DungeonGenerationPlus 1.5.0 -> 1.5.1`;\n- every other accepted S1.42AI package block is byte-identical in the Gale export.\n\nThis proves there was no unintended exported package-version/state/source cascade.\n\n## Ownership and interior guards\n\n- `IAmBatby-LethalLevelLoader 1.7.12` remains enabled and is the sole package whose name contains `LethalLevelLoader`;\n- `pacoito-LethalLevelLoaderUpdated` is absent;\n- `BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll` remains byte-identical at SHA-256 `{NORMALIZER_SHA}`;\n- no config, DLL or other existing non-export profile member changed;\n- no universal-moon availability, Wesley, CullFactory, DunGenReferenceFixer or unrelated deferred Interior scope was introduced.\n\n## Decision\n\nStatic acceptance gate: **PASS**. {BUILD_ID} is a built/static-validated successor only. It is not accepted gameplay, is not an active runtime candidate yet, `RuntimeInbox/ACTIVE_BUILD.txt` remains {BASE_ID}, and no runtime test is armed by this decision.\n''', encoding='utf-8')
+
+          Path(CANDIDATE_MD).write_text(f'''# {BUILD_ID} Build Candidate — LC Office V81 Integration\n\n**Status:** BUILT / STATIC VALIDATED / RUNTIME NOT ARMED  \n**Date:** 2026-09-17  \n**Parent:** {BASE_ID}\n\nProfile: `{PROFILE}`  \nSHA-256: `{PROFILE_SHA}`  \nPlan: `BuildSpecs/S1.42AJ_PLAN.md`  \nStatic evidence: `{STATIC_MD}`  \nBuild workflow run: `{BUILD_RUN}`  \nBuild commit: `{BUILD_COMMIT}`\n\n{BUILD_ID} contains exactly the compatibility-first LC Office package delta authorized by `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`. Static verification proves no unrelated exported package drift, no second LLL owner, no `LethalLevelLoaderUpdated`, and no non-export profile byte change.\n\nThis record does **not** arm gameplay/runtime validation. S1.42AI remains the accepted gameplay baseline and `RuntimeInbox/ACTIVE_BUILD.txt` remains S1.42AI until a later explicit lifecycle transition arms {BUILD_ID}.\n''', encoding='utf-8')
+
+          status = {
+              'schema_version': 1,
+              'updated': '2026-09-17',
+              'build_id': BUILD_ID,
+              'status': 'STATIC_VALIDATED_NOT_RUNTIME_ARMED',
+              'accepted_baseline': BASE_ID,
+              'parent': BASE_ID,
+              'profile': PROFILE,
+              'sha256': PROFILE_SHA,
+              'build_plan': 'BuildSpecs/S1.42AJ_PLAN.md',
+              'candidate_record': CANDIDATE_MD,
+              'static_evidence': STATIC_MD,
+              'build_workflow_run': BUILD_RUN,
+              'build_commit': BUILD_COMMIT,
+              'active_runtime_candidate': False,
+              'runtime_test_outstanding': False,
+              'runtime_active_build': BASE_ID,
+              'next_action': f'Arm {BUILD_ID} as the sole runtime candidate in a separate lifecycle transition, then provide the Gale replacement/import and exact build-specific runtime-log uploader in that same response.'
+          }
+          write_json(STATUS_JSON, status)
+
+          state = load_json('Current/CURRENT_STATE.json')
+          if state['accepted_baseline']['build_id'] != BASE_ID or state['accepted_baseline']['sha256'] != BASE_SHA:
+              raise RuntimeError('accepted baseline drift before S1.42AJ finalization')
+          if state.get('active_candidate') is not None or state.get('runtime_test_outstanding') is not False:
+              raise RuntimeError('unexpected runtime candidate state before S1.42AJ finalization')
+          if state['controllers']['runtime_active_build'] != BASE_ID:
+              raise RuntimeError('runtime attribution moved before S1.42AJ finalization')
+          state['updated'] = '2026-09-17'
+          state['latest_built_artifact'] = {
+              'build_id': BUILD_ID,
+              'title': 'LC Office V81 Integration',
+              'status': 'STATIC_VALIDATED_NOT_RUNTIME_ARMED',
+              'profile': PROFILE,
+              'sha256': PROFILE_SHA,
+              'candidate_record': CANDIDATE_MD,
+              'project_status': STATUS_JSON,
+              'build_plan': 'BuildSpecs/S1.42AJ_PLAN.md',
+              'profile_sources': 'ProfileSources/S1.42AJ/',
+              'file_index': 'ProfileSources/S1.42AJ/FILE_INDEX.json',
+              'workflow_run': BUILD_RUN,
+              'build_commit': BUILD_COMMIT,
+              'static_evidence': STATIC_MD,
+              'parent': BASE_ID
+          }
+          state['active_candidate'] = None
+          state['runtime_test_outstanding'] = False
+          state['selected_scope'] = {
+              'scope_id': 'LC_OFFICE_V81_INTEGRATION',
+              'title': 'LC Office V81 Integration',
+              'status': 'SUCCESSOR_STATIC_VALIDATED_READY_FOR_RUNTIME_ARMING',
+              'accepted_baseline': BASE_ID,
+              'built_build_id': BUILD_ID,
+              'plan': 'BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md',
+              'topic_authority': 'Knowledge/INTERIORS_AND_LLL.md',
+              'finding': f'{BUILD_ID} was built from exact accepted {BASE_ID} and passed the static gate. The exported delta is exactly the three LC Office additions plus DungeonGenerationPlus 1.5.0 -> 1.5.1; every other package block and every non-export profile member is unchanged, IAmBatby LLL 1.7.12 remains the sole LLL owner, the deprecated fork is absent, and the accepted Interior Weight Normalization DLL is byte-identical. No runtime candidate/test is armed yet.',
+              'analysis_contract': f'{BUILD_ID} is the sole built/static-validated LC Office successor. Preserve the compatibility-first scope and do not add universal-moon availability or unrelated Interior work. The next lifecycle transition may arm {BUILD_ID} for full-normal runtime validation using the existing LC Office acceptance contract.',
+              'next_action': f'Arm {BUILD_ID} as the sole runtime candidate in a separate lifecycle transition. Only that transition may move RuntimeInbox/ACTIVE_BUILD.txt to {BUILD_ID} and mark runtime_test_outstanding=true; the same user-facing response must include both required PowerShell one-liners.'
+          }
+          state['next_action'] = state['selected_scope']['next_action']
+          state['controllers'] = {
+              'buildspec': 'BuildSpecs/current.json',
+              'build_enabled': False,
+              'build_id': IDLE_ID,
+              'build_base_profile': BASE_PROFILE,
+              'build_base_sha256': BASE_SHA,
+              'runtime_active_build_file': 'RuntimeInbox/ACTIVE_BUILD.txt',
+              'runtime_active_build': BASE_ID
+          }
+          write_json('Current/CURRENT_STATE.json', state)
+
+          idle_spec = {
+              'enabled': False,
+              'build_id': IDLE_ID,
+              'base_profile': BASE_PROFILE,
+              'base_sha256': BASE_SHA,
+              'output_profile': 'Profiles/DO_NOT_BUILD.r2z',
+              'profile_name': 'DO_NOT_BUILD',
+              'overwrite': False,
+              'mod_state_changes': [],
+              'mod_additions': [],
+              'mod_removals': [],
+              'config_patches': [],
+              'local_plugin_builds': [],
+              'text_assertions': []
+          }
+          write_json('BuildSpecs/current.json', idle_spec)
+
+          lineage = load_json('Current/BUILD_LINEAGE.json')
+          lineage['date'] = '2026-09-17'
+          lineage['latest_built_artifact_id'] = BUILD_ID
+          lineage['active_candidate_build_id'] = None
+          if any(b.get('id') == BUILD_ID for b in lineage.get('builds', [])):
+              raise RuntimeError('S1.42AJ already exists in BUILD_LINEAGE before finalization')
+          lineage['builds'].append({
+              'id': BUILD_ID,
+              'title': 'LC Office V81 Integration',
+              'status': 'static-validated-not-runtime-armed',
+              'parent': BASE_ID,
+              'profile': PROFILE,
+              'sha256': PROFILE_SHA,
+              'build_plan': 'BuildSpecs/S1.42AJ_PLAN.md',
+              'candidate_record': CANDIDATE_MD,
+              'decision_record': STATIC_MD,
+              'project_status': STATUS_JSON,
+              'workflow_run': BUILD_RUN,
+              'build_commit': BUILD_COMMIT,
+              'static_evidence': STATIC_MD,
+              'safe_as_gameplay_base': False,
+              'principal_feature': 'compatibility-first LC Office V81 integration; exact package-only delta statically validated with modern IAmBatby LLL ownership and accepted Interior Weight Normalization preserved; runtime not yet armed'
+          })
+          lineage.setdefault('feature_index', {})['LC_Office_V81_integration_static_validated'] = BUILD_ID
+          write_json('Current/BUILD_LINEAGE.json', lineage)
+
+          bl = (ROOT / 'Current/BUILD_LINEAGE.md').read_text(encoding='utf-8')
+          bl = bl.replace('**Last-Validated:** 2026-09-16', '**Last-Validated:** 2026-09-17', 1)
+          bl = bl.replace('- **Latest built artifact:** S1.42AI.', f'- **Latest built artifact:** {BUILD_ID} — LC Office V81 Integration — static validated / runtime not armed.', 1)
+          bl = bl.replace('- **Current action:** select exactly one remaining deferred independent scope from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md` before preparing a successor.', f'- **Current action:** arm {BUILD_ID} as the sole runtime candidate in a separate lifecycle transition; no runtime test is outstanding yet.', 1)
+          row_anchor = '| S1.42AI-DIAG1R3 | **RUNTIME DIAGNOSTIC PASS / NOT GAMEPLAY ACCEPTED** | Exact `Shy guy` identity/isolation passed; interior visibility was observed and exterior visibility was not exercised. Diagnostic evidence only; the independent full-normal S1.42AI gate later passed. |'
+          if row_anchor not in bl: raise RuntimeError('BUILD_LINEAGE.md table anchor missing')
+          bl = bl.replace(row_anchor, row_anchor + f'\n| {BUILD_ID} | **STATIC VALIDATED / RUNTIME NOT ARMED** | Compatibility-first LC Office V81 package integration from exact accepted S1.42AI; static gate proves exact four-operation package delta, sole modern LLL ownership, no deprecated fork and no non-export profile-byte drift. |', 1)
+          exact_anchor = '## Exact current-line artifacts\n'
+          if exact_anchor not in bl: raise RuntimeError('BUILD_LINEAGE.md exact-artifact anchor missing')
+          aj_section = f'''\n### {BUILD_ID} — LC Office V81 static-validated successor\n\n- Profile: `{PROFILE}`\n- SHA-256: `{PROFILE_SHA}`\n- Parent: S1.42AI\n- Candidate: `{CANDIDATE_MD}`\n- Static evidence: `{STATIC_MD}`\n- Build workflow run: `{BUILD_RUN}`\n- Build commit: `{BUILD_COMMIT}`\n- Runtime: not armed / no runtime evidence yet\n\n'''
+          bl = bl.replace(exact_anchor, exact_anchor + aj_section, 1)
+          (ROOT / 'Current/BUILD_LINEAGE.md').write_text(bl, encoding='utf-8')
+
+          marker_old = '<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AI candidate=none runtime_test_outstanding=false -->'
+          marker_new = '<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=none runtime_test_outstanding=false -->'
+
+          lifecycle = f'''{marker_new}\n# Current Project Lifecycle\n\n**Status:** CURRENT / CANONICAL TOPIC  \n**Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  \n**Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  \n**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `{CANDIDATE_MD}`, `{STATIC_MD}`  \n**Last-Validated:** 2026-09-17\n\n## Accepted gameplay baseline\n\n**S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK** remains the sole accepted gameplay baseline.\n\nProfile: `{BASE_PROFILE}`  \nSHA-256: `{BASE_SHA}`  \nAcceptance: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`  \nRuntime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`\n\n## Latest built artifact\n\n**{BUILD_ID} — LC Office V81 Integration — STATIC VALIDATED / RUNTIME NOT ARMED** is the latest built artifact.\n\nProfile: `{PROFILE}`  \nSHA-256: `{PROFILE_SHA}`  \nCandidate record: `{CANDIDATE_MD}`  \nStatic evidence: `{STATIC_MD}`\n\nThe static gate proves the exact compatibility-first package delta: add LC Office 2.3.4, the V81 compatibility fix 2.0.0 and DestroyItemInSlotFix 1.0.0, transition DungeonGenerationPlus 1.5.0 -> 1.5.1, preserve every other package block byte-for-byte, preserve every non-export profile member byte-for-byte, retain `IAmBatby-LethalLevelLoader 1.7.12` as the sole LLL owner, keep `pacoito-LethalLevelLoaderUpdated` absent, and preserve the accepted Interior Weight Normalization DLL at SHA-256 `{NORMALIZER_SHA}`.\n\n## Live execution state\n\n- Accepted baseline: **S1.42AI**.\n- Latest built artifact: **{BUILD_ID}**.\n- Active runtime candidate: **none**.\n- Runtime test outstanding: **no**.\n- Selected successor scope: **LC Office V81 Integration — static validated / ready for runtime arming**.\n- `BuildSpecs/current.json` is disabled at `{IDLE_ID}`.\n- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains runtime-evidence attribution only.\n- No runtime test is armed and no gameplay run should start yet.\n\n## Scope boundary\n\n{BUILD_ID} remains compatibility-first. Do not combine universal LC Office moon availability, universal Interior viability, Wesley changes, CullFactory work, DunGenReferenceFixer evaluation or another deferred Interior scope into this candidate. The accepted post-viability normalization architecture remains unchanged.\n\n## Exact next project action\n\nArm **{BUILD_ID}** as the sole runtime candidate in a separate lifecycle transition. Only that transition may set `RuntimeInbox/ACTIVE_BUILD.txt = {BUILD_ID}` and `runtime_test_outstanding = true`. In the same user-facing response that arms the runtime test, provide both the canonical repository-driven Gale replacement/import PowerShell one-liner and the exact {BUILD_ID}-specific one-line runtime-log uploader.\n'''
+          (ROOT / 'Knowledge/CURRENT_LIFECYCLE.md').write_text(lifecycle, encoding='utf-8')
+
+          km_path = ROOT / 'Current/PROJECT_KNOWLEDGE_MAP.md'
+          km = km_path.read_text(encoding='utf-8')
+          if marker_old not in km: raise RuntimeError('knowledge-map live marker anchor missing')
+          km = km.replace(marker_old, marker_new, 1)
+          old_anchor = 'Accepted gameplay baseline and latest built artifact: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Exact profile SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Acceptance authority: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`; runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`.'
+          new_anchor = f'Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `{BASE_SHA}`. Latest built artifact: **{BUILD_ID} — LC Office V81 Integration — STATIC VALIDATED / RUNTIME NOT ARMED**, SHA-256 `{PROFILE_SHA}`; static evidence: `{STATIC_MD}`.'
+          if old_anchor not in km: raise RuntimeError('knowledge-map lifecycle anchor missing')
+          km = km.replace(old_anchor, new_anchor, 1)
+          old_state = 'There is no active runtime candidate and no outstanding runtime test. LC Office V81 Integration is the sole selected successor scope and remains not armed. `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI_ACCEPTANCE_PREP_LC_OFFICE_V81_SUCCESSOR`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains evidence attribution only and does not arm a successor.'
+          new_state = f'There is no active runtime candidate and no outstanding runtime test. LC Office V81 Integration remains the sole selected scope; {BUILD_ID} is built and static validated but runtime is not armed. `BuildSpecs/current.json` is disabled at `{IDLE_ID}`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains evidence attribution only.'
+          if old_state not in km: raise RuntimeError('knowledge-map live-state anchor missing')
+          km = km.replace(old_state, new_state, 1)
+          old_next = 'The focused LC Office V81 package/dependency verification against accepted S1.42AI is complete. The next action is to read the build-pipeline and build-lineage authorities, determine the next successor build ID and exact `BuildSpecs/current.json` schema, and prepare exactly one LC Office successor from S1.42AI without arming a runtime test prematurely.'
+          new_next = f'The focused package/dependency verification, {BUILD_ID} build and static gate are complete. The next action is to arm {BUILD_ID} as the sole runtime candidate in a separate lifecycle transition; only then may runtime attribution move from S1.42AI to {BUILD_ID}, and that same response must provide both required PowerShell one-liners.'
+          if old_next not in km: raise RuntimeError('knowledge-map next-action anchor missing')
+          km = km.replace(old_next, new_next, 1)
+          km_path.write_text(km, encoding='utf-8')
+
+          roadmap_path = ROOT / 'Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md'
+          roadmap = roadmap_path.read_text(encoding='utf-8')
+          if marker_old not in roadmap: raise RuntimeError('roadmap marker anchor missing')
+          roadmap = roadmap.replace(marker_old, marker_new, 1)
+          roadmap = roadmap.replace('Accepted gameplay baseline and latest built artifact: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`.', f'Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `{BASE_SHA}`. Latest built artifact: **{BUILD_ID} — LC Office V81 Integration — STATIC VALIDATED / RUNTIME NOT ARMED**, SHA-256 `{PROFILE_SHA}`.', 1)
+          roadmap = roadmap.replace('There is no active runtime candidate, no outstanding runtime test and no armed successor. The S1.42AI ShyGuy correction scope is closed by `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`.', f'There is no active runtime candidate and no outstanding runtime test. {BUILD_ID} has passed static validation but is not runtime-armed; `RuntimeInbox/ACTIVE_BUILD.txt` therefore remains S1.42AI.', 1)
+          roadmap = roadmap.replace('**LC Office V81 Integration — selected / successor preparation not armed.** Canonical plan: `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.', f'**LC Office V81 Integration — {BUILD_ID} built / static validated / runtime not armed.** Canonical plan: `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; static evidence: `{STATIC_MD}`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.', 1)
+          roadmap = roadmap.replace('The initial candidate is compatibility-first: preserve modern IAmBatby LLL ownership and accepted equal-effective-weight behavior, prove LC Office registration/viability/generation/traversal/elevator behavior, and keep universal moon availability plus all unrelated interior work outside this scope.', f'{BUILD_ID} is compatibility-first and preserves modern IAmBatby LLL ownership plus accepted equal-effective-weight behavior. Static validation is complete; the next separate lifecycle action is runtime arming to prove LC Office registration/viability/generation/traversal/elevator behavior. Universal moon availability plus all unrelated interior work remain outside this scope.', 1)
+          roadmap_path.write_text(roadmap, encoding='utf-8')
+
+          integrity_path = ROOT / 'Current/ARTIFACT_EVIDENCE_INTEGRITY.md'
+          integrity = integrity_path.read_text(encoding='utf-8')
+          if marker_old not in integrity: raise RuntimeError('artifact integrity marker anchor missing')
+          integrity = integrity.replace(marker_old, marker_new, 1)
+          integrity = integrity.replace('**Last-Validated:** 2026-09-16', '**Last-Validated:** 2026-09-17', 1)
+          insert_anchor = 'S1.42AI is now a completed accepted profile in the machine index. S1.42AH remains its accepted predecessor/rollback provenance baseline.\n'
+          if insert_anchor not in integrity: raise RuntimeError('artifact integrity insertion anchor missing')
+          aj_integrity = f'''\n## Latest built artifact: {BUILD_ID} — static validated / runtime not armed\n\nArtifact: `{PROFILE}`  \nSHA-256: `{PROFILE_SHA}`  \nProfile sources: `ProfileSources/S1.42AJ/`  \nStatic evidence: `{STATIC_MD}`\n\n{BUILD_ID} has no runtime evidence yet and is not an active runtime candidate. It is therefore not listed under `pending_profiles` until a later explicit runtime-arming transition. S1.42AI remains the accepted completed gameplay profile.\n'''
+          integrity = integrity.replace(insert_anchor, insert_anchor + aj_integrity, 1)
+          integrity_path.write_text(integrity, encoding='utf-8')
+          PY
+
+      - name: Render generated current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Validate static lifecycle transition before commit
+        shell: bash
+        run: |
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/state_neutral_authority_validator.py
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/artifact_byte_integrity_validator.py
+          python BuildSystem/test_profile_builder.py
+          git diff --check
+
+      - name: Remove completed one-shot finalizer
+        run: git rm .github/workflows/s142aj-static-finalize.yml
+
+      - name: Commit static validation and idle controller state
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Record S1.42AJ static validation and idle controller'
+          git push origin HEAD:main
