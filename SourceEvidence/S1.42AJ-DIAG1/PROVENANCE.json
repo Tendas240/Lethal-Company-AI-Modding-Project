@@ -1,0 +1,13 @@
+{
+  "repository_commit": "a3d53a8bf465e1eb8146cb8eb322a1f1fb4090e3",
+  "base_profile_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
+  "package_url": "https://gcdn.thunderstore.io/live/repository/packages/IAmBatby-LethalLevelLoader-1.7.12.zip",
+  "package_sha256": "e01eadec8b1df3a1bc331e98b29d94baffa572cb7379953f1fa4e46df0aa6451",
+  "dll_member": "LethalLevelLoader.dll",
+  "dll_sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+  "source_sha256": "88baea660b8a5e1fd65201ccf742331fd1017322998736f8cc187aec71a507a3",
+  "decompiler": "11.0.0.9375",
+  "qualification": "Pinned package materialized from exact AJ export; first capture hashes, not independently verified installed-user DLL.",
+  "workflow_run": 35261242818,
+  "excerpts": "CONTRACT_EXCERPTS.txt"
+}
