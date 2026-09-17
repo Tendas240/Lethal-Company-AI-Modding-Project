@@ -45,10 +45,6 @@ Import S1.42AJ with the canonical Gale v2.4 replacement helper, execute the full
 
 S1.42AJ remains compatibility-first. Do not combine universal LC Office moon availability, universal Interior viability, Wesley changes, CullFactory work, DunGenReferenceFixer evaluation or another deferred Interior scope into this candidate. The accepted post-viability normalization architecture remains unchanged.
 
-## Exact next project action
-
-Arm **S1.42AJ** as the sole runtime candidate in a separate lifecycle transition. Only that transition may set `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` and `runtime_test_outstanding = true`. In the same user-facing response that arms the runtime test, provide both the canonical repository-driven Gale replacement/import PowerShell one-liner and the exact S1.42AJ-specific one-line runtime-log uploader.
-
 ## Canonical Gale runtime import helper
 
 Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at validated helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof` for the currently armed S1.42AJ runtime import/materialization workflow.
