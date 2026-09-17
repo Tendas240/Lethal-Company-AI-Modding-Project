@@ -4,7 +4,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only  
 **Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
-**Last-Validated:** 2026-09-16
+**Last-Validated:** 2026-09-17
 
 ## Current position
 
@@ -19,6 +19,7 @@ None. The next scope must be explicitly selected before any successor preparatio
 ## Remaining deferred independent scopes
 
 - LC Office V81 integration under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`.
+- Universal interior viability / equal availability: evaluate every registered interior for safe availability on every moon, preserve equal effective probability (`100`) whenever viable, and only remove LLL/author exclusions after compatibility proof including correct entrance/exit pairing, successful generation/traversal, and no door-socket, geometry, routing, elevator or NavMesh regression; document any technically unavoidable exception explicitly.
 - CullFactory exceptions for exact IDs `junkrooms` / `shatteredrooms`.
 - MelanieMausoleum fog reduction only for that interior.
 - Black Mesa/interior/Pikmin route recovery.
