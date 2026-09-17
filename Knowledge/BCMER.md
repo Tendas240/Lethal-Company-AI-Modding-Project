@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current BCMER package/config/weight-model interpretation  
 **Canonical-For:** `bcmer`  
-**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `RuntimeEvidence/S1.42AI/20260911T175403Z/`, `Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`, `Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`  
+**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `RuntimeEvidence/S1.42AI/20260916T180452Z/`, `Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`, `Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`  
 **Related:** `Knowledge/CURRENT_LIFECYCLE.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
 **Last-Validated:** 2026-09-16
 
@@ -51,7 +51,7 @@ S1.42AI was built directly from accepted S1.42AH to correct only that proven eve
 
 `Scopophobia.cfg` remains byte-identical to accepted S1.42AH, preserving ordinary `SpawnInside = true` / `SpawnOutside = false` ownership.
 
-The full-normal S1.42AI runtime evidence at `RuntimeEvidence/S1.42AI/20260911T175403Z/` closes the gameplay gate. It loaded exact BCMER `1.71.0`, executed the `ShyGuy` event, preserved the interior ShyGuy route, logged `Adding 0 ShyGuy into list.`, contained zero `ShyGuy(Clone) spawned outside; Switching to exterior AI` markers, and produced no new project regression failure attributable to the isolated config delta. Acceptance authority is `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
+The full-normal S1.42AI runtime evidence at `RuntimeEvidence/S1.42AI/20260916T180452Z/` closes the gameplay gate. It loaded exact BCMER `1.71.0`, executed the `ShyGuy` event, preserved the interior ShyGuy route, logged `Adding 0 ShyGuy into list.`, contained zero `ShyGuy(Clone) spawned outside; Switching to exterior AI` markers, and produced no new project regression failure attributable to the isolated config delta. Acceptance authority is `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
 
 The temporary S1.42AI-DIAG1/R1/R2/R3 lineage remains diagnostic evidence only. R3 ultimately proved exact `ShyGuyDef` / `Shy guy` / `ShyGuy.AI.ShyGuyAI` ordinal identity resolution and ShyGuy-only isolation, but that diagnostic pass did not itself accept gameplay. The later full-normal S1.42AI evidence is the acceptance authority.
 
