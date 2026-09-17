@@ -7,7 +7,7 @@
 **Implementation:** `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` (canonical launcher), `RuntimeTools/ReplaceActiveGaleProfile.ps1` (validated v2.2 importer base)  
 **Related:** `Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`, `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`, `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`, `Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`  
 **Last-Validated:** 2026-09-04  
-**Last-Hardened:** 2026-09-05 (`2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`; pending next user re-import)
+**Last-Hardened:** 2026-09-17 (`2026-09-17-import-uia-v2.4-diagnostic-runtime-target-materialization-proof`; diagnostic target resolver statically/regression validated, local UI import behavior remains inherited from the previously user-validated path)
 
 ## Canonical launcher
 
@@ -17,16 +17,21 @@ For the currently ready-to-test build, use the repository-driven v2.4 launcher r
 $u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfileV24.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
 ```
 
-Before presenting it, the repository must have `RuntimeInbox/ACTIVE_BUILD.txt` and `Current/AUTO_BUILD_RESULT.json.build_id` pointing to the exact same ready candidate.
+Before presenting it, `RuntimeInbox/ACTIVE_BUILD.txt` must resolve fail-closed through one of exactly two repository-authorized paths:
 
-The v2.4 launcher deliberately wraps the already user-validated v2.2 importer instead of duplicating its UI Automation implementation. It first requires the exact expected v2.2 source-revision signature, replaces only the export-text reader and critical-materialization functions in memory, stamps the v2.4 revision, and then executes the resulting helper. If the underlying v2.2 source drifts, v2.4 refuses to run until that drift is reviewed.
+1. **normal built-artifact path:** `ACTIVE_BUILD == Current/AUTO_BUILD_RESULT.json.build_id`; or
+2. **explicit diagnostic runtime-target path:** `Current/CURRENT_STATE.json.controllers.runtime_active_build == ACTIVE_BUILD`, `selected_scope.diagnostic_revision.build_id == ACTIVE_BUILD`, the diagnostic status is exactly `PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED`, its `base_build_id` / base profile / base SHA bind back to the current `AUTO_BUILD_RESULT`, and its referenced `build_result` independently agrees on build ID, output profile/SHA, base profile/SHA and exact profile name.
+
+No other `ACTIVE_BUILD` / `AUTO_BUILD_RESULT` mismatch is permitted. The diagnostic exception changes only repository target resolution; it does not promote the diagnostic artifact, replace the balanced candidate or weaken download/import integrity checks.
+
+The v2.4 launcher deliberately wraps the already user-validated v2.2 importer instead of duplicating its UI Automation implementation. It first requires the exact expected v2.2 source-revision signature, replaces only the export-text reader, critical-materialization functions and repository target-resolution block in memory, stamps the v2.4 revision, and then executes the resulting helper. If the underlying v2.2 source drifts, v2.4 refuses to run until that drift is reviewed.
 
 ## Validated import path
 
 The underlying helper was fully user-validated during S1.42AA -> S1.42AB on Windows PowerShell 5.1. The current launcher preserves that behavior:
 
 - closes Gale;
-- resolves the exact repository candidate;
+- resolves the exact repository target through the normal build path or the explicit fail-closed diagnostic path above;
 - downloads and SHA-256-verifies the `.r2z` before deletion is offered;
 - asks the user to select the old local profile numerically and confirm deletion with `y`;
 - opens the verified candidate exactly once;
@@ -39,7 +44,7 @@ The underlying helper was fully user-validated during S1.42AA -> S1.42AB on Wind
 - additionally requires project-critical external Thunderstore dependency DLLs to be physically materialized according to the v2.4 package-root contract;
 - removes the temporary `.r2z` only after both export identity and required materialization proof succeed.
 
-After profile number + `y`, no additional Gale click or PowerShell Enter is required on the validated happy path.
+After profile number + `y`, no additional Gale click or PowerShell Enter is required on the previously validated happy path. The 2026-09-17 diagnostic resolver is repository-side selection logic and has permanent CI regression coverage; its first real diagnostic import remains runtime/user evidence rather than being retroactively labeled user-validated.
 
 ## Why v2.2 was insufficient
 
@@ -59,9 +64,9 @@ The game then failed in the same BepInEx preloader path because `me.loaforc.soun
 
 A controlled fresh import of accepted S1.42AC proved the contrast: both SoundAPI DLLs physically materialized at the expected nested package paths, and S1.42AC then passed the BepInEx preloader and reached the main menu normally. This demonstrates that the current game/mod stack can start when Gale materializes the dependency correctly.
 
-## v2.4 export-read and critical materialization proof
+## v2.4 export-read, diagnostic target and critical materialization proof
 
-v2.4 preserves the v2.3 package-root semantics but closes the false-positive path before dependency derivation:
+v2.4 preserves the v2.3 package-root semantics, closes the false-positive path before dependency derivation and now supports an explicitly bound diagnostic runtime target without weakening the normal build guard:
 
 - `Get-ZipEntryText` is replaced in-memory and uses the direct four-argument `System.IO.StreamReader` constructor rather than the failing `New-Object ... -ArgumentList` path;
 - constructor/read failures terminate through `throw`;
@@ -70,7 +75,10 @@ v2.4 preserves the v2.3 package-root semantics but closes the false-positive pat
 - a mentioned SoundAPI package that cannot be recognized as the canonical `- name:` export entry fails closed rather than being treated as absent;
 - an LC binding must resolve to exactly two materialization contracts: base SoundAPI plus LC binding;
 - package-root searches still require exactly one non-empty expected DLL; zero, empty, or duplicate matches fail closed;
-- the wrapper refuses if the validated v2.2 helper source revision drifts or if the legacy defective StreamReader constructor survives the in-memory patch.
+- normal targets still require exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
+- a mismatch is accepted only through the exact `CURRENT_STATE.controllers.runtime_active_build` + `selected_scope.diagnostic_revision` binding and its referenced build-result crosschecks;
+- the diagnostic base identity must match the current `AUTO_BUILD_RESULT`, preventing an unrelated or stale diagnostic from being imported;
+- the wrapper refuses if the validated v2.2 helper source revision drifts or if the legacy defective StreamReader constructor or unconditional mismatch-abort path survives the in-memory patch.
 
 The permanent repository regression gate is `RepositoryTools/gale_import_helper_validator.py`, run by `.github/workflows/knowledge-architecture.yml`.
 
@@ -87,9 +95,11 @@ The recursive search is deliberately constrained to each package's own Gale pack
 
 ## Fail-closed requirements
 
-Keep the exact workflow safety constraints from `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`, including:
+Keep the exact workflow safety constraints from `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md` for the fully validated normal path, plus the explicit diagnostic resolver contract above, including:
 
 - exact build/profile matching only;
+- normal build resolution remains exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
+- diagnostic mismatches require exact controller + diagnostic revision + diagnostic status + base-build + build-result agreement; no generic fallback exists;
 - explicit confirmation before deleting a local profile;
 - no direct editing of Gale `data.sqlite3`;
 - no coordinate clicks or blind key navigation;
