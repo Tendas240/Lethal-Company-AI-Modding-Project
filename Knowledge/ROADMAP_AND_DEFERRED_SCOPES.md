@@ -1,18 +1,20 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI candidate=S1.42AI runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AI candidate=none runtime_test_outstanding=false -->
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only  
-**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
+**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
 **Last-Validated:** 2026-09-16
 
 ## Current position
 
-Accepted gameplay baseline: **S1.42AH**. Completed diagnostic evidence: **S1.42AI-DIAG1R3**, with exterior visibility explicitly not exercised because no exterior ShyGuy occurred. Latest built artifact and active full-normal runtime candidate: **S1.42AI**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`.
+Accepted gameplay baseline and latest built artifact: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`.
+
+There is no active runtime candidate, no outstanding runtime test and no armed successor. The S1.42AI ShyGuy correction scope is closed by `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
 
 ## Active scope
 
-Run the independent full-normal S1.42AI BCMER ShyGuy gate from `Current/143...`, then ingest the complete fresh S1.42AI log and make an explicit acceptance/rejection decision. R3 must not be rerun merely to force a rare exterior ShyGuy and must not be treated as S1.42AI acceptance.
+None. The next scope must be explicitly selected before any successor preparation or build is armed.
 
 ## Remaining deferred independent scopes
 
@@ -24,3 +26,5 @@ Run the independent full-normal S1.42AI BCMER ShyGuy gate from `Current/143...`,
 - Final long full-stack acceptance.
 - AdditionalNetworking repair only with reproducible evidence.
 - Broader LethalMin teardown/despawn repair only with stronger evidence.
+
+Select exactly one of these scopes before preparing a successor; do not combine independent scopes into one build.

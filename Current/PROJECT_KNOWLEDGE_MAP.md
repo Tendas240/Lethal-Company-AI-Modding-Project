@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AH latest=S1.42AI candidate=S1.42AI runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AI candidate=none runtime_test_outstanding=false -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
 **Current State:** `Current/00_CURRENT_STATE.md`
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
-**Last-Validated:** 2026-09-15
+**Last-Validated:** 2026-09-16
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -34,15 +34,14 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 ## Current lifecycle anchor
 
-Accepted gameplay baseline: **S1.42AH — Mouth Dog Pikmin Dual Prevention — ACCEPTED FULL NORMAL STACK**.
+Accepted gameplay baseline and latest built artifact: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Exact profile SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Acceptance authority: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`; runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`.
 
-Completed diagnostic evidence: **S1.42AI-DIAG1R3 — diagnostic runtime pass / not gameplay accepted**. Decision: `Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md`; runtime evidence: `RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z/`. R3 proves the exact `ShyGuyDef` / `Shy guy` / `ShyGuy.AI.ShyGuyAI` ordinal identity and ShyGuy-only isolation. Interior visibility was observed; exterior visibility remains explicitly **not exercised** because no exterior ShyGuy occurred.
+S1.42AH is the accepted predecessor/rollback provenance baseline. The S1.42AI-DIAG1/R1/R2/R3 chain remains diagnostic evidence only; R3 passed exact ShyGuy identity/isolation but is not a gameplay baseline.
 
-Latest built artifact and active full-normal runtime candidate: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — NOT ACCEPTED**. Exact profile SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Candidate authority: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
+There is no active runtime candidate and no outstanding runtime test. `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI_ACCEPTANCE_AWAITING_NEXT_SCOPE`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains evidence attribution only and does not arm a successor.
 
-`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI_BUILD_AWAITING_RUNTIME_VALIDATION`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` and `Current/AUTO_BUILD_RESULT.json.build_id = S1.42AI` identify the exact ready candidate for import/evidence attribution; ACTIVE_BUILD is not acceptance authority.
+The next action is to select exactly one remaining deferred independent scope from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md` before preparing any successor.
 
-The next action is the full-normal S1.42AI runtime gate followed by the exact S1.42AI log upload and repository-native decision. Diagnostic success did not waive this gate.
 ## Authority rule
 
 `Current/CURRENT_STATE.json` is the global machine lifecycle authority. This map chooses semantic topics. Build-specific records/runtime evidence prove decisions and observations but historical files never override later current state.

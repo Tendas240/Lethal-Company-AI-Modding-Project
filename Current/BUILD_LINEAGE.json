@@ -3,8 +3,8 @@
   "date": "2026-09-16",
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
-  "current_accepted_build_id": "S1.42AH",
-  "active_candidate_build_id": "S1.42AI",
+  "current_accepted_build_id": "S1.42AI",
+  "active_candidate_build_id": null,
   "latest_built_artifact_id": "S1.42AI",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
@@ -538,7 +538,7 @@
     {
       "id": "S1.42AH",
       "title": "Mouth Dog Pikmin Dual Prevention",
-      "status": "accepted",
+      "status": "accepted-predecessor",
       "parent": "S1.42AF",
       "profile": "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z",
       "sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
@@ -552,24 +552,27 @@
       "workflow_run": 34141360051,
       "build_commit": "fdb6b94e34144f860f6ac6eb2fd5bdbdd7797ef5",
       "safe_as_gameplay_base": true,
-      "principal_feature": "accepted dual prevention on exact LethalMin MouthDog adapter plus exact Vanilla MouthDogAI Pikmin collision path; final non-Pikmin EnemyAI neighbor pass-through closed with deliberate Redwood Titan runtime evidence"
+      "principal_feature": "accepted predecessor: dual exact MouthDog adapter plus exact Vanilla MouthDogAI Pikmin collision prevention with targeted player, reverse Pikmin lifecycle and non-Pikmin neighbor coverage"
     },
     {
       "id": "S1.42AI",
       "title": "BCMER ShyGuy Interior-Only Event Correction",
-      "status": "active-full-normal-runtime-candidate-not-accepted",
+      "status": "accepted",
       "parent": "S1.42AH",
       "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
       "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
       "build_plan": "BuildSpecs/S1.42AI_PLAN.md",
       "candidate_record": "Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md",
-      "decision_record": "Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md",
-      "project_status": "Current/Projektstatus_S1.42AI_CANDIDATE.json",
+      "decision_record": "Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md",
+      "acceptance": "Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md",
+      "project_status": "Current/Projektstatus_S1.42AI_ACCEPTED.json",
+      "runtime_evidence": "RuntimeEvidence/S1.42AI/20260916T180452Z/",
+      "runtime_log_sha256": "1765a2b65cfa31da049ba415938119f9eb3690d09618a2f85a32209bfad6d9b5",
       "workflow_run": 34496960816,
       "build_commit": "2dea753ec48ea2a8f417491ae9a13cf7a6d7b8b9",
       "static_evidence": "BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
-      "safe_as_gameplay_base": false,
-      "principal_feature": "single-variable BCMER ShyGuy interior-only event correction; diagnostic repair path is complete and the independent full-normal runtime gate is now active"
+      "safe_as_gameplay_base": true,
+      "principal_feature": "accepted single-variable BCMER ShyGuy interior-only event correction; full-normal runtime proved intended interior event availability with zero BCMER exterior list contribution and no ShyGuy exterior-AI marker"
     },
     {
       "id": "S1.42AI-DIAG1",
@@ -639,7 +642,7 @@
       "build_commit": "19914cff25cb768cffe22694e93df150e45bdd2f",
       "materialized_validation": "AnalysisEvidence/S1.42AI-DIAG1R3/MATERIALIZED_VALIDATION.json",
       "safe_as_gameplay_base": false,
-      "principal_feature": "R3 proved exact runtime ShyGuy identity resolution and ShyGuy-only isolation; interior visibility observed, exterior visibility not exercised; diagnostic complete and full-normal S1.42AI gate reactivated",
+      "principal_feature": "R3 proved exact runtime ShyGuy identity resolution and ShyGuy-only isolation; interior visibility observed, exterior visibility not exercised; diagnostic complete and full-normal S1.42AI gate later passed independently",
       "candidate_record": "Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md",
       "project_status": "Current/Projektstatus_S1.42AI-DIAG1R3_RUNTIME_PASS.json",
       "runtime_evidence": "RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z/",
@@ -679,16 +682,16 @@
     "S1.42C is the canonical normal enemy-spawn/config restore baseline after S1.42B diagnostic divergence.",
     "S1.42R whole-component BaboonBirdPikminEnemy disable is rejected and must never be replayed.",
     "S1.42AB was built directly from accepted S1.42Z, not from rejected S1.42AA.",
-    "S1.42AC was built directly from accepted S1.42AB. Its original Current/106 rejection is retained as history, the per-event-weight interpretation was corrected by Current/109, and explicit corrected acceptance is recorded by Current/118. S1.42AC is an accepted predecessor in the line that leads to S1.42AF and S1.42AH.",
+    "S1.42AC was built directly from accepted S1.42AB. Its original Current/106 rejection is retained as history, the per-event-weight interpretation was corrected by Current/109, and explicit corrected acceptance is recorded by Current/118. S1.42AC is an accepted predecessor in the line that leads to S1.42AF, S1.42AH and S1.42AI.",
     "S1.42AD was built directly from accepted S1.42AC and runtime-rejected because the Functional Microwave provider exposed 18 Interior/tag curves instead of the frozen zero-Interior assumption; its x0.5 mutation did not apply and it is not a safe gameplay base.",
     "S1.42AE was built directly from accepted S1.42AC, not from rejected S1.42AD. It established the corrected exact 18 Moon/tag and 18 Interior/tag source contract and scales only the 18 Moon/tag curves by 0.5; its code was not reached during AE runtime because the preloader failed first.",
     "S1.42AE was superseded for packaging/path-length reasons, not runtime-rejected for Microwave logic; its corrected source contract was reused by S1.42AF.",
-    "S1.42AF was built directly from accepted S1.42AC, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and remains the accepted predecessor/rollback point after S1.42AH promotion.",
+    "S1.42AF was built directly from accepted S1.42AC, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and remains an accepted predecessor in the current line.",
     "S1.42AG was built directly from accepted S1.42AF. Runtime proved its exact MouthDogPikminEnemy.DoCheckInterval guard blocks the LethalMin bite/grab/death-timer mutation path, but the candidate is rejected because a Mouth Dog still targeted/attacked a scrap-carrying Purple Pikmin through an unresolved path; it is not a safe gameplay base.",
-    "S1.42AH was built directly from accepted S1.42AF, not rejected S1.42AG. Its dual exact MouthDog prevention passed targeted adapter, player, reverse-direction Pikmin lifecycle and final non-Pikmin EnemyAI neighbor coverage; Current/142 explicitly accepts it as the current full-normal-stack gameplay baseline.",
-    "S1.42AI remains unaccepted with its full-normal BCMER ShyGuy runtime gate deferred but not waived while the DIAG1 repair path is resolved.",
+    "S1.42AH was built directly from accepted S1.42AF, not rejected S1.42AG. Its dual exact MouthDog prevention passed targeted adapter, player, reverse-direction Pikmin lifecycle and final non-Pikmin EnemyAI neighbor coverage; it is the accepted predecessor and rollback provenance baseline for S1.42AI.",
+    "S1.42AI was built directly from accepted S1.42AH. Current/152 explicitly accepts the isolated BCMER ShyGuy interior-only correction after full-normal runtime evidence; S1.42AI is the current accepted full-normal-stack gameplay baseline.",
     "S1.42AI-DIAG1 has an explicit failed diagnostic runtime decision in Current/145; it must not be rerun unchanged or treated as an active runtime candidate.",
-    "S1.42AI-DIAG1R1 was built directly from S1.42AI, not from the failed DIAG1 profile bytes. Current/147 records its explicit runtime diagnostic failure after the metadata-derived LethalMin owner repair succeeded but ElevatorMod.Patches.EndlessElevator was absent; it is not an active runtime candidate, must not be rerun unchanged, is not a safe gameplay base, and cannot waive the deferred full-normal S1.42AI runtime gate.",
-    "S1.42AI-DIAG1R3 was built directly from exact S1.42AI, not from failed R2 bytes. It changes only the exact runtime-proven enemyName literal to 'Shy guy' while preserving ordinal/fail-closed identity, owner and applicability guards; canonical materialized validation passed, but R3 is not an active runtime candidate and cannot waive the deferred full-normal S1.42AI gate."
+    "S1.42AI-DIAG1R1 was built directly from S1.42AI, not from the failed DIAG1 profile bytes. Current/147 records its explicit runtime diagnostic failure after the metadata-derived LethalMin owner repair succeeded but ElevatorMod.Patches.EndlessElevator was absent; it is not an active runtime candidate and is not a safe gameplay base.",
+    "S1.42AI-DIAG1R3 was built directly from exact S1.42AI, not from failed R2 bytes. It changes only the exact runtime-proven enemyName literal to 'Shy guy' while preserving ordinal/fail-closed identity, owner and applicability guards; canonical materialized validation and runtime isolation passed, but R3 remains diagnostic evidence only and is not a gameplay base."
   ]
 }

@@ -3,9 +3,9 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current BCMER package/config/weight-model interpretation  
 **Canonical-For:** `bcmer`  
-**Evidence:** `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`, `Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`, S1.42AC ProfileSources/runtime evidence, `RuntimeEvidence/S1.42AH/20260908T202138Z/`, `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`  
+**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `RuntimeEvidence/S1.42AI/20260916T180452Z/`, `Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`, `Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`  
 **Related:** `Knowledge/CURRENT_LIFECYCLE.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-09-10
+**Last-Validated:** 2026-09-16
 
 ## Version invariant
 
@@ -39,21 +39,26 @@ Accepted BCMER rain-event routes remain disabled:
 
 Natural vanilla Rainy weather remains allowed. The requirement concerns BCMER event routes, not all rain in the game.
 
-## ShyGuy event exterior-spawn guard — S1.42AI diagnostic repair path
+## Accepted ShyGuy interior-only event guard — S1.42AI
 
 S1.42AH runtime evidence `RuntimeEvidence/S1.42AH/20260908T202138Z/` proved that BCMER event `ShyGuy` could create `ShyGuy(Clone) spawned outside; Switching to exterior AI` even while ordinary Scopophobia v1.3.4 retained `SpawnOutside = false`.
 
-S1.42AI is built directly from accepted S1.42AH to correct only that proven event configuration defect. The `[ShyGuy]` event retains `Event Enabled? = true`, `Event Type = VeryBad`, and all three accepted interior values, while the exterior triplet is exactly zero. `Scopophobia.cfg` remains byte-identical to accepted S1.42AH, preserving ordinary `SpawnInside = true` / `SpawnOutside = false` ownership.
+S1.42AI was built directly from accepted S1.42AH to correct only that proven event configuration defect. The `[ShyGuy]` event retains `Event Enabled? = true`, `Event Type = VeryBad`, and all three accepted interior values, while the exterior triplet is exactly zero:
 
-The temporary ShyGuy-only diagnostic lineage is evidence, not a replacement for the full-normal gate. DIAG1 failed owner type resolution; R1 repaired that path but failed an incorrectly unconditional optional EndlessElevator target; R2 repaired applicability and runtime proved both predecessor repairs arm without install rollback. R2 then failed only the diagnostic identity contract because its ordinal literal `enemyName = "Shy Guy"` did not match the real runtime `ShyGuyDef/Shy guy` object with AI `ShyGuy.AI.ShyGuyAI`. Failure authority: `Current/149_S1.42AI-DIAG1R2_RUNTIME_FAILURE_SHYGUY_IDENTITY_CASE_MISMATCH.md`.
+- `ShyGuyDef OutsideEnemyRarity = 0, 0, 0, 0`
+- `ShyGuyDef MinOutsideEnemy = 0, 0, 0, 0`
+- `ShyGuyDef MaxOutsideEnemy = 0, 0, 0, 0`
 
-The user observed no non-ShyGuy enemy, one visible interior ShyGuy, and two ShyGuys in the terminal enemy census. No exterior ShyGuy was observed, so exterior visibility was not exercised in that run. These gameplay observations are directionally positive but do not override the R2 diagnostic identity failure.
+`Scopophobia.cfg` remains byte-identical to accepted S1.42AH, preserving ordinary `SpawnInside = true` / `SpawnOutside = false` ownership.
 
-R3 is determined by `BuildSpecs/S1.42AI-DIAG1R3_REQUEST.md` as a one-literal exact identity repair: `ExpectedEnemyName = "Shy guy"`; exact asset `ShyGuyDef`, AI type `ShyGuy.AI.ShyGuyAI`, ordinal comparison, reference-equality allowlisting, all spawn-owner guards, BCMER-only event isolation and fail-closed ambiguity behavior remain unchanged. Do not broaden to case-insensitive/substring/alias matching. R3 is not built or active yet, so no gameplay test is currently authorized.
+The full-normal S1.42AI runtime evidence at `RuntimeEvidence/S1.42AI/20260916T180452Z/` closes the gameplay gate. It loaded exact BCMER `1.71.0`, executed the `ShyGuy` event, preserved the interior ShyGuy route, logged `Adding 0 ShyGuy into list.`, contained zero `ShyGuy(Clone) spawned outside; Switching to exterior AI` markers, and produced no new project regression failure attributable to the isolated config delta. Acceptance authority is `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
+
+The temporary S1.42AI-DIAG1/R1/R2/R3 lineage remains diagnostic evidence only. R3 ultimately proved exact `ShyGuyDef` / `Shy guy` / `ShyGuy.AI.ShyGuyAI` ordinal identity resolution and ShyGuy-only isolation, but that diagnostic pass did not itself accept gameplay. The later full-normal S1.42AI evidence is the acceptance authority.
 
 The deferred `woah25-LethalEscapeUpdated 2.5.0` evaluation remains separate: inside -> outside transition compatibility is not equivalent to ordinary exterior spawning and must not be emulated by changing Scopophobia `SpawnOutside`.
 
-Full contract: `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`.
+Original correction plan: `BuildSpecs/DEFERRED_BCMER_SHYGUY_INTERIOR_ONLY_PLAN.md`.
+
 ## Accepted equal EventType static model — S1.42AC
 
 The accepted static base distribution is eight EventTypes at equal probability. S1.42AC implements constant scales:
@@ -142,7 +147,7 @@ S1.42AC passed the corrected acceptance model:
 6. aggregate count × per-event-weight masses are approximately equal with only integer-truncation error;
 7. rain disables, ordinary eligibility and inherited S1.42AB invariants remain healthy.
 
-S1.42AC is therefore the current accepted full-normal-stack baseline for this static EventType probability requirement.
+S1.42AC therefore remains the accepted requirement-specific authority for the static EventType probability model inherited by later accepted builds, including S1.42AI.
 
 ## Static probability versus executed frequency
 
