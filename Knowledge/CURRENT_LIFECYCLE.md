@@ -40,6 +40,12 @@ The observed ShyGuy `InvalidOperationException` and disconnect/teardown Addition
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains the runtime-evidence attribution build and does not arm a successor.
 - No successor build is armed.
 
+## Permanent Gale profile replacement/import route
+
+For any future runtime candidate that is explicitly armed, the canonical Gale profile replacement/import workflow remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, with the permanent fail-closed helper revision contract `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. The detailed workflow authority is `Knowledge/GALE_PROFILE_WORKFLOW.md`.
+
+The current S1.42AI acceptance state has no runtime test outstanding, so this permanent route does not itself instruct an import, arm a candidate, or require another gameplay run. It becomes operational only after exactly one future candidate is explicitly selected and armed by the repository lifecycle.
+
 ## Exact next project action
 
 Select exactly one remaining deferred independent scope from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md` before preparing or arming any successor. Do not mix unrelated deferred scopes.
