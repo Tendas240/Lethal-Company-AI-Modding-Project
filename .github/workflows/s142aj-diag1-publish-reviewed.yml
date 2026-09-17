@@ -1,0 +1,211 @@
+name: Publish exact reviewed S1.42AJ-DIAG1 artifact
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/s142aj-diag1-publish-reviewed.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Download bound PR review artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/s142aj-diag1-reviewed"
+          curl -L --fail --silent --show-error \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/10513954928/zip" \
+            -o "$RUNNER_TEMP/s142aj-diag1-reviewed/review.zip"
+          echo 'c9963e7155515426cdeb02b110373ee4252e4f807a7c20430b2c43747e75d7ce  '"$RUNNER_TEMP/s142aj-diag1-reviewed/review.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/s142aj-diag1-reviewed/review.zip" -d "$RUNNER_TEMP/s142aj-diag1-reviewed/extracted"
+
+      - name: Verify review artifact and isolate rebuild nondeterminism
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, io, json, re, zipfile
+          from pathlib import Path
+          import os
+
+          root = Path('.')
+          tmp = Path(os.environ['RUNNER_TEMP']) / 's142aj-diag1-reviewed' / 'extracted'
+          rel = Path('Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z')
+          reviewed = tmp / rel
+          current = root / rel
+          base = root / 'Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z'
+          index_path = tmp / 'ProfileSources/S1.42AJ-DIAG1/FILE_INDEX.json'
+          build_result = tmp / 'BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/BUILD_RESULT.json'
+          static_result = tmp / 'BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json'
+
+          def sha_bytes(b): return hashlib.sha256(b).hexdigest()
+          def sha_file(p): return sha_bytes(p.read_bytes())
+          def members(p):
+              with zipfile.ZipFile(p) as z:
+                  names = z.namelist()
+                  if len(names) != len(set(names)):
+                      raise RuntimeError(f'duplicate archive members in {p}')
+                  return names, {n: z.read(n) for n in names}
+          def require(ok, msg):
+              if not ok: raise RuntimeError(msg)
+
+          require(sha_file(base) == '7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba', 'balanced AJ base SHA mismatch')
+          require(sha_file(reviewed) == '4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832', 'reviewed profile SHA mismatch')
+          require(sha_file(current) == '8c870328971521c4cfb33a4ea75b7453e6bce379219c48086453ad8db962a609', 'unexpected canonical rebuild SHA before replacement')
+
+          base_names, base_map = members(base)
+          review_names, review_map = members(reviewed)
+          current_names, current_map = members(current)
+          diag = 'BepInEx/plugins/S142AJDiag1OfficeSelection/S142AJDiag1OfficeSelection.dll'
+          normalizer = 'BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll'
+
+          require(len(review_names) == 336, 'reviewed member count mismatch')
+          require(review_names == current_names, 'canonical/review member order mismatch')
+          rebuild_diffs = [n for n in review_names if review_map[n] != current_map[n]]
+          require(rebuild_diffs == [diag], f'unexpected canonical/review byte differences: {rebuild_diffs!r}')
+          require(sha_bytes(review_map[diag]) == '9a477c18e5b8cf38922fa755b6bab101babc2f987e858567172b9be9c2c05fad', 'reviewed diagnostic DLL SHA mismatch')
+          require(sha_bytes(current_map[diag]) == '7deab805984bd89a6aef79507dcbdb566f0a2993a5be21605d7def6513422235', 'canonical rebuild DLL SHA mismatch')
+          require(sha_bytes(review_map[normalizer]) == '901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06', 'accepted normalizer SHA mismatch')
+
+          require(set(review_names) - set(base_names) == {diag}, 'reviewed added-member delta mismatch')
+          require(set(base_names) - set(review_names) == set(), 'reviewed profile removed members')
+          changed = [n for n in base_names if base_map[n] != review_map[n]]
+          require(changed == ['export.r2x'], f'reviewed changed-member delta mismatch: {changed!r}')
+
+          def stable_export(data):
+              text = data.decode('utf-8-sig').replace('\r\n','\n').replace('\r','\n')
+              require(len(re.findall(r'(?m)^profileName:.*$', text)) == 1, 'profileName count mismatch')
+              return re.sub(r'(?m)^profileName:.*$', 'profileName: <identity>', text).rstrip('\n')
+          require(stable_export(base_map['export.r2x']) == stable_export(review_map['export.r2x']), 'package/export drift')
+          require('LethalLevelLoaderUpdated' not in review_map['export.r2x'].decode('utf-8-sig'), 'forbidden LLL fork')
+
+          index = json.loads(index_path.read_text(encoding='utf-8'))
+          require(len(index) == len(review_names), 'FILE_INDEX entry count mismatch')
+          for i, rec in enumerate(index):
+              require(rec['index'] == i and rec['path'] == review_names[i], f'FILE_INDEX order mismatch at {i}')
+              data = review_map[review_names[i]]
+              require(rec['size'] == len(data), f'FILE_INDEX size mismatch: {review_names[i]}')
+              require(rec['sha256'] == sha_bytes(data), f'FILE_INDEX SHA mismatch: {review_names[i]}')
+
+          br = json.loads(build_result.read_text(encoding='utf-8'))
+          require(br['build_id'] == 'S1.42AJ-DIAG1', 'BUILD_RESULT build_id mismatch')
+          require(br['output_sha256'] == sha_file(reviewed), 'BUILD_RESULT profile binding mismatch')
+          require(br['changed_existing_members'] == ['export.r2x'] and br['added_members'] == [diag], 'BUILD_RESULT delta mismatch')
+          sv = json.loads(static_result.read_text(encoding='utf-8'))
+          require(sv['status'] == 'STATIC_PASS_NOT_RUNTIME_READY', 'STATIC_VERIFICATION status mismatch')
+          require(sv['output_sha256'] == sha_file(reviewed), 'STATIC_VERIFICATION profile binding mismatch')
+          require(sv['diagnostic_dll_sha256'] == sha_bytes(review_map[diag]), 'STATIC_VERIFICATION DLL binding mismatch')
+          require(sv['normalizer_sha256'] == sha_bytes(review_map[normalizer]), 'STATIC_VERIFICATION normalizer binding mismatch')
+          print('PASS: exact reviewed artifact, archive delta, full FILE_INDEX and rebuild-isolation contracts verified.')
+          PY
+
+      - name: Publish exact reviewed bytes and restore disabled build controller
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC="$RUNNER_TEMP/s142aj-diag1-reviewed/extracted"
+          cp "$SRC/Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z" "Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z"
+          cp -a "$SRC/ProfileSources/S1.42AJ-DIAG1/." "ProfileSources/S1.42AJ-DIAG1/"
+          mkdir -p BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE
+          cp "$SRC/BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/BUILD_RESULT.json" BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/BUILD_RESULT.json
+          cp "$SRC/BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/BUILD_RESULT.md" BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/BUILD_RESULT.md
+          cp "$SRC/BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json" BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json
+          cp "$SRC/BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/BUILD_RESULT.json" Current/AUTO_BUILD_RESULT.json
+          cp "$SRC/BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/BUILD_RESULT.md" Current/AUTO_BUILD_RESULT.md
+          cat > BuildSpecs/current.json <<'JSON'
+          {
+            "enabled": false,
+            "build_id": "IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION",
+            "base_profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
+            "base_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
+            "output_profile": "Profiles/DO_NOT_BUILD.r2z",
+            "profile_name": "DO_NOT_BUILD",
+            "overwrite": false,
+            "mod_state_changes": [],
+            "mod_additions": [],
+            "mod_removals": [],
+            "config_patches": [],
+            "local_plugin_builds": [],
+            "text_assertions": []
+          }
+          JSON
+          cat > BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md <<'MD'
+          # S1.42AJ-DIAG1 reviewed-artifact publication verification
+
+          - Source PR: #111, reviewed head `d3155d86c89595cc9ab4b4cda5d8535ec138eae2`.
+          - Static/build gate: run `35261773897`, artifact `S1.42AJ-DIAG1-review`, artifact ID `10513954928`.
+          - Artifact ZIP SHA-256: `c9963e7155515426cdeb02b110373ee4252e4f807a7c20430b2c43747e75d7ce`.
+          - Published profile SHA-256: `4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832`.
+          - Published DIAG1 DLL SHA-256: `9a477c18e5b8cf38922fa755b6bab101babc2f987e858567172b9be9c2c05fad`.
+          - Accepted normalizer SHA-256: `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`.
+          - Canonical rebuild run `35264134978` succeeded but produced profile `8c870328971521c4cfb33a4ea75b7453e6bce379219c48086453ad8db962a609` because its freshly compiled diagnostic DLL was `7deab805984bd89a6aef79507dcbdb566f0a2993a5be21605d7def6513422235` instead of the exact reviewed DLL bytes.
+          - Member-by-member comparison proved all 336 member names/order identical and 335/336 member payloads byte-identical; the diagnostic DLL was the sole byte difference.
+          - Publication therefore uses the exact already-reviewed CI artifact rather than accepting a non-byte-identical recompilation.
+          - The reviewed artifact was revalidated during publication against exact balanced S1.42AJ, exact archive delta, all 336 FILE_INDEX records, diagnostic DLL identity and accepted normalizer identity.
+          - `BuildSpecs/current.json` is returned to the pre-publication disabled S1.42AJ idle state. `Current/CURRENT_STATE.json` and `RuntimeInbox/ACTIVE_BUILD.txt` are intentionally unchanged; runtime/lifecycle preparation is a separate atomic step.
+
+          Status remains `STATIC_PASS_NOT_RUNTIME_READY`: runtime caller identification, Harmony execution ordering and LC Office generation/gameplay coverage are not yet proven.
+          MD
+          test "$(tr -d '\r\n' < RuntimeInbox/ACTIVE_BUILD.txt)" = "S1.42AJ"
+
+      - name: Remove one-shot publisher and verify exact publication diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/s142aj-diag1-publish-reviewed.yml
+          python - <<'PY'
+          import hashlib, json, subprocess, zipfile
+          from pathlib import Path
+          expected = {
+              '.github/workflows/s142aj-diag1-publish-reviewed.yml',
+              'BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/BUILD_RESULT.json',
+              'BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/BUILD_RESULT.md',
+              'BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json',
+              'BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md',
+              'BuildSpecs/current.json',
+              'Current/AUTO_BUILD_RESULT.json',
+              'Current/AUTO_BUILD_RESULT.md',
+              'ProfileSources/S1.42AJ-DIAG1/FILE_INDEX.json',
+              'Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z',
+          }
+          actual = set(subprocess.check_output(['git','diff','--name-only','HEAD'], text=True).splitlines())
+          if actual != expected:
+              raise RuntimeError(f'unexpected publication diff: {sorted(actual)}')
+          profile = Path('Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z')
+          sha = hashlib.sha256(profile.read_bytes()).hexdigest()
+          if sha != '4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832':
+              raise RuntimeError(f'published profile SHA mismatch: {sha}')
+          auto = json.loads(Path('Current/AUTO_BUILD_RESULT.json').read_text(encoding='utf-8'))
+          if auto.get('output_sha256') != sha:
+              raise RuntimeError('AUTO_BUILD_RESULT does not bind published profile')
+          ctl = json.loads(Path('BuildSpecs/current.json').read_text(encoding='utf-8'))
+          if ctl.get('enabled') is not False or ctl.get('build_id') != 'IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION':
+              raise RuntimeError('build controller not restored to exact disabled S1.42AJ idle state')
+          PY
+          git diff --check
+
+      - name: Commit exact reviewed publication atomically
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Publish exact reviewed S1.42AJ-DIAG1 artifact'
+          git push origin HEAD:main
