@@ -61,8 +61,8 @@ jobs:
 
           lifecycle = root / 'Knowledge/CURRENT_LIFECYCLE.md'
           text = lifecycle.read_text(encoding='utf-8')
-          old_evidence = '**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`, `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`'
-          new_evidence = old_evidence + ', `RuntimeEvidence/S1.42AJ/20260917T171109Z/`'
+          old_evidence = '**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`, `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`  '
+          new_evidence = '**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`, `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `RuntimeEvidence/S1.42AJ/20260917T171109Z/`'
           if old_evidence not in text:
               raise SystemExit('CURRENT_LIFECYCLE evidence anchor missing')
           text = text.replace(old_evidence, new_evidence, 1)
