@@ -13,7 +13,7 @@ GALE_KNOWLEDGE = ROOT / "Knowledge/GALE_PROFILE_WORKFLOW.md"
 LIFECYCLE = ROOT / "Knowledge/CURRENT_LIFECYCLE.md"
 
 BASE_REVISION = "2026-09-05-import-uia-v2.2-materialization-proof"
-V24_REVISION = "2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof"
+V24_REVISION = "2026-09-17-import-uia-v2.4-diagnostic-runtime-target-materialization-proof"
 BASE_SIGNATURE = f"$helperRevision='{BASE_REVISION}'"
 V24_SIGNATURE = f"$helperRevision='{V24_REVISION}'"
 
@@ -47,6 +47,7 @@ def main() -> int:
 
     zip_function = extract_here_string(wrapper, "newZipTextFunction")
     materialization_functions = extract_here_string(wrapper, "newMaterializationFunctions")
+    target_resolution = extract_here_string(wrapper, "newTargetResolutionBlock")
 
     direct_reader = "[System.IO.StreamReader]::new($stream,[System.Text.Encoding]::UTF8,$true,4096)"
     if direct_reader not in zip_function:
@@ -72,6 +73,32 @@ def main() -> int:
     if "$ExpectedExportText.IndexOf($basePackage" in materialization_functions:
         fail("base SoundAPI drift detection uses an unsafe substring test; LC package name has the base name as a prefix")
 
+    required_target_tokens = (
+        "if(([string]$build.build_id) -eq $active)",
+        "Current/CURRENT_STATE.json?cb=$cache",
+        "$state.controllers.runtime_active_build",
+        "$state.selected_scope.diagnostic_revision",
+        "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+        "$diag.base_build_id",
+        "$diag.base_profile",
+        "$diag.base_sha256",
+        "$diag.build_result",
+        "$diagBuild.build_id",
+        "$diagBuild.output_profile",
+        "$diagBuild.output_sha256",
+        "$diagBuild.profile_name",
+        "Diagnostic build_result profile/SHA disagree with CURRENT_STATE diagnostic_revision",
+        "Diagnostic build_result base profile/SHA disagree with CURRENT_STATE diagnostic_revision",
+    )
+    for token in required_target_tokens:
+        if token not in target_resolution:
+            fail(f"v2.4 diagnostic runtime-target contract missing token: {token}")
+
+    if "else {" not in target_resolution:
+        fail("v2.4 target resolver has no explicit diagnostic-only mismatch branch")
+    if "AUTO_BUILD_RESULT gehört zu" in target_resolution:
+        fail("legacy unconditional ACTIVE_BUILD/AUTO_BUILD_RESULT mismatch abort remains in target resolver")
+
     zip_start = base.find("function Get-ZipEntryText {")
     materialization_start = base.find("function Get-RequiredCriticalMaterializationPaths {")
     wait_start = base.find("function Wait-ImportedProfileEvidence {")
@@ -96,11 +123,29 @@ def main() -> int:
     if patched.count("function Get-RequiredCriticalMaterializationPaths {") != 1:
         fail("simulated v2.4 helper has an ambiguous materialization-contract definition")
 
+    target_marker = '$active=((Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/RuntimeInbox/ACTIVE_BUILD.txt?cb=$cache" -Headers $headers).Trim())'
+    profile_file_marker = "$profileFile=[IO.Path]::GetFileName($profilePath)"
+    target_start = patched.find(target_marker)
+    profile_file_start = patched.find(profile_file_marker, target_start)
+    if target_start < 0 or profile_file_start <= target_start:
+        fail("simulated v2.4 runtime-target patch boundaries drifted")
+    patched = patched[:target_start] + target_resolution + "\n\n" + patched[profile_file_start:]
+
+    if "AUTO_BUILD_RESULT gehört zu" in patched:
+        fail("simulated v2.4 helper retains the legacy unconditional runtime-target mismatch abort")
+    if patched.count("Current/CURRENT_STATE.json?cb=$cache") != 1:
+        fail("simulated v2.4 helper does not contain exactly one CURRENT_STATE diagnostic resolver")
+    if patched.count("PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED") != 1:
+        fail("simulated v2.4 helper diagnostic status guard is missing or ambiguous")
+
     for doc_name, doc in (("Knowledge/GALE_PROFILE_WORKFLOW.md", gale), ("Knowledge/CURRENT_LIFECYCLE.md", lifecycle)):
         if "RuntimeTools/ReplaceActiveGaleProfileV24.ps1" not in doc or V24_REVISION not in doc:
-            fail(f"{doc_name} does not route the current Gale workflow to v2.4")
+            fail(f"{doc_name} does not route the current Gale workflow to the diagnostic-aware v2.4 revision")
 
-    print("PASS: Gale import helper v2.4 fail-closed regression contract validated")
+    if "diagnostic_revision" not in gale or "AUTO_BUILD_RESULT" not in gale or "CURRENT_STATE" not in gale:
+        fail("Gale workflow authority does not document the fail-closed diagnostic runtime-target exception")
+
+    print("PASS: Gale import helper v2.4 diagnostic-target + fail-closed materialization regression contract validated")
     return 0
 
 
