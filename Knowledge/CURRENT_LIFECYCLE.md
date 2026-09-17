@@ -5,7 +5,7 @@
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `RuntimeEvidence/S1.42AI/20260916T180452Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `BuildSpecs/S1.42AI_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md`, `Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md`  
-**Last-Validated:** 2026-09-16
+**Last-Validated:** 2026-09-17
 
 ## Accepted gameplay baseline
 
@@ -36,16 +36,23 @@ The observed ShyGuy `InvalidOperationException` and disconnect/teardown Addition
 - Latest built artifact: **S1.42AI**.
 - Active runtime candidate: **none**.
 - Runtime test outstanding: **no**.
-- `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI_ACCEPTANCE_AWAITING_NEXT_SCOPE`.
+- Selected successor scope: **LC Office V81 Integration — READY FOR SUCCESSOR PREPARATION / NOT ARMED**.
+- `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI_ACCEPTANCE_PREP_LC_OFFICE_V81_SUCCESSOR`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains the runtime-evidence attribution build and does not arm a successor.
 - No successor build is armed.
+
+## Selected successor scope
+
+LC Office V81 Integration is explicitly selected under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md` and `Knowledge/INTERIORS_AND_LLL.md`. Selection does not assign a successor build ID, enable `BuildSpecs/current.json`, alter `RuntimeInbox/ACTIVE_BUILD.txt`, or create a runtime test.
+
+The initial integration remains compatibility-first: preserve modern `IAmBatby-LethalLevelLoader` ownership and the accepted post-viability normalization to effective rarity `100`; do not combine universal LC Office moon availability, Wesley changes, CullFactory work, or other deferred scopes into this successor.
 
 ## Permanent Gale profile replacement/import route
 
 For any future runtime candidate that is explicitly armed, the canonical Gale profile replacement/import workflow remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, with the permanent fail-closed helper revision contract `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. The detailed workflow authority is `Knowledge/GALE_PROFILE_WORKFLOW.md`.
 
-The current S1.42AI acceptance state has no runtime test outstanding, so this permanent route does not itself instruct an import, arm a candidate, or require another gameplay run. It becomes operational only after exactly one future candidate is explicitly selected and armed by the repository lifecycle.
+The current S1.42AI state has no runtime test outstanding, so this permanent route does not itself instruct an import, arm a candidate, or require another gameplay run. It becomes operational only after a future candidate is explicitly prepared and armed by the repository lifecycle.
 
 ## Exact next project action
 
-Select exactly one remaining deferred independent scope from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md` before preparing or arming any successor. Do not mix unrelated deferred scopes.
+Perform the focused LC Office V81 pre-build package/dependency verification against accepted S1.42AI and update the selected plan as needed; then prepare and arm exactly one LC Office successor. Do not arm a runtime test yet and do not combine universal interior availability or unrelated deferred scopes.
