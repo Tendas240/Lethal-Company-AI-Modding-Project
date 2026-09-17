@@ -1,0 +1,97 @@
+name: Finalize S1.42AJ runtime state wording
+
+on:
+  push:
+    branches:
+      - activate/s142aj-runtime
+    paths:
+      - '.github/workflows/s142aj-runtime-state-postfix.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: s142aj-runtime-state-postfix
+  cancel-in-progress: false
+
+jobs:
+  postfix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: activate/s142aj-runtime
+          fetch-depth: 0
+          lfs: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Repair exact stale finding
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('Current/CURRENT_STATE.json')
+          s=json.loads(p.read_text(encoding='utf-8'))
+          assert s['accepted_baseline']['build_id']=='S1.42AI'
+          assert s['active_candidate']['build_id']=='S1.42AJ'
+          assert s['runtime_test_outstanding'] is True
+          assert s['controllers']['runtime_active_build']=='S1.42AJ'
+          old='S1.42AJ was built from exact accepted S1.42AI and passed the static gate. The exported delta is exactly the three LC Office additions plus DungeonGenerationPlus 1.5.0 -> 1.5.1; every other package block and every non-export profile member is unchanged, IAmBatby LLL 1.7.12 remains the sole LLL owner, the deprecated fork is absent, and the accepted Interior Weight Normalization DLL is byte-identical. No runtime candidate/test is armed yet.'
+          new='S1.42AJ was built from exact accepted S1.42AI and passed the static gate. The exported delta is exactly the three LC Office additions plus DungeonGenerationPlus 1.5.0 -> 1.5.1; every other package block and every non-export profile member is unchanged, IAmBatby LLL 1.7.12 remains the sole LLL owner, the deprecated fork is absent, and the accepted Interior Weight Normalization DLL is byte-identical. S1.42AJ is now the sole active runtime candidate and full-normal runtime validation is outstanding.'
+          assert s['selected_scope']['finding']==old
+          s['selected_scope']['finding']=new
+          p.write_text(json.dumps(s, indent=2, ensure_ascii=False)+'\n',encoding='utf-8')
+          PY
+          rm .github/workflows/s142aj-runtime-state-postfix.yml
+
+      - name: Render generated current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Validate corrected activated state
+        shell: bash
+        run: |
+          set -euo pipefail
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/state_neutral_authority_validator.py
+          python RepositoryTools/state_neutral_authority_validator.py --self-test
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/handover_workflow_validator.py
+          python RepositoryTools/segmented_execution_policy_validator.py
+          python RepositoryTools/artifact_byte_integrity_validator.py
+          python RepositoryTools/repository_integrity_guard.py
+          python RepositoryTools/gale_import_helper_validator.py
+          python RepositoryTools/runtime_sha_provenance_validator.py
+          python RepositoryTools/phase_checkpoint_validator.py
+          python RepositoryTools/overhaul_contract_validator.py
+          python RepositoryTools/answerability_regression.py
+          python RepositoryTools/cold_history_storage_validator.py
+          python RepositoryTools/validator_selftest.py
+          test "$(cat RuntimeInbox/ACTIVE_BUILD.txt)" = 'S1.42AJ'
+          python - <<'PY'
+          import json
+          s=json.load(open('Current/CURRENT_STATE.json', encoding='utf-8'))
+          assert s['accepted_baseline']['build_id']=='S1.42AI'
+          assert s['active_candidate']['build_id']=='S1.42AJ'
+          assert s['runtime_test_outstanding'] is True
+          assert s['controllers']['runtime_active_build']=='S1.42AJ'
+          assert 'sole active runtime candidate' in s['selected_scope']['finding']
+          assert 'No runtime candidate/test is armed yet.' not in s['selected_scope']['finding']
+          PY
+
+      - name: Commit corrected state
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          test ! -e .github/workflows/s142aj-runtime-state-postfix.yml
+          git commit -m 'Correct S1.42AJ active runtime state finding'
+          git push origin HEAD:activate/s142aj-runtime
