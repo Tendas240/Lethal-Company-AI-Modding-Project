@@ -1,7 +1,7 @@
 $repo='Tendas240/Lethal-Company-AI-Modding-Project'
 $headers=@{'User-Agent'='LC-Profile-Updater';'Cache-Control'='no-cache'}
 $expectedBaseRevision='$helperRevision=''2026-09-05-import-uia-v2.2-materialization-proof'''
-$replacementRevision='$helperRevision=''2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof'''
+$replacementRevision='$helperRevision=''2026-09-17-import-uia-v2.4-diagnostic-runtime-target-materialization-proof'''
 
 $cache=[DateTime]::UtcNow.Ticks
 $baseUrl="https://raw.githubusercontent.com/$repo/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb=$cache"
@@ -144,6 +144,62 @@ function Get-MissingCriticalImportedFiles {
 }
 '@
 
+$newTargetResolutionBlock=@'
+$active=((Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/RuntimeInbox/ACTIVE_BUILD.txt?cb=$cache" -Headers $headers).Trim())
+if(!$active){throw 'RuntimeInbox/ACTIVE_BUILD.txt ist leer'}
+Write-Host "`nAktiver Repository-Build: $active" -ForegroundColor Cyan
+
+$cache=[DateTime]::UtcNow.Ticks
+$build=Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/Current/AUTO_BUILD_RESULT.json?cb=$cache" -Headers $headers
+if(([string]$build.build_id) -eq $active){
+    $profilePath=[string]$build.output_profile
+    $expected=([string]$build.output_sha256).ToLowerInvariant()
+    $expectedProfileName=[string]$build.profile_name
+    if(!$expectedProfileName){$expectedProfileName=[IO.Path]::GetFileNameWithoutExtension($profilePath)}
+    if(!$profilePath -or !$expected -or !$expectedProfileName){throw 'AUTO_BUILD_RESULT enthält keinen gültigen Profilpfad, Profilnamen oder SHA-256'}
+}
+else {
+    $cache=[DateTime]::UtcNow.Ticks
+    $state=Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/Current/CURRENT_STATE.json?cb=$cache" -Headers $headers
+    if(([string]$state.controllers.runtime_active_build) -ne $active){
+        throw "ACTIVE_BUILD '$active' stimmt weder mit AUTO_BUILD_RESULT '$($build.build_id)' noch mit CURRENT_STATE.controllers.runtime_active_build überein"
+    }
+    $diag=$state.selected_scope.diagnostic_revision
+    if($null -eq $diag -or ([string]$diag.build_id) -ne $active){
+        throw "ACTIVE_BUILD '$active' ist kein explizit gebundener CURRENT_STATE diagnostic_revision target"
+    }
+    if(([string]$diag.status) -ne 'PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED'){
+        throw "Diagnostic runtime target '$active' hat keinen freigegebenen aktiven Status: '$($diag.status)'"
+    }
+    if(([string]$diag.base_build_id) -ne ([string]$build.build_id)){
+        throw "Diagnostic runtime target '$active' basiert nicht auf AUTO_BUILD_RESULT '$($build.build_id)'"
+    }
+    if(([string]$diag.base_profile) -ne ([string]$build.output_profile) -or ([string]$diag.base_sha256).ToLowerInvariant() -ne ([string]$build.output_sha256).ToLowerInvariant()){
+        throw "Diagnostic runtime target '$active' base profile/SHA disagree with AUTO_BUILD_RESULT"
+    }
+
+    $buildResultPath=[string]$diag.build_result
+    if([string]::IsNullOrWhiteSpace($buildResultPath)){throw "Diagnostic runtime target '$active' hat keinen build_result authority path"}
+    $encodedBuildResultPath=[Uri]::EscapeUriString($buildResultPath)
+    $cache=[DateTime]::UtcNow.Ticks
+    $diagBuild=Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/$encodedBuildResultPath?cb=$cache" -Headers $headers
+    if(([string]$diagBuild.build_id) -ne $active){throw "Diagnostic build_result gehört zu '$($diagBuild.build_id)', erwartet '$active'"}
+    if(([string]$diagBuild.output_profile) -ne ([string]$diag.profile) -or ([string]$diagBuild.output_sha256).ToLowerInvariant() -ne ([string]$diag.sha256).ToLowerInvariant()){
+        throw "Diagnostic build_result profile/SHA disagree with CURRENT_STATE diagnostic_revision"
+    }
+    if(([string]$diagBuild.base_profile) -ne ([string]$diag.base_profile) -or ([string]$diagBuild.base_sha256).ToLowerInvariant() -ne ([string]$diag.base_sha256).ToLowerInvariant()){
+        throw "Diagnostic build_result base profile/SHA disagree with CURRENT_STATE diagnostic_revision"
+    }
+
+    $profilePath=[string]$diagBuild.output_profile
+    $expected=([string]$diagBuild.output_sha256).ToLowerInvariant()
+    $expectedProfileName=[string]$diagBuild.profile_name
+    if(!$expectedProfileName){$expectedProfileName=[IO.Path]::GetFileNameWithoutExtension($profilePath)}
+    if(!$profilePath -or !$expected -or !$expectedProfileName){throw 'Diagnostic build_result enthält keinen gültigen Profilpfad, Profilnamen oder SHA-256'}
+    Write-Host "Expliziter diagnostischer Runtime-Target wurde über CURRENT_STATE + build_result fail-closed verifiziert." -ForegroundColor DarkGray
+}
+'@
+
 $patched=$source.Substring(0,$zipTextStart)+$newZipTextFunction+"`r`n`r`n"+$newMaterializationFunctions+"`r`n`r`n"+$source.Substring($waitStart)
 $patched=$patched.Replace($expectedBaseRevision,$replacementRevision)
 if($patched.IndexOf($replacementRevision,[System.StringComparison]::Ordinal) -lt 0){throw 'Failed to stamp v2.4 helper revision'}
@@ -151,5 +207,17 @@ if($patched.IndexOf('New-Object System.IO.StreamReader -ArgumentList',[System.St
     throw 'Refusing to launch: legacy StreamReader constructor path survived the v2.4 patch'
 }
 
-Write-Host 'Launching canonical Gale importer with v2.4 fail-closed export-read and recursive package-materialization contract...' -ForegroundColor Cyan
+$targetStartMarker='$active=((Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/RuntimeInbox/ACTIVE_BUILD.txt?cb=$cache" -Headers $headers).Trim())'
+$profileFileMarker='$profileFile=[IO.Path]::GetFileName($profilePath)'
+$targetStart=$patched.IndexOf($targetStartMarker,[System.StringComparison]::Ordinal)
+$profileFileStart=$patched.IndexOf($profileFileMarker,$targetStart,[System.StringComparison]::Ordinal)
+if($targetStart -lt 0 -or $profileFileStart -le $targetStart){
+    throw 'Refusing to patch Gale helper: v2.2 runtime-target resolution boundaries were not found exactly'
+}
+$patched=$patched.Substring(0,$targetStart)+$newTargetResolutionBlock+"`r`n`r`n"+$patched.Substring($profileFileStart)
+if($patched.IndexOf("AUTO_BUILD_RESULT gehört zu",[System.StringComparison]::Ordinal) -ge 0){
+    throw 'Refusing to launch: legacy unconditional ACTIVE_BUILD/AUTO_BUILD_RESULT mismatch abort survived the v2.4 patch'
+}
+
+Write-Host 'Launching canonical Gale importer with v2.4 fail-closed diagnostic-target, export-read and recursive package-materialization contract...' -ForegroundColor Cyan
 Invoke-Expression $patched
