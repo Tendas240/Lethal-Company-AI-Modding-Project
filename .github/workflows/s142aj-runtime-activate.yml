@@ -40,6 +40,7 @@ jobs:
           mapfile -t changed < <(git diff --name-only "$BASE" HEAD | sort)
           expected=(
             '.github/workflows/s142aj-runtime-activate.yml'
+            'BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md'
             'RepositoryTools/activate_s142aj_runtime.py'
           )
           if ! diff -u <(printf '%s\n' "${expected[@]}" | sort) <(printf '%s\n' "${changed[@]}"); then
