@@ -60,7 +60,20 @@ jobs:
           test "$(jq -r '.head_sha' <<<"$run_json")" = cbf25e05a75b8d6f3153cfa3a6bca0df396ad677
 
       - name: Apply exact coordinated S1.42AJ activation
-        run: python RepositoryTools/activate_s142aj_runtime.py
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('RepositoryTools/activate_s142aj_runtime.py')
+          s=p.read_text(encoding='utf-8')
+          old='if "ready for runtime arming" not in state.get("next_action", "").lower():'
+          new='if "arm s1.42aj as the sole runtime candidate" not in state.get("next_action", "").lower():'
+          if old not in s:
+              raise SystemExit('expected transient next-action guard not found')
+          p.write_text(s.replace(old,new,1),encoding='utf-8')
+          PY
+          python RepositoryTools/activate_s142aj_runtime.py
 
       - name: Remove one-shot activation tooling
         shell: bash
