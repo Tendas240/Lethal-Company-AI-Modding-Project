@@ -39,8 +39,13 @@ print(json.dumps(record, indent=2))
 lines = source.splitlines()
 indices = set()
 for i, line in enumerate(lines):
-    if any(term in line for term in ("GetValidExtendedDungeonFlows(", "GetRandomDungeonFlow", "NumberlessPlanetName", "class ExtendedDungeonFlowWithRarity", "DungeonFlow DungeonFlow", "string DungeonName")):
-        indices.update(range(max(0, i - 8), min(len(lines), i + 95)))
+    if any(term in line for term in ("GetValidExtendedDungeonFlows(", "class ExtendedDungeonFlowWithRarity", "DungeonFlow DungeonFlow", "string DungeonName")):
+        indices.update(range(max(0, i - 65), min(len(lines), i + 95)))
 print("=== BOUNDED CONTRACT EXCERPTS ===")
 for i in sorted(indices):
     print(f"{i+1}: {lines[i]}")
+
+print("=== DECLARATIONS ===")
+for i, line in enumerate(lines):
+    if re.search(r"\bclass \w+", line) or ("DungeonFlow" in line and re.search(r"public |internal |private ", line)):
+        print(f"{i+1}: {line}")
