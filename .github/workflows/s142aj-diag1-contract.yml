@@ -1,0 +1,29 @@
+name: S1.42AJ DIAG1 exact selection contract
+on:
+  push:
+    branches: [diag/s142aj-diag1-office-selection]
+    paths:
+      - 'AnalysisTools/inspect_s142aj_diag1_contract.py'
+      - '.github/workflows/s142aj-diag1-contract.yml'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Install pinned decompiler
+        run: dotnet tool install --global ilspycmd --version 11.0.0.9375
+      - name: Capture exact LLL selection contract
+        run: python AnalysisTools/inspect_s142aj_diag1_contract.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s142aj-diag1-contract
+          path: s142aj-diag1-contract-output/
+          if-no-files-found: error
+          retention-days: 90
