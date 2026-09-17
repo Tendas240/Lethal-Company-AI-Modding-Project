@@ -36,11 +36,11 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`)
 - Guarded build base: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z` / `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG1`
 
 ## Exact next action
 
-Perform the separate atomic runtime/lifecycle activation of the already published S1.42AJ-DIAG1 diagnostic artifact without accepting or replacing balanced S1.42AJ. Update the canonical lifecycle/controllers and RuntimeInbox/ACTIVE_BUILD.txt consistently to attribute the diagnostic runtime test to S1.42AJ-DIAG1, verify the resulting exact-head CI, then provide the repository-driven Gale replacement/import one-liner and the exact S1.42AJ-DIAG1 one-line runtime-log uploader in the same response as the test instructions. Runtime-test only the missing LC Office generation/traversal/elevator/power/enemy-navigation/scrap coverage on Offense after normal viability; preserve the existing unforced S1.42AJ viability/weight proof.
+Runtime-test the activated S1.42AJ-DIAG1 diagnostic artifact on Offense for only the missing LC Office generation coverage: confirm LC Office actually generates after normal viability, validate traversal/entrance/exit, elevator and breaker/power where available, enemy navigation, scrap generation, and absence of a new critical regression/error flood. Preserve the existing unforced S1.42AJ viability/weight proof and do not treat diagnostic force-selection as balanced selection semantics. Runtime evidence must be uploaded under S1.42AJ-DIAG1 via RuntimeInbox/ACTIVE_BUILD.txt.
 
 A runtime test is pending for S1.42AJ. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
