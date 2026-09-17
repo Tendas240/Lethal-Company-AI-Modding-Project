@@ -11,6 +11,8 @@
 - Publication therefore uses the exact already-reviewed CI artifact rather than accepting a non-byte-identical recompilation.
 - The reviewed artifact was revalidated during publication against exact balanced S1.42AJ, exact archive delta, all 336 FILE_INDEX records, diagnostic DLL identity and accepted normalizer identity.
 - Atomic exact-artifact publication commit: `71ac6fad7eef3eb5e7d84b81e88a553d1032fbdf`; its tree contains the exact reviewed profile/evidence bytes and the restored disabled build controller.
+- Exact-head Knowledge Architecture run `35264826295` correctly rejected the first publication renderer state because `Current/AUTO_BUILD_RESULT.*` had been changed to DIAG1 while `Current/CURRENT_STATE.json` intentionally still defines balanced S1.42AJ as the latest built artifact. This was a publication/lifecycle-boundary error, not an artifact-byte failure.
+- Commit `3273e2b1cfdb2af5e0cc19c1f8f3a2535cb081f8` atomically restored `Current/AUTO_BUILD_RESULT.json` and `.md` to the exact pre-publication balanced S1.42AJ renderer bytes. DIAG1 build results remain durably published only under `BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/`, matching the separate lifecycle-transition contract.
 - `BuildSpecs/current.json` is returned to the pre-publication disabled S1.42AJ idle state. `Current/CURRENT_STATE.json` and `RuntimeInbox/ACTIVE_BUILD.txt` are intentionally unchanged; runtime/lifecycle preparation is a separate atomic step.
 
 Status remains `STATIC_PASS_NOT_RUNTIME_READY`: runtime caller identification, Harmony execution ordering and LC Office generation/gameplay coverage are not yet proven.
