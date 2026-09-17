@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "date": "2026-09-16",
+  "date": "2026-09-17",
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AI",
   "active_candidate_build_id": null,
-  "latest_built_artifact_id": "S1.42AI",
+  "latest_built_artifact_id": "S1.42AJ",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
     {
@@ -647,6 +647,23 @@
       "project_status": "Current/Projektstatus_S1.42AI-DIAG1R3_RUNTIME_PASS.json",
       "runtime_evidence": "RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z/",
       "runtime_log_sha256": "37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084"
+    },
+    {
+      "id": "S1.42AJ",
+      "title": "LC Office V81 Integration",
+      "status": "static-validated-not-runtime-armed",
+      "parent": "S1.42AI",
+      "profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
+      "sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
+      "build_plan": "BuildSpecs/S1.42AJ_PLAN.md",
+      "candidate_record": "Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md",
+      "decision_record": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+      "project_status": "Current/Projektstatus_S1.42AJ_STATIC_VALIDATED.json",
+      "workflow_run": 35222275686,
+      "build_commit": "7fbaae92523637ae3fec6c1e242ec2538918e7b7",
+      "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "compatibility-first LC Office V81 integration; exact package-only delta statically validated with modern IAmBatby LLL ownership and accepted Interior Weight Normalization preserved; runtime not yet armed"
     }
   ],
   "feature_index": {
@@ -676,7 +693,8 @@
     "BCMER_ShyGuy_DIAG1_isolation": "S1.42AI-DIAG1",
     "BCMER_ShyGuy_DIAG1_owner_type_resolution_repair": "S1.42AI-DIAG1R1",
     "BCMER_ShyGuy_DIAG1_endless_elevator_applicability_repair": "S1.42AI-DIAG1R2",
-    "BCMER_ShyGuy_DIAG1_exact_identity_repair": "S1.42AI-DIAG1R3"
+    "BCMER_ShyGuy_DIAG1_exact_identity_repair": "S1.42AI-DIAG1R3",
+    "LC_Office_V81_integration_static_validated": "S1.42AJ"
   },
   "lineage_invariants": [
     "S1.42C is the canonical normal enemy-spawn/config restore baseline after S1.42B diagnostic divergence.",

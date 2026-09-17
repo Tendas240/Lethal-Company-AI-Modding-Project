@@ -21,12 +21,11 @@ Runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`
 
 ## Latest built artifact
 
-**S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**
+**S1.42AJ — LC Office V81 Integration — STATIC VALIDATED NOT RUNTIME ARMED**
 
-Profile: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`  
-SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`  
-Acceptance: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
-Candidate record: `Current/143_S1.42AI_BUILD_CANDIDATE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
+Profile: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z`  
+SHA-256: `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`  
+Candidate record: `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
@@ -35,13 +34,13 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AI_ACCEPTANCE_PREP_LC_OFFICE_V81_SUCCESSOR`)
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AJ_STATIC_VALIDATION_READY_FOR_RUNTIME_ARMING`)
 - Guarded build base: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI`
 
 ## Exact next action
 
-Read Knowledge/BUILD_AND_RUNTIME_PIPELINE.md and Current/BUILD_LINEAGE.md, determine the next successor build ID and exact BuildSpecs/current.json schema, then prepare and arm exactly one LC Office successor from exact accepted S1.42AI. Do not arm a runtime test until the built candidate passes static validation, and do not combine universal interior availability or unrelated deferred scopes.
+Arm S1.42AJ as the sole runtime candidate in a separate lifecycle transition. Only that transition may move RuntimeInbox/ACTIVE_BUILD.txt to S1.42AJ and mark runtime_test_outstanding=true; the same user-facing response must include both required PowerShell one-liners.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

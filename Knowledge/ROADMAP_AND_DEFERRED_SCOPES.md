@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AI candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=none runtime_test_outstanding=false -->
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
@@ -8,15 +8,15 @@
 
 ## Current position
 
-Accepted gameplay baseline and latest built artifact: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`.
+Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Latest built artifact: **S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / RUNTIME NOT ARMED**, SHA-256 `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`.
 
-There is no active runtime candidate, no outstanding runtime test and no armed successor. The S1.42AI ShyGuy correction scope is closed by `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`.
+There is no active runtime candidate and no outstanding runtime test. S1.42AJ has passed static validation but is not runtime-armed; `RuntimeInbox/ACTIVE_BUILD.txt` therefore remains S1.42AI.
 
 ## Active scope
 
-**LC Office V81 Integration — selected / successor preparation not armed.** Canonical plan: `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
+**LC Office V81 Integration — S1.42AJ built / static validated / runtime not armed.** Canonical plan: `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; static evidence: `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
 
-The initial candidate is compatibility-first: preserve modern IAmBatby LLL ownership and accepted equal-effective-weight behavior, prove LC Office registration/viability/generation/traversal/elevator behavior, and keep universal moon availability plus all unrelated interior work outside this scope.
+S1.42AJ is compatibility-first and preserves modern IAmBatby LLL ownership plus accepted equal-effective-weight behavior. Static validation is complete; the next separate lifecycle action is runtime arming to prove LC Office registration/viability/generation/traversal/elevator behavior. Universal moon availability plus all unrelated interior work remain outside this scope.
 
 ## Remaining deferred independent scopes
 

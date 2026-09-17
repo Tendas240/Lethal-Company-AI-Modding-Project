@@ -4,16 +4,16 @@
 **Authority:** human build-history router; exact build evidence remains in candidate/acceptance/rejection/runtime records  
 **Canonical-For:** `build_lineage`  
 **Machine Mirror:** `Current/BUILD_LINEAGE.json`  
-**Last-Validated:** 2026-09-16
+**Last-Validated:** 2026-09-17
 
 ## Current lineage head
 
 - **Accepted gameplay baseline:** S1.42AI — BCMER ShyGuy Interior-Only Event Correction — **ACCEPTED FULL NORMAL STACK**.
 - **Accepted predecessor / rollback provenance:** S1.42AH — Mouth Dog Pikmin Dual Prevention.
 - **Completed diagnostic evidence:** S1.42AI-DIAG1R3 — runtime diagnostic pass / not gameplay accepted.
-- **Latest built artifact:** S1.42AI.
+- **Latest built artifact:** S1.42AJ — LC Office V81 Integration — static validated / runtime not armed.
 - **Active candidate:** none; no runtime test is outstanding.
-- **Current action:** select exactly one remaining deferred independent scope from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md` before preparing a successor.
+- **Current action:** arm S1.42AJ as the sole runtime candidate in a separate lifecycle transition; no runtime test is outstanding yet.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -69,10 +69,23 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AI-DIAG1R1 | **RUNTIME DIAGNOSTIC FAILED / REPAIR ANALYSIS REQUIRED / NOT ACCEPTED** | R1 repaired the exact `WithdrawPikminFromOnion` metadata-derived owner type and proved that repair at runtime. A later strict complex-owner target then failed because `ElevatorMod.Patches.EndlessElevator` was absent; DIAG1 invalidated and rolled back all owned Harmony hooks. Failure authority: `Current/147...`. |
 | S1.42AI-DIAG1R2 | **RUNTIME DIAGNOSTIC FAILED / REPAIR REQUIRED / NOT ACCEPTED** | R2 armed the owner/applicability repairs, then failed exact ShyGuy identity resolution because source required ordinal `Shy Guy` while runtime proved `Shy guy`; failure authority: `Current/149...`. |
 | S1.42AI-DIAG1R3 | **RUNTIME DIAGNOSTIC PASS / NOT GAMEPLAY ACCEPTED** | Exact `Shy guy` identity/isolation passed; interior visibility was observed and exterior visibility was not exercised. Diagnostic evidence only; the independent full-normal S1.42AI gate later passed. |
+| S1.42AJ | **STATIC VALIDATED / RUNTIME NOT ARMED** | Compatibility-first LC Office V81 package integration from exact accepted S1.42AI; static gate proves exact four-operation package delta, sole modern LLL ownership, no deprecated fork and no non-export profile-byte drift. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
 ## Exact current-line artifacts
+
+### S1.42AJ — LC Office V81 static-validated successor
+
+- Profile: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z`
+- SHA-256: `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`
+- Parent: S1.42AI
+- Candidate: `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`
+- Static evidence: `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`
+- Build workflow run: `35222275686`
+- Build commit: `7fbaae92523637ae3fec6c1e242ec2538918e7b7`
+- Runtime: not armed / no runtime evidence yet
+
 
 ### S1.42C — enemy-spawn restore baseline
 

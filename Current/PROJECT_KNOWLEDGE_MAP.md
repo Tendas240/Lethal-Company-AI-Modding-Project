@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AI candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=none runtime_test_outstanding=false -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -34,13 +34,13 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 ## Current lifecycle anchor
 
-Accepted gameplay baseline and latest built artifact: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Exact profile SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Acceptance authority: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`; runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`.
+Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Latest built artifact: **S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / RUNTIME NOT ARMED**, SHA-256 `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`; static evidence: `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`.
 
 S1.42AH is the accepted predecessor/rollback provenance baseline. The S1.42AI-DIAG1/R1/R2/R3 chain remains diagnostic evidence only; R3 passed exact ShyGuy identity/isolation but is not a gameplay baseline.
 
-There is no active runtime candidate and no outstanding runtime test. LC Office V81 Integration is the sole selected successor scope and remains not armed. `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI_ACCEPTANCE_PREP_LC_OFFICE_V81_SUCCESSOR`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains evidence attribution only and does not arm a successor.
+There is no active runtime candidate and no outstanding runtime test. LC Office V81 Integration remains the sole selected scope; S1.42AJ is built and static validated but runtime is not armed. `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AJ_STATIC_VALIDATION_READY_FOR_RUNTIME_ARMING`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains evidence attribution only.
 
-The focused LC Office V81 package/dependency verification against accepted S1.42AI is complete. The next action is to read the build-pipeline and build-lineage authorities, determine the next successor build ID and exact `BuildSpecs/current.json` schema, and prepare exactly one LC Office successor from S1.42AI without arming a runtime test prematurely.
+The focused package/dependency verification, S1.42AJ build and static gate are complete. The next action is to arm S1.42AJ as the sole runtime candidate in a separate lifecycle transition; only then may runtime attribution move from S1.42AI to S1.42AJ, and that same response must provide both required PowerShell one-liners.
 
 ## Authority rule
 
