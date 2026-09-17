@@ -38,9 +38,9 @@ Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Corre
 
 S1.42AH remains accepted predecessor/rollback provenance. The S1.42AI-DIAG1/R1/R2/R3 chain remains diagnostic evidence only.
 
-`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` is runtime-evidence attribution only. Full-normal LC Office runtime validation is outstanding.
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` is runtime-evidence attribution only. Full-normal LC Office runtime validation remains outstanding, but `RuntimeEvidence/S1.42AJ/20260917T171109Z/` already proves unforced Offense viability (`LC Office (65)`) and final normalized effective rarity `100`; that run selected Facility rather than LC Office.
 
-The next action is to import exact S1.42AJ via the canonical Gale v2.4 workflow, execute the LC Office acceptance gate, and upload the complete fresh S1.42AJ runtime log. Universal-moon availability and all unrelated Interior scopes remain deferred.
+The next action is to prepare a strictly diagnostic `S1.42AJ-DIAG1` from exact S1.42AJ that force-selects LC Office on Offense after normal viability determination, solely to obtain actual generation/traversal/elevator/power/enemy-navigation/scrap coverage. Balanced S1.42AJ remains unchanged and not accepted. Universal-moon availability and all unrelated Interior scopes remain deferred.
 
 ## Authority rule
 

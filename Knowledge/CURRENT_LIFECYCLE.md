@@ -4,7 +4,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`, `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`  
+**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`, `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `RuntimeEvidence/S1.42AJ/20260917T171109Z/`
 **Last-Validated:** 2026-09-17
 
 ## Accepted gameplay baseline
@@ -27,6 +27,8 @@ Static evidence: `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`
 
 The static gate proves the exact compatibility-first package delta, sole modern IAmBatby LLL ownership, absence of the deprecated fork, no unrelated package drift, and byte-identical accepted Interior Weight Normalization.
 
+The first full-normal S1.42AJ runtime evidence is ingested at `RuntimeEvidence/S1.42AJ/20260917T171109Z/` (`LogOutput.log` SHA-256 `b5267cd62a222929c117bae52371229d4fe0dcf510248ee80d1f4c1a51e67c12`). On Offense, LLL returned `LC Office (65)` and the accepted post-viability normalizer produced final `LC Office(100)`, proving default viability plus equal effective weighting. That run selected `Facility`, so actual LC Office generation/traversal/elevator/power/enemy-navigation coverage is still outstanding.
+
 ## Live execution state
 
 - Accepted baseline: **S1.42AI**.
@@ -39,7 +41,7 @@ The static gate proves the exact compatibility-first package delta, sole modern 
 
 ## Exact next project action
 
-Import S1.42AJ with the canonical Gale v2.4 replacement helper, execute the full-normal LC Office runtime acceptance gate from `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md` and `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, then upload the complete fresh S1.42AJ `LogOutput.log`. Do not accept S1.42AJ from static/build success alone.
+Prepare a strictly diagnostic **S1.42AJ-DIAG1** from exact S1.42AJ that force-selects LC Office on Offense only after normal LLL viability determination. Build/static-validate that diagnostic, then use it only to obtain the still-missing actual LC Office generation/traversal/elevator/power/enemy-navigation/scrap coverage. Preserve the ingested unforced S1.42AJ viability/weight proof, keep balanced S1.42AJ unchanged, and do not accept it until the complete runtime gate is satisfied.
 
 ## Scope boundary
 

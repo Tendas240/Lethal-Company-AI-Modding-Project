@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Import S1.42AJ with the canonical Gale v2.4 replacement helper and run the full-normal LC Office runtime acceptance gate from Current/153 and BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md. Prove startup/ownership, single registration, default LLL viability on at least one tested moon, final effective rarity 100 whenever viable, actual LC Office generation and traversal, elevator behavior, breaker/power where available, ordinary enemy navigation and scrap generation, inherited accepted contracts, and no new critical regression/error flood. Then upload the complete fresh S1.42AJ LogOutput.log. Do not accept S1.42AJ from static/build success alone.
+Prepare a strictly diagnostic S1.42AJ-DIAG1 from exact S1.42AJ to force-select LC Office on Offense only after normal LLL viability has been established, then build/static-validate that diagnostic and runtime-test the missing LC Office generation/traversal/elevator/power/enemy-navigation/scrap coverage. Keep balanced S1.42AJ unchanged and not accepted until the full acceptance gate is complete.
 
 A runtime test is pending for S1.42AJ. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
