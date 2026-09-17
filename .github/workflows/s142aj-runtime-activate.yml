@@ -75,6 +75,17 @@ jobs:
           p.write_text(s.replace(old,new,1),encoding='utf-8')
           PY
           python RepositoryTools/activate_s142aj_runtime.py
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('Knowledge/CURRENT_LIFECYCLE.md')
+          s=p.read_text(encoding='utf-8')
+          token='RuntimeTools/ReplaceActiveGaleProfileV24.ps1'
+          revision='2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof'
+          if token in s or revision in s:
+              raise SystemExit('unexpected pre-existing exact Gale v2.4 routing in rewritten lifecycle')
+          s += f'\n## Canonical Gale runtime import helper\n\nUse `{token}` at validated helper revision `{revision}` for the currently armed S1.42AJ runtime import/materialization workflow.\n'
+          p.write_text(s,encoding='utf-8')
+          PY
 
       - name: Remove one-shot activation tooling
         shell: bash
