@@ -1,0 +1,163 @@
+name: Request canonical S1.42AJ build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/s142aj-lc-office-v81-build-request.yml'
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  request:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate idle baseline and write exact S1.42AJ request
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          current_path = Path('BuildSpecs/current.json')
+          state_path = Path('Current/CURRENT_STATE.json')
+          current = json.loads(current_path.read_text(encoding='utf-8'))
+          state = json.loads(state_path.read_text(encoding='utf-8'))
+
+          base_profile = 'Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z'
+          base_sha = 'd993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2'
+          idle_id = 'IDLE_AFTER_S1.42AI_ACCEPTANCE_PREP_LC_OFFICE_V81_SUCCESSOR'
+
+          expected_idle = {
+              'enabled': False,
+              'build_id': idle_id,
+              'base_profile': base_profile,
+              'base_sha256': base_sha,
+              'output_profile': 'Profiles/DO_NOT_BUILD.r2z',
+              'profile_name': 'DO_NOT_BUILD',
+              'overwrite': False,
+              'mod_state_changes': [],
+              'mod_additions': [],
+              'mod_removals': [],
+              'config_patches': [],
+              'local_plugin_builds': [],
+              'text_assertions': [],
+          }
+          if current != expected_idle:
+              raise RuntimeError('BuildSpecs/current.json is not the exact expected S1.42AI idle LC Office preparation guard')
+
+          accepted = state.get('accepted_baseline', {})
+          selected = state.get('selected_scope', {})
+          controllers = state.get('controllers', {})
+          if accepted.get('build_id') != 'S1.42AI' or accepted.get('profile') != base_profile or accepted.get('sha256') != base_sha:
+              raise RuntimeError('CURRENT_STATE accepted baseline drifted from exact S1.42AI')
+          if selected.get('scope_id') != 'LC_OFFICE_V81_INTEGRATION' or selected.get('status') != 'READY_FOR_SUCCESSOR_PREPARATION_NOT_ARMED':
+              raise RuntimeError('LC Office is no longer the exact selected not-armed successor scope')
+          if controllers.get('build_enabled') is not False or controllers.get('build_id') != idle_id:
+              raise RuntimeError('CURRENT_STATE build controller is not at the expected idle guard')
+          if state.get('runtime_test_outstanding') is not False or state.get('active_candidate') is not None:
+              raise RuntimeError('Refusing S1.42AJ build request while another runtime candidate/test is active')
+
+          def block(name, version):
+              major, minor, patch = version.split('.')
+              return (
+                  f'- name: {name}\r\n'
+                  '  version:\r\n'
+                  f'    major: {major}\r\n'
+                  f'    minor: {minor}\r\n'
+                  f'    patch: {patch}\r\n'
+                  '  enabled: true\r\n'
+                  '  source: Thunderstore'
+              )
+
+          spec = {
+              'enabled': True,
+              'build_id': 'S1.42AJ',
+              'base_profile': base_profile,
+              'base_sha256': base_sha,
+              'output_profile': 'Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z',
+              'profile_name': 'LC V1 S1.42AJ LC Office V81 Integration',
+              'overwrite': False,
+              'mod_state_changes': [],
+              'mod_additions': [
+                  {'name': 'Piggy-LC_Office', 'version': '2.3.4', 'enabled': True, 'source': 'Thunderstore'},
+                  {'name': 'MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix', 'version': '2.0.0', 'enabled': True, 'source': 'Thunderstore'},
+                  {'name': 'JacobG5-DestroyItemInSlotFix', 'version': '1.0.0', 'enabled': True, 'source': 'Thunderstore'},
+                  {'name': 'Alice-DungeonGenerationPlus', 'version': '1.5.1', 'enabled': True, 'source': 'Thunderstore'},
+              ],
+              'mod_removals': [
+                  {'name': 'Alice-DungeonGenerationPlus', 'version': '1.5.0'},
+              ],
+              'config_patches': [],
+              'local_plugin_builds': [],
+              'text_assertions': [
+                  {'path': 'export.r2x', 'contains': block('Piggy-LC_Office', '2.3.4')},
+                  {'path': 'export.r2x', 'contains': block('MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix', '2.0.0')},
+                  {'path': 'export.r2x', 'contains': block('JacobG5-DestroyItemInSlotFix', '1.0.0')},
+                  {'path': 'export.r2x', 'contains': block('Alice-DungeonGenerationPlus', '1.5.1')},
+                  {'path': 'export.r2x', 'not_contains': '- name: Alice-DungeonGenerationPlus\r\n  version:\r\n    major: 1\r\n    minor: 5\r\n    patch: 0\r\n'},
+                  {'path': 'export.r2x', 'contains': block('IAmBatby-LethalLevelLoader', '1.7.12')},
+                  {'path': 'export.r2x', 'not_contains': 'LethalLevelLoaderUpdated'},
+              ],
+          }
+          current_path.write_text(json.dumps(spec, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Remove completed one-shot request workflow
+        run: git rm .github/workflows/s142aj-lc-office-v81-build-request.yml
+
+      - name: Verify exact atomic request diff
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected = {
+              '.github/workflows/s142aj-lc-office-v81-build-request.yml',
+              'BuildSpecs/current.json',
+          }
+          actual = set(subprocess.check_output(['git', 'diff', '--name-only', 'HEAD'], text=True).splitlines())
+          if actual != expected:
+              raise RuntimeError(f'unexpected S1.42AJ request diff: {sorted(actual)}')
+
+          spec = json.loads(Path('BuildSpecs/current.json').read_text(encoding='utf-8'))
+          if spec.get('enabled') is not True or spec.get('build_id') != 'S1.42AJ':
+              raise RuntimeError('Build controller is not the exact enabled S1.42AJ request')
+          if spec.get('base_profile') != 'Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z':
+              raise RuntimeError('Unexpected S1.42AJ base profile')
+          if spec.get('base_sha256') != 'd993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2':
+              raise RuntimeError('Unexpected S1.42AJ base SHA')
+          if spec.get('config_patches') != [] or spec.get('local_plugin_builds') != [] or spec.get('mod_state_changes') != []:
+              raise RuntimeError('S1.42AJ request contains an unauthorized non-package delta')
+          if len(spec.get('mod_additions', [])) != 4 or len(spec.get('mod_removals', [])) != 1:
+              raise RuntimeError('Unexpected S1.42AJ package delta cardinality')
+          PY
+          git diff --check
+
+      - name: Commit exact S1.42AJ build request
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Request canonical S1.42AJ build'
+          git push origin HEAD:main
+
+      - name: Dispatch canonical profile build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run profile-build.yml --ref main
