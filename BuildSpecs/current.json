@@ -1,15 +1,74 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42AI_ACCEPTANCE_PREP_LC_OFFICE_V81_SUCCESSOR",
+  "enabled": true,
+  "build_id": "S1.42AJ",
   "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
   "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "output_profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
+  "profile_name": "LC V1 S1.42AJ LC Office V81 Integration",
   "overwrite": false,
   "mod_state_changes": [],
-  "mod_additions": [],
-  "mod_removals": [],
+  "mod_additions": [
+    {
+      "name": "Piggy-LC_Office",
+      "version": "2.3.4",
+      "enabled": true,
+      "source": "Thunderstore"
+    },
+    {
+      "name": "MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix",
+      "version": "2.0.0",
+      "enabled": true,
+      "source": "Thunderstore"
+    },
+    {
+      "name": "JacobG5-DestroyItemInSlotFix",
+      "version": "1.0.0",
+      "enabled": true,
+      "source": "Thunderstore"
+    },
+    {
+      "name": "Alice-DungeonGenerationPlus",
+      "version": "1.5.1",
+      "enabled": true,
+      "source": "Thunderstore"
+    }
+  ],
+  "mod_removals": [
+    {
+      "name": "Alice-DungeonGenerationPlus",
+      "version": "1.5.0"
+    }
+  ],
   "config_patches": [],
   "local_plugin_builds": [],
-  "text_assertions": []
+  "text_assertions": [
+    {
+      "path": "export.r2x",
+      "contains": "- name: Piggy-LC_Office\r\n  version:\r\n    major: 2\r\n    minor: 3\r\n    patch: 4\r\n  enabled: true\r\n  source: Thunderstore"
+    },
+    {
+      "path": "export.r2x",
+      "contains": "- name: MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix\r\n  version:\r\n    major: 2\r\n    minor: 0\r\n    patch: 0\r\n  enabled: true\r\n  source: Thunderstore"
+    },
+    {
+      "path": "export.r2x",
+      "contains": "- name: JacobG5-DestroyItemInSlotFix\r\n  version:\r\n    major: 1\r\n    minor: 0\r\n    patch: 0\r\n  enabled: true\r\n  source: Thunderstore"
+    },
+    {
+      "path": "export.r2x",
+      "contains": "- name: Alice-DungeonGenerationPlus\r\n  version:\r\n    major: 1\r\n    minor: 5\r\n    patch: 1\r\n  enabled: true\r\n  source: Thunderstore"
+    },
+    {
+      "path": "export.r2x",
+      "not_contains": "- name: Alice-DungeonGenerationPlus\r\n  version:\r\n    major: 1\r\n    minor: 5\r\n    patch: 0\r\n"
+    },
+    {
+      "path": "export.r2x",
+      "contains": "- name: IAmBatby-LethalLevelLoader\r\n  version:\r\n    major: 1\r\n    minor: 7\r\n    patch: 12\r\n  enabled: true\r\n  source: Thunderstore"
+    },
+    {
+      "path": "export.r2x",
+      "not_contains": "LethalLevelLoaderUpdated"
+    }
+  ]
 }
