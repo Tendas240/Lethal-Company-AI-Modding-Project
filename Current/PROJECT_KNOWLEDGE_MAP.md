@@ -40,7 +40,7 @@ S1.42AH is the accepted predecessor/rollback provenance baseline. The S1.42AI-DI
 
 There is no active runtime candidate and no outstanding runtime test. LC Office V81 Integration is the sole selected successor scope and remains not armed. `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AI_ACCEPTANCE_PREP_LC_OFFICE_V81_SUCCESSOR`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains evidence attribution only and does not arm a successor.
 
-The next action is the focused LC Office V81 pre-build package/dependency verification against accepted S1.42AI, followed by preparation of exactly one LC Office successor if the guarded delta remains valid.
+The focused LC Office V81 package/dependency verification against accepted S1.42AI is complete. The next action is to read the build-pipeline and build-lineage authorities, determine the next successor build ID and exact `BuildSpecs/current.json` schema, and prepare exactly one LC Office successor from S1.42AI without arming a runtime test prematurely.
 
 ## Authority rule
 

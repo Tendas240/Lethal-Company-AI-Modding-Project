@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform the focused LC Office V81 pre-build package/dependency verification against accepted S1.42AI and update the selected plan as needed; then prepare and arm exactly one LC Office successor. Do not arm a runtime test yet and do not combine universal interior availability or unrelated deferred scopes.
+Read Knowledge/BUILD_AND_RUNTIME_PIPELINE.md and Current/BUILD_LINEAGE.md, determine the next successor build ID and exact BuildSpecs/current.json schema, then prepare and arm exactly one LC Office successor from exact accepted S1.42AI. Do not arm a runtime test until the built candidate passes static validation, and do not combine universal interior availability or unrelated deferred scopes.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
