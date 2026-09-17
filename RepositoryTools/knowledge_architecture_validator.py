@@ -160,19 +160,36 @@ def validate_current_state() -> None:
     lineage_by_id = {b.get("id"): b for b in lineage_builds if b.get("id")}
     lineage_ids = set(lineage_by_id)
 
-    if active_build and active_build not in lineage_ids:
-        fail(f"ACTIVE_BUILD references unknown build lineage id: {active_build!r}")
+    candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None
+    selected_scope = state.get("selected_scope", {})
+    diagnostic = selected_scope.get("diagnostic_revision", {}) if isinstance(selected_scope, dict) else {}
+    diagnostic_id = diagnostic.get("build_id") if isinstance(diagnostic, dict) else None
+    diagnostic_is_runtime_target = bool(
+        active_build
+        and diagnostic_id == active_build
+        and candidate_id
+        and diagnostic.get("base_build_id") == candidate_id
+        and diagnostic.get("status") == "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED"
+        and diagnostic.get("profile")
+        and diagnostic.get("sha256")
+        and diagnostic.get("publication_evidence")
+    )
+
+    if active_build and active_build not in lineage_ids and not diagnostic_is_runtime_target:
+        fail(f"ACTIVE_BUILD references unknown build lineage id or explicit diagnostic runtime target: {active_build!r}")
     if controllers.get("runtime_active_build") != active_build:
         fail("CURRENT_STATE controller runtime_active_build mismatch")
+    if diagnostic_is_runtime_target:
+        for key in ("profile", "file_index", "build_result", "static_evidence", "publication_evidence"):
+            require_path(str(diagnostic.get(key, "")), f"CURRENT_STATE.selected_scope.diagnostic_revision.{key}")
 
-    candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None
     if candidate_id:
         if state.get("runtime_test_outstanding") is not True:
             fail("active candidate requires runtime_test_outstanding=true")
         if latest.get("build_id") != candidate_id:
             fail("active candidate must be the latest built artifact")
-        if active_build != candidate_id:
-            fail("ACTIVE_BUILD must identify the active runtime candidate")
+        if active_build != candidate_id and not diagnostic_is_runtime_target:
+            fail("ACTIVE_BUILD must identify the active runtime candidate or its explicit diagnostic runtime target")
         if lineage.get("active_candidate_build_id") != candidate_id:
             fail("BUILD_LINEAGE active candidate mismatch")
         if candidate_id not in lineage_ids:

@@ -175,21 +175,39 @@ def check_live_state() -> None:
     active = (ROOT / "RuntimeInbox/ACTIVE_BUILD.txt").read_text(encoding="utf-8").strip()
     lineage = load("Current/BUILD_LINEAGE.json")
     known_builds = {b.get("id") for b in lineage.get("builds", []) if isinstance(b, dict) and b.get("id")}
-    if active not in known_builds:
-        error(f"runtime active-build controller points to unknown lineage build: {active!r}")
+    candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None
+    selected_scope = state.get("selected_scope", {})
+    diagnostic = selected_scope.get("diagnostic_revision", {}) if isinstance(selected_scope, dict) else {}
+    diagnostic_id = diagnostic.get("build_id") if isinstance(diagnostic, dict) else None
+    diagnostic_is_runtime_target = bool(
+        active
+        and diagnostic_id == active
+        and candidate_id
+        and diagnostic.get("base_build_id") == candidate_id
+        and diagnostic.get("status") == "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED"
+        and diagnostic.get("profile")
+        and diagnostic.get("sha256")
+        and diagnostic.get("publication_evidence")
+    )
+    if active not in known_builds and not diagnostic_is_runtime_target:
+        error(f"runtime active-build controller points to unknown lineage build or explicit diagnostic runtime target: {active!r}")
     if controllers.get("runtime_active_build") != active:
         error("runtime active-build controller disagrees with CURRENT_STATE")
     if controllers.get("build_enabled") is not False:
         error("CURRENT_STATE controllers.build_enabled unexpectedly true")
+    if diagnostic_is_runtime_target:
+        for key in ("profile", "file_index", "build_result", "static_evidence", "publication_evidence"):
+            value = diagnostic.get(key)
+            if not isinstance(value, str) or not exists(value):
+                error(f"explicit diagnostic runtime target lacks readable {key}: {value!r}")
 
-    candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None
     if candidate_id:
         if latest.get("build_id") != candidate_id:
             error("active candidate is not the latest built artifact")
         if state.get("runtime_test_outstanding") is not True:
             error("active candidate does not have runtime_test_outstanding=true")
-        if active != candidate_id:
-            error("runtime active build does not identify the active candidate")
+        if active != candidate_id and not diagnostic_is_runtime_target:
+            error("runtime active build does not identify the active candidate or its explicit diagnostic runtime target")
         guard = candidate
     else:
         if state.get("runtime_test_outstanding") is not False:

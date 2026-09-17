@@ -31,7 +31,7 @@ The first full-normal S1.42AJ runtime evidence is ingested at `RuntimeEvidence/S
 
 ## Published diagnostic artifact
 
-**S1.42AJ-DIAG1 — LC Office Diagnostic — STATIC PASS / NOT RUNTIME READY / NOT ARMED** is published strictly as diagnostic evidence derived from exact balanced S1.42AJ.
+**S1.42AJ-DIAG1 — LC Office Diagnostic — STATIC PASS / RUNTIME-ACTIVE EVIDENCE TARGET / ARMED / NOT ACCEPTED** is published strictly as diagnostic evidence derived from exact balanced S1.42AJ.
 
 Profile: `Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z`  
 SHA-256: `4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832`  
@@ -42,24 +42,24 @@ Publication verification: `BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/PUBLICATION_V
 
 The diagnostic plugin SHA-256 is `9a477c18e5b8cf38922fa755b6bab101babc2f987e858567172b9be9c2c05fad`; the accepted normalizer remains byte-identical at `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`. The exact reviewed artifact came from PR #111 / reviewed head `d3155d86c89595cc9ab4b4cda5d8535ec138eae2`, review artifact ID `10513954928`, build/static gate run `35261773897`, and was published at commit `71ac6fad7eef3eb5e7d84b81e88a553d1032fbdf`.
 
-This diagnostic is not an accepted build, does not replace balanced S1.42AJ, is not yet the runtime-active evidence target, and has no runtime evidence yet.
+This diagnostic is not an accepted build and does not replace balanced S1.42AJ. It is now the runtime-active evidence target only so its diagnostic run is attributed separately; no diagnostic runtime evidence exists yet.
 
 ## Live execution state
 
 - Accepted baseline: **S1.42AI**.
 - Latest balanced built artifact: **S1.42AJ**.
-- Active runtime candidate/evidence target: **S1.42AJ**.
-- Published diagnostic awaiting activation: **S1.42AJ-DIAG1**.
+- Active balanced lifecycle candidate: **S1.42AJ**.
+- Runtime-active diagnostic evidence target: **S1.42AJ-DIAG1**.
 - Runtime test outstanding: **yes**.
-- Selected successor scope: **LC Office V81 Integration — diagnostic artifact published, runtime activation still outstanding**.
-- `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` controls runtime-evidence attribution only.
+- Selected successor scope: **LC Office V81 Integration — diagnostic artifact active for missing generation coverage**.
+- `BuildSpecs/current.json` remains disabled at `IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG1` controls diagnostic runtime-evidence attribution only.
 
 ## Exact next project action
 
-Perform the separate atomic runtime/lifecycle activation of the already published **S1.42AJ-DIAG1** diagnostic artifact without accepting or replacing balanced S1.42AJ. Update the canonical lifecycle/controllers and `RuntimeInbox/ACTIVE_BUILD.txt` consistently so the diagnostic runtime test is attributed to S1.42AJ-DIAG1, verify the resulting exact-head CI, then provide the repository-driven Gale replacement/import one-liner and the exact S1.42AJ-DIAG1 one-line runtime-log uploader in the same response as the test instructions.
+Runtime-test the activated **S1.42AJ-DIAG1** diagnostic artifact on Offense for only the still-missing LC Office generation coverage: confirm LC Office actually generates after normal viability, validate traversal/entrance/exit, elevator and breaker/power where available, enemy navigation, scrap generation, and absence of a new critical regression/error flood. Preserve the already ingested unforced S1.42AJ viability/weight proof and do not treat diagnostic force-selection as balanced selection semantics.
 
-The runtime test is only for the still-missing actual LC Office generation/traversal/elevator/power/enemy-navigation/scrap coverage on Offense after normal viability. Preserve the already ingested unforced S1.42AJ viability/weight proof.
+Runtime evidence must be uploaded under `S1.42AJ-DIAG1` through `RuntimeInbox/ACTIVE_BUILD.txt`. Balanced S1.42AJ remains unchanged, not accepted, and remains the lifecycle candidate.
 
 ## Scope boundary
 
@@ -67,4 +67,4 @@ S1.42AJ remains compatibility-first. S1.42AJ-DIAG1 is diagnostic-only and must n
 
 ## Canonical Gale runtime import helper
 
-Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at validated helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. The currently armed runtime target remains S1.42AJ until the separate atomic S1.42AJ-DIAG1 activation is completed and verified.
+Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at validated helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof`. The runtime-evidence target is now S1.42AJ-DIAG1; this does not promote or replace balanced S1.42AJ.
