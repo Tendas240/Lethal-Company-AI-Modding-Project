@@ -4,7 +4,7 @@
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AI",
-  "active_candidate_build_id": null,
+  "active_candidate_build_id": "S1.42AJ",
   "latest_built_artifact_id": "S1.42AJ",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
@@ -651,19 +651,19 @@
     {
       "id": "S1.42AJ",
       "title": "LC Office V81 Integration",
-      "status": "static-validated-not-runtime-armed",
+      "status": "active-runtime-candidate-not-accepted",
       "parent": "S1.42AI",
       "profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
       "sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
       "build_plan": "BuildSpecs/S1.42AJ_PLAN.md",
       "candidate_record": "Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md",
       "decision_record": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
-      "project_status": "Current/Projektstatus_S1.42AJ_STATIC_VALIDATED.json",
+      "project_status": "Current/Projektstatus_S1.42AJ_CANDIDATE.json",
       "workflow_run": 35222275686,
       "build_commit": "7fbaae92523637ae3fec6c1e242ec2538918e7b7",
       "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "safe_as_gameplay_base": false,
-      "principal_feature": "compatibility-first LC Office V81 integration; exact package-only delta statically validated with modern IAmBatby LLL ownership and accepted Interior Weight Normalization preserved; runtime not yet armed"
+      "principal_feature": "compatibility-first LC Office V81 integration; static validated and now active for full-normal runtime acceptance; universal-moon availability remains deferred"
     }
   ],
   "feature_index": {

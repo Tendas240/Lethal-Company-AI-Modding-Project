@@ -21,7 +21,7 @@ Runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`
 
 ## Latest built artifact
 
-**S1.42AJ — LC Office V81 Integration — STATIC VALIDATED NOT RUNTIME ARMED**
+**S1.42AJ — LC Office V81 Integration — STATIC VALIDATED RUNTIME VALIDATION OUTSTANDING**
 
 Profile: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z`  
 SHA-256: `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`  
@@ -31,18 +31,18 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Live execution state
 
-- Active candidate: **none**
-- Runtime test outstanding: **no**
+- Active candidate: **S1.42AJ**
+- Runtime test outstanding: **yes**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AJ_STATIC_VALIDATION_READY_FOR_RUNTIME_ARMING`)
-- Guarded build base: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`)
+- Guarded build base: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z` / `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ`
 
 ## Exact next action
 
-Arm S1.42AJ as the sole runtime candidate in a separate lifecycle transition. Only that transition may move RuntimeInbox/ACTIVE_BUILD.txt to S1.42AJ and mark runtime_test_outstanding=true; the same user-facing response must include both required PowerShell one-liners.
+Import S1.42AJ with the canonical Gale v2.4 replacement helper and run the full-normal LC Office runtime acceptance gate from Current/153 and BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md. Prove startup/ownership, single registration, default LLL viability on at least one tested moon, final effective rarity 100 whenever viable, actual LC Office generation and traversal, elevator behavior, breaker/power where available, ordinary enemy navigation and scrap generation, inherited accepted contracts, and no new critical regression/error flood. Then upload the complete fresh S1.42AJ LogOutput.log. Do not accept S1.42AJ from static/build success alone.
 
-No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+A runtime test is pending for S1.42AJ. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 

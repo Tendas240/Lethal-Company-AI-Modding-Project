@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=S1.42AJ runtime_test_outstanding=true -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -34,13 +34,13 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 ## Current lifecycle anchor
 
-Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Latest built artifact: **S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / RUNTIME NOT ARMED**, SHA-256 `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`; static evidence: `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`.
+Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Latest built artifact and sole active runtime candidate: **S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED**, SHA-256 `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`.
 
-S1.42AH is the accepted predecessor/rollback provenance baseline. The S1.42AI-DIAG1/R1/R2/R3 chain remains diagnostic evidence only; R3 passed exact ShyGuy identity/isolation but is not a gameplay baseline.
+S1.42AH remains accepted predecessor/rollback provenance. The S1.42AI-DIAG1/R1/R2/R3 chain remains diagnostic evidence only.
 
-There is no active runtime candidate and no outstanding runtime test. LC Office V81 Integration remains the sole selected scope; S1.42AJ is built and static validated but runtime is not armed. `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AJ_STATIC_VALIDATION_READY_FOR_RUNTIME_ARMING`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains evidence attribution only.
+`BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` is runtime-evidence attribution only. Full-normal LC Office runtime validation is outstanding.
 
-The focused package/dependency verification, S1.42AJ build and static gate are complete. The next action is to arm S1.42AJ as the sole runtime candidate in a separate lifecycle transition; only then may runtime attribution move from S1.42AI to S1.42AJ, and that same response must provide both required PowerShell one-liners.
+The next action is to import exact S1.42AJ via the canonical Gale v2.4 workflow, execute the LC Office acceptance gate, and upload the complete fresh S1.42AJ runtime log. Universal-moon availability and all unrelated Interior scopes remain deferred.
 
 ## Authority rule
 

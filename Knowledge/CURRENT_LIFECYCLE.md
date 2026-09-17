@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=S1.42AJ runtime_test_outstanding=true -->
 # Current Project Lifecycle
 
 **Status:** CURRENT / CANONICAL TOPIC  
@@ -18,25 +18,28 @@ Runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`
 
 ## Latest built artifact
 
-**S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / RUNTIME NOT ARMED** is the latest built artifact.
+**S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED** is the latest built artifact.
 
 Profile: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z`  
 SHA-256: `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`  
 Candidate record: `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`  
 Static evidence: `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`
 
-The static gate proves the exact compatibility-first package delta: add LC Office 2.3.4, the V81 compatibility fix 2.0.0 and DestroyItemInSlotFix 1.0.0, transition DungeonGenerationPlus 1.5.0 -> 1.5.1, preserve every other package block byte-for-byte, preserve every non-export profile member byte-for-byte, retain `IAmBatby-LethalLevelLoader 1.7.12` as the sole LLL owner, keep `pacoito-LethalLevelLoaderUpdated` absent, and preserve the accepted Interior Weight Normalization DLL at SHA-256 `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`.
+The static gate proves the exact compatibility-first package delta, sole modern IAmBatby LLL ownership, absence of the deprecated fork, no unrelated package drift, and byte-identical accepted Interior Weight Normalization.
 
 ## Live execution state
 
 - Accepted baseline: **S1.42AI**.
 - Latest built artifact: **S1.42AJ**.
-- Active runtime candidate: **none**.
-- Runtime test outstanding: **no**.
-- Selected successor scope: **LC Office V81 Integration — static validated / ready for runtime arming**.
-- `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AJ_STATIC_VALIDATION_READY_FOR_RUNTIME_ARMING`.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AI` remains runtime-evidence attribution only.
-- No runtime test is armed and no gameplay run should start yet.
+- Active runtime candidate: **S1.42AJ**.
+- Runtime test outstanding: **yes**.
+- Selected successor scope: **LC Office V81 Integration — active runtime candidate**.
+- `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` controls runtime-evidence attribution only.
+
+## Exact next project action
+
+Import S1.42AJ with the canonical Gale v2.4 replacement helper, execute the full-normal LC Office runtime acceptance gate from `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md` and `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, then upload the complete fresh S1.42AJ `LogOutput.log`. Do not accept S1.42AJ from static/build success alone.
 
 ## Scope boundary
 
@@ -45,3 +48,7 @@ S1.42AJ remains compatibility-first. Do not combine universal LC Office moon ava
 ## Exact next project action
 
 Arm **S1.42AJ** as the sole runtime candidate in a separate lifecycle transition. Only that transition may set `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` and `runtime_test_outstanding = true`. In the same user-facing response that arms the runtime test, provide both the canonical repository-driven Gale replacement/import PowerShell one-liner and the exact S1.42AJ-specific one-line runtime-log uploader.
+
+## Canonical Gale runtime import helper
+
+Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at validated helper revision `2026-09-05-import-uia-v2.4-export-read-fail-closed-materialization-proof` for the currently armed S1.42AJ runtime import/materialization workflow.
