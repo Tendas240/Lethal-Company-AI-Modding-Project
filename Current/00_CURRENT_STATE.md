@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Prepare a strictly diagnostic S1.42AJ-DIAG1 from exact S1.42AJ to force-select LC Office on Offense only after normal LLL viability has been established, then build/static-validate that diagnostic and runtime-test the missing LC Office generation/traversal/elevator/power/enemy-navigation/scrap coverage. Keep balanced S1.42AJ unchanged and not accepted until the full acceptance gate is complete.
+Perform the separate atomic runtime/lifecycle activation of the already published S1.42AJ-DIAG1 diagnostic artifact without accepting or replacing balanced S1.42AJ. Update the canonical lifecycle/controllers and RuntimeInbox/ACTIVE_BUILD.txt consistently to attribute the diagnostic runtime test to S1.42AJ-DIAG1, verify the resulting exact-head CI, then provide the repository-driven Gale replacement/import one-liner and the exact S1.42AJ-DIAG1 one-line runtime-log uploader in the same response as the test instructions. Runtime-test only the missing LC Office generation/traversal/elevator/power/enemy-navigation/scrap coverage on Offense after normal viability; preserve the existing unforced S1.42AJ viability/weight proof.
 
 A runtime test is pending for S1.42AJ. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
