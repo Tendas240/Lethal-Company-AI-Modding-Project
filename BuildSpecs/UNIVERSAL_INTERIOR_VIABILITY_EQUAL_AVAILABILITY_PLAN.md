@@ -1,6 +1,6 @@
 # Universal Interior Viability / Equal Availability Investigation Plan
 
-**Status:** SELECTED / PHASE A COMPLETE / PHASE B1 MOON INVENTORY + OFFENSE BASELINE COMPLETE / PHASE B2 OWNER-CONFIG ANALYSIS OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
+**Status:** SELECTED / PHASE A + B1 + B2 COMPLETE / PHASE B3 MATRIX MATERIALIZATION OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
 **Date:** 2026-09-18  
 **Accepted baseline:** S1.42AK — `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`  
@@ -91,7 +91,22 @@ Exact S1.42AK establishes:
 
 ### Phase B2 — owner/config mechanism extraction
 
-Next, reconcile the 22 directly configured Custom flows, the 27 Custom flows without direct active LLL dungeon config, the three Vanilla flows and Black Mesa's native/DawnLib path across the 30 target-moon classes. Upgrade absent pairings from `NOT_YET_PROVEN` only when repository evidence establishes `CONFIG_GAP`, `AUTHOR_OR_OWNER_HARD_BLOCK`, or `KNOWN_TECHNICAL_RESTRICTION`.
+**COMPLETE.** Authority: `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`.
+
+Every selectable interior now has an availability-owner mechanism:
+
+- 22 `DIRECT_LLL_UNIVERSAL_TAG_OVERRIDE` flows with actual active `Vanilla:100,Custom:100`;
+- 27 `OWNER_ASSET_MATCHING_NO_DIRECT_LLL_CONFIG` Custom flows;
+- 3 `VANILLA_NATIVE_LLL_MATCHING` flows;
+- 1 `DAWNLIB_NATIVE_BLACK_MESA_WEIGHT_RULE` flow.
+
+Current JLL configs contain no dungeon injection, moon-weight, rarity, Level Names, Level Tags or Route Price availability controls; they remain auxiliary behavior configs rather than a separate availability owner.
+
+Exact S1.42AK Offense is fully cause-classified at 41 `VIABLE_EQUAL_100` + 12 `AUTHOR_OR_OWNER_HARD_BLOCK`. Those 12 labels mean current owner-metadata rejection before normalization, not proven technical incompatibility. Shatteredrooms × Experimentation and × Embrion are also explicit owner hard blocks until a technical reason is established.
+
+### Phase B3 — matrix materialization
+
+Materialize the fixed 30 × 53 matrix from the Phase-B2 owner rules. Apply direct LLL tag rules only where the target moon's class/tags are established; keep External-moon behavior unproven unless its owner/tag mechanism is known. Preserve owner-controlled cells from observed runtime/explicit restrictions and leave every unsupported cell `NOT_YET_PROVEN`.
 
 ## Phase C — compatibility proof for proposed restriction removal
 
@@ -149,6 +164,6 @@ The next repository decision must be based on the completed owner/flow/moon matr
 
 ## Exact next action
 
-Execute **Phase B2 owner/config mechanism extraction** using `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md` and `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md` as the fixed flow/moon universes. Determine why absent pairings are absent before proposing any compatibility removal.
+Execute **Phase B3 matrix materialization** using `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md` and `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`. Populate the 1,590 fixed pairing cells only from established config/owner/runtime evidence and leave unsupported cells `NOT_YET_PROVEN`.
 
 No build or runtime test is authorized yet.
