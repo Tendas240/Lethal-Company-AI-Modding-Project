@@ -44,22 +44,24 @@
   "selected_scope": {
     "scope_id": "LC_OFFICE_SCRAP_QUANTITY_DISTRIBUTION_INVESTIGATION",
     "title": "LC Office Scrap Quantity/Distribution Investigation",
-    "status": "COUNT_COMPARABLE_PLACEMENT_DIAGNOSTIC_REQUIRED_NOT_ARMED",
+    "status": "PLACEMENT_DIAGNOSTIC_DESIGNED_NOT_IMPLEMENTED_NOT_ARMED",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
     "finding": "Existing Offense evidence does not establish an LC Office-specific low generated-count regression. S1.42AJ-DIAG1 LC Office generated 14 base scrap plus one additional replicated object (15 tracked total); S1.42AJ-DIAG2 LC Office generated/finalized 15. Comparable normal Offense runs start from 14 base scrap: S1.42AJ Facility was later inflated by BCMER PlentyOutsideScrap, while accepted S1.42AK Spooky Manor finalized at 15. Existing logs do not provide complete item-to-room/floor placement for the LC Office set.",
-    "analysis_contract": "Treat generated quantity as provisionally comparable and do not increase scrap count. Design an isolated diagnostic-only artifact derived from exact accepted S1.42AK that logs each final spawned scrap object's identity and world position plus enough LC Office floor/room context to evaluate clustering and practical discoverability. The diagnostic must not alter quantity, rarity, value or placement and must not include unrelated scopes.",
-    "next_action": "Design the minimal diagnostic-only LC Office scrap placement instrumentation from exact accepted S1.42AK. Do not arm a runtime test or change gameplay tuning until the diagnostic implementation and static review are complete.",
+    "analysis_contract": "Generated quantity remains provisionally comparable; do not increase scrap count. The placement diagnostic design is complete: exact accepted S1.42AK plus the already reviewed AJDIAG1 LC Office selector and a new read-only logger with one exact RoundManager.SpawnScrapInLevel postfix, two bounded delayed snapshots, world positions, EntranceTeleport floor anchors and support-collider hierarchy paths. No gameplay or network state may be mutated.",
+    "next_action": "Implement Patches/S142AKDiagScrapPlacement and the separate non-active BuildSpecs/S1.42AK-SCRAPDIAG1.json request exactly to the approved diagnostic design, then run static source/archive validation. Do not arm a runtime test yet.",
     "currently_irrelevant_actions": [
       "Do not increase LC Office scrap quantity: existing LC Office 14-15 base/final counts are comparable to nearby normal Offense evidence.",
       "Do not treat the S1.42AJ Facility final count of 29 as a normal comparator because BCMER PlentyOutsideScrap inflated that run.",
       "Do not arm a runtime test until placement instrumentation has been designed, implemented and statically reviewed.",
       "Do not combine universal interior viability, CullFactory, MelanieMausoleum fog, Black Mesa/Pikmin routing, LethalEscape or other deferred scopes into this investigation."
     ],
-    "evidence_finding": "Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md"
+    "evidence_finding": "Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md",
+    "diagnostic_design": "Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md",
+    "diagnostic_build_plan": "BuildSpecs/S1.42AK-SCRAPDIAG1_PLAN.md"
   },
-  "next_action": "Design the minimal diagnostic-only LC Office scrap placement instrumentation from exact accepted S1.42AK. Do not arm a runtime test or change gameplay tuning until the diagnostic implementation and static review are complete.",
+  "next_action": "Implement Patches/S142AKDiagScrapPlacement and the separate non-active BuildSpecs/S1.42AK-SCRAPDIAG1.json request exactly to the approved diagnostic design, then run static source/archive validation. Do not arm a runtime test yet.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,

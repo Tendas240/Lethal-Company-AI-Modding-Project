@@ -1,6 +1,6 @@
 # LC Office Scrap Quantity / Distribution Investigation Plan
 
-**Status:** COUNT COMPARABLE / PLACEMENT DIAGNOSTIC REQUIRED / NOT ARMED  
+**Status:** COUNT COMPARABLE / PLACEMENT DIAGNOSTIC DESIGNED / NOT IMPLEMENTED / NOT ARMED  
 **Date:** 2026-09-18  
 **Accepted baseline:** S1.42AK — `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`  
@@ -34,6 +34,8 @@ The focused comparison is recorded in `Current/159_LC_OFFICE_SCRAP_EXISTING_EVID
 **Conclusion:** LC Office does not show a material low-count regression in the existing evidence. Quantity tuning is therefore not authorized.
 
 The remaining uncertainty is spatial distribution/discoverability. Existing tracking logs do not provide complete final world positions plus room/floor ownership for all 15 Office objects. Matty's Fixes exposes only partial position-adjustment evidence, and the available LethalMin floor/teleport coordinates do not map each scrap item to a floor.
+
+The diagnostic design is now fixed by `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md` and implementation plan `BuildSpecs/S1.42AK-SCRAPDIAG1_PLAN.md`. It uses exact accepted S1.42AK, the already reviewed LC Office selector, and one new read-only `RoundManager.SpawnScrapInLevel` postfix that performs only two bounded delayed snapshots and logs world/floor/support-surface context.
 
 ## Diagnostic dimensions
 
@@ -84,4 +86,4 @@ Do not combine this investigation with:
 
 ## Exact next action
 
-Design the minimal diagnostic-only LC Office scrap placement instrumentation from exact accepted S1.42AK. Do not arm a runtime test or change gameplay tuning until the diagnostic implementation and static review are complete.
+Implement Patches/S142AKDiagScrapPlacement and the separate non-active BuildSpecs/S1.42AK-SCRAPDIAG1.json request exactly to the approved diagnostic design, then run static source/archive validation. Do not arm a runtime test yet.
