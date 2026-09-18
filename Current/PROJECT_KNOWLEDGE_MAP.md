@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
 **Current State:** `Current/00_CURRENT_STATE.md`
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
-**Last-Validated:** 2026-09-17
+**Last-Validated:** 2026-09-18
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -40,9 +40,9 @@ S1.42AH remains accepted predecessor/rollback provenance. The S1.42AI-DIAG1/R1/R
 
 `BuildSpecs/current.json` remains disabled at `IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG1` is runtime-evidence attribution only. Full-normal S1.42AJ evidence at `RuntimeEvidence/S1.42AJ/20260917T171109Z/` already proves unforced Offense viability (`LC Office (65)`) and final normalized effective rarity `100`; that run selected Facility rather than LC Office.
 
-The strictly diagnostic **S1.42AJ-DIAG1** artifact is published from exact S1.42AJ and statically verified, profile SHA-256 `4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832`. Its publication/static evidence is under `BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/` and its readable snapshot is `ProfileSources/S1.42AJ-DIAG1/`. It is now **armed as the runtime-active diagnostic evidence target**, is not acceptance authority, does not replace balanced S1.42AJ, and has no runtime evidence yet.
+The strictly diagnostic **S1.42AJ-DIAG1** artifact is published from exact S1.42AJ and statically verified, profile SHA-256 `4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832`. Its completed Offense runtime evidence is now ingested at `RuntimeEvidence/S1.42AJ-DIAG1/20260917T204918Z/` with log SHA-256 `bb81a91f2cabcb1a3b010dd988335cc9c9cb0b5bcc9bd646ee2ac18ccbb15a26`. The run obtained actual LC Office generation coverage but exposed a user-reported performance regression of roughly 3-4 later-day stutters per second. DIAG1 remains diagnostic only and does not replace balanced S1.42AJ.
 
-The next action is the S1.42AJ-DIAG1 runtime test for only actual LC Office generation/traversal/elevator/power/enemy-navigation/scrap coverage on Offense after normal viability. The response that releases that test must include the repository-driven Gale import one-liner plus the exact S1.42AJ-DIAG1 one-line log uploader. Balanced S1.42AJ remains unchanged and not accepted. Universal-moon availability and all unrelated Interior scopes remain deferred.
+The next action is to build a strictly one-variable **S1.42AJ-DIAG2** from exact DIAG1 with only `BepInEx/config/Piggy.LCOffice.cfg` -> `[General] Camera Frame Speed = 0`, preserving DIAG1 force-selection. After static proof and publication/arming, run an Offense A/B test for the stutter. The camera-render path is a working hypothesis, not a proven cause. Balanced S1.42AJ remains unchanged and not accepted. Universal-moon availability and all unrelated Interior scopes remain deferred.
 
 ## Authority rule
 

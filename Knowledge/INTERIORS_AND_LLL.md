@@ -5,7 +5,7 @@
 **Canonical-For:** `interiors_and_lll`  
 **Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`  
 **Related:** `ProfileSources/S1.42AG/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-09-17
+**Last-Validated:** 2026-09-18
 
 ## Accepted architecture
 
@@ -85,7 +85,7 @@ S1.42AJ package contract (statically verified):
 - preserve `IAmBatby-LethalLevelLoader 1.7.12` as the sole LLL owner;
 - explicitly forbid `pacoito-LethalLevelLoaderUpdated` from the final profile/export.
 
-The active compatibility candidate does not force LC Office onto all moons. The first ingested full-normal S1.42AJ evidence at `RuntimeEvidence/S1.42AJ/20260917T171109Z/` proves modern-LLL viability on Offense at author rarity `65` and final project-local normalized rarity `100`; that run selected Facility. The remaining compatibility coverage is actual LC Office generation, traversal, elevator/power behavior, ordinary enemy navigation and scrap generation. Obtain that coverage with a strictly diagnostic S1.42AJ-DIAG1 force-selection derived from exact S1.42AJ, without changing the balanced candidate. Any later universal-availability tuning remains a separate balance/configuration scope.
+The active compatibility candidate does not force LC Office onto all moons. The first ingested full-normal S1.42AJ evidence at `RuntimeEvidence/S1.42AJ/20260917T171109Z/` proves modern-LLL viability on Offense at author rarity `65` and final project-local normalized rarity `100`; that run selected Facility. S1.42AJ-DIAG1 then provided deterministic actual LC Office generation coverage on Offense and is ingested at `RuntimeEvidence/S1.42AJ-DIAG1/20260917T204918Z/`. That run exposed a user-visible performance concern: later in the in-game day the user observed roughly 3-4 stutters per second. Comparison against accepted S1.42AI downgraded the initial NavMesh-error hypothesis; the current narrow working hypothesis is LC Office's own periodic camera-render path. The next diagnostic must therefore be a one-variable S1.42AJ-DIAG2 derived from exact DIAG1 with only `[General] Camera Frame Speed = 0`, preserving deterministic Office selection for an A/B stutter test. See `Current/154_S1.42AJ_DIAG1_LC_OFFICE_RUNTIME_PERFORMANCE_FINDING.md`. Any later universal-availability tuning remains a separate balance/configuration scope.
 
 The exact accepted S1.42AI package/dependency baseline was re-verified on 2026-09-17. The required infrastructure versions are already enabled; `Alice-DungeonGenerationPlus 1.5.0` is the version to transition; the three LC Office target additions are absent; `pacoito-LethalLevelLoaderUpdated` is absent; and the accepted `S142ABInteriorWeightNormalization.dll` remains present at SHA-256 `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`. The minimal package delta is therefore fixed in `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; build-time dependency resolution must still prove no unintended cascade or second LLL owner.
 

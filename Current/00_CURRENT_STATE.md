@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-17  
+**Updated:** 2026-09-18  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Runtime-test the activated S1.42AJ-DIAG1 diagnostic artifact on Offense for only the missing LC Office generation coverage: confirm LC Office actually generates after normal viability, validate traversal/entrance/exit, elevator and breaker/power where available, enemy navigation, scrap generation, and absence of a new critical regression/error flood. Preserve the existing unforced S1.42AJ viability/weight proof and do not treat diagnostic force-selection as balanced selection semantics. Runtime evidence must be uploaded under S1.42AJ-DIAG1 via RuntimeInbox/ACTIVE_BUILD.txt.
+Prepare and build a strictly one-variable S1.42AJ-DIAG2 from exact S1.42AJ-DIAG1: preserve the diagnostic LC Office force-selection and every package/DLL/config except set BepInEx/config/Piggy.LCOffice.cfg [General] Camera Frame Speed = 0. Statically verify that exact delta, publish/arm DIAG2, then runtime A/B test on Offense specifically for the previously observed frequent afternoon-time stutter. Do not alter balanced S1.42AJ or infer causality before the A/B result.
 
 A runtime test is pending for S1.42AJ. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

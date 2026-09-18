@@ -1,6 +1,6 @@
 {
   "schema_version": 8,
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "game": "Lethal Company V81",
@@ -53,14 +53,14 @@
   "selected_scope": {
     "scope_id": "LC_OFFICE_V81_INTEGRATION",
     "title": "LC Office V81 Integration",
-    "status": "DIAGNOSTIC_ARTIFACT_PUBLISHED_RUNTIME_ACTIVE_AWAITING_VALIDATION",
+    "status": "DIAG1_RUNTIME_EVIDENCE_INGESTED_PERFORMANCE_DIAGNOSIS_REQUIRED",
     "accepted_baseline": "S1.42AI",
     "built_build_id": "S1.42AJ",
     "plan": "BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "S1.42AJ was built from exact accepted S1.42AI and passed the static gate. The exported delta is exactly the three LC Office additions plus DungeonGenerationPlus 1.5.0 -> 1.5.1; every other package block and every non-export profile member is unchanged, IAmBatby LLL 1.7.12 remains the sole LLL owner, the deprecated fork is absent, and the accepted Interior Weight Normalization DLL is byte-identical. The first full-normal S1.42AJ runtime evidence is ingested at RuntimeEvidence/S1.42AJ/20260917T171109Z/ (LogOutput.log SHA-256 b5267cd62a222929c117bae52371229d4fe0dcf510248ee80d1f4c1a51e67c12). On Offense, modern LLL returned LC Office as viable at author rarity 65 and the accepted Interior Weight Normalization produced final effective LC Office(100); the run selected Facility, so actual LC Office generation/traversal/elevator/power/enemy-navigation coverage remains outstanding. S1.42AJ-DIAG1 is published from the exact reviewed CI artifact, statically verified, and is now the armed runtime-evidence target for only the missing LC Office generation coverage. Balanced S1.42AJ remains unchanged, not accepted, and the lifecycle candidate.",
-    "analysis_contract": "Preserve the ingested S1.42AJ full-normal proof: exact modern IAmBatby LLL ownership, LC Office viable on Offense at author rarity 65, and final effective rarity 100. Use the already published strictly diagnostic S1.42AJ-DIAG1 derived from exact S1.42AJ only to obtain missing generation coverage: it force-selects LC Office on Offense after normal viability determination; validate actual generation/traversal, elevator and breaker/power where available, enemy navigation, scrap generation, inherited accepted contracts, and no new critical regression/error flood. The diagnostic must not alter or replace balanced S1.42AJ and must not introduce universal-moon availability or another deferred Interior scope.",
-    "next_action": "Runtime-test the activated S1.42AJ-DIAG1 diagnostic artifact on Offense for only the missing LC Office generation coverage: confirm LC Office actually generates after normal viability, validate traversal/entrance/exit, elevator and breaker/power where available, enemy navigation, scrap generation, and absence of a new critical regression/error flood. Preserve the existing unforced S1.42AJ viability/weight proof and do not treat diagnostic force-selection as balanced selection semantics. Runtime evidence must be uploaded under S1.42AJ-DIAG1 via RuntimeInbox/ACTIVE_BUILD.txt.",
+    "finding": "S1.42AJ remains the balanced lifecycle candidate and is not accepted. Its full-normal Offense evidence already proves LC Office viability at author rarity 65 and final normalized effective rarity 100. S1.42AJ-DIAG1 successfully force-selected and generated LC Office on Offense; runtime evidence is ingested at RuntimeEvidence/S1.42AJ-DIAG1/20260917T204918Z/ (LogOutput.log SHA-256 bb81a91f2cabcb1a3b010dd988335cc9c9cb0b5bcc9bd646ee2ac18ccbb15a26). The user reported frequent afternoon-time stutter at roughly 3-4 hitches per second. Log comparison downgraded the initial NavMesh-error hypothesis because accepted S1.42AI already exhibited far larger Failed-to-create-agent warning volume plus some RuntimeNavMeshBuilder readability noise. The strongest low-risk A/B hypothesis is LC Office CameraCulling: upstream LC Office code periodically calls Camera.Render() at configured Camera Frame Speed (default 10 FPS), and its existing config treats Camera Frame Speed = 0 as camera rendering disabled. This is not yet proven causal. The next diagnostic must isolate only that variable.",
+    "analysis_contract": "Preserve all existing S1.42AJ and S1.42AJ-DIAG1 evidence. Do not promote or reject balanced S1.42AJ yet. Build a strictly diagnostic S1.42AJ-DIAG2 from exact S1.42AJ-DIAG1 with no package or DLL changes and exactly one config delta: BepInEx/config/Piggy.LCOffice.cfg [General] Camera Frame Speed = 0. Keep DIAG1 force-selection unchanged so Office generation remains deterministic. Statically prove the only additional delta is that config value, then arm DIAG2 for an Offense A/B runtime test focused on whether the reported 3-4-per-second stutter disappears or materially decreases while generation/traversal/elevator/scrap/enemy behavior remains healthy. If the hypothesis is confirmed, any balanced successor must be derived from exact balanced S1.42AJ, not from a diagnostic profile. Universal-moon availability and unrelated Interior scopes remain out of scope.",
+    "next_action": "Prepare and build a strictly one-variable S1.42AJ-DIAG2 from exact S1.42AJ-DIAG1: preserve the diagnostic LC Office force-selection and every package/DLL/config except set BepInEx/config/Piggy.LCOffice.cfg [General] Camera Frame Speed = 0. Statically verify that exact delta, publish/arm DIAG2, then runtime A/B test on Offense specifically for the previously observed frequent afternoon-time stutter. Do not alter balanced S1.42AJ or infer causality before the A/B result.",
     "candidate_build_id": "S1.42AJ",
     "profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
     "sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
@@ -89,10 +89,13 @@
       "diagnostic_dll_sha256": "9a477c18e5b8cf38922fa755b6bab101babc2f987e858567172b9be9c2c05fad",
       "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
       "runtime_role": "DIAGNOSTIC_ONLY_FORCE_SELECT_LC_OFFICE_AFTER_NORMAL_VIABILITY",
-      "runtime_evidence": null
+      "runtime_evidence": "RuntimeEvidence/S1.42AJ-DIAG1/20260917T204918Z/",
+      "runtime_log_sha256": "bb81a91f2cabcb1a3b010dd988335cc9c9cb0b5bcc9bd646ee2ac18ccbb15a26",
+      "runtime_finding": "Current/154_S1.42AJ_DIAG1_LC_OFFICE_RUNTIME_PERFORMANCE_FINDING.md",
+      "runtime_validation_status": "RUNTIME_EVIDENCE_INGESTED_PERFORMANCE_REGRESSION_UNDER_INVESTIGATION_NOT_ACCEPTED"
     }
   },
-  "next_action": "Runtime-test the activated S1.42AJ-DIAG1 diagnostic artifact on Offense for only the missing LC Office generation coverage: confirm LC Office actually generates after normal viability, validate traversal/entrance/exit, elevator and breaker/power where available, enemy navigation, scrap generation, and absence of a new critical regression/error flood. Preserve the existing unforced S1.42AJ viability/weight proof and do not treat diagnostic force-selection as balanced selection semantics. Runtime evidence must be uploaded under S1.42AJ-DIAG1 via RuntimeInbox/ACTIVE_BUILD.txt.",
+  "next_action": "Prepare and build a strictly one-variable S1.42AJ-DIAG2 from exact S1.42AJ-DIAG1: preserve the diagnostic LC Office force-selection and every package/DLL/config except set BepInEx/config/Piggy.LCOffice.cfg [General] Camera Frame Speed = 0. Statically verify that exact delta, publish/arm DIAG2, then runtime A/B test on Offense specifically for the previously observed frequent afternoon-time stutter. Do not alter balanced S1.42AJ or infer causality before the A/B result.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
