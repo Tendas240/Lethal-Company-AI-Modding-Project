@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=S1.42AJ runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=none runtime_test_outstanding=false -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -34,13 +34,11 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 ## Current lifecycle anchor
 
-Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Balanced built artifact and active lifecycle candidate: **S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / NOT ACCEPTED**, SHA-256 `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`.
+Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Latest built balanced artifact remains **S1.42AJ — LC Office V81 Integration — NOT ACCEPTED**.
 
-`BuildSpecs/current.json` remains disabled. The completed DIAG1 evidence at `RuntimeEvidence/S1.42AJ-DIAG1/20260917T204918Z/` proved actual LC Office generation but included a user-reported later-day stutter of roughly 3–4 hitches per second. Accepted-baseline comparison downgraded the initial NavMesh-error hypothesis.
+The longer exact **S1.42AJ-DIAG2** Offense confirmation evidence is ingested at `RuntimeEvidence/S1.42AJ-DIAG2/20260918T153753Z/`. It extended well beyond the DIAG1 comparison window and the user again reported that the characteristic repeated DIAG1 stutter did not recur. DIAG2 remains diagnostic-only and is not accepted.
 
-Exact reviewed **S1.42AJ-DIAG2** remains published and runtime-active, profile SHA-256 `1a17b532ebe5cfa598348ae15dea21af906ac7b33ec00c9c428d2684cc9f69cb`. Its first Offense A/B runtime evidence is ingested at `RuntimeEvidence/S1.42AJ-DIAG2/20260918T144306Z/`. LC Office generated, entrance/traversal and elevator behavior were evidenced, and the log generated 15 scrap values, matching the DIAG1 total. Interior vents spawned Bunker Spider, Masked, Spring, two Immortal Snails and Jester shortly before player death. The user reported no noticeable stutter before dying but did not visually encounter an interior enemy. Because the run ended earlier than the completed DIAG1 post-generation span, the camera-render hypothesis is supported but not causally confirmed. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG2` remains evidence attribution only.
-
-The next action is a **longer confirmation run with the exact same DIAG2 artifact**, with no rebuild or additional delta: reach the later-day window where DIAG1 previously showed frequent stutter, determine whether that stutter remains absent, and visually observe at least one spawned interior enemy long enough to validate ordinary behavior. Balanced S1.42AJ remains unchanged and not accepted. Any balanced successor must derive from exact S1.42AJ. Universal-moon availability and unrelated Interior scopes remain deferred.
+The next action is **S1.42AK — LC Office Camera Render and Enemy Balance Fix**, prepared but not built and derived directly from exact S1.42AJ. Authorized delta: LC Office `Camera Frame Speed = 0`, `YaBoiDucki-men_stalker 3.1.2` disabled, and Biodiversity Aloe `PowerLevel = 0`. RandomEnemiesSize and LC Office scrap tuning remain unchanged in that successor. `BuildSpecs/current.json` remains disabled.
 
 ## Authority rule
 

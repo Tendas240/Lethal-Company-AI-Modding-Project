@@ -21,7 +21,7 @@ Runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`
 
 ## Latest built artifact
 
-**S1.42AJ — LC Office V81 Integration — STATIC VALIDATED RUNTIME VALIDATION OUTSTANDING**
+**S1.42AJ — LC Office V81 Integration — STATIC VALIDATED NOT ACCEPTED SUCCESSOR PREPARATION SELECTED**
 
 Profile: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z`  
 SHA-256: `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`  
@@ -31,18 +31,18 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Live execution state
 
-- Active candidate: **S1.42AJ**
-- Runtime test outstanding: **yes**
+- Active candidate: **none**
+- Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`)
-- Guarded build base: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z` / `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG2`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AJ_DIAG2_CONFIRMATION_AWAITING_S1.42AK_BUILD`)
+- Guarded build base: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ`
 
 ## Exact next action
 
-Run a longer confirmation pass with the exact already-published S1.42AJ-DIAG2 on Offense. Reach the later-day window where DIAG1 previously showed frequent stutter, report whether that stutter remains absent, and visually observe at least one interior enemy after spawn to confirm ordinary behavior. Reconfirm LC Office traversal/elevator and observe scrap generation, then upload the resulting LogOutput.log again as S1.42AJ-DIAG2 evidence. No rebuild or additional config change is required.
+Execute the repository-native atomic S1.42AK build from exact S1.42AJ according to BuildSpecs/S1.42AK_PLAN.md. BuildSpecs/current.json is intentionally disabled before that trigger. The authorized delta is only LC Office Camera Frame Speed = 0, YaBoiDucki-men_stalker 3.1.2 disabled, and Biodiversity Aloe PowerLevel = 0; RandomEnemiesSize and LC Office scrap settings must remain unchanged.
 
-A runtime test is pending for S1.42AJ. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 

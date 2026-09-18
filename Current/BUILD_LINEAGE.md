@@ -11,9 +11,9 @@
 - **Accepted gameplay baseline:** S1.42AI — BCMER ShyGuy Interior-Only Event Correction — **ACCEPTED FULL NORMAL STACK**.
 - **Accepted predecessor / rollback provenance:** S1.42AH — Mouth Dog Pikmin Dual Prevention.
 - **Completed diagnostic evidence:** S1.42AI-DIAG1R3 — runtime diagnostic pass / not gameplay accepted.
-- **Latest built artifact:** S1.42AJ — LC Office V81 Integration — static validated / active runtime candidate / not accepted.
-- **Active candidate:** S1.42AJ; full-normal runtime validation is outstanding.
-- **Current action:** import/test exact S1.42AJ under the LC Office acceptance contract and upload the fresh runtime log.
+- **Latest built artifact:** S1.42AJ — LC Office V81 Integration — static validated / not accepted / balanced parent for prepared S1.42AK.
+- **Active candidate:** none; no runtime test is currently outstanding.
+- **Current action:** execute the atomic repository-native S1.42AK build from exact S1.42AJ under `BuildSpecs/S1.42AK_PLAN.md`.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 

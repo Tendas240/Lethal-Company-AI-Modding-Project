@@ -74,7 +74,11 @@ Do not fold any replacement/fork evaluation for DunGenReferenceFixer into unrela
 
 ## LC Office selected integration
 
-LC Office V81 Integration remains the selected compatibility/integration scope under `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`. Exact S1.42AJ is the unchanged balanced lifecycle candidate and is not accepted. `BuildSpecs/current.json` remains disabled. Exact published S1.42AJ-DIAG2 is armed only as the diagnostic runtime target for the isolated camera-render A/B.
+LC Office V81 Integration remains the selected compatibility/integration scope. Exact S1.42AJ is the unchanged balanced parent and is not accepted. The diagnostic chain is now complete: DIAG1 exposed the repeated later-day stutter, while exact DIAG2 changed only `[General] Camera Frame Speed = 0`. The longer confirmation evidence at `RuntimeEvidence/S1.42AJ-DIAG2/20260918T153753Z/` covered roughly twelve minutes after LC Office generation and the user again reported that the characteristic DIAG1 stutter did not recur.
+
+The same run proved active interior enemy spawning including Men-stalker and Aloe plus repeated elevator operation. The user reported isolated frame drops near Men-stalker and continued to perceive LC Office scrap as sparse or poorly distributed. The log nevertheless reported 15 scrap objects to spawn, so scrap quantity versus spatial distribution remains a separate investigation.
+
+The next balanced successor is **S1.42AK**, prepared under `BuildSpecs/S1.42AK_PLAN.md` and derived directly from exact S1.42AJ. Its authorized delta is limited to `Camera Frame Speed = 0`, disabling `YaBoiDucki-men_stalker 3.1.2`, and setting Biodiversity Aloe `PowerLevel = 0`. RandomEnemiesSize is explicitly unchanged. Universal-moon availability and unrelated interior work remain separate scopes.
 
 S1.42AJ package contract (statically verified):
 
