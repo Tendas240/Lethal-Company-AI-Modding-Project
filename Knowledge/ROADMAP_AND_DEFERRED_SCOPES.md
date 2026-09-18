@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
@@ -8,15 +8,15 @@
 
 ## Current position
 
-Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Latest built balanced artifact remains **S1.42AJ — LC Office V81 Integration — NOT ACCEPTED**.
+Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Latest built balanced artifact is **S1.42AK — LC Office Camera Enemy Balance — STATIC VALIDATED / NOT ACCEPTED / NOT YET RUNTIME-ACTIVE**.
 
 The second exact S1.42AJ-DIAG2 Offense run is ingested and closes the planned camera-render A/B for project purposes: the characteristic DIAG1 repeated stutter did not recur during a substantially longer LC Office run. DIAG2 remains diagnostic-only and is not accepted.
 
-**S1.42AK — LC Office Camera Render and Enemy Balance Fix** is prepared as the next balanced successor directly from exact S1.42AJ under `BuildSpecs/S1.42AK_PLAN.md`; it is not yet built. No runtime test is currently pending.
+**S1.42AK — LC Office Camera Enemy Balance** has been built directly from exact S1.42AJ under `BuildSpecs/S1.42AK_PLAN.md`. Static verification is recorded at `BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md`. It is not accepted and has not yet been activated as the runtime candidate, so no runtime test is currently pending.
 
 ## Active scope
 
-**LC Office V81 Integration — diagnostic A/B complete; S1.42AK successor prepared.**
+**LC Office V81 Integration — diagnostic A/B complete; S1.42AK built and awaiting runtime activation.**
 
 The prepared successor carries only:
 - LC Office `Camera Frame Speed = 0`;
