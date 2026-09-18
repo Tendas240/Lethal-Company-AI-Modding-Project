@@ -83,11 +83,12 @@ def main() -> int:
         "$diag.base_profile",
         "$diag.base_sha256",
         "$diag.build_result",
-        "$buildResultPath -split '/'",
+        "function Get-RepositoryJson {",
+        "$RepositoryPath -split '/'",
         "[Uri]::EscapeDataString($_)",
-        "${encodedBuildResultPath}?cb=$cache",
+        "${encodedPath}?cb=$cache",
         "-ErrorAction Stop",
-        "Diagnostic build_result konnte nicht geladen werden",
+        "$diagBuild=Get-RepositoryJson -RepositoryPath ([string]$diag.build_result) -Label \"Diagnostic build_result\"",
         "$diagBuild.build_id",
         "$diagBuild.output_profile",
         "$diagBuild.output_sha256",
@@ -111,12 +112,14 @@ def main() -> int:
         fail("v2.4 target resolver has no explicit diagnostic-only mismatch branch")
     if "AUTO_BUILD_RESULT gehört zu" in target_resolution:
         fail("legacy unconditional ACTIVE_BUILD/AUTO_BUILD_RESULT mismatch abort remains in target resolver")
-    if "[Uri]::EscapeUriString($buildResultPath)" in target_resolution:
-        fail("diagnostic build_result path still uses EscapeUriString instead of segment-wise EscapeDataString")
-    if "$encodedBuildResultPath?cb=$cache" in target_resolution:
-        fail("diagnostic build_result URL leaves the path variable undelimited before '?cb'; PowerShell can parse '?' as part of the variable name")
-    if 'main/${encodedBuildResultPath}?cb=$cache' not in target_resolution:
-        fail("diagnostic build_result URL does not explicitly delimit the encoded path variable before '?cb'")
+    if "[Uri]::EscapeUriString($RepositoryPath)" in target_resolution:
+        fail("repository JSON path still uses EscapeUriString instead of segment-wise EscapeDataString")
+    if "$encodedPath?cb=$cache" in target_resolution:
+        fail("repository JSON URL leaves the path variable undelimited before '?cb'; PowerShell can parse '?' as part of the variable name")
+    if 'main/${encodedPath}?cb=$cache' not in target_resolution:
+        fail("repository JSON URL does not explicitly delimit the encoded path variable before '?cb'")
+    if target_resolution.count("Get-RepositoryJson -RepositoryPath") != 2:
+        fail("v2.4.2 target resolver must load exactly the active diagnostic and its one-hop parent build-result through the guarded repository JSON loader")
 
     zip_start = base.find("function Get-ZipEntryText {")
     materialization_start = base.find("function Get-RequiredCriticalMaterializationPaths {")
@@ -156,8 +159,10 @@ def main() -> int:
         fail("simulated v2.4 helper does not contain exactly one CURRENT_STATE diagnostic resolver")
     if patched.count("PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED") != 1:
         fail("simulated v2.4 helper diagnostic status guard is missing or ambiguous")
-    if "$encodedBuildResultPath?cb=$cache" in patched:
+    if "$encodedPath?cb=$cache" in patched:
         fail("simulated v2.4 helper contains the PowerShell '?'-variable interpolation regression")
+    if patched.count("Get-RepositoryJson -RepositoryPath") != 2:
+        fail("simulated v2.4.2 helper does not retain exactly two guarded diagnostic build-result loads")
 
     for doc_name, doc in (("Knowledge/GALE_PROFILE_WORKFLOW.md", gale), ("Knowledge/CURRENT_LIFECYCLE.md", lifecycle)):
         if "RuntimeTools/ReplaceActiveGaleProfileV24.ps1" not in doc or V24_REVISION not in doc:
@@ -166,7 +171,7 @@ def main() -> int:
     if "diagnostic_revision" not in gale or "diagnostic_parent_revision" not in gale or "AUTO_BUILD_RESULT" not in gale or "CURRENT_STATE" not in gale:
         fail("Gale workflow authority does not document the fail-closed diagnostic runtime-target/parent-chain exception")
     if "PowerShell" not in gale or "?cb" not in gale or "ErrorAction Stop" not in gale:
-        fail("Gale workflow authority does not document the v2.4.1 diagnostic build-result URL/fail-closed repair")
+        fail("Gale workflow authority does not document the diagnostic build-result URL/fail-closed repair")
 
     print("PASS: Gale import helper v2.4.2 one-hop diagnostic-parent chain + fail-closed materialization regression contract validated")
     return 0
