@@ -4,7 +4,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`, `Current/154_S1.42AJ_DIAG1_LC_OFFICE_RUNTIME_PERFORMANCE_FINDING.md`, `BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/BUILD_RESULT.json`, `BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/STATIC_VERIFICATION.json`, `BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`  
+**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`, `Current/154_S1.42AJ_DIAG1_LC_OFFICE_RUNTIME_PERFORMANCE_FINDING.md`, `Current/155_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_PARTIAL_FINDING.md`, `BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/BUILD_RESULT.json`, `BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/STATIC_VERIFICATION.json`, `BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`, `RuntimeEvidence/S1.42AJ-DIAG2/20260918T144306Z/`  
 **Last-Validated:** 2026-09-18
 
 ## Accepted gameplay baseline
@@ -35,27 +35,31 @@ DIAG1 successfully generated LC Office on Offense. During that run the user obse
 
 ## Active diagnostic runtime target
 
-**S1.42AJ-DIAG2 — LC Office Camera Render Diagnostic — PUBLISHED / ARMED FOR A/B / NOT ACCEPTED** is the current runtime evidence-attribution target.
+**S1.42AJ-DIAG2 — LC Office Camera Render Diagnostic — FIRST RUNTIME A/B EVIDENCE INGESTED / POSITIVE PARTIAL RESULT / CONFIRMATION OUTSTANDING / NOT ACCEPTED** remains the current runtime evidence-attribution target.
 
 Profile: `Profiles/LC V1 S1.42AJ-DIAG2 LC Office Camera Render Diagnostic.r2z`  
 SHA-256: `1a17b532ebe5cfa598348ae15dea21af906ac7b33ec00c9c428d2684cc9f69cb`  
 Exact parent: `S1.42AJ-DIAG1` / SHA-256 `4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832`  
-Publication evidence: `BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`
+Runtime evidence: `RuntimeEvidence/S1.42AJ-DIAG2/20260918T144306Z/`  
+Log SHA-256: `9147a9f46ad96788f245b839f6d08b53454fbf3e1ad87bfb76d3f060f70ed5ac`  
+Partial finding: `Current/155_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_PARTIAL_FINDING.md`
 
-The reviewed artifact proves zero changed existing archive members, zero removed members and exactly one added member: `BepInEx/config/Piggy.LCOffice.cfg`, containing only `[General] Camera Frame Speed = 0`. DIAG1 force-selection and all existing package/DLL/config bytes are preserved. This isolates the camera-render variable but does **not** establish causality.
+The reviewed artifact proves zero changed existing archive members, zero removed members and exactly one added member: `BepInEx/config/Piggy.LCOffice.cfg`, containing only `[General] Camera Frame Speed = 0`. DIAG1 force-selection and all existing package/DLL/config bytes are preserved.
+
+The first DIAG2 run generated LC Office, exercised entrance/traversal and elevator behavior, and generated 15 scrap values, equal to the DIAG1 total. Interior vents spawned Bunker Spider, Masked, Spring, two Immortal Snails and Jester shortly before player death, proving that the spawn path remained active. The user did not visually encounter an interior enemy, so post-spawn movement/pathfinding/interaction remains unvalidated. The user reported no noticeable stutter before dying. Because the run ended about 6m17 after Office generation, earlier than DIAG1's roughly 7m39 post-generation span, this is positive partial A/B evidence rather than causal confirmation.
 
 ## Live execution state
 
 - Accepted baseline: **S1.42AI**.
 - Balanced lifecycle candidate: **S1.42AJ**.
 - Runtime-active evidence-attribution pointer: **S1.42AJ-DIAG2**.
-- Runtime test outstanding: **yes — DIAG2 Offense A/B**.
+- Runtime test outstanding: **yes — longer exact-DIAG2 Offense confirmation run**.
 - `BuildSpecs/current.json` remains disabled; no balanced successor is being built.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG2` is evidence attribution only and does not promote DIAG2.
 
 ## Exact next project action
 
-Run exact published **S1.42AJ-DIAG2** on Offense. Confirm LC Office generation, traversal, elevator, scrap and observable enemy behavior remain healthy, and specifically compare the previously observed later-day ~3–4 hitches-per-second stutter against DIAG1 with `Camera Frame Speed = 0`. Upload the resulting `LogOutput.log` as DIAG2 evidence.
+Repeat the exact already-published **S1.42AJ-DIAG2** on Offense with no rebuild or additional delta. Continue substantially into the later part of the in-game day, specifically determine whether the DIAG1-style ~3–4 hitches-per-second stutter remains absent, and visually observe at least one spawned interior enemy long enough to validate ordinary movement/pathfinding/interaction. Reconfirm LC Office entrance/traversal/elevator behavior and keep scrap generation under observation, then upload the resulting `LogOutput.log` again as DIAG2 evidence.
 
 Do not promote or reject balanced S1.42AJ from this diagnostic alone. If the camera hypothesis is confirmed, any balanced successor must be derived from exact S1.42AJ, never from DIAG1 or DIAG2.
 
