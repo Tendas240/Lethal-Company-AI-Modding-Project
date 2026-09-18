@@ -13,6 +13,8 @@
 - Member-by-member verification proves zero changed existing members, zero removed members and exactly one added member: `BepInEx/config/Piggy.LCOffice.cfg`.
 - The exact added config bytes are `[General]` with `Camera Frame Speed = 0`; `export.r2x` remains byte-identical to DIAG1.
 - Publication uses the exact already-reviewed CI artifact. No rebuild is substituted.
+- Exact-artifact publication commit: `d49d5c76138b41f2f64d1a4c64bbeb4775f5e4c3`.
+- Successful one-shot publisher run: `35338198554` / run #3. Two preceding publisher attempts (`35338022245`, `35338152416`) stopped before commit solely on publication-time whitespace guards; both had already passed the exact artifact, SHA and one-variable delta checks, and neither pushed artifact bytes.
 - `Current/AUTO_BUILD_RESULT.*`, `BuildSpecs/current.json`, `Current/CURRENT_STATE.json` and `RuntimeInbox/ACTIVE_BUILD.txt` are intentionally unchanged. Balanced S1.42AJ remains lifecycle authority; DIAG2 is not armed by this publication.
 
 Status: `STATIC_PASS_NOT_RUNTIME_READY`. Publication proves the isolated artifact delta only and does not establish performance causality.
