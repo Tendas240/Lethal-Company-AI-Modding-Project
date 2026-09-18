@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Run the armed S1.42AJ-DIAG2 Offense A/B runtime test. Confirm LC Office still generates and remains traversable with elevator, scrap and observable enemy behavior functioning, while specifically comparing the later-day stutter against DIAG1. Upload the resulting LogOutput.log as S1.42AJ-DIAG2 evidence. Do not infer camera-render causality before this A/B result.
+Run a longer confirmation pass with the exact already-published S1.42AJ-DIAG2 on Offense. Reach the later-day window where DIAG1 previously showed frequent stutter, report whether that stutter remains absent, and visually observe at least one interior enemy after spawn to confirm ordinary behavior. Reconfirm LC Office traversal/elevator and observe scrap generation, then upload the resulting LogOutput.log again as S1.42AJ-DIAG2 evidence. No rebuild or additional config change is required.
 
 A runtime test is pending for S1.42AJ. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
