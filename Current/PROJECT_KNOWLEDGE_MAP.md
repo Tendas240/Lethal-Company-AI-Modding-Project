@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AK candidate=S1.42AK runtime_test_outstanding=true -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -34,11 +34,11 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 ## Current lifecycle anchor
 
-Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Latest built balanced artifact is **S1.42AK — LC Office Camera Enemy Balance — STATIC VALIDATED / NOT ACCEPTED / NOT YET RUNTIME-ACTIVE**.
+Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Latest built balanced artifact and active runtime candidate is **S1.42AK — LC Office Camera Enemy Balance — STATIC VALIDATED / NOT ACCEPTED**.
 
 The longer exact **S1.42AJ-DIAG2** Offense confirmation evidence is ingested at `RuntimeEvidence/S1.42AJ-DIAG2/20260918T153753Z/`. It extended well beyond the DIAG1 comparison window and the user again reported that the characteristic repeated DIAG1 stutter did not recur. DIAG2 remains diagnostic-only and is not accepted.
 
-**S1.42AK** was built directly from exact S1.42AJ by successful workflow run `35366580975` and has SHA-256 `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`. Static verification confirms only LC Office `Camera Frame Speed = 0`, `YaBoiDucki-men_stalker 3.1.2` disabled, and Biodiversity Aloe `PowerLevel = 0`; RandomEnemiesSize is byte-identical and LC Office scrap remains unchanged. There is no active runtime candidate yet. The next action is to activate S1.42AK for full-normal runtime validation; `BuildSpecs/current.json` remains disabled.
+**S1.42AK** was built directly from exact S1.42AJ by successful workflow run `35366580975` and has SHA-256 `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`. Static verification confirms only LC Office `Camera Frame Speed = 0`, `YaBoiDucki-men_stalker 3.1.2` disabled, and Biodiversity Aloe `PowerLevel = 0`; RandomEnemiesSize is byte-identical and LC Office scrap remains unchanged. S1.42AK is now the active full-normal runtime candidate. The pending test is one ordinary unforced Offense day followed by the exact build-specific log upload; `BuildSpecs/current.json` remains disabled and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
 
 ## Authority rule
 
