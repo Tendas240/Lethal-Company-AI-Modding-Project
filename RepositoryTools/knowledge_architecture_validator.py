@@ -163,17 +163,39 @@ def validate_current_state() -> None:
     candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None
     selected_scope = state.get("selected_scope", {})
     diagnostic = selected_scope.get("diagnostic_revision", {}) if isinstance(selected_scope, dict) else {}
+    parent_diagnostic = selected_scope.get("diagnostic_parent_revision", {}) if isinstance(selected_scope, dict) else {}
     diagnostic_id = diagnostic.get("build_id") if isinstance(diagnostic, dict) else None
-    diagnostic_is_runtime_target = bool(
+    parent_id = parent_diagnostic.get("build_id") if isinstance(parent_diagnostic, dict) else None
+
+    diagnostic_common = bool(
         active_build
         and diagnostic_id == active_build
         and candidate_id
-        and diagnostic.get("base_build_id") == candidate_id
         and diagnostic.get("status") == "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED"
         and diagnostic.get("profile")
         and diagnostic.get("sha256")
         and diagnostic.get("publication_evidence")
     )
+    diagnostic_direct = bool(
+        diagnostic_common
+        and diagnostic.get("base_build_id") == candidate_id
+        and diagnostic.get("base_profile") == candidate.get("profile")
+        and diagnostic.get("base_sha256") == candidate.get("sha256")
+    )
+    diagnostic_one_hop = bool(
+        diagnostic_common
+        and diagnostic.get("base_build_id") != candidate_id
+        and parent_id == diagnostic.get("base_build_id")
+        and parent_diagnostic.get("status") == "PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED"
+        and diagnostic.get("base_profile") == parent_diagnostic.get("profile")
+        and diagnostic.get("base_sha256") == parent_diagnostic.get("sha256")
+        and parent_diagnostic.get("base_build_id") == candidate_id
+        and parent_diagnostic.get("base_profile") == candidate.get("profile")
+        and parent_diagnostic.get("base_sha256") == candidate.get("sha256")
+        and parent_diagnostic.get("build_result")
+        and parent_diagnostic.get("publication_evidence")
+    )
+    diagnostic_is_runtime_target = diagnostic_direct or diagnostic_one_hop
 
     if active_build and active_build not in lineage_ids and not diagnostic_is_runtime_target:
         fail(f"ACTIVE_BUILD references unknown build lineage id or explicit diagnostic runtime target: {active_build!r}")
@@ -182,6 +204,9 @@ def validate_current_state() -> None:
     if diagnostic_is_runtime_target:
         for key in ("profile", "file_index", "build_result", "static_evidence", "publication_evidence"):
             require_path(str(diagnostic.get(key, "")), f"CURRENT_STATE.selected_scope.diagnostic_revision.{key}")
+        if diagnostic_one_hop:
+            for key in ("profile", "file_index", "build_result", "static_evidence", "publication_evidence"):
+                require_path(str(parent_diagnostic.get(key, "")), f"CURRENT_STATE.selected_scope.diagnostic_parent_revision.{key}")
 
     if candidate_id:
         if state.get("runtime_test_outstanding") is not True:

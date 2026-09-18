@@ -178,17 +178,39 @@ def check_live_state() -> None:
     candidate_id = candidate.get("build_id") if isinstance(candidate, dict) else None
     selected_scope = state.get("selected_scope", {})
     diagnostic = selected_scope.get("diagnostic_revision", {}) if isinstance(selected_scope, dict) else {}
+    parent_diagnostic = selected_scope.get("diagnostic_parent_revision", {}) if isinstance(selected_scope, dict) else {}
     diagnostic_id = diagnostic.get("build_id") if isinstance(diagnostic, dict) else None
-    diagnostic_is_runtime_target = bool(
+    parent_id = parent_diagnostic.get("build_id") if isinstance(parent_diagnostic, dict) else None
+
+    diagnostic_common = bool(
         active
         and diagnostic_id == active
         and candidate_id
-        and diagnostic.get("base_build_id") == candidate_id
         and diagnostic.get("status") == "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED"
         and diagnostic.get("profile")
         and diagnostic.get("sha256")
         and diagnostic.get("publication_evidence")
     )
+    diagnostic_direct = bool(
+        diagnostic_common
+        and diagnostic.get("base_build_id") == candidate_id
+        and diagnostic.get("base_profile") == candidate.get("profile")
+        and diagnostic.get("base_sha256") == candidate.get("sha256")
+    )
+    diagnostic_one_hop = bool(
+        diagnostic_common
+        and diagnostic.get("base_build_id") != candidate_id
+        and parent_id == diagnostic.get("base_build_id")
+        and parent_diagnostic.get("status") == "PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED"
+        and diagnostic.get("base_profile") == parent_diagnostic.get("profile")
+        and diagnostic.get("base_sha256") == parent_diagnostic.get("sha256")
+        and parent_diagnostic.get("base_build_id") == candidate_id
+        and parent_diagnostic.get("base_profile") == candidate.get("profile")
+        and parent_diagnostic.get("base_sha256") == candidate.get("sha256")
+        and parent_diagnostic.get("build_result")
+        and parent_diagnostic.get("publication_evidence")
+    )
+    diagnostic_is_runtime_target = diagnostic_direct or diagnostic_one_hop
     if active not in known_builds and not diagnostic_is_runtime_target:
         error(f"runtime active-build controller points to unknown lineage build or explicit diagnostic runtime target: {active!r}")
     if controllers.get("runtime_active_build") != active:
@@ -200,6 +222,11 @@ def check_live_state() -> None:
             value = diagnostic.get(key)
             if not isinstance(value, str) or not exists(value):
                 error(f"explicit diagnostic runtime target lacks readable {key}: {value!r}")
+        if diagnostic_one_hop:
+            for key in ("profile", "file_index", "build_result", "static_evidence", "publication_evidence"):
+                value = parent_diagnostic.get(key)
+                if not isinstance(value, str) or not exists(value):
+                    error(f"explicit diagnostic parent lacks readable {key}: {value!r}")
 
     if candidate_id:
         if latest.get("build_id") != candidate_id:
