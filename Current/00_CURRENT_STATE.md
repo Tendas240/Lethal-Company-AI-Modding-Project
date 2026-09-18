@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Implement Patches/S142AKDiagScrapPlacement and the separate non-active BuildSpecs/S1.42AK-SCRAPDIAG1.json request exactly to the approved diagnostic design, then run static source/archive validation. Do not arm a runtime test yet.
+Publish and arm the exact pinned S1.42AK-SCRAPDIAG1 review artifact in a separate explicit lifecycle transition. Until that transition completes, keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding false.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

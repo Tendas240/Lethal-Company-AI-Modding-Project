@@ -16,9 +16,9 @@ The accepted full-normal evidence has one explicit coverage limit: the first att
 
 ## Active scope
 
-**LC Office Scrap Quantity/Distribution Investigation — selected / investigation only / not armed.** Canonical investigation plan: `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
+**LC Office Scrap Quantity/Distribution Investigation — implemented diagnostic / static pass / not published / not armed.** Canonical investigation plan: `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
 
-The existing count comparison is complete: LC Office's 14-15 generated/final count is comparable to nearby normal Offense evidence, while the S1.42AJ Facility high final count was BCMER `PlentyOutsideScrap` event-inflated. No LC Office-specific low-count regression is established. Spatial room/floor placement and practical discoverability remain unresolved. The diagnostic design is now complete: exact S1.42AK, reviewed deterministic Office selection, and a bounded read-only placement logger on `RoundManager.SpawnScrapInLevel`. Implementation and static validation are next. There is still no active runtime candidate, no outstanding runtime test and no armed successor.
+The existing count comparison is complete: LC Office's 14-15 generated/final count is comparable to nearby normal Offense evidence, while the S1.42AJ Facility high final count was BCMER `PlentyOutsideScrap` event-inflated. No LC Office-specific low-count regression is established. Spatial room/floor placement and practical discoverability remain unresolved. S1.42AK-SCRAPDIAG1 now implements the approved exact-S1.42AK diagnostic with reviewed deterministic Office selection and a bounded read-only `RoundManager.SpawnScrapInLevel` placement logger. Repository-native static validation passed with exactly two added diagnostic DLLs and no changed/removed existing archive members. `Current/161_S1.42AK_SCRAPDIAG1_STATIC_VALIDATION_CLEARANCE.md` pins the exact review artifact for a later explicit publication/arming transition. There is still no active runtime candidate, no outstanding runtime test and no armed successor.
 
 ## Remaining deferred independent scopes
 

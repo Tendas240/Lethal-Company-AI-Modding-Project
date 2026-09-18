@@ -1,0 +1,36 @@
+{
+  "enabled": true,
+  "build_id": "S1.42AK-SCRAPDIAG1",
+  "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+  "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+  "output_profile": "Profiles/LC V1 S1.42AK-SCRAPDIAG1 LC Office Scrap Placement Diagnostic.r2z",
+  "profile_name": "LC V1 S1.42AK LC Office Camera Enemy Balance",
+  "overwrite": false,
+  "mod_state_changes": [],
+  "mod_additions": [],
+  "mod_removals": [],
+  "config_patches": [],
+  "file_injections": [],
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S142AJDiag1OfficeSelection/S142AJDiag1OfficeSelection.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S142AJDiag1OfficeSelection/bin/Release/netstandard2.1/S142AJDiag1OfficeSelection.dll",
+      "archive_path": "BepInEx/plugins/S142AJDiag1OfficeSelection/S142AJDiag1OfficeSelection.dll"
+    },
+    {
+      "project": "Patches/S142AKDiagScrapPlacement/S142AKDiagScrapPlacement.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S142AKDiagScrapPlacement/bin/Release/netstandard2.1/S142AKDiagScrapPlacement.dll",
+      "archive_path": "BepInEx/plugins/S142AKDiagScrapPlacement/S142AKDiagScrapPlacement.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "export.r2x",
+      "not_contains": "LethalLevelLoaderUpdated"
+    }
+  ],
+  "result_json": "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json",
+  "result_md": "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.md"
+}
