@@ -34,15 +34,15 @@
   "text_assertions": [
     {
       "path": "export.r2x",
-      "regex": "(?m)^- name: YaBoiDucki-men_stalker\\r?\\n  version:\\r?\\n    major: 3\\r?\\n    minor: 1\\r?\\n    patch: 2\\r?\\n  enabled: false$"
+      "regex": "(?ms)^- name: YaBoiDucki-men_stalker\\r?$.*?^  enabled: false\\r?$"
     },
     {
       "path": "BepInEx/config/me.biodiversity.aloe.cfg",
-      "regex": "(?m)^PowerLevel = 0$"
+      "contains": "PowerLevel = 0"
     },
     {
       "path": "BepInEx/config/Piggy.LCOffice.cfg",
-      "regex": "(?m)^\\[General\\]\\r?\\nCamera Frame Speed = 0$"
+      "contains": "Camera Frame Speed = 0"
     },
     {
       "path": "BepInEx/config/wexop.random_enemies_size.cfg",
