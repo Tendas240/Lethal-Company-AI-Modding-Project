@@ -4,7 +4,7 @@
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AI",
-  "active_candidate_build_id": null,
+  "active_candidate_build_id": "S1.42AK",
   "latest_built_artifact_id": "S1.42AK",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
@@ -668,7 +668,7 @@
     {
       "id": "S1.42AK",
       "title": "LC Office Camera Enemy Balance",
-      "status": "static-validated-not-accepted-awaiting-runtime-activation",
+      "status": "active-runtime-candidate-not-accepted",
       "parent": "S1.42AJ",
       "profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
       "sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
@@ -678,7 +678,9 @@
       "build_commit": "395f8298230d343b523eeda3afbfc9253a281931",
       "static_evidence": "BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "safe_as_gameplay_base": false,
-      "principal_feature": "balanced LC Office camera render setting plus Men-stalker disable and Aloe PowerLevel zero; RandomEnemiesSize and LC Office scrap unchanged"
+      "principal_feature": "balanced LC Office camera render setting plus Men-stalker disable and Aloe PowerLevel zero; RandomEnemiesSize and LC Office scrap unchanged",
+      "candidate_record": "Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md",
+      "project_status": "Current/Projektstatus_S1.42AK_CANDIDATE.json"
     }
   ],
   "feature_index": {
