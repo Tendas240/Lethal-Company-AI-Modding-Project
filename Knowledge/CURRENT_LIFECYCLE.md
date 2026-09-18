@@ -1,10 +1,10 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AK candidate=S1.42AK runtime_test_outstanding=true -->
 # Current Project Lifecycle
 
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`, `Current/154_S1.42AJ_DIAG1_LC_OFFICE_RUNTIME_PERFORMANCE_FINDING.md`, `Current/155_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_PARTIAL_FINDING.md`, `Current/156_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_CONFIRMATION_AND_S1.42AK_SUCCESSOR_DECISION.md`, `RuntimeEvidence/S1.42AJ-DIAG2/20260918T153753Z/`, `BuildSpecs/S1.42AK_PLAN.md`  
+**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`, `Current/154_S1.42AJ_DIAG1_LC_OFFICE_RUNTIME_PERFORMANCE_FINDING.md`, `Current/155_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_PARTIAL_FINDING.md`, `Current/156_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_CONFIRMATION_AND_S1.42AK_SUCCESSOR_DECISION.md`, `Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AJ-DIAG2/20260918T153753Z/`, `BuildSpecs/S1.42AK_PLAN.md`  
 **Last-Validated:** 2026-09-18
 
 ## Accepted gameplay baseline
@@ -45,9 +45,9 @@ The longer confirmation run covered roughly twelve minutes after LC Office gener
 
 The combined A/B is sufficient for this project to carry `Camera Frame Speed = 0` into the next balanced successor, without claiming universal causal proof.
 
-## Built balanced successor
+## Active balanced runtime candidate
 
-**S1.42AK — LC Office Camera Enemy Balance — BUILT / STATIC VALIDATED / NOT ACCEPTED / NOT YET RUNTIME-ACTIVE** was built directly from exact S1.42AJ, never from DIAG1 or DIAG2.
+**S1.42AK — LC Office Camera Enemy Balance — ACTIVE RUNTIME CANDIDATE / STATIC VALIDATED / NOT ACCEPTED** was built directly from exact S1.42AJ, never from DIAG1 or DIAG2.
 
 Profile: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z`  
 SHA-256: `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
@@ -64,17 +64,17 @@ Authorized delta only:
 ## Live execution state
 
 - Accepted baseline: **S1.42AI**.
-- Latest built balanced artifact: **S1.42AK** — static validated, not accepted, not yet runtime-active.
+- Latest built balanced artifact: **S1.42AK** — active runtime candidate, static validated, not accepted.
 - Balanced parent: **S1.42AJ** — not accepted; retained as exact S1.42AK lineage parent.
 - Diagnostic evidence target: **S1.42AJ-DIAG2** — confirmation complete, diagnostic-only, not accepted.
-- Active runtime candidate: **none**.
-- Runtime test outstanding: **no**.
-- `BuildSpecs/current.json` is disabled and guards the accepted S1.42AI baseline between atomic build operations.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` remains only an idle evidence-attribution pointer; no runtime test is pending.
+- Active runtime candidate: **S1.42AK**.
+- Runtime test outstanding: **yes**.
+- `BuildSpecs/current.json` is disabled and anchored to exact S1.42AK while runtime validation is pending.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK` controls evidence attribution for the pending full-normal run.
 
 ## Exact next project action
 
-Activate **S1.42AK** as the explicit full-normal runtime candidate in one repository-native lifecycle update. Do not call it accepted before runtime evidence. The response that releases that test must include the repository-driven Gale replacement/import one-liner and the exact S1.42AK autonomous PowerShell log uploader.
+Import exact **S1.42AK** with the canonical repository-driven Gale v2.4 helper, play one ordinary unforced Offense day, report any stutter/performance/enemy/scrap anomaly and whether LC Office appeared naturally, then upload the complete fresh S1.42AK `LogOutput.log` with the exact build-specific autonomous PowerShell uploader. S1.42AK remains not accepted until an explicit runtime decision.
 
 ## Scope boundary
 
@@ -82,4 +82,4 @@ Universal-moon availability, general Interior viability work, Wesley, CullFactor
 
 ## Canonical Gale runtime import helper
 
-Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. The resolver remains fail-closed: a normal target must match `AUTO_BUILD_RESULT`; a direct diagnostic must bind exactly to that balanced result; and a second-generation diagnostic is permitted only when `CURRENT_STATE.selected_scope.diagnostic_parent_revision` identifies one exact published parent whose own base binds directly to `AUTO_BUILD_RESULT`. `AUTO_BUILD_RESULT` now identifies S1.42AK, so the earlier DIAG2 chain is retained as completed historical diagnostic evidence rather than a current runtime target. The helper does not allow an arbitrary diagnostic chain.
+Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. The resolver remains fail-closed: a normal target must match `AUTO_BUILD_RESULT`; a direct diagnostic must bind exactly to that balanced result; and a second-generation diagnostic is permitted only when `CURRENT_STATE.selected_scope.diagnostic_parent_revision` identifies one exact published parent whose own base binds directly to `AUTO_BUILD_RESULT`. `AUTO_BUILD_RESULT` and `RuntimeInbox/ACTIVE_BUILD.txt` now both identify S1.42AK, so the helper uses the ordinary normal-built-artifact path. The earlier DIAG2 chain is retained as completed historical diagnostic evidence rather than a current runtime target. The helper does not allow an arbitrary diagnostic chain.
