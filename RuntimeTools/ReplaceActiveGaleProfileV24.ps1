@@ -1,7 +1,7 @@
 $repo='Tendas240/Lethal-Company-AI-Modding-Project'
 $headers=@{'User-Agent'='LC-Profile-Updater';'Cache-Control'='no-cache'}
 $expectedBaseRevision='$helperRevision=''2026-09-05-import-uia-v2.2-materialization-proof'''
-$replacementRevision='$helperRevision=''2026-09-17-import-uia-v2.4.1-diagnostic-build-result-url-delimiting'''
+$replacementRevision='$helperRevision=''2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain'''
 
 $cache=[DateTime]::UtcNow.Ticks
 $baseUrl="https://raw.githubusercontent.com/$repo/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb=$cache"
@@ -148,9 +148,21 @@ $newTargetResolutionBlock=@'
 $active=((Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/RuntimeInbox/ACTIVE_BUILD.txt?cb=$cache" -Headers $headers).Trim())
 if(!$active){throw 'RuntimeInbox/ACTIVE_BUILD.txt ist leer'}
 Write-Host "`nAktiver Repository-Build: $active" -ForegroundColor Cyan
-
 $cache=[DateTime]::UtcNow.Ticks
 $build=Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/Current/AUTO_BUILD_RESULT.json?cb=$cache" -Headers $headers
+
+function Get-RepositoryJson {
+    param([Parameter(Mandatory=$true)][string]$RepositoryPath,[Parameter(Mandatory=$true)][string]$Label)
+    if([string]::IsNullOrWhiteSpace($RepositoryPath)){throw "$Label repository path ist leer"}
+    $segments=@($RepositoryPath -split '/')
+    if($segments.Count -eq 0 -or @($segments | Where-Object {[string]::IsNullOrWhiteSpace($_) -or $_ -eq '.' -or $_ -eq '..'}).Count -gt 0){throw "$Label hat einen ungültigen repository path: '$RepositoryPath'"}
+    $encodedPath=(@($segments | ForEach-Object {[Uri]::EscapeDataString($_)}) -join '/')
+    $cache=[DateTime]::UtcNow.Ticks
+    $url="https://raw.githubusercontent.com/$repo/main/${encodedPath}?cb=$cache"
+    try { return Invoke-RestMethod -UseBasicParsing -Uri $url -Headers $headers -ErrorAction Stop }
+    catch { throw "$Label konnte nicht geladen werden: '$RepositoryPath' ($($_.Exception.Message))" }
+}
+
 if(([string]$build.build_id) -eq $active){
     $profilePath=[string]$build.output_profile
     $expected=([string]$build.output_sha256).ToLowerInvariant()
@@ -161,52 +173,36 @@ if(([string]$build.build_id) -eq $active){
 else {
     $cache=[DateTime]::UtcNow.Ticks
     $state=Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/Current/CURRENT_STATE.json?cb=$cache" -Headers $headers
-    if(([string]$state.controllers.runtime_active_build) -ne $active){
-        throw "ACTIVE_BUILD '$active' stimmt weder mit AUTO_BUILD_RESULT '$($build.build_id)' noch mit CURRENT_STATE.controllers.runtime_active_build überein"
-    }
+    if(([string]$state.controllers.runtime_active_build) -ne $active){throw "ACTIVE_BUILD '$active' stimmt weder mit AUTO_BUILD_RESULT '$($build.build_id)' noch mit CURRENT_STATE.controllers.runtime_active_build überein"}
     $diag=$state.selected_scope.diagnostic_revision
-    if($null -eq $diag -or ([string]$diag.build_id) -ne $active){
-        throw "ACTIVE_BUILD '$active' ist kein explizit gebundener CURRENT_STATE diagnostic_revision target"
-    }
-    if(([string]$diag.status) -ne 'PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED'){
-        throw "Diagnostic runtime target '$active' hat keinen freigegebenen aktiven Status: '$($diag.status)'"
-    }
-    if(([string]$diag.base_build_id) -ne ([string]$build.build_id)){
-        throw "Diagnostic runtime target '$active' basiert nicht auf AUTO_BUILD_RESULT '$($build.build_id)'"
-    }
-    if(([string]$diag.base_profile) -ne ([string]$build.output_profile) -or ([string]$diag.base_sha256).ToLowerInvariant() -ne ([string]$build.output_sha256).ToLowerInvariant()){
-        throw "Diagnostic runtime target '$active' base profile/SHA disagree with AUTO_BUILD_RESULT"
-    }
-
-    $buildResultPath=[string]$diag.build_result
-    if([string]::IsNullOrWhiteSpace($buildResultPath)){throw "Diagnostic runtime target '$active' hat keinen build_result authority path"}
-    $buildResultSegments=@($buildResultPath -split '/')
-    if($buildResultSegments.Count -eq 0 -or @($buildResultSegments | Where-Object {[string]::IsNullOrWhiteSpace($_) -or $_ -eq '.' -or $_ -eq '..'}).Count -gt 0){
-        throw "Diagnostic runtime target '$active' hat einen ungültigen build_result repository path: '$buildResultPath'"
-    }
-    $encodedBuildResultPath=(@($buildResultSegments | ForEach-Object {[Uri]::EscapeDataString($_)}) -join '/')
-    $cache=[DateTime]::UtcNow.Ticks
-    $diagBuildUrl="https://raw.githubusercontent.com/$repo/main/${encodedBuildResultPath}?cb=$cache"
-    try {
-        $diagBuild=Invoke-RestMethod -UseBasicParsing -Uri $diagBuildUrl -Headers $headers -ErrorAction Stop
-    }
-    catch {
-        throw "Diagnostic build_result konnte nicht geladen werden: '$buildResultPath' ($($_.Exception.Message))"
-    }
+    if($null -eq $diag -or ([string]$diag.build_id) -ne $active){throw "ACTIVE_BUILD '$active' ist kein explizit gebundener CURRENT_STATE diagnostic_revision target"}
+    if(([string]$diag.status) -ne 'PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED'){throw "Diagnostic runtime target '$active' hat keinen freigegebenen aktiven Status: '$($diag.status)'"}
+    $diagBuild=Get-RepositoryJson -RepositoryPath ([string]$diag.build_result) -Label "Diagnostic build_result"
     if(([string]$diagBuild.build_id) -ne $active){throw "Diagnostic build_result gehört zu '$($diagBuild.build_id)', erwartet '$active'"}
-    if(([string]$diagBuild.output_profile) -ne ([string]$diag.profile) -or ([string]$diagBuild.output_sha256).ToLowerInvariant() -ne ([string]$diag.sha256).ToLowerInvariant()){
-        throw "Diagnostic build_result profile/SHA disagree with CURRENT_STATE diagnostic_revision"
-    }
-    if(([string]$diagBuild.base_profile) -ne ([string]$diag.base_profile) -or ([string]$diagBuild.base_sha256).ToLowerInvariant() -ne ([string]$diag.base_sha256).ToLowerInvariant()){
-        throw "Diagnostic build_result base profile/SHA disagree with CURRENT_STATE diagnostic_revision"
-    }
+    if(([string]$diagBuild.output_profile) -ne ([string]$diag.profile) -or ([string]$diagBuild.output_sha256).ToLowerInvariant() -ne ([string]$diag.sha256).ToLowerInvariant()){throw "Diagnostic build_result profile/SHA disagree with CURRENT_STATE diagnostic_revision"}
+    if(([string]$diagBuild.base_profile) -ne ([string]$diag.base_profile) -or ([string]$diagBuild.base_sha256).ToLowerInvariant() -ne ([string]$diag.base_sha256).ToLowerInvariant()){throw "Diagnostic build_result base profile/SHA disagree with CURRENT_STATE diagnostic_revision"}
 
+    if(([string]$diag.base_build_id) -eq ([string]$build.build_id)){
+        if(([string]$diag.base_profile) -ne ([string]$build.output_profile) -or ([string]$diag.base_sha256).ToLowerInvariant() -ne ([string]$build.output_sha256).ToLowerInvariant()){throw "Direct diagnostic runtime target '$active' base profile/SHA disagree with AUTO_BUILD_RESULT"}
+    }
+    else {
+        $parent=$state.selected_scope.diagnostic_parent_revision
+        if($null -eq $parent -or ([string]$parent.build_id) -ne ([string]$diag.base_build_id)){throw "Diagnostic runtime target '$active' parent '$($diag.base_build_id)' is not the explicit CURRENT_STATE diagnostic_parent_revision"}
+        if(([string]$parent.status) -ne 'PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED'){throw "Diagnostic parent '$($parent.build_id)' has no authorized parent status: '$($parent.status)'"}
+        if(([string]$diag.base_profile) -ne ([string]$parent.profile) -or ([string]$diag.base_sha256).ToLowerInvariant() -ne ([string]$parent.sha256).ToLowerInvariant()){throw "Diagnostic runtime target '$active' base profile/SHA disagree with diagnostic parent"}
+        if(([string]$parent.base_build_id) -ne ([string]$build.build_id)){throw "Diagnostic parent '$($parent.build_id)' is not anchored directly to AUTO_BUILD_RESULT '$($build.build_id)'"}
+        if(([string]$parent.base_profile) -ne ([string]$build.output_profile) -or ([string]$parent.base_sha256).ToLowerInvariant() -ne ([string]$build.output_sha256).ToLowerInvariant()){throw "Diagnostic parent '$($parent.build_id)' base profile/SHA disagree with AUTO_BUILD_RESULT"}
+        $parentBuild=Get-RepositoryJson -RepositoryPath ([string]$parent.build_result) -Label "Parent diagnostic build_result"
+        if(([string]$parentBuild.build_id) -ne ([string]$parent.build_id)){throw "Parent diagnostic build_result build ID mismatch"}
+        if(([string]$parentBuild.output_profile) -ne ([string]$parent.profile) -or ([string]$parentBuild.output_sha256).ToLowerInvariant() -ne ([string]$parent.sha256).ToLowerInvariant()){throw "Parent diagnostic build_result profile/SHA disagree with CURRENT_STATE diagnostic_parent_revision"}
+        if(([string]$parentBuild.base_profile) -ne ([string]$parent.base_profile) -or ([string]$parentBuild.base_sha256).ToLowerInvariant() -ne ([string]$parent.base_sha256).ToLowerInvariant()){throw "Parent diagnostic build_result base profile/SHA disagree with CURRENT_STATE diagnostic_parent_revision"}
+    }
     $profilePath=[string]$diagBuild.output_profile
     $expected=([string]$diagBuild.output_sha256).ToLowerInvariant()
     $expectedProfileName=[string]$diagBuild.profile_name
     if(!$expectedProfileName){$expectedProfileName=[IO.Path]::GetFileNameWithoutExtension($profilePath)}
     if(!$profilePath -or !$expected -or !$expectedProfileName){throw 'Diagnostic build_result enthält keinen gültigen Profilpfad, Profilnamen oder SHA-256'}
-    Write-Host "Expliziter diagnostischer Runtime-Target wurde über CURRENT_STATE + build_result fail-closed verifiziert." -ForegroundColor DarkGray
+    Write-Host "Expliziter diagnostischer Runtime-Target wurde über CURRENT_STATE + one-hop parent chain + build_result fail-closed verifiziert." -ForegroundColor DarkGray
 }
 '@
 
@@ -229,5 +225,5 @@ if($patched.IndexOf("AUTO_BUILD_RESULT gehört zu",[System.StringComparison]::Or
     throw 'Refusing to launch: legacy unconditional ACTIVE_BUILD/AUTO_BUILD_RESULT mismatch abort survived the v2.4 patch'
 }
 
-Write-Host 'Launching canonical Gale importer with v2.4.1 fail-closed diagnostic-target URL delimiting, export-read and recursive package-materialization contract...' -ForegroundColor Cyan
+Write-Host 'Launching canonical Gale importer with v2.4.2 fail-closed one-hop diagnostic-parent chain, export-read and recursive package-materialization contract...' -ForegroundColor Cyan
 Invoke-Expression $patched

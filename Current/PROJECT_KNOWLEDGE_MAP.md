@@ -34,15 +34,13 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 ## Current lifecycle anchor
 
-Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Latest balanced built artifact and active lifecycle candidate: **S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / RUNTIME VALIDATION OUTSTANDING / NOT ACCEPTED**, SHA-256 `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`.
+Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Balanced built artifact and active lifecycle candidate: **S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / NOT ACCEPTED**, SHA-256 `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`.
 
-S1.42AH remains accepted predecessor/rollback provenance. The S1.42AI-DIAG1/R1/R2/R3 chain remains diagnostic evidence only.
+`BuildSpecs/current.json` remains disabled. The completed DIAG1 evidence at `RuntimeEvidence/S1.42AJ-DIAG1/20260917T204918Z/` proved actual LC Office generation but included a user-reported later-day stutter of roughly 3–4 hitches per second. Accepted-baseline comparison downgraded the initial NavMesh-error hypothesis.
 
-`BuildSpecs/current.json` remains disabled at `IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG1` is runtime-evidence attribution only. Full-normal S1.42AJ evidence at `RuntimeEvidence/S1.42AJ/20260917T171109Z/` already proves unforced Offense viability (`LC Office (65)`) and final normalized effective rarity `100`; that run selected Facility rather than LC Office.
+Exact reviewed **S1.42AJ-DIAG2** is published and armed as the diagnostic runtime target, profile SHA-256 `1a17b532ebe5cfa598348ae15dea21af906ac7b33ec00c9c428d2684cc9f69cb`. Its exact parent is DIAG1. Static proof shows the sole additional archive delta is `BepInEx/config/Piggy.LCOffice.cfg` with `[General] Camera Frame Speed = 0`; DIAG1 force-selection and every existing member remain byte-identical. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG2` is runtime-evidence attribution only.
 
-The strictly diagnostic **S1.42AJ-DIAG1** artifact is published from exact S1.42AJ and statically verified, profile SHA-256 `4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832`. Its completed Offense runtime evidence is now ingested at `RuntimeEvidence/S1.42AJ-DIAG1/20260917T204918Z/` with log SHA-256 `bb81a91f2cabcb1a3b010dd988335cc9c9cb0b5bcc9bd646ee2ac18ccbb15a26`. The run obtained actual LC Office generation coverage but exposed a user-reported performance regression of roughly 3-4 later-day stutters per second. DIAG1 remains diagnostic only and does not replace balanced S1.42AJ.
-
-The next action is to build a strictly one-variable **S1.42AJ-DIAG2** from exact DIAG1 with only `BepInEx/config/Piggy.LCOffice.cfg` -> `[General] Camera Frame Speed = 0`, preserving DIAG1 force-selection. After static proof and publication/arming, run an Offense A/B test for the stutter. The camera-render path is a working hypothesis, not a proven cause. Balanced S1.42AJ remains unchanged and not accepted. Universal-moon availability and all unrelated Interior scopes remain deferred.
+The next action is the Offense DIAG2 A/B runtime test: verify Office generation/traversal/elevator/scrap/enemy behavior and determine whether the prior later-day stutter disappears or materially decreases. The camera-render path remains a hypothesis until that evidence is observed. Any balanced successor must derive from exact S1.42AJ. Universal-moon availability and unrelated Interior scopes remain deferred.
 
 ## Authority rule
 

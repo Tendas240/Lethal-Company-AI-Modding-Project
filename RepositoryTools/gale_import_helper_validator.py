@@ -13,7 +13,7 @@ GALE_KNOWLEDGE = ROOT / "Knowledge/GALE_PROFILE_WORKFLOW.md"
 LIFECYCLE = ROOT / "Knowledge/CURRENT_LIFECYCLE.md"
 
 BASE_REVISION = "2026-09-05-import-uia-v2.2-materialization-proof"
-V24_REVISION = "2026-09-17-import-uia-v2.4.1-diagnostic-build-result-url-delimiting"
+V24_REVISION = "2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain"
 BASE_SIGNATURE = f"$helperRevision='{BASE_REVISION}'"
 V24_SIGNATURE = f"$helperRevision='{V24_REVISION}'"
 
@@ -92,6 +92,14 @@ def main() -> int:
         "$diagBuild.output_profile",
         "$diagBuild.output_sha256",
         "$diagBuild.profile_name",
+        "$state.selected_scope.diagnostic_parent_revision",
+        "PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED",
+        "if(([string]$diag.base_build_id) -eq ([string]$build.build_id))",
+        "$parent.base_build_id",
+        "$parent.base_profile",
+        "$parent.base_sha256",
+        "$parent.build_result",
+        "Parent diagnostic build_result",
         "Diagnostic build_result profile/SHA disagree with CURRENT_STATE diagnostic_revision",
         "Diagnostic build_result base profile/SHA disagree with CURRENT_STATE diagnostic_revision",
     )
@@ -155,12 +163,12 @@ def main() -> int:
         if "RuntimeTools/ReplaceActiveGaleProfileV24.ps1" not in doc or V24_REVISION not in doc:
             fail(f"{doc_name} does not route the current Gale workflow to the diagnostic-aware v2.4 revision")
 
-    if "diagnostic_revision" not in gale or "AUTO_BUILD_RESULT" not in gale or "CURRENT_STATE" not in gale:
-        fail("Gale workflow authority does not document the fail-closed diagnostic runtime-target exception")
+    if "diagnostic_revision" not in gale or "diagnostic_parent_revision" not in gale or "AUTO_BUILD_RESULT" not in gale or "CURRENT_STATE" not in gale:
+        fail("Gale workflow authority does not document the fail-closed diagnostic runtime-target/parent-chain exception")
     if "PowerShell" not in gale or "?cb" not in gale or "ErrorAction Stop" not in gale:
         fail("Gale workflow authority does not document the v2.4.1 diagnostic build-result URL/fail-closed repair")
 
-    print("PASS: Gale import helper v2.4.1 diagnostic-target URL delimiting + fail-closed materialization regression contract validated")
+    print("PASS: Gale import helper v2.4.2 one-hop diagnostic-parent chain + fail-closed materialization regression contract validated")
     return 0
 
 

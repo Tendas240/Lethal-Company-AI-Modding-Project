@@ -7,7 +7,7 @@
 **Implementation:** `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` (canonical launcher), `RuntimeTools/ReplaceActiveGaleProfile.ps1` (validated v2.2 importer base)  
 **Related:** `Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`, `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`, `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`, `Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`  
 **Last-Validated:** 2026-09-04  
-**Last-Hardened:** 2026-09-17 (`2026-09-17-import-uia-v2.4.1-diagnostic-build-result-url-delimiting`; diagnostic target resolver statically/regression validated after the first real DIAG1 import exposed a pre-import PowerShell URL-interpolation defect; local UI import behavior remains inherited from the previously user-validated path)
+**Last-Hardened:** 2026-09-18 (`2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`; adds a fail-closed explicit one-hop diagnostic-parent chain for DIAG2 while preserving the previously validated local UI/import path)
 
 ## Canonical launcher
 
@@ -17,12 +17,13 @@ For the currently ready-to-test build, use the repository-driven v2.4 launcher r
 $u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfileV24.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
 ```
 
-Before presenting it, `RuntimeInbox/ACTIVE_BUILD.txt` must resolve fail-closed through one of exactly two repository-authorized paths:
+Before presenting it, `RuntimeInbox/ACTIVE_BUILD.txt` must resolve fail-closed through one of three explicitly bounded repository-authorized shapes:
 
-1. **normal built-artifact path:** `ACTIVE_BUILD == Current/AUTO_BUILD_RESULT.json.build_id`; or
-2. **explicit diagnostic runtime-target path:** `Current/CURRENT_STATE.json.controllers.runtime_active_build == ACTIVE_BUILD`, `selected_scope.diagnostic_revision.build_id == ACTIVE_BUILD`, the diagnostic status is exactly `PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED`, its `base_build_id` / base profile / base SHA bind back to the current `AUTO_BUILD_RESULT`, and its referenced `build_result` independently agrees on build ID, output profile/SHA, base profile/SHA and exact profile name.
+1. **normal built-artifact path:** `ACTIVE_BUILD == Current/AUTO_BUILD_RESULT.json.build_id`;
+2. **direct diagnostic path:** the active `selected_scope.diagnostic_revision` is explicitly authorized, its own build-result matches its output/base identity, and its base binds directly to `AUTO_BUILD_RESULT`; or
+3. **one-hop diagnostic-parent path:** the active `diagnostic_revision` is explicitly authorized, its base identity matches exactly one `selected_scope.diagnostic_parent_revision`, that parent has the exact parent status `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED`, the parent's own build-result matches it, and the parent itself binds directly to `AUTO_BUILD_RESULT`.
 
-No other `ACTIVE_BUILD` / `AUTO_BUILD_RESULT` mismatch is permitted. The diagnostic exception changes only repository target resolution; it does not promote the diagnostic artifact, replace the balanced candidate or weaken download/import integrity checks.
+The third shape is deliberately **not recursive**. It authorizes the exact balanced -> DIAG1 -> DIAG2 chain without allowing an arbitrary diagnostic lineage. No other `ACTIVE_BUILD` / `AUTO_BUILD_RESULT` mismatch is permitted. Diagnostic resolution changes only repository target selection; it does not promote a diagnostic artifact, replace the balanced candidate or weaken download/import integrity checks.
 
 The v2.4 launcher deliberately wraps the already user-validated v2.2 importer instead of duplicating its UI Automation implementation. It first requires the exact expected v2.2 source-revision signature, replaces only the export-text reader, critical-materialization functions and repository target-resolution block in memory, stamps the current v2.4.x revision, and then executes the resulting helper. If the underlying v2.2 source drifts, v2.4 refuses to run until that drift is reviewed.
 
@@ -76,8 +77,9 @@ v2.4 preserves the v2.3 package-root semantics, closes the false-positive path b
 - an LC binding must resolve to exactly two materialization contracts: base SoundAPI plus LC binding;
 - package-root searches still require exactly one non-empty expected DLL; zero, empty, or duplicate matches fail closed;
 - normal targets still require exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
-- a mismatch is accepted only through the exact `CURRENT_STATE.controllers.runtime_active_build` + `selected_scope.diagnostic_revision` binding and its referenced build-result crosschecks;
-- the diagnostic base identity must match the current `AUTO_BUILD_RESULT`, preventing an unrelated or stale diagnostic from being imported;
+- a mismatch is accepted only through the exact `CURRENT_STATE.controllers.runtime_active_build` + `selected_scope.diagnostic_revision` binding and referenced build-result crosschecks;
+- a direct diagnostic must bind to the current `AUTO_BUILD_RESULT`; a second-generation diagnostic must bind to exactly one explicit `selected_scope.diagnostic_parent_revision`, whose own build-result and base identity bind directly to `AUTO_BUILD_RESULT`;
+- no recursive or arbitrary-length diagnostic chain is accepted;
 - the wrapper refuses if the validated v2.2 helper source revision drifts or if the legacy defective StreamReader constructor or unconditional mismatch-abort path survives the in-memory patch.
 
 ## v2.4.1 diagnostic build-result URL repair
@@ -93,6 +95,14 @@ Revision `2026-09-17-import-uia-v2.4.1-diagnostic-build-result-url-delimiting` r
 - all existing build ID, profile, SHA and base-artifact crosschecks remain unchanged.
 
 The permanent repository regression gate now rejects the original `$encodedBuildResultPath?cb=` interpolation shape and requires the delimited `${encodedBuildResultPath}?cb=` form plus terminating fetch semantics.
+
+## v2.4.2 explicit one-hop diagnostic-parent chain
+
+S1.42AJ-DIAG2 is intentionally built from exact DIAG1 rather than directly from balanced S1.42AJ. v2.4.1 correctly failed closed on that shape because its diagnostic exception required the active diagnostic base to equal `AUTO_BUILD_RESULT`.
+
+Revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain` extends only that authority edge. It requires the active diagnostic to match its build-result; when its base is not `AUTO_BUILD_RESULT`, exactly one `selected_scope.diagnostic_parent_revision` must match that base, carry status `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED`, match its own build-result, and bind directly back to `AUTO_BUILD_RESULT`.
+
+There is no recursive fallback. A third diagnostic generation would fail until explicitly reviewed and represented by a new bounded contract.
 
 The permanent repository regression gate is `RepositoryTools/gale_import_helper_validator.py`, run by `.github/workflows/knowledge-architecture.yml`.
 
@@ -113,7 +123,7 @@ Keep the exact workflow safety constraints from `Current/93_GALE_ACTIVE_PROFILE_
 
 - exact build/profile matching only;
 - normal build resolution remains exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
-- diagnostic mismatches require exact controller + diagnostic revision + diagnostic status + base-build + build-result agreement; no generic fallback exists;
+- diagnostic mismatches require exact controller + active diagnostic revision + status + build-result agreement; a non-direct diagnostic additionally requires the exact one-hop `diagnostic_parent_revision` contract above; no generic or recursive fallback exists;
 - the dynamic diagnostic build-result path must be segment-escaped, explicitly delimited before `?cb`, and its HTTP fetch must terminate on failure;
 - explicit confirmation before deleting a local profile;
 - no direct editing of Gale `data.sqlite3`;

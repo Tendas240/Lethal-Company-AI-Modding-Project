@@ -36,11 +36,11 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION`)
 - Guarded build base: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z` / `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG1`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG2`
 
 ## Exact next action
 
-Prepare and build a strictly one-variable S1.42AJ-DIAG2 from exact S1.42AJ-DIAG1: preserve the diagnostic LC Office force-selection and every package/DLL/config except set BepInEx/config/Piggy.LCOffice.cfg [General] Camera Frame Speed = 0. Statically verify that exact delta, publish/arm DIAG2, then runtime A/B test on Offense specifically for the previously observed frequent afternoon-time stutter. Do not alter balanced S1.42AJ or infer causality before the A/B result.
+Run the armed S1.42AJ-DIAG2 Offense A/B runtime test. Confirm LC Office still generates and remains traversable with elevator, scrap and observable enemy behavior functioning, while specifically comparing the later-day stutter against DIAG1. Upload the resulting LogOutput.log as S1.42AJ-DIAG2 evidence. Do not infer camera-render causality before this A/B result.
 
 A runtime test is pending for S1.42AJ. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

@@ -8,15 +8,15 @@
 
 ## Current position
 
-Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Latest built artifact: **S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / RUNTIME NOT ARMED**, SHA-256 `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`.
+Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Balanced lifecycle candidate: **S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / NOT ACCEPTED**, SHA-256 `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`.
 
-S1.42AJ is the sole active runtime candidate and full-normal runtime validation is outstanding. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` provides runtime-evidence attribution; S1.42AI remains the accepted gameplay baseline.
+S1.42AJ remains the balanced lifecycle candidate. Exact published S1.42AJ-DIAG2 is the active diagnostic runtime target for the isolated LC Office camera-render A/B; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG2` provides evidence attribution only. S1.42AI remains the accepted gameplay baseline.
 
 ## Active scope
 
-**LC Office V81 Integration — S1.42AJ built / static validated / active runtime candidate.** Canonical plan: `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; static evidence: `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
+**LC Office V81 Integration — S1.42AJ balanced candidate; DIAG2 A/B armed.** Canonical plan: `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; static evidence: `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`; DIAG2 publication evidence: `BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
 
-S1.42AJ is compatibility-first and preserves modern IAmBatby LLL ownership plus accepted equal-effective-weight behavior. Static validation and runtime arming are complete; the outstanding gate is full-normal runtime proof of LC Office registration/viability/generation/traversal/elevator behavior and the rest of the canonical acceptance contract. Universal moon availability plus all unrelated interior work remain outside this scope.
+S1.42AJ is compatibility-first and preserves modern IAmBatby LLL ownership plus accepted equal-effective-weight behavior. Full-normal evidence already proves ordinary Offense viability; DIAG1 proved actual Office generation but exposed later-day stutter. DIAG2 changes only `Camera Frame Speed = 0` and is armed to isolate that performance variable while preserving Office generation/traversal/elevator/scrap/enemy behavior. The camera hypothesis remains unproven. Universal moon availability plus all unrelated interior work remain outside this scope.
 
 ## Remaining deferred independent scopes
 
