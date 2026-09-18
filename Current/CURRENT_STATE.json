@@ -55,7 +55,7 @@
     "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
     "diagnostic_revision": {
       "build_id": "S1.42AJ-DIAG2",
-      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+      "status": "PUBLISHED_DIAGNOSTIC_RUNTIME_EVIDENCE_COMPLETE_NOT_ACCEPTED",
       "base_build_id": "S1.42AJ-DIAG1",
       "base_profile": "Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z",
       "base_sha256": "4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832",
@@ -119,10 +119,10 @@
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
     "build_id": "IDLE_AFTER_S1.42AJ_DIAG2_CONFIRMATION_AWAITING_S1.42AK_BUILD",
-    "build_base_profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
-    "build_base_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
+    "build_base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+    "build_base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",
-    "runtime_active_build": "S1.42AJ-DIAG2"
+    "runtime_active_build": "S1.42AJ"
   },
   "canonical_navigation": {
     "bootstrap": "START_HERE_ChatGPT_Masterprompt.txt",

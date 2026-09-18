@@ -1,8 +1,8 @@
 {
   "enabled": false,
   "build_id": "IDLE_AFTER_S1.42AJ_DIAG2_CONFIRMATION_AWAITING_S1.42AK_BUILD",
-  "base_profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
-  "base_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
+  "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+  "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",
   "profile_name": "DO_NOT_BUILD",
   "overwrite": false,

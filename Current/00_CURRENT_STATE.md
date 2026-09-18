@@ -35,8 +35,8 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Runtime test outstanding: **no**
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AJ_DIAG2_CONFIRMATION_AWAITING_S1.42AK_BUILD`)
-- Guarded build base: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z` / `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG2`
+- Guarded build base: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ`
 
 ## Exact next action
 

@@ -64,8 +64,8 @@ Authorized delta only:
 - Diagnostic evidence target: **S1.42AJ-DIAG2** — confirmation complete, diagnostic-only, not accepted.
 - Prepared successor: **S1.42AK** — not built.
 - Runtime test outstanding: **no**.
-- `BuildSpecs/current.json` remains disabled and guarded to exact S1.42AJ.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG2` remains evidence attribution only until a later lifecycle transition.
+- `BuildSpecs/current.json` remains disabled and guards the accepted S1.42AI baseline between atomic build operations; the S1.42AK trigger will explicitly switch its build base to exact S1.42AJ.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` is an idle evidence-attribution pointer only; no runtime test is pending.
 
 ## Exact next project action
 
