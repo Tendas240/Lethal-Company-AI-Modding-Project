@@ -11,10 +11,10 @@
 - **Accepted gameplay baseline:** S1.42AI — BCMER ShyGuy Interior-Only Event Correction — **ACCEPTED FULL NORMAL STACK**.
 - **Accepted predecessor / rollback provenance:** S1.42AH — Mouth Dog Pikmin Dual Prevention.
 - **Completed diagnostic evidence:** S1.42AI-DIAG1R3 — runtime diagnostic pass / not gameplay accepted.
-- **Latest built artifact:** S1.42AK — LC Office Camera Enemy Balance — static validated / not accepted / awaiting runtime activation.
+- **Latest built artifact:** S1.42AK — LC Office Camera Enemy Balance — static validated / active runtime candidate / not accepted.
 - **Balanced parent:** S1.42AJ — LC Office V81 Integration — not accepted; exact parent of S1.42AK.
-- **Active candidate:** none; no runtime test is currently outstanding.
-- **Current action:** activate S1.42AK as the explicit full-normal runtime candidate; do not call it accepted before runtime evidence.
+- **Active candidate:** S1.42AK; one full-normal unforced Offense runtime test and fresh log are outstanding.
+- **Current action:** run exact S1.42AK normally, upload its fresh log, then make an explicit runtime decision.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -71,7 +71,7 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AI-DIAG1R2 | **RUNTIME DIAGNOSTIC FAILED / REPAIR REQUIRED / NOT ACCEPTED** | R2 armed the owner/applicability repairs, then failed exact ShyGuy identity resolution because source required ordinal `Shy Guy` while runtime proved `Shy guy`; failure authority: `Current/149...`. |
 | S1.42AI-DIAG1R3 | **RUNTIME DIAGNOSTIC PASS / NOT GAMEPLAY ACCEPTED** | Exact `Shy guy` identity/isolation passed; interior visibility was observed and exterior visibility was not exercised. Diagnostic evidence only; the independent full-normal S1.42AI gate later passed. |
 | S1.42AJ | **NOT ACCEPTED BALANCED PARENT** | Compatibility-first LC Office V81 package integration from exact accepted S1.42AI; exact balanced parent of S1.42AK. |
-| S1.42AK | **STATIC VALIDATED / NOT ACCEPTED / AWAITING RUNTIME ACTIVATION** | Balanced LC Office camera/enemy delta built directly from exact S1.42AJ; RandomEnemiesSize byte-identical and scrap untuned. |
+| S1.42AK | **ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED** | Balanced LC Office camera/enemy delta built directly from exact S1.42AJ; RandomEnemiesSize byte-identical and scrap untuned; full-normal evidence pending. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -100,7 +100,10 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Build commit: `395f8298230d343b523eeda3afbfc9253a281931`
 - Archive delta: changed existing `export.r2x` and `BepInEx/config/me.biodiversity.aloe.cfg`; added `BepInEx/config/Piggy.LCOffice.cfg`; removed none.
 - RandomEnemiesSize: byte-identical to S1.42AJ.
-- Status: static validated / not accepted / awaiting explicit runtime activation.
+- Candidate: `Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`
+- Project status: `Current/Projektstatus_S1.42AK_CANDIDATE.json`
+- Runtime: active / full-normal validation outstanding.
+- Status: active runtime candidate / not accepted.
 
 ### S1.42C — enemy-spawn restore baseline
 
