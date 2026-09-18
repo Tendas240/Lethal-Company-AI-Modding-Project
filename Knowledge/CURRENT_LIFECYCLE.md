@@ -4,7 +4,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `Current/156_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_CONFIRMATION_AND_S1.42AK_SUCCESSOR_DECISION.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `BuildSpecs/S1.42AK-SCRAPDIAG1_PLAN.md`  
+**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `Current/156_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_CONFIRMATION_AND_S1.42AK_SUCCESSOR_DECISION.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `BuildSpecs/S1.42AK-SCRAPDIAG1_PLAN.md`, `Current/161_S1.42AK_SCRAPDIAG1_STATIC_VALIDATION_CLEARANCE.md`, `BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.md`  
 **Last-Validated:** 2026-09-18
 
 ## Accepted gameplay baseline
@@ -51,20 +51,25 @@ S1.42AK was built directly from exact S1.42AJ and accepts only the statically ve
 - Latest built artifact: **S1.42AK**.
 - Active runtime candidate: **none**.
 - Runtime test outstanding: **no**.
-- Selected scope: **LC Office Scrap Quantity/Distribution Investigation — SELECTED / INVESTIGATION / NOT ARMED**.
+- Selected scope: **LC Office Scrap Quantity/Distribution Investigation — IMPLEMENTED / STATIC PASS / NOT PUBLISHED / NOT ARMED**.
+- The exact pinned static review artifact is GitHub Actions artifact `10563033130` from run `35383680389`; diagnostic profile SHA-256 `233bcc058a3fa95d63e0577c4ff74b5a0dc137db49757b50376e447dd082d3b1`.
 - `BuildSpecs/current.json` is disabled at `IDLE_AFTER_S1.42AK_ACCEPTANCE_INVESTIGATE_LC_OFFICE_SCRAP`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK` remains the runtime-evidence attribution build.
-- No successor build is armed.
+- No successor build is armed and no runtime test is outstanding.
 
 ## Selected investigation scope
 
 LC Office scrap quantity/distribution is explicitly selected under `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md` and `Knowledge/INTERIORS_AND_LLL.md`. Selection changes no gameplay bytes, assigns no successor build ID, leaves `BuildSpecs/current.json` disabled, leaves `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`, and creates no runtime test.
 
-The existing-evidence count comparison is complete. LC Office produced a 14-object base target in DIAG1 and 15 in DIAG2; accepted S1.42AK Spooky Manor also began at 14 and finalized at 15. The normal S1.42AJ Facility run finalized much higher only because BCMER selected `PlentyOutsideScrap`, so that event-inflated result is not a normal comparator. No LC Office-specific low-count regression is established. Placement/discoverability remains unresolved. The diagnostic design is now complete in `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`: derive directly from S1.42AK, reuse the reviewed AJDIAG1 Office selector, and add one new read-only logger postfix on exact `RoundManager.SpawnScrapInLevel` with bounded delayed placement snapshots. It is not implemented or armed.
+The existing-evidence count comparison is complete. LC Office produced a 14-object base target in DIAG1 and 15 in DIAG2; accepted S1.42AK Spooky Manor also began at 14 and finalized at 15. The normal S1.42AJ Facility run finalized much higher only because BCMER selected `PlentyOutsideScrap`, so that event-inflated result is not a normal comparator. No LC Office-specific low-count regression is established. Placement/discoverability remains unresolved.
+
+The diagnostic defined by `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md` is now implemented and statically validated. PR #127 adds the unchanged reviewed AJDIAG1 selector plus the new read-only `RoundManager.SpawnScrapInLevel` placement logger. Static gate run `35383680389` proves exact accepted S1.42AK parent identity, exactly two added diagnostic DLLs, no changed/removed existing archive members, preserved S139/normalizer bytes, passing AJDIAG1 boundary tests and clean compilation. `Current/161_S1.42AK_SCRAPDIAG1_STATIC_VALIDATION_CLEARANCE.md` pins review artifact `10563033130` as the publication identity because independent clean CI rebuilds are not byte-deterministic.
+
+This static pass does not establish placement behavior and does not arm runtime.
 
 ## Exact next project action
 
-Implement Patches/S142AKDiagScrapPlacement and the separate non-active BuildSpecs/S1.42AK-SCRAPDIAG1.json request exactly to the approved diagnostic design, then run static source/archive validation. Do not arm a runtime test yet.
+Publish and arm the exact pinned S1.42AK-SCRAPDIAG1 review artifact in a separate explicit lifecycle transition. Until that transition completes, keep `BuildSpecs/current.json` disabled, `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`, no active candidate and no outstanding runtime test.
 
 ## Permanent Gale workflow
 
