@@ -117,9 +117,15 @@ def validate_live_state(root: Path) -> list[str]:
             errors.append(f"{rel}: accepted build {accepted_id} absent from live authority")
         if latest_id and latest_id not in text:
             errors.append(f"{rel}: latest build {latest_id} absent from live authority")
-        if runtime_pending and candidate_id:
-            if candidate_id not in text:
-                errors.append(f"{rel}: active candidate {candidate_id} absent from live authority")
+        runtime_target_id = candidate_id
+        selected_scope = state.get("selected_scope", {})
+        if runtime_pending and not runtime_target_id and isinstance(selected_scope, dict):
+            diagnostic_revision = selected_scope.get("diagnostic_revision", {})
+            if isinstance(diagnostic_revision, dict):
+                runtime_target_id = str(diagnostic_revision.get("build_id", ""))
+        if runtime_pending and runtime_target_id:
+            if runtime_target_id not in text:
+                errors.append(f"{rel}: runtime target {runtime_target_id} absent from live authority")
             for phrase in STALE_RUNTIME_PENDING_PHRASES:
                 if phrase in lowered:
                     errors.append(f"{rel}: stale runtime-pending contradiction: {phrase!r}")
@@ -129,6 +135,21 @@ def validate_live_state(root: Path) -> list[str]:
     validate_work_queue_redirect(root, errors)
 
     selected = state.get("selected_scope", {})
+    diagnostic = selected.get("diagnostic_revision", {}) if isinstance(selected, dict) else {}
+    diagnostic_id = str(diagnostic.get("build_id", "")) if isinstance(diagnostic, dict) else ""
+    accepted_base_diagnostic = bool(
+        runtime_pending
+        and not candidate_id
+        and diagnostic_id
+        and diagnostic_id == str(state.get("controllers", {}).get("runtime_active_build", ""))
+        and diagnostic.get("status") == "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED"
+        and diagnostic.get("base_build_id") == accepted_id
+        and diagnostic.get("base_profile") == accepted.get("profile")
+        and diagnostic.get("base_sha256") == accepted.get("sha256")
+        and latest_id == accepted_id
+        and latest.get("profile") == accepted.get("profile")
+        and latest.get("sha256") == accepted.get("sha256")
+    )
     if runtime_pending and candidate_id:
         if selected.get("candidate_build_id") != candidate_id:
             errors.append("CURRENT_STATE.selected_scope candidate_build_id disagrees with active candidate")
@@ -140,6 +161,8 @@ def validate_live_state(root: Path) -> list[str]:
         irrelevant = "\n".join(str(x) for x in selected.get("currently_irrelevant_actions", []))
         if "later successor candidate is actually built" in irrelevant.lower():
             errors.append("CURRENT_STATE currently_irrelevant_actions still contains the pre-build runtime prohibition")
+    elif runtime_pending and not accepted_base_diagnostic:
+        errors.append("runtime_test_outstanding without active candidate is not an explicit direct diagnostic over accepted/latest baseline")
 
     topics = {str(t.get("id")): t for t in km.get("topics", []) if isinstance(t, dict) and t.get("id")}
     for tid, canonical in (
@@ -190,6 +213,22 @@ def validate_live_state(root: Path) -> list[str]:
             fallback_rel = f"ProfileSources/{fallback}"
             if canonical_sources and fallback_rel != canonical_sources and (root / fallback_rel).exists():
                 errors.append(f"duplicate filename-derived candidate snapshot exists: {fallback_rel}; canonical is {canonical_sources}")
+    elif runtime_pending and accepted_base_diagnostic:
+        if diagnostic_id in completed_by_id:
+            errors.append(f"active pending diagnostic {diagnostic_id} must not appear in completed profiles before runtime decision")
+        pending_entry = pending_by_id.get(diagnostic_id)
+        if not pending_entry:
+            errors.append(f"artifact evidence pending_profiles missing active diagnostic {diagnostic_id}")
+        else:
+            if pending_entry.get("role") != "ACTIVE_RUNTIME_DIAGNOSTIC_PENDING":
+                errors.append(f"artifact evidence {diagnostic_id} is not marked ACTIVE_RUNTIME_DIAGNOSTIC_PENDING")
+            if pending_entry.get("runtime_evidence_required") is not False:
+                errors.append(f"artifact evidence {diagnostic_id} must explicitly defer runtime evidence while pending")
+            if pending_entry.get("profile") != diagnostic.get("profile") or pending_entry.get("profile_sha256") != diagnostic.get("sha256"):
+                errors.append(f"artifact evidence {diagnostic_id} profile identity disagrees with CURRENT_STATE diagnostic_revision")
+            canonical_sources = str(diagnostic.get("profile_sources", "")).rstrip("/")
+            if str(pending_entry.get("profile_sources", "")).rstrip("/") != canonical_sources:
+                errors.append(f"artifact evidence {diagnostic_id} profile_sources disagrees with CURRENT_STATE diagnostic_revision")
 
     return errors
 
