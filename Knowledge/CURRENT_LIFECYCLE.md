@@ -61,4 +61,4 @@ Select exactly one remaining deferred independent scope from `Knowledge/ROADMAP_
 
 ## Permanent Gale workflow
 
-For any future explicitly armed runtime candidate, use the canonical repository-driven Gale replacement/import helper in `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` under the current fail-closed helper contract. No runtime test is presently outstanding, so no import or log upload is required now.
+For any future explicitly armed runtime candidate, use the canonical repository-driven Gale replacement/import helper in `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain` under the current fail-closed diagnostic-aware v2.4 contract. No runtime test is presently outstanding, so no import or log upload is required now.
