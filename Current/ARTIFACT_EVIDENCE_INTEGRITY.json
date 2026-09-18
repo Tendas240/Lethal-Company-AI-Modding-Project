@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "status": "CURRENT_CANONICAL_ARTIFACT_EVIDENCE_INDEX",
   "profiles": [
     {
@@ -180,7 +180,7 @@
   "pending_profiles": [
     {
       "build_id": "S1.42AJ",
-      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
+      "role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED",
       "profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
       "profile_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
       "profile_sources": "ProfileSources/S1.42AJ/",
@@ -190,6 +190,19 @@
       "project_status": "Current/Projektstatus_S1.42AJ_CANDIDATE.json",
       "build_plan": "BuildSpecs/S1.42AJ_PLAN.md",
       "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false
+    },
+    {
+      "build_id": "S1.42AK",
+      "role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED",
+      "profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+      "profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+      "profile_sources": "ProfileSources/S1.42AK/",
+      "file_index": "ProfileSources/S1.42AK/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AK/export.r2x",
+      "build_plan": "BuildSpecs/S1.42AK_PLAN.md",
+      "static_evidence": "BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false
     }
@@ -241,7 +254,8 @@
     "ProfileSources/S1.42AB, S1.42AC, S1.42AF, S1.42AG, S1.42AH, S1.42AI and all S1.42AI diagnostic revisions contain readable FILE_INDEX.json/export materialization as applicable.",
     "S1.42AH final accepted runtime evidence is RuntimeEvidence/S1.42AH/20260909T162513Z with raw LogOutput.log SHA-256 ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729.",
     "S1.42AI full-normal accepted runtime evidence is RuntimeEvidence/S1.42AI/20260916T180452Z with raw LogOutput.log SHA-256 1765a2b65cfa31da049ba415938119f9eb3690d09618a2f85a32209bfad6d9b5.",
-    "S1.42AI-DIAG1R3 runtime diagnostic pass evidence is RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z with raw LogOutput.log SHA-256 37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084; it remains diagnostic-only evidence."
+    "S1.42AI-DIAG1R3 runtime diagnostic pass evidence is RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z with raw LogOutput.log SHA-256 37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084; it remains diagnostic-only evidence.",
+    "S1.42AK was built from exact S1.42AJ by successful workflow run 35366580975 with profile SHA-256 b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee; readable ProfileSources/S1.42AK and FILE_INDEX are present, and static verification records the exact three-member archive delta."
   ],
-  "last_validated": "2026-09-17"
+  "last_validated": "2026-09-18"
 }
