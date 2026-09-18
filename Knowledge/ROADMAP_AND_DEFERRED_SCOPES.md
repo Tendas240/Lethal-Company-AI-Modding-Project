@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
@@ -16,9 +16,9 @@ The accepted full-normal evidence has one explicit coverage limit: the first att
 
 ## Active scope
 
-**LC Office Scrap Quantity/Distribution Investigation — implemented diagnostic / static pass / not published / not armed.** Canonical investigation plan: `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
+**LC Office Scrap Quantity/Distribution Investigation — published diagnostic / armed runtime placement test outstanding.** Canonical investigation plan: `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
 
-The existing count comparison is complete: LC Office's 14-15 generated/final count is comparable to nearby normal Offense evidence, while the S1.42AJ Facility high final count was BCMER `PlentyOutsideScrap` event-inflated. No LC Office-specific low-count regression is established. Spatial room/floor placement and practical discoverability remain unresolved. S1.42AK-SCRAPDIAG1 now implements the approved exact-S1.42AK diagnostic with reviewed deterministic Office selection and a bounded read-only `RoundManager.SpawnScrapInLevel` placement logger. Repository-native static validation passed with exactly two added diagnostic DLLs and no changed/removed existing archive members. `Current/161_S1.42AK_SCRAPDIAG1_STATIC_VALIDATION_CLEARANCE.md` pins the exact review artifact for a later explicit publication/arming transition. There is still no active runtime candidate, no outstanding runtime test and no armed successor.
+The existing count comparison is complete: LC Office's 14-15 generated/final count is comparable to nearby normal Offense evidence, while the S1.42AJ Facility high final count was BCMER `PlentyOutsideScrap` event-inflated. No LC Office-specific low-count regression is established. Spatial room/floor placement and practical discoverability remain unresolved. Exact published S1.42AK-SCRAPDIAG1 is now the active diagnostic runtime target over accepted/latest S1.42AK; there is intentionally no gameplay active candidate. Its only additions are the reviewed Office selector and read-only placement logger. The pending Offense run must collect stable item/anchor/support placement evidence before any tuning decision.
 
 ## Remaining deferred independent scopes
 
