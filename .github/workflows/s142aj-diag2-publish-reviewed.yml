@@ -198,7 +198,7 @@ jobs:
           if sha != '1a17b532ebe5cfa598348ae15dea21af906ac7b33ec00c9c428d2684cc9f69cb':
               raise RuntimeError('published DIAG2 profile SHA mismatch: '+sha)
           PY
-          git diff --cached --check -- BuildSpecs/S1.42AJ-DIAG2_PLAN.md BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md
+          git diff --cached --check -- BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md
 
       - name: Commit exact reviewed DIAG2 publication atomically
         shell: bash
