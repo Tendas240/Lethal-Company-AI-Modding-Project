@@ -1,6 +1,6 @@
 # Universal Interior Viability / Equal Availability Investigation Plan
 
-**Status:** SELECTED / BASELINE INVENTORY OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
+**Status:** SELECTED / PHASE A INVENTORY COMPLETE / PHASE B MATRIX OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
 **Date:** 2026-09-18  
 **Accepted baseline:** S1.42AK — `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`  
@@ -46,23 +46,22 @@ Known restriction/qualification examples already preserved by current authority:
 
 ## Phase A — authoritative current inventory
 
-Build a current S1.42AK inventory containing every registered dungeon flow, not merely every LLL config section.
+**COMPLETE.** Authority: `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`.
 
-For each flow record:
+Exact reconciliation:
 
-- human display name;
-- exact runtime/asset flow identifier;
-- package/mod owner;
-- registration owner: LLL, JLL, DawnLib/native, or another explicit owner;
-- whether an LLL `Custom Dungeon` config section exists;
-- whether `Enable Content Configuration` is active;
-- current manual level-name injection;
-- current dynamic tag injection;
-- current route-price injection;
-- known package/author exclusions;
-- existing runtime proof of successful registration/generation.
+- 55 DawnLib-registered DungeonFlow assets;
+- 53 LLL ExtendedDungeonFlow selection entries: 3 Vanilla, 49 Custom, 1 External Black Mesa;
+- two additional Dawn-only vanilla assets: `Level1FlowExtraLarge` and `Level1Flow3Exits`;
+- exact S1.42AF pre-LC inventory: 52 LLL entries;
+- exact S1.42AK delta: `LC Office / OfficeDungeonFlow`;
+- 28 LLL `Custom Dungeon` config sections are non-cardinal;
+- only 22 unique current Custom flows have active direct LLL config coverage;
+- three enabled sections are aliases and two are stale/orphaned;
+- 27 current Custom flows therefore remain governed by owner/author matching data rather than a direct project LLL config override;
+- no separate JLL-only registered dungeon flow was found in the exact current Dawn/LLL inventories.
 
-Reconcile the current total against the historical 52-flow observation and explain every difference.
+Registration proof is not treated as generation/traversal proof.
 
 ## Phase B — moon/flow viability matrix
 
@@ -132,4 +131,6 @@ The next repository decision must be based on the completed owner/flow/moon matr
 
 ## Exact next action
 
-Create the authoritative S1.42AK registered-interior/owner inventory and moon-viability matrix from `ProfileSources/S1.42AK/` plus accepted runtime evidence. Reconcile the 28 LLL custom sections, historical 52-flow count, owner-specific registrations and known exclusions before proposing any build.
+Build the **Phase-B moon/flow viability matrix** from `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md` plus current owner/runtime evidence. Classify every current selectable moon/flow pairing as `VIABLE_EQUAL_100`, `CONFIG_GAP`, `AUTHOR_OR_OWNER_HARD_BLOCK`, `KNOWN_TECHNICAL_RESTRICTION`, or `NOT_YET_PROVEN`.
+
+No build or runtime test is authorized yet.
