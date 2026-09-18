@@ -11,9 +11,10 @@
 - **Accepted gameplay baseline:** S1.42AI — BCMER ShyGuy Interior-Only Event Correction — **ACCEPTED FULL NORMAL STACK**.
 - **Accepted predecessor / rollback provenance:** S1.42AH — Mouth Dog Pikmin Dual Prevention.
 - **Completed diagnostic evidence:** S1.42AI-DIAG1R3 — runtime diagnostic pass / not gameplay accepted.
-- **Latest built artifact:** S1.42AJ — LC Office V81 Integration — static validated / not accepted / balanced parent for prepared S1.42AK.
+- **Latest built artifact:** S1.42AK — LC Office Camera Enemy Balance — static validated / not accepted / awaiting runtime activation.
+- **Balanced parent:** S1.42AJ — LC Office V81 Integration — not accepted; exact parent of S1.42AK.
 - **Active candidate:** none; no runtime test is currently outstanding.
-- **Current action:** execute the atomic repository-native S1.42AK build from exact S1.42AJ under `BuildSpecs/S1.42AK_PLAN.md`.
+- **Current action:** activate S1.42AK as the explicit full-normal runtime candidate; do not call it accepted before runtime evidence.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -69,7 +70,8 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AI-DIAG1R1 | **RUNTIME DIAGNOSTIC FAILED / REPAIR ANALYSIS REQUIRED / NOT ACCEPTED** | R1 repaired the exact `WithdrawPikminFromOnion` metadata-derived owner type and proved that repair at runtime. A later strict complex-owner target then failed because `ElevatorMod.Patches.EndlessElevator` was absent; DIAG1 invalidated and rolled back all owned Harmony hooks. Failure authority: `Current/147...`. |
 | S1.42AI-DIAG1R2 | **RUNTIME DIAGNOSTIC FAILED / REPAIR REQUIRED / NOT ACCEPTED** | R2 armed the owner/applicability repairs, then failed exact ShyGuy identity resolution because source required ordinal `Shy Guy` while runtime proved `Shy guy`; failure authority: `Current/149...`. |
 | S1.42AI-DIAG1R3 | **RUNTIME DIAGNOSTIC PASS / NOT GAMEPLAY ACCEPTED** | Exact `Shy guy` identity/isolation passed; interior visibility was observed and exterior visibility was not exercised. Diagnostic evidence only; the independent full-normal S1.42AI gate later passed. |
-| S1.42AJ | **ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED** | Compatibility-first LC Office V81 package integration from exact accepted S1.42AI; static gate proves exact four-operation package delta, sole modern LLL ownership, no deprecated fork and no non-export profile-byte drift. |
+| S1.42AJ | **NOT ACCEPTED BALANCED PARENT** | Compatibility-first LC Office V81 package integration from exact accepted S1.42AI; exact balanced parent of S1.42AK. |
+| S1.42AK | **STATIC VALIDATED / NOT ACCEPTED / AWAITING RUNTIME ACTIVATION** | Balanced LC Office camera/enemy delta built directly from exact S1.42AJ; RandomEnemiesSize byte-identical and scrap untuned. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -86,6 +88,19 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Build commit: `7fbaae92523637ae3fec6c1e242ec2538918e7b7`
 - Runtime: armed / full-normal validation outstanding / no runtime evidence yet
 
+
+### S1.42AK — LC Office Camera Enemy Balance
+
+- Parent: exact S1.42AJ, never DIAG1/DIAG2.
+- Profile: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z`
+- SHA-256: `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`
+- Plan: `BuildSpecs/S1.42AK_PLAN.md`
+- Static evidence: `BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md`
+- Successful build workflow run: `35366580975`
+- Build commit: `395f8298230d343b523eeda3afbfc9253a281931`
+- Archive delta: changed existing `export.r2x` and `BepInEx/config/me.biodiversity.aloe.cfg`; added `BepInEx/config/Piggy.LCOffice.cfg`; removed none.
+- RandomEnemiesSize: byte-identical to S1.42AJ.
+- Status: static validated / not accepted / awaiting explicit runtime activation.
 
 ### S1.42C — enemy-spawn restore baseline
 
