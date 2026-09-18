@@ -20,7 +20,7 @@ $u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Projec
 Before presenting it, `RuntimeInbox/ACTIVE_BUILD.txt` must resolve fail-closed through one of three explicitly bounded repository-authorized shapes:
 
 1. **normal built-artifact path:** `ACTIVE_BUILD == Current/AUTO_BUILD_RESULT.json.build_id`;
-2. **direct diagnostic path:** the active `selected_scope.diagnostic_revision` is explicitly authorized, its own build-result matches its output/base identity, and its base binds directly to `AUTO_BUILD_RESULT`; or
+2. **direct diagnostic path:** the active `selected_scope.diagnostic_revision` is explicitly authorized, its own build-result matches its output/base identity, and its base binds directly to `AUTO_BUILD_RESULT`; this remains valid when `AUTO_BUILD_RESULT` is the accepted/latest baseline and there is intentionally no gameplay `active_candidate`; or
 3. **one-hop diagnostic-parent path:** the active `diagnostic_revision` is explicitly authorized, its base identity matches exactly one `selected_scope.diagnostic_parent_revision`, that parent has the exact parent status `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED`, the parent's own build-result matches it, and the parent itself binds directly to `AUTO_BUILD_RESULT`.
 
 The third shape is deliberately **not recursive**. It authorizes the exact balanced -> DIAG1 -> DIAG2 chain without allowing an arbitrary diagnostic lineage. No other `ACTIVE_BUILD` / `AUTO_BUILD_RESULT` mismatch is permitted. Diagnostic resolution changes only repository target selection; it does not promote a diagnostic artifact, replace the balanced candidate or weaken download/import integrity checks.
