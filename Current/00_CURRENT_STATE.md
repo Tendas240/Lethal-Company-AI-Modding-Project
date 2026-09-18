@@ -35,13 +35,13 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AK_ACCEPTANCE_AWAITING_NEXT_SCOPE`)
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AK_ACCEPTANCE_INVESTIGATE_LC_OFFICE_SCRAP`)
 - Guarded build base: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`
 
 ## Exact next action
 
-Select exactly one remaining deferred independent scope from Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md before preparing or arming any successor. No new runtime test is pending and no successor build is armed.
+Perform the repository-native existing-evidence comparison for LC Office scrap count versus comparable Offense non-Office runs, then determine whether spatial placement/discoverability requires isolated diagnostic instrumentation. Do not arm a runtime test or change scrap tuning yet.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
