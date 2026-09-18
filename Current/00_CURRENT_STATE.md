@@ -35,13 +35,13 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_LC_OFFICE_SCRAP_INVESTIGATION_SELECT_NEXT_SCOPE`)
+- `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`
 
 ## Exact next action
 
-Select the next independent deferred scope from Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md. No gameplay candidate, successor build or runtime test is currently armed.
+Create the authoritative S1.42AK registered-interior/owner inventory and moon-viability matrix from ProfileSources plus runtime evidence, then classify every missing moon/flow pairing as configuration gap, owner hard block, known technical restriction or not-yet-proven. No build or runtime test is authorized yet.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
