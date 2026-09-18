@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "date": "2026-09-17",
+  "date": "2026-09-18",
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
   "current_accepted_build_id": "S1.42AI",
   "active_candidate_build_id": null,
-  "latest_built_artifact_id": "S1.42AJ",
+  "latest_built_artifact_id": "S1.42AK",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
     {
@@ -664,6 +664,21 @@
       "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "safe_as_gameplay_base": false,
       "principal_feature": "compatibility-first LC Office V81 integration; diagnostic camera A/B complete; exact parent prepared for S1.42AK; not accepted"
+    },
+    {
+      "id": "S1.42AK",
+      "title": "LC Office Camera Enemy Balance",
+      "status": "static-validated-not-accepted-awaiting-runtime-activation",
+      "parent": "S1.42AJ",
+      "profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+      "sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+      "build_plan": "BuildSpecs/S1.42AK_PLAN.md",
+      "decision_record": "BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+      "workflow_run": 35366580975,
+      "build_commit": "395f8298230d343b523eeda3afbfc9253a281931",
+      "static_evidence": "BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+      "safe_as_gameplay_base": false,
+      "principal_feature": "balanced LC Office camera render setting plus Men-stalker disable and Aloe PowerLevel zero; RandomEnemiesSize and LC Office scrap unchanged"
     }
   ],
   "feature_index": {
@@ -694,7 +709,8 @@
     "BCMER_ShyGuy_DIAG1_owner_type_resolution_repair": "S1.42AI-DIAG1R1",
     "BCMER_ShyGuy_DIAG1_endless_elevator_applicability_repair": "S1.42AI-DIAG1R2",
     "BCMER_ShyGuy_DIAG1_exact_identity_repair": "S1.42AI-DIAG1R3",
-    "LC_Office_V81_integration_static_validated": "S1.42AJ"
+    "LC_Office_V81_integration_static_validated": "S1.42AJ",
+    "LC_Office_camera_frame_speed_zero_Men_stalker_disabled_Aloe_powerlevel_zero_balanced_successor": "S1.42AK"
   },
   "lineage_invariants": [
     "S1.42C is the canonical normal enemy-spawn/config restore baseline after S1.42B diagnostic divergence.",
@@ -710,6 +726,7 @@
     "S1.42AI was built directly from accepted S1.42AH. Current/152 explicitly accepts the isolated BCMER ShyGuy interior-only correction after full-normal runtime evidence; S1.42AI is the current accepted full-normal-stack gameplay baseline.",
     "S1.42AI-DIAG1 has an explicit failed diagnostic runtime decision in Current/145; it must not be rerun unchanged or treated as an active runtime candidate.",
     "S1.42AI-DIAG1R1 was built directly from S1.42AI, not from the failed DIAG1 profile bytes. Current/147 records its explicit runtime diagnostic failure after the metadata-derived LethalMin owner repair succeeded but ElevatorMod.Patches.EndlessElevator was absent; it is not an active runtime candidate and is not a safe gameplay base.",
-    "S1.42AI-DIAG1R3 was built directly from exact S1.42AI, not from failed R2 bytes. It changes only the exact runtime-proven enemyName literal to 'Shy guy' while preserving ordinal/fail-closed identity, owner and applicability guards; canonical materialized validation and runtime isolation passed, but R3 remains diagnostic evidence only and is not a gameplay base."
+    "S1.42AI-DIAG1R3 was built directly from exact S1.42AI, not from failed R2 bytes. It changes only the exact runtime-proven enemyName literal to 'Shy guy' while preserving ordinal/fail-closed identity, owner and applicability guards; canonical materialized validation and runtime isolation passed, but R3 remains diagnostic evidence only and is not a gameplay base.",
+    "S1.42AK was built directly from exact S1.42AJ, never from DIAG1/DIAG2. Static verification permits only export.r2x and Aloe config changes plus added Piggy.LCOffice.cfg; RandomEnemiesSize is byte-identical and LC Office scrap is untuned. S1.42AK is not accepted until an explicit runtime decision."
   ]
 }
