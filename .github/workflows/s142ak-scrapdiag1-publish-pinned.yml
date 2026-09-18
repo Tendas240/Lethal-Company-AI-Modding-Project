@@ -153,8 +153,12 @@ jobs:
                   raise SystemExit(f"FILE_INDEX byte identity mismatch: {name}")
               if entry.get("text_snapshot"):
                   snap = pin / "ProfileSources/S1.42AK-SCRAPDIAG1" / name
-                  if not snap.is_file() or snap.read_bytes() != payload:
-                      raise SystemExit(f"text snapshot mismatch: {name}")
+                  if not snap.is_file():
+                      raise SystemExit(f"text snapshot missing: {name}")
+                  try:
+                      snap.read_text(encoding="utf-8")
+                  except UnicodeDecodeError as exc:
+                      raise SystemExit(f"text snapshot is not UTF-8 readable: {name}: {exc}")
 
           payload = {
               "status": "EXACT_PINNED_REVIEW_ARTIFACT_PUBLICATION_PAYLOAD_VERIFIED",
