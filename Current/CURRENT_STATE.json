@@ -53,14 +53,14 @@
   "selected_scope": {
     "scope_id": "LC_OFFICE_V81_INTEGRATION",
     "title": "LC Office V81 Integration",
-    "status": "DIAG2_PUBLISHED_ARMED_RUNTIME_AB_OUTSTANDING",
+    "status": "DIAG2_PARTIAL_RUNTIME_EVIDENCE_INGESTED_CONFIRMATION_OUTSTANDING",
     "accepted_baseline": "S1.42AI",
     "built_build_id": "S1.42AJ",
     "plan": "BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "S1.42AJ remains the balanced lifecycle candidate and is not accepted. Its full-normal Offense evidence proves LC Office viability at author rarity 65 and final normalized effective rarity 100. S1.42AJ-DIAG1 force-selected and generated LC Office, with ingested runtime evidence at RuntimeEvidence/S1.42AJ-DIAG1/20260917T204918Z/ and a user-reported later-day stutter of roughly 3-4 hitches per second. The NavMesh-error hypothesis was downgraded by accepted-baseline comparison. Exact reviewed S1.42AJ-DIAG2 is published with SHA-256 1a17b532ebe5cfa598348ae15dea21af906ac7b33ec00c9c428d2684cc9f69cb. Static proof shows zero changed existing archive members, zero removed members, and exactly one added member: BepInEx/config/Piggy.LCOffice.cfg with [General] Camera Frame Speed = 0. DIAG2 is armed strictly for the Offense camera-render A/B test; causality remains unproven until runtime evidence is observed.",
-    "analysis_contract": "Run exact published S1.42AJ-DIAG2 on Offense as a diagnostic A/B against the completed DIAG1 observation. Verify LC Office generation, traversal, elevator, scrap and observable enemy behavior, and specifically observe whether the previous later-day roughly 3-4 hitches-per-second stutter disappears or is materially reduced with Camera Frame Speed = 0. Preserve balanced S1.42AJ unchanged and do not promote or reject it from DIAG2 alone. If the camera hypothesis is confirmed, derive any balanced successor from exact S1.42AJ, never from DIAG1/DIAG2. Universal-moon availability and unrelated Interior scopes remain out of scope.",
-    "next_action": "Run the armed S1.42AJ-DIAG2 Offense A/B runtime test. Confirm LC Office still generates and remains traversable with elevator, scrap and observable enemy behavior functioning, while specifically comparing the later-day stutter against DIAG1. Upload the resulting LogOutput.log as S1.42AJ-DIAG2 evidence. Do not infer camera-render causality before this A/B result.",
+    "finding": "S1.42AJ remains the balanced lifecycle candidate and is not accepted. Its full-normal Offense evidence proves LC Office viability at author rarity 65 and final normalized effective rarity 100. DIAG1 force-selected and generated LC Office but produced a user-reported later-day stutter of roughly 3-4 hitches per second. Exact DIAG2 changes only Piggy.LCOffice [General] Camera Frame Speed to 0 versus DIAG1. The first DIAG2 Offense runtime evidence is ingested at RuntimeEvidence/S1.42AJ-DIAG2/20260918T144306Z/ with log SHA-256 9147a9f46ad96788f245b839f6d08b53454fbf3e1ad87bfb76d3f060f70ed5ac. LC Office generated, entrance/traversal and elevator operation were evidenced, and 15 scrap values were generated, matching the DIAG1 total. Interior vents spawned Bunker Spider, Masked, Spring, two Immortal Snails and Jester shortly before player death. The user reported no noticeable stutter before dying but did not visually observe an interior enemy. Because the run ended about 6m17 after Office generation, earlier than DIAG1's roughly 7m39 post-generation span, the result supports but does not causally confirm the camera-render hypothesis. A longer exact-DIAG2 confirmation run remains required.",
+    "analysis_contract": "Repeat exact published S1.42AJ-DIAG2 on Offense with no rebuild or additional delta. Preserve Camera Frame Speed = 0 and DIAG1 force-selection. Continue substantially into the later in-game day, specifically determine whether the DIAG1-style repeated stutter remains absent, and visually observe at least one spawned interior enemy long enough to validate ordinary movement/pathfinding/interaction. Reconfirm Office generation/traversal/elevator and keep scrap behavior under observation. Preserve balanced S1.42AJ unchanged and do not promote or reject it from this diagnostic alone. If the camera hypothesis is confirmed, derive any balanced successor from exact S1.42AJ, never from DIAG1/DIAG2. Universal-moon availability and unrelated Interior scopes remain out of scope.",
+    "next_action": "Run a longer confirmation pass with the exact already-published S1.42AJ-DIAG2 on Offense. Reach the later-day window where DIAG1 previously showed frequent stutter, report whether that stutter remains absent, and visually observe at least one interior enemy after spawn to confirm ordinary behavior. Reconfirm LC Office traversal/elevator and observe scrap generation, then upload the resulting LogOutput.log again as S1.42AJ-DIAG2 evidence. No rebuild or additional config change is required.",
     "candidate_build_id": "S1.42AJ",
     "profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
     "sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
@@ -70,7 +70,7 @@
     "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
     "diagnostic_revision": {
       "build_id": "S1.42AJ-DIAG2",
-      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_PARTIAL_RUNTIME_EVIDENCE_INGESTED_CONFIRMATION_OUTSTANDING_NOT_ACCEPTED",
       "base_build_id": "S1.42AJ-DIAG1",
       "base_profile": "Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z",
       "base_sha256": "4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832",
@@ -91,7 +91,10 @@
       "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
       "camera_frame_speed": 0,
       "runtime_role": "DIAGNOSTIC_ONLY_FORCE_SELECT_LC_OFFICE_CAMERA_RENDER_DISABLED_AB",
-      "runtime_validation_status": "PUBLISHED_ARMED_RUNTIME_AB_OUTSTANDING_NOT_ACCEPTED"
+      "runtime_validation_status": "PARTIAL_RUNTIME_EVIDENCE_INGESTED_POSITIVE_AB_CONFIRMATION_OUTSTANDING_NOT_ACCEPTED",
+      "runtime_evidence": "RuntimeEvidence/S1.42AJ-DIAG2/20260918T144306Z/",
+      "runtime_log_sha256": "9147a9f46ad96788f245b839f6d08b53454fbf3e1ad87bfb76d3f060f70ed5ac",
+      "runtime_finding": "Current/155_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_PARTIAL_FINDING.md"
     },
     "diagnostic_parent_revision": {
       "build_id": "S1.42AJ-DIAG1",
@@ -120,7 +123,7 @@
       "runtime_validation_status": "RUNTIME_EVIDENCE_INGESTED_DIAGNOSTIC_PARENT_NOT_ACCEPTED"
     }
   },
-  "next_action": "Run the armed S1.42AJ-DIAG2 Offense A/B runtime test. Confirm LC Office still generates and remains traversable with elevator, scrap and observable enemy behavior functioning, while specifically comparing the later-day stutter against DIAG1. Upload the resulting LogOutput.log as S1.42AJ-DIAG2 evidence. Do not infer camera-render causality before this A/B result.",
+  "next_action": "Run a longer confirmation pass with the exact already-published S1.42AJ-DIAG2 on Offense. Reach the later-day window where DIAG1 previously showed frequent stutter, report whether that stutter remains absent, and visually observe at least one interior enemy after spawn to confirm ordinary behavior. Reconfirm LC Office traversal/elevator and observe scrap generation, then upload the resulting LogOutput.log again as S1.42AJ-DIAG2 evidence. No rebuild or additional config change is required.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
