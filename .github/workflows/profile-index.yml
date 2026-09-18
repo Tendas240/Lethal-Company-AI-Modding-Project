@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "Profiles/*.r2z"
+      - "Profiles/EXPECTED_HASHES.json"
       - "References/LegacyProfiles/**/*.r2z"
       - "BuildSystem/index_profile.py"
       - ".github/workflows/profile-index.yml"
@@ -38,22 +39,53 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
+          import json
           import subprocess
           from pathlib import Path
 
-          files = subprocess.check_output(
+          changed = subprocess.check_output(
               [
                   "git", "diff", "--name-only", "HEAD^", "HEAD", "--",
                   "Profiles", "References/LegacyProfiles",
               ],
               text=True,
           ).splitlines()
-          files = [path for path in files if path.lower().endswith(".r2z")]
+
+          files = {
+              path for path in changed
+              if path.lower().endswith(".r2z")
+          }
+
+          registry_path = "Profiles/EXPECTED_HASHES.json"
+          if registry_path in changed:
+              current = json.loads(Path(registry_path).read_text(encoding="utf-8"))
+              previous_raw = subprocess.run(
+                  ["git", "show", f"HEAD^:{registry_path}"],
+                  text=True,
+                  capture_output=True,
+              )
+              previous = (
+                  json.loads(previous_raw.stdout)
+                  if previous_raw.returncode == 0 and previous_raw.stdout.strip()
+                  else {}
+              )
+              for path, meta in current.items():
+                  if previous.get(path) != meta:
+                      if not Path(path).is_file():
+                          raise RuntimeError(
+                              f"Changed current profile registry entry points to missing profile: {path}"
+                          )
+                      files.add(path)
+
+          files = sorted(files)
 
           # A workflow/indexer change may happen after a legacy reference profile
           # was uploaded. In that case, index all retained legacy references so
           # they become machine-readable without requiring a second binary commit.
-          if not files:
+          if not files and any(
+              path in changed
+              for path in ("BuildSystem/index_profile.py", ".github/workflows/profile-index.yml")
+          ):
               files = sorted(
                   str(path)
                   for path in Path("References/LegacyProfiles").glob("**/*.r2z")
