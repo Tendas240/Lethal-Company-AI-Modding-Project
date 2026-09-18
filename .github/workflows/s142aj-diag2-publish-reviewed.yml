@@ -1,0 +1,210 @@
+name: Publish exact reviewed S1.42AJ-DIAG2 artifact
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/s142aj-diag2-publish-reviewed.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: s142aj-diag2-reviewed-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Download exact reviewed DIAG2 artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/s142aj-diag2-reviewed"
+          curl -L --fail --silent --show-error \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/10543786202/zip" \
+            -o "$RUNNER_TEMP/s142aj-diag2-reviewed/review.zip"
+          echo '3ebabd1af28a0dbe08faa32809ef21bea76dc553100acb3caa2484dfced73aae  '"$RUNNER_TEMP/s142aj-diag2-reviewed/review.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/s142aj-diag2-reviewed/review.zip" -d "$RUNNER_TEMP/s142aj-diag2-reviewed/extracted"
+
+      - name: Verify exact reviewed DIAG2 bytes and one-variable delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, zipfile
+          from pathlib import Path
+          import os
+
+          root = Path('.')
+          src = Path(os.environ['RUNNER_TEMP']) / 's142aj-diag2-reviewed' / 'extracted'
+          base = root / 'Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z'
+          reviewed = src / 'Profiles/LC V1 S1.42AJ-DIAG2 LC Office Camera Render Diagnostic.r2z'
+          index_path = src / 'ProfileSources/S1.42AJ-DIAG2/FILE_INDEX.json'
+          build_result = src / 'BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/BUILD_RESULT.json'
+          static_result = src / 'BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/STATIC_VERIFICATION.json'
+          config = 'BepInEx/config/Piggy.LCOffice.cfg'
+          diag = 'BepInEx/plugins/S142AJDiag1OfficeSelection/S142AJDiag1OfficeSelection.dll'
+          normalizer = 'BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll'
+
+          def sha_bytes(data): return hashlib.sha256(data).hexdigest()
+          def sha_file(path): return sha_bytes(path.read_bytes())
+          def members(path):
+              with zipfile.ZipFile(path) as z:
+                  names = z.namelist()
+                  if len(names) != len(set(names)):
+                      raise RuntimeError(f'duplicate archive members in {path}')
+                  return names, {name: z.read(name) for name in names}
+          def require(ok, message):
+              if not ok: raise RuntimeError(message)
+
+          require(sha_file(base) == '4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832', 'published DIAG1 base SHA mismatch')
+          require(sha_file(reviewed) == '1a17b532ebe5cfa598348ae15dea21af906ac7b33ec00c9c428d2684cc9f69cb', 'reviewed DIAG2 profile SHA mismatch')
+
+          base_names, base_map = members(base)
+          review_names, review_map = members(reviewed)
+          require(len(base_names) == 336, 'DIAG1 member count mismatch')
+          require(len(review_names) == 337, 'DIAG2 member count mismatch')
+          require(review_names[:len(base_names)] == base_names, 'existing archive member order/name drift')
+          require(set(review_names) - set(base_names) == {config}, 'DIAG2 added-member delta mismatch')
+          require(set(base_names) - set(review_names) == set(), 'DIAG2 removed archive members')
+          changed = [name for name in base_names if base_map[name] != review_map[name]]
+          require(changed == [], f'DIAG2 changed existing members: {changed!r}')
+          require(review_map[config] == b'\r\n[General]\r\nCamera Frame Speed = 0', 'LC Office config bytes mismatch')
+          require(sha_bytes(review_map[diag]) == '9a477c18e5b8cf38922fa755b6bab101babc2f987e858567172b9be9c2c05fad', 'DIAG1 force-selection DLL drift')
+          require(sha_bytes(review_map[normalizer]) == '901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06', 'accepted normalizer drift')
+          require(review_map['export.r2x'] == base_map['export.r2x'], 'export.r2x drift')
+
+          index = json.loads(index_path.read_text(encoding='utf-8'))
+          require(len(index) == len(review_names), 'FILE_INDEX entry count mismatch')
+          for i, rec in enumerate(index):
+              require(rec['index'] == i and rec['path'] == review_names[i], f'FILE_INDEX order mismatch at {i}')
+              data = review_map[review_names[i]]
+              require(rec['size'] == len(data), f'FILE_INDEX size mismatch: {review_names[i]}')
+              require(rec['sha256'] == sha_bytes(data), f'FILE_INDEX SHA mismatch: {review_names[i]}')
+
+          br = json.loads(build_result.read_text(encoding='utf-8'))
+          require(br['build_id'] == 'S1.42AJ-DIAG2', 'BUILD_RESULT build ID mismatch')
+          require(br['base_profile'] == 'Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z', 'BUILD_RESULT base path mismatch')
+          require(br['base_sha256'] == sha_file(base), 'BUILD_RESULT base SHA mismatch')
+          require(br['output_sha256'] == sha_file(reviewed), 'BUILD_RESULT output SHA mismatch')
+          require(br['changed_existing_members'] == [], 'BUILD_RESULT existing-member delta mismatch')
+          require(br['added_members'] == [config], 'BUILD_RESULT added-member delta mismatch')
+
+          sv = json.loads(static_result.read_text(encoding='utf-8'))
+          require(sv['status'] == 'STATIC_PASS_NOT_RUNTIME_READY', 'STATIC_VERIFICATION status mismatch')
+          require(sv['base_build_id'] == 'S1.42AJ-DIAG1', 'STATIC_VERIFICATION base build mismatch')
+          require(sv['output_sha256'] == sha_file(reviewed), 'STATIC_VERIFICATION output SHA mismatch')
+          require(sv['changed_existing_members'] == [] and sv['added_members'] == [config], 'STATIC_VERIFICATION delta mismatch')
+          require(sv['camera_frame_speed'] == 0, 'STATIC_VERIFICATION camera value mismatch')
+          require(sv['diagnostic_dll_sha256'] == sha_bytes(review_map[diag]), 'STATIC_VERIFICATION diagnostic DLL mismatch')
+          require(sv['normalizer_sha256'] == sha_bytes(review_map[normalizer]), 'STATIC_VERIFICATION normalizer mismatch')
+          print('PASS: exact reviewed DIAG2 artifact and sole Camera Frame Speed=0 delta verified.')
+          PY
+
+      - name: Publish exact reviewed bytes without lifecycle arming
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC="$RUNNER_TEMP/s142aj-diag2-reviewed/extracted"
+          cp "$SRC/Profiles/LC V1 S1.42AJ-DIAG2 LC Office Camera Render Diagnostic.r2z" "Profiles/LC V1 S1.42AJ-DIAG2 LC Office Camera Render Diagnostic.r2z"
+          mkdir -p ProfileSources/S1.42AJ-DIAG2
+          cp -a "$SRC/ProfileSources/S1.42AJ-DIAG2/." "ProfileSources/S1.42AJ-DIAG2/"
+          mkdir -p BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE
+          cp "$SRC/BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/BUILD_RESULT.json" BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/BUILD_RESULT.json
+          cp "$SRC/BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/BUILD_RESULT.md" BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/BUILD_RESULT.md
+          cp "$SRC/BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/STATIC_VERIFICATION.json" BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/STATIC_VERIFICATION.json
+
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('BuildSpecs/S1.42AJ-DIAG2_PLAN.md')
+          text=p.read_text(encoding='utf-8')
+          old='**Status:** PREPARED / NOT BUILT / NOT PUBLISHED / NOT ARMED'
+          new='**Status:** BUILT / STATIC PASS / PUBLISHED / NOT ARMED'
+          if text.count(old) != 1:
+              raise RuntimeError('DIAG2 plan status marker drift')
+          p.write_text(text.replace(old,new),encoding='utf-8')
+          PY
+
+          cat > BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md <<'MD'
+          # S1.42AJ-DIAG2 reviewed-artifact publication verification
+
+          - Source PR: #117, reviewed head `753491b4da672bc8d731c3e2c8e7f3caff6def5b`.
+          - Merge commit: `638b9ee5c715656b41954cc59339c2c9d9d96ea6`.
+          - Static/build gate: run `35337732825`, artifact `S1.42AJ-DIAG2-review`, artifact ID `10543786202`.
+          - PR-head Knowledge Architecture run: `35337732721` / #485 — SUCCESS.
+          - Merge-head Knowledge Architecture run: `35337908516` / #486 — SUCCESS.
+          - Artifact ZIP SHA-256: `3ebabd1af28a0dbe08faa32809ef21bea76dc553100acb3caa2484dfced73aae`.
+          - Published DIAG2 profile SHA-256: `1a17b532ebe5cfa598348ae15dea21af906ac7b33ec00c9c428d2684cc9f69cb`.
+          - Exact parent DIAG1 profile SHA-256: `4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832`.
+          - DIAG1 force-selection DLL remains byte-identical at `9a477c18e5b8cf38922fa755b6bab101babc2f987e858567172b9be9c2c05fad`.
+          - Accepted Interior Weight Normalization remains byte-identical at `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`.
+          - Member-by-member verification proves zero changed existing members, zero removed members and exactly one added member: `BepInEx/config/Piggy.LCOffice.cfg`.
+          - The exact added config bytes are `[General]` with `Camera Frame Speed = 0`; `export.r2x` remains byte-identical to DIAG1.
+          - Publication uses the exact already-reviewed CI artifact. No rebuild is substituted.
+          - `Current/AUTO_BUILD_RESULT.*`, `BuildSpecs/current.json`, `Current/CURRENT_STATE.json` and `RuntimeInbox/ACTIVE_BUILD.txt` are intentionally unchanged. Balanced S1.42AJ remains lifecycle authority; DIAG2 is not armed by this publication.
+
+          Status: `STATIC_PASS_NOT_RUNTIME_READY`. Publication proves the isolated artifact delta only and does not establish performance causality.
+          MD
+
+          test "$(tr -d '\r\n' < RuntimeInbox/ACTIVE_BUILD.txt)" = "S1.42AJ-DIAG1"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          ctl=json.loads(Path('BuildSpecs/current.json').read_text(encoding='utf-8'))
+          if ctl.get('enabled') is not False or ctl.get('build_id') != 'IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION':
+              raise RuntimeError('BuildSpecs/current.json is not the expected disabled S1.42AJ idle controller')
+          auto=json.loads(Path('Current/AUTO_BUILD_RESULT.json').read_text(encoding='utf-8'))
+          if auto.get('build_id') != 'S1.42AJ' or auto.get('output_sha256') != '7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba':
+              raise RuntimeError('Current/AUTO_BUILD_RESULT.json must remain balanced S1.42AJ')
+          PY
+
+      - name: Remove one-shot publisher and verify exact publication diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/s142aj-diag2-publish-reviewed.yml
+          git add -A
+          python - <<'PY'
+          import hashlib, os, subprocess
+          from pathlib import Path
+
+          src=Path(os.environ['RUNNER_TEMP'])/'s142aj-diag2-reviewed'/'extracted'
+          expected={str(p.relative_to(src)) for p in src.rglob('*') if p.is_file()}
+          expected.update({
+              '.github/workflows/s142aj-diag2-publish-reviewed.yml',
+              'BuildSpecs/S1.42AJ-DIAG2_PLAN.md',
+              'BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md',
+          })
+          actual=set(subprocess.check_output(['git','diff','--cached','--name-only','HEAD'],text=True).splitlines())
+          if actual != expected:
+              raise RuntimeError('unexpected publication diff: '+repr(sorted(actual ^ expected)[:50]))
+
+          profile=Path('Profiles/LC V1 S1.42AJ-DIAG2 LC Office Camera Render Diagnostic.r2z')
+          sha=hashlib.sha256(profile.read_bytes()).hexdigest()
+          if sha != '1a17b532ebe5cfa598348ae15dea21af906ac7b33ec00c9c428d2684cc9f69cb':
+              raise RuntimeError('published DIAG2 profile SHA mismatch: '+sha)
+          PY
+          git diff --cached --check
+
+      - name: Commit exact reviewed DIAG2 publication atomically
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Publish exact reviewed S1.42AJ-DIAG2 artifact'
+          git push origin HEAD:main
