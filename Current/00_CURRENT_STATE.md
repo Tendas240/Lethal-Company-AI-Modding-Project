@@ -21,27 +21,28 @@ Runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`
 
 ## Latest built artifact
 
-**S1.42AK — LC Office Camera Enemy Balance — STATIC VALIDATED NOT ACCEPTED AWAITING RUNTIME ACTIVATION**
+**S1.42AK — LC Office Camera Enemy Balance — ACTIVE RUNTIME CANDIDATE NOT ACCEPTED**
 
 Profile: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z`  
 SHA-256: `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
+Candidate record: `Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
 ## Live execution state
 
-- Active candidate: **none**
-- Runtime test outstanding: **no**
+- Active candidate: **S1.42AK**
+- Runtime test outstanding: **yes**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AK_BUILD_AWAITING_RUNTIME_ACTIVATION`)
-- Guarded build base: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ`
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AK_BUILD_AWAITING_RUNTIME_VALIDATION`)
+- Guarded build base: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`
 
 ## Exact next action
 
-Activate S1.42AK as the explicit full-normal runtime candidate in one repository-native lifecycle update, then release its runtime test instructions. Do not treat S1.42AK as accepted before runtime evidence. The activation response must include the repository-driven Gale replacement/import one-liner and the exact S1.42AK autonomous PowerShell log uploader.
+Import exact S1.42AK with the canonical repository-driven Gale v2.4 helper, play one ordinary unforced Offense day, report any stutter/performance/enemy/scrap anomaly and whether LC Office appeared naturally, then upload the complete fresh S1.42AK LogOutput.log with the exact build-specific autonomous PowerShell uploader. S1.42AK remains not accepted until an explicit runtime decision.
 
-No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+A runtime test is pending for S1.42AK. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
