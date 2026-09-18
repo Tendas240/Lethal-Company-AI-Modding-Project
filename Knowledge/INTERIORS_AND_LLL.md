@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** accepted interior-selection architecture and deferred compatibility exceptions  
 **Canonical-For:** `interiors_and_lll`  
-**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`  
+**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`  
 **Related:** `ProfileSources/S1.42AG/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
 **Last-Validated:** 2026-09-18
 
@@ -105,16 +105,21 @@ The exact accepted S1.42AI package/dependency baseline was re-verified on 2026-0
 
 The accepted S1.42AB post-viability normalization remains authoritative and unchanged. The selected work is to resolve the layer **before** that normalizer: which registered flows are viable on which moons and why.
 
-Exact S1.42AK baseline extraction currently establishes:
+Phase-A authority: `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`.
 
-- 28 LLL `Custom Dungeon` config sections;
-- 27 with `Enable Content Configuration = true` and `Dynamic Level Tags List = Vanilla:100,Custom:100`;
-- Black Mesa as the sole one of those 28 with LLL content configuration disabled, consistent with its separate native/DawnLib ownership;
-- the 28-section LLL inventory is not yet equivalent to the complete registered-flow inventory and must be reconciled against the historical 52-flow discovery plus current runtime registration/viability evidence.
+Exact S1.42AK reconciliation now establishes:
+
+- **55** DawnLib-registered DungeonFlow assets;
+- **53** LLL ExtendedDungeonFlow selection entries: 3 Vanilla, 49 Custom, 1 External Black Mesa;
+- the two extra Dawn-only assets are vanilla `Level1FlowExtraLarge` and `Level1Flow3Exits`;
+- exact S1.42AF immediately before LC Office has **52** LLL entries; `LC Office / OfficeDungeonFlow` is the exact +1 in S1.42AK;
+- the 28 LLL `Custom Dungeon` config sections are non-cardinal: only **22 unique current Custom flows** have active direct config coverage, three enabled sections are aliases, two are stale/orphaned, and Black Mesa is the disabled native/DawnLib-owner case;
+- therefore **27 current Custom flows have no direct active LLL Custom Dungeon config section** and remain governed by owner/author matching data;
+- JLL content-specific helper/config behavior exists, but no separate JLL-only registered dungeon flow appears in the exact current Dawn/LLL inventories.
 
 Do not interpret broad `Vanilla:100,Custom:100` tag injection as automatic proof that every flow is safe on every moon. Owner hard blocks, non-LLL registrations and technical restrictions remain authoritative until specifically understood and tested. Shatteredrooms' Experimentation/Embrion restriction therefore remains in place during the analysis phase.
 
-No build or runtime test is currently authorized by this selection.
+No build or runtime test is currently authorized by this selection. The exact next action is Phase B: construct the moon/flow viability matrix from the authoritative Phase-A inventory and classify each absent pairing by its owning mechanism.
 
 ## Shatteredrooms restriction
 
