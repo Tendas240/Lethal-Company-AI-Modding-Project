@@ -27,6 +27,21 @@ def active_candidate_id(s):
     return candidate.get("build_id", "none") if isinstance(candidate, dict) else "none"
 
 
+def runtime_target_id(s):
+    candidate = active_candidate_id(s)
+    if candidate != "none":
+        return candidate
+    scope = s.get("selected_scope", {})
+    if isinstance(scope, dict):
+        diagnostic = scope.get("diagnostic_revision")
+        if isinstance(diagnostic, dict) and diagnostic.get("build_id"):
+            return str(diagnostic["build_id"])
+    controllers = s.get("controllers", {})
+    if isinstance(controllers, dict) and controllers.get("runtime_active_build"):
+        return str(controllers["runtime_active_build"])
+    return "none"
+
+
 def yes_no(value):
     return "yes" if bool(value) else "no"
 
@@ -34,7 +49,7 @@ def yes_no(value):
 def runtime_note(s):
     if s.get("runtime_test_outstanding"):
         return (
-            f"A runtime test is pending for {active_candidate_id(s)}. "
+            f"A runtime test is pending for {runtime_target_id(s)}. "
             "`RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build."
         )
     return (

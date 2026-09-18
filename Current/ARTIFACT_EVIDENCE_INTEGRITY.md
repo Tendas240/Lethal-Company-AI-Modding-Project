@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
 # Artifact and Runtime Evidence Integrity
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
@@ -25,6 +25,7 @@ S1.42AJ remains the exact balanced parent for S1.42AK and is not accepted. S1.42
 ## Pending / deferred unaccepted profiles
 
 - **S1.42AJ** — deferred full-normal gate / retained exact balanced parent, not active.
+- **S1.42AK-SCRAPDIAG1** — active diagnostic runtime target only, not a gameplay candidate or base. Exact published profile SHA-256 `233bcc058a3fa95d63e0577c4ff74b5a0dc137db49757b50376e447dd082d3b1`; readable snapshot `ProfileSources/S1.42AK-SCRAPDIAG1/`; publication authority `BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`; activation authority `Current/162_S1.42AK_SCRAPDIAG1_RUNTIME_ACTIVATION.md`.
 
 ## Completed diagnostic evidence: S1.42AI-DIAG1R3
 

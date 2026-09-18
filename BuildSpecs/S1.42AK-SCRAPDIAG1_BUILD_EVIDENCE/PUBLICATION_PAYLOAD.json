@@ -1,0 +1,28 @@
+{
+  "status": "EXACT_PINNED_REVIEW_ARTIFACT_PUBLICATION_PAYLOAD_VERIFIED",
+  "artifact_run": 35383680389,
+  "artifact_id": 10563033130,
+  "artifact_digest": "sha256:08c676c2a0f9c7a3df3a0cd58854dbcc0b53ba21dd514a7c7d661cfcfe231bc3",
+  "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+  "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+  "profile": "Profiles/LC V1 S1.42AK-SCRAPDIAG1 LC Office Scrap Placement Diagnostic.r2z",
+  "profile_sha256": "233bcc058a3fa95d63e0577c4ff74b5a0dc137db49757b50376e447dd082d3b1",
+  "added_members": [
+    "BepInEx/plugins/S142AJDiag1OfficeSelection/S142AJDiag1OfficeSelection.dll",
+    "BepInEx/plugins/S142AKDiagScrapPlacement/S142AKDiagScrapPlacement.dll"
+  ],
+  "changed_existing_members": [],
+  "removed_members": [],
+  "diagnostic_dll_sha256": {
+    "S142AJDiag1OfficeSelection.dll": "51d8927838f003f8ea00d69942d21dda3937d46c0cff5b220e99651c3a61a191",
+    "S142AKDiagScrapPlacement.dll": "f1c0b7450d60b8c0400c342779abcae8dfb11c34d9112d2e945a02349610df7b"
+  },
+  "preserved_accepted_dll_sha256": {
+    "S139CompatibilityFixes.dll": "bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573",
+    "S142ABInteriorWeightNormalization.dll": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06"
+  },
+  "file_index_entries": 338,
+  "reconstructed_hidden_text_snapshots": [
+    "BepInEx/config/.LCMaxSoundsFix.cfg"
+  ]
+}

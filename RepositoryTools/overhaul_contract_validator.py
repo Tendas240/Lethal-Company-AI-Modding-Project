@@ -185,20 +185,31 @@ def check_live_state() -> None:
     diagnostic_common = bool(
         active
         and diagnostic_id == active
-        and candidate_id
         and diagnostic.get("status") == "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED"
         and diagnostic.get("profile")
         and diagnostic.get("sha256")
         and diagnostic.get("publication_evidence")
     )
-    diagnostic_direct = bool(
+    diagnostic_direct_candidate = bool(
         diagnostic_common
+        and candidate_id
         and diagnostic.get("base_build_id") == candidate_id
         and diagnostic.get("base_profile") == candidate.get("profile")
         and diagnostic.get("base_sha256") == candidate.get("sha256")
     )
+    diagnostic_direct_accepted = bool(
+        diagnostic_common
+        and not candidate_id
+        and a.get("build_id") == latest.get("build_id")
+        and a.get("profile") == latest.get("profile")
+        and a.get("sha256") == latest.get("sha256")
+        and diagnostic.get("base_build_id") == a.get("build_id")
+        and diagnostic.get("base_profile") == a.get("profile")
+        and diagnostic.get("base_sha256") == a.get("sha256")
+    )
     diagnostic_one_hop = bool(
         diagnostic_common
+        and candidate_id
         and diagnostic.get("base_build_id") != candidate_id
         and parent_id == diagnostic.get("base_build_id")
         and parent_diagnostic.get("status") == "PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED"
@@ -210,7 +221,7 @@ def check_live_state() -> None:
         and parent_diagnostic.get("build_result")
         and parent_diagnostic.get("publication_evidence")
     )
-    diagnostic_is_runtime_target = diagnostic_direct or diagnostic_one_hop
+    diagnostic_is_runtime_target = diagnostic_direct_candidate or diagnostic_direct_accepted or diagnostic_one_hop
     if active not in known_builds and not diagnostic_is_runtime_target:
         error(f"runtime active-build controller points to unknown lineage build or explicit diagnostic runtime target: {active!r}")
     if controllers.get("runtime_active_build") != active:
@@ -237,8 +248,11 @@ def check_live_state() -> None:
             error("runtime active build does not identify the active candidate or its explicit diagnostic runtime target")
         guard = candidate
     else:
-        if state.get("runtime_test_outstanding") is not False:
-            error("runtime test is outstanding without an active candidate")
+        if state.get("runtime_test_outstanding") is True:
+            if not diagnostic_direct_accepted:
+                error("runtime test without an active candidate is not an explicit direct diagnostic over accepted/latest baseline")
+        elif state.get("runtime_test_outstanding") is not False:
+            error("runtime_test_outstanding is not boolean")
         guard = a
 
     if spec.get("base_profile") != guard.get("profile") or spec.get("base_sha256") != guard.get("sha256"):

@@ -210,6 +210,22 @@
       "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false
+    },
+    {
+      "build_id": "S1.42AK-SCRAPDIAG1",
+      "role": "ACTIVE_RUNTIME_DIAGNOSTIC_PENDING",
+      "profile": "Profiles/LC V1 S1.42AK-SCRAPDIAG1 LC Office Scrap Placement Diagnostic.r2z",
+      "profile_sha256": "233bcc058a3fa95d63e0577c4ff74b5a0dc137db49757b50376e447dd082d3b1",
+      "profile_sources": "ProfileSources/S1.42AK-SCRAPDIAG1/",
+      "file_index": "ProfileSources/S1.42AK-SCRAPDIAG1/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AK-SCRAPDIAG1/export.r2x",
+      "build_plan": "BuildSpecs/S1.42AK-SCRAPDIAG1_PLAN.md",
+      "static_evidence": "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+      "publication_evidence": "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+      "activation_record": "Current/162_S1.42AK_SCRAPDIAG1_RUNTIME_ACTIVATION.md",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false,
+      "note": "Diagnostic-only runtime target over exact accepted S1.42AK; pending placement evidence and never a gameplay base."
     }
   ],
   "important_project_dlls": [

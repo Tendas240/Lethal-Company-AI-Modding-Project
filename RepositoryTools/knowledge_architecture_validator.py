@@ -170,20 +170,31 @@ def validate_current_state() -> None:
     diagnostic_common = bool(
         active_build
         and diagnostic_id == active_build
-        and candidate_id
         and diagnostic.get("status") == "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED"
         and diagnostic.get("profile")
         and diagnostic.get("sha256")
         and diagnostic.get("publication_evidence")
     )
-    diagnostic_direct = bool(
+    diagnostic_direct_candidate = bool(
         diagnostic_common
+        and candidate_id
         and diagnostic.get("base_build_id") == candidate_id
         and diagnostic.get("base_profile") == candidate.get("profile")
         and diagnostic.get("base_sha256") == candidate.get("sha256")
     )
+    diagnostic_direct_accepted = bool(
+        diagnostic_common
+        and not candidate_id
+        and accepted.get("build_id") == latest.get("build_id")
+        and accepted.get("profile") == latest.get("profile")
+        and accepted.get("sha256") == latest.get("sha256")
+        and diagnostic.get("base_build_id") == accepted.get("build_id")
+        and diagnostic.get("base_profile") == accepted.get("profile")
+        and diagnostic.get("base_sha256") == accepted.get("sha256")
+    )
     diagnostic_one_hop = bool(
         diagnostic_common
+        and candidate_id
         and diagnostic.get("base_build_id") != candidate_id
         and parent_id == diagnostic.get("base_build_id")
         and parent_diagnostic.get("status") == "PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED"
@@ -195,7 +206,7 @@ def validate_current_state() -> None:
         and parent_diagnostic.get("build_result")
         and parent_diagnostic.get("publication_evidence")
     )
-    diagnostic_is_runtime_target = diagnostic_direct or diagnostic_one_hop
+    diagnostic_is_runtime_target = diagnostic_direct_candidate or diagnostic_direct_accepted or diagnostic_one_hop
 
     if active_build and active_build not in lineage_ids and not diagnostic_is_runtime_target:
         fail(f"ACTIVE_BUILD references unknown build lineage id or explicit diagnostic runtime target: {active_build!r}")
@@ -222,8 +233,11 @@ def validate_current_state() -> None:
         if candidate.get("profile") != latest.get("profile") or candidate.get("sha256") != latest.get("sha256"):
             fail("active candidate identity disagrees with latest built artifact")
     else:
-        if state.get("runtime_test_outstanding") is not False:
-            fail("runtime_test_outstanding must be false when no active candidate exists")
+        if state.get("runtime_test_outstanding") is True:
+            if not diagnostic_direct_accepted:
+                fail("runtime_test_outstanding without an active candidate requires an explicit direct diagnostic over the accepted/latest baseline")
+        elif state.get("runtime_test_outstanding") is not False:
+            fail("runtime_test_outstanding must be boolean")
         if lineage.get("active_candidate_build_id") is not None:
             fail("BUILD_LINEAGE active candidate must be null when CURRENT_STATE has none")
 

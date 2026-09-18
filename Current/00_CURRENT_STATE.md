@@ -33,17 +33,17 @@ A historical rejection can remain preserved even when a later explicit decision 
 ## Live execution state
 
 - Active candidate: **none**
-- Runtime test outstanding: **no**
+- Runtime test outstanding: **yes**
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AK_ACCEPTANCE_INVESTIGATE_LC_OFFICE_SCRAP`)
 - Guarded build base: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-SCRAPDIAG1`
 
 ## Exact next action
 
-Publish and arm the exact pinned S1.42AK-SCRAPDIAG1 review artifact in a separate explicit lifecycle transition. Until that transition completes, keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding false.
+Run exact published S1.42AK-SCRAPDIAG1 on Offense, obtain a valid stable scrap-placement capture, then upload the resulting LogOutput.log under S1.42AK-SCRAPDIAG1 for repository ingestion and placement analysis.
 
-No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+A runtime test is pending for S1.42AK-SCRAPDIAG1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
