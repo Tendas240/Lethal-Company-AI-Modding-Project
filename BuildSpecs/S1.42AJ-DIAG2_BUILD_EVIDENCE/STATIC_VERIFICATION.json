@@ -1,0 +1,15 @@
+{
+  "status": "STATIC_PASS_NOT_RUNTIME_READY",
+  "build_id": "S1.42AJ-DIAG2",
+  "base_build_id": "S1.42AJ-DIAG1",
+  "base_sha256": "4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832",
+  "output_sha256": "1a17b532ebe5cfa598348ae15dea21af906ac7b33ec00c9c428d2684cc9f69cb",
+  "changed_existing_members": [],
+  "added_members": [
+    "BepInEx/config/Piggy.LCOffice.cfg"
+  ],
+  "camera_frame_speed": 0,
+  "diagnostic_dll_sha256": "9a477c18e5b8cf38922fa755b6bab101babc2f987e858567172b9be9c2c05fad",
+  "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+  "qualification": "Exact one-variable archive proof only. Not published, not armed, and no performance causality inferred."
+}

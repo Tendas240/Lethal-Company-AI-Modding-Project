@@ -1,0 +1,21 @@
+{
+  "build_id": "S1.42AJ-DIAG2",
+  "profile_name": "LC V1 S1.42AJ-DIAG1 LC Office Diagnostic",
+  "base_profile": "Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z",
+  "base_sha256": "4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832",
+  "output_profile": "Profiles/LC V1 S1.42AJ-DIAG2 LC Office Camera Render Diagnostic.r2z",
+  "output_sha256": "1a17b532ebe5cfa598348ae15dea21af906ac7b33ec00c9c428d2684cc9f69cb",
+  "zip_members": 337,
+  "changed_existing_members": [],
+  "added_members": [
+    "BepInEx/config/Piggy.LCOffice.cfg"
+  ],
+  "mod_state_changes": [],
+  "mod_additions": [],
+  "mod_removals": [],
+  "snapshot_dir": "ProfileSources/S1.42AJ-DIAG2",
+  "snapshot": {
+    "entries": 337,
+    "text_entries": 331
+  }
+}
