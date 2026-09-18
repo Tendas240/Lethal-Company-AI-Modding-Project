@@ -144,6 +144,7 @@ jobs:
           index = json.loads(index_path.read_text(encoding="utf-8"))
           if len(index) != len(diag_bytes):
               raise SystemExit(f"FILE_INDEX count mismatch: {len(index)} != {len(diag_bytes)}")
+          reconstructed_hidden_snapshots = []
           for entry in index:
               name = entry["path"]
               if name not in diag_bytes:
@@ -154,11 +155,21 @@ jobs:
               if entry.get("text_snapshot"):
                   snap = pin / "ProfileSources/S1.42AK-SCRAPDIAG1" / name
                   if not snap.is_file():
-                      raise SystemExit(f"text snapshot missing: {name}")
-                  try:
-                      snap.read_text(encoding="utf-8")
-                  except UnicodeDecodeError as exc:
-                      raise SystemExit(f"text snapshot is not UTF-8 readable: {name}: {exc}")
+                      parts = Path(name).parts
+                      if not any(part.startswith(".") for part in parts):
+                          raise SystemExit(f"unexpected non-hidden text snapshot missing from review artifact: {name}")
+                      try:
+                          payload.decode("utf-8")
+                      except UnicodeDecodeError as exc:
+                          raise SystemExit(f"hidden text snapshot payload is not UTF-8: {name}: {exc}")
+                      snap.parent.mkdir(parents=True, exist_ok=True)
+                      snap.write_bytes(payload)
+                      reconstructed_hidden_snapshots.append(name)
+                  else:
+                      try:
+                          snap.read_text(encoding="utf-8")
+                      except UnicodeDecodeError as exc:
+                          raise SystemExit(f"text snapshot is not UTF-8 readable: {name}: {exc}")
 
           payload = {
               "status": "EXACT_PINNED_REVIEW_ARTIFACT_PUBLICATION_PAYLOAD_VERIFIED",
@@ -181,6 +192,7 @@ jobs:
                   "S142ABInteriorWeightNormalization.dll": os.environ["NORMALIZER_SHA"],
               },
               "file_index_entries": len(index),
+              "reconstructed_hidden_text_snapshots": reconstructed_hidden_snapshots,
           }
           out = root / "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/PUBLICATION_PAYLOAD.json"
           out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
