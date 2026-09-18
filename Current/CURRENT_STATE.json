@@ -44,20 +44,22 @@
   "selected_scope": {
     "scope_id": "LC_OFFICE_SCRAP_QUANTITY_DISTRIBUTION_INVESTIGATION",
     "title": "LC Office Scrap Quantity/Distribution Investigation",
-    "status": "SELECTED_INVESTIGATION_NOT_ARMED",
+    "status": "COUNT_COMPARABLE_PLACEMENT_DIAGNOSTIC_REQUIRED_NOT_ARMED",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "The user explicitly selected the LC Office scrap quantity/distribution investigation after S1.42AK acceptance. Existing targeted LC Office evidence records 15 generated scrap values in both DIAG1 and DIAG2 while the user perceived scrap as sparse or poorly distributed. S1.42AK changed no LC Office scrap tuning.",
-    "analysis_contract": "Distinguish generated scrap count from spatial room/floor placement and practical discoverability before changing any gameplay tuning. First compare existing LC Office runtime count evidence with comparable Offense non-Office evidence and inspect repository-owned LC Office configuration/evidence. If existing evidence cannot resolve placement, design an isolated diagnostic-only LC Office instrumentation artifact before any balance change. Do not alter scrap quantity, rarity, value or placement in this selection step.",
-    "next_action": "Perform the repository-native existing-evidence comparison for LC Office scrap count versus comparable Offense non-Office runs, then determine whether spatial placement/discoverability requires isolated diagnostic instrumentation. Do not arm a runtime test or change scrap tuning yet.",
+    "finding": "Existing Offense evidence does not establish an LC Office-specific low generated-count regression. S1.42AJ-DIAG1 LC Office generated 14 base scrap plus one additional replicated object (15 tracked total); S1.42AJ-DIAG2 LC Office generated/finalized 15. Comparable normal Offense runs start from 14 base scrap: S1.42AJ Facility was later inflated by BCMER PlentyOutsideScrap, while accepted S1.42AK Spooky Manor finalized at 15. Existing logs do not provide complete item-to-room/floor placement for the LC Office set.",
+    "analysis_contract": "Treat generated quantity as provisionally comparable and do not increase scrap count. Design an isolated diagnostic-only artifact derived from exact accepted S1.42AK that logs each final spawned scrap object's identity and world position plus enough LC Office floor/room context to evaluate clustering and practical discoverability. The diagnostic must not alter quantity, rarity, value or placement and must not include unrelated scopes.",
+    "next_action": "Design the minimal diagnostic-only LC Office scrap placement instrumentation from exact accepted S1.42AK. Do not arm a runtime test or change gameplay tuning until the diagnostic implementation and static review are complete.",
     "currently_irrelevant_actions": [
-      "Do not increase LC Office scrap quantity merely from subjective sparse-item perception while both targeted Office runs record 15 generated scrap values.",
-      "Do not arm a normal successor build or runtime test during this investigation-selection step.",
+      "Do not increase LC Office scrap quantity: existing LC Office 14-15 base/final counts are comparable to nearby normal Offense evidence.",
+      "Do not treat the S1.42AJ Facility final count of 29 as a normal comparator because BCMER PlentyOutsideScrap inflated that run.",
+      "Do not arm a runtime test until placement instrumentation has been designed, implemented and statically reviewed.",
       "Do not combine universal interior viability, CullFactory, MelanieMausoleum fog, Black Mesa/Pikmin routing, LethalEscape or other deferred scopes into this investigation."
-    ]
+    ],
+    "evidence_finding": "Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md"
   },
-  "next_action": "Perform the repository-native existing-evidence comparison for LC Office scrap count versus comparable Offense non-Office runs, then determine whether spatial placement/discoverability requires isolated diagnostic instrumentation. Do not arm a runtime test or change scrap tuning yet.",
+  "next_action": "Design the minimal diagnostic-only LC Office scrap placement instrumentation from exact accepted S1.42AK. Do not arm a runtime test or change gameplay tuning until the diagnostic implementation and static review are complete.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,

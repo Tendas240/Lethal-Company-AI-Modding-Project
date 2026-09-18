@@ -1,6 +1,6 @@
 # LC Office Scrap Quantity / Distribution Investigation Plan
 
-**Status:** SELECTED / INVESTIGATION / NOT ARMED  
+**Status:** COUNT COMPARABLE / PLACEMENT DIAGNOSTIC REQUIRED / NOT ARMED  
 **Date:** 2026-09-18  
 **Accepted baseline:** S1.42AK — `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`  
@@ -20,7 +20,20 @@ This is an investigation contract only. It does not authorize a successor build,
 - S1.42AK accepted LC Office camera/enemy balance without changing LC Office scrap tuning.
 - The accepted S1.42AK `BepInEx/config/Piggy.LCOffice.cfg` only overrides `[General] Camera Frame Speed = 0`; it contains no project-authored scrap quantity/distribution override.
 
-These facts show that scrap generation exists and that the camera A/B did not reduce the generated count. They do not establish whether 15 is low relative to comparable Offense runs or whether the generated objects are spatially concentrated, hidden across floors/rooms or otherwise hard to discover.
+These facts show that scrap generation exists and that the camera A/B did not reduce the generated count.
+
+## Existing-evidence comparison result
+
+The focused comparison is recorded in `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`.
+
+- normal S1.42AJ Facility: base generation target 14; final result inflated by BCMER `PlentyOutsideScrap`;
+- S1.42AJ-DIAG1 LC Office: base target 14; 15 tracked after the additional replicated object;
+- S1.42AJ-DIAG2 LC Office: base/final count 15;
+- accepted S1.42AK Spooky Manor: base target 14; final replicated/tracked count 15.
+
+**Conclusion:** LC Office does not show a material low-count regression in the existing evidence. Quantity tuning is therefore not authorized.
+
+The remaining uncertainty is spatial distribution/discoverability. Existing tracking logs do not provide complete final world positions plus room/floor ownership for all 15 Office objects. Matty's Fixes exposes only partial position-adjustment evidence, and the available LethalMin floor/teleport coordinates do not map each scrap item to a floor.
 
 ## Diagnostic dimensions
 
@@ -71,4 +84,4 @@ Do not combine this investigation with:
 
 ## Exact next action
 
-Perform the repository-native existing-evidence comparison for LC Office scrap count versus comparable Offense non-Office runs. If that comparison cannot resolve spatial placement/discoverability, design isolated diagnostic instrumentation next. Do not arm a runtime test or change scrap tuning in the selection step.
+Design the minimal diagnostic-only LC Office scrap placement instrumentation from exact accepted S1.42AK. Do not arm a runtime test or change gameplay tuning until the diagnostic implementation and static review are complete.
