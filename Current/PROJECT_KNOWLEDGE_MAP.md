@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AK candidate=S1.42AK runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -34,11 +34,11 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 ## Current lifecycle anchor
 
-Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Latest built balanced artifact and active runtime candidate is **S1.42AK — LC Office Camera Enemy Balance — STATIC VALIDATED / NOT ACCEPTED**.
+Accepted gameplay baseline and latest built artifact: **S1.42AK — LC Office Camera Enemy Balance — ACCEPTED FULL NORMAL STACK**.
 
-The longer exact **S1.42AJ-DIAG2** Offense confirmation evidence is ingested at `RuntimeEvidence/S1.42AJ-DIAG2/20260918T153753Z/`. It extended well beyond the DIAG1 comparison window and the user again reported that the characteristic repeated DIAG1 stutter did not recur. DIAG2 remains diagnostic-only and is not accepted.
+Acceptance authority: `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`. Full-normal runtime evidence is `RuntimeEvidence/S1.42AK/20260918T172838Z/` with raw log SHA-256 `cc0f0a7a6c6a76ad44266aded11ff9cb2aca21f2623f5fb895d371ad778526b9`. The first attempt in that session was aborted before interior entry. The played second attempt naturally selected Spooky Manor and supplied roughly three minutes of interior coverage without a hostile enemy sighting; that is a documented coverage limitation, not a proven spawn regression.
 
-**S1.42AK** was built directly from exact S1.42AJ by successful workflow run `35366580975` and has SHA-256 `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`. Static verification confirms only LC Office `Camera Frame Speed = 0`, `YaBoiDucki-men_stalker 3.1.2` disabled, and Biodiversity Aloe `PowerLevel = 0`; RandomEnemiesSize is byte-identical and LC Office scrap remains unchanged. S1.42AK is now the active full-normal runtime candidate. The pending test is one ordinary unforced Offense day followed by the exact build-specific log upload; `BuildSpecs/current.json` remains disabled and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
+The targeted LC Office camera-render A/B remains supplied by completed diagnostic-only S1.42AJ-DIAG2 evidence. S1.42AJ remains the exact unaccepted parent; DIAG1/DIAG2 remain diagnostic-only. There is no active runtime candidate, no outstanding runtime test and no armed successor. The next action is to select exactly one remaining deferred independent scope from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
 
 ## Authority rule
 

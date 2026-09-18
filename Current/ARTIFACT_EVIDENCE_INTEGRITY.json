@@ -160,7 +160,7 @@
     },
     {
       "build_id": "S1.42AI",
-      "role": "ACCEPTED_CURRENT_BASELINE",
+      "role": "ACCEPTED_PREDECESSOR_TO_S1.42AK",
       "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
       "profile_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
       "profile_sources": "ProfileSources/S1.42AI/",
@@ -175,6 +175,24 @@
       "runtime_log_sha256": "1765a2b65cfa31da049ba415938119f9eb3690d09618a2f85a32209bfad6d9b5",
       "runtime_decision": "RuntimeEvidence/S1.42AI/20260916T180452Z/RUNTIME_ACCEPTANCE_DECISION.md",
       "note": "Full-normal runtime acceptance proved the intended ShyGuy interior event path while the BCMER exterior list/spawn contribution remained zero."
+    },
+    {
+      "build_id": "S1.42AK",
+      "role": "ACCEPTED_CURRENT_BASELINE",
+      "profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+      "profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+      "profile_sources": "ProfileSources/S1.42AK/",
+      "file_index": "ProfileSources/S1.42AK/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AK/export.r2x",
+      "candidate_record": "Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md",
+      "acceptance": "Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md",
+      "project_status": "Current/Projektstatus_S1.42AK_ACCEPTED.json",
+      "build_plan": "BuildSpecs/S1.42AK_PLAN.md",
+      "static_evidence": "BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+      "runtime_index": "RuntimeEvidence/S1.42AK/20260918T172838Z/INDEX.json",
+      "runtime_log_sha256": "cc0f0a7a6c6a76ad44266aded11ff9cb2aca21f2623f5fb895d371ad778526b9",
+      "runtime_decision": "RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md",
+      "note": "Full-normal acceptance passed. First attempt was aborted before interior entry; second attempt selected Spooky Manor and provided roughly three minutes of hostile-indoor coverage with no hostile sighting. LC Office natural selection was not required because completed DIAG2 already supplies targeted Office/elevator/camera coverage."
     }
   ],
   "pending_profiles": [
@@ -192,21 +210,6 @@
       "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false
-    },
-    {
-      "build_id": "S1.42AK",
-      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
-      "profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
-      "profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
-      "profile_sources": "ProfileSources/S1.42AK/",
-      "file_index": "ProfileSources/S1.42AK/FILE_INDEX.json",
-      "export": "ProfileSources/S1.42AK/export.r2x",
-      "build_plan": "BuildSpecs/S1.42AK_PLAN.md",
-      "static_evidence": "BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
-      "runtime_evidence_required": false,
-      "partial_runtime_evidence_present": false,
-      "candidate_record": "Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md",
-      "project_status": "Current/Projektstatus_S1.42AK_CANDIDATE.json"
     }
   ],
   "important_project_dlls": [
@@ -222,7 +225,7 @@
       "acceptance": "Current/142_S1.42AH_RUNTIME_ACCEPTANCE_MOUTHDOG_DUAL_PREVENTION.md",
       "prior_partial_runtime_evidence": "Current/141_S1.42AH_RUNTIME_PARTIAL_VALIDATION_REVERSE_DIRECTION_ADAPTER.md",
       "first_partial_runtime_evidence": "Current/140_S1.42AH_RUNTIME_PARTIAL_VALIDATION_MOUTHDOG_COLLISION_PLAYER.md",
-      "note": "S1.42AI inherits this accepted cumulative compatibility DLL byte-identically from S1.42AH."
+      "note": "S1.42AK inherits this accepted cumulative compatibility DLL through S1.42AI/S1.42AJ without changing it."
     },
     {
       "name": "S1.42AB interior normalization injected DLL",
@@ -238,7 +241,7 @@
       "accepted_sha256": "41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f",
       "evidence": "Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md",
       "acceptance": "Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md",
-      "note": "Inherited unchanged by S1.42AH and S1.42AI."
+      "note": "Inherited unchanged through S1.42AK."
     }
   ],
   "runtime_evidence_policy": {
@@ -257,7 +260,8 @@
     "S1.42AH final accepted runtime evidence is RuntimeEvidence/S1.42AH/20260909T162513Z with raw LogOutput.log SHA-256 ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729.",
     "S1.42AI full-normal accepted runtime evidence is RuntimeEvidence/S1.42AI/20260916T180452Z with raw LogOutput.log SHA-256 1765a2b65cfa31da049ba415938119f9eb3690d09618a2f85a32209bfad6d9b5.",
     "S1.42AI-DIAG1R3 runtime diagnostic pass evidence is RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z with raw LogOutput.log SHA-256 37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084; it remains diagnostic-only evidence.",
-    "S1.42AK was built from exact S1.42AJ by successful workflow run 35366580975 with profile SHA-256 b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee; readable ProfileSources/S1.42AK and FILE_INDEX are present, and static verification records the exact three-member archive delta."
+    "S1.42AK was built from exact S1.42AJ by successful workflow run 35366580975 with profile SHA-256 b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee; readable ProfileSources/S1.42AK and FILE_INDEX are present, and static verification records the exact three-member archive delta.",
+    "S1.42AK full-normal accepted runtime evidence is RuntimeEvidence/S1.42AK/20260918T172838Z with raw LogOutput.log SHA-256 cc0f0a7a6c6a76ad44266aded11ff9cb2aca21f2623f5fb895d371ad778526b9; Current/158 records the acceptance and its limited hostile-indoor coverage qualification."
   ],
   "last_validated": "2026-09-18"
 }

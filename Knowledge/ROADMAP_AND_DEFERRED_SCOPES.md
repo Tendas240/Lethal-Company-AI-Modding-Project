@@ -1,31 +1,22 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AK candidate=S1.42AK runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only  
-**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
-**Last-Validated:** 2026-09-17
+**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`  
+**Last-Validated:** 2026-09-18
 
 ## Current position
 
-Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Latest built balanced artifact and active runtime candidate is **S1.42AK — LC Office Camera Enemy Balance — STATIC VALIDATED / NOT ACCEPTED**.
+Accepted gameplay baseline and latest built artifact: **S1.42AK — LC Office Camera Enemy Balance — ACCEPTED FULL NORMAL STACK**, SHA-256 `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`.
 
-The second exact S1.42AJ-DIAG2 Offense run is ingested and closes the planned camera-render A/B for project purposes: the characteristic DIAG1 repeated stutter did not recur during a substantially longer LC Office run. DIAG2 remains diagnostic-only and is not accepted.
+The LC Office V81 integration scope is closed by `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`. The accepted profile carries LC Office `Camera Frame Speed = 0`, Men-stalker disabled and Aloe `PowerLevel = 0`; RandomEnemiesSize and LC Office scrap tuning remain unchanged.
 
-**S1.42AK — LC Office Camera Enemy Balance** has been built directly from exact S1.42AJ under `BuildSpecs/S1.42AK_PLAN.md` and is now the active full-normal runtime candidate. Static verification is recorded at `BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md`. One ordinary unforced Offense day plus the fresh S1.42AK runtime log is outstanding; S1.42AK remains not accepted.
+The accepted full-normal evidence has one explicit coverage limit: the first attempt ended before interior entry, while the second selected Spooky Manor and supplied roughly three minutes of played interior coverage with no hostile enemy sighting. This does not establish an indoor-spawn regression and does not create another mandatory runtime test.
 
 ## Active scope
 
-**LC Office V81 Integration — diagnostic A/B complete; S1.42AK full-normal runtime validation active.**
-
-The prepared successor carries only:
-- LC Office `Camera Frame Speed = 0`;
-- disable `YaBoiDucki-men_stalker 3.1.2`;
-- Aloe `PowerLevel = 0`.
-
-RandomEnemiesSize is explicitly unchanged. LC Office scrap is also unchanged in S1.42AK: the latest run logged 15 objects to spawn, while the user still perceived the interior as sparse or poorly distributed. Quantity versus spatial placement remains a separate evidence-driven follow-up.
-
-S1.42AK must derive from exact S1.42AJ and must not inherit DIAG1/DIAG2 force-selection artifacts.
+None. There is no active runtime candidate, no outstanding runtime test and no armed successor. Select exactly one remaining independent scope before preparing the next build.
 
 ## Remaining deferred independent scopes
 
@@ -39,4 +30,6 @@ S1.42AK must derive from exact S1.42AJ and must not inherit DIAG1/DIAG2 force-se
 - AdditionalNetworking repair only with reproducible evidence.
 - Broader LethalMin teardown/despawn repair only with stronger evidence.
 
-LC Office is the sole selected scope until it is completed, rejected, or explicitly released. Do not combine another independent deferred scope into its successor.
+
+Select exactly one deferred scope before preparing a successor; no scope is currently active.
+
