@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** accepted interior-selection architecture and deferred compatibility exceptions  
 **Canonical-For:** `interiors_and_lll`  
-**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`  
+**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`  
 **Related:** `ProfileSources/S1.42AG/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
 **Last-Validated:** 2026-09-18
 
@@ -84,7 +84,7 @@ S1.42AK was built directly from exact S1.42AJ, never from diagnostic bytes. Its 
 
 The recurring one-shot LethalMin `PiggyMetalDetectorPatch` startup failure remains real compatibility evidence. It is identical in the normal S1.42AJ run and both targeted LC Office diagnostic runs; DIAG2 subsequently exercised LC Office for roughly twelve minutes. No current user-facing metal-detector/Pikmin regression is established, so it does not reopen the accepted integration by itself.
 
-LC Office scrap tuning remains unchanged. The earlier targeted Office run logged 15 planned scrap objects while the user perceived scrap as sparse or poorly distributed, so quantity versus spatial placement remains a separate deferred investigation. Universal-moon availability and unrelated interior viability work also remain separate scopes.
+LC Office scrap tuning remains unchanged. **LC Office Scrap Quantity/Distribution Investigation is now the sole selected analysis scope** under `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`. Both targeted Office diagnostics recorded 15 generated scrap values while the user perceived scrap as sparse or poorly distributed. The investigation must therefore distinguish generated count from room/floor placement and practical discoverability before any tuning change. Universal-moon availability and unrelated interior viability work remain separate scopes.
 
 S1.42AJ package contract (statically verified):
 

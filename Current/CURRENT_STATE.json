@@ -42,24 +42,26 @@
   "active_candidate": null,
   "runtime_test_outstanding": false,
   "selected_scope": {
-    "scope_id": "NONE_AFTER_S1_42AK_ACCEPTANCE",
-    "title": "No active successor scope",
-    "status": "AWAITING_EXPLICIT_DEFERRED_SCOPE_SELECTION",
+    "scope_id": "LC_OFFICE_SCRAP_QUANTITY_DISTRIBUTION_INVESTIGATION",
+    "title": "LC Office Scrap Quantity/Distribution Investigation",
+    "status": "SELECTED_INVESTIGATION_NOT_ARMED",
     "accepted_baseline": "S1.42AK",
-    "topic_authority": "Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md",
-    "finding": "S1.42AK passed the full-normal LC Office camera/enemy balance gate and is now the accepted gameplay baseline. The first uploaded-session run was aborted after landing before the interior was entered. The second run naturally selected Spooky manor; the user played inside for about three minutes until death and observed no hostile indoor enemy. This is recorded as limited hostile-indoor coverage, not as a spawn regression: ordinary exterior enemy activity, interior/scrap generation and navigation completed without project-critical regression markers. LC Office was not naturally selected in S1.42AK, which the candidate contract explicitly allowed because the completed S1.42AJ-DIAG2 A/B already supplies targeted LC Office generation/elevator/camera coverage.",
-    "analysis_contract": "Select exactly one deferred independent scope explicitly before preparing or arming a successor build. Preserve the S1.42AK runtime coverage limitation and do not reinterpret the absence of a hostile indoor sighting as proof of a spawn failure without stronger reproducible evidence.",
+    "plan": "BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md",
+    "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
+    "finding": "The user explicitly selected the LC Office scrap quantity/distribution investigation after S1.42AK acceptance. Existing targeted LC Office evidence records 15 generated scrap values in both DIAG1 and DIAG2 while the user perceived scrap as sparse or poorly distributed. S1.42AK changed no LC Office scrap tuning.",
+    "analysis_contract": "Distinguish generated scrap count from spatial room/floor placement and practical discoverability before changing any gameplay tuning. First compare existing LC Office runtime count evidence with comparable Offense non-Office evidence and inspect repository-owned LC Office configuration/evidence. If existing evidence cannot resolve placement, design an isolated diagnostic-only LC Office instrumentation artifact before any balance change. Do not alter scrap quantity, rarity, value or placement in this selection step.",
+    "next_action": "Perform the repository-native existing-evidence comparison for LC Office scrap count versus comparable Offense non-Office runs, then determine whether spatial placement/discoverability requires isolated diagnostic instrumentation. Do not arm a runtime test or change scrap tuning yet.",
     "currently_irrelevant_actions": [
-      "Do not rerun S1.42AK merely to force LC Office or a hostile indoor enemy; the acceptance gate is closed.",
-      "Do not promote S1.42AJ or either LC Office diagnostic artifact; they remain parent/diagnostic evidence only.",
-      "Do not arm another deferred successor until exactly one scope is explicitly selected."
+      "Do not increase LC Office scrap quantity merely from subjective sparse-item perception while both targeted Office runs record 15 generated scrap values.",
+      "Do not arm a normal successor build or runtime test during this investigation-selection step.",
+      "Do not combine universal interior viability, CullFactory, MelanieMausoleum fog, Black Mesa/Pikmin routing, LethalEscape or other deferred scopes into this investigation."
     ]
   },
-  "next_action": "Select exactly one remaining deferred independent scope from Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md before preparing or arming any successor. No new runtime test is pending and no successor build is armed.",
+  "next_action": "Perform the repository-native existing-evidence comparison for LC Office scrap count versus comparable Offense non-Office runs, then determine whether spatial placement/discoverability requires isolated diagnostic instrumentation. Do not arm a runtime test or change scrap tuning yet.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
-    "build_id": "IDLE_AFTER_S1.42AK_ACCEPTANCE_AWAITING_NEXT_SCOPE",
+    "build_id": "IDLE_AFTER_S1.42AK_ACCEPTANCE_INVESTIGATE_LC_OFFICE_SCRAP",
     "build_base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
     "build_base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",

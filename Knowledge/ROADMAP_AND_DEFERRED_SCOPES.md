@@ -16,11 +16,12 @@ The accepted full-normal evidence has one explicit coverage limit: the first att
 
 ## Active scope
 
-None. There is no active runtime candidate, no outstanding runtime test and no armed successor. Select exactly one remaining independent scope before preparing the next build.
+**LC Office Scrap Quantity/Distribution Investigation — selected / investigation only / not armed.** Canonical investigation plan: `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
+
+Existing targeted LC Office evidence records 15 generated scrap values in both DIAG1 and DIAG2 while the user perceived scrap as sparse or poorly distributed. The selected scope therefore separates generated count, room/floor placement and practical discoverability before any gameplay tuning. There is still no active runtime candidate, no outstanding runtime test and no armed successor.
 
 ## Remaining deferred independent scopes
 
-- LC Office scrap quantity/distribution investigation: distinguish generated count from room/floor placement and practical discoverability before changing any scrap tuning.
 - Universal interior viability / equal availability: evaluate every registered interior for safe availability on every moon, preserve equal effective probability (`100`) whenever viable, and only remove LLL/author exclusions after compatibility proof including correct entrance/exit pairing, successful generation/traversal, and no door-socket, geometry, routing, elevator or NavMesh regression; document any technically unavoidable exception explicitly.
 - CullFactory exceptions for exact IDs `junkrooms` / `shatteredrooms`.
 - MelanieMausoleum fog reduction only for that interior.
@@ -31,5 +32,5 @@ None. There is no active runtime candidate, no outstanding runtime test and no a
 - Broader LethalMin teardown/despawn repair only with stronger evidence.
 
 
-Select exactly one deferred scope before preparing a successor; no scope is currently active.
+LC Office scrap quantity/distribution is the sole selected scope until this investigation is completed, rejected or explicitly released. Do not combine another independent deferred scope into it.
 
