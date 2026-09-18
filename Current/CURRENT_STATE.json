@@ -70,7 +70,7 @@
     "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
     "diagnostic_revision": {
       "build_id": "S1.42AJ-DIAG1",
-      "status": "RUNTIME_EVIDENCE_INGESTED_PERFORMANCE_REGRESSION_UNDER_INVESTIGATION_NOT_ACCEPTED",
+      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
       "base_build_id": "S1.42AJ",
       "base_profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
       "base_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
@@ -91,7 +91,8 @@
       "runtime_role": "DIAGNOSTIC_ONLY_FORCE_SELECT_LC_OFFICE_AFTER_NORMAL_VIABILITY",
       "runtime_evidence": "RuntimeEvidence/S1.42AJ-DIAG1/20260917T204918Z/",
       "runtime_log_sha256": "bb81a91f2cabcb1a3b010dd988335cc9c9cb0b5bcc9bd646ee2ac18ccbb15a26",
-      "runtime_finding": "Current/154_S1.42AJ_DIAG1_LC_OFFICE_RUNTIME_PERFORMANCE_FINDING.md"
+      "runtime_finding": "Current/154_S1.42AJ_DIAG1_LC_OFFICE_RUNTIME_PERFORMANCE_FINDING.md",
+      "runtime_validation_status": "RUNTIME_EVIDENCE_INGESTED_PERFORMANCE_REGRESSION_UNDER_INVESTIGATION_NOT_ACCEPTED"
     }
   },
   "next_action": "Prepare and build a strictly one-variable S1.42AJ-DIAG2 from exact S1.42AJ-DIAG1: preserve the diagnostic LC Office force-selection and every package/DLL/config except set BepInEx/config/Piggy.LCOffice.cfg [General] Camera Frame Speed = 0. Statically verify that exact delta, publish/arm DIAG2, then runtime A/B test on Offense specifically for the previously observed frequent afternoon-time stutter. Do not alter balanced S1.42AJ or infer causality before the A/B result.",
