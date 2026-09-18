@@ -1,51 +1,30 @@
 {
-  "build_id": "S1.42AJ",
-  "profile_name": "LC V1 S1.42AJ LC Office V81 Integration",
-  "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
-  "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
-  "output_profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
-  "output_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
-  "zip_members": 335,
+  "build_id": "S1.42AK",
+  "profile_name": "LC V1 S1.42AK LC Office Camera Enemy Balance",
+  "base_profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
+  "base_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
+  "output_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+  "output_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+  "zip_members": 336,
   "changed_existing_members": [
+    "BepInEx/config/me.biodiversity.aloe.cfg",
     "export.r2x"
   ],
-  "added_members": [],
-  "mod_state_changes": [],
-  "mod_additions": [
+  "added_members": [
+    "BepInEx/config/Piggy.LCOffice.cfg"
+  ],
+  "mod_state_changes": [
     {
-      "name": "Piggy-LC_Office",
-      "version": "2.3.4",
-      "enabled": true,
-      "source": "Thunderstore"
-    },
-    {
-      "name": "MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix",
-      "version": "2.0.0",
-      "enabled": true,
-      "source": "Thunderstore"
-    },
-    {
-      "name": "JacobG5-DestroyItemInSlotFix",
-      "version": "1.0.0",
-      "enabled": true,
-      "source": "Thunderstore"
-    },
-    {
-      "name": "Alice-DungeonGenerationPlus",
-      "version": "1.5.1",
-      "enabled": true,
-      "source": "Thunderstore"
+      "name": "YaBoiDucki-men_stalker",
+      "version": "3.1.2",
+      "enabled": false
     }
   ],
-  "mod_removals": [
-    {
-      "name": "Alice-DungeonGenerationPlus",
-      "version": "1.5.0"
-    }
-  ],
-  "snapshot_dir": "ProfileSources/S1.42AJ",
+  "mod_additions": [],
+  "mod_removals": [],
+  "snapshot_dir": "ProfileSources/S1.42AK",
   "snapshot": {
-    "entries": 335,
-    "text_entries": 330
+    "entries": 336,
+    "text_entries": 331
   }
 }
