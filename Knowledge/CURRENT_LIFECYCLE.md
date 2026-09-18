@@ -4,7 +4,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`  
+**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`  
 **Last-Validated:** 2026-09-18
 
 ## Accepted gameplay baseline
@@ -46,7 +46,7 @@ The next selected independent scope is **Universal Interior Viability / Equal Av
 
 The accepted S1.42AB normalizer remains unchanged: it equalizes every positive viable rarity to `100` only after LLL viability filtering. The selected scope therefore targets the earlier viability/availability layer, not the accepted weighting layer.
 
-Phase A is complete under `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`. Phase B1 is complete under `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`: exact S1.42AK resolves 32 Dawn moon assets to 31 LLL ExtendedLevels, excludes only Dawn's test asset and the non-dungeon Company destination Gordion from pairing cells, and fixes the matrix at 30 target moons × 53 selectable interiors = 1,590 cells. Offense is fully observed at 41 `VIABLE_EQUAL_100` plus 12 `NOT_YET_PROVEN` absent pairings pending owner-cause analysis. Shatteredrooms' Experimentation/Embrion restriction remains preserved pending technical proof.
+Phase A and Phase B1 are complete. Phase B2 is complete under `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`: all 53 selectable interiors have a current availability-owner mechanism (22 direct LLL universal-tag overrides, 27 owner/asset-matched Custom flows without direct LLL availability config, 3 vanilla/native flows, 1 DawnLib/native Black Mesa flow). Exact Offense is fully cause-classified at 41 `VIABLE_EQUAL_100` + 12 `AUTHOR_OR_OWNER_HARD_BLOCK`; those hard-block labels are current owner-metadata rejections, not proven technical incompatibilities. Shatteredrooms' Experimentation/Embrion restriction remains preserved as an owner hard block pending technical proof.
 
 ## Live execution state
 
@@ -55,14 +55,14 @@ Phase A is complete under `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGIST
 - Active gameplay candidate: **none**.
 - Active diagnostic runtime target: **none**.
 - Runtime test outstanding: **no**.
-- Selected scope: **Universal Interior Viability / Equal Availability — Phase B1 complete / Phase B2 owner-config analysis outstanding**.
+- Selected scope: **Universal Interior Viability / Equal Availability — Phase B2 complete / Phase B3 matrix materialization outstanding**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
 - No successor build or runtime test is armed.
 
 ## Exact next project action
 
-Phase B2: extract and reconcile the owner/config viability mechanisms for the 53 selectable interiors across the 30 pairing-target moons. Upgrade absent pairings from `NOT_YET_PROVEN` only where repository evidence proves `CONFIG_GAP`, `AUTHOR_OR_OWNER_HARD_BLOCK` or `KNOWN_TECHNICAL_RESTRICTION`. No build or runtime test is authorized yet.
+Phase B3: materialize the fixed 30 × 53 moon/flow matrix using the Phase-B2 owner/config mechanisms. Apply direct LLL tag rules only to established target classes, preserve owner/runtime-proven cells, carry Black Mesa only through its DawnLib/native rule, encode the explicit Shatteredrooms owner blocks, and leave unsupported cells `NOT_YET_PROVEN`. No build or runtime test is authorized yet.
 
 ## Permanent Gale workflow
 

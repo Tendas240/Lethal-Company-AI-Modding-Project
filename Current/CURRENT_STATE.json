@@ -44,13 +44,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "SELECTED_PHASE_B1_COMPLETE_PHASE_B2_OWNER_CONFIG_ANALYSIS_OUTSTANDING",
+    "status": "SELECTED_PHASE_B2_COMPLETE_PHASE_B3_MATRIX_MATERIALIZATION_OUTSTANDING",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "Phase A and Phase B1 are complete. Exact S1.42AK has 32 Dawn moon assets but 31 LLL ExtendedLevels; lethal_company:test is the sole Dawn-only test asset. 71 Gordion is an LLL Vanilla ExtendedLevel but the same runtime identifies CompanyBuildingLevel and CompanyMoonRouteConfirmCommand, so it is retained in inventory but excluded from dungeon/interior pairing cells. The authoritative Phase-B pairing universe is 30 dungeon-target moons (12 Vanilla, 16 Custom, 2 External) x 53 LLL-selectable interiors = 1,590 cells. Exact S1.42AK provides a complete Offense row: 41 viable flows reach effective 100 under the accepted S1.42AB normalizer and 12 flows are unviable; those 12 remain NOT_YET_PROVEN until owner/config cause is reconciled.",
+    "finding": "Phases A, B1 and B2 are complete. All 53 selectable interiors now have a current availability-owner mechanism: 22 DIRECT_LLL_UNIVERSAL_TAG_OVERRIDE flows with active Vanilla:100,Custom:100 tags; 27 OWNER_ASSET_MATCHING_NO_DIRECT_LLL_CONFIG Custom flows; 3 VANILLA_NATIVE_LLL_MATCHING flows; and 1 DAWNLIB_NATIVE_BLACK_MESA_WEIGHT_RULE flow. Current JLL configs expose no moon/dungeon injection or weight controls and are auxiliary behavior configs, not availability owners. Exact S1.42AK Offense is fully cause-classified at 41 VIABLE_EQUAL_100 and 12 AUTHOR_OR_OWNER_HARD_BLOCK; the 12 hard-block labels mean current owner-metadata rejection before normalization, not proven technical incompatibility. Shatteredrooms x Experimentation and x Embrion are likewise explicit AUTHOR_OR_OWNER_HARD_BLOCK cells until a technical reason is proven.",
     "analysis_contract": "Build a current S1.42AK owner/flow/moon viability matrix before authoring any gameplay candidate. Reconcile every registered dungeon flow with its owning system (LLL, JLL, DawnLib/native or other), identify all author/project exclusions and the technical reason for each, and prove that any proposed removal preserves correct entrance/exit pairing, successful generation and traversal, door/socket geometry, elevators, routing and NavMesh behavior. Preserve equal effective rarity 100 for every flow that is viable. Do not duplicate-register native-owner content or bypass an unexplained hard block.",
-    "next_action": "Phase B2: extract and reconcile the owner/config viability mechanisms for the 53 selectable interiors across the 30 pairing-target moons, starting from the 22 directly configured Custom flows, the 27 Custom flows without direct active LLL dungeon config, the three Vanilla flows, and Black Mesa's native/DawnLib owner path. Upgrade absent pairings from NOT_YET_PROVEN only where repository evidence proves CONFIG_GAP, AUTHOR_OR_OWNER_HARD_BLOCK or KNOWN_TECHNICAL_RESTRICTION. No build or runtime test is authorized yet.",
+    "next_action": "Phase B3: materialize the 30 x 53 moon/flow matrix using the Phase-B2 owner mechanisms. Apply the 22-flow LLL Vanilla:100,Custom:100 rule to the 12 Vanilla + 16 Custom target-moon classes, keep External-moon cells unproven unless their tags/owner rules are established, preserve observed/owner-proven cells for the 27 owner-controlled flows, carry Black Mesa only through its DawnLib/native rule, encode Shatteredrooms x Experimentation and x Embrion as owner hard blocks, and leave unsupported cells NOT_YET_PROVEN. No build or runtime test is authorized yet.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -101,7 +101,7 @@
       "exact_delta_to_s142ak": "LC Office / OfficeDungeonFlow"
     },
     "phase_b": {
-      "status": "B1_COMPLETE_B2_OUTSTANDING",
+      "status": "B2_COMPLETE_B3_OUTSTANDING",
       "phase_b1_evidence": "Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md",
       "dawn_moon_assets": 32,
       "lll_extended_levels": 31,
@@ -122,13 +122,27 @@
       "observed_rows": {
         "Offense": {
           "viable_equal_100": 41,
-          "not_yet_proven_unviable": 12,
+          "author_or_owner_hard_block": 12,
+          "config_gap": 0,
+          "known_technical_restriction": 0,
+          "not_yet_proven": 0,
           "total": 53
         }
-      }
+      },
+      "phase_b2_evidence": "Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md",
+      "owner_mechanisms": {
+        "direct_lll_universal_tag_override": 22,
+        "owner_asset_matching_no_direct_lll_config": 27,
+        "vanilla_native_lll_matching": 3,
+        "dawnlib_native_black_mesa_weight_rule": 1
+      },
+      "explicit_owner_hard_blocks": [
+        "Shatteredrooms x Experimentation",
+        "Shatteredrooms x Embrion"
+      ]
     }
   },
-  "next_action": "Phase B2: extract and reconcile the owner/config viability mechanisms for the 53 selectable interiors across the 30 pairing-target moons, starting from the 22 directly configured Custom flows, the 27 Custom flows without direct active LLL dungeon config, the three Vanilla flows, and Black Mesa's native/DawnLib owner path. Upgrade absent pairings from NOT_YET_PROVEN only where repository evidence proves CONFIG_GAP, AUTHOR_OR_OWNER_HARD_BLOCK or KNOWN_TECHNICAL_RESTRICTION. No build or runtime test is authorized yet.",
+  "next_action": "Phase B3: materialize the 30 x 53 moon/flow matrix using the Phase-B2 owner mechanisms. Apply the 22-flow LLL Vanilla:100,Custom:100 rule to the 12 Vanilla + 16 Custom target-moon classes, keep External-moon cells unproven unless their tags/owner rules are established, preserve observed/owner-proven cells for the 27 owner-controlled flows, carry Black Mesa only through its DawnLib/native rule, encode Shatteredrooms x Experimentation and x Embrion as owner hard blocks, and leave unsupported cells NOT_YET_PROVEN. No build or runtime test is authorized yet.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
