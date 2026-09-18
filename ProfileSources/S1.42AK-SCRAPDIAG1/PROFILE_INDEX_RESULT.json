@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-SCRAPDIAG1",
+  "profile_path": "Profiles/LC V1 S1.42AK-SCRAPDIAG1 LC Office Scrap Placement Diagnostic.r2z",
+  "profile_name": "LC V1 S1.42AK LC Office Camera Enemy Balance",
+  "sha256": "233bcc058a3fa95d63e0577c4ff74b5a0dc137db49757b50376e447dd082d3b1",
+  "zip_members": 338,
+  "snapshot_dir": "ProfileSources/S1.42AK-SCRAPDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}
