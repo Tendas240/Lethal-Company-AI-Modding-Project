@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -38,7 +38,7 @@ Accepted gameplay baseline and latest built artifact: **S1.42AK — LC Office Ca
 
 Acceptance authority: `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`. Full-normal runtime evidence is `RuntimeEvidence/S1.42AK/20260918T172838Z/` with raw log SHA-256 `cc0f0a7a6c6a76ad44266aded11ff9cb2aca21f2623f5fb895d371ad778526b9`. The first attempt in that session was aborted before interior entry. The played second attempt naturally selected Spooky Manor and supplied roughly three minutes of interior coverage without a hostile enemy sighting; that is a documented coverage limitation, not a proven spawn regression.
 
-The targeted LC Office camera-render A/B remains supplied by completed diagnostic-only S1.42AJ-DIAG2 evidence. S1.42AJ remains the exact unaccepted parent; DIAG1/DIAG2 remain diagnostic-only. There is no active gameplay candidate. **S1.42AK-SCRAPDIAG1 is now the published and armed diagnostic runtime target** for the sole selected LC Office Scrap Quantity/Distribution Investigation. S1.42AK remains accepted/latest. Existing evidence shows LC Office's 14-15 generated/final scrap count is comparable to nearby normal Offense evidence; placement/discoverability remains unresolved. The exact diagnostic profile SHA-256 is `233bcc058a3fa95d63e0577c4ff74b5a0dc137db49757b50376e447dd082d3b1`, publication is proven by `BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`, and runtime activation is authorized by `Current/162_S1.42AK_SCRAPDIAG1_RUNTIME_ACTIVATION.md`. `BuildSpecs/current.json` remains disabled; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-SCRAPDIAG1`; the next action is the Offense placement-diagnostic run and log upload.
+The targeted LC Office camera-render A/B remains supplied by completed diagnostic-only S1.42AJ-DIAG2 evidence. The later LC Office Scrap Quantity/Distribution Investigation is now complete. Exact S1.42AK-SCRAPDIAG1 produced valid Offense placement evidence at `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`; `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md` closes the scope with no gameplay delta. The run did not establish a low-count regression or strong room/floor clustering: 21 relevant interior items span three height bands and 13 support-tile roots. S1.42AK remains accepted/latest and unchanged; SCRAPDIAG1 remains diagnostic-only evidence. There is no active gameplay candidate or diagnostic target, no runtime test is outstanding, `BuildSpecs/current.json` is disabled, and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`. The next action is to select one independent deferred scope from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`.
 
 ## Authority rule
 
