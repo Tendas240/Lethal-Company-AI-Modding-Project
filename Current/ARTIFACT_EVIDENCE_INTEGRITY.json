@@ -195,7 +195,7 @@
     },
     {
       "build_id": "S1.42AK",
-      "role": "DEFERRED_FULL_NORMAL_RUNTIME_GATE_NOT_WAIVED",
+      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
       "profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
       "profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
       "profile_sources": "ProfileSources/S1.42AK/",
@@ -204,7 +204,9 @@
       "build_plan": "BuildSpecs/S1.42AK_PLAN.md",
       "static_evidence": "BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "runtime_evidence_required": false,
-      "partial_runtime_evidence_present": false
+      "partial_runtime_evidence_present": false,
+      "candidate_record": "Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md",
+      "project_status": "Current/Projektstatus_S1.42AK_CANDIDATE.json"
     }
   ],
   "important_project_dlls": [

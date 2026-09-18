@@ -1,0 +1,66 @@
+{
+  "schema_version": 4,
+  "date": "2026-09-18",
+  "repository_is_source_of_truth": true,
+  "accepted_baseline": {
+    "build_id": "S1.42AI",
+    "title": "BCMER ShyGuy Interior-Only Event Correction",
+    "status": "ACCEPTED_FULL_NORMAL_STACK",
+    "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+    "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+    "acceptance": "Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md",
+    "project_status": "Current/Projektstatus_S1.42AI_ACCEPTED.json",
+    "runtime_evidence": "RuntimeEvidence/S1.42AI/20260916T180452Z/",
+    "profile_sources": "ProfileSources/S1.42AI/",
+    "file_index": "ProfileSources/S1.42AI/FILE_INDEX.json"
+  },
+  "active_runtime_candidate": {
+    "build_id": "S1.42AK",
+    "title": "LC Office Camera Enemy Balance",
+    "status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+    "sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+    "candidate_record": "Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md",
+    "project_status": "Current/Projektstatus_S1.42AK_CANDIDATE.json",
+    "build_plan": "BuildSpecs/S1.42AK_PLAN.md",
+    "profile_sources": "ProfileSources/S1.42AK/",
+    "file_index": "ProfileSources/S1.42AK/FILE_INDEX.json",
+    "workflow_run": 35366580975,
+    "build_commit": "395f8298230d343b523eeda3afbfc9253a281931",
+    "static_evidence": "BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+    "parent": "S1.42AJ"
+  },
+  "runtime_gate": {
+    "normal_startup_and_lobby": "MUST_PASS",
+    "exact_s142ak_profile_identity": "MUST_PASS",
+    "men_stalker_disabled_runtime": "MUST_NOT_LOAD_OR_SPAWN",
+    "ordinary_enemy_spawn_navigation": "MUST_REMAIN_HEALTHY",
+    "aloe_runtime_behavior": "MUST_NOT_REGRESS",
+    "ordinary_scrap_interior_generation": "MUST_REMAIN_HEALTHY",
+    "inherited_accepted_contracts": "MUST_REMAIN_HEALTHY",
+    "normal_unforced_offense_day": "MUST_PASS",
+    "lc_office_natural_selection": "DESIRABLE_NOT_REQUIRED_FOR_FIRST_FULL_NORMAL_PASS",
+    "lc_office_elevator_and_stutter_observation": "EXERCISE_IF_NATURALLY_SELECTED",
+    "project_critical_regression_or_error_flood": "MUST_BE_0"
+  },
+  "static_gate": {
+    "parent": "S1.42AJ",
+    "parent_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
+    "profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+    "men_stalker_enabled": false,
+    "aloe_power_level": 0,
+    "lc_office_camera_frame_speed": 0,
+    "random_enemies_size_byte_preserved": true,
+    "lc_office_scrap_tuning_changed": false,
+    "static_evidence": "BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md"
+  },
+  "controllers": {
+    "buildspec_current_enabled": false,
+    "buildspec_current_id": "IDLE_AFTER_S1.42AK_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "buildspec_base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+    "buildspec_base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+    "runtime_active_build": "S1.42AK",
+    "successor_armed": false
+  },
+  "exact_next_step": "Import exact S1.42AK with the canonical repository-driven Gale v2.4 helper, play one ordinary unforced Offense day, report any stutter/performance/enemy/scrap anomaly and whether LC Office appeared naturally, then upload the complete fresh S1.42AK LogOutput.log with the build-specific autonomous PowerShell uploader. Do not accept S1.42AK from static/build success alone."
+}
