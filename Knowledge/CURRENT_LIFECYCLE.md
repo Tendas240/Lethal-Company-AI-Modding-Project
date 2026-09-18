@@ -40,6 +40,14 @@ Base generation was 18 and replication was 18+3. After separating the LC Office 
 
 The user's sparse-local-density impression is compatible with a large multi-level interior whose scrap is globally distributed. No narrow faulty placement owner is established. The scope closes with **no gameplay delta**: no quantity increase and no placement patch. S1.42AK-SCRAPDIAG1 remains diagnostic-only evidence.
 
+## Selected scope — Universal Interior Viability / Equal Availability
+
+The next selected independent scope is **Universal Interior Viability / Equal Availability**. Investigation contract: `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
+
+The accepted S1.42AB normalizer remains unchanged: it equalizes every positive viable rarity to `100` only after LLL viability filtering. The selected scope therefore targets the earlier viability/availability layer, not the accepted weighting layer.
+
+Initial exact-S1.42AK inventory evidence shows 28 LLL `Custom Dungeon` sections. Twenty-seven have content configuration enabled with `Vanilla:100,Custom:100`; Black Mesa is the sole disabled LLL config section and remains a separate native/DawnLib owner case. This does not yet reconcile all registered flows or prove universal safety. Shatteredrooms' Experimentation/Embrion restriction remains preserved pending technical proof.
+
 ## Live execution state
 
 - Accepted baseline: **S1.42AK**.
@@ -47,14 +55,14 @@ The user's sparse-local-density impression is compatible with a large multi-leve
 - Active gameplay candidate: **none**.
 - Active diagnostic runtime target: **none**.
 - Runtime test outstanding: **no**.
-- Last selected scope: **LC Office Scrap Quantity/Distribution Investigation — completed, no gameplay delta**.
-- `BuildSpecs/current.json`: disabled at `IDLE_AFTER_LC_OFFICE_SCRAP_INVESTIGATION_SELECT_NEXT_SCOPE`.
+- Selected scope: **Universal Interior Viability / Equal Availability — baseline inventory outstanding**.
+- `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
 - No successor build or runtime test is armed.
 
 ## Exact next project action
 
-Select the next independent deferred scope from `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`. Do not start a build or runtime test until that scope is explicitly selected and its own evidence/plan authorizes one.
+Create the authoritative S1.42AK registered-interior/owner inventory and moon-viability matrix from ProfileSources plus accepted runtime evidence. Reconcile every current flow/owner and known exclusion before any universal-availability candidate is designed.
 
 ## Permanent Gale workflow
 

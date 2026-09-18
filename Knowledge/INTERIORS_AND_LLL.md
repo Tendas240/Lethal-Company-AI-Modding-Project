@@ -99,6 +99,23 @@ The accepted S1.42AK integration does not force LC Office onto all moons. The fi
 
 The exact accepted S1.42AI package/dependency baseline was re-verified on 2026-09-17. The required infrastructure versions are already enabled; `Alice-DungeonGenerationPlus 1.5.0` is the version to transition; the three LC Office target additions are absent; `pacoito-LethalLevelLoaderUpdated` is absent; and the accepted `S142ABInteriorWeightNormalization.dll` remains present at SHA-256 `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`. The minimal package delta is therefore fixed in `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; build-time dependency resolution must still prove no unintended cascade or second LLL owner.
 
+## Selected universal viability / equal availability investigation
+
+**Universal Interior Viability / Equal Availability** is now the selected independent scope. Canonical investigation plan: `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
+
+The accepted S1.42AB post-viability normalization remains authoritative and unchanged. The selected work is to resolve the layer **before** that normalizer: which registered flows are viable on which moons and why.
+
+Exact S1.42AK baseline extraction currently establishes:
+
+- 28 LLL `Custom Dungeon` config sections;
+- 27 with `Enable Content Configuration = true` and `Dynamic Level Tags List = Vanilla:100,Custom:100`;
+- Black Mesa as the sole one of those 28 with LLL content configuration disabled, consistent with its separate native/DawnLib ownership;
+- the 28-section LLL inventory is not yet equivalent to the complete registered-flow inventory and must be reconciled against the historical 52-flow discovery plus current runtime registration/viability evidence.
+
+Do not interpret broad `Vanilla:100,Custom:100` tag injection as automatic proof that every flow is safe on every moon. Owner hard blocks, non-LLL registrations and technical restrictions remain authoritative until specifically understood and tested. Shatteredrooms' Experimentation/Embrion restriction therefore remains in place during the analysis phase.
+
+No build or runtime test is currently authorized by this selection.
+
 ## Shatteredrooms restriction
 
 Shatteredrooms is explicitly restricted on Experimentation and Embrion. S1.42AB intentionally preserves that LLL-side restriction because the project-local patch changes rarity only after viability filtering.
@@ -129,12 +146,10 @@ Avoid:
 
 ## Remaining deferred interior work
 
-Keep separate from the selected LC Office compatibility scope and the already accepted S1.42AB weighting architecture:
+Keep separate from the selected universal viability/equal-availability scope and the already accepted S1.42AB weighting architecture:
 
 - CullFactory `junkrooms` / `shatteredrooms` exceptions;
 - MelanieMausoleum fog reduction only for that interior;
 - Black Mesa/interior/Pikmin route recovery;
-- any future attempt to remove the Shatteredrooms Experimentation/Embrion safety restriction;
-- any future LC Office universal-moon availability tuning after compatibility acceptance.
 
 Package-specific historical research remains in `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`; this topic file is the current authority for the live interior-selection rule.
