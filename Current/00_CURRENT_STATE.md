@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Create the authoritative S1.42AK registered-interior/owner inventory and moon-viability matrix from ProfileSources plus runtime evidence, then classify every missing moon/flow pairing as configuration gap, owner hard block, known technical restriction or not-yet-proven. No build or runtime test is authorized yet.
+Build the Phase-B S1.42AK moon/flow viability matrix from Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md plus current owner/runtime evidence. Classify every current selectable moon/flow pairing as VIABLE_EQUAL_100, CONFIG_GAP, AUTHOR_OR_OWNER_HARD_BLOCK, KNOWN_TECHNICAL_RESTRICTION or NOT_YET_PROVEN. No build or runtime test is authorized yet.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
