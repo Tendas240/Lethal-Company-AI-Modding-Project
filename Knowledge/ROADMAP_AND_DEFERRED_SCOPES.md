@@ -1,24 +1,28 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only  
-**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`  
+**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`  
 **Last-Validated:** 2026-09-18
 
 ## Current position
 
 Accepted gameplay baseline and latest built artifact: **S1.42AK — LC Office Camera Enemy Balance — ACCEPTED FULL NORMAL STACK**, SHA-256 `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`.
 
-The LC Office V81 integration scope is closed by `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`. The accepted profile carries LC Office `Camera Frame Speed = 0`, Men-stalker disabled and Aloe `PowerLevel = 0`; RandomEnemiesSize and LC Office scrap tuning remain unchanged.
+There is no active gameplay candidate, no active diagnostic target, no armed successor build and no outstanding runtime test. `RuntimeInbox/ACTIVE_BUILD.txt` has returned to accepted S1.42AK and `BuildSpecs/current.json` remains disabled.
 
-The accepted full-normal evidence has one explicit coverage limit: the first attempt ended before interior entry, while the second selected Spooky Manor and supplied roughly three minutes of played interior coverage with no hostile enemy sighting. This does not establish an indoor-spawn regression and does not create another mandatory runtime test.
+## Completed LC Office scrap scope
 
-## Active scope
+**LC Office Scrap Quantity/Distribution Investigation — COMPLETE / NO GAMEPLAY DELTA.**
 
-**LC Office Scrap Quantity/Distribution Investigation — published diagnostic / armed runtime placement test outstanding.** Canonical investigation plan: `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
+`Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md` records the valid placement capture. The diagnostic did not reproduce a low-count regression or a strong placement-clustering defect. Twenty-one relevant interior scrap objects were distributed across three height bands and 13 support-tile roots. The sparse-local-density impression is compatible with the large multi-level layout, but no narrow faulty owner was established.
 
-The existing count comparison is complete: LC Office's 14-15 generated/final count is comparable to nearby normal Offense evidence, while the S1.42AJ Facility high final count was BCMER `PlentyOutsideScrap` event-inflated. No LC Office-specific low-count regression is established. Spatial room/floor placement and practical discoverability remain unresolved. Exact published S1.42AK-SCRAPDIAG1 is now the active diagnostic runtime target over accepted/latest S1.42AK; there is intentionally no gameplay active candidate. Its only additions are the reviewed Office selector and read-only placement logger. The pending Offense run must collect stable item/anchor/support placement evidence before any tuning decision.
+Therefore no quantity increase or broad placement patch is authorized; accepted S1.42AK remains unchanged and SCRAPDIAG1 is completed diagnostic evidence only.
+
+## No active scope selected
+
+The project is intentionally idle at the scope-selection boundary. Choose one independent deferred scope before implementation/build/runtime work begins.
 
 ## Remaining deferred independent scopes
 
@@ -31,6 +35,4 @@ The existing count comparison is complete: LC Office's 14-15 generated/final cou
 - AdditionalNetworking repair only with reproducible evidence.
 - Broader LethalMin teardown/despawn repair only with stronger evidence.
 
-
-LC Office scrap quantity/distribution is the sole selected scope until this investigation is completed, rejected or explicitly released. Do not combine another independent deferred scope into it.
-
+Select exactly one independent scope next. Do not silently combine deferred scopes into one build or diagnostic.
