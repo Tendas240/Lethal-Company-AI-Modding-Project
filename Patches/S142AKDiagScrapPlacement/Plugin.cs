@@ -329,11 +329,11 @@ namespace S142AKDiagScrapPlacement
         {
             string safe = (value ?? "<null>")
                 .Replace("\\", "\\\\")
-                .Replace(""", "\\"")
+                .Replace("\"", "\\\"")
                 .Replace("\r", "\\r")
                 .Replace("\n", "\\n");
 
-            return """ + safe + """;
+            return "\"" + safe + "\"";
         }
     }
 }
