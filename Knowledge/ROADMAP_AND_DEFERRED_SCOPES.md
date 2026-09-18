@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=S1.42AJ runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=S1.42AJ runtime_test_outstanding=false -->
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
@@ -8,18 +8,28 @@
 
 ## Current position
 
-Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**, SHA-256 `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`. Balanced lifecycle candidate: **S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / NOT ACCEPTED**, SHA-256 `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`.
+Accepted gameplay baseline: **S1.42AI — BCMER ShyGuy Interior-Only Event Correction — ACCEPTED FULL NORMAL STACK**. Latest built balanced artifact remains **S1.42AJ — LC Office V81 Integration — NOT ACCEPTED**.
 
-S1.42AJ remains the balanced lifecycle candidate. Exact published S1.42AJ-DIAG2 is the active diagnostic runtime target for the isolated LC Office camera-render A/B; `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ-DIAG2` provides evidence attribution only. S1.42AI remains the accepted gameplay baseline.
+The second exact S1.42AJ-DIAG2 Offense run is ingested and closes the planned camera-render A/B for project purposes: the characteristic DIAG1 repeated stutter did not recur during a substantially longer LC Office run. DIAG2 remains diagnostic-only and is not accepted.
+
+**S1.42AK — LC Office Camera Render and Enemy Balance Fix** is prepared as the next balanced successor directly from exact S1.42AJ under `BuildSpecs/S1.42AK_PLAN.md`; it is not yet built. No runtime test is currently pending.
 
 ## Active scope
 
-**LC Office V81 Integration — S1.42AJ balanced candidate; DIAG2 A/B armed.** Canonical plan: `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; static evidence: `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`; DIAG2 publication evidence: `BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
+**LC Office V81 Integration — diagnostic A/B complete; S1.42AK successor prepared.**
 
-S1.42AJ is compatibility-first and preserves modern IAmBatby LLL ownership plus accepted equal-effective-weight behavior. Full-normal evidence already proves ordinary Offense viability; DIAG1 proved actual Office generation but exposed later-day stutter. DIAG2 changes only `Camera Frame Speed = 0` and is armed to isolate that performance variable while preserving Office generation/traversal/elevator/scrap/enemy behavior. The camera hypothesis remains unproven. Universal moon availability plus all unrelated interior work remain outside this scope.
+The prepared successor carries only:
+- LC Office `Camera Frame Speed = 0`;
+- disable `YaBoiDucki-men_stalker 3.1.2`;
+- Aloe `PowerLevel = 0`.
+
+RandomEnemiesSize is explicitly unchanged. LC Office scrap is also unchanged in S1.42AK: the latest run logged 15 objects to spawn, while the user still perceived the interior as sparse or poorly distributed. Quantity versus spatial placement remains a separate evidence-driven follow-up.
+
+S1.42AK must derive from exact S1.42AJ and must not inherit DIAG1/DIAG2 force-selection artifacts.
 
 ## Remaining deferred independent scopes
 
+- LC Office scrap quantity/distribution investigation: distinguish generated count from room/floor placement and practical discoverability before changing any scrap tuning.
 - Universal interior viability / equal availability: evaluate every registered interior for safe availability on every moon, preserve equal effective probability (`100`) whenever viable, and only remove LLL/author exclusions after compatibility proof including correct entrance/exit pairing, successful generation/traversal, and no door-socket, geometry, routing, elevator or NavMesh regression; document any technically unavoidable exception explicitly.
 - CullFactory exceptions for exact IDs `junkrooms` / `shatteredrooms`.
 - MelanieMausoleum fog reduction only for that interior.

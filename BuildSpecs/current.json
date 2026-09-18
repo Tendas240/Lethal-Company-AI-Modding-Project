@@ -1,6 +1,6 @@
 {
   "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42AJ_BUILD_AWAITING_RUNTIME_VALIDATION",
+  "build_id": "IDLE_AFTER_S1.42AJ_DIAG2_CONFIRMATION_AWAITING_S1.42AK_BUILD",
   "base_profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
   "base_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",
