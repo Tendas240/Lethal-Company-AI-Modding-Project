@@ -1,0 +1,70 @@
+name: S1.42AK SCRAPDIAG1 build and static gate
+
+on:
+  pull_request:
+    paths:
+      - 'Patches/S142AKDiagScrapPlacement/**'
+      - 'Patches/S142AJDiag1OfficeSelection/**'
+      - 'BuildSpecs/S1.42AK-SCRAPDIAG1.json'
+      - 'BuildSpecs/S1.42AK-SCRAPDIAG1_PLAN.md'
+      - 'AnalysisTools/validate_s142ak_scrapdiag1_static.py'
+      - '.github/workflows/s142ak-scrapdiag1-static.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Prove reviewed AJDIAG1 selector source is unchanged in this PR
+        run: git diff --exit-code "$BASE_SHA" "$HEAD_SHA" -- Patches/S142AJDiag1OfficeSelection
+
+      - name: Test AJDIAG1 selection boundaries
+        run: dotnet run --project Patches/S142AJDiag1OfficeSelection/Tests/SelectionPolicy.Tests.csproj -c Release
+
+      - name: Compile AJDIAG1 selector
+        run: dotnet build Patches/S142AJDiag1OfficeSelection/S142AJDiag1OfficeSelection.csproj -c Release
+
+      - name: Compile scrap placement logger
+        run: dotnet build Patches/S142AKDiagScrapPlacement/S142AKDiagScrapPlacement.csproj -c Release
+
+      - name: Build unarmed diagnostic from exact accepted S1.42AK
+        run: python BuildSystem/profile_builder.py BuildSpecs/S1.42AK-SCRAPDIAG1.json
+
+      - name: Verify exact source and archive gate
+        run: python AnalysisTools/validate_s142ak_scrapdiag1_static.py
+
+      - name: Assert live controllers and lifecycle state were not changed
+        run: |
+          git diff --exit-code "$BASE_SHA" "$HEAD_SHA" --             BuildSpecs/current.json             RuntimeInbox/ACTIVE_BUILD.txt             Current/CURRENT_STATE.json             Current/AUTO_BUILD_RESULT.json             Current/AUTO_BUILD_RESULT.md
+
+      - name: Upload unarmed diagnostic review artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: S1.42AK-SCRAPDIAG1-review
+          if-no-files-found: warn
+          retention-days: 90
+          path: |
+            Profiles/LC V1 S1.42AK-SCRAPDIAG1 LC Office Scrap Placement Diagnostic.r2z
+            ProfileSources/S1.42AK-SCRAPDIAG1/
+            BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/
