@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Current Project Lifecycle
 
 **Status:** CURRENT / CANONICAL TOPIC  
@@ -16,7 +16,7 @@ SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
 
 ## Balanced lifecycle candidate
 
-**S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / ACTIVE BALANCED CANDIDATE / NOT ACCEPTED** remains unchanged.
+**S1.42AJ — LC Office V81 Integration — STATIC VALIDATED / NOT ACCEPTED BALANCED PARENT** remains the exact balanced parent used for S1.42AK. It is not the active runtime candidate.
 
 Profile: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z`  
 SHA-256: `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`
@@ -45,11 +45,15 @@ The longer confirmation run covered roughly twelve minutes after LC Office gener
 
 The combined A/B is sufficient for this project to carry `Camera Frame Speed = 0` into the next balanced successor, without claiming universal causal proof.
 
-## Prepared balanced successor
+## Built balanced successor
 
-**S1.42AK — LC Office Camera Render and Enemy Balance Fix — PREPARED / NOT BUILT** must derive directly from exact S1.42AJ, never from DIAG1 or DIAG2.
+**S1.42AK — LC Office Camera Enemy Balance — BUILT / STATIC VALIDATED / NOT ACCEPTED / NOT YET RUNTIME-ACTIVE** was built directly from exact S1.42AJ, never from DIAG1 or DIAG2.
 
-Prepared plan: `BuildSpecs/S1.42AK_PLAN.md`.
+Profile: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z`  
+SHA-256: `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
+Plan: `BuildSpecs/S1.42AK_PLAN.md`  
+Static verification: `BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md`  
+Successful build run: `35366580975`.
 
 Authorized delta only:
 - LC Office `[General] Camera Frame Speed = 0`;
@@ -60,16 +64,17 @@ Authorized delta only:
 ## Live execution state
 
 - Accepted baseline: **S1.42AI**.
-- Balanced built parent: **S1.42AJ** — not accepted.
+- Latest built balanced artifact: **S1.42AK** — static validated, not accepted, not yet runtime-active.
+- Balanced parent: **S1.42AJ** — not accepted; retained as exact S1.42AK lineage parent.
 - Diagnostic evidence target: **S1.42AJ-DIAG2** — confirmation complete, diagnostic-only, not accepted.
-- Prepared successor: **S1.42AK** — not built.
+- Active runtime candidate: **none**.
 - Runtime test outstanding: **no**.
-- `BuildSpecs/current.json` remains disabled and guards the accepted S1.42AI baseline between atomic build operations; the S1.42AK trigger will explicitly switch its build base to exact S1.42AJ.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` is an idle evidence-attribution pointer only; no runtime test is pending.
+- `BuildSpecs/current.json` is disabled and guards the accepted S1.42AI baseline between atomic build operations.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ` remains only an idle evidence-attribution pointer; no runtime test is pending.
 
 ## Exact next project action
 
-Execute the atomic repository-native **S1.42AK** build from exact S1.42AJ according to `BuildSpecs/S1.42AK_PLAN.md`. The build controller must remain disabled until that atomic trigger. Do not derive from DIAG1/DIAG2, do not modify RandomEnemiesSize, and do not tune LC Office scrap in this successor.
+Activate **S1.42AK** as the explicit full-normal runtime candidate in one repository-native lifecycle update. Do not call it accepted before runtime evidence. The response that releases that test must include the repository-driven Gale replacement/import one-liner and the exact S1.42AK autonomous PowerShell log uploader.
 
 ## Scope boundary
 
@@ -77,4 +82,4 @@ Universal-moon availability, general Interior viability work, Wesley, CullFactor
 
 ## Canonical Gale runtime import helper
 
-Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. The resolver remains fail-closed: a normal target must match `AUTO_BUILD_RESULT`; a direct diagnostic must bind exactly to that balanced result; and a second-generation diagnostic is permitted only when `CURRENT_STATE.selected_scope.diagnostic_parent_revision` identifies one exact published parent whose own base binds directly to `AUTO_BUILD_RESULT`. DIAG2 is the currently authorized one-hop case. The helper does not allow an arbitrary diagnostic chain.
+Use `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. The resolver remains fail-closed: a normal target must match `AUTO_BUILD_RESULT`; a direct diagnostic must bind exactly to that balanced result; and a second-generation diagnostic is permitted only when `CURRENT_STATE.selected_scope.diagnostic_parent_revision` identifies one exact published parent whose own base binds directly to `AUTO_BUILD_RESULT`. `AUTO_BUILD_RESULT` now identifies S1.42AK, so the earlier DIAG2 chain is retained as completed historical diagnostic evidence rather than a current runtime target. The helper does not allow an arbitrary diagnostic chain.

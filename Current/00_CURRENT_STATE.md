@@ -21,11 +21,10 @@ Runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`
 
 ## Latest built artifact
 
-**S1.42AJ — LC Office V81 Integration — STATIC VALIDATED NOT ACCEPTED SUCCESSOR PREPARATION SELECTED**
+**S1.42AK — LC Office Camera Enemy Balance — STATIC VALIDATED NOT ACCEPTED AWAITING RUNTIME ACTIVATION**
 
-Profile: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z`  
-SHA-256: `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`  
-Candidate record: `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`  
+Profile: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z`  
+SHA-256: `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
@@ -34,13 +33,13 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
-- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AJ_DIAG2_CONFIRMATION_AWAITING_S1.42AK_BUILD`)
+- `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AK_BUILD_AWAITING_RUNTIME_ACTIVATION`)
 - Guarded build base: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z` / `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AJ`
 
 ## Exact next action
 
-Execute the repository-native atomic S1.42AK build from exact S1.42AJ according to BuildSpecs/S1.42AK_PLAN.md. BuildSpecs/current.json is intentionally disabled before that trigger. The authorized delta is only LC Office Camera Frame Speed = 0, YaBoiDucki-men_stalker 3.1.2 disabled, and Biodiversity Aloe PowerLevel = 0; RandomEnemiesSize and LC Office scrap settings must remain unchanged.
+Activate S1.42AK as the explicit full-normal runtime candidate in one repository-native lifecycle update, then release its runtime test instructions. Do not treat S1.42AK as accepted before runtime evidence. The activation response must include the repository-driven Gale replacement/import one-liner and the exact S1.42AK autonomous PowerShell log uploader.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

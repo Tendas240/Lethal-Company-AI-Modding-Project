@@ -1,9 +1,9 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AJ candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Artifact and Runtime Evidence Integrity
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
 **Machine mirror:** `Current/ARTIFACT_EVIDENCE_INTEGRITY.json`  
-**Last-Validated:** 2026-09-17
+**Last-Validated:** 2026-09-18
 
 ## Accepted gameplay baseline: S1.42AI
 
@@ -12,23 +12,28 @@ SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`
 Acceptance: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
 Runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`
 
-## Active runtime candidate: S1.42AJ
+## Latest built artifact: S1.42AK
 
-Artifact: `Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z`  
-SHA-256: `7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba`  
-Candidate: `Current/153_S1.42AJ_BUILD_CANDIDATE_LC_OFFICE_V81_INTEGRATION.md`  
-Static evidence: `BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md`  
-Readable snapshot: `ProfileSources/S1.42AJ/`
+Artifact: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z`  
+SHA-256: `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
+Plan: `BuildSpecs/S1.42AK_PLAN.md`  
+Static evidence: `BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md`  
+Readable snapshot: `ProfileSources/S1.42AK/`
 
-S1.42AJ is pending full-normal runtime validation. It has no runtime evidence claim yet. S1.42AI remains the accepted completed gameplay profile.
+S1.42AK is statically validated but not accepted and not yet runtime-active. There is currently no active runtime candidate and no runtime test outstanding.
+
+## Balanced parent and diagnostic evidence
+
+S1.42AJ remains the exact balanced parent for S1.42AK and is not accepted. S1.42AJ-DIAG1 and S1.42AJ-DIAG2 remain diagnostic-only evidence; they are not gameplay bases.
+
+## Pending / deferred unaccepted profiles
+
+- **S1.42AJ** — deferred full-normal gate / retained balanced parent, not active.
+- **S1.42AK** — deferred full-normal gate until the explicit runtime-activation segment, not active yet.
 
 ## Completed diagnostic evidence: S1.42AI-DIAG1R3
 
 R3 remains completed diagnostic-pass evidence only. It is not a gameplay baseline and does not replace the full-normal S1.42AI acceptance evidence.
-
-## Pending runtime candidates
-
-Exactly one: **S1.42AJ** with role `ACTIVE_RUNTIME_CANDIDATE_PENDING`.
 
 ## Retrieval invariant
 
