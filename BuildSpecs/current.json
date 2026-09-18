@@ -1,15 +1,68 @@
 {
-  "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42AJ_DIAG2_CONFIRMATION_AWAITING_S1.42AK_BUILD",
-  "base_profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
-  "base_sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
-  "output_profile": "Profiles/DO_NOT_BUILD.r2z",
-  "profile_name": "DO_NOT_BUILD",
+  "enabled": true,
+  "build_id": "S1.42AK",
+  "base_profile": "Profiles/LC V1 S1.42AJ LC Office V81 Integration.r2z",
+  "base_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
+  "output_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+  "profile_name": "LC V1 S1.42AK LC Office Camera Enemy Balance",
   "overwrite": false,
-  "mod_state_changes": [],
+  "mod_state_changes": [
+    {
+      "name": "YaBoiDucki-men_stalker",
+      "version": "3.1.2",
+      "enabled": false
+    }
+  ],
   "mod_additions": [],
   "mod_removals": [],
-  "config_patches": [],
+  "config_patches": [
+    {
+      "path": "BepInEx/config/Piggy.LCOffice.cfg",
+      "section": "General",
+      "key": "Camera Frame Speed",
+      "value": "0"
+    },
+    {
+      "path": "BepInEx/config/me.biodiversity.aloe.cfg",
+      "section": "SpawnSettings",
+      "key": "PowerLevel",
+      "value": "0"
+    }
+  ],
+  "file_injections": [],
   "local_plugin_builds": [],
-  "text_assertions": []
+  "text_assertions": [
+    {
+      "path": "export.r2x",
+      "regex": "(?m)^- name: YaBoiDucki-men_stalker\\r?\\n  version:\\r?\\n    major: 3\\r?\\n    minor: 1\\r?\\n    patch: 2\\r?\\n  enabled: false$"
+    },
+    {
+      "path": "BepInEx/config/me.biodiversity.aloe.cfg",
+      "regex": "(?m)^PowerLevel = 0$"
+    },
+    {
+      "path": "BepInEx/config/Piggy.LCOffice.cfg",
+      "regex": "(?m)^\\[General\\]\\r?\\nCamera Frame Speed = 0$"
+    },
+    {
+      "path": "BepInEx/config/wexop.random_enemies_size.cfg",
+      "contains": "ChanceOfRandomSize = 20"
+    },
+    {
+      "path": "BepInEx/config/wexop.random_enemies_size.cfg",
+      "contains": "MinMonstersSizeIndoor = 0.4"
+    },
+    {
+      "path": "BepInEx/config/wexop.random_enemies_size.cfg",
+      "contains": "MaxMonstersSizeIndoor = 1.7"
+    },
+    {
+      "path": "BepInEx/config/wexop.random_enemies_size.cfg",
+      "contains": "MinMonstersSizeOutdoor = 0.8"
+    },
+    {
+      "path": "BepInEx/config/wexop.random_enemies_size.cfg",
+      "contains": "MaxMonstersSizeOutdoor = 5"
+    }
+  ]
 }
