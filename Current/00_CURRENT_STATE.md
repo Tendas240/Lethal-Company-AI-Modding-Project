@@ -31,7 +31,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Live execution state
 
-- Active candidate: **S1.42AJ**
+- Active candidate: **none**
 - Runtime test outstanding: **no**
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_AFTER_S1.42AJ_DIAG2_CONFIRMATION_AWAITING_S1.42AK_BUILD`)
