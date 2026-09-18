@@ -1,0 +1,1096 @@
+[17:27:05.5871471] [Debug  :   Coroner] Query successful!True
+[17:27:06.5110067] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[17:27:06.5110067] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[17:27:06.5110067] [Debug  :   Coroner] Handling Out of Bounds death...
+[17:27:07.3301845] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[17:27:07.3301845] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[17:27:07.3301845] [Debug  :   Coroner] Handling Out of Bounds death...
+[17:27:07.9711078] [Info   : LethalMin] EnginePart(Clone) has reached a route node: EntranceTeleportA(Clone)
+[17:27:07.9711078] [Info   : LethalMin] Bulbmin_g98E2t: Using entrance EntranceTeleportA(Clone)
+[17:27:07.9711078] [Info   : LethalMin] Yellow Pikmin_pxom: Using entrance EntranceTeleportA(Clone)
+[17:27:07.9711078] [Debug  : LethalMin] Pikmin reached node 1/2
+[17:27:09.1958298] [Info   :ReservedItemSlotCore-2.0.41] Focusing reserved hotbar slots. NewIndex: 4 OldIndex: 1 ReservedStartIndex: 4
+[17:27:09.1958298] [Debug  :GeneralImprovements] Toggling helmet light off.
+[17:27:09.4800425] [Info   : Unity Log] Unlocking door
+[17:27:09.4800425] [Info   : Unity Log] Destroying item in slot 10; 4; is currentlyheldobjectserver null: False
+[17:27:09.4800425] [Info   : Unity Log] currentlyHeldObjectServer: Pro-flashlight
+[17:27:09.4810410] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[17:27:11.0420208] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[17:27:12.9982687] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[17:27:14.5002839] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:27:14.8330744] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[17:27:15.9290432] [Info   : LethalMin] PickleJar(Clone) has reached a route node: EntranceTeleportA(Clone)
+[17:27:15.9290432] [Info   : LethalMin] Yellow Pikmin_LuMKh: Using entrance EntranceTeleportA(Clone)
+[17:27:15.9290432] [Info   : LethalMin] Yellow Pikmin_apYy5: Using entrance EntranceTeleportA(Clone)
+[17:27:15.9290432] [Debug  : LethalMin] Pikmin reached node 1/2
+[17:27:18.6193424] [Warning: LethalMin] PickleJar(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[17:27:18.6203400] [Info   : LethalMin] PickleJar(Clone) has cleared its route
+[17:27:18.6203400] [Debug  : LethalMin] Chosen Route Strategy: DirectOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=False, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:27:18.6203400] [Debug  : LethalMin] Generated Route Nodes: Ship
+[17:27:18.8260174] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[17:27:19.0315012] [Warning: LethalMin] PickleJar(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[17:27:19.0315012] [Info   : LethalMin] PickleJar(Clone) has cleared its route
+[17:27:19.0325007] [Debug  : LethalMin] Chosen Route Strategy: DirectOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=False, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:27:19.0325007] [Debug  : LethalMin] Generated Route Nodes: Ship
+[17:27:19.6238175] [Warning: LethalMin] PickleJar(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[17:27:19.6238175] [Info   : LethalMin] PickleJar(Clone) has cleared its route
+[17:27:19.6238175] [Debug  : LethalMin] Chosen Route Strategy: DirectOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=False, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:27:19.6238175] [Debug  : LethalMin] Generated Route Nodes: Ship
+[17:27:20.4284724] [Info   : Unity Log] Picked up scrap Jar of pickles was not in the normal places; reparenting it now
+[17:27:20.4284724] [Info   : Unity Log] Picked up scrap Jar of pickles is not in the elevator; parenting it to spawnedScrapContainer
+[17:27:20.5301953] [Debug  : LightsOut] GrabItem Jar of pickles
+[17:27:20.5301953] [Debug  : LightsOut] PhysicsProp is not in ship room
+[17:27:21.0695930] [Debug  :   Coroner] Querying target player parameters pre-death...
+[17:27:21.0695930] [Debug  :   Coroner] Query successful!True
+[17:27:21.3285594] [Info   :ReservedItemSlotCore-2.0.41] Focusing reserved hotbar slots. NewIndex: 4 OldIndex: 0 ReservedStartIndex: 4
+[17:27:21.3285594] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[17:27:21.3285594] [Debug  :GeneralImprovements] Toggling helmet light off.
+[17:27:22.9124066] [Warning: Unity Log] Can not play a disabled audio source
+[17:27:27.1135978] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[17:27:27.4961476] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:27:28.2942544] [Info   : LethalMin] PickleJar(Clone) has reached a route node: Ship
+[17:27:28.2942544] [Debug  : LethalMin] Pikmin reached node 1/1
+[17:27:28.2942544] [Info   : LethalMin] PickleJar(Clone) has reached its route end
+[17:27:28.2942544] [Info   : LethalMin] PickleJar(Clone) has cleared its route
+[17:27:28.2942544] [Info   : LethalMin] Yellow Pikmin_ruCpzY: Task finished
+[17:27:28.2942544] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Setting to idle on local client
+[17:27:28.2942544] [Info   : LethalMin] Yellow Pikmin_ruCpzY: Dropped item PickleJar(Clone)
+[17:27:28.2942544] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Setting collision mode to 1
+[17:27:28.2942544] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Removed Leader
+[17:27:28.2942544] [Info   : LethalMin] Yellow Pikmin_ruCpzY: Removing current task
+[17:27:28.2942544] [Info   : LethalMin] Yellow Pikmin_8LNgEB: Task finished
+[17:27:28.2942544] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Setting to idle on local client
+[17:27:28.2942544] [Info   : LethalMin] Yellow Pikmin_8LNgEB: Dropped item PickleJar(Clone)
+[17:27:28.2942544] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Setting collision mode to 1
+[17:27:28.2942544] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Removed Leader
+[17:27:28.2942544] [Info   : LethalMin] Yellow Pikmin_8LNgEB: Removing current task
+[17:27:28.2942544] [Info   : LethalMin] Pikmin route complete.
+[17:27:28.3028338] [Info   : LethalMin] PickleJar(Clone) is not carrying enough pikmin and is dropping it
+[17:27:28.3028338] [Info   : LethalMin] Dropped in elevator, adjusted target floor position: (4.58, 0.29, -6.55)
+[17:27:28.3028338] [Info   : LethalMin] PickleJar(Clone) is dropping an item on local client
+[17:27:28.3028338] [Info   : LethalMin] PrimaryLeader: MasaeAhmya
+[17:27:28.3028338] [Info   : LethalMin] PickleJar(Clone) dropped an item on a non-physics region parent
+[17:27:28.3123466] [Debug  : LethalMin] Initializing PikminItem PickleJar(Clone) with item PickleJar(Clone) (True)
+[17:27:28.4975413] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[17:27:29.1161055] [Warning: LethalMin] EnginePart(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[17:27:29.1161055] [Info   : LethalMin] EnginePart(Clone) has cleared its route
+[17:27:29.1161055] [Debug  : LethalMin] Chosen Route Strategy: DirectOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=False, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:27:29.1161055] [Debug  : LethalMin] Generated Route Nodes: Ship
+[17:27:30.1176284] [Warning: LethalMin] EnginePart(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[17:27:30.1176284] [Info   : LethalMin] EnginePart(Clone) has cleared its route
+[17:27:30.1176284] [Debug  : LethalMin] Chosen Route Strategy: DirectOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=False, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:27:30.1176284] [Debug  : LethalMin] Generated Route Nodes: Ship
+[17:27:31.8183944] [Warning: LethalMin] (PickleJar's Counter)'s item is null, destroying counter.
+[17:27:33.5024666] [Info   : LethalMin] Purple Pikmin_YFla: Setting growth stage to 1
+[17:27:33.5084825] [Debug  : LethalMin] Purple Pikmin_Df3yfef: Removed Leader
+[17:27:33.5084825] [Debug  : LethalMin] Purple Pikmin_Df3yfef: Setting collision mode to 1
+[17:27:33.5114828] [Info   : LethalMin] Purple Pikmin_Df3yfef: Assigned Leader: MasaeAhmya (0)
+[17:27:34.0995757] [Warning: LethalMin] PickleJar(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[17:27:34.0995757] [Info   : LethalMin] PickleJar(Clone) has cleared its route
+[17:27:34.0995757] [Debug  : LethalMin] Chosen Route Strategy: DirectOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=False, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:27:34.0995757] [Debug  : LethalMin] Generated Route Nodes: Ship
+[17:27:34.9335396] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[17:27:35.1014473] [Warning: LethalMin] PickleJar(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[17:27:35.1014473] [Info   : LethalMin] PickleJar(Clone) has cleared its route
+[17:27:35.1014473] [Debug  : LethalMin] Chosen Route Strategy: DirectOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=False, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:27:35.1014473] [Debug  : LethalMin] Generated Route Nodes: Ship
+[17:27:39.4089025] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[17:27:39.4089025] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[17:27:39.4089025] [Debug  :   Coroner] Handling Out of Bounds death...
+[17:27:39.4315884] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[17:27:39.4315884] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[17:27:39.4315884] [Debug  :   Coroner] Handling Out of Bounds death...
+[17:27:39.5037150] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[17:27:41.2596927] [Debug  :   Coroner] Querying target player parameters pre-death...
+[17:27:41.2596927] [Debug  :   Coroner] Query successful!True
+[17:27:41.5018928] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:27:41.5018928] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:27:43.5305847] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[17:27:43.5305847] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[17:27:43.5305847] [Debug  :   Coroner] Handling Out of Bounds death...
+[17:27:43.5305847] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[17:27:43.5305847] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[17:27:43.5305847] [Debug  :   Coroner] Handling Out of Bounds death...
+[17:27:44.3361047] [Debug  :   Coroner] Querying target player parameters pre-death...
+[17:27:44.3361047] [Debug  :   Coroner] Query successful!True
+[17:27:45.1818250] [Info   : Unity Log] soundtype: 0; lastSound: 0
+[17:27:45.1818250] [Info   : Unity Log] adding to sound probabilities list; array length: 12
+[17:27:45.1818250] [Info   : Unity Log] 12
+[17:27:45.1818250] [Info   : Unity Log] 6
+[17:27:46.4955459] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:27:47.3040650] [Debug  : LethalMin] Bulbmin_yrLg: Removed Leader
+[17:27:47.3040650] [Debug  : LethalMin] Bulbmin_yrLg: Setting collision mode to 1
+[17:27:47.3055693] [Info   : LethalMin] Bulbmin_yrLg: Assigned Leader: MasaeAhmya (0)
+[17:27:51.5267136] [Warning: Unity Log] Can not play a disabled audio source
+[17:27:55.4991297] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[17:27:58.1723480] [Info   : LethalMin] EnginePart(Clone) has reached a route node: Ship
+[17:27:58.1723480] [Debug  : LethalMin] Pikmin reached node 1/1
+[17:27:58.1723480] [Info   : LethalMin] EnginePart(Clone) has reached its route end
+[17:27:58.1733480] [Info   : LethalMin] EnginePart(Clone) has cleared its route
+[17:27:58.1733480] [Info   : LethalMin] Bulbmin_g98E2t: Task finished
+[17:27:58.1733480] [Debug  : LethalMin] Bulbmin_g98E2t: Setting to idle on local client
+[17:27:58.1733480] [Info   : LethalMin] Bulbmin_g98E2t: Dropped item EnginePart(Clone)
+[17:27:58.1733480] [Debug  : LethalMin] Bulbmin_g98E2t: Setting collision mode to 1
+[17:27:58.1733480] [Debug  : LethalMin] Bulbmin_g98E2t: Removed Leader
+[17:27:58.1733480] [Info   : LethalMin] Bulbmin_g98E2t: Removing current task
+[17:27:58.1733480] [Info   : LethalMin] Yellow Pikmin_pxom: Task finished
+[17:27:58.1733480] [Debug  : LethalMin] Yellow Pikmin_pxom: Setting to idle on local client
+[17:27:58.1733480] [Info   : LethalMin] Yellow Pikmin_pxom: Dropped item EnginePart(Clone)
+[17:27:58.1733480] [Debug  : LethalMin] Yellow Pikmin_pxom: Setting collision mode to 1
+[17:27:58.1733480] [Debug  : LethalMin] Yellow Pikmin_pxom: Removed Leader
+[17:27:58.1733480] [Info   : LethalMin] Yellow Pikmin_pxom: Removing current task
+[17:27:58.1733480] [Info   : LethalMin] Pikmin route complete.
+[17:27:58.1793669] [Info   : LethalMin] EnginePart(Clone) is not carrying enough pikmin and is dropping it
+[17:27:58.1793669] [Info   : LethalMin] Dropped in elevator, adjusted target floor position: (0.61, 0.51, -7.10)
+[17:27:58.1793669] [Info   : LethalMin] EnginePart(Clone) is dropping an item on local client
+[17:27:58.1793669] [Info   : LethalMin] PrimaryLeader: MasaeAhmya
+[17:27:58.1793669] [Info   : LethalMin] EnginePart(Clone) dropped an item on a non-physics region parent
+[17:27:58.1843643] [Warning: Unity Log] BoxCollider does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "Environment/HangarShip/EnginePart(Clone)"
+[17:27:58.1843643] [Warning: Unity Log] BoxCollider does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "Environment/HangarShip/EnginePart(Clone)/ScanNode"
+[17:27:58.1883752] [Debug  : LethalMin] Initializing PikminItem EnginePart(Clone) with item EnginePart(Clone) (True)
+[17:27:58.2065154] [Warning: Unity Log] BoxCollider does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "Systems/UI/Canvas/SpecialGraphics/ScrapItemInfo/Box3Container/Item/AnimContainer/MeshContainer/HandBell/EnginePart(Clone)/ScanNode"
+[17:27:58.9710064] [Info   : LethalMin] PickleJar(Clone) has reached a route node: Ship
+[17:27:58.9710064] [Debug  : LethalMin] Pikmin reached node 1/1
+[17:27:58.9710064] [Info   : LethalMin] PickleJar(Clone) has reached its route end
+[17:27:58.9710064] [Info   : LethalMin] PickleJar(Clone) has cleared its route
+[17:27:58.9710064] [Info   : LethalMin] Yellow Pikmin_LuMKh: Task finished
+[17:27:58.9710064] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Setting to idle on local client
+[17:27:58.9710064] [Info   : LethalMin] Yellow Pikmin_LuMKh: Dropped item PickleJar(Clone)
+[17:27:58.9710064] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Setting collision mode to 1
+[17:27:58.9710064] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Removed Leader
+[17:27:58.9710064] [Info   : LethalMin] Yellow Pikmin_LuMKh: Removing current task
+[17:27:58.9710064] [Info   : LethalMin] Yellow Pikmin_apYy5: Task finished
+[17:27:58.9710064] [Debug  : LethalMin] Yellow Pikmin_apYy5: Setting to idle on local client
+[17:27:58.9710064] [Info   : LethalMin] Yellow Pikmin_apYy5: Dropped item PickleJar(Clone)
+[17:27:58.9710064] [Debug  : LethalMin] Yellow Pikmin_apYy5: Setting collision mode to 1
+[17:27:58.9710064] [Debug  : LethalMin] Yellow Pikmin_apYy5: Removed Leader
+[17:27:58.9710064] [Info   : LethalMin] Yellow Pikmin_apYy5: Removing current task
+[17:27:58.9710064] [Info   : LethalMin] Pikmin route complete.
+[17:27:58.9800281] [Info   : LethalMin] PickleJar(Clone) is not carrying enough pikmin and is dropping it
+[17:27:58.9800281] [Info   : LethalMin] Dropped in elevator, adjusted target floor position: (0.25, 0.29, -7.76)
+[17:27:58.9800281] [Info   : LethalMin] PickleJar(Clone) is dropping an item on local client
+[17:27:58.9800281] [Info   : LethalMin] PrimaryLeader: MasaeAhmya
+[17:27:58.9800281] [Info   : LethalMin] PickleJar(Clone) dropped an item on a non-physics region parent
+[17:27:58.9930420] [Debug  : LethalMin] Initializing PikminItem PickleJar(Clone) with item PickleJar(Clone) (True)
+[17:27:59.2207222] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Has Invincible mode when hit from explosion
+[17:27:59.2207222] [Info   : LethalMin] Yellow Pikmin_2nE2lyy: Has Invincible mode when hit from explosion
+[17:27:59.2207222] [Info   : LethalMin] Yellow Pikmin_2nE2lyy: Has Invincible mode when hit from explosion
+[17:27:59.2207222] [Info   : LethalMin] Yellow Pikmin_XYErHj: Has Invincible mode when hit from explosion
+[17:27:59.2207222] [Info   : LethalMin] Yellow Pikmin_XYErHj: Has Invincible mode when hit from explosion
+[17:27:59.2207222] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Has Invincible mode when hit from explosion
+[17:27:59.2207222] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Has Invincible mode when hit from explosion
+[17:27:59.2207222] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Has Invincible mode when hit from explosion
+[17:27:59.2207222] [Info   : LethalMin] Yellow Pikmin_khCd: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Yellow Pikmin_khCd: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Yellow Pikmin_G5l3h: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Yellow Pikmin_G5l3h: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Yellow Pikmin_3wnH: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Yellow Pikmin_3wnH: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Purple Pikmin_Dhx8wa: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Purple Pikmin_A8Bpyi: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Purple Pikmin_Dhx8wa: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Purple Pikmin_A8Bpyi: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Yellow Pikmin_hcRGph: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Yellow Pikmin_hcRGph: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Yellow Pikmin_PerDu: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Yellow Pikmin_PerDu: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Purple Pikmin_OcBGak3: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : LethalMin] Purple Pikmin_OcBGak3: Has Invincible mode when hit from explosion
+[17:27:59.2217217] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_IkVZWQe #30 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_2nE2lyy #27 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_2nE2lyy: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_2nE2lyy #27 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_2nE2lyy: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_XYErHj #26 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_XYErHj: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_XYErHj #26 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_XYErHj: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_IkVZWQe #30 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_VhJAgo #19 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_VhJAgo #19 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_khCd #21 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_khCd: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_khCd #21 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_khCd: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_G5l3h #18 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_G5l3h: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_G5l3h #18 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_G5l3h: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_3wnH #25 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_3wnH: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_3wnH #25 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_3wnH: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Purple Pikmin_Dhx8wa #11 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Purple Pikmin_Dhx8wa: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Purple Pikmin_A8Bpyi #9 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Purple Pikmin_A8Bpyi: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Purple Pikmin_Dhx8wa #11 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Purple Pikmin_Dhx8wa: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Purple Pikmin_A8Bpyi #9 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Purple Pikmin_A8Bpyi: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_hcRGph #29 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_hcRGph: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_hcRGph #29 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_hcRGph: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_PerDu #16 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_PerDu: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_PerDu #16 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Yellow Pikmin_PerDu: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Purple Pikmin_OcBGak3 #10 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Purple Pikmin_OcBGak3: Has Invincible mode when hit
+[17:27:59.2227236] [Info   : Unity Log] Local client hit enemy Purple Pikmin_OcBGak3 #10 with force of 6.
+[17:27:59.2227236] [Info   : LethalMin] Purple Pikmin_OcBGak3: Has Invincible mode when hit
+[17:27:59.2237228] [Debug  :   Coroner] Player is dying! Unknown precise cause of death in final hook (Blast)...
+[17:27:59.2257232] [Debug  : LethalMin] Purple Pikmin_A8Bpyi: Setting to idle on local client
+[17:27:59.2257232] [Debug  : LethalMin] Purple Pikmin_A8Bpyi: Removed Leader
+[17:27:59.2271451] [Debug  : LethalMin] Purple Pikmin_OcBGak3: Setting to idle on local client
+[17:27:59.2271451] [Debug  : LethalMin] Purple Pikmin_OcBGak3: Removed Leader
+[17:27:59.2271451] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Setting to idle on local client
+[17:27:59.2271451] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Removed Leader
+[17:27:59.2281464] [Debug  : LethalMin] Purple Pikmin_29ihL: Setting to idle on local client
+[17:27:59.2281464] [Debug  : LethalMin] Purple Pikmin_29ihL: Removed Leader
+[17:27:59.2281464] [Debug  : LethalMin] Purple Pikmin_TXU0fYU: Setting to idle on local client
+[17:27:59.2281464] [Debug  : LethalMin] Purple Pikmin_TXU0fYU: Removed Leader
+[17:27:59.2281464] [Debug  : LethalMin] Purple Pikmin_AvqI: Setting to idle on local client
+[17:27:59.2281464] [Debug  : LethalMin] Purple Pikmin_AvqI: Removed Leader
+[17:27:59.2281464] [Debug  : LethalMin] Purple Pikmin_mz1iY5: Setting to idle on local client
+[17:27:59.2281464] [Debug  : LethalMin] Purple Pikmin_mz1iY5: Removed Leader
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_PerDu: Setting to idle on local client
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_PerDu: Removed Leader
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Setting to idle on local client
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Removed Leader
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_khCd: Setting to idle on local client
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_khCd: Removed Leader
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_3wnH: Setting to idle on local client
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_3wnH: Removed Leader
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Setting to idle on local client
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Removed Leader
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Setting to idle on local client
+[17:27:59.2281464] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Removed Leader
+[17:27:59.2291447] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Setting to idle on local client
+[17:27:59.2291447] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Removed Leader
+[17:27:59.2291447] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting to idle on local client
+[17:27:59.2291447] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Removed Leader
+[17:27:59.2301457] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Setting to idle on local client
+[17:27:59.2301457] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Removed Leader
+[17:27:59.2301457] [Debug  : LethalMin] Purple Pikmin_Df3yfef: Setting to idle on local client
+[17:27:59.2301457] [Debug  : LethalMin] Purple Pikmin_Df3yfef: Removed Leader
+[17:27:59.2301457] [Debug  : LethalMin] Bulbmin_yrLg: Setting to idle on local client
+[17:27:59.2301457] [Debug  : LethalMin] Bulbmin_yrLg: Removed Leader
+[17:27:59.2311465] [Info   : Unity Log] KILL LOCAL PLAYER!
+[17:27:59.2331446] [Info   : Unity Log] Body spawned with id 0: PlayerRagdoll(Clone)
+[17:27:59.2331446] [Warning: Unity Log] Setting linear velocity of a kinematic body is not supported.
+[17:27:59.2341478] [Info   : Unity Log] Running kill player function for LOCAL client, player object: Player
+[17:27:59.2383125] [Debug  :ainavt.lc.lethalconfig] Registered config "Matty's Fixes/Vanilla/Body"
+[17:27:59.2383125] [Debug  : LethalMin] IsClientRpcPrefixValid (No): RpcExecStage is Send, IsClient: True, IsHost: True KillPlayerClientRpcPrefix
+[17:27:59.2393219] [Debug  : LethalMin] IsClientRpcPrefixValid (Yes): RpcExecStage is Execute, IsClient: True, IsHost: True KillPlayerClientRpcPrefix
+[17:27:59.2393219] [Info   : Unity Log] A player died. player object: Player
+[17:27:59.2423216] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[17:27:59.2433165] [Info   : Unity Log] Switch camera to 'SpectateCamera'
+[17:27:59.2433165] [Info   : Unity Log] Override drop items : False; overridedontspawnbody: False
+[17:27:59.2433165] [Info   : Unity Log] DropAllHeldItems called on player 'MasaeAhmya'; itemsFall: True; disconnecting: False; ItemSlots length: 11; isHoldingObject: False
+[17:27:59.2433165] [Info   : Unity Log] DropAllHeldItems; player pos: (25.70, -219.54, 59.85)
+[17:27:59.2443168] [Info   : Unity Log] Item slot #0 null?: False
+[17:27:59.2443168] [Info   : Unity Log] Setting DropHeldItem on item #0: 'PickleJar(Clone)
+[17:27:59.2443168] [Info   : Unity Log] Drop item 'PickleJar(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[17:27:59.2443168] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[17:27:59.2443168] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:27:59.2443168] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:27:59.2443168] [Info   : Unity Log] DropHeldItem A; placeObject:False (43.61, -224.94, 76.60); item parent: Props (UnityEngine.Transform); (43.61, -224.94, 76.60); (26.17, -217.34, 60.13)
+[17:27:59.2443168] [Debug  : LightsOut] DiscardItem Jar of pickles
+[17:27:59.2443168] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:27:59.2443168] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:27:59.2443168] [Info   : Unity Log] Item slot #1 null?: True
+[17:27:59.2458214] [Info   : Unity Log] Item slot #2 null?: True
+[17:27:59.2458214] [Info   : Unity Log] Item slot #3 null?: True
+[17:27:59.2458214] [Info   : Unity Log] Item slot #4 null?: False
+[17:27:59.2458214] [Info   : Unity Log] Setting DropHeldItem on item #4: 'FlashlightItem(Clone)
+[17:27:59.2458214] [Info   : Unity Log] Drop item 'FlashlightItem(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[17:27:59.2458214] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[17:27:59.2458214] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:27:59.2458214] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:27:59.2458214] [Info   : Unity Log] DropHeldItem A; placeObject:False (43.68, -225.15, 76.50); item parent: Props (UnityEngine.Transform); (43.68, -225.15, 76.50); (26.24, -217.55, 60.03)
+[17:27:59.2458214] [Debug  : LightsOut] DiscardItem Pro-flashlight
+[17:27:59.2468254] [Info   : Unity Log] Set dropItem parentObject to null True
+[17:27:59.2468254] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[17:27:59.2468254] [Info   : Unity Log] Item slot #5 null?: True
+[17:27:59.2468254] [Info   : Unity Log] Item slot #6 null?: True
+[17:27:59.2468254] [Info   : Unity Log] Item slot #7 null?: True
+[17:27:59.2468254] [Info   : Unity Log] Item slot #8 null?: True
+[17:27:59.2468254] [Info   : Unity Log] Item slot #9 null?: True
+[17:27:59.2468254] [Info   : Unity Log] Item slot #10 null?: True
+[17:27:59.2468254] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[17:27:59.2468254] [Debug  :   Coroner] Player died from Explosion(AdvancedCauseOfDeath(DeathOtherLandmine))! Setting special cause of death...
+[17:27:59.2468254] [Debug  :   Coroner] Serializing AdvancedCauseOfDeath(DeathOtherLandmine) to DeathOtherLandmine
+[17:27:59.2503326] [Debug  :   Coroner] Server received cause of death via RPC: (0, DeathOtherLandmine)
+[17:27:59.2503326] [Debug  :   Coroner] Client received cause of death via RPC: (0, DeathOtherLandmine)
+[17:27:59.2513329] [Debug  :   Coroner] Deserialized cause of death to AdvancedCauseOfDeath(DeathOtherLandmine)
+[17:27:59.2513329] [Debug  :   Coroner] Player 0 has no custom cause of death stored! Returning null...
+[17:27:59.2513329] [Debug  :   Coroner] Storing cause of death DeathOtherLandmine (overriding null) for player 0!
+[17:27:59.2513329] [Debug  :   Coroner] Player 0 has custom cause of death stored! DeathOtherLandmine
+[17:27:59.2513329] [Warning:   Coroner] Player 0 already has a cause of death set (DeathOtherLandmine), not overwriting it with DeathOtherLandmine.
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_2nE2lyy #27 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Yellow Pikmin_2nE2lyy: Has Invincible mode when hit
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_XYErHj #26 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Yellow Pikmin_XYErHj: Has Invincible mode when hit
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_IkVZWQe #30 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Has Invincible mode when hit
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_VhJAgo #19 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Has Invincible mode when hit
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_khCd #21 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Yellow Pikmin_khCd: Has Invincible mode when hit
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_G5l3h #18 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Yellow Pikmin_G5l3h: Has Invincible mode when hit
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_3wnH #25 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Yellow Pikmin_3wnH: Has Invincible mode when hit
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Purple Pikmin_Dhx8wa #11 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Purple Pikmin_Dhx8wa: Has Invincible mode when hit
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Purple Pikmin_A8Bpyi #9 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Purple Pikmin_A8Bpyi: Has Invincible mode when hit
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_hcRGph #29 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Yellow Pikmin_hcRGph: Has Invincible mode when hit
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Yellow Pikmin_PerDu #16 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Yellow Pikmin_PerDu: Has Invincible mode when hit
+[17:27:59.2613575] [Info   : Unity Log] Local client hit enemy Purple Pikmin_OcBGak3 #10 with force of 1.
+[17:27:59.2613575] [Info   : LethalMin] Purple Pikmin_OcBGak3: Has Invincible mode when hit
+[17:27:59.2623571] [Debug  :Buttery Fixes] Landmine: Hide radar dot after detonation
+[17:27:59.2623571] [Debug  :Buttery Fixes] Landmine: Disable ground collider after detonation
+[17:27:59.2658630] [Info   :LethalPerformance.Patcher] Saved 1 config(s)
+[17:27:59.2668688] [Debug  :Matty's Fixes] Vanilla/Body(566) needs to compute vertical offset - scheduled
+[17:27:59.2668688] [Info   : LethalMin] Creating PikminItemNode for RagdollGrabbableObject(Clone) at (-17.22, 9.55, -30.56)...
+[17:27:59.2683723] [Debug  : LethalMin] Initializing PikminItem PikminItemNode(Clone) with item PikminItemNode(Clone) (True)
+[17:27:59.2683723] [Info   : LethalMin] PikminItem PikminItemNode(Clone) has no carry strength set, setting to default
+[17:27:59.2683723] [Debug  : LethalMin] Calculated weight for Body: 11 lb, Devided weight: 4.4 lb
+[17:27:59.2683723] [Debug  : LethalMin] A True, B True rename reasons
+[17:27:59.2683723] [Debug  : LethalMin] (Body (PikminItem Node)) Colider: RagdollGrabbableObject(Clone) (UnityEngine.BoxCollider)
+[17:27:59.2683723] [Debug  : LethalMin] (Body (PikminItem Node)) Center: (-17.22, 9.55, -30.56)
+[17:27:59.2919128] [Info   : Unity Log] PlayerScript set for body with id 0 PlayerRagdoll(Clone)
+[17:27:59.2959087] [Debug  :Buttery Fixes] Smoke from freshly burnt corpse
+[17:27:59.3126895] [Info   : Unity Log] !!!! DISABLING CAMERA FOR PLAYER: Player
+[17:27:59.3126895] [Info   : Unity Log] !!!! connectedPlayersAmount: 0
+[17:27:59.3136895] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player has died
+[17:27:59.3136895] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited facility
+[17:27:59.3247094] [Debug  : LethalMin] Animator Controller changed from metarig to metarigOtherPlayers
+[17:27:59.3257085] [Info   : LethalMin] Yellow Pikmin_G5l3h: Found item: FlashlightItem(Clone)
+[17:27:59.3257085] [Info   : LethalMin] Yellow Pikmin_G5l3h: targeting item FlashlightItem(Clone) at GrabPosition_0
+[17:27:59.3257085] [Info   : LethalMin] Yellow Pikmin_G5l3h: Setting current task to CarryItem
+[17:27:59.3267660] [Debug  : LethalMin] Creating counter for Body (PikminItem Node)
+[17:27:59.3322724] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Insane to 6843
+[17:27:59.3322724] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryBad to 506
+[17:27:59.3322724] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Bad to 355
+[17:27:59.3322724] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Neutral to 1368
+[17:27:59.3322724] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Good to 1244
+[17:27:59.3322724] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryGood to 2737
+[17:27:59.3322724] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Rare to 27375
+[17:27:59.3322724] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Remove to 883
+[17:27:59.3423246] [Info   :BrutalCompanyMinusExtraReborn] Executing OnShipLeave for all events()
+[17:27:59.3423246] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:27:59.3423246] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:27:59.3433255] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:27:59.3433255] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:27:59.3433255] [Info   :BrutalCompanyMinusExtraReborn] Restoring un-modified level enemy spawns on current level.
+[17:27:59.3443262] [Info   : LethalMin] Game Ended, Deinitializing PikminManager
+[17:27:59.3443262] [Info   : LethalMin] Pikmin Bulbmin_OSum is outside and not dead/dying, checking if it can leave
+[17:27:59.3443262] [Info   : LethalMin] Bulbmin_OSum: Dropped item PickleJar(Clone)
+[17:27:59.3443262] [Debug  : LethalMin] Bulbmin_OSum: Setting collision mode to 1
+[17:27:59.3443262] [Debug  : LethalMin] Bulbmin_OSum: Removed Leader
+[17:27:59.3443262] [Debug  : LethalMin] Bulbmin_OSum: Setting collision mode to 1
+[17:27:59.3443262] [Debug  : LethalMin] Bulbmin_OSum: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:27:59.3443262] [Info   : LethalMin] Pikmin Bulbmin_g98E2t is outside and not dead/dying, checking if it can leave
+[17:27:59.3443262] [Debug  : LethalMin] Bulbmin_g98E2t: Removed Leader
+[17:27:59.3443262] [Debug  : LethalMin] Bulbmin_g98E2t: Setting collision mode to 1
+[17:27:59.3443262] [Debug  : LethalMin] Bulbmin_g98E2t: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:27:59.3443262] [Info   : LethalMin] Pikmin Bulbmin_GYY8nn is outside and not dead/dying, checking if it can leave
+[17:27:59.3443262] [Info   : LethalMin] Bulbmin_GYY8nn: Dropped item PickleJar(Clone)
+[17:27:59.3443262] [Debug  : LethalMin] Bulbmin_GYY8nn: Setting collision mode to 1
+[17:27:59.3443262] [Debug  : LethalMin] Bulbmin_GYY8nn: Removed Leader
+[17:27:59.3443262] [Debug  : LethalMin] Bulbmin_GYY8nn: Setting collision mode to 1
+[17:27:59.3443262] [Debug  : LethalMin] Bulbmin_GYY8nn: Set to leaving state. IsGoingToOnion: False. TargetOnion: null
+[17:27:59.3443262] [Info   : LethalMin] Pikmin Yellow Pikmin_8LNgEB is outside and not dead/dying, checking if it can leave
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Removed Leader
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Setting collision mode to 1
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Set to leaving state. IsGoingToOnion: True. TargetOnion: FusedType: 0, 4, 8, 5, 1, 7
+[17:27:59.3458293] [Info   : LethalMin] Pikmin Yellow Pikmin_ruCpzY is outside and not dead/dying, checking if it can leave
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Removed Leader
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Setting collision mode to 1
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Set to leaving state. IsGoingToOnion: True. TargetOnion: FusedType: 0, 4, 8, 5, 1, 7
+[17:27:59.3458293] [Info   : LethalMin] Pikmin Yellow Pikmin_LuMKh is outside and not dead/dying, checking if it can leave
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Removed Leader
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Setting collision mode to 1
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Set to leaving state. IsGoingToOnion: True. TargetOnion: FusedType: 0, 4, 8, 5, 1, 7
+[17:27:59.3458293] [Info   : LethalMin] Pikmin Yellow Pikmin_pxom is outside and not dead/dying, checking if it can leave
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_pxom: Removed Leader
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_pxom: Setting collision mode to 1
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_pxom: Set to leaving state. IsGoingToOnion: True. TargetOnion: FusedType: 0, 4, 8, 5, 1, 7
+[17:27:59.3458293] [Info   : LethalMin] Pikmin Yellow Pikmin_apYy5 is outside and not dead/dying, checking if it can leave
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_apYy5: Removed Leader
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_apYy5: Setting collision mode to 1
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_apYy5: Set to leaving state. IsGoingToOnion: True. TargetOnion: FusedType: 0, 4, 8, 5, 1, 7
+[17:27:59.3458293] [Info   : LethalMin] Pikmin Yellow Pikmin_Aq9v9 is outside and not dead/dying, checking if it can leave
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Removed Leader
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Setting collision mode to 1
+[17:27:59.3458293] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Set to leaving state. IsGoingToOnion: True. TargetOnion: FusedType: 0, 4, 8, 5, 1, 7
+[17:27:59.3468360] [Info   : Unity Log] [F] The ship is leaving.................
+[17:27:59.3468360] [Info   :HerobrineMod] The ship is leaving.................
+[17:27:59.3558458] [Debug  :Matty's Fixes] Vanilla/Body(566) is computing vertical offset
+[17:27:59.3558458] [Debug  :Matty's Fixes] Vanilla/Body original offset is 0.3
+[17:27:59.3710591] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship has taken off
+[17:27:59.3720594] [Debug  :PizzaTowerEscapeMusic ScriptManager] Conditions for a script event have been met!
+ Script Event Type: StopMusic
+   Game Event Type: ShipTakeOff
+           Comment: StopMusic quand ShipTakeOff
+[17:27:59.3740595] [Info   : LethalMin] PickleJar(Clone) is not carrying enough pikmin and is dropping it
+[17:27:59.3740595] [Info   : LethalMin] Dropped in elevator, adjusted target floor position: (-5.22, 0.29, -7.11)
+[17:27:59.3740595] [Info   : LethalMin] PickleJar(Clone) is dropping an item on local client
+[17:27:59.3740595] [Info   : LethalMin] PrimaryLeader: MasaeAhmya
+[17:27:59.3740595] [Info   : LethalMin] PickleJar(Clone) dropped an item on a non-physics region parent
+[17:27:59.3740595] [Info   : LethalMin] PickleJar(Clone) has cleared its route
+[17:27:59.3755640] [Info   : LethalMin] Purple Pikmin_A8Bpyi: Found item: FlashlightItem(Clone)
+[17:27:59.3755640] [Info   : LethalMin] Purple Pikmin_A8Bpyi: targeting item FlashlightItem(Clone) at GrabPosition_1
+[17:27:59.3755640] [Info   : LethalMin] Purple Pikmin_A8Bpyi: Setting current task to CarryItem
+[17:27:59.3755640] [Info   : LethalMin] Purple Pikmin_Dhx8wa: Found item: FlashlightItem(Clone)
+[17:27:59.3755640] [Info   : LethalMin] Purple Pikmin_Dhx8wa: targeting item FlashlightItem(Clone) at GrabPosition_3
+[17:27:59.3755640] [Info   : LethalMin] Purple Pikmin_Dhx8wa: Setting current task to CarryItem
+[17:27:59.3755640] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Found item: FlashlightItem(Clone)
+[17:27:59.3755640] [Info   : LethalMin] Yellow Pikmin_VhJAgo: targeting item FlashlightItem(Clone) at GrabPosition_2
+[17:27:59.3755640] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Setting current task to CarryItem
+[17:27:59.3765698] [Info   : LethalMin] Yellow Pikmin_XYErHj: Found item: FlashlightItem(Clone)
+[17:27:59.3765698] [Info   : LethalMin] Yellow Pikmin_hcRGph: Found item: FlashlightItem(Clone)
+[17:27:59.3765698] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Found item: FlashlightItem(Clone)
+[17:27:59.3930961] [Info   : LethalMin] Yellow Pikmin_3wnH: Found item: FlashlightItem(Clone)
+[17:27:59.3930961] [Debug  : LethalMin] Initializing PikminItem PickleJar(Clone) with item PickleJar(Clone) (True)
+[17:27:59.4105964] [Info   : LethalMin] Yellow Pikmin_PerDu: Found item: FlashlightItem(Clone)
+[17:27:59.4181288] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:27:59.5290060] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:27:59.5792498] [Info   : LethalMin] Yellow Pikmin_XYErHj: Found item: FlashlightItem(Clone)
+[17:27:59.5867594] [Info   : LethalMin] Yellow Pikmin_3wnH: Found item: FlashlightItem(Clone)
+[17:27:59.5867594] [Info   : LethalMin] Yellow Pikmin_hcRGph: Found item: FlashlightItem(Clone)
+[17:27:59.5867594] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Found item: FlashlightItem(Clone)
+[17:27:59.6270270] [Info   : LethalMin] Yellow Pikmin_PerDu: Found item: FlashlightItem(Clone)
+[17:27:59.6400386] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:27:59.7179889] [Info   : LethalMin] Yellow Pikmin_G5l3h: Grabbed item FlashlightItem(Clone) Speed is now: 5.875
+[17:27:59.7245020] [Message: LethalMin] FlashlightItem(Clone) Switched Primary Pikmin to Yellow Pikmin_G5l3h
+[17:27:59.7310170] [Info   : LethalMin] FlashlightItem(Clone) is grabbing an item on local client
+[17:27:59.7310170] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Setting collision mode to 1
+[17:27:59.7320151] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:27:59.7320151] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[17:27:59.7320151] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 60.42723
+[17:27:59.7320151] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[17:27:59.7330150] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[17:27:59.7330150] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 60.42723
+[17:27:59.7330150] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[17:27:59.7330150] [Info   : LethalMin] FlashlightItem(Clone) successfully created a test route to the ToShip
+[17:27:59.7330150] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:27:59.7340161] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[17:27:59.7340161] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 60.42723
+[17:27:59.7340161] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[17:27:59.7340161] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[17:27:59.7340161] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 60.42723
+[17:27:59.7340161] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[17:27:59.7340161] [Info   : LethalMin] FlashlightItem(Clone) has created a route
+[17:27:59.7490547] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:27:59.7822218] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Setting collision mode to 0
+[17:27:59.7832188] [Info   : LethalMin] Purple Pikmin_Dhx8wa: Grabbed item FlashlightItem(Clone) Speed is now: 9.625
+[17:27:59.7832188] [Info   : LethalMin] Yellow Pikmin_XYErHj: Found item: PickleJar(Clone)
+[17:27:59.7832188] [Info   : LethalMin] Yellow Pikmin_XYErHj: targeting item PickleJar(Clone) at GrabPosition_7
+[17:27:59.7832188] [Info   : LethalMin] Yellow Pikmin_XYErHj: Setting current task to CarryItem
+[17:27:59.7907398] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Setting collision mode to 0
+[17:27:59.7917397] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Grabbed item FlashlightItem(Clone) Speed is now: 15
+[17:27:59.7917397] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Found item: PickleJar(Clone)
+[17:27:59.7917397] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: targeting item PickleJar(Clone) at GrabPosition_10
+[17:27:59.7917397] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Setting current task to CarryItem
+[17:27:59.7968501] [Info   : LethalMin] Yellow Pikmin_3wnH: Found item: PickleJar(Clone)
+[17:27:59.7968501] [Info   : LethalMin] Yellow Pikmin_3wnH: targeting item PickleJar(Clone) at GrabPosition_11
+[17:27:59.7968501] [Info   : LethalMin] Yellow Pikmin_3wnH: Setting current task to CarryItem
+[17:27:59.8023564] [Debug  : LethalMin] Purple Pikmin_A8Bpyi: Setting collision mode to 0
+[17:27:59.8023564] [Info   : LethalMin] Purple Pikmin_A8Bpyi: Grabbed item FlashlightItem(Clone) Speed is now: 18.75
+[17:27:59.8033582] [Info   : LethalMin] Yellow Pikmin_hcRGph: Found item: PickleJar(Clone)
+[17:27:59.8033582] [Info   : LethalMin] Yellow Pikmin_hcRGph: targeting item PickleJar(Clone) at GrabPosition_9
+[17:27:59.8033582] [Info   : LethalMin] Yellow Pikmin_hcRGph: Setting current task to CarryItem
+[17:27:59.8365430] [Info   : LethalMin] Yellow Pikmin_PerDu: Found item: PickleJar(Clone)
+[17:27:59.8365430] [Info   : LethalMin] Yellow Pikmin_PerDu: targeting item PickleJar(Clone) at GrabPosition_8
+[17:27:59.8365430] [Info   : LethalMin] Yellow Pikmin_PerDu: Setting current task to CarryItem
+[17:27:59.8591703] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:27:59.9670488] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:27:59.9840662] [Info   : LethalMin] Yellow Pikmin_XYErHj: Grabbed item PickleJar(Clone) Speed is now: 2.291667
+[17:27:59.9890861] [Message: LethalMin] PickleJar(Clone) Switched Primary Pikmin to Yellow Pikmin_XYErHj
+[17:27:59.9900852] [Info   : LethalMin] Yellow Pikmin_3wnH: Grabbed item PickleJar(Clone) Speed is now: 4.083333
+[17:28:00.0021098] [Info   : LethalMin] PickleJar(Clone) is grabbing an item on local client
+[17:28:00.0021098] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Setting collision mode to 1
+[17:28:00.0021098] [Debug  : LethalMin] Yellow Pikmin_3wnH: Setting collision mode to 0
+[17:28:00.0021098] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:28:00.0031104] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[17:28:00.0031104] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 60.08433
+[17:28:00.0031104] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[17:28:00.0031104] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[17:28:00.0031104] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 60.08433
+[17:28:00.0031104] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[17:28:00.0041080] [Info   : LethalMin] PickleJar(Clone) successfully created a test route to the ToShip
+[17:28:00.0041080] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[17:28:00.0041080] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[17:28:00.0041080] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 60.08433
+[17:28:00.0041080] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[17:28:00.0041080] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[17:28:00.0041080] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 60.08433
+[17:28:00.0041080] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[17:28:00.0041080] [Info   : LethalMin] PickleJar(Clone) has created a route
+[17:28:00.0056147] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Setting collision mode to 0
+[17:28:00.0056147] [Info   : LethalMin] Yellow Pikmin_hcRGph: Grabbed item PickleJar(Clone) Speed is now: 5.875
+[17:28:00.0056147] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting collision mode to 0
+[17:28:00.0056147] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Grabbed item PickleJar(Clone) Speed is now: 7.666667
+[17:28:00.0357700] [Debug  : LethalMin] Yellow Pikmin_PerDu: Setting collision mode to 0
+[17:28:00.0357700] [Info   : LethalMin] Yellow Pikmin_PerDu: Grabbed item PickleJar(Clone) Speed is now: 9.458333
+[17:28:00.0719303] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:00.1840475] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:00.2934075] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:00.4003706] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:00.4947497] [Info   : LethalMin] Purple Pikmin_Df3yfef: Setting growth stage to 1
+[17:28:00.5112118] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:00.6179551] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:00.6743653] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Is linking onto LegAnimLink3
+[17:28:00.6743653] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Setting collision mode to 0
+[17:28:00.6743653] [Debug  : LethalMin] Yellow Pikmin_pxom: Is linking onto LegAnimLink3
+[17:28:00.6743653] [Debug  : LethalMin] Yellow Pikmin_pxom: Setting collision mode to 0
+[17:28:00.6994256] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Is linking onto LegAnimLink3
+[17:28:00.6994256] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Setting collision mode to 0
+[17:28:00.7282933] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:00.7683949] [Debug  : LethalMin] Yellow Pikmin_apYy5: Is linking onto LegAnimLink3
+[17:28:00.7683949] [Debug  : LethalMin] Yellow Pikmin_apYy5: Setting collision mode to 0
+[17:28:00.8120296] [Info   : Unity Log] SET SPECTATED PLAYER EFFECTS; True
+[17:28:00.8120296] [Info   : Unity Log] Enable sun direct light
+[17:28:00.8120296] [Info   : Unity Log] All players dead; set reverb to preset #3
+[17:28:00.8340952] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:00.9415242] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:01.0340841] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Is linking onto LegAnimLink1
+[17:28:01.0340841] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Setting collision mode to 0
+[17:28:01.0512071] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:01.0832626] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Is linking onto LegAnimLink2
+[17:28:01.0832626] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Setting collision mode to 0
+[17:28:01.1580743] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:01.2643494] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:01.3739777] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:01.4790535] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:01.4980852] [Info   : LethalMin] Bulbmin_yrLg: Setting growth stage to 1
+[17:28:01.5889592] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 15
+[17:28:01.6724048] [Warning: Unity Log] [Netcode] NetworkObject #549 moved to the root because its parent NetworkObject #548 is destroyed
+[17:28:01.6724048] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Removed Leader
+[17:28:01.6724048] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Setting collision mode to 1
+[17:28:01.6724048] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[17:28:01.6734053] [Warning: Unity Log] [Netcode] NetworkObject #551 moved to the root because its parent NetworkObject #550 is destroyed
+[17:28:01.6734053] [Debug  : LethalMin] Yellow Pikmin_pxom: Removed Leader
+[17:28:01.6734053] [Debug  : LethalMin] Yellow Pikmin_pxom: Setting collision mode to 1
+[17:28:01.6734053] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[17:28:01.6734053] [Debug  :Starlancer AI Fix] Yellow Pikmin_LuMKh from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:01.6734053] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_LuMKh's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:01.6744049] [Debug  :Starlancer AI Fix] Yellow Pikmin_pxom from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:01.6744049] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_pxom's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:01.6944399] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 13
+[17:28:01.6944399] [Warning: Unity Log] [Netcode] NetworkObject #561 moved to the root because its parent NetworkObject #560 is destroyed
+[17:28:01.6944399] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Removed Leader
+[17:28:01.6959452] [Debug  : LethalMin] Yellow Pikmin_Aq9v9: Setting collision mode to 1
+[17:28:01.6959452] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[17:28:01.6969497] [Warning: LethalMin] (EnginePart's Counter)'s item is null, destroying counter.
+[17:28:01.6969497] [Debug  :Starlancer AI Fix] Yellow Pikmin_Aq9v9 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:01.6969497] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_Aq9v9's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:01.7613533] [Warning: Unity Log] [Netcode] NetworkObject #553 moved to the root because its parent NetworkObject #552 is destroyed
+[17:28:01.7613533] [Debug  : LethalMin] Yellow Pikmin_apYy5: Removed Leader
+[17:28:01.7613533] [Debug  : LethalMin] Yellow Pikmin_apYy5: Setting collision mode to 1
+[17:28:01.7613533] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[17:28:01.7623558] [Debug  :Starlancer AI Fix] Yellow Pikmin_apYy5 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:01.7623558] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_apYy5's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:01.8067657] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 11
+[17:28:01.8142771] [Info   : Unity Log] Is in elevator D?: False
+[17:28:01.9203636] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 11
+[17:28:02.0245676] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 11
+[17:28:02.0320807] [Warning: Unity Log] [Netcode] NetworkObject #539 moved to the root because its parent NetworkObject #538 is destroyed
+[17:28:02.0320807] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Removed Leader
+[17:28:02.0320807] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Setting collision mode to 1
+[17:28:02.0320807] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[17:28:02.0330778] [Debug  :Starlancer AI Fix] Yellow Pikmin_8LNgEB from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.0330778] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_8LNgEB's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.0834519] [Warning: Unity Log] [Netcode] NetworkObject #545 moved to the root because its parent NetworkObject #544 is destroyed
+[17:28:02.0834519] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Removed Leader
+[17:28:02.0834519] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Setting collision mode to 1
+[17:28:02.0834519] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[17:28:02.0844532] [Debug  :Starlancer AI Fix] Yellow Pikmin_ruCpzY from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.0844532] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_ruCpzY's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.1342279] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 9
+[17:28:02.2389827] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 9
+[17:28:02.3483796] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 9
+[17:28:02.4556434] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 9
+[17:28:02.5042350] [Warning: LethalMin] (PickleJar's Counter)'s item is null, destroying counter.
+[17:28:02.5612712] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 9
+[17:28:02.6711631] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 9
+[17:28:02.7803914] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 9
+[17:28:02.8144392] [Info   : Unity Log] Leaving current lobby
+[17:28:02.8144392] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[17:28:02.8401990] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[17:28:02.8401990] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[17:28:02.8401990] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[17:28:02.8401990] [Info   :Rolling Giant] Resetting all rolling giants!
+[17:28:02.8401990] [Message:Rolling Giant] Reverting sync
+[17:28:02.8401990] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[17:28:02.8401990] [Debug  :MrHat.BasedItemSaving] Saved 10 exact item poses
+[17:28:02.8401990] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[17:28:02.8401990] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[17:28:02.8401990] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[17:28:02.8722646] [Info   :LethalPerformance] Saved 2 save(s)
+[17:28:02.8767753] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[17:28:02.9013213] [Info   : LethalMin] Yellow Pikmin_IkVZWQe: Dropped item PickleJar(Clone)
+[17:28:02.9013213] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting collision mode to 1
+[17:28:02.9013213] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Removed Leader
+[17:28:02.9023256] [Info   : LethalMin] Yellow Pikmin_hcRGph: Dropped item PickleJar(Clone)
+[17:28:02.9023256] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Setting collision mode to 1
+[17:28:02.9023256] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Removed Leader
+[17:28:02.9023256] [Debug  : LethalMin] Yellow Pikmin_2nE2lyy: Removed Leader
+[17:28:02.9023256] [Info   : LethalMin] Yellow Pikmin_XYErHj: Dropped item PickleJar(Clone)
+[17:28:02.9023256] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Setting collision mode to 1
+[17:28:02.9023256] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Removed Leader
+[17:28:02.9023256] [Info   : LethalMin] Yellow Pikmin_3wnH: Dropped item PickleJar(Clone)
+[17:28:02.9023256] [Debug  : LethalMin] Yellow Pikmin_3wnH: Setting collision mode to 1
+[17:28:02.9023256] [Debug  : LethalMin] Yellow Pikmin_3wnH: Removed Leader
+[17:28:02.9023256] [Debug  : LethalMin] Yellow Pikmin_khCd: Removed Leader
+[17:28:02.9033215] [Info   : LethalMin] Yellow Pikmin_VhJAgo: Dropped item FlashlightItem(Clone)
+[17:28:02.9033215] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Setting collision mode to 1
+[17:28:02.9033215] [Debug  : LethalMin] Yellow Pikmin_VhJAgo: Removed Leader
+[17:28:02.9033215] [Info   : LethalMin] Yellow Pikmin_G5l3h: Dropped item FlashlightItem(Clone)
+[17:28:02.9033215] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Setting collision mode to 1
+[17:28:02.9033215] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Removed Leader
+[17:28:02.9033215] [Info   : LethalMin] Yellow Pikmin_PerDu: Dropped item PickleJar(Clone)
+[17:28:02.9033215] [Debug  : LethalMin] Yellow Pikmin_PerDu: Setting collision mode to 1
+[17:28:02.9033215] [Debug  : LethalMin] Yellow Pikmin_PerDu: Removed Leader
+[17:28:02.9033215] [Debug  : LethalMin] Purple Pikmin_mz1iY5: Removed Leader
+[17:28:02.9033215] [Debug  : LethalMin] Purple Pikmin_AvqI: Removed Leader
+[17:28:02.9043683] [Debug  : LethalMin] Purple Pikmin_TXU0fYU: Removed Leader
+[17:28:02.9043683] [Debug  : LethalMin] Purple Pikmin_29ihL: Removed Leader
+[17:28:02.9043683] [Info   : LethalMin] Purple Pikmin_Dhx8wa: Dropped item FlashlightItem(Clone)
+[17:28:02.9043683] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Setting collision mode to 1
+[17:28:02.9043683] [Debug  : LethalMin] Purple Pikmin_Dhx8wa: Removed Leader
+[17:28:02.9043683] [Debug  : LethalMin] Purple Pikmin_OcBGak3: Removed Leader
+[17:28:02.9043683] [Info   : LethalMin] Purple Pikmin_A8Bpyi: Dropped item FlashlightItem(Clone)
+[17:28:02.9043683] [Debug  : LethalMin] Purple Pikmin_A8Bpyi: Setting collision mode to 1
+[17:28:02.9043683] [Debug  : LethalMin] Purple Pikmin_A8Bpyi: Removed Leader
+[17:28:02.9043683] [Debug  : LethalMin] Purple Pikmin_YFla: Removed Leader
+[17:28:02.9043683] [Debug  : LethalMin] Bulbmin_GYY8nn: Removed Leader
+[17:28:02.9058719] [Debug  : LethalMin] Bulbmin_yrLg: Removed Leader
+[17:28:02.9058719] [Debug  : LethalMin] Bulbmin_g98E2t: Removed Leader
+[17:28:02.9058719] [Debug  : LethalMin] Bulbmin_OSum: Removed Leader
+[17:28:02.9058719] [Debug  : LethalMin] White Pikmin_5lhKIz: Removed Leader
+[17:28:02.9058719] [Debug  : LethalMin] Purple Pikmin_n3Us: Removed Leader
+[17:28:02.9068759] [Debug  : LethalMin] Purple Pikmin_VMHQY6: Removed Leader
+[17:28:02.9068759] [Debug  : LethalMin] Purple Pikmin_Df3yfef: Removed Leader
+[17:28:02.9083792] [Info   : LethalMin] PickleJar(Clone) has cleared its route
+[17:28:02.9143840] [Info   : LethalMin] FlashlightItem(Clone) has cleared its route
+[17:28:02.9158868] [Info   : LethalMin] ShipOnion: saved 35 pikmin to disk on despawn.
+[17:28:02.9359213] [Info   :LobbyControl] 0 disconnected
+[17:28:02.9359213] [Info   : Unity Log] Disconnect callback called
+[17:28:02.9359213] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[17:28:02.9359213] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[17:28:02.9359213] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[17:28:02.9404350] [Debug  :Starlancer AI Fix] Yellow Pikmin_IkVZWQe from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9404350] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_IkVZWQe's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9414369] [Debug  :Starlancer AI Fix] Yellow Pikmin_hcRGph from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9414369] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_hcRGph's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9414369] [Debug  :Starlancer AI Fix] Yellow Pikmin_2nE2lyy from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9414369] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_2nE2lyy's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9424349] [Debug  :Starlancer AI Fix] Yellow Pikmin_XYErHj from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9424349] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_XYErHj's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9424349] [Debug  :Starlancer AI Fix] Yellow Pikmin_3wnH from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9424349] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_3wnH's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9424349] [Debug  :Starlancer AI Fix] Yellow Pikmin_khCd from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9424349] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_khCd's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9434352] [Debug  :Starlancer AI Fix] Yellow Pikmin_VhJAgo from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9434352] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_VhJAgo's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9434352] [Debug  :Starlancer AI Fix] Yellow Pikmin_G5l3h from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9434352] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_G5l3h's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9434352] [Debug  :Starlancer AI Fix] Yellow Pikmin_PerDu from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9434352] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_PerDu's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Purple Pikmin_mz1iY5 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_mz1iY5's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Purple Pikmin_AvqI from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_AvqI's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Purple Pikmin_TXU0fYU from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_TXU0fYU's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Purple Pikmin_29ihL from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_29ihL's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Purple Pikmin_Dhx8wa from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_Dhx8wa's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Purple Pikmin_OcBGak3 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9444366] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_OcBGak3's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9459399] [Debug  :Starlancer AI Fix] Purple Pikmin_A8Bpyi from the exterior enemy list has died; 
+Previous exterior power level is 0
+[17:28:02.9459399] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_A8Bpyi's power (0) from the RoundManager; 
+Current exterior power level is 0
+[17:28:02.9464521] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[17:28:02.9464521] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[17:28:02.9464521] [Info   : Unity Log] Interact trigger destroying! name: trigger (1)
+[17:28:02.9464521] [Info   : Unity Log] Interact trigger destroying! name: trigger (2)
+[17:28:02.9464521] [Info   : Unity Log] Interact trigger destroying! name: trigger (3)
+[17:28:02.9464521] [Info   : Unity Log] Interact trigger destroying! name: trigger (4)
+[17:28:02.9464521] [Debug  :Starlancer AI Fix] Purple Pikmin_YFla from the interior enemy list has died; 
+Previous interior power level is 0
+[17:28:02.9464521] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_YFla's power (0) from the RoundManager; 
+Current interior power level is 0
+[17:28:02.9464521] [Debug  :Starlancer AI Fix] Bulbmin_GYY8nn from the interior enemy list has died; 
+Previous interior power level is 0
+[17:28:02.9464521] [Debug  :Starlancer AI Fix] Removing Bulbmin_GYY8nn's power (0) from the RoundManager; 
+Current interior power level is 0
+[17:28:02.9474588] [Debug  :Starlancer AI Fix] Bulbmin_yrLg from the interior enemy list has died; 
+Previous interior power level is 0
+[17:28:02.9474588] [Debug  :Starlancer AI Fix] Removing Bulbmin_yrLg's power (0) from the RoundManager; 
+Current interior power level is 0
+[17:28:02.9474588] [Debug  :Starlancer AI Fix] Bulbmin_g98E2t from the interior enemy list has died; 
+Previous interior power level is 0
+[17:28:02.9474588] [Debug  :Starlancer AI Fix] Removing Bulbmin_g98E2t's power (0) from the RoundManager; 
+Current interior power level is 0
+[17:28:02.9474588] [Debug  :Starlancer AI Fix] Bulbmin_OSum from the interior enemy list has died; 
+Previous interior power level is 0
+[17:28:02.9474588] [Debug  :Starlancer AI Fix] Removing Bulbmin_OSum's power (0) from the RoundManager; 
+Current interior power level is 0
+[17:28:02.9484570] [Debug  :Starlancer AI Fix] White Pikmin_5lhKIz from the interior enemy list has died; 
+Previous interior power level is 0
+[17:28:02.9484570] [Debug  :Starlancer AI Fix] Removing White Pikmin_5lhKIz's power (0) from the RoundManager; 
+Current interior power level is 0
+[17:28:02.9484570] [Debug  :Starlancer AI Fix] Purple Pikmin_n3Us from the interior enemy list has died; 
+Previous interior power level is 0
+[17:28:02.9484570] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_n3Us's power (0) from the RoundManager; 
+Current interior power level is 0
+[17:28:02.9484570] [Debug  :Starlancer AI Fix] Purple Pikmin_VMHQY6 from the interior enemy list has died; 
+Previous interior power level is 0
+[17:28:02.9484570] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_VMHQY6's power (0) from the RoundManager; 
+Current interior power level is 0
+[17:28:02.9484570] [Debug  :Starlancer AI Fix] Purple Pikmin_Df3yfef from the interior enemy list has died; 
+Previous interior power level is 0
+[17:28:02.9484570] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_Df3yfef's power (0) from the RoundManager; 
+Current interior power level is 0
+[17:28:02.9494560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9494560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9494560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9494560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9494560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9494560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9494560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9494560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9494560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9494560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9504567] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9514560] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9524561] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9534564] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9534564] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9534564] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9534564] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9534564] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9534564] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9534564] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9534564] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9534564] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9534564] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA(Clone)
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch1
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch2
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch3
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch4
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch5
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: PowerBoxDoor
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: DrawerLowerLeftAnimContainer
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: DrawerLowerLeftAnimContainer
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: DrawerUpperLeftAnimContainer
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: DrawerUpperLeftAnimContainer
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: LeftCupboardContainer
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: LeftCupboardContainer
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: CarHood
+[17:28:02.9569638] [Info   : Unity Log] Interact trigger destroying! name: GarbageBin
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: DrawerLowerLeftAnimContainer
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: DrawerLowerLeftAnimContainer
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: DrawerUpperLeftAnimContainer
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: DrawerUpperLeftAnimContainer
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: DrawerLeftAnimContainer
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: DrawerRightAnimContainer
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: DrawerLowerLeftAnimContainer
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: DrawerLowerLeftAnimContainer
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: DrawerUpperLeftAnimContainer
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: DrawerUpperLeftAnimContainer
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9584672] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: DoorLeftTrigger
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: DoorRightTrigger
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9594724] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: Mimic Metal Crate(Clone)
+[17:28:02.9604722] [Info   : Unity Log] Interact trigger destroying! name: Metal Crate(Clone)
+[17:28:02.9624723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9624723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[17:28:02.9624723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9624723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[17:28:02.9624723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9624723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[17:28:02.9624723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9624723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[17:28:02.9624723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9624723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[17:28:02.9624723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9624723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[17:28:02.9624723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9624723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[17:28:02.9634723] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9634723] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[17:28:02.9644724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9644724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[17:28:02.9644724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9644724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[17:28:02.9644724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9644724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[17:28:02.9644724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9644724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[17:28:02.9644724] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[17:28:02.9644724] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[17:28:02.9644724] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[17:28:02.9644724] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[17:28:02.9644724] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:28:02.9644724] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:28:02.9860353] [Info   : Unity Log] Resetting unlockables list!
+[17:28:02.9860353] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[17:28:02.9860353] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[17:28:02.9860353] [Info   : Unity Log] Scene manager is null
+[17:28:02.9910720] [Info   :LethalPerformance] Saved 1 save(s)
+[17:28:03.0437521] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[17:28:03.0447528] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[17:28:03.0557658] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[17:28:03.0572720] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:03.0572720] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:03.0572720] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:03.0572720] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[17:28:03.0572720] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:28:03.0572720] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[17:28:03.0572720] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:28:03.0572720] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[17:28:03.0572720] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[17:28:03.0582756] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[17:28:03.0622756] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:28:03.0622756] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:28:03.0622756] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[17:28:03.0622756] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[17:28:03.0657781] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[17:28:03.0697840] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[17:28:03.0697840] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[17:28:03.0968131] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[17:28:03.1093257] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[17:28:03.1178345] [Info   :MoreCompany] LANMenu startLAN Patched
+[17:28:03.4680778] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[17:28:05.1277892] [Info   : Unity Log] Returning week num: 144
+[17:28:05.1277892] [Info   : Unity Log] week num: 144
+[17:28:05.1347925] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[17:28:05.1347925] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[17:28:05.1448100] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[17:28:05.1528210] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[17:28:05.1528210] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[17:28:05.1558247] [Info   :LethalPerformance] Saved 1 save(s)
+[17:28:06.7189140] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[17:28:06.7324260] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[17:28:08.1673113] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[17:28:08.1683088] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[17:28:08.1683088] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
