@@ -1,0 +1,210 @@
+name: Publish pinned S1.42AK SCRAPDIAG1 review artifact
+
+on:
+  push:
+    branches:
+      - activate-s142ak-scrapdiag1-runtime
+    paths:
+      - '.github/workflows/s142ak-scrapdiag1-publish-pinned.yml'
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ARTIFACT_ID: '10563033130'
+      ARTIFACT_RUN: '35383680389'
+      ARTIFACT_DIGEST: 'sha256:08c676c2a0f9c7a3df3a0cd58854dbcc0b53ba21dd514a7c7d661cfcfe231bc3'
+      PROFILE_REL: 'Profiles/LC V1 S1.42AK-SCRAPDIAG1 LC Office Scrap Placement Diagnostic.r2z'
+      PROFILE_SHA: '233bcc058a3fa95d63e0577c4ff74b5a0dc137db49757b50376e447dd082d3b1'
+      BASE_REL: 'Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z'
+      BASE_SHA: 'b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee'
+      SELECTOR_SHA: '51d8927838f003f8ea00d69942d21dda3937d46c0cff5b220e99651c3a61a191'
+      LOGGER_SHA: 'f1c0b7450d60b8c0400c342779abcae8dfb11c34d9112d2e945a02349610df7b'
+      S139_SHA: 'bf86f338dba1428327088f0aaa2af8d9816f647c3b3c12214a5fc52db8e34573'
+      NORMALIZER_SHA: '901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fail closed if publication target already exists
+        shell: bash
+        run: |
+          test ! -e "$PROFILE_REL"
+          test ! -e "ProfileSources/S1.42AK-SCRAPDIAG1"
+          test ! -e "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json"
+          test ! -e "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/PUBLICATION_PAYLOAD.json"
+
+      - name: Verify exact Actions artifact metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          meta="$(gh api "/repos/${GITHUB_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}")"
+          test "$(jq -r '.workflow_run.id' <<<"$meta")" = "$ARTIFACT_RUN"
+          test "$(jq -r '.name' <<<"$meta")" = "S1.42AK-SCRAPDIAG1-review"
+          test "$(jq -r '.expired' <<<"$meta")" = "false"
+          test "$(jq -r '.digest' <<<"$meta")" = "$ARTIFACT_DIGEST"
+
+      - name: Download exact pinned review artifact
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: 10563033130
+          path: _pinned
+          github-token: ${{ github.token }}
+          repository: Tendas240/Lethal-Company-AI-Modding-Project
+          run-id: 35383680389
+
+      - name: Verify pinned artifact bytes and exact archive delta
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, zipfile
+          from pathlib import Path
+
+          root = Path.cwd()
+          pin = root / "_pinned"
+          profile_rel = os.environ["PROFILE_REL"]
+          base_rel = os.environ["BASE_REL"]
+          profile = pin / profile_rel
+          base = root / base_rel
+
+          def sha(data):
+              return hashlib.sha256(data).hexdigest()
+
+          def file_sha(path):
+              return sha(path.read_bytes())
+
+          if not profile.is_file():
+              raise SystemExit(f"missing pinned profile: {profile}")
+          if file_sha(profile) != os.environ["PROFILE_SHA"]:
+              raise SystemExit("pinned profile SHA mismatch")
+          if file_sha(base) != os.environ["BASE_SHA"]:
+              raise SystemExit("accepted S1.42AK base SHA mismatch")
+
+          with zipfile.ZipFile(base) as z:
+              base_names = z.namelist()
+              if len(base_names) != len(set(base_names)):
+                  raise SystemExit("duplicate base archive members")
+              base_bytes = {n: z.read(n) for n in base_names}
+
+          with zipfile.ZipFile(profile) as z:
+              names = z.namelist()
+              if len(names) != len(set(names)):
+                  raise SystemExit("duplicate diagnostic archive members")
+              diag_bytes = {n: z.read(n) for n in names}
+
+          selector = "BepInEx/plugins/S142AJDiag1OfficeSelection/S142AJDiag1OfficeSelection.dll"
+          logger = "BepInEx/plugins/S142AKDiagScrapPlacement/S142AKDiagScrapPlacement.dll"
+          s139 = "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll"
+          normalizer = "BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll"
+
+          added = sorted(set(diag_bytes) - set(base_bytes))
+          removed = sorted(set(base_bytes) - set(diag_bytes))
+          changed = sorted(n for n in base_bytes if diag_bytes.get(n) != base_bytes[n])
+          if added != sorted([selector, logger]) or removed or changed:
+              raise SystemExit(f"archive delta mismatch added={added} removed={removed} changed={changed}")
+
+          expected_hashes = {
+              selector: os.environ["SELECTOR_SHA"],
+              logger: os.environ["LOGGER_SHA"],
+              s139: os.environ["S139_SHA"],
+              normalizer: os.environ["NORMALIZER_SHA"],
+          }
+          for name, expected in expected_hashes.items():
+              actual = sha(diag_bytes[name])
+              if actual != expected:
+                  raise SystemExit(f"{name} SHA mismatch: {actual} != {expected}")
+
+          ev = pin / "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json"
+          if not ev.is_file():
+              raise SystemExit("pinned BUILD_RESULT.json missing")
+          result = json.loads(ev.read_text(encoding="utf-8"))
+          if result.get("build_id") != "S1.42AK-SCRAPDIAG1":
+              raise SystemExit("build result build_id mismatch")
+          if result.get("base_profile") != base_rel or result.get("base_sha256") != os.environ["BASE_SHA"]:
+              raise SystemExit("build result base identity mismatch")
+          if result.get("output_profile") != profile_rel or result.get("output_sha256") != os.environ["PROFILE_SHA"]:
+              raise SystemExit("build result output identity mismatch")
+          if result.get("changed_existing_members") != []:
+              raise SystemExit("build result reports changed existing members")
+          if sorted(result.get("added_members", [])) != sorted([selector, logger]):
+              raise SystemExit("build result added-members mismatch")
+
+          index_path = pin / "ProfileSources/S1.42AK-SCRAPDIAG1/FILE_INDEX.json"
+          if not index_path.is_file():
+              raise SystemExit("pinned FILE_INDEX.json missing")
+          index = json.loads(index_path.read_text(encoding="utf-8"))
+          if len(index) != len(diag_bytes):
+              raise SystemExit(f"FILE_INDEX count mismatch: {len(index)} != {len(diag_bytes)}")
+          for entry in index:
+              name = entry["path"]
+              if name not in diag_bytes:
+                  raise SystemExit(f"FILE_INDEX member absent from archive: {name}")
+              payload = diag_bytes[name]
+              if entry.get("size") != len(payload) or entry.get("sha256") != sha(payload):
+                  raise SystemExit(f"FILE_INDEX byte identity mismatch: {name}")
+              if entry.get("text_snapshot"):
+                  snap = pin / "ProfileSources/S1.42AK-SCRAPDIAG1" / name
+                  if not snap.is_file() or snap.read_bytes() != payload:
+                      raise SystemExit(f"text snapshot mismatch: {name}")
+
+          payload = {
+              "status": "EXACT_PINNED_REVIEW_ARTIFACT_PUBLICATION_PAYLOAD_VERIFIED",
+              "artifact_run": int(os.environ["ARTIFACT_RUN"]),
+              "artifact_id": int(os.environ["ARTIFACT_ID"]),
+              "artifact_digest": os.environ["ARTIFACT_DIGEST"],
+              "base_profile": base_rel,
+              "base_sha256": os.environ["BASE_SHA"],
+              "profile": profile_rel,
+              "profile_sha256": os.environ["PROFILE_SHA"],
+              "added_members": added,
+              "changed_existing_members": changed,
+              "removed_members": removed,
+              "diagnostic_dll_sha256": {
+                  "S142AJDiag1OfficeSelection.dll": os.environ["SELECTOR_SHA"],
+                  "S142AKDiagScrapPlacement.dll": os.environ["LOGGER_SHA"],
+              },
+              "preserved_accepted_dll_sha256": {
+                  "S139CompatibilityFixes.dll": os.environ["S139_SHA"],
+                  "S142ABInteriorWeightNormalization.dll": os.environ["NORMALIZER_SHA"],
+              },
+              "file_index_entries": len(index),
+          }
+          out = root / "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/PUBLICATION_PAYLOAD.json"
+          out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(payload, indent=2))
+          PY
+
+      - name: Publish exact pinned profile and readable snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp "_pinned/$PROFILE_REL" "$PROFILE_REL"
+          cp -a "_pinned/ProfileSources/S1.42AK-SCRAPDIAG1" "ProfileSources/S1.42AK-SCRAPDIAG1"
+          cp "_pinned/BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json" "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json"
+          cp "_pinned/BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.md" "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.md"
+
+      - name: Reverify published working-tree bytes
+        shell: bash
+        run: |
+          test "$(sha256sum "$PROFILE_REL" | awk '{print $1}')" = "$PROFILE_SHA"
+          test "$(sha256sum "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z" | awk '{print $1}')" = "$BASE_SHA"
+          git diff --check
+
+      - name: Commit exact pinned publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$PROFILE_REL" "ProfileSources/S1.42AK-SCRAPDIAG1"             "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json"             "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.md"             "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/PUBLICATION_PAYLOAD.json"
+          git commit -m "Publish exact pinned S1.42AK-SCRAPDIAG1 artifact"
+          git push origin HEAD:activate-s142ak-scrapdiag1-runtime
