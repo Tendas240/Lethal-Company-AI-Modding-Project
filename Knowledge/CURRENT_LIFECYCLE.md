@@ -58,4 +58,4 @@ Select the next independent deferred scope from `Knowledge/ROADMAP_AND_DEFERRED_
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`. With runtime attribution returned to accepted S1.42AK, the normal exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id` path applies.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. With runtime attribution returned to accepted S1.42AK, the normal exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id` path applies.
