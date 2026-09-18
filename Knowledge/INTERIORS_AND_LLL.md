@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** accepted interior-selection architecture and deferred compatibility exceptions  
 **Canonical-For:** `interiors_and_lll`  
-**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`  
+**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`  
 **Related:** `ProfileSources/S1.42AG/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
 **Last-Validated:** 2026-09-18
 
@@ -117,9 +117,20 @@ Exact S1.42AK reconciliation now establishes:
 - therefore **27 current Custom flows have no direct active LLL Custom Dungeon config section** and remain governed by owner/author matching data;
 - JLL content-specific helper/config behavior exists, but no separate JLL-only registered dungeon flow appears in the exact current Dawn/LLL inventories.
 
+Phase-B1 authority: `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`.
+
+The exact moon universe is now fixed:
+
+- DawnLib registers 32 moon assets;
+- LLL exposes 31 ExtendedLevels: 13 Vanilla, 16 Custom, 2 External;
+- Dawn-only `lethal_company:test` is not a matrix target;
+- `71 Gordion` is retained as a current LLL level but excluded from dungeon/interior pairing cells because exact runtime identifies it as `CompanyBuildingLevel` and `CompanyMoonRouteConfirmCommand`;
+- the resulting pairing universe is **30 target moons × 53 selectable interiors = 1,590 cells**;
+- exact S1.42AK Offense runtime fully accounts for all 53 selectable interiors: 41 are `VIABLE_EQUAL_100`; 12 are absent/unviable and remain `NOT_YET_PROVEN` until the owning config/hard-block mechanism is identified.
+
 Do not interpret broad `Vanilla:100,Custom:100` tag injection as automatic proof that every flow is safe on every moon. Owner hard blocks, non-LLL registrations and technical restrictions remain authoritative until specifically understood and tested. Shatteredrooms' Experimentation/Embrion restriction therefore remains in place during the analysis phase.
 
-No build or runtime test is currently authorized by this selection. The exact next action is Phase B: construct the moon/flow viability matrix from the authoritative Phase-A inventory and classify each absent pairing by its owning mechanism.
+No build or runtime test is currently authorized by this selection. The exact next action is Phase B2: extract the owner/config matching mechanisms for the fixed 30×53 matrix and classify absent pairings only where the repository proves their cause.
 
 ## Shatteredrooms restriction
 
