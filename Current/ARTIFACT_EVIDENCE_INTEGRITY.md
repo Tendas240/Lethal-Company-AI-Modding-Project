@@ -1,28 +1,22 @@
-<!-- LIVE_STATE: accepted=S1.42AI latest=S1.42AK candidate=S1.42AK runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Artifact and Runtime Evidence Integrity
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
 **Machine mirror:** `Current/ARTIFACT_EVIDENCE_INTEGRITY.json`  
 **Last-Validated:** 2026-09-18
 
-## Accepted gameplay baseline: S1.42AI
-
-Artifact: `Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z`  
-SHA-256: `d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2`  
-Acceptance: `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`  
-Runtime evidence: `RuntimeEvidence/S1.42AI/20260916T180452Z/`
-
-## Active runtime candidate: S1.42AK
+## Accepted gameplay baseline: S1.42AK
 
 Artifact: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z`  
 SHA-256: `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
+Acceptance: `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`  
+Runtime evidence: `RuntimeEvidence/S1.42AK/20260918T172838Z/`  
+Runtime log SHA-256: `cc0f0a7a6c6a76ad44266aded11ff9cb2aca21f2623f5fb895d371ad778526b9`  
 Candidate: `Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`  
-Project status: `Current/Projektstatus_S1.42AK_CANDIDATE.json`  
-Plan: `BuildSpecs/S1.42AK_PLAN.md`  
-Static evidence: `BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md`  
+Project status: `Current/Projektstatus_S1.42AK_ACCEPTED.json`  
 Readable snapshot: `ProfileSources/S1.42AK/`
 
-S1.42AK is statically validated and is the active full-normal runtime candidate. It is not accepted. Fresh runtime evidence is outstanding.
+S1.42AI remains the accepted predecessor/rollback provenance baseline. S1.42AK's accepted runtime record explicitly preserves the limited hostile-indoor coverage: first attempt ended before interior entry; the played second attempt selected Spooky Manor and had roughly three minutes indoors without a hostile sighting.
 
 ## Balanced parent and diagnostic evidence
 
@@ -30,7 +24,6 @@ S1.42AJ remains the exact balanced parent for S1.42AK and is not accepted. S1.42
 
 ## Pending / deferred unaccepted profiles
 
-- **S1.42AK** — `ACTIVE_RUNTIME_CANDIDATE_PENDING`; fresh full-normal evidence required before an explicit decision.
 - **S1.42AJ** — deferred full-normal gate / retained exact balanced parent, not active.
 
 ## Completed diagnostic evidence: S1.42AI-DIAG1R3

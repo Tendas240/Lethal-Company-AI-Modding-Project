@@ -8,13 +8,13 @@
 
 ## Current lineage head
 
-- **Accepted gameplay baseline:** S1.42AI — BCMER ShyGuy Interior-Only Event Correction — **ACCEPTED FULL NORMAL STACK**.
-- **Accepted predecessor / rollback provenance:** S1.42AH — Mouth Dog Pikmin Dual Prevention.
-- **Completed diagnostic evidence:** S1.42AI-DIAG1R3 — runtime diagnostic pass / not gameplay accepted.
-- **Latest built artifact:** S1.42AK — LC Office Camera Enemy Balance — static validated / active runtime candidate / not accepted.
+- **Accepted gameplay baseline:** S1.42AK — LC Office Camera Enemy Balance — **ACCEPTED FULL NORMAL STACK**.
+- **Accepted predecessor / rollback provenance:** S1.42AI — BCMER ShyGuy Interior-Only Event Correction.
+- **Latest built artifact:** S1.42AK — accepted full-normal gameplay baseline.
 - **Balanced parent:** S1.42AJ — LC Office V81 Integration — not accepted; exact parent of S1.42AK.
-- **Active candidate:** S1.42AK; one full-normal unforced Offense runtime test and fresh log are outstanding.
-- **Current action:** run exact S1.42AK normally, upload its fresh log, then make an explicit runtime decision.
+- **Completed LC Office diagnostic evidence:** S1.42AJ-DIAG1 / S1.42AJ-DIAG2 — diagnostic-only, not gameplay accepted.
+- **Active candidate:** none.
+- **Current action:** select exactly one remaining deferred independent scope before preparing or arming any successor.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -65,13 +65,13 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AF | **ACCEPTED PREDECESSOR** | Path-length-safe packaging successor built directly from S1.42AC. Runtime proved the nested LC SoundAPI binding at 226 characters, normal startup, and the exact 18 Moon / 18 Interior Functional Microwave contract with only the 18 Moon/tag curves scaled by `0.5`. |
 | S1.42AG | **RUNTIME REJECTED / PARTIAL FIX** | `MouthDogPikminEnemy.DoCheckInterval()` prevention successfully removed the LethalMin bite/grab/death-timer mutation path and the 707-warning aftermath, but a Mouth Dog still targeted/attacked a scrap-carrying Purple Pikmin through an unresolved path; reverse-direction Pikmin -> Dog behavior was not positively proven. |
 | S1.42AH | **ACCEPTED PREDECESSOR TO AI** | Dual exact MouthDog adapter + Vanilla Pikmin collision prevention; targeted runtime preserved player, reverse Pikmin lifecycle and final non-Pikmin EnemyAI neighbor behavior. |
-| S1.42AI | **ACCEPTED CURRENT BASELINE** | Single-variable BCMER ShyGuy interior-only correction from accepted S1.42AH; full-normal runtime proved the intended interior event route while BCMER contributed zero exterior ShyGuys and emitted no ShyGuy exterior-AI marker. |
+| S1.42AI | **ACCEPTED PREDECESSOR** | Accepted BCMER ShyGuy interior-only event correction; rollback provenance predecessor to S1.42AK. |
 | S1.42AI-DIAG1 | **RUNTIME DIAGNOSTIC FAILED / REPAIR REQUIRED / NOT ACCEPTED** | Temporary exact ShyGuy isolation diagnostic built from S1.42AI. Build/static/materialized delta passed, but runtime owner prevalidation could not resolve the hardcoded `LethalMin.PikminType`, DIAG1 marked itself invalid and rolled back all of its own Harmony hooks. |
 | S1.42AI-DIAG1R1 | **RUNTIME DIAGNOSTIC FAILED / REPAIR ANALYSIS REQUIRED / NOT ACCEPTED** | R1 repaired the exact `WithdrawPikminFromOnion` metadata-derived owner type and proved that repair at runtime. A later strict complex-owner target then failed because `ElevatorMod.Patches.EndlessElevator` was absent; DIAG1 invalidated and rolled back all owned Harmony hooks. Failure authority: `Current/147...`. |
 | S1.42AI-DIAG1R2 | **RUNTIME DIAGNOSTIC FAILED / REPAIR REQUIRED / NOT ACCEPTED** | R2 armed the owner/applicability repairs, then failed exact ShyGuy identity resolution because source required ordinal `Shy Guy` while runtime proved `Shy guy`; failure authority: `Current/149...`. |
 | S1.42AI-DIAG1R3 | **RUNTIME DIAGNOSTIC PASS / NOT GAMEPLAY ACCEPTED** | Exact `Shy guy` identity/isolation passed; interior visibility was observed and exterior visibility was not exercised. Diagnostic evidence only; the independent full-normal S1.42AI gate later passed. |
 | S1.42AJ | **NOT ACCEPTED BALANCED PARENT** | Compatibility-first LC Office V81 package integration from exact accepted S1.42AI; exact balanced parent of S1.42AK. |
-| S1.42AK | **ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED** | Balanced LC Office camera/enemy delta built directly from exact S1.42AJ; RandomEnemiesSize byte-identical and scrap untuned; full-normal evidence pending. |
+| S1.42AK | **ACCEPTED FULL NORMAL STACK** | Accepted balanced LC Office camera/enemy integration; full-normal Offense gate passed with limited hostile-indoor coverage explicitly preserved. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -98,12 +98,14 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Static evidence: `BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md`
 - Successful build workflow run: `35366580975`
 - Build commit: `395f8298230d343b523eeda3afbfc9253a281931`
-- Archive delta: changed existing `export.r2x` and `BepInEx/config/me.biodiversity.aloe.cfg`; added `BepInEx/config/Piggy.LCOffice.cfg`; removed none.
-- RandomEnemiesSize: byte-identical to S1.42AJ.
 - Candidate: `Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`
-- Project status: `Current/Projektstatus_S1.42AK_CANDIDATE.json`
-- Runtime: active / full-normal validation outstanding.
-- Status: active runtime candidate / not accepted.
+- Acceptance: `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`
+- Project status: `Current/Projektstatus_S1.42AK_ACCEPTED.json`
+- Runtime evidence: `RuntimeEvidence/S1.42AK/20260918T172838Z/`
+- Runtime log SHA-256: `cc0f0a7a6c6a76ad44266aded11ff9cb2aca21f2623f5fb895d371ad778526b9`
+- Status: **accepted full-normal-stack gameplay baseline**.
+- Coverage qualification: the first attempt ended before interior entry; the second selected Spooky Manor and provided roughly three minutes of played interior coverage with no hostile enemy sighting. This is not treated as proof of a spawn regression.
+- Accepted delta: LC Office `Camera Frame Speed = 0`, Men-stalker disabled, Aloe `PowerLevel = 0`; RandomEnemiesSize byte-identical and LC Office scrap untuned.
 
 ### S1.42C — enemy-spawn restore baseline
 
@@ -303,9 +305,11 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - S1.42AF was built **directly from accepted S1.42AC**, not from S1.42AE. It reuses the S1.42AE functional source under a path-length-safe Gale profile identity and remains an accepted predecessor in the current line.
 - S1.42AG was built **directly from accepted S1.42AF**. Its `DoCheckInterval()` guard is a proven partial fix, but the build is runtime-rejected because a remaining targeting/attack path still allowed a Mouth Dog to select/attack a scrap-carrying Purple Pikmin. Do not use S1.42AG as a gameplay base.
 - S1.42AH was built **directly from accepted S1.42AF**, not from rejected S1.42AG. Targeted runtime coverage plus the final non-Pikmin neighbor pass are explicitly accepted in `Current/142...`; it is the accepted predecessor and rollback provenance baseline for S1.42AI.
-- S1.42AI was built **directly from accepted S1.42AH**. `Current/152...` explicitly accepts the isolated BCMER ShyGuy interior-only correction after full-normal runtime evidence; S1.42AI is the current full-normal-stack gameplay baseline.
+- S1.42AI was built **directly from accepted S1.42AH**. `Current/152...` explicitly accepts the BCMER ShyGuy interior-only correction; it is the accepted predecessor/rollback provenance baseline for S1.42AK.
 - S1.42AI-DIAG1 has an explicit failed diagnostic runtime decision in `Current/145...`; it must not be rerun unchanged or treated as an active runtime candidate.
 - S1.42AI-DIAG1R1 was built **directly from S1.42AI**, not from the failed S1.42AI-DIAG1 profile bytes. `Current/147...` records its explicit runtime diagnostic failure after the owner type-resolution repair succeeded but `ElevatorMod.Patches.EndlessElevator` was absent. It is not an active runtime candidate or safe gameplay base; do not rerun it unchanged.
 - S1.42AI-DIAG1R3 was built **directly from exact S1.42AI** and passed exact ShyGuy identity/isolation; it remains diagnostic evidence only and is not a gameplay base.
+
+- S1.42AK was built **directly from exact S1.42AJ**, never from DIAG1/DIAG2. `Current/158...` explicitly accepts the full-normal S1.42AK gate; its lack of a hostile indoor sighting in roughly three minutes of Spooky Manor coverage is preserved as a coverage limitation, not a proven spawn regression.
 
 When an exact artifact/hash/status is not indexed here or in `Current/BUILD_LINEAGE.json`, open the linked build-specific record rather than inferring it from build-name order.

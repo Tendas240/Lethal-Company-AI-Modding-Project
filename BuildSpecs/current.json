@@ -1,6 +1,6 @@
 {
   "enabled": false,
-  "build_id": "IDLE_AFTER_S1.42AK_BUILD_AWAITING_RUNTIME_VALIDATION",
+  "build_id": "IDLE_AFTER_S1.42AK_ACCEPTANCE_AWAITING_NEXT_SCOPE",
   "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
   "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",

@@ -3,8 +3,8 @@
   "date": "2026-09-18",
   "status": "CURRENT_CANONICAL_BUILD_INDEX",
   "human_mirror": "Current/BUILD_LINEAGE.md",
-  "current_accepted_build_id": "S1.42AI",
-  "active_candidate_build_id": "S1.42AK",
+  "current_accepted_build_id": "S1.42AK",
+  "active_candidate_build_id": null,
   "latest_built_artifact_id": "S1.42AK",
   "field_policy": "This machine index is a routing/lineage graph. Unknown or intentionally unindexed exact fields are null; never infer missing hashes or evidence paths from build-name order. Detailed chronology remains in the linked decision records and Current/03_PROJECT_CHRONOLOGY.md.",
   "builds": [
@@ -557,7 +557,7 @@
     {
       "id": "S1.42AI",
       "title": "BCMER ShyGuy Interior-Only Event Correction",
-      "status": "accepted",
+      "status": "accepted-predecessor",
       "parent": "S1.42AH",
       "profile": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
       "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
@@ -668,19 +668,23 @@
     {
       "id": "S1.42AK",
       "title": "LC Office Camera Enemy Balance",
-      "status": "active-runtime-candidate-not-accepted",
+      "status": "accepted-full-normal-stack",
       "parent": "S1.42AJ",
       "profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
       "sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
       "build_plan": "BuildSpecs/S1.42AK_PLAN.md",
-      "decision_record": "BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
+      "decision_record": "Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md",
       "workflow_run": 35366580975,
       "build_commit": "395f8298230d343b523eeda3afbfc9253a281931",
       "static_evidence": "BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
-      "safe_as_gameplay_base": false,
-      "principal_feature": "balanced LC Office camera render setting plus Men-stalker disable and Aloe PowerLevel zero; RandomEnemiesSize and LC Office scrap unchanged",
+      "safe_as_gameplay_base": true,
+      "principal_feature": "accepted LC Office V81 integration successor carrying Camera Frame Speed zero, Men-stalker disabled and Aloe PowerLevel zero; full-normal Offense gate passed with Spooky Manor hostile-indoor coverage explicitly limited to roughly three minutes and no hostile sighting",
       "candidate_record": "Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md",
-      "project_status": "Current/Projektstatus_S1.42AK_CANDIDATE.json"
+      "project_status": "Current/Projektstatus_S1.42AK_ACCEPTED.json",
+      "acceptance": "Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md",
+      "runtime_evidence": "RuntimeEvidence/S1.42AK/20260918T172838Z/",
+      "runtime_log_sha256": "cc0f0a7a6c6a76ad44266aded11ff9cb2aca21f2623f5fb895d371ad778526b9",
+      "runtime_decision": "RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md"
     }
   ],
   "feature_index": {
@@ -729,6 +733,6 @@
     "S1.42AI-DIAG1 has an explicit failed diagnostic runtime decision in Current/145; it must not be rerun unchanged or treated as an active runtime candidate.",
     "S1.42AI-DIAG1R1 was built directly from S1.42AI, not from the failed DIAG1 profile bytes. Current/147 records its explicit runtime diagnostic failure after the metadata-derived LethalMin owner repair succeeded but ElevatorMod.Patches.EndlessElevator was absent; it is not an active runtime candidate and is not a safe gameplay base.",
     "S1.42AI-DIAG1R3 was built directly from exact S1.42AI, not from failed R2 bytes. It changes only the exact runtime-proven enemyName literal to 'Shy guy' while preserving ordinal/fail-closed identity, owner and applicability guards; canonical materialized validation and runtime isolation passed, but R3 remains diagnostic evidence only and is not a gameplay base.",
-    "S1.42AK was built directly from exact S1.42AJ, never from DIAG1/DIAG2. Static verification permits only export.r2x and Aloe config changes plus added Piggy.LCOffice.cfg; RandomEnemiesSize is byte-identical and LC Office scrap is untuned. S1.42AK is not accepted until an explicit runtime decision."
+    "S1.42AK was built directly from exact S1.42AJ, never from DIAG1/DIAG2. Current/158 explicitly accepts S1.42AK after the full-normal S1.42AK evidence at RuntimeEvidence/S1.42AK/20260918T172838Z; the first attempt was aborted before interior entry, the played second attempt selected Spooky manor and had roughly three minutes of hostile-indoor coverage with no hostile sighting, which is a coverage limitation rather than a proven spawn regression. S1.42AK is the current accepted gameplay baseline."
   ]
 }
