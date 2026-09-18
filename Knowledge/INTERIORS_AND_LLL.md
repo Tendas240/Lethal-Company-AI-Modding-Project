@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** accepted interior-selection architecture and deferred compatibility exceptions  
 **Canonical-For:** `interiors_and_lll`  
-**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`  
+**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`  
 **Related:** `ProfileSources/S1.42AG/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
 **Last-Validated:** 2026-09-18
 
@@ -140,9 +140,21 @@ Availability ownership is now fully partitioned:
 
 Exact Offense is now cause-classified as 41 `VIABLE_EQUAL_100` and 12 `AUTHOR_OR_OWNER_HARD_BLOCK`. That hard-block classification describes current owner-metadata rejection before normalization; it is not proof of technical incompatibility. Shatteredrooms × Experimentation and × Embrion are explicit owner hard blocks for the same reason until Phase C establishes a technical basis.
 
+Phase-B3 authority: `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`; complete machine matrix: `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.csv`.
+
+The full 30×53 matrix is now materialized at **1,590 cells**:
+
+- 662 `VIABLE_EQUAL_100`;
+- 14 `AUTHOR_OR_OWNER_HARD_BLOCK`;
+- 0 `CONFIG_GAP`;
+- 0 `KNOWN_TECHNICAL_RESTRICTION`;
+- 914 `NOT_YET_PROVEN`.
+
+The 22 direct LLL universal-tag flows and Black Mesa's native Vanilla/Custom rule establish 23 equal-weight interiors on each Vanilla/Custom target moon. Offense remains the only fully observed row. Both External target moons remain entirely unproven, and owner-controlled cells outside exact evidence remain unproven. This matrix is availability evidence only; generation/traversal compatibility still belongs to Phase C.
+
 Do not interpret broad `Vanilla:100,Custom:100` tag injection as automatic proof that every flow is safe on every moon. Owner hard blocks, non-LLL registrations and technical restrictions remain authoritative until specifically understood and tested. Shatteredrooms' Experimentation/Embrion restriction therefore remains in place during the analysis phase.
 
-No build or runtime test is currently authorized by this selection. The exact next action is Phase B3: materialize the fixed 30×53 matrix from the Phase-B2 owner/config rules, leaving unsupported cells `NOT_YET_PROVEN`.
+No build or runtime test is currently authorized by this selection. The exact next action is Phase C: prioritize compatibility proof using existing repository evidence first, then identify only the genuinely unresolved high-risk pairings that require targeted runtime proof.
 
 ## Shatteredrooms restriction
 

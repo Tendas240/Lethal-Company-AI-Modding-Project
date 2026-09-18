@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Phase B3: materialize the 30 x 53 moon/flow matrix using the Phase-B2 owner mechanisms. Apply the 22-flow LLL Vanilla:100,Custom:100 rule to the 12 Vanilla + 16 Custom target-moon classes, keep External-moon cells unproven unless their tags/owner rules are established, preserve observed/owner-proven cells for the 27 owner-controlled flows, carry Black Mesa only through its DawnLib/native rule, encode Shatteredrooms x Experimentation and x Embrion as owner hard blocks, and leave unsupported cells NOT_YET_PROVEN. No build or runtime test is authorized yet.
+Phase C: plan and prioritize compatibility proof for the 914 NOT_YET_PROVEN cells and 14 AUTHOR_OR_OWNER_HARD_BLOCK cells. First mine existing repository evidence for entrance/exit pairing, successful generation/traversal, door/socket geometry, elevators/special traversal, routing/NavMesh and duplicate-registration safety so only genuinely unresolved high-risk pairings proceed to targeted runtime proof. No universal override, gameplay build or runtime test is authorized yet.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

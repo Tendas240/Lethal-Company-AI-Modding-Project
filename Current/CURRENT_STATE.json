@@ -44,13 +44,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "SELECTED_PHASE_B2_COMPLETE_PHASE_B3_MATRIX_MATERIALIZATION_OUTSTANDING",
+    "status": "SELECTED_PHASE_B3_MATRIX_COMPLETE_PHASE_C_COMPATIBILITY_PROOF_OUTSTANDING",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "Phases A, B1 and B2 are complete. All 53 selectable interiors now have a current availability-owner mechanism: 22 DIRECT_LLL_UNIVERSAL_TAG_OVERRIDE flows with active Vanilla:100,Custom:100 tags; 27 OWNER_ASSET_MATCHING_NO_DIRECT_LLL_CONFIG Custom flows; 3 VANILLA_NATIVE_LLL_MATCHING flows; and 1 DAWNLIB_NATIVE_BLACK_MESA_WEIGHT_RULE flow. Current JLL configs expose no moon/dungeon injection or weight controls and are auxiliary behavior configs, not availability owners. Exact S1.42AK Offense is fully cause-classified at 41 VIABLE_EQUAL_100 and 12 AUTHOR_OR_OWNER_HARD_BLOCK; the 12 hard-block labels mean current owner-metadata rejection before normalization, not proven technical incompatibility. Shatteredrooms x Experimentation and x Embrion are likewise explicit AUTHOR_OR_OWNER_HARD_BLOCK cells until a technical reason is proven.",
+    "finding": "Phases A, B1, B2 and B3 are complete. The authoritative 30 x 53 matrix contains 1,590 cells: 662 VIABLE_EQUAL_100, 14 AUTHOR_OR_OWNER_HARD_BLOCK, 0 CONFIG_GAP, 0 KNOWN_TECHNICAL_RESTRICTION and 914 NOT_YET_PROVEN. The 22 direct LLL Vanilla:100,Custom:100 flows plus Black Mesa's native lethal_company:vanilla/custom rule establish 23 equal-weight interiors on each Vanilla/Custom target moon; exact Offense runtime expands that row to 41 viable plus 12 owner hard blocks. Shatteredrooms x Experimentation and x Embrion are the two additional explicit owner hard blocks. Both External target moons, Black Mesa and Oxyde, remain fully NOT_YET_PROVEN because the broad Vanilla/Custom rules are not extrapolated onto External levels. VIABLE_EQUAL_100 is availability/effective-weight evidence, not generation/traversal compatibility proof.",
     "analysis_contract": "Build a current S1.42AK owner/flow/moon viability matrix before authoring any gameplay candidate. Reconcile every registered dungeon flow with its owning system (LLL, JLL, DawnLib/native or other), identify all author/project exclusions and the technical reason for each, and prove that any proposed removal preserves correct entrance/exit pairing, successful generation and traversal, door/socket geometry, elevators, routing and NavMesh behavior. Preserve equal effective rarity 100 for every flow that is viable. Do not duplicate-register native-owner content or bypass an unexplained hard block.",
-    "next_action": "Phase B3: materialize the 30 x 53 moon/flow matrix using the Phase-B2 owner mechanisms. Apply the 22-flow LLL Vanilla:100,Custom:100 rule to the 12 Vanilla + 16 Custom target-moon classes, keep External-moon cells unproven unless their tags/owner rules are established, preserve observed/owner-proven cells for the 27 owner-controlled flows, carry Black Mesa only through its DawnLib/native rule, encode Shatteredrooms x Experimentation and x Embrion as owner hard blocks, and leave unsupported cells NOT_YET_PROVEN. No build or runtime test is authorized yet.",
+    "next_action": "Phase C: plan and prioritize compatibility proof for the 914 NOT_YET_PROVEN cells and 14 AUTHOR_OR_OWNER_HARD_BLOCK cells. First mine existing repository evidence for entrance/exit pairing, successful generation/traversal, door/socket geometry, elevators/special traversal, routing/NavMesh and duplicate-registration safety so only genuinely unresolved high-risk pairings proceed to targeted runtime proof. No universal override, gameplay build or runtime test is authorized yet.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -101,7 +101,7 @@
       "exact_delta_to_s142ak": "LC Office / OfficeDungeonFlow"
     },
     "phase_b": {
-      "status": "B2_COMPLETE_B3_OUTSTANDING",
+      "status": "B3_COMPLETE_PHASE_C_OUTSTANDING",
       "phase_b1_evidence": "Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md",
       "dawn_moon_assets": 32,
       "lll_extended_levels": 31,
@@ -139,10 +139,30 @@
       "explicit_owner_hard_blocks": [
         "Shatteredrooms x Experimentation",
         "Shatteredrooms x Embrion"
-      ]
+      ],
+      "phase_b3_evidence": "Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md",
+      "phase_b3_matrix": "Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.csv",
+      "matrix_classification_totals": {
+        "viable_equal_100": 662,
+        "author_or_owner_hard_block": 14,
+        "config_gap": 0,
+        "known_technical_restriction": 0,
+        "not_yet_proven": 914,
+        "total": 1590
+      },
+      "external_moon_rows": {
+        "Black Mesa": {
+          "not_yet_proven": 53,
+          "total": 53
+        },
+        "Oxyde": {
+          "not_yet_proven": 53,
+          "total": 53
+        }
+      }
     }
   },
-  "next_action": "Phase B3: materialize the 30 x 53 moon/flow matrix using the Phase-B2 owner mechanisms. Apply the 22-flow LLL Vanilla:100,Custom:100 rule to the 12 Vanilla + 16 Custom target-moon classes, keep External-moon cells unproven unless their tags/owner rules are established, preserve observed/owner-proven cells for the 27 owner-controlled flows, carry Black Mesa only through its DawnLib/native rule, encode Shatteredrooms x Experimentation and x Embrion as owner hard blocks, and leave unsupported cells NOT_YET_PROVEN. No build or runtime test is authorized yet.",
+  "next_action": "Phase C: plan and prioritize compatibility proof for the 914 NOT_YET_PROVEN cells and 14 AUTHOR_OR_OWNER_HARD_BLOCK cells. First mine existing repository evidence for entrance/exit pairing, successful generation/traversal, door/socket geometry, elevators/special traversal, routing/NavMesh and duplicate-registration safety so only genuinely unresolved high-risk pairings proceed to targeted runtime proof. No universal override, gameplay build or runtime test is authorized yet.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,

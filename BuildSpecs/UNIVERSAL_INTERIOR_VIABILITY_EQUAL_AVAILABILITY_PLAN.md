@@ -1,6 +1,6 @@
 # Universal Interior Viability / Equal Availability Investigation Plan
 
-**Status:** SELECTED / PHASE A + B1 + B2 COMPLETE / PHASE B3 MATRIX MATERIALIZATION OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
+**Status:** SELECTED / PHASE A + B1 + B2 + B3 COMPLETE / PHASE C COMPATIBILITY PROOF OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
 **Date:** 2026-09-18  
 **Accepted baseline:** S1.42AK — `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`  
@@ -106,7 +106,19 @@ Exact S1.42AK Offense is fully cause-classified at 41 `VIABLE_EQUAL_100` + 12 `A
 
 ### Phase B3 — matrix materialization
 
-Materialize the fixed 30 × 53 matrix from the Phase-B2 owner rules. Apply direct LLL tag rules only where the target moon's class/tags are established; keep External-moon behavior unproven unless its owner/tag mechanism is known. Preserve owner-controlled cells from observed runtime/explicit restrictions and leave every unsupported cell `NOT_YET_PROVEN`.
+**COMPLETE.** Authority: `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`; complete 1,590-cell machine matrix: `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.csv`.
+
+Current matrix totals:
+
+- 662 `VIABLE_EQUAL_100`;
+- 14 `AUTHOR_OR_OWNER_HARD_BLOCK`;
+- 0 `CONFIG_GAP`;
+- 0 `KNOWN_TECHNICAL_RESTRICTION`;
+- 914 `NOT_YET_PROVEN`.
+
+The 22 direct LLL `Vanilla:100,Custom:100` flows plus Black Mesa's native `lethal_company:vanilla/custom` rule establish 23 equal-weight interiors on every Vanilla/Custom target moon. Exact Offense runtime establishes the complete 41 viable + 12 owner-hard-block row. Shatteredrooms × Experimentation and × Embrion are the two additional explicit owner hard blocks. The two External target-moon rows remain fully unproven because the broad Vanilla/Custom rules are not extrapolated onto them.
+
+A `VIABLE_EQUAL_100` cell is current availability/effective-weight evidence, not generation/traversal compatibility proof.
 
 ## Phase C — compatibility proof for proposed restriction removal
 
@@ -164,6 +176,6 @@ The next repository decision must be based on the completed owner/flow/moon matr
 
 ## Exact next action
 
-Execute **Phase B3 matrix materialization** using `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md` and `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`. Populate the 1,590 fixed pairing cells only from established config/owner/runtime evidence and leave unsupported cells `NOT_YET_PROVEN`.
+Execute **Phase C compatibility-proof planning and prioritization** from the completed matrix in `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md/.csv`. Mine existing repository evidence first for entrance/exit pairing, generation/traversal, door/socket geometry, elevators/special traversal, routing/NavMesh and duplicate-registration safety. Separate cells resolvable from existing evidence from cells that genuinely require targeted runtime proof.
 
-No build or runtime test is authorized yet.
+No universal override, gameplay build or runtime test is authorized yet.
