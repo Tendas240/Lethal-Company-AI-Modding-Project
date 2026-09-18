@@ -1,0 +1,25 @@
+[15:37:17.4390374] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[15:37:17.4390374] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[15:37:17.4390374] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[15:37:17.4390374] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[15:37:17.4390374] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[15:37:17.4390374] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[15:37:17.4390374] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[15:37:17.4410382] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[15:37:17.4420381] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[15:37:17.4742425] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[15:37:17.4813403] [Info   :MoreCompany] LANMenu startLAN Patched
+[15:37:17.7814289] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[15:37:19.4040871] [Info   : Unity Log] Returning week num: 144
+[15:37:19.4040871] [Info   : Unity Log] week num: 144
+[15:37:19.4106752] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[15:37:19.4106752] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[15:37:19.4201822] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[15:37:19.4291990] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[15:37:19.4291990] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[15:37:19.4311983] [Info   :LethalPerformance] Saved 1 save(s)
+[15:37:20.9241595] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[15:37:20.9372056] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[15:37:22.0432022] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[15:37:22.0442033] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[15:37:22.0442033] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
