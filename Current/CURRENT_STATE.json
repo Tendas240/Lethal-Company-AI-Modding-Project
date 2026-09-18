@@ -70,7 +70,7 @@
     "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
     "diagnostic_revision": {
       "build_id": "S1.42AJ-DIAG2",
-      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_PARTIAL_RUNTIME_EVIDENCE_INGESTED_CONFIRMATION_OUTSTANDING_NOT_ACCEPTED",
+      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
       "base_build_id": "S1.42AJ-DIAG1",
       "base_profile": "Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z",
       "base_sha256": "4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832",
