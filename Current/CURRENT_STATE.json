@@ -44,13 +44,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "SELECTED_BASELINE_INVENTORY_OUTSTANDING",
+    "status": "SELECTED_PHASE_A_INVENTORY_COMPLETE_PHASE_B_OUTSTANDING",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "The accepted S1.42AB architecture already normalizes every positive LLL viability result to effective rarity 100, but it deliberately does not create viability. In exact accepted S1.42AK, LethalLevelLoader.cfg contains 28 Custom Dungeon sections: 27 have Enable Content Configuration=true plus Dynamic Level Tags List=Vanilla:100,Custom:100; Black Mesa is the sole section with Enable Content Configuration=false and remains a separate native/DawnLib-owner case. This 28-section config inventory is not yet the complete registered-flow inventory: historical S1.42A evidence reported 52 dungeon flows, while later Offense runtime evidence showed 40-41 viable entries. Shatteredrooms remains explicitly restricted on Experimentation and Embrion, and LC Office universal-moon viability is not yet proven.",
+    "finding": "Phase A is complete. Exact S1.42AK runtime registration contains 55 DawnLib DungeonFlow assets and 53 LethalLevelLoader ExtendedDungeonFlow selection entries: 3 Vanilla, 49 Custom and 1 External Black Mesa. The two additional Dawn-only assets are vanilla Level1FlowExtraLarge and Level1Flow3Exits. Exact pre-LC S1.42AF contains 52 LLL entries; LC Office / OfficeDungeonFlow is the exact +1 in S1.42AK. The 28 LLL Custom Dungeon config sections are non-cardinal: only 22 unique current Custom flows have active direct config coverage, three enabled sections are aliases, two are stale/orphaned, and Black Mesa is the disabled native/DawnLib-owner case. Therefore 27 current Custom flows have no direct active LLL Custom Dungeon config section. JLL-specific helper/config behavior exists, but no separate JLL-only registered dungeon flow appears in the exact current Dawn/LLL inventories.",
     "analysis_contract": "Build a current S1.42AK owner/flow/moon viability matrix before authoring any gameplay candidate. Reconcile every registered dungeon flow with its owning system (LLL, JLL, DawnLib/native or other), identify all author/project exclusions and the technical reason for each, and prove that any proposed removal preserves correct entrance/exit pairing, successful generation and traversal, door/socket geometry, elevators, routing and NavMesh behavior. Preserve equal effective rarity 100 for every flow that is viable. Do not duplicate-register native-owner content or bypass an unexplained hard block.",
-    "next_action": "Create the authoritative S1.42AK registered-interior/owner inventory and moon-viability matrix from ProfileSources plus runtime evidence, then classify every missing moon/flow pairing as configuration gap, owner hard block, known technical restriction or not-yet-proven. No build or runtime test is authorized yet.",
+    "next_action": "Build the Phase-B S1.42AK moon/flow viability matrix from Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md plus current owner/runtime evidence. Classify every current selectable moon/flow pairing as VIABLE_EQUAL_100, CONFIG_GAP, AUTHOR_OR_OWNER_HARD_BLOCK, KNOWN_TECHNICAL_RESTRICTION or NOT_YET_PROVEN. No build or runtime test is authorized yet.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -68,10 +68,40 @@
         "Black Mesa"
       ],
       "historical_total_flow_count_reference": 52,
-      "accepted_normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06"
+      "accepted_normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+      "authoritative_phase_a_evidence": "Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md",
+      "dawn_registered_dungeon_assets": 55,
+      "lll_extended_dungeonflows": 53,
+      "lll_vanilla_entries": 3,
+      "lll_custom_entries": 49,
+      "lll_external_entries": 1,
+      "unique_custom_flows_with_active_direct_lll_config": 22,
+      "custom_flows_without_active_direct_lll_config": 27
+    },
+    "phase_a_inventory": {
+      "status": "COMPLETE",
+      "evidence": "Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md",
+      "dawn_registered_dungeon_assets": 55,
+      "lll_extended_dungeonflows": 53,
+      "lll_vanilla_entries": 3,
+      "lll_custom_entries": 49,
+      "lll_external_entries": 1,
+      "unique_custom_flows_with_active_direct_lll_config": 22,
+      "custom_flows_without_active_direct_lll_config": 27,
+      "active_alias_sections": [
+        "CastleFlow",
+        "Expanded Facility",
+        "Store"
+      ],
+      "active_orphan_stale_sections": [
+        "Dilapidated Manor",
+        "Unknown/EGypt"
+      ],
+      "pre_lc_s142af_lll_count": 52,
+      "exact_delta_to_s142ak": "LC Office / OfficeDungeonFlow"
     }
   },
-  "next_action": "Create the authoritative S1.42AK registered-interior/owner inventory and moon-viability matrix from ProfileSources plus runtime evidence, then classify every missing moon/flow pairing as configuration gap, owner hard block, known technical restriction or not-yet-proven. No build or runtime test is authorized yet.",
+  "next_action": "Build the Phase-B S1.42AK moon/flow viability matrix from Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md plus current owner/runtime evidence. Classify every current selectable moon/flow pairing as VIABLE_EQUAL_100, CONFIG_GAP, AUTHOR_OR_OWNER_HARD_BLOCK, KNOWN_TECHNICAL_RESTRICTION or NOT_YET_PROVEN. No build or runtime test is authorized yet.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,

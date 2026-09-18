@@ -4,7 +4,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`  
+**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`  
 **Last-Validated:** 2026-09-18
 
 ## Accepted gameplay baseline
@@ -46,7 +46,7 @@ The next selected independent scope is **Universal Interior Viability / Equal Av
 
 The accepted S1.42AB normalizer remains unchanged: it equalizes every positive viable rarity to `100` only after LLL viability filtering. The selected scope therefore targets the earlier viability/availability layer, not the accepted weighting layer.
 
-Initial exact-S1.42AK inventory evidence shows 28 LLL `Custom Dungeon` sections. Twenty-seven have content configuration enabled with `Vanilla:100,Custom:100`; Black Mesa is the sole disabled LLL config section and remains a separate native/DawnLib owner case. This does not yet reconcile all registered flows or prove universal safety. Shatteredrooms' Experimentation/Embrion restriction remains preserved pending technical proof.
+Phase A is complete under `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`: exact S1.42AK has 55 DawnLib DungeonFlow assets and 53 LLL selectable entries (3 Vanilla, 49 Custom, 1 External Black Mesa). Exact pre-LC S1.42AF has 52 LLL entries; LC Office / `OfficeDungeonFlow` is the exact +1. The 28 LLL `Custom Dungeon` sections are non-cardinal: only 22 unique current Custom flows have active direct config coverage; three enabled sections are aliases and two are stale/orphaned. Twenty-seven current Custom flows therefore still depend on owner/author matching data. Shatteredrooms' Experimentation/Embrion restriction remains preserved pending technical proof.
 
 ## Live execution state
 
@@ -55,14 +55,14 @@ Initial exact-S1.42AK inventory evidence shows 28 LLL `Custom Dungeon` sections.
 - Active gameplay candidate: **none**.
 - Active diagnostic runtime target: **none**.
 - Runtime test outstanding: **no**.
-- Selected scope: **Universal Interior Viability / Equal Availability — baseline inventory outstanding**.
+- Selected scope: **Universal Interior Viability / Equal Availability — Phase A inventory complete / Phase B matrix outstanding**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
 - No successor build or runtime test is armed.
 
 ## Exact next project action
 
-Create the authoritative S1.42AK registered-interior/owner inventory and moon-viability matrix from ProfileSources plus accepted runtime evidence. Reconcile every current flow/owner and known exclusion before any universal-availability candidate is designed.
+Build the Phase-B S1.42AK moon/flow viability matrix from `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md` plus current owner/runtime evidence. Classify every current selectable moon/flow pairing as `VIABLE_EQUAL_100`, `CONFIG_GAP`, `AUTHOR_OR_OWNER_HARD_BLOCK`, `KNOWN_TECHNICAL_RESTRICTION` or `NOT_YET_PROVEN`. No build or runtime test is authorized yet.
 
 ## Permanent Gale workflow
 
