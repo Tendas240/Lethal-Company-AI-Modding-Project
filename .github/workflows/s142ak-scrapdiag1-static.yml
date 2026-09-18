@@ -53,9 +53,24 @@ jobs:
       - name: Verify exact source and archive gate
         run: python AnalysisTools/validate_s142ak_scrapdiag1_static.py
 
-      - name: Assert live controllers and lifecycle state were not changed
+      - name: Assert live controllers remain idle and runtime remains unarmed
         run: |
-          git diff --exit-code "$BASE_SHA" "$HEAD_SHA" --             BuildSpecs/current.json             RuntimeInbox/ACTIVE_BUILD.txt             Current/CURRENT_STATE.json             Current/AUTO_BUILD_RESULT.json             Current/AUTO_BUILD_RESULT.md
+          git diff --exit-code "$BASE_SHA" "$HEAD_SHA" -- BuildSpecs/current.json RuntimeInbox/ACTIVE_BUILD.txt Current/AUTO_BUILD_RESULT.json Current/AUTO_BUILD_RESULT.md
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          state = json.loads(Path("Current/CURRENT_STATE.json").read_text(encoding="utf-8"))
+          if state.get("active_candidate") is not None:
+              raise RuntimeError("Diagnostic static-clearance state must not create an active candidate")
+          if state.get("runtime_test_outstanding") is not False:
+              raise RuntimeError("Diagnostic static-clearance state must not arm runtime")
+          controllers = state.get("controllers", {})
+          if controllers.get("build_enabled") is not False:
+              raise RuntimeError("Build controller must remain disabled")
+          if controllers.get("runtime_active_build") != "S1.42AK":
+              raise RuntimeError("Runtime evidence pointer must remain S1.42AK before explicit arming")
+          print("PASS: controllers idle; active_candidate=null; runtime_test_outstanding=false")
+          PY
 
       - name: Upload unarmed diagnostic review artifact
         if: always()
