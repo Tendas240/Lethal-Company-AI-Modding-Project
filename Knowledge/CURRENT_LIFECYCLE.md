@@ -4,7 +4,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `Current/156_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_CONFIRMATION_AND_S1.42AK_SUCCESSOR_DECISION.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`  
+**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `BuildSpecs/S1.42AK_BUILD_EVIDENCE/STATIC_VERIFICATION.md`, `Current/156_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_CONFIRMATION_AND_S1.42AK_SUCCESSOR_DECISION.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `BuildSpecs/S1.42AK-SCRAPDIAG1_PLAN.md`  
 **Last-Validated:** 2026-09-18
 
 ## Accepted gameplay baseline
@@ -60,11 +60,11 @@ S1.42AK was built directly from exact S1.42AJ and accepts only the statically ve
 
 LC Office scrap quantity/distribution is explicitly selected under `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md` and `Knowledge/INTERIORS_AND_LLL.md`. Selection changes no gameplay bytes, assigns no successor build ID, leaves `BuildSpecs/current.json` disabled, leaves `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`, and creates no runtime test.
 
-The existing-evidence count comparison is complete. LC Office produced a 14-object base target in DIAG1 and 15 in DIAG2; accepted S1.42AK Spooky Manor also began at 14 and finalized at 15. The normal S1.42AJ Facility run finalized much higher only because BCMER selected `PlentyOutsideScrap`, so that event-inflated result is not a normal comparator. No LC Office-specific low-count regression is established. Existing logs still lack a complete item-to-room/floor map, so placement/discoverability remains unresolved. See `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`.
+The existing-evidence count comparison is complete. LC Office produced a 14-object base target in DIAG1 and 15 in DIAG2; accepted S1.42AK Spooky Manor also began at 14 and finalized at 15. The normal S1.42AJ Facility run finalized much higher only because BCMER selected `PlentyOutsideScrap`, so that event-inflated result is not a normal comparator. No LC Office-specific low-count regression is established. Placement/discoverability remains unresolved. The diagnostic design is now complete in `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`: derive directly from S1.42AK, reuse the reviewed AJDIAG1 Office selector, and add one new read-only logger postfix on exact `RoundManager.SpawnScrapInLevel` with bounded delayed placement snapshots. It is not implemented or armed.
 
 ## Exact next project action
 
-Design the minimal diagnostic-only LC Office scrap placement instrumentation from exact accepted S1.42AK. Do not arm a runtime test or change gameplay tuning until the diagnostic implementation and static review are complete.
+Implement Patches/S142AKDiagScrapPlacement and the separate non-active BuildSpecs/S1.42AK-SCRAPDIAG1.json request exactly to the approved diagnostic design, then run static source/archive validation. Do not arm a runtime test yet.
 
 ## Permanent Gale workflow
 

@@ -18,7 +18,7 @@ The accepted full-normal evidence has one explicit coverage limit: the first att
 
 **LC Office Scrap Quantity/Distribution Investigation — selected / investigation only / not armed.** Canonical investigation plan: `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`; topic authority: `Knowledge/INTERIORS_AND_LLL.md`.
 
-The existing count comparison is complete: LC Office's 14-15 generated/final count is comparable to nearby normal Offense evidence, while the S1.42AJ Facility high final count was BCMER `PlentyOutsideScrap` event-inflated. No LC Office-specific low-count regression is established. Spatial room/floor placement and practical discoverability remain unresolved because the logs do not map the complete spawned set to locations. The next step is diagnostic-only placement instrumentation. There is still no active runtime candidate, no outstanding runtime test and no armed successor.
+The existing count comparison is complete: LC Office's 14-15 generated/final count is comparable to nearby normal Offense evidence, while the S1.42AJ Facility high final count was BCMER `PlentyOutsideScrap` event-inflated. No LC Office-specific low-count regression is established. Spatial room/floor placement and practical discoverability remain unresolved. The diagnostic design is now complete: exact S1.42AK, reviewed deterministic Office selection, and a bounded read-only placement logger on `RoundManager.SpawnScrapInLevel`. Implementation and static validation are next. There is still no active runtime candidate, no outstanding runtime test and no armed successor.
 
 ## Remaining deferred independent scopes
 
