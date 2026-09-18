@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform the repository-native existing-evidence comparison for LC Office scrap count versus comparable Offense non-Office runs, then determine whether spatial placement/discoverability requires isolated diagnostic instrumentation. Do not arm a runtime test or change scrap tuning yet.
+Design the minimal diagnostic-only LC Office scrap placement instrumentation from exact accepted S1.42AK. Do not arm a runtime test or change gameplay tuning until the diagnostic implementation and static review are complete.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
