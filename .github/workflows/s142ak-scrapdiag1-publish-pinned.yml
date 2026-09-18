@@ -70,7 +70,7 @@ jobs:
           from pathlib import Path
 
           root = Path.cwd()
-          pin = root / "_pinned"
+          pin = root / "_pinned" / "S1.42AK-SCRAPDIAG1-review"
           profile_rel = os.environ["PROFILE_REL"]
           base_rel = os.environ["BASE_REL"]
           profile = pin / profile_rel
@@ -187,10 +187,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          cp "_pinned/$PROFILE_REL" "$PROFILE_REL"
-          cp -a "_pinned/ProfileSources/S1.42AK-SCRAPDIAG1" "ProfileSources/S1.42AK-SCRAPDIAG1"
-          cp "_pinned/BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json" "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json"
-          cp "_pinned/BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.md" "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.md"
+          cp "_pinned/S1.42AK-SCRAPDIAG1-review/$PROFILE_REL" "$PROFILE_REL"
+          cp -a "_pinned/S1.42AK-SCRAPDIAG1-review/ProfileSources/S1.42AK-SCRAPDIAG1" "ProfileSources/S1.42AK-SCRAPDIAG1"
+          cp "_pinned/S1.42AK-SCRAPDIAG1-review/BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json" "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json"
+          cp "_pinned/S1.42AK-SCRAPDIAG1-review/BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.md" "BuildSpecs/S1.42AK-SCRAPDIAG1_BUILD_EVIDENCE/BUILD_RESULT.md"
 
       - name: Reverify published working-tree bytes
         shell: bash
