@@ -1,6 +1,6 @@
 # Universal Interior Viability / Equal Availability Investigation Plan
 
-**Status:** SELECTED / PHASE A INVENTORY COMPLETE / PHASE B MATRIX OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
+**Status:** SELECTED / PHASE A COMPLETE / PHASE B1 MOON INVENTORY + OFFENSE BASELINE COMPLETE / PHASE B2 OWNER-CONFIG ANALYSIS OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
 **Date:** 2026-09-18  
 **Accepted baseline:** S1.42AK — `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`  
@@ -75,6 +75,24 @@ For every current gameplay moon and every registered flow, classify the pairing 
 
 The matrix must distinguish vanilla and custom moons and must not infer universal safety merely from the presence of `Vanilla:100,Custom:100`.
 
+### Phase B1 — moon universe and first observed row
+
+**COMPLETE.** Authority: `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`.
+
+Exact S1.42AK establishes:
+
+- 32 Dawn moon assets;
+- 31 LLL ExtendedLevels: 13 Vanilla, 16 Custom, 2 External;
+- `lethal_company:test` is Dawn-only and excluded from the selection matrix;
+- `71 Gordion` is retained in the moon inventory but excluded from interior-pairing cells because exact runtime identifies it as `CompanyBuildingLevel` with `CompanyMoonRouteConfirmCommand`;
+- 30 pairing-target moons remain: 12 Vanilla, 16 Custom, 2 External;
+- with 53 LLL-selectable interiors, the matrix contains **1,590 pairing cells**;
+- exact S1.42AK Offense runtime accounts for all 53 interiors: 41 `VIABLE_EQUAL_100`, 12 currently `NOT_YET_PROVEN` pending owner-cause analysis.
+
+### Phase B2 — owner/config mechanism extraction
+
+Next, reconcile the 22 directly configured Custom flows, the 27 Custom flows without direct active LLL dungeon config, the three Vanilla flows and Black Mesa's native/DawnLib path across the 30 target-moon classes. Upgrade absent pairings from `NOT_YET_PROVEN` only when repository evidence establishes `CONFIG_GAP`, `AUTHOR_OR_OWNER_HARD_BLOCK`, or `KNOWN_TECHNICAL_RESTRICTION`.
+
 ## Phase C — compatibility proof for proposed restriction removal
 
 Before changing any absent pairing, establish the narrow owning mechanism and prove compatibility relevant to that interior:
@@ -131,6 +149,6 @@ The next repository decision must be based on the completed owner/flow/moon matr
 
 ## Exact next action
 
-Build the **Phase-B moon/flow viability matrix** from `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md` plus current owner/runtime evidence. Classify every current selectable moon/flow pairing as `VIABLE_EQUAL_100`, `CONFIG_GAP`, `AUTHOR_OR_OWNER_HARD_BLOCK`, `KNOWN_TECHNICAL_RESTRICTION`, or `NOT_YET_PROVEN`.
+Execute **Phase B2 owner/config mechanism extraction** using `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md` and `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md` as the fixed flow/moon universes. Determine why absent pairings are absent before proposing any compatibility removal.
 
 No build or runtime test is authorized yet.

@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Build the Phase-B S1.42AK moon/flow viability matrix from Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md plus current owner/runtime evidence. Classify every current selectable moon/flow pairing as VIABLE_EQUAL_100, CONFIG_GAP, AUTHOR_OR_OWNER_HARD_BLOCK, KNOWN_TECHNICAL_RESTRICTION or NOT_YET_PROVEN. No build or runtime test is authorized yet.
+Phase B2: extract and reconcile the owner/config viability mechanisms for the 53 selectable interiors across the 30 pairing-target moons, starting from the 22 directly configured Custom flows, the 27 Custom flows without direct active LLL dungeon config, the three Vanilla flows, and Black Mesa's native/DawnLib owner path. Upgrade absent pairings from NOT_YET_PROVEN only where repository evidence proves CONFIG_GAP, AUTHOR_OR_OWNER_HARD_BLOCK or KNOWN_TECHNICAL_RESTRICTION. No build or runtime test is authorized yet.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

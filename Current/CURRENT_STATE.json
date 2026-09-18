@@ -44,13 +44,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "SELECTED_PHASE_A_INVENTORY_COMPLETE_PHASE_B_OUTSTANDING",
+    "status": "SELECTED_PHASE_B1_COMPLETE_PHASE_B2_OWNER_CONFIG_ANALYSIS_OUTSTANDING",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "Phase A is complete. Exact S1.42AK runtime registration contains 55 DawnLib DungeonFlow assets and 53 LethalLevelLoader ExtendedDungeonFlow selection entries: 3 Vanilla, 49 Custom and 1 External Black Mesa. The two additional Dawn-only assets are vanilla Level1FlowExtraLarge and Level1Flow3Exits. Exact pre-LC S1.42AF contains 52 LLL entries; LC Office / OfficeDungeonFlow is the exact +1 in S1.42AK. The 28 LLL Custom Dungeon config sections are non-cardinal: only 22 unique current Custom flows have active direct config coverage, three enabled sections are aliases, two are stale/orphaned, and Black Mesa is the disabled native/DawnLib-owner case. Therefore 27 current Custom flows have no direct active LLL Custom Dungeon config section. JLL-specific helper/config behavior exists, but no separate JLL-only registered dungeon flow appears in the exact current Dawn/LLL inventories.",
+    "finding": "Phase A and Phase B1 are complete. Exact S1.42AK has 32 Dawn moon assets but 31 LLL ExtendedLevels; lethal_company:test is the sole Dawn-only test asset. 71 Gordion is an LLL Vanilla ExtendedLevel but the same runtime identifies CompanyBuildingLevel and CompanyMoonRouteConfirmCommand, so it is retained in inventory but excluded from dungeon/interior pairing cells. The authoritative Phase-B pairing universe is 30 dungeon-target moons (12 Vanilla, 16 Custom, 2 External) x 53 LLL-selectable interiors = 1,590 cells. Exact S1.42AK provides a complete Offense row: 41 viable flows reach effective 100 under the accepted S1.42AB normalizer and 12 flows are unviable; those 12 remain NOT_YET_PROVEN until owner/config cause is reconciled.",
     "analysis_contract": "Build a current S1.42AK owner/flow/moon viability matrix before authoring any gameplay candidate. Reconcile every registered dungeon flow with its owning system (LLL, JLL, DawnLib/native or other), identify all author/project exclusions and the technical reason for each, and prove that any proposed removal preserves correct entrance/exit pairing, successful generation and traversal, door/socket geometry, elevators, routing and NavMesh behavior. Preserve equal effective rarity 100 for every flow that is viable. Do not duplicate-register native-owner content or bypass an unexplained hard block.",
-    "next_action": "Build the Phase-B S1.42AK moon/flow viability matrix from Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md plus current owner/runtime evidence. Classify every current selectable moon/flow pairing as VIABLE_EQUAL_100, CONFIG_GAP, AUTHOR_OR_OWNER_HARD_BLOCK, KNOWN_TECHNICAL_RESTRICTION or NOT_YET_PROVEN. No build or runtime test is authorized yet.",
+    "next_action": "Phase B2: extract and reconcile the owner/config viability mechanisms for the 53 selectable interiors across the 30 pairing-target moons, starting from the 22 directly configured Custom flows, the 27 Custom flows without direct active LLL dungeon config, the three Vanilla flows, and Black Mesa's native/DawnLib owner path. Upgrade absent pairings from NOT_YET_PROVEN only where repository evidence proves CONFIG_GAP, AUTHOR_OR_OWNER_HARD_BLOCK or KNOWN_TECHNICAL_RESTRICTION. No build or runtime test is authorized yet.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -99,9 +99,36 @@
       ],
       "pre_lc_s142af_lll_count": 52,
       "exact_delta_to_s142ak": "LC Office / OfficeDungeonFlow"
+    },
+    "phase_b": {
+      "status": "B1_COMPLETE_B2_OUTSTANDING",
+      "phase_b1_evidence": "Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md",
+      "dawn_moon_assets": 32,
+      "lll_extended_levels": 31,
+      "dawn_only_test_assets": [
+        "lethal_company:test"
+      ],
+      "non_dungeon_destinations": [
+        "71 Gordion"
+      ],
+      "pairing_target_moons": 30,
+      "pairing_target_breakdown": {
+        "vanilla": 12,
+        "custom": 16,
+        "external": 2
+      },
+      "selectable_interiors": 53,
+      "matrix_cells": 1590,
+      "observed_rows": {
+        "Offense": {
+          "viable_equal_100": 41,
+          "not_yet_proven_unviable": 12,
+          "total": 53
+        }
+      }
     }
   },
-  "next_action": "Build the Phase-B S1.42AK moon/flow viability matrix from Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md plus current owner/runtime evidence. Classify every current selectable moon/flow pairing as VIABLE_EQUAL_100, CONFIG_GAP, AUTHOR_OR_OWNER_HARD_BLOCK, KNOWN_TECHNICAL_RESTRICTION or NOT_YET_PROVEN. No build or runtime test is authorized yet.",
+  "next_action": "Phase B2: extract and reconcile the owner/config viability mechanisms for the 53 selectable interiors across the 30 pairing-target moons, starting from the 22 directly configured Custom flows, the 27 Custom flows without direct active LLL dungeon config, the three Vanilla flows, and Black Mesa's native/DawnLib owner path. Upgrade absent pairings from NOT_YET_PROVEN only where repository evidence proves CONFIG_GAP, AUTHOR_OR_OWNER_HARD_BLOCK or KNOWN_TECHNICAL_RESTRICTION. No build or runtime test is authorized yet.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
