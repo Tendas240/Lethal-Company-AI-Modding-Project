@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-18  
+**Updated:** 2026-09-19  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Phase C: plan and prioritize compatibility proof for the 914 NOT_YET_PROVEN cells and 14 AUTHOR_OR_OWNER_HARD_BLOCK cells. First mine existing repository evidence for entrance/exit pairing, successful generation/traversal, door/socket geometry, elevators/special traversal, routing/NavMesh and duplicate-registration safety so only genuinely unresolved high-risk pairings proceed to targeted runtime proof. No universal override, gameplay build or runtime test is authorized yet.
+Phase C2: extract and reconcile the technical/author reason for the 14 current AUTHOR_OR_OWNER_HARD_BLOCK cells before any override is proposed. Start with the 12 Offense-rejected owner-controlled flows plus Shatteredrooms x Experimentation and x Embrion. Classify each restriction as an explicit compatibility safeguard, author balancing/default targeting, or an unexplained owner exclusion only where repository package/config/source evidence proves it. No build, universal override or runtime test is authorized yet.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
