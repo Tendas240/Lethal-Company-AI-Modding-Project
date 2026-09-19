@@ -1,0 +1,21 @@
+{
+  "schema_version": "phase-c3e1-manifest-1",
+  "status": "PARTIAL_PHASE_C3_TOPOLOGY_SOURCE_CHECKPOINT",
+  "parent_pr_head": "c7a9673a868f838a2435ed55c651a0e956a41541",
+  "source_tree": "XuuXiaolan/CodeRebirth@3aec94f6f737c86d5e1eb59a57396740317b210f",
+  "evidence_files": [
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E1/FINDINGS.md",
+      "git_blob_sha": "a246fe9f74c8c1dbc17fa00fb328be8c090cdc08"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E1/OXYDE_SCENE_PREFAB_INDIRECTION_EVIDENCE.json",
+      "git_blob_sha": "10775e90911fbf14edf97c4cfd8f0fea90ce7ffa"
+    }
+  ],
+  "proof_boundary": [
+    "No Oxyde EntranceTeleport ID/count/pairing proven.",
+    "No Black Mesa 3.4.4 topology inspected in this checkpoint.",
+    "No matrix/build/runtime state change."
+  ]
+}
