@@ -1,6 +1,6 @@
 # Universal Interior Viability / Equal Availability Investigation Plan
 
-**Status:** SELECTED / PHASE A + B1 + B2 + B3 COMPLETE / PHASE C COMPATIBILITY PROOF OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
+**Status:** SELECTED / PHASE A + B1 + B2 + B3 + C1 COMPLETE / PHASE C2 OWNER-HARD-BLOCK REASON ANALYSIS OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
 **Date:** 2026-09-18  
 **Accepted baseline:** S1.42AK — `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`  
@@ -136,6 +136,30 @@ Before changing any absent pairing, establish the narrow owning mechanism and pr
 
 High-risk or explicitly blocked pairings require targeted runtime proof before their restriction is removed.
 
+### Phase C1 — existing runtime compatibility triage
+
+**COMPLETE.** Authority: `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`.
+
+Conservative repository-native mining of runtime-pass / accepted / accepted-focused evidence plus the explicitly authorized LC Office DIAG2 A/B establishes:
+
+- **15** current selectable interiors with actual Offense generation plus recorded player enter/exit;
+- **4** additional interiors with actual Offense generation, tile preparation and four PathfindingLib entrance connections but no recorded player entry;
+- **34** interiors with no positive actual-generation proof in the conservative trusted scan.
+
+All C1 observed generation is on **Offense**. This reduces interior-side uncertainty but does not prove moon-side entrance compatibility on the other 29 target moons and does not change the Phase-B3 availability matrix.
+
+C1 also preserves unresolved route/NavMesh proof obligations rather than promoting them to technical restrictions. Notable signals include Spooky manor and Expanded Mineshaft B-side route reachability gaps, LiminalHouse/Rubber Rooms route or NavMesh ambiguity, and known LC Office/DeepcoreMines generation-time NavMesh noise.
+
+### Phase C2 — owner-hard-block technical reason extraction
+
+Reconcile the **14 current `AUTHOR_OR_OWNER_HARD_BLOCK` cells** before proposing any removal. Determine from current package/config/source evidence whether each exclusion is:
+
+- an explicit technical/compatibility safeguard;
+- author balancing/default targeting with no proven technical necessity;
+- or an unexplained owner exclusion.
+
+The C2 starting set is the 12 Offense owner-rejected flows plus Shatteredrooms × Experimentation and Shatteredrooms × Embrion. Do not authorize a build or runtime test until the owner reason is understood well enough to design the narrow proof.
+
 ## Phase D — candidate rule
 
 Only after Phases A-C identify safe changes may a gameplay candidate be authored.
@@ -176,6 +200,6 @@ The next repository decision must be based on the completed owner/flow/moon matr
 
 ## Exact next action
 
-Execute **Phase C compatibility-proof planning and prioritization** from the completed matrix in `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md/.csv`. Mine existing repository evidence first for entrance/exit pairing, generation/traversal, door/socket geometry, elevators/special traversal, routing/NavMesh and duplicate-registration safety. Separate cells resolvable from existing evidence from cells that genuinely require targeted runtime proof.
+Execute **Phase C2 owner-hard-block technical reason extraction** using `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md` plus the Phase-B2/B3 owner and matrix authorities. Start with the 12 Offense owner-rejected flows and Shatteredrooms × Experimentation/Embrion. Classify a block only where repository package/config/source evidence proves its reason.
 
 No universal override, gameplay build or runtime test is authorized yet.
