@@ -1,7 +1,7 @@
 # Universal Interior Viability / Equal Availability Investigation Plan
 
-**Status:** SELECTED / PHASE A + B1 + B2 + B3 + C1 COMPLETE / PHASE C2 OWNER-HARD-BLOCK REASON ANALYSIS OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
-**Date:** 2026-09-18  
+**Status:** SELECTED / PHASE A + B1 + B2 + B3 + C1 + C2 COMPLETE / PHASE C3 EXTERNAL-MOON ANALYSIS OUTSTANDING / NOT IMPLEMENTED / NOT ARMED  
+**Date:** 2026-09-19  
 **Accepted baseline:** S1.42AK — `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`  
 **Lifecycle authority:** `Current/CURRENT_STATE.json`
@@ -152,13 +152,27 @@ C1 also preserves unresolved route/NavMesh proof obligations rather than promoti
 
 ### Phase C2 — owner-hard-block technical reason extraction
 
-Reconcile the **14 current `AUTHOR_OR_OWNER_HARD_BLOCK` cells** before proposing any removal. Determine from current package/config/source evidence whether each exclusion is:
+**COMPLETE.** Authority: `Current/169_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C2_OWNER_HARD_BLOCK_REASON_ANALYSIS.md`.
 
-- an explicit technical/compatibility safeguard;
-- author balancing/default targeting with no proven technical necessity;
-- or an unexplained owner exclusion.
+All 14 current `AUTHOR_OR_OWNER_HARD_BLOCK` cells are reason-reconciled without changing the Phase-B3 matrix:
 
-The C2 starting set is the 12 Offense owner-rejected flows plus Shatteredrooms × Experimentation and Shatteredrooms × Embrion. Do not authorize a build or runtime test until the owner reason is understood well enough to design the narrow proof.
+- **12** Offense owner-rejected cells = `AUTHOR_DEFAULT_TARGETING_OR_BALANCE`;
+- **2** Shatteredrooms cells (Experimentation, Embrion) = `UNEXPLAINED_EXPLICIT_OWNER_EXCLUSION`;
+- **0** proven explicit compatibility safeguards;
+- **0** `KNOWN_TECHNICAL_RESTRICTION`.
+
+The 12 Offense exclusions are explained by unchanged package/asset owner defaults: positive moon lists, biome/tag targeting, route-price rules, or explicit zero rarity. No repository evidence proves that those Offense exclusions are technical safety bans.
+
+Shatteredrooms × Experimentation and × Embrion remain explicit author exclusions, but their technical reason is still not established. Known Junkrooms/Shatteredrooms CullFactory incompatibility remains a separate technical obligation and is not treated as the proven cause of the exact moon exclusions.
+
+### Phase C3 — External target-moon semantics and topology
+
+Resolve the two LLL-`External` target-moon rows before designing a universal override:
+
+- Black Mesa moon — 53/53 `NOT_YET_PROVEN`;
+- Oxyde — 53/53 `NOT_YET_PROVEN`.
+
+Establish each External level's actual Dawn/LLL tags, entrance/fire-exit topology and owner matching semantics. Determine which existing interior rules can legitimately apply without duplicate registration or unsupported assumptions about entrance topology.
 
 ## Phase D — candidate rule
 
@@ -200,6 +214,6 @@ The next repository decision must be based on the completed owner/flow/moon matr
 
 ## Exact next action
 
-Execute **Phase C2 owner-hard-block technical reason extraction** using `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md` plus the Phase-B2/B3 owner and matrix authorities. Start with the 12 Offense owner-rejected flows and Shatteredrooms × Experimentation/Embrion. Classify a block only where repository package/config/source evidence proves its reason.
+Execute **Phase C3 External target-moon semantics/topology analysis** using the current Dawn/LLL level registrations and owner configs. Establish Black Mesa moon and Oxyde tags, entrance/fire-exit topology and matching ownership before expanding any availability rule onto their 53-cell External rows.
 
 No universal override, gameplay build or runtime test is authorized yet.

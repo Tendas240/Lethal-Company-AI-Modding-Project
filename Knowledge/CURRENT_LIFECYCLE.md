@@ -46,7 +46,7 @@ The next selected independent scope is **Universal Interior Viability / Equal Av
 
 The accepted S1.42AB normalizer remains unchanged: it equalizes every positive viable rarity to `100` only after LLL viability filtering. The selected scope therefore targets the earlier viability/availability layer, not the accepted weighting layer.
 
-Phases A, B1, B2 and B3 are complete. Phase C1 is complete under `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`. The fixed 30×53 availability matrix remains unchanged at 1,590 cells: 662 `VIABLE_EQUAL_100`, 14 `AUTHOR_OR_OWNER_HARD_BLOCK`, 0 `CONFIG_GAP`, 0 `KNOWN_TECHNICAL_RESTRICTION`, and 914 `NOT_YET_PROVEN`. C1 mines existing technical runtime proof separately: 15 interiors have Offense generation plus recorded player enter/exit, 4 more have generation/tile/entrance-pair evidence only, and 34 have no trusted actual-generation proof in the conservative scan. Existing proof is Offense-only and therefore does not establish moon-side compatibility on the other 29 target moons.
+Phases A through C1 are complete. Phase C2 is complete under `Current/169_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C2_OWNER_HARD_BLOCK_REASON_ANALYSIS.md`. The fixed 30×53 availability matrix remains unchanged at 1,590 cells: 662 `VIABLE_EQUAL_100`, 14 `AUTHOR_OR_OWNER_HARD_BLOCK`, 0 `CONFIG_GAP`, 0 `KNOWN_TECHNICAL_RESTRICTION`, and 914 `NOT_YET_PROVEN`. C2 reason-classifies the 14 hard blocks: 12 Offense exclusions are package/asset default targeting or balance rules; Shatteredrooms × Experimentation and × Embrion remain explicit owner exclusions whose technical cause is unproven. No hard-block cell is currently proven to be a technical compatibility safeguard.
 
 ## Live execution state
 
@@ -55,14 +55,14 @@ Phases A, B1, B2 and B3 are complete. Phase C1 is complete under `Current/168_S1
 - Active gameplay candidate: **none**.
 - Active diagnostic runtime target: **none**.
 - Runtime test outstanding: **no**.
-- Selected scope: **Universal Interior Viability / Equal Availability — Phase C1 complete / Phase C2 owner-hard-block reason analysis outstanding**.
+- Selected scope: **Universal Interior Viability / Equal Availability — Phase C2 complete / Phase C3 External-moon analysis outstanding**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
 - No successor build or runtime test is armed.
 
 ## Exact next project action
 
-Phase C2: extract and reconcile the technical/author reason for the 14 current `AUTHOR_OR_OWNER_HARD_BLOCK` cells before any override is proposed. Start with the 12 Offense owner-rejected flows plus Shatteredrooms × Experimentation and × Embrion. Use package/config/source evidence to distinguish explicit compatibility safeguards from author balancing/default targeting or unexplained owner exclusions. No universal override, gameplay build or runtime test is authorized yet.
+Phase C3: resolve Black Mesa moon and Oxyde as the two LLL-`External` target rows. Establish their Dawn/LLL tags, entrance/fire-exit topology and owner matching semantics before extending any current interior availability rule onto those rows. No universal override, gameplay build or runtime test is authorized yet.
 
 ## Permanent Gale workflow
 

@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Phase C2: extract and reconcile the technical/author reason for the 14 current AUTHOR_OR_OWNER_HARD_BLOCK cells before any override is proposed. Start with the 12 Offense-rejected owner-controlled flows plus Shatteredrooms x Experimentation and x Embrion. Classify each restriction as an explicit compatibility safeguard, author balancing/default targeting, or an unexplained owner exclusion only where repository package/config/source evidence proves it. No build, universal override or runtime test is authorized yet.
+Phase C3: resolve the two External target-moon rows, Black Mesa and Oxyde, before any universal override is designed. Establish each External level's actual Dawn/LLL tags, entrance/fire-exit topology and owner matching semantics; determine which current interior availability rules can legitimately apply without duplicate registration or unsupported topology assumptions. No build, universal override or runtime test is authorized yet.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
