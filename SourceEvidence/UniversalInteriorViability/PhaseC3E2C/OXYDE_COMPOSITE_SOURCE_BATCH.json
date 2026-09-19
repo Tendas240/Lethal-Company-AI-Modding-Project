@@ -1,0 +1,668 @@
+{
+  "schema_version": "phase-c3e2c-1",
+  "scope": "Universal Interior Viability / Equal Availability",
+  "baseline": "S1.42AK",
+  "checkpoint": {
+    "main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+    "parent_pr_head": "a6c84e6e89d8b269d177071258c7489a3ac3326a",
+    "pr_number": 138,
+    "branch": "scope/universal-interior-phase-c3a-dawn-tags"
+  },
+  "source_binding": {
+    "repository": "XuuXiaolan/CodeRebirth",
+    "version": "1.6.9",
+    "commit": "3aec94f6f737c86d5e1eb59a57396740317b210f",
+    "terrain_prefab_blob": "23bf23b3fb5782b5a268b89ec7783e3c5004f323",
+    "terrain_serialized_characters": 7355812,
+    "qualification": "Version-matched source; not asserted byte-identical to accepted package. LFS pointers are not payload inspection."
+  },
+  "method": {
+    "bounded_selection": "Twelve distinct remaining terrain GUIDs whose observed names suggest composite structures, interactions, navigation helpers or NPCs. Names select candidates only; GUID equality decides identity.",
+    "meta_candidates_read": 23,
+    "source_asset_blobs_read": 12,
+    "git_blob_integrity": "All 35 fetched metadata/asset texts UTF-8 encoded and checked using SHA1(b'blob '+decimal_byte_length+b'\\0'+bytes); all match exact Git tree blob SHAs.",
+    "verified_utf8_bytes": 295692,
+    "terrain_group_extraction": "Split Unity YAML at document headers; for class ID 1001, group by m_SourcePrefab GUID and collect serialized m_Name property overrides. Overrides may name descendants, not necessarily only roots.",
+    "literal_search_case_sensitive": true,
+    "recursive_script_and_prefab_semantics_resolved": false
+  },
+  "meta_candidates": [
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/AddOns/Outside/AutonomousCrane/Crane.prefab.meta",
+      "git_blob": "d7649dcad7601e1e248ba1bf03ffe3fc39b76cd1",
+      "guid": "8141077df39684a48b7e67ac465e2a58",
+      "exact_content": "fileFormatVersion: 2\nguid: 8141077df39684a48b7e67ac465e2a58\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/AddOns/Outside/AutonomousCrane/Model/Crane.fbx.meta",
+      "git_blob": "cd7f0cee7f5fd9d7bc8357c066804a9d94cdc3e3",
+      "guid": "dc8ab88262f61654ab378c0a5869ee7c",
+      "exact_content": "fileFormatVersion: 2\nguid: dc8ab88262f61654ab378c0a5869ee7c\nModelImporter:\n  serializedVersion: 22200\n  internalIDToNameTable: []\n  externalObjects:\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: CraneArm\n    second: {fileID: 2100000, guid: bcd54ab8a3652724b80b6107108257c5, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: CraneCabinBig\n    second: {fileID: 2100000, guid: 537e688aa521cb0478b4b170250fc6e7, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: CraneCabingSmall\n    second: {fileID: 2100000, guid: c3bc13209a3fab747b4f7afa3c575304, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: CraneParts\n    second: {fileID: 2100000, guid: 1d17bdbb6f147c0488f4500b403f7eb3, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: CraneSupport\n    second: {fileID: 2100000, guid: 09dd2a723c7dc5a46b5d21542b562abe, type: 2}\n  materials:\n    materialImportMode: 2\n    materialName: 0\n    materialSearch: 1\n    materialLocation: 1\n  animations:\n    legacyGenerateAnimations: 4\n    bakeSimulation: 0\n    resampleCurves: 1\n    optimizeGameObjects: 0\n    removeConstantScaleCurves: 0\n    motionNodeName: \n    rigImportErrors: \n    rigImportWarnings: \n    animationImportErrors: \n    animationImportWarnings: \n    animationRetargetingWarnings: \n    animationDoRetargetingWarnings: 0\n    importAnimatedCustomProperties: 0\n    importConstraints: 0\n    animationCompression: 3\n    animationRotationError: 0.5\n    animationPositionError: 0.5\n    animationScaleError: 0.5\n    animationWrapMode: 0\n    extraExposedTransformPaths: []\n    extraUserProperties: []\n    clipAnimations: []\n    isReadable: 0\n  meshes:\n    lODScreenPercentages: []\n    globalScale: 1\n    meshCompression: 1\n    addColliders: 0\n    useSRGBMaterialColor: 1\n    sortHierarchyByName: 1\n    importPhysicalCameras: 1\n    importVisibility: 0\n    importBlendShapes: 0\n    importCameras: 0\n    importLights: 0\n    nodeNameCollisionStrategy: 1\n    fileIdsGeneration: 2\n    swapUVChannels: 0\n    generateSecondaryUV: 0\n    useFileUnits: 1\n    keepQuads: 0\n    weldVertices: 1\n    bakeAxisConversion: 0\n    preserveHierarchy: 0\n    skinWeightsMode: 0\n    maxBonesPerVertex: 4\n    minBoneWeight: 0.001\n    optimizeBones: 1\n    meshOptimizationFlags: -1\n    indexFormat: 0\n    secondaryUVAngleDistortion: 8\n    secondaryUVAreaDistortion: 15.000001\n    secondaryUVHardAngle: 88\n    secondaryUVMarginMethod: 1\n    secondaryUVMinLightmapResolution: 40\n    secondaryUVMinObjectScale: 1\n    secondaryUVPackMargin: 4\n    useFileScale: 1\n    strictVertexDataChecks: 0\n  tangentSpace:\n    normalSmoothAngle: 60\n    normalImportMode: 0\n    tangentImportMode: 3\n    normalCalculationMode: 4\n    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0\n    blendShapeNormalImportMode: 1\n    normalSmoothingSource: 0\n  referencedClips: []\n  importAnimation: 0\n  humanDescription:\n    serializedVersion: 3\n    human: []\n    skeleton: []\n    armTwist: 0.5\n    foreArmTwist: 0.5\n    upperLegTwist: 0.5\n    legTwist: 0.5\n    armStretch: 0.05\n    legStretch: 0.05\n    feetSpacing: 0\n    globalScale: 1\n    rootMotionBoneName: \n    hasTranslationDoF: 0\n    hasExtraRoot: 1\n    skeletonHasParents: 1\n  lastHumanDescriptionAvatarSource: {instanceID: 0}\n  autoGenerateAvatarMappingIfUnspecified: 1\n  animationType: 2\n  humanoidOversampling: 1\n  avatarSetup: 0\n  addHumanoidExtraRootOnlyWhenUsingAvatar: 1\n  importBlendShapeDeformPercent: 1\n  remapMaterialsIfMaterialImportModeIsNone: 0\n  additionalBone: 0\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/MiscShiz/OffMeshLink.prefab.meta",
+      "git_blob": "e160bbcfc9f6d95ff26952447baf096b61425585",
+      "guid": "62251f173dbdf2c4eb66b14199b28043",
+      "exact_content": "fileFormatVersion: 2\nguid: 62251f173dbdf2c4eb66b14199b28043\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/HachimansGift/GiftForGuardsman.prefab.meta",
+      "git_blob": "196061f544100a5e7e5a0311c4191ae7373775a1",
+      "guid": "4fbfa31359a2b8c4e9e15ca705546b74",
+      "exact_content": "fileFormatVersion: 2\nguid: 4fbfa31359a2b8c4e9e15ca705546b74\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/HachimansGift/Model/GiftForGuardsman.fbx.meta",
+      "git_blob": "8b218aff7ce0c8c9fad1aaea84d5c0a725328f87",
+      "guid": "a42f00c9bc1f1cd4cb061eab2b0ac37a",
+      "exact_content": "fileFormatVersion: 2\nguid: a42f00c9bc1f1cd4cb061eab2b0ac37a\nModelImporter:\n  serializedVersion: 22200\n  internalIDToNameTable: []\n  externalObjects: {}\n  materials:\n    materialImportMode: 0\n    materialName: 0\n    materialSearch: 1\n    materialLocation: 1\n  animations:\n    legacyGenerateAnimations: 4\n    bakeSimulation: 0\n    resampleCurves: 1\n    optimizeGameObjects: 0\n    removeConstantScaleCurves: 0\n    motionNodeName: \n    rigImportErrors: \n    rigImportWarnings: \n    animationImportErrors: \n    animationImportWarnings: \n    animationRetargetingWarnings: \n    animationDoRetargetingWarnings: 0\n    importAnimatedCustomProperties: 0\n    importConstraints: 0\n    animationCompression: 1\n    animationRotationError: 0.5\n    animationPositionError: 0.5\n    animationScaleError: 0.5\n    animationWrapMode: 0\n    extraExposedTransformPaths: []\n    extraUserProperties: []\n    clipAnimations: []\n    isReadable: 0\n  meshes:\n    lODScreenPercentages: []\n    globalScale: 1\n    meshCompression: 0\n    addColliders: 0\n    useSRGBMaterialColor: 1\n    sortHierarchyByName: 1\n    importPhysicalCameras: 1\n    importVisibility: 1\n    importBlendShapes: 1\n    importCameras: 1\n    importLights: 1\n    nodeNameCollisionStrategy: 1\n    fileIdsGeneration: 2\n    swapUVChannels: 0\n    generateSecondaryUV: 0\n    useFileUnits: 1\n    keepQuads: 0\n    weldVertices: 1\n    bakeAxisConversion: 0\n    preserveHierarchy: 0\n    skinWeightsMode: 0\n    maxBonesPerVertex: 4\n    minBoneWeight: 0.001\n    optimizeBones: 1\n    meshOptimizationFlags: -1\n    indexFormat: 0\n    secondaryUVAngleDistortion: 8\n    secondaryUVAreaDistortion: 15.000001\n    secondaryUVHardAngle: 88\n    secondaryUVMarginMethod: 1\n    secondaryUVMinLightmapResolution: 40\n    secondaryUVMinObjectScale: 1\n    secondaryUVPackMargin: 4\n    useFileScale: 1\n    strictVertexDataChecks: 0\n  tangentSpace:\n    normalSmoothAngle: 60\n    normalImportMode: 0\n    tangentImportMode: 3\n    normalCalculationMode: 4\n    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0\n    blendShapeNormalImportMode: 1\n    normalSmoothingSource: 0\n  referencedClips: []\n  importAnimation: 1\n  humanDescription:\n    serializedVersion: 3\n    human: []\n    skeleton: []\n    armTwist: 0.5\n    foreArmTwist: 0.5\n    upperLegTwist: 0.5\n    legTwist: 0.5\n    armStretch: 0.05\n    legStretch: 0.05\n    feetSpacing: 0\n    globalScale: 1\n    rootMotionBoneName: \n    hasTranslationDoF: 0\n    hasExtraRoot: 0\n    skeletonHasParents: 1\n  lastHumanDescriptionAvatarSource: {instanceID: 0}\n  autoGenerateAvatarMappingIfUnspecified: 1\n  animationType: 2\n  humanoidOversampling: 1\n  avatarSetup: 0\n  addHumanoidExtraRootOnlyWhenUsingAvatar: 1\n  importBlendShapeDeformPercent: 1\n  remapMaterialsIfMaterialImportModeIsNone: 0\n  additionalBone: 0\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/JimothyNpc/Jimothybabyboy.prefab.meta",
+      "git_blob": "b8aab74daa47cea1a681dbddbe5598c7c7bd248a",
+      "guid": "bf118ce4bee444c48b81119847abdd6c",
+      "exact_content": "fileFormatVersion: 2\nguid: bf118ce4bee444c48b81119847abdd6c\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/JimothyNpc/Model/Jimothybabyboy.fbx.meta",
+      "git_blob": "5342a8c1f218ae01ce7b254381156623617d8291",
+      "guid": "3f46a2bf1e948634eb9f1d4a45f506c5",
+      "exact_content": "fileFormatVersion: 2\nguid: 3f46a2bf1e948634eb9f1d4a45f506c5\nModelImporter:\n  serializedVersion: 22200\n  internalIDToNameTable: []\n  externalObjects:\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: Jimothy.001\n    second: {fileID: 2100000, guid: 45b2a3827cad92640ac9773448303b3d, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: Rig.001\n    second: {fileID: 2100000, guid: 536fb381b45bbb7459c328250a42c8b5, type: 2}\n  materials:\n    materialImportMode: 2\n    materialName: 0\n    materialSearch: 1\n    materialLocation: 1\n  animations:\n    legacyGenerateAnimations: 4\n    bakeSimulation: 0\n    resampleCurves: 1\n    optimizeGameObjects: 0\n    removeConstantScaleCurves: 0\n    motionNodeName: \n    rigImportErrors: \n    rigImportWarnings: \n    animationImportErrors: \n    animationImportWarnings: \n    animationRetargetingWarnings: \n    animationDoRetargetingWarnings: 0\n    importAnimatedCustomProperties: 0\n    importConstraints: 0\n    animationCompression: 1\n    animationRotationError: 0.5\n    animationPositionError: 0.5\n    animationScaleError: 0.5\n    animationWrapMode: 0\n    extraExposedTransformPaths: []\n    extraUserProperties: []\n    clipAnimations:\n    - serializedVersion: 16\n      name: JimFallenIdle\n      takeName: JunkmithyArmature|JimFallenIdle\n      internalID: -3422755299427970601\n      firstFrame: 0\n      lastFrame: 19\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    - serializedVersion: 16\n      name: JimFallenPickUp\n      takeName: JunkmithyArmature|JimFallenPickUp\n      internalID: -7612320161808761458\n      firstFrame: 0\n      lastFrame: 59\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    - serializedVersion: 16\n      name: JimGreet\n      takeName: JunkmithyArmature|JimGreet\n      internalID: -7807064872091048031\n      firstFrame: 0\n      lastFrame: 59\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    - serializedVersion: 16\n      name: JimIdle\n      takeName: JunkmithyArmature|JimIdle\n      internalID: -4901431566708688350\n      firstFrame: 0\n      lastFrame: 79\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    - serializedVersion: 16\n      name: JimIdleRandom\n      takeName: JunkmithyArmature|JimIdleRandom1\n      internalID: -8322127334005393612\n      firstFrame: 0\n      lastFrame: 129\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    - serializedVersion: 16\n      name: JimThumbsUp\n      takeName: JunkmithyArmature|JimThumbsUp\n      internalID: -5511567795454443725\n      firstFrame: 0\n      lastFrame: 99\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    - serializedVersion: 16\n      name: JimType\n      takeName: JunkmithyArmature|JimType\n      internalID: -7317824453167615916\n      firstFrame: 0\n      lastFrame: 79\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    isReadable: 0\n  meshes:\n    lODScreenPercentages: []\n    globalScale: 1\n    meshCompression: 0\n    addColliders: 0\n    useSRGBMaterialColor: 1\n    sortHierarchyByName: 1\n    importPhysicalCameras: 1\n    importVisibility: 0\n    importBlendShapes: 0\n    importCameras: 0\n    importLights: 0\n    nodeNameCollisionStrategy: 1\n    fileIdsGeneration: 2\n    swapUVChannels: 0\n    generateSecondaryUV: 0\n    useFileUnits: 1\n    keepQuads: 0\n    weldVertices: 1\n    bakeAxisConversion: 0\n    preserveHierarchy: 0\n    skinWeightsMode: 0\n    maxBonesPerVertex: 4\n    minBoneWeight: 0.001\n    optimizeBones: 1\n    meshOptimizationFlags: -1\n    indexFormat: 0\n    secondaryUVAngleDistortion: 8\n    secondaryUVAreaDistortion: 15.000001\n    secondaryUVHardAngle: 88\n    secondaryUVMarginMethod: 1\n    secondaryUVMinLightmapResolution: 40\n    secondaryUVMinObjectScale: 1\n    secondaryUVPackMargin: 4\n    useFileScale: 1\n    strictVertexDataChecks: 0\n  tangentSpace:\n    normalSmoothAngle: 60\n    normalImportMode: 0\n    tangentImportMode: 3\n    normalCalculationMode: 4\n    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0\n    blendShapeNormalImportMode: 1\n    normalSmoothingSource: 0\n  referencedClips: []\n  importAnimation: 0\n  humanDescription:\n    serializedVersion: 3\n    human: []\n    skeleton: []\n    armTwist: 0.5\n    foreArmTwist: 0.5\n    upperLegTwist: 0.5\n    legTwist: 0.5\n    armStretch: 0.05\n    legStretch: 0.05\n    feetSpacing: 0\n    globalScale: 1\n    rootMotionBoneName: \n    hasTranslationDoF: 0\n    hasExtraRoot: 0\n    skeletonHasParents: 1\n  lastHumanDescriptionAvatarSource: {instanceID: 0}\n  autoGenerateAvatarMappingIfUnspecified: 1\n  animationType: 2\n  humanoidOversampling: 1\n  avatarSetup: 0\n  addHumanoidExtraRootOnlyWhenUsingAvatar: 1\n  importBlendShapeDeformPercent: 1\n  remapMaterialsIfMaterialImportModeIsNone: 0\n  additionalBone: 0\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Spawners/CratesSpawn.prefab.meta",
+      "git_blob": "19532c6dda3e34cf113e791bd58bedd3cd42c85e",
+      "guid": "c48d3516e654cef4da603caa740245f0",
+      "exact_content": "fileFormatVersion: 2\nguid: c48d3516e654cef4da603caa740245f0\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Bridge/Model/SafeBridge.fbx.meta",
+      "git_blob": "9c5be84b827378c467a52f41bbe16f3b6da68dc2",
+      "guid": "f935b37b148639e41914c1366e74be6a",
+      "exact_content": "fileFormatVersion: 2\nguid: f935b37b148639e41914c1366e74be6a\nModelImporter:\n  serializedVersion: 22200\n  internalIDToNameTable: []\n  externalObjects:\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: SafeBridge\n    second: {fileID: 2100000, guid: b7b87221866091942b0ff6c612d04962, type: 2}\n  materials:\n    materialImportMode: 2\n    materialName: 0\n    materialSearch: 1\n    materialLocation: 1\n  animations:\n    legacyGenerateAnimations: 4\n    bakeSimulation: 0\n    resampleCurves: 1\n    optimizeGameObjects: 0\n    removeConstantScaleCurves: 0\n    motionNodeName: \n    rigImportErrors: \n    rigImportWarnings: \n    animationImportErrors: \n    animationImportWarnings: \n    animationRetargetingWarnings: \n    animationDoRetargetingWarnings: 0\n    importAnimatedCustomProperties: 0\n    importConstraints: 0\n    animationCompression: 1\n    animationRotationError: 0.5\n    animationPositionError: 0.5\n    animationScaleError: 0.5\n    animationWrapMode: 0\n    extraExposedTransformPaths: []\n    extraUserProperties: []\n    clipAnimations: []\n    isReadable: 1\n  meshes:\n    lODScreenPercentages: []\n    globalScale: 1\n    meshCompression: 3\n    addColliders: 0\n    useSRGBMaterialColor: 1\n    sortHierarchyByName: 1\n    importPhysicalCameras: 1\n    importVisibility: 0\n    importBlendShapes: 0\n    importCameras: 0\n    importLights: 0\n    nodeNameCollisionStrategy: 1\n    fileIdsGeneration: 2\n    swapUVChannels: 0\n    generateSecondaryUV: 0\n    useFileUnits: 1\n    keepQuads: 0\n    weldVertices: 1\n    bakeAxisConversion: 0\n    preserveHierarchy: 0\n    skinWeightsMode: 0\n    maxBonesPerVertex: 4\n    minBoneWeight: 0.001\n    optimizeBones: 1\n    meshOptimizationFlags: -1\n    indexFormat: 0\n    secondaryUVAngleDistortion: 8\n    secondaryUVAreaDistortion: 15.000001\n    secondaryUVHardAngle: 88\n    secondaryUVMarginMethod: 1\n    secondaryUVMinLightmapResolution: 40\n    secondaryUVMinObjectScale: 1\n    secondaryUVPackMargin: 4\n    useFileScale: 1\n    strictVertexDataChecks: 0\n  tangentSpace:\n    normalSmoothAngle: 60\n    normalImportMode: 0\n    tangentImportMode: 3\n    normalCalculationMode: 4\n    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0\n    blendShapeNormalImportMode: 1\n    normalSmoothingSource: 0\n  referencedClips: []\n  importAnimation: 0\n  humanDescription:\n    serializedVersion: 3\n    human: []\n    skeleton: []\n    armTwist: 0.5\n    foreArmTwist: 0.5\n    upperLegTwist: 0.5\n    legTwist: 0.5\n    armStretch: 0.05\n    legStretch: 0.05\n    feetSpacing: 0\n    globalScale: 1\n    rootMotionBoneName: \n    hasTranslationDoF: 0\n    hasExtraRoot: 0\n    skeletonHasParents: 1\n  lastHumanDescriptionAvatarSource: {instanceID: 0}\n  autoGenerateAvatarMappingIfUnspecified: 1\n  animationType: 0\n  humanoidOversampling: 1\n  avatarSetup: 0\n  addHumanoidExtraRootOnlyWhenUsingAvatar: 1\n  importBlendShapeDeformPercent: 0\n  remapMaterialsIfMaterialImportModeIsNone: 0\n  additionalBone: 0\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Bridge/SafeBridge.prefab.meta",
+      "git_blob": "6e49d1df951cf369da5f9a95adb340091236a549",
+      "guid": "837869c64a267234a88e34027dcfbf56",
+      "exact_content": "fileFormatVersion: 2\nguid: 837869c64a267234a88e34027dcfbf56\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Crane/Crane.prefab.meta",
+      "git_blob": "5fbe77d920d6d22287fd21ffa065404fe487948e",
+      "guid": "a80308eb2adefe149ad85a16a562dcb2",
+      "exact_content": "fileFormatVersion: 2\nguid: a80308eb2adefe149ad85a16a562dcb2\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Crane/Model/Crane.fbx.meta",
+      "git_blob": "a65f1a6c4aff40d344c8717f0bdcccc6cbe2585f",
+      "guid": "a7ceaa54399da784ca1f5974f6b11cb8",
+      "exact_content": "fileFormatVersion: 2\nguid: a7ceaa54399da784ca1f5974f6b11cb8\nModelImporter:\n  serializedVersion: 22200\n  internalIDToNameTable: []\n  externalObjects:\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: CraneArm\n    second: {fileID: 2100000, guid: 8607a23ae8846fc48be9fb09769f3f9b, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: CraneCabinBig\n    second: {fileID: 2100000, guid: 001ee48cb3fb02a41927dd3253b28ab9, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: CraneCabingSmall\n    second: {fileID: 2100000, guid: e28be05ebbdcf67439d2745a6e60f6a7, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: CraneParts\n    second: {fileID: 2100000, guid: 1a3efd36f9246a445a87083bcce031e2, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: CraneSupport\n    second: {fileID: 2100000, guid: e80214fdfa1467145a38f3bafa1a3fcf, type: 2}\n  materials:\n    materialImportMode: 2\n    materialName: 0\n    materialSearch: 1\n    materialLocation: 1\n  animations:\n    legacyGenerateAnimations: 4\n    bakeSimulation: 0\n    resampleCurves: 1\n    optimizeGameObjects: 0\n    removeConstantScaleCurves: 0\n    motionNodeName: \n    rigImportErrors: \n    rigImportWarnings: \n    animationImportErrors: \n    animationImportWarnings: \n    animationRetargetingWarnings: \n    animationDoRetargetingWarnings: 0\n    importAnimatedCustomProperties: 0\n    importConstraints: 0\n    animationCompression: 1\n    animationRotationError: 0.5\n    animationPositionError: 0.5\n    animationScaleError: 0.5\n    animationWrapMode: 0\n    extraExposedTransformPaths: []\n    extraUserProperties: []\n    clipAnimations: []\n    isReadable: 1\n  meshes:\n    lODScreenPercentages: []\n    globalScale: 1\n    meshCompression: 1\n    addColliders: 0\n    useSRGBMaterialColor: 1\n    sortHierarchyByName: 1\n    importPhysicalCameras: 1\n    importVisibility: 0\n    importBlendShapes: 0\n    importCameras: 0\n    importLights: 0\n    nodeNameCollisionStrategy: 1\n    fileIdsGeneration: 2\n    swapUVChannels: 0\n    generateSecondaryUV: 0\n    useFileUnits: 1\n    keepQuads: 0\n    weldVertices: 1\n    bakeAxisConversion: 0\n    preserveHierarchy: 0\n    skinWeightsMode: 0\n    maxBonesPerVertex: 4\n    minBoneWeight: 0.001\n    optimizeBones: 1\n    meshOptimizationFlags: -1\n    indexFormat: 0\n    secondaryUVAngleDistortion: 8\n    secondaryUVAreaDistortion: 15.000001\n    secondaryUVHardAngle: 88\n    secondaryUVMarginMethod: 1\n    secondaryUVMinLightmapResolution: 40\n    secondaryUVMinObjectScale: 1\n    secondaryUVPackMargin: 4\n    useFileScale: 1\n    strictVertexDataChecks: 0\n  tangentSpace:\n    normalSmoothAngle: 60\n    normalImportMode: 0\n    tangentImportMode: 3\n    normalCalculationMode: 4\n    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0\n    blendShapeNormalImportMode: 1\n    normalSmoothingSource: 0\n  referencedClips: []\n  importAnimation: 0\n  humanDescription:\n    serializedVersion: 3\n    human: []\n    skeleton: []\n    armTwist: 0.5\n    foreArmTwist: 0.5\n    upperLegTwist: 0.5\n    legTwist: 0.5\n    armStretch: 0.05\n    legStretch: 0.05\n    feetSpacing: 0\n    globalScale: 1\n    rootMotionBoneName: \n    hasTranslationDoF: 0\n    hasExtraRoot: 0\n    skeletonHasParents: 1\n  lastHumanDescriptionAvatarSource: {instanceID: 0}\n  autoGenerateAvatarMappingIfUnspecified: 1\n  animationType: 2\n  humanoidOversampling: 1\n  avatarSetup: 0\n  addHumanoidExtraRootOnlyWhenUsingAvatar: 1\n  importBlendShapeDeformPercent: 0\n  remapMaterialsIfMaterialImportModeIsNone: 0\n  additionalBone: 0\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Decoration/Models/RadioTower.fbx.meta",
+      "git_blob": "bbe1d90661b57930518a7fa7f656f2eabc66d66d",
+      "guid": "e40163bf72c03a7489ca389897c27f32",
+      "exact_content": "fileFormatVersion: 2\nguid: e40163bf72c03a7489ca389897c27f32\nModelImporter:\n  serializedVersion: 22200\n  internalIDToNameTable: []\n  externalObjects: {}\n  materials:\n    materialImportMode: 2\n    materialName: 0\n    materialSearch: 1\n    materialLocation: 1\n  animations:\n    legacyGenerateAnimations: 4\n    bakeSimulation: 0\n    resampleCurves: 1\n    optimizeGameObjects: 0\n    removeConstantScaleCurves: 0\n    motionNodeName: \n    rigImportErrors: \n    rigImportWarnings: \n    animationImportErrors: \n    animationImportWarnings: \n    animationRetargetingWarnings: \n    animationDoRetargetingWarnings: 0\n    importAnimatedCustomProperties: 0\n    importConstraints: 0\n    animationCompression: 1\n    animationRotationError: 0.5\n    animationPositionError: 0.5\n    animationScaleError: 0.5\n    animationWrapMode: 0\n    extraExposedTransformPaths: []\n    extraUserProperties: []\n    clipAnimations: []\n    isReadable: 0\n  meshes:\n    lODScreenPercentages: []\n    globalScale: 1\n    meshCompression: 0\n    addColliders: 0\n    useSRGBMaterialColor: 1\n    sortHierarchyByName: 1\n    importPhysicalCameras: 1\n    importVisibility: 0\n    importBlendShapes: 0\n    importCameras: 0\n    importLights: 0\n    nodeNameCollisionStrategy: 1\n    fileIdsGeneration: 2\n    swapUVChannels: 0\n    generateSecondaryUV: 0\n    useFileUnits: 1\n    keepQuads: 0\n    weldVertices: 1\n    bakeAxisConversion: 0\n    preserveHierarchy: 0\n    skinWeightsMode: 0\n    maxBonesPerVertex: 4\n    minBoneWeight: 0.001\n    optimizeBones: 1\n    meshOptimizationFlags: -1\n    indexFormat: 0\n    secondaryUVAngleDistortion: 8\n    secondaryUVAreaDistortion: 15.000001\n    secondaryUVHardAngle: 88\n    secondaryUVMarginMethod: 1\n    secondaryUVMinLightmapResolution: 40\n    secondaryUVMinObjectScale: 1\n    secondaryUVPackMargin: 4\n    useFileScale: 1\n    strictVertexDataChecks: 0\n  tangentSpace:\n    normalSmoothAngle: 60\n    normalImportMode: 0\n    tangentImportMode: 3\n    normalCalculationMode: 4\n    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0\n    blendShapeNormalImportMode: 1\n    normalSmoothingSource: 0\n  referencedClips: []\n  importAnimation: 0\n  humanDescription:\n    serializedVersion: 3\n    human: []\n    skeleton: []\n    armTwist: 0.5\n    foreArmTwist: 0.5\n    upperLegTwist: 0.5\n    legTwist: 0.5\n    armStretch: 0.05\n    legStretch: 0.05\n    feetSpacing: 0\n    globalScale: 1\n    rootMotionBoneName: \n    hasTranslationDoF: 0\n    hasExtraRoot: 0\n    skeletonHasParents: 1\n  lastHumanDescriptionAvatarSource: {instanceID: 0}\n  autoGenerateAvatarMappingIfUnspecified: 1\n  animationType: 0\n  humanoidOversampling: 1\n  avatarSetup: 0\n  addHumanoidExtraRootOnlyWhenUsingAvatar: 1\n  importBlendShapeDeformPercent: 0\n  remapMaterialsIfMaterialImportModeIsNone: 0\n  additionalBone: 0\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Decoration/Models/WaterTower.fbx.meta",
+      "git_blob": "ed62579ea8427ba5a8df0ddb8f7316bc6f667c4b",
+      "guid": "a41d541cb9aaf144f97226dcfba68b45",
+      "exact_content": "fileFormatVersion: 2\nguid: a41d541cb9aaf144f97226dcfba68b45\nModelImporter:\n  serializedVersion: 22200\n  internalIDToNameTable: []\n  externalObjects:\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: WaterTower\n    second: {fileID: 2100000, guid: 9a233b07835643344afb628e5734df1b, type: 2}\n  materials:\n    materialImportMode: 2\n    materialName: 0\n    materialSearch: 1\n    materialLocation: 1\n  animations:\n    legacyGenerateAnimations: 4\n    bakeSimulation: 0\n    resampleCurves: 1\n    optimizeGameObjects: 0\n    removeConstantScaleCurves: 0\n    motionNodeName: \n    rigImportErrors: \n    rigImportWarnings: \n    animationImportErrors: \n    animationImportWarnings: \n    animationRetargetingWarnings: \n    animationDoRetargetingWarnings: 0\n    importAnimatedCustomProperties: 0\n    importConstraints: 0\n    animationCompression: 1\n    animationRotationError: 0.5\n    animationPositionError: 0.5\n    animationScaleError: 0.5\n    animationWrapMode: 0\n    extraExposedTransformPaths: []\n    extraUserProperties: []\n    clipAnimations: []\n    isReadable: 0\n  meshes:\n    lODScreenPercentages: []\n    globalScale: 1\n    meshCompression: 2\n    addColliders: 0\n    useSRGBMaterialColor: 1\n    sortHierarchyByName: 1\n    importPhysicalCameras: 1\n    importVisibility: 0\n    importBlendShapes: 0\n    importCameras: 0\n    importLights: 0\n    nodeNameCollisionStrategy: 1\n    fileIdsGeneration: 2\n    swapUVChannels: 0\n    generateSecondaryUV: 0\n    useFileUnits: 1\n    keepQuads: 0\n    weldVertices: 1\n    bakeAxisConversion: 0\n    preserveHierarchy: 0\n    skinWeightsMode: 0\n    maxBonesPerVertex: 4\n    minBoneWeight: 0.001\n    optimizeBones: 1\n    meshOptimizationFlags: -1\n    indexFormat: 0\n    secondaryUVAngleDistortion: 8\n    secondaryUVAreaDistortion: 15.000001\n    secondaryUVHardAngle: 88\n    secondaryUVMarginMethod: 1\n    secondaryUVMinLightmapResolution: 40\n    secondaryUVMinObjectScale: 1\n    secondaryUVPackMargin: 4\n    useFileScale: 1\n    strictVertexDataChecks: 0\n  tangentSpace:\n    normalSmoothAngle: 60\n    normalImportMode: 0\n    tangentImportMode: 3\n    normalCalculationMode: 4\n    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0\n    blendShapeNormalImportMode: 1\n    normalSmoothingSource: 0\n  referencedClips: []\n  importAnimation: 0\n  humanDescription:\n    serializedVersion: 3\n    human: []\n    skeleton: []\n    armTwist: 0.5\n    foreArmTwist: 0.5\n    upperLegTwist: 0.5\n    legTwist: 0.5\n    armStretch: 0.05\n    legStretch: 0.05\n    feetSpacing: 0\n    globalScale: 1\n    rootMotionBoneName: \n    hasTranslationDoF: 0\n    hasExtraRoot: 0\n    skeletonHasParents: 1\n  lastHumanDescriptionAvatarSource: {instanceID: 0}\n  autoGenerateAvatarMappingIfUnspecified: 1\n  animationType: 0\n  humanoidOversampling: 1\n  avatarSetup: 0\n  addHumanoidExtraRootOnlyWhenUsingAvatar: 1\n  importBlendShapeDeformPercent: 0\n  remapMaterialsIfMaterialImportModeIsNone: 0\n  additionalBone: 0\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Decoration/RadioTower.prefab.meta",
+      "git_blob": "ed1d5b5ae623998278fc2a1ac130f1fa8f74de0c",
+      "guid": "302f922156e6fcc4f9df8fea106ad936",
+      "exact_content": "fileFormatVersion: 2\nguid: 302f922156e6fcc4f9df8fea106ad936\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Decoration/WaterTower.prefab.meta",
+      "git_blob": "b3478d1eac02c6d22775bc8a2dfd50186ba772bb",
+      "guid": "bda9c03d997b3a84ab50549257a92bad",
+      "exact_content": "fileFormatVersion: 2\nguid: bda9c03d997b3a84ab50549257a92bad\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/JimothyCabin/Decoration/BobbySnailCat/OxydeBobby.fbx.meta",
+      "git_blob": "e00d71447810fba12124f113f9a174fd4481beeb",
+      "guid": "0b2011cc764afc34d95436ce42d4f835",
+      "exact_content": "fileFormatVersion: 2\nguid: 0b2011cc764afc34d95436ce42d4f835\nModelImporter:\n  serializedVersion: 22200\n  internalIDToNameTable: []\n  externalObjects: {}\n  materials:\n    materialImportMode: 2\n    materialName: 0\n    materialSearch: 1\n    materialLocation: 1\n  animations:\n    legacyGenerateAnimations: 4\n    bakeSimulation: 0\n    resampleCurves: 1\n    optimizeGameObjects: 0\n    removeConstantScaleCurves: 0\n    motionNodeName: \n    rigImportErrors: \n    rigImportWarnings: \n    animationImportErrors: \n    animationImportWarnings: \n    animationRetargetingWarnings: \n    animationDoRetargetingWarnings: 0\n    importAnimatedCustomProperties: 0\n    importConstraints: 0\n    animationCompression: 1\n    animationRotationError: 0.5\n    animationPositionError: 0.5\n    animationScaleError: 0.5\n    animationWrapMode: 0\n    extraExposedTransformPaths: []\n    extraUserProperties: []\n    clipAnimations: []\n    isReadable: 0\n  meshes:\n    lODScreenPercentages: []\n    globalScale: 1\n    meshCompression: 0\n    addColliders: 0\n    useSRGBMaterialColor: 1\n    sortHierarchyByName: 1\n    importPhysicalCameras: 1\n    importVisibility: 0\n    importBlendShapes: 0\n    importCameras: 0\n    importLights: 0\n    nodeNameCollisionStrategy: 1\n    fileIdsGeneration: 2\n    swapUVChannels: 0\n    generateSecondaryUV: 0\n    useFileUnits: 1\n    keepQuads: 0\n    weldVertices: 1\n    bakeAxisConversion: 0\n    preserveHierarchy: 0\n    skinWeightsMode: 0\n    maxBonesPerVertex: 4\n    minBoneWeight: 0.001\n    optimizeBones: 1\n    meshOptimizationFlags: -1\n    indexFormat: 0\n    secondaryUVAngleDistortion: 8\n    secondaryUVAreaDistortion: 15.000001\n    secondaryUVHardAngle: 88\n    secondaryUVMarginMethod: 1\n    secondaryUVMinLightmapResolution: 40\n    secondaryUVMinObjectScale: 1\n    secondaryUVPackMargin: 4\n    useFileScale: 1\n    strictVertexDataChecks: 0\n  tangentSpace:\n    normalSmoothAngle: 60\n    normalImportMode: 0\n    tangentImportMode: 3\n    normalCalculationMode: 4\n    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0\n    blendShapeNormalImportMode: 1\n    normalSmoothingSource: 0\n  referencedClips: []\n  importAnimation: 0\n  humanDescription:\n    serializedVersion: 3\n    human: []\n    skeleton: []\n    armTwist: 0.5\n    foreArmTwist: 0.5\n    upperLegTwist: 0.5\n    legTwist: 0.5\n    armStretch: 0.05\n    legStretch: 0.05\n    feetSpacing: 0\n    globalScale: 1\n    rootMotionBoneName: \n    hasTranslationDoF: 0\n    hasExtraRoot: 1\n    skeletonHasParents: 1\n  lastHumanDescriptionAvatarSource: {instanceID: 0}\n  autoGenerateAvatarMappingIfUnspecified: 1\n  animationType: 0\n  humanoidOversampling: 1\n  avatarSetup: 0\n  addHumanoidExtraRootOnlyWhenUsingAvatar: 1\n  importBlendShapeDeformPercent: 1\n  remapMaterialsIfMaterialImportModeIsNone: 0\n  additionalBone: 0\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/JimothyCabin/Decoration/BobbySnailCat/OxydeBobby.prefab.meta",
+      "git_blob": "818db087089d0a3beb2f4b9051a6e04796b27c2b",
+      "guid": "df462f0ae7396094fb23763c4521c40f",
+      "exact_content": "fileFormatVersion: 2\nguid: df462f0ae7396094fb23763c4521c40f\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/JimothyCabin/Decoration/DoomsdayClock.prefab.meta",
+      "git_blob": "be4e54727faa83e7abd78a4309c465bf0c655d2a",
+      "guid": "d80fcfb0e89ef0a4ea6ce83c79e06803",
+      "exact_content": "fileFormatVersion: 2\nguid: d80fcfb0e89ef0a4ea6ce83c79e06803\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/JimothyCabin/Model/DoomsdayClock.fbx.meta",
+      "git_blob": "4e7346f6b05d7fb22325ee01fcb65a6e66ddeedf",
+      "guid": "0dacac463d3990342a8e1295f7f4fa51",
+      "exact_content": "fileFormatVersion: 2\nguid: 0dacac463d3990342a8e1295f7f4fa51\nModelImporter:\n  serializedVersion: 22200\n  internalIDToNameTable: []\n  externalObjects:\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: ClockGlass\n    second: {fileID: 2100000, guid: 1d13236abdf7391429d23e8e07785659, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: DoomsdayClock\n    second: {fileID: 2100000, guid: 657fad7ebf61e9b4c971ec9dec1ef4b5, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: SmallBitsClock\n    second: {fileID: 2100000, guid: 49e3d46a262fb8d43b7a244d8ceaf422, type: 2}\n  materials:\n    materialImportMode: 2\n    materialName: 0\n    materialSearch: 1\n    materialLocation: 1\n  animations:\n    legacyGenerateAnimations: 4\n    bakeSimulation: 0\n    resampleCurves: 1\n    optimizeGameObjects: 0\n    removeConstantScaleCurves: 0\n    motionNodeName: \n    rigImportErrors: \n    rigImportWarnings: \n    animationImportErrors: \n    animationImportWarnings: \n    animationRetargetingWarnings: \n    animationDoRetargetingWarnings: 0\n    importAnimatedCustomProperties: 0\n    importConstraints: 0\n    animationCompression: 1\n    animationRotationError: 0.5\n    animationPositionError: 0.5\n    animationScaleError: 0.5\n    animationWrapMode: 0\n    extraExposedTransformPaths: []\n    extraUserProperties: []\n    clipAnimations: []\n    isReadable: 0\n  meshes:\n    lODScreenPercentages: []\n    globalScale: 1\n    meshCompression: 0\n    addColliders: 0\n    useSRGBMaterialColor: 1\n    sortHierarchyByName: 1\n    importPhysicalCameras: 1\n    importVisibility: 0\n    importBlendShapes: 0\n    importCameras: 0\n    importLights: 0\n    nodeNameCollisionStrategy: 1\n    fileIdsGeneration: 2\n    swapUVChannels: 0\n    generateSecondaryUV: 0\n    useFileUnits: 1\n    keepQuads: 0\n    weldVertices: 1\n    bakeAxisConversion: 0\n    preserveHierarchy: 0\n    skinWeightsMode: 0\n    maxBonesPerVertex: 4\n    minBoneWeight: 0.001\n    optimizeBones: 1\n    meshOptimizationFlags: -1\n    indexFormat: 0\n    secondaryUVAngleDistortion: 8\n    secondaryUVAreaDistortion: 15.000001\n    secondaryUVHardAngle: 88\n    secondaryUVMarginMethod: 1\n    secondaryUVMinLightmapResolution: 40\n    secondaryUVMinObjectScale: 1\n    secondaryUVPackMargin: 4\n    useFileScale: 1\n    strictVertexDataChecks: 0\n  tangentSpace:\n    normalSmoothAngle: 60\n    normalImportMode: 0\n    tangentImportMode: 3\n    normalCalculationMode: 4\n    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0\n    blendShapeNormalImportMode: 1\n    normalSmoothingSource: 0\n  referencedClips: []\n  importAnimation: 0\n  humanDescription:\n    serializedVersion: 3\n    human: []\n    skeleton: []\n    armTwist: 0.5\n    foreArmTwist: 0.5\n    upperLegTwist: 0.5\n    legTwist: 0.5\n    armStretch: 0.05\n    legStretch: 0.05\n    feetSpacing: 0\n    globalScale: 1\n    rootMotionBoneName: \n    hasTranslationDoF: 0\n    hasExtraRoot: 0\n    skeletonHasParents: 1\n  lastHumanDescriptionAvatarSource: {instanceID: 0}\n  autoGenerateAvatarMappingIfUnspecified: 1\n  animationType: 0\n  humanoidOversampling: 1\n  avatarSetup: 0\n  addHumanoidExtraRootOnlyWhenUsingAvatar: 1\n  importBlendShapeDeformPercent: 1\n  remapMaterialsIfMaterialImportModeIsNone: 0\n  additionalBone: 0\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/MerchantStructure/MerchantBase.fbx.meta",
+      "git_blob": "be86de02d9bf11ba2c7ade41b2a3f45119dd8841",
+      "guid": "f469f9dc199594a41b1caff572c8f462",
+      "exact_content": "fileFormatVersion: 2\nguid: f469f9dc199594a41b1caff572c8f462\nModelImporter:\n  serializedVersion: 22200\n  internalIDToNameTable: []\n  externalObjects:\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: MerchantBase\n    second: {fileID: 2100000, guid: 230b9818bab0b28479616d7e1119cd41, type: 2}\n  materials:\n    materialImportMode: 2\n    materialName: 0\n    materialSearch: 1\n    materialLocation: 1\n  animations:\n    legacyGenerateAnimations: 4\n    bakeSimulation: 0\n    resampleCurves: 1\n    optimizeGameObjects: 0\n    removeConstantScaleCurves: 0\n    motionNodeName: \n    rigImportErrors: \n    rigImportWarnings: \n    animationImportErrors: \n    animationImportWarnings: \n    animationRetargetingWarnings: \n    animationDoRetargetingWarnings: 0\n    importAnimatedCustomProperties: 0\n    importConstraints: 0\n    animationCompression: 1\n    animationRotationError: 0.5\n    animationPositionError: 0.5\n    animationScaleError: 0.5\n    animationWrapMode: 0\n    extraExposedTransformPaths: []\n    extraUserProperties: []\n    clipAnimations: []\n    isReadable: 1\n  meshes:\n    lODScreenPercentages: []\n    globalScale: 1\n    meshCompression: 2\n    addColliders: 0\n    useSRGBMaterialColor: 1\n    sortHierarchyByName: 1\n    importPhysicalCameras: 1\n    importVisibility: 0\n    importBlendShapes: 0\n    importCameras: 0\n    importLights: 0\n    nodeNameCollisionStrategy: 1\n    fileIdsGeneration: 2\n    swapUVChannels: 0\n    generateSecondaryUV: 0\n    useFileUnits: 1\n    keepQuads: 0\n    weldVertices: 1\n    bakeAxisConversion: 0\n    preserveHierarchy: 0\n    skinWeightsMode: 0\n    maxBonesPerVertex: 4\n    minBoneWeight: 0.001\n    optimizeBones: 1\n    meshOptimizationFlags: -1\n    indexFormat: 0\n    secondaryUVAngleDistortion: 8\n    secondaryUVAreaDistortion: 15.000001\n    secondaryUVHardAngle: 88\n    secondaryUVMarginMethod: 1\n    secondaryUVMinLightmapResolution: 40\n    secondaryUVMinObjectScale: 1\n    secondaryUVPackMargin: 4\n    useFileScale: 1\n    strictVertexDataChecks: 0\n  tangentSpace:\n    normalSmoothAngle: 60\n    normalImportMode: 0\n    tangentImportMode: 3\n    normalCalculationMode: 4\n    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0\n    blendShapeNormalImportMode: 1\n    normalSmoothingSource: 0\n  referencedClips: []\n  importAnimation: 0\n  humanDescription:\n    serializedVersion: 3\n    human: []\n    skeleton: []\n    armTwist: 0.5\n    foreArmTwist: 0.5\n    upperLegTwist: 0.5\n    legTwist: 0.5\n    armStretch: 0.05\n    legStretch: 0.05\n    feetSpacing: 0\n    globalScale: 1\n    rootMotionBoneName: \n    hasTranslationDoF: 0\n    hasExtraRoot: 0\n    skeletonHasParents: 1\n  lastHumanDescriptionAvatarSource: {instanceID: 0}\n  autoGenerateAvatarMappingIfUnspecified: 1\n  animationType: 0\n  humanoidOversampling: 1\n  avatarSetup: 0\n  addHumanoidExtraRootOnlyWhenUsingAvatar: 1\n  importBlendShapeDeformPercent: 0\n  remapMaterialsIfMaterialImportModeIsNone: 0\n  additionalBone: 0\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/SellingSally/Model/SellingSally.fbx.meta",
+      "git_blob": "e99425241e6be69e9dd5ac7bb5193c89514a1acc",
+      "guid": "617da45b7f288364d838151c3e9edfbb",
+      "exact_content": "fileFormatVersion: 2\nguid: 617da45b7f288364d838151c3e9edfbb\nModelImporter:\n  serializedVersion: 22200\n  internalIDToNameTable: []\n  externalObjects:\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: ConceretePlatform\n    second: {fileID: 2100000, guid: 9c5185a917afdcf48b505bfdd50ad046, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: SallyMain\n    second: {fileID: 2100000, guid: 483ed9cb934333a4e8087b014b5f4b8e, type: 2}\n  - first:\n      type: UnityEngine:Material\n      assembly: UnityEngine.CoreModule\n      name: SallyParts\n    second: {fileID: 2100000, guid: b336ca93723d25842b5112eca5835ef8, type: 2}\n  materials:\n    materialImportMode: 2\n    materialName: 0\n    materialSearch: 1\n    materialLocation: 1\n  animations:\n    legacyGenerateAnimations: 4\n    bakeSimulation: 0\n    resampleCurves: 1\n    optimizeGameObjects: 0\n    removeConstantScaleCurves: 0\n    motionNodeName: \n    rigImportErrors: \n    rigImportWarnings: \n    animationImportErrors: \n    animationImportWarnings: \n    animationRetargetingWarnings: \n    animationDoRetargetingWarnings: 0\n    importAnimatedCustomProperties: 0\n    importConstraints: 0\n    animationCompression: 1\n    animationRotationError: 0.5\n    animationPositionError: 0.5\n    animationScaleError: 0.5\n    animationWrapMode: 0\n    extraExposedTransformPaths: []\n    extraUserProperties: []\n    clipAnimations:\n    - serializedVersion: 16\n      name: LoaderClose\n      takeName: Armature|LoaderClose\n      internalID: 8375235981050742140\n      firstFrame: 0\n      lastFrame: 15\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    - serializedVersion: 16\n      name: LoaderOpen\n      takeName: Armature|LoaderOpen\n      internalID: 2499395931302577832\n      firstFrame: 0\n      lastFrame: 11\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    - serializedVersion: 16\n      name: LoaderOpenIdle\n      takeName: Armature|LoaderOpenIdle\n      internalID: -5371102301007886550\n      firstFrame: 0\n      lastFrame: 59\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    - serializedVersion: 16\n      name: SallyIdle\n      takeName: Armature|SallyIdle\n      internalID: 730274280039273889\n      firstFrame: 0\n      lastFrame: 59\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    - serializedVersion: 16\n      name: SallyShootSelling\n      takeName: Armature|SallyShootSelling\n      internalID: 7590789290413557718\n      firstFrame: 0\n      lastFrame: 741\n      wrapMode: 0\n      orientationOffsetY: 0\n      level: 0\n      cycleOffset: 0\n      loop: 0\n      hasAdditiveReferencePose: 0\n      loopTime: 0\n      loopBlend: 0\n      loopBlendOrientation: 0\n      loopBlendPositionY: 0\n      loopBlendPositionXZ: 0\n      keepOriginalOrientation: 0\n      keepOriginalPositionY: 1\n      keepOriginalPositionXZ: 0\n      heightFromFeet: 0\n      mirror: 0\n      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000\n      curves: []\n      events: []\n      transformMask: []\n      maskType: 3\n      maskSource: {instanceID: 0}\n      additiveReferencePoseFrame: 0\n    isReadable: 1\n  meshes:\n    lODScreenPercentages: []\n    globalScale: 1\n    meshCompression: 1\n    addColliders: 0\n    useSRGBMaterialColor: 1\n    sortHierarchyByName: 1\n    importPhysicalCameras: 1\n    importVisibility: 0\n    importBlendShapes: 0\n    importCameras: 0\n    importLights: 0\n    nodeNameCollisionStrategy: 1\n    fileIdsGeneration: 2\n    swapUVChannels: 0\n    generateSecondaryUV: 0\n    useFileUnits: 1\n    keepQuads: 0\n    weldVertices: 1\n    bakeAxisConversion: 0\n    preserveHierarchy: 0\n    skinWeightsMode: 0\n    maxBonesPerVertex: 4\n    minBoneWeight: 0.001\n    optimizeBones: 1\n    meshOptimizationFlags: -1\n    indexFormat: 0\n    secondaryUVAngleDistortion: 8\n    secondaryUVAreaDistortion: 15.000001\n    secondaryUVHardAngle: 88\n    secondaryUVMarginMethod: 1\n    secondaryUVMinLightmapResolution: 40\n    secondaryUVMinObjectScale: 1\n    secondaryUVPackMargin: 4\n    useFileScale: 1\n    strictVertexDataChecks: 0\n  tangentSpace:\n    normalSmoothAngle: 60\n    normalImportMode: 0\n    tangentImportMode: 3\n    normalCalculationMode: 4\n    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0\n    blendShapeNormalImportMode: 1\n    normalSmoothingSource: 0\n  referencedClips: []\n  importAnimation: 0\n  humanDescription:\n    serializedVersion: 3\n    human: []\n    skeleton: []\n    armTwist: 0.5\n    foreArmTwist: 0.5\n    upperLegTwist: 0.5\n    legTwist: 0.5\n    armStretch: 0.05\n    legStretch: 0.05\n    feetSpacing: 0\n    globalScale: 1\n    rootMotionBoneName: \n    hasTranslationDoF: 0\n    hasExtraRoot: 0\n    skeletonHasParents: 1\n  lastHumanDescriptionAvatarSource: {instanceID: 0}\n  autoGenerateAvatarMappingIfUnspecified: 1\n  animationType: 2\n  humanoidOversampling: 1\n  avatarSetup: 0\n  addHumanoidExtraRootOnlyWhenUsingAvatar: 1\n  importBlendShapeDeformPercent: 0\n  remapMaterialsIfMaterialImportModeIsNone: 0\n  additionalBone: 0\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/SellingSally/SellingSally.prefab.meta",
+      "git_blob": "dbc867cea77c5d1ad53f23a944585e8c84afa3e4",
+      "guid": "e4efbd87b159f874696f209f5debefa2",
+      "exact_content": "fileFormatVersion: 2\nguid: e4efbd87b159f874696f209f5debefa2\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+      "matches_terrain_source_group": true
+    }
+  ],
+  "inspected_sources": [
+    {
+      "guid": "62251f173dbdf2c4eb66b14199b28043",
+      "terrain_instances": 59,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/MiscShiz/OffMeshLink.prefab",
+      "asset_git_blob": "10e9ef9c55bfe82b732b09729eaf6e8585d3a645",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/MiscShiz/OffMeshLink.prefab.meta",
+      "meta_git_blob": "e160bbcfc9f6d95ff26952447baf096b61425585",
+      "meta_git_blob_verified": true,
+      "asset_kind": "UNITY_PREFAB_YAML",
+      "serialized_character_count": 2340,
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      },
+      "script_guids": [],
+      "nested_source_guids": [],
+      "lfs": null
+    },
+    {
+      "guid": "4fbfa31359a2b8c4e9e15ca705546b74",
+      "terrain_instances": 1,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/HachimansGift/GiftForGuardsman.prefab",
+      "asset_git_blob": "8c0ff3d3f52cdf68328a4a8a7dfb3c6ac47c2fa0",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/HachimansGift/GiftForGuardsman.prefab.meta",
+      "meta_git_blob": "196061f544100a5e7e5a0311c4191ae7373775a1",
+      "meta_git_blob_verified": true,
+      "asset_kind": "UNITY_PREFAB_YAML",
+      "serialized_character_count": 30429,
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      },
+      "script_guids": [
+        "507293d35d7a13e5b9ca9bb60e082e11",
+        "d5a57f767e5e46a458fc5d3c628d0cbb",
+        "d5506d85c0f9415f35854e714dadb5c2",
+        "7172f1490231bfd4598274026d5a7332",
+        "1e3fdca004f2d45fe8abbed571a8abd5"
+      ],
+      "nested_source_guids": [
+        "a42f00c9bc1f1cd4cb061eab2b0ac37a",
+        "7f34442d5c326764a9ad80d9f24d350f"
+      ],
+      "lfs": null
+    },
+    {
+      "guid": "bf118ce4bee444c48b81119847abdd6c",
+      "terrain_instances": 1,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/JimothyNpc/Jimothybabyboy.prefab",
+      "asset_git_blob": "0641d80884673730023fbcc9cb6706080ef88d9d",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/JimothyNpc/Jimothybabyboy.prefab.meta",
+      "meta_git_blob": "b8aab74daa47cea1a681dbddbe5598c7c7bd248a",
+      "meta_git_blob_verified": true,
+      "asset_kind": "UNITY_PREFAB_YAML",
+      "serialized_character_count": 41498,
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      },
+      "script_guids": [
+        "d5a57f767e5e46a458fc5d3c628d0cbb",
+        "e8d0727d5ae3244e3b569694d3912374",
+        "7172f1490231bfd4598274026d5a7332",
+        "507293d35d7a13e5b9ca9bb60e082e11"
+      ],
+      "nested_source_guids": [],
+      "lfs": null
+    },
+    {
+      "guid": "c48d3516e654cef4da603caa740245f0",
+      "terrain_instances": 11,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Spawners/CratesSpawn.prefab",
+      "asset_git_blob": "2a93e24b1c7cae100d59ceb2ef39eb3951fa2a28",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Spawners/CratesSpawn.prefab.meta",
+      "meta_git_blob": "19532c6dda3e34cf113e791bd58bedd3cd42c85e",
+      "meta_git_blob_verified": true,
+      "asset_kind": "UNITY_PREFAB_YAML",
+      "serialized_character_count": 2520,
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      },
+      "script_guids": [
+        "b821795baeb020545a00803c13a7b7c0",
+        "d5a57f767e5e46a458fc5d3c628d0cbb"
+      ],
+      "nested_source_guids": [],
+      "lfs": null
+    },
+    {
+      "guid": "837869c64a267234a88e34027dcfbf56",
+      "terrain_instances": 1,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Bridge/SafeBridge.prefab",
+      "asset_git_blob": "bbe435f93fec926efc352f29934d85b616bad6f3",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Bridge/SafeBridge.prefab.meta",
+      "meta_git_blob": "6e49d1df951cf369da5f9a95adb340091236a549",
+      "meta_git_blob_verified": true,
+      "asset_kind": "UNITY_PREFAB_YAML",
+      "serialized_character_count": 3808,
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      },
+      "script_guids": [],
+      "nested_source_guids": [
+        "f935b37b148639e41914c1366e74be6a"
+      ],
+      "lfs": null
+    },
+    {
+      "guid": "a80308eb2adefe149ad85a16a562dcb2",
+      "terrain_instances": 1,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Crane/Crane.prefab",
+      "asset_git_blob": "6cbc157667149cc8b3abacbd84d1f4b4152b73d6",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Crane/Crane.prefab.meta",
+      "meta_git_blob": "5fbe77d920d6d22287fd21ffa065404fe487948e",
+      "meta_git_blob_verified": true,
+      "asset_kind": "UNITY_PREFAB_YAML",
+      "serialized_character_count": 95684,
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      },
+      "script_guids": [
+        "7172f1490231bfd4598274026d5a7332",
+        "000ae222f5a7f7c7cee5ab5298053935",
+        "507293d35d7a13e5b9ca9bb60e082e11",
+        "d5a57f767e5e46a458fc5d3c628d0cbb",
+        "1e3fdca004f2d45fe8abbed571a8abd5",
+        "35e95dc5ff2b64380880dd7ac5922847"
+      ],
+      "nested_source_guids": [
+        "e9c8a995ff29cd34f9d4e98d646d9cb6",
+        "7fc3884af2ad97b49ad6e8c07a374cfd",
+        "bdba9a2c03100664886827b6c039008d",
+        "7c4c76117c6eed74f95157783f0c3862"
+      ],
+      "lfs": null
+    },
+    {
+      "guid": "302f922156e6fcc4f9df8fea106ad936",
+      "terrain_instances": 4,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Decoration/RadioTower.prefab",
+      "asset_git_blob": "353de4618a74c8c3a7425a43637731bc1d263059",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Decoration/RadioTower.prefab.meta",
+      "meta_git_blob": "ed1d5b5ae623998278fc2a1ac130f1fa8f74de0c",
+      "meta_git_blob_verified": true,
+      "asset_kind": "UNITY_PREFAB_YAML",
+      "serialized_character_count": 6429,
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      },
+      "script_guids": [],
+      "nested_source_guids": [],
+      "lfs": null
+    },
+    {
+      "guid": "bda9c03d997b3a84ab50549257a92bad",
+      "terrain_instances": 7,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Decoration/WaterTower.prefab",
+      "asset_git_blob": "069a3ded44f0e67c11c2cdcf480ffcf6e5c6d14e",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Decoration/WaterTower.prefab.meta",
+      "meta_git_blob": "b3478d1eac02c6d22775bc8a2dfd50186ba772bb",
+      "meta_git_blob_verified": true,
+      "asset_kind": "UNITY_PREFAB_YAML",
+      "serialized_character_count": 7432,
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      },
+      "script_guids": [
+        "1e3fdca004f2d45fe8abbed571a8abd5"
+      ],
+      "nested_source_guids": [
+        "ff93510026b26594e8bd9d737599bde3"
+      ],
+      "lfs": null
+    },
+    {
+      "guid": "df462f0ae7396094fb23763c4521c40f",
+      "terrain_instances": 1,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/JimothyCabin/Decoration/BobbySnailCat/OxydeBobby.prefab",
+      "asset_git_blob": "9a6579c7782e8a0be70515f56965e80ea158c6b0",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/JimothyCabin/Decoration/BobbySnailCat/OxydeBobby.prefab.meta",
+      "meta_git_blob": "818db087089d0a3beb2f4b9051a6e04796b27c2b",
+      "meta_git_blob_verified": true,
+      "asset_kind": "UNITY_PREFAB_YAML",
+      "serialized_character_count": 8658,
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      },
+      "script_guids": [
+        "3c36d0a92cbb1f26a39169ef0eae393a"
+      ],
+      "nested_source_guids": [],
+      "lfs": null
+    },
+    {
+      "guid": "d80fcfb0e89ef0a4ea6ce83c79e06803",
+      "terrain_instances": 1,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/JimothyCabin/Decoration/DoomsdayClock.prefab",
+      "asset_git_blob": "c706b1c555911f728682c7fd6438c0d44b60554e",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/JimothyCabin/Decoration/DoomsdayClock.prefab.meta",
+      "meta_git_blob": "be4e54727faa83e7abd78a4309c465bf0c655d2a",
+      "meta_git_blob_verified": true,
+      "asset_kind": "UNITY_PREFAB_YAML",
+      "serialized_character_count": 10124,
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      },
+      "script_guids": [
+        "b821795baeb020545a00803c13a7b7c0"
+      ],
+      "nested_source_guids": [],
+      "lfs": null
+    },
+    {
+      "guid": "f469f9dc199594a41b1caff572c8f462",
+      "terrain_instances": 1,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/MerchantStructure/MerchantBase.fbx",
+      "asset_git_blob": "6b5c6728291d52db119e97637fb58e16d5853410",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/MerchantStructure/MerchantBase.fbx.meta",
+      "meta_git_blob": "be86de02d9bf11ba2c7ade41b2a3f45119dd8841",
+      "meta_git_blob_verified": true,
+      "asset_kind": "FBX_MODEL_LFS_POINTER",
+      "serialized_character_count": 130,
+      "entrance_literal_hits": null,
+      "script_guids": [],
+      "nested_source_guids": [],
+      "lfs": {
+        "pointer": "version https://git-lfs.github.com/spec/v1\noid sha256:025e67b8937de7b21782230774de0c471bf1d64e099652ae62bd9863861181e5\nsize 29180\n",
+        "oid_sha256": "025e67b8937de7b21782230774de0c471bf1d64e099652ae62bd9863861181e5",
+        "size": 29180,
+        "payload_read": false
+      }
+    },
+    {
+      "guid": "e4efbd87b159f874696f209f5debefa2",
+      "terrain_instances": 1,
+      "asset_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/SellingSally/SellingSally.prefab",
+      "asset_git_blob": "93a13e743f92f9813dc4132bb9dfce065e1d5d3a",
+      "asset_git_blob_verified": true,
+      "meta_path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/SellingSally/SellingSally.prefab.meta",
+      "meta_git_blob": "dbc867cea77c5d1ad53f23a944585e8c84afa3e4",
+      "meta_git_blob_verified": true,
+      "asset_kind": "UNITY_PREFAB_YAML",
+      "serialized_character_count": 39809,
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      },
+      "script_guids": [
+        "507293d35d7a13e5b9ca9bb60e082e11",
+        "7172f1490231bfd4598274026d5a7332",
+        "3c36d0a92cbb1f26a39169ef0eae393a",
+        "d5a57f767e5e46a458fc5d3c628d0cbb",
+        "e8d0727d5ae3244e3b569694d3912374"
+      ],
+      "nested_source_guids": [
+        "617da45b7f288364d838151c3e9edfbb"
+      ],
+      "lfs": null
+    }
+  ],
+  "nested_edges": [
+    {
+      "parent_guid": "4fbfa31359a2b8c4e9e15ca705546b74",
+      "parent_asset": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/HachimansGift/GiftForGuardsman.prefab",
+      "child_guid": "a42f00c9bc1f1cd4cb061eab2b0ac37a",
+      "child_resolution": {
+        "source": "C3E2C_META",
+        "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/HachimansGift/Model/GiftForGuardsman.fbx",
+        "blob": "c22a19be7ba3c62dcb535096eba8e446fb3a9cce"
+      },
+      "child_payload_inspected_this_segment": false,
+      "child_instance_name_overrides": [
+        "GiftForGuardsman"
+      ]
+    },
+    {
+      "parent_guid": "4fbfa31359a2b8c4e9e15ca705546b74",
+      "parent_asset": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/HachimansGift/GiftForGuardsman.prefab",
+      "child_guid": "7f34442d5c326764a9ad80d9f24d350f",
+      "child_resolution": null,
+      "child_payload_inspected_this_segment": false,
+      "child_instance_name_overrides": [
+        "HachimansNote"
+      ]
+    },
+    {
+      "parent_guid": "837869c64a267234a88e34027dcfbf56",
+      "parent_asset": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Bridge/SafeBridge.prefab",
+      "child_guid": "f935b37b148639e41914c1366e74be6a",
+      "child_resolution": {
+        "source": "C3E2C_META",
+        "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Bridge/Model/SafeBridge.fbx",
+        "blob": "d79743bed904cd39a4e6f2a016314c9e7b312ba5"
+      },
+      "child_payload_inspected_this_segment": false,
+      "child_instance_name_overrides": [
+        "SafeBridge"
+      ]
+    },
+    {
+      "parent_guid": "a80308eb2adefe149ad85a16a562dcb2",
+      "parent_asset": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Crane/Crane.prefab",
+      "child_guid": "e9c8a995ff29cd34f9d4e98d646d9cb6",
+      "child_resolution": null,
+      "child_payload_inspected_this_segment": false,
+      "child_instance_name_overrides": [
+        "Cranecreteblock"
+      ]
+    },
+    {
+      "parent_guid": "a80308eb2adefe149ad85a16a562dcb2",
+      "parent_asset": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Crane/Crane.prefab",
+      "child_guid": "7fc3884af2ad97b49ad6e8c07a374cfd",
+      "child_resolution": {
+        "source": "C3E2A",
+        "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/MiscShiz/Ladder1.5x (2) Tall.prefab",
+        "blob": "2dbd3dd0a95c4b3c65d693e58504b3b23faddd29"
+      },
+      "child_payload_inspected_this_segment": false,
+      "child_instance_name_overrides": [
+        "Ladder1.5x (2) Tall (1)",
+        "Ladder1.5x (2) Tall",
+        "Ladder1.5x (2) Tall (2)",
+        "Ladder1.5x (2) Tall (3)"
+      ]
+    },
+    {
+      "parent_guid": "a80308eb2adefe149ad85a16a562dcb2",
+      "parent_asset": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Crane/Crane.prefab",
+      "child_guid": "bdba9a2c03100664886827b6c039008d",
+      "child_resolution": null,
+      "child_payload_inspected_this_segment": false,
+      "child_instance_name_overrides": [
+        "CraneSideLadder"
+      ]
+    },
+    {
+      "parent_guid": "a80308eb2adefe149ad85a16a562dcb2",
+      "parent_asset": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Crane/Crane.prefab",
+      "child_guid": "7c4c76117c6eed74f95157783f0c3862",
+      "child_resolution": null,
+      "child_payload_inspected_this_segment": false,
+      "child_instance_name_overrides": [
+        "Light"
+      ]
+    },
+    {
+      "parent_guid": "bda9c03d997b3a84ab50549257a92bad",
+      "parent_asset": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/Decoration/WaterTower.prefab",
+      "child_guid": "ff93510026b26594e8bd9d737599bde3",
+      "child_resolution": null,
+      "child_payload_inspected_this_segment": false,
+      "child_instance_name_overrides": [
+        "WaterTowerCollider"
+      ]
+    },
+    {
+      "parent_guid": "e4efbd87b159f874696f209f5debefa2",
+      "parent_asset": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/SellingSally/SellingSally.prefab",
+      "child_guid": "617da45b7f288364d838151c3e9edfbb",
+      "child_resolution": {
+        "source": "C3E2C_META",
+        "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/SellingSally/Model/SellingSally.fbx",
+        "blob": "3479181918d341e1d1c8eb6920131d9a146bd54d"
+      },
+      "child_payload_inspected_this_segment": false,
+      "child_instance_name_overrides": [
+        "SellingSally"
+      ]
+    }
+  ],
+  "coverage": {
+    "terrain_source_groups": 192,
+    "previously_source_resolved": 14,
+    "newly_source_resolved": 12,
+    "source_resolved_total": 26,
+    "remaining_source_unresolved": 166,
+    "new_prefab_yaml_inspected": 11,
+    "new_model_lfs_pointer_only": 1,
+    "full_topology_closure": false
+  },
+  "conclusions": {
+    "new_direct_serialized_entrance_fields": 0,
+    "entrance_count_proven": false,
+    "entrance_ids_proven": false,
+    "pairing_proven": false,
+    "topology_safety_proven": false,
+    "supported_selection_pairings": 46,
+    "authoritative_matrix_changed": false
+  },
+  "next_bounded_action": "C3E2D: resolve the five unbound nested prefab/model references recorded in nested_edges (HachimansNote, Cranecreteblock, CraneSideLadder, Light, WaterTowerCollider), inspect resolved text composition where available, and distinguish nested-child resolution from the 192 terrain-root GUID coverage."
+}
