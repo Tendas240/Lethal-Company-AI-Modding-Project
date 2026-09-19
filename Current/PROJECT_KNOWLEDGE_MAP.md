@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
 **Current State:** `Current/00_CURRENT_STATE.md`
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
-**Last-Validated:** 2026-09-18
+**Last-Validated:** 2026-09-19
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -40,7 +40,7 @@ Acceptance authority: `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_E
 
 The targeted LC Office camera-render A/B remains supplied by completed diagnostic-only S1.42AJ-DIAG2 evidence. The later LC Office Scrap Quantity/Distribution Investigation is complete with no gameplay delta under `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`. S1.42AK remains accepted/latest and unchanged.
 
-**Universal Interior Viability / Equal Availability is the selected scope.** Phases A, B1 and B2 are complete. Phase B3 is complete under `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md` with its full machine matrix in `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.csv`. The 30×53 universe contains 1,590 cells: 662 `VIABLE_EQUAL_100`, 14 `AUTHOR_OR_OWNER_HARD_BLOCK`, 0 `CONFIG_GAP`, 0 `KNOWN_TECHNICAL_RESTRICTION`, and 914 `NOT_YET_PROVEN`. Offense is the only fully observed row; both External target moons remain fully unproven. `VIABLE_EQUAL_100` is availability/effective-weight evidence, not generation/traversal proof. The accepted S1.42AB normalizer remains unchanged. No gameplay candidate, diagnostic target or runtime test is armed; `BuildSpecs/current.json` remains disabled and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`. The next action is Phase C compatibility-proof planning and prioritization defined by `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
+**Universal Interior Viability / Equal Availability is the selected scope.** Phases A through B3 are complete. Phase C1 is complete under `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`: trusted existing runtime evidence gives 15 current selectable interiors Offense generation plus recorded player enter/exit, 4 more generation/tile/entrance-pair evidence only, and leaves 34 without positive actual-generation proof in the conservative scan. The 30×53 Phase-B3 availability matrix remains unchanged at 662 `VIABLE_EQUAL_100`, 14 `AUTHOR_OR_OWNER_HARD_BLOCK`, 0 `CONFIG_GAP`, 0 `KNOWN_TECHNICAL_RESTRICTION`, and 914 `NOT_YET_PROVEN`. C1 also records unresolved routing/NavMesh proof obligations rather than promoting them to technical restrictions. No gameplay candidate, diagnostic target or runtime test is armed; `BuildSpecs/current.json` remains disabled and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`. The next action is Phase C2 owner-hard-block technical reason extraction defined by `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
 
 ## Authority rule
 

@@ -4,8 +4,8 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`  
-**Last-Validated:** 2026-09-18
+**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`, `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`  
+**Last-Validated:** 2026-09-19
 
 ## Accepted gameplay baseline
 
@@ -46,7 +46,7 @@ The next selected independent scope is **Universal Interior Viability / Equal Av
 
 The accepted S1.42AB normalizer remains unchanged: it equalizes every positive viable rarity to `100` only after LLL viability filtering. The selected scope therefore targets the earlier viability/availability layer, not the accepted weighting layer.
 
-Phases A, B1 and B2 are complete. Phase B3 is complete under `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md` with the complete machine matrix in `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.csv`. The fixed 30×53 universe contains 1,590 cells: 662 `VIABLE_EQUAL_100`, 14 `AUTHOR_OR_OWNER_HARD_BLOCK`, 0 `CONFIG_GAP`, 0 `KNOWN_TECHNICAL_RESTRICTION`, and 914 `NOT_YET_PROVEN`. Exact Offense is the only fully observed row. The two External target moons remain fully unproven, and Shatteredrooms' Experimentation/Embrion owner restrictions remain preserved pending technical proof.
+Phases A, B1, B2 and B3 are complete. Phase C1 is complete under `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`. The fixed 30×53 availability matrix remains unchanged at 1,590 cells: 662 `VIABLE_EQUAL_100`, 14 `AUTHOR_OR_OWNER_HARD_BLOCK`, 0 `CONFIG_GAP`, 0 `KNOWN_TECHNICAL_RESTRICTION`, and 914 `NOT_YET_PROVEN`. C1 mines existing technical runtime proof separately: 15 interiors have Offense generation plus recorded player enter/exit, 4 more have generation/tile/entrance-pair evidence only, and 34 have no trusted actual-generation proof in the conservative scan. Existing proof is Offense-only and therefore does not establish moon-side compatibility on the other 29 target moons.
 
 ## Live execution state
 
@@ -55,14 +55,14 @@ Phases A, B1 and B2 are complete. Phase B3 is complete under `Current/167_S1.42A
 - Active gameplay candidate: **none**.
 - Active diagnostic runtime target: **none**.
 - Runtime test outstanding: **no**.
-- Selected scope: **Universal Interior Viability / Equal Availability — Phase B3 complete / Phase C compatibility proof outstanding**.
+- Selected scope: **Universal Interior Viability / Equal Availability — Phase C1 complete / Phase C2 owner-hard-block reason analysis outstanding**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
 - No successor build or runtime test is armed.
 
 ## Exact next project action
 
-Phase C: plan and prioritize compatibility proof for the 914 `NOT_YET_PROVEN` cells and 14 `AUTHOR_OR_OWNER_HARD_BLOCK` cells. Mine existing repository evidence first for entrance/exit pairing, generation/traversal, door/socket geometry, elevators/special traversal, routing/NavMesh and duplicate-registration safety, then identify only the cells that genuinely require targeted runtime proof. No universal override, gameplay build or runtime test is authorized yet.
+Phase C2: extract and reconcile the technical/author reason for the 14 current `AUTHOR_OR_OWNER_HARD_BLOCK` cells before any override is proposed. Start with the 12 Offense owner-rejected flows plus Shatteredrooms × Experimentation and × Embrion. Use package/config/source evidence to distinguish explicit compatibility safeguards from author balancing/default targeting or unexplained owner exclusions. No universal override, gameplay build or runtime test is authorized yet.
 
 ## Permanent Gale workflow
 
