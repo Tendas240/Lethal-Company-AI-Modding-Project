@@ -1,6 +1,6 @@
 {
   "schema_version": 8,
-  "updated": "2026-09-18",
+  "updated": "2026-09-19",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "game": "Lethal Company V81",
@@ -44,13 +44,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "SELECTED_PHASE_B3_MATRIX_COMPLETE_PHASE_C_COMPATIBILITY_PROOF_OUTSTANDING",
+    "status": "SELECTED_PHASE_C1_COMPLETE_PHASE_C2_OWNER_HARD_BLOCK_REASON_ANALYSIS_OUTSTANDING",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "Phases A, B1, B2 and B3 are complete. The authoritative 30 x 53 matrix contains 1,590 cells: 662 VIABLE_EQUAL_100, 14 AUTHOR_OR_OWNER_HARD_BLOCK, 0 CONFIG_GAP, 0 KNOWN_TECHNICAL_RESTRICTION and 914 NOT_YET_PROVEN. The 22 direct LLL Vanilla:100,Custom:100 flows plus Black Mesa's native lethal_company:vanilla/custom rule establish 23 equal-weight interiors on each Vanilla/Custom target moon; exact Offense runtime expands that row to 41 viable plus 12 owner hard blocks. Shatteredrooms x Experimentation and x Embrion are the two additional explicit owner hard blocks. Both External target moons, Black Mesa and Oxyde, remain fully NOT_YET_PROVEN because the broad Vanilla/Custom rules are not extrapolated onto External levels. VIABLE_EQUAL_100 is availability/effective-weight evidence, not generation/traversal compatibility proof.",
+    "finding": "Phases A, B1, B2, B3 and C1 are complete. Phase C1 mined trusted existing runtime evidence without changing the 1,590-cell availability matrix: 15 current selectable interiors have actual Offense generation plus recorded player enter/exit evidence; 4 additional interiors have actual Offense generation, tile preparation and four PathfindingLib entrance connections but no recorded player entry; 34 have no positive actual-generation proof in the conservative trusted scan. Existing proof is Offense-only and therefore reduces interior-side uncertainty, not moon-side compatibility on the other 29 target moons. Routing/NavMesh signals remain unresolved for several otherwise traversed interiors, including Spooky manor, Expanded Mineshaft, LiminalHouse, Rubber Rooms and LC Office/DeepcoreMines generation noise; these are proof obligations, not KNOWN_TECHNICAL_RESTRICTION verdicts.",
     "analysis_contract": "Build a current S1.42AK owner/flow/moon viability matrix before authoring any gameplay candidate. Reconcile every registered dungeon flow with its owning system (LLL, JLL, DawnLib/native or other), identify all author/project exclusions and the technical reason for each, and prove that any proposed removal preserves correct entrance/exit pairing, successful generation and traversal, door/socket geometry, elevators, routing and NavMesh behavior. Preserve equal effective rarity 100 for every flow that is viable. Do not duplicate-register native-owner content or bypass an unexplained hard block.",
-    "next_action": "Phase C: plan and prioritize compatibility proof for the 914 NOT_YET_PROVEN cells and 14 AUTHOR_OR_OWNER_HARD_BLOCK cells. First mine existing repository evidence for entrance/exit pairing, successful generation/traversal, door/socket geometry, elevators/special traversal, routing/NavMesh and duplicate-registration safety so only genuinely unresolved high-risk pairings proceed to targeted runtime proof. No universal override, gameplay build or runtime test is authorized yet.",
+    "next_action": "Phase C2: extract and reconcile the technical/author reason for the 14 current AUTHOR_OR_OWNER_HARD_BLOCK cells before any override is proposed. Start with the 12 Offense-rejected owner-controlled flows plus Shatteredrooms x Experimentation and x Embrion. Classify each restriction as an explicit compatibility safeguard, author balancing/default targeting, or an unexplained owner exclusion only where repository package/config/source evidence proves it. No build, universal override or runtime test is authorized yet.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -160,9 +160,34 @@
           "total": 53
         }
       }
+    },
+    "phase_c": {
+      "status": "C1_COMPLETE_C2_OUTSTANDING",
+      "phase_c1_evidence": "Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md",
+      "trusted_runtime_triage": {
+        "traversed_generation_player_entry_exit": 15,
+        "generated_only": 4,
+        "no_positive_actual_generation_proof": 34,
+        "total_selectable_interiors": 53,
+        "observed_moon": "Offense"
+      },
+      "no_generation_proof_by_mechanism": {
+        "direct_lll_universal_tag_override": 12,
+        "owner_asset_matching_no_direct_lll_config": 20,
+        "vanilla_native_lll_matching": 1,
+        "dawnlib_native_black_mesa_weight_rule": 1
+      },
+      "route_navmesh_attribution_signals": [
+        "Spooky manor: EntranceTeleportB(Clone) repeatedly not reachable while A(Clone) is reachable/used",
+        "Expanded Mineshaft: B(Clone) not reachable while A(Clone) is reachable/used",
+        "LiminalHouse: B-side route gap in historical run plus high later NavMesh agent-warning volume",
+        "Rubber Rooms: traversal succeeds but positive route-use proof is absent and not-reachable entrance checks occur",
+        "LC Office and DeepcoreMines: substantial generation-time RuntimeNavMeshBuilder read-access noise; LC Office nevertheless has direct traversal/elevator proof"
+      ],
+      "phase_c2_priority": "14 AUTHOR_OR_OWNER_HARD_BLOCK cells"
     }
   },
-  "next_action": "Phase C: plan and prioritize compatibility proof for the 914 NOT_YET_PROVEN cells and 14 AUTHOR_OR_OWNER_HARD_BLOCK cells. First mine existing repository evidence for entrance/exit pairing, successful generation/traversal, door/socket geometry, elevators/special traversal, routing/NavMesh and duplicate-registration safety so only genuinely unresolved high-risk pairings proceed to targeted runtime proof. No universal override, gameplay build or runtime test is authorized yet.",
+  "next_action": "Phase C2: extract and reconcile the technical/author reason for the 14 current AUTHOR_OR_OWNER_HARD_BLOCK cells before any override is proposed. Start with the 12 Offense-rejected owner-controlled flows plus Shatteredrooms x Experimentation and x Embrion. Classify each restriction as an explicit compatibility safeguard, author balancing/default targeting, or an unexplained owner exclusion only where repository package/config/source evidence proves it. No build, universal override or runtime test is authorized yet.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
