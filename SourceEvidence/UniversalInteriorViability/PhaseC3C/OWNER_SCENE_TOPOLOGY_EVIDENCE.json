@@ -1,0 +1,228 @@
+{
+  "schema_version": "phase-c3c-1",
+  "scope": "Universal Interior Viability / Equal Availability",
+  "baseline": "S1.42AK",
+  "repository_baseline_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "parent_pr_head": "8be389fa99ed059da9eb35ed5f0c990c47e2074b",
+  "working_branch": "scope/universal-interior-phase-c3a-dawn-tags",
+  "target_moons": [
+    "black_mesa:black_mesa",
+    "code_rebirth:oxyde"
+  ],
+  "accepted_profile": {
+    "export_r2x": {
+      "path": "ProfileSources/S1.42AK/export.r2x",
+      "git_blob_sha": "669cf2bf096544de84be9475de8f3f9eb594ce14"
+    },
+    "packages": {
+      "black_mesa": {
+        "dependency_string": "Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior-3.4.4",
+        "version": "3.4.4"
+      },
+      "code_rebirth": {
+        "dependency_string": "XuXiaolan-CodeRebirth-1.6.9",
+        "version": "1.6.9"
+      },
+      "dawnlib": {
+        "dependency_string": "TeamXiaolan-DawnLib-0.9.25",
+        "version": "0.9.25"
+      },
+      "lll": {
+        "dependency_string": "IAmBatby-LethalLevelLoader-1.7.12",
+        "version": "1.7.12"
+      }
+    }
+  },
+  "code_rebirth_exact_package_evidence": {
+    "manifest_path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/MANIFEST.json",
+    "manifest_git_blob_sha": "77e77022d3cbdd742d57013f66812c0e8a336c64",
+    "package_version": "1.6.9",
+    "package_url": "https://gcdn.thunderstore.io/live/repository/packages/XuXiaolan-CodeRebirth-1.6.9.zip",
+    "package_zip_sha256": "a44a47d3f9eb049ccea83f8483c257f4faa2bf927a6df7e0bb70ff1504b2a5d6",
+    "package_bytes": 263010364,
+    "dll_path": "plugins/CodeRebirth/CodeRebirth.dll",
+    "dll_sha256": "a35a06cf55a42dd1db9f3bcf68448d74590fdac8d9e80f57a811e78628c8fd36",
+    "decompiled_source_sha256": "da9399bca105f905c5c1995a222534f1c3672f971bd322ca9bd36aebb34614f3",
+    "discovery_report": {
+      "path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/XuXiaolan-CodeRebirth-0-DISCOVERY.json",
+      "git_blob_sha": "31c4d1ceed2b9f5a7905a177b533f1d0e131b5a5",
+      "relevant_exact_binary_observations": [
+        "Class CodeRebirth.src.Content.Moons.MoonHandler is present.",
+        "Class CodeRebirth.src.Content.Moons.MoonHandler+OxydeAssets is present.",
+        "CodeRebirthMoonKeys.Oxyde is looked up through Dawn LethalContent.Moons."
+      ]
+    }
+  },
+  "code_rebirth_version_matched_source": {
+    "repository": "XuuXiaolan/CodeRebirth",
+    "version_1_6_9_introduced_by_commit": "61748391ee357bfe5cf829195b4ee97a7f871be2",
+    "inspected_latest_1_6_9_tree": "3aec94f6f737c86d5e1eb59a57396740317b210f",
+    "next_version_bump_commit": "3bb9904727278693649ab181ef537cc4df52caf8",
+    "next_version_bump_parent": "3aec94f6f737c86d5e1eb59a57396740317b210f",
+    "next_version": "1.6.10",
+    "qualification": "The inspected tree is version-matched source and the direct parent of the 1.6.10 bump. It is not asserted to be bit-identical to the accepted package DLL; exact package/DLL identity is supplied separately by the preserved SHA-256 evidence.",
+    "inspected_files": [
+      {
+        "path": "Plugin/Directory.Build.props",
+        "blob_sha": "20677a395edc0c7cf0abfe21b7de620c4adaf796",
+        "facts": [
+          "Version is 1.6.9."
+        ]
+      },
+      {
+        "path": "Plugin/CodeRebirth/src/Content/Moons/.MoonHandler.cs",
+        "blob_sha": "fbe7af434d9ad24eeda32e5a7a7cb81cb885f1b0",
+        "facts": [
+          "MoonHandler derives from ContentHandler<MoonHandler>.",
+          "OxydeAssets derives from AssetBundleLoader<OxydeAssets>.",
+          "MoonHandler registers content name oxydeassets through RegisterContent and stores it in Oxyde.",
+          "No manual LethalLevelLoader ExtendedLevel registration exists in the inspected owner path."
+        ]
+      },
+      {
+        "path": "Plugin/CodeRebirth/res/namespaced_keys.json",
+        "blob_sha": "33dcbb04084347a06a20fd218e4337fd758c9d67",
+        "facts": [
+          "CodeRebirthMoonKeys.Oxyde = code_rebirth:oxyde."
+        ]
+      },
+      {
+        "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/CodeRebirthContentContainer.asset",
+        "blob_sha": "63968c9b129fbd259c1be49dab290c4e7bcaa010",
+        "facts": [
+          "Contains the oxydeassets content bundle entry."
+        ]
+      },
+      {
+        "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/OxydeMoonDefinition.asset",
+        "blob_sha": "9c926da6ca41118d61b9794341fb64bf0600d6ce",
+        "facts": [
+          "Key namespace/key = code_rebirth/oxyde.",
+          "Explicit owner tag list contains dawn_lib:has_buying_percent.",
+          "Scene path = Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Scene/Oxyde.unity.",
+          "Scene bundle = oxydescene.",
+          "Scene key = code_rebirth:oxyde.",
+          "BaseWeight = 100."
+        ]
+      },
+      {
+        "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/OxydeLevel.asset",
+        "blob_sha": "60127cff17bb516a4f02362f96e7cdadc604b67d",
+        "facts": [
+          "sceneName = Oxyde.",
+          "levelID = 745.",
+          "PlanetName = 745 Oxyde.",
+          "serialized dungeonFlowTypes = empty list."
+        ]
+      },
+      {
+        "path": "Plugin/CodeRebirth/src/Patches/EntranceTeleportPatch.cs",
+        "blob_sha": "91238eaa4ddde5428cd88246a30418c33b34f3dc",
+        "facts": [
+          "Hooks EntranceTeleport.Awake and OnDestroy.",
+          "Adds/removes teleport instances from CodeRebirthUtils.EntrancePoints.",
+          "Does not rewrite entranceId, isEntranceToBuilding, or teleport pairing."
+        ]
+      },
+      {
+        "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Scene/Oxyde.unity",
+        "blob_sha": "f374dd1ffad448089157f29d58559310e9a7707e",
+        "facts": [
+          "Contains a DungeonGenerator GameObject.",
+          "No literal serialized EntranceTeleport, entranceId, isEntranceToBuilding, entrancePoint, exitPoint, findExitPoint, FireExit, MainEntrance, or DungeonEntrance strings were found."
+        ]
+      },
+      {
+        "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Terrain/NewTerrainXuStillABitch.prefab",
+        "blob_sha": "23bf23b3fb5782b5a268b89ec7783e3c5004f323",
+        "git_blob_character_count": 7355812,
+        "serialized_line_count": 201136,
+        "facts": [
+          "Terrain prefab GUID is d0ceccc0fe1c44d429ec5a7053532a6e.",
+          "No literal serialized EntranceTeleport, entranceId, isEntranceToBuilding, entrancePoint, exitPoint, findExitPoint, FireExit, MainEntrance, DungeonEntrance, or Entrance strings were found.",
+          "Nested prefab instance names include generic Door objects; those are not evidence of EntranceTeleport IDs."
+        ]
+      },
+      {
+        "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Terrain/NewTerrainXuStillABitch.prefab.meta",
+        "blob_sha": "909585af35d91c811478092d7ff5f720d728ebd7",
+        "facts": [
+          "GUID = d0ceccc0fe1c44d429ec5a7053532a6e."
+        ]
+      }
+    ]
+  },
+  "black_mesa_profile_evidence": {
+    "config": {
+      "path": "ProfileSources/S1.42AK/BepInEx/config/Black Mesa Team.Black Mesa Half Life Moon Interior.cfg",
+      "git_blob_sha": "1d2fcfc590493d4f9d8ab656c156b596ea7102e6",
+      "generated_plugin_version_header": "3.4.1",
+      "facts": [
+        "BlackMesaDungeon Options Enabled = true.",
+        "Black Mesa Allow Editing Config = true.",
+        "Black Mesa Preset Moon Weights = lethal_company:vanilla=+100,lethal_company:custom=+100.",
+        "BlackMesaMoon Options Enabled = true.",
+        "BlackMesaScene Allow Editing Config = false."
+      ]
+    },
+    "package_version_authority": "ProfileSources/S1.42AK/export.r2x = 3.4.4; package authority takes precedence over the generated 3.4.1 config header for package acquisition.",
+    "cross_evidence": {
+      "c3a_path": "SourceEvidence/UniversalInteriorViability/PhaseC3A/FINDINGS.md",
+      "facts": [
+        "Dawn registry key observed as black_mesa:black_mesa -> Black Mesa.",
+        "Exact DawnLib 0.9.25 automatic tag logic supplies lethal_company:custom and lethal_company:all for this non-vanilla key."
+      ]
+    }
+  },
+  "black_mesa_public_source_qualification": {
+    "repository": "PlasteredCrab/BlackMesaLethalCompany",
+    "newest_observed_commit": "e2483ec6b08b0411a3b4bd1be5a6f4605258c5a7",
+    "newest_observed_commit_date_utc": "2024-10-05T01:51:02Z",
+    "plugin_cs_blob_sha": "4511002081d52b1a920d55425437b55a955958bc",
+    "plugin_cs_declared_version": "0.9.0",
+    "plugin_cs_registration_stack": "historical direct LethalLevelLoader ExtendedDungeonFlow registration",
+    "readme_blob_sha": "bcf83d1991b2b2c1193696ae2ac48c47e09e317c",
+    "thunderstore_current_package_page": "https://thunderstore.io/c/lethal-company/p/Plastered_Crab/Black_Mesa_Half_Life_Moon_Interior/",
+    "thunderstore_versions_page": "https://thunderstore.io/c/lethal-company/p/Plastered_Crab/Black_Mesa_Half_Life_Moon_Interior/versions/",
+    "thunderstore_changelog_page": "https://thunderstore.io/c/lethal-company/p/Plastered_Crab/Black_Mesa_Half_Life_Moon_Interior/changelog/",
+    "thunderstore_observations": [
+      "Current version is 3.4.4, uploaded 2026-06-04.",
+      "3.4.0 changelog states v81 support and a switch from LethalLevelLoader to DawnLib with moon/interior hotloading.",
+      "Current README describes a custom exterior with fire exits, a secret fire-exit shortcut, and a main entrance."
+    ],
+    "qualification": "The public GitHub source predates the 3.4.0 Dawn migration and cannot be treated as 3.4.4 implementation evidence. Thunderstore README topology descriptions are documentation-level only and do not expose exact EntranceTeleport IDs or prove pairing."
+  },
+  "topology_result": {
+    "oxyde": {
+      "scene_identity": "PROVEN",
+      "owner_registration_path": "PROVEN_SOURCE_MATCHED_AND_BINARY_CLASS_CORROBORATED",
+      "exact_entrance_ids": "NOT_YET_PROVEN",
+      "exact_fire_exit_ids": "NOT_YET_PROVEN",
+      "pairing": "NOT_YET_PROVEN",
+      "explanation": "Version-matched source establishes Dawn-owned Oxyde registration and scene identity, but committed scene/terrain YAML does not expose entrance ID fields and the owner patch does not modify IDs."
+    },
+    "black_mesa": {
+      "scene_identity": "PARTIAL_CONFIG_ONLY",
+      "owner_registration_path": "Dawn registry presence proven by C3A; exact 3.4.4 implementation body not preserved",
+      "exact_entrance_ids": "NOT_YET_PROVEN",
+      "exact_fire_exit_ids": "NOT_YET_PROVEN",
+      "pairing": "NOT_YET_PROVEN",
+      "explanation": "Exact package version is known from export.r2x, but available public source is obsolete and current author documentation does not expose IDs."
+    }
+  },
+  "matrix_consequence": {
+    "canonical_matrix_cells_changed": 0,
+    "c3b_selection_pairings_preserved": 44,
+    "new_selection_pairings_from_c3c": 0,
+    "reason": "C3C is owner/scene/topology evidence. Black Mesa native weight-rule evaluation is intentionally deferred to the next bounded segment."
+  },
+  "excluded_claims": [
+    "actual dungeon generation",
+    "entrance/fire-exit pairing",
+    "scene traversal",
+    "geometry compatibility",
+    "elevator or ladder compatibility",
+    "routing or NavMesh compatibility",
+    "Black Mesa native dungeon selection result on either External moon"
+  ]
+}
