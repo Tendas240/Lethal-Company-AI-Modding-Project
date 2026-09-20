@@ -1,6 +1,6 @@
 # C3F7 — bounded GlobalProp asset-capture implementation
 
-**Status:** HELPER IMPLEMENTED / CI VALIDATION PENDING / NO GAMEPLAY OR MATRIX CHANGE  
+**Status:** HELPER IMPLEMENTED / EXACT-HEAD CI VALIDATED / NO GAMEPLAY OR MATRIX CHANGE  
 **Date:** 2026-09-20  
 **Working PR:** #138 / `scope/universal-interior-phase-c3a-dawn-tags`  
 **Implementation parent:** `cd93e11c38e1563508a36fb8a982d3e8af984580`  
@@ -74,6 +74,31 @@ not that every flow received a positive template result. Fatal ambiguities alway
 fail the capture job; artifact upload does not mask its exit status.
 
 ## Validation and reproduction
+
+Exact-head implementation validation is complete for repair head
+`9731159c2d7ffebbcf6db77b28e1233cf2af2b04`:
+
+- `Capture C3F7 GlobalProp asset evidence` run `35537782662` / #2:
+  **SUCCESS**. The focused validation job and all seven exact-package capture
+  matrix jobs completed successfully.
+- `Knowledge Architecture` run `35537782670` / #591: **SUCCESS**.
+- The other exact-head PR workflows also completed successfully: Black Mesa
+  topology, Black Mesa DLL metadata, V81 generation, V81 spawning and V81
+  entrance-pairing helper validation.
+
+The first implementation head
+`c4e6a10de0f39b3136cc48030d90861bf0a09727` intentionally exposed two
+fail-closed integration defects during CI rather than masking them:
+
+- Generic Interiors stopped on a Backrooms template component with a serialized
+  null `m_Script`. The repair keeps non-null pointer resolution strict and
+  still fails when such an opaque component carries a target discriminator
+  (`PropGroupID`, `entranceId`, `isEntranceToBuilding` or
+  `spawnPrefab`), but preserves a true null-script component with none of
+  those fields as opaque static context. Regression tests cover both cases.
+- The repository cold-history validator interpreted the diagnostic phrase
+  `Archive/member provenance drift` as a legacy path reference. The diagnostic
+  now says `ZIP/member provenance drift`; no provenance rule was relaxed.
 
 Workflow: `.github/workflows/universal-interior-c3f7-asset-evidence.yml`.
 It checks out the exact PR head (not the synthetic merge commit), runs the focused
