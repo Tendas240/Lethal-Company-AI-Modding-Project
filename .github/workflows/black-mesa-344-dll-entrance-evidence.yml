@@ -1,0 +1,61 @@
+name: Capture Black Mesa 3.4.4 DLL entrance evidence
+
+on:
+  pull_request:
+    paths:
+      - 'AnalysisTools/inspect_universal_interior_c3f3.py'
+      - '.github/workflows/black-mesa-344-dll-entrance-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned managed IL readers
+        run: python -m pip install --disable-pip-version-check dnfile==0.18.0 dncil==1.0.2
+
+      - name: Validate C3F3 helper
+        run: python AnalysisTools/inspect_universal_interior_c3f3.py --self-test
+
+      - name: Download exact Black Mesa 3.4.4 package
+        shell: python
+        run: |
+          import shutil
+          import urllib.request
+          url = "https://gcdn.thunderstore.io/live/repository/packages/Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior-3.4.4.zip"
+          req = urllib.request.Request(url, headers={"User-Agent": "LC-AI-Modding-Project-C3F3/1"})
+          with urllib.request.urlopen(req, timeout=180) as response, open("black-mesa-3.4.4.zip", "wb") as out:
+              shutil.copyfileobj(response, out)
+
+      - name: Capture exact BlackMesa.dll entrance-related IL
+        id: capture
+        continue-on-error: true
+        run: |
+          python AnalysisTools/inspect_universal_interior_c3f3.py \
+            --zip black-mesa-3.4.4.zip \
+            --out c3f3-output
+
+      - name: Upload compact derived C3F3 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: black-mesa-344-c3f3-${{ github.sha }}
+          path: c3f3-output/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Enforce fail-closed C3F3 result
+        if: steps.capture.outcome != 'success'
+        run: |
+          echo "C3F3 exact DLL inspection failed closed."
+          exit 1
