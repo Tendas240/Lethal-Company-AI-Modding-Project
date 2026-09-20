@@ -1,0 +1,62 @@
+name: Capture Black Mesa 3.4.4 topology evidence
+
+on:
+  pull_request:
+    paths:
+      - 'AnalysisTools/inspect_universal_interior_c3f2.py'
+      - '.github/workflows/black-mesa-344-topology-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned static reader
+        run: python -m pip install --disable-pip-version-check UnityPy==1.25.3
+
+      - name: Validate fail-closed helper
+        run: python AnalysisTools/inspect_universal_interior_c3f2.py --self-test
+
+      - name: Download exact Black Mesa 3.4.4 package
+        shell: python
+        run: |
+          import shutil
+          import urllib.request
+          url = "https://gcdn.thunderstore.io/live/repository/packages/Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior-3.4.4.zip"
+          request = urllib.request.Request(url, headers={"User-Agent": "LC-AI-Modding-Project-C3F2/1"})
+          with urllib.request.urlopen(request, timeout=180) as response, open("black-mesa-3.4.4.zip", "wb") as out:
+              shutil.copyfileobj(response, out)
+
+      - name: Capture exact package and static topology surface
+        id: capture
+        continue-on-error: true
+        run: |
+          python AnalysisTools/inspect_universal_interior_c3f2.py \
+            --zip black-mesa-3.4.4.zip \
+            --out c3f2-output \
+            --source-url "https://gcdn.thunderstore.io/live/repository/packages/Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior-3.4.4.zip"
+
+      - name: Upload compact derived C3F2 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: black-mesa-344-c3f2-${{ github.sha }}
+          path: c3f2-output/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Enforce fail-closed capture result
+        if: steps.capture.outcome != 'success'
+        run: |
+          echo "C3F2 capture reported an unexpected package layout or parser ambiguity."
+          exit 1
