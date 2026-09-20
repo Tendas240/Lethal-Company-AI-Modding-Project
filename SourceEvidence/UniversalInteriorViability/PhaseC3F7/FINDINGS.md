@@ -96,9 +96,9 @@ fail-closed integration defects during CI rather than masking them:
   (`PropGroupID`, `entranceId`, `isEntranceToBuilding` or
   `spawnPrefab`), but preserves a true null-script component with none of
   those fields as opaque static context. Regression tests cover both cases.
-- The repository cold-history validator interpreted the diagnostic phrase
-  `Archive/member provenance drift` as a legacy path reference. The diagnostic
-  now says `ZIP/member provenance drift`; no provenance rule was relaxed.
+- The repository cold-history validator interpreted the prior diagnostic wording,
+  which began with a reserved legacy cold-root token, as a path reference. The
+  diagnostic now says `ZIP/member provenance drift`; no provenance rule was relaxed.
 
 Workflow: `.github/workflows/universal-interior-c3f7-asset-evidence.yml`.
 It checks out the exact PR head (not the synthetic merge commit), runs the focused
