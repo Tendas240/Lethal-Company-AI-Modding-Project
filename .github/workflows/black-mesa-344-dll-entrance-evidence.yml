@@ -16,6 +16,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - uses: actions/setup-python@v5
         with:
@@ -37,11 +39,12 @@ jobs:
           with urllib.request.urlopen(req, timeout=180) as response, open("black-mesa-3.4.4.zip", "wb") as out:
               shutil.copyfileobj(response, out)
 
-      - name: Capture exact BlackMesa.dll entrance-related IL
+      - name: Capture exact BlackMesa.dll final metadata gate
         id: capture
         continue-on-error: true
         run: |
           python AnalysisTools/inspect_universal_interior_c3f3.py \
+            --metadata-only \
             --zip black-mesa-3.4.4.zip \
             --out c3f3-output
 
@@ -49,7 +52,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: black-mesa-344-c3f3-${{ github.sha }}
+          name: black-mesa-344-c3f3-metadata-${{ github.event.pull_request.head.sha || github.sha }}
           path: c3f3-output/
           if-no-files-found: error
           retention-days: 14
