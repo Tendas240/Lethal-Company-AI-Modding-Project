@@ -1,0 +1,54 @@
+{
+    "schema_version":  1,
+    "purpose":  "Native V81 RoundManager generation-gate evidence for Universal Interior Viability Phase C3E3F",
+    "capture_utc":  "2026-09-20T09:55:02Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "repository_main_at_capture":  "56355ff518ae4301a38d370be9561251f6f963c1",
+    "bound_prior_evidence":  "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json",
+    "source_assembly":  {
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll"
+                        },
+    "game_executable":  {
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+                            "logical_path":  "Lethal Company.exe"
+                        },
+    "steam":  {
+                  "manifest_review":  "AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md",
+                  "matches_prior_appmanifest":  false,
+                  "buildid":  "22825947",
+                  "appmanifest_sha256":  "132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e",
+                  "prior_appmanifest_sha256":  "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                  "app_id":  "1966720"
+              },
+    "decompiler":  {
+                       "full_local_type_source_sha256":  "f5c0790a76eddaab74129454f03fa7c2a36176e1759737395e76ee057567b6aa",
+                       "tool":  "ilspycmd",
+                       "type":  "RoundManager",
+                       "version":  "11.0.0.9375"
+                   },
+    "selection":  {
+                      "direct_caller_depth":  1,
+                      "required_methods":  [
+                                               "GenerateNewLevelClientRpc",
+                                               "GenerateNewFloor"
+                                           ],
+                      "selected_signatures":  [
+                                                  "public void GenerateNewFloor()",
+                                                  "private IEnumerator LoadNewLevelWait(int randomSeed)",
+                                                  "public void GenerateNewLevelClientRpc(int randomSeed, int levelID, int moldIterations = 0, int moldStartPosition = -1, int[] syncDestroyedMold = null)",
+                                                  "private static void __rpc_handler_3073943002(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)"
+                                              ],
+                      "max_source_lines":  3000
+                  },
+    "report":  {
+                   "sha256":  "7905f5d56846db1b019a046ff45608598adfd25e6ed151c2081fa523fa052b0a",
+                   "file":  "ROUNDMANAGER_GENERATION_FOCUSED_DECOMPILE.txt",
+                   "excludes":  [
+                                    "game binaries",
+                                    "full type decompile",
+                                    "absolute local paths",
+                                    "user names"
+                                ]
+               }
+}

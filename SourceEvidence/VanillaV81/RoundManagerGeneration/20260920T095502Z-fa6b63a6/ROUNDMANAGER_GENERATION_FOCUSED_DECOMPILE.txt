@@ -1,0 +1,299 @@
+# Installed Lethal Company V81 RoundManager generation-gate evidence
+
+Source Assembly-CSharp SHA-256: 5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731
+Steam buildid: 22825947
+Repository main at capture: 56355ff518ae4301a38d370be9561251f6f963c1
+Decompiler: ilspycmd 11.0.0.9375
+Scope: GenerateNewLevelClientRpc, GenerateNewFloor and one-hop direct callers within RoundManager.
+This is source evidence, not gameplay acceptance. Full type source and binaries are excluded.
+
+--- public void GenerateNewFloor() / local type line 835 ---
+	public void GenerateNewFloor()
+	{
+		int num = -1;
+		if (currentLevel.dungeonFlowTypes != null && currentLevel.dungeonFlowTypes.Length != 0)
+		{
+			List<int> list = new List<int>();
+			for (int i = 0; i < currentLevel.dungeonFlowTypes.Length; i++)
+			{
+				list.Add(currentLevel.dungeonFlowTypes[i].rarity);
+			}
+			int randomWeightedIndex = GetRandomWeightedIndex(list.ToArray(), LevelRandom);
+			num = currentLevel.dungeonFlowTypes[randomWeightedIndex].id;
+			dungeonGenerator.Generator.DungeonFlow = dungeonFlowTypes[num].dungeonFlow;
+			currentDungeonType = num;
+			if (currentLevel.dungeonFlowTypes[randomWeightedIndex].overrideLevelAmbience != null)
+			{
+				SoundManager.Instance.currentLevelAmbience = currentLevel.dungeonFlowTypes[randomWeightedIndex].overrideLevelAmbience;
+			}
+			else if (currentLevel.levelAmbienceClips != null)
+			{
+				SoundManager.Instance.currentLevelAmbience = currentLevel.levelAmbienceClips;
+			}
+		}
+		else
+		{
+			if (currentLevel.levelAmbienceClips != null)
+			{
+				SoundManager.Instance.currentLevelAmbience = currentLevel.levelAmbienceClips;
+			}
+			currentDungeonType = 0;
+		}
+		dungeonGenerator.Generator.ShouldRandomizeSeed = false;
+		dungeonGenerator.Generator.Seed = LevelRandom.Next();
+		float num2;
+		if (num != -1)
+		{
+			if (dungeonFlowTypes[num].restrictBounds == Vector3.zero)
+			{
+				dungeonGenerator.Generator.RestrictDungeonToBounds = false;
+			}
+			else
+			{
+				dungeonGenerator.Generator.RestrictDungeonToBounds = true;
+				dungeonGenerator.Generator.TilePlacementBounds = new Bounds(Vector3.zero, dungeonFlowTypes[num].restrictBounds * 2f * currentLevel.factorySizeMultiplier);
+			}
+			if (StartOfRound.Instance.occlusionCuller != null)
+			{
+				StartOfRound.Instance.occlusionCuller.AdjacentTileDepth = dungeonFlowTypes[num].cullingTileDepth;
+			}
+			num2 = currentLevel.factorySizeMultiplier / dungeonFlowTypes[num].MapTileSize * mapSizeMultiplier;
+			num2 = (float)((double)Mathf.Round(num2 * 100f) / 100.0);
+		}
+		else
+		{
+			dungeonGenerator.Generator.RestrictDungeonToBounds = false;
+			num2 = currentLevel.factorySizeMultiplier * mapSizeMultiplier;
+		}
+		dungeonGenerator.Generator.LengthMultiplier = num2;
+		dungeonIsGenerating = true;
+		dungeonGenerator.Generate();
+	}
+
+--- private IEnumerator LoadNewLevelWait(int randomSeed) / local type line 1011 ---
+	private IEnumerator LoadNewLevelWait(int randomSeed)
+	{
+		yield return null;
+		yield return null;
+		playersFinishedGeneratingFloor.Clear();
+		Debug.Log($"Weed: moldspreaditerations: {currentLevel.moldSpreadIterations}; position: {currentLevel.moldStartPosition}");
+		if (currentLevel.moldSpreadIterations > 0)
+		{
+			Debug.Log("Weed 1");
+			MoldSpreadManager moldSpreadManager = UnityEngine.Object.FindObjectOfType<MoldSpreadManager>();
+			GetOutsideAINodes(getUnderwaterNodes: false);
+			int moldStartPosition;
+			if (StartOfRound.Instance.currentLevel.moldStartPosition == -1)
+			{
+				Debug.Log("Weed 2");
+				System.Random random = new System.Random(StartOfRound.Instance.randomMapSeed + 2017);
+				int num = random.Next(0, outsideAINodes.Length);
+				bool flag = false;
+				RaycastHit hitInfo;
+				if (Vector3.Distance(outsideAINodes[num].transform.position, StartOfRound.Instance.shipLandingPosition.transform.position) < 40f)
+				{
+					flag = true;
+				}
+				else if (Physics.Raycast(outsideAINodes[num].transform.position + Vector3.up * 0.5f, Vector3.down, out hitInfo, 6f, StartOfRound.Instance.collidersAndRoomMaskAndDefault, QueryTriggerInteraction.Ignore))
+				{
+					if (Terrain.activeTerrain == null)
+					{
+						if (!hitInfo.collider.gameObject.CompareTag("Grass") && !hitInfo.collider.gameObject.CompareTag("Snow") && !hitInfo.collider.gameObject.CompareTag("Gravel"))
+						{
+							flag = true;
+						}
+					}
+					else if (hitInfo.collider.gameObject != Terrain.activeTerrain.gameObject)
+					{
+						flag = true;
+					}
+				}
+				if (flag)
+				{
+					int num2 = random.Next(0, outsideAINodes.Length);
+					int num3 = 0;
+					int num4 = 0;
+					while (num4 < outsideAINodes.Length)
+					{
+						num4++;
+						num2 = (num2 + 1) % outsideAINodes.Length;
+						if (Vector3.Distance(StartOfRound.Instance.shipLandingPosition.transform.position, outsideAINodes[num2].transform.position) < 40f)
+						{
+							continue;
+						}
+						if (Physics.Raycast(outsideAINodes[num2].transform.position, Vector3.down, out hitInfo, 6f, StartOfRound.Instance.collidersAndRoomMaskAndDefault, QueryTriggerInteraction.Ignore))
+						{
+							if (Terrain.activeTerrain == null)
+							{
+								if (!hitInfo.collider.gameObject.CompareTag("Grass") && !hitInfo.collider.gameObject.CompareTag("Gravel"))
+								{
+									continue;
+								}
+							}
+							else if (hitInfo.collider.gameObject != Terrain.activeTerrain.gameObject)
+							{
+								continue;
+							}
+						}
+						Debug.Log($"Weed: Chose a node #{num2} which is far enough away. Distance: {Vector3.Distance(StartOfRound.Instance.shipLandingPosition.transform.position, outsideAINodes[num2].transform.position)}", outsideAINodes[num2]);
+						num = num2;
+						num3++;
+						if (random.Next(0, 100) < 30 || num3 > 15)
+						{
+							break;
+						}
+					}
+				}
+				Debug.Log($"Mold: Ended up with node #{num}. Distance: {Vector3.Distance(StartOfRound.Instance.shipLandingPosition.transform.position, outsideAINodes[num].transform.position)}", outsideAINodes[num]);
+				StartOfRound.Instance.currentLevel.moldStartPosition = num;
+				moldStartPosition = num;
+			}
+			else
+			{
+				Debug.Log("Weed 3");
+				moldStartPosition = StartOfRound.Instance.currentLevel.moldStartPosition;
+			}
+			Debug.Log("Weed 4");
+			if (moldSpreadManager.planetMoldStates[StartOfRound.Instance.currentLevelID].destroyedMold.Count > 0)
+			{
+				Debug.Log($"Weed 5; moldspreaditerations: {currentLevel.moldSpreadIterations}; position: {currentLevel.moldStartPosition}");
+				GenerateNewLevelClientRpc(randomSeed, currentLevel.levelID, currentLevel.moldSpreadIterations, moldStartPosition, moldSpreadManager.planetMoldStates[StartOfRound.Instance.currentLevelID].destroyedMold.ToArray());
+			}
+			else
+			{
+				Debug.Log($"Weed 6; moldspreaditerations: {currentLevel.moldSpreadIterations}; position: {currentLevel.moldStartPosition}");
+				GenerateNewLevelClientRpc(randomSeed, currentLevel.levelID, currentLevel.moldSpreadIterations, moldStartPosition);
+			}
+		}
+		else
+		{
+			GenerateNewLevelClientRpc(randomSeed, currentLevel.levelID);
+		}
+		if (currentLevel.spawnEnemiesAndScrap)
+		{
+			yield return new WaitUntil(() => dungeonCompletedGenerating);
+			yield return null;
+			yield return new WaitUntil(() => playersFinishedGeneratingFloor.Count >= GameNetworkManager.Instance.connectedPlayers);
+			Debug.Log("Players finished generating the new floor");
+		}
+		yield return new WaitForSeconds(0.3f);
+		SpawnSyncedProps();
+		if (currentLevel.spawnEnemiesAndScrap)
+		{
+			GeneratedFloorPostProcessing();
+		}
+		yield return null;
+		playersFinishedGeneratingFloor.Clear();
+		dungeonFinishedGeneratingForAllPlayers = true;
+		RefreshEnemyVents();
+		FinishGeneratingNewLevelClientRpc();
+	}
+
+--- public void GenerateNewLevelClientRpc(int randomSeed, int levelID, int moldIterations = 0, int moldStartPosition = -1, int[] syncDestroyedMold = null) / local type line 1130 ---
+	public void GenerateNewLevelClientRpc(int randomSeed, int levelID, int moldIterations = 0, int moldStartPosition = -1, int[] syncDestroyedMold = null)
+	{
+		NetworkManager networkManager = base.NetworkManager;
+		if ((object)networkManager == null || !networkManager.IsListening)
+		{
+			return;
+		}
+		if (__rpc_exec_stage != __RpcExecStage.Execute && (networkManager.IsServer || networkManager.IsHost))
+		{
+			ClientRpcParams clientRpcParams = default(ClientRpcParams);
+			FastBufferWriter bufferWriter = __beginSendClientRpc(3073943002u, clientRpcParams, RpcDelivery.Reliable);
+			BytePacker.WriteValueBitPacked(bufferWriter, randomSeed);
+			BytePacker.WriteValueBitPacked(bufferWriter, levelID);
+			BytePacker.WriteValueBitPacked(bufferWriter, moldIterations);
+			BytePacker.WriteValueBitPacked(bufferWriter, moldStartPosition);
+			bool value = syncDestroyedMold != null;
+			bufferWriter.WriteValueSafe(in value, default(FastBufferWriter.ForPrimitives));
+			if (value)
+			{
+				bufferWriter.WriteValueSafe(syncDestroyedMold, default(FastBufferWriter.ForPrimitives));
+			}
+			__endSendClientRpc(ref bufferWriter, 3073943002u, clientRpcParams, RpcDelivery.Reliable);
+		}
+		if (__rpc_exec_stage != __RpcExecStage.Execute || (!networkManager.IsClient && !networkManager.IsHost))
+		{
+			return;
+		}
+		__rpc_exec_stage = __RpcExecStage.Send;
+		GetOutsideAINodes(getUnderwaterNodes: false);
+		currentLevel.moldSpreadIterations = moldIterations;
+		currentLevel.moldStartPosition = moldStartPosition;
+		if (moldIterations > 0)
+		{
+			if (moldStartPosition >= outsideAINodes.Length)
+			{
+				Debug.LogError($"Mold error: Mold start position index {moldStartPosition} is greater than outsideAINodes count: {outsideAINodes.Length}! Cannot sync mold");
+			}
+			Vector3 position = outsideAINodes[Mathf.Min(moldStartPosition, outsideAINodes.Length - 1)].transform.position;
+			if (syncDestroyedMold != null)
+			{
+				UnityEngine.Object.FindObjectOfType<MoldSpreadManager>().SyncDestroyedMoldPositions(syncDestroyedMold);
+			}
+			UnityEngine.Object.FindObjectOfType<MoldSpreadManager>().GenerateMold(position, moldIterations);
+		}
+		playersManager.randomMapSeed = randomSeed;
+		currentLevel = playersManager.levels[levelID];
+		Debug.Log($"RANDOM MAP SEED - {playersManager.randomMapSeed}\nClient #{GameNetworkManager.Instance.localPlayerController.playerClientId}\nMoon: {currentLevel.PlanetName}");
+		InitializeRandomNumberGenerators();
+		SetChallengeFileRandomModifiers();
+		HUDManager.Instance.loadingText.text = $"Random seed: {randomSeed}";
+		HUDManager.Instance.LoadingScreen.SetBool("IsLoading", value: true);
+		dungeonCompletedGenerating = false;
+		mapPropsContainer = GameObject.FindGameObjectWithTag("MapPropsContainer");
+		GameObject gameObject = GameObject.FindGameObjectWithTag("SpecialStartRoomBounds");
+		if (gameObject != null)
+		{
+			startRoomSpecialBounds = gameObject.GetComponent<Collider>();
+		}
+		if (!currentLevel.spawnEnemiesAndScrap)
+		{
+			return;
+		}
+		dungeonGenerator = UnityEngine.Object.FindObjectOfType<RuntimeDungeon>(includeInactive: false);
+		if (dungeonGenerator != null)
+		{
+			dungeonGenerator.Generator.GenerateAsynchronously = true;
+			dungeonGenerator.Generator.MaxAsyncFrameMilliseconds = 1f;
+			dungeonGenerator.Generator.PauseBetweenRooms = 0f;
+			GenerateNewFloor();
+			if (dungeonGenerator.Generator.Status == GenerationStatus.Complete)
+			{
+				FinishGeneratingLevel();
+				Debug.Log("Dungeon finished generating in one frame.");
+			}
+			else
+			{
+				dungeonGenerator.Generator.OnGenerationStatusChanged += Generator_OnGenerationStatusChanged;
+				Debug.Log("Now listening to dungeon generator status.");
+			}
+		}
+		else
+		{
+			Debug.LogError($"This client could not find dungeon generator! scene count: {SceneManager.sceneCount}");
+		}
+	}
+
+--- private static void __rpc_handler_3073943002(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams) / local type line 4199 ---
+	private static void __rpc_handler_3073943002(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)
+	{
+		NetworkManager networkManager = target.NetworkManager;
+		if ((object)networkManager != null && networkManager.IsListening)
+		{
+			ByteUnpacker.ReadValueBitPacked(reader, out int value);
+			ByteUnpacker.ReadValueBitPacked(reader, out int value2);
+			ByteUnpacker.ReadValueBitPacked(reader, out int value3);
+			ByteUnpacker.ReadValueBitPacked(reader, out int value4);
+			reader.ReadValueSafe(out bool value5, default(FastBufferWriter.ForPrimitives));
+			int[] value6 = null;
+			if (value5)
+			{
+				reader.ReadValueSafe(out value6, default(FastBufferWriter.ForPrimitives));
+			}
+			target.__rpc_exec_stage = __RpcExecStage.Execute;
+			((RoundManager)target).GenerateNewLevelClientRpc(value, value2, value3, value4, value6);
+			target.__rpc_exec_stage = __RpcExecStage.Send;
+		}
+	}
