@@ -764,6 +764,13 @@ def main():
                              else "BLACK_MESA_344_DLL_ENTRANCE_IL.json")
         output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(report["summary"], indent=2))
+        if args.metadata_only:
+            print(json.dumps({
+                "metadata_gate_blockers": report["blockers"],
+                "methods_without_rva": report["methods_without_rva"],
+                "unresolved_attributes": [a for a in report["scoped_custom_attributes"]
+                                          if a["decode_status"] == "UNRESOLVED"],
+            }, indent=2))
         if args.metadata_only and report["gate_status"] != "METADATA_CAPTURE_COMPLETE_REVIEW_REQUIRED":
             raise ValueError("Metadata gate is unresolved; inspect raw evidence and blockers")
     except Exception as exc:
