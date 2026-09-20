@@ -43,7 +43,17 @@ STRONG_ENTRANCE_RE = re.compile(
 PAIRING_FIELDS = ("::entranceId", "::isEntranceToBuilding", "::entrancePoint", "::exitPoint")
 CREATION_RE = re.compile(
     r"UnityEngine\.(?:Object|GameObject)::Instantiate|::AddComponent|"
-    r"::GetComponent|::GetComponents|::FindObjectOfType|::FindObjectsOfType",
+    r"::GetComponent|::GetComponents|::TryGetComponent|"
+    r"::FindObjectOfType|::FindObjectsOfType|::FindFirstObjectByType|"
+    r"::FindAnyObjectByType|UnityEngine\.Resources::Load|"
+    r"UnityEngine\.AssetBundle::LoadAsset",
+    re.I,
+)
+REFLECTION_RE = re.compile(
+    r"System\.(?:Type|Activator|AppDomain)::|System\.Reflection\.|"
+    r"::(?:GetType|GetMethod|GetMethods|GetField|GetFields|GetProperty|"
+    r"GetProperties|Invoke|CreateInstance|MakeGenericType|GetCustomAttribute|"
+    r"GetCustomAttributes)(?:\b|$)",
     re.I,
 )
 
@@ -58,6 +68,9 @@ def self_test():
     assert STRONG_ENTRANCE_RE.search("isEntranceToBuilding")
     assert not STRONG_ENTRANCE_RE.search("ordinaryMethod")
     assert CREATION_RE.search("UnityEngine.Object::Instantiate")
+    assert CREATION_RE.search("UnityEngine.AssetBundle::LoadAsset")
+    assert REFLECTION_RE.search("System.Type::GetMethod")
+    assert REFLECTION_RE.search("System.Reflection.MethodBase::Invoke")
     print("C3F3 self-test passed")
 
 
@@ -187,6 +200,9 @@ def capture(data):
     pairing_field_references = []
     pairing_field_writes = []
     signal_string_literals = []
+    creation_or_component_references = []
+    reflection_references = []
+    dynamic_or_reflection_methods = []
     methods_scanned = 0
     methods_without_body = 0
     instructions_scanned = 0
@@ -213,6 +229,8 @@ def capture(data):
             local_signal = bool(SIGNAL_RE.search(owner) or SIGNAL_RE.search(method))
             strong_signal = bool(STRONG_ENTRANCE_RE.search(owner) or STRONG_ENTRANCE_RE.search(method))
             creation_calls = []
+            reflection_calls = []
+            method_string_literals = []
 
             for ins in body.instructions:
                 instructions_scanned += 1
@@ -239,11 +257,28 @@ def capture(data):
                         pairing_field_writes.append(ref)
                 if resolved and CREATION_RE.search(resolved):
                     creation_calls.append(record)
-                if ins.opcode.name == "ldstr" and resolved and SIGNAL_RE.search(resolved):
-                    signal_string_literals.append({**identity, **record})
-                    local_signal = True
-                    if STRONG_ENTRANCE_RE.search(resolved):
-                        strong_signal = True
+                    creation_or_component_references.append({**identity, **record})
+                if resolved and REFLECTION_RE.search(resolved):
+                    reflection_calls.append(record)
+                    reflection_references.append({**identity, **record})
+                if ins.opcode.name == "ldstr" and resolved:
+                    method_string_literals.append(record)
+                    if SIGNAL_RE.search(resolved):
+                        signal_string_literals.append({**identity, **record})
+                        local_signal = True
+                        if STRONG_ENTRANCE_RE.search(resolved):
+                            strong_signal = True
+
+            if creation_calls or reflection_calls:
+                dynamic_or_reflection_methods.append(
+                    {
+                        **identity,
+                        "creation_or_component_calls": creation_calls,
+                        "reflection_calls": reflection_calls,
+                        "string_literals": method_string_literals,
+                        "instructions": ins_records,
+                    }
+                )
 
             if local_signal:
                 signal_methods.append(
@@ -259,7 +294,7 @@ def capture(data):
         raise ValueError("No method bodies scanned")
 
     return {
-        "schema_version": "phase-c3f3-il-1",
+        "schema_version": "phase-c3f3-il-2",
         "package": PACKAGE,
         "version": VERSION,
         "dll_member": DLL_MEMBER,
@@ -279,6 +314,9 @@ def capture(data):
             "matching_member_refs": sorted(set(matching_member_refs)),
         },
         "signal_methods": signal_methods,
+        "dynamic_or_reflection_methods": dynamic_or_reflection_methods,
+        "creation_or_component_references": creation_or_component_references,
+        "reflection_references": reflection_references,
         "entrance_references": entrance_references,
         "pairing_field_references": pairing_field_references,
         "pairing_field_writes": pairing_field_writes,
@@ -290,12 +328,17 @@ def capture(data):
             "pairing_field_references": len(pairing_field_references),
             "pairing_field_writes": len(pairing_field_writes),
             "signal_string_literals": len(signal_string_literals),
+            "dynamic_or_reflection_methods": len(dynamic_or_reflection_methods),
+            "creation_or_component_references": len(creation_or_component_references),
+            "reflection_references": len(reflection_references),
             "opcode_counts_on_pairing_fields": dict(Counter(r["opcode"] for r in pairing_field_references)),
         },
         "proof_boundary": (
-            "Exact BlackMesa.dll static IL/metadata only. Reflection, dynamically generated code, "
-            "other assemblies, scene serialization, final Harmony patch order and actual runtime "
-            "entrance behavior are not inferred beyond directly captured IL references."
+            "Exact BlackMesa.dll static IL/metadata only. Direct dynamic/component callsites and "
+            "reflection API callsites in this DLL are captured globally across all scanned method "
+            "bodies. Reflective targets not directly identifiable from captured operands/strings, "
+            "dynamically generated code, other assemblies, scene serialization, final Harmony patch "
+            "order and actual runtime entrance behavior are not inferred beyond captured evidence."
         ),
     }
 
