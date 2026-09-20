@@ -960,7 +960,7 @@ def capture_metadata(data):
         blockers.append("Exact v2 metadata coverage mismatch")
     if not patch_types or not patch_attributes or not declarations:
         blockers.append("No usable Harmony target metadata")
-    if len(declarations) != 18 or coverage["resolved_harmony_target_declarations"] != 18:
+    if len(declarations) != 19 or coverage["resolved_harmony_target_declarations"] != 19:
         blockers.append("Exact Harmony target declaration coverage mismatch")
     blockers = sorted(set(blockers))
     return {"schema_version": "phase-c3f3-metadata-1", "package": PACKAGE, "version": VERSION,
