@@ -336,8 +336,6 @@ def template_capture(idx, prop, template_root=None, ancestry=()):
             go_rec['components'].append(idx.record(key))
             if rec['type'] != 'MonoBehaviour':
                 continue
-            if idx.scripts.get(key) is None:
-                raise CaptureError('Null script on target template component')
             t = rec['tree']
             # Resolve potential prefab/component links for contextual evidence,
             # but they do not count as descendants or prove spawn semantics.
@@ -345,12 +343,30 @@ def template_capture(idx, prop, template_root=None, ancestry=()):
                 if field in ('m_Script', 'm_GameObject'):
                     continue
                 # All non-null pointers on the actual template MonoBehaviours
-                # must resolve, including indirect prefabs; never discard a
-                # missing reference that could alter the entrance surface.
+                # must resolve, including opaque null-script components; never
+                # discard a missing reference that could alter the target surface.
                 target = idx.resolve(key, ptr)
                 if target is not None:
                     prefab_links.append({'owner': idx.descriptor(key), 'field': field,
                                          'pointer': ptr, 'target': idx.descriptor(target)})
+            if idx.scripts.get(key) is None:
+                # A serialized null m_Script is not an unresolved non-null
+                # pointer and cannot execute managed code. Preserve it as opaque
+                # context when its readable type tree carries none of the exact
+                # discriminators used by this proof. If any relevant field is
+                # present, class identity is material and the capture stays
+                # fail-closed.
+                relevant = sorted(set(t).intersection(
+                    {'PropGroupID', 'entranceId', 'isEntranceToBuilding', 'spawnPrefab'}))
+                if relevant:
+                    raise CaptureError(
+                        'Null script on target template component with relevant serialized fields: '
+                        + ','.join(relevant))
+                go_rec['components'][-1]['qualification'] = (
+                    'Serialized null m_Script pointer with no GlobalProp, EntranceTeleport '
+                    'or SpawnSyncedObject discriminator fields; retained as opaque static '
+                    'context and no runtime behavior inferred.')
+                continue
             if idx.class_is(key, 'EntranceTeleport', '', 'Assembly-CSharp.dll'):
                 if type(t.get('entranceId')) is not int or type(t.get('isEntranceToBuilding')) not in (bool, int) or t['isEntranceToBuilding'] not in (0, 1):
                     raise CaptureError('EntranceTeleport ID/side fields unresolved')
@@ -434,7 +450,15 @@ def capture_flow(idx, name):
             for go, components in idx.hierarchy(root).items():
                 for key in components:
                     if idx.objects[key]['type'] == 'MonoBehaviour' and idx.scripts.get(key) is None:
-                        raise CaptureError('Null script could hide GlobalProp on reachable tile')
+                        # A null script cannot hide the serialized GlobalProp
+                        # discriminator unless PropGroupID is actually present in
+                        # its readable type tree. Treat only that relevant case as
+                        # ambiguous; unrelated missing scripts remain static
+                        # context rather than poisoning the whole tile.
+                        if 'PropGroupID' in idx.objects[key]['tree']:
+                            raise CaptureError(
+                                'Null script with GlobalProp discriminator on reachable tile')
+                        continue
                     if idx.class_is(key, 'GlobalProp', 'DunGen', 'DunGen.dll'):
                         t = idx.objects[key]['tree']
                         if type(t.get('PropGroupID')) is not int:
@@ -462,7 +486,7 @@ def verify_lock(lock, key, authority, observed):
     if set(lock.get('packages', {})) != set(COHORT):
         raise CaptureError('Lock must contain exactly the seven cohort packages')
     if lock['packages'][key] != observed:
-        raise CaptureError('Archive/member provenance drift: ' + key)
+        raise CaptureError('ZIP/member provenance drift: ' + key)
 
 
 def capture_package(key, path, observed, authority, lock_path, out):

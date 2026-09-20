@@ -146,6 +146,44 @@ class ProofTests(unittest.TestCase):
         self.tree(23)['spawnPrefab'] = self.ptr(20)
         self.assertTrue(self.capture()['fatal_ambiguities'])
 
+    def test_null_script_without_target_discriminators_is_opaque_not_fatal(self):
+        key = ('bundle', 'file', 24)
+        self.idx.objects[key] = {
+            'key': key,
+            'type': 'MonoBehaviour',
+            'tree': {'m_GameObject': self.ptr(20), 'm_Enabled': 1, 'someRef': self.ptr(21)},
+            'raw_sha256': 'b' * 64,
+        }
+        self.idx.scripts[key] = None
+        self.tree(20)['m_Component'].append({'component': self.ptr(24)})
+        result = self.capture()
+        self.assertEqual(result['result_class'], 'PROP_AND_TEMPLATE_PROVEN')
+        self.assertFalse(result['fatal_ambiguities'])
+        context = result['templates'][0]['gameobject_component_context']
+        opaque = [component for go in context for component in go['components']
+                  if component.get('path_id') == 24]
+        self.assertEqual(len(opaque), 1)
+        self.assertIn('opaque static context', opaque[0]['qualification'])
+        self.assertTrue(any(edge['owner']['path_id'] == 24 and edge['field'] == 'someRef'
+                            for edge in result['templates'][0]['referenced_context_edges']))
+
+    def test_null_script_with_target_discriminator_is_fatal(self):
+        for field, value in [('entranceId', 1), ('spawnPrefab', self.ptr(20))]:
+            with self.subTest(field=field):
+                self.idx, self.ptr = fixture()
+                key = ('bundle', 'file', 24)
+                self.idx.objects[key] = {
+                    'key': key,
+                    'type': 'MonoBehaviour',
+                    'tree': {'m_GameObject': self.ptr(20), field: value},
+                    'raw_sha256': 'c' * 64,
+                }
+                self.idx.scripts[key] = None
+                self.tree(20)['m_Component'].append({'component': self.ptr(24)})
+                result = self.capture()
+                self.assertEqual(result['result_class'], 'PROP_PRESENT_TEMPLATE_UNRESOLVED')
+                self.assertTrue(result['fatal_ambiguities'])
+
     def test_missing_graph_pointer_and_null_script_are_fatal(self):
         self.tree(2)['TileWeights']['Weights'][0]['Value'] = self.ptr(999)
         self.assertTrue(self.capture()['fatal_ambiguities'])
