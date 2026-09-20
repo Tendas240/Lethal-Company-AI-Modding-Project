@@ -27,6 +27,10 @@ EXPECTED_SOURCE_URL = (
     "Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior-3.4.4.zip"
 )
 UNITYPY_VERSION = "1.25.3"
+EXPECTED_ZIP_BYTES = 228214268
+EXPECTED_ZIP_SHA256 = "12921825bee51bfd46582989322a1f31183b65f59293c73654a102fb68d068b7"
+EXPECTED_MANIFEST_NAME = "Black_Mesa_Half_Life_Moon_Interior"
+EXPECTED_WEBSITE_URL = "https://thunderstore.io/c/lethal-company/p/Plastered_Crab/Black_Mesa_Half_Life_Moon_Interior/"
 ENTRANCE_FIELDS = {"entranceId", "isEntranceToBuilding", "entrancePoint", "exitPoint"}
 DEFINITION_CLASS_RE = re.compile(r"(?:Dusk|Dawn)?.*MoonDefinition|MoonDefinition", re.I)
 NAME_SIGNAL_RE = re.compile(r"black\s*mesa|entrance|fire.?exit|teleport|dungeon", re.I)
@@ -100,8 +104,14 @@ def validate_manifest(data):
         raise ValueError(
             f"manifest version mismatch: expected {PACKAGE_VERSION}, got {data.get('version_number')!r}"
         )
-    if not isinstance(data.get("name"), str) or not data["name"].strip():
-        raise ValueError("manifest name missing")
+    if data.get("name") != EXPECTED_MANIFEST_NAME:
+        raise ValueError(
+            f"manifest name mismatch: expected {EXPECTED_MANIFEST_NAME!r}, got {data.get('name')!r}"
+        )
+    if data.get("website_url") != EXPECTED_WEBSITE_URL:
+        raise ValueError(
+            f"manifest website mismatch: expected {EXPECTED_WEBSITE_URL!r}, got {data.get('website_url')!r}"
+        )
     return data
 
 
@@ -114,9 +124,14 @@ def self_test():
             pass
         else:
             raise AssertionError("unsafe path accepted: " + bad)
-    validate_manifest({"name": "x", "version_number": PACKAGE_VERSION})
+    valid_manifest = {
+        "name": EXPECTED_MANIFEST_NAME,
+        "version_number": PACKAGE_VERSION,
+        "website_url": EXPECTED_WEBSITE_URL,
+    }
+    validate_manifest(valid_manifest)
     try:
-        validate_manifest({"name": "x", "version_number": "0.0.0"})
+        validate_manifest({**valid_manifest, "version_number": "0.0.0"})
     except ValueError:
         pass
     else:
@@ -312,6 +327,11 @@ def capture(args):
     args.out.mkdir(parents=True, exist_ok=True)
     zip_sha = sha256_file(args.zip)
     zip_bytes = args.zip.stat().st_size
+    if zip_bytes != EXPECTED_ZIP_BYTES or zip_sha != EXPECTED_ZIP_SHA256:
+        raise ValueError(
+            "Exact Black Mesa 3.4.4 ZIP size/SHA-256 mismatch; refusing capture "
+            f"(bytes={zip_bytes}, sha256={zip_sha})"
+        )
     inventory = []
     dlls = []
     bundle_members = []
