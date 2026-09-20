@@ -31,6 +31,47 @@ EXPECTED_DLL_BYTES = 143360
 EXPECTED_DLL_SHA256 = "a90f157becdc68ab7fe6898eefc2feaee98352a0f04b2cda414741729a048eef"
 PARSER_VERSIONS = {"dnfile": "0.18.0", "dncil": "1.0.2"}
 
+# BlackMesa.dll references exactly 0Harmony, Version 2.7.0.0. That identity is
+# HarmonyX 2.7.0: release v2.7.0 points at the immutable source commit below,
+# whose project file sets AssemblyVersion/FileVersion 2.7.0.0. The pinned
+# Attributes.cs blob defines MethodType with the values below and no explicit
+# underlying type (C# enum default System.Int32). This is reviewed provenance
+# for one external enum only; no other external enum width is guessed.
+HARMONYX_270_PROVENANCE = {
+    "assembly_name": "0Harmony",
+    "assembly_version": "2.7.0.0",
+    "package": "HarmonyX",
+    "package_version": "2.7.0",
+    "release_tag": "v2.7.0",
+    "source_commit": "253725768e59b0e1ea90105cdbcc4a0a477422c7",
+    "source_path": "Harmony/Public/Attributes.cs",
+    "source_git_blob_sha1": "636801ac53ff76eb3c9fc600e587569f2bf43910",
+}
+PINNED_EXTERNAL_ENUMS = {
+    "HarmonyLib.MethodType": {
+        "underlying_type": "System.Int32",
+        "values": {
+            0: "Normal",
+            1: "Getter",
+            2: "Setter",
+            3: "Constructor",
+            4: "StaticConstructor",
+            5: "Enumerator",
+        },
+        "provenance": HARMONYX_270_PROVENANCE,
+    }
+}
+EXPECTED_ABSTRACT_NO_RVA_TOKENS = {
+    "0x0600003f", "0x06000040", "0x060000a2", "0x060000a3",
+    "0x06000202", "0x06000206", "0x06000208", "0x06000209",
+}
+HARMONY_PATCH_BINDING_PATTERNS = {
+    ("System.Type",): ("declaring_type",),
+    ("System.String",): ("method_name",),
+    ("System.Type", "System.String"): ("declaring_type", "method_name"),
+    ("System.String", "HarmonyLib.MethodType"): ("method_name", "method_type"),
+}
+
 SIGNAL_RE = re.compile(
     r"entranceteleport|entranceid|isentrancetobuilding|entrancepoint|exitpoint|"
     r"fire.?exit|shortcut|teleport|harmony|patch|dawn|dusk",
@@ -410,7 +451,10 @@ def ca_signature_type(reader, resolve_type):
         resolved = resolve_type(reader.uint())
         if code == 0x12 and resolved == "System.Type":
             return resolved
-        # The underlying width of an external enum is not encoded here.
+        if code == 0x11 and resolved in PINNED_EXTERNAL_ENUMS:
+            spec = PINNED_EXTERNAL_ENUMS[resolved]
+            return {"enum": resolved, "underlying": spec["underlying_type"]}
+        # The underlying width of any other external enum is not encoded here.
         raise ValueError("Unsupported CA signature type (no width guessing): " + resolved)
     raise ValueError(f"Unsupported CA signature element 0x{code:02x}")
 
@@ -428,7 +472,24 @@ def ca_named_type(reader):
     raise ValueError(f"Unsupported named-argument type 0x{code:02x}")
 
 
+def ca_kind_label(kind):
+    if isinstance(kind, dict) and "array" in kind:
+        return ca_kind_label(kind["array"]) + "[]"
+    if isinstance(kind, dict) and "enum" in kind:
+        return kind["enum"]
+    return kind
+
+
 def ca_value(reader, kind):
+    if isinstance(kind, dict) and "enum" in kind:
+        name = kind["enum"]
+        spec = PINNED_EXTERNAL_ENUMS.get(name)
+        if spec is None or kind.get("underlying") != spec["underlying_type"]:
+            raise ValueError("Unpinned external enum value type: " + name)
+        raw = ca_value(reader, spec["underlying_type"])
+        if raw not in spec["values"]:
+            raise ValueError(f"Unknown {name} value: {raw}")
+        return {"raw": raw, "name": spec["values"][raw]}
     if isinstance(kind, dict) and "array" in kind:
         count = struct.unpack("<i", reader.take(4))[0]
         if count == -1:
@@ -459,7 +520,7 @@ def decode_custom_attribute(signature, payload, resolve_type):
     data = MetadataReader(payload)
     if data.take(2) != b"\x01\x00":
         raise ValueError("Invalid CustomAttribute prolog")
-    fixed = [{"type": kind, "value": ca_value(data, kind)} for kind in params]
+    fixed = [{"type": ca_kind_label(kind), "value": ca_value(data, kind)} for kind in params]
     count = int.from_bytes(data.take(2), "little")
     named = []
     for _ in range(count):
@@ -477,7 +538,7 @@ def decode_custom_attribute(signature, payload, resolve_type):
 
 
 def metadata_self_test():
-    resolve = lambda coded: {5: "System.Type"}[coded]
+    resolve = lambda coded: {5: "System.Type", 6: "HarmonyLib.MethodType"}[coded]
     # Independent hand-encoded Type + method name + Type[] constructor fixture.
     signature = bytes.fromhex("20 03 01 12 05 0e 1d 12 05")
     payload = b"\x01\x00\x03Foo\x03Bar\x01\x00\x00\x00\x03Baz\x00\x00"
@@ -503,6 +564,25 @@ def metadata_self_test():
     assert MetadataReader(b"\xff").string() is None
     assert MetadataReader(b"\x00").string() == ""
     assert ca_value(MetadataReader(b"\xff\xff\xff\xff"), {"array": "System.Type"}) is None
+    enum_result = decode_custom_attribute(
+        bytes.fromhex("20 02 01 0e 11 06"),
+        b"\x01\x00\x03Foo\x05\x00\x00\x00\x00\x00",
+        resolve,
+    )
+    assert enum_result["fixed_arguments"][1] == {
+        "type": "HarmonyLib.MethodType",
+        "value": {"raw": 5, "name": "Enumerator"},
+    }
+    try:
+        decode_custom_attribute(
+            bytes.fromhex("20 02 01 0e 11 06"),
+            b"\x01\x00\x03Foo\x06\x00\x00\x00\x00\x00",
+            resolve,
+        )
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Unknown pinned enum value accepted")
     try:
         decode_custom_attribute(bytes.fromhex("20 01 01 11 05"), b"\x01\x00\x00\x00\x00\x00\x00\x00", resolve)
     except ValueError:
@@ -533,15 +613,6 @@ def capture_metadata(data):
             raise ValueError("Null/unresolved metadata index")
         return f"0x{(index.table.number << 24) | index.row_index:08x}"
 
-    def resolve_type(coded):
-        tag, index = coded & 3, coded >> 2
-        if tag not in (0, 1) or not index:
-            raise ValueError("Unsupported TypeDefOrRef signature index")
-        table = tables.TypeDef if tag == 0 else tables.TypeRef
-        if table is None or index > len(table.rows):
-            raise ValueError("Invalid TypeDefOrRef signature index")
-        return type_name(table.rows[index - 1])
-
     def scope(row):
         index = getattr(row, "ResolutionScope", None)
         if index is None:
@@ -561,13 +632,35 @@ def capture_metadata(data):
             info["scope"] = scope(target)
         return info
 
+    def resolve_type(coded):
+        tag, index = coded & 3, coded >> 2
+        if tag not in (0, 1) or not index:
+            raise ValueError("Unsupported TypeDefOrRef signature index")
+        table = tables.TypeDef if tag == 0 else tables.TypeRef
+        if table is None or index > len(table.rows):
+            raise ValueError("Invalid TypeDefOrRef signature index")
+        row = table.rows[index - 1]
+        resolved = type_name(row)
+        if resolved in PINNED_EXTERNAL_ENUMS:
+            resolved_scope = scope(row)
+            provenance = PINNED_EXTERNAL_ENUMS[resolved]["provenance"]
+            if (resolved_scope.get("name"), resolved_scope.get("version")) != (
+                    provenance["assembly_name"], provenance["assembly_version"]):
+                raise ValueError(
+                    f"Pinned enum assembly mismatch for {resolved}: {resolved_scope}"
+                )
+        return resolved
+
     def flags(value):
         return sorted(k for k in dir(value) if not k.startswith("_")
                       and isinstance(getattr(value, k), bool) and getattr(value, k))
 
     owners, owner_rows, targets = {}, {}, {}
-    for i, t in enumerate(tables.TypeDef, 1):
-        identity = {"type": type_name(t), "type_token": f"0x{0x02000000 | i:08x}"}
+    type_defs = list(tables.TypeDef)
+    type_tokens = {}
+    for i, t in enumerate(type_defs, 1):
+        type_tokens[id(t)] = f"0x{0x02000000 | i:08x}"
+        identity = {"type": type_name(t), "type_token": type_tokens[id(t)]}
         targets[id(t)] = identity
         for index in t.MethodList:
             owners[id(index.row)] = type_name(t)
@@ -575,6 +668,103 @@ def capture_metadata(data):
             targets[id(index.row)] = {**identity, "method": str(index.row.Name),
                                      "method_token": token(index),
                                      "signature_hex": index.row.Signature.value.hex()}
+    direct_interfaces = {id(t): [] for t in type_defs}
+    for row in (tables.InterfaceImpl or []):
+        if row.Class.row is None or row.Interface.row is None:
+            raise ValueError("Unresolved InterfaceImpl row")
+        direct_interfaces.setdefault(id(row.Class.row), []).append(row.Interface.row)
+
+    methodimpls_by_declaration = {}
+    for i, row in enumerate(tables.MethodImpl or [], 1):
+        if row.MethodBody.row is None or row.MethodDeclaration.row is None:
+            raise ValueError("Unresolved MethodImpl row")
+        methodimpls_by_declaration.setdefault(id(row.MethodDeclaration.row), []).append({
+            "methodimpl_token": f"0x{0x19000000 | i:08x}",
+            "class_token": token(row.Class),
+            "class_type": type_name(row.Class.row),
+            "body_token": token(row.MethodBody),
+            "body_owner": owners.get(id(row.MethodBody.row)),
+            "body_method": str(getattr(row.MethodBody.row, "Name", "")),
+            "declaration_token": token(row.MethodDeclaration),
+        })
+
+    def base_is(candidate, wanted):
+        seen = set()
+        current = candidate
+        while current is not None and id(current) not in seen:
+            seen.add(id(current))
+            ext = getattr(current, "Extends", None)
+            if ext is None or not ext.row_index or ext.row is None:
+                return False
+            if ext.table.name != "TypeDef":
+                return False
+            current = ext.row
+            if current is wanted:
+                return True
+        return False
+
+    def implements_interface(candidate, wanted):
+        seen_types, seen_interfaces = set(), set()
+        stack = [candidate]
+        while stack:
+            current = stack.pop()
+            if id(current) in seen_types:
+                continue
+            seen_types.add(id(current))
+            for iface in direct_interfaces.get(id(current), []):
+                if iface is wanted:
+                    return True
+                if hasattr(iface, "MethodList") and id(iface) not in seen_interfaces:
+                    seen_interfaces.add(id(iface))
+                    stack.append(iface)
+            ext = getattr(current, "Extends", None)
+            if ext is not None and ext.row_index and ext.row is not None and ext.table.name == "TypeDef":
+                stack.append(ext.row)
+        return False
+
+    def dispatch_review(declaration, owner):
+        interface = bool(getattr(owner.Flags, "tdInterface", False))
+        abstract_owner = bool(getattr(owner.Flags, "tdAbstract", False))
+        if not abstract_owner:
+            raise ValueError("Abstract method owner is not metadata-abstract")
+        candidates = []
+        for candidate_type in type_defs:
+            if candidate_type is owner:
+                continue
+            eligible = (implements_interface(candidate_type, owner) if interface
+                        else base_is(candidate_type, owner))
+            if not eligible:
+                continue
+            for method_index in candidate_type.MethodList:
+                candidate = method_index.row
+                if (str(candidate.Name) == str(declaration.Name)
+                        and candidate.Signature.value == declaration.Signature.value):
+                    candidates.append({
+                        **targets[id(candidate)],
+                        "rva": candidate.Rva,
+                        "abstract": bool(candidate.struct.Flags & 0x0400),
+                        "body_in_exact_blackmesa_dll": bool(candidate.Rva),
+                    })
+        explicit = methodimpls_by_declaration.get(id(declaration), [])
+        dedup = {}
+        for entry in candidates:
+            dedup[entry["method_token"]] = entry
+        return {
+            "declaration_kind": "INTERFACE" if interface else "ABSTRACT_CLASS",
+            "owner_type_flags": flags(owner.Flags),
+            "module_internal_signature_matches": list(dedup.values()),
+            "module_internal_explicit_methodimpls": explicit,
+            "module_internal_body_tokens": sorted(
+                x["method_token"] for x in dedup.values() if x["body_in_exact_blackmesa_dll"]
+            ),
+            "external_implementation_boundary": (
+                "Implementations declared in other assemblies are not enumerated or claimed "
+                "inspected. This review establishes only that the exact BlackMesa.dll declaration "
+                "itself has no body and identifies module-internal dispatch candidates whose RVA "
+                "bodies are part of the existing complete v2 IL body scan."
+            ),
+        }
+
     blockers = []
     implmaps = []
     for i, row in enumerate(tables.ImplMap or [], 1):
@@ -613,12 +803,26 @@ def capture_metadata(data):
                     and not semantics["abstract"]):
                 record["classification"] = "RUNTIME_PROVIDED_DELEGATE_MEMBER"
             elif not external and semantics["abstract"] and (impl & 3) == 0:
-                record["classification"] = "ABSTRACT_DECLARATION_REQUIRES_DISPATCH_REVIEW"
-                blockers.append("Abstract dispatch requires review: " + method_token)
+                review = dispatch_review(m, owner)
+                record["dispatch_review"] = review
+                record["classification"] = (
+                    "ABSTRACT_INTERFACE_DECLARATION_NO_BODY_DISPATCH_ENUMERATED"
+                    if review["declaration_kind"] == "INTERFACE"
+                    else "ABSTRACT_CLASS_DECLARATION_NO_BODY_DISPATCH_ENUMERATED"
+                )
             else:
                 record["classification"] = "UNRESOLVED_NO_RVA"
                 blockers.append("Unresolved RVA-less method: " + method_token)
             bodyless.append(record)
+    reviewed_abstract_tokens = {
+        x["method_token"] for x in bodyless
+        if x["classification"].startswith("ABSTRACT_")
+    }
+    if reviewed_abstract_tokens != EXPECTED_ABSTRACT_NO_RVA_TOKENS:
+        blockers.append(
+            "Exact abstract no-RVA token set mismatch: "
+            + json.dumps(sorted(reviewed_abstract_tokens))
+        )
     if implmaps:
         blockers.append("ImplMap entries require external-path review")
 
@@ -655,6 +859,17 @@ def capture_metadata(data):
                     raise ValueError("Attribute constructor is not .ctor")
                 record["decoded"] = decode_custom_attribute(ctor.Signature.value, ca.Value.value, resolve_type)
                 record["decode_status"] = "COMPLETE"
+                if is_patch:
+                    fixed = record["decoded"]["fixed_arguments"]
+                    if record["decoded"]["named_arguments"]:
+                        raise ValueError("HarmonyPatch named target arguments are not supported")
+                    signature = tuple(x["type"] for x in fixed)
+                    fields = HARMONY_PATCH_BINDING_PATTERNS.get(signature)
+                    if fields is None:
+                        raise ValueError("Unsupported HarmonyPatch binding signature: " + repr(signature))
+                    record["target_fragment"] = {
+                        field: fixed[i]["value"] for i, field in enumerate(fields)
+                    }
             except Exception as exc:
                 record["decode_status"] = "UNRESOLVED"
                 record["error"] = str(exc)
@@ -695,12 +910,40 @@ def capture_metadata(data):
                      ("HarmonyLib.HarmonyPrefix", "HarmonyLib.HarmonyPostfix", "HarmonyLib.HarmonyTranspiler", "HarmonyLib.HarmonyFinalizer", "HarmonyLib.HarmonyReversePatch")]
             if method_patches or roles or m["method"] in ("Prefix", "Postfix", "Transpiler", "Finalizer"):
                 fragments = class_patches + method_patches
-                declarations.append({"patch_method": m, "roles": roles,
-                                     "class_attribute_tokens": [x["attribute_token"] for x in class_patches],
-                                     "method_attribute_tokens": [x["attribute_token"] for x in method_patches],
-                                     "declared_target_fragments": [x.get("decoded") for x in fragments]})
-                if not fragments:
-                    blockers.append("Patch method without target declaration: " + m["method_token"])
+                merged_target, conflicts, unresolved = {}, [], []
+                for fragment in fragments:
+                    if fragment.get("decode_status") != "COMPLETE" or "target_fragment" not in fragment:
+                        unresolved.append(fragment["attribute_token"])
+                        continue
+                    for key, value in fragment["target_fragment"].items():
+                        if key in merged_target and merged_target[key] != value:
+                            conflicts.append({
+                                "field": key,
+                                "existing": merged_target[key],
+                                "incoming": value,
+                                "attribute_token": fragment["attribute_token"],
+                            })
+                        else:
+                            merged_target[key] = value
+                binding_status = "COMPLETE"
+                if not fragments or unresolved or conflicts:
+                    binding_status = "UNRESOLVED"
+                if "declaring_type" not in merged_target or "method_name" not in merged_target:
+                    binding_status = "UNRESOLVED"
+                declaration = {
+                    "patch_method": m,
+                    "roles": roles,
+                    "class_attribute_tokens": [x["attribute_token"] for x in class_patches],
+                    "method_attribute_tokens": [x["attribute_token"] for x in method_patches],
+                    "declared_target_fragments": [x.get("target_fragment") for x in fragments],
+                    "declared_target": merged_target,
+                    "binding_status": binding_status,
+                    "unresolved_attribute_tokens": unresolved,
+                    "conflicts": conflicts,
+                }
+                declarations.append(declaration)
+                if binding_status != "COMPLETE":
+                    blockers.append("Unresolved Harmony target binding: " + m["method_token"])
     coverage = {"type_defs": len(tables.TypeDef.rows), "method_defs": len(tables.MethodDef.rows),
                 "methods_with_rva": sum(bool(x.Rva) for x in tables.MethodDef),
                 "methods_without_rva": len(bodyless), "impl_map_rows": len(implmaps),
@@ -708,11 +951,17 @@ def capture_metadata(data):
                 "patch_types": len(patch_types), "scoped_attributes": len(attributes),
                 "assembly_harmony_patch_attributes": all_harmony_patch_count,
                 "scoped_harmony_patch_attributes": len(patch_attributes),
-                "decoded_harmony_patch_attributes": sum(x.get("decode_status") == "COMPLETE" for x in patch_attributes)}
+                "decoded_harmony_patch_attributes": sum(x.get("decode_status") == "COMPLETE" for x in patch_attributes),
+                "resolved_harmony_target_declarations": sum(
+                    x["binding_status"] == "COMPLETE" for x in declarations
+                ),
+                "abstract_dispatch_declarations_reviewed": len(reviewed_abstract_tokens)}
     if (coverage["type_defs"], coverage["method_defs"], coverage["methods_with_rva"], len(bodyless)) != (91, 576, 568, 8):
         blockers.append("Exact v2 metadata coverage mismatch")
     if not patch_types or not patch_attributes or not declarations:
         blockers.append("No usable Harmony target metadata")
+    if len(declarations) != 18 or coverage["resolved_harmony_target_declarations"] != 18:
+        blockers.append("Exact Harmony target declaration coverage mismatch")
     blockers = sorted(set(blockers))
     return {"schema_version": "phase-c3f3-metadata-1", "package": PACKAGE, "version": VERSION,
             "dll_member": DLL_MEMBER, "dll_bytes": len(data), "dll_sha256": sha256(data),
@@ -720,9 +969,16 @@ def capture_metadata(data):
             "coverage": coverage, "methods_without_rva": bodyless, "exceptional_methods": exceptional,
             "impl_maps": implmaps, "patch_types": patch_types, "scoped_custom_attributes": attributes,
             "harmony_target_declarations": declarations, "dynamic_target_resolvers": dynamic_targets,
+            "external_enum_provenance": {
+                name: spec["provenance"] | {
+                    "underlying_type": spec["underlying_type"],
+                    "values": spec["values"],
+                }
+                for name, spec in PINNED_EXTERNAL_ENUMS.items()
+            },
             "blockers": blockers,
             "summary": {**coverage, "blockers": len(blockers)},
-            "proof_boundary": "Static metadata capture, not automatic C3F3 clearance. Review exact class/method target fragments together with existing v2 IL evidence. Declared target types/names are not proof of external overload resolution, final patch order, actual runtime behavior or general interior compatibility. No mod assembly is loaded or executed."}
+            "proof_boundary": "Static metadata capture, not automatic C3F3 clearance. Abstract declarations have no body in exact BlackMesa.dll; module-internal dispatch candidates are enumerated and any RVA bodies remain covered by the existing complete v2 IL scan, while implementations declared in external assemblies are explicitly not claimed inspected. Class/method HarmonyPatch fragments are bound only when non-contradictory and fully decoded. Declared external target types/names/method kinds are not proof of external overload resolution, final patch order, actual runtime behavior or general interior compatibility. No mod assembly is loaded or executed."}
 
 
 def main():
