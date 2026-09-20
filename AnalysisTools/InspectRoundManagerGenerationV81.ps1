@@ -13,7 +13,8 @@ $ExpectedSteamBuildId = '22825947'
 $ExpectedAppManifestSha256 = 'fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432'
 $ReviewedAppManifestSha256 = @(
     $ExpectedAppManifestSha256,
-    'b431704ad9cf0e44cba506274f6059d021e35f434af6ef27f3abd44c5d1e6ae3'
+    'b431704ad9cf0e44cba506274f6059d021e35f434af6ef27f3abd44c5d1e6ae3',
+    '132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e'
 )
 $ManifestReview = 'AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md'
 $PriorManifest = 'SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json'

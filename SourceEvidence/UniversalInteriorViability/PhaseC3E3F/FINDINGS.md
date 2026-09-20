@@ -83,3 +83,16 @@ Nothing in gameplay/configuration changes:
 Next **C3E3G** starts only after the focused source-capture branch exists. Ingest and verify that capture, inspect only the two required method bodies plus their selected callers, and decide the exact `spawnEnemiesAndScrap = false` callsite reachability.
 
 Do not launch the game for this source capture. Do not begin Oxyde entrance/topology analysis before the upstream gate is resolved. No gameplay candidate/runtime test is authorized.
+
+
+## 2026-09-20 capture retry — reviewed Steam manifest drift
+
+The first generation-helper execution after C3E3F passed the installed Assembly-CSharp, executable, App ID and Steam build gates, then failed closed on an unreviewed appmanifest SHA-256:
+
+`132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e`
+
+This is materially the same provenance class already handled by the 2026-09-11 RoundManager review: the mutable Steam manifest bytes changed while the pinned game binaries and build identity passed first. The exact new hash is therefore added as a third reviewed manifest variant, still only valid together with Assembly-CSharp SHA-256 `5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731`, executable SHA-256 `24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1`, App ID `1966720` and build ID `22825947`.
+
+No wildcard, bypass or automatic manifest adoption is introduced. Unknown future manifest hashes still fail closed. The exact changed Steam metadata fields and reason for the drift remain unknown.
+
+Both the original RoundManager spawning helper and the C3E3F generation helper share the expanded reviewed allowlist so their provenance contracts do not diverge.
