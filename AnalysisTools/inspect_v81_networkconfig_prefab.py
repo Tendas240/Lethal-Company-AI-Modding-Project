@@ -18,6 +18,7 @@ import sys
 UNITYPY_VERSION = "1.25.3"
 DNFILE_VERSION = "0.18.0"
 DNCIL_VERSION = "1.0.2"
+TTGEN_VERSION = "0.0.10"
 TARGET_NAME = "EntranceTeleportB"
 NETWORK_MANAGER_SCRIPT = ("NetworkManager", "Unity.Netcode", "unity.netcode.runtime")
 NETWORK_MANAGER_FULL_NAME = "Unity.Netcode.NetworkManager"
@@ -185,6 +186,9 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
     version = importlib.metadata.version("UnityPy")
     if version != UNITYPY_VERSION:
         raise ValueError(f"Expected UnityPy {UNITYPY_VERSION}, got {version}")
+    ttgen_version = importlib.metadata.version("TypeTreeGeneratorAPI")
+    if ttgen_version != TTGEN_VERSION:
+        raise ValueError(f"Expected TypeTreeGeneratorAPI {TTGEN_VERSION}, got {ttgen_version}")
 
     files_on_disk = candidate_asset_files(data_root)
     if not files_on_disk:
@@ -215,8 +219,35 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
     if duplicate_names:
         raise ValueError("Ambiguous serialized-file names: " + ", ".join(sorted(duplicate_names)))
 
+    unity_versions = sorted({
+        str(getattr(sf, "unity_version", "") or "").strip()
+        for sf in serialized_files.values()
+        if str(getattr(sf, "unity_version", "") or "").strip()
+    })
+    if len(unity_versions) != 1:
+        raise ValueError("Expected exactly one Unity serialized-file version, found: " + json.dumps(unity_versions))
+    unity_version = unity_versions[0]
+
+    from UnityPy.helpers.TypeTreeGenerator import TypeTreeGenerator
+    generator = TypeTreeGenerator(unity_version)
+    managed_dir = data_root / "Managed"
+    generator_inputs = []
+    for dll_name in ("Assembly-CSharp.dll", "Unity.Netcode.Runtime.dll"):
+        dll_path = managed_dir / dll_name
+        if not dll_path.is_file():
+            raise ValueError("TypeTree recovery input missing: " + dll_name)
+        dll_bytes = dll_path.read_bytes()
+        generator.load_dll(dll_bytes)
+        generator_inputs.append({
+            "logical_path": "Managed/" + dll_name,
+            "bytes": len(dll_bytes),
+            "sha256": hashlib.sha256(dll_bytes).hexdigest(),
+        })
+
     by_id = {(o.assets_file.name, o.path_id): o for o in objects}
-    cache = {}
+    raw_cache = {}
+    full_cache = {}
+    descriptor_cache = {}
 
     def ident(obj):
         return {
@@ -225,11 +256,11 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             "type": obj.type.name,
         }
 
-    def read(obj):
+    def read_raw(obj):
         key = (obj.assets_file.name, obj.path_id)
-        if key not in cache:
-            cache[key] = obj.read_typetree()
-        return cache[key]
+        if key not in raw_cache:
+            raw_cache[key] = obj.read_typetree()
+        return raw_cache[key]
 
     def resolve(owner, ptr):
         if not is_pptr(ptr):
@@ -256,7 +287,7 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
         if obj.type.name != "MonoScript":
             continue
         try:
-            tree = read(obj)
+            tree = read_raw(obj)
         except Exception as exc:
             script_errors.append({**ident(obj), "error": f"{type(exc).__name__}: {exc}"})
             continue
@@ -267,14 +298,93 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             "assembly": tree.get("m_AssemblyName"),
         }
 
-    def script_descriptor(mb_obj, mb_tree):
-        script, status = resolve(mb_obj, mb_tree.get("m_Script"))
-        if status == "NULL":
-            return None, status
-        if status != "RESOLVED":
-            return None, status
-        rec = script_map.get((script.assets_file.name, script.path_id))
-        return (rec, "RESOLVED") if rec else (None, "RESOLVED_NOT_MONOSCRIPT")
+    def script_descriptor(mb_obj, mb_tree=None):
+        key = (mb_obj.assets_file.name, mb_obj.path_id)
+        if key in descriptor_cache:
+            return descriptor_cache[key]
+        if mb_tree is None:
+            mb_tree = read_raw(mb_obj)
+
+        script, direct_status = resolve(mb_obj, mb_tree.get("m_Script"))
+        if direct_status == "RESOLVED":
+            rec = script_map.get((script.assets_file.name, script.path_id))
+            if rec is not None:
+                result = (rec, "RESOLVED", "OBJECT_M_SCRIPT")
+                descriptor_cache[key] = result
+                return result
+
+        serialized_type = getattr(mb_obj, "serialized_type", None)
+        script_type_index = -1 if serialized_type is None else getattr(serialized_type, "script_type_index", -1)
+        try:
+            script_type_index = int(script_type_index)
+        except (TypeError, ValueError):
+            script_type_index = -1
+        script_types = getattr(mb_obj.assets_file, "script_types", None) or []
+        if script_type_index >= 0:
+            if script_type_index >= len(script_types):
+                result = (None, "INVALID_SCRIPT_TYPE_INDEX", "SERIALIZED_TYPE_INDEX")
+                descriptor_cache[key] = result
+                return result
+            script_type = script_types[script_type_index]
+            ptr = {
+                "m_FileID": int(script_type.local_serialized_file_index),
+                "m_PathID": int(script_type.local_identifier_in_file),
+            }
+            script, type_status = resolve(mb_obj, ptr)
+            if type_status != "RESOLVED":
+                result = (None, "SCRIPT_TYPE_" + type_status, "SERIALIZED_TYPE_INDEX")
+                descriptor_cache[key] = result
+                return result
+            rec = script_map.get((script.assets_file.name, script.path_id))
+            if rec is None:
+                result = (None, "SCRIPT_TYPE_RESOLVED_NOT_MONOSCRIPT", "SERIALIZED_TYPE_INDEX")
+                descriptor_cache[key] = result
+                return result
+            result = (rec, "RESOLVED", "SERIALIZED_TYPE_INDEX")
+            descriptor_cache[key] = result
+            return result
+
+        result = (None, direct_status, "OBJECT_M_SCRIPT")
+        descriptor_cache[key] = result
+        return result
+
+    def read(obj):
+        key = (obj.assets_file.name, obj.path_id)
+        if key in full_cache:
+            return full_cache[key]
+        if obj.type.name != "MonoBehaviour":
+            tree = read_raw(obj)
+            full_cache[key] = tree
+            return tree
+
+        head = read_raw(obj)
+        desc, status, source = script_descriptor(obj, head)
+        if status != "RESOLVED" or desc is None:
+            raise ValueError(
+                "Cannot recover exact MonoBehaviour identity for "
+                + json.dumps({**ident(obj), "script_status": status, "script_source": source})
+            )
+        namespace = str(desc.get("namespace") or "")
+        class_name = str(desc.get("class") or "")
+        assembly = str(desc.get("assembly") or "")
+        if not class_name or not assembly:
+            raise ValueError("Resolved MonoScript descriptor is incomplete: " + json.dumps(desc))
+        fullname = f"{namespace}.{class_name}" if namespace else class_name
+        try:
+            nodes = generator.get_nodes_up(assembly, fullname)
+            tree = obj.read_typetree(nodes=nodes)
+        except Exception as exc:
+            raise ValueError(
+                "Exact TypeTree recovery failed for "
+                + json.dumps({
+                    **ident(obj),
+                    "script": desc,
+                    "script_source": source,
+                    "error": f"{type(exc).__name__}: {exc}",
+                })
+            ) from exc
+        full_cache[key] = tree
+        return tree
 
     allowed_derived_scripts = {
         (
@@ -334,29 +444,37 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
     structural_config_candidates = []
     unresolved_script_count = 0
     null_script_count = 0
+    descriptor_source_counts = Counter()
     for obj in objects:
         if obj.type.name != "MonoBehaviour":
             continue
         try:
-            tree = read(obj)
+            head = read_raw(obj)
         except Exception:
             continue
-        desc, status = script_descriptor(obj, tree)
-        if status == "NULL":
+        desc, status, descriptor_source = script_descriptor(obj, head)
+        descriptor_source_counts[f"{descriptor_source}:{status}"] += 1
+        script_ptr = head.get("m_Script")
+        if is_pptr(script_ptr) and script_ptr.get("m_PathID") == 0:
             null_script_count += 1
-        elif status != "RESOLVED":
+        if status != "RESOLVED":
             unresolved_script_count += 1
 
+        proof_kind = manager_owner_proof(desc, head)
+        if not proof_kind:
+            continue
+
+        tree = read(obj)
         config_hits = [
             (path, value)
             for path, value in walk(tree)
             if path and path[-1].casefold() == "networkconfig"
         ]
-        proof_kind = manager_owner_proof(desc, tree)
         if config_hits:
             structural_config_candidates.append({
                 **ident(obj),
                 "script_status": status,
+                "script_source": descriptor_source,
                 "script": desc,
                 "manager_owner_proof": proof_kind,
                 "editor_class_identifier": tree.get("m_EditorClassIdentifier"),
@@ -372,8 +490,7 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
                     1 for _, value in config_hits if isinstance(value, (dict, list))
                 ),
             })
-        if proof_kind:
-            manager_candidates.append((obj, tree, desc, config_hits, status, proof_kind))
+        manager_candidates.append((obj, tree, desc, config_hits, status, descriptor_source, proof_kind))
 
     exact_manager_candidates = [
         row
@@ -390,19 +507,19 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
                     1 for _, value in config_hits if isinstance(value, (dict, list))
                 ),
             }
-            for obj, _, desc, config_hits, script_status, proof_kind in manager_candidates
+            for obj, _, desc, config_hits, script_status, descriptor_source, proof_kind in manager_candidates
         ]
         raise ValueError(
-            "Expected exactly one serialized NetworkManager owner proven by exact MonoScript identity, "
-            "exact Netcode metadata canonicalization, exact editor class identifier, or an exact Assembly-CSharp "
-            "inheritance edge; "
+            "Expected exactly one serialized NetworkManager owner with one structured NetworkConfig subtree after "
+            "exact SerializedType/MonoScript identity recovery; "
             f"found {len(exact_manager_candidates)} qualifying of {len(manager_candidates)} proven owner candidate(s); "
-            f"unresolved non-null script pointers={unresolved_script_count}; null script pointers={null_script_count}; "
+            f"unresolved MonoBehaviour identities={unresolved_script_count}; object-level null m_Script pointers={null_script_count}; "
+            f"descriptor sources={json.dumps(dict(sorted(descriptor_source_counts.items())))}; "
             f"proven candidates={json.dumps(diagnostics)}; "
             f"structural NetworkConfig candidates={json.dumps(structural_config_candidates)}"
         )
 
-    manager_obj, manager_tree, manager_script, config_hits, manager_script_status, manager_proof_kind = exact_manager_candidates[0]
+    manager_obj, manager_tree, manager_script, config_hits, manager_script_status, manager_descriptor_source, manager_proof_kind = exact_manager_candidates[0]
     if len(config_hits) != 1:
         raise ValueError(f"Expected exactly one NetworkConfig subtree on Unity.Netcode.NetworkManager, found {len(config_hits)}")
     config_path, config_tree = config_hits[0]
@@ -449,13 +566,15 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
                 return
             if target.type.name == "MonoBehaviour":
                 try:
+                    target_head = read_raw(target)
+                    desc, desc_status, desc_source = script_descriptor(target, target_head)
                     target_tree = read(target)
                 except Exception as exc:
                     unresolved_registry.append({**edge, "status": "TARGET_PARSE_ERROR", "error": f"{type(exc).__name__}: {exc}"})
                     return
-                desc, desc_status = script_descriptor(target, target_tree)
                 edge["target_script"] = desc
                 edge["target_script_status"] = desc_status
+                edge["target_script_source"] = desc_source
                 key = (target.assets_file.name, target.path_id)
                 if key in visited_objects:
                     return
@@ -517,14 +636,16 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             if target.type.name != "MonoBehaviour":
                 components.append({**ident(target), "component_kind": target.type.name})
                 continue
-            tree = read(target)
-            desc, desc_status = script_descriptor(target, tree)
+            head = read_raw(target)
+            desc, desc_status, desc_source = script_descriptor(target, head)
             if desc_status != "RESOLVED" or desc is None:
                 raise ValueError(f"Unresolved MonoBehaviour script on target hierarchy: {desc_status}")
+            tree = read(target)
             comp = {
                 **ident(target),
                 "component_kind": "MonoBehaviour",
                 "script": desc,
+                "script_source": desc_source,
             }
             if desc.get("class") == "EntranceTeleport":
                 comp["entrance_fields"] = {
@@ -621,12 +742,19 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
         "network_manager": {
             **ident(manager_obj),
             "script_status": manager_script_status,
+            "script_source": manager_descriptor_source,
             "script": manager_script,
             "owner_kind": owner_kind,
             "editor_class_identifier": manager_tree.get("m_EditorClassIdentifier"),
             "network_config_path": path_text(config_path),
         },
         "network_manager_owner_proof": game_owner_proof,
+        "typetree_recovery": {
+            "unity_version": unity_version,
+            "TypeTreeGeneratorAPI": ttgen_version,
+            "generator_inputs": generator_inputs,
+            "descriptor_source_counts": dict(sorted(descriptor_source_counts.items())),
+        },
         "network_config_prefab_field_paths": sorted(prefab_field_paths),
         "network_config_prefab_edges": registry_edges,
         "registered_gameobject_count": len(registered),
@@ -825,6 +953,7 @@ def self_test():
         "GameNetworkManager", "", "assembly-csharp"
     )
     assert normalize_assembly("Unity.Netcode.Runtime.dll") == "unity.netcode.runtime"
+    assert importlib.metadata.version("TypeTreeGeneratorAPI") == TTGEN_VERSION
     print("V81 NetworkConfig EntranceTeleportB scanner self-test passed")
 
 
@@ -847,18 +976,22 @@ def main():
         raise ValueError("--out is required")
 
     result = {
-        "schema_version": "v81-networkconfig-entranceteleportb-2",
+        "schema_version": "v81-networkconfig-entranceteleportb-3",
         "target_name": TARGET_NAME,
         "proof_boundary": (
-            "Static installed-V81 base-game asset plus Unity.Netcode.Runtime.dll evidence only. "
-            "No game/mod assembly is loaded or executed. GameObject name alone is never treated as registration proof; "
-            "the target must be reached from the exact serialized Unity.Netcode.NetworkManager.NetworkConfig prefab path."
+            "Static installed-V81 base-game serialized assets plus exact installed Assembly-CSharp.dll and "
+            "Unity.Netcode.Runtime.dll metadata only. Managed code is never loaded or executed. Stripped/null object-level "
+            "m_Script references may be recovered only through the serialized file's exact SerializedType script_type_index "
+            "to MonoScript mapping, and missing TypeTrees are generated statically from those exact installed assemblies. "
+            "GameObject name alone is never registration proof; the target must be reached from the proven serialized "
+            "Unity.Netcode.NetworkManager.NetworkConfig prefab-list path."
         ),
         "toolchain": {
             "python": sys.version.split()[0],
             "UnityPy": importlib.metadata.version("UnityPy"),
             "dnfile": importlib.metadata.version("dnfile"),
             "dncil": importlib.metadata.version("dncil"),
+            "TypeTreeGeneratorAPI": importlib.metadata.version("TypeTreeGeneratorAPI"),
         },
         "netcode": None,
         "assets": None,

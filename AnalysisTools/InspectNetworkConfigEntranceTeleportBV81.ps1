@@ -23,7 +23,7 @@ $ScannerRepositoryPath = 'AnalysisTools/inspect_v81_networkconfig_prefab.py'
 $EvidenceRoot = 'SourceEvidence/VanillaV81/NetworkConfigEntranceTeleportB'
 $CaptureName = 'NETWORK_CONFIG_PREFAB_CAPTURE.json'
 $Utf8 = New-Object System.Text.UTF8Encoding($false)
-$RequiredPythonPackages = @('UnityPy==1.25.3', 'dnfile==0.18.0', 'dncil==1.0.2')
+$RequiredPythonPackages = @('UnityPy==1.25.3', 'dnfile==0.18.0', 'dncil==1.0.2', 'TypeTreeGeneratorAPI==0.0.10')
 $BootstrapPythonVersion = '3.11.9'
 $BootstrapPythonUrl = 'https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.zip'
 $BootstrapPythonSha256 = '4ba90a4ab8990891033d37ff04d2047fdae8948d0d2729a68d3a6a17c585b681'
@@ -414,7 +414,7 @@ try {
     if (-not (Test-Path -LiteralPath $capturePath -PathType Leaf)) { throw 'Scanner did not produce the expected capture JSON.' }
     $capture = Get-Content -LiteralPath $capturePath -Raw
     $captureObject = $capture | ConvertFrom-Json
-    if ($captureObject.schema_version -cne 'v81-networkconfig-entranceteleportb-2') { throw 'Unexpected capture schema.' }
+    if ($captureObject.schema_version -cne 'v81-networkconfig-entranceteleportb-3') { throw 'Unexpected capture schema.' }
     $allowedStatus = @('REGISTERED_SURFACE_PROVEN', 'REGISTERED_SURFACE_INCOMPLETE', 'EXACT_NAME_NOT_REGISTERED', 'AMBIGUOUS_MULTIPLE_EXACT_MATCHES')
     if ($allowedStatus -notcontains $captureObject.assets.target_status) { throw ('Unexpected target status: ' + $captureObject.assets.target_status) }
     if ($captureObject.netcode.dll_sha256 -ne $netcodeSha) { throw 'Scanner Netcode SHA disagrees with wrapper hash.' }
