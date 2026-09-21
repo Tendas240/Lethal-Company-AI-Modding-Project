@@ -63,3 +63,36 @@ jobs:
       - name: Enforce fail-closed provenance capture
         if: steps.capture.outcome != 'success'
         run: exit 1
+
+
+  capture:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check dnfile==0.18.0 dncil==1.0.2 PyYAML==6.0.2
+      - name: Bind exact checked-out head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+      - name: Capture exact locked LLL restoration IL
+        id: capture
+        continue-on-error: true
+        run: python AnalysisTools/inspect_universal_interior_c3f10b.py --out c3f10b-capture
+      - name: Upload derived LLL restoration capture JSON only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c3f10b-lll-capture-${{ github.event.pull_request.head.sha || github.sha }}
+          path: c3f10b-capture/*.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Enforce fail-closed locked capture
+        if: steps.capture.outcome != 'success'
+        run: exit 1
