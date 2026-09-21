@@ -13,6 +13,7 @@ import hashlib
 import importlib.metadata
 import json
 from pathlib import Path
+import struct
 import sys
 
 UNITYPY_VERSION = "1.25.3"
@@ -38,9 +39,86 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def _rol32(value: int, shift: int) -> int:
+    value &= 0xFFFFFFFF
+    return ((value << shift) | (value >> (32 - shift))) & 0xFFFFFFFF
+
+
+def md4_digest(data: bytes) -> bytes:
+    """Small deterministic MD4 implementation used only for Unity serialized scriptID recovery."""
+    message = bytearray(data)
+    bit_length = (len(message) * 8) & 0xFFFFFFFFFFFFFFFF
+    message.append(0x80)
+    while len(message) % 64 != 56:
+        message.append(0)
+    message.extend(bit_length.to_bytes(8, "little"))
+
+    a0, b0, c0, d0 = 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476
+
+    def f(x, y, z):
+        return (x & y) | ((~x) & z)
+
+    def g(x, y, z):
+        return (x & y) | (x & z) | (y & z)
+
+    def h(x, y, z):
+        return x ^ y ^ z
+
+    for offset in range(0, len(message), 64):
+        x = struct.unpack("<16I", message[offset:offset + 64])
+        a, b, c, d = a0, b0, c0, d0
+
+        for i in range(16):
+            if i % 4 == 0:
+                a = _rol32(a + f(b, c, d) + x[i], 3)
+            elif i % 4 == 1:
+                d = _rol32(d + f(a, b, c) + x[i], 7)
+            elif i % 4 == 2:
+                c = _rol32(c + f(d, a, b) + x[i], 11)
+            else:
+                b = _rol32(b + f(c, d, a) + x[i], 19)
+
+        for i, k in enumerate((0, 4, 8, 12, 1, 5, 9, 13, 2, 6, 10, 14, 3, 7, 11, 15)):
+            if i % 4 == 0:
+                a = _rol32(a + g(b, c, d) + x[k] + 0x5A827999, 3)
+            elif i % 4 == 1:
+                d = _rol32(d + g(a, b, c) + x[k] + 0x5A827999, 5)
+            elif i % 4 == 2:
+                c = _rol32(c + g(d, a, b) + x[k] + 0x5A827999, 9)
+            else:
+                b = _rol32(b + g(c, d, a) + x[k] + 0x5A827999, 13)
+
+        for i, k in enumerate((0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15)):
+            if i % 4 == 0:
+                a = _rol32(a + h(b, c, d) + x[k] + 0x6ED9EBA1, 3)
+            elif i % 4 == 1:
+                d = _rol32(d + h(a, b, c) + x[k] + 0x6ED9EBA1, 9)
+            elif i % 4 == 2:
+                c = _rol32(c + h(d, a, b) + x[k] + 0x6ED9EBA1, 11)
+            else:
+                b = _rol32(b + h(c, d, a) + x[k] + 0x6ED9EBA1, 15)
+
+        a0 = (a0 + a) & 0xFFFFFFFF
+        b0 = (b0 + b) & 0xFFFFFFFF
+        c0 = (c0 + c) & 0xFFFFFFFF
+        d0 = (d0 + d) & 0xFFFFFFFF
+
+    return struct.pack("<4I", a0, b0, c0, d0)
+
+
 def normalize_assembly(value) -> str:
     text = "" if value is None else str(value).strip().lower()
     return text[:-4] if text.endswith(".dll") else text
+
+
+def script_id_digest(desc, convention: str) -> bytes:
+    assembly = str(desc.get("assembly") or "")
+    if convention == "ASSEMBLY_NAME_NO_DLL":
+        assembly = assembly[:-4] if assembly.lower().endswith(".dll") else assembly
+    elif convention != "MONOSCRIPT_ASSEMBLY_LITERAL":
+        raise ValueError("Unknown serialized scriptID convention: " + convention)
+    payload = assembly + str(desc.get("namespace") or "") + str(desc.get("class") or "")
+    return md4_digest(payload.encode("utf-8"))
 
 
 def is_pptr(value) -> bool:
@@ -298,6 +376,97 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             "assembly": tree.get("m_AssemblyName"),
         }
 
+    def serialized_script_id(obj):
+        st = getattr(obj, "serialized_type", None)
+        value = None if st is None else getattr(st, "script_id", None)
+        if not isinstance(value, (bytes, bytearray)) or len(value) != 16:
+            return None
+        value = bytes(value)
+        return value if any(value) else None
+
+    convention_matches = Counter()
+    convention_samples = 0
+    for obj in objects:
+        if obj.type.name != "MonoBehaviour":
+            continue
+        sid = serialized_script_id(obj)
+        if sid is None:
+            continue
+        try:
+            head = read_raw(obj)
+        except Exception:
+            continue
+        script, direct_status = resolve(obj, head.get("m_Script"))
+        if direct_status != "RESOLVED":
+            continue
+        rec = script_map.get((script.assets_file.name, script.path_id))
+        if rec is None:
+            continue
+        convention_samples += 1
+        for convention in ("MONOSCRIPT_ASSEMBLY_LITERAL", "ASSEMBLY_NAME_NO_DLL"):
+            if script_id_digest(rec, convention) == sid:
+                convention_matches[convention] += 1
+
+    if convention_samples == 0:
+        raise ValueError("Could not calibrate serialized scriptID hashing against any resolved installed MonoScript reference")
+    valid_conventions = [
+        name for name in ("MONOSCRIPT_ASSEMBLY_LITERAL", "ASSEMBLY_NAME_NO_DLL")
+        if convention_matches[name] == convention_samples
+    ]
+    if not valid_conventions:
+        raise ValueError(
+            "Serialized scriptID hash convention did not validate against all resolved installed MonoScript references: "
+            + json.dumps({"samples": convention_samples, "matches": dict(convention_matches)}, sort_keys=True)
+        )
+    script_id_convention = (
+        "MONOSCRIPT_ASSEMBLY_LITERAL"
+        if "MONOSCRIPT_ASSEMBLY_LITERAL" in valid_conventions
+        else valid_conventions[0]
+    )
+
+    def metadata_type_descriptors(dll_path: Path):
+        import dnfile
+        pe = dnfile.dnPE(str(dll_path))
+        if pe.net is None or pe.net.mdtables is None:
+            raise ValueError("Managed scriptID catalog input is not a readable assembly: " + dll_path.name)
+        assembly_rows = pe.net.mdtables.Assembly or []
+        if not assembly_rows:
+            raise ValueError("Managed scriptID catalog input has no Assembly row: " + dll_path.name)
+        assembly_name = str(assembly_rows.rows[0].Name)
+        if assembly_name != dll_path.stem:
+            raise ValueError(f"Managed scriptID catalog assembly identity mismatch for {dll_path.name}: {assembly_name}")
+        return [
+            {
+                "class": str(t.TypeName),
+                "namespace": str(t.TypeNamespace),
+                "assembly": dll_path.name,
+                "metadata_source": "EXACT_INSTALLED_TYPEDEF",
+            }
+            for t in pe.net.mdtables.TypeDef
+            if str(t.TypeName) != "<Module>"
+        ]
+
+    descriptor_catalog = {}
+    for rec in script_map.values():
+        key = script_identity(rec)
+        if key is not None:
+            descriptor_catalog[key] = dict(rec)
+    for dll_name in ("Assembly-CSharp.dll", "Unity.Netcode.Runtime.dll"):
+        for rec in metadata_type_descriptors(managed_dir / dll_name):
+            key = script_identity(rec)
+            if key not in descriptor_catalog:
+                descriptor_catalog[key] = rec
+
+    script_id_index = {}
+    for rec in descriptor_catalog.values():
+        digest = script_id_digest(rec, script_id_convention).hex()
+        script_id_index.setdefault(digest, []).append(rec)
+    script_id_collisions = {
+        digest: rows
+        for digest, rows in script_id_index.items()
+        if len({script_identity(row) for row in rows}) > 1
+    }
+
     def script_descriptor(mb_obj, mb_tree=None):
         key = (mb_obj.assets_file.name, mb_obj.path_id)
         if key in descriptor_cache:
@@ -341,6 +510,25 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
                 descriptor_cache[key] = result
                 return result
             result = (rec, "RESOLVED", "SERIALIZED_TYPE_INDEX")
+            descriptor_cache[key] = result
+            return result
+
+        sid = serialized_script_id(mb_obj)
+        if sid is not None:
+            candidates = script_id_index.get(sid.hex(), [])
+            unique_candidates = {}
+            for rec in candidates:
+                unique_candidates[script_identity(rec)] = rec
+            rows = list(unique_candidates.values())
+            if len(rows) == 1:
+                result = (rows[0], "RESOLVED", "SERIALIZED_TYPE_SCRIPT_ID")
+                descriptor_cache[key] = result
+                return result
+            if len(rows) > 1:
+                result = (None, "AMBIGUOUS_SCRIPT_ID", "SERIALIZED_TYPE_SCRIPT_ID")
+                descriptor_cache[key] = result
+                return result
+            result = (None, "SCRIPT_ID_NO_EXACT_METADATA_MATCH", "SERIALIZED_TYPE_SCRIPT_ID")
             descriptor_cache[key] = result
             return result
 
@@ -754,6 +942,14 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             "TypeTreeGeneratorAPI": ttgen_version,
             "generator_inputs": generator_inputs,
             "descriptor_source_counts": dict(sorted(descriptor_source_counts.items())),
+            "script_id_recovery": {
+                "convention": script_id_convention,
+                "calibration_samples": convention_samples,
+                "calibration_matches": dict(sorted(convention_matches.items())),
+                "catalog_type_count": len(descriptor_catalog),
+                "hash_entry_count": len(script_id_index),
+                "ambiguous_hash_count": len(script_id_collisions),
+            },
         },
         "network_config_prefab_field_paths": sorted(prefab_field_paths),
         "network_config_prefab_edges": registry_edges,
@@ -953,6 +1149,11 @@ def self_test():
         "GameNetworkManager", "", "assembly-csharp"
     )
     assert normalize_assembly("Unity.Netcode.Runtime.dll") == "unity.netcode.runtime"
+    assert md4_digest(b"").hex() == "31d6cfe0d16ae931b73c59d7e0c089c0"
+    assert md4_digest(b"abc").hex() == "a448017aaf21d8525fc10ae87aa6729d"
+    sample = {"assembly": "Assembly-CSharp.dll", "namespace": "", "class": "EntranceTeleport"}
+    assert len(script_id_digest(sample, "MONOSCRIPT_ASSEMBLY_LITERAL")) == 16
+    assert script_id_digest(sample, "MONOSCRIPT_ASSEMBLY_LITERAL") != script_id_digest(sample, "ASSEMBLY_NAME_NO_DLL")
     assert importlib.metadata.version("TypeTreeGeneratorAPI") == TTGEN_VERSION
     print("V81 NetworkConfig EntranceTeleportB scanner self-test passed")
 
@@ -976,13 +1177,15 @@ def main():
         raise ValueError("--out is required")
 
     result = {
-        "schema_version": "v81-networkconfig-entranceteleportb-3",
+        "schema_version": "v81-networkconfig-entranceteleportb-4",
         "target_name": TARGET_NAME,
         "proof_boundary": (
             "Static installed-V81 base-game serialized assets plus exact installed Assembly-CSharp.dll and "
             "Unity.Netcode.Runtime.dll metadata only. Managed code is never loaded or executed. Stripped/null object-level "
-            "m_Script references may be recovered only through the serialized file's exact SerializedType script_type_index "
-            "to MonoScript mapping, and missing TypeTrees are generated statically from those exact installed assemblies. "
+            "m_Script references may be recovered through the serialized file's exact SerializedType script_type_index "
+            "to MonoScript mapping or, when that index is absent, through the SerializedType 128-bit script_id matched "
+            "against exact installed managed TypeDefs. The script_id convention must first validate against all comparable "
+            "resolved installed MonoScript references. Missing TypeTrees are generated statically from those exact installed assemblies. "
             "GameObject name alone is never registration proof; the target must be reached from the proven serialized "
             "Unity.Netcode.NetworkManager.NetworkConfig prefab-list path."
         ),
