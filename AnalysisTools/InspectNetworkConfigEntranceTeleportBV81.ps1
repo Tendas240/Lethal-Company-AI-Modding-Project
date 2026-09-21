@@ -414,7 +414,7 @@ try {
     if (-not (Test-Path -LiteralPath $capturePath -PathType Leaf)) { throw 'Scanner did not produce the expected capture JSON.' }
     $capture = Get-Content -LiteralPath $capturePath -Raw
     $captureObject = $capture | ConvertFrom-Json
-    if ($captureObject.schema_version -cne 'v81-networkconfig-entranceteleportb-4') { throw 'Unexpected capture schema.' }
+    if ($captureObject.schema_version -cne 'v81-networkconfig-entranceteleportb-5') { throw 'Unexpected capture schema.' }
     $allowedStatus = @('REGISTERED_SURFACE_PROVEN', 'REGISTERED_SURFACE_INCOMPLETE', 'EXACT_NAME_NOT_REGISTERED', 'AMBIGUOUS_MULTIPLE_EXACT_MATCHES')
     if ($allowedStatus -notcontains $captureObject.assets.target_status) { throw ('Unexpected target status: ' + $captureObject.assets.target_status) }
     if ($captureObject.netcode.dll_sha256 -ne $netcodeSha) { throw 'Scanner Netcode SHA disagrees with wrapper hash.' }

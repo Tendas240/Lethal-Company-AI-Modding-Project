@@ -112,12 +112,14 @@ def normalize_assembly(value) -> str:
 
 
 def script_id_digest(desc, convention: str) -> bytes:
+    class_name = str(desc.get("class") or "")
+    namespace = str(desc.get("namespace") or "")
     assembly = str(desc.get("assembly") or "")
-    if convention == "ASSEMBLY_NAME_NO_DLL":
+    if convention == "CLASS_NAMESPACE_ASSEMBLY_NO_DLL":
         assembly = assembly[:-4] if assembly.lower().endswith(".dll") else assembly
-    elif convention != "MONOSCRIPT_ASSEMBLY_LITERAL":
+    elif convention != "CLASS_NAMESPACE_MONOSCRIPT_ASSEMBLY_LITERAL":
         raise ValueError("Unknown serialized scriptID convention: " + convention)
-    payload = assembly + str(desc.get("namespace") or "") + str(desc.get("class") or "")
+    payload = class_name + namespace + assembly
     return md4_digest(payload.encode("utf-8"))
 
 
@@ -403,14 +405,21 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
         if rec is None:
             continue
         convention_samples += 1
-        for convention in ("MONOSCRIPT_ASSEMBLY_LITERAL", "ASSEMBLY_NAME_NO_DLL"):
+        for convention in (
+            "CLASS_NAMESPACE_MONOSCRIPT_ASSEMBLY_LITERAL",
+            "CLASS_NAMESPACE_ASSEMBLY_NO_DLL",
+        ):
             if script_id_digest(rec, convention) == sid:
                 convention_matches[convention] += 1
 
     if convention_samples == 0:
         raise ValueError("Could not calibrate serialized scriptID hashing against any resolved installed MonoScript reference")
     valid_conventions = [
-        name for name in ("MONOSCRIPT_ASSEMBLY_LITERAL", "ASSEMBLY_NAME_NO_DLL")
+        name
+        for name in (
+            "CLASS_NAMESPACE_MONOSCRIPT_ASSEMBLY_LITERAL",
+            "CLASS_NAMESPACE_ASSEMBLY_NO_DLL",
+        )
         if convention_matches[name] == convention_samples
     ]
     if not valid_conventions:
@@ -419,8 +428,8 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             + json.dumps({"samples": convention_samples, "matches": dict(convention_matches)}, sort_keys=True)
         )
     script_id_convention = (
-        "MONOSCRIPT_ASSEMBLY_LITERAL"
-        if "MONOSCRIPT_ASSEMBLY_LITERAL" in valid_conventions
+        "CLASS_NAMESPACE_MONOSCRIPT_ASSEMBLY_LITERAL"
+        if "CLASS_NAMESPACE_MONOSCRIPT_ASSEMBLY_LITERAL" in valid_conventions
         else valid_conventions[0]
     )
 
@@ -1152,8 +1161,11 @@ def self_test():
     assert md4_digest(b"").hex() == "31d6cfe0d16ae931b73c59d7e0c089c0"
     assert md4_digest(b"abc").hex() == "a448017aaf21d8525fc10ae87aa6729d"
     sample = {"assembly": "Assembly-CSharp.dll", "namespace": "", "class": "EntranceTeleport"}
-    assert len(script_id_digest(sample, "MONOSCRIPT_ASSEMBLY_LITERAL")) == 16
-    assert script_id_digest(sample, "MONOSCRIPT_ASSEMBLY_LITERAL") != script_id_digest(sample, "ASSEMBLY_NAME_NO_DLL")
+    expected_script_id = md4_digest(b"EntranceTeleportAssembly-CSharp.dll")
+    assert script_id_digest(sample, "CLASS_NAMESPACE_MONOSCRIPT_ASSEMBLY_LITERAL") == expected_script_id
+    assert script_id_digest(sample, "CLASS_NAMESPACE_MONOSCRIPT_ASSEMBLY_LITERAL") != script_id_digest(
+        sample, "CLASS_NAMESPACE_ASSEMBLY_NO_DLL"
+    )
     assert importlib.metadata.version("TypeTreeGeneratorAPI") == TTGEN_VERSION
     print("V81 NetworkConfig EntranceTeleportB scanner self-test passed")
 
@@ -1177,15 +1189,16 @@ def main():
         raise ValueError("--out is required")
 
     result = {
-        "schema_version": "v81-networkconfig-entranceteleportb-4",
+        "schema_version": "v81-networkconfig-entranceteleportb-5",
         "target_name": TARGET_NAME,
         "proof_boundary": (
             "Static installed-V81 base-game serialized assets plus exact installed Assembly-CSharp.dll and "
             "Unity.Netcode.Runtime.dll metadata only. Managed code is never loaded or executed. Stripped/null object-level "
             "m_Script references may be recovered through the serialized file's exact SerializedType script_type_index "
             "to MonoScript mapping or, when that index is absent, through the SerializedType 128-bit script_id matched "
-            "against exact installed managed TypeDefs. The script_id convention must first validate against all comparable "
-            "resolved installed MonoScript references. Missing TypeTrees are generated statically from those exact installed assemblies. "
+            "against exact installed managed TypeDefs. Unity serialized script_id recovery uses MD4(className + namespace + "
+            "assemblyName); the exact assembly-name convention must first validate against all comparable resolved installed "
+            "MonoScript references. Missing TypeTrees are generated statically from those exact installed assemblies. "
             "GameObject name alone is never registration proof; the target must be reached from the proven serialized "
             "Unity.Netcode.NetworkManager.NetworkConfig prefab-list path."
         ),
