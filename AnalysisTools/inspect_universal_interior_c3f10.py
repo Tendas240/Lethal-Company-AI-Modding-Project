@@ -282,6 +282,29 @@ def inspect_managed(member: str, data: bytes):
     if not methods:
         raise ValueError("Managed DLL contains no readable RVA-bearing method body")
 
+    field_rva_windows = []
+    for i, row in enumerate((pe.net.mdtables.FieldRva or []), 1):
+        field_index = row.Field
+        field_row = getattr(field_index, "row", None)
+        field_row_index = getattr(field_index, "row_index", None)
+        if field_row is None or field_row_index is None:
+            raise ValueError("Unresolved FieldRva field index")
+        owner = field_owners.get(id(field_row))
+        if owner is None:
+            raise ValueError("FieldRva owner unresolved")
+        rva = int(row.Rva)
+        window = pe.get_data(rva, 32)
+        if not window:
+            raise ValueError(f"FieldRva data unreadable at 0x{rva:x}")
+        field_rva_windows.append({
+            "row": i,
+            "rva": rva,
+            "field_token": f"0x{0x04000000 | field_row_index:08x}",
+            "field": owner + "::" + str(field_row.Name),
+            "data_hex_32": window.hex(),
+            "ascii_until_nul": window.split(b"\\x00", 1)[0].decode("ascii", errors="backslashreplace"),
+        })
+
     custom_attrs = []
     for i, ca in enumerate((pe.net.mdtables.CustomAttribute or []), 1):
         try:
@@ -312,6 +335,7 @@ def inspect_managed(member: str, data: bytes):
         "type_refs": type_refs,
         "member_refs": member_refs,
         "custom_attributes": custom_attrs,
+        "field_rva_windows": field_rva_windows,
         "methods_without_body": methods_without_body,
         "methods": methods,
         "summary": {
@@ -319,6 +343,7 @@ def inspect_managed(member: str, data: bytes):
             "type_refs": len(type_refs),
             "member_refs": len(member_refs),
             "custom_attributes": len(custom_attrs),
+            "field_rvas": len(field_rva_windows),
             "method_bodies_scanned": len(methods),
             "methods_without_body": len(methods_without_body),
             "instructions_scanned": instructions_scanned,
