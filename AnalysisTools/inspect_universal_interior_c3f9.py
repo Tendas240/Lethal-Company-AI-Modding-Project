@@ -376,8 +376,10 @@ def probe_backrooms_rebind(path, observed, idx, flow):
 
 
 def candidate_analysis(idx, flow_name, flow, package_flows, flow_errors):
+    import re
     target_roots = {key_of(x) for x in flow["tile_roots"]}
     target_members = {key_of(x["global_prop"]) for x in flow["prop_tile_membership"]}
+    target_gos = package_flows[flow_name]["gameobjects"]
     bundle = flow["dungeon_flow"]["bundle_member"]
     candidates = [
         key for key in idx.scripts
@@ -405,29 +407,91 @@ def candidate_analysis(idx, flow_name, flow, package_flows, flow_errors):
         interim.append((prop, owner, chain, flow_memberships, root_memberships))
     refs = reverse_refs(idx, wanted)
 
+    relevant = []
     for prop, owner, chain, flow_memberships, root_memberships in interim:
         nonstructural = []
-        for key in {prop, owner, *(key_of(x["gameobject"]) for x in chain)}:
-            nonstructural.extend(x for x in refs.get(key, []) if not x["structural"])
-        rows.append({
+        exact_doorway_links = []
+        for target in {prop, owner, *(key_of(x["gameobject"]) for x in chain)}:
+            for ref in refs.get(target, []):
+                if ref["structural"]:
+                    continue
+                owner_key = key_of(ref["owner"])
+                enriched = dict(ref)
+                owner_go = None
+                if idx.objects[owner_key]["type"] == "MonoBehaviour":
+                    ptr = idx.objects[owner_key]["tree"].get("m_GameObject")
+                    if isinstance(ptr, dict):
+                        owner_go = idx.resolve(owner_key, ptr, expected={"GameObject"})
+                enriched["owner_gameobject"] = None if owner_go is None else describe(idx, owner_go)
+                enriched["owner_in_target_flow_hierarchy"] = owner_go in target_gos if owner_go else False
+
+                match = re.fullmatch(r"BlockerPrefabWeights\[(\d+)\]\.GameObject", ref["field"])
+                entry = None
+                positive_weight = False
+                if match:
+                    weights = idx.objects[owner_key]["tree"].get("BlockerPrefabWeights")
+                    index = int(match.group(1))
+                    if not isinstance(weights, list) or index >= len(weights) or not isinstance(weights[index], dict):
+                        raise c7.CaptureError("Malformed Doorway BlockerPrefabWeights entry")
+                    entry = weights[index]
+                    weight = entry.get("Weight")
+                    positive_weight = isinstance(weight, (int, float)) and not isinstance(weight, bool) and weight > 0
+                    enriched["blocker_prefab_weight_entry"] = entry
+                    enriched["positive_serialized_weight"] = positive_weight
+
+                script = ref.get("owner_script")
+                exact_dungen_doorway = bool(
+                    script
+                    and script.get("m_ClassName") == "Doorway"
+                    and script.get("m_Namespace") == "DunGen"
+                    and script.get("m_AssemblyName") in ("DunGen.dll", "Assembly-CSharp")
+                )
+                enriched["exact_dungen_doorway"] = exact_dungen_doorway
+                nonstructural.append(enriched)
+                if (
+                    enriched["owner_in_target_flow_hierarchy"]
+                    and exact_dungen_doorway
+                    and match
+                    and positive_weight
+                ):
+                    exact_doorway_links.append(enriched)
+
+        template = c7.template_capture(idx, prop)
+        row = {
             "global_prop": idx.record(prop),
             "owner_gameobject": describe(idx, owner),
             "ancestry": chain,
-            "target_flow_downward_membership": owner in package_flows[flow_name]["gameobjects"],
+            "target_flow_downward_membership": owner in target_gos,
             "target_flow_root_match": key_of(chain[-1]["gameobject"]) in target_roots,
             "all_dungeonflow_downward_memberships": flow_memberships,
             "all_dungeonflow_root_memberships": root_memberships,
             "nonstructural_reverse_references": nonstructural,
-        })
+            "target_flow_exact_dungen_doorway_blocker_links": exact_doorway_links,
+            "template": template,
+            "indirect_target_candidate": bool(exact_doorway_links),
+            "indirect_standard_template": bool(exact_doorway_links) and template["standard_inside_id_1_template_proven"],
+        }
+        rows.append(row)
+        if row["indirect_target_candidate"]:
+            relevant.append(row)
 
     return {
         "flow_name": flow_name,
         "target_tile_root_count": len(target_roots),
         "target_reachable_prop_1231_count": len(target_members),
         "same_bundle_unreached_prop_1231_count": len(candidates),
+        "target_indirect_candidate_count": len(relevant),
+        "target_indirect_standard_template_count": sum(x["indirect_standard_template"] for x in relevant),
+        "indirect_standard_template_proven": bool(relevant) and all(x["indirect_standard_template"] for x in relevant),
         "package_dungeonflow_names": sorted(package_flows),
         "package_dungeonflow_probe_errors": flow_errors,
         "candidates": rows,
+        "qualification": (
+            "Indirect membership is accepted only through a positive-weight serialized "
+            "DunGen.Doorway.BlockerPrefabWeights[n].GameObject reference whose Doorway "
+            "component belongs to the target flow's exact tile hierarchy. Package co-location, "
+            "names, custom doorway classes and unrelated reverse references are not sufficient."
+        ),
     }
 
 
@@ -492,6 +556,7 @@ def capture_package(key, out):
                 "flow": x["flow_name"],
                 "backrooms_rebind": x.get("backrooms_rebind", {}).get("inside_id_1_rebind_proven"),
                 "candidate_count": x.get("candidate_attribution", {}).get("same_bundle_unreached_prop_1231_count"),
+                "indirect_standard_template_proven": x.get("candidate_attribution", {}).get("indirect_standard_template_proven"),
             }
             for x in results
         ],
