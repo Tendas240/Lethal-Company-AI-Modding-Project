@@ -1,6 +1,6 @@
 #requires -Version 5.1
 [CmdletBinding()]
-param([switch]$SelfTest, [switch]$DependencySelfTest)
+param([switch]$SelfTest, [switch]$DependencySelfTest, [switch]$PythonBootstrapSelfTest)
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 2.0
 
@@ -24,6 +24,9 @@ $EvidenceRoot = 'SourceEvidence/VanillaV81/NetworkConfigEntranceTeleportB'
 $CaptureName = 'NETWORK_CONFIG_PREFAB_CAPTURE.json'
 $Utf8 = New-Object System.Text.UTF8Encoding($false)
 $RequiredPythonPackages = @('UnityPy==1.25.3', 'dnfile==0.18.0', 'dncil==1.0.2')
+$BootstrapPythonVersion = '3.11.9'
+$BootstrapPythonUrl = 'https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe'
+$BootstrapPythonSigner = 'Python Software Foundation'
 
 function Write-Step { param([string]$Message) Write-Host ('[NetworkConfigEntranceTeleportBV81] ' + $Message) -ForegroundColor Cyan }
 function Get-Sha256Lower {
@@ -131,20 +134,75 @@ function Invoke-CheckedNativeProcess {
     }
     return $result.StdOut
 }
+function Install-IsolatedPythonRuntime {
+    param([Parameter(Mandatory = $true)][string]$TempRoot)
+
+    $installer = Join-Path $TempRoot ('python-' + $BootstrapPythonVersion + '-amd64.exe')
+    $runtimeDir = Join-Path $TempRoot ('python-' + $BootstrapPythonVersion)
+    Write-Step ('No suitable existing Python was resolved; bootstrapping temporary CPython ' + $BootstrapPythonVersion + '.')
+
+    $priorProtocol = [Net.ServicePointManager]::SecurityProtocol
+    try {
+        [Net.ServicePointManager]::SecurityProtocol = $priorProtocol -bor [Net.SecurityProtocolType]::Tls12
+        Invoke-WebRequest -UseBasicParsing $BootstrapPythonUrl -OutFile $installer
+    }
+    finally {
+        [Net.ServicePointManager]::SecurityProtocol = $priorProtocol
+    }
+
+    if (-not (Test-Path -LiteralPath $installer -PathType Leaf)) { throw 'Pinned CPython installer download did not produce a file.' }
+    $signature = Get-AuthenticodeSignature -LiteralPath $installer
+    if ($signature.Status -ne 'Valid' -or $null -eq $signature.SignerCertificate -or $signature.SignerCertificate.Subject -notlike ('*' + $BootstrapPythonSigner + '*')) {
+        $signer = if ($signature.SignerCertificate) { $signature.SignerCertificate.Subject } else { '<none>' }
+        throw ('Pinned CPython installer Authenticode verification failed. Status=' + $signature.Status + '; Signer=' + $signer)
+    }
+
+    Invoke-CheckedNativeProcess -FilePath $installer -Arguments @(
+        '/quiet',
+        'InstallAllUsers=0',
+        ('TargetDir=' + $runtimeDir),
+        'PrependPath=0',
+        'Include_launcher=0',
+        'Include_pip=1',
+        'Include_test=0',
+        'Include_doc=0',
+        'Include_debug=0',
+        'Include_symbols=0',
+        'Shortcuts=0',
+        'AssociateFiles=0'
+    ) -Label 'Temporary CPython installation' | Out-Null
+
+    $python = Join-Path $runtimeDir 'python.exe'
+    if (-not (Test-Path -LiteralPath $python -PathType Leaf)) { throw 'Temporary CPython installer completed without producing python.exe.' }
+    $version = Invoke-CheckedNativeProcess -FilePath $python -Arguments @('--version') -Label 'Temporary CPython version verification'
+    if ($version.Trim() -cne ('Python ' + $BootstrapPythonVersion)) {
+        throw ('Temporary CPython version mismatch: ' + $version.Trim())
+    }
+    return $python
+}
 function Resolve-Python {
-    foreach ($name in @('python.exe', 'python')) {
-        $cmd = Get-Command $name -ErrorAction SilentlyContinue
-        if ($cmd) {
-            $version = Invoke-NativeProcess -FilePath $cmd.Source -Arguments @('--version')
-            $text = ($version.StdOut + $version.StdErr).Trim()
-            if ($version.ExitCode -eq 0 -and $text -match '^Python 3\.(1[0-9])\.') { return $cmd.Source }
+    param([Parameter(Mandatory = $true)][string]$TempRoot, [switch]$ForceBootstrap)
+
+    if (-not $ForceBootstrap) {
+        foreach ($name in @('python.exe', 'python')) {
+            $cmd = Get-Command $name -ErrorAction SilentlyContinue
+            if ($cmd) {
+                $version = Invoke-NativeProcess -FilePath $cmd.Source -Arguments @('--version')
+                $text = ($version.StdOut + $version.StdErr).Trim()
+                if ($version.ExitCode -eq 0 -and $text -match '^Python 3\.(1[0-9])\.') { return $cmd.Source }
+            }
         }
     }
-    throw 'Python 3.10+ is required for the isolated UnityPy/dnfile capture environment.'
+
+    return Install-IsolatedPythonRuntime -TempRoot $TempRoot
 }
 function New-IsolatedPythonEnvironment {
-    param([Parameter(Mandatory = $true)][string]$TempRoot, [Parameter(Mandatory = $true)][string]$ScannerPath)
-    $python = Resolve-Python
+    param(
+        [Parameter(Mandatory = $true)][string]$TempRoot,
+        [Parameter(Mandatory = $true)][string]$ScannerPath,
+        [switch]$ForcePythonBootstrap
+    )
+    $python = Resolve-Python -TempRoot $TempRoot -ForceBootstrap:$ForcePythonBootstrap
     $venv = Join-Path $TempRoot 'pyenv'
     Invoke-CheckedNativeProcess -FilePath $python -Arguments @('-m', 'venv', $venv) -Label 'Python venv creation' | Out-Null
     $venvPython = Join-Path $venv 'Scripts\python.exe'
@@ -204,16 +262,25 @@ function Invoke-SelfTest {
     Write-Host 'PASS: provenance allowlist, Steam identity and two-file publication contract.'
 }
 
-if ($SelfTest -and $DependencySelfTest) { throw 'Select only one self-test mode.' }
+$selectedSelfTestModes = ([int][bool]$SelfTest) + ([int][bool]$DependencySelfTest) + ([int][bool]$PythonBootstrapSelfTest)
+if ($selectedSelfTestModes -gt 1) { throw 'Select only one self-test mode.' }
 if ($SelfTest) { Invoke-SelfTest; return }
-if ($DependencySelfTest) {
+if ($DependencySelfTest -or $PythonBootstrapSelfTest) {
     $localScanner = Join-Path (Get-Location) $ScannerRepositoryPath
-    if (-not (Test-Path -LiteralPath $localScanner -PathType Leaf)) { throw 'Run DependencySelfTest from a repository checkout containing the scanner.' }
-    $script:CaptureTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('lc-networkconfig-deps-' + [guid]::NewGuid().ToString('N'))
+    if (-not (Test-Path -LiteralPath $localScanner -PathType Leaf)) { throw 'Run dependency/bootstrap self-test from a repository checkout containing the scanner.' }
+    $prefix = if ($PythonBootstrapSelfTest) { 'lc-networkconfig-python-bootstrap-' } else { 'lc-networkconfig-deps-' }
+    $script:CaptureTempRoot = Join-Path ([IO.Path]::GetTempPath()) ($prefix + [guid]::NewGuid().ToString('N'))
     New-Item -ItemType Directory -Path $script:CaptureTempRoot -Force | Out-Null
     try {
-        New-IsolatedPythonEnvironment -TempRoot $script:CaptureTempRoot -ScannerPath $localScanner | Out-Null
-        Write-Host 'PASS: isolated pinned Python dependency bootstrap and scanner execution.'
+        $venvPython = New-IsolatedPythonEnvironment -TempRoot $script:CaptureTempRoot -ScannerPath $localScanner -ForcePythonBootstrap:$PythonBootstrapSelfTest
+        if ($PythonBootstrapSelfTest) {
+            $fullTemp = [IO.Path]::GetFullPath($script:CaptureTempRoot).TrimEnd('\') + '\'
+            $fullPython = [IO.Path]::GetFullPath($venvPython)
+            if (-not $fullPython.StartsWith($fullTemp, [StringComparison]::OrdinalIgnoreCase)) { throw 'Forced Python bootstrap did not remain inside the temporary capture root.' }
+            Write-Host ('PASS: temporary signed CPython ' + $BootstrapPythonVersion + ' bootstrap, venv creation, pinned dependencies and scanner execution.')
+        } else {
+            Write-Host 'PASS: isolated pinned Python dependency bootstrap and scanner execution.'
+        }
     } finally { Remove-Item -LiteralPath $script:CaptureTempRoot -Recurse -Force -ErrorAction SilentlyContinue }
     return
 }

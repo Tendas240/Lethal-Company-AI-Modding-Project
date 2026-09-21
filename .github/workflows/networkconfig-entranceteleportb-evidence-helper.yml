@@ -56,3 +56,16 @@ jobs:
           if ($PSVersionTable.PSVersion.Major -ne 5) { throw 'Expected Windows PowerShell 5.1' }
           & ./AnalysisTools/InspectNetworkConfigEntranceTeleportBV81.ps1 -DependencySelfTest
           if (-not $?) { throw 'Isolated dependency self-test failed' }
+
+
+  python-bootstrap:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate signed temporary CPython bootstrap without setup-python
+        shell: powershell
+        run: |
+          if ($PSVersionTable.PSVersion.Major -ne 5) { throw 'Expected Windows PowerShell 5.1' }
+          & ./AnalysisTools/InspectNetworkConfigEntranceTeleportBV81.ps1 -PythonBootstrapSelfTest
+          if (-not $?) { throw 'Temporary CPython bootstrap self-test failed' }
