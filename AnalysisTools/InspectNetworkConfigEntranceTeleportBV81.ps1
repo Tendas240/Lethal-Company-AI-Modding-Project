@@ -25,8 +25,9 @@ $CaptureName = 'NETWORK_CONFIG_PREFAB_CAPTURE.json'
 $Utf8 = New-Object System.Text.UTF8Encoding($false)
 $RequiredPythonPackages = @('UnityPy==1.25.3', 'dnfile==0.18.0', 'dncil==1.0.2')
 $BootstrapPythonVersion = '3.11.9'
-$BootstrapPythonUrl = 'https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe'
-$BootstrapPythonSigner = 'Python Software Foundation'
+$BootstrapPythonUrl = 'https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.zip'
+$BootstrapPythonSha256 = '4ba90a4ab8990891033d37ff04d2047fdae8948d0d2729a68d3a6a17c585b681'
+$BootstrapPythonManifest = 'https://www.python.org/ftp/python/3.11.9/windows-3.11.9.json'
 
 function Write-Step { param([string]$Message) Write-Host ('[NetworkConfigEntranceTeleportBV81] ' + $Message) -ForegroundColor Cyan }
 function Get-Sha256Lower {
@@ -134,49 +135,113 @@ function Invoke-CheckedNativeProcess {
     }
     return $result.StdOut
 }
+function Test-PythonCandidate {
+    param([Parameter(Mandatory = $true)][string]$Path)
+
+    if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) { return $null }
+    try {
+        $version = Invoke-NativeProcess -FilePath $Path -Arguments @('--version')
+        $text = ($version.StdOut + $version.StdErr).Trim()
+        if ($version.ExitCode -eq 0 -and $text -match '^Python 3\.(\d+)\.(\d+)') {
+            if ([int]$matches[1] -ge 10) { return (Resolve-Path -LiteralPath $Path).Path }
+        }
+    } catch { }
+    return $null
+}
+function Get-PythonCandidatePaths {
+    $candidates = @()
+
+    foreach ($name in @('python.exe', 'python', 'python3.exe', 'python3')) {
+        $cmd = Get-Command $name -ErrorAction SilentlyContinue
+        if ($cmd -and $cmd.Source) { $candidates += $cmd.Source }
+    }
+
+    $py = Get-Command py.exe -ErrorAction SilentlyContinue
+    if (-not $py) { $py = Get-Command py -ErrorAction SilentlyContinue }
+    if ($py -and $py.Source) {
+        try {
+            $listed = Invoke-NativeProcess -FilePath $py.Source -Arguments @('-0p')
+            foreach ($match in [regex]::Matches(($listed.StdOut + [Environment]::NewLine + $listed.StdErr), '([A-Za-z]:\\[^\r\n]*?python(?:\.exe)?)\s*$','Multiline')) {
+                $candidates += $match.Groups[1].Value.Trim()
+            }
+        } catch { }
+    }
+
+    foreach ($root in @(
+        'HKCU:\Software\Python\PythonCore',
+        'HKLM:\Software\Python\PythonCore',
+        'HKLM:\Software\WOW6432Node\Python\PythonCore'
+    )) {
+        try {
+            if (-not (Test-Path -LiteralPath $root)) { continue }
+            foreach ($versionKey in (Get-ChildItem -LiteralPath $root -ErrorAction Stop)) {
+                $installKeyPath = $versionKey.PSPath + '\InstallPath'
+                if (-not (Test-Path -LiteralPath $installKeyPath)) { continue }
+                $installKey = Get-Item -LiteralPath $installKeyPath -ErrorAction Stop
+                $exe = [string]$installKey.GetValue('ExecutablePath')
+                if ([string]::IsNullOrWhiteSpace($exe)) {
+                    $base = [string]$installKey.GetValue('')
+                    if (-not [string]::IsNullOrWhiteSpace($base)) { $exe = Join-Path $base 'python.exe' }
+                }
+                if (-not [string]::IsNullOrWhiteSpace($exe)) { $candidates += $exe }
+            }
+        } catch { }
+    }
+
+    foreach ($root in @(
+        (Join-Path $env:LOCALAPPDATA 'Programs\Python'),
+        $env:ProgramFiles,
+        [Environment]::GetEnvironmentVariable('ProgramFiles(x86)')
+    )) {
+        if ([string]::IsNullOrWhiteSpace($root) -or -not (Test-Path -LiteralPath $root -PathType Container)) { continue }
+        try {
+            if ((Split-Path -Leaf $root) -eq 'Python') {
+                $candidates += @(Get-ChildItem -LiteralPath $root -Directory -ErrorAction Stop | ForEach-Object { Join-Path $_.FullName 'python.exe' })
+            } else {
+                $candidates += @(Get-ChildItem -LiteralPath $root -Directory -Filter 'Python*' -ErrorAction Stop | ForEach-Object { Join-Path $_.FullName 'python.exe' })
+            }
+        } catch { }
+    }
+
+    return @($candidates | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -Unique)
+}
 function Install-IsolatedPythonRuntime {
     param([Parameter(Mandatory = $true)][string]$TempRoot)
 
-    $installer = Join-Path $TempRoot ('python-' + $BootstrapPythonVersion + '-amd64.exe')
-    $runtimeDir = Join-Path $TempRoot ('python-' + $BootstrapPythonVersion)
-    Write-Step ('No suitable existing Python was resolved; bootstrapping temporary CPython ' + $BootstrapPythonVersion + '.')
+    $archive = Join-Path $TempRoot ('python-' + $BootstrapPythonVersion + '-amd64.zip')
+    $runtimeDir = Join-Path $TempRoot ('python-' + $BootstrapPythonVersion + '-portable')
+    Write-Step ('No suitable existing Python was resolved; bootstrapping hash-pinned portable CPython ' + $BootstrapPythonVersion + '.')
 
     $priorProtocol = [Net.ServicePointManager]::SecurityProtocol
     try {
         [Net.ServicePointManager]::SecurityProtocol = $priorProtocol -bor [Net.SecurityProtocolType]::Tls12
-        Invoke-WebRequest -UseBasicParsing $BootstrapPythonUrl -OutFile $installer
+        Invoke-WebRequest -UseBasicParsing $BootstrapPythonUrl -OutFile $archive
     }
     finally {
         [Net.ServicePointManager]::SecurityProtocol = $priorProtocol
     }
 
-    if (-not (Test-Path -LiteralPath $installer -PathType Leaf)) { throw 'Pinned CPython installer download did not produce a file.' }
-    $signature = Get-AuthenticodeSignature -LiteralPath $installer
-    if ($signature.Status -ne 'Valid' -or $null -eq $signature.SignerCertificate -or $signature.SignerCertificate.Subject -notlike ('*' + $BootstrapPythonSigner + '*')) {
-        $signer = if ($signature.SignerCertificate) { $signature.SignerCertificate.Subject } else { '<none>' }
-        throw ('Pinned CPython installer Authenticode verification failed. Status=' + $signature.Status + '; Signer=' + $signer)
+    if (-not (Test-Path -LiteralPath $archive -PathType Leaf)) { throw 'Pinned portable CPython download did not produce an archive.' }
+    $archiveSha = Get-Sha256Lower $archive
+    if ($archiveSha -cne $BootstrapPythonSha256) {
+        throw ('Portable CPython archive SHA-256 mismatch: ' + $archiveSha + '. Expected ' + $BootstrapPythonSha256 + '.')
     }
 
-    Invoke-CheckedNativeProcess -FilePath $installer -Arguments @(
-        '/quiet',
-        'InstallAllUsers=0',
-        ('TargetDir=' + $runtimeDir),
-        'PrependPath=0',
-        'Include_launcher=0',
-        'Include_pip=1',
-        'Include_test=0',
-        'Include_doc=0',
-        'Include_debug=0',
-        'Include_symbols=0',
-        'Shortcuts=0',
-        'AssociateFiles=0'
-    ) -Label 'Temporary CPython installation' | Out-Null
+    New-Item -ItemType Directory -Path $runtimeDir -Force | Out-Null
+    Expand-Archive -LiteralPath $archive -DestinationPath $runtimeDir -Force
 
     $python = Join-Path $runtimeDir 'python.exe'
-    if (-not (Test-Path -LiteralPath $python -PathType Leaf)) { throw 'Temporary CPython installer completed without producing python.exe.' }
-    $version = Invoke-CheckedNativeProcess -FilePath $python -Arguments @('--version') -Label 'Temporary CPython version verification'
+    if (-not (Test-Path -LiteralPath $python -PathType Leaf)) {
+        $pythonFiles = @(Get-ChildItem -LiteralPath $runtimeDir -Recurse -File -Filter 'python.exe' -ErrorAction Stop)
+        if ($pythonFiles.Count -ne 1) {
+            throw ('Portable CPython archive produced ' + $pythonFiles.Count + ' python.exe candidates; expected exactly one.')
+        }
+        $python = $pythonFiles[0].FullName
+    }
+
+    $version = Invoke-CheckedNativeProcess -FilePath $python -Arguments @('--version') -Label 'Portable CPython version verification'
     if ($version.Trim() -cne ('Python ' + $BootstrapPythonVersion)) {
-        throw ('Temporary CPython version mismatch: ' + $version.Trim())
+        throw ('Portable CPython version mismatch: ' + $version.Trim())
     }
     return $python
 }
@@ -184,12 +249,11 @@ function Resolve-Python {
     param([Parameter(Mandatory = $true)][string]$TempRoot, [switch]$ForceBootstrap)
 
     if (-not $ForceBootstrap) {
-        foreach ($name in @('python.exe', 'python')) {
-            $cmd = Get-Command $name -ErrorAction SilentlyContinue
-            if ($cmd) {
-                $version = Invoke-NativeProcess -FilePath $cmd.Source -Arguments @('--version')
-                $text = ($version.StdOut + $version.StdErr).Trim()
-                if ($version.ExitCode -eq 0 -and $text -match '^Python 3\.(1[0-9])\.') { return $cmd.Source }
+        foreach ($candidate in (Get-PythonCandidatePaths)) {
+            $resolved = Test-PythonCandidate -Path $candidate
+            if ($resolved) {
+                Write-Step ('Using existing Python runtime: ' + $resolved)
+                return $resolved
             }
         }
     }
@@ -277,7 +341,7 @@ if ($DependencySelfTest -or $PythonBootstrapSelfTest) {
             $fullTemp = [IO.Path]::GetFullPath($script:CaptureTempRoot).TrimEnd('\') + '\'
             $fullPython = [IO.Path]::GetFullPath($venvPython)
             if (-not $fullPython.StartsWith($fullTemp, [StringComparison]::OrdinalIgnoreCase)) { throw 'Forced Python bootstrap did not remain inside the temporary capture root.' }
-            Write-Host ('PASS: temporary signed CPython ' + $BootstrapPythonVersion + ' bootstrap, venv creation, pinned dependencies and scanner execution.')
+            Write-Host ('PASS: hash-pinned portable CPython ' + $BootstrapPythonVersion + ' bootstrap, venv creation, pinned dependencies and scanner execution.')
         } else {
             Write-Host 'PASS: isolated pinned Python dependency bootstrap and scanner execution.'
         }
