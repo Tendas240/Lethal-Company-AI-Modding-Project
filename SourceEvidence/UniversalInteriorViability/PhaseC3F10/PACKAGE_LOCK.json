@@ -1,0 +1,86 @@
+{
+  "schema_version": "c3f10-package-lock-1",
+  "authority": {
+    "accepted_export_sha256": "19935c1afc98de1562fda8b299d7d23d09c3555eac88f9de7992eb3d6e2b46b8",
+    "c3f9_findings_sha256": "c1be57724726dcba059841d1d3dc178a2c7c9f4ea2df6e3f3eb9aa493ebc84b9"
+  },
+  "package": {
+    "package": "Zaggy1024-DunGenReferenceFixer",
+    "version": "0.0.1",
+    "source_url": "https://gcdn.thunderstore.io/live/repository/packages/Zaggy1024-DunGenReferenceFixer-0.0.1.zip",
+    "zip_bytes": 27808,
+    "zip_sha256": "ee362bcc51d0e491a2519ffe4b5e9132a73435d9c21dfccea0a04020cb3422d3",
+    "manifest": {
+      "author": "Zaggy1024",
+      "dependencies": [
+        "BepInEx-BepInExPack-5.4.2100"
+      ],
+      "description": "Fixes interior assets' references if they haven't been updated to v80.",
+      "name": "DunGenReferenceFixer",
+      "version_number": "0.0.1",
+      "website_url": "https://github.com/Zaggy1024/LC_DunGenReferenceFixer/"
+    },
+    "members": [
+      {
+        "member": "BepInEx/patchers/DunGenReferenceFixer.dll",
+        "bytes": 20480,
+        "sha256": "3247a5d04b95c97c3f57a34386b7331ae351bef46a833397f7f2a7db28499dc8",
+        "dll": true,
+        "unityfs": false
+      },
+      {
+        "member": "CHANGELOG.md",
+        "bytes": 34,
+        "sha256": "2e35b8bbe75e4b600a8d6d201687a802ba373396ddc8b0e7cf3126d29eb89f93",
+        "dll": false,
+        "unityfs": false
+      },
+      {
+        "member": "LICENSE",
+        "bytes": 1087,
+        "sha256": "7d74cddbb935b3401d02a73f548ebf3e8c6e60ea279ac8890e3b04facbd18fc2",
+        "dll": false,
+        "unityfs": false
+      },
+      {
+        "member": "README.md",
+        "bytes": 81,
+        "sha256": "23becea43e77ad17bf6393e3aacd92a77bc902219951c83e13887814f270b1bd",
+        "dll": false,
+        "unityfs": false
+      },
+      {
+        "member": "icon.png",
+        "bytes": 9790,
+        "sha256": "88a91d39672b406f75b6dbac61923be4931c8a19e2f87a9636b4f15632a30352",
+        "dll": false,
+        "unityfs": false
+      },
+      {
+        "member": "manifest.json",
+        "bytes": 344,
+        "sha256": "c86f7711c99085a7cbd9ed0588de08387c834232a5d903224f6e78190c701fb9",
+        "dll": false,
+        "unityfs": false
+      }
+    ],
+    "dll_members": [
+      {
+        "member": "BepInEx/patchers/DunGenReferenceFixer.dll",
+        "bytes": 20480,
+        "sha256": "3247a5d04b95c97c3f57a34386b7331ae351bef46a833397f7f2a7db28499dc8",
+        "dll": true,
+        "unityfs": false
+      }
+    ]
+  },
+  "review": {
+    "source_workflow": "Capture C3F10 DunGenReferenceFixer evidence",
+    "source_run_id": 35575883590,
+    "source_run_number": 1,
+    "source_head_sha": "ab0e2f11006788f18700d83dd78645118c3727d2",
+    "artifact_id": 10627584916,
+    "artifact_digest": "sha256:58f5b7e4612f42245c1d3d1919361e7bb21fc70bbfaf582c644b724dd12e83db",
+    "candidate_status": "REVIEWED_BYTE_BINDING_ONLY_NO_RESTORATION_CLAIM"
+  }
+}
