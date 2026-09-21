@@ -158,6 +158,9 @@ def script_identity(desc):
 
 
 def hash128_bytes(value):
+    if isinstance(value, memoryview):
+        raw = value.tobytes()
+        return raw if len(raw) == 16 else None
     if isinstance(value, (bytes, bytearray)):
         raw = bytes(value)
         return raw if len(raw) == 16 else None
@@ -182,6 +185,15 @@ def hash128_bytes(value):
         except (TypeError, ValueError):
             return None
     return None
+
+
+def hash128_state(value) -> str:
+    if value is None:
+        return "MISSING"
+    raw = hash128_bytes(value)
+    if raw is None:
+        return "UNSUPPORTED:" + type(value).__name__
+    return "NONZERO" if any(raw) else "ZERO"
 
 
 def metadata_type_name(row) -> str:
@@ -410,18 +422,14 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
     def serialized_script_id(obj):
         st = getattr(obj, "serialized_type", None)
         value = None if st is None else getattr(st, "script_id", None)
-        if not isinstance(value, (bytes, bytearray)) or len(value) != 16:
-            return None
-        value = bytes(value)
-        return value if any(value) else None
+        raw = hash128_bytes(value)
+        return raw if raw is not None and any(raw) else None
 
     def serialized_old_type_hash(obj):
         st = getattr(obj, "serialized_type", None)
         value = None if st is None else getattr(st, "old_type_hash", None)
-        if not isinstance(value, (bytes, bytearray)) or len(value) != 16:
-            return None
-        value = bytes(value)
-        return value if any(value) else None
+        raw = hash128_bytes(value)
+        return raw if raw is not None and any(raw) else None
 
     convention_matches = Counter()
     convention_samples = 0
@@ -729,8 +737,12 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
                     out[attr] = value
         for attr in ("script_id", "old_type_hash"):
             value = getattr(st, attr, None)
-            if isinstance(value, (bytes, bytearray)):
-                out[attr] = bytes(value).hex()
+            raw = hash128_bytes(value)
+            out[attr + "_state"] = hash128_state(value)
+            if raw is not None:
+                out[attr] = raw.hex()
+            elif value is not None:
+                out[attr + "_python_type"] = type(value).__name__
         return out
 
     manager_candidates = []
@@ -738,6 +750,7 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
     unresolved_script_count = 0
     null_script_count = 0
     descriptor_source_counts = Counter()
+    unresolved_serialized_type_state_counts = Counter()
     for obj in objects:
         if obj.type.name != "MonoBehaviour":
             continue
@@ -752,6 +765,17 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             null_script_count += 1
         if status != "RESOLVED":
             unresolved_script_count += 1
+            st = getattr(obj, "serialized_type", None)
+            class_id = None if st is None else getattr(st, "class_id", None)
+            script_type_index = None if st is None else getattr(st, "script_type_index", None)
+            script_id_value = None if st is None else getattr(st, "script_id", None)
+            old_type_hash_value = None if st is None else getattr(st, "old_type_hash", None)
+            state_key = (
+                f"class_id={class_id};script_type_index={script_type_index};"
+                f"script_id={hash128_state(script_id_value)};"
+                f"old_type_hash={hash128_state(old_type_hash_value)}"
+            )
+            unresolved_serialized_type_state_counts[state_key] += 1
 
         proof_kind = manager_owner_proof(desc, head)
         if not proof_kind:
@@ -808,6 +832,7 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             f"found {len(exact_manager_candidates)} qualifying of {len(manager_candidates)} proven owner candidate(s); "
             f"unresolved MonoBehaviour identities={unresolved_script_count}; object-level null m_Script pointers={null_script_count}; "
             f"descriptor sources={json.dumps(dict(sorted(descriptor_source_counts.items())))}; "
+            f"unresolved serialized type states={json.dumps(dict(sorted(unresolved_serialized_type_state_counts.items())))}; "
             f"proven candidates={json.dumps(diagnostics)}; "
             f"structural NetworkConfig candidates={json.dumps(structural_config_candidates)}"
         )
@@ -1061,6 +1086,7 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
                 "serialized_monoscript_hash_count": len(properties_hash_index),
                 "ambiguous_hash_count": len(properties_hash_collisions),
             },
+            "unresolved_serialized_type_state_counts": dict(sorted(unresolved_serialized_type_state_counts.items())),
         },
         "network_config_prefab_field_paths": sorted(prefab_field_paths),
         "network_config_prefab_edges": registry_edges,
@@ -1263,6 +1289,9 @@ def self_test():
     assert md4_digest(b"").hex() == "31d6cfe0d16ae931b73c59d7e0c089c0"
     assert md4_digest(b"abc").hex() == "a448017aaf21d8525fc10ae87aa6729d"
     assert hash128_bytes({"bytes[%d]" % i: i for i in range(16)}) == bytes(range(16))
+    assert hash128_bytes(memoryview(bytes(range(16)))) == bytes(range(16))
+    assert hash128_state(memoryview(bytes(16))) == "ZERO"
+    assert hash128_state(memoryview(bytes(range(16)))) == "NONZERO"
     sample = {"assembly": "Assembly-CSharp.dll", "namespace": "", "class": "EntranceTeleport"}
     expected_script_id = md4_digest(b"EntranceTeleportAssembly-CSharp.dll")
     assert script_id_digest(sample, "CLASS_NAMESPACE_MONOSCRIPT_ASSEMBLY_LITERAL") == expected_script_id
@@ -1292,7 +1321,7 @@ def main():
         raise ValueError("--out is required")
 
     result = {
-        "schema_version": "v81-networkconfig-entranceteleportb-6",
+        "schema_version": "v81-networkconfig-entranceteleportb-7",
         "target_name": TARGET_NAME,
         "proof_boundary": (
             "Static installed-V81 base-game serialized assets plus exact installed Assembly-CSharp.dll and "
