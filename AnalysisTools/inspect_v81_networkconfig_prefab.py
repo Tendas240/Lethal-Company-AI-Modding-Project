@@ -141,12 +141,6 @@ def inspect_game_network_manager_inheritance(dll_path: Path):
             seen.add(base)
             cursor = base
 
-    if not derived:
-        raise ValueError(
-            "Exact installed Assembly-CSharp metadata exposes no type deriving from "
-            + NETWORK_MANAGER_FULL_NAME
-        )
-
     return {
         "dll_bytes": dll_path.stat().st_size,
         "dll_sha256": sha256_file(dll_path),
@@ -159,6 +153,7 @@ def inspect_game_network_manager_inheritance(dll_path: Path):
         },
         "network_manager_base_type": NETWORK_MANAGER_FULL_NAME,
         "derived_serialized_owner_types": derived,
+        "derived_serialized_owner_type_count": len(derived),
     }
 
 
@@ -184,7 +179,7 @@ def candidate_asset_files(data_root: Path):
     return sorted(files, key=lambda p: p.name.lower())
 
 
-def inspect_assets(data_root: Path, game_owner_proof):
+def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
     import UnityPy
 
     version = importlib.metadata.version("UnityPy")
@@ -281,17 +276,64 @@ def inspect_assets(data_root: Path, game_owner_proof):
         rec = script_map.get((script.assets_file.name, script.path_id))
         return (rec, "RESOLVED") if rec else (None, "RESOLVED_NOT_MONOSCRIPT")
 
-    allowed_manager_scripts = {NETWORK_MANAGER_SCRIPT}
-    for rec in game_owner_proof["derived_serialized_owner_types"]:
-        allowed_manager_scripts.add((
+    allowed_derived_scripts = {
+        (
             rec["class"],
             rec["namespace"],
             normalize_assembly(rec["assembly"]),
-        ))
+        )
+        for rec in game_owner_proof["derived_serialized_owner_types"]
+    }
+
+    if not netcode_proof["summary"].get("network_manager_type_identity_unique"):
+        raise ValueError("Netcode metadata did not prove a unique Unity.Netcode.NetworkManager TypeDef")
+
+    def editor_identifier_identity(value):
+        text = str(value or "").strip()
+        if "::" not in text:
+            return None
+        assembly, full_type = text.split("::", 1)
+        namespace, sep, class_name = full_type.rpartition(".")
+        if not sep:
+            namespace, class_name = "", full_type
+        return class_name, namespace, normalize_assembly(assembly)
+
+    def manager_owner_proof(desc, tree):
+        ident_tuple = script_identity(desc)
+        if ident_tuple == NETWORK_MANAGER_SCRIPT:
+            return "EXACT_MONOSCRIPT_IDENTITY"
+        if (
+            desc
+            and str(desc.get("class") or "") == NETWORK_MANAGER_SCRIPT[0]
+            and normalize_assembly(desc.get("assembly")) == NETWORK_MANAGER_SCRIPT[2]
+        ):
+            return "MONOSCRIPT_CLASS_ASSEMBLY_CANONICALIZED_BY_NETCODE_METADATA"
+        if ident_tuple in allowed_derived_scripts:
+            return "ASSEMBLY_CSHARP_DERIVED_NETWORK_MANAGER"
+        if editor_identifier_identity(tree.get("m_EditorClassIdentifier")) == NETWORK_MANAGER_SCRIPT:
+            return "EXACT_EDITOR_CLASS_IDENTIFIER"
+        return None
+
+    def serialized_type_diagnostic(obj):
+        st = getattr(obj, "serialized_type", None)
+        if st is None:
+            return None
+        out = {}
+        for attr in ("class_id", "script_type_index", "is_stripped_type"):
+            if hasattr(st, attr):
+                value = getattr(st, attr)
+                if isinstance(value, (str, int, float, bool)) or value is None:
+                    out[attr] = value
+        for attr in ("script_id", "old_type_hash"):
+            value = getattr(st, attr, None)
+            if isinstance(value, (bytes, bytearray)):
+                out[attr] = bytes(value).hex()
+        return out
 
     manager_candidates = []
     structural_config_candidates = []
     unresolved_script_count = 0
+    null_script_count = 0
     for obj in objects:
         if obj.type.name != "MonoBehaviour":
             continue
@@ -300,26 +342,38 @@ def inspect_assets(data_root: Path, game_owner_proof):
         except Exception:
             continue
         desc, status = script_descriptor(obj, tree)
-        if status not in ("RESOLVED", "NULL"):
+        if status == "NULL":
+            null_script_count += 1
+        elif status != "RESOLVED":
             unresolved_script_count += 1
-        if not desc:
-            continue
+
         config_hits = [
             (path, value)
             for path, value in walk(tree)
             if path and path[-1].casefold() == "networkconfig"
         ]
+        proof_kind = manager_owner_proof(desc, tree)
         if config_hits:
             structural_config_candidates.append({
                 **ident(obj),
+                "script_status": status,
                 "script": desc,
+                "manager_owner_proof": proof_kind,
+                "editor_class_identifier": tree.get("m_EditorClassIdentifier"),
+                "serialized_type": serialized_type_diagnostic(obj),
+                "top_level_fields": sorted(str(k) for k in tree.keys())[:80],
+                "network_config_paths": [path_text(path) for path, _ in config_hits],
+                "network_config_top_level_fields": [
+                    sorted(str(k) for k in value.keys())[:80] if isinstance(value, dict) else ["<list>"]
+                    for _, value in config_hits
+                ],
                 "network_config_hit_count": len(config_hits),
                 "structured_network_config_hits": sum(
                     1 for _, value in config_hits if isinstance(value, (dict, list))
                 ),
             })
-        if script_identity(desc) in allowed_manager_scripts:
-            manager_candidates.append((obj, tree, desc, config_hits))
+        if proof_kind:
+            manager_candidates.append((obj, tree, desc, config_hits, status, proof_kind))
 
     exact_manager_candidates = [
         row
@@ -336,17 +390,19 @@ def inspect_assets(data_root: Path, game_owner_proof):
                     1 for _, value in config_hits if isinstance(value, (dict, list))
                 ),
             }
-            for obj, _, desc, config_hits in manager_candidates
+            for obj, _, desc, config_hits, script_status, proof_kind in manager_candidates
         ]
         raise ValueError(
-            "Expected exactly one serialized NetworkManager owner (exact Unity.Netcode.NetworkManager or "
-            "Assembly-CSharp type proven by exact metadata to derive from it) with one structured NetworkConfig subtree, "
-            f"found {len(exact_manager_candidates)} qualifying of {len(manager_candidates)} allowed owner candidate(s); "
-            f"unresolved non-null script pointers={unresolved_script_count}; candidates={json.dumps(diagnostics)}; "
+            "Expected exactly one serialized NetworkManager owner proven by exact MonoScript identity, "
+            "exact Netcode metadata canonicalization, exact editor class identifier, or an exact Assembly-CSharp "
+            "inheritance edge; "
+            f"found {len(exact_manager_candidates)} qualifying of {len(manager_candidates)} proven owner candidate(s); "
+            f"unresolved non-null script pointers={unresolved_script_count}; null script pointers={null_script_count}; "
+            f"proven candidates={json.dumps(diagnostics)}; "
             f"structural NetworkConfig candidates={json.dumps(structural_config_candidates)}"
         )
 
-    manager_obj, manager_tree, manager_script, config_hits = exact_manager_candidates[0]
+    manager_obj, manager_tree, manager_script, config_hits, manager_script_status, manager_proof_kind = exact_manager_candidates[0]
     if len(config_hits) != 1:
         raise ValueError(f"Expected exactly one NetworkConfig subtree on Unity.Netcode.NetworkManager, found {len(config_hits)}")
     config_path, config_tree = config_hits[0]
@@ -553,12 +609,7 @@ def inspect_assets(data_root: Path, game_owner_proof):
         }
         status = "REGISTERED_SURFACE_PROVEN" if not hierarchy_missing else "REGISTERED_SURFACE_INCOMPLETE"
 
-    manager_identity = script_identity(manager_script)
-    owner_kind = (
-        "EXACT_UNITY_NETCODE_NETWORK_MANAGER"
-        if manager_identity == NETWORK_MANAGER_SCRIPT
-        else "ASSEMBLY_CSHARP_DERIVED_NETWORK_MANAGER"
-    )
+    owner_kind = manager_proof_kind
 
     return {
         "unitypy_version": version,
@@ -569,8 +620,10 @@ def inspect_assets(data_root: Path, game_owner_proof):
         "script_parse_errors": script_errors,
         "network_manager": {
             **ident(manager_obj),
+            "script_status": manager_script_status,
             "script": manager_script,
             "owner_kind": owner_kind,
+            "editor_class_identifier": manager_tree.get("m_EditorClassIdentifier"),
             "network_config_path": path_text(config_path),
         },
         "network_manager_owner_proof": game_owner_proof,
@@ -666,6 +719,14 @@ def inspect_netcode(dll_path: Path):
         "Unity.Netcode.NetworkManager",
     }
     type_rows = {defined_type_name(t): t for t in pe.net.mdtables.TypeDef}
+    manager_named_types = sorted(
+        name for name in type_rows if name.rsplit(".", 1)[-1] == "NetworkManager"
+    )
+    if manager_named_types != [NETWORK_MANAGER_FULL_NAME]:
+        raise ValueError(
+            "Expected exactly one NetworkManager TypeDef identity in Netcode metadata: "
+            + json.dumps(manager_named_types)
+        )
     for required in ("Unity.Netcode.NetworkConfig", "Unity.Netcode.NetworkPrefabs", "Unity.Netcode.NetworkPrefab"):
         if required not in type_rows:
             raise ValueError("Required Netcode type missing: " + required)
@@ -741,6 +802,8 @@ def inspect_netcode(dll_path: Path):
             "focused_method_count": len(methods),
             "focused_instruction_count": sum(len(m["instructions"]) for m in methods),
             "network_manager_network_config_field_present": True,
+            "network_manager_type_identity_unique": True,
+            "network_manager_type_identity": NETWORK_MANAGER_FULL_NAME,
             "m_prefabs_field_present": True,
             "parse_errors": 0,
         },
@@ -761,6 +824,7 @@ def self_test():
     assert script_identity({"class": "GameNetworkManager", "namespace": "", "assembly": "Assembly-CSharp.dll"}) == (
         "GameNetworkManager", "", "assembly-csharp"
     )
+    assert normalize_assembly("Unity.Netcode.Runtime.dll") == "unity.netcode.runtime"
     print("V81 NetworkConfig EntranceTeleportB scanner self-test passed")
 
 
@@ -796,12 +860,16 @@ def main():
             "dnfile": importlib.metadata.version("dnfile"),
             "dncil": importlib.metadata.version("dncil"),
         },
-        "netcode": inspect_netcode(args.netcode_dll),
-        "assets": inspect_assets(
-            args.data_root,
-            inspect_game_network_manager_inheritance(args.data_root / "Managed" / "Assembly-CSharp.dll"),
-        ),
+        "netcode": None,
+        "assets": None,
     }
+    netcode_result = inspect_netcode(args.netcode_dll)
+    game_owner_proof = inspect_game_network_manager_inheritance(
+        args.data_root / "Managed" / "Assembly-CSharp.dll"
+    )
+    result["netcode"] = netcode_result
+    result["assets"] = inspect_assets(args.data_root, game_owner_proof, netcode_result)
+
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({
