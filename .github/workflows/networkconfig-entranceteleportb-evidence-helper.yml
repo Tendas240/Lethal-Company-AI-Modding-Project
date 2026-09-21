@@ -29,7 +29,7 @@ jobs:
         shell: powershell
         run: |
           python -m pip install --disable-pip-version-check --no-input UnityPy==1.25.3 dnfile==0.18.0 dncil==1.0.2 TypeTreeGeneratorAPI==0.0.10
-      - name: Compile and self-test Python scanner including calibrated Unity scriptID recovery
+      - name: Compile and self-test Python scanner including calibrated serialized hash recovery
         shell: powershell
         run: |
           python -m py_compile AnalysisTools/inspect_v81_networkconfig_prefab.py

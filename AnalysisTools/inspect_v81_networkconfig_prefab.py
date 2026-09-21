@@ -157,6 +157,33 @@ def script_identity(desc):
     )
 
 
+def hash128_bytes(value):
+    if isinstance(value, (bytes, bytearray)):
+        raw = bytes(value)
+        return raw if len(raw) == 16 else None
+    if isinstance(value, (list, tuple)) and len(value) == 16:
+        try:
+            return bytes(int(x) & 0xFF for x in value)
+        except (TypeError, ValueError):
+            return None
+    if isinstance(value, dict):
+        bracket = [f"bytes[{i}]" for i in range(16)]
+        underscored = [f"bytes_{i}_" for i in range(16)]
+        keys = bracket if all(k in value for k in bracket) else underscored
+        if all(k in value for k in keys):
+            try:
+                return bytes(int(value[k]) & 0xFF for k in keys)
+            except (TypeError, ValueError):
+                return None
+    attrs = [f"bytes_{i}_" for i in range(16)]
+    if all(hasattr(value, a) for a in attrs):
+        try:
+            return bytes(int(getattr(value, a)) & 0xFF for a in attrs)
+        except (TypeError, ValueError):
+            return None
+    return None
+
+
 def metadata_type_name(row) -> str:
     if not hasattr(row, "TypeName"):
         return type(row).__name__
@@ -371,16 +398,26 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
         except Exception as exc:
             script_errors.append({**ident(obj), "error": f"{type(exc).__name__}: {exc}"})
             continue
+        properties_hash = hash128_bytes(tree.get("m_PropertiesHash"))
         script_map[(obj.assets_file.name, obj.path_id)] = {
             **ident(obj),
             "class": tree.get("m_ClassName"),
             "namespace": tree.get("m_Namespace"),
             "assembly": tree.get("m_AssemblyName"),
+            "properties_hash": None if properties_hash is None else properties_hash.hex(),
         }
 
     def serialized_script_id(obj):
         st = getattr(obj, "serialized_type", None)
         value = None if st is None else getattr(st, "script_id", None)
+        if not isinstance(value, (bytes, bytearray)) or len(value) != 16:
+            return None
+        value = bytes(value)
+        return value if any(value) else None
+
+    def serialized_old_type_hash(obj):
+        st = getattr(obj, "serialized_type", None)
+        value = None if st is None else getattr(st, "old_type_hash", None)
         if not isinstance(value, (bytes, bytearray)) or len(value) != 16:
             return None
         value = bytes(value)
@@ -476,6 +513,49 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
         if len({script_identity(row) for row in rows}) > 1
     }
 
+    old_type_hash_samples = 0
+    old_type_hash_matches = 0
+    for obj in objects:
+        if obj.type.name != "MonoBehaviour":
+            continue
+        old_hash = serialized_old_type_hash(obj)
+        if old_hash is None:
+            continue
+        try:
+            head = read_raw(obj)
+        except Exception:
+            continue
+        script, direct_status = resolve(obj, head.get("m_Script"))
+        if direct_status != "RESOLVED":
+            continue
+        rec = script_map.get((script.assets_file.name, script.path_id))
+        if rec is None or not rec.get("properties_hash"):
+            continue
+        old_type_hash_samples += 1
+        if rec["properties_hash"] == old_hash.hex():
+            old_type_hash_matches += 1
+
+    if old_type_hash_samples == 0:
+        raise ValueError(
+            "Could not calibrate SerializedType.old_type_hash against any resolved installed MonoScript m_PropertiesHash"
+        )
+    if old_type_hash_matches != old_type_hash_samples:
+        raise ValueError(
+            "SerializedType.old_type_hash did not validate against all comparable resolved installed MonoScript "
+            f"m_PropertiesHash values: matches={old_type_hash_matches}, samples={old_type_hash_samples}"
+        )
+
+    properties_hash_index = {}
+    for rec in script_map.values():
+        digest = rec.get("properties_hash")
+        if digest:
+            properties_hash_index.setdefault(digest, []).append(rec)
+    properties_hash_collisions = {
+        digest: rows
+        for digest, rows in properties_hash_index.items()
+        if len({script_identity(row) for row in rows}) > 1
+    }
+
     def script_descriptor(mb_obj, mb_tree=None):
         key = (mb_obj.assets_file.name, mb_obj.path_id)
         if key in descriptor_cache:
@@ -537,7 +617,23 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
                 result = (None, "AMBIGUOUS_SCRIPT_ID", "SERIALIZED_TYPE_SCRIPT_ID")
                 descriptor_cache[key] = result
                 return result
-            result = (None, "SCRIPT_ID_NO_EXACT_METADATA_MATCH", "SERIALIZED_TYPE_SCRIPT_ID")
+
+        old_hash = serialized_old_type_hash(mb_obj)
+        if old_hash is not None:
+            candidates = properties_hash_index.get(old_hash.hex(), [])
+            unique_candidates = {}
+            for rec in candidates:
+                unique_candidates[script_identity(rec)] = rec
+            rows = list(unique_candidates.values())
+            if len(rows) == 1:
+                result = (rows[0], "RESOLVED", "SERIALIZED_TYPE_OLD_TYPE_HASH")
+                descriptor_cache[key] = result
+                return result
+            if len(rows) > 1:
+                result = (None, "AMBIGUOUS_OLD_TYPE_HASH", "SERIALIZED_TYPE_OLD_TYPE_HASH")
+                descriptor_cache[key] = result
+                return result
+            result = (None, "OLD_TYPE_HASH_NO_EXACT_MONOSCRIPT_MATCH", "SERIALIZED_TYPE_OLD_TYPE_HASH")
             descriptor_cache[key] = result
             return result
 
@@ -959,6 +1055,12 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
                 "hash_entry_count": len(script_id_index),
                 "ambiguous_hash_count": len(script_id_collisions),
             },
+            "old_type_hash_recovery": {
+                "calibration_samples": old_type_hash_samples,
+                "calibration_matches": old_type_hash_matches,
+                "serialized_monoscript_hash_count": len(properties_hash_index),
+                "ambiguous_hash_count": len(properties_hash_collisions),
+            },
         },
         "network_config_prefab_field_paths": sorted(prefab_field_paths),
         "network_config_prefab_edges": registry_edges,
@@ -1160,6 +1262,7 @@ def self_test():
     assert normalize_assembly("Unity.Netcode.Runtime.dll") == "unity.netcode.runtime"
     assert md4_digest(b"").hex() == "31d6cfe0d16ae931b73c59d7e0c089c0"
     assert md4_digest(b"abc").hex() == "a448017aaf21d8525fc10ae87aa6729d"
+    assert hash128_bytes({"bytes[%d]" % i: i for i in range(16)}) == bytes(range(16))
     sample = {"assembly": "Assembly-CSharp.dll", "namespace": "", "class": "EntranceTeleport"}
     expected_script_id = md4_digest(b"EntranceTeleportAssembly-CSharp.dll")
     assert script_id_digest(sample, "CLASS_NAMESPACE_MONOSCRIPT_ASSEMBLY_LITERAL") == expected_script_id
@@ -1189,7 +1292,7 @@ def main():
         raise ValueError("--out is required")
 
     result = {
-        "schema_version": "v81-networkconfig-entranceteleportb-5",
+        "schema_version": "v81-networkconfig-entranceteleportb-6",
         "target_name": TARGET_NAME,
         "proof_boundary": (
             "Static installed-V81 base-game serialized assets plus exact installed Assembly-CSharp.dll and "
@@ -1198,7 +1301,9 @@ def main():
             "to MonoScript mapping or, when that index is absent, through the SerializedType 128-bit script_id matched "
             "against exact installed managed TypeDefs. Unity serialized script_id recovery uses MD4(className + namespace + "
             "assemblyName); the exact assembly-name convention must first validate against all comparable resolved installed "
-            "MonoScript references. Missing TypeTrees are generated statically from those exact installed assemblies. "
+            "MonoScript references. When script_id is null, SerializedType.old_type_hash may be matched only to a unique "
+            "MonoScript.m_PropertiesHash after that relation validates against every comparable resolved installed reference. "
+            "Missing TypeTrees are generated statically from those exact installed assemblies. "
             "GameObject name alone is never registration proof; the target must be reached from the proven serialized "
             "Unity.Netcode.NetworkManager.NetworkConfig prefab-list path."
         ),
