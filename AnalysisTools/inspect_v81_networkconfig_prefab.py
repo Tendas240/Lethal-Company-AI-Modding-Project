@@ -873,6 +873,103 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
         for row in manager_candidates
         if len(row[3]) == 1 and isinstance(row[3][0][1], (dict, list))
     ]
+
+    network_manager_layout_probe = {
+        "attempted": False,
+        "generated_type": NETWORK_MANAGER_FULL_NAME,
+        "generated_assembly": "Unity.Netcode.Runtime.dll",
+        "candidate_count": 0,
+        "candidates": [],
+        "parse_success_without_exact_structured_networkconfig": 0,
+        "parse_failure_count": 0,
+        "parse_failure_types": {},
+    }
+    if len(exact_manager_candidates) != 1:
+        network_manager_layout_probe["attempted"] = True
+        try:
+            network_manager_nodes = generator.get_nodes_up("Unity.Netcode.Runtime.dll", NETWORK_MANAGER_FULL_NAME)
+        except Exception as exc:
+            raise ValueError(
+                "Could not generate exact installed Unity.Netcode.NetworkManager TypeTree: "
+                + f"{type(exc).__name__}: {exc}"
+            ) from exc
+
+        layout_candidates = []
+        failure_types = Counter()
+        parse_success_without_match = 0
+        for obj in objects:
+            if obj.type.name != "MonoBehaviour":
+                continue
+            try:
+                head = read_raw(obj)
+            except Exception:
+                continue
+            desc, script_status, descriptor_source = script_descriptor(obj, head)
+            if script_status == "RESOLVED":
+                continue
+            script_ptr = head.get("m_Script")
+            if not (is_pptr(script_ptr) and script_ptr.get("m_PathID") == 0):
+                continue
+            try:
+                forced_tree = obj.read_typetree(nodes=network_manager_nodes, check_read=True)
+            except Exception as exc:
+                failure_types[type(exc).__name__] += 1
+                continue
+
+            forced_hits = network_config_hits(forced_tree)
+            base_fields_match = all(
+                forced_tree.get(field) == head.get(field)
+                for field in ("m_GameObject", "m_Enabled", "m_Script")
+                if field in head
+            )
+            exact_structured = (
+                len(forced_hits) == 1
+                and isinstance(forced_hits[0][1], (dict, list))
+                and base_fields_match
+            )
+            if not exact_structured:
+                parse_success_without_match += 1
+                continue
+
+            raw_bytes = obj.get_raw_data()
+            rec = {
+                **ident(obj),
+                "byte_size": int(getattr(obj, "byte_size", len(raw_bytes))),
+                "raw_sha256": hashlib.sha256(raw_bytes).hexdigest(),
+                "base_fields_match": base_fields_match,
+                "network_config_path": path_text(forced_hits[0][0]),
+                "network_config_top_level_fields": (
+                    sorted(str(k) for k in forced_hits[0][1].keys())[:120]
+                    if isinstance(forced_hits[0][1], dict)
+                    else ["<list>"]
+                ),
+                "top_level_fields": sorted(str(k) for k in forced_tree.keys())[:120],
+                "serialized_type": serialized_type_diagnostic(obj),
+                "proof_kind": "EXACT_NETCODE_NETWORKMANAGER_GENERATED_TYPETREE_FULL_READ",
+            }
+            network_manager_layout_probe["candidates"].append(rec)
+            layout_candidates.append((
+                obj,
+                forced_tree,
+                {
+                    "class": "NetworkManager",
+                    "namespace": "Unity.Netcode",
+                    "assembly": "Unity.Netcode.Runtime.dll",
+                    "metadata_source": "EXACT_GENERATED_NETWORKMANAGER_TYPETREE",
+                },
+                forced_hits,
+                "RESOLVED",
+                "EXACT_GENERATED_NETWORKMANAGER_TYPETREE",
+                "EXACT_NETCODE_NETWORKMANAGER_GENERATED_TYPETREE_FULL_READ",
+            ))
+
+        network_manager_layout_probe["candidate_count"] = len(layout_candidates)
+        network_manager_layout_probe["parse_success_without_exact_structured_networkconfig"] = parse_success_without_match
+        network_manager_layout_probe["parse_failure_count"] = sum(failure_types.values())
+        network_manager_layout_probe["parse_failure_types"] = dict(sorted(failure_types.items()))
+        if len(layout_candidates) == 1:
+            exact_manager_candidates = layout_candidates
+
     if len(exact_manager_candidates) != 1:
         diagnostics = [
             {
@@ -885,18 +982,38 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             }
             for obj, _, desc, config_hits, script_status, descriptor_source, proof_kind in manager_candidates
         ]
-        raise ValueError(
-            "Expected exactly one serialized NetworkManager owner with one structured NetworkConfig subtree after "
-            "exact SerializedType/MonoScript identity recovery; "
-            f"found {len(exact_manager_candidates)} qualifying of {len(manager_candidates)} proven owner candidate(s); "
-            f"unresolved MonoBehaviour identities={unresolved_script_count}; object-level null m_Script pointers={null_script_count}; "
-            f"descriptor sources={json.dumps(dict(sorted(descriptor_source_counts.items())))}; "
-            f"unresolved serialized type states={json.dumps(dict(sorted(unresolved_serialized_type_state_counts.items())))}; "
-            f"unresolved embedded TypeTree states={json.dumps(dict(sorted(unresolved_embedded_typetree_state_counts.items())))}; "
-            f"proven candidates={json.dumps(diagnostics)}; "
-            f"raw structural NetworkConfig candidates (NOT owner proof)={json.dumps(raw_structural_network_config_candidates)}; "
-            f"proven-owner structural NetworkConfig candidates={json.dumps(proven_owner_structural_config_candidates)}"
-        )
+        return {
+            "analysis_status": "OWNER_RECOVERY_UNRESOLVED",
+            "unitypy_version": version,
+            "asset_files": file_inventory,
+            "serialized_file_count": len(serialized_files),
+            "object_count": len(objects),
+            "type_counts": dict(sorted(Counter(o.type.name for o in objects).items())),
+            "script_parse_errors": script_errors,
+            "network_manager": None,
+            "network_manager_owner_proof": game_owner_proof,
+            "network_manager_layout_probe": network_manager_layout_probe,
+            "typetree_recovery": {
+                "unity_version": unity_version,
+                "TypeTreeGeneratorAPI": ttgen_version,
+                "generator_inputs": generator_inputs,
+                "descriptor_source_counts": dict(sorted(descriptor_source_counts.items())),
+                "unresolved_script_count": unresolved_script_count,
+                "object_level_null_m_script_count": null_script_count,
+                "unresolved_serialized_type_state_counts": dict(sorted(unresolved_serialized_type_state_counts.items())),
+                "unresolved_embedded_typetree_state_counts": dict(sorted(unresolved_embedded_typetree_state_counts.items())),
+                "raw_structural_network_config_candidates": raw_structural_network_config_candidates,
+                "proven_owner_structural_network_config_candidates": proven_owner_structural_config_candidates,
+                "previous_proven_owner_candidates": diagnostics,
+            },
+            "network_config_prefab_field_paths": [],
+            "network_config_prefab_edges": [],
+            "registered_gameobject_count": 0,
+            "registered_gameobjects": [],
+            "target_name": TARGET_NAME,
+            "target_status": None,
+            "target_surface": None,
+        }
 
     manager_obj, manager_tree, manager_script, config_hits, manager_script_status, manager_descriptor_source, manager_proof_kind = exact_manager_candidates[0]
     if len(config_hits) != 1:
@@ -1128,6 +1245,8 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             "network_config_path": path_text(config_path),
         },
         "network_manager_owner_proof": game_owner_proof,
+        "network_manager_layout_probe": network_manager_layout_probe,
+        "analysis_status": "TARGET_EVALUATED",
         "typetree_recovery": {
             "unity_version": unity_version,
             "TypeTreeGeneratorAPI": ttgen_version,
@@ -1358,6 +1477,7 @@ def self_test():
     assert hash128_bytes(memoryview(bytes(range(16)))) == bytes(range(16))
     assert hash128_state(memoryview(bytes(16))) == "ZERO"
     assert hash128_state(memoryview(bytes(range(16)))) == "NONZERO"
+    assert NETWORK_MANAGER_FULL_NAME == "Unity.Netcode.NetworkManager"
     sample = {"assembly": "Assembly-CSharp.dll", "namespace": "", "class": "EntranceTeleport"}
     expected_script_id = md4_digest(b"EntranceTeleportAssembly-CSharp.dll")
     assert script_id_digest(sample, "CLASS_NAMESPACE_MONOSCRIPT_ASSEMBLY_LITERAL") == expected_script_id
@@ -1387,7 +1507,7 @@ def main():
         raise ValueError("--out is required")
 
     result = {
-        "schema_version": "v81-networkconfig-entranceteleportb-8",
+        "schema_version": "v81-networkconfig-entranceteleportb-9",
         "target_name": TARGET_NAME,
         "proof_boundary": (
             "Static installed-V81 base-game serialized assets plus exact installed Assembly-CSharp.dll and "
@@ -1399,9 +1519,12 @@ def main():
             "MonoScript references. When script_id is null, SerializedType.old_type_hash may be matched only to a unique "
             "MonoScript.m_PropertiesHash after that relation validates against every comparable resolved installed reference. "
             "Missing TypeTrees are generated statically from those exact installed assemblies. "
-            "Raw structural NetworkConfig presence is diagnostic only and is never by itself owner proof. "
-            "GameObject name alone is never registration proof; the target must be reached from the proven serialized "
-            "Unity.Netcode.NetworkManager.NetworkConfig prefab-list path."
+            "When all serialized script identity channels are absent, unresolved null-script MonoBehaviours may be probed "
+            "against the exact generated Unity.Netcode.NetworkManager TypeTree only with UnityPy full-read checking enabled; "
+            "a positive owner recovery requires exactly one candidate, one structured NetworkConfig subtree and matching "
+            "serialized MonoBehaviour base fields. Raw structural NetworkConfig presence is diagnostic only and is never "
+            "by itself owner proof. GameObject name alone is never registration proof; the target must be reached from the "
+            "proven serialized Unity.Netcode.NetworkManager.NetworkConfig prefab-list path."
         ),
         "toolchain": {
             "python": sys.version.split()[0],
@@ -1419,11 +1542,16 @@ def main():
     )
     result["netcode"] = netcode_result
     result["assets"] = inspect_assets(args.data_root, game_owner_proof, netcode_result)
+    result["analysis_status"] = result["assets"].get("analysis_status")
+    if result["analysis_status"] not in ("TARGET_EVALUATED", "OWNER_RECOVERY_UNRESOLVED"):
+        raise ValueError("Unexpected analysis status: " + str(result["analysis_status"]))
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({
+        "analysis_status": result["analysis_status"],
         "target_status": result["assets"]["target_status"],
+        "network_manager_layout_probe_candidates": result["assets"]["network_manager_layout_probe"]["candidate_count"],
         "registered_gameobject_count": result["assets"]["registered_gameobject_count"],
         "netcode_dll_sha256": result["netcode"]["dll_sha256"],
         "netcode_focused_methods": result["netcode"]["summary"]["focused_method_count"],

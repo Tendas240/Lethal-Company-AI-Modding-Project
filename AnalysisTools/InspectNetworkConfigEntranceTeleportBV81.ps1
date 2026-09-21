@@ -414,9 +414,15 @@ try {
     if (-not (Test-Path -LiteralPath $capturePath -PathType Leaf)) { throw 'Scanner did not produce the expected capture JSON.' }
     $capture = Get-Content -LiteralPath $capturePath -Raw
     $captureObject = $capture | ConvertFrom-Json
-    if ($captureObject.schema_version -cne 'v81-networkconfig-entranceteleportb-8') { throw 'Unexpected capture schema.' }
+    if ($captureObject.schema_version -cne 'v81-networkconfig-entranceteleportb-9') { throw 'Unexpected capture schema.' }
+    $allowedAnalysisStatus = @('TARGET_EVALUATED', 'OWNER_RECOVERY_UNRESOLVED')
+    if ($allowedAnalysisStatus -notcontains $captureObject.analysis_status) { throw ('Unexpected analysis status: ' + $captureObject.analysis_status) }
     $allowedStatus = @('REGISTERED_SURFACE_PROVEN', 'REGISTERED_SURFACE_INCOMPLETE', 'EXACT_NAME_NOT_REGISTERED', 'AMBIGUOUS_MULTIPLE_EXACT_MATCHES')
-    if ($allowedStatus -notcontains $captureObject.assets.target_status) { throw ('Unexpected target status: ' + $captureObject.assets.target_status) }
+    if ($captureObject.analysis_status -ceq 'TARGET_EVALUATED') {
+        if ($allowedStatus -notcontains $captureObject.assets.target_status) { throw ('Unexpected target status: ' + $captureObject.assets.target_status) }
+    } elseif ($null -ne $captureObject.assets.target_status) {
+        throw 'Owner-recovery diagnostic capture must not claim a target status.'
+    }
     if ($captureObject.netcode.dll_sha256 -ne $netcodeSha) { throw 'Scanner Netcode SHA disagrees with wrapper hash.' }
 
     $stamp = [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssZ')
@@ -437,7 +443,7 @@ try {
         game_executable = @{ logical_path = 'Lethal Company.exe'; sha256 = $exeSha }
         steam = @{ app_id = $steamIdentity.AppId; buildid = $steamIdentity.BuildId; appmanifest_sha256 = $manifestSha; prior_appmanifest_sha256 = $ExpectedAppManifestSha256; matches_prior_appmanifest = ($manifestSha -eq $ExpectedAppManifestSha256); manifest_review = $ManifestReview }
         scanner = @{ repository_path = $ScannerRepositoryPath; github_blob_sha = $scannerFile.sha; sha256 = $scannerSha }
-        target = @{ exact_name = 'EntranceTeleportB'; status = $captureObject.assets.target_status; required_component_surface = @('EntranceTeleport', 'InteractTrigger', 'Unity.Netcode.NetworkObject') }
+        target = @{ exact_name = 'EntranceTeleportB'; analysis_status = $captureObject.analysis_status; status = $captureObject.assets.target_status; required_component_surface = @('EntranceTeleport', 'InteractTrigger', 'Unity.Netcode.NetworkObject') }
         published_evidence = @{ file = $CaptureName; sha256 = (Get-TextSha256 $capture); excludes = @('game binaries', 'Unity asset payloads', 'full managed decompiles', 'absolute local paths', 'user names') }
     }
     $metadataJson = ($metadata | ConvertTo-Json -Depth 15) + [Environment]::NewLine
@@ -456,7 +462,8 @@ try {
     Write-Host ''
     Write-Host 'SUCCESS' -ForegroundColor Green
     Write-Host ('Evidence commit: ' + $commitResult.sha)
-    Write-Host ('Target status: ' + $captureObject.assets.target_status)
+    Write-Host ('Analysis status: ' + $captureObject.analysis_status)
+    Write-Host ('Target status: ' + $(if ($null -eq $captureObject.assets.target_status) { '<not evaluated>' } else { $captureObject.assets.target_status }))
     Write-Host ('Evidence directory: ' + $directory)
     Write-Host 'Only compact JSON evidence and a manifest were uploaded. No game binary, Unity asset payload, local clone or gameplay run was uploaded.'
 } finally {
