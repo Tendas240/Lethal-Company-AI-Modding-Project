@@ -147,6 +147,38 @@ def path_text(path) -> str:
     return out
 
 
+def network_config_hits(tree):
+    return [
+        (path, value)
+        for path, value in walk(tree)
+        if path and path[-1].casefold() == "networkconfig"
+    ]
+
+
+def serialized_type_tree_summary(obj):
+    st = getattr(obj, "serialized_type", None)
+    if st is None:
+        return {"present": False}
+    node = getattr(st, "node", None)
+    if node is None:
+        legacy_nodes = getattr(st, "nodes", None)
+        if legacy_nodes:
+            node = legacy_nodes[0] if isinstance(legacy_nodes, list) else legacy_nodes
+    if node is None:
+        return {"present": False}
+    children = getattr(node, "m_Children", None) or []
+    return {
+        "present": True,
+        "root_type": str(getattr(node, "m_Type", "") or ""),
+        "root_name": str(getattr(node, "m_Name", "") or ""),
+        "direct_child_names": [
+            str(getattr(child, "m_Name", "") or "")
+            for child in list(children)[:80]
+        ],
+        "direct_child_count": len(children),
+    }
+
+
 def script_identity(desc):
     if not desc:
         return None
@@ -746,11 +778,13 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
         return out
 
     manager_candidates = []
-    structural_config_candidates = []
+    proven_owner_structural_config_candidates = []
+    raw_structural_network_config_candidates = []
     unresolved_script_count = 0
     null_script_count = 0
     descriptor_source_counts = Counter()
     unresolved_serialized_type_state_counts = Counter()
+    unresolved_embedded_typetree_state_counts = Counter()
     for obj in objects:
         if obj.type.name != "MonoBehaviour":
             continue
@@ -760,6 +794,27 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             continue
         desc, status, descriptor_source = script_descriptor(obj, head)
         descriptor_source_counts[f"{descriptor_source}:{status}"] += 1
+        raw_config_hits = network_config_hits(head)
+        if raw_config_hits:
+            raw_structural_network_config_candidates.append({
+                **ident(obj),
+                "type_id": int(getattr(obj, "type_id", -1)),
+                "script_status": status,
+                "script_source": descriptor_source,
+                "script": desc,
+                "serialized_type": serialized_type_diagnostic(obj),
+                "embedded_type_tree": serialized_type_tree_summary(obj),
+                "top_level_fields": sorted(str(k) for k in head.keys())[:80],
+                "network_config_paths": [path_text(path) for path, _ in raw_config_hits],
+                "network_config_top_level_fields": [
+                    sorted(str(k) for k in value.keys())[:80] if isinstance(value, dict) else ["<list>"]
+                    for _, value in raw_config_hits
+                ],
+                "network_config_hit_count": len(raw_config_hits),
+                "structured_network_config_hits": sum(
+                    1 for _, value in raw_config_hits if isinstance(value, (dict, list))
+                ),
+            })
         script_ptr = head.get("m_Script")
         if is_pptr(script_ptr) and script_ptr.get("m_PathID") == 0:
             null_script_count += 1
@@ -776,19 +831,23 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
                 f"old_type_hash={hash128_state(old_type_hash_value)}"
             )
             unresolved_serialized_type_state_counts[state_key] += 1
+            node_summary = serialized_type_tree_summary(obj)
+            embedded_key = (
+                f"present={node_summary.get('present')};"
+                f"root_type={node_summary.get('root_type', '')};"
+                f"direct_child_count={node_summary.get('direct_child_count', 0)};"
+                f"raw_network_config_hits={len(raw_config_hits)}"
+            )
+            unresolved_embedded_typetree_state_counts[embedded_key] += 1
 
         proof_kind = manager_owner_proof(desc, head)
         if not proof_kind:
             continue
 
         tree = read(obj)
-        config_hits = [
-            (path, value)
-            for path, value in walk(tree)
-            if path and path[-1].casefold() == "networkconfig"
-        ]
+        config_hits = network_config_hits(tree)
         if config_hits:
-            structural_config_candidates.append({
+            proven_owner_structural_config_candidates.append({
                 **ident(obj),
                 "script_status": status,
                 "script_source": descriptor_source,
@@ -833,8 +892,10 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
             f"unresolved MonoBehaviour identities={unresolved_script_count}; object-level null m_Script pointers={null_script_count}; "
             f"descriptor sources={json.dumps(dict(sorted(descriptor_source_counts.items())))}; "
             f"unresolved serialized type states={json.dumps(dict(sorted(unresolved_serialized_type_state_counts.items())))}; "
+            f"unresolved embedded TypeTree states={json.dumps(dict(sorted(unresolved_embedded_typetree_state_counts.items())))}; "
             f"proven candidates={json.dumps(diagnostics)}; "
-            f"structural NetworkConfig candidates={json.dumps(structural_config_candidates)}"
+            f"raw structural NetworkConfig candidates (NOT owner proof)={json.dumps(raw_structural_network_config_candidates)}; "
+            f"proven-owner structural NetworkConfig candidates={json.dumps(proven_owner_structural_config_candidates)}"
         )
 
     manager_obj, manager_tree, manager_script, config_hits, manager_script_status, manager_descriptor_source, manager_proof_kind = exact_manager_candidates[0]
@@ -1087,6 +1148,9 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
                 "ambiguous_hash_count": len(properties_hash_collisions),
             },
             "unresolved_serialized_type_state_counts": dict(sorted(unresolved_serialized_type_state_counts.items())),
+            "unresolved_embedded_typetree_state_counts": dict(sorted(unresolved_embedded_typetree_state_counts.items())),
+            "raw_structural_network_config_candidates": raw_structural_network_config_candidates,
+            "proven_owner_structural_network_config_candidates": proven_owner_structural_config_candidates,
         },
         "network_config_prefab_field_paths": sorted(prefab_field_paths),
         "network_config_prefab_edges": registry_edges,
@@ -1278,6 +1342,8 @@ def self_test():
     tree = {"NetworkConfig": {"NetworkPrefabsLists": [{"m_FileID": 0, "m_PathID": 7}]}}
     paths = [path_text(p) for p, _ in walk(tree) if p and "prefab" in p[-1].casefold()]
     assert "NetworkConfig.NetworkPrefabsLists" in paths
+    config_hits = network_config_hits(tree)
+    assert len(config_hits) == 1 and path_text(config_hits[0][0]) == "NetworkConfig"
     required = {(x[0], x[1], x[2]) for x in REQUIRED_SURFACE}
     assert ("EntranceTeleport", "", "assembly-csharp") in required
     assert TARGET_NAME == "EntranceTeleportB"
@@ -1321,7 +1387,7 @@ def main():
         raise ValueError("--out is required")
 
     result = {
-        "schema_version": "v81-networkconfig-entranceteleportb-7",
+        "schema_version": "v81-networkconfig-entranceteleportb-8",
         "target_name": TARGET_NAME,
         "proof_boundary": (
             "Static installed-V81 base-game serialized assets plus exact installed Assembly-CSharp.dll and "
@@ -1333,6 +1399,7 @@ def main():
             "MonoScript references. When script_id is null, SerializedType.old_type_hash may be matched only to a unique "
             "MonoScript.m_PropertiesHash after that relation validates against every comparable resolved installed reference. "
             "Missing TypeTrees are generated statically from those exact installed assemblies. "
+            "Raw structural NetworkConfig presence is diagnostic only and is never by itself owner proof. "
             "GameObject name alone is never registration proof; the target must be reached from the proven serialized "
             "Unity.Netcode.NetworkManager.NetworkConfig prefab-list path."
         ),
