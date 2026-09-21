@@ -19,6 +19,7 @@ UNITYPY_VERSION = "1.25.3"
 DNFILE_VERSION = "0.18.0"
 DNCIL_VERSION = "1.0.2"
 TARGET_NAME = "EntranceTeleportB"
+NETWORK_MANAGER_SCRIPT = ("NetworkManager", "Unity.Netcode", "unity.netcode.runtime")
 REQUIRED_SURFACE = (
     ("EntranceTeleport", "", "assembly-csharp"),
     ("InteractTrigger", "", "assembly-csharp"),
@@ -182,7 +183,7 @@ def inspect_assets(data_root: Path):
         rec = script_map.get((script.assets_file.name, script.path_id))
         return (rec, "RESOLVED") if rec else (None, "RESOLVED_NOT_MONOSCRIPT")
 
-    managers = []
+    manager_candidates = []
     unresolved_script_count = 0
     for obj in objects:
         if obj.type.name != "MonoBehaviour":
@@ -197,24 +198,43 @@ def inspect_assets(data_root: Path):
         if not desc:
             continue
         if (
-            desc.get("class") == "GameNetworkManager"
-            and normalize_assembly(desc.get("assembly")) == "assembly-csharp"
+            desc.get("class") == NETWORK_MANAGER_SCRIPT[0]
+            and str(desc.get("namespace") or "") == NETWORK_MANAGER_SCRIPT[1]
+            and normalize_assembly(desc.get("assembly")) == NETWORK_MANAGER_SCRIPT[2]
         ):
-            managers.append((obj, tree, desc))
+            config_hits = [
+                (path, value)
+                for path, value in walk(tree)
+                if path and path[-1].casefold() == "networkconfig"
+            ]
+            manager_candidates.append((obj, tree, desc, config_hits))
 
-    if len(managers) != 1:
+    exact_manager_candidates = [
+        row
+        for row in manager_candidates
+        if len(row[3]) == 1 and isinstance(row[3][0][1], (dict, list))
+    ]
+    if len(exact_manager_candidates) != 1:
+        diagnostics = [
+            {
+                **ident(obj),
+                "script": desc,
+                "network_config_hit_count": len(config_hits),
+                "structured_network_config_hits": sum(
+                    1 for _, value in config_hits if isinstance(value, (dict, list))
+                ),
+            }
+            for obj, _, desc, config_hits in manager_candidates
+        ]
         raise ValueError(
-            f"Expected exactly one exact Assembly-CSharp GameNetworkManager MonoBehaviour, found {len(managers)}; "
-            f"unresolved non-null script pointers={unresolved_script_count}"
+            "Expected exactly one exact serialized Unity.Netcode.NetworkManager with one structured NetworkConfig subtree, "
+            f"found {len(exact_manager_candidates)} qualifying of {len(manager_candidates)} exact script candidate(s); "
+            f"unresolved non-null script pointers={unresolved_script_count}; candidates={json.dumps(diagnostics)}"
         )
 
-    manager_obj, manager_tree, manager_script = managers[0]
-    config_hits = []
-    for path, value in walk(manager_tree):
-        if path and path[-1].casefold() == "networkconfig":
-            config_hits.append((path, value))
+    manager_obj, manager_tree, manager_script, config_hits = exact_manager_candidates[0]
     if len(config_hits) != 1:
-        raise ValueError(f"Expected exactly one NetworkConfig subtree on GameNetworkManager, found {len(config_hits)}")
+        raise ValueError(f"Expected exactly one NetworkConfig subtree on Unity.Netcode.NetworkManager, found {len(config_hits)}")
     config_path, config_tree = config_hits[0]
     if not isinstance(config_tree, (dict, list)):
         raise ValueError("NetworkConfig subtree is not structured")
@@ -296,7 +316,7 @@ def inspect_assets(data_root: Path):
     if unresolved_registry:
         raise ValueError("Unresolved non-null NetworkConfig prefab pointer(s): " + json.dumps(unresolved_registry[:8]))
     if not prefab_field_paths:
-        raise ValueError("No prefab-related serialized field path found under GameNetworkManager.NetworkConfig")
+        raise ValueError("No prefab-related serialized field path found under Unity.Netcode.NetworkManager.NetworkConfig")
     if not registry_gameobjects:
         raise ValueError("NetworkConfig prefab traversal resolved zero GameObject candidates")
 
@@ -426,7 +446,7 @@ def inspect_assets(data_root: Path):
         "object_count": len(objects),
         "type_counts": dict(sorted(Counter(o.type.name for o in objects).items())),
         "script_parse_errors": script_errors,
-        "game_network_manager": {**ident(manager_obj), "script": manager_script, "network_config_path": path_text(config_path)},
+        "network_manager": {**ident(manager_obj), "script": manager_script, "network_config_path": path_text(config_path)},
         "network_config_prefab_field_paths": sorted(prefab_field_paths),
         "network_config_prefab_edges": registry_edges,
         "registered_gameobject_count": len(registered),
@@ -532,6 +552,8 @@ def inspect_netcode(dll_path: Path):
                 "field": str(fr.row.Name),
                 "signature_hex": fr.row.Signature.value.hex(),
             })
+    if not any(x["type"] == "Unity.Netcode.NetworkManager" and x["field"] == "NetworkConfig" for x in fields):
+        raise ValueError("Exact Netcode NetworkManager.NetworkConfig field missing")
     if not any(x["type"] == "Unity.Netcode.NetworkPrefabs" and x["field"] == "m_Prefabs" for x in fields):
         raise ValueError("Exact Netcode NetworkPrefabs.m_Prefabs field missing")
 
@@ -591,6 +613,7 @@ def inspect_netcode(dll_path: Path):
             "core_types_present": sorted(core_types & set(type_rows)),
             "focused_method_count": len(methods),
             "focused_instruction_count": sum(len(m["instructions"]) for m in methods),
+            "network_manager_network_config_field_present": True,
             "m_prefabs_field_present": True,
             "parse_errors": 0,
         },
@@ -607,6 +630,7 @@ def self_test():
     required = {(x[0], x[1], x[2]) for x in REQUIRED_SURFACE}
     assert ("EntranceTeleport", "", "assembly-csharp") in required
     assert TARGET_NAME == "EntranceTeleportB"
+    assert NETWORK_MANAGER_SCRIPT == ("NetworkManager", "Unity.Netcode", "unity.netcode.runtime")
     print("V81 NetworkConfig EntranceTeleportB scanner self-test passed")
 
 
@@ -629,12 +653,12 @@ def main():
         raise ValueError("--out is required")
 
     result = {
-        "schema_version": "v81-networkconfig-entranceteleportb-1",
+        "schema_version": "v81-networkconfig-entranceteleportb-2",
         "target_name": TARGET_NAME,
         "proof_boundary": (
             "Static installed-V81 base-game asset plus Unity.Netcode.Runtime.dll evidence only. "
             "No game/mod assembly is loaded or executed. GameObject name alone is never treated as registration proof; "
-            "the target must be reached from the exact serialized GameNetworkManager.NetworkConfig prefab path."
+            "the target must be reached from the exact serialized Unity.Netcode.NetworkManager.NetworkConfig prefab path."
         ),
         "toolchain": {
             "python": sys.version.split()[0],
