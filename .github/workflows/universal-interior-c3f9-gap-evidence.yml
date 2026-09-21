@@ -1,0 +1,77 @@
+name: Capture C3F9A unresolved template-gap evidence
+
+on:
+  pull_request:
+    paths:
+      - 'AnalysisTools/inspect_universal_interior_c3f9.py'
+      - 'AnalysisTools/inspect_universal_interior_c3f7.py'
+      - 'AnalysisTools/inspect_universal_interior_c3f2.py'
+      - 'SourceEvidence/UniversalInteriorViability/PhaseC3F7/PACKAGE_LOCK.json'
+      - 'SourceEvidence/UniversalInteriorViability/PhaseC3F9/**'
+      - 'Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md'
+      - 'ProfileSources/S1.42AK/export.r2x'
+      - '.github/workflows/universal-interior-c3f9-gap-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check UnityPy==1.25.3 PyYAML==6.0.2
+      - name: Compile and self-test bounded C3F9A helper
+        run: |
+          python -m py_compile AnalysisTools/inspect_universal_interior_c3f9.py
+          python AnalysisTools/inspect_universal_interior_c3f9.py --self-test
+
+  capture:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - Generic_GMD-Generic_Interiors
+          - LethalMatt-Bozoros
+          - Magic_Wesley-WesleysInteriors
+          - Tolian-Scoopy_Castle
+          - Beaniebe-Storage_Complex
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check UnityPy==1.25.3 PyYAML==6.0.2
+      - name: Bind exact checked-out head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+      - name: Capture exact-package unresolved static gap
+        id: capture
+        continue-on-error: true
+        env:
+          TARGET_PACKAGE: ${{ matrix.package }}
+        run: python AnalysisTools/inspect_universal_interior_c3f9.py --package "$TARGET_PACKAGE" --out c3f9-output
+      - name: Upload derived JSON only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c3f9a-${{ matrix.package }}-${{ github.event.pull_request.head.sha || github.sha }}
+          path: c3f9-output/*.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Enforce fail-closed capture
+        if: steps.capture.outcome != 'success'
+        run: exit 1
