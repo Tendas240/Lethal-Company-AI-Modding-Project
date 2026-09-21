@@ -2,8 +2,8 @@
 """Fail-closed static V81 NetworkConfig prefab capture for EntranceTeleportB.
 
 This helper never starts Unity or managed game/mod code. It parses only the exact
-installed base-game serialized assets plus the exact installed Assembly-CSharp.dll
-and Unity.Netcode.Runtime.dll. Output is compact JSON suitable for repository evidence.
+installed base-game serialized assets plus exact installed Managed DLL bytes used
+as static TypeTree/metadata inputs. Output is compact JSON suitable for repository evidence.
 """
 from __future__ import annotations
 
@@ -331,6 +331,57 @@ def candidate_asset_files(data_root: Path):
     return sorted(files, key=lambda p: p.name.lower())
 
 
+def load_managed_typetree_inputs(generator, managed_dir: Path):
+    """Load the exact installed Mono Managed DLL set for static TypeTree resolution.
+
+    UnityPy's supported Mono-game path loads the complete Managed DLL directory so
+    Mono.Cecil can resolve framework/base-type references (for example netstandard)
+    while generating a TypeTree. The bytes are parsed only; managed code is never
+    loaded into the Python process or executed.
+    """
+    dll_paths = sorted(
+        (p for p in managed_dir.glob("*.dll") if p.is_file()),
+        key=lambda p: p.name.casefold(),
+    )
+    if not dll_paths:
+        raise ValueError("No installed Managed DLLs found for TypeTree recovery")
+
+    names = Counter(p.name.casefold() for p in dll_paths)
+    duplicates = sorted(name for name, count in names.items() if count != 1)
+    if duplicates:
+        raise ValueError("Ambiguous installed Managed DLL names: " + ", ".join(duplicates))
+
+    required = {
+        "assembly-csharp.dll",
+        "unity.netcode.runtime.dll",
+        "netstandard.dll",
+    }
+    missing = sorted(required - set(names))
+    if missing:
+        raise ValueError(
+            "Required installed Managed TypeTree dependencies are missing: "
+            + ", ".join(missing)
+        )
+
+    inputs = []
+    for dll_path in dll_paths:
+        dll_bytes = dll_path.read_bytes()
+        try:
+            generator.load_dll(dll_bytes)
+        except Exception as exc:
+            raise ValueError(
+                "Could not load exact installed Managed TypeTree dependency "
+                + dll_path.name
+                + f": {type(exc).__name__}: {exc}"
+            ) from exc
+        inputs.append({
+            "logical_path": "Managed/" + dll_path.name,
+            "bytes": len(dll_bytes),
+            "sha256": hashlib.sha256(dll_bytes).hexdigest(),
+        })
+    return inputs
+
+
 def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
     import UnityPy
 
@@ -382,18 +433,7 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
     from UnityPy.helpers.TypeTreeGenerator import TypeTreeGenerator
     generator = TypeTreeGenerator(unity_version)
     managed_dir = data_root / "Managed"
-    generator_inputs = []
-    for dll_name in ("Assembly-CSharp.dll", "Unity.Netcode.Runtime.dll"):
-        dll_path = managed_dir / dll_name
-        if not dll_path.is_file():
-            raise ValueError("TypeTree recovery input missing: " + dll_name)
-        dll_bytes = dll_path.read_bytes()
-        generator.load_dll(dll_bytes)
-        generator_inputs.append({
-            "logical_path": "Managed/" + dll_name,
-            "bytes": len(dll_bytes),
-            "sha256": hashlib.sha256(dll_bytes).hexdigest(),
-        })
+    generator_inputs = load_managed_typetree_inputs(generator, managed_dir)
 
     by_id = {(o.assets_file.name, o.path_id): o for o in objects}
     raw_cache = {}
@@ -883,21 +923,23 @@ def inspect_assets(data_root: Path, game_owner_proof, netcode_proof):
         "parse_success_without_exact_structured_networkconfig": 0,
         "parse_failure_count": 0,
         "parse_failure_types": {},
+        "generation_error": None,
     }
     if len(exact_manager_candidates) != 1:
         network_manager_layout_probe["attempted"] = True
         try:
             network_manager_nodes = generator.get_nodes_up("Unity.Netcode.Runtime.dll", NETWORK_MANAGER_FULL_NAME)
         except Exception as exc:
-            raise ValueError(
-                "Could not generate exact installed Unity.Netcode.NetworkManager TypeTree: "
-                + f"{type(exc).__name__}: {exc}"
-            ) from exc
+            network_manager_nodes = None
+            network_manager_layout_probe["generation_error"] = {
+                "type": type(exc).__name__,
+                "message": str(exc),
+            }
 
         layout_candidates = []
         failure_types = Counter()
         parse_success_without_match = 0
-        for obj in objects:
+        for obj in (objects if network_manager_nodes is not None else []):
             if obj.type.name != "MonoBehaviour":
                 continue
             try:
@@ -1485,6 +1527,32 @@ def self_test():
         sample, "CLASS_NAMESPACE_ASSEMBLY_NO_DLL"
     )
     assert importlib.metadata.version("TypeTreeGeneratorAPI") == TTGEN_VERSION
+
+    import tempfile
+    class _FakeGenerator:
+        def __init__(self):
+            self.loaded = []
+        def load_dll(self, data):
+            self.loaded.append(data)
+
+    with tempfile.TemporaryDirectory() as td:
+        managed = Path(td)
+        fixture = {
+            "Assembly-CSharp.dll": b"game",
+            "Unity.Netcode.Runtime.dll": b"netcode",
+            "netstandard.dll": b"netstandard",
+            "UnityEngine.CoreModule.dll": b"core",
+        }
+        for name, payload in fixture.items():
+            (managed / name).write_bytes(payload)
+        (managed / "ignore.txt").write_text("not a dll", encoding="utf-8")
+        fake = _FakeGenerator()
+        inputs = load_managed_typetree_inputs(fake, managed)
+        expected_names = sorted(fixture, key=str.casefold)
+        assert [Path(row["logical_path"]).name for row in inputs] == expected_names
+        assert fake.loaded == [fixture[name] for name in expected_names]
+        assert any(row["logical_path"] == "Managed/netstandard.dll" for row in inputs)
+
     print("V81 NetworkConfig EntranceTeleportB scanner self-test passed")
 
 
@@ -1510,8 +1578,8 @@ def main():
         "schema_version": "v81-networkconfig-entranceteleportb-9",
         "target_name": TARGET_NAME,
         "proof_boundary": (
-            "Static installed-V81 base-game serialized assets plus exact installed Assembly-CSharp.dll and "
-            "Unity.Netcode.Runtime.dll metadata only. Managed code is never loaded or executed. Stripped/null object-level "
+            "Static installed-V81 base-game serialized assets plus exact installed Managed DLL bytes used only for "
+            "TypeTree/metadata resolution. Managed code is never loaded or executed. Stripped/null object-level "
             "m_Script references may be recovered through the serialized file's exact SerializedType script_type_index "
             "to MonoScript mapping or, when that index is absent, through the SerializedType 128-bit script_id matched "
             "against exact installed managed TypeDefs. Unity serialized script_id recovery uses MD4(className + namespace + "
