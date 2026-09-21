@@ -2,8 +2,8 @@
 """Fail-closed static V81 NetworkConfig prefab capture for EntranceTeleportB.
 
 This helper never starts Unity or managed game/mod code. It parses only the exact
-installed base-game serialized assets plus Unity.Netcode.Runtime.dll supplied by
-its PowerShell wrapper. Output is compact JSON suitable for repository evidence.
+installed base-game serialized assets plus the exact installed Assembly-CSharp.dll
+and Unity.Netcode.Runtime.dll. Output is compact JSON suitable for repository evidence.
 """
 from __future__ import annotations
 
@@ -20,6 +20,8 @@ DNFILE_VERSION = "0.18.0"
 DNCIL_VERSION = "1.0.2"
 TARGET_NAME = "EntranceTeleportB"
 NETWORK_MANAGER_SCRIPT = ("NetworkManager", "Unity.Netcode", "unity.netcode.runtime")
+NETWORK_MANAGER_FULL_NAME = "Unity.Netcode.NetworkManager"
+GAME_ASSEMBLY_NAME = "Assembly-CSharp"
 REQUIRED_SURFACE = (
     ("EntranceTeleport", "", "assembly-csharp"),
     ("InteractTrigger", "", "assembly-csharp"),
@@ -64,6 +66,102 @@ def path_text(path) -> str:
     return out
 
 
+def script_identity(desc):
+    if not desc:
+        return None
+    return (
+        str(desc.get("class") or ""),
+        str(desc.get("namespace") or ""),
+        normalize_assembly(desc.get("assembly")),
+    )
+
+
+def metadata_type_name(row) -> str:
+    if not hasattr(row, "TypeName"):
+        return type(row).__name__
+    name = str(row.TypeName)
+    namespace = str(row.TypeNamespace)
+    return f"{namespace}.{name}" if namespace else name
+
+
+def inspect_game_network_manager_inheritance(dll_path: Path):
+    import dnfile
+
+    version = importlib.metadata.version("dnfile")
+    if version != DNFILE_VERSION:
+        raise ValueError(f"Expected dnfile {DNFILE_VERSION}, got {version}")
+    if not dll_path.is_file():
+        raise ValueError("Exact installed Assembly-CSharp.dll is missing below the supplied data root")
+
+    pe = dnfile.dnPE(str(dll_path))
+    if pe.net is None or pe.net.mdtables is None:
+        raise ValueError("Assembly-CSharp.dll is not a readable managed assembly")
+
+    assembly_rows = pe.net.mdtables.Assembly or []
+    if not assembly_rows:
+        raise ValueError("Assembly-CSharp.dll has no Assembly row")
+    assembly_row = assembly_rows.rows[0]
+    assembly_name = str(assembly_row.Name)
+    if assembly_name != GAME_ASSEMBLY_NAME:
+        raise ValueError("Unexpected game assembly identity: " + assembly_name)
+
+    bases = {}
+    for t in pe.net.mdtables.TypeDef:
+        own = metadata_type_name(t)
+        if own == "<Module>":
+            continue
+        ext = getattr(t, "Extends", None)
+        ext_row = None if ext is None else getattr(ext, "row", None)
+        bases[own] = None if ext_row is None else metadata_type_name(ext_row)
+
+    derived = []
+    for own in sorted(bases):
+        chain = []
+        cursor = own
+        seen = set()
+        while True:
+            base = bases.get(cursor)
+            if not base:
+                break
+            chain.append(base)
+            if base == NETWORK_MANAGER_FULL_NAME:
+                namespace, _, class_name = own.rpartition(".")
+                derived.append({
+                    "type": own,
+                    "class": class_name,
+                    "namespace": namespace,
+                    "assembly": GAME_ASSEMBLY_NAME,
+                    "base_chain_to_network_manager": chain,
+                })
+                break
+            if base not in bases:
+                break
+            if base in seen:
+                raise ValueError("Cycle in Assembly-CSharp TypeDef inheritance while resolving " + own)
+            seen.add(base)
+            cursor = base
+
+    if not derived:
+        raise ValueError(
+            "Exact installed Assembly-CSharp metadata exposes no type deriving from "
+            + NETWORK_MANAGER_FULL_NAME
+        )
+
+    return {
+        "dll_bytes": dll_path.stat().st_size,
+        "dll_sha256": sha256_file(dll_path),
+        "assembly": {
+            "name": assembly_name,
+            "version": (
+                f"{assembly_row.MajorVersion}.{assembly_row.MinorVersion}."
+                f"{assembly_row.BuildNumber}.{assembly_row.RevisionNumber}"
+            ),
+        },
+        "network_manager_base_type": NETWORK_MANAGER_FULL_NAME,
+        "derived_serialized_owner_types": derived,
+    }
+
+
 def candidate_asset_files(data_root: Path):
     raw = []
     for name in ("globalgamemanagers", "globalgamemanagers.assets", "resources.assets"):
@@ -86,7 +184,7 @@ def candidate_asset_files(data_root: Path):
     return sorted(files, key=lambda p: p.name.lower())
 
 
-def inspect_assets(data_root: Path):
+def inspect_assets(data_root: Path, game_owner_proof):
     import UnityPy
 
     version = importlib.metadata.version("UnityPy")
@@ -183,7 +281,16 @@ def inspect_assets(data_root: Path):
         rec = script_map.get((script.assets_file.name, script.path_id))
         return (rec, "RESOLVED") if rec else (None, "RESOLVED_NOT_MONOSCRIPT")
 
+    allowed_manager_scripts = {NETWORK_MANAGER_SCRIPT}
+    for rec in game_owner_proof["derived_serialized_owner_types"]:
+        allowed_manager_scripts.add((
+            rec["class"],
+            rec["namespace"],
+            normalize_assembly(rec["assembly"]),
+        ))
+
     manager_candidates = []
+    structural_config_candidates = []
     unresolved_script_count = 0
     for obj in objects:
         if obj.type.name != "MonoBehaviour":
@@ -197,16 +304,21 @@ def inspect_assets(data_root: Path):
             unresolved_script_count += 1
         if not desc:
             continue
-        if (
-            desc.get("class") == NETWORK_MANAGER_SCRIPT[0]
-            and str(desc.get("namespace") or "") == NETWORK_MANAGER_SCRIPT[1]
-            and normalize_assembly(desc.get("assembly")) == NETWORK_MANAGER_SCRIPT[2]
-        ):
-            config_hits = [
-                (path, value)
-                for path, value in walk(tree)
-                if path and path[-1].casefold() == "networkconfig"
-            ]
+        config_hits = [
+            (path, value)
+            for path, value in walk(tree)
+            if path and path[-1].casefold() == "networkconfig"
+        ]
+        if config_hits:
+            structural_config_candidates.append({
+                **ident(obj),
+                "script": desc,
+                "network_config_hit_count": len(config_hits),
+                "structured_network_config_hits": sum(
+                    1 for _, value in config_hits if isinstance(value, (dict, list))
+                ),
+            })
+        if script_identity(desc) in allowed_manager_scripts:
             manager_candidates.append((obj, tree, desc, config_hits))
 
     exact_manager_candidates = [
@@ -227,9 +339,11 @@ def inspect_assets(data_root: Path):
             for obj, _, desc, config_hits in manager_candidates
         ]
         raise ValueError(
-            "Expected exactly one exact serialized Unity.Netcode.NetworkManager with one structured NetworkConfig subtree, "
-            f"found {len(exact_manager_candidates)} qualifying of {len(manager_candidates)} exact script candidate(s); "
-            f"unresolved non-null script pointers={unresolved_script_count}; candidates={json.dumps(diagnostics)}"
+            "Expected exactly one serialized NetworkManager owner (exact Unity.Netcode.NetworkManager or "
+            "Assembly-CSharp type proven by exact metadata to derive from it) with one structured NetworkConfig subtree, "
+            f"found {len(exact_manager_candidates)} qualifying of {len(manager_candidates)} allowed owner candidate(s); "
+            f"unresolved non-null script pointers={unresolved_script_count}; candidates={json.dumps(diagnostics)}; "
+            f"structural NetworkConfig candidates={json.dumps(structural_config_candidates)}"
         )
 
     manager_obj, manager_tree, manager_script, config_hits = exact_manager_candidates[0]
@@ -439,6 +553,13 @@ def inspect_assets(data_root: Path):
         }
         status = "REGISTERED_SURFACE_PROVEN" if not hierarchy_missing else "REGISTERED_SURFACE_INCOMPLETE"
 
+    manager_identity = script_identity(manager_script)
+    owner_kind = (
+        "EXACT_UNITY_NETCODE_NETWORK_MANAGER"
+        if manager_identity == NETWORK_MANAGER_SCRIPT
+        else "ASSEMBLY_CSHARP_DERIVED_NETWORK_MANAGER"
+    )
+
     return {
         "unitypy_version": version,
         "asset_files": file_inventory,
@@ -446,7 +567,13 @@ def inspect_assets(data_root: Path):
         "object_count": len(objects),
         "type_counts": dict(sorted(Counter(o.type.name for o in objects).items())),
         "script_parse_errors": script_errors,
-        "network_manager": {**ident(manager_obj), "script": manager_script, "network_config_path": path_text(config_path)},
+        "network_manager": {
+            **ident(manager_obj),
+            "script": manager_script,
+            "owner_kind": owner_kind,
+            "network_config_path": path_text(config_path),
+        },
+        "network_manager_owner_proof": game_owner_proof,
         "network_config_prefab_field_paths": sorted(prefab_field_paths),
         "network_config_prefab_edges": registry_edges,
         "registered_gameobject_count": len(registered),
@@ -631,6 +758,9 @@ def self_test():
     assert ("EntranceTeleport", "", "assembly-csharp") in required
     assert TARGET_NAME == "EntranceTeleportB"
     assert NETWORK_MANAGER_SCRIPT == ("NetworkManager", "Unity.Netcode", "unity.netcode.runtime")
+    assert script_identity({"class": "GameNetworkManager", "namespace": "", "assembly": "Assembly-CSharp.dll"}) == (
+        "GameNetworkManager", "", "assembly-csharp"
+    )
     print("V81 NetworkConfig EntranceTeleportB scanner self-test passed")
 
 
@@ -667,7 +797,10 @@ def main():
             "dncil": importlib.metadata.version("dncil"),
         },
         "netcode": inspect_netcode(args.netcode_dll),
-        "assets": inspect_assets(args.data_root),
+        "assets": inspect_assets(
+            args.data_root,
+            inspect_game_network_manager_inheritance(args.data_root / "Managed" / "Assembly-CSharp.dll"),
+        ),
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
