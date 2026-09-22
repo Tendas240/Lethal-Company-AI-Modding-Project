@@ -1,0 +1,204 @@
+# Installed Lethal Company V81 DunGen chance-table / SpawnSynced lifecycle evidence
+
+Source Assembly-CSharp SHA-256: 5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731
+Installed DunGen.dll SHA-256: d62bbc63eae39ef388797194796ed9cf5a3e7c857fe31f7e5b7310ed78262db6
+Steam buildid: 22825947
+Repository main at capture: 56355ff518ae4301a38d370be9561251f6f963c1
+Repository PR #138 head at capture: 09c0dda948c1b846dec0183987de99e7d0760ebf
+Decompiler: ilspycmd 11.0.0.9375
+Scope A: all DunGen.GameObjectChanceTable.GetRandom overloads plus one-hop same-type callers/callees; at least one overload must expose removeFromTable.
+Scope B: exact RoundManager.SpawnSyncedProps plus one-hop same-type callers/callees; the root must reference both SpawnSyncedObject and spawnPrefab.
+Scope C: non-method SpawnSyncedObject spawnPrefab declaration lines.
+This is static installed-binary evidence, not gameplay acceptance. Binaries, full type decompiles, unrelated methods, absolute local paths and user names are excluded.
+
+## DunGen.GameObjectChanceTable
+
+--- public GameObjectChance GetRandom(RandomStream random, bool isOnMainPath, float normalizedDepth, GameObject previouslyChosen, bool allowImmediateRepeats, bool removeFromTable = false, bool allowNullSelection = false) / local type line 70 ---
+	public GameObjectChance GetRandom(RandomStream random, bool isOnMainPath, float normalizedDepth, GameObject previouslyChosen, bool allowImmediateRepeats, bool removeFromTable = false, bool allowNullSelection = false)
+	{
+		float num = 0f;
+		foreach (GameObjectChance weight2 in Weights)
+		{
+			if (weight2 != null && (allowNullSelection || !(weight2.Value == null)) && (allowImmediateRepeats || previouslyChosen == null || weight2.Value != previouslyChosen))
+			{
+				num += weight2.GetWeight(isOnMainPath, normalizedDepth);
+			}
+		}
+		float num2 = (float)(random.NextDouble() * (double)num);
+		foreach (GameObjectChance weight3 in Weights)
+		{
+			if (weight3 == null || (!allowNullSelection && weight3.Value == null) || (weight3.Value == previouslyChosen && Weights.Count > 1 && !allowImmediateRepeats))
+			{
+				continue;
+			}
+			float weight = weight3.GetWeight(isOnMainPath, normalizedDepth);
+			if (num2 < weight)
+			{
+				if (removeFromTable)
+				{
+					Weights.Remove(weight3);
+				}
+				return weight3;
+			}
+			num2 -= weight;
+		}
+		return null;
+	}
+
+## SpawnSyncedObject signal member declarations
+line 5: 	public GameObject spawnPrefab;
+
+## RoundManager SpawnSyncedProps focused methods
+
+--- public void SpawnSyncedProps() / local type line 634 ---
+	public void SpawnSyncedProps()
+	{
+		try
+		{
+			spawnedSyncedObjects.Clear();
+			SpawnSyncedObject[] array = UnityEngine.Object.FindObjectsOfType<SpawnSyncedObject>();
+			if (array == null)
+			{
+				return;
+			}
+			mapPropsContainer = GameObject.FindGameObjectWithTag("MapPropsContainer");
+			GameObject gameObject = GameObject.FindGameObjectWithTag("SpecialStartRoomBounds");
+			if (gameObject != null)
+			{
+				startRoomSpecialBounds = gameObject.GetComponent<Collider>();
+			}
+			Debug.Log($"Spawning synced props on server. Length: {array.Length}");
+			for (int i = 0; i < array.Length; i++)
+			{
+				GameObject gameObject2 = UnityEngine.Object.Instantiate(array[i].spawnPrefab, array[i].transform.position, array[i].transform.rotation, mapPropsContainer.transform);
+				if (gameObject2 != null)
+				{
+					gameObject2.GetComponent<NetworkObject>().Spawn(destroyWithScene: true);
+					spawnedSyncedObjects.Add(gameObject2);
+				}
+			}
+		}
+		catch (Exception arg)
+		{
+			Debug.Log($"Exception! Unable to sync spawned objects on host; {arg}");
+		}
+	}
+
+--- private IEnumerator LoadNewLevelWait(int randomSeed) / local type line 1011 ---
+	private IEnumerator LoadNewLevelWait(int randomSeed)
+	{
+		yield return null;
+		yield return null;
+		playersFinishedGeneratingFloor.Clear();
+		Debug.Log($"Weed: moldspreaditerations: {currentLevel.moldSpreadIterations}; position: {currentLevel.moldStartPosition}");
+		if (currentLevel.moldSpreadIterations > 0)
+		{
+			Debug.Log("Weed 1");
+			MoldSpreadManager moldSpreadManager = UnityEngine.Object.FindObjectOfType<MoldSpreadManager>();
+			GetOutsideAINodes(getUnderwaterNodes: false);
+			int moldStartPosition;
+			if (StartOfRound.Instance.currentLevel.moldStartPosition == -1)
+			{
+				Debug.Log("Weed 2");
+				System.Random random = new System.Random(StartOfRound.Instance.randomMapSeed + 2017);
+				int num = random.Next(0, outsideAINodes.Length);
+				bool flag = false;
+				RaycastHit hitInfo;
+				if (Vector3.Distance(outsideAINodes[num].transform.position, StartOfRound.Instance.shipLandingPosition.transform.position) < 40f)
+				{
+					flag = true;
+				}
+				else if (Physics.Raycast(outsideAINodes[num].transform.position + Vector3.up * 0.5f, Vector3.down, out hitInfo, 6f, StartOfRound.Instance.collidersAndRoomMaskAndDefault, QueryTriggerInteraction.Ignore))
+				{
+					if (Terrain.activeTerrain == null)
+					{
+						if (!hitInfo.collider.gameObject.CompareTag("Grass") && !hitInfo.collider.gameObject.CompareTag("Snow") && !hitInfo.collider.gameObject.CompareTag("Gravel"))
+						{
+							flag = true;
+						}
+					}
+					else if (hitInfo.collider.gameObject != Terrain.activeTerrain.gameObject)
+					{
+						flag = true;
+					}
+				}
+				if (flag)
+				{
+					int num2 = random.Next(0, outsideAINodes.Length);
+					int num3 = 0;
+					int num4 = 0;
+					while (num4 < outsideAINodes.Length)
+					{
+						num4++;
+						num2 = (num2 + 1) % outsideAINodes.Length;
+						if (Vector3.Distance(StartOfRound.Instance.shipLandingPosition.transform.position, outsideAINodes[num2].transform.position) < 40f)
+						{
+							continue;
+						}
+						if (Physics.Raycast(outsideAINodes[num2].transform.position, Vector3.down, out hitInfo, 6f, StartOfRound.Instance.collidersAndRoomMaskAndDefault, QueryTriggerInteraction.Ignore))
+						{
+							if (Terrain.activeTerrain == null)
+							{
+								if (!hitInfo.collider.gameObject.CompareTag("Grass") && !hitInfo.collider.gameObject.CompareTag("Gravel"))
+								{
+									continue;
+								}
+							}
+							else if (hitInfo.collider.gameObject != Terrain.activeTerrain.gameObject)
+							{
+								continue;
+							}
+						}
+						Debug.Log($"Weed: Chose a node #{num2} which is far enough away. Distance: {Vector3.Distance(StartOfRound.Instance.shipLandingPosition.transform.position, outsideAINodes[num2].transform.position)}", outsideAINodes[num2]);
+						num = num2;
+						num3++;
+						if (random.Next(0, 100) < 30 || num3 > 15)
+						{
+							break;
+						}
+					}
+				}
+				Debug.Log($"Mold: Ended up with node #{num}. Distance: {Vector3.Distance(StartOfRound.Instance.shipLandingPosition.transform.position, outsideAINodes[num].transform.position)}", outsideAINodes[num]);
+				StartOfRound.Instance.currentLevel.moldStartPosition = num;
+				moldStartPosition = num;
+			}
+			else
+			{
+				Debug.Log("Weed 3");
+				moldStartPosition = StartOfRound.Instance.currentLevel.moldStartPosition;
+			}
+			Debug.Log("Weed 4");
+			if (moldSpreadManager.planetMoldStates[StartOfRound.Instance.currentLevelID].destroyedMold.Count > 0)
+			{
+				Debug.Log($"Weed 5; moldspreaditerations: {currentLevel.moldSpreadIterations}; position: {currentLevel.moldStartPosition}");
+				GenerateNewLevelClientRpc(randomSeed, currentLevel.levelID, currentLevel.moldSpreadIterations, moldStartPosition, moldSpreadManager.planetMoldStates[StartOfRound.Instance.currentLevelID].destroyedMold.ToArray());
+			}
+			else
+			{
+				Debug.Log($"Weed 6; moldspreaditerations: {currentLevel.moldSpreadIterations}; position: {currentLevel.moldStartPosition}");
+				GenerateNewLevelClientRpc(randomSeed, currentLevel.levelID, currentLevel.moldSpreadIterations, moldStartPosition);
+			}
+		}
+		else
+		{
+			GenerateNewLevelClientRpc(randomSeed, currentLevel.levelID);
+		}
+		if (currentLevel.spawnEnemiesAndScrap)
+		{
+			yield return new WaitUntil(() => dungeonCompletedGenerating);
+			yield return null;
+			yield return new WaitUntil(() => playersFinishedGeneratingFloor.Count >= GameNetworkManager.Instance.connectedPlayers);
+			Debug.Log("Players finished generating the new floor");
+		}
+		yield return new WaitForSeconds(0.3f);
+		SpawnSyncedProps();
+		if (currentLevel.spawnEnemiesAndScrap)
+		{
+			GeneratedFloorPostProcessing();
+		}
+		yield return null;
+		playersFinishedGeneratingFloor.Clear();
+		dungeonFinishedGeneratingForAllPlayers = true;
+		RefreshEnemyVents();
+		FinishGeneratingNewLevelClientRpc();
+	}
