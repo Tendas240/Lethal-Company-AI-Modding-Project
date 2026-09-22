@@ -372,7 +372,9 @@ function Get-RoundManagerSpawnSyncedMethods {
 
     $methods = @(Get-ParsedMethods -Source $Source -ClassName 'RoundManager')
     $roots = @($methods | Where-Object { $_.Name -eq 'SpawnSyncedProps' })
-    if ($roots.Count -ne 1) { throw ('Expected exactly one RoundManager.SpawnSyncedProps method, found ' + $roots.Count + '.') }
+    if ($roots.Count -ne 1) {
+        throw ('Expected exactly one RoundManager.SpawnSyncedProps method, found ' + $roots.Count + '.')
+    }
     if ($roots[0].Body -notmatch '\bSpawnSyncedObject\b') {
         throw 'RoundManager.SpawnSyncedProps does not reference SpawnSyncedObject.'
     }
@@ -382,7 +384,20 @@ function Get-RoundManagerSpawnSyncedMethods {
 
     $selected = @(Add-OneHopNeighbors -Methods $methods -Roots $roots)
     foreach ($method in $selected) {
-        if ($method.Body -match '^\s*throw\s+null\s*;\s*
+        if ($method.Body -match '^\s*throw\s+null\s*;\s*$') {
+            throw ('Reference-only throw-null stub rejected: ' + $method.Signature)
+        }
+    }
+
+    $lineCount = 0
+    foreach ($method in $selected) {
+        $lineCount += @($method.Text -split '\r?\n').Count
+    }
+    if ($lineCount -gt $MaxLines) {
+        throw "RoundManager SpawnSyncedProps focused extraction is $lineCount lines; limit $MaxLines."
+    }
+    return $selected
+}
 
 function Get-SignalMemberLines {
     param(
