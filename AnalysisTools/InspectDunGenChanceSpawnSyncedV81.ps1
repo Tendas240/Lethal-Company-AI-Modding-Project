@@ -29,6 +29,7 @@ $ReviewedAppManifestSha256 = @(
 $ManifestReview = 'AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md'
 $PriorManifest = 'SourceEvidence/VanillaV81/DunGenGlobalProp/20260922T171706Z-6231fcfa/MANIFEST.json'
 $DunGenType = 'DunGen.GameObjectChanceTable'
+$RoundManagerType = 'RoundManager'
 $SpawnSyncedType = 'SpawnSyncedObject'
 $Utf8 = New-Object System.Text.UTF8Encoding($false)
 
@@ -366,23 +367,492 @@ function Get-ChanceMethods {
     return $selected
 }
 
-function Get-SpawnSyncedMethods {
+function Get-RoundManagerSpawnSyncedMethods {
     param([Parameter(Mandatory = $true)][string]$Source, [int]$MaxLines = 1800)
 
-    $methods = @(Get-ParsedMethods -Source $Source -ClassName 'SpawnSyncedObject')
-    $roots = @($methods | Where-Object { $_.Body -match '\bspawnPrefab\b' })
-    if ($roots.Count -eq 0) { throw 'No SpawnSyncedObject method references spawnPrefab.' }
+    $methods = @(Get-ParsedMethods -Source $Source -ClassName 'RoundManager')
+    $roots = @($methods | Where-Object { $_.Name -eq 'SpawnSyncedProps' })
+    if ($roots.Count -ne 1) { throw ('Expected exactly one RoundManager.SpawnSyncedProps method, found ' + $roots.Count + '.') }
+    if ($roots[0].Body -notmatch '\bSpawnSyncedObject\b') {
+        throw 'RoundManager.SpawnSyncedProps does not reference SpawnSyncedObject.'
+    }
+    if ($roots[0].Body -notmatch '\bspawnPrefab\b') {
+        throw 'RoundManager.SpawnSyncedProps does not reference spawnPrefab.'
+    }
 
     $selected = @(Add-OneHopNeighbors -Methods $methods -Roots $roots)
     foreach ($method in $selected) {
-        if ($method.Body -match '^\s*throw\s+null\s*;\s*$') {
+        if ($method.Body -match '^\s*throw\s+null\s*;\s*
+
+function Get-SignalMemberLines {
+    param(
+        [Parameter(Mandatory = $true)][string]$Source,
+        [Parameter(Mandatory = $true)][string]$SignalPattern,
+        [int]$MaxLines = 40
+    )
+    $sourceLines = @($Source -split '\r?\n')
+    $maskLines = @((Get-CodeMask $Source) -split '\r?\n')
+    if ($sourceLines.Count -ne $maskLines.Count) { throw 'Signal-member mask line count mismatch.' }
+    $signalMembers = @()
+    for ($i = 0; $i -lt $maskLines.Count; $i++) {
+        if ($maskLines[$i] -match $SignalPattern -and $maskLines[$i] -notmatch '\(') {
+            $signalMembers += [pscustomobject]@{ Line = $i + 1; Text = $sourceLines[$i].TrimEnd() }
+        }
+    }
+    if ($signalMembers.Count -gt $MaxLines) { throw 'Signal-member extraction exceeded its line limit.' }
+    return $signalMembers
+}
+
+function New-EvidenceTreeEntries {
+    param([string]$Directory, [string]$Report, [string]$Manifest)
+    if ($Directory -notmatch '^SourceEvidence/VanillaV81/DunGenChanceSpawnSynced/[0-9TZ]+-[a-f0-9]+$') {
+        throw 'Unexpected publication directory.'
+    }
+    return @(
+        @{ path = ($Directory + '/' + $ReportName); mode = '100644'; type = 'blob'; content = $Report },
+        @{ path = ($Directory + '/MANIFEST.json'); mode = '100644'; type = 'blob'; content = $Manifest }
+    )
+}
+
+function Invoke-ProvenanceSelfTest {
+    $valid = @{
+        AssemblySha = $ExpectedAssemblySha256
+        DunGenSha = $ExpectedDunGenSha256
+        ExeSha = $ExpectedExeSha256
+        ManifestSha = $ExpectedAppManifestSha256
+        AppId = $SteamAppId
+        BuildId = $ExpectedSteamBuildId
+    }
+
+    foreach ($approved in $ReviewedAppManifestSha256) {
+        $valid.ManifestSha = $approved
+        Assert-InstalledGameProvenance @valid
+    }
+
+    foreach ($key in @('AssemblySha', 'DunGenSha', 'ExeSha', 'ManifestSha', 'AppId', 'BuildId')) {
+        $bad = $valid.Clone()
+        $bad[$key] = 'unreviewed'
+        $failed = $false
+        try { Assert-InstalledGameProvenance @bad } catch { $failed = $true }
+        if (-not $failed) { throw ('Provenance rejection failed for ' + $key) }
+    }
+}
+
+function Invoke-ExtractorSelfTest {
+    $chanceFixture = @'
+public class GameObjectChanceTable
+{
+    public List<GameObjectChance> Weights = new List<GameObjectChance>();
+
+    public GameObjectChance GetRandom(object random, bool path, float depth, object data, bool allowImmediateRepeats, bool removeFromTable)
+    {
+        GameObjectChance result = Pick(random);
+        if (removeFromTable && result != null)
+        {
+            Weights.Remove(result);
+        }
+        return result;
+    }
+
+    private GameObjectChance Pick(object random)
+    {
+        return Weights[0];
+    }
+
+    public void Caller()
+    {
+        GetRandom(null, true, 0f, null, true, true);
+    }
+
+    private void Unrelated()
+    {
+        var text = "removeFromTable GetRandom";
+    }
+}
+'@
+    $chance = @(Get-ChanceMethods -Source $chanceFixture)
+    $chanceNames = @($chance | ForEach-Object { $_.Name })
+    if ($chanceNames -notcontains 'GetRandom' -or $chanceNames -notcontains 'Pick' -or $chanceNames -notcontains 'Caller' -or $chanceNames -contains 'Unrelated') {
+        throw 'Chance-table root/caller/callee extraction self-test failed.'
+    }
+
+    $roundManagerFixture = @'
+public class RoundManager
+{
+    private void SpawnSyncedProps()
+    {
+        SpawnSyncedObject[] objects = FindObjects<SpawnSyncedObject>();
+        foreach (SpawnSyncedObject item in objects)
+        {
+            Instantiate(item.spawnPrefab);
+        }
+    }
+
+    private void LoadNewLevelWait()
+    {
+        SpawnSyncedProps();
+    }
+
+    private void Unrelated()
+    {
+        var text = "SpawnSyncedProps spawnPrefab";
+    }
+}
+'@
+    $roundManager = @(Get-RoundManagerSpawnSyncedMethods -Source $roundManagerFixture)
+    $roundManagerNames = @($roundManager | ForEach-Object { $_.Name })
+    if ($roundManagerNames -notcontains 'SpawnSyncedProps' -or $roundManagerNames -notcontains 'LoadNewLevelWait' -or $roundManagerNames -contains 'Unrelated') {
+        throw 'RoundManager SpawnSyncedProps root/caller extraction self-test failed.'
+    }
+
+    $spawnFixture = @'
+public class SpawnSyncedObject
+{
+    public object spawnPrefab;
+    public bool spawnOnClient;
+
+    private string Describe()
+    {
+        return "spawnPrefab";
+    }
+}
+'@
+    $members = @(Get-SignalMemberLines -Source $spawnFixture -SignalPattern '\bspawnPrefab\b')
+    if ($members.Count -ne 1 -or $members[0].Text -notmatch 'spawnPrefab') {
+        throw 'SpawnSyncedObject signal-member extraction self-test failed.'
+    }
+
+    $failed = $false
+    try { Get-ChanceMethods -Source ($chanceFixture -replace 'removeFromTable', 'differentFlag') | Out-Null } catch { $failed = $true }
+    if (-not $failed) { throw 'Missing removeFromTable was not rejected.' }
+
+    $failed = $false
+    try { Get-RoundManagerSpawnSyncedMethods -Source ($roundManagerFixture -replace 'spawnPrefab', 'differentPrefab') | Out-Null } catch { $failed = $true }
+    if (-not $failed) { throw 'Missing RoundManager spawnPrefab signal was not rejected.' }
+
+    $entries = @(New-EvidenceTreeEntries -Directory 'SourceEvidence/VanillaV81/DunGenChanceSpawnSynced/20260922T000000Z-abcdef12' -Report 'report' -Manifest '{}')
+    if ($entries.Count -ne 2 -or @($entries | Where-Object { $_.path -match '\.(dll|exe|zip|r2z|cs)$' }).Count -ne 0) {
+        throw 'Publication allowlist self-test failed.'
+    }
+}
+
+function Invoke-BootstrapSelfTest {
+    $temp = Join-Path ([IO.Path]::GetTempPath()) ('lc-dungen-chance-spawn-bootstrap-' + [guid]::NewGuid().ToString('N'))
+    New-Item -ItemType Directory -Path $temp -Force | Out-Null
+    try {
+        $tool = Ensure-DotNetAndIlSpy -TempRoot $temp -ForceIsolatedSdk
+        $version = Invoke-CheckedNativeProcess -FilePath $tool.DotNet -Arguments @($tool.IlSpyDll, '--version') -Label 'ILSpy version'
+        if ($version -notmatch ('(?m)^ilspycmd: ' + [regex]::Escape($IlSpyVersion) + '\s*$')) {
+            throw 'Installed ILSpy did not report the pinned version.'
+        }
+    }
+    finally {
+        Remove-Item -LiteralPath $temp -Recurse -Force -ErrorAction SilentlyContinue
+    }
+}
+
+function Resolve-GitHubCli {
+    $command = Get-Command gh -ErrorAction SilentlyContinue
+    if ($command) { return $command.Source }
+
+    $programFilesX86 = [Environment]::GetEnvironmentVariable('ProgramFiles(x86)')
+    $paths = @(
+        (Join-Path $env:ProgramFiles 'GitHub CLI\gh.exe'),
+        (Join-Path $env:LOCALAPPDATA 'Programs\GitHub CLI\gh.exe')
+    )
+    if ($programFilesX86) { $paths += (Join-Path $programFilesX86 'GitHub CLI\gh.exe') }
+
+    foreach ($path in $paths) {
+        if ($path -and (Test-Path -LiteralPath $path)) { return $path }
+    }
+
+    if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+        throw 'GitHub CLI is missing and winget is unavailable.'
+    }
+    & winget install --id GitHub.cli -e --source winget --accept-package-agreements --accept-source-agreements | ForEach-Object { Write-Host $_ }
+    if ($LASTEXITCODE -ne 0) { throw 'GitHub CLI installation failed.' }
+
+    foreach ($path in $paths) {
+        if ($path -and (Test-Path -LiteralPath $path)) { return $path }
+    }
+    throw 'GitHub CLI could not be resolved after installation.'
+}
+
+function Invoke-RepoApi {
+    param([string]$Endpoint, [string]$Method = 'GET', [object]$Body = $null)
+    $arguments = @('api', '--hostname', 'github.com', ('repos/' + $RepositoryName + '/' + $Endpoint), '--method', $Method)
+    if ($null -ne $Body) {
+        $requestPath = Join-Path $script:CaptureTempRoot 'request.json'
+        [IO.File]::WriteAllText($requestPath, ($Body | ConvertTo-Json -Depth 20 -Compress), $Utf8)
+        $arguments += @('--input', $requestPath)
+    }
+    $result = Invoke-CheckedNativeProcess -FilePath $script:GhPath -Arguments $arguments -Label ('GitHub API ' + $Method + ' ' + $Endpoint)
+    return ($result | ConvertFrom-Json)
+}
+
+if ($SelfTest -and $BootstrapSelfTest) { throw 'Select only one self-test mode.' }
+if ($SelfTest) {
+    Invoke-ProvenanceSelfTest
+    Invoke-ExtractorSelfTest
+    Write-Host 'PASS: provenance, focused dual extractor and publication self-tests.'
+    return
+}
+if ($BootstrapSelfTest) {
+    Invoke-BootstrapSelfTest
+    Write-Host 'PASS: isolated .NET/ILSpy bootstrap.'
+    return
+}
+
+$script:CaptureTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('lc-dungen-chance-spawnsynced-v81-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $script:CaptureTempRoot -Force | Out-Null
+
+try {
+    Write-Step 'Locating and verifying installed V81 and exact DunGen.dll.'
+    $assemblyPath = Resolve-AssemblyPath
+    $managedDir = Split-Path -Parent $assemblyPath
+    $dunGenPath = Join-Path $managedDir 'DunGen.dll'
+    if (-not (Test-Path -LiteralPath $dunGenPath -PathType Leaf)) {
+        throw 'Installed DunGen.dll is missing from the exact game Managed directory.'
+    }
+
+    $gameRoot = Split-Path -Parent (Split-Path -Parent $managedDir)
+    $exePath = Join-Path $gameRoot 'Lethal Company.exe'
+    $steamApps = Split-Path -Parent (Split-Path -Parent $gameRoot)
+    $appManifest = Join-Path $steamApps ('appmanifest_' + $SteamAppId + '.acf')
+    foreach ($path in @($exePath, $appManifest)) {
+        if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw 'Required game provenance file is missing.' }
+    }
+
+    $assemblySha = Get-Sha256Lower $assemblyPath
+    $dunGenSha = Get-Sha256Lower $dunGenPath
+    $exeSha = Get-Sha256Lower $exePath
+    $manifestSha = Get-Sha256Lower $appManifest
+    $steamIdentity = Get-SteamBuildIdentity -Text (Get-Content -LiteralPath $appManifest -Raw)
+
+    Assert-InstalledGameProvenance -AssemblySha $assemblySha -DunGenSha $dunGenSha -ExeSha $exeSha -ManifestSha $manifestSha -AppId $steamIdentity.AppId -BuildId $steamIdentity.BuildId
+
+    $script:GhPath = Resolve-GitHubCli
+    & $script:GhPath auth status --hostname github.com *> $null
+    if ($LASTEXITCODE -ne 0) {
+        & $script:GhPath auth login --hostname github.com --git-protocol https --web
+        if ($LASTEXITCODE -ne 0) { throw 'GitHub authentication failed.' }
+    }
+
+    $pullRequest = Invoke-RepoApi ('pulls/' + $PullRequestNumber)
+    if ($pullRequest.state -cne 'open' -or
+        $pullRequest.merged -eq $true -or
+        $pullRequest.head.ref -cne $PullRequestBranch -or
+        $pullRequest.head.repo.full_name -cne $RepositoryName -or
+        $pullRequest.base.ref -cne $ExpectedBaseBranch -or
+        $pullRequest.base.sha -cne $ExpectedRepositoryMain) {
+        throw 'PR #138 is not the expected exact-base open in-repository evidence PR.'
+    }
+
+    $repositoryPrHead = $pullRequest.head.sha
+    $prHeadCommit = Invoke-RepoApi ('git/commits/' + $repositoryPrHead)
+    $repositoryMain = (Invoke-RepoApi 'git/ref/heads/main').object.sha
+    if ($repositoryMain -cne $ExpectedRepositoryMain) {
+        throw ('Repository main drifted from reviewed base: ' + $repositoryMain)
+    }
+
+    $priorFile = Invoke-RepoApi ('contents/' + $PriorManifest + '?ref=' + $repositoryPrHead)
+    $prior = $Utf8.GetString([Convert]::FromBase64String($priorFile.content)) | ConvertFrom-Json
+    if ($prior.source_assembly.sha256 -ne $ExpectedAssemblySha256 -or
+        $prior.dungen_assembly.sha256 -ne $ExpectedDunGenSha256 -or
+        $prior.game_executable.sha256 -ne $ExpectedExeSha256 -or
+        $prior.steam.buildid -ne $ExpectedSteamBuildId -or
+        $prior.steam.app_id -ne $SteamAppId) {
+        throw 'C3F11 DunGen manifest disagrees with the pinned installed-game/DunGen contract.'
+    }
+
+    $ilspy = Ensure-DotNetAndIlSpy -TempRoot $script:CaptureTempRoot
+
+    Write-Step 'Decompiling exact installed DunGen.GameObjectChanceTable locally.'
+    $chanceSource = Invoke-CheckedNativeProcess -FilePath $ilspy.DotNet -Arguments @(
+        $ilspy.IlSpyDll, '-t', $DunGenType, '-r', $managedDir, $dunGenPath
+    ) -Label 'DunGen.GameObjectChanceTable decompile'
+    if ([string]::IsNullOrWhiteSpace($chanceSource)) { throw 'GameObjectChanceTable decompiler output is empty.' }
+    $chanceMethods = @(Get-ChanceMethods -Source $chanceSource)
+
+    Write-Step 'Decompiling exact installed RoundManager locally for SpawnSyncedProps.'
+    $roundManagerSource = Invoke-CheckedNativeProcess -FilePath $ilspy.DotNet -Arguments @(
+        $ilspy.IlSpyDll, '-t', $RoundManagerType, '-r', $managedDir, $assemblyPath
+    ) -Label 'RoundManager decompile'
+    if ([string]::IsNullOrWhiteSpace($roundManagerSource)) { throw 'RoundManager decompiler output is empty.' }
+    $roundManagerMethods = @(Get-RoundManagerSpawnSyncedMethods -Source $roundManagerSource)
+
+    Write-Step 'Decompiling exact installed SpawnSyncedObject locally for data-member evidence.'
+    $spawnSource = Invoke-CheckedNativeProcess -FilePath $ilspy.DotNet -Arguments @(
+        $ilspy.IlSpyDll, '-t', $SpawnSyncedType, '-r', $managedDir, $assemblyPath
+    ) -Label 'SpawnSyncedObject decompile'
+    if ([string]::IsNullOrWhiteSpace($spawnSource)) { throw 'SpawnSyncedObject decompiler output is empty.' }
+    $spawnMembers = @(Get-SignalMemberLines -Source $spawnSource -SignalPattern '\bspawnPrefab\b')
+    if ($spawnMembers.Count -eq 0) { throw 'SpawnSyncedObject does not expose a spawnPrefab member declaration.' }
+
+    $builder = New-Object Text.StringBuilder
+    [void]$builder.AppendLine('# Installed Lethal Company V81 DunGen chance-table / SpawnSynced lifecycle evidence')
+    [void]$builder.AppendLine('')
+    [void]$builder.AppendLine('Source Assembly-CSharp SHA-256: ' + $assemblySha)
+    [void]$builder.AppendLine('Installed DunGen.dll SHA-256: ' + $dunGenSha)
+    [void]$builder.AppendLine('Steam buildid: ' + $steamIdentity.BuildId)
+    [void]$builder.AppendLine('Repository main at capture: ' + $repositoryMain)
+    [void]$builder.AppendLine('Repository PR #138 head at capture: ' + $repositoryPrHead)
+    [void]$builder.AppendLine('Decompiler: ilspycmd ' + $IlSpyVersion)
+    [void]$builder.AppendLine('Scope A: all DunGen.GameObjectChanceTable.GetRandom overloads plus one-hop same-type callers/callees; at least one overload must expose removeFromTable.')
+    [void]$builder.AppendLine('Scope B: exact RoundManager.SpawnSyncedProps plus one-hop same-type callers/callees; the root must reference both SpawnSyncedObject and spawnPrefab.')
+    [void]$builder.AppendLine('Scope C: non-method SpawnSyncedObject spawnPrefab declaration lines.')
+    [void]$builder.AppendLine('This is static installed-binary evidence, not gameplay acceptance. Binaries, full type decompiles, unrelated methods, absolute local paths and user names are excluded.')
+
+    [void]$builder.AppendLine('')
+    [void]$builder.AppendLine('## DunGen.GameObjectChanceTable')
+    foreach ($method in $chanceMethods) {
+        [void]$builder.AppendLine('')
+        [void]$builder.AppendLine('--- ' + $method.Signature + ' / local type line ' + $method.SourceLine + ' ---')
+        [void]$builder.AppendLine($method.Text)
+    }
+
+    [void]$builder.AppendLine('')
+    [void]$builder.AppendLine('## SpawnSyncedObject signal member declarations')
+    if ($spawnMembers.Count -eq 0) {
+        [void]$builder.AppendLine('(none outside methods)')
+    }
+    else {
+        foreach ($member in $spawnMembers) {
+            [void]$builder.AppendLine(('line ' + $member.Line + ': ' + $member.Text))
+        }
+    }
+
+    [void]$builder.AppendLine('')
+    [void]$builder.AppendLine('## RoundManager SpawnSyncedProps focused methods')
+    foreach ($method in $roundManagerMethods) {
+        [void]$builder.AppendLine('')
+        [void]$builder.AppendLine('--- ' + $method.Signature + ' / local type line ' + $method.SourceLine + ' ---')
+        [void]$builder.AppendLine($method.Text)
+    }
+
+    $report = $builder.ToString()
+    $stamp = [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssZ')
+    $suffix = [guid]::NewGuid().ToString('N').Substring(0, 8)
+    $directory = $EvidenceRoot + '/' + $stamp + '-' + $suffix
+
+    $metadata = [ordered]@{
+        schema_version = 1
+        purpose = 'Exact installed-V81 DunGen GetRandom removal semantics and SpawnSyncedObject lifecycle for Universal Interior Viability C3F11 downstream proof'
+        capture_utc = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
+        repository = $RepositoryName
+        pull_request = $PullRequestNumber
+        pull_request_branch = $PullRequestBranch
+        repository_pr_head_at_capture = $repositoryPrHead
+        repository_main_at_capture = $repositoryMain
+        expected_repository_main = $ExpectedRepositoryMain
+        bound_c3f11_manifest = $PriorManifest
+        source_assembly = @{
+            logical_path = 'Lethal Company_Data/Managed/Assembly-CSharp.dll'
+            sha256 = $assemblySha
+        }
+        dungen_assembly = @{
+            logical_path = 'Lethal Company_Data/Managed/DunGen.dll'
+            sha256 = $dunGenSha
+        }
+        game_executable = @{
+            logical_path = 'Lethal Company.exe'
+            sha256 = $exeSha
+        }
+        steam = @{
+            app_id = $steamIdentity.AppId
+            buildid = $steamIdentity.BuildId
+            appmanifest_sha256 = $manifestSha
+            prior_appmanifest_sha256 = $ExpectedAppManifestSha256
+            matches_prior_appmanifest = ($manifestSha -eq $ExpectedAppManifestSha256)
+            manifest_review = $ManifestReview
+        }
+        decompiler = @{
+            tool = 'ilspycmd'
+            version = $IlSpyVersion
+            dungen_type = $DunGenType
+            dungen_full_local_type_source_sha256 = (Get-TextSha256 $chanceSource)
+            round_manager_type = $RoundManagerType
+            round_manager_full_local_type_source_sha256 = (Get-TextSha256 $roundManagerSource)
+            spawn_synced_object_type = $SpawnSyncedType
+            spawn_synced_object_full_local_type_source_sha256 = (Get-TextSha256 $spawnSource)
+        }
+        selection = @{
+            chance_required_method = 'GetRandom'
+            chance_required_parameter_signal = 'removeFromTable'
+            chance_selected_signatures = @($chanceMethods | ForEach-Object { $_.Signature })
+            round_manager_required_method = 'SpawnSyncedProps'
+            round_manager_required_body_signals = @('SpawnSyncedObject', 'spawnPrefab')
+            round_manager_selected_signatures = @($roundManagerMethods | ForEach-Object { $_.Signature })
+            spawn_synced_object_required_member_signal = 'spawnPrefab'
+            spawn_signal_member_lines = @($spawnMembers | ForEach-Object { @{ line = $_.Line; text = $_.Text } })
+            same_type_neighbor_depth = 1
+            max_source_lines_per_type = 1800
+        }
+        report = @{
+            file = $ReportName
+            sha256 = (Get-TextSha256 $report)
+            excludes = @(
+                'game binaries',
+                'DunGen.dll',
+                'full type decompiles',
+                'unrelated methods',
+                'absolute local paths',
+                'user names'
+            )
+        }
+    }
+
+    $metadataJson = ($metadata | ConvertTo-Json -Depth 14) + [Environment]::NewLine
+    $entries = @(New-EvidenceTreeEntries -Directory $directory -Report $report -Manifest $metadataJson)
+
+    Write-Step ('Publishing ' + $chanceMethods.Count + ' chance-table method blocks, ' + $roundManagerMethods.Count + ' RoundManager SpawnSyncedProps method blocks and SpawnSyncedObject member evidence to PR #138.')
+    $currentPullRequest = Invoke-RepoApi ('pulls/' + $PullRequestNumber)
+    if ($currentPullRequest.state -cne 'open' -or
+        $currentPullRequest.merged -eq $true -or
+        $currentPullRequest.head.ref -cne $PullRequestBranch -or
+        $currentPullRequest.head.sha -cne $repositoryPrHead -or
+        $currentPullRequest.base.ref -cne $ExpectedBaseBranch -or
+        $currentPullRequest.base.sha -cne $ExpectedRepositoryMain) {
+        throw 'PR #138 changed during capture. Refusing stale write.'
+    }
+    if ((Invoke-RepoApi 'git/ref/heads/main').object.sha -cne $ExpectedRepositoryMain) {
+        throw 'Repository main changed during capture. Refusing stale write.'
+    }
+
+    $treeResult = Invoke-RepoApi -Endpoint 'git/trees' -Method 'POST' -Body @{
+        base_tree = $prHeadCommit.tree.sha
+        tree = $entries
+    }
+    $commitResult = Invoke-RepoApi -Endpoint 'git/commits' -Method 'POST' -Body @{
+        message = ('Capture exact V81 DunGen chance and SpawnSyncedObject evidence ' + $stamp)
+        tree = $treeResult.sha
+        parents = @($repositoryPrHead)
+    }
+    $refResult = Invoke-RepoApi -Endpoint ('git/refs/heads/' + $PullRequestBranch) -Method 'PATCH' -Body @{
+        sha = $commitResult.sha
+        force = $false
+    }
+    if ($refResult.object.sha -ne $commitResult.sha) { throw 'Updated PR branch response did not match evidence commit.' }
+
+    Write-Host ''
+    Write-Host 'SUCCESS' -ForegroundColor Green
+    Write-Host ('Evidence commit: ' + $commitResult.sha)
+    Write-Host ('Report: https://github.com/' + $RepositoryName + '/blob/' + $commitResult.sha + '/' + $directory + '/' + $ReportName)
+    Write-Host 'Only the focused report and manifest were uploaded. No local clone, game/DunGen binary or gameplay run was uploaded.'
+}
+finally {
+    if (Test-Path -LiteralPath $script:CaptureTempRoot) {
+        Remove-Item -LiteralPath $script:CaptureTempRoot -Recurse -Force -ErrorAction SilentlyContinue
+    }
+}
+) {
             throw ('Reference-only throw-null stub rejected: ' + $method.Signature)
         }
     }
 
     $lineCount = 0
     foreach ($method in $selected) { $lineCount += @($method.Text -split '\r?\n').Count }
-    if ($lineCount -gt $MaxLines) { throw "SpawnSyncedObject focused extraction is $lineCount lines; limit $MaxLines." }
+    if ($lineCount -gt $MaxLines) { throw "RoundManager SpawnSyncedProps focused extraction is $lineCount lines; limit $MaxLines." }
     return $selected
 }
 
