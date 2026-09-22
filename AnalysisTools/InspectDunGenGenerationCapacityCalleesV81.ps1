@@ -493,7 +493,7 @@ public class GraphLine
             Required = @('GetRandomArchetype','PickArchetype')
         },
         [pscustomobject]@{
-            ClassName = 'InjectedTile'; RootName = 'ShouldInjectTileAtPoint'; Signal = '\bdepth\b|\bDepth\b'; IncludeConstructors = $true
+            ClassName = 'InjectedTile'; RootName = 'ShouldInjectTileAtPoint'; Signal = '[Dd]epth'; IncludeConstructors = $true
             Source = @'
 public class InjectedTile
 {
@@ -715,7 +715,7 @@ try {
     $specs = @(
         [pscustomobject]@{ Type = 'DunGen.DungeonFlow'; Class = 'DungeonFlow'; Root = 'GetLineAtDepth'; Signal = '\bLines\b'; Constructors = $false; MaxLines = 500 },
         [pscustomobject]@{ Type = 'DunGen.GraphLine'; Class = 'GraphLine'; Root = 'GetRandomArchetype'; Signal = '\bArchetype'; Constructors = $false; MaxLines = 700 },
-        [pscustomobject]@{ Type = 'DunGen.InjectedTile'; Class = 'InjectedTile'; Root = 'ShouldInjectTileAtPoint'; Signal = '\bdepth\b|\bDepth\b'; Constructors = $true; MaxLines = 900 },
+        [pscustomobject]@{ Type = 'DunGen.InjectedTile'; Class = 'InjectedTile'; Root = 'ShouldInjectTileAtPoint'; Signal = '[Dd]epth'; Constructors = $true; MaxLines = 900 },
         [pscustomobject]@{ Type = 'DunGen.BranchCountHelper'; Class = 'BranchCountHelper'; Root = 'ComputeBranchCounts'; Signal = '\bBranch'; Constructors = $false; MaxLines = 900 },
         [pscustomobject]@{ Type = 'DunGen.DoorwayPairFinder'; Class = 'DoorwayPairFinder'; Root = 'GetDoorwayPairs'; Signal = '\bDoorway|\bTileWeights|\bWeight'; Constructors = $false; MaxLines = 1800 }
     )
