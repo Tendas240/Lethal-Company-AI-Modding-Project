@@ -393,14 +393,14 @@ function Get-SignalMemberLines {
         [int]$MaxLines = 40
     )
     $lines = @($Source -split '\r?\n')
-    $matches = @()
+    $signalMembers = @()
     for ($i = 0; $i -lt $lines.Count; $i++) {
         if ($lines[$i] -match $SignalPattern -and $lines[$i] -notmatch '\(') {
-            $matches += [pscustomobject]@{ Line = $i + 1; Text = $lines[$i].TrimEnd() }
+            $signalMembers += [pscustomobject]@{ Line = $i + 1; Text = $lines[$i].TrimEnd() }
         }
     }
-    if ($matches.Count -gt $MaxLines) { throw 'Signal-member extraction exceeded its line limit.' }
-    return $matches
+    if ($signalMembers.Count -gt $MaxLines) { throw 'Signal-member extraction exceeded its line limit.' }
+    return $signalMembers
 }
 
 function New-EvidenceTreeEntries {
