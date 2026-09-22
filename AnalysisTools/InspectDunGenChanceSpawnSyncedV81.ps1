@@ -392,11 +392,13 @@ function Get-SignalMemberLines {
         [Parameter(Mandatory = $true)][string]$SignalPattern,
         [int]$MaxLines = 40
     )
-    $lines = @($Source -split '\r?\n')
+    $sourceLines = @($Source -split '\r?\n')
+    $maskLines = @((Get-CodeMask $Source) -split '\r?\n')
+    if ($sourceLines.Count -ne $maskLines.Count) { throw 'Signal-member mask line count mismatch.' }
     $signalMembers = @()
-    for ($i = 0; $i -lt $lines.Count; $i++) {
-        if ($lines[$i] -match $SignalPattern -and $lines[$i] -notmatch '\(') {
-            $signalMembers += [pscustomobject]@{ Line = $i + 1; Text = $lines[$i].TrimEnd() }
+    for ($i = 0; $i -lt $maskLines.Count; $i++) {
+        if ($maskLines[$i] -match $SignalPattern -and $maskLines[$i] -notmatch '\(') {
+            $signalMembers += [pscustomobject]@{ Line = $i + 1; Text = $sourceLines[$i].TrimEnd() }
         }
     }
     if ($signalMembers.Count -gt $MaxLines) { throw 'Signal-member extraction exceeded its line limit.' }
