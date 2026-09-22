@@ -1,0 +1,97 @@
+{
+  "schema_version": "c3f15-cross-type-callee-synthesis-1",
+  "working_pr": 138,
+  "capture_commit": "8b50743b86943a92fc06d6af98f0b0b20eb99ead",
+  "capture_parent": "d39b03326972787e6814f9fb6dd1125532cee220",
+  "capture": {
+    "directory": "SourceEvidence/VanillaV81/DunGenGenerationCapacityCallees/20260922T204232Z-51dd0fae",
+    "report": "DUNGEN_GENERATION_CAPACITY_CROSS_TYPE_CALLEES_FOCUSED_DECOMPILE.txt",
+    "manifest": "MANIFEST.json",
+    "report_sha256": "da2132eddb988e3154c67e63eaade718fc9b631d930e02d8f1cafcd5ab264efd",
+    "dungen_sha256": "d62bbc63eae39ef388797194796ed9cf5a3e7c857fe31f7e5b7310ed78262db6",
+    "assembly_csharp_sha256": "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+    "game_exe_sha256": "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+    "steam_app_id": "1966720",
+    "steam_buildid": "22825947",
+    "ilspycmd": "11.0.0.9375",
+    "repository_main": "56355ff518ae4301a38d370be9561251f6f963c1"
+  },
+  "prior_bindings": {
+    "c3f7": "SourceEvidence/UniversalInteriorViability/PhaseC3F7/FINDINGS.md",
+    "c3f8": "SourceEvidence/UniversalInteriorViability/PhaseC3F8/CAPTURE_INGEST_SUMMARY.json",
+    "c3f9": "SourceEvidence/UniversalInteriorViability/PhaseC3F9/STATIC_GAP_SUMMARY.json",
+    "c3f12": "SourceEvidence/UniversalInteriorViability/PhaseC3F12/FINDINGS.md",
+    "c3f13": "SourceEvidence/UniversalInteriorViability/PhaseC3F13/GENERATED_CAPACITY_FEASIBILITY_LEDGER.json",
+    "c3f14": "SourceEvidence/UniversalInteriorViability/PhaseC3F14/GENERATION_CAPACITY_IMPLEMENTATION_SYNTHESIS.json",
+    "c3f5": "SourceEvidence/UniversalInteriorViability/PhaseC3F5/FINDINGS.md",
+    "c1": "Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md"
+  },
+  "resolved_callees": {
+    "DunGen.DungeonFlow.GetLineAtDepth": "exact interval selection proven",
+    "DunGen.GraphLine.GetRandomArchetype": "unique-filter/fallback/random-index semantics proven",
+    "DunGen.InjectedTile.ShouldInjectTileAtPoint": "path-threshold and main/branch predicate proven",
+    "DunGen.BranchCountHelper.ComputeBranchCounts": "Local/Section/Global dispatch and allocation semantics proven",
+    "DunGen.DoorwayPairFinder.GetDoorwayPairs": "positive-weight tile ordering plus pairing/filter ordering proven"
+  },
+  "aggregate": {
+    "proof_set_flows": 20,
+    "generated_eligible_positive_three_lower_bound_proven": 1,
+    "generated_eligible_positive_three_lower_bound_unproven": 19
+  },
+  "proven_flows": [
+    {
+      "flow": "GreenhouseFlow",
+      "static_lower_bound": 8,
+      "threshold": 3,
+      "result": "PROVEN_GE_3",
+      "basis": [
+        "Length 12 with Start@0 and Goal@1",
+        "Line0 [0,0.4) singleton non-unique CornArchetype",
+        "Line2 [0.7,1) singleton non-unique CornArchetype",
+        "CornSet 3/3 candidate-bearing",
+        "Goal CornEnd 1/1 candidate-bearing",
+        "successful slots 1..4 and 8..10 are all CornSet candidate-bearing",
+        "all counted candidate slots have normalized depth > 0 and positive bound candidate profiles"
+      ]
+    }
+  ],
+  "strengthened_but_below_threshold": [
+    {
+      "flow": "BunkerFlow",
+      "static_lower_bound": 2,
+      "result": "BELOW_3",
+      "basis": "two required main-path candidate-only BunkerCheckpointSet injections are mandatory in a completed generation after their sampled positive-depth thresholds"
+    },
+    {
+      "flow": "SlaughterhouseFlow",
+      "static_lower_bound": 2,
+      "result": "BELOW_3",
+      "basis": "one required candidate-only ProcessingRoomSet injection plus candidate-only Goal"
+    }
+  ],
+  "representative_remaining_blockers": {
+    "Black Mesa": "single graph line has six archetypes; random archetype selection prevents a guaranteed candidate-only Office/Lab branch cap",
+    "mixed_direct_flows": "DoorwayPairFinder proves positive eligibility/order, not deterministic candidate selection from mixed TileSets",
+    "indirect_blocker_flows": "positive target blocker weights remain possibility evidence; target blocker materialization is not guaranteed"
+  },
+  "black_mesa_greenhouse": {
+    "selection_supported": true,
+    "exact_v81_pairing_numbering_proven": true,
+    "standard_fire_exit_template_proven": true,
+    "static_count_three_capacity_proven": true,
+    "static_count_three_lower_bound": 8,
+    "existing_runtime_evidence": "Offense generation-only with four entrance connections; no recorded player entry",
+    "b3_matrix_promotion": false,
+    "remaining": "Black Mesa-specific successful generation/traversal/entrance-use/routing/NavMesh evidence"
+  },
+  "lifecycle": {
+    "b3_matrix_change": false,
+    "gameplay_candidate": false,
+    "runtime_test_authorized": false,
+    "universal_override_authorized": false,
+    "normalizer_change": false,
+    "black_mesa_duplicate_registration": false,
+    "c3f10d_reopened": false
+  },
+  "next_checkpoint": "C3F16 Black Mesa x Greenhouse repository-held runtime-evidence sufficiency review"
+}
