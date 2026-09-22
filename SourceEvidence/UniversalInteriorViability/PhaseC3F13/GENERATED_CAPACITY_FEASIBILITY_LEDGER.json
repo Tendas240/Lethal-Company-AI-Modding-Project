@@ -1,0 +1,467 @@
+{
+  "schema_version": "c3f13-generated-capacity-feasibility-ledger-1",
+  "working_pr": 138,
+  "source_head": "8bbd450d2b643a791770a7335d4428f730945224",
+  "evidence_bindings": {
+    "c3f7": {
+      "run_id": 35537995994,
+      "run_number": 4,
+      "summary": "SourceEvidence/UniversalInteriorViability/PhaseC3F8/CAPTURE_INGEST_SUMMARY.json"
+    },
+    "c3f9": {
+      "run_id": 35569902534,
+      "run_number": 2,
+      "summary": "SourceEvidence/UniversalInteriorViability/PhaseC3F9/STATIC_GAP_SUMMARY.json"
+    },
+    "artifact_reverification": "All seven C3F7 ZIP digests needed by the 17 direct flows and the Generic/Wesley/Storage C3F9 ZIP digests needed by the three indirect flows were rechecked against the committed summaries; extracted CAPTURE/GAP_CAPTURE SHA-256 values also matched."
+  },
+  "aggregate": {
+    "proof_set_flows": 20,
+    "direct_tile_descendant_flows": 17,
+    "indirect_doorway_blocker_flows": 3,
+    "generated_three_positive_lower_bound_proven": 0,
+    "generated_three_positive_lower_bound_unproven": 20
+  },
+  "weight_profiles": {
+    "P_STD_12_07": {
+      "main": 1.2,
+      "branch": 0.7,
+      "depth_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          0.206112,
+          0.856245
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "P_LINEAR_1": {
+      "main": 1,
+      "branch": 1,
+      "depth_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "P_GREENHOUSE_LOW": {
+      "main": 0.04,
+      "branch": 0.04,
+      "depth_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "P_MUSEUM_A": {
+      "main": 1,
+      "branch": 1,
+      "depth_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          0.843536,
+          0.19848
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "P_MUSEUM_B": {
+      "main": 10,
+      "branch": 10,
+      "depth_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          0.256966,
+          0.802282
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "P_EXPANDED": {
+      "main": 3,
+      "branch": 3,
+      "depth_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          0.281792,
+          -0.002704
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "P_LEVEL3_ALWAYS": {
+      "main": 1,
+      "branch": 1,
+      "depth_keys": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "P_ARMORY": {
+      "main": 1,
+      "branch": 1,
+      "depth_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          0.850865,
+          0.00978
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "P_RUBBER": {
+      "main": 1,
+      "branch": 1,
+      "depth_keys": [
+        [
+          0,
+          0.103611
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "P_BLACKMESA": {
+      "main": 1,
+      "branch": 1,
+      "depth_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          0.5,
+          0.837955
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "P_SPOOKY": {
+      "main": 1,
+      "branch": 0.4,
+      "depth_keys": [
+        [
+          0,
+          0.01875
+        ],
+        [
+          0.383654,
+          0.018753
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  },
+  "flows": [
+    {
+      "flow": "BunkerFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "16..16",
+      "branch": "50..50",
+      "source": "9 candidate-bearing tile roots / 17 memberships",
+      "profiles": [
+        "P_STD_12_07"
+      ],
+      "strong": "2 IsRequired=1 main-path injections; BunkerCheckpointSet is 2/2 candidate-bearing at normalized path-depth windows 0.35..0.40 and 0.65..0.70",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "DrainsFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "16..16",
+      "branch": "8..8",
+      "source": "5 candidate-bearing tile roots / 13 memberships",
+      "profiles": [
+        "P_STD_12_07"
+      ],
+      "strong": "candidate-bearing TileSets are mixed; no required injection and no candidate-only node/line surface",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "SubstationFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "16..16",
+      "branch": "8..8",
+      "source": "3 candidate-bearing tile roots / 10 memberships",
+      "profiles": [
+        "P_STD_12_07"
+      ],
+      "strong": "SubstationFacilityTileset is mixed 3/10; no required injection",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "TowerFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "4..4",
+      "branch": "8..8",
+      "source": "3 candidate-bearing tile roots / 8 memberships",
+      "profiles": [
+        "P_STD_12_07"
+      ],
+      "strong": "TowerRoomset is mixed 3/16; no required injection",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "AquaticDungeonFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "6..8",
+      "branch": "14..16",
+      "source": "7 candidate-bearing tile roots / 25 memberships",
+      "profiles": [
+        "P_LINEAR_1"
+      ],
+      "strong": "AquaticTempleSet 5/12 and AquaticCavesSet 3/15 are mixed",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "DeepSewersFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "18..20",
+      "branch": "5..5",
+      "source": "3 candidate-bearing tile roots / 5 memberships",
+      "profiles": [
+        "P_LINEAR_1"
+      ],
+      "strong": "candidate-bearing SewerCap/SewerStructure/SewerTunnelsSet are all mixed",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "FracturedComplexFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "10..10",
+      "branch": "20..20",
+      "source": "8 candidate-bearing tile roots / 41 memberships",
+      "profiles": [
+        "P_LINEAR_1"
+      ],
+      "strong": "MazeSet 1/5 and ComplexSet 7/12 are mixed",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "GreenhouseFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "12..12",
+      "branch": "16..16",
+      "source": "5 candidate-bearing tile roots / 19 memberships",
+      "profiles": [
+        "P_LINEAR_1",
+        "P_GREENHOUSE_LOW"
+      ],
+      "strong": "Line 0 and line 2 use candidate-only CornSet 3/3; Goal uses candidate-only CornEnd 1/1",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "MuseumInteriorFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "6..6",
+      "branch": "10..16",
+      "source": "3 candidate-bearing tile roots / 8 memberships",
+      "profiles": [
+        "P_MUSEUM_A",
+        "P_MUSEUM_B"
+      ],
+      "strong": "MuseumSet 2/9 and DMMuseumSet 3/7 are mixed",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "StoreFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "12..17",
+      "branch": "5..5",
+      "source": "11 candidate-bearing tile roots / 40 memberships",
+      "profiles": [
+        "P_LINEAR_1"
+      ],
+      "strong": "Goal uses candidate-only EndSet 1/1; all line TileSets remain mixed",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "ExpandedFacility",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "11..13",
+      "branch": "22..25",
+      "source": "1 candidate-bearing tile root / 1 membership",
+      "profiles": [
+        "P_EXPANDED"
+      ],
+      "strong": "only one source candidate root; all reachable candidate-bearing TileSets are mixed; depth curve includes a negative serialized key value",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "Level3ButCoolFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "18..20",
+      "branch": "22..25",
+      "source": "7 candidate-bearing tile roots / 17 memberships",
+      "profiles": [
+        "P_LINEAR_1",
+        "P_LEVEL3_ALWAYS"
+      ],
+      "strong": "Level3TunnelTiles is mixed 7/11; cave segment has 0 direct candidates",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "GrandArmoryFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "9..9",
+      "branch": "20..20",
+      "source": "21 candidate-bearing tile roots / 52 memberships",
+      "profiles": [
+        "P_ARMORY"
+      ],
+      "strong": "high candidate ratios but ArmoryHallSet, SmokeHallsSet and AcidHallsSet are all mixed",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "RubberRoomsFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "12..13",
+      "branch": "20..20",
+      "source": "6 candidate-bearing tile roots / 10 memberships",
+      "profiles": [
+        "P_RUBBER"
+      ],
+      "strong": "AsylumSet is mixed 6/29; RubberRoomSet has 0 direct candidates",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "ToystoreFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "10..11",
+      "branch": "7..8",
+      "source": "12 candidate-bearing tile roots / 51 memberships",
+      "profiles": [
+        "P_LINEAR_1"
+      ],
+      "strong": "StoreSet/StoreSet 2/BackroomsSet are all mixed despite many candidate memberships",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "SlaughterhouseFlow",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "5..6",
+      "branch": "7..8",
+      "source": "15 candidate-bearing tile roots / 44 memberships",
+      "profiles": [
+        "P_STD_12_07"
+      ],
+      "strong": "Goal uses candidate-only GrinderRoomSet 1/1; one IsRequired=1 injection uses candidate-only ProcessingRoomSet 1/1 at normalized path depth 0.30..0.60",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "Black Mesa",
+      "mechanism": "DIRECT_TILE_DESCENDANT",
+      "length": "25..25",
+      "branch": "10..10",
+      "source": "102 candidate-bearing tile roots / 102 memberships",
+      "profiles": [
+        "P_BLACKMESA"
+      ],
+      "strong": "very high candidate ratios; Office Cap Test 5/5 and Lab Cap Test 7/7 are candidate-only branch-cap sets, but line archetype choice and branch/cap placement semantics remain unproven",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "SHFlow",
+      "mechanism": "INDIRECT_DUNGEN_DOORWAY_BLOCKER",
+      "length": "11..11",
+      "branch": "8..8",
+      "source": "2 target-flow indirect candidate assets / 74 positive-weight exact Doorway blocker links",
+      "profiles": [
+        "P_STD_12_07"
+      ],
+      "strong": "blocker links have positive serialized weight 1, but candidate materialization is conditional on Doorway blocker selection",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "SpookyManorFlow",
+      "mechanism": "INDIRECT_DUNGEN_DOORWAY_BLOCKER",
+      "length": "8..11",
+      "branch": "22..25",
+      "source": "3 target-flow indirect candidate assets / 36 positive-weight exact Doorway blocker links",
+      "profiles": [
+        "P_SPOOKY"
+      ],
+      "strong": "three candidate assets exist and all blocker links have positive weight 1, but actual selected blocker count is not proven",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    },
+    {
+      "flow": "StorageComplex",
+      "mechanism": "INDIRECT_DUNGEN_DOORWAY_BLOCKER",
+      "length": "10..10",
+      "branch": "18..18",
+      "source": "1 target-flow indirect candidate asset / 43 positive-weight exact Doorway blocker links",
+      "profiles": [
+        "P_STD_12_07"
+      ],
+      "strong": "one candidate asset is referenced with positive blocker weights 0.2,0.3,0.4,3,5,10,20,100; repeated materialization is not guaranteed",
+      "generated_three_positive_candidate_lower_bound": "NOT_PROVEN"
+    }
+  ],
+  "next_exact_installed_dungen_surface": {
+    "direct_capacity_core": [
+      "DunGen.DungeonGenerator methods that consume DungeonFlow.Length, Lines, Nodes and DungeonArchetype/TileSet data to create concrete main-path placements",
+      "the immediate tile-choice/placement helper(s) that consume TileSet.TileWeights and enforce tile repeat/reuse constraints",
+      "the DungeonGenerator TileInjectionRules/IsRequired placement path",
+      "the DungeonGenerator branch-generation/cap path where branch candidate surfaces can contribute",
+      "the exact type/property implementing Tile.Placement.NormalizedDepth used by ProcessGlobalProps"
+    ],
+    "indirect_three_flow_addition": [
+      "DunGen.Doorway method(s) that consume BlockerPrefabWeights and select/materialize blocker prefabs"
+    ]
+  },
+  "proof_boundary": "Existing exact static asset/flow evidence proves candidate sources and serialized weights but does not prove a generated lower bound of three eligible positive-weight ID-1231 candidates for any of the 20 flows. No B3 promotion, gameplay build, runtime test, universal override or C3F10D reopening follows."
+}
