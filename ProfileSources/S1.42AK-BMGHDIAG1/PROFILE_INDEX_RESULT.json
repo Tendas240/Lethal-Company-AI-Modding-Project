@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-BMGHDIAG1",
+  "profile_path": "Profiles/LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic.r2z",
+  "profile_name": "LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic",
+  "sha256": "7f494640f47210bf230a2f0950bd836d65b969a47be2af1252fc564463bc6d90",
+  "zip_members": 337,
+  "snapshot_dir": "ProfileSources/S1.42AK-BMGHDIAG1",
+  "snapshot": {
+    "entries": 337,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}
