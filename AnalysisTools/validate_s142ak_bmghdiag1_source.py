@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""C3F17.3 source-only contract gate. It must never build or arm a Gale profile."""
+"""C3F17 source-only fail-closed contract gate. It never builds or arms a Gale profile."""
 import json
 import re
 from pathlib import Path
@@ -12,6 +12,8 @@ WORKFLOW = ROOT / ".github/workflows/s142ak-bmghdiag1-source-static.yml"
 PLAN = ROOT / "BuildSpecs/S1.42AK-BMGHDIAG1_PLAN.md"
 CONTRACT = ROOT / "SourceEvidence/UniversalInteriorViability/PhaseC3F17/CANDIDATE_CONTRACT.json"
 BUILD_REQUEST = ROOT / "BuildSpecs/S1.42AK-BMGHDIAG1.json"
+CURRENT_BUILD_REQUEST = ROOT / "BuildSpecs/current.json"
+ACTIVE_BUILD = ROOT / "RuntimeInbox/ACTIVE_BUILD.txt"
 
 
 def require(condition, message):
@@ -35,12 +37,23 @@ observation = OBSERVATION.read_text(encoding="utf-8")
 workflow = WORKFLOW.read_text(encoding="utf-8")
 plan = PLAN.read_text(encoding="utf-8")
 contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
+current_build = json.loads(CURRENT_BUILD_REQUEST.read_text(encoding="utf-8"))
 
 require(contract["proposed_candidate_id"] == "S1.42AK-BMGHDIAG1", "Candidate contract ID drift")
-require(contract["lifecycle"]["candidate_built"] is False, "Contract unexpectedly claims built candidate")
 require(contract["lifecycle"]["candidate_armed"] is False, "Contract unexpectedly claims armed candidate")
 require(contract["lifecycle"]["runtime_test_authorized"] is False, "Contract unexpectedly authorizes runtime")
-require(not BUILD_REQUEST.exists(), "C3F17.3 must not author a Gale candidate build request")
+require(contract["lifecycle"]["build_controller_change"] is False, "Contract unexpectedly authorizes build-controller mutation")
+require(contract["lifecycle"]["runtime_controller_change"] is False, "Contract unexpectedly authorizes runtime-controller mutation")
+require(current_build["enabled"] is False, "BuildSpecs/current.json must remain disabled")
+require(current_build["build_id"] == "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS", "BuildSpecs/current.json must remain idle")
+require(ACTIVE_BUILD.read_text(encoding="utf-8").strip() == "S1.42AK", "Runtime ACTIVE_BUILD must remain S1.42AK")
+
+build_request_present = BUILD_REQUEST.exists()
+if build_request_present:
+    build_request = json.loads(BUILD_REQUEST.read_text(encoding="utf-8"))
+    require(build_request["build_id"] == "S1.42AK-BMGHDIAG1", "Separate build request ID drift")
+    require(build_request["base_sha256"] == contract["accepted_parent"]["sha256"], "Separate build request parent SHA drift")
+    require(build_request["base_profile"] == contract["accepted_parent"]["profile"], "Separate build request parent path drift")
 
 for literal in (
     "GetValidExtendedDungeonFlows",
@@ -81,21 +94,22 @@ for literal in ("TraversalDecision", "OutOfScope", "MissingPair", "InvalidPair",
     require(literal in observation, "Observation policy contract missing: " + literal)
 
 require("profile_builder.py" not in workflow, "Source-only CI must not invoke the Gale profile builder")
-require("S1.42AK-BMGHDIAG1.json" not in workflow, "Source-only CI must not consume a candidate build request")
 require("dotnet run --project Patches/S142AKBMGHDiag1/Tests/Policy.Tests.csproj" in workflow,
         "Pure policy test command missing")
 require("dotnet build S142AKBMGHDiag1.csproj -c Release" in workflow,
         "Plugin compile command missing")
-require("NOT BUILT" in plan and "NOT ARMED" in plan, "Human contract lifecycle boundary drift")
+require("NOT ARMED" in plan, "Human contract runtime boundary drift")
 
 report = {
-    "status": "SOURCE_STATIC_CONTRACT_PASS_NOT_BUILT_NOT_ARMED",
+    "status": "SOURCE_STATIC_CONTRACT_PASS_NOT_ARMED",
     "candidate_id": "S1.42AK-BMGHDIAG1",
     "harmony_surfaces": 2,
     "gameplay_mutating_surfaces": 1,
     "observation_surfaces": 1,
-    "candidate_build_request_present": False,
+    "candidate_build_request_present": build_request_present,
+    "current_build_controller_enabled": current_build["enabled"],
+    "runtime_active_build": ACTIVE_BUILD.read_text(encoding="utf-8").strip(),
     "profile_builder_invoked_by_source_ci": False,
-    "qualification": "Source/compile/pure-policy validation only. No Gale candidate, runtime arming or gameplay evidence is produced."
+    "qualification": "Source/compile/pure-policy validation only. A separately authorized review build request may exist, but this source-only gate never builds, arms, or authorizes gameplay runtime."
 }
 print(json.dumps(report, indent=2))
