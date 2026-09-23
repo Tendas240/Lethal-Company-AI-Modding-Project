@@ -1,0 +1,173 @@
+{
+  "schema_version": "c3f17-diagnostic-candidate-contract-1",
+  "date": "2026-09-23",
+  "working_pr": 138,
+  "source_head": "b2cb00f033d6b267ad8d29baa78a227d11c53ee4",
+  "accepted_parent": {
+    "build_id": "S1.42AK",
+    "profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+    "sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee"
+  },
+  "proposed_candidate_id": "S1.42AK-BMGHDIAG1",
+  "lifecycle": {
+    "candidate_built": false,
+    "candidate_armed": false,
+    "runtime_test_authorized": false,
+    "build_controller_change": false,
+    "runtime_controller_change": false,
+    "b3_matrix_change": false
+  },
+  "pair": {
+    "moon": "Black Mesa",
+    "dawn_key": "black_mesa:black_mesa",
+    "scene": "BlackMesaScene",
+    "flow_display_name": "Greenhouse",
+    "flow_asset": "GreenhouseFlow"
+  },
+  "dependencies": {
+    "lll": {
+      "guid": "imabatby.lethallevelloader",
+      "version": "1.7.12",
+      "expected_dll_sha256_from_s142aj_diag1": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+      "s142ak_package_graph_changed_from_s142aj": false,
+      "fresh_s142ak_binary_hash_reconfirmation_required_before_build_or_arming": true
+    },
+    "normalizer": {
+      "guid": "tendas.lethalcompany.s142abinteriorweightnormalization",
+      "version": "1.0.0",
+      "dll_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+      "must_remain_byte_identical": true
+    },
+    "game": {
+      "assembly": "Assembly-CSharp.dll",
+      "sha256": "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+      "steam_build_id": "22825947"
+    }
+  },
+  "selection_patch": {
+    "target": "LethalLevelLoader.DungeonManager.GetValidExtendedDungeonFlows(ExtendedLevel, bool)",
+    "patch_kind": "postfix",
+    "priority": "Last",
+    "after_owner": "tendas.lethalcompany.s142abinteriorweightnormalization",
+    "allowed_mutation": "clear only the fresh returned list and re-add the same already-existing Greenhouse weighted wrapper",
+    "forbidden": [
+      "prefix",
+      "transpiler",
+      "RNG manipulation",
+      "RPC replacement",
+      "global LLL list mutation",
+      "new flow or wrapper creation",
+      "Black Mesa registration",
+      "config rewrite"
+    ],
+    "caller_gate": {
+      "required": "LethalLevelLoaderNetworkManager.GetRandomExtendedDungeonFlowServerRpc()",
+      "excluded": "TerminalManager.GetSimulationResultsText(ExtendedLevel)",
+      "debug_results_required": true,
+      "guessed_stack_fallback": false
+    },
+    "moon_identity": {
+      "runtime_type": "LethalLevelLoader.ExtendedLevel",
+      "property": "NumberlessPlanetName",
+      "exact_value": "Black Mesa",
+      "additional_unverified_bridge_key_reflection_required": false
+    },
+    "flow_identity": {
+      "dungeon_name": "Greenhouse",
+      "asset_name": "GreenhouseFlow",
+      "exact_match_count": 1,
+      "final_rarity": 100
+    },
+    "refusal": {
+      "one_way_runtime_refusal_flag": true,
+      "mutate_after_failed_validation": false,
+      "exception_flood_allowed": false
+    }
+  },
+  "observation_patch": {
+    "reason": "existing logs do not unambiguously prove player use of entrance IDs 0,1,2,3",
+    "target": "EntranceTeleport.TeleportPlayer()",
+    "patch_kind": "postfix",
+    "mutation": false,
+    "active_only_after_target_selection": true,
+    "successful_event_requires": [
+      "non-null native exitScript after original method",
+      "same entranceId on source and target",
+      "opposite isEntranceToBuilding values"
+    ],
+    "records": [
+      "source and target entranceId",
+      "source and target side",
+      "source and target GameObject name",
+      "diagnostic source and target coordinates",
+      "coverage bits for IDs 0..3 in both directions"
+    ],
+    "topology_snapshot": {
+      "timing": "first successful targeted traversal",
+      "required_ids": [0, 1, 2, 3],
+      "required_per_id": {
+        "isEntranceToBuilding_true": 1,
+        "isEntranceToBuilding_false": 1
+      },
+      "duplicate_same_side_for_required_ids_allowed": false,
+      "repair_on_failure": false
+    }
+  },
+  "required_markers": [
+    "[BMGHDIAG1] ARMED",
+    "[BMGHDIAG1] SELECTED Black Mesa Greenhouse / GreenhouseFlow",
+    "[BMGHDIAG1] TRAVERSED",
+    "[BMGHDIAG1] TOPOLOGY_OK",
+    "[BMGHDIAG1] REFUSED TO ARM",
+    "[BMGHDIAG1] REFUSED selection",
+    "[BMGHDIAG1] TOPOLOGY_INCONCLUSIVE"
+  ],
+  "runtime_proof_contract": {
+    "identity": true,
+    "generation_without_abort": true,
+    "unique_opposite_pairs_ids_0_1_2_3": true,
+    "main_entrance_player_entry_and_exit": true,
+    "alternate_ids_1_2_3_direct_player_use": true,
+    "bidirectional_alternate_use_preferred_and_tracked": true,
+    "geometry_user_observation_required": true,
+    "routing_navmesh_existing_signals_used": true,
+    "black_mesa_pikmin_repair_reopened": false
+  },
+  "static_test_groups": {
+    "selection_policy": [
+      "correct target",
+      "other moon",
+      "debug false",
+      "simulation caller",
+      "unknown caller",
+      "null or empty pool",
+      "null wrapper",
+      "missing Greenhouse",
+      "duplicate Greenhouse",
+      "wrong asset",
+      "non-100 rarity",
+      "input preservation",
+      "independent repeated pools"
+    ],
+    "observation_policy": [
+      "inactive before selection",
+      "null exitScript",
+      "same-side target",
+      "different-ID target",
+      "valid traversal coverage",
+      "exact topology OK",
+      "missing side or ID inconclusive",
+      "duplicate side inconclusive",
+      "repeat without gameplay mutation"
+    ]
+  },
+  "eventual_archive_delta": {
+    "package_changes": 0,
+    "config_changes": 0,
+    "normalizer_changes": 0,
+    "black_mesa_registration_changes": 0,
+    "allowed_new_gameplay_file": "one diagnostic DLL",
+    "profile_identity_metadata_allowed": true
+  },
+  "next_checkpoint": "C3F17.3 implement the diagnostic source and pure static tests against this contract; do not build or arm gameplay in the same segment"
+}
