@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Analyze the ingested S1.42AK-BMGHDIAG1 startup refusal repository-native: trace ValidateAssemblyHash and ResolveObservationContract against the exact installed-V81/runtime assembly-loading evidence, determine the minimal provenance-safe fix, and prepare a separately versioned successor diagnostic only if the root cause is established. Do not rerun the refused BMGHDIAG1 bytes and do not arm gameplay yet.
+Prepare a separate inactive S1.42AK-BMGHDIAG2 review-build checkpoint from exact accepted S1.42AK using the source/static-passed successor implementation. Validate the exact archive delta and compiled diagnostic DLL while keeping BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Do not publish or arm gameplay/runtime in the review-build checkpoint.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
