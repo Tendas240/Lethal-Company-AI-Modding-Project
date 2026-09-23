@@ -22,12 +22,13 @@ jobs:
           python-version: '3.11'
       - name: Apply and validate canonical runtime sync
         run: |
+          python RepositoryTools/_handover_c3f17_live_marker_patch.py
           python RepositoryTools/_handover_c3f17_runtime_sync.py
           python RepositoryTools/render_current_navigation.py --check
           python RepositoryTools/current_state_semantic_validator.py
       - name: Remove temporary transformer and workflow
         run: |
-          git rm RepositoryTools/_handover_c3f17_runtime_sync.py .github/workflows/_handover-c3f17-runtime-sync.yml
+          git rm RepositoryTools/_handover_c3f17_live_marker_patch.py RepositoryTools/_handover_c3f17_runtime_sync.py .github/workflows/_handover-c3f17-runtime-sync.yml
       - name: Commit canonical handover repair
         run: |
           if git diff --quiet --cached && git diff --quiet; then
