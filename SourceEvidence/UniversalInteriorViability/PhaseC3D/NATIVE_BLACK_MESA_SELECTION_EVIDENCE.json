@@ -1,0 +1,122 @@
+{
+  "schema_version": "phase-c3d-1",
+  "scope": "Universal Interior Viability / Equal Availability",
+  "baseline": "S1.42AK",
+  "checkpoint": {
+    "main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+    "parent_pr_head": "9b6bf950754aa269bcf71a0347c75dced676a4c0",
+    "pr_number": 138,
+    "branch": "scope/universal-interior-phase-c3a-dawn-tags"
+  },
+  "accepted_config": {
+    "path": "ProfileSources/S1.42AK/BepInEx/config/Black Mesa Team.Black Mesa Half Life Moon Interior.cfg",
+    "git_blob_sha": "1d2fcfc590493d4f9d8ab656c156b596ea7102e6",
+    "values": {
+      "enabled": true,
+      "allow_editing_config": true,
+      "moon_weights": "lethal_company:vanilla=+100,lethal_company:custom=+100",
+      "weather_weights": "",
+      "route_weights": ""
+    }
+  },
+  "exact_accepted_binary_provenance": {
+    "manifest": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/MANIFEST.json",
+    "manifest_git_blob_sha": "77e77022d3cbdd742d57013f66812c0e8a336c64",
+    "thunderstore_package": "TeamXiaolan-DawnLib 0.9.25",
+    "package_zip_sha256": "c33c608869763f916f07e5ddf47224134f98bab15d044bd809a46ef2d3d538c3",
+    "main_dll": {
+      "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.dll",
+      "sha256": "9b4826a16eec1fa5091fb4246d010005bc9c3e04282034e8d067b499ab5c125b",
+      "decompiler_report": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/TeamXiaolan-DawnLib-0-DISCOVERY.json"
+    },
+    "dusk_dll": {
+      "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.dusk.dll",
+      "sha256": "3582f1a35efe3753004d7b209aea355a6c02b646b61cc1629c53a311ba8d1f03",
+      "decompiler_report": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/TeamXiaolan-DawnLib-1-DISCOVERY.json"
+    }
+  },
+  "prior_pr_evidence": {
+    "c3a": "SourceEvidence/UniversalInteriorViability/PhaseC3A/DAWNLIB_TAG_AND_MATCHING_IL.json",
+    "c3b": "SourceEvidence/UniversalInteriorViability/PhaseC3B/LLL_DAWN_BRIDGE_SOURCE.json",
+    "c3c": "SourceEvidence/UniversalInteriorViability/PhaseC3C/OWNER_SCENE_TOPOLOGY_EVIDENCE.json",
+    "established": [
+      "black_mesa:black_mesa receives Dawn lethal_company:custom",
+      "code_rebirth:oxyde receives Dawn lethal_company:custom",
+      "Black Mesa is the DawnLib/native dungeon exposed by LLL as the single External dungeon entry",
+      "LLL Dawn conversion excludes Dawn content already tagged dawn_lib:is_external"
+    ]
+  },
+  "version_aligned_source": {
+    "repository": "TeamXiaolan/DawnLib",
+    "release_tag": "v1.0.3-pre",
+    "source_commit": "810613e556ecc357eac25e97c25a3bb90516f071",
+    "published_package_version": "0.9.25",
+    "qualification": "Version-aligned implementation source only. Do not treat the public release archive as byte-identical to the accepted Thunderstore package; accepted bytes are bound by the repository SHA-256 snapshot.",
+    "relevant_implementation": [
+      "DawnLib/src/API/DawnBaseInfo.cs: ShouldSkipIgnoreOverride / ShouldSkipRespectOverride",
+      "DawnLib.Dusk/src/API/Definitions/Dungeon/DuskDungeonDefinition.cs: editable config -> SpawnWeightsPreset -> Dawn dungeon weights",
+      "DawnLib.Dusk/src/API/Config/Weights/SpawnWeightsPreset.cs: zero start and ordered rule application",
+      "DawnLib.Dusk/src/API/Config/Weights/Transformers/MoonWeightTransformer.cs: exact-key then tag matching",
+      "DawnLib.Dusk/src/API/Config/Weights/Transformers/WeightTransformerTagLogic.cs: tag application and averaging",
+      "DawnLib.Dusk/src/API/Config/Weights/NamespacedConfigWeight.cs: +100 parses as additive weight 100"
+    ]
+  },
+  "resolved_logic": {
+    "black_mesa_guard": {
+      "key_is_vanilla": false,
+      "dawn_is_external": false,
+      "unimplemented": false,
+      "result": "ShouldSkipRespectOverride is false for the current Dawn-native Black Mesa owner chain; native dynamic-rarity evaluation applies.",
+      "evidence_basis": "Phase A/C3C owner chain plus LLL 1.7.12 Dawn conversion semantics captured in C3B."
+    },
+    "target_moons": [
+      {
+        "moon": "Black Mesa",
+        "dawn_key": "black_mesa:black_mesa",
+        "matched_weight_rule": "lethal_company:custom=+100",
+        "resulting_native_rarity": 100
+      },
+      {
+        "moon": "Oxyde",
+        "dawn_key": "code_rebirth:oxyde",
+        "matched_weight_rule": "lethal_company:custom=+100",
+        "resulting_native_rarity": 100
+      }
+    ],
+    "empty_secondary_rules": [
+      "weather",
+      "route"
+    ],
+    "topology_proven": false
+  },
+  "selection_delta": {
+    "prior_c3b_supported_external_pairings": 44,
+    "c3d_added_pairings": 2,
+    "cumulative_supported_external_selection_pairings": 46,
+    "authoritative_b3_matrix_rewritten": false,
+    "proposed_cells": [
+      {
+        "moon": "Black Mesa",
+        "interior": "Black Mesa",
+        "from": "NOT_YET_PROVEN",
+        "to": "VIABLE_EQUAL_100"
+      },
+      {
+        "moon": "Oxyde",
+        "interior": "Black Mesa",
+        "from": "NOT_YET_PROVEN",
+        "to": "VIABLE_EQUAL_100"
+      }
+    ]
+  },
+  "excluded_claims": [
+    "generation",
+    "entrance/fire-exit IDs or pairing",
+    "topology",
+    "traversal",
+    "geometry/socket compatibility",
+    "elevators",
+    "routing",
+    "NavMesh"
+  ]
+}

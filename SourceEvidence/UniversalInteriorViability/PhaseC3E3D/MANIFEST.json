@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C3E3D",
+  "inspection_date": "2026-09-20",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "pr_number": 138,
+  "parent_commit": "220a9087a4c574d5c7241ed1cae4021899f7942f",
+  "verified_main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "accepted_baseline": "S1.42AK",
+  "status": "OWNER_REGISTRATION_CAPTURE_COMPLETE_CLIENT_GENERATION_GATE_PARTIAL",
+  "inputs": [
+    {
+      "path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/MANIFEST.json",
+      "sha256": "f2c89adfffc18d2480a66cab6f863a3803a859d5b41dcd61d521b4f2790abc77",
+      "git_blob_sha1": "77e77022d3cbdd742d57013f66812c0e8a336c64"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3C/MANIFEST.json",
+      "sha256": "9e0ea88c53e2ef3288d3ef2c86b060404ac766b20b45dff0e9c0a524a703d659",
+      "git_blob_sha1": "fd2cc5cad6b79e523427bdfc387886b71f4b2cdd"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3C/OXYDE_LEVEL_MOON_DEFINITION.json",
+      "sha256": "e1a8bb01b1322d9ef5f0652de2ec3069842a7d46766b2bac4ed7735f191a3dea",
+      "git_blob_sha1": "9f556bebcbdafdf780c82e373bf3370879c58796"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3A/DAWNLIB_TAG_AND_MATCHING_IL.json",
+      "sha256": "f126c9f99496a9388b0ca696c0ac98c817cbad4914f27edb6ed3502f4d1201bf",
+      "git_blob_sha1": "dd7c81fc4d397f040c00a5b321435e648eb056fe"
+    },
+    {
+      "path": "ProfileSources/S1.42AK/export.r2x",
+      "sha256": "19935c1afc98de1562fda8b299d7d23d09c3555eac88f9de7992eb3d6e2b46b8",
+      "git_blob_sha1": "669cf2bf096544de84be9475de8f3f9eb594ce14"
+    },
+    {
+      "path": "ProfileSources/S1.42AK/BepInEx/config/com.github.teamxiaolan.dawnlib.cfg",
+      "sha256": "8563b07c8d4e49cb664dcc11e29be4ff400b7c713e0a89a200d1a458ee4b1648",
+      "git_blob_sha1": "bb7e00cfb2af5138427a8f1669886d5f7baa750b"
+    },
+    {
+      "path": "SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9/ROUNDMANAGER_SPAWNING_FOCUSED_DECOMPILE.txt",
+      "sha256": "5317509a39e072db2c3df95de1cb9091dd9f7ff7e1a3bfe231045dea9cfc974f",
+      "git_blob_sha1": "c0f73d41650512af9437e74f4e4a1b9d5a7e62ed"
+    },
+    {
+      "path": "SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9/MANIFEST.json",
+      "sha256": "6aee2ac7700df0cfdddc419c88e6c547f0a8963b5b777ad5d36cf572cad1aa25",
+      "git_blob_sha1": "c2f3adeb764309ca7af71cd8114f6979e9318b64"
+    },
+    {
+      "path": "SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9/REVIEW.md",
+      "sha256": "ca91086bd193789224208913d9817a1cab22f17900c48a5122bfddcde54178ff",
+      "git_blob_sha1": "e05d07e15843420f7640d3d3276a90dbe9c94038"
+    },
+    {
+      "path": "SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9/VERIFICATION.json",
+      "sha256": "9abd6fc68f1040f057bbed205e6eefecd42647038d667cf14c7230f5ec1910ac",
+      "git_blob_sha1": "ab142ee318a7df24e36aa0d7aa89ef12ee360ed0"
+    }
+  ],
+  "packages": [
+    {
+      "package": "XuXiaolan-CodeRebirth",
+      "version": "1.6.9",
+      "url": "https://gcdn.thunderstore.io/live/repository/packages/XuXiaolan-CodeRebirth-1.6.9.zip",
+      "zip_bytes": 263010364,
+      "zip_sha256": "a44a47d3f9eb049ccea83f8483c257f4faa2bf927a6df7e0bb70ff1504b2a5d6"
+    },
+    {
+      "package": "TeamXiaolan-DawnLib",
+      "version": "0.9.25",
+      "url": "https://gcdn.thunderstore.io/live/repository/packages/TeamXiaolan-DawnLib-0.9.25.zip",
+      "zip_bytes": 879225,
+      "zip_sha256": "c33c608869763f916f07e5ddf47224134f98bab15d044bd809a46ef2d3d538c3"
+    }
+  ],
+  "toolchain": {
+    "python": "3.12.14",
+    "parsers": {
+      "dnfile": "0.18.0",
+      "dncil": "1.0.2"
+    },
+    "dependencies": [
+      {
+        "name": "dncil",
+        "version": "1.0.2"
+      },
+      {
+        "name": "dnfile",
+        "version": "0.18.0"
+      },
+      {
+        "name": "pefile",
+        "version": "2024.8.26"
+      }
+    ],
+    "game_executed": false,
+    "managed_mod_code_executed": false
+  },
+  "artifacts": [
+    {
+      "path": "AnalysisTools/inspect_universal_interior_c3e3d.py",
+      "sha256": "5600986890212c24f9fd0eb54931cf9ab2c99c5774c507ec6b20229767a22703",
+      "git_blob_sha1": "a16d579f4a081a5d4c9d85bfd24c1e421808f884"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3D/OXYDE_OWNER_REGISTRATION_IL.json",
+      "sha256": "3075ad4e151d2bbac01ad1eee0afe9221016c9e3c36b131ff1adea1c8a5460da",
+      "git_blob_sha1": "6bc8094f30302d1afa1cc2bf5a702c527e19fb41"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3D/FINDINGS.md",
+      "sha256": "6eed2ec0e6f89e3219ae8cc64e5c960509efe2935721da550d3a505a23043e0a",
+      "git_blob_sha1": "a82ef5ee23bba6f8df13e5a7afebbe5f498bec59"
+    }
+  ],
+  "coverage": {
+    "assemblies": 6,
+    "method_bodies_scanned": 10024,
+    "methods_without_body": 170,
+    "selected_method_bodies": 30,
+    "parse_errors": 0,
+    "spawnEnemiesAndScrap_reads": 14,
+    "spawnEnemiesAndScrap_direct_writes_or_address_takes": 0,
+    "dungeonFlowTypes_direct_writes": 1
+  },
+  "validation": {
+    "deterministic_reproduction": "PASS",
+    "field_inventory": "PASS",
+    "selected_registration_and_tag_instruction_sequences": "PASS",
+    "installed_v81_report_and_manifest_hashes": "PASS",
+    "controllers": "PASS"
+  },
+  "result": {
+    "owner_direct_generation_flag_mutation": "NONE_FOUND_IN_SIX_PINNED_ASSEMBLIES",
+    "dungeon_list_population": "DAWN_REGISTRY_FREEZE_APPENDS_ENTRIES_WITHOUT_MOON_GENERATION_FLAG_CHECK",
+    "company_autotag_predicate": "!moon.Level.spawnEnemiesAndScrap",
+    "installed_v81_generation_wait_and_postprocessing_guards": "PROVEN_FROM_EXISTING_FOCUSED_CAPTURE",
+    "full_client_generation_gate": "UNRESOLVED",
+    "runtime_entrance_count": null
+  },
+  "proof_boundary": "Static direct IL field references and selected owner methods only. No other mods, arbitrary reflection, runtime patch order, client generation body or topology proof.",
+  "unchanged": {
+    "authoritative_b3_matrix": true,
+    "selection_supported_external_pairings": 46,
+    "source_guid_ledger_resolved": 27,
+    "source_guid_ledger_total": 192,
+    "build_enabled": false,
+    "build_state": "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS",
+    "active_build": "S1.42AK",
+    "runtime_test_outstanding": false,
+    "candidate": null
+  },
+  "next_segment": "C3E3E: exact Dawn deferred-generation/hotload methods and version-bound LLL client-generation hooks; retain missing installed-V81 body qualification, no topology or gameplay test."
+}

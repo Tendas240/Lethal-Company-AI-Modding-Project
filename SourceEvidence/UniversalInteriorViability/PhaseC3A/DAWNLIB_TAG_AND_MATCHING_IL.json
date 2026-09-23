@@ -1,0 +1,3154 @@
+{
+  "schema_version": 1,
+  "package": "TeamXiaolan-DawnLib",
+  "version": "0.9.25",
+  "assembly_sha256": "9b4826a16eec1fa5091fb4246d010005bc9c3e04282034e8d067b499ab5c125b",
+  "tools": {
+    "dnfile": "0.18.0",
+    "dncil": "1.0.2"
+  },
+  "qualification": "Static selected-method IL only; generic signatures retained; not a runtime tag dump or topology proof.",
+  "methods": [
+    {
+      "type": "Dawn.NamespacedKey",
+      "method": "Vanilla",
+      "method_token": "0x0600009d",
+      "rva": 10894,
+      "signature_hex": "0001125c0e",
+      "instructions": [
+        {
+          "offset": 1,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000012B)",
+          "resolved_token": "'lethal_company'"
+        },
+        {
+          "offset": 6,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 7,
+          "opcode": "call",
+          "operand": "token(0x0600009C)",
+          "resolved_token": "Dawn.NamespacedKey::From"
+        },
+        {
+          "offset": 12,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.NamespacedKey",
+      "method": "IsVanilla",
+      "method_token": "0x060000a9",
+      "rva": 11512,
+      "signature_hex": "200002",
+      "instructions": [
+        {
+          "offset": 1,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 2,
+          "opcode": "call",
+          "operand": "token(0x06000098)",
+          "resolved_token": "Dawn.NamespacedKey::get_Namespace"
+        },
+        {
+          "offset": 7,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000012B)",
+          "resolved_token": "'lethal_company'"
+        },
+        {
+          "offset": 12,
+          "opcode": "call",
+          "operand": "token(0x0A00003E)",
+          "resolved_token": "System.String::op_Equality"
+        },
+        {
+          "offset": 17,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.LethalContent",
+      "method": ".cctor",
+      "method_token": "0x06000232",
+      "rva": 41500,
+      "signature_hex": "000001",
+      "instructions": [
+        {
+          "offset": 12,
+          "opcode": "newobj",
+          "operand": "token(0x0A000336)",
+          "resolved_token": "Dawn.TaggedRegistry`1 [signature=1512827c01128150]::.ctor"
+        },
+        {
+          "offset": 17,
+          "opcode": "stsfld",
+          "operand": "token(0x040000FC)",
+          "resolved_token": "Dawn.LethalContent::Items"
+        },
+        {
+          "offset": 22,
+          "opcode": "newobj",
+          "operand": "token(0x0A000337)",
+          "resolved_token": "Dawn.TaggedRegistry`1 [signature=1512827c011280ec]::.ctor"
+        },
+        {
+          "offset": 27,
+          "opcode": "stsfld",
+          "operand": "token(0x040000FD)",
+          "resolved_token": "Dawn.LethalContent::Enemies"
+        },
+        {
+          "offset": 32,
+          "opcode": "newobj",
+          "operand": "token(0x0A000338)",
+          "resolved_token": "Dawn.TaggedRegistry`1 [signature=1512827c0112818c]::.ctor"
+        },
+        {
+          "offset": 37,
+          "opcode": "stsfld",
+          "operand": "token(0x040000FE)",
+          "resolved_token": "Dawn.LethalContent::MapObjects"
+        },
+        {
+          "offset": 42,
+          "opcode": "newobj",
+          "operand": "token(0x0A000339)",
+          "resolved_token": "Dawn.TaggedRegistry`1 [signature=1512827c011281c8]::.ctor"
+        },
+        {
+          "offset": 47,
+          "opcode": "stsfld",
+          "operand": "token(0x040000FF)",
+          "resolved_token": "Dawn.LethalContent::Moons"
+        },
+        {
+          "offset": 52,
+          "opcode": "newobj",
+          "operand": "token(0x0A00033A)",
+          "resolved_token": "Dawn.Registry`1 [signature=15128218011280b8]::.ctor"
+        },
+        {
+          "offset": 57,
+          "opcode": "stsfld",
+          "operand": "token(0x04000100)",
+          "resolved_token": "Dawn.LethalContent::TileSets"
+        },
+        {
+          "offset": 62,
+          "opcode": "newobj",
+          "operand": "token(0x0A00033B)",
+          "resolved_token": "Dawn.TaggedRegistry`1 [signature=1512827c011280b0]::.ctor"
+        },
+        {
+          "offset": 67,
+          "opcode": "stsfld",
+          "operand": "token(0x04000101)",
+          "resolved_token": "Dawn.LethalContent::Dungeons"
+        },
+        {
+          "offset": 72,
+          "opcode": "newobj",
+          "operand": "token(0x0A00033C)",
+          "resolved_token": "Dawn.TaggedRegistry`1 [signature=1512827c01128374]::.ctor"
+        },
+        {
+          "offset": 77,
+          "opcode": "stsfld",
+          "operand": "token(0x04000102)",
+          "resolved_token": "Dawn.LethalContent::Unlockables"
+        },
+        {
+          "offset": 82,
+          "opcode": "newobj",
+          "operand": "token(0x0A00033D)",
+          "resolved_token": "Dawn.TaggedRegistry`1 [signature=1512827c01128394]::.ctor"
+        },
+        {
+          "offset": 87,
+          "opcode": "stsfld",
+          "operand": "token(0x04000103)",
+          "resolved_token": "Dawn.LethalContent::Weathers"
+        },
+        {
+          "offset": 92,
+          "opcode": "newobj",
+          "operand": "token(0x0A00033E)",
+          "resolved_token": "Dawn.Registry`1 [signature=15128218011280ac]::.ctor"
+        },
+        {
+          "offset": 97,
+          "opcode": "stsfld",
+          "operand": "token(0x04000104)",
+          "resolved_token": "Dawn.LethalContent::Archetypes"
+        },
+        {
+          "offset": 102,
+          "opcode": "newobj",
+          "operand": "token(0x0A00033F)",
+          "resolved_token": "Dawn.Registry`1 [signature=1512821801128238]::.ctor"
+        },
+        {
+          "offset": 107,
+          "opcode": "stsfld",
+          "operand": "token(0x04000105)",
+          "resolved_token": "Dawn.LethalContent::StoryLogs"
+        },
+        {
+          "offset": 112,
+          "opcode": "newobj",
+          "operand": "token(0x0A000340)",
+          "resolved_token": "Dawn.Registry`1 [signature=1512821801128258]::.ctor"
+        },
+        {
+          "offset": 117,
+          "opcode": "stsfld",
+          "operand": "token(0x04000106)",
+          "resolved_token": "Dawn.LethalContent::Surfaces"
+        },
+        {
+          "offset": 122,
+          "opcode": "newobj",
+          "operand": "token(0x0A000341)",
+          "resolved_token": "Dawn.Registry`1 [signature=1512821801128314]::.ctor"
+        },
+        {
+          "offset": 127,
+          "opcode": "stsfld",
+          "operand": "token(0x04000107)",
+          "resolved_token": "Dawn.LethalContent::TerminalCommands"
+        },
+        {
+          "offset": 132,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.TaggedRegistry`1",
+      "method": "Freeze",
+      "method_token": "0x060003ca",
+      "rva": 70000,
+      "signature_hex": "200001",
+      "instructions": [
+        {
+          "offset": 12,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 13,
+          "opcode": "call",
+          "operand": "token(0x0A00055E)",
+          "resolved_token": "Dawn.Registry`1 [signature=15128218011300]::Freeze"
+        },
+        {
+          "offset": 18,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 19,
+          "opcode": "call",
+          "operand": "token(0x0A000480)",
+          "resolved_token": "Dawn.Registry`1 [signature=15128218011300]::get_Values"
+        },
+        {
+          "offset": 24,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000015)",
+          "resolved_token": "System.Collections.Generic.IEnumerable`1 [signature=15121d011300]::GetEnumerator"
+        },
+        {
+          "offset": 29,
+          "opcode": "stloc.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 30,
+          "opcode": "br.s",
+          "operand": "148",
+          "resolved_token": null
+        },
+        {
+          "offset": 32,
+          "opcode": "ldloc.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 33,
+          "opcode": "callvirt",
+          "operand": "token(0x0A00002C)",
+          "resolved_token": "System.Collections.Generic.IEnumerator`1 [signature=15123d011300]::get_Current"
+        },
+        {
+          "offset": 38,
+          "opcode": "stloc.1",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 39,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 40,
+          "opcode": "ldfld",
+          "operand": "token(0x0A00055C)",
+          "resolved_token": "Dawn.TaggedRegistry`1 [signature=1512827c011300]::_autoTaggers"
+        },
+        {
+          "offset": 45,
+          "opcode": "callvirt",
+          "operand": "token(0x0A00055F)",
+          "resolved_token": "System.Collections.Generic.List`1 [signature=151280d9011512828c011300]::GetEnumerator"
+        },
+        {
+          "offset": 50,
+          "opcode": "stloc.2",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 51,
+          "opcode": "br.s",
+          "operand": "123",
+          "resolved_token": null
+        },
+        {
+          "offset": 53,
+          "opcode": "ldloca.s",
+          "operand": "local(0x0002)",
+          "resolved_token": null
+        },
+        {
+          "offset": 55,
+          "opcode": "call",
+          "operand": "token(0x0A000560)",
+          "resolved_token": ".Enumerator [signature=151180dd011512828c011300]::get_Current"
+        },
+        {
+          "offset": 60,
+          "opcode": "stloc.3",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 61,
+          "opcode": "ldloc.3",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 62,
+          "opcode": "ldloc.1",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 63,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000561)",
+          "resolved_token": "Dawn.IAutoTagger`1 [signature=1512828c011300]::ShouldApply"
+        },
+        {
+          "offset": 68,
+          "opcode": "brtrue.s",
+          "operand": "72",
+          "resolved_token": null
+        },
+        {
+          "offset": 70,
+          "opcode": "leave.s",
+          "operand": "123",
+          "resolved_token": null
+        },
+        {
+          "offset": 72,
+          "opcode": "ldloc.1",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 73,
+          "opcode": "box",
+          "operand": "token(0x1B000007)",
+          "resolved_token": "TypeSpec[signature=1300]"
+        },
+        {
+          "offset": 78,
+          "opcode": "ldloc.3",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 79,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000562)",
+          "resolved_token": "Dawn.IAutoTagger`1 [signature=1512828c011300]::get_Tag"
+        },
+        {
+          "offset": 84,
+          "opcode": "callvirt",
+          "operand": "token(0x0A00012F)",
+          "resolved_token": "Dawn.DawnBaseInfo`1 [signature=15128080011300]::Internal_AddTag"
+        },
+        {
+          "offset": 89,
+          "opcode": "leave.s",
+          "operand": "123",
+          "resolved_token": null
+        },
+        {
+          "offset": 91,
+          "opcode": "stloc.s",
+          "operand": "local(0x0004)",
+          "resolved_token": null
+        },
+        {
+          "offset": 93,
+          "opcode": "call",
+          "operand": "token(0x0600057E)",
+          "resolved_token": "Dawn.DawnPlugin::get_Logger"
+        },
+        {
+          "offset": 98,
+          "opcode": "ldstr",
+          "operand": "string token(0x70003F6B)",
+          "resolved_token": "'Exception while applying tag: {0}\\n{1}'"
+        },
+        {
+          "offset": 103,
+          "opcode": "ldloc.3",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 104,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000562)",
+          "resolved_token": "Dawn.IAutoTagger`1 [signature=1512828c011300]::get_Tag"
+        },
+        {
+          "offset": 109,
+          "opcode": "ldloc.s",
+          "operand": "local(0x0004)",
+          "resolved_token": null
+        },
+        {
+          "offset": 111,
+          "opcode": "call",
+          "operand": "token(0x0A00006D)",
+          "resolved_token": "System.String::Format"
+        },
+        {
+          "offset": 116,
+          "opcode": "callvirt",
+          "operand": "token(0x0A0000E0)",
+          "resolved_token": "BepInEx.Logging.ManualLogSource::LogError"
+        },
+        {
+          "offset": 121,
+          "opcode": "leave.s",
+          "operand": "123",
+          "resolved_token": null
+        },
+        {
+          "offset": 123,
+          "opcode": "ldloca.s",
+          "operand": "local(0x0002)",
+          "resolved_token": null
+        },
+        {
+          "offset": 125,
+          "opcode": "call",
+          "operand": "token(0x0A000563)",
+          "resolved_token": ".Enumerator [signature=151180dd011512828c011300]::MoveNext"
+        },
+        {
+          "offset": 130,
+          "opcode": "brtrue.s",
+          "operand": "53",
+          "resolved_token": null
+        },
+        {
+          "offset": 132,
+          "opcode": "leave.s",
+          "operand": "148",
+          "resolved_token": null
+        },
+        {
+          "offset": 134,
+          "opcode": "ldloca.s",
+          "operand": "local(0x0002)",
+          "resolved_token": null
+        },
+        {
+          "offset": 136,
+          "opcode": "constrained.",
+          "operand": "token(0x1B00012A)",
+          "resolved_token": ".Enumerator [signature=151180dd011512828c011300]"
+        },
+        {
+          "offset": 142,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000030)",
+          "resolved_token": "System.IDisposable::Dispose"
+        },
+        {
+          "offset": 147,
+          "opcode": "endfinally",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 148,
+          "opcode": "ldloc.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 149,
+          "opcode": "callvirt",
+          "operand": "token(0x0A00002E)",
+          "resolved_token": "System.Collections.IEnumerator::MoveNext"
+        },
+        {
+          "offset": 154,
+          "opcode": "brtrue.s",
+          "operand": "32",
+          "resolved_token": null
+        },
+        {
+          "offset": 156,
+          "opcode": "leave.s",
+          "operand": "168",
+          "resolved_token": null
+        },
+        {
+          "offset": 158,
+          "opcode": "ldloc.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 159,
+          "opcode": "brfalse.s",
+          "operand": "167",
+          "resolved_token": null
+        },
+        {
+          "offset": 161,
+          "opcode": "ldloc.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 162,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000030)",
+          "resolved_token": "System.IDisposable::Dispose"
+        },
+        {
+          "offset": 167,
+          "opcode": "endfinally",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 168,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 169,
+          "opcode": "ldfld",
+          "operand": "token(0x0A000559)",
+          "resolved_token": "Dawn.TaggedRegistry`1 [signature=1512827c011300]::AfterTagging"
+        },
+        {
+          "offset": 174,
+          "opcode": "callvirt",
+          "operand": "token(0x0A00047E)",
+          "resolved_token": "System.Action::Invoke"
+        },
+        {
+          "offset": 179,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.TaggedRegistry`1",
+      "method": ".ctor",
+      "method_token": "0x060003cb",
+      "rva": 70220,
+      "signature_hex": "200001",
+      "instructions": [
+        {
+          "offset": 12,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 13,
+          "opcode": "ldsfld",
+          "operand": "token(0x0A000564)",
+          "resolved_token": ".<>c [signature=15128280011300]::<>9__7_0"
+        },
+        {
+          "offset": 18,
+          "opcode": "dup",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 19,
+          "opcode": "brtrue.s",
+          "operand": "44",
+          "resolved_token": null
+        },
+        {
+          "offset": 21,
+          "opcode": "pop",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 22,
+          "opcode": "ldsfld",
+          "operand": "token(0x0A000565)",
+          "resolved_token": ".<>c [signature=15128280011300]::<>9"
+        },
+        {
+          "offset": 27,
+          "opcode": "ldftn",
+          "operand": "token(0x0A000566)",
+          "resolved_token": ".<>c [signature=15128280011300]::<.ctor>b__7_0"
+        },
+        {
+          "offset": 33,
+          "opcode": "newobj",
+          "operand": "token(0x0A000129)",
+          "resolved_token": "System.Action::.ctor"
+        },
+        {
+          "offset": 38,
+          "opcode": "dup",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 39,
+          "opcode": "stsfld",
+          "operand": "token(0x0A000564)",
+          "resolved_token": ".<>c [signature=15128280011300]::<>9__7_0"
+        },
+        {
+          "offset": 44,
+          "opcode": "stfld",
+          "operand": "token(0x0A000559)",
+          "resolved_token": "Dawn.TaggedRegistry`1 [signature=1512827c011300]::AfterTagging"
+        },
+        {
+          "offset": 49,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 50,
+          "opcode": "ldc.i4.3",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 51,
+          "opcode": "newobj",
+          "operand": "token(0x0A000567)",
+          "resolved_token": "System.Collections.Generic.List`1 [signature=151280d9011512828c011300]::.ctor"
+        },
+        {
+          "offset": 56,
+          "opcode": "dup",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 57,
+          "opcode": "newobj",
+          "operand": "token(0x0A000568)",
+          "resolved_token": "Dawn.VanillaAutoTagger`1 [signature=1512829c011300]::.ctor"
+        },
+        {
+          "offset": 62,
+          "opcode": "callvirt",
+          "operand": "token(0x0A00055D)",
+          "resolved_token": "System.Collections.Generic.List`1 [signature=151280d9011512828c011300]::Add"
+        },
+        {
+          "offset": 67,
+          "opcode": "dup",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 68,
+          "opcode": "newobj",
+          "operand": "token(0x0A000569)",
+          "resolved_token": "Dawn.CustomAutoTagger`1 [signature=15128288011300]::.ctor"
+        },
+        {
+          "offset": 73,
+          "opcode": "callvirt",
+          "operand": "token(0x0A00055D)",
+          "resolved_token": "System.Collections.Generic.List`1 [signature=151280d9011512828c011300]::Add"
+        },
+        {
+          "offset": 78,
+          "opcode": "dup",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 79,
+          "opcode": "newobj",
+          "operand": "token(0x0A00056A)",
+          "resolved_token": "Dawn.AllAutoTagger`1 [signature=15128284011300]::.ctor"
+        },
+        {
+          "offset": 84,
+          "opcode": "callvirt",
+          "operand": "token(0x0A00055D)",
+          "resolved_token": "System.Collections.Generic.List`1 [signature=151280d9011512828c011300]::Add"
+        },
+        {
+          "offset": 89,
+          "opcode": "stfld",
+          "operand": "token(0x0A00055C)",
+          "resolved_token": "Dawn.TaggedRegistry`1 [signature=1512827c011300]::_autoTaggers"
+        },
+        {
+          "offset": 94,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 95,
+          "opcode": "call",
+          "operand": "token(0x0A00056B)",
+          "resolved_token": "Dawn.Registry`1 [signature=15128218011300]::.ctor"
+        },
+        {
+          "offset": 100,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.AllAutoTagger`1",
+      "method": "get_Tag",
+      "method_token": "0x060003cf",
+      "rva": 70333,
+      "signature_hex": "2000125c",
+      "instructions": [
+        {
+          "offset": 1,
+          "opcode": "ldsfld",
+          "operand": "token(0x04000213)",
+          "resolved_token": "Dawn.Tags::All"
+        },
+        {
+          "offset": 6,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.AllAutoTagger`1",
+      "method": "ShouldApply",
+      "method_token": "0x060003d0",
+      "rva": 8357,
+      "signature_hex": "2001021300",
+      "instructions": [
+        {
+          "offset": 1,
+          "opcode": "ldc.i4.1",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 2,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.CustomAutoTagger`1",
+      "method": "get_Tag",
+      "method_token": "0x060003d2",
+      "rva": 70340,
+      "signature_hex": "2000125c",
+      "instructions": [
+        {
+          "offset": 1,
+          "opcode": "ldsfld",
+          "operand": "token(0x04000215)",
+          "resolved_token": "Dawn.Tags::Custom"
+        },
+        {
+          "offset": 6,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.CustomAutoTagger`1",
+      "method": "ShouldApply",
+      "method_token": "0x060003d3",
+      "rva": 70347,
+      "signature_hex": "2001021300",
+      "instructions": [
+        {
+          "offset": 1,
+          "opcode": "ldarga.s",
+          "operand": "argument(0x0001)",
+          "resolved_token": null
+        },
+        {
+          "offset": 3,
+          "opcode": "constrained.",
+          "operand": "token(0x1B000007)",
+          "resolved_token": "TypeSpec[signature=1300]"
+        },
+        {
+          "offset": 9,
+          "opcode": "callvirt",
+          "operand": "token(0x0600008F)",
+          "resolved_token": "Dawn.INamespaced::get_Key"
+        },
+        {
+          "offset": 14,
+          "opcode": "callvirt",
+          "operand": "token(0x060000A9)",
+          "resolved_token": "Dawn.NamespacedKey::IsVanilla"
+        },
+        {
+          "offset": 19,
+          "opcode": "ldc.i4.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 20,
+          "opcode": "ceq",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 22,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.Tags",
+      "method": ".cctor",
+      "method_token": "0x060003dd",
+      "rva": 70612,
+      "signature_hex": "000001",
+      "instructions": [
+        {
+          "offset": 12,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004021)",
+          "resolved_token": "'all'"
+        },
+        {
+          "offset": 17,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 22,
+          "opcode": "stsfld",
+          "operand": "token(0x04000213)",
+          "resolved_token": "Dawn.Tags::All"
+        },
+        {
+          "offset": 27,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004029)",
+          "resolved_token": "'cold'"
+        },
+        {
+          "offset": 32,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 37,
+          "opcode": "stsfld",
+          "operand": "token(0x04000214)",
+          "resolved_token": "Dawn.Tags::Cold"
+        },
+        {
+          "offset": 42,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004033)",
+          "resolved_token": "'custom'"
+        },
+        {
+          "offset": 47,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 52,
+          "opcode": "stsfld",
+          "operand": "token(0x04000215)",
+          "resolved_token": "Dawn.Tags::Custom"
+        },
+        {
+          "offset": 57,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004041)",
+          "resolved_token": "'abandoned'"
+        },
+        {
+          "offset": 62,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 67,
+          "opcode": "stsfld",
+          "operand": "token(0x04000216)",
+          "resolved_token": "Dawn.Tags::Abandoned"
+        },
+        {
+          "offset": 72,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004055)",
+          "resolved_token": "'artifical'"
+        },
+        {
+          "offset": 77,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 82,
+          "opcode": "stsfld",
+          "operand": "token(0x04000217)",
+          "resolved_token": "Dawn.Tags::Artificial"
+        },
+        {
+          "offset": 87,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004069)",
+          "resolved_token": "'bunker'"
+        },
+        {
+          "offset": 92,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 97,
+          "opcode": "stsfld",
+          "operand": "token(0x04000218)",
+          "resolved_token": "Dawn.Tags::Bunker"
+        },
+        {
+          "offset": 102,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004077)",
+          "resolved_token": "'catacomb'"
+        },
+        {
+          "offset": 107,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 112,
+          "opcode": "stsfld",
+          "operand": "token(0x04000219)",
+          "resolved_token": "Dawn.Tags::Catacomb"
+        },
+        {
+          "offset": 117,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004089)",
+          "resolved_token": "'cavern'"
+        },
+        {
+          "offset": 122,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 127,
+          "opcode": "stsfld",
+          "operand": "token(0x0400021A)",
+          "resolved_token": "Dawn.Tags::Cavern"
+        },
+        {
+          "offset": 132,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004097)",
+          "resolved_token": "'claustrophobic'"
+        },
+        {
+          "offset": 137,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 142,
+          "opcode": "stsfld",
+          "operand": "token(0x0400021B)",
+          "resolved_token": "Dawn.Tags::Claustrophobic"
+        },
+        {
+          "offset": 147,
+          "opcode": "ldstr",
+          "operand": "string token(0x700040B5)",
+          "resolved_token": "'dusty'"
+        },
+        {
+          "offset": 152,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 157,
+          "opcode": "stsfld",
+          "operand": "token(0x0400021C)",
+          "resolved_token": "Dawn.Tags::Dusty"
+        },
+        {
+          "offset": 162,
+          "opcode": "ldstr",
+          "operand": "string token(0x700040C1)",
+          "resolved_token": "'eerie'"
+        },
+        {
+          "offset": 167,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 172,
+          "opcode": "stsfld",
+          "operand": "token(0x0400021D)",
+          "resolved_token": "Dawn.Tags::Eerie"
+        },
+        {
+          "offset": 177,
+          "opcode": "ldstr",
+          "operand": "string token(0x700040CD)",
+          "resolved_token": "'factory'"
+        },
+        {
+          "offset": 182,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 187,
+          "opcode": "stsfld",
+          "operand": "token(0x0400021E)",
+          "resolved_token": "Dawn.Tags::Factory"
+        },
+        {
+          "offset": 192,
+          "opcode": "ldstr",
+          "operand": "string token(0x700040DD)",
+          "resolved_token": "'flooded'"
+        },
+        {
+          "offset": 197,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 202,
+          "opcode": "stsfld",
+          "operand": "token(0x0400021F)",
+          "resolved_token": "Dawn.Tags::Flooded"
+        },
+        {
+          "offset": 207,
+          "opcode": "ldstr",
+          "operand": "string token(0x700040ED)",
+          "resolved_token": "'gothic'"
+        },
+        {
+          "offset": 212,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 217,
+          "opcode": "stsfld",
+          "operand": "token(0x04000220)",
+          "resolved_token": "Dawn.Tags::Gothic"
+        },
+        {
+          "offset": 222,
+          "opcode": "ldstr",
+          "operand": "string token(0x700040FB)",
+          "resolved_token": "'grand'"
+        },
+        {
+          "offset": 227,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 232,
+          "opcode": "stsfld",
+          "operand": "token(0x04000221)",
+          "resolved_token": "Dawn.Tags::Grand"
+        },
+        {
+          "offset": 237,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004107)",
+          "resolved_token": "'industrial'"
+        },
+        {
+          "offset": 242,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 247,
+          "opcode": "stsfld",
+          "operand": "token(0x04000222)",
+          "resolved_token": "Dawn.Tags::Industrial"
+        },
+        {
+          "offset": 252,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000411D)",
+          "resolved_token": "'lavish'"
+        },
+        {
+          "offset": 257,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 262,
+          "opcode": "stsfld",
+          "operand": "token(0x04000223)",
+          "resolved_token": "Dawn.Tags::Lavish"
+        },
+        {
+          "offset": 267,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000412B)",
+          "resolved_token": "'maze'"
+        },
+        {
+          "offset": 272,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 277,
+          "opcode": "stsfld",
+          "operand": "token(0x04000224)",
+          "resolved_token": "Dawn.Tags::Maze"
+        },
+        {
+          "offset": 282,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004135)",
+          "resolved_token": "'mechanical'"
+        },
+        {
+          "offset": 287,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 292,
+          "opcode": "stsfld",
+          "operand": "token(0x04000225)",
+          "resolved_token": "Dawn.Tags::Mechanical"
+        },
+        {
+          "offset": 297,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000414B)",
+          "resolved_token": "'monotone'"
+        },
+        {
+          "offset": 302,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 307,
+          "opcode": "stsfld",
+          "operand": "token(0x04000226)",
+          "resolved_token": "Dawn.Tags::Monotone"
+        },
+        {
+          "offset": 312,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000415D)",
+          "resolved_token": "'ornate'"
+        },
+        {
+          "offset": 317,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 322,
+          "opcode": "stsfld",
+          "operand": "token(0x04000227)",
+          "resolved_token": "Dawn.Tags::Ornate"
+        },
+        {
+          "offset": 327,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000416B)",
+          "resolved_token": "'quarry'"
+        },
+        {
+          "offset": 332,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 337,
+          "opcode": "stsfld",
+          "operand": "token(0x04000228)",
+          "resolved_token": "Dawn.Tags::Quarry"
+        },
+        {
+          "offset": 342,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004179)",
+          "resolved_token": "'reactor'"
+        },
+        {
+          "offset": 347,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 352,
+          "opcode": "stsfld",
+          "operand": "token(0x04000229)",
+          "resolved_token": "Dawn.Tags::Reactor"
+        },
+        {
+          "offset": 357,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004189)",
+          "resolved_token": "'ruins'"
+        },
+        {
+          "offset": 362,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 367,
+          "opcode": "stsfld",
+          "operand": "token(0x0400022A)",
+          "resolved_token": "Dawn.Tags::Ruins"
+        },
+        {
+          "offset": 372,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004195)",
+          "resolved_token": "'storage'"
+        },
+        {
+          "offset": 377,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 382,
+          "opcode": "stsfld",
+          "operand": "token(0x0400022B)",
+          "resolved_token": "Dawn.Tags::Storage"
+        },
+        {
+          "offset": 387,
+          "opcode": "ldstr",
+          "operand": "string token(0x700041A5)",
+          "resolved_token": "'withered'"
+        },
+        {
+          "offset": 392,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 397,
+          "opcode": "stsfld",
+          "operand": "token(0x0400022C)",
+          "resolved_token": "Dawn.Tags::Withered"
+        },
+        {
+          "offset": 402,
+          "opcode": "ldstr",
+          "operand": "string token(0x700041B7)",
+          "resolved_token": "'biped'"
+        },
+        {
+          "offset": 407,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 412,
+          "opcode": "stsfld",
+          "operand": "token(0x0400022D)",
+          "resolved_token": "Dawn.Tags::Biped"
+        },
+        {
+          "offset": 417,
+          "opcode": "ldstr",
+          "operand": "string token(0x700041C3)",
+          "resolved_token": "'hostile'"
+        },
+        {
+          "offset": 422,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 427,
+          "opcode": "stsfld",
+          "operand": "token(0x0400022E)",
+          "resolved_token": "Dawn.Tags::Hostile"
+        },
+        {
+          "offset": 432,
+          "opcode": "ldstr",
+          "operand": "string token(0x700041D3)",
+          "resolved_token": "'killable'"
+        },
+        {
+          "offset": 437,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 442,
+          "opcode": "stsfld",
+          "operand": "token(0x0400022F)",
+          "resolved_token": "Dawn.Tags::Killable"
+        },
+        {
+          "offset": 447,
+          "opcode": "ldstr",
+          "operand": "string token(0x700041E5)",
+          "resolved_token": "'large'"
+        },
+        {
+          "offset": 452,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 457,
+          "opcode": "stsfld",
+          "operand": "token(0x04000230)",
+          "resolved_token": "Dawn.Tags::Large"
+        },
+        {
+          "offset": 462,
+          "opcode": "ldstr",
+          "operand": "string token(0x700041F1)",
+          "resolved_token": "'medium'"
+        },
+        {
+          "offset": 467,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 472,
+          "opcode": "stsfld",
+          "operand": "token(0x04000231)",
+          "resolved_token": "Dawn.Tags::Medium"
+        },
+        {
+          "offset": 477,
+          "opcode": "ldstr",
+          "operand": "string token(0x700041FF)",
+          "resolved_token": "'neutral'"
+        },
+        {
+          "offset": 482,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 487,
+          "opcode": "stsfld",
+          "operand": "token(0x04000232)",
+          "resolved_token": "Dawn.Tags::Neutral"
+        },
+        {
+          "offset": 492,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000420F)",
+          "resolved_token": "'organic'"
+        },
+        {
+          "offset": 497,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 502,
+          "opcode": "stsfld",
+          "operand": "token(0x04000233)",
+          "resolved_token": "Dawn.Tags::Organic"
+        },
+        {
+          "offset": 507,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000421F)",
+          "resolved_token": "'passive'"
+        },
+        {
+          "offset": 512,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 517,
+          "opcode": "stsfld",
+          "operand": "token(0x04000234)",
+          "resolved_token": "Dawn.Tags::Passive"
+        },
+        {
+          "offset": 522,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000422F)",
+          "resolved_token": "'quadruped'"
+        },
+        {
+          "offset": 527,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 532,
+          "opcode": "stsfld",
+          "operand": "token(0x04000235)",
+          "resolved_token": "Dawn.Tags::Quadruped"
+        },
+        {
+          "offset": 537,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004243)",
+          "resolved_token": "'small'"
+        },
+        {
+          "offset": 542,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 547,
+          "opcode": "stsfld",
+          "operand": "token(0x04000236)",
+          "resolved_token": "Dawn.Tags::Small"
+        },
+        {
+          "offset": 552,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000424F)",
+          "resolved_token": "'hot'"
+        },
+        {
+          "offset": 557,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 562,
+          "opcode": "stsfld",
+          "operand": "token(0x04000237)",
+          "resolved_token": "Dawn.Tags::Hot"
+        },
+        {
+          "offset": 567,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004257)",
+          "resolved_token": "'beast_byproduct'"
+        },
+        {
+          "offset": 572,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 577,
+          "opcode": "stsfld",
+          "operand": "token(0x04000238)",
+          "resolved_token": "Dawn.Tags::BeastByproduct"
+        },
+        {
+          "offset": 582,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004277)",
+          "resolved_token": "'body_parts'"
+        },
+        {
+          "offset": 587,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 592,
+          "opcode": "stsfld",
+          "operand": "token(0x04000239)",
+          "resolved_token": "Dawn.Tags::BodyParts"
+        },
+        {
+          "offset": 597,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000428D)",
+          "resolved_token": "'chargeable'"
+        },
+        {
+          "offset": 602,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 607,
+          "opcode": "stsfld",
+          "operand": "token(0x0400023A)",
+          "resolved_token": "Dawn.Tags::Chargeable"
+        },
+        {
+          "offset": 612,
+          "opcode": "ldstr",
+          "operand": "string token(0x700042A3)",
+          "resolved_token": "'communicative'"
+        },
+        {
+          "offset": 617,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 622,
+          "opcode": "stsfld",
+          "operand": "token(0x0400023B)",
+          "resolved_token": "Dawn.Tags::Communicative"
+        },
+        {
+          "offset": 627,
+          "opcode": "ldstr",
+          "operand": "string token(0x700042BF)",
+          "resolved_token": "'conductive'"
+        },
+        {
+          "offset": 632,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 637,
+          "opcode": "stsfld",
+          "operand": "token(0x0400023C)",
+          "resolved_token": "Dawn.Tags::Conductive"
+        },
+        {
+          "offset": 642,
+          "opcode": "ldstr",
+          "operand": "string token(0x700042D5)",
+          "resolved_token": "'consumable'"
+        },
+        {
+          "offset": 647,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 652,
+          "opcode": "stsfld",
+          "operand": "token(0x0400023D)",
+          "resolved_token": "Dawn.Tags::Consumable"
+        },
+        {
+          "offset": 657,
+          "opcode": "ldstr",
+          "operand": "string token(0x700042EB)",
+          "resolved_token": "'general_item_class_group'"
+        },
+        {
+          "offset": 662,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 667,
+          "opcode": "stsfld",
+          "operand": "token(0x0400023E)",
+          "resolved_token": "Dawn.Tags::GeneralItemClassGroup"
+        },
+        {
+          "offset": 672,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000431D)",
+          "resolved_token": "'harmful'"
+        },
+        {
+          "offset": 677,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 682,
+          "opcode": "stsfld",
+          "operand": "token(0x0400023F)",
+          "resolved_token": "Dawn.Tags::Harmful"
+        },
+        {
+          "offset": 687,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000432D)",
+          "resolved_token": "'heavy_weight'"
+        },
+        {
+          "offset": 692,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 697,
+          "opcode": "stsfld",
+          "operand": "token(0x04000240)",
+          "resolved_token": "Dawn.Tags::HeavyWeight"
+        },
+        {
+          "offset": 702,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004347)",
+          "resolved_token": "'high_value'"
+        },
+        {
+          "offset": 707,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 712,
+          "opcode": "stsfld",
+          "operand": "token(0x04000241)",
+          "resolved_token": "Dawn.Tags::HighValue"
+        },
+        {
+          "offset": 717,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000435D)",
+          "resolved_token": "'household'"
+        },
+        {
+          "offset": 722,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 727,
+          "opcode": "stsfld",
+          "operand": "token(0x04000242)",
+          "resolved_token": "Dawn.Tags::Household"
+        },
+        {
+          "offset": 732,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004371)",
+          "resolved_token": "'information'"
+        },
+        {
+          "offset": 737,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 742,
+          "opcode": "stsfld",
+          "operand": "token(0x04000243)",
+          "resolved_token": "Dawn.Tags::Information"
+        },
+        {
+          "offset": 747,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004389)",
+          "resolved_token": "'interactable'"
+        },
+        {
+          "offset": 752,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 757,
+          "opcode": "stsfld",
+          "operand": "token(0x04000244)",
+          "resolved_token": "Dawn.Tags::Interactable"
+        },
+        {
+          "offset": 762,
+          "opcode": "ldstr",
+          "operand": "string token(0x700043A3)",
+          "resolved_token": "'light_weight'"
+        },
+        {
+          "offset": 767,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 772,
+          "opcode": "stsfld",
+          "operand": "token(0x04000245)",
+          "resolved_token": "Dawn.Tags::LightWeight"
+        },
+        {
+          "offset": 777,
+          "opcode": "ldstr",
+          "operand": "string token(0x700043BD)",
+          "resolved_token": "'low_value'"
+        },
+        {
+          "offset": 782,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 787,
+          "opcode": "stsfld",
+          "operand": "token(0x04000246)",
+          "resolved_token": "Dawn.Tags::LowValue"
+        },
+        {
+          "offset": 792,
+          "opcode": "ldstr",
+          "operand": "string token(0x700043D1)",
+          "resolved_token": "'luminescent'"
+        },
+        {
+          "offset": 797,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 802,
+          "opcode": "stsfld",
+          "operand": "token(0x04000247)",
+          "resolved_token": "Dawn.Tags::Luminescent"
+        },
+        {
+          "offset": 807,
+          "opcode": "ldstr",
+          "operand": "string token(0x700043E9)",
+          "resolved_token": "'machine_part'"
+        },
+        {
+          "offset": 812,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 817,
+          "opcode": "stsfld",
+          "operand": "token(0x04000248)",
+          "resolved_token": "Dawn.Tags::MachinePart"
+        },
+        {
+          "offset": 822,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004403)",
+          "resolved_token": "'medium_value'"
+        },
+        {
+          "offset": 827,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 832,
+          "opcode": "stsfld",
+          "operand": "token(0x04000249)",
+          "resolved_token": "Dawn.Tags::MediumValue"
+        },
+        {
+          "offset": 837,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000441D)",
+          "resolved_token": "'medium_weight'"
+        },
+        {
+          "offset": 842,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 847,
+          "opcode": "stsfld",
+          "operand": "token(0x0400024A)",
+          "resolved_token": "Dawn.Tags::MediumWeight"
+        },
+        {
+          "offset": 852,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004439)",
+          "resolved_token": "'metal'"
+        },
+        {
+          "offset": 857,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 862,
+          "opcode": "stsfld",
+          "operand": "token(0x0400024B)",
+          "resolved_token": "Dawn.Tags::Metal"
+        },
+        {
+          "offset": 867,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004445)",
+          "resolved_token": "'noisy'"
+        },
+        {
+          "offset": 872,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 877,
+          "opcode": "stsfld",
+          "operand": "token(0x0400024C)",
+          "resolved_token": "Dawn.Tags::Noisy"
+        },
+        {
+          "offset": 882,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004451)",
+          "resolved_token": "'non_interactable'"
+        },
+        {
+          "offset": 887,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 892,
+          "opcode": "stsfld",
+          "operand": "token(0x0400024D)",
+          "resolved_token": "Dawn.Tags::NonInteractable"
+        },
+        {
+          "offset": 897,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004473)",
+          "resolved_token": "'one_handed'"
+        },
+        {
+          "offset": 902,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 907,
+          "opcode": "stsfld",
+          "operand": "token(0x0400024E)",
+          "resolved_token": "Dawn.Tags::OneHanded"
+        },
+        {
+          "offset": 912,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004489)",
+          "resolved_token": "'scrap'"
+        },
+        {
+          "offset": 917,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 922,
+          "opcode": "stsfld",
+          "operand": "token(0x0400024F)",
+          "resolved_token": "Dawn.Tags::Scrap"
+        },
+        {
+          "offset": 927,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004495)",
+          "resolved_token": "'small_items_group'"
+        },
+        {
+          "offset": 932,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 937,
+          "opcode": "stsfld",
+          "operand": "token(0x04000250)",
+          "resolved_token": "Dawn.Tags::SmallItemsGroup"
+        },
+        {
+          "offset": 942,
+          "opcode": "ldstr",
+          "operand": "string token(0x700044B9)",
+          "resolved_token": "'tabletop_items_group'"
+        },
+        {
+          "offset": 947,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 952,
+          "opcode": "stsfld",
+          "operand": "token(0x04000251)",
+          "resolved_token": "Dawn.Tags::TabletopItemsGroup"
+        },
+        {
+          "offset": 957,
+          "opcode": "ldstr",
+          "operand": "string token(0x700044E3)",
+          "resolved_token": "'test_item_group'"
+        },
+        {
+          "offset": 962,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 967,
+          "opcode": "stsfld",
+          "operand": "token(0x04000252)",
+          "resolved_token": "Dawn.Tags::TestItemGroup"
+        },
+        {
+          "offset": 972,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004503)",
+          "resolved_token": "'tool'"
+        },
+        {
+          "offset": 977,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 982,
+          "opcode": "stsfld",
+          "operand": "token(0x04000253)",
+          "resolved_token": "Dawn.Tags::Tool"
+        },
+        {
+          "offset": 987,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000450D)",
+          "resolved_token": "'transportation'"
+        },
+        {
+          "offset": 992,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 997,
+          "opcode": "stsfld",
+          "operand": "token(0x04000254)",
+          "resolved_token": "Dawn.Tags::Transportation"
+        },
+        {
+          "offset": 1002,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000452B)",
+          "resolved_token": "'two_handed'"
+        },
+        {
+          "offset": 1007,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1012,
+          "opcode": "stsfld",
+          "operand": "token(0x04000255)",
+          "resolved_token": "Dawn.Tags::TwoHanded"
+        },
+        {
+          "offset": 1017,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004541)",
+          "resolved_token": "'weapon'"
+        },
+        {
+          "offset": 1022,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1027,
+          "opcode": "stsfld",
+          "operand": "token(0x04000256)",
+          "resolved_token": "Dawn.Tags::Weapon"
+        },
+        {
+          "offset": 1032,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000454F)",
+          "resolved_token": "'military'"
+        },
+        {
+          "offset": 1037,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1042,
+          "opcode": "stsfld",
+          "operand": "token(0x04000257)",
+          "resolved_token": "Dawn.Tags::Military"
+        },
+        {
+          "offset": 1047,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004561)",
+          "resolved_token": "'amethyst'"
+        },
+        {
+          "offset": 1052,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1057,
+          "opcode": "stsfld",
+          "operand": "token(0x04000258)",
+          "resolved_token": "Dawn.Tags::Amethyst"
+        },
+        {
+          "offset": 1062,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004573)",
+          "resolved_token": "'canyon'"
+        },
+        {
+          "offset": 1067,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1072,
+          "opcode": "stsfld",
+          "operand": "token(0x04000259)",
+          "resolved_token": "Dawn.Tags::Canyon"
+        },
+        {
+          "offset": 1077,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004581)",
+          "resolved_token": "'company'"
+        },
+        {
+          "offset": 1082,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1087,
+          "opcode": "stsfld",
+          "operand": "token(0x0400025A)",
+          "resolved_token": "Dawn.Tags::Company"
+        },
+        {
+          "offset": 1092,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004591)",
+          "resolved_token": "'desert'"
+        },
+        {
+          "offset": 1097,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1102,
+          "opcode": "stsfld",
+          "operand": "token(0x0400025B)",
+          "resolved_token": "Dawn.Tags::Desert"
+        },
+        {
+          "offset": 1107,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000459F)",
+          "resolved_token": "'forest'"
+        },
+        {
+          "offset": 1112,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1117,
+          "opcode": "stsfld",
+          "operand": "token(0x0400025C)",
+          "resolved_token": "Dawn.Tags::Forest"
+        },
+        {
+          "offset": 1122,
+          "opcode": "ldstr",
+          "operand": "string token(0x700045AD)",
+          "resolved_token": "'free'"
+        },
+        {
+          "offset": 1127,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1132,
+          "opcode": "stsfld",
+          "operand": "token(0x0400025D)",
+          "resolved_token": "Dawn.Tags::Free"
+        },
+        {
+          "offset": 1137,
+          "opcode": "ldstr",
+          "operand": "string token(0x700045B7)",
+          "resolved_token": "'habitable'"
+        },
+        {
+          "offset": 1142,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1147,
+          "opcode": "stsfld",
+          "operand": "token(0x0400025E)",
+          "resolved_token": "Dawn.Tags::Habitable"
+        },
+        {
+          "offset": 1152,
+          "opcode": "ldstr",
+          "operand": "string token(0x700045CB)",
+          "resolved_token": "'inhabited'"
+        },
+        {
+          "offset": 1157,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1162,
+          "opcode": "stsfld",
+          "operand": "token(0x0400025F)",
+          "resolved_token": "Dawn.Tags::Inhabited"
+        },
+        {
+          "offset": 1167,
+          "opcode": "ldstr",
+          "operand": "string token(0x700045DF)",
+          "resolved_token": "'marsh'"
+        },
+        {
+          "offset": 1172,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1177,
+          "opcode": "stsfld",
+          "operand": "token(0x04000260)",
+          "resolved_token": "Dawn.Tags::Marsh"
+        },
+        {
+          "offset": 1182,
+          "opcode": "ldstr",
+          "operand": "string token(0x700045EB)",
+          "resolved_token": "'plains'"
+        },
+        {
+          "offset": 1187,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1192,
+          "opcode": "stsfld",
+          "operand": "token(0x04000261)",
+          "resolved_token": "Dawn.Tags::Plains"
+        },
+        {
+          "offset": 1197,
+          "opcode": "ldstr",
+          "operand": "string token(0x700045F9)",
+          "resolved_token": "'rocky'"
+        },
+        {
+          "offset": 1202,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1207,
+          "opcode": "stsfld",
+          "operand": "token(0x04000262)",
+          "resolved_token": "Dawn.Tags::Rocky"
+        },
+        {
+          "offset": 1212,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004605)",
+          "resolved_token": "'temperate'"
+        },
+        {
+          "offset": 1217,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1222,
+          "opcode": "stsfld",
+          "operand": "token(0x04000263)",
+          "resolved_token": "Dawn.Tags::Temperate"
+        },
+        {
+          "offset": 1227,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004619)",
+          "resolved_token": "'tundra'"
+        },
+        {
+          "offset": 1232,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1237,
+          "opcode": "stsfld",
+          "operand": "token(0x04000264)",
+          "resolved_token": "Dawn.Tags::Tundra"
+        },
+        {
+          "offset": 1242,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004627)",
+          "resolved_token": "'valley'"
+        },
+        {
+          "offset": 1247,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1252,
+          "opcode": "stsfld",
+          "operand": "token(0x04000265)",
+          "resolved_token": "Dawn.Tags::Valley"
+        },
+        {
+          "offset": 1257,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004635)",
+          "resolved_token": "'wasteland'"
+        },
+        {
+          "offset": 1262,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1267,
+          "opcode": "stsfld",
+          "operand": "token(0x04000266)",
+          "resolved_token": "Dawn.Tags::Wasteland"
+        },
+        {
+          "offset": 1272,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004649)",
+          "resolved_token": "'wet'"
+        },
+        {
+          "offset": 1277,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1282,
+          "opcode": "stsfld",
+          "operand": "token(0x04000267)",
+          "resolved_token": "Dawn.Tags::Wet"
+        },
+        {
+          "offset": 1287,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004651)",
+          "resolved_token": "'natural'"
+        },
+        {
+          "offset": 1292,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1297,
+          "opcode": "stsfld",
+          "operand": "token(0x04000268)",
+          "resolved_token": "Dawn.Tags::Natural"
+        },
+        {
+          "offset": 1302,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004661)",
+          "resolved_token": "'paid'"
+        },
+        {
+          "offset": 1307,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1312,
+          "opcode": "stsfld",
+          "operand": "token(0x04000269)",
+          "resolved_token": "Dawn.Tags::Paid"
+        },
+        {
+          "offset": 1317,
+          "opcode": "ldstr",
+          "operand": "string token(0x7000466B)",
+          "resolved_token": "'unimplemented'"
+        },
+        {
+          "offset": 1322,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1327,
+          "opcode": "stsfld",
+          "operand": "token(0x0400026A)",
+          "resolved_token": "Dawn.Tags::Unimplemented"
+        },
+        {
+          "offset": 1332,
+          "opcode": "ldstr",
+          "operand": "string token(0x70004687)",
+          "resolved_token": "'vanilla'"
+        },
+        {
+          "offset": 1337,
+          "opcode": "call",
+          "operand": "token(0x0600009D)",
+          "resolved_token": "Dawn.NamespacedKey::Vanilla"
+        },
+        {
+          "offset": 1342,
+          "opcode": "stsfld",
+          "operand": "token(0x0400026B)",
+          "resolved_token": "Dawn.Tags::Vanilla"
+        },
+        {
+          "offset": 1347,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.VanillaAutoTagger`1",
+      "method": "ShouldApply",
+      "method_token": "0x060003df",
+      "rva": 71967,
+      "signature_hex": "2001021300",
+      "instructions": [
+        {
+          "offset": 1,
+          "opcode": "ldarga.s",
+          "operand": "argument(0x0001)",
+          "resolved_token": null
+        },
+        {
+          "offset": 3,
+          "opcode": "constrained.",
+          "operand": "token(0x1B000007)",
+          "resolved_token": "TypeSpec[signature=1300]"
+        },
+        {
+          "offset": 9,
+          "opcode": "callvirt",
+          "operand": "token(0x0600008F)",
+          "resolved_token": "Dawn.INamespaced::get_Key"
+        },
+        {
+          "offset": 14,
+          "opcode": "callvirt",
+          "operand": "token(0x060000A9)",
+          "resolved_token": "Dawn.NamespacedKey::IsVanilla"
+        },
+        {
+          "offset": 19,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.HasTagWeightContextualProvider`2",
+      "method": "Provide",
+      "method_token": "0x06000563",
+      "rva": 94568,
+      "signature_hex": "2002151182c5010813001301",
+      "instructions": [
+        {
+          "offset": 12,
+          "opcode": "ldarga.s",
+          "operand": "argument(0x0001)",
+          "resolved_token": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 15,
+          "opcode": "ldfld",
+          "operand": "token(0x0A00066E)",
+          "resolved_token": "Dawn.HasTagWeightContextualProvider`2 [signature=151283d40213001301]::<tag>P"
+        },
+        {
+          "offset": 20,
+          "opcode": "constrained.",
+          "operand": "token(0x1B000007)",
+          "resolved_token": "TypeSpec[signature=1300]"
+        },
+        {
+          "offset": 26,
+          "opcode": "callvirt",
+          "operand": "token(0x060003D7)",
+          "resolved_token": "Dawn.ITaggable::HasTag"
+        },
+        {
+          "offset": 31,
+          "opcode": "brtrue.s",
+          "operand": "43",
+          "resolved_token": null
+        },
+        {
+          "offset": 33,
+          "opcode": "ldloca.s",
+          "operand": "local(0x0000)",
+          "resolved_token": null
+        },
+        {
+          "offset": 35,
+          "opcode": "initobj",
+          "operand": "token(0x1B000067)",
+          "resolved_token": "System.Nullable`1 [signature=151182c50108]"
+        },
+        {
+          "offset": 41,
+          "opcode": "ldloc.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 42,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 43,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 44,
+          "opcode": "ldfld",
+          "operand": "token(0x0A00066F)",
+          "resolved_token": "Dawn.HasTagWeightContextualProvider`2 [signature=151283d40213001301]::<weight>P"
+        },
+        {
+          "offset": 49,
+          "opcode": "ldarga.s",
+          "operand": "argument(0x0002)",
+          "resolved_token": null
+        },
+        {
+          "offset": 51,
+          "opcode": "call",
+          "operand": "token(0x2B000099)",
+          "resolved_token": "MethodSpec(Dawn.WeightedExtensions::GetWeight)"
+        },
+        {
+          "offset": 56,
+          "opcode": "newobj",
+          "operand": "token(0x0A00066D)",
+          "resolved_token": "System.Nullable`1 [signature=151182c50108]::.ctor"
+        },
+        {
+          "offset": 61,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    },
+    {
+      "type": "Dawn.Internal.LethalLevelLoaderCompat",
+      "method": "EnsureCorrectDawnDungeonDynamicRarity",
+      "method_token": "0x060006e3",
+      "rva": 125388,
+      "signature_hex": "0003081512878d0312878512858d0812878512858d",
+      "instructions": [
+        {
+          "offset": 12,
+          "opcode": "ldnull",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 13,
+          "opcode": "stloc.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 14,
+          "opcode": "call",
+          "operand": "token(0x0A000801)",
+          "resolved_token": "LethalLevelLoader.PatchedContent::get_ExtendedDungeonFlows"
+        },
+        {
+          "offset": 19,
+          "opcode": "callvirt",
+          "operand": "token(0x0A0007FB)",
+          "resolved_token": "System.Collections.Generic.List`1 [signature=151280d901128795]::GetEnumerator"
+        },
+        {
+          "offset": 24,
+          "opcode": "stloc.3",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 25,
+          "opcode": "br.s",
+          "operand": "56",
+          "resolved_token": null
+        },
+        {
+          "offset": 27,
+          "opcode": "ldloca.s",
+          "operand": "local(0x0003)",
+          "resolved_token": null
+        },
+        {
+          "offset": 29,
+          "opcode": "call",
+          "operand": "token(0x0A0007FC)",
+          "resolved_token": ".Enumerator [signature=151180dd01128795]::get_Current"
+        },
+        {
+          "offset": 34,
+          "opcode": "stloc.s",
+          "operand": "local(0x0004)",
+          "resolved_token": null
+        },
+        {
+          "offset": 36,
+          "opcode": "ldloc.s",
+          "operand": "local(0x0004)",
+          "resolved_token": null
+        },
+        {
+          "offset": 38,
+          "opcode": "callvirt",
+          "operand": "token(0x0A0007FD)",
+          "resolved_token": "LethalLevelLoader.ExtendedDungeonFlow::get_LevelMatchingProperties"
+        },
+        {
+          "offset": 43,
+          "opcode": "ldarg.1",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 44,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000802)",
+          "resolved_token": "System.Object::Equals"
+        },
+        {
+          "offset": 49,
+          "opcode": "brfalse.s",
+          "operand": "56",
+          "resolved_token": null
+        },
+        {
+          "offset": 51,
+          "opcode": "ldloc.s",
+          "operand": "local(0x0004)",
+          "resolved_token": null
+        },
+        {
+          "offset": 53,
+          "opcode": "stloc.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 54,
+          "opcode": "leave.s",
+          "operand": "81",
+          "resolved_token": null
+        },
+        {
+          "offset": 56,
+          "opcode": "ldloca.s",
+          "operand": "local(0x0003)",
+          "resolved_token": null
+        },
+        {
+          "offset": 58,
+          "opcode": "call",
+          "operand": "token(0x0A000800)",
+          "resolved_token": ".Enumerator [signature=151180dd01128795]::MoveNext"
+        },
+        {
+          "offset": 63,
+          "opcode": "brtrue.s",
+          "operand": "27",
+          "resolved_token": null
+        },
+        {
+          "offset": 65,
+          "opcode": "leave.s",
+          "operand": "81",
+          "resolved_token": null
+        },
+        {
+          "offset": 67,
+          "opcode": "ldloca.s",
+          "operand": "local(0x0003)",
+          "resolved_token": null
+        },
+        {
+          "offset": 69,
+          "opcode": "constrained.",
+          "operand": "token(0x1B0001CC)",
+          "resolved_token": ".Enumerator [signature=151180dd01128795]"
+        },
+        {
+          "offset": 75,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000030)",
+          "resolved_token": "System.IDisposable::Dispose"
+        },
+        {
+          "offset": 80,
+          "opcode": "endfinally",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 81,
+          "opcode": "ldloc.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 82,
+          "opcode": "brtrue.s",
+          "operand": "87",
+          "resolved_token": null
+        },
+        {
+          "offset": 84,
+          "opcode": "ldnull",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 85,
+          "opcode": "br.s",
+          "operand": "93",
+          "resolved_token": null
+        },
+        {
+          "offset": 87,
+          "opcode": "ldloc.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 88,
+          "opcode": "call",
+          "operand": "token(0x0A0007FF)",
+          "resolved_token": "LethalLevelLoader.ExtendedDungeonFlow::get_DungeonFlow"
+        },
+        {
+          "offset": 93,
+          "opcode": "stloc.1",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 94,
+          "opcode": "ldloc.1",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 95,
+          "opcode": "ldnull",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 96,
+          "opcode": "call",
+          "operand": "token(0x0A0001F9)",
+          "resolved_token": "UnityEngine.Object::op_Inequality"
+        },
+        {
+          "offset": 101,
+          "opcode": "brfalse",
+          "operand": "234",
+          "resolved_token": null
+        },
+        {
+          "offset": 106,
+          "opcode": "ldloc.1",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 107,
+          "opcode": "ldloca.s",
+          "operand": "local(0x0002)",
+          "resolved_token": null
+        },
+        {
+          "offset": 109,
+          "opcode": "call",
+          "operand": "token(0x06000161)",
+          "resolved_token": "Dawn.DungeonFlowExtensions::TryGetDawnInfo"
+        },
+        {
+          "offset": 114,
+          "opcode": "brfalse.s",
+          "operand": "234",
+          "resolved_token": null
+        },
+        {
+          "offset": 116,
+          "opcode": "ldloc.2",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 117,
+          "opcode": "callvirt",
+          "operand": "token(0x0A0001A1)",
+          "resolved_token": "Dawn.DawnBaseInfo`1 [signature=15128080011280b0]::ShouldSkipRespectOverride"
+        },
+        {
+          "offset": 122,
+          "opcode": "brtrue.s",
+          "operand": "234",
+          "resolved_token": null
+        },
+        {
+          "offset": 124,
+          "opcode": "ldarg.2",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 125,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000803)",
+          "resolved_token": "LethalLevelLoader.ExtendedLevel::get_SelectableLevel"
+        },
+        {
+          "offset": 130,
+          "opcode": "call",
+          "operand": "token(0x0600031A)",
+          "resolved_token": "Dawn.SelectableLevelExtensions::GetDawnInfo"
+        },
+        {
+          "offset": 135,
+          "opcode": "ldloc.2",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 136,
+          "opcode": "ldarg.2",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 137,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000803)",
+          "resolved_token": "LethalLevelLoader.ExtendedLevel::get_SelectableLevel"
+        },
+        {
+          "offset": 142,
+          "opcode": "call",
+          "operand": "token(0x0600079D)",
+          "resolved_token": "Dawn.Internal.TimeOfDayRefs::GetCurrentWeatherEffect"
+        },
+        {
+          "offset": 147,
+          "opcode": "dup",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 148,
+          "opcode": "brtrue.s",
+          "operand": "154",
+          "resolved_token": null
+        },
+        {
+          "offset": 150,
+          "opcode": "pop",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 151,
+          "opcode": "ldnull",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 152,
+          "opcode": "br.s",
+          "operand": "159",
+          "resolved_token": null
+        },
+        {
+          "offset": 154,
+          "opcode": "call",
+          "operand": "token(0x06000543)",
+          "resolved_token": "Dawn.WeatherEffectExtensions::GetDawnInfo"
+        },
+        {
+          "offset": 159,
+          "opcode": "newobj",
+          "operand": "token(0x06000572)",
+          "resolved_token": "Dawn.SpawnWeightContext::.ctor"
+        },
+        {
+          "offset": 164,
+          "opcode": "stloc.s",
+          "operand": "local(0x0006)",
+          "resolved_token": null
+        },
+        {
+          "offset": 166,
+          "opcode": "ldloca.s",
+          "operand": "local(0x0006)",
+          "resolved_token": null
+        },
+        {
+          "offset": 168,
+          "opcode": "ldsfld",
+          "operand": "token(0x04000341)",
+          "resolved_token": "Dawn.SpawnWeightExtraKeys::RoutingPriceKey"
+        },
+        {
+          "offset": 173,
+          "opcode": "ldarg.2",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 174,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000803)",
+          "resolved_token": "LethalLevelLoader.ExtendedLevel::get_SelectableLevel"
+        },
+        {
+          "offset": 179,
+          "opcode": "call",
+          "operand": "token(0x0600031A)",
+          "resolved_token": "Dawn.SelectableLevelExtensions::GetDawnInfo"
+        },
+        {
+          "offset": 184,
+          "opcode": "callvirt",
+          "operand": "token(0x060002D5)",
+          "resolved_token": "Dawn.DawnMoonInfo::get_DawnPurchaseInfo"
+        },
+        {
+          "offset": 189,
+          "opcode": "callvirt",
+          "operand": "token(0x060003E2)",
+          "resolved_token": "Dawn.DawnPurchaseInfo::get_Cost"
+        },
+        {
+          "offset": 194,
+          "opcode": "callvirt",
+          "operand": "token(0x0A0001A2)",
+          "resolved_token": "Dawn.IProvider`1 [signature=151281180108]::Provide"
+        },
+        {
+          "offset": 199,
+          "opcode": "call",
+          "operand": "token(0x2B000024)",
+          "resolved_token": "MethodSpec(Dawn.SpawnWeightContext::WithExtra)"
+        },
+        {
+          "offset": 204,
+          "opcode": "stloc.s",
+          "operand": "local(0x0005)",
+          "resolved_token": null
+        },
+        {
+          "offset": 206,
+          "opcode": "ldloc.2",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 207,
+          "opcode": "callvirt",
+          "operand": "token(0x06000141)",
+          "resolved_token": "Dawn.DawnDungeonInfo::get_Weights"
+        },
+        {
+          "offset": 212,
+          "opcode": "ldloca.s",
+          "operand": "local(0x0005)",
+          "resolved_token": null
+        },
+        {
+          "offset": 214,
+          "opcode": "call",
+          "operand": "token(0x2B000025)",
+          "resolved_token": "MethodSpec(Dawn.ProviderTableSpawnWeightExtensions::GetFor)"
+        },
+        {
+          "offset": 219,
+          "opcode": "stloc.s",
+          "operand": "local(0x0007)",
+          "resolved_token": null
+        },
+        {
+          "offset": 221,
+          "opcode": "ldloca.s",
+          "operand": "local(0x0007)",
+          "resolved_token": null
+        },
+        {
+          "offset": 223,
+          "opcode": "call",
+          "operand": "token(0x0A0001A3)",
+          "resolved_token": "System.Nullable`1 [signature=151182c50108]::GetValueOrDefault"
+        },
+        {
+          "offset": 228,
+          "opcode": "call",
+          "operand": "token(0x0600081F)",
+          "resolved_token": "Dawn.Utils.MathfExtensions::Clamp0"
+        },
+        {
+          "offset": 233,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 234,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 235,
+          "opcode": "ldarg.1",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 236,
+          "opcode": "ldarg.2",
+          "operand": null,
+          "resolved_token": null
+        },
+        {
+          "offset": 237,
+          "opcode": "callvirt",
+          "operand": "token(0x0A000804)",
+          "resolved_token": ".Func`3 [signature=1512878d0312878512858d08]::Invoke"
+        },
+        {
+          "offset": 242,
+          "opcode": "ret",
+          "operand": null,
+          "resolved_token": null
+        }
+      ]
+    }
+  ]
+}

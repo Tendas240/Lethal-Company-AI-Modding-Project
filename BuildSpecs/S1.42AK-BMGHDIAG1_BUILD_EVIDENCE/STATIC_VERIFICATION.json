@@ -1,0 +1,20 @@
+{
+  "status": "STATIC_BUILD_PASS_REVIEW_ARTIFACT_NOT_ARMED",
+  "build_id": "S1.42AK-BMGHDIAG1",
+  "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+  "output_sha256": "7f494640f47210bf230a2f0950bd836d65b969a47be2af1252fc564463bc6d90",
+  "diagnostic_dll_sha256": "4a1f304a716bf7cacb6496f5047bb0e498ed68bde00fc9f4128fa001adaa30b2",
+  "lll_dll_sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+  "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+  "added_members": [
+    "BepInEx/plugins/S142AKBMGHDiag1/S142AKBMGHDiag1.dll"
+  ],
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "runtime_armed": false,
+  "qualification": "Ephemeral CI review build and exact archive-delta validation only. BuildSpecs/current.json and RuntimeInbox/ACTIVE_BUILD.txt remain unchanged; no runtime test is authorized."
+}

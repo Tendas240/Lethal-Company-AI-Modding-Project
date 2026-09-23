@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C3E3C",
+  "inspection_date": "2026-09-20",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "pr_number": 138,
+  "parent_commit": "f5e9a2fd71f885d59f645a43f49a0eb3b646d60d",
+  "verified_main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "accepted_baseline": "S1.42AK",
+  "status": "STATIC_LEVEL_MOON_DEFINITION_COMPLETE_EFFECTIVE_GENERATION_UNRESOLVED",
+  "input": {
+    "package_url": "https://gcdn.thunderstore.io/live/repository/packages/XuXiaolan-CodeRebirth-1.6.9.zip",
+    "package_bytes": 263010364,
+    "package_sha256": "a44a47d3f9eb049ccea83f8483c257f4faa2bf927a6df7e0bb70ff1504b2a5d6",
+    "bundle_member": "plugins/CodeRebirth/Assets/oxydeassets",
+    "bundle_bytes": 398696,
+    "bundle_sha256": "86d2ef29d428bcb3b96cb5ec99283a362324f8261c4a8e26737e3bd04fe24fe4",
+    "zip_and_bundle_freshly_verified": true,
+    "prior_inventory": "SourceEvidence/UniversalInteriorViability/PhaseC3E3A/OXYDE_PACKAGE_BUNDLE_INVENTORY.json",
+    "prior_inventory_git_blob": "4d343b00a9f29f854064affd393b0cabffad7ee3"
+  },
+  "toolchain": {
+    "unitypy_version": "1.25.3",
+    "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3C/TOOLCHAIN.json",
+    "managed_code_executed": false,
+    "game_executed": false
+  },
+  "artifacts": [
+    {
+      "path": "AnalysisTools/inspect_universal_interior_c3e3c.py",
+      "sha256": "7d9dcd6811de5586ec3d1cddfe5f99b7cfdcee742efe4731caf9a6eec7eb3286"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3C/OXYDE_LEVEL_MOON_DEFINITION.json",
+      "sha256": "e1a8bb01b1322d9ef5f0652de2ec3069842a7d46766b2bac4ed7735f191a3dea"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3C/FINDINGS.md",
+      "sha256": "b39bc4c08bc8acf8db6a615fb0518d5bbae103167411396e98c6d08d40a49c24"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3C/TOOLCHAIN.json",
+      "sha256": "30cde1470cc28e9ae192ee495d640dd65d78a98c655a718039421b63d371b506"
+    }
+  ],
+  "coverage": {
+    "objects_indexed": 48,
+    "type_counts": {
+      "AnimationClip": 5,
+      "Animator": 1,
+      "AnimatorController": 1,
+      "AssetBundle": 1,
+      "GameObject": 3,
+      "Material": 2,
+      "Mesh": 1,
+      "MeshFilter": 2,
+      "MeshRenderer": 2,
+      "MonoBehaviour": 14,
+      "MonoScript": 7,
+      "Shader": 3,
+      "Texture2D": 2,
+      "Transform": 3,
+      "VideoClip": 1
+    },
+    "monoscripts_parsed": 7,
+    "monobehaviours_parsed_for_identity": 14,
+    "selected_definition_records": 2,
+    "parse_errors": 0,
+    "level_and_moon_pointer_status_counts": {
+      "NULL": 4,
+      "RESOLVED": 18
+    }
+  },
+  "result": {
+    "moon_key": "code_rebirth:oxyde",
+    "moon_path_id": -3975445595720329216,
+    "level_path_id": -4793931200078666718,
+    "scene_name": "Oxyde",
+    "scene_bundle": "oxydescene",
+    "serialized_spawnEnemiesAndScrap": 0,
+    "serialized_dungeonFlowTypes": [],
+    "effective_runtime_generation": "UNRESOLVED",
+    "runtime_entrance_count": null
+  },
+  "validation": {
+    "package_bundle_report_byte_identical": true,
+    "modified_bundle_rejected": true,
+    "definition_chain_and_pointer_accounting": "PASS",
+    "strict_json": "PASS"
+  },
+  "proof_boundary": "Packaged serialized defaults and local references only. No owner implementation, runtime mutation, effective generation gate, entrance count/pairing or topology clearance.",
+  "unchanged": {
+    "authoritative_b3_matrix": true,
+    "selection_supported_external_pairings": 46,
+    "source_guid_ledger_resolved": 27,
+    "source_guid_ledger_total": 192,
+    "build_enabled": false,
+    "build_state": "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS",
+    "active_build": "S1.42AK",
+    "runtime_test_outstanding": false,
+    "candidate": null
+  },
+  "next_segment": "C3E3D: version-bound owner registration/consumption of Oxyde definitions, mutation of generation fields and effective generation gate; no broad topology work."
+}

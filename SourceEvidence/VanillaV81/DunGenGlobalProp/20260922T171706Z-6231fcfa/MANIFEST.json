@@ -1,0 +1,64 @@
+{
+    "schema_version":  1,
+    "purpose":  "Exact installed-V81 DunGen GlobalProp count/selection generation semantics for Universal Interior Viability C3 count-three gate",
+    "capture_utc":  "2026-09-22T17:17:06Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "pull_request":  138,
+    "pull_request_branch":  "scope/universal-interior-phase-c3a-dawn-tags",
+    "repository_pr_head_at_capture":  "0a5407d26a5614bf944756e7b43eca8461164eb3",
+    "repository_main_at_capture":  "56355ff518ae4301a38d370be9561251f6f963c1",
+    "bound_prior_evidence":  "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json",
+    "source_assembly":  {
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll"
+                        },
+    "dungen_assembly":  {
+                            "provenance_note":  "Exact installed file colocated with the SHA-bound V81 Assembly-CSharp.dll; this capture establishes its repository-visible byte binding.",
+                            "sha256":  "d62bbc63eae39ef388797194796ed9cf5a3e7c857fe31f7e5b7310ed78262db6",
+                            "logical_path":  "Lethal Company_Data/Managed/DunGen.dll"
+                        },
+    "game_executable":  {
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+                            "logical_path":  "Lethal Company.exe"
+                        },
+    "steam":  {
+                  "manifest_review":  "AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md",
+                  "matches_prior_appmanifest":  false,
+                  "buildid":  "22825947",
+                  "appmanifest_sha256":  "132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e",
+                  "prior_appmanifest_sha256":  "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                  "app_id":  "1966720"
+              },
+    "decompiler":  {
+                       "full_local_type_source_sha256":  "e0ba46d4ca8a969ce2258c9536fec118ef6d75c5904c5007ab17f322adba4eb1",
+                       "tool":  "ilspycmd",
+                       "type":  "DunGen.DungeonGenerator",
+                       "version":  "11.0.0.9375"
+                   },
+    "selection":  {
+                      "selected_signatures":  [
+                                                  "protected virtual IEnumerator PostProcess()",
+                                                  "protected virtual void ProcessGlobalProps()"
+                                              ],
+                      "same_type_neighbor_depth":  1,
+                      "neighbor_direction":  [
+                                                 "callers",
+                                                 "callees"
+                                             ],
+                      "required_secondary_pattern":  "\\bCount\\b",
+                      "max_source_lines":  3000,
+                      "primary_signal_pattern":  "\\bGlobalProps?\\b|\\bPropGroupID\\b|\\bGlobalPropID\\b"
+                  },
+    "report":  {
+                   "sha256":  "a0578a91b8907fb79587d9e793ead8b6ec61e23092963d3f273d3c75cec0a134",
+                   "file":  "DUNGEN_GLOBALPROP_FOCUSED_DECOMPILE.txt",
+                   "excludes":  [
+                                    "game binaries",
+                                    "DunGen.dll",
+                                    "full type decompile",
+                                    "unrelated methods",
+                                    "absolute local paths",
+                                    "user names"
+                                ]
+               }
+}

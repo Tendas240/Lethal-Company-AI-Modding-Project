@@ -1,7 +1,7 @@
 # V81 RoundManager helper: reviewed Steam manifest variant
 
-Date: 2026-09-11
-Scope: `AnalysisTools/InspectRoundManagerSpawningV81.ps1` only
+Date: 2026-09-11; extended 2026-09-20
+Scope: shared installed-V81 provenance gate for `AnalysisTools/InspectRoundManagerSpawningV81.ps1` and `AnalysisTools/InspectRoundManagerGenerationV81.ps1`
 Prior authority: `SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json`
 Repository main inspected: `18602af6ea97c7f19a5fbd969891e75c5ffe7a7e`
 
@@ -18,6 +18,8 @@ identity check. The follow-up reports:
 
 The prior evidence records this different appmanifest SHA-256:
 `fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432`.
+
+A second fail-closed provenance event was observed on 2026-09-20 while running the new focused generation helper. The exact console error reports appmanifest SHA-256 `132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e`. In the helper control flow, Assembly-CSharp SHA, executable SHA, App ID and build ID are checked before the appmanifest allowlist; reaching the manifest-specific rejection therefore establishes that those four pinned identities matched in that execution. No full appmanifest was captured and the cause of its byte drift remains unknown.
 
 Screenshot provenance: user attachments
 `74e6ed5e-526a-41d0-b6b2-b7893e6c446d.png` (original helper failure) and
@@ -40,7 +42,7 @@ Unchanged pinned binaries:
 
 ## Bounded decision
 
-Allow the two explicitly listed appmanifest hashes for this helper, only together
+Allow the three explicitly listed appmanifest hashes for these helpers, only together
 with the exact binary hashes, App ID and build ID above. Retain the prior manifest
 unchanged. Every future execution rechecks all five values before authentication,
 decompilation or upload. Missing or duplicate app/build fields are rejected.
@@ -56,8 +58,8 @@ manifest is also checked against its original app ID/build/binary/manifest pins.
 
 ## Validation and lifecycle boundary
 
-The existing Windows PowerShell 5.1 Actions self-test now exercises acceptance of
-both exact manifest variants and rejection of unknown manifest hashes, wrong DLL,
+The Windows PowerShell 5.1 Actions self-tests exercise acceptance of
+all three exact manifest variants and rejection of unknown manifest hashes, wrong DLL,
 wrong executable, wrong app ID and wrong build ID. It also rejects absent or
 duplicate app/build fields. Existing extraction/publication tests remain in place.
 

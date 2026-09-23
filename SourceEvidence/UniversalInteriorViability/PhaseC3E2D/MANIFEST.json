@@ -1,0 +1,29 @@
+{
+  "schema_version": "phase-c3e2d-manifest-1",
+  "status": "PARTIAL_PHASE_C3_OXYDE_TOPOLOGY_SOURCE_CHECKPOINT",
+  "parent_pr_head": "25401b9ccaff1f5bffd4cffbd7938f678e58715e",
+  "source_tree": "XuuXiaolan/CodeRebirth@3aec94f6f737c86d5e1eb59a57396740317b210f",
+  "evidence_files": [
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E2D/FINDINGS.md"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E2D/OXYDE_NESTED_SOURCE_RESOLUTION.json"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E2D/OXYDE_TERRAIN_GUID_COVERAGE.csv"
+    }
+  ],
+  "verification": {
+    "git_blob_hash_checks": 10,
+    "all_match": true,
+    "utf8_bytes": 19889,
+    "method": "SHA1(b'blob '+decimal_utf8_byte_length+b'\\0'+utf8_bytes), including five metadata files and five asset Git blobs. LFS pointer hashes verify pointer bytes only."
+  },
+  "proof_boundary": [
+    "Five nested source paths resolved; only Light adds a terrain-root source resolution.",
+    "Three FBX LFS payloads unread; script implementations untraced.",
+    "No entrance ID/count/pairing, generation or topology safety proof.",
+    "No matrix, gameplay, build or runtime state change."
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C3E3H",
+  "inspection_date": "2026-09-20",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "pr_number": 138,
+  "parent_commit": "de87857889579b5c47f0bf69c02e33e6f3c17acf",
+  "verified_main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "accepted_baseline": "S1.42AK",
+  "status": "OXYDE_ORDINARY_INTERIOR_GENERATION_NOT_PROVEN_APPLICABLE_ALTERNATE_CONSTRUCTION_NOT_ESTABLISHED",
+  "question": "After exact V81 proves spawnEnemiesAndScrap=false skips GenerateNewFloor, does exact Oxyde package/owner evidence establish another dungeon or entrance-pair construction path that makes ordinary interior selection executable?",
+  "inputs": [
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3B/FINDINGS.md",
+      "git_blob_sha1": "70d1817e4bf16cac03a1213cbeb339929120f1eb"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3B/OXYDE_ENTRANCE_COMPONENT_SCAN.json",
+      "git_blob_sha1": "4c471ce4b06f96b461a2968416c44dbab784bd0f"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3C/FINDINGS.md",
+      "git_blob_sha1": "e07744b9c2c46919a6ec1d5cc89ecbd47b552610"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3C/OXYDE_LEVEL_MOON_DEFINITION.json",
+      "git_blob_sha1": "9f556bebcbdafdf780c82e373bf3370879c58796"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3D/FINDINGS.md",
+      "git_blob_sha1": "a82ef5ee23bba6f8df13e5a7afebbe5f498bec59"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3D/OXYDE_OWNER_REGISTRATION_IL.json",
+      "git_blob_sha1": "6bc8094f30302d1afa1cc2bf5a702c527e19fb41"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3G/FINDINGS.md",
+      "git_blob_sha1": "d1793be55d702a4c873f71c2b8997398358335ad"
+    },
+    {
+      "path": "SourceEvidence/VanillaV81/RoundManagerGeneration/20260920T095502Z-fa6b63a6/ROUNDMANAGER_GENERATION_FOCUSED_DECOMPILE.txt",
+      "git_blob_sha1": "c30e58659a1e5ae218f47b908fb193ad3d54b7bd"
+    },
+    {
+      "path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/XuXiaolan-CodeRebirth-0-DISCOVERY.json",
+      "git_blob_sha1": "31c4d1ceed2b9f5a7905a177b533f1d0e131b5a5"
+    },
+    {
+      "path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/TeamXiaolan-DawnLib-0-DISCOVERY.json",
+      "git_blob_sha1": "9a7497f6fb3403e16f222b10e694b47a0f20d6f8"
+    },
+    {
+      "path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/TeamXiaolan-DawnLib-1-DISCOVERY.json",
+      "git_blob_sha1": "0a2176a1c1123811a6ca6855fa6714f4d02a665a"
+    }
+  ],
+  "exact_package_bindings": {
+    "coderebirth_version": "1.6.9",
+    "coderebirth_package_sha256": "a44a47d3f9eb049ccea83f8483c257f4faa2bf927a6df7e0bb70ff1504b2a5d6",
+    "oxyde_scene_bundle_sha256": "6b6dc42c2bef7d858e7e2efa2573df3e1c2bc8507cc7c3840483f0f6c1b0e883",
+    "dawnlib_version": "0.9.25",
+    "dawnlib_main_dll_sha256": "9b4826a16eec1fa5091fb4246d010005bc9c3e04282034e8d067b499ab5c125b"
+  },
+  "version_matched_coderebirth_source": {
+    "commit": "3aec94f6f737c86d5e1eb59a57396740317b210f",
+    "qualification": "Version-matched 1.6.9 source only; exact accepted binary identity remains separately SHA-256-bound.",
+    "blobs": {
+      "Plugin/CodeRebirth/src/Patches/EntranceTeleportPatch.cs": "91238eaa4ddde5428cd88246a30418c33b34f3dc",
+      "Plugin/CodeRebirth/src/Content/Maps/OxydeCrane.cs": "b4d34145843a64511c117c727190e021721ec1c1",
+      "Plugin/CodeRebirth/src/MiscScripts/ShipAnimator.cs": "7bc2b69f2b254110a77238201e627a41d335000d",
+      "Plugin/CodeRebirth/src/Patches/EnemyAIPatch.cs": "d52af2414f5f70d8e8fd8e1dd21c00be3cc35727",
+      "Plugin/CodeRebirth/src/Util/CodeRebirthUtils.cs": "d6e83983b62a25026b2f468a8f7d00f434636c72"
+    }
+  },
+  "result": {
+    "oxyde_packaged_spawnEnemiesAndScrap": false,
+    "owner_direct_enable_write": "NONE_FOUND_IN_C3E3D_EXACT_SIX_ASSEMBLY_SCAN",
+    "installed_v81_generateNewFloor_callsite_when_false": "NOT_REACHED",
+    "directly_identifiable_scene_EntranceTeleport_component": "NONE_IN_COMPLETE_C3E3B_PARSED_MONOBEHAVIOUR_SURFACE",
+    "inspected_coderebirth_entrance_patch": "TRACKS_EXISTING_ENTRANCETELEPORT_INSTANCES_ONLY",
+    "inspected_oxyde_specific_owner_dungeon_creator": "NOT_ESTABLISHED",
+    "inspected_dawn_alternate_false_flag_generation_or_entrance_creator": "NOT_ESTABLISHED",
+    "oxyde_selection_supported_pairings": 23,
+    "external_selection_supported_pairings_total": 46,
+    "ordinary_interior_generation_applicability": "NOT_PROVEN_THROUGH_CURRENT_SUPPORTED_INSPECTED_PATH",
+    "simple_selection_override_sufficient": false,
+    "zero_runtime_entrances_proven": false,
+    "gameplay_incompatibility_proven": false,
+    "matrix_change_authorized": false
+  },
+  "unchanged": {
+    "authoritative_b3_matrix": true,
+    "matrix_totals": {
+      "VIABLE_EQUAL_100": 662,
+      "AUTHOR_OR_OWNER_HARD_BLOCK": 14,
+      "CONFIG_GAP": 0,
+      "KNOWN_TECHNICAL_RESTRICTION": 0,
+      "NOT_YET_PROVEN": 914,
+      "total": 1590
+    },
+    "build_enabled": false,
+    "build_state": "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS",
+    "active_build": "S1.42AK",
+    "runtime_test_outstanding": false,
+    "candidate": null
+  },
+  "proof_boundary": "Selection metadata on Oxyde does not become executable ordinary interior generation through the inspected path because the preserved false flag returns before GenerateNewFloor and no independent static/owner entrance or dungeon-construction path is established. This is not proof of zero runtime entrances or permanent gameplay incompatibility.",
+  "next_segment": "C3F1: acquire and inspect exact Black Mesa 3.4.4 package/scene topology evidence; do not use obsolete 0.9.0 public source as current implementation evidence, do not duplicate-register Black Mesa, and do not change the B3 matrix from source evidence alone."
+}

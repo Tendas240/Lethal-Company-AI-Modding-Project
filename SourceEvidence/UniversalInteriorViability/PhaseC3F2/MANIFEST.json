@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C3F2",
+  "date": "2026-09-20",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "pr_number": 138,
+  "parent_pr_head": "6a308c0b39236985a843236e843aeca28dfed884",
+  "verified_main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "accepted_baseline": "S1.42AK",
+  "status": "EXACT_BLACK_MESA_3_4_4_PACKAGE_CAPTURED_STATIC_MOON_AND_ENTRANCE_SURFACE_RESOLVED_PAIRING_RUNTIME_LOGIC_OPEN",
+  "capture_infrastructure": {
+    "helper": {
+      "path": "AnalysisTools/inspect_universal_interior_c3f2.py",
+      "git_blob_sha1": "47bdcb9d53793777571ab98603e60a938b4e51bf",
+      "unitypy_version": "1.25.3",
+      "fail_closed_exact_zip_bytes": 228214268,
+      "fail_closed_exact_zip_sha256": "12921825bee51bfd46582989322a1f31183b65f59293c73654a102fb68d068b7"
+    },
+    "workflow": {
+      "path": ".github/workflows/black-mesa-344-topology-evidence.yml",
+      "git_blob_sha1": "1e5bd0b4ba6699a039e999d6877b285caa67d462"
+    }
+  },
+  "successful_capture": {
+    "workflow_run_id": 35518348054,
+    "workflow_run_number": 2,
+    "workflow_name": "Capture Black Mesa 3.4.4 topology evidence",
+    "branch_head_sha": "6a308c0b39236985a843236e843aeca28dfed884",
+    "artifact_id": 10607691761,
+    "artifact_name": "black-mesa-344-c3f2-5925f8d5a8fd16cdc63e058babfc32effa7516fb",
+    "artifact_zip_bytes": 44630,
+    "artifact_digest_sha256": "8139301f0e4605d84266ab5edfdeaf3ef4884fe04e76b5b8460b400b475369ea",
+    "derived_capture_file": "BLACK_MESA_344_PACKAGE_TOPOLOGY_CAPTURE.json",
+    "derived_capture_bytes": 873634,
+    "derived_capture_sha256": "0b4e3a2bad887da6631e9c8f79cdd74ce8a42294fb62fa0d387a5458d1d9e6fd",
+    "raw_package_or_bundle_bytes_published_to_repository": false
+  },
+  "package": {
+    "namespace": "Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior",
+    "manifest_name": "Black_Mesa_Half_Life_Moon_Interior",
+    "version": "3.4.4",
+    "source_url": "https://gcdn.thunderstore.io/live/repository/packages/Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior-3.4.4.zip",
+    "zip_bytes": 228214268,
+    "zip_sha256": "12921825bee51bfd46582989322a1f31183b65f59293c73654a102fb68d068b7",
+    "implementation_dll": {
+      "member": "BepInEx/plugins/BlackMesa.dll",
+      "bytes": 143360,
+      "sha256": "a90f157becdc68ab7fe6898eefc2feaee98352a0f04b2cda414741729a048eef"
+    },
+    "unityfs_bundle_count": 7
+  },
+  "exact_static_result": {
+    "moon_definition": "BlackMesaMoonDefinition",
+    "moon_key": "black_mesa:black_mesa",
+    "selectable_level": "BlackMesaLevel",
+    "planet_name": "Black Mesa",
+    "scene_name": "BlackMesaScene",
+    "scene_bundle": "blackmesamoon",
+    "spawn_enemies_and_scrap": true,
+    "dungeon_definition": "BlackMesaDungeonDefinition",
+    "dungeon_key": "black_mesa:black_mesa",
+    "dungeon_flow_asset": "Black Mesa",
+    "dungeon_bundle": "blackmesadungeon",
+    "entrance_teleport_component_count": 6,
+    "moon_side_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "dungeon_side_ids": [
+      0,
+      1
+    ],
+    "parser_or_layout_ambiguities": 0
+  },
+  "evidence_files": [
+    "SourceEvidence/UniversalInteriorViability/PhaseC3F2/BLACK_MESA_344_STATIC_TOPOLOGY.json",
+    "SourceEvidence/UniversalInteriorViability/PhaseC3F2/FINDINGS.md",
+    "SourceEvidence/UniversalInteriorViability/PhaseC3F2/MANIFEST.json"
+  ],
+  "decision": {
+    "c3f2_capture_gate": "COMPLETE",
+    "black_mesa_static_topology": "PARTIALLY_RESOLVED",
+    "effective_runtime_pairing_for_ids_2_3": "NOT_YET_PROVEN",
+    "arbitrary_interior_compatibility": "NOT_YET_PROVEN",
+    "matrix_change_authorized": false,
+    "gameplay_build_authorized": false,
+    "runtime_test_authorized": false
+  },
+  "next_segment": "C3F3: inspect the exact hash-bound BlackMesa.dll for EntranceTeleport creation/rewrite/matching or special handling of entrance IDs 2/3 before interpreting the static 4-outside/2-dungeon asymmetry."
+}

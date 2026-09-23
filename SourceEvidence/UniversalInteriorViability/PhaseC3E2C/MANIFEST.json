@@ -1,0 +1,30 @@
+{
+  "schema_version": "phase-c3e2c-manifest-1",
+  "status": "PARTIAL_PHASE_C3_OXYDE_TOPOLOGY_SOURCE_CHECKPOINT",
+  "parent_pr_head": "a6c84e6e89d8b269d177071258c7489a3ac3326a",
+  "source_tree": "XuuXiaolan/CodeRebirth@3aec94f6f737c86d5e1eb59a57396740317b210f",
+  "evidence_files": [
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E2C/FINDINGS.md"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E2C/OXYDE_COMPOSITE_SOURCE_BATCH.json"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E2C/OXYDE_TERRAIN_GUID_COVERAGE.csv"
+    }
+  ],
+  "verification": {
+    "git_blob_hash_checks": 35,
+    "all_match": true,
+    "coverage_total": 192,
+    "resolved": 26,
+    "unresolved": 166
+  },
+  "proof_boundary": [
+    "Source identity only for 12 additional terrain GUIDs; 11 prefab texts inspected and 1 model LFS pointer read.",
+    "No complete recursive prefab/script closure.",
+    "No entrance IDs/count/pairing or topology safety proven.",
+    "No matrix, gameplay, build or runtime state changes."
+  ]
+}

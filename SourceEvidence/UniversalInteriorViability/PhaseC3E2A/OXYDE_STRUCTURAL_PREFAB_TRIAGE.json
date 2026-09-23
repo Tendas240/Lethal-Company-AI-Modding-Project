@@ -1,0 +1,211 @@
+{
+  "schema_version": "phase-c3e2a-1",
+  "scope": "Universal Interior Viability / Equal Availability",
+  "baseline": "S1.42AK",
+  "checkpoint": {
+    "main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+    "parent_pr_head": "62e0bbdd86dc46ae32859b0959bd982cfd6f9312",
+    "pr_number": 138,
+    "branch": "scope/universal-interior-phase-c3a-dawn-tags"
+  },
+  "source_binding": {
+    "repository": "XuuXiaolan/CodeRebirth",
+    "version": "1.6.9",
+    "source_tree": "3aec94f6f737c86d5e1eb59a57396740317b210f",
+    "terrain_prefab_blob": "23bf23b3fb5782b5a268b89ec7783e3c5004f323"
+  },
+  "terrain_source_groups": {
+    "distinct_guids": 192,
+    "groups_with_name_override": 192,
+    "explicit_entrance_exit_teleport_root_names": 0,
+    "structural_name_candidates": 14
+  },
+  "inspected_candidates": [
+    {
+      "name": "Door",
+      "guid": "018ee60ec7481dd478e0ec3c84a6ca7c",
+      "prefab_blob": "7c2216f504940640edacf4e7d4dac1102e50e95d",
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      }
+    },
+    {
+      "name": "Outhouse",
+      "guid": "4bc8473a5c03c9b419944511ea4d0d5d",
+      "prefab_blob": "fd9d818d0adc99d8eec50bf3240bd036f9447004",
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      }
+    },
+    {
+      "name": "JimothyCabinTiled",
+      "guid": "d0b0d663356a6bc4d8123e75472774ed",
+      "prefab_blob": "7be6426fd138c25b7daf46bd33237df692e1064c",
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      }
+    },
+    {
+      "name": "Minecart",
+      "guid": "dd344d9c110af2f49a4802768ca63ad2",
+      "prefab_blob": "bef7396a45a382b7abcae463e1baa0a781e69d13",
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      }
+    },
+    {
+      "name": "Sarcophagus",
+      "guid": "2b0b26be9ebf7894c8a4339985cc435a",
+      "prefab_blob": "febe19caa1ab13405952c624e3ca0889f058d128",
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      }
+    },
+    {
+      "name": "SarcophagusClosed",
+      "guid": "8bd1f1fe7df5f26498b39b31f7785b52",
+      "prefab_blob": "5954bcd7f98f72a3023c07a89490a480c8308695",
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      }
+    },
+    {
+      "name": "VetChallengesShip",
+      "guid": "af0fe2d3a5f2eef4ab4770e94384b090",
+      "prefab_blob": "b93ff7d68fad45e229143c2b1af5b8f70a7fb3b0",
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      }
+    },
+    {
+      "name": "Ladder1.5x (2) Tall",
+      "guid": "7fc3884af2ad97b49ad6e8c07a374cfd",
+      "prefab_blob": "2dbd3dd0a95c4b3c65d693e58504b3b23faddd29",
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      }
+    },
+    {
+      "name": "MansionEnemyEntrySpawn 1",
+      "guid": "9d55255ec6eafdd4cbfac8cbbe01525a",
+      "prefab_blob": "07a425a854dd909c5750bf16265f3b7a975992c8",
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      }
+    },
+    {
+      "name": "NatureEnemyEntrySpawn 1",
+      "guid": "368ca36696e2da942baeb83aaee28b35",
+      "prefab_blob": "8f435319c75984fd16c89da5aba7e34ea43204cc",
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      }
+    },
+    {
+      "name": "WorkforceEnemyEntrySpawn",
+      "guid": "8d9d3c3fbc98cc44cb8b80c04ecf2af8",
+      "prefab_blob": "7737f55e86d24ec05e44a86d6c180b065f237ed8",
+      "entrance_literal_hits": {
+        "EntranceTeleport": 0,
+        "entranceId": 0,
+        "isEntranceToBuilding": 0,
+        "MainEntrance": 0,
+        "FireExit": 0,
+        "DungeonEntrance": 0,
+        "entrancePoint": 0,
+        "exitPoint": 0
+      }
+    }
+  ],
+  "unresolved_structural_candidates": [
+    {
+      "guid": "4b9261bf2703779478397283d2a5a9e2",
+      "observed_name": "CabinSupport"
+    },
+    {
+      "guid": "f354eba67c9ac1c4faa7ce98cb6ee920",
+      "observed_name": "SallyStairsCollider"
+    },
+    {
+      "guid": "e73a244d8e33195448df7390ea94caef",
+      "observed_name": "SallyStairs"
+    }
+  ],
+  "conclusions": {
+    "entrance_count_proven": false,
+    "entrance_ids_proven": false,
+    "pairing_proven": false,
+    "topology_safety_proven": false
+  },
+  "remaining_gap": "Complete exact GUID-to-asset resolution for the remaining terrain source GUIDs; if no serialized entrance components emerge, inspect exact packaged Oxyde scene-bundle composition."
+}

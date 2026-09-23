@@ -1,0 +1,58 @@
+{
+  "schema_version": "c3f14-generation-capacity-implementation-synthesis-1",
+  "working_pr": 138,
+  "source_head": "73a9552df7af0b51842ed2cf95f03145cc5928b9",
+  "capture": {
+    "directory": "SourceEvidence/VanillaV81/DunGenGenerationCapacity/20260922T193336Z-5d63c0ca",
+    "report": "DUNGEN_GENERATION_CAPACITY_FOCUSED_DECOMPILE.txt",
+    "manifest": "MANIFEST.json",
+    "report_sha256": "602d0294bc852188283b41e94efebf3417a3f0200fd5ab6d42aaa942ef657f8b",
+    "dungen_sha256": "d62bbc63eae39ef388797194796ed9cf5a3e7c857fe31f7e5b7310ed78262db6",
+    "assembly_csharp_sha256": "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+    "game_exe_sha256": "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+    "steam_app_id": "1966720",
+    "steam_buildid": "22825947",
+    "ilspycmd": "11.0.0.9375"
+  },
+  "aggregate": {
+    "proof_set_flows": 20,
+    "generated_eligible_positive_three_lower_bound_proven": 0,
+    "generated_eligible_positive_three_lower_bound_unproven": 20
+  },
+  "resolved": {
+    "target_length_and_generator_side_main_path_slotting": true,
+    "required_injection_completion_retry_semantics": true,
+    "branch_start_cap_consumption_path": true,
+    "tile_repeat_modes_in_add_tile": true,
+    "normalized_depth_selection_and_assignment": true,
+    "doorway_blocker_materialization": true
+  },
+  "remaining_cross_type_callees": [
+    "DunGen.DungeonFlow.GetLineAtDepth",
+    "DunGen.GraphLine.GetRandomArchetype",
+    "DunGen.InjectedTile.ShouldInjectTileAtPoint",
+    "DunGen.BranchCountHelper.ComputeBranchCounts",
+    "DunGen.DoorwayPairFinder.GetDoorwayPairs"
+  ],
+  "strongest_cases": {
+    "BunkerFlow": "Completed generation cannot retain either required injection; both use candidate-only BunkerCheckpointSet. Exact injection depth predicate and a guaranteed third positive candidate remain missing.",
+    "GreenhouseFlow": "Goal is candidate-only and Line 0/Line 2 use candidate-only CornSet; exact line/archetype resolution still blocks a three-positive lower bound.",
+    "SlaughterhouseFlow": "Goal plus required candidate-only injection are strong surfaces; exact injection depth predicate and a guaranteed third positive candidate remain missing.",
+    "Black Mesa": "Candidate-only Office/Lab branch caps have known cap materialization path, but branch-count and line/archetype selection remain unresolved."
+  },
+  "forbidden_recaptures": [
+    "DungeonGenerator.ProcessGlobalProps",
+    "GameObjectChanceTable.GetRandom",
+    "RoundManager.SpawnSyncedProps",
+    "already captured DungeonGenerator generation cluster",
+    "TilePlacementData.NormalizedDepth",
+    "Doorway.ProcessDoorwayObjects"
+  ],
+  "lifecycle": {
+    "b3_matrix_change": false,
+    "gameplay_candidate": false,
+    "runtime_test_authorized": false,
+    "universal_override_authorized": false,
+    "c3f10d_reopened": false
+  }
+}
