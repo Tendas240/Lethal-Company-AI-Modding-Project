@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """C3F17.3 source-only contract gate. It must never build or arm a Gale profile."""
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,7 +19,17 @@ def require(condition, message):
         raise RuntimeError(message)
 
 
+def strip_csharp_noncode(text):
+    """Remove comments and string/char literals before forbidden-call checks."""
+    pattern = re.compile(
+        r'//[^\n]*|/\*.*?\*/|@"(?:""|[^"])*"|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'',
+        re.DOTALL,
+    )
+    return pattern.sub("", text)
+
+
 plugin = PLUGIN.read_text(encoding="utf-8")
+plugin_code = strip_csharp_noncode(plugin)
 selection = SELECTION.read_text(encoding="utf-8")
 observation = OBSERVATION.read_text(encoding="utf-8")
 workflow = WORKFLOW.read_text(encoding="utf-8")
@@ -55,12 +66,12 @@ for literal in (
 require(plugin.count("harmony.Patch(") == 2, "Plugin must install exactly two Harmony patch surfaces")
 require("after = new[] { NormalizerGuid }" in plugin and "priority = Priority.Last" in plugin,
         "Selection patch ordering contract missing")
-require(".SetValue(" not in plugin, "Observer/selection implementation must not reflection-write game/mod fields")
-require("PatchAll(" not in plugin, "Broad Harmony PatchAll is forbidden")
-require("prefix:" not in plugin.lower(), "Prefix patching is forbidden")
-require("transpiler:" not in plugin.lower(), "Transpiler patching is forbidden")
-require(".FindExitPoint(" not in plugin, "Observer must not manually invoke FindExitPoint")
-require(".TeleportPlayer(" not in plugin, "Observer must not manually invoke TeleportPlayer")
+require(".SetValue(" not in plugin_code, "Observer/selection implementation must not reflection-write game/mod fields")
+require("PatchAll(" not in plugin_code, "Broad Harmony PatchAll is forbidden")
+require("prefix:" not in plugin_code.lower(), "Prefix patching is forbidden")
+require("transpiler:" not in plugin_code.lower(), "Transpiler patching is forbidden")
+require(".FindExitPoint(" not in plugin_code, "Observer must not manually invoke FindExitPoint")
+require(".TeleportPlayer(" not in plugin_code, "Observer must not manually invoke TeleportPlayer")
 require("FindObjectsOfType" in plugin and "topologySnapshotDone" in plugin,
         "One-time typed topology observation surface missing")
 
