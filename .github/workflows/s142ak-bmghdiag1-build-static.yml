@@ -6,13 +6,16 @@ on:
       - 'Patches/S142AKBMGHDiag1/**'
       - 'BuildSpecs/S1.42AK-BMGHDIAG1.json'
       - 'BuildSpecs/S1.42AK-BMGHDIAG1_PLAN.md'
+      - 'BuildSpecs/S1.42AK-BMGHDIAG1_BUILD_EVIDENCE/**'
       - 'AnalysisTools/validate_s142ak_bmghdiag1_source.py'
       - 'AnalysisTools/verify_s142ak_lll_1712_provenance.py'
       - 'AnalysisTools/validate_s142ak_bmghdiag1_build.py'
       - 'BuildSystem/profile_builder.py'
       - 'SourceEvidence/UniversalInteriorViability/PhaseC3F17/CANDIDATE_CONTRACT.json'
       - 'Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z'
+      - 'Profiles/LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic.r2z'
       - 'ProfileSources/S1.42AK/**'
+      - 'ProfileSources/S1.42AK-BMGHDIAG1/**'
       - '.github/workflows/s142ak-bmghdiag1-build-static.yml'
   workflow_dispatch:
 
@@ -43,13 +46,32 @@ jobs:
       - name: Freshly verify exact S1.42AK LLL 1.7.12 provenance
         run: python AnalysisTools/verify_s142ak_lll_1712_provenance.py
 
+      - name: Determine review-build versus published-validation mode
+        id: gate_mode
+        shell: bash
+        run: |
+          set -euo pipefail
+          output='Profiles/LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic.r2z'
+          publication='BuildSpecs/S1.42AK-BMGHDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md'
+          if [[ -f "$output" ]]; then
+            [[ -f "$publication" ]] || { echo 'Published profile exists without publication verification evidence.' >&2; exit 1; }
+            echo 'mode=published' >> "$GITHUB_OUTPUT"
+          else
+            [[ ! -e "$publication" ]] || { echo 'Publication verification exists without the published profile.' >&2; exit 1; }
+            echo 'mode=review-build' >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build isolated unarmed diagnostic review artifact
+        if: steps.gate_mode.outputs.mode == 'review-build'
         run: python BuildSystem/profile_builder.py BuildSpecs/S1.42AK-BMGHDIAG1.json
 
       - name: Verify exact archive delta and inactive lifecycle
+        env:
+          BMGHDIAG1_GATE_MODE: ${{ steps.gate_mode.outputs.mode }}
         run: python AnalysisTools/validate_s142ak_bmghdiag1_build.py
 
       - name: Upload unarmed diagnostic review artifact
+        if: steps.gate_mode.outputs.mode == 'review-build'
         uses: actions/upload-artifact@v4
         with:
           name: S1.42AK-BMGHDIAG1-review-${{ github.sha }}
