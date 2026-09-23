@@ -4,7 +4,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`, `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`, `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`, `RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/`  
+**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`, `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`, `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`, `RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/`, `SourceEvidence/UniversalInteriorViability/PhaseC3F18/FINDINGS.md`, `SourceEvidence/UniversalInteriorViability/PhaseC3F18/IMPLEMENTATION_FINDINGS.md`, `BuildSpecs/S1.42AK-BMGHDIAG2_PLAN.md`  
 **Last-Validated:** 2026-09-23
 
 ## Accepted gameplay baseline
@@ -54,7 +54,17 @@ The first exact published `S1.42AK-BMGHDIAG1` Black Mesa run is ingested at `Run
 
 The same run nevertheless proves that normal LethalLevelLoader matching on Black Mesa includes `Greenhouse (100)` and that accepted S1.42AB normalization leaves Greenhouse at effective rarity 100. The actual normal selection was `Decrepit store`. The user's successful main-entrance and two distinct fire-exit in/out traversals therefore apply to Decrepit store, not Greenhouse.
 
-Black Mesa x Greenhouse remains `NOT_YET_PROVEN`; this is diagnostic-tool failure evidence, not a demonstrated Greenhouse incompatibility. Decision authority: `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`. Do not rerun the same BMGHDIAG1 bytes. No diagnostic runtime target is currently armed while the assembly-hash failure is analyzed.
+Black Mesa x Greenhouse remains `NOT_YET_PROVEN`; this is diagnostic-tool failure evidence, not a demonstrated Greenhouse incompatibility. Decision authority: `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`. Do not rerun the same BMGHDIAG1 bytes.
+
+## BMGHDIAG2 provenance repair — source/static pass
+
+C3F18 establishes the BMGHDIAG1 startup-refusal root cause: the original diagnostic conflated the physical installed V81 `Assembly-CSharp.dll` provenance object with the runtime-loaded reflection assembly and incorrectly required the latter to expose a hashable `Assembly.Location`.
+
+The separately versioned `S1.42AK-BMGHDIAG2` successor repairs only that startup-provenance defect. It hashes the exact physical `Assembly-CSharp.dll` resolved through BepInEx `Paths.ManagedPath`, while the loaded `EntranceTeleport` assembly/type/method contract is validated separately and structurally. The V81 SHA guard remains intact; the selection and observation Harmony surfaces are not broadened.
+
+Exact source/static PR head `c767b27c64def300907cf617b4971b2b91024291` passed `S1.42AK BMGHDIAG2 source and pure static gate` run `35921973472` and `Knowledge Architecture` run `35921973492`, both `completed / success`. Evidence and implementation authority are `SourceEvidence/UniversalInteriorViability/PhaseC3F18/FINDINGS.md`, `SourceEvidence/UniversalInteriorViability/PhaseC3F18/IMPLEMENTATION_FINDINGS.md`, and `BuildSpecs/S1.42AK-BMGHDIAG2_PLAN.md`.
+
+BMGHDIAG2 is **not built, not published, not runtime-armed and not accepted**. Source/static success authorizes only a later separate inactive review-build checkpoint from exact accepted S1.42AK. Black Mesa x Greenhouse therefore remains `NOT_YET_PROVEN`.
 
 ## Live execution state
 
@@ -63,15 +73,15 @@ Black Mesa x Greenhouse remains `NOT_YET_PROVEN`; this is diagnostic-tool failur
 - Active gameplay candidate: **none**.
 - Active diagnostic runtime target: **none**.
 - Runtime test outstanding: **no**.
-- Selected scope: **Universal Interior Viability / Equal Availability — Phase C3F17 BMGHDIAG1 refusal root-cause/fix analysis**.
+- Selected scope: **Universal Interior Viability / Equal Availability — Phase C3F18 BMGHDIAG2 source/static pass; inactive review build next**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
 - No gameplay successor or universal override is armed.
 
 ## Exact next project action
 
-Analyze the ingested BMGHDIAG1 startup refusal repository-native: trace `ValidateAssemblyHash` and `ResolveObservationContract` against the exact installed-V81/runtime assembly-loading evidence, determine the minimal provenance-safe fix, and prepare a separately versioned successor diagnostic only if the root cause is established. Do not rerun the refused BMGHDIAG1 bytes and do not arm gameplay yet.
+Prepare a separate inactive `S1.42AK-BMGHDIAG2` review-build checkpoint from exact accepted S1.42AK using the source/static-passed successor implementation. Validate the exact archive delta and compiled diagnostic DLL while keeping `BuildSpecs/current.json` disabled, `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`, `active_candidate = null`, and `runtime_test_outstanding = false`. Do not publish or arm gameplay/runtime in the review-build checkpoint.
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. No diagnostic is currently runtime-armed. Any later corrected BMGH diagnostic must be separately published and armed through the same fail-closed repository authority chain before another gameplay run.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. No diagnostic is currently runtime-armed. BMGHDIAG2 remains source/static-only until a later review build, publication, and explicit atomic activation step; only that later activation may authorize another gameplay run.
