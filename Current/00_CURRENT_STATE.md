@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-19  
+**Updated:** 2026-09-23  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -33,17 +33,17 @@ A historical rejection can remain preserved even when a later explicit decision 
 ## Live execution state
 
 - Active candidate: **none**
-- Runtime test outstanding: **no**
+- Runtime test outstanding: **yes**
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMGHDIAG1`
 
 ## Exact next action
 
-Phase C3: resolve the two External target-moon rows, Black Mesa and Oxyde, before any universal override is designed. Establish each External level's actual Dawn/LLL tags, entrance/fire-exit topology and owner matching semantics; determine which current interior availability rules can legitimately apply without duplicate registration or unsupported topology assumptions. No build, universal override or runtime test is authorized yet.
+Import and run exact published S1.42AK-BMGHDIAG1 on Black Mesa for the bounded Black Mesa x Greenhouse runtime qualification, exercise the main entrance plus alternate exits 1, 2 and 3 as required by the diagnostic contract, then upload the resulting LogOutput.log under S1.42AK-BMGHDIAG1 for repository ingestion.
 
-No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+A runtime test is pending for S1.42AK-BMGHDIAG1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 

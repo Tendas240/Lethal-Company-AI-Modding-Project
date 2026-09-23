@@ -1,9 +1,9 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
 # Artifact and Runtime Evidence Integrity
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
 **Machine mirror:** `Current/ARTIFACT_EVIDENCE_INTEGRITY.json`  
-**Last-Validated:** 2026-09-18
+**Last-Validated:** 2026-09-23
 
 ## Accepted gameplay baseline: S1.42AK
 
@@ -30,8 +30,9 @@ The diagnostic passed its placement-capture contract and closed the LC Office sc
 ## Pending / deferred unaccepted profiles
 
 - **S1.42AJ** — deferred full-normal gate / retained exact balanced parent, not active.
+- **S1.42AK-BMGHDIAG1** — active runtime diagnostic pending for Black Mesa x Greenhouse; profile `Profiles/LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic.r2z`, SHA-256 `7f494640f47210bf230a2f0950bd836d65b969a47be2af1252fc564463bc6d90`, readable snapshot `ProfileSources/S1.42AK-BMGHDIAG1/`.
 
-There is currently no active runtime diagnostic or gameplay candidate.
+`S1.42AK-BMGHDIAG1` is the active diagnostic runtime target; there is no active gameplay candidate. It remains pending/unaccepted until an explicit runtime decision.
 
 ## Completed diagnostic evidence: S1.42AI-DIAG1R3
 

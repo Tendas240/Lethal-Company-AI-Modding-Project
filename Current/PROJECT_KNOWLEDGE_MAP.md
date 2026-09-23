@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
 # Project Knowledge Map
 
 **Status:** CURRENT / CANONICAL ROUTER
@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
 **Current State:** `Current/00_CURRENT_STATE.md`
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
-**Last-Validated:** 2026-09-19
+**Last-Validated:** 2026-09-23
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -40,7 +40,7 @@ Acceptance authority: `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_E
 
 The targeted LC Office camera-render A/B remains supplied by completed diagnostic-only S1.42AJ-DIAG2 evidence. The later LC Office Scrap Quantity/Distribution Investigation is complete with no gameplay delta under `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`. S1.42AK remains accepted/latest and unchanged.
 
-**Universal Interior Viability / Equal Availability is the selected scope.** Phases A through C1 are complete. Phase C2 is complete under `Current/169_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C2_OWNER_HARD_BLOCK_REASON_ANALYSIS.md`: all 14 current owner hard blocks are reason-reconciled without changing the 30×53 matrix. Twelve Offense exclusions are package/asset default targeting or balance rules; Shatteredrooms × Experimentation and × Embrion are explicit owner exclusions whose technical cause remains unproven. No hard-block cell is currently proven to be a technical compatibility safeguard or `KNOWN_TECHNICAL_RESTRICTION`. The matrix remains 662 `VIABLE_EQUAL_100`, 14 `AUTHOR_OR_OWNER_HARD_BLOCK`, 0 `CONFIG_GAP`, 0 `KNOWN_TECHNICAL_RESTRICTION`, and 914 `NOT_YET_PROVEN`. No gameplay candidate, diagnostic target or runtime test is armed; `BuildSpecs/current.json` remains disabled and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`. The next action is Phase C3 External-moon semantics/topology analysis defined by `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
+**Universal Interior Viability / Equal Availability is the selected scope.** Phases A through C1 are complete. Phase C2 is complete under `Current/169_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C2_OWNER_HARD_BLOCK_REASON_ANALYSIS.md`: all 14 current owner hard blocks are reason-reconciled without changing the 30×53 matrix. Twelve Offense exclusions are package/asset default targeting or balance rules; Shatteredrooms × Experimentation and × Embrion are explicit owner exclusions whose technical cause remains unproven. No hard-block cell is currently proven to be a technical compatibility safeguard or `KNOWN_TECHNICAL_RESTRICTION`. The matrix remains 662 `VIABLE_EQUAL_100`, 14 `AUTHOR_OR_OWNER_HARD_BLOCK`, 0 `CONFIG_GAP`, 0 `KNOWN_TECHNICAL_RESTRICTION`, and 914 `NOT_YET_PROVEN`. No gameplay candidate or successor build is armed. Exact published `S1.42AK-BMGHDIAG1` is the active diagnostic-only runtime target for the bounded Black Mesa x Greenhouse C3F17 qualification; `BuildSpecs/current.json` remains disabled and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMGHDIAG1`. The B3 matrix remains unchanged until this runtime evidence is ingested and interpreted.
 
 ## Authority rule
 

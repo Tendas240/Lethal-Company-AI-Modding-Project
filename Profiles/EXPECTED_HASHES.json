@@ -31,5 +31,10 @@
     "build_id": "S1.42AK-SCRAPDIAG1",
     "sha256": "233bcc058a3fa95d63e0577c4ff74b5a0dc137db49757b50376e447dd082d3b1",
     "note": "Diagnostic-only active runtime target over accepted S1.42AK; canonical readable snapshot is ProfileSources/S1.42AK-SCRAPDIAG1/. Not a gameplay lineage entry or gameplay base."
+  },
+  "Profiles/LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic.r2z": {
+    "build_id": "S1.42AK-BMGHDIAG1",
+    "sha256": "7f494640f47210bf230a2f0950bd836d65b969a47be2af1252fc564463bc6d90",
+    "note": "Diagnostic-only active runtime target over accepted S1.42AK; canonical readable snapshot is ProfileSources/S1.42AK-BMGHDIAG1/. Not a gameplay lineage entry or gameplay base."
   }
 }
