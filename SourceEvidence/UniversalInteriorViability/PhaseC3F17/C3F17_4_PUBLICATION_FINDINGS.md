@@ -8,4 +8,8 @@ Publication preserves exact accepted S1.42AK as parent and changes only `export.
 
 The publication is deliberately PR-local. `Current/AUTO_BUILD_RESULT.*`, `BuildSpecs/current.json`, `Current/CURRENT_STATE.json` and `RuntimeInbox/ACTIVE_BUILD.txt` remain unchanged. Therefore no candidate is active, no runtime test is outstanding, the canonical Gale helper still resolves S1.42AK from `main`, and no gameplay/Gale action is authorized by this checkpoint.
 
+## Main-integration preflight
+
+Before this publication may be merged to `main`, the exact current PR head must receive a normal CI pass rather than relying on the publication commit's `[skip ci]` marker. This preflight text is intentionally state-neutral and exists to produce that exact-head validation surface. It does not alter the published profile, build result, static verification, diagnostic DLL, accepted S1.42AK baseline, build controller, runtime pointer, matrix, Gale state or runtime authorization.
+
 A later separate atomic main/lifecycle transition may only arm this diagnostic after the exact published profile/build_result/static/publication identities are made visible on `main` consistently with `CURRENT_STATE.selected_scope.diagnostic_revision` and `RuntimeInbox/ACTIVE_BUILD.txt`.
