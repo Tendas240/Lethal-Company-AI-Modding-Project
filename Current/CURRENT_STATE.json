@@ -40,17 +40,17 @@
     "diagnostic_clearance": "Current/156_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_CONFIRMATION_AND_S1.42AK_SUCCESSOR_DECISION.md"
   },
   "active_candidate": null,
-  "runtime_test_outstanding": true,
+  "runtime_test_outstanding": false,
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C3F17_BLACK_MESA_GREENHOUSE_DIAGNOSTIC_PUBLISHED_ARMED_RUNTIME_OUTSTANDING",
+    "status": "PHASE_C3F17_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REPAIR_ANALYSIS_REQUIRED",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "Phase C3 static/source analysis has narrowed Black Mesa x Greenhouse to a targeted runtime-evidence boundary. The exact reviewed S1.42AK-BMGHDIAG1 publication is now integrated on main and is authorized only as a direct diagnostic runtime target over exact accepted S1.42AK. The diagnostic preserves Black Mesa Dawn/native ownership, existing Greenhouse availability, accepted S1.42AB normalization and the unchanged B3 matrix; it does not establish the pairing as viable until the runtime contract passes.",
-    "analysis_contract": "Runtime-test exact published S1.42AK-BMGHDIAG1 on Black Mesa. Require successful [BMGHDIAG1] ARMED and SELECTED markers for the existing Greenhouse / GreenhouseFlow wrapper at normalized rarity 100, successful DunGen generation, TOPOLOGY_OK ids=0,1,2,3 with unique opposite-side pairs, normal main-entrance entry and exit, direct player traversal of alternate IDs 1,2,3 where practical, no REFUSED or TOPOLOGY_INCONCLUSIVE marker, no generation abort, and no new severe persistent target-attributable routing/NavMesh failure. Preserve S1.42AK as accepted/latest, keep active_candidate null, do not modify the B3 matrix, do not duplicate-register Black Mesa, and do not open the separate Black-Mesa/Pikmin routing repair scope.",
-    "next_action": "Import and run exact published S1.42AK-BMGHDIAG1 on Black Mesa for the bounded Black Mesa x Greenhouse runtime qualification, exercise the main entrance plus alternate exits 1, 2 and 3 as required by the diagnostic contract, then upload the resulting LogOutput.log under S1.42AK-BMGHDIAG1 for repository ingestion.",
+    "finding": "The first exact published S1.42AK-BMGHDIAG1 runtime attempt is ingested at RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/. The diagnostic loaded but failed closed before arming with [BMGHDIAG1] REFUSED TO ARM because it could not hash the loaded Assembly-CSharp.dll, so normal dungeon selection was preserved. The normal Black Mesa LLL pool nevertheless proves Greenhouse / GreenhouseFlow viable at effective rarity 100 under accepted S1.42AB normalization; the actual selected interior was Decrepit store. The user's main-entrance and two-fire-exit traversals therefore qualify Decrepit store only, not Greenhouse. Black Mesa x Greenhouse remains NOT_YET_PROVEN. S1.42AK, Black Mesa Dawn/native ownership, Greenhouse availability, accepted normalization and the B3 matrix remain unchanged.",
+    "analysis_contract": "Preserve the ingested BMGHDIAG1 refusal evidence and do not repeat the same published bytes. Repository-native analysis must determine why ValidateAssemblyHash/ResolveObservationContract could not hash the loaded Assembly-CSharp.dll despite the static installed-V81 hash contract, then define the minimal fail-closed successor diagnostic revision if justified. Do not alter accepted S1.42AK, S1.42AB InteriorWeightNormalization, Black Mesa ownership, Greenhouse availability, the B3 matrix, Shatteredrooms exclusions or the separate Black-Mesa/Pikmin routing scope. No gameplay run is authorized until a corrected diagnostic is separately reviewed, published and armed.",
+    "next_action": "Analyze the ingested S1.42AK-BMGHDIAG1 startup refusal repository-native: trace ValidateAssemblyHash and ResolveObservationContract against the exact installed-V81/runtime assembly-loading evidence, determine the minimal provenance-safe fix, and prepare a separately versioned successor diagnostic only if the root cause is established. Do not rerun the refused BMGHDIAG1 bytes and do not arm gameplay yet.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -209,7 +209,7 @@
     "diagnostic_runtime_activation": "Current/170_S1.42AK_BMGHDIAG1_RUNTIME_ACTIVATION.md",
     "diagnostic_revision": {
       "build_id": "S1.42AK-BMGHDIAG1",
-      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+      "status": "RUNTIME_FAILED_DIAGNOSTIC_REPAIR_REQUIRED_NOT_ACCEPTED",
       "base_build_id": "S1.42AK",
       "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
       "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
@@ -237,11 +237,15 @@
       "lll_sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
       "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
       "runtime_role": "DIAGNOSTIC_ONLY_BLACK_MESA_GREENHOUSE_FORCE_SELECTION_AND_READ_ONLY_ENTRANCE_OBSERVATION",
-      "runtime_validation_status": "PUBLISHED_ARMED_RUNTIME_BLACK_MESA_GREENHOUSE_QUALIFICATION_OUTSTANDING_NOT_ACCEPTED",
-      "runtime_evidence": null
-    }
+      "runtime_validation_status": "RUNTIME_EVIDENCE_INGESTED_DIAGNOSTIC_REFUSED_BEFORE_ARMING_QUALIFICATION_INCONCLUSIVE_NOT_ACCEPTED",
+      "runtime_evidence": "RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/",
+      "runtime_index": "RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/INDEX.json",
+      "runtime_log_sha256": "4f3dae931364cefc4b297c8c316502e96d32b27431467a5607ce69ed6d6e69ef",
+      "runtime_decision": "Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md"
+    },
+    "diagnostic_runtime_finding": "Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md"
   },
-  "next_action": "Import and run exact published S1.42AK-BMGHDIAG1 on Black Mesa for the bounded Black Mesa x Greenhouse runtime qualification, exercise the main entrance plus alternate exits 1, 2 and 3 as required by the diagnostic contract, then upload the resulting LogOutput.log under S1.42AK-BMGHDIAG1 for repository ingestion.",
+  "next_action": "Analyze the ingested S1.42AK-BMGHDIAG1 startup refusal repository-native: trace ValidateAssemblyHash and ResolveObservationContract against the exact installed-V81/runtime assembly-loading evidence, determine the minimal provenance-safe fix, and prepare a separately versioned successor diagnostic only if the root cause is established. Do not rerun the refused BMGHDIAG1 bytes and do not arm gameplay yet.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
@@ -249,7 +253,7 @@
     "build_base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
     "build_base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",
-    "runtime_active_build": "S1.42AK-BMGHDIAG1"
+    "runtime_active_build": "S1.42AK"
   },
   "canonical_navigation": {
     "bootstrap": "START_HERE_ChatGPT_Masterprompt.txt",

@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Artifact and Runtime Evidence Integrity
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
@@ -27,12 +27,20 @@ Decision: `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`
 
 The diagnostic passed its placement-capture contract and closed the LC Office scrap investigation with no gameplay delta. It remains diagnostic evidence only and is not a gameplay baseline.
 
+## Completed failed diagnostic evidence: S1.42AK-BMGHDIAG1
+
+Profile: `Profiles/LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic.r2z`  
+SHA-256: `7f494640f47210bf230a2f0950bd836d65b969a47be2af1252fc564463bc6d90`  
+Readable snapshot: `ProfileSources/S1.42AK-BMGHDIAG1/`  
+Runtime evidence: `RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/`  
+Runtime log SHA-256: `4f3dae931364cefc4b297c8c316502e96d32b27431467a5607ce69ed6d6e69ef`  
+Decision: `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`
+
+The diagnostic refused before arming because the loaded `Assembly-CSharp.dll` could not be hashed. Normal Black Mesa LLL evidence still proves Greenhouse viable at effective rarity 100, but actual selection was Decrepit store; Black Mesa x Greenhouse therefore remains unqualified and the diagnostic requires repair analysis. It is not runtime-active and is never a gameplay base.
+
 ## Pending / deferred unaccepted profiles
 
 - **S1.42AJ** — deferred full-normal gate / retained exact balanced parent, not active.
-- **S1.42AK-BMGHDIAG1** — active runtime diagnostic pending for Black Mesa x Greenhouse; profile `Profiles/LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic.r2z`, SHA-256 `7f494640f47210bf230a2f0950bd836d65b969a47be2af1252fc564463bc6d90`, readable snapshot `ProfileSources/S1.42AK-BMGHDIAG1/`.
-
-`S1.42AK-BMGHDIAG1` is the active diagnostic runtime target; there is no active gameplay candidate. It remains pending/unaccepted until an explicit runtime decision.
 
 ## Completed diagnostic evidence: S1.42AI-DIAG1R3
 
