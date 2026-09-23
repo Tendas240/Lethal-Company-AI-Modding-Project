@@ -1,10 +1,11 @@
 # C3F17.3 — Black Mesa x Greenhouse diagnostic source and pure static tests
 
-**Status:** SOURCE IMPLEMENTED / PURE STATIC TESTS AUTHORED / EXACT-HEAD CI PENDING / NO GALE BUILD OR RUNTIME AUTHORIZATION  
+**Status:** SOURCE IMPLEMENTED / PURE STATIC TESTS + PLUGIN COMPILE + SOURCE CONTRACT CI PASS / NO GALE BUILD OR RUNTIME AUTHORIZATION  
 **Date:** 2026-09-23  
 **Accepted baseline:** S1.42AK  
 **Working PR:** #138 / `scope/universal-interior-phase-c3a-dawn-tags`  
-**Parent head:** `e211255aae2ead7a5730524183ec20e89c24a78e`
+**Parent head:** `e211255aae2ead7a5730524183ec20e89c24a78e`  
+**Validated implementation head:** `65bab16f3b3a73d3fc281c59a5725e635b34c286`
 
 ## Bounded objective
 
@@ -131,6 +132,28 @@ The source validator additionally requires:
 
 Therefore this CI can prove source/test/buildability only. It cannot create or publish a Gale profile and cannot arm runtime.
 
+## Exact-head CI result
+
+The source implementation was first committed as `b4e33729b6dece918bae461cdf113836bd7393ab`.
+
+Source workflow run #1 reached the substantive gates successfully:
+
+- pure selection/observation policy tests: **success**;
+- diagnostic plugin compile: **success**, 0 warnings / 0 errors;
+- source validator: **failed** only because its textual forbidden-call check matched the documentation/string literal `EntranceTeleport.TeleportPlayer()` rather than an executable method invocation.
+
+No C# runtime/source behavior was changed in response. Commit `65bab16f3b3a73d3fc281c59a5725e635b34c286` hardened only `AnalysisTools/validate_s142ak_bmghdiag1_source.py` to strip C# comments and string/character literals before checking forbidden executable call/write patterns.
+
+On exact implementation head `65bab16f3b3a73d3fc281c59a5725e635b34c286`:
+
+- source workflow run **#2 / 35846489106** completed `success`;
+- pure policy tests completed `success`;
+- plugin compile completed `success`;
+- fail-closed source-contract validator completed `success`;
+- all **16/16** PR workflows visible for that exact head completed `success`, including Knowledge Architecture and all existing V81/Black-Mesa/DunGen evidence-helper validation workflows.
+
+This closes the C3F17.3 source/static gate. It does not prove loaded runtime hashes, actual Harmony arming/order, Greenhouse generation on Black Mesa, entrance traversal, topology, geometry or routing behavior.
+
 ## Lifecycle and scope preservation
 
 - S1.42AK remains accepted/latest.
@@ -146,10 +169,6 @@ Therefore this CI can prove source/test/buildability only. It cannot create or p
 - Black-Mesa/Pikmin routing recovery remains separate.
 - no runtime test is requested.
 
-## Exact-head validation gate
-
-This file is authored in the same atomic implementation change as the source/tests/workflow. Its status remains **CI PENDING** until GitHub Actions has completed against the resulting exact PR head. Do not interpret source presence or compilation intent as a runtime/build clearance.
-
-## Next checkpoint after exact-head CI passes
+## Next checkpoint
 
 C3F17.4 should perform the next bounded provenance/build-readiness gate: freshly re-confirm the exact S1.42AK LLL 1.7.12 binary identity required by the contract and author the separate inactive candidate build request/static archive-delta gate. Do not arm runtime in that same checkpoint.
