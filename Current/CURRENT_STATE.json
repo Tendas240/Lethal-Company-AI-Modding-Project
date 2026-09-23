@@ -1,6 +1,6 @@
 {
   "schema_version": 8,
-  "updated": "2026-09-19",
+  "updated": "2026-09-23",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "game": "Lethal Company V81",
@@ -40,17 +40,17 @@
     "diagnostic_clearance": "Current/156_S1.42AJ_DIAG2_LC_OFFICE_CAMERA_RENDER_CONFIRMATION_AND_S1.42AK_SUCCESSOR_DECISION.md"
   },
   "active_candidate": null,
-  "runtime_test_outstanding": false,
+  "runtime_test_outstanding": true,
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "SELECTED_PHASE_C2_COMPLETE_PHASE_C3_EXTERNAL_MOON_ANALYSIS_OUTSTANDING",
+    "status": "PHASE_C3F17_BLACK_MESA_GREENHOUSE_DIAGNOSTIC_PUBLISHED_ARMED_RUNTIME_OUTSTANDING",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "Phases A, B1, B2, B3, C1 and C2 are complete. C2 reconciles all 14 current AUTHOR_OR_OWNER_HARD_BLOCK cells without changing the availability matrix: the 12 Offense-rejected owner-controlled flows are explained by package/asset default moon/tag/route targeting or explicit zero rarity and are classified AUTHOR_DEFAULT_TARGETING_OR_BALANCE; Shatteredrooms x Experimentation and x Embrion remain explicit author exclusions whose technical reason is not established and are classified UNEXPLAINED_EXPLICIT_OWNER_EXCLUSION. No hard-block cell is currently proven to be an explicit technical compatibility safeguard or KNOWN_TECHNICAL_RESTRICTION. Junkrooms/Shatteredrooms CullFactory incompatibility remains a separate technical risk, not a proven cause of the exact moon exclusions.",
-    "analysis_contract": "Build a current S1.42AK owner/flow/moon viability matrix before authoring any gameplay candidate. Reconcile every registered dungeon flow with its owning system (LLL, JLL, DawnLib/native or other), identify all author/project exclusions and the technical reason for each, and prove that any proposed removal preserves correct entrance/exit pairing, successful generation and traversal, door/socket geometry, elevators, routing and NavMesh behavior. Preserve equal effective rarity 100 for every flow that is viable. Do not duplicate-register native-owner content or bypass an unexplained hard block.",
-    "next_action": "Phase C3: resolve the two External target-moon rows, Black Mesa and Oxyde, before any universal override is designed. Establish each External level's actual Dawn/LLL tags, entrance/fire-exit topology and owner matching semantics; determine which current interior availability rules can legitimately apply without duplicate registration or unsupported topology assumptions. No build, universal override or runtime test is authorized yet.",
+    "finding": "Phase C3 static/source analysis has narrowed Black Mesa x Greenhouse to a targeted runtime-evidence boundary. The exact reviewed S1.42AK-BMGHDIAG1 publication is now integrated on main and is authorized only as a direct diagnostic runtime target over exact accepted S1.42AK. The diagnostic preserves Black Mesa Dawn/native ownership, existing Greenhouse availability, accepted S1.42AB normalization and the unchanged B3 matrix; it does not establish the pairing as viable until the runtime contract passes.",
+    "analysis_contract": "Runtime-test exact published S1.42AK-BMGHDIAG1 on Black Mesa. Require successful [BMGHDIAG1] ARMED and SELECTED markers for the existing Greenhouse / GreenhouseFlow wrapper at normalized rarity 100, successful DunGen generation, TOPOLOGY_OK ids=0,1,2,3 with unique opposite-side pairs, normal main-entrance entry and exit, direct player traversal of alternate IDs 1,2,3 where practical, no REFUSED or TOPOLOGY_INCONCLUSIVE marker, no generation abort, and no new severe persistent target-attributable routing/NavMesh failure. Preserve S1.42AK as accepted/latest, keep active_candidate null, do not modify the B3 matrix, do not duplicate-register Black Mesa, and do not open the separate Black-Mesa/Pikmin routing repair scope.",
+    "next_action": "Import and run exact published S1.42AK-BMGHDIAG1 on Black Mesa for the bounded Black Mesa x Greenhouse runtime qualification, exercise the main entrance plus alternate exits 1, 2 and 3 as required by the diagnostic contract, then upload the resulting LogOutput.log under S1.42AK-BMGHDIAG1 for repository ingestion.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -202,9 +202,46 @@
         "Shatteredrooms: known CullFactory incompatibility; not proven to be the reason for Experimentation/Embrion exclusion"
       ],
       "phase_c3_priority": "External target moons Black Mesa and Oxyde"
+    },
+    "diagnostic_build_plan": "BuildSpecs/S1.42AK-BMGHDIAG1_PLAN.md",
+    "diagnostic_static_evidence": "BuildSpecs/S1.42AK-BMGHDIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
+    "diagnostic_publication_evidence": "BuildSpecs/S1.42AK-BMGHDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+    "diagnostic_runtime_activation": "Current/170_S1.42AK_BMGHDIAG1_RUNTIME_ACTIVATION.md",
+    "diagnostic_revision": {
+      "build_id": "S1.42AK-BMGHDIAG1",
+      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+      "base_build_id": "S1.42AK",
+      "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+      "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+      "profile": "Profiles/LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic.r2z",
+      "sha256": "7f494640f47210bf230a2f0950bd836d65b969a47be2af1252fc564463bc6d90",
+      "profile_sources": "ProfileSources/S1.42AK-BMGHDIAG1/",
+      "file_index": "ProfileSources/S1.42AK-BMGHDIAG1/FILE_INDEX.json",
+      "build_result": "BuildSpecs/S1.42AK-BMGHDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json",
+      "static_evidence": "BuildSpecs/S1.42AK-BMGHDIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
+      "publication_evidence": "BuildSpecs/S1.42AK-BMGHDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+      "activation_record": "Current/170_S1.42AK_BMGHDIAG1_RUNTIME_ACTIVATION.md",
+      "source_pr": 138,
+      "reviewed_head": "f01b6d4f456d3ee133b30ac62f432de75ef3830b",
+      "publication_pr_head": "bb5e05fa93bbf233f3faf829c80e450ffe9bc8b2",
+      "main_publication_commit": "75326785bb5577956d581a57781af0f92022b1c3",
+      "review_artifact_id": 10745290545,
+      "review_artifact_zip_sha256": "f34ee6dcf06d2f803159554c1cef2e9f587ca0e38f837f96e287c28c13151947",
+      "build_gate_run": 35849491391,
+      "published_profile_commit": "587f15ec8615ec8bb6a7419c3905d2b84d18e396",
+      "exact_head_lll_provenance_gate_run": 35854730486,
+      "exact_head_source_static_gate_run": 35854730351,
+      "exact_head_build_archive_gate_run": 35854730359,
+      "profile_sha256": "7f494640f47210bf230a2f0950bd836d65b969a47be2af1252fc564463bc6d90",
+      "diagnostic_dll_sha256": "4a1f304a716bf7cacb6496f5047bb0e498ed68bde00fc9f4128fa001adaa30b2",
+      "lll_sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+      "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+      "runtime_role": "DIAGNOSTIC_ONLY_BLACK_MESA_GREENHOUSE_FORCE_SELECTION_AND_READ_ONLY_ENTRANCE_OBSERVATION",
+      "runtime_validation_status": "PUBLISHED_ARMED_RUNTIME_BLACK_MESA_GREENHOUSE_QUALIFICATION_OUTSTANDING_NOT_ACCEPTED",
+      "runtime_evidence": null
     }
   },
-  "next_action": "Phase C3: resolve the two External target-moon rows, Black Mesa and Oxyde, before any universal override is designed. Establish each External level's actual Dawn/LLL tags, entrance/fire-exit topology and owner matching semantics; determine which current interior availability rules can legitimately apply without duplicate registration or unsupported topology assumptions. No build, universal override or runtime test is authorized yet.",
+  "next_action": "Import and run exact published S1.42AK-BMGHDIAG1 on Black Mesa for the bounded Black Mesa x Greenhouse runtime qualification, exercise the main entrance plus alternate exits 1, 2 and 3 as required by the diagnostic contract, then upload the resulting LogOutput.log under S1.42AK-BMGHDIAG1 for repository ingestion.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
@@ -212,7 +249,7 @@
     "build_base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
     "build_base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",
-    "runtime_active_build": "S1.42AK"
+    "runtime_active_build": "S1.42AK-BMGHDIAG1"
   },
   "canonical_navigation": {
     "bootstrap": "START_HERE_ChatGPT_Masterprompt.txt",

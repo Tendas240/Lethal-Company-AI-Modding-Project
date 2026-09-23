@@ -1,26 +1,26 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only  
 **Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`  
-**Last-Validated:** 2026-09-18
+**Last-Validated:** 2026-09-23
 
 ## Current position
 
 Accepted gameplay baseline and latest built artifact: **S1.42AK — LC Office Camera Enemy Balance — ACCEPTED FULL NORMAL STACK**, SHA-256 `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`.
 
-There is no active gameplay candidate, no active diagnostic target, no armed successor build and no outstanding runtime test. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`; `BuildSpecs/current.json` remains disabled.
+There is no active gameplay candidate or armed successor build. Exact published `S1.42AK-BMGHDIAG1` is the active diagnostic-only runtime target and one runtime test is outstanding. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMGHDIAG1`; `BuildSpecs/current.json` remains disabled.
 
 ## Selected scope
 
-**Universal Interior Viability / Equal Availability — SELECTED / BASELINE INVENTORY OUTSTANDING.**
+**Universal Interior Viability / Equal Availability — SELECTED / PHASE C3F17 TARGETED RUNTIME QUALIFICATION OUTSTANDING.**
 
 Goal: evaluate every registered interior for safe availability on every moon while preserving equal effective probability `100` whenever viable.
 
 The accepted S1.42AB post-viability normalizer is not being reopened. The investigation first builds a complete flow-owner-moon viability matrix, identifies all exclusions/hard blocks, and proves compatibility before any restriction is removed.
 
-Initial S1.42AK config extraction shows 28 LLL custom-dungeon sections, 27 already active with `Vanilla:100,Custom:100`; Black Mesa remains a separate owner case. This is not yet the complete current flow inventory. No build or runtime test is armed.
+Phases A through C3F17 static analysis preserve the authoritative 30x53 B3 matrix while narrowing Black Mesa x Greenhouse to a targeted runtime proof boundary. `S1.42AK-BMGHDIAG1` is armed only for that pair; no universal override or gameplay successor is armed.
 
 Plan: `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
 
