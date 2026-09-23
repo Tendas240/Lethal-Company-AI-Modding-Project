@@ -1,0 +1,23 @@
+{
+  "build_id": "S1.42AK-BMGHDIAG1",
+  "profile_name": "LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic",
+  "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+  "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+  "output_profile": "Profiles/LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic.r2z",
+  "output_sha256": "7f494640f47210bf230a2f0950bd836d65b969a47be2af1252fc564463bc6d90",
+  "zip_members": 337,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKBMGHDiag1/S142AKBMGHDiag1.dll"
+  ],
+  "mod_state_changes": [],
+  "mod_additions": [],
+  "mod_removals": [],
+  "snapshot_dir": "ProfileSources/S1.42AK-BMGHDIAG1",
+  "snapshot": {
+    "entries": 337,
+    "text_entries": 331
+  }
+}
