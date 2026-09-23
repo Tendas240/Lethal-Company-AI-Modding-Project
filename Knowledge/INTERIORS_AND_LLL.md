@@ -99,11 +99,15 @@ The accepted S1.42AK integration does not force LC Office onto all moons. The fi
 
 The exact accepted S1.42AI package/dependency baseline was re-verified on 2026-09-17. The required infrastructure versions are already enabled; `Alice-DungeonGenerationPlus 1.5.0` is the version to transition; the three LC Office target additions are absent; `pacoito-LethalLevelLoaderUpdated` is absent; and the accepted `S142ABInteriorWeightNormalization.dll` remains present at SHA-256 `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`. The minimal package delta is therefore fixed in `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`; build-time dependency resolution must still prove no unintended cascade or second LLL owner.
 
-## Active C3F17 targeted Black Mesa x Greenhouse runtime qualification
+## C3F17 Black Mesa x Greenhouse qualification status
 
-Exact published `S1.42AK-BMGHDIAG1` is the active diagnostic-only runtime target over accepted S1.42AK. Its only gameplay mutation is deterministic selection of the already-viable `Greenhouse / GreenhouseFlow` wrapper on Black Mesa after accepted rarity normalization; its EntranceTeleport hook is read-only observation after native teleport behavior. Black Mesa remains Dawn/native-owned, Greenhouse availability is unchanged, and the B3 matrix is unchanged.
+The first exact published `S1.42AK-BMGHDIAG1` runtime attempt is ingested at `RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/` but is **not** a successful pair qualification. The diagnostic plugin refused before arming because its installed-V81 observation provenance gate could not hash the loaded `Assembly-CSharp.dll`; fail-closed behavior preserved normal dungeon selection.
 
-The pair remains `NOT_YET_PROVEN` until runtime evidence satisfies the contract in `Current/170_S1.42AK_BMGHDIAG1_RUNTIME_ACTIVATION.md`: successful arming/selection, DunGen completion, unique opposite-side entrance pairs for IDs 0..3, main entrance entry/exit, alternate IDs 1..3 exercised where practical, acceptable geometry, and no blocking diagnostic/refusal or severe target-attributable routing/NavMesh failure. The separate Black-Mesa/Pikmin routing scope remains excluded.
+The normal Black Mesa LLL matching report in that same run includes `Greenhouse (100)`, and accepted S1.42AB normalization retains `Greenhouse(100)` in the final effective viable pool. This directly proves current Black Mesa availability and equal effective weighting for Greenhouse. It does not prove Greenhouse generation, entrance topology or player traversal because normal selection chose `Decrepit store` after the diagnostic refusal.
+
+The user's successful main-entrance and two distinct fire-exit round trips therefore qualify Decrepit store traversal only. Black Mesa x Greenhouse remains `NOT_YET_PROVEN`. Canonical decision: `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`.
+
+No runtime test is currently armed. The next step is source/root-cause analysis of `ValidateAssemblyHash` / `ResolveObservationContract` and, only if justified, a separately versioned minimal diagnostic repair. Do not rerun the refused BMGHDIAG1 bytes, change Greenhouse availability, duplicate-register Black Mesa, alter S1.42AB normalization, modify the B3 matrix, or open the separate Black-Mesa/Pikmin routing scope.
 
 ## Selected universal viability / equal availability investigation
 
