@@ -1,0 +1,27 @@
+name: S1.42AK BMGHDIAG1 source and pure static gate
+on:
+  pull_request:
+    paths:
+      - 'Patches/S142AKBMGHDiag1/**'
+      - 'AnalysisTools/validate_s142ak_bmghdiag1_source.py'
+      - 'BuildSpecs/S1.42AK-BMGHDIAG1_PLAN.md'
+      - 'SourceEvidence/UniversalInteriorViability/PhaseC3F17/**'
+      - '.github/workflows/s142ak-bmghdiag1-source-static.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Test pure selection and observation policies
+        run: dotnet run --project Patches/S142AKBMGHDiag1/Tests/Policy.Tests.csproj -c Release
+      - name: Compile diagnostic plugin source only
+        working-directory: Patches/S142AKBMGHDiag1
+        run: dotnet build S142AKBMGHDiag1.csproj -c Release
+      - name: Verify source-only fail-closed contract
+        run: python AnalysisTools/validate_s142ak_bmghdiag1_source.py
