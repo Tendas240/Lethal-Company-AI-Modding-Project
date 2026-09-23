@@ -1,10 +1,11 @@
 # C3F18 — BMGHDIAG2 Source / Static Implementation Findings
 
-**Status:** SOURCE IMPLEMENTED / SOURCE CI PENDING / NOT BUILT / NOT PUBLISHED / NOT RUNTIME-ARMED  
+**Status:** SOURCE STATIC PASS / NOT BUILT / NOT PUBLISHED / NOT RUNTIME-ARMED  
 **Date:** 2026-09-23  
 **Accepted baseline:** S1.42AK — unchanged  
 **Design authority:** `SourceEvidence/UniversalInteriorViability/PhaseC3F18/FINDINGS.md`  
-**Successor plan:** `BuildSpecs/S1.42AK-BMGHDIAG2_PLAN.md`
+**Successor plan:** `BuildSpecs/S1.42AK-BMGHDIAG2_PLAN.md`  
+**Validated implementation head:** `6dc546342e872406871518f4ad1c5419de6fe02f`
 
 ## Implemented bounded repair
 
@@ -33,9 +34,16 @@ The successor test project ports the predecessor selection/traversal/topology su
 - dynamic/wrong assembly identity rejection;
 - exact TeleportPlayer shape and negative method-shape cases.
 
-## Static gate
+## Successful source/static CI
 
-Added successor-specific source validator and pull-request workflow. They compile/test source only and explicitly require:
+Exact implementation head `6dc546342e872406871518f4ad1c5419de6fe02f` passed:
+
+- `S1.42AK BMGHDIAG2 source and pure static gate` run `#1`, run ID `35921701581`: `completed / success`;
+- `Knowledge Architecture` run `#670`, run ID `35921701442`: `completed / success`.
+
+The DIAG2 gate independently completed all three intended stages successfully: pure provenance/runtime-identity/selection/observation tests, diagnostic plugin source compile, and the successor fail-closed source validator.
+
+The successor-specific validator confirms:
 
 - exactly two Harmony patch installations;
 - no prefix, transpiler, PatchAll, reflection field writes, manual FindExitPoint or manual TeleportPlayer call;
@@ -46,7 +54,11 @@ Added successor-specific source validator and pull-request workflow. They compil
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`;
 - no active candidate and no outstanding runtime test.
 
-CI results are intentionally not claimed until exact-head workflows complete.
+## Decision
+
+The BMGHDIAG1 startup-refusal root cause is repaired at source/static level without weakening provenance and without broadening gameplay interception. BMGHDIAG2 is eligible only for a later **separate inactive review-build checkpoint** from exact accepted S1.42AK.
+
+This source/static pass does not authorize profile publication, Gale import, runtime arming or gameplay.
 
 ## Preserved boundaries
 
