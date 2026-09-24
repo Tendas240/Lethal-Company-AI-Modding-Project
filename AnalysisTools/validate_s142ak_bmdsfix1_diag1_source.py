@@ -131,7 +131,9 @@ require("Exactly one Harmony surface exists" in safety, "Patch Safety Review sur
 require("GetClampedDungeonSize()" in safety and "sole owner" in safety, "Patch Safety Review BMDS ownership boundary missing")
 require("DIAGNOSTIC ONLY / NEVER ACCEPT" in plan, "Plan diagnostic acceptance boundary missing")
 require(BMDS_PROFILE_SHA in plan and BMDS_DLL_SHA in plan and BASELINE_SHA in plan, "Plan fixed-byte provenance missing")
-require("No review `.r2z` is produced by this stage." in plan, "Plan source/build boundary missing")
+# The source contract remains valid after later gated lifecycle stages. Do not pin it to obsolete source-stage wording.
+require("Source/static completion authority:" in plan, "Plan source/static completion authority missing")
+require("no Gale activation or runtime execution is authorized." in plan, "Plan runtime boundary missing")
 
 require("profile_builder.py" not in workflow, "Source-only CI must not invoke the Gale profile builder")
 require("dotnet run --project Patches/S142AKBMDSFix1Diag1/Tests/Policy.Tests.csproj" in workflow,
