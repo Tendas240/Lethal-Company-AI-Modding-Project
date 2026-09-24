@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Publish the exact reviewed S1.42AK-BMGHDIAG2 bytes from review run 35990294162 / artifact 10803912824, pinning profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 and diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775, and verify the published archive/ProfileSources against the passed review-build delta. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Do not Gale-import or arm gameplay/runtime in the publication checkpoint.
+Integrate the exact-byte S1.42AK-BMGHDIAG2 publication from branch c3f18-bmghdiag2-exact-publication via PR and exact-head CI, preserving profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2, diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775, the reconstructed 337-row ProfileSources snapshot and publication evidence. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false throughout integration. Do not Gale-import or arm gameplay/runtime; runtime activation remains a later separate atomic checkpoint after main integration.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

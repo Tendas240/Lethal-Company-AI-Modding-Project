@@ -142,10 +142,10 @@ require("dotnet run --project Patches/S142AKBMGHDiag2/Tests/Policy.Tests.csproj"
         "Pure policy test command missing")
 require("dotnet build S142AKBMGHDiag2.csproj -c Release" in workflow,
         "Plugin compile command missing")
-require("NOT PUBLISHED" in plan and "NOT ARMED" in plan, "Human plan publication/runtime boundary drift")
+require("EXACT REVIEWED BYTES PUBLISHED ON WORKING BRANCH" in plan and "NOT ARMED" in plan, "Human plan publication/runtime boundary drift")
 
 report = {
-    "status": "SOURCE_STATIC_CONTRACT_PASS_NOT_PUBLISHED_NOT_ARMED",
+    "status": "SOURCE_STATIC_CONTRACT_PASS_PUBLISHED_WORKING_BRANCH_NOT_ARMED",
     "candidate_id": "S1.42AK-BMGHDIAG2",
     "harmony_surfaces": 2,
     "gameplay_mutating_surfaces": 1,
@@ -156,6 +156,6 @@ report = {
     "current_build_controller_enabled": current_build["enabled"],
     "runtime_active_build": ACTIVE_BUILD.read_text(encoding="utf-8").strip(),
     "profile_builder_invoked_by_source_ci": False,
-    "qualification": "Source/compile/pure-policy validation only. A separate inactive review-build spec may exist, but this source gate never builds, publishes, arms lifecycle or authorizes runtime."
+    "qualification": "Source/compile/pure-policy validation only. Exact reviewed bytes may already be branch-published, but this source gate itself never builds, publishes, arms lifecycle or authorizes runtime."
 }
 print(json.dumps(report, indent=2))
