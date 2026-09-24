@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK-BMDSFIX1 candidate=S1.42AK-BMDSFIX1 runtime_test_outstanding=true -->
 # Artifact and Runtime Evidence Integrity
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
@@ -52,8 +52,9 @@ BMGHDIAG2 loaded but refused before arming with `EntranceTeleport manifest modul
 ## Pending / deferred unaccepted profiles
 
 - **S1.42AJ** — deferred full-normal gate / retained exact balanced parent, not active.
+- **S1.42AK-BMDSFIX1** — active gameplay runtime candidate directly over accepted S1.42AK; profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`; BMDSFIX1 DLL SHA-256 `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92`; runtime evidence outstanding; not accepted.
 
-No runtime-active candidate or diagnostic profile is pending. `S1.42AK-BMDSFIX1` currently exists only as source/static work in draft PR #146; no profile bytes exist yet, so it is not an artifact-evidence pending profile.
+BMDSFIX1 exact reviewed bytes are published and main-integrated. Runtime activation changes only lifecycle/controller/evidence routing; no gameplay/config/package/profile/plugin bytes are regenerated or altered. The candidate is scoped only to Black Mesa x `DeepSewersFlow`. Black Mesa x Greenhouse remains separate and unproven.
 
 ## Completed diagnostic evidence: S1.42AI-DIAG1R3
 

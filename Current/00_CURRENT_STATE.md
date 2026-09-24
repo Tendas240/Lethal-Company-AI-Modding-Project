@@ -21,29 +21,28 @@ Runtime evidence: `RuntimeEvidence/S1.42AK/20260918T172838Z/`
 
 ## Latest built artifact
 
-**S1.42AK — LC Office Camera Enemy Balance — ACCEPTED FULL NORMAL STACK**
+**S1.42AK-BMDSFIX1 — Black Mesa Deep Sewers Size Fix — ACTIVE RUNTIME CANDIDATE NOT ACCEPTED**
 
-Profile: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z`  
-SHA-256: `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
-Acceptance: `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`  
-Candidate record: `Current/157_S1.42AK_BUILD_CANDIDATE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`  
+Profile: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z`  
+SHA-256: `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`  
+Candidate record: `Current/174_S1.42AK_BMDSFIX1_RUNTIME_ACTIVATION.md`  
 
 A historical rejection can remain preserved even when a later explicit decision changes the build's live lifecycle status. Current status is controlled by `Current/CURRENT_STATE.json` plus the latest build-specific decision evidence.
 
 ## Live execution state
 
-- Active candidate: **none**
-- Runtime test outstanding: **no**
+- Active candidate: **S1.42AK-BMDSFIX1**
+- Runtime test outstanding: **yes**
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
-- Guarded build base: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`
+- Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`
 
 ## Exact next action
 
-Prepare a separate atomic runtime-activation checkpoint for the exact main-integrated S1.42AK-BMDSFIX1 profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0 / BMDSFIX1 DLL SHA-256 f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92. That later activation may point RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK-BMDSFIX1 and set runtime_test_outstanding=true only while preserving accepted/latest normal baseline S1.42AK and keeping BuildSpecs/current.json disabled. Do not change gameplay, config or package bytes. The activation response must provide the repository-derived Gale replacement/import command and exact build-specific one-line PowerShell runtime-log uploader. Black Mesa x Greenhouse successor-diagnostic repair remains separate.
+Import exact active S1.42AK-BMDSFIX1 through the canonical repository-driven Gale v2.4 launcher. Run the bounded BMDSFIX1 runtime gate: obtain one Black Mesa x DeepSewersFlow generation showing [BMDSFIX1] ARMED and APPLIED with multiplier ->1, successful generation/landing without the prior persistent retry flood, and at least one non-target generation showing no BMDSFIX1 application or size mutation. Then upload that run's exact BepInEx/LogOutput.log with the build-specific one-line uploader. Do not alter profile/config/package/plugin bytes during the test.
 
-No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 

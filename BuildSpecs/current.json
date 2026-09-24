@@ -1,8 +1,8 @@
 {
   "enabled": false,
   "build_id": "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS",
-  "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
-  "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
   "output_profile": "Profiles/DO_NOT_BUILD.r2z",
   "profile_name": "DO_NOT_BUILD",
   "overwrite": false,

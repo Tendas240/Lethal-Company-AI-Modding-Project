@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK-BMDSFIX1 candidate=S1.42AK-BMDSFIX1 runtime_test_outstanding=true -->
 # Current Project Lifecycle
 
 **Status:** CURRENT / CANONICAL TOPIC  
@@ -68,30 +68,28 @@ The diagnostic therefore failed closed before targeted Greenhouse selection/topo
 
 The same normal-fallback session separately exposed a Black Mesa x Deep Sewers generation incident. LLL logged `CurrentLevel: Black Mesa DungeonSize Is: 3.25 | Leaving DungeonSize As: 4.875`, ButteRyBalance logged final multiplier `4.87`, normal LLL history selected `Deep Sewers`, and DunGenPlus emitted repeated `NoMatchingDoorwayPlacementResult` / `TileIsCollidingPlacementResult` failures without a later generation-complete marker in the captured post-selection portion. This is consistent with the reported persistent `Entering the atmosphere` loading state but does not prove every historical atmosphere hang shares that cause.
 
-## BMDSFIX1 exact-byte publication — main integration pass
+## BMDSFIX1 exact-byte publication — runtime activation
 
-The pair-scoped Deep Sewers mitigation `S1.42AK-BMDSFIX1` has passed source/static review, the separate inactive review build, exact-byte publication, and main integration. PR #150 exact head `24713dfc93a24f5e65ae5f223d3ea9c164da785e` merged at `21138185f1ab377660b61120f1d07733d4180672` after Knowledge Architecture run `36023454162`, source/pure-static run `36023454260`, and publication-aware archive run `36023454215` all passed. The resulting main merge passed permanent Knowledge Architecture push run `36024694126`.
+The pair-scoped Deep Sewers mitigation `S1.42AK-BMDSFIX1` has passed source/static review, inactive review build, exact-byte publication and main integration. Its exact main-integrated profile SHA-256 remains `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0` and BMDSFIX1 DLL SHA-256 remains `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92` with 337 members, zero package/config drift, unchanged LLL/normalizer identities and readable `ProfileSources/S1.42AK-BMDSFIX1/`.
 
-The integration archive gate selected published-validation mode: no profile rebuild and no Actions artifact upload occurred. The exact main-integrated profile SHA-256 remains `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0` and BMDSFIX1 DLL SHA-256 remains `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92`. The 337-member archive/index contract, zero package/config drift, LLL `b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c`, accepted normalizer `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`, and reconstructed readable ProfileSources snapshot remain unchanged. Integration evidence: `BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/MAIN_INTEGRATION_CHECKPOINT.md`.
-
-BMDSFIX1 is **published on main but not runtime-armed and not accepted**. Its fix scope remains only Black Mesa x `DeepSewersFlow`. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` under its separate successor-diagnostic task.
+The exact published bytes are now runtime-armed as the active gameplay candidate under `Current/174_S1.42AK_BMDSFIX1_RUNTIME_ACTIVATION.md`. Accepted baseline remains S1.42AK; BMDSFIX1 is latest/active but not accepted. The runtime gate is scoped only to Black Mesa x `DeepSewersFlow`, and Black Mesa x Greenhouse remains `NOT_YET_PROVEN` under its separate successor-diagnostic task.
 
 ## Live execution state
 
 - Accepted baseline: **S1.42AK**.
-- Latest built/published normal artifact: **S1.42AK**.
-- Active gameplay candidate: **none**.
+- Latest built artifact: **S1.42AK-BMDSFIX1 — active runtime candidate / not accepted**.
+- Active gameplay candidate: **S1.42AK-BMDSFIX1**.
 - Active diagnostic runtime target: **none**.
-- Runtime test outstanding: **no**.
-- Selected scope: **Universal Interior Viability / Equal Availability — BMGHDIAG2 remains inconclusive; BMDSFIX1 exact bytes integrated on main; separate runtime activation next**.
-- `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
-- No BMDSFIX1 profile or universal override is armed; S1.42AK remains accepted/latest.
+- Runtime test outstanding: **yes — bounded BMDSFIX1 qualification**.
+- Selected scope: **Universal Interior Viability / Equal Availability — BMDSFIX1 runtime active; evidence outstanding**.
+- `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`, guarding exact BMDSFIX1 candidate bytes.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`.
+- S1.42AK remains the accepted rollback baseline; no Greenhouse diagnostic is armed.
 
 ## Exact next project action
 
-Prepare a separate atomic runtime-activation checkpoint for the exact main-integrated S1.42AK-BMDSFIX1 profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0 / BMDSFIX1 DLL SHA-256 f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92. That later activation may point RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK-BMDSFIX1 and set runtime_test_outstanding=true only while preserving accepted/latest normal baseline S1.42AK and keeping BuildSpecs/current.json disabled. Do not change gameplay, config or package bytes. The activation response must provide the repository-derived Gale replacement/import command and exact build-specific one-line PowerShell runtime-log uploader. Black Mesa x Greenhouse successor-diagnostic repair remains separate.
+Import exact active S1.42AK-BMDSFIX1 through the canonical repository-driven Gale v2.4 launcher. Run the bounded BMDSFIX1 runtime gate: obtain one Black Mesa x DeepSewersFlow generation showing [BMDSFIX1] ARMED and APPLIED with multiplier ->1, successful generation/landing without the prior persistent retry flood, and at least one non-target generation showing no BMDSFIX1 application or size mutation. Then upload that run's exact BepInEx/LogOutput.log with the build-specific one-line uploader. Do not alter profile/config/package/plugin bytes during the test.
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. No new runtime test is currently authorized. If a later build becomes runtime-ready, the normal Gale import plus exact build-specific uploader contract applies in the same response.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. BMDSFIX1 now resolves through the normal active-candidate path because `Current/AUTO_BUILD_RESULT.json`, `CURRENT_STATE.latest_built_artifact`, `active_candidate` and `RuntimeInbox/ACTIVE_BUILD.txt` all bind the same exact `S1.42AK-BMDSFIX1` profile SHA. Runtime activation does not accept the candidate; only later runtime evidence and an explicit decision can do so.

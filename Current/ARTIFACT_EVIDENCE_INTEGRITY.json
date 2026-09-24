@@ -267,6 +267,24 @@
       "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false
+    },
+    {
+      "build_id": "S1.42AK-BMDSFIX1",
+      "role": "ACTIVE_RUNTIME_CANDIDATE_PENDING",
+      "profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+      "profile_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+      "profile_sources": "ProfileSources/S1.42AK-BMDSFIX1/",
+      "file_index": "ProfileSources/S1.42AK-BMDSFIX1/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AK-BMDSFIX1/export.r2x",
+      "candidate_record": "Current/174_S1.42AK_BMDSFIX1_RUNTIME_ACTIVATION.md",
+      "build_plan": "BuildSpecs/S1.42AK-BMDSFIX1_PLAN.md",
+      "build_result": "BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/BUILD_RESULT.json",
+      "static_evidence": "BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
+      "publication_evidence": "BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+      "bmdsfix1_dll_sha256": "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false,
+      "note": "Exact reviewed/published/main-integrated BMDSFIX1 bytes are the active gameplay runtime candidate solely for Black Mesa x DeepSewersFlow qualification; accepted baseline remains S1.42AK."
     }
   ],
   "important_project_dlls": [
@@ -322,7 +340,8 @@
     "S1.42AK full-normal accepted runtime evidence is RuntimeEvidence/S1.42AK/20260918T172838Z with raw LogOutput.log SHA-256 cc0f0a7a6c6a76ad44266aded11ff9cb2aca21f2623f5fb895d371ad778526b9; Current/158 records the acceptance and its limited hostile-indoor coverage qualification.",
     "S1.42AK-SCRAPDIAG1 completed diagnostic runtime evidence is RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/ with raw LogOutput.log SHA-256 e32e7d9b858fd78c046d5206c519a7709b3dcd5b2b8c432500233f51c6f13348; Current/163 closes the LC Office scrap investigation with no gameplay delta.",
     "S1.42AK-BMGHDIAG1 runtime evidence is RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/ with raw LogOutput.log SHA-256 4f3dae931364cefc4b297c8c316502e96d32b27431467a5607ce69ed6d6e69ef; Current/171 records the fail-closed startup refusal and required diagnostic repair analysis.",
-    "S1.42AK-BMGHDIAG2 runtime evidence is RuntimeEvidence/S1.42AK-BMGHDIAG2/20260924T124542Z/ with raw LogOutput.log SHA-256 5c7931cbf68414c76ea4cc0950d23b592497a2daa2b0f4d8e49986cc13c863d9; Current/173 records the fail-closed EntranceTeleport manifest-module identity refusal and the separate Black Mesa x Deep Sewers generation incident. The diagnostic is no longer runtime-active and remains unaccepted."
+    "S1.42AK-BMGHDIAG2 runtime evidence is RuntimeEvidence/S1.42AK-BMGHDIAG2/20260924T124542Z/ with raw LogOutput.log SHA-256 5c7931cbf68414c76ea4cc0950d23b592497a2daa2b0f4d8e49986cc13c863d9; Current/173 records the fail-closed EntranceTeleport manifest-module identity refusal and the separate Black Mesa x Deep Sewers generation incident. The diagnostic is no longer runtime-active and remains unaccepted.",
+    "S1.42AK-BMDSFIX1 exact profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0 is runtime-armed as the active gameplay candidate; BMDSFIX1 DLL SHA-256 f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92 remains exact and acceptance is pending runtime evidence."
   ],
   "last_validated": "2026-09-24"
 }

@@ -4,17 +4,16 @@
 **Authority:** human build-history router; exact build evidence remains in candidate/acceptance/rejection/runtime records  
 **Canonical-For:** `build_lineage`  
 **Machine Mirror:** `Current/BUILD_LINEAGE.json`  
-**Last-Validated:** 2026-09-17
+**Last-Validated:** 2026-09-24
 
 ## Current lineage head
 
 - **Accepted gameplay baseline:** S1.42AK — LC Office Camera Enemy Balance — **ACCEPTED FULL NORMAL STACK**.
+- **Latest built artifact / active candidate:** S1.42AK-BMDSFIX1 — Black Mesa Deep Sewers Size Fix — **ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED**.
 - **Accepted predecessor / rollback provenance:** S1.42AI — BCMER ShyGuy Interior-Only Event Correction.
-- **Latest built artifact:** S1.42AK — accepted full-normal gameplay baseline.
 - **Balanced parent:** S1.42AJ — LC Office V81 Integration — not accepted; exact parent of S1.42AK.
 - **Completed LC Office diagnostic evidence:** S1.42AJ-DIAG1 / S1.42AJ-DIAG2 — diagnostic-only, not gameplay accepted.
-- **Active candidate:** none.
-- **Current action:** select exactly one remaining deferred independent scope before preparing or arming any successor.
+- **Current action:** run the bounded BMDSFIX1 Black Mesa x DeepSewersFlow runtime gate plus one non-target generation, then ingest the exact runtime log. S1.42AK remains accepted until an explicit decision.
 
 For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the build-history router; use the linked build-specific evidence for exact forensic detail.
 
@@ -72,6 +71,7 @@ For live lifecycle state use `Knowledge/CURRENT_LIFECYCLE.md`. This file is the 
 | S1.42AI-DIAG1R3 | **RUNTIME DIAGNOSTIC PASS / NOT GAMEPLAY ACCEPTED** | Exact `Shy guy` identity/isolation passed; interior visibility was observed and exterior visibility was not exercised. Diagnostic evidence only; the independent full-normal S1.42AI gate later passed. |
 | S1.42AJ | **NOT ACCEPTED BALANCED PARENT** | Compatibility-first LC Office V81 package integration from exact accepted S1.42AI; exact balanced parent of S1.42AK. |
 | S1.42AK | **ACCEPTED FULL NORMAL STACK** | Accepted balanced LC Office camera/enemy integration; full-normal Offense gate passed with limited hostile-indoor coverage explicitly preserved. |
+| S1.42AK-BMDSFIX1 | **ACTIVE RUNTIME CANDIDATE / NOT ACCEPTED** | Exact pair-scoped Black Mesa x DeepSewersFlow size clamp over accepted S1.42AK; exact reviewed/published bytes are active for runtime qualification only. |
 
 Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/06_RECENT_WORK_*.md` series, build-specific decision records, and `RuntimeEvidence/`.
 
@@ -106,6 +106,19 @@ Older details are preserved in `Current/03_PROJECT_CHRONOLOGY.md`, the `Current/
 - Status: **accepted full-normal-stack gameplay baseline**.
 - Coverage qualification: the first attempt ended before interior entry; the second selected Spooky Manor and provided roughly three minutes of played interior coverage with no hostile enemy sighting. This is not treated as proof of a spawn regression.
 - Accepted delta: LC Office `Camera Frame Speed = 0`, Men-stalker disabled, Aloe `PowerLevel = 0`; RandomEnemiesSize byte-identical and LC Office scrap untuned.
+
+### S1.42AK-BMDSFIX1 — Black Mesa Deep Sewers Size Fix
+
+- Parent: exact accepted S1.42AK.
+- Profile: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z`
+- SHA-256: `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
+- BMDSFIX1 DLL SHA-256: `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92`
+- Plan: `BuildSpecs/S1.42AK-BMDSFIX1_PLAN.md`
+- Build result: `BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/BUILD_RESULT.json`
+- Publication evidence: `BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`
+- Activation: `Current/174_S1.42AK_BMDSFIX1_RUNTIME_ACTIVATION.md`
+- Status: **active runtime candidate / not accepted**.
+- Scope: only Black Mesa x `DeepSewersFlow`; no Greenhouse, universal availability, package or config change.
 
 ### S1.42C — enemy-spawn restore baseline
 
