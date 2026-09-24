@@ -1,0 +1,1967 @@
+[12:43:48.6367435] [Info   : Unity Log] Reviving players G
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players A
+[12:43:48.6367435] [Info   : Unity Log] Reviving players H
+[12:43:51.0471218] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[12:43:51.6331499] [Info   : Unity Log] Weather chance: 0.4598988; 1
+[12:43:51.6361480] [Debug  :ButteRyBalance] Adjusted vain shroud growth chances on host: (3%, 4.5%, 1.5%, 2.2%)
+[12:43:51.6371484] [Debug  :Buttery Fixes] Weeds: Luck 0% -> 0%
+[12:43:51.6371484] [Info   : Unity Log] Increasing level #5 20 Adamance mold iterations by 1; risen to 11
+[12:43:51.6371484] [Info   : Unity Log] Increasing level #6 85 Rend mold iterations by 1; risen to 12
+[12:43:51.6371484] [Info   : Unity Log] Increasing level #11 44 Liquidation mold iterations by 1; risen to 61
+[12:43:51.6371484] [Info   : Unity Log] Increasing level #12 5 Embrion mold iterations by 1; risen to 31
+[12:43:51.6371484] [Info   : Unity Log] Increasing level #14 31 Arcadia mold iterations by 1; risen to 20
+[12:43:51.6371484] [Info   : Unity Log] Increasing level #17 556 Flicker mold iterations by 1; risen to 13
+[12:43:51.6371484] [Info   :GeneralImprovements] Updated fancy weather monitors
+[12:43:51.6411893] [Warning:LethalPerformance] GrabbableObject search called with inactive objects, probably will cause incompatibility!
+[12:43:51.6421875] [Message:LethalSponge] ---
+[12:43:51.6421875] [Message:LethalSponge] Applying Sponge
+[12:43:51.6421875] [Message:LethalSponge] Calling Resources.UnloadUnusedAssets().
+[12:43:52.7449886] [Message:LethalSponge] Resources.UnloadUnusedAssets() completed.
+[12:43:52.7449886] [Message:LethalSponge] Sponge took 1.1035631 seconds to execute.
+[12:43:52.7449886] [Message:LethalSponge] ---
+[12:43:54.1204747] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[12:43:54.1495826] [Info   : Unity Log] saved vehicle: -1
+[12:43:54.1495826] [Info   : Unity Log] SAVE ITEMS IN SHIP CALLED! inShipPhase: True
+[12:43:54.2403918] [Info   :TooManyEmotes-2.3.17] Saving game values.
+[12:43:54.2403918] [Info   :TooManyEmotes-2.3.17] Saving 22 unlocked emotes for player: MasaeAhmya
+[12:43:54.2403918] [Info   :TooManyEmotes-2.3.17] Saving 1590 emote credits for player: MasaeAhmya
+[12:43:54.2403918] [Info   :TooManyEmotes-2.3.17] Saved Seed: 838005065
+[12:43:54.2529508] [Info   :Buttery Fixes] Dropship inventory saved (0 items)
+[12:43:54.2539514] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[12:43:54.2539514] [Debug  :MrHat.BasedItemSaving] Saved 17 exact item poses
+[12:43:54.2559501] [Message: LethalMin] ---Saving LethalMin Data---
+[12:43:54.2559501] [Debug  : LethalMin] SavePath: LCSaveFile1_LethalMinSave
+[12:43:54.2569517] [Info   : LethalMin] Loaded 14 persistent sprouts from save file
+[12:43:54.2569517] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 4, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 4, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 4, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 4, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] data moon: 4, current moon: 29
+[12:43:54.2569517] [Info   : LethalMin] Removed 0 persistent sprouts from load due to them already being spawned on the current moon
+[12:43:54.2765637] [Info   : LethalMin] Saved 14 persistent sprouts
+[12:43:54.2765637] [Info   : LethalMin] Loaded 0 leafling players from save file
+[12:43:54.2966302] [Info   : LethalMin] Loaded 6 onions from save file
+[12:43:54.3137835] [Info   : LethalMin] Saving 6 fused types for FusedType: 0, 4, 8, 5, 1, 7
+[12:43:54.3137835] [Info   : LethalMin] Saving Blue Onion fused type (0)
+[12:43:54.3137835] [Info   : LethalMin] Saving Red Onion fused type (4)
+[12:43:54.3137835] [Info   : LethalMin] Saving Yellow Onion fused type (8)
+[12:43:54.3137835] [Info   : LethalMin] Saving Rock Onion fused type (5)
+[12:43:54.3137835] [Info   : LethalMin] Saving Ice Onion fused type (1)
+[12:43:54.3137835] [Info   : LethalMin] Saving Winged Onion fused type (7)
+[12:43:54.3137835] [Info   : LethalMin] Saving Pikmin Container type (2)
+[12:43:54.3167845] [Info   : LethalMin] Saved pikmin data for 6 onions
+[12:43:54.3167845] [Info   : LethalMin] Loaded 1 fusions from save file
+[12:43:54.3167845] [Info   : LethalMin] Created Fusion: 'RBY_FuseRules' 0, 4, 8, 5, 1, 7 from: 8, 5, 7, 0, 4, 1
+[12:43:54.3167845] [Info   : LethalMin] Saved pikmin data for 1 fusions
+[12:43:54.3167845] [Message: LethalMin] ---Finished Saving LethalMin Data---
+[12:43:54.3904448] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Insane to 6843
+[12:43:54.3904448] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryBad to 506
+[12:43:54.3904448] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Bad to 355
+[12:43:54.3904448] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Neutral to 1368
+[12:43:54.3904448] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Good to 1244
+[12:43:54.3904448] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryGood to 2737
+[12:43:54.3904448] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Rare to 27375
+[12:43:54.3904448] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Remove to 883
+[12:43:54.3914481] [Debug  : LightsOut] SprayPaintItem is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] Shovel is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] FlashlightItem is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] Shovel is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] Money is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] KeyItem is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] KeyItem is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] KeyItem is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] KeyItem is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] KeyItem is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] PhysicsProp has no light
+[12:43:54.3914481] [Debug  : LightsOut] NoisemakerProp is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] JetpackItem is not a predefined type
+[12:43:54.3914481] [Debug  : LightsOut] PhysicsProp has no light
+[12:43:54.3914481] [Debug  : LightsOut] PhysicsProp has no light
+[12:43:54.3914481] [Debug  : LightsOut] PhysicsProp has no light
+[12:43:54.3914481] [Debug  : LightsOut] Hoverboard is not a predefined type
+[12:43:54.3924489] [Debug  :LobbyControl] Lobby can be re-opened
+[12:43:54.3934495] [Info   :GeneralImprovements] Updated remaining scrap display.
+[12:43:54.3934495] [Info   :GeneralImprovements] Updated total days display.
+[12:43:54.4059903] [Info   :LethalPerformance] Saved 4 save(s)
+[12:43:54.4667256] [Info   : LethalMin] Refreshing onions for ShipPhaseOnionContainer(Clone)
+[12:43:54.4667256] [Info   : LethalMin] Removing ship phase onions
+[12:43:54.5205161] [Error  : Unity Log] InvalidOperationException: Collection was modified; enumeration operation may not execute.
+Stack trace:
+System.Collections.Generic.List`1+Enumerator[T].MoveNextRare () (at <1071a2cb0cb3433aae80a793c277a048>:IL_0013)
+System.Collections.Generic.List`1+Enumerator[T].MoveNext () (at <1071a2cb0cb3433aae80a793c277a048>:IL_004A)
+LethalMin.PikminManager.DespawnLumiknulls () (at ./Scripts/PikminManager.cs:3026)
+LethalMin.PikminManager+<WaitToDespawnObjects>d__189.MoveNext () (at ./Scripts/PikminManager.cs:2937)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <c39a522eee05469b8171a6cfeb646c59>:IL_0026)
+
+[12:43:54.5235208] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5245194] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5255228] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5265204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5265204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5265204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:43:54.5265204] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[12:43:54.5265204] [Info   : Unity Log] Interact trigger destroying! name: trigger (1)
+[12:43:54.5265204] [Info   : Unity Log] Interact trigger destroying! name: trigger (2)
+[12:43:54.5265204] [Info   : Unity Log] Interact trigger destroying! name: trigger (3)
+[12:43:54.5265204] [Info   : Unity Log] Interact trigger destroying! name: trigger (4)
+[12:44:00.7505753] [Info   : Unity Log] Update used by player client rpc has been called for interact trigger: StartGameLever
+[12:44:00.7505753] [Info   : Unity Log] Start lever animation A
+[12:44:00.7505753] [Info   : Unity Log] Start lever animation B
+[12:44:00.7505753] [Info   : Unity Log] Start lever animation C
+[12:44:00.7505753] [Info   : Unity Log] Start lever animation D; False 
+[12:44:00.7505753] [Info   : Unity Log] Start lever animation E; True ; False
+[12:44:00.7505753] [Info   : Unity Log] Start lever animation F
+[12:44:00.7505753] [Info   : Unity Log] Lever animation: setting bool to True
+[12:44:00.7515785] [Info   : Unity Log] Sent lever animation RPC on this client
+[12:44:02.4235745] [Info   : Unity Log] Stop special animation F
+[12:44:02.4235745] [Info   : Unity Log] Start game A
+[12:44:02.4235745] [Info   : Unity Log] Start game B
+[12:44:02.4235745] [Info   : Unity Log] Start game C
+[12:44:02.4235745] [Info   : Unity Log] Start game D; True ; False
+[12:44:02.4235745] [Info   : Unity Log] Start game E
+[12:44:02.4235745] [Info   : Unity Log] Start game successful
+[12:44:02.4235745] [Debug  :LobbyControl] Setting lobby to not joinable.
+[12:44:02.4235745] [Debug  :ShipWindows] Network manager already exists! Destroying...
+[12:44:02.4235745] [Debug  :MrHat.MisideItems.Internals] Has House Teleporter been unlocked? False
+[12:44:02.4235745] [Debug  :MrHat.MisideItems.Internals] Has House Teleporter been unlocked? False
+[12:44:02.4235745] [Info   : Unity Log] RANDOM MAP SEED: 73724170
+[12:44:02.4235745] [Info   : Unity Log] Loading scene
+[12:44:02.4235745] [Info   : Unity Log] Scene that began loading: BlackMesaScene
+[12:44:02.4235745] [Info   : Unity Log] LOADING GAME!!!!!
+[12:44:02.4235745] [Info   : Unity Log] Waiting for all players to load!
+[12:44:02.4235745] [Debug  :   Coroner] New round started! Resetting causes of death...
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 0
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 1
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 2
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 3
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 4
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 5
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 6
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 7
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 8
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 9
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 10
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 11
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 12
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 13
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 14
+[12:44:02.4235745] [Debug  :   Coroner] Clearing cause of death for player 15
+[12:44:02.4235745] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[12:44:02.4235745] [Info   :Rolling Giant] Resetting all rolling giants!
+[12:44:02.4235745] [Info   :Rolling Giant] Config sync request received from client: 0
+[12:44:02.4245733] [Info   :Rolling Giant] Config sync sent to client: 0
+[12:44:02.4245733] [Info   :Rolling Giant] Config sync request sent.
+[12:44:02.4245733] [Message:Rolling Giant] Rolling Giant AI changed: RandomlyMoveWhileLooking
+[12:44:02.4245733] [Info   :MrHat.BasedDecorPlacement] Active build mode cancelled for departure
+[12:44:02.4245733] [Info   : Unity Log] Stop special animation G
+[12:44:02.4458161] [Debug  :   Coroner] Querying target player parameters pre-death...
+[12:44:02.4458161] [Debug  :   Coroner] Query successful!True
+[12:44:03.0026183] [Debug  :ReXuvination] Optimised Collider layers in BridgeTrigger for Object: BridgeScript (UnityEngine.GameObject)
+[12:44:03.0041213] [Debug  :ReXuvination] Optimised Collider layers in QuicksandTrigger for Object: Toxic Water (UnityEngine.GameObject)
+[12:44:03.0041213] [Debug  :ReXuvination] Optimised Collider layers in KillLocalPlayer for Object: KillTrigger (UnityEngine.GameObject)
+[12:44:03.0041213] [Debug  :ReXuvination] Optimised Collider layers in KillLocalPlayer for Object: KillTrigger (UnityEngine.GameObject)
+[12:44:03.0041213] [Debug  :ReXuvination] Optimised Collider layers in BridgeTrigger for Object: BridgeScript (UnityEngine.GameObject)
+[12:44:03.0041213] [Debug  :ReXuvination] Optimised Collider layers in QuicksandTrigger for Object: Trigger (UnityEngine.GameObject)
+[12:44:03.0041213] [Debug  :ReXuvination] Optimised Collider layers in BridgeTrigger for Object: BridgeScript (UnityEngine.GameObject)
+[12:44:03.0041213] [Info   : Unity Log] Subscribe to startedLandingShip
+[12:44:03.0041213] [Debug  :ReXuvination] Optimised Collider layers in BridgeTrigger for Object: BridgeScript (UnityEngine.GameObject)
+[12:44:03.0181366] [Info   :Buttery Fixes] Landed on unknown moon
+[12:44:03.1835243] [Warning: Unity Log] LadderTrigger is disabled! Netcode for GameObjects does not support spawning disabled NetworkBehaviours! The InteractTrigger component was skipped during spawn!
+[12:44:03.1835243] [Warning: Unity Log] LadderTrigger is disabled! Netcode for GameObjects does not support spawning disabled NetworkBehaviours! The InteractTrigger component was skipped during spawn!
+[12:44:03.2715672] [Debug  :UniversalRadar] Terrain max: 0, terrain min: 0 (0, 0)
+[12:44:03.2725676] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2725676] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2725676] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2725676] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2725676] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2735687] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2745695] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2745695] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2745695] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2745695] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2745695] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2745695] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2745695] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2745695] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2745695] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2745695] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2755692] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2765695] [Error  : Unity Log] Can't remove MeshCollider because DawnSurface (Script) depends on it
+[12:44:03.2765695] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2765695] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2765695] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2765695] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2765695] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2765695] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2765695] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2765695] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2765695] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Error  : Unity Log] Can't remove BoxCollider because DawnSurface (Script) depends on it
+[12:44:03.2780743] [Debug  :UniversalRadar] Radar generation complete (0.07421875s)
+[12:44:03.2790796] [Info   : LethalMin] __ LethalMin On Game Started __
+[12:44:03.2790796] [Info   : LethalMin] __ LethalMin On Game Started Finished __
+[12:44:03.2845868] [Info   :Scopophobia] Scopophobia disabled Audio Spacializer errors!
+[12:44:03.2855867] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: EntranceTeleportC (UnityEngine.GameObject)
+[12:44:03.2855867] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: EntranceTeleportD (UnityEngine.GameObject)
+[12:44:03.2855867] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Trigger (UnityEngine.GameObject)
+[12:44:03.2855867] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: LadderTrigger (1) (UnityEngine.GameObject)
+[12:44:03.2855867] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: KillTrigger (UnityEngine.GameObject)
+[12:44:03.2855867] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: KillTrigger (UnityEngine.GameObject)
+[12:44:03.2855867] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: LadderTrigger (UnityEngine.GameObject)
+[12:44:03.2855867] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: LadderTrigger (UnityEngine.GameObject)
+[12:44:03.2855867] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: EntranceTeleportB (UnityEngine.GameObject)
+[12:44:03.2855867] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: StoryLogCollectable (3) (UnityEngine.GameObject)
+[12:44:03.2855867] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: EntranceTeleportA (UnityEngine.GameObject)
+[12:44:03.2865877] [Debug  :Buttery Fixes] Cause of death: Dropship
+[12:44:03.2865877] [Debug  :Enemy Sound Fixes] Doppler level: Dropship
+[12:44:03.2865877] [Debug  :   Coroner] Item dropship spawned! Modifying kill trigger...
+[12:44:03.2865877] [Warning:   DawnLib] Surface: '<None>:metalsolid' on 'func_detail_22751_22752.001' on not found.
+[12:44:03.2865877] [Debug  :ReXuvination] Optimised Collider layers in OutOfBoundsTrigger for Object: OutOfBoundsTriggerFactory (UnityEngine.GameObject)
+[12:44:03.2865877] [Warning: Unity Log] BoxCollider does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "Environment/Exterior Moon Side Area 2/prop_static_53219/box"
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:03.2880942] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:03.2880942] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:03.4705837] [Info   :BrutalCompanyMinusExtraReborn] Executing OnShipLeave for all events()
+[12:44:03.4715810] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[12:44:03.4715810] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[12:44:03.4715810] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[12:44:03.4715810] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[12:44:03.4715810] [Info   :BrutalCompanyMinusExtraReborn] Storing un-modified level paramaters on level:BlackMesaLevel
+[12:44:03.4715810] [Info   :BrutalCompanyMinusExtraReborn] Resetting level values before changing.
+[12:44:03.4715810] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Insane to 6843
+[12:44:03.4715810] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryBad to 506
+[12:44:03.4715810] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Bad to 355
+[12:44:03.4715810] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Neutral to 1368
+[12:44:03.4715810] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Good to 1244
+[12:44:03.4715810] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryGood to 2737
+[12:44:03.4715810] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Rare to 27375
+[12:44:03.4715810] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Remove to 883
+[12:44:03.4725849] [Info   :BrutalCompanyMinusExtraReborn] Checking blacklist for event Lizard
+[12:44:03.4725849] [Info   :BrutalCompanyMinusExtraReborn] Checking blacklist for event SID
+[12:44:03.4725849] [Info   :BrutalCompanyMinusExtraReborn] Checking blacklist for event MoreScrap
+[12:44:03.4725849] [Info   :BrutalCompanyMinusExtraReborn] Checking blacklist for event Bounty
+[12:44:03.4725849] [Info   :BrutalCompanyMinusExtraReborn] Event chosen: Lizard
+[12:44:03.4725849] [Info   :BrutalCompanyMinusExtraReborn] Event chosen: MoreScrap
+[12:44:03.4725849] [Info   :BrutalCompanyMinusExtraReborn] Event chosen: Bounty
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] MapMultipliers = [scrapValueMultiplier: 1, scrapAmountMultiplier: 1.416295, factorySizeMultiplier: 1, EnemyHp: 0, insideSpawnChanceAdditive: 0, outsideSpawnChanceAdditive: 0, SpawnChanceMultiplier: 1, SpawnCapMultiplier: 1, InsidePower: 0, OutsidePower: 0]
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Inside Spawn Curve
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0 + $Value:0
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.03 + $Value:0.16
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.06 + $Value:0.4
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.1 + $Value:0.66
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.13 + $Value:0.96
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.16 + $Value:1.24
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.19 + $Value:1.5
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.22 + $Value:1.72
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.26 + $Value:1.86
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.29 + $Value:1.92
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Outside Spawn Curve
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0 + $Value:-2.89
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.11 + $Value:-2.89
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.22 + $Value:-2.89
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.34 + $Value:0.3
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.45 + $Value:2.24
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.56 + $Value:3.98
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.67 + $Value:5.46
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.78 + $Value:6.62
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.89 + $Value:7.92
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:1.01 + $Value:10.72
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Daytime Spawn Curve
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0 + $Value:9.98
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.11 + $Value:10
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.22 + $Value:9.76
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.33 + $Value:6.62
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.44 + $Value:1.28
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.56 + $Value:-2.43
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.67 + $Value:-6.05
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.78 + $Value:-10.12
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:0.89 + $Value:-13.44
+[12:44:03.4735851] [Info   :BrutalCompanyMinusExtraReborn] Time:1 + $Value:-14.82
+[12:44:03.4866117] [Info   : Unity Log] Weed: moldspreaditerations: 0; position: -1
+[12:44:03.4881179] [Info   : Unity Log] Roundmanager: Refreshed OutsideAINodes list!: 19
+[12:44:03.4881179] [Info   : Unity Log] Roundmanager: Refreshed OutsideAINodes list!: 19
+[12:44:03.4881179] [Info   : Unity Log] RANDOM MAP SEED - 73724170
+Client #0
+Moon: Black Mesa
+[12:44:03.4881179] [Debug  :More Ship Upgrades] Adding speed in FinishGeneratingLevel callback
+[12:44:03.4881179] [Info   :LethalLevelLoader] Getting Random DungeonFlows!
+[12:44:03.4911206] [Info   :LethalLevelLoader] ExtendedLevel <-> ExtendedDungeonFlow Dynamic Matching Report.
+
+Info For ExtendedLevel: Black MesaExtendedLevel | Planet Name: Black Mesa | Content Tags: Custom | Route Price: 500 | Current Weather: None
+Unviable ExtendedDungeonFlows: Abandoned Foundry, ACF Site, Supermarket, Gray Apartments, Zeranos Gray Apartments, LC Office, Belleville Appartements, Treatement Amenity, Goldstay Hotel, Lead Factory, Lantern Manor, Mausoleum, Museum, Raven Manor, Shatteredrooms, Spelunkers Caverns (Basic), Spelunkers Caverns (Crystal), Spelunkers Caverns (Frozen), Spelunkers Caverns (Magmatic), Spelunkers Caverns (Overgrown), Studio Floor, Sub Systems
+Viable ExtendedDungeonFlows: Facility (100), Storage Complex (100), Slaughterhouse (100), ScoopyCastle (100), Spooky manor (100), Grand Armory (100), Expanded Mineshaft (100), Expanded facility (100), Decrepit store (100), Art Gallery (100), Greenhouse (100), Fractured Complex (100), Deep Sewers (100), Rubber Rooms (100), Atlantean Citadel (100), Tower (100), Storehouse (100), Liminal Facility (100), Substation (100), Drains (100), Bunker (100), Black Mesa (100), Mineshaft (100), Haunted Mansion (100), Circus Facility (100), Toy Store (100), Spelunkers Caverns (Random) (50), junkrooms (25), DeepcoreMines (20), LiminalHouse (15), Crimson Keep (10)
+
+[12:44:03.4911206] [Info   :S1.42AB Interior Weight Normalization] [InteriorWeightNormalization] Final effective viable pool for Black Mesa: Facility(100), Storage Complex(100), Slaughterhouse(100), ScoopyCastle(100), Spooky manor(100), Grand Armory(100), Expanded Mineshaft(100), Expanded facility(100), Decrepit store(100), Art Gallery(100), Greenhouse(100), Fractured Complex(100), Deep Sewers(100), Rubber Rooms(100), Atlantean Citadel(100), Tower(100), Storehouse(100), Liminal Facility(100), Substation(100), Drains(100), Bunker(100), Black Mesa(100), Mineshaft(100), Haunted Mansion(100), Circus Facility(100), Toy Store(100), Spelunkers Caverns (Random)(100), junkrooms(100), DeepcoreMines(100), LiminalHouse(100), Crimson Keep(100)
+[12:44:03.4911206] [Info   :S1.42AB Interior Weight Normalization] [InteriorWeightNormalization] Normalized 5/31 returned viable dungeon weights to 100; pre-normalization range was 10..100; debugResults=True.
+[12:44:03.4911206] [Info   :LethalLevelLoader] Setting Random DungeonFlows!
+[12:44:03.4911206] [Error  :  HarmonyX] Error while running static void loaforcsSoundAPI.LethalCompany.Patches.RoundManagerPatch::Reporting(). Error: System.TypeLoadException: Failure has occurred while loading a type.
+  at (wrapper dynamic-method) RoundManager.DMD<RoundManager::GenerateNewFloor>(RoundManager)
+[12:44:03.4911206] [Info   : Unity Log] Now listening to dungeon generator status.
+[12:44:03.5883016] [Info   :LethalLevelLoader] CurrentLevel: Black Mesa DungeonSize Is: 3.25 | Leaving DungeonSize As: 4.875
+[12:44:03.5893055] [Debug  :ButteRyBalance] Final length multiplier: 4.87 (Interior #29, seed: 73724170)
+[12:44:03.5893055] [Info   :dev.ladyalice.dungenplus] Did not load a DunGenExtenderer
+[12:44:03.5893055] [Debug  :dev.ladyalice.dungenplus] Undoing changes of ScrapItemManager for Black Mesa
+[12:44:03.5893055] [Debug  :dev.ladyalice.dungenplus] Initialized ScrapItemManager to Black Mesa
+[12:44:03.5893055] [Debug  :dev.ladyalice.dungenplus] Undoing changes of EnemyManager for Black Mesa
+[12:44:03.5893055] [Debug  :dev.ladyalice.dungenplus] Initialized EnemyManager to Black Mesa
+[12:44:03.5893055] [Info   :LethalLevelLoader] Fire Exit Patch Report, Details Below;
+
+EntranceTeleports Found, Black Mesa Contains 4 Entrances! (3 Fire Escapes)
+Main Entrance: EntranceTeleportB (Entrance ID: 3)
+Alternate Entrance: EntranceTeleportB (Entrance ID: 3)
+Alternate Entrance: EntranceTeleportC (Entrance ID: 2)
+Alternate Entrance: EntranceTeleportD (Entrance ID: 1)
+Found Fire Escape GlobalProp: (ID: 1231), Modifying Spawn rate Count From (3,3) To (3,3)
+
+
+[12:44:03.5913057] [Info   :S1.42AB Interior Weight Normalization] [InteriorWeightNormalization] Final effective viable pool for Black Mesa: Facility(100), Haunted Mansion(100), Mineshaft(100), Black Mesa(100), DeepcoreMines(100), LiminalHouse(100), Bunker(100), Drains(100), Substation(100), Liminal Facility(100), Storehouse(100), Tower(100), junkrooms(100), Crimson Keep(100), Circus Facility(100), Atlantean Citadel(100), Deep Sewers(100), Fractured Complex(100), Greenhouse(100), Art Gallery(100), Decrepit store(100), Expanded facility(100), Expanded Mineshaft(100), Grand Armory(100), Spooky manor(100), ScoopyCastle(100), Slaughterhouse(100), Spelunkers Caverns (Random)(100), Storage Complex(100), Rubber Rooms(100), Toy Store(100)
+[12:44:03.5913057] [Info   :S1.42AB Interior Weight Normalization] [InteriorWeightNormalization] Normalized 5/31 returned viable dungeon weights to 100; pre-normalization range was 10..100; debugResults=False.
+[12:44:03.5913057] [Info   :LethalLevelLoader] Created New Day History Log! PlanetName: Black Mesa ,Deep Sewers ,Quota: 5 , Day: 2 , Weather: None
+[12:44:04.0728488] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 47, Ratio: 0.5108696)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:04.5246951] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 42, Ratio: 0.4375)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:05.1412145] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 67, Ratio: 0.7282609)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:05.3846967] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 13, Ratio: 0.1354167)
+Prev tile: SewerEntranceRoom
+Archetype: SewersArchetype
+Tilesets: SewerTunnelsSet (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwaySouth, DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:05.7956725] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 46, Ratio: 0.5287356)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:06.1491538] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 41, Ratio: 0.4456522)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:06.4260833] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 27, Ratio: 0.2934783)
+Prev tile: StructureStairsDown
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:06.8111804] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 48, Ratio: 0.5217391)
+Prev tile: SmallPipeTile
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth
+Used Doorways: DoorwayEast
+
+[12:44:07.1692953] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 42, Ratio: 0.4375)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:07.4655753] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 31, Ratio: 0.3229167)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:07.8753697] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 53, Ratio: 0.5760869)
+Prev tile: SmallPipeTile
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth
+Used Doorways: DoorwayEast
+
+[12:44:08.2038323] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 38, Ratio: 0.3958333)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:08.6595427] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 58, Ratio: 0.6041667)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:09.0787675] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 39, Ratio: 0.423913)
+Prev tile: TinyroomStraight
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwaySouth
+Used Doorways: DoorwayNorth
+
+[12:44:09.4814106] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 39, Ratio: 0.4482759)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:09.9237436] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 51, Ratio: 0.5862069)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:10.2747873] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 41, Ratio: 0.4270833)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:10.5040898] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 17, Ratio: 0.1770833)
+Prev tile: SewerEntranceRoom
+Archetype: SewersArchetype
+Tilesets: SewerTunnelsSet (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwayEast, DoorwayWest
+Used Doorways: DoorwaySouth
+
+[12:44:10.7949738] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 31, Ratio: 0.3369565)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:11.1837697] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 48, Ratio: 0.5217391)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:11.6691717] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 65, Ratio: 0.6770833)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:12.0739147] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 51, Ratio: 0.53125)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:12.5594374] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 64, Ratio: 0.6956522)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:12.8903895] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 37, Ratio: 0.4021739)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:13.2896786] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 47, Ratio: 0.4895833)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:13.6168825] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 33, Ratio: 0.3793103)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:14.0237566] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 50, Ratio: 0.5208333)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:14.3849405] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 41, Ratio: 0.4712644)
+Prev tile: SmallPipeTile
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayNorth
+
+[12:44:14.8103419] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 51, Ratio: 0.53125)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:15.2309214] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 50, Ratio: 0.5747126)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:15.5814380] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 39, Ratio: 0.4482759)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:16.1673425] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 81, Ratio: 0.8804348)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:16.5668870] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 49, Ratio: 0.5632184)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:16.9102751] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 40, Ratio: 0.4347826)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:17.3457543] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 55, Ratio: 0.5978261)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:17.8528580] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 68, Ratio: 0.7391304)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:18.2868750] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 55, Ratio: 0.6321839)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:18.6528294] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 42, Ratio: 0.4827586)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:19.0371038] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 46, Ratio: 0.4791667)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:19.5084849] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 61, Ratio: 0.7011494)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:19.8969387] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 47, Ratio: 0.4895833)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:20.3307058] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 54, Ratio: 0.5869565)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:20.8848260] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 62, Ratio: 0.6739131)
+Prev tile: PipeTunnelCorner
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:21.2096284] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 35, Ratio: 0.3804348)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:21.5733364] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 40, Ratio: 0.4166667)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:22.0494336] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 58, Ratio: 0.6304348)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:22.3301273] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 26, Ratio: 0.2988506)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:22.8470647] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 55, Ratio: 0.6321839)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:23.2531577] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 35, Ratio: 0.4022988)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:23.6270986] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 32, Ratio: 0.3478261)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:23.9269369] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 23, Ratio: 0.25)
+Prev tile: SmallRoomTwist
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwaySouth, DoorwayWest
+Used Doorways: DoorwayNorth
+
+[12:44:24.3228809] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 38, Ratio: 0.4130435)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:24.7114818] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 37, Ratio: 0.4021739)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:25.1095781] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 44, Ratio: 0.4583333)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:25.6014726] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 60, Ratio: 0.6521739)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:25.9830361] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 43, Ratio: 0.4479167)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:26.3172290] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 33, Ratio: 0.3586957)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:26.8069269] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 58, Ratio: 0.6041667)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:27.1571034] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 32, Ratio: 0.3478261)
+Prev tile: StructureHallway
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwayEast, DoorwayWest
+Used Doorways: DoorwaySouth
+
+[12:44:27.4851389] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 30, Ratio: 0.3448276)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:27.9098640] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 45, Ratio: 0.46875)
+Prev tile: StructureSubmergedRoom
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:28.4250379] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 60, Ratio: 0.6896552)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:28.8749346] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 50, Ratio: 0.5747126)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:29.4370318] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 68, Ratio: 0.7391304)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:29.8286637] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 41, Ratio: 0.4712644)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:30.0771793] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 17, Ratio: 0.1847826)
+Prev tile: SmallRoomTwist
+Archetype: SewersArchetype
+Tilesets: SewerTunnelsSet (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwaySouth, DoorwayWest
+Used Doorways: DoorwayNorth
+
+[12:44:30.6460366] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 68, Ratio: 0.7083333)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:31.0288476] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 40, Ratio: 0.4166667)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:31.6642240] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 80, Ratio: 0.9195402)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:32.1431181] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 53, Ratio: 0.6091954)
+Prev tile: PipeTunnelCorner
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:32.4071117] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 21, Ratio: 0.2413793)
+Prev tile: PipeTunnel
+Archetype: SewersArchetype
+Tilesets: SewerTunnelsSet (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:32.8617052] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 51, Ratio: 0.53125)
+Prev tile: SmallPipeTile
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayNorth
+
+[12:44:33.4409485] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 71, Ratio: 0.7717391)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:33.8833397] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 38, Ratio: 0.4367816)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:34.2915959] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 43, Ratio: 0.4673913)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:34.8041838] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 60, Ratio: 0.6521739)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:35.4461141] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 82, Ratio: 0.8913044)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:35.9452933] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 59, Ratio: 0.6145833)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:36.3033100] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 36, Ratio: 0.375)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:36.6464347] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 34, Ratio: 0.3541667)
+Prev tile: SmallPipeTile
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayNorth
+
+[12:44:37.0489378] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 40, Ratio: 0.4347826)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:37.3398433] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 20, Ratio: 0.2173913)
+Prev tile: SewerEntranceRoom
+Archetype: SewersArchetype
+Tilesets: SewerTunnelsSet (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwaySouth, DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:37.7206628] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 37, Ratio: 0.4252874)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:38.2788010] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 65, Ratio: 0.7065217)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:38.7444211] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 54, Ratio: 0.5869565)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:39.0573271] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 31, Ratio: 0.3229167)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:39.4807512] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 46, Ratio: 0.5287356)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:39.9397935] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 40, Ratio: 0.4166667)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:40.4618748] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 55, Ratio: 0.5729167)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:40.9001366] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 44, Ratio: 0.5057471)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:41.4417060] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 60, Ratio: 0.625)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:41.8954246] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 48, Ratio: 0.5)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:42.3364747] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 49, Ratio: 0.5104167)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:42.6607257] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 30, Ratio: 0.3125)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:42.9552272] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 24, Ratio: 0.25)
+Prev tile: SmallSewerRoom
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwaySouth, DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:43.2533870] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 26, Ratio: 0.2826087)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:43.4873232] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 14, Ratio: 0.1609195)
+Prev tile: SewerEntranceRoom
+Archetype: SewersArchetype
+Tilesets: SewerTunnelsSet (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwaySouth, DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:43.9843510] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 56, Ratio: 0.6086956)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:44.3599538] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 38, Ratio: 0.4367816)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:44.8334878] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 54, Ratio: 0.5625)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:45.2108607] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 39, Ratio: 0.40625)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:45.6399798] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 47, Ratio: 0.4895833)
+Prev tile: TinyroomTurn
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwayNorth (1)
+Used Doorways: DoorwaySouth
+
+[12:44:46.0099383] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 38, Ratio: 0.4130435)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:46.3663463] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 36, Ratio: 0.3913043)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:46.8399072] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 43, Ratio: 0.4479167)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:47.2008130] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 36, Ratio: 0.3913043)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:47.5012697] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 25, Ratio: 0.2717391)
+Prev tile: TinyroomStraight
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth
+Used Doorways: DoorwaySouth
+
+[12:44:47.9236058] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 47, Ratio: 0.5108696)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:48.3635117] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 48, Ratio: 0.5217391)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:48.6487841] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 24, Ratio: 0.2758621)
+Prev tile: TinyroomTurn
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwaySouth
+Used Doorways: DoorwayNorth (1)
+
+[12:44:48.9224552] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 22, Ratio: 0.2528736)
+Prev tile: SmallRoomTwist
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwaySouth, DoorwayWest
+Used Doorways: DoorwayNorth
+
+[12:44:49.2533239] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 32, Ratio: 0.3478261)
+Prev tile: TinyroomTurn
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwayNorth (1)
+Used Doorways: DoorwaySouth
+
+[12:44:49.6199313] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 39, Ratio: 0.4482759)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:50.1320156] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 62, Ratio: 0.6458333)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:50.7653650] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 81, Ratio: 0.9310345)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:51.1775815] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 45, Ratio: 0.5172414)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:51.5855430] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 45, Ratio: 0.5172414)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:52.0345456] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 50, Ratio: 0.5434783)
+Prev tile: SmallPipeTile
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayNorth
+
+[12:44:52.5435832] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 61, Ratio: 0.6630435)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:52.9485813] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 43, Ratio: 0.4673913)
+Prev tile: StructureHallway
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwaySouth, DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:53.3234186] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 39, Ratio: 0.4482759)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:53.8335790] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 61, Ratio: 0.7011494)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:54.3080576] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 51, Ratio: 0.5862069)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:54.7510947] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 50, Ratio: 0.5434783)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:55.2289968] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 58, Ratio: 0.6041667)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:55.4274883] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[12:44:55.4274883] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[12:44:55.4274883] [Debug  :   Coroner] Handling Out of Bounds death...
+[12:44:55.4274883] [Warning:S1.39 Compatibility Fixes] [DoorAudit] Hangar state changed -> OPEN; doorPower=1.000; landed=False; leaving=False; living=1; livingInsideShip=1
+[12:44:55.8135199] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 74, Ratio: 0.7708333)
+Prev tile: SmallPipeTile
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayNorth
+
+[12:44:56.1134735] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 27, Ratio: 0.3103448)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:56.4089651] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[12:44:56.4264922] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 27, Ratio: 0.3103448)
+Prev tile: TinyroomTurn
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwaySouth
+Used Doorways: DoorwayNorth (1)
+
+[12:44:56.7536968] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 31, Ratio: 0.3229167)
+Prev tile: TallTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwaySouth, DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:44:57.1066206] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 38, Ratio: 0.3958333)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:57.4651233] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 41, Ratio: 0.4270833)
+Prev tile: StructureHallway
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwaySouth, DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:57.8708174] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 39, Ratio: 0.40625)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:58.3266447] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 42, Ratio: 0.4375)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:58.6436277] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[12:44:58.8321194] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 49, Ratio: 0.5632184)
+Prev tile: StructureHallway
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwaySouth, DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:44:59.2001329] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 31, Ratio: 0.3563218)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:44:59.7365302] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 52, Ratio: 0.5977011)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:00.1611298] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 45, Ratio: 0.4891304)
+Prev tile: PipeTunnelCorner
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:45:00.3456448] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[12:45:00.5345478] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 39, Ratio: 0.423913)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:00.9802447] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 53, Ratio: 0.5760869)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:01.2657225] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 28, Ratio: 0.3043478)
+Prev tile: TinyroomTurn
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth (1), DoorwaySouth
+Used Doorways: DoorwayNorth
+
+[12:45:01.6615163] [Debug  :   Coroner] Querying target player parameters pre-death...
+[12:45:01.6615163] [Debug  :   Coroner] Query successful!True
+[12:45:01.7646699] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 69, Ratio: 0.7931035)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:02.1834269] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 51, Ratio: 0.5543478)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:02.5335576] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 41, Ratio: 0.4456522)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayEast
+Used Doorways: DoorwayWest
+
+[12:45:02.8955909] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 43, Ratio: 0.4673913)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:45:03.3220995] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 54, Ratio: 0.6206896)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:03.5147217] [Debug  :   Coroner] Querying target player parameters pre-death...
+[12:45:03.5147217] [Debug  :   Coroner] Query successful!True
+[12:45:03.6778029] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 42, Ratio: 0.4375)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:04.1077422] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 41, Ratio: 0.4712644)
+Prev tile: StructureHallway
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwayEast, DoorwayWest
+Used Doorways: DoorwaySouth
+
+[12:45:04.5468325] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 53, Ratio: 0.6091954)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:04.9493913] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 54, Ratio: 0.5625)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:05.1466243] [Debug  :   Coroner] Querying target player parameters pre-death...
+[12:45:05.1466243] [Debug  :   Coroner] Query successful!True
+[12:45:05.3023042] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 46, Ratio: 0.4791667)
+Prev tile: TinyroomStraight
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwaySouth
+Used Doorways: DoorwayNorth
+
+[12:45:05.8636723] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 70, Ratio: 0.7291667)
+Prev tile: StructureHallway
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayNorth, DoorwayEast, DoorwayWest
+Used Doorways: DoorwaySouth
+
+[12:45:06.3246191] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 40, Ratio: 0.4597701)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:06.6723475] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 25, Ratio: 0.2604167)
+Prev tile: TallTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwaySouth, DoorwayEast, DoorwayWest
+Used Doorways: DoorwayNorth
+
+[12:45:06.9837920] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 32, Ratio: 0.3678161)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:07.2424647] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 24, Ratio: 0.25)
+Prev tile: SmallSewerRoom
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwaySouth, DoorwayEast, DoorwayWest
+Used Doorways: DoorwayNorth
+
+[12:45:07.7057943] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 61, Ratio: 0.6354167)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:08.0213759] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 37, Ratio: 0.3854167)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:08.3744291] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 38, Ratio: 0.4130435)
+Prev tile: PipeTunnel
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.TileIsCollidingPlacementResult
+Available Doorways: DoorwayWest
+Used Doorways: DoorwayEast
+
+[12:45:08.8239931] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 51, Ratio: 0.5543478)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:09.3767082] [Debug  :dev.ladyalice.dungenplus] Main branch gen failed at Branch 0 (Length: 71, Ratio: 0.7717391)
+Prev tile: CapDownTheSludge
+Archetype: StructureArchetype
+Tilesets: SewerStructure (DunGen.TileSet)
+Reason: DunGen.NoMatchingDoorwayPlacementResult
+Available Doorways: 
+Used Doorways: DoorwayWest
+
+[12:45:09.6057139] [Info   :GeneralImprovements] Server disconnecting - dropping FlashlightItem(Clone)
+[12:45:09.6057139] [Info   :GeneralImprovements] Server disconnecting - dropping Key(Clone)
+[12:45:09.6067137] [Info   : Unity Log] Leaving current lobby
+[12:45:09.6077153] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[12:45:09.6323625] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[12:45:09.6323625] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[12:45:09.6323625] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[12:45:09.6323625] [Info   :Rolling Giant] Resetting all rolling giants!
+[12:45:09.6323625] [Message:Rolling Giant] Reverting sync
+[12:45:09.6323625] [Info   :TooManyEmotes-2.3.17] Saving game values.
+[12:45:09.6323625] [Info   :TooManyEmotes-2.3.17] Saving 22 unlocked emotes for player: MasaeAhmya
+[12:45:09.6323625] [Info   :TooManyEmotes-2.3.17] Saving 1590 emote credits for player: MasaeAhmya
+[12:45:09.6323625] [Info   :TooManyEmotes-2.3.17] Saved Seed: 838005065
+[12:45:09.6448387] [Info   :Buttery Fixes] Dropship inventory saved (0 items)
+[12:45:09.6448387] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[12:45:09.6448387] [Debug  :MrHat.BasedItemSaving] Saved 17 exact item poses
+[12:45:09.6448387] [Message: LethalMin] ---Saving LethalMin Data---
+[12:45:09.6448387] [Debug  : LethalMin] SavePath: LCSaveFile1_LethalMinSave
+[12:45:09.6448387] [Info   : LethalMin] Loaded 14 persistent sprouts from save file
+[12:45:09.6448387] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 1, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 4, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 4, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 4, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 4, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] data moon: 4, current moon: 29
+[12:45:09.6448387] [Info   : LethalMin] Removed 0 persistent sprouts from load due to them already being spawned on the current moon
+[12:45:09.6664796] [Info   : LethalMin] Saved 14 persistent sprouts
+[12:45:09.6664796] [Info   : LethalMin] Loaded 0 leafling players from save file
+[12:45:09.6859065] [Info   : LethalMin] Loaded 6 onions from save file
+[12:45:09.7035711] [Info   : LethalMin] Saving Pikmin Container type (2)
+[12:45:09.7035711] [Info   : LethalMin] Saved pikmin data for 6 onions
+[12:45:09.7035711] [Info   : LethalMin] Loaded 1 fusions from save file
+[12:45:09.7035711] [Info   : LethalMin] Created Fusion: 'RBY_FuseRules' 0, 4, 8, 5, 1, 7 from: 8, 5, 7, 0, 4, 1
+[12:45:09.7035711] [Info   : LethalMin] Saved pikmin data for 1 fusions
+[12:45:09.7035711] [Message: LethalMin] ---Finished Saving LethalMin Data---
+[12:45:09.7050750] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[12:45:09.7060801] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[12:45:09.7070807] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[12:45:09.7422618] [Info   :LethalPerformance] Saved 4 save(s)
+[12:45:09.7492752] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[12:45:09.7823260] [Info   : LethalMin] ShipOnion: saved 44 pikmin to disk on despawn.
+[12:45:09.8339141] [Info   :LobbyControl] 0 disconnected
+[12:45:09.8339141] [Info   : Unity Log] Disconnect callback called
+[12:45:09.8349174] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[12:45:09.8349174] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[12:45:09.8349174] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[12:45:09.8389187] [Info   : Unity Log] Interact trigger destroying! name: HoverboardChild
+[12:45:09.8459353] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8459353] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8469359] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[12:45:09.8469359] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[12:45:09.8479367] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[12:45:09.8479367] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[12:45:09.8504476] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[12:45:09.8705154] [Info   : Unity Log] Resetting unlockables list!
+[12:45:09.8715150] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[12:45:09.8725170] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[12:45:09.8735172] [Info   : Unity Log] Scene manager is null
+[12:45:09.9043499] [Info   :LethalPerformance] Saved 1 save(s)
+[12:45:09.9350142] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[12:45:09.9350142] [Warning:PathfindingLib] Attempted to remove EntranceTeleportB (EntranceTeleport) from smart pathfinding data while it was not present.
+[12:45:09.9350142] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[12:45:09.9350142] [Warning:PathfindingLib] Attempted to remove EntranceTeleportA (EntranceTeleport) from smart pathfinding data while it was not present.
+[12:45:09.9350142] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportC
+[12:45:09.9350142] [Warning:PathfindingLib] Attempted to remove EntranceTeleportC (EntranceTeleport) from smart pathfinding data while it was not present.
+[12:45:09.9350142] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportD
+[12:45:09.9350142] [Warning:PathfindingLib] Attempted to remove EntranceTeleportD (EntranceTeleport) from smart pathfinding data while it was not present.
+[12:45:09.9350142] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger (1)
+[12:45:09.9350142] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[12:45:09.9350142] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[12:45:09.9350142] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[12:45:09.9385261] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[12:45:09.9535446] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[12:45:09.9535446] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[12:45:09.9535446] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[12:45:09.9535446] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[12:45:09.9545445] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[12:45:09.9616496] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[12:45:09.9636482] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[12:45:09.9636482] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[12:45:09.9636482] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[12:45:09.9636482] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[12:45:09.9636482] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[12:45:09.9636482] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[12:45:09.9636482] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[12:45:09.9886202] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[12:45:10.0023076] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[12:45:10.0094790] [Info   :MoreCompany] LANMenu startLAN Patched
+[12:45:10.3224096] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[12:45:12.0282529] [Info   : Unity Log] Returning week num: 145
+[12:45:12.0282529] [Info   : Unity Log] week num: 145
+[12:45:12.0347567] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[12:45:12.0347567] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[12:45:12.0432653] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[12:45:12.0517706] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[12:45:12.0547709] [Info   :LethalPerformance] Saved 1 save(s)
+[12:45:13.7037697] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[12:45:13.7167838] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[12:45:14.7916454] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[12:45:14.7926470] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[12:45:14.7926470] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
