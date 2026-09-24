@@ -1,0 +1,227 @@
+name: Publish exact reviewed S1.42AK-BMDSFIX1-DIAG1PATH1 artifact
+
+on:
+  push:
+    branches:
+      - c3f18-bmdsfix1-diag1path1-exact-publication
+    paths:
+      - '.github/workflows/s142ak-bmdsfix1-diag1path1-publish-reviewed.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: s142ak-bmdsfix1-diag1path1-exact-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout publication branch
+        uses: actions/checkout@v4
+        with:
+          ref: c3f18-bmdsfix1-diag1path1-exact-publication
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Download frozen review artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          work="$RUNNER_TEMP/diag1path1-review"
+          mkdir -p "$work/extracted"
+          curl -L --fail --silent --show-error \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/10835876163/zip" \
+            -o "$work/review.zip"
+          echo 'b38036a3ae1e7d49c9890a8d9343252d8d0e19cfcde854b2410a91519968b90d  '"$work/review.zip" | sha256sum -c -
+          unzip -q "$work/review.zip" -d "$work/extracted"
+
+      - name: Fail-closed exact-byte and lifecycle revalidation
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, re, shutil, sys, zipfile
+          from pathlib import Path
+
+          root = Path('.')
+          src = Path(os.environ['RUNNER_TEMP']) / 'diag1path1-review' / 'extracted'
+          reviewed = src / 'Profiles/LC V1 S1.42AK-D1P1.r2z'
+          parent = root / 'Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z'
+          reviewed_index_path = src / 'ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/FILE_INDEX.json'
+          reviewed_br_path = src / 'BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/BUILD_RESULT.json'
+          reviewed_sv_path = src / 'BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/STATIC_VERIFICATION.json'
+          repo_br_path = root / 'BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/BUILD_RESULT.json'
+          repo_sv_path = root / 'BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/STATIC_VERIFICATION.json'
+          reconstructed = Path(os.environ['RUNNER_TEMP']) / 'diag1path1-snapshot'
+
+          PARENT_SHA = '31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e'
+          PROFILE_SHA = '0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6'
+          DIAG_SHA = '3b9954b21fc2f1214e73b4021c8ab278f71420583e0e2e9f478f981fc64b20e1'
+          FIX_SHA = 'f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92'
+          NORMALIZER_SHA = '901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06'
+          HIDDEN_SHA = '0093bae709cec57fd3f4f3bc5af22231b16944a666768e7ecf879430693f73a2'
+          OLD_NAME = 'LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector'
+          NEW_NAME = 'LC V1 S1.42AK-D1P1'
+          DIAG = 'BepInEx/plugins/S142AKBMDSFix1Diag1/S142AKBMDSFix1Diag1.dll'
+          FIX = 'BepInEx/plugins/S142AKBMDSFix1/S142AKBMDSFix1.dll'
+          NORMALIZER = 'BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll'
+          HIDDEN = 'BepInEx/config/.LCMaxSoundsFix.cfg'
+          OUTPUT = root / 'Profiles/LC V1 S1.42AK-D1P1.r2z'
+          OUTPUT_SOURCES = root / 'ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1'
+
+          def sha(data): return hashlib.sha256(data).hexdigest()
+          def file_sha(path): return sha(path.read_bytes())
+          def require(ok, msg):
+              if not ok: raise RuntimeError(msg)
+          def read_zip(path):
+              with zipfile.ZipFile(path) as z:
+                  names = z.namelist()
+                  require(len(names) == len(set(names)), f'duplicate members in {path}')
+                  return names, {n: z.read(n) for n in names}
+          def export_text(data):
+              return data.decode('utf-8-sig').replace('\r\n', '\n').replace('\r', '\n')
+          def profile_name(data):
+              names = [line[len('profileName:'):].strip() for line in export_text(data).splitlines() if line.startswith('profileName:')]
+              require(len(names) == 1, f'profileName count mismatch: {len(names)}')
+              return names[0]
+          def normalized_export(data):
+              text = export_text(data)
+              require(len(re.findall(r'(?m)^profileName:.*$', text)) == 1, 'profileName normalization count mismatch')
+              return re.sub(r'(?m)^profileName:.*$', 'profileName: <identity>', text).rstrip('\n')
+
+          require(file_sha(parent) == PARENT_SHA, 'published DIAG1 parent SHA mismatch')
+          require(reviewed.is_file() and file_sha(reviewed) == PROFILE_SHA, 'reviewed DIAG1PATH1 SHA mismatch')
+          require(not OUTPUT.exists(), 'DIAG1PATH1 profile already published on branch')
+          require(not OUTPUT_SOURCES.exists(), 'DIAG1PATH1 snapshot already published on branch')
+
+          pn, pm = read_zip(parent)
+          rn, rm = read_zip(reviewed)
+          require(len(pn) == 338 and len(rn) == 338, 'archive member-count mismatch')
+          require(pn == rn, 'archive member order/set changed')
+          changed = [n for n in pn if pm[n] != rm[n]]
+          require(changed == ['export.r2x'], f'identity-only delta violated: {changed!r}')
+          require(normalized_export(pm['export.r2x']) == normalized_export(rm['export.r2x']), 'export.r2x differs beyond profileName')
+          require(profile_name(pm['export.r2x']) == OLD_NAME, 'published DIAG1 profileName mismatch')
+          require(profile_name(rm['export.r2x']) == NEW_NAME, 'DIAG1PATH1 profileName mismatch')
+          require('LethalLevelLoaderUpdated' not in export_text(rm['export.r2x']), 'forbidden alternate LLL fork present')
+
+          for path, expected in ((DIAG, DIAG_SHA), (FIX, FIX_SHA), (NORMALIZER, NORMALIZER_SHA)):
+              require(sha(pm[path]) == expected and sha(rm[path]) == expected, f'protected DLL SHA mismatch: {path}')
+              require(pm[path] == rm[path], f'protected DLL bytes changed: {path}')
+          require(len(rm[HIDDEN]) == 621 and sha(rm[HIDDEN]) == HIDDEN_SHA, 'hidden config identity mismatch')
+
+          reviewed_index = json.loads(reviewed_index_path.read_text(encoding='utf-8'))
+          require(len(reviewed_index) == 338, 'reviewed FILE_INDEX row-count mismatch')
+          for i, rec in enumerate(reviewed_index):
+              require(rec['index'] == i and rec['path'] == rn[i], f'FILE_INDEX ordering mismatch at {i}')
+              require(rec['size'] == len(rm[rn[i]]) and rec['sha256'] == sha(rm[rn[i]]), f'FILE_INDEX identity mismatch: {rn[i]}')
+
+          reviewed_br = json.loads(reviewed_br_path.read_text(encoding='utf-8'))
+          reviewed_sv = json.loads(reviewed_sv_path.read_text(encoding='utf-8'))
+          require(json.loads(repo_br_path.read_text(encoding='utf-8')) == reviewed_br, 'repository BUILD_RESULT differs from frozen review artifact')
+          require(json.loads(repo_sv_path.read_text(encoding='utf-8')) == reviewed_sv, 'repository STATIC_VERIFICATION differs from frozen review artifact')
+          require(reviewed_br['build_id'] == 'S1.42AK-BMDSFIX1-DIAG1PATH1' and reviewed_br['base_sha256'] == PARENT_SHA and reviewed_br['output_sha256'] == PROFILE_SHA, 'BUILD_RESULT binding mismatch')
+          require(reviewed_br['zip_members'] == 338 and reviewed_br['changed_existing_members'] == ['export.r2x'] and reviewed_br['added_members'] == [], 'BUILD_RESULT archive delta mismatch')
+          require(reviewed_br['mod_state_changes'] == [] and reviewed_br['mod_additions'] == [] and reviewed_br['mod_removals'] == [], 'BUILD_RESULT mod-state drift')
+          require(reviewed_sv['status'] == 'STATIC_BUILD_PASS_IDENTITY_ONLY_REVIEW_ARTIFACT_NOT_ARMED', 'STATIC_VERIFICATION status mismatch')
+          require(reviewed_sv['diagnostic_only'] is True and reviewed_sv['never_accept'] is True and reviewed_sv['runtime_armed_for_diag1path1'] is False, 'diagnostic/runtime classification drift')
+          require(reviewed_sv['package_changes'] == 0 and reviewed_sv['config_changes'] == 0 and reviewed_sv['local_plugin_builds'] == 0, 'package/config/build drift')
+
+          record = (root / 'Current/182_S1.42AK_BMDSFIX1_DIAG1PATH1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md').read_text(encoding='utf-8')
+          for marker in ('`10835876163`', '`b38036a3ae1e7d49c9890a8d9343252d8d0e19cfcde854b2410a91519968b90d`', '`0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6`'):
+              require(marker in record, f'canonical review provenance marker missing: {marker}')
+
+          spec = json.loads((root / 'BuildSpecs/current.json').read_text(encoding='utf-8'))
+          state = json.loads((root / 'Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          auto = json.loads((root / 'Current/AUTO_BUILD_RESULT.json').read_text(encoding='utf-8'))
+          require(spec['enabled'] is False and spec['build_id'] == 'IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS', 'BuildSpecs/current.json controller drift')
+          require(spec['base_sha256'] == '3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0', 'idle base SHA drift')
+          require((root / 'RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-BMDSFIX1-DIAG1', 'ACTIVE_BUILD drift')
+          require(state['accepted_baseline']['build_id'] == 'S1.42AK', 'accepted baseline drift')
+          require(state['active_candidate']['build_id'] == 'S1.42AK-BMDSFIX1' and state['active_candidate']['sha256'] == '3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0', 'active candidate drift')
+          require(state['runtime_test_outstanding'] is True and state['controllers']['runtime_active_build'] == 'S1.42AK-BMDSFIX1-DIAG1', 'runtime gate/pointer drift')
+          require(auto['build_id'] == 'S1.42AK-BMDSFIX1' and auto['output_sha256'] == '3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0', 'AUTO_BUILD_RESULT drift')
+
+          sys.path.insert(0, str(root))
+          from BuildSystem.profile_builder import read_zip as builder_read_zip, snapshot
+          if reconstructed.exists(): shutil.rmtree(reconstructed)
+          summary = snapshot(builder_read_zip(reviewed), reconstructed)
+          require(summary == {'entries': 338, 'text_entries': 331}, f'snapshot summary mismatch: {summary!r}')
+          require(json.loads((reconstructed / 'FILE_INDEX.json').read_text(encoding='utf-8')) == reviewed_index, 'reconstructed FILE_INDEX differs from reviewed FILE_INDEX')
+          hidden = reconstructed / HIDDEN
+          require(hidden.is_file() and len(hidden.read_bytes()) == 621 and file_sha(hidden) == HIDDEN_SHA, 'reconstructed hidden config mismatch')
+          print('PASS: frozen DIAG1PATH1 bytes, identity-only delta, evidence, snapshot and lifecycle guards verified.')
+          PY
+
+      - name: Materialize exact profile bytes and readable snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          src="$RUNNER_TEMP/diag1path1-review/extracted"
+          cp "$src/Profiles/LC V1 S1.42AK-D1P1.r2z" "Profiles/LC V1 S1.42AK-D1P1.r2z"
+          cp -a "$RUNNER_TEMP/diag1path1-snapshot" "ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1"
+          cat > BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md <<'MD'
+          # S1.42AK-BMDSFIX1-DIAG1PATH1 exact reviewed-artifact publication verification
+
+          **Status:** EXACT REVIEWED BYTES PUBLISHED ON WORKING BRANCH / IDENTITY-ONLY STATIC PASS / NOT INDEXED / NOT RUNTIME ARMED / DIAGNOSTIC SUPPORT ONLY / NEVER ACCEPT
+          **Date:** 2026-09-25
+          **Reviewed source/build head:** `8c6b5b60994985d15c087a72d52f8c178c15d697`
+          **Review workflow run:** `36063701766` (run `2`)
+          **Frozen Actions artifact:** `10835876163`
+          **Artifact ZIP SHA-256:** `b38036a3ae1e7d49c9890a8d9343252d8d0e19cfcde854b2410a91519968b90d`
+          **Published profile SHA-256:** `0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6`
+          **Short profile identity:** `LC V1 S1.42AK-D1P1`
+
+          The `.r2z` is copied byte-for-byte from the frozen review artifact. Relative to published DIAG1 (`31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e`), all 338 archive members are retained in the same order; only `export.r2x` changes, and only its single `profileName` value differs after normalization. No package, config, mod-state or DLL bytes change and no DLL/profile rebuild occurs.
+
+          Protected DLL identities remain `3b9954b21fc2f1214e73b4021c8ab278f71420583e0e2e9f478f981fc64b20e1` (DIAG1 selector), `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92` (BMDSFIX1) and `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06` (accepted normalizer). The readable `ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/` snapshot is reconstructed from those exact bytes and its 338-row `FILE_INDEX.json` is identical to the reviewed index.
+
+          Publication intentionally leaves `BuildSpecs/current.json`, `Current/AUTO_BUILD_RESULT.*`, `Current/CURRENT_STATE.json` and `RuntimeInbox/ACTIVE_BUILD.txt` unchanged. S1.42AK remains accepted; BMDSFIX1 remains the active gameplay candidate / not accepted with Black Mesa x `DeepSewersFlow` outstanding and unwaived. DIAG1 remains the preloader-blocked runtime/evidence pointer and must not be rerun. DIAG1PATH1 is not indexed, not armed, not a gameplay/acceptance candidate, and remains **DIAGNOSTIC SUPPORT ONLY / NEVER ACCEPT**. No Gale import or runtime execution is authorized by this publication. Greenhouse/BMGHDIAG is out of scope.
+          MD
+
+      - name: Verify materialized output and unchanged controllers
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, zipfile
+          from pathlib import Path
+          profile = Path('Profiles/LC V1 S1.42AK-D1P1.r2z')
+          assert hashlib.sha256(profile.read_bytes()).hexdigest() == '0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6'
+          with zipfile.ZipFile(profile) as z:
+              assert len(z.infolist()) == 338
+          index = json.loads(Path('ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/FILE_INDEX.json').read_text(encoding='utf-8'))
+          assert len(index) == 338
+          assert not Path('ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/PROFILE_INDEX_RESULT.json').exists()
+          spec = json.loads(Path('BuildSpecs/current.json').read_text(encoding='utf-8'))
+          state = json.loads(Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          assert spec['enabled'] is False and spec['build_id'] == 'IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS'
+          assert Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-BMDSFIX1-DIAG1'
+          assert state['accepted_baseline']['build_id'] == 'S1.42AK'
+          assert state['active_candidate']['build_id'] == 'S1.42AK-BMDSFIX1'
+          assert state['runtime_test_outstanding'] is True
+          print('PASS: exact DIAG1PATH1 publication is materialized, unindexed, unarmed and controller-neutral.')
+          PY
+
+      - name: Commit exact publication bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Profiles/LC\ V1\ S1.42AK-D1P1.r2z ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1 BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md
+          git diff --cached --check
+          git diff --cached --quiet && { echo 'No exact-publication changes staged.' >&2; exit 1; }
+          git commit -m 'Publish exact reviewed S1.42AK-BMDSFIX1-DIAG1PATH1 artifact [skip ci]'
+          git push origin HEAD:c3f18-bmdsfix1-diag1path1-exact-publication
