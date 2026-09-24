@@ -17,5 +17,7 @@
   "rebuild_during_integration": false,
   "artifact_upload_during_integration": false,
   "runtime_armed": false,
-  "runtime_test_outstanding": false
+  "runtime_test_outstanding": false,
+  "canonicalization_run": 36025158990,
+  "canonicalization_commit": "c4ccc8c7122edd06a6c1e99e9ee65f2de4a6bc2a"
 }
