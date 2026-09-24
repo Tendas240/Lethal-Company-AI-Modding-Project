@@ -126,6 +126,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          path=Path('Current/180_S1.42AK_BMDSFIX1_DIAG1_RUNTIME_ACTIVATION.md')
+          lines=path.read_text(encoding='utf-8').splitlines()
+          path.write_text('\n'.join(line.rstrip() for line in lines)+'\n',encoding='utf-8')
+          PY
           rm RepositoryTools/c3f18_activate_bmdsfix1_diag1_runtime.py
           rm .github/workflows/c3f18-activate-bmdsfix1-diag1-runtime.yml
           git config user.name 'github-actions[bot]'
