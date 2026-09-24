@@ -1,0 +1,30 @@
+{
+  "enabled": true,
+  "build_id": "S1.42AK-BMDSFIX1",
+  "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+  "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+  "output_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "profile_name": "LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix",
+  "overwrite": false,
+  "mod_state_changes": [],
+  "mod_additions": [],
+  "mod_removals": [],
+  "config_patches": [],
+  "file_injections": [],
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S142AKBMDSFix1/S142AKBMDSFix1.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S142AKBMDSFix1/bin/Release/netstandard2.1/S142AKBMDSFix1.dll",
+      "archive_path": "BepInEx/plugins/S142AKBMDSFix1/S142AKBMDSFix1.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "export.r2x",
+      "not_contains": "LethalLevelLoaderUpdated"
+    }
+  ],
+  "result_json": "BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/BUILD_RESULT.json",
+  "result_md": "BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/BUILD_RESULT.md"
+}
