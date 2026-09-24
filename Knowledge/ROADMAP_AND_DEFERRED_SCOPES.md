@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK-BMDSFIX1 candidate=S1.42AK-BMDSFIX1 runtime_test_outstanding=true -->
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
@@ -8,29 +8,23 @@
 
 ## Current position
 
-Accepted gameplay baseline and latest built artifact: **S1.42AK — LC Office Camera Enemy Balance — ACCEPTED FULL NORMAL STACK**, SHA-256 `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`.
+Accepted gameplay baseline remains **S1.42AK — LC Office Camera Enemy Balance — ACCEPTED FULL NORMAL STACK**, SHA-256 `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`.
 
-There is no active gameplay candidate and no active diagnostic runtime target. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`; `BuildSpecs/current.json` remains disabled; no runtime test is outstanding.
+Latest built artifact and active gameplay runtime candidate is **S1.42AK-BMDSFIX1 — Black Mesa Deep Sewers Size Fix**, SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. It is not accepted. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`; `BuildSpecs/current.json` remains disabled while guarding the exact candidate; one bounded runtime test is outstanding.
 
-Exact BMGHDIAG2 runtime evidence is completed and inconclusive because the diagnostic refused before arming with `EntranceTeleport manifest module identity mismatch`. Black Mesa x Greenhouse remains `NOT_YET_PROVEN`; identical BMGHDIAG2 bytes must not be rerun as though they could qualify the pair.
+Exact BMGHDIAG2 runtime evidence remains completed and inconclusive because the diagnostic refused before arming with `EntranceTeleport manifest module identity mismatch`. Black Mesa x Greenhouse remains `NOT_YET_PROVEN`; identical BMGHDIAG2 bytes must not be rerun as though they could qualify the pair.
 
 ## Selected scope
 
-**Universal Interior Viability / Equal Availability — SELECTED / PHASE C3F18 BMGHDIAG2 DECIDED INCONCLUSIVE / BMDSFIX1 SOURCE INTEGRATED / INACTIVE REVIEW BUILD NEXT.**
+**Universal Interior Viability / Equal Availability — SELECTED / BMDSFIX1 RUNTIME ACTIVE / EVIDENCE OUTSTANDING.**
 
-Goal: evaluate every registered interior for safe availability on every moon while preserving equal effective probability `100` whenever viable.
-
-The accepted S1.42AB post-viability normalizer is not being reopened. The investigation first builds a complete flow-owner-moon viability matrix, identifies all exclusions/hard blocks, and proves compatibility before any restriction is removed.
-
-The authoritative 30x53 B3 matrix remains unchanged. BMGHDIAG2 did not qualify Black Mesa x Greenhouse. The same normal-fallback session separately exposed Black Mesa x Deep Sewers generation-size pressure: LLL logged `3.25 -> 4.875`, normal selection chose Deep Sewers and DunGenPlus emitted repeated placement failures without a later generation-complete marker in the captured post-selection evidence.
-
-The pair-scoped `S1.42AK-BMDSFIX1` source/static repair is integrated into `main` through PR #146. Its synchronized exact source head `efa1d612594281aa519c1df5e35b06e569c50453` has green Knowledge Architecture run `36011893656` and BMDSFIX1 source/static run `36011893689`; source integration commit is `bbda8c934d7108eac2f5346d1d817fd548c3f687`. No BMDSFIX1 profile has been built or armed.
+The authoritative 30x53 B3 matrix and accepted S1.42AB post-viability normalizer remain unchanged. BMDSFIX1 addresses only the separately observed Black Mesa x Deep Sewers 4.875 generation-size pressure. Exact reviewed/published/main-integrated bytes are active without any package/config/profile/plugin rebuild or mutation.
 
 Plan: `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
 
 ## Exact next selected-scope action
 
-Prepare a separately versioned inactive `S1.42AK-BMDSFIX1` review build directly from exact accepted S1.42AK under the normal build/review gates. Do not publish, runtime-arm or accept BMDSFIX1 in that review-build step. Runtime testing remains a later gate. Black Mesa x Greenhouse successor-diagnostic repair remains separate from BMDSFIX1.
+Import exact active S1.42AK-BMDSFIX1 through the canonical repository-driven Gale v2.4 launcher. Run the bounded BMDSFIX1 runtime gate: obtain one Black Mesa x DeepSewersFlow generation showing [BMDSFIX1] ARMED and APPLIED with multiplier ->1, successful generation/landing without the prior persistent retry flood, and at least one non-target generation showing no BMDSFIX1 application or size mutation. Then upload that run's exact BepInEx/LogOutput.log with the build-specific one-line uploader. Do not alter profile/config/package/plugin bytes during the test.
 
 ## Completed LC Office scrap scope
 
