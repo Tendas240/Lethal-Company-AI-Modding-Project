@@ -129,4 +129,14 @@ lifecycle = lifecycle[:live_start] + live_block + next_block + perm_block
 lifecycle_path.write_text(lifecycle, encoding="utf-8")
 
 map_path = ROOT / "Current/PROJECT_KNOWLEDGE_MAP.md"
-km = map_path.read_text(encoding="utf-8")n = None
+km = map_path.read_text(encoding="utf-8")
+start_marker = "The separate pair-scoped `S1.42AK-BMDSFIX1` Deep Sewers mitigation remains the **active gameplay runtime candidate / not accepted**."
+start = km.index(start_marker)
+end = km.index("\n\n## Authority rule", start)
+new_anchor = """The separate pair-scoped `S1.42AK-BMDSFIX1` Deep Sewers mitigation remains the **active gameplay runtime candidate / not accepted**. Exact runtime evidence is ingested at `RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/` with raw log SHA-256 `9a8cf28bbfc050cf9247cffacc890ea1b4e7215329db4ecfc9085f3f8f0ff2cb`. The run armed BMDSFIX1 but Black Mesa selected Substation, so no `APPLIED` marker occurred; this is preserved as the exact-byte non-target control. The remaining regular gameplay gate is only Black Mesa x `DeepSewersFlow`; decision authority: `Current/175_S1.42AK_BMDSFIX1_PARTIAL_RUNTIME_EVIDENCE_NON_TARGET_CONTROL.md`. `BuildSpecs/current.json` remains disabled while guarding the exact BMDSFIX1 candidate.
+
+The published/indexed `S1.42AK-BMDSFIX1-DIAG1` still occupies the runtime/evidence pointer, but two consecutive launches are now documented as preloader-blocked before diagnostic execution because the long Gale profile identity produced 260/262-character nested runtime paths. It must not be rerun. `S1.42AK-BMDSFIX1-DIAG1PATH1` is the reviewed identity-only successor: inactive review build PASS, short profile identity `LC V1 S1.42AK-D1P1`, reviewed profile SHA-256 `0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6`, frozen publication source artifact `10835876163`; it is not yet published, indexed or armed. The immediate repository task is its separate exact-byte publication checkpoint, not a gameplay launch. BMDSFIX1 remains not accepted, its regular qualification remains outstanding and unwaived, accepted baseline remains S1.42AK, and Black Mesa x Greenhouse/BMGHDIAG remains separate."""
+km = km[:start] + new_anchor + km[end:]
+map_path.write_text(km, encoding="utf-8")
+
+print("DIAG1PATH1 handover lifecycle reconciliation prepared")
