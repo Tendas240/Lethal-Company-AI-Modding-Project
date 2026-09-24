@@ -68,17 +68,13 @@ The diagnostic therefore failed closed before targeted Greenhouse selection/topo
 
 The same normal-fallback session separately exposed a Black Mesa x Deep Sewers generation incident. LLL logged `CurrentLevel: Black Mesa DungeonSize Is: 3.25 | Leaving DungeonSize As: 4.875`, ButteRyBalance logged final multiplier `4.87`, normal LLL history selected `Deep Sewers`, and DunGenPlus emitted repeated `NoMatchingDoorwayPlacementResult` / `TileIsCollidingPlacementResult` failures without a later generation-complete marker in the captured post-selection portion. This is consistent with the reported persistent `Entering the atmosphere` loading state but does not prove every historical atmosphere hang shares that cause.
 
-## BMDSFIX1 exact-byte publication — pass / integration next
+## BMDSFIX1 exact-byte publication — main integration pass
 
-The pair-scoped Deep Sewers mitigation `S1.42AK-BMDSFIX1` remains the exact one-postfix repair integrated through source PR #146. It clamps only Black Mesa x `DeepSewersFlow` values above 1.0 to 1.0 and preserves LLL/DunGen ownership, accepted S1.42AB normalization, Greenhouse availability and all non-target pairings.
+The pair-scoped Deep Sewers mitigation `S1.42AK-BMDSFIX1` has passed source/static review, the separate inactive review build, exact-byte publication, and main integration. PR #150 exact head `24713dfc93a24f5e65ae5f223d3ea9c164da785e` merged at `21138185f1ab377660b61120f1d07733d4180672` after Knowledge Architecture run `36023454162`, source/pure-static run `36023454260`, and publication-aware archive run `36023454215` all passed. The resulting main merge passed permanent Knowledge Architecture push run `36024694126`.
 
-The separate inactive review build remains pinned to PR #149 reviewed head `79922a13b3543552dac67bff3d49384c129d4260`, review run `36014932493` and Actions artifact `10813908176` / ZIP SHA-256 `b22e14b07455f722202cfaaf915ee362786c1a05c090aff0939f5a61b9de5db1`. The exact reviewed profile SHA-256 is `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0` and the compiled/injected BMDSFIX1 DLL SHA-256 is `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92`.
+The integration archive gate selected published-validation mode: no profile rebuild and no Actions artifact upload occurred. The exact main-integrated profile SHA-256 remains `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0` and BMDSFIX1 DLL SHA-256 remains `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92`. The 337-member archive/index contract, zero package/config drift, LLL `b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c`, accepted normalizer `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`, and reconstructed readable ProfileSources snapshot remain unchanged. Integration evidence: `BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/MAIN_INTEGRATION_CHECKPOINT.md`.
 
-Exact-byte publication is now complete on `c3f18-bmdsfix1-exact-publication`. Publication workflow run `36017880276` used staging head `cef6b8cdb4eb0add7daf2088c6748f63e1dcf58a` and produced publication commit `80057f75a253961449a4e92e27a16cbd83997f8a` without rebuilding the profile or DLL. Persisted evidence is `BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`.
-
-Publication reverified all 337 archive members: exactly one BMDSFIX1 DLL was added, only `export.r2x` profile identity metadata changed, package/config changes are zero, LLL remains `b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c`, and the accepted normalizer remains byte-identical at `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`. `ProfileSources/S1.42AK-BMDSFIX1/` was reconstructed from the exact reviewed `.r2z`; its 337-row `FILE_INDEX.json` remains data-identical to review evidence, including hidden `.LCMaxSoundsFix.cfg` snapshot identity.
-
-BMDSFIX1 is therefore **exact-byte published on the dedicated working branch, but not yet integrated into `main`, not runtime-armed and not accepted**. The next bounded checkpoint is publication-aware PR/exact-head-CI/main integration of these same bytes. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` under its separate successor-diagnostic task.
+BMDSFIX1 is **published on main but not runtime-armed and not accepted**. Its fix scope remains only Black Mesa x `DeepSewersFlow`. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` under its separate successor-diagnostic task.
 
 ## Live execution state
 
@@ -87,14 +83,14 @@ BMDSFIX1 is therefore **exact-byte published on the dedicated working branch, bu
 - Active gameplay candidate: **none**.
 - Active diagnostic runtime target: **none**.
 - Runtime test outstanding: **no**.
-- Selected scope: **Universal Interior Viability / Equal Availability — BMGHDIAG2 remains inconclusive; BMDSFIX1 exact-byte publication passed on working branch; integration next**.
+- Selected scope: **Universal Interior Viability / Equal Availability — BMGHDIAG2 remains inconclusive; BMDSFIX1 exact bytes integrated on main; separate runtime activation next**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
 - No BMDSFIX1 profile or universal override is armed; S1.42AK remains accepted/latest.
 
 ## Exact next project action
 
-Integrate the exact-byte S1.42AK-BMDSFIX1 publication from branch c3f18-bmdsfix1-exact-publication via a publication-aware PR and exact-head CI, preserving profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0, BMDSFIX1 DLL SHA-256 f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92, the reconstructed 337-row ProfileSources snapshot and publication evidence. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false throughout integration. Do not Gale-import, runtime-arm or accept BMDSFIX1; runtime activation remains a later separate atomic checkpoint after main integration and a new exact main gate. Black Mesa x Greenhouse successor-diagnostic repair remains separate.
+Prepare a separate atomic runtime-activation checkpoint for the exact main-integrated S1.42AK-BMDSFIX1 profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0 / BMDSFIX1 DLL SHA-256 f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92. That later activation may point RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK-BMDSFIX1 and set runtime_test_outstanding=true only while preserving accepted/latest normal baseline S1.42AK and keeping BuildSpecs/current.json disabled. Do not change gameplay, config or package bytes. The activation response must provide the repository-derived Gale replacement/import command and exact build-specific one-line PowerShell runtime-log uploader. Black Mesa x Greenhouse successor-diagnostic repair remains separate.
 
 ## Permanent Gale workflow
 

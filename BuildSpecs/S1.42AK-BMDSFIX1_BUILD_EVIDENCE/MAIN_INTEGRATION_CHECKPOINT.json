@@ -1,0 +1,21 @@
+{
+  "status": "MAIN_INTEGRATION_PASS_NOT_RUNTIME_ARMED_NOT_ACCEPTED",
+  "build_id": "S1.42AK-BMDSFIX1",
+  "integration_pr": 150,
+  "integration_pr_head": "24713dfc93a24f5e65ae5f223d3ea9c164da785e",
+  "main_merge_commit": "21138185f1ab377660b61120f1d07733d4180672",
+  "pr_knowledge_architecture_run": 36023454162,
+  "source_static_run": 36023454260,
+  "published_archive_gate_run": 36023454215,
+  "main_knowledge_architecture_run": 36024694126,
+  "review_run": 36014932493,
+  "review_artifact_id": 10813908176,
+  "publication_run": 36017880276,
+  "profile_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "bmdsfix1_dll_sha256": "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
+  "archive_members_verified": 337,
+  "rebuild_during_integration": false,
+  "artifact_upload_during_integration": false,
+  "runtime_armed": false,
+  "runtime_test_outstanding": false
+}
