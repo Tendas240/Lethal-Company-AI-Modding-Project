@@ -105,7 +105,7 @@ for literal in (
     require(literal in plan, "Human plan/source boundary missing: " + literal)
 
 print(json.dumps({
-    "status": "SOURCE_STATIC_CONTRACT_PASS_NOT_BUILT_NOT_ARMED",
+    "status": "SOURCE_STATIC_CONTRACT_PASS_NOT_PUBLISHED_NOT_ARMED",
     "candidate_id": "S1.42AK-BMDSFIX1",
     "base_build_id": "S1.42AK",
     "harmony_surfaces": 1,

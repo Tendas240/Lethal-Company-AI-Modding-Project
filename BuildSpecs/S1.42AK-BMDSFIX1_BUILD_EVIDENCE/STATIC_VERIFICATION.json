@@ -1,0 +1,21 @@
+{
+  "status": "STATIC_BUILD_PASS_REVIEW_ARTIFACT_NOT_ARMED",
+  "build_id": "S1.42AK-BMDSFIX1",
+  "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+  "output_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "bmdsfix1_dll_sha256": "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
+  "lll_dll_sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+  "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+  "archive_members_verified": 337,
+  "added_members": [
+    "BepInEx/plugins/S142AKBMDSFix1/S142AKBMDSFix1.dll"
+  ],
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "runtime_armed": false,
+  "qualification": "Persisted from successful PR #149 inactive CI review build. The reviewed profile remains an Actions artifact only; BuildSpecs/current.json and RuntimeInbox/ACTIVE_BUILD.txt remain unchanged and no runtime test is authorized."
+}
