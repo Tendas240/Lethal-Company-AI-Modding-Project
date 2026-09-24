@@ -1,0 +1,117 @@
+name: C3F18 finalize BMDSFIX1 exact publication checkpoint
+
+on:
+  push:
+    branches:
+      - c3f18-bmdsfix1-exact-publication
+    paths:
+      - '.github/workflows/c3f18-finalize-bmdsfix1-publication.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: c3f18-bmdsfix1-exact-publication
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify exact publication run and commit provenance
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          published='80057f75a253961449a4e92e27a16cbd83997f8a'
+          staging='cef6b8cdb4eb0add7daf2088c6748f63e1dcf58a'
+          git cat-file -e "${published}^{commit}"
+          [[ "$(git rev-parse "${published}^")" == "$staging" ]]
+          git merge-base --is-ancestor "$published" HEAD
+          run_json="$(curl -fsSL \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/actions/runs/36017880276")"
+          jq -e '
+            .name == "Publish exact reviewed S1.42AK-BMDSFIX1 artifact" and
+            .event == "push" and
+            .head_sha == "cef6b8cdb4eb0add7daf2088c6748f63e1dcf58a" and
+            .status == "completed" and
+            .conclusion == "success"
+          ' <<<"$run_json" >/dev/null
+          echo 'PASS: publication run 36017880276 and publication commit 80057f75 are exact and ancestral'
+
+      - name: Canonicalize exact-byte publication lifecycle
+        run: python RepositoryTools/c3f18_finalize_bmdsfix1_publication.py
+
+      - name: Regenerate protected current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Verify generated current navigation
+        run: python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate current live-state semantics
+        run: python RepositoryTools/current_state_semantic_validator.py
+
+      - name: Validate repository knowledge architecture
+        run: python RepositoryTools/knowledge_architecture_validator.py
+
+      - name: Validate published artifact and readable snapshot bytes
+        run: python RepositoryTools/artifact_byte_integrity_validator.py
+
+      - name: Re-run BMDSFIX1 source/static contract in publication-aware state
+        run: python AnalysisTools/validate_s142ak_bmdsfix1_source.py
+
+      - name: Verify publication state and live controllers remain inactive
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          state=json.loads(Path('Current/CURRENT_STATE.json').read_text())
+          current=json.loads(Path('BuildSpecs/current.json').read_text())
+          selected=state['selected_scope']
+          review=selected['bmdsfix1_review']
+          assert state['active_candidate'] is None
+          assert state['runtime_test_outstanding'] is False
+          assert current['enabled'] is False
+          assert current['build_id']=='IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS'
+          assert Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text().strip()=='S1.42AK'
+          assert state['controllers']['runtime_active_build']=='S1.42AK'
+          assert selected['status']=='PHASE_C3F18_BMGHDIAG2_RUNTIME_INCONCLUSIVE_BMDSFIX1_EXACT_PUBLICATION_PASS_INTEGRATION_NEXT'
+          assert review['published'] is True
+          assert review['main_integrated'] is False
+          assert review['runtime_armed'] is False
+          assert review['publication_workflow_run']==36017880276
+          assert review['publication_staging_head']=='cef6b8cdb4eb0add7daf2088c6748f63e1dcf58a'
+          assert review['published_profile_commit']=='80057f75a253961449a4e92e27a16cbd83997f8a'
+          assert review['profile_sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
+          assert review['bmdsfix1_dll_sha256']=='f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92'
+          print('PASS: exact BMDSFIX1 publication canonicalized with every live controller inactive')
+          PY
+
+      - name: Check patch hygiene
+        run: git diff --check
+
+      - name: Commit canonical publication checkpoint and remove one-shot machinery
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm RepositoryTools/c3f18_finalize_bmdsfix1_publication.py
+          rm .github/workflows/c3f18-finalize-bmdsfix1-publication.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --quiet && { echo 'No canonicalization changes staged.' >&2; exit 1; }
+          git commit -m 'Canonicalize BMDSFIX1 exact publication checkpoint'
+          git push origin HEAD:c3f18-bmdsfix1-exact-publication
