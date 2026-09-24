@@ -1,0 +1,60 @@
+name: S1.42AK BMDSFIX1-DIAG1PATH1 inactive review build gate
+
+on:
+  pull_request:
+    paths:
+      - 'BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1.json'
+      - 'BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_PLAN.md'
+      - 'AnalysisTools/validate_s142ak_bmdsfix1_diag1path1_source.py'
+      - 'AnalysisTools/validate_s142ak_bmdsfix1_diag1path1_build.py'
+      - 'BuildSystem/profile_builder.py'
+      - 'Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z'
+      - 'ProfileSources/S1.42AK-BMDSFIX1-DIAG1/**'
+      - '.github/workflows/s142ak-bmdsfix1-diag1path1-source-static.yml'
+      - '.github/workflows/s142ak-bmdsfix1-diag1path1-build-static.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Re-verify DIAG1PATH1 source and path-length contract
+        run: python AnalysisTools/validate_s142ak_bmdsfix1_diag1path1_source.py
+
+      - name: Refuse any already-published DIAG1PATH1 profile
+        shell: bash
+        run: |
+          set -euo pipefail
+          output='Profiles/LC V1 S1.42AK-D1P1.r2z'
+          [[ ! -e "$output" ]] || { echo 'DIAG1PATH1 profile already exists in checkout; inactive review build must remain ephemeral.' >&2; exit 1; }
+          if git ls-files --error-unmatch -- "$output" >/dev/null 2>&1; then
+            echo 'DIAG1PATH1 review profile is tracked; publication is outside this gate.' >&2
+            exit 1
+          fi
+
+      - name: Build identity-only inactive DIAG1PATH1 review artifact
+        run: python BuildSystem/profile_builder.py BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1.json
+
+      - name: Verify exact DIAG1 preservation and identity-only archive delta
+        run: python AnalysisTools/validate_s142ak_bmdsfix1_diag1path1_build.py
+
+      - name: Upload inactive DIAG1PATH1 review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: S1.42AK-BMDSFIX1-DIAG1PATH1-review-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            Profiles/LC V1 S1.42AK-D1P1.r2z
+            ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/
+            BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/
