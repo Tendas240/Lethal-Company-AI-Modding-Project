@@ -78,23 +78,30 @@ The same Substation run recorded `DungeonSize 6.343513 -> 9.515268` / final mult
 
 The remaining runtime gate is only Black Mesa x `DeepSewersFlow`: `[BMDSFIX1] ARMED`, target `APPLIED ... ->1`, completed generation and normal landed gameplay without the prior persistent retry/atmosphere failure or a new severe target-attributable regression. Evidence may accumulate across exact identical candidate bytes; no qualification criterion is waived. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` under its separate successor-diagnostic task.
 
+## DIAG1 launch block and DIAG1PATH1 reviewed successor
+
+Two consecutive local launches of the exact published/indexed `S1.42AK-BMDSFIX1-DIAG1` profile failed inside the BepInEx/Mono preloader before any `[BMDSFIX1-DIAG1] ARMED` or selection evidence. Read-only inspection proved the named LC Office preloader and SoundAPI DLLs were physically present, while the long Gale profile identity made the two failing full paths exactly 260 and 262 characters. Decision/preparation authority: `Current/181_S1.42AK_BMDSFIX1_DIAG1_PATH_LENGTH_BLOCK_AND_DIAG1PATH1_SOURCE_STATIC.md`. These launches are preloader-block evidence only; they neither accept nor reject BMDSFIX1, and the long-name DIAG1 must not be rerun.
+
+The separately versioned `S1.42AK-BMDSFIX1-DIAG1PATH1` identity-only successor has passed its inactive review build under `Current/182_S1.42AK_BMDSFIX1_DIAG1PATH1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md`. Frozen publication source is Actions artifact `10835876163` from review run `36063701766`; reviewed profile SHA-256 is `0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6`. It shortens the profile identity to `LC V1 S1.42AK-D1P1`, reducing the observed paths to 215/217 characters, while changing only `export.r2x` profile identity metadata and preserving all DLL/package/config bytes. DIAG1PATH1 is not yet published, indexed or runtime-armed.
+
 ## Live execution state
 
 - Accepted baseline: **S1.42AK**.
 - Latest built artifact: **S1.42AK-BMDSFIX1 — active runtime candidate / not accepted**.
 - Active gameplay candidate: **S1.42AK-BMDSFIX1**.
-- Active diagnostic runtime target: **S1.42AK-BMDSFIX1-DIAG1 — diagnostic only / never accept**.
-- Runtime test outstanding: **yes — immediate DIAG1 supporting run is armed; regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding and unwaived**.
+- Runtime/evidence pointer: **S1.42AK-BMDSFIX1-DIAG1**, but the long-name profile is **preloader-blocked and must not be rerun**.
+- Reviewed diagnostic successor: **S1.42AK-BMDSFIX1-DIAG1PATH1 — inactive review PASS / not published / not indexed / not armed / never accept**.
+- Runtime test outstanding: **yes — regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding and unwaived; no new DIAG1PATH1 runtime is authorized before publication/index/activation**.
 - Preserved partial evidence: **Black Mesa x Substation non-target control PASS** at `RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/`.
-- Selected scope: **Universal Interior Viability / Equal Availability — deterministic BMDSFIX1-DIAG1 supporting target evidence next; gameplay candidate unchanged**.
+- Selected scope: **Universal Interior Viability / Equal Availability — DIAG1PATH1 exact-byte publication next; gameplay candidate unchanged**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`, guarding exact BMDSFIX1 candidate bytes.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1-DIAG1` for diagnostic target resolution/evidence attribution only.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1-DIAG1` remains unchanged until a later explicit successor activation; it is runtime/evidence routing, not acceptance authority.
 - S1.42AK remains the accepted rollback baseline; BMDSFIX1 remains the unaccepted gameplay candidate; Greenhouse/BMGHDIAG remains separate.
 
 ## Exact next project action
 
-Import exact active S1.42AK-BMDSFIX1-DIAG1 through the canonical Gale v2.4 launcher and run the bounded Black Mesa diagnostic. Require `[BMDSFIX1-DIAG1] ARMED` without refusal, deterministic `[BMDSFIX1-DIAG1] SELECTED Black Mesa / DeepSewersFlow; normalized rarity=100; pool=<N>->1`, inherited `[BMDSFIX1] ARMED` and target `APPLIED ... ->1`, completed generation and normal landed gameplay without the prior persistent retry/Entering-the-atmosphere failure or a new severe target-attributable regression. Upload that run's exact `BepInEx/LogOutput.log` with the DIAG1 uploader. This is supporting diagnostic evidence only: BMDSFIX1 remains not accepted and its regular exact-byte Black Mesa x DeepSewersFlow qualification is not waived.
+Perform the separate `S1.42AK-BMDSFIX1-DIAG1PATH1` exact-byte publication checkpoint from frozen Actions artifact `10835876163` / review run `36063701766`. Materialize only the reviewed profile bytes SHA-256 `0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6` and readable snapshot, then revalidate the identity-only delta without changing runtime controllers. Do **not** import or rerun the long-name DIAG1 profile. Profile-index reconciliation and explicit DIAG1PATH1 runtime activation remain later gates. BMDSFIX1 remains not accepted and its regular exact-byte Black Mesa x `DeepSewersFlow` qualification remains outstanding and unwaived.
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. DIAG1 now resolves through the explicit direct-diagnostic path: `RuntimeInbox/ACTIVE_BUILD.txt` and `CURRENT_STATE.controllers.runtime_active_build` bind `selected_scope.diagnostic_revision`, whose exact parent is `Current/AUTO_BUILD_RESULT.json = S1.42AK-BMDSFIX1`. This diagnostic routing changes no BMDSFIX1 bytes, does not promote DIAG1, and cannot accept BMDSFIX1.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`. `RuntimeInbox/ACTIVE_BUILD.txt` still points to `S1.42AK-BMDSFIX1-DIAG1`, so invoking the helper now would still resolve the preloader-blocked long-name diagnostic and is therefore **not authorized**. Do not change that controller merely to bypass publication/indexing. After DIAG1PATH1 is exact-byte-published, profile-index-reconciled and explicitly runtime-activated in later gates, the repository-driven helper must resolve the newly authorized successor exact bytes. None of these diagnostic lifecycle operations may promote or accept BMDSFIX1.
