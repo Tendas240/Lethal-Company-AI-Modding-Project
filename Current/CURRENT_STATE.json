@@ -44,13 +44,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C3F18_BMGHDIAG2_RUNTIME_INCONCLUSIVE_BMDSFIX1_SOURCE_REPAIR_OPEN",
+    "status": "PHASE_C3F18_BMGHDIAG2_RUNTIME_INCONCLUSIVE_BMDSFIX1_SOURCE_INTEGRATED_REVIEW_BUILD_NEXT",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "S1.42AK-BMGHDIAG2 runtime evidence is ingested at RuntimeEvidence/S1.42AK-BMGHDIAG2/20260924T124542Z/ with raw LogOutput.log SHA-256 5c7931cbf68414c76ea4cc0950d23b592497a2daa2b0f4d8e49986cc13c863d9. The diagnostic loaded but failed closed before arming with EntranceTeleport manifest module identity mismatch, so Black Mesa x Greenhouse remains NOT_YET_PROVEN and the exact BMGHDIAG2 bytes must not be rerun as though they could qualify the pair. The same normal-fallback session later selected Deep Sewers on Black Mesa; LLL logged a 4.875 final size path and DunGenPlus then emitted repeated placement failures without a later generation-complete marker in the captured post-selection portion. That separate runtime incident is consistent with the reported persistent Entering the atmosphere state. A pair-scoped BMDSFIX1 source/static repair exists only as draft PR #146 at exact head 3e95889588031197dd8051ca27be02754794969d; Knowledge Architecture run 36004798426 and BMDSFIX1 source/static run 36004798422 succeeded on that head. No BMDSFIX1 profile is built, armed or accepted.",
-    "analysis_contract": "Treat BMGHDIAG2 as completed failed diagnostic evidence, not an active target. Preserve exact accepted S1.42AK, accepted S1.42AB normalization, Dawn/native Black Mesa ownership, Greenhouse availability, the B3 matrix, Shatteredrooms exclusions and the separate Black-Mesa/Pikmin routing scope. Do not infer Greenhouse incompatibility from diagnostic refusal. Keep the Black Mesa x Deep Sewers generation-size incident separate from Greenhouse qualification. BMDSFIX1 remains source/static-only until its draft PR is synchronized against repaired main, applicable exact-head/merge-base CI is green and source integration is complete. Do not build or arm BMDSFIX1 in the same source-integration step.",
-    "next_action": "Synchronize draft PR #146 (S1.42AK-BMDSFIX1 source/static repair) against the repaired main, require fresh applicable CI for the resulting integration state, and merge only the source/static repair if green. Do not build, publish, arm or accept a BMDSFIX1 profile in that step. After source integration, prepare a separately versioned inactive review build directly from exact accepted S1.42AK under the normal build/review gates. Black Mesa x Greenhouse diagnostic repair remains a separate successor-diagnostic task.",
+    "finding": "S1.42AK-BMGHDIAG2 runtime evidence remains completed failed diagnostic evidence at RuntimeEvidence/S1.42AK-BMGHDIAG2/20260924T124542Z/ with raw LogOutput.log SHA-256 5c7931cbf68414c76ea4cc0950d23b592497a2daa2b0f4d8e49986cc13c863d9; Black Mesa x Greenhouse remains NOT_YET_PROVEN and the exact BMGHDIAG2 bytes must not be rerun as though they could qualify the pair. The separate Black Mesa x Deep Sewers incident remains evidenced by LLL 4.875 sizing and repeated DunGenPlus placement failures without a later generation-complete marker in the captured post-selection portion. The pair-scoped S1.42AK-BMDSFIX1 source/static repair is now integrated into main through PR #146. Its synchronized exact source head efa1d612594281aa519c1df5e35b06e569c50453 passed Knowledge Architecture run 36011893656 and BMDSFIX1 source/static run 36011893689; main integration commit is bbda8c934d7108eac2f5346d1d817fd548c3f687. No BMDSFIX1 profile is built, armed or accepted.",
+    "analysis_contract": "Treat BMGHDIAG2 as completed failed diagnostic evidence, not an active target. Preserve exact accepted S1.42AK, accepted S1.42AB normalization, Dawn/native Black Mesa ownership, Greenhouse availability, the B3 matrix, Shatteredrooms exclusions and the separate Black-Mesa/Pikmin routing scope. Do not infer Greenhouse incompatibility from diagnostic refusal. Keep the Black Mesa x Deep Sewers generation-size incident separate from Greenhouse qualification. BMDSFIX1 source/static integration is complete; the next gate is a separately versioned inactive review build directly over exact accepted S1.42AK. Do not runtime-arm or accept BMDSFIX1 during review-build preparation.",
+    "next_action": "Prepare a separately versioned inactive S1.42AK-BMDSFIX1 review build directly from exact accepted S1.42AK under the normal build/review gates. Do not publish, runtime-arm or accept BMDSFIX1 in the review-build step, and do not change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt yet. Black Mesa x Greenhouse successor-diagnostic repair remains a separate task.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -274,17 +274,19 @@
     "diagnostic_runtime_finding": "Current/173_S1.42AK_BMGHDIAG2_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL_AND_DEEP_SEWERS_INCIDENT.md",
     "bmdsfix1_source_repair": {
       "build_id": "S1.42AK-BMDSFIX1",
-      "status": "SOURCE_STATIC_ONLY_DRAFT_PR_GREEN_NOT_BUILT_NOT_ARMED",
+      "status": "SOURCE_STATIC_INTEGRATED_NOT_BUILT_NOT_ARMED",
       "draft_pr": 146,
       "branch": "fix/s142ak-bmdsfix1",
-      "exact_head": "3e95889588031197dd8051ca27be02754794969d",
-      "knowledge_architecture_run": 36004798426,
-      "source_static_run": 36004798422,
+      "exact_head": "efa1d612594281aa519c1df5e35b06e569c50453",
+      "knowledge_architecture_run": 36011893656,
+      "source_static_run": 36011893689,
       "build_plan": "BuildSpecs/S1.42AK-BMDSFIX1_PLAN.md",
       "runtime_evidence_source": "RuntimeEvidence/S1.42AK-BMGHDIAG2/20260924T124542Z/",
       "runtime_built": false,
       "runtime_armed": false,
-      "accepted": false
+      "accepted": false,
+      "source_pr": 146,
+      "main_integration_commit": "bbda8c934d7108eac2f5346d1d817fd548c3f687"
     },
     "diagnostic_predecessor_revision": {
       "build_id": "S1.42AK-BMGHDIAG1",
@@ -323,7 +325,7 @@
       "runtime_decision": "Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md"
     }
   },
-  "next_action": "Synchronize draft PR #146 (S1.42AK-BMDSFIX1 source/static repair) against the repaired main, require fresh applicable CI for the resulting integration state, and merge only the source/static repair if green. Do not build, publish, arm or accept a BMDSFIX1 profile in that step. After source integration, prepare a separately versioned inactive review build directly from exact accepted S1.42AK under the normal build/review gates. Black Mesa x Greenhouse diagnostic repair remains a separate successor-diagnostic task.",
+  "next_action": "Prepare a separately versioned inactive S1.42AK-BMDSFIX1 review build directly from exact accepted S1.42AK under the normal build/review gates. Do not publish, runtime-arm or accept BMDSFIX1 in the review-build step, and do not change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt yet. Black Mesa x Greenhouse successor-diagnostic repair remains a separate task.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,

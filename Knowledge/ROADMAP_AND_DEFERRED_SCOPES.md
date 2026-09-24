@@ -16,7 +16,7 @@ Exact BMGHDIAG2 runtime evidence is completed and inconclusive because the diagn
 
 ## Selected scope
 
-**Universal Interior Viability / Equal Availability — SELECTED / PHASE C3F18 BMGHDIAG2 DECIDED INCONCLUSIVE / BMDSFIX1 SOURCE REPAIR OPEN.**
+**Universal Interior Viability / Equal Availability — SELECTED / PHASE C3F18 BMGHDIAG2 DECIDED INCONCLUSIVE / BMDSFIX1 SOURCE INTEGRATED / INACTIVE REVIEW BUILD NEXT.**
 
 Goal: evaluate every registered interior for safe availability on every moon while preserving equal effective probability `100` whenever viable.
 
@@ -24,15 +24,13 @@ The accepted S1.42AB post-viability normalizer is not being reopened. The invest
 
 The authoritative 30x53 B3 matrix remains unchanged. BMGHDIAG2 did not qualify Black Mesa x Greenhouse. The same normal-fallback session separately exposed Black Mesa x Deep Sewers generation-size pressure: LLL logged `3.25 -> 4.875`, normal selection chose Deep Sewers and DunGenPlus emitted repeated placement failures without a later generation-complete marker in the captured post-selection evidence.
 
-A pair-scoped `S1.42AK-BMDSFIX1` source/static repair exists in draft PR #146. Its source head `3e95889588031197dd8051ca27be02754794969d` has green Knowledge Architecture run `36004798426` and BMDSFIX1 source/static run `36004798422`, but the branch must be synchronized against repaired main before source integration. No BMDSFIX1 profile has been built or armed.
+The pair-scoped `S1.42AK-BMDSFIX1` source/static repair is integrated into `main` through PR #146. Its synchronized exact source head `efa1d612594281aa519c1df5e35b06e569c50453` has green Knowledge Architecture run `36011893656` and BMDSFIX1 source/static run `36011893689`; source integration commit is `bbda8c934d7108eac2f5346d1d817fd548c3f687`. No BMDSFIX1 profile has been built or armed.
 
 Plan: `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
 
 ## Exact next selected-scope action
 
-Synchronize draft PR #146 against repaired main, require fresh applicable CI for the resulting integration state, and merge only the BMDSFIX1 source/static repair if green. Do not build, publish, arm or accept a BMDSFIX1 profile in that step.
-
-After source integration, a separately versioned inactive review build from exact accepted S1.42AK may be prepared under the normal build/review gates. Runtime testing is a later gate. Black Mesa x Greenhouse successor-diagnostic repair remains separate from BMDSFIX1.
+Prepare a separately versioned inactive `S1.42AK-BMDSFIX1` review build directly from exact accepted S1.42AK under the normal build/review gates. Do not publish, runtime-arm or accept BMDSFIX1 in that review-build step. Runtime testing remains a later gate. Black Mesa x Greenhouse successor-diagnostic repair remains separate from BMDSFIX1.
 
 ## Completed LC Office scrap scope
 
