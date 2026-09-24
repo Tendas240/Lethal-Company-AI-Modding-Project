@@ -107,7 +107,7 @@ The normal Black Mesa LLL matching report in that same run includes `Greenhouse 
 
 The user's successful main-entrance and two distinct fire-exit round trips therefore qualify Decrepit store traversal only. Black Mesa x Greenhouse remains `NOT_YET_PROVEN`. Canonical decision: `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`.
 
-No runtime test is currently armed. The next step is source/root-cause analysis of `ValidateAssemblyHash` / `ResolveObservationContract` and, only if justified, a separately versioned minimal diagnostic repair. Do not rerun the refused BMGHDIAG1 bytes, change Greenhouse availability, duplicate-register Black Mesa, alter S1.42AB normalization, modify the B3 matrix, or open the separate Black-Mesa/Pikmin routing scope.
+That startup-provenance root cause has since been repaired by separately versioned `S1.42AK-BMGHDIAG2`, whose exact reviewed bytes are published on main and are now the active diagnostic runtime target. The bounded runtime test is outstanding: require `[BMGHDIAG2] ARMED`, exact Black Mesa Greenhouse selection, generation/topology evidence and direct entrance traversal before changing the matrix classification. Do not rerun BMGHDIAG1, change Greenhouse availability, duplicate-register Black Mesa, alter S1.42AB normalization, modify the B3 matrix, or open the separate Black-Mesa/Pikmin routing scope. Activation authority: `Current/172_S1.42AK_BMGHDIAG2_RUNTIME_ACTIVATION.md`.
 
 ## Selected universal viability / equal availability investigation
 
