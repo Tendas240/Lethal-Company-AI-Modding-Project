@@ -1,0 +1,62 @@
+name: C3F18 BMDSFIX1 Partial Runtime Reconciliation
+
+on:
+  push:
+    branches:
+      - c3f18-bmdsfix1-partial-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reconciliation branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: c3f18-bmdsfix1-partial-runtime-reconcile
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reconcile ingested BMDSFIX1 partial runtime evidence
+        run: python RepositoryTools/c3f18_reconcile_bmdsfix1_partial_runtime.py
+
+      - name: Regenerate canonical current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Validate generated current navigation
+        run: python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate current live-state semantics
+        run: python RepositoryTools/current_state_semantic_validator.py
+
+      - name: Validate repository knowledge architecture
+        run: python RepositoryTools/knowledge_architecture_validator.py
+
+      - name: Validate persistent ChatGPT handover workflow
+        run: python RepositoryTools/handover_workflow_validator.py
+
+      - name: Validate artifact/runtime byte integrity
+        run: python RepositoryTools/artifact_byte_integrity_validator.py
+
+      - name: Remove one-shot reconciliation machinery
+        run: |
+          rm RepositoryTools/c3f18_reconcile_bmdsfix1_partial_runtime.py
+          rm .github/workflows/c3f18-reconcile-bmdsfix1-partial-runtime.yml
+
+      - name: Verify no whitespace errors
+        run: git diff --check
+
+      - name: Commit atomic canonical reconciliation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --stat
+          git commit -m "Reconcile BMDSFIX1 partial runtime evidence"
+          git push origin HEAD:c3f18-bmdsfix1-partial-runtime-reconcile
