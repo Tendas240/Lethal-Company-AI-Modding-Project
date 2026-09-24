@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Prepare a separately versioned inactive S1.42AK-BMDSFIX1 review build directly from exact accepted S1.42AK under the normal build/review gates. Do not publish, runtime-arm or accept BMDSFIX1 in the review-build step, and do not change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt yet. Black Mesa x Greenhouse successor-diagnostic repair remains a separate task.
+Publish the exact reviewed S1.42AK-BMDSFIX1 bytes from review run 36014932493 / artifact 10813908176, pinning profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0 and BMDSFIX1 DLL SHA-256 f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92, and verify the published archive/ProfileSources against the passed review-build delta. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Do not Gale-import, runtime-arm or accept BMDSFIX1 in the publication checkpoint. Black Mesa x Greenhouse successor-diagnostic repair remains separate.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

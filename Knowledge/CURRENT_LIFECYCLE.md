@@ -68,11 +68,13 @@ The diagnostic therefore failed closed before targeted Greenhouse selection/topo
 
 The same normal-fallback session separately exposed a Black Mesa x Deep Sewers generation incident. LLL logged `CurrentLevel: Black Mesa DungeonSize Is: 3.25 | Leaving DungeonSize As: 4.875`, ButteRyBalance logged final multiplier `4.87`, normal LLL history selected `Deep Sewers`, and DunGenPlus emitted repeated `NoMatchingDoorwayPlacementResult` / `TileIsCollidingPlacementResult` failures without a later generation-complete marker in the captured post-selection portion. This is consistent with the reported persistent `Entering the atmosphere` loading state but does not prove every historical atmosphere hang shares that cause.
 
-## BMDSFIX1 source/static repair — integrated, not built
+## BMDSFIX1 inactive review build — pass
 
-The pair-scoped Deep Sewers mitigation `S1.42AK-BMDSFIX1` is now source/static integrated into `main` through PR **#146**. The synchronized exact source head is `efa1d612594281aa519c1df5e35b06e569c50453`; Knowledge Architecture run `36011893656` and BMDSFIX1 source/static run `36011893689` both succeeded on that head. Main integration commit: `bbda8c934d7108eac2f5346d1d817fd548c3f687`.
+The pair-scoped Deep Sewers mitigation `S1.42AK-BMDSFIX1` remains the exact one-postfix repair integrated through source PR #146. It clamps only Black Mesa x `DeepSewersFlow` values above 1.0 to 1.0 and preserves LLL/DunGen ownership, accepted S1.42AB normalization, Greenhouse availability and all non-target pairings.
 
-BMDSFIX1 remains source/static only. No BMDSFIX1 profile has been built, published, runtime-armed or accepted. The next gate is a separately versioned inactive review build directly over exact accepted S1.42AK; runtime activation is explicitly later.
+A separate inactive review build has now also passed. PR #149 exact reviewed head `79922a13b3543552dac67bff3d49384c129d4260` produced review run `36014932493` / Actions artifact `10813908176`. The review profile SHA-256 is `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0` and the compiled/injected BMDSFIX1 DLL SHA-256 is `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92`. All 337 archive members were verified: exactly one BMDSFIX1 DLL was added, only `export.r2x` profile identity metadata changed, package/config changes are zero, LLL remains `b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c`, and the accepted normalizer remains byte-identical at `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`. Persisted evidence: `BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.md`.
+
+BMDSFIX1 is **review-built but not published, not runtime-armed and not accepted**. The review artifact is not a gameplay target. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` under its separate successor-diagnostic task.
 
 ## Live execution state
 
@@ -81,16 +83,14 @@ BMDSFIX1 remains source/static only. No BMDSFIX1 profile has been built, publish
 - Active gameplay candidate: **none**.
 - Active diagnostic runtime target: **none**.
 - Runtime test outstanding: **no**.
-- Selected scope: **Universal Interior Viability / Equal Availability — BMGHDIAG2 runtime decided inconclusive; BMDSFIX1 source integrated; inactive review build next**.
+- Selected scope: **Universal Interior Viability / Equal Availability — BMGHDIAG2 remains inconclusive; BMDSFIX1 inactive review build passed; exact publication checkpoint next**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
 - No BMDSFIX1 profile or universal override is armed; S1.42AK remains accepted/latest.
 
 ## Exact next project action
 
-Prepare a separately versioned inactive `S1.42AK-BMDSFIX1` review build directly from exact accepted S1.42AK under the normal build/review gates. Do not publish, runtime-arm or accept BMDSFIX1 in the review-build step, and do not change `BuildSpecs/current.json` or `RuntimeInbox/ACTIVE_BUILD.txt` yet.
-
-Black Mesa x Greenhouse diagnostic repair remains a separate successor-diagnostic task.
+Publish the exact reviewed S1.42AK-BMDSFIX1 bytes from review run 36014932493 / artifact 10813908176, pinning profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0 and BMDSFIX1 DLL SHA-256 f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92, and verify the published archive/ProfileSources against the passed review-build delta. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Do not Gale-import, runtime-arm or accept BMDSFIX1 in the publication checkpoint. Black Mesa x Greenhouse successor-diagnostic repair remains separate.
 
 ## Permanent Gale workflow
 

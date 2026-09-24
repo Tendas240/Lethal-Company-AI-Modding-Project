@@ -44,13 +44,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C3F18_BMGHDIAG2_RUNTIME_INCONCLUSIVE_BMDSFIX1_SOURCE_INTEGRATED_REVIEW_BUILD_NEXT",
+    "status": "PHASE_C3F18_BMGHDIAG2_RUNTIME_INCONCLUSIVE_BMDSFIX1_INACTIVE_REVIEW_BUILD_PASS_PUBLICATION_NEXT",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "S1.42AK-BMGHDIAG2 runtime evidence remains completed failed diagnostic evidence at RuntimeEvidence/S1.42AK-BMGHDIAG2/20260924T124542Z/ with raw LogOutput.log SHA-256 5c7931cbf68414c76ea4cc0950d23b592497a2daa2b0f4d8e49986cc13c863d9; Black Mesa x Greenhouse remains NOT_YET_PROVEN and the exact BMGHDIAG2 bytes must not be rerun as though they could qualify the pair. The separate Black Mesa x Deep Sewers incident remains evidenced by LLL 4.875 sizing and repeated DunGenPlus placement failures without a later generation-complete marker in the captured post-selection portion. The pair-scoped S1.42AK-BMDSFIX1 source/static repair is now integrated into main through PR #146. Its synchronized exact source head efa1d612594281aa519c1df5e35b06e569c50453 passed Knowledge Architecture run 36011893656 and BMDSFIX1 source/static run 36011893689; main integration commit is bbda8c934d7108eac2f5346d1d817fd548c3f687. No BMDSFIX1 profile is built, armed or accepted.",
-    "analysis_contract": "Treat BMGHDIAG2 as completed failed diagnostic evidence, not an active target. Preserve exact accepted S1.42AK, accepted S1.42AB normalization, Dawn/native Black Mesa ownership, Greenhouse availability, the B3 matrix, Shatteredrooms exclusions and the separate Black-Mesa/Pikmin routing scope. Do not infer Greenhouse incompatibility from diagnostic refusal. Keep the Black Mesa x Deep Sewers generation-size incident separate from Greenhouse qualification. BMDSFIX1 source/static integration is complete; the next gate is a separately versioned inactive review build directly over exact accepted S1.42AK. Do not runtime-arm or accept BMDSFIX1 during review-build preparation.",
-    "next_action": "Prepare a separately versioned inactive S1.42AK-BMDSFIX1 review build directly from exact accepted S1.42AK under the normal build/review gates. Do not publish, runtime-arm or accept BMDSFIX1 in the review-build step, and do not change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt yet. Black Mesa x Greenhouse successor-diagnostic repair remains a separate task.",
+    "finding": "S1.42AK-BMDSFIX1 has passed its pair-scoped source/static gate and a separate inactive review build directly from exact accepted S1.42AK. Review PR #149 head 79922a13b3543552dac67bff3d49384c129d4260 produced review run 36014932493; artifact 10813908176 has ZIP SHA-256 b22e14b07455f722202cfaaf915ee362786c1a05c090aff0939f5a61b9de5db1. The review profile SHA-256 is 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0 and the compiled/injected BMDSFIX1 DLL SHA-256 is f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92. All 337 archive members were verified: the only added member is BepInEx/plugins/S142AKBMDSFix1/S142AKBMDSFix1.dll, the only changed existing member is export.r2x profile identity metadata, there are zero package/config changes, LLL remains b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c, and the accepted S1.42AB normalizer remains byte-identical at 901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06. These bytes are review-only and are not repository-published or runtime-armed. The fix remains scoped only to Black Mesa x DeepSewersFlow and does not alter accepted normalization, Black Mesa ownership, Greenhouse availability, the B3 matrix, or the separate Black Mesa x Greenhouse diagnostic task.",
+    "analysis_contract": "Treat S1.42AK-BMDSFIX1 as source/static-verified and inactive-review-build-verified, but not published, not runtime-armed and not accepted. The next bounded checkpoint may publish only the exact reviewed bytes from review run 36014932493 / artifact 10813908176, with profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0 and BMDSFIX1 DLL SHA-256 f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92. That publication checkpoint must re-verify the exact archive delta and readable ProfileSources evidence while keeping BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Runtime activation must remain a later separate atomic step. Preserve S1.42AB InteriorWeightNormalization, Dawn/native Black Mesa ownership, Greenhouse availability, the B3 matrix, Shatteredrooms exclusions and the separate Black-Mesa/Pikmin routing and Black Mesa x Greenhouse diagnostic scopes.",
+    "next_action": "Publish the exact reviewed S1.42AK-BMDSFIX1 bytes from review run 36014932493 / artifact 10813908176, pinning profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0 and BMDSFIX1 DLL SHA-256 f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92, and verify the published archive/ProfileSources against the passed review-build delta. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Do not Gale-import, runtime-arm or accept BMDSFIX1 in the publication checkpoint. Black Mesa x Greenhouse successor-diagnostic repair remains separate.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -323,9 +323,44 @@
       "runtime_index": "RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/INDEX.json",
       "runtime_log_sha256": "4f3dae931364cefc4b297c8c316502e96d32b27431467a5607ce69ed6d6e69ef",
       "runtime_decision": "Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md"
+    },
+    "bmdsfix1_review": {
+      "build_id": "S1.42AK-BMDSFIX1",
+      "status": "INACTIVE_REVIEW_BUILD_PASS_NOT_PUBLISHED_NOT_ARMED_NOT_ACCEPTED",
+      "base_build_id": "S1.42AK",
+      "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+      "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+      "build_spec": "BuildSpecs/S1.42AK-BMDSFIX1.json",
+      "build_plan": "BuildSpecs/S1.42AK-BMDSFIX1_PLAN.md",
+      "static_evidence": "BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
+      "review_checkpoint": "BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.md",
+      "source_pr": 146,
+      "review_pr": 149,
+      "reviewed_head": "79922a13b3543552dac67bff3d49384c129d4260",
+      "review_merge_ref": "7dbe71ba9ec504a387c5750f4f4c479dceffa95c",
+      "review_run": 36014932493,
+      "review_artifact_id": 10813908176,
+      "review_artifact_name": "S1.42AK-BMDSFIX1-review-7dbe71ba9ec504a387c5750f4f4c479dceffa95c",
+      "review_artifact_zip_sha256": "b22e14b07455f722202cfaaf915ee362786c1a05c090aff0939f5a61b9de5db1",
+      "profile_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+      "bmdsfix1_dll_sha256": "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
+      "lll_sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+      "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+      "archive_members_verified": 337,
+      "added_members": [
+        "BepInEx/plugins/S142AKBMDSFix1/S142AKBMDSFix1.dll"
+      ],
+      "changed_existing_members": [
+        "export.r2x"
+      ],
+      "removed_members": [],
+      "package_changes": 0,
+      "config_changes": 0,
+      "published": false,
+      "runtime_armed": false
     }
   },
-  "next_action": "Prepare a separately versioned inactive S1.42AK-BMDSFIX1 review build directly from exact accepted S1.42AK under the normal build/review gates. Do not publish, runtime-arm or accept BMDSFIX1 in the review-build step, and do not change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt yet. Black Mesa x Greenhouse successor-diagnostic repair remains a separate task.",
+  "next_action": "Publish the exact reviewed S1.42AK-BMDSFIX1 bytes from review run 36014932493 / artifact 10813908176, pinning profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0 and BMDSFIX1 DLL SHA-256 f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92, and verify the published archive/ProfileSources against the passed review-build delta. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Do not Gale-import, runtime-arm or accept BMDSFIX1 in the publication checkpoint. Black Mesa x Greenhouse successor-diagnostic repair remains separate.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,

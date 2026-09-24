@@ -1,0 +1,61 @@
+name: S1.42AK BMDSFIX1 inactive review build and archive-delta gate
+
+on:
+  pull_request:
+    paths:
+      - 'Patches/S142AKBMDSFix1/**'
+      - 'BuildSpecs/S1.42AK-BMDSFIX1.json'
+      - 'BuildSpecs/S1.42AK-BMDSFIX1_PLAN.md'
+      - 'AnalysisTools/validate_s142ak_bmdsfix1_source.py'
+      - 'AnalysisTools/verify_s142ak_lll_1712_provenance.py'
+      - 'AnalysisTools/validate_s142ak_bmdsfix1_build.py'
+      - 'BuildSystem/profile_builder.py'
+      - 'Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z'
+      - 'ProfileSources/S1.42AK/**'
+      - '.github/workflows/s142ak-bmdsfix1-build-static.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Test pair-scoped size clamp policy
+        run: dotnet run --project Patches/S142AKBMDSFix1/Tests/Policy.Tests.csproj -c Release
+
+      - name: Verify source fail-closed fix contract
+        run: python AnalysisTools/validate_s142ak_bmdsfix1_source.py
+
+      - name: Freshly verify exact S1.42AK LLL 1.7.12 provenance
+        run: python AnalysisTools/verify_s142ak_lll_1712_provenance.py
+
+      - name: Build isolated unarmed BMDSFIX1 review artifact
+        run: python BuildSystem/profile_builder.py BuildSpecs/S1.42AK-BMDSFIX1.json
+
+      - name: Verify exact archive delta, compiled DLL and inactive lifecycle
+        run: python AnalysisTools/validate_s142ak_bmdsfix1_build.py
+
+      - name: Upload unarmed BMDSFIX1 review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: S1.42AK-BMDSFIX1-review-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z
+            ProfileSources/S1.42AK-BMDSFIX1/
+            BuildSpecs/S1.42AK-BMDSFIX1_BUILD_EVIDENCE/
+            c3f17-4-s142ak-lll-provenance-output/
