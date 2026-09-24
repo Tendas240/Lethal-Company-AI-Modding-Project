@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "updated": "2026-09-23",
+  "updated": "2026-09-24",
   "status": "CURRENT_CANONICAL_ARTIFACT_EVIDENCE_INDEX",
   "profiles": [
     {
@@ -247,6 +247,24 @@
       "static_evidence": "BuildSpecs/S1.42AJ_BUILD_EVIDENCE/STATIC_VERIFICATION.md",
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false
+    },
+    {
+      "build_id": "S1.42AK-BMGHDIAG2",
+      "role": "ACTIVE_RUNTIME_DIAGNOSTIC_PENDING",
+      "profile": "Profiles/LC V1 S1.42AK-BMGHDIAG2 Black Mesa Greenhouse Diagnostic.r2z",
+      "profile_sha256": "56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2",
+      "profile_sources": "ProfileSources/S1.42AK-BMGHDIAG2/",
+      "file_index": "ProfileSources/S1.42AK-BMGHDIAG2/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AK-BMGHDIAG2/export.r2x",
+      "build_plan": "BuildSpecs/S1.42AK-BMGHDIAG2_PLAN.md",
+      "build_result": "BuildSpecs/S1.42AK-BMGHDIAG2_BUILD_EVIDENCE/BUILD_RESULT.json",
+      "static_evidence": "BuildSpecs/S1.42AK-BMGHDIAG2_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
+      "publication_evidence": "BuildSpecs/S1.42AK-BMGHDIAG2_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+      "activation_record": "Current/172_S1.42AK_BMGHDIAG2_RUNTIME_ACTIVATION.md",
+      "diagnostic_dll_sha256": "51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false,
+      "note": "Exact reviewed/main-integrated BMGHDIAG2 bytes are runtime-armed solely for Black Mesa x Greenhouse diagnostic qualification; not accepted and not a gameplay base."
     }
   ],
   "important_project_dlls": [
@@ -301,7 +319,8 @@
     "S1.42AK was built from exact S1.42AJ by successful workflow run 35366580975 with profile SHA-256 b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee; readable ProfileSources/S1.42AK and FILE_INDEX are present, and static verification records the exact three-member archive delta.",
     "S1.42AK full-normal accepted runtime evidence is RuntimeEvidence/S1.42AK/20260918T172838Z with raw LogOutput.log SHA-256 cc0f0a7a6c6a76ad44266aded11ff9cb2aca21f2623f5fb895d371ad778526b9; Current/158 records the acceptance and its limited hostile-indoor coverage qualification.",
     "S1.42AK-SCRAPDIAG1 completed diagnostic runtime evidence is RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/ with raw LogOutput.log SHA-256 e32e7d9b858fd78c046d5206c519a7709b3dcd5b2b8c432500233f51c6f13348; Current/163 closes the LC Office scrap investigation with no gameplay delta.",
-    "S1.42AK-BMGHDIAG1 runtime evidence is RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/ with raw LogOutput.log SHA-256 4f3dae931364cefc4b297c8c316502e96d32b27431467a5607ce69ed6d6e69ef; Current/171 records the fail-closed startup refusal and required diagnostic repair analysis."
+    "S1.42AK-BMGHDIAG1 runtime evidence is RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/ with raw LogOutput.log SHA-256 4f3dae931364cefc4b297c8c316502e96d32b27431467a5607ce69ed6d6e69ef; Current/171 records the fail-closed startup refusal and required diagnostic repair analysis.",
+    "S1.42AK-BMGHDIAG2 exact reviewed/main-integrated profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 is now the active diagnostic runtime target pending Black Mesa x Greenhouse evidence; it remains unaccepted."
   ],
-  "last_validated": "2026-09-18"
+  "last_validated": "2026-09-24"
 }

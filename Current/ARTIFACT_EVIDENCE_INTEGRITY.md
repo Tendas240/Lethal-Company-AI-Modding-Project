@@ -1,9 +1,9 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
 # Artifact and Runtime Evidence Integrity
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
 **Machine mirror:** `Current/ARTIFACT_EVIDENCE_INTEGRITY.json`  
-**Last-Validated:** 2026-09-23
+**Last-Validated:** 2026-09-24
 
 ## Accepted gameplay baseline: S1.42AK
 
@@ -41,6 +41,7 @@ The diagnostic refused before arming because the loaded `Assembly-CSharp.dll` co
 ## Pending / deferred unaccepted profiles
 
 - **S1.42AJ** — deferred full-normal gate / retained exact balanced parent, not active.
+- **S1.42AK-BMGHDIAG2** — active diagnostic runtime target over accepted S1.42AK; exact profile SHA-256 `56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2`; runtime evidence outstanding; not accepted and not a gameplay base.
 
 ## Completed diagnostic evidence: S1.42AI-DIAG1R3
 

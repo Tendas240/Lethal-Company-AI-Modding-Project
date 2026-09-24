@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
 # Current Project Lifecycle
 
 **Status:** CURRENT / CANONICAL TOPIC  
@@ -62,24 +62,24 @@ C3F18's provenance-safe `S1.42AK-BMGHDIAG2` successor has passed source/static r
 
 The integration archive gate selected published-validation mode: no profile rebuild and no Actions artifact upload occurred. The exact main-integrated profile SHA-256 remains `56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2` and diagnostic DLL SHA-256 remains `51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775`. The 337-member archive/index contract, zero package/config drift, LLL `b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c`, accepted normalizer `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`, and reconstructed readable ProfileSources snapshot remain unchanged. Integration evidence: `BuildSpecs/S1.42AK-BMGHDIAG2_BUILD_EVIDENCE/MAIN_INTEGRATION_CHECKPOINT.md`.
 
-BMGHDIAG2 is **published on main but not runtime-armed and not accepted**. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` until a later explicit diagnostic runtime run.
+BMGHDIAG2 is **published on main and runtime-armed as the active diagnostic target, but remains not accepted**. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMGHDIAG2`, `active_candidate = null`, and `runtime_test_outstanding = true`. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` until this exact run is ingested and decided. Activation authority: `Current/172_S1.42AK_BMGHDIAG2_RUNTIME_ACTIVATION.md`.
 
 ## Live execution state
 
 - Accepted baseline: **S1.42AK**.
 - Latest built/published normal artifact: **S1.42AK**.
 - Active gameplay candidate: **none**.
-- Active diagnostic runtime target: **none**.
-- Runtime test outstanding: **no**.
-- Selected scope: **Universal Interior Viability / Equal Availability — Phase C3F18 BMGHDIAG2 exact bytes integrated on main; separate runtime activation next**.
+- Active diagnostic runtime target: **S1.42AK-BMGHDIAG2**.
+- Runtime test outstanding: **yes — exact Black Mesa x Greenhouse diagnostic only**.
+- Selected scope: **Universal Interior Viability / Equal Availability — Phase C3F18 BMGHDIAG2 runtime active; evidence outstanding**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
-- No gameplay successor or universal override is armed.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMGHDIAG2`.
+- No gameplay successor or universal override is armed; S1.42AK remains accepted/latest.
 
 ## Exact next project action
 
-Prepare a separate atomic runtime-activation checkpoint for the exact main-integrated S1.42AK-BMGHDIAG2 profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 / diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775. That later activation may point RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK-BMGHDIAG2 and set runtime_test_outstanding=true only while preserving accepted/latest normal baseline S1.42AK and keeping BuildSpecs/current.json disabled. Do not change gameplay/config/package bytes. The activation response must provide the repository-derived Gale import command and exact build-specific one-line PowerShell runtime-log uploader.
+Run the exact active S1.42AK-BMGHDIAG2 diagnostic on Black Mesa after importing it through the canonical Gale v2.4 launcher. Require `[BMGHDIAG2] ARMED`, exact Greenhouse selection, successful generation, topology IDs 0..3 and direct player traversal of the main entrance plus alternate IDs 1, 2 and 3 where practical; fail closed on refusal/inconclusive evidence. Then upload that run's exact `BepInEx/LogOutput.log` with the build-specific uploader from `Current/172_S1.42AK_BMGHDIAG2_RUNTIME_ACTIVATION.md`.
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. No diagnostic is currently runtime-armed. BMGHDIAG2 exact bytes are integrated on main but remain non-runtime until a later explicit atomic activation step; only that later activation may authorize another gameplay run.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. BMGHDIAG2 is now the explicitly runtime-armed diagnostic target under the direct-diagnostic authority chain. The canonical v2.4 launcher must resolve only the exact main-integrated profile/DLL identities above; this authorization ends at diagnostic evidence collection and does not promote the build.
