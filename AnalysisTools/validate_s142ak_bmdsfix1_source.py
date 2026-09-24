@@ -9,6 +9,7 @@ PATCH = ROOT / "Patches/S142AKBMDSFix1"
 PLUGIN = PATCH / "Plugin.cs"
 POLICY = PATCH / "SizeClampPolicy.cs"
 TESTS = PATCH / "Tests/Program.cs"
+NUGET_CONFIG = PATCH / "NuGet.Config"
 WORKFLOW = ROOT / ".github/workflows/s142ak-bmdsfix1-source-static.yml"
 PLAN = ROOT / "BuildSpecs/S1.42AK-BMDSFIX1_PLAN.md"
 CURRENT_BUILD = ROOT / "BuildSpecs/current.json"
@@ -32,6 +33,7 @@ plugin = PLUGIN.read_text(encoding="utf-8")
 plugin_code = strip_csharp_noncode(plugin)
 policy = POLICY.read_text(encoding="utf-8")
 tests = TESTS.read_text(encoding="utf-8")
+nuget_config = NUGET_CONFIG.read_text(encoding="utf-8")
 workflow = WORKFLOW.read_text(encoding="utf-8")
 plan = PLAN.read_text(encoding="utf-8")
 current_build = json.loads(CURRENT_BUILD.read_text(encoding="utf-8"))
@@ -76,6 +78,13 @@ for literal in (
 ):
     require(literal in tests, "Missing pure policy negative/edge test: " + literal)
 
+for literal in (
+    "https://api.nuget.org/v3/index.json",
+    "https://nuget.bepinex.dev/v3/index.json",
+    "https://nuget.windows10ce.com/nuget/v3/index.json",
+):
+    require(literal in nuget_config, "Required explicit package source missing: " + literal)
+
 require("profile_builder.py" not in workflow, "Source gate must not build a Gale profile")
 require("dotnet run --project Patches/S142AKBMDSFix1/Tests/Policy.Tests.csproj -c Release" in workflow,
         "Pure policy test command missing")
@@ -103,6 +112,7 @@ print(json.dumps({
     "target": "LethalLevelLoader.DungeonLoader.GetClampedDungeonSize",
     "pair": "Black Mesa x DeepSewersFlow",
     "clamp": 1.0,
+    "package_sources_explicit": True,
     "current_build_controller_enabled": current_build["enabled"],
     "qualification": "Source, compile and pure policy only; no profile build, controller mutation, runtime arming or acceptance."
 }, indent=2))
