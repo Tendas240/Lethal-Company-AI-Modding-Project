@@ -1,0 +1,103 @@
+name: C3F18 activate BMGHDIAG2 runtime diagnostic
+
+on:
+  push:
+    branches:
+      - c3f18-bmghdiag2-runtime-activation
+    paths:
+      - 'RepositoryTools/c3f18_activate_bmghdiag2_runtime.py'
+      - 'RepositoryTools/c3f18_activate_bmghdiag2_roadmap.py'
+      - '.github/workflows/c3f18-activate-bmghdiag2-runtime.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: c3f18-bmghdiag2-runtime-activation
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Apply exact diagnostic runtime activation
+        run: |
+          python RepositoryTools/c3f18_activate_bmghdiag2_runtime.py
+          python RepositoryTools/c3f18_activate_bmghdiag2_roadmap.py
+
+      - name: Regenerate protected current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Verify generated current navigation
+        run: python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate current live-state semantics
+        run: python RepositoryTools/current_state_semantic_validator.py
+
+      - name: Validate repository knowledge architecture
+        run: python RepositoryTools/knowledge_architecture_validator.py
+
+      - name: Validate exact artifact bytes and pending diagnostic evidence
+        run: python RepositoryTools/artifact_byte_integrity_validator.py
+
+      - name: Validate repository integrity and Gale helper contract
+        run: |
+          python RepositoryTools/repository_integrity_guard.py
+          python RepositoryTools/gale_import_helper_validator.py
+
+      - name: Verify exact runtime controller activation
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root=Path('.')
+          state=json.loads((root/'Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          diag=state['selected_scope']['diagnostic_revision']
+          assert state['accepted_baseline']['build_id']=='S1.42AK'
+          assert state['latest_built_artifact']['build_id']=='S1.42AK'
+          assert state['active_candidate'] is None
+          assert state['runtime_test_outstanding'] is True
+          assert state['controllers']['runtime_active_build']=='S1.42AK-BMGHDIAG2'
+          assert (root/'RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip()=='S1.42AK-BMGHDIAG2'
+          current=json.loads((root/'BuildSpecs/current.json').read_text(encoding='utf-8'))
+          assert current['enabled'] is False and current['build_id']=='IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS'
+          assert diag['build_id']=='S1.42AK-BMGHDIAG2'
+          assert diag['status']=='PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED'
+          assert diag['base_build_id']=='S1.42AK'
+          assert diag['sha256']=='56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2'
+          assert diag['diagnostic_dll_sha256']=='51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775'
+          assert diag['runtime_armed'] is True
+          profile=root/diag['profile']
+          assert hashlib.sha256(profile.read_bytes()).hexdigest()==diag['sha256']
+          hashes=json.loads((root/'Profiles/EXPECTED_HASHES.json').read_text(encoding='utf-8'))
+          assert hashes[diag['profile']]['sha256']==diag['sha256']
+          activation=(root/'Current/172_S1.42AK_BMGHDIAG2_RUNTIME_ACTIVATION.md').read_text(encoding='utf-8')
+          assert 'ReplaceActiveGaleProfileV24.ps1' in activation
+          assert "RuntimeInbox/Current/LogOutput.log" in activation
+          assert "[BMGHDIAG2]" in activation
+          assert 'PUBLISHED ON MAIN / ACTIVE DIAGNOSTIC RUNTIME TARGET / TEST OUTSTANDING / NOT ACCEPTED' in activation
+          print('PASS: exact BMGHDIAG2 runtime target armed; accepted baseline/build controller preserved')
+          PY
+          git diff --check
+
+      - name: Commit atomic activation and remove one-shot machinery
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm RepositoryTools/c3f18_activate_bmghdiag2_runtime.py
+          rm RepositoryTools/c3f18_activate_bmghdiag2_roadmap.py
+          rm .github/workflows/c3f18-activate-bmghdiag2-runtime.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --check
+          git commit -m 'Arm exact BMGHDIAG2 runtime diagnostic'
+          git push origin HEAD:c3f18-bmghdiag2-runtime-activation
