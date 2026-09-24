@@ -1,0 +1,61 @@
+name: S1.42AK BMGHDIAG2 inactive review build and archive-delta gate
+
+on:
+  pull_request:
+    paths:
+      - 'Patches/S142AKBMGHDiag2/**'
+      - 'BuildSpecs/S1.42AK-BMGHDIAG2.json'
+      - 'BuildSpecs/S1.42AK-BMGHDIAG2_PLAN.md'
+      - 'AnalysisTools/validate_s142ak_bmghdiag2_source.py'
+      - 'AnalysisTools/verify_s142ak_lll_1712_provenance.py'
+      - 'AnalysisTools/validate_s142ak_bmghdiag2_build.py'
+      - 'BuildSystem/profile_builder.py'
+      - 'Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z'
+      - 'ProfileSources/S1.42AK/**'
+      - '.github/workflows/s142ak-bmghdiag2-build-static.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Test provenance, runtime identity, selection and observation policies
+        run: dotnet run --project Patches/S142AKBMGHDiag2/Tests/Policy.Tests.csproj -c Release
+
+      - name: Verify source fail-closed successor contract
+        run: python AnalysisTools/validate_s142ak_bmghdiag2_source.py
+
+      - name: Freshly verify exact S1.42AK LLL 1.7.12 provenance
+        run: python AnalysisTools/verify_s142ak_lll_1712_provenance.py
+
+      - name: Build isolated unarmed diagnostic review artifact
+        run: python BuildSystem/profile_builder.py BuildSpecs/S1.42AK-BMGHDIAG2.json
+
+      - name: Verify exact archive delta, compiled DLL and inactive lifecycle
+        run: python AnalysisTools/validate_s142ak_bmghdiag2_build.py
+
+      - name: Upload unarmed diagnostic review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: S1.42AK-BMGHDIAG2-review-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            Profiles/LC V1 S1.42AK-BMGHDIAG2 Black Mesa Greenhouse Diagnostic.r2z
+            ProfileSources/S1.42AK-BMGHDIAG2/
+            BuildSpecs/S1.42AK-BMGHDIAG2_BUILD_EVIDENCE/
+            c3f17-4-s142ak-lll-provenance-output/
