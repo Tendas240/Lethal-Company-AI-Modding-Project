@@ -1,0 +1,88 @@
+name: C3F18 finalize BMGHDIAG2 main integration
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/c3f18-finalize-bmghdiag2-main-integration.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Canonicalize completed main integration
+        run: python RepositoryTools/c3f18_finalize_bmghdiag2_main_integration.py
+
+      - name: Regenerate protected current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Verify generated current navigation
+        run: python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate current live-state semantics
+        run: python RepositoryTools/current_state_semantic_validator.py
+
+      - name: Validate repository knowledge architecture
+        run: python RepositoryTools/knowledge_architecture_validator.py
+
+      - name: Validate published artifact and runtime bytes
+        run: python RepositoryTools/artifact_byte_integrity_validator.py
+
+      - name: Re-run BMGHDIAG2 source/static contract in main-integrated state
+        run: python AnalysisTools/validate_s142ak_bmghdiag2_source.py
+
+      - name: Verify main integration state and live controllers remain inactive
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          state=json.loads(Path('Current/CURRENT_STATE.json').read_text())
+          current=json.loads(Path('BuildSpecs/current.json').read_text())
+          selected=state['selected_scope']
+          review=selected['diagnostic_successor_review']
+          assert state['active_candidate'] is None
+          assert state['runtime_test_outstanding'] is False
+          assert current['enabled'] is False
+          assert current['build_id']=='IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS'
+          assert Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text().strip()=='S1.42AK'
+          assert state['controllers']['runtime_active_build']=='S1.42AK'
+          assert selected['status']=='PHASE_C3F18_BMGHDIAG2_MAIN_INTEGRATION_PASS_RUNTIME_ACTIVATION_NEXT'
+          assert review['published'] is True
+          assert review['main_integrated'] is True
+          assert review['runtime_armed'] is False
+          assert review['integration_pr']==144
+          assert review['main_integration_commit']=='1dc18d5a37b5560d282174e11460672b508382ba'
+          print('PASS: BMGHDIAG2 main integration canonicalized with every runtime controller inactive')
+          PY
+
+      - name: Check patch hygiene
+        run: git diff --check
+
+      - name: Commit canonical main-integration checkpoint and remove one-shot machinery
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm RepositoryTools/c3f18_finalize_bmghdiag2_main_integration.py
+          rm .github/workflows/c3f18-finalize-bmghdiag2-main-integration.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --quiet && { echo 'No main-integration canonicalization changes staged.' >&2; exit 1; }
+          git commit -m 'Canonicalize BMGHDIAG2 main integration checkpoint'
+          git push origin HEAD:main
