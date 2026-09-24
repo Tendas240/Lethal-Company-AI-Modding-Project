@@ -1,0 +1,26 @@
+name: S1.42AK BMDSFIX1 source and pure static gate
+on:
+  pull_request:
+    paths:
+      - 'Patches/S142AKBMDSFix1/**'
+      - 'AnalysisTools/validate_s142ak_bmdsfix1_source.py'
+      - 'BuildSpecs/S1.42AK-BMDSFIX1_PLAN.md'
+      - '.github/workflows/s142ak-bmdsfix1-source-static.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Test pair-scoped size clamp policy
+        run: dotnet run --project Patches/S142AKBMDSFix1/Tests/Policy.Tests.csproj -c Release
+      - name: Compile BMDSFIX1 plugin source only
+        working-directory: Patches/S142AKBMDSFix1
+        run: dotnet build S142AKBMDSFix1.csproj -c Release
+      - name: Verify source-only fail-closed fix contract
+        run: python AnalysisTools/validate_s142ak_bmdsfix1_source.py
