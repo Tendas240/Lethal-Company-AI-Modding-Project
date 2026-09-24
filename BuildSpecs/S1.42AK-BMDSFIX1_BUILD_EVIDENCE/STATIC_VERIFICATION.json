@@ -17,5 +17,5 @@
   "package_changes": 0,
   "config_changes": 0,
   "runtime_armed": false,
-  "qualification": "Persisted from successful PR #149 inactive CI review build. The reviewed profile remains an Actions artifact only; BuildSpecs/current.json and RuntimeInbox/ACTIVE_BUILD.txt remain unchanged and no runtime test is authorized."
+  "qualification": "Ephemeral CI review build and exact archive-delta validation only. BuildSpecs/current.json and RuntimeInbox/ACTIVE_BUILD.txt remain unchanged; no runtime test is authorized."
 }
