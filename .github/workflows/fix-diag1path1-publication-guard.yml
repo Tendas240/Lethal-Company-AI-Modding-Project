@@ -26,18 +26,22 @@ jobs:
           from pathlib import Path
           p = Path('.github/workflows/s142ak-bmdsfix1-diag1path1-publish-reviewed.yml')
           text = p.read_text(encoding='utf-8')
-          old = """          def get_profile_name(data):
-              text = data.decode('utf-8-sig').replace('\\r\\n', '\\n').replace('\\r', '\\n')
-              match = re.fullmatch(r'.*?^profileName:\\s*(.*?)\\s*$', text, flags=re.M | re.S)
-              require(match is not None, 'profileName missing')
-              return match.group(1)
-"""
-          new = """          def get_profile_name(data):
-              text = data.decode('utf-8-sig').replace('\\r\\n', '\\n').replace('\\r', '\\n')
-              names = [line[len('profileName:'):].strip() for line in text.splitlines() if line.startswith('profileName:')]
-              require(len(names) == 1, f'profileName count mismatch: {len(names)}')
-              return names[0]
-"""
+          old_lines = [
+              "          def get_profile_name(data):",
+              "              text = data.decode('utf-8-sig').replace('\\r\\n', '\\n').replace('\\r', '\\n')",
+              "              match = re.fullmatch(r'.*?^profileName:\\s*(.*?)\\s*$', text, flags=re.M | re.S)",
+              "              require(match is not None, 'profileName missing')",
+              "              return match.group(1)",
+          ]
+          new_lines = [
+              "          def get_profile_name(data):",
+              "              text = data.decode('utf-8-sig').replace('\\r\\n', '\\n').replace('\\r', '\\n')",
+              "              names = [line[len('profileName:'):].strip() for line in text.splitlines() if line.startswith('profileName:')]",
+              "              require(len(names) == 1, f'profileName count mismatch: {len(names)}')",
+              "              return names[0]",
+          ]
+          old = '\n'.join(old_lines) + '\n'
+          new = '\n'.join(new_lines) + '\n'
           if text.count(old) != 1:
               raise RuntimeError(f'expected exactly one faulty parser block, got {text.count(old)}')
           p.write_text(text.replace(old, new), encoding='utf-8')
