@@ -101,7 +101,7 @@ for marker in (
     f"published profile SHA-256: `{PROFILE_SHA}`",
     f"published `S142AKBMGHDiag2.dll` SHA-256: `{DLL_SHA}`",
     "zero package changes, zero config changes",
-    "not merged to `main`",
+    "exists only on the dedicated working branch until later PR/CI/merge handling",
 ):
     require(marker in publication, "Publication evidence drift or missing marker: " + marker)
 
