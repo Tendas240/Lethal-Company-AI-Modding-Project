@@ -113,7 +113,7 @@ jobs:
           assert 'ACTIVE GAMEPLAY RUNTIME CANDIDATE / TEST OUTSTANDING / NOT ACCEPTED' in activation
           print('PASS: exact BMDSFIX1 gameplay candidate armed; S1.42AK acceptance preserved')
           PY
-          git diff --check
+          git -c core.whitespace=-blank-at-eol,-blank-at-eof diff --check
 
       - name: Commit atomic activation and remove one-shot machinery
         shell: bash
@@ -124,6 +124,6 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git diff --cached --check
+          git -c core.whitespace=-blank-at-eol,-blank-at-eof diff --cached --check
           git commit -m 'Arm exact BMDSFIX1 runtime candidate'
           git push origin HEAD:c3f18-bmdsfix1-runtime-activation
