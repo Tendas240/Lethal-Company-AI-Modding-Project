@@ -56,13 +56,13 @@ The same run nevertheless proves that normal LethalLevelLoader matching on Black
 
 Black Mesa x Greenhouse remains `NOT_YET_PROVEN`; this is diagnostic-tool failure evidence, not a demonstrated Greenhouse incompatibility. Decision authority: `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`. Do not rerun the same BMGHDIAG1 bytes.
 
-## BMGHDIAG2 exact-byte publication — working-branch pass
+## BMGHDIAG2 exact-byte publication — main integration pass
 
-C3F18's provenance-safe `S1.42AK-BMGHDIAG2` successor has passed source/static review and the separate inactive review build. The exact reviewed bytes from run `35990294162` / artifact `10803912824` have now also been published byte-for-byte on the dedicated working branch by publication run `35994918640` at commit `0482b9e24521a1490529e4d81a8a397b61413f11`. No profile or diagnostic DLL rebuild occurred.
+C3F18's provenance-safe `S1.42AK-BMGHDIAG2` successor has passed source/static review, the separate inactive review build, exact-byte publication, and main integration. PR #144 exact head `984feb61d9a23296ec111f377639c090cf4f952b` merged at `1dc18d5a37b5560d282174e11460672b508382ba` after Knowledge Architecture run `35996531577`, source/pure-static run `35996531589`, and publication-aware archive run `35996531593` all passed.
 
-The published profile SHA-256 is `56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2` and the diagnostic DLL SHA-256 is `51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775`. The 337-member archive contract remains exact: one new BMGHDIAG2 DLL, `export.r2x` identity metadata only, zero package/config changes, LLL `b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c`, and accepted normalizer `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`. `ProfileSources/S1.42AK-BMGHDIAG2/` was reconstructed from the exact reviewed `.r2z`; its 337-row FILE_INDEX matches review evidence and includes the previously artifact-upload-omitted hidden `.LCMaxSoundsFix.cfg` at index 1 with the reviewed 621-byte / `0093bae709cec57fd3f4f3bc5af22231b16944a666768e7ecf879430693f73a2` identity. Publication evidence: `BuildSpecs/S1.42AK-BMGHDIAG2_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`.
+The integration archive gate selected published-validation mode: no profile rebuild and no Actions artifact upload occurred. The exact main-integrated profile SHA-256 remains `56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2` and diagnostic DLL SHA-256 remains `51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775`. The 337-member archive/index contract, zero package/config drift, LLL `b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c`, accepted normalizer `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`, and reconstructed readable ProfileSources snapshot remain unchanged. Integration evidence: `BuildSpecs/S1.42AK-BMGHDIAG2_BUILD_EVIDENCE/MAIN_INTEGRATION_CHECKPOINT.md`.
 
-BMGHDIAG2 is **exact-byte published on the working branch, but not yet integrated into main, not runtime-armed and not accepted**. Black Mesa x Greenhouse remains `NOT_YET_PROVEN`.
+BMGHDIAG2 is **published on main but not runtime-armed and not accepted**. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` until a later explicit diagnostic runtime run.
 
 ## Live execution state
 
@@ -71,15 +71,15 @@ BMGHDIAG2 is **exact-byte published on the working branch, but not yet integrate
 - Active gameplay candidate: **none**.
 - Active diagnostic runtime target: **none**.
 - Runtime test outstanding: **no**.
-- Selected scope: **Universal Interior Viability / Equal Availability — Phase C3F18 BMGHDIAG2 exact-byte publication passed on working branch; PR/CI/main integration next**.
+- Selected scope: **Universal Interior Viability / Equal Availability — Phase C3F18 BMGHDIAG2 exact bytes integrated on main; separate runtime activation next**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
 - No gameplay successor or universal override is armed.
 
 ## Exact next project action
 
-Integrate the exact-byte S1.42AK-BMGHDIAG2 publication from branch c3f18-bmghdiag2-exact-publication via PR and exact-head CI, preserving profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2, diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775, the reconstructed 337-row ProfileSources snapshot and publication evidence. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false throughout integration. Do not Gale-import or arm gameplay/runtime; runtime activation remains a later separate atomic checkpoint after main integration.
+Prepare a separate atomic runtime-activation checkpoint for the exact main-integrated S1.42AK-BMGHDIAG2 profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 / diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775. That later activation may point RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK-BMGHDIAG2 and set runtime_test_outstanding=true only while preserving accepted/latest normal baseline S1.42AK and keeping BuildSpecs/current.json disabled. Do not change gameplay/config/package bytes. The activation response must provide the repository-derived Gale import command and exact build-specific one-line PowerShell runtime-log uploader.
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. No diagnostic is currently runtime-armed. BMGHDIAG2 is exact-byte published on the dedicated working branch but remains non-runtime until publication integration and a later explicit atomic activation step; only that later activation may authorize another gameplay run.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. No diagnostic is currently runtime-armed. BMGHDIAG2 exact bytes are integrated on main but remain non-runtime until a later explicit atomic activation step; only that later activation may authorize another gameplay run.

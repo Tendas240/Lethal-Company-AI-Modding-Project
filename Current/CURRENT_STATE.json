@@ -44,13 +44,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C3F18_BMGHDIAG2_EXACT_PUBLICATION_PASS_INTEGRATION_NEXT",
+    "status": "PHASE_C3F18_BMGHDIAG2_MAIN_INTEGRATION_PASS_RUNTIME_ACTIVATION_NEXT",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "S1.42AK-BMGHDIAG2 has passed source/static review, the separate inactive review build, and exact-byte publication on the dedicated working branch. Publication workflow run 35994918640 materialized the exact reviewed profile from review run 35990294162 / artifact 10803912824 at commit 0482b9e24521a1490529e4d81a8a397b61413f11, preserving profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 and diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775. The 337-member archive contract was rechecked, ProfileSources was reconstructed from the reviewed .r2z with repository snapshot semantics, the 337-row FILE_INDEX remained data-identical, and the hidden BepInEx/config/.LCMaxSoundsFix.cfg snapshot is present at index 1 with its reviewed size/hash. LLL remains b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c, the accepted normalizer remains 901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06, and package/config drift is zero. The publication is not yet integrated into main and remains not runtime-armed/not accepted. Black Mesa x Greenhouse remains NOT_YET_PROVEN; S1.42AK, Black Mesa Dawn/native ownership, Greenhouse availability, accepted normalization and the B3 matrix remain unchanged.",
-    "analysis_contract": "Treat S1.42AK-BMGHDIAG2 as exact-byte published on the dedicated working branch from the pinned reviewed artifact, but not yet integrated into main, not runtime-armed and not accepted. The next bounded checkpoint is publication integration: open/review the working-branch PR, require exact-head CI to pass, and merge only the exact branch state into main while BuildSpecs/current.json remains disabled, RuntimeInbox/ACTIVE_BUILD.txt remains S1.42AK, active_candidate remains null and runtime_test_outstanding remains false. Only after main integration may a later separate atomic runtime-activation step arm these exact published bytes. Preserve S1.42AB InteriorWeightNormalization, Black Mesa ownership, Greenhouse availability, the B3 matrix, Shatteredrooms exclusions and the separate Black-Mesa/Pikmin routing scope.",
-    "next_action": "Integrate the exact-byte S1.42AK-BMGHDIAG2 publication from branch c3f18-bmghdiag2-exact-publication via PR and exact-head CI, preserving profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2, diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775, the reconstructed 337-row ProfileSources snapshot and publication evidence. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false throughout integration. Do not Gale-import or arm gameplay/runtime; runtime activation remains a later separate atomic checkpoint after main integration.",
+    "finding": "S1.42AK-BMGHDIAG2 exact reviewed bytes are now integrated into main by PR #144, exact head 984feb61d9a23296ec111f377639c090cf4f952b, merge commit 1dc18d5a37b5560d282174e11460672b508382ba. Exact-head CI passed Knowledge Architecture run 35996531577, source/pure-static run 35996531589, and publication-aware archive run 35996531593; the archive gate used published-validation mode and skipped both rebuild and artifact upload. The main-integrated profile remains SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2, diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775, with the same 337-member archive/index contract, zero package/config drift, LLL b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c, and accepted normalizer 901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06. All live controllers remain inactive: BuildSpecs/current.json is disabled, RuntimeInbox/ACTIVE_BUILD.txt remains S1.42AK, active_candidate is null and runtime_test_outstanding is false. Black Mesa x Greenhouse remains NOT_YET_PROVEN until a later explicit diagnostic runtime run.",
+    "analysis_contract": "Treat S1.42AK-BMGHDIAG2 as exact-byte published and integrated into main, but not runtime-armed and not accepted. Any runtime activation must target only profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 / diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775 directly over accepted S1.42AK and must be a separate atomic lifecycle/controller transition. Until that later step, keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Preserve S1.42AB InteriorWeightNormalization, Black Mesa ownership, Greenhouse availability, the B3 matrix, Shatteredrooms exclusions and the separate Black-Mesa/Pikmin routing scope.",
+    "next_action": "Prepare a separate atomic runtime-activation checkpoint for the exact main-integrated S1.42AK-BMGHDIAG2 profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 / diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775. That later activation may point RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK-BMGHDIAG2 and set runtime_test_outstanding=true only while preserving accepted/latest normal baseline S1.42AK and keeping BuildSpecs/current.json disabled. Do not change gameplay/config/package bytes. The activation response must provide the repository-derived Gale import command and exact build-specific one-line PowerShell runtime-log uploader.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -246,7 +246,7 @@
     "diagnostic_runtime_finding": "Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md",
     "diagnostic_successor_review": {
       "build_id": "S1.42AK-BMGHDIAG2",
-      "status": "EXACT_BYTES_PUBLISHED_ON_WORKING_BRANCH_NOT_MAIN_INTEGRATED_NOT_ARMED_NOT_ACCEPTED",
+      "status": "EXACT_BYTES_MAIN_INTEGRATED_NOT_ARMED_NOT_ACCEPTED",
       "base_build_id": "S1.42AK",
       "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
       "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
@@ -286,10 +286,17 @@
       "publication_branch": "c3f18-bmghdiag2-exact-publication",
       "publication_workflow_run": 35994918640,
       "published_profile_commit": "0482b9e24521a1490529e4d81a8a397b61413f11",
-      "main_integrated": false
+      "main_integrated": true,
+      "integration_pr": 144,
+      "integration_pr_head": "984feb61d9a23296ec111f377639c090cf4f952b",
+      "main_integration_commit": "1dc18d5a37b5560d282174e11460672b508382ba",
+      "integration_knowledge_architecture_run": 35996531577,
+      "integration_source_static_run": 35996531589,
+      "integration_archive_gate_run": 35996531593,
+      "integration_checkpoint": "BuildSpecs/S1.42AK-BMGHDIAG2_BUILD_EVIDENCE/MAIN_INTEGRATION_CHECKPOINT.md"
     }
   },
-  "next_action": "Integrate the exact-byte S1.42AK-BMGHDIAG2 publication from branch c3f18-bmghdiag2-exact-publication via PR and exact-head CI, preserving profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2, diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775, the reconstructed 337-row ProfileSources snapshot and publication evidence. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false throughout integration. Do not Gale-import or arm gameplay/runtime; runtime activation remains a later separate atomic checkpoint after main integration.",
+  "next_action": "Prepare a separate atomic runtime-activation checkpoint for the exact main-integrated S1.42AK-BMGHDIAG2 profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 / diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775. That later activation may point RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK-BMGHDIAG2 and set runtime_test_outstanding=true only while preserving accepted/latest normal baseline S1.42AK and keeping BuildSpecs/current.json disabled. Do not change gameplay/config/package bytes. The activation response must provide the repository-derived Gale import command and exact build-specific one-line PowerShell runtime-log uploader.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,

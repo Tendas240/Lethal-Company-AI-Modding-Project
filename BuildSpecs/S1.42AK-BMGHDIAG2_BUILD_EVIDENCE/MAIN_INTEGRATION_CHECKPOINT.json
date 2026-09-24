@@ -1,0 +1,20 @@
+{
+  "status": "MAIN_INTEGRATION_PASS_NOT_RUNTIME_ARMED_NOT_ACCEPTED",
+  "build_id": "S1.42AK-BMGHDIAG2",
+  "integration_pr": 144,
+  "integration_pr_head": "984feb61d9a23296ec111f377639c090cf4f952b",
+  "main_merge_commit": "1dc18d5a37b5560d282174e11460672b508382ba",
+  "knowledge_architecture_run": 35996531577,
+  "source_static_run": 35996531589,
+  "published_archive_gate_run": 35996531593,
+  "review_run": 35990294162,
+  "review_artifact_id": 10803912824,
+  "publication_run": 35994918640,
+  "profile_sha256": "56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2",
+  "diagnostic_dll_sha256": "51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775",
+  "archive_members_verified": 337,
+  "rebuild_during_integration": false,
+  "artifact_upload_during_integration": false,
+  "runtime_armed": false,
+  "runtime_test_outstanding": false
+}
