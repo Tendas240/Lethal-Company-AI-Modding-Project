@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Import exact active S1.42AK-BMDSFIX1-DIAG1 through the canonical repository-driven Gale v2.4 launcher, run the bounded diagnostic on Black Mesa, and capture deterministic DeepSewersFlow selection plus inherited BMDSFIX1 application/generation/landing evidence. Then upload that run's exact BepInEx/LogOutput.log with the DIAG1 build-specific uploader. Treat the result as supporting diagnostic evidence only; the regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding until separately satisfied.
+Perform the separate S1.42AK-BMDSFIX1-DIAG1PATH1 exact-byte publication checkpoint from the frozen review source Actions artifact 10835876163 / review run 36063701766, materializing only the reviewed profile bytes SHA-256 0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6 and readable snapshot, and revalidate the identity-only delta without changing runtime controllers. Do not import or rerun the long-name DIAG1 profile. Profile-index reconciliation and explicit DIAG1PATH1 runtime activation remain later gates; the regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding and unwaived.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

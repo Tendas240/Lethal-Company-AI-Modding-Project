@@ -61,13 +61,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C3F18_BMDSFIX1_DIAG1_RUNTIME_ACTIVE_SUPPORTING_EVIDENCE_OUTSTANDING",
+    "status": "PHASE_C3F18_DIAG1_PRELOADER_BLOCKED_DIAG1PATH1_REVIEWED_PUBLICATION_OUTSTANDING",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "Exact published and profile-index-reconciled S1.42AK-BMDSFIX1-DIAG1 bytes are now the active diagnostic runtime target solely to deterministically select Black Mesa x DeepSewersFlow and collect supporting target evidence. The diagnostic profile remains SHA-256 31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e with diagnostic DLL SHA-256 3b9954b21fc2f1214e73b4021c8ab278f71420583e0e2e9f478f981fc64b20e1 over the exact BMDSFIX1 parent 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0. S1.42AK-BMDSFIX1 remains the active gameplay candidate and remains not accepted; its regular exact-byte Black Mesa x DeepSewersFlow qualification is not waived or replaced by DIAG1. BuildSpecs/current.json remains disabled and no profile, DLL, config or package bytes are changed by activation.",
-    "analysis_contract": "Keep S1.42AK-BMDSFIX1 as the active gameplay candidate / not accepted and treat S1.42AK-BMDSFIX1-DIAG1 only as the active diagnostic runtime overlay for deterministic supporting Black Mesa x DeepSewersFlow evidence. Require [BMDSFIX1-DIAG1] ARMED without refusal, [BMDSFIX1-DIAG1] SELECTED Black Mesa / DeepSewersFlow with normalized rarity=100 and pool N->1, the inherited [BMDSFIX1] ARMED and target APPLIED multiplier ->1 markers, completed dungeon generation and normal landed gameplay without the prior persistent retry/Entering-the-atmosphere failure or a new severe target-attributable regression. Never accept DIAG1, never infer BMDSFIX1 acceptance from DIAG1 evidence, never waive the regular exact-byte BMDSFIX1 target gate, and do not mix the separate Black Mesa x Greenhouse/BMGHDIAG scope into this diagnostic.",
-    "next_action": "Import exact active S1.42AK-BMDSFIX1-DIAG1 through the canonical repository-driven Gale v2.4 launcher, run the bounded diagnostic on Black Mesa, and capture deterministic DeepSewersFlow selection plus inherited BMDSFIX1 application/generation/landing evidence. Then upload that run's exact BepInEx/LogOutput.log with the DIAG1 build-specific uploader. Treat the result as supporting diagnostic evidence only; the regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding until separately satisfied.",
+    "finding": "The exact published/indexed S1.42AK-BMDSFIX1-DIAG1 remains the repository runtime/evidence pointer, but two consecutive local launches are now bounded preloader-block evidence: the long Gale profile identity produces 260/262-character nested runtime paths and BepInEx/Mono fails before any diagnostic arming or selection evidence. The long-name DIAG1 must not be rerun. S1.42AK-BMDSFIX1-DIAG1PATH1 is the separately reviewed identity-only successor with short profile name LC V1 S1.42AK-D1P1; inactive review build passed from frozen artifact 10835876163 with profile SHA-256 0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6, changing only export.r2x profileName while preserving all diagnostic/gameplay DLL, package and config bytes. DIAG1PATH1 is not yet published, indexed or runtime-armed. S1.42AK-BMDSFIX1 remains the active gameplay candidate / not accepted and its regular exact-byte Black Mesa x DeepSewersFlow qualification is not waived.",
+    "analysis_contract": "Keep S1.42AK-BMDSFIX1 as the active gameplay candidate / not accepted. Treat S1.42AK-BMDSFIX1-DIAG1 as the still-routed historical diagnostic target that is locally preloader-blocked and must not be rerun. Treat S1.42AK-BMDSFIX1-DIAG1PATH1 only as the inactive reviewed identity-only successor until exact-byte publication, profile-index reconciliation and an explicit later runtime-activation checkpoint complete. Do not infer BMDSFIX1 acceptance from either diagnostic, do not waive the regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow gate, and do not mix the separate Black Mesa x Greenhouse/BMGHDIAG scope into this successor.",
+    "next_action": "Perform the separate S1.42AK-BMDSFIX1-DIAG1PATH1 exact-byte publication checkpoint from the frozen review source Actions artifact 10835876163 / review run 36063701766, materializing only the reviewed profile bytes SHA-256 0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6 and readable snapshot, and revalidate the identity-only delta without changing runtime controllers. Do not import or rerun the long-name DIAG1 profile. Profile-index reconciliation and explicit DIAG1PATH1 runtime activation remain later gates; the regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding and unwaived.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -282,7 +282,7 @@
       "index_reconciliation": "Current/179_S1.42AK_BMDSFIX1_DIAG1_PROFILE_INDEX_MAPPING_RECONCILIATION.md",
       "activation_record": "Current/180_S1.42AK_BMDSFIX1_DIAG1_RUNTIME_ACTIVATION.md",
       "runtime_role": "DIAGNOSTIC_ONLY_DETERMINISTIC_BLACK_MESA_DEEP_SEWERS_SELECTOR_SUPPORTING_EVIDENCE_NEVER_ACCEPT",
-      "runtime_validation_status": "RUNTIME_TEST_OUTSTANDING_SUPPORTING_EVIDENCE_ONLY_NOT_ACCEPTED"
+      "runtime_validation_status": "PRELOADER_BLOCKED_BEFORE_DIAGNOSTIC_EXECUTION_DO_NOT_RERUN_DIAG1PATH1_PUBLICATION_OUTSTANDING"
     },
     "diagnostic_runtime_finding": "Current/173_S1.42AK_BMGHDIAG2_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL_AND_DEEP_SEWERS_INCIDENT.md",
     "bmdsfix1_source_repair": {
@@ -401,9 +401,49 @@
     "candidate_build_id": "S1.42AK-BMDSFIX1",
     "bmdsfix1_runtime_activation": "Current/174_S1.42AK_BMDSFIX1_RUNTIME_ACTIVATION.md",
     "bmdsfix1_partial_runtime_decision": "Current/175_S1.42AK_BMDSFIX1_PARTIAL_RUNTIME_EVIDENCE_NON_TARGET_CONTROL.md",
-    "bmdsfix1_partial_runtime_evidence": "RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/"
+    "bmdsfix1_partial_runtime_evidence": "RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/",
+    "diagnostic_launch_block_record": "Current/181_S1.42AK_BMDSFIX1_DIAG1_PATH_LENGTH_BLOCK_AND_DIAG1PATH1_SOURCE_STATIC.md",
+    "diagnostic_successor_review_checkpoint": "Current/182_S1.42AK_BMDSFIX1_DIAG1PATH1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md",
+    "diagnostic_successor_revision": {
+      "build_id": "S1.42AK-BMDSFIX1-DIAG1PATH1",
+      "status": "INACTIVE_REVIEW_BUILD_PASS_NOT_PUBLISHED_NOT_INDEXED_NOT_ARMED",
+      "classification": "DIAGNOSTIC_SUPPORT_ONLY_NEVER_ACCEPT",
+      "base_build_id": "S1.42AK-BMDSFIX1-DIAG1",
+      "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z",
+      "base_sha256": "31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e",
+      "profile_name": "LC V1 S1.42AK-D1P1",
+      "output_profile": "Profiles/LC V1 S1.42AK-D1P1.r2z",
+      "reviewed_head": "8c6b5b60994985d15c087a72d52f8c178c15d697",
+      "review_run": 36063701766,
+      "review_artifact_id": 10835876163,
+      "review_artifact_zip_sha256": "b38036a3ae1e7d49c9890a8d9343252d8d0e19cfcde854b2410a91519968b90d",
+      "profile_sha256": "0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6",
+      "diagnostic_dll_sha256": "3b9954b21fc2f1214e73b4021c8ab278f71420583e0e2e9f478f981fc64b20e1",
+      "bmdsfix1_dll_sha256": "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
+      "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+      "archive_members_verified": 338,
+      "changed_existing_members": [
+        "export.r2x"
+      ],
+      "added_members": [],
+      "removed_members": [],
+      "package_changes": 0,
+      "config_changes": 0,
+      "local_plugin_builds": 0,
+      "observed_old_path_lengths": [
+        260,
+        262
+      ],
+      "reviewed_new_path_lengths": [
+        215,
+        217
+      ],
+      "review_checkpoint": "Current/182_S1.42AK_BMDSFIX1_DIAG1PATH1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md",
+      "published": false,
+      "runtime_armed": false
+    }
   },
-  "next_action": "Import exact active S1.42AK-BMDSFIX1-DIAG1 through the canonical repository-driven Gale v2.4 launcher, run the bounded diagnostic on Black Mesa, and capture deterministic DeepSewersFlow selection plus inherited BMDSFIX1 application/generation/landing evidence. Then upload that run's exact BepInEx/LogOutput.log with the DIAG1 build-specific uploader. Treat the result as supporting diagnostic evidence only; the regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding until separately satisfied.",
+  "next_action": "Perform the separate S1.42AK-BMDSFIX1-DIAG1PATH1 exact-byte publication checkpoint from the frozen review source Actions artifact 10835876163 / review run 36063701766, materializing only the reviewed profile bytes SHA-256 0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6 and readable snapshot, and revalidate the identity-only delta without changing runtime controllers. Do not import or rerun the long-name DIAG1 profile. Profile-index reconciliation and explicit DIAG1PATH1 runtime activation remain later gates; the regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding and unwaived.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
