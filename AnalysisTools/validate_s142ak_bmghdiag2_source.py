@@ -142,10 +142,10 @@ require("dotnet run --project Patches/S142AKBMGHDiag2/Tests/Policy.Tests.csproj"
         "Pure policy test command missing")
 require("dotnet build S142AKBMGHDiag2.csproj -c Release" in workflow,
         "Plugin compile command missing")
-require("NOT BUILT" in plan and "NOT ARMED" in plan, "Human plan runtime/build boundary drift")
+require("NOT PUBLISHED" in plan and "NOT ARMED" in plan, "Human plan publication/runtime boundary drift")
 
 report = {
-    "status": "SOURCE_STATIC_CONTRACT_PASS_NOT_BUILT_NOT_ARMED",
+    "status": "SOURCE_STATIC_CONTRACT_PASS_NOT_PUBLISHED_NOT_ARMED",
     "candidate_id": "S1.42AK-BMGHDIAG2",
     "harmony_surfaces": 2,
     "gameplay_mutating_surfaces": 1,
