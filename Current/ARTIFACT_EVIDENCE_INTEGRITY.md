@@ -53,8 +53,9 @@ BMGHDIAG2 loaded but refused before arming with `EntranceTeleport manifest modul
 
 - **S1.42AJ** — deferred full-normal gate / retained exact balanced parent, not active.
 - **S1.42AK-BMDSFIX1** — active gameplay runtime candidate directly over accepted S1.42AK; profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`; BMDSFIX1 DLL SHA-256 `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92`; runtime evidence outstanding; not accepted.
+- **S1.42AK-BMDSFIX1-DIAG1** — active diagnostic runtime target over exact BMDSFIX1; profile SHA-256 `31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e`; DIAG1 DLL SHA-256 `3b9954b21fc2f1214e73b4021c8ab278f71420583e0e2e9f478f981fc64b20e1`; supporting deterministic Deep Sewers evidence only; never a gameplay base or acceptance candidate.
 
-BMDSFIX1 exact reviewed bytes are published and main-integrated. Runtime activation changes only lifecycle/controller/evidence routing; no gameplay/config/package/profile/plugin bytes are regenerated or altered. The candidate is scoped only to Black Mesa x `DeepSewersFlow`. Black Mesa x Greenhouse remains separate and unproven.
+BMDSFIX1 exact reviewed bytes remain the active gameplay candidate and are unchanged. `RuntimeInbox/ACTIVE_BUILD.txt` now points to exact DIAG1 solely for Gale target resolution and diagnostic evidence attribution; activation changes only lifecycle/controller/evidence routing and regenerates no gameplay/config/package/profile/plugin bytes. DIAG1 may supply supporting deterministic Black Mesa x `DeepSewersFlow` evidence but cannot qualify or accept BMDSFIX1. Black Mesa x Greenhouse remains separate and unproven.
 
 ## Completed diagnostic evidence: S1.42AI-DIAG1R3
 
