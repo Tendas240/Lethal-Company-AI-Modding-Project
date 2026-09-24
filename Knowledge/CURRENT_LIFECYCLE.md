@@ -68,13 +68,11 @@ The diagnostic therefore failed closed before targeted Greenhouse selection/topo
 
 The same normal-fallback session separately exposed a Black Mesa x Deep Sewers generation incident. LLL logged `CurrentLevel: Black Mesa DungeonSize Is: 3.25 | Leaving DungeonSize As: 4.875`, ButteRyBalance logged final multiplier `4.87`, normal LLL history selected `Deep Sewers`, and DunGenPlus emitted repeated `NoMatchingDoorwayPlacementResult` / `TileIsCollidingPlacementResult` failures without a later generation-complete marker in the captured post-selection portion. This is consistent with the reported persistent `Entering the atmosphere` loading state but does not prove every historical atmosphere hang shares that cause.
 
-## BMDSFIX1 source/static repair — draft PR open, not built
+## BMDSFIX1 source/static repair — integrated, not built
 
-The pair-scoped Deep Sewers mitigation is isolated as `S1.42AK-BMDSFIX1` source/static work in draft PR **#146**, branch `fix/s142ak-bmdsfix1`.
+The pair-scoped Deep Sewers mitigation `S1.42AK-BMDSFIX1` is now source/static integrated into `main` through PR **#146**. The synchronized exact source head is `efa1d612594281aa519c1df5e35b06e569c50453`; Knowledge Architecture run `36011893656` and BMDSFIX1 source/static run `36011893689` both succeeded on that head. Main integration commit: `bbda8c934d7108eac2f5346d1d817fd548c3f687`.
 
-At the current decision point its exact source head is `3e95889588031197dd8051ca27be02754794969d`; Knowledge Architecture run `36004798426` and BMDSFIX1 source/static run `36004798422` both succeeded on that head.
-
-BMDSFIX1 remains source/static only. It is not a profile, not runtime-armed, not an active candidate and not accepted. Its branch must be synchronized against the repaired `main` and revalidated for the resulting integration state before source merge. A later inactive review build must be a separate step directly over accepted S1.42AK.
+BMDSFIX1 remains source/static only. No BMDSFIX1 profile has been built, published, runtime-armed or accepted. The next gate is a separately versioned inactive review build directly over exact accepted S1.42AK; runtime activation is explicitly later.
 
 ## Live execution state
 
@@ -83,16 +81,16 @@ BMDSFIX1 remains source/static only. It is not a profile, not runtime-armed, not
 - Active gameplay candidate: **none**.
 - Active diagnostic runtime target: **none**.
 - Runtime test outstanding: **no**.
-- Selected scope: **Universal Interior Viability / Equal Availability — BMGHDIAG2 runtime decided inconclusive; BMDSFIX1 source repair open**.
+- Selected scope: **Universal Interior Viability / Equal Availability — BMGHDIAG2 runtime decided inconclusive; BMDSFIX1 source integrated; inactive review build next**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
 - No BMDSFIX1 profile or universal override is armed; S1.42AK remains accepted/latest.
 
 ## Exact next project action
 
-Synchronize draft PR #146 (`S1.42AK-BMDSFIX1` source/static repair) against the repaired `main`, require fresh applicable CI for the resulting integration state, and merge only the source/static repair if green. Do not build, publish, arm or accept a BMDSFIX1 profile in that step.
+Prepare a separately versioned inactive `S1.42AK-BMDSFIX1` review build directly from exact accepted S1.42AK under the normal build/review gates. Do not publish, runtime-arm or accept BMDSFIX1 in the review-build step, and do not change `BuildSpecs/current.json` or `RuntimeInbox/ACTIVE_BUILD.txt` yet.
 
-After source integration, prepare a separately versioned inactive review build directly from exact accepted S1.42AK under the normal build/review gates. Black Mesa x Greenhouse diagnostic repair remains a separate successor-diagnostic task.
+Black Mesa x Greenhouse diagnostic repair remains a separate successor-diagnostic task.
 
 ## Permanent Gale workflow
 

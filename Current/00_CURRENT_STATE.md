@@ -41,7 +41,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Synchronize draft PR #146 (S1.42AK-BMDSFIX1 source/static repair) against the repaired main, require fresh applicable CI for the resulting integration state, and merge only the source/static repair if green. Do not build, publish, arm or accept a BMDSFIX1 profile in that step. After source integration, prepare a separately versioned inactive review build directly from exact accepted S1.42AK under the normal build/review gates. Black Mesa x Greenhouse diagnostic repair remains a separate successor-diagnostic task.
+Prepare a separately versioned inactive S1.42AK-BMDSFIX1 review build directly from exact accepted S1.42AK under the normal build/review gates. Do not publish, runtime-arm or accept BMDSFIX1 in the review-build step, and do not change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt yet. Black Mesa x Greenhouse successor-diagnostic repair remains a separate task.
 
 No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
