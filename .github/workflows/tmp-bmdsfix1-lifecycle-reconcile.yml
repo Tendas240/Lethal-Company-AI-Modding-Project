@@ -131,12 +131,62 @@ jobs:
           python RepositoryTools/current_state_semantic_validator.py
           python RepositoryTools/knowledge_architecture_validator.py
 
-      - name: Commit reconciled lifecycle
+      - name: Commit reconciled lifecycle atomically through Git Data API
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add Current/CURRENT_STATE.json Current/00_CURRENT_STATE.md Current/PROJECT_KNOWLEDGE_MAP.md Knowledge/CURRENT_LIFECYCLE.md Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md
-          git diff --cached --exit-code && { echo 'No lifecycle changes produced'; exit 1; } || true
-          git commit -m 'Reconcile lifecycle after BMDSFIX1 source integration'
-          git push origin HEAD:reconcile/bmdsfix1-source-integrated
+          python - <<'PY'
+          import json
+          import os
+          import subprocess
+          import urllib.request
+          from pathlib import Path
+
+          repo = os.environ['GITHUB_REPOSITORY']
+          token = os.environ['GH_TOKEN']
+          api = f'https://api.github.com/repos/{repo}'
+          branch = 'reconcile/bmdsfix1-source-integrated'
+          files = [
+              'Current/CURRENT_STATE.json',
+              'Current/00_CURRENT_STATE.md',
+              'Current/PROJECT_KNOWLEDGE_MAP.md',
+              'Knowledge/CURRENT_LIFECYCLE.md',
+              'Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md',
+          ]
+
+          def request(method, path, payload=None):
+              data = None if payload is None else json.dumps(payload).encode('utf-8')
+              req = urllib.request.Request(
+                  api + path,
+                  data=data,
+                  method=method,
+                  headers={
+                      'Authorization': f'Bearer {token}',
+                      'Accept': 'application/vnd.github+json',
+                      'X-GitHub-Api-Version': '2022-11-28',
+                      'User-Agent': 'bmdsfix1-lifecycle-reconcile',
+                      'Content-Type': 'application/json',
+                  },
+              )
+              with urllib.request.urlopen(req, timeout=60) as response:
+                  return json.loads(response.read().decode('utf-8'))
+
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          commit_obj = request('GET', f'/git/commits/{head}')
+          base_tree = commit_obj['tree']['sha']
+          entries = []
+          for rel in files:
+              content = Path(rel).read_text(encoding='utf-8')
+              blob = request('POST', '/git/blobs', {'content': content, 'encoding': 'utf-8'})
+              entries.append({'path': rel, 'mode': '100644', 'type': 'blob', 'sha': blob['sha']})
+
+          tree = request('POST', '/git/trees', {'base_tree': base_tree, 'tree': entries})
+          commit = request('POST', '/git/commits', {
+              'message': 'Reconcile lifecycle after BMDSFIX1 source integration',
+              'tree': tree['sha'],
+              'parents': [head],
+          })
+          request('PATCH', f'/git/refs/heads/{branch}', {'sha': commit['sha'], 'force': False})
+          print('atomic lifecycle commit:', commit['sha'])
+          PY
