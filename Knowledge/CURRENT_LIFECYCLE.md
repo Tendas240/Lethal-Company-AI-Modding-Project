@@ -68,11 +68,15 @@ The diagnostic therefore failed closed before targeted Greenhouse selection/topo
 
 The same normal-fallback session separately exposed a Black Mesa x Deep Sewers generation incident. LLL logged `CurrentLevel: Black Mesa DungeonSize Is: 3.25 | Leaving DungeonSize As: 4.875`, ButteRyBalance logged final multiplier `4.87`, normal LLL history selected `Deep Sewers`, and DunGenPlus emitted repeated `NoMatchingDoorwayPlacementResult` / `TileIsCollidingPlacementResult` failures without a later generation-complete marker in the captured post-selection portion. This is consistent with the reported persistent `Entering the atmosphere` loading state but does not prove every historical atmosphere hang shares that cause.
 
-## BMDSFIX1 exact-byte publication — runtime activation
+## BMDSFIX1 runtime — partial non-target evidence, target outstanding
 
-The pair-scoped Deep Sewers mitigation `S1.42AK-BMDSFIX1` has passed source/static review, inactive review build, exact-byte publication and main integration. Its exact main-integrated profile SHA-256 remains `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0` and BMDSFIX1 DLL SHA-256 remains `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92` with 337 members, zero package/config drift, unchanged LLL/normalizer identities and readable `ProfileSources/S1.42AK-BMDSFIX1/`.
+The pair-scoped Deep Sewers mitigation `S1.42AK-BMDSFIX1` remains the exact active gameplay runtime candidate / not accepted. Exact profile SHA-256 remains `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0` and BMDSFIX1 DLL SHA-256 remains `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92`; no gameplay/config/package/profile/plugin bytes changed during this reconciliation.
 
-The exact published bytes are now runtime-armed as the active gameplay candidate under `Current/174_S1.42AK_BMDSFIX1_RUNTIME_ACTIVATION.md`. Accepted baseline remains S1.42AK; BMDSFIX1 is latest/active but not accepted. The runtime gate is scoped only to Black Mesa x `DeepSewersFlow`, and Black Mesa x Greenhouse remains `NOT_YET_PROVEN` under its separate successor-diagnostic task.
+Runtime evidence is ingested at `RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/`, raw log SHA-256 `9a8cf28bbfc050cf9247cffacc890ea1b4e7215329db4ecfc9085f3f8f0ff2cb`. BMDSFIX1 armed without refusal. Black Mesa selected `Substation`, not `DeepSewersFlow`, and no `[BMDSFIX1] APPLIED` marker occurred. That exact-byte run is therefore preserved as the non-target control and does not need to be repeated solely for qualification. It does not qualify the target pair because Deep Sewers was not selected. Decision authority: `Current/175_S1.42AK_BMDSFIX1_PARTIAL_RUNTIME_EVIDENCE_NON_TARGET_CONTROL.md`.
+
+The same Substation run recorded `DungeonSize 6.343513 -> 9.515268` / final multiplier `9.51`, delayed generation completion overlapping an OPEN hangar while `landed=False`, and the user's severe stutter/freeze/apparent second-landing symptom. The finding is preserved separately without claiming a proven root cause or attributing it to BMDSFIX1, which did not apply to Substation.
+
+The remaining runtime gate is only Black Mesa x `DeepSewersFlow`: `[BMDSFIX1] ARMED`, target `APPLIED ... ->1`, completed generation and normal landed gameplay without the prior persistent retry/atmosphere failure or a new severe target-attributable regression. Evidence may accumulate across exact identical candidate bytes; no qualification criterion is waived. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` under its separate successor-diagnostic task.
 
 ## Live execution state
 
@@ -80,15 +84,16 @@ The exact published bytes are now runtime-armed as the active gameplay candidate
 - Latest built artifact: **S1.42AK-BMDSFIX1 — active runtime candidate / not accepted**.
 - Active gameplay candidate: **S1.42AK-BMDSFIX1**.
 - Active diagnostic runtime target: **none**.
-- Runtime test outstanding: **yes — bounded BMDSFIX1 qualification**.
-- Selected scope: **Universal Interior Viability / Equal Availability — BMDSFIX1 runtime active; evidence outstanding**.
+- Runtime test outstanding: **yes — remaining Black Mesa x DeepSewersFlow target qualification only**.
+- Preserved partial evidence: **Black Mesa x Substation non-target control PASS** at `RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/`.
+- Selected scope: **Universal Interior Viability / Equal Availability — BMDSFIX1 partial runtime evidence ingested; target evidence outstanding**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`, guarding exact BMDSFIX1 candidate bytes.
 - `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`.
 - S1.42AK remains the accepted rollback baseline; no Greenhouse diagnostic is armed.
 
 ## Exact next project action
 
-Import exact active S1.42AK-BMDSFIX1 through the canonical repository-driven Gale v2.4 launcher. Run the bounded BMDSFIX1 runtime gate: obtain one Black Mesa x DeepSewersFlow generation showing [BMDSFIX1] ARMED and APPLIED with multiplier ->1, successful generation/landing without the prior persistent retry flood, and at least one non-target generation showing no BMDSFIX1 application or size mutation. Then upload that run's exact BepInEx/LogOutput.log with the build-specific one-line uploader. Do not alter profile/config/package/plugin bytes during the test.
+Keep exact active S1.42AK-BMDSFIX1 bytes unchanged and run only the remaining Black Mesa x DeepSewersFlow target gate: obtain a target selection showing [BMDSFIX1] ARMED and APPLIED with multiplier ->1, completed dungeon generation and normal landed gameplay without the prior persistent retry/Entering-the-atmosphere failure or a new severe target-attributable regression. Upload that run's exact BepInEx/LogOutput.log with the existing build-specific uploader. The already-ingested Black Mesa x Substation run is the preserved non-target control and does not need to be repeated solely for qualification.
 
 ## Permanent Gale workflow
 
