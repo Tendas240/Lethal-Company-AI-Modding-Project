@@ -53,6 +53,21 @@ jobs:
       - name: Canonicalize exact-byte publication lifecycle
         run: python RepositoryTools/c3f18_finalize_bmdsfix1_publication.py
 
+      - name: Normalize changed plan status-line whitespace
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('BuildSpecs/S1.42AK-BMDSFIX1_PLAN.md')
+          text = path.read_text(encoding='utf-8')
+          old = '**Status:** SOURCE/STATIC PASS / INACTIVE REVIEW BUILD PASS / EXACT REVIEWED BYTES PUBLISHED ON WORKING BRANCH / NOT MAIN-INTEGRATED / NOT ARMED / NOT ACCEPTED  \n'
+          new = '**Status:** SOURCE/STATIC PASS / INACTIVE REVIEW BUILD PASS / EXACT REVIEWED BYTES PUBLISHED ON WORKING BRANCH / NOT MAIN-INTEGRATED / NOT ARMED / NOT ACCEPTED\n'
+          if text.count(old) != 1:
+              raise RuntimeError('Expected exactly one generated BMDSFIX1 status line with legacy Markdown hard-break whitespace')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+
       - name: Regenerate protected current navigation
         run: python RepositoryTools/render_current_navigation.py
 
