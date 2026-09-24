@@ -27,7 +27,19 @@ jobs:
           python-version: '3.12'
 
       - name: Apply exact DIAG1 diagnostic runtime activation
-        run: python RepositoryTools/c3f18_activate_bmdsfix1_diag1_runtime.py
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path=Path('RepositoryTools/c3f18_activate_bmdsfix1_diag1_runtime.py')
+          text=path.read_text(encoding='utf-8')
+          old='state["selected_scope"]["bmdsfix1_target_status"]'
+          new='state["selected_scope"]["phase_c"]["bmdsfix1_target_status"]'
+          if text.count(old) != 1:
+              raise SystemExit(f'expected one phase-C guard path to repair, found {text.count(old)}')
+          path.write_text(text.replace(old,new,1),encoding='utf-8')
+          PY
+          python RepositoryTools/c3f18_activate_bmdsfix1_diag1_runtime.py
 
       - name: Regenerate protected current navigation
         run: python RepositoryTools/render_current_navigation.py
@@ -65,7 +77,7 @@ jobs:
           assert candidate['status']=='ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED'
           assert candidate['sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
           assert state['runtime_test_outstanding'] is True
-          assert state['selected_scope']['bmdsfix1_target_status']=='OUTSTANDING_BLACK_MESA_DEEP_SEWERS'
+          assert state['selected_scope']['phase_c']['bmdsfix1_target_status']=='OUTSTANDING_BLACK_MESA_DEEP_SEWERS'
           assert state['controllers']['runtime_active_build']=='S1.42AK-BMDSFIX1-DIAG1'
           assert (root/'RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip()=='S1.42AK-BMDSFIX1-DIAG1'
           current=json.loads((root/'BuildSpecs/current.json').read_text(encoding='utf-8'))
