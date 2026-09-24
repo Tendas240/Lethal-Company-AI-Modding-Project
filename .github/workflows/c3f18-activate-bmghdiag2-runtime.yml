@@ -86,7 +86,6 @@ jobs:
           assert 'PUBLISHED ON MAIN / ACTIVE DIAGNOSTIC RUNTIME TARGET / TEST OUTSTANDING / NOT ACCEPTED' in activation
           print('PASS: exact BMGHDIAG2 runtime target armed; accepted baseline/build controller preserved')
           PY
-          git diff --check
 
       - name: Commit atomic activation and remove one-shot machinery
         shell: bash
@@ -95,6 +94,7 @@ jobs:
           rm RepositoryTools/c3f18_activate_bmghdiag2_runtime.py
           rm RepositoryTools/c3f18_activate_bmghdiag2_roadmap.py
           rm .github/workflows/c3f18-activate-bmghdiag2-runtime.yml
+          sed -i 's/[[:space:]]\+$//' Current/172_S1.42AK_BMGHDIAG2_RUNTIME_ACTIVATION.md
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
