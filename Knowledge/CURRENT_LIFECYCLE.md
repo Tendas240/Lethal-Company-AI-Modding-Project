@@ -1,10 +1,10 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Current Project Lifecycle
 
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
-**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`, `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`, `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`, `RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/`, `SourceEvidence/UniversalInteriorViability/PhaseC3F18/FINDINGS.md`, `SourceEvidence/UniversalInteriorViability/PhaseC3F18/IMPLEMENTATION_FINDINGS.md`, `BuildSpecs/S1.42AK-BMGHDIAG2_PLAN.md`  
+**Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`, `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`, `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`, `Current/173_S1.42AK_BMGHDIAG2_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL_AND_DEEP_SEWERS_INCIDENT.md`, `RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/`, `RuntimeEvidence/S1.42AK-BMGHDIAG2/20260924T124542Z/`, `SourceEvidence/UniversalInteriorViability/PhaseC3F18/FINDINGS.md`, `SourceEvidence/UniversalInteriorViability/PhaseC3F18/IMPLEMENTATION_FINDINGS.md`, `BuildSpecs/S1.42AK-BMGHDIAG2_PLAN.md`  
 **Last-Validated:** 2026-09-24
 
 ## Accepted gameplay baseline
@@ -42,7 +42,7 @@ The user's sparse-local-density impression is compatible with a large multi-leve
 
 ## Selected scope — Universal Interior Viability / Equal Availability
 
-The next selected independent scope is **Universal Interior Viability / Equal Availability**. Investigation contract: `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
+The selected independent scope remains **Universal Interior Viability / Equal Availability**. Investigation contract: `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
 
 The accepted S1.42AB normalizer remains unchanged: it equalizes every positive viable rarity to `100` only after LLL viability filtering. The selected scope therefore targets the earlier viability/availability layer, not the accepted weighting layer.
 
@@ -56,30 +56,44 @@ The same run nevertheless proves that normal LethalLevelLoader matching on Black
 
 Black Mesa x Greenhouse remains `NOT_YET_PROVEN`; this is diagnostic-tool failure evidence, not a demonstrated Greenhouse incompatibility. Decision authority: `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`. Do not rerun the same BMGHDIAG1 bytes.
 
-## BMGHDIAG2 exact-byte publication — main integration pass
+## BMGHDIAG2 runtime attempt — inconclusive diagnostic identity refusal
 
-C3F18's provenance-safe `S1.42AK-BMGHDIAG2` successor has passed source/static review, the separate inactive review build, exact-byte publication, and main integration. PR #144 exact head `984feb61d9a23296ec111f377639c090cf4f952b` merged at `1dc18d5a37b5560d282174e11460672b508382ba` after Knowledge Architecture run `35996531577`, source/pure-static run `35996531589`, and publication-aware archive run `35996531593` all passed.
+Exact published/main-integrated `S1.42AK-BMGHDIAG2` runtime evidence is now ingested at `RuntimeEvidence/S1.42AK-BMGHDIAG2/20260924T124542Z/`, raw log SHA-256 `5c7931cbf68414c76ea4cc0950d23b592497a2daa2b0f4d8e49986cc13c863d9`.
 
-The integration archive gate selected published-validation mode: no profile rebuild and no Actions artifact upload occurred. The exact main-integrated profile SHA-256 remains `56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2` and diagnostic DLL SHA-256 remains `51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775`. The 337-member archive/index contract, zero package/config drift, LLL `b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c`, accepted normalizer `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`, and reconstructed readable ProfileSources snapshot remain unchanged. Integration evidence: `BuildSpecs/S1.42AK-BMGHDIAG2_BUILD_EVIDENCE/MAIN_INTEGRATION_CHECKPOINT.md`.
+The plugin loaded but emitted:
 
-BMGHDIAG2 is **published on main and runtime-armed as the active diagnostic target, but remains not accepted**. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMGHDIAG2`, `active_candidate = null`, and `runtime_test_outstanding = true`. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` until this exact run is ingested and decided. Activation authority: `Current/172_S1.42AK_BMGHDIAG2_RUNTIME_ACTIVATION.md`.
+`[BMGHDIAG2] REFUSED TO ARM; normal behavior preserved: System.InvalidOperationException: EntranceTeleport manifest module identity mismatch.`
+
+The diagnostic therefore failed closed before targeted Greenhouse selection/topology/traversal observation. **Black Mesa x Greenhouse remains `NOT_YET_PROVEN`** and the exact BMGHDIAG2 bytes must not be rerun as if they could qualify the pair. Decision authority: `Current/173_S1.42AK_BMGHDIAG2_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL_AND_DEEP_SEWERS_INCIDENT.md`.
+
+The same normal-fallback session separately exposed a Black Mesa x Deep Sewers generation incident. LLL logged `CurrentLevel: Black Mesa DungeonSize Is: 3.25 | Leaving DungeonSize As: 4.875`, ButteRyBalance logged final multiplier `4.87`, normal LLL history selected `Deep Sewers`, and DunGenPlus emitted repeated `NoMatchingDoorwayPlacementResult` / `TileIsCollidingPlacementResult` failures without a later generation-complete marker in the captured post-selection portion. This is consistent with the reported persistent `Entering the atmosphere` loading state but does not prove every historical atmosphere hang shares that cause.
+
+## BMDSFIX1 source/static repair — draft PR open, not built
+
+The pair-scoped Deep Sewers mitigation is isolated as `S1.42AK-BMDSFIX1` source/static work in draft PR **#146**, branch `fix/s142ak-bmdsfix1`.
+
+At the current decision point its exact source head is `3e95889588031197dd8051ca27be02754794969d`; Knowledge Architecture run `36004798426` and BMDSFIX1 source/static run `36004798422` both succeeded on that head.
+
+BMDSFIX1 remains source/static only. It is not a profile, not runtime-armed, not an active candidate and not accepted. Its branch must be synchronized against the repaired `main` and revalidated for the resulting integration state before source merge. A later inactive review build must be a separate step directly over accepted S1.42AK.
 
 ## Live execution state
 
 - Accepted baseline: **S1.42AK**.
 - Latest built/published normal artifact: **S1.42AK**.
 - Active gameplay candidate: **none**.
-- Active diagnostic runtime target: **S1.42AK-BMGHDIAG2**.
-- Runtime test outstanding: **yes — exact Black Mesa x Greenhouse diagnostic only**.
-- Selected scope: **Universal Interior Viability / Equal Availability — Phase C3F18 BMGHDIAG2 runtime active; evidence outstanding**.
+- Active diagnostic runtime target: **none**.
+- Runtime test outstanding: **no**.
+- Selected scope: **Universal Interior Viability / Equal Availability — BMGHDIAG2 runtime decided inconclusive; BMDSFIX1 source repair open**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMGHDIAG2`.
-- No gameplay successor or universal override is armed; S1.42AK remains accepted/latest.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`.
+- No BMDSFIX1 profile or universal override is armed; S1.42AK remains accepted/latest.
 
 ## Exact next project action
 
-Run the exact active S1.42AK-BMGHDIAG2 diagnostic on Black Mesa after importing it through the canonical Gale v2.4 launcher. Require `[BMGHDIAG2] ARMED`, exact Greenhouse selection, successful generation, topology IDs 0..3 and direct player traversal of the main entrance plus alternate IDs 1, 2 and 3 where practical; fail closed on refusal/inconclusive evidence. Then upload that run's exact `BepInEx/LogOutput.log` with the build-specific uploader from `Current/172_S1.42AK_BMGHDIAG2_RUNTIME_ACTIVATION.md`.
+Synchronize draft PR #146 (`S1.42AK-BMDSFIX1` source/static repair) against the repaired `main`, require fresh applicable CI for the resulting integration state, and merge only the source/static repair if green. Do not build, publish, arm or accept a BMDSFIX1 profile in that step.
+
+After source integration, prepare a separately versioned inactive review build directly from exact accepted S1.42AK under the normal build/review gates. Black Mesa x Greenhouse diagnostic repair remains a separate successor-diagnostic task.
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. BMGHDIAG2 is now the explicitly runtime-armed diagnostic target under the direct-diagnostic authority chain. The canonical v2.4 launcher must resolve only the exact main-integrated profile/DLL identities above; this authorization ends at diagnostic evidence collection and does not promote the build.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. No new runtime test is currently authorized. If a later build becomes runtime-ready, the normal Gale import plus exact build-specific uploader contract applies in the same response.

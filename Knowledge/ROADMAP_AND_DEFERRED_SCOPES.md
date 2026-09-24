@@ -1,28 +1,38 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Live Roadmap and Deferred Scopes
 
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only  
-**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`  
+**Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/173_S1.42AK_BMGHDIAG2_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL_AND_DEEP_SEWERS_INCIDENT.md`, `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`  
 **Last-Validated:** 2026-09-24
 
 ## Current position
 
 Accepted gameplay baseline and latest built artifact: **S1.42AK — LC Office Camera Enemy Balance — ACCEPTED FULL NORMAL STACK**, SHA-256 `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`.
 
-There is no active gameplay candidate or gameplay successor. Exact reviewed/main-integrated `S1.42AK-BMGHDIAG2` is the active diagnostic-only runtime target and one bounded runtime test is outstanding. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMGHDIAG2`; `BuildSpecs/current.json` remains disabled; accepted/latest normal baseline remains S1.42AK.
+There is no active gameplay candidate and no active diagnostic runtime target. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`; `BuildSpecs/current.json` remains disabled; no runtime test is outstanding.
+
+Exact BMGHDIAG2 runtime evidence is completed and inconclusive because the diagnostic refused before arming with `EntranceTeleport manifest module identity mismatch`. Black Mesa x Greenhouse remains `NOT_YET_PROVEN`; identical BMGHDIAG2 bytes must not be rerun as though they could qualify the pair.
 
 ## Selected scope
 
-**Universal Interior Viability / Equal Availability — SELECTED / PHASE C3F18 BMGHDIAG2 TARGETED RUNTIME QUALIFICATION OUTSTANDING.**
+**Universal Interior Viability / Equal Availability — SELECTED / PHASE C3F18 BMGHDIAG2 DECIDED INCONCLUSIVE / BMDSFIX1 SOURCE REPAIR OPEN.**
 
 Goal: evaluate every registered interior for safe availability on every moon while preserving equal effective probability `100` whenever viable.
 
 The accepted S1.42AB post-viability normalizer is not being reopened. The investigation first builds a complete flow-owner-moon viability matrix, identifies all exclusions/hard blocks, and proves compatibility before any restriction is removed.
 
-Phases A through C3F18 preserve the authoritative 30x53 B3 matrix while narrowing Black Mesa x Greenhouse to a targeted runtime proof boundary. BMGHDIAG1 remains failed startup-refusal evidence; exact `S1.42AK-BMGHDIAG2` is armed only for that pair. No universal override or gameplay successor is armed, and the matrix remains unchanged until runtime evidence is ingested and decided.
+The authoritative 30x53 B3 matrix remains unchanged. BMGHDIAG2 did not qualify Black Mesa x Greenhouse. The same normal-fallback session separately exposed Black Mesa x Deep Sewers generation-size pressure: LLL logged `3.25 -> 4.875`, normal selection chose Deep Sewers and DunGenPlus emitted repeated placement failures without a later generation-complete marker in the captured post-selection evidence.
+
+A pair-scoped `S1.42AK-BMDSFIX1` source/static repair exists in draft PR #146. Its source head `3e95889588031197dd8051ca27be02754794969d` has green Knowledge Architecture run `36004798426` and BMDSFIX1 source/static run `36004798422`, but the branch must be synchronized against repaired main before source integration. No BMDSFIX1 profile has been built or armed.
 
 Plan: `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
+
+## Exact next selected-scope action
+
+Synchronize draft PR #146 against repaired main, require fresh applicable CI for the resulting integration state, and merge only the BMDSFIX1 source/static repair if green. Do not build, publish, arm or accept a BMDSFIX1 profile in that step.
+
+After source integration, a separately versioned inactive review build from exact accepted S1.42AK may be prepared under the normal build/review gates. Runtime testing is a later gate. Black Mesa x Greenhouse successor-diagnostic repair remains separate from BMDSFIX1.
 
 ## Completed LC Office scrap scope
 
@@ -32,6 +42,7 @@ Plan: `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
 
 ## Remaining deferred independent scopes
 
+- Black Mesa x Greenhouse successor-diagnostic repair after BMGHDIAG2 identity refusal.
 - CullFactory exceptions for exact IDs `junkrooms` / `shatteredrooms`.
 - MelanieMausoleum fog reduction only for that interior.
 - Black Mesa/interior/Pikmin route recovery.
