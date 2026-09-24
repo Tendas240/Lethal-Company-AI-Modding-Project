@@ -71,7 +71,6 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git diff --cached --check
           git diff --cached --quiet && { echo 'No canonicalization changes staged.' >&2; exit 1; }
           git commit -m 'Canonicalize BMGHDIAG2 inactive review build'
           git push origin HEAD:c3f18-bmghdiag2-inactive-review-build
