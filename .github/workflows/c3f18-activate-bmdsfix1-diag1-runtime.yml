@@ -33,11 +33,15 @@ jobs:
           from pathlib import Path
           path=Path('RepositoryTools/c3f18_activate_bmdsfix1_diag1_runtime.py')
           text=path.read_text(encoding='utf-8')
-          old='state["selected_scope"]["bmdsfix1_target_status"]'
-          new='state["selected_scope"]["phase_c"]["bmdsfix1_target_status"]'
-          if text.count(old) != 1:
-              raise SystemExit(f'expected one phase-C guard path to repair, found {text.count(old)}')
-          path.write_text(text.replace(old,new,1),encoding='utf-8')
+          repairs=(
+              ('state["selected_scope"]["bmdsfix1_target_status"]','state["selected_scope"]["phase_c"]["bmdsfix1_target_status"]','phase-C target guard'),
+              ('    "profile_sha256": PROFILE_SHA,\n    "diagnostic_dll_sha256": DLL_SHA,','    "profile_sha256": PROFILE_SHA,\n    "sha256": PROFILE_SHA,\n    "diagnostic_dll_sha256": DLL_SHA,','canonical diagnostic SHA alias'),
+          )
+          for old,new,label in repairs:
+              if text.count(old) != 1:
+                  raise SystemExit(f'{label}: expected one repair target, found {text.count(old)}')
+              text=text.replace(old,new,1)
+          path.write_text(text,encoding='utf-8')
           PY
           python RepositoryTools/c3f18_activate_bmdsfix1_diag1_runtime.py
 
