@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Security.Cryptography;
 using BepInEx;
 using BepInEx.Bootstrap;
+using BepInEx.Logging;
 using HarmonyLib;
 
 namespace S142AKBMDSFix1
@@ -20,25 +21,27 @@ namespace S142AKBMDSFix1
         internal const string ExpectedLethalLevelLoaderSha256 = "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c";
 
         private Harmony _harmony;
-        private bool _armed;
+        private static ManualLogSource RuntimeLogger;
+        private static bool Armed;
 
         private void Awake()
         {
+            RuntimeLogger = Logger;
             try
             {
                 MethodInfo target = ResolveAndValidateTarget();
                 MethodInfo postfix = AccessTools.Method(typeof(Plugin), nameof(GetClampedDungeonSizePostfix));
-                if (postfix == null)
-                    throw new InvalidOperationException("BMDSFIX1 postfix method could not be resolved.");
+                if (postfix == null || !postfix.IsStatic)
+                    throw new InvalidOperationException("BMDSFIX1 static postfix method could not be resolved.");
 
                 _harmony = new Harmony(PluginGuid);
                 _harmony.Patch(target, postfix: new HarmonyMethod(postfix));
-                _armed = true;
+                Armed = true;
                 Logger.LogInfo("[BMDSFIX1] ARMED exact LethalLevelLoader 1.7.12 GetClampedDungeonSize postfix; target=Black Mesa/DeepSewersFlow; clamp=1.0");
             }
             catch (Exception ex)
             {
-                _armed = false;
+                Armed = false;
                 if (_harmony != null)
                     _harmony.UnpatchSelf();
                 Logger.LogError("[BMDSFIX1] REFUSED TO ARM; normal behavior preserved: " + ex);
@@ -82,9 +85,9 @@ namespace S142AKBMDSFix1
             }
         }
 
-        private void GetClampedDungeonSizePostfix(ref float __result)
+        private static void GetClampedDungeonSizePostfix(ref float __result)
         {
-            if (!_armed)
+            if (!Armed)
                 return;
 
             try
@@ -98,12 +101,12 @@ namespace S142AKBMDSFix1
                 if (!applied)
                     return;
 
+                RuntimeLogger?.LogInfo($"[BMDSFIX1] APPLIED {moonName} / {dungeonFlowName} multiplier={original:R}->{adjusted:R}");
                 __result = adjusted;
-                Logger.LogInfo($"[BMDSFIX1] APPLIED {moonName} / {dungeonFlowName} multiplier={original:R}->{adjusted:R}");
             }
             catch (Exception ex)
             {
-                Logger.LogError("[BMDSFIX1] Runtime observation failed; preserving LLL result: " + ex);
+                RuntimeLogger?.LogError("[BMDSFIX1] Runtime observation failed; preserving LLL result: " + ex);
             }
         }
     }
