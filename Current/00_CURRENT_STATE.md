@@ -33,17 +33,17 @@ A historical rejection can remain preserved even when a later explicit decision 
 ## Live execution state
 
 - Active candidate: **none**
-- Runtime test outstanding: **yes**
+- Runtime test outstanding: **no**
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMGHDIAG2`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK`
 
 ## Exact next action
 
-Import the exact active S1.42AK-BMGHDIAG2 profile through the canonical repository-driven Gale v2.4 launcher, run the bounded Black Mesa x Greenhouse diagnostic, exercise the main entrance and alternate entrance IDs 1, 2 and 3 in both directions where practical, then upload that run's exact BepInEx/LogOutput.log with the build-specific one-line uploader. Do not alter profile/config/package bytes during the test.
+Synchronize draft PR #146 (S1.42AK-BMDSFIX1 source/static repair) against the repaired main, require fresh applicable CI for the resulting integration state, and merge only the source/static repair if green. Do not build, publish, arm or accept a BMDSFIX1 profile in that step. After source integration, prepare a separately versioned inactive review build directly from exact accepted S1.42AK under the normal build/review gates. Black Mesa x Greenhouse diagnostic repair remains a separate successor-diagnostic task.
 
-A runtime test is pending for S1.42AK-BMGHDIAG2. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 

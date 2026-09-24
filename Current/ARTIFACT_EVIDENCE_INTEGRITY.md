@@ -1,4 +1,4 @@
-<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=true -->
+<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK candidate=none runtime_test_outstanding=false -->
 # Artifact and Runtime Evidence Integrity
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
@@ -36,12 +36,24 @@ Runtime evidence: `RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/`
 Runtime log SHA-256: `4f3dae931364cefc4b297c8c316502e96d32b27431467a5607ce69ed6d6e69ef`  
 Decision: `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`
 
-The diagnostic refused before arming because the loaded `Assembly-CSharp.dll` could not be hashed. Normal Black Mesa LLL evidence still proves Greenhouse viable at effective rarity 100, but actual selection was Decrepit store; Black Mesa x Greenhouse therefore remains unqualified and the diagnostic requires repair analysis. It is not runtime-active and is never a gameplay base.
+The diagnostic refused before arming because the loaded `Assembly-CSharp.dll` could not be hashed. Normal Black Mesa LLL evidence still proves Greenhouse viable at effective rarity 100, but actual selection was Decrepit store; Black Mesa x Greenhouse therefore remains unqualified. It is not runtime-active and is never a gameplay base.
+
+## Completed failed diagnostic evidence: S1.42AK-BMGHDIAG2
+
+Profile: `Profiles/LC V1 S1.42AK-BMGHDIAG2 Black Mesa Greenhouse Diagnostic.r2z`  
+SHA-256: `56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2`  
+Readable snapshot: `ProfileSources/S1.42AK-BMGHDIAG2/`  
+Runtime evidence: `RuntimeEvidence/S1.42AK-BMGHDIAG2/20260924T124542Z/`  
+Runtime log SHA-256: `5c7931cbf68414c76ea4cc0950d23b592497a2daa2b0f4d8e49986cc13c863d9`  
+Decision: `Current/173_S1.42AK_BMGHDIAG2_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL_AND_DEEP_SEWERS_INCIDENT.md`
+
+BMGHDIAG2 loaded but refused before arming with `EntranceTeleport manifest module identity mismatch`; Black Mesa x Greenhouse therefore remains `NOT_YET_PROVEN`. The same normal-fallback session separately exposes the Black Mesa x Deep Sewers 4.875-size generation incident that motivates the source/static-only BMDSFIX1 repair. BMGHDIAG2 is not runtime-active and is never a gameplay base.
 
 ## Pending / deferred unaccepted profiles
 
 - **S1.42AJ** — deferred full-normal gate / retained exact balanced parent, not active.
-- **S1.42AK-BMGHDIAG2** — active diagnostic runtime target over accepted S1.42AK; exact profile SHA-256 `56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2`; runtime evidence outstanding; not accepted and not a gameplay base.
+
+No runtime-active candidate or diagnostic profile is pending. `S1.42AK-BMDSFIX1` currently exists only as source/static work in draft PR #146; no profile bytes exist yet, so it is not an artifact-evidence pending profile.
 
 ## Completed diagnostic evidence: S1.42AI-DIAG1R3
 
