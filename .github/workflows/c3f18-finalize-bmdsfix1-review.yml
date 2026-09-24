@@ -1,0 +1,76 @@
+name: C3F18 finalize BMDSFIX1 inactive review checkpoint
+
+on:
+  push:
+    branches:
+      - build/s142ak-bmdsfix1-review-gate
+    paths:
+      - '.github/workflows/c3f18-finalize-bmdsfix1-review.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: build/s142ak-bmdsfix1-review-gate
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Canonicalize passed inactive review build
+        run: python RepositoryTools/c3f18_finalize_bmdsfix1_review.py
+
+      - name: Regenerate protected current navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Verify generated current navigation
+        run: python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate current live-state semantics
+        run: python RepositoryTools/current_state_semantic_validator.py
+
+      - name: Validate repository knowledge architecture
+        run: python RepositoryTools/knowledge_architecture_validator.py
+
+      - name: Re-run BMDSFIX1 source/static contract
+        run: python AnalysisTools/validate_s142ak_bmdsfix1_source.py
+
+      - name: Verify live controllers remain inactive
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          state=json.loads(Path('Current/CURRENT_STATE.json').read_text())
+          current=json.loads(Path('BuildSpecs/current.json').read_text())
+          assert state['active_candidate'] is None
+          assert state['runtime_test_outstanding'] is False
+          assert current['enabled'] is False
+          assert current['build_id']=='IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS'
+          assert Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text().strip()=='S1.42AK'
+          assert state['selected_scope']['status']=='PHASE_C3F18_BMGHDIAG2_RUNTIME_INCONCLUSIVE_BMDSFIX1_INACTIVE_REVIEW_BUILD_PASS_PUBLICATION_NEXT'
+          assert state['selected_scope']['bmdsfix1_review']['published'] is False
+          assert state['selected_scope']['bmdsfix1_review']['runtime_armed'] is False
+          print('PASS: BMDSFIX1 review checkpoint canonicalized with all live controllers inactive')
+          PY
+
+      - name: Commit canonical checkpoint and remove one-shot machinery
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm RepositoryTools/c3f18_finalize_bmdsfix1_review.py
+          rm .github/workflows/c3f18-finalize-bmdsfix1-review.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --quiet && { echo 'No canonicalization changes staged.' >&2; exit 1; }
+          git commit -m 'Canonicalize BMDSFIX1 inactive review build'
+          git push origin HEAD:build/s142ak-bmdsfix1-review-gate
