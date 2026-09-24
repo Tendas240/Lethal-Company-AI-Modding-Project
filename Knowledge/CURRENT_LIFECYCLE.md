@@ -83,18 +83,18 @@ The remaining runtime gate is only Black Mesa x `DeepSewersFlow`: `[BMDSFIX1] AR
 - Accepted baseline: **S1.42AK**.
 - Latest built artifact: **S1.42AK-BMDSFIX1 — active runtime candidate / not accepted**.
 - Active gameplay candidate: **S1.42AK-BMDSFIX1**.
-- Active diagnostic runtime target: **none**.
-- Runtime test outstanding: **yes — remaining Black Mesa x DeepSewersFlow target qualification only**.
+- Active diagnostic runtime target: **S1.42AK-BMDSFIX1-DIAG1 — diagnostic only / never accept**.
+- Runtime test outstanding: **yes — immediate DIAG1 supporting run is armed; regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding and unwaived**.
 - Preserved partial evidence: **Black Mesa x Substation non-target control PASS** at `RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/`.
-- Selected scope: **Universal Interior Viability / Equal Availability — BMDSFIX1 partial runtime evidence ingested; target evidence outstanding**.
+- Selected scope: **Universal Interior Viability / Equal Availability — deterministic BMDSFIX1-DIAG1 supporting target evidence next; gameplay candidate unchanged**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`, guarding exact BMDSFIX1 candidate bytes.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`.
-- S1.42AK remains the accepted rollback baseline; no Greenhouse diagnostic is armed.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1-DIAG1` for diagnostic target resolution/evidence attribution only.
+- S1.42AK remains the accepted rollback baseline; BMDSFIX1 remains the unaccepted gameplay candidate; Greenhouse/BMGHDIAG remains separate.
 
 ## Exact next project action
 
-Keep exact active S1.42AK-BMDSFIX1 bytes unchanged and run only the remaining Black Mesa x DeepSewersFlow target gate: obtain a target selection showing [BMDSFIX1] ARMED and APPLIED with multiplier ->1, completed dungeon generation and normal landed gameplay without the prior persistent retry/Entering-the-atmosphere failure or a new severe target-attributable regression. Upload that run's exact BepInEx/LogOutput.log with the existing build-specific uploader. The already-ingested Black Mesa x Substation run is the preserved non-target control and does not need to be repeated solely for qualification.
+Import exact active S1.42AK-BMDSFIX1-DIAG1 through the canonical Gale v2.4 launcher and run the bounded Black Mesa diagnostic. Require `[BMDSFIX1-DIAG1] ARMED` without refusal, deterministic `[BMDSFIX1-DIAG1] SELECTED Black Mesa / DeepSewersFlow; normalized rarity=100; pool=<N>->1`, inherited `[BMDSFIX1] ARMED` and target `APPLIED ... ->1`, completed generation and normal landed gameplay without the prior persistent retry/Entering-the-atmosphere failure or a new severe target-attributable regression. Upload that run's exact `BepInEx/LogOutput.log` with the DIAG1 uploader. This is supporting diagnostic evidence only: BMDSFIX1 remains not accepted and its regular exact-byte Black Mesa x DeepSewersFlow qualification is not waived.
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. BMDSFIX1 now resolves through the normal active-candidate path because `Current/AUTO_BUILD_RESULT.json`, `CURRENT_STATE.latest_built_artifact`, `active_candidate` and `RuntimeInbox/ACTIVE_BUILD.txt` all bind the same exact `S1.42AK-BMDSFIX1` profile SHA. Runtime activation does not accept the candidate; only later runtime evidence and an explicit decision can do so.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` at helper revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`. DIAG1 now resolves through the explicit direct-diagnostic path: `RuntimeInbox/ACTIVE_BUILD.txt` and `CURRENT_STATE.controllers.runtime_active_build` bind `selected_scope.diagnostic_revision`, whose exact parent is `Current/AUTO_BUILD_RESULT.json = S1.42AK-BMDSFIX1`. This diagnostic routing changes no BMDSFIX1 bytes, does not promote DIAG1, and cannot accept BMDSFIX1.
