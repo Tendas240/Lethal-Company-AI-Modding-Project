@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""C3F18 BMGHDIAG2 source-only fail-closed contract gate. Never builds or arms a Gale profile."""
+"""C3F18 BMGHDIAG2 source/static fail-closed contract gate. Never builds or arms a Gale profile."""
 import json
 import re
 from pathlib import Path
@@ -18,6 +18,7 @@ BUILD_REQUEST = ROOT / "BuildSpecs/S1.42AK-BMGHDIAG2.json"
 CURRENT_BUILD_REQUEST = ROOT / "BuildSpecs/current.json"
 ACTIVE_BUILD = ROOT / "RuntimeInbox/ACTIVE_BUILD.txt"
 CURRENT_STATE = ROOT / "Current/CURRENT_STATE.json"
+EXPECTED_BASE_SHA256 = "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee"
 
 
 def require(condition, message):
@@ -44,8 +45,25 @@ workflow = WORKFLOW.read_text(encoding="utf-8")
 plan = PLAN.read_text(encoding="utf-8")
 current_build = json.loads(CURRENT_BUILD_REQUEST.read_text(encoding="utf-8"))
 current_state = json.loads(CURRENT_STATE.read_text(encoding="utf-8"))
+build_request_present = BUILD_REQUEST.exists()
 
-require(not BUILD_REQUEST.exists(), "BMGHDIAG2 build request must not exist during source-only checkpoint")
+if build_request_present:
+    build_request = json.loads(BUILD_REQUEST.read_text(encoding="utf-8"))
+    require(build_request["enabled"] is True, "Separate BMGHDIAG2 review build request must be explicitly enabled")
+    require(build_request["build_id"] == "S1.42AK-BMGHDIAG2", "Separate build request ID drift")
+    require(build_request["base_profile"] == "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z", "Separate build request base drift")
+    require(build_request["base_sha256"] == EXPECTED_BASE_SHA256, "Separate build request base SHA drift")
+    require(build_request["output_profile"] == "Profiles/LC V1 S1.42AK-BMGHDIAG2 Black Mesa Greenhouse Diagnostic.r2z", "Separate build request output drift")
+    require(build_request["overwrite"] is False, "Separate review build must not overwrite")
+    for field in ("mod_state_changes", "mod_additions", "mod_removals", "config_patches", "file_injections"):
+        require(build_request[field] == [], "Separate review build contains unauthorized " + field)
+    require(build_request["local_plugin_builds"] == [{
+        "project": "Patches/S142AKBMGHDiag2/S142AKBMGHDiag2.csproj",
+        "configuration": "Release",
+        "built_file": "Patches/S142AKBMGHDiag2/bin/Release/netstandard2.1/S142AKBMGHDiag2.dll",
+        "archive_path": "BepInEx/plugins/S142AKBMGHDiag2/S142AKBMGHDiag2.dll",
+    }], "Separate review build local plugin contract drift")
+
 require(current_build["enabled"] is False, "BuildSpecs/current.json must remain disabled")
 require(current_build["build_id"] == "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS", "BuildSpecs/current.json must remain idle")
 require(ACTIVE_BUILD.read_text(encoding="utf-8").strip() == "S1.42AK", "Runtime ACTIVE_BUILD must remain S1.42AK")
@@ -124,20 +142,20 @@ require("dotnet run --project Patches/S142AKBMGHDiag2/Tests/Policy.Tests.csproj"
         "Pure policy test command missing")
 require("dotnet build S142AKBMGHDiag2.csproj -c Release" in workflow,
         "Plugin compile command missing")
-require("NOT BUILT" in plan and "NOT ARMED" in plan, "Human plan runtime/build boundary drift")
+require("NOT PUBLISHED" in plan and "NOT ARMED" in plan, "Human plan publication/runtime boundary drift")
 
 report = {
-    "status": "SOURCE_STATIC_CONTRACT_PASS_NOT_BUILT_NOT_ARMED",
+    "status": "SOURCE_STATIC_CONTRACT_PASS_NOT_PUBLISHED_NOT_ARMED",
     "candidate_id": "S1.42AK-BMGHDIAG2",
     "harmony_surfaces": 2,
     "gameplay_mutating_surfaces": 1,
     "observation_surfaces": 1,
     "installed_game_provenance_source": "BepInEx Paths.ManagedPath/Assembly-CSharp.dll",
     "loaded_game_assembly_location_used": False,
-    "candidate_build_request_present": False,
+    "candidate_build_request_present": build_request_present,
     "current_build_controller_enabled": current_build["enabled"],
     "runtime_active_build": ACTIVE_BUILD.read_text(encoding="utf-8").strip(),
     "profile_builder_invoked_by_source_ci": False,
-    "qualification": "Source/compile/pure-policy validation only. No profile build, publication, lifecycle arming or runtime authorization is performed."
+    "qualification": "Source/compile/pure-policy validation only. A separate inactive review-build spec may exist, but this source gate never builds, publishes, arms lifecycle or authorizes runtime."
 }
 print(json.dumps(report, indent=2))

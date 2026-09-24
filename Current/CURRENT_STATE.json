@@ -1,6 +1,6 @@
 {
   "schema_version": 8,
-  "updated": "2026-09-23",
+  "updated": "2026-09-24",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "game": "Lethal Company V81",
@@ -44,13 +44,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C3F18_BMGHDIAG2_SOURCE_STATIC_PASS_INACTIVE_REVIEW_BUILD_NEXT",
+    "status": "PHASE_C3F18_BMGHDIAG2_INACTIVE_REVIEW_BUILD_PASS_PUBLICATION_NEXT",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "The BMGHDIAG1 startup-refusal root cause is established: its game-assembly provenance gate incorrectly required the loaded Assembly-CSharp reflection assembly to expose a hashable Assembly.Location. Separately versioned S1.42AK-BMGHDIAG2 now validates the physical installed V81 Assembly-CSharp.dll through BepInEx Paths.ManagedPath while validating the loaded EntranceTeleport assembly structurally. Exact source/static PR head c767b27c64def300907cf617b4971b2b91024291 passed BMGHDIAG2 source/static run 35921973472 and Knowledge Architecture run 35921973492. No BMGHDIAG2 profile has been built, published or armed. Black Mesa x Greenhouse remains NOT_YET_PROVEN; S1.42AK, Black Mesa Dawn/native ownership, Greenhouse availability, accepted normalization and the B3 matrix remain unchanged.",
-    "analysis_contract": "Treat S1.42AK-BMGHDIAG2 as source/static-reviewed but not built. The next bounded checkpoint may prepare only an inactive review build from exact accepted S1.42AK and must prove the exact archive delta, compiled diagnostic DLL identity, unchanged packages/configs and byte-identical accepted normalizer while leaving all live build/runtime controllers inactive. Do not publish or arm runtime until a later separately reviewed publication/activation step. Preserve S1.42AB InteriorWeightNormalization, Black Mesa ownership, Greenhouse availability, the B3 matrix, Shatteredrooms exclusions and the separate Black-Mesa/Pikmin routing scope.",
-    "next_action": "Prepare a separate inactive S1.42AK-BMGHDIAG2 review-build checkpoint from exact accepted S1.42AK using the source/static-passed successor implementation. Validate the exact archive delta and compiled diagnostic DLL while keeping BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Do not publish or arm gameplay/runtime in the review-build checkpoint.",
+    "finding": "S1.42AK-BMGHDIAG2 has passed both the provenance-safe source/static gate and a separate inactive review build from exact accepted S1.42AK. Review PR #142 head e45c695a5f75dd8e304f0434cd21bce3e0a30da3 produced run 35990294162; artifact 10803912824 has ZIP SHA-256 265ebfae87ad3c48a6dbb57d0b3dce81a4c4d1c2e4872357f970354974da7a62. The review profile SHA-256 is 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 and the compiled/injected diagnostic DLL SHA-256 is 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775. All 337 archive members were verified: the only added member is BepInEx/plugins/S142AKBMGHDiag2/S142AKBMGHDiag2.dll, the only changed existing member is export.r2x identity metadata, there are zero package/config changes, LLL remains b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c, and the accepted normalizer remains byte-identical at 901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06. These bytes are review-only and are not repository-published or runtime-armed. Black Mesa x Greenhouse remains NOT_YET_PROVEN; S1.42AK, Black Mesa Dawn/native ownership, Greenhouse availability, accepted normalization and the B3 matrix remain unchanged.",
+    "analysis_contract": "Treat S1.42AK-BMGHDIAG2 as source/static-verified and inactive-review-build-verified, but not published, not runtime-armed and not accepted. The next bounded checkpoint may publish only the exact reviewed bytes from review run 35990294162 / artifact 10803912824, with profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 and diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775. That publication checkpoint must re-verify the exact archive delta and readable ProfileSources evidence while keeping BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Runtime activation must remain a later separate atomic step. Preserve S1.42AB InteriorWeightNormalization, Black Mesa ownership, Greenhouse availability, the B3 matrix, Shatteredrooms exclusions and the separate Black-Mesa/Pikmin routing scope.",
+    "next_action": "Publish the exact reviewed S1.42AK-BMGHDIAG2 bytes from review run 35990294162 / artifact 10803912824, pinning profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 and diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775, and verify the published archive/ProfileSources against the passed review-build delta. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Do not Gale-import or arm gameplay/runtime in the publication checkpoint.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -243,9 +243,44 @@
       "runtime_log_sha256": "4f3dae931364cefc4b297c8c316502e96d32b27431467a5607ce69ed6d6e69ef",
       "runtime_decision": "Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md"
     },
-    "diagnostic_runtime_finding": "Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md"
+    "diagnostic_runtime_finding": "Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md",
+    "diagnostic_successor_review": {
+      "build_id": "S1.42AK-BMGHDIAG2",
+      "status": "INACTIVE_REVIEW_BUILD_PASS_NOT_PUBLISHED_NOT_ARMED_NOT_ACCEPTED",
+      "base_build_id": "S1.42AK",
+      "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+      "base_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+      "build_spec": "BuildSpecs/S1.42AK-BMGHDIAG2.json",
+      "build_plan": "BuildSpecs/S1.42AK-BMGHDIAG2_PLAN.md",
+      "static_evidence": "BuildSpecs/S1.42AK-BMGHDIAG2_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
+      "review_checkpoint": "BuildSpecs/S1.42AK-BMGHDIAG2_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.md",
+      "source_pr": 141,
+      "review_pr": 142,
+      "reviewed_head": "e45c695a5f75dd8e304f0434cd21bce3e0a30da3",
+      "review_merge_ref": "569cbbb184a4f81085999a802c9a695ba3a9f3f2",
+      "review_run": 35990294162,
+      "review_artifact_id": 10803912824,
+      "review_artifact_name": "S1.42AK-BMGHDIAG2-review-569cbbb184a4f81085999a802c9a695ba3a9f3f2",
+      "review_artifact_zip_sha256": "265ebfae87ad3c48a6dbb57d0b3dce81a4c4d1c2e4872357f970354974da7a62",
+      "profile_sha256": "56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2",
+      "diagnostic_dll_sha256": "51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775",
+      "lll_sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+      "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+      "archive_members_verified": 337,
+      "added_members": [
+        "BepInEx/plugins/S142AKBMGHDiag2/S142AKBMGHDiag2.dll"
+      ],
+      "changed_existing_members": [
+        "export.r2x"
+      ],
+      "removed_members": [],
+      "package_changes": 0,
+      "config_changes": 0,
+      "published": false,
+      "runtime_armed": false
+    }
   },
-  "next_action": "Prepare a separate inactive S1.42AK-BMGHDIAG2 review-build checkpoint from exact accepted S1.42AK using the source/static-passed successor implementation. Validate the exact archive delta and compiled diagnostic DLL while keeping BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Do not publish or arm gameplay/runtime in the review-build checkpoint.",
+  "next_action": "Publish the exact reviewed S1.42AK-BMGHDIAG2 bytes from review run 35990294162 / artifact 10803912824, pinning profile SHA-256 56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2 and diagnostic DLL SHA-256 51de493e340a2e0c0422e9816b5c2f592113e12a71cf1be7081631b3c9520775, and verify the published archive/ProfileSources against the passed review-build delta. Keep BuildSpecs/current.json disabled, RuntimeInbox/ACTIVE_BUILD.txt at S1.42AK, active_candidate null and runtime_test_outstanding=false. Do not Gale-import or arm gameplay/runtime in the publication checkpoint.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
