@@ -36,11 +36,11 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1-DIAG1`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1-DIAG1PATH1`
 
 ## Exact next action
 
-Perform a separate explicit S1.42AK-BMDSFIX1-DIAG1PATH1 runtime-activation checkpoint. Activation may update only RuntimeInbox/ACTIVE_BUILD.txt and matching canonical lifecycle/controller routing required for Gale resolution and evidence attribution; it must not rebuild or alter profile, DLL, package, config or gameplay bytes and must not accept BMDSFIX1 or DIAG1PATH1. Do not import or run DIAG1PATH1 until that activation checkpoint is integrated and validated. The regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding and unwaived.
+After this activation is integrated and exact-head CI validated, import exact active S1.42AK-BMDSFIX1-DIAG1PATH1 through the canonical repository-driven Gale v2.4 launcher, run one bounded Black Mesa diagnostic, and upload its exact BepInEx/LogOutput.log with the DIAG1PATH1 build-specific uploader. Treat the result as supporting diagnostic evidence only; the regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding until separately satisfied.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
