@@ -74,22 +74,30 @@ $RequiredMethods = @(
 '@ -replace "`r`n", "`n"
 
     $replacements = @(
-        @("$" + "EvidenceRoot = 'SourceEvidence/VanillaV81/RoundManagerGeneration'", "$" + "EvidenceRoot = 'SourceEvidence/VanillaV81/RoundManagerSeedControl'", 'evidence root'),
-        @("$" + "ReportName = 'ROUNDMANAGER_GENERATION_FOCUSED_DECOMPILE.txt'", "$" + "ReportName = 'ROUNDMANAGER_SEED_CONTROL_FOCUSED_DECOMPILE.txt'", 'report name'),
-        @($oldRequired, $newRequired, 'required method set'),
-        @("[RoundManagerGenerationV81] ", "[RoundManagerSeedControlV81] ", 'step prefix'),
-        @("^SourceEvidence/VanillaV81/RoundManagerGeneration/[0-9TZ]+-[a-f0-9]+$", "^SourceEvidence/VanillaV81/RoundManagerSeedControl/[0-9TZ]+-[a-f0-9]+$", 'publication allowlist'),
-        @("SourceEvidence/VanillaV81/RoundManagerGeneration/20260920T000000Z-abcdef12", "SourceEvidence/VanillaV81/RoundManagerSeedControl/20260920T000000Z-abcdef12", 'publication self-test path'),
-        @("lc-roundmanager-generation-v81-", "lc-roundmanager-seed-control-v81-", 'temporary directory prefix'),
-        @("# Installed Lethal Company V81 RoundManager generation-gate evidence", "# Installed Lethal Company V81 RoundManager seed-control evidence", 'report heading'),
-        @("Scope: GenerateNewLevelClientRpc, GenerateNewFloor and one-hop direct callers within RoundManager.", "Scope: LoadNewLevelWait, InitializeRandomNumberGenerators, GetRandomWeightedIndex and one-hop direct callers within RoundManager.", 'report scope'),
-        @("source-evidence/roundmanager-generation-v81-", "source-evidence/roundmanager-seed-control-v81-", 'evidence branch prefix'),
-        @("Native V81 RoundManager generation-gate evidence for Universal Interior Viability Phase C3E3F", "Native V81 RoundManager map-seed origin and RNG evidence for S1.42AK-BMDSFIX1 regular map-seed control analysis", 'manifest purpose'),
-        @("Capture exact V81 RoundManager generation-gate evidence ", "Capture exact V81 RoundManager seed-control evidence ", 'evidence commit message')
+        [pscustomobject]@{ Old = '$EvidenceRoot = ''SourceEvidence/VanillaV81/RoundManagerGeneration'''; New = '$EvidenceRoot = ''SourceEvidence/VanillaV81/RoundManagerSeedControl'''; Label = 'evidence root' },
+        [pscustomobject]@{ Old = '$ReportName = ''ROUNDMANAGER_GENERATION_FOCUSED_DECOMPILE.txt'''; New = '$ReportName = ''ROUNDMANAGER_SEED_CONTROL_FOCUSED_DECOMPILE.txt'''; Label = 'report name' },
+        [pscustomobject]@{ Old = $oldRequired; New = $newRequired; Label = 'required method set' },
+        [pscustomobject]@{ Old = '[RoundManagerGenerationV81] '; New = '[RoundManagerSeedControlV81] '; Label = 'step prefix' },
+        [pscustomobject]@{ Old = '^SourceEvidence/VanillaV81/RoundManagerGeneration/[0-9TZ]+-[a-f0-9]+$'; New = '^SourceEvidence/VanillaV81/RoundManagerSeedControl/[0-9TZ]+-[a-f0-9]+$'; Label = 'publication allowlist' },
+        [pscustomobject]@{ Old = 'SourceEvidence/VanillaV81/RoundManagerGeneration/20260920T000000Z-abcdef12'; New = 'SourceEvidence/VanillaV81/RoundManagerSeedControl/20260920T000000Z-abcdef12'; Label = 'publication self-test path' },
+        [pscustomobject]@{ Old = 'lc-roundmanager-generation-v81-'; New = 'lc-roundmanager-seed-control-v81-'; Label = 'temporary directory prefix' },
+        [pscustomobject]@{ Old = '# Installed Lethal Company V81 RoundManager generation-gate evidence'; New = '# Installed Lethal Company V81 RoundManager seed-control evidence'; Label = 'report heading' },
+        [pscustomobject]@{ Old = 'Scope: GenerateNewLevelClientRpc, GenerateNewFloor and one-hop direct callers within RoundManager.'; New = 'Scope: LoadNewLevelWait, InitializeRandomNumberGenerators, GetRandomWeightedIndex and one-hop direct callers within RoundManager.'; Label = 'report scope' },
+        [pscustomobject]@{ Old = 'source-evidence/roundmanager-generation-v81-'; New = 'source-evidence/roundmanager-seed-control-v81-'; Label = 'evidence branch prefix' },
+        [pscustomobject]@{ Old = 'Native V81 RoundManager generation-gate evidence for Universal Interior Viability Phase C3E3F'; New = 'Native V81 RoundManager map-seed origin and RNG evidence for S1.42AK-BMDSFIX1 regular map-seed control analysis'; Label = 'manifest purpose' },
+        [pscustomobject]@{ Old = 'Capture exact V81 RoundManager generation-gate evidence '; New = 'Capture exact V81 RoundManager seed-control evidence '; Label = 'evidence commit message' }
     )
 
+    if ($replacements.Count -ne 12) {
+        throw "Seed-control replacement contract expected 12 records, found $($replacements.Count)."
+    }
     foreach ($replacement in $replacements) {
-        $text = Replace-ExactlyOnce -Text $text -Old $replacement[0] -New $replacement[1] -Label $replacement[2]
+        if ([string]::IsNullOrEmpty([string]$replacement.Old) -or
+            [string]::IsNullOrEmpty([string]$replacement.New) -or
+            [string]::IsNullOrEmpty([string]$replacement.Label)) {
+            throw 'Seed-control replacement contract contains an empty Old/New/Label value.'
+        }
+        $text = Replace-ExactlyOnce -Text $text -Old $replacement.Old -New $replacement.New -Label $replacement.Label
     }
 
     foreach ($required in @('LoadNewLevelWait', 'InitializeRandomNumberGenerators', 'GetRandomWeightedIndex')) {
