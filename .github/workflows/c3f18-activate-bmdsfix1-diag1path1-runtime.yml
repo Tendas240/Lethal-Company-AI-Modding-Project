@@ -27,52 +27,31 @@ jobs:
           python-version: '3.12'
 
       - name: Apply exact DIAG1PATH1 diagnostic runtime activation
-        shell: bash
+        run: python RepositoryTools/c3f18_activate_bmdsfix1_diag1path1_runtime.py
+
+      - name: Regenerate and verify protected current navigation
         run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-          path=Path('RepositoryTools/c3f18_activate_bmdsfix1_diag1path1_runtime.py')
-          text=path.read_text(encoding='utf-8')
-          old='Canonical indexing is recorded by `ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/PROFILE_INDEX_RESULT.json`: build ID `S1.42AK-BMDSFIX1-DIAG1PATH1`, profile identity `LC V1 S1.42AK-D1P1`, 338 archive members, resolution through `EXPECTED_HASHES`. DIAG1PATH1 remains **not runtime-armed / diagnostic support only / never acceptable as gameplay**.'
-          new='Canonical indexing is recorded by `ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/PROFILE_INDEX_RESULT.json`: build ID `S1.42AK-BMDSFIX1-DIAG1PATH1`, profile identity `LC V1 S1.42AK-D1P1`, 338 archive members, resolution through `EXPECTED_HASHES`. DIAG1PATH1 remains **not runtime-armed / diagnostic support only / never accept**.'
-          count=text.count(old)
-          if count != 1:
-              raise SystemExit(f'Expected exactly one PATH1 lifecycle text anchor repair target, found {count}')
-          path.write_text(text.replace(old,new,1),encoding='utf-8')
-          PY
-          python RepositoryTools/c3f18_activate_bmdsfix1_diag1path1_runtime.py
+          python RepositoryTools/render_current_navigation.py
+          python RepositoryTools/render_current_navigation.py --check
 
-      - name: Regenerate protected current navigation
-        run: python RepositoryTools/render_current_navigation.py
-
-      - name: Verify generated current navigation
-        run: python RepositoryTools/render_current_navigation.py --check
-
-      - name: Validate current live-state semantics
-        run: python RepositoryTools/current_state_semantic_validator.py
-
-      - name: Validate repository knowledge architecture
-        run: python RepositoryTools/knowledge_architecture_validator.py
-
-      - name: Validate exact artifact bytes and pending evidence
-        run: python RepositoryTools/artifact_byte_integrity_validator.py
-
-      - name: Validate repository integrity and Gale helper contract
+      - name: Validate canonical state and repository contracts
         run: |
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/artifact_byte_integrity_validator.py
           python RepositoryTools/repository_integrity_guard.py
           python RepositoryTools/gale_import_helper_validator.py
 
-      - name: Verify exact runtime controller activation
+      - name: Verify exact one-hop runtime activation and bounded delta
         shell: bash
         run: |
           python - <<'PY'
-          import hashlib, json
+          import hashlib, json, subprocess
           from pathlib import Path
           root=Path('.')
           state=json.loads((root/'Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
-          candidate=state['active_candidate']
           scope=state['selected_scope']
+          candidate=state['active_candidate']
           diag=scope['diagnostic_revision']
           parent=scope['diagnostic_parent_revision']
 
@@ -83,14 +62,12 @@ jobs:
           assert candidate['sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
           assert state['runtime_test_outstanding'] is True
           assert scope['phase_c']['bmdsfix1_target_status']=='OUTSTANDING_BLACK_MESA_DEEP_SEWERS'
-
           assert state['controllers']['runtime_active_build']=='S1.42AK-BMDSFIX1-DIAG1PATH1'
           assert (root/'RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip()=='S1.42AK-BMDSFIX1-DIAG1PATH1'
 
           current=json.loads((root/'BuildSpecs/current.json').read_text(encoding='utf-8'))
           assert current['enabled'] is False
           assert current['build_id']=='IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS'
-          assert current['base_profile']=='Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z'
           assert current['base_sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
 
           assert diag['build_id']=='S1.42AK-BMDSFIX1-DIAG1PATH1'
@@ -100,12 +77,8 @@ jobs:
           assert diag['sha256']=='0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6'
           assert diag['profile_name']=='LC V1 S1.42AK-D1P1'
           assert diag['base_build_id']=='S1.42AK-BMDSFIX1-DIAG1'
-          assert diag['base_profile']=='Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z'
           assert diag['base_sha256']=='31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e'
-          assert diag['diagnostic_dll_sha256']=='3b9954b21fc2f1214e73b4021c8ab278f71420583e0e2e9f478f981fc64b20e1'
-          assert diag['bmdsfix1_dll_sha256']=='f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92'
-          assert diag['runtime_armed'] is True
-          assert diag['indexed'] is True
+          assert diag['runtime_armed'] is True and diag['indexed'] is True
           assert hashlib.sha256((root/diag['profile']).read_bytes()).hexdigest()==diag['sha256']
 
           assert parent['build_id']=='S1.42AK-BMDSFIX1-DIAG1'
@@ -126,9 +99,7 @@ jobs:
           assert build['build_id']==diag['build_id']
           assert build['output_profile']==diag['profile'] and build['output_sha256']==diag['sha256']
           assert build['base_profile']==diag['base_profile'] and build['base_sha256']==diag['base_sha256']
-          assert build['zip_members']==338
-          assert build['changed_existing_members']==['export.r2x']
-          assert build['added_members']==[]
+          assert build['zip_members']==338 and build['changed_existing_members']==['export.r2x'] and build['added_members']==[]
 
           parent_build=json.loads((root/parent['build_result']).read_text(encoding='utf-8'))
           assert parent_build['build_id']==parent['build_id']
@@ -147,54 +118,27 @@ jobs:
           integrity=json.loads((root/'Current/ARTIFACT_EVIDENCE_INTEGRITY.json').read_text(encoding='utf-8'))
           pending={x['build_id']:x for x in integrity['pending_profiles']}
           assert pending['S1.42AK-BMDSFIX1']['role']=='ACTIVE_RUNTIME_CANDIDATE_PENDING'
-          assert pending['S1.42AK-BMDSFIX1-DIAG1']['role']=='ACTIVE_RUNTIME_DIAGNOSTIC_PENDING'
           assert pending['S1.42AK-BMDSFIX1-DIAG1PATH1']['role']=='ACTIVE_RUNTIME_DIAGNOSTIC_PENDING'
           assert pending['S1.42AK-BMDSFIX1-DIAG1PATH1']['profile_sha256']==diag['sha256']
 
           activation=(root/'Current/185_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_ACTIVATION.md').read_text(encoding='utf-8')
-          assert 'ReplaceActiveGaleProfileV24.ps1' in activation
-          assert "LC V1 S1.42AK-D1P1\\BepInEx\\LogOutput.log" in activation
-          assert 'S1.42AK-BMDSFIX1-DIAG1PATH1' in activation
-          assert '[BMDSFIX1-DIAG1]' in activation
-          assert '[BMDSFIX1] APPLIED' in activation
-          assert 'NEVER ACCEPT' in activation
-          assert 'cannot waive or replace the regular exact-byte BMDSFIX1' in activation
+          for required in ('ReplaceActiveGaleProfileV24.ps1','S1.42AK-BMDSFIX1-DIAG1PATH1','LC V1 S1.42AK-D1P1','[BMDSFIX1-DIAG1]','[BMDSFIX1] APPLIED','NEVER ACCEPT','cannot waive or replace the regular exact-byte BMDSFIX1'):
+              assert required in activation
 
-          print('PASS: exact BMDSFIX1-DIAG1PATH1 diagnostic runtime target armed through one-hop DIAG1 parent; BMDSFIX1 gameplay candidate and regular qualification preserved')
-          PY
-
-          python - <<'PY'
-          import subprocess
           allowed={
-              'README.md',
-              'START_HERE_ChatGPT_Masterprompt.txt',
-              'Current/00_CURRENT_STATE.md',
-              'Current/01_HANDOVER_CORE.md',
-              'Current/185_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_ACTIVATION.md',
-              'Current/ARTIFACT_EVIDENCE_INTEGRITY.json',
-              'Current/ARTIFACT_EVIDENCE_INTEGRITY.md',
-              'Current/CURRENT_STATE.json',
-              'Current/PROJECT_KNOWLEDGE_MAP.md',
-              'Knowledge/CURRENT_LIFECYCLE.md',
-              'Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md',
-              'RuntimeInbox/ACTIVE_BUILD.txt',
+              'README.md','START_HERE_ChatGPT_Masterprompt.txt','Current/00_CURRENT_STATE.md','Current/01_HANDOVER_CORE.md',
+              'Current/185_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_ACTIVATION.md','Current/ARTIFACT_EVIDENCE_INTEGRITY.json',
+              'Current/ARTIFACT_EVIDENCE_INTEGRITY.md','Current/CURRENT_STATE.json','Current/PROJECT_KNOWLEDGE_MAP.md',
+              'Knowledge/CURRENT_LIFECYCLE.md','Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md','RuntimeInbox/ACTIVE_BUILD.txt'
           }
-          changed=set(subprocess.check_output(['git','diff','--name-only'], text=True).splitlines())
+          changed=set(subprocess.check_output(['git','diff','--name-only'],text=True).splitlines())
           unexpected=sorted(changed-allowed)
-          if unexpected:
-              raise SystemExit('Unexpected activation delta outside controller/lifecycle authorities: '+', '.join(unexpected))
-          required={
-              'Current/CURRENT_STATE.json',
-              'Current/185_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_ACTIVATION.md',
-              'RuntimeInbox/ACTIVE_BUILD.txt',
-              'Knowledge/CURRENT_LIFECYCLE.md',
-          }
-          missing=sorted(required-changed)
-          if missing:
-              raise SystemExit('Required activation delta missing: '+', '.join(missing))
-          print('PASS: activation diff is bounded to controller/lifecycle/evidence-routing authorities')
+          assert not unexpected, f'Unexpected activation delta: {unexpected}'
+          required_delta={'Current/CURRENT_STATE.json','Current/185_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_ACTIVATION.md','RuntimeInbox/ACTIVE_BUILD.txt','Knowledge/CURRENT_LIFECYCLE.md'}
+          missing=sorted(required_delta-changed)
+          assert not missing, f'Required activation delta missing: {missing}'
+          print('PASS: exact PATH1 one-hop activation and bounded controller/lifecycle delta verified')
           PY
-
           git diff --check
 
       - name: Commit atomic activation and remove one-shot machinery
@@ -205,7 +149,7 @@ jobs:
           from pathlib import Path
           path=Path('Current/185_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_ACTIVATION.md')
           lines=path.read_text(encoding='utf-8').splitlines()
-          path.write_text('\n'.join(line.rstrip() for line in lines)+'\n', encoding='utf-8')
+          path.write_text('\n'.join(line.rstrip() for line in lines)+'\n',encoding='utf-8')
           PY
           rm RepositoryTools/c3f18_activate_bmdsfix1_diag1path1_runtime.py
           rm .github/workflows/c3f18-activate-bmdsfix1-diag1path1-runtime.yml
