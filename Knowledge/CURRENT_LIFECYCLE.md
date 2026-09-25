@@ -68,39 +68,33 @@ The diagnostic therefore failed closed before targeted Greenhouse selection/topo
 
 The same normal-fallback session separately exposed a Black Mesa x Deep Sewers generation incident. LLL logged `CurrentLevel: Black Mesa DungeonSize Is: 3.25 | Leaving DungeonSize As: 4.875`, ButteRyBalance logged final multiplier `4.87`, normal LLL history selected `Deep Sewers`, and DunGenPlus emitted repeated `NoMatchingDoorwayPlacementResult` / `TileIsCollidingPlacementResult` failures without a later generation-complete marker in the captured post-selection portion. This is consistent with the reported persistent `Entering the atmosphere` loading state but does not prove every historical atmosphere hang shares that cause.
 
-## BMDSFIX1 runtime — partial non-target evidence, target outstanding
+## BMDSFIX1 runtime — partial exact-byte control plus DIAG1PATH1 supporting PASS
 
-The pair-scoped Deep Sewers mitigation `S1.42AK-BMDSFIX1` remains the exact active gameplay runtime candidate / not accepted. Exact profile SHA-256 remains `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0` and BMDSFIX1 DLL SHA-256 remains `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92`; no gameplay/config/package/profile/plugin bytes changed during this reconciliation.
+The pair-scoped Deep Sewers mitigation `S1.42AK-BMDSFIX1` remains the exact active gameplay candidate / not accepted. Exact gameplay profile SHA-256 remains `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0` and BMDSFIX1 DLL SHA-256 remains `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92`. The exact Black Mesa x Substation run at `RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/` remains the preserved non-target control.
 
-Runtime evidence is ingested at `RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/`, raw log SHA-256 `9a8cf28bbfc050cf9247cffacc890ea1b4e7215329db4ecfc9085f3f8f0ff2cb`. BMDSFIX1 armed without refusal. Black Mesa selected `Substation`, not `DeepSewersFlow`, and no `[BMDSFIX1] APPLIED` marker occurred. That exact-byte run is therefore preserved as the non-target control and does not need to be repeated solely for qualification. It does not qualify the target pair because Deep Sewers was not selected. Decision authority: `Current/175_S1.42AK_BMDSFIX1_PARTIAL_RUNTIME_EVIDENCE_NON_TARGET_CONTROL.md`.
+The separately versioned `S1.42AK-BMDSFIX1-DIAG1PATH1` supporting run is now ingested at `RuntimeEvidence/S1.42AK-BMDSFIX1-DIAG1PATH1/20260925T085104Z/`, raw log SHA-256 `ec7631dc6baa3ef6cff502767d56356fe62943b362271f45add8807381a63ae4`. The short-name diagnostic armed without refusal, selected Black Mesa / `DeepSewersFlow` deterministically from the normalized viable pool (`pool=31->1`), BMDSFIX1 armed and applied `4.875->1`, final length multiplier was `1`, dungeon generation completed, `Players finished generating the new floor` appeared, normal post-generation activity continued, and the session later returned to orbit. The user independently reported no `Entering the atmosphere` problem and no noticeable gameplay issue. Decision authority: `Current/186_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_SUPPORTING_PASS.md`.
 
-The same Substation run recorded `DungeonSize 6.343513 -> 9.515268` / final multiplier `9.51`, delayed generation completion overlapping an OPEN hangar while `landed=False`, and the user's severe stutter/freeze/apparent second-landing symptom. The finding is preserved separately without claiming a proven root cause or attributing it to BMDSFIX1, which did not apply to Substation.
+This is a **supporting diagnostic PASS only**. DIAG1PATH1 remains never acceptable as gameplay and does not accept or qualify BMDSFIX1. The finite DunGen placement retries resolved into successful generation; unrelated log noise such as the SoundAPI/HarmonyX TypeLoadException remains outside the pair-scoped finding.
 
-The remaining runtime gate is only Black Mesa x `DeepSewersFlow`: `[BMDSFIX1] ARMED`, target `APPLIED ... ->1`, completed generation and normal landed gameplay without the prior persistent retry/atmosphere failure or a new severe target-attributable regression. Evidence may accumulate across exact identical candidate bytes; no qualification criterion is waived. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` under its separate successor-diagnostic task.
-
-## DIAG1 launch block and DIAG1PATH1 published/indexed successor
-
-Two consecutive local launches of the exact published/indexed `S1.42AK-BMDSFIX1-DIAG1` profile failed inside the BepInEx/Mono preloader before any `[BMDSFIX1-DIAG1] ARMED` or selection evidence. Read-only inspection proved the named LC Office preloader and SoundAPI DLLs were physically present, while the long Gale profile identity made the two failing full paths exactly 260 and 262 characters. Decision/preparation authority: `Current/181_S1.42AK_BMDSFIX1_DIAG1_PATH_LENGTH_BLOCK_AND_DIAG1PATH1_SOURCE_STATIC.md`. These launches are preloader-block evidence only; they neither accept nor reject BMDSFIX1, and the long-name DIAG1 must not be rerun.
-
-The separately versioned `S1.42AK-BMDSFIX1-DIAG1PATH1` identity-only successor is exact-byte published, canonically indexed and now explicitly runtime-armed as the active **diagnostic-support-only** target. Activation authority is `Current/185_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_ACTIVATION.md`; exact profile `Profiles/LC V1 S1.42AK-D1P1.r2z` remains SHA-256 `0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6`, with only the reviewed `export.r2x` profile-identity delta relative to long-name DIAG1 and all protected DLL/package/config bytes unchanged. Canonical indexing remains `ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/PROFILE_INDEX_RESULT.json`: build ID `S1.42AK-BMDSFIX1-DIAG1PATH1`, profile identity `LC V1 S1.42AK-D1P1`, 338 archive members, resolution through `EXPECTED_HASHES`. The long-name DIAG1 is retained only as the preloader-blocked one-hop diagnostic parent and must not be rerun. DIAG1PATH1 is **diagnostic support only / never acceptable as gameplay**.
+The regular exact-byte BMDSFIX1 Black Mesa x `DeepSewersFlow` gameplay gate remains outstanding and unwaived. Runtime/evidence routing is returned to exact BMDSFIX1 before that gate; the diagnostic selector is not allowed in the qualification run. Black Mesa x Greenhouse remains separate and `NOT_YET_PROVEN`.
 
 ## Live execution state
 
 - Accepted baseline: **S1.42AK**.
-- Latest built artifact: **S1.42AK-BMDSFIX1 — active runtime candidate / not accepted**.
+- Latest built artifact: **S1.42AK-BMDSFIX1 — active gameplay candidate / not accepted**.
 - Active gameplay candidate: **S1.42AK-BMDSFIX1**.
-- Runtime/evidence pointer: **S1.42AK-BMDSFIX1-DIAG1PATH1 — active diagnostic-support-only target / never accept**.
-- Diagnostic parent: **S1.42AK-BMDSFIX1-DIAG1 — preloader-blocked one-hop parent / must not be rerun**.
-- Runtime test outstanding: **yes — one bounded DIAG1PATH1 supporting diagnostic run is now authorized after exact-head activation validation; regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding and unwaived**.
-- Preserved partial evidence: **Black Mesa x Substation non-target control PASS** at `RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/`.
-- Selected scope: **Universal Interior Viability / Equal Availability — DIAG1PATH1 runtime/evidence activation complete on this branch; exact-head integration validation remains required before import/run; gameplay candidate unchanged**.
+- Runtime/evidence pointer: **S1.42AK-BMDSFIX1** — restored after successful DIAG1PATH1 supporting evidence.
+- DIAG1PATH1: **supporting diagnostic PASS / evidence ingested / NEVER ACCEPT / no longer runtime-armed**.
+- Diagnostic parent DIAG1: **preloader-blocked historical one-hop provenance / must not be rerun**.
+- Runtime test outstanding: **yes — regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow gameplay qualification remains outstanding and unwaived**.
+- Preserved exact-byte non-target control: **Black Mesa x Substation PASS** at `RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/`.
+- Supporting target diagnostic: **Black Mesa x DeepSewersFlow PASS** at `RuntimeEvidence/S1.42AK-BMDSFIX1-DIAG1PATH1/20260925T085104Z/` under DIAG1PATH1, supporting only.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`, guarding exact BMDSFIX1 candidate bytes.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1-DIAG1PATH1` is runtime/evidence routing only and is not acceptance authority.
-- S1.42AK remains the accepted rollback baseline; BMDSFIX1 remains the unaccepted gameplay candidate; Greenhouse/BMGHDIAG remains separate.
+- S1.42AK remains the accepted rollback baseline; Greenhouse/BMGHDIAG remains separate.
 
 ## Exact next project action
 
-After this DIAG1PATH1 runtime/evidence activation is integrated and exact-head validated, import exact `S1.42AK-BMDSFIX1-DIAG1PATH1` through the canonical Gale v2.4 helper and run one bounded Black Mesa supporting diagnostic. Require inherited `[BMDSFIX1-DIAG1] ARMED` / deterministic DeepSewersFlow selection plus inherited `[BMDSFIX1] ARMED` / target `APPLIED ... ->1`, completed generation and normal landed gameplay without the prior persistent retry/`Entering the atmosphere` failure or a new severe target-attributable regression. Upload that exact run's `BepInEx/LogOutput.log` with the build-specific DIAG1PATH1 uploader. DIAG1PATH1 remains never-accept diagnostic support; the regular exact-byte BMDSFIX1 Black Mesa x `DeepSewersFlow` qualification remains outstanding and unwaived.
+After this supporting-pass decision and runtime-routing reset are integrated and exact-head CI validated, import exact S1.42AK-BMDSFIX1 through the canonical repository-driven Gale v2.4 launcher and obtain the remaining regular exact-byte Black Mesa x DeepSewersFlow gameplay qualification. The diagnostic selector must not be present in that qualification. Preserve the existing exact-byte Substation non-target control; BMDSFIX1 remains not accepted until the target flow itself is observed with [BMDSFIX1] ARMED, APPLIED ...->1, completed generation and normal landed gameplay without the prior persistent Entering-the-atmosphere/retry failure or a new severe target-attributable regression.
 
 ## Permanent Gale workflow
 
