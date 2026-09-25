@@ -27,7 +27,21 @@ jobs:
           python-version: '3.12'
 
       - name: Apply exact DIAG1PATH1 diagnostic runtime activation
-        run: python RepositoryTools/c3f18_activate_bmdsfix1_diag1path1_runtime.py
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          path=Path('RepositoryTools/c3f18_activate_bmdsfix1_diag1path1_runtime.py')
+          text=path.read_text(encoding='utf-8')
+          old='Canonical indexing is recorded by `ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/PROFILE_INDEX_RESULT.json`: build ID `S1.42AK-BMDSFIX1-DIAG1PATH1`, profile identity `LC V1 S1.42AK-D1P1`, 338 archive members, resolution through `EXPECTED_HASHES`. DIAG1PATH1 remains **not runtime-armed / diagnostic support only / never acceptable as gameplay**.'
+          new='Canonical indexing is recorded by `ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/PROFILE_INDEX_RESULT.json`: build ID `S1.42AK-BMDSFIX1-DIAG1PATH1`, profile identity `LC V1 S1.42AK-D1P1`, 338 archive members, resolution through `EXPECTED_HASHES`. DIAG1PATH1 remains **not runtime-armed / diagnostic support only / never accept**.'
+          count=text.count(old)
+          if count != 1:
+              raise SystemExit(f'Expected exactly one PATH1 lifecycle text anchor repair target, found {count}')
+          path.write_text(text.replace(old,new,1),encoding='utf-8')
+          PY
+          python RepositoryTools/c3f18_activate_bmdsfix1_diag1path1_runtime.py
 
       - name: Regenerate protected current navigation
         run: python RepositoryTools/render_current_navigation.py
@@ -195,6 +209,7 @@ jobs:
           PY
           rm RepositoryTools/c3f18_activate_bmdsfix1_diag1path1_runtime.py
           rm .github/workflows/c3f18-activate-bmdsfix1-diag1path1-runtime.yml
+          rm -f .github/workflows/c3f18-repair-diag1path1-activation-anchor.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
