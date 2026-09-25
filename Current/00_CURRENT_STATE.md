@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-25  
+**Updated:** 2026-09-26  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform a bounded repository-native regular map-seed control / runtime-readiness analysis for candidate map seed 1061420. Determine whether the normal Lethal Company V81 game can be started or advanced with that map seed through an existing ordinary seed mechanism while keeping the exact S1.42AK-BMDSFIX1 profile and normal V81/LLL dungeon-selection path unchanged. Do not re-enable DIAG1PATH1, add a dungeon selector, mutate the viable pool/weights, or consume LevelRandom before native selection. If a clean mechanism is established, only then declare the regular Black Mesa x DeepSewersFlow target test ready and provide the required canonical Gale/import command when needed plus the exact build-specific one-line PowerShell log uploader. If no clean mechanism exists, record the limitation and keep the natural target gate outstanding rather than returning to inefficient blind rerolls.
+Prepare and execute a bounded repository-native Installed-V81 StartOfRound seed-control capture against the same reviewed V81 identity. Capture StartGame(), ChooseNewRandomMapSeed(), OpenShipDoors(), the overrideRandomSeed and overrideSeedNumber fields, and direct assembly-level reads/writes/references sufficient to determine whether an existing ordinary player-facing mechanism can supply map seed 1061420 before RoundManager.LoadNewLevel(...). Do not build or run gameplay, do not add a seed setter or dungeon selector, do not mutate the viable pool/weights, and do not consume LevelRandom before native selection. Reconcile the evidence first; only if it proves a clean ordinary mechanism may the regular BMDSFIX1 Black Mesa x DeepSewersFlow gameplay gate be released, with the canonical Gale/import command when required and exact build-specific log uploader in the same test-instruction response.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
