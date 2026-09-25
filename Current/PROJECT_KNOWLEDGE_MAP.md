@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
 **Current State:** `Current/00_CURRENT_STATE.md`
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
-**Last-Validated:** 2026-09-24
+**Last-Validated:** 2026-09-25
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -34,7 +34,7 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 
 ## Current lifecycle anchor
 
-Accepted gameplay baseline and latest built artifact: **S1.42AK — LC Office Camera Enemy Balance — ACCEPTED FULL NORMAL STACK**.
+Accepted gameplay baseline: **S1.42AK — LC Office Camera Enemy Balance — ACCEPTED FULL NORMAL STACK**. Active gameplay candidate / latest built gameplay artifact: **S1.42AK-BMDSFIX1 — not accepted**.
 
 Acceptance authority: `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`. Full-normal runtime evidence is `RuntimeEvidence/S1.42AK/20260918T172838Z/` with raw log SHA-256 `cc0f0a7a6c6a76ad44266aded11ff9cb2aca21f2623f5fb895d371ad778526b9`. The first attempt in that session was aborted before interior entry. The played second attempt naturally selected Spooky Manor and supplied roughly three minutes of interior coverage without a hostile enemy sighting; that is a documented coverage limitation, not a proven spawn regression.
 
@@ -46,7 +46,7 @@ Both exact Black Mesa x Greenhouse diagnostic attempts remain completed failed d
 
 The separate pair-scoped `S1.42AK-BMDSFIX1` Deep Sewers mitigation remains the **active gameplay runtime candidate / not accepted**. Exact runtime evidence is ingested at `RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/` with raw log SHA-256 `9a8cf28bbfc050cf9247cffacc890ea1b4e7215329db4ecfc9085f3f8f0ff2cb`. The run armed BMDSFIX1 but Black Mesa selected Substation, so no `APPLIED` marker occurred; this is preserved as the exact-byte non-target control. The remaining regular gameplay gate is only Black Mesa x `DeepSewersFlow`; decision authority: `Current/175_S1.42AK_BMDSFIX1_PARTIAL_RUNTIME_EVIDENCE_NON_TARGET_CONTROL.md`. `BuildSpecs/current.json` remains disabled while guarding the exact BMDSFIX1 candidate.
 
-The published/indexed `S1.42AK-BMDSFIX1-DIAG1` still occupies the runtime/evidence pointer, but two consecutive launches are now documented as preloader-blocked before diagnostic execution because the long Gale profile identity produced 260/262-character nested runtime paths. It must not be rerun. `S1.42AK-BMDSFIX1-DIAG1PATH1` is the reviewed identity-only successor: inactive review build PASS, short profile identity `LC V1 S1.42AK-D1P1`, reviewed profile SHA-256 `0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6`, frozen publication source artifact `10835876163`; it is not yet published, indexed or armed. The immediate repository task is its separate exact-byte publication checkpoint, not a gameplay launch. BMDSFIX1 remains not accepted, its regular qualification remains outstanding and unwaived, accepted baseline remains S1.42AK, and Black Mesa x Greenhouse/BMGHDIAG remains separate.
+The published/indexed `S1.42AK-BMDSFIX1-DIAG1` still occupies the runtime/evidence pointer, but two consecutive launches are documented as preloader-blocked before diagnostic execution and the long-name profile must not be rerun. Its identity-only successor `S1.42AK-BMDSFIX1-DIAG1PATH1` is now exact-byte published and canonically indexed: profile `Profiles/LC V1 S1.42AK-D1P1.r2z`, SHA-256 `0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6`, canonical index result `ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/PROFILE_INDEX_RESULT.json`, 338 archive members, `EXPECTED_HASHES` resolution. It remains not runtime-armed, diagnostic support only and never acceptable as gameplay. The immediate repository task is a separate explicit DIAG1PATH1 runtime-activation checkpoint; do not import or run it before that gate is integrated and validated. BMDSFIX1 remains not accepted, its regular qualification remains outstanding and unwaived, accepted baseline remains S1.42AK, and Black Mesa x Greenhouse/BMGHDIAG remains separate.
 
 ## Authority rule
 
