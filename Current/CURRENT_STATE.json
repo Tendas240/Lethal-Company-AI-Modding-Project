@@ -61,13 +61,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C3F18_DIAG1PATH1_RUNTIME_ACTIVE_SUPPORTING_EVIDENCE_OUTSTANDING",
+    "status": "PHASE_C3F18_DIAG1PATH1_SUPPORTING_PASS_BMDSFIX1_EXACT_TARGET_QUALIFICATION_OUTSTANDING",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "Exact published/indexed S1.42AK-BMDSFIX1-DIAG1PATH1 is now the active diagnostic-only runtime/evidence target using the short Gale profile identity LC V1 S1.42AK-D1P1, SHA-256 0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6. It is byte-identical to the blocked long-name DIAG1 diagnostic except export.r2x profileName metadata, with 338 members and unchanged DIAG1 selector, BMDSFIX1 and normalizer DLL hashes. The long-name S1.42AK-BMDSFIX1-DIAG1 is retained only as the explicit one-hop diagnostic parent and must not be rerun. S1.42AK-BMDSFIX1 remains the active gameplay candidate / not accepted, and its regular exact-byte Black Mesa x DeepSewersFlow qualification remains outstanding and unwaived.",
-    "analysis_contract": "Treat S1.42AK-BMDSFIX1-DIAG1PATH1 only as an active diagnostic-support runtime overlay for deterministic Black Mesa x DeepSewersFlow evidence. Require the inherited [BMDSFIX1-DIAG1] ARMED and SELECTED markers, inherited [BMDSFIX1] ARMED and target APPLIED multiplier ->1 markers, completed generation and normal landed gameplay without the prior persistent retry/Entering-the-atmosphere failure or a new severe target-attributable regression. Never accept DIAG1PATH1, never infer BMDSFIX1 acceptance from this diagnostic, never rerun the blocked long-name DIAG1, never waive the regular exact-byte BMDSFIX1 target gate, and keep Black Mesa x Greenhouse/BMGHDIAG separate.",
-    "next_action": "After this activation is integrated and exact-head CI validated, import exact active S1.42AK-BMDSFIX1-DIAG1PATH1 through the canonical repository-driven Gale v2.4 launcher, run one bounded Black Mesa diagnostic, and upload its exact BepInEx/LogOutput.log with the DIAG1PATH1 build-specific uploader. Treat the result as supporting diagnostic evidence only; the regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding until separately satisfied.",
+    "finding": "Exact S1.42AK-BMDSFIX1-DIAG1PATH1 supporting runtime evidence is ingested at RuntimeEvidence/S1.42AK-BMDSFIX1-DIAG1PATH1/20260925T085104Z/ with raw LogOutput.log SHA-256 ec7631dc6baa3ef6cff502767d56356fe62943b362271f45add8807381a63ae4. The short-name diagnostic armed without refusal, deterministically reduced the Black Mesa viable pool from 31 to DeepSewersFlow only at normalized rarity 100, and the unchanged BMDSFIX1 DLL armed and applied its pair-scoped multiplier clamp 4.875->1. Dungeon generation then completed, Players finished generating the new floor, normal player activity continued, and the session later returned to orbit. The user independently reported no Entering-the-atmosphere problem and no noticeable gameplay issue. This is a supporting diagnostic PASS only: DIAG1PATH1 remains NEVER ACCEPT and cannot qualify or accept S1.42AK-BMDSFIX1. The regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow gameplay qualification remains outstanding and unwaived.",
+    "analysis_contract": "Treat the DIAG1PATH1 run as successful supporting evidence that deterministic Black Mesa x DeepSewersFlow selection plus the unchanged BMDSFIX1 clamp can complete generation and reach normal gameplay with multiplier 1. Preserve exact PATH1 profile SHA-256 0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6 and exact BMDSFIX1 gameplay profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0. Do not accept DIAG1PATH1 and do not infer BMDSFIX1 acceptance from diagnostic-overlay evidence. Runtime/evidence routing must now return to exact S1.42AK-BMDSFIX1 before the regular gameplay qualification. Preserve the already-ingested Substation non-target control; the remaining qualification is exact BMDSFIX1 Black Mesa x DeepSewersFlow with ARMED, APPLIED ->1, completed generation, normal landed gameplay, no persistent atmosphere/retry failure, and no new severe target-attributable regression. Keep Black Mesa x Greenhouse/BMGHDIAG separate.",
+    "next_action": "After this supporting-pass decision and runtime-routing reset are integrated and exact-head CI validated, import exact S1.42AK-BMDSFIX1 through the canonical repository-driven Gale v2.4 launcher and obtain the remaining regular exact-byte Black Mesa x DeepSewersFlow gameplay qualification. The diagnostic selector must not be present in that qualification. Preserve the existing exact-byte Substation non-target control; BMDSFIX1 remains not accepted until the target flow itself is observed with [BMDSFIX1] ARMED, APPLIED ...->1, completed generation and normal landed gameplay without the prior persistent Entering-the-atmosphere/retry failure or a new severe target-attributable regression.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -228,8 +228,13 @@
       "bmdsfix1_partial_runtime_evidence": "RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/",
       "bmdsfix1_partial_runtime_log_sha256": "9a8cf28bbfc050cf9247cffacc890ea1b4e7215329db4ecfc9085f3f8f0ff2cb",
       "bmdsfix1_non_target_control_status": "PASS_BLACK_MESA_SUBSTATION_NO_BMDSFIX1_APPLICATION",
-      "bmdsfix1_target_status": "OUTSTANDING_BLACK_MESA_DEEP_SEWERS",
-      "black_mesa_substation_runtime_finding": "Black Mesa selected Substation. LLL reported DungeonSize 6.343513->9.515268 and ButteRyBalance final 9.51; generation completed, but hangar OPEN occurred while landed=False before Players finished generating the new floor, and Ship has landed was logged later. The user reported severe stutter/freezing and an apparent second landing. Preserve as a separate non-target runtime/performance finding; the evidence does not attribute it to BMDSFIX1 because no BMDSFIX1 APPLIED marker occurred."
+      "bmdsfix1_target_status": "OUTSTANDING_EXACT_GAMEPLAY_BLACK_MESA_DEEP_SEWERS",
+      "black_mesa_substation_runtime_finding": "Black Mesa selected Substation. LLL reported DungeonSize 6.343513->9.515268 and ButteRyBalance final 9.51; generation completed, but hangar OPEN occurred while landed=False before Players finished generating the new floor, and Ship has landed was logged later. The user reported severe stutter/freezing and an apparent second landing. Preserve as a separate non-target runtime/performance finding; the evidence does not attribute it to BMDSFIX1 because no BMDSFIX1 APPLIED marker occurred.",
+      "diag1path1_runtime_decision": "Current/186_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_SUPPORTING_PASS.md",
+      "diag1path1_runtime_evidence": "RuntimeEvidence/S1.42AK-BMDSFIX1-DIAG1PATH1/20260925T085104Z/",
+      "diag1path1_runtime_log_sha256": "ec7631dc6baa3ef6cff502767d56356fe62943b362271f45add8807381a63ae4",
+      "diag1path1_supporting_status": "PASS_SUPPORTING_DIAGNOSTIC_NEVER_ACCEPT",
+      "black_mesa_deep_sewers_supporting_finding": "DIAG1PATH1 deterministically selected Black Mesa / DeepSewersFlow from a normalized 31-entry viable pool; BMDSFIX1 applied 4.875->1; final length multiplier was 1; dungeon generation and player floor generation completed; post-generation gameplay continued and the session returned to orbit. The user reported no Entering-the-atmosphere problem and no noticeable issue. This supports the mitigation mechanism but does not replace exact BMDSFIX1 gameplay qualification because the diagnostic selector DLL was present."
     },
     "diagnostic_build_plan": "BuildSpecs/S1.42AK-BMDSFIX1-DIAG1_PLAN.md",
     "diagnostic_static_evidence": "BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
@@ -237,7 +242,7 @@
     "diagnostic_runtime_activation": "Current/185_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_ACTIVATION.md",
     "diagnostic_revision": {
       "build_id": "S1.42AK-BMDSFIX1-DIAG1PATH1",
-      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+      "status": "PUBLISHED_DIAGNOSTIC_RUNTIME_EVIDENCE_INGESTED_SUPPORTING_PASS_NOT_ACCEPTED",
       "classification": "DIAGNOSTIC_SUPPORT_ONLY_NEVER_ACCEPT",
       "base_build_id": "S1.42AK-BMDSFIX1-DIAG1",
       "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z",
@@ -271,7 +276,7 @@
       ],
       "review_checkpoint": "Current/182_S1.42AK_BMDSFIX1_DIAG1PATH1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md",
       "published": true,
-      "runtime_armed": true,
+      "runtime_armed": false,
       "profile": "Profiles/LC V1 S1.42AK-D1P1.r2z",
       "profile_sources": "ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/",
       "file_index": "ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/FILE_INDEX.json",
@@ -297,9 +302,15 @@
       "static_evidence": "BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
       "activation_record": "Current/185_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_ACTIVATION.md",
       "runtime_role": "DIAGNOSTIC_SUPPORT_ONLY_DETERMINISTIC_BLACK_MESA_DEEP_SEWERS_SELECTOR_IDENTITY_SHORTENED_NEVER_ACCEPT",
-      "runtime_validation_status": "RUNTIME_TEST_OUTSTANDING_SUPPORTING_EVIDENCE_ONLY_NOT_ACCEPTED"
+      "runtime_validation_status": "RUNTIME_EVIDENCE_INGESTED_SUPPORTING_PASS_NEVER_ACCEPT_BMDSFIX1_TARGET_GATE_OUTSTANDING",
+      "runtime_evidence": "RuntimeEvidence/S1.42AK-BMDSFIX1-DIAG1PATH1/20260925T085104Z/",
+      "runtime_index": "RuntimeEvidence/S1.42AK-BMDSFIX1-DIAG1PATH1/20260925T085104Z/INDEX.json",
+      "runtime_log_sha256": "ec7631dc6baa3ef6cff502767d56356fe62943b362271f45add8807381a63ae4",
+      "runtime_decision": "Current/186_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_SUPPORTING_PASS.md",
+      "supporting_result": "PASS",
+      "user_observation": "No Entering-the-atmosphere problem and no noticeable gameplay issue reported for this bounded run."
     },
-    "diagnostic_runtime_finding": "Current/173_S1.42AK_BMGHDIAG2_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL_AND_DEEP_SEWERS_INCIDENT.md",
+    "diagnostic_runtime_finding": "Current/186_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_SUPPORTING_PASS.md",
     "bmdsfix1_source_repair": {
       "build_id": "S1.42AK-BMDSFIX1",
       "status": "SOURCE_STATIC_INTEGRATED_NOT_BUILT_NOT_ARMED",
@@ -531,9 +542,11 @@
       "activation_record": "Current/180_S1.42AK_BMDSFIX1_DIAG1_RUNTIME_ACTIVATION.md",
       "runtime_role": "PRELOADER_BLOCKED_DIAGNOSTIC_PARENT_DO_NOT_RERUN_NEVER_ACCEPT",
       "runtime_validation_status": "PRELOADER_BLOCKED_BEFORE_DIAGNOSTIC_EXECUTION_DO_NOT_RERUN_PARENT_OF_DIAG1PATH1"
-    }
+    },
+    "diagnostic_supporting_runtime_decision": "Current/186_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_SUPPORTING_PASS.md",
+    "diagnostic_supporting_runtime_evidence": "RuntimeEvidence/S1.42AK-BMDSFIX1-DIAG1PATH1/20260925T085104Z/"
   },
-  "next_action": "After this activation is integrated and exact-head CI validated, import exact active S1.42AK-BMDSFIX1-DIAG1PATH1 through the canonical repository-driven Gale v2.4 launcher, run one bounded Black Mesa diagnostic, and upload its exact BepInEx/LogOutput.log with the DIAG1PATH1 build-specific uploader. Treat the result as supporting diagnostic evidence only; the regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding until separately satisfied.",
+  "next_action": "After this supporting-pass decision and runtime-routing reset are integrated and exact-head CI validated, import exact S1.42AK-BMDSFIX1 through the canonical repository-driven Gale v2.4 launcher and obtain the remaining regular exact-byte Black Mesa x DeepSewersFlow gameplay qualification. The diagnostic selector must not be present in that qualification. Preserve the existing exact-byte Substation non-target control; BMDSFIX1 remains not accepted until the target flow itself is observed with [BMDSFIX1] ARMED, APPLIED ...->1, completed generation and normal landed gameplay without the prior persistent Entering-the-atmosphere/retry failure or a new severe target-attributable regression.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
@@ -541,7 +554,7 @@
     "build_base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
     "build_base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",
-    "runtime_active_build": "S1.42AK-BMDSFIX1-DIAG1PATH1"
+    "runtime_active_build": "S1.42AK-BMDSFIX1"
   },
   "canonical_navigation": {
     "bootstrap": "START_HERE_ChatGPT_Masterprompt.txt",
