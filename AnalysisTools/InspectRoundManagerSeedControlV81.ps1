@@ -26,7 +26,7 @@ function Replace-ExactlyOnce {
 
     $matches = [regex]::Matches($Text, [regex]::Escape($Old))
     if ($matches.Count -ne 1) {
-        throw "Base-helper contract drift for $Label: expected exactly one match, found $($matches.Count)."
+        throw "Base-helper contract drift for ${Label}: expected exactly one match, found $($matches.Count)."
     }
     return $Text.Replace($Old, $New)
 }
