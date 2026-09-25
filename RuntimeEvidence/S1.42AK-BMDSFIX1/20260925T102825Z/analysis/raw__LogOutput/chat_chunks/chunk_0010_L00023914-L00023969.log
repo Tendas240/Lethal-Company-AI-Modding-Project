@@ -1,0 +1,56 @@
+[10:25:11.0442548] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportC
+[10:25:11.0442548] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportD
+[10:25:11.0442548] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger (1)
+[10:25:11.0442548] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:25:11.0442548] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:25:11.0452759] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:25:11.0472792] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[10:25:11.0492794] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[10:25:11.0502812] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[10:25:11.0502812] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:25:11.0502812] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[10:25:11.0502812] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[10:25:11.0502812] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[10:25:11.0502812] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[10:25:11.0502812] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[10:25:11.0502812] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:25:11.0502812] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[10:25:11.0613193] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[10:25:11.1005080] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[10:25:11.1423221] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[10:25:11.1423221] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[10:25:11.1423221] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[10:25:11.1423221] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[10:25:11.1423221] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[10:25:11.1423221] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[10:25:11.1423221] [Info   : Unity Log] Interact trigger destroying! name: Cube (4)
+[10:25:11.2671275] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[10:25:11.2826545] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[10:25:11.2901624] [Info   :MoreCompany] LANMenu startLAN Patched
+[10:25:11.6123865] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[10:25:13.2480918] [Info   : Unity Log] Returning week num: 145
+[10:25:13.2480918] [Info   : Unity Log] week num: 145
+[10:25:13.2545932] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[10:25:13.2555969] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[10:25:13.2681233] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[10:25:13.2761429] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[10:25:13.2761429] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[10:25:13.2761429] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited facility
+[10:25:13.2786463] [Info   :LethalPerformance] Saved 1 save(s)
+[10:25:14.8227866] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[10:25:14.8363927] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[10:25:16.3751918] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[10:25:16.3761902] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[10:25:16.3761902] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
