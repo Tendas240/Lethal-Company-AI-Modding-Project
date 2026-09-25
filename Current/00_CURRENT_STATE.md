@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-24  
+**Updated:** 2026-09-25  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform the separate S1.42AK-BMDSFIX1-DIAG1PATH1 exact-byte publication checkpoint from the frozen review source Actions artifact 10835876163 / review run 36063701766, materializing only the reviewed profile bytes SHA-256 0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6 and readable snapshot, and revalidate the identity-only delta without changing runtime controllers. Do not import or rerun the long-name DIAG1 profile. Profile-index reconciliation and explicit DIAG1PATH1 runtime activation remain later gates; the regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding and unwaived.
+Perform a separate explicit S1.42AK-BMDSFIX1-DIAG1PATH1 runtime-activation checkpoint. Activation may update only RuntimeInbox/ACTIVE_BUILD.txt and matching canonical lifecycle/controller routing required for Gale resolution and evidence attribution; it must not rebuild or alter profile, DLL, package, config or gameplay bytes and must not accept BMDSFIX1 or DIAG1PATH1. Do not import or run DIAG1PATH1 until that activation checkpoint is integrated and validated. The regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow qualification remains outstanding and unwaived.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
