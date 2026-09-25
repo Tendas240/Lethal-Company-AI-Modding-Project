@@ -41,7 +41,7 @@ function Get-PinnedBaseHelper {
     }
 
     Write-Step ('Fetching pinned base helper at ' + $BaseCommit + '.')
-    $response = Invoke-RestMethod -UseBasicParsing -Uri $uri -Headers $headers -Method Get
+    $response = Invoke-RestMethod -Uri $uri -Headers $headers -Method Get
     if ($response.sha -cne $BaseHelperBlobSha) {
         throw "Pinned base-helper blob mismatch: $($response.sha). Expected $BaseHelperBlobSha."
     }
@@ -51,7 +51,7 @@ function Get-PinnedBaseHelper {
 
     $bytes = [Convert]::FromBase64String(($response.content -replace '\s', ''))
     $text = $Utf8.GetString($bytes)
-    return ($text -replace "`r`n", "`n" -replace "`r", "`n")
+    return (($text -replace "`r`n", "`n") -replace "`r", "`n")
 }
 
 function New-SeedControlHelperText {
@@ -97,8 +97,8 @@ $RequiredMethods = @(
             throw "Derived helper is missing required method target: $required."
         }
     }
-    if ($text -match "\$RequiredMethods\s*=\s*@\([^)]*'GenerateNewLevelClientRpc'" -or $text -match "\$RequiredMethods\s*=\s*@\([^)]*'GenerateNewFloor'") {
-        throw 'Derived helper retained an old generation-gate required method.'
+    if ($text.Contains($oldRequired)) {
+        throw 'Derived helper retained the old generation-gate required-method block.'
     }
     if ($text -notmatch [regex]::Escape("$" + "EvidenceRoot = 'SourceEvidence/VanillaV81/RoundManagerSeedControl'")) {
         throw 'Derived helper evidence root assertion failed.'
