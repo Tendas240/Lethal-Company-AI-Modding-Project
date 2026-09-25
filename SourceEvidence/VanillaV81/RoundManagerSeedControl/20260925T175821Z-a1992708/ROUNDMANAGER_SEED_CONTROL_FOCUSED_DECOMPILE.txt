@@ -1,0 +1,1084 @@
+# Installed Lethal Company V81 RoundManager seed-control evidence
+
+Source Assembly-CSharp SHA-256: 5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731
+Steam buildid: 22825947
+Repository main at capture: 625a70b2bd97cd166940825285402856dd9b41db
+Decompiler: ilspycmd 11.0.0.9375
+Scope: LoadNewLevelWait, InitializeRandomNumberGenerators, GetRandomWeightedIndex and one-hop direct callers within RoundManager.
+This is source evidence, not gameplay acceptance. Full type source and binaries are excluded.
+
+--- public void SpawnScrapInLevel() / local type line 401 ---
+	public void SpawnScrapInLevel()
+	{
+		int num = (int)((float)AnomalyRandom.Next(currentLevel.minScrap, currentLevel.maxScrap) * scrapAmountMultiplier);
+		if (currentDungeonType == 4)
+		{
+			num += 6;
+		}
+		if (StartOfRound.Instance.isChallengeFile)
+		{
+			int num2 = AnomalyRandom.Next(10, 30);
+			num += num2;
+			Debug.Log($"Anomaly random 0b: {num2}");
+		}
+		int num3 = -1;
+		if (AnomalyRandom.Next(0, 500) <= 20)
+		{
+			num3 = AnomalyRandom.Next(0, currentLevel.spawnableScrap.Count);
+			bool flag = false;
+			for (int i = 0; i < 2; i++)
+			{
+				if (currentLevel.spawnableScrap[num3].rarity < 5 || currentLevel.spawnableScrap[num3].spawnableItem.twoHanded)
+				{
+					num3 = AnomalyRandom.Next(0, currentLevel.spawnableScrap.Count);
+					continue;
+				}
+				flag = true;
+				break;
+			}
+			if (!flag && AnomalyRandom.Next(0, 100) < 60)
+			{
+				num3 = -1;
+			}
+		}
+		List<Item> ScrapToSpawn = new List<Item>();
+		List<int> list = new List<int>();
+		int num4 = 0;
+		List<int> list2 = new List<int>(currentLevel.spawnableScrap.Count);
+		for (int j = 0; j < currentLevel.spawnableScrap.Count; j++)
+		{
+			if (j == increasedScrapSpawnRateIndex)
+			{
+				list2.Add(100);
+			}
+			else
+			{
+				list2.Add(currentLevel.spawnableScrap[j].rarity);
+			}
+		}
+		int[] weights = list2.ToArray();
+		for (int k = 0; k < num; k++)
+		{
+			if (num3 != -1)
+			{
+				ScrapToSpawn.Add(currentLevel.spawnableScrap[num3].spawnableItem);
+			}
+			else
+			{
+				ScrapToSpawn.Add(currentLevel.spawnableScrap[GetRandomWeightedIndex(weights)].spawnableItem);
+			}
+		}
+		Debug.Log($"Number of scrap to spawn: {ScrapToSpawn.Count}. minTotalScrapValue: {currentLevel.minTotalScrapValue}. Total value of items: {num4}.");
+		RandomScrapSpawn randomScrapSpawn = null;
+		RandomScrapSpawn[] source = UnityEngine.Object.FindObjectsOfType<RandomScrapSpawn>();
+		List<NetworkObjectReference> list3 = new List<NetworkObjectReference>();
+		List<RandomScrapSpawn> usedSpawns = new List<RandomScrapSpawn>();
+		int l;
+		for (l = 0; l < ScrapToSpawn.Count; l++)
+		{
+			if (ScrapToSpawn[l] == null)
+			{
+				Debug.Log("Error!!!!! Found null element in list ScrapToSpawn. Skipping it.");
+				continue;
+			}
+			List<RandomScrapSpawn> list4 = ((ScrapToSpawn[l].spawnPositionTypes != null && ScrapToSpawn[l].spawnPositionTypes.Count != 0 && num3 == -1) ? source.Where((RandomScrapSpawn x) => ScrapToSpawn[l].spawnPositionTypes.Contains(x.spawnableItems) && !x.spawnUsed).ToList() : source.ToList());
+			if (list4.Count <= 0)
+			{
+				Debug.Log("No tiles containing a scrap spawn with item type: " + ScrapToSpawn[l].itemName);
+				continue;
+			}
+			if (usedSpawns.Count > 0 && list4.Contains(randomScrapSpawn))
+			{
+				list4.RemoveAll((RandomScrapSpawn x) => usedSpawns.Contains(x));
+				if (list4.Count <= 0)
+				{
+					usedSpawns.Clear();
+					l--;
+					continue;
+				}
+			}
+			randomScrapSpawn = list4[AnomalyRandom.Next(0, list4.Count)];
+			usedSpawns.Add(randomScrapSpawn);
+			Vector3 position;
+			if (randomScrapSpawn.spawnedItemsCopyPosition)
+			{
+				randomScrapSpawn.spawnUsed = true;
+				position = ((!randomScrapSpawn.spawnWithParent) ? randomScrapSpawn.transform.position : randomScrapSpawn.spawnWithParent.transform.position);
+			}
+			else
+			{
+				position = GetRandomNavMeshPositionInBoxPredictable(randomScrapSpawn.transform.position, randomScrapSpawn.itemSpawnRange, navHit, AnomalyRandom, -8193) + Vector3.up * ScrapToSpawn[l].verticalOffset;
+			}
+			GameObject obj = UnityEngine.Object.Instantiate(ScrapToSpawn[l].spawnPrefab, position, Quaternion.identity, null);
+			GrabbableObject component = obj.GetComponent<GrabbableObject>();
+			component.transform.rotation = Quaternion.Euler(component.itemProperties.restingRotation);
+			component.fallTime = 0f;
+			if (num3 != -1)
+			{
+				list.Add(Mathf.Clamp((int)((float)AnomalyRandom.Next(ScrapToSpawn[l].minValue, ScrapToSpawn[l].maxValue) * scrapValueMultiplier), 50, 170));
+			}
+			else
+			{
+				list.Add((int)((float)AnomalyRandom.Next(ScrapToSpawn[l].minValue, ScrapToSpawn[l].maxValue) * scrapValueMultiplier));
+			}
+			num4 += list[list.Count - 1];
+			component.scrapValue = list[list.Count - 1];
+			NetworkObject component2 = obj.GetComponent<NetworkObject>();
+			component2.Spawn();
+			list3.Add(component2);
+		}
+		if (num3 != -1)
+		{
+			float num5 = 600f;
+			if (currentLevel.spawnableScrap[num3].spawnableItem.twoHanded)
+			{
+				num5 = 1500f;
+			}
+			if (num4 > 4500)
+			{
+				num4 = 0;
+				for (int num6 = 0; num6 < list.Count; num6++)
+				{
+					list[num6] = (int)((float)list[num6] * 0.7f);
+					num4 += list[num6];
+				}
+			}
+			else if ((float)num4 < num5)
+			{
+				num4 = 0;
+				for (int num7 = 0; num7 < list.Count; num7++)
+				{
+					list[num7] = (int)((float)list[num7] * 1.4f);
+					num4 += list[num7];
+				}
+			}
+		}
+		StartCoroutine(waitForScrapToSpawnToSync(list3.ToArray(), list.ToArray()));
+	}
+
+--- public void GenerateNewFloor() / local type line 835 ---
+	public void GenerateNewFloor()
+	{
+		int num = -1;
+		if (currentLevel.dungeonFlowTypes != null && currentLevel.dungeonFlowTypes.Length != 0)
+		{
+			List<int> list = new List<int>();
+			for (int i = 0; i < currentLevel.dungeonFlowTypes.Length; i++)
+			{
+				list.Add(currentLevel.dungeonFlowTypes[i].rarity);
+			}
+			int randomWeightedIndex = GetRandomWeightedIndex(list.ToArray(), LevelRandom);
+			num = currentLevel.dungeonFlowTypes[randomWeightedIndex].id;
+			dungeonGenerator.Generator.DungeonFlow = dungeonFlowTypes[num].dungeonFlow;
+			currentDungeonType = num;
+			if (currentLevel.dungeonFlowTypes[randomWeightedIndex].overrideLevelAmbience != null)
+			{
+				SoundManager.Instance.currentLevelAmbience = currentLevel.dungeonFlowTypes[randomWeightedIndex].overrideLevelAmbience;
+			}
+			else if (currentLevel.levelAmbienceClips != null)
+			{
+				SoundManager.Instance.currentLevelAmbience = currentLevel.levelAmbienceClips;
+			}
+		}
+		else
+		{
+			if (currentLevel.levelAmbienceClips != null)
+			{
+				SoundManager.Instance.currentLevelAmbience = currentLevel.levelAmbienceClips;
+			}
+			currentDungeonType = 0;
+		}
+		dungeonGenerator.Generator.ShouldRandomizeSeed = false;
+		dungeonGenerator.Generator.Seed = LevelRandom.Next();
+		float num2;
+		if (num != -1)
+		{
+			if (dungeonFlowTypes[num].restrictBounds == Vector3.zero)
+			{
+				dungeonGenerator.Generator.RestrictDungeonToBounds = false;
+			}
+			else
+			{
+				dungeonGenerator.Generator.RestrictDungeonToBounds = true;
+				dungeonGenerator.Generator.TilePlacementBounds = new Bounds(Vector3.zero, dungeonFlowTypes[num].restrictBounds * 2f * currentLevel.factorySizeMultiplier);
+			}
+			if (StartOfRound.Instance.occlusionCuller != null)
+			{
+				StartOfRound.Instance.occlusionCuller.AdjacentTileDepth = dungeonFlowTypes[num].cullingTileDepth;
+			}
+			num2 = currentLevel.factorySizeMultiplier / dungeonFlowTypes[num].MapTileSize * mapSizeMultiplier;
+			num2 = (float)((double)Mathf.Round(num2 * 100f) / 100.0);
+		}
+		else
+		{
+			dungeonGenerator.Generator.RestrictDungeonToBounds = false;
+			num2 = currentLevel.factorySizeMultiplier * mapSizeMultiplier;
+		}
+		dungeonGenerator.Generator.LengthMultiplier = num2;
+		dungeonIsGenerating = true;
+		dungeonGenerator.Generate();
+	}
+
+--- public void LoadNewLevel(int randomSeed, SelectableLevel newLevel) / local type line 955 ---
+	public void LoadNewLevel(int randomSeed, SelectableLevel newLevel)
+	{
+		if (base.IsServer)
+		{
+			currentLevel = newLevel;
+			dungeonFinishedGeneratingForAllPlayers = false;
+			playersManager.fullyLoadedPlayers.Clear();
+			if (dungeonGenerator != null)
+			{
+				dungeonGenerator.Generator.OnGenerationStatusChanged -= Generator_OnGenerationStatusChanged;
+			}
+			if (loadLevelCoroutine != null)
+			{
+				loadLevelCoroutine = null;
+			}
+			loadLevelCoroutine = StartCoroutine(LoadNewLevelWait(randomSeed));
+		}
+	}
+
+--- private IEnumerator LoadNewLevelWait(int randomSeed) / local type line 1011 ---
+	private IEnumerator LoadNewLevelWait(int randomSeed)
+	{
+		yield return null;
+		yield return null;
+		playersFinishedGeneratingFloor.Clear();
+		Debug.Log($"Weed: moldspreaditerations: {currentLevel.moldSpreadIterations}; position: {currentLevel.moldStartPosition}");
+		if (currentLevel.moldSpreadIterations > 0)
+		{
+			Debug.Log("Weed 1");
+			MoldSpreadManager moldSpreadManager = UnityEngine.Object.FindObjectOfType<MoldSpreadManager>();
+			GetOutsideAINodes(getUnderwaterNodes: false);
+			int moldStartPosition;
+			if (StartOfRound.Instance.currentLevel.moldStartPosition == -1)
+			{
+				Debug.Log("Weed 2");
+				System.Random random = new System.Random(StartOfRound.Instance.randomMapSeed + 2017);
+				int num = random.Next(0, outsideAINodes.Length);
+				bool flag = false;
+				RaycastHit hitInfo;
+				if (Vector3.Distance(outsideAINodes[num].transform.position, StartOfRound.Instance.shipLandingPosition.transform.position) < 40f)
+				{
+					flag = true;
+				}
+				else if (Physics.Raycast(outsideAINodes[num].transform.position + Vector3.up * 0.5f, Vector3.down, out hitInfo, 6f, StartOfRound.Instance.collidersAndRoomMaskAndDefault, QueryTriggerInteraction.Ignore))
+				{
+					if (Terrain.activeTerrain == null)
+					{
+						if (!hitInfo.collider.gameObject.CompareTag("Grass") && !hitInfo.collider.gameObject.CompareTag("Snow") && !hitInfo.collider.gameObject.CompareTag("Gravel"))
+						{
+							flag = true;
+						}
+					}
+					else if (hitInfo.collider.gameObject != Terrain.activeTerrain.gameObject)
+					{
+						flag = true;
+					}
+				}
+				if (flag)
+				{
+					int num2 = random.Next(0, outsideAINodes.Length);
+					int num3 = 0;
+					int num4 = 0;
+					while (num4 < outsideAINodes.Length)
+					{
+						num4++;
+						num2 = (num2 + 1) % outsideAINodes.Length;
+						if (Vector3.Distance(StartOfRound.Instance.shipLandingPosition.transform.position, outsideAINodes[num2].transform.position) < 40f)
+						{
+							continue;
+						}
+						if (Physics.Raycast(outsideAINodes[num2].transform.position, Vector3.down, out hitInfo, 6f, StartOfRound.Instance.collidersAndRoomMaskAndDefault, QueryTriggerInteraction.Ignore))
+						{
+							if (Terrain.activeTerrain == null)
+							{
+								if (!hitInfo.collider.gameObject.CompareTag("Grass") && !hitInfo.collider.gameObject.CompareTag("Gravel"))
+								{
+									continue;
+								}
+							}
+							else if (hitInfo.collider.gameObject != Terrain.activeTerrain.gameObject)
+							{
+								continue;
+							}
+						}
+						Debug.Log($"Weed: Chose a node #{num2} which is far enough away. Distance: {Vector3.Distance(StartOfRound.Instance.shipLandingPosition.transform.position, outsideAINodes[num2].transform.position)}", outsideAINodes[num2]);
+						num = num2;
+						num3++;
+						if (random.Next(0, 100) < 30 || num3 > 15)
+						{
+							break;
+						}
+					}
+				}
+				Debug.Log($"Mold: Ended up with node #{num}. Distance: {Vector3.Distance(StartOfRound.Instance.shipLandingPosition.transform.position, outsideAINodes[num].transform.position)}", outsideAINodes[num]);
+				StartOfRound.Instance.currentLevel.moldStartPosition = num;
+				moldStartPosition = num;
+			}
+			else
+			{
+				Debug.Log("Weed 3");
+				moldStartPosition = StartOfRound.Instance.currentLevel.moldStartPosition;
+			}
+			Debug.Log("Weed 4");
+			if (moldSpreadManager.planetMoldStates[StartOfRound.Instance.currentLevelID].destroyedMold.Count > 0)
+			{
+				Debug.Log($"Weed 5; moldspreaditerations: {currentLevel.moldSpreadIterations}; position: {currentLevel.moldStartPosition}");
+				GenerateNewLevelClientRpc(randomSeed, currentLevel.levelID, currentLevel.moldSpreadIterations, moldStartPosition, moldSpreadManager.planetMoldStates[StartOfRound.Instance.currentLevelID].destroyedMold.ToArray());
+			}
+			else
+			{
+				Debug.Log($"Weed 6; moldspreaditerations: {currentLevel.moldSpreadIterations}; position: {currentLevel.moldStartPosition}");
+				GenerateNewLevelClientRpc(randomSeed, currentLevel.levelID, currentLevel.moldSpreadIterations, moldStartPosition);
+			}
+		}
+		else
+		{
+			GenerateNewLevelClientRpc(randomSeed, currentLevel.levelID);
+		}
+		if (currentLevel.spawnEnemiesAndScrap)
+		{
+			yield return new WaitUntil(() => dungeonCompletedGenerating);
+			yield return null;
+			yield return new WaitUntil(() => playersFinishedGeneratingFloor.Count >= GameNetworkManager.Instance.connectedPlayers);
+			Debug.Log("Players finished generating the new floor");
+		}
+		yield return new WaitForSeconds(0.3f);
+		SpawnSyncedProps();
+		if (currentLevel.spawnEnemiesAndScrap)
+		{
+			GeneratedFloorPostProcessing();
+		}
+		yield return null;
+		playersFinishedGeneratingFloor.Clear();
+		dungeonFinishedGeneratingForAllPlayers = true;
+		RefreshEnemyVents();
+		FinishGeneratingNewLevelClientRpc();
+	}
+
+--- public void GenerateNewLevelClientRpc(int randomSeed, int levelID, int moldIterations = 0, int moldStartPosition = -1, int[] syncDestroyedMold = null) / local type line 1130 ---
+	public void GenerateNewLevelClientRpc(int randomSeed, int levelID, int moldIterations = 0, int moldStartPosition = -1, int[] syncDestroyedMold = null)
+	{
+		NetworkManager networkManager = base.NetworkManager;
+		if ((object)networkManager == null || !networkManager.IsListening)
+		{
+			return;
+		}
+		if (__rpc_exec_stage != __RpcExecStage.Execute && (networkManager.IsServer || networkManager.IsHost))
+		{
+			ClientRpcParams clientRpcParams = default(ClientRpcParams);
+			FastBufferWriter bufferWriter = __beginSendClientRpc(3073943002u, clientRpcParams, RpcDelivery.Reliable);
+			BytePacker.WriteValueBitPacked(bufferWriter, randomSeed);
+			BytePacker.WriteValueBitPacked(bufferWriter, levelID);
+			BytePacker.WriteValueBitPacked(bufferWriter, moldIterations);
+			BytePacker.WriteValueBitPacked(bufferWriter, moldStartPosition);
+			bool value = syncDestroyedMold != null;
+			bufferWriter.WriteValueSafe(in value, default(FastBufferWriter.ForPrimitives));
+			if (value)
+			{
+				bufferWriter.WriteValueSafe(syncDestroyedMold, default(FastBufferWriter.ForPrimitives));
+			}
+			__endSendClientRpc(ref bufferWriter, 3073943002u, clientRpcParams, RpcDelivery.Reliable);
+		}
+		if (__rpc_exec_stage != __RpcExecStage.Execute || (!networkManager.IsClient && !networkManager.IsHost))
+		{
+			return;
+		}
+		__rpc_exec_stage = __RpcExecStage.Send;
+		GetOutsideAINodes(getUnderwaterNodes: false);
+		currentLevel.moldSpreadIterations = moldIterations;
+		currentLevel.moldStartPosition = moldStartPosition;
+		if (moldIterations > 0)
+		{
+			if (moldStartPosition >= outsideAINodes.Length)
+			{
+				Debug.LogError($"Mold error: Mold start position index {moldStartPosition} is greater than outsideAINodes count: {outsideAINodes.Length}! Cannot sync mold");
+			}
+			Vector3 position = outsideAINodes[Mathf.Min(moldStartPosition, outsideAINodes.Length - 1)].transform.position;
+			if (syncDestroyedMold != null)
+			{
+				UnityEngine.Object.FindObjectOfType<MoldSpreadManager>().SyncDestroyedMoldPositions(syncDestroyedMold);
+			}
+			UnityEngine.Object.FindObjectOfType<MoldSpreadManager>().GenerateMold(position, moldIterations);
+		}
+		playersManager.randomMapSeed = randomSeed;
+		currentLevel = playersManager.levels[levelID];
+		Debug.Log($"RANDOM MAP SEED - {playersManager.randomMapSeed}\nClient #{GameNetworkManager.Instance.localPlayerController.playerClientId}\nMoon: {currentLevel.PlanetName}");
+		InitializeRandomNumberGenerators();
+		SetChallengeFileRandomModifiers();
+		HUDManager.Instance.loadingText.text = $"Random seed: {randomSeed}";
+		HUDManager.Instance.LoadingScreen.SetBool("IsLoading", value: true);
+		dungeonCompletedGenerating = false;
+		mapPropsContainer = GameObject.FindGameObjectWithTag("MapPropsContainer");
+		GameObject gameObject = GameObject.FindGameObjectWithTag("SpecialStartRoomBounds");
+		if (gameObject != null)
+		{
+			startRoomSpecialBounds = gameObject.GetComponent<Collider>();
+		}
+		if (!currentLevel.spawnEnemiesAndScrap)
+		{
+			return;
+		}
+		dungeonGenerator = UnityEngine.Object.FindObjectOfType<RuntimeDungeon>(includeInactive: false);
+		if (dungeonGenerator != null)
+		{
+			dungeonGenerator.Generator.GenerateAsynchronously = true;
+			dungeonGenerator.Generator.MaxAsyncFrameMilliseconds = 1f;
+			dungeonGenerator.Generator.PauseBetweenRooms = 0f;
+			GenerateNewFloor();
+			if (dungeonGenerator.Generator.Status == GenerationStatus.Complete)
+			{
+				FinishGeneratingLevel();
+				Debug.Log("Dungeon finished generating in one frame.");
+			}
+			else
+			{
+				dungeonGenerator.Generator.OnGenerationStatusChanged += Generator_OnGenerationStatusChanged;
+				Debug.Log("Now listening to dungeon generator status.");
+			}
+		}
+		else
+		{
+			Debug.LogError($"This client could not find dungeon generator! scene count: {SceneManager.sceneCount}");
+		}
+	}
+
+--- public void PredictAllOutsideEnemies() / local type line 1591 ---
+	public void PredictAllOutsideEnemies()
+	{
+		if (!base.IsServer)
+		{
+			return;
+		}
+		enemyNestSpawnObjects.Clear();
+		int num = 0;
+		float num2 = 0f;
+		int num3 = 0;
+		bool flag = true;
+		System.Random random = new System.Random(playersManager.randomMapSeed + 41);
+		System.Random randomSeed = new System.Random(playersManager.randomMapSeed + 21);
+		while (num < TimeOfDay.Instance.numberOfHours)
+		{
+			num += hourTimeBetweenEnemySpawnBatches;
+			float num4 = timeScript.lengthOfHours * (float)num;
+			float num5 = currentLevel.outsideEnemySpawnChanceThroughDay.Evaluate(num4 / timeScript.totalTime);
+			if (StartOfRound.Instance.isChallengeFile)
+			{
+				num5++;
+			}
+			float num6 = num5 + (float)Mathf.Abs(TimeOfDay.Instance.daysUntilDeadline - 3) / 1.6f;
+			int num7 = Mathf.Clamp(random.Next((int)(num6 - 3f), (int)(num5 + 3f)), minOutsideEnemiesToSpawn, 20);
+			Debug.Log("D");
+			Debug.Log($"hour: {num}; timeUpToCurrentHour: {num4}; baseChance: {num5}, enemiesToSpawn: {num7}");
+			for (int i = 0; i < num7; i++)
+			{
+				SpawnProbabilities.Clear();
+				int num8 = 0;
+				for (int j = 0; j < currentLevel.OutsideEnemies.Count; j++)
+				{
+					EnemyType enemyType = currentLevel.OutsideEnemies[j].enemyType;
+					if (flag)
+					{
+						enemyType.numberSpawned = 0;
+						enemyType.hasSpawnedAtLeastOne = false;
+					}
+					Debug.Log("G");
+					if ((!enemyType.hasSpawnedAtLeastOne && enemyType.DiversityPowerLevel > currentMaxOutsideDiversityLevel - num3) || enemyType.PowerLevel > currentMaxOutsidePower - num2 || enemyType.numberSpawned >= enemyType.MaxCount || enemyType.spawningDisabled)
+					{
+						Debug.Log("I");
+						Debug.Log($"Setting prob to 0; {enemyType.PowerLevel} > {currentMaxOutsidePower - num2}; {enemyType.numberSpawned}");
+						SpawnProbabilities.Add(0);
+						continue;
+					}
+					Debug.Log("H");
+					int num9;
+					if (increasedOutsideEnemySpawnRateIndex == j)
+					{
+						num9 = 100;
+					}
+					else if (enemyType.useNumberSpawnedFalloff)
+					{
+						num9 = (int)((float)currentLevel.OutsideEnemies[j].rarity * (enemyType.probabilityCurve.Evaluate(num4 / timeScript.totalTime) * enemyType.numberSpawnedFalloff.Evaluate((float)enemyType.numberSpawned / 10f)));
+						Debug.Log($"Enemy '{currentLevel.OutsideEnemies[j].enemyType.enemyName}' rarity: {currentLevel.OutsideEnemies[j].rarity}; time multiplier: {enemyType.probabilityCurve.Evaluate(num4 / timeScript.totalTime)}");
+						Debug.Log($"Enemy probability without number falloff: {(int)((float)currentLevel.OutsideEnemies[j].rarity * enemyType.probabilityCurve.Evaluate(num4 / timeScript.totalTime))}");
+						Debug.Log($"Enemy number falloff probability: {num9}; number falloff multiplier y: {enemyType.numberSpawnedFalloff.Evaluate((float)enemyType.numberSpawned / 10f)}; x : {(float)enemyType.numberSpawned / 10f}");
+					}
+					else
+					{
+						num9 = (int)((float)currentLevel.OutsideEnemies[j].rarity * enemyType.probabilityCurve.Evaluate(num4 / timeScript.totalTime));
+					}
+					Debug.Log("J");
+					SpawnProbabilities.Add(num9);
+					num8 += num9;
+				}
+				flag = false;
+				Debug.Log("K");
+				if (num8 <= 0)
+				{
+					if (num2 >= currentMaxOutsidePower)
+					{
+						Debug.Log($"Round manager: No more spawnable outside enemies. Power count: {currentOutsideEnemyPower} ; max : {currentLevel.maxOutsideEnemyPowerCount}");
+					}
+					continue;
+				}
+				Debug.Log("L");
+				int randomWeightedIndex = GetRandomWeightedIndex(SpawnProbabilities.ToArray(), random);
+				EnemyType enemyType2 = currentLevel.OutsideEnemies[randomWeightedIndex].enemyType;
+				if (enemyType2.numberSpawned <= 0)
+				{
+					num3 += enemyType2.DiversityPowerLevel;
+				}
+				float num10 = Mathf.Max(enemyType2.spawnInGroupsOf, 1);
+				for (int k = 0; (float)k < num10; k++)
+				{
+					if (enemyType2.PowerLevel > currentMaxOutsidePower - num2)
+					{
+						break;
+					}
+					num2 += enemyType2.PowerLevel;
+					enemyType2.numberSpawned++;
+				}
+				Debug.Log("M");
+				Debug.Log($"Got enemy that will spawn for hour #{num}: {enemyType2.enemyName}");
+				if (!(enemyType2.nestSpawnPrefab != null))
+				{
+					continue;
+				}
+				Debug.Log("N");
+				if (!enemyType2.useMinEnemyThresholdForNest)
+				{
+					Debug.Log("O");
+					SpawnNestObjectForOutsideEnemy(enemyType2, randomSeed);
+					continue;
+				}
+				Debug.Log("P");
+				if (enemyType2.nestsSpawned >= 1)
+				{
+					Debug.Log("Q");
+					Debug.Log("Nests spawned was > 1; continuing without spawning nest");
+					continue;
+				}
+				Debug.Log("R");
+				if (enemyType2.numberSpawned >= enemyType2.minEnemiesToSpawnNest)
+				{
+					Debug.Log("S");
+					SpawnNestObjectForOutsideEnemy(enemyType2, randomSeed);
+				}
+			}
+		}
+		Debug.Log("T");
+		enemyNestSpawnObjects.TrimExcess();
+		List<NetworkObjectReference> list = new List<NetworkObjectReference>();
+		for (int l = 0; l < enemyNestSpawnObjects.Count; l++)
+		{
+			NetworkObject component = enemyNestSpawnObjects[l].GetComponent<NetworkObject>();
+			if (component != null)
+			{
+				list.Add(component);
+			}
+		}
+		if (list.Count > 0)
+		{
+			SyncNestSpawnObjectsOrderServerRpc(list.ToArray());
+		}
+	}
+
+--- public bool SpawnRandomWeedEnemy(float timeUpToCurrentHour, int numberOfWeeds) / local type line 1979 ---
+	public bool SpawnRandomWeedEnemy(float timeUpToCurrentHour, int numberOfWeeds)
+	{
+		SpawnProbabilities.Clear();
+		int num = 0;
+		for (int i = 0; i < WeedEnemies.Count; i++)
+		{
+			EnemyType enemyType = WeedEnemies[i].enemyType;
+			if (firstTimeSpawningWeedEnemies)
+			{
+				enemyType.numberSpawned = 0;
+				enemyType.hasSpawnedAtLeastOne = false;
+			}
+			if (enemyType.PowerLevel > 4f - currentWeedEnemyPower || enemyType.numberSpawned >= enemyType.MaxCount || enemyType.spawningDisabled)
+			{
+				SpawnProbabilities.Add(0);
+				continue;
+			}
+			int num2 = ((increasedOutsideEnemySpawnRateIndex == i) ? 100 : ((!enemyType.useNumberSpawnedFalloff) ? ((int)((float)WeedEnemies[i].rarity * enemyType.probabilityCurve.Evaluate(timeUpToCurrentHour / timeScript.totalTime))) : ((int)((float)WeedEnemies[i].rarity * (enemyType.probabilityCurve.Evaluate(timeUpToCurrentHour / timeScript.totalTime) * enemyType.numberSpawnedFalloff.Evaluate((float)enemyType.numberSpawned / 10f))))));
+			SpawnProbabilities.Add(num2);
+			num += num2;
+		}
+		firstTimeSpawningWeedEnemies = false;
+		if (num <= 20)
+		{
+			_ = currentOutsideEnemyPower;
+			_ = 4f;
+			return false;
+		}
+		bool result = false;
+		int randomWeightedIndex = GetRandomWeightedIndex(SpawnProbabilities.ToArray(), WeedEnemySpawnRandom);
+		EnemyType enemyType2 = WeedEnemies[randomWeightedIndex].enemyType;
+		float num3 = Mathf.Max(enemyType2.spawnInGroupsOf, 1);
+		GetOutsideAINodes();
+		GameObject[] array = ((enemyType2.WaterType == EnemyWaterType.WaterOnly) ? outsideAIWaterNodes : ((enemyType2.WaterType != EnemyWaterType.LandOnly) ? outsideAINodes : outsideAIDryNodes));
+		for (int j = 0; (float)j < num3; j++)
+		{
+			if (enemyType2.PowerLevel > 4f - currentWeedEnemyPower)
+			{
+				break;
+			}
+			currentWeedEnemyPower += enemyType2.PowerLevel;
+			Vector3 position = array[AnomalyRandom.Next(0, array.Length)].transform.position;
+			position = GetRandomNavMeshPositionInBoxPredictable(position, 10f, default(NavMeshHit), WeedEnemySpawnPlacementRandom, GetLayermaskForEnemySizeLimit(enemyType2));
+			position = PositionWithDenialPointsChecked(position, array, enemyType2, -1f, WeedEnemySpawnPlacementRandom);
+			GameObject gameObject = UnityEngine.Object.Instantiate(enemyType2.enemyPrefab, position, Quaternion.Euler(Vector3.zero));
+			gameObject.gameObject.GetComponentInChildren<NetworkObject>().Spawn(destroyWithScene: true);
+			SpawnedEnemies.Add(gameObject.GetComponent<EnemyAI>());
+			gameObject.GetComponent<EnemyAI>().enemyType.numberSpawned++;
+			gameObject.GetComponent<EnemyAI>().enemyType.hasSpawnedAtLeastOne = true;
+			result = true;
+		}
+		Debug.Log("Spawned weed enemy: " + enemyType2.enemyName);
+		return result;
+	}
+
+--- private bool SpawnRandomDaytimeEnemy(float timeUpToCurrentHour) / local type line 2053 ---
+	private bool SpawnRandomDaytimeEnemy(float timeUpToCurrentHour)
+	{
+		float num = currentDaytimeEnemyPowerNoDeaths;
+		bool flag = false;
+		for (int i = 0; i < currentLevel.DaytimeEnemies.Count; i++)
+		{
+			EnemyType enemyType = currentLevel.DaytimeEnemies[i].enemyType;
+			if (firstTimeSpawningDaytimeEnemies)
+			{
+				enemyType.numberSpawned = 0;
+				enemyType.hasSpawnedAtLeastOne = false;
+			}
+			if (!(enemyType.PowerLevel > (float)currentLevel.maxDaytimeEnemyPowerCount - currentDaytimeEnemyPowerNoDeaths) && enemyType.numberSpawned < currentLevel.DaytimeEnemies[i].enemyType.MaxCount && !(enemyType.normalizedTimeInDayToLeave < TimeOfDay.Instance.normalizedTimeOfDay) && !enemyType.spawningDisabled)
+			{
+				flag = true;
+				break;
+			}
+		}
+		if (!flag)
+		{
+			num = currentDaytimeEnemyPower;
+		}
+		SpawnProbabilities.Clear();
+		int num2 = 0;
+		for (int j = 0; j < currentLevel.DaytimeEnemies.Count; j++)
+		{
+			EnemyType enemyType = currentLevel.DaytimeEnemies[j].enemyType;
+			if (firstTimeSpawningDaytimeEnemies)
+			{
+				enemyType.numberSpawned = 0;
+				enemyType.hasSpawnedAtLeastOne = false;
+			}
+			if (enemyType.PowerLevel > (float)currentLevel.maxDaytimeEnemyPowerCount - num || enemyType.numberSpawned >= currentLevel.DaytimeEnemies[j].enemyType.MaxCount || enemyType.normalizedTimeInDayToLeave < TimeOfDay.Instance.normalizedTimeOfDay || enemyType.spawningDisabled)
+			{
+				SpawnProbabilities.Add(0);
+				continue;
+			}
+			int num3 = (int)((float)currentLevel.DaytimeEnemies[j].rarity * enemyType.probabilityCurve.Evaluate(timeUpToCurrentHour / timeScript.totalTime));
+			SpawnProbabilities.Add(num3);
+			num2 += num3;
+		}
+		firstTimeSpawningDaytimeEnemies = false;
+		if (num2 <= 0)
+		{
+			_ = (float)currentLevel.maxDaytimeEnemyPowerCount;
+			return false;
+		}
+		int randomWeightedIndex = GetRandomWeightedIndex(SpawnProbabilities.ToArray(), DaytimeEnemySpawnRandom);
+		EnemyType enemyType2 = currentLevel.DaytimeEnemies[randomWeightedIndex].enemyType;
+		bool result = false;
+		float num4 = Mathf.Max(enemyType2.spawnInGroupsOf, 1);
+		GetOutsideAINodes();
+		GameObject[] array = ((enemyType2.WaterType == EnemyWaterType.WaterOnly) ? outsideAIWaterNodes : ((enemyType2.WaterType != EnemyWaterType.LandOnly) ? outsideAINodes : outsideAIDryNodes));
+		for (int k = 0; (float)k < num4; k++)
+		{
+			if (enemyType2.PowerLevel > (float)currentLevel.maxDaytimeEnemyPowerCount - num)
+			{
+				break;
+			}
+			currentDaytimeEnemyPower += currentLevel.DaytimeEnemies[randomWeightedIndex].enemyType.PowerLevel;
+			currentDaytimeEnemyPowerNoDeaths += currentLevel.DaytimeEnemies[randomWeightedIndex].enemyType.PowerLevel;
+			num += currentLevel.DaytimeEnemies[randomWeightedIndex].enemyType.PowerLevel;
+			Vector3 position = array[AnomalyRandom.Next(0, array.Length)].transform.position;
+			position = GetRandomNavMeshPositionInBoxPredictable(position, 10f, default(NavMeshHit), DaytimeEnemySpawnPlacementRandom, GetLayermaskForEnemySizeLimit(enemyType2));
+			position = PositionWithDenialPointsChecked(position, array, enemyType2, -1f, DaytimeEnemySpawnPlacementRandom);
+			GameObject gameObject = UnityEngine.Object.Instantiate(enemyType2.enemyPrefab, position, Quaternion.Euler(Vector3.zero));
+			gameObject.gameObject.GetComponentInChildren<NetworkObject>().Spawn(destroyWithScene: true);
+			SpawnedEnemies.Add(gameObject.GetComponent<EnemyAI>());
+			gameObject.GetComponent<EnemyAI>().enemyType.numberSpawned++;
+			gameObject.GetComponent<EnemyAI>().enemyType.hasSpawnedAtLeastOne = true;
+			result = true;
+		}
+		return result;
+	}
+
+--- private bool SpawnRandomOutsideEnemy(float timeUpToCurrentHour) / local type line 2128 ---
+	private bool SpawnRandomOutsideEnemy(float timeUpToCurrentHour)
+	{
+		float num = currentOutsideEnemyPowerNoDeaths;
+		bool flag = false;
+		for (int i = 0; i < currentLevel.OutsideEnemies.Count; i++)
+		{
+			EnemyType enemyType = currentLevel.OutsideEnemies[i].enemyType;
+			if (firstTimeSpawningOutsideEnemies)
+			{
+				enemyType.numberSpawned = 0;
+				enemyType.hasSpawnedAtLeastOne = false;
+			}
+			if ((enemyType.numberSpawned > 0 || enemyType.DiversityPowerLevel <= currentMaxOutsideDiversityLevel - currentOutsideEnemyDiversityLevel) && !(enemyType.PowerLevel > currentMaxOutsidePower - currentOutsideEnemyPowerNoDeaths) && enemyType.numberSpawned < enemyType.MaxCount && !enemyType.spawningDisabled)
+			{
+				flag = true;
+				break;
+			}
+		}
+		if (!flag)
+		{
+			num = currentOutsideEnemyPower;
+		}
+		SpawnProbabilities.Clear();
+		int num2 = 0;
+		MoldSpreadManager moldSpreadManager = UnityEngine.Object.FindObjectOfType<MoldSpreadManager>();
+		int num3 = 0;
+		if (moldSpreadManager != null)
+		{
+			num3 = moldSpreadManager.generatedMold.Count;
+		}
+		for (int j = 0; j < currentLevel.OutsideEnemies.Count; j++)
+		{
+			EnemyType enemyType = currentLevel.OutsideEnemies[j].enemyType;
+			if (firstTimeSpawningOutsideEnemies)
+			{
+				enemyType.numberSpawned = 0;
+				enemyType.hasSpawnedAtLeastOne = false;
+			}
+			if (enemyType.numberSpawned <= 0 && enemyType.DiversityPowerLevel > currentMaxOutsideDiversityLevel - currentOutsideEnemyDiversityLevel)
+			{
+				SpawnProbabilities.Add(0);
+				continue;
+			}
+			if (enemyType.PowerLevel > currentMaxOutsidePower - num || enemyType.numberSpawned >= enemyType.MaxCount || enemyType.spawningDisabled)
+			{
+				SpawnProbabilities.Add(0);
+				continue;
+			}
+			int num4 = ((increasedOutsideEnemySpawnRateIndex == j) ? 100 : ((!enemyType.useNumberSpawnedFalloff) ? ((int)((float)currentLevel.OutsideEnemies[j].rarity * enemyType.probabilityCurve.Evaluate(timeUpToCurrentHour / timeScript.totalTime))) : ((int)((float)currentLevel.OutsideEnemies[j].rarity * (enemyType.probabilityCurve.Evaluate(timeUpToCurrentHour / timeScript.totalTime) * enemyType.numberSpawnedFalloff.Evaluate((float)enemyType.numberSpawned / 10f))))));
+			if (enemyType.spawnFromWeeds)
+			{
+				num4 = (int)Mathf.Clamp((float)num4 * ((float)num3 / 60f), 0f, 200f);
+			}
+			SpawnProbabilities.Add(num4);
+			num2 += num4;
+		}
+		firstTimeSpawningOutsideEnemies = false;
+		if (num2 <= 0)
+		{
+			_ = currentMaxOutsidePower;
+			return false;
+		}
+		bool flag2 = false;
+		int randomWeightedIndex = GetRandomWeightedIndex(SpawnProbabilities.ToArray(), OutsideEnemySpawnRandom);
+		EnemyType enemyType2 = currentLevel.OutsideEnemies[randomWeightedIndex].enemyType;
+		GetOutsideAINodes();
+		GameObject[] array = ((enemyType2.WaterType == EnemyWaterType.WaterOnly) ? outsideAIWaterNodes : ((enemyType2.WaterType != EnemyWaterType.LandOnly) ? outsideAINodes : outsideAIDryNodes));
+		bool flag3 = false;
+		if (!enemyType2.hasSpawnedAtLeastOne)
+		{
+			flag3 = true;
+		}
+		if (enemyType2 != enemyType2.enemyPrefab.GetComponent<EnemyAI>().enemyType)
+		{
+			Debug.LogError("Error! Enemy-to-spawn '" + enemyType2.enemyName + "' prefab does not have the same enemyType set as enemy-to-spawn! Fix immediately");
+		}
+		float num5 = Mathf.Max(enemyType2.spawnInGroupsOf, 1);
+		for (int k = 0; (float)k < num5; k++)
+		{
+			if (enemyType2.PowerLevel > currentMaxOutsidePower - num)
+			{
+				break;
+			}
+			currentOutsideEnemyPower += currentLevel.OutsideEnemies[randomWeightedIndex].enemyType.PowerLevel;
+			currentOutsideEnemyPowerNoDeaths += currentLevel.OutsideEnemies[randomWeightedIndex].enemyType.PowerLevel;
+			num += currentLevel.OutsideEnemies[randomWeightedIndex].enemyType.PowerLevel;
+			Vector3 position = array[AnomalyRandom.Next(0, array.Length)].transform.position;
+			position = GetRandomNavMeshPositionInBoxPredictable(position, 10f, default(NavMeshHit), OutsideEnemySpawnPlacementRandom, GetLayermaskForEnemySizeLimit(enemyType2));
+			position = PositionWithDenialPointsChecked(position, array, enemyType2, -1f, OutsideEnemySpawnPlacementRandom);
+			GameObject gameObject = UnityEngine.Object.Instantiate(enemyType2.enemyPrefab, position, Quaternion.Euler(Vector3.zero));
+			gameObject.gameObject.GetComponentInChildren<NetworkObject>().Spawn(destroyWithScene: true);
+			SpawnedEnemies.Add(gameObject.GetComponent<EnemyAI>());
+			enemyType2.numberSpawned++;
+			flag2 = true;
+		}
+		if (flag2 & flag3)
+		{
+			currentOutsideEnemyDiversityLevel += enemyType2.DiversityPowerLevel;
+			enemyType2.hasSpawnedAtLeastOne = true;
+		}
+		Debug.Log("Spawned enemy: " + enemyType2.enemyName);
+		return flag2;
+	}
+
+--- private bool AssignRandomEnemyToVent(EnemyVent vent, float spawnTime) / local type line 2358 ---
+	private bool AssignRandomEnemyToVent(EnemyVent vent, float spawnTime)
+	{
+		float num = currentEnemyPowerNoDeaths;
+		bool flag = false;
+		for (int i = 0; i < currentLevel.Enemies.Count; i++)
+		{
+			EnemyType enemyType = currentLevel.Enemies[i].enemyType;
+			if (firstTimeSpawningEnemies)
+			{
+				enemyType.numberSpawned = 0;
+				enemyType.hasSpawnedAtLeastOne = false;
+			}
+			if (!InsideEnemyCannotBeSpawned(i, currentEnemyPowerNoDeaths))
+			{
+				flag = true;
+				break;
+			}
+		}
+		if (!flag)
+		{
+			num = currentEnemyPower;
+		}
+		SpawnProbabilities.Clear();
+		int num2 = 0;
+		float num3 = timeScript.lengthOfHours * (float)currentHour / TimeOfDay.Instance.totalTime;
+		for (int j = 0; j < currentLevel.Enemies.Count; j++)
+		{
+			EnemyType enemyType = currentLevel.Enemies[j].enemyType;
+			if (firstTimeSpawningEnemies)
+			{
+				enemyType.numberSpawned = 0;
+				enemyType.hasSpawnedAtLeastOne = false;
+			}
+			if (InsideEnemyCannotBeSpawned(j, num))
+			{
+				SpawnProbabilities.Add(0);
+				continue;
+			}
+			Debug.Log($"enemy rush index is {enemyRushIndex}; current index {j}");
+			int num4;
+			if (enemyRushIndex != -1 && enemyRushIndex == j)
+			{
+				num4 = 100;
+			}
+			else if (increasedInsideEnemySpawnRateIndex == j)
+			{
+				num4 = 100;
+			}
+			else if (enemyType.useNumberSpawnedFalloff)
+			{
+				num4 = (int)((float)currentLevel.Enemies[j].rarity * (enemyType.probabilityCurve.Evaluate(num3) * enemyType.numberSpawnedFalloff.Evaluate(Mathf.Clamp((float)enemyType.numberSpawned / 10f, 0f, 1f))));
+				Debug.Log($"Hours: {timeScript.lengthOfHours * (float)currentHour} ; Time: {num3} | Enemy #{j} '{currentLevel.Enemies[j].enemyType.enemyName}' : probability: {num4}");
+			}
+			else
+			{
+				num4 = (int)((float)currentLevel.Enemies[j].rarity * enemyType.probabilityCurve.Evaluate(num3));
+				Debug.Log($"Hours: {timeScript.lengthOfHours * (float)currentHour} ; Time: {num3} | Enemy #{j} '{currentLevel.Enemies[j].enemyType.enemyName}' : probability: {num4}");
+			}
+			if (enemyType.increasedChanceInterior != -1 && currentDungeonType == enemyType.increasedChanceInterior)
+			{
+				num4 = (int)Mathf.Min((float)num4 * 1.5f, num4 + 50);
+			}
+			if (enemyRushIndex != -1 && enemyRushIndex != j)
+			{
+				num4 = Mathf.RoundToInt((float)num4 * 0.075f);
+			}
+			SpawnProbabilities.Add(num4);
+			num2 += num4;
+		}
+		firstTimeSpawningEnemies = false;
+		if (num2 <= 0)
+		{
+			if (num >= currentMaxInsidePower)
+			{
+				Debug.Log($"Round manager: No more spawnable enemies. Power count: {currentLevel.maxEnemyPowerCount} Max: {currentLevel.maxEnemyPowerCount}");
+				cannotSpawnMoreInsideEnemies = true;
+			}
+			return false;
+		}
+		int num5 = 0;
+		bool flag2 = false;
+		if (currentLevel.specialEnemyRarity.overrideEnemy != null)
+		{
+			if (currentLevel.specialEnemyRarity.percentageChance >= 1f)
+			{
+				for (int k = 0; k < currentLevel.Enemies.Count; k++)
+				{
+					if (currentLevel.Enemies[k].enemyType == currentLevel.specialEnemyRarity.overrideEnemy)
+					{
+						if (SpawnProbabilities[k] != 0)
+						{
+							num5 = k;
+							flag2 = true;
+						}
+						break;
+					}
+				}
+			}
+			else
+			{
+				int num6 = -1;
+				float num7 = 0f;
+				for (int l = 0; l < currentLevel.Enemies.Count; l++)
+				{
+					if (currentLevel.Enemies[l].enemyType == currentLevel.specialEnemyRarity.overrideEnemy)
+					{
+						num6 = l;
+					}
+					if (num6 != l)
+					{
+						num7 += (float)SpawnProbabilities[l];
+					}
+				}
+				if (num6 != -1 && SpawnProbabilities[num6] != 0 && currentLevel.specialEnemyRarity.percentageChance > 0f)
+				{
+					SpawnProbabilities[num6] = (int)(currentLevel.specialEnemyRarity.percentageChance * num7 / (1f - currentLevel.specialEnemyRarity.percentageChance));
+				}
+			}
+		}
+		if (!flag2)
+		{
+			num5 = GetRandomWeightedIndex(SpawnProbabilities.ToArray(), EnemySpawnRandom);
+		}
+		Debug.Log($"ADDING ENEMY #{num5}: {currentLevel.Enemies[num5].enemyType.enemyName}");
+		Debug.Log($"Adding {currentLevel.Enemies[num5].enemyType.PowerLevel} to power level, enemy: {currentLevel.Enemies[num5].enemyType.enemyName}");
+		currentEnemyPower += currentLevel.Enemies[num5].enemyType.PowerLevel;
+		currentEnemyPowerNoDeaths += currentLevel.Enemies[num5].enemyType.PowerLevel;
+		vent.enemyType = currentLevel.Enemies[num5].enemyType;
+		vent.enemyTypeIndex = num5;
+		vent.occupied = true;
+		vent.spawnTime = spawnTime;
+		if (timeScript.hour - currentHour > 0)
+		{
+			Debug.Log("RoundManager is catching up to current time! Not syncing vent SFX with clients since enemy will spawn from vent almost immediately.");
+		}
+		else
+		{
+			vent.SyncVentSpawnTimeClientRpc((int)spawnTime, num5);
+		}
+		if (!currentLevel.Enemies[num5].enemyType.hasSpawnedAtLeastOne)
+		{
+			Debug.Log($"Adding {currentLevel.Enemies[num5].enemyType.DiversityPowerLevel} to diversity level for enemy '{currentLevel.Enemies[num5].enemyType.enemyName}'");
+			currentInsideEnemyDiversityLevel += currentLevel.Enemies[num5].enemyType.DiversityPowerLevel;
+		}
+		currentLevel.Enemies[num5].enemyType.numberSpawned++;
+		currentLevel.Enemies[num5].enemyType.hasSpawnedAtLeastOne = true;
+		return true;
+	}
+
+--- public void InitializeRandomNumberGenerators() / local type line 2516 ---
+	public void InitializeRandomNumberGenerators()
+	{
+		SoundManager.Instance.InitializeRandom();
+		LevelRandom = new System.Random(playersManager.randomMapSeed);
+		AnomalyRandom = new System.Random(playersManager.randomMapSeed + 5);
+		EnemySpawnRandom = new System.Random(playersManager.randomMapSeed + 40);
+		DaytimeEnemySpawnRandom = new System.Random(playersManager.randomMapSeed + 43);
+		OutsideEnemySpawnRandom = new System.Random(playersManager.randomMapSeed + 41);
+		IndoorEnemySpawnPlacementRandom = new System.Random(playersManager.randomMapSeed + 30);
+		DaytimeEnemySpawnPlacementRandom = new System.Random(playersManager.randomMapSeed + 33);
+		OutsideEnemySpawnPlacementRandom = new System.Random(playersManager.randomMapSeed + 31);
+		WeedEnemySpawnPlacementRandom = new System.Random(playersManager.randomMapSeed + 43);
+		WeedEnemySpawnRandom = new System.Random(playersManager.randomMapSeed + 42);
+		BreakerBoxRandom = new System.Random(playersManager.randomMapSeed + 20);
+	}
+
+--- public int GetRandomWeightedIndex(int[] weights, System.Random randomSeed = null) / local type line 4045 ---
+	public int GetRandomWeightedIndex(int[] weights, System.Random randomSeed = null)
+	{
+		if (randomSeed == null)
+		{
+			randomSeed = AnomalyRandom;
+		}
+		if (weights == null || weights.Length == 0)
+		{
+			Debug.Log("Could not get random weighted index; array is empty or null.");
+			return -1;
+		}
+		int num = 0;
+		for (int i = 0; i < weights.Length; i++)
+		{
+			if (weights[i] >= 0)
+			{
+				num += weights[i];
+			}
+		}
+		if (weights.Length == 1)
+		{
+			return 0;
+		}
+		if (num <= 0)
+		{
+			return randomSeed.Next(0, weights.Length);
+		}
+		float num2 = (float)randomSeed.NextDouble();
+		float num3 = 0f;
+		for (int i = 0; i < weights.Length; i++)
+		{
+			if (!((float)weights[i] <= 0f))
+			{
+				num3 += (float)weights[i] / (float)num;
+				if (num3 >= num2)
+				{
+					return i;
+				}
+			}
+		}
+		Debug.LogError("Error while calculating random weighted index. Choosing randomly. Weights given:");
+		for (int i = 0; i < weights.Length; i++)
+		{
+			Debug.LogError($"{weights[i]},");
+		}
+		if (!hasInitializedLevelRandomSeed)
+		{
+			InitializeRandomNumberGenerators();
+		}
+		return randomSeed.Next(0, weights.Length);
+	}
+
+--- public int GetRandomWeightedIndexList(List<int> weights, System.Random randomSeed = null) / local type line 4097 ---
+	public int GetRandomWeightedIndexList(List<int> weights, System.Random randomSeed = null)
+	{
+		if (weights == null || weights.Count == 0)
+		{
+			Debug.Log("Could not get random weighted index; array is empty or null.");
+			return -1;
+		}
+		int num = 0;
+		for (int i = 0; i < weights.Count; i++)
+		{
+			if (weights[i] >= 0)
+			{
+				num += weights[i];
+			}
+		}
+		float num2 = ((randomSeed != null) ? ((float)randomSeed.NextDouble()) : UnityEngine.Random.value);
+		float num3 = 0f;
+		for (int i = 0; i < weights.Count; i++)
+		{
+			if (!((float)weights[i] <= 0f))
+			{
+				num3 += (float)weights[i] / (float)num;
+				if (num3 >= num2)
+				{
+					return i;
+				}
+			}
+		}
+		Debug.LogError("Error while calculating random weighted index.");
+		for (int i = 0; i < weights.Count; i++)
+		{
+			Debug.LogError($"{weights[i]},");
+		}
+		if (!hasInitializedLevelRandomSeed)
+		{
+			InitializeRandomNumberGenerators();
+		}
+		return randomSeed.Next(0, weights.Count);
+	}
