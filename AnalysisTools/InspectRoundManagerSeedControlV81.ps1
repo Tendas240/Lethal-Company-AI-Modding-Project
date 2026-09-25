@@ -72,10 +72,27 @@ $RequiredMethods = @(
     'GetRandomWeightedIndex'
 )
 '@ -replace "`r`n", "`n"
+    $oldReviewedManifest = @'
+$ReviewedAppManifestSha256 = @(
+    $ExpectedAppManifestSha256,
+    'b431704ad9cf0e44cba506274f6059d021e35f434af6ef27f3abd44c5d1e6ae3',
+    '132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e'
+)
+'@ -replace "`r`n", "`n"
+    $newReviewedManifest = @'
+$ReviewedAppManifestSha256 = @(
+    $ExpectedAppManifestSha256,
+    'b431704ad9cf0e44cba506274f6059d021e35f434af6ef27f3abd44c5d1e6ae3',
+    '132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e',
+    '4974c9249f249053275d93a5ba4f68e92346c1cfa09e89e6fce0b860c0c306a7'
+)
+'@ -replace "`r`n", "`n"
 
     $replacements = @(
         [pscustomobject]@{ Old = '$EvidenceRoot = ''SourceEvidence/VanillaV81/RoundManagerGeneration'''; New = '$EvidenceRoot = ''SourceEvidence/VanillaV81/RoundManagerSeedControl'''; Label = 'evidence root' },
         [pscustomobject]@{ Old = '$ReportName = ''ROUNDMANAGER_GENERATION_FOCUSED_DECOMPILE.txt'''; New = '$ReportName = ''ROUNDMANAGER_SEED_CONTROL_FOCUSED_DECOMPILE.txt'''; Label = 'report name' },
+        [pscustomobject]@{ Old = $oldReviewedManifest; New = $newReviewedManifest; Label = 'reviewed appmanifest allowlist' },
+        [pscustomobject]@{ Old = '$ManifestReview = ''AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md'''; New = '$ManifestReview = ''AnalysisTools/InspectRoundManagerSeedControlV81_PROVENANCE_REVIEW.md'''; Label = 'manifest review path' },
         [pscustomobject]@{ Old = $oldRequired; New = $newRequired; Label = 'required method set' },
         [pscustomobject]@{ Old = '[RoundManagerGenerationV81] '; New = '[RoundManagerSeedControlV81] '; Label = 'step prefix' },
         [pscustomobject]@{ Old = '^SourceEvidence/VanillaV81/RoundManagerGeneration/[0-9TZ]+-[a-f0-9]+$'; New = '^SourceEvidence/VanillaV81/RoundManagerSeedControl/[0-9TZ]+-[a-f0-9]+$'; Label = 'publication allowlist' },
@@ -88,8 +105,8 @@ $RequiredMethods = @(
         [pscustomobject]@{ Old = 'Capture exact V81 RoundManager generation-gate evidence '; New = 'Capture exact V81 RoundManager seed-control evidence '; Label = 'evidence commit message' }
     )
 
-    if ($replacements.Count -ne 12) {
-        throw "Seed-control replacement contract expected 12 records, found $($replacements.Count)."
+    if ($replacements.Count -ne 14) {
+        throw "Seed-control replacement contract expected 14 records, found $($replacements.Count)."
     }
     foreach ($replacement in $replacements) {
         if ([string]::IsNullOrEmpty([string]$replacement.Old) -or
@@ -110,6 +127,12 @@ $RequiredMethods = @(
     }
     if ($text -notmatch [regex]::Escape("$" + "EvidenceRoot = 'SourceEvidence/VanillaV81/RoundManagerSeedControl'")) {
         throw 'Derived helper evidence root assertion failed.'
+    }
+    if (-not $text.Contains("'4974c9249f249053275d93a5ba4f68e92346c1cfa09e89e6fce0b860c0c306a7'")) {
+        throw 'Derived helper is missing the reviewed 2026-09-25 Steam appmanifest variant.'
+    }
+    if (-not $text.Contains('$ManifestReview = ''AnalysisTools/InspectRoundManagerSeedControlV81_PROVENANCE_REVIEW.md''')) {
+        throw 'Derived helper manifest-review path assertion failed.'
     }
 
     return $text
