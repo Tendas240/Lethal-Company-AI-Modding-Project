@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-After this supporting-pass decision and runtime-routing reset are integrated and exact-head CI validated, import exact S1.42AK-BMDSFIX1 through the canonical repository-driven Gale v2.4 launcher and obtain the remaining regular exact-byte Black Mesa x DeepSewersFlow gameplay qualification. The diagnostic selector must not be present in that qualification. Preserve the existing exact-byte Substation non-target control; BMDSFIX1 remains not accepted until the target flow itself is observed with [BMDSFIX1] ARMED, APPLIED ...->1, completed generation and normal landed gameplay without the prior persistent Entering-the-atmosphere/retry failure or a new severe target-attributable regression.
+After the regular Expanded Facility non-target reconciliation is integrated and exact-head CI is green, continue testing the same unchanged regular S1.42AK-BMDSFIX1 profile on Black Mesa until normal selection yields DeepSewersFlow. Do not enable DIAG1PATH1 or any other selector/overlay. A fresh Gale replacement/import is not required merely to retry if the local exact BMDSFIX1 profile has not been modified or replaced; use the canonical Gale workflow only if profile identity becomes uncertain. BMDSFIX1 remains not accepted until the natural target run shows [BMDSFIX1] ARMED, [BMDSFIX1] APPLIED ...->1, completed generation, normal landed gameplay, no persistent atmosphere/retry failure, and no new severe target-attributable regression.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
