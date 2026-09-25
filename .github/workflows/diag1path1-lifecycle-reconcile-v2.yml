@@ -1,0 +1,95 @@
+name: DIAG1PATH1 lifecycle reconciliation v2
+
+on:
+  push:
+    branches:
+      - c3f18-diag1path1-lifecycle-reconciliation
+    paths:
+      - '.github/workflows/diag1path1-lifecycle-reconcile-v2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reconciliation branch
+        uses: actions/checkout@v4
+        with:
+          ref: c3f18-diag1path1-lifecycle-reconciliation
+          fetch-depth: 0
+
+      - name: Apply canonical lifecycle transformation
+        run: python RepositoryTools/tmp_diag1path1_lifecycle_reconcile.py
+
+      - name: Regenerate renderer-controlled navigation
+        run: python RepositoryTools/render_current_navigation.py
+
+      - name: Validate reconciled state
+        shell: bash
+        run: |
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/state_neutral_authority_validator.py
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/handover_workflow_validator.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s = json.loads(Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          assert s['controllers']['runtime_active_build'] == 'S1.42AK-BMDSFIX1-DIAG1'
+          assert s['controllers']['build_enabled'] is False
+          assert Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-BMDSFIX1-DIAG1'
+          build = json.loads(Path('BuildSpecs/current.json').read_text(encoding='utf-8'))
+          assert build['enabled'] is False
+          assert build['build_id'] == 'IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS'
+          idx = json.loads(Path('ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/PROFILE_INDEX_RESULT.json').read_text(encoding='utf-8'))
+          assert idx['build_id'] == 'S1.42AK-BMDSFIX1-DIAG1PATH1'
+          assert idx['sha256'] == '0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6'
+          PY
+
+      - name: Remove temporary reconciliation infrastructure
+        shell: bash
+        run: |
+          rm .github/workflows/diag1path1-lifecycle-reconcile.yml
+          rm .github/workflows/diag1path1-lifecycle-reconcile-v2.yml
+          rm RepositoryTools/tmp_diag1path1_lifecycle_reconcile.py
+
+      - name: Commit atomic lifecycle reconciliation
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              'Current/00_CURRENT_STATE.md',
+              'Current/01_HANDOVER_CORE.md',
+              'Current/185_S1.42AK_BMDSFIX1_DIAG1PATH1_PROFILE_INDEX_LIFECYCLE_RECONCILIATION.md',
+              'Current/CURRENT_STATE.json',
+              'Current/PROJECT_KNOWLEDGE_MAP.md',
+              'Knowledge/CURRENT_LIFECYCLE.md',
+              '.github/workflows/diag1path1-lifecycle-reconcile.yml',
+              '.github/workflows/diag1path1-lifecycle-reconcile-v2.yml',
+              'RepositoryTools/tmp_diag1path1_lifecycle_reconcile.py',
+          }
+          changed = set(subprocess.check_output(['git','diff','--cached','--name-only'], text=True).splitlines())
+          unexpected = changed - allowed
+          if unexpected:
+              raise SystemExit(f'unexpected staged paths: {sorted(unexpected)}')
+          required = {
+              'Current/00_CURRENT_STATE.md',
+              'Current/01_HANDOVER_CORE.md',
+              'Current/185_S1.42AK_BMDSFIX1_DIAG1PATH1_PROFILE_INDEX_LIFECYCLE_RECONCILIATION.md',
+              'Current/CURRENT_STATE.json',
+              'Current/PROJECT_KNOWLEDGE_MAP.md',
+              'Knowledge/CURRENT_LIFECYCLE.md',
+          }
+          missing = required - changed
+          if missing:
+              raise SystemExit(f'missing expected staged paths: {sorted(missing)}')
+          PY
+          git commit -m "Reconcile DIAG1PATH1 published indexed lifecycle"
+          git push origin HEAD:c3f18-diag1path1-lifecycle-reconciliation
