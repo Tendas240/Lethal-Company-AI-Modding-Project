@@ -125,6 +125,12 @@ public class StartOfRound {
 '@ -replace "`r`n","`n"
     $oldStubFixture = '$stub = ''public class RoundManager {'' + [char]10 + ''public void SpawnEnemyGameObject() { throw null; }'' + [char]10 + ''}'''
     $newStubFixture = '$stub = ''public class StartOfRound {'' + [char]10 + ''public void SpawnEnemyGameObject() { throw null; }'' + [char]10 + ''}'''
+    $oldDecompilerMetadata = @'
+        decompiler = @{ tool = 'ilspycmd'; version = $IlSpyVersion; type = 'RoundManager'; full_local_type_source_sha256 = (Get-TextSha256 $source) }
+'@ -replace "`r`n","`n"
+    $newDecompilerMetadata = @'
+        decompiler = @{ tool = 'ilspycmd'; version = $IlSpyVersion; type = 'StartOfRound'; full_local_type_source_sha256 = (Get-TextSha256 $source) }
+'@ -replace "`r`n","`n"
     $replacements = @(
       @('$EvidenceRoot = ''SourceEvidence/VanillaV81/RoundManagerGeneration''','$EvidenceRoot = ''SourceEvidence/VanillaV81/StartOfRoundSeedControl''','evidence root'),
       @('$ReportName = ''ROUNDMANAGER_GENERATION_FOCUSED_DECOMPILE.txt''','$ReportName = ''STARTOFROUND_SEED_CONTROL_FOCUSED_DECOMPILE.txt''','report name'),
@@ -145,7 +151,7 @@ public class StartOfRound {
       @($oldReportTail,$newReportTail,'override reference report'),
       @('source-evidence/roundmanager-generation-v81-','source-evidence/startofround-seed-control-v81-','branch prefix'),
       @('Native V81 RoundManager generation-gate evidence for Universal Interior Viability Phase C3E3F','Native V81 StartOfRound map-seed origin, override ownership and RoundManager handoff evidence for S1.42AK-BMDSFIX1 regular map-seed control analysis','manifest purpose'),
-      @("decompiler = @{ tool = 'ilspycmd'; version = $IlSpyVersion; type = 'RoundManager'; full_local_type_source_sha256 = (Get-TextSha256 $source) }","decompiler = @{ tool = 'ilspycmd'; version = $IlSpyVersion; type = 'StartOfRound'; full_local_type_source_sha256 = (Get-TextSha256 $source) }",'manifest decompiler type'),
+      @($oldDecompilerMetadata,$newDecompilerMetadata,'manifest decompiler type'),
       @('Capture exact V81 RoundManager generation-gate evidence ','Capture exact V81 StartOfRound seed-control evidence ','commit message')
     )
     foreach($r in $replacements){ $text = Replace-ExactlyOnce -Text $text -Old $r[0] -New $r[1] -Label $r[2] }
