@@ -80,12 +80,14 @@ $ReviewedAppManifestSha256 = @(
     }
     $referenceLines = New-Object System.Collections.Generic.List[string]
     $sourceLines = @($source -split "`r?`n")
+    $localTokenCounts = @{}
     foreach ($token in @('overrideRandomSeed','overrideSeedNumber')) {
         $matches = @()
         for ($lineIndex = 0; $lineIndex -lt $sourceLines.Count; $lineIndex++) {
             if ($sourceLines[$lineIndex].Contains($token)) { $matches += $lineIndex }
         }
         if ($matches.Count -lt 2) { throw ('Expected declaration plus at least one StartOfRound reference for ' + $token + ', found ' + $matches.Count + '.') }
+        $localTokenCounts[$token] = $matches.Count
         foreach ($lineIndex in $matches) {
             $from = [Math]::Max(0,$lineIndex-2); $to = [Math]::Min($sourceLines.Count-1,$lineIndex+2)
             [void]$referenceLines.Add(('--- StartOfRound ' + $token + ' context / local type line ' + ($lineIndex+1) + ' ---'))
@@ -94,6 +96,34 @@ $ReviewedAppManifestSha256 = @(
     }
     $loadMatches = @($methods | Where-Object { $_.Text -match '\bLoadNewLevel\s*\(' })
     if ($loadMatches.Count -eq 0) { throw 'Focused StartOfRound methods do not contain the RoundManager.LoadNewLevel handoff.' }
+
+    Write-Step 'Scanning exact Assembly-CSharp decompile for assembly-wide override-field references.'
+    $assemblyProjectDir = Join-Path $script:CaptureTempRoot 'assembly-reference-scan'
+    New-Item -ItemType Directory -Path $assemblyProjectDir -Force | Out-Null
+    $projectOutput = Invoke-CheckedNativeProcess -FilePath $ilspy.DotNet -Arguments @(
+        $ilspy.IlSpyDll, '-p', '-o', $assemblyProjectDir, '-r', $managedDir, $assemblyPath
+    ) -Label 'Assembly-CSharp project decompile'
+    if (-not [string]::IsNullOrWhiteSpace($projectOutput)) { Write-Host $projectOutput }
+    $assemblyCsFiles = @(Get-ChildItem -LiteralPath $assemblyProjectDir -Recurse -File -Filter '*.cs' | Sort-Object FullName)
+    if ($assemblyCsFiles.Count -eq 0) { throw 'Assembly-wide decompile produced no C# source files.' }
+    $assemblyReferenceLines = New-Object System.Collections.Generic.List[string]
+    $assemblyTokenCounts = @{}
+    foreach ($token in @('overrideRandomSeed','overrideSeedNumber')) {
+        $tokenCount = 0
+        foreach ($file in $assemblyCsFiles) {
+            $fileLines = [IO.File]::ReadAllLines($file.FullName)
+            for ($lineIndex = 0; $lineIndex -lt $fileLines.Count; $lineIndex++) {
+                if ($fileLines[$lineIndex] -notmatch ('\b' + [regex]::Escape($token) + '\b')) { continue }
+                $tokenCount++
+                $relativePath = $file.FullName.Substring($assemblyProjectDir.Length).TrimStart([char[]]"\/") -replace '\\','/'
+                $from = [Math]::Max(0,$lineIndex-6); $to = [Math]::Min($fileLines.Count-1,$lineIndex+6)
+                [void]$assemblyReferenceLines.Add(('--- Assembly-CSharp ' + $token + ' context / ' + $relativePath + ':' + ($lineIndex+1) + ' ---'))
+                for ($contextIndex=$from; $contextIndex -le $to; $contextIndex++) { [void]$assemblyReferenceLines.Add($fileLines[$contextIndex]) }
+            }
+        }
+        if ($tokenCount -lt $localTokenCounts[$token]) { throw ('Assembly-wide reference scan found fewer ' + $token + ' occurrences than the StartOfRound type: ' + $tokenCount + ' < ' + $localTokenCounts[$token] + '.') }
+        $assemblyTokenCounts[$token] = $tokenCount
+    }
 '@ -replace "`r`n","`n"
     $oldReportTail = @'
     foreach ($method in $methods) {
@@ -113,6 +143,10 @@ $ReviewedAppManifestSha256 = @(
     [void]$builder.AppendLine('## Direct StartOfRound override-field reference contexts')
     [void]$builder.AppendLine('These bounded contexts enumerate every direct occurrence of overrideRandomSeed and overrideSeedNumber in the exact decompiled StartOfRound type, including declarations and reads/writes.')
     foreach ($referenceLine in $referenceLines) { [void]$builder.AppendLine($referenceLine) }
+    [void]$builder.AppendLine('')
+    [void]$builder.AppendLine('## Assembly-wide override-field reference contexts')
+    [void]$builder.AppendLine('The exact Assembly-CSharp.dll was also decompiled as a temporary local project. The contexts below enumerate every decompiled C# occurrence of overrideRandomSeed and overrideSeedNumber across that assembly; only these bounded contexts are published, not the full project.')
+    foreach ($referenceLine in $assemblyReferenceLines) { [void]$builder.AppendLine($referenceLine) }
     $report = $builder.ToString()
 '@ -replace "`r`n","`n"
     $oldExtractorFixture = @'
@@ -130,6 +164,7 @@ public class StartOfRound {
 '@ -replace "`r`n","`n"
     $newDecompilerMetadata = @'
         decompiler = @{ tool = 'ilspycmd'; version = $IlSpyVersion; type = 'StartOfRound'; full_local_type_source_sha256 = (Get-TextSha256 $source) }
+        assembly_reference_scan = @{ mode = 'ilspycmd project decompile'; source_file_count = $assemblyCsFiles.Count; overrideRandomSeed_occurrences = $assemblyTokenCounts['overrideRandomSeed']; overrideSeedNumber_occurrences = $assemblyTokenCounts['overrideSeedNumber'] }
 '@ -replace "`r`n","`n"
     $replacements = @(
       @('$EvidenceRoot = ''SourceEvidence/VanillaV81/RoundManagerGeneration''','$EvidenceRoot = ''SourceEvidence/VanillaV81/StartOfRoundSeedControl''','evidence root'),
@@ -147,7 +182,7 @@ public class StartOfRound {
       @('SourceEvidence/VanillaV81/RoundManagerGeneration/20260920T000000Z-abcdef12','SourceEvidence/VanillaV81/StartOfRoundSeedControl/20260920T000000Z-abcdef12','publication self-test path'),
       @('lc-roundmanager-generation-v81-','lc-startofround-seed-control-v81-','temp prefix'),
       @('# Installed Lethal Company V81 RoundManager generation-gate evidence','# Installed Lethal Company V81 StartOfRound seed-control evidence','heading'),
-      @('Scope: GenerateNewLevelClientRpc, GenerateNewFloor and one-hop direct callers within RoundManager.','Scope: StartGame, ChooseNewRandomMapSeed, OpenShipDoors and one-hop direct callers within StartOfRound, plus every direct StartOfRound occurrence of overrideRandomSeed and overrideSeedNumber and the focused RoundManager.LoadNewLevel handoff.','scope'),
+      @('Scope: GenerateNewLevelClientRpc, GenerateNewFloor and one-hop direct callers within RoundManager.','Scope: StartGame, ChooseNewRandomMapSeed, OpenShipDoors and one-hop direct callers within StartOfRound, plus every decompiled Assembly-CSharp occurrence of overrideRandomSeed and overrideSeedNumber and the focused RoundManager.LoadNewLevel handoff.','scope'),
       @($oldReportTail,$newReportTail,'override reference report'),
       @('source-evidence/roundmanager-generation-v81-','source-evidence/startofround-seed-control-v81-','branch prefix'),
       @('Native V81 RoundManager generation-gate evidence for Universal Interior Viability Phase C3E3F','Native V81 StartOfRound map-seed origin, override ownership and RoundManager handoff evidence for S1.42AK-BMDSFIX1 regular map-seed control analysis','manifest purpose'),
@@ -155,7 +190,7 @@ public class StartOfRound {
       @('Capture exact V81 RoundManager generation-gate evidence ','Capture exact V81 StartOfRound seed-control evidence ','commit message')
     )
     foreach($r in $replacements){ $text = Replace-ExactlyOnce -Text $text -Old $r[0] -New $r[1] -Label $r[2] }
-    foreach($token in @('StartGame','ChooseNewRandomMapSeed','OpenShipDoors','overrideRandomSeed','overrideSeedNumber','LoadNewLevel','StartOfRoundSeedControl','4974c9249f249053275d93a5ba4f68e92346c1cfa09e89e6fce0b860c0c306a7')){
+    foreach($token in @('StartGame','ChooseNewRandomMapSeed','OpenShipDoors','overrideRandomSeed','overrideSeedNumber','LoadNewLevel','Assembly-CSharp project decompile','assembly_reference_scan','StartOfRoundSeedControl','4974c9249f249053275d93a5ba4f68e92346c1cfa09e89e6fce0b860c0c306a7')){
         if(-not $text.Contains($token)){ throw "Derived helper missing required contract token: $token" }
     }
     return $text
