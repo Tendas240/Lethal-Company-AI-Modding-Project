@@ -1,0 +1,181 @@
+# Installed Lethal Company V81 StartOfRound seed-control evidence
+
+Source Assembly-CSharp SHA-256: 5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731
+Steam buildid: 22825947
+Repository main at capture: 4ce830fbec920fa92a0c83ba0859f77a3df2cc1f
+Decompiler: ilspycmd 11.0.0.9375
+Scope: StartGame, ChooseNewRandomMapSeed, OpenShipDoors and one-hop direct callers within StartOfRound, plus every decompiled Assembly-CSharp occurrence of overrideRandomSeed and overrideSeedNumber and the focused RoundManager.LoadNewLevel handoff.
+This is source evidence, not gameplay acceptance. Full type source and binaries are excluded.
+
+--- public void StartGameServerRpc() / local type line 2745 ---
+	public void StartGameServerRpc()
+	{
+		NetworkManager networkManager = base.NetworkManager;
+		if ((object)networkManager == null || !networkManager.IsListening)
+		{
+			return;
+		}
+		if (__rpc_exec_stage != __RpcExecStage.Execute && (networkManager.IsClient || networkManager.IsHost))
+		{
+			ServerRpcParams serverRpcParams = default(ServerRpcParams);
+			FastBufferWriter bufferWriter = __beginSendServerRpc(1089447320u, serverRpcParams, RpcDelivery.Reliable);
+			__endSendServerRpc(ref bufferWriter, 1089447320u, serverRpcParams, RpcDelivery.Reliable);
+		}
+		if (__rpc_exec_stage == __RpcExecStage.Execute && (networkManager.IsServer || networkManager.IsHost))
+		{
+			__rpc_exec_stage = __RpcExecStage.Send;
+			if (fullyLoadedPlayers.Count >= connectedPlayersAmount + 1 && !travellingToNewLevel)
+			{
+				StartGame();
+			}
+			else
+			{
+				UnityEngine.Object.FindObjectOfType<StartMatchLever>().CancelStartGameClientRpc();
+			}
+		}
+	}
+
+--- public void StartGame() / local type line 2772 ---
+	public void StartGame()
+	{
+		if (!base.IsServer)
+		{
+			return;
+		}
+		if (inShipPhase)
+		{
+			beganLoadingNewLevel = true;
+			if (!GameNetworkManager.Instance.gameHasStarted)
+			{
+				GameNetworkManager.Instance.LeaveLobbyAtGameStart();
+				GameNetworkManager.Instance.gameHasStarted = true;
+			}
+			fullyLoadedPlayers.Clear();
+			ResetPlayersLoadedValueClientRpc(landingShip: true);
+			UnityEngine.Object.FindObjectOfType<StartMatchLever>().triggerScript.disabledHoverTip = "[Wait for ship to land]";
+			UnityEngine.Object.FindObjectOfType<StartMatchLever>().triggerScript.interactable = false;
+			currentPlanetAnimator.SetTrigger("LandOnPlanet");
+			if (overrideRandomSeed)
+			{
+				randomMapSeed = overrideSeedNumber;
+			}
+			else if (isChallengeFile)
+			{
+				randomMapSeed = new System.Random(GameNetworkManager.Instance.GetWeekNumber() + 51016).Next(0, 100000000);
+				Debug.Log($"RANDOM MAP SEED Challenge Moon: {randomMapSeed}");
+			}
+			else
+			{
+				ChooseNewRandomMapSeed();
+			}
+			base.NetworkManager.SceneManager.LoadScene(currentLevel.sceneName, LoadSceneMode.Additive);
+			Debug.Log("LOADING GAME!!!!!");
+			StartCoroutine(OpenShipDoors());
+		}
+		else
+		{
+			Debug.Log("Attempted to start game on server but we are not in ship phase");
+		}
+	}
+
+--- public void ChooseNewRandomMapSeed() / local type line 2814 ---
+	public void ChooseNewRandomMapSeed()
+	{
+		randomMapSeed = UnityEngine.Random.Range(1, 100000000);
+		Debug.Log($"RANDOM MAP SEED: {randomMapSeed}");
+	}
+
+--- private IEnumerator OpenShipDoors() / local type line 2820 ---
+	private IEnumerator OpenShipDoors()
+	{
+		Debug.Log("Waiting for all players to load!");
+		yield return new WaitUntil(() => fullyLoadedPlayers.Count >= GameNetworkManager.Instance.connectedPlayers);
+		yield return new WaitForSeconds(0.5f);
+		RoundManager.Instance.LoadNewLevel(randomMapSeed, currentLevel);
+	}
+
+## Direct StartOfRound override-field reference contexts
+These bounded contexts enumerate every direct occurrence of overrideRandomSeed and overrideSeedNumber in the exact decompiled StartOfRound type, including declarations and reads/writes.
+--- StartOfRound overrideRandomSeed context / local type line 359 ---
+	public int randomMapSeed;
+
+	public bool overrideRandomSeed;
+
+	public int overrideSeedNumber;
+--- StartOfRound overrideRandomSeed context / local type line 2791 ---
+			UnityEngine.Object.FindObjectOfType<StartMatchLever>().triggerScript.interactable = false;
+			currentPlanetAnimator.SetTrigger("LandOnPlanet");
+			if (overrideRandomSeed)
+			{
+				randomMapSeed = overrideSeedNumber;
+--- StartOfRound overrideSeedNumber context / local type line 361 ---
+	public bool overrideRandomSeed;
+
+	public int overrideSeedNumber;
+
+	public AnimationCurve objectFallToGroundCurve;
+--- StartOfRound overrideSeedNumber context / local type line 2793 ---
+			if (overrideRandomSeed)
+			{
+				randomMapSeed = overrideSeedNumber;
+			}
+			else if (isChallengeFile)
+
+## Assembly-wide override-field reference contexts
+The exact Assembly-CSharp.dll was also decompiled as a temporary local project. The contexts below enumerate every decompiled C# occurrence of overrideRandomSeed and overrideSeedNumber across that assembly; only these bounded contexts are published, not the full project.
+--- Assembly-CSharp overrideRandomSeed context / StartOfRound.cs:359 ---
+
+	public Canvas radarCanvas;
+
+	[Header("Randomization")]
+	public int randomMapSeed;
+
+	public bool overrideRandomSeed;
+
+	public int overrideSeedNumber;
+
+	public AnimationCurve objectFallToGroundCurve;
+
+	public AnimationCurve objectFallToGroundCurveNoBounce;
+--- Assembly-CSharp overrideRandomSeed context / StartOfRound.cs:2791 ---
+			}
+			fullyLoadedPlayers.Clear();
+			ResetPlayersLoadedValueClientRpc(landingShip: true);
+			UnityEngine.Object.FindObjectOfType<StartMatchLever>().triggerScript.disabledHoverTip = "[Wait for ship to land]";
+			UnityEngine.Object.FindObjectOfType<StartMatchLever>().triggerScript.interactable = false;
+			currentPlanetAnimator.SetTrigger("LandOnPlanet");
+			if (overrideRandomSeed)
+			{
+				randomMapSeed = overrideSeedNumber;
+			}
+			else if (isChallengeFile)
+			{
+				randomMapSeed = new System.Random(GameNetworkManager.Instance.GetWeekNumber() + 51016).Next(0, 100000000);
+--- Assembly-CSharp overrideSeedNumber context / StartOfRound.cs:361 ---
+
+	[Header("Randomization")]
+	public int randomMapSeed;
+
+	public bool overrideRandomSeed;
+
+	public int overrideSeedNumber;
+
+	public AnimationCurve objectFallToGroundCurve;
+
+	public AnimationCurve objectFallToGroundCurveNoBounce;
+
+	public AnimationCurve playerSinkingCurve;
+--- Assembly-CSharp overrideSeedNumber context / StartOfRound.cs:2793 ---
+			ResetPlayersLoadedValueClientRpc(landingShip: true);
+			UnityEngine.Object.FindObjectOfType<StartMatchLever>().triggerScript.disabledHoverTip = "[Wait for ship to land]";
+			UnityEngine.Object.FindObjectOfType<StartMatchLever>().triggerScript.interactable = false;
+			currentPlanetAnimator.SetTrigger("LandOnPlanet");
+			if (overrideRandomSeed)
+			{
+				randomMapSeed = overrideSeedNumber;
+			}
+			else if (isChallengeFile)
+			{
+				randomMapSeed = new System.Random(GameNetworkManager.Instance.GetWeekNumber() + 51016).Next(0, 100000000);
+				Debug.Log($"RANDOM MAP SEED Challenge Moon: {randomMapSeed}");
+			}

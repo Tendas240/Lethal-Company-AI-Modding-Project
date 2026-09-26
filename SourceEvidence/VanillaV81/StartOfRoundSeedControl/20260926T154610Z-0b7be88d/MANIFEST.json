@@ -1,0 +1,61 @@
+{
+    "schema_version":  1,
+    "purpose":  "Native V81 StartOfRound map-seed origin, override ownership and RoundManager handoff evidence for S1.42AK-BMDSFIX1 regular map-seed control analysis",
+    "capture_utc":  "2026-09-26T15:46:10Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "repository_main_at_capture":  "4ce830fbec920fa92a0c83ba0859f77a3df2cc1f",
+    "bound_prior_evidence":  "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json",
+    "source_assembly":  {
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll"
+                        },
+    "game_executable":  {
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+                            "logical_path":  "Lethal Company.exe"
+                        },
+    "steam":  {
+                  "manifest_review":  "AnalysisTools/InspectRoundManagerSeedControlV81_PROVENANCE_REVIEW.md",
+                  "matches_prior_appmanifest":  false,
+                  "buildid":  "22825947",
+                  "appmanifest_sha256":  "4974c9249f249053275d93a5ba4f68e92346c1cfa09e89e6fce0b860c0c306a7",
+                  "prior_appmanifest_sha256":  "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                  "app_id":  "1966720"
+              },
+    "decompiler":  {
+                       "full_local_type_source_sha256":  "9548b035867696c9b5976247d86c457623d00dd38b0fceab81126cce3e8358da",
+                       "tool":  "ilspycmd",
+                       "type":  "StartOfRound",
+                       "version":  "11.0.0.9375"
+                   },
+    "assembly_reference_scan":  {
+                                    "overrideSeedNumber_occurrences":  2,
+                                    "source_file_count":  386,
+                                    "overrideRandomSeed_occurrences":  2,
+                                    "mode":  "ilspycmd project decompile"
+                                },
+    "selection":  {
+                      "direct_caller_depth":  1,
+                      "required_methods":  [
+                                               "StartGame",
+                                               "ChooseNewRandomMapSeed",
+                                               "OpenShipDoors"
+                                           ],
+                      "selected_signatures":  [
+                                                  "public void StartGameServerRpc()",
+                                                  "public void StartGame()",
+                                                  "public void ChooseNewRandomMapSeed()",
+                                                  "private IEnumerator OpenShipDoors()"
+                                              ],
+                      "max_source_lines":  3000
+                  },
+    "report":  {
+                   "sha256":  "6d778e2ef8e38e77639d28f0118d48a1e158da51107a490570cb9e6b8ccae761",
+                   "file":  "STARTOFROUND_SEED_CONTROL_FOCUSED_DECOMPILE.txt",
+                   "excludes":  [
+                                    "game binaries",
+                                    "full type decompile",
+                                    "absolute local paths",
+                                    "user names"
+                                ]
+               }
+}
