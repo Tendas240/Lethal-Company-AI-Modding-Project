@@ -43,6 +43,7 @@ $RequiredMethods = @(
     'ChooseNewRandomMapSeed',
     'OpenShipDoors'
 )
+$RequiredSeedControlTokens = @('overrideRandomSeed','overrideSeedNumber','LoadNewLevel')
 '@ -replace "`r`n","`n"
     $oldReviewed = @'
 $ReviewedAppManifestSha256 = @(
@@ -59,6 +60,71 @@ $ReviewedAppManifestSha256 = @(
     '4974c9249f249053275d93a5ba4f68e92346c1cfa09e89e6fce0b860c0c306a7'
 )
 '@ -replace "`r`n","`n"
+    $oldDecompile = @'
+    Write-Step 'Extracting the exact RoundManager type locally.'
+    $source = Invoke-CheckedNativeProcess -FilePath $ilspy.DotNet -Arguments @(
+        $ilspy.IlSpyDll, '-t', 'RoundManager', '-r', $managedDir, $assemblyPath
+    ) -Label 'RoundManager decompile'
+    if ([string]::IsNullOrWhiteSpace($source)) { throw 'Decompiler returned empty source.' }
+    $methods = @(Get-FocusedMethods -Source $source -Required $RequiredMethods)
+'@ -replace "`r`n","`n"
+    $newDecompile = @'
+    Write-Step 'Extracting the exact StartOfRound type locally.'
+    $source = Invoke-CheckedNativeProcess -FilePath $ilspy.DotNet -Arguments @(
+        $ilspy.IlSpyDll, '-t', 'StartOfRound', '-r', $managedDir, $assemblyPath
+    ) -Label 'StartOfRound decompile'
+    if ([string]::IsNullOrWhiteSpace($source)) { throw 'Decompiler returned empty source.' }
+    $methods = @(Get-FocusedMethods -Source $source -Required $RequiredMethods)
+    foreach ($token in $RequiredSeedControlTokens) {
+        if (-not $source.Contains($token)) { throw ('StartOfRound source is missing required seed-control token: ' + $token) }
+    }
+    $referenceLines = New-Object System.Collections.Generic.List[string]
+    $sourceLines = @($source -split "`r?`n")
+    foreach ($token in @('overrideRandomSeed','overrideSeedNumber')) {
+        $matches = @()
+        for ($lineIndex = 0; $lineIndex -lt $sourceLines.Count; $lineIndex++) {
+            if ($sourceLines[$lineIndex].Contains($token)) { $matches += $lineIndex }
+        }
+        if ($matches.Count -lt 2) { throw ('Expected declaration plus at least one StartOfRound reference for ' + $token + ', found ' + $matches.Count + '.') }
+        foreach ($lineIndex in $matches) {
+            $from = [Math]::Max(0,$lineIndex-2); $to = [Math]::Min($sourceLines.Count-1,$lineIndex+2)
+            [void]$referenceLines.Add(('--- StartOfRound ' + $token + ' context / local type line ' + ($lineIndex+1) + ' ---'))
+            for ($contextIndex=$from; $contextIndex -le $to; $contextIndex++) { [void]$referenceLines.Add($sourceLines[$contextIndex]) }
+        }
+    }
+    $loadMatches = @($methods | Where-Object { $_.Text -match '\bLoadNewLevel\s*\(' })
+    if ($loadMatches.Count -eq 0) { throw 'Focused StartOfRound methods do not contain the RoundManager.LoadNewLevel handoff.' }
+'@ -replace "`r`n","`n"
+    $oldReportTail = @'
+    foreach ($method in $methods) {
+        [void]$builder.AppendLine('')
+        [void]$builder.AppendLine('--- ' + $method.Signature + ' / local type line ' + $method.SourceLine + ' ---')
+        [void]$builder.AppendLine($method.Text)
+    }
+    $report = $builder.ToString()
+'@ -replace "`r`n","`n"
+    $newReportTail = @'
+    foreach ($method in $methods) {
+        [void]$builder.AppendLine('')
+        [void]$builder.AppendLine('--- ' + $method.Signature + ' / local type line ' + $method.SourceLine + ' ---')
+        [void]$builder.AppendLine($method.Text)
+    }
+    [void]$builder.AppendLine('')
+    [void]$builder.AppendLine('## Direct StartOfRound override-field reference contexts')
+    [void]$builder.AppendLine('These bounded contexts enumerate every direct occurrence of overrideRandomSeed and overrideSeedNumber in the exact decompiled StartOfRound type, including declarations and reads/writes.')
+    foreach ($referenceLine in $referenceLines) { [void]$builder.AppendLine($referenceLine) }
+    $report = $builder.ToString()
+'@ -replace "`r`n","`n"
+    $oldExtractorFixture = @'
+public class RoundManager {
+    public void SpawnEnemyGameObject(int number = 0)
+'@ -replace "`r`n","`n"
+    $newExtractorFixture = @'
+public class StartOfRound {
+    public void SpawnEnemyGameObject(int number = 0)
+'@ -replace "`r`n","`n"
+    $oldStubFixture = '$stub = ''public class RoundManager {'' + [char]10 + ''public void SpawnEnemyGameObject() { throw null; }'' + [char]10 + ''}'''
+    $newStubFixture = '$stub = ''public class StartOfRound {'' + [char]10 + ''public void SpawnEnemyGameObject() { throw null; }'' + [char]10 + ''}'''
     $replacements = @(
       @('$EvidenceRoot = ''SourceEvidence/VanillaV81/RoundManagerGeneration''','$EvidenceRoot = ''SourceEvidence/VanillaV81/StartOfRoundSeedControl''','evidence root'),
       @('$ReportName = ''ROUNDMANAGER_GENERATION_FOCUSED_DECOMPILE.txt''','$ReportName = ''STARTOFROUND_SEED_CONTROL_FOCUSED_DECOMPILE.txt''','report name'),
@@ -68,18 +134,22 @@ $ReviewedAppManifestSha256 = @(
       @('[RoundManagerGenerationV81] ','[StartOfRoundSeedControlV81] ','step prefix'),
       @('\bclass\s+RoundManager\b[^{]*\{','\bclass\s+StartOfRound\b[^{]*\{','class extractor'),
       @('RoundManager class declaration absent.','StartOfRound class declaration absent.','class failure'),
-      @('RoundManager','StartOfRound','ILSpy target type'),
+      @($oldExtractorFixture,$newExtractorFixture,'extractor fixture class'),
+      @($oldStubFixture,$newStubFixture,'stub fixture class'),
+      @($oldDecompile,$newDecompile,'capture decompile block'),
       @('^SourceEvidence/VanillaV81/RoundManagerGeneration/[0-9TZ]+-[a-f0-9]+$','^SourceEvidence/VanillaV81/StartOfRoundSeedControl/[0-9TZ]+-[a-f0-9]+$','publication allowlist'),
       @('SourceEvidence/VanillaV81/RoundManagerGeneration/20260920T000000Z-abcdef12','SourceEvidence/VanillaV81/StartOfRoundSeedControl/20260920T000000Z-abcdef12','publication self-test path'),
       @('lc-roundmanager-generation-v81-','lc-startofround-seed-control-v81-','temp prefix'),
       @('# Installed Lethal Company V81 RoundManager generation-gate evidence','# Installed Lethal Company V81 StartOfRound seed-control evidence','heading'),
-      @('Scope: GenerateNewLevelClientRpc, GenerateNewFloor and one-hop direct callers within RoundManager.','Scope: StartGame, ChooseNewRandomMapSeed, OpenShipDoors and one-hop direct callers within StartOfRound; focused source also captures overrideRandomSeed, overrideSeedNumber and the RoundManager.LoadNewLevel handoff when present.','scope'),
+      @('Scope: GenerateNewLevelClientRpc, GenerateNewFloor and one-hop direct callers within RoundManager.','Scope: StartGame, ChooseNewRandomMapSeed, OpenShipDoors and one-hop direct callers within StartOfRound, plus every direct StartOfRound occurrence of overrideRandomSeed and overrideSeedNumber and the focused RoundManager.LoadNewLevel handoff.','scope'),
+      @($oldReportTail,$newReportTail,'override reference report'),
       @('source-evidence/roundmanager-generation-v81-','source-evidence/startofround-seed-control-v81-','branch prefix'),
       @('Native V81 RoundManager generation-gate evidence for Universal Interior Viability Phase C3E3F','Native V81 StartOfRound map-seed origin, override ownership and RoundManager handoff evidence for S1.42AK-BMDSFIX1 regular map-seed control analysis','manifest purpose'),
+      @("decompiler = @{ tool = 'ilspycmd'; version = $IlSpyVersion; type = 'RoundManager'; full_local_type_source_sha256 = (Get-TextSha256 $source) }","decompiler = @{ tool = 'ilspycmd'; version = $IlSpyVersion; type = 'StartOfRound'; full_local_type_source_sha256 = (Get-TextSha256 $source) }",'manifest decompiler type'),
       @('Capture exact V81 RoundManager generation-gate evidence ','Capture exact V81 StartOfRound seed-control evidence ','commit message')
     )
     foreach($r in $replacements){ $text = Replace-ExactlyOnce -Text $text -Old $r[0] -New $r[1] -Label $r[2] }
-    foreach($token in @('StartGame','ChooseNewRandomMapSeed','OpenShipDoors','StartOfRoundSeedControl','4974c9249f249053275d93a5ba4f68e92346c1cfa09e89e6fce0b860c0c306a7')){
+    foreach($token in @('StartGame','ChooseNewRandomMapSeed','OpenShipDoors','overrideRandomSeed','overrideSeedNumber','LoadNewLevel','StartOfRoundSeedControl','4974c9249f249053275d93a5ba4f68e92346c1cfa09e89e6fce0b860c0c306a7')){
         if(-not $text.Contains($token)){ throw "Derived helper missing required contract token: $token" }
     }
     return $text
