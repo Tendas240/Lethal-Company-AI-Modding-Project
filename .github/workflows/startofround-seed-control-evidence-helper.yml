@@ -1,0 +1,36 @@
+name: Validate V81 StartOfRound seed-control evidence helper
+on:
+  pull_request:
+    paths:
+      - 'AnalysisTools/InspectStartOfRoundSeedControlV81.ps1'
+      - '.github/workflows/startofround-seed-control-evidence-helper.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'AnalysisTools/InspectStartOfRoundSeedControlV81.ps1'
+      - '.github/workflows/startofround-seed-control-evidence-helper.yml'
+permissions:
+  contents: read
+jobs:
+  powershell51:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate StartOfRound helper under Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          if ($PSVersionTable.PSVersion.Major -ne 5) { throw 'Expected Windows PowerShell 5.1' }
+          & ./AnalysisTools/InspectStartOfRoundSeedControlV81.ps1 -SelfTest
+          if (-not $?) { throw 'StartOfRound seed-control helper self-test failed' }
+  bootstrap51:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate StartOfRound isolated bootstrap under Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          if ($PSVersionTable.PSVersion.Major -ne 5) { throw 'Expected Windows PowerShell 5.1' }
+          & ./AnalysisTools/InspectStartOfRoundSeedControlV81.ps1 -BootstrapSelfTest
+          if (-not $?) { throw 'StartOfRound seed-control bootstrap self-test failed' }
