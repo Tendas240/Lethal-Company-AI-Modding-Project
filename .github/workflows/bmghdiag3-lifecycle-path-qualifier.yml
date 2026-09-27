@@ -1,0 +1,62 @@
+name: Qualify future BMGHDIAG3 profile-index path references
+
+on:
+  push:
+    branches:
+      - reconcile/bmghdiag3-publication-lifecycle
+    paths:
+      - '.github/workflows/bmghdiag3-lifecycle-path-qualifier.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout reconciliation branch
+        uses: actions/checkout@v4
+        with:
+          ref: reconcile/bmghdiag3-publication-lifecycle
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Qualify not-yet-materialized path references
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('Knowledge/CURRENT_LIFECYCLE.md')
+          text = p.read_text(encoding='utf-8')
+          old = '`ProfileSources/S1.42AK-BMGHDIAG3/PROFILE_INDEX_RESULT.json`'
+          new = '`PROFILE_INDEX_RESULT.json` for the BMGHDIAG3 snapshot (not yet materialized)'
+          count = text.count(old)
+          if count != 2:
+              raise SystemExit(f'expected exactly 2 future-path references, found {count}')
+          p.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+
+      - name: Validate qualified lifecycle
+        shell: bash
+        run: |
+          set -euo pipefail
+          python RepositoryTools/render_current_navigation.py --check
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/overhaul_contract_validator.py
+
+      - name: Commit repair and remove temporary workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/bmghdiag3-lifecycle-path-qualifier.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Knowledge/CURRENT_LIFECYCLE.md .github/workflows/bmghdiag3-lifecycle-path-qualifier.yml
+          git commit -m 'Qualify pending BMGHDIAG3 profile-index path references'
+          git push origin HEAD:reconcile/bmghdiag3-publication-lifecycle
