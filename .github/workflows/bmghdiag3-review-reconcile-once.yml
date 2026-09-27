@@ -1,0 +1,204 @@
+name: One-shot BMGHDIAG3 review reconciliation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'reconcile/bmghdiag3-review-build-195'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reconcile exact inactive review-build checkpoint
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import subprocess
+
+          state_path = Path('Current/CURRENT_STATE.json')
+          lifecycle_path = Path('Knowledge/CURRENT_LIFECYCLE.md')
+          review_path = Path('BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json')
+          checkpoint_path = Path('Current/195_S1.42AK_BMGHDIAG3_INACTIVE_REVIEW_BUILD_CHECKPOINT.md')
+
+          state = json.loads(state_path.read_text(encoding='utf-8'))
+          review = json.loads(review_path.read_text(encoding='utf-8'))
+          selected = state['selected_scope']
+          phase = selected['phase_c']
+
+          old_status = 'PHASE_C3F18_BMDSFIX1_TARGET_QUALIFICATION_PASSIVE_OUTSTANDING_BMGHDIAG3_SOURCE_STATIC_INTEGRATED_INACTIVE_REVIEW_BUILD_NEXT'
+          new_status = 'PHASE_C3F18_BMDSFIX1_TARGET_QUALIFICATION_PASSIVE_OUTSTANDING_BMGHDIAG3_INACTIVE_REVIEW_BUILD_PASS_EXACT_BYTE_PUBLICATION_NEXT'
+          if selected['status'] == new_status:
+              print('BMGHDIAG3 review reconciliation already applied; no-op.')
+              raise SystemExit(0)
+          assert selected['status'] == old_status, selected['status']
+
+          assert state['accepted_baseline']['build_id'] == 'S1.42AK'
+          assert state['accepted_baseline']['sha256'] == 'b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee'
+          assert state['active_candidate']['build_id'] == 'S1.42AK-BMDSFIX1'
+          assert state['runtime_test_outstanding'] is True
+          assert state['controllers']['build_enabled'] is False
+          assert state['controllers']['build_id'] == 'IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS'
+          assert state['controllers']['runtime_active_build'] == 'S1.42AK-BMDSFIX1'
+          assert review['status'] == 'INACTIVE_REVIEW_BUILD_PASS_NOT_PUBLISHED_NOT_ARMED'
+          assert review['review_pr'] == 182
+          assert review['reviewed_head'] == '4462ced77519b34f6d55181fc33692b298434833'
+          assert review['review_run'] == 36311706288
+          assert review['review_artifact_id'] == 10929208327
+          assert review['profile_sha256'] == '7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace'
+          assert review['diagnostic_dll_sha256'] == 'd40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352'
+          assert review['review_artifact_zip_sha256'] == '20f616e85585e10631c31e09844a27bb6bb7649843a98655ed70e37b89152198'
+          assert review['published'] is False and review['runtime_armed'] is False
+          assert review['main_integration_commit'] == 'e08f0225de8441c13395b9a8a9157ec640673a37'
+          assert review['main_knowledge_architecture_run'] == 36312331849
+
+          review_finding = (
+              'The bounded S1.42AK-BMGHDIAG3 inactive review-build checkpoint is now complete: '
+              'PR #182 exact head 4462ced77519b34f6d55181fc33692b298434833 passed review-build run '
+              '36311706288 (#1) and Knowledge Architecture run 36311706234 (#809); the infrastructure merged '
+              'to main at e08f0225de8441c13395b9a8a9157ec640673a37 and permanent main Knowledge Architecture run '
+              '36312331849 (#810) passed. The reviewed Actions artifact is 10929208327 with ZIP SHA-256 '
+              '20f616e85585e10631c31e09844a27bb6bb7649843a98655ed70e37b89152198; its review profile SHA-256 is '
+              '7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace and S142AKBMGHDiag3.dll SHA-256 is '
+              'd40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352. The archive has 337 members, '
+              'adds only BepInEx/plugins/S142AKBMGHDiag3/S142AKBMGHDiag3.dll, removes none, changes no package/config '
+              'state, and changes existing bytes only at export.r2x for profile identity. Independent artifact rehashing '
+              'matched. BMGHDIAG3 remains unpublished, not Gale-imported and not runtime-armed; Black Mesa x Greenhouse '
+              'remains NOT_YET_PROVEN.'
+          )
+          stale_finding = (
+              'BMGHDIAG3 remains source/static only: no compiled successor DLL, review profile, publication, Gale import, '
+              'runtime arming, or gameplay qualification exists yet.'
+          )
+          assert stale_finding in selected['finding']
+          selected['finding'] = selected['finding'].replace(stale_finding, review_finding)
+
+          stale_contract = (
+              'Source/static integration does not establish compiler/build or gameplay validity. The next Greenhouse '
+              'checkpoint is a separately bounded inactive review build derived directly from exact accepted S1.42AK; '
+              'it may compile/test and construct/validate an inactive review artifact, but it must not publish, Gale-import, '
+              'runtime-arm or start gameplay, and it remains independent from BMDSFIX1 acceptance.'
+          )
+          new_contract = (
+              'Source/static integration has now been followed by a successful separately bounded inactive review build, '
+              'reconciled in Current/195_S1.42AK_BMGHDIAG3_INACTIVE_REVIEW_BUILD_CHECKPOINT.md. Lock any later publication '
+              'to GitHub Actions artifact 10929208327 from review run 36311706288: review profile SHA-256 '
+              '7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace and diagnostic DLL SHA-256 '
+              'd40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352. Do not rebuild those bytes for publication. '
+              'The next Greenhouse checkpoint is exact-byte publication only; it must not modify/import Gale, runtime-arm '
+              'BMGHDIAG3, start gameplay, or alter BMDSFIX1 acceptance or its passive target gate.'
+          )
+          assert stale_contract in selected['analysis_contract']
+          selected['analysis_contract'] = selected['analysis_contract'].replace(stale_contract, new_contract)
+
+          next_action = (
+              'Prepare and execute a separately bounded exact-byte publication checkpoint for S1.42AK-BMGHDIAG3 using only '
+              'the already reviewed bytes from GitHub Actions artifact 10929208327 produced by review run 36311706288. '
+              'Verify artifact ZIP SHA-256 20f616e85585e10631c31e09844a27bb6bb7649843a98655ed70e37b89152198 and publish the exact reviewed '
+              'profile SHA-256 7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace with exact S142AKBMGHDiag3.dll '
+              'SHA-256 d40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352; do not rebuild. In that publication '
+              'checkpoint do not modify/import Gale, runtime-arm BMGHDIAG3, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt '
+              'from S1.42AK-BMDSFIX1, enable BuildSpecs/current.json, or change BMDSFIX1 acceptance. Black Mesa x Greenhouse '
+              'remains NOT_YET_PROVEN until a later separately authorized runtime checkpoint.'
+          )
+          selected['status'] = new_status
+          selected['next_action'] = next_action
+          state['next_action'] = next_action
+
+          phase['bmgdiag3_source_static_status'] = 'SOURCE_STATIC_PASS_MAIN_INTEGRATED_REVIEW_BUILD_PASS_NOT_PUBLISHED_NOT_ARMED'
+          phase.update({
+              'bmgdiag3_review_checkpoint': 'Current/195_S1.42AK_BMGHDIAG3_INACTIVE_REVIEW_BUILD_CHECKPOINT.md',
+              'bmgdiag3_review_status': 'INACTIVE_REVIEW_BUILD_PASS_NOT_PUBLISHED_NOT_ARMED_EXACT_BYTE_PUBLICATION_NEXT',
+              'bmgdiag3_review_pr': review['review_pr'],
+              'bmgdiag3_reviewed_head': review['reviewed_head'],
+              'bmgdiag3_review_merge_ref': review['review_merge_ref'],
+              'bmgdiag3_review_run': review['review_run'],
+              'bmgdiag3_review_artifact_id': review['review_artifact_id'],
+              'bmgdiag3_review_artifact_name': review['review_artifact_name'],
+              'bmgdiag3_review_artifact_zip_sha256': review['review_artifact_zip_sha256'],
+              'bmgdiag3_review_profile_sha256': review['profile_sha256'],
+              'bmgdiag3_review_dll_sha256': review['diagnostic_dll_sha256'],
+              'bmgdiag3_review_lll_sha256': review['lll_dll_sha256'],
+              'bmgdiag3_review_normalizer_sha256': review['normalizer_sha256'],
+              'bmgdiag3_review_archive_members': review['archive_members_verified'],
+              'bmgdiag3_review_evidence': 'BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json',
+              'bmgdiag3_review_main_integration_commit': review['main_integration_commit'],
+              'bmgdiag3_review_main_knowledge_architecture_run': review['main_knowledge_architecture_run'],
+              'bmgdiag3_review_published': False,
+              'bmgdiag3_review_runtime_armed': False,
+          })
+
+          state_path.write_text(json.dumps(state, indent=2) + '\n', encoding='utf-8')
+
+          lifecycle = lifecycle_path.read_text(encoding='utf-8')
+          evidence_anchor = '`Current/194_S1.42AK_BMGHDIAG3_SOURCE_STATIC_INTEGRATION_RECONCILIATION.md`'
+          evidence_add = (
+              evidence_anchor + ', `Current/195_S1.42AK_BMGHDIAG3_INACTIVE_REVIEW_BUILD_CHECKPOINT.md`, '
+              '`BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json`'
+          )
+          assert evidence_anchor in lifecycle
+          lifecycle = lifecycle.replace(evidence_anchor, evidence_add, 1)
+
+          stale_source_paragraph = (
+              'This is source/static integration only. No BMGHDIAG3 DLL or review profile has been built, no reviewed bytes '
+              'are published or Gale-imported, and BMGHDIAG3 is not runtime-armed. Black Mesa x Greenhouse therefore remains '
+              '`NOT_YET_PROVEN`.'
+          )
+          new_source_paragraph = (
+              'That source/static checkpoint did not itself establish compiler/build validity. The later bounded inactive '
+              'review-build has now passed and is reconciled separately below; reviewed bytes remain unpublished, not '
+              'Gale-imported and not runtime-armed. Black Mesa x Greenhouse remains `NOT_YET_PROVEN`.'
+          )
+          assert stale_source_paragraph in lifecycle
+          lifecycle = lifecycle.replace(stale_source_paragraph, new_source_paragraph, 1)
+
+          bm_anchor = '## BMDSFIX1 runtime — regular non-target evidence plus DIAG1PATH1 supporting PASS\n'
+          assert bm_anchor in lifecycle
+          review_section = f'''## BMGHDIAG3 inactive review build — PASS / not published\n\n`Current/195_S1.42AK_BMGHDIAG3_INACTIVE_REVIEW_BUILD_CHECKPOINT.md` records the completed bounded inactive review-build checkpoint.\n\nPR #182 exact head `4462ced77519b34f6d55181fc33692b298434833` passed the BMGHDIAG3 review-build/archive-delta run `36311706288` (#1) and Knowledge Architecture run `36311706234` (#809). The infrastructure merged to `main` at `e08f0225de8441c13395b9a8a9157ec640673a37`, whose permanent Knowledge Architecture push run `36312331849` (#810) also passed.\n\nThe reviewed Actions artifact is ID `10929208327`, name `S1.42AK-BMGHDIAG3-review-cd1b684b4aa7bcdc68789e6edd1d8c99cffab2bb`, ZIP SHA-256 `20f616e85585e10631c31e09844a27bb6bb7649843a98655ed70e37b89152198`. Its exact review profile SHA-256 is `7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace`; exact `S142AKBMGHDiag3.dll` SHA-256 is `d40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352`. Independent artifact rehashing matched.\n\nThe profile derives directly from exact accepted S1.42AK. The validated archive has 337 members, adds only `BepInEx/plugins/S142AKBMGHDiag3/S142AKBMGHDiag3.dll`, removes none, changes no package/config state, and changes existing bytes only at `export.r2x` for profile identity. Accepted normalizer SHA-256 remains `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`; exact LLL 1.7.12 DLL SHA-256 remains `b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c`.\n\nThis checkpoint proves compile/test/archive validity only. The reviewed profile is **not published**, not Gale-imported and not runtime-armed. The active gameplay candidate and runtime/evidence pointer remain S1.42AK-BMDSFIX1, and its regular Black Mesa x `DeepSewersFlow` qualification remains passive/outstanding. Black Mesa x Greenhouse remains `NOT_YET_PROVEN`.\n\n'''
+          lifecycle = lifecycle.replace(bm_anchor, review_section + bm_anchor, 1)
+
+          old_active = '- Active Phase-C3 work: **BMGHDIAG3 source/static successor integrated on main; separately bounded inactive review-build checkpoint next; no BMGHDIAG3 build/publication/runtime arm yet; Greenhouse remains `NOT_YET_PROVEN`**.'
+          new_active = '- Active Phase-C3 work: **BMGHDIAG3 inactive review-build PASS with exact reviewed bytes locked to Actions artifact `10929208327`; exact-byte publication is next; no BMGHDIAG3 publication/Gale import/runtime arm yet; Greenhouse remains `NOT_YET_PROVEN`**.'
+          assert old_active in lifecycle
+          lifecycle = lifecycle.replace(old_active, new_active, 1)
+
+          start = lifecycle.index('## Exact next project action\n')
+          end = lifecycle.index('## Permanent Gale workflow\n')
+          new_next = f'''## Exact next project action\n\nPrepare and execute a separately bounded **exact-byte publication checkpoint** for `S1.42AK-BMGHDIAG3` using only the already reviewed bytes from GitHub Actions artifact `10929208327` / review run `36311706288`.\n\nBefore publication, verify artifact ZIP SHA-256 `20f616e85585e10631c31e09844a27bb6bb7649843a98655ed70e37b89152198`; publish exact review profile SHA-256 `7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace` and exact `S142AKBMGHDiag3.dll` SHA-256 `d40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352`. **Do not rebuild** the reviewed bytes.\n\nThat publication checkpoint must not modify/import Gale, runtime-arm BMGHDIAG3, start gameplay, change `RuntimeInbox/ACTIVE_BUILD.txt` from `S1.42AK-BMDSFIX1`, enable `BuildSpecs/current.json`, or change BMDSFIX1 acceptance. Its regular exact-byte Black Mesa x `DeepSewersFlow` qualification remains passive/outstanding. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` until a later separately authorized runtime checkpoint.\n\n'''
+          lifecycle = lifecycle[:start] + new_next + lifecycle[end:]
+          lifecycle_path.write_text(lifecycle, encoding='utf-8')
+
+          checkpoint = f'''# S1.42AK-BMGHDIAG3 Inactive Review-Build Checkpoint\n\n**Date:** 2026-09-27\n**Status:** INACTIVE REVIEW BUILD PASS / EXACT BYTES QUALIFIED / NOT PUBLISHED / NOT GALE-IMPORTED / NOT RUNTIME-ARMED / BLACK MESA x GREENHOUSE NOT YET PROVEN\n**Accepted gameplay baseline:** S1.42AK — unchanged\n**Active gameplay candidate:** S1.42AK-BMDSFIX1 — unchanged / not accepted / passive target gate preserved\n\n## Decision\n\nThe bounded repository-native inactive review-build checkpoint for `S1.42AK-BMGHDIAG3` is complete and passes. The successor compiled, its isolated policy-test harness passed, exact LLL provenance passed, and an inactive review profile derived directly from exact accepted S1.42AK passed the archive/lifecycle validator.\n\nThis decision qualifies only the exact reviewed bytes. It does **not** publish them, import/modify Gale, runtime-arm BMGHDIAG3, authorize gameplay, qualify Black Mesa x Greenhouse, or alter BMDSFIX1 acceptance.\n\n## Exact review identity\n\n- Review PR: **#182**\n- Exact reviewed head: `4462ced77519b34f6d55181fc33692b298434833`\n- Review merge ref used in artifact name: `cd1b684b4aa7bcdc68789e6edd1d8c99cffab2bb`\n- Review-build/archive-delta run: `36311706288` / run number `1` — **success**\n- Exact-head Knowledge Architecture run: `36311706234` / run number `809` — **success**\n- Main integration commit: `e08f0225de8441c13395b9a8a9157ec640673a37`\n- Permanent main Knowledge Architecture run: `36312331849` / run number `810` — **success**\n\n## Exact reviewed bytes\n\n- Actions artifact ID: `10929208327`\n- Artifact name: `S1.42AK-BMGHDIAG3-review-cd1b684b4aa7bcdc68789e6edd1d8c99cffab2bb`\n- Artifact ZIP SHA-256: `20f616e85585e10631c31e09844a27bb6bb7649843a98655ed70e37b89152198`\n- Review profile SHA-256: `7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace`\n- `S142AKBMGHDiag3.dll` SHA-256: `d40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352`\n- Exact LLL 1.7.12 DLL SHA-256: `b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c`\n- Accepted InteriorWeightNormalizer SHA-256: `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`\n- Independent downloaded-artifact rehash: **match**\n\nCanonical machine evidence: `BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json`.\n\n## Archive delta\n\nThe validated review profile contains 337 members. Relative to exact accepted S1.42AK:\n\n- added: exactly `BepInEx/plugins/S142AKBMGHDiag3/S142AKBMGHDiag3.dll`;\n- removed: none;\n- changed existing members: exactly `export.r2x`, restricted to profile identity after stable normalization;\n- package changes: 0;\n- config changes: 0;\n- accepted normalizer bytes: unchanged;\n- exact LLL provenance: preserved.\n\nThe review profile's direct parent is exact accepted `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / SHA-256 `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`. BMGHDIAG1, BMGHDIAG2 and BMDSFIX1 are not profile parents.\n\n## Policy-test consequence\n\nThe separate executable harness outside `Patches/S142AKBMGHDiag3/` passed the retained provenance, runtime type/assembly/method, selection, traversal and topology fail-closed matrix. The disproven `ManifestModule.Name == "Assembly-CSharp.dll"` equality is not part of the BMGHDIAG3 refusal contract and no replacement guessed module identity predicate was introduced.\n\n## Controller preservation\n\n- `BuildSpecs/current.json` remains disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.\n- `RuntimeInbox/ACTIVE_BUILD.txt` remains `S1.42AK-BMDSFIX1`.\n- S1.42AK remains accepted.\n- S1.42AK-BMDSFIX1 remains active gameplay candidate / not accepted.\n- Its exact regular Black Mesa x `DeepSewersFlow` qualification remains outstanding/passive with no dedicated blind reroll release.\n- BMGHDIAG3 is not an active runtime candidate.\n\n## Exact next action\n\nExecute a separately bounded **exact-byte publication checkpoint** from Actions artifact `10929208327`. Verify the artifact ZIP digest and publish the exact reviewed profile/DLL hashes above without rebuilding.\n\nDo **not** modify/import Gale, runtime-arm BMGHDIAG3, start gameplay, switch `RuntimeInbox/ACTIVE_BUILD.txt`, enable `BuildSpecs/current.json`, or change BMDSFIX1 acceptance in that publication checkpoint.\n'''
+          checkpoint_path.write_text(checkpoint, encoding='utf-8')
+
+          subprocess.run(['python', 'RepositoryTools/render_current_navigation.py'], check=True)
+          subprocess.run(['python', 'RepositoryTools/render_current_navigation.py', '--check'], check=True)
+          print('PASS: BMGHDIAG3 inactive review-build reconciliation rendered consistently.')
+          PY
+
+      - name: Commit reconciled state to PR branch
+        shell: bash
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo 'No reconciliation changes to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Current/CURRENT_STATE.json Current/00_CURRENT_STATE.md Current/01_HANDOVER_CORE.md README.md START_HERE_ChatGPT_Masterprompt.txt Knowledge/CURRENT_LIFECYCLE.md Current/195_S1.42AK_BMGHDIAG3_INACTIVE_REVIEW_BUILD_CHECKPOINT.md
+          git diff --cached --check
+          git commit -m 'Reconcile BMGHDIAG3 inactive review build'
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
