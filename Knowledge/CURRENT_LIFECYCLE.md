@@ -106,7 +106,7 @@ This checkpoint proves compile/test/archive validity only. At that review checkp
 
 PR #184 exact head `2c649cea0569f25fd80a25954c76667a21b8e445` passed Knowledge Architecture run `36316631746` (#816) and merged to `main` as `b40a497d9956993bc5d183bad36037e9175d9635`; permanent main Knowledge Architecture push run `36316936811` (#817) passed. The temporary publication transport workflow was removed before integration.
 
-The exact published profile and `ProfileSources/S1.42AK-BMGHDIAG3/` readable snapshot are now on `main`. The snapshot `FILE_INDEX.json` has 337 rows and matches the frozen review artifact. `Profiles/EXPECTED_HASHES.json` does not yet map this diagnostic profile and `ProfileSources/S1.42AK-BMGHDIAG3/PROFILE_INDEX_RESULT.json` does not yet exist, so the profile remains **not indexed**.
+The exact published profile and `ProfileSources/S1.42AK-BMGHDIAG3/` readable snapshot are now on `main`. The snapshot `FILE_INDEX.json` has 337 rows and matches the frozen review artifact. `Profiles/EXPECTED_HASHES.json` does not yet map this diagnostic profile and `PROFILE_INDEX_RESULT.json` for the BMGHDIAG3 snapshot (not yet materialized) does not yet exist, so the profile remains **not indexed**.
 
 Publication did not modify/import Gale, runtime-arm BMGHDIAG3, start gameplay, alter `BuildSpecs/current.json`, change `RuntimeInbox/ACTIVE_BUILD.txt`, accept BMDSFIX1, or alter its passive Black Mesa x `DeepSewersFlow` qualification. BMGHDIAG3 remains **DIAGNOSTIC ONLY / NEVER ACCEPT** and Black Mesa x Greenhouse remains `NOT_YET_PROVEN`.
 
@@ -178,7 +178,7 @@ Do not add a seed setter, Harmony/memory writer, deterministic dungeon selector,
 
 Perform a separately bounded **S1.42AK-BMGHDIAG3 profile-index reconciliation** for the already-published exact profile `Profiles/LC V1 S1.42AK-BMGHDIAG3 Black Mesa Greenhouse Diagnostic.r2z` / SHA-256 `7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace`.
 
-Add only the canonical diagnostic mapping to `Profiles/EXPECTED_HASHES.json` (`build_id = S1.42AK-BMGHDIAG3`, exact SHA-256, canonical readable snapshot `ProfileSources/S1.42AK-BMGHDIAG3/`) following the established diagnostic-profile pattern. Then let `.github/workflows/profile-index.yml` index the exact existing profile bytes and create `ProfileSources/S1.42AK-BMGHDIAG3/PROFILE_INDEX_RESULT.json`. If the workflow creates its bot follow-up commit, verify the explicitly dispatched exact-head `Knowledge Architecture` `workflow_dispatch` run required by that workflow.
+Add only the canonical diagnostic mapping to `Profiles/EXPECTED_HASHES.json` (`build_id = S1.42AK-BMGHDIAG3`, exact SHA-256, canonical readable snapshot `ProfileSources/S1.42AK-BMGHDIAG3/`) following the established diagnostic-profile pattern. Then let `.github/workflows/profile-index.yml` index the exact existing profile bytes and create `PROFILE_INDEX_RESULT.json` for the BMGHDIAG3 snapshot (not yet materialized). If the workflow creates its bot follow-up commit, verify the explicitly dispatched exact-head `Knowledge Architecture` `workflow_dispatch` run required by that workflow.
 
 Do **not** rebuild or alter the profile/DLL, modify/import Gale, runtime-arm BMGHDIAG3, start gameplay, change `RuntimeInbox/ACTIVE_BUILD.txt` from `S1.42AK-BMDSFIX1`, enable `BuildSpecs/current.json`, or change BMDSFIX1 acceptance. Explicit BMGHDIAG3 runtime activation remains a later separate gate after successful indexing. Black Mesa x Greenhouse remains `NOT_YET_PROVEN`.
 
