@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-26  
+**Updated:** 2026-09-27  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform a bounded repository-native root-cause analysis of the exact S1.42AK-BMGHDIAG2 startup refusal 'EntranceTeleport manifest module identity mismatch' using the ingested runtime evidence and exact BMGHDIAG2 source/static contract. The installed-normal-stack seed-control review is closed in Current/192_S1.42AK_BMDSFIX1_INSTALLED_NORMAL_STACK_SEED_CONTROL_AVAILABILITY_RECONCILIATION.md with no repository-proven ordinary mechanism to deliberately supply map seed 1061420; BMDSFIX1 target qualification remains passive/outstanding and dedicated blind rerolls stay disallowed. Do not build, publish or runtime-arm a Greenhouse diagnostic successor in the same analysis checkpoint. If a repair is justified, require a separately versioned diagnostic successor independent from BMDSFIX1 acceptance.
+Prepare a separately versioned Black Mesa x Greenhouse diagnostic successor in a bounded repository-native source/static design and implementation checkpoint only, derived directly from exact accepted S1.42AK. The BMGHDIAG2 runtime-identity root cause is reconciled in Current/193_S1.42AK_BMGHDIAG2_RUNTIME_IDENTITY_ROOT_CAUSE_RECONCILIATION.md: remove only the unsupported ManifestModule.Name == Assembly-CSharp.dll fail-closed equality while preserving exact physical installed Assembly-CSharp.dll hash provenance, EntranceTeleport type/Assembly-CSharp simple-name/non-dynamic/module-present checks, TeleportPlayer()/field structure, dependency hashes, exact LLL selection contract, after-normalizer ordering, Greenhouse identity/rarity and read-only traversal/topology observation. Do not replace the removed predicate with a guessed module name, ScopeName, MVID/token, Assembly.Location/CodeBase or other unproven substitute. Do not build, publish, Gale-import or runtime-arm the successor in this source/static checkpoint. BMDSFIX1 target qualification remains passive/outstanding and independent.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
