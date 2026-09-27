@@ -1,0 +1,218 @@
+name: Transport exact reviewed S1.42AK-BMGHDIAG3 publication
+
+on:
+  push:
+    branches:
+      - c3f18-bmghdiag3-exact-publication
+    paths:
+      - '.github/workflows/s142ak-bmghdiag3-publication-transport.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: s142ak-bmghdiag3-publication-transport
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact publication branch
+        uses: actions/checkout@v4
+        with:
+          ref: c3f18-bmghdiag3-exact-publication
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Download frozen reviewed artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          work="$RUNNER_TEMP/bmghdiag3-publication"
+          mkdir -p "$work/extracted"
+          curl -L --fail --silent --show-error \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/10929208327/zip" \
+            -o "$work/review.zip"
+          echo '20f616e85585e10631c31e09844a27bb6bb7649843a98655ed70e37b89152198  '"$work/review.zip" | sha256sum -c -
+          unzip -q "$work/review.zip" -d "$work/extracted"
+
+      - name: Revalidate exact reviewed bytes and controller boundary
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, re, shutil, sys, zipfile
+          from pathlib import Path
+
+          root = Path('.')
+          src = Path(os.environ['RUNNER_TEMP']) / 'bmghdiag3-publication' / 'extracted'
+          reviewed = src / 'Profiles/LC V1 S1.42AK-BMGHDIAG3 Black Mesa Greenhouse Diagnostic.r2z'
+          parent = root / 'Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z'
+          reviewed_index_path = src / 'ProfileSources/S1.42AK-BMGHDIAG3/FILE_INDEX.json'
+          reviewed_static_path = src / 'BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/STATIC_VERIFICATION.json'
+          reconstructed = Path(os.environ['RUNNER_TEMP']) / 'bmghdiag3-publication-snapshot'
+          output = root / 'Profiles/LC V1 S1.42AK-BMGHDIAG3 Black Mesa Greenhouse Diagnostic.r2z'
+          output_sources = root / 'ProfileSources/S1.42AK-BMGHDIAG3'
+
+          BASE_SHA = 'b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee'
+          PROFILE_SHA = '7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace'
+          DIAG_SHA = 'd40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352'
+          NORMALIZER_SHA = '901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06'
+          LLL_SHA = 'b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c'
+          EXPECTED_NAME = 'LC V1 S1.42AK-BMGHDIAG3 Black Mesa Greenhouse Diagnostic'
+          DIAG = 'BepInEx/plugins/S142AKBMGHDiag3/S142AKBMGHDiag3.dll'
+          NORMALIZER = 'BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll'
+
+          def sha(data): return hashlib.sha256(data).hexdigest()
+          def file_sha(path): return sha(path.read_bytes())
+          def require(ok, msg):
+              if not ok: raise RuntimeError(msg)
+          def read_zip(path):
+              with zipfile.ZipFile(path) as z:
+                  names = z.namelist()
+                  require(len(names) == len(set(names)), f'duplicate members in {path}')
+                  return names, {n: z.read(n) for n in names}
+          def export_text(data):
+              return data.decode('utf-8-sig').replace('\r\n', '\n').replace('\r', '\n')
+          def profile_name(data):
+              names = [line[len('profileName:'):].strip() for line in export_text(data).splitlines() if line.startswith('profileName:')]
+              require(len(names) == 1, f'profileName count mismatch: {len(names)}')
+              return names[0]
+          def stable_export(data):
+              text = export_text(data)
+              require(len(re.findall(r'(?m)^profileName:.*$', text)) == 1, 'profileName normalization count mismatch')
+              return re.sub(r'(?m)^profileName:.*$', 'profileName: <identity>', text).rstrip('\n')
+
+          require(file_sha(parent) == BASE_SHA, 'accepted S1.42AK parent SHA mismatch')
+          require(reviewed.is_file() and file_sha(reviewed) == PROFILE_SHA, 'reviewed BMGHDIAG3 profile SHA mismatch')
+          require(reviewed_index_path.is_file(), 'reviewed FILE_INDEX missing from frozen artifact')
+          require(reviewed_static_path.is_file(), 'reviewed STATIC_VERIFICATION missing from frozen artifact')
+          require(not output.exists() and not output_sources.exists(), 'BMGHDIAG3 publication output already exists before transport')
+
+          pn, pm = read_zip(parent)
+          rn, rm = read_zip(reviewed)
+          require(len(rn) == 337, f'reviewed archive member count drift: {len(rn)}')
+          require(set(rn) - set(pn) == {DIAG}, 'reviewed added-member contract violated')
+          require(set(pn) - set(rn) == set(), 'reviewed archive member removal detected')
+          require([n for n in pn if pm[n] != rm[n]] == ['export.r2x'], 'reviewed existing-member delta violated')
+          require(stable_export(pm['export.r2x']) == stable_export(rm['export.r2x']), 'export.r2x differs beyond profile identity')
+          require(profile_name(rm['export.r2x']) == EXPECTED_NAME, 'reviewed profile identity mismatch')
+          require('LethalLevelLoaderUpdated' not in export_text(rm['export.r2x']), 'forbidden alternate LLL fork present')
+          require(sha(rm[DIAG]) == DIAG_SHA, 'BMGHDIAG3 DLL SHA mismatch')
+          require(NORMALIZER in pm and NORMALIZER in rm, 'accepted normalizer missing')
+          require(sha(pm[NORMALIZER]) == NORMALIZER_SHA and sha(rm[NORMALIZER]) == NORMALIZER_SHA and pm[NORMALIZER] == rm[NORMALIZER], 'accepted normalizer drift')
+
+          reviewed_index = json.loads(reviewed_index_path.read_text(encoding='utf-8'))
+          require(len(reviewed_index) == 337, 'reviewed FILE_INDEX row-count mismatch')
+          for i, rec in enumerate(reviewed_index):
+              require(rec['index'] == i and rec['path'] == rn[i], f'FILE_INDEX order mismatch at {i}')
+              require(rec['size'] == len(rm[rn[i]]) and rec['sha256'] == sha(rm[rn[i]]), f'FILE_INDEX identity mismatch: {rn[i]}')
+
+          reviewed_static = json.loads(reviewed_static_path.read_text(encoding='utf-8'))
+          require(reviewed_static['status'] == 'STATIC_BUILD_PASS_REVIEW_ARTIFACT_NOT_PUBLISHED_NOT_ARMED', 'reviewed static status mismatch')
+          require(reviewed_static['build_id'] == 'S1.42AK-BMGHDIAG3', 'reviewed static build ID mismatch')
+          require(reviewed_static['base_sha256'] == BASE_SHA, 'reviewed static base SHA mismatch')
+          require(reviewed_static['output_sha256'] == PROFILE_SHA, 'reviewed static profile SHA mismatch')
+          require(reviewed_static['diagnostic_dll_sha256'] == DIAG_SHA, 'reviewed static diagnostic DLL SHA mismatch')
+          require(reviewed_static['lll_dll_sha256'] == LLL_SHA, 'reviewed static LLL provenance SHA mismatch')
+          require(reviewed_static['normalizer_sha256'] == NORMALIZER_SHA, 'reviewed static normalizer SHA mismatch')
+          require(reviewed_static['archive_members_verified'] == 337, 'reviewed static member count mismatch')
+          require(reviewed_static['added_members'] == [DIAG], 'reviewed static added-member mismatch')
+          require(reviewed_static['changed_existing_members'] == ['export.r2x'], 'reviewed static changed-member mismatch')
+          require(reviewed_static['removed_members'] == [], 'reviewed static removal mismatch')
+          require(reviewed_static['package_changes'] == 0 and reviewed_static['config_changes'] == 0, 'reviewed static package/config drift')
+          require(reviewed_static['published'] is False and reviewed_static['runtime_armed'] is False, 'review artifact lifecycle status drift')
+
+          spec = json.loads((root / 'BuildSpecs/current.json').read_text(encoding='utf-8'))
+          state = json.loads((root / 'Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          auto = json.loads((root / 'Current/AUTO_BUILD_RESULT.json').read_text(encoding='utf-8'))
+          require(spec['enabled'] is False and spec['build_id'] == 'IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS', 'BuildSpecs/current.json drift')
+          require(spec['base_sha256'] == '3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0', 'idle BuildSpecs base SHA drift')
+          require((root / 'RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-BMDSFIX1', 'ACTIVE_BUILD drift')
+          require(state['accepted_baseline']['build_id'] == 'S1.42AK' and state['accepted_baseline']['sha256'] == BASE_SHA, 'accepted baseline drift')
+          require(state['latest_built_artifact']['build_id'] == 'S1.42AK-BMDSFIX1', 'latest gameplay artifact drift')
+          require(state['active_candidate']['build_id'] == 'S1.42AK-BMDSFIX1' and state['active_candidate']['sha256'] == '3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0', 'active candidate drift')
+          require(state['runtime_test_outstanding'] is True, 'BMDSFIX1 passive runtime gate lost')
+          require(state['controllers']['runtime_active_build'] == 'S1.42AK-BMDSFIX1', 'machine runtime controller drift')
+          require('S1.42AK-BMGHDIAG3' in state['selected_scope']['next_action'] and 'exact-byte publication' in state['selected_scope']['next_action'].lower(), 'current lifecycle no longer authorizes BMGHDIAG3 exact-byte publication')
+          require(auto['build_id'] == 'S1.42AK-BMDSFIX1' and auto['output_sha256'] == '3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0', 'AUTO_BUILD_RESULT drift')
+
+          sys.path.insert(0, str(root))
+          from BuildSystem.profile_builder import read_zip as builder_read_zip, snapshot
+          if reconstructed.exists(): shutil.rmtree(reconstructed)
+          summary = snapshot(builder_read_zip(reviewed), reconstructed)
+          require(summary.get('entries') == 337, f'snapshot entry count mismatch: {summary!r}')
+          require(json.loads((reconstructed / 'FILE_INDEX.json').read_text(encoding='utf-8')) == reviewed_index, 'reconstructed FILE_INDEX mismatch')
+          print('PASS: exact reviewed BMGHDIAG3 bytes and unchanged lifecycle controllers confirmed before publication.')
+          PY
+
+      - name: Materialize exact reviewed bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          src="$RUNNER_TEMP/bmghdiag3-publication/extracted"
+          cp "$src/Profiles/LC V1 S1.42AK-BMGHDIAG3 Black Mesa Greenhouse Diagnostic.r2z" "Profiles/LC V1 S1.42AK-BMGHDIAG3 Black Mesa Greenhouse Diagnostic.r2z"
+          cp -a "$RUNNER_TEMP/bmghdiag3-publication-snapshot" "ProfileSources/S1.42AK-BMGHDIAG3"
+          cat > BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md <<'MD'
+          # S1.42AK-BMGHDIAG3 exact reviewed-artifact publication verification
+
+          **Status:** EXACT REVIEWED BYTES PUBLISHED ON WORKING BRANCH / NOT INDEXED / NOT RUNTIME ARMED / DIAGNOSTIC ONLY / NEVER ACCEPT
+          **Date:** 2026-09-27
+          **Reviewed source/build head:** `4462ced77519b34f6d55181fc33692b298434833`
+          **Review workflow run:** `36311706288` (run `1`)
+          **Frozen Actions artifact:** `10929208327`
+          **Artifact ZIP SHA-256:** `20f616e85585e10631c31e09844a27bb6bb7649843a98655ed70e37b89152198`
+          **Published profile SHA-256:** `7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace`
+          **Diagnostic DLL SHA-256:** `d40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352`
+          **Profile identity:** `LC V1 S1.42AK-BMGHDIAG3 Black Mesa Greenhouse Diagnostic`
+
+          The `.r2z` is copied byte-for-byte from frozen Actions artifact `10929208327`; no profile or DLL rebuild occurs during publication. The artifact ZIP digest, exact profile digest and exact embedded `S142AKBMGHDiag3.dll` digest were revalidated before materialization.
+
+          Relative to exact accepted S1.42AK (`b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`), the published diagnostic profile has 337 members, adds only `BepInEx/plugins/S142AKBMGHDiag3/S142AKBMGHDiag3.dll`, removes none, and changes existing bytes only at `export.r2x` for profile identity after stable normalization. Package changes remain `0`, config changes remain `0`, accepted normalizer SHA-256 remains `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06`, and reviewed LLL 1.7.12 provenance remains `b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c`.
+
+          `ProfileSources/S1.42AK-BMGHDIAG3/` is reconstructed from those exact reviewed profile bytes with repository snapshot semantics, and its `FILE_INDEX.json` is data-identical to the reviewed artifact index. No `PROFILE_INDEX_RESULT.json` exists yet; indexing is intentionally a later gate.
+
+          Publication intentionally leaves `BuildSpecs/current.json`, `Current/AUTO_BUILD_RESULT.*`, `Current/CURRENT_STATE.json` and `RuntimeInbox/ACTIVE_BUILD.txt` unchanged. S1.42AK remains accepted. S1.42AK-BMDSFIX1 remains active gameplay candidate / not accepted with its regular Black Mesa x `DeepSewersFlow` qualification outstanding/passive. `RuntimeInbox/ACTIVE_BUILD.txt` remains `S1.42AK-BMDSFIX1`. BMGHDIAG3 is not Gale-imported, not runtime-armed, not a gameplay/acceptance candidate, and remains **DIAGNOSTIC ONLY / NEVER ACCEPT**. Black Mesa x Greenhouse remains `NOT_YET_PROVEN`; no gameplay run is authorized by this publication checkpoint.
+          MD
+
+      - name: Verify materialized publication
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, zipfile
+          from pathlib import Path
+          profile = Path('Profiles/LC V1 S1.42AK-BMGHDIAG3 Black Mesa Greenhouse Diagnostic.r2z')
+          assert hashlib.sha256(profile.read_bytes()).hexdigest() == '7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace'
+          with zipfile.ZipFile(profile) as z:
+              assert len(z.infolist()) == 337
+              assert hashlib.sha256(z.read('BepInEx/plugins/S142AKBMGHDiag3/S142AKBMGHDiag3.dll')).hexdigest() == 'd40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352'
+          index = json.loads(Path('ProfileSources/S1.42AK-BMGHDIAG3/FILE_INDEX.json').read_text(encoding='utf-8'))
+          assert len(index) == 337
+          assert not Path('ProfileSources/S1.42AK-BMGHDIAG3/PROFILE_INDEX_RESULT.json').exists()
+          assert json.loads(Path('BuildSpecs/current.json').read_text(encoding='utf-8'))['enabled'] is False
+          assert Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-BMDSFIX1'
+          print('PASS: exact BMGHDIAG3 publication materialized, unindexed and unarmed.')
+          PY
+
+      - name: Commit exact publication using established transport pattern
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git status --short
+          git diff --cached --quiet && { echo 'No publication changes staged.' >&2; exit 1; }
+          git commit -m 'Publish exact reviewed S1.42AK-BMGHDIAG3 artifact [skip ci]'
+          git push origin HEAD:c3f18-bmghdiag3-exact-publication
