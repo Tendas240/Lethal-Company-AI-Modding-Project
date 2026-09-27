@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Patches/S142AKBMGHDiag3/SelectionPolicy.cs" Link="SelectionPolicy.cs" />
+    <Compile Include="../../Patches/S142AKBMGHDiag3/ObservationPolicy.cs" Link="ObservationPolicy.cs" />
+    <Compile Include="../../Patches/S142AKBMGHDiag3/GameAssemblyProvenance.cs" Link="GameAssemblyProvenance.cs" />
+    <Compile Include="../../Patches/S142AKBMGHDiag3/RuntimeIdentityPolicy.cs" Link="RuntimeIdentityPolicy.cs" />
+  </ItemGroup>
+</Project>
