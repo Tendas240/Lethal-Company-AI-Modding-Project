@@ -1,0 +1,184 @@
+name: C3F18 activate BMGHDIAG3 runtime diagnostic
+
+on:
+  push:
+    branches:
+      - activate/s142ak-bmghdiag3-runtime
+    paths:
+      - 'RepositoryTools/c3f18_activate_bmghdiag3_runtime.py'
+      - '.github/workflows/c3f18-activate-bmghdiag3-runtime.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: activate/s142ak-bmghdiag3-runtime
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Apply exact BMGHDIAG3 diagnostic runtime activation
+        run: python RepositoryTools/c3f18_activate_bmghdiag3_runtime.py
+
+      - name: Regenerate and verify protected current navigation
+        run: |
+          python RepositoryTools/render_current_navigation.py
+          python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate canonical state and repository contracts
+        run: |
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/artifact_byte_integrity_validator.py
+          python RepositoryTools/repository_integrity_guard.py
+          python RepositoryTools/gale_import_helper_validator.py
+
+      - name: Verify exact activation, resolver authority and bounded delta
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+
+          root=Path('.')
+          state=json.loads((root/'Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          scope=state['selected_scope']
+          diag=scope['diagnostic_revision']
+          candidate=state['active_candidate']
+
+          assert state['accepted_baseline']['build_id']=='S1.42AK'
+          assert state['accepted_baseline']['sha256']=='b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee'
+          assert state['latest_built_artifact']['build_id']=='S1.42AK-BMDSFIX1'
+          assert state['latest_built_artifact']['sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
+          assert candidate['build_id']=='S1.42AK-BMDSFIX1'
+          assert candidate['status']=='ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED'
+          assert candidate['sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
+          assert state['runtime_test_outstanding'] is True
+          assert scope['phase_c']['bmdsfix1_target_status'].startswith('OUTSTANDING_PASSIVE')
+          assert scope['phase_c']['black_mesa_greenhouse_status']=='NOT_YET_PROVEN'
+
+          assert state['controllers']['runtime_active_build']=='S1.42AK-BMGHDIAG3'
+          assert (root/'RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip()=='S1.42AK-BMGHDIAG3'
+
+          current=json.loads((root/'BuildSpecs/current.json').read_text(encoding='utf-8'))
+          assert current['enabled'] is False
+          assert current['build_id']=='IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS'
+          assert current['base_profile']=='Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z'
+          assert current['base_sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
+
+          auto=json.loads((root/'Current/AUTO_BUILD_RESULT.json').read_text(encoding='utf-8'))
+          assert auto['build_id']=='S1.42AK-BMDSFIX1'
+          assert auto['output_sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
+
+          assert diag['build_id']=='S1.42AK-BMGHDIAG3'
+          assert diag['status']=='PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED'
+          assert diag['classification']=='DIAGNOSTIC_ONLY_NEVER_ACCEPT'
+          assert diag['base_build_id']=='S1.42AK'
+          assert diag['base_profile']==state['accepted_baseline']['profile']
+          assert diag['base_sha256']==state['accepted_baseline']['sha256']
+          assert diag['profile']=='Profiles/LC V1 S1.42AK-BMGHDIAG3 Black Mesa Greenhouse Diagnostic.r2z'
+          assert diag['sha256']=='7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace'
+          assert diag['diagnostic_dll_sha256']=='d40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352'
+          assert diag['runtime_armed'] is True and diag['indexed'] is True
+          assert hashlib.sha256((root/diag['profile']).read_bytes()).hexdigest()==diag['sha256']
+
+          build=json.loads((root/diag['build_result']).read_text(encoding='utf-8'))
+          assert build['build_id']==diag['build_id']
+          assert build['output_profile']==diag['profile'] and build['output_sha256']==diag['sha256']
+          assert build['base_profile']==diag['base_profile'] and build['base_sha256']==diag['base_sha256']
+          assert build['zip_members']==337
+          assert build['changed_existing_members']==['export.r2x']
+          assert build['added_members']==['BepInEx/plugins/S142AKBMGHDiag3/S142AKBMGHDiag3.dll']
+
+          indexed=json.loads((root/'ProfileSources/S1.42AK-BMGHDIAG3/PROFILE_INDEX_RESULT.json').read_text(encoding='utf-8'))
+          assert indexed['build_id']==diag['build_id']
+          assert indexed['profile_path']==diag['profile'] and indexed['sha256']==diag['sha256']
+          assert indexed['zip_members']==337 and indexed['build_id_resolution']=='EXPECTED_HASHES'
+
+          hashes=json.loads((root/'Profiles/EXPECTED_HASHES.json').read_text(encoding='utf-8'))
+          h=hashes[diag['profile']]
+          assert h['build_id']==diag['build_id'] and h['sha256']==diag['sha256']
+          assert 'active runtime target' in h['note'] and 'NEVER ACCEPT' in h['note']
+
+          integrity=json.loads((root/'Current/ARTIFACT_EVIDENCE_INTEGRITY.json').read_text(encoding='utf-8'))
+          pending={x['build_id']:x for x in integrity['pending_profiles']}
+          assert pending['S1.42AK-BMDSFIX1']['role']=='ACTIVE_RUNTIME_CANDIDATE_PENDING'
+          assert pending['S1.42AK-BMGHDIAG3']['role']=='ACTIVE_RUNTIME_DIAGNOSTIC_PENDING'
+          assert pending['S1.42AK-BMGHDIAG3']['profile_sha256']==diag['sha256']
+
+          activation=(root/'Current/198_S1.42AK_BMGHDIAG3_RUNTIME_ACTIVATION.md').read_text(encoding='utf-8')
+          for required in (
+              'ReplaceActiveGaleProfileV24.ps1','S1.42AK-BMGHDIAG3','[BMGHDIAG3]',
+              'NEVER ACCEPT','CURRENT_STATE.accepted_baseline','S1.42AK-BMDSFIX1',
+              'passive regular Black Mesa x `DeepSewersFlow` qualification'
+          ):
+              assert required in activation, required
+
+          gale=(root/'RuntimeTools/ReplaceActiveGaleProfileV24.ps1').read_text(encoding='utf-8')
+          assert "2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain" in gale
+          assert "elseif(([string]$diag.base_build_id) -eq ([string]$state.accepted_baseline.build_id))" in gale
+          assert "$state.accepted_baseline.profile" in gale and "$state.accepted_baseline.sha256" in gale
+
+          allowed={
+              'README.md','START_HERE_ChatGPT_Masterprompt.txt',
+              'Current/00_CURRENT_STATE.md','Current/01_HANDOVER_CORE.md',
+              'Current/198_S1.42AK_BMGHDIAG3_RUNTIME_ACTIVATION.md',
+              'Current/ARTIFACT_EVIDENCE_INTEGRITY.json','Current/ARTIFACT_EVIDENCE_INTEGRITY.md',
+              'Current/CURRENT_STATE.json','Current/PROJECT_KNOWLEDGE_MAP.md',
+              'Knowledge/CURRENT_LIFECYCLE.md','Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md',
+              'Knowledge/GALE_PROFILE_WORKFLOW.md',
+              'Profiles/EXPECTED_HASHES.json','RuntimeInbox/ACTIVE_BUILD.txt',
+              'RuntimeTools/ReplaceActiveGaleProfileV24.ps1',
+              'RepositoryTools/gale_import_helper_validator.py'
+          }
+          tracked=set(subprocess.check_output(['git','diff','--name-only'],text=True).splitlines())
+          untracked=set(subprocess.check_output(['git','ls-files','--others','--exclude-standard'],text=True).splitlines())
+          changed=tracked|untracked
+          changed_without_oneshot=changed-{
+              'RepositoryTools/c3f18_activate_bmghdiag3_runtime.py',
+              '.github/workflows/c3f18-activate-bmghdiag3-runtime.yml'
+          }
+          unexpected=sorted(changed_without_oneshot-allowed)
+          assert not unexpected, f'Unexpected activation delta: {unexpected}'
+          required_delta={
+              'Current/CURRENT_STATE.json',
+              'Current/198_S1.42AK_BMGHDIAG3_RUNTIME_ACTIVATION.md',
+              'RuntimeInbox/ACTIVE_BUILD.txt',
+              'RuntimeTools/ReplaceActiveGaleProfileV24.ps1',
+              'RepositoryTools/gale_import_helper_validator.py',
+              'Knowledge/GALE_PROFILE_WORKFLOW.md'
+          }
+          missing=sorted(required_delta-changed_without_oneshot)
+          assert not missing, f'Required activation delta missing: {missing}'
+          forbidden={'BuildSpecs/current.json','Current/AUTO_BUILD_RESULT.json',diag['profile']}
+          assert not (forbidden & changed), f'Forbidden byte/controller mutation: {sorted(forbidden & changed)}'
+          print('PASS: exact BMGHDIAG3 activation + accepted-baseline Gale resolver authority + bounded delta verified')
+          PY
+          git diff --check
+
+      - name: Commit atomic activation and remove one-shot machinery
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('Current/198_S1.42AK_BMGHDIAG3_RUNTIME_ACTIVATION.md')
+          p.write_text('\n'.join(line.rstrip() for line in p.read_text(encoding='utf-8').splitlines())+'\n',encoding='utf-8')
+          PY
+          rm RepositoryTools/c3f18_activate_bmghdiag3_runtime.py
+          rm .github/workflows/c3f18-activate-bmghdiag3-runtime.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --check
+          git commit -m 'Arm exact BMGHDIAG3 runtime diagnostic'
+          git push origin HEAD:activate/s142ak-bmghdiag3-runtime
