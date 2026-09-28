@@ -1,0 +1,85 @@
+name: C3F18 reconcile BMGHDIAG3 phase-C runtime flags
+
+on:
+  push:
+    branches:
+      - c3f18-bmghdiag3-runtime-compatibility-pass
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reconciliation branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: c3f18-bmghdiag3-runtime-compatibility-pass
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reconcile phase-C runtime flags
+        run: python RepositoryTools/c3f18_reconcile_bmghdiag3_phasec_runtime_flags.py
+
+      - name: Regenerate and verify protected current navigation
+        run: |
+          python RepositoryTools/render_current_navigation.py
+          python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate canonical state and repository contracts
+        run: |
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/handover_workflow_validator.py
+          python RepositoryTools/artifact_byte_integrity_validator.py
+          python RepositoryTools/repository_integrity_guard.py
+          python RepositoryTools/gale_import_helper_validator.py
+
+      - name: Verify exact BMGHDIAG3 completion flags
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+          root = Path('.')
+          state = json.loads((root/'Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          scope = state['selected_scope']
+          phase_c = scope['phase_c']
+          diag = scope['diagnostic_revision']
+          assert state['accepted_baseline']['build_id'] == 'S1.42AK'
+          assert state['active_candidate']['build_id'] == 'S1.42AK-BMDSFIX1'
+          assert state['active_candidate']['status'] == 'ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED'
+          assert state['runtime_test_outstanding'] is True
+          assert state['controllers']['runtime_active_build'] == 'S1.42AK-BMDSFIX1'
+          assert (root/'RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-BMDSFIX1'
+          assert phase_c['black_mesa_greenhouse_status'] == 'PASS_RUNTIME_COMPATIBLE_BLACK_MESA_GREENHOUSE_DIAGNOSTIC_ONLY'
+          assert phase_c['bmgdiag3_review_runtime_armed'] is False
+          assert phase_c['bmgdiag3_runtime_activation_status'] == 'COMPLETED_DIAGNOSTIC_RUNTIME_COMPATIBILITY_PASS_NEVER_ACCEPT_NOT_ACTIVE'
+          assert 'bmgdiag3_review_runtime_armed' not in scope
+          assert 'bmgdiag3_runtime_activation_status' not in scope
+          assert diag['runtime_armed'] is False
+          assert diag['runtime_result'] == 'PASS_BLACK_MESA_GREENHOUSE_RUNTIME_COMPATIBILITY'
+          assert phase_c['bmdsfix1_target_status'] == 'OUTSTANDING_PASSIVE_EXACT_GAMEPLAY_BLACK_MESA_DEEP_SEWERS_NO_DEDICATED_REROLL_RELEASED'
+          buildspec = json.loads((root/'BuildSpecs/current.json').read_text(encoding='utf-8'))
+          assert buildspec['enabled'] is False
+
+      - name: Remove one-shot cleanup machinery
+        run: |
+          rm RepositoryTools/c3f18_reconcile_bmghdiag3_phasec_runtime_flags.py
+          rm .github/workflows/c3f18-reconcile-bmghdiag3-phasec-flags.yml
+
+      - name: Verify no whitespace errors
+        run: git diff --check
+
+      - name: Commit atomic phase-C flag cleanup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --stat
+          git commit -m "Reconcile BMGHDIAG3 phase-C runtime flags"
+          git push origin HEAD:c3f18-bmghdiag3-runtime-compatibility-pass
