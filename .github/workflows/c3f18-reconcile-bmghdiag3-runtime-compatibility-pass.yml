@@ -1,4 +1,4 @@
-# trigger: exact-active-candidate-name
+# trigger: exact-gale-v24-revision
 name: C3F18 reconcile BMGHDIAG3 runtime compatibility pass
 
 on:
@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Normalize exact active-candidate identifier in one-shot reconciler
+      - name: Normalize exact authority invariants in one-shot reconciler
         shell: python
         run: |
           from pathlib import Path
@@ -32,6 +32,10 @@ jobs:
           t = p.read_text(encoding='utf-8')
           t = t.replace('never accept BMDSFIX1 from this evidence', 'never accept S1.42AK-BMDSFIX1 from this evidence')
           t = t.replace('regular exact-byte BMDSFIX1 Black Mesa x DeepSewersFlow gate', 'regular exact-byte S1.42AK-BMDSFIX1 Black Mesa x DeepSewersFlow gate')
+          t = t.replace(
+              'The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`.',
+              'The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, exact validated revision `2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain`.'
+          )
           p.write_text(t, encoding='utf-8')
 
       - name: Reconcile exact BMGHDIAG3 runtime compatibility evidence
