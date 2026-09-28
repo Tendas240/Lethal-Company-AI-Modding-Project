@@ -50,38 +50,35 @@ jobs:
           from pathlib import Path
           p=Path('RepositoryTools/knowledge_architecture_validator.py')
           text=p.read_text(encoding='utf-8')
-          old='''    diagnostic_direct_accepted = bool(
-              diagnostic_common
-              and not candidate_id
-              and accepted.get("build_id") == latest.get("build_id")
-              and accepted.get("profile") == latest.get("profile")
-              and accepted.get("sha256") == latest.get("sha256")
-              and diagnostic.get("base_build_id") == accepted.get("build_id")
-              and diagnostic.get("base_profile") == accepted.get("profile")
-              and diagnostic.get("base_sha256") == accepted.get("sha256")
-          )
-          '''
-          new='''    diagnostic_direct_accepted_with_candidate = bool(
-              diagnostic_common
-              and candidate_id
-              and diagnostic.get("base_build_id") == accepted.get("build_id")
-              and diagnostic.get("base_profile") == accepted.get("profile")
-              and diagnostic.get("base_sha256") == accepted.get("sha256")
-          )
-          diagnostic_direct_accepted_without_candidate = bool(
-              diagnostic_common
-              and not candidate_id
-              and accepted.get("build_id") == latest.get("build_id")
-              and accepted.get("profile") == latest.get("profile")
-              and accepted.get("sha256") == latest.get("sha256")
-              and diagnostic.get("base_build_id") == accepted.get("build_id")
-              and diagnostic.get("base_profile") == accepted.get("profile")
-              and diagnostic.get("base_sha256") == accepted.get("sha256")
-          )
-          diagnostic_direct_accepted = diagnostic_direct_accepted_with_candidate or diagnostic_direct_accepted_without_candidate
-          '''
-          assert text.count(old)==1, 'knowledge architecture direct-accepted guard drift'
-          p.write_text(text.replace(old,new,1),encoding='utf-8')
+          start_marker='    diagnostic_direct_accepted = bool(\n'
+          end_marker='    diagnostic_one_hop = bool(\n'
+          assert text.count(start_marker)==1, 'knowledge architecture direct-accepted start drift'
+          start=text.index(start_marker)
+          end=text.index(end_marker,start)
+          replacement='\n'.join([
+              '    diagnostic_direct_accepted_with_candidate = bool(',
+              '        diagnostic_common',
+              '        and candidate_id',
+              '        and diagnostic.get("base_build_id") == accepted.get("build_id")',
+              '        and diagnostic.get("base_profile") == accepted.get("profile")',
+              '        and diagnostic.get("base_sha256") == accepted.get("sha256")',
+              '    )',
+              '    diagnostic_direct_accepted_without_candidate = bool(',
+              '        diagnostic_common',
+              '        and not candidate_id',
+              '        and accepted.get("build_id") == latest.get("build_id")',
+              '        and accepted.get("profile") == latest.get("profile")',
+              '        and accepted.get("sha256") == latest.get("sha256")',
+              '        and diagnostic.get("base_build_id") == accepted.get("build_id")',
+              '        and diagnostic.get("base_profile") == accepted.get("profile")',
+              '        and diagnostic.get("base_sha256") == accepted.get("sha256")',
+              '    )',
+              '    diagnostic_direct_accepted = (',
+              '        diagnostic_direct_accepted_with_candidate or diagnostic_direct_accepted_without_candidate',
+              '    )',
+              '',
+          ])
+          p.write_text(text[:start]+replacement+text[end:],encoding='utf-8')
           PY
 
       - name: Regenerate and verify protected current navigation
