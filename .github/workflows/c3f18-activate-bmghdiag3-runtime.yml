@@ -29,6 +29,21 @@ jobs:
       - name: Apply exact BMGHDIAG3 diagnostic runtime activation
         run: python RepositoryTools/c3f18_activate_bmghdiag3_runtime.py
 
+      - name: Normalize exact active candidate token in machine contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('Current/CURRENT_STATE.json')
+          state=json.loads(p.read_text(encoding='utf-8'))
+          contract=state['selected_scope']['analysis_contract']
+          old='the separate unaccepted BMDSFIX1 gameplay candidate'
+          new='the separate unaccepted S1.42AK-BMDSFIX1 gameplay candidate'
+          assert old in contract and new not in contract
+          state['selected_scope']['analysis_contract']=contract.replace(old,new,1)
+          p.write_text(json.dumps(state,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+          PY
+
       - name: Regenerate and verify protected current navigation
         run: |
           python RepositoryTools/render_current_navigation.py
@@ -63,6 +78,7 @@ jobs:
           assert candidate['status']=='ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED'
           assert candidate['sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
           assert state['runtime_test_outstanding'] is True
+          assert candidate['build_id'] in scope['analysis_contract']
           assert scope['phase_c']['bmdsfix1_target_status'].startswith('OUTSTANDING_PASSIVE')
           assert scope['phase_c']['black_mesa_greenhouse_status']=='NOT_YET_PROVEN'
 
