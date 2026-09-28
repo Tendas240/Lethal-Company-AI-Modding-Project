@@ -7,7 +7,7 @@
 **Implementation:** `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` (canonical launcher), `RuntimeTools/ReplaceActiveGaleProfile.ps1` (validated v2.2 importer base)  
 **Related:** `Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`, `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`, `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`, `Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`  
 **Last-Validated:** 2026-09-04  
-**Last-Hardened:** 2026-09-18 (`2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain`; adds a fail-closed explicit one-hop diagnostic-parent chain for DIAG2 while preserving the previously validated local UI/import path)
+**Last-Hardened:** 2026-09-28 (`2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain`; adds a fail-closed direct accepted-baseline diagnostic anchor while preserving the direct AUTO and explicit one-hop parent paths plus the validated local UI/import path)
 
 ## Canonical launcher
 
@@ -17,13 +17,14 @@ For the currently ready-to-test build, use the repository-driven v2.4 launcher r
 $u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfileV24.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
 ```
 
-Before presenting it, `RuntimeInbox/ACTIVE_BUILD.txt` must resolve fail-closed through one of three explicitly bounded repository-authorized shapes:
+Before presenting it, `RuntimeInbox/ACTIVE_BUILD.txt` must resolve fail-closed through one of four explicitly bounded repository-authorized shapes:
 
 1. **normal built-artifact path:** `ACTIVE_BUILD == Current/AUTO_BUILD_RESULT.json.build_id`;
-2. **direct diagnostic path:** the active `selected_scope.diagnostic_revision` is explicitly authorized, its own build-result matches its output/base identity, and its base binds directly to `AUTO_BUILD_RESULT`; this remains valid when `AUTO_BUILD_RESULT` is the accepted/latest baseline and there is intentionally no gameplay `active_candidate`; or
-3. **one-hop diagnostic-parent path:** the active `diagnostic_revision` is explicitly authorized, its base identity matches exactly one `selected_scope.diagnostic_parent_revision`, that parent has the exact parent status `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED`, the parent's own build-result matches it, and the parent itself binds directly to `AUTO_BUILD_RESULT`.
+2. **direct AUTO diagnostic path:** the active `selected_scope.diagnostic_revision` is explicitly authorized, its own build-result matches its output/base identity, and its base binds directly to `AUTO_BUILD_RESULT`;
+3. **direct accepted-baseline diagnostic path:** the same active diagnostic/build-result/controller checks pass, and its base build ID/profile/SHA bind exactly to `CURRENT_STATE.accepted_baseline`; this permits a diagnostic built directly from the accepted baseline even while `AUTO_BUILD_RESULT` legitimately points at a separate active gameplay candidate; or
+4. **one-hop diagnostic-parent path:** the active `diagnostic_revision` is explicitly authorized, its base identity matches exactly one `selected_scope.diagnostic_parent_revision`, that parent has the exact parent status `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED`, the parent's own build-result matches it, and the parent itself binds directly to `AUTO_BUILD_RESULT`.
 
-The third shape is deliberately **not recursive**. It authorizes the exact balanced -> DIAG1 -> DIAG2 chain without allowing an arbitrary diagnostic lineage. No other `ACTIVE_BUILD` / `AUTO_BUILD_RESULT` mismatch is permitted. Diagnostic resolution changes only repository target selection; it does not promote a diagnostic artifact, replace the balanced candidate or weaken download/import integrity checks.
+The one-hop shape is deliberately **not recursive**, and the accepted-baseline path is not a generic fallback: build ID, profile path and SHA-256 must all match the canonical accepted baseline exactly. No other `ACTIVE_BUILD` / `AUTO_BUILD_RESULT` mismatch is permitted. Diagnostic resolution changes only repository target selection; it does not promote a diagnostic artifact, replace the gameplay candidate or weaken download/import integrity checks.
 
 The v2.4 launcher deliberately wraps the already user-validated v2.2 importer instead of duplicating its UI Automation implementation. It first requires the exact expected v2.2 source-revision signature, replaces only the export-text reader, critical-materialization functions and repository target-resolution block in memory, stamps the current v2.4.x revision, and then executes the resulting helper. If the underlying v2.2 source drifts, v2.4 refuses to run until that drift is reviewed.
 
@@ -78,7 +79,7 @@ v2.4 preserves the v2.3 package-root semantics, closes the false-positive path b
 - package-root searches still require exactly one non-empty expected DLL; zero, empty, or duplicate matches fail closed;
 - normal targets still require exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
 - a mismatch is accepted only through the exact `CURRENT_STATE.controllers.runtime_active_build` + `selected_scope.diagnostic_revision` binding and referenced build-result crosschecks;
-- a direct diagnostic must bind to the current `AUTO_BUILD_RESULT`; a second-generation diagnostic must bind to exactly one explicit `selected_scope.diagnostic_parent_revision`, whose own build-result and base identity bind directly to `AUTO_BUILD_RESULT`;
+- a direct diagnostic must bind either to the current `AUTO_BUILD_RESULT` or exactly to `CURRENT_STATE.accepted_baseline` by build ID/profile/SHA; a second-generation diagnostic must bind to exactly one explicit `selected_scope.diagnostic_parent_revision`, whose own build-result and base identity bind directly to `AUTO_BUILD_RESULT`;
 - no recursive or arbitrary-length diagnostic chain is accepted;
 - the wrapper refuses if the validated v2.2 helper source revision drifts or if the legacy defective StreamReader constructor or unconditional mismatch-abort path survives the in-memory patch.
 
@@ -104,6 +105,12 @@ Revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain` extends 
 
 There is no recursive fallback. A third diagnostic generation would fail until explicitly reviewed and represented by a new bounded contract.
 
+## v2.4.3 exact accepted-baseline direct diagnostic anchor
+
+BMGHDIAG3 is intentionally built directly from exact accepted S1.42AK while `Current/AUTO_BUILD_RESULT.json` correctly remains the separate S1.42AK-BMDSFIX1 gameplay candidate. Rewriting `AUTO_BUILD_RESULT` merely to import the diagnostic would corrupt build authority, while treating accepted S1.42AK as a fake diagnostic parent would misrepresent lineage.
+
+Revision `2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain` adds exactly one fail-closed authority edge: after the active controller, diagnostic status and diagnostic build-result have already matched, a direct diagnostic may bind to `CURRENT_STATE.accepted_baseline` only when its `base_build_id`, `base_profile` and `base_sha256` all match that accepted baseline exactly. The existing direct-`AUTO_BUILD_RESULT` and explicit one-hop diagnostic-parent paths remain unchanged. No recursive or arbitrary fallback is introduced.
+
 The permanent repository regression gate is `RepositoryTools/gale_import_helper_validator.py`, run by `.github/workflows/knowledge-architecture.yml`.
 
 ## Critical package-root contract
@@ -123,7 +130,7 @@ Keep the exact workflow safety constraints from `Current/93_GALE_ACTIVE_PROFILE_
 
 - exact build/profile matching only;
 - normal build resolution remains exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
-- diagnostic mismatches require exact controller + active diagnostic revision + status + build-result agreement; a non-direct diagnostic additionally requires the exact one-hop `diagnostic_parent_revision` contract above; no generic or recursive fallback exists;
+- diagnostic mismatches require exact controller + active diagnostic revision + status + build-result agreement; a direct diagnostic base must match either exact `AUTO_BUILD_RESULT` or exact `CURRENT_STATE.accepted_baseline` identity, while a non-direct diagnostic additionally requires the exact one-hop `diagnostic_parent_revision` contract above; no generic or recursive fallback exists;
 - the dynamic diagnostic build-result path must be segment-escaped, explicitly delimited before `?cb`, and its HTTP fetch must terminate on failure;
 - explicit confirmation before deleting a local profile;
 - no direct editing of Gale `data.sqlite3`;

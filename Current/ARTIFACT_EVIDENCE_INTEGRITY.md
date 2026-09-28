@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
 **Machine mirror:** `Current/ARTIFACT_EVIDENCE_INTEGRITY.json`  
-**Last-Validated:** 2026-09-25
+**Last-Validated:** 2026-09-28
 
 ## Accepted gameplay baseline: S1.42AK
 
@@ -54,9 +54,10 @@ BMGHDIAG2 loaded but refused before arming with `EntranceTeleport manifest modul
 - **S1.42AJ** — deferred full-normal gate / retained exact balanced parent, not active.
 - **S1.42AK-BMDSFIX1** — active gameplay runtime candidate directly over accepted S1.42AK; profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`; BMDSFIX1 DLL SHA-256 `f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92`; runtime evidence outstanding; not accepted.
 - **S1.42AK-BMDSFIX1-DIAG1** — preserved preloader-blocked diagnostic parent; profile SHA-256 `31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e`; DIAG1 DLL SHA-256 `3b9954b21fc2f1214e73b4021c8ab278f71420583e0e2e9f478f981fc64b20e1`; must not be rerun and is not the active runtime/evidence target.
-- **S1.42AK-BMDSFIX1-DIAG1PATH1** — active diagnostic runtime/evidence target using short identity `LC V1 S1.42AK-D1P1`; profile SHA-256 `0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6`; inherited DIAG1 selector DLL SHA-256 `3b9954b21fc2f1214e73b4021c8ab278f71420583e0e2e9f478f981fc64b20e1`; supporting deterministic Deep Sewers evidence only; never a gameplay base or acceptance candidate.
+- **S1.42AK-BMDSFIX1-DIAG1PATH1** — completed supporting diagnostic evidence using short identity `LC V1 S1.42AK-D1P1`; profile SHA-256 `0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6`; inherited DIAG1 selector DLL SHA-256 `3b9954b21fc2f1214e73b4021c8ab278f71420583e0e2e9f478f981fc64b20e1`; not runtime-active and never a gameplay base or acceptance candidate.
+- **S1.42AK-BMGHDIAG3** — active diagnostic runtime/evidence target directly over accepted S1.42AK; profile SHA-256 `7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace`; diagnostic DLL SHA-256 `d40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352`; Black Mesa x Greenhouse evidence outstanding; **NEVER ACCEPT**.
 
-BMDSFIX1 exact reviewed bytes remain the active gameplay candidate and are unchanged. `RuntimeInbox/ACTIVE_BUILD.txt` now points to exact DIAG1PATH1 solely for Gale target resolution and diagnostic evidence attribution; blocked long-name DIAG1 is retained only as the one-hop parent and must not be rerun. Activation changes only lifecycle/controller/evidence routing and regenerates no gameplay/config/package/profile/plugin bytes. DIAG1PATH1 may supply supporting deterministic Black Mesa x `DeepSewersFlow` evidence but cannot qualify or accept BMDSFIX1. Black Mesa x Greenhouse remains separate and unproven.
+BMDSFIX1 exact reviewed bytes remain the active gameplay candidate and are unchanged. `RuntimeInbox/ACTIVE_BUILD.txt` now points to exact BMGHDIAG3 solely for Gale target resolution and diagnostic evidence attribution. DIAG1PATH1 remains completed supporting Deep Sewers evidence and is not runtime-active. BMGHDIAG3 activation changes only lifecycle/controller/evidence routing plus the minimal Gale authority guard needed to resolve a direct diagnostic against accepted S1.42AK while `AUTO_BUILD_RESULT` remains the separate BMDSFIX1 candidate. No gameplay/config/package/profile/plugin bytes are rebuilt or mutated. BMGHDIAG3 is NEVER ACCEPT, BMDSFIX1 remains not accepted with its passive Deep Sewers gate unwaived, and Black Mesa x Greenhouse remains unproven until runtime evidence is decided.
 
 ## Completed diagnostic evidence: S1.42AI-DIAG1R3
 

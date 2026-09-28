@@ -13,7 +13,7 @@ GALE_KNOWLEDGE = ROOT / "Knowledge/GALE_PROFILE_WORKFLOW.md"
 LIFECYCLE = ROOT / "Knowledge/CURRENT_LIFECYCLE.md"
 
 BASE_REVISION = "2026-09-05-import-uia-v2.2-materialization-proof"
-V24_REVISION = "2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain"
+V24_REVISION = "2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain"
 BASE_SIGNATURE = f"$helperRevision='{BASE_REVISION}'"
 V24_SIGNATURE = f"$helperRevision='{V24_REVISION}'"
 
@@ -96,6 +96,11 @@ def main() -> int:
         "$state.selected_scope.diagnostic_parent_revision",
         "PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED",
         "if(([string]$diag.base_build_id) -eq ([string]$build.build_id))",
+        "$state.accepted_baseline",
+        "elseif(([string]$diag.base_build_id) -eq ([string]$state.accepted_baseline.build_id))",
+        "$state.accepted_baseline.profile",
+        "$state.accepted_baseline.sha256",
+        "Direct accepted-baseline diagnostic runtime target",
         "$parent.base_build_id",
         "$parent.base_profile",
         "$parent.base_sha256",
@@ -173,7 +178,7 @@ def main() -> int:
     if "PowerShell" not in gale or "?cb" not in gale or "ErrorAction Stop" not in gale:
         fail("Gale workflow authority does not document the diagnostic build-result URL/fail-closed repair")
 
-    print("PASS: Gale import helper v2.4.2 one-hop diagnostic-parent chain + fail-closed materialization regression contract validated")
+    print("PASS: Gale import helper v2.4.3 direct AUTO/accepted-baseline + one-hop diagnostic-parent chain + fail-closed materialization regression contract validated")
     return 0
 
 
