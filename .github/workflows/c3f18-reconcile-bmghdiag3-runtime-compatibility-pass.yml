@@ -1,4 +1,4 @@
-# trigger: exact-gale-v24-revision
+# trigger: normalize-bmgdiag3-evidence-markdown-whitespace
 name: C3F18 reconcile BMGHDIAG3 runtime compatibility pass
 
 on:
@@ -40,6 +40,23 @@ jobs:
 
       - name: Reconcile exact BMGHDIAG3 runtime compatibility evidence
         run: python RepositoryTools/c3f18_reconcile_bmghdiag3_runtime_compatibility_pass.py
+
+      - name: Normalize generated BMGHDIAG3 evidence Markdown whitespace
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('Current/ARTIFACT_EVIDENCE_INTEGRITY.md')
+          prefixes = (
+              'Profile: `Profiles/LC V1 S1.42AK-BMGHDIAG3 ',
+              'SHA-256: `7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace`',
+              'Diagnostic DLL SHA-256: `d40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352`',
+              'Readable snapshot: `ProfileSources/S1.42AK-BMGHDIAG3/`',
+              'Runtime evidence: `RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/`',
+              'Runtime log SHA-256: `e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8`',
+          )
+          lines = p.read_text(encoding='utf-8').splitlines()
+          lines = [line.rstrip() if line.startswith(prefixes) else line for line in lines]
+          p.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
       - name: Regenerate and verify protected current navigation
         run: |
