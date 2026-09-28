@@ -32,7 +32,7 @@ SCOPE_STATUS = "PHASE_C3F18_BLACK_MESA_GREENHOUSE_RUNTIME_COMPATIBILITY_PASS_BMD
 GREENHOUSE_STATUS = "PASS_RUNTIME_COMPATIBLE_BLACK_MESA_GREENHOUSE_DIAGNOSTIC_ONLY"
 
 OLD_MARKER = "<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK-BMDSFIX1 candidate=S1.42AK-BMDSFIX1 runtime_test_outstanding=true -->"
-NEW_MARKER = "<!-- LIVE_STATE: accepted=S1.42AK latest=S1.42AK-BMDSFIX1 candidate=S1.42AK-BMDSFIX1 runtime_test_outstanding=false -->"
+NEW_MARKER = OLD_MARKER
 
 NEXT_ACTION = (
     "Continue the repository-native Phase C3 External target-moon semantics/topology analysis from the completed "
@@ -106,7 +106,6 @@ def replace_marker(text: str) -> str:
     return text.replace(OLD_MARKER, NEW_MARKER, 1)
 
 
-# Exact evidence preflight.
 state = load_json(STATE_PATH)
 buildspec = load_json(BUILDSPEC_PATH)
 index = load_json(INDEX_PATH)
@@ -151,14 +150,9 @@ assert marker_json["work_state_no_task"]["count"] == 0
 assert marker_json["leader_null_following"]["count"] == 0
 assert marker_json["compatibility_fixes_error"]["count"] == 0
 assert marker_json["fatal_marker"]["count"] == 0
-
-navmesh_error_lines = [
-    line for line in log_text.splitlines()
-    if "RuntimeNavMeshBuilder" in line and "[Error" in line
-]
+navmesh_error_lines = [line for line in log_text.splitlines() if "RuntimeNavMeshBuilder" in line and "[Error" in line]
 assert navmesh_error_lines, "expected RuntimeNavMeshBuilder Error-severity observation"
 
-# Canonical decision record.
 decision = f"""# S1.42AK-BMGHDIAG3 Black Mesa x Greenhouse Runtime Compatibility Pass
 
 **Date:** 2026-09-28  
@@ -233,17 +227,14 @@ The bounded BMGHDIAG3 diagnostic is complete, so it is no longer the runtime/evi
 """
 DECISION_PATH.write_text(decision, encoding="utf-8")
 
-# Machine lifecycle reconciliation.
 scope = state["selected_scope"]
 phase_c = scope["phase_c"]
 diag = scope["diagnostic_revision"]
-
-state["runtime_test_outstanding"] = False
+state["runtime_test_outstanding"] = True
 scope["status"] = SCOPE_STATUS
 scope["finding"] = FINDING
 scope["analysis_contract"] = ANALYSIS_CONTRACT
 scope["next_action"] = NEXT_ACTION
-
 phase_c["status"] = "C3_IN_PROGRESS_BLACK_MESA_GREENHOUSE_RUNTIME_COMPATIBILITY_PASS"
 phase_c["phase_c3f18_runtime_decision"] = DECISION_REL
 phase_c["phase_c3f18_runtime_evidence"] = EVIDENCE_REL
@@ -261,11 +252,9 @@ phase_c["black_mesa_greenhouse_runtime_finding"] = (
 )
 phase_c["bmgdiag3_runtime_status"] = "RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT"
 phase_c["bmgdiag3_runtime_decision"] = DECISION_REL
-
 scope["bmgdiag3_review_runtime_armed"] = False
 scope["bmgdiag3_runtime_activation_status"] = "COMPLETED_DIAGNOSTIC_RUNTIME_COMPATIBILITY_PASS_NEVER_ACCEPT_NOT_ACTIVE"
 scope["diagnostic_runtime_finding"] = DECISION_REL
-
 diag["status"] = "PUBLISHED_DIAGNOSTIC_RUNTIME_EVIDENCE_INGESTED_COMPATIBILITY_PASS_NOT_ACCEPTED"
 diag["runtime_armed"] = False
 diag["runtime_validation_status"] = "RUNTIME_COMPATIBILITY_PASS_NEVER_ACCEPT"
@@ -276,16 +265,13 @@ diag["runtime_log_sha256"] = LOG_SHA
 diag["runtime_decision"] = DECISION_REL
 diag["manual_gameplay_evidence"] = (
     "User performed two Black Mesa x Greenhouse runs; run 2 exercised main entrance and all three fire exits in both "
-    "directions with no severe clipping, inaccessible required entrance geometry, or severe persistent routing/NavMesh "
-    "problem observed."
+    "directions with no severe clipping, inaccessible required entrance geometry, or severe persistent routing/NavMesh problem observed."
 )
-
 state["next_action"] = NEXT_ACTION
 state["controllers"]["runtime_active_build"] = BMDS
 write_json(STATE_PATH, state)
 ACTIVE_PATH.write_text(BMDS + "\n", encoding="utf-8")
 
-# Artifact/evidence retrieval index.
 integrity = load_json(INTEGRITY_JSON)
 pending = integrity["pending_profiles"]
 matches = [x for x in pending if x.get("build_id") == BMG]
@@ -302,25 +288,22 @@ entry["runtime_result"] = "PASS_BLACK_MESA_GREENHOUSE_RUNTIME_COMPATIBILITY"
 entry["note"] = (
     "Completed exact BMGHDIAG3 Black Mesa x Greenhouse diagnostic evidence. Diagnostic only / NEVER ACCEPT. "
     "Generation/topology and bidirectional IDs 0..3 traversal passed; user observation found no severe clipping, "
-    "inaccessible required entrance geometry, or severe persistent routing/NavMesh issue. Does not accept BMDSFIX1 "
-    "or waive its passive Deep Sewers gate."
+    "inaccessible required entrance geometry, or severe persistent routing/NavMesh issue. Does not accept BMDSFIX1 or waive its passive Deep Sewers gate."
 )
 assert not any(x.get("build_id") == BMG for x in integrity["profiles"])
 integrity["profiles"].append(entry)
-
 obs = integrity.get("verified_repository_api_observations", [])
 obs = [x for x in obs if not str(x).startswith("S1.42AK-BMGHDIAG3 exact published/indexed profile")]
 obs.append(
     "S1.42AK-BMGHDIAG3 exact profile SHA-256 7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace "
     "has completed diagnostic runtime evidence at RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/ with raw log "
-    "SHA-256 e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8. Black Mesa x Greenhouse passed the "
-    "bounded runtime-compatibility gate; BMGHDIAG3 remains NEVER ACCEPT and is no longer runtime-active."
+    "SHA-256 e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8. Black Mesa x Greenhouse passed the bounded "
+    "runtime-compatibility gate; BMGHDIAG3 remains NEVER ACCEPT and is no longer runtime-active."
 )
 integrity["verified_repository_api_observations"] = obs
 integrity["last_validated"] = "2026-09-28"
 write_json(INTEGRITY_JSON, integrity)
 
-# Human evidence index.
 text = replace_marker(INTEGRITY_MD.read_text(encoding="utf-8"))
 replacement = f"""## Completed diagnostic evidence: S1.42AK-BMGHDIAG3
 
@@ -343,15 +326,9 @@ The exact diagnostic passed the bounded Black Mesa x Greenhouse runtime-compatib
 
 BMDSFIX1 exact reviewed bytes remain the active gameplay candidate and are unchanged. Runtime/evidence routing has returned to `S1.42AK-BMDSFIX1` after completion of the Greenhouse diagnostic, but no dedicated Deep Sewers reroll is released. `BuildSpecs/current.json` remains disabled. BMGHDIAG3 is no longer runtime-active and remains NEVER ACCEPT; its completed Greenhouse PASS does not accept BMDSFIX1 or waive the separate Deep Sewers target gate.
 """
-text = replace_between(
-    text,
-    "## Pending / deferred unaccepted profiles",
-    "## Completed diagnostic evidence: S1.42AI-DIAG1R3",
-    replacement,
-)
+text = replace_between(text, "## Pending / deferred unaccepted profiles", "## Completed diagnostic evidence: S1.42AI-DIAG1R3", replacement)
 INTEGRITY_MD.write_text(text, encoding="utf-8")
 
-# Human topic router.
 text = replace_marker(MAP_MD.read_text(encoding="utf-8"))
 anchor = f"""## Current lifecycle anchor
 
@@ -361,14 +338,13 @@ The selected **Universal Interior Viability / Equal Availability** scope remains
 
 Exact `S1.42AK-BMGHDIAG3` evidence at `{EVIDENCE_REL}` / raw log SHA-256 `{LOG_SHA}` now establishes a **Black Mesa x Greenhouse runtime-compatibility PASS**. The diagnostic armed, selected `GreenhouseFlow` at normalized rarity 100 from the 31-flow Black Mesa viable pool, completed generation, reported topology IDs 0..3 with four opposite-side pairs, and run 2 recorded direct traversal of all four entrance IDs in both directions. The user's gameplay observation confirms accessible main/fire-exit geometry without severe clipping or a severe persistent routing/NavMesh issue. RuntimeNavMeshBuilder Error-severity source-mesh messages remain a documented non-blocking observation for this bounded gate. Decision: `{DECISION_REL}`.
 
-BMGHDIAG3 remains **DIAGNOSTIC ONLY / NEVER ACCEPT** and is no longer runtime-active. Runtime/evidence routing has returned to exact `S1.42AK-BMDSFIX1`. BMDSFIX1 remains the separate active gameplay candidate / **NOT ACCEPTED**; its regular exact-byte Black Mesa x `DeepSewersFlow` qualification remains passive, outstanding and unwaived, with no dedicated reroll released. `BuildSpecs/current.json` remains disabled. No new runtime test is currently outstanding.
+BMGHDIAG3 remains **DIAGNOSTIC ONLY / NEVER ACCEPT** and is no longer runtime-active. Runtime/evidence routing has returned to exact `S1.42AK-BMDSFIX1`. BMDSFIX1 remains the separate active gameplay candidate / **NOT ACCEPTED**; its regular exact-byte Black Mesa x `DeepSewersFlow` qualification remains passive, outstanding and unwaived, with no dedicated reroll released. `BuildSpecs/current.json` remains disabled. The global runtime-test flag remains outstanding only for the passive/unwaived BMDSFIX1 Deep Sewers gameplay gate; the completed BMGHDIAG3 diagnostic itself is no longer outstanding and no dedicated reroll is released.
 
 Exact next action: continue the repository-native Phase C3 External target-moon semantics/topology analysis from the completed Greenhouse pair proof; do not authorize a universal availability override until the remaining external-moon obligations are resolved.
 """
 text = replace_between(text, "## Current lifecycle anchor", "## Authority rule", anchor)
 MAP_MD.write_text(text, encoding="utf-8")
 
-# Roadmap.
 text = replace_marker(ROADMAP.read_text(encoding="utf-8"))
 road = f"""## Current position
 
@@ -391,13 +367,9 @@ Plan: `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
 {NEXT_ACTION}
 """
 text = replace_between(text, "## Current position", "## Completed LC Office scrap scope", road)
-text = text.replace(
-    "- Black Mesa x Greenhouse BMGHDIAG3 runtime evidence and decision (currently selected diagnostic gate, not a gameplay acceptance path).\n",
-    "",
-)
+text = text.replace("- Black Mesa x Greenhouse BMGHDIAG3 runtime evidence and decision (currently selected diagnostic gate, not a gameplay acceptance path).\n", "")
 ROADMAP.write_text(text, encoding="utf-8")
 
-# Current lifecycle.
 text = replace_marker(LIFECYCLE.read_text(encoding="utf-8"))
 new_runtime_section = f"""BMGHDIAG3 is therefore canonically indexed and exact-head CI-green at the pre-runtime checkpoint. That activation state is now superseded by the completed runtime decision below.
 
@@ -415,15 +387,10 @@ The Phase-B3 matrix remains unchanged as its historical availability/effective-w
 
 Runtime/evidence routing has returned to exact `S1.42AK-BMDSFIX1`. No new runtime test is currently released; in particular, there is no BMGHDIAG3 rerun and no dedicated BMDSFIX1 Deep Sewers reroll.
 """
-text = replace_between(
-    text,
-    "BMGHDIAG3 is therefore canonically indexed and exact-head CI-green.",
-    "## BMDSFIX1 runtime — regular non-target evidence plus DIAG1PATH1 supporting PASS",
-    new_runtime_section,
-)
+text = replace_between(text, "BMGHDIAG3 is therefore canonically indexed and exact-head CI-green.", "## BMDSFIX1 runtime — regular non-target evidence plus DIAG1PATH1 supporting PASS", new_runtime_section)
 text = text.replace(
     "The regular exact-byte BMDSFIX1 Black Mesa x `DeepSewersFlow` gameplay gate remains outstanding and unwaived. Runtime/evidence routing is exact `S1.42AK-BMDSFIX1`; the diagnostic selector is not allowed in the qualification run. No further non-target control is required solely for BMDSFIX1 qualification. Black Mesa x Greenhouse remains separate and `NOT_YET_PROVEN`.",
-    "The regular exact-byte BMDSFIX1 Black Mesa x `DeepSewersFlow` gameplay gate remains outstanding and unwaived. Runtime/evidence routing is exact `S1.42AK-BMDSFIX1`; the diagnostic selector is not allowed in any eventual qualification evidence. No further non-target control is required solely for BMDSFIX1 qualification. Black Mesa x Greenhouse is separately proven runtime-compatible by the completed BMGHDIAG3 diagnostic and does not satisfy this Deep Sewers gate.",
+    "The regular exact-byte BMDSFIX1 Black Mesa x `DeepSewersFlow` gameplay gate remains outstanding and unwaived. Runtime/evidence routing is exact `S1.42AK-BMDSFIX1`; the diagnostic selector is not allowed in any eventual qualification evidence. No further non-target control is required solely for BMDSFIX1 qualification. Black Mesa x Greenhouse is separately proven runtime-compatible by the completed BMGHDIAG3 diagnostic and does not satisfy this Deep Sewers gate."
 )
 tail = f"""## Live execution state
 
@@ -432,7 +399,7 @@ tail = f"""## Live execution state
 - Runtime/evidence pointer: **S1.42AK-BMDSFIX1**.
 - BMGHDIAG3: **Black Mesa x Greenhouse runtime-compatibility PASS / evidence ingested / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active**.
 - Black Mesa x Greenhouse Phase-C status: **pair-specific compatibility proven**; the Phase-B3 availability matrix remains unchanged as its historical snapshot.
-- Runtime test outstanding: **no**. No BMGHDIAG3 rerun and no dedicated BMDSFIX1 Deep Sewers reroll is released.
+- Runtime test outstanding: **yes — solely the passive/unwaived regular BMDSFIX1 Black Mesa x `DeepSewersFlow` gameplay qualification**. The BMGHDIAG3 diagnostic is complete; no BMGHDIAG3 rerun and no dedicated BMDSFIX1 Deep Sewers reroll is released.
 - BMDSFIX1 regular Black Mesa x `DeepSewersFlow` gameplay qualification: **passive / outstanding / unwaived**; unrelated natural exact-byte target evidence may still satisfy the existing gate if later encountered and ingested.
 - DIAG1PATH1: **supporting Deep Sewers diagnostic PASS / NEVER ACCEPT / not runtime-active**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`, guarding exact BMDSFIX1 base bytes.
@@ -442,7 +409,7 @@ tail = f"""## Live execution state
 
 {NEXT_ACTION}
 
-No Gale replacement/import command or runtime-log uploader is released by this state because no new runtime test is currently outstanding.
+No Gale replacement/import command or runtime-log uploader is released by this reconciliation because the only outstanding runtime gate is the passive BMDSFIX1 Deep Sewers qualification and no dedicated run is currently released.
 
 ## Permanent Gale workflow
 

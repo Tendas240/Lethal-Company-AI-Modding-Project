@@ -52,7 +52,7 @@ jobs:
           assert state['active_candidate']['build_id'] == 'S1.42AK-BMDSFIX1'
           assert state['active_candidate']['status'] == 'ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED'
           assert state['active_candidate']['sha256'] == '3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
-          assert state['runtime_test_outstanding'] is False
+          assert state['runtime_test_outstanding'] is True
           assert state['controllers']['runtime_active_build'] == 'S1.42AK-BMDSFIX1'
           assert (root/'RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-BMDSFIX1'
           buildspec = json.loads((root/'BuildSpecs/current.json').read_text(encoding='utf-8'))
@@ -134,3 +134,7 @@ jobs:
           git diff --cached --stat
           git commit -m "Reconcile BMGHDIAG3 runtime compatibility pass"
           git push origin HEAD:c3f18-bmghdiag3-runtime-compatibility-pass
+
+      - name: Remove accidental empty helper branch
+        if: success()
+        run: git push origin --delete dummy-do-not-create-2
