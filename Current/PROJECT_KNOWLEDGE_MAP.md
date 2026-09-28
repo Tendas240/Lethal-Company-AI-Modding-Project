@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
 **Current State:** `Current/00_CURRENT_STATE.md`
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
-**Last-Validated:** 2026-09-25
+**Last-Validated:** 2026-09-28
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -48,7 +48,7 @@ The pair-scoped `S1.42AK-BMDSFIX1` Deep Sewers mitigation remains the **active g
 
 A later **regular exact-byte** BMDSFIX1 run is ingested at `RuntimeEvidence/S1.42AK-BMDSFIX1/20260925T092937Z/` with raw log SHA-256 `936858e50ec27fcbca9ca09b1b863ca1940d860ea3d44d2b5623431e221b9b6e`. Black Mesa returned a normalized 31-flow viable pool including `Deep Sewers(100)`, but naturally selected `Expanded facility`. Generation completed and the user reported normal landing, acceptable atmosphere-screen duration, normal movement and no noticeable entrance/exit issue. This is an additional clean regular non-target control only; decision authority: `Current/187_S1.42AK_BMDSFIX1_REGULAR_EXPANDED_FACILITY_NON_TARGET_CONTROL.md`.
 
-DIAG1PATH1 remains diagnostic support only / **NEVER ACCEPT** and cannot qualify BMDSFIX1 because the deterministic selector DLL was present. Runtime/evidence routing is exact `S1.42AK-BMDSFIX1`; DIAG1PATH1 is not runtime-armed. The regular exact-byte gameplay Black Mesa x `DeepSewersFlow` qualification remains outstanding and unwaived, and no further non-target control is required solely for that gate. The long-name DIAG1 remains preloader-blocked historical provenance and must not be rerun. Black Mesa x Greenhouse/BMGHDIAG remains separate.
+DIAG1PATH1 remains diagnostic support only / **NEVER ACCEPT** and cannot qualify BMDSFIX1 because the deterministic selector DLL was present. The regular exact-byte gameplay Black Mesa x `DeepSewersFlow` qualification remains outstanding, unwaived and passive; dedicated blind rerolls remain disallowed. The exact published/indexed `S1.42AK-BMGHDIAG3` successor is now the active diagnostic runtime/evidence target directly over accepted S1.42AK, with `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMGHDIAG3`. It is **NEVER ACCEPT** and does not replace or accept BMDSFIX1. Black Mesa x Greenhouse remains `NOT_YET_PROVEN` pending this exact diagnostic run. Activation authority: `Current/198_S1.42AK_BMGHDIAG3_RUNTIME_ACTIVATION.md`.
 
 ## Authority rule
 

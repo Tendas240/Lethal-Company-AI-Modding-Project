@@ -45,7 +45,7 @@
   "Profiles/LC V1 S1.42AK-BMGHDIAG3 Black Mesa Greenhouse Diagnostic.r2z": {
     "build_id": "S1.42AK-BMGHDIAG3",
     "sha256": "7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace",
-    "note": "Inactive diagnostic-only successor directly over accepted S1.42AK; exact reviewed bytes are published and the canonical readable snapshot is ProfileSources/S1.42AK-BMGHDIAG3/. Never accept or use as a gameplay base, and not runtime-armed by indexing."
+    "note": "Diagnostic-only active runtime target directly over accepted S1.42AK; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-BMGHDIAG3/. NEVER ACCEPT and never use as a gameplay base; runtime activation authorizes only bounded Black Mesa x Greenhouse diagnostic evidence collection."
   },
   "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z": {
     "build_id": "S1.42AK-BMDSFIX1",

@@ -1,7 +1,7 @@
 $repo='Tendas240/Lethal-Company-AI-Modding-Project'
 $headers=@{'User-Agent'='LC-Profile-Updater';'Cache-Control'='no-cache'}
 $expectedBaseRevision='$helperRevision=''2026-09-05-import-uia-v2.2-materialization-proof'''
-$replacementRevision='$helperRevision=''2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain'''
+$replacementRevision='$helperRevision=''2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain'''
 
 $cache=[DateTime]::UtcNow.Ticks
 $baseUrl="https://raw.githubusercontent.com/$repo/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb=$cache"
@@ -185,6 +185,9 @@ else {
     if(([string]$diag.base_build_id) -eq ([string]$build.build_id)){
         if(([string]$diag.base_profile) -ne ([string]$build.output_profile) -or ([string]$diag.base_sha256).ToLowerInvariant() -ne ([string]$build.output_sha256).ToLowerInvariant()){throw "Direct diagnostic runtime target '$active' base profile/SHA disagree with AUTO_BUILD_RESULT"}
     }
+    elseif(([string]$diag.base_build_id) -eq ([string]$state.accepted_baseline.build_id)){
+        if(([string]$diag.base_profile) -ne ([string]$state.accepted_baseline.profile) -or ([string]$diag.base_sha256).ToLowerInvariant() -ne ([string]$state.accepted_baseline.sha256).ToLowerInvariant()){throw "Direct accepted-baseline diagnostic runtime target '$active' base profile/SHA disagree with CURRENT_STATE.accepted_baseline"}
+    }
     else {
         $parent=$state.selected_scope.diagnostic_parent_revision
         if($null -eq $parent -or ([string]$parent.build_id) -ne ([string]$diag.base_build_id)){throw "Diagnostic runtime target '$active' parent '$($diag.base_build_id)' is not the explicit CURRENT_STATE diagnostic_parent_revision"}
@@ -202,7 +205,7 @@ else {
     $expectedProfileName=[string]$diagBuild.profile_name
     if(!$expectedProfileName){$expectedProfileName=[IO.Path]::GetFileNameWithoutExtension($profilePath)}
     if(!$profilePath -or !$expected -or !$expectedProfileName){throw 'Diagnostic build_result enthält keinen gültigen Profilpfad, Profilnamen oder SHA-256'}
-    Write-Host "Expliziter diagnostischer Runtime-Target wurde über CURRENT_STATE + one-hop parent chain + build_result fail-closed verifiziert." -ForegroundColor DarkGray
+    Write-Host "Expliziter diagnostischer Runtime-Target wurde über CURRENT_STATE + direct AUTO/accepted-baseline/one-hop parent chain + build_result fail-closed verifiziert." -ForegroundColor DarkGray
 }
 '@
 

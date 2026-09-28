@@ -182,7 +182,14 @@ def validate_current_state() -> None:
         and diagnostic.get("base_profile") == candidate.get("profile")
         and diagnostic.get("base_sha256") == candidate.get("sha256")
     )
-    diagnostic_direct_accepted = bool(
+    diagnostic_direct_accepted_with_candidate = bool(
+        diagnostic_common
+        and candidate_id
+        and diagnostic.get("base_build_id") == accepted.get("build_id")
+        and diagnostic.get("base_profile") == accepted.get("profile")
+        and diagnostic.get("base_sha256") == accepted.get("sha256")
+    )
+    diagnostic_direct_accepted_without_candidate = bool(
         diagnostic_common
         and not candidate_id
         and accepted.get("build_id") == latest.get("build_id")
@@ -191,6 +198,9 @@ def validate_current_state() -> None:
         and diagnostic.get("base_build_id") == accepted.get("build_id")
         and diagnostic.get("base_profile") == accepted.get("profile")
         and diagnostic.get("base_sha256") == accepted.get("sha256")
+    )
+    diagnostic_direct_accepted = (
+        diagnostic_direct_accepted_with_candidate or diagnostic_direct_accepted_without_candidate
     )
     diagnostic_one_hop = bool(
         diagnostic_common
