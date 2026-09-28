@@ -1,3 +1,4 @@
+# trigger: passive-bmdsfix1-runtime-gate-semantics
 name: C3F18 reconcile BMGHDIAG3 runtime compatibility pass
 
 on:
