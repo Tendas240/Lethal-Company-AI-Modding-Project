@@ -44,6 +44,46 @@ jobs:
           p.write_text(json.dumps(state,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
           PY
 
+      - name: Extend exact accepted-baseline diagnostic runtime guard
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('RepositoryTools/knowledge_architecture_validator.py')
+          text=p.read_text(encoding='utf-8')
+          old='''    diagnostic_direct_accepted = bool(
+              diagnostic_common
+              and not candidate_id
+              and accepted.get("build_id") == latest.get("build_id")
+              and accepted.get("profile") == latest.get("profile")
+              and accepted.get("sha256") == latest.get("sha256")
+              and diagnostic.get("base_build_id") == accepted.get("build_id")
+              and diagnostic.get("base_profile") == accepted.get("profile")
+              and diagnostic.get("base_sha256") == accepted.get("sha256")
+          )
+          '''
+          new='''    diagnostic_direct_accepted_with_candidate = bool(
+              diagnostic_common
+              and candidate_id
+              and diagnostic.get("base_build_id") == accepted.get("build_id")
+              and diagnostic.get("base_profile") == accepted.get("profile")
+              and diagnostic.get("base_sha256") == accepted.get("sha256")
+          )
+          diagnostic_direct_accepted_without_candidate = bool(
+              diagnostic_common
+              and not candidate_id
+              and accepted.get("build_id") == latest.get("build_id")
+              and accepted.get("profile") == latest.get("profile")
+              and accepted.get("sha256") == latest.get("sha256")
+              and diagnostic.get("base_build_id") == accepted.get("build_id")
+              and diagnostic.get("base_profile") == accepted.get("profile")
+              and diagnostic.get("base_sha256") == accepted.get("sha256")
+          )
+          diagnostic_direct_accepted = diagnostic_direct_accepted_with_candidate or diagnostic_direct_accepted_without_candidate
+          '''
+          assert text.count(old)==1, 'knowledge architecture direct-accepted guard drift'
+          p.write_text(text.replace(old,new,1),encoding='utf-8')
+          PY
+
       - name: Regenerate and verify protected current navigation
         run: |
           python RepositoryTools/render_current_navigation.py
@@ -144,6 +184,10 @@ jobs:
           assert "elseif(([string]$diag.base_build_id) -eq ([string]$state.accepted_baseline.build_id))" in gale
           assert "$state.accepted_baseline.profile" in gale and "$state.accepted_baseline.sha256" in gale
 
+          validator=(root/'RepositoryTools/knowledge_architecture_validator.py').read_text(encoding='utf-8')
+          assert 'diagnostic_direct_accepted_with_candidate' in validator
+          assert 'diagnostic_direct_accepted_without_candidate' in validator
+
           allowed={
               'README.md','START_HERE_ChatGPT_Masterprompt.txt',
               'Current/00_CURRENT_STATE.md','Current/01_HANDOVER_CORE.md',
@@ -154,7 +198,8 @@ jobs:
               'Knowledge/GALE_PROFILE_WORKFLOW.md',
               'Profiles/EXPECTED_HASHES.json','RuntimeInbox/ACTIVE_BUILD.txt',
               'RuntimeTools/ReplaceActiveGaleProfileV24.ps1',
-              'RepositoryTools/gale_import_helper_validator.py'
+              'RepositoryTools/gale_import_helper_validator.py',
+              'RepositoryTools/knowledge_architecture_validator.py'
           }
           tracked=set(subprocess.check_output(['git','diff','--name-only'],text=True).splitlines())
           untracked=set(subprocess.check_output(['git','ls-files','--others','--exclude-standard'],text=True).splitlines())
@@ -171,6 +216,7 @@ jobs:
               'RuntimeInbox/ACTIVE_BUILD.txt',
               'RuntimeTools/ReplaceActiveGaleProfileV24.ps1',
               'RepositoryTools/gale_import_helper_validator.py',
+              'RepositoryTools/knowledge_architecture_validator.py',
               'Knowledge/GALE_PROFILE_WORKFLOW.md'
           }
           missing=sorted(required_delta-changed_without_oneshot)
