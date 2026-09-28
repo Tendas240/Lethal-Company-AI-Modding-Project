@@ -1,0 +1,136 @@
+name: C3F18 reconcile BMGHDIAG3 runtime compatibility pass
+
+on:
+  push:
+    branches:
+      - c3f18-bmghdiag3-runtime-compatibility-pass
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reconciliation branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: c3f18-bmghdiag3-runtime-compatibility-pass
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reconcile exact BMGHDIAG3 runtime compatibility evidence
+        run: python RepositoryTools/c3f18_reconcile_bmghdiag3_runtime_compatibility_pass.py
+
+      - name: Regenerate and verify protected current navigation
+        run: |
+          python RepositoryTools/render_current_navigation.py
+          python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate canonical state and repository contracts
+        run: |
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/handover_workflow_validator.py
+          python RepositoryTools/artifact_byte_integrity_validator.py
+          python RepositoryTools/repository_integrity_guard.py
+          python RepositoryTools/gale_import_helper_validator.py
+
+      - name: Verify exact runtime-pass decision and bounded routing reset
+        shell: python
+        run: |
+          import hashlib, json, subprocess
+          from pathlib import Path
+          root = Path('.')
+          state = json.loads((root/'Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          assert state['accepted_baseline']['build_id'] == 'S1.42AK'
+          assert state['accepted_baseline']['sha256'] == 'b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee'
+          assert state['active_candidate']['build_id'] == 'S1.42AK-BMDSFIX1'
+          assert state['active_candidate']['status'] == 'ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED'
+          assert state['active_candidate']['sha256'] == '3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
+          assert state['runtime_test_outstanding'] is False
+          assert state['controllers']['runtime_active_build'] == 'S1.42AK-BMDSFIX1'
+          assert (root/'RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-BMDSFIX1'
+          buildspec = json.loads((root/'BuildSpecs/current.json').read_text(encoding='utf-8'))
+          assert buildspec['enabled'] is False
+          assert buildspec['base_sha256'] == '3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
+          scope = state['selected_scope']
+          assert scope['status'] == 'PHASE_C3F18_BLACK_MESA_GREENHOUSE_RUNTIME_COMPATIBILITY_PASS_BMDSFIX1_TARGET_QUALIFICATION_PASSIVE_OUTSTANDING'
+          assert scope['phase_c']['black_mesa_greenhouse_status'] == 'PASS_RUNTIME_COMPATIBLE_BLACK_MESA_GREENHOUSE_DIAGNOSTIC_ONLY'
+          assert scope['phase_c']['bmdsfix1_target_status'] == 'OUTSTANDING_PASSIVE_EXACT_GAMEPLAY_BLACK_MESA_DEEP_SEWERS_NO_DEDICATED_REROLL_RELEASED'
+          diag = scope['diagnostic_revision']
+          assert diag['build_id'] == 'S1.42AK-BMGHDIAG3'
+          assert diag['classification'] == 'DIAGNOSTIC_ONLY_NEVER_ACCEPT'
+          assert diag['status'] == 'PUBLISHED_DIAGNOSTIC_RUNTIME_EVIDENCE_INGESTED_COMPATIBILITY_PASS_NOT_ACCEPTED'
+          assert diag['runtime_armed'] is False
+          assert diag['runtime_result'] == 'PASS_BLACK_MESA_GREENHOUSE_RUNTIME_COMPATIBILITY'
+          assert diag['profile_sha256'] == '7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace'
+          assert diag['diagnostic_dll_sha256'] == 'd40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352'
+          assert diag['runtime_log_sha256'] == 'e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8'
+          assert diag['runtime_decision'] == 'Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md'
+          evidence = root/'RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/raw/LogOutput.log'
+          assert hashlib.sha256(evidence.read_bytes()).hexdigest() == 'e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8'
+          log = evidence.read_text(encoding='utf-8', errors='replace')
+          for needle in [
+              '[BMGHDIAG3] ARMED',
+              '[BMGHDIAG3] SELECTED Black Mesa Greenhouse / GreenhouseFlow; normalized rarity=100; pool=31->1',
+              '[BMGHDIAG3] TOPOLOGY_OK ids=0,1,2,3 uniqueOppositePairs=4',
+              'id0=outside>inside:1,inside>outside:1;id1=outside>inside:1,inside>outside:1;id2=outside>inside:1,inside>outside:1;id3=outside>inside:1,inside>outside:1',
+          ]:
+              assert needle in log, needle
+          assert '[BMGHDIAG3] REFUSED' not in log
+          assert 'TOPOLOGY_INCONCLUSIVE' not in log
+          for i in range(4):
+              assert f'[BMGHDIAG3] TRAVERSED id={i} sourceSide=outside targetSide=inside' in log
+              assert f'[BMGHDIAG3] TRAVERSED id={i} sourceSide=inside targetSide=outside' in log
+          integrity = json.loads((root/'Current/ARTIFACT_EVIDENCE_INTEGRITY.json').read_text(encoding='utf-8'))
+          completed = [x for x in integrity['profiles'] if x.get('build_id') == 'S1.42AK-BMGHDIAG3']
+          pending = [x for x in integrity['pending_profiles'] if x.get('build_id') == 'S1.42AK-BMGHDIAG3']
+          assert len(completed) == 1 and not pending
+          assert completed[0]['role'] == 'RUNTIME_DIAGNOSTIC_PASS_NOT_GAMEPLAY_BASE'
+          assert completed[0]['runtime_log_sha256'] == 'e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8'
+          record = (root/'Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md').read_text(encoding='utf-8')
+          for needle in ['RUNTIME COMPATIBILITY PASS', 'DIAGNOSTIC ONLY', 'NEVER ACCEPT', 'RuntimeNavMeshBuilder', 'User-reported gameplay evidence', 'DeepSewersFlow']:
+              assert needle in record, needle
+          status = subprocess.check_output(['git','status','--porcelain'], text=True).splitlines()
+          changed = []
+          for line in status:
+              path = line[3:]
+              if ' -> ' in path:
+                  path = path.split(' -> ',1)[1]
+              changed.append(path)
+          forbidden_prefixes = ('Profiles/','ProfileSources/','BuildSpecs/','RuntimeEvidence/','SourceEvidence/','Patches/')
+          forbidden = [p for p in changed if p.startswith(forbidden_prefixes)]
+          assert not forbidden, f'forbidden artifact/source/gameplay delta: {forbidden}'
+          required = {
+              'Current/CURRENT_STATE.json',
+              'Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md',
+              'RuntimeInbox/ACTIVE_BUILD.txt',
+              'Knowledge/CURRENT_LIFECYCLE.md',
+              'Current/PROJECT_KNOWLEDGE_MAP.md',
+              'Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md',
+              'Current/ARTIFACT_EVIDENCE_INTEGRITY.json',
+              'Current/ARTIFACT_EVIDENCE_INTEGRITY.md',
+          }
+          assert required.issubset(set(changed)), (required - set(changed))
+
+      - name: Remove one-shot reconciliation machinery
+        run: |
+          rm RepositoryTools/c3f18_reconcile_bmghdiag3_runtime_compatibility_pass.py
+          rm .github/workflows/c3f18-reconcile-bmghdiag3-runtime-compatibility-pass.yml
+
+      - name: Verify no whitespace errors
+        run: git diff --check
+
+      - name: Commit atomic canonical reconciliation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --stat
+          git commit -m "Reconcile BMGHDIAG3 runtime compatibility pass"
+          git push origin HEAD:c3f18-bmghdiag3-runtime-compatibility-pass
