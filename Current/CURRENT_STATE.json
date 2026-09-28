@@ -61,13 +61,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C3F18_BMDSFIX1_TARGET_QUALIFICATION_PASSIVE_OUTSTANDING_BMGHDIAG3_RUNTIME_ACTIVE_TEST_OUTSTANDING",
+    "status": "PHASE_C3F18_BLACK_MESA_GREENHOUSE_RUNTIME_COMPATIBILITY_PASS_BMDSFIX1_TARGET_QUALIFICATION_PASSIVE_OUTSTANDING",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "S1.42AK-BMGHDIAG3 exact reviewed bytes are published, canonically indexed and now runtime-armed solely as the bounded Black Mesa x Greenhouse diagnostic target. The active diagnostic profile remains SHA-256 7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace and its DLL remains SHA-256 d40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352. It derives directly from exact accepted S1.42AK, not from BMDSFIX1 or either failed BMGHDIAG predecessor. S1.42AK-BMDSFIX1 remains the separate active gameplay candidate / not accepted, and its regular exact-byte Black Mesa x DeepSewersFlow qualification remains outstanding, unwaived and passive. BuildSpecs/current.json remains disabled and pinned to BMDSFIX1. RuntimeInbox/ACTIVE_BUILD.txt now identifies BMGHDIAG3 only for exact Gale target resolution and runtime-evidence attribution. Black Mesa x Greenhouse remains NOT_YET_PROVEN until this exact diagnostic runtime evidence is ingested and decided.",
-    "analysis_contract": "Treat S1.42AK-BMGHDIAG3 as the active diagnostic runtime target only and NEVER ACCEPT it as gameplay. Preserve exact profile/DLL identities, accepted S1.42AK, the separate unaccepted S1.42AK-BMDSFIX1 gameplay candidate, the passive/unwaived BMDSFIX1 Black Mesa x DeepSewersFlow gate, accepted S1.42AB normalization, Black Mesa Dawn/native ownership, Greenhouse availability, the B3 matrix, Shatteredrooms exclusions and the separate Black-Mesa/Pikmin routing scope. Do not rebuild or mutate the diagnostic profile/DLL/package/config bytes. The runtime gate must establish BMGHDIAG3 arming, exact Black Mesa Greenhouse selection, generation/topology/traversal evidence and absence of invalidating REFUSED/TOPOLOGY_INCONCLUSIVE markers before any Greenhouse compatibility conclusion.",
-    "next_action": "Import the exact active S1.42AK-BMGHDIAG3 profile through the canonical repository-driven Gale v2.4 launcher, run one bounded Black Mesa x Greenhouse diagnostic, exercise the main entrance and alternate entrance IDs 1, 2 and 3 in both directions where practical, then upload that run's exact BepInEx/LogOutput.log with the BMGHDIAG3 build-specific one-line uploader. Do not alter profile/config/package/plugin/gameplay bytes during the test. Treat the result as diagnostic-only / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.",
+    "finding": "S1.42AK-BMGHDIAG3 completed its bounded Black Mesa x Greenhouse diagnostic contract using exact published/indexed profile SHA-256 7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace and diagnostic DLL SHA-256 d40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352, directly over accepted S1.42AK. Ingested evidence at RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/ has raw LogOutput.log SHA-256 e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8. The diagnostic armed without invalidating refusal, deterministically selected Black Mesa Greenhouse / GreenhouseFlow from the normalized 31-flow viable pool at rarity 100, completed generation, reported TOPOLOGY_OK for entrance IDs 0,1,2,3 with four opposite-side pairs, and the second run recorded direct player traversal of all four IDs in both directions with final full coverage. The user independently reported successful visual/player use of the main entrance and all three fire exits in both directions in run 2, with no severe clipping, inaccessible required entrance geometry, or severe persistent routing/NavMesh problem observed. RuntimeNavMeshBuilder emitted Error-severity source-mesh read/validation messages during Greenhouse generation; these are retained as a non-blocking observation because generation completed, all required entrances were traversed, and no correlated severe/persistent target routing failure was observed. This is a Black Mesa x Greenhouse runtime-compatibility PASS only. BMGHDIAG3 remains DIAGNOSTIC ONLY / NEVER ACCEPT. Accepted S1.42AK remains unchanged. S1.42AK-BMDSFIX1 remains the separate active gameplay candidate / not accepted, and its regular Black Mesa x DeepSewersFlow gate remains passive, outstanding and unwaived.",
+    "analysis_contract": "Treat Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md plus exact evidence RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/ as pair-specific Phase-C compatibility proof for Black Mesa x Greenhouse. Never promote BMGHDIAG3 to gameplay, never accept S1.42AK-BMDSFIX1 from this evidence, and never use the Greenhouse result to satisfy or waive the regular exact-byte S1.42AK-BMDSFIX1 Black Mesa x DeepSewersFlow gate. Preserve the Phase-B3 matrix as its historical availability/effective-weight snapshot rather than rewriting it from this compatibility run. RuntimeNavMeshBuilder Error-severity source-mesh messages remain an explicit non-blocking observation unless stronger target-correlated user-facing evidence emerges. Continue Phase C3 narrowly and keep the separate Black Mesa/Pikmin routing-recovery scope closed.",
+    "next_action": "Continue the repository-native Phase C3 External target-moon semantics/topology analysis from the completed Black Mesa x Greenhouse runtime-compatibility PASS. Preserve the unchanged Phase-B3 availability matrix, accepted S1.42AK, and unaccepted S1.42AK-BMDSFIX1. No new BMGHDIAG3 run is authorized, and no dedicated BMDSFIX1 Black Mesa reroll is released: its regular exact-byte Black Mesa x DeepSewersFlow qualification remains passive, outstanding and unwaived. If unrelated normal exact-byte BMDSFIX1 evidence naturally selects DeepSewersFlow, ingest it against the existing gate. Do not implement a universal availability override until the remaining Phase C3 external-moon obligations are resolved.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -179,7 +179,7 @@
       }
     },
     "phase_c": {
-      "status": "C2_COMPLETE_C3_OUTSTANDING",
+      "status": "C3_IN_PROGRESS_BLACK_MESA_GREENHOUSE_RUNTIME_COMPATIBILITY_PASS",
       "phase_c1_evidence": "Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md",
       "trusted_runtime_triage": {
         "traversed_generation_player_entry_exit": 15,
@@ -219,10 +219,10 @@
         "Shatteredrooms: known CullFactory incompatibility; not proven to be the reason for Experimentation/Embrion exclusion"
       ],
       "phase_c3_priority": "External target moons Black Mesa and Oxyde",
-      "phase_c3f18_runtime_decision": "Current/173_S1.42AK_BMGHDIAG2_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL_AND_DEEP_SEWERS_INCIDENT.md",
-      "phase_c3f18_runtime_evidence": "RuntimeEvidence/S1.42AK-BMGHDIAG2/20260924T124542Z/",
-      "phase_c3f18_runtime_log_sha256": "5c7931cbf68414c76ea4cc0950d23b592497a2daa2b0f4d8e49986cc13c863d9",
-      "black_mesa_greenhouse_status": "NOT_YET_PROVEN",
+      "phase_c3f18_runtime_decision": "Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md",
+      "phase_c3f18_runtime_evidence": "RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/",
+      "phase_c3f18_runtime_log_sha256": "e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8",
+      "black_mesa_greenhouse_status": "PASS_RUNTIME_COMPATIBLE_BLACK_MESA_GREENHOUSE_DIAGNOSTIC_ONLY",
       "black_mesa_deep_sewers_incident": "Normal fallback selected Deep Sewers after BMGHDIAG2 refused. LLL reported 3.25->4.875 / final 4.87 and DunGenPlus emitted repeated placement failures without a later generation-complete marker in the captured post-selection evidence.",
       "bmdsfix1_partial_runtime_decision": "Current/175_S1.42AK_BMDSFIX1_PARTIAL_RUNTIME_EVIDENCE_NON_TARGET_CONTROL.md",
       "bmdsfix1_partial_runtime_evidence": "RuntimeEvidence/S1.42AK-BMDSFIX1/20260924T170032Z/",
@@ -297,7 +297,7 @@
       "bmgdiag3_review_main_integration_commit": "e08f0225de8441c13395b9a8a9157ec640673a37",
       "bmgdiag3_review_main_knowledge_architecture_run": 36312331849,
       "bmgdiag3_review_published": true,
-      "bmgdiag3_review_runtime_armed": true,
+      "bmgdiag3_review_runtime_armed": false,
       "bmgdiag3_publication_checkpoint": "Current/196_S1.42AK_BMGHDIAG3_EXACT_BYTE_PUBLICATION_CHECKPOINT.md",
       "bmgdiag3_publication_evidence": "BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
       "bmgdiag3_publication_status": "EXACT_BYTE_PUBLISHED_MAIN_INTEGRATED_INDEXED_NOT_GALE_IMPORTED_NOT_RUNTIME_ARMED_RUNTIME_ACTIVATION_NEXT",
@@ -312,7 +312,13 @@
       "bmgdiag3_profile_indexed": true,
       "bmgdiag3_profile_index_result": "ProfileSources/S1.42AK-BMGHDIAG3/PROFILE_INDEX_RESULT.json",
       "bmgdiag3_runtime_activation": "Current/198_S1.42AK_BMGHDIAG3_RUNTIME_ACTIVATION.md",
-      "bmgdiag3_runtime_activation_status": "ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_TEST_OUTSTANDING_NEVER_ACCEPT"
+      "bmgdiag3_runtime_activation_status": "COMPLETED_DIAGNOSTIC_RUNTIME_COMPATIBILITY_PASS_NEVER_ACCEPT_NOT_ACTIVE",
+      "black_mesa_greenhouse_runtime_decision": "Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md",
+      "black_mesa_greenhouse_runtime_evidence": "RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/",
+      "black_mesa_greenhouse_runtime_log_sha256": "e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8",
+      "black_mesa_greenhouse_runtime_finding": "Exact BMGHDIAG3 diagnostic armed and selected Greenhouse at normalized rarity 100 from Black Mesa's 31-flow viable pool, generation completed, topology resolved IDs 0..3, and run 2 recorded bidirectional direct traversal for all four IDs. User observation confirms the exercised entrance geometry was accessible without severe clipping or persistent routing/NavMesh failure. RuntimeNavMeshBuilder Error-severity source-mesh messages are retained as a non-blocking observation for this gate.",
+      "bmgdiag3_runtime_status": "RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+      "bmgdiag3_runtime_decision": "Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md"
     },
     "diagnostic_build_plan": "BuildSpecs/S1.42AK-BMGHDIAG3_PLAN.md",
     "diagnostic_static_evidence": "BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
@@ -320,7 +326,7 @@
     "diagnostic_runtime_activation": "Current/198_S1.42AK_BMGHDIAG3_RUNTIME_ACTIVATION.md",
     "diagnostic_revision": {
       "build_id": "S1.42AK-BMGHDIAG3",
-      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+      "status": "PUBLISHED_DIAGNOSTIC_RUNTIME_EVIDENCE_INGESTED_COMPATIBILITY_PASS_NOT_ACCEPTED",
       "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
       "base_build_id": "S1.42AK",
       "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
@@ -355,12 +361,18 @@
       "profile_index_reconciliation": "Current/197_S1.42AK_BMGHDIAG3_PROFILE_INDEX_RECONCILIATION.md",
       "published": true,
       "indexed": true,
-      "runtime_armed": true,
+      "runtime_armed": false,
       "activation_record": "Current/198_S1.42AK_BMGHDIAG3_RUNTIME_ACTIVATION.md",
       "runtime_role": "DIAGNOSTIC_ONLY_BLACK_MESA_GREENHOUSE_FORCE_SELECTION_AND_READ_ONLY_ENTRANCE_OBSERVATION_NEVER_ACCEPT",
-      "runtime_validation_status": "RUNTIME_TEST_OUTSTANDING_NEVER_ACCEPT"
+      "runtime_validation_status": "RUNTIME_COMPATIBILITY_PASS_NEVER_ACCEPT",
+      "runtime_result": "PASS_BLACK_MESA_GREENHOUSE_RUNTIME_COMPATIBILITY",
+      "runtime_evidence": "RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/",
+      "runtime_index": "RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/INDEX.json",
+      "runtime_log_sha256": "e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8",
+      "runtime_decision": "Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md",
+      "manual_gameplay_evidence": "User performed two Black Mesa x Greenhouse runs; run 2 exercised main entrance and all three fire exits in both directions with no severe clipping, inaccessible required entrance geometry, or severe persistent routing/NavMesh problem observed."
     },
-    "diagnostic_runtime_finding": "Current/186_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_SUPPORTING_PASS.md",
+    "diagnostic_runtime_finding": "Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md",
     "bmdsfix1_source_repair": {
       "build_id": "S1.42AK-BMDSFIX1",
       "status": "SOURCE_STATIC_INTEGRATED_NOT_BUILT_NOT_ARMED",
@@ -615,7 +627,7 @@
     "diagnostic_supporting_runtime_decision": "Current/186_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_SUPPORTING_PASS.md",
     "diagnostic_supporting_runtime_evidence": "RuntimeEvidence/S1.42AK-BMDSFIX1-DIAG1PATH1/20260925T085104Z/"
   },
-  "next_action": "Import the exact active S1.42AK-BMGHDIAG3 profile through the canonical repository-driven Gale v2.4 launcher, run one bounded Black Mesa x Greenhouse diagnostic, exercise the main entrance and alternate entrance IDs 1, 2 and 3 in both directions where practical, then upload that run's exact BepInEx/LogOutput.log with the BMGHDIAG3 build-specific one-line uploader. Do not alter profile/config/package/plugin/gameplay bytes during the test. Treat the result as diagnostic-only / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.",
+  "next_action": "Continue the repository-native Phase C3 External target-moon semantics/topology analysis from the completed Black Mesa x Greenhouse runtime-compatibility PASS. Preserve the unchanged Phase-B3 availability matrix, accepted S1.42AK, and unaccepted S1.42AK-BMDSFIX1. No new BMGHDIAG3 run is authorized, and no dedicated BMDSFIX1 Black Mesa reroll is released: its regular exact-byte Black Mesa x DeepSewersFlow qualification remains passive, outstanding and unwaived. If unrelated normal exact-byte BMDSFIX1 evidence naturally selects DeepSewersFlow, ingest it against the existing gate. Do not implement a universal availability override until the remaining Phase C3 external-moon obligations are resolved.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
@@ -623,7 +635,7 @@
     "build_base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
     "build_base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
     "runtime_active_build_file": "RuntimeInbox/ACTIVE_BUILD.txt",
-    "runtime_active_build": "S1.42AK-BMGHDIAG3"
+    "runtime_active_build": "S1.42AK-BMDSFIX1"
   },
   "canonical_navigation": {
     "bootstrap": "START_HERE_ChatGPT_Masterprompt.txt",
