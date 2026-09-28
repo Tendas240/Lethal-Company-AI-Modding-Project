@@ -297,7 +297,7 @@
       "bmgdiag3_review_main_integration_commit": "e08f0225de8441c13395b9a8a9157ec640673a37",
       "bmgdiag3_review_main_knowledge_architecture_run": 36312331849,
       "bmgdiag3_review_published": true,
-      "bmgdiag3_review_runtime_armed": true,
+      "bmgdiag3_review_runtime_armed": false,
       "bmgdiag3_publication_checkpoint": "Current/196_S1.42AK_BMGHDIAG3_EXACT_BYTE_PUBLICATION_CHECKPOINT.md",
       "bmgdiag3_publication_evidence": "BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
       "bmgdiag3_publication_status": "EXACT_BYTE_PUBLISHED_MAIN_INTEGRATED_INDEXED_NOT_GALE_IMPORTED_NOT_RUNTIME_ARMED_RUNTIME_ACTIVATION_NEXT",
@@ -312,7 +312,7 @@
       "bmgdiag3_profile_indexed": true,
       "bmgdiag3_profile_index_result": "ProfileSources/S1.42AK-BMGHDIAG3/PROFILE_INDEX_RESULT.json",
       "bmgdiag3_runtime_activation": "Current/198_S1.42AK_BMGHDIAG3_RUNTIME_ACTIVATION.md",
-      "bmgdiag3_runtime_activation_status": "ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_TEST_OUTSTANDING_NEVER_ACCEPT",
+      "bmgdiag3_runtime_activation_status": "COMPLETED_DIAGNOSTIC_RUNTIME_COMPATIBILITY_PASS_NEVER_ACCEPT_NOT_ACTIVE",
       "black_mesa_greenhouse_runtime_decision": "Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md",
       "black_mesa_greenhouse_runtime_evidence": "RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/",
       "black_mesa_greenhouse_runtime_log_sha256": "e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8",
@@ -625,9 +625,7 @@
       "runtime_validation_status": "PRELOADER_BLOCKED_BEFORE_DIAGNOSTIC_EXECUTION_DO_NOT_RERUN_PARENT_OF_DIAG1PATH1"
     },
     "diagnostic_supporting_runtime_decision": "Current/186_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_SUPPORTING_PASS.md",
-    "diagnostic_supporting_runtime_evidence": "RuntimeEvidence/S1.42AK-BMDSFIX1-DIAG1PATH1/20260925T085104Z/",
-    "bmgdiag3_review_runtime_armed": false,
-    "bmgdiag3_runtime_activation_status": "COMPLETED_DIAGNOSTIC_RUNTIME_COMPATIBILITY_PASS_NEVER_ACCEPT_NOT_ACTIVE"
+    "diagnostic_supporting_runtime_evidence": "RuntimeEvidence/S1.42AK-BMDSFIX1-DIAG1PATH1/20260925T085104Z/"
   },
   "next_action": "Continue the repository-native Phase C3 External target-moon semantics/topology analysis from the completed Black Mesa x Greenhouse runtime-compatibility PASS. Preserve the unchanged Phase-B3 availability matrix, accepted S1.42AK, and unaccepted S1.42AK-BMDSFIX1. No new BMGHDIAG3 run is authorized, and no dedicated BMDSFIX1 Black Mesa reroll is released: its regular exact-byte Black Mesa x DeepSewersFlow qualification remains passive, outstanding and unwaived. If unrelated normal exact-byte BMDSFIX1 evidence naturally selects DeepSewersFlow, ingest it against the existing gate. Do not implement a universal availability override until the remaining Phase C3 external-moon obligations are resolved.",
   "controllers": {
