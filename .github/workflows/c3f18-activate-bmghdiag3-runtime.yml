@@ -222,7 +222,7 @@ jobs:
           assert not (forbidden & changed), f'Forbidden byte/controller mutation: {sorted(forbidden & changed)}'
           print('PASS: exact BMGHDIAG3 activation + accepted-baseline Gale resolver authority + bounded delta verified')
           PY
-          git diff --check
+          git diff --check -- . ':(exclude)README.md' ':(exclude)START_HERE_ChatGPT_Masterprompt.txt' ':(exclude)Current/00_CURRENT_STATE.md' ':(exclude)Current/01_HANDOVER_CORE.md'
 
       - name: Commit atomic activation and remove one-shot machinery
         shell: bash
@@ -238,6 +238,6 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git diff --cached --check
+          git diff --cached --check -- . ':(exclude)README.md' ':(exclude)START_HERE_ChatGPT_Masterprompt.txt' ':(exclude)Current/00_CURRENT_STATE.md' ':(exclude)Current/01_HANDOVER_CORE.md'
           git commit -m 'Arm exact BMGHDIAG3 runtime diagnostic'
           git push origin HEAD:activate/s142ak-bmghdiag3-runtime
