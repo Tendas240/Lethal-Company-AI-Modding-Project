@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "capture_workflow": "Capture C3 owner matching assets",
+  "capture_run_id": 36605401727,
+  "capture_run_number": 3,
+  "capture_result": "success",
+  "source_head_sha": "e1da66441aae458366ad4b71e4cc90a6319cb235",
+  "artifacts": {
+    "Piggy-LC_Office": {
+      "artifact_id": 11051041133,
+      "artifact_digest": "sha256:a2d234eb1a26f7f3087e0fe578fa1deca605fae8538814ddf6cc669620fddc83",
+      "captured_json_sha256": "44fdc39412b539a256291272fecf649ef4a838dea05cfb9d28f96dc0c01fea2c",
+      "preserved_path": "SourceEvidence/UniversalInteriorViability/PhaseC3OwnerMatching/PIGGY_LC_OFFICE_CAPTURE.json",
+      "preserved_git_blob_sha": "e4f58d85ac329e36c3f666848661788ab7076aa2"
+    },
+    "BLB_Thunderstore_Mods_LOL-Lead_Interiors": {
+      "artifact_id": 11050304691,
+      "artifact_digest": "sha256:d86c8a4116e907c7218f6e17654bb8b06681c0d11c251d6ca3bf6887d1e8be52",
+      "captured_json_sha256": "f1f07f5201e8ffc3b8eac429b0a63be023b5c3790f918624cdfc68241fa9a503",
+      "preserved_path": "SourceEvidence/UniversalInteriorViability/PhaseC3OwnerMatching/LEAD_INTERIORS_CAPTURE.json",
+      "preserved_git_blob_sha": "e90863106c875f43e1e1bb58da3a135ecd1f7175"
+    }
+  },
+  "qualification": "Preserved JSON is a formatting-normalized repository copy of the exact serialized values emitted by the cited successful artifacts. PACKAGE_LOCK.json independently pins the source ZIP and UnityFS member bytes. No applicability classification or lifecycle reconciliation is asserted here."
+}

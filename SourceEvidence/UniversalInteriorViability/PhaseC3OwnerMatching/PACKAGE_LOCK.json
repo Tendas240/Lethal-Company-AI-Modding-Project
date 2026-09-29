@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "authority": {
+    "Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md": "80f7b57c09defa48ab99444dfd8d0e1091fa32781e3dc5e44df225d440471fe0",
+    "ProfileSources/S1.42AK/export.r2x": "19935c1afc98de1562fda8b299d7d23d09c3555eac88f9de7992eb3d6e2b46b8"
+  },
+  "provenance": {
+    "workflow": "Capture C3 owner matching assets",
+    "run_id": 36604918680,
+    "source_head_sha": "493409145826b845e5ab41dd4fb835ff39c992a5",
+    "qualification": "Exact-version Thunderstore acquisition through the reviewed C3F7 static path. Pins were recorded before any owner matching asset clearance."
+  },
+  "packages": {
+    "Piggy-LC_Office": {
+      "package": "Piggy-LC_Office",
+      "version": "2.3.4",
+      "source_url": "https://gcdn.thunderstore.io/live/repository/packages/Piggy-LC_Office-2.3.4.zip",
+      "flows": [
+        "OfficeDungeonFlow"
+      ],
+      "zip_bytes": 30148463,
+      "zip_sha256": "5d3b22079953ddf010a31cedb805ace04a780dd378e8f3f3f3d64feacc850d93",
+      "unityfs_members": [
+        {
+          "member": "lcoffice",
+          "bytes": 30051686,
+          "sha256": "6f8aaf26c1b27bd8e644765c0ea462a4bc7c23f137051f38bdac199454501691",
+          "unityfs": true
+        }
+      ],
+      "archive_members": [
+        {
+          "member": "CHANGELOG.md",
+          "bytes": 28239,
+          "sha256": "32ace392bea389049dd908896447ebcee52285964f4dda55828146715d56f9ec",
+          "unityfs": false
+        },
+        {
+          "member": "LCOffice.dll",
+          "bytes": 46080,
+          "sha256": "d37eb3f7092ba9a53e63c5d34b8f6ec66a8861e033e4198e6f89450e71137db2",
+          "unityfs": false
+        },
+        {
+          "member": "README.md",
+          "bytes": 2083,
+          "sha256": "d0bfd654fc9be9b64a9dd27d1180eef080e3ca201a415225b3fe3bd812695149",
+          "unityfs": false
+        },
+        {
+          "member": "icon.png",
+          "bytes": 55171,
+          "sha256": "800b5aa26429ba324c472235f377d1a4e87eef290e6faef279ae628ab0a0d257",
+          "unityfs": false
+        },
+        {
+          "member": "lcoffice",
+          "bytes": 30051686,
+          "sha256": "6f8aaf26c1b27bd8e644765c0ea462a4bc7c23f137051f38bdac199454501691",
+          "unityfs": true
+        },
+        {
+          "member": "manifest.json",
+          "bytes": 373,
+          "sha256": "13b356ba7d3d4a98eb36c9d4306fb002aa423e03527385797fbafc4b12e604af",
+          "unityfs": false
+        }
+      ]
+    },
+    "BLB_Thunderstore_Mods_LOL-Lead_Interiors": {
+      "package": "BLB_Thunderstore_Mods_LOL-Lead_Interiors",
+      "version": "0.0.7",
+      "source_url": "https://gcdn.thunderstore.io/live/repository/packages/BLB_Thunderstore_Mods_LOL-Lead_Interiors-0.0.7.zip",
+      "flows": [
+        "BellevilleApp",
+        "CrimsonKeep"
+      ],
+      "zip_bytes": 208890187,
+      "zip_sha256": "0e605a7280b3c14d52049c5b42c7a85d3001dc98a7fa61f5822364686d13e16b",
+      "unityfs_members": [
+        {
+          "member": "BepInEx/plugins/boomsinterior.lethalbundle",
+          "bytes": 208728335,
+          "sha256": "bf3ddb70d42084c5847a1038abffb759956fe3e9cb4cfc1bbb657b746a14895b",
+          "unityfs": true
+        }
+      ],
+      "archive_members": [
+        {
+          "member": "BepInEx/plugins/boomsinterior.lethalbundle",
+          "bytes": 208728335,
+          "sha256": "bf3ddb70d42084c5847a1038abffb759956fe3e9cb4cfc1bbb657b746a14895b",
+          "unityfs": true
+        },
+        {
+          "member": "CHANGELOG.md",
+          "bytes": 3242,
+          "sha256": "ebb7dc41d261735de03a17b3d17c57baf5d3ef58c2f8d3b6d7cec12f7d7cfb2d",
+          "unityfs": false
+        },
+        {
+          "member": "README.md",
+          "bytes": 2483,
+          "sha256": "2a2581f155d30a3ae058fa4785a4c16f68d6e3ddadc2d2400dde5bd64aa88918",
+          "unityfs": false
+        },
+        {
+          "member": "icon.png",
+          "bytes": 94079,
+          "sha256": "6ceb75eef25ad36cd8cc273c57a142c66136a64866d7d015f0c2ece3894265ac",
+          "unityfs": false
+        },
+        {
+          "member": "manifest.json",
+          "bytes": 456,
+          "sha256": "0e0237cf5a648868023b2e9a82eb7eb9077596450d9815ff67fb38fac34b4a62",
+          "unityfs": false
+        }
+      ]
+    }
+  }
+}
