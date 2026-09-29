@@ -1,6 +1,6 @@
 # Universal Interior Viability / Equal Availability Investigation Plan
 
-**Status:** SELECTED / PHASE A + B1 + B2 + B3 + C1 + C2 COMPLETE / PHASE C3 EXTERNAL-MOON ANALYSIS IN PROGRESS / EXISTING PAIR EVIDENCE EXHAUSTED / OWNER-RULE APPLICABILITY RECONCILIATION NEXT / NOT IMPLEMENTED / NOT ARMED
+**Status:** SELECTED / PHASE A + B1 + B2 + B3 + C1 + C2 COMPLETE / PHASE C3 EXTERNAL OWNER-RULE APPLICABILITY CLOSED / PAIR COMPATIBILITY-SAFETY EVIDENCE GATED / NOT IMPLEMENTED / NOT ARMED
 **Date:** 2026-09-19  
 **Accepted baseline:** S1.42AK — `Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z` / `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`  
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`  
@@ -169,18 +169,31 @@ Shatteredrooms × Experimentation and × Embrion remain explicit author exclusio
 
 Resolve the two LLL-`External` target-moon rows before designing a universal override:
 
-- Black Mesa moon — 53/53 `NOT_YET_PROVEN`;
-- Oxyde — 53/53 `NOT_YET_PROVEN`.
+- Black Mesa moon — historical Phase-B3 row: 53/53 `NOT_YET_PROVEN`;
+- Oxyde — historical Phase-B3 row: 53/53 `NOT_YET_PROVEN`.
 
-Establish each External level's actual Dawn/LLL tags, entrance/fire-exit topology and owner matching semantics. Determine which existing interior rules can legitimately apply without duplicate registration or unsupported assumptions about entrance topology.
+The Phase-B3 rows remain an unchanged historical snapshot. Phase-C3 evidence may establish current applicability and pair-specific compatibility without retroactively rewriting those B3 cells.
 
-### Phase C3 current evidence-exhaustion checkpoint
+### Phase C3 existing-evidence checkpoint
 
-`Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md` records that the already-ingested concrete External-moon pair evidence is exhausted: Black Mesa Greenhouse, Slaughterhouse, ExpandedFacility, Decrepit store / StoreFlow and Substation have dedicated Phase-C reconciliations, while no additional concrete pair can be resolved without new evidence. The passive regular BMDSFIX1 Deep Sewers gameplay gate is not converted into a dedicated reroll target.
+`Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md` records that the already-ingested concrete External-moon pair evidence is exhausted: Black Mesa Greenhouse, Slaughterhouse, ExpandedFacility, Decrepit store / StoreFlow and Substation have dedicated Phase-C reconciliations, while no additional concrete pair can be resolved from already-ingested evidence without acquiring new evidence. The passive regular BMDSFIX1 Deep Sewers gameplay gate is not converted into a dedicated reroll target.
 
-Oxyde remains bounded by C3E3H: 23 selection-supported metadata matches exist, but exact V81 ordinary generation is skipped while `spawnEnemiesAndScrap=false`, with no inspected independent dungeon/entrance-construction path established. Selection support is not executable ordinary pair proof.
+### Phase C3 owner-rule applicability closure
 
-The next bounded C3 task is therefore owner-rule applicability classification across the 53 interiors using existing source/owner/config evidence only. This step decides which current rules legitimately target Black Mesa External semantics and whether C3 can close with an explicit Oxyde exception or needs a narrowly defined additional evidence requirement. No runtime/build or universal override is authorized by this checkpoint.
+**CLOSED.** Authority: `Current/206_S1.42AK_EXTERNAL_OWNER_RULE_APPLICABILITY_CLOSURE_RECONCILIATION.md`.
+
+Repository-native source/owner/config evidence closes the separate External owner-rule applicability / External semantics gate without another evidence-acquisition run:
+
+- Black Mesa current applicability: **31 MATCH / 22 NON-MATCH / 0 UNRESOLVED**;
+- `MATCH` means current owner/matching semantics support selection/availability on Black Mesa; it is not a runtime-compatibility pass;
+- `NON-MATCH` means no current positive owner/matching rule targets Black Mesa; it is not a technical-incompatibility finding;
+- S1.42AB creates neither partition; it only normalizes already-positive non-100 rarities after viability filtering;
+- no duplicate Black Mesa registration is needed or authorized;
+- Oxyde retains 23 positive selection/metadata matches, but ordinary executable dungeon generation remains outside current proved applicability while `spawnEnemiesAndScrap=false` keeps exact V81 on the early-return path and no inspected independent ordinary dungeon/entrance-construction path is established.
+
+The historical Phase-B3 matrix remains unchanged at 662 `VIABLE_EQUAL_100`, 14 `AUTHOR_OR_OWNER_HARD_BLOCK`, 0 `CONFIG_GAP`, 0 `KNOWN_TECHNICAL_RESTRICTION`, and 914 `NOT_YET_PROVEN`.
+
+This closure removes the owner-rule uncertainty only. It does not authorize a universal availability override and does not extrapolate the existing Black Mesa pair-specific evidence to all 31 current matches.
 
 ## Phase D — candidate rule
 
@@ -211,17 +224,18 @@ Black Mesa **availability/registration ownership** is in scope only as required 
 
 ## Decision gate
 
-No build or runtime test is armed at scope selection.
+No gameplay build or new runtime test is armed by the C3 owner-rule closure.
 
-The next repository decision must be based on the completed owner/flow/moon matrix:
+Before authoring a universal availability candidate or newly enabling any absent pairing:
 
-1. if all currently absent pairings are simple supported configuration gaps, design the narrow configuration candidate;
-2. if hard blocks exist, research/inspect their owning implementation and target only those whose safety can be proven;
-3. if a restriction is technically necessary, preserve it as an explicit documented exception rather than masking it with duplicate registration or unsafe patches;
-4. if current configuration already provides universal safe availability for a flow, leave it unchanged.
+1. identify the exact pairing/restriction to be changed;
+2. satisfy the pair-specific generation, entrance/topology, traversal, routing/NavMesh and duplicate-registration safety obligations above;
+3. preserve the explicit Oxyde ordinary-generation exception unless stronger architecture evidence supersedes it;
+4. preserve Shatteredrooms × Experimentation/Embrion until their safety is established;
+5. if a restriction is technically necessary, retain it explicitly rather than masking it with duplicate registration or an unsafe override.
 
 ## Exact next action
 
-Perform a bounded repository-native Phase-C3 External owner-rule applicability reconciliation using existing source/owner/config evidence only. Across the 53 selectable interiors, classify which current owner/config matching mechanisms can legitimately target Black Mesa's External semantics without duplicate registration, and separately preserve Oxyde's proven ordinary-generation boundary rather than treating its 23 selection-supported metadata matches as executable pairings. Determine whether C3 can close with an explicit Oxyde exception plus a Black Mesa-supported applicability set, or whether a narrowly defined additional evidence requirement remains. Do not create or release a runtime/build in that source/metadata reconciliation, do not force DeepSewersFlow, and do not implement a universal availability override yet.
+Use the completed owner-rule applicability closure only as selection-layer input to the remaining compatibility/safety work. Before authoring a universal availability candidate or enabling a previously absent pairing, identify that exact pairing/restriction and satisfy this plan's generation, entrance/topology, traversal, routing/NavMesh and duplicate-registration safety obligations. Preserve the unchanged historical B3 matrix, explicit Oxyde ordinary-generation exception, Shatteredrooms exclusions, and the passive/outstanding/unwaived regular BMDSFIX1 Black Mesa x `DeepSewersFlow` gate.
 
-No universal override, gameplay build or runtime test is authorized by this step.
+No universal override, gameplay build or runtime test is authorized by the owner-rule closure itself.
