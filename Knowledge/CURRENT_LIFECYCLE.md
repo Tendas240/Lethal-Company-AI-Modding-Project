@@ -5,7 +5,7 @@
 **Authority:** current lifecycle router; detailed decisions remain in build-specific evidence  
 **Canonical-For:** accepted baseline, active candidate, pending test/build state, exact next project action  
 **Evidence:** `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `RuntimeEvidence/S1.42AK/20260918T172838Z/RUNTIME_ACCEPTANCE_DECISION.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `RuntimeEvidence/S1.42AK-SCRAPDIAG1/20260918T200602Z/`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`, `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`, `Current/171_S1.42AK_BMGHDIAG1_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL.md`, `Current/173_S1.42AK_BMGHDIAG2_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL_AND_DEEP_SEWERS_INCIDENT.md`, `RuntimeEvidence/S1.42AK-BMGHDIAG1/20260923T165840Z/`, `RuntimeEvidence/S1.42AK-BMGHDIAG2/20260924T124542Z/`, `SourceEvidence/UniversalInteriorViability/PhaseC3F18/FINDINGS.md`, `SourceEvidence/UniversalInteriorViability/PhaseC3F18/IMPLEMENTATION_FINDINGS.md`, `BuildSpecs/S1.42AK-BMGHDIAG2_PLAN.md`, `Current/181_S1.42AK_BMDSFIX1_DIAG1_PATH_LENGTH_BLOCK_AND_DIAG1PATH1_SOURCE_STATIC.md`, `Current/182_S1.42AK_BMDSFIX1_DIAG1PATH1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md`, `Current/184_S1.42AK_BMDSFIX1_DIAG1PATH1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md`, `BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`, `ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/PROFILE_INDEX_RESULT.json`, `Current/186_S1.42AK_BMDSFIX1_DIAG1PATH1_RUNTIME_SUPPORTING_PASS.md`, `RuntimeEvidence/S1.42AK-BMDSFIX1-DIAG1PATH1/20260925T085104Z/`, `Current/187_S1.42AK_BMDSFIX1_REGULAR_EXPANDED_FACILITY_NON_TARGET_CONTROL.md`, `RuntimeEvidence/S1.42AK-BMDSFIX1/20260925T092937Z/`, `Current/188_S1.42AK_BMDSFIX1_REGULAR_SLAUGHTERHOUSE_NON_TARGET_AND_SEED_ANALYSIS_PIVOT.md`, `RuntimeEvidence/S1.42AK-BMDSFIX1/20260925T102825Z/`, `Current/189_S1.42AK_BMDSFIX1_SEED_SELECTION_ANALYSIS.md`, `Current/190_S1.42AK_BMDSFIX1_INSTALLED_V81_ROUNDMANAGER_SEED_CONTROL_RECONCILIATION.md`, `SourceEvidence/VanillaV81/RoundManagerSeedControl/20260925T175821Z-a1992708/MANIFEST.json`, `Current/191_S1.42AK_BMDSFIX1_INSTALLED_V81_STARTOFROUND_SEED_CONTROL_RECONCILIATION.md`, `SourceEvidence/VanillaV81/StartOfRoundSeedControl/20260926T154610Z-0b7be88d/MANIFEST.json`, `Current/192_S1.42AK_BMDSFIX1_INSTALLED_NORMAL_STACK_SEED_CONTROL_AVAILABILITY_RECONCILIATION.md`, `Current/193_S1.42AK_BMGHDIAG2_RUNTIME_IDENTITY_ROOT_CAUSE_RECONCILIATION.md`, `BuildSpecs/S1.42AK-BMGHDIAG3_PLAN.md`, `SourceEvidence/UniversalInteriorViability/PhaseC3F18_BMGHDIAG3/IMPLEMENTATION_FINDINGS.md`, `Current/194_S1.42AK_BMGHDIAG3_SOURCE_STATIC_INTEGRATION_RECONCILIATION.md`, `Current/195_S1.42AK_BMGHDIAG3_INACTIVE_REVIEW_BUILD_CHECKPOINT.md`, `BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json`, `Current/196_S1.42AK_BMGHDIAG3_EXACT_BYTE_PUBLICATION_CHECKPOINT.md`, `BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`, `Current/197_S1.42AK_BMGHDIAG3_PROFILE_INDEX_RECONCILIATION.md`, `ProfileSources/S1.42AK-BMGHDIAG3/PROFILE_INDEX_RESULT.json`
-**Last-Validated:** 2026-09-27
+**Last-Validated:** 2026-09-29
 
 ## Accepted gameplay baseline
 
@@ -182,24 +182,36 @@ This is a bounded exposed-surface/profile review, not a claim that every instruc
 
 Do not add a seed setter, Harmony/memory writer, deterministic dungeon selector, viable-pool/weight mutation or pre-selection `LevelRandom` consumption to manufacture the target. Dedicated blind Black Mesa rerolls solely to hit Deep Sewers remain disallowed. The exact regular BMDSFIX1 Black Mesa x `DeepSewersFlow` gameplay qualification remains outstanding and unwaived but is now passive rather than actively released. If a future unrelated normal exact-byte BMDSFIX1 session naturally selects `DeepSewersFlow`, ingest that evidence against the existing gate.
 
+## Phase C3 External existing-evidence exhaustion
+
+`Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md` closes the post-Substation existing-evidence inventory.
+
+The already-ingested Black Mesa pair set available without a new run is now exhausted after dedicated reconciliations for Greenhouse, Slaughterhouse, ExpandedFacility, Decrepit store / StoreFlow and Substation. This does not generalize those pair results to unseen interiors. The separate regular exact-byte BMDSFIX1 Black Mesa x `DeepSewersFlow` gameplay gate remains passive, outstanding and unwaived and is not converted into an active reroll target.
+
+Oxyde remains governed by the bounded C3E3H source/owner result: 23 selection-supported metadata pairings exist, but `spawnEnemiesAndScrap=false` causes exact V81 to return before ordinary dungeon generation and no inspected independent dungeon/entrance-construction path is established. Those metadata matches are therefore not executable ordinary pair proof.
+
+No additional concrete External-moon pair can currently be reconciled from already-ingested evidence alone. The next bounded C3 step is source/metadata-only External owner-rule applicability classification across the 53 interiors; no runtime/build is released by this evidence-exhaustion decision.
+
 ## Live execution state
 
 - Accepted baseline: **S1.42AK**.
 - Latest built artifact / active gameplay candidate: **S1.42AK-BMDSFIX1 — not accepted**.
 - Runtime/evidence pointer: **S1.42AK-BMDSFIX1**.
-- BMGHDIAG3: **Black Mesa x Greenhouse runtime-compatibility PASS / evidence ingested / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active**.
-- Black Mesa x Greenhouse Phase-C status: **pair-specific compatibility proven**; the Phase-B3 availability matrix remains unchanged as its historical snapshot.
-- Runtime test outstanding: **yes — solely the passive/unwaived regular BMDSFIX1 Black Mesa x `DeepSewersFlow` gameplay qualification**. The BMGHDIAG3 diagnostic is complete; no BMGHDIAG3 rerun and no dedicated BMDSFIX1 Deep Sewers reroll is released.
+- BMGHDIAG3: **Black Mesa x Greenhouse runtime-compatibility PASS / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active**.
+- Black Mesa pair-specific Phase-C evidence reconciled from existing evidence: **Greenhouse, Slaughterhouse, ExpandedFacility, Decrepit store / StoreFlow, Substation**; no additional already-ingested Black Mesa pair is currently available for the same evidence-only reconciliation path.
+- Oxyde: **23 selection-supported metadata pairings, but ordinary executable interior generation is not proven applicable under the current inspected architecture; no independent alternate construction path is established**.
+- Runtime test outstanding: **yes — solely the passive/unwaived regular BMDSFIX1 Black Mesa x `DeepSewersFlow` gameplay qualification**. No dedicated reroll is released.
 - BMDSFIX1 regular Black Mesa x `DeepSewersFlow` gameplay qualification: **passive / outstanding / unwaived**; unrelated natural exact-byte target evidence may still satisfy the existing gate if later encountered and ingested.
 - DIAG1PATH1: **supporting Deep Sewers diagnostic PASS / NEVER ACCEPT / not runtime-active**.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`, guarding exact BMDSFIX1 base bytes.
+- Phase-B3 remains its unchanged historical 30x53 availability/effective-weight snapshot.
 - The separate Black Mesa/Pikmin routing-recovery scope remains closed.
 
 ## Exact next project action
 
-Continue the repository-native Phase C3 External target-moon semantics/topology analysis from the completed Black Mesa x Greenhouse runtime-compatibility PASS. Preserve the unchanged Phase-B3 availability matrix, accepted S1.42AK, and unaccepted S1.42AK-BMDSFIX1. No new BMGHDIAG3 run is authorized, and no dedicated BMDSFIX1 Black Mesa reroll is released: its regular exact-byte Black Mesa x DeepSewersFlow qualification remains passive, outstanding and unwaived. If unrelated normal exact-byte BMDSFIX1 evidence naturally selects DeepSewersFlow, ingest it against the existing gate. Do not implement a universal availability override until the remaining Phase C3 external-moon obligations are resolved.
+Perform a bounded repository-native Phase-C3 External owner-rule applicability reconciliation using existing source/owner/config evidence only. Across the 53 selectable interiors, classify which current owner/config matching mechanisms can legitimately target Black Mesa's External semantics without duplicate registration, and separately preserve Oxyde's proven ordinary-generation boundary rather than treating its 23 selection-supported metadata matches as executable pairings. Determine whether C3 can close with an explicit Oxyde exception plus a Black Mesa-supported applicability set, or whether a narrowly defined additional evidence requirement remains. Do not create or release a runtime/build in that source/metadata reconciliation, do not force DeepSewersFlow, and do not implement a universal availability override yet.
 
-No Gale replacement/import command or runtime-log uploader is released by this reconciliation because the only outstanding runtime gate is the passive BMDSFIX1 Deep Sewers qualification and no dedicated run is currently released.
+No Gale replacement/import command or runtime-log uploader is released because this reconciliation authorizes neither a new runtime test nor a finished-log upload.
 
 ## Permanent Gale workflow
 

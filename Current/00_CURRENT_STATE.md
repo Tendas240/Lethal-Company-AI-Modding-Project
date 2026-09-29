@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-28  
+**Updated:** 2026-09-29  
 **Game:** Lethal Company V81
 
 ## Project execution policy
