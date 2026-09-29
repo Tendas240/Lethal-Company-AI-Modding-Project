@@ -7,7 +7,6 @@ It never loads Unity, the game, or managed mod code. A first invocation with
 refused until those bytes are pinned in PACKAGE_LOCK.json.
 """
 import argparse
-import hashlib
 import importlib.metadata
 import json
 from pathlib import Path
@@ -61,8 +60,7 @@ def resolved_pointer_fields(idx, owner):
             result.append(entry)
             continue
         if target is not None:
-            rec = idx.objects[target]
-            target_tree = rec.get("tree", {})
+            target_tree = idx.objects[target].get("tree", {})
             entry["resolved"] = {
                 **idx.descriptor(target),
                 "name": target_tree.get("m_Name"),
@@ -74,7 +72,7 @@ def resolved_pointer_fields(idx, owner):
 def exact_flow(idx, flow_name):
     matches = [
         key for key in idx.scripts
-        if c7.class_is(key, "DungeonFlow", "DunGen.Graph", "DunGen.dll")
+        if idx.class_is(key, "DungeonFlow", "DunGen.Graph", "DunGen.dll")
         and idx.objects[key]["tree"].get("m_Name") == flow_name
     ]
     if len(matches) != 1:
