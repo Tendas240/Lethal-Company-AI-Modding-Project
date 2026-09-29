@@ -3,7 +3,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** accepted interior-selection architecture and deferred compatibility exceptions  
 **Canonical-For:** `interiors_and_lll`  
-**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`, `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`, `Current/169_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C2_OWNER_HARD_BLOCK_REASON_ANALYSIS.md`  
+**Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`, `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`, `Current/169_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C2_OWNER_HARD_BLOCK_REASON_ANALYSIS.md`, `Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md`, `Current/206_S1.42AK_EXTERNAL_OWNER_RULE_APPLICABILITY_CLOSURE_RECONCILIATION.md`  
 **Related:** `ProfileSources/S1.42AG/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
 **Last-Validated:** 2026-09-29
 
@@ -162,7 +162,7 @@ The full 30×53 matrix is now materialized at **1,590 cells**:
 - 0 `KNOWN_TECHNICAL_RESTRICTION`;
 - 914 `NOT_YET_PROVEN`.
 
-The 22 direct LLL universal-tag flows and Black Mesa's native Vanilla/Custom rule establish 23 equal-weight interiors on each Vanilla/Custom target moon. Offense remains the only fully observed row. Both External target moons remain entirely unproven, and owner-controlled cells outside exact evidence remain unproven. This matrix is availability evidence only; generation/traversal compatibility still belongs to Phase C.
+The 22 direct LLL universal-tag flows and Black Mesa's native Vanilla/Custom rule establish 23 equal-weight interiors on each Vanilla/Custom target moon. Offense remains the only fully observed row. Both External target moons remain entirely unproven in the historical Phase-B3 snapshot, and owner-controlled cells outside exact evidence remain unproven. This matrix is availability evidence only; generation/traversal compatibility still belongs to Phase C.
 
 Phase-C1 authority: `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`.
 
@@ -183,17 +183,23 @@ Junkrooms/Shatteredrooms CullFactory incompatibility remains a separate known te
 
 Do not interpret broad `Vanilla:100,Custom:100` tag injection as automatic proof that every flow is safe on every moon. Owner hard blocks, non-LLL registrations and technical restrictions remain authoritative until specifically understood and tested. Shatteredrooms' Experimentation/Embrion restriction therefore remains in place during the analysis phase.
 
-No build or runtime test is currently authorized by this selection. Phases C1 and C2 are complete. Phase C3 has now exhausted the already-ingested concrete External-moon pair evidence available without a new run: Black Mesa has dedicated pair reconciliations for Greenhouse, Slaughterhouse, ExpandedFacility, Decrepit store / StoreFlow and Substation, while Oxyde remains bounded by C3E3H's ordinary-generation applicability result. `Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md` records that no further concrete pair can be resolved from the existing evidence set. The next bounded action is an External owner-rule applicability reconciliation across all 53 selectable interiors using existing source/owner/config evidence only; no runtime/build is released by that step.
+Phase C3 has now exhausted the already-ingested concrete External-moon pair evidence available without a new run and separately closed the External owner-rule applicability / External semantics gate from existing source/owner/config evidence. No build or runtime test is authorized by that closure.
 
-## Phase C3 current External evidence boundary
+## Phase C3 External owner-rule applicability closure
 
-`Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md` is the current Phase-C3 inventory boundary.
+`Current/206_S1.42AK_EXTERNAL_OWNER_RULE_APPLICABILITY_CLOSURE_RECONCILIATION.md` is the current Phase-C3 applicability authority.
 
-Black Mesa's already-ingested concrete pair evidence is exhausted after Greenhouse, Slaughterhouse, ExpandedFacility, Decrepit store / StoreFlow and Substation. Only Greenhouse has the stronger full all-four-ID bidirectional traversal plus visual geometry qualification; the other pair records retain their narrower topology/traversal proof boundaries. None is generalized to all 53 interiors.
+Black Mesa current applicability is **31 MATCH / 22 NON-MATCH / 0 UNRESOLVED**. `MATCH` means the current owner/matching semantics support the interior on Black Mesa at the selection/availability layer; it is not a runtime-compatibility pass. `NON-MATCH` means the current positive owner/matching rule does not target Black Mesa; it is not a technical-incompatibility finding or a permanent prohibition.
 
-Oxyde remains asymmetric: C3E3H preserves 23 selection-supported metadata matches but exact V81 ordinary generation is skipped while `spawnEnemiesAndScrap=false`, and no independent inspected dungeon/entrance-construction path is established. Selection support is therefore not executable ordinary pair proof.
+The accepted S1.42AB normalizer creates neither the 31 matches nor the 22 non-matches. It only normalizes already-positive non-100 rarities after viability filtering. No duplicate Black Mesa registration is needed or authorized.
 
-The next C3 task is source/metadata-only owner-rule applicability classification for the External rows. It must identify which existing owner/config rules legitimately target Black Mesa External semantics and keep Oxyde's generation boundary explicit. No new runtime, build or universal availability override is authorized by this checkpoint.
+The historical Phase-B3 matrix remains unchanged at **662 `VIABLE_EQUAL_100`, 14 `AUTHOR_OR_OWNER_HARD_BLOCK`, 0 `CONFIG_GAP`, 0 `KNOWN_TECHNICAL_RESTRICTION`, 914 `NOT_YET_PROVEN`**. The Black Mesa 31/22/0 result is a Phase-C3 current-applicability finding, not a retroactive rewrite of the historical B3 External row.
+
+`Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md` remains the concrete pair-evidence boundary. Black Mesa's already-ingested pair set is exhausted after Greenhouse, Slaughterhouse, ExpandedFacility, Decrepit store / StoreFlow and Substation. Only Greenhouse has the stronger full all-four-ID bidirectional traversal plus visual geometry qualification; the other pair records retain their narrower topology/traversal proof boundaries. None is generalized to all 31 current matches.
+
+Oxyde remains asymmetric: C3E3H preserves 23 positive selection/metadata matches, but exact V81 ordinary generation is skipped while `spawnEnemiesAndScrap=false`, and no independent inspected ordinary dungeon/entrance-construction path is established. Selection support is therefore not executable ordinary pair proof under the current architecture.
+
+The next compatibility step is pair-specific, not a universal override. Before authoring a candidate that newly enables an absent pairing, identify that exact pairing/restriction and satisfy the investigation plan's generation, entrance/topology, traversal, routing/NavMesh and duplicate-registration safety obligations. Preserve Shatteredrooms × Experimentation/Embrion until their safety is established, preserve the Oxyde ordinary-generation exception, and keep the regular BMDSFIX1 Black Mesa x `DeepSewersFlow` qualification passive/outstanding/unwaived.
 
 ## Shatteredrooms restriction
 

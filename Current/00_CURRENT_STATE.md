@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Continue the repository-native Phase C3 External target-moon semantics/topology analysis from the completed Black Mesa x Greenhouse runtime-compatibility PASS. Preserve the unchanged Phase-B3 availability matrix, accepted S1.42AK, and unaccepted S1.42AK-BMDSFIX1. No new BMGHDIAG3 run is authorized, and no dedicated BMDSFIX1 Black Mesa reroll is released: its regular exact-byte Black Mesa x DeepSewersFlow qualification remains passive, outstanding and unwaived. If unrelated normal exact-byte BMDSFIX1 evidence naturally selects DeepSewersFlow, ingest it against the existing gate. Do not implement a universal availability override until the remaining Phase C3 external-moon obligations are resolved.
+Use the completed owner-rule applicability closure only as selection-layer input to the remaining compatibility/safety work. Before authoring a universal availability candidate or enabling a previously absent pairing, identify that exact pairing/restriction and satisfy the investigation plan's generation, entrance/topology, traversal, routing/NavMesh and duplicate-registration safety obligations. Preserve the unchanged historical B3 matrix, explicit Oxyde ordinary-generation exception, Shatteredrooms exclusions, and the passive/outstanding/unwaived regular BMDSFIX1 Black Mesa x DeepSewersFlow gate. Do not create or release a runtime/build merely from the owner-rule closure and do not implement a universal availability override yet.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
