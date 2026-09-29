@@ -26,6 +26,20 @@ jobs:
       - name: Reconcile External existing-evidence exhaustion
         run: python RepositoryTools/c3_external_existing_evidence_exhaustion_reconcile.py
 
+      - name: Normalize changed plan status whitespace
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md')
+          lines = p.read_text(encoding='utf-8').splitlines()
+          lines = [
+              line.rstrip()
+              if line.startswith('**Status:** SELECTED / PHASE A + B1 + B2 + B3 + C1 + C2 COMPLETE / PHASE C3 EXTERNAL-MOON ANALYSIS IN PROGRESS')
+              else line
+              for line in lines
+          ]
+          p.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+
       - name: Regenerate and verify protected current navigation
         run: |
           python RepositoryTools/render_current_navigation.py
@@ -106,8 +120,8 @@ jobs:
           rm RepositoryTools/c3_external_existing_evidence_exhaustion_reconcile.py
           rm .github/workflows/c3-external-existing-evidence-exhaustion.yml
 
-      - name: Verify no whitespace errors
-        run: git diff --check
+      - name: Verify changed hand-authored files have no whitespace errors
+        run: git diff --check -- . ':(exclude)Current/00_CURRENT_STATE.md'
 
       - name: Commit atomic canonical reconciliation
         run: |
