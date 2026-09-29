@@ -1,6 +1,6 @@
 {
   "schema_version": 8,
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "status": "CURRENT_CANONICAL_MACHINE_STATE",
   "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
   "game": "Lethal Company V81",
@@ -61,13 +61,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C3F18_BLACK_MESA_GREENHOUSE_RUNTIME_COMPATIBILITY_PASS_BMDSFIX1_TARGET_QUALIFICATION_PASSIVE_OUTSTANDING",
+    "status": "PHASE_C3_EXTERNAL_EXISTING_EVIDENCE_EXHAUSTED_OWNER_RULE_APPLICABILITY_RECONCILIATION_NEXT_BMDSFIX1_TARGET_PASSIVE_OUTSTANDING",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "S1.42AK-BMGHDIAG3 completed its bounded Black Mesa x Greenhouse diagnostic contract using exact published/indexed profile SHA-256 7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace and diagnostic DLL SHA-256 d40966c23ac5eb17249d18be7e544a2a0e8ede52c9235abaac475d2372aa1352, directly over accepted S1.42AK. Ingested evidence at RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/ has raw LogOutput.log SHA-256 e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8. The diagnostic armed without invalidating refusal, deterministically selected Black Mesa Greenhouse / GreenhouseFlow from the normalized 31-flow viable pool at rarity 100, completed generation, reported TOPOLOGY_OK for entrance IDs 0,1,2,3 with four opposite-side pairs, and the second run recorded direct player traversal of all four IDs in both directions with final full coverage. The user independently reported successful visual/player use of the main entrance and all three fire exits in both directions in run 2, with no severe clipping, inaccessible required entrance geometry, or severe persistent routing/NavMesh problem observed. RuntimeNavMeshBuilder emitted Error-severity source-mesh read/validation messages during Greenhouse generation; these are retained as a non-blocking observation because generation completed, all required entrances were traversed, and no correlated severe/persistent target routing failure was observed. This is a Black Mesa x Greenhouse runtime-compatibility PASS only. BMGHDIAG3 remains DIAGNOSTIC ONLY / NEVER ACCEPT. Accepted S1.42AK remains unchanged. S1.42AK-BMDSFIX1 remains the separate active gameplay candidate / not accepted, and its regular Black Mesa x DeepSewersFlow gate remains passive, outstanding and unwaived.",
-    "analysis_contract": "Treat Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md plus exact evidence RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/ as pair-specific Phase-C compatibility proof for Black Mesa x Greenhouse. Never promote BMGHDIAG3 to gameplay, never accept S1.42AK-BMDSFIX1 from this evidence, and never use the Greenhouse result to satisfy or waive the regular exact-byte S1.42AK-BMDSFIX1 Black Mesa x DeepSewersFlow gate. Preserve the Phase-B3 matrix as its historical availability/effective-weight snapshot rather than rewriting it from this compatibility run. RuntimeNavMeshBuilder Error-severity source-mesh messages remain an explicit non-blocking observation unless stronger target-correlated user-facing evidence emerges. Continue Phase C3 narrowly and keep the separate Black Mesa/Pikmin routing-recovery scope closed.",
-    "next_action": "Continue the repository-native Phase C3 External target-moon semantics/topology analysis from the completed Black Mesa x Greenhouse runtime-compatibility PASS. Preserve the unchanged Phase-B3 availability matrix, accepted S1.42AK, and unaccepted S1.42AK-BMDSFIX1. No new BMGHDIAG3 run is authorized, and no dedicated BMDSFIX1 Black Mesa reroll is released: its regular exact-byte Black Mesa x DeepSewersFlow qualification remains passive, outstanding and unwaived. If unrelated normal exact-byte BMDSFIX1 evidence naturally selects DeepSewersFlow, ingest it against the existing gate. Do not implement a universal availability override until the remaining Phase C3 external-moon obligations are resolved.",
+    "finding": "Post-Greenhouse Phase-C3 reconciliation has now exhausted the already-ingested External-moon pair evidence that can be resolved without a new run. Black Mesa x Greenhouse is a full bounded pair-specific runtime-compatibility PASS; Black Mesa x Slaughterhouse, ExpandedFacility, Decrepit store/StoreFlow and Substation have dedicated generation/topology/materialization reconciliations from existing evidence, with traversal strength varying by pair. No additional already-ingested Black Mesa pair remains available for the same reconciliation path. The regular exact-byte S1.42AK-BMDSFIX1 Black Mesa x DeepSewersFlow gameplay gate remains passive, outstanding and unwaived and must not be forced by dedicated rerolls. For Oxyde, existing C3E3H source/owner evidence establishes 23 selection-supported pairings at the metadata layer but also preserves spawnEnemiesAndScrap=false, the exact V81 early return before ordinary GenerateNewFloor, no directly identified serialized entrance topology, and no inspected independent dungeon/entrance-construction path. Therefore no concrete Oxyde interior pair may be promoted from current evidence into an executable ordinary runtime pairing. The Phase-B3 matrix remains the unchanged historical availability/effective-weight snapshot. No new runtime, build or universal availability override is authorized by this reconciliation.",
+    "analysis_contract": "Treat Current/199, 200, 201, 202 and 204 as the completed Black Mesa pair-specific Phase-C evidence set currently available without a new run, and SourceEvidence/UniversalInteriorViability/PhaseC3E3H/FINDINGS.md as the bounded Oxyde ordinary-generation applicability authority. Do not infer unobserved Black Mesa pair compatibility from the five reconciled pairs, do not reinterpret Oxyde selection metadata as executable ordinary dungeon generation, and do not rewrite the historical Phase-B3 matrix from pair-specific Phase-C evidence. Keep S1.42AK-BMDSFIX1 unaccepted, keep its exact regular DeepSewersFlow gameplay gate passive/outstanding/unwaived, preserve the accepted S1.42AB InteriorWeightNormalization mechanism, avoid duplicate Black Mesa LLL registration, preserve Shatteredrooms exclusions, and keep the separate Black Mesa/Pikmin routing-recovery scope closed.",
+    "next_action": "Perform a bounded repository-native Phase-C3 External owner-rule applicability reconciliation using existing source/owner/config evidence only. Across the 53 selectable interiors, classify which current owner/config matching mechanisms can legitimately target Black Mesa's External semantics without duplicate registration, and separately preserve Oxyde's proven ordinary-generation boundary rather than treating its 23 selection-supported metadata matches as executable pairings. Determine whether C3 can close with an explicit Oxyde exception plus a Black Mesa-supported applicability set, or whether a narrowly defined additional evidence requirement remains. Do not create or release a runtime/build in that source/metadata reconciliation, do not force DeepSewersFlow, and do not implement a universal availability override yet.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before the owner/viability matrix identifies why any pairing is currently absent.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -179,7 +179,7 @@
       }
     },
     "phase_c": {
-      "status": "C3_IN_PROGRESS_BLACK_MESA_GREENHOUSE_RUNTIME_COMPATIBILITY_PASS",
+      "status": "C3_IN_PROGRESS_EXTERNAL_EXISTING_PAIR_EVIDENCE_EXHAUSTED_OWNER_RULE_APPLICABILITY_NEXT",
       "phase_c1_evidence": "Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md",
       "trusted_runtime_triage": {
         "traversed_generation_player_entry_exit": 15,
@@ -318,7 +318,22 @@
       "black_mesa_greenhouse_runtime_log_sha256": "e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8",
       "black_mesa_greenhouse_runtime_finding": "Exact BMGHDIAG3 diagnostic armed and selected Greenhouse at normalized rarity 100 from Black Mesa's 31-flow viable pool, generation completed, topology resolved IDs 0..3, and run 2 recorded bidirectional direct traversal for all four IDs. User observation confirms the exercised entrance geometry was accessible without severe clipping or persistent routing/NavMesh failure. RuntimeNavMeshBuilder Error-severity source-mesh messages are retained as a non-blocking observation for this gate.",
       "bmgdiag3_runtime_status": "RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT",
-      "bmgdiag3_runtime_decision": "Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md"
+      "bmgdiag3_runtime_decision": "Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md",
+      "external_existing_evidence_reconciliation": "Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md",
+      "external_existing_evidence_inventory_status": "EXHAUSTED_NO_NEXT_PAIR_RESOLVABLE_FROM_ALREADY_INGESTED_EVIDENCE",
+      "black_mesa_reconciled_pair_checkpoints": [
+        "Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md",
+        "Current/200_S1.42AK_BLACK_MESA_SLAUGHTERHOUSE_RUNTIME_TOPOLOGY_RECONCILIATION.md",
+        "Current/201_S1.42AK_BLACK_MESA_EXPANDED_FACILITY_RUNTIME_TOPOLOGY_RECONCILIATION.md",
+        "Current/202_S1.42AK_BLACK_MESA_DECREPIT_STORE_RUNTIME_TOPOLOGY_PARTIAL_TRAVERSAL_RECONCILIATION.md",
+        "Current/204_S1.42AK_BLACK_MESA_SUBSTATION_RUNTIME_TOPOLOGY_PARTIAL_TRAVERSAL_RECONCILIATION.md"
+      ],
+      "black_mesa_existing_pair_evidence_status": "EXHAUSTED_NO_ADDITIONAL_INGESTED_PAIR_RECONCILIATION_AVAILABLE_DEEP_SEWERS_TARGET_REMAINS_PASSIVE",
+      "oxyde_c3e3h_evidence": "SourceEvidence/UniversalInteriorViability/PhaseC3E3H/FINDINGS.md",
+      "oxyde_selection_supported_pairings": 23,
+      "oxyde_ordinary_generation_status": "NOT_PROVEN_APPLICABLE_SPAWN_ENEMIES_AND_SCRAP_FALSE_ORDINARY_GENERATION_SKIPPED_NO_ALTERNATE_CONSTRUCTION_ESTABLISHED",
+      "external_owner_rule_applicability_status": "NEXT_SOURCE_METADATA_RECONCILIATION_NO_RUNTIME_RELEASED",
+      "external_owner_rule_applicability_next_action": "Perform a bounded repository-native Phase-C3 External owner-rule applicability reconciliation using existing source/owner/config evidence only. Across the 53 selectable interiors, classify which current owner/config matching mechanisms can legitimately target Black Mesa's External semantics without duplicate registration, and separately preserve Oxyde's proven ordinary-generation boundary rather than treating its 23 selection-supported metadata matches as executable pairings. Determine whether C3 can close with an explicit Oxyde exception plus a Black Mesa-supported applicability set, or whether a narrowly defined additional evidence requirement remains. Do not create or release a runtime/build in that source/metadata reconciliation, do not force DeepSewersFlow, and do not implement a universal availability override yet."
     },
     "diagnostic_build_plan": "BuildSpecs/S1.42AK-BMGHDIAG3_PLAN.md",
     "diagnostic_static_evidence": "BuildSpecs/S1.42AK-BMGHDIAG3_BUILD_EVIDENCE/STATIC_VERIFICATION.json",

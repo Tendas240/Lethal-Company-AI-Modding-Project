@@ -5,7 +5,7 @@
 **Canonical-For:** `interiors_and_lll`  
 **Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`, `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`, `Current/169_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C2_OWNER_HARD_BLOCK_REASON_ANALYSIS.md`  
 **Related:** `ProfileSources/S1.42AG/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-09-19
+**Last-Validated:** 2026-09-29
 
 ## Accepted architecture
 
@@ -183,7 +183,17 @@ Junkrooms/Shatteredrooms CullFactory incompatibility remains a separate known te
 
 Do not interpret broad `Vanilla:100,Custom:100` tag injection as automatic proof that every flow is safe on every moon. Owner hard blocks, non-LLL registrations and technical restrictions remain authoritative until specifically understood and tested. Shatteredrooms' Experimentation/Embrion restriction therefore remains in place during the analysis phase.
 
-No build or runtime test is currently authorized by this selection. Phases C1 and C2 are complete. The exact next action is Phase C3: resolve Black Mesa moon and Oxyde External-level tags, entrance/fire-exit topology and owner matching semantics before any availability rule is extended onto their External rows.
+No build or runtime test is currently authorized by this selection. Phases C1 and C2 are complete. Phase C3 has now exhausted the already-ingested concrete External-moon pair evidence available without a new run: Black Mesa has dedicated pair reconciliations for Greenhouse, Slaughterhouse, ExpandedFacility, Decrepit store / StoreFlow and Substation, while Oxyde remains bounded by C3E3H's ordinary-generation applicability result. `Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md` records that no further concrete pair can be resolved from the existing evidence set. The next bounded action is an External owner-rule applicability reconciliation across all 53 selectable interiors using existing source/owner/config evidence only; no runtime/build is released by that step.
+
+## Phase C3 current External evidence boundary
+
+`Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md` is the current Phase-C3 inventory boundary.
+
+Black Mesa's already-ingested concrete pair evidence is exhausted after Greenhouse, Slaughterhouse, ExpandedFacility, Decrepit store / StoreFlow and Substation. Only Greenhouse has the stronger full all-four-ID bidirectional traversal plus visual geometry qualification; the other pair records retain their narrower topology/traversal proof boundaries. None is generalized to all 53 interiors.
+
+Oxyde remains asymmetric: C3E3H preserves 23 selection-supported metadata matches but exact V81 ordinary generation is skipped while `spawnEnemiesAndScrap=false`, and no independent inspected dungeon/entrance-construction path is established. Selection support is therefore not executable ordinary pair proof.
+
+The next C3 task is source/metadata-only owner-rule applicability classification for the External rows. It must identify which existing owner/config rules legitimately target Black Mesa External semantics and keep Oxyde's generation boundary explicit. No new runtime, build or universal availability override is authorized by this checkpoint.
 
 ## Shatteredrooms restriction
 
