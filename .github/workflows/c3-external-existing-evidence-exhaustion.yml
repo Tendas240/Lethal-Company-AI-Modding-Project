@@ -1,0 +1,119 @@
+name: C3 reconcile External existing-evidence exhaustion
+
+on:
+  push:
+    branches:
+      - reconcile/c3-external-existing-evidence-exhaustion
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reconciliation branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: reconcile/c3-external-existing-evidence-exhaustion
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reconcile External existing-evidence exhaustion
+        run: python RepositoryTools/c3_external_existing_evidence_exhaustion_reconcile.py
+
+      - name: Regenerate and verify protected current navigation
+        run: |
+          python RepositoryTools/render_current_navigation.py
+          python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate canonical state and repository contracts
+        run: |
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/handover_workflow_validator.py
+          python RepositoryTools/artifact_byte_integrity_validator.py
+          python RepositoryTools/repository_integrity_guard.py
+
+      - name: Verify bounded reconciliation invariants
+        shell: python
+        run: |
+          import json, subprocess
+          from pathlib import Path
+          root = Path('.')
+          state = json.loads((root/'Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          assert state['accepted_baseline']['build_id'] == 'S1.42AK'
+          assert state['active_candidate']['build_id'] == 'S1.42AK-BMDSFIX1'
+          assert state['active_candidate']['status'] == 'ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED'
+          assert state['runtime_test_outstanding'] is True
+          scope = state['selected_scope']
+          assert scope['status'] == 'PHASE_C3_EXTERNAL_EXISTING_EVIDENCE_EXHAUSTED_OWNER_RULE_APPLICABILITY_RECONCILIATION_NEXT_BMDSFIX1_TARGET_PASSIVE_OUTSTANDING'
+          phase = scope['phase_c']
+          assert phase['external_existing_evidence_inventory_status'] == 'EXHAUSTED_NO_NEXT_PAIR_RESOLVABLE_FROM_ALREADY_INGESTED_EVIDENCE'
+          assert phase['external_owner_rule_applicability_status'] == 'NEXT_SOURCE_METADATA_RECONCILIATION_NO_RUNTIME_RELEASED'
+          assert phase['oxyde_selection_supported_pairings'] == 23
+          assert len(phase['black_mesa_reconciled_pair_checkpoints']) == 5
+          assert scope['phase_b']['matrix_classification_totals'] == {
+              'viable_equal_100': 662,
+              'author_or_owner_hard_block': 14,
+              'config_gap': 0,
+              'known_technical_restriction': 0,
+              'not_yet_proven': 914,
+              'total': 1590,
+          }
+          buildspec = json.loads((root/'BuildSpecs/current.json').read_text(encoding='utf-8'))
+          assert buildspec['enabled'] is False
+          assert buildspec['build_id'] == 'IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS'
+          assert (root/'RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-BMDSFIX1'
+          checkpoint = (root/'Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md').read_text(encoding='utf-8')
+          for needle in [
+              'NO NEXT CONCRETE EXTERNAL-MOON PAIR IS RESOLVABLE',
+              'External Owner-Rule Applicability Reconciliation',
+              'spawnEnemiesAndScrap=false',
+              'DeepSewersFlow',
+              'No new diagnostic, build, capture or gameplay mechanism',
+          ]:
+              assert needle in checkpoint, needle
+          status = subprocess.check_output(['git','status','--porcelain'], text=True).splitlines()
+          changed = []
+          for line in status:
+              path = line[3:]
+              if ' -> ' in path:
+                  path = path.split(' -> ', 1)[1]
+              changed.append(path)
+          forbidden_prefixes = ('Profiles/', 'ProfileSources/', 'RuntimeEvidence/', 'SourceEvidence/', 'Patches/')
+          forbidden = [p for p in changed if p.startswith(forbidden_prefixes)]
+          assert not forbidden, f'forbidden artifact/runtime/source delta: {forbidden}'
+          for forbidden_path in ['BuildSpecs/current.json', 'RuntimeInbox/ACTIVE_BUILD.txt']:
+              assert forbidden_path not in changed, f'controller changed: {forbidden_path}'
+          required = {
+              'Current/CURRENT_STATE.json',
+              'Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md',
+              'Current/PROJECT_KNOWLEDGE_MAP.md',
+              'Knowledge/CURRENT_LIFECYCLE.md',
+              'Knowledge/INTERIORS_AND_LLL.md',
+              'Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md',
+              'BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md',
+          }
+          assert required.issubset(set(changed)), required - set(changed)
+
+      - name: Remove one-shot reconciliation machinery
+        run: |
+          rm RepositoryTools/c3_external_existing_evidence_exhaustion_reconcile.py
+          rm .github/workflows/c3-external-existing-evidence-exhaustion.yml
+
+      - name: Verify no whitespace errors
+        run: git diff --check
+
+      - name: Commit atomic canonical reconciliation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --stat
+          git commit -m "Reconcile C3 External existing-evidence exhaustion"
+          git push origin HEAD:reconcile/c3-external-existing-evidence-exhaustion
