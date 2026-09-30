@@ -15,7 +15,7 @@ Source-only diagnostic successor for the bounded Black Mesa x Abandoned Foundry 
 
 ## Availability boundary
 
-This plugin does not make Abandoned Foundry viable on Black Mesa. Any later review profile must separately use LethalLevelLoader's supported `Custom Dungeon:  Abandoned Foundry` content-configuration surface. The permitted semantic delta is limited to enabling that owner-default section and adding exactly `Black Mesa:100` to its existing Manual Level Names mapping while preserving every other owner value.
+This plugin does not make Abandoned Foundry viable on Black Mesa. Any later review profile must separately use LethalLevelLoader's supported `Custom Dungeon:  Abandoned Foundry` content-configuration surface. The permitted semantic delta is limited to setting `Enable Content Configuration = true` on a fail-closed materialization of the owner-default section and adding exactly `Black Mesa:100` to its existing Manual Level Names mapping while preserving every other owner value.
 
 If that exact config transformation cannot be proven, the later build must fail closed rather than substituting a runtime availability patch.
 
