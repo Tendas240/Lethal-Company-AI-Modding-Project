@@ -1,0 +1,43 @@
+name: BMAFDIAG1 lifecycle reconciliation temp
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'RepositoryTools/reconcile_bmafdiag1_source_static.py'
+      - '.github/workflows/bmafdiag1-source-static-reconcile-temp.yml'
+      - 'Current/CURRENT_STATE.json'
+      - 'Current/207_S1.42AK_BMAFDIAG1_SOURCE_STATIC_INTEGRATION_RECONCILIATION.md'
+      - 'Knowledge/CURRENT_LIFECYCLE.md'
+      - 'Current/PROJECT_KNOWLEDGE_MAP.md'
+      - 'Current/00_CURRENT_STATE.md'
+      - 'Current/01_HANDOVER_CORE.md'
+      - 'README.md'
+      - 'START_HERE_ChatGPT_Masterprompt.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Render canonical BMAFDIAG1 reconciliation
+        run: python RepositoryTools/reconcile_bmafdiag1_source_static.py
+      - name: Commit rendered lifecycle state when needed
+        shell: bash
+        run: |
+          if git diff --quiet && git status --porcelain --untracked-files=normal | grep -q '^$'; then
+            echo 'No reconciliation changes required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Current/CURRENT_STATE.json Current/207_S1.42AK_BMAFDIAG1_SOURCE_STATIC_INTEGRATION_RECONCILIATION.md Knowledge/CURRENT_LIFECYCLE.md Current/PROJECT_KNOWLEDGE_MAP.md Current/00_CURRENT_STATE.md Current/01_HANDOVER_CORE.md README.md START_HERE_ChatGPT_Masterprompt.txt
+          git commit -m 'Reconcile BMAFDIAG1 source static lifecycle'
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
