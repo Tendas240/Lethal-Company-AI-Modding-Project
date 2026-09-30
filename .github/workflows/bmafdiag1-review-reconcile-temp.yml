@@ -1,0 +1,44 @@
+name: BMAFDIAG1 review reconciliation temp
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'RepositoryTools/reconcile_bmafdiag1_review_build.py'
+      - '.github/workflows/bmafdiag1-review-reconcile-temp.yml'
+      - 'Current/CURRENT_STATE.json'
+      - 'Current/208_S1.42AK_BMAFDIAG1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md'
+      - 'BuildSpecs/S1.42AK-BMAFDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json'
+      - 'Knowledge/CURRENT_LIFECYCLE.md'
+      - 'Current/PROJECT_KNOWLEDGE_MAP.md'
+      - 'Current/00_CURRENT_STATE.md'
+      - 'Current/01_HANDOVER_CORE.md'
+      - 'README.md'
+      - 'START_HERE_ChatGPT_Masterprompt.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Render canonical BMAFDIAG1 review reconciliation
+        run: python RepositoryTools/reconcile_bmafdiag1_review_build.py
+      - name: Commit rendered lifecycle state when needed
+        shell: bash
+        run: |
+          if git diff --quiet && [ -z "$(git status --porcelain --untracked-files=normal)" ]; then
+            echo 'No reconciliation changes required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Current/CURRENT_STATE.json Current/208_S1.42AK_BMAFDIAG1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md BuildSpecs/S1.42AK-BMAFDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json Knowledge/CURRENT_LIFECYCLE.md Current/PROJECT_KNOWLEDGE_MAP.md Current/00_CURRENT_STATE.md Current/01_HANDOVER_CORE.md README.md START_HERE_ChatGPT_Masterprompt.txt
+          git commit -m 'Reconcile BMAFDIAG1 inactive review build'
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
