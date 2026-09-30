@@ -19,6 +19,8 @@ This plugin does not make Abandoned Foundry viable on Black Mesa. Any later revi
 
 If that exact config transformation cannot be proven, the later build must fail closed rather than substituting a runtime availability patch.
 
+Any later profile must derive directly from exact accepted `S1.42AK`; neither historical BMGHDIAG3 bytes nor the separate active/not-accepted `S1.42AK-BMDSFIX1` candidate may be used as a profile parent.
+
 ## Source checkpoint
 
 This directory is source/static only. It does not authorize compilation, profile construction, exact-byte publication, Gale import, runtime arming or gameplay testing.
