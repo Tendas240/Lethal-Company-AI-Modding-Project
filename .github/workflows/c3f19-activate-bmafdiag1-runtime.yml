@@ -1,0 +1,164 @@
+name: C3F19 activate BMAFDIAG1 runtime diagnostic
+
+on:
+  push:
+    branches:
+      - activate/s142ak-bmafdiag1-runtime
+    paths:
+      - 'RepositoryTools/c3f19_activate_bmafdiag1_runtime.py'
+      - '.github/workflows/c3f19-activate-bmafdiag1-runtime.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: activate/s142ak-bmafdiag1-runtime
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Apply exact BMAFDIAG1 runtime activation
+        run: python RepositoryTools/c3f19_activate_bmafdiag1_runtime.py
+
+      - name: Regenerate and verify protected current navigation
+        run: |
+          python RepositoryTools/render_current_navigation.py
+          python RepositoryTools/render_current_navigation.py --check
+
+      - name: Validate canonical state and repository contracts
+        run: |
+          python RepositoryTools/current_state_semantic_validator.py
+          python RepositoryTools/knowledge_architecture_validator.py
+          python RepositoryTools/artifact_byte_integrity_validator.py
+          python RepositoryTools/repository_integrity_guard.py
+          python RepositoryTools/gale_import_helper_validator.py
+          python RepositoryTools/overhaul_contract_validator.py
+
+      - name: Verify exact BMAFDIAG1 activation and bounded delta
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          root=Path('.')
+          state=json.loads((root/'Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          scope=state['selected_scope']
+          diag=scope['diagnostic_revision']
+          candidate=state['active_candidate']
+          assert state['accepted_baseline']['build_id']=='S1.42AK'
+          assert state['accepted_baseline']['sha256']=='b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee'
+          assert candidate['build_id']=='S1.42AK-BMDSFIX1'
+          assert candidate['status']=='ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED'
+          assert candidate['sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
+          assert state['runtime_test_outstanding'] is True
+          assert 'S1.42AK-BMDSFIX1' in scope['analysis_contract']
+          assert scope['phase_c']['bmdsfix1_target_status'].startswith('OUTSTANDING_PASSIVE')
+          assert scope['phase_c']['black_mesa_abandoned_foundry_status']=='NOT_YET_PROVEN_RUNTIME_DIAGNOSTIC_ACTIVE_TEST_OUTSTANDING'
+          assert state['controllers']['runtime_active_build']=='S1.42AK-BMAFDIAG1'
+          assert (root/'RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip()=='S1.42AK-BMAFDIAG1'
+
+          current=json.loads((root/'BuildSpecs/current.json').read_text(encoding='utf-8'))
+          assert current['enabled'] is False
+          assert current['build_id']=='IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS'
+          assert current['base_sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
+          auto=json.loads((root/'Current/AUTO_BUILD_RESULT.json').read_text(encoding='utf-8'))
+          assert auto['build_id']=='S1.42AK-BMDSFIX1'
+          assert auto['output_sha256']=='3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
+
+          assert diag['build_id']=='S1.42AK-BMAFDIAG1'
+          assert diag['status']=='PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED'
+          assert diag['classification']=='DIAGNOSTIC_ONLY_NEVER_ACCEPT'
+          assert diag['base_build_id']=='S1.42AK'
+          assert diag['base_profile']==state['accepted_baseline']['profile']
+          assert diag['base_sha256']==state['accepted_baseline']['sha256']
+          assert diag['sha256']=='b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2'
+          assert diag['diagnostic_dll_sha256']=='c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1'
+          assert diag['runtime_armed'] is True and diag['indexed'] is True
+          assert hashlib.sha256((root/diag['profile']).read_bytes()).hexdigest()==diag['sha256']
+
+          build=json.loads((root/diag['build_result']).read_text(encoding='utf-8'))
+          assert build['build_id']==diag['build_id']
+          assert build['output_profile']==diag['profile'] and build['output_sha256']==diag['sha256']
+          assert build['base_profile']==diag['base_profile'] and build['base_sha256']==diag['base_sha256']
+          assert build['zip_members']==337
+          assert build['changed_existing_members']==['BepInEx/config/LethalLevelLoader.cfg','export.r2x']
+          assert build['added_members']==['BepInEx/plugins/S142AKBMAFDiag1/S142AKBMAFDiag1.dll']
+
+          static=json.loads((root/diag['static_evidence']).read_text(encoding='utf-8'))
+          assert static['output_sha256']==diag['sha256']
+          assert static['diagnostic_dll_sha256']==diag['diagnostic_dll_sha256']
+          assert static['foundry_manual_level_names_delta']=='Black Mesa:100'
+          assert static['foundry_owner_values_preserved'] is True
+
+          idx=json.loads((root/'ProfileSources/S1.42AK-BMAFDIAG1/PROFILE_INDEX_RESULT.json').read_text(encoding='utf-8'))
+          assert idx['build_id']==diag['build_id']
+          assert idx['profile_path']==diag['profile'] and idx['sha256']==diag['sha256']
+          assert idx['zip_members']==337 and idx['build_id_resolution']=='EXPECTED_HASHES'
+
+          hashes=json.loads((root/'Profiles/EXPECTED_HASHES.json').read_text(encoding='utf-8'))
+          h=hashes[diag['profile']]
+          assert h['build_id']==diag['build_id'] and h['sha256']==diag['sha256']
+          assert 'active runtime target' in h['note'] and 'NEVER ACCEPT' in h['note']
+
+          integrity=json.loads((root/'Current/ARTIFACT_EVIDENCE_INTEGRITY.json').read_text(encoding='utf-8'))
+          pending={x['build_id']:x for x in integrity['pending_profiles']}
+          assert pending['S1.42AK-BMDSFIX1']['role']=='ACTIVE_RUNTIME_CANDIDATE_PENDING'
+          assert pending['S1.42AK-BMAFDIAG1']['role']=='ACTIVE_RUNTIME_DIAGNOSTIC_PENDING'
+          assert pending['S1.42AK-BMAFDIAG1']['profile_sha256']==diag['sha256']
+
+          activation=(root/'Current/211_S1.42AK_BMAFDIAG1_RUNTIME_ACTIVATION.md').read_text(encoding='utf-8')
+          for required in ('ReplaceActiveGaleProfileV24.ps1','S1.42AK-BMAFDIAG1','[BMAFDIAG1]','Abandoned Foundry','FoundryFlow','NEVER ACCEPT','S1.42AK-BMDSFIX1'):
+              assert required in activation, required
+
+          gale=(root/'RuntimeTools/ReplaceActiveGaleProfileV24.ps1').read_text(encoding='utf-8')
+          assert '2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain' in gale
+          assert 'elseif(([string]$diag.base_build_id) -eq ([string]$state.accepted_baseline.build_id))' in gale
+
+          forbidden={
+            'BuildSpecs/current.json',
+            'Current/AUTO_BUILD_RESULT.json',
+            'Profiles/LC V1 S1.42AK-BMAFDIAG1 Black Mesa Abandoned Foundry Diagnostic.r2z',
+            'RuntimeTools/ReplaceActiveGaleProfileV24.ps1',
+            'RepositoryTools/knowledge_architecture_validator.py',
+            'RepositoryTools/overhaul_contract_validator.py',
+          }
+          changed=set(subprocess.check_output(['git','diff','--name-only','origin/main'],text=True).splitlines())
+          assert not (forbidden & changed), f'Forbidden byte/controller/infrastructure mutation: {sorted(forbidden & changed)}'
+          allowed={
+            '.github/workflows/c3f19-activate-bmafdiag1-runtime.yml',
+            'RepositoryTools/c3f19_activate_bmafdiag1_runtime.py',
+            'BuildSpecs/S1.42AK-BMAFDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json',
+            'BuildSpecs/S1.42AK-BMAFDIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json',
+            'Current/211_S1.42AK_BMAFDIAG1_RUNTIME_ACTIVATION.md',
+            'Current/CURRENT_STATE.json','RuntimeInbox/ACTIVE_BUILD.txt','Profiles/EXPECTED_HASHES.json',
+            'Current/ARTIFACT_EVIDENCE_INTEGRITY.json','Current/ARTIFACT_EVIDENCE_INTEGRITY.md',
+            'Current/PROJECT_KNOWLEDGE_MAP.md','Knowledge/CURRENT_LIFECYCLE.md','Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md',
+            'README.md','START_HERE_ChatGPT_Masterprompt.txt','Current/00_CURRENT_STATE.md','Current/01_HANDOVER_CORE.md',
+          }
+          unexpected=sorted(changed-allowed)
+          assert not unexpected, f'Unexpected activation delta: {unexpected}'
+          print('PASS: exact BMAFDIAG1 activation + accepted-baseline diagnostic authority + bounded delta verified')
+          PY
+          git diff --check -- . ':(exclude)README.md' ':(exclude)START_HERE_ChatGPT_Masterprompt.txt' ':(exclude)Current/00_CURRENT_STATE.md' ':(exclude)Current/01_HANDOVER_CORE.md'
+
+      - name: Commit atomic activation and remove one-shot machinery
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm RepositoryTools/c3f19_activate_bmafdiag1_runtime.py
+          rm .github/workflows/c3f19-activate-bmafdiag1-runtime.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --check -- . ':(exclude)README.md' ':(exclude)START_HERE_ChatGPT_Masterprompt.txt' ':(exclude)Current/00_CURRENT_STATE.md' ':(exclude)Current/01_HANDOVER_CORE.md'
+          git commit -m 'Arm exact BMAFDIAG1 runtime diagnostic'
+          git push origin HEAD:activate/s142ak-bmafdiag1-runtime
