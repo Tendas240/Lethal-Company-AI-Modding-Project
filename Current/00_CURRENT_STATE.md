@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-09-29  
+**Updated:** 2026-09-30  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Use the completed owner-rule applicability closure only as selection-layer input to the remaining compatibility/safety work. Before authoring a universal availability candidate or enabling a previously absent pairing, identify that exact pairing/restriction and satisfy the investigation plan's generation, entrance/topology, traversal, routing/NavMesh and duplicate-registration safety obligations. Preserve the unchanged historical B3 matrix, explicit Oxyde ordinary-generation exception, Shatteredrooms exclusions, and the passive/outstanding/unwaived regular BMDSFIX1 Black Mesa x DeepSewersFlow gate. Do not create or release a runtime/build merely from the owner-rule closure and do not implement a universal availability override yet.
+Prepare and execute a separately bounded inactive review-build checkpoint for S1.42AK-BMAFDIAG1 from the exact source/static bytes integrated by PR #198, deriving any review profile directly from exact accepted S1.42AK. The review build may compile/test the successor and materialize the repository-proven Abandoned Foundry owner-default LLL content-configuration section with Enable Content Configuration = true plus exactly Black Mesa:100 appended to the preserved Manual Level Names mapping. It must prove the archive/config delta fail-closed and must not publish bytes, modify/import Gale, runtime-arm BMAFDIAG1, start gameplay, alter S1.42AB normalization, duplicate-register Foundry, change unrelated pairings/size rules, or change BMDSFIX1 acceptance.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

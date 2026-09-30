@@ -6,7 +6,7 @@
 **Machine Mirror:** `Current/PROJECT_KNOWLEDGE_MAP.json`
 **Current State:** `Current/00_CURRENT_STATE.md`
 **Project execution policy:** `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`
-**Last-Validated:** 2026-09-29
+**Last-Validated:** 2026-09-30
 
 Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`. Route normal questions through the registered canonical topic; current lifecycle facts come from `Current/CURRENT_STATE.json` plus that topic, not old handovers.
 
@@ -44,9 +44,11 @@ The already-ingested concrete Black Mesa pair evidence remains bounded to Greenh
 
 Oxyde remains governed by `SourceEvidence/UniversalInteriorViability/PhaseC3E3H/FINDINGS.md`: 23 positive selection/metadata matches exist, but exact V81 skips ordinary dungeon generation while `spawnEnemiesAndScrap=false`, and no independent inspected dungeon/entrance-construction path is established. Those metadata matches are not executable ordinary pair proof.
 
+The bounded **S1.42AK-BMAFDIAG1** Black Mesa x Abandoned Foundry source/static checkpoint is now integrated on `main` under `Current/207_S1.42AK_BMAFDIAG1_SOURCE_STATIC_INTEGRATION_RECONCILIATION.md`. It is not built, published, Gale-imported or runtime-active, and Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN`. Any later review profile must derive directly from exact accepted S1.42AK and use only the proven owner-default Foundry LLL content-configuration activation plus exact `Black Mesa:100` Manual-Level-Names delta; the diagnostic may reduce only an already-viable post-normalizer `FoundryFlow` wrapper.
+
 BMGHDIAG3 remains **DIAGNOSTIC ONLY / NEVER ACCEPT** and is no longer runtime-active. Runtime/evidence routing remains exact `S1.42AK-BMDSFIX1`. BMDSFIX1 remains the separate active gameplay candidate / **NOT ACCEPTED**; its regular exact-byte Black Mesa x `DeepSewersFlow` qualification remains passive, outstanding and unwaived, with no dedicated reroll released. `BuildSpecs/current.json` remains disabled.
 
-Exact next action: use the completed owner-rule applicability closure only as input to pair-specific compatibility/safety proof. Before authoring a universal availability candidate or enabling a previously absent pairing, identify that exact pairing/restriction and satisfy the investigation plan's generation, entrance/topology, traversal, routing/NavMesh and duplicate-registration safety obligations. Preserve the historical B3 matrix, explicit Oxyde ordinary-generation exception, Shatteredrooms exclusions and passive BMDSFIX1 target gate. No runtime/build or universal availability override is authorized by the owner-rule closure itself.
+Exact next action: Prepare and execute a separately bounded inactive review-build checkpoint for S1.42AK-BMAFDIAG1 from the exact source/static bytes integrated by PR #198, deriving any review profile directly from exact accepted S1.42AK. The review build may compile/test the successor and materialize the repository-proven Abandoned Foundry owner-default LLL content-configuration section with Enable Content Configuration = true plus exactly Black Mesa:100 appended to the preserved Manual Level Names mapping. It must prove the archive/config delta fail-closed and must not publish bytes, modify/import Gale, runtime-arm BMAFDIAG1, start gameplay, alter S1.42AB normalization, duplicate-register Foundry, change unrelated pairings/size rules, or change BMDSFIX1 acceptance.
 
 ## Authority rule
 
