@@ -188,9 +188,27 @@ require("S1.42AK-BMDSFIX1" in selected_scope["analysis_contract"] and
         "outstanding" in selected_scope["analysis_contract"].lower() and
         "passive" in selected_scope["analysis_contract"].lower(),
         "Existing BMDSFIX1 passive runtime gate contract was lost")
-require("S1.42AK-BMAFDIAG1" in selected_scope["next_action"] and
-        "inactive review-build" in selected_scope["next_action"].lower(),
-        "Current lifecycle no longer authorizes the bounded BMAFDIAG1 inactive review build")
+next_action = selected_scope["next_action"]
+next_action_lower = next_action.lower()
+phase_c = selected_scope["phase_c"]
+pre_review_authorized = (
+    "S1.42AK-BMAFDIAG1" in next_action and
+    "inactive review-build" in next_action_lower
+)
+post_review_reconciled = (
+    "S1.42AK-BMAFDIAG1" in next_action and
+    "exact-byte publication" in next_action_lower and
+    phase_c.get("bmafdiag1_review_checkpoint") == "Current/208_S1.42AK_BMAFDIAG1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md" and
+    phase_c.get("bmafdiag1_review_status") == "INACTIVE_REVIEW_BUILD_PASS_NOT_PUBLISHED_NOT_ARMED_EXACT_BYTE_PUBLICATION_NEXT" and
+    phase_c.get("bmafdiag1_review_run") == 36735131025 and
+    phase_c.get("bmafdiag1_review_artifact_id") == 11106178288 and
+    phase_c.get("bmafdiag1_review_evidence") == "BuildSpecs/S1.42AK-BMAFDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json" and
+    phase_c.get("bmafdiag1_review_published") is False and
+    phase_c.get("bmafdiag1_review_runtime_armed") is False and
+    phase_c.get("black_mesa_abandoned_foundry_status") == "INACTIVE_REVIEW_BUILD_PASS_PAIR_NOT_YET_PROVEN_EXACT_BYTE_PUBLICATION_NEXT"
+)
+require(pre_review_authorized or post_review_reconciled,
+        "Current lifecycle is neither the authorized BMAFDIAG1 inactive review build nor its exact reconciled review-PASS publication-next state")
 
 expected_source_files = {
     "GameAssemblyProvenance.cs",
