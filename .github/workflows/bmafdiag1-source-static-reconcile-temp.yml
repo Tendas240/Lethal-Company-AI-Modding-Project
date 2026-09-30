@@ -27,6 +27,19 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
+      - name: Repair temporary helper syntax
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('RepositoryTools/reconcile_bmafdiag1_source_static.py')
+          t = p.read_text(encoding='utf-8')
+          old = '`FoundryFlow` wrapper.\\n\\n"\n        require(anchor in text'
+          new = '`FoundryFlow` wrapper.\\n\\n"\n        )\n        require(anchor in text'
+          if old not in t:
+              raise SystemExit('temporary helper patch anchor missing')
+          p.write_text(t.replace(old, new, 1), encoding='utf-8')
+          PY
       - name: Render canonical BMAFDIAG1 reconciliation
         run: python RepositoryTools/reconcile_bmafdiag1_source_static.py
       - name: Commit rendered lifecycle state when needed
