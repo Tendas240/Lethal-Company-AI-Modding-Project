@@ -1,0 +1,72 @@
+name: BMAFDIAG1 lifecycle validator fix temp
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'AnalysisTools/validate_s142ak_bmafdiag1_build.py'
+      - '.github/workflows/bmafdiag1-validator-lifecycle-fix-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Apply bounded lifecycle-state validator repair
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('AnalysisTools/validate_s142ak_bmafdiag1_build.py')
+          text = path.read_text(encoding='utf-8')
+          old = '''require("S1.42AK-BMAFDIAG1" in selected_scope["next_action"] and
+                  "inactive review-build" in selected_scope["next_action"].lower(),
+                  "Current lifecycle no longer authorizes the bounded BMAFDIAG1 inactive review build")'''
+          new = '''next_action = selected_scope["next_action"]
+          next_action_lower = next_action.lower()
+          phase_c = selected_scope["phase_c"]
+          pre_review_authorized = (
+              "S1.42AK-BMAFDIAG1" in next_action and
+              "inactive review-build" in next_action_lower
+          )
+          post_review_reconciled = (
+              "S1.42AK-BMAFDIAG1" in next_action and
+              "exact-byte publication" in next_action_lower and
+              phase_c.get("bmafdiag1_review_checkpoint") == "Current/208_S1.42AK_BMAFDIAG1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md" and
+              phase_c.get("bmafdiag1_review_status") == "INACTIVE_REVIEW_BUILD_PASS_NOT_PUBLISHED_NOT_ARMED_EXACT_BYTE_PUBLICATION_NEXT" and
+              phase_c.get("bmafdiag1_review_run") == 36735131025 and
+              phase_c.get("bmafdiag1_review_artifact_id") == 11106178288 and
+              phase_c.get("bmafdiag1_review_evidence") == "BuildSpecs/S1.42AK-BMAFDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json" and
+              phase_c.get("bmafdiag1_review_published") is False and
+              phase_c.get("bmafdiag1_review_runtime_armed") is False and
+              phase_c.get("black_mesa_abandoned_foundry_status") == "INACTIVE_REVIEW_BUILD_PASS_PAIR_NOT_YET_PROVEN_EXACT_BYTE_PUBLICATION_NEXT"
+          )
+          require(pre_review_authorized or post_review_reconciled,
+                  "Current lifecycle is neither the authorized BMAFDIAG1 inactive review build nor its exact reconciled review-PASS publication-next state")'''
+          if old in text:
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          elif new in text:
+              print('Lifecycle validator repair already applied.')
+          else:
+              raise SystemExit('Expected BMAFDIAG1 lifecycle validator anchor not found')
+          PY
+      - name: Commit validator repair when needed
+        shell: bash
+        run: |
+          if git diff --quiet -- AnalysisTools/validate_s142ak_bmafdiag1_build.py; then
+            echo 'No validator change required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add AnalysisTools/validate_s142ak_bmafdiag1_build.py
+          git commit -m 'Allow reconciled BMAFDIAG1 review lifecycle state'
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
