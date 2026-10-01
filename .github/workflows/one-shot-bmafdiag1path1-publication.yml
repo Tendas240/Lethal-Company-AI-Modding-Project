@@ -1,0 +1,140 @@
+name: One-shot BMAFDIAG1PATH1 exact-byte publication
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/one-shot-bmafdiag1path1-publication.yml'
+      - 'Profiles/LC V1 S1.42AK-BMAFD1P1.r2z'
+      - 'ProfileSources/S1.42AK-BMAFDIAG1PATH1/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.head.repo.full_name == github.repository &&
+       github.event.pull_request.head.ref == 'publish/s142ak-bmafdiag1path1-exact')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ARTIFACT_ID: '11180586234'
+      ARTIFACT_SHA256: '98b9285a48cba4d78b48140289d7b8b4eaaad65778d9a59ee06826f5add88fae'
+      PROFILE_PATH: 'Profiles/LC V1 S1.42AK-BMAFD1P1.r2z'
+      PROFILE_SHA256: '423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91'
+      SNAPSHOT_PATH: 'ProfileSources/S1.42AK-BMAFDIAG1PATH1'
+      DIAG_DLL_SHA256: 'c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1'
+      LLL_CONFIG_SHA256: 'c9f03e7839c70ce21fae37ff597085175de35a9c176b97aed40798401ce66c0e'
+      NORMALIZER_SHA256: '901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06'
+
+    steps:
+      - name: Checkout publication branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify publication boundary before transport
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git diff --exit-code origin/main --             BuildSpecs/current.json             RuntimeInbox/ACTIVE_BUILD.txt             Current/CURRENT_STATE.json             Current/AUTO_BUILD_RESULT.json             Current/AUTO_BUILD_RESULT.md
+          python RepositoryTools/gale_profile_path_length_guard.py --spec BuildSpecs/S1.42AK-BMAFDIAG1PATH1.json
+
+      - name: Download and validate frozen review artifact
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -rf .publication-artifact
+          mkdir -p .publication-artifact/extracted
+          curl --fail --silent --show-error --location             -H "Authorization: Bearer ${GH_TOKEN}"             -H "Accept: application/vnd.github+json"             -H "X-GitHub-Api-Version: 2022-11-28"             "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}/zip"             -o .publication-artifact/review.zip
+          echo "${ARTIFACT_SHA256}  .publication-artifact/review.zip" | sha256sum --check --strict
+          unzip -q .publication-artifact/review.zip -d .publication-artifact/extracted
+          echo "${PROFILE_SHA256}  .publication-artifact/extracted/${PROFILE_PATH}" | sha256sum --check --strict
+          python - <<'PY'
+          import hashlib, io, json, os, pathlib, zipfile
+
+          root = pathlib.Path(".publication-artifact/extracted")
+          profile = root / os.environ["PROFILE_PATH"]
+
+          def sha(data):
+              return hashlib.sha256(data).hexdigest()
+
+          with zipfile.ZipFile(profile) as z:
+              names = z.namelist()
+              if len(names) != 337 or len(names) != len(set(names)):
+                  raise SystemExit(f"unexpected review archive members: {len(names)} / {len(set(names))}")
+              if z.read("export.r2x").decode("utf-8-sig").splitlines()[0] != "profileName: LC V1 S1.42AK-BMAFD1P1":
+                  raise SystemExit("review profile identity mismatch")
+              protected = {
+                  "BepInEx/plugins/S142AKBMAFDiag1/S142AKBMAFDiag1.dll": os.environ["DIAG_DLL_SHA256"],
+                  "BepInEx/config/LethalLevelLoader.cfg": os.environ["LLL_CONFIG_SHA256"],
+                  "BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll": os.environ["NORMALIZER_SHA256"],
+              }
+              for path, expected in protected.items():
+                  actual = sha(z.read(path))
+                  if actual != expected:
+                      raise SystemExit(f"protected member SHA mismatch: {path}: {actual}")
+
+          snapshot = root / os.environ["SNAPSHOT_PATH"]
+          index_path = snapshot / "FILE_INDEX.json"
+          if not index_path.is_file():
+              raise SystemExit("review snapshot FILE_INDEX missing")
+          index = json.loads(index_path.read_text(encoding="utf-8"))
+          if len(index) != 337:
+              raise SystemExit(f"review snapshot FILE_INDEX rows: {len(index)}")
+          index_paths = [row["path"] for row in index]
+          if index_paths != names:
+              raise SystemExit("review snapshot FILE_INDEX order/member set differs from review profile")
+          if (snapshot / "PROFILE_INDEX_RESULT.json").exists():
+              raise SystemExit("review artifact unexpectedly contains profile-index result")
+
+          build_result = json.loads((root / "BuildSpecs/S1.42AK-BMAFDIAG1PATH1_BUILD_EVIDENCE/BUILD_RESULT.json").read_text(encoding="utf-8"))
+          static = json.loads((root / "BuildSpecs/S1.42AK-BMAFDIAG1PATH1_BUILD_EVIDENCE/STATIC_VERIFICATION.json").read_text(encoding="utf-8"))
+          expected_profile = os.environ["PROFILE_SHA256"]
+          if build_result.get("output_sha256") != expected_profile or static.get("output_sha256") != expected_profile:
+              raise SystemExit("artifact review evidence output SHA mismatch")
+          if build_result.get("zip_members") != 337:
+              raise SystemExit("artifact build-result member count mismatch")
+          if build_result.get("changed_existing_members") != ["export.r2x"] or build_result.get("added_members") != []:
+              raise SystemExit("artifact build-result identity-only delta mismatch")
+          PY
+
+      - name: Materialize exact reviewed bytes without rebuilding
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p Profiles
+          rm -rf "${SNAPSHOT_PATH}"
+          cp -- ".publication-artifact/extracted/${PROFILE_PATH}" "${PROFILE_PATH}"
+          cp -a -- ".publication-artifact/extracted/${SNAPSHOT_PATH}" "${SNAPSHOT_PATH}"
+          echo "${PROFILE_SHA256}  ${PROFILE_PATH}" | sha256sum --check --strict
+          test ! -e "${SNAPSHOT_PATH}/PROFILE_INDEX_RESULT.json"
+          git diff --exit-code origin/main --             BuildSpecs/current.json             RuntimeInbox/ACTIVE_BUILD.txt             Current/CURRENT_STATE.json             Current/AUTO_BUILD_RESULT.json             Current/AUTO_BUILD_RESULT.md
+
+      - name: Commit exact publication bytes to publication branch
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .publication-artifact
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "${PROFILE_PATH}" "${SNAPSHOT_PATH}"
+          if git diff --cached --quiet; then
+            echo "Exact publication bytes already materialized; no commit required."
+            exit 0
+          fi
+          git commit -m "Publish exact reviewed BMAFDIAG1PATH1 bytes"
+          git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
