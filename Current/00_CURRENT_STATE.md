@@ -36,11 +36,11 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFDIAG1`
 
 ## Exact next action
 
-Perform a separately bounded S1.42AK-BMAFDIAG1 runtime-activation checkpoint for the exact already-published and canonically indexed profile Profiles/LC V1 S1.42AK-BMAFDIAG1 Black Mesa Abandoned Foundry Diagnostic.r2z with SHA-256 b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2. Reverify the exact profile identity, ProfileSources/S1.42AK-BMAFDIAG1/PROFILE_INDEX_RESULT.json, current controllers and the diagnostic-only / NEVER ACCEPT boundary before changing runtime/evidence routing. If activation is later authorized, do not rebuild or alter the profile/DLL, accept BMAFDIAG1 or BMDSFIX1, waive the passive BMDSFIX1 Black Mesa x DeepSewersFlow gate, or mark Black Mesa x Abandoned Foundry proven before runtime evidence exists. After repository-side activation is integrated and exact-head CI-green, release any actual runtime test only with the repository-derived Gale replacement/import PowerShell one-liner and the exact build-specific standalone PowerShell runtime-log uploader in the same response.
+Import the exact active S1.42AK-BMAFDIAG1 profile through the canonical repository-driven Gale v2.4.3 launcher, run one bounded Black Mesa x Abandoned Foundry diagnostic, exercise the main entrance and alternate entrance IDs 1, 2 and 3 in both directions where practical, then upload that run's exact BepInEx/LogOutput.log with the BMAFDIAG1 build-specific standalone PowerShell uploader. Do not alter profile/config/package/plugin/gameplay bytes during the test. Treat the result as diagnostic-only / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

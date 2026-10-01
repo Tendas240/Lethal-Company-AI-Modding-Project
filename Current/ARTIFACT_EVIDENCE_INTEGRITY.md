@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
 **Machine mirror:** `Current/ARTIFACT_EVIDENCE_INTEGRITY.json`  
-**Last-Validated:** 2026-09-28
+**Last-Validated:** 2026-09-30
 
 ## Accepted gameplay baseline: S1.42AK
 
@@ -67,8 +67,9 @@ The exact diagnostic passed the bounded Black Mesa x Greenhouse runtime-compatib
 - **S1.42AK-BMDSFIX1** — active gameplay candidate directly over accepted S1.42AK; profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`; its regular Black Mesa x `DeepSewersFlow` gate remains passive/outstanding/unwaived; not accepted.
 - **S1.42AK-BMDSFIX1-DIAG1** — preserved preloader-blocked diagnostic parent; profile SHA-256 `31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e`; must not be rerun and is not the active runtime/evidence target.
 - **S1.42AK-BMDSFIX1-DIAG1PATH1** — completed supporting diagnostic evidence using short identity `LC V1 S1.42AK-D1P1`; profile SHA-256 `0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6`; not runtime-active and never a gameplay base or acceptance candidate.
+- **S1.42AK-BMAFDIAG1** — active diagnostic runtime/evidence target directly over accepted S1.42AK after activation integration; profile SHA-256 `b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2`; diagnostic DLL SHA-256 `c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1`; exact Black Mesa x Abandoned Foundry evidence outstanding; **DIAGNOSTIC ONLY / NEVER ACCEPT**.
 
-BMDSFIX1 exact reviewed bytes remain the active gameplay candidate and are unchanged. Runtime/evidence routing has returned to `S1.42AK-BMDSFIX1` after completion of the Greenhouse diagnostic, but no dedicated Deep Sewers reroll is released. `BuildSpecs/current.json` remains disabled. BMGHDIAG3 is no longer runtime-active and remains NEVER ACCEPT; its completed Greenhouse PASS does not accept BMDSFIX1 or waive the separate Deep Sewers target gate.
+BMDSFIX1 exact reviewed bytes remain the active gameplay candidate and are unchanged. After the BMAFDIAG1 activation is integrated, runtime/evidence routing points to exact `S1.42AK-BMAFDIAG1` solely for bounded diagnostic target resolution and attribution. `BuildSpecs/current.json` remains disabled and `Current/AUTO_BUILD_RESULT.json` remains BMDSFIX1. BMGHDIAG3 stays completed historical diagnostic PASS evidence. BMAFDIAG1 is NEVER ACCEPT, Black Mesa x Abandoned Foundry remains NOT_YET_PROVEN pending runtime evidence, and the separate BMDSFIX1 Deep Sewers target gate remains passive/outstanding/unwaived.
 
 ## Completed diagnostic evidence: S1.42AI-DIAG1R3
 
