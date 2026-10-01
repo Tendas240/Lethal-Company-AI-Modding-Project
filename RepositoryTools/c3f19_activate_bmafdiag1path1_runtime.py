@@ -57,6 +57,8 @@ def file_sha(rel: str) -> str:
 
 
 def replace_once(text: str, old: str, new: str, label: str) -> str:
+    old = old.replace("@@BT@@", chr(96))
+    new = new.replace("@@BT@@", chr(96))
     count = text.count(old)
     req(count == 1, f"{label}: expected exactly one anchor, found {count}")
     return text.replace(old, new, 1)
