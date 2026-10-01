@@ -11,9 +11,10 @@ BASE = ROOT / "RuntimeTools/ReplaceActiveGaleProfile.ps1"
 V24 = ROOT / "RuntimeTools/ReplaceActiveGaleProfileV24.ps1"
 GALE_KNOWLEDGE = ROOT / "Knowledge/GALE_PROFILE_WORKFLOW.md"
 LIFECYCLE = ROOT / "Knowledge/CURRENT_LIFECYCLE.md"
+PATH_GUARD = ROOT / "RepositoryTools/gale_profile_path_length_guard.py"
 
 BASE_REVISION = "2026-09-05-import-uia-v2.2-materialization-proof"
-V24_REVISION = "2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain"
+V24_REVISION = "2026-10-01-import-uia-v2.4.4-runtime-path-budget-guard"
 BASE_SIGNATURE = f"$helperRevision='{BASE_REVISION}'"
 V24_SIGNATURE = f"$helperRevision='{V24_REVISION}'"
 
@@ -31,7 +32,7 @@ def extract_here_string(source: str, variable: str) -> str:
 
 
 def main() -> int:
-    for path in (BASE, V24, GALE_KNOWLEDGE, LIFECYCLE):
+    for path in (BASE, V24, GALE_KNOWLEDGE, LIFECYCLE, PATH_GUARD):
         if not path.exists():
             fail(f"required file missing: {path.relative_to(ROOT)}")
 
@@ -65,6 +66,12 @@ def main() -> int:
         "BepInEx\\plugins\\loaforc-loaforcsSoundAPI_LethalCompany\\**\\me.loaforc.soundapi.lethalcompany.dll",
         "$hits.Count -ne 1",
         "LethalCompany SoundAPI binding resolved without exactly two critical materialization contracts",
+        "function Assert-GaleRuntimePathBudget {",
+        "$safeLimit=255",
+        "MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix",
+        "LCOfficeV81Preloader\\LCOfficeV81Preloader.dll",
+        "loaforcsSoundAPI_LethalCompany\\me.loaforc.soundapi.lethalcompany.dll",
+        "Projected Gale runtime path exceeds safe project budget",
     )
     for token in required_materialization_tokens:
         if token not in materialization_functions:
@@ -167,7 +174,20 @@ def main() -> int:
     if "$encodedPath?cb=$cache" in patched:
         fail("simulated v2.4 helper contains the PowerShell '?'-variable interpolation regression")
     if patched.count("Get-RepositoryJson -RepositoryPath") != 2:
-        fail("simulated v2.4.2 helper does not retain exactly two guarded diagnostic build-result loads")
+        fail("simulated v2.4 helper does not retain exactly two guarded diagnostic build-result loads")
+
+    path_guard_marker = "$criticalMaterializationPaths=@(Get-RequiredCriticalMaterializationPaths -ExpectedExportText $expectedExportText)"
+    path_guard_call = path_guard_marker + "\\nAssert-GaleRuntimePathBudget -ProfileRoot $root -ProfileName $expectedProfileName -ExpectedExportText $expectedExportText"
+    if patched.count(path_guard_marker) != 1:
+        fail("simulated v2.4 helper does not expose exactly one runtime path-guard insertion point")
+    patched = patched.replace(path_guard_marker, path_guard_call)
+    if patched.count("Assert-GaleRuntimePathBudget -ProfileRoot $root -ProfileName $expectedProfileName -ExpectedExportText $expectedExportText") != 1:
+        fail("simulated v2.4.4 helper runtime path-budget guard call is missing or ambiguous")
+
+    path_guard_source = PATH_GUARD.read_text(encoding="utf-8")
+    for token in ("SAFE_RUNTIME_PATH_CHARS = 255", "S1.42AK-BMAFDIAG1", "(260, 262)", "S1.42AK-D1P1", "(215, 217)"):
+        if token not in path_guard_source:
+            fail(f"permanent Gale path-length guard missing token: {token}")
 
     for doc_name, doc in (("Knowledge/GALE_PROFILE_WORKFLOW.md", gale), ("Knowledge/CURRENT_LIFECYCLE.md", lifecycle)):
         if "RuntimeTools/ReplaceActiveGaleProfileV24.ps1" not in doc or V24_REVISION not in doc:
@@ -178,7 +198,10 @@ def main() -> int:
     if "PowerShell" not in gale or "?cb" not in gale or "ErrorAction Stop" not in gale:
         fail("Gale workflow authority does not document the diagnostic build-result URL/fail-closed repair")
 
-    print("PASS: Gale import helper v2.4.3 direct AUTO/accepted-baseline + one-hop diagnostic-parent chain + fail-closed materialization regression contract validated")
+    if "path-length" not in gale.lower() or "255" not in gale:
+        fail("Gale workflow authority does not document the permanent runtime path-length budget")
+
+    print("PASS: Gale import helper v2.4.4 runtime path-budget + direct AUTO/accepted-baseline + one-hop diagnostic-parent chain + fail-closed materialization regression contract validated")
     return 0
 
 
