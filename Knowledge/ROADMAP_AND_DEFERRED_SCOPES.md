@@ -4,7 +4,7 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** live selected/deferred-scope list only  
 **Evidence:** `Current/CURRENT_STATE.json`, `Knowledge/CURRENT_LIFECYCLE.md`, `Current/158_S1.42AK_RUNTIME_ACCEPTANCE_LC_OFFICE_CAMERA_ENEMY_BALANCE.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/173_S1.42AK_BMGHDIAG2_RUNTIME_INCONCLUSIVE_DIAGNOSTIC_REFUSAL_AND_DEEP_SEWERS_INCIDENT.md`, `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`, `Current/206_S1.42AK_EXTERNAL_OWNER_RULE_APPLICABILITY_CLOSURE_RECONCILIATION.md`  
-**Last-Validated:** 2026-09-29
+**Last-Validated:** 2026-10-01
 
 ## Current position
 
@@ -12,7 +12,7 @@ Accepted gameplay baseline remains **S1.42AK — LC Office Camera Enemy Balance 
 
 Latest built artifact and active gameplay candidate remains **S1.42AK-BMDSFIX1 — Black Mesa Deep Sewers Size Fix**, SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. It is not accepted and its exact regular Black Mesa x `DeepSewersFlow` gate remains passive/outstanding/unwaived.
 
-The Black Mesa x Greenhouse BMGHDIAG3 diagnostic remains a completed pair-specific runtime-compatibility PASS and diagnostic only / NEVER ACCEPT. Subsequent existing-evidence reconciliations cover Slaughterhouse, ExpandedFacility, Decrepit store / StoreFlow and Substation. `Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md` records that no additional concrete External-moon pair can be resolved from already-ingested evidence without acquiring new evidence. `Current/206_S1.42AK_EXTERNAL_OWNER_RULE_APPLICABILITY_CLOSURE_RECONCILIATION.md` closes the separate External owner-rule applicability gate. Exact BMAFDIAG1 bytes are now published/indexed and the next bounded evidence acquisition is its Black Mesa x Abandoned Foundry runtime diagnostic under `Current/211_S1.42AK_BMAFDIAG1_RUNTIME_ACTIVATION.md`; after activation integration, `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFDIAG1` solely for diagnostic attribution. `BuildSpecs/current.json` remains disabled and BMDSFIX1 remains unaccepted with its passive Deep Sewers gate unchanged.
+The long-name BMAFDIAG1 Black Mesa x Abandoned Foundry diagnostic remains preloader-blocked at the proven 260/262-character critical paths and is **DO_NOT_RERUN**. Its exact short-identity successor **S1.42AK-BMAFDIAG1PATH1** is published, indexed and runtime-armed only for the bounded diagnostic: profile SHA-256 `423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91`, projected critical paths 219/221, inherited diagnostic DLL/config bytes unchanged. `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFDIAG1PATH1` solely for Gale resolution/evidence attribution; `BuildSpecs/current.json` remains disabled and `AUTO_BUILD_RESULT` remains BMDSFIX1. Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN` pending runtime evidence.
 
 ## Selected scope
 
@@ -26,7 +26,9 @@ Plan: `BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md`.
 
 ## Exact next selected-scope action
 
-Use the completed owner-rule applicability closure only as selection-layer input to the remaining compatibility/safety work. Before authoring a universal availability candidate or newly enabling any absent pairing, select the exact pairing/restriction being changed and satisfy the investigation plan's pair-specific generation, entrance/topology, traversal, routing/NavMesh and duplicate-registration safety obligations. Preserve the unchanged historical B3 matrix, explicit Oxyde ordinary-generation exception, Shatteredrooms exclusions, and the passive/outstanding/unwaived regular BMDSFIX1 Black Mesa x `DeepSewersFlow` gate. Do not create or release a runtime/build merely from the owner-rule closure and do not implement a universal availability override yet.
+Import the exact active S1.42AK-BMAFDIAG1PATH1 profile through the canonical repository-driven Gale v2.4.5 launcher, run one bounded Black Mesa x Abandoned Foundry diagnostic, exercise the main entrance and alternate entrance IDs 1, 2 and 3 in both directions where practical, then upload that run's exact BepInEx/LogOutput.log with the BMAFDIAG1PATH1 build-specific standalone PowerShell uploader. Do not alter profile/config/package/plugin/gameplay bytes during the test. Treat the result as diagnostic-only / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.
+
+The PATH1 runtime remains diagnostic-only and cannot accept BMDSFIX1, waive the regular DeepSewersFlow gate, or authorize a universal availability override. The historical Phase-B3 matrix, Oxyde ordinary-generation exception, Shatteredrooms exclusions and Black Mesa/Pikmin routing closure remain unchanged.
 
 ## Completed LC Office scrap scope
 

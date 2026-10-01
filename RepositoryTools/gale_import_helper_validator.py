@@ -14,7 +14,7 @@ LIFECYCLE = ROOT / "Knowledge/CURRENT_LIFECYCLE.md"
 PATH_GUARD = ROOT / "RepositoryTools/gale_profile_path_length_guard.py"
 
 BASE_REVISION = "2026-09-05-import-uia-v2.2-materialization-proof"
-V24_REVISION = "2026-10-01-import-uia-v2.4.4-runtime-path-budget-guard"
+V24_REVISION = "2026-10-01-import-uia-v2.4.5-one-hop-accepted-baseline-parent-chain"
 BASE_SIGNATURE = f"$helperRevision='{BASE_REVISION}'"
 V24_SIGNATURE = f"$helperRevision='{V24_REVISION}'"
 
@@ -102,6 +102,10 @@ def main() -> int:
         "$diagBuild.profile_name",
         "$state.selected_scope.diagnostic_parent_revision",
         "PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED",
+        "PUBLISHED_DIAGNOSTIC_PRELOADER_PATH_LENGTH_BLOCKED_DO_NOT_RERUN_NOT_ACCEPTED",
+        "$parentAnchoredToAuto",
+        "$parentAnchoredToAccepted",
+        "Blocked diagnostic parent",
         "if(([string]$diag.base_build_id) -eq ([string]$build.build_id))",
         "$state.accepted_baseline",
         "elseif(([string]$diag.base_build_id) -eq ([string]$state.accepted_baseline.build_id))",
@@ -201,7 +205,7 @@ def main() -> int:
     if "path-length" not in gale.lower() or "255" not in gale:
         fail("Gale workflow authority does not document the permanent runtime path-length budget")
 
-    print("PASS: Gale import helper v2.4.4 runtime path-budget + direct AUTO/accepted-baseline + one-hop diagnostic-parent chain + fail-closed materialization regression contract validated")
+    print("PASS: Gale import helper v2.4.5 runtime path-budget + direct AUTO/accepted-baseline + one-hop parent-to-AUTO-or-accepted-baseline chain + fail-closed materialization regression contract validated")
     return 0
 
 
