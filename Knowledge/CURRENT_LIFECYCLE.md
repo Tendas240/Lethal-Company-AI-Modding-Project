@@ -263,12 +263,23 @@ The current long-name BMAFDIAG1 profile is therefore **DO NOT RERUN**. This is l
 
 Permanent prevention is now two-layered: `RepositoryTools/gale_profile_path_length_guard.py` enforces the 255-character repository build/review budget, and canonical Gale wrapper revision `2026-10-01-import-uia-v2.4.4-runtime-path-budget-guard` rechecks the actual local Gale root before destructive replacement. No Windows policy change, loader workaround, package removal or manual DLL relocation is authorized.
 
+## BMAFDIAG1PATH1 short-identity source/static successor — integrated / inactive
+
+`Current/213_S1.42AK_BMAFDIAG1PATH1_SOURCE_STATIC_INTEGRATION_RECONCILIATION.md` records the completed source/static integration of the separately versioned identity-only successor.
+
+Exact parent remains published BMAFDIAG1 SHA-256 `b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2`. The successor build ID is `S1.42AK-BMAFDIAG1PATH1` and its short profile identity is `LC V1 S1.42AK-BMAFD1P1`. The permanent path guard projects the two critical runtime paths at **219 / 221** characters, below the **255**-character project budget.
+
+PR #206 final head `956b1cf7f1ed9c3692a8e80415a94df03d67fc89` passed the source/static gate run `36896965666` (#2) and Knowledge Architecture run `36896965783` (#894), then merged to `main` as `c3654c04c29914b8185a89778cc642d20f7497f3`. Permanent main Knowledge Architecture run `36897084059` (#895) passed.
+
+The successor recipe contains zero config/package/mod-state/file-injection/plugin-build changes. It is **not built, not published, not indexed, not Gale-imported and not runtime-armed**. A later inactive review build must prove the exact 337-member parent set and an `export.r2x` profileName-only delta while preserving the diagnostic DLL and frozen Foundry LLL config bytes.
+
 ## Live execution state
 
 - Accepted baseline: **S1.42AK**.
 - Latest built artifact / active gameplay candidate: **S1.42AK-BMDSFIX1 — not accepted**.
 - Runtime/evidence pointer: **S1.42AK-BMDSFIX1**, restored after de-arming the blocked BMAFDIAG1 identity; this is not acceptance authority.
 - BMAFDIAG1: **published + indexed / preloader path-length blocked / current long identity DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT / Black Mesa x Abandoned Foundry NOT_YET_PROVEN**.
+- BMAFDIAG1PATH1: **source/static integrated / short identity LC V1 S1.42AK-BMAFD1P1 / 219-221 projected runtime paths / inactive review build required / not built or armed**.
 - Permanent Gale path-length protection: **repository build/review guard + local pre-destructive import guard**.
 - BMGHDIAG3: **completed Black Mesa x Greenhouse runtime-compatibility PASS / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active**.
 - BMDSFIX1 regular Black Mesa x `DeepSewersFlow` gameplay qualification: **passive / outstanding / unwaived**; no dedicated reroll is released.
@@ -279,9 +290,7 @@ Permanent prevention is now two-layered: `RepositoryTools/gale_profile_path_leng
 
 ## Exact next project action
 
-Prepare a separately versioned identity-only short-name successor to exact published BMAFDIAG1. Use the exact BMAFDIAG1 profile as immutable base and change only `export.r2x` profile identity metadata. The proposed short identity must pass `RepositoryTools/gale_profile_path_length_guard.py` before review.
-
-Then perform the normal bounded source/static, inactive review-build, exact-byte publication, profile-index and runtime-activation gates. Do **not** rerun the current long-name BMAFDIAG1 profile, and do not mutate its diagnostic DLL, Foundry config, packages or gameplay bytes. No Black Mesa x Abandoned Foundry runtime test is authorized until the short identity-only successor is separately activated and exact-head CI-green.
+Execute a separately bounded inactive review build for S1.42AK-BMAFDIAG1PATH1 from the exact published BMAFDIAG1 parent SHA-256 b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2. Prove that the resulting review profile keeps the exact 337-member archive set and changes only export.r2x profileName to LC V1 S1.42AK-BMAFD1P1 while preserving the exact BMAFDIAG1 diagnostic DLL, Foundry LLL config, packages and all gameplay bytes. The review must pass the permanent Gale path-length guard and remain inactive / not published / not indexed / not Gale-imported / not runtime-armed. Do not rerun the long-name BMAFDIAG1 profile and do not start a Black Mesa x Abandoned Foundry runtime test.
 
 ## Permanent Gale workflow
 
