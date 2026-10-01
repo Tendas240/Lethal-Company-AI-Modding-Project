@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Execute a separately bounded exact-byte publication checkpoint for S1.42AK-BMAFDIAG1PATH1 using only frozen Actions artifact 11180586234 from review run 36898174164. Reverify artifact ZIP SHA-256 98b9285a48cba4d78b48140289d7b8b4eaaad65778d9a59ee06826f5add88fae and exact review profile SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 before materialization. Publish those exact reviewed bytes and readable snapshot without rebuilding. Do not profile-index, Gale-import, runtime-arm, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt, accept BMDSFIX1, or rerun the long-name BMAFDIAG1 profile in that publication gate.
+Execute the separately bounded S1.42AK-BMAFDIAG1PATH1 profile-index mapping reconciliation. Register the exact published profile path Profiles/LC V1 S1.42AK-BMAFD1P1.r2z with build ID S1.42AK-BMAFDIAG1PATH1 and SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 in the canonical mapping authority required by BuildSystem/index_profile.py, following the existing BMAFDIAG1 and BMDSFIX1-DIAG1PATH1 precedents. Then let the profile-index workflow generate and commit ProfileSources/S1.42AK-BMAFDIAG1PATH1/PROFILE_INDEX_RESULT.json and verify the exact-head Knowledge Architecture gate. Do not Gale-import, runtime-arm, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt, accept S1.42AK-BMDSFIX1, or rerun the long-name BMAFDIAG1 profile during this index gate.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
