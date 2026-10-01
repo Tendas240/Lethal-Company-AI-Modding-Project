@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Execute a separately bounded inactive review build for S1.42AK-BMAFDIAG1PATH1 from the exact published BMAFDIAG1 parent SHA-256 b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2. Prove that the resulting review profile keeps the exact 337-member archive set and changes only export.r2x profileName to LC V1 S1.42AK-BMAFD1P1 while preserving the exact BMAFDIAG1 diagnostic DLL, Foundry LLL config, packages and all gameplay bytes. The review must pass the permanent Gale path-length guard and remain inactive / not published / not indexed / not Gale-imported / not runtime-armed. Do not rerun the long-name BMAFDIAG1 profile and do not start a Black Mesa x Abandoned Foundry runtime test.
+Execute a separately bounded exact-byte publication checkpoint for S1.42AK-BMAFDIAG1PATH1 using only frozen Actions artifact 11180586234 from review run 36898174164. Reverify artifact ZIP SHA-256 98b9285a48cba4d78b48140289d7b8b4eaaad65778d9a59ee06826f5add88fae and exact review profile SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 before materialization. Publish those exact reviewed bytes and readable snapshot without rebuilding. Do not profile-index, Gale-import, runtime-arm, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt, accept BMDSFIX1, or rerun the long-name BMAFDIAG1 profile in that publication gate.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

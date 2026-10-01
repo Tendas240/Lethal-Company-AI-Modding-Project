@@ -273,13 +273,25 @@ PR #206 final head `956b1cf7f1ed9c3692a8e80415a94df03d67fc89` passed the source/
 
 The successor recipe contains zero config/package/mod-state/file-injection/plugin-build changes. It is **not built, not published, not indexed, not Gale-imported and not runtime-armed**. A later inactive review build must prove the exact 337-member parent set and an `export.r2x` profileName-only delta while preserving the diagnostic DLL and frozen Foundry LLL config bytes.
 
+## BMAFDIAG1PATH1 inactive review build — PASS / exact bytes frozen
+
+`Current/214_S1.42AK_BMAFDIAG1PATH1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md` records the completed inactive review-build checkpoint.
+
+PR #208 exact head `9191dcf3d71853ff4f8cb62d85b3b2c577680846` passed the BMAFDIAG1PATH1 review-build gate run `36898174164` (#1) and Knowledge Architecture run `36898174114` (#898). The review infrastructure merged to `main` as `18c37d2e4f8c4eb6642f9d28837a86fa27e93b92`, whose permanent Knowledge Architecture run `36898411415` (#899) passed.
+
+Frozen Actions artifact `11180586234`, name `S1.42AK-BMAFDIAG1PATH1-review-1379363b47395517dc02acc66fb77f37c9f7648a`, has ZIP SHA-256 `98b9285a48cba4d78b48140289d7b8b4eaaad65778d9a59ee06826f5add88fae`. Exact review profile SHA-256 is `423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91`. Independent downloaded-artifact rehashing matched the artifact digest, review profile and protected BMAFDIAG1 DLL / Foundry LLL config / S1.42AB normalizer identities.
+
+Relative to exact published BMAFDIAG1, the review profile preserves the exact 337-member order/set and changes only `export.r2x` profile identity to `LC V1 S1.42AK-BMAFD1P1`. Package/config/mod-state changes and local plugin builds are zero. Projected critical Gale runtime paths remain 219/221 under the 255-character budget.
+
+The review bytes are **not published, not indexed, not Gale-imported and not runtime-armed**. Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN`. The next gate must publish the exact frozen artifact without rebuilding.
+
 ## Live execution state
 
 - Accepted baseline: **S1.42AK**.
 - Latest built artifact / active gameplay candidate: **S1.42AK-BMDSFIX1 — not accepted**.
 - Runtime/evidence pointer: **S1.42AK-BMDSFIX1**, restored after de-arming the blocked BMAFDIAG1 identity; this is not acceptance authority.
 - BMAFDIAG1: **published + indexed / preloader path-length blocked / current long identity DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT / Black Mesa x Abandoned Foundry NOT_YET_PROVEN**.
-- BMAFDIAG1PATH1: **source/static integrated / short identity LC V1 S1.42AK-BMAFD1P1 / 219-221 projected runtime paths / inactive review build required / not built or armed**.
+- BMAFDIAG1PATH1: **inactive review PASS / exact profile SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 frozen in artifact 11180586234 / not published, indexed or armed**.
 - Permanent Gale path-length protection: **repository build/review guard + local pre-destructive import guard**.
 - BMGHDIAG3: **completed Black Mesa x Greenhouse runtime-compatibility PASS / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active**.
 - BMDSFIX1 regular Black Mesa x `DeepSewersFlow` gameplay qualification: **passive / outstanding / unwaived**; no dedicated reroll is released.
@@ -290,7 +302,7 @@ The successor recipe contains zero config/package/mod-state/file-injection/plugi
 
 ## Exact next project action
 
-Execute a separately bounded inactive review build for S1.42AK-BMAFDIAG1PATH1 from the exact published BMAFDIAG1 parent SHA-256 b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2. Prove that the resulting review profile keeps the exact 337-member archive set and changes only export.r2x profileName to LC V1 S1.42AK-BMAFD1P1 while preserving the exact BMAFDIAG1 diagnostic DLL, Foundry LLL config, packages and all gameplay bytes. The review must pass the permanent Gale path-length guard and remain inactive / not published / not indexed / not Gale-imported / not runtime-armed. Do not rerun the long-name BMAFDIAG1 profile and do not start a Black Mesa x Abandoned Foundry runtime test.
+Execute a separately bounded exact-byte publication checkpoint for S1.42AK-BMAFDIAG1PATH1 using only frozen Actions artifact 11180586234 from review run 36898174164. Reverify artifact ZIP SHA-256 98b9285a48cba4d78b48140289d7b8b4eaaad65778d9a59ee06826f5add88fae and exact review profile SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 before materialization. Publish those exact reviewed bytes and readable snapshot without rebuilding. Do not profile-index, Gale-import, runtime-arm, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt, accept BMDSFIX1, or rerun the long-name BMAFDIAG1 profile in that publication gate.
 
 ## Permanent Gale workflow
 
