@@ -301,23 +301,24 @@ BMAFDIAG1PATH1 is therefore published, canonically indexed and exact-head CI-gre
 
 - Accepted baseline: **S1.42AK**.
 - Latest built artifact / active gameplay candidate: **S1.42AK-BMDSFIX1 — not accepted**.
-- Runtime/evidence pointer: **S1.42AK-BMDSFIX1**, restored after de-arming the blocked BMAFDIAG1 identity; this is not acceptance authority.
-- BMAFDIAG1: **published + indexed / preloader path-length blocked / current long identity DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT / Black Mesa x Abandoned Foundry NOT_YET_PROVEN**.
-- BMAFDIAG1PATH1: **published + canonically indexed / exact profile SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 / exact-head CI-green / not Gale-imported / not runtime-armed / DIAGNOSTIC ONLY / NEVER ACCEPT**.
-- Permanent Gale path-length protection: **repository build/review guard + local pre-destructive import guard**.
-- BMGHDIAG3: **completed Black Mesa x Greenhouse runtime-compatibility PASS / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active**.
-- BMDSFIX1 regular Black Mesa x `DeepSewersFlow` gameplay qualification: **passive / outstanding / unwaived**; no dedicated reroll is released.
-- `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
-- `Current/AUTO_BUILD_RESULT.json`: remains exact `S1.42AK-BMDSFIX1`.
-- Phase-B3 remains its unchanged historical 30x53 availability/effective-weight snapshot.
-- The Oxyde ordinary-generation exception, Shatteredrooms exclusions and separate Black Mesa/Pikmin routing closure remain unchanged.
+- Runtime/evidence pointer: **S1.42AK-BMAFDIAG1PATH1 — active diagnostic target / DIAGNOSTIC ONLY / NEVER ACCEPT**; this is evidence routing, not gameplay acceptance.
+- BMAFDIAG1: **published + indexed / preloader path-length blocked / long identity DO NOT RERUN / explicit one-hop parent only**.
+- BMAFDIAG1PATH1: **published + canonically indexed + runtime-armed / exact profile SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 / projected critical paths 219 and 221 <= 255 / not Gale-imported yet / bounded Black Mesa x Abandoned Foundry test outstanding / DIAGNOSTIC ONLY / NEVER ACCEPT**.
+- Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN` until runtime evidence is ingested and decided.
+- BMGHDIAG3 remains completed Black Mesa x Greenhouse runtime-compatibility PASS / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active.
+- BMDSFIX1 regular Black Mesa x `DeepSewersFlow` gameplay qualification remains **passive / outstanding / unwaived**.
+- `BuildSpecs/current.json` remains disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
+- `Current/AUTO_BUILD_RESULT.json` remains exact `S1.42AK-BMDSFIX1`.
+- The historical Phase-B3 matrix, Oxyde ordinary-generation exception, Shatteredrooms exclusions and separate Black Mesa/Pikmin routing closure remain unchanged.
 
 ## Exact next project action
 
-Execute the separately bounded S1.42AK-BMAFDIAG1PATH1 runtime-activation checkpoint for the already-published and canonically indexed exact bytes. Re-verify profile Profiles/LC V1 S1.42AK-BMAFD1P1.r2z at SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 and ProfileSources/S1.42AK-BMAFDIAG1PATH1/PROFILE_INDEX_RESULT.json, then update runtime/evidence routing only as required for that diagnostic activation. Do not rebuild or alter profile/DLL/config/package bytes, do not accept S1.42AK-BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow qualification, and do not rerun the long-name BMAFDIAG1 identity.
+Import the exact active S1.42AK-BMAFDIAG1PATH1 profile through the canonical repository-driven Gale v2.4.5 launcher, run one bounded Black Mesa x Abandoned Foundry diagnostic, exercise the main entrance and alternate entrance IDs 1, 2 and 3 in both directions where practical, then upload that run's exact BepInEx/LogOutput.log with the BMAFDIAG1PATH1 build-specific standalone PowerShell uploader. Do not alter profile/config/package/plugin/gameplay bytes during the test. Treat the result as diagnostic-only / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.
+
+No gameplay run is authorized from branch-only state. The commands in `Current/218_S1.42AK_BMAFDIAG1PATH1_RUNTIME_ACTIVATION.md` become executable test instructions only after this activation is integrated to `main` and the permanent exact-head Knowledge Architecture gate is green.
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, now revision `2026-10-01-import-uia-v2.4.4-runtime-path-budget-guard`. It retains the direct AUTO, direct accepted-baseline and explicit one-hop diagnostic-parent authority shapes and adds an exact-local-root path-budget check before destructive profile replacement.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, now revision `2026-10-01-import-uia-v2.4.5-one-hop-accepted-baseline-parent-chain`. It preserves the runtime path-length guard plus the existing direct AUTO/direct accepted-baseline/completed-parent -> AUTO paths, and adds only the explicit preloader-blocked parent -> accepted-baseline one-hop shape required by BMAFDIAG1PATH1. No recursive or generic diagnostic fallback exists.
 
-`RuntimeInbox/ACTIVE_BUILD.txt` is restored to exact `S1.42AK-BMDSFIX1` after de-arming the blocked long-name diagnostic. `CURRENT_STATE.selected_scope.diagnostic_revision` preserves BMAFDIAG1 as historical/current-scope diagnostic evidence with `runtime_armed=false`, but it is no longer a Gale-import target. A later short-name successor activation must explicitly move runtime/evidence routing again. `AUTO_BUILD_RESULT` remains BMDSFIX1.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFDIAG1PATH1` now resolves through the active diagnostic build-result, explicit blocked BMAFDIAG1 parent and exact accepted S1.42AK identity. `AUTO_BUILD_RESULT` and `BuildSpecs/current.json` remain BMDSFIX1 authorities.

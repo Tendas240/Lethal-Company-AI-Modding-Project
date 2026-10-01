@@ -7,7 +7,7 @@
 **Implementation:** `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` (canonical launcher), `RuntimeTools/ReplaceActiveGaleProfile.ps1` (validated v2.2 importer base)  
 **Related:** `Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`, `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`, `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`, `Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`  
 **Last-Validated:** 2026-09-04  
-**Last-Hardened:** 2026-10-01 (`2026-10-01-import-uia-v2.4.4-runtime-path-budget-guard`; adds a fail-closed local Gale runtime path-length budget before destructive replacement while preserving the direct AUTO, accepted-baseline and explicit one-hop diagnostic paths plus the validated UI/import path)
+**Last-Hardened:** 2026-10-01 (`2026-10-01-import-uia-v2.4.5-one-hop-accepted-baseline-parent-chain`; preserves the runtime path-length budget and adds only an exact one-hop blocked-diagnostic-parent -> accepted-baseline authority edge for BMAFDIAG1PATH1)
 
 ## Canonical launcher
 
@@ -22,9 +22,9 @@ Before presenting it, `RuntimeInbox/ACTIVE_BUILD.txt` must resolve fail-closed t
 1. **normal built-artifact path:** `ACTIVE_BUILD == Current/AUTO_BUILD_RESULT.json.build_id`;
 2. **direct AUTO diagnostic path:** the active `selected_scope.diagnostic_revision` is explicitly authorized, its own build-result matches its output/base identity, and its base binds directly to `AUTO_BUILD_RESULT`;
 3. **direct accepted-baseline diagnostic path:** the same active diagnostic/build-result/controller checks pass, and its base build ID/profile/SHA bind exactly to `CURRENT_STATE.accepted_baseline`; this permits a diagnostic built directly from the accepted baseline even while `AUTO_BUILD_RESULT` legitimately points at a separate active gameplay candidate; or
-4. **one-hop diagnostic-parent path:** the active `diagnostic_revision` is explicitly authorized, its base identity matches exactly one `selected_scope.diagnostic_parent_revision`, that parent has the exact parent status `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED`, the parent's own build-result matches it, and the parent itself binds directly to `AUTO_BUILD_RESULT`.
+4. **one-hop diagnostic-parent path:** the active `diagnostic_revision` is explicitly authorized and its base identity matches exactly one `selected_scope.diagnostic_parent_revision` whose own build-result matches it. The parent must then use exactly one reviewed anchor: status `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED` with a direct exact bind to `AUTO_BUILD_RESULT`, or status `PUBLISHED_DIAGNOSTIC_PRELOADER_PATH_LENGTH_BLOCKED_DO_NOT_RERUN_NOT_ACCEPTED` with a direct exact build/profile/SHA bind to `CURRENT_STATE.accepted_baseline`.
 
-The one-hop shape is deliberately **not recursive**, and the accepted-baseline path is not a generic fallback: build ID, profile path and SHA-256 must all match the canonical accepted baseline exactly. No other `ACTIVE_BUILD` / `AUTO_BUILD_RESULT` mismatch is permitted. Diagnostic resolution changes only repository target selection; it does not promote a diagnostic artifact, replace the gameplay candidate or weaken download/import integrity checks.
+The one-hop shape is deliberately **not recursive**, and neither accepted-baseline edge is a generic fallback: build ID, profile path and SHA-256 must all match the canonical accepted baseline exactly, and the one-hop accepted-baseline edge additionally requires the exact preloader-blocked / DO_NOT_RERUN parent status. No other `ACTIVE_BUILD` / `AUTO_BUILD_RESULT` mismatch is permitted. Diagnostic resolution changes only repository target selection; it does not promote a diagnostic artifact, replace the gameplay candidate or weaken download/import integrity checks.
 
 The v2.4 launcher deliberately wraps the already user-validated v2.2 importer instead of duplicating its UI Automation implementation. It first requires the exact expected v2.2 source-revision signature, replaces only the export-text reader, critical-materialization functions and repository target-resolution block in memory, stamps the current v2.4.x revision, and then executes the resulting helper. If the underlying v2.2 source drifts, v2.4 refuses to run until that drift is reviewed.
 
@@ -79,7 +79,7 @@ v2.4 preserves the v2.3 package-root semantics, closes the false-positive path b
 - package-root searches still require exactly one non-empty expected DLL; zero, empty, or duplicate matches fail closed;
 - normal targets still require exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
 - a mismatch is accepted only through the exact `CURRENT_STATE.controllers.runtime_active_build` + `selected_scope.diagnostic_revision` binding and referenced build-result crosschecks;
-- a direct diagnostic must bind either to the current `AUTO_BUILD_RESULT` or exactly to `CURRENT_STATE.accepted_baseline` by build ID/profile/SHA; a second-generation diagnostic must bind to exactly one explicit `selected_scope.diagnostic_parent_revision`, whose own build-result and base identity bind directly to `AUTO_BUILD_RESULT`;
+- a direct diagnostic must bind either to the current `AUTO_BUILD_RESULT` or exactly to `CURRENT_STATE.accepted_baseline` by build ID/profile/SHA; a second-generation diagnostic must bind to exactly one explicit `selected_scope.diagnostic_parent_revision` whose own build-result matches; that parent must bind either directly to `AUTO_BUILD_RESULT` under the completed-parent status or exactly to `CURRENT_STATE.accepted_baseline` under the preloader-blocked / DO_NOT_RERUN status;
 - no recursive or arbitrary-length diagnostic chain is accepted;
 - the wrapper refuses if the validated v2.2 helper source revision drifts or if the legacy defective StreamReader constructor or unconditional mismatch-abort path survives the in-memory patch.
 
@@ -112,6 +112,12 @@ BMGHDIAG3 is intentionally built directly from exact accepted S1.42AK while `Cur
 Revision `2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain` adds exactly one fail-closed authority edge: after the active controller, diagnostic status and diagnostic build-result have already matched, a direct diagnostic may bind to `CURRENT_STATE.accepted_baseline` only when its `base_build_id`, `base_profile` and `base_sha256` all match that accepted baseline exactly. The existing direct-`AUTO_BUILD_RESULT` and explicit one-hop diagnostic-parent paths remain unchanged. No recursive or arbitrary fallback is introduced.
 
 The permanent repository regression gate is `RepositoryTools/gale_import_helper_validator.py`, run by `.github/workflows/knowledge-architecture.yml`.
+
+## v2.4.5 exact one-hop blocked-parent -> accepted-baseline anchor
+
+`S1.42AK-BMAFDIAG1PATH1` is an identity-only successor of exact long-name `S1.42AK-BMAFDIAG1`. The parent is intentionally preserved as preloader-blocked / `DO_NOT_RERUN` and itself derives directly from accepted `S1.42AK`, while `AUTO_BUILD_RESULT` correctly remains the separate `S1.42AK-BMDSFIX1` gameplay candidate.
+
+Revision `2026-10-01-import-uia-v2.4.5-one-hop-accepted-baseline-parent-chain` adds exactly that missing authority edge. After the active diagnostic, its build-result and its exact parent identity have all matched, the one-hop parent may bind to `CURRENT_STATE.accepted_baseline` only when the parent status is exactly `PUBLISHED_DIAGNOSTIC_PRELOADER_PATH_LENGTH_BLOCKED_DO_NOT_RERUN_NOT_ACCEPTED` and its base build ID, profile path and SHA-256 all equal the accepted baseline. The existing direct-AUTO, direct accepted-baseline and completed-parent -> AUTO paths remain unchanged. No recursive, arbitrary-length or generic fallback is introduced.
 
 ## Critical package-root contract
 

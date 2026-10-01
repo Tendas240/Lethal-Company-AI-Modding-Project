@@ -217,7 +217,7 @@ def check_live_state() -> None:
     diagnostic_direct_accepted = (
         diagnostic_direct_accepted_with_candidate or diagnostic_direct_accepted_without_candidate
     )
-    diagnostic_one_hop = bool(
+    diagnostic_one_hop_candidate = bool(
         diagnostic_common
         and candidate_id
         and diagnostic.get("base_build_id") != candidate_id
@@ -231,6 +231,21 @@ def check_live_state() -> None:
         and parent_diagnostic.get("build_result")
         and parent_diagnostic.get("publication_evidence")
     )
+    diagnostic_one_hop_accepted = bool(
+        diagnostic_common
+        and candidate_id
+        and diagnostic.get("base_build_id") != candidate_id
+        and parent_id == diagnostic.get("base_build_id")
+        and parent_diagnostic.get("status") == "PUBLISHED_DIAGNOSTIC_PRELOADER_PATH_LENGTH_BLOCKED_DO_NOT_RERUN_NOT_ACCEPTED"
+        and diagnostic.get("base_profile") == parent_diagnostic.get("profile")
+        and diagnostic.get("base_sha256") == parent_diagnostic.get("sha256")
+        and parent_diagnostic.get("base_build_id") == a.get("build_id")
+        and parent_diagnostic.get("base_profile") == a.get("profile")
+        and parent_diagnostic.get("base_sha256") == a.get("sha256")
+        and parent_diagnostic.get("build_result")
+        and parent_diagnostic.get("publication_evidence")
+    )
+    diagnostic_one_hop = diagnostic_one_hop_candidate or diagnostic_one_hop_accepted
     diagnostic_is_runtime_target = diagnostic_direct_candidate or diagnostic_direct_accepted or diagnostic_one_hop
     if active not in known_builds and not diagnostic_is_runtime_target:
         error(f"runtime active-build controller points to unknown lineage build or explicit diagnostic runtime target: {active!r}")
