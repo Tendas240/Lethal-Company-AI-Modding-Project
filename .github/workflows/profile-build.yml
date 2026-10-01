@@ -40,6 +40,9 @@ jobs:
       - name: Self-test profile builder
         run: python BuildSystem/test_profile_builder.py
 
+      - name: Validate Gale runtime path-length budget
+        run: python RepositoryTools/gale_profile_path_length_guard.py --spec BuildSpecs/current.json
+
       - name: Build and verify profile
         run: python BuildSystem/profile_builder.py BuildSpecs/current.json
 
