@@ -253,12 +253,23 @@ The permanent Gale v2.4.3 accepted-baseline direct-diagnostic resolver already s
 
 BMAFDIAG1 remains **DIAGNOSTIC ONLY / NEVER ACCEPT**. Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN` until exact runtime evidence is ingested and decided.
 
+## BMAFDIAG1 preloader path-length block — current long identity DO NOT RERUN
+
+`Current/212_S1.42AK_BMAFDIAG1_PATH_LENGTH_BLOCK_AND_GUARD_RECONCILIATION.md` supersedes the executable-runtime instruction for the current long-name diagnostic identity.
+
+The first local BMAFDIAG1 launch failed inside the BepInEx/Mono preloader before diagnostic execution. Read-only filesystem verification proved the LC Office V81 preloader DLL, base SoundAPI DLL and LethalCompany SoundAPI binding DLL were physically present at the expected nested paths. Under the observed Gale profile root, the two files named by the preloader errors produce full path lengths of exactly **260** and **262** characters. This matches the previously reconciled BMDSFIX1-DIAG1 path-length blocker exactly.
+
+The current long-name BMAFDIAG1 profile is therefore **DO NOT RERUN**. This is launch-block evidence only, not a BMAFDIAG1 runtime rejection and not Black Mesa x Abandoned Foundry incompatibility evidence. Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN`.
+
+Permanent prevention is now two-layered: `RepositoryTools/gale_profile_path_length_guard.py` enforces the 255-character repository build/review budget, and canonical Gale wrapper revision `2026-10-01-import-uia-v2.4.4-runtime-path-budget-guard` rechecks the actual local Gale root before destructive replacement. No Windows policy change, loader workaround, package removal or manual DLL relocation is authorized.
+
 ## Live execution state
 
 - Accepted baseline: **S1.42AK**.
 - Latest built artifact / active gameplay candidate: **S1.42AK-BMDSFIX1 — not accepted**.
-- Runtime/evidence pointer after activation integration: **S1.42AK-BMAFDIAG1**.
-- BMAFDIAG1: **published + indexed / active diagnostic runtime target / test outstanding / DIAGNOSTIC ONLY / NEVER ACCEPT / Black Mesa x Abandoned Foundry NOT_YET_PROVEN**.
+- Runtime/evidence pointer: **S1.42AK-BMAFDIAG1**, retained for attribution/history; it is not acceptance authority and the current long identity is no longer import-authorized.
+- BMAFDIAG1: **published + indexed / preloader path-length blocked / current long identity DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT / Black Mesa x Abandoned Foundry NOT_YET_PROVEN**.
+- Permanent Gale path-length protection: **repository build/review guard + local pre-destructive import guard**.
 - BMGHDIAG3: **completed Black Mesa x Greenhouse runtime-compatibility PASS / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active**.
 - BMDSFIX1 regular Black Mesa x `DeepSewersFlow` gameplay qualification: **passive / outstanding / unwaived**; no dedicated reroll is released.
 - `BuildSpecs/current.json`: disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
@@ -268,10 +279,12 @@ BMAFDIAG1 remains **DIAGNOSTIC ONLY / NEVER ACCEPT**. Black Mesa x Abandoned Fou
 
 ## Exact next project action
 
-After this activation is integrated on `main` and exact-head CI is green, import the exact active S1.42AK-BMAFDIAG1 profile through the canonical repository-driven Gale v2.4.3 launcher. Run one bounded Black Mesa x Abandoned Foundry diagnostic, verify arming and exact Foundry singleton selection, allow generation to complete, and directly traverse entrance IDs 0 through 3 in both directions where practical. Then upload that exact run's `BepInEx/LogOutput.log` with the BMAFDIAG1 build-specific standalone PowerShell uploader recorded in `Current/211_S1.42AK_BMAFDIAG1_RUNTIME_ACTIVATION.md`.
+Prepare a separately versioned identity-only short-name successor to exact published BMAFDIAG1. Use the exact BMAFDIAG1 profile as immutable base and change only `export.r2x` profile identity metadata. The proposed short identity must pass `RepositoryTools/gale_profile_path_length_guard.py` before review.
 
-Do not rebuild or mutate profile/config/package/plugin bytes during the test. BMAFDIAG1 can never be accepted as gameplay, BMDSFIX1 remains unaccepted, and its passive Black Mesa x `DeepSewersFlow` gate is not waived by this diagnostic.
+Then perform the normal bounded source/static, inactive review-build, exact-byte publication, profile-index and runtime-activation gates. Do **not** rerun the current long-name BMAFDIAG1 profile, and do not mutate its diagnostic DLL, Foundry config, packages or gameplay bytes. No Black Mesa x Abandoned Foundry runtime test is authorized until the short identity-only successor is separately activated and exact-head CI-green.
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, exact validated revision `2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain`. After activation integration, `RuntimeInbox/ACTIVE_BUILD.txt` identifies exact `S1.42AK-BMAFDIAG1`, which resolves through `CURRENT_STATE.selected_scope.diagnostic_revision`, the BMAFDIAG1 build-result identity and exact accepted S1.42AK base identity. `AUTO_BUILD_RESULT` remains BMDSFIX1 and is not rewritten for the diagnostic.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, now revision `2026-10-01-import-uia-v2.4.4-runtime-path-budget-guard`. It retains the direct AUTO, direct accepted-baseline and explicit one-hop diagnostic-parent authority shapes and adds an exact-local-root path-budget check before destructive profile replacement.
+
+`RuntimeInbox/ACTIVE_BUILD.txt` still identifies exact `S1.42AK-BMAFDIAG1` for runtime/evidence attribution until a later explicit successor activation changes routing. Because `CURRENT_STATE.selected_scope.diagnostic_revision` now classifies the current long diagnostic as preloader-blocked rather than an active diagnostic target, the canonical resolver must fail closed rather than re-import it. `AUTO_BUILD_RESULT` remains BMDSFIX1 and is not rewritten for the diagnostic.
