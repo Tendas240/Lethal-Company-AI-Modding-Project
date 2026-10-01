@@ -267,7 +267,7 @@ Permanent prevention is now two-layered: `RepositoryTools/gale_profile_path_leng
 
 - Accepted baseline: **S1.42AK**.
 - Latest built artifact / active gameplay candidate: **S1.42AK-BMDSFIX1 — not accepted**.
-- Runtime/evidence pointer: **S1.42AK-BMAFDIAG1**, retained for attribution/history; it is not acceptance authority and the current long identity is no longer import-authorized.
+- Runtime/evidence pointer: **S1.42AK-BMDSFIX1**, restored after de-arming the blocked BMAFDIAG1 identity; this is not acceptance authority.
 - BMAFDIAG1: **published + indexed / preloader path-length blocked / current long identity DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT / Black Mesa x Abandoned Foundry NOT_YET_PROVEN**.
 - Permanent Gale path-length protection: **repository build/review guard + local pre-destructive import guard**.
 - BMGHDIAG3: **completed Black Mesa x Greenhouse runtime-compatibility PASS / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active**.
@@ -287,4 +287,4 @@ Then perform the normal bounded source/static, inactive review-build, exact-byte
 
 The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, now revision `2026-10-01-import-uia-v2.4.4-runtime-path-budget-guard`. It retains the direct AUTO, direct accepted-baseline and explicit one-hop diagnostic-parent authority shapes and adds an exact-local-root path-budget check before destructive profile replacement.
 
-`RuntimeInbox/ACTIVE_BUILD.txt` still identifies exact `S1.42AK-BMAFDIAG1` for runtime/evidence attribution until a later explicit successor activation changes routing. Because `CURRENT_STATE.selected_scope.diagnostic_revision` now classifies the current long diagnostic as preloader-blocked rather than an active diagnostic target, the canonical resolver must fail closed rather than re-import it. `AUTO_BUILD_RESULT` remains BMDSFIX1 and is not rewritten for the diagnostic.
+`RuntimeInbox/ACTIVE_BUILD.txt` is restored to exact `S1.42AK-BMDSFIX1` after de-arming the blocked long-name diagnostic. `CURRENT_STATE.selected_scope.diagnostic_revision` preserves BMAFDIAG1 as historical/current-scope diagnostic evidence with `runtime_armed=false`, but it is no longer a Gale-import target. A later short-name successor activation must explicitly move runtime/evidence routing again. `AUTO_BUILD_RESULT` remains BMDSFIX1.
