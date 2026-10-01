@@ -99,6 +99,11 @@ jobs:
       - name: Validate Gale import helper fail-closed regression contract
         run: python RepositoryTools/gale_import_helper_validator.py
 
+      - name: Validate Gale runtime path-length budget
+        run: |
+          python RepositoryTools/gale_profile_path_length_guard.py --self-test
+          python RepositoryTools/gale_profile_path_length_guard.py
+
       - name: Validate S1.42AC runtime SHA provenance
         run: python RepositoryTools/runtime_sha_provenance_validator.py
 
