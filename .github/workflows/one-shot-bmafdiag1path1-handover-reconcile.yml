@@ -1,0 +1,242 @@
+name: One-shot BMAFDIAG1PATH1 publication handover reconciliation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/one-shot-bmafdiag1path1-handover-reconcile.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.head.repo.full_name == github.repository &&
+       github.event.pull_request.head.ref == 'handover/reconcile-bmafdiag1path1-publication')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reconcile publication-complete handover authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          next_action = (
+              "Execute the separately bounded S1.42AK-BMAFDIAG1PATH1 profile-index mapping reconciliation. "
+              "Register the exact published profile path Profiles/LC V1 S1.42AK-BMAFD1P1.r2z with build ID "
+              "S1.42AK-BMAFDIAG1PATH1 and SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 "
+              "in the canonical mapping authority required by BuildSystem/index_profile.py, following the existing "
+              "BMAFDIAG1 and BMDSFIX1-DIAG1PATH1 precedents. Then let the profile-index workflow generate and commit "
+              "ProfileSources/S1.42AK-BMAFDIAG1PATH1/PROFILE_INDEX_RESULT.json and verify the exact-head Knowledge "
+              "Architecture gate. Do not Gale-import, runtime-arm, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt, "
+              "accept S1.42AK-BMDSFIX1, or rerun the long-name BMAFDIAG1 profile during this index gate."
+          )
+
+          state_path = Path("Current/CURRENT_STATE.json")
+          s = json.loads(state_path.read_text(encoding="utf-8"))
+          scope = s["selected_scope"]
+          scope["status"] = "PHASE_C3_BMAFDIAG1PATH1_EXACT_BYTE_PUBLISHED_PROFILE_INDEX_MAPPING_REQUIRED_BMDSFIX1_TARGET_PASSIVE_OUTSTANDING"
+          scope["finding"] = (
+              "Exact long-name S1.42AK-BMAFDIAG1 remains published/indexed but preloader-blocked and DO_NOT_RERUN. "
+              "Its short-identity successor S1.42AK-BMAFDIAG1PATH1 has completed source/static integration, inactive "
+              "review and exact-byte publication. The exact published profile is Profiles/LC V1 S1.42AK-BMAFD1P1.r2z "
+              "with SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91, materialized "
+              "byte-for-byte from frozen Actions artifact 11180586234 by successful publication transport run "
+              "36899684349 and integrated to main as 136fbcd3328f7648e6932b65d56fa20d0753d3f7. Permanent main "
+              "Knowledge Architecture run 36899939363 / #906 passed. Automatic profile-index run 36899939386 / #29 "
+              "then failed closed before snapshot mutation because the new profile has no canonical build mapping in "
+              "Profiles/EXPECTED_HASHES.json or Current/BUILD_LINEAGE.json. BMAFDIAG1PATH1 is therefore published but "
+              "not indexed, not Gale-imported and not runtime-armed. Runtime/evidence routing remains S1.42AK-BMDSFIX1 "
+              "without accepting it, and its Black Mesa x DeepSewersFlow qualification remains passive/outstanding/unwaived."
+          )
+          scope["analysis_contract"] = (
+              "Treat exact published BMAFDIAG1PATH1 profile SHA-256 "
+              "423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 as immutable publication output. "
+              "The next gate is mapping/index reconciliation only: add the canonical build mapping required by "
+              "BuildSystem/index_profile.py, preserve the existing exact profile and 337-member identity-only contract, "
+              "and allow the repository index workflow to generate PROFILE_INDEX_RESULT.json. Do not rebuild or republish "
+              "the profile, do not change profile/DLL/config/package bytes, do not Gale-import or runtime-arm it, do not "
+              "start gameplay, and preserve active candidate S1.42AK-BMDSFIX1 / NOT ACCEPTED with its passive/unwaived "
+              "Black Mesa x DeepSewersFlow qualification. Long-name BMAFDIAG1 remains DO_NOT_RERUN."
+          )
+          scope["next_action"] = next_action
+          s["next_action"] = next_action
+
+          phase = scope.get("phase_c", {})
+          phase["black_mesa_abandoned_foundry_status"] = "NOT_YET_PROVEN_BMAFDIAG1PATH1_PUBLISHED_PROFILE_INDEX_MAPPING_REQUIRED"
+          phase["bmafdiag1path1_publication_checkpoint"] = "Current/215_S1.42AK_BMAFDIAG1PATH1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md"
+          phase["bmafdiag1path1_publication_status"] = "EXACT_BYTES_PUBLISHED_NOT_INDEXED_NOT_GALE_IMPORTED_NOT_RUNTIME_ARMED"
+          phase["bmafdiag1path1_publication_pr"] = 210
+          phase["bmafdiag1path1_publication_transport_run"] = 36899684349
+          phase["bmafdiag1path1_published_profile_commit"] = "baf97cc8f4a17c35493b42b8a6326155c5e0a0c4"
+          phase["bmafdiag1path1_publication_main_integration_commit"] = "136fbcd3328f7648e6932b65d56fa20d0753d3f7"
+          phase["bmafdiag1path1_publication_main_knowledge_architecture_run"] = 36899939363
+          phase["bmafdiag1path1_profile_index_trigger_run"] = 36899939386
+          phase["bmafdiag1path1_profile_index_trigger_status"] = "FAIL_CLOSED_CANONICAL_BUILD_MAPPING_REQUIRED_NO_INDEX_RESULT_CREATED"
+          scope["phase_c"] = phase
+
+          rev = scope["diagnostic_successor_revision"]
+          rev.update({
+              "status": "PUBLISHED_EXACT_BYTES_NOT_INDEXED_NOT_GALE_IMPORTED_NOT_RUNTIME_ARMED",
+              "profile": "Profiles/LC V1 S1.42AK-BMAFD1P1.r2z",
+              "sha256": "423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91",
+              "publication_checkpoint": "Current/215_S1.42AK_BMAFDIAG1PATH1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md",
+              "publication_verification": "BuildSpecs/S1.42AK-BMAFDIAG1PATH1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+              "publication_pr": 210,
+              "publication_transport_run": 36899684349,
+              "published_profile_commit": "baf97cc8f4a17c35493b42b8a6326155c5e0a0c4",
+              "main_integration_commit": "136fbcd3328f7648e6932b65d56fa20d0753d3f7",
+              "main_knowledge_architecture_run": 36899939363,
+              "main_knowledge_architecture_run_number": 906,
+              "profile_index_trigger_run": 36899939386,
+              "profile_index_trigger_run_number": 29,
+              "profile_index_status": "FAIL_CLOSED_CANONICAL_BUILD_MAPPING_REQUIRED_NO_INDEX_RESULT_CREATED",
+              "published": True,
+              "indexed": False,
+              "runtime_armed": False,
+              "next_gate": "PROFILE_INDEX_MAPPING_RECONCILIATION"
+          })
+
+          scope["bmafdiag1path1_publication_checkpoint"] = "Current/215_S1.42AK_BMAFDIAG1PATH1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md"
+          state_path.write_text(json.dumps(s, indent=2) + "\n", encoding="utf-8")
+
+          life_path = Path("Knowledge/CURRENT_LIFECYCLE.md")
+          life = life_path.read_text(encoding="utf-8")
+          old = (
+              "The review bytes are **not published, not indexed, not Gale-imported and not runtime-armed**. "
+              "Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN`. The next gate must publish the exact "
+              "frozen artifact without rebuilding."
+          )
+          new = (
+              "The exact reviewed bytes are now published at `Profiles/LC V1 S1.42AK-BMAFD1P1.r2z` with SHA-256 "
+              "`423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91` via publication PR #210 and main "
+              "integration `136fbcd3328f7648e6932b65d56fa20d0753d3f7`. Permanent main Knowledge Architecture run "
+              "`36899939363` / #906 passed. Automatic profile-index run `36899939386` / #29 failed closed because "
+              "the new profile has no canonical build mapping in `Profiles/EXPECTED_HASHES.json` or "
+              "`Current/BUILD_LINEAGE.json`; no `PROFILE_INDEX_RESULT.json` was created. The successor therefore "
+              "remains not indexed, not Gale-imported and not runtime-armed. Black Mesa x Abandoned Foundry remains "
+              "`NOT_YET_PROVEN`."
+          )
+          if old not in life:
+              raise SystemExit("expected lifecycle review boundary not found")
+          life = life.replace(old, new, 1)
+          h = "## Exact next project action"
+          i = life.index(h)
+          body = i + len(h)
+          j = life.index("\n## ", body)
+          life = life[:body] + "\n\n" + next_action + "\n" + life[j:]
+          life_path.write_text(life, encoding="utf-8")
+
+          map_path = Path("Current/PROJECT_KNOWLEDGE_MAP.md")
+          m = map_path.read_text(encoding="utf-8")
+          old_map = (
+              "The separately versioned identity-only successor **S1.42AK-BMAFDIAG1PATH1** has now completed source/static "
+              "integration and the inactive review build. Review authority is "
+              "`Current/214_S1.42AK_BMAFDIAG1PATH1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md`. Frozen artifact `11180586234` "
+              "has ZIP SHA-256 `98b9285a48cba4d78b48140289d7b8b4eaaad65778d9a59ee06826f5add88fae`; exact review profile "
+              "SHA-256 is `423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91`. The review preserves all "
+              "337 parent members and changes only `export.r2x` profileName to `LC V1 S1.42AK-BMAFD1P1`; protected "
+              "DLL/config/normalizer bytes are unchanged and independent rehashing matched. The profile remains not published, "
+              "not indexed, not Gale-imported and not runtime-armed."
+          )
+          new_map = (
+              "The separately versioned identity-only successor **S1.42AK-BMAFDIAG1PATH1** has completed source/static integration, "
+              "inactive review and exact-byte publication. Publication authority is "
+              "`Current/215_S1.42AK_BMAFDIAG1PATH1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md`; the exact published profile "
+              "`Profiles/LC V1 S1.42AK-BMAFD1P1.r2z` has SHA-256 "
+              "`423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91`. Publication PR #210 merged as "
+              "`136fbcd3328f7648e6932b65d56fa20d0753d3f7` and permanent Knowledge Architecture run `36899939363` / #906 "
+              "passed. Automatic profile-index run `36899939386` / #29 failed closed because the profile lacks a canonical "
+              "build mapping; no `PROFILE_INDEX_RESULT.json` was created. The profile is therefore published but not indexed, "
+              "not Gale-imported and not runtime-armed."
+          )
+          if old_map not in m:
+              raise SystemExit("expected knowledge-map successor paragraph not found")
+          m = m.replace(old_map, new_map, 1)
+          marker = "Exact next action:"
+          k = m.rindex(marker)
+          end = m.index("\n\n## Authority rule", k)
+          m = m[:k] + "Exact next action: " + next_action + m[end:]
+          map_path.write_text(m, encoding="utf-8")
+
+          record = f"""# S1.42AK-BMAFDIAG1PATH1 Publication Handover Reconciliation
+
+          **Date:** 2026-10-01  
+          **Status:** PUBLICATION COMPLETE / MAIN-INTEGRATED / PROFILE-INDEX MAPPING REQUIRED / NOT INDEXED / NOT GALE-IMPORTED / NOT RUNTIME-ARMED
+
+          ## Purpose
+
+          This handover-critical reconciliation records the already completed exact-byte publication of `S1.42AK-BMAFDIAG1PATH1`
+          so a fresh ChatGPT session cannot repeat the publication gate from stale current-state wording.
+
+          ## Verified publication closure
+
+          - publication PR: **#210**;
+          - successful publication transport run: `36899684349` / #1;
+          - exact materialization commit: `baf97cc8f4a17c35493b42b8a6326155c5e0a0c4`;
+          - main integration: `136fbcd3328f7648e6932b65d56fa20d0753d3f7`;
+          - permanent exact-head main Knowledge Architecture: `36899939363` / #906 / push / **success**;
+          - exact published profile: `Profiles/LC V1 S1.42AK-BMAFD1P1.r2z`;
+          - exact profile SHA-256: `423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91`;
+          - publication evidence: `BuildSpecs/S1.42AK-BMAFDIAG1PATH1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md`.
+
+          ## Profile-index fail-closed result
+
+          Automatic profile-index run `36899939386` / #29 failed before any index snapshot mutation with:
+
+          `Current profile Profiles/LC V1 S1.42AK-BMAFD1P1.r2z has no canonical build mapping in Profiles/EXPECTED_HASHES.json or Current/BUILD_LINEAGE.json; refusing filename-derived snapshot directory`
+
+          No `ProfileSources/S1.42AK-BMAFDIAG1PATH1/PROFILE_INDEX_RESULT.json` was created.
+
+          This is a missing canonical mapping gate, not a publication-byte failure.
+
+          ## Preserved boundaries
+
+          - S1.42AK remains accepted.
+          - S1.42AK-BMDSFIX1 remains active gameplay candidate / **NOT ACCEPTED**.
+          - Its regular Black Mesa x `DeepSewersFlow` qualification remains passive, outstanding and unwaived.
+          - `BuildSpecs/current.json` remains disabled.
+          - `RuntimeInbox/ACTIVE_BUILD.txt` remains `S1.42AK-BMDSFIX1`.
+          - Long-name BMAFDIAG1 remains **DO NOT RERUN**.
+          - BMAFDIAG1PATH1 remains not indexed, not Gale-imported and not runtime-armed.
+          - Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN`.
+
+          ## Exact next action
+
+          {next_action}
+          """
+          record = "\n".join(line[10:] if line.startswith("          ") else line for line in record.splitlines()).strip() + "\n"
+          Path("Current/216_S1.42AK_BMAFDIAG1PATH1_PUBLICATION_HANDOVER_RECONCILIATION.md").write_text(record, encoding="utf-8")
+          PY
+
+          python RepositoryTools/render_current_navigation.py
+          python RepositoryTools/render_current_navigation.py --check
+
+      - name: Remove temporary workflow and commit atomic reconciliation
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/one-shot-bmafdiag1path1-handover-reconcile.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             Current/CURRENT_STATE.json             Knowledge/CURRENT_LIFECYCLE.md             Current/PROJECT_KNOWLEDGE_MAP.md             Current/216_S1.42AK_BMAFDIAG1PATH1_PUBLICATION_HANDOVER_RECONCILIATION.md             README.md             START_HERE_ChatGPT_Masterprompt.txt             Current/00_CURRENT_STATE.md             Current/01_HANDOVER_CORE.md             .github/workflows/one-shot-bmafdiag1path1-handover-reconcile.yml
+          git commit -m "Reconcile BMAFDIAG1PATH1 publication for handover"
+          git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
