@@ -283,7 +283,7 @@ Frozen Actions artifact `11180586234`, name `S1.42AK-BMAFDIAG1PATH1-review-13793
 
 Relative to exact published BMAFDIAG1, the review profile preserves the exact 337-member order/set and changes only `export.r2x` profile identity to `LC V1 S1.42AK-BMAFD1P1`. Package/config/mod-state changes and local plugin builds are zero. Projected critical Gale runtime paths remain 219/221 under the 255-character budget.
 
-The review bytes are **not published, not indexed, not Gale-imported and not runtime-armed**. Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN`. The next gate must publish the exact frozen artifact without rebuilding.
+The exact reviewed bytes are now published at `Profiles/LC V1 S1.42AK-BMAFD1P1.r2z` with SHA-256 `423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91` via publication PR #210 and main integration `136fbcd3328f7648e6932b65d56fa20d0753d3f7`. Permanent main Knowledge Architecture run `36899939363` / #906 passed. Automatic profile-index run `36899939386` / #29 failed closed because the new profile has no canonical build mapping in `Profiles/EXPECTED_HASHES.json` or `Current/BUILD_LINEAGE.json`; no `PROFILE_INDEX_RESULT.json` was created. The successor therefore remains not indexed, not Gale-imported and not runtime-armed. Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN`.
 
 ## Live execution state
 
@@ -302,7 +302,7 @@ The review bytes are **not published, not indexed, not Gale-imported and not run
 
 ## Exact next project action
 
-Execute a separately bounded exact-byte publication checkpoint for S1.42AK-BMAFDIAG1PATH1 using only frozen Actions artifact 11180586234 from review run 36898174164. Reverify artifact ZIP SHA-256 98b9285a48cba4d78b48140289d7b8b4eaaad65778d9a59ee06826f5add88fae and exact review profile SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 before materialization. Publish those exact reviewed bytes and readable snapshot without rebuilding. Do not profile-index, Gale-import, runtime-arm, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt, accept BMDSFIX1, or rerun the long-name BMAFDIAG1 profile in that publication gate.
+Execute the separately bounded S1.42AK-BMAFDIAG1PATH1 profile-index mapping reconciliation. Register the exact published profile path Profiles/LC V1 S1.42AK-BMAFD1P1.r2z with build ID S1.42AK-BMAFDIAG1PATH1 and SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 in the canonical mapping authority required by BuildSystem/index_profile.py, following the existing BMAFDIAG1 and BMDSFIX1-DIAG1PATH1 precedents. Then let the profile-index workflow generate and commit ProfileSources/S1.42AK-BMAFDIAG1PATH1/PROFILE_INDEX_RESULT.json and verify the exact-head Knowledge Architecture gate. Do not Gale-import, runtime-arm, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt, accept S1.42AK-BMDSFIX1, or rerun the long-name BMAFDIAG1 profile during this index gate.
 
 ## Permanent Gale workflow
 
