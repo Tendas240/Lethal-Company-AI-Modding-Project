@@ -74,7 +74,7 @@ with zipfile.ZipFile(BASE) as zf:
     require(len(names) == EXPECTED_MEMBERS, "Unexpected BMAFDIAG1 parent archive member count")
     require(len(names) == len(set(names)), "BMAFDIAG1 parent contains duplicate archive member names")
     export = zf.read("export.r2x").decode("utf-8-sig")
-    require(export.startswith("profileName: " + EXPECTED_PARENT_NAME + "\n"), "Parent export profileName drift")
+    require(export.splitlines()[0] == "profileName: " + EXPECTED_PARENT_NAME, "Parent export profileName drift")
     require(sha256(zf.read(EXPECTED_DLL)) == EXPECTED_DLL_SHA256, "BMAFDIAG1 diagnostic DLL bytes drift")
     require(sha256(zf.read(EXPECTED_LLL)) == EXPECTED_LLL_SHA256, "Frozen BMAFDIAG1 Foundry LLL config bytes drift")
 
