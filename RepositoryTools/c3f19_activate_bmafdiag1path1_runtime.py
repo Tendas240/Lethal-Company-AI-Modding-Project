@@ -458,16 +458,16 @@ integrity_md_path.write_text(imd, encoding="utf-8")
 # ---- Durable activation record ------------------------------------------
 activation = f"""# S1.42AK-BMAFDIAG1PATH1 Runtime Activation
 
-**Date:** 2026-10-01  
-**Status:** PUBLISHED / INDEXED / ACTIVE DIAGNOSTIC RUNTIME TARGET / TEST OUTSTANDING / NEVER ACCEPT  
-**Accepted gameplay baseline:** S1.42AK — unchanged  
-**Active gameplay candidate:** S1.42AK-BMDSFIX1 — unchanged / not accepted / passive Deep Sewers gate unchanged  
-**Diagnostic:** S1.42AK-BMAFDIAG1PATH1  
-**Diagnostic profile:** @@BT@@{PROFILE}@@BT@@  
-**Diagnostic profile identity:** @@BT@@{PROFILE_NAME}@@BT@@  
-**Diagnostic profile SHA-256:** @@BT@@{PROFILE_SHA}@@BT@@  
-**Inherited BMAFDIAG1 DLL SHA-256:** @@BT@@{DLL_SHA}@@BT@@  
-**Inherited Foundry LLL config SHA-256:** @@BT@@{FOUNDRY_CFG_SHA}@@BT@@  
+**Date:** 2026-10-01
+**Status:** PUBLISHED / INDEXED / ACTIVE DIAGNOSTIC RUNTIME TARGET / TEST OUTSTANDING / NEVER ACCEPT
+**Accepted gameplay baseline:** S1.42AK — unchanged
+**Active gameplay candidate:** S1.42AK-BMDSFIX1 — unchanged / not accepted / passive Deep Sewers gate unchanged
+**Diagnostic:** S1.42AK-BMAFDIAG1PATH1
+**Diagnostic profile:** @@BT@@{PROFILE}@@BT@@
+**Diagnostic profile identity:** @@BT@@{PROFILE_NAME}@@BT@@
+**Diagnostic profile SHA-256:** @@BT@@{PROFILE_SHA}@@BT@@
+**Inherited BMAFDIAG1 DLL SHA-256:** @@BT@@{DLL_SHA}@@BT@@
+**Inherited Foundry LLL config SHA-256:** @@BT@@{FOUNDRY_CFG_SHA}@@BT@@
 **Explicit diagnostic parent:** S1.42AK-BMAFDIAG1 / preloader-blocked / DO_NOT_RERUN
 
 ## Activation decision
