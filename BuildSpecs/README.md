@@ -15,6 +15,8 @@ This directory is the online control plane for profile builds.
 
 `enabled: false` means no build is requested. After a successful candidate build, `current.json` should be returned to an idle/disabled guard rather than left enabled against an already-existing output.
 
+Every new profile identity must pass `RepositoryTools/gale_profile_path_length_guard.py` before build/review. The permanent project budget is 255 characters for the registered deepest Gale/BepInEx runtime paths on the observed project-machine root; the canonical Gale importer repeats the check against the actual local root before destructive replacement. Exact historical blocked specs remain evidence only and are not valid new build targets. Do not bypass this with Windows policy changes or manual DLL relocation.
+
 ## Spec fields
 
 - `build_id`: unique build identifier, for example `S1.42A`.

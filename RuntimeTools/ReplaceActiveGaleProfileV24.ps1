@@ -1,7 +1,7 @@
 $repo='Tendas240/Lethal-Company-AI-Modding-Project'
 $headers=@{'User-Agent'='LC-Profile-Updater';'Cache-Control'='no-cache'}
 $expectedBaseRevision='$helperRevision=''2026-09-05-import-uia-v2.2-materialization-proof'''
-$replacementRevision='$helperRevision=''2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain'''
+$replacementRevision='$helperRevision=''2026-10-01-import-uia-v2.4.4-runtime-path-budget-guard'''
 
 $cache=[DateTime]::UtcNow.Ticks
 $baseUrl="https://raw.githubusercontent.com/$repo/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb=$cache"
@@ -97,6 +97,39 @@ function Get-RequiredCriticalMaterializationPaths {
     if($hasLc -and $required.Count -ne 2){throw 'LethalCompany SoundAPI binding resolved without exactly two critical materialization contracts'}
     if($hasBase -and -not $hasLc -and $required.Count -ne 1){throw 'Base SoundAPI resolved without exactly one critical materialization contract'}
     return $required
+}
+
+function Assert-GaleRuntimePathBudget {
+    param(
+        [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][string]$ProfileRoot,
+        [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][string]$ProfileName,
+        [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][string]$ExpectedExportText
+    )
+
+    $safeLimit=255
+    $contracts=@(
+        [pscustomobject]@{
+            Package='MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix'
+            RelativePath='BepInEx\patchers\MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix\LCOfficeV81Preloader\LCOfficeV81Preloader.dll'
+        },
+        [pscustomobject]@{
+            Package='loaforc-loaforcsSoundAPI_LethalCompany'
+            RelativePath='BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll'
+        }
+    )
+
+    $targetRoot=Join-Path $ProfileRoot $ProfileName
+    foreach($contract in $contracts){
+        $pattern='(?m)^\s*-\s*name:\s*'+[regex]::Escape([string]$contract.Package)+'\s*$'
+        if(-not [regex]::IsMatch($ExpectedExportText,$pattern)){continue}
+
+        $fullPath=Join-Path $targetRoot ([string]$contract.RelativePath)
+        $length=$fullPath.Length
+        Write-Host "Runtime-Pfadbudget: $length/$safeLimit - $($contract.Package)" -ForegroundColor DarkGray
+        if($length -gt $safeLimit){
+            throw "Projected Gale runtime path exceeds safe project budget ($length > $safeLimit): $fullPath. Use a shorter profile identity before import."
+        }
+    }
 }
 
 function Get-MissingCriticalImportedFiles {
@@ -228,5 +261,16 @@ if($patched.IndexOf("AUTO_BUILD_RESULT gehört zu",[System.StringComparison]::Or
     throw 'Refusing to launch: legacy unconditional ACTIVE_BUILD/AUTO_BUILD_RESULT mismatch abort survived the v2.4 patch'
 }
 
-Write-Host 'Launching canonical Gale importer with v2.4.2 fail-closed one-hop diagnostic-parent chain, export-read and recursive package-materialization contract...' -ForegroundColor Cyan
+$pathGuardCallMarker='$criticalMaterializationPaths=@(Get-RequiredCriticalMaterializationPaths -ExpectedExportText $expectedExportText)'
+$pathGuardCall=$pathGuardCallMarker+"`r`nAssert-GaleRuntimePathBudget -ProfileRoot `$root -ProfileName `$expectedProfileName -ExpectedExportText `$expectedExportText"
+$pathGuardCount=([regex]::Matches($patched,[regex]::Escape($pathGuardCallMarker))).Count
+if($pathGuardCount -ne 1){
+    throw "Refusing to patch Gale helper: expected exactly one runtime path-guard insertion point, found $pathGuardCount"
+}
+$patched=$patched.Replace($pathGuardCallMarker,$pathGuardCall)
+if(([regex]::Matches($patched,'Assert-GaleRuntimePathBudget -ProfileRoot \$root -ProfileName \$expectedProfileName -ExpectedExportText \$expectedExportText')).Count -ne 1){
+    throw 'Refusing to launch: runtime path-budget guard call is missing or ambiguous after patching'
+}
+
+Write-Host 'Launching canonical Gale importer with v2.4.4 fail-closed runtime path-budget, accepted-baseline/direct/one-hop diagnostic chain, export-read and recursive materialization contract...' -ForegroundColor Cyan
 Invoke-Expression $patched

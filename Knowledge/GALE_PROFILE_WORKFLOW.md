@@ -7,7 +7,7 @@
 **Implementation:** `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` (canonical launcher), `RuntimeTools/ReplaceActiveGaleProfile.ps1` (validated v2.2 importer base)  
 **Related:** `Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`, `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`, `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`, `Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`  
 **Last-Validated:** 2026-09-04  
-**Last-Hardened:** 2026-09-28 (`2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain`; adds a fail-closed direct accepted-baseline diagnostic anchor while preserving the direct AUTO and explicit one-hop parent paths plus the validated local UI/import path)
+**Last-Hardened:** 2026-10-01 (`2026-10-01-import-uia-v2.4.4-runtime-path-budget-guard`; adds a fail-closed local Gale runtime path-length budget before destructive replacement while preserving the direct AUTO, accepted-baseline and explicit one-hop diagnostic paths plus the validated UI/import path)
 
 ## Canonical launcher
 
@@ -124,6 +124,18 @@ If the base `loaforc-loaforcsSoundAPI` package is explicitly present without the
 
 The recursive search is deliberately constrained to each package's own Gale package root. It therefore tolerates the package's inner directory layout while remaining fail-closed against absence, empty files, or ambiguous duplicate DLLs.
 
+## Permanent runtime path-length guard
+
+Two independent gates now prevent a repeat of the Windows/Mono preloader failure first documented for the long BMDSFIX1-DIAG1 identity and reproduced by BMAFDIAG1.
+
+The repository-side guard is `RepositoryTools/gale_profile_path_length_guard.py`. Permanent Knowledge Architecture CI scans BuildSpecs against the observed project-machine Gale root and a conservative project budget of **255 characters** for the two known deepest runtime-consumed paths: the LC Office V81 preloader DLL and the LethalCompany SoundAPI binding DLL. The exact historical blocked DIAG1 and BMAFDIAG1 specs may remain as frozen evidence, but explicit single-spec validation rejects them and any new over-budget build/review identity.
+
+The canonical profile-build workflow runs the same validator against `BuildSpecs/current.json` before invoking the profile builder. New review/build specs therefore cannot become mergeable/current while projecting an over-budget identity.
+
+The v2.4.4 launcher independently recomputes the same critical paths using the **actual local Gale profile root** and the resolved target profile name after the repository artifact/export has been verified but **before any old local profile can be deleted**. An over-budget target fails closed and instructs the project to create a shorter separately versioned identity. Do not work around this guard through Windows long-path policy changes, loader patches, package removal or manual DLL relocation.
+
+The 2026-10-01 BMAFDIAG1 launch reproduced the known boundary exactly: the relevant local paths were 260 and 262 characters while the files themselves were present. That long BMAFDIAG1 identity is therefore DO-NOT-RERUN; a short identity-only successor is required before Black Mesa x Abandoned Foundry testing resumes.
+
 ## Fail-closed requirements
 
 Keep the exact workflow safety constraints from `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md` for the fully validated normal path, plus the explicit diagnostic resolver contract above, including:
@@ -141,6 +153,7 @@ Keep the exact workflow safety constraints from `Current/93_GALE_ACTIVE_PROFILE_
 - export text must be non-empty and successfully decoded before dependency contracts are derived;
 - required project-critical dependency package roots must each contain exactly one expected non-empty DLL;
 - the LethalCompany binding implies the base SoundAPI dependency even if the base package is not separately listed in export metadata;
+- before destructive local-profile replacement, compute the exact local target paths for the registered LC Office preloader and SoundAPI binding and refuse any path over the 255-character project budget;
 - on materialization timeout/failure, report the unresolved contract and preserve the downloaded `.r2z` for diagnosis;
 - if the validated importer source revision changes unexpectedly, the v2.4 wrapper must refuse rather than patch unknown code.
 

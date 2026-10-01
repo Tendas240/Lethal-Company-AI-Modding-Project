@@ -22,6 +22,12 @@ Canonical build control:
 
 A build must be guarded by its exact base profile path and SHA-256. Binary profile facts required for future reasoning must also exist in readable ProfileSources evidence.
 
+## Gale runtime path-length preflight
+
+Every new profile/review identity must pass `RepositoryTools/gale_profile_path_length_guard.py`. Permanent Knowledge Architecture CI scans repository BuildSpecs, while `.github/workflows/profile-build.yml` validates the current requested spec before a canonical build. The guard projects the known deepest LC Office preloader and SoundAPI binding runtime paths against the observed project-machine Gale root and permits at most 255 characters.
+
+Exact historical specs already proven preloader-blocked may remain in the repository as evidence, but they are not valid new build targets. The canonical Gale launcher independently checks the actual local profile root before destructive replacement, so a different local root cannot silently invalidate the repository-side projection.
+
 ## Runtime control and evidence
 
 - runtime-active/evidence-attribution pointer: `RuntimeInbox/ACTIVE_BUILD.txt`
