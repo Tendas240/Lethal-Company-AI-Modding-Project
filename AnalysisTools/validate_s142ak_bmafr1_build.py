@@ -230,7 +230,9 @@ require(current_state["active_candidate"]["build_id"] == "S1.42AK-BMDSFIX1",
 require(current_state["runtime_test_outstanding"] is True, "Existing BMDSFIX1 runtime gate must remain outstanding")
 selected_scope = current_state["selected_scope"]
 require(selected_scope["accepted_baseline"] == "S1.42AK", "Selected-scope accepted baseline drift")
-require("DO_NOT_RERUN" in selected_scope["analysis_contract"], "PATH1 DO_NOT_RERUN contract lost")
+require("DO_NOT_RERUN" in selected_scope["finding"], "PATH1 DO_NOT_RERUN lifecycle finding lost")
+require("do not rerun path1" in selected_scope["analysis_contract"].lower(),
+        "PATH1 no-rerun analysis contract lost")
 require("nine U+200B" in selected_scope["analysis_contract"], "Raw nine-U+200B repair contract lost")
 require("repair successor" in selected_scope["next_action"].lower(), "Repair-successor authorization lost")
 require("inactive review artifact" in selected_scope["next_action"].lower(), "Inactive-review authorization lost")
