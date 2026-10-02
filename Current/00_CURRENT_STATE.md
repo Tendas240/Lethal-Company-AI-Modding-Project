@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-10-02  
+**Updated:** 2026-10-03  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -40,7 +40,8 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-After the BMAFR1 narrow instrumentation design is integrated to main and permanent exact-head Knowledge Architecture is green, perform one separately bounded inactive-review-build justification / source-static authorization decision for the exact design in Current/229_S1.42AK_BMAFR1_NARROW_INSTRUMENTATION_DESIGN.md. Decide only whether the fail-closed observational surface is justified and implementable against the exact deployed CodeRebirth 1.6.9 and DawnLib.Dusk 0.9.25 contracts. Do not implement the patch, create an inactive review build, publish, Gale-import, activate or run anything in that decision segment. Preserve the Black Mesa x Abandoned Foundry BMAFR1 pair PASS with no qualification rerun, BMAFR1 DIAGNOSTIC ONLY / NEVER ACCEPT / inactive, S1.42AK accepted, and S1.42AK-BMDSFIX1 active/not accepted with its passive outstanding unwaived DeepSewersFlow gate and no dedicated reroll.
+After the BMAFR1 instrumentation source/static authorization decision is integrated to main and permanent exact-head Knowledge Architecture is green, perform one bounded S1.42AK-BMAFR1I1 source/static implementation checkpoint only. Implement the exact fail-closed observational surface authorized by Current/230_S1.42AK_BMAFR1_INSTRUMENTATION_SOURCE_STATIC_AUTHORIZATION_DECISION.md, including the refined Dusk selector-callsite observation, exact Dusk renderer/material observers, exact Janitor index-0 write probes, bounded Janitor/SpringMan snapshots and stackless-array log correlation. Do not build a DLL/profile, activate BuildSpecs/current.json, publish, Gale-import, runtime-arm or authorize a runtime test in that source/static segment.
+
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
