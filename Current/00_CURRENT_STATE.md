@@ -42,7 +42,6 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 After the BMAFR1 narrow instrumentation design is integrated to main and permanent exact-head Knowledge Architecture is green, perform one separately bounded inactive-review-build justification / source-static authorization decision for the exact design in Current/229_S1.42AK_BMAFR1_NARROW_INSTRUMENTATION_DESIGN.md. Decide only whether the fail-closed observational surface is justified and implementable against the exact deployed CodeRebirth 1.6.9 and DawnLib.Dusk 0.9.25 contracts. Do not implement the patch, create an inactive review build, publish, Gale-import, activate or run anything in that decision segment. Preserve the Black Mesa x Abandoned Foundry BMAFR1 pair PASS with no qualification rerun, BMAFR1 DIAGNOSTIC ONLY / NEVER ACCEPT / inactive, S1.42AK accepted, and S1.42AK-BMDSFIX1 active/not accepted with its passive outstanding unwaived DeepSewersFlow gate and no dedicated reroll.
 
-
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
