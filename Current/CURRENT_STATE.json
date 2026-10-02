@@ -516,7 +516,7 @@
     "diagnostic_runtime_activation": "Current/224_S1.42AK_BMAFR1_RUNTIME_ACTIVATION.md",
     "diagnostic_revision": {
       "build_id": "S1.42AK-BMAFR1",
-      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_PARTIAL_RUNTIME_EVIDENCE_ID2_SUPPLEMENTAL_OUTSTANDING_NOT_ACCEPTED",
+      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
       "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
       "base_build_id": "S1.42AK",
       "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
