@@ -49,6 +49,47 @@ jobs:
       - name: Freshly verify exact S1.42AK LLL 1.7.12 provenance
         run: python AnalysisTools/verify_s142ak_lll_1712_provenance.py
 
+      - name: Prove raw INI identity and duplicate fail-closed builder behavior
+        shell: bash
+        run: |
+          python - <<'PY'
+          from BuildSystem.profile_builder import set_ini
+
+          visible = "Custom Dungeon:  Abandoned Foundry"
+          raw = "\u200b" * 9 + visible
+
+          def must_refuse(text):
+              try:
+                  set_ini(
+                      text,
+                      raw,
+                      "Enable Content Configuration",
+                      "true",
+                      forbid_visible_equivalent_duplicates=True,
+                  )
+              except RuntimeError:
+                  return
+              raise SystemExit("builder accepted a raw-mismatched or duplicate visible-equivalent Foundry section")
+
+          must_refuse("[Custom Dungeon:  Abandoned Foundry]\nEnable Content Configuration = false\n")
+          must_refuse(
+              f"[{raw}]\nEnable Content Configuration = false\n\n"
+              "[Custom Dungeon:  Abandoned Foundry]\nEnable Content Configuration = false\n"
+          )
+
+          built = set_ini(
+              "",
+              raw,
+              "Enable Content Configuration",
+              "true",
+              forbid_visible_equivalent_duplicates=True,
+          )
+          if not built.startswith(f"[{raw}]\r\nEnable Content Configuration = true"):
+              raise SystemExit("builder did not materialize the exact raw nine-U+200B Foundry header")
+          print("PASS: raw INI identity and visible-equivalent duplicate guard")
+          PY
+
+
       - name: Build raw-binding inactive BMAFR1 review artifact
         run: python BuildSystem/profile_builder.py BuildSpecs/S1.42AK-BMAFR1.json
 
