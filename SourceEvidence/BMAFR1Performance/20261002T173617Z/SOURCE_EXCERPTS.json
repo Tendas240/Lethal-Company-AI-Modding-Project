@@ -1,0 +1,2898 @@
+{
+  "Janitor.cs": {
+    "full_decompiled_file_sha256": "8a6e89ef7fa99d1180fe8b18193b3f7444f343b89ae5b9bd4908dae073595d1d",
+    "excerpts": [
+      {
+        "start_line": 176,
+        "end_line": 269,
+        "lines": [
+          {
+            "line": 176,
+            "text": "\tpublic override void Start()"
+          },
+          {
+            "line": 177,
+            "text": "\t{"
+          },
+          {
+            "line": 178,
+            "text": "\t\tbase.Start();"
+          },
+          {
+            "line": 179,
+            "text": "\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(0);"
+          },
+          {
+            "line": 180,
+            "text": "\t\tif (((NetworkBehaviour)this).IsServer)"
+          },
+          {
+            "line": 181,
+            "text": "\t\t{"
+          },
+          {
+            "line": 182,
+            "text": "\t\t\t((MonoBehaviour)this).StartCoroutine(CheckForScrapNearby());"
+          },
+          {
+            "line": 183,
+            "text": "\t\t}"
+          },
+          {
+            "line": 184,
+            "text": "\t}"
+          },
+          {
+            "line": 185,
+            "text": ""
+          },
+          {
+            "line": 186,
+            "text": "\tpublic override void Update()"
+          },
+          {
+            "line": 187,
+            "text": "\t{"
+          },
+          {
+            "line": 190,
+            "text": "\t\tbase.Update();"
+          },
+          {
+            "line": 191,
+            "text": "\t\tif (((EnemyAI)this).stunNormalizedTimer > 0f && !currentlyStunned)"
+          },
+          {
+            "line": 192,
+            "text": "\t\t{"
+          },
+          {
+            "line": 193,
+            "text": "\t\t\tcurrentlyThrowingPlayer = false;"
+          },
+          {
+            "line": 194,
+            "text": "\t\t\tcurrentlyGrabbingPlayer = false;"
+          },
+          {
+            "line": 195,
+            "text": "\t\t\tcurrentlyGrabbingScrap = false;"
+          },
+          {
+            "line": 196,
+            "text": "\t\t\t_targetScrap = null;"
+          },
+          {
+            "line": 197,
+            "text": "\t\t\t_targetTrashCan = null;"
+          },
+          {
+            "line": 198,
+            "text": "\t\t\tif ((Object)(object)((EnemyAI)this).targetPlayer != (Object)null)"
+          },
+          {
+            "line": 199,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 200,
+            "text": "\t\t\t\t((EnemyAI)this).targetPlayer.inAnimationWithEnemy = null;"
+          },
+          {
+            "line": 201,
+            "text": "\t\t\t\t((EnemyAI)this).targetPlayer.disableMoveInput = false;"
+          },
+          {
+            "line": 202,
+            "text": "\t\t\t\t((EnemyAI)this).targetPlayer = null;"
+          },
+          {
+            "line": 203,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 204,
+            "text": "\t\t\tEnumerator<GrabbableObject> enumerator = _storedScrap.GetEnumerator();"
+          },
+          {
+            "line": 205,
+            "text": "\t\t\ttry"
+          },
+          {
+            "line": 206,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 207,
+            "text": "\t\t\t\twhile (enumerator.MoveNext())"
+          },
+          {
+            "line": 208,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 209,
+            "text": "\t\t\t\t\tGrabbableObject current = enumerator.Current;"
+          },
+          {
+            "line": 210,
+            "text": "\t\t\t\t\tif (!((Object)(object)current == (Object)null))"
+          },
+          {
+            "line": 211,
+            "text": "\t\t\t\t\t{"
+          },
+          {
+            "line": 212,
+            "text": "\t\t\t\t\t\tcurrent.EnableItemMeshes(true);"
+          },
+          {
+            "line": 213,
+            "text": "\t\t\t\t\t\tcurrent.EnablePhysics(true);"
+          },
+          {
+            "line": 214,
+            "text": "\t\t\t\t\t\tcurrent.grabbable = true;"
+          },
+          {
+            "line": 215,
+            "text": "\t\t\t\t\t\tcurrent.grabbableToEnemies = true;"
+          },
+          {
+            "line": 216,
+            "text": "\t\t\t\t\t\tcurrent.isHeldByEnemy = false;"
+          },
+          {
+            "line": 217,
+            "text": "\t\t\t\t\t\tcurrent.isHeld = false;"
+          },
+          {
+            "line": 218,
+            "text": "\t\t\t\t\t\tif (!HoarderBugAI.grabbableObjectsInMap.Contains(((Component)current).gameObject))"
+          },
+          {
+            "line": 219,
+            "text": "\t\t\t\t\t\t{"
+          },
+          {
+            "line": 220,
+            "text": "\t\t\t\t\t\t\tHoarderBugAI.grabbableObjectsInMap.Add(((Component)current).gameObject);"
+          },
+          {
+            "line": 221,
+            "text": "\t\t\t\t\t\t}"
+          },
+          {
+            "line": 222,
+            "text": "\t\t\t\t\t}"
+          },
+          {
+            "line": 223,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 224,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 225,
+            "text": "\t\t\tfinally"
+          },
+          {
+            "line": 226,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 227,
+            "text": "\t\t\t\t((IDisposable)enumerator/*cast due to .constrained prefix*/).Dispose();"
+          },
+          {
+            "line": 228,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 229,
+            "text": "\t\t\t_storedScrap.Clear();"
+          },
+          {
+            "line": 230,
+            "text": "\t\t\t_targetScrap = null;"
+          },
+          {
+            "line": 231,
+            "text": "\t\t\tStunSource.Play();"
+          },
+          {
+            "line": 232,
+            "text": "\t\t\tcurrentlyStunned = true;"
+          },
+          {
+            "line": 233,
+            "text": "\t\t\tif (((NetworkBehaviour)this).IsServer)"
+          },
+          {
+            "line": 234,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 235,
+            "text": "\t\t\t\t((EnemyAI)this).creatureAnimator.SetBool(StunnedAnimation, true);"
+          },
+          {
+            "line": 236,
+            "text": "\t\t\t\t((EnemyAI)this).creatureAnimator.SetBool(HoldingPlayerAnimation, false);"
+          },
+          {
+            "line": 237,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 238,
+            "text": "\t\t}"
+          },
+          {
+            "line": 239,
+            "text": "\t\tif (currentlyStunned && ((EnemyAI)this).stunNormalizedTimer <= 0f)"
+          },
+          {
+            "line": 240,
+            "text": "\t\t{"
+          },
+          {
+            "line": 241,
+            "text": "\t\t\tStunSource.Stop();"
+          },
+          {
+            "line": 242,
+            "text": "\t\t\tcurrentlyStunned = false;"
+          },
+          {
+            "line": 243,
+            "text": "\t\t\tif (((NetworkBehaviour)this).IsServer)"
+          },
+          {
+            "line": 244,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 245,
+            "text": "\t\t\t\t((EnemyAI)this).creatureAnimator.SetBool(StunnedAnimation, false);"
+          },
+          {
+            "line": 246,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 247,
+            "text": "\t\t}"
+          },
+          {
+            "line": 248,
+            "text": "\t\tif (currentlyStunned)"
+          },
+          {
+            "line": 249,
+            "text": "\t\t{"
+          },
+          {
+            "line": 250,
+            "text": "\t\t\tsmartAgentNavigator.StopAgent();"
+          },
+          {
+            "line": 251,
+            "text": "\t\t\treturn;"
+          },
+          {
+            "line": 252,
+            "text": "\t\t}"
+          },
+          {
+            "line": 253,
+            "text": "\t\tif (((EnemyAI)this).currentBehaviourStateIndex == 0 || ((EnemyAI)this).currentBehaviourStateIndex == 4)"
+          },
+          {
+            "line": 254,
+            "text": "\t\t{"
+          },
+          {
+            "line": 255,
+            "text": "\t\t\tHandleIdleSoundTimer();"
+          },
+          {
+            "line": 256,
+            "text": "\t\t}"
+          },
+          {
+            "line": 257,
+            "text": "\t\tif (((NetworkBehaviour)this).IsServer && _isRotating)"
+          },
+          {
+            "line": 258,
+            "text": "\t\t{"
+          },
+          {
+            "line": 259,
+            "text": "\t\t\tHandleRotation();"
+          },
+          {
+            "line": 260,
+            "text": "\t\t}"
+          },
+          {
+            "line": 261,
+            "text": "\t}"
+          },
+          {
+            "line": 262,
+            "text": ""
+          },
+          {
+            "line": 263,
+            "text": "\tpublic void LateUpdate()"
+          },
+          {
+            "line": 264,
+            "text": "\t{"
+          },
+          {
+            "line": 265,
+            "text": "\t\tif (((EnemyAI)this).currentBehaviourStateIndex == 3)"
+          },
+          {
+            "line": 266,
+            "text": "\t\t{"
+          },
+          {
+            "line": 267,
+            "text": "\t\t\tKeepPlayerAttachedDuringZoom();"
+          },
+          {
+            "line": 268,
+            "text": "\t\t}"
+          },
+          {
+            "line": 269,
+            "text": "\t}"
+          }
+        ]
+      },
+      {
+        "start_line": 441,
+        "end_line": 502,
+        "lines": [
+          {
+            "line": 441,
+            "text": "\t[ServerRpc(RequireOwnership = false)]"
+          },
+          {
+            "line": 442,
+            "text": "\tpublic void SetBlendShapeWeightServerRpc(int weight)"
+          },
+          {
+            "line": 443,
+            "text": "\t{"
+          },
+          {
+            "line": 454,
+            "text": "\t\tNetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;"
+          },
+          {
+            "line": 455,
+            "text": "\t\tif (networkManager != null && networkManager.IsListening)"
+          },
+          {
+            "line": 456,
+            "text": "\t\t{"
+          },
+          {
+            "line": 457,
+            "text": "\t\t\tif ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsClient || networkManager.IsHost))"
+          },
+          {
+            "line": 458,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 459,
+            "text": "\t\t\t\tServerRpcParams val2 = default(ServerRpcParams);"
+          },
+          {
+            "line": 460,
+            "text": "\t\t\t\tFastBufferWriter val = ((NetworkBehaviour)this).__beginSendServerRpc(2701160104u, val2, (RpcDelivery)0);"
+          },
+          {
+            "line": 461,
+            "text": "\t\t\t\tBytePacker.WriteValueBitPacked(val, weight);"
+          },
+          {
+            "line": 462,
+            "text": "\t\t\t\t((NetworkBehaviour)this).__endSendServerRpc(ref val, 2701160104u, val2, (RpcDelivery)0);"
+          },
+          {
+            "line": 463,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 464,
+            "text": "\t\t\tif ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsServer || networkManager.IsHost))"
+          },
+          {
+            "line": 465,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 466,
+            "text": "\t\t\t\t((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;"
+          },
+          {
+            "line": 467,
+            "text": "\t\t\t\tSetBlendShapeWeightClientRpc(weight);"
+          },
+          {
+            "line": 468,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 469,
+            "text": "\t\t}"
+          },
+          {
+            "line": 470,
+            "text": "\t}"
+          },
+          {
+            "line": 471,
+            "text": ""
+          },
+          {
+            "line": 472,
+            "text": "\t[ClientRpc]"
+          },
+          {
+            "line": 473,
+            "text": "\tpublic void SetBlendShapeWeightClientRpc(int weight)"
+          },
+          {
+            "line": 474,
+            "text": "\t{"
+          },
+          {
+            "line": 485,
+            "text": "\t\tNetworkManager networkManager = ((NetworkBehaviour)this).NetworkManager;"
+          },
+          {
+            "line": 486,
+            "text": "\t\tif (networkManager != null && networkManager.IsListening)"
+          },
+          {
+            "line": 487,
+            "text": "\t\t{"
+          },
+          {
+            "line": 488,
+            "text": "\t\t\tif ((int)((NetworkBehaviour)this).__rpc_exec_stage != 1 && (networkManager.IsServer || networkManager.IsHost))"
+          },
+          {
+            "line": 489,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 490,
+            "text": "\t\t\t\tClientRpcParams val2 = default(ClientRpcParams);"
+          },
+          {
+            "line": 491,
+            "text": "\t\t\t\tFastBufferWriter val = ((NetworkBehaviour)this).__beginSendClientRpc(1865199378u, val2, (RpcDelivery)0);"
+          },
+          {
+            "line": 492,
+            "text": "\t\t\t\tBytePacker.WriteValueBitPacked(val, weight);"
+          },
+          {
+            "line": 493,
+            "text": "\t\t\t\t((NetworkBehaviour)this).__endSendClientRpc(ref val, 1865199378u, val2, (RpcDelivery)0);"
+          },
+          {
+            "line": 494,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 495,
+            "text": "\t\t\tif ((int)((NetworkBehaviour)this).__rpc_exec_stage == 1 && (networkManager.IsClient || networkManager.IsHost))"
+          },
+          {
+            "line": 496,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 497,
+            "text": "\t\t\t\t((NetworkBehaviour)this).__rpc_exec_stage = (__RpcExecStage)0;"
+          },
+          {
+            "line": 498,
+            "text": "\t\t\t\tsirenLights.SetActive(weight == 100);"
+          },
+          {
+            "line": 499,
+            "text": "\t\t\t\t((EnemyAI)this).skinnedMeshRenderers[0].SetBlendShapeWeight(0, (float)weight);"
+          },
+          {
+            "line": 500,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 501,
+            "text": "\t\t}"
+          },
+          {
+            "line": 502,
+            "text": "\t}"
+          }
+        ]
+      },
+      {
+        "start_line": 989,
+        "end_line": 1030,
+        "lines": [
+          {
+            "line": 989,
+            "text": "\t\tif ((Object)(object)((EnemyAI)this).targetPlayer != (Object)null)"
+          },
+          {
+            "line": 990,
+            "text": "\t\t{"
+          },
+          {
+            "line": 991,
+            "text": "\t\t\t((EnemyAI)this).targetPlayer.inAnimationWithEnemy = null;"
+          },
+          {
+            "line": 992,
+            "text": "\t\t\t((EnemyAI)this).targetPlayer.disableMoveInput = false;"
+          },
+          {
+            "line": 993,
+            "text": "\t\t}"
+          },
+          {
+            "line": 994,
+            "text": "\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(4);"
+          },
+          {
+            "line": 995,
+            "text": "\t\tEnumerator<GrabbableObject> enumerator = _storedScrap.GetEnumerator();"
+          },
+          {
+            "line": 996,
+            "text": "\t\ttry"
+          },
+          {
+            "line": 997,
+            "text": "\t\t{"
+          },
+          {
+            "line": 998,
+            "text": "\t\t\twhile (enumerator.MoveNext())"
+          },
+          {
+            "line": 999,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 1000,
+            "text": "\t\t\t\tGrabbableObject current = enumerator.Current;"
+          },
+          {
+            "line": 1001,
+            "text": "\t\t\t\tif (!((Object)(object)current == (Object)null))"
+          },
+          {
+            "line": 1002,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 1003,
+            "text": "\t\t\t\t\tcurrent.EnableItemMeshes(true);"
+          },
+          {
+            "line": 1004,
+            "text": "\t\t\t\t\tcurrent.EnablePhysics(true);"
+          },
+          {
+            "line": 1005,
+            "text": "\t\t\t\t\tcurrent.grabbable = true;"
+          },
+          {
+            "line": 1006,
+            "text": "\t\t\t\t\tcurrent.grabbableToEnemies = true;"
+          },
+          {
+            "line": 1007,
+            "text": "\t\t\t\t\tcurrent.isHeldByEnemy = false;"
+          },
+          {
+            "line": 1008,
+            "text": "\t\t\t\t\tcurrent.isHeld = false;"
+          },
+          {
+            "line": 1009,
+            "text": "\t\t\t\t\tif (!HoarderBugAI.grabbableObjectsInMap.Contains(((Component)current).gameObject))"
+          },
+          {
+            "line": 1010,
+            "text": "\t\t\t\t\t{"
+          },
+          {
+            "line": 1011,
+            "text": "\t\t\t\t\t\tHoarderBugAI.grabbableObjectsInMap.Add(((Component)current).gameObject);"
+          },
+          {
+            "line": 1012,
+            "text": "\t\t\t\t\t}"
+          },
+          {
+            "line": 1013,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 1014,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 1015,
+            "text": "\t\t}"
+          },
+          {
+            "line": 1016,
+            "text": "\t\tfinally"
+          },
+          {
+            "line": 1017,
+            "text": "\t\t{"
+          },
+          {
+            "line": 1018,
+            "text": "\t\t\t((IDisposable)enumerator/*cast due to .constrained prefix*/).Dispose();"
+          },
+          {
+            "line": 1019,
+            "text": "\t\t}"
+          },
+          {
+            "line": 1020,
+            "text": "\t\t_storedScrap.Clear();"
+          },
+          {
+            "line": 1021,
+            "text": "\t\t_targetScrap = null;"
+          },
+          {
+            "line": 1022,
+            "text": "\t\t((EnemyAI)this).creatureSFX.volume = 0f;"
+          },
+          {
+            "line": 1023,
+            "text": "\t\tsirenLights.SetActive(false);"
+          },
+          {
+            "line": 1024,
+            "text": "\t\t((EnemyAI)this).skinnedMeshRenderers[0].SetBlendShapeWeight(0, 0f);"
+          },
+          {
+            "line": 1025,
+            "text": "\t\tGameObject[] array = headLights;"
+          },
+          {
+            "line": 1026,
+            "text": "\t\tforeach (GameObject val in array)"
+          },
+          {
+            "line": 1027,
+            "text": "\t\t{"
+          },
+          {
+            "line": 1028,
+            "text": "\t\t\tval.SetActive(false);"
+          },
+          {
+            "line": 1029,
+            "text": "\t\t}"
+          },
+          {
+            "line": 1030,
+            "text": "\t\t((EnemyAI)this).creatureVoice.pitch = 0.75f;"
+          }
+        ]
+      },
+      {
+        "start_line": 1052,
+        "end_line": 1075,
+        "lines": [
+          {
+            "line": 1052,
+            "text": "\tprivate void KeepPlayerAttachedDuringZoom()"
+          },
+          {
+            "line": 1053,
+            "text": "\t{"
+          },
+          {
+            "line": 1056,
+            "text": "\t\tif ((Object)(object)((EnemyAI)this).targetPlayer == (Object)null || ((EnemyAI)this).targetPlayer.isPlayerDead || !((EnemyAI)this).targetPlayer.isPlayerControlled)"
+          },
+          {
+            "line": 1057,
+            "text": "\t\t{"
+          },
+          {
+            "line": 1058,
+            "text": "\t\t\t((EnemyAI)this).targetPlayer = null;"
+          },
+          {
+            "line": 1059,
+            "text": "\t\t\tsirenLights.SetActive(false);"
+          },
+          {
+            "line": 1060,
+            "text": "\t\t\t_targetScrap = null;"
+          },
+          {
+            "line": 1061,
+            "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(0);"
+          },
+          {
+            "line": 1062,
+            "text": "\t\t\t((EnemyAI)this).skinnedMeshRenderers[0].SetBlendShapeWeight(0, 0f);"
+          },
+          {
+            "line": 1063,
+            "text": "\t\t\tif (((NetworkBehaviour)this).IsServer)"
+          },
+          {
+            "line": 1064,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 1065,
+            "text": "\t\t\t\t((EnemyAI)this).agent.speed = 7.5f;"
+          },
+          {
+            "line": 1066,
+            "text": "\t\t\t\t((EnemyAI)this).creatureAnimator.SetBool(HoldingPlayerAnimation, false);"
+          },
+          {
+            "line": 1067,
+            "text": "\t\t\t\t((EnemyAI)this).creatureAnimator.SetBool(IsAngryAnimation, false);"
+          },
+          {
+            "line": 1068,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 1069,
+            "text": "\t\t}"
+          },
+          {
+            "line": 1070,
+            "text": "\t\telse"
+          },
+          {
+            "line": 1071,
+            "text": "\t\t{"
+          },
+          {
+            "line": 1072,
+            "text": "\t\t\t((Component)((EnemyAI)this).targetPlayer).transform.position = playerBoneTransform.position;"
+          },
+          {
+            "line": 1073,
+            "text": "\t\t\t((Component)((EnemyAI)this).targetPlayer).transform.rotation = playerBoneTransform.rotation;"
+          },
+          {
+            "line": 1074,
+            "text": "\t\t}"
+          },
+          {
+            "line": 1075,
+            "text": "\t}"
+          }
+        ]
+      },
+      {
+        "start_line": 1167,
+        "end_line": 1176,
+        "lines": [
+          {
+            "line": 1167,
+            "text": "\tprivate void ResetChaseAndRevertToIdle()"
+          },
+          {
+            "line": 1168,
+            "text": "\t{"
+          },
+          {
+            "line": 1169,
+            "text": "\t\t((EnemyAI)this).agent.ResetPath();"
+          },
+          {
+            "line": 1170,
+            "text": "\t\t((EnemyAI)this).targetPlayer = null;"
+          },
+          {
+            "line": 1171,
+            "text": "\t\t_targetScrap = null;"
+          },
+          {
+            "line": 1172,
+            "text": "\t\t((EnemyAI)this).SwitchToBehaviourServerRpc(0);"
+          },
+          {
+            "line": 1173,
+            "text": "\t\t((EnemyAI)this).agent.speed = 7.5f;"
+          },
+          {
+            "line": 1174,
+            "text": "\t\t((EnemyAI)this).creatureAnimator.SetBool(IsAngryAnimation, false);"
+          },
+          {
+            "line": 1175,
+            "text": "\t\tSetBlendShapeWeightServerRpc(0);"
+          },
+          {
+            "line": 1176,
+            "text": "\t}"
+          }
+        ]
+      },
+      {
+        "start_line": 1373,
+        "end_line": 1387,
+        "lines": [
+          {
+            "line": 1373,
+            "text": "\tprivate void SwitchToChaseState(PlayerControllerB player)"
+          },
+          {
+            "line": 1374,
+            "text": "\t{"
+          },
+          {
+            "line": 1375,
+            "text": "\t\tsirenLights.SetActive(true);"
+          },
+          {
+            "line": 1376,
+            "text": "\t\t_targetScrap = null;"
+          },
+          {
+            "line": 1377,
+            "text": "\t\t((EnemyAI)this).targetPlayer = player;"
+          },
+          {
+            "line": 1378,
+            "text": "\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(2);"
+          },
+          {
+            "line": 1379,
+            "text": "\t\t((EnemyAI)this).skinnedMeshRenderers[0].SetBlendShapeWeight(0, 100f);"
+          },
+          {
+            "line": 1380,
+            "text": "\t\tsmartAgentNavigator.StopAgent();"
+          },
+          {
+            "line": 1381,
+            "text": "\t\tUpdatePathToTargetPlayer();"
+          },
+          {
+            "line": 1382,
+            "text": "\t\tif (((NetworkBehaviour)this).IsServer)"
+          },
+          {
+            "line": 1383,
+            "text": "\t\t{"
+          },
+          {
+            "line": 1384,
+            "text": "\t\t\t((EnemyAI)this).agent.speed = 15f;"
+          },
+          {
+            "line": 1385,
+            "text": "\t\t\t((EnemyAI)this).creatureAnimator.SetBool(IsAngryAnimation, true);"
+          },
+          {
+            "line": 1386,
+            "text": "\t\t}"
+          },
+          {
+            "line": 1387,
+            "text": "\t}"
+          }
+        ]
+      },
+      {
+        "start_line": 1457,
+        "end_line": 1464,
+        "lines": [
+          {
+            "line": 1457,
+            "text": "\tprivate void UpdateBlendShapeAndSpeedForChase()"
+          },
+          {
+            "line": 1458,
+            "text": "\t{"
+          },
+          {
+            "line": 1459,
+            "text": "\t\tSetBlendShapeWeightClientRpc(100);"
+          },
+          {
+            "line": 1460,
+            "text": "\t\t((EnemyAI)this).agent.speed = 15f;"
+          },
+          {
+            "line": 1461,
+            "text": "\t\t((EnemyAI)this).creatureAnimator.SetBool(IsAngryAnimation, true);"
+          },
+          {
+            "line": 1462,
+            "text": "\t\t((EnemyAI)this).agent.ResetPath();"
+          },
+          {
+            "line": 1463,
+            "text": "\t\t_targetScrap = null;"
+          },
+          {
+            "line": 1464,
+            "text": "\t}"
+          }
+        ]
+      }
+    ]
+  },
+  "Dusk.cs": {
+    "full_decompiled_file_sha256": "ee536c8860f1335a051ef1f99341aee2c40655c5daef3ff1f912aa5954a5d07a",
+    "excerpts": [
+      {
+        "start_line": 4334,
+        "end_line": 4392,
+        "lines": [
+          {
+            "line": 4334,
+            "text": "\t[CreateAssetMenu(fileName = \"New Skinned Mesh Replacement\", menuName = \"Entity Replacements/Actions/SkinnedMesh Replacement\")]"
+          },
+          {
+            "line": 4335,
+            "text": "\tpublic class SkinnedMeshReplacement : Hierarchy"
+          },
+          {
+            "line": 4336,
+            "text": "\t{"
+          },
+          {
+            "line": 4337,
+            "text": "\t\t[field: CompilerGenerated]"
+          },
+          {
+            "line": 4338,
+            "text": "\t\t[field: SerializeField]"
+          },
+          {
+            "line": 4339,
+            "text": "\t\tpublic SkinnedMeshRenderer ReplacementRenderer"
+          },
+          {
+            "line": 4340,
+            "text": "\t\t{"
+          },
+          {
+            "line": 4341,
+            "text": "\t\t\t[CompilerGenerated]"
+          },
+          {
+            "line": 4342,
+            "text": "\t\t\tget;"
+          },
+          {
+            "line": 4343,
+            "text": "\t\t\t[CompilerGenerated]"
+          },
+          {
+            "line": 4344,
+            "text": "\t\t\tprivate set;"
+          },
+          {
+            "line": 4345,
+            "text": "\t\t}"
+          },
+          {
+            "line": 4346,
+            "text": ""
+          },
+          {
+            "line": 4347,
+            "text": "\t\t[IteratorStateMachine(/*Could not decode attribute arguments.*/)]"
+          },
+          {
+            "line": 4348,
+            "text": "\t\tpublic override IEnumerator Apply(Transform rootTransform, bool immediate = false)"
+          },
+          {
+            "line": 4349,
+            "text": "\t\t{"
+          },
+          {
+            "line": 4350,
+            "text": "\t\t\tif (!immediate)"
+          },
+          {
+            "line": 4351,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 4352,
+            "text": "\t\t\t\tyield return null;"
+          },
+          {
+            "line": 4353,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 4354,
+            "text": "\t\t\tReplaceSkinnedMeshRenderer((!String.IsNullOrWhiteSpace(base.HierarchyPath)) ? ((Component)rootTransform.Find(base.HierarchyPath)).GetComponent<SkinnedMeshRenderer>() : ((Component)rootTransform).GetComponent<SkinnedMeshRenderer>());"
+          },
+          {
+            "line": 4355,
+            "text": "\t\t}"
+          },
+          {
+            "line": 4356,
+            "text": ""
+          },
+          {
+            "line": 4357,
+            "text": "\t\tprivate void ReplaceSkinnedMeshRenderer(SkinnedMeshRenderer targetSkinned)"
+          },
+          {
+            "line": 4358,
+            "text": "\t\t{"
+          },
+          {
+            "line": 4359,
+            "text": "\t\t\tMaterial[] sharedMaterials = ((Renderer)targetSkinned).sharedMaterials;"
+          },
+          {
+            "line": 4360,
+            "text": "\t\t\tTransform rootBone = targetSkinned.rootBone;"
+          },
+          {
+            "line": 4361,
+            "text": "\t\t\tDictionary<string, Transform> val = BuildBoneLookup(rootBone);"
+          },
+          {
+            "line": 4362,
+            "text": "\t\t\tTransform[] bones = ReplacementRenderer.bones;"
+          },
+          {
+            "line": 4363,
+            "text": "\t\t\tTransform[] array = (Transform[])(object)new Transform[bones.Length];"
+          },
+          {
+            "line": 4364,
+            "text": "\t\t\tTransform val2 = default(Transform);"
+          },
+          {
+            "line": 4365,
+            "text": "\t\t\tfor (int i = 0; i < bones.Length; i++)"
+          },
+          {
+            "line": 4366,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 4367,
+            "text": "\t\t\t\tstring text = (Object.op_Implicit((Object)(object)bones[i]) ? ((Object)bones[i]).name : null);"
+          },
+          {
+            "line": 4368,
+            "text": "\t\t\t\tif (String.IsNullOrWhiteSpace(text) || !val.TryGetValue(text, ref val2))"
+          },
+          {
+            "line": 4369,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 4370,
+            "text": "\t\t\t\t\tDuskPlugin.Logger.LogWarning((object)String.Concat((string[])(object)new String[5]"
+          },
+          {
+            "line": 4371,
+            "text": "\t\t\t\t\t{"
+          },
+          {
+            "line": 4372,
+            "text": "\t\t\t\t\t\t\"TransferSMR: Could not map bone '\","
+          },
+          {
+            "line": 4373,
+            "text": "\t\t\t\t\t\ttext,"
+          },
+          {
+            "line": 4374,
+            "text": "\t\t\t\t\t\t\"' with replacement: \","
+          },
+          {
+            "line": 4375,
+            "text": "\t\t\t\t\t\t((Object)ReplacementRenderer).name,"
+          },
+          {
+            "line": 4376,
+            "text": "\t\t\t\t\t\t\". Using root fallback.\""
+          },
+          {
+            "line": 4377,
+            "text": "\t\t\t\t\t}));"
+          },
+          {
+            "line": 4378,
+            "text": "\t\t\t\t\tval2 = rootBone;"
+          },
+          {
+            "line": 4379,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 4380,
+            "text": "\t\t\t\tarray[i] = val2;"
+          },
+          {
+            "line": 4381,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 4382,
+            "text": "\t\t\tTransform rootBone2 = (Object.op_Implicit((Object)(object)targetSkinned.rootBone) ? targetSkinned.rootBone : rootBone);"
+          },
+          {
+            "line": 4383,
+            "text": "\t\t\tif (Object.op_Implicit((Object)(object)ReplacementRenderer.rootBone))"
+          },
+          {
+            "line": 4384,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 4385,
+            "text": "\t\t\t\tval.TryGetValue(((Object)ReplacementRenderer.rootBone).name, ref rootBone2);"
+          },
+          {
+            "line": 4386,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 4387,
+            "text": "\t\t\tMesh val3 = (targetSkinned.sharedMesh = ReplacementRenderer.sharedMesh);"
+          },
+          {
+            "line": 4388,
+            "text": "\t\t\ttargetSkinned.bones = array;"
+          },
+          {
+            "line": 4389,
+            "text": "\t\t\ttargetSkinned.rootBone = rootBone2;"
+          },
+          {
+            "line": 4390,
+            "text": "\t\t\tMaterialsReplacement.CopyOrResizeMaterials((Renderer)(object)targetSkinned, sharedMaterials, (!Object.op_Implicit((Object)(object)val3)) ? 1 : val3.subMeshCount);"
+          },
+          {
+            "line": 4391,
+            "text": "\t\t}"
+          },
+          {
+            "line": 4392,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "start_line": 4409,
+        "end_line": 4439,
+        "lines": [
+          {
+            "line": 4409,
+            "text": "\t\t}"
+          },
+          {
+            "line": 4410,
+            "text": "\t}"
+          },
+          {
+            "line": 4411,
+            "text": "\t[CreateAssetMenu(fileName = \"New Mesh Replacement\", menuName = \"Entity Replacements/Actions/Mesh Replacement\")]"
+          },
+          {
+            "line": 4412,
+            "text": "\tpublic class MeshReplacement : Hierarchy"
+          },
+          {
+            "line": 4413,
+            "text": "\t{"
+          },
+          {
+            "line": 4414,
+            "text": "\t\t[field: CompilerGenerated]"
+          },
+          {
+            "line": 4415,
+            "text": "\t\t[field: SerializeField]"
+          },
+          {
+            "line": 4416,
+            "text": "\t\tpublic Mesh ReplacementMesh"
+          },
+          {
+            "line": 4417,
+            "text": "\t\t{"
+          },
+          {
+            "line": 4418,
+            "text": "\t\t\t[CompilerGenerated]"
+          },
+          {
+            "line": 4419,
+            "text": "\t\t\tget;"
+          },
+          {
+            "line": 4420,
+            "text": "\t\t\t[CompilerGenerated]"
+          },
+          {
+            "line": 4421,
+            "text": "\t\t\tprivate set;"
+          },
+          {
+            "line": 4422,
+            "text": "\t\t}"
+          },
+          {
+            "line": 4423,
+            "text": ""
+          },
+          {
+            "line": 4424,
+            "text": "\t\t[IteratorStateMachine(/*Could not decode attribute arguments.*/)]"
+          },
+          {
+            "line": 4425,
+            "text": "\t\tpublic override IEnumerator Apply(Transform rootTransform, bool immediate = false)"
+          },
+          {
+            "line": 4426,
+            "text": "\t\t{"
+          },
+          {
+            "line": 4427,
+            "text": "\t\t\tif (!immediate)"
+          },
+          {
+            "line": 4428,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 4429,
+            "text": "\t\t\t\tyield return null;"
+          },
+          {
+            "line": 4430,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 4431,
+            "text": "\t\t\tReplaceMeshRenderer((!String.IsNullOrWhiteSpace(base.HierarchyPath)) ? ((Component)rootTransform.Find(base.HierarchyPath)).GetComponent<MeshRenderer>() : ((Component)rootTransform).GetComponent<MeshRenderer>(), (!String.IsNullOrWhiteSpace(base.HierarchyPath)) ? ((Component)rootTransform.Find(base.HierarchyPath)).GetComponent<MeshFilter>() : ((Component)rootTransform).GetComponent<MeshFilter>());"
+          },
+          {
+            "line": 4432,
+            "text": "\t\t}"
+          },
+          {
+            "line": 4433,
+            "text": ""
+          },
+          {
+            "line": 4434,
+            "text": "\t\tprivate void ReplaceMeshRenderer(MeshRenderer targetMeshRenderer, MeshFilter targetMeshFilter)"
+          },
+          {
+            "line": 4435,
+            "text": "\t\t{"
+          },
+          {
+            "line": 4436,
+            "text": "\t\t\ttargetMeshFilter.sharedMesh = ReplacementMesh;"
+          },
+          {
+            "line": 4437,
+            "text": "\t\t\tMaterialsReplacement.CopyOrResizeMaterials((Renderer)(object)targetMeshRenderer, ((Renderer)targetMeshRenderer).sharedMaterials, ReplacementMesh.subMeshCount);"
+          },
+          {
+            "line": 4438,
+            "text": "\t\t}"
+          },
+          {
+            "line": 4439,
+            "text": "\t}"
+          }
+        ]
+      },
+      {
+        "start_line": 4487,
+        "end_line": 4520,
+        "lines": [
+          {
+            "line": 4487,
+            "text": "\t\tinternal static void CopyOrResizeMaterials(Renderer target, Material[] sourceMaterials, int requiredCount)"
+          },
+          {
+            "line": 4488,
+            "text": "\t\t{"
+          },
+          {
+            "line": 4491,
+            "text": "\t\t\tif (sourceMaterials != null && sourceMaterials.Length == requiredCount)"
+          },
+          {
+            "line": 4492,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 4493,
+            "text": "\t\t\t\ttarget.sharedMaterials = sourceMaterials;"
+          },
+          {
+            "line": 4494,
+            "text": "\t\t\t\treturn;"
+          },
+          {
+            "line": 4495,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 4496,
+            "text": "\t\t\tMaterial[] array = (Material[])(object)new Material[Mathf.Max(1, requiredCount)];"
+          },
+          {
+            "line": 4497,
+            "text": "\t\t\tMaterial[] sharedMaterials = target.sharedMaterials;"
+          },
+          {
+            "line": 4498,
+            "text": "\t\t\tfor (int i = 0; i < array.Length; i++)"
+          },
+          {
+            "line": 4499,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 4500,
+            "text": "\t\t\t\tif (sourceMaterials != null && i < sourceMaterials.Length && (Object)(object)sourceMaterials[i] != (Object)null)"
+          },
+          {
+            "line": 4501,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 4502,
+            "text": "\t\t\t\t\tarray[i] = sourceMaterials[i];"
+          },
+          {
+            "line": 4503,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 4504,
+            "text": "\t\t\t\telse if (sourceMaterials != null && sourceMaterials.Length != 0 && (Object)(object)sourceMaterials[0] != (Object)null)"
+          },
+          {
+            "line": 4505,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 4506,
+            "text": "\t\t\t\t\tarray[i] = sourceMaterials[0];"
+          },
+          {
+            "line": 4507,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 4508,
+            "text": "\t\t\t\telse if (sharedMaterials != null && sharedMaterials.Length != 0 && (Object)(object)sharedMaterials[0] != (Object)null)"
+          },
+          {
+            "line": 4509,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 4510,
+            "text": "\t\t\t\t\tarray[i] = sharedMaterials[0];"
+          },
+          {
+            "line": 4511,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 4512,
+            "text": "\t\t\t\telse"
+          },
+          {
+            "line": 4513,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 4514,
+            "text": "\t\t\t\t\tarray[i] = new Material(Shader.Find(\"HDRP/Lit\"));"
+          },
+          {
+            "line": 4515,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 4516,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 4517,
+            "text": "\t\t\ttarget.sharedMaterials = array;"
+          },
+          {
+            "line": 4518,
+            "text": "\t\t\tint num = ((sourceMaterials != null) ? sourceMaterials.Length : 0);"
+          },
+          {
+            "line": 4519,
+            "text": "\t\t\tDuskPlugin.Logger.LogWarning((object)String.Format(\"TransferRenderer: Material count mismatch (got {0}, need {1}). Resized with fallback materials.\", (object)num, (object)requiredCount));"
+          },
+          {
+            "line": 4520,
+            "text": "\t\t}"
+          }
+        ]
+      },
+      {
+        "start_line": 14753,
+        "end_line": 14821,
+        "lines": [
+          {
+            "line": 14753,
+            "text": "\t\tprivate static void ReplaceEnemyEntity(orig_Start orig, EnemyAI self)"
+          },
+          {
+            "line": 14754,
+            "text": "\t\t{"
+          },
+          {
+            "line": 14763,
+            "text": "\t\t\t<>c__DisplayClass31_0 CS$<>8__locals3 = new <>c__DisplayClass31_0();"
+          },
+          {
+            "line": 14764,
+            "text": "\t\t\torig.Invoke(self);"
+          },
+          {
+            "line": 14765,
+            "text": "\t\t\tif (!self.enemyType.HasDawnInfo())"
+          },
+          {
+            "line": 14766,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 14767,
+            "text": "\t\t\t\tDuskPlugin.Logger.LogWarning((object)String.Concat(\"Failed to replace enemy entity for '\", self.enemyType.enemyName, \"', it doesn't have a dawn info! (there may be other problems)\"));"
+          },
+          {
+            "line": 14768,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 14769,
+            "text": "\t\t\telse"
+          },
+          {
+            "line": 14770,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 14771,
+            "text": "\t\t\t\tif (!self.enemyType.GetDawnInfo().CustomData.TryGet<List<DuskEnemyReplacementDefinition>>(DuskKeys.EntityReplacements, out List<DuskEnemyReplacementDefinition> value) || self.TryGetEnemyReplacement(out DuskEnemyReplacementDefinition _))"
+          },
+          {
+            "line": 14772,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 14773,
+            "text": "\t\t\t\t\treturn;"
+          },
+          {
+            "line": 14774,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 14775,
+            "text": "\t\t\t\tList<DuskEnemyReplacementDefinition> val = new List<DuskEnemyReplacementDefinition>((IEnumerable<DuskEnemyReplacementDefinition>)(object)value);"
+          },
+          {
+            "line": 14776,
+            "text": "\t\t\t\tfor (int num = val.Count - 1; num >= 0; num--)"
+          },
+          {
+            "line": 14777,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 14778,
+            "text": "\t\t\t\t\tDuskEnemyReplacementDefinition duskEnemyReplacementDefinition = val[num];"
+          },
+          {
+            "line": 14779,
+            "text": "\t\t\t\t\tif (!((Object)(object)duskEnemyReplacementDefinition.DatePredicate == (Object)null) && !duskEnemyReplacementDefinition.DatePredicate.Evaluate())"
+          },
+          {
+            "line": 14780,
+            "text": "\t\t\t\t\t{"
+          },
+          {
+            "line": 14781,
+            "text": "\t\t\t\t\t\tval.RemoveAt(num);"
+          },
+          {
+            "line": 14782,
+            "text": "\t\t\t\t\t}"
+          },
+          {
+            "line": 14783,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 14784,
+            "text": "\t\t\t\tDawnMoonInfo dawnInfo = RoundManager.Instance.currentLevel.GetDawnInfo();"
+          },
+          {
+            "line": 14785,
+            "text": "\t\t\t\tCS$<>8__locals3.ctx = new SpawnWeightContext(dawnInfo, RoundManager.Instance.dungeonGenerator?.Generator?.DungeonFlow?.GetDawnInfo(), TimeOfDayRefs.GetCurrentWeatherEffect(dawnInfo.Level)?.GetDawnInfo()).WithExtra(SpawnWeightExtraKeys.RoutingPriceKey, dawnInfo.DawnPurchaseInfo.Cost.Provide());"
+          },
+          {
+            "line": 14786,
+            "text": "\t\t\t\tNullable<int> val2 = Enumerable.Sum<DuskEnemyReplacementDefinition>((IEnumerable<DuskEnemyReplacementDefinition>)(object)val, (Func<DuskEnemyReplacementDefinition, Nullable<int>>)((DuskEnemyReplacementDefinition it) => it.Weights.GetFor(in CS$<>8__locals3.ctx)));"
+          },
+          {
+            "line": 14787,
+            "text": "\t\t\t\tif (!val2.HasValue)"
+          },
+          {
+            "line": 14788,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 14789,
+            "text": "\t\t\t\t\treturn;"
+          },
+          {
+            "line": 14790,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 14791,
+            "text": "\t\t\t\tif (enemyReplacementRandom == null)"
+          },
+          {
+            "line": 14792,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 14793,
+            "text": "\t\t\t\t\tenemyReplacementRandom = new Random(StartOfRound.Instance.randomMapSeed + 234780);"
+          },
+          {
+            "line": 14794,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 14795,
+            "text": "\t\t\t\tint num2 = enemyReplacementRandom.Next(0, val2.Value.Clamp0());"
+          },
+          {
+            "line": 14796,
+            "text": "\t\t\t\tEnumerator<DuskEnemyReplacementDefinition> enumerator = val.GetEnumerator();"
+          },
+          {
+            "line": 14797,
+            "text": "\t\t\t\ttry"
+          },
+          {
+            "line": 14798,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 14799,
+            "text": "\t\t\t\t\twhile (enumerator.MoveNext())"
+          },
+          {
+            "line": 14800,
+            "text": "\t\t\t\t\t{"
+          },
+          {
+            "line": 14801,
+            "text": "\t\t\t\t\t\tDuskEnemyReplacementDefinition current = enumerator.Current;"
+          },
+          {
+            "line": 14802,
+            "text": "\t\t\t\t\t\tnum2 -= current.Weights.GetFor(in CS$<>8__locals3.ctx).GetValueOrDefault().Clamp0();"
+          },
+          {
+            "line": 14803,
+            "text": "\t\t\t\t\t\tif (num2 <= 0)"
+          },
+          {
+            "line": 14804,
+            "text": "\t\t\t\t\t\t{"
+          },
+          {
+            "line": 14805,
+            "text": "\t\t\t\t\t\t\tif (!current.IsDefault)"
+          },
+          {
+            "line": 14806,
+            "text": "\t\t\t\t\t\t\t{"
+          },
+          {
+            "line": 14807,
+            "text": "\t\t\t\t\t\t\t\t((MonoBehaviour)StartOfRoundRefs.Instance).StartCoroutine(current.Apply(self));"
+          },
+          {
+            "line": 14808,
+            "text": "\t\t\t\t\t\t\t}"
+          },
+          {
+            "line": 14809,
+            "text": "\t\t\t\t\t\t\tbreak;"
+          },
+          {
+            "line": 14810,
+            "text": "\t\t\t\t\t\t}"
+          },
+          {
+            "line": 14811,
+            "text": "\t\t\t\t\t}"
+          },
+          {
+            "line": 14812,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 14813,
+            "text": "\t\t\t\tfinally"
+          },
+          {
+            "line": 14814,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 14815,
+            "text": "\t\t\t\t\t((IDisposable)enumerator/*cast due to .constrained prefix*/).Dispose();"
+          },
+          {
+            "line": 14816,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 14817,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 14818,
+            "text": "\t\t}"
+          },
+          {
+            "line": 14819,
+            "text": ""
+          },
+          {
+            "line": 14820,
+            "text": "\t\tstatic EntityReplacementRegistrationPatch()"
+          },
+          {
+            "line": 14821,
+            "text": "\t\t{"
+          }
+        ]
+      }
+    ]
+  },
+  "JanitorReplacement.cs": {
+    "full_decompiled_file_sha256": "5921c7e5870d1fd64ec62e06fad8dd0724a19c7b901ca3c13ae0d6734c61802a",
+    "excerpts": [
+      {
+        "start_line": 1,
+        "end_line": 76,
+        "lines": [
+          {
+            "line": 1,
+            "text": "using System;"
+          },
+          {
+            "line": 2,
+            "text": "using CodeRebirth.src.Content.Enemies;"
+          },
+          {
+            "line": 3,
+            "text": "using Dawn.Utils;"
+          },
+          {
+            "line": 4,
+            "text": "using UnityEngine;"
+          },
+          {
+            "line": 5,
+            "text": ""
+          },
+          {
+            "line": 6,
+            "text": "namespace Dusk;"
+          },
+          {
+            "line": 7,
+            "text": ""
+          },
+          {
+            "line": 8,
+            "text": "[CreateAssetMenu(fileName = \"New Enemy Replacement Definition\", menuName = \"Entity Replacements/Enemy Replacements/CodeRebirth.src.Content.Enemies.Janitor\")]"
+          },
+          {
+            "line": 9,
+            "text": "public class DuskEntityReplacementDefinition_CodeRebirth_src_Content_Enemies_Janitor : DuskEnemyReplacementDefinition<Janitor>"
+          },
+          {
+            "line": 10,
+            "text": "{"
+          },
+          {
+            "line": 11,
+            "text": "\t[Space(10f)]"
+          },
+          {
+            "line": 12,
+            "text": "\tpublic AudioClipsWithTime _idleAudioClips = new AudioClipsWithTime();"
+          },
+          {
+            "line": 13,
+            "text": ""
+          },
+          {
+            "line": 14,
+            "text": "\tpublic AudioClip? spawnSound;"
+          },
+          {
+            "line": 15,
+            "text": ""
+          },
+          {
+            "line": 16,
+            "text": "\tpublic AudioClip? dieSFX;"
+          },
+          {
+            "line": 17,
+            "text": ""
+          },
+          {
+            "line": 18,
+            "text": "\tpublic AudioClip[] deathSounds = Array.Empty<AudioClip>();"
+          },
+          {
+            "line": 19,
+            "text": ""
+          },
+          {
+            "line": 20,
+            "text": "\tpublic AudioClip[] postDeathSounds = Array.Empty<AudioClip>();"
+          },
+          {
+            "line": 21,
+            "text": ""
+          },
+          {
+            "line": 22,
+            "text": "\tpublic AudioClip[] detectItemDroppedSounds = Array.Empty<AudioClip>();"
+          },
+          {
+            "line": 23,
+            "text": ""
+          },
+          {
+            "line": 24,
+            "text": "\tpublic AudioClip[] grabPlayerSounds = Array.Empty<AudioClip>();"
+          },
+          {
+            "line": 25,
+            "text": ""
+          },
+          {
+            "line": 26,
+            "text": "\tpublic AudioClip[] throwPlayerSounds = Array.Empty<AudioClip>();"
+          },
+          {
+            "line": 27,
+            "text": ""
+          },
+          {
+            "line": 28,
+            "text": "\tpublic AudioClip? potentialCreatureVoice;"
+          },
+          {
+            "line": 29,
+            "text": ""
+          },
+          {
+            "line": 30,
+            "text": "\tpublic AudioClip? potentialCreatureSFX;"
+          },
+          {
+            "line": 31,
+            "text": ""
+          },
+          {
+            "line": 32,
+            "text": "\tprotected override void ApplyTyped(Janitor Janitor)"
+          },
+          {
+            "line": 33,
+            "text": "\t{"
+          },
+          {
+            "line": 34,
+            "text": "\t\tJanitor componentInChildren = ((Component)Janitor).gameObject.GetComponentInChildren<Janitor>();"
+          },
+          {
+            "line": 35,
+            "text": "\t\tif (_idleAudioClips.audioClips.Length != 0)"
+          },
+          {
+            "line": 36,
+            "text": "\t\t{"
+          },
+          {
+            "line": 37,
+            "text": "\t\t\t((CodeRebirthEnemyAI)componentInChildren)._idleAudioClips = _idleAudioClips;"
+          },
+          {
+            "line": 38,
+            "text": "\t\t}"
+          },
+          {
+            "line": 39,
+            "text": "\t\tif (deathSounds.Length != 0)"
+          },
+          {
+            "line": 40,
+            "text": "\t\t{"
+          },
+          {
+            "line": 41,
+            "text": "\t\t\tcomponentInChildren.deathSounds = deathSounds;"
+          },
+          {
+            "line": 42,
+            "text": "\t\t}"
+          },
+          {
+            "line": 43,
+            "text": "\t\tif (postDeathSounds.Length != 0)"
+          },
+          {
+            "line": 44,
+            "text": "\t\t{"
+          },
+          {
+            "line": 45,
+            "text": "\t\t\tcomponentInChildren.postDeathSounds = postDeathSounds;"
+          },
+          {
+            "line": 46,
+            "text": "\t\t}"
+          },
+          {
+            "line": 47,
+            "text": "\t\tif (detectItemDroppedSounds.Length != 0)"
+          },
+          {
+            "line": 48,
+            "text": "\t\t{"
+          },
+          {
+            "line": 49,
+            "text": "\t\t\tcomponentInChildren.detectItemDroppedSounds = detectItemDroppedSounds;"
+          },
+          {
+            "line": 50,
+            "text": "\t\t}"
+          },
+          {
+            "line": 51,
+            "text": "\t\tif (grabPlayerSounds.Length != 0)"
+          },
+          {
+            "line": 52,
+            "text": "\t\t{"
+          },
+          {
+            "line": 53,
+            "text": "\t\t\tcomponentInChildren.grabPlayerSounds = grabPlayerSounds;"
+          },
+          {
+            "line": 54,
+            "text": "\t\t}"
+          },
+          {
+            "line": 55,
+            "text": "\t\tif (throwPlayerSounds.Length != 0)"
+          },
+          {
+            "line": 56,
+            "text": "\t\t{"
+          },
+          {
+            "line": 57,
+            "text": "\t\t\tcomponentInChildren.throwPlayerSounds = throwPlayerSounds;"
+          },
+          {
+            "line": 58,
+            "text": "\t\t}"
+          },
+          {
+            "line": 59,
+            "text": "\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureVoice.clip != (Object)null && (Object)(object)potentialCreatureVoice != (Object)null)"
+          },
+          {
+            "line": 60,
+            "text": "\t\t{"
+          },
+          {
+            "line": 61,
+            "text": "\t\t\t((EnemyAI)componentInChildren).creatureVoice.clip = potentialCreatureVoice;"
+          },
+          {
+            "line": 62,
+            "text": "\t\t}"
+          },
+          {
+            "line": 63,
+            "text": "\t\tif ((Object)(object)((EnemyAI)componentInChildren).creatureSFX.clip != (Object)null && (Object)(object)potentialCreatureSFX != (Object)null)"
+          },
+          {
+            "line": 64,
+            "text": "\t\t{"
+          },
+          {
+            "line": 65,
+            "text": "\t\t\t((EnemyAI)componentInChildren).creatureSFX.clip = potentialCreatureSFX;"
+          },
+          {
+            "line": 66,
+            "text": "\t\t}"
+          },
+          {
+            "line": 67,
+            "text": "\t\tif ((Object)(object)spawnSound != (Object)null)"
+          },
+          {
+            "line": 68,
+            "text": "\t\t{"
+          },
+          {
+            "line": 69,
+            "text": "\t\t\t((CodeRebirthEnemyAI)componentInChildren).spawnSound = spawnSound;"
+          },
+          {
+            "line": 70,
+            "text": "\t\t}"
+          },
+          {
+            "line": 71,
+            "text": "\t\tif ((Object)(object)dieSFX != (Object)null)"
+          },
+          {
+            "line": 72,
+            "text": "\t\t{"
+          },
+          {
+            "line": 73,
+            "text": "\t\t\t((EnemyAI)componentInChildren).dieSFX = dieSFX;"
+          },
+          {
+            "line": 74,
+            "text": "\t\t}"
+          },
+          {
+            "line": 75,
+            "text": "\t}"
+          },
+          {
+            "line": 76,
+            "text": "}"
+          }
+        ]
+      }
+    ]
+  },
+  "bcmer/BrutalCompanyMinus-1.71.0.cs": {
+    "full_decompiled_file_sha256": "ea8f0415d25cf5a468e6ba276ead7b4586819e531eaa6ed7b5ab6bafca6d3fb4",
+    "excerpts": [
+      {
+        "start_line": 17990,
+        "end_line": 18079,
+        "lines": [
+          {
+            "line": 17990,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 17991,
+            "text": "\t\t\t\tspawnCycleDuration -= deltaTime;"
+          },
+          {
+            "line": 17992,
+            "text": "\t\t\t\tif (currentSpawnAttemptIntervalTime > 0f)"
+          },
+          {
+            "line": 17993,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 17994,
+            "text": "\t\t\t\t\tcurrentSpawnAttemptIntervalTime -= deltaTime;"
+          },
+          {
+            "line": 17995,
+            "text": "\t\t\t\t\treturn false;"
+          },
+          {
+            "line": 17996,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 17997,
+            "text": "\t\t\t\tcurrentSpawnAttemptIntervalTime = spawnAttemptInterval;"
+          },
+          {
+            "line": 17998,
+            "text": "\t\t\t\treturn true;"
+          },
+          {
+            "line": 17999,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 18000,
+            "text": ""
+          },
+          {
+            "line": 18001,
+            "text": "\t\t\tpublic bool EllapseOnlyInterval(float deltaTime)"
+          },
+          {
+            "line": 18002,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 18003,
+            "text": "\t\t\t\tif (currentSpawnAttemptIntervalTime > 0f)"
+          },
+          {
+            "line": 18004,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 18005,
+            "text": "\t\t\t\t\tcurrentSpawnAttemptIntervalTime -= deltaTime;"
+          },
+          {
+            "line": 18006,
+            "text": "\t\t\t\t\treturn false;"
+          },
+          {
+            "line": 18007,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 18008,
+            "text": "\t\t\t\tcurrentSpawnAttemptIntervalTime = spawnAttemptInterval;"
+          },
+          {
+            "line": 18009,
+            "text": "\t\t\t\treturn true;"
+          },
+          {
+            "line": 18010,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 18011,
+            "text": ""
+          },
+          {
+            "line": 18012,
+            "text": "\t\t\tpublic void Reset()"
+          },
+          {
+            "line": 18013,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 18014,
+            "text": "\t\t\t\tcurrentSpawnAttemptIntervalTime = spawnAttemptInterval * 0.33f;"
+          },
+          {
+            "line": 18015,
+            "text": "\t\t\t\tforeach (EnemySpawnInfo enemy in enemies)"
+          },
+          {
+            "line": 18016,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 18017,
+            "text": "\t\t\t\t\tenemy.Reset();"
+          },
+          {
+            "line": 18018,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 18019,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 18020,
+            "text": ""
+          },
+          {
+            "line": 18021,
+            "text": "\t\t\tpublic void AttemptSpawnAll()"
+          },
+          {
+            "line": 18022,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 18023,
+            "text": "\t\t\t\tfloat num = (multiplyBySpawnCurve ? Instance.GetChanceMultiplier() : 1f);"
+          },
+          {
+            "line": 18024,
+            "text": "\t\t\t\tLog.LogInfo($\"--- Attempting to spawn with a nothingWeight of {nothingWeight} and chanceMultiplier of {num}\");"
+          },
+          {
+            "line": 18025,
+            "text": "\t\t\t\tforeach (EnemySpawnInfo enemy in enemies)"
+          },
+          {
+            "line": 18026,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 18027,
+            "text": "\t\t\t\t\tenemy.AttemptSpawn(allEnemiesCycle.nothingWeight, num);"
+          },
+          {
+            "line": 18028,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 18029,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 18030,
+            "text": "\t\t}"
+          },
+          {
+            "line": 18031,
+            "text": ""
+          },
+          {
+            "line": 18032,
+            "text": "\t\tpublic class EnemySpawnInfo"
+          },
+          {
+            "line": 18033,
+            "text": "\t\t{"
+          },
+          {
+            "line": 18034,
+            "text": "\t\t\tpublic GameObject enemy;"
+          },
+          {
+            "line": 18035,
+            "text": ""
+          },
+          {
+            "line": 18036,
+            "text": "\t\t\tpublic float enemyWeight;"
+          },
+          {
+            "line": 18037,
+            "text": ""
+          },
+          {
+            "line": 18038,
+            "text": "\t\t\tpublic int spawnCap;"
+          },
+          {
+            "line": 18039,
+            "text": ""
+          },
+          {
+            "line": 18040,
+            "text": "\t\t\tpublic SpawnLocation spawnLocation;"
+          },
+          {
+            "line": 18041,
+            "text": ""
+          },
+          {
+            "line": 18042,
+            "text": "\t\t\tprivate int currentSpawned;"
+          },
+          {
+            "line": 18043,
+            "text": ""
+          },
+          {
+            "line": 18044,
+            "text": "\t\t\tpublic void AttemptSpawn(float nothingWeight, float chanceMultiplier)"
+          },
+          {
+            "line": 18045,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 18046,
+            "text": "\t\t\t\trng = new Random(Net.Instance._seed++);"
+          },
+          {
+            "line": 18047,
+            "text": "\t\t\t\tswitch (spawnLocation)"
+          },
+          {
+            "line": 18048,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 18049,
+            "text": "\t\t\t\tcase SpawnLocation.Inside:"
+          },
+          {
+            "line": 18050,
+            "text": "\t\t\t\t\tAttemptSpawnInside(nothingWeight, chanceMultiplier);"
+          },
+          {
+            "line": 18051,
+            "text": "\t\t\t\t\tbreak;"
+          },
+          {
+            "line": 18052,
+            "text": "\t\t\t\tcase SpawnLocation.Outside:"
+          },
+          {
+            "line": 18053,
+            "text": "\t\t\t\t\tAttemptSpawnOutside(nothingWeight, chanceMultiplier);"
+          },
+          {
+            "line": 18054,
+            "text": "\t\t\t\t\tbreak;"
+          },
+          {
+            "line": 18055,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 18056,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 18057,
+            "text": ""
+          },
+          {
+            "line": 18058,
+            "text": "\t\t\tprivate void AttemptSpawnInside(float nothingWeight, float chanceMultiplier)"
+          },
+          {
+            "line": 18059,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 18060,
+            "text": "\t\t\t\tfloat num = enemyWeight * chanceMultiplier;"
+          },
+          {
+            "line": 18061,
+            "text": "\t\t\t\tLog.LogInfo($\"### Attempting to spawn {((Object)enemy).name} at {num:F2} weight;\");"
+          },
+          {
+            "line": 18062,
+            "text": "\t\t\t\tif ((float)(rng.NextDouble() * (double)nothingWeight) <= num)"
+          },
+          {
+            "line": 18063,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 18064,
+            "text": "\t\t\t\t\tif (currentSpawned < spawnCap)"
+          },
+          {
+            "line": 18065,
+            "text": "\t\t\t\t\t{"
+          },
+          {
+            "line": 18066,
+            "text": "\t\t\t\t\t\tcurrentSpawned++;"
+          },
+          {
+            "line": 18067,
+            "text": "\t\t\t\t\t\tManager.Spawn.InsideEnemies(enemy, 1);"
+          },
+          {
+            "line": 18068,
+            "text": "\t\t\t\t\t\tManager.Spawn.DoSpawnInsideEnemies();"
+          },
+          {
+            "line": 18069,
+            "text": "\t\t\t\t\t\tLog.LogInfo(\"!!! Succeeded spawning \" + ((Object)enemy).name + \" inside.\");"
+          },
+          {
+            "line": 18070,
+            "text": "\t\t\t\t\t}"
+          },
+          {
+            "line": 18071,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 18072,
+            "text": "\t\t\t\telse"
+          },
+          {
+            "line": 18073,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 18074,
+            "text": "\t\t\t\t\tLog.LogInfo(\"Failed to spawn \" + ((Object)enemy).name + \" inside.\");"
+          },
+          {
+            "line": 18075,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 18076,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 18077,
+            "text": ""
+          },
+          {
+            "line": 18078,
+            "text": "\t\t\tprivate void AttemptSpawnOutside(float nothingWeight, float chanceMultiplier)"
+          },
+          {
+            "line": 18079,
+            "text": "\t\t\t{"
+          }
+        ]
+      },
+      {
+        "start_line": 18125,
+        "end_line": 18148,
+        "lines": [
+          {
+            "line": 18125,
+            "text": "\t\t\tif (!Active)"
+          },
+          {
+            "line": 18126,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 18127,
+            "text": "\t\t\t\treturn;"
+          },
+          {
+            "line": 18128,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 18129,
+            "text": "\t\t\tforeach (SpawnCycle spawnCycle in spawnCycles)"
+          },
+          {
+            "line": 18130,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 18131,
+            "text": "\t\t\t\tif (!(spawnCycle.spawnCycleDuration <= 0f) && spawnCycle.Ellapse(Time.deltaTime))"
+          },
+          {
+            "line": 18132,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 18133,
+            "text": "\t\t\t\t\tspawnCycle.AttemptSpawnAll();"
+          },
+          {
+            "line": 18134,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 18135,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 18136,
+            "text": "\t\t\tif (Configuration.enableAllEnemies.Value && allEnemiesCycle.EllapseOnlyInterval(Time.deltaTime))"
+          },
+          {
+            "line": 18137,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 18138,
+            "text": "\t\t\t\tallEnemiesCycle.AttemptSpawnAll();"
+          },
+          {
+            "line": 18139,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 18140,
+            "text": "\t\t\tif (Configuration.enableAllAllEnemies.Value && allAllEnemiesCycle.EllapseOnlyInterval(Time.deltaTime))"
+          },
+          {
+            "line": 18141,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 18142,
+            "text": "\t\t\t\tallAllEnemiesCycle.AttemptSpawnAll();"
+          },
+          {
+            "line": 18143,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 18144,
+            "text": "\t\t}"
+          },
+          {
+            "line": 18145,
+            "text": ""
+          },
+          {
+            "line": 18146,
+            "text": "\t\t[HarmonyPrefix]"
+          },
+          {
+            "line": 18147,
+            "text": "\t\t[HarmonyPatch(typeof(StartOfRound), \"ShipLeave\")]"
+          },
+          {
+            "line": 18148,
+            "text": "\t\tprivate static void OnShipLeave()"
+          }
+        ]
+      },
+      {
+        "start_line": 26020,
+        "end_line": 26045,
+        "lines": [
+          {
+            "line": 26020,
+            "text": "\tinternal class Hell"
+          },
+          {
+            "line": 26021,
+            "text": "\t{"
+          },
+          {
+            "line": 26022,
+            "text": "\t\t[HarmonyPrefix]"
+          },
+          {
+            "line": 26023,
+            "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"AssignRandomEnemyToVent\")]"
+          },
+          {
+            "line": 26024,
+            "text": "\t\tprivate static void OnAssignRandomEnemyToVent(ref RoundManager __instance)"
+          },
+          {
+            "line": 26025,
+            "text": "\t\t{"
+          },
+          {
+            "line": 26026,
+            "text": "\t\t\tif (BrutalCompanyMinus.Minus.Events.Hell.Active)"
+          },
+          {
+            "line": 26027,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 26028,
+            "text": "\t\t\t\t__instance.currentMaxInsidePower = 0f;"
+          },
+          {
+            "line": 26029,
+            "text": "\t\t\t\t__instance.currentMaxOutsidePower = 0f;"
+          },
+          {
+            "line": 26030,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 26031,
+            "text": "\t\t}"
+          },
+          {
+            "line": 26032,
+            "text": ""
+          },
+          {
+            "line": 26033,
+            "text": "\t\t[HarmonyPostfix]"
+          },
+          {
+            "line": 26034,
+            "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"RefreshEnemiesList\")]"
+          },
+          {
+            "line": 26035,
+            "text": "\t\tprivate static void OnRefreshEnemiesList()"
+          },
+          {
+            "line": 26036,
+            "text": "\t\t{"
+          },
+          {
+            "line": 26037,
+            "text": "\t\t\tif (BrutalCompanyMinus.Minus.Events.Hell.Active && BrutalCompanyMinus.Minus.Events.Hell.SpawnCycle)"
+          },
+          {
+            "line": 26038,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 26039,
+            "text": "\t\t\t\tEnemySpawnCycle.Instance.spawnCycles.Add(BrutalCompanyMinus.Minus.Events.Hell.insideHellSpawnCycle);"
+          },
+          {
+            "line": 26040,
+            "text": "\t\t\t\t((MonoBehaviour)RoundManager.Instance).StartCoroutine(AddOutsideSpawnCycleAfterDelay());"
+          },
+          {
+            "line": 26041,
+            "text": "\t\t\t\tBrutalCompanyMinus.Minus.Events.Hell.SpawnCycle = false;"
+          },
+          {
+            "line": 26042,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 26043,
+            "text": "\t\t}"
+          },
+          {
+            "line": 26044,
+            "text": ""
+          },
+          {
+            "line": 26045,
+            "text": "\t\tprivate static IEnumerator AddOutsideSpawnCycleAfterDelay()"
+          }
+        ]
+      },
+      {
+        "start_line": 31090,
+        "end_line": 31100,
+        "lines": [
+          {
+            "line": 31090,
+            "text": "\t\t\tinsideHellSpawnCycle = new EnemySpawnCycle.SpawnCycle"
+          },
+          {
+            "line": 31091,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 31092,
+            "text": "\t\t\t\tnothingWeight = 100f,"
+          },
+          {
+            "line": 31093,
+            "text": "\t\t\t\tspawnAttemptInterval = 30f,"
+          },
+          {
+            "line": 31094,
+            "text": "\t\t\t\tspawnCycleDuration = 2000f,"
+          },
+          {
+            "line": 31095,
+            "text": "\t\t\t\tmultiplyBySpawnCurve = false,"
+          },
+          {
+            "line": 31096,
+            "text": "\t\t\t\tenemies = new List<EnemySpawnCycle.EnemySpawnInfo>"
+          },
+          {
+            "line": 31097,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 31098,
+            "text": "\t\t\t\t\tnew EnemySpawnCycle.EnemySpawnInfo"
+          },
+          {
+            "line": 31099,
+            "text": "\t\t\t\t\t{"
+          },
+          {
+            "line": 31100,
+            "text": "\t\t\t\t\t\tenemy = Assets.GetEnemy(Assets.EnemyName.SnareFlea).enemyPrefab,"
+          }
+        ]
+      },
+      {
+        "start_line": 31292,
+        "end_line": 31319,
+        "lines": [
+          {
+            "line": 31292,
+            "text": "\t\t\tforeach (EnemyType value in Assets.EnemyList.Values)"
+          },
+          {
+            "line": 31293,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 31294,
+            "text": "\t\t\t\tif (!((Object)(object)value == (Object)null) && !((Object)(object)value.enemyPrefab == (Object)null) && !value.isDaytimeEnemy && !insideHellSpawnCycle.enemies.Select((EnemySpawnCycle.EnemySpawnInfo x) => ((Object)x.enemy).name).Contains(((Object)value).name))"
+          },
+          {
+            "line": 31295,
+            "text": "\t\t\t\t{"
+          },
+          {
+            "line": 31296,
+            "text": "\t\t\t\t\tif (value.isOutsideEnemy)"
+          },
+          {
+            "line": 31297,
+            "text": "\t\t\t\t\t{"
+          },
+          {
+            "line": 31298,
+            "text": "\t\t\t\t\t\toutsideHellSpawnCycle.enemies.Add(new EnemySpawnCycle.EnemySpawnInfo"
+          },
+          {
+            "line": 31299,
+            "text": "\t\t\t\t\t\t{"
+          },
+          {
+            "line": 31300,
+            "text": "\t\t\t\t\t\t\tenemy = value.enemyPrefab,"
+          },
+          {
+            "line": 31301,
+            "text": "\t\t\t\t\t\t\tenemyWeight = 8f,"
+          },
+          {
+            "line": 31302,
+            "text": "\t\t\t\t\t\t\tspawnCap = 2,"
+          },
+          {
+            "line": 31303,
+            "text": "\t\t\t\t\t\t\tspawnLocation = EnemySpawnCycle.SpawnLocation.Outside"
+          },
+          {
+            "line": 31304,
+            "text": "\t\t\t\t\t\t});"
+          },
+          {
+            "line": 31305,
+            "text": "\t\t\t\t\t}"
+          },
+          {
+            "line": 31306,
+            "text": "\t\t\t\t\telse"
+          },
+          {
+            "line": 31307,
+            "text": "\t\t\t\t\t{"
+          },
+          {
+            "line": 31308,
+            "text": "\t\t\t\t\t\tinsideHellSpawnCycle.enemies.Add(new EnemySpawnCycle.EnemySpawnInfo"
+          },
+          {
+            "line": 31309,
+            "text": "\t\t\t\t\t\t{"
+          },
+          {
+            "line": 31310,
+            "text": "\t\t\t\t\t\t\tenemy = value.enemyPrefab,"
+          },
+          {
+            "line": 31311,
+            "text": "\t\t\t\t\t\t\tenemyWeight = 8f,"
+          },
+          {
+            "line": 31312,
+            "text": "\t\t\t\t\t\t\tspawnCap = 2,"
+          },
+          {
+            "line": 31313,
+            "text": "\t\t\t\t\t\t\tspawnLocation = EnemySpawnCycle.SpawnLocation.Inside"
+          },
+          {
+            "line": 31314,
+            "text": "\t\t\t\t\t\t});"
+          },
+          {
+            "line": 31315,
+            "text": "\t\t\t\t\t}"
+          },
+          {
+            "line": 31316,
+            "text": "\t\t\t\t}"
+          },
+          {
+            "line": 31317,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 31318,
+            "text": "\t\t}"
+          },
+          {
+            "line": 31319,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "start_line": 31349,
+        "end_line": 31371,
+        "lines": [
+          {
+            "line": 31349,
+            "text": "\t\t\t\tnew Keyframe(0f, -100f),"
+          },
+          {
+            "line": 31350,
+            "text": "\t\t\t\tnew Keyframe(1f, -100f)"
+          },
+          {
+            "line": 31351,
+            "text": "\t\t\t});"
+          },
+          {
+            "line": 31352,
+            "text": "\t\t\tManager.scrapValueMultiplier *= Getf(ScaleType.ScrapValue);"
+          },
+          {
+            "line": 31353,
+            "text": "\t\t\tManager.scrapAmountMultiplier *= Getf(ScaleType.ScrapAmount);"
+          },
+          {
+            "line": 31354,
+            "text": "\t\t\tManager.factorySizeMultiplier *= Getf(ScaleType.FactorySize);"
+          },
+          {
+            "line": 31355,
+            "text": "\t\t\tinsideHellSpawnCycle.nothingWeight = 100f / Getf(ScaleType.SpawnMultiplier);"
+          },
+          {
+            "line": 31356,
+            "text": "\t\t\toutsideHellSpawnCycle.nothingWeight = 100f / Getf(ScaleType.SpawnMultiplier);"
+          },
+          {
+            "line": 31357,
+            "text": "\t\t\tcurrentIngameWeather = ((object)Unsafe.As<LevelWeatherType, LevelWeatherType>(ref StartOfRound.Instance.currentLevel.currentWeather)/*cast due to constrained. prefix*/).ToString();"
+          },
+          {
+            "line": 31358,
+            "text": "\t\t\tif (currentIngameWeather != \"Majora Moon\")"
+          },
+          {
+            "line": 31359,
+            "text": "\t\t\t{"
+          },
+          {
+            "line": 31360,
+            "text": "\t\t\t\tNet.Instance.MoveTimeServerRpc(Random.Range(Getf(ScaleType.TimeMin), Getf(ScaleType.TimeMax)), Getf(ScaleType.TimeSettings));"
+          },
+          {
+            "line": 31361,
+            "text": "\t\t\t}"
+          },
+          {
+            "line": 31362,
+            "text": "\t\t\tManager.SetAtmosphere(\"bloodyrain\", state: true);"
+          },
+          {
+            "line": 31363,
+            "text": "\t\t\tManager.SetAtmosphere(Assets.AtmosphereNameList[Assets.AtmosphereName.Eclipsed], state: true);"
+          },
+          {
+            "line": 31364,
+            "text": "\t\t\tExecuteAllMonsterEvents();"
+          },
+          {
+            "line": 31365,
+            "text": "\t\t\tActive = true;"
+          },
+          {
+            "line": 31366,
+            "text": "\t\t\tSpawnCycle = true;"
+          },
+          {
+            "line": 31367,
+            "text": "\t\t}"
+          },
+          {
+            "line": 31368,
+            "text": ""
+          },
+          {
+            "line": 31369,
+            "text": "\t\tpublic override void OnShipLeave()"
+          },
+          {
+            "line": 31370,
+            "text": "\t\t{"
+          },
+          {
+            "line": 31371,
+            "text": "\t\t\tActive = false;"
+          }
+        ]
+      }
+    ]
+  }
+}
