@@ -97,6 +97,25 @@ The user does not need a special exact phrase. Any clear instruction to proceed 
 
 A follow-up that changes the objective is not merely a continuation signal; re-plan the work into appropriate segments for the new objective.
 
+## Temporary GPT-6 escalation recommendation
+
+**Status:** TEMPORARY PROJECT RULE / RECOMMENDATION ONLY
+
+Before starting the next execution segment, ChatGPT must assess whether that upcoming segment is foreseeably unusually complex, complicated or extensive relative to normal project work. Typical signals include a difficult multi-authority reconciliation, high-risk multi-file transformation, broad root-cause analysis, unusually large CI/repair chain, or another segment whose depth or breadth would materially benefit from handing it to a fresh GPT-6 chat.
+
+When that threshold is met:
+
+1. ChatGPT must stop **before beginning the complex segment** and recommend that the user switch to a new ChatGPT chat using GPT-6.
+2. This is a recommendation only. ChatGPT must not assume consent and must not initiate the handover merely because the threshold is met.
+3. If the user declines the recommendation, or instead explicitly instructs the current chat to continue, the current chat may proceed normally under the standard segmented-execution and continuation rules.
+4. If the user explicitly agrees to switch to GPT-6, the current chat must not begin the upcoming complex segment. It must initiate the normal repository-native handover process through `Current/HANDOVER_PREPARATION_PROMPT.md`, freshly re-verifying repository/CI/controller state as required, and provide the ready-to-copy new-chat handover prompt.
+5. The generated GPT-6 handover prompt must state that the GPT-6 chat may execute **at most two project execution segments**. After completing its second project execution segment, that GPT-6 chat must stop before beginning a third segment and hand control back through the normal handover/reassessment process.
+6. The two-segment GPT-6 limit does not authorize combining work that should otherwise be separated under this policy. Each GPT-6 segment remains bounded by the same atomicity, checkpoint and continuation requirements as any other project segment.
+
+Do not recommend GPT-6 mechanically for every non-trivial task. The recommendation is reserved for cases where the **next not-yet-started segment** is foreseeably unusually demanding. Do not interrupt an already-started atomic repository operation solely to make this recommendation; finish the safe atomic unit first and apply the recommendation before the next segment.
+
+This rule is explicitly temporary. It remains in force until the user explicitly asks for it to be removed or superseded. It does not alter gameplay lifecycle authority, build/runtime controllers, acceptance state, or any model-independent repository evidence.
+
 ## Tool and repository behavior
 
 Within a segment:
