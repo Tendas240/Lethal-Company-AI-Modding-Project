@@ -395,8 +395,12 @@
       "activation_record": "Current/224_S1.42AK_BMAFR1_RUNTIME_ACTIVATION.md",
       "diagnostic_dll_sha256": "c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1",
       "runtime_evidence_required": false,
-      "partial_runtime_evidence_present": false,
-      "note": "Exact published/indexed BMAFR1 repair bytes are runtime-armed solely for the bounded Black Mesa x Abandoned Foundry diagnostic through the existing direct accepted-S1.42AK authority path. Raw nine-U+200B Foundry binding is repaired; DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 and its passive Deep Sewers gate are unchanged."
+      "partial_runtime_evidence_present": true,
+      "note": "Exact BMAFR1 remains the active repaired diagnostic only / NEVER ACCEPT. First ingested Black Mesa x Abandoned Foundry evidence passes ARMED, exact singleton selection, completed generation, TOPOLOGY_OK ids 0..3 and bidirectional IDs 0,1,3 traversal. ID 2 / outside EntranceTeleportC was not traversed and is the sole remaining entrance-coverage gate. Exactly one supplemental ID-2 run is authorized only after this reconciliation is integrated to main and exact-head CI is green. BMDSFIX1 and its passive Deep Sewers gate remain unchanged.",
+      "runtime_evidence": "RuntimeEvidence/S1.42AK-BMAFR1/20261002T154834Z/",
+      "runtime_log_sha256": "3113a1c9df2e1db231cf6aa0e7dc20699894a8646da3eaf7fd1ce0c3d89ac42b",
+      "runtime_partial_decision": "Current/225_S1.42AK_BMAFR1_PARTIAL_RUNTIME_EVIDENCE_ID2_SUPPLEMENTAL_AUTHORIZATION.md",
+      "runtime_index": "RuntimeEvidence/S1.42AK-BMAFR1/20261002T154834Z/INDEX.json"
     }
   ],
   "important_project_dlls": [
