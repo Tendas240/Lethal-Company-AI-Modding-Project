@@ -25,30 +25,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Detect already-published historical BMAFDIAG1PATH1 profile
-        id: archive
-        shell: bash
-        run: |
-          set -euo pipefail
-          profile='Profiles/LC V1 S1.42AK-BMAFD1P1.r2z'
-          if git ls-files --error-unmatch -- "$profile" >/dev/null 2>&1; then
-            echo 'published=true' >> "$GITHUB_OUTPUT"
-            echo 'BMAFDIAG1PATH1 review artifact is already published and frozen; skip historical reconstruction.'
-          else
-            echo 'published=false' >> "$GITHUB_OUTPUT"
-          fi
-
       - uses: actions/setup-python@v5
-        if: steps.archive.outputs.published != 'true'
         with:
           python-version: '3.11'
 
       - name: Re-verify BMAFDIAG1PATH1 source and path-length contract
-        if: steps.archive.outputs.published != 'true'
         run: python AnalysisTools/validate_s142ak_bmafdiag1path1_source.py
 
       - name: Refuse any already-published BMAFDIAG1PATH1 profile
-        if: steps.archive.outputs.published != 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -60,19 +44,15 @@ jobs:
           fi
 
       - name: Validate proposed profile identity against permanent Gale path budget
-        if: steps.archive.outputs.published != 'true'
         run: python RepositoryTools/gale_profile_path_length_guard.py --spec BuildSpecs/S1.42AK-BMAFDIAG1PATH1.json
 
       - name: Build identity-only inactive BMAFDIAG1PATH1 review artifact
-        if: steps.archive.outputs.published != 'true'
         run: python BuildSystem/profile_builder.py BuildSpecs/S1.42AK-BMAFDIAG1PATH1.json
 
       - name: Verify exact BMAFDIAG1 preservation and identity-only archive delta
-        if: steps.archive.outputs.published != 'true'
         run: python AnalysisTools/validate_s142ak_bmafdiag1path1_build.py
 
       - name: Upload inactive BMAFDIAG1PATH1 review artifact
-        if: steps.archive.outputs.published != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: S1.42AK-BMAFDIAG1PATH1-review-${{ github.sha }}
