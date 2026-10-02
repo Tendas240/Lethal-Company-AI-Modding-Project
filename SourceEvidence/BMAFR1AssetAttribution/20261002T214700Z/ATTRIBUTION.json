@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-02",
+  "analysis_base": "c5e93ac674f7913795af90567e21be82e36734f6",
+  "status": "STATIC_ASSET_LEVEL_ATTRIBUTION_COMPLETE_ROOT_CAUSE_UNPROVEN",
+  "prior_evidence": "SourceEvidence/BMAFR1Performance/20261002T173617Z/",
+  "runtime_signature": {
+    "supplemental_array_count": 6696,
+    "first_same_pair_array_count": 0,
+    "supplemental_seed": 18486762,
+    "dusk_material_warning": "TransferRenderer: Material count mismatch (got 3, need 4). Resized with fallback materials."
+  },
+  "source_anchors": {
+    "coderebirth": {
+      "version": "1.6.9",
+      "commit": "3aec94f6f737c86d5e1eb59a57396740317b210f"
+    },
+    "dawnlib": {
+      "version": "0.9.25",
+      "commit": "810613e556ecc357eac25e97c25a3bb90516f071"
+    }
+  },
+  "janitor": {
+    "candidate_skin": {
+      "key": "code_rebirth:princess",
+      "entity_key": "code_rebirth:janitor",
+      "date_window_default": "Oct 1-Nov 10",
+      "preset_moon_weights": {
+        "vanilla": 9999,
+        "custom": 9999
+      }
+    },
+    "action_order": [
+      {
+        "type": "SkinnedMeshReplacement",
+        "hierarchy_path": "Janitor",
+        "replacement_asset_guid": "5843902a38d026d4ea12797ccd49ffe5"
+      },
+      {
+        "type": "MaterialsReplacement",
+        "hierarchy_path": "Janitor",
+        "material_index": 3
+      }
+    ],
+    "original_renderer": {
+      "hierarchy_path": "Janitor",
+      "mesh_guid": "8a1ede2ad9c4ad246910ced9abe8be7b",
+      "serialized_blendshape_weight_slots": 1,
+      "material_slots": 3,
+      "root_bone": "Root",
+      "notable_skeleton_child": "Fullbody",
+      "importer_importBlendShapes": 1
+    },
+    "replacement_source": {
+      "asset": "PrettyPrincess.fbx",
+      "guid": "5843902a38d026d4ea12797ccd49ffe5",
+      "importer_importBlendShapes": 0,
+      "external_materials": [
+        "PrettyPrincess"
+      ],
+      "exact_live_blendShapeCount": "UNPROVEN_PACKAGE_ASSET_BUNDLE_NOT_DECODED",
+      "exact_subMeshCount": "UNPROVEN_SOURCE_META_DOES_NOT_EXPOSE"
+    },
+    "animation_bindings": {
+      "blendshape_bindings_found": 0,
+      "renderer_node_bindings_found": 0,
+      "main_paths": "JanitorArmature/..."
+    },
+    "runtime_fingerprint": {
+      "original_material_slots_matches_warning_got": true,
+      "princess_material_index_3_structurally_matches_four_slot_renderer": true,
+      "proves_princess_selected": false
+    },
+    "mechanism_classification": "CONCRETE_ZERO_IMPORTED_BLENDSHAPE_COMPATIBILITY_MECHANISM_STRONGLY_STRENGTHENED_NOT_ROOT_CAUSE"
+  },
+  "springman": {
+    "codeRebirth_1_6_9_dusk_definition_found": false,
+    "exact_repository_indexed_vanilla_asset_provenance_found": false,
+    "separate_enemy_skin_registry_active_skins": [],
+    "excluded_as_runtime_candidate": false,
+    "classification": "STATIC_DUSK_ASSET_MECHANISM_NOT_ESTABLISHED_REMAINS_CONTEMPORANEOUS_ALTERNATIVE"
+  },
+  "rng": {
+    "formula": "mapSeed + 234780",
+    "supplemental_initial_seed": 18721542,
+    "deterministic_selected_replacement_reconstructable": false,
+    "reason": "shared RNG / preceding draw count and runtime candidate context unavailable"
+  },
+  "conclusion": {
+    "array_emitter": "UNPROVEN",
+    "root_cause": "UNPROVEN",
+    "static_asset_layer": "EXHAUSTED_TO_CURRENT_PROVENANCE_BOUNDARY",
+    "narrow_instrumentation_technically_justified": true,
+    "runtime_authorized": false,
+    "patch_authorized": false,
+    "build_authorized": false
+  }
+}
