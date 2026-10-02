@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Complete clean exact-head PR/CI validation and main integration of S1.42AK-BMAFR1 exact-byte publication PR #218 after removing the temporary publication transport. Verify the final PR head, merge it to main, verify permanent exact-head main CI, and canonically reconcile the actual main integration facts. Only after that publication closure may a separately bounded BMAFR1 profile-index mapping/reconciliation begin. Do not profile-index, Gale-import, runtime-arm, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt, accept or waive S1.42AK-BMDSFIX1, or rerun BMAFDIAG1PATH1 during this integration gate.
+Execute the separately bounded S1.42AK-BMAFR1 profile-index mapping reconciliation. Register the exact published profile path Profiles/LC V1 S1.42AK-BMAFR1.r2z with build ID S1.42AK-BMAFR1 and SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 in the canonical mapping authority required by BuildSystem/index_profile.py, following the existing BMAFDIAG1 and BMAFDIAG1PATH1 precedents. Then let the profile-index workflow generate and commit the canonical BMAFR1 profile-index result under its existing snapshot directory and verify the exact-head Knowledge Architecture gate. Do not Gale-import, runtime-arm, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt, accept or waive S1.42AK-BMDSFIX1, or rerun BMAFDIAG1PATH1 during this index gate.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
