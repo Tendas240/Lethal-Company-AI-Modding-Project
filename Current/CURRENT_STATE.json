@@ -701,7 +701,7 @@
     "diagnostic_successor_review_checkpoint": "Current/182_S1.42AK_BMDSFIX1_DIAG1PATH1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md",
     "diagnostic_successor_revision": {
       "build_id": "S1.42AK-BMAFDIAG1PATH1",
-      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+      "status": "PUBLISHED_DIAGNOSTIC_RUNTIME_REFUSED_DO_NOT_RERUN_NOT_ACCEPTED",
       "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
       "base_build_id": "S1.42AK-BMAFDIAG1",
       "base_profile": "Profiles/LC V1 S1.42AK-BMAFDIAG1 Black Mesa Abandoned Foundry Diagnostic.r2z",
@@ -733,8 +733,8 @@
       "foundry_lll_config_sha256": "c9f03e7839c70ce21fae37ff597085175de35a9c176b97aed40798401ce66c0e",
       "published": true,
       "indexed": true,
-      "runtime_armed": true,
-      "next_gate": "RUNTIME_DIAGNOSTIC_TEST",
+      "runtime_armed": false,
+      "next_gate": "SEPARATELY_VERSIONED_CONFIG_BINDING_REPAIR_SUCCESSOR_SOURCE_STATIC",
       "review_checkpoint": "Current/214_S1.42AK_BMAFDIAG1PATH1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md",
       "review_evidence": "BuildSpecs/S1.42AK-BMAFDIAG1PATH1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json",
       "review_pr": 208,
@@ -795,7 +795,11 @@
       "publication_evidence": "BuildSpecs/S1.42AK-BMAFDIAG1PATH1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
       "activation_record": "Current/218_S1.42AK_BMAFDIAG1PATH1_RUNTIME_ACTIVATION.md",
       "runtime_role": "DIAGNOSTIC_ONLY_BLACK_MESA_ABANDONED_FOUNDRY_FORCE_SELECTION_AND_READ_ONLY_ENTRANCE_OBSERVATION_NEVER_ACCEPT",
-      "runtime_validation_status": "RUNTIME_TEST_OUTSTANDING_NEVER_ACCEPT"
+      "runtime_validation_status": "RUNTIME_REFUSED_CONFIG_SECTION_IDENTITY_MISMATCH_DO_NOT_RERUN_NEVER_ACCEPT",
+      "runtime_decision": "Current/219_S1.42AK_BMAFDIAG1PATH1_RUNTIME_REFUSAL_AND_CONFIG_BINDING_ROOT_CAUSE_RECONCILIATION.md",
+      "runtime_evidence": "RuntimeEvidence/S1.42AK-BMAFDIAG1PATH1/20261001T195721Z/",
+      "runtime_log_sha256": "ccb38f7173a109a103f5dbc67e06d4acf60f86f95652a2db566f8b2c63a98521",
+      "root_cause": "CONFIG_CATEGORY_IDENTITY_MISMATCH_9X_U200B_SORTING_PREFIX_LOST_AND_VALIDATOR_CF_NORMALIZATION_MASKED_ERROR"
     },
     "diagnostic_parent_revision": {
       "build_id": "S1.42AK-BMAFDIAG1",
