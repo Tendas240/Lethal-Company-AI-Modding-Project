@@ -399,7 +399,8 @@
       "note": "Exact BMAFR1 remains the active repaired diagnostic only / NEVER ACCEPT. First ingested Black Mesa x Abandoned Foundry evidence passes ARMED, exact singleton selection, completed generation, TOPOLOGY_OK ids 0..3 and bidirectional IDs 0,1,3 traversal. ID 2 / outside EntranceTeleportC was not traversed and is the sole remaining entrance-coverage gate. Exactly one supplemental ID-2 run is authorized only after this reconciliation is integrated to main and exact-head CI is green. BMDSFIX1 and its passive Deep Sewers gate remain unchanged.",
       "runtime_evidence": "RuntimeEvidence/S1.42AK-BMAFR1/20261002T154834Z/",
       "runtime_log_sha256": "3113a1c9df2e1db231cf6aa0e7dc20699894a8646da3eaf7fd1ce0c3d89ac42b",
-      "runtime_partial_decision": "Current/225_S1.42AK_BMAFR1_PARTIAL_RUNTIME_EVIDENCE_ID2_SUPPLEMENTAL_AUTHORIZATION.md"
+      "runtime_partial_decision": "Current/225_S1.42AK_BMAFR1_PARTIAL_RUNTIME_EVIDENCE_ID2_SUPPLEMENTAL_AUTHORIZATION.md",
+      "runtime_index": "RuntimeEvidence/S1.42AK-BMAFR1/20261002T154834Z/INDEX.json"
     }
   ],
   "important_project_dlls": [
