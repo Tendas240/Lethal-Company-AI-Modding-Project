@@ -61,13 +61,13 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C3_BMAFR1_RUNTIME_ACTIVE_TEST_OUTSTANDING_BMDSFIX1_TARGET_PASSIVE_OUTSTANDING",
+    "status": "PHASE_C3_BMAFR1_PARTIAL_RUNTIME_EVIDENCE_ID2_SUPPLEMENTAL_OUTSTANDING_BMDSFIX1_TARGET_PASSIVE_OUTSTANDING",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
-    "finding": "Exact S1.42AK-BMAFDIAG1PATH1 runtime evidence remains immutable completed failed diagnostic provenance / DO NOT RERUN. The separately versioned short repair successor S1.42AK-BMAFR1 has completed inactive raw-config-binding review, exact-byte publication, canonical EXPECTED_HASHES mapping and profile indexing and is now runtime-armed solely as the bounded Black Mesa x Abandoned Foundry diagnostic target. Exact profile Profiles/LC V1 S1.42AK-BMAFR1.r2z remains SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5; reused diagnostic DLL remains SHA-256 c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1; repaired LethalLevelLoader.cfg remains SHA-256 d2a01df4829623ef3dcbacf8c09e98a9c6a72b0885f9302502da2bcb91b31b68 with exact nine-U+200B Foundry category identity. Runtime/evidence routing now points to BMAFR1 while accepted S1.42AK and separate S1.42AK-BMDSFIX1 / NOT ACCEPTED remain unchanged; BMDSFIX1 DeepSewersFlow qualification remains passive, outstanding and unwaived. Black Mesa x Abandoned Foundry remains NOT_YET_PROVEN until runtime evidence is ingested and decided.",
-    "analysis_contract": "Treat S1.42AK-BMAFR1 as the active diagnostic runtime target only and NEVER ACCEPT it as gameplay. Preserve exact profile SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5, reused BMAFDIAG1 DLL SHA-256 c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1, repaired Foundry LLL config SHA-256 d2a01df4829623ef3dcbacf8c09e98a9c6a72b0885f9302502da2bcb91b31b68, exact raw nine-U+200B Foundry identity, accepted S1.42AK, accepted S1.42AB normalization and the separate unaccepted S1.42AK-BMDSFIX1 gameplay candidate with its passive/unwaived Black Mesa x DeepSewersFlow gate. BMAFDIAG1PATH1 remains DO NOT RERUN. The runtime gate must establish BMAFDIAG1 arming, pre-reduction viable exact FoundryFlow at normalized rarity 100, singleton selection, completed generation, IDs 0..3 topology/traversal evidence and no invalidating REFUSED/TOPOLOGY_INCONCLUSIVE/TRAVERSAL_INCONCLUSIVE/OBSERVER_INCONCLUSIVE marker before any pair-compatibility conclusion.",
-    "next_action": "After this activation is integrated to main and the permanent exact-head Knowledge Architecture gate is green, import the exact active S1.42AK-BMAFR1 profile through the canonical repository-driven Gale v2.4.5 launcher, run one bounded Black Mesa x Abandoned Foundry diagnostic, exercise the main entrance and alternate entrance IDs 1, 2 and 3 in both directions where practical, then upload that run's exact BepInEx/LogOutput.log with the BMAFR1 build-specific standalone PowerShell uploader. Do not alter profile/config/package/plugin/gameplay bytes during the test. Treat the result as diagnostic-only / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.",
+    "finding": "Exact S1.42AK-BMAFR1 runtime evidence is now ingested at RuntimeEvidence/S1.42AK-BMAFR1/20261002T154834Z/ with raw LogOutput.log SHA-256 3113a1c9df2e1db231cf6aa0e7dc20699894a8646da3eaf7fd1ce0c3d89ac42b. The diagnostic armed, selected Black Mesa x Abandoned Foundry / FoundryFlow at normalized rarity 100 with pool=32->1, completed generation, and reported TOPOLOGY_OK ids=0,1,2,3 uniqueOppositePairs=4 with no diagnostic invalidator. Direct player traversal is complete bidirectionally for IDs 0, 1 and 3. ID 2 / outside EntranceTeleportC was not directly traversed in the captured run and is the sole remaining entrance-coverage gate. This is partial pair-specific runtime evidence only, not a compatibility PASS and never gameplay acceptance. Runtime/evidence routing remains BMAFR1 solely to permit one post-integration ID-2 supplemental run; accepted S1.42AK and separate S1.42AK-BMDSFIX1 / NOT ACCEPTED remain unchanged, and the BMDSFIX1 DeepSewersFlow gate remains passive/outstanding/unwaived.",
+    "analysis_contract": "Treat the ingested first BMAFR1 run as cumulative partial evidence: preserve ARMED, exact FoundryFlow singleton selection, completed generation, TOPOLOGY_OK ids 0..3 and bidirectional direct traversal for IDs 0, 1 and 3. Do not discard or require repetition of those passed observations solely because ID 2 was missed. Black Mesa x Abandoned Foundry remains not fully proven until one separately bounded supplemental run directly exercises ID 2 / outside EntranceTeleportC, bidirectionally where practical, with no severe exercised-endpoint clipping/inaccessibility and no invalidating BMAFDIAG1 refusal/inconclusive or new severe persistent target-attributable routing/NavMesh failure. Preserve exact BMAFR1/profile/DLL/config hashes, accepted S1.42AK, accepted S1.42AB normalization, PATH1 DO NOT RERUN, and separate unaccepted BMDSFIX1 with its passive/unwaived DeepSewersFlow gate.",
+    "next_action": "After this partial-runtime reconciliation is integrated to main and the permanent exact-head Knowledge Architecture gate is green, keep the exact already-published S1.42AK-BMAFR1 diagnostic bytes and perform exactly one bounded supplemental Black Mesa x Abandoned Foundry run focused on alternate entrance ID 2 / outside EntranceTeleportC. Obtain direct ID 2 player traversal, bidirectional where practical, and inspect the exercised ID 2 endpoint geometry for severe clipping or inaccessibility. Then upload that supplemental run's exact BepInEx/LogOutput.log with the BMAFR1 build-specific standalone PowerShell uploader while RuntimeInbox/ACTIVE_BUILD.txt remains S1.42AK-BMAFR1. The first run's exact bidirectional IDs 0, 1 and 3 evidence remains valid and need not be repeated solely for qualification. Do not alter profile/config/package/plugin/gameplay bytes. BMAFR1 remains DIAGNOSTIC ONLY / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.",
     "currently_irrelevant_actions": [
       "Do not globally force all dungeon flows onto all moons before pair-specific compatibility/safety evidence supports the exact pairing being changed.",
       "Do not modify or replace the accepted S1.42AB InteriorWeightNormalization behavior; it already provides equal effective rarity 100 after viability filtering.",
@@ -179,7 +179,7 @@
       }
     },
     "phase_c": {
-      "status": "C3_BMAFR1_RUNTIME_ACTIVE_TEST_OUTSTANDING",
+      "status": "C3_BMAFR1_PARTIAL_RUNTIME_ID2_SUPPLEMENTAL_OUTSTANDING",
       "phase_c1_evidence": "Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md",
       "trusted_runtime_triage": {
         "traversed_generation_player_entry_exit": 15,
@@ -348,7 +348,7 @@
       "bmafdiag1_source_main_knowledge_architecture_run": 36708806226,
       "bmafdiag1_source_plan": "BuildSpecs/S1.42AK-BMAFDIAG1_PLAN.md",
       "bmafdiag1_source_implementation_evidence": "SourceEvidence/UniversalInteriorViability/PhaseC3F19_BMAFDIAG1/IMPLEMENTATION_FINDINGS.md",
-      "black_mesa_abandoned_foundry_status": "NOT_YET_PROVEN_BMAFR1_RUNTIME_DIAGNOSTIC_ACTIVE_TEST_OUTSTANDING",
+      "black_mesa_abandoned_foundry_status": "PARTIAL_RUNTIME_EVIDENCE_IDS_0_1_3_BIDIRECTIONAL_ID2_OUTSTANDING",
       "bmafdiag1_review_checkpoint": "Current/208_S1.42AK_BMAFDIAG1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md",
       "bmafdiag1_review_status": "INACTIVE_REVIEW_BUILD_PASS_EXACT_BYTES_PUBLISHED_INDEXED_PATH1_RUNTIME_REFUSED_BMAFR1_RUNTIME_ACTIVE_TEST_OUTSTANDING",
       "bmafdiag1_review_pr": 200,
@@ -504,7 +504,11 @@
       "bmafr1_profile_index_exact_head_knowledge_architecture_run_number": 952,
       "bmafr1_profile_index_exact_head_knowledge_architecture_event": "workflow_dispatch",
       "bmafr1_runtime_activation": "Current/224_S1.42AK_BMAFR1_RUNTIME_ACTIVATION.md",
-      "bmafr1_runtime_activation_status": "ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_TEST_OUTSTANDING_NEVER_ACCEPT"
+      "bmafr1_runtime_activation_status": "ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_TEST_OUTSTANDING_NEVER_ACCEPT",
+      "bmafr1_partial_runtime_decision": "Current/225_S1.42AK_BMAFR1_PARTIAL_RUNTIME_EVIDENCE_ID2_SUPPLEMENTAL_AUTHORIZATION.md",
+      "bmafr1_partial_runtime_evidence": "RuntimeEvidence/S1.42AK-BMAFR1/20261002T154834Z/",
+      "bmafr1_partial_runtime_log_sha256": "3113a1c9df2e1db231cf6aa0e7dc20699894a8646da3eaf7fd1ce0c3d89ac42b",
+      "bmafr1_partial_runtime_finding": "First exact BMAFR1 run passed diagnostic arming, exact Abandoned Foundry selection, completed generation and four-pair topology. IDs 0, 1 and 3 were directly traversed in both directions; ID 2 was not traversed. One post-integration supplemental ID-2 run is outstanding."
     },
     "diagnostic_build_plan": "BuildSpecs/S1.42AK-BMAFR1_PLAN.md",
     "diagnostic_static_evidence": "BuildSpecs/S1.42AK-BMAFR1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
@@ -512,7 +516,7 @@
     "diagnostic_runtime_activation": "Current/224_S1.42AK_BMAFR1_RUNTIME_ACTIVATION.md",
     "diagnostic_revision": {
       "build_id": "S1.42AK-BMAFR1",
-      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+      "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_PARTIAL_RUNTIME_EVIDENCE_ID2_SUPPLEMENTAL_OUTSTANDING_NOT_ACCEPTED",
       "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
       "base_build_id": "S1.42AK",
       "base_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
@@ -558,7 +562,14 @@
       "runtime_armed": true,
       "activation_record": "Current/224_S1.42AK_BMAFR1_RUNTIME_ACTIVATION.md",
       "runtime_role": "DIAGNOSTIC_ONLY_BLACK_MESA_ABANDONED_FOUNDRY_FORCE_SELECTION_AND_READ_ONLY_ENTRANCE_OBSERVATION_NEVER_ACCEPT",
-      "runtime_validation_status": "RUNTIME_TEST_OUTSTANDING_NEVER_ACCEPT"
+      "runtime_validation_status": "PARTIAL_PASS_IDS_0_1_3_BIDIRECTIONAL_ID2_SUPPLEMENTAL_OUTSTANDING_NEVER_ACCEPT",
+      "runtime_evidence": "RuntimeEvidence/S1.42AK-BMAFR1/20261002T154834Z/",
+      "runtime_index": "RuntimeEvidence/S1.42AK-BMAFR1/20261002T154834Z/INDEX.json",
+      "runtime_log_sha256": "3113a1c9df2e1db231cf6aa0e7dc20699894a8646da3eaf7fd1ce0c3d89ac42b",
+      "runtime_partial_decision": "Current/225_S1.42AK_BMAFR1_PARTIAL_RUNTIME_EVIDENCE_ID2_SUPPLEMENTAL_AUTHORIZATION.md",
+      "supplemental_run_status": "AUTHORIZED_AFTER_MAIN_INTEGRATION_AND_EXACT_HEAD_CI",
+      "supplemental_required_id": 2,
+      "supplemental_required_outside_object": "EntranceTeleportC"
     },
     "diagnostic_runtime_finding": "Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md",
     "bmdsfix1_source_repair": {
@@ -864,7 +875,7 @@
     "bmafr1_profile_index_reconciliation": "Current/223_S1.42AK_BMAFR1_PROFILE_INDEX_RECONCILIATION.md",
     "bmafr1_runtime_activation": "Current/224_S1.42AK_BMAFR1_RUNTIME_ACTIVATION.md"
   },
-  "next_action": "After this activation is integrated to main and the permanent exact-head Knowledge Architecture gate is green, import the exact active S1.42AK-BMAFR1 profile through the canonical repository-driven Gale v2.4.5 launcher, run one bounded Black Mesa x Abandoned Foundry diagnostic, exercise the main entrance and alternate entrance IDs 1, 2 and 3 in both directions where practical, then upload that run's exact BepInEx/LogOutput.log with the BMAFR1 build-specific standalone PowerShell uploader. Do not alter profile/config/package/plugin/gameplay bytes during the test. Treat the result as diagnostic-only / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.",
+  "next_action": "After this partial-runtime reconciliation is integrated to main and the permanent exact-head Knowledge Architecture gate is green, keep the exact already-published S1.42AK-BMAFR1 diagnostic bytes and perform exactly one bounded supplemental Black Mesa x Abandoned Foundry run focused on alternate entrance ID 2 / outside EntranceTeleportC. Obtain direct ID 2 player traversal, bidirectional where practical, and inspect the exercised ID 2 endpoint geometry for severe clipping or inaccessibility. Then upload that supplemental run's exact BepInEx/LogOutput.log with the BMAFR1 build-specific standalone PowerShell uploader while RuntimeInbox/ACTIVE_BUILD.txt remains S1.42AK-BMAFR1. The first run's exact bidirectional IDs 0, 1 and 3 evidence remains valid and need not be repeated solely for qualification. Do not alter profile/config/package/plugin/gameplay bytes. BMAFR1 remains DIAGNOSTIC ONLY / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
