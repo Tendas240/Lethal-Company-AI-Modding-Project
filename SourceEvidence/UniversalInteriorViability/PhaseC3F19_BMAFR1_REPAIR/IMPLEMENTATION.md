@@ -9,13 +9,13 @@
 
 The repair successor uses short profile identity `LC V1 S1.42AK-BMAFR1` and derives directly from exact accepted S1.42AK SHA-256 `b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee`.
 
-The profile builder now supports a fail-closed visible-equivalent duplicate guard while retaining raw section identity for actual INI binding. For Foundry, the BuildSpec encodes exactly nine `\u200b` JSON escapes before `Custom Dungeon:  Abandoned Foundry`; JSON decoding therefore supplies the exact nine U+200B raw section identifier to the builder.
+The dedicated `BuildSystem/bmafr1_profile_builder.py` repair path fail-closes on visible-equivalent/raw-different LLL sections while leaving the generic `BuildSystem/profile_builder.py` unchanged. For Foundry, the BuildSpec encodes exactly nine `\u200b` JSON escapes before `Custom Dungeon:  Abandoned Foundry`; JSON decoding therefore supplies the exact nine U+200B raw section identifier to the repair builder.
 
 Visible-equivalent comparison is used only to reject duplicate or raw-mismatched sections. It is never used to claim section identity.
 
 ## Diagnostic DLL preservation
 
-The accepted S1.42AK parent does not contain the BMAFDIAG1 plugin. The builder therefore has a generic hash-guarded `archive_member_injections` path.
+The accepted S1.42AK parent does not contain the BMAFDIAG1 plugin. The BMAFR1 BuildSpec therefore declares one hash-guarded `archive_member_injections` donor. The bounded repair builder validates the donor profile/member hashes, extracts only that DLL to a temporary file, and delegates final archive construction to the unchanged generic builder.
 
 BMAFR1 reuses only:
 
@@ -44,7 +44,7 @@ The new BMAFR1 validator additionally proves:
 
 ## Review construction
 
-The dedicated workflow `.github/workflows/s142ak-bmafr1-build-static.yml` performs only an ephemeral Actions review build. It runs the permanent Gale path guard, fresh LLL provenance, generic profile builder and BMAFR1 validator, then uploads the review artifact.
+The dedicated workflow `.github/workflows/s142ak-bmafr1-build-static.yml` performs only an ephemeral Actions review build. It runs the permanent Gale path guard, fresh LLL provenance, bounded BMAFR1 repair builder and BMAFR1 validator, then uploads the review artifact.
 
 The short profile projects to 217/219-character canonical reference paths, below the permanent 255-character project budget.
 
