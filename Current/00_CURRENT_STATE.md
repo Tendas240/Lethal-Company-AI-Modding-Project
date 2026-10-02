@@ -42,7 +42,6 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 After the BMAFR1 instrumentation source/static authorization decision is integrated to main and permanent exact-head Knowledge Architecture is green, perform one bounded S1.42AK-BMAFR1I1 source/static implementation checkpoint only. Implement the exact fail-closed observational surface authorized by Current/230_S1.42AK_BMAFR1_INSTRUMENTATION_SOURCE_STATIC_AUTHORIZATION_DECISION.md, including the refined Dusk selector-callsite observation, exact Dusk renderer/material observers, exact Janitor index-0 write probes, bounded Janitor/SpringMan snapshots and stackless-array log correlation. Do not build a DLL/profile, activate BuildSpecs/current.json, publish, Gale-import, runtime-arm or authorize a runtime test in that source/static segment.
 
-
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
