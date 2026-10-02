@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Prepare a separately versioned short-name Black Mesa x Abandoned Foundry config-binding repair successor directly from exact accepted S1.42AK. First harden BuildSystem/profile_builder.py and the BMAFDIAG1 build validator so LethalLevelLoader Custom Dungeon category identity is raw-exact, including exactly nine U+200B sorting characters, and any plain or duplicate Abandoned Foundry category fails closed. Then construct only an inactive review artifact using the unchanged BMAFDIAG1 diagnostic DLL and preserved Foundry owner values with the intended Black Mesa:100 delta. Do not rerun PATH1, do not runtime-arm the repair successor in that checkpoint, and do not accept or waive S1.42AK-BMDSFIX1.
+Execute a separately bounded exact-byte publication checkpoint for S1.42AK-BMAFR1 using only frozen Actions artifact 11218000891 from review run 36986031171. Reverify artifact ZIP SHA-256 49e9402bb2521a2a56c3634563f1ed6a9d8bb3fc98895dd23ad936ec5ca2ad4c and exact review profile SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 before byte-for-byte materialization. Publish those exact reviewed bytes and a readable snapshot without rebuilding. Do not profile-index, Gale-import, runtime-arm, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt, accept or waive S1.42AK-BMDSFIX1, or rerun BMAFDIAG1PATH1 in that publication gate.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
