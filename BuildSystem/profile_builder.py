@@ -8,6 +8,7 @@ import re
 import shutil
 import subprocess
 import sys
+import unicodedata
 import zipfile
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
@@ -43,10 +44,53 @@ def joined(items: list[str]) -> str:
     return "\r\n".join(items)
 
 
-def set_ini(text: str, section: str, key: str, value: str) -> str:
+def strip_format_chars(text: str) -> str:
+    """Visible-equivalence helper only; never use this for raw INI identity matching."""
+    return "".join(ch for ch in text if unicodedata.category(ch) != "Cf")
+
+
+def is_ini_header(line: str) -> bool:
+    stripped = line.strip()
+    return stripped.startswith("[") and stripped.endswith("]")
+
+
+def set_ini(
+    text: str,
+    section: str,
+    key: str,
+    value: str,
+    *,
+    forbid_visible_equivalent_duplicates: bool = False,
+) -> str:
     data = lines(text)
     header = f"[{section}]"
-    start = next((i for i, x in enumerate(data) if x.strip().casefold() == header.casefold()), -1)
+    exact_starts = [
+        i for i, x in enumerate(data)
+        if x.strip().casefold() == header.casefold()
+    ]
+    if len(exact_starts) > 1:
+        raise RuntimeError(f"Duplicate exact INI section: {header}")
+
+    if forbid_visible_equivalent_duplicates:
+        visible_header = strip_format_chars(header).casefold()
+        visible_starts = [
+            i for i, x in enumerate(data)
+            if is_ini_header(x)
+            and strip_format_chars(x.strip()).casefold() == visible_header
+        ]
+        if len(visible_starts) > 1:
+            raise RuntimeError(
+                "Duplicate visible-equivalent INI sections for raw target "
+                f"{header!r}: lines {[i + 1 for i in visible_starts]}"
+            )
+        if visible_starts and not exact_starts:
+            actual = data[visible_starts[0]].strip()
+            raise RuntimeError(
+                "Visible-equivalent INI section exists with different raw identity: "
+                f"expected {header!r}, found {actual!r}"
+            )
+
+    start = exact_starts[0] if exact_starts else -1
 
     if start < 0:
         if data and data[-1] != "":
@@ -56,8 +100,7 @@ def set_ini(text: str, section: str, key: str, value: str) -> str:
 
     end = len(data)
     for i in range(start + 1, len(data)):
-        x = data[i].strip()
-        if x.startswith("[") and x.endswith("]"):
+        if is_ini_header(data[i]):
             end = i
             break
 
@@ -69,7 +112,6 @@ def set_ini(text: str, section: str, key: str, value: str) -> str:
 
     data[end:end] = [f"{key} = {value}", ""]
     return joined(data)
-
 
 def item_blocks(data: list[str]) -> list[tuple[int, int, str, str]]:
     starts: list[tuple[int, str, str]] = []
@@ -264,6 +306,43 @@ def build_plugins(spec: dict) -> list[dict]:
     return inject
 
 
+def load_archive_member_injections(spec: dict) -> list[dict]:
+    inject = []
+    for item in spec.get("archive_member_injections", []):
+        source_profile = Path(item["source_profile"])
+        if not source_profile.is_file():
+            raise RuntimeError(f"Archive-member source profile missing: {source_profile}")
+        expected_profile_hash = str(item["source_profile_sha256"]).lower()
+        actual_profile_hash = sha_file(source_profile)
+        if actual_profile_hash != expected_profile_hash:
+            raise RuntimeError(
+                f"Archive-member source profile SHA mismatch for {source_profile}: "
+                f"expected {expected_profile_hash}, got {actual_profile_hash}"
+            )
+
+        member = item["source_member"]
+        matches = [entry for entry in read_zip(source_profile) if entry.name == member]
+        if len(matches) != 1:
+            raise RuntimeError(
+                f"Archive-member source count for {member} in {source_profile} is "
+                f"{len(matches)}, expected 1"
+            )
+
+        expected_member_hash = str(item["source_member_sha256"]).lower()
+        actual_member_hash = matches[0].hash
+        if actual_member_hash != expected_member_hash:
+            raise RuntimeError(
+                f"Archive-member SHA mismatch for {member}: "
+                f"expected {expected_member_hash}, got {actual_member_hash}"
+            )
+
+        inject.append({
+            "archive_path": item.get("archive_path", member),
+            "data": matches[0].data,
+        })
+    return inject
+
+
 def snapshot(entries: list[Entry], root: Path) -> dict:
     if root.exists():
         shutil.rmtree(root)
@@ -347,21 +426,37 @@ def main() -> int:
             entries.append(e)
             by_name.setdefault(name, []).append(e)
             text = ""
-        e.data = encode(set_ini(text, patch["section"], patch["key"], str(patch["value"])))
+        e.data = encode(set_ini(
+            text,
+            patch["section"],
+            patch["key"],
+            str(patch["value"]),
+            forbid_visible_equivalent_duplicates=bool(
+                patch.get("forbid_visible_equivalent_duplicates", False)
+            ),
+        ))
 
-    injections = list(spec.get("file_injections", [])) + build_plugins(spec)
+    injections = (
+        list(spec.get("file_injections", []))
+        + build_plugins(spec)
+        + load_archive_member_injections(spec)
+    )
     for item in injections:
-        source = Path(item["source"])
         name = item["archive_path"]
-        if not source.exists():
-            raise RuntimeError(f"Injection source missing: {source}")
+        if "data" in item:
+            payload = item["data"]
+        else:
+            source = Path(item["source"])
+            if not source.exists():
+                raise RuntimeError(f"Injection source missing: {source}")
+            payload = source.read_bytes()
         found = by_name.get(name, [])
         if len(found) > 1:
             raise RuntimeError(f"Duplicate injection target: {name}")
         if found:
-            found[0].data = source.read_bytes()
+            found[0].data = payload
         else:
-            e = Entry(len(entries), name, source.read_bytes(), (1980, 1, 1, 0, 0, 0), 0)
+            e = Entry(len(entries), name, payload, (1980, 1, 1, 0, 0, 0), 0)
             entries.append(e)
             by_name.setdefault(name, []).append(e)
 
