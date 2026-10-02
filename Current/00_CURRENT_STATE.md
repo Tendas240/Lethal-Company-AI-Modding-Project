@@ -36,11 +36,11 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFR1`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`
 
 ## Exact next action
 
-After this partial-runtime reconciliation is integrated to main and the permanent exact-head Knowledge Architecture gate is green, keep the exact already-published S1.42AK-BMAFR1 diagnostic bytes and perform exactly one bounded supplemental Black Mesa x Abandoned Foundry run focused on alternate entrance ID 2 / outside EntranceTeleportC. Obtain direct ID 2 player traversal, bidirectional where practical, and inspect the exercised ID 2 endpoint geometry for severe clipping or inaccessibility. Then upload that supplemental run's exact BepInEx/LogOutput.log with the BMAFR1 build-specific standalone PowerShell uploader while RuntimeInbox/ACTIVE_BUILD.txt remains S1.42AK-BMAFR1. The first run's exact bidirectional IDs 0, 1 and 3 evidence remains valid and need not be repeated solely for qualification. Do not alter profile/config/package/plugin/gameplay bytes. BMAFR1 remains DIAGNOSTIC ONLY / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.
+After this BMAFR1 runtime-compatibility reconciliation is integrated to main and permanent exact-head Knowledge Architecture is green, perform one bounded repository-native performance-attribution triage of the supplemental-run `Array index (0) is out of bounds (size=0)` flood. Compare the first and supplemental exact BMAFR1 evidence, identify the emitting call path/owner as far as repository/source evidence permits, and test the observed Janitor-lifetime temporal correlation against alternative explanations before proposing any patch or new runtime build. Do not rerun BMAFR1 solely for pair qualification and do not release a dedicated BMDSFIX1 reroll; its regular Black Mesa x DeepSewersFlow gate remains passive/outstanding/unwaived. After the bounded performance triage, continue the remaining Phase C3 compatibility/safety work under the existing universal-interior plan.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
