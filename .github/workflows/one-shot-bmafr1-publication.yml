@@ -81,7 +81,6 @@ jobs:
               protected = {
                   "BepInEx/plugins/S142AKBMAFDiag1/S142AKBMAFDiag1.dll": os.environ["DIAG_DLL_SHA256"],
                   "BepInEx/config/LethalLevelLoader.cfg": os.environ["LLL_CONFIG_SHA256"],
-                  "BepInEx/plugins/LethalLevelLoader/LethalLevelLoader.dll": os.environ["LLL_DLL_SHA256"],
                   "BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll": os.environ["NORMALIZER_SHA256"],
               }
               for path, expected in protected.items():
@@ -153,6 +152,7 @@ jobs:
               raise SystemExit("artifact build-result added-member delta mismatch")
           required_static = {
               "diagnostic_dll_reused_byte_exact": True,
+              "lll_dll_sha256": os.environ["LLL_DLL_SHA256"],
               "foundry_raw_section_u200b_count": 9,
               "foundry_plain_section_present": False,
               "foundry_visible_equivalent_section_count": 1,
