@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-10-01  
+**Updated:** 2026-10-02  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -36,11 +36,11 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFDIAG1PATH1`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`
 
 ## Exact next action
 
-Import the exact active S1.42AK-BMAFDIAG1PATH1 profile through the canonical repository-driven Gale v2.4.5 launcher, run one bounded Black Mesa x Abandoned Foundry diagnostic, exercise the main entrance and alternate entrance IDs 1, 2 and 3 in both directions where practical, then upload that run's exact BepInEx/LogOutput.log with the BMAFDIAG1PATH1 build-specific standalone PowerShell uploader. Do not alter profile/config/package/plugin/gameplay bytes during the test. Treat the result as diagnostic-only / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.
+Prepare a separately versioned short-name Black Mesa x Abandoned Foundry config-binding repair successor directly from exact accepted S1.42AK. First harden BuildSystem/profile_builder.py and the BMAFDIAG1 build validator so LethalLevelLoader Custom Dungeon category identity is raw-exact, including exactly nine U+200B sorting characters, and any plain or duplicate Abandoned Foundry category fails closed. Then construct only an inactive review artifact using the unchanged BMAFDIAG1 diagnostic DLL and preserved Foundry owner values with the intended Black Mesa:100 delta. Do not rerun PATH1, do not runtime-arm the repair successor in that checkpoint, and do not accept or waive S1.42AK-BMDSFIX1.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
