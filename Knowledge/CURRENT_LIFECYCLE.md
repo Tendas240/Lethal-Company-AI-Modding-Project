@@ -334,4 +334,19 @@ The root cause is the Foundry LLL config category identity. Exact LLL 1.7.12 use
 
 PATH1 is completed failed diagnostic evidence / **DO NOT RERUN / NEVER ACCEPT**. Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN`. Runtime/evidence routing is returned to `S1.42AK-BMDSFIX1`; its Deep Sewers target remains passive/outstanding/unwaived and BMDSFIX1 remains not accepted.
 
-Exact next action: Prepare a separately versioned short-name Black Mesa x Abandoned Foundry config-binding repair successor directly from exact accepted S1.42AK. First harden BuildSystem/profile_builder.py and the BMAFDIAG1 build validator so LethalLevelLoader Custom Dungeon category identity is raw-exact, including exactly nine U+200B sorting characters, and any plain or duplicate Abandoned Foundry category fails closed. Then construct only an inactive review artifact using the unchanged BMAFDIAG1 diagnostic DLL and preserved Foundry owner values with the intended Black Mesa:100 delta. Do not rerun PATH1, do not runtime-arm the repair successor in that checkpoint, and do not accept or waive S1.42AK-BMDSFIX1.
+That bounded repair-successor action is now fulfilled by the S1.42AK-BMAFR1 inactive review checkpoint below. PATH1 remains DO NOT RERUN.
+
+
+## BMAFR1 raw config-binding inactive review build — PASS / exact bytes frozen
+
+`Current/220_S1.42AK_BMAFR1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md` records the completed bounded repair review.
+
+PR #216 exact reviewed head `5d069538ab4f75a52a7ab2a998cee4edc01a7797` passed BMAFR1 raw config-binding review run `36986031171` / #7 and Knowledge Architecture run `36986031182` / #926. The historical BMAFDIAG1 archive-aware gate `36986031189` / #17 also passed. The review infrastructure merged to main at `9f3f8fa2951111dff3b7b41160b39d0fb7d9a24d`; permanent exact-head Knowledge Architecture run `36986230651` / #927 and same-head canonical build controller run `36986230510` / #144 passed.
+
+Frozen Actions artifact `11218000891`, name `S1.42AK-BMAFR1-review-4e1427deebd9af960e9ed606391bf8326d168212`, has ZIP SHA-256 `49e9402bb2521a2a56c3634563f1ed6a9d8bb3fc98895dd23ad936ec5ca2ad4c`; exact review profile SHA-256 is `8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5`. The review derives directly from exact accepted S1.42AK, contains 337 members, adds only the byte-exact BMAFDIAG1 diagnostic DLL, changes existing members only at LethalLevelLoader.cfg and export.r2x, and removes none.
+
+The repaired Foundry config contains exactly one visible-equivalent Foundry category and that category has exactly nine leading U+200B sorting characters. No plain Foundry category is present. Owner values are preserved except `Enable Content Configuration=true` and exact one-time `Black Mesa:100`; accepted normalizer SHA-256 `901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06` and diagnostic DLL SHA-256 `c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1` remain exact. Canonical path projections are 217/219 <= 255.
+
+These are inactive review bytes only: not published, not indexed, not Gale-imported and not runtime-armed. Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN`. S1.42AK-BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED; its Deep Sewers gate remains passive/outstanding/unwaived and `RuntimeInbox/ACTIVE_BUILD.txt` remains S1.42AK-BMDSFIX1.
+
+Exact next action: Execute a separately bounded exact-byte publication checkpoint for S1.42AK-BMAFR1 using only frozen Actions artifact 11218000891 from review run 36986031171. Reverify artifact ZIP SHA-256 49e9402bb2521a2a56c3634563f1ed6a9d8bb3fc98895dd23ad936ec5ca2ad4c and exact review profile SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 before byte-for-byte materialization. Publish those exact reviewed bytes and a readable snapshot without rebuilding. Do not profile-index, Gale-import, runtime-arm, start gameplay, change RuntimeInbox/ACTIVE_BUILD.txt, accept or waive S1.42AK-BMDSFIX1, or rerun BMAFDIAG1PATH1 in that publication gate.

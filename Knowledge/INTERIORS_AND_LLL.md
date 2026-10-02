@@ -210,7 +210,7 @@ The intended Foundry availability override failed at config binding, not at the 
 
 Canonical reconciliation: `Current/219_S1.42AK_BMAFDIAG1PATH1_RUNTIME_REFUSAL_AND_CONFIG_BINDING_ROOT_CAUSE_RECONCILIATION.md`.
 
-Do not rerun PATH1. A separately versioned repair successor must fix and raw-validate the LLL category identity before any new runtime test. The accepted normalizer remains unchanged.
+Do not rerun PATH1. The separately versioned repair successor S1.42AK-BMAFR1 has now passed inactive review with exactly one raw nine-U+200B Foundry category, no plain visible-equivalent category, preserved owner values except `Enable Content Configuration=true` plus exact `Black Mesa:100`, and the exact BMAFDIAG1 diagnostic DLL reused byte-for-byte. Review artifact `11218000891` / profile SHA-256 `8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5` remains Actions-only and is not published/indexed/imported/armed. The accepted normalizer remains unchanged. Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN` because no BMAFR1 runtime test has occurred; the next bounded step is exact-byte publication from the frozen review artifact without rebuilding.
 
 ## Shatteredrooms restriction
 
