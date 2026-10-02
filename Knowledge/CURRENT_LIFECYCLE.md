@@ -301,26 +301,29 @@ BMAFDIAG1PATH1 is therefore published, canonically indexed and exact-head CI-gre
 
 - Accepted baseline: **S1.42AK**.
 - Latest built artifact / active gameplay candidate: **S1.42AK-BMDSFIX1 — not accepted**.
-- Runtime/evidence pointer: **S1.42AK-BMDSFIX1**; its regular Black Mesa x `DeepSewersFlow` qualification remains passive, outstanding and unwaived.
+- Runtime/evidence pointer: **S1.42AK-BMAFR1 — active diagnostic target / DIAGNOSTIC ONLY / NEVER ACCEPT**; this is evidence routing, not gameplay acceptance.
 - BMAFDIAG1: **published + indexed / preloader path-length blocked / long identity DO NOT RERUN**.
 - BMAFDIAG1PATH1: **published + canonically indexed / completed failed Black Mesa x Abandoned Foundry diagnostic provenance / DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active**.
-- BMAFR1: **published + canonically indexed / exact profile SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 / exact-head CI-green / not Gale-imported / not runtime-armed / DIAGNOSTIC ONLY / NEVER ACCEPT**.
-- Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN`.
+- BMAFR1: **published + canonically indexed + runtime-armed / exact profile SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 / repaired raw nine-U+200B Foundry binding / projected critical paths 217 and 219 <= 255 / not Gale-imported yet / bounded Black Mesa x Abandoned Foundry test outstanding / DIAGNOSTIC ONLY / NEVER ACCEPT**.
+- Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN` until runtime evidence is ingested and decided.
 - BMGHDIAG3 remains completed Black Mesa x Greenhouse runtime-compatibility PASS / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active.
+- BMDSFIX1 regular Black Mesa x `DeepSewersFlow` gameplay qualification remains **passive / outstanding / unwaived**.
 - `BuildSpecs/current.json` remains disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
-- `RuntimeInbox/ACTIVE_BUILD.txt` remains `S1.42AK-BMDSFIX1`.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFR1`.
 - `Current/AUTO_BUILD_RESULT.json` remains exact `S1.42AK-BMDSFIX1`.
 - The historical Phase-B3 matrix, Oxyde ordinary-generation exception, Shatteredrooms exclusions and separate Black Mesa/Pikmin routing closure remain unchanged.
 
 ## Exact next project action
 
-Execute the separately bounded S1.42AK-BMAFR1 runtime-activation checkpoint for the already-published and canonically indexed exact bytes. Re-verify profile Profiles/LC V1 S1.42AK-BMAFR1.r2z at SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 and ProfileSources/S1.42AK-BMAFR1/PROFILE_INDEX_RESULT.json, then update runtime/evidence routing only as required for that diagnostic activation. Do not rebuild or alter profile/DLL/config/package bytes, do not accept S1.42AK-BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow qualification, and do not rerun BMAFDIAG1PATH1.
+After this activation is integrated to `main` and the permanent exact-head Knowledge Architecture gate is green, import the exact active S1.42AK-BMAFR1 profile through the canonical repository-driven Gale v2.4.5 launcher, run one bounded Black Mesa x Abandoned Foundry diagnostic, exercise the main entrance and alternate entrance IDs 1, 2 and 3 in both directions where practical, then upload that run's exact BepInEx/LogOutput.log with the BMAFR1 build-specific standalone PowerShell uploader. Do not alter profile/config/package/plugin/gameplay bytes during the test. Treat the result as diagnostic-only / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.
+
+No gameplay run is authorized from branch-only state. The commands in `Current/224_S1.42AK_BMAFR1_RUNTIME_ACTIVATION.md` become executable test instructions only after this activation is integrated to `main` and the permanent exact-head Knowledge Architecture gate is green.
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, now revision `2026-10-01-import-uia-v2.4.5-one-hop-accepted-baseline-parent-chain`. It preserves the runtime path-length guard plus the existing direct AUTO/direct accepted-baseline/completed-parent -> AUTO paths, and adds only the explicit preloader-blocked parent -> accepted-baseline one-hop shape required by BMAFDIAG1PATH1. No recursive or generic diagnostic fallback exists.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-10-01-import-uia-v2.4.5-one-hop-accepted-baseline-parent-chain`. The existing direct accepted-baseline diagnostic path already matches BMAFR1 exactly, so no resolver code change is required. The runtime path-length guard and all direct AUTO/accepted-baseline/explicit one-hop fail-closed shapes remain unchanged; no recursive or generic diagnostic fallback exists.
 
-The helper retains the historical one-hop BMAFDIAG1PATH1 support needed by its completed diagnostic provenance, but `RuntimeInbox/ACTIVE_BUILD.txt` is now `S1.42AK-BMDSFIX1`. BMAFR1 is not Gale-imported or runtime-armed, and no BMAFR1 import/run is authorized before later explicit lifecycle gates. `AUTO_BUILD_RESULT` and `BuildSpecs/current.json` remain BMDSFIX1 authorities.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFR1` now resolves through the active BMAFR1 diagnostic build-result and exact accepted S1.42AK identity. `AUTO_BUILD_RESULT` and `BuildSpecs/current.json` remain BMDSFIX1 authorities.
 
 
 ## BMAFDIAG1PATH1 runtime refusal and config-binding root cause — reconciled
@@ -336,7 +339,7 @@ PATH1 is completed failed diagnostic evidence / **DO NOT RERUN / NEVER ACCEPT**.
 That bounded repair-successor action is now fulfilled by the S1.42AK-BMAFR1 inactive review checkpoint below. PATH1 remains DO NOT RERUN.
 
 
-## BMAFR1 raw config-binding review + exact-byte publication + profile-index reconciliation — indexed / inactive
+## BMAFR1 raw config-binding review + publication + indexing + runtime activation — active diagnostic
 
 `Current/220_S1.42AK_BMAFR1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md` records the completed bounded repair review.
 
@@ -358,6 +361,4 @@ Automatic profile-index run `37013063791` / #32 then succeeded. Canonical `Profi
 
 Because the bot push used `GITHUB_TOKEN`, the workflow explicitly dispatched Knowledge Architecture for the exact bot head. Run `37013099855` / #952, event `workflow_dispatch`, head SHA `328e4b99786916dd2b5d030f448ac5321a8913a6`, completed with success.
 
-BMAFR1 is therefore published, canonically indexed and exact-head CI-green while remaining not Gale-imported, not runtime-armed and **DIAGNOSTIC ONLY / NEVER ACCEPT**. Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN`. S1.42AK-BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED; its Deep Sewers gate remains passive/outstanding/unwaived and `RuntimeInbox/ACTIVE_BUILD.txt` remains S1.42AK-BMDSFIX1. BMAFDIAG1PATH1 remains immutable completed failed diagnostic provenance / DO NOT RERUN.
-
-Exact next action: Execute the separately bounded S1.42AK-BMAFR1 runtime-activation checkpoint for the already-published and canonically indexed exact bytes. Re-verify profile Profiles/LC V1 S1.42AK-BMAFR1.r2z at SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 and ProfileSources/S1.42AK-BMAFR1/PROFILE_INDEX_RESULT.json, then update runtime/evidence routing only as required for that diagnostic activation. Do not rebuild or alter profile/DLL/config/package bytes, do not accept S1.42AK-BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow qualification, and do not rerun BMAFDIAG1PATH1.
+BMAFR1 is therefore published, canonically indexed, exact-head CI-green and now runtime-armed solely as the bounded diagnostic target under `Current/224_S1.42AK_BMAFR1_RUNTIME_ACTIVATION.md`. The activation materializes machine-readable BUILD_RESULT/STATIC_VERIFICATION provenance from already reviewed/published/indexed bytes; no rebuild or profile/DLL/config/package-byte mutation occurs. Its exact repaired `LethalLevelLoader.cfg` SHA-256 is `d2a01df4829623ef3dcbacf8c09e98a9c6a72b0885f9302502da2bcb91b31b68`; the reused diagnostic DLL remains `c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1`. Black Mesa x Abandoned Foundry remains `NOT_YET_PROVEN` pending runtime evidence. S1.42AK-BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED with its passive/outstanding/unwaived Deep Sewers gate. BMAFDIAG1PATH1 remains immutable completed failed diagnostic provenance / DO NOT RERUN.

@@ -60,7 +60,7 @@
   "Profiles/LC V1 S1.42AK-BMAFR1.r2z": {
     "build_id": "S1.42AK-BMAFR1",
     "sha256": "8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5",
-    "note": "Inactive short repair successor for the bounded Black Mesa x Abandoned Foundry diagnostic; exact reviewed bytes are published and the canonical readable snapshot is ProfileSources/S1.42AK-BMAFR1/. Diagnostic only, never accept or use as a gameplay base, and not runtime-armed by indexing."
+    "note": "Diagnostic-only active runtime target directly over accepted S1.42AK; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-BMAFR1/. NEVER ACCEPT and never use as a gameplay base; runtime activation authorizes only bounded Black Mesa x Abandoned Foundry diagnostic evidence collection."
   },
   "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z": {
     "build_id": "S1.42AK-BMDSFIX1",

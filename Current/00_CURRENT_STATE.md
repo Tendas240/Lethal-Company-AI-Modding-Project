@@ -36,11 +36,11 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFR1`
 
 ## Exact next action
 
-Execute the separately bounded S1.42AK-BMAFR1 runtime-activation checkpoint for the already-published and canonically indexed exact bytes. Re-verify profile Profiles/LC V1 S1.42AK-BMAFR1.r2z at SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 and ProfileSources/S1.42AK-BMAFR1/PROFILE_INDEX_RESULT.json, then update runtime/evidence routing only as required for that diagnostic activation. Do not rebuild or alter profile/DLL/config/package bytes, do not accept S1.42AK-BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow qualification, and do not rerun BMAFDIAG1PATH1.
+After this activation is integrated to main and the permanent exact-head Knowledge Architecture gate is green, import the exact active S1.42AK-BMAFR1 profile through the canonical repository-driven Gale v2.4.5 launcher, run one bounded Black Mesa x Abandoned Foundry diagnostic, exercise the main entrance and alternate entrance IDs 1, 2 and 3 in both directions where practical, then upload that run's exact BepInEx/LogOutput.log with the BMAFR1 build-specific standalone PowerShell uploader. Do not alter profile/config/package/plugin/gameplay bytes during the test. Treat the result as diagnostic-only / NEVER ACCEPT; do not accept BMDSFIX1 or waive its passive Black Mesa x DeepSewersFlow gate.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

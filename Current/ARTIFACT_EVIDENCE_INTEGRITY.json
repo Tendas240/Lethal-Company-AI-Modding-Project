@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "updated": "2026-10-01",
+  "updated": "2026-10-02",
   "status": "CURRENT_CANONICAL_ARTIFACT_EVIDENCE_INDEX",
   "profiles": [
     {
@@ -360,7 +360,7 @@
       "diagnostic_dll_sha256": "c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1",
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false,
-      "note": "Exact long-name BMAFDIAG1 bytes remain published/indexed but are preloader-blocked by the observed 260/262-character Gale-local nested paths and must not be rerun. They are retained only as the explicit one-hop diagnostic parent for active BMAFDIAG1PATH1 and remain DIAGNOSTIC ONLY / NEVER ACCEPT."
+      "note": "Exact long-name BMAFDIAG1 bytes remain published/indexed but are preloader-blocked by the observed 260/262-character Gale-local nested paths and must not be rerun. They remain preserved failed diagnostic provenance only and are not the active runtime/evidence target."
     },
     {
       "build_id": "S1.42AK-BMAFDIAG1PATH1",
@@ -378,7 +378,25 @@
       "diagnostic_dll_sha256": "c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1",
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false,
-      "note": "Exact published/indexed short-identity BMAFDIAG1PATH1 bytes are runtime-armed solely for bounded Black Mesa x Abandoned Foundry diagnostic qualification through the explicit blocked-parent -> accepted-S1.42AK provenance chain. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 and its passive Deep Sewers gate are unchanged."
+      "note": "Exact published/indexed BMAFDIAG1PATH1 bytes are completed failed Black Mesa x Abandoned Foundry diagnostic provenance. Runtime evidence proved config-category identity mismatch; PATH1 is DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT and is not runtime-active."
+    },
+    {
+      "build_id": "S1.42AK-BMAFR1",
+      "role": "ACTIVE_RUNTIME_DIAGNOSTIC_PENDING",
+      "profile": "Profiles/LC V1 S1.42AK-BMAFR1.r2z",
+      "profile_sha256": "8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5",
+      "profile_sources": "ProfileSources/S1.42AK-BMAFR1/",
+      "file_index": "ProfileSources/S1.42AK-BMAFR1/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AK-BMAFR1/export.r2x",
+      "build_plan": "BuildSpecs/S1.42AK-BMAFR1_PLAN.md",
+      "build_result": "BuildSpecs/S1.42AK-BMAFR1_BUILD_EVIDENCE/BUILD_RESULT.json",
+      "static_evidence": "BuildSpecs/S1.42AK-BMAFR1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
+      "publication_evidence": "BuildSpecs/S1.42AK-BMAFR1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+      "activation_record": "Current/224_S1.42AK_BMAFR1_RUNTIME_ACTIVATION.md",
+      "diagnostic_dll_sha256": "c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false,
+      "note": "Exact published/indexed BMAFR1 repair bytes are runtime-armed solely for the bounded Black Mesa x Abandoned Foundry diagnostic through the existing direct accepted-S1.42AK authority path. Raw nine-U+200B Foundry binding is repaired; DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 and its passive Deep Sewers gate are unchanged."
     }
   ],
   "important_project_dlls": [
@@ -439,8 +457,9 @@
     "S1.42AK-BMDSFIX1-DIAG1 exact profile SHA-256 31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e is preserved as the preloader-blocked one-hop diagnostic parent and must not be rerun.",
     "S1.42AK-BMDSFIX1-DIAG1PATH1 exact profile SHA-256 0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6 is retained as completed supporting diagnostic evidence and is no longer runtime-active; it differs from DIAG1 only by export.r2x profile identity and cannot accept or waive BMDSFIX1.",
     "S1.42AK-BMGHDIAG3 exact profile SHA-256 7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace has completed diagnostic runtime evidence at RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/ with raw log SHA-256 e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8. Black Mesa x Greenhouse passed the bounded runtime-compatibility gate; BMGHDIAG3 remains NEVER ACCEPT and is no longer runtime-active.",
-    "S1.42AK-BMAFDIAG1 exact published/indexed profile SHA-256 b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2 is runtime-armed only as a direct diagnostic over accepted S1.42AK; it remains NEVER ACCEPT and Black Mesa x Abandoned Foundry remains NOT_YET_PROVEN pending runtime evidence.",
-    "S1.42AK-BMAFDIAG1PATH1 exact published/indexed profile SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 is runtime-armed only as a one-hop diagnostic over blocked BMAFDIAG1 anchored exactly to accepted S1.42AK; the long parent remains DO_NOT_RERUN and Black Mesa x Abandoned Foundry remains NOT_YET_PROVEN pending runtime evidence."
+    "S1.42AK-BMAFDIAG1 exact published/indexed profile SHA-256 b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2 is preloader-blocked at observed 260/262-character critical Gale paths and remains DO_NOT_RERUN / NEVER_ACCEPT historical diagnostic provenance.",
+    "S1.42AK-BMAFDIAG1PATH1 exact published/indexed profile SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 is completed failed diagnostic provenance after the config-category identity refusal; it remains DO_NOT_RERUN / NEVER_ACCEPT and is no longer runtime-active.",
+    "S1.42AK-BMAFR1 exact published/indexed profile SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 is runtime-armed only as a direct diagnostic over accepted S1.42AK with repaired raw nine-U+200B Foundry binding; it remains NEVER_ACCEPT and Black Mesa x Abandoned Foundry remains NOT_YET_PROVEN pending runtime evidence."
   ],
-  "last_validated": "2026-10-01"
+  "last_validated": "2026-10-02"
 }
