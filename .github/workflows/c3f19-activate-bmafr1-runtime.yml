@@ -1,3 +1,4 @@
+# Retry after canonical PATH1 refused-state mirror reconciliation
 name: C3F19 activate BMAFR1 runtime diagnostic
 
 on:
