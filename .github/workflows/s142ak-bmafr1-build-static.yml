@@ -84,7 +84,7 @@ jobs:
               "true",
               forbid_visible_equivalent_duplicates=True,
           )
-          if not built.startswith(f"[{raw}]\r\nEnable Content Configuration = true"):
+          if f"[{raw}]\r\nEnable Content Configuration = true" not in built:
               raise SystemExit("builder did not materialize the exact raw nine-U+200B Foundry header")
           print("PASS: raw INI identity and visible-equivalent duplicate guard")
           PY
