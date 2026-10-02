@@ -25,7 +25,7 @@ EXPECTED_BASE_SHA256 = "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611
 EXPECTED_LLL_DLL_SHA256 = "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c"
 EXPECTED_NORMALIZER_SHA256 = "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06"
 LLL_CONFIG = "BepInEx/config/LethalLevelLoader.cfg"
-FOUNDRY_SECTION = "Custom Dungeon:  Abandoned Foundry"
+FOUNDRY_VISIBLE_SECTION = "Custom Dungeon:  Abandoned Foundry"\nLLL_SORTING_PREFIX = "\u200b" * 9\nFOUNDRY_SECTION = LLL_SORTING_PREFIX + FOUNDRY_VISIBLE_SECTION
 DIAGNOSTIC_DLL = "BepInEx/plugins/S142AKBMAFDiag1/S142AKBMAFDiag1.dll"
 NORMALIZER_DLL = "BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll"
 MANUAL_LEVEL_KEY = "Dungeon Injection Settings - Manual Level Names List"
@@ -53,21 +53,39 @@ def normalized_text(data: bytes) -> str:
 
 
 def visible(text: str) -> str:
+    """Visible-equivalence helper for duplicate detection only, never raw identity."""
     return "".join(ch for ch in text if unicodedata.category(ch) != "Cf")
 
 
 def is_target_header(line: str) -> bool:
-    return visible(line.strip()).casefold() == f"[{FOUNDRY_SECTION}]".casefold()
+    return line.strip().casefold() == f"[{FOUNDRY_SECTION}]".casefold()
+
+
+def is_visible_target_header(line: str) -> bool:
+    stripped = line.strip()
+    return (
+        stripped.startswith("[")
+        and stripped.endswith("]")
+        and visible(stripped).casefold() == f"[{FOUNDRY_VISIBLE_SECTION}]".casefold()
+    )
 
 
 def section_values(text: str) -> tuple[list[str], int, int, dict[str, str]]:
     data = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
-    starts = [i for i, line in enumerate(data) if is_target_header(line)]
-    require(len(starts) == 1, "Expected exactly one canonical Abandoned Foundry section")
-    start = starts[0]
+    visible_starts = [i for i, line in enumerate(data) if is_visible_target_header(line)]
+    require(
+        len(visible_starts) == 1,
+        "Expected exactly one visible-equivalent Abandoned Foundry section; "
+        f"found {len(visible_starts)}",
+    )
+    start = visible_starts[0]
+    require(
+        is_target_header(data[start]),
+        "Abandoned Foundry section raw identity mismatch; exact nine-U+200B LLL header required",
+    )
     end = len(data)
     for i in range(start + 1, len(data)):
-        stripped = visible(data[i].strip())
+        stripped = data[i].strip()
         if stripped.startswith("[") and stripped.endswith("]"):
             end = i
             break
@@ -82,7 +100,6 @@ def section_values(text: str) -> tuple[list[str], int, int, dict[str, str]]:
         require(key not in values, "Duplicate Foundry config key: " + key)
         values[key] = value
     return data, start, end, values
-
 
 def stable_export(data: bytes) -> str:
     text = normalized_text(data)
