@@ -5,7 +5,7 @@
 **Canonical-For:** `interiors_and_lll`  
 **Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`, `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`, `Current/169_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C2_OWNER_HARD_BLOCK_REASON_ANALYSIS.md`, `Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md`, `Current/206_S1.42AK_EXTERNAL_OWNER_RULE_APPLICABILITY_CLOSURE_RECONCILIATION.md`  
 **Related:** `ProfileSources/S1.42AG/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-09-29
+**Last-Validated:** 2026-10-02
 
 ## Accepted architecture
 
@@ -200,6 +200,17 @@ The historical Phase-B3 matrix remains unchanged at **662 `VIABLE_EQUAL_100`, 14
 Oxyde remains asymmetric: C3E3H preserves 23 positive selection/metadata matches, but exact V81 ordinary generation is skipped while `spawnEnemiesAndScrap=false`, and no independent inspected ordinary dungeon/entrance-construction path is established. Selection support is therefore not executable ordinary pair proof under the current architecture.
 
 The next compatibility step is pair-specific, not a universal override. Before authoring a candidate that newly enables an absent pairing, identify that exact pairing/restriction and satisfy the investigation plan's generation, entrance/topology, traversal, routing/NavMesh and duplicate-registration safety obligations. Preserve Shatteredrooms × Experimentation/Embrion until their safety is established, preserve the Oxyde ordinary-generation exception, and keep the regular BMDSFIX1 Black Mesa x `DeepSewersFlow` qualification passive/outstanding/unwaived.
+
+
+## Black Mesa x Abandoned Foundry PATH1 runtime/config-binding finding
+
+Exact PATH1 evidence is `RuntimeEvidence/S1.42AK-BMAFDIAG1PATH1/20261001T195721Z/`, raw LogOutput SHA-256 `ccb38f7173a109a103f5dbc67e06d4acf60f86f95652a2db566f8b2c63a98521`. BMAFDIAG1 armed, but LLL classified Abandoned Foundry as unviable on Black Mesa; the fail-closed diagnostic refused because Foundry was absent from the viable pool. No Foundry generation/topology/traversal occurred.
+
+The intended Foundry availability override failed at config binding, not at the accepted S1.42AB normalization layer. LLL 1.7.12's Custom Dungeon category identity includes nine leading U+200B sorting characters. The published Foundry config section has a plain category with none. The project builder created that different category, and the BMAFDIAG1 validator's Unicode-Cf-stripping header comparison incorrectly treated it as equivalent. The textual `Enable Content Configuration = true` / `Black Mesa:100` values therefore did not prove live LLL binding.
+
+Canonical reconciliation: `Current/219_S1.42AK_BMAFDIAG1PATH1_RUNTIME_REFUSAL_AND_CONFIG_BINDING_ROOT_CAUSE_RECONCILIATION.md`.
+
+Do not rerun PATH1. A separately versioned repair successor must fix and raw-validate the LLL category identity before any new runtime test. The accepted normalizer remains unchanged.
 
 ## Shatteredrooms restriction
 
