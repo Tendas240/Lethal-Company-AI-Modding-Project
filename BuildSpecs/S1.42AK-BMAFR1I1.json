@@ -1,0 +1,18 @@
+{
+  "enabled": false,
+  "review_only": true,
+  "build_id": "S1.42AK-BMAFR1I1",
+  "source_main_commit": "cc26952be87ab2ff3e441a208a3357da66e3a89b",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMAFR1.r2z",
+  "base_sha256": "8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5",
+  "profile_name": "LC V1 S1.42AK-BMAFR1I1",
+  "output_profile": "Profiles/LC V1 S1.42AK-BMAFR1I1.r2z",
+  "overwrite": false,
+  "mod_state_changes": [],
+  "mod_additions": [],
+  "mod_removals": [],
+  "config_patches": [],
+  "file_injections": [],
+  "local_plugin_builds": [],
+  "text_assertions": []
+}
