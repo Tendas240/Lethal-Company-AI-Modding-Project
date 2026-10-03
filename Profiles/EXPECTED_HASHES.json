@@ -76,5 +76,10 @@
     "build_id": "S1.42AK-BMDSFIX1-DIAG1PATH1",
     "sha256": "0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6",
     "note": "Inactive identity-only short-name successor to S1.42AK-BMDSFIX1-DIAG1; exact reviewed bytes are published and the canonical readable snapshot is ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/. Diagnostic support only, never accept or use as a gameplay base, and not runtime-armed by indexing."
+  },
+  "Profiles/LC V1 S1.42AK-BMAFR1I1.r2z": {
+    "build_id": "S1.42AK-BMAFR1I1",
+    "sha256": "734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07",
+    "note": "Inactive diagnostic instrumentation successor to S1.42AK-BMAFR1; exact reviewed bytes are published and the canonical readable snapshot is ProfileSources/S1.42AK-BMAFR1I1/. Diagnostic only, NEVER ACCEPT or use as a gameplay base, and not runtime-armed by indexing."
   }
 }
