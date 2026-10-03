@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Execute one separately bounded S1.42AK-BMAFR1I1 profile-index mapping reconciliation. Register Profiles/LC V1 S1.42AK-BMAFR1I1.r2z with build ID S1.42AK-BMAFR1I1 and SHA-256 734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07 in the canonical mapping authority required by BuildSystem/index_profile.py, following the existing BMAFR1/BMAFDIAG1 precedents. Then let the profile-index workflow generate and commit the canonical BMAFR1I1 index result under the existing snapshot directory and verify exact-head Knowledge Architecture. Do not Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, run gameplay, accept BMAFR1I1, or alter/waive the BMDSFIX1 DeepSewersFlow gate during that index segment.
+Execute one separately bounded S1.42AK-BMAFR1I1 runtime-activation checkpoint for the already-published and canonically indexed exact bytes. Re-verify Profiles/LC V1 S1.42AK-BMAFR1I1.r2z at SHA-256 734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07 and ProfileSources/S1.42AK-BMAFR1I1/PROFILE_INDEX_RESULT.json, follow the established BMAFR1 activation precedent, and update runtime/evidence routing only as required for the diagnostic. Preserve DIAGNOSTIC ONLY / NEVER ACCEPT. Do not rebuild or alter profile/DLL/config/package bytes, do not accept BMAFR1I1 or S1.42AK-BMDSFIX1, do not waive the passive BMDSFIX1 Black Mesa x DeepSewersFlow gate, and do not start gameplay until activation is integrated and permanent exact-head CI is green.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
