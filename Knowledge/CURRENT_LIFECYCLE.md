@@ -414,7 +414,7 @@ The design explicitly forbids Dusk RNG replay, selection/list mutation, renderer
 This checkpoint changes no gameplay/profile/config/DLL/package/controller bytes and authorizes no source patch, inactive review build, publication, Gale import, activation or runtime run. SpringMan remains an equal-scope alternative. The exact array emitter, native ownership and root cause remain unproven. The next gate is only a separately bounded decision on whether the exact design justifies source/static implementation and an inactive review build.
 
 
-## BMAFR1 instrumentation source/static authorization — approved / build not authorized
+## BMAFR1 instrumentation source/static authorization — historical source gate / superseded
 
 `Current/230_S1.42AK_BMAFR1_INSTRUMENTATION_SOURCE_STATIC_AUTHORIZATION_DECISION.md` approves one separately versioned source/static implementation checkpoint for `S1.42AK-BMAFR1I1` only. Exact deployed anchors remain CodeRebirth 1.6.9 and DawnLib.Dusk 0.9.25 with the package/DLL hashes preserved in the attribution evidence.
 
@@ -422,7 +422,7 @@ The decision refines the design at one important boundary: selected non-default 
 
 Exact Dusk skinned-mesh/material observers, four validated Janitor direct index-0 write probes, bounded Janitor/SpringMan subtree snapshots and filtered Unity array-signature correlation are judged sufficiently narrow for source/static implementation. All observers remain read-only/fail-closed; no Dusk RNG replay, candidate mutation, renderer/mesh/material/bone/blendshape mutation, AI/network/RPC state mutation, global Unity blendshape patch, broad scan or log-callback recursion is authorized.
 
-An inactive review build is technically justified only after that exact source/static contract is implemented, integrated and permanent exact-head CI-green. It remains **not authorized now**. No profile/DLL build, publication, Gale import, activation or runtime run is released by this decision.
+At the Current/230 checkpoint, an inactive review build was technically justified only after the exact source/static contract was implemented, integrated and permanent exact-head CI-green; it was **not authorized at that checkpoint**. Those preconditions were later satisfied by Current/231, and Current/232 now separately authorizes one inactive review build. Publication, Gale import, activation and runtime remain unauthorized.
 
 
 ## BMAFR1I1 source/static integration — PASS / main-integrated / unbuilt
