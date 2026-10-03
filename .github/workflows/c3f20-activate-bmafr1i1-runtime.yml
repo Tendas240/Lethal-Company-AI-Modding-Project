@@ -571,7 +571,7 @@ jobs:
           {
             git diff --name-only 65bbc85c3159aa9368be63e661763e0bb5499270 --
             git ls-files --others --exclude-standard
-          } | grep -v '^.github/workflows/c3f20-activate-bmafr1i1-runtime.yml
+          } | grep -vF '.github/workflows/c3f20-activate-bmafr1i1-runtime.yml' | sort -u > /tmp/changed.txt
           cat >/tmp/allowed.txt <<'EOF'
           BuildSpecs/S1.42AK-BMAFR1I1_BUILD_EVIDENCE/BUILD_RESULT.json
           Current/00_CURRENT_STATE.md
