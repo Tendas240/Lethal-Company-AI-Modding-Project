@@ -391,6 +391,22 @@ jobs:
               "`AUTO_BUILD_RESULT` and `BuildSpecs/current.json` remain exact BMDSFIX1 authorities; no profile, DLL, config or package bytes change in this activation."
           )
           lifecycle = replace_once(lifecycle, old_perm, new_perm, "CURRENT_LIFECYCLE permanent Gale paragraph")
+          lifecycle_status_old = "BMAFR1I1 is therefore **published, main-integrated, canonically indexed and exact-head CI-green**, while remaining **runtime inactive / DIAGNOSTIC ONLY / NEVER ACCEPT**."
+          lifecycle_status_new = "BMAFR1I1 is therefore **published, main-integrated, canonically indexed and runtime-armed solely as the active attribution diagnostic / DIAGNOSTIC ONLY / NEVER ACCEPT**. Local Gale import remains a user runtime step after activation integration and permanent exact-main-head CI."
+          lifecycle = replace_once(lifecycle, lifecycle_status_old, lifecycle_status_new, "CURRENT_LIFECYCLE BMAFR1I1 current state")
+          lifecycle_next_old = (
+              "The next bounded gate is one separately bounded **S1.42AK-BMAFR1I1 runtime-activation checkpoint** for these already-published/indexed exact bytes, following the established BMAFR1 activation precedent. "
+              "Until that activation is integrated and permanent exact-head CI is green, Gale import and gameplay remain unauthorized. "
+              "S1.42AK remains accepted; BMDSFIX1 remains active/not accepted with its passive, outstanding and unwaived DeepSewersFlow gate; BMAFR1 remains inactive / DIAGNOSTIC ONLY / NEVER ACCEPT; BMAFDIAG1 and BMAFDIAG1PATH1 remain DO NOT RERUN."
+          )
+          lifecycle_next_new = (
+              "The next bounded action is the BMAFR1I1 performance-attribution runtime run described by `Current/238_S1.42AK_BMAFR1I1_RUNTIME_ACTIVATION.md`, executable only after this activation is integrated and permanent exact-main-head CI is green. "
+              "Use the exact repository-driven Gale import and build-specific uploader, require `[BMAFR1I1] ARMED`, and preserve DIAGNOSTIC ONLY / NEVER ACCEPT. "
+              "S1.42AK remains accepted; BMDSFIX1 remains the separate active gameplay candidate/not accepted with its passive, outstanding and unwaived DeepSewersFlow gate; BMAFR1 remains completed runtime-compatibility-PASS diagnostic provenance / NEVER ACCEPT; BMAFDIAG1 and BMAFDIAG1PATH1 remain DO NOT RERUN."
+          )
+          lifecycle = replace_once(lifecycle, lifecycle_next_old, lifecycle_next_new, "CURRENT_LIFECYCLE exact next action")
+
+          # Topic-router anchors use the concise current-state wording from the profile-index reconciliation.
           old_current = (
               "BMAFR1I1 is now published and canonically indexed but remains not Gale-imported and not runtime-armed. "
               "Runtime/evidence routing remains `S1.42AK-BMDSFIX1`; accepted S1.42AK and the passive/unwaived BMDSFIX1 DeepSewersFlow gate remain unchanged."
@@ -399,14 +415,12 @@ jobs:
               "BMAFR1I1 is now published, canonically indexed and runtime-armed solely as the active diagnostic attribution target; local Gale import remains a user runtime step after main integration and permanent exact-head CI. "
               "Runtime/evidence routing is `S1.42AK-BMAFR1I1`; accepted S1.42AK and the separate BMDSFIX1 gameplay candidate plus its passive/unwaived DeepSewersFlow gate remain unchanged."
           )
-          lifecycle = replace_once(lifecycle, old_current, new_current, "CURRENT_LIFECYCLE BMAFR1I1 current state")
           old_next = (
               "Exact next action: Execute one separately bounded S1.42AK-BMAFR1I1 runtime-activation checkpoint for the already-published and canonically indexed exact bytes. "
               "Re-verify Profiles/LC V1 S1.42AK-BMAFR1I1.r2z at SHA-256 " + PROFILE_SHA + " and ProfileSources/S1.42AK-BMAFR1I1/PROFILE_INDEX_RESULT.json, follow the established BMAFR1 activation precedent, and update runtime/evidence routing only as required for the diagnostic. "
               "Preserve DIAGNOSTIC ONLY / NEVER ACCEPT. Do not rebuild or alter profile/DLL/config/package bytes, do not accept BMAFR1I1 or S1.42AK-BMDSFIX1, do not waive the passive BMDSFIX1 Black Mesa x DeepSewersFlow gate, and do not start gameplay until activation is integrated and permanent exact-head CI is green."
           )
           new_next = "Exact next action: " + next_action
-          lifecycle = replace_once(lifecycle, old_next, new_next, "CURRENT_LIFECYCLE exact next action")
           # One high-level live bullet near the current action section.
           lifecycle = lifecycle.replace("- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`.", "- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFR1I1` for bounded diagnostic attribution; BMDSFIX1 remains the separate gameplay candidate.", 1)
           lifecycle_path.write_text(lifecycle, encoding="utf-8")
