@@ -314,7 +314,7 @@ BMAFDIAG1PATH1 is therefore published, canonically indexed and exact-head CI-gre
 
 ## Exact next project action
 
-Execute one separately bounded S1.42AK-BMAFR1I1 inactive review-build checkpoint. Compile the exact main-integrated source against its pinned contracts, construct an inactive review profile from exact published S1.42AK-BMAFR1 SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5, and prove the intended one-variable archive delta plus exact DLL/profile/artifact hashes. Keep BuildSpecs/current.json disabled and RuntimeInbox/ACTIVE_BUILD.txt on S1.42AK-BMDSFIX1. Do not publish, Gale-import, runtime-arm or authorize/run gameplay in that review-build checkpoint.
+Execute one separately bounded S1.42AK-BMAFR1I1 exact-byte publication checkpoint using only frozen artifact 11280870468. Re-download and verify ZIP SHA-256 c16938786c6ffa8e0dc43e71a3fad206457433397cb9fd34c8676da1d2d4b60c, profile SHA-256 734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07 and DLL SHA-256 d9e09b20a889260d5cc8b4970d023a76d5b7af77ad677077b9718dfa8a150b6a immediately before byte-for-byte materialization. Do not rebuild or reconstruct the artifact. In that publication gate, do not profile-index, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, or run gameplay.
 
 No new BMAFR1 gameplay run is authorized or required for pair qualification. A later runtime request for the separate performance finding remains blocked until the inactive review build passes and later publication/activation decisions explicitly release such a run.
 
@@ -431,7 +431,7 @@ At the Current/230 checkpoint, an inactive review build was technically justifie
 
 The integrated source implements the refined Current/230 contract: exact selector-callsite observation, Dusk mesh/material helper observers, four exact Janitor direct-write probes, bounded Janitor/SpringMan snapshots and threaded stackless-array correlation. Static CI explicitly did not compile C#, build a profile/DLL, execute Harmony/JIT/runtime code or establish emitter/root-cause ownership.
 
-## BMAFR1I1 inactive review build — PASS / exact bytes frozen / publication authorization outstanding
+## BMAFR1I1 inactive review build — PASS / exact bytes frozen / publication authorized / publication outstanding
 
 `Current/232_S1.42AK_BMAFR1I1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md` authorized one separately bounded inactive review build. `Current/233_S1.42AK_BMAFR1I1_INACTIVE_REVIEW_BUILD_INTEGRATION_RECONCILIATION.md` now records that checkpoint as complete and main-integrated.
 
@@ -445,4 +445,14 @@ The review PASS proves compile/build/archive validity only. It does not prove Ha
 
 S1.42AK remains accepted. S1.42AK-BMDSFIX1 remains active / NOT ACCEPTED with its passive, outstanding and unwaived DeepSewersFlow gate. BMAFR1 remains inactive / DIAGNOSTIC ONLY / NEVER ACCEPT with its bounded Black Mesa x Abandoned Foundry pair PASS preserved. BMAFDIAG1 and BMAFDIAG1PATH1 remain DO NOT RERUN. `BuildSpecs/current.json` remains disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`; `RuntimeInbox/ACTIVE_BUILD.txt` and `Current/AUTO_BUILD_RESULT.json` remain S1.42AK-BMDSFIX1.
 
-The next gate is only a separately bounded exact-byte publication-authorization decision for the already frozen BMAFR1I1 review bytes. No publication, profile indexing, Gale import, runtime activation or gameplay is authorized by this checkpoint.
+Current/233 itself authorized no publication, profile indexing, Gale import, runtime activation or gameplay. That historical boundary is now superseded only for exact-byte publication by Current/234 below.
+
+## BMAFR1I1 exact-byte publication authorization — approved / publication outstanding
+
+`Current/234_S1.42AK_BMAFR1I1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md` authorizes one separately bounded exact-byte publication checkpoint using only frozen Actions artifact `11280870468`.
+
+The future transport must re-download the artifact and verify ZIP SHA-256 `c16938786c6ffa8e0dc43e71a3fad206457433397cb9fd34c8676da1d2d4b60c`, exact profile SHA-256 `734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07` and exact `S142AKBMAFR1I1.dll` SHA-256 `d9e09b20a889260d5cc8b4970d023a76d5b7af77ad677077b9718dfa8a150b6a` immediately before byte-for-byte materialization. The frozen artifact may not be rebuilt, reconstructed or replaced.
+
+The authorized publication target is exact `Profiles/LC V1 S1.42AK-BMAFR1I1.r2z` plus the exact readable frozen snapshot under `ProfileSources/S1.42AK-BMAFR1I1/`. The reviewed 337 -> 338 delta, zero package/config changes, exact parent BMAFR1 SHA-256 `8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5` and 219/221 Gale path projections remain binding.
+
+Publication is not yet executed. Profile indexing / `Profiles/EXPECTED_HASHES.json`, Gale import, `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, runtime activation and gameplay remain outside this authorization. S1.42AK remains accepted; BMDSFIX1 remains active/not accepted with its passive unwaived DeepSewersFlow gate; BMAFR1/BMAFR1I1 remain DIAGNOSTIC ONLY / NEVER ACCEPT. Princess selection, live Janitor zero-blendshape state, exact array emitter/native owner and root cause remain unproven; SpringMan remains equal-scope.
