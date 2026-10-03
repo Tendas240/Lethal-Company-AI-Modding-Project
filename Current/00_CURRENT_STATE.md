@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL HUMAN STATE  
 **Generated from:** `Current/CURRENT_STATE.json`  
-**Updated:** 2026-10-03  
+**Updated:** 2026-10-04  
 **Game:** Lethal Company V81
 
 ## Project execution policy
@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one separately bounded S1.42AK-BMAFR1I1 publication PR integration/reconciliation. Verify PR #238's final changed files and exact final-head CI, ensure the temporary publication transport workflow is absent, then merge only if justified. After merge, verify permanent exact-main-head Knowledge Architecture and record actual publication integration facts. Do not profile-index, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, or run gameplay in that integration segment.
+Execute one separately bounded S1.42AK-BMAFR1I1 profile-index mapping reconciliation. Register Profiles/LC V1 S1.42AK-BMAFR1I1.r2z with build ID S1.42AK-BMAFR1I1 and SHA-256 734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07 in the canonical mapping authority required by BuildSystem/index_profile.py, following the existing BMAFR1/BMAFDIAG1 precedents. Then let the profile-index workflow generate and commit the canonical BMAFR1I1 index result under the existing snapshot directory and verify exact-head Knowledge Architecture. Do not Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, run gameplay, accept BMAFR1I1, or alter/waive the BMDSFIX1 DeepSewersFlow gate during that index segment.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
