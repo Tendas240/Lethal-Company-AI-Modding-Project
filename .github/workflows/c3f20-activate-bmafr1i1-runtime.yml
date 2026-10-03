@@ -568,10 +568,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          {
-            git diff --name-only 65bbc85c3159aa9368be63e661763e0bb5499270 --
-            git ls-files --others --exclude-standard
-          } | grep -vF '.github/workflows/c3f20-activate-bmafr1i1-runtime.yml' | sort -u > /tmp/changed.txt
+          git add -N Current/238_S1.42AK_BMAFR1I1_RUNTIME_ACTIVATION.md
+          git diff --name-only 65bbc85c3159aa9368be63e661763e0bb5499270 -- | grep -vF '.github/workflows/c3f20-activate-bmafr1i1-runtime.yml' | sort -u > /tmp/changed.txt
           cat >/tmp/allowed.txt <<'EOF'
           BuildSpecs/S1.42AK-BMAFR1I1_BUILD_EVIDENCE/BUILD_RESULT.json
           Current/00_CURRENT_STATE.md
