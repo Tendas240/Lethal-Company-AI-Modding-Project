@@ -283,93 +283,93 @@ jobs:
           insert_marker = "## Critical package-root contract"
           must(insert_marker in gale, "Gale critical contract marker missing")
           v246 = """## v2.4.6 exact completed runtime-PASS parent -> accepted-baseline anchor
-
-`S1.42AK-BMAFR1I1` is a separately versioned observational successor of exact `S1.42AK-BMAFR1`. Its parent is not a blocked diagnostic: BMAFR1 has completed the bounded Black Mesa x Abandoned Foundry runtime-compatibility PASS and remains `DIAGNOSTIC ONLY / NEVER ACCEPT`, while its separate performance-attribution finding is unresolved. BMAFR1 itself derives directly from accepted S1.42AK; `AUTO_BUILD_RESULT` correctly remains the separate BMDSFIX1 gameplay candidate.
-
-Revision `""" + REV_NEW + """` adds exactly this authority edge. The active successor must match its own canonical build-result profile/base identity; its one-hop parent must match the exact BMAFR1 build-result; the parent status must be exactly `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_COMPATIBILITY_PASS_NOT_ACCEPTED`, classification exactly `DIAGNOSTIC_ONLY_NEVER_ACCEPT`, and runtime validation status exactly `RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT_PERFORMANCE_ATTRIBUTION_OUTSTANDING`; and the parent's base build/profile/SHA must bind exactly to `CURRENT_STATE.accepted_baseline`. Existing direct-AUTO, direct accepted-baseline, completed-parent -> AUTO and blocked-parent -> accepted-baseline shapes remain unchanged. No recursion, arbitrary-length chain or generic status fallback is introduced.
-
-"""
+          
+          `S1.42AK-BMAFR1I1` is a separately versioned observational successor of exact `S1.42AK-BMAFR1`. Its parent is not a blocked diagnostic: BMAFR1 has completed the bounded Black Mesa x Abandoned Foundry runtime-compatibility PASS and remains `DIAGNOSTIC ONLY / NEVER ACCEPT`, while its separate performance-attribution finding is unresolved. BMAFR1 itself derives directly from accepted S1.42AK; `AUTO_BUILD_RESULT` correctly remains the separate BMDSFIX1 gameplay candidate.
+          
+          Revision `""" + REV_NEW + """` adds exactly this authority edge. The active successor must match its own canonical build-result profile/base identity; its one-hop parent must match the exact BMAFR1 build-result; the parent status must be exactly `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_COMPATIBILITY_PASS_NOT_ACCEPTED`, classification exactly `DIAGNOSTIC_ONLY_NEVER_ACCEPT`, and runtime validation status exactly `RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT_PERFORMANCE_ATTRIBUTION_OUTSTANDING`; and the parent's base build/profile/SHA must bind exactly to `CURRENT_STATE.accepted_baseline`. Existing direct-AUTO, direct accepted-baseline, completed-parent -> AUTO and blocked-parent -> accepted-baseline shapes remain unchanged. No recursion, arbitrary-length chain or generic status fallback is introduced.
+          
+          """
           gale = gale.replace(insert_marker, v246 + insert_marker, 1)
           gale_path.write_text(gale, encoding="utf-8")
 
           # Activation record: authority/routing transition only.
           uploader = "$repo='Tendas240/Lethal-Company-AI-Modding-Project';$branch='main';$build='S1.42AK-BMAFR1I1';$profile='LC V1 S1.42AK-BMAFR1I1';$src=Join-Path $env:APPDATA ('com.kesomannen.gale\\lethal-company\\profiles\\'+$profile+'\\BepInEx\\LogOutput.log');if(!(Test-Path -LiteralPath $src)){throw 'LogOutput.log nicht gefunden: '+$src};$bytes=[IO.File]::ReadAllBytes($src);$text=[Text.Encoding]::UTF8.GetString($bytes);if($text.IndexOf('[BMAFR1I1]',[StringComparison]::Ordinal)-lt 0){throw 'BMAFR1I1-Marker fehlt; falsches Profil/Log?'};if($text.IndexOf('[BMAFDIAG1]',[StringComparison]::Ordinal)-lt 0){throw 'BMAFDIAG1-Marker fehlt; geerbte Foundry-Diagnostic-Umgebung nicht belegt'};$sha=[BitConverter]::ToString([Security.Cryptography.SHA256]::Create().ComputeHash($bytes)).Replace('-','').ToLowerInvariant();$dst='RuntimeInbox/Current/LogOutput.log';if(!(Get-Command gh -ErrorAction SilentlyContinue)){if(!(Get-Command winget -ErrorAction SilentlyContinue)){throw 'gh fehlt und winget ist nicht verfügbar'};winget install --id GitHub.cli -e --accept-package-agreements --accept-source-agreements;if($LASTEXITCODE -ne 0){throw 'GitHub CLI Installation fehlgeschlagen'};$env:Path+=';'+$env:ProgramFiles+'\\GitHub CLI'};gh auth status;if($LASTEXITCODE -ne 0){gh auth login -h github.com -p https -w};$cur=(gh api ('repos/'+$repo+'/contents/'+$dst+'?ref='+$branch) --jq .sha 2>$null);$b64=[Convert]::ToBase64String($bytes);$body=@{message=('Upload '+$build+' runtime log sha256='+$sha);content=$b64;branch=$branch};if($cur){$body.sha=$cur};$json=$body|ConvertTo-Json -Compress;$tmp=[IO.Path]::GetTempFileName();[IO.File]::WriteAllText($tmp,$json,(New-Object Text.UTF8Encoding($false)));try{gh api --method PUT ('repos/'+$repo+'/contents/'+$dst) --input $tmp;if($LASTEXITCODE -ne 0){throw 'Runtime-Log Upload fehlgeschlagen'}}finally{Remove-Item $tmp -Force -ErrorAction SilentlyContinue};Write-Host ('Uploaded '+$dst+'; SHA-256='+$sha)"
           activation = f"""# S1.42AK-BMAFR1I1 Runtime Activation
-
-**Date:** 2026-10-04  
-**Status:** PUBLISHED / INDEXED / ACTIVE DIAGNOSTIC RUNTIME TARGET / ATTRIBUTION TEST OUTSTANDING / DIAGNOSTIC ONLY / NEVER ACCEPT  
-**Accepted gameplay baseline:** S1.42AK — unchanged  
-**Active gameplay candidate:** S1.42AK-BMDSFIX1 — unchanged / NOT ACCEPTED / passive DeepSewersFlow gate unchanged and unwaived  
-**Diagnostic:** S1.42AK-BMAFR1I1  
-**Diagnostic profile:** `{PROFILE}`  
-**Diagnostic profile identity:** `{PROFILE_NAME}`  
-**Diagnostic profile SHA-256:** `{PROFILE_SHA}`  
-**Instrumentation DLL SHA-256:** `{DLL_SHA}`  
-**Exact diagnostic parent:** S1.42AK-BMAFR1 / `{PARENT_SHA}`
-
-## Activation decision
-
-The exact reviewed, published and canonically indexed BMAFR1I1 instrumentation successor is authorized as the active runtime/evidence target for one bounded Black Mesa x Abandoned Foundry performance-attribution run **only after this activation is integrated to `main` and permanent exact-main-head Knowledge Architecture is green**.
-
-This is a runtime/evidence authority transition only. It does not rebuild or mutate the BMAFR1I1 profile, instrumentation DLL, inherited BMAFR1 diagnostic DLL/config, packages, accepted S1.42AK, or the separate BMDSFIX1 gameplay candidate. `BuildSpecs/current.json` and `Current/AUTO_BUILD_RESULT.json` remain exact BMDSFIX1 authorities.
-
-BMAFR1I1 is **DIAGNOSTIC ONLY / NEVER ACCEPT**. Activation cannot accept BMAFR1I1 or BMDSFIX1, cannot waive BMDSFIX1's passive Black Mesa x `DeepSewersFlow` gate, and cannot convert timing/correlation into emitter/root-cause proof.
-
-## Exact runtime authority chain
-
-`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFR1I1` resolves fail-closed through:
-
-1. `CURRENT_STATE.controllers.runtime_active_build` = exact BMAFR1I1;
-2. active `CURRENT_STATE.selected_scope.diagnostic_revision` = exact BMAFR1I1 and status `PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED`;
-3. canonical BMAFR1I1 build-result runtime identity = exact output `{PROFILE_SHA}` and exact parent `{PARENT_SHA}`;
-4. exact one-hop `diagnostic_parent_revision` = completed BMAFR1 runtime-compatibility-PASS / `DIAGNOSTIC_ONLY_NEVER_ACCEPT`;
-5. parent build-result exact output/base identity;
-6. BMAFR1 direct base = exact accepted S1.42AK / `{ACCEPTED_SHA}`.
-
-Canonical Gale revision `{REV_NEW}` adds only the exact completed-runtime-PASS-parent -> accepted-baseline edge needed for this chain. No recursive, arbitrary or generic fallback exists.
-
-## Frozen-byte verification
-
-Activation re-verifies from repository bytes:
-
-- BMAFR1I1 profile SHA-256 exactly `{PROFILE_SHA}`;
-- instrumentation DLL member SHA-256 exactly `{DLL_SHA}`;
-- profile/index build ID = `S1.42AK-BMAFR1I1`;
-- 338 ZIP members / 338 snapshot entries / 331 text entries;
-- index resolution = `EXPECTED_HASHES`;
-- exact BMAFR1 parent SHA-256 = `{PARENT_SHA}`;
-- no profile, DLL, config or package byte is rebuilt or rewritten.
-
-## Runtime contract after main-green
-
-Use the exact BMAFR1I1 Gale profile. Run the bounded Black Mesa x Abandoned Foundry diagnostic environment and capture the resulting full BepInEx log. The instrumentation must emit `[BMAFR1I1] ARMED`; `REFUSED TO ARM` or missing ARMED is an activation-invalidating diagnostic result, not a gameplay failure.
-
-Observe the same-pair performance-attribution surface only: Dusk selection evidence, Janitor/SpringMan equal-scope snapshots, exact Janitor direct-write samples and exact stackless array-signature timing summaries when present. A non-recurrence remains useful negative evidence but does not exclude Janitor/SpringMan or establish a root cause. Do not widen this into another BMAFR1 pair-qualification rerun; the prior compatibility PASS stays intact.
-
-## Repository-driven Gale replacement/import command
-
-Executable only after integration to `main` and permanent exact-main-head CI success:
-
-```powershell
-$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfileV24.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
-```
-
-## Build-specific self-contained runtime-log uploader
-
-Executable after the BMAFR1I1 gameplay/diagnostic run has completed:
-
-```powershell
-{uploader}
-```
-
-The uploader requires both `[BMAFR1I1]` and inherited `[BMAFDIAG1]` markers, hashes the exact log bytes and uploads only `RuntimeInbox/Current/LogOutput.log` to `main`.
-
-## Lifecycle boundary
-
-S1.42AK remains accepted. S1.42AK-BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED, and its regular Black Mesa x DeepSewersFlow gate remains passive, outstanding and unwaived. BMAFR1 remains a completed compatibility-PASS diagnostic / NEVER ACCEPT and becomes the explicit one-hop provenance parent only. BMAFDIAG1/PATH1 remain DO NOT RERUN.
-
-No gameplay is released from a branch or PR state. The user-facing runtime commands become actionable only after activation integration and permanent exact-main-head CI success.
-"""
+          
+          **Date:** 2026-10-04  
+          **Status:** PUBLISHED / INDEXED / ACTIVE DIAGNOSTIC RUNTIME TARGET / ATTRIBUTION TEST OUTSTANDING / DIAGNOSTIC ONLY / NEVER ACCEPT  
+          **Accepted gameplay baseline:** S1.42AK — unchanged  
+          **Active gameplay candidate:** S1.42AK-BMDSFIX1 — unchanged / NOT ACCEPTED / passive DeepSewersFlow gate unchanged and unwaived  
+          **Diagnostic:** S1.42AK-BMAFR1I1  
+          **Diagnostic profile:** `{PROFILE}`  
+          **Diagnostic profile identity:** `{PROFILE_NAME}`  
+          **Diagnostic profile SHA-256:** `{PROFILE_SHA}`  
+          **Instrumentation DLL SHA-256:** `{DLL_SHA}`  
+          **Exact diagnostic parent:** S1.42AK-BMAFR1 / `{PARENT_SHA}`
+          
+          ## Activation decision
+          
+          The exact reviewed, published and canonically indexed BMAFR1I1 instrumentation successor is authorized as the active runtime/evidence target for one bounded Black Mesa x Abandoned Foundry performance-attribution run **only after this activation is integrated to `main` and permanent exact-main-head Knowledge Architecture is green**.
+          
+          This is a runtime/evidence authority transition only. It does not rebuild or mutate the BMAFR1I1 profile, instrumentation DLL, inherited BMAFR1 diagnostic DLL/config, packages, accepted S1.42AK, or the separate BMDSFIX1 gameplay candidate. `BuildSpecs/current.json` and `Current/AUTO_BUILD_RESULT.json` remain exact BMDSFIX1 authorities.
+          
+          BMAFR1I1 is **DIAGNOSTIC ONLY / NEVER ACCEPT**. Activation cannot accept BMAFR1I1 or BMDSFIX1, cannot waive BMDSFIX1's passive Black Mesa x `DeepSewersFlow` gate, and cannot convert timing/correlation into emitter/root-cause proof.
+          
+          ## Exact runtime authority chain
+          
+          `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFR1I1` resolves fail-closed through:
+          
+          1. `CURRENT_STATE.controllers.runtime_active_build` = exact BMAFR1I1;
+          2. active `CURRENT_STATE.selected_scope.diagnostic_revision` = exact BMAFR1I1 and status `PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED`;
+          3. canonical BMAFR1I1 build-result runtime identity = exact output `{PROFILE_SHA}` and exact parent `{PARENT_SHA}`;
+          4. exact one-hop `diagnostic_parent_revision` = completed BMAFR1 runtime-compatibility-PASS / `DIAGNOSTIC_ONLY_NEVER_ACCEPT`;
+          5. parent build-result exact output/base identity;
+          6. BMAFR1 direct base = exact accepted S1.42AK / `{ACCEPTED_SHA}`.
+          
+          Canonical Gale revision `{REV_NEW}` adds only the exact completed-runtime-PASS-parent -> accepted-baseline edge needed for this chain. No recursive, arbitrary or generic fallback exists.
+          
+          ## Frozen-byte verification
+          
+          Activation re-verifies from repository bytes:
+          
+          - BMAFR1I1 profile SHA-256 exactly `{PROFILE_SHA}`;
+          - instrumentation DLL member SHA-256 exactly `{DLL_SHA}`;
+          - profile/index build ID = `S1.42AK-BMAFR1I1`;
+          - 338 ZIP members / 338 snapshot entries / 331 text entries;
+          - index resolution = `EXPECTED_HASHES`;
+          - exact BMAFR1 parent SHA-256 = `{PARENT_SHA}`;
+          - no profile, DLL, config or package byte is rebuilt or rewritten.
+          
+          ## Runtime contract after main-green
+          
+          Use the exact BMAFR1I1 Gale profile. Run the bounded Black Mesa x Abandoned Foundry diagnostic environment and capture the resulting full BepInEx log. The instrumentation must emit `[BMAFR1I1] ARMED`; `REFUSED TO ARM` or missing ARMED is an activation-invalidating diagnostic result, not a gameplay failure.
+          
+          Observe the same-pair performance-attribution surface only: Dusk selection evidence, Janitor/SpringMan equal-scope snapshots, exact Janitor direct-write samples and exact stackless array-signature timing summaries when present. A non-recurrence remains useful negative evidence but does not exclude Janitor/SpringMan or establish a root cause. Do not widen this into another BMAFR1 pair-qualification rerun; the prior compatibility PASS stays intact.
+          
+          ## Repository-driven Gale replacement/import command
+          
+          Executable only after integration to `main` and permanent exact-main-head CI success:
+          
+          ```powershell
+          $u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfileV24.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
+          ```
+          
+          ## Build-specific self-contained runtime-log uploader
+          
+          Executable after the BMAFR1I1 gameplay/diagnostic run has completed:
+          
+          ```powershell
+          {uploader}
+          ```
+          
+          The uploader requires both `[BMAFR1I1]` and inherited `[BMAFDIAG1]` markers, hashes the exact log bytes and uploads only `RuntimeInbox/Current/LogOutput.log` to `main`.
+          
+          ## Lifecycle boundary
+          
+          S1.42AK remains accepted. S1.42AK-BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED, and its regular Black Mesa x DeepSewersFlow gate remains passive, outstanding and unwaived. BMAFR1 remains a completed compatibility-PASS diagnostic / NEVER ACCEPT and becomes the explicit one-hop provenance parent only. BMAFDIAG1/PATH1 remain DO NOT RERUN.
+          
+          No gameplay is released from a branch or PR state. The user-facing runtime commands become actionable only after activation integration and permanent exact-main-head CI success.
+          """
           (ROOT / ACTIVATION).write_text(activation, encoding="utf-8")
 
           # Live lifecycle authority: supersede only the current BMAFR1I1 next-action/Gale paragraphs.
