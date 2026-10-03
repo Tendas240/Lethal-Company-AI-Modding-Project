@@ -273,5 +273,33 @@
   "published": false,
   "runtime_armed": false,
   "runtime_proof": false,
-  "qualification": "Source/static output retains historical NOT_RUN_NOT_AUTHORIZED labels; the separate compile log establishes compilation under Current/232 only. No Harmony/JIT installation, loader/runtime, emitter or root-cause proof."
+  "qualification": "Source/static output retains historical NOT_RUN_NOT_AUTHORIZED labels; the separate compile log establishes compilation under Current/232 only. No Harmony/JIT installation, loader/runtime, emitter or root-cause proof.",
+  "profile_name": "LC V1 S1.42AK-BMAFR1I1",
+  "base_build_id": "S1.42AK-BMAFR1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMAFR1.r2z",
+  "base_sha256": "8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5",
+  "output_profile": "Profiles/LC V1 S1.42AK-BMAFR1I1.r2z",
+  "output_sha256": "734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07",
+  "zip_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKBMAFR1I1/S142AKBMAFR1I1.dll"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "snapshot_dir": "ProfileSources/S1.42AK-BMAFR1I1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "runtime_target_metadata": {
+    "activation_record": "Current/238_S1.42AK_BMAFR1I1_RUNTIME_ACTIVATION.md",
+    "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+    "authority_parent_build_id": "S1.42AK-BMAFR1",
+    "authority_parent_runtime_status": "RUNTIME_COMPATIBILITY_PASS",
+    "authority_parent_sha256": "8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5"
+  }
 }

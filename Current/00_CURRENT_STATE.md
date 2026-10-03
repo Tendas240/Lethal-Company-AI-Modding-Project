@@ -36,11 +36,11 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFR1I1`
 
 ## Exact next action
 
-Execute one separately bounded S1.42AK-BMAFR1I1 runtime-activation checkpoint for the already-published and canonically indexed exact bytes. Re-verify Profiles/LC V1 S1.42AK-BMAFR1I1.r2z at SHA-256 734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07 and ProfileSources/S1.42AK-BMAFR1I1/PROFILE_INDEX_RESULT.json, follow the established BMAFR1 activation precedent, and update runtime/evidence routing only as required for the diagnostic. Preserve DIAGNOSTIC ONLY / NEVER ACCEPT. Do not rebuild or alter profile/DLL/config/package bytes, do not accept BMAFR1I1 or S1.42AK-BMDSFIX1, do not waive the passive BMDSFIX1 Black Mesa x DeepSewersFlow gate, and do not start gameplay until activation is integrated and permanent exact-head CI is green.
+After this BMAFR1I1 runtime activation is integrated to main and permanent exact-main-head Knowledge Architecture is green, replace/import the exact repository-authorized S1.42AK-BMAFR1I1 Gale profile and execute one bounded Black Mesa x Abandoned Foundry performance-attribution runtime run. Require the [BMAFR1I1] ARMED marker and preserve the inherited BMAFDIAG1 Foundry diagnostic environment; collect the resulting LogOutput.log with the build-specific uploader. Do not accept BMAFR1I1 or S1.42AK-BMDSFIX1, do not waive the passive BMDSFIX1 Black Mesa x DeepSewersFlow gate, and do not treat correlation or a missing recurrence as emitter/root-cause proof.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

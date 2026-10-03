@@ -80,6 +80,6 @@
   "Profiles/LC V1 S1.42AK-BMAFR1I1.r2z": {
     "build_id": "S1.42AK-BMAFR1I1",
     "sha256": "734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07",
-    "note": "Inactive diagnostic instrumentation successor to S1.42AK-BMAFR1; exact reviewed bytes are published and the canonical readable snapshot is ProfileSources/S1.42AK-BMAFR1I1/. Diagnostic only, NEVER ACCEPT or use as a gameplay base, and not runtime-armed by indexing."
+    "note": "Diagnostic-only active runtime target for bounded BMAFR1 performance attribution; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-BMAFR1I1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
   }
 }

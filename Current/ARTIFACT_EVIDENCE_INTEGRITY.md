@@ -3,7 +3,7 @@
 
 **Status:** CURRENT / CANONICAL EVIDENCE-RETRIEVAL INDEX  
 **Machine mirror:** `Current/ARTIFACT_EVIDENCE_INTEGRITY.json`  
-**Last-Validated:** 2026-10-02
+**Last-Validated:** 2026-10-04
 
 ## Accepted gameplay baseline: S1.42AK
 
@@ -70,6 +70,7 @@ The exact diagnostic passed the bounded Black Mesa x Greenhouse runtime-compatib
 - **S1.42AK-BMAFDIAG1** — preserved preloader-blocked diagnostic parent; profile SHA-256 `b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2`; exact 260/262-character critical-path block; **DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT**.
 - **S1.42AK-BMAFDIAG1PATH1** — completed failed config-binding diagnostic provenance; profile SHA-256 `423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91`; **DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active**.
 - **S1.42AK-BMAFR1** — completed Black Mesa x Abandoned Foundry runtime-compatibility diagnostic; profile SHA-256 `8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5`; repaired Foundry LLL config SHA-256 `d2a01df4829623ef3dcbacf8c09e98a9c6a72b0885f9302502da2bcb91b31b68`; reused diagnostic DLL SHA-256 `c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1`; supplemental runtime evidence `RuntimeEvidence/S1.42AK-BMAFR1/20261002T164741Z/` / raw log SHA-256 `ca2d83a56115f66623c3dfb38d2cdd47085b3c0a368efc3ace29321a323b4d90` reaches final bidirectional IDs 0..3 coverage. Separate 6696-array-index-error / degraded-frame-rate finding remains attribution-outstanding; **DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active**.
+- **S1.42AK-BMAFR1I1** — active diagnostic instrumentation runtime/evidence target over completed BMAFR1; profile SHA-256 `734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07`; instrumentation DLL SHA-256 `d9e09b20a889260d5cc8b4970d023a76d5b7af77ad677077b9718dfa8a150b6a`; **DIAGNOSTIC ONLY / NEVER ACCEPT**; BMDSFIX1 remains separate / NOT ACCEPTED and its passive Deep Sewers gate remains unwaived.
 
 BMDSFIX1 exact reviewed bytes remain the active gameplay candidate and are unchanged. The bounded BMAFR1 entrance/topology diagnostic is complete and runtime/evidence routing returns to exact `S1.42AK-BMDSFIX1`. `BuildSpecs/current.json` remains disabled and `Current/AUTO_BUILD_RESULT.json` remains BMDSFIX1. BMAFR1 is NEVER ACCEPT. Black Mesa x Abandoned Foundry now has pair-specific runtime-compatibility PASS evidence, while the separate supplemental-run performance/error-flood attribution remains outstanding and the BMDSFIX1 Deep Sewers target gate remains passive/outstanding/unwaived.
 

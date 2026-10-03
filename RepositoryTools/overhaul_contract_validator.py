@@ -245,7 +245,25 @@ def check_live_state() -> None:
         and parent_diagnostic.get("build_result")
         and parent_diagnostic.get("publication_evidence")
     )
-    diagnostic_one_hop = diagnostic_one_hop_candidate or diagnostic_one_hop_accepted
+    diagnostic_one_hop_runtime_pass_accepted = bool(
+        diagnostic_common
+        and candidate_id
+        and diagnostic.get("base_build_id") != candidate_id
+        and parent_id == diagnostic.get("base_build_id")
+        and parent_diagnostic.get("status") == "PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_COMPATIBILITY_PASS_NOT_ACCEPTED"
+        and parent_diagnostic.get("classification") == "DIAGNOSTIC_ONLY_NEVER_ACCEPT"
+        and parent_diagnostic.get("runtime_validation_status") == "RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT_PERFORMANCE_ATTRIBUTION_OUTSTANDING"
+        and diagnostic.get("base_profile") == parent_diagnostic.get("profile")
+        and diagnostic.get("base_sha256") == parent_diagnostic.get("sha256")
+        and parent_diagnostic.get("base_build_id") == a.get("build_id")
+        and parent_diagnostic.get("base_profile") == a.get("profile")
+        and parent_diagnostic.get("base_sha256") == a.get("sha256")
+        and parent_diagnostic.get("build_result")
+        and parent_diagnostic.get("static_evidence")
+        and parent_diagnostic.get("publication_evidence")
+        and parent_diagnostic.get("runtime_decision")
+    )
+    diagnostic_one_hop = diagnostic_one_hop_candidate or diagnostic_one_hop_accepted or diagnostic_one_hop_runtime_pass_accepted
     diagnostic_is_runtime_target = diagnostic_direct_candidate or diagnostic_direct_accepted or diagnostic_one_hop
     if active not in known_builds and not diagnostic_is_runtime_target:
         error(f"runtime active-build controller points to unknown lineage build or explicit diagnostic runtime target: {active!r}")
