@@ -299,7 +299,7 @@ jobs:
               "        and parent_diagnostic.get(\"runtime_decision\")",
               "    )",
           ]
-          ka_insert = "\\n".join(ka_lines) + "\\n"
+          ka_insert = "\n".join(ka_lines) + "\n"
           ka_replacement = ka_insert + "    diagnostic_one_hop = diagnostic_one_hop_candidate or diagnostic_one_hop_accepted or diagnostic_one_hop_runtime_pass_accepted"
           ka = ka.replace(ka_anchor, ka_replacement, 1)
           ka_path.write_text(ka, encoding="utf-8")
