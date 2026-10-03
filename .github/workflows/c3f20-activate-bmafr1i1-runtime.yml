@@ -124,6 +124,8 @@ jobs:
               "config_changes": 0,
               "build_plan": "BuildSpecs/S1.42AK-BMAFR1I1_PLAN.md",
               "build_result": "BuildSpecs/S1.42AK-BMAFR1I1_BUILD_EVIDENCE/BUILD_RESULT.json",
+              "static_evidence": "Current/231_S1.42AK_BMAFR1I1_SOURCE_STATIC_INTEGRATION_RECONCILIATION.md",
+              "publication_evidence": "Current/236_S1.42AK_BMAFR1I1_PUBLICATION_INTEGRATION_RECONCILIATION.md",
               "review_checkpoint": "BuildSpecs/S1.42AK-BMAFR1I1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json",
               "publication_checkpoint": "Current/235_S1.42AK_BMAFR1I1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md",
               "profile_index_reconciliation": "Current/237_S1.42AK_BMAFR1I1_PROFILE_INDEX_RECONCILIATION.md",
@@ -271,6 +273,36 @@ jobs:
               'print("PASS: Gale import helper v2.4.6 runtime path-budget + direct AUTO/accepted-baseline + one-hop parent-to-AUTO-or-approved-accepted-baseline chain + fail-closed materialization regression contract validated")'
           )
           validator_path.write_text(gv, encoding="utf-8")
+
+          # Keep the permanent architecture validator aligned with the same exact fail-closed authority shape.
+          ka_path = ROOT / "RepositoryTools/knowledge_architecture_validator.py"
+          ka = ka_path.read_text(encoding="utf-8")
+          ka_anchor = "    diagnostic_one_hop = diagnostic_one_hop_candidate or diagnostic_one_hop_accepted"
+          must(ka.count(ka_anchor) == 1, "knowledge architecture diagnostic one-hop anchor drift")
+          ka_lines = [
+              "    diagnostic_one_hop_runtime_pass_accepted = bool(",
+              "        diagnostic_common",
+              "        and candidate_id",
+              "        and diagnostic.get(\\"base_build_id\\") != candidate_id",
+              "        and parent_id == diagnostic.get(\\"base_build_id\\")",
+              "        and parent_diagnostic.get(\\"status\\") == \\"PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_COMPATIBILITY_PASS_NOT_ACCEPTED\\"",
+              "        and parent_diagnostic.get(\\"classification\\") == \\"DIAGNOSTIC_ONLY_NEVER_ACCEPT\\"",
+              "        and parent_diagnostic.get(\\"runtime_validation_status\\") == \\"RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT_PERFORMANCE_ATTRIBUTION_OUTSTANDING\\"",
+              "        and diagnostic.get(\\"base_profile\\") == parent_diagnostic.get(\\"profile\\")",
+              "        and diagnostic.get(\\"base_sha256\\") == parent_diagnostic.get(\\"sha256\\")",
+              "        and parent_diagnostic.get(\\"base_build_id\\") == accepted.get(\\"build_id\\")",
+              "        and parent_diagnostic.get(\\"base_profile\\") == accepted.get(\\"profile\\")",
+              "        and parent_diagnostic.get(\\"base_sha256\\") == accepted.get(\\"sha256\\")",
+              "        and parent_diagnostic.get(\\"build_result\\")",
+              "        and parent_diagnostic.get(\\"static_evidence\\")",
+              "        and parent_diagnostic.get(\\"publication_evidence\\")",
+              "        and parent_diagnostic.get(\\"runtime_decision\\")",
+              "    )",
+          ]
+          ka_insert = "\\n".join(ka_lines) + "\\n"
+          ka_replacement = ka_insert + "    diagnostic_one_hop = diagnostic_one_hop_candidate or diagnostic_one_hop_accepted or diagnostic_one_hop_runtime_pass_accepted"
+          ka = ka.replace(ka_anchor, ka_replacement, 1)
+          ka_path.write_text(ka, encoding="utf-8")
 
           gale_path = ROOT / "Knowledge/GALE_PROFILE_WORKFLOW.md"
           gale = gale_path.read_text(encoding="utf-8")
@@ -520,6 +552,7 @@ jobs:
           Knowledge/GALE_PROFILE_WORKFLOW.md
           Profiles/EXPECTED_HASHES.json
           RepositoryTools/gale_import_helper_validator.py
+          RepositoryTools/knowledge_architecture_validator.py
           RuntimeInbox/ACTIVE_BUILD.txt
           RuntimeTools/ReplaceActiveGaleProfileV24.ps1
           EOF
