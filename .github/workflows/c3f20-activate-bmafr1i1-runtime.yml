@@ -568,7 +568,33 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git diff --name-only 65bbc85c3159aa9368be63e661763e0bb5499270 --             | grep -v '^.github/workflows/c3f20-activate-bmafr1i1-runtime.yml$'             | sort > /tmp/changed.txt
+          {
+            git diff --name-only 65bbc85c3159aa9368be63e661763e0bb5499270 --
+            git ls-files --others --exclude-standard
+          } | grep -v '^.github/workflows/c3f20-activate-bmafr1i1-runtime.yml
+          cat >/tmp/allowed.txt <<'EOF'
+          BuildSpecs/S1.42AK-BMAFR1I1_BUILD_EVIDENCE/BUILD_RESULT.json
+          Current/00_CURRENT_STATE.md
+          Current/238_S1.42AK_BMAFR1I1_RUNTIME_ACTIVATION.md
+          Current/ARTIFACT_EVIDENCE_INTEGRITY.json
+          Current/ARTIFACT_EVIDENCE_INTEGRITY.md
+          Current/CURRENT_STATE.json
+          Current/PROJECT_KNOWLEDGE_MAP.md
+          Knowledge/CURRENT_LIFECYCLE.md
+          Knowledge/GALE_PROFILE_WORKFLOW.md
+          Profiles/EXPECTED_HASHES.json
+          RepositoryTools/gale_import_helper_validator.py
+          RepositoryTools/knowledge_architecture_validator.py
+          RepositoryTools/overhaul_contract_validator.py
+          RuntimeInbox/ACTIVE_BUILD.txt
+          RuntimeTools/ReplaceActiveGaleProfileV24.ps1
+          EOF
+          sort -o /tmp/allowed.txt /tmp/allowed.txt
+          echo "Changed files:"
+          cat /tmp/changed.txt
+          diff -u /tmp/allowed.txt /tmp/changed.txt
+
+ | sort -u > /tmp/changed.txt
           cat >/tmp/allowed.txt <<'EOF'
           BuildSpecs/S1.42AK-BMAFR1I1_BUILD_EVIDENCE/BUILD_RESULT.json
           Current/00_CURRENT_STATE.md
