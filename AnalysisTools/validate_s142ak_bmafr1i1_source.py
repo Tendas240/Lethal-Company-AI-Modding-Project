@@ -10,6 +10,7 @@ import hashlib
 import importlib.util
 import json
 import re
+import yaml
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
@@ -362,8 +363,10 @@ def main(self_test):
     require('python AnalysisTools/validate_s142ak_bmafr1i1_source.py --self-test' in workflow and '--only-binary=:all:' in workflow, 'Static CI missing')
     for forbidden in ('dotnet', 'msbuild', 'build_profile', 'workflow_dispatch', 'contents: write', 'upload-artifact'):
         require(forbidden not in workflow, 'CI exceeds static scope: ' + forbidden)
-    require(re.findall(r'^\s+run: (.+)$', workflow, re.M) == [
-        'python -m pip install --only-binary=:all: tree-sitter==0.25.2 tree-sitter-c-sharp==0.23.1',
+    workflow_data = yaml.safe_load(workflow)
+    runs = [step['run'] for step in workflow_data['jobs']['validate']['steps'] if 'run' in step]
+    require(runs == [
+        'python -m pip install --only-binary=:all: tree-sitter==0.25.2 tree-sitter-c-sharp==0.23.1 PyYAML==6.0.2',
         'python AnalysisTools/generate_s142ak_bmafr1i1_contract_data.py --check',
         'python AnalysisTools/validate_s142ak_bmafr1i1_source.py --self-test'], 'Unreviewed static workflow command')
     cases = negative_cases(sources, data, recipes) if self_test else []
