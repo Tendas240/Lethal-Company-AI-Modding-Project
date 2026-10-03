@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one separately bounded S1.42AK-BMAFR1I1 inactive-review-build authorization decision only. The source/static implementation is now reviewed, main-integrated and permanent exact-main-head Knowledge Architecture green under Current/231_S1.42AK_BMAFR1I1_SOURCE_STATIC_INTEGRATION_RECONCILIATION.md, but no compiler/build/archive validity has been established. Decide whether the exact integrated source and Current/230 conditional gate justify an inactive review build. Do not build a DLL/profile, activate BuildSpecs/current.json, publish, Gale-import, runtime-arm or authorize a runtime test unless a later explicit lifecycle decision expands scope.
+Execute one separately bounded S1.42AK-BMAFR1I1 inactive review-build checkpoint. Compile the exact main-integrated source against its pinned contracts, construct an inactive review profile from exact published S1.42AK-BMAFR1 SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5, and prove the intended one-variable archive delta plus exact DLL/profile/artifact hashes. Keep BuildSpecs/current.json disabled and RuntimeInbox/ACTIVE_BUILD.txt on S1.42AK-BMDSFIX1. Do not publish, Gale-import, runtime-arm or authorize/run gameplay in that review-build checkpoint.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

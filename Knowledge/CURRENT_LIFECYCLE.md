@@ -314,11 +314,9 @@ BMAFDIAG1PATH1 is therefore published, canonically indexed and exact-head CI-gre
 
 ## Exact next project action
 
-After the BMAFR1 instrumentation source/static authorization decision is integrated to main and permanent exact-head Knowledge Architecture is green, perform one bounded S1.42AK-BMAFR1I1 source/static implementation checkpoint only. Implement the exact fail-closed observational surface authorized by Current/230_S1.42AK_BMAFR1_INSTRUMENTATION_SOURCE_STATIC_AUTHORIZATION_DECISION.md, including the refined Dusk selector-callsite observation, exact Dusk renderer/material observers, exact Janitor index-0 write probes, bounded Janitor/SpringMan snapshots and stackless-array log correlation. Do not build a DLL/profile, activate BuildSpecs/current.json, publish, Gale-import, runtime-arm or authorize a runtime test in that source/static segment.
+Execute one separately bounded S1.42AK-BMAFR1I1 inactive review-build checkpoint. Compile the exact main-integrated source against its pinned contracts, construct an inactive review profile from exact published S1.42AK-BMAFR1 SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5, and prove the intended one-variable archive delta plus exact DLL/profile/artifact hashes. Keep BuildSpecs/current.json disabled and RuntimeInbox/ACTIVE_BUILD.txt on S1.42AK-BMDSFIX1. Do not publish, Gale-import, runtime-arm or authorize/run gameplay in that review-build checkpoint.
 
-
-
-No new BMAFR1 gameplay run is authorized or required for pair qualification. Any later runtime request for the separate performance finding must be explicitly justified by the attribution analysis first.
+No new BMAFR1 gameplay run is authorized or required for pair qualification. A later runtime request for the separate performance finding remains blocked until the inactive review build passes and later publication/activation decisions explicitly release such a run.
 
 ## Permanent Gale workflow
 
@@ -425,3 +423,18 @@ The decision refines the design at one important boundary: selected non-default 
 Exact Dusk skinned-mesh/material observers, four validated Janitor direct index-0 write probes, bounded Janitor/SpringMan subtree snapshots and filtered Unity array-signature correlation are judged sufficiently narrow for source/static implementation. All observers remain read-only/fail-closed; no Dusk RNG replay, candidate mutation, renderer/mesh/material/bone/blendshape mutation, AI/network/RPC state mutation, global Unity blendshape patch, broad scan or log-callback recursion is authorized.
 
 An inactive review build is technically justified only after that exact source/static contract is implemented, integrated and permanent exact-head CI-green. It remains **not authorized now**. No profile/DLL build, publication, Gale import, activation or runtime run is released by this decision.
+
+
+## BMAFR1I1 source/static integration — PASS / main-integrated / unbuilt
+
+`Current/231_S1.42AK_BMAFR1I1_SOURCE_STATIC_INTEGRATION_RECONCILIATION.md` records the completed bounded source/static checkpoint. PR #232 exact head `5953a9aa717b0468e83502d2a243c08f9080581e` passed Knowledge Architecture run `37118047353` / #980 and the dedicated source/static gate `37118047444` / #2, then merged at `8b7f72b870f9a2cdbcee964ab7aa19d742cb56b4`. Permanent exact-main-head Knowledge Architecture run `37124868585` / #981 passed.
+
+The integrated source implements the refined Current/230 contract: exact selector-callsite observation, Dusk mesh/material helper observers, four exact Janitor direct-write probes, bounded Janitor/SpringMan snapshots and threaded stackless-array correlation. Static CI explicitly did not compile C#, build a profile/DLL, execute Harmony/JIT/runtime code or establish emitter/root-cause ownership.
+
+## BMAFR1I1 inactive review-build authorization — approved / build outstanding
+
+`Current/232_S1.42AK_BMAFR1I1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md` authorizes one separately bounded inactive review build only.
+
+The review parent is exact published/indexed BMAFR1 `Profiles/LC V1 S1.42AK-BMAFR1.r2z`, SHA-256 `8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5`, so the future checkpoint can preserve the exact Black Mesa x Abandoned Foundry diagnostic environment and isolate the instrumentation as the intended variable. The review gate must compile the exact integrated source, preserve the pinned source/static contract, freeze exact DLL/profile/artifact hashes, validate the minimal archive delta and pass the permanent Gale path-length guard.
+
+No review bytes exist yet. Publication, profile indexing, Gale import, runtime activation and gameplay remain unauthorized. `BuildSpecs/current.json` remains disabled and `RuntimeInbox/ACTIVE_BUILD.txt` remains `S1.42AK-BMDSFIX1`. Princess selection/live zero-blendshape state, exact array emitter/native owner and root cause remain unproven; SpringMan remains equal-scope.
