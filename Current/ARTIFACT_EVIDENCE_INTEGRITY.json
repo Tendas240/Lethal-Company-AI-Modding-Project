@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "updated": "2026-10-02",
+  "updated": "2026-10-04",
   "status": "CURRENT_CANONICAL_ARTIFACT_EVIDENCE_INDEX",
   "profiles": [
     {
@@ -399,6 +399,20 @@
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false,
       "note": "Exact published/indexed BMAFDIAG1PATH1 bytes are completed failed Black Mesa x Abandoned Foundry diagnostic provenance. Runtime evidence proved config-category identity mismatch; PATH1 is DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT and is not runtime-active."
+    },
+    {
+      "build_id": "S1.42AK-BMAFR1I1",
+      "role": "ACTIVE_RUNTIME_DIAGNOSTIC_PENDING",
+      "profile": "Profiles/LC V1 S1.42AK-BMAFR1I1.r2z",
+      "profile_sha256": "734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07",
+      "profile_sources": "ProfileSources/S1.42AK-BMAFR1I1/",
+      "file_index": "ProfileSources/S1.42AK-BMAFR1I1/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AK-BMAFR1I1/export.r2x",
+      "build_plan": "BuildSpecs/S1.42AK-BMAFR1I1_PLAN.md",
+      "activation_record": "Current/238_S1.42AK_BMAFR1I1_RUNTIME_ACTIVATION.md",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false,
+      "note": "Exact published/indexed BMAFR1I1 bytes are runtime-armed solely for bounded BMAFR1 performance attribution through exact BMAFR1 runtime-PASS parent -> accepted S1.42AK. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains separate and unaccepted."
     }
   ],
   "important_project_dlls": [
@@ -463,5 +477,5 @@
     "S1.42AK-BMAFDIAG1PATH1 exact published/indexed profile SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 is completed failed diagnostic provenance after the config-category identity refusal; it remains DO_NOT_RERUN / NEVER_ACCEPT and is no longer runtime-active.",
     "S1.42AK-BMAFR1 exact published/indexed profile SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 is runtime-armed only as a direct diagnostic over accepted S1.42AK with repaired raw nine-U+200B Foundry binding; it remains NEVER_ACCEPT and Black Mesa x Abandoned Foundry remains NOT_YET_PROVEN pending runtime evidence."
   ],
-  "last_validated": "2026-10-02"
+  "last_validated": "2026-10-04"
 }

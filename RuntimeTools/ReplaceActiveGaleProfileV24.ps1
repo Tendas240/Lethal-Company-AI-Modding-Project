@@ -1,7 +1,7 @@
 $repo='Tendas240/Lethal-Company-AI-Modding-Project'
 $headers=@{'User-Agent'='LC-Profile-Updater';'Cache-Control'='no-cache'}
 $expectedBaseRevision='$helperRevision=''2026-09-05-import-uia-v2.2-materialization-proof'''
-$replacementRevision='$helperRevision=''2026-10-01-import-uia-v2.4.5-one-hop-accepted-baseline-parent-chain'''
+$replacementRevision='$helperRevision=''2026-10-04-import-uia-v2.4.6-one-hop-runtime-pass-accepted-parent-chain'''
 
 $cache=[DateTime]::UtcNow.Ticks
 $baseUrl="https://raw.githubusercontent.com/$repo/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb=$cache"
@@ -227,7 +227,8 @@ else {
         if(([string]$diag.base_profile) -ne ([string]$parent.profile) -or ([string]$diag.base_sha256).ToLowerInvariant() -ne ([string]$parent.sha256).ToLowerInvariant()){throw "Diagnostic runtime target '$active' base profile/SHA disagree with diagnostic parent"}
         $parentAnchoredToAuto=([string]$parent.status) -eq 'PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED'
         $parentAnchoredToAccepted=([string]$parent.status) -eq 'PUBLISHED_DIAGNOSTIC_PRELOADER_PATH_LENGTH_BLOCKED_DO_NOT_RERUN_NOT_ACCEPTED'
-        if(!$parentAnchoredToAuto -and !$parentAnchoredToAccepted){throw "Diagnostic parent '$($parent.build_id)' has no authorized parent status: '$($parent.status)'"}
+        $parentRuntimePassToAccepted=([string]$parent.status) -eq 'PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_COMPATIBILITY_PASS_NOT_ACCEPTED' -and ([string]$parent.classification) -eq 'DIAGNOSTIC_ONLY_NEVER_ACCEPT' -and ([string]$parent.runtime_validation_status) -eq 'RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT_PERFORMANCE_ATTRIBUTION_OUTSTANDING'
+        if(!$parentAnchoredToAuto -and !$parentAnchoredToAccepted -and !$parentRuntimePassToAccepted){throw "Diagnostic parent '$($parent.build_id)' has no authorized parent status: '$($parent.status)'"}
         $parentBuild=Get-RepositoryJson -RepositoryPath ([string]$parent.build_result) -Label "Parent diagnostic build_result"
         if(([string]$parentBuild.build_id) -ne ([string]$parent.build_id)){throw "Parent diagnostic build_result build ID mismatch"}
         if(([string]$parentBuild.output_profile) -ne ([string]$parent.profile) -or ([string]$parentBuild.output_sha256).ToLowerInvariant() -ne ([string]$parent.sha256).ToLowerInvariant()){throw "Parent diagnostic build_result profile/SHA disagree with CURRENT_STATE diagnostic_parent_revision"}
@@ -246,7 +247,7 @@ else {
     $expectedProfileName=[string]$diagBuild.profile_name
     if(!$expectedProfileName){$expectedProfileName=[IO.Path]::GetFileNameWithoutExtension($profilePath)}
     if(!$profilePath -or !$expected -or !$expectedProfileName){throw 'Diagnostic build_result enthält keinen gültigen Profilpfad, Profilnamen oder SHA-256'}
-    Write-Host "Expliziter diagnostischer Runtime-Target wurde über CURRENT_STATE + direct AUTO/accepted-baseline/one-hop parent-to-AUTO-or-accepted-baseline chain + build_result fail-closed verifiziert." -ForegroundColor DarkGray
+    Write-Host "Expliziter diagnostischer Runtime-Target wurde über CURRENT_STATE + direct AUTO/accepted-baseline/one-hop parent-to-AUTO-or-approved-accepted-baseline chain + build_result fail-closed verifiziert." -ForegroundColor DarkGray
 }
 '@
 
@@ -280,5 +281,5 @@ if(([regex]::Matches($patched,'Assert-GaleRuntimePathBudget -ProfileRoot \$root 
     throw 'Refusing to launch: runtime path-budget guard call is missing or ambiguous after patching'
 }
 
-Write-Host 'Launching canonical Gale importer with v2.4.5 fail-closed runtime path-budget, direct diagnostics and one-hop parent-to-AUTO-or-accepted-baseline chain, export-read and recursive materialization contract...' -ForegroundColor Cyan
+Write-Host 'Launching canonical Gale importer with v2.4.6 fail-closed runtime path-budget, direct diagnostics and one-hop parent-to-AUTO-or-approved-accepted-baseline chain, export-read and recursive materialization contract...' -ForegroundColor Cyan
 Invoke-Expression $patched

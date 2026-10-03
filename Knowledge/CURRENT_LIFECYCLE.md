@@ -309,7 +309,7 @@ BMAFDIAG1PATH1 is therefore published, canonically indexed and exact-head CI-gre
 - BMGHDIAG3 remains completed Black Mesa x Greenhouse runtime-compatibility PASS / DIAGNOSTIC ONLY / NEVER ACCEPT / not runtime-active.
 - BMDSFIX1 regular Black Mesa x `DeepSewersFlow` gameplay qualification remains **passive / outstanding / unwaived**.
 - `BuildSpecs/current.json` remains disabled at `IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`.
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`.
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFR1I1` for bounded diagnostic attribution; BMDSFIX1 remains the separate gameplay candidate.
 - `Current/AUTO_BUILD_RESULT.json` remains exact `S1.42AK-BMDSFIX1`.
 
 ## Exact next project action
@@ -320,9 +320,9 @@ No new BMAFR1 gameplay run is authorized or required for pair qualification. A l
 
 ## Permanent Gale workflow
 
-The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, revision `2026-10-01-import-uia-v2.4.5-one-hop-accepted-baseline-parent-chain`. The existing direct accepted-baseline diagnostic path already matches BMAFR1 exactly, so no resolver code change is required. The runtime path-length guard and all direct AUTO/accepted-baseline/explicit one-hop fail-closed shapes remain unchanged; no recursive or generic diagnostic fallback exists.
+The canonical Gale helper remains `RuntimeTools/ReplaceActiveGaleProfileV24.ps1`, now revision `2026-10-04-import-uia-v2.4.6-one-hop-runtime-pass-accepted-parent-chain`. It preserves every v2.4.5 runtime path/materialization guard and adds only the exact completed-BMAFR1-runtime-PASS parent -> accepted-S1.42AK one-hop authority edge required by BMAFR1I1. The parent status/classification/runtime-PASS identity and build/profile/SHA chain are exact; no recursive, arbitrary-length or generic fallback exists.
 
-BMAFR1 diagnostic execution is complete, so `RuntimeInbox/ACTIVE_BUILD.txt` has returned to exact `S1.42AK-BMDSFIX1`. `AUTO_BUILD_RESULT` and `BuildSpecs/current.json` remain BMDSFIX1 authorities; no Gale resolver or profile bytes change in this reconciliation.
+`RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFR1I1` is now the diagnostic runtime/evidence routing controller. `AUTO_BUILD_RESULT` and `BuildSpecs/current.json` remain exact BMDSFIX1 authorities; no profile, DLL, config or package bytes change in this activation.
 
 
 ## BMAFDIAG1PATH1 runtime refusal and config-binding root cause — reconciled
@@ -457,6 +457,6 @@ The publication-triggered profile-index run `37157185714` / #34 failed closed be
 
 Automatic profile-index run `37157678767` / #35 then succeeded. Canonical `ProfileSources/S1.42AK-BMAFR1I1/PROFILE_INDEX_RESULT.json` resolves build ID `S1.42AK-BMAFR1I1` and exact profile SHA-256 `734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07` through `EXPECTED_HASHES`, with 338 archive members, 338 snapshot entries and 331 text entries. github-actions[bot] commit `dff0816319f75c56e582f609dc8a33b6bc4cea9a` added exactly that index result and no other profile/snapshot/gameplay bytes. The workflow-dispatched exact bot-head Knowledge Architecture run `37157697515` / #1013 passed.
 
-BMAFR1I1 is therefore **published, main-integrated, canonically indexed and exact-head CI-green**, while remaining **runtime inactive / DIAGNOSTIC ONLY / NEVER ACCEPT**. The reviewed 337 -> 338 one-variable archive delta, zero package/config changes and 219/221 Gale path projections remain unchanged. Princess selection, live Janitor zero-blendshape state, exact array emitter/native owner and root cause remain unproven; SpringMan remains equal-scope.
+BMAFR1I1 is therefore **published, main-integrated, canonically indexed and runtime-armed solely as the active attribution diagnostic / DIAGNOSTIC ONLY / NEVER ACCEPT**. Local Gale import remains a user runtime step after activation integration and permanent exact-main-head CI. The reviewed 337 -> 338 one-variable archive delta, zero package/config changes and 219/221 Gale path projections remain unchanged. Princess selection, live Janitor zero-blendshape state, exact array emitter/native owner and root cause remain unproven; SpringMan remains equal-scope.
 
-The next bounded gate is one separately bounded **S1.42AK-BMAFR1I1 runtime-activation checkpoint** for these already-published/indexed exact bytes, following the established BMAFR1 activation precedent. Until that activation is integrated and permanent exact-head CI is green, Gale import and gameplay remain unauthorized. S1.42AK remains accepted; BMDSFIX1 remains active/not accepted with its passive, outstanding and unwaived DeepSewersFlow gate; BMAFR1 remains inactive / DIAGNOSTIC ONLY / NEVER ACCEPT; BMAFDIAG1 and BMAFDIAG1PATH1 remain DO NOT RERUN.
+The next bounded action is the BMAFR1I1 performance-attribution runtime run described by `Current/238_S1.42AK_BMAFR1I1_RUNTIME_ACTIVATION.md`, executable only after this activation is integrated and permanent exact-main-head CI is green. Use the exact repository-driven Gale import and build-specific uploader, require `[BMAFR1I1] ARMED`, and preserve DIAGNOSTIC ONLY / NEVER ACCEPT. S1.42AK remains accepted; BMDSFIX1 remains the separate active gameplay candidate/not accepted with its passive, outstanding and unwaived DeepSewersFlow gate; BMAFR1 remains completed runtime-compatibility-PASS diagnostic provenance / NEVER ACCEPT; BMAFDIAG1 and BMAFDIAG1PATH1 remain DO NOT RERUN.
