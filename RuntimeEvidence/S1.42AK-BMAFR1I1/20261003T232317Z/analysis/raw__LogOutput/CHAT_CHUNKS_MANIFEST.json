@@ -1,0 +1,126 @@
+{
+  "created": true,
+  "source_size_limit_bytes": 8388608,
+  "target_chunk_bytes": 262144,
+  "chunks": [
+    {
+      "file": "chat_chunks/chunk_0001_L00000001-L00002485.log",
+      "line_start": 1,
+      "line_end": 2485,
+      "size": 262192,
+      "sha256": "cc683a722a6a0042dd79394d069e9e4c11db83d494e376b30a91b7bbae710303"
+    },
+    {
+      "file": "chat_chunks/chunk_0002_L00002486-L00005000.log",
+      "line_start": 2486,
+      "line_end": 5000,
+      "size": 262204,
+      "sha256": "03116a2c21acbeb869c6e9634b7dcd5ae1c61dbfdcf52ceab987ee4346174682"
+    },
+    {
+      "file": "chat_chunks/chunk_0003_L00005001-L00007832.log",
+      "line_start": 5001,
+      "line_end": 7832,
+      "size": 262172,
+      "sha256": "328f0dd6cc9fbca233a59ab615583445e10e6f418d74dfe7d050693b5ab911cb"
+    },
+    {
+      "file": "chat_chunks/chunk_0004_L00007833-L00010659.log",
+      "line_start": 7833,
+      "line_end": 10659,
+      "size": 262204,
+      "sha256": "feb4213cd7c13770181541bb8d4e5dfb51df56f022a22650dfc4d700e97a7f43"
+    },
+    {
+      "file": "chat_chunks/chunk_0005_L00010660-L00013206.log",
+      "line_start": 10660,
+      "line_end": 13206,
+      "size": 262188,
+      "sha256": "f69305ec64f55ed61e35faea34df4e166fb26488c0de43181cd4cc228e9f2c6c"
+    },
+    {
+      "file": "chat_chunks/chunk_0006_L00013207-L00015913.log",
+      "line_start": 13207,
+      "line_end": 15913,
+      "size": 262216,
+      "sha256": "5cfd52b9adce3b4ee2f1a34ccd3bd6a8bfad948fd130a52e3f83376de761d184"
+    },
+    {
+      "file": "chat_chunks/chunk_0007_L00015914-L00018596.log",
+      "line_start": 15914,
+      "line_end": 18596,
+      "size": 262206,
+      "sha256": "bca0c06aca07deaaf12a86b25b4ef3fac036c8689c6d7fad23a09f782de39756"
+    },
+    {
+      "file": "chat_chunks/chunk_0008_L00018597-L00021353.log",
+      "line_start": 18597,
+      "line_end": 21353,
+      "size": 262276,
+      "sha256": "cd896c0b6e3084dfff3c6e47a332b30daff91cf822bf7a46590efed4f29d5002"
+    },
+    {
+      "file": "chat_chunks/chunk_0009_L00021354-L00023991.log",
+      "line_start": 21354,
+      "line_end": 23991,
+      "size": 262193,
+      "sha256": "a3cceea86e5c36a59655a415e0dddcb2dd6c7137a15cd5388b080c90ba060cd9"
+    },
+    {
+      "file": "chat_chunks/chunk_0010_L00023992-L00026902.log",
+      "line_start": 23992,
+      "line_end": 26902,
+      "size": 262153,
+      "sha256": "590d9cdc4295bd77b0ff9fbaacd7ef1b6c01d3091a5f167b97a9c6f9d2bbaca2"
+    },
+    {
+      "file": "chat_chunks/chunk_0011_L00026903-L00029493.log",
+      "line_start": 26903,
+      "line_end": 29493,
+      "size": 262178,
+      "sha256": "0e89386d509bd6c3eaa6da293dd1a3aa5b156f3379cbbeb166560acc8697bc38"
+    },
+    {
+      "file": "chat_chunks/chunk_0012_L00029494-L00032217.log",
+      "line_start": 29494,
+      "line_end": 32217,
+      "size": 262181,
+      "sha256": "b11c17e17816cc7d293e1e43721a03c00be4480f8540c1efc07c969b6075fb09"
+    },
+    {
+      "file": "chat_chunks/chunk_0013_L00032218-L00034921.log",
+      "line_start": 32218,
+      "line_end": 34921,
+      "size": 262219,
+      "sha256": "4811cd61aec1ecff3d2c6511f4e15d0cc174eb8222fa81f8d5e241983c478222"
+    },
+    {
+      "file": "chat_chunks/chunk_0014_L00034922-L00037346.log",
+      "line_start": 34922,
+      "line_end": 37346,
+      "size": 262197,
+      "sha256": "7d70f67d7e5786acb272a0b3b59ed2fc83d8f70f001398f2beff817190449398"
+    },
+    {
+      "file": "chat_chunks/chunk_0015_L00037347-L00039819.log",
+      "line_start": 37347,
+      "line_end": 39819,
+      "size": 262178,
+      "sha256": "811b05cc844111ed2920cb02c23c9be616aed3b66714045d40a8806a87390adc"
+    },
+    {
+      "file": "chat_chunks/chunk_0016_L00039820-L00042723.log",
+      "line_start": 39820,
+      "line_end": 42723,
+      "size": 262196,
+      "sha256": "4905efefc9bdfe77c3c03e61db482a144e6707a1f39bc1e5c91af86359f6dc92"
+    },
+    {
+      "file": "chat_chunks/chunk_0017_L00042724-L00044312.log",
+      "line_start": 42724,
+      "line_end": 44312,
+      "size": 139148,
+      "sha256": "e2aa3436ab160ab08439628237f59c7f5b698554081c39d425d981783fcd4d20"
+    }
+  ]
+}
