@@ -304,6 +304,36 @@ jobs:
           ka = ka.replace(ka_anchor, ka_replacement, 1)
           ka_path.write_text(ka, encoding="utf-8")
 
+          # The frozen overhaul-contract validator duplicates the same explicit runtime-target authority model.
+          ov_path = ROOT / "RepositoryTools/overhaul_contract_validator.py"
+          ov = ov_path.read_text(encoding="utf-8")
+          ov_anchor = "    diagnostic_one_hop = diagnostic_one_hop_candidate or diagnostic_one_hop_accepted"
+          must(ov.count(ov_anchor) == 1, "overhaul contract diagnostic one-hop anchor drift")
+          ov_lines = [
+              '    diagnostic_one_hop_runtime_pass_accepted = bool(',
+              '        diagnostic_common',
+              '        and candidate_id',
+              '        and diagnostic.get("base_build_id") != candidate_id',
+              '        and parent_id == diagnostic.get("base_build_id")',
+              '        and parent_diagnostic.get("status") == "PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_COMPATIBILITY_PASS_NOT_ACCEPTED"',
+              '        and parent_diagnostic.get("classification") == "DIAGNOSTIC_ONLY_NEVER_ACCEPT"',
+              '        and parent_diagnostic.get("runtime_validation_status") == "RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT_PERFORMANCE_ATTRIBUTION_OUTSTANDING"',
+              '        and diagnostic.get("base_profile") == parent_diagnostic.get("profile")',
+              '        and diagnostic.get("base_sha256") == parent_diagnostic.get("sha256")',
+              '        and parent_diagnostic.get("base_build_id") == a.get("build_id")',
+              '        and parent_diagnostic.get("base_profile") == a.get("profile")',
+              '        and parent_diagnostic.get("base_sha256") == a.get("sha256")',
+              '        and parent_diagnostic.get("build_result")',
+              '        and parent_diagnostic.get("static_evidence")',
+              '        and parent_diagnostic.get("publication_evidence")',
+              '        and parent_diagnostic.get("runtime_decision")',
+              '    )',
+          ]
+          ov_insert = "\n".join(ov_lines) + "\n"
+          ov_replacement = ov_insert + "    diagnostic_one_hop = diagnostic_one_hop_candidate or diagnostic_one_hop_accepted or diagnostic_one_hop_runtime_pass_accepted"
+          ov = ov.replace(ov_anchor, ov_replacement, 1)
+          ov_path.write_text(ov, encoding="utf-8")
+
           gale_path = ROOT / "Knowledge/GALE_PROFILE_WORKFLOW.md"
           gale = gale_path.read_text(encoding="utf-8")
           old_hardened = "**Last-Hardened:** 2026-10-01 (`" + REV_OLD + "`; preserves the runtime path-length budget and adds only an exact one-hop blocked-diagnostic-parent -> accepted-baseline authority edge for BMAFDIAG1PATH1)"
@@ -553,6 +583,7 @@ jobs:
           Profiles/EXPECTED_HASHES.json
           RepositoryTools/gale_import_helper_validator.py
           RepositoryTools/knowledge_architecture_validator.py
+          RepositoryTools/overhaul_contract_validator.py
           RuntimeInbox/ACTIVE_BUILD.txt
           RuntimeTools/ReplaceActiveGaleProfileV24.ps1
           EOF
