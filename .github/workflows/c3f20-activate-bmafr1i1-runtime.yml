@@ -463,7 +463,7 @@ jobs:
           assert state["selected_scope"]["diagnostic_parent_revision"]["build_id"]=="S1.42AK-BMAFR1"
           assert state["selected_scope"]["diagnostic_parent_revision"]["status"]=="PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_COMPATIBILITY_PASS_NOT_ACCEPTED"
           assert state["selected_scope"]["diagnostic_parent_revision"]["runtime_validation_status"]=="RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT_PERFORMANCE_ATTRIBUTION_OUTSTANDING"
-          assert str(state["selected_scope"]["phase_c"].get("bmdsfix1_target_gate_status","")).startswith("OUTSTANDING_PASSIVE")
+          assert str(state["selected_scope"]["phase_c"].get("bmdsfix1_target_status","")).startswith("OUTSTANDING_PASSIVE")
           p=root/"Profiles/LC V1 S1.42AK-BMAFR1I1.r2z"
           assert hashlib.sha256(p.read_bytes()).hexdigest()=="734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07"
           with zipfile.ZipFile(p) as z:
