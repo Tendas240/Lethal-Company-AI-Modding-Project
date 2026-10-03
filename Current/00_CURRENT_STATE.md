@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Execute one separately bounded S1.42AK-BMAFR1I1 inactive review-build checkpoint. Compile the exact main-integrated source against its pinned contracts, construct an inactive review profile from exact published S1.42AK-BMAFR1 SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5, and prove the intended one-variable archive delta plus exact DLL/profile/artifact hashes. Keep BuildSpecs/current.json disabled and RuntimeInbox/ACTIVE_BUILD.txt on S1.42AK-BMDSFIX1. Do not publish, Gale-import, runtime-arm or authorize/run gameplay in that review-build checkpoint.
+Perform one separately bounded S1.42AK-BMAFR1I1 exact-byte publication-authorization decision only. Review Current/233_S1.42AK_BMAFR1I1_INACTIVE_REVIEW_BUILD_INTEGRATION_RECONCILIATION.md and frozen artifact 11280870468 / ZIP SHA-256 c16938786c6ffa8e0dc43e71a3fad206457433397cb9fd34c8676da1d2d4b60c / profile SHA-256 734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07 / DLL SHA-256 d9e09b20a889260d5cc8b4970d023a76d5b7af77ad677077b9718dfa8a150b6a and decide whether exact-byte publication of those already frozen review bytes is justified. Do not rebuild or reconstruct the review artifact. Until a later authorization explicitly permits it, do not publish or profile-index, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, or run gameplay.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
