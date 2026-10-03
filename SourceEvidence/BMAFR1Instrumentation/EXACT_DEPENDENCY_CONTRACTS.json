@@ -32,7 +32,10 @@
             }
           ],
           "method_body_sha256": "361e42b4a5ed59ff27647b62139188cc9e617f4b787bbd7e4808f89757c4c8f2",
+          "il_sha256": "d3c299bb6f85f458c953d1cc0213cd6ff208d10cece172988ddf9fdec674c2fb",
+          "il_bytes_hex": "02289d00000afe0e0000fe0c0000390e000000fe0c00006f9e00000a3a010000002a00027b9f00000a2001000000fe012000000000fe01395b000000fe0c00006fa700000a3a0e000000fe0c00006fa100000a393f00000000022012af2c6ffe0c0200200000000028a900000afe0e0100fe0c0100fe090100283401000a0002fe0d01002012af2c6ffe0c0200200000000028aa00000a00027b9f00000a2001000000fe01391c000000fe0c00006fa000000a3a0f000000fe0c00006fa100000a3a010000002a000220000000007d9f00000a027bb70d0004031f64fe016fcb00000a027b0c0a000a169a16036b6fe406000a2a",
           "max_stack": 5,
+          "init_locals": true,
           "il": [
             {
               "offset": 0,
@@ -564,7 +567,10 @@
             }
           ],
           "method_body_sha256": "b9f86ac1b8814850796681bad5e77d5fe3c4b67e9a705ce2c78db8660752dff5",
+          "il_sha256": "668aecce49fad9ca625cae5875656fd1c4378b26225c788a4d8f14fa338ab1f6",
+          "il_bytes_hex": "02032842110006027bbc0d00046fd900000a027b9504000a027bbd0d0004027be90c0004027bbd0d00048e696fd502000a9a6f0003000a02167dce0d000402167dcd0d000402167dcc0d000402147dc80d000402147dc70d0004027ba104000a14284200000a2c18027ba104000a147dd200000a027ba104000a167db400000a021a28f009000a027bca0d00046fe007000a0a2b5d120028e107000a0b0714280500000a2d4c07176f9801000a07176f9901000a07177d0104000a07177db909000a07167da006000a07167d3c04000a7ebb06000a076fc400000a6f2a05000a2d107ebb06000a076fc400000a6f2b05000a120028e207000a2d9ade0e1200fe162901001b6f3500000adc027bca0d00046fa102000a02147dc80d0004027b9604000a22000000006ffc04000a027bb70d0004166fcb00000a027b0c0a000a169a1622000000006fe406000a027bbb0d00040c160d2b1108099a13041104166fcb00000a0917580d09088e6932e9027b9504000a220000403f6f6305000a02288b01000a2d012a027b9404000a7ed20d0004166ff402000a027b9404000a7ed00d000422000000006f9706000a027b9404000a7ecf0d000422000000006f9706000a027b9404000a7ed10d0004166ff402000a027b9404000a7ed30d0004176ff402000a2a",
           "max_stack": 4,
+          "init_locals": true,
           "il": [
             {
               "offset": 0,
@@ -1889,7 +1895,10 @@
           "virtual": false,
           "parameters": [],
           "method_body_sha256": "2d68350dda2349121dd95336e984eda028bfc2462c40fd1a82c23e854cdf12b8",
+          "il_sha256": "9914fd0aa42de494981e31a06ba12d88be6482516cb6128ca06ea435882b2cb8",
+          "il_bytes_hex": "027ba104000a14280500000a2d1a027ba104000a7b9900000a2d0d027ba104000a7bba00000a2d7002147da104000a027bb70d0004166fcb00000a02147dc80d0004021628f009000a027b0c0a000a169a1622000000006fe406000a02288b01000a2d012a027bf601000a220000f0406f5206000a027b9404000a7ed20d0004166ff402000a027b9404000a7ed10d0004166ff402000a2a027ba104000a6f4600000a027bb90d00046f4700000a6f0700000a027ba104000a6f4600000a027bb90d00046f5e03000a6f8401000a2a",
           "max_stack": 3,
+          "init_locals": true,
           "il": [
             {
               "offset": 0,
@@ -2444,7 +2453,10 @@
             }
           ],
           "method_body_sha256": "b0a3e8a8d6d0686fc1ad1fa841b0b253370c248f09dc122a897d01c50428495f",
+          "il_sha256": "6971a31ac4d22dc8f27c360f8c1e7e2303cb48446dcc3372cb54560c18b0278c",
+          "il_bytes_hex": "027bb70d0004176fcb00000a02147dc80d000402037da104000a021828f009000a027b0c0a000a169a16220000c8426fe406000a027be40c00046fe309000a0228d912000602288b01000a2d012a027bf601000a22000070416f5206000a027b9404000a7ed10d0004176ff402000a2a",
           "max_stack": 3,
+          "init_locals": true,
           "il": [
             {
               "offset": 0,
@@ -2766,7 +2778,10 @@
           "virtual": false,
           "parameters": [],
           "method_body_sha256": "efa7090670b33b1424d7dcb455534eccb551910388806eddb03f66adc65a61be",
+          "il_sha256": "fe3d1ea9278801d526a6a5effe768687d717dc4b60c1f1b3273168b17e22698c",
+          "il_bytes_hex": "027bfd0000042a",
           "max_stack": 8,
+          "init_locals": false,
           "il": [
             {
               "offset": 0,
@@ -2805,7 +2820,10 @@
           "virtual": false,
           "parameters": [],
           "method_body_sha256": "a0279570565530eafe33e281cc686160ea101464155939bd2d4357563431bbe3",
+          "il_sha256": "5e3c52ba154a3a957fe3af842f22a7ecfed6b6e33efa20fc5f672a5e5d7c3f81",
+          "il_bytes_hex": "027b040100042a",
           "max_stack": 8,
+          "init_locals": false,
           "il": [
             {
               "offset": 0,
@@ -2852,7 +2870,10 @@
             }
           ],
           "method_body_sha256": "6826e2cf9627b87fec640f91fb137d29730b0b07cea32a00ec13ad4dfdae436c",
+          "il_sha256": "868c2f02b75dc50b9c979b11820154e02bf55ab034683a585db3212012ccc83b",
+          "il_bytes_hex": "036f1502000a0a036f1602000a0b0728070200060c0228030200066f1702000a0d098e698d8900000113041613072b7e0911079a289d01000a2d03142b090911079a6f6700000a1308110828eb00000a2d0c08110812096f1802000a2d4328d50500061b8d0600000125167292180070a225171108a2251872d6180070a225190228030200066f6700000aa2251a7200190070a228af00000a6f9600000a071309110411071109a21107175813071107098e693f78ffffff036f1602000a289d01000a2d03072b06036f1602000a13050228030200066f1602000a289d01000a2c19080228030200066f1602000a6f6700000a12056f1802000a260228030200066f1902000a13060311066f1a02000a0311046f1b02000a0311056f1c02000a03061106289d01000a2d03172b0711066f1d02000a281e0200062a",
           "max_stack": 5,
+          "init_locals": true,
           "il": [
             {
               "offset": 0,
@@ -3850,7 +3871,10 @@
             }
           ],
           "method_body_sha256": "94376412ebc09af1f0990ff5c10bd0e8daa0f10925991ea17c332607e2f86c7b",
+          "il_sha256": "08d1efbfb5aa855f550b9107c20f613187e8750803db314047d8df92cc4f3366",
+          "il_bytes_hex": "731e02000a0a02289d01000a2d02062a02176f3600002b0b160c2b2307089a0d06096f6700000a6f2002000a2d0d06096f6700000a096f2102000a0817580c08078e6932d7062a",
           "max_stack": 3,
+          "init_locals": true,
           "il": [
             {
               "offset": 0,
@@ -4151,7 +4175,10 @@
             }
           ],
           "method_body_sha256": "73bf6d5ec1950a8e70c481380c61d6914a6bfc32714ef86347c19be7a19e473d",
+          "il_sha256": "b558925def95ce1ff0b6c673f0ba278b054e54072146ac037180b1850071e54b",
+          "il_bytes_hex": "032c0e038e6904330802036f2602000a2a1704282702000a8dca0000010a026f1502000a0b160d2b66032c1909038e692f1303099a14282701000a2c08060903099aa22b46032c17038e2c1303169a14282701000a2c08060903169aa22b2c072c17078e2c1307169a14282701000a2c08060907169aa22b120609722e190070282802000a732902000aa20917580d09068e69329402066f2602000a032d03162b03038e690c28d50500067240190070088c4e000001048c4e000001289500000a6f9600000a2a",
           "max_stack": 4,
+          "init_locals": true,
           "il": [
             {
               "offset": 0,
@@ -4861,7 +4888,10 @@
           "virtual": false,
           "parameters": [],
           "method_body_sha256": "d526dfeac7a37b01faf9a7b10fe97a37b74b105cbbaf4cc778e81ad0296f8499",
+          "il_sha256": "c6837990c43c0f207f5d7f30aa6c322d3dd97e3935ba2525636b50f21b3bafba",
+          "il_bytes_hex": "027b390100042a",
           "max_stack": 8,
+          "init_locals": false,
           "il": [
             {
               "offset": 0,
@@ -4900,7 +4930,10 @@
           "virtual": false,
           "parameters": [],
           "method_body_sha256": "e2b8467009184187e9dc3a74da417088953a39ea0cf41ee89abaa019cd839ac3",
+          "il_sha256": "fd38ae20344400427ee0023229fdb6ced74d686ac6206a098f913527e3098e0c",
+          "il_bytes_hex": "027b3c0100042a",
           "max_stack": 8,
+          "init_locals": false,
           "il": [
             {
               "offset": 0,
@@ -4953,7 +4986,10 @@
             }
           ],
           "method_body_sha256": "63e8fe4469470973e46a77a665c3d7c1813ad86276347120f1246bc9da3ed63f",
+          "il_sha256": "7db73f200d2bc03697df5f28800fa65e3c304d91e346e5a1d89b5d8f8cf47866",
+          "il_bytes_hex": "1673ae0200062a",
           "max_stack": 8,
+          "init_locals": false,
           "il": [
             {
               "offset": 0,
@@ -4964,7 +5000,7 @@
               "offset": 1,
               "opcode": "newobj",
               "operand": {
-                "owner": "<Apply>d__20",
+                "owner": "Dusk.DuskEnemyReplacementDefinition+<Apply>d__20",
                 "name": ".ctor",
                 "has_this": true,
                 "generic_parameter_count": 0,
@@ -5011,13 +5047,16 @@
             }
           ],
           "method_body_sha256": "e2a7a4d3cc814b56c8fdb5489ef2c5cfa92369e37cbd2af041dcf9dbb28fbd8e",
+          "il_sha256": "8b8e0ee3f6267b6658a96dad800f28a7dcb2b177b70312ccc6887486e8fe9584",
+          "il_bytes_hex": "73970600060a02036ff705000a037bf805000a28ea05000a2d2528d505000672c44b0070037bf805000a7be301000a726c1c0070286a00000a6f9600000a2a037bf805000a28ec05000a6fed05000a7edc02000412016fad00002b2d012a03120628c50200062c012a0773f905000a0c086ffa05000a175913072b350811076ffb05000a130811086f6a02000614287400000a2d1611086f6a0200066faa0500062d080811076ffc05000a1107175913071107162fc6288702000a7b8802000a288902000a0d0609288702000a7b8a02000a252d0426142b1d7b8b02000a252d0426142b117b8c02000a252d0426142b05288d02000a096f8e02000a288f02000a252d0426142b05289002000a739102000a130912097e9202000a096f9302000a6f9402000a6f9502000a284500002b7d470300040806fe069806000673f005000a28ae00002b13041204289902000a2d012a7e1f0300042d1a289a02000a7b9b02000a201c95030058739c02000a801f0300047e1f030004161204289d02000a289e02000a6f9f02000a1305086ff105000a130a2b54120a28f205000a130b1105110b6f8a020006067c47030004284700002b130c120c28a302000a289e02000a5913051105163021110b7b3e0100042c02de2f285202000a110b03166fdf05000a6f5701000a26de19120a28f305000a2da3de0e120afe162d01001b6f3900000adc2a",
           "max_stack": 5,
+          "init_locals": true,
           "il": [
             {
               "offset": 0,
               "opcode": "newobj",
               "operand": {
-                "owner": "<>c__DisplayClass31_0",
+                "owner": "Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass31_0",
                 "name": ".ctor",
                 "has_this": true,
                 "generic_parameter_count": 0,
@@ -5885,7 +5924,7 @@
               "offset": 304,
               "opcode": "stfld",
               "operand": {
-                "owner": "<>c__DisplayClass31_0",
+                "owner": "Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass31_0",
                 "name": "ctx",
                 "field_type": "Dawn.SpawnWeightContext"
               }
@@ -5904,7 +5943,7 @@
               "offset": 311,
               "opcode": "ldftn",
               "operand": {
-                "owner": "<>c__DisplayClass31_0",
+                "owner": "Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass31_0",
                 "name": "<ReplaceEnemyEntity>b__0",
                 "has_this": true,
                 "generic_parameter_count": 0,
@@ -6210,7 +6249,7 @@
               "offset": 426,
               "opcode": "ldflda",
               "operand": {
-                "owner": "<>c__DisplayClass31_0",
+                "owner": "Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass31_0",
                 "name": "ctx",
                 "field_type": "Dawn.SpawnWeightContext"
               }
@@ -6463,7 +6502,7 @@
             }
           ],
           "locals": [
-            "<>c__DisplayClass31_0",
+            "Dusk.Internal.EntityReplacementRegistrationPatch+<>c__DisplayClass31_0",
             "System.Collections.Generic.List`1<Dusk.DuskEnemyReplacementDefinition>",
             "System.Collections.Generic.List`1<Dusk.DuskEnemyReplacementDefinition>",
             "Dawn.DawnMoonInfo",

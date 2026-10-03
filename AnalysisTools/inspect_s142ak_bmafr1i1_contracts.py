@@ -34,6 +34,7 @@ class Reader:
     def __init__(self, path):
         self.pe = dnfile.dnPE(str(path))
         self.tables = self.pe.net.mdtables.tables
+        self.nested = {id(n.NestedClass.row): n.EnclosingClass.row for n in (self.pe.net.mdtables.NestedClass or [])}
         self.owners = {}
         for t in self.pe.net.mdtables.TypeDef:
             for x in list(t.MethodList) + list(t.FieldList):
@@ -42,6 +43,8 @@ class Reader:
     def typename(self, row):
         if row.__class__.__name__ == "TypeSpecRow":
             return self.type(iter(row.Signature.value))
+        if id(row) in self.nested:
+            return self.typename(self.nested[id(row)]) + "+" + str(row.TypeName)
         ns = str(row.TypeNamespace)
         scope = getattr(row, "ResolutionScope", None)
         if scope and scope.row.__class__.__name__ == "TypeRefRow":
@@ -125,7 +128,10 @@ class Reader:
                   "static": bool(row.Flags.mdStatic), "virtual": bool(row.Flags.mdVirtual),
                   "parameters": [{"name": str(p.row.Name), "sequence": p.row.Sequence, "optional": bool(p.row.Flags.pdOptional)} for p in row.ParamList],
                   "method_body_sha256": hashlib.sha256(body.raw_bytes).hexdigest(),
+                  "il_sha256": hashlib.sha256(body.raw_bytes[body.header_size:body.header_size + body.code_size]).hexdigest(),
+                  "il_bytes_hex": body.raw_bytes[body.header_size:body.header_size + body.code_size].hex(),
                   "max_stack": body.max_stack,
+                  "init_locals": bool(body.flags.InitLocals),
                   "il": [{"offset": x.offset - body.header_size, "opcode": x.opcode.name, "operand": operand(x)} for x in body.instructions]}
         # dncil reports branch targets including the method header, normalize to IL offsets.
         for ins in result["il"]:
