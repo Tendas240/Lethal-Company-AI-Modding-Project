@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Execute one separately bounded S1.42AK-BMAFR1I1 exact-byte publication checkpoint using only frozen artifact 11280870468. Re-download and verify ZIP SHA-256 c16938786c6ffa8e0dc43e71a3fad206457433397cb9fd34c8676da1d2d4b60c, profile SHA-256 734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07 and DLL SHA-256 d9e09b20a889260d5cc8b4970d023a76d5b7af77ad677077b9718dfa8a150b6a immediately before byte-for-byte materialization. Do not rebuild or reconstruct the artifact. In that publication gate, do not profile-index, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, or run gameplay.
+Perform one separately bounded S1.42AK-BMAFR1I1 publication PR integration/reconciliation. Verify PR #238's final changed files and exact final-head CI, ensure the temporary publication transport workflow is absent, then merge only if justified. After merge, verify permanent exact-main-head Knowledge Architecture and record actual publication integration facts. Do not profile-index, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, or run gameplay in that integration segment.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

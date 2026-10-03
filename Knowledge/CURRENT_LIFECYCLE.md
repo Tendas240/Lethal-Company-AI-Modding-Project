@@ -314,7 +314,7 @@ BMAFDIAG1PATH1 is therefore published, canonically indexed and exact-head CI-gre
 
 ## Exact next project action
 
-Execute one separately bounded S1.42AK-BMAFR1I1 exact-byte publication checkpoint using only frozen artifact 11280870468. Re-download and verify ZIP SHA-256 c16938786c6ffa8e0dc43e71a3fad206457433397cb9fd34c8676da1d2d4b60c, profile SHA-256 734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07 and DLL SHA-256 d9e09b20a889260d5cc8b4970d023a76d5b7af77ad677077b9718dfa8a150b6a immediately before byte-for-byte materialization. Do not rebuild or reconstruct the artifact. In that publication gate, do not profile-index, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, or run gameplay.
+Perform one separately bounded S1.42AK-BMAFR1I1 publication PR integration/reconciliation. Verify PR #238's final changed files and exact final-head CI, ensure the temporary publication transport workflow is absent, then merge only if justified. After merge, verify permanent exact-main-head Knowledge Architecture and record actual publication integration facts. Do not profile-index, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, or run gameplay in that integration segment.
 
 No new BMAFR1 gameplay run is authorized or required for pair qualification. A later runtime request for the separate performance finding remains blocked until the inactive review build passes and later publication/activation decisions explicitly release such a run.
 
@@ -447,12 +447,14 @@ S1.42AK remains accepted. S1.42AK-BMDSFIX1 remains active / NOT ACCEPTED with it
 
 Current/233 itself authorized no publication, profile indexing, Gale import, runtime activation or gameplay. That historical boundary is now superseded only for exact-byte publication by Current/234 below.
 
-## BMAFR1I1 exact-byte publication authorization — approved / publication outstanding
+## BMAFR1I1 exact-byte publication — materialized / integration pending
 
-`Current/234_S1.42AK_BMAFR1I1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md` authorizes one separately bounded exact-byte publication checkpoint using only frozen Actions artifact `11280870468`.
+`Current/234_S1.42AK_BMAFR1I1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md` authorized one separately bounded exact-byte publication checkpoint using only frozen Actions artifact `11280870468`. `Current/235_S1.42AK_BMAFR1I1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md` records that checkpoint as successfully completed on publication PR #238, with main integration still pending.
 
-The future transport must re-download the artifact and verify ZIP SHA-256 `c16938786c6ffa8e0dc43e71a3fad206457433397cb9fd34c8676da1d2d4b60c`, exact profile SHA-256 `734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07` and exact `S142AKBMAFR1I1.dll` SHA-256 `d9e09b20a889260d5cc8b4970d023a76d5b7af77ad677077b9718dfa8a150b6a` immediately before byte-for-byte materialization. The frozen artifact may not be rebuilt, reconstructed or replaced.
+Transport run `37156810501` / #1 re-downloaded and verified artifact ZIP SHA-256 `c16938786c6ffa8e0dc43e71a3fad206457433397cb9fd34c8676da1d2d4b60c`, profile SHA-256 `734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07` and `S142AKBMAFR1I1.dll` SHA-256 `d9e09b20a889260d5cc8b4970d023a76d5b7af77ad677077b9718dfa8a150b6a` before byte-for-byte materialization. Exact materialization commit is `9e7b2ac042a6b7ed38b4942f9481b5d89e9dd8b1`. No build or archive reconstruction occurred.
 
-The authorized publication target is the future canonical profile materialization for build ID `S1.42AK-BMAFR1I1` under `Profiles/`, plus its future exact readable frozen snapshot under `ProfileSources/`. The reviewed 337 -> 338 delta, zero package/config changes, exact parent BMAFR1 SHA-256 `8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5` and 219/221 Gale path projections remain binding.
+The exact publication profile derives from BMAFR1 SHA-256 `8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5`, remains the reviewed 337 -> 338 member delta, has zero package/config changes and preserves the 219/221 Gale path projections. The readable publication snapshot contains 338 `FILE_INDEX` rows and 331 text snapshots.
 
-Publication is not yet executed. Profile indexing / `Profiles/EXPECTED_HASHES.json`, Gale import, `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, runtime activation and gameplay remain outside this authorization. S1.42AK remains accepted; BMDSFIX1 remains active/not accepted with its passive unwaived DeepSewersFlow gate; BMAFR1/BMAFR1I1 remain DIAGNOSTIC ONLY / NEVER ACCEPT. Princess selection, live Janitor zero-blendshape state, exact array emitter/native owner and root cause remain unproven; SpringMan remains equal-scope.
+No `PROFILE_INDEX_RESULT.json` exists and `Profiles/EXPECTED_HASHES.json` remains unchanged. Therefore BMAFR1I1 is materialized on the publication branch but not canonically indexed. The normal profile-index path must remain fail-closed until a later separately authorized mapping/reconciliation gate.
+
+Profile indexing, Gale import, `BuildSpecs/current.json`, `RuntimeInbox/ACTIVE_BUILD.txt`, runtime activation and gameplay remain outside this checkpoint. S1.42AK remains accepted; BMDSFIX1 remains active/not accepted with its passive unwaived DeepSewersFlow gate; BMAFR1/BMAFR1I1 remain DIAGNOSTIC ONLY / NEVER ACCEPT. Princess selection, live Janitor zero-blendshape state, exact array emitter/native owner and root cause remain unproven; SpringMan remains equal-scope.
