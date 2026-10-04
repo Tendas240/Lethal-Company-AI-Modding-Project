@@ -493,3 +493,11 @@ AGDIAG1 remains **DIAGNOSTIC ONLY / NEVER ACCEPT**, unpublished, unindexed, not 
 
 Exact next action is a separately bounded exact-byte publication-authorization decision for authoritative artifact `11302468045` only. No rebuild, publication, indexing, Gale import, activation or runtime is authorized yet.
 
+## Phase-C Art Gallery AGDIAG1 exact-byte publication authorized
+
+`Current/258_S1.42AK_AGDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md` authorizes the next publication transport gate without changing the Art Gallery compatibility conclusion.
+
+Only frozen Actions artifact `11302468045` may be published: ZIP `4602fa4d7567b10a497830a9b8213ad10f14fc7dee459e02e08fb1a7cdecfdbd`, profile `e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081`, DLL `23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131`. Artifact `11302835640` remains superseded/non-authoritative. The publication checkpoint must re-download and reverify the authoritative artifact immediately before byte-for-byte materialization and may not rebuild the selector.
+
+This authorization does not provide runtime evidence. Art Gallery / `MuseumInteriorFlow` still lacks the later diagnostic-generated generation/materialization proof. AGDIAG1 remains **DIAGNOSTIC ONLY / NEVER ACCEPT**, not yet published, not canonically indexed, not Gale-imported and not runtime-armed. BMDSFIX1 remains NOT ACCEPTED with its regular selector-free Black Mesa x Deep Sewers gate outstanding/unwaived.
+
