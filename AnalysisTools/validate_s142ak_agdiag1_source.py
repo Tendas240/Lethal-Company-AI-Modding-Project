@@ -6,6 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PATCH = ROOT / "Patches/S142AKAGDiag1"
+PROJECT = PATCH / "S142AKAGDiag1.csproj"
 PLUGIN = PATCH / "Plugin.cs"
 SELECTION = PATCH / "SelectionPolicy.cs"
 TESTS = PATCH / "Tests/Program.cs"
@@ -36,6 +37,7 @@ def strip_csharp_noncode(text):
     return pattern.sub("", text)
 
 
+project = PROJECT.read_text(encoding="utf-8")
 plugin = PLUGIN.read_text(encoding="utf-8")
 plugin_code = strip_csharp_noncode(plugin)
 selection = SELECTION.read_text(encoding="utf-8")
@@ -60,6 +62,15 @@ require(current_state["accepted_baseline"]["sha256"] == BASELINE_SHA, "Accepted 
 require(current_state["active_candidate"]["build_id"] == "S1.42AK-BMDSFIX1", "Active candidate ID drift")
 require(current_state["active_candidate"]["sha256"] == BMDS_PROFILE_SHA, "Active candidate profile SHA drift")
 require(current_state["runtime_test_outstanding"] is True, "BMDSFIX1 regular runtime gate must remain outstanding")
+
+# The plugin project must carry its own deterministic restore feeds instead of relying on runner-global NuGet state.
+feed_match = re.search(r"<RestoreAdditionalProjectSources>\s*(.*?)\s*</RestoreAdditionalProjectSources>", project, re.DOTALL)
+require(feed_match is not None, "AGDIAG1 project must declare RestoreAdditionalProjectSources")
+feeds = [item.strip() for item in feed_match.group(1).split(";") if item.strip()]
+require(feeds == [
+    "https://api.nuget.org/v3/index.json",
+    "https://nuget.bepinex.dev/v3/index.json",
+], "AGDIAG1 restore feeds drift")
 
 # Frozen identity, provenance and one-patch selector contract.
 for literal in (
@@ -147,6 +158,8 @@ require("PR VALIDATION PENDING" in checkpoint, "Canonical checkpoint must not pr
 require("PR validation pending" in findings, "Source findings must preserve pending-validation status")
 
 require("profile_builder.py" not in workflow, "Source-only CI must not invoke the Gale profile builder")
+require("ref: ${{ github.event.pull_request.head.sha }}" in workflow,
+        "Dedicated source/static workflow must checkout the exact PR head")
 require("dotnet run --project Patches/S142AKAGDiag1/Tests/Policy.Tests.csproj -c Release" in workflow,
         "Pure policy test command missing")
 require("dotnet build S142AKAGDiag1.csproj -c Release" in workflow,

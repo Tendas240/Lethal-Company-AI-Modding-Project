@@ -5,6 +5,7 @@
     <Nullable>disable</Nullable>
     <AssemblyName>S142AKAGDiag1</AssemblyName>
     <RootNamespace>S142AKAGDiag1</RootNamespace>
+    <RestoreAdditionalProjectSources>https://api.nuget.org/v3/index.json;https://nuget.bepinex.dev/v3/index.json</RestoreAdditionalProjectSources>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Tests/**/*.cs" />

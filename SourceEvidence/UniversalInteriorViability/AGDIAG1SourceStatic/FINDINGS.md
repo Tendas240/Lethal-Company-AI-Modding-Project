@@ -74,3 +74,19 @@ The source implementation is ready for exact-PR-head validation through:
 2. `Knowledge Architecture`.
 
 Only after both gates pass on the same exact PR head may this implementation checkpoint be promoted from validation-pending to source/pure-static PASS. No review profile, publication, Gale import, activation or runtime is authorized here.
+
+
+## First PR-gate repair history
+
+The first dedicated AGDIAG1 source/static run on PR #257 was run `37197526404` against PR head `6c1055b596a42bd82e0b7d5d5f033877fe329b27`.
+
+Its pure Art Gallery policy-test step passed. The compile step then failed during package restore because the new project depended on runner-global NuGet configuration and therefore saw only `nuget.org`; `BepInEx.Core` and the required UnityEngine package version were unavailable from that source. The source/static validator was skipped because compilation stopped the job.
+
+On the same PR head, Knowledge Architecture run `37197526593` passed.
+
+The bounded repair changes no selector/gameplay code. It makes the project restore contract explicit with exactly:
+
+- `https://api.nuget.org/v3/index.json`;
+- `https://nuget.bepinex.dev/v3/index.json`.
+
+The validator now fails if those project-local feeds drift, and the dedicated workflow explicitly checks out `${{ github.event.pull_request.head.sha }}` so subsequent source/static validation executes against the exact PR head rather than relying on the synthetic PR merge checkout.
