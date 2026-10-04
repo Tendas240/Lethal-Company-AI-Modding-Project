@@ -296,3 +296,24 @@ Normal-stack observability remains sufficient; no EntranceTeleport or generation
 Residual remains **29** until actual Drains runtime evidence exists. S1.42AK remains accepted; S1.42AK-BMDSFIX1 remains active / NOT ACCEPTED with its passive DeepSewersFlow gate outstanding and unwaived. The 12 owner-hard-block flows and all separated scopes remain unchanged.
 
 Exact next action: Perform one bounded Drains deterministic-selector source/static implementation authorization decision. Freeze a new separately versioned diagnostic build/project/GUID/marker/short Gale identity for Offense Drains / DrainsFlow only; pin any later review profile to exact S1.42AK-BMDSFIX1 SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0; confirm the selector-only one-postfix contract from Current/265_S1.42AK_PHASE_C_DRAINS_DETERMINISTIC_SELECTOR_REUSE_PREFLIGHT.md; and decide whether source/static implementation plus pure fail-closed tests, Patch Safety Review, validator and dedicated workflow may proceed. Do not implement, compile, build, publish, Gale-import, activate or run the diagnostic in that authorization decision; do not change availability or owner restrictions; do not reopen Oxyde, reroll BMDSFIX1 DeepSewersFlow, or begin BCMER x all-Pikmin, Herobrine or BMAFR1I1 work.
+
+## Phase-C Drains DRDIAG1 source/static implementation authorization
+
+`Current/266_S1.42AK_PHASE_C_DRAINS_DRDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md` authorizes the next bounded selector-only source/pure-static implementation checkpoint.
+
+The diagnostic identity is frozen:
+
+- build `S1.42AK-DRDIAG1`;
+- project/assembly `S142AKDRDiag1`;
+- GUID `tendas.lethalcompany.s142akdrdiag1`;
+- version `1.0.0`;
+- marker `[DRDIAG1]`;
+- future short Gale identity `LC V1 S1.42AK-DRD1`.
+
+The implementation authority remains deliberately narrow: exactly one postfix on LLL's exact `GetValidExtendedDungeonFlows(ExtendedLevel, bool)`, after the accepted normalizer at `Priority.Last`. On the real Offense server-selection path it may reduce only the already-returned viable list, and only after proving one unique `Drains` wrapper with exact `DrainsFlow` asset and final rarity `100`. It must retain that same wrapper.
+
+The next source/static checkpoint is authorized to add the isolated source tree, pure fail-closed tests, Patch Safety Review, deterministic repository validator, dedicated source/static workflow and source/static/canonical findings. No profile construction, DLL publication, Gale import, activation or runtime is authorized by this record.
+
+Any later review profile remains pinned to exact `S1.42AK-BMDSFIX1` SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. The current gameplay candidate remains NOT ACCEPTED and its selector-free Black Mesa x Deep Sewers gate remains passive, outstanding and unwaived.
+
+Exact next action: Implement one bounded S1.42AK-DRDIAG1 source/pure-static checkpoint from Current/266_S1.42AK_PHASE_C_DRAINS_DRDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, Patch Safety Review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate that source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct, publish, Gale-import, activate or run a profile; do not change availability or owner restrictions; do not alter BMDSFIX1 or the accepted normalizer; and do not begin Oxyde, Shatteredrooms/CullFactory, BCMER x all-Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
