@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one bounded Phase-C3 remaining compatibility/safety priority reassessment using existing repository evidence, with the Oxyde current-architecture exception preserved under Current/243_S1.42AK_OXYDE_ORDINARY_GENERATION_STATIC_SAFETY_DECISION.md. Select and justify the next exact unresolved pairing/restriction or evidence prerequisite; do not reopen the completed Oxyde flag analysis without new evidence, implement a change, build/publish a candidate, or authorize/start a runtime run in that reassessment. Preserve BMDSFIX1 passive/outstanding/unwaived DeepSewersFlow and the closed-unresolved BMAFR1I1 attribution.
+Perform one bounded Phase-C interior-side existing-evidence refresh over the exact 34 flows listed in Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md as having no trusted actual-generation proof at C1. Reconcile only already-ingested repository evidence acquired after or omitted by C1; classify each flow's current generation/traversal proof status, preserve route/NavMesh signals as separate obligations, and produce a current residual proof-gap set before selecting any new runtime target. Do not acquire new runtime evidence, implement changes, build/publish a candidate, remove owner restrictions, reopen Oxyde, or turn BMDSFIX1 DeepSewersFlow into a dedicated reroll. Preserve separate Shatteredrooms/CullFactory, Black Mesa/Pikmin, Herobrine and BMAFR1I1 scopes.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
