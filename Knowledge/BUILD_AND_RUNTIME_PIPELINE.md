@@ -116,3 +116,19 @@ The committed checkpoint/freeze guard makes those exact bytes authoritative and 
 
 A later publication step, if separately authorized, must materialize **only** artifact `11302468045` and verify its exact hashes; it must never rebuild the candidate or choose an artifact by recency/name prefix. No profile publication, `ProfileSources` indexing, Gale import, runtime activation or gameplay is currently authorized.
 
+## AGDIAG1 exact-byte publication authorization
+
+Publication transport is now authorized by `Current/258_S1.42AK_AGDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md`, but no publication bytes have yet been written.
+
+A valid publication checkpoint must:
+
+- fetch Actions artifact **11302468045 by exact ID**;
+- reject artifact `11302835640` and any other artifact;
+- verify ZIP SHA-256 `4602fa4d7567b10a497830a9b8213ad10f14fc7dee459e02e08fb1a7cdecfdbd`;
+- verify profile SHA-256 `e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081`;
+- verify DLL SHA-256 `23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131`;
+- perform those checks immediately before byte-for-byte materialization;
+- never rebuild, reconstruct or substitute the reviewed bytes.
+
+The future publication branch may materialize `Profiles/LC V1 S1.42AK-AGD1.r2z` plus deterministic readable `ProfileSources/S1.42AK-AGDIAG1/` snapshot/evidence. Canonical profile-index mapping and `Profiles/EXPECTED_HASHES.json` remain outside that checkpoint, as do Gale import, controller changes, runtime activation and gameplay.
+

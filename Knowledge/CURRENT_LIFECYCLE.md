@@ -663,3 +663,13 @@ AGDIAG1 remains **DIAGNOSTIC ONLY / NEVER ACCEPT**, unpublished, unindexed, not 
 
 Exact next gate: one separately bounded AGDIAG1 exact-byte publication-authorization decision for artifact `11302468045` only. No rebuild/reconstruction, publication, indexing, Gale import, activation or gameplay is authorized yet.
 
+## AGDIAG1 exact-byte publication authorized — frozen artifact only
+
+`Current/258_S1.42AK_AGDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md` authorizes one separately bounded publication transport for the already-reviewed AGDIAG1 bytes only.
+
+The sole authorized source is Actions artifact `11302468045` from build head `46a5924ae142b0c00ff9fbbc6fecec5e2a4badae`: ZIP SHA-256 `4602fa4d7567b10a497830a9b8213ad10f14fc7dee459e02e08fb1a7cdecfdbd`, profile SHA-256 `e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081`, DLL SHA-256 `23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131`. The artifact is still present/non-expired and must be re-downloaded and reverified immediately before materialization. Artifact `11302835640` remains permanently superseded/non-authoritative.
+
+No publication has occurred yet. Canonical profile indexing, Gale import, controller mutation, runtime activation and gameplay remain unauthorized. S1.42AK remains accepted; S1.42AK-BMDSFIX1 remains active/NOT ACCEPTED with its passive selector-free Black Mesa x `DeepSewersFlow` gate outstanding and unwaived.
+
+Exact next action: execute one separately bounded exact-byte publication checkpoint for artifact `11302468045` only, with fail-closed pre-materialization hash verification and no rebuild.
+
