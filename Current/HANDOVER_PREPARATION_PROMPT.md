@@ -54,7 +54,7 @@ Before the final handover output, verify directly:
 - agreement of those controllers with `Current/CURRENT_STATE.json` and the routed lifecycle/topic authority;
 - any hashes or evidence paths that are material to the exact next action.
 
-For a bot-generated ProfileSources follow-up from `.github/workflows/profile-index.yml`, verify the explicitly registered exact-head `workflow_dispatch` run rather than pretending a `push` run exists. `RuntimeInbox/ACTIVE_BUILD.txt` is runtime-active/evidence-attribution state, not acceptance authority. Do not claim CI proves runtime/gameplay behavior beyond documented validator coverage.
+For a bot-generated follow-up from `.github/workflows/profile-index.yml` **or** `.github/workflows/runtime-ingest.yml`, verify the explicitly registered exact-head `workflow_dispatch` run rather than pretending a `push` run exists. Both workflows must fail closed if `main` moves before dispatch or if no Knowledge Architecture run is registered for the exact generated head. `RuntimeInbox/ACTIVE_BUILD.txt` is runtime-active/evidence-attribution state, not acceptance authority. Do not claim CI proves runtime/gameplay behavior beyond documented validator coverage.
 
 ## Step 3 — Repair only genuine drift
 
