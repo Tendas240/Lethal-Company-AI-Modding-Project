@@ -249,3 +249,12 @@ Keep separate from the selected universal viability/equal-availability scope and
 - Black Mesa/interior/Pikmin route recovery;
 
 Package-specific historical research remains in `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`; this topic file is the current authority for the live interior-selection rule.
+
+
+## BMAFR1I1 attribution closure and Phase C3 resumption
+
+`Current/241_S1.42AK_BMAFR1I1_POST_RUNTIME_ATTRIBUTION_DECISION.md` closes the BMAFR1I1 repeat-run question without changing the Black Mesa x Abandoned Foundry compatibility PASS.
+
+The correctly armed BMAFR1I1 run did not reproduce the exact array flood and did not observe the required tracked Janitor/SpringMan instances. No further BMAFR1I1 runtime attempt is authorized because another unchanged run would remain stochastic, while forcing the target conditions would materially change the experiment and requires a separate diagnostic design.
+
+Performance attribution therefore remains unresolved and is no longer the immediate Phase C3 blocker. Phase C3 returns to selecting the next exact External-moon pairing/restriction for compatibility/safety investigation from existing repository evidence before any new build or runtime acquisition is considered.
