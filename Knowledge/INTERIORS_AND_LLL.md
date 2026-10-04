@@ -476,3 +476,20 @@ The authorized archive contract is strictly one-variable: parent members `337 ->
 `BuildSpecs/S1.42AK-AGDIAG1_PLAN.md` and `BuildSpecs/S1.42AK-AGDIAG1.json` freeze the future review recipe. They are not live controllers. No AGDIAG1 review artifact has yet been constructed or published; Gale/runtime remain unchanged.
 
 Exact next action is the separately bounded inactive review-build checkpoint: add the dedicated build validator/workflow, compile/build the ephemeral review artifact, validate and freeze exact hashes, and independently rehash the Actions artifact. Publication, indexing, Gale import, activation and runtime remain unauthorized.
+
+## Phase-C Art Gallery AGDIAG1 inactive review-build PASS — exact-byte publication authorization next
+
+`Current/257_S1.42AK_AGDIAG1_INACTIVE_REVIEW_BUILD_INTEGRATION_RECONCILIATION.md` closes the AGDIAG1 compiler/build/archive-validity gate and records its main integration.
+
+Exact authoritative build head `46a5924ae142b0c00ff9fbbc6fecec5e2a4badae` passed review run `37199874193` / #4. The exact selector source compiled with zero warnings/errors; assembly identity is `S142AKAGDiag1`. The source/static validator and pure fail-closed Art Gallery policy remained green.
+
+The valid review archive preserves exact BMDSFIX1 parent SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`, changes members **337 -> 338**, adds only `BepInEx/plugins/S142AKAGDiag1/S142AKAGDiag1.dll`, and changes only `export.r2x` profile identity. Package/config/removal deltas are zero; inherited BMDSFIX1 DLL and accepted S1.42AB normalizer remain byte-identical. Gale path guard passes at **217/255**.
+
+The sole authoritative frozen artifact is Actions ID `11302468045`: ZIP `4602fa4d7567b10a497830a9b8213ad10f14fc7dee459e02e08fb1a7cdecfdbd`, profile `e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081`, DLL `23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131`; independent rehash and CRC passed. Race artifact `11302835640` is superseded/non-authoritative and must never be published/imported/armed.
+
+Final PR #259 head `fd57c1ad9129046573cd09b9d783ebe5e28e3908` passed Frozen Guard `37200187681` / #9 and Knowledge Architecture `37200187666` / #1077; the guard rebuilt/uploaded nothing. PR #259 merged as `342907b02ca56b955292b0850f6828392f7e095a`, with permanent exact-main Knowledge Architecture `37200365347` / #1078 success.
+
+AGDIAG1 remains **DIAGNOSTIC ONLY / NEVER ACCEPT**, unpublished, unindexed, not Gale-imported and not runtime-armed. Art Gallery still lacks the later diagnostic-generated runtime proof; this build PASS does not itself prove MuseumInteriorFlow generation. BMDSFIX1 remains NOT ACCEPTED and its regular selector-free Black Mesa x Deep Sewers gate remains outstanding/unwaived.
+
+Exact next action is a separately bounded exact-byte publication-authorization decision for authoritative artifact `11302468045` only. No rebuild, publication, indexing, Gale import, activation or runtime is authorized yet.
+

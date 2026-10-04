@@ -95,3 +95,24 @@ The cleanup workflow ignores fork PRs and closed-but-unmerged PRs. Before deleti
 If a temporary branch contains unique historical staging lineage that should remain directly addressable even though the branch itself is obsolete, preserve the exact head with an explicit annotated archival tag before deleting the branch. Do not keep ordinary merged feature/build/handover branches indefinitely merely as informal history.
 
 If a new permanent infrastructure or recovery branch is introduced in the future, add it to the retained-branch list in `.github/workflows/merged-branch-cleanup.yml` as part of the same change that establishes that branch's permanent role.
+
+## AGDIAG1 frozen inactive review artifact
+
+The S1.42AK-AGDIAG1 review-build path is now main-integrated under
+`Current/257_S1.42AK_AGDIAG1_INACTIVE_REVIEW_BUILD_INTEGRATION_RECONCILIATION.md`.
+
+The dedicated workflow/build validator established compiler/archive validity and froze one authoritative Actions artifact without publishing it:
+
+- build head: `46a5924ae142b0c00ff9fbbc6fecec5e2a4badae`;
+- build run: `37199874193` / #4;
+- artifact ID: `11302468045`;
+- Actions ZIP SHA-256: `4602fa4d7567b10a497830a9b8213ad10f14fc7dee459e02e08fb1a7cdecfdbd`;
+- profile SHA-256: `e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081`;
+- DLL SHA-256: `23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131`;
+- independent artifact rehash / ZIP CRC: **PASS**;
+- Gale projected runtime path: **217/255 PASS**.
+
+The committed checkpoint/freeze guard makes those exact bytes authoritative and skips later reconstruction. Intermediate race artifact `11302835640` is explicitly superseded and has no publication/import/activation authority.
+
+A later publication step, if separately authorized, must materialize **only** artifact `11302468045` and verify its exact hashes; it must never rebuild the candidate or choose an artifact by recency/name prefix. No profile publication, `ProfileSources` indexing, Gale import, runtime activation or gameplay is currently authorized.
+

@@ -653,3 +653,13 @@ Any later review profile remains pinned to exact `S1.42AK-BMDSFIX1` SHA-256 `3f9
 
 Exact next action: Implement one bounded S1.42AK-AGDIAG1 source/pure-static checkpoint from Current/254_S1.42AK_PHASE_C_ART_GALLERY_AGDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, patch-safety review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate the source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct/publish/import/activate/run a profile, change availability or owner restrictions, alter BMDSFIX1 or the accepted normalizer, or begin BCMER x Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
 
+## S1.42AK-AGDIAG1 inactive review-build integrated; exact bytes frozen
+
+`Current/257_S1.42AK_AGDIAG1_INACTIVE_REVIEW_BUILD_INTEGRATION_RECONCILIATION.md` completes the separately authorized AGDIAG1 inactive review-build lifecycle gate. PR #259 is integrated on main as `342907b02ca56b955292b0850f6828392f7e095a`; permanent exact-main Knowledge Architecture run `37200365347` / #1078 passed.
+
+The sole authoritative review artifact is Actions artifact `11302468045`: ZIP SHA-256 `4602fa4d7567b10a497830a9b8213ad10f14fc7dee459e02e08fb1a7cdecfdbd`, review profile SHA-256 `e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081`, AGDIAG1 DLL SHA-256 `23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131`. Independent download/rehash and ZIP CRC passed. Intermediate artifact `11302835640` is superseded/non-authoritative and must never be published, imported or armed.
+
+AGDIAG1 remains **DIAGNOSTIC ONLY / NEVER ACCEPT**, unpublished, unindexed, not Gale-imported and not runtime-armed. S1.42AK remains accepted; S1.42AK-BMDSFIX1 remains active/NOT ACCEPTED with its passive selector-free Black Mesa x `DeepSewersFlow` gate outstanding and unwaived. Both live controllers remain unchanged.
+
+Exact next gate: one separately bounded AGDIAG1 exact-byte publication-authorization decision for artifact `11302468045` only. No rebuild/reconstruction, publication, indexing, Gale import, activation or gameplay is authorized yet.
+
