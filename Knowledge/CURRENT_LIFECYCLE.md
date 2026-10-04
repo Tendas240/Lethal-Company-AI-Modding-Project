@@ -481,3 +481,14 @@ The completed BMAFR1I1 diagnostic no longer owns runtime attribution. `RuntimeIn
 The exact next selected-scope action is one separately bounded **BMAFR1I1 post-runtime attribution decision**: decide whether the negative-reproduction run plus missing Janitor/SpringMan target coverage justifies one further specifically targeted attribution attempt, or whether attribution remains unresolved and Phase C3 proceeds without another BMAFR1I1 run.
 
 Do not start another BMAFR1I1 gameplay run before that decision. Preserve the separate Black Mesa/Pikmin routing finding and the user-requested Herobrine-disable scope. S1.42AK remains accepted; BMDSFIX1 remains NOT ACCEPTED and its DeepSewersFlow gate remains passive/outstanding/unwaived.
+
+
+## BMAFR1I1 post-runtime attribution decision — closed unresolved / no repeat run
+
+`Current/241_S1.42AK_BMAFR1I1_POST_RUNTIME_ATTRIBUTION_DECISION.md` closes the immediate repeat-run question after the correctly armed but target-missing BMAFR1I1 session.
+
+No further BMAFR1I1 runtime attempt is authorized from current evidence. The exact flood has now been absent in both the first BMAFR1 pair run and BMAFR1I1, while the supplemental BMAFR1 run contained 6696 occurrences. BMAFR1I1 itself armed successfully but observed neither the required tracked Janitor chain nor an exact SpringMan equal-scope instance. Repeating the same bytes would therefore mainly repeat stochastic target/flood acquisition rather than add controlled evidence.
+
+A genuinely target-forced attempt would require changing enemy/event/Dusk-selection or equivalent runtime variables, which would create a new experiment and requires a separately versioned design/lifecycle decision. Attribution remains unresolved: Janitor/Princess stays a concrete static mechanism, SpringMan remains an alternative, and emitter/native owner/root cause remain unproven.
+
+Phase C3 resumes without another BMAFR1I1 run. The next bounded action is a remaining External-moon compatibility/safety priority-selection checkpoint using current Black Mesa applicability and the Oxyde ordinary-generation exception. No build or runtime test is authorized by this closure. S1.42AK-BMDSFIX1 remains NOT ACCEPTED with its DeepSewersFlow gate passive, outstanding and unwaived. Runtime routing remains `S1.42AK-BMDSFIX1`.
