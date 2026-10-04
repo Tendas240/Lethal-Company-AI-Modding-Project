@@ -107,7 +107,7 @@ require("dotnet build S142AKDRDiag1.csproj -c Release" in workflow, "compile com
 require("python AnalysisTools/validate_s142ak_drdiag1_source.py" in workflow, "validator command missing")
 
 print(json.dumps({
-    "status": "SOURCE_PURE_STATIC_CONTRACT_READY_FOR_PR_VALIDATION",
+    "status": "SOURCE_PURE_STATIC_CONTRACT_PASS_NOT_BUILT_NOT_ARMED",
     "candidate_id": "S1.42AK-DRDIAG1",
     "harmony_surfaces": 1,
     "selection_target": "Offense / Drains / DrainsFlow / rarity 100",
