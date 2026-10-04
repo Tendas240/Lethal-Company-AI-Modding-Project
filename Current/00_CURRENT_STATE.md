@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one separately bounded BMAFR1I1 post-runtime attribution decision: determine whether the completed negative-reproduction run (zero exact array-signature recurrence and no observed Janitor/SpringMan target-instance comparison) justifies one further specifically targeted attribution attempt, or whether attribution should remain unresolved and Phase C3 should continue without another BMAFR1I1 run. Do not start another BMAFR1I1 gameplay run before that decision. Preserve the separate Black Mesa/Pikmin routing finding and the user-requested Herobrine-disable scope. S1.42AK remains accepted; S1.42AK-BMDSFIX1 remains NOT ACCEPTED and its regular Black Mesa x DeepSewersFlow gate remains passive, outstanding and unwaived with no dedicated reroll released.
+Perform one bounded Phase C3 remaining compatibility/safety priority-selection checkpoint. Choose the next exact External-moon pairing or restriction to investigate from the current Black Mesa applicability partition and Oxyde ordinary-generation exception, using existing repository-native evidence first. Do not authorize a new build or runtime test during that selection checkpoint. Preserve the separate Black Mesa/Pikmin and Herobrine-disable scopes, and preserve the passive/outstanding/unwaived BMDSFIX1 DeepSewersFlow gate.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
