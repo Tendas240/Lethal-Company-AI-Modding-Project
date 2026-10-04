@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Implement one bounded S1.42AK-DRDIAG1 source/pure-static checkpoint from Current/266_S1.42AK_PHASE_C_DRAINS_DRDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, Patch Safety Review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate that source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct, publish, Gale-import, activate or run a profile; do not change availability or owner restrictions; do not alter BMDSFIX1 or the accepted normalizer; and do not begin Oxyde, Shatteredrooms/CullFactory, BCMER x all-Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
+Open and validate the staged S1.42AK-DRDIAG1 source/pure-static implementation through a dedicated PR. Require both S1.42AK DRDIAG1 source and pure static gate and Knowledge Architecture to pass on the exact PR head. Do not merge on a partial or stale head. After both exact-head gates pass, perform the separately bounded merge/main exact-head reconciliation. Do not construct, publish, Gale-import, activate or run a DRDIAG1 profile.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
