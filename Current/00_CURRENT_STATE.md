@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one bounded Phase C3 remaining compatibility/safety priority-selection checkpoint. Choose the next exact External-moon pairing or restriction to investigate from the current Black Mesa applicability partition and Oxyde ordinary-generation exception, using existing repository-native evidence first. Do not authorize a new build or runtime test during that selection checkpoint. Preserve the separate Black Mesa/Pikmin and Herobrine-disable scopes, and preserve the passive/outstanding/unwaived BMDSFIX1 DeepSewersFlow gate.
+Perform one bounded Oxyde ordinary-generation restriction source/static analysis using existing repository/package/source evidence only. Determine exact ownership and change impact of spawnEnemiesAndScrap=false, the V81/LLL/Dawn paths that would become reachable if ordinary generation were enabled, the interaction with current CodeRebirth Oxyde-specific lifecycle behavior, and whether valid entrance topology would still require another mechanism. Do not implement a patch/config change, do not build or publish a profile, and do not authorize a runtime test in that analysis checkpoint.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
