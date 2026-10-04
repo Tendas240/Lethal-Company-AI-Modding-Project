@@ -130,5 +130,5 @@ A valid publication checkpoint must:
 - perform those checks immediately before byte-for-byte materialization;
 - never rebuild, reconstruct or substitute the reviewed bytes.
 
-The future publication branch may materialize `Profiles/LC V1 S1.42AK-AGD1.r2z` plus deterministic readable `ProfileSources/S1.42AK-AGDIAG1/` snapshot/evidence. Canonical profile-index mapping and `Profiles/EXPECTED_HASHES.json` remain outside that checkpoint, as do Gale import, controller changes, runtime activation and gameplay.
+The future publication branch may materialize the exact short-name AGDIAG1 review profile in the repository's Profiles area plus a deterministic readable AGDIAG1 snapshot/evidence set in the established ProfileSources namespace. Canonical profile-index mapping and `Profiles/EXPECTED_HASHES.json` remain outside that checkpoint, as do Gale import, controller changes, runtime activation and gameplay.
 
