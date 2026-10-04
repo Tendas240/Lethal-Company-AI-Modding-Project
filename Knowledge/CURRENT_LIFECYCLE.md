@@ -602,3 +602,19 @@ The log also strengthens a separate BCMER x LethalMin/Pikmin compatibility signa
 
 Exact next action: Perform one bounded Phase-C residual interior-proof priority reassessment over the updated 30-flow no-trusted-actual-generation-proof set established by Current/249_S1.42AK_PHASE_C_ART_GALLERY_ORDINARY_RUNTIME_NON_TARGET_RECONCILIATION.md. Preserve Art Gallery / MuseumInteriorFlow as unproven after the natural target miss, remove Belleville Appartements / BellevilleApp from the residual set based on its completed ordinary Offense generation/materialization proof, keep the 12 C2 owner-hard-block flows unchanged, and select exactly one next evidence target or prerequisite. Do not authorize or start another runtime run, force-select Art Gallery, implement gameplay/config changes, alter availability/owner restrictions, reopen Oxyde, reroll BMDSFIX1 DeepSewersFlow, or begin the separate BCMER x LethalMin/Pikmin compatibility work in that reassessment.
 
+## Phase-C residual-30 priority reassessment — deterministic Art Gallery selector preflight next
+
+`Current/252_S1.42AK_PHASE_C_RESIDUAL_30_PRIORITY_REASSESSMENT.md` completes the bounded reassessment over the record-249 residual set.
+
+The residual remains **30 flows**: **18** currently viable/equal-100 and the unchanged **12** C2 owner-hard-block flows. Belleville Appartements / `BellevilleApp` remains outside the residual on its trusted ordinary Offense generation/materialization proof. Art Gallery / `MuseumInteriorFlow` remains unproven because the earlier natural attempt did not select it; that stochastic miss is not negative compatibility evidence.
+
+The previous Art Gallery priority is therefore retained. Its availability is already valid on Offense, its exact flow/pool evidence and record-247 proof contract are unusually mature, and no Art-Gallery-specific technical warning is preserved. Switching to another viable residual solely because the random roll missed would not reduce the new method prerequisite: record 250 requires deterministic exact-target selection for every future single-interior qualification.
+
+The exact selected next prerequisite is a **bounded source/static reuse/design preflight for a separately versioned diagnostic-only deterministic `MuseumInteriorFlow` selector on Offense**. The preflight must identify the narrowest safe existing selector precedent, preserve normal generation/materialization semantics, define fail-closed guards and diagnostic identity, and must not implement or activate the selector.
+
+The 12 owner-hard-block flows remain unavailable for incidental selector bypass. Their availability/safety question must be separately authorized before any deterministic qualification.
+
+No runtime run, build/profile/config/DLL/package change, availability change, owner-block removal, Oxyde reopening, BMDSFIX1 Deep Sewers reroll, BCMER × Pikmin work, Herobrine work or BMAFR1I1 work is authorized.
+
+Exact next action: Perform one bounded Phase-C Art Gallery deterministic-selector source/static reuse/design preflight for `MuseumInteriorFlow` on Offense using existing repository evidence only. Identify the narrowest separately versioned diagnostic-only mechanism that can deterministically select the exact flow while preserving the already-valid Offense availability and normal generation/materialization semantics. Reuse existing selector precedent where safe, define fail-closed guards and diagnostic identity requirements, and decide whether a target-specific successor can be designed without unrelated gameplay changes. Do not implement/build/publish/activate a selector, authorize/start a runtime run, change availability or owner restrictions, reopen Oxyde, reroll BMDSFIX1 DeepSewersFlow, or begin BCMER × Pikmin, Herobrine or BMAFR1I1 work.
+
