@@ -492,3 +492,14 @@ No further BMAFR1I1 runtime attempt is authorized from current evidence. The exa
 A genuinely target-forced attempt would require changing enemy/event/Dusk-selection or equivalent runtime variables, which would create a new experiment and requires a separately versioned design/lifecycle decision. Attribution remains unresolved: Janitor/Princess stays a concrete static mechanism, SpringMan remains an alternative, and emitter/native owner/root cause remain unproven.
 
 Phase C3 resumes without another BMAFR1I1 run. The next bounded action is a remaining External-moon compatibility/safety priority-selection checkpoint using current Black Mesa applicability and the Oxyde ordinary-generation exception. No build or runtime test is authorized by this closure. S1.42AK-BMDSFIX1 remains NOT ACCEPTED with its DeepSewersFlow gate passive, outstanding and unwaived. Runtime routing remains `S1.42AK-BMDSFIX1`.
+
+
+## Phase C3 priority selection — Oxyde ordinary-generation restriction next
+
+`Current/242_S1.42AK_PHASE_C3_OXYDE_ORDINARY_GENERATION_PRIORITY_SELECTION.md` selects the Oxyde ordinary-generation semantic restriction as the next Phase-C3 compatibility/safety target.
+
+The decision is prerequisite-driven rather than pair-count-driven. Black Mesa owner applicability is already closed at 31 MATCH / 22 NON-MATCH / 0 UNRESOLVED and several concrete Black Mesa pair lines now have direct runtime/topology evidence. No additional already-ingested Black Mesa pair remains available for the same evidence-only reconciliation path.
+
+Oxyde, by contrast, has 23 positive selection-supported metadata pairings while exact current evidence still places `spawnEnemiesAndScrap=false` before the V81 ordinary `RuntimeDungeon` / `GenerateNewFloor` path, with no independent inspected dungeon/entrance-construction route. That is a whole-row prerequisite. The next checkpoint is therefore source/static analysis of ownership, change impact, CodeRebirth lifecycle assumptions and entrance-topology requirements before any semantic change is considered.
+
+No Oxyde change, build or runtime test is authorized. S1.42AK-BMDSFIX1 remains NOT ACCEPTED and its Black Mesa x DeepSewersFlow gate remains passive, outstanding and unwaived. Runtime/evidence routing remains S1.42AK-BMDSFIX1.

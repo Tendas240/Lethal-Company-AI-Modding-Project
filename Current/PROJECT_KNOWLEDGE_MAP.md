@@ -60,7 +60,9 @@ The same session adds a separate Black Mesa/Pikmin routing finding: BCMER `SafeO
 
 Runtime/evidence routing is back on `S1.42AK-BMDSFIX1`. BMDSFIX1 remains the separate active gameplay candidate / **NOT ACCEPTED**; its exact Black Mesa x `DeepSewersFlow` gate remains passive, outstanding and unwaived. `BuildSpecs/current.json` remains disabled.
 
-Exact next action: perform one bounded Phase C3 remaining compatibility/safety priority-selection checkpoint. Choose the next exact External-moon pairing or restriction from the current Black Mesa applicability partition and Oxyde ordinary-generation exception, using existing repository-native evidence first. Do not authorize a new build or runtime test in that selection checkpoint.
+`Current/242_S1.42AK_PHASE_C3_OXYDE_ORDINARY_GENERATION_PRIORITY_SELECTION.md` selects the **Oxyde ordinary-generation semantic restriction** as the next Phase-C3 compatibility/safety target. Oxyde's 23 selection-supported metadata pairings remain non-executable through the inspected ordinary path while `spawnEnemiesAndScrap=false` returns exact V81 before `RuntimeDungeon` / `GenerateNewFloor`, and no independent inspected dungeon/entrance-construction path is established. Because this blocks the whole Oxyde row, it takes priority over selecting another arbitrary unseen Black Mesa `MATCH` that would require fresh pair evidence acquisition.
+
+Exact next action: perform one bounded Oxyde ordinary-generation restriction source/static analysis using existing repository/package/source evidence only. Determine exact ownership and change impact of `spawnEnemiesAndScrap=false`, the V81/LLL/Dawn paths that would become reachable if ordinary generation were enabled, the interaction with current CodeRebirth Oxyde-specific lifecycle behavior, and whether valid entrance topology would still require another mechanism. Do not implement, build or runtime-test in that checkpoint.
 
 ## Authority rule
 

@@ -258,3 +258,12 @@ Package-specific historical research remains in `Current/07_FUTURE_ROADMAP_BCMER
 The correctly armed BMAFR1I1 run did not reproduce the exact array flood and did not observe the required tracked Janitor/SpringMan instances. No further BMAFR1I1 runtime attempt is authorized because another unchanged run would remain stochastic, while forcing the target conditions would materially change the experiment and requires a separate diagnostic design.
 
 Performance attribution therefore remains unresolved and is no longer the immediate Phase C3 blocker. Phase C3 returns to selecting the next exact External-moon pairing/restriction for compatibility/safety investigation from existing repository evidence before any new build or runtime acquisition is considered.
+
+
+## Phase C3 current priority — Oxyde ordinary-generation semantic restriction
+
+`Current/242_S1.42AK_PHASE_C3_OXYDE_ORDINARY_GENERATION_PRIORITY_SELECTION.md` selects the current Oxyde ordinary-generation restriction as the next compatibility/safety analysis target.
+
+Oxyde's 23 selection-supported metadata pairings do not currently provide executable ordinary interior pairing proof because `spawnEnemiesAndScrap=false` returns exact V81 before the normal dungeon-generation callsite and no inspected independent dungeon/entrance-construction path is established. This whole-row prerequisite takes priority over selecting another arbitrary unseen Black Mesa `MATCH`.
+
+The next checkpoint is evidence-only: resolve exact ownership and impact of the false flag, the vanilla/LLL/Dawn paths that would become reachable if ordinary generation were enabled, CodeRebirth Oxyde-specific lifecycle assumptions, and whether entrance topology would still require another mechanism. No override, build or runtime test is authorized by the priority selection.
