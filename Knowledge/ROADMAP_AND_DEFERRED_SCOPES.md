@@ -37,3 +37,12 @@ Do not begin another BMAFR1I1 gameplay run before that decision. Do not accept B
 - Broader LethalMin teardown/despawn repair only with stronger evidence.
 
 Do not silently combine these independent scopes into the selected viability investigation.
+
+## Mandatory deferred compatibility follow-up — BCMER x LethalMin/Pikmin
+
+`Current/250_PHASE_C_DETERMINISTIC_INTERIOR_TEST_STRATEGY_AND_DEFERRED_BCMER_PIKMIN_DIRECTIVE.md` makes this an explicit **deferred-but-mandatory** follow-up rather than an optional observation.
+
+After the current interior-proof sequence reaches an appropriate checkpoint, perform bounded source/static attribution for the SafeOutside-correlated Pikmin removal/death path. The intended compatibility direction is to preserve BCMER's hostile outside-enemy suppression while exempting player-owned LethalMin Pikmin from that suppression/cleanup if an identity-safe mechanism exists. Do not globally disable BCMER events as the default fix.
+
+The recurring Onion staging-position NavMesh warning is independently present on non-SafeOutside runs and must be tracked as a separate LethalMin/NavMesh issue rather than conflated with the immediate SafeOutside-correlated death cascade.
+
