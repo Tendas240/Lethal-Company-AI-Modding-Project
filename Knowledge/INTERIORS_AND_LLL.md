@@ -469,7 +469,7 @@ Exact next action is a bounded inactive review-build authorization/recipe decisi
 
 `Current/256_S1.42AK_AGDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md` authorizes exactly one later inactive review-build checkpoint after the completed AGDIAG1 source/pure-static PASS.
 
-The review parent is pinned to exact `S1.42AK-BMDSFIX1` profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. The short review identity is frozen as `LC V1 S1.42AK-AGD1`, with ephemeral output `Profiles/LC V1 S1.42AK-AGD1.r2z`.
+The review parent is pinned to exact `S1.42AK-BMDSFIX1` profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. The short review identity is frozen as `LC V1 S1.42AK-AGD1`; if a later review build is executed, its ephemeral review filename is `LC V1 S1.42AK-AGD1.r2z` under the Profiles area.
 
 The authorized archive contract is strictly one-variable: parent members `337 -> 338`, adding only `BepInEx/plugins/S142AKAGDiag1/S142AKAGDiag1.dll`; the only changed existing member may be `export.r2x`, limited to profile-name identity metadata. Package/config/removal counts remain zero, and the inherited BMDSFIX1 DLL plus accepted S1.42AB normalizer must remain byte-identical.
 
