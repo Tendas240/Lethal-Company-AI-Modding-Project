@@ -568,3 +568,22 @@ Player facility entry/exit is optional for a stronger traversal tier and is not 
 This preflight does not authorize a runtime attempt. It also does not authorize force-selection, diagnostic instrumentation, availability changes, owner-block removal, Oxyde reopening, a dedicated BMDSFIX1 Deep Sewers reroll, or any Black Mesa/Pikmin, Herobrine or BMAFR1I1 work.
 
 Exact next action: Perform one bounded Phase-C Art Gallery (`MuseumInteriorFlow`) ordinary-runtime acquisition authorization decision. Use the proof contract from Current/247_S1.42AK_PHASE_C_ART_GALLERY_GENERATION_PROOF_ACQUISITION_PREFLIGHT.md to decide whether one ordinary Offense acquisition attempt is justified with existing gameplay bytes and existing normal-stack observability only. Do not force-select Art Gallery, implement a diagnostic, change availability, alter owner restrictions, reopen Oxyde, dedicate a BMDSFIX1 DeepSewers reroll, or begin Black Mesa/Pikmin, Herobrine or BMAFR1I1 work. If and only if a runtime attempt is authorized, the same response must include the repository-driven Gale replacement/import PowerShell one-liner when required and the exact build-specific one-line PowerShell log uploader.
+
+
+## Phase-C Art Gallery ordinary-runtime acquisition — one Offense attempt authorized
+
+`Current/248_S1.42AK_PHASE_C_ART_GALLERY_ORDINARY_RUNTIME_ACQUISITION_AUTHORIZATION.md` authorizes exactly **one** ordinary Offense generation attempt on the unchanged exact active `S1.42AK-BMDSFIX1` gameplay profile.
+
+This is a natural acquisition attempt only:
+
+- no Art Gallery force-selector or target diagnostic;
+- no new build/profile/config/package/DLL bytes;
+- no availability or owner-block change;
+- no automatic reroll if Art Gallery does not select;
+- exact resulting `LogOutput.log` must be uploaded once even after a non-target roll.
+
+The safety basis is that BMDSFIX1 applies only to Black Mesa × `DeepSewersFlow`; its application path is therefore outside the intended Offense test condition. Any unexpected `[BMDSFIX1] APPLIED` marker on Offense is a separate severe non-target finding.
+
+Art Gallery remains stochastic in the observed 41-entry equal-effective Offense pool. A miss is not negative evidence. If `MuseumInteriorFlow` naturally selects, reconcile it against the exact record-247 generation/materialization contract; player traversal remains optional for the basic proof tier. If another flow selects, preserve only the evidence actually established for that flow.
+
+Exact next action: Execute exactly one ordinary Offense generation attempt with the exact active S1.42AK-BMDSFIX1 profile and no Art-Gallery selector/diagnostic. Upload the resulting exact LogOutput.log once using the build-specific uploader whether or not Art Gallery selects. Do not reroll automatically if Art Gallery does not select. After ingestion, perform one bounded Phase-C runtime-evidence reconciliation: apply the Current/247 proof contract if MuseumInteriorFlow selected; otherwise treat the run as non-target evidence and assess only whatever naturally selected flow the log actually proves.
