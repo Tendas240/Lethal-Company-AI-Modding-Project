@@ -39,13 +39,30 @@ jobs:
               assert re.fullmatch('[0-9a-f]{40}', head)
               assert record['independent_artifact_rehash_match'] is True
               subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', head], check=True)
+              # Source/recipe bytes remain hard-frozen. The source-static workflow is
+              # allowed exactly one post-freeze lifecycle-only delta: remove the two
+              # volatile current-state trigger paths so later activation/controller
+              # reconciliation does not rerun the pre-activation source validator.
+              # Its jobs/steps and every other byte must remain identical to build_head.
               subprocess.run(['git', 'diff', '--exit-code', head, 'HEAD', '--',
                   'Patches/S142AKAGDiag1', 'BuildSpecs/S1.42AK-AGDIAG1.json',
                   'BuildSystem/agdiag1_review_build.py',
                   'AnalysisTools/validate_s142ak_agdiag1_build.py',
                   'AnalysisTools/validate_s142ak_agdiag1_source.py',
-                  '.github/workflows/s142ak-agdiag1-source-static.yml',
                   'RepositoryTools/gale_profile_path_length_guard.py'], check=True)
+              source_workflow_path = pathlib.Path('.github/workflows/s142ak-agdiag1-source-static.yml')
+              frozen_source_workflow = subprocess.check_output(
+                  ['git', 'show', f'{head}:{source_workflow_path.as_posix()}'],
+                  text=True,
+              )
+              expected_source_workflow = frozen_source_workflow
+              for allowed_line in (
+                  "      - 'Current/CURRENT_STATE.json'\n",
+                  "      - 'Current/00_CURRENT_STATE.md'\n",
+              ):
+                  assert expected_source_workflow.count(allowed_line) == 1
+                  expected_source_workflow = expected_source_workflow.replace(allowed_line, '')
+              assert source_workflow_path.read_text(encoding='utf-8') == expected_source_workflow
               print('Frozen review artifact remains authoritative; no recompilation, archive reconstruction or upload.')
               print('This step verifies the source/recipe lock only, not a fresh artifact download or runtime result.')
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:

@@ -6,8 +6,6 @@ on:
       - 'AnalysisTools/validate_s142ak_agdiag1_source.py'
       - 'SourceEvidence/UniversalInteriorViability/AGDIAG1SourceStatic/**'
       - 'Current/255_S1.42AK_PHASE_C_ART_GALLERY_AGDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
-      - 'Current/CURRENT_STATE.json'
-      - 'Current/00_CURRENT_STATE.md'
       - 'Knowledge/INTERIORS_AND_LLL.md'
       - '.github/workflows/s142ak-agdiag1-source-static.yml'
 permissions:
