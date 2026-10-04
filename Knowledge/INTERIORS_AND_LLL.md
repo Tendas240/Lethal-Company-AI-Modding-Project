@@ -267,3 +267,12 @@ Performance attribution therefore remains unresolved and is no longer the immedi
 Oxyde's 23 selection-supported metadata pairings do not currently provide executable ordinary interior pairing proof because `spawnEnemiesAndScrap=false` returns exact V81 before the normal dungeon-generation callsite and no inspected independent dungeon/entrance-construction path is established. This whole-row prerequisite takes priority over selecting another arbitrary unseen Black Mesa `MATCH`.
 
 The next checkpoint is evidence-only: resolve exact ownership and impact of the false flag, the vanilla/LLL/Dawn paths that would become reachable if ordinary generation were enabled, CodeRebirth Oxyde-specific lifecycle assumptions, and whether entrance topology would still require another mechanism. No override, build or runtime test is authorized by the priority selection.
+
+
+## Oxyde static safety decision — current exception preserved
+
+`Current/243_S1.42AK_OXYDE_ORDINARY_GENERATION_STATIC_SAFETY_DECISION.md` completes the bounded source/static analysis selected by record 242 and supersedes its analysis-next instruction. No safe config/single-flag conversion is established: normal generation requires live generator and exterior entrance proof, while CodeRebirth retains the crane dungeon-type writer, outside-enemy classification and special ship/time semantics. Oxyde remains an explicit current-architecture exception, not a proven permanently incompatible or broken moon. Its 23 metadata matches and the historical B3 matrix remain unchanged.
+
+Review and integrate the documentation-only Oxyde static-safety checkpoint Current/243_S1.42AK_OXYDE_ORDINARY_GENERATION_STATIC_SAFETY_DECISION.md after exact-head CI. Preserve Oxyde as a current-architecture ordinary-generation exception; no flag/config/patch/build/runtime change is authorized. After integration, perform repository-native handover/reassessment of the remaining Phase-C3 priority without automatically selecting a new runtime run.
+
+S1.42AK remains accepted; BMDSFIX1 remains active / NOT ACCEPTED with its passive, outstanding and unwaived DeepSewersFlow gate. No further BMAFR1I1 run is authorized. Build and runtime controllers are unchanged.

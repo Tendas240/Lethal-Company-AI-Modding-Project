@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one bounded Oxyde ordinary-generation restriction source/static analysis using existing repository/package/source evidence only. Determine exact ownership and change impact of spawnEnemiesAndScrap=false, the V81/LLL/Dawn paths that would become reachable if ordinary generation were enabled, the interaction with current CodeRebirth Oxyde-specific lifecycle behavior, and whether valid entrance topology would still require another mechanism. Do not implement a patch/config change, do not build or publish a profile, and do not authorize a runtime test in that analysis checkpoint.
+Review and integrate the documentation-only Oxyde static-safety checkpoint Current/243_S1.42AK_OXYDE_ORDINARY_GENERATION_STATIC_SAFETY_DECISION.md after exact-head CI. Preserve Oxyde as a current-architecture ordinary-generation exception; no flag/config/patch/build/runtime change is authorized. After integration, perform repository-native handover/reassessment of the remaining Phase-C3 priority without automatically selecting a new runtime run.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
