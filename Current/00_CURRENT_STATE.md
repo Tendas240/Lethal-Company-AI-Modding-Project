@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one bounded Phase-C Art Gallery (`MuseumInteriorFlow`) generation-proof acquisition preflight using existing repository/source/config/runtime-observability evidence only. Define the minimum proof contract for ordinary Offense selection, completed generation and generated entrance/materialization evidence, and determine whether existing normal-stack logging is sufficient or whether a separately versioned read-only diagnostic would be required. Do not authorize or start a runtime run, implement instrumentation, build/publish a candidate, change availability, alter owner restrictions, reopen Oxyde, reroll BMDSFIX1 DeepSewersFlow, or begin Black Mesa/Pikmin, Herobrine or BMAFR1I1 work.
+Perform one bounded Phase-C Art Gallery (`MuseumInteriorFlow`) ordinary-runtime acquisition authorization decision. Use the proof contract from Current/247_S1.42AK_PHASE_C_ART_GALLERY_GENERATION_PROOF_ACQUISITION_PREFLIGHT.md to decide whether one ordinary Offense acquisition attempt is justified with existing gameplay bytes and existing normal-stack observability only. Do not force-select Art Gallery, implement a diagnostic, change availability, alter owner restrictions, reopen Oxyde, dedicate a BMDSFIX1 DeepSewers reroll, or begin Black Mesa/Pikmin, Herobrine or BMAFR1I1 work. If and only if a runtime attempt is authorized, the same response must include the repository-driven Gale replacement/import PowerShell one-liner when required and the exact build-specific one-line PowerShell log uploader.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
