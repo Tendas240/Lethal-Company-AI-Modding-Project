@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-AGDIAG1",
+  "profile_path": "Profiles/LC V1 S1.42AK-AGD1.r2z",
+  "profile_name": "LC V1 S1.42AK-AGD1",
+  "sha256": "e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081",
+  "zip_members": 338,
+  "snapshot_dir": "ProfileSources/S1.42AK-AGDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}
