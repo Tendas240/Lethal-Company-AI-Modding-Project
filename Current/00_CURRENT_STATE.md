@@ -36,11 +36,11 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMAFR1I1`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`
 
 ## Exact next action
 
-After this BMAFR1I1 runtime activation is integrated to main and permanent exact-main-head Knowledge Architecture is green, replace/import the exact repository-authorized S1.42AK-BMAFR1I1 Gale profile and execute one bounded Black Mesa x Abandoned Foundry performance-attribution runtime run. Require the [BMAFR1I1] ARMED marker and preserve the inherited BMAFDIAG1 Foundry diagnostic environment; collect the resulting LogOutput.log with the build-specific uploader. Do not accept BMAFR1I1 or S1.42AK-BMDSFIX1, do not waive the passive BMDSFIX1 Black Mesa x DeepSewersFlow gate, and do not treat correlation or a missing recurrence as emitter/root-cause proof.
+Perform one separately bounded BMAFR1I1 post-runtime attribution decision: determine whether the completed negative-reproduction run (zero exact array-signature recurrence and no observed Janitor/SpringMan target-instance comparison) justifies one further specifically targeted attribution attempt, or whether attribution should remain unresolved and Phase C3 should continue without another BMAFR1I1 run. Do not start another BMAFR1I1 gameplay run before that decision. Preserve the separate Black Mesa/Pikmin routing finding and the user-requested Herobrine-disable scope. S1.42AK remains accepted; S1.42AK-BMDSFIX1 remains NOT ACCEPTED and its regular Black Mesa x DeepSewersFlow gate remains passive, outstanding and unwaived with no dedicated reroll released.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

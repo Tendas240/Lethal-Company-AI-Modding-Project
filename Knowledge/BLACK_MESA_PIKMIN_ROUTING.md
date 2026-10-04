@@ -3,9 +3,9 @@
 **Status:** CURRENT / OPEN DEFERRED INVESTIGATION TOPIC  
 **Authority:** scope boundary and routing to preserved evidence; no causal fix is currently accepted  
 **Canonical-For:** `black_mesa_pikmin_routing`  
-**Evidence:** S1.42AA/S1.42AC RuntimeEvidence and related runtime-analysis/handover records  
+**Evidence:** S1.42AA/S1.42AC RuntimeEvidence and related runtime-analysis records; `Current/239_S1.42AK_BMAFR1I1_RUNTIME_ATTRIBUTION_RECONCILIATION.md`; `RuntimeEvidence/S1.42AK-BMAFR1I1/20261003T232317Z/`  
 **Related:** `Knowledge/INTERIORS_AND_LLL.md`, `Knowledge/MONITOR_ONLY_ERRORS.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-09-04
+**Last-Validated:** 2026-10-04
 
 ## Current classification
 
@@ -26,6 +26,19 @@ These are evidence for a routing/pathing investigation, not proof of a specific 
 - Black Mesa is single-registered and uses its own ownership path; do not duplicate-register it through LLL.
 - The accepted S1.42AB Offense run generated `Expanded facility` and did not show a user-visible normalization regression.
 - Prior Mineshaft/elevator + large Pikmin-group incidents also produced NavMesh-related failures, but causality was not established.
+
+## Fresh BMAFR1I1 runtime evidence — SafeOutside / Pikmin lifecycle
+
+The completed BMAFR1I1 multi-round log adds reproducible user-visible evidence without yet establishing one root cause:
+
+- BCMER selected `SafeOutside` and explicitly logged `Outside spawning prevented by OutsideSafe`; this proves suppression of the ordinary outside-spawn path for that round.
+- LethalMin nevertheless initialized many outdoor sprouts.
+- A player-triggered Yellow Pikmin creation path reached `Spawning: Yellow Pikmin`, after which the spawned Pikmin was almost immediately removed from the exterior enemy list.
+- An Onion withdrawal request for 15 Yellow Pikmin reached the spawn path. Repeated created Pikmin were staged around `(1000.78, 997.12, 996.33)`, emitted `Failed to create agent because it is not close enough to the NavMesh`, and were then repeatedly removed from the interior enemy list.
+- Later scheduler additions for Maneater and Jester prove that this evidence does not support the stronger claim that SafeOutside disables every interior enemy spawn.
+- The user's observed symptom — plucking/Onion withdrawal did not yield usable Pikmin — is therefore runtime-supported.
+
+Interpretation remains bounded: SafeOutside is proven to block the normal outside-spawn route, but the Onion/interior classification plus staging/NavMesh failures establish a broader Pikmin lifecycle/routing problem that cannot be attributed solely to SafeOutside. No repair is authorized by this evidence alone.
 
 ## Investigation discipline
 

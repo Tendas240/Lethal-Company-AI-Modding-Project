@@ -3,9 +3,9 @@
 **Status:** CURRENT / CANONICAL TOPIC  
 **Authority:** current BCMER package/config/weight-model interpretation  
 **Canonical-For:** `bcmer`  
-**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `RuntimeEvidence/S1.42AI/20260916T180452Z/`, `Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`, `Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`  
+**Evidence:** `Current/152_S1.42AI_RUNTIME_ACCEPTANCE_BCMER_SHYGUY_INTERIOR_ONLY.md`, `RuntimeEvidence/S1.42AI/20260916T180452Z/`, `Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md`, `Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md`, `Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md`, `Current/11_RUNTIME_EVIDENCE_S1.41_BCMER.md`, `Current/S1.42AC_RUNTIME_SHA_PROVENANCE_ERRATA.json`, `Current/INTEGRITY_ERRATA_REGISTRY.json`, `Current/239_S1.42AK_BMAFR1I1_RUNTIME_ATTRIBUTION_RECONCILIATION.md`, `RuntimeEvidence/S1.42AK-BMAFR1I1/20261003T232317Z/`  
 **Related:** `Knowledge/CURRENT_LIFECYCLE.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-09-16
+**Last-Validated:** 2026-10-04
 
 ## Version invariant
 
@@ -38,6 +38,12 @@ Accepted BCMER rain-event routes remain disabled:
 - `Hurricane`
 
 Natural vanilla Rainy weather remains allowed. The requirement concerns BCMER event routes, not all rain in the game.
+
+## SafeOutside runtime observation — BMAFR1I1
+
+The BMAFR1I1 runtime evidence contains an exact BCMER `Event chosen: SafeOutside` marker followed by `Outside spawning prevented by OutsideSafe`. For that observed round, BCMER therefore demonstrably suppressed its normal outside-spawn path.
+
+Do not widen that fact into "all EnemyAI spawning is disabled": the same captured round later records interior scheduler additions, and LethalMin's Onion/Pikmin failures include interior classification plus staging/NavMesh failure evidence. Those Pikmin symptoms are routed separately through `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`; SafeOutside alone is not established as their complete cause.
 
 ## Accepted ShyGuy interior-only event guard — S1.42AI
 

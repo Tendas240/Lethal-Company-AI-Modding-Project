@@ -144,6 +144,26 @@ def main() -> int:
         if "[skip ci]" in profile_index.lower():
             fail("profile-index workflow reintroduced [skip ci] on generated snapshot commits")
 
+    runtime_ingest_path = ROOT / ".github/workflows/runtime-ingest.yml"
+    if not runtime_ingest_path.is_file():
+        fail("missing runtime-ingest workflow")
+    else:
+        runtime_ingest = runtime_ingest_path.read_text(encoding="utf-8", errors="replace")
+        required_runtime_ingest_fragments = [
+            "actions: write",
+            "id: evidence_commit",
+            "Dispatch exact-head Knowledge Architecture validation",
+            "EXPECTED_HEAD",
+            "knowledge-architecture.yml/dispatches",
+            "event=workflow_dispatch&branch=main",
+            ".head_sha",
+        ]
+        for fragment in required_runtime_ingest_fragments:
+            if fragment not in runtime_ingest:
+                fail(f"runtime-ingest workflow missing exact-head CI contract fragment: {fragment}")
+        if "[skip ci]" in runtime_ingest.lower():
+            fail("runtime-ingest workflow reintroduced [skip ci] on generated evidence commits")
+
     knowledge_workflow_path = ROOT / ".github/workflows/knowledge-architecture.yml"
     if not knowledge_workflow_path.is_file():
         fail("missing Knowledge Architecture workflow")

@@ -290,6 +290,22 @@
       "runtime_index": "RuntimeEvidence/S1.42AK-BMAFR1/20261002T164741Z/INDEX.json",
       "runtime_log_sha256": "ca2d83a56115f66623c3dfb38d2cdd47085b3c0a368efc3ace29321a323b4d90",
       "runtime_result": "PASS_BLACK_MESA_ABANDONED_FOUNDRY_RUNTIME_COMPATIBILITY_PERFORMANCE_ATTRIBUTION_SEPARATE"
+    },
+    {
+      "build_id": "S1.42AK-BMAFR1I1",
+      "role": "RUNTIME_DIAGNOSTIC_INCONCLUSIVE_ATTRIBUTION_NOT_GAMEPLAY_BASE",
+      "profile": "Profiles/LC V1 S1.42AK-BMAFR1I1.r2z",
+      "profile_sha256": "734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07",
+      "profile_sources": "ProfileSources/S1.42AK-BMAFR1I1/",
+      "file_index": "ProfileSources/S1.42AK-BMAFR1I1/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AK-BMAFR1I1/export.r2x",
+      "build_plan": "BuildSpecs/S1.42AK-BMAFR1I1_PLAN.md",
+      "activation_record": "Current/238_S1.42AK_BMAFR1I1_RUNTIME_ACTIVATION.md",
+      "note": "Completed exact BMAFR1I1 attribution diagnostic. Instrumentation ARMED, exact array signature did not recur, and required Janitor/SpringMan target-instance comparison did not occur; negative reproduction only, emitter/root cause unresolved. DIAGNOSTIC ONLY / NEVER ACCEPT. Separate same-session SafeOutside/Pikmin staging/NavMesh evidence and Herobrine user request are routed elsewhere.",
+      "decision": "Current/239_S1.42AK_BMAFR1I1_RUNTIME_ATTRIBUTION_RECONCILIATION.md",
+      "runtime_index": "RuntimeEvidence/S1.42AK-BMAFR1I1/20261003T232317Z/INDEX.json",
+      "runtime_log_sha256": "0f28ad24f0279cd18a039bc4e1de695e9590d1c70e98d2a6a2aa318b30674ce3",
+      "runtime_result": "INCONCLUSIVE_NEGATIVE_REPRODUCTION_ZERO_ARRAY_SIGNATURE_TARGET_INSTANCES_NOT_OBSERVED"
     }
   ],
   "pending_profiles": [
@@ -399,20 +415,6 @@
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false,
       "note": "Exact published/indexed BMAFDIAG1PATH1 bytes are completed failed Black Mesa x Abandoned Foundry diagnostic provenance. Runtime evidence proved config-category identity mismatch; PATH1 is DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT and is not runtime-active."
-    },
-    {
-      "build_id": "S1.42AK-BMAFR1I1",
-      "role": "ACTIVE_RUNTIME_DIAGNOSTIC_PENDING",
-      "profile": "Profiles/LC V1 S1.42AK-BMAFR1I1.r2z",
-      "profile_sha256": "734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07",
-      "profile_sources": "ProfileSources/S1.42AK-BMAFR1I1/",
-      "file_index": "ProfileSources/S1.42AK-BMAFR1I1/FILE_INDEX.json",
-      "export": "ProfileSources/S1.42AK-BMAFR1I1/export.r2x",
-      "build_plan": "BuildSpecs/S1.42AK-BMAFR1I1_PLAN.md",
-      "activation_record": "Current/238_S1.42AK_BMAFR1I1_RUNTIME_ACTIVATION.md",
-      "runtime_evidence_required": false,
-      "partial_runtime_evidence_present": false,
-      "note": "Exact published/indexed BMAFR1I1 bytes are runtime-armed solely for bounded BMAFR1 performance attribution through exact BMAFR1 runtime-PASS parent -> accepted S1.42AK. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains separate and unaccepted."
     }
   ],
   "important_project_dlls": [
