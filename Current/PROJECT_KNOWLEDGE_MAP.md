@@ -224,3 +224,24 @@ No implementation, build, publication, Gale import or runtime is authorized. The
 
 Exact next action: Perform one bounded Art Gallery deterministic-selector source/static implementation authorization decision. Freeze the separately versioned diagnostic build/plugin/marker identity, confirm exact parent provenance and the selector-only one-postfix contract from Current/253_S1.42AK_PHASE_C_ART_GALLERY_DETERMINISTIC_SELECTOR_PREFLIGHT.md, and decide whether to authorize source/static implementation plus pure fail-closed tests/validator infrastructure. Do not implement/compile/build/publish/import/activate/run the diagnostic in that authorization decision, do not change availability or owner restrictions, and do not begin BMDSFIX1 Deep Sewers, BCMER x Pikmin, Herobrine or BMAFR1I1 work.
 
+## Phase-C Art Gallery AGDIAG1 source/static implementation authorization
+
+`Current/254_S1.42AK_PHASE_C_ART_GALLERY_AGDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md` authorizes the next bounded selector-only source/pure-static implementation checkpoint.
+
+The diagnostic identity is frozen:
+
+- build `S1.42AK-AGDIAG1`;
+- project/assembly `S142AKAGDiag1`;
+- GUID `tendas.lethalcompany.s142akagdiag1`;
+- version `1.0.0`;
+- marker `[AGDIAG1]`;
+- future short Gale identity `LC V1 S1.42AK-AGD1`.
+
+The implementation authority remains deliberately narrow: exactly one postfix on LLL's exact `GetValidExtendedDungeonFlows(ExtendedLevel, bool)`, after the accepted normalizer at `Priority.Last`. On the real Offense server-selection path it may reduce only the already-returned viable list, and only after proving one unique `Art Gallery` wrapper with exact `MuseumInteriorFlow` asset and final rarity `100`. It must retain that same wrapper.
+
+The next source/static checkpoint is authorized to add the isolated source tree, pure fail-closed tests, Patch Safety Review, deterministic repository validator, dedicated source/static workflow and source/static/canonical findings. No profile construction, DLL publication, Gale import, activation or runtime is authorized by this record.
+
+Any later review profile remains pinned to exact `S1.42AK-BMDSFIX1` SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. The current gameplay candidate remains NOT ACCEPTED and its selector-free Black Mesa x Deep Sewers gate remains passive, outstanding and unwaived.
+
+Exact next action: Implement one bounded S1.42AK-AGDIAG1 source/pure-static checkpoint from Current/254_S1.42AK_PHASE_C_ART_GALLERY_AGDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, patch-safety review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate the source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct/publish/import/activate/run a profile, change availability or owner restrictions, alter BMDSFIX1 or the accepted normalizer, or begin BCMER x Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
+

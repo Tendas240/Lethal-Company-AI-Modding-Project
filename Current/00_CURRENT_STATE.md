@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one bounded Art Gallery deterministic-selector source/static implementation authorization decision. Freeze the separately versioned diagnostic build/plugin/marker identity, confirm exact parent provenance and the selector-only one-postfix contract from Current/253_S1.42AK_PHASE_C_ART_GALLERY_DETERMINISTIC_SELECTOR_PREFLIGHT.md, and decide whether to authorize source/static implementation plus pure fail-closed tests/validator infrastructure. Do not implement/compile/build/publish/import/activate/run the diagnostic in that authorization decision, do not change availability or owner restrictions, and do not begin BMDSFIX1 Deep Sewers, BCMER x Pikmin, Herobrine or BMAFR1I1 work.
+Implement one bounded S1.42AK-AGDIAG1 source/pure-static checkpoint from Current/254_S1.42AK_PHASE_C_ART_GALLERY_AGDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, patch-safety review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate the source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct/publish/import/activate/run a profile, change availability or owner restrictions, alter BMDSFIX1 or the accepted normalizer, or begin BCMER x Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
