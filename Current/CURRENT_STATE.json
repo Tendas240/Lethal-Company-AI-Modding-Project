@@ -57,7 +57,7 @@
     "published_profile_commit": "80057f75a253961449a4e92e27a16cbd83997f8a",
     "main_integration_commit": "21138185f1ab377660b61120f1d07733d4180672"
   },
-  "runtime_test_outstanding": false,
+  "runtime_test_outstanding": true,
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
