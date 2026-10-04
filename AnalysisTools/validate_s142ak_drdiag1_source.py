@@ -95,8 +95,10 @@ for literal in (
 require("Exactly one Harmony surface exists" in safety, "safety review surface count missing")
 require("LLL remains owner" in safety, "safety review ownership boundary missing")
 require("DIAGNOSTIC ONLY / NEVER ACCEPT" in safety, "diagnostic-only boundary missing")
-require("PR VALIDATION PENDING" in checkpoint, "checkpoint must remain validation-pending before CI")
-require("PR validation pending" in findings, "findings must remain validation-pending before CI")
+require("SOURCE / PURE-STATIC PASS" in checkpoint, "checkpoint source/static PASS missing")
+require("SOURCE / PURE-STATIC PASS" in findings, "findings source/static PASS missing")
+for evidence in ("b90c8fcd92cadf33cbc490a8ea553f9cbbf94838", "37234153839", "37234153796"):
+    require(evidence in checkpoint and evidence in findings, "exact PR validation evidence missing: " + evidence)
 
 require("profile_builder.py" not in workflow, "source workflow must not build a Gale profile")
 require("ref: ${{ github.event.pull_request.head.sha }}" in workflow, "workflow must checkout exact PR head")
