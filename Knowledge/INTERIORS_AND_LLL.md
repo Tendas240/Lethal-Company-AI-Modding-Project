@@ -5,7 +5,7 @@
 **Canonical-For:** `interiors_and_lll`  
 **Evidence:** `Current/102_S1.42AB_RUNTIME_ACCEPTANCE_INTERIOR_WEIGHT_NORMALIZATION.md`, `RuntimeEvidence/S1.42AF/20260905T223738Z/raw/LogOutput.log`, `Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md`, `BuildSpecs/DEFERRED_LC_OFFICE_V81_PLAN.md`, `BuildSpecs/LC_OFFICE_SCRAP_INVESTIGATION_PLAN.md`, `Current/159_LC_OFFICE_SCRAP_EXISTING_EVIDENCE_FINDING.md`, `Current/160_LC_OFFICE_SCRAP_PLACEMENT_DIAGNOSTIC_DESIGN.md`, `Current/163_S1.42AK_SCRAPDIAG1_RUNTIME_PLACEMENT_FINDING.md`, `Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md`, `Current/165_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B1_MOON_INVENTORY_OFFENSE_BASELINE.md`, `Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md`, `Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.md`, `Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md`, `Current/169_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C2_OWNER_HARD_BLOCK_REASON_ANALYSIS.md`, `Current/205_S1.42AK_EXTERNAL_MOON_EXISTING_EVIDENCE_EXHAUSTION_RECONCILIATION.md`, `Current/206_S1.42AK_EXTERNAL_OWNER_RULE_APPLICABILITY_CLOSURE_RECONCILIATION.md`  
 **Related:** `ProfileSources/S1.42AG/`, `Knowledge/BLACK_MESA_PIKMIN_ROUTING.md`, `Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md`  
-**Last-Validated:** 2026-10-02
+**Last-Validated:** 2026-10-04
 
 ## Accepted architecture
 
@@ -439,3 +439,16 @@ Any later review profile remains pinned to exact `S1.42AK-BMDSFIX1` SHA-256 `3f9
 
 Exact next action: Implement one bounded S1.42AK-AGDIAG1 source/pure-static checkpoint from Current/254_S1.42AK_PHASE_C_ART_GALLERY_AGDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, patch-safety review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate the source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct/publish/import/activate/run a profile, change availability or owner restrictions, alter BMDSFIX1 or the accepted normalizer, or begin BCMER x Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
 
+
+
+## Phase-C Art Gallery AGDIAG1 source/static implementation staged — PR validation pending
+
+`Current/255_S1.42AK_PHASE_C_ART_GALLERY_AGDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md` stages the source/pure-static implementation authorized by record 254.
+
+The diagnostic remains the selector-only architecture selected by record 253: one postfix on exact LLL `GetValidExtendedDungeonFlows(ExtendedLevel, bool)`, after the accepted S1.42AB normalizer at `Priority.Last`. On the validated real Offense selection path it may retain only the unique already-viable `Art Gallery` wrapper whose exact asset is `MuseumInteriorFlow` and whose final normalized rarity is `100`; the same existing wrapper is retained.
+
+The staged source includes the isolated plugin/project, pure fail-closed tests, Patch Safety Review, deterministic source validator, dedicated source/static PR workflow and SourceEvidence findings. Coverage includes non-Offense/debug inertness, terminal exclusion, unknown caller, null/empty pool, missing accessors, null wrapper, missing/duplicate Art Gallery, asset mismatch, rarity mismatch and exact existing-wrapper identity.
+
+This is not yet a source/static PASS. Exact-PR-head validation remains required through both `S1.42AK AGDIAG1 source and pure static gate` and `Knowledge Architecture`.
+
+No new semantic topic is introduced, so the router remains `interiors_and_lll`. Controllers remain unchanged: `BuildSpecs/current.json` stays disabled and `RuntimeInbox/ACTIVE_BUILD.txt` remains `S1.42AK-BMDSFIX1`. No AGDIAG1 review profile, published DLL, Gale import, activation or runtime is authorized. Art Gallery remains without trusted actual-generation proof until a later separately authorized runtime stage.

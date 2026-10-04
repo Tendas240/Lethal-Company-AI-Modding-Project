@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Implement one bounded S1.42AK-AGDIAG1 source/pure-static checkpoint from Current/254_S1.42AK_PHASE_C_ART_GALLERY_AGDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, patch-safety review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate the source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct/publish/import/activate/run a profile, change availability or owner restrictions, alter BMDSFIX1 or the accepted normalizer, or begin BCMER x Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
+Validate the staged S1.42AK-AGDIAG1 implementation through its dedicated pull request. Require both the S1.42AK AGDIAG1 source and pure static gate and Knowledge Architecture to pass on the exact same PR head; do not merge on partial or stale evidence. After exact-head PR validation passes, perform the separately bounded merge and main exact-head reconciliation. Do not construct/publish/import/activate/run an AGDIAG1 profile, change availability or owner restrictions, alter BMDSFIX1 or the accepted normalizer, reroll BMDSFIX1 Deep SewersFlow, or begin BCMER x Pikmin, Herobrine or BMAFR1I1 work.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
