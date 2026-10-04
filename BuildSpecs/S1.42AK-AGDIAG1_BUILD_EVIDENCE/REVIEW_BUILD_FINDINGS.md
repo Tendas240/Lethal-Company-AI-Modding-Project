@@ -69,6 +69,35 @@ chronological bytes uploaded by the successful job. Their earlier
 in the pipeline. `REVIEW_BUILD_CHECKPOINT.json` is the later evidence that closes
 the independent Actions-artifact rehash requirement without rewriting history.
 
+
+## Superseded intermediate Actions race
+
+While the four evidence files were being committed sequentially, GitHub queued review
+run `37200090879` / #5 at intermediate head
+`42baab6788df30a9acee1de3b89b57377701a942` before
+`REVIEW_BUILD_CHECKPOINT.json` existed in that checkout. The run had already passed
+its initial frozen-check when the later checkpoint commit arrived, so it continued
+through compilation and uploaded artifact `11302835640`.
+
+That artifact is explicitly **SUPERSEDED / NON-AUTHORITATIVE / DO NOT PUBLISH /
+DO NOT IMPORT / DO NOT ARM**:
+
+- artifact ZIP SHA-256: `a9121b7cc5aa406d9db9130db52335511ec1930d79c57fffa25999f1a1ae96e6`;
+- profile SHA-256: `1de2b3121ac588a101a2bf5dd5070cc6d6f6ebf406f58223ce7317b9f9f510b9`;
+- DLL SHA-256: `680eefe4009a30727dea1a5ac9a74e1c56d7ab7243ad906fa9660a9f79cca025`.
+
+The connected GitHub capability exposes artifact download but not artifact deletion,
+so the superseded artifact cannot be removed from Actions by this chat. It has no
+publication or lifecycle authority and must never be selected by "latest artifact"
+or name-prefix logic. The **only** authoritative frozen review bytes remain artifact
+`11302468045` with ZIP `4602fa4d...`, profile `e62e3c41...` and DLL
+`23a90b8b...`, which were independently rehashed before the race artifact finished.
+
+The race is contained by the committed checkpoint/freeze guard. Subsequent review
+runs #6 (`37200095263`) and #7 (`37200103725`) both succeeded while skipping
+Python/.NET setup, compilation, archive construction, validation, path guard and
+artifact upload; no further review bytes were created by those runs.
+
 ## Lifecycle boundary
 
 This checkpoint does **not** publish or activate AGDIAG1.
