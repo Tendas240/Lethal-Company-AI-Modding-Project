@@ -452,3 +452,14 @@ The staged source includes the isolated plugin/project, pure fail-closed tests, 
 This is not yet a source/static PASS. Exact-PR-head validation remains required through both `S1.42AK AGDIAG1 source and pure static gate` and `Knowledge Architecture`.
 
 No new semantic topic is introduced, so the router remains `interiors_and_lll`. Controllers remain unchanged: `BuildSpecs/current.json` stays disabled and `RuntimeInbox/ACTIVE_BUILD.txt` remains `S1.42AK-BMDSFIX1`. No AGDIAG1 review profile, published DLL, Gale import, activation or runtime is authorized. Art Gallery remains without trusted actual-generation proof until a later separately authorized runtime stage.
+
+
+## Phase-C Art Gallery AGDIAG1 source/static PASS — review-build authorization next
+
+`Current/255_S1.42AK_PHASE_C_ART_GALLERY_AGDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md` now records exact-PR-head source/pure-static PASS for AGDIAG1.
+
+Exact tested head `84ea816a132b39861134b2eca1fb71847324e6f2` passed the dedicated AGDIAG1 gate in run `37197799601` and Knowledge Architecture in run `37197799585`. Pure selector tests, plugin compilation and the deterministic source/controller validator all passed. The first dedicated run's restore-only failure is preserved as repair history; the repair added explicit project-local nuget.org + BepInEx restore feeds and exact-head checkout without changing selector/gameplay code.
+
+AGDIAG1 remains source-only, `DIAGNOSTIC ONLY / NEVER ACCEPT`, not built/published/armed. Art Gallery remains without trusted actual-generation proof. Build/runtime controllers remain unchanged.
+
+Exact next action is a bounded inactive review-build authorization/recipe decision pinned to the exact S1.42AK-BMDSFIX1 parent and frozen short Gale identity `LC V1 S1.42AK-AGD1`; profile construction is not yet authorized.

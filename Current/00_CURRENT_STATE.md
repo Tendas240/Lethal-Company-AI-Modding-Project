@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Validate the staged S1.42AK-AGDIAG1 implementation through its dedicated pull request. Require both the S1.42AK AGDIAG1 source and pure static gate and Knowledge Architecture to pass on the exact same PR head; do not merge on partial or stale evidence. After exact-head PR validation passes, perform the separately bounded merge and main exact-head reconciliation. Do not construct/publish/import/activate/run an AGDIAG1 profile, change availability or owner restrictions, alter BMDSFIX1 or the accepted normalizer, reroll BMDSFIX1 Deep SewersFlow, or begin BCMER x Pikmin, Herobrine or BMAFR1I1 work.
+Perform one bounded S1.42AK-AGDIAG1 inactive review-build authorization/recipe decision. Pin any future review recipe to exact parent S1.42AK-BMDSFIX1 profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0, preserve the frozen short Gale identity LC V1 S1.42AK-AGD1, define the exact one-DLL archive delta and build/static validator contract, and decide whether a later inactive review-artifact construction may be authorized. Do not construct/publish/import/activate/run the AGDIAG1 profile in that decision, change availability or owner restrictions, alter BMDSFIX1 or the accepted normalizer, reroll BMDSFIX1 DeepSewersFlow, or begin BCMER x Pikmin, Herobrine or BMAFR1I1 work.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

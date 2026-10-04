@@ -154,8 +154,15 @@ for literal in (
 require("Exactly one Harmony surface exists" in safety, "Patch Safety Review surface count missing")
 require("LLL remains owner" in safety, "Patch Safety Review LLL ownership boundary missing")
 require("DIAGNOSTIC ONLY / NEVER ACCEPT" in safety, "Patch Safety Review diagnostic boundary missing")
-require("PR VALIDATION PENDING" in checkpoint, "Canonical checkpoint must not pre-claim CI success")
-require("PR validation pending" in findings, "Source findings must preserve pending-validation status")
+require("SOURCE / PURE-STATIC PASS" in checkpoint, "Canonical checkpoint source/static PASS missing")
+require("SOURCE / PURE-STATIC PASS" in findings, "Source findings source/static PASS missing")
+for evidence_literal in (
+    "84ea816a132b39861134b2eca1fb71847324e6f2",
+    "37197799601",
+    "37197799585",
+):
+    require(evidence_literal in checkpoint and evidence_literal in findings,
+            "Exact PR validation evidence missing: " + evidence_literal)
 
 require("profile_builder.py" not in workflow, "Source-only CI must not invoke the Gale profile builder")
 require("ref: ${{ github.event.pull_request.head.sha }}" in workflow,
@@ -168,7 +175,7 @@ require("python AnalysisTools/validate_s142ak_agdiag1_source.py" in workflow,
         "Static validator command missing")
 
 report = {
-    "status": "SOURCE_PURE_STATIC_CONTRACT_READY_FOR_PR_VALIDATION",
+    "status": "SOURCE_PURE_STATIC_CONTRACT_PASS_NOT_BUILT_NOT_ARMED",
     "candidate_id": "S1.42AK-AGDIAG1",
     "diagnostic_only": True,
     "harmony_surfaces": 1,

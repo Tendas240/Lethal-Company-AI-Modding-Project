@@ -1,7 +1,7 @@
 # S1.42AK-AGDIAG1 Source / Pure-Static Findings
 
 **Date:** 2026-10-04  
-**Status:** SOURCE IMPLEMENTATION STAGED / PR validation pending / DIAGNOSTIC ONLY / NEVER ACCEPT  
+**Status:** SOURCE / PURE-STATIC PASS / DIAGNOSTIC ONLY / NOT BUILT / NOT ARMED / NEVER ACCEPT  
 **Authority:** `Current/254_S1.42AK_PHASE_C_ART_GALLERY_AGDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md`  
 **Implementation base:** `17ef86a6895371d3187e4d01ae78ff15c6e16e55`
 
@@ -64,16 +64,17 @@ This checkpoint does not create a review profile or DLL publication and does not
 
 The semantic router remains `interiors_and_lll`; no router-map mutation is required because no new semantic topic was introduced.
 
-## Validation boundary
+## Exact PR validation PASS
 
-No CI success is claimed by this findings record.
+The repaired implementation was validated on exact PR head `84ea816a132b39861134b2eca1fb71847324e6f2`.
 
-The source implementation is ready for exact-PR-head validation through:
+- `S1.42AK AGDIAG1 source and pure static gate`: run `37197799601`, run number 2, **success**.
+  - pure Art Gallery fail-closed policy tests: success;
+  - plugin source compile: success;
+  - deterministic source/controller validator: success.
+- `Knowledge Architecture`: run `37197799585`, run number 1063, **success**.
 
-1. `S1.42AK AGDIAG1 source and pure static gate`;
-2. `Knowledge Architecture`.
-
-Only after both gates pass on the same exact PR head may this implementation checkpoint be promoted from validation-pending to source/pure-static PASS. No review profile, publication, Gale import, activation or runtime is authorized here.
+This proves the source/pure-static checkpoint only. No review profile, publication, Gale import, activation or runtime is authorized here.
 
 
 ## First PR-gate repair history
@@ -90,3 +91,12 @@ The bounded repair changes no selector/gameplay code. It makes the project resto
 - `https://nuget.bepinex.dev/v3/index.json`.
 
 The validator now fails if those project-local feeds drift, and the dedicated workflow explicitly checks out `${{ github.event.pull_request.head.sha }}` so subsequent source/static validation executes against the exact PR head rather than relying on the synthetic PR merge checkout.
+
+
+## Source/static completion boundary
+
+AGDIAG1 is now source/pure-static complete and remains `DIAGNOSTIC ONLY / NEVER ACCEPT`.
+
+The exact next lifecycle decision is a separately bounded inactive review-build authorization/recipe decision. That decision must preserve the exact S1.42AK-BMDSFIX1 parent profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`, keep the future short Gale identity `LC V1 S1.42AK-AGD1`, and prove that any future review artifact would add only the AGDIAG1 DLL plus allowed profile-identity metadata.
+
+This source/static PASS itself does not authorize constructing, publishing, importing, activating or running that profile.
