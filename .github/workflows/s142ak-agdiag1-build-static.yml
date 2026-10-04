@@ -5,6 +5,7 @@ on:
     paths:
       - 'Patches/S142AKAGDiag1/**'
       - 'BuildSpecs/S1.42AK-AGDIAG1.json'
+      - 'BuildSpecs/S1.42AK-AGDIAG1_BUILD_EVIDENCE/**'
       - 'BuildSystem/agdiag1_review_build.py'
       - 'AnalysisTools/validate_s142ak_agdiag1_build.py'
       - 'AnalysisTools/validate_s142ak_agdiag1_source.py'
@@ -33,6 +34,7 @@ jobs:
           if frozen:
               record = json.loads(checkpoint.read_text())
               assert record['status'] == 'PASS_INACTIVE_REVIEW_BUILD_INDEPENDENTLY_REHASHED'
+              assert record['classification'] == 'DIAGNOSTIC_ONLY_NEVER_ACCEPT'
               head = record['build_head']
               assert re.fullmatch('[0-9a-f]{40}', head)
               assert record['independent_artifact_rehash_match'] is True
