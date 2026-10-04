@@ -32,7 +32,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 ## Live execution state
 
 - Active candidate: **S1.42AK-BMDSFIX1**
-- Runtime test outstanding: **no**
+- Runtime test outstanding: **yes**
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
@@ -42,7 +42,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 Perform one bounded Phase-C residual interior-proof priority reassessment over the updated 30-flow no-trusted-actual-generation-proof set established by Current/249_S1.42AK_PHASE_C_ART_GALLERY_ORDINARY_RUNTIME_NON_TARGET_RECONCILIATION.md. Preserve Art Gallery / MuseumInteriorFlow as unproven after the natural target miss, remove Belleville Appartements / BellevilleApp from the residual set based on its completed ordinary Offense generation/materialization proof, keep the 12 C2 owner-hard-block flows unchanged, and select exactly one next evidence target or prerequisite. Do not authorize or start another runtime run, force-select Art Gallery, implement gameplay/config changes, alter availability/owner restrictions, reopen Oxyde, reroll BMDSFIX1 DeepSewersFlow, or begin the separate BCMER x LethalMin/Pikmin compatibility work in that reassessment.
 
-No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
