@@ -685,3 +685,13 @@ The exact AGDIAG1 DLL remains SHA-256 `23a90b8b2bffd1f08a1391319b0e48215e3ef231b
 
 The next bounded gate is one separately bounded **S1.42AK-AGDIAG1 runtime-activation checkpoint** for these already-published/indexed exact bytes. Until that activation is integrated and permanent exact-head CI is green, Gale import and gameplay remain unauthorized. S1.42AK remains accepted; BMDSFIX1 remains active/not accepted with its passive, outstanding and unwaived DeepSewersFlow gate; deferred BCMER x all-Pikmin, Herobrine, BMAFR1I1, Oxyde and other separated scopes remain unchanged.
 
+## AGDIAG1 runtime activation — armed / deterministic Art Gallery proof outstanding
+
+`Current/262_S1.42AK_AGDIAG1_RUNTIME_ACTIVATION.md` activates the exact published/indexed AGDIAG1 profile solely for one bounded Offense Art Gallery / `MuseumInteriorFlow` diagnostic generation attempt after activation integration and permanent exact-main-head CI success.
+
+The activation re-verifies exact repository bytes: `Profiles/LC V1 S1.42AK-AGD1.r2z` is 576357 bytes at SHA-256 `e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081`; `ProfileSources/S1.42AK-AGDIAG1/FILE_INDEX.json` contains 338 rows and identifies `BepInEx/plugins/S142AKAGDiag1/S142AKAGDiag1.dll` as an 18432-byte member at SHA-256 `23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131`. No profile, DLL, config or package bytes change.
+
+Runtime/evidence routing is now `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-AGDIAG1`. The diagnostic binds directly to the exact S1.42AK-BMDSFIX1 active candidate, so the existing v2.4.6 direct-candidate resolver is sufficient and no Gale helper code change is needed. `Current/AUTO_BUILD_RESULT.json` remains exact BMDSFIX1 and `BuildSpecs/current.json` remains disabled.
+
+AGDIAG1 remains **DIAGNOSTIC ONLY / NEVER ACCEPT**. S1.42AK remains accepted. BMDSFIX1 remains the separate gameplay candidate / **NOT ACCEPTED**, and its regular Black Mesa x `DeepSewersFlow` gate remains passive, outstanding and unwaived. The runtime attempt must require `[AGDIAG1] ARMED`, deterministic Art Gallery selection and the Current/247 generation/materialization chain; it must stop after the single attempt even on refusal/incomplete proof and upload the resulting log. Deterministic selection may close the current generation-proof gap if the contract passes, but it does not prove natural selection frequency.
+
