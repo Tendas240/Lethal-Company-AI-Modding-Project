@@ -46,3 +46,9 @@ After the current interior-proof sequence reaches an appropriate checkpoint, per
 
 The recurring Onion staging-position NavMesh warning is independently present on non-SafeOutside runs and must be tracked as a separate LethalMin/NavMesh issue rather than conflated with the immediate SafeOutside-correlated death cascade.
 
+## BCMER x Pikmin exemption identity correction
+
+`Current/251_BCMER_LETHALMIN_ALL_PIKMIN_EXEMPTION_SCOPE_CORRECTION.md` corrects the mandatory deferred scope: the desired exemption applies to **all Pikmin lifecycle states**, not only player-owned Pikmin.
+
+When this deferred compatibility work is resumed, classify/exempt by Pikmin identity (or another equivalently complete LethalMin Pikmin discriminator) so that Onion-withdrawn, plucked, idle/unassigned, following and other legitimate Pikmin are all protected from BCMER hostile-outside-enemy suppression/cleanup where technically safe. Preserve BCMER suppression for unrelated hostile outside enemies.
+
