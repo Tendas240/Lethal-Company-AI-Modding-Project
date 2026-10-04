@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one bounded Phase-C residual interior-proof priority-selection checkpoint over the 31 flows remaining without trusted actual-generation proof in Current/245_S1.42AK_PHASE_C_INTERIOR_EXISTING_EVIDENCE_REFRESH.md. Separate the 19 currently viable/equal-100 residual flows from the 12 C2 owner-hard-block flows, preserve each flow's owner/availability and known technical signals, and select exactly one next evidence target or prerequisite based on safety, leverage and existing-evidence availability. Do not authorize a runtime run, implementation, availability override, owner-block removal, Oxyde reopening, dedicated BMDSFIX1 DeepSewersFlow reroll, or any Black Mesa/Pikmin, Herobrine or BMAFR1I1 work in that selection checkpoint.
+Perform one bounded Phase-C Art Gallery (`MuseumInteriorFlow`) generation-proof acquisition preflight using existing repository/source/config/runtime-observability evidence only. Define the minimum proof contract for ordinary Offense selection, completed generation and generated entrance/materialization evidence, and determine whether existing normal-stack logging is sufficient or whether a separately versioned read-only diagnostic would be required. Do not authorize or start a runtime run, implement instrumentation, build/publish a candidate, change availability, alter owner restrictions, reopen Oxyde, reroll BMDSFIX1 DeepSewersFlow, or begin Black Mesa/Pikmin, Herobrine or BMAFR1I1 work.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
