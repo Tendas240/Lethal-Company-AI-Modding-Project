@@ -184,3 +184,13 @@ If Art Gallery / `MuseumInteriorFlow` is selected again after the current residu
 
 The same directive preserves BCMER x LethalMin/Pikmin as a **deferred-but-mandatory follow-up scope**. Before implementing a fix, attribute the exact cleanup/suppression path across BCMER, LethalMin, vanilla outside-enemy/list handling and observed interceptors such as Starlancer AI Fix. If supported, prefer a narrow player-owned-Pikmin exemption from hostile outside-enemy suppression/cleanup over globally disabling BCMER events.
 
+## BCMER x LethalMin scope correction — all Pikmin, not ownership-limited
+
+`Current/251_BCMER_LETHALMIN_ALL_PIKMIN_EXEMPTION_SCOPE_CORRECTION.md` supersedes only the player-ownership limitation in the earlier deferred BCMER/Pikmin wording.
+
+The eventual compatibility target is now explicit: **Pikmins generally** should be exempt from BCMER outside-enemy suppression/cleanup that would otherwise kill, remove, block or invalidate them solely because they participate in an exterior-enemy path/list. The exemption should be based on Pikmin identity/classification, not whether a Pikmin is currently player-owned, following a player, idle, Onion-withdrawn, plucked or otherwise assigned.
+
+Ordinary hostile non-Pikmin outside-enemy suppression should remain intact if a narrow safe exemption can be implemented. The exact destructive owner remains unresolved and still requires bounded source/static attribution before any patch.
+
+This correction does not authorize implementation or a runtime test and does not change the current 30-flow Phase-C priority-reassessment next action.
+
