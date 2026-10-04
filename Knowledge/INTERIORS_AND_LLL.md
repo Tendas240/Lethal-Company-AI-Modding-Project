@@ -366,3 +366,15 @@ The log also strengthens a separate BCMER x LethalMin/Pikmin compatibility signa
 
 Exact next action: Perform one bounded Phase-C residual interior-proof priority reassessment over the updated 30-flow no-trusted-actual-generation-proof set established by Current/249_S1.42AK_PHASE_C_ART_GALLERY_ORDINARY_RUNTIME_NON_TARGET_RECONCILIATION.md. Preserve Art Gallery / MuseumInteriorFlow as unproven after the natural target miss, remove Belleville Appartements / BellevilleApp from the residual set based on its completed ordinary Offense generation/materialization proof, keep the 12 C2 owner-hard-block flows unchanged, and select exactly one next evidence target or prerequisite. Do not authorize or start another runtime run, force-select Art Gallery, implement gameplay/config changes, alter availability/owner restrictions, reopen Oxyde, reroll BMDSFIX1 DeepSewersFlow, or begin the separate BCMER x LethalMin/Pikmin compatibility work in that reassessment.
 
+## Deterministic single-interior runtime qualification strategy
+
+`Current/250_PHASE_C_DETERMINISTIC_INTERIOR_TEST_STRATEGY_AND_DEFERRED_BCMER_PIKMIN_DIRECTIVE.md` records the user-directed test-method rule for the remaining Phase-C interior work.
+
+When a specific interior is selected and separately authorized for runtime qualification, do **not** rely on stochastic dungeon selection. Use a separately versioned diagnostic-only selector or equivalent narrowly scoped mechanism that deterministically selects the exact target flow while preserving the target's normal generation/materialization semantics as far as possible.
+
+This does not authorize bypassing owner/availability restrictions. An `AUTHOR_OR_OWNER_HARD_BLOCK` flow still requires a separate explicit availability/safety authorization before any deterministic selector may make that flow executable for the test.
+
+If Art Gallery / `MuseumInteriorFlow` is selected again after the current residual-priority reassessment, its next runtime acquisition should therefore force `MuseumInteriorFlow` rather than repeat an ordinary random Offense roll.
+
+The same directive preserves BCMER x LethalMin/Pikmin as a **deferred-but-mandatory follow-up scope**. Before implementing a fix, attribute the exact cleanup/suppression path across BCMER, LethalMin, vanilla outside-enemy/list handling and observed interceptors such as Starlancer AI Fix. If supported, prefer a narrow player-owned-Pikmin exemption from hostile outside-enemy suppression/cleanup over globally disabling BCMER events.
+
