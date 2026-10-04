@@ -62,7 +62,7 @@ Runtime/evidence routing is back on `S1.42AK-BMDSFIX1`. BMDSFIX1 remains the sep
 
 `Current/242_S1.42AK_PHASE_C3_OXYDE_ORDINARY_GENERATION_PRIORITY_SELECTION.md` selects the **Oxyde ordinary-generation semantic restriction** as the next Phase-C3 compatibility/safety target. Oxyde's 23 selection-supported metadata pairings remain non-executable through the inspected ordinary path while `spawnEnemiesAndScrap=false` returns exact V81 before `RuntimeDungeon` / `GenerateNewFloor`, and no independent inspected dungeon/entrance-construction path is established. Because this blocks the whole Oxyde row, it takes priority over selecting another arbitrary unseen Black Mesa `MATCH` that would require fresh pair evidence acquisition.
 
-That selected analysis is now completed by record 243 below. The exact next action is its documentation-only review/CI/integration, followed by handover/reassessment. No implementation, build or runtime test is authorized.
+That selected analysis is now completed by record 243 below. Once this documentation-only checkpoint is integrated, the exact next action is the bounded remaining Phase-C3 priority reassessment described below. No implementation, build or runtime test is authorized.
 
 ## Authority rule
 
@@ -79,6 +79,6 @@ Use `Current/03_PROJECT_CHRONOLOGY.md`, `Current/BUILD_LINEAGE.md/.json`, number
 
 `Current/243_S1.42AK_OXYDE_ORDINARY_GENERATION_STATIC_SAFETY_DECISION.md` completes the bounded source/static analysis selected by record 242 and supersedes its analysis-next instruction. No safe config/single-flag conversion is established: normal generation requires live generator and exterior entrance proof, while CodeRebirth retains the crane dungeon-type writer, outside-enemy classification and special ship/time semantics. Oxyde remains an explicit current-architecture exception, not a proven permanently incompatible or broken moon. Its 23 metadata matches and the historical B3 matrix remain unchanged.
 
-Review and integrate the documentation-only Oxyde static-safety checkpoint Current/243_S1.42AK_OXYDE_ORDINARY_GENERATION_STATIC_SAFETY_DECISION.md after exact-head CI. Preserve Oxyde as a current-architecture ordinary-generation exception; no flag/config/patch/build/runtime change is authorized. After integration, perform repository-native handover/reassessment of the remaining Phase-C3 priority without automatically selecting a new runtime run.
+Perform one bounded Phase-C3 remaining compatibility/safety priority reassessment using existing repository evidence, with the Oxyde current-architecture exception preserved under Current/243_S1.42AK_OXYDE_ORDINARY_GENERATION_STATIC_SAFETY_DECISION.md. Select and justify the next exact unresolved pairing/restriction or evidence prerequisite; do not reopen the completed Oxyde flag analysis without new evidence, implement a change, build/publish a candidate, or authorize/start a runtime run in that reassessment. Preserve BMDSFIX1 passive/outstanding/unwaived DeepSewersFlow and the closed-unresolved BMAFR1I1 attribution.
 
 S1.42AK remains accepted; BMDSFIX1 remains active / NOT ACCEPTED with its passive, outstanding and unwaived DeepSewersFlow gate. No further BMAFR1I1 run is authorized. Build and runtime controllers are unchanged.

@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Review and integrate the documentation-only Oxyde static-safety checkpoint Current/243_S1.42AK_OXYDE_ORDINARY_GENERATION_STATIC_SAFETY_DECISION.md after exact-head CI. Preserve Oxyde as a current-architecture ordinary-generation exception; no flag/config/patch/build/runtime change is authorized. After integration, perform repository-native handover/reassessment of the remaining Phase-C3 priority without automatically selecting a new runtime run.
+Perform one bounded Phase-C3 remaining compatibility/safety priority reassessment using existing repository evidence, with the Oxyde current-architecture exception preserved under Current/243_S1.42AK_OXYDE_ORDINARY_GENERATION_STATIC_SAFETY_DECISION.md. Select and justify the next exact unresolved pairing/restriction or evidence prerequisite; do not reopen the completed Oxyde flag analysis without new evidence, implement a change, build/publish a candidate, or authorize/start a runtime run in that reassessment. Preserve BMDSFIX1 passive/outstanding/unwaived DeepSewersFlow and the closed-unresolved BMAFR1I1 attribution.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
