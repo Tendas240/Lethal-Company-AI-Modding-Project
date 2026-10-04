@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Open and validate the staged S1.42AK-DRDIAG1 source/pure-static implementation through a dedicated PR. Require both S1.42AK DRDIAG1 source and pure static gate and Knowledge Architecture to pass on the exact PR head. Do not merge on a partial or stale head. After both exact-head gates pass, perform the separately bounded merge/main exact-head reconciliation. Do not construct, publish, Gale-import, activate or run a DRDIAG1 profile.
+Perform one separately bounded PR #272 merge/main exact-head reconciliation after both required gates pass on the final PR head. Merge only that exact verified head, then require permanent Knowledge Architecture success on the resulting main head. Do not construct, publish, Gale-import, activate or run a DRDIAG1 profile in that reconciliation.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
