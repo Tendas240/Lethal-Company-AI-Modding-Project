@@ -81,5 +81,10 @@
     "build_id": "S1.42AK-BMAFR1I1",
     "sha256": "734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07",
     "note": "Diagnostic-only active runtime target for bounded BMAFR1 performance attribution; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-BMAFR1I1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
+  },
+  "Profiles/LC V1 S1.42AK-AGD1.r2z": {
+    "build_id": "S1.42AK-AGDIAG1",
+    "sha256": "e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081",
+    "note": "Diagnostic-only deterministic Art Gallery selector over exact S1.42AK-BMDSFIX1; exact reviewed bytes are published and the canonical readable snapshot is ProfileSources/S1.42AK-AGDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Indexing does not Gale-import or runtime-arm the diagnostic."
   }
 }
