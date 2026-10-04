@@ -673,3 +673,15 @@ No publication has occurred yet. Canonical profile indexing, Gale import, contro
 
 Exact next action: execute one separately bounded exact-byte publication checkpoint for artifact `11302468045` only, with fail-closed pre-materialization hash verification and no rebuild.
 
+## AGDIAG1 publication and canonical profile index — complete / runtime activation outstanding
+
+`Current/259_S1.42AK_AGDIAG1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md` records byte-for-byte publication from authoritative frozen artifact `11302468045`; `Current/260_S1.42AK_AGDIAG1_PUBLICATION_INTEGRATION_RECONCILIATION.md` closes main integration. Publication PR #262 final head `a9bab6e1e8e92e1fe2ee354d7a0058784fc6287d` passed the AGDIAG1 source/static, Knowledge Architecture and frozen review gates, then merged as `37d501e72942d86f5993c080a362db503d601f44`. Permanent main Knowledge Architecture `37204253698` / #1087 passed. The expected publication-triggered profile-index run `37204253672` / #37 failed closed before mutation because no canonical mapping yet existed.
+
+The mapping/index gate is now fully closed by `Current/261_S1.42AK_AGDIAG1_PROFILE_INDEX_RECONCILIATION.md`. PR #264 exact head `ed9773c9021bf762e871e3a6f24fcb1bd2feab4e` added only the mapping `Profiles/LC V1 S1.42AK-AGD1.r2z` -> `S1.42AK-AGDIAG1` at SHA-256 `e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081` and passed Knowledge Architecture `37205825212` / #1090. It merged as `e45246c99317fff7c120af7ab73f94751a5749da`; direct main Knowledge Architecture `37205871501` / #1091 passed.
+
+Automatic profile-index run `37205871532` / #38 then succeeded. Canonical `ProfileSources/S1.42AK-AGDIAG1/PROFILE_INDEX_RESULT.json` confirms build ID `S1.42AK-AGDIAG1`, profile identity `LC V1 S1.42AK-AGD1`, exact profile SHA-256 `e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081`, 338 archive members, 338 snapshot entries, 331 text entries and `EXPECTED_HASHES` resolution. github-actions[bot] commit `d1eace15334804e680ab87a5783378881e5c00fd` adds exactly that index result. Workflow-dispatched exact bot-head Knowledge Architecture `37205893328` / #1092 passed.
+
+The exact AGDIAG1 DLL remains SHA-256 `23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131`. Artifact `11302835640` remains superseded/non-authoritative. AGDIAG1 is now published/indexed but remains **runtime inactive / DIAGNOSTIC ONLY / NEVER ACCEPT**. Gale and both live controllers remain unchanged. Art Gallery / `MuseumInteriorFlow` still lacks the later diagnostic-generated runtime proof.
+
+The next bounded gate is one separately bounded **S1.42AK-AGDIAG1 runtime-activation checkpoint** for these already-published/indexed exact bytes. Until that activation is integrated and permanent exact-head CI is green, Gale import and gameplay remain unauthorized. S1.42AK remains accepted; BMDSFIX1 remains active/not accepted with its passive, outstanding and unwaived DeepSewersFlow gate; deferred BCMER x all-Pikmin, Herobrine, BMAFR1I1, Oxyde and other separated scopes remain unchanged.
+
