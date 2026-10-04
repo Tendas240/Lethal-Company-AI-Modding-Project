@@ -117,7 +117,7 @@ jobs:
           retention-days: 90
 
       - name: Preserve failure evidence without publishing a profile
-        if: failure() && steps.frozen.outputs.exists != 'true'
+        if: ${{ failure() && steps.frozen.outputs.exists != 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: S1.42AK-AGDIAG1-failure-${{ github.event.pull_request.head.sha }}
