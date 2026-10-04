@@ -59,6 +59,10 @@ When a future build/profile is ready for user runtime testing, ChatGPT must prov
 
 The uploader must bootstrap/resolve `gh`, authenticate when required, verify the exact local `LogOutput.log`, and create/replace `RuntimeInbox/Current/LogOutput.log` on `main` without requiring a local repository clone.
 
+For the create-or-replace probe, **HTTP 404 for a missing inbox file is the normal first-create case**. The uploader must suppress/handle that probe without allowing PowerShell native-command stderr or `$ErrorActionPreference` behavior to abort before the subsequent PUT. A real upload failure must still fail closed.
+
+When `runtime-ingest.yml` creates a bot-generated evidence commit with `GITHUB_TOKEN`, normal push-triggered workflows are suppressed. The ingest workflow must therefore verify that remote `main` still equals the exact generated commit and explicitly dispatch `Knowledge Architecture` for that exact head, mirroring the profile-index bot-follow-up contract. Handover may treat that exact-head `workflow_dispatch` run as the permanent gate only when its `head_sha` exactly equals final `main`.
+
 If the log is unusually large, provide the corresponding self-contained large-log PowerShell path instead.
 
 A separate but equally important case is a **completed test whose log has not yet been ingested**. In that case, do not infer from `runtime_test_outstanding = false` that no uploader is needed. Provide the uploader for the build named by `RuntimeInbox/ACTIVE_BUILD.txt` and do not require the user to repeat the run solely for evidence submission.
