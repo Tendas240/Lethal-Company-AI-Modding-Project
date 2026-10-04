@@ -288,3 +288,19 @@ The next prerequisite therefore returns to C1 Priority 2: refresh the exact 34 f
 No new runtime acquisition, implementation, candidate build/publication, owner-restriction removal or controller change is authorized. Oxyde, Shatteredrooms/CullFactory, Black Mesa/Pikmin, Herobrine, BMAFR1I1 and the passive/outstanding/unwaived BMDSFIX1 DeepSewersFlow gate remain separate and unchanged.
 
 Exact next action: Perform one bounded Phase-C interior-side existing-evidence refresh over the exact 34 flows listed in Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md as having no trusted actual-generation proof at C1. Reconcile only already-ingested repository evidence acquired after or omitted by C1; classify each flow's current generation/traversal proof status, preserve route/NavMesh signals as separate obligations, and produce a current residual proof-gap set before selecting any new runtime target. Do not acquire new runtime evidence, implement changes, build/publish a candidate, remove owner restrictions, reopen Oxyde, or turn BMDSFIX1 DeepSewersFlow into a dedicated reroll. Preserve separate Shatteredrooms/CullFactory, Black Mesa/Pikmin, Herobrine and BMAFR1I1 scopes.
+
+## Phase-C interior-side existing-evidence refresh — residual 31
+
+`Current/245_S1.42AK_PHASE_C_INTERIOR_EXISTING_EVIDENCE_REFRESH.md` completes the evidence-only refresh selected by record 244.
+
+Of the exact 34 flows that C1 listed without trusted actual-generation proof, three now have positive later runtime evidence:
+
+- `DeepSewersFlow`: DIAG1PATH1 completed generation after the exact BMDSFIX1 4.875->1 clamp and continued into normal post-generation player activity. This is bounded actual-generation evidence only; the regular selector-free BMDSFIX1 Black Mesa x Deep Sewers gameplay gate remains passive, outstanding and unwaived.
+- `SlaughterhouseFlow`: two natural regular Black Mesa generations completed and materialized all three alternate inside counterparts; no direct player-traversal proof is retained.
+- `StoreFlow` / Decrepit store: completed generation, four logical entrance relationships, three distinct alternate counterparts and direct bidirectional traversal of the main entrance plus two of three fire exits; RuntimeNavMeshBuilder noise remains a separate attribution signal.
+
+The current residual set is therefore **31 flows without trusted actual-generation proof**: 19 currently viable/equal-100 flows and 12 C2 owner-hard-block flows. Black Mesa the interior remains in that residual set; later evidence about the Black Mesa moon must not be conflated with generation of the `Black Mesa` interior flow itself.
+
+No Phase-B3 classification, owner restriction, Oxyde exception, route/NavMesh obligation, accepted/candidate lifecycle or build/runtime controller changes.
+
+Exact next action: Perform one bounded Phase-C residual interior-proof priority-selection checkpoint over the 31 flows remaining without trusted actual-generation proof in Current/245_S1.42AK_PHASE_C_INTERIOR_EXISTING_EVIDENCE_REFRESH.md. Separate the 19 currently viable/equal-100 residual flows from the 12 C2 owner-hard-block flows, preserve each flow's owner/availability and known technical signals, and select exactly one next evidence target or prerequisite based on safety, leverage and existing-evidence availability. Do not authorize a runtime run, implementation, availability override, owner-block removal, Oxyde reopening, dedicated BMDSFIX1 DeepSewersFlow reroll, or any Black Mesa/Pikmin, Herobrine or BMAFR1I1 work in that selection checkpoint.
