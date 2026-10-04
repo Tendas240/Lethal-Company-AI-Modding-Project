@@ -54,11 +54,13 @@ The repaired **S1.42AK-BMAFR1** retains its completed Black Mesa x Abandoned Fou
 
 The separately versioned **S1.42AK-BMAFR1I1** attribution diagnostic has now completed its authorized runtime attempt under `Current/239_S1.42AK_BMAFR1I1_RUNTIME_ATTRIBUTION_RECONCILIATION.md`. Exact evidence `RuntimeEvidence/S1.42AK-BMAFR1I1/20261003T232317Z/` / raw log SHA-256 `0f28ad24f0279cd18a039bc4e1de695e9590d1c70e98d2a6a2aa318b30674ce3` proves successful `[BMAFR1I1] ARMED` operation but zero recurrence of the exact array-index signature. Required Janitor direct-write/equal-scope evidence and SpringMan equal-scope evidence did not occur. This is **inconclusive negative reproduction**, not emitter/root-cause proof; Janitor/Princess and SpringMan remain unresolved at the target-instance boundary. BMAFR1I1 remains DIAGNOSTIC ONLY / NEVER ACCEPT and is no longer runtime-active.
 
+`Current/241_S1.42AK_BMAFR1I1_POST_RUNTIME_ATTRIBUTION_DECISION.md` now closes the immediate repeat-run question: attribution remains unresolved and **no further BMAFR1I1 runtime attempt is authorized**. Repeating the same correctly armed diagnostic would still depend on stochastic Janitor/SpringMan target acquisition and flood recurrence; deliberately forcing those conditions would materially change the experiment and requires a new separately versioned scope. Phase C3 therefore resumes without another BMAFR1I1 run.
+
 The same session adds a separate Black Mesa/Pikmin routing finding: BCMER `SafeOutside` explicitly suppressed outside spawning, while pluck/Onion Pikmin creation still entered LethalMin paths and then encountered immediate removal and repeated staging/NavMesh failures. It also proves Herobrine active/spawned; the user requests Herobrine disabled, with whole-mod removal to be considered only after exact dependency/config analysis.
 
 Runtime/evidence routing is back on `S1.42AK-BMDSFIX1`. BMDSFIX1 remains the separate active gameplay candidate / **NOT ACCEPTED**; its exact Black Mesa x `DeepSewersFlow` gate remains passive, outstanding and unwaived. `BuildSpecs/current.json` remains disabled.
 
-Exact next action: perform one bounded BMAFR1I1 post-runtime attribution decision. Do not start another BMAFR1I1 run before deciding whether the missing Janitor/SpringMan target coverage justifies a specifically targeted follow-up or whether attribution remains unresolved and Phase C3 continues without another diagnostic run.
+Exact next action: perform one bounded Phase C3 remaining compatibility/safety priority-selection checkpoint. Choose the next exact External-moon pairing or restriction from the current Black Mesa applicability partition and Oxyde ordinary-generation exception, using existing repository-native evidence first. Do not authorize a new build or runtime test in that selection checkpoint.
 
 ## Authority rule
 
