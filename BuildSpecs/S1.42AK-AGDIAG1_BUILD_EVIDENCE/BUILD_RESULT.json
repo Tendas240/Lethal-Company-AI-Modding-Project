@@ -15,5 +15,33 @@
   "profile_indexing": false,
   "published": false,
   "runtime_armed": false,
-  "runtime_proof": false
+  "runtime_proof": false,
+  "profile_name": "LC V1 S1.42AK-AGD1",
+  "base_build_id": "S1.42AK-BMDSFIX1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "output_profile": "Profiles/LC V1 S1.42AK-AGD1.r2z",
+  "output_sha256": "e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081",
+  "zip_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKAGDiag1/S142AKAGDiag1.dll"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "snapshot_dir": "ProfileSources/S1.42AK-AGDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "runtime_target_metadata": {
+    "activation_record": "Current/262_S1.42AK_AGDIAG1_RUNTIME_ACTIVATION.md",
+    "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+    "authority_parent_build_id": "S1.42AK-BMDSFIX1",
+    "authority_parent_runtime_status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "authority_parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0"
+  }
 }

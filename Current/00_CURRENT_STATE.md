@@ -36,11 +36,11 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-AGDIAG1`
 
 ## Exact next action
 
-Execute one separately bounded S1.42AK-AGDIAG1 runtime-activation checkpoint for the already-published and canonically indexed exact bytes. Re-verify Profiles/LC V1 S1.42AK-AGD1.r2z at SHA-256 e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081 and ProfileSources/S1.42AK-AGDIAG1/PROFILE_INDEX_RESULT.json, follow the established diagnostic activation precedent, and update runtime/evidence routing only as required for AGDIAG1. Preserve DIAGNOSTIC ONLY / NEVER ACCEPT. Do not rebuild or alter profile/DLL/config/package bytes, do not accept AGDIAG1 or S1.42AK-BMDSFIX1, do not waive the passive BMDSFIX1 Black Mesa x DeepSewersFlow gate, and do not Gale-import or start gameplay until activation is integrated and permanent exact-head CI is green.
+After this AGDIAG1 runtime activation is integrated to main and permanent exact-main-head Knowledge Architecture is green, replace/import the exact repository-authorized S1.42AK-AGDIAG1 Gale profile and execute exactly one bounded Offense diagnostic generation attempt. Require the [AGDIAG1] ARMED marker and the deterministic [AGDIAG1] SELECTED Offense Art Gallery / MuseumInteriorFlow marker, then verify the Current/247 generation/materialization contract from the resulting log. Any REFUSED marker, missing ARMED/SELECTED marker, persistent generation failure, or unexpected [BMDSFIX1] APPLIED on Offense is a bounded diagnostic finding; do not reroll automatically. Upload the resulting exact LogOutput.log once with the build-specific uploader. Do not accept AGDIAG1 or S1.42AK-BMDSFIX1 and do not waive the passive BMDSFIX1 Black Mesa x DeepSewersFlow gate.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 

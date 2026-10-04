@@ -415,6 +415,25 @@
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false,
       "note": "Exact published/indexed BMAFDIAG1PATH1 bytes are completed failed Black Mesa x Abandoned Foundry diagnostic provenance. Runtime evidence proved config-category identity mismatch; PATH1 is DO NOT RERUN / DIAGNOSTIC ONLY / NEVER ACCEPT and is not runtime-active."
+    },
+    {
+      "build_id": "S1.42AK-AGDIAG1",
+      "role": "ACTIVE_RUNTIME_DIAGNOSTIC_PENDING",
+      "profile": "Profiles/LC V1 S1.42AK-AGD1.r2z",
+      "profile_sha256": "e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081",
+      "profile_sources": "ProfileSources/S1.42AK-AGDIAG1/",
+      "file_index": "ProfileSources/S1.42AK-AGDIAG1/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AK-AGDIAG1/export.r2x",
+      "build_plan": "BuildSpecs/S1.42AK-AGDIAG1_PLAN.md",
+      "build_result": "BuildSpecs/S1.42AK-AGDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json",
+      "static_evidence": "BuildSpecs/S1.42AK-AGDIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
+      "publication_evidence": "BuildSpecs/S1.42AK-AGDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+      "activation_record": "Current/262_S1.42AK_AGDIAG1_RUNTIME_ACTIVATION.md",
+      "diagnostic_dll_sha256": "23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131",
+      "inherited_bmdsfix1_dll_sha256": "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false,
+      "note": "Exact published/indexed AGDIAG1 bytes are runtime-armed solely for one bounded deterministic Offense Art Gallery / MuseumInteriorFlow generation-materialization proof. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED and its passive Deep Sewers gate remains unwaived."
     }
   ],
   "important_project_dlls": [
@@ -477,7 +496,8 @@
     "S1.42AK-BMGHDIAG3 exact profile SHA-256 7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace has completed diagnostic runtime evidence at RuntimeEvidence/S1.42AK-BMGHDIAG3/20260928T162539Z/ with raw log SHA-256 e30858fcebce0fc51f092170b50bd439290cf4752bf0917ae28d66e29a37a9f8. Black Mesa x Greenhouse passed the bounded runtime-compatibility gate; BMGHDIAG3 remains NEVER ACCEPT and is no longer runtime-active.",
     "S1.42AK-BMAFDIAG1 exact published/indexed profile SHA-256 b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2 is preloader-blocked at observed 260/262-character critical Gale paths and remains DO_NOT_RERUN / NEVER_ACCEPT historical diagnostic provenance.",
     "S1.42AK-BMAFDIAG1PATH1 exact published/indexed profile SHA-256 423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91 is completed failed diagnostic provenance after the config-category identity refusal; it remains DO_NOT_RERUN / NEVER_ACCEPT and is no longer runtime-active.",
-    "S1.42AK-BMAFR1 exact published/indexed profile SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 is runtime-armed only as a direct diagnostic over accepted S1.42AK with repaired raw nine-U+200B Foundry binding; it remains NEVER_ACCEPT and Black Mesa x Abandoned Foundry remains NOT_YET_PROVEN pending runtime evidence."
+    "S1.42AK-BMAFR1 exact published/indexed profile SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 is runtime-armed only as a direct diagnostic over accepted S1.42AK with repaired raw nine-U+200B Foundry binding; it remains NEVER_ACCEPT and Black Mesa x Abandoned Foundry remains NOT_YET_PROVEN pending runtime evidence.",
+    "S1.42AK-AGDIAG1 exact published/indexed profile SHA-256 e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081 is runtime-armed solely as the active deterministic Offense Art Gallery / MuseumInteriorFlow diagnostic; AGDIAG1 DLL SHA-256 23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131 remains exact. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED."
   ],
   "last_validated": "2026-10-04"
 }
