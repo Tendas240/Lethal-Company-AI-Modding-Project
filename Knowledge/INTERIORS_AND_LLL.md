@@ -463,3 +463,16 @@ Exact tested head `84ea816a132b39861134b2eca1fb71847324e6f2` passed the dedicate
 AGDIAG1 remains source-only, `DIAGNOSTIC ONLY / NEVER ACCEPT`, not built/published/armed. Art Gallery remains without trusted actual-generation proof. Build/runtime controllers remain unchanged.
 
 Exact next action is a bounded inactive review-build authorization/recipe decision pinned to the exact S1.42AK-BMDSFIX1 parent and frozen short Gale identity `LC V1 S1.42AK-AGD1`; profile construction is not yet authorized.
+
+
+## Phase-C Art Gallery AGDIAG1 inactive review-build authorized — recipe frozen
+
+`Current/256_S1.42AK_AGDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md` authorizes exactly one later inactive review-build checkpoint after the completed AGDIAG1 source/pure-static PASS.
+
+The review parent is pinned to exact `S1.42AK-BMDSFIX1` profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. The short review identity is frozen as `LC V1 S1.42AK-AGD1`; if a later review build is executed, its ephemeral review filename is `LC V1 S1.42AK-AGD1.r2z` under the Profiles area.
+
+The authorized archive contract is strictly one-variable: parent members `337 -> 338`, adding only `BepInEx/plugins/S142AKAGDiag1/S142AKAGDiag1.dll`; the only changed existing member may be `export.r2x`, limited to profile-name identity metadata. Package/config/removal counts remain zero, and the inherited BMDSFIX1 DLL plus accepted S1.42AB normalizer must remain byte-identical.
+
+`BuildSpecs/S1.42AK-AGDIAG1_PLAN.md` and `BuildSpecs/S1.42AK-AGDIAG1.json` freeze the future review recipe. They are not live controllers. No AGDIAG1 review artifact has yet been constructed or published; Gale/runtime remain unchanged.
+
+Exact next action is the separately bounded inactive review-build checkpoint: add the dedicated build validator/workflow, compile/build the ephemeral review artifact, validate and freeze exact hashes, and independently rehash the Actions artifact. Publication, indexing, Gale import, activation and runtime remain unauthorized.
