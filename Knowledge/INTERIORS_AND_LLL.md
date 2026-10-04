@@ -304,3 +304,18 @@ The current residual set is therefore **31 flows without trusted actual-generati
 No Phase-B3 classification, owner restriction, Oxyde exception, route/NavMesh obligation, accepted/candidate lifecycle or build/runtime controller changes.
 
 Exact next action: Perform one bounded Phase-C residual interior-proof priority-selection checkpoint over the 31 flows remaining without trusted actual-generation proof in Current/245_S1.42AK_PHASE_C_INTERIOR_EXISTING_EVIDENCE_REFRESH.md. Separate the 19 currently viable/equal-100 residual flows from the 12 C2 owner-hard-block flows, preserve each flow's owner/availability and known technical signals, and select exactly one next evidence target or prerequisite based on safety, leverage and existing-evidence availability. Do not authorize a runtime run, implementation, availability override, owner-block removal, Oxyde reopening, dedicated BMDSFIX1 DeepSewersFlow reroll, or any Black Mesa/Pikmin, Herobrine or BMAFR1I1 work in that selection checkpoint.
+
+
+## Phase-C residual interior-proof priority selection — Art Gallery next
+
+`Current/246_S1.42AK_PHASE_C_RESIDUAL_INTERIOR_PROOF_PRIORITY_SELECTION.md` completes the bounded selection checkpoint over record 245's 31 residual no-generation-proof flows.
+
+The 19 currently viable/equal-100 residual flows remain separate from the 12 C2 owner-hard-block flows. Their existing owner/availability mechanisms and known special signals are preserved without changing Phase-B3 classifications or owner restrictions.
+
+**Art Gallery / `MuseumInteriorFlow` on Offense** is selected as the next generation-proof evidence target. It is already `VIABLE_EQUAL_100` through the direct LLL `Vanilla:100,Custom:100` override; exact DawnLib flow resolution and accepted-runtime viable/final effective 100 presence are already proven, and current evidence preserves no Art-Gallery-specific technical warning. That leaves actual completed generation as a narrowly isolated missing proof dimension.
+
+The 12 owner-hard-block flows are not selected because testing them on Offense would first require a separate availability/safety decision and would couple owner-block removal with generation qualification. Black Mesa interior and Shatteredrooms also carry distinct owner/scope boundaries that make them less clean as the immediate proof target.
+
+No runtime run, implementation, availability change, owner-block removal, Oxyde reopening, BMDSFIX1 DeepSewers reroll, Black Mesa/Pikmin work, Herobrine work or BMAFR1I1 work is authorized.
+
+Exact next action: Perform one bounded Phase-C Art Gallery (`MuseumInteriorFlow`) generation-proof acquisition preflight using existing repository/source/config/runtime-observability evidence only. Define the minimum proof contract for ordinary Offense selection, completed generation and generated entrance/materialization evidence, and determine whether existing normal-stack logging is sufficient or whether a separately versioned read-only diagnostic would be required. Do not authorize or start a runtime run, implement instrumentation, build/publish a candidate, change availability, alter owner restrictions, reopen Oxyde, reroll BMDSFIX1 DeepSewersFlow, or begin Black Mesa/Pikmin, Herobrine or BMAFR1I1 work.
