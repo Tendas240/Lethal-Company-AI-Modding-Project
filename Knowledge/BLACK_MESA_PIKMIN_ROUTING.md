@@ -52,3 +52,14 @@ When this scope is explicitly selected:
 6. preserve raw/log query evidence needed to prove causality.
 
 Do not label the existing route signatures monitor-only if they become reproducibly user-facing. Conversely, do not patch them solely because they appear in a log without a demonstrated gameplay failure.
+
+## Required future BCMER compatibility scope
+
+`Current/251_BCMER_LETHALMIN_ALL_PIKMIN_EXEMPTION_SCOPE_CORRECTION.md` establishes the current desired compatibility boundary.
+
+If source/static attribution proves a safe exemption point, BCMER hostile outside-enemy suppression/cleanup should exempt **Pikmins generally**, independent of player ownership or follow/assignment state. This includes Onion-withdrawn, plucked, idle/unassigned, player-following and other legitimate LethalMin Pikmin states.
+
+Do not narrow the future fix to "player-owned Pikmin". Prefer an identity/classification-based Pikmin exemption while retaining BCMER suppression for unrelated hostile outside enemies.
+
+This remains deferred and requires exact owner/callsite attribution before implementation.
+
