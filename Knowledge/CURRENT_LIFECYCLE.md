@@ -555,3 +555,16 @@ The 12 owner-hard-block flows are not selected because testing them on Offense w
 No runtime run, implementation, availability change, owner-block removal, Oxyde reopening, BMDSFIX1 DeepSewers reroll, Black Mesa/Pikmin work, Herobrine work or BMAFR1I1 work is authorized.
 
 Exact next action: Perform one bounded Phase-C Art Gallery (`MuseumInteriorFlow`) generation-proof acquisition preflight using existing repository/source/config/runtime-observability evidence only. Define the minimum proof contract for ordinary Offense selection, completed generation and generated entrance/materialization evidence, and determine whether existing normal-stack logging is sufficient or whether a separately versioned read-only diagnostic would be required. Do not authorize or start a runtime run, implement instrumentation, build/publish a candidate, change availability, alter owner restrictions, reopen Oxyde, reroll BMDSFIX1 DeepSewersFlow, or begin Black Mesa/Pikmin, Herobrine or BMAFR1I1 work.
+
+
+## Phase-C Art Gallery generation-proof acquisition preflight — normal observability sufficient
+
+`Current/247_S1.42AK_PHASE_C_ART_GALLERY_GENERATION_PROOF_ACQUISITION_PREFLIGHT.md` completes the bounded evidence-acquisition preflight for the selected Art Gallery / `MuseumInteriorFlow` target.
+
+Existing normal-stack observability is sufficient; no read-only diagnostic is currently justified. The minimum proof contract is ordinary Offense selection attributable to Art Gallery, exact post-generation `MuseumInteriorFlow` identity through CullFactory tile preparation or equivalent exact-flow materialization, completed floor generation including `Players finished generating the new floor`, and the ordinary PathfindingLib four-logical-connection entrance relationship set. C1 already uses these normal observability dimensions for generated-only qualification.
+
+Player facility entry/exit is optional for a stronger traversal tier and is not required to close the current basic no-actual-generation-proof gap. Route/NavMesh warnings remain separate proof obligations unless they concretely prevent generation/materialization.
+
+This preflight does not authorize a runtime attempt. It also does not authorize force-selection, diagnostic instrumentation, availability changes, owner-block removal, Oxyde reopening, a dedicated BMDSFIX1 Deep Sewers reroll, or any Black Mesa/Pikmin, Herobrine or BMAFR1I1 work.
+
+Exact next action: Perform one bounded Phase-C Art Gallery (`MuseumInteriorFlow`) ordinary-runtime acquisition authorization decision. Use the proof contract from Current/247_S1.42AK_PHASE_C_ART_GALLERY_GENERATION_PROOF_ACQUISITION_PREFLIGHT.md to decide whether one ordinary Offense acquisition attempt is justified with existing gameplay bytes and existing normal-stack observability only. Do not force-select Art Gallery, implement a diagnostic, change availability, alter owner restrictions, reopen Oxyde, dedicate a BMDSFIX1 DeepSewers reroll, or begin Black Mesa/Pikmin, Herobrine or BMAFR1I1 work. If and only if a runtime attempt is authorized, the same response must include the repository-driven Gale replacement/import PowerShell one-liner when required and the exact build-specific one-line PowerShell log uploader.
