@@ -85,5 +85,43 @@
     37199840728
   ],
   "parser_only_failed_runs_had_jobs": false,
-  "qualification": "Compiler/build/archive validity and frozen-artifact byte identity only. No publication, ProfileSources index, Gale import, runtime activation, gameplay proof or acceptance."
+  "qualification": "Compiler/build/archive validity and frozen-artifact byte identity only. No publication, ProfileSources index, Gale import, runtime activation, gameplay proof or acceptance.",
+  "authoritative_artifact_id": 11302468045,
+  "authoritative_publication_source_only": {
+    "artifact_id": 11302468045,
+    "actions_zip_sha256": "4602fa4d7567b10a497830a9b8213ad10f14fc7dee459e02e08fb1a7cdecfdbd",
+    "profile_sha256": "e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081",
+    "dll_sha256": "23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131",
+    "rule": "Any later lifecycle gate must reference these exact already-frozen bytes by artifact ID and hashes; never select a newer artifact by name prefix."
+  },
+  "superseded_intermediate_race_artifact": {
+    "status": "SUPERSEDED_NON_AUTHORITATIVE_DO_NOT_PUBLISH_DO_NOT_IMPORT_DO_NOT_ARM",
+    "cause": "Evidence files were committed sequentially before the checkpoint JSON existed; GitHub queued an intermediate pull_request workflow run that had already passed the frozen-check before the later checkpoint commit arrived.",
+    "run_id": 37200090879,
+    "run_number": 5,
+    "head": "42baab6788df30a9acee1de3b89b57377701a942",
+    "artifact_id": 11302835640,
+    "artifact_name": "S1.42AK-AGDIAG1-review-42baab6788df30a9acee1de3b89b57377701a942",
+    "artifact_size_bytes": 536831,
+    "actions_zip_sha256": "a9121b7cc5aa406d9db9130db52335511ec1930d79c57fffa25999f1a1ae96e6",
+    "profile_sha256": "1de2b3121ac588a101a2bf5dd5070cc6d6f6ebf406f58223ce7317b9f9f510b9",
+    "dll_sha256": "680eefe4009a30727dea1a5ac9a74e1c56d7ab7243ad906fa9660a9f79cca025",
+    "independently_rehashed": false,
+    "publication_authority": false,
+    "note": "The connected GitHub capability exposes artifact download but not artifact deletion. This late race artifact therefore remains only as superseded Actions history until expiry and must never replace artifact 11302468045."
+  },
+  "freeze_guard_followups": {
+    "run_6": {
+      "run_id": 37200095263,
+      "head": "36373e093f5ae15553ba364c3a30956daf2526d5",
+      "conclusion": "success",
+      "compile_archive_upload_steps": "SKIPPED"
+    },
+    "run_7": {
+      "run_id": 37200103725,
+      "head": "d5074d2dc06ed2a6eecbad70f5a63e94f63c4307",
+      "conclusion": "success",
+      "compile_archive_upload_steps": "SKIPPED"
+    }
+  }
 }
