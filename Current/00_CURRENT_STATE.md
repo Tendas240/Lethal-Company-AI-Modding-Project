@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Execute one separately bounded S1.42AK-DRDIAG1 exact-byte publication checkpoint using only frozen Actions artifact 11329346796. Immediately before materialization, re-download that exact artifact ID and verify ZIP SHA-256 6a6ec13a36f9c3f655f025b73ec477e02394caac4831cee3fe395fe2ec24bf63, profile SHA-256 15587975580ea9de38f995ff2e2a64586977c4c1a32f2c87534011375394c3d4, and DLL SHA-256 512b3085619852ba723163522860cf64f4ace53a6ae09356ae0ad943a59adf3b. Then materialize only those exact reviewed bytes and deterministic readable publication evidence. Do not rebuild or reconstruct, canonically profile-index, modify Profiles/EXPECTED_HASHES.json, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, or run gameplay in that checkpoint.
+Perform one separately bounded S1.42AK-DRDIAG1 publication PR integration/reconciliation. Verify PR #278's final changed-file set and exact final-head CI after the temporary one-shot publication workflow is absent, then merge only if justified. After merge, verify permanent exact-main-head Knowledge Architecture and record actual publication integration facts. Do not canonically profile-index DRDIAG1, modify Profiles/EXPECTED_HASHES.json, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, run gameplay, accept DRDIAG1, alter or waive the BMDSFIX1 DeepSewersFlow gate, or begin any separated scope during that integration segment.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
