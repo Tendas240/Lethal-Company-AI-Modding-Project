@@ -555,3 +555,15 @@ The next source/static checkpoint is authorized to add the isolated source tree,
 Any later review profile remains pinned to exact `S1.42AK-BMDSFIX1` SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. The current gameplay candidate remains NOT ACCEPTED and its selector-free Black Mesa x Deep Sewers gate remains passive, outstanding and unwaived.
 
 Exact next action: Implement one bounded S1.42AK-DRDIAG1 source/pure-static checkpoint from Current/266_S1.42AK_PHASE_C_DRAINS_DRDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, Patch Safety Review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate that source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct, publish, Gale-import, activate or run a profile; do not change availability or owner restrictions; do not alter BMDSFIX1 or the accepted normalizer; and do not begin Oxyde, Shatteredrooms/CullFactory, BCMER x all-Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
+
+## Phase-C Drains DRDIAG1 inactive review-build authorized — recipe frozen
+
+`Current/268_S1.42AK_DRDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md` authorizes exactly one later inactive review-build checkpoint after the completed DRDIAG1 source/pure-static PASS.
+
+The review parent is pinned to exact `S1.42AK-BMDSFIX1` profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. The short review identity is frozen as `LC V1 S1.42AK-DRD1`, with ephemeral output `Profiles/LC V1 S1.42AK-DRD1.r2z`.
+
+The authorized archive contract is strictly one-variable: parent members `337 -> 338`, adding only `BepInEx/plugins/S142AKDRDiag1/S142AKDRDiag1.dll`; the only changed existing member may be `export.r2x`, limited to profile-name identity metadata. Package/config/removal counts remain zero, and the inherited BMDSFIX1 DLL plus accepted S1.42AB normalizer must remain byte-identical.
+
+`BuildSpecs/S1.42AK-DRDIAG1_PLAN.md` and `BuildSpecs/S1.42AK-DRDIAG1.json` freeze the future review recipe. They are not live controllers. No DRDIAG1 review artifact has yet been constructed or published; Gale/runtime remain unchanged.
+
+Exact next action is the separately bounded inactive review-build checkpoint: add the dedicated build validator/workflow, compile/build the ephemeral review artifact, validate and freeze exact hashes, and independently rehash the Actions artifact. Publication, indexing, Gale import, activation and runtime remain unauthorized.
