@@ -6,8 +6,6 @@ on:
       - 'AnalysisTools/validate_s142ak_drdiag1_source.py'
       - 'SourceEvidence/UniversalInteriorViability/DRDIAG1SourceStatic/**'
       - 'Current/267_S1.42AK_PHASE_C_DRAINS_DRDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
-      - 'Current/CURRENT_STATE.json'
-      - 'Current/00_CURRENT_STATE.md'
       - 'Knowledge/INTERIORS_AND_LLL.md'
       - '.github/workflows/s142ak-drdiag1-source-static.yml'
 permissions:
