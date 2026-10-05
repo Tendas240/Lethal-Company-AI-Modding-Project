@@ -560,7 +560,7 @@ Exact next action: Implement one bounded S1.42AK-DRDIAG1 source/pure-static chec
 
 `Current/268_S1.42AK_DRDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md` authorizes exactly one later inactive review-build checkpoint after the completed DRDIAG1 source/pure-static PASS.
 
-The review parent is pinned to exact `S1.42AK-BMDSFIX1` profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. The short review identity is frozen as `LC V1 S1.42AK-DRD1`, with ephemeral output `Profiles/LC V1 S1.42AK-DRD1.r2z`.
+The review parent is pinned to exact `S1.42AK-BMDSFIX1` profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. The short review identity is frozen as `LC V1 S1.42AK-DRD1`; the future ephemeral `.r2z` output is not yet present or published.
 
 The authorized archive contract is strictly one-variable: parent members `337 -> 338`, adding only `BepInEx/plugins/S142AKDRDiag1/S142AKDRDiag1.dll`; the only changed existing member may be `export.r2x`, limited to profile-name identity metadata. Package/config/removal counts remain zero, and the inherited BMDSFIX1 DLL plus accepted S1.42AB normalizer must remain byte-identical.
 
