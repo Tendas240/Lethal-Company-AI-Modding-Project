@@ -32,4 +32,6 @@ No review profile, publication, Gale import, activation or runtime is authorized
 
 ## Next lifecycle gate
 
-After both gates re-pass on the final evidence-recording PR head, perform one separately bounded PR #272 merge/main exact-head reconciliation. Profile construction remains unauthorized.
+The exact next lifecycle decision is a separately bounded **S1.42AK-DRDIAG1 inactive review-build authorization/recipe decision**. It must pin any future review recipe to exact parent `S1.42AK-BMDSFIX1` profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`, preserve the frozen short Gale identity `LC V1 S1.42AK-DRD1`, define the exact one-DLL archive delta and build/static validator contract, and decide whether later inactive review-artifact construction may be authorized.
+
+This source/static PASS does not authorize profile construction, publication, Gale import, activation or runtime.
