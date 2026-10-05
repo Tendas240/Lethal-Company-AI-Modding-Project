@@ -576,3 +576,14 @@ The only authoritative frozen review artifact is Actions artifact `11329346796`.
 The frozen evidence/infrastructure merged through PR #275 as `089c30ac94e4832c544c19c1fcf97dd2dfffe4ef`. Permanent Knowledge Architecture `37274448876` / #1136 and the disabled canonical-profile workflow `37274448874` / #147 passed. No diagnostic profile or DLL was published or indexed; Gale and runtime controllers remain unchanged.
 
 Exact next action is a separately bounded exact-byte publication-authorization decision over artifact `11329346796`. Do not rebuild or reconstruct the frozen bytes. Publication, profile indexing, Gale import, activation and runtime remain unauthorized until separately approved.
+## Phase-C Drains DRDIAG1 exact-byte publication authorized
+
+`Current/270_S1.42AK_DRDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md` authorizes exactly one later exact-byte publication checkpoint for the already frozen DRDIAG1 review bytes.
+
+The sole publication source is Actions artifact `11329346796`, which remains present and unexpired. Its frozen identity is ZIP SHA-256 `6a6ec13a36f9c3f655f025b73ec477e02394caac4831cee3fe395fe2ec24bf63`, review-profile SHA-256 `15587975580ea9de38f995ff2e2a64586977c4c1a32f2c87534011375394c3d4`, and DRDIAG1 DLL SHA-256 `512b3085619852ba723163522860cf64f4ace53a6ae09356ae0ad943a59adf3b`. The publication checkpoint must select that exact numeric artifact ID and fail closed on any hash mismatch; rebuilding, reconstruction, newest-artifact selection and name-prefix selection are forbidden.
+
+The authorized materialization identity is the frozen short profile `LC V1 S1.42AK-DRD1`; its future `.r2z` publication output is not yet present. Deterministic readable publication evidence may later be materialized in the future DRDIAG1 ProfileSources namespace, which is also not yet present. Canonical mapping/indexing is not part of this authorization: do not change `Profiles/EXPECTED_HASHES.json` or create a canonical `PROFILE_INDEX_RESULT.json` in the publication checkpoint.
+
+DRDIAG1 remains unpublished until that later checkpoint actually runs, and remains **DIAGNOSTIC ONLY / NEVER ACCEPT**. S1.42AK-BMDSFIX1 remains active / NOT ACCEPTED with its passive outstanding unwaived `DeepSewersFlow` gate; residual remains 29. Gale import, runtime activation, gameplay and all separated scopes remain unauthorized.
+
+Exact next action is the separately bounded exact-byte publication checkpoint over artifact `11329346796`. Re-download and verify the exact ZIP/profile/DLL hashes immediately before materialization, then publish only those bytes plus deterministic readable publication evidence. Do not rebuild/reconstruct, canonically index, Gale-import, alter either live controller, runtime-arm or run gameplay.
