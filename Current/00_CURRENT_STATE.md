@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one separately bounded S1.42AK-DRDIAG1 publication PR integration/reconciliation. Verify PR #278's final changed-file set and exact final-head CI after the temporary one-shot publication workflow is absent, then merge only if justified. After merge, verify permanent exact-main-head Knowledge Architecture and record actual publication integration facts. Do not canonically profile-index DRDIAG1, modify Profiles/EXPECTED_HASHES.json, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, run gameplay, accept DRDIAG1, alter or waive the BMDSFIX1 DeepSewersFlow gate, or begin any separated scope during that integration segment.
+Execute one separately bounded S1.42AK-DRDIAG1 canonical profile-index mapping/reconciliation. Register Profiles/LC V1 S1.42AK-DRD1.r2z with build ID S1.42AK-DRDIAG1 and exact SHA-256 15587975580ea9de38f995ff2e2a64586977c4c1a32f2c87534011375394c3d4 in the canonical mapping authority required by BuildSystem/index_profile.py, following the established AGDIAG1/BMAFR1/BMAFR1I1 publication-to-index precedents. Then allow the existing profile-index workflow to generate and commit ProfileSources/S1.42AK-DRDIAG1/PROFILE_INDEX_RESULT.json and verify the resulting exact-head Knowledge Architecture gate. Do not Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, run gameplay, accept DRDIAG1, alter or waive the BMDSFIX1 DeepSewersFlow gate, or begin any separated scope during that index segment.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
