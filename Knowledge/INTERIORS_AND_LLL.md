@@ -567,3 +567,12 @@ The authorized archive contract is strictly one-variable: parent members `337 ->
 `BuildSpecs/S1.42AK-DRDIAG1_PLAN.md` and `BuildSpecs/S1.42AK-DRDIAG1.json` freeze the future review recipe. They are not live controllers. No DRDIAG1 review artifact has yet been constructed or published; Gale/runtime remain unchanged.
 
 Exact next action is the separately bounded inactive review-build checkpoint: add the dedicated build validator/workflow, compile/build the ephemeral review artifact, validate and freeze exact hashes, and independently rehash the Actions artifact. Publication, indexing, Gale import, activation and runtime remain unauthorized.
+## Phase-C Drains DRDIAG1 inactive review build — exact bytes frozen
+
+`Current/269_S1.42AK_DRDIAG1_INACTIVE_REVIEW_BUILD_INTEGRATION_RECONCILIATION.md` closes the DRDIAG1 compiler/build/archive-validity gate. Exact build head `5e10e1084425ee7152761d919a0b0ccc57282ff5` passed review run `37273709334` / #1 and Knowledge Architecture `37273709257` / #1134.
+
+The only authoritative frozen review artifact is Actions artifact `11329346796`. Independent rehash confirmed ZIP SHA-256 `6a6ec13a36f9c3f655f025b73ec477e02394caac4831cee3fe395fe2ec24bf63`, review-profile SHA-256 `15587975580ea9de38f995ff2e2a64586977c4c1a32f2c87534011375394c3d4`, and DRDIAG1 DLL SHA-256 `512b3085619852ba723163522860cf64f4ace53a6ae09356ae0ad943a59adf3b`. The archive contract is exactly 337 -> 338 members, adding only the DRDIAG1 DLL; only export profile-name metadata changes.
+
+The frozen evidence/infrastructure merged through PR #275 as `089c30ac94e4832c544c19c1fcf97dd2dfffe4ef`. Permanent Knowledge Architecture `37274448876` / #1136 and the disabled canonical-profile workflow `37274448874` / #147 passed. No diagnostic profile or DLL was published or indexed; Gale and runtime controllers remain unchanged.
+
+Exact next action is a separately bounded exact-byte publication-authorization decision over artifact `11329346796`. Do not rebuild or reconstruct the frozen bytes. Publication, profile indexing, Gale import, activation and runtime remain unauthorized until separately approved.
