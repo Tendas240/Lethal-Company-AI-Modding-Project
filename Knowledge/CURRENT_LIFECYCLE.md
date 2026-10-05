@@ -761,3 +761,15 @@ Automatic profile-index run `37284886372` / #41 then succeeded. Canonical `Profi
 The exact DRDIAG1 DLL remains SHA-256 `512b3085619852ba723163522860cf64f4ace53a6ae09356ae0ad943a59adf3b`. DRDIAG1 is now published/indexed but remains **runtime inactive / DIAGNOSTIC ONLY / NEVER ACCEPT**. Gale and both live controllers remain unchanged. Drains / `DrainsFlow` still lacks the later diagnostic-generated runtime proof; Phase-C residual remains 29.
 
 The next bounded gate is one separately bounded **S1.42AK-DRDIAG1 runtime-activation checkpoint** for these already-published/indexed exact bytes. Until that activation is integrated and permanent exact-head CI is green, Gale import and gameplay remain unauthorized. S1.42AK remains accepted; BMDSFIX1 remains active/not accepted with its passive, outstanding and unwaived DeepSewersFlow gate; Oxyde, Shatteredrooms/CullFactory, BCMER x all Pikmins, Herobrine, BMAFR1I1 and other separated scopes remain unchanged.
+
+## DRDIAG1 runtime activation — armed / deterministic Drains proof outstanding
+
+`Current/274_S1.42AK_DRDIAG1_RUNTIME_ACTIVATION.md` activates the exact published/indexed DRDIAG1 profile solely for one bounded Offense Drains / `DrainsFlow` diagnostic generation attempt after activation integration and permanent exact-main-head CI success.
+
+The activation re-verifies exact repository bytes: `Profiles/LC V1 S1.42AK-DRD1.r2z` is 576350 bytes at SHA-256 `15587975580ea9de38f995ff2e2a64586977c4c1a32f2c87534011375394c3d4`; `ProfileSources/S1.42AK-DRDIAG1/FILE_INDEX.json` contains 338 rows and identifies `BepInEx/plugins/S142AKDRDiag1/S142AKDRDiag1.dll` as an 18432-byte member at SHA-256 `512b3085619852ba723163522860cf64f4ace53a6ae09356ae0ad943a59adf3b`. Inherited BMDSFIX1 and accepted normalizer DLL hashes remain exact.
+
+Runtime/evidence routing is now `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-DRDIAG1`. The diagnostic binds directly to the exact S1.42AK-BMDSFIX1 active candidate, so the existing v2.4.6 direct-candidate resolver is sufficient and no Gale helper code change is needed. `Current/AUTO_BUILD_RESULT.json` remains exact BMDSFIX1 and `BuildSpecs/current.json` remains disabled.
+
+PR #283 first bounded the frozen source-stage trigger before activation: exact head `0d2410160e460e8e51dfe816a705dbf1af5423dd`, source gate `37290061167` / #26 success, main integration `905d8cd391c0b96ac1b927691003cd471f72eb9e`. This changes lifecycle triggering only, not source/runtime bytes.
+
+DRDIAG1 remains **DIAGNOSTIC ONLY / NEVER ACCEPT**. S1.42AK remains accepted. BMDSFIX1 remains the separate gameplay candidate / **NOT ACCEPTED**, and its regular Black Mesa x `DeepSewersFlow` gate remains passive, outstanding and unwaived. The runtime attempt must require `[DRDIAG1] ARMED`, deterministic Drains selection and the Current/265 generation/materialization chain; it must stop after the single attempt even on refusal/incomplete proof and upload the resulting log. Deterministic selection may close the Drains residual proof gap if the contract passes, but it does not prove natural selection frequency.
