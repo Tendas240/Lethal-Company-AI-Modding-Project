@@ -1,0 +1,37 @@
+{
+  "parent_members": 337,
+  "review_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKDRDiag1/S142AKDRDiag1.dll"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "bmdsfix1_dll_sha256": "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
+  "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+  "status": "PASS_INACTIVE_COMPILE_ARCHIVE_REVIEW_ONLY",
+  "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+  "assembly_name": "S142AKDRDiag1",
+  "parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "profile_sha256": "15587975580ea9de38f995ff2e2a64586977c4c1a32f2c87534011375394c3d4",
+  "dll_sha256": "512b3085619852ba723163522860cf64f4ace53a6ae09356ae0ad943a59adf3b",
+  "negative_cases": [
+    "config-drift",
+    "bmdsfix1-replaced",
+    "normalizer-replaced",
+    "member-removed",
+    "extra-plugin",
+    "export-drift",
+    "wrong-profile-identity",
+    "wrong-drdiag1-dll"
+  ],
+  "profile_indexing": false,
+  "published": false,
+  "runtime_armed": false,
+  "runtime_proof": false,
+  "actions_zip_rehash": "OUTSTANDING_AFTER_ARTIFACT_FREEZE",
+  "qualification": "Compiler/archive validity only. No publication, ProfileSources index, Gale import, runtime activation, gameplay proof, or acceptance."
+}
