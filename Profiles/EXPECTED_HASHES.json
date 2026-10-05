@@ -90,6 +90,6 @@
   "Profiles/LC V1 S1.42AK-DRD1.r2z": {
     "build_id": "S1.42AK-DRDIAG1",
     "sha256": "15587975580ea9de38f995ff2e2a64586977c4c1a32f2c87534011375394c3d4",
-    "note": "Inactive deterministic Offense Drains / DrainsFlow diagnostic over exact S1.42AK-BMDSFIX1; exact reviewed bytes are published and the canonical readable snapshot is ProfileSources/S1.42AK-DRDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base; indexing does not Gale-import or runtime-arm the diagnostic."
+    "note": "Diagnostic-only active runtime target for one bounded deterministic Offense Drains / DrainsFlow generation-materialization proof; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-DRDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
   }
 }
