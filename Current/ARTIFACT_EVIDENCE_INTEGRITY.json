@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "updated": "2026-10-04",
+  "updated": "2026-10-05",
   "status": "CURRENT_CANONICAL_ARTIFACT_EVIDENCE_INDEX",
   "profiles": [
     {
@@ -434,6 +434,25 @@
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false,
       "note": "Exact published/indexed AGDIAG1 bytes are runtime-armed solely for one bounded deterministic Offense Art Gallery / MuseumInteriorFlow generation-materialization proof. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED and its passive Deep Sewers gate remains unwaived."
+    },
+    {
+      "build_id": "S1.42AK-DRDIAG1",
+      "role": "ACTIVE_RUNTIME_DIAGNOSTIC_PENDING",
+      "profile": "Profiles/LC V1 S1.42AK-DRD1.r2z",
+      "profile_sha256": "15587975580ea9de38f995ff2e2a64586977c4c1a32f2c87534011375394c3d4",
+      "profile_sources": "ProfileSources/S1.42AK-DRDIAG1/",
+      "file_index": "ProfileSources/S1.42AK-DRDIAG1/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AK-DRDIAG1/export.r2x",
+      "build_plan": "BuildSpecs/S1.42AK-DRDIAG1_PLAN.md",
+      "build_result": "BuildSpecs/S1.42AK-DRDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json",
+      "static_evidence": "BuildSpecs/S1.42AK-DRDIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
+      "publication_evidence": "BuildSpecs/S1.42AK-DRDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+      "activation_record": "Current/274_S1.42AK_DRDIAG1_RUNTIME_ACTIVATION.md",
+      "diagnostic_dll_sha256": "512b3085619852ba723163522860cf64f4ace53a6ae09356ae0ad943a59adf3b",
+      "inherited_bmdsfix1_dll_sha256": "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false,
+      "note": "Exact published/indexed DRDIAG1 bytes are runtime-armed solely for one bounded deterministic Offense Drains / DrainsFlow generation-materialization proof. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED and its passive Deep Sewers gate remains unwaived."
     }
   ],
   "important_project_dlls": [
@@ -499,5 +518,5 @@
     "S1.42AK-BMAFR1 exact published/indexed profile SHA-256 8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5 is runtime-armed only as a direct diagnostic over accepted S1.42AK with repaired raw nine-U+200B Foundry binding; it remains NEVER_ACCEPT and Black Mesa x Abandoned Foundry remains NOT_YET_PROVEN pending runtime evidence.",
     "S1.42AK-AGDIAG1 exact published/indexed profile SHA-256 e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081 is runtime-armed solely as the active deterministic Offense Art Gallery / MuseumInteriorFlow diagnostic; AGDIAG1 DLL SHA-256 23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131 remains exact. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED."
   ],
-  "last_validated": "2026-10-04"
+  "last_validated": "2026-10-05"
 }
