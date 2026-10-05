@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one separately bounded PR #272 merge/main exact-head reconciliation after both required gates pass on the final PR head. Merge only that exact verified head, then require permanent Knowledge Architecture success on the resulting main head. Do not construct, publish, Gale-import, activate or run a DRDIAG1 profile in that reconciliation.
+Perform one bounded S1.42AK-DRDIAG1 inactive review-build authorization/recipe decision. Pin any future review recipe to exact parent S1.42AK-BMDSFIX1 profile SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0, preserve the frozen short Gale identity LC V1 S1.42AK-DRD1, define the exact one-DLL archive delta and build/static validator contract, and decide whether a later inactive review-artifact construction may be authorized. Do not construct, publish, Gale-import, activate or run the DRDIAG1 profile in that decision; do not change availability or owner restrictions; do not alter BMDSFIX1 or the accepted normalizer; and do not begin Oxyde, Shatteredrooms/CullFactory, BCMER x all-Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
