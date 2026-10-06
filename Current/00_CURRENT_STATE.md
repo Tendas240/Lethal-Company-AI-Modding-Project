@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Validate the frozen S1.42AK-SHDIAG1 inactive review checkpoint on the exact current PR head. Require the SHDIAG1 inactive review workflow to detect REVIEW_BUILD_CHECKPOINT.json, refuse recompilation/reconstruction/upload, and produce zero new artifacts; require Knowledge Architecture and all triggered frozen diagnostic source regression gates to pass. If those exact-head gates pass, merge the review PR, verify permanent exact-main CI, then perform only the small integration reconciliation needed to advance to an exact-byte publication-authorization decision. Do not publish, profile-index, Gale-import, runtime-arm or run gameplay.
+Perform one separately bounded S1.42AK-SHDIAG1 exact-byte publication-authorization decision only. Review Current/293_S1.42AK_SHDIAG1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md and authoritative frozen Actions artifact 11416035651: ZIP SHA-256 e97eb01168ca0679f514d63ff8559cf06215949c644b64bc16c513384c552b44, review-profile SHA-256 787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e, SHDIAG1 DLL SHA-256 e78e0eb6483d332e3b2a05be772173036c90e9fccd2c1fc9d52980a5d516d062. Decide whether exact-byte publication of those already-frozen bytes is justified. Do not rebuild or reconstruct them; until a later decision explicitly authorizes publication, do not publish or profile-index SHDIAG1, Gale-import it, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm it, or run gameplay.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
