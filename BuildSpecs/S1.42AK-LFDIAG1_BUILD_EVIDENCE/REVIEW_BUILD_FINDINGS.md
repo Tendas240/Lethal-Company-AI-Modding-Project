@@ -56,8 +56,14 @@ DLL independently match the hashes above.
 chronological bytes uploaded by the successful job. `REVIEW_BUILD_CHECKPOINT.json`
 closes the later independent-rehash requirement without rewriting those historical bytes.
 
-No intermediate or superseded review artifact exists for this checkpoint. The committed
-freeze checkpoint makes subsequent review runs refuse recompilation, reconstruction and upload.
+One pre-freeze evidence-write race produced a later **superseded/non-authoritative** artifact:
+- artifact ID `11398652708`;
+- run `37436398066` / #2;
+- head `d443351b34af437c73f31507801c7471cc24f67b`;
+- Actions digest SHA-256 `73c4278ff5da3b3dc27b697deed84da83cba676c3639ccb3431f5c996ea11535`;
+- size **536884 bytes**.
+
+It was created before `REVIEW_BUILD_CHECKPOINT.json` existed and was **not** independently rehashed or selected as authority. It must never be published, imported, armed, or substituted for artifact `11399366599`. The committed freeze checkpoint makes subsequent review runs refuse recompilation, reconstruction and upload.
 
 ## Lifecycle boundary
 
