@@ -1,0 +1,19 @@
+{
+  "status": "COMPILE_INPUT_PRESENT_ARCHIVE_AWAITS_INDEPENDENT_VALIDATION",
+  "build_id": "S1.42AK-LFDIAG1",
+  "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+  "source_main_commit": "81761bf4a98ec11f8791056930577f72536ec75f",
+  "build_head": "1a57702777eb63e7f1fd4571a67f09e705457c6f",
+  "parent_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "review_profile": "Profiles/LC V1 S1.42AK-LFD1.r2z",
+  "profile_sha256": "ce6835944f90e1972caebf52dc344bdf660283c9a074ac07899486ce0b4564f4",
+  "dll_member": "BepInEx/plugins/S142AKLFDiag1/S142AKLFDiag1.dll",
+  "dll_sha256": "13fd01cba6d30a0c9044d43df813b17adf352139f723c9444f8db14403a0a474",
+  "parent_members": 337,
+  "review_members": 338,
+  "profile_indexing": false,
+  "published": false,
+  "runtime_armed": false,
+  "runtime_proof": false
+}
