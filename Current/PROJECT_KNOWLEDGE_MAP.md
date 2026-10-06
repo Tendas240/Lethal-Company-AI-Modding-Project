@@ -349,3 +349,25 @@ The Current/265/274 proof contract therefore **passes at the diagnostic-generate
 Runtime/evidence routing returns to `S1.42AK-BMDSFIX1`. S1.42AK remains accepted, BMDSFIX1 remains NOT ACCEPTED, its passive selector-free Black Mesa x `DeepSewersFlow` gate remains outstanding and unwaived, and BCMER x all-Pikmin, Herobrine, Oxyde, BMAFR1I1 and other separated scopes remain untouched.
 
 Exact next action: Perform one bounded Phase-C residual interior-proof priority reassessment over the updated 28-flow no-trusted-actual-generation-proof set established by `Current/275_S1.42AK_DRDIAG1_DRAINS_RUNTIME_EVIDENCE_RECONCILIATION.md`. Remove Drains / DrainsFlow from the residual set based only on its diagnostic-generated generation/materialization PASS, preserve that natural selection frequency remains unproven, keep the 12 C2 owner-hard-block flows unchanged, and select exactly one next evidence target or prerequisite. Do not authorize or start another runtime run, rerun DRDIAG1, change availability or owner restrictions, reopen Oxyde, reroll BMDSFIX1 DeepSewersFlow, or begin BCMER x all-Pikmin, Herobrine or BMAFR1I1 work in that reassessment.
+
+## Phase-C Liminal Facility LFDIAG1 source/static implementation authorization
+
+`Current/278_S1.42AK_PHASE_C_LIMINAL_FACILITY_LFDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md` authorizes the next bounded selector-only source/pure-static implementation checkpoint after the record-277 reuse preflight.
+
+The diagnostic identity is frozen:
+
+- build `S1.42AK-LFDIAG1`;
+- project/assembly `S142AKLFDiag1`;
+- GUID `tendas.lethalcompany.s142aklfdiag1`;
+- version `1.0.0`;
+- marker `[LFDIAG1]`;
+- future short Gale identity `LC V1 S1.42AK-LFD1`.
+
+The implementation authority remains deliberately narrow: exactly one postfix on LLL's exact `GetValidExtendedDungeonFlows(ExtendedLevel, bool)`, after the accepted normalizer at `Priority.Last`. On the real Offense server-selection path it may reduce only the already-returned viable list, and only after proving one unique `Liminal Facility` wrapper with exact `BackroomsFlow` asset and final rarity `100`. It must retain that same wrapper object.
+
+The next source/static checkpoint is authorized to add the isolated source tree, pure fail-closed tests, Patch Safety Review, deterministic repository validator, dedicated source/static workflow and source/static/canonical findings. No profile construction, DLL publication, Gale import, activation or runtime is authorized by this record.
+
+Any later review profile remains pinned to exact `S1.42AK-BMDSFIX1` SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. S1.42AK-BMDSFIX1 remains NOT ACCEPTED and its selector-free Black Mesa x `DeepSewersFlow` gate remains passive, outstanding and unwaived. AGDIAG1 and DRDIAG1 remain completed/inactive and are not authorized for rerun or retargeting.
+
+Exact next action: Implement one bounded S1.42AK-LFDIAG1 source/pure-static checkpoint from Current/278_S1.42AK_PHASE_C_LIMINAL_FACILITY_LFDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, Patch Safety Review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate that source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct, publish, Gale-import, activate or run a profile; do not change availability or owner restrictions; do not alter BMDSFIX1 or the accepted normalizer; do not rerun AGDIAG1 or DRDIAG1; and do not begin Oxyde, Shatteredrooms/CullFactory, BCMER x all-Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
+
