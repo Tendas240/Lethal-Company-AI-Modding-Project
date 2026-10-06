@@ -776,3 +776,12 @@ The authorized materialization identity is the frozen short profile `LC V1 S1.42
 SHDIAG1 remains unpublished until that later checkpoint actually runs, and remains **DIAGNOSTIC ONLY / NEVER ACCEPT**. S1.42AK-BMDSFIX1 remains active / NOT ACCEPTED with its passive outstanding unwaived `DeepSewersFlow` gate; residual remains 27. `storehouse_shdiag1_built` remains false under the inactive-review lifecycle semantics. Gale import, runtime activation, gameplay, AGDIAG1/DRDIAG1/LFDIAG1 reruns/retargeting and all separated scopes remain unauthorized.
 
 Exact next action is the separately bounded exact-byte publication checkpoint over artifact `11416035651`. Re-download and verify the exact ZIP/profile/DLL hashes immediately before materialization, then publish only those bytes plus deterministic readable publication evidence. Do not rebuild/reconstruct, canonically index, Gale-import, alter either live controller, runtime-arm or run gameplay.
+
+## Phase-C Storehouse SHDIAG1 exact-byte publication materialized — integration pending
+
+`Current/295_S1.42AK_SHDIAG1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md` records exact frozen-byte materialization on publication PR #309. Actions artifact `11416035651` was selected by exact numeric ID; publication transport run `37479350216`/#1 and cleanup/revalidation run `37480229257`/#3 passed. The materialized profile is `Profiles/LC V1 S1.42AK-SHD1.r2z` at SHA-256 `787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e`; the exact SHDIAG1 DLL remains SHA-256 `e78e0eb6483d332e3b2a05be772173036c90e9fccd2c1fc9d52980a5d516d062`.
+
+The deterministic publication snapshot contains 338 FILE_INDEX rows and 331 readable text snapshots. No `PROFILE_INDEX_RESULT.json` exists and `Profiles/EXPECTED_HASHES.json` remains unchanged. The temporary transport workflow is absent from the final publication diff. SHDIAG1 is materialized on the publication branch only: main integration, canonical indexing, Gale import, runtime activation and gameplay remain separate and unauthorized. Phase-C residual remains 27 and Storehouse / `SHFlow` remains runtime-unproven.
+
+Exact next action: perform the separately bounded PR #309 publication integration/reconciliation. Verify the final changed-file set and exact-head CI, then merge only if justified. Do not canonically index, Gale-import, alter either live controller, runtime-arm or run gameplay in that integration checkpoint.
+
