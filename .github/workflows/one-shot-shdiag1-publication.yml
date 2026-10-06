@@ -247,7 +247,7 @@ jobs:
             Current/AUTO_BUILD_RESULT.md \
             Profiles/EXPECTED_HASHES.json
 
-      - name: Commit exact publication bytes to publication branch
+      - name: Finalize exact publication branch and remove one-shot transport
         shell: bash
         run: |
           set -euo pipefail
@@ -255,9 +255,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- "${PROFILE_PATH}" "${SNAPSHOT_PATH}"
-          if git diff --cached --quiet; then
-            echo "Exact publication bytes already materialized; no commit required."
-            exit 0
-          fi
-          git commit -m "Publish exact reviewed SHDIAG1 bytes"
+          git rm -- .github/workflows/one-shot-shdiag1-publication.yml
+          git commit -m "Finalize exact reviewed SHDIAG1 publication"
           git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
