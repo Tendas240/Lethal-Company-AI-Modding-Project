@@ -666,3 +666,16 @@ Freeze/integration is now closed: final PR head `7a97904dc7b2529d3c7f088400acc4f
 
 Exact next action: Perform one separately bounded S1.42AK-LFDIAG1 exact-byte publication-authorization decision only. Review Current/281_S1.42AK_LFDIAG1_INACTIVE_REVIEW_BUILD_INTEGRATION_RECONCILIATION.md and authoritative frozen Actions artifact 11399366599: ZIP SHA-256 ca1922b3b59666cfd5f8a6105dec9e1dfddf367874be4d3a324bfd8dfacf0b93, review-profile SHA-256 ce6835944f90e1972caebf52dc344bdf660283c9a074ac07899486ce0b4564f4, LFDIAG1 DLL SHA-256 13fd01cba6d30a0c9044d43df813b17adf352139f723c9444f8db14403a0a474. Decide whether exact-byte publication of those already-frozen bytes is justified. Do not rebuild or reconstruct them; until a later decision explicitly authorizes publication, do not publish or profile-index LFDIAG1, Gale-import it, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm it, or run gameplay.
 
+## Phase-C Liminal Facility LFDIAG1 exact-byte publication authorized
+
+`Current/282_S1.42AK_LFDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md` authorizes exactly one later exact-byte publication checkpoint for the already frozen LFDIAG1 review bytes.
+
+The sole publication source is Actions artifact `11399366599`, which remains present and unexpired. Its frozen identity is ZIP SHA-256 `ca1922b3b59666cfd5f8a6105dec9e1dfddf367874be4d3a324bfd8dfacf0b93`, review-profile SHA-256 `ce6835944f90e1972caebf52dc344bdf660283c9a074ac07899486ce0b4564f4`, and LFDIAG1 DLL SHA-256 `13fd01cba6d30a0c9044d43df813b17adf352139f723c9444f8db14403a0a474`. The publication checkpoint must select that exact numeric artifact ID and fail closed on any hash mismatch; rebuilding, reconstruction, newest-artifact selection and name-prefix selection are forbidden.
+
+Pre-freeze race artifact `11398652708` is explicitly superseded/non-authoritative and remains **DO NOT PUBLISH / DO NOT IMPORT / DO NOT ARM**. It may never substitute for artifact `11399366599`.
+
+The authorized materialization identity is the frozen short profile `LC V1 S1.42AK-LFD1`; its future `.r2z` publication output is not yet present. Deterministic readable publication evidence may later be materialized in the future LFDIAG1 ProfileSources namespace, which is also not yet present. Canonical mapping/indexing is not part of this authorization: do not change `Profiles/EXPECTED_HASHES.json` or create a canonical `PROFILE_INDEX_RESULT.json` in the publication checkpoint.
+
+LFDIAG1 remains unpublished until that later checkpoint actually runs, and remains **DIAGNOSTIC ONLY / NEVER ACCEPT**. S1.42AK-BMDSFIX1 remains active / NOT ACCEPTED with its passive outstanding unwaived `DeepSewersFlow` gate; residual remains 28. Gale import, runtime activation, gameplay, AGDIAG1/DRDIAG1 reruns/retargeting and all separated scopes remain unauthorized.
+
+Exact next action is the separately bounded exact-byte publication checkpoint over artifact `11399366599`. Re-download and verify the exact ZIP/profile/DLL hashes immediately before materialization, then publish only those bytes plus deterministic readable publication evidence. Do not rebuild/reconstruct, canonically index, Gale-import, alter either live controller, runtime-arm or run gameplay.
