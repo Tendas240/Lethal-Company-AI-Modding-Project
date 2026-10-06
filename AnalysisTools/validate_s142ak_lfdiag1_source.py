@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Validate the S1.42AK-LFDIAG1 source-only fail-closed selector contract."""
+import hashlib
+import io
+import zipfile
 import json
 import re
 from pathlib import Path
@@ -33,7 +36,34 @@ require(state["runtime_test_outstanding"] is True, "BMDSFIX1 runtime gate must r
 
 phase = state["selected_scope"]["phase_c"]
 require(phase["liminal_facility_lfdiag1_implemented"] is True, "LFDIAG1 source must be staged")
-require(phase["liminal_facility_lfdiag1_built"] is False, "LFDIAG1 must remain unbuilt")
+# Source-stage absence and later frozen publication are distinct lifecycle states.
+# A built flag is allowed only for the exact authorized, materialized review bytes.
+built = phase["liminal_facility_lfdiag1_built"]
+published_profile = ROOT / "Profiles/LC V1 S1.42AK-LFD1.r2z"
+require(type(built) is bool, "LFDIAG1 built flag must be boolean")
+if not built:
+    require(not published_profile.exists(), "unbuilt state contradicts published LFDIAG1 profile")
+    require(not phase.get("liminal_facility_lfdiag1_published", False), "unbuilt state contradicts publication flag")
+else:
+    require(phase.get("liminal_facility_lfdiag1_review_build_complete") is True, "frozen review prerequisite missing")
+    require(phase.get("liminal_facility_lfdiag1_published") is True, "built state requires exact-byte publication")
+    require((ROOT / "Current/282_S1.42AK_LFDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md").is_file(), "publication authorization missing")
+    frozen = json.loads((ROOT / "BuildSpecs/S1.42AK-LFDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json").read_text(encoding="utf-8"))
+    require(frozen["status"] == "PASS_INACTIVE_REVIEW_BUILD_INDEPENDENTLY_REHASHED", "review prerequisite is not PASS")
+    require(frozen["classification"] == "DIAGNOSTIC_ONLY_NEVER_ACCEPT", "diagnostic classification drift")
+    require(frozen["authoritative_artifact_id"] == 11399366599, "non-authoritative artifact")
+    require(frozen["actions_artifact"]["artifact_id"] == 11399366599, "artifact ID drift")
+    require(frozen["actions_artifact"]["actions_zip_sha256"] == "ca1922b3b59666cfd5f8a6105dec9e1dfddf367874be4d3a324bfd8dfacf0b93", "frozen ZIP digest drift")
+    require(frozen["independent_artifact_rehash_match"] is True, "independent review rehash missing")
+    profile_hash = "ce6835944f90e1972caebf52dc344bdf660283c9a074ac07899486ce0b4564f4"
+    dll_hash = "13fd01cba6d30a0c9044d43df813b17adf352139f723c9444f8db14403a0a474"
+    require(frozen["profile_sha256"] == profile_hash and frozen["dll_sha256"] == dll_hash, "frozen profile/DLL authority drift")
+    profile_bytes = published_profile.read_bytes()
+    require(hashlib.sha256(profile_bytes).hexdigest() == profile_hash, "published profile byte drift")
+    with zipfile.ZipFile(io.BytesIO(profile_bytes)) as archive:
+        require(archive.testzip() is None, "published profile CRC failure")
+        require(len(archive.namelist()) == 338 and len(set(archive.namelist())) == 338, "published archive member drift")
+        require(hashlib.sha256(archive.read("BepInEx/plugins/S142AKLFDiag1/S142AKLFDiag1.dll")).hexdigest() == dll_hash, "published DLL byte drift")
 require(phase["liminal_facility_lfdiag1_runtime_authorized"] is False, "LFDIAG1 runtime must remain unauthorized")
 require(phase["liminal_facility_lfdiag1_source_static_validation_pending"] is False, "validation pending flag must be cleared")
 require(phase["liminal_facility_lfdiag1_source_static_validated"] is True, "source/static validated flag missing")
@@ -111,7 +141,7 @@ require("dotnet build S142AKLFDiag1.csproj -c Release" in workflow, "compile com
 require("python AnalysisTools/validate_s142ak_lfdiag1_source.py" in workflow, "validator command missing")
 
 print(json.dumps({
-    "status": "SOURCE_PURE_STATIC_CONTRACT_PASS_NOT_BUILT_NOT_ARMED",
+    "status": "SOURCE_PURE_STATIC_CONTRACT_PASS_FROZEN_PUBLICATION_NOT_ARMED" if built else "SOURCE_PURE_STATIC_CONTRACT_PASS_NOT_BUILT_NOT_ARMED",
     "candidate_id": "S1.42AK-LFDIAG1",
     "harmony_surfaces": 1,
     "selection_target": "Offense / Liminal Facility / BackroomsFlow / rarity 100",
