@@ -751,7 +751,7 @@ This authorization itself does not compile/build, publish, profile-index, Gale-i
 
 Exact next action: Execute one separately bounded S1.42AK-SHDIAG1 inactive review-build checkpoint from Current/292_S1.42AK_SHDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md and BuildSpecs/S1.42AK-SHDIAG1_PLAN.md. Implement the dedicated build validator/workflow, compile the exact main-integrated SHDIAG1 source, construct one ephemeral review profile from exact S1.42AK-BMDSFIX1 SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0, prove the exact 337->338 one-DLL/archive-identity delta, record exact DLL/profile/artifact hashes and independently rehash the frozen Actions artifact. Keep BuildSpecs/current.json disabled and RuntimeInbox/ACTIVE_BUILD.txt on S1.42AK-BMDSFIX1. Do not publish, profile-index, Gale-import, runtime-arm or run gameplay in that checkpoint.
 
-## Phase-C Storehouse SHDIAG1 inactive review-build checkpoint — independent rehash PASS / freeze verification pending
+## Phase-C Storehouse SHDIAG1 inactive review-build integration reconciliation — exact bytes frozen / main-integrated
 
 `Current/293_S1.42AK_SHDIAG1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md` records successful compiler/archive review on exact build head `5b5ec65e1a8d9fd43e6d28aa46e25e77908c41ab`. Review run `37468460711`/#1 and Knowledge Architecture `37468460139`/#1228 passed. Exact DLL SHA-256 is `e78e0eb6483d332e3b2a05be772173036c90e9fccd2c1fc9d52980a5d516d062`; exact review-profile SHA-256 is `787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e`.
 
