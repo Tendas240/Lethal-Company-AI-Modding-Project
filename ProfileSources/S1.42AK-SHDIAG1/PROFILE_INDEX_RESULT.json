@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-SHDIAG1",
+  "profile_path": "Profiles/LC V1 S1.42AK-SHD1.r2z",
+  "profile_name": "LC V1 S1.42AK-SHD1",
+  "sha256": "787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e",
+  "zip_members": 338,
+  "snapshot_dir": "ProfileSources/S1.42AK-SHDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}
