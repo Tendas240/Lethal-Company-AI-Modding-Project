@@ -88,5 +88,16 @@
     "dll_sha256": "13fd01cba6d30a0c9044d43df813b17adf352139f723c9444f8db14403a0a474",
     "rule": "Any later lifecycle gate must reference these exact already-frozen bytes by artifact ID and hashes; never select a newer artifact by name prefix."
   },
-  "superseded_intermediate_artifacts": []
+  "superseded_intermediate_artifacts": [
+    {
+      "artifact_id": 11398652708,
+      "run_id": 37436398066,
+      "run_number": 2,
+      "head": "d443351b34af437c73f31507801c7471cc24f67b",
+      "name": "S1.42AK-LFDIAG1-review-d443351b34af437c73f31507801c7471cc24f67b",
+      "size_bytes": 536884,
+      "actions_digest_sha256": "73c4278ff5da3b3dc27b697deed84da83cba676c3639ccb3431f5c996ea11535",
+      "disposition": "SUPERSEDED_NON_AUTHORITATIVE_PRE_FREEZE_RACE_DO_NOT_PUBLISH_OR_IMPORT"
+    }
+  ]
 }
