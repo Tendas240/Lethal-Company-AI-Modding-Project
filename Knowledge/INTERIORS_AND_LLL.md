@@ -789,3 +789,15 @@ Publication integration preflight on head `9b79ac7bf9399d1b9b5f8b45cf3bc8b63ac1f
 
 The publication-branch machine-state analysis contract now explicitly preserves `S1.42AK-BMDSFIX1` as the active / NOT ACCEPTED candidate; this is metadata-only and changes no controller or gameplay state.
 
+## Phase-C Storehouse SHDIAG1 publication main integration complete — canonical indexing next
+
+`Current/296_S1.42AK_SHDIAG1_PUBLICATION_INTEGRATION_RECONCILIATION.md` closes publication PR #309 at final head `2d36fa866996103166965085d068b940bbc46551`. Exact-final-head Knowledge Architecture `37485682737`/#1257, SHDIAG1 source/static `37485682590`/#19, frozen review guard `37485682429`/#19, LFDIAG1 `37485682551`/#34, AGDIAG1 `37485682468`/#70 and DRDIAG1 `37485682466`/#60 all passed. The frozen review guard skipped reconstruction, compilation and artifact upload.
+
+PR #309 merged as `108c84c45eba6a14b2b3602407840087ff007946`; permanent exact-main Knowledge Architecture `37486699974`/#1258 / push passed. The obsolete SHDIAG1 source-stage `storehouse_shdiag1_built=false` assertion is reconciled by publication-aware exact-byte checks, while the frozen review guard pins only the original source-validator SHA-256 `6076e581b0b8de25226bacc7dddeb00e19bdd189ee43444ad6ea4d97d65c2341` and reviewed publication-aware SHA-256 `96501800636efd93f984d60a8753240b4f59d6d63c7b98368ae447b4016ff6e2`. Gameplay/selector source, build recipe, builder, archive validator, source workflow and published artifact bytes remain frozen.
+
+Automatic profile-index run `37486700072`/#46 failed closed on the missing canonical SHDIAG1 build mapping before the commit and exact-head-dispatch stages. No `PROFILE_INDEX_RESULT.json` was created and `Profiles/EXPECTED_HASHES.json` remains unchanged. Publication is therefore complete/main-integrated but not canonically indexed.
+
+S1.42AK remains accepted. S1.42AK-BMDSFIX1 remains active / **NOT ACCEPTED** with its passive outstanding and unwaived Black Mesa x `DeepSewersFlow` gate. SHDIAG1 remains **DIAGNOSTIC ONLY / NEVER ACCEPT**, not Gale-imported or runtime-armed. Phase-C residual remains **27** and Storehouse / `SHFlow` remains runtime-unproven.
+
+Exact next action: Execute one separately bounded S1.42AK-SHDIAG1 canonical profile-index mapping/reconciliation. Register the exact published profile `Profiles/LC V1 S1.42AK-SHD1.r2z` with build ID `S1.42AK-SHDIAG1` and SHA-256 `787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e` in the canonical mapping authority required by `BuildSystem/index_profile.py`, following the established LFDIAG1/DRDIAG1/AGDIAG1 publication-to-index precedents. Then let the existing profile-index workflow produce its canonical result and verify its exact-head Knowledge Architecture gate. Do not rebuild/reconstruct, Gale-import, change `BuildSpecs/current.json` or `RuntimeInbox/ACTIVE_BUILD.txt`, runtime-arm, run gameplay, accept SHDIAG1 or BMDSFIX1, waive/reroll the passive `DeepSewersFlow` gate, rerun/retarget AGDIAG1, DRDIAG1 or LFDIAG1, or begin separated scopes.
+
