@@ -785,3 +785,5 @@ The deterministic publication snapshot contains 338 FILE_INDEX rows and 331 read
 
 Exact next action: perform the separately bounded PR #309 publication integration/reconciliation. Verify the final changed-file set and exact-head CI, then merge only if justified. Do not canonically index, Gale-import, alter either live controller, runtime-arm or run gameplay in that integration checkpoint.
 
+Publication integration preflight on head `9b79ac7bf9399d1b9b5f8b45cf3bc8b63ac1fc91` confirmed the frozen inactive-review guard and AGDIAG1/DRDIAG1/LFDIAG1 regression gates remain green. The SHDIAG1 source gate fails only its historical lifecycle assertion that `storehouse_shdiag1_built` must remain false; publication intentionally makes that flag true because exact reviewed bytes are now committed on the publication branch. The generated-current-navigation mismatch from the same preflight was repaired by running the canonical renderer successfully. Reconciling the source-stage lifecycle assertion belongs to the next separately bounded publication integration/reconciliation checkpoint; it is not a publication-byte failure.
+
