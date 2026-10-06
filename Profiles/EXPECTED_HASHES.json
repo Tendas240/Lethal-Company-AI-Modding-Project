@@ -100,6 +100,6 @@
   "Profiles/LC V1 S1.42AK-SHD1.r2z": {
     "build_id": "S1.42AK-SHDIAG1",
     "sha256": "787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e",
-    "note": "Inactive diagnostic-only published profile for one bounded deterministic Offense Storehouse / SHFlow generation-materialization proof; exact reviewed bytes are published and the canonical readable snapshot is ProfileSources/S1.42AK-SHDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Canonical indexing does not Gale-import or runtime-arm the diagnostic."
+    "note": "Diagnostic-only active runtime target for one bounded deterministic Offense Storehouse / SHFlow generation-materialization proof; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-SHDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
   }
 }

@@ -15,5 +15,38 @@
   "profile_indexing": false,
   "published": false,
   "runtime_armed": false,
-  "runtime_proof": false
+  "runtime_proof": false,
+  "profile_name": "LC V1 S1.42AK-SHD1",
+  "base_build_id": "S1.42AK-BMDSFIX1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "output_profile": "Profiles/LC V1 S1.42AK-SHD1.r2z",
+  "output_sha256": "787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e",
+  "zip_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKSHDiag1/S142AKSHDiag1.dll"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "snapshot_dir": "ProfileSources/S1.42AK-SHDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "runtime_target_metadata": {
+    "activation_record": "Current/298_S1.42AK_SHDIAG1_RUNTIME_ACTIVATION.md",
+    "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+    "authority_parent_build_id": "S1.42AK-BMDSFIX1",
+    "authority_parent_runtime_status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "authority_parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+    "runtime_controller_target": "S1.42AK-SHDIAG1",
+    "runtime_attempts_authorized": 1,
+    "runtime_target_moon": "Offense",
+    "runtime_target_dungeon_name": "Storehouse",
+    "runtime_target_flow": "SHFlow"
+  }
 }
