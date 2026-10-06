@@ -787,3 +787,5 @@ Exact next action: perform the separately bounded PR #309 publication integratio
 
 Publication integration preflight on head `9b79ac7bf9399d1b9b5f8b45cf3bc8b63ac1fc91` confirmed the frozen inactive-review guard and AGDIAG1/DRDIAG1/LFDIAG1 regression gates remain green. The SHDIAG1 source gate fails only its historical lifecycle assertion that `storehouse_shdiag1_built` must remain false; publication intentionally makes that flag true because exact reviewed bytes are now committed on the publication branch. The generated-current-navigation mismatch from the same preflight was repaired by running the canonical renderer successfully. Reconciling the source-stage lifecycle assertion belongs to the next separately bounded publication integration/reconciliation checkpoint; it is not a publication-byte failure.
 
+The publication-branch machine-state analysis contract now explicitly preserves `S1.42AK-BMDSFIX1` as the active / NOT ACCEPTED candidate; this is metadata-only and changes no controller or gameplay state.
+
