@@ -1,0 +1,159 @@
+name: One-shot SHDIAG1 publication metadata reconciliation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/one-shot-shdiag1-publication-metadata.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.head.ref == 'publish/s142ak-shdiag1-exact'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reconcile bounded publication metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "a15be1f25f08b2a268a21f2fb53ef6aa12ad20ad"
+          git diff --exit-code origin/main -- BuildSpecs/current.json RuntimeInbox/ACTIVE_BUILD.txt Profiles/EXPECTED_HASHES.json
+
+          python - <<'PY'
+          import json, pathlib
+
+          next_action = (
+              "Perform one separately bounded S1.42AK-SHDIAG1 publication PR integration/reconciliation. "
+              "Verify PR #309's final changed-file set and exact final-head CI with the temporary one-shot "
+              "publication workflow absent, then merge only if justified. After merge, verify permanent "
+              "exact-main-head Knowledge Architecture and record actual publication integration facts. "
+              "Do not canonically profile-index SHDIAG1, modify Profiles/EXPECTED_HASHES.json, Gale-import, "
+              "change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, run gameplay, "
+              "accept SHDIAG1 or S1.42AK-BMDSFIX1, waive or reroll the passive BMDSFIX1 Black Mesa x "
+              "DeepSewersFlow gate, rerun/retarget AGDIAG1, DRDIAG1 or LFDIAG1, or begin separated scopes."
+          )
+
+          state_path = pathlib.Path("Current/CURRENT_STATE.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          scope = state["selected_scope"]
+          scope["status"] = "PHASE_C_STOREHOUSE_SHDIAG1_EXACT_BYTES_MATERIALIZED_PUBLICATION_INTEGRATION_PENDING_BMDSFIX1_ACTIVE_NOT_ACCEPTED"
+          add = (
+              " SHDIAG1 exact-byte publication checkpoint Current/295_S1.42AK_SHDIAG1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md "
+              "materializes exact frozen review bytes on publication PR #309. Transport run 37479350216/#1 and "
+              "cleanup/revalidation run 37480229257/#3 passed. The exact profile SHA-256 is "
+              "787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e and DLL SHA-256 is "
+              "e78e0eb6483d332e3b2a05be772173036c90e9fccd2c1fc9d52980a5d516d062. The deterministic "
+              "publication snapshot has 338 FILE_INDEX rows and 331 readable text snapshots; PROFILE_INDEX_RESULT.json "
+              "is absent and Profiles/EXPECTED_HASHES.json remains unchanged. Publication is materialized on the branch "
+              "only; main integration, canonical indexing, Gale import, activation and runtime remain pending/unauthorized."
+          )
+          if "Current/295_S1.42AK_SHDIAG1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md" not in scope["finding"]:
+              scope["finding"] += add
+          scope["analysis_contract"] = (
+              "Treat Current/295_S1.42AK_SHDIAG1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md and "
+              "BuildSpecs/S1.42AK-SHDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md as current SHDIAG1 "
+              "publication-branch authority. Exact frozen review bytes are materialized on PR #309 but are not yet "
+              "main-integrated or canonically indexed. Profiles/EXPECTED_HASHES.json and both live controllers remain "
+              "unchanged; Gale import, runtime activation and gameplay remain unauthorized."
+          )
+          scope["next_action"] = next_action
+          state["next_action"] = next_action
+
+          p = scope["phase_c"]
+          p["storehouse_shdiag1_built"] = True
+          p.update({
+              "storehouse_shdiag1_publication_authorization": "Current/294_S1.42AK_SHDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md",
+              "storehouse_shdiag1_publication_checkpoint": "Current/295_S1.42AK_SHDIAG1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md",
+              "storehouse_shdiag1_publication_verification": "BuildSpecs/S1.42AK-SHDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+              "storehouse_shdiag1_publication_status": "EXACT_BYTES_MATERIALIZED_ON_PUBLICATION_BRANCH_MAIN_INTEGRATION_PENDING_NOT_CANONICALLY_INDEXED",
+              "storehouse_shdiag1_publication_pr": 309,
+              "storehouse_shdiag1_publication_branch": "publish/s142ak-shdiag1-exact",
+              "storehouse_shdiag1_publication_transport_run": 37479350216,
+              "storehouse_shdiag1_publication_transport_run_number": 1,
+              "storehouse_shdiag1_publication_revalidation_run": 37480229257,
+              "storehouse_shdiag1_publication_revalidation_run_number": 3,
+              "storehouse_shdiag1_publication_transport_definition_commit": "61bd6342624f9a4b23669f6b5e51ee48a4cd3a74",
+              "storehouse_shdiag1_publication_materialization_commit": "5f3fe6379bb05735b37c22b6243d156ce8f53c9f",
+              "storehouse_shdiag1_publication_transport_removal_commit": "ba3abb28fe1dbe204f004222ee719c3ff3efab6f",
+              "storehouse_shdiag1_publication_main_integrated": False,
+              "storehouse_shdiag1_profile": "Profiles/LC V1 S1.42AK-SHD1.r2z",
+              "storehouse_shdiag1_profile_sha256": "787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e",
+              "storehouse_shdiag1_dll_sha256": "e78e0eb6483d332e3b2a05be772173036c90e9fccd2c1fc9d52980a5d516d062",
+              "storehouse_shdiag1_publication_snapshot_entries": 338,
+              "storehouse_shdiag1_publication_snapshot_text_entries": 331
+          })
+          state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
+
+          human_path = pathlib.Path("Current/00_CURRENT_STATE.md")
+          human = human_path.read_text(encoding="utf-8")
+          marker = "## Exact next action"
+          start = human.index(marker)
+          end = human.index("\n## ", start + len(marker))
+          replacement = marker + "\n\n" + next_action + "\n"
+          human = human[:start] + replacement + human[end:]
+          human_path.write_text(human, encoding="utf-8")
+
+          topic_path = pathlib.Path("Knowledge/INTERIORS_AND_LLL.md")
+          topic = topic_path.read_text(encoding="utf-8").rstrip()
+          section = """
+          
+## Phase-C Storehouse SHDIAG1 exact-byte publication materialized — integration pending
+
+`Current/295_S1.42AK_SHDIAG1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md` records exact frozen-byte materialization on publication PR #309. Actions artifact `11416035651` was selected by exact numeric ID; transport run `37479350216`/#1 and cleanup/revalidation run `37480229257`/#3 passed. The materialized profile is `Profiles/LC V1 S1.42AK-SHD1.r2z` at SHA-256 `787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e`; the SHDIAG1 DLL remains `e78e0eb6483d332e3b2a05be772173036c90e9fccd2c1fc9d52980a5d516d062`.
+
+The deterministic publication snapshot contains 338 FILE_INDEX rows and 331 readable text snapshots. No `PROFILE_INDEX_RESULT.json` exists and `Profiles/EXPECTED_HASHES.json` is unchanged. The temporary transport workflow is absent from the final publication diff. SHDIAG1 is materialized on the publication branch only: main integration, canonical indexing, Gale import, runtime activation and gameplay remain separate and unauthorized. Phase-C residual remains 27 and Storehouse / `SHFlow` remains runtime-unproven.
+
+Exact next action is the separately bounded PR #309 publication integration/reconciliation. Verify its final changed-file set and exact-head CI, then merge only if justified. Do not index, Gale-import, alter live controllers, runtime-arm or run gameplay in that integration checkpoint.
+"""
+          if "## Phase-C Storehouse SHDIAG1 exact-byte publication materialized — integration pending" not in topic:
+              topic += "\n" + section.strip() + "\n"
+          topic_path.write_text(topic, encoding="utf-8")
+
+          life_path = pathlib.Path("Knowledge/CURRENT_LIFECYCLE.md")
+          life = life_path.read_text(encoding="utf-8").rstrip()
+          life_section = """
+          
+## SHDIAG1 publication branch state
+
+Exact frozen SHDIAG1 review bytes are materialized on publication PR #309 only. Profile SHA-256 is `787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e`; SHDIAG1 DLL SHA-256 is `e78e0eb6483d332e3b2a05be772173036c90e9fccd2c1fc9d52980a5d516d062`. Main integration and canonical indexing are pending. S1.42AK remains accepted and S1.42AK-BMDSFIX1 remains the active NOT ACCEPTED gameplay candidate with its passive unwaived DeepSewersFlow gate. Live controllers are unchanged.
+
+Next: separately reconcile/integrate publication PR #309. Do not index, Gale-import, runtime-arm or run gameplay in that checkpoint.
+"""
+          if "## SHDIAG1 publication branch state" not in life:
+              life += "\n" + life_section.strip() + "\n"
+          life_path.write_text(life, encoding="utf-8")
+          PY
+
+          git diff --exit-code origin/main -- BuildSpecs/current.json RuntimeInbox/ACTIVE_BUILD.txt Profiles/EXPECTED_HASHES.json
+          test "$(cat RuntimeInbox/ACTIVE_BUILD.txt)" = "S1.42AK-BMDSFIX1"
+          python - <<'PY'
+          import json
+          x=json.load(open("BuildSpecs/current.json",encoding="utf-8"))
+          assert x["enabled"] is False
+          assert x["build_id"] == "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS"
+          PY
+
+      - name: Commit metadata and remove reconciler
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Current/CURRENT_STATE.json Current/00_CURRENT_STATE.md Knowledge/INTERIORS_AND_LLL.md Knowledge/CURRENT_LIFECYCLE.md
+          git rm -- .github/workflows/one-shot-shdiag1-publication-metadata.yml
+          git commit -m "Reconcile SHDIAG1 publication branch state"
+          git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
