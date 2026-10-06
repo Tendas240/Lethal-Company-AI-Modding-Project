@@ -42,6 +42,8 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 Perform one separately bounded S1.42AK-SHDIAG1 publication PR integration/reconciliation. Verify PR #309 final changed-file set and exact final-head CI with the temporary publication workflow absent; merge only if justified. After merge, verify permanent exact-main-head Knowledge Architecture. Canonical indexing, Profiles/EXPECTED_HASHES.json changes, Gale import, controller changes, runtime activation and gameplay remain unauthorized.
 
+A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+
 ## Where current truth lives
 
 Use `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` for execution cadence, `Current/PROJECT_KNOWLEDGE_MAP.md` for semantic routing and `Current/DOCUMENT_AUTHORITY.md` for current-vs-history precedence. Durable gameplay/config invariants live in the relevant `Knowledge/*.md` topic rather than being duplicated here.
