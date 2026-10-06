@@ -646,7 +646,7 @@ Exact next action: Implement one bounded S1.42AK-LFDIAG1 source/pure-static chec
 
 `Current/280_S1.42AK_LFDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md` authorizes exactly one later inactive review-build checkpoint for the already source/static-validated LFDIAG1 selector.
 
-The frozen review recipe is `BuildSpecs/S1.42AK-LFDIAG1.json`, documented by `BuildSpecs/S1.42AK-LFDIAG1_PLAN.md`. It is pinned to exact `S1.42AK-BMDSFIX1` SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`, short profile identity `LC V1 S1.42AK-LFD1`, and output `Profiles/LC V1 S1.42AK-LFD1.r2z`.
+The frozen review recipe is `BuildSpecs/S1.42AK-LFDIAG1.json`, documented by `BuildSpecs/S1.42AK-LFDIAG1_PLAN.md`. It is pinned to exact `S1.42AK-BMDSFIX1` SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. The short review identity is frozen as `LC V1 S1.42AK-LFD1`; the future ephemeral `.r2z` output is not yet present or published.
 
 The only permitted archive delta is `337 -> 338`: add exactly `BepInEx/plugins/S142AKLFDiag1/S142AKLFDiag1.dll` and change only existing `export.r2x` for profile-name identity. Package/config changes, removals and unrelated byte changes remain forbidden. A later review gate must compile the exact integrated source, prove the one-DLL delta, record exact DLL/profile/artifact hashes, independently rehash the frozen Actions artifact, and keep both live controllers unchanged.
 
