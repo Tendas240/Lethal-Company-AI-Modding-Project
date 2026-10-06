@@ -889,3 +889,10 @@ The next source/static checkpoint is authorized to add the isolated source tree,
 Any later review profile remains pinned to exact `S1.42AK-BMDSFIX1` SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. S1.42AK-BMDSFIX1 remains NOT ACCEPTED and its selector-free Black Mesa x `DeepSewersFlow` gate remains passive, outstanding and unwaived. AGDIAG1, DRDIAG1 and LFDIAG1 remain completed/inactive and are not authorized for rerun or retargeting.
 
 Exact next action: Implement one bounded S1.42AK-SHDIAG1 source/pure-static checkpoint from Current/290_S1.42AK_PHASE_C_STOREHOUSE_SHDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, Patch Safety Review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate that source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct, publish, Gale-import, activate or run a profile; do not change availability or owner restrictions; do not alter BMDSFIX1 or the accepted normalizer; do not rerun AGDIAG1, DRDIAG1 or LFDIAG1; and do not begin Oxyde, Shatteredrooms/CullFactory, BCMER x all-Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
+
+## SHDIAG1 publication branch state
+
+Exact frozen SHDIAG1 review bytes are materialized on publication PR #309 only. The profile SHA-256 is `787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e`; the SHDIAG1 DLL SHA-256 is `e78e0eb6483d332e3b2a05be772173036c90e9fccd2c1fc9d52980a5d516d062`. Main integration and canonical indexing are pending. S1.42AK remains accepted; S1.42AK-BMDSFIX1 remains the active NOT ACCEPTED gameplay candidate with its passive outstanding and unwaived Black Mesa x `DeepSewersFlow` gate. Live controllers remain unchanged.
+
+Exact next action: separately reconcile/integrate publication PR #309. Do not canonically index, Gale-import, runtime-arm or run gameplay in that checkpoint.
+
