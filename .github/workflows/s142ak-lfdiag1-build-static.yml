@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import json, os, pathlib, re, subprocess
+          import hashlib, json, os, pathlib, re, subprocess
           checkpoint = pathlib.Path('BuildSpecs/S1.42AK-LFDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json')
           frozen = checkpoint.exists()
           if frozen:
@@ -43,8 +43,16 @@ jobs:
                   'Patches/S142AKLFDiag1', 'BuildSpecs/S1.42AK-LFDIAG1.json',
                   'BuildSystem/lfdiag1_review_build.py',
                   'AnalysisTools/validate_s142ak_lfdiag1_build.py',
-                  'AnalysisTools/validate_s142ak_lfdiag1_source.py',
                   'RepositoryTools/gale_profile_path_length_guard.py'], check=True)
+              # Publication-stage reconciliation changes only the Python validator.
+              # Keep exact locks on both its frozen original and the reviewed successor.
+              validator_path = 'AnalysisTools/validate_s142ak_lfdiag1_source.py'
+              original_validator = subprocess.check_output(['git', 'show', f'{head}:{validator_path}'])
+              assert hashlib.sha256(original_validator).hexdigest() == 'c85d26ec4a2427a5fdf6b3b0ca01f59f49f1d72eb7af4fdc0a8df43ec2616931'
+              assert hashlib.sha256(pathlib.Path(validator_path).read_bytes()).hexdigest() in {
+                  'c85d26ec4a2427a5fdf6b3b0ca01f59f49f1d72eb7af4fdc0a8df43ec2616931',
+                  'e0ad03bcb11620157213f41713f1093497f06d0cc547e142a9f7a736088d2d76',
+              }, 'Unreviewed source-validator drift'
               source_workflow_path = pathlib.Path('.github/workflows/s142ak-lfdiag1-source-static.yml')
               frozen_source_workflow = subprocess.check_output(
                   ['git', 'show', f'{head}:{source_workflow_path.as_posix()}'],
