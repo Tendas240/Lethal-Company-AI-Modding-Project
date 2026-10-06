@@ -1066,7 +1066,7 @@
       "storehouse_shdiag1_patch_count": 1,
       "storehouse_shdiag1_patch_surface": "LethalLevelLoader.DungeonManager.GetValidExtendedDungeonFlows(ExtendedLevel, bool) postfix after accepted normalizer at Priority.Last",
       "storehouse_shdiag1_implemented": true,
-      "storehouse_shdiag1_built": true,
+      "storehouse_shdiag1_built": false,
       "storehouse_shdiag1_runtime_authorized": false,
       "storehouse_shdiag1_source_static_validation_pending": false,
       "storehouse_shdiag1_source_static_validated": true,

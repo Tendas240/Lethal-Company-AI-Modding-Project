@@ -72,3 +72,5 @@ This checkpoint does **not** publish or activate SHDIAG1.
 - Phase-C residual remains **27**; Storehouse still lacks runtime generation proof.
 
 Exact next action: Validate the frozen S1.42AK-SHDIAG1 inactive review checkpoint on the exact current PR head. Require the SHDIAG1 inactive review workflow to detect REVIEW_BUILD_CHECKPOINT.json, refuse recompilation/reconstruction/upload, and produce zero new artifacts; require Knowledge Architecture and all triggered frozen diagnostic source regression gates to pass. If those exact-head gates pass, merge the review PR, verify permanent exact-main CI, then perform only the small integration reconciliation needed to advance to an exact-byte publication-authorization decision. Do not publish, profile-index, Gale-import, runtime-arm or run gameplay.
+
+Machine-state semantics: `storehouse_shdiag1_built` remains `false` during inactive review because no SHDIAG1 profile/DLL is committed or published; the successful ephemeral review is represented separately by `storehouse_shdiag1_review_build_pass = true` and the frozen artifact evidence.
