@@ -93,3 +93,10 @@ Therefore S1.42AK remains accepted; S1.42AK-BMDSFIX1 remains active / **NOT ACCE
 The temporary `.github/workflows/one-shot-lfdiag1-publication.yml` existed only to transport the exact frozen bytes and has already been removed from the publication branch at commit `129a5d5b2c303df068ea257265e353db0e862f72`. It must remain absent from the final integration head.
 
 Final PR-head validation after the human-authored publication evidence/state commits remains required before merge.
+
+
+## Publication integration blocker — source-stage lifecycle assertion
+
+Exact evidence head `c9dbc906ef273276a46ceaec38c868f8b1402f60` passed Knowledge Architecture `37444638422` / #1197, frozen inactive-review guard `37444638393` / #8, DRDIAG1 source gate `37444638466` / #37 and AGDIAG1 source gate `37444638519` / #47. LFDIAG1 source gate `37444638509` / #11 failed only in `AnalysisTools/validate_s142ak_lfdiag1_source.py` at the historical assertion `liminal_facility_lfdiag1_built is False` (`RuntimeError: LFDIAG1 must remain unbuilt`), after pure selector tests and source compilation had passed.
+
+The publication state correctly records the existing built/published artifact; reverting that fact would misstate lifecycle reality. The source-stage assertion is incompatible with the authorized later publication stage. No source validator or gameplay code was changed or bypassed in this publication checkpoint. Publication transport/hash/archive checks remain PASS, but this PR is **not integration-ready** until a separately bounded integration/reconciliation checkpoint resolves that stage-bound assertion against the frozen publication authority and obtains all required exact-final-head gates. Do not merge on Knowledge Architecture alone. Any later metadata-only head still requires its own exact-head CI; the run IDs above certify only the named evidence head.
