@@ -1042,3 +1042,24 @@ Current/312_S1.42AK_POST_RECURRENCE_ARRAY_FLOOD_ATTRIBUTION_REASSESSMENT.md comp
 This decision supersedes the attribution-reassessment-next instruction of record 311; its Tower PASS and runtime evidence remain unchanged. The existing TWDIAG1 recurrence has been consumed by this reassessment and creates no standing runtime authorization. Missing instance/replacement/mesh/writer linkage remains the existing proof boundary, not a newly authorized diagnostic. S1.42AK remains accepted; S1.42AK-BMDSFIX1 remains active / NOT ACCEPTED with the passive DeepSewersFlow gate outstanding and unwaived. Both controllers remain unchanged; residual remains 25 = 13 + 12.
 
 Exact next action: Perform one bounded Phase-C residual-25 interior-proof priority reassessment from Current/311_S1.42AK_TWDIAG1_TOWER_RUNTIME_EVIDENCE_RECONCILIATION.md and Current/312_S1.42AK_POST_RECURRENCE_ARRAY_FLOOD_ATTRIBUTION_REASSESSMENT.md. Preserve Tower / TowerFlow diagnostic-generated generation/materialization PASS without claiming natural selection frequency, retain 25 residual flows (13 viable/equal-100 plus 12 unchanged owner-hard-block), and select exactly one next evidence target or prerequisite using existing repository evidence. Post-recurrence array attribution is complete with Janitor/Princess strongly strengthened but unproven, SpringMan not excluded, exact emitter/native owner/root cause unresolved, and no narrower executable prerequisite. Do not authorize/start runtime, rerun or retarget completed diagnostics, change availability or owner restrictions, implement a patch or alter profile/config/DLL/package bytes, reopen this same-evidence attribution or Oxyde, accept BMDSFIX1, waive or dedicated-reroll its passive Black Mesa x DeepSewersFlow gate, or begin Shatteredrooms/CullFactory, BCMER x all-Pikmin or Herobrine work in that reassessment.
+
+## Phase-C Circus Facility CFDIAG1 source/static implementation authorization
+
+`Current/315_S1.42AK_PHASE_C_CIRCUS_FACILITY_CFDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md` authorizes the next bounded selector-only source/pure-static implementation checkpoint after the record-314 Circus Facility reuse preflight.
+
+The diagnostic identity is frozen:
+
+- build `S1.42AK-CFDIAG1`;
+- project/assembly `S142AKCFDiag1`;
+- GUID `tendas.lethalcompany.s142akcfdiag1`;
+- version `1.0.0`;
+- marker `[CFDIAG1]`;
+- future short Gale identity `LC V1 S1.42AK-CFD1`.
+
+The implementation authority remains deliberately narrow: exactly one postfix on LLL's exact `GetValidExtendedDungeonFlows(ExtendedLevel, bool)`, after the accepted normalizer at `Priority.Last`. On the real Offense server-selection path it may reduce only the already-returned viable list, and only after proving one unique `Circus Facility` wrapper with exact `CircusFacilityFlow` asset and final rarity `100`. It must retain that same wrapper object.
+
+The next source/static checkpoint is authorized to add the isolated source tree, pure fail-closed tests, Patch Safety Review, deterministic repository validator, dedicated source/static workflow and source/static/canonical findings. No profile construction, DLL publication, Gale import, activation or runtime is authorized by this record.
+
+Any later review profile remains pinned to exact `S1.42AK-BMDSFIX1` SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. S1.42AK-BMDSFIX1 remains NOT ACCEPTED and its selector-free Black Mesa x `DeepSewersFlow` gate remains passive, outstanding and unwaived. TWDIAG1, SHDIAG1, LFDIAG1, DRDIAG1 and AGDIAG1 remain completed/inactive and are not authorized for rerun or retargeting. Current/312 remains the completed-unresolved array-attribution boundary.
+
+Exact next action: Implement one bounded S1.42AK-CFDIAG1 source/pure-static checkpoint from Current/315_S1.42AK_PHASE_C_CIRCUS_FACILITY_CFDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, Patch Safety Review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate that source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct, publish, Gale-import, activate or run a profile; do not change availability or owner restrictions; do not alter BMDSFIX1 or the accepted normalizer; do not rerun TWDIAG1, SHDIAG1, LFDIAG1, DRDIAG1 or AGDIAG1; do not reopen the completed post-recurrence array attribution or Oxyde; and do not begin Shatteredrooms/CullFactory, BCMER x all-Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
