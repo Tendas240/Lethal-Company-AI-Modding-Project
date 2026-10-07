@@ -15,5 +15,38 @@
   "profile_indexing": false,
   "published": false,
   "runtime_armed": false,
-  "runtime_proof": false
+  "runtime_proof": false,
+  "profile_name": "LC V1 S1.42AK-TWD1",
+  "base_build_id": "S1.42AK-BMDSFIX1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "output_profile": "Profiles/LC V1 S1.42AK-TWD1.r2z",
+  "output_sha256": "a5561b26ae5efe17b53239a0fc8a81020eec64ea59b5e3a7cca3481e6b3d7857",
+  "zip_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKTWDiag1/S142AKTWDiag1.dll"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "snapshot_dir": "ProfileSources/S1.42AK-TWDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "runtime_target_metadata": {
+    "activation_record": "Current/310_S1.42AK_TWDIAG1_RUNTIME_ACTIVATION.md",
+    "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+    "authority_parent_build_id": "S1.42AK-BMDSFIX1",
+    "authority_parent_runtime_status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "authority_parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+    "runtime_controller_target": "S1.42AK-TWDIAG1",
+    "runtime_attempts_authorized": 1,
+    "runtime_target_moon": "Offense",
+    "runtime_target_dungeon_name": "Tower",
+    "runtime_target_flow": "TowerFlow"
+  }
 }
