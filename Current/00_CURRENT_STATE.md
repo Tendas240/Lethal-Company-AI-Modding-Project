@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Execute one separately bounded S1.42AK-TWDIAG1 inactive review-build checkpoint from Current/304_S1.42AK_TWDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md and BuildSpecs/S1.42AK-TWDIAG1_PLAN.md. Implement the dedicated build validator/workflow, compile the exact main-integrated TWDIAG1 source, construct one ephemeral review profile from exact S1.42AK-BMDSFIX1 SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0, prove the exact 337->338 one-DLL/archive-identity delta, record exact DLL/profile/artifact hashes and independently rehash the frozen Actions artifact. Keep BuildSpecs/current.json disabled and RuntimeInbox/ACTIVE_BUILD.txt on S1.42AK-BMDSFIX1. Do not publish, profile-index, Gale-import, runtime-arm or run gameplay in that checkpoint.
+Complete the separately bounded PR #322 TWDIAG1 inactive review-build freeze/integration reconciliation. Verify that the final PR head runs the frozen review guard without recompiling, reconstructing or uploading a replacement artifact; verify TWDIAG1 source regression and Knowledge Architecture on that same final head; then merge only if all exact-head gates are green and verify permanent exact-main-head CI. Keep authoritative artifact ID 11471277979 and its exact ZIP/profile/DLL hashes frozen. Do not publish or profile-index TWDIAG1, Gale-import it, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm it, run gameplay, alter availability/owner rules, or rerun completed diagnostics.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
