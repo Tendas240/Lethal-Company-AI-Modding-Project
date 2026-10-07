@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Execute one separately bounded S1.42AK-CFDIAG1 exact-byte publication checkpoint using only frozen Actions artifact 11499680067. Immediately before materialization, re-download that exact artifact ID and verify ZIP SHA-256 287dc7aacb481b63d9381ce0f7b4be56134c5330c21eb8a506b71a21db879371, profile SHA-256 a4ebbed30e530153e3f3dc92b97b676729eada94e602ccf29a4ca63a64f3ce4c, and DLL SHA-256 00ea72dff35512779b5c24d64bb481db21be7f6d9365d1ec947245e5505c6776. Then materialize only those exact reviewed bytes and deterministic readable publication evidence. Do not rebuild or reconstruct, canonically profile-index, modify Profiles/EXPECTED_HASHES.json, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, or run gameplay in that checkpoint.
+Perform one separately bounded S1.42AK-CFDIAG1 publication PR integration/reconciliation. Verify PR #340 final changed-file set and exact final-head CI with the temporary publication workflow absent; merge only if justified. After merge, verify permanent exact-main-head Knowledge Architecture. Canonical indexing, Profiles/EXPECTED_HASHES.json changes, Gale import, controller changes, runtime activation and gameplay remain unauthorized.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
