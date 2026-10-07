@@ -101,5 +101,10 @@
     "build_id": "S1.42AK-SHDIAG1",
     "sha256": "787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e",
     "note": "Diagnostic-only active runtime target for one bounded deterministic Offense Storehouse / SHFlow generation-materialization proof; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-SHDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
+  },
+  "Profiles/LC V1 S1.42AK-TWD1.r2z": {
+    "build_id": "S1.42AK-TWDIAG1",
+    "sha256": "a5561b26ae5efe17b53239a0fc8a81020eec64ea59b5e3a7cca3481e6b3d7857",
+    "note": "Inactive diagnostic-only published profile for one bounded deterministic Offense Tower / TowerFlow generation-materialization proof; exact reviewed bytes are published and the canonical readable snapshot is ProfileSources/S1.42AK-TWDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Canonical indexing does not Gale-import or runtime-arm the diagnostic."
   }
 }
