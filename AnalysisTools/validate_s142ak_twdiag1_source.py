@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Validate the S1.42AK-TWDIAG1 source-only fail-closed selector contract."""
+import hashlib
+import io
+import zipfile
 import json
 import re
 from pathlib import Path
@@ -33,7 +36,37 @@ require(state["runtime_test_outstanding"] is True, "BMDSFIX1 runtime gate must r
 
 phase = state["selected_scope"]["phase_c"]
 require(phase["tower_twdiag1_implemented"] is True, "TWDIAG1 source must be staged")
-require(phase["tower_twdiag1_built"] is False, "TWDIAG1 must remain unbuilt")
+# Source-stage absence and later frozen publication are distinct lifecycle states.
+# A built flag is allowed only for the exact authorized, materialized review bytes.
+built = phase["tower_twdiag1_built"]
+published_profile = ROOT / "Profiles/LC V1 S1.42AK-TWD1.r2z"
+require(type(built) is bool, "TWDIAG1 built flag must be boolean")
+if not built:
+    require(not published_profile.exists(), "unbuilt state contradicts published TWDIAG1 profile")
+else:
+    require(phase.get("tower_twdiag1_review_build_pass") is True, "frozen review prerequisite missing")
+    require(phase.get("tower_twdiag1_publication_pr") == 325, "publication PR authority drift")
+    require((ROOT / "Current/306_S1.42AK_TWDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md").is_file(), "publication authorization missing")
+    require((ROOT / "Current/307_S1.42AK_TWDIAG1_EXACT_BYTE_PUBLICATION_CHECKPOINT.md").is_file(), "publication checkpoint missing")
+    frozen = json.loads((ROOT / "BuildSpecs/S1.42AK-TWDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json").read_text(encoding="utf-8"))
+    require(frozen["status"] == "PASS_INACTIVE_REVIEW_BUILD_INDEPENDENTLY_REHASHED", "review prerequisite is not PASS")
+    require(frozen["classification"] == "DIAGNOSTIC_ONLY_NEVER_ACCEPT", "diagnostic classification drift")
+    require(frozen["authoritative_artifact_id"] == 11471277979, "non-authoritative artifact")
+    require(frozen["actions_artifact"]["artifact_id"] == 11471277979, "artifact ID drift")
+    require(frozen["actions_artifact"]["actions_zip_sha256"] == "36e1466c1891f74d06a1195084a8c939b531dbd19b33a7abd29fd9463e568da0", "frozen ZIP digest drift")
+    require(frozen["independent_artifact_rehash_match"] is True, "independent review rehash missing")
+    profile_hash = "a5561b26ae5efe17b53239a0fc8a81020eec64ea59b5e3a7cca3481e6b3d7857"
+    dll_hash = "80c8f7615e6eeba59333160db5b7f3d40c6a97f2aafeaa01953cb4ce19e40499"
+    require(frozen["profile_sha256"] == profile_hash and frozen["dll_sha256"] == dll_hash, "frozen profile/DLL authority drift")
+    require(phase.get("tower_twdiag1_profile") == "Profiles/LC V1 S1.42AK-TWD1.r2z", "published profile path drift")
+    require(phase.get("tower_twdiag1_profile_sha256") == profile_hash, "published profile authority drift")
+    require(phase.get("tower_twdiag1_dll_sha256") == dll_hash, "published DLL authority drift")
+    profile_bytes = published_profile.read_bytes()
+    require(hashlib.sha256(profile_bytes).hexdigest() == profile_hash, "published profile byte drift")
+    with zipfile.ZipFile(io.BytesIO(profile_bytes)) as archive:
+        require(archive.testzip() is None, "published profile CRC failure")
+        require(len(archive.namelist()) == 338 and len(set(archive.namelist())) == 338, "published archive member drift")
+        require(hashlib.sha256(archive.read("BepInEx/plugins/S142AKTWDiag1/S142AKTWDiag1.dll")).hexdigest() == dll_hash, "published DLL byte drift")
 require(phase["tower_twdiag1_runtime_authorized"] is False, "TWDIAG1 runtime must remain unauthorized")
 require(phase["tower_twdiag1_source_static_validation_pending"] is False, "validation pending flag must be cleared")
 require(phase["tower_twdiag1_source_static_validated"] is True, "source/static validated flag missing")
