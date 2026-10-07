@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-CFDIAG1",
+  "profile_path": "Profiles/LC V1 S1.42AK-CFD1.r2z",
+  "profile_name": "LC V1 S1.42AK-CFD1",
+  "sha256": "a4ebbed30e530153e3f3dc92b97b676729eada94e602ccf29a4ca63a64f3ce4c",
+  "zip_members": 338,
+  "snapshot_dir": "ProfileSources/S1.42AK-CFDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}
