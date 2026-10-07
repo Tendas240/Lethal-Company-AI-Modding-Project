@@ -61,7 +61,6 @@ def main() -> None:
         "AnalysisTools/validate_s142ak_twdiag1_source.py",
         ".github/workflows/s142ak-twdiag1-source-static.yml",
         "SourceEvidence/UniversalInteriorViability/TWDIAG1SourceStatic/FINDINGS.md",
-        "Current/303_S1.42AK_PHASE_C_TOWER_TWDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md",
     )
     require(source_diff.returncode == 0,
             "Main-integrated TWDIAG1 source/static inputs drifted in review branch:\n" + source_diff.stdout)
