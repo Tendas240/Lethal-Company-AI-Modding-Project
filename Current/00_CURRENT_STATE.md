@@ -32,7 +32,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 ## Live execution state
 
 - Active candidate: **S1.42AK-BMDSFIX1**
-- Runtime test outstanding: **no**
+- Runtime test outstanding: **yes**
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
@@ -42,7 +42,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 Perform one bounded post-recurrence array-flood attribution reassessment using the exact S1.42AK-TWDIAG1 evidence at RuntimeEvidence/S1.42AK-TWDIAG1/20261007T144642Z/ together with Current/228_S1.42AK_BMAFR1_ASSET_LEVEL_ATTRIBUTION_RECONCILIATION.md, Current/239_S1.42AK_BMAFR1I1_RUNTIME_ATTRIBUTION_RECONCILIATION.md and Current/241_S1.42AK_BMAFR1I1_POST_RUNTIME_ATTRIBUTION_DECISION.md. Determine whether the naturally recurring 2,835-message 'Array index (0) is out of bounds (size=0)' flood, the successful Janitor and SpringMan spawns, and the immediately preceding DawnLib.DuskMod 'TransferRenderer: Material count mismatch (got 3, need 4)' fingerprint materially narrow the owner/root-cause boundary. Preserve Janitor/Princess as strongly strengthened but not proven, SpringMan as not excluded, and the exact emitter/native owner/root cause as unresolved unless the existing evidence proves otherwise. Do not authorize or run BMAFR1I1, TWDIAG1 or another diagnostic, do not implement a patch or change profile/config/package bytes, do not accept TWDIAG1 or S1.42AK-BMDSFIX1, do not waive or dedicated-reroll the passive BMDSFIX1 Black Mesa x DeepSewersFlow gate, and do not begin Oxyde, Shatteredrooms/CullFactory, BCMER x all-Pikmin or Herobrine work. After that attribution decision, return to the residual-25 interior-proof priority reassessment unless the decision establishes a narrower prerequisite.
 
-No new runtime test is pending. A completed run may still require its build-specific PowerShell uploader before evidence ingestion; `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
+A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
 ## Where current truth lives
 
