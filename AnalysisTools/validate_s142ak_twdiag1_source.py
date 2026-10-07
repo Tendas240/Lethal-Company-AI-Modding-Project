@@ -32,11 +32,11 @@ require(state["active_candidate"]["build_id"] == "S1.42AK-BMDSFIX1", "active can
 require(state["runtime_test_outstanding"] is True, "BMDSFIX1 runtime gate must remain outstanding")
 
 phase = state["selected_scope"]["phase_c"]
-require(phase["storehouse_twdiag1_implemented"] is True, "TWDIAG1 source must be staged")
-require(phase["storehouse_twdiag1_built"] is False, "TWDIAG1 must remain unbuilt")
-require(phase["storehouse_twdiag1_runtime_authorized"] is False, "TWDIAG1 runtime must remain unauthorized")
-require(phase["storehouse_twdiag1_source_static_validation_pending"] is True, "staged validation pending flag missing")
-require(phase["storehouse_twdiag1_source_static_validated"] is False, "staged source must not claim validated")
+require(phase["tower_twdiag1_implemented"] is True, "TWDIAG1 source must be staged")
+require(phase["tower_twdiag1_built"] is False, "TWDIAG1 must remain unbuilt")
+require(phase["tower_twdiag1_runtime_authorized"] is False, "TWDIAG1 runtime must remain unauthorized")
+require(phase["tower_twdiag1_source_static_validation_pending"] is True, "staged validation pending flag missing")
+require(phase["tower_twdiag1_source_static_validated"] is False, "staged source must not claim validated")
 
 m = re.search(r"<RestoreAdditionalProjectSources>\s*(.*?)\s*</RestoreAdditionalProjectSources>", project, re.S)
 require(m is not None, "restore sources missing")
