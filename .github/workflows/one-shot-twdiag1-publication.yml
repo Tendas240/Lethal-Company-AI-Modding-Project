@@ -107,7 +107,16 @@ jobs:
           assert checkpoint['independent_artifact_rehash_match'] is True
           assert checkpoint['actions_artifact']['independent_artifact_rehash_match'] is True
           assert int(os.environ['ARTIFACT_ID']) == 11471277979
-          assert checkpoint['superseded_intermediate_artifacts'] == []
+          failed = checkpoint.get('superseded_failed_runs', [])
+          assert failed == [{
+              'run_id': 37597776944,
+              'run_number': 1,
+              'head': 'eea27db274ac84ab560f3131d8d4fdc379778034',
+              'conclusion': 'failure',
+              'artifact_created': False,
+              'reason': 'Review builder source-freeze scope incorrectly pinned the later-authoritatively-corrected Current/303 documentation bytes to the older source integration commit. Pure policy tests, source validator and plugin compilation passed; repair removed only that documentation file from the byte-lock.'
+          }]
+          assert all(x['artifact_created'] is False for x in failed)
 
           def sha(data: bytes) -> str:
               return hashlib.sha256(data).hexdigest()
