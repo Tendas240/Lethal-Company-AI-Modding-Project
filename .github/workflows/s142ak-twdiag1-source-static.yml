@@ -5,7 +5,7 @@ on:
       - 'Patches/S142AKTWDiag1/**'
       - 'AnalysisTools/validate_s142ak_twdiag1_source.py'
       - 'SourceEvidence/UniversalInteriorViability/TWDIAG1SourceStatic/**'
-      - 'Current/291_S1.42AK_PHASE_C_STOREHOUSE_TWDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
+      - 'Current/303_S1.42AK_PHASE_C_TOWER_TWDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
       - 'Knowledge/INTERIORS_AND_LLL.md'
       - '.github/workflows/s142ak-twdiag1-source-static.yml'
 permissions:
