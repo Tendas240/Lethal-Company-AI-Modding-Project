@@ -1,4 +1,5 @@
 name: One-shot CFDIAG1 exact-byte publication
+# Revalidation trigger after exact bot materialization; no byte reconstruction authority.
 
 on:
   pull_request:
