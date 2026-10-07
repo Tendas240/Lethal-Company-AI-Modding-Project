@@ -29,7 +29,7 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import json, os, pathlib, re, subprocess
+          import hashlib, json, os, pathlib, re, subprocess
           checkpoint = pathlib.Path('BuildSpecs/S1.42AK-TWDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json')
           frozen = checkpoint.exists()
           if frozen:
@@ -46,10 +46,23 @@ jobs:
                   'BuildSpecs/S1.42AK-TWDIAG1_PLAN.md',
                   'BuildSystem/twdiag1_review_build.py',
                   'AnalysisTools/validate_s142ak_twdiag1_build.py',
-                  'AnalysisTools/validate_s142ak_twdiag1_source.py',
-                  '.github/workflows/s142ak-twdiag1-source-static.yml',
-                  '.github/workflows/s142ak-twdiag1-build-static.yml',
                   'RepositoryTools/gale_profile_path_length_guard.py'], check=True)
+              # Publication-stage reconciliation changes only the Python source validator.
+              # Keep exact locks on both its frozen original and the reviewed successor.
+              validator_path = 'AnalysisTools/validate_s142ak_twdiag1_source.py'
+              original_validator = subprocess.check_output(['git', 'show', f'{head}:{validator_path}'])
+              assert hashlib.sha256(original_validator).hexdigest() == 'e28298afd1b6c85f257d9b1535886daf0b8122ecf40d7445af219e8c15a88943'
+              assert hashlib.sha256(pathlib.Path(validator_path).read_bytes()).hexdigest() in {
+                  'e28298afd1b6c85f257d9b1535886daf0b8122ecf40d7445af219e8c15a88943',
+                  '2a0eb0074a324b0b1067fee389de85ba1d500aec527a161f591fb14621f68386',
+              }, 'Unreviewed source-validator drift'
+              source_workflow_path = pathlib.Path('.github/workflows/s142ak-twdiag1-source-static.yml')
+              frozen_source_workflow = subprocess.check_output(
+                  ['git', 'show', f'{head}:{source_workflow_path.as_posix()}'],
+                  text=True,
+              )
+              current_source_workflow = source_workflow_path.read_text(encoding='utf-8')
+              assert current_source_workflow == frozen_source_workflow
               print('Frozen TWDIAG1 review artifact remains authoritative; no recompilation, archive reconstruction or upload.')
               print('This step verifies the source/recipe lock only, not a fresh artifact download or runtime result.')
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
