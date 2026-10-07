@@ -107,7 +107,7 @@ def negative_cases(parent: dict[str, bytes], built: dict[str, bytes], dll: bytes
         "extra-plugin": lambda b: b.__setitem__("BepInEx/plugins/unauthorized.dll", b"wrong"),
         "export-drift": lambda b: b.__setitem__("export.r2x", b["export.r2x"] + b"\n# unauthorized\n"),
         "wrong-profile-identity": lambda b: b.__setitem__(
-            "export.r2x", b["export.r2x"].replace(b"LC V1 S1.42AK-CFD1", b"LC V1 S1.42AK-TWD2")),
+            "export.r2x", b["export.r2x"].replace(b"LC V1 S1.42AK-CFD1", b"LC V1 S1.42AK-CFD2")),
         "wrong-cfdiag1-dll": lambda b: b.__setitem__(DLL_MEMBER, b"wrong"),
     }
     for name, mutate in mutations.items():
