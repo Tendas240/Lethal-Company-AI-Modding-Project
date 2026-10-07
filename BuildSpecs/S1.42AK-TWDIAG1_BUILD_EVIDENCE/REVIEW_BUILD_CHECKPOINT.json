@@ -1,0 +1,101 @@
+{
+  "status": "PASS_INACTIVE_REVIEW_BUILD_INDEPENDENTLY_REHASHED",
+  "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+  "date": "2026-10-07",
+  "build_id": "S1.42AK-TWDIAG1",
+  "authority": "Current/304_S1.42AK_TWDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md",
+  "source_main_commit": "b240d621951e80b904dc0e5bbb4435e4d064d9cf",
+  "review_pr": 322,
+  "build_head": "ee71c76d944b561d8327113b151ad6bffab6f46d",
+  "review_workflow": "S1.42AK TWDIAG1 inactive compile and archive review",
+  "review_run_id": 37598315190,
+  "review_run_number": 2,
+  "review_run_event": "pull_request",
+  "review_run_conclusion": "success",
+  "review_job_id": 112716226258,
+  "build_warnings": 0,
+  "build_errors": 0,
+  "assembly_name": "S142AKTWDiag1",
+  "dll_sha256": "80c8f7615e6eeba59333160db5b7f3d40c6a97f2aafeaa01953cb4ce19e40499",
+  "parent_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "parent_members": 337,
+  "review_profile": "Profiles/LC V1 S1.42AK-TWD1.r2z",
+  "profile_sha256": "a5561b26ae5efe17b53239a0fc8a81020eec64ea59b5e3a7cca3481e6b3d7857",
+  "review_members": 338,
+  "added_members": [
+    "BepInEx/plugins/S142AKTWDiag1/S142AKTWDiag1.dll"
+  ],
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "inherited_bmdsfix1_dll_sha256": "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
+  "accepted_normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+  "negative_cases": [
+    "config-drift",
+    "bmdsfix1-replaced",
+    "normalizer-replaced",
+    "member-removed",
+    "extra-plugin",
+    "export-drift",
+    "wrong-profile-identity",
+    "wrong-twdiag1-dll"
+  ],
+  "source_static_validator_rechecked_in_review_run": true,
+  "pure_selector_policy_rechecked_in_review_run": true,
+  "gale_path_guard_self_test": "PASS",
+  "gale_max_projected_runtime_path": 217,
+  "gale_runtime_path_budget": 255,
+  "knowledge_architecture_build_head_run_id": 37598315154,
+  "knowledge_architecture_build_head_run_number": 1291,
+  "knowledge_architecture_build_head_conclusion": "success",
+  "actions_artifact": {
+    "artifact_id": 11471277979,
+    "name": "S1.42AK-TWDIAG1-review-ee71c76d944b561d8327113b151ad6bffab6f46d",
+    "size_bytes": 536829,
+    "expires_at": "2027-01-05T09:06:31Z",
+    "actions_zip_sha256": "36e1466c1891f74d06a1195084a8c939b531dbd19b33a7abd29fd9463e568da0",
+    "independent_zip_sha256": "36e1466c1891f74d06a1195084a8c939b531dbd19b33a7abd29fd9463e568da0",
+    "independent_artifact_rehash_match": true,
+    "zip_crc_check": "PASS",
+    "member_count": 4,
+    "member_sha256": {
+      "DLL/S142AKTWDiag1.dll": "80c8f7615e6eeba59333160db5b7f3d40c6a97f2aafeaa01953cb4ce19e40499",
+      "Evidence/BUILD_RESULT.json": "68022d151acdbfe3a387d590a08ea1b129e0b8b989407f78bcde19bbfc871fca",
+      "Evidence/STATIC_VERIFICATION.json": "1fdf91b78aaa0b6b62ea662b5c0dde300dfe7330597aa2669af9231668a5a970",
+      "Profiles/LC V1 S1.42AK-TWD1.r2z": "a5561b26ae5efe17b53239a0fc8a81020eec64ea59b5e3a7cca3481e6b3d7857"
+    }
+  },
+  "independent_artifact_rehash_match": true,
+  "review_profile_committed": false,
+  "profile_sources_index_created": false,
+  "published": false,
+  "gale_imported": false,
+  "build_controller_changed": false,
+  "runtime_controller_changed": false,
+  "runtime_armed": false,
+  "runtime_proof": false,
+  "acceptance_effect": "NONE",
+  "qualification": "Compiler/build/archive validity and frozen-artifact byte identity only. No publication, ProfileSources index, Gale import, runtime activation, gameplay proof or acceptance.",
+  "authoritative_artifact_id": 11471277979,
+  "authoritative_publication_source_only": {
+    "artifact_id": 11471277979,
+    "actions_zip_sha256": "36e1466c1891f74d06a1195084a8c939b531dbd19b33a7abd29fd9463e568da0",
+    "profile_sha256": "a5561b26ae5efe17b53239a0fc8a81020eec64ea59b5e3a7cca3481e6b3d7857",
+    "dll_sha256": "80c8f7615e6eeba59333160db5b7f3d40c6a97f2aafeaa01953cb4ce19e40499",
+    "rule": "Any later lifecycle gate must reference these exact already-frozen bytes by artifact ID and hashes; never select a newer artifact by name prefix."
+  },
+  "superseded_failed_runs": [
+    {
+      "run_id": 37597776944,
+      "run_number": 1,
+      "head": "eea27db274ac84ab560f3131d8d4fdc379778034",
+      "conclusion": "failure",
+      "artifact_created": false,
+      "reason": "Review builder source-freeze scope incorrectly pinned the later-authoritatively-corrected Current/303 documentation bytes to the older source integration commit. Pure policy tests, source validator and plugin compilation passed; repair removed only that documentation file from the byte-lock."
+    }
+  ]
+}

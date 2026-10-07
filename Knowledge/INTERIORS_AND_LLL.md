@@ -848,3 +848,16 @@ This authorization itself does not compile/build, publish, profile-index, Gale-i
 
 Exact next action: Execute one separately bounded S1.42AK-TWDIAG1 inactive review-build checkpoint from Current/304_S1.42AK_TWDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md and BuildSpecs/S1.42AK-TWDIAG1_PLAN.md. Implement the dedicated build validator/workflow, compile the exact main-integrated TWDIAG1 source, construct one ephemeral review profile from exact S1.42AK-BMDSFIX1 SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0, prove the exact 337->338 one-DLL/archive-identity delta, record exact DLL/profile/artifact hashes and independently rehash the frozen Actions artifact. Keep BuildSpecs/current.json disabled and RuntimeInbox/ACTIVE_BUILD.txt on S1.42AK-BMDSFIX1. Do not publish, profile-index, Gale-import, runtime-arm or run gameplay in that checkpoint.
 
+
+
+## Phase-C Tower TWDIAG1 inactive review build — exact bytes frozen / integration pending
+
+`Current/305_S1.42AK_TWDIAG1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md` records the successful inactive compiler/build/archive review on exact PR #322 build head `ee71c76d944b561d8327113b151ad6bffab6f46d`. Review run `37598315190`/#2 and Knowledge Architecture `37598315154`/#1291 passed. The exact DLL SHA-256 is `80c8f7615e6eeba59333160db5b7f3d40c6a97f2aafeaa01953cb4ce19e40499`; exact review-profile SHA-256 is `a5561b26ae5efe17b53239a0fc8a81020eec64ea59b5e3a7cca3481e6b3d7857`.
+
+Authoritative Actions artifact `11471277979` has ZIP SHA-256 `36e1466c1891f74d06a1195084a8c939b531dbd19b33a7abd29fd9463e568da0`. It was independently downloaded and rehashed to the identical SHA-256; ZIP CRC passed and all four artifact members were independently hashed. The exact archive contract passed at `337 -> 338`: only the TWDIAG1 DLL was added, only `export.r2x` identity changed, and removed/package/config changes are zero. The inherited BMDSFIX1 and accepted normalizer hashes remain exact; all eight negative mutation cases were rejected; Gale path budget passed at `217/255`.
+
+The first review run `37597776944`/#1 is superseded: it failed only because the review builder over-broadly pinned later-corrected Current/303 documentation bytes to the older source integration commit. Pure tests, source validation and compilation had already passed, no artifact was produced, and the repair changed no selector/gameplay source.
+
+The reviewed bytes are frozen but PR #322 integration is still pending. `tower_twdiag1_built=false` remains deliberate; no profile/DLL is committed or published. S1.42AK-BMDSFIX1 remains active / NOT ACCEPTED, both live controllers remain unchanged, residual remains 26 and Tower / `TowerFlow` remains runtime-unproven.
+
+Exact next action: complete PR #322 frozen-guard integration/reconciliation on one final exact head. The review workflow must detect the frozen checkpoint and produce zero replacement artifacts, while TWDIAG1 source regression and Knowledge Architecture remain green. Do not publish, profile-index, Gale-import, runtime-arm or run gameplay.
