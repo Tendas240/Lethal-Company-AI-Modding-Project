@@ -1063,3 +1063,26 @@ The next source/static checkpoint is authorized to add the isolated source tree,
 Any later review profile remains pinned to exact `S1.42AK-BMDSFIX1` SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`. S1.42AK-BMDSFIX1 remains NOT ACCEPTED and its selector-free Black Mesa x `DeepSewersFlow` gate remains passive, outstanding and unwaived. TWDIAG1, SHDIAG1, LFDIAG1, DRDIAG1 and AGDIAG1 remain completed/inactive and are not authorized for rerun or retargeting. Current/312 remains the completed-unresolved array-attribution boundary.
 
 Exact next action: Implement one bounded S1.42AK-CFDIAG1 source/pure-static checkpoint from Current/315_S1.42AK_PHASE_C_CIRCUS_FACILITY_CFDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md. Create only the selector-only source tree, pure fail-closed policy tests, Patch Safety Review, deterministic repository validator, dedicated source/static workflow and source/static findings/canonical completion records. Validate that source/static checkpoint through the dedicated PR gate and Knowledge Architecture. Do not construct, publish, Gale-import, activate or run a profile; do not change availability or owner restrictions; do not alter BMDSFIX1 or the accepted normalizer; do not rerun TWDIAG1, SHDIAG1, LFDIAG1, DRDIAG1 or AGDIAG1; do not reopen the completed post-recurrence array attribution or Oxyde; and do not begin Shatteredrooms/CullFactory, BCMER x all-Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
+
+## Phase-C Circus Facility CFDIAG1 source/pure-static implementation complete — inactive review-build authorization next
+
+`Current/316_S1.42AK_PHASE_C_CIRCUS_FACILITY_CFDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md` supersedes the earlier CFDIAG1 implementation-next wording from record 315 for current routing.
+
+The separately versioned diagnostic source is now implemented and exact-PR-head validated:
+
+- build `S1.42AK-CFDIAG1`;
+- project/assembly `S142AKCFDiag1`;
+- GUID `tendas.lethalcompany.s142akcfdiag1`;
+- marker `[CFDIAG1]`;
+- future short Gale identity `LC V1 S1.42AK-CFD1`;
+- exactly one post-normalizer `LethalLevelLoader.DungeonManager.GetValidExtendedDungeonFlows(ExtendedLevel, bool)` postfix at `Priority.Last`;
+- exact target `Offense / Circus Facility / CircusFacilityFlow / rarity 100`;
+- pure fail-closed tests, source compile, Patch Safety Review and deterministic source/controller validator all PASS.
+
+PR #334 final head `0addbe9abe2c8ce856a58b07c176cda320f51c6f` passed `S1.42AK CFDIAG1 source and pure static gate` run `37652415174` / #2 and Knowledge Architecture run `37652415191` / #1328, then merged as `708d6e2e518d95a8a945ca7bee6627aa932f3a1e`. Permanent exact-main Knowledge Architecture run `37652568484` / #1329 passed on that merge head.
+
+CFDIAG1 remains **DIAGNOSTIC ONLY / NEVER ACCEPT**, implemented but **not built**, **not published**, **not Gale-imported**, **not runtime-armed** and **not runtime-authorized**. No CFDIAG1 profile exists. `BuildSpecs/current.json` remains disabled and `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`. The Phase-C residual remains **25 = 13 viable/equal-100 + 12 owner-hard-block**; Circus Facility remains runtime-unproven.
+
+S1.42AK remains accepted. S1.42AK-BMDSFIX1 remains active / NOT ACCEPTED with its passive selector-free Black Mesa x `DeepSewersFlow` gate outstanding and unwaived. TWDIAG1, SHDIAG1, LFDIAG1, DRDIAG1 and AGDIAG1 remain completed/inactive with no rerun or retargeting authorized. Current/312 remains the completed-unresolved post-recurrence array-attribution boundary. Oxyde, Shatteredrooms/CullFactory, BCMER x all-Pikmin, Herobrine and BMAFR1I1 remain separate and untouched.
+
+Exact next action: Perform one bounded S1.42AK-CFDIAG1 inactive review-build authorization/recipe decision. Pin any future review recipe to exact parent S1.42AK-BMDSFIX1 profile SHA-256 `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`, preserve the frozen short Gale identity `LC V1 S1.42AK-CFD1`, define the exact one-DLL archive delta and build/static validator contract, and decide whether a later inactive review-artifact construction may be authorized. Do not construct, publish, Gale-import, activate or run the CFDIAG1 profile in that decision; do not change availability or owner restrictions; do not alter BMDSFIX1 or the accepted normalizer; do not rerun TWDIAG1, SHDIAG1, LFDIAG1, DRDIAG1 or AGDIAG1; do not reopen the completed post-recurrence array attribution or Oxyde; and do not begin Shatteredrooms/CullFactory, BCMER x all-Pikmin, Herobrine, BMAFR1I1 or a BMDSFIX1 Deep Sewers reroll.
