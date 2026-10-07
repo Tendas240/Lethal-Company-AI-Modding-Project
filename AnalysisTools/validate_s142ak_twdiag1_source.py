@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the staged S1.42AK-TWDIAG1 source-only fail-closed selector contract."""
+"""Validate the S1.42AK-TWDIAG1 source-only fail-closed selector contract."""
 import json
 import re
 from pathlib import Path
@@ -35,8 +35,8 @@ phase = state["selected_scope"]["phase_c"]
 require(phase["tower_twdiag1_implemented"] is True, "TWDIAG1 source must be staged")
 require(phase["tower_twdiag1_built"] is False, "TWDIAG1 must remain unbuilt")
 require(phase["tower_twdiag1_runtime_authorized"] is False, "TWDIAG1 runtime must remain unauthorized")
-require(phase["tower_twdiag1_source_static_validation_pending"] is True, "staged validation pending flag missing")
-require(phase["tower_twdiag1_source_static_validated"] is False, "staged source must not claim validated")
+require(phase["tower_twdiag1_source_static_validation_pending"] is False, "validation pending flag must be cleared")
+require(phase["tower_twdiag1_source_static_validated"] is True, "source/static validated flag missing")
 
 m = re.search(r"<RestoreAdditionalProjectSources>\s*(.*?)\s*</RestoreAdditionalProjectSources>", project, re.S)
 require(m is not None, "restore sources missing")
@@ -100,8 +100,10 @@ for literal in (
 require("Exactly one Harmony surface exists" in safety, "safety review surface count missing")
 require("LLL remains owner" in safety, "safety review ownership boundary missing")
 require("DIAGNOSTIC ONLY / NEVER ACCEPT" in safety, "diagnostic-only boundary missing")
-require("SOURCE / PURE-STATIC STAGED" in checkpoint and "VALIDATION PENDING" in checkpoint, "checkpoint staged state missing")
-require("SOURCE / PURE-STATIC STAGED" in findings and "VALIDATION PENDING" in findings, "findings staged state missing")
+require("SOURCE / PURE-STATIC PASS" in checkpoint, "checkpoint source/static PASS missing")
+require("SOURCE / PURE-STATIC PASS" in findings, "findings source/static PASS missing")
+for evidence in ("e219dd3a10aab703e0375623d61132b812672a29", "37590376145", "37590376061"):
+    require(evidence in checkpoint and evidence in findings, "exact PR validation evidence missing: " + evidence)
 require("profile_builder.py" not in workflow, "source workflow must not build a Gale profile")
 require("ref: ${{ github.event.pull_request.head.sha }}" in workflow, "workflow must checkout exact PR head")
 require("dotnet run --project Patches/S142AKTWDiag1/Tests/Policy.Tests.csproj -c Release" in workflow, "pure test command missing")
@@ -109,7 +111,7 @@ require("dotnet build S142AKTWDiag1.csproj -c Release" in workflow, "compile com
 require("python AnalysisTools/validate_s142ak_twdiag1_source.py" in workflow, "validator command missing")
 
 print(json.dumps({
-    "status": "SOURCE_PURE_STATIC_STAGED_VALIDATION_PENDING_NOT_BUILT_NOT_ARMED",
+    "status": "SOURCE_PURE_STATIC_CONTRACT_PASS_NOT_BUILT_NOT_ARMED",
     "candidate_id": "S1.42AK-TWDIAG1",
     "harmony_surfaces": 1,
     "selection_target": "Offense / Tower / TowerFlow / rarity 100",
