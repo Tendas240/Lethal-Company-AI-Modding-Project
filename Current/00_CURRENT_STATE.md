@@ -40,7 +40,7 @@ A historical rejection can remain preserved even when a later explicit decision 
 
 ## Exact next action
 
-Perform one separately bounded S1.42AK-CFDIAG1 publication PR integration/reconciliation. Verify PR #340 final changed-file set and exact final-head CI with the temporary publication workflow absent; merge only if justified. After merge, verify permanent exact-main-head Knowledge Architecture. Canonical indexing, Profiles/EXPECTED_HASHES.json changes, Gale import, controller changes, runtime activation and gameplay remain unauthorized.
+Execute one separately bounded S1.42AK-CFDIAG1 canonical profile-index mapping/reconciliation. Register the exact published profile Profiles/LC V1 S1.42AK-CFD1.r2z with build ID S1.42AK-CFDIAG1 and SHA-256 a4ebbed30e530153e3f3dc92b97b676729eada94e602ccf29a4ca63a64f3ce4c in the canonical mapping authority required by BuildSystem/index_profile.py, following the established TWDIAG1/SHDIAG1/LFDIAG1/DRDIAG1/AGDIAG1 publication-to-index precedents. Then let the existing profile-index workflow produce its canonical result and verify its exact-head Knowledge Architecture gate. Do not rebuild or reconstruct, Gale-import, change BuildSpecs/current.json or RuntimeInbox/ACTIVE_BUILD.txt, runtime-arm, run gameplay, accept CFDIAG1 or BMDSFIX1, waive or reroll the passive DeepSewersFlow gate, rerun or retarget completed diagnostics, reopen Current/312 or begin separated scopes.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
