@@ -1,7 +1,0 @@
-# Python build-system byproducts
-__pycache__/
-*.py[cod]
-
-# Local editor/OS noise
-.DS_Store
-Thumbs.db
