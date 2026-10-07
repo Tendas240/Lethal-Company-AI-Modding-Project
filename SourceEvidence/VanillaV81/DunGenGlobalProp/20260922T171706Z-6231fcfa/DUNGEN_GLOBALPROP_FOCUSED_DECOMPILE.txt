@@ -1,0 +1,136 @@
+# Installed Lethal Company V81 DunGen GlobalProp generation evidence
+
+Source Assembly-CSharp SHA-256: 5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731
+Installed DunGen.dll SHA-256: d62bbc63eae39ef388797194796ed9cf5a3e7c857fe31f7e5b7310ed78262db6
+Steam buildid: 22825947
+Repository main at capture: 56355ff518ae4301a38d370be9561251f6f963c1
+Repository PR #138 head at capture: 0a5407d26a5614bf944756e7b43eca8461164eb3
+Decompiler: ilspycmd 11.0.0.9375
+Scope: DunGen.DungeonGenerator methods referencing GlobalProp/GlobalProps/PropGroupID plus one-hop same-type callers and callees. At least one selected method must expose Count.
+This is static installed-binary evidence, not gameplay acceptance. DunGen.dll, full type source, unrelated methods and absolute local paths are excluded.
+
+--- protected virtual IEnumerator PostProcess() / local type line 872 ---
+	protected virtual IEnumerator PostProcess()
+	{
+		GenerationStats.BeginTime(GenerationStatus.PostProcessing);
+		ChangeStatus(GenerationStatus.PostProcessing);
+		int length = proxyDungeon.MainPathTiles.Count;
+		int maxBranchDepth = 0;
+		if (proxyDungeon.BranchPathTiles.Count > 0)
+		{
+			foreach (TileProxy branchPathTile in proxyDungeon.BranchPathTiles)
+			{
+				int branchDepth = branchPathTile.Placement.BranchDepth;
+				if (branchDepth > maxBranchDepth)
+				{
+					maxBranchDepth = branchDepth;
+				}
+			}
+		}
+		yield return null;
+		postProcessSteps.Sort((DungeonGeneratorPostProcessStep a, DungeonGeneratorPostProcessStep b) => b.Priority.CompareTo(a.Priority));
+		foreach (DungeonGeneratorPostProcessStep step in postProcessSteps)
+		{
+			if (ShouldSkipFrame(isRoomPlacement: false))
+			{
+				yield return null;
+			}
+			if (step.Phase == PostProcessPhase.BeforeBuiltIn)
+			{
+				step.PostProcessCallback(this);
+			}
+		}
+		yield return null;
+		foreach (Tile tile in CurrentDungeon.AllTiles)
+		{
+			if (ShouldSkipFrame(isRoomPlacement: false))
+			{
+				yield return null;
+			}
+			tile.Placement.NormalizedPathDepth = (float)tile.Placement.PathDepth / (float)(length - 1);
+		}
+		CurrentDungeon.PostGenerateDungeon(this);
+		ProcessLocalProps();
+		ProcessGlobalProps();
+		if (DungeonFlow.KeyManager != null)
+		{
+			PlaceLocksAndKeys();
+		}
+		GenerationStats.SetRoomStatistics(CurrentDungeon.MainPathTiles.Count, CurrentDungeon.BranchPathTiles.Count, maxBranchDepth);
+		preProcessData.Clear();
+		yield return null;
+		foreach (DungeonGeneratorPostProcessStep step in postProcessSteps)
+		{
+			if (ShouldSkipFrame(isRoomPlacement: false))
+			{
+				yield return null;
+			}
+			if (step.Phase == PostProcessPhase.AfterBuiltIn)
+			{
+				step.PostProcessCallback(this);
+			}
+		}
+		GenerationStats.EndTime();
+		foreach (GameObject door in CurrentDungeon.Doors)
+		{
+			if (door != null)
+			{
+				door.SetActive(value: true);
+			}
+		}
+	}
+
+--- protected virtual void ProcessGlobalProps() / local type line 989 ---
+	protected virtual void ProcessGlobalProps()
+	{
+		Dictionary<int, GameObjectChanceTable> dictionary = new Dictionary<int, GameObjectChanceTable>();
+		foreach (Tile allTile in CurrentDungeon.AllTiles)
+		{
+			GlobalProp[] componentsInChildren = allTile.GetComponentsInChildren<GlobalProp>(includeInactive: true);
+			foreach (GlobalProp globalProp in componentsInChildren)
+			{
+				GameObjectChanceTable value = null;
+				if (!dictionary.TryGetValue(globalProp.PropGroupID, out value))
+				{
+					value = new GameObjectChanceTable();
+					dictionary[globalProp.PropGroupID] = value;
+				}
+				float num = (allTile.Placement.IsOnMainPath ? globalProp.MainPathWeight : globalProp.BranchPathWeight);
+				num *= globalProp.DepthWeightScale.Evaluate(allTile.Placement.NormalizedDepth);
+				value.Weights.Add(new GameObjectChance(globalProp.gameObject, num, 0f, null));
+			}
+		}
+		foreach (GameObjectChanceTable value2 in dictionary.Values)
+		{
+			foreach (GameObjectChance weight in value2.Weights)
+			{
+				weight.Value.SetActive(value: false);
+			}
+		}
+		List<int> list = new List<int>(dictionary.Count);
+		foreach (KeyValuePair<int, GameObjectChanceTable> pair in dictionary)
+		{
+			if (list.Contains(pair.Key))
+			{
+				UnityEngine.Debug.LogWarning("Dungeon Flow contains multiple entries for the global prop group ID: " + pair.Key + ". Only the first entry will be used.");
+				continue;
+			}
+			DungeonFlow.GlobalPropSettings globalPropSettings = DungeonFlow.GlobalProps.Where((DungeonFlow.GlobalPropSettings x) => x.ID == pair.Key).FirstOrDefault();
+			if (globalPropSettings == null)
+			{
+				continue;
+			}
+			GameObjectChanceTable gameObjectChanceTable = pair.Value.Clone();
+			int random = globalPropSettings.Count.GetRandom(RandomStream);
+			random = Mathf.Clamp(random, 0, gameObjectChanceTable.Weights.Count);
+			for (int num2 = 0; num2 < random; num2++)
+			{
+				GameObjectChance random2 = gameObjectChanceTable.GetRandom(RandomStream, isOnMainPath: true, 0f, null, allowImmediateRepeats: true, removeFromTable: true);
+				if (random2 != null && random2.Value != null)
+				{
+					random2.Value.SetActive(value: true);
+				}
+			}
+			list.Add(pair.Key);
+		}
+	}

@@ -1,0 +1,114 @@
+name: S1.42AK SHDIAG1 inactive compile and archive review
+
+on:
+  pull_request:
+    paths:
+      - 'Patches/S142AKSHDiag1/**'
+      - 'BuildSpecs/S1.42AK-SHDIAG1.json'
+      - 'BuildSpecs/S1.42AK-SHDIAG1_BUILD_EVIDENCE/**'
+      - 'BuildSystem/shdiag1_review_build.py'
+      - 'AnalysisTools/validate_s142ak_shdiag1_build.py'
+      - 'AnalysisTools/validate_s142ak_shdiag1_source.py'
+      - '.github/workflows/s142ak-shdiag1-build-static.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Preserve frozen review bytes and refuse reconstruction
+        id: frozen
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, pathlib, re, subprocess
+          checkpoint = pathlib.Path('BuildSpecs/S1.42AK-SHDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json')
+          frozen = checkpoint.exists()
+          if frozen:
+              record = json.loads(checkpoint.read_text())
+              assert record['status'] == 'PASS_INACTIVE_REVIEW_BUILD_INDEPENDENTLY_REHASHED'
+              assert record['classification'] == 'DIAGNOSTIC_ONLY_NEVER_ACCEPT'
+              head = record['build_head']
+              assert re.fullmatch('[0-9a-f]{40}', head)
+              assert record['independent_artifact_rehash_match'] is True
+              subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', head], check=True)
+              subprocess.run(['git', 'diff', '--exit-code', head, 'HEAD', '--',
+                  'Patches/S142AKSHDiag1',
+                  'BuildSpecs/S1.42AK-SHDIAG1.json',
+                  'BuildSpecs/S1.42AK-SHDIAG1_PLAN.md',
+                  'BuildSystem/shdiag1_review_build.py',
+                  'AnalysisTools/validate_s142ak_shdiag1_build.py',
+                  'RepositoryTools/gale_profile_path_length_guard.py'], check=True)
+              # Publication-stage reconciliation changes only the Python source validator.
+              # Keep exact locks on both its frozen original and the reviewed successor.
+              validator_path = 'AnalysisTools/validate_s142ak_shdiag1_source.py'
+              original_validator = subprocess.check_output(['git', 'show', f'{head}:{validator_path}'])
+              assert hashlib.sha256(original_validator).hexdigest() == '6076e581b0b8de25226bacc7dddeb00e19bdd189ee43444ad6ea4d97d65c2341'
+              assert hashlib.sha256(pathlib.Path(validator_path).read_bytes()).hexdigest() in {
+                  '6076e581b0b8de25226bacc7dddeb00e19bdd189ee43444ad6ea4d97d65c2341',
+                  '96501800636efd93f984d60a8753240b4f59d6d63c7b98368ae447b4016ff6e2',
+              }, 'Unreviewed source-validator drift'
+              source_workflow_path = pathlib.Path('.github/workflows/s142ak-shdiag1-source-static.yml')
+              frozen_source_workflow = subprocess.check_output(
+                  ['git', 'show', f'{head}:{source_workflow_path.as_posix()}'],
+                  text=True,
+              )
+              current_source_workflow = source_workflow_path.read_text(encoding='utf-8')
+              assert current_source_workflow == frozen_source_workflow
+              print('Frozen SHDIAG1 review artifact remains authoritative; no recompilation, archive reconstruction or upload.')
+              print('This step verifies the source/recipe lock only, not a fresh artifact download or runtime result.')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('exists=' + str(frozen).lower() + '\n')
+          PY
+      - uses: actions/setup-python@v5
+        if: steps.frozen.outputs.exists != 'true'
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-dotnet@v4
+        if: steps.frozen.outputs.exists != 'true'
+        with:
+          dotnet-version: '8.0.x'
+      - name: Install pinned PE metadata parser
+        if: steps.frozen.outputs.exists != 'true'
+        run: 'python -m pip install --only-binary=:all: dnfile==0.15.1'
+      - name: Re-run pure Storehouse fail-closed selection policy
+        if: steps.frozen.outputs.exists != 'true'
+        run: dotnet run --project Patches/S142AKSHDiag1/Tests/Policy.Tests.csproj -c Release
+      - name: Re-verify accepted SHDIAG1 source/static contract
+        if: steps.frozen.outputs.exists != 'true'
+        run: python AnalysisTools/validate_s142ak_shdiag1_source.py
+      - name: Compile exact integrated source
+        if: steps.frozen.outputs.exists != 'true'
+        run: dotnet build Patches/S142AKSHDiag1/S142AKSHDiag1.csproj -c Release
+      - name: Construct isolated review archive
+        if: steps.frozen.outputs.exists != 'true'
+        run: python BuildSystem/shdiag1_review_build.py
+      - name: Independently verify assembly and archive contract
+        if: steps.frozen.outputs.exists != 'true'
+        run: python AnalysisTools/validate_s142ak_shdiag1_build.py --self-test
+      - name: Verify short profile path budget
+        if: steps.frozen.outputs.exists != 'true'
+        run: python RepositoryTools/gale_profile_path_length_guard.py --spec BuildSpecs/S1.42AK-SHDIAG1.json --self-test
+      - name: Freeze successful inactive review artifact
+        if: steps.frozen.outputs.exists != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: S1.42AK-SHDIAG1-review-${{ github.event.pull_request.head.sha }}
+          path: review-output/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Preserve failure evidence without publishing a profile
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: S1.42AK-SHDIAG1-failure-${{ github.event.pull_request.head.sha }}
+          path: review-output/Evidence/
+          if-no-files-found: ignore
+          retention-days: 90

@@ -1,0 +1,7 @@
+SHA256SUMS — S1.42F
+
+f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b  Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z
+8172c75bbcf75108266e1ce8d2808ec072f6cfc164acaf562baa0345123915f3  ProfileSources/S1.42F/BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+7b87d565348c63468cb2df6a79f953dde0c921fa071ad5e68ff1ace20d7a102d  ProfileSources/S1.42F/export.r2x
+1617d7a0ea837fc55d12ca1b62ddcc36a23fe9d225d05cc1ab70ad3fcb1e78d9  RuntimeEvidence/S1.42E/20260903T091053Z/raw/LogOutput.log
+4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348  Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z

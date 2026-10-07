@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "build_id": "S1.42AK-BMDSFIX1-DIAG1PATH1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z",
+  "base_sha256": "31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e",
+  "output_profile": "Profiles/LC V1 S1.42AK-D1P1.r2z",
+  "profile_name": "LC V1 S1.42AK-D1P1",
+  "overwrite": false,
+  "mod_state_changes": [],
+  "mod_additions": [],
+  "mod_removals": [],
+  "config_patches": [],
+  "file_injections": [],
+  "local_plugin_builds": [],
+  "text_assertions": [
+    {
+      "path": "export.r2x",
+      "not_contains": "LethalLevelLoaderUpdated"
+    }
+  ],
+  "result_json": "BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/BUILD_RESULT.json",
+  "result_md": "BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_BUILD_EVIDENCE/BUILD_RESULT.md"
+}

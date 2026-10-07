@@ -1,0 +1,814 @@
+{
+  "schema_version": 1,
+  "authority": {
+    "Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md": "80f7b57c09defa48ab99444dfd8d0e1091fa32781e3dc5e44df225d440471fe0",
+    "ProfileSources/S1.42AK/export.r2x": "19935c1afc98de1562fda8b299d7d23d09c3555eac88f9de7992eb3d6e2b46b8"
+  },
+  "provenance": "Initial exact-version acquisition using the C3F2 CDN/ZIP hash path; Black Mesa additionally matches the previously reviewed C3F2 archive. Other six archives are newly byte-bound, not asserted byte-identical to historical installed binary payloads. Strict CI re-download must match these pins.",
+  "packages": {
+    "Beaniebe-Storage_Complex": {
+      "package": "Beaniebe-Storage_Complex",
+      "version": "1.2.5",
+      "source_url": "https://gcdn.thunderstore.io/live/repository/packages/Beaniebe-Storage_Complex-1.2.5.zip",
+      "flows": [
+        "StorageComplex"
+      ],
+      "zip_bytes": 23035915,
+      "zip_sha256": "ee6174a5b7ad8428129ed909de70427c9b18bb0ace12f755b04e3a331635e318",
+      "unityfs_members": [
+        {
+          "member": "storagecomplex.lethalbundle",
+          "bytes": 22936249,
+          "sha256": "27b47999bbafac29ba10e20f6aa575ddf3f54909be2e656159fc2a9007ba6241",
+          "unityfs": true
+        }
+      ],
+      "archive_members": [
+        {
+          "member": "CHANGELOG.md",
+          "bytes": 4556,
+          "sha256": "f51a91739c768df98eac9186fb75440f0fcc69d44de5cb38a9c93b9edba8406a",
+          "unityfs": false
+        },
+        {
+          "member": "README.md",
+          "bytes": 982,
+          "sha256": "f2f8058b4f7451d6b41b04877b27d04927a6cad178fdc5ac75b4557b50c9e5ba",
+          "unityfs": false
+        },
+        {
+          "member": "icon.png",
+          "bytes": 89184,
+          "sha256": "78ec3a7f6beb033cb2b0b5ca67c20d99abdfc09c1e5d9eea5677e8c99db1abd4",
+          "unityfs": false
+        },
+        {
+          "member": "manifest.json",
+          "bytes": 328,
+          "sha256": "2def8cfa992e2c29559ab267c30f5481eb74db4ddf840885e81847fc3aee93d4",
+          "unityfs": false
+        },
+        {
+          "member": "storagecomplex.lethalbundle",
+          "bytes": 22936249,
+          "sha256": "27b47999bbafac29ba10e20f6aa575ddf3f54909be2e656159fc2a9007ba6241",
+          "unityfs": true
+        }
+      ]
+    },
+    "Generic_GMD-Generic_Interiors": {
+      "package": "Generic_GMD-Generic_Interiors",
+      "version": "5.2.0",
+      "source_url": "https://gcdn.thunderstore.io/live/repository/packages/Generic_GMD-Generic_Interiors-5.2.0.zip",
+      "flows": [
+        "BunkerFlow",
+        "DrainsFlow",
+        "SubstationFlow",
+        "BackroomsFlow",
+        "SHFlow",
+        "TowerFlow"
+      ],
+      "zip_bytes": 223737074,
+      "zip_sha256": "6f3df76d0055210ff2c3f869a962bdf91f2ebc22363eafa81e7d8eda87317647",
+      "unityfs_members": [
+        {
+          "member": "1load bearing awesome doohickey blaster.lethalbundle",
+          "bytes": 1285587,
+          "sha256": "650a5b319ce3df40f77cc3eed4ec3c69ae32eb6e1c5856527cf1aa018b4a99c5",
+          "unityfs": true
+        },
+        {
+          "member": "generic interiors bunker.lethalbundle",
+          "bytes": 69307496,
+          "sha256": "a4765ff072355ab3eaf54b25a720f7bce31ac0b31a106ef94922e81be6180fe2",
+          "unityfs": true
+        },
+        {
+          "member": "generic interiors dr and ss.lethalbundle",
+          "bytes": 40395550,
+          "sha256": "d0c98b791f19ee6c94037ff8410cb38741ef290cefb66c56ee59fb8d2caa3bf0",
+          "unityfs": true
+        },
+        {
+          "member": "generic interiors sh and br.lethalbundle",
+          "bytes": 66430651,
+          "sha256": "a309344a22d6eda6e8fb5852ba83430d03d752ecd320422fe31eb11b32a49368",
+          "unityfs": true
+        },
+        {
+          "member": "generic interiors tower.lethalbundle",
+          "bytes": 40622577,
+          "sha256": "2ec32f82a779aa09b70381c1edcef97553841ebc41d653704af5ecddf9f8a0db",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker crowbar.lethalbundle",
+          "bytes": 373589,
+          "sha256": "eef30397e31f676dc71d5693a7e0d66dcaed3101053368b1d6b81cf52c650e47",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker general.lethalbundle",
+          "bytes": 1213079,
+          "sha256": "636223fda98ce4bd4dc3d38e9d357f863e9797453970e5c106c515bb012cf117",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker impact grenade.lethalbundle",
+          "bytes": 815696,
+          "sha256": "9c5b09856a04d0bc669b85970e1454734003ded0df1a9a2081c74c33af61c638",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker jammer.lethalbundle",
+          "bytes": 573945,
+          "sha256": "f0f67ab393655709cd73613977cbe3e0e95627537accb36bbc9dcc57ffcf67d1",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker military shotgun.lethalbundle",
+          "bytes": 1012708,
+          "sha256": "afd95afe8fc2b8d091acc7898396a04a68d32864a3c97588ea4f9376dca456ad",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker single shotgun.lethalbundle",
+          "bytes": 1012014,
+          "sha256": "18449197f619d1d719b60039cb0fc6d5ee1bd45642b5eec02ffaa0f20ba66bb9",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap tower elevator key.lethalbundle",
+          "bytes": 373395,
+          "sha256": "e3b3b9a0b634129bfeb5ddc056a8888c9e956f38c9b9da76ed6bd3e7cfc1a1a7",
+          "unityfs": true
+        },
+        {
+          "member": "jll config generic interiors.lethalbundle",
+          "bytes": 2178,
+          "sha256": "8bf4f802e3cb973f00bcb773d36b6f19a67bd470c1a72d0eb050d05b99bae532",
+          "unityfs": true
+        }
+      ],
+      "archive_members": [
+        {
+          "member": "1load bearing awesome doohickey blaster.lethalbundle",
+          "bytes": 1285587,
+          "sha256": "650a5b319ce3df40f77cc3eed4ec3c69ae32eb6e1c5856527cf1aa018b4a99c5",
+          "unityfs": true
+        },
+        {
+          "member": "CHANGELOG.md",
+          "bytes": 16593,
+          "sha256": "8373fec37aeb38c3ef11f2e3a15e8bdd400a08294c16ee3148517e497882c99f",
+          "unityfs": false
+        },
+        {
+          "member": "README.md",
+          "bytes": 10644,
+          "sha256": "faf42b8ca3b0b51fed157e10460722f34644bccd8e4a9e3b746a65e574af40d5",
+          "unityfs": false
+        },
+        {
+          "member": "generic interiors bunker.lethalbundle",
+          "bytes": 69307496,
+          "sha256": "a4765ff072355ab3eaf54b25a720f7bce31ac0b31a106ef94922e81be6180fe2",
+          "unityfs": true
+        },
+        {
+          "member": "generic interiors dr and ss.lethalbundle",
+          "bytes": 40395550,
+          "sha256": "d0c98b791f19ee6c94037ff8410cb38741ef290cefb66c56ee59fb8d2caa3bf0",
+          "unityfs": true
+        },
+        {
+          "member": "generic interiors sh and br.lethalbundle",
+          "bytes": 66430651,
+          "sha256": "a309344a22d6eda6e8fb5852ba83430d03d752ecd320422fe31eb11b32a49368",
+          "unityfs": true
+        },
+        {
+          "member": "generic interiors tower.lethalbundle",
+          "bytes": 40622577,
+          "sha256": "2ec32f82a779aa09b70381c1edcef97553841ebc41d653704af5ecddf9f8a0db",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker crowbar.lethalbundle",
+          "bytes": 373589,
+          "sha256": "eef30397e31f676dc71d5693a7e0d66dcaed3101053368b1d6b81cf52c650e47",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker general.lethalbundle",
+          "bytes": 1213079,
+          "sha256": "636223fda98ce4bd4dc3d38e9d357f863e9797453970e5c106c515bb012cf117",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker impact grenade.lethalbundle",
+          "bytes": 815696,
+          "sha256": "9c5b09856a04d0bc669b85970e1454734003ded0df1a9a2081c74c33af61c638",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker jammer.lethalbundle",
+          "bytes": 573945,
+          "sha256": "f0f67ab393655709cd73613977cbe3e0e95627537accb36bbc9dcc57ffcf67d1",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker military shotgun.lethalbundle",
+          "bytes": 1012708,
+          "sha256": "afd95afe8fc2b8d091acc7898396a04a68d32864a3c97588ea4f9376dca456ad",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap bunker single shotgun.lethalbundle",
+          "bytes": 1012014,
+          "sha256": "18449197f619d1d719b60039cb0fc6d5ee1bd45642b5eec02ffaa0f20ba66bb9",
+          "unityfs": true
+        },
+        {
+          "member": "generic scrap tower elevator key.lethalbundle",
+          "bytes": 373395,
+          "sha256": "e3b3b9a0b634129bfeb5ddc056a8888c9e956f38c9b9da76ed6bd3e7cfc1a1a7",
+          "unityfs": true
+        },
+        {
+          "member": "icon.png",
+          "bytes": 33267,
+          "sha256": "dfd9d612df9a982e875d068a3719f8c500b8d8bae0623167c2a1ea5e3277d3b7",
+          "unityfs": false
+        },
+        {
+          "member": "jll config generic interiors.lethalbundle",
+          "bytes": 2178,
+          "sha256": "8bf4f802e3cb973f00bcb773d36b6f19a67bd470c1a72d0eb050d05b99bae532",
+          "unityfs": true
+        },
+        {
+          "member": "manifest.json",
+          "bytes": 637,
+          "sha256": "d5d45d44a1362c26e7f548c012388666861695e1e3c258b4f01f483d1b891609",
+          "unityfs": false
+        }
+      ]
+    },
+    "LethalMatt-Bozoros": {
+      "package": "LethalMatt-Bozoros",
+      "version": "2.9.3",
+      "source_url": "https://gcdn.thunderstore.io/live/repository/packages/LethalMatt-Bozoros-2.9.3.zip",
+      "flows": [
+        "CircusFacilityFlow"
+      ],
+      "zip_bytes": 34280263,
+      "zip_sha256": "e7f8851d0a0cf1c1106526b2c171af36287a9bbd161d13dec33634c1c33fda44",
+      "unityfs_members": [
+        {
+          "member": "BepInEx/plugins/AssetBundles/bozoros.lethalbundle",
+          "bytes": 7514166,
+          "sha256": "ae6c7aae95c6afb72a1e457a7f85c2cc173b3c7c0819bcf18a3d774d2dbb15e1",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/AssetBundles/bozorosscene.lethalbundle",
+          "bytes": 20760481,
+          "sha256": "9b0e089234b1bab11b343e0834f3fabf909158c8d7bd57f737f06e36526ff7fc",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/AssetBundles/circusfacility.lethalbundle",
+          "bytes": 5791790,
+          "sha256": "abcda1e9a16f76c11a25ae4837a6ae75dac2335bf245d3d4943336607d9f0175",
+          "unityfs": true
+        }
+      ],
+      "archive_members": [
+        {
+          "member": "BepInEx/plugins/AssetBundles/bozoros.lethalbundle",
+          "bytes": 7514166,
+          "sha256": "ae6c7aae95c6afb72a1e457a7f85c2cc173b3c7c0819bcf18a3d774d2dbb15e1",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/AssetBundles/bozorosscene.lethalbundle",
+          "bytes": 20760481,
+          "sha256": "9b0e089234b1bab11b343e0834f3fabf909158c8d7bd57f737f06e36526ff7fc",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/AssetBundles/circusfacility.lethalbundle",
+          "bytes": 5791790,
+          "sha256": "abcda1e9a16f76c11a25ae4837a6ae75dac2335bf245d3d4943336607d9f0175",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/Bozoros.deps.json",
+          "bytes": 35021,
+          "sha256": "9147aa8f5bf03d8aceaa80663f9454c71f66327673b70ce27753c9769bf979ef",
+          "unityfs": false
+        },
+        {
+          "member": "BepInEx/plugins/Bozoros.dll",
+          "bytes": 100864,
+          "sha256": "87feb32c19c5c9e5fbc42f6af5211baa169239994c6dafed4236545ee3a47265",
+          "unityfs": false
+        },
+        {
+          "member": "BepInEx/plugins/Bozoros.xml",
+          "bytes": 23617,
+          "sha256": "ab405e4a8e7b30660d107798df44cf2ff3d738677cba20daec7b59520e203d05",
+          "unityfs": false
+        },
+        {
+          "member": "CHANGELOG.md",
+          "bytes": 62174,
+          "sha256": "27de4424d66ef77d1a493da25bbd962456c3b5104a2aa9b1292b44bf472fbe86",
+          "unityfs": false
+        },
+        {
+          "member": "LICENSE",
+          "bytes": 11541,
+          "sha256": "f11a04f10b54e828d7d466a407b7d8f13be4f6cda5c72bb2496ec051db082682",
+          "unityfs": false
+        },
+        {
+          "member": "README.md",
+          "bytes": 13948,
+          "sha256": "6c20292c2c5dc68299a3ea479b22ffcdf99a1237fe84272239b2f7b0e41d2979",
+          "unityfs": false
+        },
+        {
+          "member": "icon.png",
+          "bytes": 108061,
+          "sha256": "e7a684a68ede4570ec2be11b9222ac0323ed608a41b9aea0247dfa7e2e78d3eb",
+          "unityfs": false
+        },
+        {
+          "member": "manifest.json",
+          "bytes": 564,
+          "sha256": "7bce8e78baaaaff5bf0293b05f081f622cfe6a661f48039148f5bf219690b067",
+          "unityfs": false
+        }
+      ]
+    },
+    "Magic_Wesley-WesleysInteriors": {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "source_url": "https://gcdn.thunderstore.io/live/repository/packages/Magic_Wesley-WesleysInteriors-4.1.15.zip",
+      "flows": [
+        "AquaticDungeonFlow",
+        "DeepSewersFlow",
+        "FracturedComplexFlow",
+        "GreenhouseFlow",
+        "MuseumInteriorFlow",
+        "StoreFlow",
+        "ExpandedFacility",
+        "Level3ButCoolFlow",
+        "GrandArmoryFlow",
+        "SpookyManorFlow",
+        "RubberRoomsFlow",
+        "ToystoreFlow"
+      ],
+      "zip_bytes": 310754604,
+      "zip_sha256": "4df117fe375e9c159d09e480e5d7515ff6970de66a0de3006e1c6c7dbb9ff1e2",
+      "unityfs_members": [
+        {
+          "member": "museuminterior.lethalbundle",
+          "bytes": 58671787,
+          "sha256": "5eb748b7c70ce96da2997725d71c3d80f90096fd924b7349140dfb6e9bf2f787",
+          "unityfs": true
+        },
+        {
+          "member": "sewers.lethalbundle",
+          "bytes": 17143559,
+          "sha256": "919793a8e82954cc333811b89391e289f5f0e501f410d2c42c6f75a242701d4d",
+          "unityfs": true
+        },
+        {
+          "member": "spookymanor.lethalbundle",
+          "bytes": 29079286,
+          "sha256": "0ef5b5921d3f13dcc6068b3db201b699e95dfc4ea62d42c303d634333f8bf7d0",
+          "unityfs": true
+        },
+        {
+          "member": "storeinterior.lethalbundle",
+          "bytes": 22485452,
+          "sha256": "71a0902fed6a0f6467a0a1b4834e3d26dc6d0bfd316dc50ad6a04ce0af19fc07",
+          "unityfs": true
+        },
+        {
+          "member": "therubberrooms.lethalbundle",
+          "bytes": 28458427,
+          "sha256": "695e0829b9c1467bd1b49b3b7ecb040a10748be26145bb987db88fbe46981aa4",
+          "unityfs": true
+        },
+        {
+          "member": "toystoreinterior.lethalbundle",
+          "bytes": 28550388,
+          "sha256": "66caf8102a181ec30fbfe9537544a0835f805b767fa010ab89a431b128616051",
+          "unityfs": true
+        },
+        {
+          "member": "atlanticdungeoninterior.lethalbundle",
+          "bytes": 17889096,
+          "sha256": "f9076987a22639d14e23204ed3a51100321b1eafde6e801cc7daaf8f2a46bee3",
+          "unityfs": true
+        },
+        {
+          "member": "expandedfacility.lethalbundle",
+          "bytes": 24407899,
+          "sha256": "a5089e64fd2500cdd92da703625600a3d370fac448884c4060ebc83fa7fd5bee",
+          "unityfs": true
+        },
+        {
+          "member": "extendedmineshaft.lethalbundle",
+          "bytes": 22383972,
+          "sha256": "c4bc302153fb26b63bf096ed097460b48a38fad9fba009a1f009d53257e226e7",
+          "unityfs": true
+        },
+        {
+          "member": "fracturedcomplex.lethalbundle",
+          "bytes": 14183451,
+          "sha256": "647eb8b7d8ac5f384d227ba45a05427f8733382fa7e098e35710d47cc9f8f560",
+          "unityfs": true
+        },
+        {
+          "member": "grandarmoryinterior.lethalbundle",
+          "bytes": 34788341,
+          "sha256": "042732571a94914500610f77e8d97787c0ba844d1d279d0834b1dc292b72c68d",
+          "unityfs": true
+        },
+        {
+          "member": "greenhouseinterior.lethalbundle",
+          "bytes": 12645610,
+          "sha256": "f90c7ca7c7a123c8c5f5168766c8f55cd86a06d76f93ceb07400b14277d1546e",
+          "unityfs": true
+        }
+      ],
+      "archive_members": [
+        {
+          "member": "CHANGELOG.md",
+          "bytes": 25451,
+          "sha256": "35dcc0496eb1d6783d81e84917b8acda6a618539312e708b6d178555a2154299",
+          "unityfs": false
+        },
+        {
+          "member": "DilapidatedManor.dll",
+          "bytes": 7168,
+          "sha256": "892b80fd5631690665190f810139965e83b42af22e14d562e89fd5c06e15db02",
+          "unityfs": false
+        },
+        {
+          "member": "GrandArmoryModConfigsJLLMod.json",
+          "bytes": 286,
+          "sha256": "78210f978322bac9a73db67e98fd0b74b4edc9d4d201e0f32726414e345a8c16",
+          "unityfs": false
+        },
+        {
+          "member": "HalloweenModConfigsJLLMod.json",
+          "bytes": 559,
+          "sha256": "0e5c3e8415ae3ff6b81210468d6e187fdf24e9520b4e7995c7cfecf2776cbf6e",
+          "unityfs": false
+        },
+        {
+          "member": "README.md",
+          "bytes": 6026,
+          "sha256": "7f3ddbe4f0a735f60f5e770eb2d473cb7c837d8080ee0a2fe1b4859f63836e50",
+          "unityfs": false
+        },
+        {
+          "member": "WesleysInteriorShenanigans.dll",
+          "bytes": 6656,
+          "sha256": "67bd403adaf18f19c12e362b7eb43e0012f6e3ba101681f44cd0926a8f543f53",
+          "unityfs": false
+        },
+        {
+          "member": "atlanticdungeoninterior.lethalbundle",
+          "bytes": 17889096,
+          "sha256": "f9076987a22639d14e23204ed3a51100321b1eafde6e801cc7daaf8f2a46bee3",
+          "unityfs": true
+        },
+        {
+          "member": "expandedfacility.lethalbundle",
+          "bytes": 24407899,
+          "sha256": "a5089e64fd2500cdd92da703625600a3d370fac448884c4060ebc83fa7fd5bee",
+          "unityfs": true
+        },
+        {
+          "member": "extendedmineshaft.lethalbundle",
+          "bytes": 22383972,
+          "sha256": "c4bc302153fb26b63bf096ed097460b48a38fad9fba009a1f009d53257e226e7",
+          "unityfs": true
+        },
+        {
+          "member": "fracturedcomplex.lethalbundle",
+          "bytes": 14183451,
+          "sha256": "647eb8b7d8ac5f384d227ba45a05427f8733382fa7e098e35710d47cc9f8f560",
+          "unityfs": true
+        },
+        {
+          "member": "grandarmoryinterior.lethalbundle",
+          "bytes": 34788341,
+          "sha256": "042732571a94914500610f77e8d97787c0ba844d1d279d0834b1dc292b72c68d",
+          "unityfs": true
+        },
+        {
+          "member": "greenhouseinterior.lethalbundle",
+          "bytes": 12645610,
+          "sha256": "f90c7ca7c7a123c8c5f5168766c8f55cd86a06d76f93ceb07400b14277d1546e",
+          "unityfs": true
+        },
+        {
+          "member": "icon.png",
+          "bytes": 1344,
+          "sha256": "1755097db9ffb4b9e99fa89d557def637b9732178b5ffc3930fd01b7221d22bf",
+          "unityfs": false
+        },
+        {
+          "member": "manifest.json",
+          "bytes": 470,
+          "sha256": "e766219dfb03f56f8a94b98dd81d43f48222a3d93b619771b3a5f02d6169b27c",
+          "unityfs": false
+        },
+        {
+          "member": "museuminterior.lethalbundle",
+          "bytes": 58671787,
+          "sha256": "5eb748b7c70ce96da2997725d71c3d80f90096fd924b7349140dfb6e9bf2f787",
+          "unityfs": true
+        },
+        {
+          "member": "sewers.lethalbundle",
+          "bytes": 17143559,
+          "sha256": "919793a8e82954cc333811b89391e289f5f0e501f410d2c42c6f75a242701d4d",
+          "unityfs": true
+        },
+        {
+          "member": "spookymanor.lethalbundle",
+          "bytes": 29079286,
+          "sha256": "0ef5b5921d3f13dcc6068b3db201b699e95dfc4ea62d42c303d634333f8bf7d0",
+          "unityfs": true
+        },
+        {
+          "member": "storeinterior.lethalbundle",
+          "bytes": 22485452,
+          "sha256": "71a0902fed6a0f6467a0a1b4834e3d26dc6d0bfd316dc50ad6a04ce0af19fc07",
+          "unityfs": true
+        },
+        {
+          "member": "therubberrooms.lethalbundle",
+          "bytes": 28458427,
+          "sha256": "695e0829b9c1467bd1b49b3b7ecb040a10748be26145bb987db88fbe46981aa4",
+          "unityfs": true
+        },
+        {
+          "member": "toystoreinterior.lethalbundle",
+          "bytes": 28550388,
+          "sha256": "66caf8102a181ec30fbfe9537544a0835f805b767fa010ab89a431b128616051",
+          "unityfs": true
+        }
+      ]
+    },
+    "Nikki-Slaughterhouse": {
+      "package": "Nikki-Slaughterhouse",
+      "version": "1.2.1",
+      "source_url": "https://gcdn.thunderstore.io/live/repository/packages/Nikki-Slaughterhouse-1.2.1.zip",
+      "flows": [
+        "SlaughterhouseFlow"
+      ],
+      "zip_bytes": 31852778,
+      "zip_sha256": "cc1d72547fc7f30f795fe6665eca41a59f2b67a8b4cb19b9538b95448bc167cf",
+      "unityfs_members": [
+        {
+          "member": "plugins/Slaughterhouse/slaughterhouseinterior.lethalbundle",
+          "bytes": 31755260,
+          "sha256": "68256295be0af8c4f11de6bff8d72b894c3b859d63fbdbfc7e835d32bf2cc98a",
+          "unityfs": true
+        }
+      ],
+      "archive_members": [
+        {
+          "member": "CHANGELOG.md",
+          "bytes": 5563,
+          "sha256": "eced3aadf3d07d6510a95547a9abd6d5c6b20d1787ac1ce1144ecc1e370e1f1a",
+          "unityfs": false
+        },
+        {
+          "member": "README.md",
+          "bytes": 3596,
+          "sha256": "eb1cd1d02cd56c08a517238e94d61f7c6a02b213784b6f87ddbdd2738e56d682",
+          "unityfs": false
+        },
+        {
+          "member": "icon.png",
+          "bytes": 63951,
+          "sha256": "775d9082722e842bb8c282d06b5f0bc60a1745bdc3865fcb6f7dd8bde662a711",
+          "unityfs": false
+        },
+        {
+          "member": "manifest.json",
+          "bytes": 384,
+          "sha256": "025a01e6fe9d8e7d7d3988af4db144fd4662be9436c5b8d0c939f2c41be51587",
+          "unityfs": false
+        },
+        {
+          "member": "plugins/Slaughterhouse/Nikki.Slaughterhouse.dll",
+          "bytes": 32256,
+          "sha256": "61763b5d5266e8df7e15fb8c7c3c0e5f237f40f32f970426137666d7df9dae35",
+          "unityfs": false
+        },
+        {
+          "member": "plugins/Slaughterhouse/slaughterhouseinterior.lethalbundle",
+          "bytes": 31755260,
+          "sha256": "68256295be0af8c4f11de6bff8d72b894c3b859d63fbdbfc7e835d32bf2cc98a",
+          "unityfs": true
+        }
+      ]
+    },
+    "Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior": {
+      "package": "Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior",
+      "version": "3.4.4",
+      "source_url": "https://gcdn.thunderstore.io/live/repository/packages/Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior-3.4.4.zip",
+      "flows": [
+        "Black Mesa"
+      ],
+      "zip_bytes": 228214268,
+      "zip_sha256": "12921825bee51bfd46582989322a1f31183b65f59293c73654a102fb68d068b7",
+      "unityfs_members": [
+        {
+          "member": "BepInEx/plugins/Assets/blackmesadungeon",
+          "bytes": 178159643,
+          "sha256": "6c93ec27a34ac60e1a19f2f13c245392c0474a7e0e32b0b8eae1379385deec70",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/Assets/blackmesadungeondefinition",
+          "bytes": 7773750,
+          "sha256": "2e020d32f317a9eb9fcb791f30c6a900c8c8400c5edba7d6e0427775ca0b341e",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/Assets/blackmesaitems",
+          "bytes": 1668382,
+          "sha256": "78a795343dcbf31385a8ea7ad1539c603d23c2fc5b29559e4b060f8e4c0b34fd",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/Assets/blackmesamoon",
+          "bytes": 33612583,
+          "sha256": "b67a127bb9954c32244e019ba2b6118e72f75d9e37d3e92f060def50f303e062",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/Assets/blackmesamoondefinition",
+          "bytes": 6795623,
+          "sha256": "6ede0d4d11a3b176714d9a305279b4ab6c4a6683f0383045da4c815fe831ac7e",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/Assets/blackmesascriptassets",
+          "bytes": 2174,
+          "sha256": "57dda232c8bd8ac09be64647edb4ac24a52069e0fc98221b17c1ab2a842e56a7",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/blackmesamanifest.duskmod",
+          "bytes": 25778,
+          "sha256": "2f1edc7178a2a156fe50a677c71d3370a7edc5c155f5ba384dde28c88e893280",
+          "unityfs": true
+        }
+      ],
+      "archive_members": [
+        {
+          "member": "BepInEx/plugins/Assets/blackmesadungeon",
+          "bytes": 178159643,
+          "sha256": "6c93ec27a34ac60e1a19f2f13c245392c0474a7e0e32b0b8eae1379385deec70",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/Assets/blackmesadungeondefinition",
+          "bytes": 7773750,
+          "sha256": "2e020d32f317a9eb9fcb791f30c6a900c8c8400c5edba7d6e0427775ca0b341e",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/Assets/blackmesaitems",
+          "bytes": 1668382,
+          "sha256": "78a795343dcbf31385a8ea7ad1539c603d23c2fc5b29559e4b060f8e4c0b34fd",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/Assets/blackmesamoon",
+          "bytes": 33612583,
+          "sha256": "b67a127bb9954c32244e019ba2b6118e72f75d9e37d3e92f060def50f303e062",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/Assets/blackmesamoondefinition",
+          "bytes": 6795623,
+          "sha256": "6ede0d4d11a3b176714d9a305279b4ab6c4a6683f0383045da4c815fe831ac7e",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/Assets/blackmesascriptassets",
+          "bytes": 2174,
+          "sha256": "57dda232c8bd8ac09be64647edb4ac24a52069e0fc98221b17c1ab2a842e56a7",
+          "unityfs": true
+        },
+        {
+          "member": "BepInEx/plugins/BlackMesa.dll",
+          "bytes": 143360,
+          "sha256": "a90f157becdc68ab7fe6898eefc2feaee98352a0f04b2cda414741729a048eef",
+          "unityfs": false
+        },
+        {
+          "member": "BepInEx/plugins/LICENSE",
+          "bytes": 1099,
+          "sha256": "4dab105ed51ed486f378553af02510ae93a12eac45d65047f136a2f45f3a0da2",
+          "unityfs": false
+        },
+        {
+          "member": "BepInEx/plugins/blackmesamanifest.duskmod",
+          "bytes": 25778,
+          "sha256": "2f1edc7178a2a156fe50a677c71d3370a7edc5c155f5ba384dde28c88e893280",
+          "unityfs": true
+        },
+        {
+          "member": "CHANGELOG.md",
+          "bytes": 12754,
+          "sha256": "91bf1910a18192b9fc1eef86cb480489717f503d159b0f74f87f3709669a83c0",
+          "unityfs": false
+        },
+        {
+          "member": "README.md",
+          "bytes": 7932,
+          "sha256": "543c8514965b8bc4e4df6aa03d5558491272cd09574fe6ed8d4274cfb17dbafa",
+          "unityfs": false
+        },
+        {
+          "member": "icon.png",
+          "bytes": 89912,
+          "sha256": "4038cd8f3becfb8959bed53fb35a3fbd02cfdd9bddea613f7c968074ecfe55fd",
+          "unityfs": false
+        },
+        {
+          "member": "manifest.json",
+          "bytes": 674,
+          "sha256": "5669f127d66522f5313ea2bce6c3e19ba60bc936cb2cc86e9bcf99d64d500039",
+          "unityfs": false
+        }
+      ]
+    },
+    "Tolian-Scoopy_Castle": {
+      "package": "Tolian-Scoopy_Castle",
+      "version": "1.0.1",
+      "source_url": "https://gcdn.thunderstore.io/live/repository/packages/Tolian-Scoopy_Castle-1.0.1.zip",
+      "flows": [
+        "CastleFlow"
+      ],
+      "zip_bytes": 7210752,
+      "zip_sha256": "b3cd8cc58316d17b79ba570b04ebd4f3967cc9bcecc77969ec6e10f25d9c39d4",
+      "unityfs_members": [
+        {
+          "member": "scoopycastle.lethalbundle",
+          "bytes": 7141022,
+          "sha256": "4044250fa4e2df8ac43de83b20f801f496ad1cbabcbdfb168883916d453ab126",
+          "unityfs": true
+        }
+      ],
+      "archive_members": [
+        {
+          "member": "CHANGELOG.md",
+          "bytes": 55,
+          "sha256": "abeb442f94376ceeec30eaded491700c31910bec6940726e247beb37b44dfb5e",
+          "unityfs": false
+        },
+        {
+          "member": "README.md",
+          "bytes": 1197,
+          "sha256": "7a6c68d84f9485696607ed01ff1f9fe547ee09af92b7cbf3f53f48233b91f03a",
+          "unityfs": false
+        },
+        {
+          "member": "icon.png",
+          "bytes": 82354,
+          "sha256": "b0f3588d6904f3ff505fd1f3087bdb1ba4578fadefcc5a6b6c3eb1996106ba8e",
+          "unityfs": false
+        },
+        {
+          "member": "manifest.json",
+          "bytes": 319,
+          "sha256": "4bd477b2c9c96d5dd03da6461ad4a26adce4ee479cf4e881cddb5d3ed327ef87",
+          "unityfs": false
+        },
+        {
+          "member": "scoopycastle.lethalbundle",
+          "bytes": 7141022,
+          "sha256": "4044250fa4e2df8ac43de83b20f801f496ad1cbabcbdfb168883916d453ab126",
+          "unityfs": true
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,385 @@
+# Installed Lethal Company V81 DunGen generation-capacity cross-type callee evidence
+
+Source Assembly-CSharp SHA-256: 5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731
+Installed DunGen.dll SHA-256: d62bbc63eae39ef388797194796ed9cf5a3e7c857fe31f7e5b7310ed78262db6
+Steam buildid: 22825947
+Repository main at capture: 56355ff518ae4301a38d370be9561251f6f963c1
+Repository PR #138 head at capture: d39b03326972787e6814f9fb6dd1125532cee220
+Decompiler: ilspycmd 11.0.0.9375
+Scope: only the five C3F14 unresolved cross-type roots, plus directly called same-type helpers; InjectedTile additionally includes its constructor(s) and their direct same-type helpers.
+Explicit exclusions: previously captured DungeonGenerator cluster, TilePlacementData.NormalizedDepth, Doorway.ProcessDoorwayObjects, DungeonGenerator.ProcessGlobalProps, GameObjectChanceTable.GetRandom, RoundManager.SpawnSyncedProps, binaries and full type decompiles.
+
+## DunGen.Graph.DungeonFlow.GetLineAtDepth
+
+--- public GraphLine GetLineAtDepth(float normalizedDepth) / local type line 98 ---
+	public GraphLine GetLineAtDepth(float normalizedDepth)
+	{
+		normalizedDepth = Mathf.Clamp(normalizedDepth, 0f, 1f);
+		if (normalizedDepth == 0f)
+		{
+			return Lines[0];
+		}
+		if (normalizedDepth == 1f)
+		{
+			return Lines[Lines.Count - 1];
+		}
+		foreach (GraphLine line in Lines)
+		{
+			if (normalizedDepth >= line.Position && normalizedDepth < line.Position + line.Length)
+			{
+				return line;
+			}
+		}
+		Debug.LogError("GetLineAtDepth was unable to find a line at depth " + normalizedDepth + ". This shouldn't happen.");
+		return null;
+	}
+
+## DunGen.Graph.GraphLine.GetRandomArchetype
+
+--- public DungeonArchetype GetRandomArchetype(RandomStream randomStream, IEnumerable<DungeonArchetype> usedArchetypes) / local type line 27 ---
+	public DungeonArchetype GetRandomArchetype(RandomStream randomStream, IEnumerable<DungeonArchetype> usedArchetypes)
+	{
+		IEnumerable<DungeonArchetype> source = DungeonArchetypes.Where((DungeonArchetype a) => !a.Unique || !usedArchetypes.Contains(a));
+		if (!source.Any())
+		{
+			source = DungeonArchetypes;
+		}
+		int index = randomStream.Next(0, source.Count());
+		return source.ElementAt(index);
+	}
+
+## DunGen.InjectedTile.ShouldInjectTileAtPoint
+
+--- public InjectedTile(TileSet tileSet, bool isOnMainPath, float normalizedPathDepth, float normalizedBranchDepth, bool isRequired = false) / local type line 19 ---
+	public InjectedTile(TileSet tileSet, bool isOnMainPath, float normalizedPathDepth, float normalizedBranchDepth, bool isRequired = false)
+	{
+		TileSet = tileSet;
+		IsOnMainPath = isOnMainPath;
+		NormalizedPathDepth = normalizedPathDepth;
+		NormalizedBranchDepth = normalizedBranchDepth;
+		IsRequired = isRequired;
+	}
+
+--- public InjectedTile(TileInjectionRule rule, bool isOnMainPath, RandomStream randomStream) / local type line 28 ---
+	public InjectedTile(TileInjectionRule rule, bool isOnMainPath, RandomStream randomStream)
+	{
+		TileSet = rule.TileSet;
+		NormalizedPathDepth = rule.NormalizedPathDepth.GetRandom(randomStream);
+		NormalizedBranchDepth = rule.NormalizedBranchDepth.GetRandom(randomStream);
+		IsOnMainPath = isOnMainPath;
+		IsRequired = rule.IsRequired;
+		IsLocked = rule.IsLocked;
+		LockID = rule.LockID;
+	}
+
+--- public bool ShouldInjectTileAtPoint(bool isOnMainPath, float pathDepth, float branchDepth) / local type line 39 ---
+	public bool ShouldInjectTileAtPoint(bool isOnMainPath, float pathDepth, float branchDepth)
+	{
+		if (IsOnMainPath != isOnMainPath)
+		{
+			return false;
+		}
+		if (NormalizedPathDepth > pathDepth)
+		{
+			return false;
+		}
+		if (isOnMainPath)
+		{
+			return true;
+		}
+		return NormalizedBranchDepth <= branchDepth;
+	}
+
+## DunGen.BranchCountHelper.ComputeBranchCounts
+
+--- public static void ComputeBranchCounts(DungeonFlow dungeonFlow, RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches) / local type line 11 ---
+	public static void ComputeBranchCounts(DungeonFlow dungeonFlow, RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches)
+	{
+		switch (dungeonFlow.BranchMode)
+		{
+		case BranchMode.Local:
+			ComputeBranchCountsLocal(randomStream, proxyDungeon, ref mainPathBranches);
+			break;
+		case BranchMode.Global:
+			ComputeBranchCountsGlobal(dungeonFlow, randomStream, proxyDungeon, ref mainPathBranches);
+			break;
+		case BranchMode.Section:
+			ComputeBranchCountsPerSection(randomStream, proxyDungeon, ref mainPathBranches);
+			break;
+		default:
+			throw new NotImplementedException($"{typeof(BranchMode).Name}.{dungeonFlow.BranchMode} is not implemented");
+		}
+	}
+
+--- private static void ComputeBranchCountsLocal(RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches) / local type line 29 ---
+	private static void ComputeBranchCountsLocal(RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches)
+	{
+		for (int i = 0; i < mainPathBranches.Length; i++)
+		{
+			TileProxy tileProxy = proxyDungeon.MainPathTiles[i];
+			if (!(tileProxy.Placement.Archetype == null))
+			{
+				int random = tileProxy.Placement.Archetype.BranchCount.GetRandom(randomStream);
+				random = Mathf.Min(random, tileProxy.UnusedDoorways.Count());
+				mainPathBranches[i] = random;
+			}
+		}
+	}
+
+--- private static void ComputeBranchCountsPerSection(RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches) / local type line 43 ---
+	private static void ComputeBranchCountsPerSection(RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches)
+	{
+		Dictionary<GraphLine, int> dictionary = new Dictionary<GraphLine, int>();
+		foreach (TileProxy mainPathTile in proxyDungeon.MainPathTiles)
+		{
+			GraphLine graphLine = mainPathTile.Placement.GraphLine;
+			if (graphLine != null && !dictionary.ContainsKey(graphLine))
+			{
+				DungeonArchetype archetype = mainPathTile.Placement.Archetype;
+				dictionary.Add(graphLine, archetype.BranchCount.GetRandom(randomStream));
+			}
+		}
+		foreach (KeyValuePair<GraphLine, int> item in dictionary)
+		{
+			GraphLine key = item.Key;
+			int value = item.Value;
+			Dictionary<int, int> dictionary2 = new Dictionary<int, int>();
+			for (int i = 0; i < proxyDungeon.MainPathTiles.Count; i++)
+			{
+				TileProxy tileProxy = proxyDungeon.MainPathTiles[i];
+				if (tileProxy.Placement.GraphLine == key)
+				{
+					dictionary2[i] = tileProxy.UnusedDoorways.Count();
+				}
+			}
+			int num = dictionary2.Sum((KeyValuePair<int, int> x) => x.Value);
+			float[] array = new float[dictionary2.Count];
+			for (int num2 = 0; num2 < dictionary2.Count; num2++)
+			{
+				dictionary2.Keys.ElementAt(num2);
+				float num3 = (float)dictionary2.Values.ElementAt(num2) / (float)num;
+				array[num2] = num3;
+			}
+			int[] array2 = DistributeByWeights(value, array);
+			for (int num4 = 0; num4 < array2.Length; num4++)
+			{
+				int num5 = dictionary2.Keys.ElementAt(num4);
+				mainPathBranches[num5] = array2[num4];
+			}
+		}
+	}
+
+--- private static void ComputeBranchCountsGlobal(DungeonFlow dungeonFlow, RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches) / local type line 85 ---
+	private static void ComputeBranchCountsGlobal(DungeonFlow dungeonFlow, RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches)
+	{
+		int random = dungeonFlow.BranchCount.GetRandom(randomStream);
+		int num = proxyDungeon.MainPathTiles.Count((TileProxy t) => t.Placement.Archetype != null && t.UnusedDoorways.Any());
+		float num2 = (float)random / (float)num;
+		float num3 = num2;
+		int num4 = random;
+		for (int num5 = 0; num5 < mainPathBranches.Length; num5++)
+		{
+			if (num4 <= 0)
+			{
+				break;
+			}
+			TileProxy tileProxy = proxyDungeon.MainPathTiles[num5];
+			if (!(tileProxy.Placement.Archetype == null) && tileProxy.UnusedDoorways.Any())
+			{
+				int num6 = tileProxy.UnusedDoorways.Count();
+				int num7 = Mathf.FloorToInt(num3);
+				num7 = Mathf.Min(num7, num6, tileProxy.Placement.Archetype.BranchCount.Max, num4);
+				num3 -= (float)num7;
+				num6 -= num7;
+				if (num7 < num6 && num7 < num4 && randomStream.NextDouble() < (double)num3)
+				{
+					num7++;
+					num3 = 0f;
+				}
+				num3 += num2;
+				num4 -= num7;
+				mainPathBranches[num5] = num7;
+			}
+		}
+	}
+
+## DunGen.DoorwayPairFinder.GetDoorwayPairs
+
+--- public Queue<DoorwayPair> GetDoorwayPairs(int? maxCount) / local type line 59 ---
+	public Queue<DoorwayPair> GetDoorwayPairs(int? maxCount)
+	{
+		tileOrder = CalculateOrderedListOfTiles();
+		shouldStraightenNextConnection = CalculateShouldStraightenNextConnection();
+		if (shouldStraightenNextConnection)
+		{
+			currentPathDirection = CalculateCurrentPathDirection();
+		}
+		if (!currentPathDirection.HasValue)
+		{
+			shouldStraightenNextConnection = false;
+		}
+		List<DoorwayPair> list = ((PreviousTile != null) ? GetPotentialDoorwayPairsForNonFirstTile().ToList() : GetPotentialDoorwayPairsForFirstTile().ToList());
+		int num = list.Count;
+		if (maxCount.HasValue)
+		{
+			num = Math.Min(num, maxCount.Value);
+		}
+		return new Queue<DoorwayPair>(OrderDoorwayPairs(list).Take(num));
+	}
+
+--- private bool CalculateShouldStraightenNextConnection() / local type line 80 ---
+	private bool CalculateShouldStraightenNextConnection()
+	{
+		PathStraighteningSettings pathStraighteningSettings = null;
+		if (PlacementParameters.Archetype != null)
+		{
+			pathStraighteningSettings = PlacementParameters.Archetype.StraighteningSettings;
+		}
+		else if (PlacementParameters.Node != null)
+		{
+			pathStraighteningSettings = PlacementParameters.Node.StraighteningSettings;
+			pathStraighteningSettings.CanStraightenMainPath = true;
+			pathStraighteningSettings.CanStraightenBranchPaths = false;
+		}
+		if (pathStraighteningSettings == null)
+		{
+			return false;
+		}
+		pathStraighteningSettings = PathStraighteningSettings.GetFinalValues(pathStraighteningSettings, DungeonFlow.GlobalStraighteningSettings);
+		if (IsOnMainPath && !pathStraighteningSettings.CanStraightenMainPath)
+		{
+			return false;
+		}
+		if (!IsOnMainPath && !pathStraighteningSettings.CanStraightenBranchPaths)
+		{
+			return false;
+		}
+		return RandomStream.NextDouble() < (double)pathStraighteningSettings.StraightenChance;
+	}
+
+--- private Vector3? CalculateCurrentPathDirection() / local type line 109 ---
+	private Vector3? CalculateCurrentPathDirection()
+	{
+		if (PreviousTile == null || !shouldStraightenNextConnection)
+		{
+			return null;
+		}
+		if (IsOnMainPath)
+		{
+			float num = PreviousTile.Placement.PathDepth;
+			foreach (DoorwayProxy usedDoorway in PreviousTile.UsedDoorways)
+			{
+				if ((float)usedDoorway.ConnectedDoorway.TileProxy.Placement.PathDepth < num)
+				{
+					return -usedDoorway.Forward;
+				}
+			}
+		}
+		else
+		{
+			if (PreviousTile.Placement.IsOnMainPath)
+			{
+				return null;
+			}
+			float num2 = PreviousTile.Placement.BranchDepth;
+			foreach (DoorwayProxy usedDoorway2 in PreviousTile.UsedDoorways)
+			{
+				TileProxy tileProxy = usedDoorway2.ConnectedDoorway.TileProxy;
+				if (tileProxy.Placement.IsOnMainPath || (float)tileProxy.Placement.BranchDepth < num2)
+				{
+					return -usedDoorway2.Forward;
+				}
+			}
+		}
+		return null;
+	}
+
+--- private IEnumerable<DoorwayPair> OrderDoorwayPairs(List<DoorwayPair> potentialPairs) / local type line 145 ---
+	private IEnumerable<DoorwayPair> OrderDoorwayPairs(List<DoorwayPair> potentialPairs)
+	{
+		potentialPairs.Sort(delegate(DoorwayPair a, DoorwayPair b)
+		{
+			int num = b.TileWeight.CompareTo(a.TileWeight);
+			return (num == 0) ? b.DoorwayWeight.CompareTo(a.DoorwayWeight) : num;
+		});
+		return potentialPairs;
+	}
+
+--- private List<GameObjectChance> CalculateOrderedListOfTiles() / local type line 155 ---
+	private List<GameObjectChance> CalculateOrderedListOfTiles()
+	{
+		List<GameObjectChance> list = new List<GameObjectChance>(TileWeights.Count);
+		GameObjectChanceTable gameObjectChanceTable = new GameObjectChanceTable();
+		gameObjectChanceTable.Weights.AddRange(TileWeights);
+		while (gameObjectChanceTable.Weights.Any((GameObjectChance x) => x.Value != null && x.GetWeight(IsOnMainPath, NormalizedDepth) > 0f))
+		{
+			list.Add(gameObjectChanceTable.GetRandom(RandomStream, IsOnMainPath, NormalizedDepth, null, allowImmediateRepeats: true, removeFromTable: true));
+		}
+		return list;
+	}
+
+--- private IEnumerable<DoorwayPair> GetPotentialDoorwayPairsForNonFirstTile() / local type line 167 ---
+	private IEnumerable<DoorwayPair> GetPotentialDoorwayPairsForNonFirstTile()
+	{
+		foreach (DoorwayProxy previousDoor in PreviousTile.UnusedDoorways)
+		{
+			if (previousDoor.IsDisabled)
+			{
+				continue;
+			}
+			IEnumerable<DoorwayProxy> source = PreviousTile.UnusedDoorways.Intersect(PreviousTile.Exits);
+			PreviousTile.UnusedDoorways.ToArray();
+			if (source.Any() && !source.Contains(previousDoor))
+			{
+				continue;
+			}
+			foreach (GameObjectChance tileWeight in TileWeights)
+			{
+				if (!tileOrder.Contains(tileWeight))
+				{
+					continue;
+				}
+				TileProxy nextTile = GetTileTemplateDelegate(tileWeight.Value);
+				float weight = tileOrder.Count - tileOrder.IndexOf(tileWeight);
+				if (IsTileAllowedPredicate != null && !IsTileAllowedPredicate(PreviousTile, nextTile, ref weight))
+				{
+					continue;
+				}
+				foreach (DoorwayProxy doorway in nextTile.Doorways)
+				{
+					if ((!nextTile.Entrances.Any() || nextTile.Entrances.Contains(doorway)) && (nextTile == null || nextTile.Exits.Count != 1 || !nextTile.Exits.Contains(doorway)))
+					{
+						float weight2 = 0f;
+						if (IsValidDoorwayPairing(previousDoor, doorway, PreviousTile, nextTile, ref weight2))
+						{
+							yield return new DoorwayPair(PreviousTile, previousDoor, nextTile, doorway, tileWeight.TileSet, weight, weight2);
+						}
+					}
+				}
+			}
+		}
+	}
+
+--- private IEnumerable<DoorwayPair> GetPotentialDoorwayPairsForFirstTile() / local type line 208 ---
+	private IEnumerable<DoorwayPair> GetPotentialDoorwayPairsForFirstTile()
+	{
+		foreach (GameObjectChance tileWeight in TileWeights)
+		{
+			if (!tileOrder.Contains(tileWeight))
+			{
+				continue;
+			}
+			TileProxy nextTile = GetTileTemplateDelegate(tileWeight.Value);
+			float weight = tileWeight.GetWeight(IsOnMainPath, NormalizedDepth) * (float)RandomStream.NextDouble();
+			if (IsTileAllowedPredicate != null && !IsTileAllowedPredicate(PreviousTile, nextTile, ref weight))
+			{
+				continue;
+			}
+			foreach (DoorwayProxy doorway in nextTile.Doorways)
+			{
+				ProposedConnection connection = new ProposedConnection(DungeonProxy, null, nextTile, null, doorway);
+				float doorwayWeight = CalculateConnectionWeight(connection);
+				yield return new DoorwayPair(null, null, nextTile, doorway, tileWeight.TileSet, weight, doorwayWeight);
+			}
+		}
+	}

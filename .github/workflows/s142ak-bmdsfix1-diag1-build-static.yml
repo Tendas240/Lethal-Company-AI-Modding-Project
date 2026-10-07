@@ -1,0 +1,67 @@
+name: S1.42AK BMDSFIX1-DIAG1 inactive review build gate
+
+on:
+  pull_request:
+    paths:
+      - 'Patches/S142AKBMDSFix1Diag1/**'
+      - 'BuildSpecs/S1.42AK-BMDSFIX1-DIAG1.json'
+      - 'BuildSpecs/S1.42AK-BMDSFIX1-DIAG1_PLAN.md'
+      - 'AnalysisTools/validate_s142ak_bmdsfix1_diag1_source.py'
+      - 'AnalysisTools/validate_s142ak_bmdsfix1_diag1_build.py'
+      - 'BuildSystem/profile_builder.py'
+      - 'Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z'
+      - 'ProfileSources/S1.42AK-BMDSFIX1/**'
+      - '.github/workflows/s142ak-bmdsfix1-diag1-build-static.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Re-run pure Deep Sewers fail-closed selection policy
+        run: dotnet run --project Patches/S142AKBMDSFix1Diag1/Tests/Policy.Tests.csproj -c Release
+
+      - name: Re-verify one-patch source contract and live-controller preservation
+        run: python AnalysisTools/validate_s142ak_bmdsfix1_diag1_source.py
+
+      - name: Refuse any already-published DIAG1 profile
+        shell: bash
+        run: |
+          set -euo pipefail
+          output='Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z'
+          [[ ! -e "$output" ]] || { echo 'DIAG1 profile already exists in checkout; inactive review build must remain ephemeral.' >&2; exit 1; }
+          if git ls-files --error-unmatch -- "$output" >/dev/null 2>&1; then
+            echo 'DIAG1 review profile is tracked; publication is outside this gate.' >&2
+            exit 1
+          fi
+
+      - name: Build isolated inactive DIAG1 review artifact
+        run: python BuildSystem/profile_builder.py BuildSpecs/S1.42AK-BMDSFIX1-DIAG1.json
+
+      - name: Verify exact BMDSFIX1 parent preservation and one-DLL archive delta
+        run: python AnalysisTools/validate_s142ak_bmdsfix1_diag1_build.py
+
+      - name: Upload inactive DIAG1 review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: S1.42AK-BMDSFIX1-DIAG1-review-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z
+            ProfileSources/S1.42AK-BMDSFIX1-DIAG1/
+            BuildSpecs/S1.42AK-BMDSFIX1-DIAG1_BUILD_EVIDENCE/

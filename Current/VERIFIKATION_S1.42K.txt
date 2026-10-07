@@ -1,0 +1,48 @@
+VERIFIKATION — S1.42K
+
+Profil:
+Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z
+
+SHA-256:
+bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2
+
+Basis:
+Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z
+
+Basis SHA-256:
+736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7
+
+GitHub Actions:
+- erfolgreich
+- 331 Archivmitglieder
+- 330 lesbare Snapshot-Dateien
+- keine neuen Archivmitglieder
+- geänderte bestehende Mitglieder nur:
+  - BepInEx/config/NoteBoxz.LethalMin.cfg
+  - export.r2x
+- Compatibility-DLL unverändert
+
+Exakte funktionale Änderung:
+- Crawler aus [Pikmin Behavior] Attack Blacklist entfernt
+- Baboon hawk bleibt auf Attack Blacklist
+- Leaf boy bleibt auf Attack Blacklist
+- Thumper/Crawler -> Pikmin GrabPikmin-Guard unverändert
+- Pikmin -> Thumper/Crawler soll wieder normales LethalMin Attack/Latch-Verhalten nutzen
+
+Retained:
+- Puffer Can Poison Pikmin = false
+- Baboon Hawk <-> Pikmin zero interaction
+- EnemyIsolation aktiv
+- BCMER 1.71.0 disabled
+- Jetpack 140 Sekunden / MidAirExplosions Off
+
+Letzte valide Runtime-Evidenz:
+RuntimeEvidence/S1.42J/20260903T145657Z/raw/LogOutput.log
+SHA-256:
+a8ce035bf64fa5b704e18c588215f43cd1fd184eef4f467dfbafa6fcb1379963
+
+Runtime-Route:
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42K
+
+Build controller:
+BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42K_BUILD_AWAITING_RUNTIME

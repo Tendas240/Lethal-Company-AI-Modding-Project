@@ -1,0 +1,214 @@
+{
+  "schema_version": 5,
+  "date": "2026-10-01",
+  "status": "CURRENT_CANONICAL_VALIDATOR_COVERAGE",
+  "rule": "A green validator is evidence only for the obligations it explicitly checks. Do not infer coverage of unlisted semantics or runtime behavior.",
+  "validators": [
+    {
+      "path": "RepositoryTools/render_current_navigation.py",
+      "checks": [
+        "Generated README/START_HERE/Current-00/Current-01 are byte-identical to renderer output from Current/CURRENT_STATE.json.",
+        "Generated navigation remains state-driven rather than independently hand-maintained."
+      ],
+      "does_not_check": [
+        "Gameplay correctness",
+        "semantic truth of hand-maintained Knowledge/current topic documents"
+      ]
+    },
+    {
+      "path": "RepositoryTools/current_state_semantic_validator.py",
+      "checks": [
+        "Live-state markers in lifecycle, Knowledge Map, roadmap and artifact-evidence human index match CURRENT_STATE accepted/latest/candidate/runtime-pending identity.",
+        "Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md remains a state-neutral work-queue redirect rather than a duplicated live-state snapshot.",
+        "Known pre-build/pre-runtime contradictory instructions are forbidden from live authorities while a candidate runtime test is pending.",
+        "CURRENT_STATE selected_scope describes the already-built active candidate rather than asking to implement it again.",
+        "Active Knowledge Map routes do not retain rejected-candidate machine-state routing.",
+        "Artifact evidence contains accepted baseline and active pending candidate identities matching CURRENT_STATE.",
+        "A filename-derived duplicate ProfileSources snapshot for the active candidate is forbidden when a canonical build-id snapshot exists."
+      ],
+      "scan_scope": [
+        "Current/CURRENT_STATE.json",
+        "Knowledge/CURRENT_LIFECYCLE.md",
+        "Current/PROJECT_KNOWLEDGE_MAP.md/.json",
+        "Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md",
+        "Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md",
+        "Current/ARTIFACT_EVIDENCE_INTEGRITY.md/.json",
+        "active-candidate ProfileSources paths"
+      ],
+      "does_not_check": [
+        "Gameplay correctness",
+        "future contradictory wording not represented by markers/structural checks or the maintained stale-phrase set",
+        "GitHub Actions status of a commit"
+      ]
+    },
+    {
+      "path": "RepositoryTools/state_neutral_authority_validator.py",
+      "checks": [
+        "Knowledge/REPOSITORY_OVERHAUL.md does not duplicate volatile accepted/latest/candidate/runtime-pending lifecycle declarations.",
+        "The repository-overhaul topic routes live lifecycle truth to Current/CURRENT_STATE.json and Knowledge/CURRENT_LIFECYCLE.md instead of carrying a build-specific gameplay handoff.",
+        "The repository-overhaul topic routes executable permanent-CI composition to .github/workflows/knowledge-architecture.yml and coverage semantics to Current/VALIDATOR_COVERAGE.json instead of duplicating a stale gate inventory.",
+        "A built-in negative fixture proves representative live-state duplication is rejected."
+      ],
+      "scan_scope": [
+        "Knowledge/REPOSITORY_OVERHAUL.md"
+      ],
+      "does_not_check": [
+        "Gameplay correctness",
+        "truth of the routed lifecycle authorities",
+        "state-neutrality of architecture documents not registered in this validator"
+      ]
+    },
+    {
+      "path": "RepositoryTools/knowledge_architecture_validator.py",
+      "checks": [
+        "Promotion-safe current-state/controller/lineage consistency",
+        "Accepted baseline status/SHA/decision/safe-base agreement with BUILD_LINEAGE",
+        "ACTIVE_BUILD and BuildSpecs controller coherence",
+        "AUTO_BUILD_RESULT/lineage parent coherence",
+        "canonical path existence and Knowledge topic routing/orphans",
+        "S1.42AC historical/fresh runtime SHA provenance chain"
+      ],
+      "does_not_check": [
+        "Actual profile/runtime raw byte SHA values",
+        "gameplay correctness",
+        "all natural-language semantic contradictions; current live-state semantics are covered by current_state_semantic_validator.py"
+      ]
+    },
+    {
+      "path": "RepositoryTools/handover_workflow_validator.py",
+      "checks": [
+        "Canonical handover prompt/cross-links/authority/answerability route exist and preserve fresh-state plus completed-run upload semantics.",
+        "Handover bootstrap remains minimal and does not require the former bulk fixed-file read or duplicate the full live-state snapshot into the ready-to-copy prompt.",
+        "Handover requires exact-head Knowledge Architecture evidence and distinguishes ordinary push validation from the explicit workflow_dispatch exception for bot-generated profile-index follow-up commits.",
+        "Profile-index statically retains actions-write permission, expected-head verification, explicit Knowledge Architecture dispatch registration and ProfileSources trigger coverage needed for that exact-head follow-up contract."
+      ],
+      "does_not_check": [
+        "Truth of a future handover response before it is produced",
+        "Whether GitHub actually creates or successfully completes a future exact-head Actions run; live Actions state must still be verified at handover time",
+        "Gameplay correctness"
+      ]
+    },
+    {
+      "path": "RepositoryTools/segmented_execution_policy_validator.py",
+      "checks": [
+        "Canonical bounded-segment/checkpoint/continuation/atomicity policy and bootstrap/handover exposure."
+      ],
+      "does_not_check": [
+        "Whether every future assistant runtime actually follows the policy"
+      ]
+    },
+    {
+      "path": "RepositoryTools/artifact_byte_integrity_validator.py",
+      "checks": [
+        "Actual SHA-256 of every indexed profile",
+        "readable snapshot/FILE_INDEX and referenced decision-record existence",
+        "completed runtime INDEX/raw-log SHA and size agreement",
+        "pending runtime candidate profile/snapshot integrity",
+        "when a pending candidate declares partial runtime evidence before final promotion/rejection, paired runtime INDEX/log-SHA declaration plus raw-log SHA/size/analysis-source agreement"
+      ],
+      "does_not_check": [
+        "Gameplay semantics",
+        "whether a pending candidate should be promoted",
+        "whether partial runtime observations satisfy a gameplay gate beyond byte/provenance integrity"
+      ]
+    },
+    {
+      "path": "RepositoryTools/runtime_sha_provenance_validator.py",
+      "checks": [
+        "Original S1.42AC rejection-era authoritative runtime-log SHA metadata chain and repository-wide qualification of the superseded SHA."
+      ],
+      "does_not_check": [
+        "Unregistered future provenance errata"
+      ]
+    },
+    {
+      "path": "RepositoryTools/repository_integrity_guard.py",
+      "checks": [
+        "Central known-bad-value registry",
+        "registered historical-current documents carry their required local supersession marker and resolve to existing current targets",
+        "duplicate same-level current authority claims",
+        "orphan Knowledge topics",
+        "generated-file protection markers"
+      ],
+      "does_not_check": [
+        "Arbitrary unknown bad values",
+        "unregistered future stale-current prose outside modeled current authorities",
+        "gameplay correctness"
+      ]
+    },
+    {
+      "path": "RepositoryTools/gale_profile_path_length_guard.py",
+      "checks": [
+        "Projects the two known deepest Gale/BepInEx runtime-consumed paths against the observed project-machine Gale profile root and rejects new identities above the 255-character project budget.",
+        "Preserves only the exact historical BMDSFIX1-DIAG1 and BMAFDIAG1 blocked specs during repository-wide scans while explicit single-spec validation rejects those identities for reuse.",
+        "Self-test locks the observed 260/262 blocked lengths, 215/217 shortened DIAG1PATH1 lengths and the known successful 253/255 BMGHDIAG3 boundary."
+      ],
+      "does_not_check": [
+        "A different user's actual local Gale root; the canonical v2.4.4 importer performs that exact local check before destructive replacement.",
+        "Whether an otherwise path-safe profile is gameplay-compatible."
+      ]
+    },
+    {
+      "path": "RepositoryTools/gale_import_helper_validator.py",
+      "checks": [
+        "Canonical Gale replacement helper retains the fail-closed regression/materialization contract."
+      ],
+      "does_not_check": [
+        "A user's current local Gale UI/runtime state"
+      ]
+    },
+    {
+      "path": "RepositoryTools/phase_checkpoint_validator.py",
+      "checks": [
+        "Future per-phase checkpoint monotonicity, predecessor PASS, immutability, completion-commit existence and produced-artifact presence."
+      ],
+      "does_not_check": [
+        "Retroactive legacy phase ordering"
+      ]
+    },
+    {
+      "path": "RepositoryTools/overhaul_contract_validator.py",
+      "checks": [
+        "Frozen pre-overhaul contract obligations, backup provenance, completion classifications and promotion-safe current lifecycle coherence."
+      ],
+      "does_not_check": [
+        "Gameplay behavior"
+      ]
+    },
+    {
+      "path": "RepositoryTools/answerability_regression.py",
+      "checks": [
+        "Semantic routing for maintained answerability cases including accepted build, BCMER, runtime uploader, roadmap and new-chat handover."
+      ],
+      "does_not_check": [
+        "Truth of every routed source; live truth is separately covered by current_state_semantic_validator.py"
+      ]
+    },
+    {
+      "path": "RepositoryTools/cold_history_storage_validator.py",
+      "checks": [
+        "Legacy Archive/ and Logs/ roots contain only their controlled recovery README pointers in current HEAD.",
+        "Current/COLD_HISTORY_STORAGE.json preserves the exact verified pre-externalization Git tree SHAs for Archive/ and Logs/ and the frozen recovery repository/commit.",
+        "Pointer READMEs expose the matching tree SHA, recovery repository/commit and machine recovery authority.",
+        "Every direct textual Archive/ or Logs/ reference outside the cold roots occurs only in an explicitly registered legacy or infrastructure reference file.",
+        "The registered reference sets are complete and existing, and Current/REPOSITORY_MIGRATION_MANIFEST.json points to the cold-history authority with history_rewrite=false."
+      ],
+      "does_not_check": [
+        "Gameplay correctness",
+        "Remote backup availability at an arbitrary future moment; backup identity/provenance is separately evidenced by Current/PRE_OVERHAUL_BACKUP_MANIFEST.json and the frozen tree identities",
+        "Untracked local files outside GitHub Actions checkout"
+      ]
+    },
+    {
+      "path": "RepositoryTools/validator_selftest.py",
+      "checks": [
+        "Representative negative fixtures fail: unqualified bad SHA, registered stale-current document without its qualification marker, duplicate authority, orphan topic, phase without predecessor, stale live runtime instruction, duplicated live work-queue state, reintroduced cold-history payload bytes and unregistered cold-history references; registered historical SHA passes."
+      ],
+      "does_not_check": [
+        "Formal proof of every validator branch"
+      ]
+    }
+  ],
+  "permanent_ci_workflow": ".github/workflows/knowledge-architecture.yml",
+  "last_validated": "2026-09-10"
+}

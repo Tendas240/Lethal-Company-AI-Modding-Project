@@ -1,0 +1,290 @@
+{
+  "package": "XuXiaolan-CodeRebirth",
+  "version": "1.6.9",
+  "zip_sha256": "a44a47d3f9eb049ccea83f8483c257f4faa2bf927a6df7e0bb70ff1504b2a5d6",
+  "zip_bytes": 263010364,
+  "unitypy_version": "1.25.3",
+  "assemblies": [
+    {
+      "member": "plugins/CodeRebirth/CodeRebirth.dll",
+      "sha256": "a35a06cf55a42dd1db9f3bcf68448d74590fdac8d9e80f57a811e78628c8fd36"
+    },
+    {
+      "member": "plugins/CodeRebirth/com.local.Rodriguez.DuskReplacementEntities.CodeRebirth.dll",
+      "sha256": "308ddf095d807b719c204c48bee3ce26795281c6b399baf3ac105e6b9d258163"
+    }
+  ],
+  "bundles": [
+    {
+      "member": "plugins/CodeRebirth/Assets/oxydeassets",
+      "bytes": 398696,
+      "zip_compressed_bytes": 398821,
+      "sha256": "86d2ef29d428bcb3b96cb5ec99283a362324f8261c4a8e26737e3bd04fe24fe4",
+      "header": {
+        "signature": "UnityFS",
+        "format_version": 8,
+        "player_version": "5.x.x",
+        "unity_revision": "2022.3.62f2",
+        "declared_bytes": 398696,
+        "compressed_block_info_bytes": 109,
+        "uncompressed_block_info_bytes": 219,
+        "flags": 579
+      },
+      "static_reader": {
+        "object_count": 48,
+        "type_counts": {
+          "AnimationClip": 5,
+          "Animator": 1,
+          "AnimatorController": 1,
+          "AssetBundle": 1,
+          "GameObject": 3,
+          "Material": 2,
+          "Mesh": 1,
+          "MeshFilter": 2,
+          "MeshRenderer": 2,
+          "MonoBehaviour": 14,
+          "MonoScript": 7,
+          "Shader": 3,
+          "Texture2D": 2,
+          "Transform": 3,
+          "VideoClip": 1
+        },
+        "serialized_files": [
+          {
+            "name": "CAB-34cea74cab018d261344242e7acd380f",
+            "unity_version": "2022.3.62f2",
+            "externals": [],
+            "type_tree_enabled": true,
+            "object_count": 48
+          }
+        ],
+        "monobehaviour_probe": {
+          "path_id": -4793931200078666718,
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "success": true,
+          "top_level_field_names": [
+            "m_GameObject",
+            "m_Enabled",
+            "m_Script",
+            "m_Name",
+            "planetPrefab",
+            "sceneName",
+            "levelID",
+            "lockedForDemo",
+            "spawnEnemiesAndScrap",
+            "PlanetName",
+            "LevelDescription",
+            "videoReel",
+            "riskLevel",
+            "timeToArrive",
+            "OffsetFromGlobalTime",
+            "DaySpeedMultiplier",
+            "planetHasTime",
+            "randomWeathers",
+            "overrideWeather",
+            "overrideWeatherType",
+            "currentWeather",
+            "factorySizeMultiplier",
+            "dungeonFlowTypes",
+            "spawnableMapObjects",
+            "indoorMapHazards",
+            "spawnableOutsideObjects",
+            "canSpawnMold",
+            "moldSpreadIterations",
+            "moldStartPosition",
+            "moldType",
+            "spawnableScrap",
+            "minScrap",
+            "maxScrap",
+            "minTotalScrapValue",
+            "maxTotalScrapValue",
+            "levelAmbienceClips",
+            "maxEnemyPowerCount",
+            "maxOutsideEnemyPowerCount",
+            "maxDaytimeEnemyPowerCount",
+            "maxInsideDiversityPowerCount",
+            "maxOutsideDiversityPowerCount",
+            "Enemies",
+            "specialEnemyRarity",
+            "OutsideEnemies",
+            "DaytimeEnemies",
+            "enemySpawnChanceThroughoutDay",
+            "outsideEnemySpawnChanceThroughDay",
+            "daytimeEnemySpawnChanceThroughDay",
+            "spawnProbabilityRange",
+            "daytimeEnemiesProbabilityRange",
+            "levelIncludesSnowFootprints",
+            "levelIconString"
+          ]
+        }
+      }
+    },
+    {
+      "member": "plugins/CodeRebirth/Assets/oxydecrashshipassets",
+      "bytes": 2193570,
+      "zip_compressed_bytes": 2194240,
+      "sha256": "e672f616fc0a415bf4ad586b78ff4b45a8bfe2b96826b5bb4369e9b167f4f685",
+      "header": {
+        "signature": "UnityFS",
+        "format_version": 8,
+        "player_version": "5.x.x",
+        "unity_revision": "2022.3.62f2",
+        "declared_bytes": 2193570,
+        "compressed_block_info_bytes": 110,
+        "uncompressed_block_info_bytes": 219,
+        "flags": 579
+      }
+    },
+    {
+      "member": "plugins/CodeRebirth/Assets/oxydeloreassets",
+      "bytes": 6662746,
+      "zip_compressed_bytes": 6664781,
+      "sha256": "f9aff6191e86421b240b4ead69b9e4620f9fd9d4f1d8840866c31ec259b0d606",
+      "header": {
+        "signature": "UnityFS",
+        "format_version": 8,
+        "player_version": "5.x.x",
+        "unity_revision": "2022.3.62f2",
+        "declared_bytes": 6662746,
+        "compressed_block_info_bytes": 108,
+        "uncompressed_block_info_bytes": 219,
+        "flags": 579
+      }
+    },
+    {
+      "member": "plugins/CodeRebirth/Assets/oxydescene",
+      "bytes": 55038216,
+      "zip_compressed_bytes": 55054924,
+      "sha256": "6b6dc42c2bef7d858e7e2efa2573df3e1c2bc8507cc7c3840483f0f6c1b0e883",
+      "header": {
+        "signature": "UnityFS",
+        "format_version": 8,
+        "player_version": "5.x.x",
+        "unity_revision": "2022.3.62f2",
+        "declared_bytes": 55038216,
+        "compressed_block_info_bytes": 103,
+        "uncompressed_block_info_bytes": 170,
+        "flags": 579
+      },
+      "static_reader": {
+        "object_count": 20561,
+        "type_counts": {
+          "AnimationClip": 23,
+          "Animator": 6,
+          "AnimatorController": 6,
+          "AssetBundle": 1,
+          "AudioClip": 63,
+          "AudioSource": 56,
+          "BoxCollider": 3639,
+          "CapsuleCollider": 14,
+          "Cubemap": 2,
+          "GameObject": 4424,
+          "Light": 126,
+          "LightmapSettings": 1,
+          "LineRenderer": 10,
+          "Material": 211,
+          "Mesh": 175,
+          "MeshCollider": 220,
+          "MeshFilter": 2754,
+          "MeshRenderer": 2746,
+          "MonoBehaviour": 965,
+          "MonoScript": 52,
+          "NavMeshData": 2,
+          "NavMeshObstacle": 1,
+          "NavMeshSettings": 1,
+          "OcclusionArea": 5,
+          "OffMeshLink": 88,
+          "ParticleSystem": 4,
+          "ParticleSystemRenderer": 4,
+          "PreloadData": 1,
+          "RenderSettings": 1,
+          "Rigidbody": 1,
+          "Shader": 7,
+          "SkinnedMeshRenderer": 5,
+          "SphereCollider": 78,
+          "Sprite": 5,
+          "Texture2D": 438,
+          "Texture3D": 1,
+          "Transform": 4424,
+          "VideoPlayer": 1
+        },
+        "serialized_files": [
+          {
+            "name": "BuildPlayer-Oxyde.sharedAssets",
+            "unity_version": "2022.3.62f2",
+            "externals": [
+              "Library/unity default resources"
+            ],
+            "type_tree_enabled": true,
+            "object_count": 973
+          },
+          {
+            "name": "BuildPlayer-Oxyde",
+            "unity_version": "2022.3.62f2",
+            "externals": [
+              "archive:/BuildPlayer-Oxyde/BuildPlayer-Oxyde.sharedAssets",
+              "Library/unity default resources"
+            ],
+            "type_tree_enabled": true,
+            "object_count": 19588
+          }
+        ],
+        "monobehaviour_probe": {
+          "path_id": 963,
+          "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+          "success": true,
+          "top_level_field_names": [
+            "m_GameObject",
+            "m_Enabled",
+            "m_Script",
+            "m_Name",
+            "active",
+            "rotation",
+            "skyIntensityMode",
+            "exposure",
+            "multiplier",
+            "upperHemisphereLuxValue",
+            "upperHemisphereLuxColor",
+            "desiredLuxValue",
+            "updateMode",
+            "updatePeriod",
+            "includeSunInBaking",
+            "type",
+            "sphericalMode",
+            "seaLevel",
+            "planetaryRadius",
+            "planetCenterPosition",
+            "airDensityR",
+            "airDensityG",
+            "airDensityB",
+            "airTint",
+            "airMaximumAltitude",
+            "aerosolDensity",
+            "aerosolTint",
+            "aerosolMaximumAltitude",
+            "aerosolAnisotropy",
+            "groundTint",
+            "groundColorTexture",
+            "groundEmissionTexture",
+            "groundEmissionMultiplier",
+            "planetRotation",
+            "spaceEmissionTexture",
+            "spaceEmissionMultiplier",
+            "spaceRotation",
+            "colorSaturation",
+            "alphaSaturation",
+            "alphaMultiplier",
+            "horizonTint",
+            "zenithTint",
+            "horizonZenithShift",
+            "numberOfBounces",
+            "m_SkyVersion",
+            "m_ObsoleteEarthPreset"
+          ]
+        }
+      }
+    }
+  ],
+  "executed_game_or_mod_code": false,
+  "entrance_id_extraction_performed": false
+}

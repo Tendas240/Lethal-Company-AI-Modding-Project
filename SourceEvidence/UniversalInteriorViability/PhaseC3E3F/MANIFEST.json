@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C3E3F",
+  "inspection_date": "2026-09-20",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "pr_number": 138,
+  "parent_commit": "bbf81f13b68882de04122c36bde20fc6c70ac8b1",
+  "verified_main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "accepted_baseline": "S1.42AK",
+  "status": "EXACT_LOCAL_SOURCE_CAPTURE_HELPER_PREPARED_THIRD_MANIFEST_VARIANT_REVIEWED",
+  "question": "Can exact installed V81 GenerateNewLevelClientRpc/GenerateNewFloor control flow be recovered from already committed bytes; if not, provide a fail-closed focused capture route without a gameplay run?",
+  "existing_installed_v81_evidence": {
+    "directory": "SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9",
+    "report_git_blob_sha1": "c0f73d41650512af9437e74f4e4a1b9d5a7e62ed",
+    "manifest_git_blob_sha1": "c2f3adeb764309ca7af71cd8114f6979e9318b64",
+    "verification_git_blob_sha1": "ab142ee318a7df24e36aa0d7aa89ef12ee360ed0",
+    "source_assembly_sha256": "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+    "game_executable_sha256": "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+    "steam_app_id": "1966720",
+    "steam_build_id": "22825947",
+    "ilspy_version": "11.0.0.9375",
+    "missing_required_method_bodies": [
+      "RoundManager.GenerateNewLevelClientRpc",
+      "RoundManager.GenerateNewFloor"
+    ],
+    "full_type_source_committed": false,
+    "game_binary_committed": false
+  },
+  "capture_helper": {
+    "path": "AnalysisTools/InspectRoundManagerGenerationV81.ps1",
+    "git_blob_sha1": "51a577179f17343411cbdb05506cc374334497e7",
+    "required_methods": [
+      "GenerateNewLevelClientRpc",
+      "GenerateNewFloor"
+    ],
+    "direct_caller_depth": 1,
+    "evidence_root": "SourceEvidence/VanillaV81/RoundManagerGeneration",
+    "report_name": "ROUNDMANAGER_GENERATION_FOCUSED_DECOMPILE.txt",
+    "publication_files_only": [
+      "ROUNDMANAGER_GENERATION_FOCUSED_DECOMPILE.txt",
+      "MANIFEST.json"
+    ],
+    "game_launch_required": false,
+    "repository_clone_required": false,
+    "profile_build_required": false
+  },
+  "helper_validation_workflow": {
+    "path": ".github/workflows/roundmanager-generation-evidence-helper.yml",
+    "git_blob_sha1": "95c2c04a98803912cb2c6c3940cc63e79bb6bfee",
+    "runner": "windows-latest",
+    "powershell_contract": "Windows PowerShell 5.1",
+    "tests": [
+      "extractor/provenance/publication self-test",
+      "isolated .NET 10 SDK plus pinned ilspycmd bootstrap self-test"
+    ]
+  },
+  "result": {
+    "already_committed_exact_method_body_recovery": "NOT_POSSIBLE_FROM_AVAILABLE_COMMITTED_BYTES",
+    "missing_body_reason": "FOCUSED_CAPTURE_EXCLUDED_METHODS_AND_FULL_LOCAL_TYPE_SOURCE/BINARIES_WERE_INTENTIONALLY_NOT_PUBLISHED",
+    "new_exact_capture_route": "PREPARED_FAIL_CLOSED",
+    "runtime_gameplay_required": false,
+    "runtime_oxyde_generation": "NOT_PROVEN",
+    "runtime_entrance_construction": "NOT_PROVEN"
+  },
+  "unchanged": {
+    "authoritative_b3_matrix": true,
+    "selection_supported_external_pairings": 46,
+    "build_enabled": false,
+    "build_state": "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS",
+    "active_build": "S1.42AK",
+    "runtime_test_outstanding": false,
+    "candidate": null
+  },
+  "proof_boundary": "C3E3F closes only the repository byte-availability/recovery question and prepares exact focused source acquisition. It does not supply the missing installed method bodies itself and does not prove false-flag generation callsite reachability.",
+  "next_segment": "C3E3G after focused source evidence is published: verify and ingest exact installed GenerateNewLevelClientRpc/GenerateNewFloor bodies plus selected one-hop callers, then resolve spawnEnemiesAndScrap=false callsite reachability.",
+  "shared_provenance_contract": {
+    "review_path": "AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md",
+    "review_git_blob_sha1": "a5e5daf9917be7733d77d69e3c62edec2e17b6da",
+    "spawning_helper_path": "AnalysisTools/InspectRoundManagerSpawningV81.ps1",
+    "spawning_helper_git_blob_sha1": "ed902bfce21259d0b82cadd7c377b2604d842101",
+    "generation_helper_git_blob_sha1": "51a577179f17343411cbdb05506cc374334497e7",
+    "reviewed_appmanifest_sha256": [
+      "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+      "b431704ad9cf0e44cba506274f6059d021e35f434af6ef27f3abd44c5d1e6ae3",
+      "132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e"
+    ]
+  },
+  "capture_retry_provenance_review": {
+    "observed_date": "2026-09-20",
+    "rejected_appmanifest_sha256": "132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e",
+    "preceding_checks_implied_pass_by_helper_control_flow": [
+      "Assembly-CSharp SHA-256",
+      "Lethal Company executable SHA-256",
+      "Steam App ID",
+      "Steam build ID"
+    ],
+    "decision": "ADD_EXACT_THIRD_REVIEWED_MANIFEST_VARIANT_ONLY_WITH_EXISTING_PINNED_BINARY_APP_BUILD_IDENTITY",
+    "wildcard_or_auto_adoption": false,
+    "changed_manifest_fields_known": false
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": "phase-c3e1-1",
+  "scope": "Universal Interior Viability / Equal Availability",
+  "baseline": "S1.42AK",
+  "checkpoint": {
+    "main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+    "parent_pr_head": "c7a9673a868f838a2435ed55c651a0e956a41541",
+    "pr_number": 138,
+    "branch": "scope/universal-interior-phase-c3a-dawn-tags"
+  },
+  "target": "Oxyde moon scene topology only",
+  "source_binding": {
+    "repository": "XuuXiaolan/CodeRebirth",
+    "version": "1.6.9",
+    "source_tree": "3aec94f6f737c86d5e1eb59a57396740317b210f",
+    "qualification": "Version-matched source; not asserted byte-identical to accepted package bytes.",
+    "oxyde_scene": {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Scene/Oxyde.unity",
+      "git_blob_sha": "f374dd1ffad448089157f29d58559310e9a7707e",
+      "serialized_line_count": 22780
+    },
+    "terrain_prefab": {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Terrain/NewTerrainXuStillABitch.prefab",
+      "git_blob_sha": "23bf23b3fb5782b5a268b89ec7783e3c5004f323",
+      "serialized_character_count": 7355812,
+      "serialized_line_count": 201136
+    }
+  },
+  "direct_scene_prefab_instances": [
+    {
+      "guid": "dc4b41c221f7d5d4d893c76e8106cb2d",
+      "count": 11,
+      "observed_name_family": "ItemSpawnSpecial"
+    },
+    {
+      "guid": "9c1e33c92155ede4cba01196f6a19159",
+      "count": 167,
+      "observed_name_family": "OutsideNode"
+    },
+    {
+      "guid": "bcbb248afed0b3e4d874d4e42f57a9c9",
+      "count": 8,
+      "observed_name_family": "NavMeshModifierVolume"
+    },
+    {
+      "guid": "ae2c7bcb8a196ca4691ae14adb8b25ca",
+      "count": 22,
+      "observed_name_family": "ItemSpawnRare"
+    },
+    {
+      "guid": "34c99316cfbceda489487ec2df5e63ba",
+      "count": 4,
+      "observed_name_family": "ItemSpawnCommon"
+    },
+    {
+      "guid": "1109162ee094dea40a82d2c161aad356",
+      "count": 1,
+      "observed_name_family": "SpecialHiddenSpawn"
+    },
+    {
+      "guid": "8d9d3c3fbc98cc44cb8b80c04ecf2af8",
+      "count": 1,
+      "observed_name_family": "WorkforceEnemyEntrySpawn"
+    },
+    {
+      "guid": "360d370ce77a2374898653dd89fad135",
+      "count": 1,
+      "observed_name_family": "ItemShipAnimContainer"
+    },
+    {
+      "guid": "11f608029f0d26f40b881cd0a29dcc8c",
+      "count": 1,
+      "observed_name_family": "NavMeshColliders"
+    },
+    {
+      "guid": "d07f2673e6d0dcb43a1e7c342759e677",
+      "count": 1,
+      "observed_name_family": "SpongeShaderForEditor"
+    },
+    {
+      "guid": "d0ceccc0fe1c44d429ec5a7053532a6e",
+      "count": 1,
+      "observed_name_family": "NewTerrainXuStillABitch"
+    }
+  ],
+  "direct_scene_entrance_like_name_overrides": 0,
+  "terrain_prefab": {
+    "distinct_nested_source_prefab_guids": 192,
+    "direct_serialized_hits": {
+      "EntranceTeleport": 0,
+      "entranceId": 0,
+      "isEntranceToBuilding": 0,
+      "MainEntrance": 0,
+      "FireExit": 0,
+      "DungeonEntrance": 0,
+      "entrancePoint": 0,
+      "exitPoint": 0
+    }
+  },
+  "exact_tree_path_search": {
+    "oxyde_paths_named_entrance_exit_or_teleport": 0,
+    "note": "Exact source tree has unrelated teleport/exit-named assets elsewhere and Plugin/CodeRebirth/src/Patches/EntranceTeleportPatch.cs; no Oxyde asset path is named as an entrance/fire-exit/teleport asset."
+  },
+  "conclusions": {
+    "direct_oxyde_scene_layer_contains_identifiable_entrance_prefab": false,
+    "exact_entrance_ids_proven": false,
+    "exact_pairing_proven": false,
+    "zero_entrances_proven": false,
+    "topology_safety_proven": false
+  },
+  "remaining_gap": "Resolve the terrain prefab's 192 source GUIDs through the exact 1.6.9 .meta GUID map and inspect plausible prefab sources; if unresolved, inspect exact packaged Oxyde scene-bundle composition."
+}

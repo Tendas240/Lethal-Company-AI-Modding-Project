@@ -1,0 +1,451 @@
+# Installed Lethal Company V81 entrance pairing evidence
+
+Source Assembly-CSharp SHA-256: 5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731
+Steam buildid: 22825947
+Repository main at capture: 56355ff518ae4301a38d370be9561251f6f963c1
+Repository PR #138 head at capture: da649b21e999b96dfac8357e3148cb1c919fe157
+Decompiler: ilspycmd 11.0.0.9375
+Scope: RoundManager exit-ID assignment/main-entrance wait path plus EntranceTeleport destination matching/player-use path, with one-hop direct callers inside each type.
+This is source evidence, not gameplay acceptance. Full type source, unrelated methods and binaries are excluded.
+
+## RoundManager
+
+--- public void SetLevelObjectVariables() / local type line 3294 ---
+	public void SetLevelObjectVariables()
+	{
+		StartCoroutine(waitForMainEntranceTeleportToSpawn());
+	}
+
+--- private IEnumerator waitForMainEntranceTeleportToSpawn() / local type line 3299 ---
+	private IEnumerator waitForMainEntranceTeleportToSpawn()
+	{
+		float startTime = Time.timeSinceLevelLoad;
+		while (FindMainEntrancePosition() == Vector3.zero && Time.timeSinceLevelLoad - startTime < 15f)
+		{
+			yield return new WaitForSeconds(1f);
+		}
+		Vector3 vector = FindMainEntrancePosition();
+		SetLockedDoors(vector);
+		SetSteamValveTimes(vector);
+		SetBigDoorCodes(vector);
+		SetExitIDs(vector);
+		TurnOnAllLights(on: false);
+		yield return new WaitForSeconds(6f);
+		SetPowerOffAtStart();
+	}
+
+--- private void SetExitIDs(Vector3 mainEntrancePosition) / local type line 3355 ---
+	private void SetExitIDs(Vector3 mainEntrancePosition)
+	{
+		int num = 1;
+		EntranceTeleport[] array = (from x in UnityEngine.Object.FindObjectsOfType<EntranceTeleport>()
+			orderby (x.transform.position - mainEntrancePosition).sqrMagnitude
+			select x).ToArray();
+		for (int num2 = 0; num2 < array.Length; num2++)
+		{
+			if (array[num2].entranceId == 1 && !array[num2].isEntranceToBuilding)
+			{
+				array[num2].entranceId = num;
+				num++;
+			}
+		}
+	}
+
+--- public static Vector3 FindMainEntrancePosition(bool getTeleportPosition = false, bool getOutsideEntrance = false) / local type line 4012 ---
+	public static Vector3 FindMainEntrancePosition(bool getTeleportPosition = false, bool getOutsideEntrance = false)
+	{
+		EntranceTeleport[] array = UnityEngine.Object.FindObjectsOfType<EntranceTeleport>(includeInactive: false);
+		for (int i = 0; i < array.Length; i++)
+		{
+			if (array[i].entranceId != 0)
+			{
+				continue;
+			}
+			if (!getOutsideEntrance)
+			{
+				if (!array[i].isEntranceToBuilding)
+				{
+					if (getTeleportPosition)
+					{
+						return array[i].entrancePoint.position;
+					}
+					return array[i].transform.position;
+				}
+			}
+			else if (array[i].isEntranceToBuilding)
+			{
+				if (getTeleportPosition)
+				{
+					return array[i].entrancePoint.position;
+				}
+				return array[i].transform.position;
+			}
+		}
+		Debug.LogError("Main entrance position could not be found. Returning origin.");
+		return Vector3.zero;
+	}
+
+## EntranceTeleport
+
+--- public void StartOpeningEntrance() / local type line 66 ---
+	public void StartOpeningEntrance()
+	{
+		if (entranceId != 0)
+		{
+			Debug.Log("Id is not 0");
+		}
+		else
+		{
+			if (!GetDoorAnimators() || Time.realtimeSinceStartup - timeAtLastUse < 0.5f)
+			{
+				return;
+			}
+			if (exitScript == null && (exitPointDoesntExist || !FindExitPoint()))
+			{
+				exitPointDoesntExist = true;
+				return;
+			}
+			thisEntranceAnimator.SetBool("Open", value: true);
+			if (!playingCreakAudio)
+			{
+				PlayCreakSFX();
+			}
+			if (exitScript.thisEntranceAnimator != null)
+			{
+				exitScript.thisEntranceAnimator.SetBool("Open", value: true);
+			}
+			SyncStartOpeningDoorRpc();
+		}
+	}
+
+--- public void SyncStartOpeningDoorRpc() / local type line 97 ---
+	public void SyncStartOpeningDoorRpc()
+	{
+		NetworkManager networkManager = base.NetworkManager;
+		if ((object)networkManager == null || !networkManager.IsListening)
+		{
+			return;
+		}
+		if (__rpc_exec_stage != __RpcExecStage.Execute)
+		{
+			RpcAttribute.RpcAttributeParams attributeParams = new RpcAttribute.RpcAttributeParams
+			{
+				RequireOwnership = false
+			};
+			RpcParams rpcParams = default(RpcParams);
+			FastBufferWriter bufferWriter = __beginSendRpc(3464572258u, rpcParams, attributeParams, SendTo.NotMe, RpcDelivery.Reliable);
+			__endSendRpc(ref bufferWriter, 3464572258u, rpcParams, attributeParams, SendTo.NotMe, RpcDelivery.Reliable);
+		}
+		if (__rpc_exec_stage != __RpcExecStage.Execute)
+		{
+			return;
+		}
+		__rpc_exec_stage = __RpcExecStage.Send;
+		if (entranceId != 0)
+		{
+			Debug.Log("Id is not 0");
+		}
+		else
+		{
+			if (!GetDoorAnimators())
+			{
+				return;
+			}
+			if (exitScript == null && (exitPointDoesntExist || !FindExitPoint()))
+			{
+				exitPointDoesntExist = true;
+				return;
+			}
+			thisEntranceAnimator.SetBool("Open", value: true);
+			Debug.Log($"'{base.gameObject.name}' entrancePointAudio isPlaying: {entrancePointAudio.isPlaying}");
+			if (!playingCreakAudio)
+			{
+				PlayCreakSFX();
+			}
+			if (exitScript.thisEntranceAnimator != null)
+			{
+				exitScript.thisEntranceAnimator.SetBool("Open", value: true);
+			}
+		}
+	}
+
+--- public void FinishOpeningEntrance(bool playShutAudio = true) / local type line 147 ---
+	public void FinishOpeningEntrance(bool playShutAudio = true)
+	{
+		Debug.Log($"Called finishopeningentrance ({playShutAudio})");
+		if (entranceId != 0)
+		{
+			Debug.Log("Id is not 0");
+			return;
+		}
+		if (!GetDoorAnimators())
+		{
+			Debug.Log("finishopeningentrance animator null");
+			return;
+		}
+		if (!thisEntranceAnimator.GetBool("Open"))
+		{
+			if (playingCreakAudio)
+			{
+				entrancePointAudio.Stop();
+				if (exitScript != null && exitScript.thisEntranceAnimator != null)
+				{
+					exitScript.entrancePointAudio.Stop();
+				}
+			}
+			Debug.Log("Entrance teleport was not open; returning");
+			return;
+		}
+		if (exitScript == null && (exitPointDoesntExist || !FindExitPoint()))
+		{
+			Debug.Log("Couldn't find exit script");
+			exitPointDoesntExist = true;
+			Debug.Log("End A");
+			return;
+		}
+		thisEntranceAnimator.SetBool("Open", value: false);
+		Debug.Log("'" + base.gameObject.name + "' STOPPING entrancePointAudio");
+		entrancePointAudio.Stop();
+		playingCreakAudio = false;
+		if (exitScript.thisEntranceAnimator != null)
+		{
+			exitScript.entrancePointAudio.Stop();
+		}
+		if (playShutAudio)
+		{
+			if (Time.realtimeSinceStartup - timeAtLastUse > 0.5f)
+			{
+				PlayAudioAtTeleportPositions();
+			}
+			SyncFinishOpeningEntranceRpc();
+		}
+		if (exitScript.thisEntranceAnimator != null)
+		{
+			exitScript.thisEntranceAnimator.SetBool("Open", value: false);
+		}
+	}
+
+--- public void SyncFinishOpeningEntranceRpc() / local type line 203 ---
+	public void SyncFinishOpeningEntranceRpc()
+	{
+		NetworkManager networkManager = base.NetworkManager;
+		if ((object)networkManager == null || !networkManager.IsListening)
+		{
+			return;
+		}
+		if (__rpc_exec_stage != __RpcExecStage.Execute)
+		{
+			RpcAttribute.RpcAttributeParams attributeParams = new RpcAttribute.RpcAttributeParams
+			{
+				RequireOwnership = false
+			};
+			RpcParams rpcParams = default(RpcParams);
+			FastBufferWriter bufferWriter = __beginSendRpc(3207210735u, rpcParams, attributeParams, SendTo.NotMe, RpcDelivery.Reliable);
+			__endSendRpc(ref bufferWriter, 3207210735u, rpcParams, attributeParams, SendTo.NotMe, RpcDelivery.Reliable);
+		}
+		if (__rpc_exec_stage != __RpcExecStage.Execute)
+		{
+			return;
+		}
+		__rpc_exec_stage = __RpcExecStage.Send;
+		if (entranceId != 0 || !GetDoorAnimators())
+		{
+			return;
+		}
+		if (exitScript == null && (exitPointDoesntExist || !FindExitPoint()))
+		{
+			exitPointDoesntExist = true;
+			return;
+		}
+		thisEntranceAnimator.SetBool("Open", value: false);
+		entrancePointAudio.Stop();
+		playingCreakAudio = false;
+		if (exitScript.thisEntranceAnimator != null)
+		{
+			exitScript.entrancePointAudio.Stop();
+		}
+		if (Time.realtimeSinceStartup - timeAtLastUse > 0.5f)
+		{
+			PlayAudioAtTeleportPositions();
+		}
+		if (exitScript.thisEntranceAnimator != null)
+		{
+			exitScript.thisEntranceAnimator.SetBool("Open", value: false);
+		}
+	}
+
+--- public bool FindExitPoint() / local type line 273 ---
+	public bool FindExitPoint()
+	{
+		EntranceTeleport[] array = UnityEngine.Object.FindObjectsOfType<EntranceTeleport>();
+		for (int i = 0; i < array.Length; i++)
+		{
+			if (array[i].isEntranceToBuilding != isEntranceToBuilding && array[i].entranceId == entranceId)
+			{
+				exitScript = array[i];
+			}
+		}
+		if (exitScript == null)
+		{
+			return false;
+		}
+		return true;
+	}
+
+--- public void TeleportPlayer() / local type line 290 ---
+	public void TeleportPlayer()
+	{
+		bool flag = false;
+		if (!FindExitPoint())
+		{
+			flag = true;
+		}
+		if (flag)
+		{
+			HUDManager.Instance.DisplayTip("???", "The entrance appears to be blocked.");
+			return;
+		}
+		Transform thisPlayerBody = GameNetworkManager.Instance.localPlayerController.thisPlayerBody;
+		GameNetworkManager.Instance.localPlayerController.TeleportPlayer(exitScript.entrancePoint.position);
+		GameNetworkManager.Instance.localPlayerController.isInElevator = false;
+		GameNetworkManager.Instance.localPlayerController.isInHangarShipRoom = false;
+		thisPlayerBody.eulerAngles = new Vector3(thisPlayerBody.eulerAngles.x, exitScript.entrancePoint.eulerAngles.y, thisPlayerBody.eulerAngles.z);
+		FinishOpeningEntrance(playShutAudio: false);
+		SetAudioPreset((int)GameNetworkManager.Instance.localPlayerController.playerClientId);
+		if (!checkedForFirstTime)
+		{
+			checkedForFirstTime = true;
+			if (RoundManager.Instance.currentDungeonType != -1 && isEntranceToBuilding && (RoundManager.Instance.currentDungeonType == 0 || RoundManager.Instance.currentDungeonType == 1 || RoundManager.Instance.currentDungeonType == 4))
+			{
+				try
+				{
+					if (!ES3.Load($"PlayedDungeonEntrance{RoundManager.Instance.currentDungeonType}", "LCGeneralSaveData", defaultValue: false))
+					{
+						StartCoroutine(playMusicOnDelay());
+					}
+				}
+				catch (Exception arg)
+				{
+					Debug.LogError($"Error when checking PlayedDungeonEntrance with save data! : {arg}");
+				}
+			}
+		}
+		if (entranceId == 0 && isEntranceToBuilding && StartOfRound.Instance.occlusionCuller.enabled)
+		{
+			StartOfRound.Instance.occlusionCuller.SetToStartTile();
+		}
+		for (int i = 0; i < GameNetworkManager.Instance.localPlayerController.ItemSlots.Length; i++)
+		{
+			if (GameNetworkManager.Instance.localPlayerController.ItemSlots[i] != null)
+			{
+				GameNetworkManager.Instance.localPlayerController.ItemSlots[i].isInFactory = isEntranceToBuilding;
+			}
+		}
+		if (GameNetworkManager.Instance.localPlayerController.ItemOnlySlot != null)
+		{
+			GameNetworkManager.Instance.localPlayerController.ItemOnlySlot.isInFactory = isEntranceToBuilding;
+		}
+		timeAtLastUse = Time.realtimeSinceStartup;
+		TeleportPlayerServerRpc((int)GameNetworkManager.Instance.localPlayerController.playerClientId);
+		GameNetworkManager.Instance.localPlayerController.isInsideFactory = isEntranceToBuilding;
+	}
+
+--- public void TeleportPlayerClientRpc(int playerObj) / local type line 376 ---
+	public void TeleportPlayerClientRpc(int playerObj)
+	{
+		NetworkManager networkManager = base.NetworkManager;
+		if ((object)networkManager == null || !networkManager.IsListening)
+		{
+			return;
+		}
+		if (__rpc_exec_stage != __RpcExecStage.Execute && (networkManager.IsServer || networkManager.IsHost))
+		{
+			ClientRpcParams clientRpcParams = default(ClientRpcParams);
+			FastBufferWriter bufferWriter = __beginSendClientRpc(3168414823u, clientRpcParams, RpcDelivery.Reliable);
+			BytePacker.WriteValueBitPacked(bufferWriter, playerObj);
+			__endSendClientRpc(ref bufferWriter, 3168414823u, clientRpcParams, RpcDelivery.Reliable);
+		}
+		if (__rpc_exec_stage != __RpcExecStage.Execute || (!networkManager.IsClient && !networkManager.IsHost))
+		{
+			return;
+		}
+		__rpc_exec_stage = __RpcExecStage.Send;
+		if (playersManager.allPlayerScripts[playerObj] == GameNetworkManager.Instance.localPlayerController)
+		{
+			return;
+		}
+		FindExitPoint();
+		playersManager.allPlayerScripts[playerObj].TeleportPlayer(exitScript.entrancePoint.position, withRotation: true, exitScript.entrancePoint.eulerAngles.y);
+		playersManager.allPlayerScripts[playerObj].isInElevator = false;
+		playersManager.allPlayerScripts[playerObj].isInHangarShipRoom = false;
+		FinishOpeningEntrance(playShutAudio: false);
+		playersManager.allPlayerScripts[playerObj].isInsideFactory = isEntranceToBuilding;
+		if (entranceId == 0 && isEntranceToBuilding && GameNetworkManager.Instance.localPlayerController.isPlayerDead && GameNetworkManager.Instance.localPlayerController.spectatedPlayerScript == playersManager.allPlayerScripts[playerObj] && StartOfRound.Instance.occlusionCuller.enabled)
+		{
+			StartOfRound.Instance.occlusionCuller.SetToStartTile();
+		}
+		for (int i = 0; i < playersManager.allPlayerScripts[playerObj].ItemSlots.Length; i++)
+		{
+			if (playersManager.allPlayerScripts[playerObj].ItemSlots[i] != null)
+			{
+				playersManager.allPlayerScripts[playerObj].ItemSlots[i].isInFactory = isEntranceToBuilding;
+			}
+		}
+		if (playersManager.allPlayerScripts[playerObj].ItemOnlySlot != null)
+		{
+			playersManager.allPlayerScripts[playerObj].ItemOnlySlot.isInFactory = isEntranceToBuilding;
+		}
+		if (GameNetworkManager.Instance.localPlayerController.isPlayerDead && playersManager.allPlayerScripts[playerObj] == GameNetworkManager.Instance.localPlayerController.spectatedPlayerScript)
+		{
+			SetAudioPreset(playerObj);
+		}
+		else
+		{
+			PlayAudioAtTeleportPositions();
+		}
+		timeAtLastUse = Time.realtimeSinceStartup;
+	}
+
+--- private void Update() / local type line 487 ---
+	private void Update()
+	{
+		if (triggerScript == null || !isEntranceToBuilding)
+		{
+			return;
+		}
+		if (checkForEnemiesInterval <= 0f)
+		{
+			if (!gotExitPoint)
+			{
+				if (FindExitPoint())
+				{
+					gotExitPoint = true;
+				}
+				return;
+			}
+			checkForEnemiesInterval = 1f;
+			bool flag = false;
+			for (int i = 0; i < RoundManager.Instance.SpawnedEnemies.Count; i++)
+			{
+				if (Vector3.Distance(RoundManager.Instance.SpawnedEnemies[i].transform.position, exitScript.entrancePoint.transform.position) < 7.7f && !RoundManager.Instance.SpawnedEnemies[i].isEnemyDead)
+				{
+					flag = true;
+					break;
+				}
+			}
+			if (flag && !enemyNearLastCheck)
+			{
+				enemyNearLastCheck = true;
+				triggerScript.hoverTip = "[Near activity detected!]";
+			}
+			else if (enemyNearLastCheck)
+			{
+				enemyNearLastCheck = false;
+				triggerScript.hoverTip = "Enter: [LMB]";
+			}
+		}
+		else
+		{
+			checkForEnemiesInterval -= Time.deltaTime;
+		}
+	}

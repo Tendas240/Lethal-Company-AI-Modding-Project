@@ -1,0 +1,2282 @@
+{
+  "knownSkins": [
+    "Nutcracker.Green",
+    "Nutcracker.Blue",
+    "Nutcracker.Purple",
+    "Nutcracker.Yellow",
+    "Nutcracker.Black",
+    "Dog.White",
+    "Dog.Red",
+    "Dog.Green",
+    "Dog.Yellow",
+    "Dog.Black",
+    "Dog.Brown",
+    "Bird.Blue",
+    "Bird.Green",
+    "Bird.Yellow",
+    "Bird.Orange",
+    "Bird.Black",
+    "Bird.White",
+    "Girl.Green",
+    "Girl.Purple",
+    "Girl.Pink",
+    "Girl.Blue",
+    "Girl.Yellow",
+    "Giant.Brown",
+    "Giant.Blue",
+    "Giant.Green",
+    "Giant.White",
+    "Giant.Yellow",
+    "Thumper.Blue",
+    "Thumper.White",
+    "Thumper.Red",
+    "Thumper.Tan",
+    "Thumper.Purple",
+    "Flea.Gray",
+    "Flea.Blue",
+    "Flea.Red",
+    "Flea.Green",
+    "Flea.Yellow",
+    "Butler.Red",
+    "Butler.Gray",
+    "Butler.Blue",
+    "Butler.Tan",
+    "Butler.Green",
+    "Coil.Brown",
+    "Coil.Pink",
+    "Coil.Yellow",
+    "Coil.White",
+    "Coil.Green",
+    "Jester.Brown",
+    "Jester.Blue",
+    "Jester.Green",
+    "Jester.Purple",
+    "Jester.Yellow",
+    "Barber.Red",
+    "Barber.Blue",
+    "Barber.Yellow",
+    "Barber.Orange",
+    "Barber.Green",
+    "Barber.Magenta",
+    "Barber.Purple",
+    "Barber.Black",
+    "Barber.White",
+    "Barber.Cyan",
+    "Worm.Pink",
+    "Worm.Red",
+    "Worm.Green",
+    "Worm.Blue",
+    "Worm.White",
+    "Spider.Orange",
+    "Spider.Gray",
+    "Spider.Brown",
+    "Spider.Red",
+    "Spider.Yellow",
+    "Bug.White",
+    "Bug.Purple",
+    "Bug.Green",
+    "Bug.Orange",
+    "Bug.Brown",
+    "Bug.Blue",
+    "Spore.Green",
+    "Spore.Indigo",
+    "Spore.Pink",
+    "Spore.White",
+    "Spore.Yellow",
+    "Bracken.Blue",
+    "Bracken.Gray",
+    "Bracken.Green",
+    "Bracken.Pink",
+    "Bracken.Orange",
+    "Blob.Orange",
+    "Blob.Green",
+    "Blob.Blue",
+    "Blob.Blood",
+    "Blob.Pink",
+    "Blob.White",
+    "Blob.Purple",
+    "Blob.Black",
+    "Fox.Green",
+    "Fox.Purple",
+    "Fox.White",
+    "Fox.Black",
+    "Fox.Orange",
+    "Manti.Purple",
+    "Manti.Orange",
+    "Manti.Blue",
+    "Roam.Green",
+    "Roam.Red",
+    "Baby.Yellow",
+    "Baby.Gray",
+    "Baby.Red",
+    "Baby.Tan",
+    "Baby.Teal",
+    "Baby.Blue",
+    "Thumper.Green",
+    "Manti.Green",
+    "Manti.Yellow",
+    "Bee.Blue",
+    "Bee.White",
+    "Bee.Pink",
+    "Bee.Green",
+    "Bee.Yellow",
+    "Bee.Orange",
+    "Roam.Orange",
+    "Roam.White",
+    "Roam.Blue",
+    "Baby.Maroon",
+    "Bird.Red",
+    "Flea.Amber",
+    "Butler.Brown",
+    "Nutcracker.White",
+    "Bracken.White",
+    "Baby.Brown",
+    "Baby.Stone",
+    "Kiwi.Green",
+    "Kiwi.White",
+    "Kiwi.Blue",
+    "Kiwi.Orange",
+    "Kiwi.Red",
+    "Tulip.CCyan",
+    "Tulip.CMagenta",
+    "Tulip.CYellow",
+    "Tulip.FPink",
+    "Tulip.FPurple",
+    "Tulip.FYellow",
+    "Tulip.SBlue",
+    "Tulip.SRed",
+    "Tulip.SGreen",
+    "Tulip.WYellow",
+    "Tulip.WRed",
+    "Tulip.WGreen",
+    "Hawk.Orange",
+    "Hawk.White",
+    "Hawk.Purple",
+    "Hawk.Green",
+    "Hawk.Brown",
+    "Nutcracker.Pink",
+    "Spider.Widow",
+    "Butler.Dragon",
+    "Coil.Weep",
+    "Worm.Sand",
+    "Giant.Birch",
+    "Girl.Static",
+    "Nutcracker.Forest",
+    "Nutcracker.Indoor",
+    "Nutcracker.Marsh",
+    "Tulip.Seichi",
+    "Bird.Toy",
+    "Nutcracker.Plastic",
+    "Worm.Gummy",
+    "Butler.Break",
+    "Bracken.Cosmos",
+    "Spider.Enemy",
+    "Coil.Dummy",
+    "Coil.Art",
+    "Worm.Tremor",
+    "Spore.Poison",
+    "Jester.Doom",
+    "Bird.RelicA",
+    "Bird.RelicB",
+    "Bird.RelicC",
+    "Jester.Fission",
+    "Bug.Jeremy",
+    "Barber.Pajama",
+    "Barber.Scissor",
+    "Barber.PepsiC",
+    "Barber.PepsiD",
+    "Hawk.Eagle",
+    "Dog.Leo",
+    "Worm.Gorgonzola",
+    "Giant.Infernis",
+    "Girl.Mary",
+    "Bug.Kit",
+    "Blob.Sparkle",
+    "Nutcracker.Desert",
+    "Flea.Iso",
+    "Thumper.Bull",
+    "Tulip.Evil",
+    "Jester.Dot",
+    "Thumper.Aqua",
+    "Jester.Frost",
+    "Bracken.Cave",
+    "Spider.Cave",
+    "Butler.Miner",
+    "Butler.Bowler",
+    "Worm.Pogo",
+    "Bug.Gold",
+    "Bug.Squeak",
+    "Jester.Degree",
+    "Manti.Fernando",
+    "Manti.Quack",
+    "Manti.Sea",
+    "Bird.Redacted",
+    "Flea.Head",
+    "Thumper.King",
+    "Tulip.Leo",
+    "Tulip.Dragon",
+    "Dog.Swamp",
+    "Thumper.Lemon",
+    "Man.Son",
+    "Nutcracker.Wax",
+    "Spider.Gloom",
+    "Bracken.Aloe",
+    "Man.Asset",
+    "Tulip.Mirage",
+    "Barber.Poolman",
+    "Spider.Skull",
+    "Jester.Trick",
+    "Nutcracker.Pumpkin",
+    "Manti.Crow",
+    "Tulip.Corn",
+    "Hawk.Ghost",
+    "Bug.Soul",
+    "Coil.Frank",
+    "Butler.Chef",
+    "Hawk.Turkey",
+    "Barber.Cutter",
+    "Worm.Pepper",
+    "Flea.Cake",
+    "Nutcracker.Traditional",
+    "Manti.Partridge",
+    "Test1",
+    "Butler.Oni",
+    "Bird.Jolly",
+    "Coil.Demetrica",
+    "Bug.Hyve",
+    "Jester.Empra",
+    "Man.Cubatres",
+    "Nutcracker.Oldred",
+    "Bird.Calist",
+    "Spore.Utril",
+    "Tulip.Junic",
+    "Bracken.Lecaro",
+    "Spore.Utril2",
+    "Barber.Empra",
+    "Worm.Polarus",
+    "Worm.Rock",
+    "Blob.Thalasso",
+    "Dog.Desolation",
+    "Giant.Blood",
+    "Butler.Acidir",
+    "Kiwi.Gray",
+    "Kiwi.Kiwi",
+    "Kiwi.Promo",
+    "Kiwi.Blossom",
+    "Spider.Dreck",
+    "Nutcracker.Manor",
+    "LethalMatt.Bozoros.GoofyPuffer",
+    "LethalMatt.Bozoros.ClownGiant",
+    "LethalMatt.Bozoros.SantaButler"
+  ],
+  "knownMoons": [
+    "41 Experimentation",
+    "220 Assurance",
+    "56 Vow",
+    "21 Offense",
+    "61 March",
+    "85 Rend",
+    "7 Dine",
+    "8 Titan",
+    "20 Adamance",
+    "68 Artifice",
+    "5 Embrion",
+    "52 Desperation",
+    "74 Veld",
+    "85 Reign",
+    "93 Thallasic",
+    "23 Symbiosis",
+    "823 Bozoros",
+    "Black Mesa",
+    "93 Hadal",
+    "13 Kast"
+  ],
+  "version": "1.4.2",
+  "mapConfigurations": {
+    "enemyConfigs": [
+      {
+        "enemyId": "LethalCompany.BaboonHawk",
+        "activeSkins": [
+          "Hawk.Orange",
+          "Hawk.Green",
+          "Hawk.Eagle",
+          "Hawk.Ghost",
+          "Hawk.Turkey",
+          "Hawk.White",
+          "Hawk.Purple",
+          "Hawk.Brown"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Hawk.Brown",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Hawk.Eagle",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Hawk.Ghost",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Hawk.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Hawk.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Hawk.Purple",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Hawk.Turkey",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Hawk.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Barber",
+        "activeSkins": [
+          "Barber.Red",
+          "Barber.Blue",
+          "Barber.Yellow",
+          "Barber.Orange",
+          "Barber.Green",
+          "Barber.Magenta",
+          "Barber.Purple",
+          "Barber.Black",
+          "Barber.White",
+          "Barber.Cyan",
+          "Barber.Pajama",
+          "Barber.Scissor",
+          "Barber.PepsiC",
+          "Barber.PepsiD",
+          "Barber.Poolman",
+          "Barber.Cutter",
+          "Barber.Empra"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Barber.Black",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Barber.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Barber.Cutter",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            },
+            {
+              "skinId": "Barber.Cyan",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Barber.Empra",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            },
+            {
+              "skinId": "Barber.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Barber.Magenta",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Barber.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Barber.Pajama",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Barber.PepsiC",
+              "indoorFrequency": 0.1,
+              "outdoorFrequency": 0.1
+            },
+            {
+              "skinId": "Barber.PepsiD",
+              "indoorFrequency": 0.1,
+              "outdoorFrequency": 0.1
+            },
+            {
+              "skinId": "Barber.Poolman",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Barber.Purple",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Barber.Red",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Barber.Scissor",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Barber.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Barber.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Bracken",
+        "activeSkins": [
+          "Bracken.Blue",
+          "Bracken.Gray",
+          "Bracken.Green",
+          "Bracken.Pink",
+          "Bracken.Orange",
+          "Bracken.White",
+          "Bracken.Cosmos",
+          "Bracken.Cave",
+          "Bracken.Aloe",
+          "Bracken.Lecaro",
+          "Test1"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Bracken.Aloe",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Bracken.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bracken.Cave",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Bracken.Cosmos",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Bracken.Gray",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bracken.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bracken.Lecaro",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Bracken.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bracken.Pink",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bracken.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Test1",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.BunkerSpider",
+        "activeSkins": [
+          "Spider.Orange",
+          "Spider.Gray",
+          "Spider.Brown",
+          "Spider.Red",
+          "Spider.Yellow",
+          "Spider.Widow",
+          "Spider.Enemy",
+          "Spider.Cave",
+          "Spider.Gloom",
+          "Spider.Skull",
+          "Spider.Dreck"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Spider.Brown",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Spider.Cave",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Spider.Dreck",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Spider.Enemy",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Spider.Gloom",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Spider.Gray",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Spider.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Spider.Red",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Spider.Skull",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Spider.Widow",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Spider.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Butler",
+        "activeSkins": [
+          "Butler.Red",
+          "Butler.Gray",
+          "Butler.Blue",
+          "Butler.Tan",
+          "Butler.Green",
+          "Butler.Brown",
+          "Butler.Dragon",
+          "Butler.Miner",
+          "Butler.Bowler",
+          "Butler.Chef",
+          "Butler.Oni",
+          "Butler.Break",
+          "Butler.Acidir",
+          "LethalMatt.Bozoros.SantaButler"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Butler.Acidir",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Butler.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Butler.Bowler",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Butler.Break",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            },
+            {
+              "skinId": "Butler.Brown",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Butler.Chef",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Butler.Dragon",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Butler.Gray",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Butler.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Butler.Miner",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Butler.Oni",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Butler.Red",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Butler.Tan",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "LethalMatt.Bozoros.SantaButler",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.CircuitBees",
+        "activeSkins": [
+          "Bee.Blue",
+          "Bee.White",
+          "Bee.Pink",
+          "Bee.Green",
+          "Bee.Yellow",
+          "Bee.Orange"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Bee.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bee.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bee.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bee.Pink",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bee.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bee.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Coilhead",
+        "activeSkins": [
+          "Coil.Brown",
+          "Coil.Pink",
+          "Coil.Yellow",
+          "Coil.White",
+          "Coil.Green",
+          "Coil.Weep",
+          "Coil.Dummy",
+          "Coil.Art",
+          "Coil.Frank",
+          "Coil.Demetrica"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Coil.Art",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Coil.Brown",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Coil.Demetrica",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Coil.Dummy",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Coil.Frank",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Coil.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Coil.Pink",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Coil.Weep",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Coil.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Coil.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.EarthLeviathan",
+        "activeSkins": [
+          "Worm.Pink",
+          "Worm.Red",
+          "Worm.Green",
+          "Worm.Blue",
+          "Worm.White",
+          "Worm.Sand",
+          "Worm.Gummy",
+          "Worm.Tremor",
+          "Worm.Gorgonzola",
+          "Worm.Pogo",
+          "Worm.Polarus",
+          "Worm.Rock",
+          "Worm.Pepper"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Worm.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Worm.Gorgonzola",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Worm.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Worm.Gummy",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Worm.Pepper",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            },
+            {
+              "skinId": "Worm.Pink",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Worm.Pogo",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Worm.Polarus",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Worm.Red",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Worm.Rock",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Worm.Sand",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Worm.Tremor",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Worm.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.EyelessDog",
+        "activeSkins": [
+          "Dog.White",
+          "Dog.Red",
+          "Dog.Green",
+          "Dog.Yellow",
+          "Dog.Black",
+          "Dog.Brown",
+          "Dog.Leo",
+          "Dog.Swamp",
+          "Dog.Desolation"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Dog.Black",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Dog.Brown",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Dog.Desolation",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Dog.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Dog.Leo",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Dog.Red",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Dog.Swamp",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Dog.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Dog.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.ForestKeeper",
+        "activeSkins": [
+          "Giant.Blue",
+          "Giant.Green",
+          "Giant.White",
+          "Giant.Yellow",
+          "Giant.Birch",
+          "Giant.Infernis",
+          "Giant.Blood",
+          "Giant.Brown",
+          "LethalMatt.Bozoros.ClownGiant"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Giant.Birch",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Giant.Blood",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Giant.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Giant.Brown",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            },
+            {
+              "skinId": "Giant.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Giant.Infernis",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Giant.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Giant.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "LethalMatt.Bozoros.ClownGiant",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            }
+          ]
+        },
+        "mapConfigurations": [
+          {
+            "mapId": "circus",
+            "outdoorVanillaFrequency": 0.0,
+            "indoorVanillaFrequency": 0.0,
+            "skinDistribution": [
+              {
+                "skinId": "LethalMatt.Bozoros.ClownGiant",
+                "indoorFrequency": 1.0,
+                "outdoorFrequency": 1.0
+              }
+            ]
+          },
+          {
+            "mapId": "fun",
+            "outdoorVanillaFrequency": 0.0,
+            "indoorVanillaFrequency": 0.0,
+            "skinDistribution": [
+              {
+                "skinId": "LethalMatt.Bozoros.ClownGiant",
+                "indoorFrequency": 1.0,
+                "outdoorFrequency": 1.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "enemyId": "LethalCompany.GhostGirl",
+        "activeSkins": [
+          "Girl.Green",
+          "Girl.Purple",
+          "Girl.Pink",
+          "Girl.Blue",
+          "Girl.Yellow",
+          "Girl.Static",
+          "Girl.Mary"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Girl.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Girl.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Girl.Mary",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Girl.Pink",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Girl.Purple",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Girl.Static",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Girl.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.GiantKiwi",
+        "activeSkins": [
+          "Kiwi.Green",
+          "Kiwi.White",
+          "Kiwi.Blue",
+          "Kiwi.Orange",
+          "Kiwi.Red",
+          "Kiwi.Gray",
+          "Kiwi.Kiwi",
+          "Kiwi.Promo",
+          "Kiwi.Blossom"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Kiwi.Blossom",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            },
+            {
+              "skinId": "Kiwi.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Kiwi.Gray",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Kiwi.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Kiwi.Kiwi",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Kiwi.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Kiwi.Promo",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Kiwi.Red",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Kiwi.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.HoarderBug",
+        "activeSkins": [
+          "Bug.White",
+          "Bug.Purple",
+          "Bug.Green",
+          "Bug.Orange",
+          "Bug.Brown",
+          "Bug.Blue",
+          "Bug.Jeremy",
+          "Bug.Kit",
+          "Bug.Gold",
+          "Bug.Squeak",
+          "Bug.Soul",
+          "Bug.Hyve"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Bug.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bug.Brown",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bug.Gold",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Bug.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bug.Hyve",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Bug.Jeremy",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Bug.Kit",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Bug.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bug.Purple",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bug.Soul",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Bug.Squeak",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Bug.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Hygrodere",
+        "activeSkins": [
+          "Blob.Orange",
+          "Blob.Green",
+          "Blob.Blue",
+          "Blob.Pink",
+          "Blob.White",
+          "Blob.Purple",
+          "Blob.Black",
+          "Blob.Sparkle",
+          "Blob.Thalasso",
+          "Blob.Blood"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Blob.Black",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Blob.Blood",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            },
+            {
+              "skinId": "Blob.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Blob.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Blob.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Blob.Pink",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Blob.Purple",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Blob.Sparkle",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Blob.Thalasso",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Blob.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Jester",
+        "activeSkins": [
+          "Jester.Brown",
+          "Jester.Blue",
+          "Jester.Green",
+          "Jester.Yellow",
+          "Jester.Doom",
+          "Jester.Fission",
+          "Jester.Dot",
+          "Jester.Frost",
+          "Jester.Degree",
+          "Jester.Trick",
+          "Jester.Empra",
+          "Jester.Purple"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Jester.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Jester.Brown",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Jester.Degree",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Jester.Doom",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Jester.Dot",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Jester.Empra",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Jester.Fission",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Jester.Frost",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Jester.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Jester.Purple",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            },
+            {
+              "skinId": "Jester.Trick",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Jester.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.KidnapperFox",
+        "activeSkins": [
+          "Fox.Green",
+          "Fox.Purple",
+          "Fox.White",
+          "Fox.Black",
+          "Fox.Orange"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Fox.Black",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Fox.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Fox.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Fox.Purple",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Fox.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Maneater",
+        "activeSkins": [
+          "Baby.Yellow",
+          "Baby.Gray",
+          "Baby.Red",
+          "Baby.Tan",
+          "Baby.Teal",
+          "Baby.Blue",
+          "Baby.Maroon",
+          "Baby.Brown",
+          "Baby.Stone",
+          "Man.Son",
+          "Man.Asset",
+          "Man.Cubatres"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Baby.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Baby.Brown",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Baby.Gray",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Baby.Maroon",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Baby.Red",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Baby.Stone",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Baby.Tan",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Baby.Teal",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Baby.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Man.Asset",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Man.Cubatres",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Man.Son",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Manticoil",
+        "activeSkins": [
+          "Manti.Purple",
+          "Manti.Orange",
+          "Manti.Blue",
+          "Manti.Green",
+          "Manti.Yellow",
+          "Manti.Fernando",
+          "Manti.Quack",
+          "Manti.Sea",
+          "Manti.Crow",
+          "Manti.Partridge"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Manti.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Manti.Crow",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Manti.Fernando",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Manti.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Manti.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Manti.Partridge",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Manti.Purple",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Manti.Quack",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Manti.Sea",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Manti.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Nutcracker",
+        "activeSkins": [
+          "Nutcracker.Green",
+          "Nutcracker.Blue",
+          "Nutcracker.Purple",
+          "Nutcracker.Yellow",
+          "Nutcracker.Black",
+          "Nutcracker.White",
+          "Nutcracker.Forest",
+          "Nutcracker.Indoor",
+          "Nutcracker.Marsh",
+          "Nutcracker.Plastic",
+          "Nutcracker.Desert",
+          "Nutcracker.Wax",
+          "Nutcracker.Pumpkin",
+          "Nutcracker.Traditional",
+          "Nutcracker.Oldred",
+          "Nutcracker.Pink",
+          "Nutcracker.Manor"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Nutcracker.Black",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Nutcracker.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Nutcracker.Desert",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Nutcracker.Forest",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Nutcracker.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Nutcracker.Indoor",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Nutcracker.Manor",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Nutcracker.Marsh",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Nutcracker.Oldred",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Nutcracker.Pink",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Nutcracker.Plastic",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Nutcracker.Pumpkin",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Nutcracker.Purple",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Nutcracker.Traditional",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Nutcracker.Wax",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Nutcracker.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Nutcracker.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.OldBird",
+        "activeSkins": [
+          "Bird.Blue",
+          "Bird.Green",
+          "Bird.Yellow",
+          "Bird.Orange",
+          "Bird.Black",
+          "Bird.White",
+          "Bird.Red",
+          "Bird.Toy",
+          "Bird.RelicA",
+          "Bird.RelicB",
+          "Bird.RelicC",
+          "Bird.Redacted",
+          "Bird.Jolly",
+          "Bird.Calist"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Bird.Black",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bird.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bird.Calist",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Bird.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bird.Jolly",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Bird.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bird.Red",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bird.Redacted",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Bird.RelicA",
+              "indoorFrequency": 0.1,
+              "outdoorFrequency": 0.1
+            },
+            {
+              "skinId": "Bird.RelicB",
+              "indoorFrequency": 0.1,
+              "outdoorFrequency": 0.1
+            },
+            {
+              "skinId": "Bird.RelicC",
+              "indoorFrequency": 0.1,
+              "outdoorFrequency": 0.1
+            },
+            {
+              "skinId": "Bird.Toy",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Bird.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Bird.Yellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.RoamingLocust",
+        "activeSkins": [
+          "Roam.Green",
+          "Roam.Red",
+          "Roam.Orange",
+          "Roam.White",
+          "Roam.Blue"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Roam.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Roam.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Roam.Orange",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Roam.Red",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Roam.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.SnareFlea",
+        "activeSkins": [
+          "Flea.Gray",
+          "Flea.Blue",
+          "Flea.Red",
+          "Flea.Green",
+          "Flea.Amber",
+          "Flea.Iso",
+          "Flea.Head",
+          "Flea.Cake",
+          "Flea.Yellow"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Flea.Amber",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Flea.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Flea.Cake",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Flea.Gray",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Flea.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Flea.Head",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Flea.Iso",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Flea.Red",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Flea.Yellow",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.SporeLizard",
+        "activeSkins": [
+          "Spore.Green",
+          "Spore.Indigo",
+          "Spore.Pink",
+          "Spore.White",
+          "Spore.Poison",
+          "Spore.Utril",
+          "Spore.Utril2",
+          "Spore.Yellow",
+          "LethalMatt.Bozoros.GoofyPuffer"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "LethalMatt.Bozoros.GoofyPuffer",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Spore.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Spore.Indigo",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Spore.Pink",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Spore.Poison",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Spore.Utril",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Spore.Utril2",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Spore.White",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Spore.Yellow",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            }
+          ]
+        },
+        "mapConfigurations": [
+          {
+            "mapId": "circus",
+            "outdoorVanillaFrequency": 0.0,
+            "indoorVanillaFrequency": 0.0,
+            "skinDistribution": [
+              {
+                "skinId": "LethalMatt.Bozoros.GoofyPuffer",
+                "indoorFrequency": 1.0,
+                "outdoorFrequency": 1.0
+              }
+            ]
+          },
+          {
+            "mapId": "fun",
+            "outdoorVanillaFrequency": 0.0,
+            "indoorVanillaFrequency": 0.0,
+            "skinDistribution": [
+              {
+                "skinId": "LethalMatt.Bozoros.GoofyPuffer",
+                "indoorFrequency": 1.0,
+                "outdoorFrequency": 1.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "enemyId": "LethalCompany.Thumper",
+        "activeSkins": [
+          "Thumper.Blue",
+          "Thumper.Red",
+          "Thumper.Purple",
+          "Thumper.Green",
+          "Thumper.Bull",
+          "Thumper.Aqua",
+          "Thumper.Lemon",
+          "Thumper.White",
+          "Thumper.Tan",
+          "Thumper.King"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Thumper.Aqua",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Thumper.Blue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Thumper.Bull",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Thumper.Green",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Thumper.King",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            },
+            {
+              "skinId": "Thumper.Lemon",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Thumper.Purple",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Thumper.Red",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Thumper.Tan",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            },
+            {
+              "skinId": "Thumper.White",
+              "indoorFrequency": 1.0,
+              "outdoorFrequency": 1.0
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.TulipSnake",
+        "activeSkins": [
+          "Tulip.Seichi",
+          "Tulip.Evil",
+          "Tulip.Leo",
+          "Tulip.Dragon",
+          "Tulip.Mirage",
+          "Tulip.Corn",
+          "Tulip.Junic",
+          "Tulip.CCyan",
+          "Tulip.CMagenta",
+          "Tulip.CYellow",
+          "Tulip.FPink",
+          "Tulip.FPurple",
+          "Tulip.FYellow",
+          "Tulip.SBlue",
+          "Tulip.SRed",
+          "Tulip.SGreen",
+          "Tulip.WYellow",
+          "Tulip.WRed",
+          "Tulip.WGreen"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "Tulip.CCyan",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Tulip.CMagenta",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Tulip.Corn",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Tulip.CYellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Tulip.Dragon",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Tulip.Evil",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Tulip.FPink",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Tulip.FPurple",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Tulip.FYellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Tulip.Junic",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Tulip.Leo",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Tulip.Mirage",
+              "indoorFrequency": 0.25,
+              "outdoorFrequency": 0.25
+            },
+            {
+              "skinId": "Tulip.SBlue",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Tulip.Seichi",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            },
+            {
+              "skinId": "Tulip.SGreen",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Tulip.SRed",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Tulip.WGreen",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Tulip.WRed",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            },
+            {
+              "skinId": "Tulip.WYellow",
+              "indoorFrequency": 0.5,
+              "outdoorFrequency": 0.5
+            }
+          ]
+        },
+        "mapConfigurations": []
+      }
+    ]
+  }
+}

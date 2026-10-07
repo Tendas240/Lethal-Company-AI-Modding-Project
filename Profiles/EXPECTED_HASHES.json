@@ -1,0 +1,110 @@
+{
+  "Profiles/LC V1 S1.40A CodeRebirth Config Cleanup Fix.r2z": {
+    "build_id": "S1.40A",
+    "sha256": "0245e0c5551d77cab7f90eacf7f1627b0a6df62553260533a4e903d2a6426f27",
+    "note": "Corrected internal Gale profile-name variant; differs from the older pre-correction repository artifact."
+  },
+  "Profiles/LC V1 S1.40B CodeRebirth Editing Gate Fix.r2z": {
+    "build_id": "S1.40B",
+    "sha256": "fd303f73f0f2223a6375fcf2b7ed209dae77e1934e3b4e8139932a89e7de7eb9"
+  },
+  "Profiles/LC V1 S1.41 BCMER Reactivation.r2z": {
+    "build_id": "S1.41",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b"
+  },
+  "Profiles/LC V1 S1.42AF Microwave Fix.r2z": {
+    "build_id": "S1.42AF",
+    "sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
+    "note": "Current accepted gameplay baseline."
+  },
+  "Profiles/LC V1 S1.42AG Mouth Dog Fix.r2z": {
+    "build_id": "S1.42AG",
+    "sha256": "3ad605d813b2a484da53f97348414f1163bb73c40839319cddd33bb26c357fee",
+    "note": "Runtime-rejected historical MouthDog partial fix; retained for provenance only."
+  },
+  "Profiles/LC V1 S1.42AH Mouth Dog Fix.r2z": {
+    "build_id": "S1.42AH",
+    "sha256": "06e07fe6805e5e41786c16b5c1ea2132c4f65b385517c902f8aa566ccf49cd4e",
+    "note": "Active runtime candidate; canonical readable snapshot is ProfileSources/S1.42AH/."
+  },
+  "Profiles/LC V1 S1.42AK-SCRAPDIAG1 LC Office Scrap Placement Diagnostic.r2z": {
+    "build_id": "S1.42AK-SCRAPDIAG1",
+    "sha256": "233bcc058a3fa95d63e0577c4ff74b5a0dc137db49757b50376e447dd082d3b1",
+    "note": "Diagnostic-only active runtime target over accepted S1.42AK; canonical readable snapshot is ProfileSources/S1.42AK-SCRAPDIAG1/. Not a gameplay lineage entry or gameplay base."
+  },
+  "Profiles/LC V1 S1.42AK-BMGHDIAG1 Black Mesa Greenhouse Diagnostic.r2z": {
+    "build_id": "S1.42AK-BMGHDIAG1",
+    "sha256": "7f494640f47210bf230a2f0950bd836d65b969a47be2af1252fc564463bc6d90",
+    "note": "Diagnostic-only active runtime target over accepted S1.42AK; canonical readable snapshot is ProfileSources/S1.42AK-BMGHDIAG1/. Not a gameplay lineage entry or gameplay base."
+  },
+  "Profiles/LC V1 S1.42AK-BMGHDIAG2 Black Mesa Greenhouse Diagnostic.r2z": {
+    "build_id": "S1.42AK-BMGHDIAG2",
+    "sha256": "56884f84bf90b1d8038b6aa1ee12de4548aedf76603134acbd5a91ad74233ef2",
+    "note": "Diagnostic-only active runtime target directly over accepted S1.42AK; canonical readable snapshot is ProfileSources/S1.42AK-BMGHDIAG2/. Not a gameplay lineage entry or gameplay base."
+  },
+  "Profiles/LC V1 S1.42AK-BMGHDIAG3 Black Mesa Greenhouse Diagnostic.r2z": {
+    "build_id": "S1.42AK-BMGHDIAG3",
+    "sha256": "7ab3dae8f5b215219d81bba37645853be0f253ac981118d176f5f9cfa28e7ace",
+    "note": "Diagnostic-only active runtime target directly over accepted S1.42AK; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-BMGHDIAG3/. NEVER ACCEPT and never use as a gameplay base; runtime activation authorizes only bounded Black Mesa x Greenhouse diagnostic evidence collection."
+  },
+  "Profiles/LC V1 S1.42AK-BMAFDIAG1 Black Mesa Abandoned Foundry Diagnostic.r2z": {
+    "build_id": "S1.42AK-BMAFDIAG1",
+    "sha256": "b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2",
+    "note": "Diagnostic-only active runtime target directly over accepted S1.42AK; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-BMAFDIAG1/. NEVER ACCEPT and never use as a gameplay base; runtime activation authorizes only bounded Black Mesa x Abandoned Foundry diagnostic evidence collection."
+  },
+  "Profiles/LC V1 S1.42AK-BMAFD1P1.r2z": {
+    "build_id": "S1.42AK-BMAFDIAG1PATH1",
+    "sha256": "423e2e5185c85c1a3ce7a100583717d3503cf7308a12a182f5f7f65dc501ff91",
+    "note": "Inactive identity-only short-name successor to S1.42AK-BMAFDIAG1; exact reviewed bytes are published and the canonical readable snapshot is ProfileSources/S1.42AK-BMAFDIAG1PATH1/. Diagnostic only, never accept or use as a gameplay base, and not runtime-armed by indexing."
+  },
+  "Profiles/LC V1 S1.42AK-BMAFR1.r2z": {
+    "build_id": "S1.42AK-BMAFR1",
+    "sha256": "8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5",
+    "note": "Diagnostic-only active runtime target directly over accepted S1.42AK; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-BMAFR1/. NEVER ACCEPT and never use as a gameplay base; runtime activation authorizes only bounded Black Mesa x Abandoned Foundry diagnostic evidence collection."
+  },
+  "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z": {
+    "build_id": "S1.42AK-BMDSFIX1",
+    "sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+    "note": "Active runtime gameplay candidate directly over accepted S1.42AK; canonical readable snapshot is ProfileSources/S1.42AK-BMDSFIX1/. Not accepted until explicit runtime decision."
+  },
+  "Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z": {
+    "build_id": "S1.42AK-BMDSFIX1-DIAG1",
+    "sha256": "31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e",
+    "note": "Inactive deterministic Deep Sewers selector diagnostic over exact BMDSFIX1; canonical readable snapshot is ProfileSources/S1.42AK-BMDSFIX1-DIAG1/. Diagnostic only, never a gameplay base, and not runtime-armed by publication."
+  },
+  "Profiles/LC V1 S1.42AK-D1P1.r2z": {
+    "build_id": "S1.42AK-BMDSFIX1-DIAG1PATH1",
+    "sha256": "0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6",
+    "note": "Inactive identity-only short-name successor to S1.42AK-BMDSFIX1-DIAG1; exact reviewed bytes are published and the canonical readable snapshot is ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1/. Diagnostic support only, never accept or use as a gameplay base, and not runtime-armed by indexing."
+  },
+  "Profiles/LC V1 S1.42AK-BMAFR1I1.r2z": {
+    "build_id": "S1.42AK-BMAFR1I1",
+    "sha256": "734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07",
+    "note": "Diagnostic-only active runtime target for bounded BMAFR1 performance attribution; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-BMAFR1I1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
+  },
+  "Profiles/LC V1 S1.42AK-AGD1.r2z": {
+    "build_id": "S1.42AK-AGDIAG1",
+    "sha256": "e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081",
+    "note": "Diagnostic-only active runtime target for one bounded deterministic Offense Art Gallery / MuseumInteriorFlow generation-materialization proof; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-AGDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
+  },
+  "Profiles/LC V1 S1.42AK-DRD1.r2z": {
+    "build_id": "S1.42AK-DRDIAG1",
+    "sha256": "15587975580ea9de38f995ff2e2a64586977c4c1a32f2c87534011375394c3d4",
+    "note": "Diagnostic-only active runtime target for one bounded deterministic Offense Drains / DrainsFlow generation-materialization proof; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-DRDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
+  },
+  "Profiles/LC V1 S1.42AK-LFD1.r2z": {
+    "build_id": "S1.42AK-LFDIAG1",
+    "sha256": "ce6835944f90e1972caebf52dc344bdf660283c9a074ac07899486ce0b4564f4",
+    "note": "Diagnostic-only active runtime target for one bounded deterministic Offense Liminal Facility / BackroomsFlow generation-materialization proof; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-LFDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
+  },
+  "Profiles/LC V1 S1.42AK-SHD1.r2z": {
+    "build_id": "S1.42AK-SHDIAG1",
+    "sha256": "787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e",
+    "note": "Diagnostic-only active runtime target for one bounded deterministic Offense Storehouse / SHFlow generation-materialization proof; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-SHDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
+  },
+  "Profiles/LC V1 S1.42AK-TWD1.r2z": {
+    "build_id": "S1.42AK-TWDIAG1",
+    "sha256": "a5561b26ae5efe17b53239a0fc8a81020eec64ea59b5e3a7cca3481e6b3d7857",
+    "note": "Diagnostic-only active runtime target for one bounded deterministic Offense Tower / TowerFlow generation-materialization proof; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-TWDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
+  }
+}

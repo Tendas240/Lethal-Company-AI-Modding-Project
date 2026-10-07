@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C3E3E",
+  "inspection_date": "2026-09-20",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "pr_number": 138,
+  "parent_commit": "bc92bc6517d1c236d43b087dc53122bf72e38311",
+  "verified_main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "accepted_baseline": "S1.42AK",
+  "status": "DOWNSTREAM_DAWN_LLL_GENERATION_CHAIN_RESOLVED_NATIVE_CALLSITE_REACHABILITY_UNRESOLVED",
+  "inputs": [
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3D/MANIFEST.json",
+      "git_blob_sha1": "6dd3354f0fae6a0053fcb33e4a74ff23c7ef0a85"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3D/OXYDE_OWNER_REGISTRATION_IL.json",
+      "git_blob_sha1": "6bc8094f30302d1afa1cc2bf5a702c527e19fb41"
+    },
+    {
+      "path": "SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9/ROUNDMANAGER_SPAWNING_FOCUSED_DECOMPILE.txt",
+      "git_blob_sha1": "c0f73d41650512af9437e74f4e4a1b9d5a7e62ed",
+      "sha256": "5317509a39e072db2c3df95de1cb9091dd9f7ff7e1a3bfe231045dea9cfc974f"
+    },
+    {
+      "path": "BuildSpecs/current.json",
+      "git_blob_sha1": "85f9de59114b38a833259f4a594f52875aa01aa7"
+    },
+    {
+      "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+      "git_blob_sha1": "3afc69a11a4b847e2c14a7a8956bd733f53c06d0"
+    }
+  ],
+  "external_source_bindings": {
+    "dawnlib": {
+      "exact_package_version": "0.9.25",
+      "exact_package_zip_sha256": "c33c608869763f916f07e5ddf47224134f98bab15d044bd809a46ef2d3d538c3",
+      "exact_main_dll_sha256": "9b4826a16eec1fa5091fb4246d010005bc9c3e04282034e8d067b499ab5c125b",
+      "version_aligned_source_commit": "810613e556ecc357eac25e97c25a3bb90516f071",
+      "version_file_git_blob_sha1": "b3741c4c59f235f19acde7bef81660de3e4801e5",
+      "source_file_blobs": {
+        "DawnLib/src/API/Dungeons/.DungeonRegistrationHandler.cs": "f51869b975135d40bf71c0610d647a8a1367c024",
+        "DawnLib/src/Internal/ModCompats/LethalLevelLoaderCompat.cs": "4339b5116fd425f3eba275efa7db26f42f8cbc58",
+        "DawnLib/src/Internal/DawnDungeonNetworker.cs": "31951512acf8026ae94381b8fcb68b5fcc6171e2"
+      },
+      "qualification": "Exact package/DLL and exact-binary Init hook anchors come from C3E3D. Deferred-generation method bodies are pinned to upstream source declaring 0.9.25, without a byte-for-byte source-to-DLL identity claim."
+    },
+    "lethal_level_loader": {
+      "profile_version": "1.7.12",
+      "release_source_commit": "f9998b91adf242cd8d735f4e697d55b32b94bfac",
+      "source_file_blobs": {
+        "LethalLevelLoader/General/Patches.cs": "cb7312c16e462f5c476a990df756c5066b904d52",
+        "LethalLevelLoader/Patches/LethalLevelLoaderNetworkManager.cs": "09d093efb8151efe2958a4c93554638ff5c3d44e"
+      },
+      "qualification": "Release-source-bound as in C3B; accepted-profile LLL DLL SHA-256 remains unavailable in repository evidence."
+    }
+  },
+  "artifacts": [
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3E/GENERATION_INTEGRATION_SOURCE.json",
+      "git_blob_sha1": "b7d83bd6a64c5207b2fc2857e5c2a7be6eb47788"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3E/FINDINGS.md",
+      "git_blob_sha1": "48a5b35d90e92000746b5b292e4b688ca85344b2"
+    }
+  ],
+  "result": {
+    "lll_false_flag_helper": "DELEGATES_TO_ROUNDMANAGER_GENERATENEWFLOOR",
+    "dawn_generate_new_floor_integration": "REMOVES_LLL_GENERATENEWFLOOR_TRANSPILER_AND_INSTALLS_DEFERRED_LOAD_COROUTINE",
+    "dawn_downstream_spawnEnemiesAndScrap_guard": "NONE_IN_INSPECTED_SOURCE_CHAIN",
+    "generation_after_dawn_load": "DIRECT_RUNTIME_DUNGEON_GENERATE_OR_LLL_SIZE_HELPER_THAT_ENDS_IN_GENERATE",
+    "installed_v81_false_flag_callsite_reachability": "UNRESOLVED",
+    "runtime_oxyde_generation": "NOT_PROVEN",
+    "runtime_entrance_construction": "NOT_PROVEN"
+  },
+  "unchanged": {
+    "authoritative_b3_matrix": true,
+    "selection_supported_external_pairings": 46,
+    "build_enabled": false,
+    "build_state": "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS",
+    "active_build": "S1.42AK",
+    "runtime_test_outstanding": false,
+    "candidate": null
+  },
+  "proof_boundary": "Source-level downstream generation integration only. Missing installed-V81 GenerateNewLevelClientRpc/GenerateNewFloor bodies prevent a claim that the relevant callsite is reached for spawnEnemiesAndScrap=false. No generation, entrance, topology, traversal or gameplay proof.",
+  "next_segment": "C3E3F: recover or definitively bound exact installed-V81 RoundManager.GenerateNewLevelClientRpc and GenerateNewFloor method bodies/control flow; no gameplay run and no topology expansion until this gate is resolved."
+}

@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "status": "CROSS_ASSEMBLY_CONSUMER_REVIEW_COMPLETE_BOTH_NAMED_GATES_CLOSED_PATCH_SAFETY_PARTIAL_NOT_BUILD_READY",
+  "canonical_main": "8b4e6f832a6fee38dc92d17f491f4060f390e336",
+  "profile": {
+    "build_id": "S1.42AI",
+    "path": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+    "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2"
+  },
+  "exact_scan": {
+    "branch": "analysis/s142ai-cross-assembly-consumers",
+    "run_id": 34715820639,
+    "run_number": 1,
+    "head": "374595d45bbeee44b544ea4cf464111a51df150d",
+    "artifact_id": 10304508813,
+    "artifact_name": "s142ai-spawn-api-cross-consumer-review",
+    "artifact_zip_sha256": "733bb10b253372afe704c3c01e8c4852e9faf06c141c578d162db2e5cad55cd1",
+    "scanner": "AnalysisTools/inspect_spawn_api_cross_consumers.py",
+    "workflow": ".github/workflows/spawn-api-cross-consumer-review.yml",
+    "decompiler": {
+      "tool": "ilspycmd",
+      "version": "11.0.0.9375"
+    }
+  },
+  "coverage": {
+    "enabled_packages_scanned": 183,
+    "embedded_project_dlls_scanned": 5,
+    "managed_dlls_scanned": 224,
+    "raw_candidate_assemblies": 3,
+    "external_raw_candidate_assemblies": 1,
+    "qualification": "Complete exact enabled-package plus embedded-DLL static scan for provider/method metadata markers. Direct IL calls and reflection-like contexts are exact for captured binaries; arbitrary runtime-generated reflection strings are outside static proof."
+  },
+  "providers": {
+    "snowylib": {
+      "package": "Snowlance-SnowyLib",
+      "version": "1.13.1",
+      "package_zip_sha256": "60c64b5df528d62491b7f584d8ec3d14c41c9c3cd46b8d9c3fb1f6e230dec95b",
+      "member": "Snowlance.SnowyLib.dll",
+      "dll_sha256": "cdbb80c8b0afa3e65acae83e25bd00fb704cefbeb2e14ccc561f1d959b0c3c95",
+      "source_sha256": "0b9b13fdc95cfb827eb5de2cdbd3ba94b6405d315af29e5ba1b13210f1e68d36",
+      "il_sha256": "a41e3b0d9d050f070345e9dce2cef3ef4f5e8b69eb87848bbb58b504ef064e7e",
+      "spawn_api_methods": [
+        "SnowyLib.NetworkHandler.SpawnEnemyRpc",
+        "SnowyLib.Utils.SpawnEnemy direct-position overload",
+        "SnowyLib.Utils.SpawnEnemy EnemyVent overload"
+      ],
+      "external_direct_call_assemblies": 0,
+      "external_reflection_candidate_assemblies": 0,
+      "classification": "EXACT_S142AI_INSTALLED_SET_NO_EXTERNAL_SNOWYLIB_SPAWN_API_CONSUMER_FOUND",
+      "cross_assembly_consumer_gate_open": false
+    },
+    "interactive_terminal_api": {
+      "package": "WhiteSpike-Interactive_Terminal_API",
+      "version": "1.3.3",
+      "package_zip_sha256": "dcb969e1ea831a4c3e56320f7f395eea875a9d41d47f4e355529d8bb516f277c",
+      "member": "BepInEx/plugins/InteractiveTerminalAPI/InteractiveTerminalAPI.dll",
+      "dll_sha256": "981c2874ab1af36b06b5ca18a171d521f1d25694fce7764cfa1058da03c4ff77",
+      "source_sha256": "7987671896805623c023d3a868e79d21fd6b7ab23147e66ce81460636580b793",
+      "il_sha256": "47a0cd88370bd42b1c148eac545122bc8e11120ff0fed5c1b7636d8c67f81bbb",
+      "spawn_api_method": "InteractiveTerminalAPI.Tools.SpawnMob(string, Vector3, int)",
+      "spawn_callee": "RoundManager.SpawnEnemyOnServer",
+      "external_direct_call_assemblies": 0,
+      "external_reflection_candidate_assemblies": 0,
+      "classification": "EXACT_S142AI_INSTALLED_SET_NO_EXTERNAL_INTERACTIVE_TERMINAL_SPAWNMOB_CONSUMER_FOUND",
+      "cross_assembly_consumer_gate_open": false
+    }
+  },
+  "provider_dependency_declarations": [
+    {
+      "package": "ProjectSCP-PSCPLibrary",
+      "version": "0.1.1",
+      "dependency": "WhiteSpike-Interactive_Terminal_API-1.3.3"
+    },
+    {
+      "package": "TestAccount666-ShipWindows",
+      "version": "2.11.1",
+      "dependency": "WhiteSpike-Interactive_Terminal_API-1.3.3"
+    },
+    {
+      "package": "malco-Lategame_Upgrades",
+      "version": "3.14.1",
+      "dependency": "WhiteSpike-Interactive_Terminal_API-1.3.0"
+    },
+    {
+      "package": "mr_hat-MisideItems",
+      "version": "0.3.9",
+      "dependency": "WhiteSpike-Interactive_Terminal_API-1.3.3"
+    }
+  ],
+  "external_raw_candidate_resolution": {
+    "package": "malco-Lategame_Upgrades",
+    "version": "3.14.1",
+    "package_zip_sha256": "8ffa3a987e2626526406673825d5523a044e6e6cf68581edba844b24f2f2c79a",
+    "member": "BepInEx/plugins/MoreShipUpgrades/MoreShipUpgrades.dll",
+    "dll_sha256": "c3c6da8a2ad57930ec91db9df24223379a27bd0e0dcc60cf21fb1c9472f20465",
+    "source_sha256": "c027768e0b850573fb6ef4b90d86bd89baa557f739a91371fd49d30e6d86961a",
+    "il_sha256": "b5b9bcedbf1f8231540944dba575038028c6a28c459caf2f2b6452574de71025",
+    "interactive_terminal_api_direct_calls": 0,
+    "snowylib_direct_calls": 0,
+    "interactive_terminal_api_reflection_candidates": 0,
+    "snowylib_reflection_candidates": 0,
+    "own_more_ship_upgrades_spawnmob_calls": 3,
+    "own_spawnmob_il_lines": [
+      44703,
+      44727,
+      51948
+    ],
+    "own_spawnmob_target": "MoreShipUpgrades.Misc.Util.Tools::SpawnMob(string, UnityEngine.Vector3, int32)",
+    "resolution": "FALSE_POSITIVE_FOR_THE_TWO_NAMED_PROVIDER_GATES_DEPENDENCY_AND_SPAWNMOB_NAME_BELONG_TO_SEPARATE_UI_AND_OWN_SPAWN_IMPLEMENTATION"
+  },
+  "gates": {
+    "discovery_positive_exact_review_inventory_complete": true,
+    "snowylib_cross_assembly_consumer_gate_open": false,
+    "interactive_terminal_api_cross_assembly_consumer_gate_open": false,
+    "bcmer_forced_additional_runtime_custom_gate_open": true,
+    "shyguy_runtime_identity_source_to_dll_provenance_gate_open": true,
+    "final_host_client_safe_interception_selection_gate_open": true,
+    "diag1_build_authorized": false
+  },
+  "qualification": "Both named public-API cross-assembly consumer gates are closed only for the exact static S1.42AI installed assembly set. Provider methods remain real shared spawn infrastructure and are not approved as broad interception targets. Future package/version/profile changes must re-open this installed-set conclusion. Patch safety remains partial; no DIAG1 implementation, build, controller transition, Gale import or gameplay test is authorized."
+}

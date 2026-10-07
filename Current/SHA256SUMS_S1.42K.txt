@@ -1,0 +1,9 @@
+SHA256SUMS — S1.42K
+
+bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2  Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z
+
+LATEST VALID RUNTIME EVIDENCE:
+a8ce035bf64fa5b704e18c588215f43cd1fd184eef4f467dfbafa6fcb1379963  RuntimeEvidence/S1.42J/20260903T145657Z/raw/LogOutput.log
+
+UNCHANGED COMPATIBILITY DLL FROM S1.42J:
+7a810d4164394146d64fea2fec300591f4647c9e1b9de834bce4cd1a726e63f2  ProfileSources/S1.42K/BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll

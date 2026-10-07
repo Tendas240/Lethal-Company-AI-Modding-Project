@@ -1,0 +1,94 @@
+{
+    "schema_version":  1,
+    "purpose":  "Native V81 spawn method and direct-caller evidence for S1.42AI-DIAG1 safety review",
+    "capture_utc":  "2026-09-11T14:32:00Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "repository_main_at_capture":  "49337f84356c68a7a52ad3d3937d8b039ca1070a",
+    "bound_prior_evidence":  "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json",
+    "source_assembly":  {
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll"
+                        },
+    "game_executable":  {
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+                            "logical_path":  "Lethal Company.exe"
+                        },
+    "steam":  {
+                  "manifest_review":  "AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md",
+                  "matches_prior_appmanifest":  false,
+                  "buildid":  "22825947",
+                  "appmanifest_sha256":  "b431704ad9cf0e44cba506274f6059d021e35f434af6ef27f3abd44c5d1e6ae3",
+                  "prior_appmanifest_sha256":  "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                  "app_id":  "1966720"
+              },
+    "decompiler":  {
+                       "full_local_type_source_sha256":  "f5c0790a76eddaab74129454f03fa7c2a36176e1759737395e76ee057567b6aa",
+                       "tool":  "ilspycmd",
+                       "type":  "RoundManager",
+                       "version":  "11.0.0.9375"
+                   },
+    "selection":  {
+                      "direct_caller_depth":  1,
+                      "required_methods":  [
+                                               "FinishGeneratingNewLevelClientRpc",
+                                               "PredictAllOutsideEnemies",
+                                               "SpawnNestObjectForOutsideEnemy",
+                                               "ResetEnemySpawningVariables",
+                                               "BeginEnemySpawning",
+                                               "SpawnEnemiesOutside",
+                                               "SpawnWeedEnemies",
+                                               "SpawnRandomWeedEnemy",
+                                               "SpawnDaytimeEnemiesOutside",
+                                               "SpawnRandomDaytimeEnemy",
+                                               "SpawnRandomOutsideEnemy",
+                                               "PlotOutEnemiesForNextHour",
+                                               "SpawnEnemyFromVent",
+                                               "SpawnEnemyOnServer",
+                                               "SpawnEnemyServerRpc",
+                                               "SpawnEnemyGameObject",
+                                               "DespawnEnemyOnServer",
+                                               "DespawnEnemyServerRpc",
+                                               "DespawnEnemyGameObject"
+                                           ],
+                      "selected_signatures":  [
+                                                  "private IEnumerator LoadNewLevelWait(int randomSeed)",
+                                                  "public void FinishGeneratingNewLevelServerRpc()",
+                                                  "public void FinishGeneratingNewLevelClientRpc()",
+                                                  "public void PredictAllOutsideEnemies()",
+                                                  "public void SpawnNestObjectForOutsideEnemy(EnemyType enemyType, System.Random randomSeed)",
+                                                  "private void ResetEnemySpawningVariables()",
+                                                  "public void BeginEnemySpawning()",
+                                                  "public void SpawnEnemiesOutside()",
+                                                  "public void SpawnWeedEnemies()",
+                                                  "public bool SpawnRandomWeedEnemy(float timeUpToCurrentHour, int numberOfWeeds)",
+                                                  "public void SpawnDaytimeEnemiesOutside()",
+                                                  "private bool SpawnRandomDaytimeEnemy(float timeUpToCurrentHour)",
+                                                  "private bool SpawnRandomOutsideEnemy(float timeUpToCurrentHour)",
+                                                  "public void PlotOutEnemiesForNextHour()",
+                                                  "public void SpawnEnemyFromVent(EnemyVent vent)",
+                                                  "public void SpawnEnemyOnServer(Vector3 spawnPosition, float yRot, int enemyNumber = -1)",
+                                                  "public void SpawnEnemyServerRpc(Vector3 spawnPosition, float yRot, int enemyNumber)",
+                                                  "public NetworkObjectReference SpawnEnemyGameObject(Vector3 spawnPosition, float yRot, int enemyNumber, EnemyType enemyType = null)",
+                                                  "public void DespawnEnemyOnServer(NetworkObject enemyNetworkObject)",
+                                                  "public void DespawnEnemyServerRpc(NetworkObjectReference enemyNetworkObject)",
+                                                  "private void DespawnEnemyGameObject(NetworkObjectReference enemyNetworkObject)",
+                                                  "private void Update()",
+                                                  "private void SpawnInsideEnemiesFromVentsIfReady()",
+                                                  "private void AdvanceHourAndSpawnNewBatchOfEnemies()",
+                                                  "private static void __rpc_handler_2729232387(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)",
+                                                  "private static void __rpc_handler_46494176(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)",
+                                                  "private static void __rpc_handler_3840785488(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)"
+                                              ],
+                      "max_source_lines":  3000
+                  },
+    "report":  {
+                   "sha256":  "5317509a39e072db2c3df95de1cb9091dd9f7ff7e1a3bfe231045dea9cfc974f",
+                   "file":  "ROUNDMANAGER_SPAWNING_FOCUSED_DECOMPILE.txt",
+                   "excludes":  [
+                                    "game binaries",
+                                    "full type decompile",
+                                    "absolute local paths",
+                                    "user names"
+                                ]
+               }
+}

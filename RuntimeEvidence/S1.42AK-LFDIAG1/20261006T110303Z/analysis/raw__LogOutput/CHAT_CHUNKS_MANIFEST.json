@@ -1,0 +1,35 @@
+{
+  "created": true,
+  "source_size_limit_bytes": 8388608,
+  "target_chunk_bytes": 262144,
+  "chunks": [
+    {
+      "file": "chat_chunks/chunk_0001_L00000001-L00002485.log",
+      "line_start": 1,
+      "line_end": 2485,
+      "size": 262178,
+      "sha256": "9f6d257de132fdd24db0be6d8401f2c2568336251b8eb9cead7b60edc22ae3b0"
+    },
+    {
+      "file": "chat_chunks/chunk_0002_L00002486-L00005004.log",
+      "line_start": 2486,
+      "line_end": 5004,
+      "size": 262159,
+      "sha256": "33571f1c444e7d12063e01383e454f7883f2c76b5196f04a520eafa24a597768"
+    },
+    {
+      "file": "chat_chunks/chunk_0003_L00005005-L00007835.log",
+      "line_start": 5005,
+      "line_end": 7835,
+      "size": 262167,
+      "sha256": "5578af9af64f749839e6254cc1e9efb9763488e668ac02bd8400783fa56187eb"
+    },
+    {
+      "file": "chat_chunks/chunk_0004_L00007836-L00007949.log",
+      "line_start": 7836,
+      "line_end": 7949,
+      "size": 11768,
+      "sha256": "611c1d7ba2ee95e70645e55e2208801886a096d8583e780f30f25731591de11d"
+    }
+  ]
+}

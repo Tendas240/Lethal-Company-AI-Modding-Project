@@ -1,0 +1,15 @@
+{
+  "status": "STATIC_PASS_NOT_RUNTIME_READY",
+  "build_id": "S1.42AJ-DIAG1",
+  "base_sha256": "7c1441aeb0732208bb8e910d89348c2e0129ce202422103a025e8f8aea707dba",
+  "output_sha256": "4e6d7219deff356c5969a40bd75433987bf96baf60be68ae3928578faabf2832",
+  "diagnostic_dll_sha256": "9a477c18e5b8cf38922fa755b6bab101babc2f987e858567172b9be9c2c05fad",
+  "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AJDiag1OfficeSelection/S142AJDiag1OfficeSelection.dll"
+  ],
+  "qualification": "Build and archive validation only. Runtime caller identification, ordering, generation and gameplay remain unproven."
+}

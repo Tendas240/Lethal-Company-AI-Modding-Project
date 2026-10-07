@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-BMDSFIX1-DIAG1PATH1",
+  "profile_path": "Profiles/LC V1 S1.42AK-D1P1.r2z",
+  "profile_name": "LC V1 S1.42AK-D1P1",
+  "sha256": "0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6",
+  "zip_members": 338,
+  "snapshot_dir": "ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}

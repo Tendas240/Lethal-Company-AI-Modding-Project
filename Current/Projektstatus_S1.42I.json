@@ -1,0 +1,100 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "accepted"
+  },
+  "latest_built_candidate": {
+    "build": "S1.42I",
+    "profile": "Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z",
+    "sha256": "c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97",
+    "base_profile": "Profiles/LC V1 S1.42H Thumper Grab Guard.r2z",
+    "base_sha256": "5859e15ce71d8cd71d27e20205640af1f10ff91fe6d4b956d4a7064ac8400e58",
+    "compatibility_plugin_version": "1.3.6",
+    "compatibility_dll_sha256": "76544a536f5c626f0c81b50dc06a7bf1521c265cd23a7698917789e3846eecb2",
+    "export_sha256": "cb3dfa33a2b692535aede51330f9cbebe51584ca2b674bd24d541f99f78b4f77",
+    "build_verification": {
+      "github_actions": "success",
+      "warnings": 0,
+      "errors": 0,
+      "zip_members": 331,
+      "readable_snapshot_files": 330,
+      "changed_existing_members": [
+        "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+        "export.r2x"
+      ],
+      "added_members": []
+    },
+    "status": "built_successfully_awaiting_runtime"
+  },
+  "most_recent_valid_runtime_evidence": {
+    "build": "S1.42H",
+    "path": "RuntimeEvidence/S1.42H/20260903T125734Z/",
+    "log_sha256": "81ed064ce97d25f250d6fba1585055baef8ce801cd0f13626d074bf4fef71029",
+    "findings": {
+      "startup_exact_hook": "pass",
+      "enemy_isolation_and_spawning": "pass",
+      "enemies_terminal": "pass_user_observed",
+      "puffer_pikmin": "pass",
+      "baboon_hawk_invincible_pikmin": "fail_enemy_side_hold_regrab",
+      "thumper_pikmin": "not_validated",
+      "coroner_jetpack_playercontroller_null_count": 0,
+      "door_audit": "normal_only"
+    },
+    "counts": {
+      "baboon_bite_calls": 64,
+      "pregrab_captures": 64,
+      "grabbed_states": 59,
+      "grabbed_death_timers": 59,
+      "invincibility_blocked_kills": 59,
+      "state_repairs": 56,
+      "leader_null_errors": 193,
+      "puffer_spawns": 2,
+      "crawler_spawns": 1,
+      "thumper_guard_markers": 0
+    }
+  },
+  "s142i_test_state": {
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
+    "bcmer_enabled": false,
+    "isolated_enemy_regression": true,
+    "target_indoor": [
+      "Crawler/Thumper",
+      "Puffer"
+    ],
+    "target_outdoor": [
+      "Baboon Hawk"
+    ],
+    "expected_total_packages": 188,
+    "expected_enabled_packages": 182,
+    "expected_disabled_packages": 6,
+    "puffer_status": "passed_in_S1.42H",
+    "baboon_guard": "block GrabPikmin only for invincible Pikmin",
+    "thumper_guard": "unchanged_pending_direct_runtime_contact"
+  },
+  "next_action": {
+    "type": "runtime_test",
+    "build": "S1.42I",
+    "rule": "Do not build S1.42J first.",
+    "import": "Gale -> Advanced options -> Import all files",
+    "primary_checks": [
+      "Baboon Hawk attack on invincible Pikmin triggers BaboonHawkPikminGuard",
+      "no Baboon Hawk beak hold / immobilization / grabbed death timer / leader-null loop",
+      "direct Crawler/Thumper contact triggers ThumperPikminGuard",
+      "no Thumper/Pikmin interaction in either direction",
+      "Enemies terminal remains functional"
+    ],
+    "upload": "RuntimeInbox/Current/"
+  },
+  "after_isolated_enemy_acceptance": {
+    "disable_temporary_enemy_isolation": true,
+    "enemy_restore_point": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+    "reenable_bcmer_1_71_0": true
+  },
+  "runtime_route": "S1.42I",
+  "build_controller": "IDLE_AFTER_S1.42I_BUILD_AWAITING_RUNTIME",
+  "canonical_analysis": "Current/32_S1.42H_RUNTIME_ANALYSIS_AND_S1.42I_BUILD.md"
+}

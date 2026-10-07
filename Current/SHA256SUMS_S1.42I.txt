@@ -1,0 +1,8 @@
+SHA256SUMS — S1.42I
+
+c7224aea97c51fb051da059648868bbae0421b9c3f02d5cc2dd60922efc28a97  Profiles/LC V1 S1.42I Baboon Hawk Grab Guard.r2z
+76544a536f5c626f0c81b50dc06a7bf1521c265cd23a7698917789e3846eecb2  ProfileSources/S1.42I/BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+cb3dfa33a2b692535aede51330f9cbebe51584ca2b674bd24d541f99f78b4f77  ProfileSources/S1.42I/export.r2x
+
+PREDECESSOR RUNTIME EVIDENCE:
+81ed064ce97d25f250d6fba1585055baef8ce801cd0f13626d074bf4fef71029  RuntimeEvidence/S1.42H/20260903T125734Z/raw/LogOutput.log

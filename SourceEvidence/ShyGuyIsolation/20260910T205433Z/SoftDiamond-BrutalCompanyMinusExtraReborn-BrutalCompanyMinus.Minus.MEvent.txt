@@ -1,0 +1,274 @@
+1: using System;
+2: using System.Collections.Generic;
+3: using BrutalCompanyMinus.Minus.Events;
+4: using UnityEngine;
+5: 
+6: namespace BrutalCompanyMinus.Minus;
+7: 
+8: public class MEvent
+9: {
+10: 	public enum EventType
+11: 	{
+12: 		Insane,
+13: 		VeryBad,
+14: 		Bad,
+15: 		Neutral,
+16: 		Good,
+17: 		VeryGood,
+18: 		Rare,
+19: 		Remove
+20: 	}
+21: 
+22: 	public enum ScaleType
+23: 	{
+24: 		InsideEnemyRarity,
+25: 		OutsideEnemyRarity,
+26: 		DaytimeEnemyRarity,
+27: 		MinOutsideEnemy,
+28: 		MinInsideEnemy,
+29: 		MaxOutsideEnemy,
+30: 		MaxInsideEnemy,
+31: 		ScrapValue,
+32: 		ScrapAmount,
+33: 		FactorySize,
+34: 		MinDensity,
+35: 		MaxDensity,
+36: 		MinCash,
+37: 		MaxCash,
+38: 		MinItemAmount,
+39: 		MaxItemAmount,
+40: 		MinValue,
+41: 		MaxValue,
+42: 		Rarity,
+43: 		MinRarity,
+88: 		}
+89: 
+90: 		public int Compute(EventType type)
+91: 		{
+92: 			return (int)Compute(this, type);
+93: 		}
+94: 	}
+95: 
+96: 	public class MonsterEvent
+97: 	{
+98: 		public EnemyType enemy;
+99: 
+100: 		public Scale insideSpawnRarity;
+101: 
+102: 		public Scale outsideSpawnRarity;
+103: 
+104: 		public Scale minInside;
+105: 
+106: 		public Scale maxInside;
+107: 
+108: 		public Scale minOutside;
+109: 
+110: 		public Scale maxOutside;
+111: 
+112: 		public EventType eventType;
+113: 
+114: 		public MonsterEvent(EnemyType enemy, Scale insideSpawnRarity, Scale outsideSpawnRarity, Scale minInside, Scale maxInside, Scale minOutside, Scale maxOutside)
+115: 		{
+116: 			this.enemy = enemy;
+117: 			assignRarities(insideSpawnRarity, outsideSpawnRarity, minInside, maxInside, minOutside, maxOutside);
+118: 		}
+119: 
+120: 		public MonsterEvent(Assets.EnemyName enemyName, Scale insideSpawnRarity, Scale outsideSpawnRarity, Scale minInside, Scale maxInside, Scale minOutside, Scale maxOutside)
+121: 		{
+122: 			enemy = Assets.GetEnemy(enemyName);
+123: 			assignRarities(insideSpawnRarity, outsideSpawnRarity, minInside, maxInside, minOutside, maxOutside);
+124: 		}
+125: 
+126: 		public MonsterEvent(string enemyName, Scale insideSpawnRarity, Scale outsideSpawnRarity, Scale minInside, Scale maxInside, Scale minOutside, Scale maxOutside)
+127: 		{
+128: 			enemy = Assets.GetEnemy(enemyName);
+129: 			assignRarities(insideSpawnRarity, outsideSpawnRarity, minInside, maxInside, minOutside, maxOutside);
+130: 		}
+131: 
+132: 		internal void assignRarities(Scale insideSpawnRarity, Scale outsideSpawnRarity, Scale minInside, Scale maxInside, Scale minOutside, Scale maxOutside)
+133: 		{
+134: 			this.insideSpawnRarity = insideSpawnRarity;
+135: 			this.outsideSpawnRarity = outsideSpawnRarity;
+136: 			this.minInside = minInside;
+137: 			this.maxInside = maxInside;
+138: 			this.minOutside = minOutside;
+139: 			this.maxOutside = maxOutside;
+140: 		}
+141: 
+142: 		public void Execute()
+143: 		{
+144: 			Manager.AddEnemyToPoolWithRarity(ref RoundManager.Instance.currentLevel.Enemies, enemy, insideSpawnRarity.Compute(eventType));
+145: 			Manager.AddEnemyToPoolWithRarity(ref RoundManager.Instance.currentLevel.OutsideEnemies, enemy, outsideSpawnRarity.Compute(eventType));
+146: 			Manager.Spawn.InsideEnemies(enemy, Random.Range(minInside.Compute(eventType), maxInside.Compute(eventType) + 1));
+147: 			Manager.Spawn.OutsideEnemies(enemy, Random.Range(minOutside.Compute(eventType), maxOutside.Compute(eventType) + 1));
+148: 		}
+149: 	}
+150: 
+151: 	public class ScrapTransmutationEvent
+152: 	{
+153: 		public Scale amount;
+154: 
+155: 		public SpawnableItemWithRarity[] items;
+156: 
+157: 		public ScrapTransmutationEvent(Scale amount, params SpawnableItemWithRarity[] items)
+158: 		{
+159: 			this.items = items;
+160: 			this.amount = amount;
+161: 		}
+162: 
+163: 		public void Execute()
+164: 		{
+165: 			Manager.TransmuteScrap(amount.Computef(EventType.Neutral), items);
+166: 		}
+167: 	}
+168: 
+169: 	public List<string> Descriptions = new List<string> { "" };
+170: 
+171: 	public string ColorHex = "#FFFFFF";
+172: 
+173: 	public int Weight = 1;
+174: 
+175: 	public EventType Type = EventType.Neutral;
+176: 
+177: 	public bool Enabled = true;
+178: 
+179: 	public bool isSpecialEvent = false;
+180: 
+181: 	public bool isBetaEvent = false;
+182: 
+183: 	public bool showTip = false;
+184: 
+185: 	public List<string> TipMessages = new List<string> { "" };
+186: 
+187: 	public List<string> TipTitle = new List<string> { "" };
+188: 
+189: 	public bool isWarning = true;
+190: 
+191: 	public Dictionary<ScaleType, Scale> ScaleList = new Dictionary<ScaleType, Scale>();
+192: 
+193: 	public List<string> EventsToRemove = new List<string>();
+194: 
+195: 	public bool MoonMode = false;
+196: 
+197: 	public List<string> Blacklist = new List<string>();
+198: 
+199: 	public List<string> Whitelist = new List<string>();
+200: 
+201: 	public List<string> EventsToSpawnWith = new List<string>();
+202: 
+203: 	public bool Executed = false;
+204: 
+205: 	public bool Active = false;
+206: 
+207: 	public bool SpeedRunSafe = true;
+208: 
+209: 	public List<string> Aliases = new List<string>();
+210: 
+211: 	public List<MonsterEvent> monstersToSpawn = new List<MonsterEvent>();
+212: 
+213: 	public ScrapTransmutationEvent scrapTransmutationEvent = new ScrapTransmutationEvent(new Scale(0f, 0f, 0f, 0f));
+214: 
+215: 	internal static Dictionary<ScaleType, string> ScaleInfoList = new Dictionary<ScaleType, string>
+216: 	{
+217: 		{
+218: 			ScaleType.InsideEnemyRarity,
+219: 			"Enemy is added to Inside enemy list with rarity."
+220: 		},
+221: 		{
+222: 			ScaleType.OutsideEnemyRarity,
+223: 			"Enemy is added to Outside enemy list with rarity."
+224: 		},
+225: 		{
+226: 			ScaleType.DaytimeEnemyRarity,
+227: 			"Enemy is added to Daytime enemy list with rarity."
+228: 		},
+229: 		{
+230: 			ScaleType.MinOutsideEnemy,
+231: 			"Minimum amount of enemies guranteed to spawn outside."
+232: 		},
+233: 		{
+234: 			ScaleType.MaxOutsideEnemy,
+235: 			"Maximum amount of enemies guaranteed to spawn outside."
+236: 		},
+397: 	{
+398: 	}
+399: 
+400: 	public virtual bool AddEventIfOnly()
+401: 	{
+402: 		return true;
+403: 	}
+404: 
+405: 	public virtual void Execute()
+406: 	{
+407: 	}
+408: 
+409: 	public virtual void OnShipLeave()
+410: 	{
+411: 	}
+412: 
+413: 	public virtual void OnGameStart()
+414: 	{
+415: 	}
+416: 
+417: 	public virtual void OnLocalDisconnect()
+418: 	{
+419: 	}
+420: 
+421: 	public virtual float Getf(ScaleType scaleType)
+422: 	{
+423: 		try
+424: 		{
+425: 			return Scale.Compute(ScaleList[scaleType], Type);
+426: 		}
+427: 		catch
+428: 		{
+429: 			Log.LogError($"Scalar '{scaleType.ToString()}' for '{Name()}' not found, returning 0.");
+430: 		}
+431: 		return 0f;
+432: 	}
+433: 
+434: 	public int Get(ScaleType scaleType)
+435: 	{
+436: 		return (int)Getf(scaleType);
+437: 	}
+438: 
+439: 	public void ExecuteAllMonsterEvents()
+440: 	{
+441: 		foreach (MonsterEvent item in monstersToSpawn)
+442: 		{
+443: 			item.Execute();
+444: 		}
+445: 	}
+446: 
+447: 	public static int CompareScore(Scale scaleMin, Scale scaleMax, int calculated, bool higherBetter)
+448: 	{
+449: 		int num = (int)Scale.Compute(scaleMin);
+450: 		int num2 = (int)Scale.Compute(scaleMax);
+451: 		if (num == num2)
+452: 		{
+453: 			return 50;
+454: 		}
+455: 		if (higherBetter)
+456: 		{
+457: 			return Math.Clamp((int)(100f * ((float)(calculated - num) / (float)Math.Abs(num2 - num))), 0, 100);
+458: 		}
+459: 		return Math.Clamp((int)(100f * ((float)(num2 - calculated) / (float)Math.Abs(num2 - num))), 0, 100);
+460: 	}
+461: 
+462: 	public static float CompareScoref(Scale scaleMin, Scale scaleMax, float calculated, bool higherBetter)
+463: 	{
+464: 		float num = Scale.Compute(scaleMin);
+465: 		float num2 = Scale.Compute(scaleMax);
+466: 		if (num == num2)
+467: 		{
+468: 			return 50f;
+469: 		}
+470: 		if (higherBetter)
+471: 		{
+472: 			return Math.Clamp(100f * ((calculated - num) / Math.Abs(num2 - num)), 0f, 100f);
+473: 		}
+474: 		return Math.Clamp(100f * ((num2 - calculated) / Math.Abs(num2 - num)), 0f, 100f);
+475: 	}
+476: 
+477: 	public static float ReturnScore(float score, int Amount)
+478: 	{

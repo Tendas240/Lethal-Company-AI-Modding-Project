@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_TIER_C_REVIEW_COMPLETE_PATCH_SAFETY_PARTIAL_NOT_BUILD_READY",
+  "canonical_main": "94be00f2ca31cb2caa4d0125e2bebb7573d22a50",
+  "exact_review": {
+    "run_id": 34710724733,
+    "run_number": 1,
+    "head": "1e75d80af54bf80daf11ef37f0ef8327fde7d301",
+    "artifact_id": 10303047183,
+    "artifact_name": "s142ai-tier-c-spawn-candidates-exact",
+    "artifact_zip_sha256": "369f15e556017cde234b312c00728ab434c0e286271ed7813d767f3ddeab464e",
+    "discovery_run": 34705334804,
+    "discovery_head": "45d22c3fa1abb3bbd95dd137cd3903eb053f87c7",
+    "decompiler": {
+      "tool": "ilspycmd",
+      "version": "11.0.0.9375"
+    }
+  },
+  "assemblies": [
+    {
+      "package": "coderCleric-Poltergeist",
+      "version": "1.2.12",
+      "package_zip_sha256": "56e9c656ff9a17b9c1db4a22d0c1b739c32fb2f15a381464774ff41307ea4a45",
+      "member": "BepInEx/plugins/Poltergeist.dll",
+      "dll_sha256": "18d5f6c9251972b130decbac01141e467dc3259bc8754b660f6f0180c255e98f",
+      "source_sha256": "f71a1a04d663f3240bac88bb2954449bcd18a6693a932dfaf0af08893e662505",
+      "il_sha256": "bde7648a6f9a2bc1ec2f406366306757568d238155b4291b5b9699310b51628b",
+      "classification": "DOWNSTREAM_ENEMY_LIFECYCLE_INTERACTOR_INFRASTRUCTURE_NOT_CREATOR"
+    },
+    {
+      "package": "Entity378-SellBodiesFixed",
+      "version": "1.14.0",
+      "package_zip_sha256": "55048f43733f19a6305441befee228e586c475eb340f1dfea3b01a8bae487522",
+      "member": "BepInEx/plugins/SellBodies/SellBodies.dll",
+      "dll_sha256": "3c3e43d8c27e55f9b4289b7f2d047aa1b1624c084c16c22a7f3a172345ad13c0",
+      "source_sha256": "218c73d29adcc1c23a202958396942a5ec8267bfe8577e48b8f51cf852c194c7",
+      "il_sha256": "c72d59805b6aea7bc494d34072c1150f6f0d58d773b077b5a81e4df9e1e819f8",
+      "classification": "ENEMY_DEATH_BODY_AND_SCRAP_REPLACEMENT_INFRASTRUCTURE_NOT_CREATOR"
+    },
+    {
+      "package": "347956-JPOGRaptor",
+      "version": "1.0.6",
+      "package_zip_sha256": "57c9650f1d6a7cbdc449ee69427f84d1f065c506dffac3185d311f2f988f06a7",
+      "member": "plugins/JPOGRaptor.dll",
+      "dll_sha256": "ae2b8c752e229aa5a76083e1c4c641156f3a8294802a7edbebac325b4793b983",
+      "source_sha256": "4bbe16720fe19ac4a5c1ad03b7c34f08e5f5b1f29486e49e8c673ecdbe462d78",
+      "il_sha256": "c8b0701b2165690c16efaa8b1fa9a023492d1eb5c438bb0e7945b2e2ee7a1d18",
+      "classification": "CUSTOM_ENEMY_IMPLEMENTATION_WITH_SCRAP_DROP_NO_DIRECT_ENEMY_CREATION_PRIMITIVE"
+    },
+    {
+      "package": "ScienceBird-ScienceBird_Tweaks",
+      "version": "4.7.5",
+      "package_zip_sha256": "ebab97d5ab882e630f310bd1eedb23528402552c624365bcd3854de0684acd09",
+      "member": "ScienceBird.ScienceBirdTweaks.dll",
+      "dll_sha256": "ab9d87a037b090b3f80afbbaebd409254a024b81442d0280a9164a7811324059",
+      "source_sha256": "2d53ffff42d3fe41a921980c459aaf791565099d249e075d86c29778da860686",
+      "il_sha256": "30b6362d0cb500c0788a00ff9b8e2f6cf5b0ed0af7eaf42466b5831e8b187a64",
+      "classification": "DOWNSTREAM_ENEMY_PATCH_AND_NETWORKED_GAMEPLAY_INFRASTRUCTURE_NOT_CREATOR"
+    },
+    {
+      "package": "ShaosilGaming-GeneralImprovements",
+      "version": "1.5.5",
+      "package_zip_sha256": "98d2791c715484aa190e326df6fc1a793aa57f36685678c0e55248ed49554d34",
+      "member": "GeneralImprovements.dll",
+      "dll_sha256": "5b7199e2b92b2880e2bf12f5198a4905a63b0a4633f1ad16c1ed43dd981f86c4",
+      "source_sha256": "4d530ad36a7d1248a115b30bea3f74ba8a3d00ce1c70644b313613f2990e22d2",
+      "il_sha256": "df75d0f196821f5c7108751e19c95677215a9d28466facfdd0c8cb39e16a7219",
+      "classification": "DOWNSTREAM_ENEMY_POWER_OBSERVER_AND_SHIP_INFRASTRUCTURE_NOT_CREATOR"
+    },
+    {
+      "package": "HQ_Team-LethalThingsReloaded",
+      "version": "0.11.7",
+      "package_zip_sha256": "c54671537ca04e6665570f56924cb5ceeeb63639e154d89e6d7e6440cf38d347",
+      "member": "plugins/LethalThings.dll",
+      "dll_sha256": "1f1923b2f104fc5b90774ef4369fa7c46f70c13159110096550fa61bf56dec62",
+      "source_sha256": "4992a4e75b54e2544174b72af143d12b399994e7bd876d3510f48a75df2141aa",
+      "il_sha256": "8c4e9b37b1da632a30e1eba6014fbf8d22153c3a88d40f5ce0dbdb879132b0ef",
+      "classification": "CUSTOM_ENEMY_IMPLEMENTATIONS_WITH_ITEM_PROJECTILE_INFRASTRUCTURE_NO_DIRECT_ENEMY_CREATION_PRIMITIVE"
+    }
+  ],
+  "shared_exact_source_facts": {
+    "all_six_enemy_type_occurrences": 0,
+    "all_six_spawn_enemy_on_server_occurrences": 0,
+    "all_six_spawn_enemy_game_object_occurrences": 0,
+    "qualification": "Complete Instantiate/object-creation sites were reviewed per assembly. JPOGRaptor and LethalThingsReloaded define EnemyAI implementations but no direct enemy-instance creation primitive in their exact reviewed DLLs. External/native/framework registration and pool instantiation remain outside this negative direct-owner claim."
+  },
+  "remaining_unreviewed_discovery_positive_packages": 25,
+  "snowylib_cross_assembly_consumer_gate_open": true,
+  "bcmer_forced_additional_runtime_custom_gate_open": true,
+  "shyguy_source_to_dll_provenance_gate_open": true,
+  "diag1_build_authorized": false,
+  "qualification": "Exact review of six discovery-positive packages only. Patch safety remains partial; no DIAG1 implementation, build, controller transition, Gale import or gameplay test is authorized."
+}

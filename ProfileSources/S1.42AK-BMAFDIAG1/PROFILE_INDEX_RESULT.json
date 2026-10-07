@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-BMAFDIAG1",
+  "profile_path": "Profiles/LC V1 S1.42AK-BMAFDIAG1 Black Mesa Abandoned Foundry Diagnostic.r2z",
+  "profile_name": "LC V1 S1.42AK-BMAFDIAG1 Black Mesa Abandoned Foundry Diagnostic",
+  "sha256": "b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2",
+  "zip_members": 337,
+  "snapshot_dir": "ProfileSources/S1.42AK-BMAFDIAG1",
+  "snapshot": {
+    "entries": 337,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}

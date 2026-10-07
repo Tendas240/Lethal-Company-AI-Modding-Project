@@ -1,0 +1,56 @@
+VERIFIKATION — S1.42F
+
+Stand: 2026-09-03
+Status: GEBAUT, NOCH NICHT RUNTIME-AKZEPTIERT
+
+Profil:
+Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z
+SHA-256:
+f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b
+
+Basis:
+Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z
+SHA-256:
+4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348
+
+GitHub Actions:
+- erfolgreich
+- .NET: 0 Warning(s), 0 Error(s)
+- ZIP-Mitglieder: 331
+- Text-Snapshot: 330 lesbare Dateien
+- Manifest unverändert: 188 gesamt / 183 enabled / 5 disabled
+
+Delta S1.42E -> S1.42F:
+- geändert: BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+- geändert: export.r2x
+- keine Paket-/Versions-/Enabled-State-Änderungen
+- keine Configänderungen
+
+Compatibility Plugin:
+- Version 1.3.2
+- DLL SHA-256: 8172c75bbcf75108266e1ce8d2808ec072f6cfc164acaf562baa0345123915f3
+- Gordion/Company Diagnosearbeit im Orbit wird übersprungen
+- SpawnableEnemyWithRarity wird nicht mehr über einen fehlenden Default-Konstruktor erzeugt
+- EnemyType/int-Konstruktor + Clone-Fallback
+- S1.42E DeclaredOnly LethalMin-State-Guard unverändert
+
+S1.42E Runtime:
+- Startup PASS
+- 4 deklarierte LethalMin Enemy-Methoden erfolgreich gepatcht
+- Jetpack Item Asset 50 -> 140 Sekunden gesetzt
+- Interaktionstest wegen 1-Sekunden-Freezes abgebrochen
+- Freeze-Ursache: 6x MissingMethodException pro Sekunde aus EnemyIsolation auf Gordion
+
+Erster S1.42F-Runtime-Gate:
+Main Menu -> Host -> Schiff im Orbit.
+Die periodischen Freezes müssen weg sein.
+
+Wenn smooth:
+im selben Run mit Baboon Hawk / Thumper / Puffer / Jetpack / Microwave fortfahren.
+
+Import:
+Gale -> Advanced options -> Import all files
+
+Runtime:
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42F
+LogOutput.log -> RuntimeInbox/Current/

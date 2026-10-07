@@ -1,0 +1,81 @@
+{
+    "schema_version":  1,
+    "purpose":  "Exact installed-V81 EntranceTeleport ID/opposite-side pairing and RoundManager exit-ID assignment evidence for Universal Interior Viability Phase C3",
+    "capture_utc":  "2026-09-20T20:15:35Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "pull_request":  138,
+    "pull_request_branch":  "scope/universal-interior-phase-c3a-dawn-tags",
+    "repository_pr_head_at_capture":  "da649b21e999b96dfac8357e3148cb1c919fe157",
+    "repository_main_at_capture":  "56355ff518ae4301a38d370be9561251f6f963c1",
+    "bound_prior_evidence":  "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json",
+    "source_assembly":  {
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll"
+                        },
+    "game_executable":  {
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+                            "logical_path":  "Lethal Company.exe"
+                        },
+    "steam":  {
+                  "manifest_review":  "AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md",
+                  "matches_prior_appmanifest":  false,
+                  "buildid":  "22825947",
+                  "appmanifest_sha256":  "132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e",
+                  "prior_appmanifest_sha256":  "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                  "app_id":  "1966720"
+              },
+    "decompiler":  {
+                       "types":  [
+                                     {
+                                         "full_local_type_source_sha256":  "f5c0790a76eddaab74129454f03fa7c2a36176e1759737395e76ee057567b6aa",
+                                         "type":  "RoundManager"
+                                     },
+                                     {
+                                         "full_local_type_source_sha256":  "50a07475d52b03e37c3de243834a38d862aa9921ddd7a92e3e1d4e09e2e9c48c",
+                                         "type":  "EntranceTeleport"
+                                     }
+                                 ],
+                       "tool":  "ilspycmd",
+                       "version":  "11.0.0.9375"
+                   },
+    "selection":  {
+                      "round_manager_required_methods":  [
+                                                             "SetExitIDs",
+                                                             "waitForMainEntranceTeleportToSpawn",
+                                                             "FindMainEntrancePosition"
+                                                         ],
+                      "entrance_teleport_selected_signatures":  [
+                                                                    "public void StartOpeningEntrance()",
+                                                                    "public void SyncStartOpeningDoorRpc()",
+                                                                    "public void FinishOpeningEntrance(bool playShutAudio = true)",
+                                                                    "public void SyncFinishOpeningEntranceRpc()",
+                                                                    "public bool FindExitPoint()",
+                                                                    "public void TeleportPlayer()",
+                                                                    "public void TeleportPlayerClientRpc(int playerObj)",
+                                                                    "private void Update()"
+                                                                ],
+                      "max_source_lines_per_type":  3000,
+                      "entrance_teleport_required_methods":  [
+                                                                 "FindExitPoint",
+                                                                 "TeleportPlayer"
+                                                             ],
+                      "direct_caller_depth":  1,
+                      "round_manager_selected_signatures":  [
+                                                                "public void SetLevelObjectVariables()",
+                                                                "private IEnumerator waitForMainEntranceTeleportToSpawn()",
+                                                                "private void SetExitIDs(Vector3 mainEntrancePosition)",
+                                                                "public static Vector3 FindMainEntrancePosition(bool getTeleportPosition = false, bool getOutsideEntrance = false)"
+                                                            ]
+                  },
+    "report":  {
+                   "sha256":  "5a44ffc7263989c475d18e53cd443e3a891682ee88ab49bdf7d6b36f87fbb0fe",
+                   "file":  "ENTRANCE_PAIRING_FOCUSED_DECOMPILE.txt",
+                   "excludes":  [
+                                    "game binaries",
+                                    "full type decompile",
+                                    "unrelated methods",
+                                    "absolute local paths",
+                                    "user names"
+                                ]
+               }
+}

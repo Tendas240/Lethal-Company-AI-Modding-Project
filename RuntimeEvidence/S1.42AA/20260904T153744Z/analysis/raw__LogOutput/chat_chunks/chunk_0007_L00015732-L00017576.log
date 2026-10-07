@@ -1,0 +1,1845 @@
+[15:36:33.4557258] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:33.4557258] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:33.4557258] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:33.4557258] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:33.4557258] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:33.4557258] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:33.4557258] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:33.4557258] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:33.4557258] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:33.4557258] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:33.4557258] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:33.4557258] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:33.4567266] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:33.4567266] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:33.4567266] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:34.4592534] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:34.4592534] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:34.4592534] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:34.4592534] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:34.4592534] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:34.4592534] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:34.4592534] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:34.4592534] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:34.4602580] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:34.4602580] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:34.4602580] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:34.4602580] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:34.4602580] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:34.4602580] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:34.4602580] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:34.4602580] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:34.4602580] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:34.4602580] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:34.4602580] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:34.4602580] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:34.4602580] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:34.4602580] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:34.4602580] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:34.4602580] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:34.4602580] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:34.5417326] [Debug  :   Coroner] Querying target player parameters pre-death...
+[15:36:34.5417326] [Debug  :   Coroner] Query successful!True
+[15:36:35.1502189] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[15:36:35.4640114] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:35.4640114] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:35.4640114] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:35.4640114] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:35.4640114] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:35.4640114] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:35.4640114] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:35.4650115] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:35.4650115] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:35.4650115] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:35.4650115] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:35.4655147] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:35.4655147] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:35.4655147] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:35.4655147] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:35.4655147] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:35.4655147] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:35.4655147] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:35.4655147] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:35.4655147] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:35.4655147] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:35.4655147] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:35.4655147] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:35.4655147] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:35.4655147] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:36.4722884] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:36.4722884] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:36.4722884] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:36.4722884] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:36.4722884] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:36.4722884] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:36.4722884] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:36.4722884] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:36.4732879] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:36.4732879] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:36.4732879] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:36.4732879] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:36.4732879] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:36.4732879] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:36.4732879] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:36.4732879] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:36.4732879] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:36.4732879] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:36.4732879] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:36.4732879] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:36.4732879] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:36.4732879] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:36.4732879] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:36.4732879] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:36.4732879] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:37.4747141] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:37.4747141] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:37.4747141] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:37.4747141] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:37.4747141] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:37.4747141] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:37.4747141] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:37.4757190] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:37.4757190] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:37.4757190] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:37.4757190] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:37.4757190] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:37.4757190] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:37.4757190] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:37.4757190] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:37.4757190] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:37.4757190] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:37.4757190] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:37.4757190] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:37.4757190] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:37.4757190] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:37.4757190] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:37.4757190] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:37.4757190] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:37.4757190] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:38.4810609] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:38.4810609] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:38.4810609] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:38.4810609] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:38.4810609] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:38.4810609] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:38.4810609] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:38.4810609] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:38.4810609] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:38.4810609] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:38.4810609] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:38.4810609] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:38.4810609] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:38.4810609] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:38.4810609] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:38.4810609] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:38.4810609] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:38.4810609] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:38.4810609] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:38.4810609] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:38.4810609] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:38.4823345] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:38.4823345] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:38.4823345] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:38.4823345] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:39.4837497] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:39.4837497] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:39.4842554] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:39.4842554] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:39.4842554] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:39.4842554] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:39.4842554] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:39.4842554] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:39.4847726] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:39.4847726] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:39.4847726] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:39.4847726] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:39.4847726] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:39.4847726] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:39.4847726] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:39.4847726] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:39.4847726] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:39.4847726] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:39.4847726] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:39.4847726] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:39.4847726] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:39.4847726] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:39.4847726] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:39.4847726] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:39.4847726] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:40.0832803] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-52359]
+[15:36:40.4936353] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:40.4936353] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:40.4936353] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:40.4936353] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:40.4951395] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:40.4951395] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:40.4951395] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:40.4951395] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:40.4951395] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:40.4951395] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:40.4951395] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:40.4951395] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:40.4951395] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:40.4951395] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:40.4951395] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:40.4951395] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:40.4951395] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:40.4961442] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:40.4961442] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:40.4961442] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:40.4961442] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:40.4961442] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:40.4961442] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:40.4961442] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:40.4961442] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:41.4967870] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:41.4967870] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:41.4967870] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:41.4967870] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:41.4967870] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:41.4967870] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:41.4967870] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:41.4967870] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:41.4977877] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:41.4977877] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:41.4977877] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:41.4977877] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:41.4977877] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:41.4977877] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:41.4977877] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:41.4977877] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:41.4977877] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:41.4977877] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:41.4977877] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:41.4977877] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:41.4977877] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:41.4977877] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:41.4977877] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:41.4977877] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:41.4977877] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:41.6235084] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-52540]
+[15:36:42.4964452] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:42.4964452] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:42.4964452] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:42.4964452] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:42.4964452] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:42.4964452] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:42.4964452] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:42.4974465] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:42.4974465] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:42.4974465] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:42.4974465] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:42.4974465] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:42.4974465] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:42.4974465] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:42.4974465] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:42.4974465] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:42.4974465] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:42.4974465] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:42.4974465] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:42.4974465] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:42.4974465] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:42.4974465] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:42.4974465] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:42.4974465] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:42.4974465] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:43.3205713] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-52745]
+[15:36:43.4995308] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:43.4995308] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:43.4995308] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:43.4995308] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:43.4995308] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:43.4995308] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:43.4995308] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:43.4995308] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:43.5005332] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:43.5005332] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:43.5005332] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:43.5005332] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:43.5005332] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:43.5005332] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:43.5005332] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:43.5005332] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:43.5005332] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:43.5005332] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:43.5005332] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:43.5005332] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:43.5005332] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:43.5005332] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:43.5005332] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:43.5005332] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:43.5005332] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:44.5035974] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:44.5035974] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:44.5035974] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:44.5035974] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:44.5035974] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:44.5035974] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:44.5035974] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:44.5051026] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:44.5051026] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:44.5051026] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:44.5051026] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:44.5051026] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:44.5051026] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:44.5051026] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:44.5051026] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:44.5051026] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:44.5051026] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:44.5051026] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:44.5051026] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:44.5051026] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:44.5051026] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:44.5051026] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:44.5051026] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:44.5051026] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:44.5061072] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:45.0170916] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-52926]
+[15:36:45.5081322] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:45.5081322] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:45.5096357] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:45.5096357] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:45.5096357] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:45.5096357] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:45.5096357] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:45.5096357] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:45.5106404] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:45.5106404] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:45.5106404] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:45.5106404] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:45.5106404] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:45.5106404] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:45.5106404] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:45.5106404] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:45.5116413] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:45.5116413] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:45.5116413] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:45.5116413] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:45.5116413] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:45.5116413] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:45.5126403] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:45.5126403] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:45.5126403] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:46.5123709] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:46.5123709] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:46.5123709] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:46.5133716] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:46.5133716] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:46.5133716] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:46.5133716] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:46.5133716] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:46.5133716] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:46.5133716] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:46.5133716] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:46.5133716] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:46.5133716] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:46.5133716] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:46.9468627] [Debug  : LethalMin] Purple Pikmin_QjV3t: Removed Leader
+[15:36:46.9468627] [Debug  : LethalMin] Purple Pikmin_QjV3t: Setting collision mode to 1
+[15:36:46.9478625] [Info   : LethalMin] Purple Pikmin_QjV3t: Assigned Leader: MasaeAhmya (0)
+[15:36:47.0275866] [Debug  :   Coroner] Querying target player parameters pre-death...
+[15:36:47.0275866] [Debug  :   Coroner] Query successful!True
+[15:36:47.1852467] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-53127]
+[15:36:47.5135283] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:47.5135283] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:47.5135283] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:47.5150317] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:47.5150317] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:47.5150317] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:47.5150317] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:47.5150317] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:47.5150317] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:47.5150317] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:47.5150317] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:47.5150317] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:47.5150317] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:47.5150317] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:47.5150317] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:47.5150317] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:47.5150317] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:47.5150317] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:47.5150317] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:47.5150317] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:47.5150317] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:47.5160375] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:47.5160375] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:47.5160375] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:47.5160375] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:48.5240307] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:48.5240307] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:48.5240307] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:48.5240307] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:48.5240307] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:48.5240307] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:48.5240307] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:48.5240307] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:48.5250318] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:48.5250318] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:48.5250318] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:48.5250318] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:48.5250318] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:48.5250318] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:48.5250318] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:48.5250318] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:48.5250318] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:48.5250318] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:48.5250318] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:48.5250318] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:48.5250318] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:48.5250318] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:48.5255393] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:48.5255393] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:48.5255393] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:48.8600085] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[15:36:48.9294414] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-53320]
+[15:36:49.5276331] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:49.5276331] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:49.5276331] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:49.5276331] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:49.5276331] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:49.5276331] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:49.5276331] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:49.5276331] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:49.5286333] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:49.5286333] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:49.5286333] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:49.5286333] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:49.5286333] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:49.5286333] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:49.5286333] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:49.5286333] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:49.5286333] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:49.5286333] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:49.5286333] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:49.5286333] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:49.5286333] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:49.5286333] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:49.5286333] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:49.5286333] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:49.5286333] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:50.5355912] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:50.5355912] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:50.5355912] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:50.5355912] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:50.5355912] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:50.5355912] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:50.5355912] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:50.5355912] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:50.5365961] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:50.5365961] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:50.5365961] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:50.5365961] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:50.5365961] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:50.5365961] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:50.5365961] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:50.5365961] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:50.5365961] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:50.5365961] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:50.5365961] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:50.5365961] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:50.5365961] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:50.5365961] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:50.5365961] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:50.5365961] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:50.5365961] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:50.6152341] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-53512]
+[15:36:51.5361459] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:51.5361459] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:51.5361459] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:51.5361459] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:51.5361459] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:51.5361459] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:51.5361459] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:51.5371455] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:51.5371455] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:51.5371455] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:51.5371455] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:51.5371455] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:51.5371455] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:51.5371455] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:51.5371455] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:51.5371455] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:51.5371455] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:51.5371455] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:51.5371455] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:51.5371455] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:51.5371455] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:51.5371455] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:51.5381445] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:51.5381445] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:51.5381445] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:52.3161874] [Debug  :   Coroner] Querying target player parameters pre-death...
+[15:36:52.3161874] [Debug  :   Coroner] Query successful!True
+[15:36:52.3236984] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-53708]
+[15:36:52.5382183] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:52.5382183] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:52.5382183] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:52.5382183] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:52.5382183] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:52.5382183] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:52.5382183] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:52.5382183] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:52.5382183] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:52.5382183] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:52.5382183] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:52.5382183] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:52.5382183] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:52.5382183] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:52.5382183] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:52.5382183] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:52.5382183] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:52.5382183] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:52.5382183] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:52.5382183] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:52.5382183] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:52.5382183] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:52.5397218] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:52.5397218] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:52.5397218] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:53.5413374] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:53.5413374] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:53.5413374] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:53.5413374] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:53.5413374] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:53.5413374] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:53.5413374] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:53.5413374] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:53.5413374] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:53.5413374] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:53.5413374] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:53.5413374] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:53.5413374] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:53.5413374] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:53.5413374] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:53.5423378] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:53.5423378] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:53.5423378] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:53.5423378] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:53.5423378] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:53.5423378] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:53.5423378] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:53.5423378] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:53.5423378] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:53.5423378] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:53.7861834] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-53891]
+[15:36:54.5415045] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:54.5415045] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:54.5415045] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:54.5415045] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:54.5415045] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:54.5415045] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:54.5415045] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:54.5425067] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:54.5425067] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:54.5425067] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:54.5425067] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:54.5425067] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:54.5425067] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:54.5425067] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:54.5425067] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:54.5425067] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:54.5425067] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:54.5425067] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:54.5425067] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:54.5425067] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:54.5425067] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:54.5425067] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:54.5435051] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:54.5435051] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:54.5435051] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:55.5294159] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-54078]
+[15:36:55.5469455] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:55.5469455] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:55.5479452] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:55.5479452] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:55.5479452] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:55.5479452] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:55.5479452] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:55.5479452] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:55.5479452] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:55.5479452] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:55.5479452] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:55.5479452] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:55.5479452] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:55.5479452] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:55.6703648] [Debug  :   Coroner] Querying target player parameters pre-death...
+[15:36:55.6703648] [Debug  :   Coroner] Query successful!True
+[15:36:56.5495295] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:56.5495295] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:56.5495295] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:56.5495295] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:56.5495295] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:56.5495295] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:56.5495295] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:56.5495295] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:56.5505345] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:56.5505345] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:56.5505345] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:56.5505345] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:56.5505345] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:56.5505345] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:56.5505345] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:56.5505345] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:56.5505345] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:56.5505345] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:56.5505345] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:56.5505345] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:56.5505345] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:56.5505345] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:56.5505345] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:56.5505345] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:56.5505345] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:57.5252146] [Info   : Unity Log] HoarderBug(Clone) : Setting target object and going towards it. [NCS:180-54278]
+[15:36:57.5576440] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:57.5576440] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:57.5576440] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:57.5576440] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:57.5576440] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:57.5576440] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:57.5576440] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:57.5576440] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:57.5591484] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:57.5591484] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:57.5591484] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:57.5591484] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:57.5591484] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:57.5591484] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:57.5591484] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:57.5591484] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:57.5591484] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:57.5591484] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:57.5591484] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:57.5591484] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:57.5591484] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:57.5591484] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:57.5591484] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:57.5591484] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:57.5591484] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:57.8152915] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player took damage (Health: 70)
+[15:36:58.1474228] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[15:36:58.3507417] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player took damage (Health: 60)
+[15:36:58.5598822] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:58.5598822] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:58.5598822] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:58.5598822] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:58.5598822] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:58.5598822] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:58.5598822] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:58.5598822] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:58.5598822] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:58.5598822] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:58.5598822] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:58.5598822] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:58.5598822] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:58.5598822] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:58.5598822] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:58.5598822] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:58.5598822] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:58.5598822] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:58.5598822] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:58.5598822] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:58.5598822] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:58.5609738] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:58.5609738] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:58.5609738] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:58.5609738] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:58.8106043] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player took damage (Health: 50)
+[15:36:59.4318117] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player took damage (Health: 20)
+[15:36:59.5584379] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:36:59.5584379] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:36:59.5584379] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:59.5584379] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:59.5584379] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:59.5584379] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:59.5584379] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:59.5584379] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:59.5584379] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:59.5584379] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:59.5584379] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:36:59.5584379] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:36:59.5584379] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:36:59.5584379] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:36:59.5584379] [Debug  : LethalMin] Generated Route Nodes: 
+[15:36:59.5584379] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:36:59.5584379] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:36:59.5584379] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:59.5594370] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:59.5594370] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:59.5594370] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:36:59.5594370] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:36:59.5594370] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:36:59.5594370] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:36:59.5594370] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:00.1828269] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player took damage (Health: 11)
+[15:37:00.5634939] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:37:00.5634939] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:37:00.5634939] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:00.5634939] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:00.5634939] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:00.5634939] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:00.5634939] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:00.5634939] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:00.5644933] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:00.5644933] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:00.5644933] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:00.5644933] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:37:00.5644933] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:37:00.5644933] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:37:00.5644933] [Debug  : LethalMin] Generated Route Nodes: 
+[15:37:00.5644933] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:37:00.5644933] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:00.5644933] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:00.5644933] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:00.5644933] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:00.5644933] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:00.5644933] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:00.5644933] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:00.5644933] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:00.5644933] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:00.6405905] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player took damage (Health: 1)
+[15:37:01.5718243] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:37:01.5718243] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:37:01.5718243] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:01.5718243] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:01.5718243] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:01.5718243] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:01.5718243] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:01.5718243] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:01.5718243] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:01.5718243] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:01.5718243] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:01.5718243] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:37:01.5718243] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:37:01.5718243] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:37:01.5718243] [Debug  : LethalMin] Generated Route Nodes: 
+[15:37:01.5718243] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:37:01.5718243] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:01.5728277] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:01.5728277] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:01.5728277] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:01.5728277] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:01.5728277] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:01.5728277] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:01.5728277] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:01.5728277] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:02.5774514] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:37:02.5774514] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:37:02.5774514] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:02.5774514] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:02.5774514] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:02.5774514] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:02.5784524] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:02.5784524] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:02.5784524] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:02.5784524] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:02.5784524] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:02.5784524] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:37:02.5784524] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:37:02.5784524] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:37:02.5784524] [Debug  : LethalMin] Generated Route Nodes: 
+[15:37:02.5784524] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:37:02.5784524] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:02.5784524] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:02.5784524] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:02.5784524] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:02.5784524] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:02.5784524] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:02.5784524] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:02.5784524] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:02.5784524] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:03.5829540] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:37:03.5829540] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:37:03.5829540] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:03.5839532] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:03.5839532] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:03.5839532] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:37:03.5839532] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:37:03.5839532] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:37:03.5839532] [Debug  : LethalMin] Generated Route Nodes: 
+[15:37:03.5839532] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:37:03.5839532] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:03.5839532] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:03.5839532] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:03.5839532] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:03.9240035] [Debug  :   Coroner] Player is dying! Unknown precise cause of death in final hook (Crushing)...
+[15:37:03.9260254] [Debug  : LethalMin] Purple Pikmin_rKa2: Setting to idle on local client
+[15:37:03.9260254] [Debug  : LethalMin] Purple Pikmin_rKa2: Removed Leader
+[15:37:03.9270292] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Setting to idle on local client
+[15:37:03.9270292] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Removed Leader
+[15:37:03.9270292] [Debug  : LethalMin] Purple Pikmin_EKPWp: Setting to idle on local client
+[15:37:03.9270292] [Debug  : LethalMin] Purple Pikmin_EKPWp: Removed Leader
+[15:37:03.9280292] [Debug  : LethalMin] Purple Pikmin_evzc4: Setting to idle on local client
+[15:37:03.9280292] [Debug  : LethalMin] Purple Pikmin_evzc4: Removed Leader
+[15:37:03.9280292] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Setting to idle on local client
+[15:37:03.9280292] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Removed Leader
+[15:37:03.9280292] [Debug  : LethalMin] Purple Pikmin_bRqe: Setting to idle on local client
+[15:37:03.9280292] [Debug  : LethalMin] Purple Pikmin_bRqe: Removed Leader
+[15:37:03.9280292] [Debug  : LethalMin] Purple Pikmin_4WYiK: Setting to idle on local client
+[15:37:03.9280292] [Debug  : LethalMin] Purple Pikmin_4WYiK: Removed Leader
+[15:37:03.9280292] [Debug  : LethalMin] White Pikmin_deVvFe: Setting to idle on local client
+[15:37:03.9280292] [Debug  : LethalMin] White Pikmin_deVvFe: Removed Leader
+[15:37:03.9280292] [Debug  : LethalMin] White Pikmin_Md8MI: Setting to idle on local client
+[15:37:03.9280292] [Debug  : LethalMin] White Pikmin_Md8MI: Removed Leader
+[15:37:03.9280292] [Debug  : LethalMin] White Pikmin_ddF5L: Setting to idle on local client
+[15:37:03.9280292] [Debug  : LethalMin] White Pikmin_ddF5L: Removed Leader
+[15:37:03.9295352] [Debug  : LethalMin] White Pikmin_2FoB: Setting to idle on local client
+[15:37:03.9295352] [Debug  : LethalMin] White Pikmin_2FoB: Removed Leader
+[15:37:03.9295352] [Debug  : LethalMin] White Pikmin_FjliuFV: Setting to idle on local client
+[15:37:03.9295352] [Debug  : LethalMin] White Pikmin_FjliuFV: Removed Leader
+[15:37:03.9295352] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Setting to idle on local client
+[15:37:03.9295352] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Removed Leader
+[15:37:03.9295352] [Debug  : LethalMin] White Pikmin_TzDCc: Setting to idle on local client
+[15:37:03.9295352] [Debug  : LethalMin] White Pikmin_TzDCc: Removed Leader
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_Gono4bn: Setting to idle on local client
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_Gono4bn: Removed Leader
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_u7yjpLI: Setting to idle on local client
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_u7yjpLI: Removed Leader
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_tbmIr: Setting to idle on local client
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_tbmIr: Removed Leader
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_XWR5u2K: Setting to idle on local client
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_XWR5u2K: Removed Leader
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_yExgK: Setting to idle on local client
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_yExgK: Removed Leader
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_YV0Gw: Setting to idle on local client
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_YV0Gw: Removed Leader
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_68JLiBF: Setting to idle on local client
+[15:37:03.9305397] [Debug  : LethalMin] White Pikmin_68JLiBF: Removed Leader
+[15:37:03.9305397] [Debug  : LethalMin] Purple Pikmin_QjV3t: Setting to idle on local client
+[15:37:03.9305397] [Debug  : LethalMin] Purple Pikmin_QjV3t: Removed Leader
+[15:37:03.9315393] [Info   : Unity Log] KILL LOCAL PLAYER!
+[15:37:03.9345402] [Info   : Unity Log] Body spawned with id 0: PlayerRagdoll(Clone)
+[15:37:03.9345402] [Warning: Unity Log] Setting linear velocity of a kinematic body is not supported.
+[15:37:03.9462303] [Info   : Unity Log] Running kill player function for LOCAL client, player object: Player
+[15:37:03.9497329] [Debug  :ainavt.lc.lethalconfig] Registered config "Matty's Fixes/Vanilla/Body"
+[15:37:03.9507378] [Debug  : LethalMin] IsClientRpcPrefixValid (No): RpcExecStage is Send, IsClient: True, IsHost: True KillPlayerClientRpcPrefix
+[15:37:03.9507378] [Debug  : LethalMin] IsClientRpcPrefixValid (Yes): RpcExecStage is Execute, IsClient: True, IsHost: True KillPlayerClientRpcPrefix
+[15:37:03.9507378] [Info   : Unity Log] A player died. player object: Player
+[15:37:03.9537388] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[15:37:03.9537388] [Info   : Unity Log] Switch camera to 'SpectateCamera'
+[15:37:03.9537388] [Info   : Unity Log] Override drop items : False; overridedontspawnbody: False
+[15:37:03.9537388] [Info   : Unity Log] DropAllHeldItems called on player 'MasaeAhmya'; itemsFall: True; disconnecting: False; ItemSlots length: 11; isHoldingObject: False
+[15:37:03.9537388] [Info   : Unity Log] DropAllHeldItems; player pos: (-62.26, -159.03, -48.71)
+[15:37:03.9537388] [Info   : Unity Log] Item slot #0 null?: True
+[15:37:03.9537388] [Info   : Unity Log] Item slot #1 null?: True
+[15:37:03.9537388] [Info   : Unity Log] Item slot #2 null?: True
+[15:37:03.9537388] [Info   : Unity Log] Item slot #3 null?: True
+[15:37:03.9537388] [Info   : Unity Log] Item slot #4 null?: False
+[15:37:03.9537388] [Info   : Unity Log] Setting DropHeldItem on item #4: 'FlashlightItem(Clone)
+[15:37:03.9537388] [Info   : Unity Log] Drop item 'FlashlightItem(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[15:37:03.9557563] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[15:37:03.9557563] [Info   : Unity Log] Set dropItem parentObject to null True
+[15:37:03.9557563] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[15:37:03.9557563] [Info   : Unity Log] DropHeldItem A; placeObject:False (-45.02, -166.50, -32.10); item parent: Props (UnityEngine.Transform); (-45.02, -166.50, -32.10); (-62.46, -158.89, -48.57)
+[15:37:03.9557563] [Debug  : LightsOut] DiscardItem Pro-flashlight
+[15:37:03.9577641] [Info   : Unity Log] Set dropItem parentObject to null True
+[15:37:03.9577641] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[15:37:03.9577641] [Info   : Unity Log] Item slot #5 null?: True
+[15:37:03.9577641] [Info   : Unity Log] Item slot #6 null?: True
+[15:37:03.9577641] [Info   : Unity Log] Item slot #7 null?: True
+[15:37:03.9577641] [Info   : Unity Log] Item slot #8 null?: True
+[15:37:03.9577641] [Info   : Unity Log] Item slot #9 null?: True
+[15:37:03.9577641] [Info   : Unity Log] Item slot #10 null?: False
+[15:37:03.9577641] [Info   : Unity Log] Setting DropHeldItem on item #10: 'Key(Clone)
+[15:37:03.9577641] [Info   : Unity Log] Drop item 'Key(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[15:37:03.9577641] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[15:37:03.9577641] [Info   : Unity Log] Set dropItem parentObject to null True
+[15:37:03.9577641] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[15:37:03.9577641] [Info   : Unity Log] DropHeldItem A; placeObject:False (-45.71, -166.19, -32.47); item parent: Props (UnityEngine.Transform); (-45.71, -166.19, -32.47); (-63.15, -158.58, -48.94)
+[15:37:03.9577641] [Debug  : LightsOut] DiscardItem Key
+[15:37:03.9577641] [Info   : Unity Log] Set dropItem parentObject to null True
+[15:37:03.9577641] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[15:37:03.9577641] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[15:37:03.9618107] [Info   :LethalPerformance.Patcher] Saved 1 config(s)
+[15:37:03.9628109] [Debug  :Matty's Fixes] Vanilla/Body(620) needs to compute vertical offset - scheduled
+[15:37:03.9628109] [Info   : LethalMin] Creating PikminItemNode for RagdollGrabbableObject(Clone) at (-17.22, 9.55, -30.56)...
+[15:37:03.9638101] [Debug  : LethalMin] Initializing PikminItem PikminItemNode(Clone) with item PikminItemNode(Clone) (True)
+[15:37:03.9638101] [Info   : LethalMin] PikminItem PikminItemNode(Clone) has no carry strength set, setting to default
+[15:37:03.9638101] [Debug  : LethalMin] Calculated weight for Body: 11 lb, Devided weight: 4.4 lb
+[15:37:03.9638101] [Debug  : LethalMin] A True, B True rename reasons
+[15:37:03.9638101] [Debug  : LethalMin] (Body (PikminItem Node)) Colider: RagdollGrabbableObject(Clone) (UnityEngine.BoxCollider)
+[15:37:03.9638101] [Debug  : LethalMin] (Body (PikminItem Node)) Center: (-17.22, 9.55, -30.56)
+[15:37:03.9938542] [Info   : Unity Log] PlayerScript set for body with id 0 PlayerRagdoll(Clone)
+[15:37:03.9963627] [Debug  :Buttery Fixes] Badges added to player corpse
+[15:37:04.0183999] [Info   : Unity Log] !!!! DISABLING CAMERA FOR PLAYER: Player
+[15:37:04.0183999] [Info   : Unity Log] !!!! connectedPlayersAmount: 0
+[15:37:04.0183999] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player has died
+[15:37:04.0183999] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited facility
+[15:37:04.0309408] [Debug  : LethalMin] Animator Controller changed from metarig to metarigOtherPlayers
+[15:37:04.0329398] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: GiftBox(Clone)
+[15:37:04.0329398] [Info   : LethalMin] White Pikmin_Lw2dTVF: targeting item GiftBox(Clone) at GrabPosition_3
+[15:37:04.0329398] [Info   : LethalMin] White Pikmin_Lw2dTVF: Setting current task to CarryItem
+[15:37:04.0329398] [Debug  : LethalMin] Creating counter for Body (PikminItem Node)
+[15:37:04.0409650] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Insane to 1945
+[15:37:04.0409650] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryBad to 320
+[15:37:04.0409650] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Bad to 1072
+[15:37:04.0409650] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Neutral to 1015
+[15:37:04.0409650] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Good to 2141
+[15:37:04.0409650] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryGood to 1012
+[15:37:04.0409650] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Rare to 2681
+[15:37:04.0409650] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Remove to 1003
+[15:37:04.0529912] [Info   :BrutalCompanyMinusExtraReborn] Executing OnShipLeave for all events()
+[15:37:04.0539927] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[15:37:04.0539927] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[15:37:04.0539927] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[15:37:04.0539927] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[15:37:04.0554982] [Info   :BrutalCompanyMinusExtraReborn] Restoring un-modified level enemy spawns on current level.
+[15:37:04.0560156] [Info   : LethalMin] Game Ended, Deinitializing PikminManager
+[15:37:04.0560156] [Info   : Unity Log] [F] The ship is leaving.................
+[15:37:04.0560156] [Info   :HerobrineMod] The ship is leaving.................
+[15:37:04.0665469] [Debug  :Matty's Fixes] Vanilla/Body(620) is computing vertical offset
+[15:37:04.0665469] [Debug  :Matty's Fixes] Vanilla/Body original offset is 0.3
+[15:37:04.0917809] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship has taken off
+[15:37:04.0917809] [Debug  :PizzaTowerEscapeMusic ScriptManager] Conditions for a script event have been met!
+ Script Event Type: StopMusic
+   Game Event Type: ShipTakeOff
+           Comment: StopMusic quand ShipTakeOff
+[15:37:04.0937804] [Info   : LethalMin] White Pikmin_Md8MI: Found item: GiftBox(Clone)
+[15:37:04.0937804] [Info   : LethalMin] White Pikmin_Md8MI: targeting item GiftBox(Clone) at GrabPosition_6
+[15:37:04.0937804] [Info   : LethalMin] White Pikmin_Md8MI: Setting current task to CarryItem
+[15:37:04.0937804] [Info   : LethalMin] White Pikmin_yExgK: Found item: GiftBox(Clone)
+[15:37:04.0937804] [Info   : LethalMin] White Pikmin_yExgK: targeting item GiftBox(Clone) at GrabPosition_5
+[15:37:04.0952860] [Info   : LethalMin] White Pikmin_yExgK: Setting current task to CarryItem
+[15:37:04.1462012] [Info   : LethalMin] Purple Pikmin_QjV3t: Found item: FlashlightItem(Clone)
+[15:37:04.1462012] [Info   : LethalMin] Purple Pikmin_QjV3t: targeting item FlashlightItem(Clone) at GrabPosition_1
+[15:37:04.1462012] [Info   : LethalMin] Purple Pikmin_QjV3t: Setting current task to CarryItem
+[15:37:04.1462012] [Info   : LethalMin] Purple Pikmin_rKa2: Found item: FlashlightItem(Clone)
+[15:37:04.1472043] [Info   : LethalMin] Purple Pikmin_rKa2: targeting item FlashlightItem(Clone) at GrabPosition_0
+[15:37:04.1472043] [Info   : LethalMin] Purple Pikmin_rKa2: Setting current task to CarryItem
+[15:37:04.1472043] [Info   : LethalMin] Purple Pikmin_y8qD5r: Found item: FlashlightItem(Clone)
+[15:37:04.1472043] [Info   : LethalMin] Purple Pikmin_y8qD5r: targeting item FlashlightItem(Clone) at GrabPosition_2
+[15:37:04.1472043] [Info   : LethalMin] Purple Pikmin_y8qD5r: Setting current task to CarryItem
+[15:37:04.1472043] [Info   : LethalMin] Purple Pikmin_EKPWp: Found item: FlashlightItem(Clone)
+[15:37:04.1472043] [Info   : LethalMin] Purple Pikmin_EKPWp: targeting item FlashlightItem(Clone) at GrabPosition_3
+[15:37:04.1472043] [Info   : LethalMin] Purple Pikmin_EKPWp: Setting current task to CarryItem
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_ddF5L: Found item: FlashlightItem(Clone)
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_2FoB: Found item: GiftBox(Clone)
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_2FoB: targeting item GiftBox(Clone) at GrabPosition_4
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_2FoB: Setting current task to CarryItem
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: GiftBox(Clone)
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_Gono4bn: targeting item GiftBox(Clone) at GrabPosition_2
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_Gono4bn: Setting current task to CarryItem
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_tbmIr: Found item: GiftBox(Clone)
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_tbmIr: targeting item GiftBox(Clone) at GrabPosition_7
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_tbmIr: Setting current task to CarryItem
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_XWR5u2K: Found item: GiftBox(Clone)
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_XWR5u2K: targeting item GiftBox(Clone) at GrabPosition_8
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_XWR5u2K: Setting current task to CarryItem
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_YV0Gw: Found item: GiftBox(Clone)
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_YV0Gw: targeting item GiftBox(Clone) at GrabPosition_1
+[15:37:04.1472043] [Info   : LethalMin] White Pikmin_YV0Gw: Setting current task to CarryItem
+[15:37:04.1612488] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 0
+[15:37:04.1612488] [Info   : LethalMin] Purple Pikmin_bRqe: Found item: FlashlightItem(Clone)
+[15:37:04.1612488] [Info   : LethalMin] White Pikmin_deVvFe: Found item: FlashlightItem(Clone)
+[15:37:04.1612488] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: FlashlightItem(Clone)
+[15:37:04.1612488] [Info   : LethalMin] White Pikmin_TzDCc: Found item: FlashlightItem(Clone)
+[15:37:04.1612488] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: FlashlightItem(Clone)
+[15:37:04.1612488] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: FlashlightItem(Clone)
+[15:37:04.2183403] [Info   : LethalMin] White Pikmin_Lw2dTVF: Grabbed item GiftBox(Clone) Speed is now: 2.314286
+[15:37:04.2253537] [Message: LethalMin] GiftBox(Clone) Switched Primary Pikmin to White Pikmin_Lw2dTVF
+[15:37:04.2832636] [Info   : LethalMin] Purple Pikmin_51w0Zom: Found item: FlashlightItem(Clone)
+[15:37:04.2832636] [Info   : LethalMin] Purple Pikmin_4WYiK: Found item: FlashlightItem(Clone)
+[15:37:04.2927583] [Info   : LethalMin] Purple Pikmin_evzc4: Found item: FlashlightItem(Clone)
+[15:37:04.3012990] [Info   : LethalMin] White Pikmin_yExgK: Grabbed item GiftBox(Clone) Speed is now: 4.128572
+[15:37:04.3481886] [Info   : LethalMin] Purple Pikmin_rKa2: Grabbed item FlashlightItem(Clone) Speed is now: 4.25
+[15:37:04.3496956] [Info   : LethalMin] White Pikmin_Gono4bn: Grabbed item GiftBox(Clone) Speed is now: 5.942857
+[15:37:04.3562109] [Message: LethalMin] FlashlightItem(Clone) Switched Primary Pikmin to Purple Pikmin_rKa2
+[15:37:04.3637760] [Info   : LethalMin] FlashlightItem(Clone) is grabbing an item on local client
+[15:37:04.3637760] [Debug  : LethalMin] Purple Pikmin_rKa2: Setting collision mode to 1
+[15:37:04.3662863] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:04.3662863] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 237.6924
+[15:37:04.3672884] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 226.7084
+[15:37:04.3672884] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[15:37:04.3672884] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 237.6924
+[15:37:04.3682878] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 226.7084
+[15:37:04.3682878] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[15:37:04.3682878] [Info   : LethalMin] FlashlightItem(Clone) successfully created a test route to the ToShip
+[15:37:04.3682878] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:04.3682878] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 237.6924
+[15:37:04.3682878] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 226.7084
+[15:37:04.3682878] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[15:37:04.3682878] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 237.6924
+[15:37:04.3697942] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 226.7084
+[15:37:04.3697942] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[15:37:04.3697942] [Info   : LethalMin] FlashlightItem(Clone) has created a route
+[15:37:04.3697942] [Info   : LethalMin] GiftBox(Clone) is grabbing an item on local client
+[15:37:04.3697942] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Setting collision mode to 1
+[15:37:04.3708009] [Debug  : LethalMin] White Pikmin_yExgK: Setting collision mode to 0
+[15:37:04.3718005] [Debug  : LethalMin] White Pikmin_Gono4bn: Setting collision mode to 0
+[15:37:04.3727985] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:04.3727985] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 240.642
+[15:37:04.3727985] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 229.658
+[15:37:04.3727985] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[15:37:04.3737995] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 240.642
+[15:37:04.3737995] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 229.658
+[15:37:04.3737995] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[15:37:04.3737995] [Info   : LethalMin] GiftBox(Clone) successfully created a test route to the ToShip
+[15:37:04.3737995] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:04.3737995] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 240.642
+[15:37:04.3737995] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 229.658
+[15:37:04.3737995] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[15:37:04.3737995] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 240.642
+[15:37:04.3753021] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 229.658
+[15:37:04.3753021] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[15:37:04.3753021] [Info   : LethalMin] GiftBox(Clone) has created a route
+[15:37:04.3753021] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Setting collision mode to 0
+[15:37:04.3763067] [Info   : LethalMin] Purple Pikmin_y8qD5r: Grabbed item FlashlightItem(Clone) Speed is now: 8
+[15:37:04.3763067] [Info   : LethalMin] White Pikmin_ddF5L: Found item: Key(Clone)
+[15:37:04.3763067] [Info   : LethalMin] White Pikmin_ddF5L: targeting item Key(Clone) at GrabPosition_0
+[15:37:04.3763067] [Info   : LethalMin] White Pikmin_ddF5L: Setting current task to CarryItem
+[15:37:04.3763067] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: Key(Clone)
+[15:37:04.3763067] [Info   : LethalMin] White Pikmin_FjliuFV: targeting item Key(Clone) at GrabPosition_1
+[15:37:04.3763067] [Info   : LethalMin] White Pikmin_FjliuFV: Setting current task to CarryItem
+[15:37:04.3763067] [Info   : LethalMin] White Pikmin_TzDCc: Found item: Key(Clone)
+[15:37:04.3763067] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Key(Clone)
+[15:37:04.3883257] [Info   : LethalMin] Purple Pikmin_bRqe: Found item: Key(Clone)
+[15:37:04.3883257] [Info   : LethalMin] White Pikmin_deVvFe: Found item: Key(Clone)
+[15:37:04.3998793] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: Key(Clone)
+[15:37:04.4882346] [Info   : LethalMin] Purple Pikmin_51w0Zom: Found item: Key(Clone)
+[15:37:04.4882346] [Info   : LethalMin] Purple Pikmin_4WYiK: Found item: Key(Clone)
+[15:37:04.4952505] [Info   : LethalMin] Purple Pikmin_evzc4: Found item: Key(Clone)
+[15:37:04.5027651] [Debug  : LethalMin] White Pikmin_Md8MI: Setting collision mode to 0
+[15:37:04.5037632] [Info   : LethalMin] White Pikmin_Md8MI: Grabbed item GiftBox(Clone) Speed is now: 7.757143
+[15:37:04.5574867] [Debug  : LethalMin] Purple Pikmin_QjV3t: Setting collision mode to 0
+[15:37:04.5574867] [Info   : LethalMin] Purple Pikmin_QjV3t: Grabbed item FlashlightItem(Clone) Speed is now: 9.275
+[15:37:04.5574867] [Debug  : LethalMin] Purple Pikmin_EKPWp: Setting collision mode to 0
+[15:37:04.5574867] [Info   : LethalMin] Purple Pikmin_EKPWp: Grabbed item FlashlightItem(Clone) Speed is now: 13.025
+[15:37:04.5584869] [Debug  : LethalMin] White Pikmin_XWR5u2K: Setting collision mode to 0
+[15:37:04.5584869] [Info   : LethalMin] White Pikmin_XWR5u2K: Grabbed item GiftBox(Clone) Speed is now: 9.571428
+[15:37:04.5675286] [Info   : LethalMin] White Pikmin_TzDCc: Found item: Key(Clone)
+[15:37:04.5755278] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Key(Clone)
+[15:37:04.5755278] [Debug  : LethalMin] White Pikmin_tbmIr: Setting collision mode to 0
+[15:37:04.5755278] [Info   : LethalMin] White Pikmin_tbmIr: Grabbed item GiftBox(Clone) Speed is now: 11.38571
+[15:37:04.5755278] [Debug  : LethalMin] White Pikmin_YV0Gw: Setting collision mode to 0
+[15:37:04.5755278] [Info   : LethalMin] White Pikmin_YV0Gw: Grabbed item GiftBox(Clone) Speed is now: 13.2
+[15:37:04.5827374] [Info   : LethalMin] White Pikmin_ddF5L: Grabbed item Key(Clone) Speed is now: 13.2
+[15:37:04.5827374] [Info   : LethalMin] White Pikmin_FjliuFV: Grabbed item Key(Clone) Speed is now: 25.9
+[15:37:04.5927526] [Message: LethalMin] Key(Clone) Switched Primary Pikmin to White Pikmin_ddF5L
+[15:37:04.5937533] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:37:04.5937533] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:37:04.5937533] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:04.5937533] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:04.5937533] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:04.5937533] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:04.5937533] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:04.5937533] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:04.5937533] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:04.5937533] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:04.5937533] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:04.5937533] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:37:04.5937533] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:37:04.5937533] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:37:04.5937533] [Debug  : LethalMin] Generated Route Nodes: 
+[15:37:04.5937533] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:37:04.5937533] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:04.5937533] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:04.5937533] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:04.5937533] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:04.5937533] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:04.5937533] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:04.5952569] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:04.5952569] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:04.5952569] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:04.6072790] [Info   : LethalMin] Key(Clone) is grabbing an item on local client
+[15:37:04.6072790] [Debug  : LethalMin] White Pikmin_ddF5L: Setting collision mode to 1
+[15:37:04.6072790] [Debug  : LethalMin] White Pikmin_FjliuFV: Setting collision mode to 0
+[15:37:04.6072790] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:04.6072790] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 238.2474
+[15:37:04.6072790] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 227.2634
+[15:37:04.6072790] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[15:37:04.6087828] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 238.2474
+[15:37:04.6087828] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 227.2634
+[15:37:04.6087828] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[15:37:04.6087828] [Info   : LethalMin] Key(Clone) successfully created a test route to the ToShip
+[15:37:04.6087828] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:04.6097873] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 238.2474
+[15:37:04.6097873] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 227.2634
+[15:37:04.6097873] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[15:37:04.6107872] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 238.2474
+[15:37:04.6107872] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 227.2634
+[15:37:04.6107872] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[15:37:04.6107872] [Info   : LethalMin] Key(Clone) has created a route
+[15:37:04.6228033] [Info   : LethalMin] White Pikmin_deVvFe: Found item: Body (PikminItem Node)
+[15:37:04.6228033] [Info   : LethalMin] White Pikmin_deVvFe: targeting item Body (PikminItem Node) at GrabPosition_5
+[15:37:04.6228033] [Info   : LethalMin] White Pikmin_deVvFe: Setting current task to CarryItem
+[15:37:04.6228033] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: Body (PikminItem Node)
+[15:37:04.6228033] [Info   : LethalMin] White Pikmin_68JLiBF: targeting item Body (PikminItem Node) at GrabPosition_2
+[15:37:04.6228033] [Info   : LethalMin] White Pikmin_68JLiBF: Setting current task to CarryItem
+[15:37:04.6960307] [Info   : LethalMin] Purple Pikmin_51w0Zom: Found item: GiftBox(Clone)
+[15:37:04.6960307] [Info   : LethalMin] Purple Pikmin_51w0Zom: targeting item GiftBox(Clone) at GrabPosition_0
+[15:37:04.6960307] [Info   : LethalMin] Purple Pikmin_51w0Zom: Setting current task to CarryItem
+[15:37:04.7093042] [Info   : LethalMin] Purple Pikmin_4WYiK: Found item: GiftBox(Clone)
+[15:37:04.7093042] [Info   : LethalMin] Purple Pikmin_4WYiK: targeting item GiftBox(Clone) at GrabPosition_13
+[15:37:04.7093042] [Info   : LethalMin] Purple Pikmin_4WYiK: Setting current task to CarryItem
+[15:37:04.7299572] [Info   : LethalMin] Purple Pikmin_evzc4: Found item: GiftBox(Clone)
+[15:37:04.7299572] [Info   : LethalMin] Purple Pikmin_evzc4: targeting item GiftBox(Clone) at GrabPosition_9
+[15:37:04.7299572] [Info   : LethalMin] Purple Pikmin_evzc4: Setting current task to CarryItem
+[15:37:04.7695332] [Info   : LethalMin] White Pikmin_TzDCc: Found item: Body (PikminItem Node)
+[15:37:04.7695332] [Info   : LethalMin] White Pikmin_TzDCc: targeting item Body (PikminItem Node) at GrabPosition_4
+[15:37:04.7695332] [Info   : LethalMin] White Pikmin_TzDCc: Setting current task to CarryItem
+[15:37:04.7882189] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Body (PikminItem Node)
+[15:37:04.7882189] [Info   : LethalMin] White Pikmin_u7yjpLI: targeting item Body (PikminItem Node) at GrabPosition_6
+[15:37:04.7882189] [Info   : LethalMin] White Pikmin_u7yjpLI: Setting current task to CarryItem
+[15:37:04.8052525] [Info   : LethalMin] Purple Pikmin_bRqe: Found item: GiftBox(Clone)
+[15:37:04.8052525] [Info   : LethalMin] Purple Pikmin_bRqe: targeting item GiftBox(Clone) at GrabPosition_10
+[15:37:04.8052525] [Info   : LethalMin] Purple Pikmin_bRqe: Setting current task to CarryItem
+[15:37:04.9039492] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Setting collision mode to 0
+[15:37:04.9039492] [Info   : LethalMin] Purple Pikmin_51w0Zom: Grabbed item GiftBox(Clone) Speed is now: 14.27143
+[15:37:04.9209839] [Debug  : LethalMin] Purple Pikmin_4WYiK: Setting collision mode to 0
+[15:37:04.9209839] [Info   : LethalMin] Purple Pikmin_4WYiK: Grabbed item GiftBox(Clone) Speed is now: 15.34286
+[15:37:05.5154619] [Info   : Unity Log] SET SPECTATED PLAYER EFFECTS; True
+[15:37:05.5154619] [Info   : Unity Log] Enable sun direct light
+[15:37:05.5154619] [Info   : Unity Log] All players dead; set reverb to preset #3
+[15:37:05.5973828] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:37:05.5973828] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:37:05.5973828] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:05.5973828] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:05.5973828] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:05.5973828] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:05.5973828] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:05.5973828] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:05.5983830] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:05.5983830] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:05.5983830] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:05.5983830] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:37:05.5983830] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:37:05.5983830] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:37:05.5983830] [Debug  : LethalMin] Generated Route Nodes: 
+[15:37:05.5983830] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:37:05.5983830] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:05.5983830] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:05.5983830] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:05.5983830] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:05.5983830] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:05.5983830] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:05.5983830] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:05.5983830] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:05.5983830] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:06.1497984] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[15:37:06.5172691] [Info   : Unity Log] Is in elevator D?: False
+[15:37:06.6028911] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:37:06.6028911] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:37:06.6028911] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:06.6028911] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:06.6028911] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:06.6028911] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:06.6028911] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:06.6028911] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:06.6028911] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:06.6028911] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:06.6028911] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:06.6028911] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:37:06.6028911] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:37:06.6028911] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:37:06.6028911] [Debug  : LethalMin] Generated Route Nodes: 
+[15:37:06.6028911] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:37:06.6028911] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:06.6028911] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:06.6028911] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:06.6028911] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:06.6028911] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:06.6038911] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:06.6038911] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:06.6038911] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:06.6038911] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:07.3538052] [Info   : LethalMin] White Pikmin_FjliuFV: Dropped item Key(Clone)
+[15:37:07.3538052] [Debug  : LethalMin] White Pikmin_FjliuFV: Setting collision mode to 1
+[15:37:07.3538052] [Debug  : LethalMin] White Pikmin_FjliuFV: Removed Leader
+[15:37:07.3553109] [Info   : LethalMin] White Pikmin_FjliuFV: Grabbed by enemy, will die in 0.5s if not released.
+[15:37:07.3553109] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[15:37:07.3738434] [Warning: LethalMin] White Pikmin_FjliuFV: Work state with no task assigned!
+[15:37:07.5928436] [Warning: LethalMin] White Pikmin_FjliuFV: Work state with no task assigned!
+[15:37:07.6073698] [Warning: LethalMin] EasterEgg(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[15:37:07.6073698] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:37:07.6073698] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:07.6073698] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:07.6073698] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:07.6073698] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:07.6073698] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:07.6083713] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:07.6083713] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:07.6083713] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:07.6083713] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:07.6083713] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToShip
+[15:37:07.6083713] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[15:37:07.6083713] [Warning: LethalMin] No current floor data available for elevator routing.
+[15:37:07.6083713] [Debug  : LethalMin] Generated Route Nodes: 
+[15:37:07.6083713] [Warning: LethalMin] EasterEgg(Clone) could not create a route to the ToElevator
+[15:37:07.6083713] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[15:37:07.6083713] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:07.6083713] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:07.6083713] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:07.6083713] [Debug  : LethalMin] ITOS: Moved request start to (8.00, 0.44, -136.03)
+[15:37:07.6083713] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[15:37:07.6083713] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[15:37:07.6083713] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[15:37:07.6083713] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportB(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[15:37:07.6617476] [Info   : Unity Log] Leaving current lobby
+[15:37:07.6627469] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[15:37:07.6918079] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[15:37:07.6918079] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[15:37:07.6918079] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[15:37:07.6918079] [Info   :Rolling Giant] Resetting all rolling giants!
+[15:37:07.6918079] [Message:Rolling Giant] Reverting sync
+[15:37:07.6938086] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[15:37:07.6938086] [Debug  :MrHat.BasedItemSaving] Saved 10 exact item poses
+[15:37:07.6953127] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[15:37:07.6963163] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[15:37:07.6963163] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[15:37:07.7340424] [Info   :LethalPerformance] Saved 2 save(s)
+[15:37:07.7411808] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[15:37:07.7697175] [Debug  : LethalMin] White Pikmin_68JLiBF: Removed Leader
+[15:37:07.7712220] [Info   : LethalMin] White Pikmin_YV0Gw: Dropped item GiftBox(Clone)
+[15:37:07.7712220] [Debug  : LethalMin] White Pikmin_YV0Gw: Setting collision mode to 1
+[15:37:07.7712220] [Debug  : LethalMin] White Pikmin_YV0Gw: Removed Leader
+[15:37:07.7712220] [Info   : LethalMin] White Pikmin_yExgK: Dropped item GiftBox(Clone)
+[15:37:07.7712220] [Debug  : LethalMin] White Pikmin_yExgK: Setting collision mode to 1
+[15:37:07.7712220] [Debug  : LethalMin] White Pikmin_yExgK: Removed Leader
+[15:37:07.7712220] [Info   : LethalMin] White Pikmin_XWR5u2K: Dropped item GiftBox(Clone)
+[15:37:07.7712220] [Debug  : LethalMin] White Pikmin_XWR5u2K: Setting collision mode to 1
+[15:37:07.7712220] [Debug  : LethalMin] White Pikmin_XWR5u2K: Removed Leader
+[15:37:07.7722264] [Info   : LethalMin] White Pikmin_tbmIr: Dropped item GiftBox(Clone)
+[15:37:07.7722264] [Debug  : LethalMin] White Pikmin_tbmIr: Setting collision mode to 1
+[15:37:07.7722264] [Debug  : LethalMin] White Pikmin_tbmIr: Removed Leader
+[15:37:07.7722264] [Debug  : LethalMin] White Pikmin_u7yjpLI: Removed Leader
+[15:37:07.7722264] [Info   : LethalMin] White Pikmin_Gono4bn: Dropped item GiftBox(Clone)
+[15:37:07.7722264] [Debug  : LethalMin] White Pikmin_Gono4bn: Setting collision mode to 1
+[15:37:07.7722264] [Debug  : LethalMin] White Pikmin_Gono4bn: Removed Leader
+[15:37:07.7722264] [Debug  : LethalMin] White Pikmin_TzDCc: Removed Leader
+[15:37:07.7722264] [Info   : LethalMin] White Pikmin_Lw2dTVF: Dropped item GiftBox(Clone)
+[15:37:07.7722264] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Setting collision mode to 1
+[15:37:07.7722264] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Removed Leader
+[15:37:07.7722264] [Info   : LethalMin] White Pikmin_ICMO7: Dropped item EasterEgg(Clone)
+[15:37:07.7722264] [Debug  : LethalMin] White Pikmin_ICMO7: Setting collision mode to 1
+[15:37:07.7732253] [Debug  : LethalMin] White Pikmin_ICMO7: Removed Leader
+[15:37:07.7767355] [Debug  : LethalMin] White Pikmin_FjliuFV: Removed Leader
+[15:37:07.7767355] [Debug  : LethalMin] White Pikmin_2FoB: Removed Leader
+[15:37:07.7767355] [Info   : LethalMin] White Pikmin_ddF5L: Dropped item Key(Clone)
+[15:37:07.7767355] [Debug  : LethalMin] White Pikmin_ddF5L: Setting collision mode to 1
+[15:37:07.7767355] [Debug  : LethalMin] White Pikmin_ddF5L: Removed Leader
+[15:37:07.7767355] [Info   : LethalMin] White Pikmin_Md8MI: Dropped item GiftBox(Clone)
+[15:37:07.7767355] [Debug  : LethalMin] White Pikmin_Md8MI: Setting collision mode to 1
+[15:37:07.7767355] [Debug  : LethalMin] White Pikmin_Md8MI: Removed Leader
+[15:37:07.7767355] [Debug  : LethalMin] White Pikmin_deVvFe: Removed Leader
+[15:37:07.7777347] [Info   : LethalMin] Purple Pikmin_4WYiK: Dropped item GiftBox(Clone)
+[15:37:07.7777347] [Debug  : LethalMin] Purple Pikmin_4WYiK: Setting collision mode to 1
+[15:37:07.7777347] [Debug  : LethalMin] Purple Pikmin_4WYiK: Removed Leader
+[15:37:07.7777347] [Debug  : LethalMin] Purple Pikmin_bRqe: Removed Leader
+[15:37:07.7777347] [Info   : LethalMin] Purple Pikmin_51w0Zom: Dropped item GiftBox(Clone)
+[15:37:07.7777347] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Setting collision mode to 1
+[15:37:07.7777347] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Removed Leader
+[15:37:07.7777347] [Debug  : LethalMin] Purple Pikmin_evzc4: Removed Leader
+[15:37:07.7777347] [Info   : LethalMin] Purple Pikmin_EKPWp: Dropped item FlashlightItem(Clone)
+[15:37:07.7777347] [Debug  : LethalMin] Purple Pikmin_EKPWp: Setting collision mode to 1
+[15:37:07.7777347] [Debug  : LethalMin] Purple Pikmin_EKPWp: Removed Leader
+[15:37:07.7787346] [Info   : LethalMin] Purple Pikmin_y8qD5r: Dropped item FlashlightItem(Clone)
+[15:37:07.7787346] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Setting collision mode to 1
+[15:37:07.7787346] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Removed Leader
+[15:37:07.7787346] [Info   : LethalMin] Purple Pikmin_rKa2: Dropped item FlashlightItem(Clone)
+[15:37:07.7787346] [Debug  : LethalMin] Purple Pikmin_rKa2: Setting collision mode to 1
+[15:37:07.7787346] [Debug  : LethalMin] Purple Pikmin_rKa2: Removed Leader
+[15:37:07.7787346] [Info   : LethalMin] Purple Pikmin_QjV3t: Dropped item FlashlightItem(Clone)
+[15:37:07.7787346] [Debug  : LethalMin] Purple Pikmin_QjV3t: Setting collision mode to 1
+[15:37:07.7787346] [Debug  : LethalMin] Purple Pikmin_QjV3t: Removed Leader
+[15:37:07.7787346] [Debug  : LethalMin] Purple Pikmin_81Ib0KC: Removed Leader
+[15:37:07.7797356] [Debug  : LethalMin] White Pikmin_qK598: Removed Leader
+[15:37:07.7797356] [Debug  : LethalMin] White Pikmin_YdrhGRC: Removed Leader
+[15:37:07.7837395] [Info   : LethalMin] GiftBox(Clone) has cleared its route
+[15:37:07.7837395] [Info   : LethalMin] EasterEgg(Clone) has cleared its route
+[15:37:07.7917565] [Info   : LethalMin] Key(Clone) has cleared its route
+[15:37:07.7917565] [Info   : LethalMin] FlashlightItem(Clone) has cleared its route
+[15:37:07.7952618] [Info   : LethalMin] ShipOnion: saved 37 pikmin to disk on despawn.
+[15:37:07.7972662] [Info   :dev.ladyalice.dungenplus] Removed DunGenExtender asset for Black Mesa
+[15:37:08.0960875] [Info   :LobbyControl] 0 disconnected
+[15:37:08.0970921] [Info   : Unity Log] Disconnect callback called
+[15:37:08.0970921] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[15:37:08.0970921] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[15:37:08.0970921] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[15:37:08.1162499] [Debug  :Starlancer AI Fix] White Pikmin_68JLiBF from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1162499] [Debug  :Starlancer AI Fix] Removing White Pikmin_68JLiBF's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1217590] [Debug  :Starlancer AI Fix] White Pikmin_YV0Gw from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1217590] [Debug  :Starlancer AI Fix] Removing White Pikmin_YV0Gw's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1227586] [Debug  :Starlancer AI Fix] White Pikmin_yExgK from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1227586] [Debug  :Starlancer AI Fix] Removing White Pikmin_yExgK's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1227586] [Debug  :Starlancer AI Fix] White Pikmin_XWR5u2K from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1227586] [Debug  :Starlancer AI Fix] Removing White Pikmin_XWR5u2K's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1237589] [Debug  :Starlancer AI Fix] White Pikmin_tbmIr from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1237589] [Debug  :Starlancer AI Fix] Removing White Pikmin_tbmIr's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1237589] [Debug  :Starlancer AI Fix] White Pikmin_u7yjpLI from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1237589] [Debug  :Starlancer AI Fix] Removing White Pikmin_u7yjpLI's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1237589] [Debug  :Starlancer AI Fix] White Pikmin_Gono4bn from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1237589] [Debug  :Starlancer AI Fix] Removing White Pikmin_Gono4bn's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1237589] [Debug  :Starlancer AI Fix] White Pikmin_TzDCc from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1237589] [Debug  :Starlancer AI Fix] Removing White Pikmin_TzDCc's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1237589] [Debug  :Starlancer AI Fix] White Pikmin_Lw2dTVF from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1237589] [Debug  :Starlancer AI Fix] Removing White Pikmin_Lw2dTVF's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1252618] [Debug  :Starlancer AI Fix] White Pikmin_ICMO7 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1252618] [Debug  :Starlancer AI Fix] Removing White Pikmin_ICMO7's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1252618] [Debug  :Starlancer AI Fix] White Pikmin_FjliuFV from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1252618] [Debug  :Starlancer AI Fix] Removing White Pikmin_FjliuFV's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1252618] [Debug  :Starlancer AI Fix] White Pikmin_2FoB from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1252618] [Debug  :Starlancer AI Fix] Removing White Pikmin_2FoB's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1262671] [Debug  :Starlancer AI Fix] White Pikmin_ddF5L from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1262671] [Debug  :Starlancer AI Fix] Removing White Pikmin_ddF5L's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1262671] [Debug  :Starlancer AI Fix] White Pikmin_Md8MI from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1262671] [Debug  :Starlancer AI Fix] Removing White Pikmin_Md8MI's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1262671] [Debug  :Starlancer AI Fix] White Pikmin_deVvFe from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1262671] [Debug  :Starlancer AI Fix] Removing White Pikmin_deVvFe's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1272669] [Debug  :Starlancer AI Fix] Purple Pikmin_4WYiK from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1272669] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_4WYiK's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1272669] [Debug  :Starlancer AI Fix] Purple Pikmin_bRqe from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1272669] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_bRqe's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1272669] [Debug  :Starlancer AI Fix] Purple Pikmin_51w0Zom from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1272669] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_51w0Zom's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1282668] [Debug  :Starlancer AI Fix] Purple Pikmin_evzc4 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1282668] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_evzc4's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1282668] [Debug  :Starlancer AI Fix] Purple Pikmin_EKPWp from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1282668] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_EKPWp's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1282668] [Debug  :Starlancer AI Fix] Purple Pikmin_y8qD5r from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1282668] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_y8qD5r's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1282668] [Debug  :Starlancer AI Fix] Purple Pikmin_rKa2 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[15:37:08.1282668] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_rKa2's power (0) from the RoundManager; 
+Current exterior power level is 0
+[15:37:08.1301146] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[15:37:08.1301146] [Debug  :Starlancer AI Fix] Purple Pikmin_QjV3t from the interior enemy list has died; 
+Previous interior power level is 0
+[15:37:08.1301146] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_QjV3t's power (0) from the RoundManager; 
+Current interior power level is 0
+[15:37:08.1301146] [Debug  :Starlancer AI Fix] Purple Pikmin_81Ib0KC from the interior enemy list has died; 
+Previous interior power level is 0
+[15:37:08.1311212] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_81Ib0KC's power (0) from the RoundManager; 
+Current interior power level is 0
+[15:37:08.1311212] [Debug  :Starlancer AI Fix] White Pikmin_qK598 from the interior enemy list has died; 
+Previous interior power level is 0
+[15:37:08.1311212] [Debug  :Starlancer AI Fix] Removing White Pikmin_qK598's power (0) from the RoundManager; 
+Current interior power level is 0
+[15:37:08.1311212] [Debug  :Starlancer AI Fix] White Pikmin_YdrhGRC from the interior enemy list has died; 
+Previous interior power level is 0
+[15:37:08.1311212] [Debug  :Starlancer AI Fix] Removing White Pikmin_YdrhGRC's power (0) from the RoundManager; 
+Current interior power level is 0
+[15:37:08.1321197] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1321197] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1321197] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1321197] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1321197] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1321197] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1321197] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1321197] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1331203] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1331203] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1331203] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1331203] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1331203] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1331203] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1331203] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1341204] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1356237] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1356237] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1356237] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1356237] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1356237] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1356237] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1356237] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1356237] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1366281] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1366281] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1381313] [Debug  :Starlancer AI Fix] HoarderBug(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[15:37:08.1381313] [Debug  :Starlancer AI Fix] Removing HoarderBug(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[15:37:08.1426522] [Debug  :Starlancer AI Fix] NutcrackerEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[15:37:08.1426522] [Debug  :Starlancer AI Fix] Removing NutcrackerEnemy(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[15:37:08.1477844] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA(Clone)
+[15:37:08.1487835] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1487835] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1497825] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1497825] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1497825] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1497825] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1497825] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1497825] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1497825] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1517822] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1517822] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[15:37:08.1517822] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1517822] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch1
+[15:37:08.1517822] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch2
+[15:37:08.1517822] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch3
+[15:37:08.1517822] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch4
+[15:37:08.1517822] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch5
+[15:37:08.1517822] [Info   : Unity Log] Interact trigger destroying! name: PowerBoxDoor
+[15:37:08.1517822] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[15:37:08.1517822] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1527842] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1537826] [Info   : Unity Log] Interact trigger destroying! name: ElevatorButtonTrigger
+[15:37:08.1537826] [Info   : Unity Log] Interact trigger destroying! name: ElevatorButtonTrigger
+[15:37:08.1537826] [Info   : Unity Log] Interact trigger destroying! name: ElevatorButtonTrigger
+[15:37:08.1537826] [Info   : Unity Log] Interact trigger destroying! name: ElevatorButtonTrigger
+[15:37:08.1537826] [Info   : Unity Log] Interact trigger destroying! name: ElevatorButtonTrigger
+[15:37:08.1537826] [Info   : Unity Log] Interact trigger destroying! name: ElevatorButtonTrigger
+[15:37:08.1537826] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1537826] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1552856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1552856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1552856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1562897] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[15:37:08.1562897] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[15:37:08.1562897] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1562897] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[15:37:08.1572897] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1572897] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1582908] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1582908] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1582908] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1582908] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1582908] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[15:37:08.1582908] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[15:37:08.1597943] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1597943] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1607980] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1627992] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1627992] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1627992] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1627992] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1627992] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1627992] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1627992] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1637988] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1637988] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1637988] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1637988] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1637988] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1637988] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1637988] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1637988] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1637988] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1637988] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1653029] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1663073] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1743234] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1743234] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[15:37:08.1753232] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1753232] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[15:37:08.1765008] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[15:37:08.1765008] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[15:37:08.1775019] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[15:37:08.1775019] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[15:37:08.1775019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[15:37:08.1775019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[15:37:08.1965365] [Info   : Unity Log] Resetting unlockables list!
+[15:37:08.1985372] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[15:37:08.2000401] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[15:37:08.2000401] [Info   : Unity Log] Scene manager is null
+[15:37:08.2404903] [Info   :LethalPerformance] Saved 1 save(s)
+[15:37:08.2986336] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[15:37:08.3131449] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[15:37:08.3131449] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[15:37:08.3131449] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[15:37:08.3131449] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[15:37:08.3186560] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[15:37:08.3282280] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[15:37:08.3292331] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[15:37:08.3312324] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[15:37:08.3312324] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[15:37:08.3312324] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[15:37:08.3312324] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[15:37:08.3312324] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[15:37:08.3312324] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[15:37:08.3312324] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[15:37:08.3387504] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[15:37:08.3387504] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[15:37:08.3397552] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[15:37:08.3397552] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[15:37:08.3397552] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[15:37:08.3397552] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[15:37:08.3652781] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[15:37:08.3657821] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[15:37:08.4056558] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[15:37:08.4230224] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[15:37:08.4320398] [Info   :MoreCompany] LANMenu startLAN Patched
+[15:37:08.7662689] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[15:37:10.3390206] [Info   : Unity Log] Returning week num: 142
+[15:37:10.3390206] [Info   : Unity Log] week num: 142
+[15:37:10.3455257] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[15:37:10.3455257] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[15:37:10.3566490] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[15:37:10.3652857] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[15:37:10.3652857] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[15:37:10.3672936] [Info   :LethalPerformance] Saved 1 save(s)
+[15:37:11.8126529] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[15:37:11.8256111] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[15:37:17.0041019] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[15:37:17.0056055] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[15:37:17.0056055] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...

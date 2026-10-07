@@ -1,0 +1,50 @@
+name: Cleanup merged PR branch
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: merged-pr-branch-cleanup-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  delete-merged-head:
+    if: >-
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete merged same-repository head branch unless permanent
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+
+          case "$HEAD_REF" in
+            main|runtime-large|pre-overhaul-freeze-20260904-5dbd0e6)
+              echo "Retained permanent branch: $HEAD_REF"
+              exit 0
+              ;;
+          esac
+
+          current_sha="$(gh api "repos/$REPO/git/ref/heads/$HEAD_REF" --jq '.object.sha' 2>/dev/null || true)"
+          if [[ -z "$current_sha" ]]; then
+            echo "Branch already absent: $HEAD_REF"
+            exit 0
+          fi
+
+          if [[ "$current_sha" != "$HEAD_SHA" ]]; then
+            echo "Ref drift detected; refusing deletion: $HEAD_REF expected=$HEAD_SHA actual=$current_sha"
+            exit 1
+          fi
+
+          gh api --method DELETE "repos/$REPO/git/refs/heads/$HEAD_REF"
+          echo "Deleted merged branch: $HEAD_REF ($HEAD_SHA)"

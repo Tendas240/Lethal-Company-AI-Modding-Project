@@ -1,0 +1,101 @@
+name: S1.42AK BMAFR1 raw config-binding inactive review gate
+
+on:
+  pull_request:
+    paths:
+      - 'BuildSystem/bmafr1_profile_builder.py'
+      - 'BuildSpecs/S1.42AK-BMAFR1.json'
+      - 'BuildSpecs/S1.42AK-BMAFR1_PLAN.md'
+      - 'AnalysisTools/validate_s142ak_bmafdiag1_build.py'
+      - 'AnalysisTools/validate_s142ak_bmafr1_build.py'
+      - 'AnalysisTools/verify_s142ak_lll_1712_provenance.py'
+      - 'RepositoryTools/gale_profile_path_length_guard.py'
+      - 'Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z'
+      - 'Profiles/LC V1 S1.42AK-BMAFDIAG1 Black Mesa Abandoned Foundry Diagnostic.r2z'
+      - 'ProfileSources/S1.42AK/**'
+      - 'RuntimeEvidence/S1.42A/20260902T224318Z/extracted/config/config/LethalLevelLoader.cfg'
+      - 'SourceEvidence/UniversalInteriorViability/PhaseC3F19_BMAFR1_REPAIR/**'
+      - '.github/workflows/s142ak-bmafr1-build-static.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Refuse any already-published BMAFR1 profile
+        shell: bash
+        run: |
+          set -euo pipefail
+          output='Profiles/LC V1 S1.42AK-BMAFR1.r2z'
+          [[ ! -e "$output" ]] || { echo 'BMAFR1 profile already exists in checkout; inactive review build must remain ephemeral.' >&2; exit 1; }
+          if git ls-files --error-unmatch -- "$output" >/dev/null 2>&1; then
+            echo 'BMAFR1 review profile is tracked; publication is outside this gate.' >&2
+            exit 1
+          fi
+
+      - name: Validate short profile identity against permanent Gale path budget
+        run: python RepositoryTools/gale_profile_path_length_guard.py --spec BuildSpecs/S1.42AK-BMAFR1.json
+
+      - name: Freshly verify exact S1.42AK LLL 1.7.12 provenance
+        run: python AnalysisTools/verify_s142ak_lll_1712_provenance.py
+
+      - name: Prove raw INI identity and duplicate fail-closed repair-builder behavior
+        shell: bash
+        run: |
+          python - <<'PY'
+          from BuildSystem.bmafr1_profile_builder import FOUNDRY_RAW_SECTION, validate_raw_section_state
+
+          raw = FOUNDRY_RAW_SECTION
+
+          def must_refuse(text, expected_exact_count):
+              try:
+                  validate_raw_section_state(text, raw, expected_exact_count)
+              except RuntimeError:
+                  return
+              raise SystemExit("repair builder accepted a raw-mismatched or duplicate visible-equivalent Foundry state")
+
+          must_refuse(
+              "[Custom Dungeon:  Abandoned Foundry]\nEnable Content Configuration = false\n",
+              0,
+          )
+          must_refuse(
+              f"[{raw}]\nEnable Content Configuration = false\n\n"
+              "[Custom Dungeon:  Abandoned Foundry]\nEnable Content Configuration = false\n",
+              1,
+          )
+          validate_raw_section_state("", raw, 0)
+          validate_raw_section_state(
+              f"[{raw}]\nEnable Content Configuration = true\n",
+              raw,
+              expected_exact_count=1,
+          )
+          print("PASS: raw INI identity and visible-equivalent duplicate guard")
+          PY
+
+      - name: Build raw-binding inactive BMAFR1 review artifact
+        run: python BuildSystem/bmafr1_profile_builder.py BuildSpecs/S1.42AK-BMAFR1.json
+
+      - name: Verify exact raw Foundry category, archive delta and inactive lifecycle
+        run: python AnalysisTools/validate_s142ak_bmafr1_build.py
+
+      - name: Upload inactive BMAFR1 review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: S1.42AK-BMAFR1-review-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            Profiles/LC V1 S1.42AK-BMAFR1.r2z
+            ProfileSources/S1.42AK-BMAFR1/
+            BuildSpecs/S1.42AK-BMAFR1_BUILD_EVIDENCE/
+            c3f17-4-s142ak-lll-provenance-output/

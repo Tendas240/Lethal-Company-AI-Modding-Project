@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AI",
+  "profile_path": "Profiles/LC V1 S1.42AI ShyGuy Interior Only.r2z",
+  "profile_name": "LC V1 S1.42AI ShyGuy Interior Only",
+  "sha256": "d993bc0fca265fe7a2b069bd654b5e2c1f590623eaf7f4fabb325f8b4d863cb2",
+  "zip_members": 335,
+  "snapshot_dir": "ProfileSources/S1.42AI",
+  "snapshot": {
+    "entries": 335,
+    "text_entries": 330
+  },
+  "build_id_resolution": "BUILD_LINEAGE"
+}

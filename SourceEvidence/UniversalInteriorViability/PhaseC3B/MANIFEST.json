@@ -1,0 +1,42 @@
+{
+  "schema_version": "phase-c3b-manifest-1",
+  "created_utc": "2026-09-19",
+  "repository_baseline_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "parent_pr_head": "efc9658a2e26379e0a71a3e9d62476f953b2afc7",
+  "working_branch": "scope/universal-interior-phase-c3a-dawn-tags",
+  "scope": "Universal Interior Viability / Equal Availability",
+  "phase": "C3B",
+  "inputs": [
+    "SourceEvidence/UniversalInteriorViability/PhaseC3A/FINDINGS.md",
+    "SourceEvidence/UniversalInteriorViability/PhaseC3A/DAWNLIB_TAG_AND_MATCHING_IL.json",
+    "Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md",
+    "Current/167_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B3_MATRIX.csv",
+    "ProfileSources/S1.42AK/export.r2x",
+    "pacoito123/LC_LethalLevelLoader@f9998b91adf242cd8d735f4e697d55b32b94bfac"
+  ],
+  "outputs": [
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3B/FINDINGS.md",
+      "github_blob_sha": "022c16877e02c149b268070c0352a1b191ff9997"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3B/LLL_DAWN_BRIDGE_SOURCE.json",
+      "github_blob_sha": "7485d7c9c10a946f32922e2364cec0cc1c42a479"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3B/PROPOSED_SELECTION_AVAILABILITY_DELTA.csv",
+      "github_blob_sha": "0ccab877180eb7499ec9a87624a7fd607aa7768d"
+    }
+  ],
+  "counts": {
+    "external_target_moons": 2,
+    "direct_lll_flows": 22,
+    "proposed_selection_reclassifications": 44,
+    "canonical_matrix_cells_changed": 0
+  },
+  "qualification": [
+    "Dawn 0.9.25 automatic-tag facts are binary-bound by the C3A DLL SHA-256 evidence.",
+    "LLL 1.7.12 bridge facts are pinned to the exact upstream release-source commit and Git blob SHAs, not to a repository-preserved LLL DLL SHA-256.",
+    "The delta is selection/availability evidence only and does not assert generation or traversal compatibility."
+  ]
+}

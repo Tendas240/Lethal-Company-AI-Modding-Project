@@ -1,0 +1,188 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "accepted_gameplay_baseline": {
+    "build_id": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "runtime_accepted"
+  },
+  "latest_runtime_tested_candidate": {
+    "build_id": "S1.42C",
+    "profile": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
+    "sha256": "22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3",
+    "manifest_total": 188,
+    "manifest_enabled": 183,
+    "manifest_disabled": [
+      "AJB-Keep_hangar_ship_door_closed 1.0.0",
+      "zealsprince-Malfunctions 1.10.3",
+      "Reiko88-Observer 2.0.1",
+      "ProjectSCP-SCP999 2.4.0",
+      "Kittenji-Dont_Touch_Me 1.2.8"
+    ],
+    "status": "runtime_tested_regression_candidate_not_finally_accepted",
+    "runtime_evidence": "RuntimeEvidence/S1.42C/20260902T235238Z/",
+    "runtime_log_sha256": "60b349dd7b6de9690c6629f2988949c1eaa525c208b3d20c5df673b972dd9cca",
+    "manifest_source": "ProfileSources/S1.42C/export.r2x",
+    "manifest_verified_directly_from_export": true
+  },
+  "lineage": {
+    "s142a": {
+      "purpose": "interior config-generation seed",
+      "profile": "Profiles/LC V1 S1.42A Interior Config Seed.r2z",
+      "sha256": "70f2c42655ed6bcea7630dc70a0de37134ae8ebfc302491a6f7cc7d3a47929fe",
+      "result": "seed succeeded; 52 dungeon flows registered; 26 new flows; LMDL initialization NRE discovered"
+    },
+    "s142b": {
+      "purpose": "isolated LethalModDataLib NRE guard",
+      "profile": "Profiles/LC V1 S1.42B LMDL NRE Guard.r2z",
+      "sha256": "8523754926e3f67c0ccef5aee976cbe72ab976f997876c59b51fedcfb293befe",
+      "result": "runtime-confirmed fix; null Chainloader entry MW.MagicWesleyInteriors skipped; ModDataHandler initialized and moddata load/save succeeded"
+    },
+    "s142c": {
+      "purpose": "Thumper/Puffer Pikmin interaction guards",
+      "result": "no new startup regression; LMDL remains healthy; Puffer untested because none spawned; Thumper not deliberately validated; Baboon Hawk proved generic enemy-grab/bite + invincible-Pikmin leader-null bug"
+    }
+  },
+  "local_compatibility_plugin": {
+    "source": "Patches/S139CompatibilityFixes/",
+    "current_version": "1.2.0",
+    "embedded_dll_path": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+    "s142c_dll_sha256": "c3da6ee8220bec3b954ac62ca1a4d813efcb292eefd9b70fc0616a76e2f37af3",
+    "import_rule": "Gale Advanced options -> Import all files",
+    "general_marker": "S1.39 Compatibility Fixes loaded.",
+    "lmdl_guard_status": "runtime_confirmed",
+    "puffer_guard_status": "registered_but_not_runtime_triggered"
+  },
+  "binding_user_rules": {
+    "interiors": "every registered interior should have equal effective selection probability on every moon; future additions must be normalized too",
+    "mausoleum_fog": "reduce specifically inside MelanieMausoleum; no global fog reduction",
+    "bcmer": "pin 1.71.0; 8 EventTypes each 12.5% fixed global base probability; Use custom weights? = false; constant scale 12.5,0,12.5,12.5",
+    "thumper_pikmin": "no interaction in either direction",
+    "puffer_pikmin": "Puffer attack/smoke must not affect Pikmin",
+    "functional_microwave": "target Volume=0.7 and Allow Editing Config=true",
+    "jetpack": "historical juijui config target 140 seconds; do not restore obsolete Bigger Battery blindly; Jetpack must not explode from sustained/high-speed boost use; set Jetpack Fixes MidAirExplosions=Off and patch narrowly if another non-collision usage explosion remains",
+    "unknown_enemy_powerlevels": "never guess"
+  },
+  "historical_reference_profile": {
+    "name": "juijui",
+    "role": "historical_primary_reference_for_original_project_target",
+    "expected_profile": "References/LegacyProfiles/juijui/juijui.r2z",
+    "documentation": "Current/18_JUIJUI_LEGACY_REFERENCE.md",
+    "upload_status": "committed_and_indexed",
+    "project_intent": "Approximate the old juijui mod constellation/configuration as closely as technically reasonable while respecting current game version, maintained mods and compatibility.",
+    "jetpack_use": "Recover the exact historical Jetpack capacity/duration from this profile after upload; do not guess.",
+    "is_current_build_base": false,
+    "sha256": "ddd10bcec3329c155b3a0a2d74460928b02df147356701fb6cf79ebb5a9f7e00",
+    "zip_members": 444,
+    "snapshot": "References/LegacyProfiles/juijui/Extracted/",
+    "jetpack_evidence": {
+      "config": "References/LegacyProfiles/juijui/Extracted/BepInEx/config/dev.alexanderdiaz.biggerbattery.cfg",
+      "plugin_version_in_config": "Bigger Battery v1.0.2",
+      "historical_config_value": 140,
+      "historical_game_default_in_config": 60,
+      "active_in_final_export": false,
+      "plugin_binary_present": false,
+      "interpretation": "strongest historical intended/configured target; reproduce with current-compatible mechanism"
+    }
+  },
+  "pending_engineering_priority": {
+    "id": "generic_lethalmin_grab_bite_invincible_leader_state",
+    "evidence": "Baboon Hawk bite in S1.42C caused leader removal + grabbed state + invincibility-blocked death + repeated Leader is null when following",
+    "desired_fix": "repair/reset generic grabbed/follow state without globally blacklisting every enemy"
+  },
+  "pending_tuning": [
+    "targeted validation of Thumper<->Pikmin guard",
+    "targeted validation of Puffer smoke guard",
+    "generic LethalMin grab/bite + invincible leader-state repair",
+    "equal-weight interior normalization",
+    "CullFactory exceptions junkrooms and shatteredrooms",
+    "investigate Shatteredrooms Experimentation/Embrion hard restriction",
+    "Mausoleum-specific fog reduction",
+    "BCMER fixed 12.5% x8 EventType distribution",
+    "Functional Microwave volume 0.7 with editing gate",
+    "Jetpack 140-second historical target",
+    "Jetpack no sustained/high-speed boost explosion"
+  ],
+  "build_state": {
+    "current_spec": "BuildSpecs/current.json",
+    "current_spec_enabled": false,
+    "current_spec_build_id": "IDLE_AFTER_S1.42D_BUILD_AWAITING_RUNTIME",
+    "next_draft_plan": "BuildSpecs/S1.42D_PLAN.md",
+    "next_draft_plan_status": "S1.42D_BUILT_AWAITING_RUNTIME",
+    "repository_first": true,
+    "local_clone_required": false,
+    "local_powershell_build_required": false,
+    "current_spec_base": "Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z",
+    "current_spec_base_sha256": "b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c"
+  },
+  "handover": {
+    "core": "Current/16_HANDOVER_S1.42C_TO_NEXT.md",
+    "recent_work": "Current/06_RECENT_WORK_S1.42A-S1.42C.md",
+    "next_chat_prompt": "Current/NEXT_CHAT_START_PROMPT_S1.42C.txt",
+    "readme_handover": "Current/README_Handover_S1.42C.txt",
+    "active_modlist": "Current/Aktive_Modliste_S1.42C.txt",
+    "modlist_correction": {
+      "date": "2026-09-03",
+      "reason": "Earlier generated Aktive_Modliste_S1.42C.txt had shifted package/version associations.",
+      "corrected_from": "ProfileSources/S1.42C/export.r2x",
+      "verified_total": 188,
+      "verified_enabled": 183,
+      "verified_disabled": 5
+    }
+  },
+  "next_candidate": {
+    "build_id": "S1.42D",
+    "status": "built_awaiting_runtime_validation",
+    "base_profile": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
+    "scope": [
+      "generic LethalMin enemy grab/bite + Invincible Pikmin state repair",
+      "retain S1.42C Thumper/Puffer guards",
+      "Jetpack 140-second historical target",
+      "Jetpack MidAirExplosions=Off; no sustained/high-speed boost self-destruction",
+      "Functional Microwave editing gate true and Volume=0.7"
+    ],
+    "deferred": [
+      "BCMER fixed 12.5% x8 EventType distribution",
+      "equal-weight interior normalization",
+      "CullFactory junkrooms/shatteredrooms exceptions",
+      "Mausoleum-specific fog reduction",
+      "Shatteredrooms hard-restriction investigation"
+    ],
+    "enemy_isolation": {
+      "diagnostic_only": true,
+      "allowed_indoor": [
+        "Thumper/Crawler",
+        "Puffer/Spore Lizard"
+      ],
+      "allowed_outdoor": [
+        "Baboon Hawk"
+      ],
+      "all_other_enemies_temporarily_blocked": true,
+      "preferred_implementation": "test-only runtime spawn isolation overlay/guard",
+      "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+      "restore_rule": "remove only diagnostic isolation after test; restore all enemy configuration exactly to S1.42C unless explicitly changed later"
+    },
+    "profile": "Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z",
+    "sha256": "b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c",
+    "compatibility_dll_sha256": "ede191d1e3f1d0b1166cebeee76f2226aa67d382bb247895c1070e06c1f1ba32",
+    "build_result": "Current/AUTO_BUILD_RESULT.json",
+    "runtime_test_plan": "Current/20_S1.42D_BUILD_AND_TEST.md",
+    "manifest_total": 188,
+    "manifest_enabled": 183,
+    "manifest_disabled": 5,
+    "manifest_diff_vs_s142c": []
+  },
+  "latest_built_candidate": {
+    "build_id": "S1.42D",
+    "profile": "Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z",
+    "sha256": "b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c",
+    "status": "built_awaiting_runtime_validation",
+    "base_profile": "Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z",
+    "base_sha256": "22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3",
+    "compatibility_plugin_version": "1.3.0",
+    "compatibility_dll_sha256": "ede191d1e3f1d0b1166cebeee76f2226aa67d382bb247895c1070e06c1f1ba32",
+    "runtime_test_plan": "Current/20_S1.42D_BUILD_AND_TEST.md",
+    "diagnostic_enemy_isolation": true
+  }
+}

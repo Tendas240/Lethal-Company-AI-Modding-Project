@@ -1,0 +1,150 @@
+{
+  "schema_version": "phase-c3e3e-1",
+  "scope": "Universal Interior Viability / Equal Availability",
+  "checkpoint": "C3E3E",
+  "inspection_date": "2026-09-20",
+  "accepted_baseline": "S1.42AK",
+  "pr_number": 138,
+  "parent_commit": "bc92bc6517d1c236d43b087dc53122bf72e38311",
+  "question": "For Oxyde's preserved spawnEnemiesAndScrap=false level, what do DawnLib 0.9.25 and LethalLevelLoader 1.7.12 do once the RoundManager dungeon-generation call chain is reached?",
+  "dawn_binding": {
+    "exact_package_evidence": {
+      "repository_input": "SourceEvidence/UniversalInteriorViability/PhaseC3E3D/MANIFEST.json",
+      "git_blob_sha1": "6dd3354f0fae6a0053fcb33e4a74ff23c7ef0a85",
+      "package": "TeamXiaolan-DawnLib",
+      "version": "0.9.25",
+      "zip_sha256": "c33c608869763f916f07e5ddf47224134f98bab15d044bd809a46ef2d3d538c3",
+      "main_dll_sha256": "9b4826a16eec1fa5091fb4246d010005bc9c3e04282034e8d067b499ab5c125b",
+      "exact_binary_anchor": "C3E3D OXYDE_OWNER_REGISTRATION_IL.json proves the exact pinned main DLL's DungeonRegistrationHandler.Init installs the named GenerateNewFloor, RuntimeDungeon.Start/Generate, MenuManager and deferred-generation hooks used here."
+    },
+    "version_aligned_source": {
+      "repository": "TeamXiaolan/DawnLib",
+      "commit": "810613e556ecc357eac25e97c25a3bb90516f071",
+      "commit_message": "fixed incompat with lategame upgrades",
+      "commit_date_utc": "2026-07-09T13:40:54Z",
+      "version_file": {
+        "path": "Directory.Build.props",
+        "git_blob_sha1": "b3741c4c59f235f19acde7bef81660de3e4801e5",
+        "declared_version": "0.9.25"
+      },
+      "files": [
+        {
+          "path": "DawnLib/src/API/Dungeons/.DungeonRegistrationHandler.cs",
+          "git_blob_sha1": "f51869b975135d40bf71c0610d647a8a1367c024",
+          "relevant_methods": [
+            "Init",
+            "DeleteLLLTranspilerAndEnsureDelayedDungeon",
+            "DelayDungeonGeneration",
+            "LoadDungeonBundle"
+          ]
+        },
+        {
+          "path": "DawnLib/src/Internal/ModCompats/LethalLevelLoaderCompat.cs",
+          "git_blob_sha1": "4339b5116fd425f3eba275efa7db26f42f8cbc58",
+          "relevant_methods": [
+            "TryRemoveLLLDungeonTranspiler",
+            "LetLLLHandleGeneration",
+            "ScrewWithLLLDynamicDungeonRarity",
+            "EnsureCorrectDawnDungeonDynamicRarity"
+          ]
+        },
+        {
+          "path": "DawnLib/src/Internal/DawnDungeonNetworker.cs",
+          "git_blob_sha1": "31951512acf8026ae94381b8fcb68b5fcc6171e2",
+          "relevant_methods": [
+            "QueueDungeonBundleLoading",
+            "DoDungeonBundleLoading",
+            "UnlockGame",
+            "TryApplyLoadedDungeonFlow"
+          ]
+        }
+      ],
+      "qualification": "The package DLL is exact-hash-bound by C3E3D and its Init hook references are exact-binary evidence. The detailed deferred-generation method bodies below are pinned to upstream source whose build version is 0.9.25; repository evidence does not prove byte-for-byte identity between this source commit and the packaged DLL."
+    }
+  },
+  "lll_binding": {
+    "profile_version_authority": "ProfileSources/S1.42AK/export.r2x",
+    "dependency": "IAmBatby-LethalLevelLoader-1.7.12",
+    "source_repository": "pacoito123/LC_LethalLevelLoader",
+    "release_commit": "f9998b91adf242cd8d735f4e697d55b32b94bfac",
+    "release_commit_message": "Release v1.7.12",
+    "release_commit_date_utc": "2026-08-27T10:01:20Z",
+    "files": [
+      {
+        "path": "LethalLevelLoader/General/Patches.cs",
+        "git_blob_sha1": "cb7312c16e462f5c476a990df756c5066b904d52",
+        "relevant_methods": [
+          "GenerateNewLevelClientRpc_Transpiler",
+          "GenerateNewFloor_Transpiler",
+          "InjectHostDungeonFlowSelection",
+          "InjectHostDungeonSizeSelection"
+        ]
+      },
+      {
+        "path": "LethalLevelLoader/Patches/LethalLevelLoaderNetworkManager.cs",
+        "git_blob_sha1": "09d093efb8151efe2958a4c93554638ff5c3d44e",
+        "relevant_methods": [
+          "SetRandomExtendedDungeonFlowClientRpc",
+          "GetDungeonFlowSizeServerRpc",
+          "SetDungeonFlowSizeClientRpc"
+        ]
+      }
+    ],
+    "qualification": "As preserved by C3B, LLL 1.7.12 is exact release-source-bound but the accepted profile's LLL DLL is not SHA-256-bound in repository evidence."
+  },
+  "installed_v81_boundary": {
+    "focused_capture": "SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9/ROUNDMANAGER_SPAWNING_FOCUSED_DECOMPILE.txt",
+    "git_blob_sha1": "c0f73d41650512af9437e74f4e4a1b9d5a7e62ed",
+    "sha256": "5317509a39e072db2c3df95de1cb9091dd9f7ff7e1a3bfe231045dea9cfc974f",
+    "attributed_installed_assembly_csharp_sha256": "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+    "steam_build": "22825947",
+    "present_methods_relevant_here": [
+      "LoadNewLevelWait",
+      "FinishGeneratingNewLevelClientRpc"
+    ],
+    "missing_method_bodies_required_for_final_gate": [
+      "RoundManager.GenerateNewLevelClientRpc",
+      "RoundManager.GenerateNewFloor"
+    ]
+  },
+  "observed_integration": [
+    {
+      "stage": "LLL client-generation callsite replacement",
+      "fact": "GenerateNewLevelClientRpc_Transpiler locates a RoundManager.GenerateNewFloor call and replaces that call with InjectHostDungeonFlowSelection."
+    },
+    {
+      "stage": "LLL false-flag helper branch",
+      "fact": "InjectHostDungeonFlowSelection calls DungeonLoader.SelectDungeon only when the current ExtendedLevel is loaded and SelectableLevel.spawnEnemiesAndScrap is true. Its else branch calls roundManager.GenerateNewFloor(). Therefore false does not stop this helper from delegating to GenerateNewFloor."
+    },
+    {
+      "stage": "Dawn takes ownership of GenerateNewFloor's final generation call",
+      "fact": "DeleteLLLTranspilerAndEnsureDelayedDungeon removes LLL's GenerateNewFloor transpiler when LLL is enabled, then installs Dawn's DelayDungeonGeneration IL patch."
+    },
+    {
+      "stage": "Dawn deferred generation",
+      "fact": "DelayDungeonGeneration replaces RoundManager.GenerateNewFloor's direct RuntimeDungeon.Generate sequence with StartCoroutine(LoadDungeonBundle)."
+    },
+    {
+      "stage": "Dawn hotload completion",
+      "fact": "LoadDungeonBundle waits for Dawn bundle loading when required, then either calls LethalLevelLoaderCompat.LetLLLHandleGeneration for ShouldSkipRespectOverride flows or directly calls RoundManager.Instance.dungeonGenerator.Generate after applying the Dawn clamp."
+    },
+    {
+      "stage": "LLL generation when delegated back from Dawn",
+      "fact": "LetLLLHandleGeneration calls LLL InjectHostDungeonSizeSelection. With a current ExtendedLevel that requests the network size path, SetDungeonFlowSizeClientRpc ultimately calls RoundManager.dungeonGenerator.Generate."
+    }
+  ],
+  "bounded_results": {
+    "downstream_generate_new_floor_false_flag_stop_gate": "NONE_IN_THE_INSPECTED_DAWN_LLL_SOURCE_CHAIN",
+    "false_flag_helper_behavior": "LLL_INJECT_HOST_DUNGEON_FLOW_SELECTION_DELEGATES_TO_GENERATE_NEW_FLOOR",
+    "dawn_generation_strategy": "REPLACE_DIRECT_GENERATE_WITH_DEFERRED_OWNER_AWARE_LOAD_THEN_GENERATE",
+    "installed_v81_callsite_reachability_for_false_flag": "UNRESOLVED",
+    "runtime_oxyde_dungeon_generation": "NOT_PROVEN",
+    "runtime_entrance_construction": "NOT_PROVEN"
+  },
+  "proof_boundary": [
+    "This checkpoint proves source-level downstream integration semantics and preserves exact package/source qualifications; it does not claim the missing installed-V81 GenerateNewLevelClientRpc callsite is reached when spawnEnemiesAndScrap is false.",
+    "A Harmony transpiler's target pattern and replacement logic do not establish the native control-flow predicate surrounding that callsite.",
+    "No Oxyde gameplay run, entrance count, scene teleport topology, traversal, geometry, routing or NavMesh claim is added.",
+    "No matrix cell is reclassified by this checkpoint."
+  ]
+}

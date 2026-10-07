@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_TIER_D_REVIEW_COMPLETE_PATCH_SAFETY_PARTIAL_NOT_BUILD_READY",
+  "canonical_main": "ae1a4693d23e41fce6674380f6ff83631b0a1eb3",
+  "exact_review": {
+    "run_id": 34711742173,
+    "run_number": 1,
+    "head": "68d8bcef1653cf5087a6826b7e68070bca13f1ed",
+    "artifact_id": 10303775401,
+    "artifact_name": "s142ai-tier-d-spawn-candidates-exact",
+    "artifact_zip_sha256": "e2255ba78b8605fdc96df4b480dbdae0a79bf015ccea1cfe52f9336a8c94134c",
+    "discovery_run": 34705334804,
+    "discovery_head": "45d22c3fa1abb3bbd95dd137cd3903eb053f87c7",
+    "decompiler": {
+      "tool": "ilspycmd",
+      "version": "11.0.0.9375"
+    }
+  },
+  "packages_reviewed": 6,
+  "assemblies_reviewed": 7,
+  "assemblies": [
+    {
+      "package": "ButteryStancakes-ButteryFixes",
+      "version": "1.17.16",
+      "package_zip_sha256": "17869badc6286b64f032fe3e393c9269ea6f9c716d50a581d8cc15f747ffcdad",
+      "member": "ButteryFixes.dll",
+      "dll_sha256": "8526a6721e42c03093ff3b1dbf924cc849ef3bed73920edc73a68a7d749d5fed",
+      "source_sha256": "3b3df2fcb8198a2158708735026beb53eab7f4912375295f56c20a002a18a166",
+      "il_sha256": "f9689ae016113f49faaeb24387977fb2286bf10bfb2c785c6d2df4fff5b740a4",
+      "classification": "DOWNSTREAM_ENEMY_ASSET_LIFECYCLE_FIX_AND_POOL_STATE_MUTATOR_NOT_DIRECT_CREATOR"
+    },
+    {
+      "package": "Evaisa-LethalLib",
+      "version": "1.2.0",
+      "package_zip_sha256": "ba013e1282c503c2b1170eefaee0a770fc031485f28dea40da32a4bdbbffb180",
+      "member": "plugins/LethalLib/LethalLib.dll",
+      "dll_sha256": "28fde57d12bf14222c916d81fbc9995608639857f3c5e9dd712dd6424efa45bc",
+      "source_sha256": "241e498107d55c979590889a024fe2756e12338a63e5124c9365d56034ebd7cd",
+      "il_sha256": "b24d52971a78831141e677f8d15e3ba84c632de1c1cb990bda33df48137be7fd",
+      "classification": "ENEMY_REGISTRY_AND_LEVEL_POOL_OWNER_NOT_DIRECT_INSTANCE_CREATOR",
+      "exact_methods": [
+        "LethalLib.Modules.Enemies.RegisterEnemy",
+        "LethalLib.Modules.Enemies.AddEnemyToLevel"
+      ]
+    },
+    {
+      "package": "TestAccount666-ShipWindows",
+      "version": "2.11.1",
+      "package_zip_sha256": "c93ca093b3ce3fa3898aa7f5560dd5f2865e20709a08a3dc8cdb13737904bbeb",
+      "member": "ShipWindows.dll",
+      "dll_sha256": "ddf7ec1e426a512a0fa0d1da17f18c03b8b28faddf08e7e90633909f6b2d0ea7",
+      "source_sha256": "64208922699edc0662bfbaa2e9d0d7449a4e5ca85ea1016c8a9aad61f8c88439",
+      "il_sha256": "e54340bf577b55d4c3fab1eff94881ed1f23e41d1ea253e8bf7fb1fc30c52e76",
+      "classification": "DOWNSTREAM_ENEMY_VISUAL_COLLISION_PATCH_AND_SHIP_NETWORK_INFRASTRUCTURE_NOT_CREATOR",
+      "enemy_start_postfix_present": true,
+      "ship_network_manager_spawn_present": true
+    },
+    {
+      "package": "WhiteSpike-Interactive_Terminal_API",
+      "version": "1.3.3",
+      "package_zip_sha256": "dcb969e1ea831a4c3e56320f7f395eea875a9d41d47f4e355529d8bb516f277c",
+      "member": "BepInEx/plugins/InteractiveTerminalAPI/InteractiveTerminalAPI.dll",
+      "dll_sha256": "981c2874ab1af36b06b5ca18a171d521f1d25694fce7764cfa1058da03c4ff77",
+      "source_sha256": "7987671896805623c023d3a868e79d21fd6b7ab23147e66ce81460636580b793",
+      "il_sha256": "47a0cd88370bd42b1c148eac545122bc8e11120ff0fed5c1b7636d8c67f81bbb",
+      "classification": "GENERIC_EXPLICIT_ENEMY_SPAWN_API_NO_INTERNAL_CALLER_EXTERNAL_CONSUMER_GATE_OPEN",
+      "exact_spawn_method": "InteractiveTerminalAPI.Tools.SpawnMob(string, Vector3, int)",
+      "spawn_callee": "RoundManager.SpawnEnemyOnServer",
+      "internal_caller_found": false,
+      "external_consumer_review_required": true
+    },
+    {
+      "package": "Zehs-SellMyScrap",
+      "version": "1.15.3",
+      "package_zip_sha256": "417afce368c7f2ee6ac69ffca64869f5c080a473b1e68dbf05a09c7040385ec6",
+      "member": "com.github.zehsteam.SellMyScrap.dll",
+      "dll_sha256": "1a27500f4e1c683f569325ceeea7a780506be96a935275407c5a881dfc95800d",
+      "source_sha256": "2706c01c44762e0976b42b2189637d8ef8fcbab201637b7c957bd61b1cae914e",
+      "il_sha256": "08d54793522e82f469ae56ceb19818fcddc1c409a0aae93dcff2c6ee3692eafb",
+      "classification": "NETWORKED_SCRAP_EATER_HANDLER_AND_DOWNSTREAM_ENEMY_HIT_INFRASTRUCTURE_NOT_CREATOR"
+    },
+    {
+      "package": "Zehs-SellMyScrap",
+      "version": "1.15.3",
+      "package_zip_sha256": "417afce368c7f2ee6ac69ffca64869f5c080a473b1e68dbf05a09c7040385ec6",
+      "member": "com.github.zehsteam.SellMyScrap.v40-v72.dll",
+      "dll_sha256": "0ab886b906c58768af2d8601745b75591e49aec606bf1b8f528122dcc2de89a8",
+      "source_sha256": "900305b96b4dc270ba274e1ddd9cac89b7abda33da95fa15d085283f20bb15e9",
+      "il_sha256": "9deb22285ad760aee407fb5e2040fa3156091fe18ce9581a1fbb440f2da1ba8f",
+      "classification": "NETWORKED_SCRAP_EATER_HANDLER_AND_DOWNSTREAM_ENEMY_HIT_INFRASTRUCTURE_NOT_CREATOR"
+    },
+    {
+      "package": "mr_hat-MisideItems",
+      "version": "0.3.9",
+      "package_zip_sha256": "7664afa307e7a8e61455f50b4c96ede301bee54f3f2eb70660067b0e6ffaaa84",
+      "member": "BepInEx/plugins/MisideItems.dll",
+      "dll_sha256": "5c15c3c8f53705a4f75c2299f0ebf6b44a6934f54a2d3fbf06873a1d5f2102fa",
+      "source_sha256": "5da3e90b4d6be41b09ccaf9423816d245f6e9440fe6cf6bbcc17118e874a8e06",
+      "il_sha256": "7a115dc37119c896b12d35330bfce84715e42dc3d213011e7aef6cfbca93952d",
+      "classification": "ITEM_FURNITURE_UI_INFRASTRUCTURE_WITH_DOWNSTREAM_ENEMY_HIT_LOGIC_NOT_CREATOR"
+    }
+  ],
+  "shared_exact_source_facts": {
+    "interactive_terminal_spawn_mob_occurrences": 1,
+    "interactive_terminal_spawn_enemy_on_server_occurrences": 1,
+    "interactive_terminal_internal_caller_found": false,
+    "lethallib_spawn_enemy_on_server_occurrences": 0,
+    "lethallib_spawn_enemy_game_object_occurrences": 0,
+    "shipwindows_enemy_type_occurrences": 0,
+    "shipwindows_spawn_enemy_on_server_occurrences": 0,
+    "sellmyscrap_enemy_type_occurrences_each_reviewed_dll": 0,
+    "misideitems_enemy_type_occurrences": 0,
+    "qualification": "InteractiveTerminalAPI exposes a real public explicit enemy-spawn API, but the exact assembly contains no internal caller. LethalLib owns enemy registration/level-pool insertion without direct instance creation. Remaining Tier-D packages use enemy lifecycle/shared networking surfaces for downstream or non-enemy responsibilities."
+  },
+  "remaining_unreviewed_discovery_positive_packages": 19,
+  "snowylib_cross_assembly_consumer_gate_open": true,
+  "interactive_terminal_api_cross_assembly_consumer_gate_open": true,
+  "bcmer_forced_additional_runtime_custom_gate_open": true,
+  "shyguy_source_to_dll_provenance_gate_open": true,
+  "diag1_build_authorized": false,
+  "qualification": "Exact review of six discovery-positive packages / seven DLLs only. Patch safety remains partial; no DIAG1 implementation, build, controller transition, Gale import or gameplay test is authorized."
+}

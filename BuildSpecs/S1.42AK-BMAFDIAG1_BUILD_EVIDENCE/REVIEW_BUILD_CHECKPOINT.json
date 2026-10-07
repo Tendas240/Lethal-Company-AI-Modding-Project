@@ -1,0 +1,49 @@
+{
+  "status": "INACTIVE_REVIEW_BUILD_PASS_NOT_PUBLISHED_NOT_ARMED",
+  "build_id": "S1.42AK-BMAFDIAG1",
+  "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+  "review_pr": 200,
+  "reviewed_head": "47f2beca815c4d726fec8b85f4e9aac129519486",
+  "review_merge_ref": "3a0d70ea0870afcf13fbe4a43efa1d1937b11959",
+  "review_run": 36735131025,
+  "review_run_number": 2,
+  "review_knowledge_architecture_run": 36735130944,
+  "review_knowledge_architecture_run_number": 872,
+  "review_artifact_id": 11106178288,
+  "review_artifact_name": "S1.42AK-BMAFDIAG1-review-3a0d70ea0870afcf13fbe4a43efa1d1937b11959",
+  "review_artifact_zip_sha256": "e96b8de8084f051d74fcb06b05aa06ed3355419602c813b6021acb8a5b9f78b0",
+  "review_artifact_size_bytes": 1086673,
+  "profile_sha256": "b8611f58678890065f214f788051c203f4d72c59040e53e51c64c89c5958fdc2",
+  "diagnostic_dll_sha256": "c079368dd3736decadee00125a42319f5da29907aad207d7b82a6494f19a7ce1",
+  "base_profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+  "lll_sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+  "normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+  "archive_members_verified": 337,
+  "added_members": [
+    "BepInEx/plugins/S142AKBMAFDiag1/S142AKBMAFDiag1.dll"
+  ],
+  "changed_existing_members": [
+    "BepInEx/config/LethalLevelLoader.cfg",
+    "export.r2x"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 1,
+  "foundry_section_materialized": true,
+  "foundry_content_configuration_enabled": true,
+  "foundry_manual_level_names_delta": "Black Mesa:100",
+  "foundry_owner_values_preserved": true,
+  "independent_artifact_rehash_match": true,
+  "independent_artifact_rehash_scope": [
+    "artifact_zip",
+    "review_profile",
+    "S142AKBMAFDiag1.dll"
+  ],
+  "published": false,
+  "runtime_armed": false,
+  "runtime_active_build": "S1.42AK-BMDSFIX1",
+  "active_gameplay_candidate": "S1.42AK-BMDSFIX1",
+  "runtime_test_outstanding": true,
+  "black_mesa_abandoned_foundry_status": "NOT_YET_PROVEN",
+  "next_publication_source_artifact_id": 11106178288
+}

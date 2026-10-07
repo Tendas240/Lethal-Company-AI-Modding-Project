@@ -1,0 +1,30 @@
+name: Inspect S1.42AI native spawn owners
+on:
+  push:
+    branches: [analysis/s142ai-native-spawn-owners]
+    paths:
+      - 'AnalysisTools/inspect_native_spawn_owners.py'
+      - '.github/workflows/native-spawn-owner-inspect.yml'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Install pinned decompiler
+        run: dotnet tool install --global ilspycmd --version 11.0.0.9375
+      - name: Capture bounded owner discovery from exact candidate packages
+        run: python AnalysisTools/inspect_native_spawn_owners.py
+      - name: Preserve source-discovery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-native-spawn-owner-discovery
+          path: native-owner-output/
+          if-no-files-found: error
+          retention-days: 90

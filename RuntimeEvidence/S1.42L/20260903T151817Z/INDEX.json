@@ -1,0 +1,12 @@
+{
+  "build_id": "S1.42L",
+  "ingested_utc": "20260903T151817Z",
+  "files": [
+    {
+      "name": "LogOutput.log",
+      "size": 1680630,
+      "sha256": "402015463b9ed83a0835a4df8ac7f6298cac662609700715563041e5447885bd",
+      "extracted": []
+    }
+  ]
+}

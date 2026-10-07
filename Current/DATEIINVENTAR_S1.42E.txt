@@ -1,0 +1,73 @@
+DATEIINVENTAR — S1.42E HANDOVER
+Stand: 2026-09-03
+
+KANONISCHE EINSTIEGE
+- README.md
+- START_HERE_ChatGPT_Masterprompt.txt
+- Current/00_CURRENT_STATE.md
+- Current/01_HANDOVER_CORE.md
+- Current/22_HANDOVER_S1.42E_TO_NEXT.md
+- Current/NEXT_CHAT_START_PROMPT_S1.42E.txt
+- Current/README_Handover_S1.42E.txt
+- Current/Projektstatus_S1.42E.json
+- Current/VERIFIKATION_S1.42E.txt
+- Current/Aktive_Modliste_S1.42E.txt
+- Current/DATEIINVENTAR_S1.42E.txt
+- Current/SHA256SUMS_S1.42E.txt
+
+AKTUELLER TESTBUILD
+- Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z
+- ProfileSources/S1.42E/
+- Current/AUTO_BUILD_RESULT.json
+- Current/AUTO_BUILD_RESULT.md
+- Patches/S139CompatibilityFixes/Plugin.cs
+
+VORGÄNGER / DIAGNOSE
+- Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z
+- ProfileSources/S1.42D/
+- RuntimeEvidence/S1.42D/20260903T084247Z/
+- Current/21_S1.42D_CRASH_S1.42E_HOTFIX.md
+- Current/20_S1.42D_BUILD_AND_TEST.md
+- Current/19_S1.42D_ISOLATED_ENEMY_TEST.md
+
+LETZTER GETESTETER TECHNISCHER STAND
+- Profiles/LC V1 S1.42C Pikmin Enemy Guard.r2z
+- ProfileSources/S1.42C/
+- RuntimeEvidence/S1.42C/20260902T235238Z/
+- Current/15_RUNTIME_EVIDENCE_S1.42C.md
+- Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+
+AKZEPTIERTE GAMEPLAY-BASIS
+- Profiles/LC V1 S1.41 BCMER Reactivation.r2z
+- RuntimeEvidence/S1.41/20260902T215804Z/
+
+INTERIOR/LMDL DIAGNOSE
+- S1.42A profile/snapshot/runtime evidence
+- S1.42B profile/snapshot/runtime evidence
+- Current/13_RUNTIME_EVIDENCE_S1.42A_INTERIORS.md
+- Current/14_RUNTIME_EVIDENCE_S1.42B_LMDL_PIKMIN.md
+
+HISTORISCHE PRIMÄRREFERENZ JUIJUI
+- References/LegacyProfiles/juijui/juijui.r2z
+- References/LegacyProfiles/juijui/Extracted/
+- References/LegacyProfiles/juijui/README.md
+- References/juijui_Referenzwerte.txt
+- Current/18_JUIJUI_LEGACY_REFERENCE.md
+
+BUILD / RUNTIME CONTROL
+- BuildSpecs/current.json
+- BuildSpecs/S1.42D_PLAN.md (historisch/superseded; nicht bauen)
+- BuildSystem/
+- .github/workflows/profile-build.yml
+- .github/workflows/profile-index.yml
+- .github/workflows/runtime-ingest.yml
+- RuntimeInbox/ACTIVE_BUILD.txt
+- RuntimeInbox/Current/
+
+DEFERRED ROADMAP
+- Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md
+- equal interior probability
+- CullFactory junkrooms/shatteredrooms
+- Shatteredrooms restrictions
+- Mausoleum-specific fog
+- BCMER 8 x 12.5%

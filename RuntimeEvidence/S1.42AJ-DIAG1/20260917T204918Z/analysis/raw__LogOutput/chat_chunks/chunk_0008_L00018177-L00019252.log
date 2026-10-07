@@ -1,0 +1,1076 @@
+[20:47:46.6925682] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_pxom's power (0) from the RoundManager; 
+Current exterior power level is 0
+[20:47:46.7172130] [Warning: Unity Log] [Netcode] NetworkObject #582 moved to the root because its parent NetworkObject #581 is destroyed
+[20:47:46.7172130] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Removed Leader
+[20:47:46.7172130] [Debug  : LethalMin] Yellow Pikmin_G5l3h: Setting collision mode to 1
+[20:47:46.7172130] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[20:47:46.7172130] [Warning: Unity Log] [Netcode] NetworkObject #594 moved to the root because its parent NetworkObject #593 is destroyed
+[20:47:46.7172130] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Removed Leader
+[20:47:46.7172130] [Debug  : LethalMin] Yellow Pikmin_XYErHj: Setting collision mode to 1
+[20:47:46.7172130] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[20:47:46.7182138] [Debug  :Starlancer AI Fix] Yellow Pikmin_G5l3h from the exterior enemy list has died; 
+Previous exterior power level is 0
+[20:47:46.7182138] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_G5l3h's power (0) from the RoundManager; 
+Current exterior power level is 0
+[20:47:46.7182138] [Debug  :Starlancer AI Fix] Yellow Pikmin_XYErHj from the exterior enemy list has died; 
+Previous exterior power level is 0
+[20:47:46.7182138] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_XYErHj's power (0) from the RoundManager; 
+Current exterior power level is 0
+[20:47:46.7595956] [Warning: Unity Log] [Netcode] NetworkObject #580 moved to the root because its parent NetworkObject #579 is destroyed
+[20:47:46.7595956] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Removed Leader
+[20:47:46.7605949] [Debug  : LethalMin] Yellow Pikmin_8LNgEB: Setting collision mode to 1
+[20:47:46.7605949] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[20:47:46.7605949] [Warning: Unity Log] [Netcode] NetworkObject #592 moved to the root because its parent NetworkObject #591 is destroyed
+[20:47:46.7605949] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Removed Leader
+[20:47:46.7635961] [Debug  : LethalMin] Yellow Pikmin_ruCpzY: Setting collision mode to 1
+[20:47:46.7635961] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[20:47:46.7635961] [Warning: Unity Log] [Netcode] NetworkObject #614 moved to the root because its parent NetworkObject #613 is destroyed
+[20:47:46.7635961] [Debug  : LethalMin] Yellow Pikmin_3wnH: Removed Leader
+[20:47:46.7645962] [Debug  : LethalMin] Yellow Pikmin_3wnH: Setting collision mode to 1
+[20:47:46.7645962] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[20:47:46.7650999] [Debug  :Starlancer AI Fix] Yellow Pikmin_8LNgEB from the exterior enemy list has died; 
+Previous exterior power level is 0
+[20:47:46.7650999] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_8LNgEB's power (0) from the RoundManager; 
+Current exterior power level is 0
+[20:47:46.7650999] [Debug  :Starlancer AI Fix] Yellow Pikmin_ruCpzY from the exterior enemy list has died; 
+Previous exterior power level is 0
+[20:47:46.7650999] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_ruCpzY's power (0) from the RoundManager; 
+Current exterior power level is 0
+[20:47:46.7661049] [Debug  :Starlancer AI Fix] Yellow Pikmin_3wnH from the exterior enemy list has died; 
+Previous exterior power level is 0
+[20:47:46.7661049] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_3wnH's power (0) from the RoundManager; 
+Current exterior power level is 0
+[20:47:46.8327993] [Warning: Unity Log] [Netcode] NetworkObject #586 moved to the root because its parent NetworkObject #585 is destroyed
+[20:47:46.8327993] [Debug  : LethalMin] Yellow Pikmin_khCd: Removed Leader
+[20:47:46.8343032] [Debug  : LethalMin] Yellow Pikmin_khCd: Setting collision mode to 1
+[20:47:46.8343032] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[20:47:46.8343032] [Warning: Unity Log] [Netcode] NetworkObject #620 moved to the root because its parent NetworkObject #619 is destroyed
+[20:47:46.8343032] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Removed Leader
+[20:47:46.8343032] [Debug  : LethalMin] Yellow Pikmin_hcRGph: Setting collision mode to 1
+[20:47:46.8343032] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[20:47:46.8353086] [Debug  :Starlancer AI Fix] Yellow Pikmin_khCd from the exterior enemy list has died; 
+Previous exterior power level is 0
+[20:47:46.8353086] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_khCd's power (0) from the RoundManager; 
+Current exterior power level is 0
+[20:47:46.8353086] [Debug  :Starlancer AI Fix] Yellow Pikmin_hcRGph from the exterior enemy list has died; 
+Previous exterior power level is 0
+[20:47:46.8353086] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_hcRGph's power (0) from the RoundManager; 
+Current exterior power level is 0
+[20:47:46.8643023] [Warning: Unity Log] [Netcode] NetworkObject #622 moved to the root because its parent NetworkObject #621 is destroyed
+[20:47:46.8643023] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Removed Leader
+[20:47:46.8673074] [Debug  : LethalMin] Yellow Pikmin_IkVZWQe: Setting collision mode to 1
+[20:47:46.8673074] [Warning: Unity Log] Failed to create agent because it is not close enough to the NavMesh
+[20:47:46.8683060] [Debug  :Starlancer AI Fix] Yellow Pikmin_IkVZWQe from the exterior enemy list has died; 
+Previous exterior power level is 0
+[20:47:46.8683060] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_IkVZWQe's power (0) from the RoundManager; 
+Current exterior power level is 0
+[20:47:47.7864209] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:47:47.7864209] [Debug  :   Coroner] Query successful!True
+[20:47:48.3673371] [Info   :GeneralImprovements] Applied 2 queued monitor changes.
+[20:47:48.5657617] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:47:48.5657617] [Debug  :   Coroner] Query successful!True
+[20:47:48.6966863] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[20:47:49.0329792] [Info   : Unity Log] Got spider web raycast; end point: (-48.17, -218.92, 187.84); 4.025247
+[20:47:49.0329792] [Debug  :ReXuvination] WebContainer (UnityEngine.GameObject)'s colliders have been optimised!
+[20:47:49.2666065] [Debug  :Spawn Cycle Fixes] Enemy "RadMech" has no nests present on map
+[20:47:49.2666065] [Debug  :Spawn Cycle Fixes] Enemy "RadMech" ignored, as natural spawns are still not finished
+[20:47:49.2736094] [Info   : Unity Log] Spawned enemy: Earth Leviathan
+[20:47:49.2805061] [Debug  :Spawn Cycle Fixes] Enemy "RadMech" has no nests present on map
+[20:47:49.2805061] [Debug  :Spawn Cycle Fixes] Enemy "RadMech" ignored, as natural spawns are still not finished
+[20:47:49.3001959] [Info   : Unity Log] Spawned enemy: Baboon hawk
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 0
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #0 'Centipede' : probability: 39
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 2
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #2 'Hoarding bug' : probability: 22
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 3
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #3 'Flowerman' : probability: 4
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 4
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #4 'Crawler' : probability: 39
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 5
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #5 'Blob' : probability: 31
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 6
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #6 'Spring' : probability: 33
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 7
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #7 'Puffer' : probability: 9
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 8
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #8 'Nutcracker' : probability: 8
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 10
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #10 'Stingray' : probability: 15
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 11
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #11 'Masked' : probability: 34
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 12
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #12 'Jester' : probability: 3
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 13
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #13 'Butler' : probability: 16
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 14
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #14 'Clay Surgeon' : probability: 1
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 15
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #15 'Girl' : probability: 1
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 16
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #16 'Football' : probability: 0
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 17
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #17 'Herobrine' : probability: 3
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 18
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #18 'Locker' : probability: 3
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 19
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #19 'ImmortalSnail' : probability: 21
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 20
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #20 'HarpGhost' : probability: 0
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 21
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #21 'BagpipeGhost' : probability: 0
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 22
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #22 'EnforcerGhost' : probability: 0
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 23
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #23 'Shy guy' : probability: 3
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 25
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #25 'SlendermanEnemy' : probability: 0
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 26
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #26 'Cabinet' : probability: 0
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 28
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #28 'RollingGiant' : probability: 22
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 29
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #29 'kamikazieBugs' : probability: 17
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 30
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #30 'Boomba' : probability: 0
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 31
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #31 'Rabbit Magician' : probability: 0
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 32
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #32 'Peace Keeper' : probability: 4
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 33
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #33 'Lord Of The Manor' : probability: 2
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 34
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #34 'Janitor' : probability: 8
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 35
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #35 'Nancy' : probability: 5
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 36
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #36 'Mistress' : probability: 0
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 37
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #37 'Duck' : probability: 0
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 38
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #38 'Transporter' : probability: 0
+[20:47:49.3001959] [Info   : Unity Log] enemy rush index is -1; current index 39
+[20:47:49.3001959] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #39 'kamikazieBugs' : probability: 17
+[20:47:49.3001959] [Info   : Unity Log] ADDING ENEMY #5: Blob
+[20:47:49.3001959] [Info   : Unity Log] Adding 1 to power level, enemy: Blob
+[20:47:49.3011957] [Info   : Unity Log] Adding 1 to diversity level for enemy 'Blob'
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 0
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #0 'Centipede' : probability: 39
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 2
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #2 'Hoarding bug' : probability: 22
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 3
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #3 'Flowerman' : probability: 4
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 4
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #4 'Crawler' : probability: 39
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 5
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #5 'Blob' : probability: 31
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 6
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #6 'Spring' : probability: 33
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 7
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #7 'Puffer' : probability: 9
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 8
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #8 'Nutcracker' : probability: 8
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 10
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #10 'Stingray' : probability: 15
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 11
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #11 'Masked' : probability: 34
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 12
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #12 'Jester' : probability: 3
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 13
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #13 'Butler' : probability: 16
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 14
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #14 'Clay Surgeon' : probability: 1
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 15
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #15 'Girl' : probability: 1
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 16
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #16 'Football' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 17
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #17 'Herobrine' : probability: 3
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 18
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #18 'Locker' : probability: 3
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 19
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #19 'ImmortalSnail' : probability: 21
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 20
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #20 'HarpGhost' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 21
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #21 'BagpipeGhost' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 22
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #22 'EnforcerGhost' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 23
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #23 'Shy guy' : probability: 3
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 25
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #25 'SlendermanEnemy' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 26
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #26 'Cabinet' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 28
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #28 'RollingGiant' : probability: 22
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 29
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #29 'kamikazieBugs' : probability: 17
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 30
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #30 'Boomba' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 31
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #31 'Rabbit Magician' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 32
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #32 'Peace Keeper' : probability: 4
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 33
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #33 'Lord Of The Manor' : probability: 2
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 34
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #34 'Janitor' : probability: 8
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 35
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #35 'Nancy' : probability: 5
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 36
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #36 'Mistress' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 37
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #37 'Duck' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 38
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #38 'Transporter' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 39
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #39 'kamikazieBugs' : probability: 17
+[20:47:49.3011957] [Info   : Unity Log] ADDING ENEMY #0: Centipede
+[20:47:49.3011957] [Info   : Unity Log] Adding 1 to power level, enemy: Centipede
+[20:47:49.3011957] [Info   : Unity Log] Adding 1 to diversity level for enemy 'Centipede'
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 0
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #0 'Centipede' : probability: 39
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 2
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #2 'Hoarding bug' : probability: 22
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 5
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #5 'Blob' : probability: 31
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 6
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #6 'Spring' : probability: 33
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 7
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #7 'Puffer' : probability: 9
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 8
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #8 'Nutcracker' : probability: 8
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 10
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #10 'Stingray' : probability: 15
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 11
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #11 'Masked' : probability: 34
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 13
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #13 'Butler' : probability: 16
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 14
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #14 'Clay Surgeon' : probability: 1
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 15
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #15 'Girl' : probability: 1
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 16
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #16 'Football' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 17
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #17 'Herobrine' : probability: 3
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 18
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #18 'Locker' : probability: 3
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 19
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #19 'ImmortalSnail' : probability: 21
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 20
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #20 'HarpGhost' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 21
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #21 'BagpipeGhost' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 25
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #25 'SlendermanEnemy' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 26
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #26 'Cabinet' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 28
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #28 'RollingGiant' : probability: 22
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 29
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #29 'kamikazieBugs' : probability: 17
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 30
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #30 'Boomba' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 32
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #32 'Peace Keeper' : probability: 4
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 33
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #33 'Lord Of The Manor' : probability: 2
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 34
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #34 'Janitor' : probability: 8
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 35
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #35 'Nancy' : probability: 5
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 36
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #36 'Mistress' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 37
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #37 'Duck' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 38
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #38 'Transporter' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 39
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #39 'kamikazieBugs' : probability: 17
+[20:47:49.3011957] [Info   : Unity Log] ADDING ENEMY #35: Nancy
+[20:47:49.3011957] [Info   : Unity Log] Adding 1 to power level, enemy: Nancy
+[20:47:49.3011957] [Info   : Unity Log] Adding 0 to diversity level for enemy 'Nancy'
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 0
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #0 'Centipede' : probability: 39
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 2
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #2 'Hoarding bug' : probability: 22
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 5
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #5 'Blob' : probability: 31
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 7
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #7 'Puffer' : probability: 9
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 8
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #8 'Nutcracker' : probability: 8
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 10
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #10 'Stingray' : probability: 15
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 11
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #11 'Masked' : probability: 34
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 14
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #14 'Clay Surgeon' : probability: 1
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 18
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #18 'Locker' : probability: 3
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 19
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #19 'ImmortalSnail' : probability: 21
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 20
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #20 'HarpGhost' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 21
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #21 'BagpipeGhost' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 25
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #25 'SlendermanEnemy' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 26
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #26 'Cabinet' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 28
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #28 'RollingGiant' : probability: 22
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 29
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #29 'kamikazieBugs' : probability: 17
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 30
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #30 'Boomba' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 34
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #34 'Janitor' : probability: 8
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 38
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #38 'Transporter' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 39
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #39 'kamikazieBugs' : probability: 17
+[20:47:49.3011957] [Info   : Unity Log] ADDING ENEMY #10: Stingray
+[20:47:49.3011957] [Info   : Unity Log] Adding 0.5 to power level, enemy: Stingray
+[20:47:49.3011957] [Info   : Unity Log] Adding 1 to diversity level for enemy 'Stingray'
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 10
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #10 'Stingray' : probability: 20
+[20:47:49.3011957] [Info   : Unity Log] ADDING ENEMY #10: Stingray
+[20:47:49.3011957] [Info   : Unity Log] Adding 0.5 to power level, enemy: Stingray
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 0
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #0 'Centipede' : probability: 39
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 2
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #2 'Hoarding bug' : probability: 22
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 5
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #5 'Blob' : probability: 31
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 6
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #6 'Spring' : probability: 33
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 7
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #7 'Puffer' : probability: 9
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 8
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #8 'Nutcracker' : probability: 8
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 10
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #10 'Stingray' : probability: 24
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 11
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #11 'Masked' : probability: 34
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 13
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #13 'Butler' : probability: 16
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 14
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #14 'Clay Surgeon' : probability: 1
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 15
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #15 'Girl' : probability: 1
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 16
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #16 'Football' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 17
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #17 'Herobrine' : probability: 3
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 18
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #18 'Locker' : probability: 3
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 19
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #19 'ImmortalSnail' : probability: 21
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 20
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #20 'HarpGhost' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 21
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #21 'BagpipeGhost' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 25
+[20:47:49.3011957] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #25 'SlendermanEnemy' : probability: 0
+[20:47:49.3011957] [Info   : Unity Log] enemy rush index is -1; current index 26
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #26 'Cabinet' : probability: 0
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 28
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #28 'RollingGiant' : probability: 22
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 29
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #29 'kamikazieBugs' : probability: 17
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 30
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #30 'Boomba' : probability: 0
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 32
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #32 'Peace Keeper' : probability: 4
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 33
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #33 'Lord Of The Manor' : probability: 2
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 34
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #34 'Janitor' : probability: 8
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 36
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #36 'Mistress' : probability: 0
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 37
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #37 'Duck' : probability: 0
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 38
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #38 'Transporter' : probability: 0
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 39
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #39 'kamikazieBugs' : probability: 17
+[20:47:49.3027491] [Info   : Unity Log] ADDING ENEMY #19: ImmortalSnail
+[20:47:49.3027491] [Info   : Unity Log] Adding 1 to power level, enemy: ImmortalSnail
+[20:47:49.3027491] [Info   : Unity Log] Adding 0 to diversity level for enemy 'ImmortalSnail'
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 0
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #0 'Centipede' : probability: 39
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 2
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #2 'Hoarding bug' : probability: 22
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 5
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #5 'Blob' : probability: 31
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 7
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #7 'Puffer' : probability: 9
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 8
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #8 'Nutcracker' : probability: 8
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 10
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #10 'Stingray' : probability: 24
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 11
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #11 'Masked' : probability: 34
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 14
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #14 'Clay Surgeon' : probability: 1
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 18
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #18 'Locker' : probability: 3
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 19
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #19 'ImmortalSnail' : probability: 21
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 20
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #20 'HarpGhost' : probability: 0
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 21
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #21 'BagpipeGhost' : probability: 0
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 25
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #25 'SlendermanEnemy' : probability: 0
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 26
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #26 'Cabinet' : probability: 0
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 28
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #28 'RollingGiant' : probability: 22
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 29
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #29 'kamikazieBugs' : probability: 17
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 30
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #30 'Boomba' : probability: 0
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 34
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #34 'Janitor' : probability: 8
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 38
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #38 'Transporter' : probability: 0
+[20:47:49.3027491] [Info   : Unity Log] enemy rush index is -1; current index 39
+[20:47:49.3027491] [Info   : Unity Log] Hours: 660 ; Time: 0.6111111 | Enemy #39 'kamikazieBugs' : probability: 17
+[20:47:49.3027491] [Info   : Unity Log] ADDING ENEMY #0: Centipede
+[20:47:49.3027491] [Info   : Unity Log] Adding 1 to power level, enemy: Centipede
+[20:47:49.3163127] [Debug  :GeneralImprovements] Updated danger level display.
+[20:47:49.3443771] [Info   :qwbarch.Mirage] BaboonBirdAI(6136fea9-8185-4b56-a01f-42679d60fbf2) - Mimicking player #0
+[20:47:49.3549336] [Info   :qwbarch.Mirage] BaboonBirdAI(57420301-3d85-4ab8-b86d-41be11680b80) - Mimicking player #0
+[20:47:49.3765894] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[20:47:49.3765894] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[20:47:49.3765894] [Debug  :   Coroner] Handling Out of Bounds death...
+[20:47:49.3765894] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[20:47:49.3765894] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[20:47:49.3765894] [Debug  :   Coroner] Handling Out of Bounds death...
+[20:47:49.4019159] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[20:47:49.4019159] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[20:47:49.4019159] [Debug  :   Coroner] Handling Out of Bounds death...
+[20:47:50.6127334] [Debug  :GeneralImprovements] Updated time display.
+[20:47:50.6303231] [Info   : Unity Log] Targetable A [NCS:480-54107]
+[20:47:50.9095855] [Debug  : LethalMin] OnionHUDSlot: UpPressed: (x1) White Pikmin (IS:1) (EC:0) (PIC:0)
+[20:47:51.7727703] [Debug  : LethalMin] Confirmed Button Pressed, sending withdraw request for 2 types to server.
+[20:47:51.7727703] [Info   : LethalMin] MasaeAhmya: withdrawing (0, -1), of (Purple Pikmin, White Pikmin)
+[20:47:51.7727703] [Info   : LethalMin] Setting White Pikmin_meks to the onion
+[20:47:51.7727703] [Debug  : LethalMin] White Pikmin_meks: Removed Leader
+[20:47:51.7727703] [Debug  : LethalMin] White Pikmin_meks: Setting collision mode to 1
+[20:47:51.7727703] [Debug  : LethalMin] White Pikmin_meks: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[20:47:51.9018093] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[20:47:51.9331361] [Debug  : LethalMin] White Pikmin_meks: Is linking onto Link
+[20:47:51.9331361] [Debug  : LethalMin] White Pikmin_meks: Setting collision mode to 0
+[20:47:52.2513928] [Warning: Unity Log] [Netcode] NetworkObject #564 moved to the root because its parent NetworkObject #537 is destroyed
+[20:47:52.2513928] [Debug  : LethalMin] White Pikmin_meks: Removed Leader
+[20:47:52.2513928] [Debug  : LethalMin] White Pikmin_meks: Setting collision mode to 1
+[20:47:52.2513928] [Debug  :Starlancer AI Fix] White Pikmin_meks from the interior enemy list has died; 
+Previous interior power level is 20
+[20:47:52.2513928] [Debug  :Starlancer AI Fix] Removing White Pikmin_meks's power (0) from the RoundManager; 
+Current interior power level is 20
+[20:47:53.6747775] [Debug  :GeneralImprovements] Updated time display.
+[20:47:53.9716458] [Info   : LethalMin] Purple Pikmin_fkNETNb: Found enemy: HoarderBug(Clone)
+[20:47:53.9716458] [Info   : LethalMin] Purple Pikmin_fkNETNb: Setting current task to AttackEnemy
+[20:47:55.3180636] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[20:47:56.5648039] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[20:47:56.6627948] [Debug  :GeneralImprovements] Updated time display.
+[20:47:56.8613428] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[20:47:58.3251218] [Info   : Unity Log] Targetable A [NCS:480-54587]
+[20:47:59.6815663] [Debug  :GeneralImprovements] Updated time display.
+[20:47:59.8739106] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[20:47:59.8739106] [Info   : LethalMin] White Pikmin_iesOa: Setting growth stage to 2
+[20:48:02.7012272] [Debug  :GeneralImprovements] Updated time display.
+[20:48:04.0246998] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[20:48:05.0531082] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[20:48:05.7198817] [Debug  :GeneralImprovements] Updated time display.
+[20:48:05.9100383] [Info   : Unity Log] Targetable A [NCS:480-55086]
+[20:48:07.4432347] [Info   : Unity Log] Update used by player client rpc has been called for interact trigger: TerminalScript
+[20:48:07.4432347] [Info   : Unity Log] Set interminalmenu to true: True
+[20:48:07.4447500] [Message:darmuhsTerminalStuff] Mode set to - [ None ] OnUpdateCamsEvent
+[20:48:07.8734042] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[20:48:08.7704570] [Debug  :GeneralImprovements] Updated time display.
+[20:48:09.7778883] [Info   : Unity Log] Parsed word: enemies
+[20:48:09.7778883] [Info   : Unity Log] noun keyword: enemies ; verb keyword: list ; result null? : False
+[20:48:09.7778883] [Info   : Unity Log] result: 
+[20:48:09.8018138] [Message:darmuhsTerminalStuff] Mode set to - [ None ] OnUpdateCamsEvent
+[20:48:09.8018138] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MHELP
+[20:48:09.8018138] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MEVENT
+[20:48:09.8018138] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MCLEAR
+[20:48:09.8018138] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MEVENTS
+[20:48:09.8018138] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MRANDOM
+[20:48:09.8018138] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MPAY
+[20:48:09.8018138] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MENEMIES
+[20:48:09.8018138] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MITEMS
+[20:48:09.8018138] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MMOONS
+[20:48:09.8018138] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MSCAN
+[20:48:09.8018138] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MHAZARDS
+[20:48:10.6334737] [Info   : Unity Log] Found enemy vent which has its time up: VentEntrance(Clone). Spawning Stingray from vent.
+[20:48:10.6500378] [Info   : Unity Log] Spawned enemy from vent
+[20:48:10.6500378] [Info   : Unity Log] Found enemy vent which has its time up: VentEntrance(Clone). Spawning Blob from vent.
+[20:48:10.6510377] [Info   : Unity Log] Spawned enemy from vent
+[20:48:10.6997725] [Debug  :Starlancer AI Fix] The Enemy Whitelist contains: Blob, Butler, Centipede, Crawler, Flowerman, HoarderBug, Nutcracker, SandSpider, Stingray.
+[20:48:10.6997725] [Debug  :Starlancer AI Fix] Adding IVisibleThreat component to StingrayEnemy(Clone).
+[20:48:10.7169684] [Debug  :Starlancer AI Fix] The Enemy Whitelist contains: Blob, Butler, Centipede, Crawler, Flowerman, HoarderBug, Nutcracker, SandSpider, Stingray.
+[20:48:10.7169684] [Debug  :Starlancer AI Fix] Adding IVisibleThreat component to Blob(Clone).
+[20:48:11.7940897] [Debug  :GeneralImprovements] Updated time display.
+[20:48:12.2107200] [Info   : Unity Log] Got spider web raycast; end point: (-46.70, -218.92, 195.21); 2.555934
+[20:48:12.2117225] [Debug  :ReXuvination] WebContainer (UnityEngine.GameObject)'s colliders have been optimised!
+[20:48:12.5231807] [Info   : Unity Log] Anomaly random yrotation nearest: 237
+[20:48:13.5078254] [Info   : Unity Log] Targetable A [NCS:480-55589]
+[20:48:14.8534963] [Debug  :GeneralImprovements] Updated time display.
+[20:48:17.7709872] [Info   : Unity Log] Found enemy vent which has its time up: VentEntrance(Clone). Spawning Stingray from vent.
+[20:48:17.7886875] [Info   : Unity Log] Spawned enemy from vent
+[20:48:17.7886875] [Info   : Unity Log] Found enemy vent which has its time up: VentEntrance(Clone). Spawning Centipede from vent.
+[20:48:17.7906913] [Info   : Unity Log] Spawned enemy from vent
+[20:48:17.8399688] [Debug  :Starlancer AI Fix] The Enemy Whitelist contains: Blob, Butler, Centipede, Crawler, Flowerman, HoarderBug, Nutcracker, SandSpider, Stingray.
+[20:48:17.8399688] [Debug  :Starlancer AI Fix] Adding IVisibleThreat component to StingrayEnemy(Clone).
+[20:48:17.8570369] [Debug  :Starlancer AI Fix] The Enemy Whitelist contains: Blob, Butler, Centipede, Crawler, Flowerman, HoarderBug, Nutcracker, SandSpider, Stingray.
+[20:48:17.8570369] [Debug  :Starlancer AI Fix] Adding IVisibleThreat component to Centipede(Clone).
+[20:48:17.8580388] [Info   :qwbarch.Mirage] CentipedeAI(a742148a-b52c-4c87-9ea1-1e6b02dff2bf) - Mimicking player #0
+[20:48:17.9021769] [Debug  :GeneralImprovements] Updated time display.
+[20:48:18.7269994] [Info   : Unity Log] Stop special animation F
+[20:48:18.7269994] [Info   : Unity Log] Stop special animation G
+[20:48:18.7269994] [Info   : Unity Log] Quit terminal; inTerminalMenu true?: {playerScript.inTerminalMenu}
+[20:48:18.7396157] [Debug  :   Coroner] Querying target player parameters pre-death...
+[20:48:18.7396157] [Debug  :   Coroner] Query successful!True
+[20:48:20.6960069] [Info   : Unity Log] Targetable A [NCS:480-56070]
+[20:48:20.9261933] [Debug  :GeneralImprovements] Updated time display.
+[20:48:21.8279232] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[20:48:21.8662591] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[20:48:23.9452228] [Debug  :GeneralImprovements] Updated time display.
+[20:48:24.4150386] [Info   : LethalMin] Purple Pikmin_1SSA: Found enemy: Centipede(Clone)
+[20:48:24.4150386] [Info   : LethalMin] Purple Pikmin_1SSA: Setting current task to AttackEnemy
+[20:48:26.9692749] [Debug  :GeneralImprovements] Updated time display.
+[20:48:27.8183798] [Info   : Unity Log] Found enemy vent which has its time up: VentEntrance(Clone). Spawning Centipede from vent.
+[20:48:27.8193812] [Info   : Unity Log] Spawned enemy from vent
+[20:48:27.8293563] [Debug  :Starlancer AI Fix] The Enemy Whitelist contains: Blob, Butler, Centipede, Crawler, Flowerman, HoarderBug, Nutcracker, SandSpider, Stingray.
+[20:48:27.8293563] [Debug  :Starlancer AI Fix] Adding IVisibleThreat component to Centipede(Clone).
+[20:48:27.8293563] [Info   :qwbarch.Mirage] CentipedeAI(26af3f60-7436-4029-a909-41a9d72d3c9b) - Mimicking player #0
+[20:48:30.0129534] [Debug  :GeneralImprovements] Updated time display.
+[20:48:33.0726644] [Debug  :GeneralImprovements] Updated time display.
+[20:48:36.1255010] [Debug  :GeneralImprovements] Updated time display.
+[20:48:39.1811094] [Debug  :GeneralImprovements] Updated time display.
+[20:48:40.5324883] [Info   :GeneralImprovements] Server disconnecting - dropping FlashlightItem(Clone)
+[20:48:40.5324883] [Info   :GeneralImprovements] Server disconnecting - dropping Key(Clone)
+[20:48:40.5324883] [Info   : Unity Log] Leaving current lobby
+[20:48:40.5324883] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[20:48:40.5607394] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[20:48:40.5617389] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[20:48:40.5617389] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[20:48:40.5617389] [Info   :Rolling Giant] Resetting all rolling giants!
+[20:48:40.5617389] [Message:Rolling Giant] Reverting sync
+[20:48:40.5637362] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[20:48:40.5637362] [Debug  :MrHat.BasedItemSaving] Saved 26 exact item poses
+[20:48:40.5647361] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[20:48:40.5662396] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[20:48:40.5672437] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[20:48:40.5994894] [Info   :LethalPerformance] Saved 2 save(s)
+[20:48:40.6100372] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[20:48:40.6480290] [Info   : LethalMin] Yellow Pikmin_LuMKh: Task finished
+[20:48:40.6480290] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Setting to idle on local client
+[20:48:40.6480290] [Info   : LethalMin] Yellow Pikmin_LuMKh: Dropped item ModdedEnemyPowerLevel1Body(Clone)
+[20:48:40.6480290] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Setting collision mode to 1
+[20:48:40.6480290] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Removed Leader
+[20:48:40.6480290] [Info   : LethalMin] Yellow Pikmin_LuMKh: Removing current task
+[20:48:40.6480290] [Debug  : LethalMin] Yellow Pikmin_LuMKh: Removed Leader
+[20:48:40.6490337] [Debug  : LethalMin] Bulbmin_bkWk: Removed Leader
+[20:48:40.6490337] [Info   : LethalMin] White Pikmin_I2IIL: Removing current task
+[20:48:40.6490337] [Debug  : LethalMin] White Pikmin_I2IIL: Removed Leader
+[20:48:40.6490337] [Debug  : LethalMin] Purple Pikmin_0L5qSyb: Removed Leader
+[20:48:40.6500356] [Info   : LethalMin] White Pikmin_iesOa: Removing current task
+[20:48:40.6500356] [Debug  : LethalMin] White Pikmin_iesOa: Removed Leader
+[20:48:40.6500356] [Debug  : LethalMin] Purple Pikmin_Qwfwi4b: Removed Leader
+[20:48:40.6500356] [Debug  : LethalMin] Bulbmin_8FRUq: Removed Leader
+[20:48:40.6500356] [Debug  : LethalMin] Purple Pikmin_pYE2yAb: Removed Leader
+[20:48:40.6500356] [Debug  : LethalMin] Purple Pikmin_Xq1a6: Removed Leader
+[20:48:40.6500356] [Info   : LethalMin] White Pikmin_F9o8DHb: Removing current task
+[20:48:40.6500356] [Debug  : LethalMin] White Pikmin_F9o8DHb: Removed Leader
+[20:48:40.6510358] [Debug  : LethalMin] Bulbmin_xSagL: Removed Leader
+[20:48:40.6510358] [Info   : LethalMin] Purple Pikmin_fkNETNb: Removing current task
+[20:48:40.6510358] [Debug  : LethalMin] Purple Pikmin_fkNETNb: Removed Leader
+[20:48:40.6510358] [Debug  : LethalMin] White Pikmin_N3Amb: Removed Leader
+[20:48:40.6510358] [Debug  : LethalMin] Bulbmin_4MxKjU: Removed Leader
+[20:48:40.6510358] [Debug  : LethalMin] White Pikmin_CGJy: Removed Leader
+[20:48:40.6520371] [Debug  : LethalMin] White Pikmin_uY6WEh: Removed Leader
+[20:48:40.6520371] [Debug  : LethalMin] Purple Pikmin_brt4: Removed Leader
+[20:48:40.6520371] [Debug  : LethalMin] White Pikmin_JAfcUn: Removed Leader
+[20:48:40.6520371] [Info   : LethalMin] Purple Pikmin_1SSA: Removing current task
+[20:48:40.6520371] [Debug  : LethalMin] Purple Pikmin_1SSA: Removed Leader
+[20:48:40.6520371] [Debug  : LethalMin] White Pikmin_jlFiju: Removed Leader
+[20:48:40.6696080] [Info   : LethalMin] ShipOnion: saved 40 pikmin to disk on despawn.
+[20:48:40.6987274] [Info   :LobbyControl] 0 disconnected
+[20:48:40.6997273] [Info   : Unity Log] Disconnect callback called
+[20:48:40.6997273] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[20:48:40.6997273] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[20:48:40.6997273] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[20:48:40.7047285] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 20
+[20:48:40.7047285] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 19
+[20:48:40.7057266] [Debug  :Starlancer AI Fix] Centipede(Clone) from the interior enemy list has died; 
+Previous interior power level is 19
+[20:48:40.7068922] [Debug  :Starlancer AI Fix] Removing Centipede(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 18
+[20:48:40.7068922] [Debug  :Starlancer AI Fix] StingrayEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 18
+[20:48:40.7068922] [Debug  :Starlancer AI Fix] Removing StingrayEnemy(Clone)'s power (0.5) from the RoundManager; 
+Current interior power level is 17.5
+[20:48:40.7078919] [Debug  :Starlancer AI Fix] Blob(Clone) from the interior enemy list has died; 
+Previous interior power level is 17.5
+[20:48:40.7078919] [Debug  :Starlancer AI Fix] Removing Blob(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 16.5
+[20:48:40.7078919] [Debug  :Starlancer AI Fix] StingrayEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 16.5
+[20:48:40.7078919] [Debug  :Starlancer AI Fix] Removing StingrayEnemy(Clone)'s power (0.5) from the RoundManager; 
+Current interior power level is 16
+[20:48:40.7088919] [Debug  :Starlancer AI Fix] BaboonHawkEnemy(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 3
+[20:48:40.7088919] [Debug  :Starlancer AI Fix] Removing BaboonHawkEnemy(Clone)'s power (0.5) from the RoundManager; 
+Current exterior power level is 2.5
+[20:48:40.7088919] [Debug  :Starlancer AI Fix] BaboonHawkEnemy(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 2.5
+[20:48:40.7088919] [Debug  :Starlancer AI Fix] Removing BaboonHawkEnemy(Clone)'s power (0.5) from the RoundManager; 
+Current exterior power level is 2
+[20:48:40.7102413] [Debug  :Starlancer AI Fix] SandWorm(Clone) from the exterior enemy list has died; 
+Previous exterior power level is 2
+[20:48:40.7102413] [Debug  :Starlancer AI Fix] Removing SandWorm(Clone)'s power (2) from the RoundManager; 
+Current exterior power level is 0
+[20:48:40.7102413] [Debug  :GeneralImprovements] Updated danger level display.
+[20:48:40.7112461] [Debug  :Starlancer AI Fix] menstalker_prefab(Clone) from the interior enemy list has died; 
+Previous interior power level is 16
+[20:48:40.7112461] [Debug  :Starlancer AI Fix] Removing menstalker_prefab(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 13
+[20:48:40.7112461] [Debug  :Starlancer AI Fix] PufferEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 13
+[20:48:40.7112461] [Debug  :Starlancer AI Fix] Removing PufferEnemy(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 12
+[20:48:40.7122462] [Debug  :Starlancer AI Fix] Janitor(Clone) from the interior enemy list has died; 
+Previous interior power level is 12
+[20:48:40.7122462] [Debug  :Starlancer AI Fix] Removing Janitor(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 11
+[20:48:40.7122462] [Debug  :Starlancer AI Fix] Janitor(Clone) from the interior enemy list has died; 
+Previous interior power level is 11
+[20:48:40.7122462] [Debug  :Starlancer AI Fix] Removing Janitor(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 10
+[20:48:40.7122462] [Debug  :Starlancer AI Fix] SandSpider(Clone) from the interior enemy list has died; 
+Previous interior power level is 10
+[20:48:40.7122462] [Debug  :Starlancer AI Fix] Removing SandSpider(Clone)'s power (2) from the RoundManager; 
+Current interior power level is 8
+[20:48:40.7122462] [Message:SpiderPositionFix] Cleared Bunker Spider #57's data
+[20:48:40.7147589] [Debug  :Starlancer AI Fix] Crawler(Clone) from the interior enemy list has died; 
+Previous interior power level is 8
+[20:48:40.7147589] [Debug  :Starlancer AI Fix] Removing Crawler(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 5
+[20:48:40.7147589] [Debug  :GeneralImprovements] Updated danger level display.
+[20:48:40.7157687] [Debug  :Starlancer AI Fix] AloeBracken(Clone) from the interior enemy list has died; 
+Previous interior power level is 5
+[20:48:40.7157687] [Debug  :Starlancer AI Fix] Removing AloeBracken(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 4
+[20:48:40.7157687] [Debug  :Starlancer AI Fix] HoarderBug(Clone) from the interior enemy list has died; 
+Previous interior power level is 4
+[20:48:40.7157687] [Debug  :Starlancer AI Fix] Removing HoarderBug(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 3
+[20:48:40.7179794] [Debug  :Starlancer AI Fix] CaveDwellerEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 3
+[20:48:40.7179794] [Debug  :Starlancer AI Fix] Removing CaveDwellerEnemy(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7189788] [Debug  :Starlancer AI Fix] Yellow Pikmin_LuMKh from the exterior enemy list has died; 
+Previous exterior power level is 0
+[20:48:40.7189788] [Debug  :Starlancer AI Fix] Removing Yellow Pikmin_LuMKh's power (0) from the RoundManager; 
+Current exterior power level is 0
+[20:48:40.7189788] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[20:48:40.7189788] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[20:48:40.7189788] [Info   : Unity Log] Interact trigger destroying! name: trigger (1)
+[20:48:40.7189788] [Info   : Unity Log] Interact trigger destroying! name: trigger (2)
+[20:48:40.7189788] [Info   : Unity Log] Interact trigger destroying! name: trigger (3)
+[20:48:40.7189788] [Info   : Unity Log] Interact trigger destroying! name: trigger (4)
+[20:48:40.7199767] [Debug  :Starlancer AI Fix] Bulbmin_bkWk from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7199767] [Debug  :Starlancer AI Fix] Removing Bulbmin_bkWk's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7199767] [Debug  :Starlancer AI Fix] White Pikmin_I2IIL from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7199767] [Debug  :Starlancer AI Fix] Removing White Pikmin_I2IIL's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7199767] [Debug  :Starlancer AI Fix] Purple Pikmin_0L5qSyb from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7199767] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_0L5qSyb's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7209752] [Debug  :Starlancer AI Fix] White Pikmin_iesOa from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7209752] [Debug  :Starlancer AI Fix] Removing White Pikmin_iesOa's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7209752] [Debug  :Starlancer AI Fix] Purple Pikmin_Qwfwi4b from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7209752] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_Qwfwi4b's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7209752] [Debug  :Starlancer AI Fix] Bulbmin_8FRUq from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7209752] [Debug  :Starlancer AI Fix] Removing Bulbmin_8FRUq's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7209752] [Debug  :Starlancer AI Fix] Purple Pikmin_pYE2yAb from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7209752] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_pYE2yAb's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7219744] [Debug  :Starlancer AI Fix] Purple Pikmin_Xq1a6 from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7219744] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_Xq1a6's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7219744] [Debug  :Starlancer AI Fix] White Pikmin_F9o8DHb from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7219744] [Debug  :Starlancer AI Fix] Removing White Pikmin_F9o8DHb's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7219744] [Debug  :Starlancer AI Fix] Bulbmin_xSagL from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7219744] [Debug  :Starlancer AI Fix] Removing Bulbmin_xSagL's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7229768] [Debug  :Starlancer AI Fix] Purple Pikmin_fkNETNb from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7229768] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_fkNETNb's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7229768] [Debug  :Starlancer AI Fix] White Pikmin_N3Amb from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7229768] [Debug  :Starlancer AI Fix] Removing White Pikmin_N3Amb's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7229768] [Debug  :Starlancer AI Fix] Bulbmin_4MxKjU from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7229768] [Debug  :Starlancer AI Fix] Removing Bulbmin_4MxKjU's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7229768] [Debug  :Starlancer AI Fix] White Pikmin_CGJy from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7229768] [Debug  :Starlancer AI Fix] Removing White Pikmin_CGJy's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7244804] [Debug  :Starlancer AI Fix] White Pikmin_uY6WEh from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7244804] [Debug  :Starlancer AI Fix] Removing White Pikmin_uY6WEh's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7244804] [Debug  :Starlancer AI Fix] Purple Pikmin_brt4 from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7244804] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_brt4's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7244804] [Debug  :Starlancer AI Fix] White Pikmin_JAfcUn from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7244804] [Debug  :Starlancer AI Fix] Removing White Pikmin_JAfcUn's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7254856] [Debug  :Starlancer AI Fix] Purple Pikmin_1SSA from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7254856] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_1SSA's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7254856] [Debug  :Starlancer AI Fix] White Pikmin_jlFiju from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7254856] [Debug  :Starlancer AI Fix] Removing White Pikmin_jlFiju's power (0) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7254856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7254856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7254856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7254856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7254856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7254856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7254856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7254856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7254856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7254856] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7270669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7270669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7270669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7270669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7270669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7270669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7270669] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7280749] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7280749] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7280749] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7280749] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7280749] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7280749] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7280749] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7280749] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7280749] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7280749] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7280749] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7290738] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7290738] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7290738] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7290738] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7290738] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7290738] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7290738] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7290738] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7290738] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7290738] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7290738] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7300739] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7300739] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7300739] [Info   : Unity Log] Interact trigger destroying! name: Cube (8)
+[20:48:40.7300739] [Info   : Unity Log] Interact trigger destroying! name: Cube (8)
+[20:48:40.7300739] [Info   : Unity Log] Interact trigger destroying! name: Cube (8)
+[20:48:40.7300739] [Info   : Unity Log] Interact trigger destroying! name: Cube (8)
+[20:48:40.7300739] [Info   : Unity Log] Interact trigger destroying! name: Cube (8)
+[20:48:40.7300739] [Info   : Unity Log] Interact trigger destroying! name: Cube (8)
+[20:48:40.7300739] [Info   : Unity Log] Interact trigger destroying! name: Cube (8)
+[20:48:40.7310719] [Info   : Unity Log] Interact trigger destroying! name: LungPlacement
+[20:48:40.7310719] [Debug  :Starlancer AI Fix] KamikazieBugEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7310719] [Debug  :Starlancer AI Fix] Removing KamikazieBugEnemy(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7320747] [Debug  :Starlancer AI Fix] KamikazieBugEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7320747] [Debug  :Starlancer AI Fix] Removing KamikazieBugEnemy(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7320747] [Debug  :GeneralImprovements] Updated danger level display.
+[20:48:40.7330747] [Debug  :Starlancer AI Fix] KamikazieBugEnemy(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[20:48:40.7330747] [Debug  :Starlancer AI Fix] Removing KamikazieBugEnemy(Clone)'s power (1) from the RoundManager; 
+Current interior power level is 0
+[20:48:40.7330747] [Info   : Unity Log] Interact trigger destroying! name: CoinInteract
+[20:48:40.7355824] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA(Clone)
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: Button
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: Button (1)
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: Button (1)
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: Button (1)
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: Button (1)
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: Button (1)
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: Button (1)
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: Button (1)
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: Button (1)
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch1
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch2
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch3
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch4
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: BreakerSwitch5
+[20:48:40.7365914] [Info   : Unity Log] Interact trigger destroying! name: PowerBoxDoor
+[20:48:40.7375908] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7375908] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7385907] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[20:48:40.7395864] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7405877] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7405877] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7405877] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7405877] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7415882] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7415882] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7425907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7425907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7425907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7425907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7425907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7425907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7425907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7425907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7441864] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7441864] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7441864] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7441864] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7441864] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7441864] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7441864] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7441864] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7441864] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7456907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7456907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7456907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7456907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7456907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7456907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7456907] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7466978] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7466978] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7466978] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7466978] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7466978] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7466978] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7476966] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7476966] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7476966] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7476966] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7476966] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7476966] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7476966] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7476966] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7476966] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7476966] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7486955] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7486955] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7486955] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7486955] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7486955] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7486955] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7496942] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7496942] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7496942] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7496942] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7496942] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7496942] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7496942] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7496942] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.7496942] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7506964] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7506964] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7506964] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7506964] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7506964] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7506964] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7607615] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7607615] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[20:48:40.7607615] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7607615] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[20:48:40.7607615] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7607615] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[20:48:40.7607615] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7607615] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[20:48:40.7618073] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7618073] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[20:48:40.7633106] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[20:48:40.7633106] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[20:48:40.7633106] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[20:48:40.7633106] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[20:48:40.7633106] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[20:48:40.7643145] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[20:48:40.7824409] [Info   : Unity Log] Resetting unlockables list!
+[20:48:40.7834410] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[20:48:40.7869481] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[20:48:40.7869481] [Info   : Unity Log] Scene manager is null
+[20:48:40.8007096] [Info   :LethalPerformance] Saved 1 save(s)
+[20:48:40.8557873] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[20:48:40.8738382] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[20:48:40.8738382] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorUpButton
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorMidButton
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorDownButton
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorUpButton
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorMidButton
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorDownButton
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorUpButton
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorMidButton
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorDownButton
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorUpButton
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorMidButton
+[20:48:40.8753482] [Info   : Unity Log] Interact trigger destroying! name: ElevatorDownButton
+[20:48:40.8758613] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.8758613] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[20:48:40.8758613] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger (1)
+[20:48:40.8939106] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[20:48:40.9084512] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:48:40.9104551] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:48:40.9104551] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:48:40.9104551] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[20:48:40.9104551] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[20:48:40.9154742] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[20:48:40.9264884] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[20:48:40.9284950] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[20:48:40.9284950] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[20:48:40.9284950] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[20:48:40.9284950] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[20:48:40.9284950] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[20:48:40.9284950] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[20:48:40.9284950] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[20:48:40.9475592] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[20:48:40.9618699] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[20:48:40.9705585] [Info   :MoreCompany] LANMenu startLAN Patched
+[20:48:41.2806511] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[20:48:42.9448305] [Info   : Unity Log] Returning week num: 144
+[20:48:42.9448305] [Info   : Unity Log] week num: 144
+[20:48:42.9519657] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[20:48:42.9519657] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[20:48:42.9629843] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[20:48:42.9719990] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[20:48:42.9729989] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[20:48:42.9749993] [Info   :LethalPerformance] Saved 1 save(s)
+[20:48:44.5018787] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[20:48:44.5159164] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[20:48:45.4436423] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[20:48:45.4446403] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[20:48:45.4446403] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...

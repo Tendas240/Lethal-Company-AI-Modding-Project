@@ -1,0 +1,95 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "runtime_accepted"
+  },
+  "latest_valid_runtime_evidence": {
+    "build": "S1.42M",
+    "path": "RuntimeEvidence/S1.42M/20260903T163446Z/",
+    "log": "RuntimeEvidence/S1.42M/20260903T163446Z/raw/LogOutput.log",
+    "log_sha256": "0639d5cc04aa54f5d7943ef4689e0d705c818871b019287ca1a1cdc2aa2492fb",
+    "verdict": "PARTIAL_PASS_DEATH_TARGET_SELECTION_FAILED",
+    "confirmed": {
+      "corpse_appears": true,
+      "corpse_pikmin_carry_to_onion": true,
+      "living_hawk_corpse_pickup_blocked": true,
+      "leader_null_errors": 0,
+      "attacking_pikmin_survive_visible_after_hawk_death": false,
+      "death_cleanup_marker": "released 0/0 latched Pikmin"
+    }
+  },
+  "active_candidate": {
+    "build": "S1.42N",
+    "name": "Baboon Hawk Death Target Resolver",
+    "profile": "Profiles/LC V1 S1.42N Baboon Hawk Death Target Resolver.r2z",
+    "sha256": "c87d48464a750f87274e2848c44e5e1e24d4f1da087f59a33e2889744ebc13e9",
+    "base_profile": "Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z",
+    "base_sha256": "9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7",
+    "status": "built_awaiting_runtime_validation",
+    "compatibility_plugin": {
+      "version": "1.3.9"
+    },
+    "build_verification": {
+      "github_actions_run": 44,
+      "result": "success",
+      "zip_members": 331,
+      "readable_snapshot_files": 330,
+      "changed_existing_members": [
+        "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+        "export.r2x"
+      ],
+      "added_members": [],
+      "idle_guard_run": 45
+    }
+  },
+  "active_runtime_gate": {
+    "build": "S1.42N",
+    "issue": "baboon_hawk_death_unlatch_target_selection",
+    "required": [
+      "Pikmin attacking/latching a dying Baboon Hawk are found by the death resolver",
+      "RemoveCurrentTask releases them and they remain visible/usable",
+      "Dead Baboon Hawk corpse remains present and Pikmin-carryable to Onion",
+      "Living Baboon Hawks do not pick up the corpse",
+      "Baboon Hawk -> Pikmin ignore remains intact",
+      "No Leader is null when following loop"
+    ]
+  },
+  "implementation": {
+    "plugin_version": "1.3.9",
+    "candidate_source": "RoundManager.Instance.SpawnedEnemies",
+    "pikmin_filter": "LethalMin.PikminAI assignable",
+    "death_release_radius_m": 4,
+    "execution": "one_shot_after_baboon_hawk_death",
+    "forbidden": [
+      "continuous Update-driven global EnemyAI scan",
+      "broad/inherited LethalMin Harmony scan"
+    ]
+  },
+  "temporary_isolated_test_state": {
+    "enemy_isolation_enabled": true,
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
+    "bcmer_enabled": false,
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+  },
+  "runtime_route": {
+    "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+    "value": "S1.42N"
+  },
+  "build_controller": {
+    "path": "BuildSpecs/current.json",
+    "enabled": false,
+    "build_id": "IDLE_AFTER_S1.42N_BUILD_AWAITING_RUNTIME",
+    "base_profile": "Profiles/LC V1 S1.42N Baboon Hawk Death Target Resolver.r2z",
+    "base_sha256": "c87d48464a750f87274e2848c44e5e1e24d4f1da087f59a33e2889744ebc13e9"
+  },
+  "next_action": {
+    "type": "runtime_test_only",
+    "instruction": "Import S1.42N with Gale Advanced options -> Import all files and repeat the focused Baboon Hawk kill/death/corpse test. Do not restore normal enemies or BCMER first.",
+    "upload": "RuntimeInbox/Current/"
+  }
+}

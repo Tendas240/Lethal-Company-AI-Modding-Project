@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "authority": {
+    "Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md": "80f7b57c09defa48ab99444dfd8d0e1091fa32781e3dc5e44df225d440471fe0",
+    "ProfileSources/S1.42AK/export.r2x": "19935c1afc98de1562fda8b299d7d23d09c3555eac88f9de7992eb3d6e2b46b8"
+  },
+  "package": {
+    "package": "BLB_Thunderstore_Mods_LOL-Lead_Interiors",
+    "version": "0.0.7",
+    "source_url": "https://gcdn.thunderstore.io/live/repository/packages/BLB_Thunderstore_Mods_LOL-Lead_Interiors-0.0.7.zip",
+    "flows": ["BellevilleApp", "CrimsonKeep"],
+    "zip_bytes": 208890187,
+    "zip_sha256": "0e605a7280b3c14d52049c5b42c7a85d3001dc98a7fa61f5822364686d13e16b",
+    "unityfs_members": [{"member": "BepInEx/plugins/boomsinterior.lethalbundle", "bytes": 208728335, "sha256": "bf3ddb70d42084c5847a1038abffb759956fe3e9cb4cfc1bbb657b746a14895b", "unityfs": true}],
+    "archive_members": [
+      {"member": "BepInEx/plugins/boomsinterior.lethalbundle", "bytes": 208728335, "sha256": "bf3ddb70d42084c5847a1038abffb759956fe3e9cb4cfc1bbb657b746a14895b", "unityfs": true},
+      {"member": "CHANGELOG.md", "bytes": 3242, "sha256": "ebb7dc41d261735de03a17b3d17c57baf5d3ef58c2f8d3b6d7cec12f7d7cfb2d", "unityfs": false},
+      {"member": "README.md", "bytes": 2483, "sha256": "2a2581f155d30a3ae058fa4785a4c16f68d6e3ddadc2d2400dde5bd64aa88918", "unityfs": false},
+      {"member": "icon.png", "bytes": 94079, "sha256": "6ceb75eef25ad36cd8cc273c57a142c66136a64866d7d015f0c2ece3894265ac", "unityfs": false},
+      {"member": "manifest.json", "bytes": 456, "sha256": "0e0237cf5a648868023b2e9a82eb7eb9077596450d9815ff67fb38fac34b4a62", "unityfs": false}
+    ]
+  },
+  "unitypy_version": "1.25.3",
+  "targets": {
+    "BellevilleApp": {
+      "flow_name": "BellevilleApp",
+      "dungeon_flow": {
+        "bundle_member": "BepInEx/plugins/boomsinterior.lethalbundle",
+        "serialized_file": "CAB-38a1e9912a4e0bf00320c85779ae5f69",
+        "path_id": 1678144341533240289,
+        "type": "MonoBehaviour",
+        "raw_object_sha256": "0712e8d5deaa32726a6c030b642431978241ae083ec0b500a688a4f854070271",
+        "script": {"m_ClassName": "DungeonFlow", "m_Namespace": "DunGen.Graph", "m_AssemblyName": "DunGen.dll"}
+      },
+      "extended_dungeon_flow": {
+        "bundle_member": "BepInEx/plugins/boomsinterior.lethalbundle",
+        "serialized_file": "CAB-38a1e9912a4e0bf00320c85779ae5f69",
+        "path_id": 3550461993015635909,
+        "type": "MonoBehaviour",
+        "raw_object_sha256": "4c566eb71ad0d67c22b10389c8bf5ce25acf0a6f737f65910f6aaa78350d91c4",
+        "script": {"m_ClassName": "ExtendedDungeonFlow", "m_Namespace": "LethalLevelLoader", "m_AssemblyName": "LethalLevelLoader.dll"},
+        "name": "BAExtended",
+        "dungeon_name": "Belleville Appartements",
+        "fields_referencing_exact_flow": ["<DungeonFlow>k__BackingField"],
+        "fields_referencing_level_matching_properties": ["<LevelMatchingProperties>k__BackingField"],
+        "legacy_matching_fields": {
+          "dynamicCurrentWeatherList": [],
+          "dynamicLevelTagsList": [],
+          "dynamicRoutePricesList": [],
+          "generateAutomaticConfigurationOptions": 1,
+          "manualContentSourceNameReferenceList": [],
+          "manualPlanetNameReferenceList": []
+        }
+      },
+      "level_matching_properties": {
+        "bundle_member": "BepInEx/plugins/boomsinterior.lethalbundle",
+        "serialized_file": "CAB-38a1e9912a4e0bf00320c85779ae5f69",
+        "path_id": 108286566687015917,
+        "type": "MonoBehaviour",
+        "raw_object_sha256": "f186edfac81d38c6446566cf46bfbfc5b75b1d91105785d44603a3f3b22e17d0",
+        "script": {"m_ClassName": "LevelMatchingProperties", "m_Namespace": "LethalLevelLoader", "m_AssemblyName": "LethalLevelLoader.dll"},
+        "serialized_fields": {
+          "m_GameObject": {"m_FileID": 0, "m_PathID": 0},
+          "m_Enabled": 1,
+          "m_Script": {"m_FileID": 0, "m_PathID": -1121247000893140233},
+          "m_Name": "BAMatchingProperties",
+          "modNames": [],
+          "authorNames": [],
+          "levelTags": [{"_name": "City", "_rarity": 40}],
+          "currentRoutePrice": [{"_minMax": {"x": 0.0, "y": 100.0}, "_rarity": 20}],
+          "currentWeather": [],
+          "planetNames": [
+            {"_name": "March", "_rarity": 15},
+            {"_name": "Adamance", "_rarity": 30},
+            {"_name": "Malice", "_rarity": 10},
+            {"_name": "Coatal", "_rarity": 5},
+            {"_name": "Validance", "_rarity": 300}
+          ]
+        },
+        "direct_references": [{"field": "m_GameObject", "pointer": {"m_FileID": 0, "m_PathID": 0}, "resolved": null, "resolution_error": null}]
+      }
+    },
+    "CrimsonKeep": {
+      "flow_name": "CrimsonKeep",
+      "dungeon_flow": {
+        "bundle_member": "BepInEx/plugins/boomsinterior.lethalbundle",
+        "serialized_file": "CAB-38a1e9912a4e0bf00320c85779ae5f69",
+        "path_id": 1447272419068535753,
+        "type": "MonoBehaviour",
+        "raw_object_sha256": "a1b69402544774801cd02a7a2171bb5a645f588c0f209b932b7db2a3aab304a1",
+        "script": {"m_ClassName": "DungeonFlow", "m_Namespace": "DunGen.Graph", "m_AssemblyName": "DunGen.dll"}
+      },
+      "extended_dungeon_flow": {
+        "bundle_member": "BepInEx/plugins/boomsinterior.lethalbundle",
+        "serialized_file": "CAB-38a1e9912a4e0bf00320c85779ae5f69",
+        "path_id": 6221634777599012892,
+        "type": "MonoBehaviour",
+        "raw_object_sha256": "077d7ae4c8347baa2da12f56c6be2890a29b603a34922efb811f7f1821c02d3e",
+        "script": {"m_ClassName": "ExtendedDungeonFlow", "m_Namespace": "LethalLevelLoader", "m_AssemblyName": "LethalLevelLoader.dll"},
+        "name": "CKExtended",
+        "dungeon_name": "Crimson Keep",
+        "fields_referencing_exact_flow": ["<DungeonFlow>k__BackingField"],
+        "fields_referencing_level_matching_properties": ["<LevelMatchingProperties>k__BackingField"],
+        "legacy_matching_fields": {
+          "dynamicCurrentWeatherList": [],
+          "dynamicLevelTagsList": [],
+          "dynamicRoutePricesList": [],
+          "generateAutomaticConfigurationOptions": 1,
+          "manualContentSourceNameReferenceList": [],
+          "manualPlanetNameReferenceList": []
+        }
+      },
+      "level_matching_properties": {
+        "bundle_member": "BepInEx/plugins/boomsinterior.lethalbundle",
+        "serialized_file": "CAB-38a1e9912a4e0bf00320c85779ae5f69",
+        "path_id": -6196409468919898766,
+        "type": "MonoBehaviour",
+        "raw_object_sha256": "ee073dd7cb77c5dbd38ddb29b7d4600dc51747cb95d83c8426bde55010781da9",
+        "script": {"m_ClassName": "LevelMatchingProperties", "m_Namespace": "LethalLevelLoader", "m_AssemblyName": "LethalLevelLoader.dll"},
+        "serialized_fields": {
+          "m_GameObject": {"m_FileID": 0, "m_PathID": 0},
+          "m_Enabled": 1,
+          "m_Script": {"m_FileID": 0, "m_PathID": -1121247000893140233},
+          "m_Name": "CKMatching",
+          "modNames": [],
+          "authorNames": [],
+          "levelTags": [
+            {"_name": "Canyon", "_rarity": 35}, {"_name": "Desert", "_rarity": 20}, {"_name": "Valley", "_rarity": 10},
+            {"_name": "Forest", "_rarity": 10}, {"_name": "Marsh", "_rarity": 10}, {"_name": "Taiga", "_rarity": 5},
+            {"_name": "Tundra", "_rarity": 5}, {"_name": "Lake", "_rarity": 15}
+          ],
+          "currentRoutePrice": [{"_minMax": {"x": 500.0, "y": 600.0}, "_rarity": 10}],
+          "currentWeather": [],
+          "planetNames": [
+            {"_name": "Experimentation", "_rarity": 1}, {"_name": "Vow", "_rarity": 3}, {"_name": "March", "_rarity": 20},
+            {"_name": "Adamance", "_rarity": 10}, {"_name": "Rend", "_rarity": 20}, {"_name": "Dine", "_rarity": 5},
+            {"_name": "Titan", "_rarity": 2}, {"_name": "Artifice", "_rarity": 7}, {"_name": "Batolfil", "_rarity": 300},
+            {"_name": "Malice", "_rarity": 1}, {"_name": "Excellance", "_rarity": 3}, {"_name": "Kronodile", "_rarity": 2},
+            {"_name": "Dedication", "_rarity": 3}, {"_name": "Wither", "_rarity": 17}, {"_name": "Orion", "_rarity": 34},
+            {"_name": "Solitude", "_rarity": 50}, {"_name": "Defectus", "_rarity": 100}, {"_name": "Frieren", "_rarity": 60},
+            {"_name": "Cerasi", "_rarity": 150}
+          ]
+        },
+        "direct_references": [{"field": "m_GameObject", "pointer": {"m_FileID": 0, "m_PathID": 0}, "resolved": null, "resolution_error": null}]
+      }
+    }
+  },
+  "proof_boundary": "Exact static package/object-graph serialization only. No Unity/game/mod managed code execution and no Phase-C3 applicability conclusion in this capture."
+}

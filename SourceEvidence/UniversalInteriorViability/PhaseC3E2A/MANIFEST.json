@@ -1,0 +1,19 @@
+{
+  "schema_version": "phase-c3e2a-manifest-1",
+  "status": "PARTIAL_PHASE_C3_OXYDE_TOPOLOGY_SOURCE_CHECKPOINT",
+  "parent_pr_head": "62e0bbdd86dc46ae32859b0959bd982cfd6f9312",
+  "source_tree": "XuuXiaolan/CodeRebirth@3aec94f6f737c86d5e1eb59a57396740317b210f",
+  "evidence_files": [
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E2A/FINDINGS.md"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E2A/OXYDE_STRUCTURAL_PREFAB_TRIAGE.json"
+    }
+  ],
+  "proof_boundary": [
+    "No Oxyde EntranceTeleport ID/count/pairing proven.",
+    "Complete 192-GUID map remains unfinished.",
+    "No Black Mesa topology, matrix, build or runtime state change."
+  ]
+}

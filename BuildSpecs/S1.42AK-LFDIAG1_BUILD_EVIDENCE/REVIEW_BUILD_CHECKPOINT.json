@@ -1,0 +1,103 @@
+{
+  "status": "PASS_INACTIVE_REVIEW_BUILD_INDEPENDENTLY_REHASHED",
+  "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+  "date": "2026-10-06",
+  "build_id": "S1.42AK-LFDIAG1",
+  "authority": "Current/280_S1.42AK_LFDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md",
+  "source_main_commit": "81761bf4a98ec11f8791056930577f72536ec75f",
+  "review_pr": 291,
+  "build_head": "1a57702777eb63e7f1fd4571a67f09e705457c6f",
+  "review_workflow": "S1.42AK LFDIAG1 inactive compile and archive review",
+  "review_run_id": 37435859117,
+  "review_run_number": 1,
+  "review_run_event": "pull_request",
+  "review_run_conclusion": "success",
+  "review_job_id": 112177366658,
+  "build_warnings": 0,
+  "build_errors": 0,
+  "assembly_name": "S142AKLFDiag1",
+  "dll_sha256": "13fd01cba6d30a0c9044d43df813b17adf352139f723c9444f8db14403a0a474",
+  "parent_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "parent_members": 337,
+  "review_profile": "Profiles/LC V1 S1.42AK-LFD1.r2z",
+  "profile_sha256": "ce6835944f90e1972caebf52dc344bdf660283c9a074ac07899486ce0b4564f4",
+  "review_members": 338,
+  "added_members": [
+    "BepInEx/plugins/S142AKLFDiag1/S142AKLFDiag1.dll"
+  ],
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "inherited_bmdsfix1_dll_sha256": "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
+  "accepted_normalizer_sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+  "negative_cases": [
+    "config-drift",
+    "bmdsfix1-replaced",
+    "normalizer-replaced",
+    "member-removed",
+    "extra-plugin",
+    "export-drift",
+    "wrong-profile-identity",
+    "wrong-lfdiag1-dll"
+  ],
+  "source_static_validator_rechecked_in_review_run": true,
+  "pure_selector_policy_rechecked_in_review_run": true,
+  "gale_path_guard_self_test": "PASS",
+  "gale_max_projected_runtime_path": 217,
+  "gale_runtime_path_budget": 255,
+  "knowledge_architecture_build_head_run_id": 37435858991,
+  "knowledge_architecture_build_head_run_number": 1183,
+  "knowledge_architecture_build_head_conclusion": "success",
+  "actions_artifact": {
+    "artifact_id": 11399366599,
+    "name": "S1.42AK-LFDIAG1-review-1a57702777eb63e7f1fd4571a67f09e705457c6f",
+    "size_bytes": 536867,
+    "expires_at": "2027-01-04T08:24:09Z",
+    "actions_zip_sha256": "ca1922b3b59666cfd5f8a6105dec9e1dfddf367874be4d3a324bfd8dfacf0b93",
+    "independent_zip_sha256": "ca1922b3b59666cfd5f8a6105dec9e1dfddf367874be4d3a324bfd8dfacf0b93",
+    "independent_artifact_rehash_match": true,
+    "zip_crc_check": "PASS",
+    "member_count": 4,
+    "member_sha256": {
+      "DLL/S142AKLFDiag1.dll": "13fd01cba6d30a0c9044d43df813b17adf352139f723c9444f8db14403a0a474",
+      "Evidence/BUILD_RESULT.json": "526d2003cd6933154c426510b5dbf0e8c999c13b65505089687e7bad480aaecb",
+      "Evidence/STATIC_VERIFICATION.json": "86242ba55b86f9954fe1ffd1087dd9a13abecb03b08db34f38a82927dd2f08d2",
+      "Profiles/LC V1 S1.42AK-LFD1.r2z": "ce6835944f90e1972caebf52dc344bdf660283c9a074ac07899486ce0b4564f4"
+    }
+  },
+  "independent_artifact_rehash_match": true,
+  "review_profile_committed": false,
+  "profile_sources_index_created": false,
+  "published": false,
+  "gale_imported": false,
+  "build_controller_changed": false,
+  "runtime_controller_changed": false,
+  "runtime_armed": false,
+  "runtime_proof": false,
+  "acceptance_effect": "NONE",
+  "qualification": "Compiler/build/archive validity and frozen-artifact byte identity only. No publication, ProfileSources index, Gale import, runtime activation, gameplay proof or acceptance.",
+  "authoritative_artifact_id": 11399366599,
+  "authoritative_publication_source_only": {
+    "artifact_id": 11399366599,
+    "actions_zip_sha256": "ca1922b3b59666cfd5f8a6105dec9e1dfddf367874be4d3a324bfd8dfacf0b93",
+    "profile_sha256": "ce6835944f90e1972caebf52dc344bdf660283c9a074ac07899486ce0b4564f4",
+    "dll_sha256": "13fd01cba6d30a0c9044d43df813b17adf352139f723c9444f8db14403a0a474",
+    "rule": "Any later lifecycle gate must reference these exact already-frozen bytes by artifact ID and hashes; never select a newer artifact by name prefix."
+  },
+  "superseded_intermediate_artifacts": [
+    {
+      "artifact_id": 11398652708,
+      "run_id": 37436398066,
+      "run_number": 2,
+      "head": "d443351b34af437c73f31507801c7471cc24f67b",
+      "name": "S1.42AK-LFDIAG1-review-d443351b34af437c73f31507801c7471cc24f67b",
+      "size_bytes": 536884,
+      "actions_digest_sha256": "73c4278ff5da3b3dc27b697deed84da83cba676c3639ccb3431f5c996ea11535",
+      "disposition": "SUPERSEDED_NON_AUTHORITATIVE_PRE_FREEZE_RACE_DO_NOT_PUBLISH_OR_IMPORT"
+    }
+  ]
+}

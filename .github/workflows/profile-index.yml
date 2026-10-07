@@ -1,0 +1,158 @@
+name: Index uploaded profile
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Profiles/*.r2z"
+      - "Profiles/EXPECTED_HASHES.json"
+      - "References/LegacyProfiles/**/*.r2z"
+      - "BuildSystem/index_profile.py"
+      - ".github/workflows/profile-index.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: profile-index
+  cancel-in-progress: false
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Find and index changed profiles
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          changed = subprocess.check_output(
+              [
+                  "git", "diff", "--name-only", "HEAD^", "HEAD", "--",
+                  "Profiles", "References/LegacyProfiles",
+              ],
+              text=True,
+          ).splitlines()
+
+          files = {
+              path for path in changed
+              if path.lower().endswith(".r2z")
+          }
+
+          registry_path = "Profiles/EXPECTED_HASHES.json"
+          if registry_path in changed:
+              current = json.loads(Path(registry_path).read_text(encoding="utf-8"))
+              previous_raw = subprocess.run(
+                  ["git", "show", f"HEAD^:{registry_path}"],
+                  text=True,
+                  capture_output=True,
+              )
+              previous = (
+                  json.loads(previous_raw.stdout)
+                  if previous_raw.returncode == 0 and previous_raw.stdout.strip()
+                  else {}
+              )
+              for path, meta in current.items():
+                  if previous.get(path) != meta:
+                      if not Path(path).is_file():
+                          raise RuntimeError(
+                              f"Changed current profile registry entry points to missing profile: {path}"
+                          )
+                      files.add(path)
+
+          files = sorted(files)
+
+          # A workflow/indexer change may happen after a legacy reference profile
+          # was uploaded. In that case, index all retained legacy references so
+          # they become machine-readable without requiring a second binary commit.
+          if not files and any(
+              path in changed
+              for path in ("BuildSystem/index_profile.py", ".github/workflows/profile-index.yml")
+          ):
+              files = sorted(
+                  str(path)
+                  for path in Path("References/LegacyProfiles").glob("**/*.r2z")
+              )
+
+          if not files:
+              print("No .r2z profiles require indexing.")
+          else:
+              print("Indexing:", files)
+              subprocess.run(["python", "BuildSystem/index_profile.py", *files], check=True)
+          PY
+
+      - name: Commit readable profile snapshots
+        id: snapshot_commit
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No profile snapshot changes to commit."
+            echo "created=false" >> "$GITHUB_OUTPUT"
+          else
+            # GitHub suppresses normal follow-up push workflows when this workflow
+            # pushes with GITHUB_TOKEN. The next step therefore performs an
+            # explicit exact-head workflow_dispatch for Knowledge Architecture.
+            git commit -m "Index uploaded profile"
+            expected_head="$(git rev-parse HEAD)"
+            git push
+            remote_head="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+            if [[ "$remote_head" != "$expected_head" ]]; then
+              echo "::error::main moved after the profile-index commit; refusing to dispatch validation for a different head"
+              exit 1
+            fi
+            echo "created=true" >> "$GITHUB_OUTPUT"
+            echo "head_sha=$expected_head" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Dispatch exact-head Knowledge Architecture validation
+        if: steps.snapshot_commit.outputs.created == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_HEAD: ${{ steps.snapshot_commit.outputs.head_sha }}
+        run: |
+          current_head="$(gh api "repos/${GITHUB_REPOSITORY}/branches/main" --jq '.commit.sha')"
+          if [[ "$current_head" != "$EXPECTED_HEAD" ]]; then
+            echo "::error::main no longer equals the indexed commit; refusing to dispatch a mismatched validation run"
+            exit 1
+          fi
+
+          gh api --method POST \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows/knowledge-architecture.yml/dispatches" \
+            -f ref=main
+
+          run_id=""
+          for attempt in {1..30}; do
+            run_id="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/knowledge-architecture.yml/runs?event=workflow_dispatch&branch=main&per_page=20" --jq ".workflow_runs[] | select(.head_sha == \"${EXPECTED_HEAD}\") | .id" | head -n 1)"
+            if [[ -n "$run_id" ]]; then
+              break
+            fi
+            sleep 2
+          done
+
+          if [[ -z "$run_id" ]]; then
+            echo "::error::No Knowledge Architecture workflow_dispatch run was registered for exact head $EXPECTED_HEAD"
+            exit 1
+          fi
+
+          echo "Registered Knowledge Architecture exact-head run $run_id for $EXPECTED_HEAD"

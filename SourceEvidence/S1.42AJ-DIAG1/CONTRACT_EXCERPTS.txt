@@ -1,0 +1,1086 @@
+157: 	internal sealed class EmbeddedAttribute : Attribute
+166: 	internal sealed class NullableAttribute : Attribute
+183: 	internal sealed class RefSafetyRulesAttribute : Attribute
+200: internal static class HookHelper
+202: 	public sealed class DisposableHookCollection
+257: public static class NetworkScenePatcher
+511: 	public static class LethalBundleManager
+843: 	public class ExtendedBuyableVehicle : ExtendedContent
+898: 	public class ExtendedContent : ScriptableObject
+966: 	public class StringWithRarity(string newName, int newRarity)
+1007: 	public class Vector2WithRarity
+1117: 	public class ExtendedDungeonFlow : ExtendedContent
+1120: 		[SerializeField]
+1121: 		private Vector3 <RestrictBounds>k__BackingField;
+1122: 
+1123: 		[CompilerGenerated]
+1124: 		[SerializeField]
+1125: 		private Vector2 <DynamicDungeonSizeMinMax>k__BackingField;
+1126: 
+1127: 		[Space(25f)]
+1128: 		[Header("Obsolete (Legacy Fields, Will Be Removed In The Future)")]
+1129: 		[Obsolete]
+1130: 		public bool generateAutomaticConfigurationOptions;
+1131: 
+1132: 		[Obsolete]
+1133: 		public bool enableDynamicDungeonSizeRestriction;
+1134: 
+1135: 		[Obsolete]
+1136: 		public float dungeonSizeMin;
+1137: 
+1138: 		[Obsolete]
+1139: 		public float dungeonSizeMax;
+1140: 
+1141: 		[Obsolete]
+1142: 		[Range(0f, 1f)]
+1143: 		public float dungeonSizeLerpPercentage;
+1144: 
+1145: 		[Obsolete]
+1146: 		public AudioClip dungeonFirstTimeAudio;
+1147: 
+1148: 		[Obsolete]
+1149: 		public DungeonFlow dungeonFlow;
+1150: 
+1151: 		[Obsolete]
+1152: 		public string dungeonDisplayName;
+1153: 
+1154: 		[Obsolete]
+1155: 		public string contentSourceName;
+1156: 
+1157: 		[Obsolete]
+1158: 		public List<StringWithRarity> dynamicLevelTagsList;
+1159: 
+1160: 		[Obsolete]
+1161: 		public List<Vector2WithRarity> dynamicRoutePricesList;
+1162: 
+1163: 		[Obsolete]
+1164: 		public List<StringWithRarity> dynamicCurrentWeatherList;
+1165: 
+1166: 		[Obsolete]
+1167: 		public List<StringWithRarity> manualPlanetNameReferenceList;
+1168: 
+1169: 		[Obsolete]
+1170: 		public List<StringWithRarity> manualContentSourceNameReferenceList;
+1171: 
+1172: 		[Obsolete]
+1173: 		[Range(0.1f, 10000f)]
+1174: 		public float OverrideCameraMaxDistance;
+1175: 
+1176: 		[CompilerGenerated]
+1177: 		[SerializeField]
+1178: 		private Vector3 <OverrideRestrictedTilePlacementBounds>k__BackingField;
+1179: 
+1180: 		[CompilerGenerated]
+1181: 		private Tile[] <AllTiles>k__BackingField;
+1182: 
+1183: 		[field: Header("General Settings")]
+1184: 		[field: SerializeField]
+1185: 		public DungeonFlow DungeonFlow { get; set; }
+1186: 
+1187: 		[field: SerializeField]
+1188: 		public string DungeonName { get; set; }
+1189: 
+1190: 		[field: SerializeField]
+1191: 		[field: Min(0f)]
+1192: 		public float MapTileSize { get; set; }
+1193: 
+1194: 		[field: SerializeField]
+1195: 		public AudioClip FirstTimeDungeonAudio { get; set; }
+1196: 
+1197: 		public Vector3 RestrictBounds
+1198: 		{
+1199: 			[CompilerGenerated]
+1200: 			get
+1201: 			{
+1202: 				//IL_0001: Unknown result type (might be due to invalid IL or missing references)
+1203: 				return <RestrictBounds>k__BackingField;
+1204: 			}
+1205: 			[CompilerGenerated]
+1206: 			set
+1207: 			{
+1208: 				//IL_0001: Unknown result type (might be due to invalid IL or missing references)
+1209: 				//IL_0002: Unknown result type (might be due to invalid IL or missing references)
+1210: 				<RestrictBounds>k__BackingField = value;
+1211: 			}
+1212: 		}
+1213: 
+1214: 		[field: SerializeField]
+1215: 		[field: Min(0f)]
+1216: 		public int CullingTileDepth { get; set; }
+1217: 
+1218: 		[field: Space(5f)]
+1219: 		[field: Header("Dynamic Injection Matching Settings")]
+1220: 		[field: SerializeField]
+1221: 		public LevelMatchingProperties LevelMatchingProperties { get; set; }
+1222: 
+1223: 		[field: Space(5f)]
+1224: 		[field: Header("Extended Feature Settings")]
+1225: 		[field: SerializeField]
+1226: 		public GameObject OverrideKeyPrefab { get; set; }
+1227: 
+1228: 		[field: SerializeField]
+1229: 		public List<IndoorMapHazard> IndoorMapHazards { get; set; }
+1230: 
+1231: 		[field: SerializeField]
+1232: 		public List<GlobalPropCountOverride> GlobalPropCountOverridesList { get; set; }
+1233: 
+1234: 		[field: Space(5f)]
+1235: 		[field: SerializeField]
+1236: 		public bool IsDynamicDungeonSizeRestrictionEnabled { get; set; }
+1237: 
+1238: 		public Vector2 DynamicDungeonSizeMinMax
+1239: 		{
+1240: 			[CompilerGenerated]
+1241: 			get
+1242: 			{
+1243: 				//IL_0001: Unknown result type (might be due to invalid IL or missing references)
+1244: 				return <DynamicDungeonSizeMinMax>k__BackingField;
+1245: 			}
+1246: 			[CompilerGenerated]
+1247: 			set
+1248: 			{
+1249: 				//IL_0001: Unknown result type (might be due to invalid IL or missing references)
+1250: 				//IL_0002: Unknown result type (might be due to invalid IL or missing references)
+1251: 				<DynamicDungeonSizeMinMax>k__BackingField = value;
+1252: 			}
+1253: 		}
+1254: 
+1255: 		[field: SerializeField]
+1256: 		[field: Range(0f, 1f)]
+1257: 		public float DynamicDungeonSizeLerpRate { get; set; }
+1258: 
+1259: 		public float DynamicDungeonSizeMin
+1260: 		{
+1261: 			get
+1262: 			{
+1263: 				//IL_0001: Unknown result type (might be due to invalid IL or missing references)
+1264: 				return DynamicDungeonSizeMinMax.x;
+1265: 			}
+1266: 		}
+1267: 
+1268: 		public float DynamicDungeonSizeMax
+1269: 		{
+1270: 			get
+1271: 			{
+1272: 				//IL_0001: Unknown result type (might be due to invalid IL or missing references)
+1273: 				return DynamicDungeonSizeMinMax.y;
+1274: 			}
+1275: 		}
+1276: 
+1277: 		[field: Tooltip("Lower the kill floor of any Level this Dungeon generates on down to the lowest point of the generation.")]
+1278: 		[field: SerializeField]
+1279: 		public bool IsDynamicOutOfBoundsTriggerEnabled { get; set; }
+1280: 
+1281: 		[field: Space(5f)]
+1282: 		[field: SerializeField]
+1323: 		public bool IsCurrentDungeon => (Object)(object)DungeonManager.CurrentExtendedDungeonFlow == (Object)(object)this;
+1341: 		internal static ExtendedDungeonFlow Create(DungeonFlow newDungeonFlow, AudioClip newFirstTimeDungeonAudio, Vector3 newRestrictBounds, int newCullingTileDepth)
+1372: 		private void GetDungeonFlowID()
+1527: 		public ExtendedDungeonFlow()
+1564: 	public class GlobalPropCountOverride
+1572: 	public class DungeonEvents
+1597: 	public class ExtendedEnemyType : ExtendedContent
+1716: 	public class ExtendedFootstepSurface : ExtendedContent
+1892: 	public class ExtendedItem : ExtendedContent
+2033: 	public class ExtendedLevel : ExtendedContent
+2570: 		internal void SetExtendedDungeonFlowMatches()
+2649: 	public class LevelEvents
+2680: 	public class ExtendedMod : ScriptableObject
+2712: 		public List<ExtendedDungeonFlow> ExtendedDungeonFlows { get; private set; } = new List<ExtendedDungeonFlow>();
+2928: 		internal void RegisterExtendedContent(ExtendedDungeonFlow extendedDungeonFlow)
+3050: 	public class ExtendedStoryLog : ExtendedContent
+3093: 	public class ExtendedUnlockableItem : ExtendedContent
+3168: 	public class ExtendedWeatherEffect : ExtendedContent
+3230: 	public class FootstepSurfaceHelper : MonoBehaviour
+3374: 	public class LLLSaveFile
+3471: 	public class ContentTag : ScriptableObject
+3509: 	public class DungeonMatchingProperties : MatchingProperties
+3524: 		public int GetDynamicRarity(ExtendedDungeonFlow extendedDungeonFlow)
+3563: 	public class LevelMatchingProperties : MatchingProperties
+3639: 	public class MatchingProperties : ScriptableObject
+3743: 	public class MoonsCataloguePage(List<ExtendedLevelGroup> newExtendedLevelGroups)
+3788: 	public class ExtendedLevelGroup(List<ExtendedLevel> newExtendedLevels)
+3905: 	public static class PatchedContent
+3930: 		private static Dictionary<DungeonFlow, ExtendedDungeonFlow> ExtendedDungeonFlowDictionary { get; } = new Dictionary<DungeonFlow, ExtendedDungeonFlow>();
+4007: 		public static List<ExtendedDungeonFlow> ExtendedDungeonFlows { get; } = new List<ExtendedDungeonFlow>();
+4009: 		public static List<ExtendedDungeonFlow> VanillaExtendedDungeonFlows
+4025: 		public static List<ExtendedDungeonFlow> CustomExtendedDungeonFlows
+4236: 		public static void RegisterExtendedDungeonFlow(ExtendedDungeonFlow extendedDungeonFlow)
+4301: 		public static bool TryGetExtendedContent(DungeonFlow dungeonFlow, out ExtendedDungeonFlow extendedDungeonFlow)
+4341: 	public static class OriginalContent
+4347: 		public static List<DungeonFlow> DungeonFlows { get; } = new List<DungeonFlow>();
+4377: 	internal static class EventPatches
+4691: 	public class ExtendedEvent<T> : ExtendedEvent
+4727: 	public class ExtendedEvent
+4770: 	public static class Extensions
+4776: 		public static IEnumerable<Tile> GetTiles(this DungeonFlow dungeonFlow)
+4848: 		public static IEnumerable<RandomMapObject> GetRandomMapObjects(this DungeonFlow dungeonFlow)
+4857: 		public static IEnumerable<RandomMapObject> GetRandomMapObjects(this DungeonFlow dungeonFlow, IEnumerable<Tile> allTiles)
+4873: 		public static IEnumerable<SpawnSyncedObject> GetSpawnSyncedObjects(this DungeonFlow dungeonFlow)
+4882: 		public static IEnumerable<SpawnSyncedObject> GetSpawnSyncedObjects(this DungeonFlow dungeonFlow, IEnumerable<Tile> allTiles)
+4908: 		public static IEnumerable<GameObject> GetBlockerPrefabs(this DungeonFlow dungeonFlow)
+4917: 		public static IEnumerable<GameObject> GetBlockerPrefabs(this DungeonFlow dungeonFlow, IEnumerable<Tile> allTiles)
+4938: 		public static IEnumerable<GameObject> GetConnectorPrefabs(this DungeonFlow dungeonFlow)
+4947: 		public static IEnumerable<GameObject> GetConnectorPrefabs(this DungeonFlow dungeonFlow, IEnumerable<Tile> allTiles)
+5078: 		public static List<DungeonFlow> GetDungeonFlows(this RoundManager roundManager)
+5101: 	internal static class Patches
+5887: 		internal static void InjectHostDungeonFlowSelection(RoundManager roundManager)
+6803: 	internal static class SafetyPatches
+6845: 	internal static class SavePatches
+6984: 	public static class Settings
+7015: 	internal static class TimeOfDayPatches
+7051: 			FieldInfo field2 = typeof(SelectableLevel).GetField("DaySpeedMultiplier", BindingFlags.Instance | BindingFlags.Public);
+7052: 			FieldInfo field3 = typeof(TimeOfDay).GetField("currentLevel", BindingFlags.Instance | BindingFlags.Public);
+7053: 			CodeMatcher val = new CodeMatcher(instructions, (ILGenerator)null).MatchForward(false, (CodeMatch[])(object)new CodeMatch[1]
+7054: 			{
+7055: 				new CodeMatch((OpCode?)OpCodes.Ldfld, (object)field2, (string)null)
+7056: 			});
+7057: 			if (val.IsValid)
+7058: 			{
+7059: 				DebugHelper.LogWarning("TimeOfDay.MoveGlobalTime() already patched to account for day speed multipliers!", DebugType.Developer);
+7060: 				return instructions;
+7061: 			}
+7062: 			val.Start().MatchForward(true, (CodeMatch[])(object)new CodeMatch[4]
+7063: 			{
+7064: 				new CodeMatch((OpCode?)OpCodes.Ldarg_0, (object)null, (string)null),
+7065: 				new CodeMatch((OpCode?)OpCodes.Ldfld, (object)field, (string)null),
+7066: 				new CodeMatch((OpCode?)OpCodes.Mul, (object)null, (string)null),
+7067: 				new CodeMatch((OpCode?)OpCodes.Add, (object)null, (string)null)
+7068: 			});
+7069: 			if (val.IsInvalid)
+7070: 			{
+7071: 				DebugHelper.LogError("Could not match 'globalTimeSpeedMultiplier' field.", DebugType.User);
+7072: 				return instructions;
+7073: 			}
+7074: 			return val.Insert((CodeInstruction[])(object)new CodeInstruction[4]
+7075: 			{
+7076: 				new CodeInstruction(OpCodes.Ldarg_0, (object)null),
+7077: 				new CodeInstruction(OpCodes.Ldfld, (object)field3),
+7078: 				new CodeInstruction(OpCodes.Ldfld, (object)field2),
+7079: 				new CodeInstruction(OpCodes.Mul, (object)null)
+7080: 			}).InstructionEnumeration();
+7081: 		}
+7082: 
+7083: 		[HarmonyPatch(typeof(TimeOfDay), "Update")]
+7084: 		[HarmonyPatch(typeof(TimeOfDay), "CalculatePlanetTime")]
+7085: 		[HarmonyTranspiler]
+7086: 		[HarmonyPriority(200)]
+7087: 		internal static IEnumerable<CodeInstruction> TimeOfDayUpdateCalculatePlanetTime_Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
+7088: 		{
+7089: 			//IL_0019: Unknown result type (might be due to invalid IL or missing references)
+7090: 			//IL_0033: Unknown result type (might be due to invalid IL or missing references)
+7091: 			//IL_0039: Expected O, but got Unknown
+7092: 			//IL_005b: Unknown result type (might be due to invalid IL or missing references)
+7093: 			//IL_0061: Expected O, but got Unknown
+7094: 			FieldInfo field = typeof(SelectableLevel).GetField("DaySpeedMultiplier", BindingFlags.Instance | BindingFlags.Public);
+7095: 			CodeMatcher val = new CodeMatcher(instructions, generator).MatchForward(true, (CodeMatch[])(object)new CodeMatch[2]
+7096: 			{
+7097: 				new CodeMatch((OpCode?)OpCodes.Ldfld, (object)field, (string)null),
+7098: 				new CodeMatch((Func<CodeInstruction, bool>)((CodeInstruction ins) => ins.opcode == OpCodes.Mul || ins.opcode == OpCodes.Div), (string)null)
+7099: 			});
+7100: 			if (val.IsInvalid)
+7101: 			{
+7102: 				DebugHelper.LogWarning("TimeOfDay.Update() and/or TimeOfDay.CalculatePlanetTime() already patched to account for day speed multipliers!", DebugType.Developer);
+7103: 				return instructions;
+7104: 			}
+7105: 			int pos = val.Pos;
+7106: 			val.SearchBack((Func<CodeInstruction, bool>)((CodeInstruction ins) => ins.opcode == OpCodes.Add || ins.opcode == OpCodes.Sub));
+7107: 			if (val.IsInvalid)
+7108: 			{
+7109: 				DebugHelper.LogError("Could not match operation instruction before 'DaySpeedMultiplier' field.", DebugType.User);
+7110: 				return instructions;
+7111: 			}
+7112: 			return val.RemoveInstructionsInRange(val.Pos + 1, pos).InstructionEnumeration();
+7113: 		}
+7114: 	}
+7115: 	[Serializable]
+7116: 	public class ExtendedDungeonFlowWithRarity(ExtendedDungeonFlow newExtendedDungeonFlow, int newRarity)
+7117: 	{
+7118: 		internal struct ExtendedDungeonFlowWithRarityComparer(bool ascending = true) : IComparer<ExtendedDungeonFlowWithRarity>
+7119: 		{
+7120: 			public readonly int Compare(ExtendedDungeonFlowWithRarity a, ExtendedDungeonFlowWithRarity b)
+7121: 			{
+7122: 				if (!ascending)
+7123: 				{
+7124: 					return b.rarity - a.rarity;
+7125: 				}
+7126: 				return a.rarity - b.rarity;
+7127: 			}
+7128: 		}
+7129: 
+7130: 		public ExtendedDungeonFlow extendedDungeonFlow = newExtendedDungeonFlow;
+7131: 
+7132: 		public int rarity = newRarity;
+7133: 
+7134: 		public bool UpdateRarity(int newRarity)
+7135: 		{
+7136: 			if (newRarity > rarity)
+7137: 			{
+7138: 				rarity = newRarity;
+7139: 				return true;
+7140: 			}
+7141: 			return false;
+7142: 		}
+7143: 	}
+7144: 	public static class DungeonLoader
+7145: 	{
+7146: 		[CompilerGenerated]
+7147: 		private static class <>O
+7148: 		{
+7149: 			public static GenerationStatusDelegate <0>__PatchOutOfBoundsTriggers;
+7150: 		}
+7151: 
+7152: 		internal static GameObject defaultKeyPrefab;
+7153: 
+7154: 		internal static void SelectDungeon()
+7155: 		{
+7156: 			Patches.RoundManager.dungeonGenerator.Generator.DungeonFlow = null;
+7157: 			if (((NetworkBehaviour)LethalLevelLoaderNetworkManager.Instance).IsServer)
+7158: 			{
+7159: 				LethalLevelLoaderNetworkManager.Instance.GetRandomExtendedDungeonFlowServerRpc();
+7160: 			}
+7161: 		}
+7162: 
+7163: 		internal static void PrepareDungeon()
+7164: 		{
+7165: 			//IL_007d: Unknown result type (might be due to invalid IL or missing references)
+7166: 			//IL_0082: Unknown result type (might be due to invalid IL or missing references)
+7167: 			//IL_0088: Expected O, but got Unknown
+7168: 			if ((Object)(object)Patches.RoundManager.dungeonGenerator == (Object)null)
+7169: 			{
+7170: 				return;
+7171: 			}
+7172: 			DungeonGenerator generator = Patches.RoundManager.dungeonGenerator.Generator;
+7173: 			if (Settings.overrideDungeonGeneratorParameters)
+7174: 			{
+7175: 				generator.GenerateAsynchronously = Settings.generateAsynchronously;
+7176: 				generator.MaxAsyncFrameMilliseconds = Settings.maxAsyncFrameMilliseconds;
+7177: 				generator.retryCount = Settings.retryCount;
+7178: 			}
+7179: 			ExtendedDungeonFlow currentExtendedDungeonFlow = DungeonManager.CurrentExtendedDungeonFlow;
+7180: 			if ((Object)(object)currentExtendedDungeonFlow == (Object)null || currentExtendedDungeonFlow.ContentType == ContentType.External)
+7181: 			{
+7182: 				return;
+7183: 			}
+7184: 			if (currentExtendedDungeonFlow.IsDynamicOutOfBoundsTriggerEnabled)
+7185: 			{
+7186: 				object obj = <>O.<0>__PatchOutOfBoundsTriggers;
+7187: 				if (obj == null)
+7188: 				{
+7189: 					GenerationStatusDelegate val = PatchOutOfBoundsTriggers;
+7190: 					<>O.<0>__PatchOutOfBoundsTriggers = val;
+7191: 					obj = (object)val;
+7192: 				}
+7193: 				generator.OnGenerationStatusChanged += (GenerationStatusDelegate)obj;
+7194: 			}
+7195: 			ExtendedLevel currentExtendedLevel = LevelManager.CurrentExtendedLevel;
+7196: 			PatchFireEscapes(generator, currentExtendedLevel);
+7197: 			PatchDynamicGlobalProps(generator, currentExtendedDungeonFlow);
+7198: 		}
+7199: 
+7200: 		public static float GetClampedDungeonSize()
+7201: 		{
+7202: 			ExtendedDungeonFlow currentExtendedDungeonFlow = DungeonManager.CurrentExtendedDungeonFlow;
+7203: 			ExtendedLevel currentExtendedLevel = LevelManager.CurrentExtendedLevel;
+7204: 			float num = CalculateDungeonMultiplier(currentExtendedLevel, DungeonManager.CurrentExtendedDungeonFlow);
+7205: 			if ((Object)(object)DungeonManager.CurrentExtendedDungeonFlow != (Object)null && DungeonManager.CurrentExtendedDungeonFlow.IsDynamicDungeonSizeRestrictionEnabled)
+7206: 			{
+7207: 				if (num > currentExtendedDungeonFlow.DynamicDungeonSizeMax)
+7208: 				{
+7209: 					num = Mathf.Lerp(num, currentExtendedDungeonFlow.DynamicDungeonSizeMax, currentExtendedDungeonFlow.DynamicDungeonSizeLerpRate);
+7210: 				}
+7224: 		public static float CalculateDungeonMultiplier(ExtendedLevel extendedLevel, ExtendedDungeonFlow extendedDungeonFlow)
+7319: 		public static void PatchDynamicGlobalProps(DungeonGenerator dungeonGenerator, ExtendedDungeonFlow extendedDungeonFlow)
+7379: 	public static class LevelLoader
+8227: 	public static class ContentTagManager
+8361: 				if (!((Object)(object)item == (Object)(object)ExtendedMod.VanillaContentTag) && !((Object)(object)item == (Object)(object)ExtendedMod.CustomContentTag))
+8362: 				{
+8363: 					Object.Destroy((Object)(object)item);
+8364: 				}
+8365: 			}
+8366: 		}
+8367: 	}
+8368: 	public static class DungeonManager
+8369: 	{
+8370: 		[CompilerGenerated]
+8371: 		private static ExtendedDungeonFlow <CurrentExtendedDungeonFlow>k__BackingField;
+8372: 
+8373: 		public static readonly DungeonEvents GlobalDungeonEvents = new DungeonEvents();
+8374: 
+8375: 		public static ExtendedDungeonFlow CurrentExtendedDungeonFlow
+8376: 		{
+8377: 			get
+8378: 			{
+8379: 				if ((Object)(object)Patches.RoundManager == (Object)null || (Object)(object)Patches.RoundManager.dungeonGenerator == (Object)null || Patches.RoundManager.dungeonGenerator.Generator == null || (Object)(object)Patches.RoundManager.dungeonGenerator.Generator.DungeonFlow == (Object)null)
+8380: 				{
+8381: 					return null;
+8382: 				}
+8383: 				if (((Object)(object)<CurrentExtendedDungeonFlow>k__BackingField == (Object)null || (Object)(object)Patches.RoundManager.dungeonGenerator.Generator.DungeonFlow != (Object)(object)<CurrentExtendedDungeonFlow>k__BackingField.DungeonFlow) && PatchedContent.TryGetExtendedContent(Patches.RoundManager.dungeonGenerator.Generator.DungeonFlow, out <CurrentExtendedDungeonFlow>k__BackingField))
+8384: 				{
+8385: 					DebugHelper.Log("Dungeon switched to: " + ((Object)<CurrentExtendedDungeonFlow>k__BackingField.DungeonFlow).name, DebugType.IAmBatby);
+8386: 				}
+8387: 				return <CurrentExtendedDungeonFlow>k__BackingField;
+8388: 			}
+8389: 		}
+8390: 
+8391: 		internal static void PatchVanillaDungeonLists()
+8392: 		{
+8393: 			//IL_0069: Unknown result type (might be due to invalid IL or missing references)
+8394: 			//IL_006e: Unknown result type (might be due to invalid IL or missing references)
+8395: 			//IL_0070: Unknown result type (might be due to invalid IL or missing references)
+8396: 			//IL_0075: Unknown result type (might be due to invalid IL or missing references)
+8397: 			//IL_007a: Unknown result type (might be due to invalid IL or missing references)
+8398: 			//IL_0088: Expected O, but got Unknown
+8399: 			if (PatchedContent.CustomExtendedDungeonFlows.Count == 0)
+8400: 			{
+8401: 				return;
+8402: 			}
+8403: 			List<IndoorMapType> list = Patches.RoundManager.dungeonFlowTypes.ToList();
+8404: 			List<AudioClip> list2 = Patches.RoundManager.firstTimeDungeonAudios.ToList();
+8405: 			foreach (ExtendedDungeonFlow customExtendedDungeonFlow in PatchedContent.CustomExtendedDungeonFlows)
+8406: 			{
+8407: 				if (customExtendedDungeonFlow.ContentType != ContentType.External)
+8408: 				{
+8409: 					customExtendedDungeonFlow.DungeonID = list.Count;
+8410: 					IndoorMapType item = new IndoorMapType(customExtendedDungeonFlow.DungeonFlow, customExtendedDungeonFlow.MapTileSize, customExtendedDungeonFlow.FirstTimeDungeonAudio)
+8411: 					{
+8412: 						restrictBounds = customExtendedDungeonFlow.RestrictBounds,
+8413: 						cullingTileDepth = customExtendedDungeonFlow.CullingTileDepth
+8414: 					};
+8415: 					list.Add(item);
+8416: 					if ((Object)(object)customExtendedDungeonFlow.FirstTimeDungeonAudio != (Object)null && !list2.Contains(customExtendedDungeonFlow.FirstTimeDungeonAudio))
+8417: 					{
+8418: 						list2.Add(customExtendedDungeonFlow.FirstTimeDungeonAudio);
+8419: 					}
+8420: 				}
+8421: 			}
+8422: 			Patches.RoundManager.dungeonFlowTypes = list.ToArray();
+8423: 			Patches.RoundManager.firstTimeDungeonAudios = list2.ToArray();
+8424: 		}
+8425: 
+8426: 		public static List<ExtendedDungeonFlowWithRarity> GetValidExtendedDungeonFlows(ExtendedLevel extendedLevel, bool debugResults)
+8427: 		{
+8428: 			DebugStopwatch.StartStopWatch("Get Valid ExtendedDungeonFlows");
+8429: 			List<ExtendedDungeonFlowWithRarity> list = new List<ExtendedDungeonFlowWithRarity>();
+8430: 			List<ExtendedDungeonFlowWithRarity> list2 = new List<ExtendedDungeonFlowWithRarity>();
+8431: 			foreach (ExtendedDungeonFlow vanillaExtendedDungeonFlow in PatchedContent.VanillaExtendedDungeonFlows)
+8432: 			{
+8433: 				list2.Add(new ExtendedDungeonFlowWithRarity(vanillaExtendedDungeonFlow, 0));
+8434: 			}
+8435: 			foreach (ExtendedDungeonFlow customExtendedDungeonFlow in PatchedContent.CustomExtendedDungeonFlows)
+8436: 			{
+8437: 				list2.Add(new ExtendedDungeonFlowWithRarity(customExtendedDungeonFlow, 0));
+8438: 			}
+8439: 			foreach (ExtendedDungeonFlowWithRarity item in new List<ExtendedDungeonFlowWithRarity>(list2))
+8440: 			{
+8441: 				item.rarity = item.extendedDungeonFlow.LevelMatchingProperties.GetDynamicRarity(extendedLevel);
+8442: 				if (item.rarity != 0)
+8443: 				{
+8444: 					list.Add(item);
+8445: 				}
+8446: 			}
+8447: 			if (debugResults)
+8448: 			{
+8449: 				string text = "ExtendedLevel <-> ExtendedDungeonFlow Dynamic Matching Report.\n\n";
+8450: 				text = text + "Info For ExtendedLevel: " + ((Object)extendedLevel).name + " | Planet Name: " + extendedLevel.NumberlessPlanetName + " | Content Tags: ";
+8451: 				foreach (ContentTag contentTag in extendedLevel.ContentTags)
+8452: 				{
+8453: 					text = text + contentTag.contentTagName + ", ";
+8454: 				}
+8455: 				text = text.TrimEnd(',', ' ');
+8456: 				text = text + " | Route Price: " + extendedLevel.RoutePrice + " | Current Weather: " + ((object)Unsafe.As<LevelWeatherType, LevelWeatherType>(ref extendedLevel.SelectableLevel.currentWeather)/*cast due to constrained. prefix*/).ToString();
+8457: 				text += "\n";
+8458: 				List<ExtendedDungeonFlow> list3 = list.ConvertAll((ExtendedDungeonFlowWithRarity d) => d.extendedDungeonFlow);
+8459: 				text += "Unviable ExtendedDungeonFlows: ";
+8460: 				foreach (ExtendedDungeonFlowWithRarity item2 in list2)
+8461: 				{
+8462: 					if (!list3.Contains(item2.extendedDungeonFlow))
+8463: 					{
+8464: 						text = text + item2.extendedDungeonFlow.DungeonName + ", ";
+8465: 					}
+8466: 				}
+8467: 				text = text.TrimEnd(',', ' ');
+8468: 				text += "\n";
+8469: 				list.Sort(new ExtendedDungeonFlowWithRarity.ExtendedDungeonFlowWithRarityComparer(ascending: false));
+8470: 				text += "Viable ExtendedDungeonFlows: ";
+8471: 				foreach (ExtendedDungeonFlowWithRarity item3 in list)
+8472: 				{
+8473: 					text = text + item3.extendedDungeonFlow.DungeonName + " (" + item3.rarity + "), ";
+8474: 				}
+8475: 				text = text.TrimEnd(',', ' ');
+8476: 				DebugHelper.Log(text + "\n", DebugType.User);
+8477: 			}
+8478: 			DebugStopwatch.StopStopWatch("Get Valid ExtendedDungeonFlows");
+8479: 			return list;
+8480: 		}
+8481: 
+8482: 		internal static void RefreshDungeonFlowIDs()
+8483: 		{
+8484: 			//IL_00b7: Unknown result type (might be due to invalid IL or missing references)
+8485: 			//IL_00be: Expected O, but got Unknown
+8486: 			List<DungeonFlow> list = new List<DungeonFlow>();
+8487: 			List<IndoorMapType> list2 = new List<IndoorMapType>();
+8488: 			foreach (ExtendedDungeonFlow vanillaExtendedDungeonFlow in PatchedContent.VanillaExtendedDungeonFlows)
+8489: 			{
+8490: 				vanillaExtendedDungeonFlow.DungeonID = list.Count;
+8491: 				list.Add(vanillaExtendedDungeonFlow.DungeonFlow);
+8492: 			}
+8493: 			foreach (ExtendedDungeonFlow customExtendedDungeonFlow in PatchedContent.CustomExtendedDungeonFlows)
+8494: 			{
+8495: 				customExtendedDungeonFlow.DungeonID = list.Count;
+8496: 				list.Add(customExtendedDungeonFlow.DungeonFlow);
+8497: 			}
+8498: 			foreach (DungeonFlow item2 in list)
+8499: 			{
+8500: 				IndoorMapType item = new IndoorMapType(item2, 1f, (AudioClip)null);
+8501: 				list2.Add(item);
+8502: 			}
+8503: 			Patches.RoundManager.dungeonFlowTypes = list2.ToArray();
+8504: 		}
+8505: 
+8506: 		internal static bool TryGetExtendedDungeonFlow(DungeonFlow dungeonFlow, out ExtendedDungeonFlow returnExtendedDungeonFlow, ContentType contentType = ContentType.Any)
+8507: 		{
+8508: 			if (PatchedContent.TryGetExtendedContent(dungeonFlow, out returnExtendedDungeonFlow))
+8509: 			{
+8510: 				if (contentType != ContentType.Any)
+8511: 				{
+8512: 					return contentType == returnExtendedDungeonFlow.ContentType;
+8513: 				}
+8514: 				return true;
+8515: 			}
+8516: 			return false;
+8517: 		}
+8518: 
+8519: 		internal static bool TryGetExtendedDungeonFlow(IndoorMapType indoorMapType, out ExtendedDungeonFlow returnExtendedDungeonFlow, ContentType contentType = ContentType.Any)
+8520: 		{
+8524: 	public static class EnemyManager
+8540: 		public static void InjectCustomEnemyTypesIntoLevelViaDynamicRarity(ExtendedLevel extendedLevel, ExtendedDungeonFlow extendedDungeonFlow = null, bool debugResults = false)
+8550: 		private static void InjectEnemyOfTypeIntoLevel(ExtendedEnemyType extendedEnemy, SpawnableEnemyType spawnableEnemyType, ExtendedLevel extendedLevel, ExtendedDungeonFlow extendedDungeonFlow = null, bool debugResults = false)
+8716: 	public static class FootstepSurfaceManager
+8801: 	public static class ItemManager
+8832: 		public static void InjectCustomItemsIntoLevelViaDynamicRarity(ExtendedLevel extendedLevel, ExtendedDungeonFlow extendedDungeonFlow = null, bool debugResults = false)
+8887: 	public sealed class LethalLevelLoaderNetworkManager : NetworkBehaviour
+8889: 		public class StringContainer : INetworkSerializable
+8922: 		public static LethalLevelLoaderNetworkManager Instance
+8923: 		{
+8924: 			get
+8925: 			{
+8926: 				if ((Object)(object)_instance == (Object)null)
+8927: 				{
+8928: 					_instance = Object.FindAnyObjectByType<LethalLevelLoaderNetworkManager>((FindObjectsInactive)0);
+8929: 				}
+8930: 				if ((Object)(object)_instance == (Object)null)
+8931: 				{
+8932: 					DebugHelper.LogError("LethalLevelLoaderNetworkManager Could Not Be Found! Returning Null!", DebugType.User);
+8933: 				}
+8934: 				return _instance;
+8935: 			}
+8936: 			set
+8937: 			{
+8938: 				_instance = value;
+8939: 			}
+8940: 		}
+8941: 
+8942: 		public override void OnNetworkSpawn()
+8943: 		{
+8944: 			((NetworkBehaviour)this).OnNetworkSpawn();
+8945: 			if ((Object)(object)_instance != (Object)null && (Object)(object)_instance != (Object)(object)this)
+8946: 			{
+8947: 				Object.Destroy((Object)(object)Instance);
+8948: 			}
+8949: 			Instance = this;
+8950: 			((Object)((Component)this).gameObject).name = "LethalLevelLoaderNetworkManager";
+8951: 			DebugHelper.Log("LethalLevelLoaderNetworkManager Spawned.", DebugType.User);
+8952: 		}
+8953: 
+8954: 		[Rpc(/*Could not decode attribute arguments.*/)]
+8955: 		public void GetRandomExtendedDungeonFlowServerRpc()
+8956: 		{
+8957: 			//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+8958: 			//IL_002e: Invalid comparison between Unknown and I4
+8959: 			//IL_008c: Unknown result type (might be due to invalid IL or missing references)
+8960: 			//IL_0096: Invalid comparison between Unknown and I4
+8961: 			//IL_0043: Unknown result type (might be due to invalid IL or missing references)
+8962: 			//IL_004b: Unknown result type (might be due to invalid IL or missing references)
+8963: 			//IL_0051: Unknown result type (might be due to invalid IL or missing references)
+8964: 			//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+8965: 			//IL_0064: Unknown result type (might be due to invalid IL or missing references)
+8966: 			//IL_0073: Unknown result type (might be due to invalid IL or missing references)
+8967: 			//IL_0077: Unknown result type (might be due to invalid IL or missing references)
+8968: 			//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+8969: 			NetworkManager val = ((NetworkBehaviour)this).NetworkManager;
+8970: 			if (val == null || !val.IsListening)
+8971: 			{
+8972: 				return;
+8973: 			}
+8974: 			if ((int)base.__rpc_exec_stage != 1)
+8975: 			{
+8976: 				RpcAttributeParams val2 = default(RpcAttributeParams);
+8977: 				RpcParams val4 = default(RpcParams);
+8978: 				FastBufferWriter val3 = ((NetworkBehaviour)this).__beginSendRpc(12573863u, val4, val2, (SendTo)2, (RpcDelivery)0);
+8979: 				((NetworkBehaviour)this).__endSendRpc(ref val3, 12573863u, val4, val2, (SendTo)2, (RpcDelivery)0);
+8980: 			}
+8981: 			if ((int)base.__rpc_exec_stage != 1)
+8982: 			{
+8983: 				return;
+8984: 			}
+8985: 			base.__rpc_exec_stage = (__RpcExecStage)0;
+8986: 			DebugHelper.Log("Getting Random DungeonFlows!", DebugType.User);
+8987: 			List<ExtendedDungeonFlowWithRarity> validExtendedDungeonFlows = DungeonManager.GetValidExtendedDungeonFlows(LevelManager.CurrentExtendedLevel, debugResults: true);
+8988: 			List<StringContainer> list = new List<StringContainer>();
+8989: 			List<int> list2 = new List<int>();
+8990: 			if (validExtendedDungeonFlows.Count == 0)
+8991: 			{
+8992: 				DebugHelper.LogError("Loading Facility DungeonFlow to prevent infinite loading!", DebugType.User);
+8993: 				StringContainer item = new StringContainer
+8994: 				{
+8995: 					SomeText = ((Object)PatchedContent.ExtendedDungeonFlows[0].DungeonFlow).name
+8996: 				};
+8997: 				list.Add(item);
+8998: 				list2.Add(300);
+8999: 			}
+9000: 			else
+9001: 			{
+9002: 				List<DungeonFlow> dungeonFlows = Patches.RoundManager.GetDungeonFlows();
+9003: 				foreach (ExtendedDungeonFlowWithRarity item3 in validExtendedDungeonFlows)
+9004: 				{
+9005: 					StringContainer item2 = new StringContainer
+9006: 					{
+9007: 						SomeText = ((Object)dungeonFlows[dungeonFlows.IndexOf(item3.extendedDungeonFlow.DungeonFlow)]).name
+9008: 					};
+9009: 					list.Add(item2);
+9010: 					list2.Add(item3.rarity);
+9011: 				}
+9012: 			}
+9013: 			SetRandomExtendedDungeonFlowClientRpc(list.ToArray(), list2.ToArray());
+9014: 		}
+9015: 
+9016: 		[Rpc(/*Could not decode attribute arguments.*/)]
+9017: 		public void GetUpdatedLevelCurrentWeatherServerRpc()
+9018: 		{
+9019: 			//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+9020: 			//IL_002e: Invalid comparison between Unknown and I4
+9021: 			//IL_008c: Unknown result type (might be due to invalid IL or missing references)
+9022: 			//IL_0096: Invalid comparison between Unknown and I4
+9023: 			//IL_0043: Unknown result type (might be due to invalid IL or missing references)
+9024: 			//IL_004b: Unknown result type (might be due to invalid IL or missing references)
+9025: 			//IL_0051: Unknown result type (might be due to invalid IL or missing references)
+9026: 			//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+9027: 			//IL_0064: Unknown result type (might be due to invalid IL or missing references)
+9028: 			//IL_0073: Unknown result type (might be due to invalid IL or missing references)
+9029: 			//IL_0077: Unknown result type (might be due to invalid IL or missing references)
+9030: 			//IL_00a5: Unknown result type (might be due to invalid IL or missing references)
+9031: 			//IL_00ed: Unknown result type (might be due to invalid IL or missing references)
+9032: 			NetworkManager val = ((NetworkBehaviour)this).NetworkManager;
+9033: 			if (val == null || !val.IsListening)
+9034: 			{
+9035: 				return;
+9036: 			}
+9037: 			if ((int)base.__rpc_exec_stage != 1)
+9038: 			{
+9039: 				RpcAttributeParams val2 = default(RpcAttributeParams);
+9040: 				RpcParams val4 = default(RpcParams);
+9041: 				FastBufferWriter val3 = ((NetworkBehaviour)this).__beginSendRpc(3226356970u, val4, val2, (SendTo)2, (RpcDelivery)0);
+9042: 				((NetworkBehaviour)this).__endSendRpc(ref val3, 3226356970u, val4, val2, (SendTo)2, (RpcDelivery)0);
+9043: 			}
+9044: 			if ((int)base.__rpc_exec_stage != 1)
+9045: 			{
+9046: 				return;
+9047: 			}
+9048: 			base.__rpc_exec_stage = (__RpcExecStage)0;
+9049: 			List<StringContainer> list = new List<StringContainer>();
+9050: 			List<LevelWeatherType> list2 = new List<LevelWeatherType>();
+9051: 			foreach (ExtendedLevel extendedLevel in PatchedContent.ExtendedLevels)
+9052: 			{
+9053: 				StringContainer item = new StringContainer
+9054: 				{
+9055: 					SomeText = ((Object)extendedLevel).name
+9056: 				};
+9057: 				list.Add(item);
+9058: 				list2.Add(extendedLevel.SelectableLevel.currentWeather);
+9059: 			}
+9060: 			SetUpdatedLevelCurrentWeatherClientRpc(list.ToArray(), list2.ToArray());
+9061: 		}
+9062: 
+9063: 		[Rpc(/*Could not decode attribute arguments.*/)]
+9064: 		public void SetUpdatedLevelCurrentWeatherClientRpc(StringContainer[] levelNames, LevelWeatherType[] weatherTypes)
+9065: 		{
+9066: 			//IL_0024: Unknown result type (might be due to invalid IL or missing references)
+9067: 			//IL_002e: Invalid comparison between Unknown and I4
+9068: 			//IL_0122: Unknown result type (might be due to invalid IL or missing references)
+9069: 			//IL_012c: Invalid comparison between Unknown and I4
+9070: 			//IL_0043: Unknown result type (might be due to invalid IL or missing references)
+9071: 			//IL_004b: Unknown result type (might be due to invalid IL or missing references)
+9072: 			//IL_0051: Unknown result type (might be due to invalid IL or missing references)
+9073: 			//IL_005f: Unknown result type (might be due to invalid IL or missing references)
+9074: 			//IL_0064: Unknown result type (might be due to invalid IL or missing references)
+9075: 			//IL_007f: Unknown result type (might be due to invalid IL or missing references)
+9076: 			//IL_0085: Unknown result type (might be due to invalid IL or missing references)
+9077: 			//IL_013b: Unknown result type (might be due to invalid IL or missing references)
+9078: 			//IL_00ca: Unknown result type (might be due to invalid IL or missing references)
+9079: 			//IL_00d0: Unknown result type (might be due to invalid IL or missing references)
+9080: 			//IL_00a3: Unknown result type (might be due to invalid IL or missing references)
+9081: 			//IL_00a9: Unknown result type (might be due to invalid IL or missing references)
+9141: 		public void SetRandomExtendedDungeonFlowClientRpc(StringContainer[] dungeonFlowNames, int[] rarities)
+9215: 		public void GetDungeonFlowSizeServerRpc(RpcParams rpcParams = default(RpcParams))
+9253: 		public void SetDungeonFlowSizeClientRpc(float hostSize, RpcParams rpcParams)
+9644: 	public static class LevelManager
+9865: 					int num4 = text2.Split('+').Length - 1;
+9866: 					dynamicRiskLevelDictionary[text2] = ((num4 > 1) ? (dynamicRiskLevelDictionary[key3] * num4) : Mathf.RoundToInt(Mathf.Lerp((float)dynamicRiskLevelDictionary[key3], (float)dynamicRiskLevelDictionary[key2], 0.33f)));
+9867: 				}
+9868: 				DebugHelper.Log($"Risk Level: {text2} Was Assigned Calculated Difficulty Of: {dynamicRiskLevelDictionary[text2]}", DebugType.Developer);
+9869: 			}
+9870: 		}
+9871: 
+9872: 		public static void AssignCalculatedRiskLevels()
+9873: 		{
+9874: 			Dictionary<int, string> dictionary = new Dictionary<int, string>();
+9875: 			List<int> list = dynamicRiskLevelDictionary.Values.ToList();
+9876: 			list.Sort();
+9877: 			foreach (int item in list)
+9878: 			{
+9879: 				foreach (KeyValuePair<string, int> item2 in dynamicRiskLevelDictionary)
+9880: 				{
+9881: 					if (item2.Value == item)
+9882: 					{
+9883: 						dictionary.Add(item, item2.Key);
+9884: 					}
+9885: 				}
+9886: 			}
+9887: 			foreach (KeyValuePair<int, string> item3 in dictionary)
+9888: 			{
+9889: 				DebugHelper.Log($"Ordered Calculated Risk Level: ({item3.Value}) - {item3.Key}", DebugType.Developer);
+9890: 			}
+9891: 			foreach (ExtendedLevel customExtendedLevel in PatchedContent.CustomExtendedLevels)
+9892: 			{
+9893: 				if (customExtendedLevel.OverrideDynamicRiskLevelAssignment)
+9894: 				{
+9895: 					continue;
+9896: 				}
+9897: 				int calculatedDifficultyRating = customExtendedLevel.CalculatedDifficultyRating;
+9898: 				int num = calculatedDifficultyRating;
+9899: 				foreach (int item4 in list)
+9900: 				{
+9901: 					if (Math.Abs(calculatedDifficultyRating - item4) < num)
+9902: 					{
+9903: 						num = item4;
+9904: 					}
+9905: 				}
+9906: 				if (num > 0)
+9907: 				{
+9908: 					customExtendedLevel.SelectableLevel.riskLevel = dictionary[num];
+9909: 				}
+9910: 			}
+9911: 			List<ExtendedLevel> list2 = PatchedContent.ExtendedLevels.ToList();
+9912: 			list2.Sort(default(ExtendedLevel.ExtendedLevelDifficultyComparer));
+9913: 			foreach (ExtendedLevel item5 in list2)
+9914: 			{
+9915: 				DebugHelper.Log(item5.NumberlessPlanetName + " (" + item5.SelectableLevel.riskLevel + ")  (" + item5.CalculatedDifficultyRating + ")", DebugType.Developer);
+9916: 			}
+9917: 		}
+9918: 
+9919: 		public static void LogDayHistory()
+9920: 		{
+9921: 			//IL_00bd: Unknown result type (might be due to invalid IL or missing references)
+9922: 			//IL_00c2: Unknown result type (might be due to invalid IL or missing references)
+9923: 			if (!Plugin.IsSetupComplete || (Object)(object)Patches.StartOfRound == (Object)null || (Object)(object)Patches.RoundManager == (Object)null || (Object)(object)Patches.TimeOfDay == (Object)null)
+9924: 			{
+9925: 				DebugHelper.LogWarning("Game Seems Uninitialized, Exiting LogDayHistory Early!", DebugType.Developer);
+9926: 				return;
+9927: 			}
+9928: 			DayHistory dayHistory = new DayHistory();
+9929: 			daysTotal++;
+9930: 			dayHistory.allViableOptions = DungeonManager.GetValidExtendedDungeonFlows(CurrentExtendedLevel, debugResults: false).ConvertAll((ExtendedDungeonFlowWithRarity i) => i.extendedDungeonFlow);
+9931: 			dayHistory.extendedLevel = CurrentExtendedLevel;
+9932: 			dayHistory.extendedDungeonFlow = DungeonManager.CurrentExtendedDungeonFlow;
+9933: 			dayHistory.day = daysTotal;
+9934: 			dayHistory.quota = Patches.TimeOfDay.timesFulfilledQuota;
+9935: 			dayHistory.weatherEffect = Patches.StartOfRound.currentLevel.currentWeather;
+9936: 			string text = "Created New Day History Log! PlanetName: ";
+9937: 			text = ((!((Object)(object)dayHistory.extendedLevel != (Object)null)) ? (text + "MISSING EXTENDEDLEVEL ,") : (text + dayHistory.extendedLevel.NumberlessPlanetName + " ,"));
+9938: 			text = ((!((Object)(object)dayHistory.extendedDungeonFlow != (Object)null)) ? (text + "MISSING EXTENDEDDUNGEONFLOW ,") : (text + dayHistory.extendedDungeonFlow.DungeonName + " ,"));
+9939: 			text = text + "Quota: " + dayHistory.quota + " , Day: " + dayHistory.day + " , Weather: " + ((object)Unsafe.As<LevelWeatherType, LevelWeatherType>(ref dayHistory.weatherEffect)/*cast due to constrained. prefix*/).ToString();
+9940: 			DebugHelper.Log(text, DebugType.User);
+9941: 			dayHistoryList.Add(dayHistory);
+9942: 		}
+9943: 
+9944: 		public static int CalculateExtendedLevelDifficultyRating(ExtendedLevel extendedLevel, bool debugResults = false)
+9945: 		{
+9946: 			int num = 0;
+9947: 			string text = "Calculated Difficulty Rating For ExtendedLevel: " + extendedLevel.NumberlessPlanetName + "(" + extendedLevel.SelectableLevel.riskLevel + ") ----- ";
+9948: 			int routePrice = extendedLevel.RoutePrice;
+9949: 			routePrice += extendedLevel.SelectableLevel.maxTotalScrapValue;
+9950: 			num += routePrice;
+9951: 			text = text + "Baseline Route Value: " + routePrice + ", ";
+9952: 			int num2 = 0;
+9953: 			foreach (SpawnableItemWithRarity item in extendedLevel.SelectableLevel.spawnableScrap)
+9954: 			{
+9955: 				if ((Object)(object)item.spawnableItem != (Object)null && (item.spawnableItem.minValue + item.spawnableItem.maxValue) * 5 != 0 && item.rarity != 0 && item.rarity / 10 != 0)
+9956: 				{
+9957: 					num2 += (item.spawnableItem.maxValue - item.spawnableItem.minValue) / (item.rarity / 10);
+9958: 				}
+9959: 			}
+9960: 			num += num2;
+9961: 			text = text + "Scrap Value: " + num2 + ", ";
+9962: 			int num3 = (extendedLevel.SelectableLevel.maxEnemyPowerCount + extendedLevel.SelectableLevel.maxOutsideEnemyPowerCount + extendedLevel.SelectableLevel.maxDaytimeEnemyPowerCount) * 15;
+9963: 			num3 *= 2;
+9964: 			num += num3;
+9965: 			text = text + "Enemy Spawn Value: " + num3 + ", ";
+9966: 			float num4 = sumEnemyValues(extendedLevel.SelectableLevel.Enemies);
+9967: 			num4 += sumEnemyValues(extendedLevel.SelectableLevel.OutsideEnemies);
+9968: 			num4 += sumEnemyValues(extendedLevel.SelectableLevel.DaytimeEnemies);
+9969: 			num += Mathf.RoundToInt(num4);
+9970: 			text = text + "Enemy Value: " + num4 + ", ";
+9971: 			text = text + "Calculated Difficulty Value: " + num + ", ";
+9972: 			num += Mathf.RoundToInt((float)num * (extendedLevel.SelectableLevel.factorySizeMultiplier * 0.5f));
+9973: 			text = text + "Factory Size Multiplier: " + extendedLevel.SelectableLevel.factorySizeMultiplier + ", ";
+9974: 			text = text + "Multiplied Calculated Difficulty Value: " + num;
+9975: 			if (debugResults)
+9976: 			{
+9977: 				DebugHelper.Log(text, DebugType.Developer);
+9978: 			}
+9979: 			return num;
+9980: 			static float sumEnemyValues(List<SpawnableEnemyWithRarity> enemyList)
+9981: 			{
+9982: 				float num5 = 0f;
+9983: 				foreach (SpawnableEnemyWithRarity enemy in enemyList)
+9984: 				{
+9985: 					if (enemy.rarity > 0 && (Object)(object)enemy.enemyType != (Object)null && enemy.rarity / 10 != 0)
+9986: 					{
+9987: 						num5 += enemy.enemyType.PowerLevel * 100f / (float)(enemy.rarity / 10);
+9988: 					}
+9989: 				}
+9990: 				return num5;
+9991: 			}
+9992: 		}
+9993: 	}
+9994: 	public class DayHistory
+9995: 	{
+9996: 		public int quota;
+9997: 
+9998: 		public int day;
+9999: 
+10000: 		public ExtendedLevel extendedLevel;
+10001: 
+10002: 		public List<ExtendedDungeonFlow> allViableOptions;
+10003: 
+10004: 		public ExtendedDungeonFlow extendedDungeonFlow;
+10005: 
+10006: 		public LevelWeatherType weatherEffect;
+10007: 	}
+10008: 	internal sealed class NetworkBundleManager : NetworkBehaviour, IDisposable
+10009: 	{
+10010: 		public static GameObject networkingManagerPrefab;
+10011: 
+10012: 		private static NetworkBundleManager _instance;
+10013: 
+10014: 		public static NetworkManager networkManager;
+10015: 
+10016: 		public List<NetworkSceneInfo> networkSceneInfos;
+10017: 
+10018: 		internal Dictionary<string, List<AssetBundleGroup>> assetBundleGroupSceneDict = new Dictionary<string, List<AssetBundleGroup>>();
+10019: 
+10020: 		internal ExtendedLevel currentRouteRequestor;
+10021: 
+10022: 		private readonly NetworkVariable<bool> allowedToLoadLevel = new NetworkVariable<bool>(false, (NetworkVariableReadPermission)0, (NetworkVariableWritePermission)0);
+10023: 
+10024: 		private readonly NetworkList<bool> playersLoadStatus = new NetworkList<bool>();
+10462: 	internal static class SaveManager
+10862: 	public class SavedShipItemData
+10886: 	public static class TerminalManager
+11235: 				PreviewInfoType.History => GetHistoryConditions(extendedLevel) ?? "", 
+11236: 				PreviewInfoType.All => $"({extendedLevel.SelectableLevel.riskLevel}) (${extendedLevel.RoutePrice}) {GetWeatherConditions(extendedLevel)}", 
+11237: 				PreviewInfoType.Vanilla => "[planetTime]", 
+11238: 				PreviewInfoType.Override => Settings.GetOverridePreviewInfo(extendedLevel) ?? "", 
+11239: 				_ => string.Empty, 
+11240: 			};
+11241: 			if (extendedLevel.IsRouteLocked)
+11242: 			{
+11243: 				text += " (Locked)";
+11244: 			}
+11245: 			string text2 = onBeforePreviewInfoTextAdded?.Invoke(extendedLevel, Settings.levelPreviewInfoType);
+11246: 			if (!string.IsNullOrEmpty(text2))
+11247: 			{
+11248: 				text = text2;
+11249: 			}
+11250: 			return text;
+11251: 		}
+11252: 
+11253: 		public static string GetWeatherConditions(ExtendedLevel extendedLevel)
+11254: 		{
+11255: 			//IL_000c: Unknown result type (might be due to invalid IL or missing references)
+11256: 			//IL_0012: Invalid comparison between Unknown and I4
+11257: 			//IL_001f: Unknown result type (might be due to invalid IL or missing references)
+11258: 			string result = string.Empty;
+11259: 			if ((int)extendedLevel.SelectableLevel.currentWeather != -1)
+11260: 			{
+11261: 				result = $"({extendedLevel.SelectableLevel.currentWeather})";
+11262: 			}
+11263: 			return result;
+11264: 		}
+11265: 
+11266: 		public static string GetHistoryConditions(ExtendedLevel extendedLevel)
+11267: 		{
+11268: 			DayHistory dayHistory = LevelManager.dayHistoryList.Find((DayHistory dayHistory2) => (Object)(object)dayHistory2.extendedLevel == (Object)(object)extendedLevel);
+11269: 			if (dayHistory == null)
+11270: 			{
+11271: 				return "(Unexplored)";
+11272: 			}
+11273: 			if (Patches.TimeOfDay.timesFulfilledQuota == dayHistory.quota && LevelManager.daysTotal == dayHistory.day)
+11274: 			{
+11275: 				return "(Explored Yesterday)";
+11276: 			}
+11277: 			if (Patches.TimeOfDay.timesFulfilledQuota == dayHistory.quota)
+11278: 			{
+11279: 				return $"(Explored {LevelManager.daysTotal - dayHistory.day} Ago)";
+11280: 			}
+11281: 			if (Patches.TimeOfDay.timesFulfilledQuota - 1 == dayHistory.quota)
+11282: 			{
+11283: 				return "(Explored Last Quota)";
+11284: 			}
+11285: 			return $"Explored {Patches.TimeOfDay.timesFulfilledQuota - dayHistory.quota} Quotas Ago)";
+11286: 		}
+11287: 
+11288: 		public static string GetTerminalEventString(string terminalEventString)
+11289: 		{
+11290: 			return terminalEventString.Split(';', StringSplitOptions.RemoveEmptyEntries)[^1];
+11291: 		}
+11292: 
+11293: 		public static string GetTerminalEventEnum(string terminalEventString)
+11294: 		{
+11295: 			return terminalEventString.Split(';', StringSplitOptions.RemoveEmptyEntries)[0];
+11296: 		}
+11297: 
+11298: 		public static string GetSimulationResultsText(ExtendedLevel extendedLevel)
+11299: 		{
+11300: 			List<ExtendedDungeonFlowWithRarity> list = DungeonManager.GetValidExtendedDungeonFlows(extendedLevel, debugResults: true).ToList();
+11301: 			list.Sort(new ExtendedDungeonFlowWithRarity.ExtendedDungeonFlowWithRarityComparer(ascending: false));
+11302: 			string text = "Simulating arrival to " + extendedLevel.SelectableLevel.PlanetName + "\nAnalyzing potential remnants found on surface. \nListing generated probabilities below.\n____________________________ \n\nPOSSIBLE STRUCTURES: \n";
+11303: 			int num = 0;
+11304: 			foreach (ExtendedDungeonFlowWithRarity item in list)
+11305: 			{
+11306: 				num += item.rarity;
+11307: 			}
+11308: 			foreach (ExtendedDungeonFlowWithRarity item2 in list)
+11309: 			{
+11310: 				text = text + "* " + item2.extendedDungeonFlow.DungeonName.PadRight(22).Truncate(22) + " //   " + GetSimulationDataText(item2.rarity, num) + "\n";
+11311: 			}
+11312: 			return text;
+11313: 		}
+11314: 
+11315: 		public static string GetSimulationDataText(int rarity, int totalRarity)
+11316: 		{
+11317: 			string text = string.Empty;
+11318: 			if (Settings.levelSimulateInfoType == SimulateInfoType.Percentage)
+11319: 			{
+11320: 				text = "Chance: " + ((float)rarity / (float)totalRarity * 100f).ToString("#0.00", CultureInfo.InvariantCulture).PadLeft(5) + "%";
+11321: 			}
+11322: 			else if (Settings.levelSimulateInfoType == SimulateInfoType.Rarity)
+11323: 			{
+11324: 				text = "Weight: " + $"{rarity}".PadLeft(4) + " / " + totalRarity;
+11325: 			}
+11326: 			else if (Settings.levelSimulateInfoType == SimulateInfoType.All)
+11327: 			{
+11328: 				text = "Weight: " + $"{rarity}".PadRight(5) + ((float)rarity / (float)totalRarity * 100f).ToString("\\(#0.0#", CultureInfo.InvariantCulture).PadLeft(6) + "%)";
+11329: 			}
+11330: 			return text.PadLeft(5).Truncate(25);
+11331: 		}
+11332: 
+11333: 		public static string GetOffsetExtendedLevelName(ExtendedLevel extendedLevel)
+11334: 		{
+11335: 			int num = 0;
+11336: 			string text = string.Empty;
+11337: 			foreach (ExtendedLevel extendedLevel2 in currentMoonsCataloguePage.ExtendedLevels)
+11338: 			{
+11339: 				if (extendedLevel2.NumberlessPlanetName.Length > num)
+11340: 				{
+11341: 					num = extendedLevel2.NumberlessPlanetName.Length;
+11342: 				}
+11343: 			}
+11344: 			for (int i = 0; i < num - extendedLevel.NumberlessPlanetName.Length; i++)
+11345: 			{
+11346: 				text += " ";
+11347: 			}
+11348: 			return text;
+11349: 		}
+11350: 
+11351: 		internal static TerminalKeyword TryFindAlternativeNoun(Terminal terminal, TerminalKeyword foundKeyword, string playerInput)
+11352: 		{
+11353: 			if ((Object)(object)foundKeyword != (Object)null && !terminal.hasGottenVerb && foundKeyword.isVerb)
+11354: 			{
+11355: 				lastParsedVerbKeyword = foundKeyword;
+11356: 			}
+11357: 			if ((Object)(object)foundKeyword != (Object)null && !foundKeyword.isVerb && terminal.hasGottenVerb && (Object)(object)lastParsedVerbKeyword != (Object)null)
+11358: 			{
+11359: 				if (!ValidateNounKeyword(lastParsedVerbKeyword, foundKeyword))
+11360: 				{
+11361: 					TerminalKeyword[] allKeywords = Terminal.terminalNodes.allKeywords;
+11362: 					foreach (TerminalKeyword val in allKeywords)
+11363: 					{
+11364: 						if (!val.isVerb && (Object)(object)val != (Object)(object)foundKeyword && string.Equals(val.word, playerInput, StringComparison.OrdinalIgnoreCase) && ValidateNounKeyword(lastParsedVerbKeyword, val))
+11365: 						{
+11366: 							lastParsedVerbKeyword = null;
+11367: 							return val;
+11368: 						}
+11369: 					}
+11370: 				}
+11371: 			}
+11372: 			return foundKeyword;
+11373: 		}
+11374: 
+11375: 		internal static bool ValidateNounKeyword(TerminalKeyword verbKeyword, TerminalKeyword nounKeyword)
+11376: 		{
+11377: 			for (int i = 0; i < verbKeyword.compatibleNouns.Length; i++)
+11378: 			{
+11379: 				if ((Object)(object)verbKeyword.compatibleNouns[i].noun == (Object)(object)nounKeyword)
+11380: 				{
+11381: 					return true;
+11382: 				}
+11383: 			}
+11384: 			return false;
+11385: 		}
+11386: 
+11387: 		public static List<ExtendedLevelGroup> GetExtendedLevelGroups(ExtendedLevel[] newExtendedLevels, int splitCount)
+11388: 		{
+11389: 			List<ExtendedLevelGroup> list = new List<ExtendedLevelGroup>();
+11390: 			int num = 0;
+11391: 			int num2 = 0;
+11392: 			List<ExtendedLevel> list2 = new List<ExtendedLevel>();
+11393: 			foreach (ExtendedLevel item in new List<ExtendedLevel>(newExtendedLevels))
+11394: 			{
+11957: 	public static class TerrainManager
+12092: 	public static class UnlockableItemManager
+12126: 	public static class VehiclesManager
+12171: 	internal static class WeatherManager
+12595: 	public class Plugin : BaseUnityPlugin
+12767: 	public class AssetBundleLoader : MonoBehaviour
+13009: 		internal static void CreateVanillaExtendedDungeonFlows()
+13110: 		internal static void CreateVanillaExtendedDungeonFlow(IndoorMapType indoorMapType)
+13203: 		internal static bool NetworkRegisterDungeonContent(ExtendedDungeonFlow extendedDungeonFlow, NetworkManager networkManager)
+13265: 	public class ConfigHelper
+13499: 	public class ContentExtractor
+13775: 	internal static class ContentTagParser
+13929: 	internal static class DebugHelper
+14106: 	internal static class DebugStopwatch
+14133: 	public static class PrefabHelper
+14180: 	internal static class ConfigLoader
+14238: 	public class GeneralSettingsConfig : ConfigTemplate
+14300: 	public class ExtendedDungeonConfig : ConfigTemplate
+14329: 		public void BindConfigs(ExtendedDungeonFlow extendedDungeonFlow)
+14390: 	public class ExtendedLevelConfig : ConfigTemplate
+14504: 	public abstract class ConfigTemplate
+14550: 	internal static class ContentRestorer
+14556: 		internal static void RestoreVanillaDungeonAssetReferences(ExtendedDungeonFlow extendedDungeonFlow)
+15227: 	internal static class DawnLibCompatibility
+15404: 		internal static void ConvertDawnExtendedDungeonFlows()
+15549: 	internal static class DeepSewersCompatibility
+15584: 	internal static class LethalLibCompatibility
+15642: 	internal static class LethalPerformanceCompatibility
+15714: 	public class AssetBundleGroup
+15960: 	public class AssetBundleInfo(MonoBehaviour newCoroutineHandler, string filePath, string fileName)
+16247: 	internal sealed class AssetBundleLoader : MonoBehaviour
+16613: 	internal sealed class UniqueSceneGroup
+16664: 	public static class AssetBundleUtilities
+16810: 	internal sealed class IgnoresAccessChecksToAttribute : Attribute
+16819: 	internal class NetworkVariableSerializationHelper
+16832: 	internal class NetcodePatchedAssemblyAttribute : Attribute

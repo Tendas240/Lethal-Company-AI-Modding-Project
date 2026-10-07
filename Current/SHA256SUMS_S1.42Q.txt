@@ -1,0 +1,14 @@
+SHA-256 SUMS — S1.42Q
+Datum: 2026-09-03
+
+PROFILE
+50a8488a7d5f5c0a318db2557895d7029de3cfa1c0d704498bb9d90eaa481cb1  Profiles/LC V1 S1.42Q LethalMin Native Minimal Rollback.r2z
+
+BASE PROFILE
+11709548a924ddb3a174813eeecf23daf7aa6512267bfac1ab3b48b3b048fdc5  Profiles/LC V1 S1.42P Baboon Hawk Exact FinishTask Recovery.r2z
+
+EMBEDDED COMPATIBILITY DLL
+f6a4e7b060af6a779da1c92236b2ce63d1bd5d890a21c9492517e568a9aaac45  BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+
+LATEST RUNTIME EVIDENCE BEFORE S1.42Q
+d656095fb874a415a1bd2377c0411339d3d6eb002dce4ec3f6216e879294127f  RuntimeEvidence/S1.42P/20260903T181706Z/raw/LogOutput.log

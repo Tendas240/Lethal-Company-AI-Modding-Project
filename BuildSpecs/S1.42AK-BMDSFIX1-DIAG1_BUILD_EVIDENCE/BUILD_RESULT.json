@@ -1,0 +1,23 @@
+{
+  "build_id": "S1.42AK-BMDSFIX1-DIAG1",
+  "profile_name": "LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "output_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z",
+  "output_sha256": "31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e",
+  "zip_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKBMDSFix1Diag1/S142AKBMDSFix1Diag1.dll"
+  ],
+  "mod_state_changes": [],
+  "mod_additions": [],
+  "mod_removals": [],
+  "snapshot_dir": "ProfileSources/S1.42AK-BMDSFIX1-DIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  }
+}

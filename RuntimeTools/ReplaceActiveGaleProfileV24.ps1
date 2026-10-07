@@ -1,0 +1,285 @@
+$repo='Tendas240/Lethal-Company-AI-Modding-Project'
+$headers=@{'User-Agent'='LC-Profile-Updater';'Cache-Control'='no-cache'}
+$expectedBaseRevision='$helperRevision=''2026-09-05-import-uia-v2.2-materialization-proof'''
+$replacementRevision='$helperRevision=''2026-10-04-import-uia-v2.4.6-one-hop-runtime-pass-accepted-parent-chain'''
+
+$cache=[DateTime]::UtcNow.Ticks
+$baseUrl="https://raw.githubusercontent.com/$repo/main/RuntimeTools/ReplaceActiveGaleProfile.ps1?cb=$cache"
+$source=(Invoke-WebRequest -UseBasicParsing -Uri $baseUrl -Headers $headers).Content
+if([string]::IsNullOrWhiteSpace($source)){throw 'Canonical v2.2 Gale helper source could not be loaded'}
+if($source.IndexOf($expectedBaseRevision,[System.StringComparison]::Ordinal) -lt 0){
+    throw 'Refusing to patch Gale helper: expected v2.2 source revision signature is absent. Repository helper drift must be reviewed first.'
+}
+
+$zipTextStartMarker='function Get-ZipEntryText {'
+$materializationStartMarker='function Get-RequiredCriticalMaterializationPaths {'
+$waitMarker='function Wait-ImportedProfileEvidence {'
+$zipTextStart=$source.IndexOf($zipTextStartMarker,[System.StringComparison]::Ordinal)
+$materializationStart=$source.IndexOf($materializationStartMarker,[System.StringComparison]::Ordinal)
+$waitStart=$source.IndexOf($waitMarker,[System.StringComparison]::Ordinal)
+if($zipTextStart -lt 0 -or $materializationStart -le $zipTextStart -or $waitStart -le $materializationStart){
+    throw 'Refusing to patch Gale helper: v2.2 export/materialization function boundaries were not found exactly'
+}
+
+$newZipTextFunction=@'
+function Get-ZipEntryText {
+    param([Parameter(Mandatory=$true)][string]$ZipPath,[Parameter(Mandatory=$true)][string]$EntryName)
+    Add-Type -AssemblyName System.IO.Compression.FileSystem -ErrorAction Stop
+    $zip=[System.IO.Compression.ZipFile]::OpenRead($ZipPath)
+    try {
+        $entry=$zip.GetEntry($EntryName)
+        if(!$entry){throw "ZIP entry not found: $EntryName"}
+        $stream=$entry.Open()
+        try {
+            # Windows PowerShell 5.1 showed a non-terminating New-Object overload
+            # failure for the previous five-argument StreamReader constructor.
+            # Select the long-standing four-argument constructor directly instead.
+            try {
+                $reader=[System.IO.StreamReader]::new($stream,[System.Text.Encoding]::UTF8,$true,4096)
+            }
+            catch {
+                throw "Could not construct StreamReader for ZIP entry '$EntryName': $($_.Exception.Message)"
+            }
+            try {
+                $text=$reader.ReadToEnd()
+            }
+            finally {$reader.Dispose()}
+            if([string]::IsNullOrWhiteSpace($text)){
+                throw "ZIP entry '$EntryName' was read as empty/whitespace; refusing to derive dependency contracts"
+            }
+            return $text
+        }
+        finally {$stream.Dispose()}
+    }
+    finally {$zip.Dispose()}
+}
+'@
+
+$newMaterializationFunctions=@'
+function Get-RequiredCriticalMaterializationPaths {
+    param([Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][string]$ExpectedExportText)
+
+    # Gale stores each Thunderstore package below a namespace-package directory and
+    # preserves the package's own BepInEx/plugins subtree beneath it. A fixed flat
+    # DLL path therefore does not model the real runtime layout. Contracts use
+    # "\**\" to mean: exactly one non-empty file with this name must exist
+    # recursively below the package root.
+    $basePackage='loaforc-loaforcsSoundAPI'
+    $lcPackage='loaforc-loaforcsSoundAPI_LethalCompany'
+    $hasBase=($ExpectedExportText.IndexOf("- name: $basePackage",[System.StringComparison]::Ordinal) -ge 0)
+    $hasLc=($ExpectedExportText.IndexOf("- name: $lcPackage",[System.StringComparison]::Ordinal) -ge 0)
+
+    # Use anchored line patterns for drift detection. The base package name is a
+    # prefix of the LC package name, so a plain substring test would misclassify
+    # an LC-only export as also explicitly mentioning the base package.
+    $baseNamePattern='(?m)^\s*-\s*name:\s*'+[regex]::Escape($basePackage)+'\s*$'
+    $lcNamePattern='(?m)^\s*-\s*name:\s*'+[regex]::Escape($lcPackage)+'\s*$'
+    $mentionsBase=[regex]::IsMatch($ExpectedExportText,$baseNamePattern)
+    $mentionsLc=[regex]::IsMatch($ExpectedExportText,$lcNamePattern)
+
+    # If a package list entry is recognizable with harmless whitespace variance
+    # but not by the exact validated canonical form, fail closed for review.
+    if($mentionsBase -and -not $hasBase){throw "Export mentions '$basePackage' but its canonical '- name:' entry could not be resolved"}
+    if($mentionsLc -and -not $hasLc){throw "Export mentions '$lcPackage' but its canonical '- name:' entry could not be resolved"}
+
+    $required=@()
+    # loaforcsSoundAPI_LethalCompany 1.0.2 has loaforcsSoundAPI as a package
+    # dependency. Gale export metadata may list only the requested top-level mod,
+    # so the base library is mandatory whenever the LC binding is present.
+    if($hasBase -or $hasLc){
+        $required+='BepInEx\plugins\loaforc-loaforcsSoundAPI\**\me.loaforc.soundapi.dll'
+    }
+    if($hasLc){
+        $required+='BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\**\me.loaforc.soundapi.lethalcompany.dll'
+    }
+
+    $required=@($required | Select-Object -Unique)
+    if($hasLc -and $required.Count -ne 2){throw 'LethalCompany SoundAPI binding resolved without exactly two critical materialization contracts'}
+    if($hasBase -and -not $hasLc -and $required.Count -ne 1){throw 'Base SoundAPI resolved without exactly one critical materialization contract'}
+    return $required
+}
+
+function Assert-GaleRuntimePathBudget {
+    param(
+        [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][string]$ProfileRoot,
+        [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][string]$ProfileName,
+        [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][string]$ExpectedExportText
+    )
+
+    $safeLimit=255
+    $contracts=@(
+        [pscustomobject]@{
+            Package='MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix'
+            RelativePath='BepInEx\patchers\MonkeySolutions-LC_Office_v81_Unofficial_Compatibility_Fix\LCOfficeV81Preloader\LCOfficeV81Preloader.dll'
+        },
+        [pscustomobject]@{
+            Package='loaforc-loaforcsSoundAPI_LethalCompany'
+            RelativePath='BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll'
+        }
+    )
+
+    $targetRoot=Join-Path $ProfileRoot $ProfileName
+    foreach($contract in $contracts){
+        $pattern='(?m)^\s*-\s*name:\s*'+[regex]::Escape([string]$contract.Package)+'\s*$'
+        if(-not [regex]::IsMatch($ExpectedExportText,$pattern)){continue}
+
+        $fullPath=Join-Path $targetRoot ([string]$contract.RelativePath)
+        $length=$fullPath.Length
+        Write-Host "Runtime-Pfadbudget: $length/$safeLimit - $($contract.Package)" -ForegroundColor DarkGray
+        if($length -gt $safeLimit){
+            throw "Projected Gale runtime path exceeds safe project budget ($length > $safeLimit): $fullPath. Use a shorter profile identity before import."
+        }
+    }
+}
+
+function Get-MissingCriticalImportedFiles {
+    param([Parameter(Mandatory=$true)][string]$TargetDir,[string[]]$CriticalRelativePaths=@())
+    $missing=@()
+    $recursiveToken='\**\'
+
+    foreach($contractPath in @($CriticalRelativePaths)){
+        $tokenIndex=$contractPath.IndexOf($recursiveToken,[System.StringComparison]::Ordinal)
+        if($tokenIndex -lt 0){
+            $fullPath=Join-Path $TargetDir $contractPath
+            if(!(Test-Path -LiteralPath $fullPath -PathType Leaf)){$missing+=$contractPath;continue}
+            try {
+                if((Get-Item -LiteralPath $fullPath -ErrorAction Stop).Length -le 0){$missing+=$contractPath}
+            } catch {$missing+=$contractPath}
+            continue
+        }
+
+        $packageRootRelative=$contractPath.Substring(0,$tokenIndex)
+        $fileName=$contractPath.Substring($tokenIndex+$recursiveToken.Length)
+        $packageRoot=Join-Path $TargetDir $packageRootRelative
+        if(!(Test-Path -LiteralPath $packageRoot -PathType Container)){
+            $missing+=$contractPath
+            continue
+        }
+
+        try {
+            $hits=@(Get-ChildItem -LiteralPath $packageRoot -File -Recurse -Filter $fileName -ErrorAction Stop)
+        }
+        catch {
+            $missing+=$contractPath
+            continue
+        }
+
+        # Fail closed on absence, emptiness, or ambiguity. Runtime patchers enumerate
+        # package files recursively, so one unique physical DLL inside the package
+        # root is the required materialization evidence.
+        if($hits.Count -ne 1){$missing+=$contractPath;continue}
+        try {
+            if($hits[0].Length -le 0){$missing+=$contractPath;continue}
+        }
+        catch {$missing+=$contractPath;continue}
+    }
+    return @($missing)
+}
+'@
+
+$newTargetResolutionBlock=@'
+$active=((Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/RuntimeInbox/ACTIVE_BUILD.txt?cb=$cache" -Headers $headers).Trim())
+if(!$active){throw 'RuntimeInbox/ACTIVE_BUILD.txt ist leer'}
+Write-Host "`nAktiver Repository-Build: $active" -ForegroundColor Cyan
+$cache=[DateTime]::UtcNow.Ticks
+$build=Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/Current/AUTO_BUILD_RESULT.json?cb=$cache" -Headers $headers
+
+function Get-RepositoryJson {
+    param([Parameter(Mandatory=$true)][string]$RepositoryPath,[Parameter(Mandatory=$true)][string]$Label)
+    if([string]::IsNullOrWhiteSpace($RepositoryPath)){throw "$Label repository path ist leer"}
+    $segments=@($RepositoryPath -split '/')
+    if($segments.Count -eq 0 -or @($segments | Where-Object {[string]::IsNullOrWhiteSpace($_) -or $_ -eq '.' -or $_ -eq '..'}).Count -gt 0){throw "$Label hat einen ungültigen repository path: '$RepositoryPath'"}
+    $encodedPath=(@($segments | ForEach-Object {[Uri]::EscapeDataString($_)}) -join '/')
+    $cache=[DateTime]::UtcNow.Ticks
+    $url="https://raw.githubusercontent.com/$repo/main/${encodedPath}?cb=$cache"
+    try { return Invoke-RestMethod -UseBasicParsing -Uri $url -Headers $headers -ErrorAction Stop }
+    catch { throw "$Label konnte nicht geladen werden: '$RepositoryPath' ($($_.Exception.Message))" }
+}
+
+if(([string]$build.build_id) -eq $active){
+    $profilePath=[string]$build.output_profile
+    $expected=([string]$build.output_sha256).ToLowerInvariant()
+    $expectedProfileName=[string]$build.profile_name
+    if(!$expectedProfileName){$expectedProfileName=[IO.Path]::GetFileNameWithoutExtension($profilePath)}
+    if(!$profilePath -or !$expected -or !$expectedProfileName){throw 'AUTO_BUILD_RESULT enthält keinen gültigen Profilpfad, Profilnamen oder SHA-256'}
+}
+else {
+    $cache=[DateTime]::UtcNow.Ticks
+    $state=Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/Current/CURRENT_STATE.json?cb=$cache" -Headers $headers
+    if(([string]$state.controllers.runtime_active_build) -ne $active){throw "ACTIVE_BUILD '$active' stimmt weder mit AUTO_BUILD_RESULT '$($build.build_id)' noch mit CURRENT_STATE.controllers.runtime_active_build überein"}
+    $diag=$state.selected_scope.diagnostic_revision
+    if($null -eq $diag -or ([string]$diag.build_id) -ne $active){throw "ACTIVE_BUILD '$active' ist kein explizit gebundener CURRENT_STATE diagnostic_revision target"}
+    if(([string]$diag.status) -ne 'PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED'){throw "Diagnostic runtime target '$active' hat keinen freigegebenen aktiven Status: '$($diag.status)'"}
+    $diagBuild=Get-RepositoryJson -RepositoryPath ([string]$diag.build_result) -Label "Diagnostic build_result"
+    if(([string]$diagBuild.build_id) -ne $active){throw "Diagnostic build_result gehört zu '$($diagBuild.build_id)', erwartet '$active'"}
+    if(([string]$diagBuild.output_profile) -ne ([string]$diag.profile) -or ([string]$diagBuild.output_sha256).ToLowerInvariant() -ne ([string]$diag.sha256).ToLowerInvariant()){throw "Diagnostic build_result profile/SHA disagree with CURRENT_STATE diagnostic_revision"}
+    if(([string]$diagBuild.base_profile) -ne ([string]$diag.base_profile) -or ([string]$diagBuild.base_sha256).ToLowerInvariant() -ne ([string]$diag.base_sha256).ToLowerInvariant()){throw "Diagnostic build_result base profile/SHA disagree with CURRENT_STATE diagnostic_revision"}
+
+    if(([string]$diag.base_build_id) -eq ([string]$build.build_id)){
+        if(([string]$diag.base_profile) -ne ([string]$build.output_profile) -or ([string]$diag.base_sha256).ToLowerInvariant() -ne ([string]$build.output_sha256).ToLowerInvariant()){throw "Direct diagnostic runtime target '$active' base profile/SHA disagree with AUTO_BUILD_RESULT"}
+    }
+    elseif(([string]$diag.base_build_id) -eq ([string]$state.accepted_baseline.build_id)){
+        if(([string]$diag.base_profile) -ne ([string]$state.accepted_baseline.profile) -or ([string]$diag.base_sha256).ToLowerInvariant() -ne ([string]$state.accepted_baseline.sha256).ToLowerInvariant()){throw "Direct accepted-baseline diagnostic runtime target '$active' base profile/SHA disagree with CURRENT_STATE.accepted_baseline"}
+    }
+    else {
+        $parent=$state.selected_scope.diagnostic_parent_revision
+        if($null -eq $parent -or ([string]$parent.build_id) -ne ([string]$diag.base_build_id)){throw "Diagnostic runtime target '$active' parent '$($diag.base_build_id)' is not the explicit CURRENT_STATE diagnostic_parent_revision"}
+        if(([string]$diag.base_profile) -ne ([string]$parent.profile) -or ([string]$diag.base_sha256).ToLowerInvariant() -ne ([string]$parent.sha256).ToLowerInvariant()){throw "Diagnostic runtime target '$active' base profile/SHA disagree with diagnostic parent"}
+        $parentAnchoredToAuto=([string]$parent.status) -eq 'PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED'
+        $parentAnchoredToAccepted=([string]$parent.status) -eq 'PUBLISHED_DIAGNOSTIC_PRELOADER_PATH_LENGTH_BLOCKED_DO_NOT_RERUN_NOT_ACCEPTED'
+        $parentRuntimePassToAccepted=([string]$parent.status) -eq 'PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_COMPATIBILITY_PASS_NOT_ACCEPTED' -and ([string]$parent.classification) -eq 'DIAGNOSTIC_ONLY_NEVER_ACCEPT' -and ([string]$parent.runtime_validation_status) -eq 'RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT_PERFORMANCE_ATTRIBUTION_OUTSTANDING'
+        if(!$parentAnchoredToAuto -and !$parentAnchoredToAccepted -and !$parentRuntimePassToAccepted){throw "Diagnostic parent '$($parent.build_id)' has no authorized parent status: '$($parent.status)'"}
+        $parentBuild=Get-RepositoryJson -RepositoryPath ([string]$parent.build_result) -Label "Parent diagnostic build_result"
+        if(([string]$parentBuild.build_id) -ne ([string]$parent.build_id)){throw "Parent diagnostic build_result build ID mismatch"}
+        if(([string]$parentBuild.output_profile) -ne ([string]$parent.profile) -or ([string]$parentBuild.output_sha256).ToLowerInvariant() -ne ([string]$parent.sha256).ToLowerInvariant()){throw "Parent diagnostic build_result profile/SHA disagree with CURRENT_STATE diagnostic_parent_revision"}
+        if(([string]$parentBuild.base_profile) -ne ([string]$parent.base_profile) -or ([string]$parentBuild.base_sha256).ToLowerInvariant() -ne ([string]$parent.base_sha256).ToLowerInvariant()){throw "Parent diagnostic build_result base profile/SHA disagree with CURRENT_STATE diagnostic_parent_revision"}
+        if($parentAnchoredToAuto){
+            if(([string]$parent.base_build_id) -ne ([string]$build.build_id)){throw "Diagnostic parent '$($parent.build_id)' is not anchored directly to AUTO_BUILD_RESULT '$($build.build_id)'"}
+            if(([string]$parent.base_profile) -ne ([string]$build.output_profile) -or ([string]$parent.base_sha256).ToLowerInvariant() -ne ([string]$build.output_sha256).ToLowerInvariant()){throw "Diagnostic parent '$($parent.build_id)' base profile/SHA disagree with AUTO_BUILD_RESULT"}
+        }
+        else {
+            if(([string]$parent.base_build_id) -ne ([string]$state.accepted_baseline.build_id)){throw "Blocked diagnostic parent '$($parent.build_id)' is not anchored directly to CURRENT_STATE.accepted_baseline '$($state.accepted_baseline.build_id)'"}
+            if(([string]$parent.base_profile) -ne ([string]$state.accepted_baseline.profile) -or ([string]$parent.base_sha256).ToLowerInvariant() -ne ([string]$state.accepted_baseline.sha256).ToLowerInvariant()){throw "Blocked diagnostic parent '$($parent.build_id)' base profile/SHA disagree with CURRENT_STATE.accepted_baseline"}
+        }
+    }
+    $profilePath=[string]$diagBuild.output_profile
+    $expected=([string]$diagBuild.output_sha256).ToLowerInvariant()
+    $expectedProfileName=[string]$diagBuild.profile_name
+    if(!$expectedProfileName){$expectedProfileName=[IO.Path]::GetFileNameWithoutExtension($profilePath)}
+    if(!$profilePath -or !$expected -or !$expectedProfileName){throw 'Diagnostic build_result enthält keinen gültigen Profilpfad, Profilnamen oder SHA-256'}
+    Write-Host "Expliziter diagnostischer Runtime-Target wurde über CURRENT_STATE + direct AUTO/accepted-baseline/one-hop parent-to-AUTO-or-approved-accepted-baseline chain + build_result fail-closed verifiziert." -ForegroundColor DarkGray
+}
+'@
+
+$patched=$source.Substring(0,$zipTextStart)+$newZipTextFunction+"`r`n`r`n"+$newMaterializationFunctions+"`r`n`r`n"+$source.Substring($waitStart)
+$patched=$patched.Replace($expectedBaseRevision,$replacementRevision)
+if($patched.IndexOf($replacementRevision,[System.StringComparison]::Ordinal) -lt 0){throw 'Failed to stamp v2.4 helper revision'}
+if($patched.IndexOf('New-Object System.IO.StreamReader -ArgumentList',[System.StringComparison]::Ordinal) -ge 0){
+    throw 'Refusing to launch: legacy StreamReader constructor path survived the v2.4 patch'
+}
+
+$targetStartMarker='$active=((Invoke-RestMethod -UseBasicParsing -Uri "https://raw.githubusercontent.com/$repo/main/RuntimeInbox/ACTIVE_BUILD.txt?cb=$cache" -Headers $headers).Trim())'
+$profileFileMarker='$profileFile=[IO.Path]::GetFileName($profilePath)'
+$targetStart=$patched.IndexOf($targetStartMarker,[System.StringComparison]::Ordinal)
+$profileFileStart=$patched.IndexOf($profileFileMarker,$targetStart,[System.StringComparison]::Ordinal)
+if($targetStart -lt 0 -or $profileFileStart -le $targetStart){
+    throw 'Refusing to patch Gale helper: v2.2 runtime-target resolution boundaries were not found exactly'
+}
+$patched=$patched.Substring(0,$targetStart)+$newTargetResolutionBlock+"`r`n`r`n"+$patched.Substring($profileFileStart)
+if($patched.IndexOf("AUTO_BUILD_RESULT gehört zu",[System.StringComparison]::Ordinal) -ge 0){
+    throw 'Refusing to launch: legacy unconditional ACTIVE_BUILD/AUTO_BUILD_RESULT mismatch abort survived the v2.4 patch'
+}
+
+$pathGuardCallMarker='$criticalMaterializationPaths=@(Get-RequiredCriticalMaterializationPaths -ExpectedExportText $expectedExportText)'
+$pathGuardCall=$pathGuardCallMarker+"`r`nAssert-GaleRuntimePathBudget -ProfileRoot `$root -ProfileName `$expectedProfileName -ExpectedExportText `$expectedExportText"
+$pathGuardCount=([regex]::Matches($patched,[regex]::Escape($pathGuardCallMarker))).Count
+if($pathGuardCount -ne 1){
+    throw "Refusing to patch Gale helper: expected exactly one runtime path-guard insertion point, found $pathGuardCount"
+}
+$patched=$patched.Replace($pathGuardCallMarker,$pathGuardCall)
+if(([regex]::Matches($patched,'Assert-GaleRuntimePathBudget -ProfileRoot \$root -ProfileName \$expectedProfileName -ExpectedExportText \$expectedExportText')).Count -ne 1){
+    throw 'Refusing to launch: runtime path-budget guard call is missing or ambiguous after patching'
+}
+
+Write-Host 'Launching canonical Gale importer with v2.4.6 fail-closed runtime path-budget, direct diagnostics and one-hop parent-to-AUTO-or-approved-accepted-baseline chain, export-read and recursive materialization contract...' -ForegroundColor Cyan
+Invoke-Expression $patched

@@ -1,0 +1,58 @@
+{
+    "schema_version":  1,
+    "purpose":  "Exact installed-V81 NetworkConfig EntranceTeleportB registration/component-surface evidence for Universal Interior Viability C3F10C",
+    "capture_utc":  "2026-09-21T19:09:43Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "pull_request":  138,
+    "pull_request_branch":  "scope/universal-interior-phase-c3a-dawn-tags",
+    "repository_pr_head_at_capture":  "08729490c6853c3644e51221c73ab96e97aa7786",
+    "repository_main_at_capture":  "56355ff518ae4301a38d370be9561251f6f963c1",
+    "bound_prior_evidence":  "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json",
+    "source_assembly":  {
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll"
+                        },
+    "netcode_assembly":  {
+                             "size_bytes":  390144,
+                             "sha256":  "dd5313b862c66f048139ff8e459d681bee2861c8b39c8dd50cc4d7851b4c32a2",
+                             "logical_path":  "Lethal Company_Data/Managed/Unity.Netcode.Runtime.dll"
+                         },
+    "game_executable":  {
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+                            "logical_path":  "Lethal Company.exe"
+                        },
+    "steam":  {
+                  "manifest_review":  "AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md",
+                  "matches_prior_appmanifest":  false,
+                  "buildid":  "22825947",
+                  "appmanifest_sha256":  "132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e",
+                  "prior_appmanifest_sha256":  "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                  "app_id":  "1966720"
+              },
+    "scanner":  {
+                    "github_blob_sha":  "07a565dace759e202871bf966e6f07dfa7ad8ffb",
+                    "repository_path":  "AnalysisTools/inspect_v81_networkconfig_prefab.py",
+                    "sha256":  "ec061ec9383a3428af5ec2c76978ba4b432589c3c4c7b96fcea842776fa63842"
+                },
+    "target":  {
+                   "status":  null,
+                   "analysis_status":  "OWNER_RECOVERY_UNRESOLVED",
+                   "exact_name":  "EntranceTeleportB",
+                   "required_component_surface":  [
+                                                      "EntranceTeleport",
+                                                      "InteractTrigger",
+                                                      "Unity.Netcode.NetworkObject"
+                                                  ]
+               },
+    "published_evidence":  {
+                               "sha256":  "920bbb9ab2bd8bf992d3f4b7ae814074114de52e217508e2c2fb1009773331e5",
+                               "file":  "NETWORK_CONFIG_PREFAB_CAPTURE.json",
+                               "excludes":  [
+                                                "game binaries",
+                                                "Unity asset payloads",
+                                                "full managed decompiles",
+                                                "absolute local paths",
+                                                "user names"
+                                            ]
+                           }
+}

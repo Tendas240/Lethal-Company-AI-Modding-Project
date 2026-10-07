@@ -1,0 +1,228 @@
+{
+    "schema_version":  1,
+    "purpose":  "Exact installed-V81 DunGen generation-capacity semantics required by Universal Interior Viability C3F13",
+    "capture_utc":  "2026-09-22T19:33:36Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "pull_request":  138,
+    "pull_request_branch":  "scope/universal-interior-phase-c3a-dawn-tags",
+    "repository_pr_head_at_capture":  "911338ae00b584245125857a5f7262ed90e43eef",
+    "repository_main_at_capture":  "56355ff518ae4301a38d370be9561251f6f963c1",
+    "expected_repository_main":  "56355ff518ae4301a38d370be9561251f6f963c1",
+    "bound_c3f12_manifest":  "SourceEvidence/VanillaV81/DunGenChanceSpawnSynced/20260922T185024Z-e0d76674/MANIFEST.json",
+    "bound_c3f13_ledger":  {
+                               "schema_version":  "c3f13-generated-capacity-feasibility-ledger-1",
+                               "path":  "SourceEvidence/UniversalInteriorViability/PhaseC3F13/GENERATED_CAPACITY_FEASIBILITY_LEDGER.json",
+                               "git_blob_sha":  "b5611654be75cb5dac80bc74f92ff98cb2f9f2f6",
+                               "text_sha256":  "6ae725f5982da848a0cd11c52d03bd3657df3b01b5ff9723df5674503dac48b3",
+                               "proof_set_flows":  20
+                           },
+    "source_assembly":  {
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll"
+                        },
+    "dungen_assembly":  {
+                            "sha256":  "d62bbc63eae39ef388797194796ed9cf5a3e7c857fe31f7e5b7310ed78262db6",
+                            "logical_path":  "Lethal Company_Data/Managed/DunGen.dll"
+                        },
+    "game_executable":  {
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+                            "logical_path":  "Lethal Company.exe"
+                        },
+    "steam":  {
+                  "manifest_review":  "AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md",
+                  "matches_prior_appmanifest":  false,
+                  "buildid":  "22825947",
+                  "appmanifest_sha256":  "132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e",
+                  "prior_appmanifest_sha256":  "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                  "app_id":  "1966720"
+              },
+    "decompiler":  {
+                       "tool":  "ilspycmd",
+                       "placement_full_local_type_source_sha256":  "a8027a1c3ec91bd5fc8d882fe626b102b24ac7e32e065dde72e755546da0059a",
+                       "version":  "11.0.0.9375",
+                       "doorway_full_local_type_source_sha256":  "53deb5c8167203a55bd08148bab2e562cf7f9c97481e687684957a08784c7260",
+                       "doorway_type":  "DunGen.Doorway",
+                       "dungeon_generator_full_local_type_source_sha256":  "e0ba46d4ca8a969ce2258c9536fec118ef6d75c5904c5007ab17f322adba4eb1",
+                       "tile_type":  "DunGen.Tile",
+                       "resolved_placement_type":  "DunGen.TilePlacementData",
+                       "dungeon_generator_type":  "DunGen.DungeonGenerator",
+                       "tile_full_local_type_source_sha256":  "5dd6f76b3ec6afaa5903a0822a8e2c9c0a208ba5ea61dcf1e9bffcf9eee360eb"
+                   },
+    "selection":  {
+                      "dungeon_generator_signal_coverage":  [
+                                                                {
+                                                                    "pattern":  "\\bDungeonFlow\\s*\\.\\s*(?:Length|Lines|Nodes)\\b",
+                                                                    "name":  "flow_graph",
+                                                                    "methods":  [
+                                                                                    "GenerateMainPath",
+                                                                                    "InnerGenerate"
+                                                                                ]
+                                                                },
+                                                                {
+                                                                    "pattern":  "\\bDungeonArchetype[A-Za-z0-9_]*\\b|\\bTileSet[A-Za-z0-9_]*\\b",
+                                                                    "name":  "archetype_tileset",
+                                                                    "methods":  [
+                                                                                    "AddTile",
+                                                                                    "GatherTilesToInject",
+                                                                                    "GenerateBranchPaths",
+                                                                                    "GenerateMainPath",
+                                                                                    "InnerGenerate",
+                                                                                    "PlaceLocksAndKeys",
+                                                                                    "PreProcess",
+                                                                                    "TryGetRandomLockedDoorPrefab",
+                                                                                    "TryPlaceTile"
+                                                                                ]
+                                                                },
+                                                                {
+                                                                    "pattern":  "\\bTileWeights\\b",
+                                                                    "name":  "tile_weights",
+                                                                    "methods":  [
+                                                                                    "AddTile",
+                                                                                    "PreProcess"
+                                                                                ]
+                                                                },
+                                                                {
+                                                                    "pattern":  "\\bTileInjectionRules\\b|\\bIsRequired\\b",
+                                                                    "name":  "required_injection",
+                                                                    "methods":  [
+                                                                                    "GatherTilesToInject",
+                                                                                    "InnerGenerate",
+                                                                                    "PruneBranches"
+                                                                                ]
+                                                                },
+                                                                {
+                                                                    "pattern":  "\\bBranch[A-Za-z0-9_]*\\b|\\bCap[A-Za-z0-9_]*\\b",
+                                                                    "name":  "branch_cap",
+                                                                    "methods":  [
+                                                                                    "AddTile",
+                                                                                    "GenerateBranchPaths",
+                                                                                    "InnerGenerate",
+                                                                                    "PostProcess",
+                                                                                    "PruneBranches",
+                                                                                    "TryPlaceTile"
+                                                                                ]
+                                                                }
+                                                            ],
+                      "same_type_neighbor_depth":  1,
+                      "doorway_required_signal":  "BlockerPrefabWeights",
+                      "dungeon_generator_root_signatures":  [
+                                                                "protected virtual IEnumerator InnerGenerate(bool isRetry)",
+                                                                "private void PruneBranches()",
+                                                                "protected virtual void PreProcess()",
+                                                                "protected virtual void GatherTilesToInject()",
+                                                                "protected virtual IEnumerator GenerateMainPath()",
+                                                                "protected virtual IEnumerator GenerateBranchPaths()",
+                                                                "protected virtual TileProxy AddTile(TileProxy attachTo, IEnumerable\u003cTileSet\u003e useableTileSets, float normalizedDepth, TilePlacementParameters placementParams)",
+                                                                "protected TilePlacementResult TryPlaceTile(DoorwayPair pair, TilePlacementParameters placementParameters, out TileProxy tile)",
+                                                                "protected virtual IEnumerator PostProcess()",
+                                                                "protected virtual void PlaceLocksAndKeys()",
+                                                                "protected virtual GameObject TryGetRandomLockedDoorPrefab(Doorway doorway, Key key, KeyManager keyManager)"
+                                                            ],
+                      "dungeon_generator_selected_signatures":  [
+                                                                    "protected virtual IEnumerator OuterGenerate()",
+                                                                    "private Coroutine Wait(IEnumerator routine)",
+                                                                    "protected virtual IEnumerator InnerGenerate(bool isRetry)",
+                                                                    "private void PruneBranches()",
+                                                                    "public virtual void Clear(bool stopCoroutines)",
+                                                                    "private void ChangeStatus(GenerationStatus status)",
+                                                                    "protected virtual void PreProcess()",
+                                                                    "protected virtual void GatherTilesToInject()",
+                                                                    "protected virtual IEnumerator GenerateMainPath()",
+                                                                    "private bool ShouldSkipFrame(bool isRoomPlacement)",
+                                                                    "private YieldInstruction GetRoomPause()",
+                                                                    "protected virtual IEnumerator GenerateBranchPaths()",
+                                                                    "protected virtual TileProxy AddTile(TileProxy attachTo, IEnumerable\u003cTileSet\u003e useableTileSets, float normalizedDepth, TilePlacementParameters placementParams)",
+                                                                    "protected TilePlacementResult TryPlaceTile(DoorwayPair pair, TilePlacementParameters placementParameters, out TileProxy tile)",
+                                                                    "protected virtual IEnumerator PostProcess()",
+                                                                    "protected virtual void ProcessLocalProps()",
+                                                                    "protected virtual void PlaceLocksAndKeys()",
+                                                                    "protected virtual GameObject TryGetRandomLockedDoorPrefab(Doorway doorway, Key key, KeyManager keyManager)",
+                                                                    "protected virtual void LockDoorway(Doorway doorway, GameObject doorPrefab, Key key, KeyManager keyManager)"
+                                                                ],
+                      "forbidden_recaptures":  [
+                                                   "DungeonGenerator.ProcessGlobalProps",
+                                                   "GameObjectChanceTable.GetRandom",
+                                                   "RoundManager.SpawnSyncedProps"
+                                               ],
+                      "doorway_selected_signatures":  [
+                                                          "public void ProcessDoorwayObjects(bool isDoorwayInUse, RandomStream randomStream)",
+                                                          "public void OnAfterDeserialize()"
+                                                      ],
+                      "max_source_lines":  {
+                                               "dungeon_generator":  3600,
+                                               "doorway":  800,
+                                               "normalized_depth_member":  120
+                                           },
+                      "tile_placement_declaration_lines":  [
+                                                               {
+                                                                   "line":  53,
+                                                                   "text":  "\tprivate TilePlacementData placement;"
+                                                               },
+                                                               {
+                                                                   "line":  67,
+                                                                   "text":  "\tpublic TilePlacementData Placement"
+                                                               },
+                                                               {
+                                                                   "line":  71,
+                                                                   "text":  "\t\t\treturn placement;"
+                                                               },
+                                                               {
+                                                                   "line":  75,
+                                                                   "text":  "\t\t\tplacement = value;"
+                                                               },
+                                                               {
+                                                                   "line":  89,
+                                                                   "text":  "\t\t\t\treturn Placement.LocalBounds.extents.sqrMagnitude \u003e 0f;"
+                                                               },
+                                                               {
+                                                                   "line":  133,
+                                                                   "text":  "\t\t\ttriggerVolume2D.offset = Placement.LocalBounds.center;"
+                                                               },
+                                                               {
+                                                                   "line":  134,
+                                                                   "text":  "\t\t\ttriggerVolume2D.size = Placement.LocalBounds.size;"
+                                                               },
+                                                               {
+                                                                   "line":  143,
+                                                                   "text":  "\t\t\ttriggerVolume.center = Placement.LocalBounds.center;"
+                                                               },
+                                                               {
+                                                                   "line":  144,
+                                                                   "text":  "\t\t\ttriggerVolume.size = Placement.LocalBounds.size;"
+                                                               },
+                                                               {
+                                                                   "line":  262,
+                                                                   "text":  "\t\tBounds localBounds = Placement.LocalBounds;"
+                                                               },
+                                                               {
+                                                                   "line":  265,
+                                                                   "text":  "\t\t\tPlacement.LocalBounds = TileBoundsOverride;"
+                                                               },
+                                                               {
+                                                                   "line":  272,
+                                                                   "text":  "\t\t\tPlacement.LocalBounds = bounds;"
+                                                               },
+                                                               {
+                                                                   "line":  274,
+                                                                   "text":  "\t\tBounds localBounds2 = Placement.LocalBounds;"
+                                                               },
+                                                               {
+                                                                   "line":  291,
+                                                                   "text":  "\t\t\tPlacement.LocalBounds = otherTile.Placement.LocalBounds;"
+                                                               }
+                                                           ],
+                      "normalized_depth_member_source_line":  213
+                  },
+    "report":  {
+                   "sha256":  "602d0294bc852188283b41e94efebf3417a3f0200fd5ab6d42aaa942ef657f8b",
+                   "file":  "DUNGEN_GENERATION_CAPACITY_FOCUSED_DECOMPILE.txt",
+                   "excludes":  [
+                                    "game binaries",
+                                    "DunGen.dll",
+                                    "full type decompiles",
+                                    "unrelated methods",
+                                    "absolute local paths",
+                                    "user names"
+                                ]
+               }
+}

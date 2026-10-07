@@ -1,0 +1,58 @@
+{
+  "schema_version": "phase-c3e2b-manifest-1",
+  "status": "PARTIAL_PHASE_C3_OXYDE_TOPOLOGY_SOURCE_CHECKPOINT",
+  "parent_pr_head": "413a3ed412153ae22896e81d39ff94d19e40a611",
+  "source_tree": "XuuXiaolan/CodeRebirth@3aec94f6f737c86d5e1eb59a57396740317b210f",
+  "evidence_files": [
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E2B/FINDINGS.md"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E2B/OXYDE_STRUCTURAL_MODEL_GUID_RESOLUTION.json"
+    }
+  ],
+  "source_blobs": [
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/JimothyCabin/Model/CabinSupport.fbx.meta",
+      "git_blob": "9d1ae294c4a72ca8a39cb813d837e5c288169c19",
+      "read": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/JimothyCabin/Model/CabinSupport.fbx",
+      "git_blob": "af7ce494ddb35b64f402c640f8f9bbee8e2b723d",
+      "read": true,
+      "content_kind": "GIT_LFS_POINTER",
+      "lfs_payload_read": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/SellingSally/Model/SallyStairsCollider.fbx.meta",
+      "git_blob": "cc353a62fb0809d971574cfda832ddcc7b78ec06",
+      "read": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/SellingSally/Model/SallyStairsCollider.fbx",
+      "git_blob": "5c1f84794fdf9f9e1007d22878ca6718ad90f220",
+      "read": true,
+      "content_kind": "GIT_LFS_POINTER",
+      "lfs_payload_read": false
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/SellingSally/Model/SallyStairs.fbx.meta",
+      "git_blob": "25cfdce4d8564a43d56a0c2242368488e9d1d801",
+      "read": true
+    },
+    {
+      "path": "CodeRebirthUnityProject/Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Prefabs/Structures/SellingSally/Model/SallyStairs.fbx",
+      "git_blob": "ffcc754d753ed466d233b569cc39e2fbebd6191f",
+      "read": true,
+      "content_kind": "GIT_LFS_POINTER",
+      "lfs_payload_read": false
+    }
+  ],
+  "proof_boundary": [
+    "Only three C3E2A unresolved structural GUIDs resolved.",
+    "Complete 192-GUID map remains unfinished.",
+    "No Oxyde entrance IDs/count/pairing or topology safety proven.",
+    "No Black Mesa topology, matrix, gameplay, build or runtime state change."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "created": true,
+  "source_size_limit_bytes": 8388608,
+  "target_chunk_bytes": 262144,
+  "chunks": [
+    {
+      "file": "chat_chunks/chunk_0001_L00000001-L00002487.log",
+      "line_start": 1,
+      "line_end": 2487,
+      "size": 262204,
+      "sha256": "85de8c32e84b66c2cbaa8974da9c760ff3ca48277419eb1545e3230b85186091"
+    },
+    {
+      "file": "chat_chunks/chunk_0002_L00002488-L00005075.log",
+      "line_start": 2488,
+      "line_end": 5075,
+      "size": 262212,
+      "sha256": "5b1228ccace6218a13ab49d36cdb20b4723fd4cccc2f565570dd5916d9ae3054"
+    },
+    {
+      "file": "chat_chunks/chunk_0003_L00005076-L00007949.log",
+      "line_start": 5076,
+      "line_end": 7949,
+      "size": 262144,
+      "sha256": "e45df0a09d9fd13d33e58feb725d612aaf143ff26cd28972ff304f473753aebe"
+    },
+    {
+      "file": "chat_chunks/chunk_0004_L00007950-L00010665.log",
+      "line_start": 7950,
+      "line_end": 10665,
+      "size": 262171,
+      "sha256": "c4d3bfe2e162e7866e0c18d74948d346e427e513062dee512ab9714dca1ecc20"
+    },
+    {
+      "file": "chat_chunks/chunk_0005_L00010666-L00013400.log",
+      "line_start": 10666,
+      "line_end": 13400,
+      "size": 262200,
+      "sha256": "df2652291cf0210e14305ecab9d975ecdd5b7833a782148c4d6ab2716351c70b"
+    },
+    {
+      "file": "chat_chunks/chunk_0006_L00013401-L00016075.log",
+      "line_start": 13401,
+      "line_end": 16075,
+      "size": 262229,
+      "sha256": "5aef90797bc77c41c5118d25f90fcf7a5162de4e0c3a58d96ec8f5ff75e20383"
+    },
+    {
+      "file": "chat_chunks/chunk_0007_L00016076-L00018722.log",
+      "line_start": 16076,
+      "line_end": 18722,
+      "size": 262147,
+      "sha256": "7d2df59f611849acdc149f7d23467d63f819d54f79ddd689fb3524b275a8f832"
+    },
+    {
+      "file": "chat_chunks/chunk_0008_L00018723-L00020460.log",
+      "line_start": 18723,
+      "line_end": 20460,
+      "size": 164954,
+      "sha256": "a94d5a11438d2c7aeb0bf4259926fb573da4844ddbf13c23544abaa1f263c8f0"
+    }
+  ]
+}

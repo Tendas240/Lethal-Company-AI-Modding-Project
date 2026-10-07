@@ -1,0 +1,36 @@
+name: S1.42AJ DIAG2 one-variable static gate
+
+on:
+  pull_request:
+    paths:
+      - 'BuildSpecs/S1.42AJ-DIAG2.json'
+      - 'BuildSpecs/S1.42AJ-DIAG2_PLAN.md'
+      - 'AnalysisTools/validate_s142aj_diag2_static.py'
+      - '.github/workflows/s142aj-diag2-static.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build DIAG2 from exact published DIAG1
+        run: python BuildSystem/profile_builder.py BuildSpecs/S1.42AJ-DIAG2.json
+      - name: Verify sole DIAG1 to DIAG2 archive delta
+        run: python AnalysisTools/validate_s142aj_diag2_static.py
+      - name: Upload unarmed DIAG2 review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: S1.42AJ-DIAG2-review
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            Profiles/LC V1 S1.42AJ-DIAG2 LC Office Camera Render Diagnostic.r2z
+            ProfileSources/S1.42AJ-DIAG2/
+            BuildSpecs/S1.42AJ-DIAG2_BUILD_EVIDENCE/

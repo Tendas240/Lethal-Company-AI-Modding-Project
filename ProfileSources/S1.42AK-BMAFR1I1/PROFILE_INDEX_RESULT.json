@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-BMAFR1I1",
+  "profile_path": "Profiles/LC V1 S1.42AK-BMAFR1I1.r2z",
+  "profile_name": "LC V1 S1.42AK-BMAFR1I1",
+  "sha256": "734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07",
+  "zip_members": 338,
+  "snapshot_dir": "ProfileSources/S1.42AK-BMAFR1I1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}

@@ -1,0 +1,87 @@
+{
+  "date": "2026-09-04",
+  "game": "Lethal Company V81",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "status": "S1.42W_BUILD_PASS_RUNTIME_VALIDATION_REQUIRED",
+  "accepted_gameplay_baseline": {
+    "build": "S1.42U",
+    "profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
+    "sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
+    "status": "runtime_accepted_full_normal_stack"
+  },
+  "previous_candidate_runtime": {
+    "build": "S1.42V",
+    "profile_sha256": "06390fc2faaf5ef30918efb077a1728c75864777c79a084855ed4dc3e69b3f0d",
+    "evidence": "RuntimeEvidence/S1.42V/20260904T095739Z/",
+    "raw_log_sha256": "5e094086efef862abdbaf1bfdaab85fb8c8ed20d73d865c9f1bc902e08180dfd",
+    "verdict": "JETPACK_ARCHITECTURE_RUNTIME_PASS_BALANCE_REJECTED",
+    "user_feedback": [
+      "12f upward acceleration still too low",
+      "Microwave volume 0.5 still too loud"
+    ],
+    "disconnect_monitor": "one AdditionalNetworking NetworkObjectReference Fatal during local disconnect teardown; not attributed to Jetpack gameplay"
+  },
+  "latest_built_candidate": {
+    "build": "S1.42W",
+    "name": "Lift-Off Microwave Retune",
+    "profile": "Profiles/LC V1 S1.42W Lift-Off Microwave Retune.r2z",
+    "sha256": "f34ebcf18bd2b475da5546e6c391bd15bf70df5648b5f69ffb668d196df057dc",
+    "accepted": false,
+    "runtime_validation_required": true,
+    "build_commit": "165d102364438cace2fd2184af3fd091855ff0d7",
+    "actions_run_id": 33861561173,
+    "candidate_doc": "Current/83_S1.42W_BUILD_CANDIDATE_LIFT_MICROWAVE_LGU.md"
+  },
+  "build_delta_vs_s142u": {
+    "zip_members": 332,
+    "changed_existing_members": [
+      "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
+      "BepInEx/config/dev.idjut.SnailFork.cfg",
+      "export.r2x",
+      "BepInEx/config/CodeRebirth.cfg"
+    ],
+    "added_members": [
+      "BepInEx/plugins/S142WJetpackAcceleration/S142WJetpackAcceleration.dll"
+    ],
+    "mod_state_changes": [],
+    "mod_additions": [],
+    "mod_removals": []
+  },
+  "tuning": {
+    "jetpack_base_acceleration": 16,
+    "functional_microwave_volume": 0.15,
+    "immortal_snail_rarity": 40,
+    "immortal_snail_max": 2,
+    "jet_fuel_initial_acceleration_percent": 20,
+    "jet_fuel_incremental_acceleration_percent": 20,
+    "jetpack_thrusters_initial_max_speed_percent": 25,
+    "jetpack_thrusters_incremental_max_speed_percent": 20
+  },
+  "jetpack_patch": {
+    "project": "Patches/S142WJetpackAcceleration/",
+    "plugin_guid": "tendas.lethalcompany.s142wjetpackacceleration",
+    "plugin_version": "1.0.0",
+    "dll_sha256": "95b7e689f68246ebda2fa6a0cab9fbe2ead206a00d85e6cbf64653d1f69d1fa8",
+    "target": "JetpackItem.Update()",
+    "expected_owner_baseline": 10,
+    "target_acceleration": 16,
+    "ordered_after_butterybalance": true,
+    "local_player_only": true,
+    "fail_closed": true
+  },
+  "controllers": {
+    "build_enabled": false,
+    "build_id": "IDLE_AFTER_S1.42W_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "runtime_active_build": "S1.42W"
+  },
+  "exact_next_action": "runtime-test S1.42W with Gale Import all files, verify S1.42W Jetpack plugin load/armed markers and gameplay tuning, then ingest complete fresh log",
+  "deferred": [
+    "equal interior probability and future-interior rule",
+    "CullFactory junkrooms/shatteredrooms exceptions",
+    "Mausoleum fog reduction",
+    "Functional Microwave rarity reduction",
+    "BCMER EventType equalization 8 x 12.5%",
+    "final long full-stack acceptance",
+    "AdditionalNetworking disconnect patch unless reproducible/user-facing"
+  ]
+}

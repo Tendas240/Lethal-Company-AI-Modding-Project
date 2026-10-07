@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C3F1",
+  "date": "2026-09-20",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "pr_number": 138,
+  "parent_commit": "cbf2b456931d43b797b53039f922809e7fb8a4fd",
+  "verified_main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "accepted_baseline": "S1.42AK",
+  "status": "BLACK_MESA_3_4_4_IDENTITY_PROVEN_EXACT_PACKAGE_BYTES_NOT_REPOSITORY_HELD_TOPOLOGY_OPEN",
+  "accepted_package": {
+    "namespace": "Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior",
+    "version": "3.4.4",
+    "enabled": true,
+    "source": "Thunderstore",
+    "export_r2x": {
+      "path": "ProfileSources/S1.42AK/export.r2x",
+      "git_blob_sha1": "669cf2bf096544de84be9475de8f3f9eb594ce14"
+    },
+    "package_inventory": {
+      "path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/PROFILE_PACKAGE_INVENTORY.json",
+      "git_blob_sha1": "fd8ee5a4147a5284ce6edf00e083353c8da2ca92"
+    }
+  },
+  "accepted_config": {
+    "path": "ProfileSources/S1.42AK/BepInEx/config/Black Mesa Team.Black Mesa Half Life Moon Interior.cfg",
+    "git_blob_sha1": "1d2fcfc590493d4f9d8ab656c156b596ea7102e6",
+    "sha256": "ce558f510956c04d25b41c59b11f88e38040cd57e5129db1f86ec91a29da9f44",
+    "size": 11125,
+    "generated_plugin_header_version": "3.4.1",
+    "accepted_profile_package_version": "3.4.4"
+  },
+  "accepted_profile_archive": {
+    "path": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+    "git_blob_sha1": "b820ad507d39f4430cf7c3aa0fca94efd9d4d250",
+    "git_blob_size": 559988,
+    "canonical_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+    "zip_entry_count": 336,
+    "black_mesa_payload_matches": [
+      "BepInEx/config/Black Mesa Team.Black Mesa Half Life Moon Interior.cfg"
+    ],
+    "black_mesa_dll_or_assetbundle_present": false
+  },
+  "build_artifact": {
+    "workflow_run_id": 35366580975,
+    "job_id": 105670397815,
+    "artifact_id": 10557020000,
+    "artifact_name": "S1.42AK",
+    "artifact_zip_size": 512197,
+    "artifact_digest_sha256": "1ff829e245bddf6699d69fb2c97d0d3c1060ab8c4a1e9d39661ad14a1db8199c",
+    "uploaded_path": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+    "contains_separate_package_staging": false
+  },
+  "historical_runtime_boundary": {
+    "s142aa": {
+      "path": "RuntimeEvidence/S1.42AA/20260904T153744Z/analysis/raw__LogOutput/chat_chunks/chunk_0006_L00013096-L00015731.log",
+      "git_blob_sha1": "713939fca036fbf18c16dc1c9c16fd26c1406db8",
+      "active_moon_evidence": "moonType(Offense)=0.250",
+      "entrance_objects_observed": [
+        "EntranceTeleportA(Clone)",
+        "EntranceTeleportB(Clone)"
+      ],
+      "usable_as_black_mesa_moon_topology": false
+    },
+    "s142ac": {
+      "path": "RuntimeEvidence/S1.42AC/20260904T181854Z/analysis/raw__LogOutput/chat_chunks/chunk_0008_L00018723-L00020460.log",
+      "git_blob_sha1": "c8b7bd1e9714280cb1e180f51fa664ccbc0b4fbf",
+      "active_moon_evidence": "raw line 19801: current planet: 21 Offense",
+      "entrance_objects_observed": [
+        "EntranceTeleportA(Clone)",
+        "EntranceTeleportB(Clone)"
+      ],
+      "usable_as_black_mesa_moon_topology": false
+    }
+  },
+  "result": {
+    "exact_3_4_4_archive_sha256": null,
+    "exact_3_4_4_implementation_dll_sha256": null,
+    "exact_black_mesa_scene_bundle_sha256": null,
+    "exact_entrance_count": null,
+    "exact_entrance_ids": null,
+    "exact_inside_outside_pairing": null,
+    "topology_classification": "NOT_YET_PROVEN",
+    "matrix_change_authorized": false,
+    "gameplay_build_authorized": false,
+    "runtime_test_authorized": false
+  },
+  "next_segment": "C3F2: implement and validate fail-closed repository-native Black Mesa 3.4.4 package/topology capture helper and GitHub Actions workflow."
+}

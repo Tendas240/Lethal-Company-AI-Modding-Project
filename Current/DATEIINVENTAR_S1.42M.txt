@@ -1,0 +1,70 @@
+DATEIINVENTAR — S1.42M
+
+KANONISCHER TESTKANDIDAT
+- Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z
+- SHA-256: 9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7
+- ProfileSources/S1.42M/
+- ProfileSources/S1.42M/FILE_INDEX.json
+- Patches/S139CompatibilityFixes/
+- BuildSpecs/S1.42M_PLAN.md
+- Current/AUTO_BUILD_RESULT.json
+- Current/AUTO_BUILD_RESULT.md
+
+PROFILE SNAPSHOT
+- Archivmitglieder: 331
+- BepInEx/config/: 193
+- BepInEx/plugins/: 133
+- sonstige BepInEx-Pfade: 2
+- Root/sonstige Pfade: 3
+- lesbare Snapshot-Dateien laut Build: 330
+
+AKTUELLE ÜBERGABE
+- Current/48_HANDOVER_S1.42M_TO_NEXT_FINAL.md
+- Current/47_S1.42L_BABOON_ATTACK_PASS_DEATH_REGRESSION_ANALYSIS.md
+- Current/46_S1.42M_BABOON_HAWK_DEATH_CLEANUP_BUILD.md
+- Current/00_CURRENT_STATE.md
+- Current/01_HANDOVER_CORE.md
+- Current/04_OPEN_ISSUES_AND_NEXT_TESTS.md
+- Current/Projektstatus_S1.42M.json
+- Current/NEXT_CHAT_START_PROMPT_S1.42M.txt
+
+S1.42M BEGLEITDATEIEN
+- Current/Aktive_Modliste_S1.42M.txt
+- Current/README_Handover_S1.42M.txt
+- Current/VERIFIKATION_S1.42M.txt
+- Current/SHA256SUMS_S1.42M.txt
+- Current/DATEIINVENTAR_S1.42M.txt
+
+RESTORE / REGRESSION
+- Current/ENEMY_SPAWN_BASELINE_S1.42C.json
+- Current/05_FAILED_AND_OBSOLETE_APPROACHES.md
+- Current/18_JUIJUI_LEGACY_REFERENCE.md
+- Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt
+
+LETZTE GÜLTIGE RUNTIME-EVIDENZ
+- RuntimeEvidence/S1.42L/20260903T155132Z/
+- RuntimeEvidence/S1.42L/20260903T155132Z/raw/LogOutput.log
+- Log SHA-256: 812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10
+
+WICHTIGE HISTORISCHE EVIDENZ
+- RuntimeEvidence/S1.42G_BCMER_OFF_RETEST/20260903T115643Z/
+- RuntimeEvidence/S1.42H/20260903T125734Z/
+- RuntimeEvidence/S1.42J/
+- RuntimeEvidence/S1.42L/
+
+NICHT WIEDERHERSTELLEN / NICHT ALS KANONISCHE EVIDENZ ZITIEREN
+- früherer übergroßer S1.42G Ingest RuntimeEvidence/S1.42G/20260903T100914Z/
+  absichtlich gelöscht.
+
+RUNTIME ROUTING
+- RuntimeInbox/ACTIVE_BUILD.txt = S1.42M
+- RuntimeInbox/Current/ = Upload-Eingang für den nächsten vollständigen frischen Log
+
+BUILD CONTROL
+- BuildSpecs/current.json = disabled
+- IDLE_AFTER_S1.42M_BUILD_AWAITING_RUNTIME
+
+BEKANNTE NICHT-FUNKTIONALE DRIFT — SPÄTER BEREINIGEN
+- Current/02_TECHNICAL_BASELINE.md: historische Abschnitte mit veraltetem "current"-Wording
+- Patches/S139CompatibilityFixes/Plugin.cs: einzelne veraltete S1.42J-Kommentare
+- während des offenen S1.42M-Gates nicht allgemein bereinigen

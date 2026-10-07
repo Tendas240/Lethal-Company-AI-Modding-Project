@@ -1,0 +1,1994 @@
+{
+  "schema_version": "phase-c3e3c-1",
+  "bundle_member": "plugins/CodeRebirth/Assets/oxydeassets",
+  "bundle_sha256": "86d2ef29d428bcb3b96cb5ec99283a362324f8261c4a8e26737e3bd04fe24fe4",
+  "bundle_bytes": 398696,
+  "unitypy_version": "1.25.3",
+  "serialization": {
+    "name": "CAB-34cea74cab018d261344242e7acd380f",
+    "unity_version": "2022.3.62f2",
+    "type_tree_enabled": true,
+    "externals": []
+  },
+  "coverage": {
+    "objects_indexed": 48,
+    "type_counts": {
+      "AnimationClip": 5,
+      "Animator": 1,
+      "AnimatorController": 1,
+      "AssetBundle": 1,
+      "GameObject": 3,
+      "Material": 2,
+      "Mesh": 1,
+      "MeshFilter": 2,
+      "MeshRenderer": 2,
+      "MonoBehaviour": 14,
+      "MonoScript": 7,
+      "Shader": 3,
+      "Texture2D": 2,
+      "Transform": 3,
+      "VideoClip": 1
+    },
+    "monoscripts_parsed": 7,
+    "monobehaviours_parsed_for_identity": 14,
+    "selected_definition_records": 2,
+    "parse_errors": 0,
+    "level_and_moon_pointer_status_counts": {
+      "NULL": 4,
+      "RESOLVED": 18
+    }
+  },
+  "monobehaviour_inventory": [
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": -4793931200078666718,
+      "type": "MonoBehaviour",
+      "name": "OxydeLevel",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 1128312141221037122,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "SelectableLevel",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 35,
+            "bytes[1]": 167,
+            "bytes[2]": 220,
+            "bytes[3]": 1,
+            "bytes[4]": 103,
+            "bytes[5]": 250,
+            "bytes[6]": 106,
+            "bytes[7]": 213,
+            "bytes[8]": 27,
+            "bytes[9]": 251,
+            "bytes[10]": 88,
+            "bytes[11]": 79,
+            "bytes[12]": 31,
+            "bytes[13]": 15,
+            "bytes[14]": 32,
+            "bytes[15]": 198
+          },
+          "m_ClassName": "SelectableLevel",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": -3975445595720329216,
+      "type": "MonoBehaviour",
+      "name": "OxydeMoonDefinition",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": -3892692537105937739,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "DuskMoonDefinition",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 8,
+            "bytes[1]": 181,
+            "bytes[2]": 172,
+            "bytes[3]": 39,
+            "bytes[4]": 159,
+            "bytes[5]": 169,
+            "bytes[6]": 189,
+            "bytes[7]": 76,
+            "bytes[8]": 67,
+            "bytes[9]": 198,
+            "bytes[10]": 38,
+            "bytes[11]": 57,
+            "bytes[12]": 61,
+            "bytes[13]": 21,
+            "bytes[14]": 73,
+            "bytes[15]": 148
+          },
+          "m_ClassName": "DuskMoonDefinition",
+          "m_Namespace": "Dusk",
+          "m_AssemblyName": "com.github.teamxiaolan.dawnlib.dusk.dll"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": -2775618273457871651,
+      "type": "MonoBehaviour",
+      "name": "Level1TypeAmbience",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": -1897693779315028727,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "LevelAmbienceLibrary",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 251,
+            "bytes[1]": 252,
+            "bytes[2]": 169,
+            "bytes[3]": 184,
+            "bytes[4]": 55,
+            "bytes[5]": 21,
+            "bytes[6]": 27,
+            "bytes[7]": 169,
+            "bytes[8]": 120,
+            "bytes[9]": 95,
+            "bytes[10]": 122,
+            "bytes[11]": 187,
+            "bytes[12]": 25,
+            "bytes[13]": 151,
+            "bytes[14]": 226,
+            "bytes[15]": 25
+          },
+          "m_ClassName": "LevelAmbienceLibrary",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": -2749725719782341607,
+      "type": "MonoBehaviour",
+      "name": "RadMech",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 4064762129602834283,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "EnemyType",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 104,
+            "bytes[1]": 120,
+            "bytes[2]": 10,
+            "bytes[3]": 168,
+            "bytes[4]": 63,
+            "bytes[5]": 157,
+            "bytes[6]": 243,
+            "bytes[7]": 37,
+            "bytes[8]": 46,
+            "bytes[9]": 23,
+            "bytes[10]": 32,
+            "bytes[11]": 170,
+            "bytes[12]": 94,
+            "bytes[13]": 179,
+            "bytes[14]": 213,
+            "bytes[15]": 81
+          },
+          "m_ClassName": "EnemyType",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": -2355938559305520853,
+      "type": "MonoBehaviour",
+      "name": "CaveDweller",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 4064762129602834283,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "EnemyType",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 104,
+            "bytes[1]": 120,
+            "bytes[2]": 10,
+            "bytes[3]": 168,
+            "bytes[4]": 63,
+            "bytes[5]": 157,
+            "bytes[6]": 243,
+            "bytes[7]": 37,
+            "bytes[8]": 46,
+            "bytes[9]": 23,
+            "bytes[10]": 32,
+            "bytes[11]": 170,
+            "bytes[12]": 94,
+            "bytes[13]": 179,
+            "bytes[14]": 213,
+            "bytes[15]": 81
+          },
+          "m_ClassName": "EnemyType",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": -834040417623994736,
+      "type": "MonoBehaviour",
+      "name": "Nutcracker",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 4064762129602834283,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "EnemyType",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 104,
+            "bytes[1]": 120,
+            "bytes[2]": 10,
+            "bytes[3]": 168,
+            "bytes[4]": 63,
+            "bytes[5]": 157,
+            "bytes[6]": 243,
+            "bytes[7]": 37,
+            "bytes[8]": 46,
+            "bytes[9]": 23,
+            "bytes[10]": 32,
+            "bytes[11]": 170,
+            "bytes[12]": 94,
+            "bytes[13]": 179,
+            "bytes[14]": 213,
+            "bytes[15]": 81
+          },
+          "m_ClassName": "EnemyType",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": -413416869958210447,
+      "type": "MonoBehaviour",
+      "name": "MaskedPlayerEnemy",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 4064762129602834283,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "EnemyType",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 104,
+            "bytes[1]": 120,
+            "bytes[2]": 10,
+            "bytes[3]": 168,
+            "bytes[4]": 63,
+            "bytes[5]": 157,
+            "bytes[6]": 243,
+            "bytes[7]": 37,
+            "bytes[8]": 46,
+            "bytes[9]": 23,
+            "bytes[10]": 32,
+            "bytes[11]": 170,
+            "bytes[12]": 94,
+            "bytes[13]": 179,
+            "bytes[14]": 213,
+            "bytes[15]": 81
+          },
+          "m_ClassName": "EnemyType",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": 4218670246169652985,
+      "type": "MonoBehaviour",
+      "name": "BaboonHawk",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 4064762129602834283,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "EnemyType",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 104,
+            "bytes[1]": 120,
+            "bytes[2]": 10,
+            "bytes[3]": 168,
+            "bytes[4]": 63,
+            "bytes[5]": 157,
+            "bytes[6]": 243,
+            "bytes[7]": 37,
+            "bytes[8]": 46,
+            "bytes[9]": 23,
+            "bytes[10]": 32,
+            "bytes[11]": 170,
+            "bytes[12]": 94,
+            "bytes[13]": 179,
+            "bytes[14]": 213,
+            "bytes[15]": 81
+          },
+          "m_ClassName": "EnemyType",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": 4738694134492927690,
+      "type": "MonoBehaviour",
+      "name": "Crawler",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 4064762129602834283,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "EnemyType",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 104,
+            "bytes[1]": 120,
+            "bytes[2]": 10,
+            "bytes[3]": 168,
+            "bytes[4]": 63,
+            "bytes[5]": 157,
+            "bytes[6]": 243,
+            "bytes[7]": 37,
+            "bytes[8]": 46,
+            "bytes[9]": 23,
+            "bytes[10]": 32,
+            "bytes[11]": 170,
+            "bytes[12]": 94,
+            "bytes[13]": 179,
+            "bytes[14]": 213,
+            "bytes[15]": 81
+          },
+          "m_ClassName": "EnemyType",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": 5043571891374575012,
+      "type": "MonoBehaviour",
+      "name": "GiantKiwi",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 4064762129602834283,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "EnemyType",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 104,
+            "bytes[1]": 120,
+            "bytes[2]": 10,
+            "bytes[3]": 168,
+            "bytes[4]": 63,
+            "bytes[5]": 157,
+            "bytes[6]": 243,
+            "bytes[7]": 37,
+            "bytes[8]": 46,
+            "bytes[9]": 23,
+            "bytes[10]": 32,
+            "bytes[11]": 170,
+            "bytes[12]": 94,
+            "bytes[13]": 179,
+            "bytes[14]": 213,
+            "bytes[15]": 81
+          },
+          "m_ClassName": "EnemyType",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": 5630240687614732369,
+      "type": "MonoBehaviour",
+      "name": "OxydeProgressivePredicate",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 6160626840919448860,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "ProgressivePredicate",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 123,
+            "bytes[1]": 151,
+            "bytes[2]": 231,
+            "bytes[3]": 109,
+            "bytes[4]": 153,
+            "bytes[5]": 27,
+            "bytes[6]": 162,
+            "bytes[7]": 130,
+            "bytes[8]": 1,
+            "bytes[9]": 14,
+            "bytes[10]": 219,
+            "bytes[11]": 118,
+            "bytes[12]": 31,
+            "bytes[13]": 139,
+            "bytes[14]": 232,
+            "bytes[15]": 174
+          },
+          "m_ClassName": "ProgressivePredicate",
+          "m_Namespace": "Dusk",
+          "m_AssemblyName": "com.github.teamxiaolan.dawnlib.dusk.dll"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": 7283538759813322484,
+      "type": "MonoBehaviour",
+      "name": "OxydeFailTerminalNode",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 3976368720055583387,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "TerminalNode",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 19,
+            "bytes[1]": 200,
+            "bytes[2]": 169,
+            "bytes[3]": 34,
+            "bytes[4]": 128,
+            "bytes[5]": 201,
+            "bytes[6]": 231,
+            "bytes[7]": 142,
+            "bytes[8]": 234,
+            "bytes[9]": 48,
+            "bytes[10]": 19,
+            "bytes[11]": 211,
+            "bytes[12]": 165,
+            "bytes[13]": 122,
+            "bytes[14]": 185,
+            "bytes[15]": 246
+          },
+          "m_ClassName": "TerminalNode",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": 7373265128380137094,
+      "type": "MonoBehaviour",
+      "name": "Puffer",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 4064762129602834283,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "EnemyType",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 104,
+            "bytes[1]": 120,
+            "bytes[2]": 10,
+            "bytes[3]": 168,
+            "bytes[4]": 63,
+            "bytes[5]": 157,
+            "bytes[6]": 243,
+            "bytes[7]": 37,
+            "bytes[8]": 46,
+            "bytes[9]": 23,
+            "bytes[10]": 32,
+            "bytes[11]": 170,
+            "bytes[12]": 94,
+            "bytes[13]": 179,
+            "bytes[14]": 213,
+            "bytes[15]": 81
+          },
+          "m_ClassName": "EnemyType",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    },
+    {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": 7793640112112134637,
+      "type": "MonoBehaviour",
+      "name": "MouthDog",
+      "script": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 4064762129602834283,
+        "type": "MonoScript",
+        "serialized_fields": {
+          "m_Name": "EnemyType",
+          "m_ExecutionOrder": 0,
+          "m_PropertiesHash": {
+            "bytes[0]": 104,
+            "bytes[1]": 120,
+            "bytes[2]": 10,
+            "bytes[3]": 168,
+            "bytes[4]": 63,
+            "bytes[5]": 157,
+            "bytes[6]": 243,
+            "bytes[7]": 37,
+            "bytes[8]": 46,
+            "bytes[9]": 23,
+            "bytes[10]": 32,
+            "bytes[11]": 170,
+            "bytes[12]": 94,
+            "bytes[13]": 179,
+            "bytes[14]": 213,
+            "bytes[15]": 81
+          },
+          "m_ClassName": "EnemyType",
+          "m_Namespace": "",
+          "m_AssemblyName": "Assembly-CSharp"
+        }
+      }
+    }
+  ],
+  "asset_bundle_registration": {
+    "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+    "path_id": 1,
+    "type": "AssetBundle",
+    "serialized_fields": {
+      "m_Name": "oxydeassets",
+      "m_PreloadTable": [
+        {
+          "m_FileID": 0,
+          "m_PathID": -9131526356163373820
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -8217435121075741818
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -8201938599018751351
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -7778188914754518731
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -7392287809036914245
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -7205859302477432429
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -6678039435724692330
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -6225083608854805010
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -5541351540595777162
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -4793931200078666718
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -4294118510155816844
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -3975445595720329216
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -3892692537105937739
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -3521172774300468103
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -3514344773680848262
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -2775618273457871651
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -2749725719782341607
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -2383429423479903051
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -2355938559305520853
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -1897693779315028727
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -1617512411885999659
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -834040417623994736
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -413416869958210447
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": -78458937944277123
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 1128312141221037122
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 1443263467203324129
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 3419230998242632061
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 3664119465044853787
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 3751814968749401283
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 3976368720055583387
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 4064762129602834283
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 4218670246169652985
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 4330847608711796093
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 4738694134492927690
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 4841849117829309242
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 5043571891374575012
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 5150962942331123426
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 5430741305616087365
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 5630240687614732369
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 6011995711565591986
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 6160626840919448860
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 6732745327391570186
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 7283538759813322484
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 7373265128380137094
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 7793640112112134637
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 8125372479383922444
+        },
+        {
+          "m_FileID": 0,
+          "m_PathID": 8651167768469636254
+        }
+      ],
+      "m_Container": [
+        [
+          "assets/lethalcompany/mods/plugins/coderebirth/moons/oxyde/oxydemoondefinition.asset",
+          {
+            "preloadIndex": 0,
+            "preloadSize": 47,
+            "asset": {
+              "m_FileID": 0,
+              "m_PathID": -3975445595720329216
+            }
+          }
+        ]
+      ],
+      "m_MainAsset": {
+        "preloadIndex": 0,
+        "preloadSize": 0,
+        "asset": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        }
+      },
+      "m_RuntimeCompatibility": 1,
+      "m_AssetBundleName": "oxydeassets",
+      "m_Dependencies": [],
+      "m_IsStreamedSceneAssetBundle": false,
+      "m_ExplicitDataLayout": 0,
+      "m_PathFlags": 7,
+      "m_SceneHashes": []
+    }
+  },
+  "selectable_level": {
+    "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+    "path_id": -4793931200078666718,
+    "type": "MonoBehaviour",
+    "script": {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": 1128312141221037122,
+      "type": "MonoScript",
+      "serialized_fields": {
+        "m_Name": "SelectableLevel",
+        "m_ExecutionOrder": 0,
+        "m_PropertiesHash": {
+          "bytes[0]": 35,
+          "bytes[1]": 167,
+          "bytes[2]": 220,
+          "bytes[3]": 1,
+          "bytes[4]": 103,
+          "bytes[5]": 250,
+          "bytes[6]": 106,
+          "bytes[7]": 213,
+          "bytes[8]": 27,
+          "bytes[9]": 251,
+          "bytes[10]": 88,
+          "bytes[11]": 79,
+          "bytes[12]": 31,
+          "bytes[13]": 15,
+          "bytes[14]": 32,
+          "bytes[15]": 198
+        },
+        "m_ClassName": "SelectableLevel",
+        "m_Namespace": "",
+        "m_AssemblyName": "Assembly-CSharp"
+      }
+    },
+    "raw_object_bytes": 1072,
+    "raw_object_sha256": "350aef6ceac726cc151355dd5278bb034109c3cc75aad9e2f1a2d0daba4a70b5",
+    "serialized_fields": {
+      "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "m_Enabled": 1,
+      "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": 1128312141221037122
+      },
+      "m_Name": "OxydeLevel",
+      "planetPrefab": {
+        "m_FileID": 0,
+        "m_PathID": -1617512411885999659
+      },
+      "sceneName": "Oxyde",
+      "levelID": 745,
+      "lockedForDemo": 0,
+      "spawnEnemiesAndScrap": 0,
+      "PlanetName": "745 Oxyde",
+      "LevelDescription": "\u2014-----------------------------\r\nPOPULATION: 378 Crews\nCONDITIONS: Warm and dusty planet, dust storms plague its oxidised surface.\r\nHISTORY: Used as a company mining site, bustling with crew activity. Oxyde\u2019s core is one of the richest mineral deposits in the system. Hundreds of quarries litter its surface.\r\n",
+      "videoReel": {
+        "m_FileID": 0,
+        "m_PathID": 1443263467203324129
+      },
+      "riskLevel": "Safe",
+      "timeToArrive": 1.0,
+      "OffsetFromGlobalTime": 0.0,
+      "DaySpeedMultiplier": 1.0,
+      "planetHasTime": 0,
+      "randomWeathers": [
+        {
+          "weatherType": -1,
+          "weatherVariable": 3,
+          "weatherVariable2": 0,
+          "weatherVariableColor": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        }
+      ],
+      "overrideWeather": 0,
+      "overrideWeatherType": -1,
+      "currentWeather": -1,
+      "factorySizeMultiplier": 1.600000023841858,
+      "dungeonFlowTypes": [],
+      "spawnableMapObjects": [],
+      "indoorMapHazards": [],
+      "spawnableOutsideObjects": [],
+      "canSpawnMold": 0,
+      "moldSpreadIterations": 0,
+      "moldStartPosition": -1,
+      "moldType": 0,
+      "spawnableScrap": [],
+      "minScrap": 0,
+      "maxScrap": 0,
+      "minTotalScrapValue": 0,
+      "maxTotalScrapValue": 0,
+      "levelAmbienceClips": {
+        "m_FileID": 0,
+        "m_PathID": -2775618273457871651
+      },
+      "maxEnemyPowerCount": 12,
+      "maxOutsideEnemyPowerCount": 35,
+      "maxDaytimeEnemyPowerCount": 2,
+      "maxInsideDiversityPowerCount": 100,
+      "maxOutsideDiversityPowerCount": 100,
+      "Enemies": [],
+      "specialEnemyRarity": {
+        "overrideEnemy": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "percentageChance": 0.0
+      },
+      "OutsideEnemies": [
+        {
+          "enemyType": {
+            "m_FileID": 0,
+            "m_PathID": 7793640112112134637
+          },
+          "rarity": 10
+        },
+        {
+          "enemyType": {
+            "m_FileID": 0,
+            "m_PathID": -834040417623994736
+          },
+          "rarity": 3
+        },
+        {
+          "enemyType": {
+            "m_FileID": 0,
+            "m_PathID": -2355938559305520853
+          },
+          "rarity": 1
+        },
+        {
+          "enemyType": {
+            "m_FileID": 0,
+            "m_PathID": -2749725719782341607
+          },
+          "rarity": 20
+        },
+        {
+          "enemyType": {
+            "m_FileID": 0,
+            "m_PathID": -413416869958210447
+          },
+          "rarity": 30
+        },
+        {
+          "enemyType": {
+            "m_FileID": 0,
+            "m_PathID": 4218670246169652985
+          },
+          "rarity": 50
+        },
+        {
+          "enemyType": {
+            "m_FileID": 0,
+            "m_PathID": 4738694134492927690
+          },
+          "rarity": 1
+        },
+        {
+          "enemyType": {
+            "m_FileID": 0,
+            "m_PathID": 7373265128380137094
+          },
+          "rarity": 20
+        },
+        {
+          "enemyType": {
+            "m_FileID": 0,
+            "m_PathID": 5043571891374575012
+          },
+          "rarity": 100
+        }
+      ],
+      "DaytimeEnemies": [],
+      "enemySpawnChanceThroughoutDay": {
+        "m_Curve": [
+          {
+            "time": 0.0,
+            "value": -3.0,
+            "inSlope": 59.19933319091797,
+            "outSlope": 59.19933319091797,
+            "weightedMode": 3,
+            "inWeight": 0.0,
+            "outWeight": 0.18829482793807983
+          },
+          {
+            "time": 0.16717776656150818,
+            "value": 2.103193759918213,
+            "inSlope": 11.647723197937012,
+            "outSlope": 11.647723197937012,
+            "weightedMode": 3,
+            "inWeight": 0.6591896414756775,
+            "outWeight": 0.40484195947647095
+          },
+          {
+            "time": 0.7631003260612488,
+            "value": 11.275558471679688,
+            "inSlope": 25.289257049560547,
+            "outSlope": 25.289257049560547,
+            "weightedMode": 3,
+            "inWeight": 0.4166799485683441,
+            "outWeight": 0.5360636115074158
+          },
+          {
+            "time": 1.0,
+            "value": 15.0,
+            "inSlope": 35.604026794433594,
+            "outSlope": 35.604026794433594,
+            "weightedMode": 1,
+            "inWeight": 0.04912583902478218,
+            "outWeight": 0.0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "outsideEnemySpawnChanceThroughDay": {
+        "m_Curve": [
+          {
+            "time": -7.736962288618088e-07,
+            "value": -2.887500047683716,
+            "inSlope": {
+              "$float": "Infinity"
+            },
+            "outSlope": -1.0600615739822388,
+            "weightedMode": 3,
+            "inWeight": 0.0,
+            "outWeight": 0.14093607664108276
+          },
+          {
+            "time": 0.5448442101478577,
+            "value": -0.020992450416088104,
+            "inSlope": 9.172262191772461,
+            "outSlope": 9.172262191772461,
+            "weightedMode": 3,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.7196550369262695
+          },
+          {
+            "time": 1.0052626132965088,
+            "value": 5.359400749206543,
+            "inSlope": 16.25685691833496,
+            "outSlope": 11.374387741088867,
+            "weightedMode": 3,
+            "inWeight": 0.25347673892974854,
+            "outWeight": 0.48315444588661194
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "daytimeEnemySpawnChanceThroughDay": {
+        "m_Curve": [
+          {
+            "time": 0.0,
+            "value": 1.0,
+            "inSlope": 0.0,
+            "outSlope": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.0,
+            "outWeight": 0.2799086570739746
+          },
+          {
+            "time": 1.0,
+            "value": 1.0,
+            "inSlope": 0.0,
+            "outSlope": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.14916254580020905,
+            "outWeight": 0.0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "spawnProbabilityRange": 2.0,
+      "daytimeEnemiesProbabilityRange": 10.0,
+      "levelIncludesSnowFootprints": 0,
+      "levelIconString": ""
+    }
+  },
+  "dusk_moon_definition": {
+    "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+    "path_id": -3975445595720329216,
+    "type": "MonoBehaviour",
+    "script": {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": -3892692537105937739,
+      "type": "MonoScript",
+      "serialized_fields": {
+        "m_Name": "DuskMoonDefinition",
+        "m_ExecutionOrder": 0,
+        "m_PropertiesHash": {
+          "bytes[0]": 8,
+          "bytes[1]": 181,
+          "bytes[2]": 172,
+          "bytes[3]": 39,
+          "bytes[4]": 159,
+          "bytes[5]": 169,
+          "bytes[6]": 189,
+          "bytes[7]": 76,
+          "bytes[8]": 67,
+          "bytes[9]": 198,
+          "bytes[10]": 38,
+          "bytes[11]": 57,
+          "bytes[12]": 61,
+          "bytes[13]": 21,
+          "bytes[14]": 73,
+          "bytes[15]": 148
+        },
+        "m_ClassName": "DuskMoonDefinition",
+        "m_Namespace": "Dusk",
+        "m_AssemblyName": "com.github.teamxiaolan.dawnlib.dusk.dll"
+      }
+    },
+    "raw_object_bytes": 400,
+    "raw_object_sha256": "567be58eb5bd5861c109200409ec19fdc7383f7310c96978ebe345efca914611",
+    "serialized_fields": {
+      "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "m_Enabled": 1,
+      "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": -3892692537105937739
+      },
+      "m_Name": "OxydeMoonDefinition",
+      "_configEntries": [],
+      "_tags": [
+        {
+          "_namespace": "dawn_lib",
+          "_key": "has_buying_percent"
+        }
+      ],
+      "<Key>k__BackingField": {
+        "_namespace": "code_rebirth",
+        "_key": "oxyde"
+      },
+      "<Level>k__BackingField": {
+        "m_FileID": 0,
+        "m_PathID": -4793931200078666718
+      },
+      "_scenes": [
+        {
+          "Scene": {
+            "_assetGUID": "4f389119bf25893428e69532bbd78797",
+            "_scenePath": "Assets/LethalCompany/Mods/plugins/CodeRebirth/Moons/Oxyde/Scene/Oxyde.unity",
+            "_bundleName": "oxydescene"
+          },
+          "Key": {
+            "_namespace": "code_rebirth",
+            "_key": "oxyde"
+          },
+          "<ShipLandingOverrideAnimation>k__BackingField": {
+            "m_FileID": 0,
+            "m_PathID": 5430741305616087365
+          },
+          "<ShipTakeoffOverrideAnimation>k__BackingField": {
+            "m_FileID": 0,
+            "m_PathID": 3751814968749401283
+          },
+          "<BaseWeight>k__BackingField": 100,
+          "<WeatherSpawnWeightsConfig>k__BackingField": [],
+          "<GenerateWeightsConfig>k__BackingField": 1
+        }
+      ],
+      "<TerminalPredicate>k__BackingField": {
+        "m_FileID": 0,
+        "m_PathID": 5630240687614732369
+      },
+      "<PricingStrategy>k__BackingField": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "<Cost>k__BackingField": 0,
+      "<OutsideEnemiesSpawnProbabilityRange>k__BackingField": 3.0,
+      "<GenerateEnemyPowerCountConfigs>k__BackingField": 1,
+      "<GenerateEnemySpawnCurveConfigs>k__BackingField": 0,
+      "<GenerateEnemySpawnProbabilityRangeConfigs>k__BackingField": 0,
+      "<GenerateMinMaxScrapConfig>k__BackingField": 0,
+      "<GenerateTimeConfig>k__BackingField": 0,
+      "<GenerateCostConfig>k__BackingField": 1,
+      "<GenerateDisableUnlockConfig>k__BackingField": 1,
+      "<GenerateDisablePricingStrategyConfig>k__BackingField": 0
+    }
+  },
+  "level_and_moon_references": [
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "m_GameObject",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "status": "NULL"
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "m_Script",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 1128312141221037122
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 1128312141221037122,
+        "type": "MonoScript",
+        "name": "SelectableLevel"
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "planetPrefab",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": -1617512411885999659
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": -1617512411885999659,
+        "type": "GameObject",
+        "name": "OxydeOrbit"
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "videoReel",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 1443263467203324129
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 1443263467203324129,
+        "type": "VideoClip",
+        "name": "OxydeTerminalVideoFinal"
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "levelAmbienceClips",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": -2775618273457871651
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": -2775618273457871651,
+        "type": "MonoBehaviour",
+        "name": "Level1TypeAmbience",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": -1897693779315028727,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "LevelAmbienceLibrary",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 251,
+              "bytes[1]": 252,
+              "bytes[2]": 169,
+              "bytes[3]": 184,
+              "bytes[4]": 55,
+              "bytes[5]": 21,
+              "bytes[6]": 27,
+              "bytes[7]": 169,
+              "bytes[8]": 120,
+              "bytes[9]": 95,
+              "bytes[10]": 122,
+              "bytes[11]": 187,
+              "bytes[12]": 25,
+              "bytes[13]": 151,
+              "bytes[14]": 226,
+              "bytes[15]": 25
+            },
+            "m_ClassName": "LevelAmbienceLibrary",
+            "m_Namespace": "",
+            "m_AssemblyName": "Assembly-CSharp"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "specialEnemyRarity.overrideEnemy",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "status": "NULL"
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "OutsideEnemies[0].enemyType",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 7793640112112134637
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 7793640112112134637,
+        "type": "MonoBehaviour",
+        "name": "MouthDog",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": 4064762129602834283,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "EnemyType",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 104,
+              "bytes[1]": 120,
+              "bytes[2]": 10,
+              "bytes[3]": 168,
+              "bytes[4]": 63,
+              "bytes[5]": 157,
+              "bytes[6]": 243,
+              "bytes[7]": 37,
+              "bytes[8]": 46,
+              "bytes[9]": 23,
+              "bytes[10]": 32,
+              "bytes[11]": 170,
+              "bytes[12]": 94,
+              "bytes[13]": 179,
+              "bytes[14]": 213,
+              "bytes[15]": 81
+            },
+            "m_ClassName": "EnemyType",
+            "m_Namespace": "",
+            "m_AssemblyName": "Assembly-CSharp"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "OutsideEnemies[1].enemyType",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": -834040417623994736
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": -834040417623994736,
+        "type": "MonoBehaviour",
+        "name": "Nutcracker",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": 4064762129602834283,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "EnemyType",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 104,
+              "bytes[1]": 120,
+              "bytes[2]": 10,
+              "bytes[3]": 168,
+              "bytes[4]": 63,
+              "bytes[5]": 157,
+              "bytes[6]": 243,
+              "bytes[7]": 37,
+              "bytes[8]": 46,
+              "bytes[9]": 23,
+              "bytes[10]": 32,
+              "bytes[11]": 170,
+              "bytes[12]": 94,
+              "bytes[13]": 179,
+              "bytes[14]": 213,
+              "bytes[15]": 81
+            },
+            "m_ClassName": "EnemyType",
+            "m_Namespace": "",
+            "m_AssemblyName": "Assembly-CSharp"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "OutsideEnemies[2].enemyType",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": -2355938559305520853
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": -2355938559305520853,
+        "type": "MonoBehaviour",
+        "name": "CaveDweller",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": 4064762129602834283,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "EnemyType",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 104,
+              "bytes[1]": 120,
+              "bytes[2]": 10,
+              "bytes[3]": 168,
+              "bytes[4]": 63,
+              "bytes[5]": 157,
+              "bytes[6]": 243,
+              "bytes[7]": 37,
+              "bytes[8]": 46,
+              "bytes[9]": 23,
+              "bytes[10]": 32,
+              "bytes[11]": 170,
+              "bytes[12]": 94,
+              "bytes[13]": 179,
+              "bytes[14]": 213,
+              "bytes[15]": 81
+            },
+            "m_ClassName": "EnemyType",
+            "m_Namespace": "",
+            "m_AssemblyName": "Assembly-CSharp"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "OutsideEnemies[3].enemyType",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": -2749725719782341607
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": -2749725719782341607,
+        "type": "MonoBehaviour",
+        "name": "RadMech",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": 4064762129602834283,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "EnemyType",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 104,
+              "bytes[1]": 120,
+              "bytes[2]": 10,
+              "bytes[3]": 168,
+              "bytes[4]": 63,
+              "bytes[5]": 157,
+              "bytes[6]": 243,
+              "bytes[7]": 37,
+              "bytes[8]": 46,
+              "bytes[9]": 23,
+              "bytes[10]": 32,
+              "bytes[11]": 170,
+              "bytes[12]": 94,
+              "bytes[13]": 179,
+              "bytes[14]": 213,
+              "bytes[15]": 81
+            },
+            "m_ClassName": "EnemyType",
+            "m_Namespace": "",
+            "m_AssemblyName": "Assembly-CSharp"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "OutsideEnemies[4].enemyType",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": -413416869958210447
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": -413416869958210447,
+        "type": "MonoBehaviour",
+        "name": "MaskedPlayerEnemy",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": 4064762129602834283,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "EnemyType",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 104,
+              "bytes[1]": 120,
+              "bytes[2]": 10,
+              "bytes[3]": 168,
+              "bytes[4]": 63,
+              "bytes[5]": 157,
+              "bytes[6]": 243,
+              "bytes[7]": 37,
+              "bytes[8]": 46,
+              "bytes[9]": 23,
+              "bytes[10]": 32,
+              "bytes[11]": 170,
+              "bytes[12]": 94,
+              "bytes[13]": 179,
+              "bytes[14]": 213,
+              "bytes[15]": 81
+            },
+            "m_ClassName": "EnemyType",
+            "m_Namespace": "",
+            "m_AssemblyName": "Assembly-CSharp"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "OutsideEnemies[5].enemyType",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 4218670246169652985
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 4218670246169652985,
+        "type": "MonoBehaviour",
+        "name": "BaboonHawk",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": 4064762129602834283,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "EnemyType",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 104,
+              "bytes[1]": 120,
+              "bytes[2]": 10,
+              "bytes[3]": 168,
+              "bytes[4]": 63,
+              "bytes[5]": 157,
+              "bytes[6]": 243,
+              "bytes[7]": 37,
+              "bytes[8]": 46,
+              "bytes[9]": 23,
+              "bytes[10]": 32,
+              "bytes[11]": 170,
+              "bytes[12]": 94,
+              "bytes[13]": 179,
+              "bytes[14]": 213,
+              "bytes[15]": 81
+            },
+            "m_ClassName": "EnemyType",
+            "m_Namespace": "",
+            "m_AssemblyName": "Assembly-CSharp"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "OutsideEnemies[6].enemyType",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 4738694134492927690
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 4738694134492927690,
+        "type": "MonoBehaviour",
+        "name": "Crawler",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": 4064762129602834283,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "EnemyType",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 104,
+              "bytes[1]": 120,
+              "bytes[2]": 10,
+              "bytes[3]": 168,
+              "bytes[4]": 63,
+              "bytes[5]": 157,
+              "bytes[6]": 243,
+              "bytes[7]": 37,
+              "bytes[8]": 46,
+              "bytes[9]": 23,
+              "bytes[10]": 32,
+              "bytes[11]": 170,
+              "bytes[12]": 94,
+              "bytes[13]": 179,
+              "bytes[14]": 213,
+              "bytes[15]": 81
+            },
+            "m_ClassName": "EnemyType",
+            "m_Namespace": "",
+            "m_AssemblyName": "Assembly-CSharp"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "OutsideEnemies[7].enemyType",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 7373265128380137094
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 7373265128380137094,
+        "type": "MonoBehaviour",
+        "name": "Puffer",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": 4064762129602834283,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "EnemyType",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 104,
+              "bytes[1]": 120,
+              "bytes[2]": 10,
+              "bytes[3]": 168,
+              "bytes[4]": 63,
+              "bytes[5]": 157,
+              "bytes[6]": 243,
+              "bytes[7]": 37,
+              "bytes[8]": 46,
+              "bytes[9]": 23,
+              "bytes[10]": 32,
+              "bytes[11]": 170,
+              "bytes[12]": 94,
+              "bytes[13]": 179,
+              "bytes[14]": 213,
+              "bytes[15]": 81
+            },
+            "m_ClassName": "EnemyType",
+            "m_Namespace": "",
+            "m_AssemblyName": "Assembly-CSharp"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -4793931200078666718,
+      "field_path": "OutsideEnemies[8].enemyType",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 5043571891374575012
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 5043571891374575012,
+        "type": "MonoBehaviour",
+        "name": "GiantKiwi",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": 4064762129602834283,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "EnemyType",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 104,
+              "bytes[1]": 120,
+              "bytes[2]": 10,
+              "bytes[3]": 168,
+              "bytes[4]": 63,
+              "bytes[5]": 157,
+              "bytes[6]": 243,
+              "bytes[7]": 37,
+              "bytes[8]": 46,
+              "bytes[9]": 23,
+              "bytes[10]": 32,
+              "bytes[11]": 170,
+              "bytes[12]": 94,
+              "bytes[13]": 179,
+              "bytes[14]": 213,
+              "bytes[15]": 81
+            },
+            "m_ClassName": "EnemyType",
+            "m_Namespace": "",
+            "m_AssemblyName": "Assembly-CSharp"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -3975445595720329216,
+      "field_path": "m_GameObject",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "status": "NULL"
+    },
+    {
+      "owner_path_id": -3975445595720329216,
+      "field_path": "m_Script",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": -3892692537105937739
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": -3892692537105937739,
+        "type": "MonoScript",
+        "name": "DuskMoonDefinition"
+      }
+    },
+    {
+      "owner_path_id": -3975445595720329216,
+      "field_path": "<Level>k__BackingField",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": -4793931200078666718
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": -4793931200078666718,
+        "type": "MonoBehaviour",
+        "name": "OxydeLevel",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": 1128312141221037122,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "SelectableLevel",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 35,
+              "bytes[1]": 167,
+              "bytes[2]": 220,
+              "bytes[3]": 1,
+              "bytes[4]": 103,
+              "bytes[5]": 250,
+              "bytes[6]": 106,
+              "bytes[7]": 213,
+              "bytes[8]": 27,
+              "bytes[9]": 251,
+              "bytes[10]": 88,
+              "bytes[11]": 79,
+              "bytes[12]": 31,
+              "bytes[13]": 15,
+              "bytes[14]": 32,
+              "bytes[15]": 198
+            },
+            "m_ClassName": "SelectableLevel",
+            "m_Namespace": "",
+            "m_AssemblyName": "Assembly-CSharp"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -3975445595720329216,
+      "field_path": "_scenes[0].<ShipLandingOverrideAnimation>k__BackingField",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 5430741305616087365
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 5430741305616087365,
+        "type": "AnimationClip",
+        "name": "HangarShipLandB"
+      }
+    },
+    {
+      "owner_path_id": -3975445595720329216,
+      "field_path": "_scenes[0].<ShipTakeoffOverrideAnimation>k__BackingField",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 3751814968749401283
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 3751814968749401283,
+        "type": "AnimationClip",
+        "name": "ShipNormalLeave"
+      }
+    },
+    {
+      "owner_path_id": -3975445595720329216,
+      "field_path": "<TerminalPredicate>k__BackingField",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 5630240687614732369
+      },
+      "status": "RESOLVED",
+      "target": {
+        "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+        "path_id": 5630240687614732369,
+        "type": "MonoBehaviour",
+        "name": "OxydeProgressivePredicate",
+        "script": {
+          "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+          "path_id": 6160626840919448860,
+          "type": "MonoScript",
+          "serialized_fields": {
+            "m_Name": "ProgressivePredicate",
+            "m_ExecutionOrder": 0,
+            "m_PropertiesHash": {
+              "bytes[0]": 123,
+              "bytes[1]": 151,
+              "bytes[2]": 231,
+              "bytes[3]": 109,
+              "bytes[4]": 153,
+              "bytes[5]": 27,
+              "bytes[6]": 162,
+              "bytes[7]": 130,
+              "bytes[8]": 1,
+              "bytes[9]": 14,
+              "bytes[10]": 219,
+              "bytes[11]": 118,
+              "bytes[12]": 31,
+              "bytes[13]": 139,
+              "bytes[14]": 232,
+              "bytes[15]": 174
+            },
+            "m_ClassName": "ProgressivePredicate",
+            "m_Namespace": "Dusk",
+            "m_AssemblyName": "com.github.teamxiaolan.dawnlib.dusk.dll"
+          }
+        }
+      }
+    },
+    {
+      "owner_path_id": -3975445595720329216,
+      "field_path": "<PricingStrategy>k__BackingField",
+      "pointer": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "status": "NULL"
+    }
+  ],
+  "route_predicate": {
+    "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+    "path_id": 5630240687614732369,
+    "type": "MonoBehaviour",
+    "script": {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": 6160626840919448860,
+      "type": "MonoScript",
+      "serialized_fields": {
+        "m_Name": "ProgressivePredicate",
+        "m_ExecutionOrder": 0,
+        "m_PropertiesHash": {
+          "bytes[0]": 123,
+          "bytes[1]": 151,
+          "bytes[2]": 231,
+          "bytes[3]": 109,
+          "bytes[4]": 153,
+          "bytes[5]": 27,
+          "bytes[6]": 162,
+          "bytes[7]": 130,
+          "bytes[8]": 1,
+          "bytes[9]": 14,
+          "bytes[10]": 219,
+          "bytes[11]": 118,
+          "bytes[12]": 31,
+          "bytes[13]": 139,
+          "bytes[14]": 232,
+          "bytes[15]": 174
+        },
+        "m_ClassName": "ProgressivePredicate",
+        "m_Namespace": "Dusk",
+        "m_AssemblyName": "com.github.teamxiaolan.dawnlib.dusk.dll"
+      }
+    },
+    "raw_object_bytes": 88,
+    "raw_object_sha256": "131d10bcdbac98205f1d6d25e838b0ded22047103e90b6a3cfd57f6676020b1d",
+    "serialized_fields": {
+      "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "m_Enabled": 1,
+      "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": 6160626840919448860
+      },
+      "m_Name": "OxydeProgressivePredicate",
+      "_isHidden": 1,
+      "_isLocked": 1,
+      "_lockedName": "???",
+      "_failNode": {
+        "m_FileID": 0,
+        "m_PathID": 7283538759813322484
+      }
+    }
+  },
+  "route_fail_node": {
+    "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+    "path_id": 7283538759813322484,
+    "type": "MonoBehaviour",
+    "script": {
+      "serialized_file": "CAB-34cea74cab018d261344242e7acd380f",
+      "path_id": 3976368720055583387,
+      "type": "MonoScript",
+      "serialized_fields": {
+        "m_Name": "TerminalNode",
+        "m_ExecutionOrder": 0,
+        "m_PropertiesHash": {
+          "bytes[0]": 19,
+          "bytes[1]": 200,
+          "bytes[2]": 169,
+          "bytes[3]": 34,
+          "bytes[4]": 128,
+          "bytes[5]": 201,
+          "bytes[6]": 231,
+          "bytes[7]": 142,
+          "bytes[8]": 234,
+          "bytes[9]": 48,
+          "bytes[10]": 19,
+          "bytes[11]": 211,
+          "bytes[12]": 165,
+          "bytes[13]": 122,
+          "bytes[14]": 185,
+          "bytes[15]": 246
+        },
+        "m_ClassName": "TerminalNode",
+        "m_Namespace": "",
+        "m_AssemblyName": "Assembly-CSharp"
+      }
+    },
+    "raw_object_bytes": 204,
+    "raw_object_sha256": "48c9f58e12ed9f87399ab6e068938346f896a0166e969b34f8b6e01be32198e6",
+    "serialized_fields": {
+      "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "m_Enabled": 1,
+      "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": 3976368720055583387
+      },
+      "m_Name": "OxydeFailTerminalNode",
+      "displayText": "Coordinates not found.",
+      "terminalEvent": "",
+      "clearPreviousText": 1,
+      "maxCharactersToType": 25,
+      "buyItemIndex": -1,
+      "buyVehicleIndex": -1,
+      "isConfirmationNode": 0,
+      "buyRerouteToMoon": -1,
+      "displayPlanetInfo": -1,
+      "shipUnlockableID": -1,
+      "buyUnlockable": 0,
+      "returnFromStorage": 0,
+      "itemCost": 0,
+      "creatureFileID": -1,
+      "creatureName": "",
+      "storyLogFileID": -1,
+      "overrideOptions": 0,
+      "acceptAnything": 0,
+      "terminalOptions": [],
+      "playClip": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "playSyncedClip": -1,
+      "displayTexture": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "displayVideo": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "loadImageSlowly": 0,
+      "persistentImage": 0
+    }
+  },
+  "generation_observations": {
+    "sceneName": "Oxyde",
+    "levelID": 745,
+    "PlanetName": "745 Oxyde",
+    "spawnEnemiesAndScrap": 0,
+    "dungeonFlowTypes": [],
+    "factorySizeMultiplier": 1.600000023841858,
+    "planetHasTime": 0,
+    "riskLevel": "Safe",
+    "spawnableScrap": [],
+    "minScrap": 0,
+    "maxScrap": 0,
+    "minTotalScrapValue": 0,
+    "maxTotalScrapValue": 0,
+    "Enemies": [],
+    "DaytimeEnemies": []
+  },
+  "nonfinite_float_encoding": "Tagged object {\"$float\": \"Infinity\"/\"-Infinity\"/\"NaN\"}; preserves non-finite values as valid JSON.",
+  "proof_boundary": "Packaged serialized defaults and local references only. No owner implementation, runtime mutation, effective generation gate, entrance count/pairing or topology clearance."
+}

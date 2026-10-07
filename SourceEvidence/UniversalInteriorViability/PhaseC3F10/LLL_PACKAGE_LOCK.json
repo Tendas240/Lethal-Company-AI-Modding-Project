@@ -1,0 +1,113 @@
+{
+  "schema_version": "c3f10b-lll-package-lock-1",
+  "authority": {
+    "accepted_export_sha256": "19935c1afc98de1562fda8b299d7d23d09c3555eac88f9de7992eb3d6e2b46b8",
+    "c3b_lll_bridge_sha256": "9f6e31f9388f462fba329a40d1d24e1d330b18ff49ee5e0d36c13d83d06cc387",
+    "c3e3e_generation_integration_sha256": "b5a2cf33f95145c0c5654d2cb9e2023714d6a4ea4cd6873abbdb446d9c5db6b6",
+    "c3f9_findings_sha256": "c1be57724726dcba059841d1d3dc178a2c7c9f4ea2df6e3f3eb9aa493ebc84b9",
+    "lll_release_source_commit": "f9998b91adf242cd8d735f4e697d55b32b94bfac"
+  },
+  "package": {
+    "dll_members": [
+      {
+        "bytes": 434688,
+        "dll": true,
+        "member": "LethalLevelLoader.dll",
+        "sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+        "unityfs": false
+      },
+      {
+        "bytes": 16896,
+        "dll": true,
+        "member": "patchers/LethalLevelLoader.Patcher.dll",
+        "sha256": "ab07f5edf1dc818618376545bca21e70ca5513bb0fabc8dd461b66d9a41af05d",
+        "unityfs": false
+      }
+    ],
+    "manifest": {
+      "FullName": "IAmBatby-LethalLevelLoader",
+      "dependencies": [
+        "BepInEx-BepInExPack-5.4.2305",
+        "Evaisa-FixPluginTypesSerialization-1.1.4"
+      ],
+      "description": "A Custom API to support the manual and dynamic integration of all forms of custom content in Lethal Company. (v81 Compatible)",
+      "name": "LethalLevelLoader",
+      "namespace": "IAmBatby",
+      "version_number": "1.7.12",
+      "website_url": "https://github.com/IAmBatby/LethalLevelLoader"
+    },
+    "members": [
+      {
+        "bytes": 56432,
+        "dll": false,
+        "member": "CHANGELOG.md",
+        "sha256": "b548b9c6f67e779dd894ab3cbfc54b8d6f47d67174168a83235c9b150e14356a",
+        "unityfs": false
+      },
+      {
+        "bytes": 1084,
+        "dll": false,
+        "member": "LICENSE.md",
+        "sha256": "14f1be5fedb88b90ae962237bf2fb30a59148e443ed6307abe9673a28d4c8d70",
+        "unityfs": false
+      },
+      {
+        "bytes": 434688,
+        "dll": true,
+        "member": "LethalLevelLoader.dll",
+        "sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+        "unityfs": false
+      },
+      {
+        "bytes": 5045,
+        "dll": false,
+        "member": "README.md",
+        "sha256": "6dd4bbf63f9e6b238b788016824409b0cdc90cce2794cfbcf2166e6ecc123392",
+        "unityfs": false
+      },
+      {
+        "bytes": 9706,
+        "dll": false,
+        "member": "icon.png",
+        "sha256": "ffd4413400887e789ea57f7a3f60064fc526e617a9f8263ff3501d95ab7df751",
+        "unityfs": false
+      },
+      {
+        "bytes": 465,
+        "dll": false,
+        "member": "manifest.json",
+        "sha256": "6f628e8e8a58ebd02d7d4d04d9fd99e9f9faacc9102b572e75648ecc69bfc330",
+        "unityfs": false
+      },
+      {
+        "bytes": 16896,
+        "dll": true,
+        "member": "patchers/LethalLevelLoader.Patcher.dll",
+        "sha256": "ab07f5edf1dc818618376545bca21e70ca5513bb0fabc8dd461b66d9a41af05d",
+        "unityfs": false
+      }
+    ],
+    "package": "IAmBatby-LethalLevelLoader",
+    "source_url": "https://gcdn.thunderstore.io/live/repository/packages/IAmBatby-LethalLevelLoader-1.7.12.zip",
+    "target_dll": {
+      "bytes": 434688,
+      "dll": true,
+      "member": "LethalLevelLoader.dll",
+      "sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+      "unityfs": false
+    },
+    "version": "1.7.12",
+    "zip_bytes": 244811,
+    "zip_sha256": "e01eadec8b1df3a1bc331e98b29d94baffa572cb7379953f1fa4e46df0aa6451"
+  },
+  "review": {
+    "source_workflow": "Capture C3F10B LLL restoration evidence",
+    "source_run_id": 35586953752,
+    "source_run_number": 1,
+    "source_head_sha": "842ef9dd1caf93e425c06534441b6c787bb7edb9",
+    "artifact_id": 10633077460,
+    "artifact_digest": "sha256:f3cabda2b726ea30451a9199ba2567d91a047b101d626112ac5434395e9d67a4",
+    "candidate_helper_sha256": "0b5563ca9ee0e0bb567635556faa22a57ab1fb53c8b356346ac9d2a6e3824df9",
+    "candidate_status": "REVIEWED_BYTE_BINDING_ONLY_NO_RESTORATION_CLAIM"
+  }
+}

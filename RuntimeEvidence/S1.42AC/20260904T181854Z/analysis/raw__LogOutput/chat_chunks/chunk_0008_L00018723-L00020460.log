@@ -1,0 +1,1738 @@
+[18:16:26.9171147] [Debug  : LethalMin] White Pikmin_yExgK: Setting to idle on local client
+[18:16:26.9171147] [Info   : LethalMin] White Pikmin_yExgK: Dropped item SuperSneakers(Clone)
+[18:16:26.9171147] [Debug  : LethalMin] White Pikmin_yExgK: Setting collision mode to 1
+[18:16:26.9171147] [Debug  : LethalMin] White Pikmin_yExgK: Removed Leader
+[18:16:26.9171147] [Info   : LethalMin] White Pikmin_yExgK: Removing current task
+[18:16:26.9171147] [Info   : LethalMin] Pikmin route complete.
+[18:16:26.9241382] [Info   : LethalMin] SuperSneakers(Clone) is not carrying enough pikmin and is dropping it
+[18:16:26.9241382] [Info   : LethalMin] Dropped in elevator, adjusted target floor position: (0.20, 0.00, -6.07)
+[18:16:26.9241382] [Info   : LethalMin] SuperSneakers(Clone) is dropping an item on local client
+[18:16:26.9241382] [Info   : LethalMin] PrimaryLeader: MasaeAhmya
+[18:16:26.9241382] [Info   : LethalMin] SuperSneakers(Clone) dropped an item on a non-physics region parent
+[18:16:26.9334165] [Debug  : LethalMin] Initializing PikminItem SuperSneakers(Clone) with item SuperSneakers(Clone) (True)
+[18:16:27.2222973] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[18:16:27.4282242] [Error  : Unity Log] "SetDestination" can only be called on an active agent that has been placed on a NavMesh.
+[18:16:27.5543839] [Debug  : LethalMin] White Pikmin_2FoB: Setting to idle on local client
+[18:16:27.5543839] [Debug  : LethalMin] White Pikmin_2FoB: Removed Leader
+[18:16:27.5543839] [Info   : LethalMin] White Pikmin_2FoB: Removing current task
+[18:16:27.5543839] [Warning: LethalMin] White Pikmin_2FoB - CarryItemTask: Is not grabbing item beacuse it has arrived
+[18:16:27.8042006] [Debug  : LethalMin] White Pikmin_XWR5u2K: Setting to idle on local client
+[18:16:27.8042006] [Debug  : LethalMin] White Pikmin_XWR5u2K: Removed Leader
+[18:16:27.8042006] [Info   : LethalMin] White Pikmin_XWR5u2K: Removing current task
+[18:16:27.8042006] [Warning: LethalMin] White Pikmin_XWR5u2K - CarryItemTask: Is not grabbing item beacuse it has arrived
+[18:16:28.8132055] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:16:28.8132055] [Debug  :   Coroner] Query successful!True
+[18:16:29.7997148] [Info   : LethalMin] Bulbmin_HvQ5Qc: Found enemy: Crawler(Clone)
+[18:16:29.7997148] [Info   : LethalMin] Bulbmin_HvQ5Qc: Setting current task to AttackEnemy
+[18:16:29.8007186] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:16:29.8007186] [Debug  :   Coroner] Query successful!True
+[18:16:30.4473746] [Warning: LethalMin] (SuperSneakers's Counter)'s item is null, destroying counter.
+[18:16:31.3384246] [Info   : LethalMin] Bulbmin_dV8hPC: Found enemy: Crawler(Clone)
+[18:16:31.3384246] [Info   : LethalMin] Bulbmin_dV8hPC: Setting current task to AttackEnemy
+[18:16:31.3725055] [Error  : Unity Log] "SetDestination" can only be called on an active agent that has been placed on a NavMesh.
+[18:16:31.3951965] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:16:31.4548365] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[18:16:31.5529949] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:16:31.6344331] [Warning:S1.39 Compatibility Fixes] [ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.
+[18:16:31.6884269] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:16:31.6884269] [Debug  :   Coroner] Query successful!True
+[18:16:31.7124597] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:16:31.7147882] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:16:31.7147882] [Debug  :   Coroner] Query successful!True
+[18:16:31.7308120] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:16:31.7308120] [Debug  :   Coroner] Query successful!True
+[18:16:31.8932327] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:16:31.8932327] [Debug  :   Coroner] Query successful!True
+[18:16:33.2233403] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[18:16:35.2243993] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[18:16:36.5860873] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[18:16:37.3875575] [Debug  : LethalMin] Purple Pikmin_lWrfv: Setting to idle on local client
+[18:16:37.3875575] [Info   : LethalMin] Purple Pikmin_lWrfv: Removing current task
+[18:16:37.3875575] [Debug  : LethalMin] Purple Pikmin_lWrfv: Removed Leader
+[18:16:37.3875575] [Info   : LethalMin] Purple Pikmin_lWrfv: Removing current task
+[18:16:37.3875575] [Warning: LethalMin] Purple Pikmin_lWrfv - AttackEnemyTask: Went out of range of enemy
+[18:16:37.7924024] [Error  : Unity Log] "SetDestination" can only be called on an active agent that has been placed on a NavMesh.
+[18:16:39.2182632] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[18:16:40.4623698] [Info   :GoldenKitten.FairAI] Turret: Detected enemy 'Crawler', entering charging mode.
+[18:16:41.2200887] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[18:16:41.9590198] [Warning:S1.39 Compatibility Fixes] [ThumperPikminGuard] Blocked Crawler/Thumper -> Pikmin GrabPikmin before leader/grab/death-timer state mutation.
+[18:16:41.9710451] [Info   :GoldenKitten.FairAI] Turret: Charge complete, opening fire.
+[18:16:42.1941772] [Info   : Unity Log] Local client hit enemy Crawler(Clone) #0 with force of 1.
+[18:16:42.3485421] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:16:42.4166696] [Info   : Unity Log] Local client hit enemy Crawler(Clone) #0 with force of 1.
+[18:16:42.6735559] [Info   : Unity Log] Local client hit enemy Bulbmin_HvQ5Qc #1 with force of 2.
+[18:16:42.6745580] [Info   : LethalMin] Bulbmin_HvQ5Qc: Has Invincible mode when hit
+[18:16:42.6865753] [Info   : Unity Log] Local client hit enemy Crawler(Clone) #0 with force of 1.
+[18:16:42.6875734] [Info   : Unity Log] Local client hit enemy Crawler(Clone) #0 with force of 1.
+[18:16:42.6875734] [Info   : Unity Log] Kill enemy called! destroy: False
+[18:16:42.6885757] [Info   : Unity Log] Playing death sound for enemy: Crawler
+[18:16:42.6885757] [Debug  :Starlancer AI Fix] Crawler(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[18:16:42.6885757] [Debug  :Starlancer AI Fix] Removing Crawler(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 0
+[18:16:42.6900783] [Info   : Unity Log] Kill enemy server rpc called with destroy False
+[18:16:42.6910825] [Info   : Unity Log] Kill enemy client rpc called; False
+[18:16:42.6925879] [Info   :GoldenKitten.FairAI] Turret: Target died, no new targets — returning to detection.
+[18:16:42.7336762] [Info   : LethalMin] Bulbmin_HvQ5Qc: Task finished
+[18:16:42.7336762] [Debug  : LethalMin] Bulbmin_HvQ5Qc: Setting to idle on local client
+[18:16:42.7336762] [Info   : LethalMin] Bulbmin_HvQ5Qc: Removing current task
+[18:16:42.7336762] [Debug  : LethalMin] Bulbmin_HvQ5Qc: Removed Leader
+[18:16:42.7356799] [Info   : LethalMin] Bulbmin_HvQ5Qc: Removing current task
+[18:16:42.7437148] [Info   : LethalMin] White Pikmin_DuZb96F: Task finished
+[18:16:42.7437148] [Debug  : LethalMin] White Pikmin_DuZb96F: Setting to idle on local client
+[18:16:42.7437148] [Info   : LethalMin] White Pikmin_DuZb96F: Removing current task
+[18:16:42.7437148] [Debug  : LethalMin] White Pikmin_DuZb96F: Removed Leader
+[18:16:42.7437148] [Info   : LethalMin] White Pikmin_DuZb96F: Removing current task
+[18:16:42.8694906] [Info   : LethalMin] Bulbmin_dV8hPC: Task finished
+[18:16:42.8699926] [Debug  : LethalMin] Bulbmin_dV8hPC: Setting to idle on local client
+[18:16:42.8699926] [Info   : LethalMin] Bulbmin_dV8hPC: Removing current task
+[18:16:42.8699926] [Debug  : LethalMin] Bulbmin_dV8hPC: Removed Leader
+[18:16:42.8699926] [Info   : LethalMin] Bulbmin_dV8hPC: Removing current task
+[18:16:42.9756630] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:16:43.2883734] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:16:45.2166149] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[18:16:45.7116987] [Error  : Unity Log] "SetDestination" can only be called on an active agent that has been placed on a NavMesh.
+[18:16:46.3176852] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:16:46.3176852] [Debug  :   Coroner] Query successful!True
+[18:16:46.6900074] [Info   : Unity Log] Successfully synced body values
+[18:16:46.6900074] [Info   : Unity Log] End of OnNetworkSpawn body override
+[18:16:46.6945433] [Debug  :Matty's Fixes] LethalLib/SellBodies/Dead Thumper(795) needs to compute vertical offset - scheduled
+[18:16:46.7225846] [Debug  : LethalMin] Initializing PikminItem CrawlerBody(Clone) with item CrawlerBody(Clone) (True)
+[18:16:46.7325998] [Debug  :Matty's Fixes] LethalLib/SellBodies/Dead Thumper(795) is computing vertical offset
+[18:16:46.7336022] [Debug  :Matty's Fixes] LethalLib/SellBodies/Dead Thumper new offset is 0.2788938
+[18:16:46.7336022] [Debug  :Matty's Fixes] LethalLib/SellBodies/Dead Thumper(795) position updated [(0.00, 0.00, 0.00)] -> [(0.00, 0.28, 0.00)]
+[18:16:48.2256376] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[18:16:48.7044767] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:16:48.7044767] [Debug  :   Coroner] Query successful!True
+[18:16:51.2189239] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[18:16:51.3884881] [Error  : Unity Log] "SetDestination" can only be called on an active agent that has been placed on a NavMesh.
+[18:16:53.1737940] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:16:54.5301211] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:16:54.8719260] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:16:55.5956843] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:16:55.5956843] [Debug  :   Coroner] Query successful!True
+[18:16:57.5147537] [Debug  : LethalMin] Purple Pikmin_y6qJPnG: Removed Leader
+[18:16:57.5147537] [Debug  : LethalMin] Purple Pikmin_y6qJPnG: Setting collision mode to 1
+[18:16:57.5157535] [Info   : LethalMin] Purple Pikmin_y6qJPnG: Assigned Leader: MasaeAhmya (0)
+[18:16:57.7126549] [Error  : Unity Log] "SetDestination" can only be called on an active agent that has been placed on a NavMesh.
+[18:16:59.4328119] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:16:59.4328119] [Debug  :   Coroner] Query successful!True
+[18:17:03.2252428] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[18:17:03.9689563] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:17:05.6290173] [Error  : Unity Log] "SetDestination" can only be called on an active agent that has been placed on a NavMesh.
+[18:17:06.1151489] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:17:06.4534012] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:17:07.2203445] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[18:17:11.2205151] [Info   : LethalMin] Bulbmin_dV8hPC: Setting growth stage to 1
+[18:17:11.5549373] [Error  : Unity Log] "SetDestination" can only be called on an active agent that has been placed on a NavMesh.
+[18:17:12.2714892] [Debug  : LethalMin] White Pikmin_LvIZg: Removed Leader
+[18:17:12.2714892] [Debug  : LethalMin] White Pikmin_LvIZg: Setting collision mode to 1
+[18:17:12.2714892] [Info   : LethalMin] White Pikmin_LvIZg: Assigned Leader: MasaeAhmya (0)
+[18:17:13.2929772] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[18:17:13.2929772] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[18:17:13.2929772] [Debug  :   Coroner] Handling Out of Bounds death...
+[18:17:13.6391794] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:17:13.6391794] [Debug  :   Coroner] Query successful!True
+[18:17:14.3651859] [Debug  : LethalMin] Purple Pikmin_bRqe: Setting collision mode to 0
+[18:17:15.4131008] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:17:15.6229550] [Info   :HotbarPlus-1.8.5] Sending hotbar swap slot: 1
+[18:17:15.7369098] [Debug  : LethalMin] Bulbmin_ZcdX: Setting collision mode to 0
+[18:17:15.7379100] [Debug  : LethalMin] Purple Pikmin_bRqe: Setting collision mode to 1
+[18:17:16.8595020] [Debug  : LethalMin] Bulbmin_ZcdX: Thrown with force: (-6.22, -4.33, 12.95)
+[18:17:16.8595020] [Debug  : LethalMin] Bulbmin_ZcdX: Setting collision mode to 2
+[18:17:16.8605030] [Debug  : LethalMin] Bulbmin_ZcdX: Removed Leader
+[18:17:17.4292102] [Info   : LethalMin] Bulbmin_ZcdX: Collision with Model4
+[18:17:17.4292102] [Debug  : LethalMin] Bulbmin_ZcdX: Setting collision mode to 1
+[18:17:17.4292102] [Debug  : LethalMin] Bulbmin_ZcdX: Setting to idle on local client
+[18:17:17.4292102] [Debug  : LethalMin] Bulbmin_ZcdX: Removed Leader
+[18:17:17.6312149] [Info   : LethalMin] Bulbmin_ZcdX: Found item: Spoon(Clone)
+[18:17:17.6312149] [Info   : LethalMin] Bulbmin_ZcdX: targeting item Spoon(Clone) at GrabPosition_0
+[18:17:17.6312149] [Info   : LethalMin] Bulbmin_ZcdX: Setting current task to CarryItem
+[18:17:17.6955127] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:17:17.8531070] [Info   : LethalMin] Bulbmin_ZcdX: Grabbed item Spoon(Clone) Speed is now: 1.141667
+[18:17:17.8591125] [Message: LethalMin] Spoon(Clone) Switched Primary Pikmin to Bulbmin_ZcdX
+[18:17:18.0280696] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:17:18.2217892] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[18:17:18.5883054] [Error  : Unity Log] "SetDestination" can only be called on an active agent that has been placed on a NavMesh.
+[18:17:19.1107857] [Debug  : LethalMin] Purple Pikmin_bRqe: Setting collision mode to 0
+[18:17:19.8323712] [Debug  : LethalMin] White Pikmin_LvIZg: Setting collision mode to 0
+[18:17:19.8323712] [Debug  : LethalMin] Purple Pikmin_bRqe: Setting collision mode to 1
+[18:17:20.8176072] [Debug  : LethalMin] White Pikmin_LvIZg: Thrown with force: (-6.26, -3.79, 13.09)
+[18:17:20.8176072] [Debug  : LethalMin] White Pikmin_LvIZg: Setting collision mode to 2
+[18:17:20.8186046] [Debug  : LethalMin] White Pikmin_LvIZg: Removed Leader
+[18:17:21.4124471] [Info   : LethalMin] White Pikmin_LvIZg: Collision with Model4
+[18:17:21.4124471] [Debug  : LethalMin] White Pikmin_LvIZg: Setting collision mode to 1
+[18:17:21.4124471] [Debug  : LethalMin] White Pikmin_LvIZg: Setting to idle on local client
+[18:17:21.4124471] [Debug  : LethalMin] White Pikmin_LvIZg: Removed Leader
+[18:17:21.4893954] [Info   : LethalMin] White Pikmin_LvIZg: Found item: Spoon(Clone)
+[18:17:21.4903955] [Info   : LethalMin] White Pikmin_LvIZg: targeting item Spoon(Clone) at GrabPosition_9
+[18:17:21.4903955] [Info   : LethalMin] White Pikmin_LvIZg: Setting current task to CarryItem
+[18:17:21.7142377] [Info   : LethalMin] White Pikmin_LvIZg: Grabbed item Spoon(Clone) Speed is now: 2
+[18:17:21.7307652] [Info   : LethalMin] Spoon(Clone) is grabbing an item on local client
+[18:17:21.7317703] [Debug  : LethalMin] Bulbmin_ZcdX: Setting collision mode to 1
+[18:17:21.7317703] [Debug  : LethalMin] White Pikmin_LvIZg: Setting collision mode to 0
+[18:17:21.7332769] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:21.7332769] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:21.7332769] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:21.7332769] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:21.7342860] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:21.7352854] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:21.7352854] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:21.7352854] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:21.7352854] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:21.7352854] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:21.7352854] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:21.7372847] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:21.7372847] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:21.7372847] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:21.7372847] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:21.7372847] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:21.7372847] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:21.7372847] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:21.7372847] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:21.7372847] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:21.7372847] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:21.7372847] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:21.7372847] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:21.7372847] [Info   : LethalMin] Spoon(Clone) has created a route
+[18:17:22.2755646] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[18:17:22.2755646] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[18:17:22.2755646] [Debug  :   Coroner] Handling Out of Bounds death...
+[18:17:22.7352105] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:22.7352105] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:22.7352105] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:22.7352105] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:22.7352105] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:22.7352105] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:22.7352105] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:22.7362089] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:22.7362089] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:22.7362089] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:22.7362089] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:22.7362089] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:22.7362089] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:22.7362089] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:22.7362089] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:22.7362089] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:22.7362089] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:22.7362089] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:22.7362089] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:22.7362089] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:22.7362089] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:22.7362089] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:22.7372080] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:22.7372080] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:22.7372080] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:23.2089324] [Debug  :   Coroner] Querying target player parameters pre-death...
+[18:17:23.2089324] [Debug  :   Coroner] Query successful!True
+[18:17:23.7407897] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:23.7407897] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:23.7417894] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:23.7417894] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:23.7417894] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:23.7417894] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:23.7417894] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:23.7417894] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:23.7417894] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:23.7417894] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:23.7417894] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:23.7417894] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:23.7417894] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:23.7417894] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:23.7417894] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:23.7417894] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:23.7417894] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:23.7417894] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:23.7417894] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:23.7417894] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:23.7417894] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:23.7417894] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:23.7432935] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:23.7432935] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:23.7432935] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:24.7473852] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:24.7473852] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:24.7473852] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:24.7473852] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:24.7473852] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:24.7473852] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:24.7483850] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:24.7483850] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:24.7483850] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:24.7483850] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:24.7483850] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:24.7483850] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:24.7483850] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:24.7483850] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:24.7483850] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:24.7483850] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:24.7483850] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:24.7483850] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:24.7483850] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:24.7483850] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:24.7483850] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:24.7493854] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:24.7493854] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:24.7493854] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:24.7493854] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:25.7516172] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:25.7516172] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:25.7516172] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:25.7516172] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:25.7531215] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:25.7531215] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:25.7531215] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:25.7531215] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:25.7541271] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:25.7541271] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:25.7541271] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:25.7541271] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:25.7541271] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:25.7541271] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:25.7541271] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:25.7541271] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:25.7541271] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:25.7541271] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:25.7541271] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:25.7541271] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:25.7541271] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:25.7541271] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:25.7541271] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:25.7541271] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:25.7541271] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:25.8864492] [Error  : Unity Log] "SetDestination" can only be called on an active agent that has been placed on a NavMesh.
+[18:17:26.2154103] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:17:26.2254319] [Debug  : LethalMin] Sprout Setting growth stage to 1
+[18:17:26.7530956] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:26.7530956] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:26.7530956] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:26.7530956] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:26.7530956] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:26.7530956] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:26.7530956] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:26.7530956] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:26.7540989] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:26.7540989] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:26.7540989] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:26.7540989] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:26.7540989] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:26.7540989] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:26.7540989] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:26.7540989] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:26.7540989] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:26.7540989] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:26.7540989] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:26.7540989] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:26.7540989] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:26.7540989] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:26.7550993] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:26.7550993] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:26.7550993] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:27.2494102] [Debug  : LethalMin] Bulbmin_67ZHv: Removed Leader
+[18:17:27.2494102] [Debug  : LethalMin] Bulbmin_67ZHv: Setting collision mode to 1
+[18:17:27.2494102] [Info   : LethalMin] Bulbmin_67ZHv: Assigned Leader: MasaeAhmya (0)
+[18:17:27.7572635] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:27.7572635] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:27.7582657] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:27.7582657] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:27.7582657] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:27.7582657] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:27.7582657] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:27.7592646] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:27.7592646] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:27.7592646] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:27.7592646] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:27.7592646] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:27.7592646] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:27.7592646] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:27.7592646] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:27.7592646] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:27.7592646] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:27.7592646] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:27.7592646] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:27.7592646] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:27.7592646] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:27.7592646] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:27.7607679] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:27.7607679] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:27.7607679] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:28.7597830] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:28.7597830] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:28.7597830] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:28.7597830] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:28.7597830] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:28.7597830] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:28.7597830] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:28.7597830] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:28.7607837] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:28.7607837] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:28.7607837] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:28.7607837] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:28.7607837] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:28.7607837] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:28.7607837] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:28.7607837] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:28.7607837] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:28.7607837] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:28.7607837] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:28.7607837] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:28.7607837] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:28.7607837] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:28.7617826] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:28.7617826] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:28.7617826] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:29.2720036] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:17:29.6142637] [Warning: Unity Log] PlayOneShot was called with a null AudioClip.
+[18:17:29.7619816] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:29.7619816] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:29.7619816] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:29.7619816] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:29.7619816] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:29.7619816] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:29.7619816] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:29.7619816] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:29.7619816] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:29.7619816] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:29.7619816] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:29.7619816] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:29.7619816] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:29.7619816] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:29.7619816] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:29.7619816] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:29.7619816] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:29.7634845] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:29.7634845] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:29.7634845] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:29.7634845] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:29.7634845] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:29.7634845] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:29.7634845] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:29.7634845] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:30.7695333] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:30.7695333] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:30.7695333] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:30.7695333] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:30.7695333] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:30.7695333] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:30.7695333] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:30.7695333] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:30.7710395] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:30.7710395] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:30.7710395] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:30.7710395] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:30.7710395] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:30.7710395] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:30.7710395] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:30.7710395] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:30.7710395] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:30.7710395] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:30.7710395] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:30.7710395] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:30.7710395] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:30.7710395] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:30.7720434] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:30.7720434] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:30.7720434] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:31.3965017] [Debug  :   Coroner] Player is dying! Unknown precise cause of death in final hook (Suffocation)...
+[18:17:31.3985007] [Debug  : LethalMin] Purple Pikmin_rKa2: Setting to idle on local client
+[18:17:31.3985007] [Debug  : LethalMin] Purple Pikmin_rKa2: Removed Leader
+[18:17:31.3995015] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Setting to idle on local client
+[18:17:31.3995015] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Removed Leader
+[18:17:31.3995015] [Debug  : LethalMin] Purple Pikmin_EKPWp: Setting to idle on local client
+[18:17:31.3995015] [Debug  : LethalMin] Purple Pikmin_EKPWp: Removed Leader
+[18:17:31.3995015] [Debug  : LethalMin] Purple Pikmin_evzc4: Setting to idle on local client
+[18:17:31.3995015] [Debug  : LethalMin] Purple Pikmin_evzc4: Removed Leader
+[18:17:31.4010055] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Setting to idle on local client
+[18:17:31.4010055] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Removed Leader
+[18:17:31.4010055] [Debug  : LethalMin] Purple Pikmin_bRqe: Setting to idle on local client
+[18:17:31.4010055] [Debug  : LethalMin] Purple Pikmin_bRqe: Removed Leader
+[18:17:31.4020099] [Debug  : LethalMin] Purple Pikmin_4WYiK: Setting to idle on local client
+[18:17:31.4020099] [Debug  : LethalMin] Purple Pikmin_4WYiK: Removed Leader
+[18:17:31.4020099] [Debug  : LethalMin] White Pikmin_deVvFe: Setting to idle on local client
+[18:17:31.4020099] [Debug  : LethalMin] White Pikmin_deVvFe: Removed Leader
+[18:17:31.4020099] [Debug  : LethalMin] White Pikmin_Md8MI: Setting to idle on local client
+[18:17:31.4020099] [Debug  : LethalMin] White Pikmin_Md8MI: Removed Leader
+[18:17:31.4035151] [Debug  : LethalMin] White Pikmin_FjliuFV: Setting to idle on local client
+[18:17:31.4035151] [Debug  : LethalMin] White Pikmin_FjliuFV: Removed Leader
+[18:17:31.4035151] [Debug  : LethalMin] White Pikmin_ICMO7: Setting to idle on local client
+[18:17:31.4035151] [Debug  : LethalMin] White Pikmin_ICMO7: Removed Leader
+[18:17:31.4035151] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Setting to idle on local client
+[18:17:31.4035151] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Removed Leader
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_TzDCc: Setting to idle on local client
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_TzDCc: Removed Leader
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_Gono4bn: Setting to idle on local client
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_Gono4bn: Removed Leader
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_u7yjpLI: Setting to idle on local client
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_u7yjpLI: Removed Leader
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_tbmIr: Setting to idle on local client
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_tbmIr: Removed Leader
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_YV0Gw: Setting to idle on local client
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_YV0Gw: Removed Leader
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_68JLiBF: Setting to idle on local client
+[18:17:31.4045203] [Debug  : LethalMin] White Pikmin_68JLiBF: Removed Leader
+[18:17:31.4045203] [Debug  : LethalMin] Purple Pikmin_TpeD3ni: Setting to idle on local client
+[18:17:31.4045203] [Debug  : LethalMin] Purple Pikmin_TpeD3ni: Removed Leader
+[18:17:31.4055189] [Debug  : LethalMin] White Pikmin_hW0Bfj: Setting to idle on local client
+[18:17:31.4055189] [Debug  : LethalMin] White Pikmin_hW0Bfj: Removed Leader
+[18:17:31.4055189] [Debug  : LethalMin] Purple Pikmin_Wi9NB: Setting to idle on local client
+[18:17:31.4055189] [Debug  : LethalMin] Purple Pikmin_Wi9NB: Removed Leader
+[18:17:31.4055189] [Debug  : LethalMin] White Pikmin_KovF: Setting to idle on local client
+[18:17:31.4055189] [Debug  : LethalMin] White Pikmin_KovF: Removed Leader
+[18:17:31.4055189] [Debug  : LethalMin] Purple Pikmin_y6qJPnG: Setting to idle on local client
+[18:17:31.4055189] [Debug  : LethalMin] Purple Pikmin_y6qJPnG: Removed Leader
+[18:17:31.4055189] [Debug  : LethalMin] Bulbmin_67ZHv: Setting to idle on local client
+[18:17:31.4055189] [Debug  : LethalMin] Bulbmin_67ZHv: Removed Leader
+[18:17:31.4065197] [Info   : Unity Log] KILL LOCAL PLAYER!
+[18:17:31.4095198] [Info   : Unity Log] Body spawned with id 0: PlayerRagdoll(Clone)
+[18:17:31.4095198] [Warning: Unity Log] Setting linear velocity of a kinematic body is not supported.
+[18:17:31.4110238] [Info   : Unity Log] Running kill player function for LOCAL client, player object: Player
+[18:17:31.4135328] [Debug  :ainavt.lc.lethalconfig] Registered config "Matty's Fixes/Vanilla/Body"
+[18:17:31.4135328] [Debug  : LethalMin] IsClientRpcPrefixValid (No): RpcExecStage is Send, IsClient: True, IsHost: True KillPlayerClientRpcPrefix
+[18:17:31.4145375] [Debug  : LethalMin] IsClientRpcPrefixValid (Yes): RpcExecStage is Execute, IsClient: True, IsHost: True KillPlayerClientRpcPrefix
+[18:17:31.4145375] [Info   : Unity Log] A player died. player object: Player
+[18:17:31.4165372] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[18:17:31.4175365] [Info   : Unity Log] Switch camera to 'SpectateCamera'
+[18:17:31.4175365] [Info   : Unity Log] Override drop items : False; overridedontspawnbody: False
+[18:17:31.4175365] [Info   : Unity Log] DropAllHeldItems called on player 'MasaeAhmya'; itemsFall: True; disconnecting: False; ItemSlots length: 11; isHoldingObject: False
+[18:17:31.4175365] [Info   : Unity Log] DropAllHeldItems; player pos: (24.47, -243.26, 75.94)
+[18:17:31.4175365] [Info   : Unity Log] Item slot #0 null?: True
+[18:17:31.4175365] [Info   : Unity Log] Item slot #1 null?: True
+[18:17:31.4175365] [Info   : Unity Log] Item slot #2 null?: True
+[18:17:31.4175365] [Info   : Unity Log] Item slot #3 null?: True
+[18:17:31.4175365] [Info   : Unity Log] Item slot #4 null?: False
+[18:17:31.4175365] [Info   : Unity Log] Setting DropHeldItem on item #4: 'FlashlightItem(Clone)
+[18:17:31.4185361] [Info   : Unity Log] Drop item 'FlashlightItem(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[18:17:31.4195369] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[18:17:31.4195369] [Info   : Unity Log] Set dropItem parentObject to null True
+[18:17:31.4195369] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[18:17:31.4195369] [Info   : Unity Log] DropHeldItem A; placeObject:False (41.71, -248.60, 92.33); item parent: Props (UnityEngine.Transform); (41.71, -248.60, 92.33); (24.28, -241.00, 75.86)
+[18:17:31.4195369] [Debug  : LightsOut] DiscardItem Pro-flashlight
+[18:17:31.4195369] [Info   : Unity Log] Set dropItem parentObject to null True
+[18:17:31.4195369] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[18:17:31.4195369] [Info   : Unity Log] Item slot #5 null?: True
+[18:17:31.4195369] [Info   : Unity Log] Item slot #6 null?: True
+[18:17:31.4195369] [Info   : Unity Log] Item slot #7 null?: True
+[18:17:31.4195369] [Info   : Unity Log] Item slot #8 null?: True
+[18:17:31.4195369] [Info   : Unity Log] Item slot #9 null?: True
+[18:17:31.4195369] [Info   : Unity Log] Item slot #10 null?: False
+[18:17:31.4195369] [Info   : Unity Log] Setting DropHeldItem on item #10: 'Key(Clone)
+[18:17:31.4195369] [Info   : Unity Log] Drop item 'Key(Clone)'; heldByPlayerOnServer: True; parentObject != null: True
+[18:17:31.4195369] [Info   : Unity Log] placeObject: False; parentObjectTo == null: True
+[18:17:31.4195369] [Info   : Unity Log] Set dropItem parentObject to null True
+[18:17:31.4195369] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[18:17:31.4195369] [Info   : Unity Log] DropHeldItem A; placeObject:False (41.94, -248.56, 91.76); item parent: Props (UnityEngine.Transform); (41.94, -248.56, 91.76); (24.50, -240.96, 75.28)
+[18:17:31.4195369] [Debug  : LightsOut] DiscardItem Key
+[18:17:31.4195369] [Info   : Unity Log] Set dropItem parentObject to null True
+[18:17:31.4195369] [Info   : Unity Log] Set dropItem.heldByPlayerOnServer to false: True
+[18:17:31.4195369] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[18:17:31.4210408] [Info   : Unity Log] PlayerScript set for body with id 0 PlayerRagdoll(Clone)
+[18:17:31.4235477] [Debug  :Buttery Fixes] Badges added to player corpse
+[18:17:31.4235477] [Debug  :Matty's Fixes] Vanilla/Body(796) needs to compute vertical offset - scheduled
+[18:17:31.4245509] [Info   : LethalMin] Creating PikminItemNode for RagdollGrabbableObject(Clone) at (-17.22, 9.55, -30.56)...
+[18:17:31.4245509] [Debug  : LethalMin] Initializing PikminItem PikminItemNode(Clone) with item PikminItemNode(Clone) (True)
+[18:17:31.4245509] [Info   : LethalMin] PikminItem PikminItemNode(Clone) has no carry strength set, setting to default
+[18:17:31.4245509] [Debug  : LethalMin] Calculated weight for Body: 11 lb, Devided weight: 4.4 lb
+[18:17:31.4245509] [Debug  : LethalMin] A True, B True rename reasons
+[18:17:31.4245509] [Debug  : LethalMin] (Body (PikminItem Node)) Colider: RagdollGrabbableObject(Clone) (UnityEngine.BoxCollider)
+[18:17:31.4245509] [Debug  : LethalMin] (Body (PikminItem Node)) Center: (-17.22, 9.55, -30.56)
+[18:17:31.4505812] [Info   : Unity Log] !!!! DISABLING CAMERA FOR PLAYER: Player
+[18:17:31.4505812] [Info   : Unity Log] !!!! connectedPlayersAmount: 0
+[18:17:31.4505812] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player has died
+[18:17:31.4515798] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited facility
+[18:17:31.4635941] [Debug  : LethalMin] Animator Controller changed from metarig to metarigOtherPlayers
+[18:17:31.4647736] [Info   : LethalMin] Purple Pikmin_y8qD5r: Found item: MausoleumBone0(Clone)
+[18:17:31.4647736] [Info   : LethalMin] Purple Pikmin_y8qD5r: targeting item MausoleumBone0(Clone) at GrabPosition_0
+[18:17:31.4647736] [Info   : LethalMin] Purple Pikmin_y8qD5r: Setting current task to CarryItem
+[18:17:31.4657775] [Debug  : LethalMin] Creating counter for Body (PikminItem Node)
+[18:17:31.4717774] [Info   :LethalPerformance.Patcher] Saved 1 config(s)
+[18:17:31.4986081] [Info   : LethalMin] Purple Pikmin_TpeD3ni: Found item: MausoleumBone0(Clone)
+[18:17:31.4986081] [Info   : LethalMin] Purple Pikmin_TpeD3ni: targeting item MausoleumBone0(Clone) at GrabPosition_0
+[18:17:31.4986081] [Info   : LethalMin] Purple Pikmin_TpeD3ni: Setting current task to CarryItem
+[18:17:31.4986081] [Info   : LethalMin] Purple Pikmin_rKa2: Found item: BodyBag(Clone)
+[18:17:31.4996079] [Info   : LethalMin] Purple Pikmin_rKa2: targeting item BodyBag(Clone) at GrabPosition_2
+[18:17:31.4996079] [Info   : LethalMin] Purple Pikmin_rKa2: Setting current task to CarryItem
+[18:17:31.4996079] [Info   : LethalMin] Purple Pikmin_EKPWp: Found item: MausoleumBone0(Clone)
+[18:17:31.4996079] [Info   : LethalMin] Purple Pikmin_EKPWp: targeting item MausoleumBone0(Clone) at GrabPosition_1
+[18:17:31.4996079] [Info   : LethalMin] Purple Pikmin_EKPWp: Setting current task to CarryItem
+[18:17:31.5026085] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Insane to 6843
+[18:17:31.5026085] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryBad to 506
+[18:17:31.5026085] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Bad to 355
+[18:17:31.5026085] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Neutral to 1368
+[18:17:31.5026085] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Good to 1244
+[18:17:31.5026085] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for VeryGood to 2737
+[18:17:31.5026085] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Rare to 27375
+[18:17:31.5026085] [Info   :BrutalCompanyMinusExtraReborn] Set eventType weight for Remove to 883
+[18:17:31.5417321] [Info   :BrutalCompanyMinusExtraReborn] Executing OnShipLeave for all events()
+[18:17:31.5417321] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[18:17:31.5417321] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[18:17:31.5417321] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[18:17:31.5432418] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[18:17:31.5432418] [Info   :BrutalCompanyMinusExtraReborn] Restoring un-modified level enemy spawns on current level.
+[18:17:31.5432418] [Info   : LethalMin] Game Ended, Deinitializing PikminManager
+[18:17:31.5432418] [Info   : LethalMin] Pikmin White Pikmin_ddF5L is outside and not dead/dying, checking if it can leave
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_ddF5L: Removed Leader
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_ddF5L: Setting collision mode to 1
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_ddF5L: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[18:17:31.5442445] [Info   : LethalMin] Pikmin White Pikmin_2FoB is outside and not dead/dying, checking if it can leave
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_2FoB: Removed Leader
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_2FoB: Setting collision mode to 1
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_2FoB: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[18:17:31.5442445] [Info   : LethalMin] Pikmin White Pikmin_XWR5u2K is outside and not dead/dying, checking if it can leave
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_XWR5u2K: Removed Leader
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_XWR5u2K: Setting collision mode to 1
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_XWR5u2K: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[18:17:31.5442445] [Info   : LethalMin] Pikmin White Pikmin_yExgK is outside and not dead/dying, checking if it can leave
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_yExgK: Removed Leader
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_yExgK: Setting collision mode to 1
+[18:17:31.5442445] [Debug  : LethalMin] White Pikmin_yExgK: Set to leaving state. IsGoingToOnion: True. TargetOnion: Pikmin Container
+[18:17:31.5442445] [Info   : Unity Log] [F] The ship is leaving.................
+[18:17:31.5442445] [Info   :HerobrineMod] The ship is leaving.................
+[18:17:31.5517526] [Debug  :Matty's Fixes] Vanilla/Body(796) is computing vertical offset
+[18:17:31.5517526] [Debug  :Matty's Fixes] Vanilla/Body original offset is 0.3
+[18:17:31.5672739] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship has taken off
+[18:17:31.5672739] [Debug  :PizzaTowerEscapeMusic ScriptManager] Conditions for a script event have been met!
+ Script Event Type: StopMusic
+   Game Event Type: ShipTakeOff
+           Comment: StopMusic quand ShipTakeOff
+[18:17:31.5692761] [Info   : LethalMin] Purple Pikmin_y6qJPnG: Found item: Bone(Clone)
+[18:17:31.5692761] [Info   : LethalMin] Purple Pikmin_y6qJPnG: targeting item Bone(Clone) at GrabPosition_1
+[18:17:31.5692761] [Info   : LethalMin] Purple Pikmin_y6qJPnG: Setting current task to CarryItem
+[18:17:31.5692761] [Info   : LethalMin] White Pikmin_deVvFe: Found item: BodyBag(Clone)
+[18:17:31.5692761] [Info   : LethalMin] White Pikmin_deVvFe: targeting item BodyBag(Clone) at GrabPosition_5
+[18:17:31.5692761] [Info   : LethalMin] White Pikmin_deVvFe: Setting current task to CarryItem
+[18:17:31.5692761] [Info   : LethalMin] White Pikmin_Md8MI: Found item: Bone(Clone)
+[18:17:31.5692761] [Info   : LethalMin] White Pikmin_Md8MI: targeting item Bone(Clone) at GrabPosition_0
+[18:17:31.5692761] [Info   : LethalMin] White Pikmin_Md8MI: Setting current task to CarryItem
+[18:17:31.5732954] [Debug  : LethalMin] White Pikmin_2FoB: Is linking onto Link
+[18:17:31.5732954] [Debug  : LethalMin] White Pikmin_2FoB: Setting collision mode to 0
+[18:17:31.5732954] [Info   : LethalMin] White Pikmin_Gono4bn: Found item: WinebottlePrefab(Clone)
+[18:17:31.5732954] [Info   : LethalMin] White Pikmin_Gono4bn: targeting item WinebottlePrefab(Clone) at GrabPosition_1
+[18:17:31.5732954] [Info   : LethalMin] White Pikmin_Gono4bn: Setting current task to CarryItem
+[18:17:31.5732954] [Info   : LethalMin] White Pikmin_YV0Gw: Found item: Bone(Clone)
+[18:17:31.5732954] [Info   : LethalMin] White Pikmin_YV0Gw: targeting item Bone(Clone) at GrabPosition_1
+[18:17:31.5732954] [Info   : LethalMin] White Pikmin_YV0Gw: Setting current task to CarryItem
+[18:17:31.5732954] [Info   : LethalMin] White Pikmin_68JLiBF: Found item: MausoleumBone1(Clone)
+[18:17:31.5732954] [Info   : LethalMin] White Pikmin_68JLiBF: targeting item MausoleumBone1(Clone) at GrabPosition_1
+[18:17:31.5732954] [Info   : LethalMin] White Pikmin_68JLiBF: Setting current task to CarryItem
+[18:17:31.5854570] [Info   : LethalMin] White Pikmin_hW0Bfj: Found item: MausoleumBone0(Clone)
+[18:17:31.5854570] [Info   : LethalMin] White Pikmin_hW0Bfj: targeting item MausoleumBone0(Clone) at GrabPosition_1
+[18:17:31.5854570] [Info   : LethalMin] White Pikmin_hW0Bfj: Setting current task to CarryItem
+[18:17:31.5854570] [Info   : LethalMin] White Pikmin_KovF: Found item: MausoleumBone0(Clone)
+[18:17:31.5864550] [Info   : LethalMin] Purple Pikmin_4WYiK: Found item: MausoleumBone0(Clone)
+[18:17:31.5864550] [Info   : LethalMin] Purple Pikmin_4WYiK: targeting item MausoleumBone0(Clone) at GrabPosition_0
+[18:17:31.5864550] [Info   : LethalMin] Purple Pikmin_4WYiK: Setting current task to CarryItem
+[18:17:31.5874543] [Debug  : LethalMin] White Pikmin_ddF5L: Is linking onto Link
+[18:17:31.5874543] [Debug  : LethalMin] White Pikmin_ddF5L: Setting collision mode to 0
+[18:17:31.5874543] [Info   : LethalMin] White Pikmin_Lw2dTVF: Found item: BodyBag(Clone)
+[18:17:31.5874543] [Info   : LethalMin] White Pikmin_Lw2dTVF: targeting item BodyBag(Clone) at GrabPosition_0
+[18:17:31.5874543] [Info   : LethalMin] White Pikmin_Lw2dTVF: Setting current task to CarryItem
+[18:17:31.5874543] [Info   : LethalMin] White Pikmin_u7yjpLI: Found item: Key(Clone)
+[18:17:31.5874543] [Info   : LethalMin] White Pikmin_u7yjpLI: targeting item Key(Clone) at GrabPosition_1
+[18:17:31.5874543] [Info   : LethalMin] White Pikmin_u7yjpLI: Setting current task to CarryItem
+[18:17:31.5884539] [Debug  : LethalMin] White Pikmin_XWR5u2K: Is linking onto Link
+[18:17:31.5884539] [Debug  : LethalMin] White Pikmin_XWR5u2K: Setting collision mode to 0
+[18:17:31.5884539] [Debug  : LethalMin] White Pikmin_yExgK: Is linking onto Link
+[18:17:31.5884539] [Debug  : LethalMin] White Pikmin_yExgK: Setting collision mode to 0
+[18:17:31.6009839] [Info   : LethalMin] White Pikmin_TzDCc: Found item: BodyBag(Clone)
+[18:17:31.6009839] [Info   : LethalMin] White Pikmin_TzDCc: targeting item BodyBag(Clone) at GrabPosition_3
+[18:17:31.6009839] [Info   : LethalMin] White Pikmin_TzDCc: Setting current task to CarryItem
+[18:17:31.6009839] [Info   : LethalMin] White Pikmin_tbmIr: Found item: Key(Clone)
+[18:17:31.6009839] [Info   : LethalMin] White Pikmin_tbmIr: targeting item Key(Clone) at GrabPosition_0
+[18:17:31.6009839] [Info   : LethalMin] White Pikmin_tbmIr: Setting current task to CarryItem
+[18:17:31.6120118] [Debug  : LethalMin] LethalMin: Checking if we can leave planet FusedType: 0, 4, 8, 5, 1, 7! 0
+[18:17:31.6120118] [Info   : LethalMin] White Pikmin_FjliuFV: Found item: BodyBag(Clone)
+[18:17:31.6120118] [Info   : LethalMin] White Pikmin_FjliuFV: targeting item BodyBag(Clone) at GrabPosition_3
+[18:17:31.6120118] [Info   : LethalMin] White Pikmin_FjliuFV: Setting current task to CarryItem
+[18:17:31.6120118] [Info   : LethalMin] White Pikmin_ICMO7: Found item: MausoleumBone0(Clone)
+[18:17:31.6120118] [Info   : LethalMin] White Pikmin_ICMO7: targeting item MausoleumBone0(Clone) at GrabPosition_1
+[18:17:31.6120118] [Info   : LethalMin] White Pikmin_ICMO7: Setting current task to CarryItem
+[18:17:31.6853060] [Info   : LethalMin] Purple Pikmin_rKa2: Grabbed item BodyBag(Clone) Speed is now: 2.375
+[18:17:31.6954176] [Message: LethalMin] BodyBag(Clone) Switched Primary Pikmin to Purple Pikmin_rKa2
+[18:17:31.7044329] [Info   : LethalMin] BodyBag(Clone) is grabbing an item on local client
+[18:17:31.7044329] [Debug  : LethalMin] Purple Pikmin_rKa2: Setting collision mode to 1
+[18:17:31.7064327] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:31.7064327] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 141.1457
+[18:17:31.7064327] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 107.3669
+[18:17:31.7064327] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:31.7074327] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 141.1457
+[18:17:31.7074327] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 107.3669
+[18:17:31.7074327] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:31.7074327] [Info   : LethalMin] BodyBag(Clone) successfully created a test route to the ToShip
+[18:17:31.7074327] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:31.7084320] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 141.1457
+[18:17:31.7084320] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 107.3669
+[18:17:31.7084320] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:31.7084320] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 141.1457
+[18:17:31.7084320] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 107.3669
+[18:17:31.7084320] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:31.7084320] [Info   : LethalMin] BodyBag(Clone) has created a route
+[18:17:31.7184483] [Info   : LethalMin] Purple Pikmin_TpeD3ni: Grabbed item MausoleumBone0(Clone) Speed is now: 3.05
+[18:17:31.7294739] [Message: LethalMin] MausoleumBone0(Clone) Switched Primary Pikmin to Purple Pikmin_TpeD3ni
+[18:17:31.7396976] [Info   : LethalMin] MausoleumBone0(Clone) is grabbing an item on local client
+[18:17:31.7396976] [Debug  : LethalMin] Purple Pikmin_TpeD3ni: Setting collision mode to 1
+[18:17:31.7406963] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:31.7406963] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 96.40969
+[18:17:31.7406963] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 62.63097
+[18:17:31.7406963] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:31.7416968] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 96.40969
+[18:17:31.7416968] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 62.63097
+[18:17:31.7416968] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:31.7416968] [Info   : LethalMin] MausoleumBone0(Clone) successfully created a test route to the ToShip
+[18:17:31.7416968] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:31.7416968] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 96.40969
+[18:17:31.7416968] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 62.63097
+[18:17:31.7416968] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:31.7426971] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 96.40969
+[18:17:31.7426971] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 62.63097
+[18:17:31.7426971] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:31.7426971] [Info   : LethalMin] MausoleumBone0(Clone) has created a route
+[18:17:31.7694527] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:31.7694527] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:31.7694527] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:31.7694527] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:31.7694527] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:31.7694527] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:31.7694527] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:31.7694527] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:31.7709556] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:31.7709556] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:31.7709556] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:31.7709556] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:31.7709556] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:31.7709556] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:31.7709556] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:31.7709556] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:31.7709556] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:31.7709556] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:31.7709556] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:31.7709556] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:31.7709556] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:31.7709556] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:31.7709556] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:31.7709556] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:31.7709556] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:31.7820050] [Info   : LethalMin] White Pikmin_YV0Gw: Grabbed item Bone(Clone) Speed is now: 13.2
+[18:17:31.7910163] [Message: LethalMin] Bone(Clone) Switched Primary Pikmin to White Pikmin_YV0Gw
+[18:17:31.7995303] [Info   : LethalMin] Bone(Clone) is grabbing an item on local client
+[18:17:31.7995303] [Debug  : LethalMin] White Pikmin_YV0Gw: Setting collision mode to 1
+[18:17:31.7995303] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:31.8010332] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 271.5399
+[18:17:31.8010332] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 237.7612
+[18:17:31.8010332] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:31.8020380] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 271.5399
+[18:17:31.8020380] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 237.7612
+[18:17:31.8020380] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:31.8020380] [Info   : LethalMin] Bone(Clone) successfully created a test route to the ToShip
+[18:17:31.8020380] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:31.8035418] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 271.5399
+[18:17:31.8035418] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 237.7612
+[18:17:31.8035418] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:31.8045457] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 271.5399
+[18:17:31.8045457] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 237.7612
+[18:17:31.8045457] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:31.8045457] [Info   : LethalMin] Bone(Clone) has created a route
+[18:17:31.8055503] [Info   : LethalMin] Bulbmin_67ZHv: Found item: Spoon(Clone)
+[18:17:31.8055503] [Info   : LethalMin] Bulbmin_67ZHv: targeting item Spoon(Clone) at GrabPosition_10
+[18:17:31.8055503] [Info   : LethalMin] Bulbmin_67ZHv: Setting current task to CarryItem
+[18:17:31.8165704] [Info   : LethalMin] White Pikmin_KovF: Found item: BodyBag(Clone)
+[18:17:31.8165704] [Info   : LethalMin] White Pikmin_KovF: targeting item BodyBag(Clone) at GrabPosition_6
+[18:17:31.8165704] [Info   : LethalMin] White Pikmin_KovF: Setting current task to CarryItem
+[18:17:31.8287466] [Warning: Unity Log] [Netcode] NetworkObject #772 moved to the root because its parent NetworkObject #771 is destroyed
+[18:17:31.8287466] [Debug  : LethalMin] White Pikmin_2FoB: Removed Leader
+[18:17:31.8297460] [Debug  : LethalMin] White Pikmin_2FoB: Setting collision mode to 1
+[18:17:31.8297460] [Info   : LethalMin] White Pikmin_ICMO7: Grabbed item MausoleumBone0(Clone) Speed is now: 13.2
+[18:17:31.8297460] [Debug  : LethalMin] White Pikmin_TzDCc: Setting collision mode to 0
+[18:17:31.8297460] [Info   : LethalMin] White Pikmin_TzDCc: Grabbed item BodyBag(Clone) Speed is now: 5.55
+[18:17:31.8307433] [Debug  :Starlancer AI Fix] White Pikmin_2FoB from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:31.8307433] [Debug  :Starlancer AI Fix] Removing White Pikmin_2FoB's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:31.8417599] [Message: LethalMin] MausoleumBone0(Clone) Switched Primary Pikmin to White Pikmin_ICMO7
+[18:17:31.8517840] [Info   : LethalMin] MausoleumBone0(Clone) is grabbing an item on local client
+[18:17:31.8517840] [Debug  : LethalMin] White Pikmin_ICMO7: Setting collision mode to 1
+[18:17:31.8517840] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:31.8517840] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 237.5949
+[18:17:31.8517840] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 203.8162
+[18:17:31.8517840] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:31.8532878] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 237.5949
+[18:17:31.8542919] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 203.8162
+[18:17:31.8542919] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:31.8542919] [Info   : LethalMin] MausoleumBone0(Clone) successfully created a test route to the ToShip
+[18:17:31.8542919] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:31.8542919] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 237.5949
+[18:17:31.8542919] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 203.8162
+[18:17:31.8542919] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:31.8552920] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 237.5949
+[18:17:31.8562966] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 203.8162
+[18:17:31.8562966] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:31.8562966] [Info   : LethalMin] MausoleumBone0(Clone) has created a route
+[18:17:31.9009794] [Warning: Unity Log] [Netcode] NetworkObject #770 moved to the root because its parent NetworkObject #769 is destroyed
+[18:17:31.9009794] [Debug  : LethalMin] White Pikmin_ddF5L: Removed Leader
+[18:17:31.9009794] [Debug  : LethalMin] White Pikmin_ddF5L: Setting collision mode to 1
+[18:17:31.9019870] [Warning: Unity Log] [Netcode] NetworkObject #788 moved to the root because its parent NetworkObject #787 is destroyed
+[18:17:31.9019870] [Debug  : LethalMin] White Pikmin_XWR5u2K: Removed Leader
+[18:17:31.9019870] [Debug  : LethalMin] White Pikmin_XWR5u2K: Setting collision mode to 1
+[18:17:31.9019870] [Warning: Unity Log] [Netcode] NetworkObject #790 moved to the root because its parent NetworkObject #789 is destroyed
+[18:17:31.9019870] [Debug  : LethalMin] White Pikmin_yExgK: Removed Leader
+[18:17:31.9019870] [Debug  : LethalMin] White Pikmin_yExgK: Setting collision mode to 1
+[18:17:31.9019870] [Debug  :Starlancer AI Fix] White Pikmin_ddF5L from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:31.9019870] [Debug  :Starlancer AI Fix] Removing White Pikmin_ddF5L's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:31.9034943] [Debug  :Starlancer AI Fix] White Pikmin_XWR5u2K from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:31.9034943] [Debug  :Starlancer AI Fix] Removing White Pikmin_XWR5u2K's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:31.9034943] [Debug  :Starlancer AI Fix] White Pikmin_yExgK from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:31.9034943] [Debug  :Starlancer AI Fix] Removing White Pikmin_yExgK's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:32.2216602] [Info   : LethalMin] Bulbmin_OhPPetF: Setting growth stage to 1
+[18:17:32.2510360] [Info   : LethalMin] White Pikmin_FjliuFV: Grabbed item BodyBag(Clone) Speed is now: 3.675
+[18:17:32.2585474] [Message: LethalMin] BodyBag(Clone) Switched Primary Pikmin to White Pikmin_FjliuFV
+[18:17:32.4153665] [Info   : LethalMin] Purple Pikmin_Wi9NB: Found item: MausoleumBone0(Clone)
+[18:17:32.4399221] [Debug  : LethalMin] Bulbmin_67ZHv: Setting collision mode to 0
+[18:17:32.4399221] [Info   : LethalMin] Bulbmin_67ZHv: Grabbed item Spoon(Clone) Speed is now: 2.641667
+[18:17:32.6145357] [Info   : LethalMin] Purple Pikmin_Wi9NB: Found item: MausoleumBone0(Clone)
+[18:17:32.6366238] [Info   : LethalMin] Purple Pikmin_y6qJPnG: Grabbed item Bone(Clone) Speed is now: 5.8
+[18:17:32.6426236] [Message: LethalMin] Bone(Clone) Switched Primary Pikmin to Purple Pikmin_y6qJPnG
+[18:17:32.6507508] [Info   : LethalMin] Bone(Clone) is grabbing an item on local client
+[18:17:32.6507508] [Debug  : LethalMin] Purple Pikmin_y6qJPnG: Setting collision mode to 1
+[18:17:32.6507508] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:32.6517580] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 152.2345
+[18:17:32.6517580] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 118.4557
+[18:17:32.6517580] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:32.6517580] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 152.2345
+[18:17:32.6517580] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 118.4557
+[18:17:32.6517580] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:32.6517580] [Info   : LethalMin] Bone(Clone) successfully created a test route to the ToShip
+[18:17:32.6517580] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:32.6532633] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 152.2345
+[18:17:32.6532633] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 118.4557
+[18:17:32.6532633] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:32.6532633] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 152.2345
+[18:17:32.6532633] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 118.4557
+[18:17:32.6532633] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:32.6532633] [Info   : LethalMin] Bone(Clone) has created a route
+[18:17:32.7719312] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:32.7719312] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:32.7719312] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:32.7719312] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:32.7719312] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:32.7719312] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:32.7719312] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:32.7719312] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:32.7719312] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:32.7719312] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:32.7719312] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:32.7719312] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:32.7719312] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:32.7719312] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:32.7719312] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:32.7719312] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:32.7734352] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:32.7734352] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:32.7734352] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:32.7734352] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:32.7734352] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:32.7734352] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:32.7734352] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:32.7734352] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:32.7734352] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:32.8185242] [Info   : LethalMin] Purple Pikmin_Wi9NB: Found item: MausoleumBone0(Clone)
+[18:17:32.9891891] [Info   : Unity Log] SET SPECTATED PLAYER EFFECTS; True
+[18:17:32.9891891] [Info   : Unity Log] Enable sun direct light
+[18:17:32.9891891] [Info   : Unity Log] All players dead; set reverb to preset #3
+[18:17:33.0207426] [Info   : LethalMin] White Pikmin_Gono4bn: Grabbed item WinebottlePrefab(Clone) Speed is now: 13.2
+[18:17:33.0292506] [Message: LethalMin] WinebottlePrefab(Clone) Switched Primary Pikmin to White Pikmin_Gono4bn
+[18:17:33.0372625] [Info   : LethalMin] WinebottlePrefab(Clone) is grabbing an item on local client
+[18:17:33.0372625] [Debug  : LethalMin] White Pikmin_Gono4bn: Setting collision mode to 1
+[18:17:33.0396742] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.0396742] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 307.4722
+[18:17:33.0406753] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 273.6935
+[18:17:33.0406753] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.0406753] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 307.4722
+[18:17:33.0416787] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 273.6935
+[18:17:33.0416787] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:33.0416787] [Info   : LethalMin] WinebottlePrefab(Clone) successfully created a test route to the ToShip
+[18:17:33.0416787] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.0416787] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 307.4722
+[18:17:33.0426793] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 273.6935
+[18:17:33.0426793] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.0431821] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 307.4722
+[18:17:33.0436851] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 273.6935
+[18:17:33.0436851] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:33.0436851] [Info   : LethalMin] WinebottlePrefab(Clone) has created a route
+[18:17:33.0446905] [Info   : LethalMin] Purple Pikmin_4WYiK: Grabbed item MausoleumBone0(Clone) Speed is now: 8
+[18:17:33.0537131] [Message: LethalMin] MausoleumBone0(Clone) Switched Primary Pikmin to Purple Pikmin_4WYiK
+[18:17:33.0537131] [Info   : LethalMin] Purple Pikmin_Wi9NB: Found item: MausoleumBone0(Clone)
+[18:17:33.0617182] [Info   : LethalMin] MausoleumBone0(Clone) is grabbing an item on local client
+[18:17:33.0617182] [Debug  : LethalMin] Purple Pikmin_4WYiK: Setting collision mode to 1
+[18:17:33.0617182] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.0617182] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 211.2832
+[18:17:33.0632209] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 177.5045
+[18:17:33.0632209] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.0632209] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 211.2832
+[18:17:33.0642237] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 177.5045
+[18:17:33.0642237] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:33.0642237] [Info   : LethalMin] MausoleumBone0(Clone) successfully created a test route to the ToShip
+[18:17:33.0642237] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.0642237] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 211.2832
+[18:17:33.0642237] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 177.5045
+[18:17:33.0642237] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.0652241] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 211.2832
+[18:17:33.0652241] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 177.5045
+[18:17:33.0652241] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:33.0652241] [Info   : LethalMin] MausoleumBone0(Clone) has created a route
+[18:17:33.0662258] [Info   : LethalMin] Purple Pikmin_y8qD5r - CarryItemTask: Is too far away
+[18:17:33.0662258] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Setting to idle on local client
+[18:17:33.0662258] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Removed Leader
+[18:17:33.0662258] [Info   : LethalMin] Purple Pikmin_y8qD5r: Removing current task
+[18:17:33.1193160] [Error  : Unity Log] "SetDestination" can only be called on an active agent that has been placed on a NavMesh.
+[18:17:33.1719096] [Debug  : LethalMin] Purple Pikmin_EKPWp: Setting collision mode to 0
+[18:17:33.1719096] [Info   : LethalMin] Purple Pikmin_EKPWp: Grabbed item MausoleumBone0(Clone) Speed is now: 15.5
+[18:17:33.2635879] [Info   : LethalMin] Purple Pikmin_Wi9NB: Found item: MausoleumBone0(Clone)
+[18:17:33.2721017] [Debug  : LethalMin] White Pikmin_hW0Bfj: Setting collision mode to 0
+[18:17:33.2721017] [Info   : LethalMin] White Pikmin_hW0Bfj: Grabbed item MausoleumBone0(Clone) Speed is now: 8.2
+[18:17:33.2891335] [Info   : LethalMin] Purple Pikmin_y8qD5r: Found item: Bone(Clone)
+[18:17:33.2891335] [Info   : LethalMin] Purple Pikmin_y8qD5r: targeting item Bone(Clone) at GrabPosition_1
+[18:17:33.2891335] [Info   : LethalMin] Purple Pikmin_y8qD5r: Setting current task to CarryItem
+[18:17:33.3000886] [Info   : LethalMin] White Pikmin_deVvFe: Grabbed item BodyBag(Clone) Speed is now: 3.675
+[18:17:33.3081186] [Message: LethalMin] BodyBag(Clone) Switched Primary Pikmin to White Pikmin_deVvFe
+[18:17:33.3081186] [Info   : LethalMin] White Pikmin_KovF: Grabbed item BodyBag(Clone) Speed is now: 4.9625
+[18:17:33.3271546] [Info   : LethalMin] BodyBag(Clone) is grabbing an item on local client
+[18:17:33.3271546] [Debug  : LethalMin] White Pikmin_deVvFe: Setting collision mode to 1
+[18:17:33.3271546] [Debug  : LethalMin] White Pikmin_KovF: Setting collision mode to 0
+[18:17:33.3271546] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.3271546] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 99.29401
+[18:17:33.3271546] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 65.51528
+[18:17:33.3271546] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.3281530] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 99.29401
+[18:17:33.3281530] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 65.51528
+[18:17:33.3281530] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:33.3281530] [Info   : LethalMin] BodyBag(Clone) successfully created a test route to the ToShip
+[18:17:33.3281530] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.3281530] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 99.29401
+[18:17:33.3281530] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 65.51528
+[18:17:33.3281530] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.3291521] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 99.29401
+[18:17:33.3291521] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 65.51528
+[18:17:33.3291521] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:33.3291521] [Info   : LethalMin] BodyBag(Clone) has created a route
+[18:17:33.5277153] [Info   : LethalMin] White Pikmin_Md8MI: Grabbed item Bone(Clone) Speed is now: 13.2
+[18:17:33.5372229] [Message: LethalMin] Bone(Clone) Switched Primary Pikmin to White Pikmin_Md8MI
+[18:17:33.5472353] [Info   : LethalMin] Bone(Clone) is grabbing an item on local client
+[18:17:33.5472353] [Debug  : LethalMin] White Pikmin_Md8MI: Setting collision mode to 1
+[18:17:33.5482348] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.5482348] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 268.4395
+[18:17:33.5492336] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 234.6608
+[18:17:33.5492336] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.5492336] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 268.4395
+[18:17:33.5507359] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 234.6608
+[18:17:33.5507359] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:33.5507359] [Info   : LethalMin] Bone(Clone) successfully created a test route to the ToShip
+[18:17:33.5507359] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.5507359] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 268.4395
+[18:17:33.5517405] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 234.6608
+[18:17:33.5517405] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.5517405] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 268.4395
+[18:17:33.5517405] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 234.6608
+[18:17:33.5517405] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:33.5517405] [Info   : LethalMin] Bone(Clone) has created a route
+[18:17:33.7193870] [Info   : LethalMin] White Pikmin_tbmIr: Grabbed item Key(Clone) Speed is now: 13.2
+[18:17:33.7274087] [Message: LethalMin] Key(Clone) Switched Primary Pikmin to White Pikmin_tbmIr
+[18:17:33.7373158] [Info   : LethalMin] Key(Clone) is grabbing an item on local client
+[18:17:33.7373158] [Debug  : LethalMin] White Pikmin_tbmIr: Setting collision mode to 1
+[18:17:33.7373158] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.7387765] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 170.6535
+[18:17:33.7387765] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 136.8748
+[18:17:33.7387765] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.7392792] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 170.6535
+[18:17:33.7392792] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 136.8748
+[18:17:33.7392792] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:33.7392792] [Info   : LethalMin] Key(Clone) successfully created a test route to the ToShip
+[18:17:33.7392792] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.7392792] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 170.6535
+[18:17:33.7407896] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 136.8748
+[18:17:33.7407896] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.7407896] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 170.6535
+[18:17:33.7417934] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 136.8748
+[18:17:33.7417934] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:33.7417934] [Info   : LethalMin] Key(Clone) has created a route
+[18:17:33.7718432] [Debug  : LethalMin] White Pikmin_u7yjpLI: Setting collision mode to 0
+[18:17:33.7718432] [Info   : LethalMin] White Pikmin_u7yjpLI: Grabbed item Key(Clone) Speed is now: 25.9
+[18:17:33.7793525] [Warning: LethalMin] Spoon(Clone) route has been invalidated (NodeBecameUnreachable), clearing route
+[18:17:33.7793525] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:33.7809266] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.7809266] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:33.7809266] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:33.7809266] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:33.7809266] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.7809266] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:33.7809266] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:33.7809266] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:33.7819323] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:33.7819323] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToShip
+[18:17:33.7819323] [Debug  : LethalMin] Chosen Route Strategy: DirectIndoorStrategy (Priority 90) 
+(ToElevator) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=True, DestinationIsInShip=False
+[18:17:33.7819323] [Warning: LethalMin] No current floor data available for elevator routing.
+[18:17:33.7819323] [Debug  : LethalMin] Generated Route Nodes: 
+[18:17:33.7819323] [Warning: LethalMin] Spoon(Clone) could not create a route to the ToElevator
+[18:17:33.7819323] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:33.7819323] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:33.7819323] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:33.7819323] [Debug  : LethalMin] GMPEN: No inside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:33.7819323] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:33.7819323] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is NOT reachable
+[18:17:33.7819323] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is NOT reachable
+[18:17:33.7819323] [Debug  : LethalMin] GMPEN: No inside -> outside entrance nodes are directly reachable, defaulting to closest entrance node
+[18:17:33.7819323] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) (Unpathable) -> Ship
+(Unpathable Node Found)
+[18:17:33.9254323] [Info   : LethalMin] Purple Pikmin_Wi9NB: Found item: BodyBag(Clone)
+[18:17:33.9254323] [Info   : LethalMin] Purple Pikmin_Wi9NB: targeting item BodyBag(Clone) at GrabPosition_4
+[18:17:33.9254323] [Info   : LethalMin] Purple Pikmin_Wi9NB: Setting current task to CarryItem
+[18:17:33.9766033] [Info   : LethalMin] White Pikmin_Lw2dTVF: Grabbed item BodyBag(Clone) Speed is now: 3.675
+[18:17:33.9834086] [Message: LethalMin] BodyBag(Clone) Switched Primary Pikmin to White Pikmin_Lw2dTVF
+[18:17:33.9919219] [Info   : Unity Log] clip index: 4; current planet: 21 Offense
+[18:17:33.9919219] [Info   : Unity Log] Current outside ambience clips length: 5
+[18:17:33.9944312] [Info   : Unity Log] Is in elevator D?: False
+[18:17:34.1653057] [Info   : LethalMin] Purple Pikmin_y8qD5r: Grabbed item Bone(Clone) Speed is now: 8
+[18:17:34.1773331] [Message: LethalMin] Bone(Clone) Switched Primary Pikmin to Purple Pikmin_y8qD5r
+[18:17:34.1873532] [Info   : LethalMin] Bone(Clone) is grabbing an item on local client
+[18:17:34.1873532] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Setting collision mode to 1
+[18:17:34.1873532] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:34.1883520] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 235.0955
+[18:17:34.1883520] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 201.3167
+[18:17:34.1883520] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:34.1893525] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 235.0955
+[18:17:34.1893525] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 201.3167
+[18:17:34.1893525] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:34.1893525] [Info   : LethalMin] Bone(Clone) successfully created a test route to the ToShip
+[18:17:34.1893525] [Debug  : LethalMin] Chosen Route Strategy: IndoorToOutdoorStrategy (Priority 90) 
+(ToShip) Route Context: IsInside=True, IsInShip=False, CurrentFloor=null, DestinationIsInside=False, DestinationIsInShip=True
+[18:17:34.1908554] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportB(Clone) is reachable at distance 235.0955
+[18:17:34.1908554] [Debug  : LethalMin] GMPEN: inside Entrance Node EntranceTeleportA(Clone) is reachable at distance 201.3167
+[18:17:34.1908554] [Debug  : LethalMin] ITOS: Moved request start to (128.64, 16.56, -54.59)
+[18:17:34.1918588] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportB(Clone) is reachable at distance 235.0955
+[18:17:34.1918588] [Debug  : LethalMin] GMPEN: inside -> outside Entrance Node EntranceTeleportA(Clone) is reachable at distance 201.3167
+[18:17:34.1918588] [Debug  : LethalMin] Generated Route Nodes: EntranceTeleportA(Clone) -> Ship
+[18:17:34.1918588] [Info   : LethalMin] Bone(Clone) has created a route
+[18:17:34.2219159] [Debug  : LethalMin] Sprout Setting growth stage to 2
+[18:17:34.5283535] [Info   : Unity Log] Leaving current lobby
+[18:17:34.5283535] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[18:17:34.5533912] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[18:17:34.5533912] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[18:17:34.5533912] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[18:17:34.5533912] [Info   :Rolling Giant] Resetting all rolling giants!
+[18:17:34.5533912] [Message:Rolling Giant] Reverting sync
+[18:17:34.5533912] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[18:17:34.5533912] [Debug  :MrHat.BasedItemSaving] Saved 10 exact item poses
+[18:17:34.5543932] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[18:17:34.5553938] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[18:17:34.5563967] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[18:17:34.5894378] [Info   :LethalPerformance] Saved 2 save(s)
+[18:17:34.5984555] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[18:17:34.6264888] [Debug  : LethalMin] White Pikmin_68JLiBF: Removed Leader
+[18:17:34.6264888] [Info   : LethalMin] White Pikmin_YV0Gw: Dropped item Bone(Clone)
+[18:17:34.6264888] [Debug  : LethalMin] White Pikmin_YV0Gw: Setting collision mode to 1
+[18:17:34.6264888] [Debug  : LethalMin] White Pikmin_YV0Gw: Removed Leader
+[18:17:34.6264888] [Info   : LethalMin] White Pikmin_tbmIr: Dropped item Key(Clone)
+[18:17:34.6264888] [Debug  : LethalMin] White Pikmin_tbmIr: Setting collision mode to 1
+[18:17:34.6264888] [Debug  : LethalMin] White Pikmin_tbmIr: Removed Leader
+[18:17:34.6274888] [Info   : LethalMin] White Pikmin_u7yjpLI: Dropped item Key(Clone)
+[18:17:34.6274888] [Debug  : LethalMin] White Pikmin_u7yjpLI: Setting collision mode to 1
+[18:17:34.6274888] [Debug  : LethalMin] White Pikmin_u7yjpLI: Removed Leader
+[18:17:34.6274888] [Info   : LethalMin] White Pikmin_Gono4bn: Dropped item WinebottlePrefab(Clone)
+[18:17:34.6274888] [Debug  : LethalMin] White Pikmin_Gono4bn: Setting collision mode to 1
+[18:17:34.6274888] [Debug  : LethalMin] White Pikmin_Gono4bn: Removed Leader
+[18:17:34.6274888] [Info   : LethalMin] White Pikmin_TzDCc: Dropped item BodyBag(Clone)
+[18:17:34.6274888] [Debug  : LethalMin] White Pikmin_TzDCc: Setting collision mode to 1
+[18:17:34.6274888] [Debug  : LethalMin] White Pikmin_TzDCc: Removed Leader
+[18:17:34.6274888] [Info   : LethalMin] White Pikmin_Lw2dTVF: Dropped item BodyBag(Clone)
+[18:17:34.6274888] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Setting collision mode to 1
+[18:17:34.6274888] [Debug  : LethalMin] White Pikmin_Lw2dTVF: Removed Leader
+[18:17:34.6274888] [Info   : LethalMin] White Pikmin_ICMO7: Dropped item MausoleumBone0(Clone)
+[18:17:34.6274888] [Debug  : LethalMin] White Pikmin_ICMO7: Setting collision mode to 1
+[18:17:34.6274888] [Debug  : LethalMin] White Pikmin_ICMO7: Removed Leader
+[18:17:34.6284890] [Info   : LethalMin] White Pikmin_FjliuFV: Dropped item BodyBag(Clone)
+[18:17:34.6284890] [Debug  : LethalMin] White Pikmin_FjliuFV: Setting collision mode to 1
+[18:17:34.6284890] [Debug  : LethalMin] White Pikmin_FjliuFV: Removed Leader
+[18:17:34.6284890] [Info   : LethalMin] White Pikmin_Md8MI: Dropped item Bone(Clone)
+[18:17:34.6284890] [Debug  : LethalMin] White Pikmin_Md8MI: Setting collision mode to 1
+[18:17:34.6284890] [Debug  : LethalMin] White Pikmin_Md8MI: Removed Leader
+[18:17:34.6284890] [Info   : LethalMin] White Pikmin_deVvFe: Dropped item BodyBag(Clone)
+[18:17:34.6284890] [Debug  : LethalMin] White Pikmin_deVvFe: Setting collision mode to 1
+[18:17:34.6284890] [Debug  : LethalMin] White Pikmin_deVvFe: Removed Leader
+[18:17:34.6284890] [Info   : LethalMin] Purple Pikmin_4WYiK: Dropped item MausoleumBone0(Clone)
+[18:17:34.6284890] [Debug  : LethalMin] Purple Pikmin_4WYiK: Setting collision mode to 1
+[18:17:34.6284890] [Debug  : LethalMin] Purple Pikmin_4WYiK: Removed Leader
+[18:17:34.6294887] [Debug  : LethalMin] Purple Pikmin_bRqe: Removed Leader
+[18:17:34.6294887] [Debug  : LethalMin] Purple Pikmin_51w0Zom: Removed Leader
+[18:17:34.6294887] [Debug  : LethalMin] Purple Pikmin_evzc4: Removed Leader
+[18:17:34.6294887] [Info   : LethalMin] Purple Pikmin_EKPWp: Dropped item MausoleumBone0(Clone)
+[18:17:34.6294887] [Debug  : LethalMin] Purple Pikmin_EKPWp: Setting collision mode to 1
+[18:17:34.6294887] [Debug  : LethalMin] Purple Pikmin_EKPWp: Removed Leader
+[18:17:34.6294887] [Info   : LethalMin] Purple Pikmin_y8qD5r: Dropped item Bone(Clone)
+[18:17:34.6294887] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Setting collision mode to 1
+[18:17:34.6294887] [Debug  : LethalMin] Purple Pikmin_y8qD5r: Removed Leader
+[18:17:34.6294887] [Info   : LethalMin] Purple Pikmin_rKa2: Dropped item BodyBag(Clone)
+[18:17:34.6294887] [Debug  : LethalMin] Purple Pikmin_rKa2: Setting collision mode to 1
+[18:17:34.6294887] [Debug  : LethalMin] Purple Pikmin_rKa2: Removed Leader
+[18:17:34.6294887] [Info   : LethalMin] Purple Pikmin_y6qJPnG: Dropped item Bone(Clone)
+[18:17:34.6294887] [Debug  : LethalMin] Purple Pikmin_y6qJPnG: Setting collision mode to 1
+[18:17:34.6294887] [Debug  : LethalMin] Purple Pikmin_y6qJPnG: Removed Leader
+[18:17:34.6309904] [Debug  : LethalMin] Purple Pikmin_gPdrW: Removed Leader
+[18:17:34.6309904] [Debug  : LethalMin] Bulbmin_OhPPetF: Removed Leader
+[18:17:34.6309904] [Debug  : LethalMin] Purple Pikmin_60Cxm: Removed Leader
+[18:17:34.6309904] [Debug  : LethalMin] Bulbmin_nJzVuzF: Removed Leader
+[18:17:34.6309904] [Debug  : LethalMin] White Pikmin_Vbm32: Removed Leader
+[18:17:34.6319950] [Debug  : LethalMin] White Pikmin_DuZb96F: Removed Leader
+[18:17:34.6334980] [Debug  : LethalMin] Bulbmin_vDL9H: Removed Leader
+[18:17:34.6334980] [Debug  : LethalMin] Bulbmin_dV8hPC: Removed Leader
+[18:17:34.6334980] [Info   : LethalMin] White Pikmin_KovF: Dropped item BodyBag(Clone)
+[18:17:34.6334980] [Debug  : LethalMin] White Pikmin_KovF: Setting collision mode to 1
+[18:17:34.6345030] [Debug  : LethalMin] White Pikmin_KovF: Removed Leader
+[18:17:34.6345030] [Debug  : LethalMin] Bulbmin_27infJ: Removed Leader
+[18:17:34.6345030] [Debug  : LethalMin] Bulbmin_kPUL: Removed Leader
+[18:17:34.6345030] [Debug  : LethalMin] White Pikmin_SiHtuP: Removed Leader
+[18:17:34.6355077] [Debug  : LethalMin] Bulbmin_A14R: Removed Leader
+[18:17:34.6355077] [Debug  : LethalMin] Purple Pikmin_rJrzAW: Removed Leader
+[18:17:34.6355077] [Info   : LethalMin] Bulbmin_ZcdX: Dropped item Spoon(Clone)
+[18:17:34.6355077] [Debug  : LethalMin] Bulbmin_ZcdX: Setting collision mode to 1
+[18:17:34.6355077] [Debug  : LethalMin] Bulbmin_ZcdX: Removed Leader
+[18:17:34.6365073] [Debug  : LethalMin] Bulbmin_HvQ5Qc: Removed Leader
+[18:17:34.6365073] [Debug  : LethalMin] Purple Pikmin_zDDd: Removed Leader
+[18:17:34.6365073] [Info   : LethalMin] White Pikmin_hW0Bfj: Dropped item MausoleumBone0(Clone)
+[18:17:34.6365073] [Debug  : LethalMin] White Pikmin_hW0Bfj: Setting collision mode to 1
+[18:17:34.6365073] [Debug  : LethalMin] White Pikmin_hW0Bfj: Removed Leader
+[18:17:34.6375065] [Debug  : LethalMin] White Pikmin_PonjnHj: Removed Leader
+[18:17:34.6375065] [Info   : LethalMin] Bulbmin_67ZHv: Dropped item Spoon(Clone)
+[18:17:34.6375065] [Debug  : LethalMin] Bulbmin_67ZHv: Setting collision mode to 1
+[18:17:34.6375065] [Debug  : LethalMin] Bulbmin_67ZHv: Removed Leader
+[18:17:34.6375065] [Debug  : LethalMin] Bulbmin_oQMp3Ni: Removed Leader
+[18:17:34.6385056] [Debug  : LethalMin] Purple Pikmin_Wi9NB: Removed Leader
+[18:17:34.6385056] [Debug  : LethalMin] White Pikmin_E1wvIUi: Removed Leader
+[18:17:34.6385056] [Debug  : LethalMin] White Pikmin_wKiTQ: Removed Leader
+[18:17:34.6385056] [Debug  : LethalMin] White Pikmin_dcV1Yai: Removed Leader
+[18:17:34.6385056] [Info   : LethalMin] White Pikmin_LvIZg: Dropped item Spoon(Clone)
+[18:17:34.6385056] [Debug  : LethalMin] White Pikmin_LvIZg: Setting collision mode to 1
+[18:17:34.6385056] [Debug  : LethalMin] White Pikmin_LvIZg: Removed Leader
+[18:17:34.6395053] [Debug  : LethalMin] White Pikmin_3E57ogi: Removed Leader
+[18:17:34.6395053] [Debug  : LethalMin] Purple Pikmin_lWrfv: Removed Leader
+[18:17:34.6395053] [Info   : LethalMin] Purple Pikmin_TpeD3ni: Dropped item MausoleumBone0(Clone)
+[18:17:34.6395053] [Debug  : LethalMin] Purple Pikmin_TpeD3ni: Setting collision mode to 1
+[18:17:34.6395053] [Debug  : LethalMin] Purple Pikmin_TpeD3ni: Removed Leader
+[18:17:34.6395053] [Info   : LethalMin] MausoleumBone0(Clone) has cleared its route
+[18:17:34.6395053] [Info   : LethalMin] BodyBag(Clone) has cleared its route
+[18:17:34.6395053] [Info   : LethalMin] BodyBag(Clone) has cleared its route
+[18:17:34.6395053] [Info   : LethalMin] Bone(Clone) has cleared its route
+[18:17:34.6410095] [Info   : LethalMin] MausoleumBone0(Clone) has cleared its route
+[18:17:34.6410095] [Info   : LethalMin] Bone(Clone) has cleared its route
+[18:17:34.6410095] [Info   : LethalMin] MausoleumBone0(Clone) has cleared its route
+[18:17:34.6410095] [Info   : LethalMin] Bone(Clone) has cleared its route
+[18:17:34.6420144] [Info   : LethalMin] Bone(Clone) has cleared its route
+[18:17:34.6420144] [Info   : LethalMin] Key(Clone) has cleared its route
+[18:17:34.6445272] [Info   : LethalMin] Spoon(Clone) has cleared its route
+[18:17:34.6445272] [Info   : LethalMin] WinebottlePrefab(Clone) has cleared its route
+[18:17:34.6535370] [Info   : LethalMin] ShipOnion: saved 41 pikmin to disk on despawn.
+[18:17:34.6795636] [Info   :LobbyControl] 0 disconnected
+[18:17:34.6805637] [Info   : Unity Log] Disconnect callback called
+[18:17:34.6805637] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[18:17:34.6805637] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[18:17:34.6805637] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[18:17:34.6845754] [Debug  :Starlancer AI Fix] White Pikmin_68JLiBF from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6845754] [Debug  :Starlancer AI Fix] Removing White Pikmin_68JLiBF's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6855779] [Debug  :Starlancer AI Fix] White Pikmin_YV0Gw from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6855779] [Debug  :Starlancer AI Fix] Removing White Pikmin_YV0Gw's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6855779] [Debug  :Starlancer AI Fix] White Pikmin_tbmIr from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6855779] [Debug  :Starlancer AI Fix] Removing White Pikmin_tbmIr's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6855779] [Debug  :Starlancer AI Fix] White Pikmin_u7yjpLI from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6855779] [Debug  :Starlancer AI Fix] Removing White Pikmin_u7yjpLI's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6865793] [Debug  :Starlancer AI Fix] White Pikmin_Gono4bn from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6865793] [Debug  :Starlancer AI Fix] Removing White Pikmin_Gono4bn's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6865793] [Debug  :Starlancer AI Fix] White Pikmin_TzDCc from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6865793] [Debug  :Starlancer AI Fix] Removing White Pikmin_TzDCc's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6865793] [Debug  :Starlancer AI Fix] White Pikmin_Lw2dTVF from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6865793] [Debug  :Starlancer AI Fix] Removing White Pikmin_Lw2dTVF's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6875784] [Debug  :Starlancer AI Fix] White Pikmin_ICMO7 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6875784] [Debug  :Starlancer AI Fix] Removing White Pikmin_ICMO7's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6875784] [Debug  :Starlancer AI Fix] White Pikmin_FjliuFV from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6875784] [Debug  :Starlancer AI Fix] Removing White Pikmin_FjliuFV's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6875784] [Debug  :Starlancer AI Fix] White Pikmin_Md8MI from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6875784] [Debug  :Starlancer AI Fix] Removing White Pikmin_Md8MI's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6885777] [Debug  :Starlancer AI Fix] White Pikmin_deVvFe from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6885777] [Debug  :Starlancer AI Fix] Removing White Pikmin_deVvFe's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6885777] [Debug  :Starlancer AI Fix] Purple Pikmin_4WYiK from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6885777] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_4WYiK's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6885777] [Debug  :Starlancer AI Fix] Purple Pikmin_bRqe from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6885777] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_bRqe's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6885777] [Debug  :Starlancer AI Fix] Purple Pikmin_51w0Zom from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6885777] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_51w0Zom's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6895774] [Debug  :Starlancer AI Fix] Purple Pikmin_evzc4 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6895774] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_evzc4's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6895774] [Debug  :Starlancer AI Fix] Purple Pikmin_EKPWp from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6895774] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_EKPWp's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6895774] [Debug  :Starlancer AI Fix] Purple Pikmin_y8qD5r from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6895774] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_y8qD5r's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6895774] [Debug  :Starlancer AI Fix] Purple Pikmin_rKa2 from the exterior enemy list has died; 
+Previous exterior power level is 0
+[18:17:34.6895774] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_rKa2's power (0) from the RoundManager; 
+Current exterior power level is 0
+[18:17:34.6895774] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[18:17:34.6910799] [Debug  :Starlancer AI Fix] Purple Pikmin_y6qJPnG from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6910799] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_y6qJPnG's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6910799] [Debug  :Starlancer AI Fix] Purple Pikmin_gPdrW from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6910799] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_gPdrW's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6910799] [Debug  :Starlancer AI Fix] Bulbmin_OhPPetF from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6910799] [Debug  :Starlancer AI Fix] Removing Bulbmin_OhPPetF's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] Purple Pikmin_60Cxm from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_60Cxm's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] Bulbmin_nJzVuzF from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] Removing Bulbmin_nJzVuzF's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] White Pikmin_Vbm32 from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] Removing White Pikmin_Vbm32's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] White Pikmin_DuZb96F from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] Removing White Pikmin_DuZb96F's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] Bulbmin_vDL9H from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] Removing Bulbmin_vDL9H's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] Bulbmin_dV8hPC from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6920852] [Debug  :Starlancer AI Fix] Removing Bulbmin_dV8hPC's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6935881] [Debug  :Starlancer AI Fix] White Pikmin_KovF from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6935881] [Debug  :Starlancer AI Fix] Removing White Pikmin_KovF's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6935881] [Debug  :Starlancer AI Fix] Bulbmin_27infJ from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6935881] [Debug  :Starlancer AI Fix] Removing Bulbmin_27infJ's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6935881] [Debug  :Starlancer AI Fix] Bulbmin_kPUL from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6935881] [Debug  :Starlancer AI Fix] Removing Bulbmin_kPUL's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6935881] [Debug  :Starlancer AI Fix] White Pikmin_SiHtuP from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6935881] [Debug  :Starlancer AI Fix] Removing White Pikmin_SiHtuP's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6945916] [Debug  :Starlancer AI Fix] Bulbmin_A14R from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6945916] [Debug  :Starlancer AI Fix] Removing Bulbmin_A14R's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6945916] [Debug  :Starlancer AI Fix] Purple Pikmin_rJrzAW from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6945916] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_rJrzAW's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6945916] [Debug  :Starlancer AI Fix] Bulbmin_ZcdX from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6945916] [Debug  :Starlancer AI Fix] Removing Bulbmin_ZcdX's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6945916] [Debug  :Starlancer AI Fix] Bulbmin_HvQ5Qc from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6945916] [Debug  :Starlancer AI Fix] Removing Bulbmin_HvQ5Qc's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6955941] [Debug  :Starlancer AI Fix] Purple Pikmin_zDDd from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6955941] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_zDDd's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6955941] [Debug  :Starlancer AI Fix] White Pikmin_hW0Bfj from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6955941] [Debug  :Starlancer AI Fix] Removing White Pikmin_hW0Bfj's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6955941] [Debug  :Starlancer AI Fix] White Pikmin_PonjnHj from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6955941] [Debug  :Starlancer AI Fix] Removing White Pikmin_PonjnHj's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6955941] [Debug  :Starlancer AI Fix] Bulbmin_67ZHv from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6955941] [Debug  :Starlancer AI Fix] Removing Bulbmin_67ZHv's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6965935] [Debug  :Starlancer AI Fix] Bulbmin_oQMp3Ni from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6965935] [Debug  :Starlancer AI Fix] Removing Bulbmin_oQMp3Ni's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6965935] [Debug  :Starlancer AI Fix] Purple Pikmin_Wi9NB from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6965935] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_Wi9NB's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6965935] [Debug  :Starlancer AI Fix] White Pikmin_E1wvIUi from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6965935] [Debug  :Starlancer AI Fix] Removing White Pikmin_E1wvIUi's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6965935] [Debug  :Starlancer AI Fix] White Pikmin_wKiTQ from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6965935] [Debug  :Starlancer AI Fix] Removing White Pikmin_wKiTQ's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6975948] [Debug  :Starlancer AI Fix] White Pikmin_dcV1Yai from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6975948] [Debug  :Starlancer AI Fix] Removing White Pikmin_dcV1Yai's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6975948] [Debug  :Starlancer AI Fix] White Pikmin_LvIZg from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6975948] [Debug  :Starlancer AI Fix] Removing White Pikmin_LvIZg's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6975948] [Debug  :Starlancer AI Fix] White Pikmin_3E57ogi from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6975948] [Debug  :Starlancer AI Fix] Removing White Pikmin_3E57ogi's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6975948] [Debug  :Starlancer AI Fix] Purple Pikmin_lWrfv from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6975948] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_lWrfv's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6975948] [Debug  :Starlancer AI Fix] Purple Pikmin_TpeD3ni from the interior enemy list has died; 
+Previous interior power level is 0
+[18:17:34.6975948] [Debug  :Starlancer AI Fix] Removing Purple Pikmin_TpeD3ni's power (0) from the RoundManager; 
+Current interior power level is 0
+[18:17:34.6985938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6985938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6985938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6985938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6985938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6985938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6985938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6985938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.6995938] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7010965] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7010965] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7010965] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7010965] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7010965] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7010965] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7010965] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7010965] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7010965] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7021014] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7036040] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7166242] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA(Clone)
+[18:17:34.7176243] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7176243] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7176243] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7176243] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7176243] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7176243] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7176243] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7176243] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7176243] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7176243] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7176243] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7186259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7196259] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7206254] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7216281] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7216281] [Info   : Unity Log] Interact trigger destroying! name: Metal Crate(Clone)
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7316416] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7316416] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7316416] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7316416] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7316416] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7316416] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7316416] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7316416] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7316416] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7316416] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7316416] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[18:17:34.7316416] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[18:17:34.7326417] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7326417] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[18:17:34.7336423] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7336423] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[18:17:34.7336423] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7336423] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[18:17:34.7336423] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7336423] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[18:17:34.7336423] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7336423] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[18:17:34.7336423] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7336423] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[18:17:34.7336423] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7336423] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[18:17:34.7336423] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[18:17:34.7336423] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[18:17:34.7341456] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[18:17:34.7341456] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[18:17:34.7341456] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7356472] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.7491797] [Info   : Unity Log] Resetting unlockables list!
+[18:17:34.7491797] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[18:17:34.7506838] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[18:17:34.7506838] [Info   : Unity Log] Scene manager is null
+[18:17:34.7562231] [Info   :LethalPerformance] Saved 1 save(s)
+[18:17:34.8034175] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[18:17:34.8044212] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[18:17:34.8235441] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8235441] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8235441] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[18:17:34.8235441] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[18:17:34.8348028] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8398019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8408019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8408019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8408019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8408019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8408019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8408019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8408019] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[18:17:34.8408019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8408019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8408019] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8408019] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8488234] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[18:17:34.8553319] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[18:17:34.8553319] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[18:17:34.8553319] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[18:17:34.8553319] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[18:17:34.8553319] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[18:17:34.8553319] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[18:17:34.8553319] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8553319] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[18:17:34.8553319] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[18:17:34.8553319] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8553319] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[18:17:34.8563359] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[18:17:34.8563359] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[18:17:34.8563359] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[18:17:34.8563359] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[18:17:34.8573367] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[18:17:34.8573367] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[18:17:34.8573367] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[18:17:34.8573367] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[18:17:34.8573367] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[18:17:34.8583359] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[18:17:34.8583359] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[18:17:34.8768661] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[18:17:34.8918866] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[18:17:34.8983979] [Info   :MoreCompany] LANMenu startLAN Patched
+[18:17:35.2074028] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[18:17:36.8451180] [Info   : Unity Log] Returning week num: 142
+[18:17:36.8451180] [Info   : Unity Log] week num: 142
+[18:17:36.8501217] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[18:17:36.8511240] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[18:17:36.8606334] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[18:17:36.8696617] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[18:17:36.8696617] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[18:17:36.8726628] [Info   :LethalPerformance] Saved 1 save(s)
+[18:17:38.3706252] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[18:17:38.3852078] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[18:17:39.3887457] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[18:17:39.3897434] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[18:17:39.3897434] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...

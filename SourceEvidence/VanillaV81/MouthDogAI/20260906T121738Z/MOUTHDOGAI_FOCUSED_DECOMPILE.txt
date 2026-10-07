@@ -1,0 +1,388 @@
+# Lethal Company V81 MouthDogAI focused source evidence
+
+Purpose: resolve the exact native Mouth Dog perception/target/lunge/collision boundary exposed by S1.42AG without publishing Assembly-CSharp.dll or a full game decompile.
+
+## Provenance
+- Assembly: `Lethal Company_Data/Managed/Assembly-CSharp.dll`
+- Assembly SHA-256: `5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731`
+- Assembly size: `2034688` bytes
+- Assembly LastWriteTimeUtc: `2026-08-21T13:33:04.3339518Z`
+- Lethal Company executable SHA-256: `24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1`
+- Steam appmanifest buildid: `22825947`
+- Steam appmanifest SHA-256: `fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432`
+- Decompiler: `ilspycmd 11.0.0.9375`
+- Decompiled type: `MouthDogAI`
+- Full local type-decompile SHA-256: `d00491dcffd4b91c60cb9c43e8108f558da69ee6dba6f0b71f53c8f0035892bd`
+- Capture UTC: `2026-09-06T12:17:38Z`
+- Repository main at capture: `3049b0fa52af79db39efb075d94684d229eed3c6`
+
+Absolute local paths and Windows user names are intentionally omitted.
+
+## Marker index
+- `lastheardnoisePosition` at local focused-type line 51
+- `EnterLunge` at local focused-type line 314
+- `lastheardnoisePosition` at local focused-type line 361
+- `lastheardnoisePosition` at local focused-type line 424
+- `lastheardnoisePosition` at local focused-type line 425
+- `DetectNoise` at local focused-type line 428
+- `DetectNoise` at local focused-type line 430
+- `Heard noise!` at local focused-type line 437
+- `Mouth dog targetPos` at local focused-type line 474
+- `Mouth dog targetPos` at local focused-type line 480
+- `lastheardnoisePosition` at local focused-type line 504
+- `lastheardnoisePosition` at local focused-type line 505
+- `EnterLunge` at local focused-type line 508
+- `OnCollideWithEnemy` at local focused-type line 598
+- `OnCollideWithEnemy` at local focused-type line 600
+- `EnterLunge` at local focused-type line 608
+- `OnCollideWithPlayer` at local focused-type line 615
+- `OnCollideWithPlayer` at local focused-type line 617
+- `EnterLunge` at local focused-type line 654
+
+## Focused source windows
+Each marker window begins at the nearest decompiled method declaration and extends through 28 lines after the last relevant marker in that method. Overlapping windows are merged before the 500-line safety ceiling is applied.
+
+--- BLOCK 1 / local lines 23-79 ---
+   23: 	private List<GameObject> allAINodesWithinRange = new List<GameObject>();
+   24: 
+   25: 	private bool hasEnteredChaseModeFully;
+   26: 
+   27: 	private bool startedChaseModeCoroutine;
+   28: 
+   29: 	public AudioClip screamSFX;
+   30: 
+   31: 	public AudioClip breathingSFX;
+   32: 
+   33: 	public AudioClip killPlayerSFX;
+   34: 
+   35: 	private float hearNoiseCooldown;
+   36: 
+   37: 	private bool inLunge;
+   38: 
+   39: 	private float lungeCooldown;
+   40: 
+   41: 	private bool inKillAnimation;
+   42: 
+   43: 	public Transform mouthGrip;
+   44: 
+   45: 	public bool endingLunge;
+   46: 
+   47: 	private Ray ray;
+   48: 
+   49: 	private RaycastHit rayHit;
+   50: 
+   51: 	private Vector3 lastHeardNoisePosition;
+   52: 
+   53: 	private Vector3 noisePositionGuess;
+   54: 
+   55: 	private float lastHeardNoiseDistanceWhenHeard;
+   56: 
+   57: 	private bool heardOtherHowl;
+   58: 
+   59: 	private DeadBodyInfo carryingBody;
+   60: 
+   61: 	private System.Random enemyRandom;
+   62: 
+   63: 	private Coroutine killPlayerCoroutine;
+   64: 
+   65: 	private const int suspicionThreshold = 5;
+   66: 
+   67: 	private const int alertThreshold = 9;
+   68: 
+   69: 	private const int maxSuspicionLevel = 11;
+   70: 
+   71: 	public AISearchRoutine roamPlanet;
+   72: 
+   73: 	private Collider debugCollider;
+   74: 
+   75: 	private float timeSinceHittingOtherEnemy;
+   76: 
+   77: 	private float coweringMeter;
+   78: 
+   79: 	private bool coweringOnFloor;
+
+--- BLOCK 2 / local lines 306-342 ---
+  306: 					StopSearch(roamPlanet);
+  307: 				}
+  308: 				if (!inLunge)
+  309: 				{
+  310: 					lungeCooldown -= Time.deltaTime;
+  311: 					if (Vector3.Distance(base.transform.position, noisePositionGuess) < 4f && lungeCooldown <= 0f)
+  312: 					{
+  313: 						inLunge = true;
+  314: 						EnterLunge();
+  315: 						break;
+  316: 					}
+  317: 				}
+  318: 				agent.speed = Mathf.Clamp(agent.speed + Time.deltaTime, 13f, 18f);
+  319: 				if (stunNormalizedTimer > 0f || coweringOnFloor)
+  320: 				{
+  321: 					agent.speed = 0f;
+  322: 				}
+  323: 				AITimer -= Time.deltaTime;
+  324: 				if (AITimer <= 0f)
+  325: 				{
+  326: 					AITimer = 3f;
+  327: 					suspicionLevel--;
+  328: 					if (Vector3.Distance(base.transform.position, agent.destination) < 3f)
+  329: 					{
+  330: 						SearchForPreviouslyHeardSound();
+  331: 					}
+  332: 					if (suspicionLevel <= 8)
+  333: 					{
+  334: 						SwitchToBehaviourState(1);
+  335: 					}
+  336: 				}
+  337: 				break;
+  338: 			case 3:
+  339: 				if (base.IsOwner)
+  340: 				{
+  341: 					agent.speed -= Time.deltaTime * 5f;
+  342: 					if (!endingLunge && agent.speed < 1.5f && !inKillAnimation)
+
+--- BLOCK 3 / local lines 354-389 ---
+  354: 	private void SearchForPreviouslyHeardSound()
+  355: 	{
+  356: 		int num = 0;
+  357: 		Vector3 vector = base.transform.position;
+  358: 		while (num < 5 && Vector3.Distance(vector, base.transform.position) < 4f)
+  359: 		{
+  360: 			num++;
+  361: 			vector = roundManager.GetRandomNavMeshPositionInRadius(lastHeardNoisePosition, lastHeardNoiseDistanceWhenHeard / noiseApproximation);
+  362: 		}
+  363: 		SetDestinationToPosition(vector);
+  364: 		noisePositionGuess = vector;
+  365: 	}
+  366: 
+  367: 	private IEnumerator enterChaseMode()
+  368: 	{
+  369: 		if (base.IsOwner)
+  370: 		{
+  371: 			agent.speed = 0.05f;
+  372: 		}
+  373: 		DropCarriedBody();
+  374: 		creatureVoice.PlayOneShot(screamSFX);
+  375: 		if (!isEnemyDead)
+  376: 		{
+  377: 			creatureAnimator.SetTrigger("ChaseHowl");
+  378: 		}
+  379: 		if (Vector3.Distance(base.transform.position, GameNetworkManager.Instance.localPlayerController.transform.position) < 16f)
+  380: 		{
+  381: 			HUDManager.Instance.ShakeCamera(ScreenShakeType.Long);
+  382: 			GameNetworkManager.Instance.localPlayerController.JumpToFearLevel(0.5f);
+  383: 		}
+  384: 		yield return new WaitForSeconds(0.5f);
+  385: 		if (!heardOtherHowl)
+  386: 		{
+  387: 			CallAllDogsWithHowl();
+  388: 		}
+  389: 		heardOtherHowl = false;
+
+--- BLOCK 4 / local lines 413-465 ---
+  413: 	public void ReactToOtherDogHowl(Vector3 howlPosition)
+  414: 	{
+  415: 		heardOtherHowl = true;
+  416: 		lastHeardNoiseDistanceWhenHeard = Vector3.Distance(base.transform.position, howlPosition);
+  417: 		noisePositionGuess = roundManager.GetRandomNavMeshPositionInRadius(howlPosition, lastHeardNoiseDistanceWhenHeard / noiseApproximation);
+  418: 		SetDestinationToPosition(noisePositionGuess);
+  419: 		if (currentBehaviourStateIndex < 2)
+  420: 		{
+  421: 			SwitchToBehaviourStateOnLocalClient(2);
+  422: 		}
+  423: 		suspicionLevel = 8;
+  424: 		lastHeardNoisePosition = howlPosition;
+  425: 		Debug.Log($"Setting lastHeardNoisePosition to {howlPosition}");
+  426: 	}
+  427: 
+  428: 	public override void DetectNoise(Vector3 noisePosition, float noiseLoudness, int timesNoisePlayedInOneSpot = 0, int noiseID = 0)
+  429: 	{
+  430: 		base.DetectNoise(noisePosition, noiseLoudness, timesNoisePlayedInOneSpot, noiseID);
+  431: 		if (stunNormalizedTimer > 0f || noiseID == 675189 || noiseID == 7 || noiseID == 546 || inKillAnimation || hearNoiseCooldown >= 0f || timesNoisePlayedInOneSpot > 15)
+  432: 		{
+  433: 			return;
+  434: 		}
+  435: 		hearNoiseCooldown = 0.03f;
+  436: 		float num = Vector3.Distance(base.transform.position, noisePosition);
+  437: 		Debug.Log($"dog '{base.gameObject.name}': Heard noise! Distance: {num} meters");
+  438: 		float num2 = 18f * noiseLoudness;
+  439: 		if (Physics.Linecast(base.transform.position, noisePosition, 256))
+  440: 		{
+  441: 			noiseLoudness /= 2f;
+  442: 			num2 /= 2f;
+  443: 		}
+  444: 		if (noiseLoudness < 0.25f)
+  445: 		{
+  446: 			return;
+  447: 		}
+  448: 		if (currentBehaviourStateIndex < 2 && num < num2)
+  449: 		{
+  450: 			suspicionLevel = 9;
+  451: 		}
+  452: 		else
+  453: 		{
+  454: 			suspicionLevel++;
+  455: 		}
+  456: 		bool fullyEnrage = false;
+  457: 		if (suspicionLevel >= 9)
+  458: 		{
+  459: 			if (currentBehaviourStateIndex < 2)
+  460: 			{
+  461: 				fullyEnrage = true;
+  462: 			}
+  463: 		}
+  464: 		else if (suspicionLevel >= 5 && currentBehaviourStateIndex == 0)
+  465: 		{
+
+--- BLOCK 5 / local lines 472-536 ---
+  472: 	private void EnrageDogOnLocalClient(Vector3 targetPosition, float distanceToNoise, bool approximatePosition = true, bool fullyEnrage = false)
+  473: 	{
+  474: 		Debug.Log($"Mouth dog targetPos 1: {targetPosition}; distanceToNoise: {distanceToNoise}");
+  475: 		if (approximatePosition)
+  476: 		{
+  477: 			targetPosition = roundManager.GetRandomNavMeshPositionInRadius(targetPosition, distanceToNoise / noiseApproximation);
+  478: 		}
+  479: 		noisePositionGuess = targetPosition;
+  480: 		Debug.Log($"Mouth dog targetPos 2: {targetPosition}");
+  481: 		if (fullyEnrage)
+  482: 		{
+  483: 			if (currentBehaviourStateIndex < 2)
+  484: 			{
+  485: 				SwitchToBehaviourState(2);
+  486: 				hearNoiseCooldown = 1f;
+  487: 				suspicionLevel = 12;
+  488: 			}
+  489: 			suspicionLevel = Mathf.Clamp(suspicionLevel, 0, 11);
+  490: 		}
+  491: 		else if (currentBehaviourStateIndex == 0)
+  492: 		{
+  493: 			SwitchToBehaviourState(1);
+  494: 		}
+  495: 		if (!base.IsOwner)
+  496: 		{
+  497: 			ChangeOwnershipOfEnemy(NetworkManager.Singleton.LocalClientId);
+  498: 		}
+  499: 		if (!inLunge)
+  500: 		{
+  501: 			SetDestinationToPosition(noisePositionGuess);
+  502: 		}
+  503: 		lastHeardNoiseDistanceWhenHeard = distanceToNoise;
+  504: 		lastHeardNoisePosition = targetPosition;
+  505: 		Debug.Log($"Dog lastheardnoisePosition: {lastHeardNoisePosition}");
+  506: 	}
+  507: 
+  508: 	private void EnterLunge()
+  509: 	{
+  510: 		if (!base.IsOwner)
+  511: 		{
+  512: 			ChangeOwnershipOfEnemy(NetworkManager.Singleton.LocalClientId);
+  513: 		}
+  514: 		SwitchToBehaviourState(3);
+  515: 		endingLunge = false;
+  516: 		ray = new Ray(base.transform.position + Vector3.up, base.transform.forward);
+  517: 		Vector3 pos = ((!Physics.Raycast(ray, out rayHit, 17f, StartOfRound.Instance.collidersAndRoomMask)) ? ray.GetPoint(17f) : rayHit.point);
+  518: 		pos = roundManager.GetNavMeshPosition(pos);
+  519: 		SetDestinationToPosition(pos);
+  520: 		agent.speed = 13f;
+  521: 	}
+  522: 
+  523: 	[ServerRpc(RequireOwnership = false)]
+  524: 	public void EndLungeServerRpc()
+  525: 	{
+  526: 		NetworkManager networkManager = base.NetworkManager;
+  527: 		if ((object)networkManager != null && networkManager.IsListening)
+  528: 		{
+  529: 			if (__rpc_exec_stage != __RpcExecStage.Execute && (networkManager.IsClient || networkManager.IsHost))
+  530: 			{
+  531: 				ServerRpcParams serverRpcParams = default(ServerRpcParams);
+  532: 				FastBufferWriter bufferWriter = __beginSendServerRpc(43708451u, serverRpcParams, RpcDelivery.Reliable);
+  533: 				__endSendServerRpc(ref bufferWriter, 43708451u, serverRpcParams, RpcDelivery.Reliable);
+  534: 			}
+  535: 			if (__rpc_exec_stage == __RpcExecStage.Execute && (networkManager.IsServer || networkManager.IsHost))
+  536: 			{
+
+--- BLOCK 6 / local lines 598-682 ---
+  598: 	public override void OnCollideWithEnemy(Collider other, EnemyAI collidedEnemy = null)
+  599: 	{
+  600: 		base.OnCollideWithEnemy(other, collidedEnemy);
+  601: 		if (!(collidedEnemy.enemyType == enemyType) && !(timeSinceHittingOtherEnemy < 1f))
+  602: 		{
+  603: 			if (currentBehaviourStateIndex == 2 && !inLunge)
+  604: 			{
+  605: 				base.transform.LookAt(other.transform.position);
+  606: 				base.transform.localEulerAngles = new Vector3(0f, base.transform.eulerAngles.y, 0f);
+  607: 				inLunge = true;
+  608: 				EnterLunge();
+  609: 			}
+  610: 			timeSinceHittingOtherEnemy = 0f;
+  611: 			collidedEnemy.HitEnemy(2, null, playHitSFX: true);
+  612: 		}
+  613: 	}
+  614: 
+  615: 	public override void OnCollideWithPlayer(Collider other)
+  616: 	{
+  617: 		base.OnCollideWithPlayer(other);
+  618: 		PlayerControllerB playerControllerB = MeetsStandardPlayerCollisionConditions(other, inKillAnimation);
+  619: 		if (!(playerControllerB != null))
+  620: 		{
+  621: 			return;
+  622: 		}
+  623: 		VehicleController vehicleController = UnityEngine.Object.FindObjectOfType<VehicleController>();
+  624: 		bool num = vehicleController != null && playerControllerB.physicsParent != null && playerControllerB.physicsParent == vehicleController.transform && !vehicleController.backDoorOpen;
+  625: 		bool flag = StartOfRound.Instance.hangarDoorsClosed && isInsidePlayerShip != playerControllerB.isInHangarShipRoom;
+  626: 		if (num | flag)
+  627: 		{
+  628: 			return;
+  629: 		}
+  630: 		Vector3 vector = Vector3.Normalize((base.transform.position + Vector3.up - playerControllerB.gameplayCamera.transform.position) * 100f);
+  631: 		if (Physics.Linecast(base.transform.position + Vector3.up + vector * 0.5f, playerControllerB.gameplayCamera.transform.position, out var hitInfo, StartOfRound.Instance.collidersAndRoomMask, QueryTriggerInteraction.Ignore))
+  632: 		{
+  633: 			if (!(hitInfo.collider == debugCollider))
+  634: 			{
+  635: 				debugCollider = hitInfo.collider;
+  636: 			}
+  637: 		}
+  638: 		else if (!playerControllerB.inVehicleAnimation || !(Vector3.Distance(base.transform.position, playerControllerB.transform.position) > 3f))
+  639: 		{
+  640: 			if (currentBehaviourStateIndex == 3)
+  641: 			{
+  642: 				playerControllerB.inAnimationWithEnemy = this;
+  643: 				KillPlayerServerRpc((int)playerControllerB.playerClientId);
+  644: 			}
+  645: 			else if (currentBehaviourStateIndex == 0 || currentBehaviourStateIndex == 1)
+  646: 			{
+  647: 				ChaseLocalPlayer();
+  648: 			}
+  649: 			else if (currentBehaviourStateIndex == 2 && !inLunge)
+  650: 			{
+  651: 				base.transform.LookAt(other.transform.position);
+  652: 				base.transform.localEulerAngles = new Vector3(0f, base.transform.eulerAngles.y, 0f);
+  653: 				inLunge = true;
+  654: 				EnterLunge();
+  655: 			}
+  656: 		}
+  657: 	}
+  658: 
+  659: 	[ServerRpc(RequireOwnership = false)]
+  660: 	public void KillPlayerServerRpc(int playerId)
+  661: 	{
+  662: 		NetworkManager networkManager = base.NetworkManager;
+  663: 		if ((object)networkManager == null || !networkManager.IsListening)
+  664: 		{
+  665: 			return;
+  666: 		}
+  667: 		if (__rpc_exec_stage != __RpcExecStage.Execute && (networkManager.IsClient || networkManager.IsHost))
+  668: 		{
+  669: 			ServerRpcParams serverRpcParams = default(ServerRpcParams);
+  670: 			FastBufferWriter bufferWriter = __beginSendServerRpc(998670557u, serverRpcParams, RpcDelivery.Reliable);
+  671: 			BytePacker.WriteValueBitPacked(bufferWriter, playerId);
+  672: 			__endSendServerRpc(ref bufferWriter, 998670557u, serverRpcParams, RpcDelivery.Reliable);
+  673: 		}
+  674: 		if (__rpc_exec_stage == __RpcExecStage.Execute && (networkManager.IsServer || networkManager.IsHost))
+  675: 		{
+  676: 			__rpc_exec_stage = __RpcExecStage.Send;
+  677: 			if (!inKillAnimation)
+  678: 			{
+  679: 				inKillAnimation = true;
+  680: 				KillPlayerClientRpc(playerId);
+  681: 			}
+  682: 			else

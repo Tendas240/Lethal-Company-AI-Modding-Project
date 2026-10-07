@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C3F2",
+  "package": {
+    "namespace": "Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior",
+    "version": "3.4.4",
+    "zip_bytes": 228214268,
+    "zip_sha256": "12921825bee51bfd46582989322a1f31183b65f59293c73654a102fb68d068b7"
+  },
+  "implementation": {
+    "member": "BepInEx/plugins/BlackMesa.dll",
+    "bytes": 143360,
+    "sha256": "a90f157becdc68ab7fe6898eefc2feaee98352a0f04b2cda414741729a048eef"
+  },
+  "unityfs_bundles": [
+    {
+      "member": "BepInEx/plugins/Assets/blackmesadungeon",
+      "bytes": 178159643,
+      "sha256": "6c93ec27a34ac60e1a19f2f13c245392c0474a7e0e32b0b8eae1379385deec70"
+    },
+    {
+      "member": "BepInEx/plugins/Assets/blackmesadungeondefinition",
+      "bytes": 7773750,
+      "sha256": "2e020d32f317a9eb9fcb791f30c6a900c8c8400c5edba7d6e0427775ca0b341e"
+    },
+    {
+      "member": "BepInEx/plugins/Assets/blackmesaitems",
+      "bytes": 1668382,
+      "sha256": "78a795343dcbf31385a8ea7ad1539c603d23c2fc5b29559e4b060f8e4c0b34fd"
+    },
+    {
+      "member": "BepInEx/plugins/Assets/blackmesamoon",
+      "bytes": 33612583,
+      "sha256": "b67a127bb9954c32244e019ba2b6118e72f75d9e37d3e92f060def50f303e062"
+    },
+    {
+      "member": "BepInEx/plugins/Assets/blackmesamoondefinition",
+      "bytes": 6795623,
+      "sha256": "6ede0d4d11a3b176714d9a305279b4ab6c4a6683f0383045da4c815fe831ac7e"
+    },
+    {
+      "member": "BepInEx/plugins/Assets/blackmesascriptassets",
+      "bytes": 2174,
+      "sha256": "57dda232c8bd8ac09be64647edb4ac24a52069e0fc98221b17c1ab2a842e56a7"
+    },
+    {
+      "member": "BepInEx/plugins/blackmesamanifest.duskmod",
+      "bytes": 25778,
+      "sha256": "2f1edc7178a2a156fe50a677c71d3370a7edc5c155f5ba384dde28c88e893280"
+    }
+  ],
+  "owner_definitions": {
+    "moon": {
+      "class": "DuskMoonDefinition",
+      "name": "BlackMesaMoonDefinition",
+      "key": "black_mesa:black_mesa",
+      "level": {
+        "name": "BlackMesaLevel",
+        "planet_name": "Black Mesa",
+        "level_id": 1,
+        "scene_name": "BlackMesaScene",
+        "spawn_enemies_and_scrap": true,
+        "factory_size_multiplier": 3.25,
+        "packaged_dungeon_flow_types_count": 0
+      },
+      "scene": {
+        "key": "black_mesa:blackmesascene",
+        "path": "Assets/LethalCompany/Mods/BlackMesaMoon/Scenes/BlackMesaScene.unity",
+        "bundle": "blackmesamoon"
+      }
+    },
+    "dungeon": {
+      "class": "DuskDungeonDefinition",
+      "name": "BlackMesaDungeonDefinition",
+      "key": "black_mesa:black_mesa",
+      "flow_asset_name": "Black Mesa",
+      "flow_bundle": "blackmesadungeon",
+      "packaged_moon_spawn_weight_entry": {
+        "key": "black_mesa:black_mesa",
+        "weight": 300
+      }
+    }
+  },
+  "serialized_entrance_teleports": [
+    {
+      "side": "dungeon",
+      "bundle_member": "BepInEx/plugins/Assets/blackmesadungeon",
+      "serialized_file": "CAB-676d1ef1ea7d7e153c6e25f0a14f2fe8",
+      "component_path_id": 5831659168173057000,
+      "game_object_path_id": 6809587189262158000,
+      "game_object_name": "EntranceTeleportA",
+      "entrance_id": 0,
+      "is_entrance_to_building": false,
+      "entrance_point": {
+        "m_FileID": 0,
+        "m_PathID": 8338159050362503000
+      }
+    },
+    {
+      "side": "dungeon",
+      "bundle_member": "BepInEx/plugins/Assets/blackmesadungeon",
+      "serialized_file": "CAB-676d1ef1ea7d7e153c6e25f0a14f2fe8",
+      "component_path_id": 8223606466070262000,
+      "game_object_path_id": 9154585993632321000,
+      "game_object_name": "EntranceTeleportB",
+      "entrance_id": 1,
+      "is_entrance_to_building": false,
+      "entrance_point": {
+        "m_FileID": 0,
+        "m_PathID": -2497499459827197400
+      }
+    },
+    {
+      "side": "moon",
+      "bundle_member": "BepInEx/plugins/Assets/blackmesamoon",
+      "serialized_file": "BuildPlayer-BlackMesaScene",
+      "component_path_id": 5355,
+      "game_object_path_id": 114,
+      "game_object_name": "EntranceTeleportC",
+      "entrance_id": 2,
+      "is_entrance_to_building": true,
+      "entrance_point": {
+        "m_FileID": 0,
+        "m_PathID": 1555
+      }
+    },
+    {
+      "side": "moon",
+      "bundle_member": "BepInEx/plugins/Assets/blackmesamoon",
+      "serialized_file": "BuildPlayer-BlackMesaScene",
+      "component_path_id": 5358,
+      "game_object_path_id": 119,
+      "game_object_name": "EntranceTeleportD",
+      "entrance_id": 3,
+      "is_entrance_to_building": true,
+      "entrance_point": {
+        "m_FileID": 0,
+        "m_PathID": 2092
+      }
+    },
+    {
+      "side": "moon",
+      "bundle_member": "BepInEx/plugins/Assets/blackmesamoon",
+      "serialized_file": "BuildPlayer-BlackMesaScene",
+      "component_path_id": 5723,
+      "game_object_path_id": 1001,
+      "game_object_name": "EntranceTeleportA",
+      "entrance_id": 0,
+      "is_entrance_to_building": true,
+      "entrance_point": {
+        "m_FileID": 0,
+        "m_PathID": 2771
+      }
+    },
+    {
+      "side": "moon",
+      "bundle_member": "BepInEx/plugins/Assets/blackmesamoon",
+      "serialized_file": "BuildPlayer-BlackMesaScene",
+      "component_path_id": 5764,
+      "game_object_path_id": 1113,
+      "game_object_name": "EntranceTeleportB",
+      "entrance_id": 1,
+      "is_entrance_to_building": true,
+      "entrance_point": {
+        "m_FileID": 0,
+        "m_PathID": 2286
+      }
+    }
+  ],
+  "static_result": {
+    "parsed_entrance_component_count": 6,
+    "moon_side_serialized_entrance_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "dungeon_side_serialized_entrance_ids": [
+      0,
+      1
+    ],
+    "exact_id_0_1_opposite_side_serialization_present": true,
+    "moon_ids_2_3_have_no_static_dungeon_side_entrance_teleport_in_scanned_package_bundles": true,
+    "effective_runtime_pairing_semantics_proven": false,
+    "runtime_creation_or_rewrite_of_ids_2_3_excluded": false,
+    "arbitrary_interior_compatibility_proven": false
+  },
+  "proof_boundary": [
+    "This is static exact-package serialization evidence only.",
+    "The ID 0/1 opposite-side records are serialization facts, not yet a proof of the runtime EntranceTeleport matching algorithm.",
+    "The absence of dungeon-side IDs 2/3 in the scanned package bundles does not prove those routes are broken; BlackMesa.dll runtime creation, rewriting or special handling remains unexamined.",
+    "No generation/traversal/NavMesh acceptance and no universal interior compatibility is inferred."
+  ]
+}

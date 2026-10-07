@@ -1,0 +1,214 @@
+{
+  "schema_version": 7,
+  "updated": "2026-09-08",
+  "status": "CURRENT_CANONICAL_AUTHORITY_REGISTRY",
+  "authority_precedence": [
+    "Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md for project-work cadence/checkpointing",
+    "Current/CURRENT_STATE.json",
+    "Current/00_CURRENT_STATE.md",
+    "Current/PROJECT_KNOWLEDGE_MAP.json",
+    "canonical topic/workflow source registered by PROJECT_KNOWLEDGE_MAP",
+    "Current/INTEGRITY_ERRATA_REGISTRY.json for known-bad/superseded-value qualification",
+    "current machine/controller files named by the topic",
+    "accepted runtime/build evidence",
+    "historical snapshots"
+  ],
+  "rules": [
+    "Every ChatGPT chat performing project work must follow Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md: bounded segment, checkpoint, explicit user continuation gate, with only atomicity/safety completion inside the current segment.",
+    "Historical documents remain evidence of what was known or decided at their timestamp and do not override newer canonical topic/state sources.",
+    "A newer source-level analysis may supersede the interpretation of an older verdict without deleting the historical verdict.",
+    "A later explicit acceptance or rejection decision may supersede an older lifecycle verdict while preserving the older record as historical evidence.",
+    "Known concrete bad/superseded values are qualified by Current/INTEGRITY_ERRATA_REGISTRY.json and must not be treated as current authority merely because they remain in historical evidence.",
+    "Historical documents registered in Current/INTEGRITY_ERRATA_REGISTRY.json as historical_current_documents must carry their required local qualification marker so direct readers cannot mistake stale CURRENT/next-action wording for live authority.",
+    "BuildSpecs/current.json and RuntimeInbox/ACTIVE_BUILD.txt are controllers, not narrative authority for unrelated topics.",
+    "Only Current/CURRENT_STATE.json and Current/00_CURRENT_STATE.md declare the concise global current state after the overhaul.",
+    "Ordinary topic questions route through Current/PROJECT_KNOWLEDGE_MAP.json to one canonical topic/workflow source.",
+    "Legacy Archive/ and Logs/ path references resolve through Current/COLD_HISTORY_STORAGE.json to the identical same-relative-path object in the verified frozen recovery repository; those cold payloads are not current authority.",
+    "When the user explicitly requests transfer to a new ChatGPT chat, Current/HANDOVER_PREPARATION_PROMPT.md is the current workflow authority and must resolve then-current repository facts rather than reuse a stale static handover snapshot; the handover workflow itself remains subject to the segmented execution policy."
+  ],
+  "canonical": [
+    {
+      "path": "Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md",
+      "authority": "CURRENT_CHATGPT_EXECUTION_POLICY",
+      "canonical_for": ["chatgpt_segmented_execution", "project_task_segmentation", "continuation_gate"]
+    },
+    {
+      "path": "Current/CURRENT_STATE.json",
+      "authority": "GLOBAL_CURRENT_MACHINE",
+      "canonical_for": ["accepted_baseline", "active_candidate", "runtime_test_outstanding", "exact_next_action", "controller_summary"]
+    },
+    {
+      "path": "Current/00_CURRENT_STATE.md",
+      "authority": "GLOBAL_CURRENT_HUMAN",
+      "canonical_for": ["accepted_baseline", "active_candidate", "runtime_test_outstanding", "exact_next_action", "current_invariants"]
+    },
+    {
+      "path": "Current/01_HANDOVER_CORE.md",
+      "authority": "TAKEOVER_ROUTER",
+      "canonical_for": ["fresh_chat_takeover"]
+    },
+    {
+      "path": "Current/HANDOVER_PREPARATION_PROMPT.md",
+      "authority": "CURRENT_HANDOVER_WORKFLOW",
+      "canonical_for": ["chat_handover_preparation", "fresh_new_chat_prompt_generation"]
+    },
+    {
+      "path": "Current/PROJECT_KNOWLEDGE_MAP.json",
+      "authority": "TOPIC_ROUTER_MACHINE",
+      "canonical_for": ["topic_routing"]
+    },
+    {
+      "path": "Current/PROJECT_KNOWLEDGE_MAP.md",
+      "authority": "TOPIC_ROUTER_HUMAN",
+      "canonical_for": ["topic_routing"]
+    },
+    {
+      "path": "Current/BUILD_LINEAGE.json",
+      "authority": "BUILD_LINEAGE_MACHINE",
+      "canonical_for": ["build_history", "introduced_by", "rejected_build_reason"]
+    },
+    {
+      "path": "Current/BUILD_LINEAGE.md",
+      "authority": "BUILD_LINEAGE_HUMAN",
+      "canonical_for": ["build_history"]
+    },
+    {
+      "path": "Current/INTEGRITY_ERRATA_REGISTRY.json",
+      "authority": "CURRENT_INTEGRITY_AUTHORITY",
+      "canonical_for": ["known_bad_values", "supersession_qualifications", "historical_current_qualification", "historical_phase_order_provenance"]
+    },
+    {
+      "path": "Current/VALIDATOR_COVERAGE.json",
+      "authority": "CURRENT_VALIDATOR_COVERAGE",
+      "canonical_for": ["validator_coverage_and_blindspots"]
+    },
+    {
+      "path": "Current/COLD_HISTORY_STORAGE.json",
+      "authority": "CURRENT_COLD_HISTORY_RECOVERY_MAP",
+      "canonical_for": ["externalized_archive_recovery", "externalized_legacy_logs_recovery", "cold_history_reference_mapping"]
+    },
+    {
+      "path": "Current/MULTIPHASE_CHECKPOINT_POLICY.json",
+      "authority": "CURRENT_POLICY",
+      "canonical_for": ["future_multiphase_checkpoint_policy"]
+    },
+    {
+      "path": "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md",
+      "authority": "CURRENT_POLICY",
+      "canonical_for": ["patch_safety_policy"]
+    },
+    {
+      "path": "BuildSpecs/current.json",
+      "authority": "CURRENT_BUILD_CONTROLLER",
+      "canonical_for": ["armed_build_controller"]
+    },
+    {
+      "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+      "authority": "CURRENT_RUNTIME_CONTROLLER",
+      "canonical_for": ["runtime_active_build"]
+    }
+  ],
+  "semantic_topic_root": "Knowledge/",
+  "semantic_topic_authority": "Files registered as canonical targets in Current/PROJECT_KNOWLEDGE_MAP.json are current topic/workflow authority unless that map explicitly marks another authority class.",
+  "historical_or_superseded": [
+    {
+      "path": "Current/02_TECHNICAL_BASELINE.md",
+      "classification": "HISTORICAL_MIXED_SNAPSHOT_NOT_GLOBAL_CURRENT_AUTHORITY",
+      "reason": "Contains durable technical facts mixed with old S1.41/S1.42S current-state wording.",
+      "current_targets": ["Current/00_CURRENT_STATE.md", "Knowledge/ENEMY_SPAWN_BASELINE.md", "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md", "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md"]
+    },
+    {
+      "path": "Current/07_FUTURE_ROADMAP_BCMER_INTERIORS.md",
+      "classification": "HISTORICAL_ROADMAP_SNAPSHOT_WITH_EXTRACTED_BINDING_RULES",
+      "reason": "Contains valuable BCMER/interior policy plus obsolete S1.42U/S1.42V current-progress wording.",
+      "current_targets": ["Knowledge/BCMER.md", "Knowledge/INTERIORS_AND_LLL.md", "Knowledge/ROADMAP_AND_DEFERRED_SCOPES.md"]
+    },
+    {
+      "path": "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt",
+      "classification": "HISTORICAL_OPTIMIZATION_PLAN_PENDING_WORDING_SUPERSEDED",
+      "reason": "Preserves the 2026-09-03 repository-optimization design and old S1.42S/S1.42T scheduling context; its CURRENT STATUS/PENDING wording is not current after the completed information-architecture overhaul and later cold-history cleanup.",
+      "current_targets": ["Current/REPOSITORY_MIGRATION_MANIFEST.json", "Current/COLD_HISTORY_STORAGE.json", "Knowledge/REPOSITORY_OVERHAUL.md"]
+    },
+    {
+      "path": "Current/106_S1.42AC_RUNTIME_REJECTION_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+      "classification": "HISTORICAL_DECISION_PRESERVED_INTERPRETATION_AND_LIFECYCLE_VERDICT_SUPERSEDED",
+      "reason": "The formal rejection remains historical fact. Its equal per-event-weight acceptance interpretation was disproved by exact BCMER 1.71.0 source analysis, and the artifact was later explicitly accepted after fresh corrected-model runtime confirmation.",
+      "current_targets": ["Current/109_BCMER_1_71_0_EVENTTYPE_WEIGHT_PATH_ANALYSIS.md", "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md", "Current/Projektstatus_S1.42AC_ACCEPTED.json", "Knowledge/BCMER.md"]
+    },
+    {
+      "path": "Current/107_FINAL_HANDOVER_S1.42AB_ACCEPTED_S1.42AC_REJECTED_NEXT.md",
+      "classification": "HISTORICAL_HANDOVER_SNAPSHOT",
+      "current_targets": ["Current/01_HANDOVER_CORE.md", "Current/00_CURRENT_STATE.md", "Current/HANDOVER_PREPARATION_PROMPT.md"]
+    },
+    {
+      "path": "Current/108_REPOSITORY_HANDOVER_AUDIT_S1.42AC_REJECTED.md",
+      "classification": "HISTORICAL_HANDOVER_AUDIT",
+      "current_targets": ["Current/00_CURRENT_STATE.md", "Current/PROJECT_KNOWLEDGE_MAP.md"]
+    },
+    {
+      "path": "Current/136_MOUTHDOG_V81_SOURCE_CAPTURE_AND_NATIVE_PATH_ANALYSIS.md",
+      "classification": "HISTORICAL_CURRENT_ANALYSIS_SNAPSHOT_SUPERSEDED",
+      "reason": "Preserves the 2026-09-06 native-source analysis state. Its remaining-proof/current/next-action wording was superseded by later source closure, safety review and S1.42AH build state.",
+      "current_targets": ["Current/CURRENT_STATE.json", "Knowledge/CURRENT_LIFECYCLE.md", "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md"]
+    },
+    {
+      "path": "Current/137_MOUTHDOG_SOURCE_BOUNDARY_CLOSURE_AND_PRE_SUCCESSOR_SAFETY_STATE.md",
+      "classification": "HISTORICAL_CURRENT_SOURCE_BOUNDARY_SNAPSHOT_SUPERSEDED",
+      "reason": "Preserves the 2026-09-06 source-boundary closure state. Its pre-review lifecycle/current/next-action wording was superseded by Current/138 and the built S1.42AH candidate.",
+      "current_targets": ["Current/CURRENT_STATE.json", "Knowledge/CURRENT_LIFECYCLE.md", "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md", "Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md"]
+    },
+    {
+      "path": "Current/138_MOUTHDOG_SUCCESSOR_PATCH_SAFETY_REVIEW_PASS.md",
+      "classification": "HISTORICAL_PATCH_SAFETY_DECISION_LIFECYCLE_SUPERSEDED",
+      "reason": "The reviewed dual-prevention patch-safety contract remains implementation provenance for S1.42AH, but its no-build/no-candidate/no-runtime-test lifecycle snapshot was superseded once S1.42AH was built.",
+      "current_targets": ["Current/CURRENT_STATE.json", "Knowledge/CURRENT_LIFECYCLE.md", "Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md", "Current/139_S1.42AH_BUILD_CANDIDATE_MOUTHDOG_DUAL_PREVENTION.md"]
+    },
+    {
+      "path": "OVERHAUL_START_HERE_ChatGPT.txt",
+      "classification": "COMPLETED_EXECUTION_CONTRACT_SNAPSHOT",
+      "reason": "One-time pre-overhaul execution entry point retained as the binding historical contract; the overhaul is complete and must not be re-run merely because the original instructions remain below the completion banner.",
+      "current_targets": ["Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md", "Current/OVERHAUL_VALIDATION_RESULTS.json", "START_HERE_ChatGPT_Masterprompt.txt"]
+    },
+    {
+      "path": "Current/104_REPOSITORY_OVERHAUL_INFORMATION_ARCHITECTURE_PLAN.md",
+      "classification": "COMPLETED_EXECUTION_CONTRACT_SNAPSHOT",
+      "reason": "Preserved original binding information-architecture plan; its planned/not-yet-executed status line is historical after Phase 11 completion.",
+      "current_targets": ["Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md", "Current/OVERHAUL_VALIDATION_RESULTS.json"]
+    },
+    {
+      "path": "Current/105_REPOSITORY_OVERHAUL_EXECUTION_PLAYBOOK.md",
+      "classification": "COMPLETED_EXECUTION_CONTRACT_SNAPSHOT",
+      "reason": "Preserved original execution playbook; its planned/not-yet-executed status line is historical after Phase 11 completion.",
+      "current_targets": ["Current/110_REPOSITORY_OVERHAUL_FINAL_ACCEPTANCE.md", "Current/OVERHAUL_VALIDATION_RESULTS.json"]
+    },
+    {
+      "path": "Current/116_INDEPENDENT_PREOVERHAUL_CONTRACT_AUDIT_20260905.md",
+      "classification": "INDEPENDENT_REAUDIT_RECORD",
+      "reason": "Authoritative historical audit of the frozen pre-overhaul contract and phase-order/SHA provenance limitations.",
+      "current_targets": ["Knowledge/REPOSITORY_OVERHAUL.md", "Current/INTEGRITY_ERRATA_REGISTRY.json"]
+    }
+  ],
+  "historical_patterns": [
+    "Current/*FINAL_HANDOVER*.md",
+    "Current/*REPOSITORY_HANDOVER_AUDIT*.md",
+    "Current/*BUILD_CANDIDATE*.md",
+    "Current/*RUNTIME_ACCEPTANCE*.md",
+    "Current/*RUNTIME_REJECTION*.md",
+    "Current/Projektstatus_*.json except state files explicitly referenced by CURRENT_STATE.json",
+    "BuildSpecs/S*.md and BuildSpecs/S*.json except BuildSpecs/current.json",
+    "RuntimeEvidence/** is evidence/history unless explicitly linked by current state; legacy Archive/** and Logs/** references are externalized cold history mapped by Current/COLD_HISTORY_STORAGE.json"
+  ],
+  "code_comment_drift": {
+    "path": "Patches/S139CompatibilityFixes/Plugin.cs",
+    "classification": "CURRENT_CODE_AUTHORITY_COMMENTS_NON_NORMATIVE",
+    "rule": "Executable code/runtime evidence and Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md override historical wording in comments. Do not infer present behavior from old S1.42J-era isolation/blacklist comments.",
+    "current_invariants": [
+      "Crawler attack/counterattack behavior is allowed; Crawler is absent from the LethalMin Attack Blacklist.",
+      "Thumper is governed by Bite Limit 3 rather than complete two-way isolation.",
+      "Puffer protection for Pikmin remains part of accepted compatibility behavior.",
+      "Baboon Hawk compatibility blocks only the proven Hawk-to-Pikmin entry points before mutation while native cleanup lifecycle ownership remains enabled."
+    ],
+    "provenance_rule": "Do not edit accepted patch source solely to modernize comments unless the accepted binary/profile provenance is rebuilt and revalidated; use authority metadata to classify non-normative historical comments."
+  },
+  "last_validated": "2026-09-08"
+}

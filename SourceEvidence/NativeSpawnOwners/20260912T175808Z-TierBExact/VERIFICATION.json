@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_TIER_B_REVIEW_COMPLETE_PATCH_SAFETY_PARTIAL_NOT_BUILD_READY",
+  "canonical_main": "a7a6958d9e82ee657aea65a72011eb7e0d44b86b",
+  "exact_review": {
+    "run_id": 34709775849,
+    "run_number": 1,
+    "head": "70e3cbac7c6255beb6d5dd447448979b8ee90e3c",
+    "artifact_id": 10303095900,
+    "artifact_name": "s142ai-tier-b-spawn-candidates-exact",
+    "artifact_zip_sha256": "a5a33c57fec7c9f81d6b97fc335d5c4d6f6c697c175aa778d5d2200ed9014b7c",
+    "discovery_run": 34705334804,
+    "discovery_head": "45d22c3fa1abb3bbd95dd137cd3903eb053f87c7",
+    "decompiler": {
+      "tool": "ilspycmd",
+      "version": "11.0.0.9375"
+    }
+  },
+  "assemblies": [
+    {
+      "package": "Flowprojects-Mirage_v81",
+      "version": "1.29.1",
+      "package_zip_sha256": "19d6c1f31647c32a3011e858524a9c3f93b23b160a0015f19a80daad696ebcb9",
+      "member": "Mirage.dll",
+      "dll_sha256": "271a4a8a77c1c4317ae146e524bcd91089917a2a0d3720feb92dc42dca5b1e80",
+      "source_sha256": "bf6bc0674b1639bf802d9627439fc8ab966eec51cb458f41b4079be62e1d22c5",
+      "il_sha256": "eac5a005d757e2217c998650f151d7674c5b979052bfc771cbc09167286550a9",
+      "classification": "CONDITIONAL_MASKED_POOL_MUTATOR_DISABLED_BY_EXACT_PROFILE_CONFIG"
+    },
+    {
+      "package": "Alice-DungeonGenerationPlus",
+      "version": "1.5.0",
+      "package_zip_sha256": "c5b5d79d5054f4388a9e50cd73770e97fa2e1cb62c7fad7fd5a1e69ee6195586",
+      "member": "DunGenPlus.dll",
+      "dll_sha256": "9d488d7bb98c87bbdb3967d7f9c6c5cb8ab9b82284467fe1c2dddefed1bc1765",
+      "source_sha256": "97b3f041a37ee36abec5e62505a7aba9d85f904bbf6b65db7d56556d16a36e0e",
+      "il_sha256": "8812b3f5c7f7a4081e6a57b9f65a4462425ecd29653bcd505b2c090c7c3a3077",
+      "classification": "NOT_ENEMY_SPAWN_OWNER_DISCOVERY_CONTEXT_FALSE_POSITIVE"
+    },
+    {
+      "package": "KawaiiBone-Remnants",
+      "version": "1.4.4",
+      "package_zip_sha256": "4a41157f3530b802edbf8623c72b93b09e27f7cd7c8fbcac1970a690f634c635",
+      "member": "Remnants.dll",
+      "dll_sha256": "49d8e65a2bd6d451a552c12ec62d87d112b5cb7930859a8c72b8021e203f7ad5",
+      "source_sha256": "d67f0ee26c1a50d90697a313c04110cba78c16f218f143479f2d64493bdd2eff",
+      "il_sha256": "bf60614081bb58ea3490f5a13ba96b0b805ae8116be92a0c9cf8fa529cba397d",
+      "classification": "NETWORKED_REMNANT_INFRASTRUCTURE_NOT_ENEMY_SPAWN_OWNER"
+    },
+    {
+      "package": "LethalMatt-Bozoros",
+      "version": "2.9.3",
+      "package_zip_sha256": "e7f8851d0a0cf1c1106526b2c171af36287a9bbd161d13dec33634c1c33fda44",
+      "member": "BepInEx/plugins/Bozoros.dll",
+      "dll_sha256": "87feb32c19c5c9e5fbc42f6af5211baa169239994c6dafed4236545ee3a47265",
+      "source_sha256": "387e597f0cf5f7fe64025d88f155f5a29ef180197df78ee108ce80a00d00844b",
+      "il_sha256": "8380249f2ce2b6c251e49dff227c3963e5d70704b084f131528ed34441bec7aa",
+      "classification": "CONDITIONAL_DIRECT_ENEMY_PREFAB_NETWORK_OWNER_PROVIDER_NOT_IDENTIFIED_IN_EXACT_PACKAGE_INVENTORY"
+    },
+    {
+      "package": "AntlerShed-EnemySkinRegistry",
+      "version": "1.5.1",
+      "package_zip_sha256": "3386bfd5c57c00f43c7e84c5ab88f5a0dbfd960fe52cac21c243a2dd0ebcaaf1",
+      "member": "plugins/EnemySkinRegistry/EnemySkinRegistry.dll",
+      "dll_sha256": "6b53db95bfc15b7d71539126c79e32861d3255e4aa73d6f06de7a65ce8edb733",
+      "source_sha256": "cf5e447e7f8f4c8b3eab4dde479c5330a5ec2c868d82c1350d1de172e58821ee",
+      "il_sha256": "5faafc1cabc6e4c439d52563628c103e1e4fce4131a17ccdc933ae419bc7cbe2",
+      "classification": "DOWNSTREAM_ENEMY_LIFECYCLE_SKIN_OBSERVER_NOT_CREATOR"
+    },
+    {
+      "package": "ButteryStancakes-EnemySoundFixes",
+      "version": "1.9.14",
+      "package_zip_sha256": "4d01f6c57e707fc2939c34bd9a052d260947c34d8e82c8f87591a4b9fd9b0cf1",
+      "member": "EnemySoundFixes.dll",
+      "dll_sha256": "b295c812646df1ff8b102d2c1f95d66040beb4176b38f93cebaeadc24a017b65",
+      "source_sha256": "df5b03147d27e0970eec994e7059b763b6de0afbc327dbbb5f91a3e4ae2ed470",
+      "il_sha256": "9bfc0888594bddd5d667c5ce08d90caf44c10dc8845e7382a9abdaf95c79d262",
+      "classification": "ENEMY_AUDIO_LIFECYCLE_PATCH_SET_NOT_CREATOR"
+    }
+  ],
+  "remaining_unreviewed_discovery_positive_packages": 31,
+  "snowylib_cross_assembly_consumer_gate_open": true,
+  "bcmer_forced_additional_runtime_custom_gate_open": true,
+  "shyguy_source_to_dll_provenance_gate_open": true,
+  "diag1_build_authorized": false,
+  "qualification": "Exact review of six discovery-positive packages only. Patch safety remains partial; no DIAG1 implementation, build, controller transition, Gale import or gameplay test is authorized."
+}

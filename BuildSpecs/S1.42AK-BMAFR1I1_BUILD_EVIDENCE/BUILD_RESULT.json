@@ -1,0 +1,305 @@
+{
+  "status": "COMPILE_PASS_ARCHIVE_AWAITS_INDEPENDENT_VALIDATION",
+  "build_id": "S1.42AK-BMAFR1I1",
+  "source_main_commit": "cc26952be87ab2ff3e441a208a3357da66e3a89b",
+  "build_head": "6efb8fd3ff4e5b5a31b3b85bd600abe5ac5c5da9",
+  "run_id": "37140903801",
+  "run_attempt": "1",
+  "assembly_name": "S142AKBMAFR1I1",
+  "assembly_references": {
+    "netstandard": "2.1.0.0",
+    "UnityEngine.CoreModule": "0.0.0.0",
+    "BepInEx": "5.4.20.0",
+    "0Harmony": "2.10.2.0",
+    "Assembly-CSharp": "0.0.0.0",
+    "Unity.Netcode.Runtime": "0.0.0.0"
+  },
+  "dll_sha256": "d9e09b20a889260d5cc8b4970d023a76d5b7af77ad677077b9718dfa8a150b6a",
+  "parent_sha256": "8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5",
+  "profile_sha256": "734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07",
+  "inputs": {
+    ".github/workflows/s142ak-bmafr1i1-source-static.yml": {
+      "git_blob": "fbcb90dc26df65f5b7423a509039271857ad0d90",
+      "sha256": "5221f5a7ce8f9bfda15a6ed4392e886eea6f0e367d8c848712bc0eae4dd25aad"
+    },
+    "AnalysisTools/generate_s142ak_bmafr1i1_contract_data.py": {
+      "git_blob": "cd1f776fe1557ea3422738121af396995772f1cb",
+      "sha256": "ba09a01299414eb6f058aa41e745af8051075951ab3940319b508a5473cc3543"
+    },
+    "AnalysisTools/validate_s142ak_bmafr1i1_source.py": {
+      "git_blob": "12cf33488dad9a900b5e4f4229d852e943269776",
+      "sha256": "ab5134dd104edb5beefdeffc225098f9c3558d2fbd2b274a51be6ecde4d692b8"
+    },
+    "BuildSpecs/current.json": {
+      "git_blob": "598bd4d374ca6560cf73e81dc128f067f335c2c4",
+      "sha256": "45acf0c61889806237f636ef1511d9184468da0e88cdad6663b46c061a22ae96"
+    },
+    "Current/232_S1.42AK_BMAFR1I1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md": {
+      "git_blob": "c830a55249e41347c7af9e652f42214baebd61fb",
+      "sha256": "64d4451d2f8407d4bf7e74109901fe40c09b9332478b436e63540e9a68cb959e"
+    },
+    "Current/AUTO_BUILD_RESULT.json": {
+      "git_blob": "833aa731e10b48dd08864d17f214f7274961742e",
+      "sha256": "ba77d8f6e358de9274482f28e0d3504a5189772c35d616d7600ea611f92c5aaf"
+    },
+    "Current/CURRENT_STATE.json": {
+      "git_blob": "9c40811681e9b13a1356a01b927bcbe439a5ea28",
+      "sha256": "861c0a48ab112b4bc9f0d2154677058487959d78a630271db7100ea5ca6011c6"
+    },
+    "Patches/S142AKBMAFR1I1/ArrayAnchor.cs": {
+      "git_blob": "14a3d32bf3200e11f53b269f0e70693e7af3b4e3",
+      "sha256": "a7eae0cd25c2266ad6a69aa979641781778faee5a06911a914b800f84d2cb30b"
+    },
+    "Patches/S142AKBMAFR1I1/ContractData.cs": {
+      "git_blob": "e983610c4158be0f813db8c61fd42d259e619ff9",
+      "sha256": "15703b8d1a21ae1b9e48221660c77fdca475022e75e3447aacea2657cb9d7ad1"
+    },
+    "Patches/S142AKBMAFR1I1/Contracts.cs": {
+      "git_blob": "a4f26c838d9f118e8505dc1ab5110f3a15bc73d6",
+      "sha256": "f8c1684d54d4e5f3549f6c1c8a75fd347aed210512787a1bccb7bc7b514ec643"
+    },
+    "Patches/S142AKBMAFR1I1/GameAssemblyProvenance.cs": {
+      "git_blob": "eb0ea20f1556171bdb0d9fc27401c59d675b2432",
+      "sha256": "f1c4422eee3f393f934f09ff26ab35d7889c379fdf099142d885e1277359f71f"
+    },
+    "Patches/S142AKBMAFR1I1/IlGuard.cs": {
+      "git_blob": "556dd5d8140cd43ad7e1359f13590aa5bffc2e59",
+      "sha256": "67665f2b3e2d69aeda33877f911e71a7ef93990375c20f3c0de58ddf990f84b9"
+    },
+    "Patches/S142AKBMAFR1I1/NuGet.Config": {
+      "git_blob": "a7d4e5a8ecc5cbfb2fa226791995a580a21500b8",
+      "sha256": "744d7673eb66f72c41d82ee3d16be3baec49fa290f9ec64d182e86ac0deaa2ee"
+    },
+    "Patches/S142AKBMAFR1I1/Observers.cs": {
+      "git_blob": "a1bb652f6adb8891523b1bfc534a5c009e5cc1bb",
+      "sha256": "4401f3766ce10382429db39a7341df4602ed31260ea81d2de42acdafaa940acb"
+    },
+    "Patches/S142AKBMAFR1I1/Plugin.cs": {
+      "git_blob": "44631784a21aa036a8a8b6758c04e4a98c47836a",
+      "sha256": "1bdfd29bd5c6cbd5691be289fa8c84d6d1dc31f64953f3da20536cbfc1c08a53"
+    },
+    "Patches/S142AKBMAFR1I1/Probes.cs": {
+      "git_blob": "4e77884c712c158830c288a1ec077a73b022f958",
+      "sha256": "67719ac52801a22f692523af02eceacf7a66f2986475bb6d895350e7770a1bdf"
+    },
+    "Patches/S142AKBMAFR1I1/README.md": {
+      "git_blob": "77a553aaad8a4f2eeb8032fb482d290a88bc2366",
+      "sha256": "e10ade762fc56cec0d99334d886aaa376b439289c166494a5077812582020b4a"
+    },
+    "Patches/S142AKBMAFR1I1/S142AKBMAFR1I1.csproj": {
+      "git_blob": "4af83fc0e84a13087637ca231ccc1c370200639e",
+      "sha256": "d22496ec4b39cb766fcfa3325780ecab2263a1dad5edf10bdc844f6962cd4f10"
+    },
+    "ProfileSources/S1.42AK-BMAFR1/PROFILE_INDEX_RESULT.json": {
+      "git_blob": "40f673492a314ef94bd681050a38336b4664f64d",
+      "sha256": "1723f8de1467de4570e7724ad28b90e16f0eb74bcca1b7f2dd5f6af204928f5d"
+    },
+    "Profiles/EXPECTED_HASHES.json": {
+      "git_blob": "03bb6966ca6e9dc1f215565e12b9752aa212ce08",
+      "sha256": "4f2865bc9105be981dc83625a66b958b07ff71d65617bb4d09f5da7b0318d3b2"
+    },
+    "Profiles/LC V1 S1.42AK-BMAFR1.r2z": {
+      "git_blob": "9f1f6a6d21dc5c65787ba88c9543d57857e2a5c2",
+      "sha256": "8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5"
+    },
+    "RepositoryTools/gale_profile_path_length_guard.py": {
+      "git_blob": "1063a19e5c43460815b46792edfa51294cc0ccf2",
+      "sha256": "211524379804f687eae10d540e24b65c90e09d44b628b60ad5d073f9741cc851"
+    },
+    "RuntimeInbox/ACTIVE_BUILD.txt": {
+      "git_blob": "a1e2869d9f78e7dee9098a6dba39c63d0a81817c",
+      "sha256": "21ec06f6c6564fbf155e248369bd369df650d70d965037c7aeab6b06bbb177c4"
+    },
+    "SourceEvidence/BMAFR1Instrumentation/EXACT_DEPENDENCY_CONTRACTS.json": {
+      "git_blob": "f68bd70083324792c52bd9c1c2ab371bd725a276",
+      "sha256": "f873eecd4a2d03b2e45afbc73686ae8d189014159895e96fa27800969df0eae2"
+    }
+  },
+  "resolved_packages": {
+    "BepInEx.BaseLib/5.4.20": {
+      "sha512": "0bXgYxbCEN2Ixp3kiFEhyw+RASeFQeg/ww+lbMt7if6XMeVS60eg6epNsMA8Jbx57dmNOzNevkKKw8mP8SUMqw==",
+      "type": "package"
+    },
+    "BepInEx.Core/5.4.21": {
+      "sha512": "NMUPlbHTTfJ+qIQCI90uIvjuUQ4wnwt4cpRsK3ItBh1DhsWFzAHXNiZjBxZkPysljEKQ2iu89sxMTga4bxBXVQ==",
+      "type": "package"
+    },
+    "HarmonyX/2.10.2": {
+      "sha512": "/5WwkxXX8mPsRuigQt957rJGx1f0dDQxk+bvk4yYITKFjXas9Em+O71zEP8X0ym8OFQQ2XH/2SxS4NC7vEC+Xg==",
+      "type": "package"
+    },
+    "LethalCompany.GameLibs.Steam/81.0.5-ngd.0": {
+      "sha512": "q1+j5z4lP0TKO16uZ2NclNr9/mb3BUgl6mUO7zbPwbyEHIPJ4m6805rxP0w8mxe4NWNcQRoBkWrIpiNrwak8Hg==",
+      "type": "package"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "type": "package"
+    },
+    "Microsoft.NETCore.Targets/1.1.0": {
+      "sha512": "aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
+      "type": "package"
+    },
+    "Mono.Cecil/0.11.4": {
+      "sha512": "IC1h5g0NeJGHIUgzM1P82ld57knhP0IcQfrYITDPXlNpMYGUrsG5TxuaWTjaeqDNQMBDNZkB8L0rBnwsY6JHuQ==",
+      "type": "package"
+    },
+    "MonoMod.RuntimeDetour/22.3.23.4": {
+      "sha512": "2nwwFfwYDSgUzhi+1MutTg1gyUgXoMS4+E04vHOFp84Vxs0oBkkn4mGAfhkr272y0j3vqIBzo2aT9pXRlCd/ZA==",
+      "type": "package"
+    },
+    "MonoMod.Utils/22.3.23.4": {
+      "sha512": "xso1rHFfcsPy3X1kj2uDk115z9tLTMxPEnba/zdNB6WazvrLRWGPuV9d4hHwr1iVz5quTFlZCbLBlE5fS2TqLA==",
+      "type": "package"
+    },
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "type": "package"
+    },
+    "System.Collections/4.3.0": {
+      "sha512": "3Dcj85/TBdVpL5Zr+gEEBUuFe2icOnLalmEh9hfck1PTYbbyWuZgh4fmm2ysCLTrqLQw6t3TgTyJ+VLp+Qb+Lw==",
+      "type": "package"
+    },
+    "System.Collections.NonGeneric/4.3.0": {
+      "sha512": "prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
+      "type": "package"
+    },
+    "System.Collections.Specialized/4.3.0": {
+      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
+      "type": "package"
+    },
+    "System.ComponentModel/4.3.0": {
+      "sha512": "VyGn1jGRZVfxnh8EdvDCi71v3bMXrsu8aYJOwoV7SNDLVhiEqwP86pPMyRGsDsxhXAm2b3o9OIqeETfN5qfezw==",
+      "type": "package"
+    },
+    "System.ComponentModel.Primitives/4.3.0": {
+      "sha512": "j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
+      "type": "package"
+    },
+    "System.ComponentModel.TypeConverter/4.3.0": {
+      "sha512": "16pQ6P+EdhcXzPiEK4kbA953Fu0MNG2ovxTZU81/qsCd1zPRsKc3uif5NgvllCY598k6bI0KUyKW8fanlfaDQg==",
+      "type": "package"
+    },
+    "System.Diagnostics.Debug/4.3.0": {
+      "sha512": "ZUhUOdqmaG5Jk3Xdb8xi5kIyQYAA4PnTNlHx1mu9ZY3qv4ELIdKbnL/akbGaKi2RnNUWaZsAs31rvzFdewTj2g==",
+      "type": "package"
+    },
+    "System.Globalization/4.3.0": {
+      "sha512": "kYdVd2f2PAdFGblzFswE4hkNANJBKRmsfa2X5LG2AcWE1c7/4t0pYae1L8vfZ5xvE2nK/R9JprtToA61OSHWIg==",
+      "type": "package"
+    },
+    "System.Globalization.Extensions/4.3.0": {
+      "sha512": "FhKmdR6MPG+pxow6wGtNAWdZh7noIOpdD5TwQ3CprzgIE1bBBoim0vbR1+AWsWjQmU7zXHgQo4TWSP6lCeiWcQ==",
+      "type": "package"
+    },
+    "System.IO/4.3.0": {
+      "sha512": "3qjaHvxQPDpSOYICjUoTsmoq5u6QJAFRUITgeT/4gqkF1bajbSmb1kwSxEA8AHlofqgcKJcM8udgieRNhaJ5Cg==",
+      "type": "package"
+    },
+    "System.IO.FileSystem.Primitives/4.3.0": {
+      "sha512": "6QOb2XFLch7bEc4lIcJH49nJN2HV+OC3fHDgsLVsBVBk3Y4hFAnOBGzJ2lUu7CyDDFo9IBWkSsnbkT6IBwwiMw==",
+      "type": "package"
+    },
+    "System.Linq/4.3.0": {
+      "sha512": "5DbqIUpsDp0dFftytzuMmc0oeMdQwjcP/EWxsksIz/w1TcFRkZ3yKKz0PqiYFMmEwPSWw+qNVqD7PJ889JzHbw==",
+      "type": "package"
+    },
+    "System.Reflection/4.3.0": {
+      "sha512": "KMiAFoW7MfJGa9nDFNcfu+FpEdiHpWgTcS2HdMpDvt9saK3y/G4GwprPyzqjFH9NTaGPQeWNHU+iDlDILj96aQ==",
+      "type": "package"
+    },
+    "System.Reflection.Emit/4.7.0": {
+      "sha512": "VR4kk8XLKebQ4MZuKuIni/7oh+QGFmZW3qORd1GvBq/8026OpW501SzT/oypwiQl4TvT8ErnReh/NzY9u+C6wQ==",
+      "type": "package"
+    },
+    "System.Reflection.Emit.ILGeneration/4.7.0": {
+      "sha512": "AucBYo3DSI0IDxdUjKksBcQJXPHyoPyrCXYURW1WDsLI4M65Ar/goSHjdnHOAY9MiYDNKqDlIgaYm+zL2hA1KA==",
+      "type": "package"
+    },
+    "System.Reflection.Emit.Lightweight/4.7.0": {
+      "sha512": "a4OLB4IITxAXJeV74MDx49Oq2+PsF6Sml54XAFv+2RyWwtDBcabzoxiiJRhdhx+gaohLh4hEGCLQyBozXoQPqA==",
+      "type": "package"
+    },
+    "System.Reflection.Extensions/4.3.0": {
+      "sha512": "rJkrJD3kBI5B712aRu4DpSIiHRtr6QlfZSQsb0hYHrDCZORXCFjQfoipo2LaMUHoT9i1B7j7MnfaEKWDFmFQNQ==",
+      "type": "package"
+    },
+    "System.Reflection.Primitives/4.3.0": {
+      "sha512": "5RXItQz5As4xN2/YUDxdpsEkMhvw3e6aNveFXUn4Hl/udNTCNhnKp8lT9fnc3MhvGKh1baak5CovpuQUXHAlIA==",
+      "type": "package"
+    },
+    "System.Reflection.TypeExtensions/4.7.0": {
+      "sha512": "VybpaOQQhqE6siHppMktjfGBw1GCwvCqiufqmP8F1nj7fTUNtW35LOEt3UZTEsECfo+ELAl/9o9nJx3U91i7vA==",
+      "type": "package"
+    },
+    "System.Resources.ResourceManager/4.3.0": {
+      "sha512": "/zrcPkkWdZmI4F92gL/TPumP98AVDu/Wxr3CSJGQQ+XN6wbRZcyfSKVoPo17ilb3iOr0cCRqJInGwNMolqhS8A==",
+      "type": "package"
+    },
+    "System.Runtime/4.3.0": {
+      "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+      "type": "package"
+    },
+    "System.Runtime.Extensions/4.3.0": {
+      "sha512": "guW0uK0fn5fcJJ1tJVXYd7/1h5F+pea1r7FLSOz/f8vPEqbR2ZAknuRDvTQ8PzAilDveOxNjSfr0CHfIQfFk8g==",
+      "type": "package"
+    },
+    "System.Runtime.Handles/4.3.0": {
+      "sha512": "OKiSUN7DmTWeYb3l51A7EYaeNMnvxwE249YtZz7yooT4gOZhmTjIn48KgSsw2k2lYdLgTKNJw/ZIfSElwDRVgg==",
+      "type": "package"
+    },
+    "System.Runtime.InteropServices/4.3.0": {
+      "sha512": "uv1ynXqiMK8mp1GM3jDqPCFN66eJ5w5XNomaK2XD+TuCroNTLFGeZ+WCmBMcBDyTFKou3P6cR6J/QsaqDp7fGQ==",
+      "type": "package"
+    },
+    "System.Text.Encoding/4.3.0": {
+      "sha512": "BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw==",
+      "type": "package"
+    },
+    "System.Threading/4.3.0": {
+      "sha512": "VkUS0kOBcUf3Wwm0TSbrevDDZ6BlM+b/HRiapRFWjM5O0NS0LviG0glKmFK+hhPDd1XFeSdU1GmlLhb2CoVpIw==",
+      "type": "package"
+    },
+    "System.Threading.Tasks/4.3.0": {
+      "sha512": "LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
+      "type": "package"
+    },
+    "UnityEngine.Modules/2022.3.62": {
+      "sha512": "zpu5dELUCFt7Rvvzp50iTrfVusJg+2gmlcaytGEoHYuIP+AOv57X272czjp+sA8N1onPo/IiHFnOEFtT9rLJBA==",
+      "type": "package"
+    }
+  },
+  "profile_indexing": false,
+  "published": false,
+  "runtime_armed": false,
+  "runtime_proof": false,
+  "qualification": "Source/static output retains historical NOT_RUN_NOT_AUTHORIZED labels; the separate compile log establishes compilation under Current/232 only. No Harmony/JIT installation, loader/runtime, emitter or root-cause proof.",
+  "profile_name": "LC V1 S1.42AK-BMAFR1I1",
+  "base_build_id": "S1.42AK-BMAFR1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMAFR1.r2z",
+  "base_sha256": "8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5",
+  "output_profile": "Profiles/LC V1 S1.42AK-BMAFR1I1.r2z",
+  "output_sha256": "734dbe491b4f4fb77704472a303e386058e976325e0595dc4795af1940d1cb07",
+  "zip_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKBMAFR1I1/S142AKBMAFR1I1.dll"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "snapshot_dir": "ProfileSources/S1.42AK-BMAFR1I1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "runtime_target_metadata": {
+    "activation_record": "Current/238_S1.42AK_BMAFR1I1_RUNTIME_ACTIVATION.md",
+    "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+    "authority_parent_build_id": "S1.42AK-BMAFR1",
+    "authority_parent_runtime_status": "RUNTIME_COMPATIBILITY_PASS",
+    "authority_parent_sha256": "8607a022e83304b473e7327ce5644141212a697fb8dffa210c58e02e5caafba5"
+  }
+}

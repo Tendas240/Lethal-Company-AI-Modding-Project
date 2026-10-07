@@ -1,0 +1,185 @@
+{
+    "schema_version":  1,
+    "purpose":  "Exact installed-V81 DunGen cross-type callees remaining after Universal Interior Viability C3F14",
+    "capture_utc":  "2026-09-22T20:42:32Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "pull_request":  138,
+    "pull_request_branch":  "scope/universal-interior-phase-c3a-dawn-tags",
+    "repository_pr_head_at_capture":  "d39b03326972787e6814f9fb6dd1125532cee220",
+    "repository_main_at_capture":  "56355ff518ae4301a38d370be9561251f6f963c1",
+    "expected_repository_main":  "56355ff518ae4301a38d370be9561251f6f963c1",
+    "bound_c3f14_parent_manifest":  {
+                                        "path":  "SourceEvidence/VanillaV81/DunGenGenerationCapacity/20260922T193336Z-5d63c0ca/MANIFEST.json",
+                                        "report_sha256":  "602d0294bc852188283b41e94efebf3417a3f0200fd5ab6d42aaa942ef657f8b",
+                                        "git_blob_sha":  "4661c0ac0e289f62ee60ccd099aaeebc6916d0ab",
+                                        "text_sha256":  "f43c30ed56102002a920ec52e9ff031ae089cfc094ebc85e98a3ba42ef19dcbf"
+                                    },
+    "bound_c3f14_synthesis":  {
+                                  "git_blob_sha":  "00dddb863a2cddf5dd1f3e5824b7dcbd39918e81",
+                                  "proof_set_flows":  20,
+                                  "schema_version":  "c3f14-generation-capacity-implementation-synthesis-1",
+                                  "path":  "SourceEvidence/UniversalInteriorViability/PhaseC3F14/GENERATION_CAPACITY_IMPLEMENTATION_SYNTHESIS.json",
+                                  "remaining_cross_type_callees":  [
+                                                                       "DunGen.DungeonFlow.GetLineAtDepth",
+                                                                       "DunGen.GraphLine.GetRandomArchetype",
+                                                                       "DunGen.InjectedTile.ShouldInjectTileAtPoint",
+                                                                       "DunGen.BranchCountHelper.ComputeBranchCounts",
+                                                                       "DunGen.DoorwayPairFinder.GetDoorwayPairs"
+                                                                   ],
+                                  "text_sha256":  "109ac64ca7b5c19a8a5370e8e1ac50515fc61cee90f4f330b9217842184dc953"
+                              },
+    "source_assembly":  {
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll"
+                        },
+    "dungen_assembly":  {
+                            "sha256":  "d62bbc63eae39ef388797194796ed9cf5a3e7c857fe31f7e5b7310ed78262db6",
+                            "logical_path":  "Lethal Company_Data/Managed/DunGen.dll"
+                        },
+    "game_executable":  {
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+                            "logical_path":  "Lethal Company.exe"
+                        },
+    "steam":  {
+                  "manifest_review":  "AnalysisTools/InspectRoundManagerSpawningV81_PROVENANCE_REVIEW.md",
+                  "matches_prior_appmanifest":  false,
+                  "buildid":  "22825947",
+                  "appmanifest_sha256":  "132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e",
+                  "prior_appmanifest_sha256":  "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                  "app_id":  "1966720"
+              },
+    "decompiler":  {
+                       "types":  [
+                                     {
+                                         "requested_type":  "DunGen.DungeonFlow",
+                                         "type":  "DunGen.Graph.DungeonFlow",
+                                         "resolved_from_ilspy_suggestion":  true,
+                                         "full_local_type_source_sha256":  "15b8413f4cfd6b2203f11d0eb1b0eabcb009bcddcffc433216cadc7f166c2cd2",
+                                         "root_method":  "GetLineAtDepth",
+                                         "root_signatures":  [
+                                                                 "public GraphLine GetLineAtDepth(float normalizedDepth)"
+                                                             ],
+                                         "constructor_signatures":  [
+
+                                                                    ],
+                                         "selected_signatures":  [
+                                                                     "public GraphLine GetLineAtDepth(float normalizedDepth)"
+                                                                 ],
+                                         "same_type_neighbor_depth":  1
+                                     },
+                                     {
+                                         "requested_type":  "DunGen.GraphLine",
+                                         "type":  "DunGen.Graph.GraphLine",
+                                         "resolved_from_ilspy_suggestion":  true,
+                                         "full_local_type_source_sha256":  "0826a482f6d0c17aa8f8eec634a8deb312efcfd75174fb6e71422e6e564abbe1",
+                                         "root_method":  "GetRandomArchetype",
+                                         "root_signatures":  [
+                                                                 "public DungeonArchetype GetRandomArchetype(RandomStream randomStream, IEnumerable\u003cDungeonArchetype\u003e usedArchetypes)"
+                                                             ],
+                                         "constructor_signatures":  [
+
+                                                                    ],
+                                         "selected_signatures":  [
+                                                                     "public DungeonArchetype GetRandomArchetype(RandomStream randomStream, IEnumerable\u003cDungeonArchetype\u003e usedArchetypes)"
+                                                                 ],
+                                         "same_type_neighbor_depth":  1
+                                     },
+                                     {
+                                         "requested_type":  "DunGen.InjectedTile",
+                                         "type":  "DunGen.InjectedTile",
+                                         "resolved_from_ilspy_suggestion":  false,
+                                         "full_local_type_source_sha256":  "2bf273c1aa66ad541a7e13eba05dce4cea21f20232251a3d0c13a201fd365e55",
+                                         "root_method":  "ShouldInjectTileAtPoint",
+                                         "root_signatures":  [
+                                                                 "public bool ShouldInjectTileAtPoint(bool isOnMainPath, float pathDepth, float branchDepth)"
+                                                             ],
+                                         "constructor_signatures":  [
+                                                                        "public InjectedTile(TileSet tileSet, bool isOnMainPath, float normalizedPathDepth, float normalizedBranchDepth, bool isRequired = false)",
+                                                                        "public InjectedTile(TileInjectionRule rule, bool isOnMainPath, RandomStream randomStream)"
+                                                                    ],
+                                         "selected_signatures":  [
+                                                                     "public InjectedTile(TileSet tileSet, bool isOnMainPath, float normalizedPathDepth, float normalizedBranchDepth, bool isRequired = false)",
+                                                                     "public InjectedTile(TileInjectionRule rule, bool isOnMainPath, RandomStream randomStream)",
+                                                                     "public bool ShouldInjectTileAtPoint(bool isOnMainPath, float pathDepth, float branchDepth)"
+                                                                 ],
+                                         "same_type_neighbor_depth":  1
+                                     },
+                                     {
+                                         "requested_type":  "DunGen.BranchCountHelper",
+                                         "type":  "DunGen.BranchCountHelper",
+                                         "resolved_from_ilspy_suggestion":  false,
+                                         "full_local_type_source_sha256":  "7fde8e02ed159d9e6ad87e606a235d4c876ba3fa6ff7d14983bbb15dc17a2632",
+                                         "root_method":  "ComputeBranchCounts",
+                                         "root_signatures":  [
+                                                                 "public static void ComputeBranchCounts(DungeonFlow dungeonFlow, RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches)"
+                                                             ],
+                                         "constructor_signatures":  [
+
+                                                                    ],
+                                         "selected_signatures":  [
+                                                                     "public static void ComputeBranchCounts(DungeonFlow dungeonFlow, RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches)",
+                                                                     "private static void ComputeBranchCountsLocal(RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches)",
+                                                                     "private static void ComputeBranchCountsPerSection(RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches)",
+                                                                     "private static void ComputeBranchCountsGlobal(DungeonFlow dungeonFlow, RandomStream randomStream, DungeonProxy proxyDungeon, ref int[] mainPathBranches)"
+                                                                 ],
+                                         "same_type_neighbor_depth":  1
+                                     },
+                                     {
+                                         "requested_type":  "DunGen.DoorwayPairFinder",
+                                         "type":  "DunGen.DoorwayPairFinder",
+                                         "resolved_from_ilspy_suggestion":  false,
+                                         "full_local_type_source_sha256":  "0e86fbde80080fe48d7c138b665405bf6cbda9d78b02405fe2d9cfddb6530931",
+                                         "root_method":  "GetDoorwayPairs",
+                                         "root_signatures":  [
+                                                                 "public Queue\u003cDoorwayPair\u003e GetDoorwayPairs(int? maxCount)"
+                                                             ],
+                                         "constructor_signatures":  [
+
+                                                                    ],
+                                         "selected_signatures":  [
+                                                                     "public Queue\u003cDoorwayPair\u003e GetDoorwayPairs(int? maxCount)",
+                                                                     "private bool CalculateShouldStraightenNextConnection()",
+                                                                     "private Vector3? CalculateCurrentPathDirection()",
+                                                                     "private IEnumerable\u003cDoorwayPair\u003e OrderDoorwayPairs(List\u003cDoorwayPair\u003e potentialPairs)",
+                                                                     "private List\u003cGameObjectChance\u003e CalculateOrderedListOfTiles()",
+                                                                     "private IEnumerable\u003cDoorwayPair\u003e GetPotentialDoorwayPairsForNonFirstTile()",
+                                                                     "private IEnumerable\u003cDoorwayPair\u003e GetPotentialDoorwayPairsForFirstTile()"
+                                                                 ],
+                                         "same_type_neighbor_depth":  1
+                                     }
+                                 ],
+                       "tool":  "ilspycmd",
+                       "version":  "11.0.0.9375"
+                   },
+    "selection":  {
+                      "same_type_direct_callees_only":  true,
+                      "injected_tile_constructors_included":  true,
+                      "exact_root_methods":  [
+                                                 "DunGen.DungeonFlow.GetLineAtDepth",
+                                                 "DunGen.GraphLine.GetRandomArchetype",
+                                                 "DunGen.InjectedTile.ShouldInjectTileAtPoint",
+                                                 "DunGen.BranchCountHelper.ComputeBranchCounts",
+                                                 "DunGen.DoorwayPairFinder.GetDoorwayPairs"
+                                             ],
+                      "forbidden_recaptures":  [
+                                                   "DungeonGenerator generation cluster",
+                                                   "TilePlacementData.NormalizedDepth",
+                                                   "Doorway.ProcessDoorwayObjects",
+                                                   "DungeonGenerator.ProcessGlobalProps",
+                                                   "GameObjectChanceTable.GetRandom",
+                                                   "RoundManager.SpawnSyncedProps"
+                                               ]
+                  },
+    "report":  {
+                   "sha256":  "da2132eddb988e3154c67e63eaade718fc9b631d930e02d8f1cafcd5ab264efd",
+                   "file":  "DUNGEN_GENERATION_CAPACITY_CROSS_TYPE_CALLEES_FOCUSED_DECOMPILE.txt",
+                   "excludes":  [
+                                    "game binaries",
+                                    "DunGen.dll",
+                                    "full type decompiles",
+                                    "unrelated methods",
+                                    "absolute local paths",
+                                    "user names"
+                                ]
+               }
+}

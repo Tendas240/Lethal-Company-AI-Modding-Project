@@ -1,0 +1,71 @@
+{
+  "schema_version": "phase-c3e3a-manifest-1",
+  "status": "EXACT_OXYDE_PACKAGE_VERIFIED_STATIC_READER_READY",
+  "date": "2026-09-20",
+  "main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "parent_pr_head": "d5f42a9ac79e4b084f67f5443b2e16b80218b61c",
+  "accepted_baseline": "S1.42AK",
+  "accepted_export": {
+    "path": "ProfileSources/S1.42AK/export.r2x",
+    "git_blob": "669cf2bf096544de84be9475de8f3f9eb594ce14",
+    "package": "XuXiaolan-CodeRebirth",
+    "version": "1.6.9",
+    "enabled": true
+  },
+  "native_manifest": {
+    "path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/MANIFEST.json",
+    "git_blob": "77e77022d3cbdd742d57013f66812c0e8a336c64",
+    "original_profile": "S1.42AI",
+    "qualification": "Exact package bytes reverified and package version independently matched to accepted S1.42AK export."
+  },
+  "package": {
+    "package": "XuXiaolan-CodeRebirth",
+    "version": "1.6.9",
+    "url": "https://gcdn.thunderstore.io/live/repository/packages/XuXiaolan-CodeRebirth-1.6.9.zip",
+    "zip_sha256": "a44a47d3f9eb049ccea83f8483c257f4faa2bf927a6df7e0bb70ff1504b2a5d6",
+    "zip_bytes": 263010364,
+    "assemblies": [
+      {
+        "member": "plugins/CodeRebirth/CodeRebirth.dll",
+        "sha256": "a35a06cf55a42dd1db9f3bcf68448d74590fdac8d9e80f57a811e78628c8fd36",
+        "source_sha256": "da9399bca105f905c5c1995a222534f1c3672f971bd322ca9bd36aebb34614f3",
+        "report": "XuXiaolan-CodeRebirth-0-DISCOVERY.json",
+        "spawn_hits": 118,
+        "owner_hits": 1267,
+        "classes": 709
+      },
+      {
+        "member": "plugins/CodeRebirth/com.local.Rodriguez.DuskReplacementEntities.CodeRebirth.dll",
+        "sha256": "308ddf095d807b719c204c48bee3ce26795281c6b399baf3ac105e6b9d258163",
+        "source_sha256": "c8acb8d1c4f1bc6f2810ae660170910abce9181bf979d3896e46dedcff46338b",
+        "report": "XuXiaolan-CodeRebirth-1-DISCOVERY.json",
+        "spawn_hits": 9,
+        "owner_hits": 75,
+        "classes": 27
+      }
+    ]
+  },
+  "evidence_files": [
+    {
+      "path": "AnalysisTools/inspect_universal_interior_c3e3a.py",
+      "sha256": "a007c1d6fa82cce3e6e684cea8b72ed31d11480aefb2c3a1e2ce59f7c55c19b4"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3A/OXYDE_PACKAGE_BUNDLE_INVENTORY.json",
+      "sha256": "9306cfe3132850b0a482ee9cbd4ee9e2c85a72530b3ce4a19ecd78b8a9e121d5"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3A/TOOLCHAIN.json",
+      "sha256": "b62fa83bdbe7f422d1e5ef2f043d7621db035a3561b06d555649e5f233893e0c"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3A/FINDINGS.md"
+    }
+  ],
+  "qualification": [
+    "ZIP and DLL hashes reverified; bundle member hashes newly measured from this exact ZIP.",
+    "One MonoBehaviour probe per parsed bundle; scene probe is in sharedAssets, not an entrance component.",
+    "No complete dependency closure, entrance extraction, topology clearance or runtime evidence.",
+    "No gameplay/config/controller or authoritative matrix change."
+  ]
+}

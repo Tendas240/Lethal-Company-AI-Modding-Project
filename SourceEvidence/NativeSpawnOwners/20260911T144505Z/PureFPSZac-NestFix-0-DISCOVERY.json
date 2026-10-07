@@ -1,0 +1,92 @@
+{
+  "package": "PureFPSZac-NestFix",
+  "version": "1.3.0",
+  "member": "NestFix.dll",
+  "assembly_sha256": "0a4072618c2a089283933b8aeebe4962c4e45d465518760c90b4c18eb2b70f20",
+  "source_sha256": "0e986b4d7d968c914b3d1c9376e5bfe739b3d6e56f94292a139f7d40246982b0",
+  "source_line_count": 364,
+  "class_listing": [
+    "Class <Module>",
+    "Class Microsoft.CodeAnalysis.EmbeddedAttribute",
+    "Class System.Runtime.CompilerServices.RefSafetyRulesAttribute",
+    "Class NestFix.Plugin",
+    "Class System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute"
+  ],
+  "declarations": [
+    {
+      "line": 110,
+      "text": "namespace Microsoft.CodeAnalysis"
+    },
+    {
+      "line": 114,
+      "text": "\tinternal sealed class EmbeddedAttribute : Attribute"
+    },
+    {
+      "line": 118,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 123,
+      "text": "\tinternal sealed class RefSafetyRulesAttribute : Attribute"
+    },
+    {
+      "line": 133,
+      "text": "namespace NestFix"
+    },
+    {
+      "line": 136,
+      "text": "\tpublic class Plugin : BaseUnityPlugin"
+    },
+    {
+      "line": 355,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 358,
+      "text": "\tinternal sealed class IgnoresAccessChecksToAttribute : Attribute"
+    }
+  ],
+  "spawn_surface_hits": [
+    {
+      "line": 325,
+      "text": "\t\t\tGameObject val5 = Object.Instantiate<GameObject>(enemyType.nestSpawnPrefab, val.Value, Quaternion.Euler(Vector3.zero));"
+    },
+    {
+      "line": 333,
+      "text": "\t\t\t\tval5.gameObject.GetComponentInChildren<NetworkObject>().Spawn(true);"
+    }
+  ],
+  "owner_or_patch_hits": [
+    {
+      "line": 244,
+      "text": "\t\t\tforeach (SpawnableEnemyWithRarity outsideEnemy in RoundManager.Instance.currentLevel.OutsideEnemies)"
+    },
+    {
+      "line": 252,
+      "text": "\t\t\t\t\t\tRoundManager.Instance.SpawnNestObjectForOutsideEnemy(enemyType, random);"
+    },
+    {
+      "line": 259,
+      "text": "\t\t[HarmonyPatch(typeof(RoundManager), \"SpawnNestObjectForOutsideEnemy\")]"
+    },
+    {
+      "line": 260,
+      "text": "\t\tprivate static bool SpawnNestObjectForOutsideEnemyPrefix(RoundManager __instance, EnemyType enemyType, Random randomSeed)"
+    },
+    {
+      "line": 335,
+      "text": "\t\t\tif (!Object.op_Implicit((Object)(object)val5.GetComponent<EnemyAINestSpawnObject>()))"
+    },
+    {
+      "line": 337,
+      "text": "\t\t\t\tDebug.LogError((object)(\"Error: No EnemyAINestSpawnObject component in nest object prefab that was just spawned on the host: '\" + ((Object)val5).name + \"'\"));"
+    },
+    {
+      "line": 341,
+      "text": "\t\t\t\t__instance.enemyNestSpawnObjects.Add(val5.GetComponent<EnemyAINestSpawnObject>());"
+    }
+  ],
+  "decompiler_stderr": "",
+  "decompiler_annotation_count": 74,
+  "qualification": "Source token discovery only: hits include non-enemy spawns, declarations and inactive code. No patch approval or exhaustive game/mod coverage. Dependencies may remain unresolved."
+}

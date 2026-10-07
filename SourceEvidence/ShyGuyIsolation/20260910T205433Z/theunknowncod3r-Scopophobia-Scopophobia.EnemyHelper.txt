@@ -1,0 +1,163 @@
+1: using System.Collections.Generic;
+2: using System.Linq;
+3: using LethalLib;
+4: using UnityEngine;
+5: 
+6: namespace Scopophobia;
+7: 
+8: internal static class EnemyHelper
+9: {
+10: 	public static void SetSpawnWeight(string enemyName, int spawnWeight, EnemyListType enemyListType, string planetName)
+11: 	{
+12: 		if ((Object)(object)StartOfRound.Instance == (Object)null)
+13: 		{
+14: 			Plugin.logger.LogError((object)$"Failed to set enemy spawn weight. StartOfRound Instance is null. (EnemyName: {enemyName}, SpawnWeight: {spawnWeight}, EnemyListType: {Utils.GetEnumName(enemyListType)}, PlanetName: {planetName})");
+15: 			return;
+16: 		}
+17: 		EnemyType enemyType = GetEnemyType(enemyName);
+18: 		if ((Object)(object)enemyType == (Object)null)
+19: 		{
+20: 			Plugin.logger.LogError((object)$"Failed to set enemy spawn weight. EnemyType is null. (EnemyName: {enemyName}, SpawnWeight: {spawnWeight}, EnemyListType: {Utils.GetEnumName(enemyListType)}, PlanetName: {planetName})");
+21: 			return;
+22: 		}
+23: 		SelectableLevel levelByName = LevelHelper.GetLevelByName(planetName);
+24: 		if ((Object)(object)levelByName == (Object)null)
+25: 		{
+26: 			Plugin.logger.LogError((object)$"Failed to set enemy spawn weight. SelectableLevel is null. (EnemyName: {enemyName}, SpawnWeight: {spawnWeight}, EnemyListType: {Utils.GetEnumName(enemyListType)}, PlanetName: {planetName})");
+27: 			return;
+28: 		}
+29: 		if (!LevelHelper.LevelHasEnemy(planetName, enemyName, enemyListType))
+30: 		{
+31: 			Plugin.logger.LogError((object)$"Failed to set enemy spawn weight. SelectableLevel does not contain enemy. (EnemyName: {enemyName}, SpawnWeight: {spawnWeight}, EnemyListType: {Utils.GetEnumName(enemyListType)}, PlanetName: {planetName})");
+32: 			return;
+33: 		}
+34: 		List<SpawnableEnemyWithRarity> enemyList = LevelHelper.GetEnemyList(levelByName, enemyListType);
+35: 		foreach (SpawnableEnemyWithRarity item in enemyList)
+36: 		{
+37: 			if ((Object)(object)item.enemyType == (Object)(object)enemyType)
+38: 			{
+39: 				item.rarity = spawnWeight;
+40: 				break;
+41: 			}
+42: 		}
+43: 		ScopophobiaPlugin.Instance.LogInfoExtended($"Set enemy spawn weight. (EnemyName: {enemyName}, SpawnWeight: {spawnWeight}, EnemyListType: {Utils.GetEnumName(enemyListType)}, PlanetName: {planetName})");
+44: 	}
+45: 
+46: 	public static void SetMaxSpawnCount(string enemyName, int maxSpawnCount, string planetName)
+47: 	{
+48: 		if ((Object)(object)StartOfRound.Instance == (Object)null)
+49: 		{
+50: 			Plugin.logger.LogError((object)$"Failed to set enemy max spawn count. StartOfRound Instance is null. (EnemyName: {enemyName}, MaxSpawnCount: {maxSpawnCount}, PlanetName: {planetName})");
+51: 			return;
+52: 		}
+53: 		if (!LevelHelper.IsCurrentLevel(planetName))
+54: 		{
+55: 			Plugin.logger.LogError((object)$"Failed to set enemy max spawn count. Planet name is not the current planet name. (EnemyName: {enemyName}, MaxSpawnCount: {maxSpawnCount}, PlanetName: {planetName})");
+56: 			return;
+57: 		}
+58: 		EnemyType enemyType = GetEnemyType(enemyName);
+59: 		if ((Object)(object)enemyType == (Object)null)
+60: 		{
+61: 			Plugin.logger.LogError((object)$"Failed to set enemy max spawn count. EnemyType is null. (EnemyName: {enemyName}, MaxSpawnCount: {maxSpawnCount}, PlanetName: {planetName})");
+62: 			return;
+63: 		}
+64: 		enemyType.MaxCount = maxSpawnCount;
+65: 		ScopophobiaPlugin.Instance.LogInfoExtended($"Set enemy max spawn count. (EnemyName: {enemyName}, MaxSpawnCount: {maxSpawnCount}, PlanetName: {planetName})");
+66: 	}
+67: 
+68: 	public static void SetProbabilityCurve(string enemyName, float[] values)
+69: 	{
+70: 		if (values == null)
+71: 		{
+72: 			Plugin.logger.LogError((object)("Failed to set enemy probability curve. Values are null. (EnemyName: " + enemyName + ")"));
+73: 			return;
+74: 		}
+75: 		if (values.Length == 0)
+76: 		{
+77: 			Plugin.logger.LogError((object)("Failed to set enemy probability curve. Values are empty. (EnemyName: " + enemyName + ")"));
+78: 			return;
+79: 		}
+80: 		if ((Object)(object)StartOfRound.Instance == (Object)null)
+81: 		{
+82: 			Plugin.logger.LogError((object)("Failed to set enemy probability curve. StartOfRound Instance is null. (EnemyName: " + enemyName + ", Values: " + string.Join(", ", values) + ")"));
+83: 			return;
+84: 		}
+85: 		EnemyType enemyType = GetEnemyType(enemyName);
+86: 		if ((Object)(object)enemyType == (Object)null)
+87: 		{
+88: 			Plugin.logger.LogError((object)("Failed to set enemy probability curve. EnemyType is null. (EnemyName: " + enemyName + ", Values: " + string.Join(", ", values) + ")"));
+89: 			return;
+90: 		}
+91: 		AnimationCurve val = Utils.CreateAnimationCurve(values);
+92: 		if (val == null)
+93: 		{
+94: 			Plugin.logger.LogError((object)("Failed to set enemy probability curve. AnimationCurve is invalid. (EnemyName: " + enemyName + ", Values: " + string.Join(", ", values) + ")"));
+95: 		}
+96: 		else
+97: 		{
+98: 			enemyType.probabilityCurve = val;
+99: 			ScopophobiaPlugin.Instance.LogInfoExtended("Set enemy probability curve. (EnemyName: " + enemyName + ", Values: " + string.Join(", ", values) + ")");
+100: 		}
+101: 	}
+102: 
+103: 	public static EnemyType GetEnemyType(string enemyName)
+104: 	{
+105: 		foreach (EnemyType enemyType in GetEnemyTypes())
+106: 		{
+107: 			if (enemyType.enemyName == enemyName)
+108: 			{
+109: 				return enemyType;
+110: 			}
+111: 		}
+112: 		try
+113: 		{
+114: 			EnemyType val = Resources.FindObjectsOfTypeAll<EnemyType>().Single((EnemyType x) => x.enemyName == enemyName);
+115: 			if (IsValidEnemyType(val) && NetworkUtils.IsNetworkPrefab(val.enemyPrefab))
+116: 			{
+117: 				ScopophobiaPlugin.Instance.LogInfoExtended("Found EnemyType \"" + val.enemyName + "\" from Resources.");
+118: 				return val;
+119: 			}
+120: 		}
+121: 		catch
+122: 		{
+123: 		}
+124: 		return null;
+125: 	}
+126: 
+127: 	public static List<EnemyType> GetEnemyTypes()
+128: 	{
+129: 		if ((Object)(object)StartOfRound.Instance == (Object)null)
+130: 		{
+131: 			return new List<EnemyType>();
+132: 		}
+133: 		HashSet<EnemyType> hashSet = new HashSet<EnemyType>(new EnemyTypeComparer());
+134: 		SelectableLevel[] levels = StartOfRound.Instance.levels;
+135: 		foreach (SelectableLevel val in levels)
+136: 		{
+137: 			IEnumerable<EnemyType> enumerable = (from e in val.Enemies.Concat(val.DaytimeEnemies).Concat(val.OutsideEnemies)
+138: 				select e.enemyType).Where(IsValidEnemyType);
+139: 			foreach (EnemyType item in enumerable)
+140: 			{
+141: 				hashSet.Add(item);
+142: 			}
+143: 		}
+144: 		return hashSet.ToList();
+145: 	}
+146: 
+147: 	public static bool IsValidEnemyType(EnemyType enemyType)
+148: 	{
+149: 		if ((Object)(object)enemyType == (Object)null)
+150: 		{
+151: 			return false;
+152: 		}
+153: 		if (string.IsNullOrWhiteSpace(enemyType.enemyName))
+154: 		{
+155: 			return false;
+156: 		}
+157: 		if ((Object)(object)enemyType.enemyPrefab == (Object)null)
+158: 		{
+159: 			return false;
+160: 		}
+161: 		return true;
+162: 	}
+163: }

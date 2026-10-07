@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-04",
+  "game": "Lethal Company V81",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "accepted_baseline": {
+    "build_id": "S1.42U",
+    "profile": "Profiles/LC V1 S1.42U BCMER 1.71.0 Reactivation Gate.r2z",
+    "sha256": "ff5fdebf22fefdd5515b95677174290f9666e491447138f074e5b65673173969",
+    "runtime_verdict": "PASS"
+  },
+  "previous_tested_candidate": {
+    "build_id": "S1.42W",
+    "profile": "Profiles/LC V1 S1.42W Lift-Off Microwave Retune.r2z",
+    "sha256": "f34ebcf18bd2b475da5546e6c391bd15bf70df5648b5f69ffb668d196df057dc",
+    "technical_verdict": "PASS_ENOUGH_TO_ITERATE",
+    "tuning_verdict": "REJECTED",
+    "reason": "16f jetpackAcceleration did not produce a clearly perceived straight-up lift-off difference; microwave 0.15 was not encountered/tested",
+    "runtime_log_sha256": "2610e250d738a8fcb2dadda18262b89d87f527f27d8e854f59044dc4cdca8a52"
+  },
+  "latest_built_candidate": {
+    "build_id": "S1.42X",
+    "profile": "Profiles/LC V1 S1.42X Jetpack Pikmin ACU Retune.r2z",
+    "sha256": "57d8f9251236cf40eacf4366a21646ae8c51500b9ed6fa79cbc9b56c8daa611d",
+    "status": "BUILD_PASS_RUNTIME_VALIDATION_REQUIRED_NOT_ACCEPTED",
+    "build_run": 33867778014,
+    "build_commit": "4c1381a0ef09079f1417951590d906edb3c04c96",
+    "built_directly_from": "S1.42U",
+    "zip_members": 333,
+    "changed_existing_member_count": 15,
+    "added_member_count": 2,
+    "mod_state_changes": [],
+    "mod_additions": [],
+    "mod_removals": []
+  },
+  "s142x_changes": {
+    "jetpack": {
+      "base_owner_value": 10.0,
+      "diagnostic_target": 32.0,
+      "if_no_clear_liftoff_difference": "stop increasing jetpackAcceleration and identify the vertical force/ramp owner",
+      "dll": "BepInEx/plugins/S142XJetpackAcceleration/S142XJetpackAcceleration.dll",
+      "dll_sha256": "8da398b25579a67527ff9ddee580344a87520823e8577cdd6a0771670f44ff1f"
+    },
+    "late_game_upgrades": {
+      "jet_fuel_initial_percent": 10,
+      "jet_fuel_incremental_percent": 10,
+      "jetpack_thrusters_initial_percent": 30,
+      "jetpack_thrusters_incremental_percent": 20
+    },
+    "code_rebirth_acu": {
+      "key": "code_rebirth:air_control_unit",
+      "curve_scale": 0.5,
+      "expected_curve_key_count": 18,
+      "dependency_versions": {
+        "CodeRebirth": "1.6.9",
+        "DawnLib": "0.9.25",
+        "DawnLib.Dusk": "0.9.25"
+      },
+      "dll": "BepInEx/plugins/S142XCodeRebirthAcuSpawnTuning/S142XCodeRebirthAcuSpawnTuning.dll",
+      "dll_sha256": "d10a09e065cd314f10a785eec178295152148b36893ba30cb43d141e0697ebb6"
+    },
+    "lethalmin": {
+      "main_config": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+      "per_type_config_dir": "BepInEx/config/Pikmin/",
+      "indoor_spawn_chance": 0.08,
+      "carry_strength": {
+        "Blue Pikmin": 3,
+        "Red Pikmin": 3,
+        "Yellow Pikmin": 3,
+        "White Pikmin": 3,
+        "Winged Pikmin": 3,
+        "Rock Pikmin": 3,
+        "Ice Pikmin": 3,
+        "Glow Pikmin": 3,
+        "Bulbmin": 3,
+        "Purple Pikmin": 30
+      }
+    },
+    "functional_microwave_volume": 0.15,
+    "functional_microwave_runtime_volume_validation": "UNTESTED_NO_SPAWN_IN_S1.42W",
+    "immortal_snail_rarity": 40,
+    "immortal_snail_max": 2
+  },
+  "permanent_invariants": {
+    "BCMER": "1.71.0",
+    "compatibility_fixes": "1.3.14",
+    "compatibility_dll_sha256": "3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960",
+    "enemy_isolation": false,
+    "thumper_bite_limit": 3,
+    "crawler_attack_blacklisted": false,
+    "puffer_to_pikmin_protection": true,
+    "baboon_bird_adapter_enabled": true,
+    "normal_enemy_population": true,
+    "consistent_spawn_times": true,
+    "lethal_level_loader_baseline_git_blob": "14dcd076692cbc54e073ad281a63d046b0976e00"
+  },
+  "monitor_only": [
+    "S1.42W one-off LethalMin PikminManager.DespawnLumiknulls Collection was modified exception in teardown/despawn context"
+  ],
+  "controllers": {
+    "buildspec_enabled": false,
+    "buildspec_state": "IDLE_AFTER_S1.42X_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "runtime_active_build": "S1.42X"
+  },
+  "next_action": "Import S1.42X with all custom files preserved, run focused runtime gate, compare straight-up jetpack lift-off, verify ACU 18-curve scale marker, Pikmin carry/spawn tuning and permanent invariants, then commit complete log under RuntimeInbox/Current",
+  "deferred": [
+    "Functional Microwave spawn rarity",
+    "equal interior probabilities and future-interior rule implementation",
+    "CullFactory junkrooms/shatteredrooms exceptions",
+    "Mausoleum fog reduction",
+    "BCMER EventType 8x12.5% balancing",
+    "final long full-stack acceptance",
+    "cosmetic documentation cleanup"
+  ]
+}

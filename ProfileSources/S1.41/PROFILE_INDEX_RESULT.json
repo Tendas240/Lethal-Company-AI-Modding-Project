@@ -1,0 +1,11 @@
+{
+  "build_id": "S1.41",
+  "profile_path": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+  "profile_name": "LC V1 S1.41 BCMER Reactivation",
+  "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+  "zip_members": 330,
+  "snapshot": {
+    "entries": 330,
+    "text_entries": 329
+  }
+}

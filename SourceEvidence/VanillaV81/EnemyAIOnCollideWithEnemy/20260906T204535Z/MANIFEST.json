@@ -1,0 +1,47 @@
+{
+    "schema_version":  1,
+    "purpose":  "V81 EnemyAI.OnCollideWithEnemy focused native source evidence for MouthDog pre-successor base-method safety analysis",
+    "capture_utc":  "2026-09-06T20:45:35Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "repository_main_at_capture":  "9cff45e603ca3f06118868ac1c1f899ef0292d1f",
+    "bound_prior_evidence":  "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json",
+    "game_contract":  "Exact same Lethal Company V81 assembly/build/executable provenance as the successful MouthDogAI capture; mismatches fail closed before publication.",
+    "source_assembly":  {
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll",
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "size_bytes":  2034688
+                        },
+    "game_executable":  {
+                            "logical_path":  "Lethal Company.exe",
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1"
+                        },
+    "steam":  {
+                  "app_id":  "1966720",
+                  "appmanifest_logical_name":  "appmanifest_1966720.acf",
+                  "appmanifest_sha256":  "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                  "buildid":  "22825947"
+              },
+    "decompiler":  {
+                       "tool":  "ilspycmd",
+                       "package_version":  "11.0.0.9375",
+                       "package_source":  "https://api.nuget.org/v3/index.json",
+                       "version_output":  "ilspycmd: 11.0.0.9375\r\nICSharpCode.Decompiler: 11.0.0.9375",
+                       "type":  "EnemyAI",
+                       "full_local_type_decompile_sha256":  "ef09a8a61e87d241b0bdea688aaa6b36ae501cd9dd02e0b1595a1a275a2d0faa"
+                   },
+    "published_evidence":  {
+                               "file":  "ENEMYAI_ONCOLLIDEWITHENEMY_FOCUSED_DECOMPILE.txt",
+                               "sha256":  "7ee45c2dd113b413ba1614a51b453b1c7b2953cd055f82ff75debf824a1da2b6",
+                               "scope":  [
+                                             "EnemyAI.OnCollideWithEnemy",
+                                             "MeetsStandardEnemyCollisionConditions when present in exact EnemyAI type"
+                                         ],
+                               "excludes":  [
+                                                "Assembly-CSharp.dll",
+                                                "full Assembly-CSharp decompile",
+                                                "full EnemyAI type decompile",
+                                                "absolute local paths",
+                                                "Windows user name"
+                                            ]
+                           }
+}

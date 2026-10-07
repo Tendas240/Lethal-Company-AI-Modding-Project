@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-BMDSFIX1",
+  "profile_path": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "profile_name": "LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix",
+  "sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "zip_members": 337,
+  "snapshot_dir": "ProfileSources/S1.42AK-BMDSFIX1",
+  "snapshot": {
+    "entries": 337,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "source_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "baseline": "S1.42AK",
+  "status": "PARTIAL_PHASE_C3_SOURCE_CHECKPOINT",
+  "matrix_changed": false,
+  "runtime_test_authorized": false,
+  "inputs": [
+    {
+      "path": "ProfileSources/S1.42AK/export.r2x",
+      "git_blob_sha": "669cf2bf096544de84be9475de8f3f9eb594ce14"
+    },
+    {
+      "path": "ProfileSources/S1.42AK/BepInEx/config/LethalLevelLoader.cfg",
+      "git_blob_sha": "14dcd076692cbc54e073ad281a63d046b0976e00"
+    },
+    {
+      "path": "RuntimeEvidence/S1.42AK/20260918T172838Z/raw/LogOutput.log",
+      "git_blob_sha": "a9fc4ab43f5d790b5e97a80d4839f36d4b928c0a"
+    },
+    {
+      "path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/TeamXiaolan-DawnLib-0-DISCOVERY.json",
+      "git_blob_sha": "9a7497f6fb3403e16f222b10e694b47a0f20d6f8"
+    },
+    {
+      "path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/XuXiaolan-CodeRebirth-0-DISCOVERY.json",
+      "git_blob_sha": "31c4d1ceed2b9f5a7905a177b533f1d0e131b5a5"
+    },
+    {
+      "path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/MANIFEST.json",
+      "git_blob_sha": "77e77022d3cbdd742d57013f66812c0e8a336c64"
+    },
+    {
+      "path": "ProfileSources/S1.42AK/BepInEx/config/Black Mesa Team.Black Mesa Half Life Moon Interior.cfg",
+      "git_blob_sha": "1d2fcfc590493d4f9d8ab656c156b596ea7102e6"
+    },
+    {
+      "path": "ProfileSources/S1.42AK/BepInEx/config/CodeRebirth.cfg",
+      "git_blob_sha": "6931bcdb5a8219156cd93c90ec4a03e444d45828"
+    }
+  ],
+  "package_manifest": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/MANIFEST.json",
+  "package": "TeamXiaolan-DawnLib-0.9.25",
+  "package_zip_sha256": "c33c608869763f916f07e5ddf47224134f98bab15d044bd809a46ef2d3d538c3",
+  "assembly_sha256": "9b4826a16eec1fa5091fb4246d010005bc9c3e04282034e8d067b499ab5c125b",
+  "capture_tools": {
+    "dnfile": "0.18.0",
+    "dncil": "1.0.2"
+  },
+  "outputs": [
+    {
+      "path": "AnalysisTools/inspect_universal_interior_c3a.py",
+      "sha256": "0deff76ea3f86880587898866708d08da1c2d52f118ebaec01f5d130bd1bf0f3",
+      "bytes": 5230
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3A/DAWNLIB_TAG_AND_MATCHING_IL.json",
+      "sha256": "f126c9f99496a9388b0ca696c0ac98c817cbad4914f27edb6ed3502f4d1201bf",
+      "bytes": 87216
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3A/FINDINGS.md",
+      "sha256": "fa4d3364cf8c44d6f6fdd15d1018c412261767deac455ca759b3ecb8be345caa",
+      "bytes": 8256
+    }
+  ],
+  "checks": [
+    "Exact accepted runtime log SHA-256 verified",
+    "Eight cited runtime lines checked; exactly two matching reports, both Offense",
+    "13 required IL methods captured from exact pinned assembly",
+    "Package ZIP and four DLL hashes matched existing repository manifest"
+  ],
+  "qualification": "No final runtime tag dump, no LLL tag propagation proof, no External scene topology or traversal proof; C3 remains incomplete."
+}

@@ -1,0 +1,218 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "runtime_accepted"
+  },
+  "latest_valid_runtime_evidence": {
+    "build": "S1.42S",
+    "path": "RuntimeEvidence/S1.42S/20260903T205550Z/",
+    "log_sha256": "9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea",
+    "verdict": "PASS_FOCUSED_BABOON_PIKMIN_LIFECYCLE_RESTORED",
+    "acceptance_doc": "Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md",
+    "attackers": [
+      "Yellow Pikmin_IkVZWQe",
+      "Yellow Pikmin_3wnH",
+      "Yellow Pikmin_ruCpzY"
+    ],
+    "hawk_death_time": "20:52:32.546",
+    "post_death_stale_attack_hits": 0,
+    "all_three_recoverable": true,
+    "all_three_reassigned_to_player": true,
+    "corpse_carry_to_onion_pass": true,
+    "work_state_no_task_count": 0,
+    "leader_null_count": 0,
+    "forbidden_adapter_disable_marker_count": 0,
+    "removed_s142r_latched_death_guard_marker_count": 0,
+    "one_way_collision_guard_exercised": true,
+    "bite_or_grab_failsafe_exercised": false,
+    "non_blocking_teardown_observation": {
+      "type": "LethalMin PikminNoticeZone NetworkObjectReference ArgumentException",
+      "phase": "lobby disconnect after ShipOnion save",
+      "classification": "monitor_only_non_blocking",
+      "user_facing_regression_observed": false
+    }
+  },
+  "corrected_root_cause": {
+    "owner": "project compatibility plugin",
+    "bad_behavior": "disabled entire LethalMin.BaboonBirdPikminEnemy component",
+    "suppressed_native_path": "PikminEnemy.Update -> RemoveAndDisableTriggers -> RemoveAllPikmin(3)",
+    "configuration_regression": false,
+    "s141_to_s142r_config_diffs": {
+      "lethalmin": 0,
+      "sellbodies": 0,
+      "starlancer_ai_fix": 0
+    }
+  },
+  "current_candidate": {
+    "build": "S1.42S",
+    "name": "Baboon Adapter Lifecycle Restore",
+    "profile": "Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z",
+    "sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee",
+    "status": "focused_runtime_accepted_isolated_regression_pass",
+    "base_profile": "Profiles/LC V1 S1.42R LethalMin Latched Dead Target Completion.r2z",
+    "base_sha256": "009bb12c57410ebb851c6604b588ab8f04f7f0ea618fd497696d538d7b4f0101",
+    "compatibility_plugin": {
+      "version": "1.3.14",
+      "embedded_dll_sha256": "3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960"
+    },
+    "exact_change": [
+      "do not install S1.42R AttackEnemyTask dead-target bridge",
+      "do not disable BaboonBirdPikminEnemy",
+      "block exact BaboonBirdPikminEnemy.OnColideWithPikmin(PikminAI)",
+      "block exact BaboonBirdPikminEnemy.BitePikmin(PikminAI)",
+      "retain Baboon-Hawk PikminAI.GrabPikmin failsafe",
+      "preserve native PikminEnemy.Update death/unlatch lifecycle"
+    ],
+    "build_verification": {
+      "run_number": 56,
+      "run_id": 33803720934,
+      "conclusion": "success",
+      "generated_commit": "3bb900342c41595504bf9ce6879477aad22a7d49",
+      "zip_members": 331,
+      "readable_snapshot_files": 330,
+      "changed_existing_members": [
+        "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+        "export.r2x"
+      ],
+      "config_delta_from_s142r": "none",
+      "package_delta_from_s142r": "none"
+    },
+    "runtime_acceptance": {
+      "document": "Current/69_S1.42S_RUNTIME_ACCEPTANCE_BABOON_PIKMIN_LIFECYCLE.md",
+      "evidence": "RuntimeEvidence/S1.42S/20260903T205550Z/",
+      "log_sha256": "9e0f771144ceb1679f340d5df7ff393df92a8541d7cfe27231a60bd514c6bfea",
+      "scope": "Baboon Hawk/Pikmin isolated regression gate",
+      "final_full_gameplay_baseline_promoted": false
+    },
+    "is_final_full_gameplay_baseline": false,
+    "acceptance_scope": "isolated Baboon-Hawk/Pikmin lifecycle gate"
+  },
+  "temporary_isolated_test_state": {
+    "enemy_isolation_enabled": true,
+    "diagnostic_config_path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+    "diagnostic_key": "Isolated Enemy Regression",
+    "diagnostic_value": true,
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn",
+    "bcmer_version": "1.71.0",
+    "bcmer_enabled": false,
+    "thumper_bite_limit": 3,
+    "crawler_in_attack_blacklist": false,
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+    "restore_baseline_profile_sha256": "22901e5459be4e10d30bb9011bb25e80899bd8b9838a9f487d2a800559777eb3"
+  },
+  "runtime_route": {
+    "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+    "value": "S1.42S",
+    "reason": "S1.42S is the latest built/runtime-ingested build; S1.42T is planned only."
+  },
+  "build_controller": {
+    "path": "BuildSpecs/current.json",
+    "enabled": false,
+    "build_id": "IDLE_AFTER_S1.42S_FOCUSED_RUNTIME_PASS_AWAITING_S1.42T_RESTORE_BUILD",
+    "base_profile": "Profiles/LC V1 S1.42S Baboon Adapter Lifecycle Restore.r2z",
+    "base_sha256": "addc5f0cd2508bf821e4e8eda80aca0f94234c7f2823c9acc6e8655060790fee",
+    "guard_workflow": {
+      "name": "Build canonical profile",
+      "run_number": 58,
+      "run_id": 33806723503,
+      "conclusion": "success",
+      "meaning": "disabled BuildSpec guard passed; no S1.42T profile was built"
+    }
+  },
+  "next_action": {
+    "type": "build_and_runtime_test_normal_enemy_restore",
+    "build_id": "S1.42T",
+    "plan": "BuildSpecs/S1.42T_PLAN.md",
+    "instruction": "Build from S1.42S with only the temporary EnemyIsolation diagnostic disabled, preserve accepted LethalMin/compatibility deltas, keep exact BCMER 1.71.0 disabled, then runtime-validate that normal non-isolated enemies return.",
+    "do_not_do_before": [
+      "do not upgrade BCMER",
+      "do not re-enable BCMER in the same first restore gate",
+      "do not modify compatibility patch code",
+      "do not perform unrelated gameplay tuning",
+      "do not mix repository structural migration into S1.42T"
+    ]
+  },
+  "permanent_engineering_policy": {
+    "project_local_patch_safety": {
+      "mandatory": true,
+      "document": "Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md",
+      "principles": [
+        "use the smallest exact patch surface",
+        "inspect inheritance and native lifecycle before patching",
+        "map secondary cleanup/state/network responsibilities",
+        "never disable a whole foreign component for one interaction unless its complete lifecycle is proven safe to suppress",
+        "prefer prevention over manual state repair",
+        "isolate risky patch changes from unrelated package/config changes",
+        "record exact DLL/profile hashes and archive delta",
+        "runtime-test target behavior plus adjacent and reverse/native lifecycle behavior",
+        "compile/startup success alone is not acceptance",
+        "rollback or narrow collateral-damage patches instead of stacking compensating repair layers"
+      ],
+      "future_build_plan_requirement": "Every build plan introducing or materially changing a custom patch must include a Patch Safety Review.",
+      "origin_case": "S1.42R BaboonBirdPikminEnemy component disable suppressed inherited PikminEnemy.Update death/unlatch cleanup."
+    }
+  },
+  "updated_at": "2026-09-03T23:00:00+02:00",
+  "handover": {
+    "status": "READY",
+    "final_handover": "Current/71_HANDOVER_S1.42S_TO_NEXT_FINAL.md",
+    "audit": "Current/72_REPOSITORY_HANDOVER_AUDIT_S1.42S.md",
+    "audit_verdict": "PASS",
+    "next_restore_contract": "Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md",
+    "next_build_plan": "BuildSpecs/S1.42T_PLAN.md",
+    "final_post_write_audit": "PASS",
+    "s142t_profile_exists": false,
+    "runtime_inbox_current": "empty_except_gitkeep"
+  },
+  "restore_contract": {
+    "document": "Current/70_S1.42S_POST_GATE_NORMAL_ENEMY_RESTORE_CONTRACT.md",
+    "next_build_id": "S1.42T",
+    "next_build_name": "Normal Enemy Restore",
+    "next_build_status": "planned_not_built",
+    "required_change": [
+      "set Isolated Enemy Regression = false"
+    ],
+    "preserve": [
+      "S139CompatibilityFixes v1.3.14",
+      "Thumper Bite Limit = 3",
+      "Crawler absent from LethalMin Attack Blacklist",
+      "all accepted permanent compatibility fixes"
+    ],
+    "bcmer_for_first_restore_gate": {
+      "version": "1.71.0",
+      "enabled": false,
+      "rationale": "keep normal-enemy restoration isolated from BCMER restoration"
+    },
+    "following_gate": "Re-enable exact BCMER 1.71.0 only after S1.42T normal-enemy restoration passes."
+  },
+  "open_issues": [
+    {
+      "id": "LETHALMIN_DISCONNECT_NOTICEZONE_NETWORKOBJECTREFERENCE",
+      "severity": "monitor_only",
+      "blocking": false,
+      "observation": "One ArgumentException during lobby disconnect after ShipOnion save: NetworkObjectReference can only be created from spawned NetworkObjects.",
+      "owner": "LethalMin.PikminNoticeZone.OnTriggerStay",
+      "action": "Do not patch unless reproducible/user-facing and supported by Patch Safety Review."
+    }
+  ],
+  "repository_maintenance": {
+    "plan": "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt",
+    "status": "pending_separate_maintenance_phase",
+    "note": "The S1.42S critical runtime gate is closed, but migration must not be mixed with S1.42T gameplay restoration."
+  },
+  "historical_evidence_policy": {
+    "preserve_runtime_evidence": [
+      "S1.42Q",
+      "S1.42R",
+      "S1.42S"
+    ],
+    "preserve_failed_approaches": true,
+    "preserve_restore_baselines": true,
+    "deleted_during_handover": []
+  }
+}

@@ -1,0 +1,2347 @@
+[
+  {
+    "index": 0,
+    "path": "BepInEx/cache/scenebundles.txt",
+    "size": 2175,
+    "sha256": "a733940a61999283c3e956a2e776c83d29ddb4d25bb7c0b5532175ff9a959df8",
+    "text_snapshot": true
+  },
+  {
+    "index": 1,
+    "path": "BepInEx/config/.LCMaxSoundsFix.cfg",
+    "size": 621,
+    "sha256": "0093bae709cec57fd3f4f3bc5af22231b16944a666768e7ecf879430693f73a2",
+    "text_snapshot": true
+  },
+  {
+    "index": 2,
+    "path": "BepInEx/config/347956.JPOGRaptor.cfg",
+    "size": 3243,
+    "sha256": "7da365de5cfc107acaa4f4b0b9a094f1e17d9c21e887e984cc28163a2c29a241",
+    "text_snapshot": true
+  },
+  {
+    "index": 3,
+    "path": "BepInEx/config/347956.JPOGTrex.cfg",
+    "size": 3112,
+    "sha256": "ffe06ab5f19918c6fddfde60cb8497f6b26c20b913c2c9b9fdbc781060a6cf52",
+    "text_snapshot": true
+  },
+  {
+    "index": 4,
+    "path": "BepInEx/config/4902.No_Console_Spam.cfg",
+    "size": 16737,
+    "sha256": "de54c4276b3ced20396ca448d947c67edcdbbb753a488781185bc2cd6576f989",
+    "text_snapshot": true
+  },
+  {
+    "index": 5,
+    "path": "BepInEx/config/ainavt.lc.lethalconfig.cfg",
+    "size": 2467,
+    "sha256": "b6be5413c0261b541a806d02e08294a7d9b89c8658b2e9fcfba97dcb4df6ffd3",
+    "text_snapshot": true
+  },
+  {
+    "index": 6,
+    "path": "BepInEx/config/AntlerShed.EnemySkinRegistry/config.json",
+    "size": 10911,
+    "sha256": "71dd3a1dd40cf34bedaef27610d49251833902cf54a3712431452b976bb44336",
+    "text_snapshot": true
+  },
+  {
+    "index": 7,
+    "path": "BepInEx/config/AntlerShed.LethalCompany.EnemySkinKit.cfg",
+    "size": 282,
+    "sha256": "dc131a1c90bc20ccd33404542099280622e237229b418a30019cd8987af32d1e",
+    "text_snapshot": true
+  },
+  {
+    "index": 8,
+    "path": "BepInEx/config/antlershed.lethalcompany.enemyskinregistry.cfg",
+    "size": 1012,
+    "sha256": "ad1dcbe03e67f735a975038d138dad952d407fc2c63ee4a0504d765d6ce59d63",
+    "text_snapshot": true
+  },
+  {
+    "index": 9,
+    "path": "BepInEx/config/ArcadiaMoonPlugin.cfg",
+    "size": 506,
+    "sha256": "57372a9e0e4226966b8b869e01298e289d8190c4e837f042096e3d2385375e6b",
+    "text_snapshot": true
+  },
+  {
+    "index": 10,
+    "path": "BepInEx/config/AriDev.JesterFree.cfg",
+    "size": 410,
+    "sha256": "fcd83df206617cfa86815687fe80b1c256eebbc8cd751ef45d830101e68e09ea",
+    "text_snapshot": true
+  },
+  {
+    "index": 11,
+    "path": "BepInEx/config/AsyncLoggers/Config.cfg",
+    "size": 2667,
+    "sha256": "5d7f5ea50c8161141ab524e48cee8efd63dbac0d16f8fb15ed9af47783beda1a",
+    "text_snapshot": true
+  },
+  {
+    "index": 12,
+    "path": "BepInEx/config/AsyncLoggers/LogLevels.cfg",
+    "size": 59946,
+    "sha256": "3d2965901bc52161b0a952fff3d21d9b55ef59daeaf9eb48f838d5afa5fd9811",
+    "text_snapshot": true
+  },
+  {
+    "index": 13,
+    "path": "BepInEx/config/atomic.terminalapi.cfg",
+    "size": 283,
+    "sha256": "eff753af6656b03fa484387510f637d0a95c0abc3d0dacd9f5625d974b88d7a6",
+    "text_snapshot": true
+  },
+  {
+    "index": 14,
+    "path": "BepInEx/config/AudioKnight.StarlancerAIFix.cfg",
+    "size": 374,
+    "sha256": "c24186ba7fd1a703aacf228b999ee22364109b320effa3d634d84c6fe44edbc6",
+    "text_snapshot": true
+  },
+  {
+    "index": 15,
+    "path": "BepInEx/config/AutoHookGenPatcher.cfg",
+    "size": 671,
+    "sha256": "a4fe9898425531dc195138137c2bd018734399e0b79f64c8448730782d921e1a",
+    "text_snapshot": true
+  },
+  {
+    "index": 16,
+    "path": "BepInEx/config/BepInEx.cfg",
+    "size": 5494,
+    "sha256": "abeb1c98228e52d149a1e8a7f98ce4ba4a9e0a23d21479982de53979c8018bcd",
+    "text_snapshot": true
+  },
+  {
+    "index": 17,
+    "path": "BepInEx/config/bgn.pizzatowerescapemusic.cfg",
+    "size": 469,
+    "sha256": "c0ecea56fb7cf486a57b80528197d7735ffe161b7ce31981d88bdfcbf311000e",
+    "text_snapshot": true
+  },
+  {
+    "index": 18,
+    "path": "BepInEx/config/Black Mesa Team.Black Mesa Half Life Moon Interior.cfg",
+    "size": 11125,
+    "sha256": "ce558f510956c04d25b41c59b11f88e38040cd57e5129db1f86ec91a29da9f44",
+    "text_snapshot": true
+  },
+  {
+    "index": 19,
+    "path": "BepInEx/config/bootstrap.cfg",
+    "size": 415,
+    "sha256": "0333dc7f42a4ab33f477cd4ae9fa0f26b36a199b3de9a9b3ee5bf998855aed82",
+    "text_snapshot": true
+  },
+  {
+    "index": 20,
+    "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/AllEnemies.cfg",
+    "size": 37913,
+    "sha256": "b0c7d4e16496f8a4014bf8ff4011e179c5012d9a44cb2c5f756e7189d1e3fbcf",
+    "text_snapshot": true
+  },
+  {
+    "index": 21,
+    "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/CoreProperties.cfg",
+    "size": 13563,
+    "sha256": "d828cd42c11c1a723bfb56fe36721c4b4092471c4102f41cc62ad926a5ae7de8",
+    "text_snapshot": true
+  },
+  {
+    "index": 22,
+    "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/CustomEvents.cfg",
+    "size": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "text_snapshot": true
+  },
+  {
+    "index": 23,
+    "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Difficulty_Settings.cfg",
+    "size": 19308,
+    "sha256": "e141800fa3c506085e9d0685ed7b95aa5ce360b8030c7add03efbc5e954fa8a2",
+    "text_snapshot": true
+  },
+  {
+    "index": 24,
+    "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Enemy_Scrap_Weights_Settings.cfg",
+    "size": 915,
+    "sha256": "dc6cf6e943637dec9bdab09aaf03c07e064d52d1b25d4bbc63173fb566af8c04",
+    "text_snapshot": true
+  },
+  {
+    "index": 25,
+    "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Language.cfg",
+    "size": 6473,
+    "sha256": "44fbe31bf7197e1bd17ef4c7fa7fa5430d38d2a75b59c65a5f23e31dbb93c3ce",
+    "text_snapshot": true
+  },
+  {
+    "index": 26,
+    "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/LevelProperties.cfg",
+    "size": 35618,
+    "sha256": "e40fc3d8ce7e3bf84a565fef94245d93f2364d26d4d8e6b1e2dc7bdb1b5776dc",
+    "text_snapshot": true
+  },
+  {
+    "index": 27,
+    "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/ModdedEvents.cfg",
+    "size": 324992,
+    "sha256": "c1122c1b3acaf5ff5173f690ce0efda7aa598a9a3e6fba5b7ccb46472ff4c104",
+    "text_snapshot": true
+  },
+  {
+    "index": 28,
+    "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/UI_Settings.cfg",
+    "size": 4997,
+    "sha256": "1bcbf13334bb11de92bc1d5b8ccd9dfa230da1285108f71692f52a4a4f28b68f",
+    "text_snapshot": true
+  },
+  {
+    "index": 29,
+    "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/VanillaEvents.cfg",
+    "size": 548837,
+    "sha256": "45e96db58465bcbe80e1ac8658c20bb8c82b6d01087f08e9045b450e5266e65c",
+    "text_snapshot": true
+  },
+  {
+    "index": 30,
+    "path": "BepInEx/config/BrutalCompanyMinusExtraReborn/Weather_Settings.cfg",
+    "size": 2494,
+    "sha256": "45f6db427f2b00cc58379c739058714a0b3474ec00a895d613964a980b493c12",
+    "text_snapshot": true
+  },
+  {
+    "index": 31,
+    "path": "BepInEx/config/butterystancakes.lethalcompany.barberfixes.cfg",
+    "size": 1254,
+    "sha256": "b01e04cebb7bbe7bac412dd8ab3891c01f34888502750798c201c3fa87e88fcc",
+    "text_snapshot": true
+  },
+  {
+    "index": 32,
+    "path": "BepInEx/config/butterystancakes.lethalcompany.butterybalance.cfg",
+    "size": 21485,
+    "sha256": "e6fa78c790314cc0418c5fc3b913697c39255d9637e60b831277860de399701b",
+    "text_snapshot": true
+  },
+  {
+    "index": 33,
+    "path": "BepInEx/config/butterystancakes.lethalcompany.butteryfixes.cfg",
+    "size": 4637,
+    "sha256": "a3e5ffa153946a61983fa463bf35b5d880445a6a1f464e0796cbc172200d765e",
+    "text_snapshot": true
+  },
+  {
+    "index": 34,
+    "path": "BepInEx/config/butterystancakes.lethalcompany.enemysoundfixes.cfg",
+    "size": 2109,
+    "sha256": "2c0e9b9236236af8797e28a3e875db8f9e7b203c7b334e7ad83e6e0619ecb469",
+    "text_snapshot": true
+  },
+  {
+    "index": 35,
+    "path": "BepInEx/config/butterystancakes.lethalcompany.jetpackfixes.cfg",
+    "size": 631,
+    "sha256": "0fc19f02fc841b4f567b894026e1d33be7a69aa54f3fe3950633e3d8f28c1c60",
+    "text_snapshot": true
+  },
+  {
+    "index": 36,
+    "path": "BepInEx/config/butterystancakes.lethalcompany.maskfixes.cfg",
+    "size": 2350,
+    "sha256": "08b0938e3f99b896a483c24b6cdba404020450fa9928df84334593287fc13c64",
+    "text_snapshot": true
+  },
+  {
+    "index": 37,
+    "path": "BepInEx/config/butterystancakes.lethalcompany.spawncyclefixes.cfg",
+    "size": 1615,
+    "sha256": "b0cc33ff730335145d1fbb5f768672db9f2e9133baf94afd83137dd39dd0b4e8",
+    "text_snapshot": true
+  },
+  {
+    "index": 38,
+    "path": "BepInEx/config/Ccode.SirenHead.cfg",
+    "size": 701,
+    "sha256": "1b8f30ba6d941de439de9758f836638062f2cea16190d0dff30f9f018b8cfe94",
+    "text_snapshot": true
+  },
+  {
+    "index": 39,
+    "path": "BepInEx/config/CelestialTint.cfg",
+    "size": 1099,
+    "sha256": "e17cb0432d2ed3ad6071fef7309872c723eb5471fcfa3005b2d9bfbdf399b0e7",
+    "text_snapshot": true
+  },
+  {
+    "index": 40,
+    "path": "BepInEx/config/coderCleric.Poltergeist.cfg",
+    "size": 5251,
+    "sha256": "afa081e192b6928d2af10ffcbcd87d1bde4b9791563160ebbde5cbf9a7871348",
+    "text_snapshot": true
+  },
+  {
+    "index": 41,
+    "path": "BepInEx/config/com.elitemastereric.coroner.cfg",
+    "size": 769,
+    "sha256": "64d193f592367586d3e39461e62cd673edfd1f617ed4b96d49aa4a89b2869302",
+    "text_snapshot": true
+  },
+  {
+    "index": 42,
+    "path": "BepInEx/config/com.fumiko.CullFactory.cfg",
+    "size": 5594,
+    "sha256": "97fdd3e5daffa5a275575f37f27f244d41a018f407354cc386ae3e15a7a5c1bf",
+    "text_snapshot": true
+  },
+  {
+    "index": 43,
+    "path": "BepInEx/config/com.github.biodiversitylc.Biodiversity.cfg",
+    "size": 1630,
+    "sha256": "53eda6c5368fa0d0d2e3ceb7aac296ea3ea4434768ade1b1059b87ced35389a0",
+    "text_snapshot": true
+  },
+  {
+    "index": 44,
+    "path": "BepInEx/config/com.github.darmuh.suitsTerminal.cfg",
+    "size": 6496,
+    "sha256": "903d5ae1c6be7d578780402907dde62b14f4ef8eb33272d9dbd5db33b309bfcf",
+    "text_snapshot": true
+  },
+  {
+    "index": 45,
+    "path": "BepInEx/config/com.github.lethalcompanymodding.LCUltrawide.cfg",
+    "size": 1438,
+    "sha256": "9b0e2fc94db40d9d9fa3c4ea715c27db644fe6e20583cf20bb2b6a25e47071a0",
+    "text_snapshot": true
+  },
+  {
+    "index": 46,
+    "path": "BepInEx/config/com.github.teamxiaolan.dawnlib.cfg",
+    "size": 6761,
+    "sha256": "8563b07c8d4e49cb664dcc11e29be4ff400b7c713e0a89a200d1a458ee4b1648",
+    "text_snapshot": true
+  },
+  {
+    "index": 47,
+    "path": "BepInEx/config/com.github.zehsteam.SellMyScrap.cfg",
+    "size": 4930,
+    "sha256": "615ed337fa214841b112a459804da2fd92fc44da0543818e80e226b85506ceae",
+    "text_snapshot": true
+  },
+  {
+    "index": 48,
+    "path": "BepInEx/config/com.malco.lethalcompany.moreshipupgrades.cfg",
+    "size": 145217,
+    "sha256": "0f36621dd1744f9a3654f461d3b8cda1493b4082a2dca7ca68298a708bb8197a",
+    "text_snapshot": true
+  },
+  {
+    "index": 49,
+    "path": "BepInEx/config/com.rune580.LethalCompanyInputUtils.cfg",
+    "size": 688,
+    "sha256": "db7ad4873157749b3542ebc3b0e06038e0882e88d4ef8de193c5301f8d42dd5f",
+    "text_snapshot": true
+  },
+  {
+    "index": 50,
+    "path": "BepInEx/config/com.zealsprince.locker.cfg",
+    "size": 2193,
+    "sha256": "6075c17eb56f5a96b5bc9fd5c6d59f0055a575d3817f9d3f44d1b1f481851043",
+    "text_snapshot": true
+  },
+  {
+    "index": 51,
+    "path": "BepInEx/config/com.zealsprince.malfunctions.cfg",
+    "size": 4214,
+    "sha256": "359c40b26031c0dcb9747ba556b8151f07493639e1b73d3fc32dd7aa4443241e",
+    "text_snapshot": true
+  },
+  {
+    "index": 52,
+    "path": "BepInEx/config/controls/FlipMods.HotbarPlus.IngameKeybinds.json",
+    "size": 16,
+    "sha256": "a2c526aab2f489db93635255e88cdd8e07c21b650e8f4e7a323ab9ed4b9c367f",
+    "text_snapshot": true
+  },
+  {
+    "index": 53,
+    "path": "BepInEx/config/controls/FlipMods.TooManyEmotes.IngameKeybinds.json",
+    "size": 16,
+    "sha256": "a2c526aab2f489db93635255e88cdd8e07c21b650e8f4e7a323ab9ed4b9c367f",
+    "text_snapshot": true
+  },
+  {
+    "index": 54,
+    "path": "BepInEx/config/darmuh.OpenLib.cfg",
+    "size": 280,
+    "sha256": "a6ab8dba78838ec39a3ae0b50a158b19a88a12acb3b331660340f9edd7f48ac5",
+    "text_snapshot": true
+  },
+  {
+    "index": 55,
+    "path": "BepInEx/config/darmuh.TerminalStuff.cfg",
+    "size": 48233,
+    "sha256": "46f6e0caf85196122527572ad8be3978d6fb1711d3e6a267e65c6d2346c52896",
+    "text_snapshot": true
+  },
+  {
+    "index": 56,
+    "path": "BepInEx/config/dev.idjut.SnailFork.cfg",
+    "size": 1694,
+    "sha256": "323cc9665b7b9411c1879225758c1e51b272c25a1f66fd75912a979e14df1df5",
+    "text_snapshot": true
+  },
+  {
+    "index": 57,
+    "path": "BepInEx/config/dev.ladyalice.dungenplus.cfg",
+    "size": 314,
+    "sha256": "30f39ec5c34444e256561cdfa1f7384713f8e843f5bba0a1abad6969ae6ea1d4",
+    "text_snapshot": true
+  },
+  {
+    "index": 58,
+    "path": "BepInEx/config/Dev1A3.LethalFixes.cfg",
+    "size": 1676,
+    "sha256": "2539abbc7fc31ae5ec37e488cf13c181505f203f7b3a0d6c0136d0231c929ba8",
+    "text_snapshot": true
+  },
+  {
+    "index": 59,
+    "path": "BepInEx/config/DiggC.CruiserImproved.cfg",
+    "size": 4602,
+    "sha256": "203d5378ecef4b3c01fe92848d0271f0b508f8aeb1be728c6789b08d7e7d6014",
+    "text_snapshot": true
+  },
+  {
+    "index": 60,
+    "path": "BepInEx/config/Dreamweave.CompanyBuildingEnhancements.cfg",
+    "size": 764,
+    "sha256": "313ed22155f8e7df7b640f1e0ea0a2e70bad0c480c2ca2c62b301a2c5d1f4973",
+    "text_snapshot": true
+  },
+  {
+    "index": 61,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_de.xml",
+    "size": 9820,
+    "sha256": "8b10c42fb7cad3964c5985fd09bad557a054e2dafda850e26058fc522707b64d",
+    "text_snapshot": true
+  },
+  {
+    "index": 62,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_en-us.xml",
+    "size": 30323,
+    "sha256": "5df877e20f67160965b60126d89b66cecac832fc68d4fd379dab746f77e0bd05",
+    "text_snapshot": true
+  },
+  {
+    "index": 63,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/strings_en_scopophobia.xml",
+    "size": 774,
+    "sha256": "b291ce4fb25aed0489305b4f6533b92460341debfe8e7a6cb477d902212f7cd6",
+    "text_snapshot": true
+  },
+  {
+    "index": 64,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_es.xml",
+    "size": 8602,
+    "sha256": "5116280a3dc8756dee7f0a65e6ec170c5c3b7cfbb223e7eacb4ff446799f5387",
+    "text_snapshot": true
+  },
+  {
+    "index": 65,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_fr.xml",
+    "size": 26150,
+    "sha256": "4db85ebcb87742152f47bd9c47d9096e1aeaa9e623fc5f88b9840bcc7933370e",
+    "text_snapshot": true
+  },
+  {
+    "index": 66,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_hu.xml",
+    "size": 8996,
+    "sha256": "f3e2a9aabeb8a3aa6261d897a92997e48c43f547201176275197c25a42eb625f",
+    "text_snapshot": true
+  },
+  {
+    "index": 67,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_it.xml",
+    "size": 17654,
+    "sha256": "3c402ffd0126e600717b2c0064b846189216fd4c363fb50a06c983166e1843eb",
+    "text_snapshot": true
+  },
+  {
+    "index": 68,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_ko.xml",
+    "size": 20090,
+    "sha256": "24d6cd38b9d21b277004750a6d4673aa567a8779420a23092aece56c9607e2c3",
+    "text_snapshot": true
+  },
+  {
+    "index": 69,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_nl.xml",
+    "size": 17570,
+    "sha256": "55e1e1ccbb9c2627f0132a29ec1ff03f189bfd60fc1cc0d61a8265231af14c75",
+    "text_snapshot": true
+  },
+  {
+    "index": 70,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_pt-br.xml",
+    "size": 8092,
+    "sha256": "a190ae0a9abaf6696766e78f8bdb096bf720a8cef2e94b7382e1804bed132c9a",
+    "text_snapshot": true
+  },
+  {
+    "index": 71,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_ru.xml",
+    "size": 25632,
+    "sha256": "5186dc1efe4653a1532b9332fcd604d0244a418c0d0748c869cff835ae2501a4",
+    "text_snapshot": true
+  },
+  {
+    "index": 72,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_test.xml",
+    "size": 23205,
+    "sha256": "e2c891538218c1a4f3dc7596c6bdf6cb0f27964ce5fc3942955310924609b15f",
+    "text_snapshot": true
+  },
+  {
+    "index": 73,
+    "path": "BepInEx/config/EliteMasterEric-Coroner/Strings_zh-cn.xml",
+    "size": 9153,
+    "sha256": "a20343baea2a72a29648081145d330efad0310f48913563e5d2fe1e970147be9",
+    "text_snapshot": true
+  },
+  {
+    "index": 74,
+    "path": "BepInEx/config/Entity378.LethalDoorsFixed.cfg",
+    "size": 501,
+    "sha256": "941f0707d0e3300030238cf6384e653573e48ba8392c79aac37050291dad6558",
+    "text_snapshot": true
+  },
+  {
+    "index": 75,
+    "path": "BepInEx/config/Entity378.sellbodies.cfg",
+    "size": 12830,
+    "sha256": "15a439924673029f3c2ade2751acd62c0d9e181b0739e7aabd465cbe4423f5af",
+    "text_snapshot": true
+  },
+  {
+    "index": 76,
+    "path": "BepInEx/config/evaisa.lethallib.cfg",
+    "size": 498,
+    "sha256": "c7f8cd49354335d63601cfd6d2161fdec463804c22c3c79f093e3367e1e8172b",
+    "text_snapshot": true
+  },
+  {
+    "index": 77,
+    "path": "BepInEx/config/fandovec03.SpiderPositionFix.cfg",
+    "size": 978,
+    "sha256": "e1d81c5abe86d619c81b91b3e9a668a9529cfaab94daabd4e8c493b81fbf9417",
+    "text_snapshot": true
+  },
+  {
+    "index": 78,
+    "path": "BepInEx/config/FixPluginTypesSerialization.cfg",
+    "size": 2435,
+    "sha256": "0a4816065effdef7da5130b25a7da58721807eb742517303be98ede2eb52ef76",
+    "text_snapshot": true
+  },
+  {
+    "index": 79,
+    "path": "BepInEx/config/FlipMods.BetterStamina.cfg",
+    "size": 5177,
+    "sha256": "4979724418ae7f5d1c0961743ce29f50ada887da9c279f52a320f093cef54325",
+    "text_snapshot": true
+  },
+  {
+    "index": 80,
+    "path": "BepInEx/config/FlipMods.FasterItemDropship.cfg",
+    "size": 1146,
+    "sha256": "ef0baabae305a40fcd81193343da80f5b68a092aa3e273a1fd2a3d0aeb266af1",
+    "text_snapshot": true
+  },
+  {
+    "index": 81,
+    "path": "BepInEx/config/FlipMods.HotbarPlus.cfg",
+    "size": 3721,
+    "sha256": "bc4f067af1d630b36428dbf4202df129ab5f69e7583b5d4fea8e65fbf7fe9b9c",
+    "text_snapshot": true
+  },
+  {
+    "index": 82,
+    "path": "BepInEx/config/FlipMods.ReservedFlashlightSlot.cfg",
+    "size": 1379,
+    "sha256": "ae916d3f8b453462b2667b82e7bdb4a8dab666e20c0b272067767a02ef38ccdb",
+    "text_snapshot": true
+  },
+  {
+    "index": 83,
+    "path": "BepInEx/config/FlipMods.ReservedItemSlotCore.cfg",
+    "size": 3797,
+    "sha256": "781c3481558a7174381e1d7b06447783371d7c813015fc90246ea0cd94107e74",
+    "text_snapshot": true
+  },
+  {
+    "index": 84,
+    "path": "BepInEx/config/FlipMods.ReservedSprayPaintSlot.cfg",
+    "size": 1406,
+    "sha256": "4896d48191b7e1fe251af75579d771e0eb9d4cd0e79cbed96b233e4d82907db7",
+    "text_snapshot": true
+  },
+  {
+    "index": 85,
+    "path": "BepInEx/config/FlipMods.ReservedUtilitySlot.cfg",
+    "size": 4202,
+    "sha256": "d0dfda2d3a9d8a838fc336ad0a48c23aaf8f986eab905ca886f6d86c21b30956",
+    "text_snapshot": true
+  },
+  {
+    "index": 86,
+    "path": "BepInEx/config/FlipMods.ReservedWalkieSlot.cfg",
+    "size": 1189,
+    "sha256": "c33c85035fa801c99b92aff3fb6153d8c637998c98fddfdec4e5f046b8e5972d",
+    "text_snapshot": true
+  },
+  {
+    "index": 87,
+    "path": "BepInEx/config/FlipMods.ReservedWeaponSlot.cfg",
+    "size": 6140,
+    "sha256": "3726a69ad96e2a60a9c4c66d135f7c96c6d5f11f33687e8c49b749618a8f7b72",
+    "text_snapshot": true
+  },
+  {
+    "index": 88,
+    "path": "BepInEx/config/FlipMods.TooManyEmotes.cfg",
+    "size": 12860,
+    "sha256": "65a9f87baad90e180a0d548dd351fc421022357f2c162605de1586483055a3ce",
+    "text_snapshot": true
+  },
+  {
+    "index": 89,
+    "path": "BepInEx/config/GoldenKitten.FairAI.cfg",
+    "size": 77962,
+    "sha256": "ede0adaf50d828e74f78c71f8ab420663ca0629fe9a64bad44eb83a3d70acfa4",
+    "text_snapshot": true
+  },
+  {
+    "index": 90,
+    "path": "BepInEx/config/HookGenPatcher.cfg",
+    "size": 500,
+    "sha256": "99e029c170499e5655f189ea5c36e12c8449b8ca29e1b6880107ed5c749d34ed",
+    "text_snapshot": true
+  },
+  {
+    "index": 91,
+    "path": "BepInEx/config/HQ_Team.LethalThingsReloaded.cfg",
+    "size": 27759,
+    "sha256": "e71d71c2f8c80c637c112c00687a67ca02ed129c0e234f33f97e21bbb6521161",
+    "text_snapshot": true
+  },
+  {
+    "index": 92,
+    "path": "BepInEx/config/ImmersiveScrap.cfg",
+    "size": 8231,
+    "sha256": "6576c4fe59eb76ca9d52428ba48375c373f340f66daab3e888f702fc726fd105",
+    "text_snapshot": true
+  },
+  {
+    "index": 93,
+    "path": "BepInEx/config/JacobG5.JLL.cfg",
+    "size": 383,
+    "sha256": "3cd61546347d2685407a74d9fb7be5990149f4a8bc523aaa2f54a6c035209e7e",
+    "text_snapshot": true
+  },
+  {
+    "index": 94,
+    "path": "BepInEx/config/JKConfig/GenericGMD.GI Bunker Scrap.cfg",
+    "size": 4606,
+    "sha256": "8d54ca76648094a500e77f5cb95b663b21a86078033fbafb9262de8d0e47045b",
+    "text_snapshot": true
+  },
+  {
+    "index": 95,
+    "path": "BepInEx/config/JKConfig/GenericGMD.GI Impact Flash.cfg",
+    "size": 1539,
+    "sha256": "4237892229e15eafbe2a19618919a30d7007febd23f1118f8c40b6036d5b7780",
+    "text_snapshot": true
+  },
+  {
+    "index": 96,
+    "path": "BepInEx/config/JKConfig/GenericGMD.GI Jammer.cfg",
+    "size": 1529,
+    "sha256": "d5f3e2895e983daed308aef0b978ff8323e3a4e724f1448ab8584b2637ab5bec",
+    "text_snapshot": true
+  },
+  {
+    "index": 97,
+    "path": "BepInEx/config/JKConfig/GenericGMD.GI Light Crowbar.cfg",
+    "size": 1554,
+    "sha256": "42d655c2313ccb8df0e6fed62584462f6d83c0351583a666d4a3b91c8d67fdfb",
+    "text_snapshot": true
+  },
+  {
+    "index": 98,
+    "path": "BepInEx/config/JKConfig/GenericGMD.GI Military Shotgun.cfg",
+    "size": 1559,
+    "sha256": "968a759e238231694ab88f60d30dbd9dedc3b21aecfa08f6393cad60fb568e92",
+    "text_snapshot": true
+  },
+  {
+    "index": 99,
+    "path": "BepInEx/config/JKConfig/GenericGMD.GI Single Barrel.cfg",
+    "size": 1577,
+    "sha256": "5e5406d70d1666e110b8f7d6d91e145befec4f7a21f66fd9e35bca1e078356e2",
+    "text_snapshot": true
+  },
+  {
+    "index": 100,
+    "path": "BepInEx/config/JLL/DemonMae.The Iris Config.cfg",
+    "size": 144,
+    "sha256": "2b06eeb86f508a51aa86a771cf7b5301c3f47474ea57423e8a7cec85afcc3515",
+    "text_snapshot": true
+  },
+  {
+    "index": 101,
+    "path": "BepInEx/config/JLL/Genericgmd.GenericInteriors.cfg",
+    "size": 1964,
+    "sha256": "26567e87a492ed3870e76a51034f0f7320043b41f6a212181c6325177fdcf6ad",
+    "text_snapshot": true
+  },
+  {
+    "index": 102,
+    "path": "BepInEx/config/JLL/Magic Wesley.Grand Armory.cfg",
+    "size": 121,
+    "sha256": "877dcb30804cea40c4019634225a94607df45f840e278cd83dfec3f903f5bc5b",
+    "text_snapshot": true
+  },
+  {
+    "index": 103,
+    "path": "BepInEx/config/JLL/Magic Wesley.Hallowed content.cfg",
+    "size": 300,
+    "sha256": "ca2291a323a638d913dd9eff8d5461082c78fa44d03c423cb025cd992966e3e6",
+    "text_snapshot": true
+  },
+  {
+    "index": 104,
+    "path": "BepInEx/config/JLL/Magic Wesley.Rubber Rooms.cfg",
+    "size": 345,
+    "sha256": "6f995700098f33808cd59578adea86a7feea6c566232eea2a8cadc51ffa4fa6f",
+    "text_snapshot": true
+  },
+  {
+    "index": 105,
+    "path": "BepInEx/config/JLL/Magic Wesley.Toy Store.cfg",
+    "size": 145,
+    "sha256": "f5d4743a4e76949cd22552ac9137315b4be1c5b4995f78f5dbe0492531a9d6d6",
+    "text_snapshot": true
+  },
+  {
+    "index": 106,
+    "path": "BepInEx/config/JLL/Nikki.Slaughterhouse.cfg",
+    "size": 971,
+    "sha256": "0937568f5c573d6c6cf8e0272d945b0c50759c6fba11f2646e7171acb3b4149b",
+    "text_snapshot": true
+  },
+  {
+    "index": 107,
+    "path": "BepInEx/config/Jordo.NeedyCats.cfg",
+    "size": 2527,
+    "sha256": "9b8d4e82f76e183ccd5fe8636df112ea043f44375ccaaa8e384f66411bacb357",
+    "text_snapshot": true
+  },
+  {
+    "index": 108,
+    "path": "BepInEx/config/JPOGTrex.cfg",
+    "size": 1451,
+    "sha256": "bfc3c294fd68b28a037c75cceb4a0ab8e7d994269b103e836697e048fa61d7f5",
+    "text_snapshot": true
+  },
+  {
+    "index": 109,
+    "path": "BepInEx/config/Kittenji.DontTouchMe.cfg",
+    "size": 1809,
+    "sha256": "6e58d547d8adb5eae536d1f7c6b65df666edf310e6f0ee6abf0f5056e9cc9fc2",
+    "text_snapshot": true
+  },
+  {
+    "index": 110,
+    "path": "BepInEx/config/Kittenji.FootballEntity.cfg",
+    "size": 1441,
+    "sha256": "ec8c9d806454f0baa0e0229558c2bafc4e3fbd2d5f7b3220562ea82886e3481a",
+    "text_snapshot": true
+  },
+  {
+    "index": 111,
+    "path": "BepInEx/config/Kittenji.HerobrineMod.cfg",
+    "size": 2645,
+    "sha256": "4a8c4f4b6dc1ff6d445f583081227ebf055bdfec1e4f094cd9e5fbe92bab00c7",
+    "text_snapshot": true
+  },
+  {
+    "index": 112,
+    "path": "BepInEx/config/LCSoundTool.cfg",
+    "size": 1413,
+    "sha256": "3149fea094b7a41189a0e4655a730db69d2c391017b5c49a56e5f2b1310ace74",
+    "text_snapshot": true
+  },
+  {
+    "index": 113,
+    "path": "BepInEx/config/LethalCompanyHarpGhost.cfg",
+    "size": 16715,
+    "sha256": "4fb20ebdb78854d70234ee2f2701d3a7c553dfd9c4ab9a2832e52cad6fb41322",
+    "text_snapshot": true
+  },
+  {
+    "index": 114,
+    "path": "BepInEx/config/lethalhud.cfg",
+    "size": 18600,
+    "sha256": "ffc24d6891cd1315317b745f3ffb7b80e75eba2fe8f1ba302646dbe6aec52a87",
+    "text_snapshot": true
+  },
+  {
+    "index": 115,
+    "path": "BepInEx/config/LethalLevelLoader.cfg",
+    "size": 204428,
+    "sha256": "6c294442cbd9339f24841b57cf0eb75726ec6e9e598693de2c308cf0d46ff8bc",
+    "text_snapshot": true
+  },
+  {
+    "index": 116,
+    "path": "BepInEx/config/LethalMatt.Bozoros.cfg",
+    "size": 6757,
+    "sha256": "b2443c9da143b2c3c8aa7aee05809e8d919982d8701d7f9d28ef7a219e218cf2",
+    "text_snapshot": true
+  },
+  {
+    "index": 117,
+    "path": "BepInEx/config/LethalPerformance.cfg",
+    "size": 1563,
+    "sha256": "f8f0aacb0bea1ab88967031692252c9c881e88625c38d735cf63775f19cb7d95",
+    "text_snapshot": true
+  },
+  {
+    "index": 118,
+    "path": "BepInEx/config/LethalSponge.cfg",
+    "size": 13675,
+    "sha256": "0c63c14ccb03dd05c11a8aac440eae6ea5acc4650e4fb7d555c7dc654df4986f",
+    "text_snapshot": true
+  },
+  {
+    "index": 119,
+    "path": "BepInEx/config/LethalThings.AudioVolume.cfg",
+    "size": 2564,
+    "sha256": "0469a337935293b511342e0412cc3418b654d38b2ce812286a5ba3dc8290f692",
+    "text_snapshot": true
+  },
+  {
+    "index": 120,
+    "path": "BepInEx/config/mattymatty.AdditionalNetworking.cfg",
+    "size": 1634,
+    "sha256": "59ee1e43b819cd2b37649891ee3281b9639b1c9047a274ae87dcb3cdb609c6c0",
+    "text_snapshot": true
+  },
+  {
+    "index": 121,
+    "path": "BepInEx/config/mattymatty.LobbyControl.cfg",
+    "size": 2099,
+    "sha256": "e585e5d007d534cc8671e7227836dd2743a2712341d02e62c05083bf7b4b5dd0",
+    "text_snapshot": true
+  },
+  {
+    "index": 122,
+    "path": "BepInEx/config/mattymatty.MattyFixes.cfg",
+    "size": 66987,
+    "sha256": "c1ff521b2072fa74d7ffd460d26209239c0b68943638be60f05687e0e2123ad1",
+    "text_snapshot": true
+  },
+  {
+    "index": 123,
+    "path": "BepInEx/config/me.biodiversity.aloe.cfg",
+    "size": 9749,
+    "sha256": "30df11c999ec399f5c112cc7861642977d6de5067f2b9b1fc0334e7ee25372f9",
+    "text_snapshot": true
+  },
+  {
+    "index": 124,
+    "path": "BepInEx/config/me.biodiversity.boombird.cfg",
+    "size": 2583,
+    "sha256": "a5dde91671b3219f6290170907b77ea41e1767c9fae625982c058b196761a455",
+    "text_snapshot": true
+  },
+  {
+    "index": 125,
+    "path": "BepInEx/config/me.biodiversity.coilcrab.cfg",
+    "size": 2831,
+    "sha256": "610c697fd25af36ac47dd21d0f2ca49f1a368bf9459cca832da50e3f8dd6748f",
+    "text_snapshot": true
+  },
+  {
+    "index": 126,
+    "path": "BepInEx/config/me.biodiversity.critters.cfg",
+    "size": 3384,
+    "sha256": "138c9c631fbbc07b119b03215e0b28fae11a5c8159a0e5ec8164f7d29eac95a2",
+    "text_snapshot": true
+  },
+  {
+    "index": 127,
+    "path": "BepInEx/config/me.biodiversity.developer_scrap_items.cfg",
+    "size": 3320,
+    "sha256": "faa339b7fafdd08b663637ea121bbc0fa3657766924927652c6c6fb5266f40b4",
+    "text_snapshot": true
+  },
+  {
+    "index": 128,
+    "path": "BepInEx/config/me.biodiversity.junk_radar.cfg",
+    "size": 1275,
+    "sha256": "042a93b103aab243f2220d04746c0d9f68a800b701b4d3950786ccb3bbef8c54",
+    "text_snapshot": true
+  },
+  {
+    "index": 129,
+    "path": "BepInEx/config/me.biodiversity.ogopogo.cfg",
+    "size": 3011,
+    "sha256": "16c147fbc431e4678f3cd27ba5baf8cd2df6e48ea1429dad71c5947b2a4b84fb",
+    "text_snapshot": true
+  },
+  {
+    "index": 130,
+    "path": "BepInEx/config/me.loaforc.soundapi.cfg",
+    "size": 3102,
+    "sha256": "aacff9d14ea6f2f0b7231bc1baef43eb740c33713ba9b01e480c15912160b0f1",
+    "text_snapshot": true
+  },
+  {
+    "index": 131,
+    "path": "BepInEx/config/me.swipez.melonloader.morecompany.cfg",
+    "size": 1061,
+    "sha256": "9200b7d252160cb735f5d80c339bca4bcfa73ef641435225c7bb82dfa781228c",
+    "text_snapshot": true
+  },
+  {
+    "index": 132,
+    "path": "BepInEx/config/MelanieMelicious.furniturePack0.cfg",
+    "size": 10305,
+    "sha256": "03ff56089c4c664204095938c764e9dd752d3168e48d7f361f37353fa60fde72",
+    "text_snapshot": true
+  },
+  {
+    "index": 133,
+    "path": "BepInEx/config/meow.ModelReplacementAPI.cfg",
+    "size": 331,
+    "sha256": "d3f44390ea32243ce1a27f0426a1c70e3484d653755e7a3cfc0904165fb1a7d1",
+    "text_snapshot": true
+  },
+  {
+    "index": 134,
+    "path": "BepInEx/config/Mirage.Enemies.cfg",
+    "size": 4983,
+    "sha256": "0ca6cde738f13266a3c1de6db70581e3962b673a05835ca4bc4523bc9fb18aa2",
+    "text_snapshot": true
+  },
+  {
+    "index": 135,
+    "path": "BepInEx/config/Mirage.General.cfg",
+    "size": 4012,
+    "sha256": "0736fe82880ba23f6c6ba01ce513b27f7af93f64b9c3dd3e3d6b3865e581493f",
+    "text_snapshot": true
+  },
+  {
+    "index": 136,
+    "path": "BepInEx/config/Mirage.Items.cfg",
+    "size": 32542,
+    "sha256": "02e892880d86aae42d6c6ab3e2dfe327b9be0b627f389005bbaf77102364f1e5",
+    "text_snapshot": true
+  },
+  {
+    "index": 137,
+    "path": "BepInEx/config/MonkeyInjectionLibrary.cfg",
+    "size": 279,
+    "sha256": "f16a4dab562de4746402e56050a37560e4da0c41a6fd1423f889db95164e8106",
+    "text_snapshot": true
+  },
+  {
+    "index": 138,
+    "path": "BepInEx/config/MoreBattery.cfg",
+    "size": 1276,
+    "sha256": "41e690995dea0ced962e808e19938e6bd453a857e2cdc21b81175cb8ca7dda74",
+    "text_snapshot": true
+  },
+  {
+    "index": 139,
+    "path": "BepInEx/config/MoreSuitsConfig/README.txt",
+    "size": 200,
+    "sha256": "4009a3c783eb8e7825287b5687c4f8dac3351aba12dc860b7f08f738b5d65633",
+    "text_snapshot": true
+  },
+  {
+    "index": 140,
+    "path": "BepInEx/config/mrgrm7.LethalCasino.cfg",
+    "size": 3667,
+    "sha256": "939fc6b6f2a9359cf9eb946bdec784b6a5442cc35aa5a329139021236f54a4bf",
+    "text_snapshot": true
+  },
+  {
+    "index": 141,
+    "path": "BepInEx/config/MrHat.BasedDecorPlacement.cfg",
+    "size": 1799,
+    "sha256": "7014037dae14b575e1af4bcab457bde135370b3c7d90fa7919704f305d1a9c3a",
+    "text_snapshot": true
+  },
+  {
+    "index": 142,
+    "path": "BepInEx/config/MrHat.BasedItemSaving.cfg",
+    "size": 2153,
+    "sha256": "0a5a3d1d32308251a1dad676a0f5b81333a881464328beb7d9a6ca636670acd7",
+    "text_snapshot": true
+  },
+  {
+    "index": 143,
+    "path": "BepInEx/config/MrHat.Lib.cfg",
+    "size": 202,
+    "sha256": "daf1ec264f4a4b1b55f03ece14c3eb6fd3469cfc958d1bdfb54105709c16c9e6",
+    "text_snapshot": true
+  },
+  {
+    "index": 144,
+    "path": "BepInEx/config/MrHat.MisideItems.cfg",
+    "size": 179524,
+    "sha256": "6e5277e5f57f901eb49902b4784448bf5e2cfa674f9d0646d6595ec1f0d46c9b",
+    "text_snapshot": true
+  },
+  {
+    "index": 145,
+    "path": "BepInEx/config/nomnomab.rollinggiant.cfg",
+    "size": 7409,
+    "sha256": "002e9a03922afcfc1f29eb5359fb35219a406be2ba38d1d374b4a9d00ff9d9e9",
+    "text_snapshot": true
+  },
+  {
+    "index": 146,
+    "path": "BepInEx/config/nomnomab.rollinggiant.cfg.bak",
+    "size": 7377,
+    "sha256": "fc883e1233bddaac8aa68a2c6cd864058d435acf766280db443f4e74c1b3e829",
+    "text_snapshot": true
+  },
+  {
+    "index": 147,
+    "path": "BepInEx/config/NoteBoxz.EnemyHealthBars.cfg",
+    "size": 2778,
+    "sha256": "58ae1918024c70e9df6190b240e48502173e9ec30491af728bfb683291f42847",
+    "text_snapshot": true
+  },
+  {
+    "index": 148,
+    "path": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+    "size": 9380,
+    "sha256": "4db043f5eba761c445f81569c7e6f39fa86dbe14d7f8ce3439e2c396b629ac19",
+    "text_snapshot": true
+  },
+  {
+    "index": 149,
+    "path": "BepInEx/config/Pikmin/Blue Pikmin.cfg",
+    "size": 8181,
+    "sha256": "8b1ebeda00393db3b82ba6af8dea5c95e349754d383e10964e3ffead52b56055",
+    "text_snapshot": true
+  },
+  {
+    "index": 150,
+    "path": "BepInEx/config/Pikmin/Bulbmin.cfg",
+    "size": 8221,
+    "sha256": "64d6bf081bb6d0bcc3bd57637a3acc0fac6b4efddae694ae213e2b77eb2892d5",
+    "text_snapshot": true
+  },
+  {
+    "index": 151,
+    "path": "BepInEx/config/Pikmin/Glow Pikmin.cfg",
+    "size": 8177,
+    "sha256": "0eaacda89a1a060665773965dc1b82ffb899906f3532733b00ef8ffb5d22c689",
+    "text_snapshot": true
+  },
+  {
+    "index": 152,
+    "path": "BepInEx/config/Pikmin/Ice Pikmin.cfg",
+    "size": 8397,
+    "sha256": "df0ebd6d4df153916ce33da8ba9267b0905b0089f34b323baa109d7649c1b17f",
+    "text_snapshot": true
+  },
+  {
+    "index": 153,
+    "path": "BepInEx/config/Pikmin/Purple Pikmin.cfg",
+    "size": 8093,
+    "sha256": "be88c6c4e4eedc4ae237055a5a31cb74675e5477e75f9ed380e8c9504480e4dd",
+    "text_snapshot": true
+  },
+  {
+    "index": 154,
+    "path": "BepInEx/config/Pikmin/Red Pikmin.cfg",
+    "size": 8097,
+    "sha256": "09c93e5bce802a1cb6f4c2c8e1bf6f50501e893be95982548245e849e4cf05fd",
+    "text_snapshot": true
+  },
+  {
+    "index": 155,
+    "path": "BepInEx/config/Pikmin/Rock Pikmin.cfg",
+    "size": 8155,
+    "sha256": "2c7cd3891d07c83df3493c49934f4386b4231b77642ddb57e8fa67d534eac752",
+    "text_snapshot": true
+  },
+  {
+    "index": 156,
+    "path": "BepInEx/config/Pikmin/White Pikmin.cfg",
+    "size": 8125,
+    "sha256": "6f6e9b535fa5ecb489f1a3bca711bc4b8e50f050c6e12a0f26e6a4c945d03a0c",
+    "text_snapshot": true
+  },
+  {
+    "index": 157,
+    "path": "BepInEx/config/Pikmin/Winged Pikmin.cfg",
+    "size": 8101,
+    "sha256": "f13fe61112761fa7b382bbbc5e87a2a659601e4fdbf502f94e427d046fbd0138",
+    "text_snapshot": true
+  },
+  {
+    "index": 158,
+    "path": "BepInEx/config/Pikmin/Yellow Pikmin.cfg",
+    "size": 8133,
+    "sha256": "04027f200d3029865d73d7e97e85f195b83f3b6e45a706dd89e6d81de4b0391c",
+    "text_snapshot": true
+  },
+  {
+    "index": 159,
+    "path": "BepInEx/config/ProjectSCP.SCP999.cfg",
+    "size": 7376,
+    "sha256": "be17bc0164981270b9d6ce8229579477d84360f6ec7a4a3c0e631ed96420cf41",
+    "text_snapshot": true
+  },
+  {
+    "index": 160,
+    "path": "BepInEx/config/rectorado.KenjiLib.cfg",
+    "size": 319,
+    "sha256": "6b90b8aeceab127dfe7a12b51b3b809b6db3b15dfd22ead79ab776b7843dca7a",
+    "text_snapshot": true
+  },
+  {
+    "index": 161,
+    "path": "BepInEx/config/Reiko888.Observer.cfg",
+    "size": 3658,
+    "sha256": "1d552feb4ef2f45e7d262a54247948ec92a21086aa34a756785064f779e8a147",
+    "text_snapshot": true
+  },
+  {
+    "index": 162,
+    "path": "BepInEx/config/Remnants.cfg",
+    "size": 61878,
+    "sha256": "04eac2ee400fa1de9b39b519bde963ce0f90989b66fbc16df38641c3f3127264",
+    "text_snapshot": true
+  },
+  {
+    "index": 163,
+    "path": "BepInEx/config/Rozebud.FovAdjust.cfg",
+    "size": 417,
+    "sha256": "2ff6125eaa8951591a706368458cebb9c46e415420b062284ba5008946009476",
+    "text_snapshot": true
+  },
+  {
+    "index": 164,
+    "path": "BepInEx/config/Rumi.FixCameraResolutions.cfg",
+    "size": 463,
+    "sha256": "95179131f1f1c25c369a70f1b4d2589d996758906f444fb91d0d78a2ff540f17",
+    "text_snapshot": true
+  },
+  {
+    "index": 165,
+    "path": "BepInEx/config/ScienceBird.ScienceBirdTweaks.cfg",
+    "size": 48167,
+    "sha256": "fb72254f08c3e863e7e05ad6d949010aeed820e37f8e5c9e783b3720e6616ce6",
+    "text_snapshot": true
+  },
+  {
+    "index": 166,
+    "path": "BepInEx/config/ScienceBird.UniversalRadar.cfg",
+    "size": 88397,
+    "sha256": "90659073ef3606a4a6e71362b8993848656ffb66525d5671afcca21147ac9a70",
+    "text_snapshot": true
+  },
+  {
+    "index": 167,
+    "path": "BepInEx/config/scin.monsterplushies.cfg",
+    "size": 8192,
+    "sha256": "67e79ddf04b6a23a64f49e886049ec7a55acc77dd76d55a7fc07d8e6d49800ff",
+    "text_snapshot": true
+  },
+  {
+    "index": 168,
+    "path": "BepInEx/config/Scopophobia.cfg",
+    "size": 16865,
+    "sha256": "bb9e6b379037c2b6fb0fcac008780e35f82a0607a698f0b6bbb4a0d6cbea8649",
+    "text_snapshot": true
+  },
+  {
+    "index": 169,
+    "path": "BepInEx/config/ShaosilGaming.GeneralImprovements.cfg",
+    "size": 34621,
+    "sha256": "896c4709e99f367abf2dfb0d2020f2247f9878847ad801ad0deffce603300f19",
+    "text_snapshot": true
+  },
+  {
+    "index": 170,
+    "path": "BepInEx/config/snickerbarYaboiDucki.menstalker_yaboiduckisnickerbar.cfg",
+    "size": 380,
+    "sha256": "e6f0fd1dbb46b11a275d0d513b10c54078d54b2701c1f8153991fc666d70975b",
+    "text_snapshot": true
+  },
+  {
+    "index": 171,
+    "path": "BepInEx/config/Snowlance.SnowyLib.cfg",
+    "size": 205,
+    "sha256": "c1711a7739d823435535d90cc1aec7a7482ed91bd2e0d300485ad51761bde8a7",
+    "text_snapshot": true
+  },
+  {
+    "index": 172,
+    "path": "BepInEx/config/soundpack.LethalResonance.cfg",
+    "size": 5149,
+    "sha256": "a2a1431cd9e162f69b0468b3c0001b96beb3b7054f1ebe67b62af2bba1ce65eb",
+    "text_snapshot": true
+  },
+  {
+    "index": 173,
+    "path": "BepInEx/config/sparble.slendermanmod.cfg",
+    "size": 4730,
+    "sha256": "bb35feef9d09b7ec00f1e05ed0cf7411b564e23a479f35ac74b159b20ddedab2",
+    "text_snapshot": true
+  },
+  {
+    "index": 174,
+    "path": "BepInEx/config/SpectateEnemy.cfg",
+    "size": 8363,
+    "sha256": "69abc15f0fd8a0df2e820d75bc914f6c06d63d1846dee0f77a38a96abc7ee8c5",
+    "text_snapshot": true
+  },
+  {
+    "index": 175,
+    "path": "BepInEx/config/taffyko.BetterSprayPaint.cfg",
+    "size": 4166,
+    "sha256": "3b88e9be83594c37a7c5a8e48cd0ff56054ed1866e75bd21ad66b20ec988ad23",
+    "text_snapshot": true
+  },
+  {
+    "index": 176,
+    "path": "BepInEx/config/TestAccount666.ShipWindows.cfg",
+    "size": 6761,
+    "sha256": "1eed2c0fea6ff6dd21d21dac85485c805d5764e1c65819f0ad69955ba00d6fbf",
+    "text_snapshot": true
+  },
+  {
+    "index": 177,
+    "path": "BepInEx/config/TooManySuits.cfg",
+    "size": 414,
+    "sha256": "d75e104283682de1a48c6cc9db326c0a1d7aa22dc78d811100c687d87537c7b5",
+    "text_snapshot": true
+  },
+  {
+    "index": 178,
+    "path": "BepInEx/config/uk.1a3.bettervehiclecontrols.cfg",
+    "size": 1421,
+    "sha256": "0da426ba3f41805f1a56aa5c805ba1f7022aad73fe9c1c24cc55794feb2b48cd",
+    "text_snapshot": true
+  },
+  {
+    "index": 179,
+    "path": "BepInEx/config/uk.1a3.lethalfixes.cfg",
+    "size": 1437,
+    "sha256": "8a92b6b853aa04726747f56531d9ae30dc703df18377b21d0d608ca6b26a402a",
+    "text_snapshot": true
+  },
+  {
+    "index": 180,
+    "path": "BepInEx/config/uk.1a3.lobbyimprovements.cfg",
+    "size": 1602,
+    "sha256": "886dbc1a6f7fa3768e4a8054f55bba9e2a1f9a9e9c67af1d72710adb54bf5ce7",
+    "text_snapshot": true
+  },
+  {
+    "index": 181,
+    "path": "BepInEx/config/VectorV.TheCabinet.cfg",
+    "size": 2610,
+    "sha256": "68c716ff20ae204228ba320b485e2416a93748e33614b21cd9e63f7663ff8d06",
+    "text_snapshot": true
+  },
+  {
+    "index": 182,
+    "path": "BepInEx/config/wexop.random_enemies_size.cfg",
+    "size": 6599,
+    "sha256": "166158f2544f15daa7e06770db829046d611a056d5c4cb3fdd98adff96c8726f",
+    "text_snapshot": true
+  },
+  {
+    "index": 183,
+    "path": "BepInEx/config/x753.More_Suits.cfg",
+    "size": 1242,
+    "sha256": "b09b5921d16c9a4561d5cdab037c809d3b4c75b5beca270448e0a3952f138955",
+    "text_snapshot": true
+  },
+  {
+    "index": 184,
+    "path": "BepInEx/config/XuuXiaolan.SoftMaskKiller.cfg",
+    "size": 107,
+    "sha256": "d162ec9778bc04a63f061d0cb3036c83fe3d3bfdc57136783e5897e50bf7c6d5",
+    "text_snapshot": true
+  },
+  {
+    "index": 185,
+    "path": "BepInEx/config/Zaggy1024.OpenBodyCams.cfg",
+    "size": 9462,
+    "sha256": "478d9a3319999da0d6aa955f8caf30c5555e91ca95a5f70b9fbfdbb420abcbc2",
+    "text_snapshot": true
+  },
+  {
+    "index": 186,
+    "path": "BepInEx/config/Zaggy1024.PathfindingLagFix.cfg",
+    "size": 519,
+    "sha256": "178cbdf5c8c7ea252df01bd4efea223974527cef2d44ed9491ebbb81f9e1b40a",
+    "text_snapshot": true
+  },
+  {
+    "index": 187,
+    "path": "BepInEx/config/Zaggy1024.PathfindingLib.cfg",
+    "size": 348,
+    "sha256": "a0d5c72c4f5c7d27cc7620fe236b743228af32b553d7f7335064e6cec60baf85",
+    "text_snapshot": true
+  },
+  {
+    "index": 188,
+    "path": "BepInEx/config/Zaggy1024.SmartEnemyPathfinding.cfg",
+    "size": 434,
+    "sha256": "25198c33881d423d8f4a68d79ea2af79e63c1bd355f6ec95b7a5653489d3f445",
+    "text_snapshot": true
+  },
+  {
+    "index": 189,
+    "path": "BepInEx/config/ZetaArcade.LCAlwaysHearActiveWalkieFork.cfg",
+    "size": 384,
+    "sha256": "a7a6fcf1e870ab102f738d8cdfa5694505d0c78defd21cfa3034088f30444394",
+    "text_snapshot": true
+  },
+  {
+    "index": 190,
+    "path": "BepInEx/config/zigzag.chillaxscraps.cfg",
+    "size": 6121,
+    "sha256": "b83dede8ef2ad0520a75e8411d7f490a21c98bb3fe78532ebfdbf307443cd77d",
+    "text_snapshot": true
+  },
+  {
+    "index": 191,
+    "path": "BepInEx/config/zigzag.premiumscraps.cfg",
+    "size": 10107,
+    "sha256": "fa67006d2b8899dba15089cc0f23b2614e43cc4adcd6865b2648fed945520e91",
+    "text_snapshot": true
+  },
+  {
+    "index": 192,
+    "path": "BepInEx/patchers/mattymatty-MonkeyInjectionLibrary/MonkeyInjectionLibrary.Development.cfg",
+    "size": 819,
+    "sha256": "35e550e22eb7116471706933e7c39651740b07fa2532434f072f9c2bc6c6c94e",
+    "text_snapshot": true
+  },
+  {
+    "index": 193,
+    "path": "BepInEx/plugins/Alice-DungeonGenerationPlus/LICENSE.txt",
+    "size": 18545,
+    "sha256": "33d3b1685796252291023afe844cbfec8959c76f1875b1c487d0792c7380243b",
+    "text_snapshot": true
+  },
+  {
+    "index": 194,
+    "path": "BepInEx/plugins/AntlerShed-EnemySkinRegistry/package.json",
+    "size": 530,
+    "sha256": "f8a00e6fe6030889a185ce8260bec303b633ebf474d75473eec18ce5bff6f984",
+    "text_snapshot": true
+  },
+  {
+    "index": 195,
+    "path": "BepInEx/plugins/Fandovec03-SpiderPositionFix/LICENSE.txt",
+    "size": 1088,
+    "sha256": "c56ab00be5b9a34f520392587b37231888422eb30907357a370581b852701def",
+    "text_snapshot": true
+  },
+  {
+    "index": 196,
+    "path": "BepInEx/plugins/Fneaky-ImmortalSnailFork/ImmortalSnail.deps.json",
+    "size": 20292,
+    "sha256": "436da5570bb121e8a7cdd6c0aa34ba0b87801ba6c195f3e7a214a94643fe098e",
+    "text_snapshot": true
+  },
+  {
+    "index": 197,
+    "path": "BepInEx/plugins/JacobG5-JLL/LICENSE.txt",
+    "size": 1083,
+    "sha256": "d5c73c2367ff0eac09505d4dfb7b2781ac498b361430329e0e78115552cf56f0",
+    "text_snapshot": true
+  },
+  {
+    "index": 198,
+    "path": "BepInEx/plugins/LCV/enabled_modules.cfg",
+    "size": 695,
+    "sha256": "458bee31f5ab05727af632e0c521e25ce566356db647481b539e70ded03b467a",
+    "text_snapshot": true
+  },
+  {
+    "index": 199,
+    "path": "BepInEx/plugins/LethalCompanyModding-LCUltrawide_Community/LCUltrawide_Community.deps.json",
+    "size": 12183,
+    "sha256": "2bd2f768e6cf9a1dafd5693c2b9ce4a9458bc653199d576f3a4e2404a2aff786",
+    "text_snapshot": true
+  },
+  {
+    "index": 200,
+    "path": "BepInEx/plugins/LethalCompanyModding-VertexLibrary/VertexLibrary.deps.json",
+    "size": 23403,
+    "sha256": "ebb137225de61b2327472b38aed64f161987174855bc39c11c3d70a39f605287",
+    "text_snapshot": true
+  },
+  {
+    "index": 201,
+    "path": "BepInEx/plugins/LethalMatt-Bozoros/Bozoros.deps.json",
+    "size": 35021,
+    "sha256": "9147aa8f5bf03d8aceaa80663f9454c71f66327673b70ce27753c9769bf979ef",
+    "text_snapshot": true
+  },
+  {
+    "index": 202,
+    "path": "BepInEx/plugins/Magic_Wesley-WesleysInteriors/GrandArmoryModConfigsJLLMod.json",
+    "size": 286,
+    "sha256": "78210f978322bac9a73db67e98fd0b74b4edc9d4d201e0f32726414e345a8c16",
+    "text_snapshot": true
+  },
+  {
+    "index": 203,
+    "path": "BepInEx/plugins/Magic_Wesley-WesleysInteriors/HalloweenModConfigsJLLMod.json",
+    "size": 559,
+    "sha256": "0e5c3e8415ae3ff6b81210468d6e187fdf24e9520b4e7995c7cfecf2776cbf6e",
+    "text_snapshot": true
+  },
+  {
+    "index": 204,
+    "path": "BepInEx/plugins/malco-Lategame_Upgrades/Installing.txt",
+    "size": 701,
+    "sha256": "6208ec8a337c5053803da7e30c66a0c48f3667d5d1463d809ded2247f9081471",
+    "text_snapshot": true
+  },
+  {
+    "index": 205,
+    "path": "BepInEx/plugins/malco-Lategame_Upgrades/License.txt",
+    "size": 1083,
+    "sha256": "e23f68f17bc5a6b881a98276ce9e61d8e9e3c2897bac4bc50cb7bffab936f14c",
+    "text_snapshot": true
+  },
+  {
+    "index": 206,
+    "path": "BepInEx/plugins/Maxima356-TriviaEscapeMusic/DefaultScripts/Default.json",
+    "size": 3008,
+    "sha256": "f5f8747c9ec77c29e6b6e598af0daa43c9a4eec962ec4ff9142cbe85f293efe2",
+    "text_snapshot": true
+  },
+  {
+    "index": 207,
+    "path": "BepInEx/plugins/Maxima356-TriviaEscapeMusic/Use PizzaTowerEspaceMusic.txt",
+    "size": 327,
+    "sha256": "9f3c0730d6162a154b3f50f1d107b4b429567b5f4f12466d72016765ffd70915",
+    "text_snapshot": true
+  },
+  {
+    "index": 208,
+    "path": "BepInEx/plugins/pacoito-itolib/itolib.deps.json",
+    "size": 37764,
+    "sha256": "4f57127efe344945a092206dea445322670a494231b851f34b961d381f6a2e24",
+    "text_snapshot": true
+  },
+  {
+    "index": 209,
+    "path": "BepInEx/plugins/qwbarch-MirageCore/lang_dict_95.json",
+    "size": 2183,
+    "sha256": "70b62ef4939d712b960a8ed8aaea9e0d7117b10877e917a97cc4e8bbb7bd340f",
+    "text_snapshot": true
+  },
+  {
+    "index": 210,
+    "path": "BepInEx/plugins/qwbarch-MirageCore/lang_group_dict_95.json",
+    "size": 1626,
+    "sha256": "615dd33fcf7aae4d7bd16591dced12bb734773faec408991e696bc0874cd984f",
+    "text_snapshot": true
+  },
+  {
+    "index": 211,
+    "path": "BepInEx/plugins/Rune580-LethalCompany_InputUtils/LethalCompanyInputUtils/Locale/en_US.json",
+    "size": 1903,
+    "sha256": "d967eba7009bb24a0aad279157392fbc1c7c446a3ebd6c45cf047134d4cc1b46",
+    "text_snapshot": true
+  },
+  {
+    "index": 212,
+    "path": "BepInEx/plugins/Rune580-LethalCompany_InputUtils/LethalCompanyInputUtils/Locale/ru_RU.json",
+    "size": 2397,
+    "sha256": "8e12507eb6ef47cf9b50ba0b68e7c0071c037cd2fe8ac4a6eec6a41baffb8cc1",
+    "text_snapshot": true
+  },
+  {
+    "index": 213,
+    "path": "BepInEx/plugins/Rune580-LethalCompany_InputUtils/LethalCompanyInputUtils/Locale/zh_CN.json",
+    "size": 1093,
+    "sha256": "9d174d1b3440dc4d841dcbba4578b7e34c4e701e45b3cdd4d56a7d4f0fc41d1e",
+    "text_snapshot": true
+  },
+  {
+    "index": 214,
+    "path": "BepInEx/plugins/ScienceBird-ScienceBird_Tweaks/LICENSE.txt",
+    "size": 6712,
+    "sha256": "98d096201b58b511d3f576a5f45419f74947760d335abdf0c7d728be0dd0f703",
+    "text_snapshot": true
+  },
+  {
+    "index": 215,
+    "path": "BepInEx/plugins/ScienceBird-Universal_Radar/LICENSE.txt",
+    "size": 6712,
+    "sha256": "98d096201b58b511d3f576a5f45419f74947760d335abdf0c7d728be0dd0f703",
+    "text_snapshot": true
+  },
+  {
+    "index": 216,
+    "path": "BepInEx/plugins/super_fucking_cool_and_badass_team-Biodiversity/Biodiversity/lang/de.json",
+    "size": 7365,
+    "sha256": "fcf325ff1fa406d69a0c3d1084cf6d5cec2b08bc6f0bdca553c2366051cc9ef5",
+    "text_snapshot": true
+  },
+  {
+    "index": 217,
+    "path": "BepInEx/plugins/super_fucking_cool_and_badass_team-Biodiversity/Biodiversity/lang/en.json",
+    "size": 6273,
+    "sha256": "6ae0e27bbc6b55663df6cce50e739bffb960a964ed0b6649d4aec63d37457d6a",
+    "text_snapshot": true
+  },
+  {
+    "index": 218,
+    "path": "BepInEx/plugins/super_fucking_cool_and_badass_team-Biodiversity/Biodiversity/lang/es.json",
+    "size": 6734,
+    "sha256": "3a4d256673dcace0b91b951cde6051bedbf250926fd0a6c1a50854c34befe5e5",
+    "text_snapshot": true
+  },
+  {
+    "index": 219,
+    "path": "BepInEx/plugins/super_fucking_cool_and_badass_team-Biodiversity/Biodiversity/lang/fr.json",
+    "size": 7313,
+    "sha256": "b3bb36bfe952adc5424218d0f0dfc0e77d1b846e39e90efe44513e8d8805f143",
+    "text_snapshot": true
+  },
+  {
+    "index": 220,
+    "path": "BepInEx/plugins/super_fucking_cool_and_badass_team-Biodiversity/Biodiversity/lang/ru.json",
+    "size": 10780,
+    "sha256": "aed072810179b4da341a04a579d0786e39adc9156fee323ed75bd7be568666cc",
+    "text_snapshot": true
+  },
+  {
+    "index": 221,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/keys/extra.namespaced_keys.json",
+    "size": 184,
+    "sha256": "22319d6bf455a41c3a86c91a7d8f1017328866cb80f846bf1e7455324ec095a6",
+    "text_snapshot": true
+  },
+  {
+    "index": 222,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/keys/vanilla.namespaced_keys.json",
+    "size": 17926,
+    "sha256": "54043834c67b5fd00d382701c6e0ef8cadfbb225ce34bacc6274300e9b380c9a",
+    "text_snapshot": true
+  },
+  {
+    "index": 223,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/all.tag.json",
+    "size": 71,
+    "sha256": "18fffae641cfae8d0cc2b1638a25c71c1ca4dce4e680fefdc618037c34f9b71e",
+    "text_snapshot": true
+  },
+  {
+    "index": 224,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/cold.tag.json",
+    "size": 134,
+    "sha256": "3f54dda7ac95946e78bd0974b597bea5a8100e4dcc8e15ae04743999efbab406",
+    "text_snapshot": true
+  },
+  {
+    "index": 225,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/custom.tag.json",
+    "size": 77,
+    "sha256": "182384b872fa2b57c571f40110f858f3334d89824271d2016be568c371195865",
+    "text_snapshot": true
+  },
+  {
+    "index": 226,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/abandoned.tag.json",
+    "size": 120,
+    "sha256": "0fda9fd6b10e8afbbc92bf0c64daf30df18a6fc15585f9fe8b15b4a87acb5ccc",
+    "text_snapshot": true
+  },
+  {
+    "index": 227,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/artificial.tag.json",
+    "size": 120,
+    "sha256": "5987670f1bd79fa957809a43ae5aac6fcaa318da86270db98b7c6872a03991ca",
+    "text_snapshot": true
+  },
+  {
+    "index": 228,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/bunker.tag.json",
+    "size": 55,
+    "sha256": "ae976fbdcd4e2c4f188b9ad7b32b0e51114c63e58b9e7ceb302e7c87dc220465",
+    "text_snapshot": true
+  },
+  {
+    "index": 229,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/catacomb.tag.json",
+    "size": 57,
+    "sha256": "8029059e90026302930127539ae65bc3f16b7b9e2b21eab776c577ec61f665c7",
+    "text_snapshot": true
+  },
+  {
+    "index": 230,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/cavern.tag.json",
+    "size": 86,
+    "sha256": "d6858cebb2670cd78338de5b73f3353b3383795d23bc53fae97a35943a18f8d2",
+    "text_snapshot": true
+  },
+  {
+    "index": 231,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/claustrophobic.tag.json",
+    "size": 125,
+    "sha256": "5f7fbb1185973250378bba76134240ddf3535153415814f3679f594f921d479d",
+    "text_snapshot": true
+  },
+  {
+    "index": 232,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/dusty.tag.json",
+    "size": 116,
+    "sha256": "2706411072a9d6ae423cc8d94cad11ed466bd201b55cc3dfe8d98b4cab6e3c07",
+    "text_snapshot": true
+  },
+  {
+    "index": 233,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/eerie.tag.json",
+    "size": 85,
+    "sha256": "c412c798f12dd39b3b9225811d183bca08506aeee29af51a3d010f559b5e303b",
+    "text_snapshot": true
+  },
+  {
+    "index": 234,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/factory.tag.json",
+    "size": 86,
+    "sha256": "633e92a1cf9cadc5d89e8d573e9ec54e930382b9a79a86d17da409ffc4497016",
+    "text_snapshot": true
+  },
+  {
+    "index": 235,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/flooded.tag.json",
+    "size": 87,
+    "sha256": "fb8baffc684a021182476c3bd769a9aae981e35beb1aa657065a323a005898ed",
+    "text_snapshot": true
+  },
+  {
+    "index": 236,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/gothic.tag.json",
+    "size": 84,
+    "sha256": "0c79c37f7e57219d794cc76e1fed4b52e4152c9eaf995007b6ecc858267eeba0",
+    "text_snapshot": true
+  },
+  {
+    "index": 237,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/grand.tag.json",
+    "size": 83,
+    "sha256": "986abb5802c2d30f07cc797c31df9e6105343498a3afa9bc38c19fea809a3481",
+    "text_snapshot": true
+  },
+  {
+    "index": 238,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/industrial.tag.json",
+    "size": 121,
+    "sha256": "966f00cf3df99778cb91f99c2aa98467cbdc045b03174650b6083de74b92c108",
+    "text_snapshot": true
+  },
+  {
+    "index": 239,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/lavish.tag.json",
+    "size": 84,
+    "sha256": "1e4694ff0080e153165133cf7d05ffbec7dbebc25e1076da7eedddc376274e74",
+    "text_snapshot": true
+  },
+  {
+    "index": 240,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/maze.tag.json",
+    "size": 115,
+    "sha256": "e852541cf8c52dd96695812452967ced6593f5f8cb144494852775b03afa6bc2",
+    "text_snapshot": true
+  },
+  {
+    "index": 241,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/mechanical.tag.json",
+    "size": 89,
+    "sha256": "b84525091976e0e86d0638a72ad0e391827171216f1233f7c665627610f2b645",
+    "text_snapshot": true
+  },
+  {
+    "index": 242,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/monotone.tag.json",
+    "size": 119,
+    "sha256": "791f08a8e0d10b228c9fcf57f8d776b7cd8a0b306b859acedb7642e3147899cb",
+    "text_snapshot": true
+  },
+  {
+    "index": 243,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/ornate.tag.json",
+    "size": 84,
+    "sha256": "2c72e11ddb8ed1a84e8df7629d96e8ea0aea9f3c6eabe46f8679e23fbf9fcba4",
+    "text_snapshot": true
+  },
+  {
+    "index": 244,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/quarry.tag.json",
+    "size": 86,
+    "sha256": "b5240652e76f233a9dd1fe5a832dcc7208020001279b823cd0a1a846cdf73cb1",
+    "text_snapshot": true
+  },
+  {
+    "index": 245,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/reactor.tag.json",
+    "size": 86,
+    "sha256": "5c01040897de2339fcb1dacb4e44f0bf0b43d6c74bb6be04c229d767da425e22",
+    "text_snapshot": true
+  },
+  {
+    "index": 246,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/ruins.tag.json",
+    "size": 85,
+    "sha256": "49f58c01dda107229c0c1494f61fa5cdb85b0f0838f0610851c30fff9c91bfda",
+    "text_snapshot": true
+  },
+  {
+    "index": 247,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/storage.tag.json",
+    "size": 86,
+    "sha256": "b423017aef1ea178d4e5c14329b55504cb3f104aa7b304b87fcc15a1c7a1638a",
+    "text_snapshot": true
+  },
+  {
+    "index": 248,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Dungeon/withered.tag.json",
+    "size": 62,
+    "sha256": "3d5735f76402f02a20798bd70cacf36a47753637c7b789ac3899fbe5af7eedfd",
+    "text_snapshot": true
+  },
+  {
+    "index": 249,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Enemies/biped.tag.json",
+    "size": 489,
+    "sha256": "ea2a7e5f5e8c2d0e06140d3d8df7d65805b3f8998824540f68487ba034447bf2",
+    "text_snapshot": true
+  },
+  {
+    "index": 250,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Enemies/hostile.tag.json",
+    "size": 618,
+    "sha256": "f141597fcfcbd97df5cd96466f71a720e2e16ee98e1667721b99e9a5122020fd",
+    "text_snapshot": true
+  },
+  {
+    "index": 251,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Enemies/killable.tag.json",
+    "size": 76,
+    "sha256": "6dd3b8d12a1209e4f16a0284a26f5b33cc5dbfc42a5c3643134ec3993193f20b",
+    "text_snapshot": true
+  },
+  {
+    "index": 252,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Enemies/large.tag.json",
+    "size": 73,
+    "sha256": "7d5d6a543797e28af7b9290fd90a6ca0185f524059c9cceda5509d995ef9273f",
+    "text_snapshot": true
+  },
+  {
+    "index": 253,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Enemies/medium.tag.json",
+    "size": 74,
+    "sha256": "bde2773a3a168ced62dc897d6dbe2b4e0b3293f55788df5a2068ab845d34b0fa",
+    "text_snapshot": true
+  },
+  {
+    "index": 254,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Enemies/neutral.tag.json",
+    "size": 296,
+    "sha256": "ceff0c7f9d75f53cb8adddd6a0f8393413e496cb64c76ccd4e1d87551807a2d3",
+    "text_snapshot": true
+  },
+  {
+    "index": 255,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Enemies/organic.tag.json",
+    "size": 725,
+    "sha256": "210e94400f3fb445aa6476d2a81cddfb73a762f104ea8d98cfea8aa683905682",
+    "text_snapshot": true
+  },
+  {
+    "index": 256,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Enemies/passive.tag.json",
+    "size": 162,
+    "sha256": "3fcdf0a2238845a5cd3f4c05b9932be5921883da17028dc00a859baa005e1ac8",
+    "text_snapshot": true
+  },
+  {
+    "index": 257,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Enemies/quadruped.tag.json",
+    "size": 245,
+    "sha256": "d22cce4d36b329256bb177f98762e0c64eae038d4ac774e60a015b7abe7c0cf2",
+    "text_snapshot": true
+  },
+  {
+    "index": 258,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Enemies/small.tag.json",
+    "size": 73,
+    "sha256": "b928902152e33df661aee1464d19a168c5956568d709eb59a5cd76b649a1a605",
+    "text_snapshot": true
+  },
+  {
+    "index": 259,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/hot.tag.json",
+    "size": 212,
+    "sha256": "2789f182227d46e9567d0b930885796d3379c8cc6335842bd31185e7fdf35662",
+    "text_snapshot": true
+  },
+  {
+    "index": 260,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/beast_byproduct.tag.json",
+    "size": 154,
+    "sha256": "455d00728071c621539ca907a4bcd1b4e387830325c30a0fb91e8c025cdc2a63",
+    "text_snapshot": true
+  },
+  {
+    "index": 261,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/body_parts.tag.json",
+    "size": 283,
+    "sha256": "61f9870fd0d6b8ac85a8e448d75bec45b5f2d983ae038111650ce02f304eddf2",
+    "text_snapshot": true
+  },
+  {
+    "index": 262,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/chargeable.tag.json",
+    "size": 78,
+    "sha256": "6f35620aec4845ff6763688333b3ce07f297ba62d904da5450ad112272d59419",
+    "text_snapshot": true
+  },
+  {
+    "index": 263,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/communicative.tag.json",
+    "size": 166,
+    "sha256": "0c395c81709c32d756869593af7911cf9c6f9c695f780a3727fa3dfd83af1343",
+    "text_snapshot": true
+  },
+  {
+    "index": 264,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/conductive.tag.json",
+    "size": 78,
+    "sha256": "ca3ebbab582eb4c21bb1996bde31bf8f746d9509e4ff994c90e2dd964bb832b0",
+    "text_snapshot": true
+  },
+  {
+    "index": 265,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/consumable.tag.json",
+    "size": 322,
+    "sha256": "20277901e1f035d4f383cccbad478d41167dbe4249f16e0597e3af0c910ad8f5",
+    "text_snapshot": true
+  },
+  {
+    "index": 266,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/general_item_class_group.tag.json",
+    "size": 92,
+    "sha256": "b824ffe25fcd9d67d38270a4da52a404f6dcd947e8a254542fd2953a208d5f6c",
+    "text_snapshot": true
+  },
+  {
+    "index": 267,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/harmful.tag.json",
+    "size": 442,
+    "sha256": "3249a37c56c6e88f76fb1537cc586a634b6a398929d9af8e45f750a261f8181d",
+    "text_snapshot": true
+  },
+  {
+    "index": 268,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/heavy_weight.tag.json",
+    "size": 80,
+    "sha256": "57ba6f5c6e4a147915bf76858a556bd966220c25074e6eecf45f7f7777258ea4",
+    "text_snapshot": true
+  },
+  {
+    "index": 269,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/high_value.tag.json",
+    "size": 78,
+    "sha256": "4fa6f8052acbe3727592f7106f468c5df7da585ba558f14ee827de7d0e2a2993",
+    "text_snapshot": true
+  },
+  {
+    "index": 270,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/household.tag.json",
+    "size": 1041,
+    "sha256": "a8bacde4b14ef4a19f1caac2e5c2e2e7e752c8a129aeef9d1a2c73ecd632d7d5",
+    "text_snapshot": true
+  },
+  {
+    "index": 271,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/information.tag.json",
+    "size": 126,
+    "sha256": "e23b208806dbecce7a1b50a1d9bcd4d16584b46955d592be3b959024e12a979d",
+    "text_snapshot": true
+  },
+  {
+    "index": 272,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/interactable.tag.json",
+    "size": 80,
+    "sha256": "57588402b2005539426b6fa8f823060bc559128e61b28ebf8cba25d4896ac54b",
+    "text_snapshot": true
+  },
+  {
+    "index": 273,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/light_weight.tag.json",
+    "size": 80,
+    "sha256": "6b082582d074d246156be410f6025b46f36deb7aa3020cbbd5cee75937def2f9",
+    "text_snapshot": true
+  },
+  {
+    "index": 274,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/low_value.tag.json",
+    "size": 77,
+    "sha256": "a4faed4bb09e59d42079a8a6171c0ebd002f54adfcef608846db4748f1bd0c66",
+    "text_snapshot": true
+  },
+  {
+    "index": 275,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/luminescent.tag.json",
+    "size": 230,
+    "sha256": "fcc57665aa1092d91f8199576002a1b8a5f0c69913d223b248e7b8bbe7ea4d12",
+    "text_snapshot": true
+  },
+  {
+    "index": 276,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/machine_part.tag.json",
+    "size": 229,
+    "sha256": "7efe0c5295ea22a76e97a7b859629917c156aae65c2e532374b208d3022ac765",
+    "text_snapshot": true
+  },
+  {
+    "index": 277,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/medium_value.tag.json",
+    "size": 80,
+    "sha256": "6cb972c8799e356831dd935db514e5ad191adbe95c301d3a7e387273e8952d63",
+    "text_snapshot": true
+  },
+  {
+    "index": 278,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/medium_weight.tag.json",
+    "size": 81,
+    "sha256": "c9dce78ee925e9269f77c4ad350eadfe1bf8df91f36cf73c378d9dc491847de4",
+    "text_snapshot": true
+  },
+  {
+    "index": 279,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/metal.tag.json",
+    "size": 743,
+    "sha256": "1f0d10b5da96d53170422c63c202ff17f439e78fca2cb86cb2e9db197a36085b",
+    "text_snapshot": true
+  },
+  {
+    "index": 280,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/noisy.tag.json",
+    "size": 73,
+    "sha256": "a26562dbf2af2d6dbfb2b6404148fd564564e747612c8204dc65e22bcc829fd9",
+    "text_snapshot": true
+  },
+  {
+    "index": 281,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/non_interactable.tag.json",
+    "size": 84,
+    "sha256": "e8f654524ca1907b4abbb247521dba92da21ff40ea4ca82f28228b2fa4fb5ed6",
+    "text_snapshot": true
+  },
+  {
+    "index": 282,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/one_handed.tag.json",
+    "size": 78,
+    "sha256": "5b443085c3de9a61d9abae589551c804cb2c3a4d6f3b5fbf357d99a976a7e827",
+    "text_snapshot": true
+  },
+  {
+    "index": 283,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/scrap.tag.json",
+    "size": 73,
+    "sha256": "a40a623fe4415ac7da51d7fb762c2aee6ed745f6e73f636d6355c44055923615",
+    "text_snapshot": true
+  },
+  {
+    "index": 284,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/small_items_group.tag.json",
+    "size": 85,
+    "sha256": "df64bdf0882cfb6b2df8b38ee5b3450f1d8c83c10b24d5d1955b9cc1447adb16",
+    "text_snapshot": true
+  },
+  {
+    "index": 285,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/tabletop_items_group.tag.json",
+    "size": 88,
+    "sha256": "dbffc8e0637b246d2716169d54535d033e7a10e710ac00a874b876b4b1ba521b",
+    "text_snapshot": true
+  },
+  {
+    "index": 286,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/test_item_group.tag.json",
+    "size": 83,
+    "sha256": "f125ae993572ed70172ac4d7234d893c540cd45f109768e003d1e20cb5473df1",
+    "text_snapshot": true
+  },
+  {
+    "index": 287,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/tool.tag.json",
+    "size": 72,
+    "sha256": "20383a08c2c2b2794eb945bbc94c6e1b0f47bb4de97fd3c12185465464307275",
+    "text_snapshot": true
+  },
+  {
+    "index": 288,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/transportation.tag.json",
+    "size": 191,
+    "sha256": "7425a51db084263627595b220bbe8d5ebcc4e728f88ff1e8e577663105f7d3aa",
+    "text_snapshot": true
+  },
+  {
+    "index": 289,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/two_handed.tag.json",
+    "size": 78,
+    "sha256": "7376551a231367fa1982d25ec72a7b5c46bd7ba263f252b42f424f0c7de740fe",
+    "text_snapshot": true
+  },
+  {
+    "index": 290,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Items/weapon.tag.json",
+    "size": 74,
+    "sha256": "bc94ddac6c403e785e8945b8e215b7c88d15b5c4b135bb818e41126cfdfe5f31",
+    "text_snapshot": true
+  },
+  {
+    "index": 291,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/military.tag.json",
+    "size": 87,
+    "sha256": "0fa925146d7230e257aa0a2bfaaad86606a9bfdac0d746737c77576f253a8a34",
+    "text_snapshot": true
+  },
+  {
+    "index": 292,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/amethyst.tag.json",
+    "size": 86,
+    "sha256": "b8d674df7cac1bb4c3843ca4ff184d63f1c9d08ffd83d93e4be0aa162d32d2f1",
+    "text_snapshot": true
+  },
+  {
+    "index": 293,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/canyon.tag.json",
+    "size": 117,
+    "sha256": "e5545478776755c2226b699df00c2e91a4d69b7b351f46e0bd211ae7c4824448",
+    "text_snapshot": true
+  },
+  {
+    "index": 294,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/company.tag.json",
+    "size": 100,
+    "sha256": "152ac2a76acf034969b72e91b95bd669283ea00738008766218565c945627991",
+    "text_snapshot": true
+  },
+  {
+    "index": 295,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/desert.tag.json",
+    "size": 116,
+    "sha256": "bf6112a806bb5eefcc9a45a78c802d949c859d77faa716df32ec0221242c9b1b",
+    "text_snapshot": true
+  },
+  {
+    "index": 296,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/forest.tag.json",
+    "size": 152,
+    "sha256": "e3898e4f40c340c66c8337861a27a438e0669a10ce5aaf27fbf3851ed14a369d",
+    "text_snapshot": true
+  },
+  {
+    "index": 297,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/free.tag.json",
+    "size": 97,
+    "sha256": "daa2be72706881db267e215bead65f1d6317934a769b06e0990602955f07db83",
+    "text_snapshot": true
+  },
+  {
+    "index": 298,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/habitable.tag.json",
+    "size": 208,
+    "sha256": "b4a87937d4e012eb3dfa7b2f861e2c3e749878c9a7f1e98a89c24ca78efedf70",
+    "text_snapshot": true
+  },
+  {
+    "index": 299,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/inhabited.tag.json",
+    "size": 87,
+    "sha256": "1cd799853056601726179f42c6e80c4c6c9772e112754f10962bd61d32c10f41",
+    "text_snapshot": true
+  },
+  {
+    "index": 300,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/marsh.tag.json",
+    "size": 84,
+    "sha256": "426086efca40dcf414f7c90eac221e20c29af1170f1a3ab842843f6d7b2d9fc5",
+    "text_snapshot": true
+  },
+  {
+    "index": 301,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/plains.tag.json",
+    "size": 85,
+    "sha256": "5b59c9718a01af8731698b4b37875c7f4b33d8c215f3ec7be5d5cc56017651bb",
+    "text_snapshot": true
+  },
+  {
+    "index": 302,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/rocky.tag.json",
+    "size": 83,
+    "sha256": "206138214a6e10af3269f7aa3ad71500bcdf8328fa4340ffbc78215f3eaa6468",
+    "text_snapshot": true
+  },
+  {
+    "index": 303,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/temperate.tag.json",
+    "size": 142,
+    "sha256": "66018b46062a4b6739678fca70679620fdebf3df33cb72cb0af86a9c151709d4",
+    "text_snapshot": true
+  },
+  {
+    "index": 304,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/tundra.tag.json",
+    "size": 136,
+    "sha256": "d13a923e9a160e74642230e175b91052a3e4568f9097906100b10ba5a1107de1",
+    "text_snapshot": true
+  },
+  {
+    "index": 305,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/valley.tag.json",
+    "size": 139,
+    "sha256": "86e9846ea52f1b3ee53a44ba3a7e77e82d54a26ba0060db785d02eebf7ba44dc",
+    "text_snapshot": true
+  },
+  {
+    "index": 306,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/wasteland.tag.json",
+    "size": 95,
+    "sha256": "3b4af1996eeff5358d6aedef971ef8a8569e4e46b49fc36415b7008b9de3cee1",
+    "text_snapshot": true
+  },
+  {
+    "index": 307,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/Moons/wet.tag.json",
+    "size": 166,
+    "sha256": "b81d9bfd75b0039809e0929d977d2ef2f8b16a848d8d18721264f9a8d73a8ac9",
+    "text_snapshot": true
+  },
+  {
+    "index": 308,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/natural.tag.json",
+    "size": 185,
+    "sha256": "6fa0b364dd4faff0c116a85d779b64a0a18b5ca820e71f5fbaf92a1924163f95",
+    "text_snapshot": true
+  },
+  {
+    "index": 309,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/paid.tag.json",
+    "size": 72,
+    "sha256": "f6cb89d1cdfd333fe59ca0d17f3432de4abf3e198ee5ecae09fddc954635ddcf",
+    "text_snapshot": true
+  },
+  {
+    "index": 310,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/unimplemented.tag.json",
+    "size": 215,
+    "sha256": "41664281a6f6145b8aac719e18a5fecc2b7338bba67b7df7d7f723417dacc59e",
+    "text_snapshot": true
+  },
+  {
+    "index": 311,
+    "path": "BepInEx/plugins/TeamXiaolan-DawnLib/DawnLib/data/tags/vanilla.tag.json",
+    "size": 78,
+    "sha256": "5c250318cac8c0f944fa89db7515a0d7b24abe3362f4a07061423ead55e8e266",
+    "text_snapshot": true
+  },
+  {
+    "index": 312,
+    "path": "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+    "size": 57344,
+    "sha256": "3fd38c0e8ff76b55c5c335cd9eb867e254a422caea2287fb95d46447e2167960",
+    "text_snapshot": false
+  },
+  {
+    "index": 313,
+    "path": "BepInEx/plugins/VirusTLNR-MaskedInvisFix/LICENSE.txt",
+    "size": 1085,
+    "sha256": "a1e60884ed96061abff3d8ff0cc62d34c78ab9877e0956b49e257b8789e46d2b",
+    "text_snapshot": true
+  },
+  {
+    "index": 314,
+    "path": "BepInEx/plugins/x753-More_Suits/moresuits/!more-suits.txt",
+    "size": 766,
+    "sha256": "a61bd0853cd145f572c142a336e0c9802dd333988b6e1ee1b5372e537e3904b4",
+    "text_snapshot": true
+  },
+  {
+    "index": 315,
+    "path": "BepInEx/plugins/x753-More_Suits/moresuits/advanced/Glow.json",
+    "size": 245,
+    "sha256": "46a63cffa8bf42c94e301b9b79ba51b2050f23a30ce173cbd54b2c2435f1ccc3",
+    "text_snapshot": true
+  },
+  {
+    "index": 316,
+    "path": "BepInEx/plugins/x753-More_Suits/moresuits/advanced/Kirby.json",
+    "size": 31,
+    "sha256": "b310a1054ad7f926b6ef663adb6c021cec088bf63a88e1a60c55f1e0581a8693",
+    "text_snapshot": true
+  },
+  {
+    "index": 317,
+    "path": "BepInEx/plugins/x753-More_Suits/moresuits/advanced/Knuckles.json",
+    "size": 31,
+    "sha256": "b310a1054ad7f926b6ef663adb6c021cec088bf63a88e1a60c55f1e0581a8693",
+    "text_snapshot": true
+  },
+  {
+    "index": 318,
+    "path": "BepInEx/plugins/x753-More_Suits/moresuits/advanced/Luigi.json",
+    "size": 31,
+    "sha256": "b310a1054ad7f926b6ef663adb6c021cec088bf63a88e1a60c55f1e0581a8693",
+    "text_snapshot": true
+  },
+  {
+    "index": 319,
+    "path": "BepInEx/plugins/x753-More_Suits/moresuits/advanced/Mario.json",
+    "size": 31,
+    "sha256": "b310a1054ad7f926b6ef663adb6c021cec088bf63a88e1a60c55f1e0581a8693",
+    "text_snapshot": true
+  },
+  {
+    "index": 320,
+    "path": "BepInEx/plugins/x753-More_Suits/moresuits/advanced/Minion.json",
+    "size": 31,
+    "sha256": "b310a1054ad7f926b6ef663adb6c021cec088bf63a88e1a60c55f1e0581a8693",
+    "text_snapshot": true
+  },
+  {
+    "index": 321,
+    "path": "BepInEx/plugins/x753-More_Suits/moresuits/advanced/Skeleton.json",
+    "size": 31,
+    "sha256": "b310a1054ad7f926b6ef663adb6c021cec088bf63a88e1a60c55f1e0581a8693",
+    "text_snapshot": true
+  },
+  {
+    "index": 322,
+    "path": "BepInEx/plugins/x753-More_Suits/moresuits/advanced/Slayer.json",
+    "size": 31,
+    "sha256": "b310a1054ad7f926b6ef663adb6c021cec088bf63a88e1a60c55f1e0581a8693",
+    "text_snapshot": true
+  },
+  {
+    "index": 323,
+    "path": "BepInEx/plugins/Zehs-SellMyScrap/LICENSE.txt",
+    "size": 1082,
+    "sha256": "879183a7022ffe339e7b0f6cd52af63cf63c627d3e09693228de1874684ecd33",
+    "text_snapshot": true
+  },
+  {
+    "index": 324,
+    "path": "BepInEx/plugins/Zigzag-PremiumScraps/Lang/lang-en.json",
+    "size": 4064,
+    "sha256": "5201272af6172ab6aaaeca4045705686e6fe92271c7c8545360fddcdb8399423",
+    "text_snapshot": true
+  },
+  {
+    "index": 325,
+    "path": "BepInEx/plugins/Zigzag-PremiumScraps/Lang/lang-fr.json",
+    "size": 4685,
+    "sha256": "abf54d14e0c75bb6a8e2913e3acff07df009604ea6560466a4c2e2f25f35e9df",
+    "text_snapshot": true
+  },
+  {
+    "index": 326,
+    "path": "doorstop_config.ini",
+    "size": 1460,
+    "sha256": "4d5c6dfa0f771c6a5b1b0c559aca0bd0ece7d08b08fff894708dc3b73ce73cfc",
+    "text_snapshot": true
+  },
+  {
+    "index": 327,
+    "path": "export.r2x",
+    "size": 24580,
+    "sha256": "9d2b2accb69b48b39f449eb0ffc5552dd75d8c25634b36a53bba929f6a9096bc",
+    "text_snapshot": true
+  },
+  {
+    "index": 328,
+    "path": "Mirage/settings.json",
+    "size": 101,
+    "sha256": "5c60c5e225a01763009be14815732b40bc764d8f2d3d85bb6543ed5c59af4c3a",
+    "text_snapshot": true
+  },
+  {
+    "index": 329,
+    "path": "BepInEx/config/CodeRebirth.cfg",
+    "size": 792,
+    "sha256": "da90b6d34ec8806401a5e1d2ba47fb1115b3c98e28b6d08965ba2246e5e64661",
+    "text_snapshot": true
+  },
+  {
+    "index": 330,
+    "path": "BepInEx/config/tendas.s139.compatibilityfixes.cfg",
+    "size": 50,
+    "sha256": "0a161e22cbbde61d3bb85006dca2b144cfffdaa6f36822f4bebfe06abdca6a50",
+    "text_snapshot": true
+  },
+  {
+    "index": 331,
+    "path": "BepInEx/plugins/S142ZJetpackAcceleration/S142ZJetpackAcceleration.dll",
+    "size": 12288,
+    "sha256": "9624de844ab3913605eab2c35d96d9d9dec17b34d77823b33aaa434488022add",
+    "text_snapshot": false
+  },
+  {
+    "index": 332,
+    "path": "BepInEx/plugins/S142ZCodeRebirthAerialDefenseSpawnTuning/S142ZCodeRebirthAerialDefenseSpawnTuning.dll",
+    "size": 16384,
+    "sha256": "7313501540c3945ee3782903b8bb328574a87587859fce30faa2a301b7f1d98b",
+    "text_snapshot": false
+  },
+  {
+    "index": 333,
+    "path": "BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll",
+    "size": 15872,
+    "sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
+    "text_snapshot": false
+  },
+  {
+    "index": 334,
+    "path": "BepInEx/plugins/S142AECodeRebirthMicrowaveSpawnTuning/S142AECodeRebirthMicrowaveSpawnTuning.dll",
+    "size": 17408,
+    "sha256": "f42b25f32dc338617176d6d1d8c76ec3583ab29c7c4a1231c9e5ca4078378357",
+    "text_snapshot": false
+  }
+]

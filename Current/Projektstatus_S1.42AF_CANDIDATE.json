@@ -1,0 +1,90 @@
+{
+  "schema_version": 3,
+  "date": "2026-09-05",
+  "repository_is_source_of_truth": true,
+  "accepted_baseline": {
+    "build_id": "S1.42AC",
+    "profile": "Profiles/LC V1 S1.42AC BCMER EventType Equal Distribution.r2z",
+    "sha256": "0ce58ab1fa0f0d76d6fbe1a4bff1dce9defc92e3d4b70cfb3056306e617e47d9",
+    "status": "ACCEPTED_FULL_NORMAL_STACK",
+    "acceptance_record": "Current/118_S1.42AC_RUNTIME_ACCEPTANCE_CORRECTED_BCMER_EVENTTYPE_EQUAL_DISTRIBUTION.md",
+    "runtime_evidence": "RuntimeEvidence/S1.42AC/20260904T235720Z/"
+  },
+  "active_runtime_candidate": {
+    "build_id": "S1.42AF",
+    "title": "Path-Length-Safe Microwave Packaging",
+    "profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
+    "profile_name": "LC V1 S1.42AF Microwave Fix",
+    "sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
+    "status": "BUILD_PASS_GAMEPLAY_RUNTIME_VALIDATION_OPEN_NOT_ACCEPTED",
+    "successful_build_run": 33993880634,
+    "automated_build_commit": "2cab9044579e74739669440699c763a32f0fe379",
+    "candidate_record": "Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md",
+    "promotion_record": "Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md",
+    "plan": "BuildSpecs/S1.42AF_PLAN.md",
+    "patch_source": "Patches/S142AECodeRebirthMicrowaveSpawnTuning/",
+    "snapshot": "ProfileSources/S1.42AF/",
+    "zip_members": 335,
+    "changed_existing_members": [
+      "export.r2x"
+    ],
+    "added_members": [
+      "BepInEx/plugins/S142AECodeRebirthMicrowaveSpawnTuning/S142AECodeRebirthMicrowaveSpawnTuning.dll"
+    ],
+    "removed_members": [],
+    "mod_state_changes": [],
+    "mod_additions": [],
+    "mod_removals": [],
+    "config_changes": [],
+    "plugin_dll_sha256": "41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f",
+    "user_authorized_spawn_scale": 0.5,
+    "expected_runtime_plugin_identity": "S1.42AE CodeRebirth Microwave Spawn Tuning 1.0.0",
+    "target_semantics": "Validate exact 18 Moon and 18 Interior Functional Microwave tables, then scale only the 18 effective Moon/tag curves to 50 percent amplitude."
+  },
+  "superseded_runtime_candidate": {
+    "build_id": "S1.42AE",
+    "status": "SUPERSEDED_FOR_PATH_LENGTH_SAFE_PACKAGING_NOT_GAMEPLAY_REJECTED",
+    "provider_contract_executed": false,
+    "nested_binding_file_size_bytes": 40960,
+    "nested_binding_path_length": 262,
+    "accepted_control_path_length": 247,
+    "classification": "PRELOADER_PATH_LENGTH_COMPATIBILITY_BLOCKER_LEADING_ROOT_CAUSE",
+    "decision_record": "Current/127_S1.42AE_PATH_LENGTH_SUPERSESSION_AND_S1.42AF_PROMOTION.md"
+  },
+  "functional_contract": {
+    "coderebirth": "1.6.9",
+    "dawnlib": "0.9.25",
+    "dusk": "0.9.25",
+    "map_object_key": "code_rebirth:functional_microwave",
+    "prioritise_moons": true,
+    "moon_curve_count": 18,
+    "interior_curve_count": 18,
+    "scaled_table": "CurvesByMoonOrTagName",
+    "interior_table_action": "VALIDATE_ONLY_NO_MUTATION",
+    "spawn_scale": 0.5,
+    "fail_closed": true
+  },
+  "runtime_gate": {
+    "gale_v24_import_proof": "REQUIRED",
+    "shortened_binding_path_below_260": "REQUIRED",
+    "startup_main_menu_lobby": "OPEN",
+    "dependency_validation": "OPEN",
+    "provider_contract_marker": "MUST_SHOW_PRIORITISE_MOONS_TRUE_MOONCURVES_18_INTERIORCURVES_18",
+    "moon_keyset_marker": "MUST_BE_PRESENT",
+    "interior_keyset_marker": "MUST_BE_PRESENT",
+    "scale_application_marker": "MUST_SHOW_18_MOON_CURVES_X0_5_AND_18_INTERIOR_VALIDATION_ONLY",
+    "contract_refusal": "MUST_BE_0",
+    "normal_round_generation": "OPEN",
+    "fatal": "MUST_BE_0",
+    "accepted_s1_42ac_regression_check": "OPEN"
+  },
+  "controllers": {
+    "buildspec_current_enabled": false,
+    "buildspec_current_id": "IDLE_AFTER_S1.42AF_BUILD_AWAITING_RUNTIME_VALIDATION",
+    "buildspec_base_profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
+    "buildspec_base_sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
+    "runtime_active_build": "S1.42AF",
+    "successor_armed": false
+  },
+  "exact_next_step": "Import S1.42AF with RuntimeTools/ReplaceActiveGaleProfileV24.ps1. Proceed only after v2.4 positively verifies non-empty export.r2x plus exactly one non-empty base SoundAPI DLL and one non-empty LethalCompany binding DLL. Confirm the shortened nested binding path is below the legacy 260-character boundary, then start Lethal Company, require preloader/main-menu success, play one normal run far enough for ordinary moon/interior generation, and upload the complete fresh S1.42AF LogOutput.log with the exact uploader in Current/126_S1.42AF_BUILD_CANDIDATE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md. Evaluate the preserved S1.42AE plugin markers, dependency versions, PrioritiseMoons=true MoonCurves=18 InteriorCurves=18, both keysets, the 18 Moon curves x0.5 / 18 Interior validation-only marker, and regression/fatal markers before accepting or rejecting S1.42AF."
+}

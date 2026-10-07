@@ -1,0 +1,44 @@
+{
+  "schema_version": "phase-c3c-manifest-1",
+  "created_utc": "2026-09-19",
+  "repository_baseline_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "parent_pr_head": "8be389fa99ed059da9eb35ed5f0c990c47e2074b",
+  "working_branch": "scope/universal-interior-phase-c3a-dawn-tags",
+  "scope": "Universal Interior Viability / Equal Availability",
+  "phase": "C3C",
+  "inputs": [
+    "SourceEvidence/UniversalInteriorViability/PhaseC3A/FINDINGS.md",
+    "SourceEvidence/UniversalInteriorViability/PhaseC3B/FINDINGS.md",
+    "SourceEvidence/NativeSpawnOwners/20260911T144505Z/MANIFEST.json",
+    "SourceEvidence/NativeSpawnOwners/20260911T144505Z/XuXiaolan-CodeRebirth-0-DISCOVERY.json",
+    "ProfileSources/S1.42AK/export.r2x",
+    "ProfileSources/S1.42AK/BepInEx/config/Black Mesa Team.Black Mesa Half Life Moon Interior.cfg",
+    "XuuXiaolan/CodeRebirth@3aec94f6f737c86d5e1eb59a57396740317b210f",
+    "PlasteredCrab/BlackMesaLethalCompany@e2483ec6b08b0411a3b4bd1be5a6f4605258c5a7 (historical-only qualification)",
+    "Thunderstore current Black Mesa 3.4.4 package/versions/changelog pages captured 2026-09-19"
+  ],
+  "outputs": [
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3C/FINDINGS.md",
+      "github_blob_sha": "63646d1dc3a523f670e869dea8ed3f4b82649a57"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3C/OWNER_SCENE_TOPOLOGY_EVIDENCE.json",
+      "github_blob_sha": "63091d016be4bcb0850094c8d0651bdb63c20a65"
+    }
+  ],
+  "counts": {
+    "external_target_moons": 2,
+    "oxyde_scene_identity_proven": 1,
+    "exact_entrance_id_sets_proven": 0,
+    "canonical_matrix_cells_changed": 0,
+    "c3b_selection_pairings_preserved": 44,
+    "new_selection_pairings": 0
+  },
+  "qualification": [
+    "CodeRebirth exact accepted package/DLL identity is SHA-256-bound by the preserved native-owner manifest; the inspected upstream tree is version-matched 1.6.9 source and is not asserted byte-identical to the package DLL.",
+    "Black Mesa package version 3.4.4 is authoritative from export.r2x, but the repository does not currently preserve an exact 3.4.4 package binary/decompilation. The public GitHub source is historical and predates the Dawn migration.",
+    "Negative serialized-source searches do not prove absence of runtime entrances; they only establish that exact IDs/pairing are not recoverable from the inspected committed YAML.",
+    "No selection availability is promoted by C3C; C3B's 44 proposed direct-LLL pairings remain selection-only evidence."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C3E3B",
+  "inspection_date": "2026-09-20",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "pr_number": 138,
+  "parent_commit": "60240ddc8d104fda16dcc75453c5732b7c84fc8a",
+  "verified_main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "accepted_baseline": "S1.42AK",
+  "status": "STATIC_SCENE_SCAN_COMPLETE_RUNTIME_ENTRANCES_UNRESOLVED",
+  "input": {
+    "package": "XuXiaolan-CodeRebirth-1.6.9",
+    "package_url": "https://gcdn.thunderstore.io/live/repository/packages/XuXiaolan-CodeRebirth-1.6.9.zip",
+    "package_sha256": "a44a47d3f9eb049ccea83f8483c257f4faa2bf927a6df7e0bb70ff1504b2a5d6",
+    "bundle_member": "plugins/CodeRebirth/Assets/oxydescene",
+    "bundle_sha256": "6b6dc42c2bef7d858e7e2efa2573df3e1c2bc8507cc7c3840483f0f6c1b0e883",
+    "bundle_bytes": 55038216,
+    "prior_inventory": "SourceEvidence/UniversalInteriorViability/PhaseC3E3A/OXYDE_PACKAGE_BUNDLE_INVENTORY.json",
+    "prior_inventory_git_blob": "4d343b00a9f29f854064affd393b0cabffad7ee3"
+  },
+  "toolchain": {
+    "unitypy_version": "1.25.3",
+    "managed_code_executed": false,
+    "game_executed": false
+  },
+  "artifacts": [
+    {
+      "path": "AnalysisTools/inspect_universal_interior_c3e3b.py",
+      "sha256": "0b579d8f8b3e1e9fac18ff792ab847d0ca299c4473cc965e5eb8aed0cd730234"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3B/OXYDE_ENTRANCE_COMPONENT_SCAN.json",
+      "sha256": "238bae805c0442fb4b5a54b29d20932748404bcd0ae9eb4bb8033c46e052a048"
+    }
+  ],
+  "findings_path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3B/FINDINGS.md",
+  "coverage": {
+    "objects": 20561,
+    "monoscripts": 52,
+    "monobehaviours_total": 965,
+    "monobehaviours_parsed": 965,
+    "monobehaviour_parse_errors": 0,
+    "script_pointer_status_counts": {
+      "RESOLVED": 963,
+      "NULL": 2
+    },
+    "gameobjects_total": 4424,
+    "gameobject_parse_errors": 0
+  },
+  "result": {
+    "entrance_class_or_field_matches": 0,
+    "null_script_records": 2,
+    "null_script_gameobject": "BuildPlayer-Oxyde / pathID 70 / DungeonGenerator",
+    "runtime_entrance_count": null,
+    "runtime_pairing_status": "UNRESOLVED"
+  },
+  "proof_boundary": "Serialized scene-bundle inspection only. Does not cover runtime additions, other bundles, owner code, final entrance counts/pairings, generation or topology safety.",
+  "unchanged": {
+    "authoritative_b3_matrix": true,
+    "selection_supported_external_pairings": 46,
+    "source_guid_ledger_resolved": 27,
+    "source_guid_ledger_total": 192,
+    "build_enabled": false,
+    "build_state": "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS",
+    "active_build": "S1.42AK",
+    "runtime_test_outstanding": false,
+    "candidate": null
+  },
+  "next_segment": "C3E3C: exact oxydeassets level/moon definition and generation participation; no runtime entrance count or topology clearance inferred."
+}

@@ -1,0 +1,150 @@
+{
+  "schema_version": "phase-c3b-1",
+  "scope": "Universal Interior Viability / Equal Availability",
+  "baseline": "S1.42AK",
+  "profile_package": {
+    "dependency_string": "IAmBatby-LethalLevelLoader-1.7.12",
+    "version": "1.7.12",
+    "version_authority": "ProfileSources/S1.42AK/export.r2x"
+  },
+  "source_binding": {
+    "upstream_repository": "pacoito123/LC_LethalLevelLoader",
+    "release_source_commit": "f9998b91adf242cd8d735f4e697d55b32b94bfac",
+    "release_commit_message": "Release v1.7.12",
+    "release_commit_date_utc": "2026-08-27T10:01:20Z",
+    "thunderstore_version_page": "https://thunderstore.io/c/lethal-company/p/IAmBatby/LethalLevelLoader/v/1.7.12/versions",
+    "thunderstore_upload_time_from_version_page": "2026-08-27 10:09 (page-local display)",
+    "qualification": "Exact 1.7.12 release-source commit and exact Git blob SHAs are pinned. The accepted profile package binary itself is not SHA-256-bound in repository evidence, so this checkpoint is source-release-bound rather than LLL-binary-bound."
+  },
+  "inspected_files": [
+    {
+      "path": "LethalLevelLoader/Compatibility/DawnLibCompatibility.cs",
+      "blob_sha": "e7d899f8f4dd4025b352570a98fdd8cc8dbaf7f6",
+      "relevant_methods": [
+        "RegisterDawnExtendedLevels",
+        "RegisterDawnExtendedContent",
+        "CopyContentTags",
+        "ConvertToLLLFormat",
+        "IsCurrentMoonLLL"
+      ]
+    },
+    {
+      "path": "LethalLevelLoader/General/Patches.cs",
+      "blob_sha": "cb7312c16e462f5c476a990df756c5066b904d52",
+      "relevant_methods": [
+        "initial setup path invoking RegisterDawnExtendedLevels before content dictionaries/config binding"
+      ]
+    },
+    {
+      "path": "LethalLevelLoader/General/Content.cs",
+      "blob_sha": "3b8184a92eec0474230ae68cc251bb13f16d60a2",
+      "relevant_members": [
+        "PatchedContent.CustomExtendedLevels",
+        "PatchedContent.MoonsCatalogue",
+        "PopulateContentDictionaries"
+      ]
+    },
+    {
+      "path": "LethalLevelLoader/Patches/LevelManager.cs",
+      "blob_sha": "73367ec8a837b3e758623014ca4582808cf9bbf1",
+      "relevant_methods": [
+        "PatchVanillaLevelLists"
+      ]
+    },
+    {
+      "path": "LethalLevelLoader/Components/MatchingProperties/LevelMatchingProperties.cs",
+      "blob_sha": "fa579794267f9a961c7218833178a5be2c3c2783",
+      "relevant_methods": [
+        "GetDynamicRarity"
+      ]
+    },
+    {
+      "path": "LethalLevelLoader/Components/MatchingProperties/MatchingProperties.cs",
+      "blob_sha": "fc2ba2932744c9734e3b32753df68ff0e9b3e42f",
+      "relevant_methods": [
+        "GetHighestRarityViaMatchingNormalizedTags",
+        "GetHighestRarityViaMatchingNormalizedString",
+        "UpdateRarity"
+      ]
+    },
+    {
+      "path": "LethalLevelLoader/Patches/DungeonManager.cs",
+      "blob_sha": "1ff8bde5633df6b2e1028898f24d5e5b435670fa",
+      "relevant_methods": [
+        "GetValidExtendedDungeonFlows selection loop / matching report"
+      ]
+    },
+    {
+      "path": "LethalLevelLoader/Components/ExtendedContent/ExtendedContent.cs",
+      "blob_sha": "0ba761b4324e4c6cfb06c1860891974d78129199",
+      "relevant_methods": [
+        "TryAddTag",
+        "TryGetTag"
+      ]
+    }
+  ],
+  "bridge_facts": {
+    "external_level_creation": [
+      "RegisterDawnExtendedLevels iterates Dawn LethalContent.Moons.Values.",
+      "It skips null entries, vanilla Dawn keys, and entries tagged dawn_lib:is_external.",
+      "For each remaining Dawn moon it creates an ExtendedLevel from the Dawn SelectableLevel and calls RegisterDawnExtendedContent.",
+      "RegisterDawnExtendedContent sets ContentType to External and initializes ContentTags with LLL CustomContentTag.",
+      "The same method then copies Dawn tags and registers the content under an ExtendedMod keyed by the Dawn namespace."
+    ],
+    "dawn_to_lll_tag_copy": [
+      "CopyContentTags requires ITaggable, enumerates AllTags(), takes NamespacedKey.Key (not Namespace), converts snake_case words to PascalCase, and adds the resulting LLL tag if not already present.",
+      "Therefore namespace identity is intentionally discarded during the Dawn-to-LLL tag conversion.",
+      "LLL Custom is guaranteed even if the Dawn tag enumeration were empty because RegisterDawnExtendedContent seeds it before CopyContentTags."
+    ],
+    "setup_order": [
+      "The initial setup path initializes custom bundles, invokes the Dawn compatibility registration/conversion methods, populates PatchedContent dictionaries, applies/merges content tags, then binds configs.",
+      "Level matching therefore consumes the External ExtendedLevel ContentTags populated by the Dawn bridge."
+    ],
+    "lll_selection": [
+      "LevelMatchingProperties.GetDynamicRarity compares a target ExtendedLevel's ContentTags to the configured levelTags and keeps the highest matching rarity.",
+      "DungeonManager's valid-flow calculation uses that dynamic rarity and retains flows whose result is non-zero."
+    ]
+  },
+  "cross_evidence_from_c3a": {
+    "path": "SourceEvidence/UniversalInteriorViability/PhaseC3A/DAWNLIB_TAG_AND_MATCHING_IL.json",
+    "dawnlib_version": "0.9.25",
+    "dawnlib_main_dll_sha256": "9b4826a16eec1fa5091fb4246d010005bc9c3e04282034e8d067b499ab5c125b",
+    "facts": [
+      "Dawn Moons is a TaggedRegistry.",
+      "AllAutoTagger applies to every entry.",
+      "CustomAutoTagger applies when NamespacedKey.IsVanilla is false.",
+      "black_mesa:black_mesa and code_rebirth:oxyde are non-vanilla keys and therefore receive Dawn's automatic lethal_company:custom tag.",
+      "TaggedRegistry.Freeze applies matching automatic tags before invoking AfterTagging."
+    ]
+  },
+  "guaranteed_lll_tags_for_target_external_moons": {
+    "black_mesa": [
+      "Custom",
+      "All"
+    ],
+    "oxyde": [
+      "Custom",
+      "All"
+    ],
+    "qualification": "Custom is independently seeded by LLL. All follows from the exact Dawn 0.9.25 AllAutoTagger plus LLL CopyContentTags. Additional owner-supplied Dawn tags may also be copied, but are intentionally not enumerated in this bridge-only segment. Vanilla is not guaranteed by the automatic path, and this checkpoint does not assert its final absence."
+  },
+  "selection_availability_consequence": {
+    "canonical_b2_mechanism": "22 DIRECT_LLL_UNIVERSAL_TAG_OVERRIDE flows with active Vanilla:100,Custom:100",
+    "external_target_moons": 2,
+    "supported_pairings": 44,
+    "supported_selection_classification": "VIABLE_EQUAL_100",
+    "rationale": "Both External ExtendedLevels are guaranteed to carry LLL Custom, so each direct active Custom:100 rule matches at rarity 100. Under the accepted S1.42AB architecture every positive viable rarity remains/effectively normalizes to 100.",
+    "excluded_claims": [
+      "actual dungeon generation",
+      "entrance/fire-exit pairing",
+      "scene topology",
+      "traversal",
+      "geometry",
+      "elevators",
+      "routing",
+      "NavMesh",
+      "owner-controlled flow viability",
+      "Black Mesa native dungeon rule on these two moons"
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+name: S1.42AK BMGHDIAG1 LLL provenance gate
+
+on:
+  pull_request:
+    paths:
+      - 'Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z'
+      - 'ProfileSources/S1.42AK/export.r2x'
+      - 'AnalysisTools/verify_s142ak_lll_1712_provenance.py'
+      - 'BuildSpecs/S1.42AK-BMGHDIAG1_PLAN.md'
+      - 'SourceEvidence/UniversalInteriorViability/PhaseC3F17/CANDIDATE_CONTRACT.json'
+      - '.github/workflows/s142ak-bmghdiag1-lll-provenance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Freshly materialize and verify exact S1.42AK LLL 1.7.12 identity
+        id: provenance
+        continue-on-error: true
+        run: python AnalysisTools/verify_s142ak_lll_1712_provenance.py
+
+      - name: Upload bounded provenance record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ak-bmghdiag1-lll-provenance-${{ github.sha }}
+          path: c3f17-4-s142ak-lll-provenance-output/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Enforce fail-closed provenance result
+        if: steps.provenance.outcome != 'success'
+        run: |
+          echo "C3F17.4 provenance verification failed: S1.42AK / LLL 1.7.12 identity is not clean."
+          exit 1

@@ -1,0 +1,47 @@
+{
+  "status": "COMPILE_INPUT_PRESENT_ARCHIVE_AWAITS_INDEPENDENT_VALIDATION",
+  "build_id": "S1.42AK-DRDIAG1",
+  "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+  "source_main_commit": "fb394936fe4151acc82a63179bc29ec6adbdde01",
+  "build_head": "5e10e1084425ee7152761d919a0b0ccc57282ff5",
+  "parent_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "review_profile": "Profiles/LC V1 S1.42AK-DRD1.r2z",
+  "profile_sha256": "15587975580ea9de38f995ff2e2a64586977c4c1a32f2c87534011375394c3d4",
+  "dll_member": "BepInEx/plugins/S142AKDRDiag1/S142AKDRDiag1.dll",
+  "dll_sha256": "512b3085619852ba723163522860cf64f4ace53a6ae09356ae0ad943a59adf3b",
+  "parent_members": 337,
+  "review_members": 338,
+  "profile_indexing": false,
+  "published": false,
+  "runtime_armed": false,
+  "runtime_proof": false,
+  "profile_name": "LC V1 S1.42AK-DRD1",
+  "base_build_id": "S1.42AK-BMDSFIX1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "output_profile": "Profiles/LC V1 S1.42AK-DRD1.r2z",
+  "output_sha256": "15587975580ea9de38f995ff2e2a64586977c4c1a32f2c87534011375394c3d4",
+  "zip_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKDRDiag1/S142AKDRDiag1.dll"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "snapshot_dir": "ProfileSources/S1.42AK-DRDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "runtime_target_metadata": {
+    "activation_record": "Current/274_S1.42AK_DRDIAG1_RUNTIME_ACTIVATION.md",
+    "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+    "authority_parent_build_id": "S1.42AK-BMDSFIX1",
+    "authority_parent_runtime_status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "authority_parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0"
+  }
+}

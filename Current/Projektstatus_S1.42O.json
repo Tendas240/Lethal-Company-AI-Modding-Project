@@ -1,0 +1,79 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "runtime_accepted"
+  },
+  "latest_valid_runtime_evidence": {
+    "build": "S1.42N",
+    "path": "RuntimeEvidence/S1.42N/20260903T165818Z/",
+    "log": "RuntimeEvidence/S1.42N/20260903T165818Z/raw/LogOutput.log",
+    "log_sha256": "8ed6a79230e28535a01a4cb86a8971c358a5c9f57a53722e18ff4342474f51cf",
+    "verdict": "TARGET_RESOLVER_PASS_STATE_FINALIZATION_FAIL",
+    "confirmed": {
+      "target_resolver_release_count": "6/6",
+      "total_pikmin_registry_candidates": 46,
+      "real_attack_participants_selected": true,
+      "work_state_without_task_warnings": 2155,
+      "broken_resolver_touched_pikmin_count": 5,
+      "stale_hit_loop_after_death": true,
+      "corpse_onion_transport": true,
+      "leader_null_errors": 0
+    }
+  },
+  "active_candidate": {
+    "build": "S1.42O",
+    "name": "Baboon Hawk Native Task Finalization",
+    "profile": "Profiles/LC V1 S1.42O Baboon Hawk Native Task Finalization.r2z",
+    "sha256": "04d7e0df7f7a3b51d75832e9052c3e217ec07f91526c767323e1b5b0a3078d4d",
+    "base_profile": "Profiles/LC V1 S1.42N Baboon Hawk Death Target Resolver.r2z",
+    "base_sha256": "c87d48464a750f87274e2848c44e5e1e24d4f1da087f59a33e2889744ebc13e9",
+    "status": "built_awaiting_runtime_validation",
+    "compatibility_plugin": {
+      "version": "1.3.10"
+    },
+    "implementation": {
+      "candidate_source": "RoundManager.Instance.SpawnedEnemies",
+      "death_release_radius_m": 4,
+      "completion_method": "exact declared LethalMin.PikminAI.TaskFinished()",
+      "low_level_RemoveCurrentTask_fallback": false
+    },
+    "build_verification": {
+      "github_actions_run": 46,
+      "result": "success",
+      "zip_members": 331,
+      "readable_snapshot_files": 330,
+      "changed_existing_members": [
+        "BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll",
+        "export.r2x"
+      ],
+      "added_members": []
+    }
+  },
+  "temporary_isolated_test_state": {
+    "enemy_isolation_enabled": true,
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
+    "bcmer_enabled": false,
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+  },
+  "runtime_route": {
+    "path": "RuntimeInbox/ACTIVE_BUILD.txt",
+    "value": "S1.42O"
+  },
+  "build_controller": {
+    "path": "BuildSpecs/current.json",
+    "enabled": false,
+    "build_id": "IDLE_AFTER_S1.42O_BUILD_AWAITING_RUNTIME",
+    "base_profile": "Profiles/LC V1 S1.42O Baboon Hawk Native Task Finalization.r2z",
+    "base_sha256": "04d7e0df7f7a3b51d75832e9052c3e217ec07f91526c767323e1b5b0a3078d4d"
+  },
+  "next_action": {
+    "type": "runtime_test_only",
+    "instruction": "Import S1.42O with Gale Advanced options -> Import all files and repeat focused Baboon Hawk kill. Verify affected Pikmin remain responsive/recoverable and the no-task Work loop is gone.",
+    "upload": "RuntimeInbox/Current/"
+  }
+}

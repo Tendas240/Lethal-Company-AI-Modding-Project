@@ -1,0 +1,26 @@
+name: S1.42AK BMDSFIX1-DIAG1PATH1 source static gate
+
+on:
+  pull_request:
+    paths:
+      - 'BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1.json'
+      - 'BuildSpecs/S1.42AK-BMDSFIX1-DIAG1PATH1_PLAN.md'
+      - 'AnalysisTools/validate_s142ak_bmdsfix1_diag1path1_source.py'
+      - 'Current/181_S1.42AK_BMDSFIX1_DIAG1_PATH_LENGTH_BLOCK_AND_DIAG1PATH1_SOURCE_STATIC.md'
+      - '.github/workflows/s142ak-bmdsfix1-diag1path1-source-static.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate identity-only repair source/static contract
+        run: python AnalysisTools/validate_s142ak_bmdsfix1_diag1path1_source.py

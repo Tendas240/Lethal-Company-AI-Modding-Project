@@ -1,0 +1,174 @@
+# Gale Profile Replacement and Import
+
+**Status:** CURRENT / CANONICAL TOPIC  
+**Authority:** semantic router to the fully user-validated Gale workflow  
+**Canonical-For:** `gale_import`  
+**Evidence:** `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md`  
+**Implementation:** `RuntimeTools/ReplaceActiveGaleProfileV24.ps1` (canonical launcher), `RuntimeTools/ReplaceActiveGaleProfile.ps1` (validated v2.2 importer base)  
+**Related:** `Current/98_GALE_MISSING_PROFILE_DIALOG_AUTOMATION_REVISION.md`, `Current/99_GALE_IMPORT_DIALOG_AUTOMATION_REVISION.md`, `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`, `Current/125_S1.42AE_V23_FALSE_POSITIVE_AND_S1.42AC_CONTROL_CONFIRMATION.md`  
+**Last-Validated:** 2026-09-04  
+**Last-Hardened:** 2026-10-04 (`2026-10-04-import-uia-v2.4.6-one-hop-runtime-pass-accepted-parent-chain`; preserves all v2.4.5 guards and adds only an exact one-hop completed-runtime-PASS diagnostic-parent -> accepted-baseline authority edge for BMAFR1I1)
+
+## Canonical launcher
+
+For the currently ready-to-test build, use the repository-driven v2.4 launcher rather than a build-name-specific script:
+
+```powershell
+$u='https://raw.githubusercontent.com/Tendas240/Lethal-Company-AI-Modding-Project/main/RuntimeTools/ReplaceActiveGaleProfileV24.ps1?cb='+[DateTime]::UtcNow.Ticks;iex (iwr -UseBasicParsing $u).Content
+```
+
+Before presenting it, `RuntimeInbox/ACTIVE_BUILD.txt` must resolve fail-closed through one of four explicitly bounded repository-authorized shapes:
+
+1. **normal built-artifact path:** `ACTIVE_BUILD == Current/AUTO_BUILD_RESULT.json.build_id`;
+2. **direct AUTO diagnostic path:** the active `selected_scope.diagnostic_revision` is explicitly authorized, its own build-result matches its output/base identity, and its base binds directly to `AUTO_BUILD_RESULT`;
+3. **direct accepted-baseline diagnostic path:** the same active diagnostic/build-result/controller checks pass, and its base build ID/profile/SHA bind exactly to `CURRENT_STATE.accepted_baseline`; this permits a diagnostic built directly from the accepted baseline even while `AUTO_BUILD_RESULT` legitimately points at a separate active gameplay candidate; or
+4. **one-hop diagnostic-parent path:** the active `diagnostic_revision` is explicitly authorized and its base identity matches exactly one `selected_scope.diagnostic_parent_revision` whose own build-result matches it. The parent must then use exactly one reviewed anchor: status `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED` with a direct exact bind to `AUTO_BUILD_RESULT`, or status `PUBLISHED_DIAGNOSTIC_PRELOADER_PATH_LENGTH_BLOCKED_DO_NOT_RERUN_NOT_ACCEPTED` with a direct exact build/profile/SHA bind to `CURRENT_STATE.accepted_baseline`, or status `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_COMPATIBILITY_PASS_NOT_ACCEPTED` with classification `DIAGNOSTIC_ONLY_NEVER_ACCEPT`, exact BMAFR1 compatibility-PASS runtime status, and a direct exact build/profile/SHA bind to `CURRENT_STATE.accepted_baseline`.
+
+The one-hop shape is deliberately **not recursive**, and neither accepted-baseline edge is a generic fallback: build ID, profile path and SHA-256 must all match the canonical accepted baseline exactly, and the one-hop accepted-baseline edge additionally requires the exact preloader-blocked / DO_NOT_RERUN parent status. No other `ACTIVE_BUILD` / `AUTO_BUILD_RESULT` mismatch is permitted. Diagnostic resolution changes only repository target selection; it does not promote a diagnostic artifact, replace the gameplay candidate or weaken download/import integrity checks.
+
+The v2.4 launcher deliberately wraps the already user-validated v2.2 importer instead of duplicating its UI Automation implementation. It first requires the exact expected v2.2 source-revision signature, replaces only the export-text reader, critical-materialization functions and repository target-resolution block in memory, stamps the current v2.4.x revision, and then executes the resulting helper. If the underlying v2.2 source drifts, v2.4 refuses to run until that drift is reviewed.
+
+## Validated import path
+
+The underlying helper was fully user-validated during S1.42AA -> S1.42AB on Windows PowerShell 5.1. The current launcher preserves that behavior:
+
+- closes Gale;
+- resolves the exact repository target through the normal build path or the explicit fail-closed diagnostic path above;
+- downloads and SHA-256-verifies the `.r2z` before deletion is offered;
+- asks the user to select the old local profile numerically and confirm deletion with `y`;
+- opens the verified candidate exactly once;
+- resolves the simple one-profile Gale `Missing Profiles` gate via semantic UI Automation;
+- expands `Advanced options`;
+- enables and verifies `Import all files`;
+- invokes Import;
+- waits for the exact target profile's local `export.r2x`;
+- requires that local `export.r2x` hash to match the archive-entry hash;
+- additionally requires project-critical external Thunderstore dependency DLLs to be physically materialized according to the v2.4 package-root contract;
+- removes the temporary `.r2z` only after both export identity and required materialization proof succeed.
+
+After profile number + `y`, no additional Gale click or PowerShell Enter is required on the previously validated happy path. The diagnostic resolver is repository-side selection logic. The first real S1.42AJ-DIAG1 import attempt did not reach profile download/import because it exposed the v2.4 dynamic build-result URL defect documented below; the corrected v2.4.1 diagnostic resolver still requires user runtime validation and is not retroactively labeled proven.
+
+## Why v2.2 was insufficient
+
+S1.42AE exposed two consecutive preloader-only launch failures before its own candidate code could execute. The second console capture made the actual Gale package layout explicit. BepInEx/AutoHookGenPatcher attempted to read the binding DLL below:
+
+`BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\loaforcsSoundAPI_LethalCompany\me.loaforc.soundapi.lethalcompany.dll`
+
+The v2.2 sentinel modeled the package as a flat path directly below `BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\`. That path model was incomplete: Gale keeps a namespace/package outer directory and the Thunderstore package preserves its own `BepInEx/plugins/...` subtree beneath it.
+
+There was also a dependency-closure gap. `loaforc-loaforcsSoundAPI_LethalCompany` depends on the base `loaforc-loaforcsSoundAPI` package, but the Gale export can list only the requested top-level binding package. Therefore the base SoundAPI DLL must be treated as a mandatory transitive materialization requirement whenever the LethalCompany binding is present.
+
+## Why v2.3 was insufficient
+
+The third S1.42AE launch attempt demonstrated a separate proof bug in the v2.3 wrapper. On the user's Windows PowerShell 5.1 environment, the inherited `Get-ZipEntryText` implementation emitted a non-terminating `New-Object` overload error for the five-argument `System.IO.StreamReader` construction. `ExpectedExportText` consequently became empty; `Get-RequiredCriticalMaterializationPaths` then emitted a parameter-binding error, but the importer continued and later printed a false-positive successful materialization result with no effective critical dependency contracts.
+
+The game then failed in the same BepInEx preloader path because `me.loaforc.soundapi.lethalcompany.dll` was still absent from the runtime-consumed package path. This remains **invalid import/materialization evidence, not an S1.42AE runtime rejection**.
+
+A controlled fresh import of accepted S1.42AC proved the contrast: both SoundAPI DLLs physically materialized at the expected nested package paths, and S1.42AC then passed the BepInEx preloader and reached the main menu normally. This demonstrates that the current game/mod stack can start when Gale materializes the dependency correctly.
+
+## v2.4 export-read, diagnostic target and critical materialization proof
+
+v2.4 preserves the v2.3 package-root semantics, closes the false-positive path before dependency derivation and supports an explicitly bound diagnostic runtime target without weakening the normal build guard:
+
+- `Get-ZipEntryText` is replaced in-memory and uses the direct four-argument `System.IO.StreamReader` constructor rather than the failing `New-Object ... -ArgumentList` path;
+- constructor/read failures terminate through `throw`;
+- empty or whitespace `export.r2x` text terminates before dependency-contract derivation;
+- `ExpectedExportText` is `[ValidateNotNullOrEmpty()]`;
+- a mentioned SoundAPI package that cannot be recognized as the canonical `- name:` export entry fails closed rather than being treated as absent;
+- an LC binding must resolve to exactly two materialization contracts: base SoundAPI plus LC binding;
+- package-root searches still require exactly one non-empty expected DLL; zero, empty, or duplicate matches fail closed;
+- normal targets still require exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
+- a mismatch is accepted only through the exact `CURRENT_STATE.controllers.runtime_active_build` + `selected_scope.diagnostic_revision` binding and referenced build-result crosschecks;
+- a direct diagnostic must bind either to the current `AUTO_BUILD_RESULT` or exactly to `CURRENT_STATE.accepted_baseline` by build ID/profile/SHA; a second-generation diagnostic must bind to exactly one explicit `selected_scope.diagnostic_parent_revision` whose own build-result matches; that parent must bind either directly to `AUTO_BUILD_RESULT` under the completed-parent status or exactly to `CURRENT_STATE.accepted_baseline` under the preloader-blocked / DO_NOT_RERUN status;
+- no recursive or arbitrary-length diagnostic chain is accepted;
+- the wrapper refuses if the validated v2.2 helper source revision drifts or if the legacy defective StreamReader constructor or unconditional mismatch-abort path survives the in-memory patch.
+
+## v2.4.1 diagnostic build-result URL repair
+
+The first real S1.42AJ-DIAG1 launcher execution reached the explicit diagnostic resolver and then failed before any candidate profile was downloaded. Windows PowerShell 5.1 parsed the expandable-string fragment `$encodedBuildResultPath?cb=...` as a variable name containing `?`, which PowerShell permits in ordinary variable names. The intended repository path therefore disappeared from the Raw GitHub URL and the request returned HTTP 404. Because the request was not forced terminating, execution then continued far enough to emit the misleading secondary message that the diagnostic build result belonged to an empty build ID.
+
+Revision `2026-09-17-import-uia-v2.4.1-diagnostic-build-result-url-delimiting` repairs that exact path without weakening the authority chain:
+
+- repository-path segments are encoded individually with `[Uri]::EscapeDataString()` while `/` separators are preserved;
+- the interpolated path is explicitly delimited as `${encodedBuildResultPath}` before the `?cb` query delimiter;
+- the diagnostic build-result request uses `-ErrorAction Stop` and converts any HTTP/load failure into one explicit fail-closed error naming the referenced repository path;
+- empty, `.` or `..` path segments are rejected before URL construction;
+- all existing build ID, profile, SHA and base-artifact crosschecks remain unchanged.
+
+The permanent repository regression gate now rejects the original `$encodedBuildResultPath?cb=` interpolation shape and requires the delimited `${encodedBuildResultPath}?cb=` form plus terminating fetch semantics.
+
+## v2.4.2 explicit one-hop diagnostic-parent chain
+
+S1.42AJ-DIAG2 is intentionally built from exact DIAG1 rather than directly from balanced S1.42AJ. v2.4.1 correctly failed closed on that shape because its diagnostic exception required the active diagnostic base to equal `AUTO_BUILD_RESULT`.
+
+Revision `2026-09-18-import-uia-v2.4.2-one-hop-diagnostic-parent-chain` extends only that authority edge. It requires the active diagnostic to match its build-result; when its base is not `AUTO_BUILD_RESULT`, exactly one `selected_scope.diagnostic_parent_revision` must match that base, carry status `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_EVIDENCE_INGESTED_NOT_ACCEPTED`, match its own build-result, and bind directly back to `AUTO_BUILD_RESULT`.
+
+There is no recursive fallback. A third diagnostic generation would fail until explicitly reviewed and represented by a new bounded contract.
+
+## v2.4.3 exact accepted-baseline direct diagnostic anchor
+
+BMGHDIAG3 is intentionally built directly from exact accepted S1.42AK while `Current/AUTO_BUILD_RESULT.json` correctly remains the separate S1.42AK-BMDSFIX1 gameplay candidate. Rewriting `AUTO_BUILD_RESULT` merely to import the diagnostic would corrupt build authority, while treating accepted S1.42AK as a fake diagnostic parent would misrepresent lineage.
+
+Revision `2026-09-28-import-uia-v2.4.3-accepted-baseline-direct-diagnostic-chain` adds exactly one fail-closed authority edge: after the active controller, diagnostic status and diagnostic build-result have already matched, a direct diagnostic may bind to `CURRENT_STATE.accepted_baseline` only when its `base_build_id`, `base_profile` and `base_sha256` all match that accepted baseline exactly. The existing direct-`AUTO_BUILD_RESULT` and explicit one-hop diagnostic-parent paths remain unchanged. No recursive or arbitrary fallback is introduced.
+
+The permanent repository regression gate is `RepositoryTools/gale_import_helper_validator.py`, run by `.github/workflows/knowledge-architecture.yml`.
+
+## v2.4.5 exact one-hop blocked-parent -> accepted-baseline anchor
+
+`S1.42AK-BMAFDIAG1PATH1` is an identity-only successor of exact long-name `S1.42AK-BMAFDIAG1`. The parent is intentionally preserved as preloader-blocked / `DO_NOT_RERUN` and itself derives directly from accepted `S1.42AK`, while `AUTO_BUILD_RESULT` correctly remains the separate `S1.42AK-BMDSFIX1` gameplay candidate.
+
+Revision `2026-10-01-import-uia-v2.4.5-one-hop-accepted-baseline-parent-chain` adds exactly that missing authority edge. After the active diagnostic, its build-result and its exact parent identity have all matched, the one-hop parent may bind to `CURRENT_STATE.accepted_baseline` only when the parent status is exactly `PUBLISHED_DIAGNOSTIC_PRELOADER_PATH_LENGTH_BLOCKED_DO_NOT_RERUN_NOT_ACCEPTED` and its base build ID, profile path and SHA-256 all equal the accepted baseline. The existing direct-AUTO, direct accepted-baseline and completed-parent -> AUTO paths remain unchanged. No recursive, arbitrary-length or generic fallback is introduced.
+
+## v2.4.6 exact completed runtime-PASS parent -> accepted-baseline anchor
+
+`S1.42AK-BMAFR1I1` is a separately versioned observational successor of exact `S1.42AK-BMAFR1`. Its parent is not a blocked diagnostic: BMAFR1 has completed the bounded Black Mesa x Abandoned Foundry runtime-compatibility PASS and remains `DIAGNOSTIC ONLY / NEVER ACCEPT`, while its separate performance-attribution finding is unresolved. BMAFR1 itself derives directly from accepted S1.42AK; `AUTO_BUILD_RESULT` correctly remains the separate BMDSFIX1 gameplay candidate.
+
+Revision `2026-10-04-import-uia-v2.4.6-one-hop-runtime-pass-accepted-parent-chain` adds exactly this authority edge. The active successor must match its own canonical build-result profile/base identity; its one-hop parent must match the exact BMAFR1 build-result; the parent status must be exactly `PUBLISHED_DIAGNOSTIC_PARENT_RUNTIME_COMPATIBILITY_PASS_NOT_ACCEPTED`, classification exactly `DIAGNOSTIC_ONLY_NEVER_ACCEPT`, and runtime validation status exactly `RUNTIME_COMPATIBILITY_PASS_DIAGNOSTIC_ONLY_NEVER_ACCEPT_PERFORMANCE_ATTRIBUTION_OUTSTANDING`; and the parent's base build/profile/SHA must bind exactly to `CURRENT_STATE.accepted_baseline`. Existing direct-AUTO, direct accepted-baseline, completed-parent -> AUTO and blocked-parent -> accepted-baseline shapes remain unchanged. No recursion, arbitrary-length chain or generic status fallback is introduced.
+
+## Critical package-root contract
+
+When `loaforc-loaforcsSoundAPI_LethalCompany` is present in the expected export, both of these contracts are mandatory:
+
+- below `BepInEx\plugins\loaforc-loaforcsSoundAPI\`, recursively find **exactly one** `me.loaforc.soundapi.dll` and require it to be non-empty;
+- below `BepInEx\plugins\loaforc-loaforcsSoundAPI_LethalCompany\`, recursively find **exactly one** `me.loaforc.soundapi.lethalcompany.dll` and require it to be non-empty.
+
+If the base `loaforc-loaforcsSoundAPI` package is explicitly present without the binding, the base-DLL contract still applies.
+
+The recursive search is deliberately constrained to each package's own Gale package root. It therefore tolerates the package's inner directory layout while remaining fail-closed against absence, empty files, or ambiguous duplicate DLLs.
+
+## Permanent runtime path-length guard
+
+Two independent gates now prevent a repeat of the Windows/Mono preloader failure first documented for the long BMDSFIX1-DIAG1 identity and reproduced by BMAFDIAG1.
+
+The repository-side guard is `RepositoryTools/gale_profile_path_length_guard.py`. Permanent Knowledge Architecture CI scans BuildSpecs against the observed project-machine Gale root and a conservative project budget of **255 characters** for the two known deepest runtime-consumed paths: the LC Office V81 preloader DLL and the LethalCompany SoundAPI binding DLL. The exact historical blocked DIAG1 and BMAFDIAG1 specs may remain as frozen evidence, but explicit single-spec validation rejects them and any new over-budget build/review identity.
+
+The canonical profile-build workflow runs the same validator against `BuildSpecs/current.json` before invoking the profile builder. New review/build specs therefore cannot become mergeable/current while projecting an over-budget identity.
+
+The v2.4.4 launcher independently recomputes the same critical paths using the **actual local Gale profile root** and the resolved target profile name after the repository artifact/export has been verified but **before any old local profile can be deleted**. An over-budget target fails closed and instructs the project to create a shorter separately versioned identity. Do not work around this guard through Windows long-path policy changes, loader patches, package removal or manual DLL relocation.
+
+The 2026-10-01 BMAFDIAG1 launch reproduced the known boundary exactly: the relevant local paths were 260 and 262 characters while the files themselves were present. That long BMAFDIAG1 identity is therefore DO-NOT-RERUN; a short identity-only successor is required before Black Mesa x Abandoned Foundry testing resumes.
+
+## Fail-closed requirements
+
+Keep the exact workflow safety constraints from `Current/93_GALE_ACTIVE_PROFILE_REPLACEMENT_WORKFLOW.md` for the fully validated normal path, plus the explicit diagnostic resolver contract above, including:
+
+- exact build/profile matching only;
+- normal build resolution remains exact `ACTIVE_BUILD == AUTO_BUILD_RESULT.build_id`;
+- diagnostic mismatches require exact controller + active diagnostic revision + status + build-result agreement; a direct diagnostic base must match either exact `AUTO_BUILD_RESULT` or exact `CURRENT_STATE.accepted_baseline` identity, while a non-direct diagnostic additionally requires the exact one-hop `diagnostic_parent_revision` contract above; no generic or recursive fallback exists;
+- the dynamic diagnostic build-result path must be segment-escaped, explicitly delimited before `?cb`, and its HTTP fetch must terminate on failure;
+- explicit confirmation before deleting a local profile;
+- no direct editing of Gale `data.sqlite3`;
+- no coordinate clicks or blind key navigation;
+- never auto-resolve multiple missing profiles;
+- no cache-busting query string on the binary `.r2z` Raw GitHub URL;
+- exact post-import `export.r2x` evidence remains mandatory;
+- export text must be non-empty and successfully decoded before dependency contracts are derived;
+- required project-critical dependency package roots must each contain exactly one expected non-empty DLL;
+- the LethalCompany binding implies the base SoundAPI dependency even if the base package is not separately listed in export metadata;
+- before destructive local-profile replacement, compute the exact local target paths for the registered LC Office preloader and SoundAPI binding and refuse any path over the 255-character project budget;
+- on materialization timeout/failure, report the unresolved contract and preserve the downloaded `.r2z` for diagnosis;
+- if the validated importer source revision changes unexpectedly, the v2.4 wrapper must refuse rather than patch unknown code.
+
+## Runtime-test pairing
+
+The Gale replacement command never substitutes for the runtime-log uploader. Whenever a build is ready to test, both one-line PowerShell commands must be supplied together. See `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md`.

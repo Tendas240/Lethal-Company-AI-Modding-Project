@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "purpose": "S1.42AI-DIAG1 exact direct-owner and native-reference-gap review",
+  "source_branch": "analysis/s142ai-direct-owners-native-gaps",
+  "capture_head": "d5ba279b40b4fdecd34804b6a104ae9d1067681c",
+  "actions_run": 34616289395,
+  "artifact": {
+    "id": 10270990899,
+    "name": "s142ai-direct-owner-exact",
+    "digest": "sha256:8386340124ea14e6f5bc41cec203b506e21cb4226d381f1379b0f12d4302e0e8",
+    "retained_full_decompiles": "GitHub Actions artifact only; full third-party C#/IL is not copied into repository evidence"
+  },
+  "decompiler": {
+    "tool": "ilspycmd",
+    "version": "11.0.0.9375"
+  },
+  "assemblies": [
+    {
+      "package": "NotezyTeam-LethalMinNightly",
+      "version": "1.1.108",
+      "member": "NoteBoxz.LethalMin.dll",
+      "package_zip_sha256": "7e5c62ecf39c950a6fa46c722ce3a77e3efd7328a71c32a6c5e4cf87a1f50fe1",
+      "dll_sha256": "9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df",
+      "source_sha256": "6eb8f99dc6b6d72a705959aa2dfd452638561e1b4376b3c1e662ddd7d8c67939",
+      "source_lines": 63495,
+      "il_sha256": "8b6a8258144be2336483906200cd28f88f7b57857b22b1e6d94b6178d654e7c3"
+    },
+    {
+      "package": "XuXiaolan-CodeRebirth",
+      "version": "1.6.9",
+      "member": "plugins/CodeRebirth/CodeRebirth.dll",
+      "package_zip_sha256": "a44a47d3f9eb049ccea83f8483c257f4faa2bf927a6df7e0bb70ff1504b2a5d6",
+      "dll_sha256": "a35a06cf55a42dd1db9f3bcf68448d74590fdac8d9e80f57a811e78628c8fd36",
+      "source_sha256": "da9399bca105f905c5c1995a222534f1c3672f971bd322ca9bd36aebb34614f3",
+      "source_lines": 67616,
+      "il_sha256": "515048f79efc6d92c919edf8a44a007d82bd20816f7ac000523ede295ea64e41"
+    },
+    {
+      "package": "XuXiaolan-CodeRebirth",
+      "version": "1.6.9",
+      "member": "plugins/CodeRebirth/com.local.Rodriguez.DuskReplacementEntities.CodeRebirth.dll",
+      "package_zip_sha256": "a44a47d3f9eb049ccea83f8483c257f4faa2bf927a6df7e0bb70ff1504b2a5d6",
+      "dll_sha256": "308ddf095d807b719c204c48bee3ce26795281c6b399baf3ac105e6b9d258163",
+      "source_sha256": "c8acb8d1c4f1bc6f2810ae660170910abce9181bf979d3896e46dedcff46338b",
+      "source_lines": 1750,
+      "il_sha256": "adcfc2b29245345ef287a2a1e72014b54f006729de810a27089431c9e213ae36"
+    },
+    {
+      "package": "TeamXiaolan-DawnLib",
+      "version": "0.9.25",
+      "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.dll",
+      "package_zip_sha256": "c33c608869763f916f07e5ddf47224134f98bab15d044bd809a46ef2d3d538c3",
+      "dll_sha256": "9b4826a16eec1fa5091fb4246d010005bc9c3e04282034e8d067b499ab5c125b",
+      "source_sha256": "f9a1f2311803a02f67eeba3ed367fcbcd7d6aed8947f9fab709306391eae075e",
+      "source_lines": 23098,
+      "il_sha256": "10fd28890a1b5207becf55decd9cd901c1a2e0af26f17a7ffdd0f645818398dd"
+    },
+    {
+      "package": "TeamXiaolan-DawnLib",
+      "version": "0.9.25",
+      "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.dusk.dll",
+      "package_zip_sha256": "c33c608869763f916f07e5ddf47224134f98bab15d044bd809a46ef2d3d538c3",
+      "dll_sha256": "3582f1a35efe3753004d7b209aea355a6c02b646b61cc1629c53a311ba8d1f03",
+      "source_sha256": "84aff93064e8bb27b05b80222fe0198bd631a7811547cd809651ce1b021072cb",
+      "source_lines": 12404,
+      "il_sha256": "71de3ff5c262941ec84795cd4d7d0d8e362dc53aab45a9b70bab7679ccf4aa70"
+    }
+  ],
+  "v81_reference_probe": {
+    "package": "LethalCompany.GameLibs.Steam",
+    "version": "81.0.5-ngd.0",
+    "assembly_sha256": "d8bedaba3ce700072fc231b1d4f4a41fb3c88a3cbf9dd0ee8c90dbe64272e2af",
+    "round_manager": {
+      "source_sha256": "d9712dd2dbadca89cd49e2a9a372ea18f7a23e20a83f9bd4c00019c772e9dbf3",
+      "source_lines": 1758,
+      "throw_null_count": 186,
+      "assign_random_enemy_to_vent_present": true,
+      "assign_random_enemy_to_vent_body": "throw null"
+    },
+    "enemy_ai_nest_spawn_object": {
+      "source_sha256": "13f2e9e702e5ec1201ce7a97b0cae66ddbcc95cdab2a909a992d91ea17eb16f8",
+      "source_lines": 15,
+      "throw_null_count": 1,
+      "awake_body_available": false,
+      "use_nest_spawn_object_body_available": false
+    },
+    "qualification": "Reference metadata/stubs only. These bytes do not close the installed V81 native vent/nest patch-safety gap."
+  },
+  "result": "EXACT_MOD_OWNER_REVIEW_AVAILABLE / INSTALLED_NATIVE_VENT_NEST_SOURCE_STILL_REQUIRED / NOT_BUILD_READY"
+}

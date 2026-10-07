@@ -1,0 +1,105 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "accepted_gameplay_baseline": {
+    "build": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b",
+    "status": "accepted"
+  },
+  "latest_valid_runtime_evidence": {
+    "build": "S1.42J",
+    "path": "RuntimeEvidence/S1.42J/20260903T145657Z/",
+    "log_sha256": "a8ce035bf64fa5b704e18c588215f43cd1fd184eef4f467dfbafa6fcb1379963",
+    "verdict": "PARTIAL_PASS_REQUIRES_DIRECTIONAL_THUMPER_CONFIG_ADJUSTMENT",
+    "findings": {
+      "startup": "pass",
+      "baboon_hawk_pikmin_zero_interaction": "pass",
+      "thumper_crawler_to_pikmin_protection": "pass",
+      "pikmin_to_thumper_crawler_attack": "fail_due_to_attack_blacklist",
+      "puffer_to_pikmin": "pass",
+      "jetpack": "pass_accepted_by_user",
+      "leader_null_errors": 0,
+      "thumper_guard_blocks": 19,
+      "coroner_jetpack_playercontroller_null": 0
+    }
+  },
+  "active_candidate": {
+    "build": "S1.42K",
+    "profile": "Profiles/LC V1 S1.42K Thumper Pikmin Attack Restore.r2z",
+    "sha256": "bbdc949c9477e138cc3dde7c261f36f014cf482dd930c393ab035d80f8560aa2",
+    "base_profile": "Profiles/LC V1 S1.42J Baboon Hawk Zero Interaction.r2z",
+    "base_sha256": "736d7a3b495e124d2469e392b9956c0c3a381a6ce0502baee30d05fabb346cb7",
+    "status": "built_successfully_awaiting_runtime",
+    "build_verification": {
+      "github_actions": "success",
+      "zip_members": 331,
+      "readable_snapshot_files": 330,
+      "changed_existing_members": [
+        "BepInEx/config/NoteBoxz.LethalMin.cfg",
+        "export.r2x"
+      ],
+      "added_members": [],
+      "compatibility_dll_changed": false
+    }
+  },
+  "binding_enemy_rules": {
+    "baboon_hawk_pikmin": "zero_interaction_both_directions",
+    "thumper_crawler_to_pikmin": "no_functional_grab_bite_leader_removal_or_death_timer_effect",
+    "pikmin_to_thumper_crawler": "normal_lethalmin_attack_and_latch_allowed",
+    "puffer_to_pikmin": "attack_and_smoke_no_effect"
+  },
+  "s142k_change": {
+    "file": "BepInEx/config/NoteBoxz.LethalMin.cfg",
+    "section": "Pikmin Behavior",
+    "key": "Attack Blacklist",
+    "removed": ["Crawler"],
+    "retained": ["Baboon hawk", "Leaf boy"],
+    "compatibility_plugin_change": false
+  },
+  "jetpack": {
+    "status": "accepted",
+    "target_seconds": 140,
+    "runtime_marker": "Jetpack battery duration changed 50 -> 140 seconds via loaded Item registry",
+    "mid_air_explosions": "Off",
+    "user_verdict": "works_correctly_close_task"
+  },
+  "temporary_isolated_test_state": {
+    "bcmer_package": "SoftDiamond-BrutalCompanyMinusExtraReborn 1.71.0",
+    "bcmer_enabled": false,
+    "enemy_isolation_enabled": true,
+    "restore_baseline": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json"
+  },
+  "next_action": {
+    "type": "runtime_test",
+    "build": "S1.42K",
+    "import": "Gale -> Advanced options -> Import all files",
+    "primary_checks": [
+      "throw Pikmin onto Thumper/Crawler and confirm normal attack/latch",
+      "confirm ThumperPikminGuard still blocks enemy-owned GrabPikmin",
+      "confirm no grabbed death timer or leader removal",
+      "confirm zero Leader is null when following loop"
+    ],
+    "upload": "RuntimeInbox/Current/"
+  },
+  "after_s142k_acceptance": {
+    "complete_isolated_enemy_gate": true,
+    "restore_normal_enemy_state": "Current/ENEMY_SPAWN_BASELINE_S1.42C.json",
+    "reenable_bcmer_1_71_0": true,
+    "preserve_permanent_rules": [
+      "Baboon Hawk <-> Pikmin zero interaction",
+      "Thumper/Crawler -> Pikmin protection",
+      "Pikmin -> Thumper/Crawler normal attack/latch allowed",
+      "Puffer -> Pikmin no effect"
+    ]
+  },
+  "build_controller": "IDLE_AFTER_S1.42K_BUILD_AWAITING_RUNTIME",
+  "runtime_route": "S1.42K",
+  "canonical_analysis": "Current/37_S1.42J_RUNTIME_ANALYSIS_AND_S1.42K_PLAN.md",
+  "canonical_build": "Current/38_S1.42K_THUMPER_PIKMIN_ATTACK_RESTORE_BUILD.md",
+  "repository_optimization": {
+    "status": "DEFERRED_UNTIL_ACTIVE_GATE_COMPLETE",
+    "plan": "Current/35_REPOSITORY_OPTIMIZATION_MIGRATION_PLAN_PENDING.txt",
+    "immediate_priority": "Runtime-test S1.42K first."
+  }
+}

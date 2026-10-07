@@ -1,0 +1,3653 @@
+{
+  "schema_version": "phase-c3e3b-1",
+  "bundle_member": "plugins/CodeRebirth/Assets/oxydescene",
+  "bundle_sha256": "6b6dc42c2bef7d858e7e2efa2573df3e1c2bc8507cc7c3840483f0f6c1b0e883",
+  "bundle_bytes": 55038216,
+  "unitypy_version": "1.25.3",
+  "serialized_files": [
+    {
+      "name": "BuildPlayer-Oxyde.sharedAssets",
+      "externals": [
+        "Library/unity default resources"
+      ]
+    },
+    {
+      "name": "BuildPlayer-Oxyde",
+      "externals": [
+        "archive:/BuildPlayer-Oxyde/BuildPlayer-Oxyde.sharedAssets",
+        "Library/unity default resources"
+      ]
+    }
+  ],
+  "coverage": {
+    "objects": 20561,
+    "monoscripts": 52,
+    "monobehaviours_total": 965,
+    "monobehaviours_parsed": 965,
+    "monobehaviour_parse_errors": 0,
+    "script_pointer_status_counts": {
+      "RESOLVED": 963,
+      "NULL": 2
+    },
+    "gameobjects_total": 4424,
+    "gameobject_parse_errors": 0
+  },
+  "monoscript_inventory": [
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 903,
+      "type": "MonoScript",
+      "class": "CRItemSpawner",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 904,
+      "type": "MonoScript",
+      "class": "ScreenShakeTarget",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 905,
+      "type": "MonoScript",
+      "class": "WeatherController",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 906,
+      "type": "MonoScript",
+      "class": "EnemyLevelSpawner",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 907,
+      "type": "MonoScript",
+      "class": "GregBounds",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 908,
+      "type": "MonoScript",
+      "class": "SpawnSyncedDawnLibObject",
+      "namespace": "Dawn.Utils",
+      "assembly": "com.github.teamxiaolan.dawnlib.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 909,
+      "type": "MonoScript",
+      "class": "SpookyFlicker",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 910,
+      "type": "MonoScript",
+      "class": "CasettePlayer",
+      "namespace": "CodeRebirth.src.Content.Items",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 911,
+      "type": "MonoScript",
+      "class": "InteractSeatable",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 912,
+      "type": "MonoScript",
+      "class": "SellingSally",
+      "namespace": "CodeRebirth.src.Content.Maps",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 913,
+      "type": "MonoScript",
+      "class": "UnlockProgressiveObject",
+      "namespace": "Dusk.Utils",
+      "assembly": "com.github.teamxiaolan.dawnlib.dusk.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 914,
+      "type": "MonoScript",
+      "class": "ChanceScript",
+      "namespace": "Dawn.Utils",
+      "assembly": "com.github.teamxiaolan.dawnlib.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 915,
+      "type": "MonoScript",
+      "class": "CRDropShip",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 916,
+      "type": "MonoScript",
+      "class": "DynamicScreenShakeFalloff",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 917,
+      "type": "MonoScript",
+      "class": "OxydeLightsManager",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 918,
+      "type": "MonoScript",
+      "class": "CRSyncedEvent",
+      "namespace": "CodeRebirth.src.Content",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 919,
+      "type": "MonoScript",
+      "class": "PlayerPhysicsRegion",
+      "namespace": "",
+      "assembly": "Assembly-CSharp"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 920,
+      "type": "MonoScript",
+      "class": "VisualEnvironment",
+      "namespace": "UnityEngine.Rendering.HighDefinition",
+      "assembly": "Unity.RenderPipelines.HighDefinition.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 921,
+      "type": "MonoScript",
+      "class": "Volume",
+      "namespace": "UnityEngine.Rendering",
+      "assembly": "Unity.RenderPipelines.Core.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 922,
+      "type": "MonoScript",
+      "class": "NavMeshModifier",
+      "namespace": "Unity.AI.Navigation",
+      "assembly": "Unity.AI.Navigation"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 923,
+      "type": "MonoScript",
+      "class": "NavMeshModifierVolume",
+      "namespace": "Unity.AI.Navigation",
+      "assembly": "Unity.AI.Navigation"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 924,
+      "type": "MonoScript",
+      "class": "AudioReverbTrigger",
+      "namespace": "",
+      "assembly": "Assembly-CSharp"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 925,
+      "type": "MonoScript",
+      "class": "ScanNodeProperties",
+      "namespace": "",
+      "assembly": "Assembly-CSharp"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 926,
+      "type": "MonoScript",
+      "class": "StaticLightingSky",
+      "namespace": "UnityEngine.Rendering.HighDefinition",
+      "assembly": "Unity.RenderPipelines.HighDefinition.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 927,
+      "type": "MonoScript",
+      "class": "InteractTrigger",
+      "namespace": "",
+      "assembly": "Assembly-CSharp"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 928,
+      "type": "MonoScript",
+      "class": "OutOfBoundsTrigger",
+      "namespace": "",
+      "assembly": "Assembly-CSharp"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 929,
+      "type": "MonoScript",
+      "class": "HDRISky",
+      "namespace": "UnityEngine.Rendering.HighDefinition",
+      "assembly": "Unity.RenderPipelines.HighDefinition.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 930,
+      "type": "MonoScript",
+      "class": "AudioReverbPresets",
+      "namespace": "",
+      "assembly": "Assembly-CSharp"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 931,
+      "type": "MonoScript",
+      "class": "NavMeshSurface",
+      "namespace": "Unity.AI.Navigation",
+      "assembly": "Unity.AI.Navigation"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 932,
+      "type": "MonoScript",
+      "class": "HDAdditionalLightData",
+      "namespace": "UnityEngine.Rendering.HighDefinition",
+      "assembly": "Unity.RenderPipelines.HighDefinition.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 933,
+      "type": "MonoScript",
+      "class": "HDShadowSettings",
+      "namespace": "UnityEngine.Rendering.HighDefinition",
+      "assembly": "Unity.RenderPipelines.HighDefinition.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 934,
+      "type": "MonoScript",
+      "class": "PlaceableObjectsSurface",
+      "namespace": "",
+      "assembly": "Assembly-CSharp"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 935,
+      "type": "MonoScript",
+      "class": "Fog",
+      "namespace": "UnityEngine.Rendering.HighDefinition",
+      "assembly": "Unity.RenderPipelines.HighDefinition.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 936,
+      "type": "MonoScript",
+      "class": "ReverbPreset",
+      "namespace": "",
+      "assembly": "Assembly-CSharp"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 937,
+      "type": "MonoScript",
+      "class": "AnimatedObjectTrigger",
+      "namespace": "",
+      "assembly": "Assembly-CSharp"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 938,
+      "type": "MonoScript",
+      "class": "NetworkObject",
+      "namespace": "Unity.Netcode",
+      "assembly": "Unity.Netcode.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 939,
+      "type": "MonoScript",
+      "class": "VolumeProfile",
+      "namespace": "UnityEngine.Rendering",
+      "assembly": "Unity.RenderPipelines.Core.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 940,
+      "type": "MonoScript",
+      "class": "PhysicallyBasedSky",
+      "namespace": "UnityEngine.Rendering.HighDefinition",
+      "assembly": "Unity.RenderPipelines.HighDefinition.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 941,
+      "type": "MonoScript",
+      "class": "LocalVolumetricFog",
+      "namespace": "UnityEngine.Rendering.HighDefinition",
+      "assembly": "Unity.RenderPipelines.HighDefinition.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 942,
+      "type": "MonoScript",
+      "class": "CloudLayer",
+      "namespace": "UnityEngine.Rendering.HighDefinition",
+      "assembly": "Unity.RenderPipelines.HighDefinition.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 943,
+      "type": "MonoScript",
+      "class": "NetworkAnimator",
+      "namespace": "Unity.Netcode.Components",
+      "assembly": "Unity.Netcode.Components"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 944,
+      "type": "MonoScript",
+      "class": "DecalProjector",
+      "namespace": "UnityEngine.Rendering.HighDefinition",
+      "assembly": "Unity.RenderPipelines.HighDefinition.Runtime"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 945,
+      "type": "MonoScript",
+      "class": "QuicksandTrigger",
+      "namespace": "",
+      "assembly": "Assembly-CSharp"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 946,
+      "type": "MonoScript",
+      "class": "ScreenShakeOnAnimation",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 947,
+      "type": "MonoScript",
+      "class": "JimothyNPC",
+      "namespace": "CodeRebirth.src.Content.Maps",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 948,
+      "type": "MonoScript",
+      "class": "DeathTrigger",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 949,
+      "type": "MonoScript",
+      "class": "ForceLineRendererPositions",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 950,
+      "type": "MonoScript",
+      "class": "OxydeCrane",
+      "namespace": "CodeRebirth.src.Content.Maps",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 951,
+      "type": "MonoScript",
+      "class": "HUDMessageEvent",
+      "namespace": "CodeRebirth.src.MiscScripts",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 952,
+      "type": "MonoScript",
+      "class": "TrashCan",
+      "namespace": "CodeRebirth.src.Content.Enemies",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 953,
+      "type": "MonoScript",
+      "class": "CompactorEnemyLevelSpawner",
+      "namespace": "CodeRebirth.src.Content.Maps",
+      "assembly": "CodeRebirth.dll"
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+      "path_id": 954,
+      "type": "MonoScript",
+      "class": "AmbientNoisePlayer",
+      "namespace": "Dawn.Utils",
+      "assembly": "com.github.teamxiaolan.dawnlib.dll"
+    }
+  ],
+  "monobehaviour_class_counts": {
+    "Assembly-CSharp:.AnimatedObjectTrigger": 1,
+    "Assembly-CSharp:.AudioReverbPresets": 1,
+    "Assembly-CSharp:.AudioReverbTrigger": 12,
+    "Assembly-CSharp:.InteractTrigger": 21,
+    "Assembly-CSharp:.OutOfBoundsTrigger": 1,
+    "Assembly-CSharp:.PlaceableObjectsSurface": 1,
+    "Assembly-CSharp:.PlayerPhysicsRegion": 5,
+    "Assembly-CSharp:.QuicksandTrigger": 1,
+    "Assembly-CSharp:.ReverbPreset": 2,
+    "Assembly-CSharp:.ScanNodeProperties": 14,
+    "CodeRebirth.dll:CodeRebirth.src.Content.CRSyncedEvent": 8,
+    "CodeRebirth.dll:CodeRebirth.src.Content.Enemies.TrashCan": 9,
+    "CodeRebirth.dll:CodeRebirth.src.Content.Items.CasettePlayer": 1,
+    "CodeRebirth.dll:CodeRebirth.src.Content.Maps.CompactorEnemyLevelSpawner": 1,
+    "CodeRebirth.dll:CodeRebirth.src.Content.Maps.JimothyNPC": 1,
+    "CodeRebirth.dll:CodeRebirth.src.Content.Maps.OxydeCrane": 1,
+    "CodeRebirth.dll:CodeRebirth.src.Content.Maps.SellingSally": 1,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.CRDropShip": 1,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.CRItemSpawner": 72,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.DeathTrigger": 3,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.DynamicScreenShakeFalloff": 2,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.EnemyLevelSpawner": 8,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.ForceLineRendererPositions": 2,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.GregBounds": 6,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.HUDMessageEvent": 1,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.InteractSeatable": 2,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.OxydeLightsManager": 1,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.ScreenShakeOnAnimation": 4,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.ScreenShakeTarget": 4,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.SpookyFlicker": 35,
+    "CodeRebirth.dll:CodeRebirth.src.MiscScripts.WeatherController": 1,
+    "Unity.AI.Navigation:Unity.AI.Navigation.NavMeshModifier": 371,
+    "Unity.AI.Navigation:Unity.AI.Navigation.NavMeshModifierVolume": 78,
+    "Unity.AI.Navigation:Unity.AI.Navigation.NavMeshSurface": 2,
+    "Unity.Netcode.Components:Unity.Netcode.Components.NetworkAnimator": 2,
+    "Unity.Netcode.Runtime:Unity.Netcode.NetworkObject": 14,
+    "Unity.RenderPipelines.Core.Runtime:UnityEngine.Rendering.Volume": 1,
+    "Unity.RenderPipelines.Core.Runtime:UnityEngine.Rendering.VolumeProfile": 1,
+    "Unity.RenderPipelines.HighDefinition.Runtime:UnityEngine.Rendering.HighDefinition.CloudLayer": 1,
+    "Unity.RenderPipelines.HighDefinition.Runtime:UnityEngine.Rendering.HighDefinition.DecalProjector": 80,
+    "Unity.RenderPipelines.HighDefinition.Runtime:UnityEngine.Rendering.HighDefinition.Fog": 1,
+    "Unity.RenderPipelines.HighDefinition.Runtime:UnityEngine.Rendering.HighDefinition.HDAdditionalLightData": 126,
+    "Unity.RenderPipelines.HighDefinition.Runtime:UnityEngine.Rendering.HighDefinition.HDRISky": 1,
+    "Unity.RenderPipelines.HighDefinition.Runtime:UnityEngine.Rendering.HighDefinition.HDShadowSettings": 1,
+    "Unity.RenderPipelines.HighDefinition.Runtime:UnityEngine.Rendering.HighDefinition.LocalVolumetricFog": 3,
+    "Unity.RenderPipelines.HighDefinition.Runtime:UnityEngine.Rendering.HighDefinition.PhysicallyBasedSky": 1,
+    "Unity.RenderPipelines.HighDefinition.Runtime:UnityEngine.Rendering.HighDefinition.StaticLightingSky": 1,
+    "Unity.RenderPipelines.HighDefinition.Runtime:UnityEngine.Rendering.HighDefinition.VisualEnvironment": 1,
+    "com.github.teamxiaolan.dawnlib.dll:Dawn.Utils.AmbientNoisePlayer": 18,
+    "com.github.teamxiaolan.dawnlib.dll:Dawn.Utils.ChanceScript": 16,
+    "com.github.teamxiaolan.dawnlib.dll:Dawn.Utils.SpawnSyncedDawnLibObject": 20,
+    "com.github.teamxiaolan.dawnlib.dusk.dll:Dusk.Utils.UnlockProgressiveObject": 1
+  },
+  "parse_errors": [],
+  "script_resolution_problems": [
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18691,
+      "type": "MonoBehaviour",
+      "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "status": "NULL",
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 70
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "m_Name": ""
+      },
+      "raw_object_bytes": 32,
+      "raw_object_sha256": "61a9c7d36621c927aa69099b27d13839be8457885e899d24f9e50d74b1d48bef",
+      "raw_object_hex": "0000000046000000000000000100000000000000000000000000000000000000",
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 70
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 70,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4494
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18692
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18691
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "DungeonGenerator",
+          "m_Tag": 20013,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18692,
+      "type": "MonoBehaviour",
+      "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "status": "NULL",
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 70
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "m_Name": ""
+      },
+      "raw_object_bytes": 32,
+      "raw_object_sha256": "61a9c7d36621c927aa69099b27d13839be8457885e899d24f9e50d74b1d48bef",
+      "raw_object_hex": "0000000046000000000000000100000000000000000000000000000000000000",
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 70
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 70,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4494
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18692
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18691
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "DungeonGenerator",
+          "m_Tag": 20013,
+          "m_IsActive": true
+        }
+      }
+    }
+  ],
+  "entrance_class_or_field_matches": [],
+  "gameobject_name_matches": [
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 70,
+      "type": "GameObject",
+      "name": "DungeonGenerator",
+      "active_self": true,
+      "components": [
+        {
+          "pointer": {
+            "m_FileID": 0,
+            "m_PathID": 4494
+          },
+          "status": "RESOLVED",
+          "target": {
+            "serialized_file": "BuildPlayer-Oxyde",
+            "path_id": 4494,
+            "type": "Transform"
+          },
+          "serialized_fields": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 70
+            },
+            "m_LocalRotation": {
+              "x": -0.0,
+              "y": -0.0,
+              "z": -0.0,
+              "w": 1.0
+            },
+            "m_LocalPosition": {
+              "x": 229.60130310058594,
+              "y": -6.126550197601318,
+              "z": -17.99966049194336
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 4476
+            }
+          }
+        },
+        {
+          "pointer": {
+            "m_FileID": 0,
+            "m_PathID": 18692
+          },
+          "status": "RESOLVED",
+          "target": {
+            "serialized_file": "BuildPlayer-Oxyde",
+            "path_id": 18692,
+            "type": "MonoBehaviour"
+          },
+          "serialized_fields": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 70
+            },
+            "m_Enabled": 1,
+            "m_Script": {
+              "m_FileID": 0,
+              "m_PathID": 0
+            },
+            "m_Name": ""
+          }
+        },
+        {
+          "pointer": {
+            "m_FileID": 0,
+            "m_PathID": 18691
+          },
+          "status": "RESOLVED",
+          "target": {
+            "serialized_file": "BuildPlayer-Oxyde",
+            "path_id": 18691,
+            "type": "MonoBehaviour"
+          },
+          "serialized_fields": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 70
+            },
+            "m_Enabled": 1,
+            "m_Script": {
+              "m_FileID": 0,
+              "m_PathID": 0
+            },
+            "m_Name": ""
+          }
+        }
+      ]
+    }
+  ],
+  "gameobject_name_parse_errors": [],
+  "dynamic_component_records": [
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18635,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 4092
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 9106
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 102
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 4092
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 4092,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8555
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 11689
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9106
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18635
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (16)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18636,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 2241
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 8915
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 102
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 2241
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 2241,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4605
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 13368
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8915
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18636
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (5)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18637,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 1741
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 10472
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 102
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 1741
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 1741,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6058
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 13728
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 10472
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18637
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18638,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 3877
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 9640
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 96
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 3877
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 3877,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6138
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 12504
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9640
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18638
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (4)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18639,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 995
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 11560
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 102
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 995
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 995,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6170
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 12202
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 11560
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18639
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (17)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18640,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 1989
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 10548
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 94
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 1989
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 1989,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4965
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 12026
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 10548
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18640
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (8)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18641,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 517
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 10224
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 102
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 517
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 517,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4929
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 11978
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 10224
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18641
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (10)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18642,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 4260
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 9210
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 89
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 4260
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 4260,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4677
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 12677
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9210
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18642
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (12)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18643,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 2458
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 10482
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 102
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 2458
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 2458,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5668
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 14082
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 10482
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18643
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (11)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18644,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 2758
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 10600
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 85
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 2758
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 2758,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5004
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 12948
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 10600
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18644
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (9)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18645,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 2684
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 9753
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 78
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 2684
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 2684,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7607
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 13727
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9753
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18645
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (15)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18646,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 3395
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 9798
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 87
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 3395
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 3395,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8774
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 13970
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9798
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18646
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (3)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18647,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 1189
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 9544
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 102
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 1189
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 1189,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4722
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 13237
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9544
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18647
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (1)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18648,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 4330
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 10466
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 84
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 4330
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 4330,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7029
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 12061
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 10466
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18648
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (2)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18649,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 528
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 10067
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 102
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 528
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 528,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6958
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 13067
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 10067
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18649
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (14)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18650,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 914,
+        "type": "MonoScript",
+        "class": "ChanceScript",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 3856
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 914
+        },
+        "m_Name": "",
+        "_onChance": {
+          "m_PersistentCalls": {
+            "m_Calls": [
+              {
+                "m_Target": {
+                  "m_FileID": 0,
+                  "m_PathID": 11185
+                },
+                "m_TargetAssemblyTypeName": "UnityEngine.Renderer, UnityEngine",
+                "m_MethodName": "set_sharedMaterial",
+                "m_Mode": 2,
+                "m_Arguments": {
+                  "m_ObjectArgument": {
+                    "m_FileID": 1,
+                    "m_PathID": 98
+                  },
+                  "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Material, UnityEngine",
+                  "m_IntArgument": 0,
+                  "m_FloatArgument": 0.0,
+                  "m_StringArgument": "",
+                  "m_BoolArgument": 0
+                },
+                "m_CallState": 2
+              }
+            ]
+          }
+        },
+        "_chance": 50
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 3856
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 3856,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5241
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 12331
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 11185
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18650
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "ErrorScreen (6)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18715,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 629
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": [
+          {
+            "NamespacedMapObjectKey": {
+              "_namespace": "code_rebirth",
+              "_key": "compactor_toby"
+            },
+            "Rarity": 1
+          }
+        ]
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 629
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 629,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6257
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18715
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CompactorTobySpawnSpot",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18868,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 2480
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": []
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 2480
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 2480,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7818
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18868
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CratesSpawn (10)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18911,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 189
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": [
+          {
+            "NamespacedMapObjectKey": {
+              "_namespace": "code_rebirth",
+              "_key": "kamikaze_jimothy"
+            },
+            "Rarity": 1
+          }
+        ]
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 189
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 189,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6328
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18911
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "KamikamithySpawner",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18921,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 4044
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": []
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 4044
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 4044,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7628
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18921
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CratesSpawn (9)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18949,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 311
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": [
+          {
+            "NamespacedMapObjectKey": {
+              "_namespace": "code_rebirth",
+              "_key": "shredder_sarah"
+            },
+            "Rarity": 1
+          }
+        ]
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 311
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 311,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5952
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18949
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "ShreddingSarahSpawnSpot",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18961,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 1702
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": [
+          {
+            "NamespacedMapObjectKey": {
+              "_namespace": "code_rebirth",
+              "_key": "merchant"
+            },
+            "Rarity": 1
+          }
+        ]
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 1702
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 1702,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6109
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18961
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "GuardsmanSpawnSpot",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 18989,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 4265
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": []
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 4265
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 4265,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7211
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18989
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CratesSpawn (2)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19052,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 4097
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": [
+          {
+            "NamespacedMapObjectKey": {
+              "_namespace": "code_rebirth",
+              "_key": "gunslinger_greg"
+            },
+            "Rarity": 1
+          }
+        ]
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 4097
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 4097,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8603
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19052
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "GreySpawnSpot (3)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19088,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 2392
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": [
+          {
+            "NamespacedMapObjectKey": {
+              "_namespace": "code_rebirth",
+              "_key": "gunslinger_greg"
+            },
+            "Rarity": 1
+          }
+        ]
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 2392
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 2392,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6551
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19088
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "GreySpawnSpot",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19107,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 3681
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": []
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 3681
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 3681,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6676
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19107
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CratesSpawn (1)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19248,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 923
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": []
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 923
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 923,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6126
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19248
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CratesSpawn (6)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19321,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 913,
+        "type": "MonoScript",
+        "class": "UnlockProgressiveObject",
+        "namespace": "Dusk.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dusk.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 1436
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 913
+        },
+        "m_Name": "",
+        "_interactTrigger": {
+          "m_FileID": 0,
+          "m_PathID": 18653
+        },
+        "_failGuaranteed": 0,
+        "_successDisplayTip": {
+          "_alertType": 0,
+          "_header": "Assembly Successful",
+          "_body": "ProgressiveName can now be ordered via the terminal."
+        },
+        "_failureDisplayTip": {
+          "_alertType": 1,
+          "_header": "Assembly Failed",
+          "_body": "Failed to assemble any unlockables."
+        }
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 1436
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 1436,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5174
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 17483
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19051
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 18653
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19321
+              }
+            }
+          ],
+          "m_Layer": 9,
+          "m_Name": "GalBuilder",
+          "m_Tag": 20001,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19335,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 247
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": []
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 247
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 247,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5958
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19335
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CratesSpawn",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19339,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 263
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": []
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 263
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 263,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5980
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19339
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CratesSpawn (3)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19373,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 614
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": []
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 614
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 614,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5795
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19373
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CratesSpawn (8)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19377,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 477
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": []
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 477
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 477,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5736
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19377
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CratesSpawn (4)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19406,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 3790
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": [
+          {
+            "NamespacedMapObjectKey": {
+              "_namespace": "code_rebirth",
+              "_key": "gunslinger_greg"
+            },
+            "Rarity": 1
+          }
+        ]
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 3790
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 3790,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8148
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19406
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "GreySpawnSpot (1)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19505,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 1149
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": []
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 1149
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 1149,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4815
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19505
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CratesSpawn (5)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19520,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 1392
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": []
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 1392
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 1392,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5002
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19520
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CratesSpawn (7)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19551,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 3679
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": [
+          {
+            "NamespacedMapObjectKey": {
+              "_namespace": "code_rebirth",
+              "_key": "gunslinger_greg"
+            },
+            "Rarity": 1
+          }
+        ]
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 3679
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 3679,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8233
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19551
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "GreySpawnSpot (2)",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    },
+    {
+      "serialized_file": "BuildPlayer-Oxyde",
+      "path_id": 19557,
+      "type": "MonoBehaviour",
+      "script": {
+        "serialized_file": "BuildPlayer-Oxyde.sharedAssets",
+        "path_id": 908,
+        "type": "MonoScript",
+        "class": "SpawnSyncedDawnLibObject",
+        "namespace": "Dawn.Utils",
+        "assembly": "com.github.teamxiaolan.dawnlib.dll"
+      },
+      "serialized_fields": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 3096
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 908
+        },
+        "m_Name": "",
+        "chanceOfSpawningAny": 100.0,
+        "automaticallyAlignWithTerrain": 0,
+        "objectTypesWithRarity": [
+          {
+            "NamespacedMapObjectKey": {
+              "_namespace": "code_rebirth",
+              "_key": "autonomous_crane"
+            },
+            "Rarity": 1
+          }
+        ]
+      },
+      "game_object": {
+        "pointer": {
+          "m_FileID": 0,
+          "m_PathID": 3096
+        },
+        "status": "RESOLVED",
+        "target": {
+          "serialized_file": "BuildPlayer-Oxyde",
+          "path_id": 3096,
+          "type": "GameObject"
+        },
+        "target_data": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6052
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 19557
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CraneSpawner",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    }
+  ],
+  "proof_boundary": "Serialized scene-bundle inspection only. Does not cover runtime additions, other bundles, owner code, final entrance counts/pairings, generation or topology safety."
+}

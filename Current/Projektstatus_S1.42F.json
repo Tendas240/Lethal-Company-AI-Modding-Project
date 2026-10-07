@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-03",
+  "game": "Lethal Company V81",
+  "build_id": "S1.42F",
+  "profile": "Profiles/LC V1 S1.42F Enemy Isolation Freeze Fix.r2z",
+  "sha256": "f09404a8195b46261570331f736d921fb1cb25cd304e8952e5f6fcb404ed9e6b",
+  "base": "Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z",
+  "base_sha256": "4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348",
+  "status": "built_awaiting_runtime_validation",
+  "manifest": {
+    "total": 188,
+    "enabled": 183,
+    "disabled": 5,
+    "diff_vs_s142e": []
+  },
+  "compatibility_plugin": {
+    "version": "1.3.2",
+    "dll_sha256": "8172c75bbcf75108266e1ce8d2808ec072f6cfc164acaf562baa0345123915f3",
+    "delta": "Skip Gordion/Company diagnostic work; use EnemyType/int SpawnableEnemyWithRarity construction with clone fallback."
+  },
+  "predecessor_runtime": {
+    "build_id": "S1.42E",
+    "evidence": "RuntimeEvidence/S1.42E/20260903T091053Z/",
+    "log_sha256": "1617d7a0ea837fc55d12ca1b62ddcc36a23fe9d225d05cc1ab70ad3fcb1e78d9",
+    "result": "startup_passed_but_periodic_enemy_isolation_freezes"
+  },
+  "accepted_gameplay_baseline": {
+    "build_id": "S1.41",
+    "profile": "Profiles/LC V1 S1.41 BCMER Reactivation.r2z",
+    "sha256": "d69d0b59144002c24cfedf041ca5cbb70086e9218692aa3ac9359170f338cb2b"
+  },
+  "latest_runtime_tested_gameplay_reaching_candidate": {
+    "build_id": "S1.42E",
+    "note": "Reached Main Menu and host lobby; interaction testing aborted because of periodic diagnostic-isolation freezes."
+  },
+  "build_control": {
+    "enabled": false,
+    "build_id": "IDLE_AFTER_S1.42F_BUILD_AWAITING_RUNTIME",
+    "file": "BuildSpecs/current.json"
+  },
+  "runtime_routing": {
+    "active_build": "S1.42F",
+    "upload_path": "RuntimeInbox/Current/",
+    "marker_file": "RuntimeInbox/ACTIVE_BUILD.txt"
+  },
+  "first_runtime_gate": "Reach Main Menu and host ship lobby without the S1.42E once-per-second freezes.",
+  "if_gate_passes": [
+    "Baboon Hawk generic invincible-Pikmin grab/bite state recovery",
+    "Thumper/Crawler <-> Pikmin zero interaction",
+    "Puffer smoke/attack does not affect Pikmin",
+    "Jetpack approximately 140 seconds",
+    "Jetpack no sustained/high-speed mid-air self-explosion",
+    "Functional Microwave volume 0.7"
+  ]
+}

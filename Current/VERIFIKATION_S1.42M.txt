@@ -1,0 +1,67 @@
+VERIFIKATION — S1.42M — BABOON HAWK DEATH CLEANUP
+
+Profil:
+Profiles/LC V1 S1.42M Baboon Hawk Death Cleanup.r2z
+
+Profil SHA-256:
+9e0172e7ce8fef8b961f39466e6bdf18f8498e594fee850b2cc0ceaa4088d5c7
+
+Basis:
+Profiles/LC V1 S1.42L Pikmin Counterattack Restore.r2z
+
+Basis SHA-256:
+fd6156cc37c704e987a902ac88592c0d2b13b638b9194ce1556b376d9bc70722
+
+GitHub-Actions-Build:
+- erfolgreich
+- 0 Warnungen
+- 0 Fehler
+- 331 Archivmitglieder
+- 330 lesbare Snapshot-Dateien
+- geänderte bestehende Mitglieder nur:
+  - BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+  - export.r2x
+- keine neuen Archivmitglieder
+
+Compatibility Plugin:
+Version 1.3.8
+
+DLL SHA-256:
+47fff0272b00ce776150c203eb65710216eba4390f5f5864fdbffec686692adf
+
+Byte-identisch zu S1.42L:
+- BepInEx/config/NoteBoxz.LethalMin.cfg
+- BepInEx/config/Entity378.sellbodies.cfg
+- BepInEx/config/tendas.s139.compatibilityfixes.cfg
+
+Damit:
+- EnemyIsolation weiterhin aktiv
+- BCMER 1.71.0 weiterhin deaktiviert
+- SellBodies Baboon-Hawk-Körper weiterhin aktiviert
+- LethalMin Attack Blacklist unverändert
+
+Neueste valide Runtime-Evidenz vor S1.42M:
+RuntimeEvidence/S1.42L/20260903T155132Z/raw/LogOutput.log
+
+Runtime-Log SHA-256:
+812523f8c838b9f76af4a215171755734aa53c556af7bdeeef46a27a43239d10
+
+S1.42L bestätigt:
+- Pikmin -> Baboon Hawk Attack/Latch PASS
+- Pikmin können Baboon Hawk töten
+- Baboon Hawk -> Pikmin PASS
+- Leader is null when following = 0
+
+S1.42M Runtime-Ziel:
+- gelatchte Pikmin lösen sich beim Hawk-Tod und verschwinden nicht
+- Dead Baboon Hawk Körper bleibt als SellBodies/PikminItem vorhanden
+- Pikmin können den Körper zur Onion tragen
+- lebende Baboon Hawks nehmen den Körper nicht auf
+- Hawk -> Pikmin Ignore bleibt intakt
+- kein Leader-null Loop
+
+Runtime-Route:
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42M
+
+Build-Controller:
+BuildSpecs/current.json = disabled / IDLE_AFTER_S1.42M_BUILD_AWAITING_RUNTIME

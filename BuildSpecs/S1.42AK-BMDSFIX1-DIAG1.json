@@ -1,0 +1,30 @@
+{
+  "enabled": true,
+  "build_id": "S1.42AK-BMDSFIX1-DIAG1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "output_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z",
+  "profile_name": "LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector",
+  "overwrite": false,
+  "mod_state_changes": [],
+  "mod_additions": [],
+  "mod_removals": [],
+  "config_patches": [],
+  "file_injections": [],
+  "local_plugin_builds": [
+    {
+      "project": "Patches/S142AKBMDSFix1Diag1/S142AKBMDSFix1Diag1.csproj",
+      "configuration": "Release",
+      "built_file": "Patches/S142AKBMDSFix1Diag1/bin/Release/netstandard2.1/S142AKBMDSFix1Diag1.dll",
+      "archive_path": "BepInEx/plugins/S142AKBMDSFix1Diag1/S142AKBMDSFix1Diag1.dll"
+    }
+  ],
+  "text_assertions": [
+    {
+      "path": "export.r2x",
+      "not_contains": "LethalLevelLoaderUpdated"
+    }
+  ],
+  "result_json": "BuildSpecs/S1.42AK-BMDSFIX1-DIAG1_BUILD_EVIDENCE/BUILD_RESULT.json",
+  "result_md": "BuildSpecs/S1.42AK-BMDSFIX1-DIAG1_BUILD_EVIDENCE/BUILD_RESULT.md"
+}

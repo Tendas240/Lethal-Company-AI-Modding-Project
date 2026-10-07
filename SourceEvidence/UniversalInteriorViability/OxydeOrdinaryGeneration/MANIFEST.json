@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-04",
+  "analysis_base_commit": "ae556a8a15e78785f9edebe8ea5ef6d31255bc17",
+  "status": "STATIC_SAFETY_DECISION_PRESERVE_CURRENT_ARCHITECTURE_EXCEPTION",
+  "decision": "Current/243_S1.42AK_OXYDE_ORDINARY_GENERATION_STATIC_SAFETY_DECISION.md",
+  "inputs": [
+    {
+      "path": "Current/242_S1.42AK_PHASE_C3_OXYDE_ORDINARY_GENERATION_PRIORITY_SELECTION.md",
+      "sha256": "5ecf021adcceac9d223303e7a10bd04031b30a13c11828c7abc5f5d0d96ad09f",
+      "git_blob_sha1": "c6b7fab043f3537790333c33616c794dc326affc"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3B/OXYDE_ENTRANCE_COMPONENT_SCAN.json",
+      "sha256": "238bae805c0442fb4b5a54b29d20932748404bcd0ae9eb4bb8033c46e052a048",
+      "git_blob_sha1": "4c471ce4b06f96b461a2968416c44dbab784bd0f"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3C/OXYDE_LEVEL_MOON_DEFINITION.json",
+      "sha256": "e1a8bb01b1322d9ef5f0652de2ec3069842a7d46766b2bac4ed7735f191a3dea",
+      "git_blob_sha1": "9f556bebcbdafdf780c82e373bf3370879c58796"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3D/OXYDE_OWNER_REGISTRATION_IL.json",
+      "sha256": "3075ad4e151d2bbac01ad1eee0afe9221016c9e3c36b131ff1adea1c8a5460da",
+      "git_blob_sha1": "6bc8094f30302d1afa1cc2bf5a702c527e19fb41"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3E/GENERATION_INTEGRATION_SOURCE.json",
+      "sha256": "b5a2cf33f95145c0c5654d2cb9e2023714d6a4ea4cd6873abbdb446d9c5db6b6",
+      "git_blob_sha1": "b7d83bd6a64c5207b2fc2857e5c2a7be6eb47788"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3G/FINDINGS.md",
+      "sha256": "9acd92527e5f7f640e292ee4831222a516cc2efcec5c04f8eb026c8df7293b42",
+      "git_blob_sha1": "d1793be55d702a4c873f71c2b8997398358335ad"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3E3H/FINDINGS.md",
+      "sha256": "cf41b86fa4c51964c41f655e65bc38b2d8f9704da7a09f363910b9ebc6c2da78",
+      "git_blob_sha1": "ba1936d118464bdce42eb6bf2306b66701bedcff"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3F4/FINDINGS.md",
+      "sha256": "77884eb12c350e05868789defed45ff49cf0933245b4964082e948f352f55881",
+      "git_blob_sha1": "1c2143db4134aa68fcdd5ce424c7c642735e3402"
+    },
+    {
+      "path": "SourceEvidence/UniversalInteriorViability/PhaseC3F5/FINDINGS.md",
+      "sha256": "cd47fa760f88d33f2742598387a687dab32f8a13a095e55cfd7157ae131400e8",
+      "git_blob_sha1": "121c03a6e7b1a1f9e92c31dac406d05ecf1152bd"
+    },
+    {
+      "path": "SourceEvidence/NativeSpawnOwners/20260911T144505Z/XuXiaolan-CodeRebirth-0-DISCOVERY.json",
+      "sha256": "470117528dc080aee69d79ef2407365bd9b55647e7ed8a98af2f16da4df76c23",
+      "git_blob_sha1": "31c4d1ceed2b9f5a7905a177b533f1d0e131b5a5"
+    },
+    {
+      "path": "ProfileSources/S1.42AK/BepInEx/config/CodeRebirth.cfg",
+      "sha256": "da90b6d34ec8806401a5e1d2ba47fb1115b3c98e28b6d08965ba2246e5e64661",
+      "git_blob_sha1": "6931bcdb5a8219156cd93c90ec4a03e444d45828"
+    },
+    {
+      "path": "ProfileSources/S1.42AK/BepInEx/config/com.github.teamxiaolan.dawnlib.cfg",
+      "sha256": "8563b07c8d4e49cb664dcc11e29be4ff400b7c713e0a89a200d1a458ee4b1648",
+      "git_blob_sha1": "bb7e00cfb2af5138427a8f1669886d5f7baa750b"
+    },
+    {
+      "path": "ProfileSources/S1.42AK/BepInEx/config/LethalLevelLoader.cfg",
+      "sha256": "6c294442cbd9339f24841b57cf0eb75726ec6e9e598693de2c308cf0d46ff8bc",
+      "git_blob_sha1": "14dcd076692cbc54e073ad281a63d046b0976e00"
+    },
+    {
+      "path": "Current/166_S1.42AK_UNIVERSAL_INTERIOR_PHASE_B2_OWNER_CONFIG_MECHANISM_MAP.md",
+      "sha256": "44f78297b9562bd2ecca3cd44381360e1648b6bca52bb801e9a8cdc01b2443b1",
+      "git_blob_sha1": "13aaa86c92d9ab8c2b1b975ef9c5fbca91bd6fb5"
+    },
+    {
+      "path": "SourceEvidence/VanillaV81/RoundManagerGeneration/20260920T095502Z-fa6b63a6/ROUNDMANAGER_GENERATION_FOCUSED_DECOMPILE.txt",
+      "sha256": "7905f5d56846db1b019a046ff45608598adfd25e6ed151c2081fa523fa052b0a",
+      "git_blob_sha1": "c30e58659a1e5ae218f47b908fb193ad3d54b7bd"
+    },
+    {
+      "path": "SourceEvidence/VanillaV81/RoundManagerSpawning/20260911T143200Z-a693b4b9/ROUNDMANAGER_SPAWNING_FOCUSED_DECOMPILE.txt",
+      "sha256": "5317509a39e072db2c3df95de1cb9091dd9f7ff7e1a3bfe231045dea9cfc974f",
+      "git_blob_sha1": "c0f73d41650512af9437e74f4e4a1b9d5a7e62ed"
+    },
+    {
+      "path": "SourceEvidence/VanillaV81/EntrancePairing/20260920T201535Z-930a43a4/ENTRANCE_PAIRING_FOCUSED_DECOMPILE.txt",
+      "sha256": "5a44ffc7263989c475d18e53cd443e3a891682ee88ab49bdf7d6b36f87fbb0fe",
+      "git_blob_sha1": "98a06ecfc06e3dcbf64c27a59d19287e3dfbeabc"
+    },
+    {
+      "path": "SourceEvidence/VanillaV81/RoundManagerSeedControl/20260925T175821Z-a1992708/ROUNDMANAGER_SEED_CONTROL_FOCUSED_DECOMPILE.txt",
+      "sha256": "a82d7ac209528f367222c4e597c1040e28a137e289287956104ea9c22f1d8f33",
+      "git_blob_sha1": "94ae4dc4a69ab4aad342c4597bfa132e23d5c8b6"
+    }
+  ],
+  "reread_upstream_sources": [
+    {
+      "path": "Plugin/CodeRebirth/src/Content/Maps/OxydeCrane.cs",
+      "git_blob_sha1": "b4d34145843a64511c117c727190e021721ec1c1",
+      "url": "https://github.com/XuuXiaolan/CodeRebirth/blob/3aec94f6f737c86d5e1eb59a57396740317b210f/Plugin/CodeRebirth/src/Content/Maps/OxydeCrane.cs",
+      "qualification": "Pinned version-aligned upstream source; not newly proven byte-identical to packaged DLL"
+    },
+    {
+      "path": "Plugin/CodeRebirth/src/MiscScripts/ShipAnimator.cs",
+      "git_blob_sha1": "7bc2b69f2b254110a77238201e627a41d335000d",
+      "url": "https://github.com/XuuXiaolan/CodeRebirth/blob/3aec94f6f737c86d5e1eb59a57396740317b210f/Plugin/CodeRebirth/src/MiscScripts/ShipAnimator.cs",
+      "qualification": "Pinned version-aligned upstream source; not newly proven byte-identical to packaged DLL"
+    },
+    {
+      "path": "Plugin/CodeRebirth/src/Patches/EnemyAIPatch.cs",
+      "git_blob_sha1": "d52af2414f5f70d8e8fd8e1dd21c00be3cc35727",
+      "url": "https://github.com/XuuXiaolan/CodeRebirth/blob/3aec94f6f737c86d5e1eb59a57396740317b210f/Plugin/CodeRebirth/src/Patches/EnemyAIPatch.cs",
+      "qualification": "Pinned version-aligned upstream source; not newly proven byte-identical to packaged DLL"
+    },
+    {
+      "path": "Plugin/CodeRebirth/src/Patches/RoundManagerPatch.cs",
+      "git_blob_sha1": "3bdf9fcbd89b604b6b1e01c4718ed314aa3e6694",
+      "url": "https://github.com/XuuXiaolan/CodeRebirth/blob/3aec94f6f737c86d5e1eb59a57396740317b210f/Plugin/CodeRebirth/src/Patches/RoundManagerPatch.cs",
+      "qualification": "Pinned version-aligned upstream source; not newly proven byte-identical to packaged DLL"
+    },
+    {
+      "path": "Plugin/CodeRebirth/src/Patches/StartOfRoundPatch.cs",
+      "git_blob_sha1": "113cc469140994b0d95b668cdfd6e918543854db",
+      "url": "https://github.com/XuuXiaolan/CodeRebirth/blob/3aec94f6f737c86d5e1eb59a57396740317b210f/Plugin/CodeRebirth/src/Patches/StartOfRoundPatch.cs",
+      "qualification": "Pinned version-aligned upstream source; not newly proven byte-identical to packaged DLL"
+    },
+    {
+      "path": "Plugin/CodeRebirth/src/Patches/ItemDropshipPatch.cs",
+      "git_blob_sha1": "5fa3f0749515175ac1fe8471ae767a6d8a4d4af4",
+      "url": "https://github.com/XuuXiaolan/CodeRebirth/blob/3aec94f6f737c86d5e1eb59a57396740317b210f/Plugin/CodeRebirth/src/Patches/ItemDropshipPatch.cs",
+      "qualification": "Pinned version-aligned upstream source; not newly proven byte-identical to packaged DLL"
+    },
+    {
+      "path": "DawnLib/src/API/Dungeons/.DungeonRegistrationHandler.cs",
+      "git_blob_sha1": "f51869b975135d40bf71c0610d647a8a1367c024",
+      "url": "https://github.com/TeamXiaolan/DawnLib/blob/810613e556ecc357eac25e97c25a3bb90516f071/DawnLib/src/API/Dungeons/.DungeonRegistrationHandler.cs",
+      "qualification": "Pinned version-aligned upstream source; not newly proven byte-identical to packaged DLL"
+    }
+  ],
+  "qualification": "Existing repository evidence re-read and hashed; pinned upstream sources re-read. No new package extraction, runtime acquisition or byte-identical source-to-binary claim. Historical lifecycle statements in evidence do not supersede CURRENT_STATE.",
+  "result": {
+    "ordinary_flag_config_override": "NOT_ESTABLISHED_IN_INSPECTED_OWNER_CONFIG_SURFACE",
+    "one_flag_change_safe": "NOT_ESTABLISHED",
+    "current_oxyde_exception": "PRESERVED",
+    "metadata_pairings": 23,
+    "runtime_entrance_count": "UNPROVEN",
+    "owner_permanent_interior_prohibition": "UNPROVEN",
+    "future_conversion_requires_separate_architecture_scope": true,
+    "runtime_authorized": false,
+    "gameplay_bytes_changed": false,
+    "b3_changed": false
+  },
+  "remaining_source_limits": [
+    "Exact GeneratedFloorPostProcessing and complete map-object/clock transitive bodies absent from focused captures",
+    "Active Oxyde RuntimeDungeon and independent runtime entrance-construction path not established",
+    "Effective live spawn tables and final patch ordering not observed"
+  ]
+}

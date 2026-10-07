@@ -1,0 +1,79 @@
+VERIFIKATION — S1.42E
+
+Stand: 2026-09-03
+Status: GEBAUT, NOCH NICHT RUNTIME-AKZEPTIERT
+
+Profil:
+Profiles/LC V1 S1.42E Startup Safe Enemy Regression.r2z
+SHA-256:
+4df5d6417aad35ad327b183eb2dd25ecb6bd20382840198f74f0201007d57348
+
+Basis:
+Profiles/LC V1 S1.42D Isolated Enemy Regression.r2z
+SHA-256:
+b455bd413a6da4ac059117d8fec667053c96ffeef7e239d9188d6e514d15bd5c
+
+GitHub-Actions-Build:
+- erfolgreich
+- .NET: 0 Warning(s), 0 Error(s)
+- Builder-Assertions: bestanden
+- ZIP-Mitglieder: 331
+- Text-Snapshot: 330 lesbare Dateien
+- Snapshot: ProfileSources/S1.42E/
+
+Manifest:
+- 188 Pakete gesamt
+- 183 enabled
+- 5 disabled
+- keine Paket-/Versions-/Enabled-State-Differenz gegenüber S1.42D
+
+Delta S1.42D -> S1.42E:
+- geändert: BepInEx/plugins/Tendas-S139CompatibilityFixes/S139CompatibilityFixes.dll
+- geändert: export.r2x (nur Profilname/Buildmetadaten)
+- keine Mod additions/removals/state changes
+- alle S1.42D Configziele werden byte-/snapshot-seitig weitergetragen
+
+Compatibility-Patch:
+- Version: 1.3.1
+- DLL SHA-256: caf20c785245396d9f31ff32b556cbe75d64b87a5a676807184093a6cef78eab
+- LethalMin-Hotfix: nur DeclaredOnly-Methoden auf *PikminEnemy-Adaptertypen
+- nur BitePikmin / GrabPikmin / GrabPikminWithTongue
+- keine RPC-Wrapper
+- keine generischen PikminAI/PikminItem-Methoden
+- kein geerbter GrabbableObject.Start-Jetpack-Harmonyhook
+
+Wichtige Configs in S1.42E:
+- CodeRebirth Functional Microwave Editing Gate = true
+- CodeRebirth Functional Microwave Volume = 0.7
+- ButteRyBalance Reduce Battery = false
+- JetpackFixes MidAirExplosions = Off
+- tendas.s139.compatibilityfixes Diagnostics/Isolated Enemy Regression = true
+
+Snapshot-SHA256:
+- export.r2x: e7dc9159dbf59eeabef47682bae10c565f54843e9919fe0bc3a0c7a74c18c728
+- CodeRebirth.cfg: 77e565a4f8e9899e49458985304f815853f2acabd89081c9e81b93e4e56acafa
+- ButteRyBalance cfg: e6fa78c790314cc0418c5fc3b913697c39255d9637e60b831277860de399701b
+- JetpackFixes cfg: 0fc19f02fc841b4f567b894026e1d33be7a69aa54f3fe3950633e3d8f28c1c60
+- compatibility diagnostic cfg: 0cc32649b655026e6a86adb0d4804aaf9315dea70d59593cdcf1b815d81d0264
+- compatibility DLL: caf20c785245396d9f31ff32b556cbe75d64b87a5a676807184093a6cef78eab
+
+Vorgängerfehler:
+S1.42D ist runtime FEHLGESCHLAGEN.
+Crash-Evidenz:
+RuntimeEvidence/S1.42D/20260903T084247Z/
+Log SHA-256:
+55cdbf6904c7d1acb74647c90a79820df9e3a39978cd60ccf4d6e25bc95d4107
+
+Der S1.42D-Log erreichte "Custom Content Processed. Unlocking Main Menu.", startete danach den breiten LethalMin-Harmony-Scan und brach mitten im Scan ab. HarmonyX warnte mehrfach vor geerbten/nicht deklarierten Patchzielen. Deshalb S1.42D NICHT erneut testen.
+
+S1.42E Runtime-Akzeptanz:
+NOCH OFFEN.
+Erstes Gate ist ausschließlich: Main Menu ohne Startup-Crash erreichen.
+Danach erst Enemy-/Jetpack-/Microwave-Tests.
+
+Importregel:
+Gale -> Advanced options -> Import all files
+
+Runtime-Upload:
+RuntimeInbox/ACTIVE_BUILD.txt = S1.42E
+LogOutput.log nach RuntimeInbox/Current/

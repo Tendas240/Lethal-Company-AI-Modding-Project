@@ -1,0 +1,36 @@
+name: Validate V81 vent/nest evidence helper
+on:
+  pull_request:
+    paths:
+      - 'AnalysisTools/InspectVentNestLifecycleV81.ps1'
+      - '.github/workflows/vent-nest-evidence-helper.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'AnalysisTools/InspectVentNestLifecycleV81.ps1'
+      - '.github/workflows/vent-nest-evidence-helper.yml'
+permissions:
+  contents: read
+jobs:
+  powershell51:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate exact-target extractor and publication contract under Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          if ($PSVersionTable.PSVersion.Major -ne 5) { throw 'Expected Windows PowerShell 5.1' }
+          & ./AnalysisTools/InspectVentNestLifecycleV81.ps1 -SelfTest
+          if (-not $?) { throw 'Helper self-test failed' }
+  bootstrap51:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install isolated SDK and pinned ILSpy under Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          if ($PSVersionTable.PSVersion.Major -ne 5) { throw 'Expected Windows PowerShell 5.1' }
+          & ./AnalysisTools/InspectVentNestLifecycleV81.ps1 -BootstrapSelfTest
+          if (-not $?) { throw 'Bootstrap self-test failed' }

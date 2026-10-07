@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_TIER_A_REVIEW_COMPLETE_PATCH_SAFETY_PARTIAL_NOT_BUILD_READY",
+  "canonical_main": "2915f2f04505581bec5056b3801130cc649aa1cf",
+  "analysis": {
+    "branch": "analysis/s142ai-tier-a-exact",
+    "successful_run_id": 34708556035,
+    "run_number": 3,
+    "head": "1900cae19659a52ed30b400a143393bd1d109d7d",
+    "artifact_id": 10301933941,
+    "artifact_name": "s142ai-tier-a-spawn-candidates-exact",
+    "artifact_zip_sha256": "8d1ebd346e83fd5f4334a6693036e5d068dc08d51457a6e94b642333bd23e79f",
+    "decompiler": "ilspycmd 11.0.0.9375",
+    "failed_harness_runs": [
+      {
+        "run_id": 34708438809,
+        "reason": "shallow checkout prevented canonical-main ancestor verification",
+        "package_evidence_failure": false
+      },
+      {
+        "run_id": 34708476341,
+        "reason": "manually transcribed SnowyLib expected DLL hash contained one incorrect character sequence; actual hash matched original discovery authority",
+        "package_evidence_failure": false
+      }
+    ]
+  },
+  "assemblies": [
+    {
+      "package": "ButteryStancakes-ButteRyBalance",
+      "version": "0.7.0",
+      "package_zip_sha256": "bf5bc41311a05bae25350704bf522884645f55050f1966330a825ffe5b941fc2",
+      "member": "ButteRyBalance.dll",
+      "dll_sha256": "d13c7996645c9cf34e2806acbd511972229aaf8874991524a56077390a63cf0e",
+      "source_sha256": "0d46e2dc3f2231d00644871685d4a6c5336f3d60ce34dceec69e36ca6aef03ad",
+      "il_sha256": "382d61b878b7302bc2043c9ac8327dd5c59d5422c5f5e75ff587e44fcf9e94a1",
+      "classification": "CONFIRMED_STATEFUL_VENT_SCHEDULING_OWNER",
+      "exact_owner_methods": [
+        "InfestationOverrides.CustomInfestation",
+        "InfestationOverrides.SpawnInfestationWave"
+      ],
+      "server_or_host_gated": true
+    },
+    {
+      "package": "malco-Lategame_Upgrades",
+      "version": "3.14.1",
+      "package_zip_sha256": "8ffa3a987e2626526406673825d5523a044e6e6cf68581edba844b24f2f2c79a",
+      "member": "BepInEx/plugins/MoreShipUpgrades/MoreShipUpgrades.dll",
+      "dll_sha256": "c3c6da8a2ad57930ec91db9df24223379a27bd0e0dcc60cf21fb1c9472f20465",
+      "source_sha256": "c027768e0b850573fb6ef4b90d86bd89baa557f739a91371fd49d30e6d86961a",
+      "il_sha256": "b5b9bcedbf1f8231540944dba575038028c6a28c459caf2f2b6452574de71025",
+      "classification": "CONFIRMED_CONTRACT_DRIVEN_EXPLICIT_ENEMY_SPAWN_OWNER",
+      "exact_owner_methods": [
+        "Tools.SpawnMob",
+        "PentagramScript.WaitToExplode",
+        "ContractObject.Start"
+      ],
+      "spawn_callee": "RoundManager.SpawnEnemyOnServer",
+      "return_contract_requires_review": true
+    },
+    {
+      "package": "Sparble-FacelessStalker",
+      "version": "1.2.1",
+      "package_zip_sha256": "3440b8c02f342d291a4e1f341a7c3ace4e87ec8a77b264ba7e0352178648a518",
+      "member": "FacelessStalker/SlendermanMod.dll",
+      "dll_sha256": "0957f55e0aa69f83167d4f1e7e6b261c174d1412b1d06fcf4df0e708e83dbce8",
+      "source_sha256": "7cf665b6252da443d950bebc7ef6fb64e8cebff8ec10a8c0834aa8cce02abdd6",
+      "il_sha256": "d8103ed41cd301f02695169059b03cc30134b2290f65196a2720da48109b5069",
+      "classification": "CONFIRMED_PAGE_ITEM_DIRECT_NETWORK_SPAWN_OWNER",
+      "exact_owner_methods": [
+        "SpawnSlendermanEnemyItem.EquipItem",
+        "SpawnSlendermanEnemyItem.SpawnSlenderman",
+        "SpawnSlendermanEnemyItem.SpawnSlendermanServerRpc"
+      ],
+      "direct_enemy_prefab_instantiate": true,
+      "direct_network_spawn": true,
+      "server_rpc": true
+    },
+    {
+      "package": "Snowlance-SnowyLib",
+      "version": "1.13.1",
+      "package_zip_sha256": "60c64b5df528d62491b7f584d8ec3d14c41c9c3cd46b8d9c3fb1f6e230dec95b",
+      "member": "Snowlance.SnowyLib.dll",
+      "dll_sha256": "cdbb80c8b0afa3e65acae83e25bd00fb704cefbeb2e14ccc561f1d959b0c3c95",
+      "source_sha256": "0b9b13fdc95cfb827eb5de2cdbd3ba94b6405d315af29e5ba1b13210f1e68d36",
+      "il_sha256": "a41e3b0d9d050f070345e9dce2cef3ef4f5e8b69eb87848bbb58b504ef064e7e",
+      "classification": "GENERIC_SPAWN_API_INFRASTRUCTURE_NO_AUTONOMOUS_NORMAL_CALLER_FOUND",
+      "spawn_api_methods": [
+        "NetworkHandler.SpawnEnemyRpc",
+        "Utils.SpawnEnemy(NamespacedKey<DawnEnemyInfo>, Vector3, Quaternion, Transform, bool)",
+        "Utils.SpawnEnemy(NamespacedKey<DawnEnemyInfo>, EnemyVent, float)"
+      ],
+      "internal_normal_gameplay_caller_found": false,
+      "testing_command_default_enabled": false,
+      "external_consumer_review_required": true
+    },
+    {
+      "package": "IAmBatby-LethalLevelLoader",
+      "version": "1.7.12",
+      "package_zip_sha256": "e01eadec8b1df3a1bc331e98b29d94baffa572cb7379953f1fa4e46df0aa6451",
+      "member": "LethalLevelLoader.dll",
+      "dll_sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
+      "source_sha256": "88baea660b8a5e1fd65201ccf742331fd1017322998736f8cc187aec71a507a3",
+      "il_sha256": "d7da6227df7565ef062b9084ec791d1d9629c8bc598f9e706d12c6e86fb24abe",
+      "classification": "SPAWN_OBSERVER_DOWNSTREAM_CONTRACT_NOT_ENEMY_CREATION_OWNER",
+      "exact_methods": [
+        "EventPatches.RoundManagerSpawnEventFromVent_Prefix",
+        "EventPatches.RoundManagerSpawnEventFromVent_Postfix"
+      ],
+      "direct_enemy_creation_found": false,
+      "central_spawn_denial_downstream_hazard": true
+    },
+    {
+      "package": "Bob123-Haunted_Harpist",
+      "version": "1.3.24",
+      "package_zip_sha256": "cdddec7566a1374cc3c0e7df70a7c7906f16122219a6fc2d7084d7fd4c7df933",
+      "member": "BepInEx/plugins/HauntedHarpist/LethalCompanyHarpGhost.dll",
+      "dll_sha256": "d8d35767d74e3226c6adf8728fc4269a2fac4e05e11da2842f22858fc23c2ac0",
+      "source_sha256": "00e2aa67044d4b330bc7a0647847d645a994b7c71e01819d584ebc149d462030",
+      "il_sha256": "a88d1a644092d088f2983e283b26d702bfe4dc2cbf2258284820a1c4504c7737",
+      "classification": "CONFIRMED_SERVER_SIDE_ESCORT_DIRECT_NETWORK_SPAWN_OWNER",
+      "exact_owner_methods": [
+        "BagpipesGhostAIServer.Start",
+        "BagpipesGhostAIServer.SpawnEscorts"
+      ],
+      "direct_enemy_prefab_instantiate": true,
+      "direct_network_spawn": true,
+      "prevention_before_instantiate_required": true
+    }
+  ],
+  "summary": {
+    "tier_a_packages_reviewed": 6,
+    "confirmed_gameplay_spawn_owners": 4,
+    "generic_spawn_api_infrastructure": 1,
+    "spawn_observer_downstream_contract": 1,
+    "unreviewed_discovery_positive_packages_remaining": 37,
+    "snowylib_external_consumer_coverage_open": true,
+    "blanket_roundmanager_spawn_enemy_denial_safe": false,
+    "blanket_networkobject_spawn_denial_safe": false,
+    "diag1_build_authorized": false
+  }
+}

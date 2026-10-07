@@ -1,0 +1,64 @@
+{
+    "schema_version":  1,
+    "purpose":  "Native V81 RoundManager map-seed origin and RNG evidence for S1.42AK-BMDSFIX1 regular map-seed control analysis",
+    "capture_utc":  "2026-09-25T17:58:21Z",
+    "repository":  "Tendas240/Lethal-Company-AI-Modding-Project",
+    "repository_main_at_capture":  "625a70b2bd97cd166940825285402856dd9b41db",
+    "bound_prior_evidence":  "SourceEvidence/VanillaV81/MouthDogAI/20260906T121738Z/MANIFEST.json",
+    "source_assembly":  {
+                            "sha256":  "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+                            "logical_path":  "Lethal Company_Data/Managed/Assembly-CSharp.dll"
+                        },
+    "game_executable":  {
+                            "sha256":  "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+                            "logical_path":  "Lethal Company.exe"
+                        },
+    "steam":  {
+                  "manifest_review":  "AnalysisTools/InspectRoundManagerSeedControlV81_PROVENANCE_REVIEW.md",
+                  "matches_prior_appmanifest":  false,
+                  "buildid":  "22825947",
+                  "appmanifest_sha256":  "4974c9249f249053275d93a5ba4f68e92346c1cfa09e89e6fce0b860c0c306a7",
+                  "prior_appmanifest_sha256":  "fb6750dfe7e6a7dae7f6e6ec77ae522dff95ba0be7aec8f4d379d01bccebe432",
+                  "app_id":  "1966720"
+              },
+    "decompiler":  {
+                       "full_local_type_source_sha256":  "f5c0790a76eddaab74129454f03fa7c2a36176e1759737395e76ee057567b6aa",
+                       "tool":  "ilspycmd",
+                       "type":  "RoundManager",
+                       "version":  "11.0.0.9375"
+                   },
+    "selection":  {
+                      "direct_caller_depth":  1,
+                      "required_methods":  [
+                                               "LoadNewLevelWait",
+                                               "InitializeRandomNumberGenerators",
+                                               "GetRandomWeightedIndex"
+                                           ],
+                      "selected_signatures":  [
+                                                  "public void SpawnScrapInLevel()",
+                                                  "public void GenerateNewFloor()",
+                                                  "public void LoadNewLevel(int randomSeed, SelectableLevel newLevel)",
+                                                  "private IEnumerator LoadNewLevelWait(int randomSeed)",
+                                                  "public void GenerateNewLevelClientRpc(int randomSeed, int levelID, int moldIterations = 0, int moldStartPosition = -1, int[] syncDestroyedMold = null)",
+                                                  "public void PredictAllOutsideEnemies()",
+                                                  "public bool SpawnRandomWeedEnemy(float timeUpToCurrentHour, int numberOfWeeds)",
+                                                  "private bool SpawnRandomDaytimeEnemy(float timeUpToCurrentHour)",
+                                                  "private bool SpawnRandomOutsideEnemy(float timeUpToCurrentHour)",
+                                                  "private bool AssignRandomEnemyToVent(EnemyVent vent, float spawnTime)",
+                                                  "public void InitializeRandomNumberGenerators()",
+                                                  "public int GetRandomWeightedIndex(int[] weights, System.Random randomSeed = null)",
+                                                  "public int GetRandomWeightedIndexList(List\u003cint\u003e weights, System.Random randomSeed = null)"
+                                              ],
+                      "max_source_lines":  3000
+                  },
+    "report":  {
+                   "sha256":  "a82d7ac209528f367222c4e597c1040e28a137e289287956104ea9c22f1d8f33",
+                   "file":  "ROUNDMANAGER_SEED_CONTROL_FOCUSED_DECOMPILE.txt",
+                   "excludes":  [
+                                    "game binaries",
+                                    "full type decompile",
+                                    "absolute local paths",
+                                    "user names"
+                                ]
+               }
+}

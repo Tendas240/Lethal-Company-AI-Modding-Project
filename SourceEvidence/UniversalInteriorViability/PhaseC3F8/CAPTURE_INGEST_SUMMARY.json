@@ -1,0 +1,426 @@
+{
+  "schema_version": "c3f8-capture-ingest-summary-1",
+  "working_pr": 138,
+  "source_head_sha": "1155f76a67fccf63cc3bd7fc510bbdb0d4175381",
+  "workflow": {
+    "name": "Capture C3F7 GlobalProp asset evidence",
+    "run_id": 35537995994,
+    "run_number": 4,
+    "attempt": 1,
+    "conclusion": "success"
+  },
+  "common_capture_bindings": {
+    "helper_sha256": "e4dd12c30330b1aa26b9554bcf791f6ee909aed35ce30622036c229acebf22ed",
+    "c3f2_helper_sha256": "c04402da5f3b056565c6134574b3f45f2e187bc2f2a283db7960f507360121fb",
+    "package_lock_sha256": "421be659f6fbd8633c548a012ee13b3c43bd9e22b39fc4b6c4c2d948fbc69569",
+    "ci_provenance_json_sha256": "f9913cd60c3902d946ac34657571649567755fb7cc2011b6e8c720f49e890e80"
+  },
+  "aggregate": {
+    "target_flows": 23,
+    "prop_1231_present": 23,
+    "prop_and_template_proven": 17,
+    "prop_present_template_unresolved": 6,
+    "prop_1231_absent": 0,
+    "capture_unresolved": 0,
+    "fatal_ambiguities": 0
+  },
+  "artifacts": [
+    {
+      "artifact_id": 10613930076,
+      "package": "Generic_GMD-Generic_Interiors",
+      "version": "5.2.0",
+      "digest": "sha256:e5f6fd41deb0dc4fdfed84cca8dc9d0e9f2fea1b635564d8b4ad5786abfb8bf2",
+      "capture_sha256": "29da3143198a89069e55425d88c30a3c3f1b29178356491f54e48af0a3b35331"
+    },
+    {
+      "artifact_id": 10613364614,
+      "package": "LethalMatt-Bozoros",
+      "version": "2.9.3",
+      "digest": "sha256:a522498c6055131e5ad00be49d0c75786331c751a717b6fee5185c0f79c45141",
+      "capture_sha256": "4ab8114738976894edac8a350f302aeb155b2699ac89240aa7804496324e9e1d"
+    },
+    {
+      "artifact_id": 10613574195,
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "digest": "sha256:9fb2346c7be5a14080d48a6a1afb7ad974fb2133146e0ecb30bc58ca71bdfc3c",
+      "capture_sha256": "e0baf1649bd9845099579b6bb9fff9a27aba8ecd27d64a032599e07fca8c74fd"
+    },
+    {
+      "artifact_id": 10613632528,
+      "package": "Tolian-Scoopy_Castle",
+      "version": "1.0.1",
+      "digest": "sha256:228cfb9a2e42df0739215cf63dda9168249ee16d0eccc4a738cdba23ce8b2642",
+      "capture_sha256": "c45493e283ca0b3f7d7d429d01da198f1272334f7e58225b6f9a917a43f767ea"
+    },
+    {
+      "artifact_id": 10613359448,
+      "package": "Nikki-Slaughterhouse",
+      "version": "1.2.1",
+      "digest": "sha256:33379e7f8f8270992e1323e0e10161805fca523315501d41b1187b2cdc0cdb8b",
+      "capture_sha256": "cc62de71fb5d55d2ae29cfbd0074991370a9b2fb8e2756b58d00330787c8b482"
+    },
+    {
+      "artifact_id": 10613745870,
+      "package": "Beaniebe-Storage_Complex",
+      "version": "1.2.5",
+      "digest": "sha256:19905a98cabab405773ac0600ad693b6c17b4aaed30d1e9a885fed75f139a8f7",
+      "capture_sha256": "6493ae165e53997f001eea0ceccd78723b0c5a3ad8c821bd20988da2da36f9b0"
+    },
+    {
+      "artifact_id": 10613008306,
+      "package": "Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior",
+      "version": "3.4.4",
+      "digest": "sha256:bb00bf40b54d73cb0c64ca3956b6105ea45b16817fc7da5bd5e983d7780bc930",
+      "capture_sha256": "b21a5f1f5e4327f3f21c51878861d1e4739614a9821e26b655667ef00e7b62a3"
+    }
+  ],
+  "flows": [
+    {
+      "package": "Generic_GMD-Generic_Interiors",
+      "version": "5.2.0",
+      "flow": "BunkerFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 20,
+      "flow_reachable_prop_1231_membership_count": 17,
+      "template_count": 17,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Generic_GMD-Generic_Interiors",
+      "version": "5.2.0",
+      "flow": "DrainsFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 36,
+      "flow_reachable_prop_1231_membership_count": 13,
+      "template_count": 13,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Generic_GMD-Generic_Interiors",
+      "version": "5.2.0",
+      "flow": "SubstationFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 14,
+      "flow_reachable_prop_1231_membership_count": 10,
+      "template_count": 10,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Generic_GMD-Generic_Interiors",
+      "version": "5.2.0",
+      "flow": "BackroomsFlow",
+      "result_class": "PROP_PRESENT_TEMPLATE_UNRESOLVED",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 27,
+      "flow_reachable_prop_1231_membership_count": 15,
+      "template_count": 15,
+      "static_gap": "15 flow-reachable ID-1231 components each point to an object named EntranceTeleportB; the spawned root exposes two null-script MonoBehaviours plus Unity.Netcode.NetworkObject, but no readable EntranceTeleport discriminator fields, so class/ID/side identity is not proven"
+    },
+    {
+      "package": "Generic_GMD-Generic_Interiors",
+      "version": "5.2.0",
+      "flow": "SHFlow",
+      "result_class": "PROP_PRESENT_TEMPLATE_UNRESOLVED",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 23,
+      "flow_reachable_prop_1231_membership_count": 0,
+      "template_count": 0,
+      "static_gap": "GlobalProp table contains ID 1231, but current exact flow graph resolves zero flow-reachable ID-1231 components; 17 package-wide ID-1231 component(s) exist in the same bundle and cannot be borrowed without an exact ownership/path link"
+    },
+    {
+      "package": "Generic_GMD-Generic_Interiors",
+      "version": "5.2.0",
+      "flow": "TowerFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 17,
+      "flow_reachable_prop_1231_membership_count": 8,
+      "template_count": 8,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "LethalMatt-Bozoros",
+      "version": "2.9.3",
+      "flow": "CircusFacilityFlow",
+      "result_class": "PROP_PRESENT_TEMPLATE_UNRESOLVED",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 17,
+      "flow_reachable_prop_1231_membership_count": 0,
+      "template_count": 0,
+      "static_gap": "GlobalProp table contains ID 1231, but current exact flow graph resolves zero flow-reachable ID-1231 components; 2 package-wide ID-1231 component(s) exist in the same bundle and cannot be borrowed without an exact ownership/path link"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "AquaticDungeonFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 28,
+      "flow_reachable_prop_1231_membership_count": 25,
+      "template_count": 25,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "DeepSewersFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 24,
+      "flow_reachable_prop_1231_membership_count": 5,
+      "template_count": 5,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "FracturedComplexFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 17,
+      "flow_reachable_prop_1231_membership_count": 41,
+      "template_count": 41,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "GreenhouseFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 7,
+      "flow_reachable_prop_1231_membership_count": 19,
+      "template_count": 19,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "MuseumInteriorFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 16,
+      "flow_reachable_prop_1231_membership_count": 8,
+      "template_count": 8,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "StoreFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 24,
+      "flow_reachable_prop_1231_membership_count": 40,
+      "template_count": 40,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "ExpandedFacility",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 27,
+      "flow_reachable_prop_1231_membership_count": 1,
+      "template_count": 1,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "Level3ButCoolFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 22,
+      "flow_reachable_prop_1231_membership_count": 17,
+      "template_count": 17,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "GrandArmoryFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 34,
+      "flow_reachable_prop_1231_membership_count": 52,
+      "template_count": 52,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "SpookyManorFlow",
+      "result_class": "PROP_PRESENT_TEMPLATE_UNRESOLVED",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 22,
+      "flow_reachable_prop_1231_membership_count": 0,
+      "template_count": 0,
+      "static_gap": "GlobalProp table contains ID 1231, but current exact flow graph resolves zero flow-reachable ID-1231 components; 3 package-wide ID-1231 component(s) exist in the same bundle and cannot be borrowed without an exact ownership/path link"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "RubberRoomsFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 40,
+      "flow_reachable_prop_1231_membership_count": 10,
+      "template_count": 10,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "version": "4.1.15",
+      "flow": "ToystoreFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 31,
+      "flow_reachable_prop_1231_membership_count": 51,
+      "template_count": 51,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Tolian-Scoopy_Castle",
+      "version": "1.0.1",
+      "flow": "CastleFlow",
+      "result_class": "PROP_PRESENT_TEMPLATE_UNRESOLVED",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 13,
+      "flow_reachable_prop_1231_membership_count": 0,
+      "template_count": 0,
+      "static_gap": "GlobalProp table contains ID 1231, but current exact flow graph resolves zero flow-reachable ID-1231 components; 2 package-wide ID-1231 component(s) exist in the same bundle and cannot be borrowed without an exact ownership/path link"
+    },
+    {
+      "package": "Nikki-Slaughterhouse",
+      "version": "1.2.1",
+      "flow": "SlaughterhouseFlow",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 29,
+      "flow_reachable_prop_1231_membership_count": 44,
+      "template_count": 44,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    },
+    {
+      "package": "Beaniebe-Storage_Complex",
+      "version": "1.2.5",
+      "flow": "StorageComplex",
+      "result_class": "PROP_PRESENT_TEMPLATE_UNRESOLVED",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 1,
+        "max": 1
+      },
+      "tile_root_count": 24,
+      "flow_reachable_prop_1231_membership_count": 0,
+      "template_count": 0,
+      "static_gap": "GlobalProp table contains ID 1231, but current exact flow graph resolves zero flow-reachable ID-1231 components; 1 package-wide ID-1231 component(s) exist in the same bundle and cannot be borrowed without an exact ownership/path link"
+    },
+    {
+      "package": "Plastered_Crab-Black_Mesa_Half_Life_Moon_Interior",
+      "version": "3.4.4",
+      "flow": "Black Mesa",
+      "result_class": "PROP_AND_TEMPLATE_PROVEN",
+      "prop_1231_presence": "present",
+      "count": {
+        "min": 4,
+        "max": 4
+      },
+      "tile_root_count": 127,
+      "flow_reachable_prop_1231_membership_count": 102,
+      "template_count": 102,
+      "template_predicate": "all captured flow-reachable ID-1231 templates resolve through SpawnSyncedObject.spawnPrefab to exactly one inside-side EntranceTeleport with serialized pre-numbering entranceId=1"
+    }
+  ],
+  "proof_boundary": "Static package/template evidence only. No Black Mesa count-3 generation clearance, B3 matrix promotion, traversal/routing/NavMesh clearance, gameplay build, or runtime-test authorization."
+}

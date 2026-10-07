@@ -1,0 +1,241 @@
+{
+  "schema_version": "c3f9-static-gap-summary-1",
+  "working_pr": 138,
+  "source_head_sha": "caec94a2acdb0b1d6094788f449fd7ab3e23513a",
+  "workflow": {
+    "name": "Capture C3F9A unresolved template-gap evidence",
+    "run_id": 35569902534,
+    "run_number": 2,
+    "conclusion": "success"
+  },
+  "bindings": {
+    "helper_sha256": "025d32a8e7fde394c02f814182db3eb8b6e111f375b35d38f52c274298be36b8",
+    "c3f7_helper_sha256": "e4dd12c30330b1aa26b9554bcf791f6ee909aed35ce30622036c229acebf22ed",
+    "c3f7_package_lock_sha256": "421be659f6fbd8633c548a012ee13b3c43bd9e22b39fc4b6c4c2d948fbc69569"
+  },
+  "artifacts": [
+    {
+      "package": "Generic_GMD-Generic_Interiors",
+      "artifact_id": 10625895341,
+      "digest": "sha256:921c81d5a82beeee61e65b90e225148c48e8968ca7cc48b00254bb81b1359b0d",
+      "gap_capture_sha256": "869357dcffcc9fe6e4fa99f0dcc504707a1c34f5ebb9cc26c28e212ff6013a9a"
+    },
+    {
+      "package": "LethalMatt-Bozoros",
+      "artifact_id": 10625034878,
+      "digest": "sha256:c8d41430deb67140858c71d77cac99c36646f292b07da9f48168b0f7c047a0c7",
+      "gap_capture_sha256": "fbe4bebe260d5acb6e9e4641953dc2c9c0f0817bc7f018f7bd8994b76214a4ee"
+    },
+    {
+      "package": "Magic_Wesley-WesleysInteriors",
+      "artifact_id": 10625183129,
+      "digest": "sha256:211ca78e4eefe0a9982f18475068a99f518d1e2fdeb438b531e3c9f50b5d08b1",
+      "gap_capture_sha256": "b114027ed3b915dea8dc722a3f209b9e6d3804db04039fe77f3afdcfb7073a59"
+    },
+    {
+      "package": "Tolian-Scoopy_Castle",
+      "artifact_id": 10625279463,
+      "digest": "sha256:ce3327f131b10b6fbed77cf1a3c3c6259b49141278560d56524ff0fd61eca391",
+      "gap_capture_sha256": "3693223e41fb4153025f891d7fd2640c04ccf679f6f56e740844276ced9f8992"
+    },
+    {
+      "package": "Beaniebe-Storage_Complex",
+      "artifact_id": 10625845324,
+      "digest": "sha256:cecea43358ec1d8cb879d3b07002dd5695fb976fa43cbdb78b6809caf0292304",
+      "gap_capture_sha256": "7b1ed8e4933ba55c0eab5090f565f2a5323e3060b712439641b90006c02efe36"
+    }
+  ],
+  "aggregate": {
+    "c3f8_direct_standard_template_flows": 17,
+    "c3f9_new_indirect_standard_template_flows": 3,
+    "total_static_standard_template_flows": 20,
+    "remaining_static_template_gaps": 3,
+    "matrix_changes": 0
+  },
+  "flows": [
+    {
+      "flow": "BackroomsFlow",
+      "package": "Generic_GMD-Generic_Interiors",
+      "c3f9_result": "UNRESOLVED_SERIALIZED_COMPONENT_IDENTITY",
+      "prior_reachable_prop_1231_count": 15,
+      "spawned_root_name": "EntranceTeleportB",
+      "null_script_components": 2,
+      "serialized_component_metadata": [
+        {
+          "path_id": -8741596004568366000,
+          "class_id": 114,
+          "byte_size": 32,
+          "script_type_index": -1,
+          "script_id": "00000000000000000000000000000000",
+          "old_type_hash": "00000000000000000000000000000000"
+        },
+        {
+          "path_id": -2483545877437658000,
+          "class_id": 114,
+          "byte_size": 32,
+          "script_type_index": -1,
+          "script_id": "00000000000000000000000000000000",
+          "old_type_hash": "00000000000000000000000000000000"
+        }
+      ],
+      "exact_same_package_controls": {
+        "EntranceTeleport": 8,
+        "InteractTrigger": 413
+      },
+      "exact_typetree_rebind": "FAILED_CLOSED",
+      "static_standard_template_proven": false,
+      "remaining_gate": "Identify an authoritative loader/reference-restoration path; object name and failed forced typetree parses are insufficient."
+    },
+    {
+      "flow": "SHFlow",
+      "package": "Generic_GMD-Generic_Interiors",
+      "c3f9_result": "INDIRECT_STANDARD_TEMPLATE_PROVEN",
+      "indirect_membership": "positive-weight serialized DunGen.Doorway.BlockerPrefabWeights[n].GameObject from target-flow tile hierarchy",
+      "candidate_count": 2,
+      "candidate_owner_path_ids": [
+        -767311964342339800,
+        -9067948301466395000
+      ],
+      "candidate_link_counts": [
+        62,
+        12
+      ],
+      "candidate_weights": [
+        1
+      ],
+      "spawned_root_name": "EntranceTeleportB",
+      "spawned_template_component_surface": [
+        "Transform",
+        "MeshFilter",
+        "MeshRenderer",
+        "BoxCollider",
+        "NetworkObject",
+        "InteractTrigger",
+        "EntranceTeleport",
+        "AudioSource"
+      ],
+      "standard_inside_id_1_templates": 2,
+      "static_standard_template_proven": true
+    },
+    {
+      "flow": "SpookyManorFlow",
+      "package": "Magic_Wesley-WesleysInteriors",
+      "c3f9_result": "INDIRECT_STANDARD_TEMPLATE_PROVEN",
+      "indirect_membership": "positive-weight serialized DunGen.Doorway.BlockerPrefabWeights[n].GameObject from target-flow tile hierarchy",
+      "candidate_count": 3,
+      "candidate_owner_path_ids": [
+        368667076940692800,
+        4445978082777812500,
+        5877166924714855000
+      ],
+      "candidate_link_counts": [
+        10,
+        17,
+        9
+      ],
+      "candidate_weights": [
+        1
+      ],
+      "spawned_root_name": "EntranceTeleportB",
+      "spawned_template_component_surface": [
+        "Transform",
+        "MeshFilter",
+        "MeshRenderer",
+        "BoxCollider",
+        "InteractTrigger",
+        "EntranceTeleport",
+        "AudioSource",
+        "NetworkObject"
+      ],
+      "standard_inside_id_1_templates": 3,
+      "static_standard_template_proven": true
+    },
+    {
+      "flow": "StorageComplex",
+      "package": "Beaniebe-Storage_Complex",
+      "c3f9_result": "INDIRECT_STANDARD_TEMPLATE_PROVEN",
+      "indirect_membership": "positive-weight serialized DunGen.Doorway.BlockerPrefabWeights[n].GameObject from target-flow tile hierarchy",
+      "candidate_count": 1,
+      "candidate_owner_path_ids": [
+        -1941425276844860200
+      ],
+      "candidate_link_count": 43,
+      "positive_serialized_weights": [
+        0.20000000298023224,
+        0.30000001192092896,
+        0.4000000059604645,
+        3,
+        5,
+        10,
+        20,
+        100
+      ],
+      "spawned_root_name": "EntranceTeleportB",
+      "spawned_template_component_surface": [
+        "Transform",
+        "MeshFilter",
+        "MeshRenderer",
+        "BoxCollider",
+        "InteractTrigger",
+        "EntranceTeleport",
+        "AudioSource",
+        "NetworkObject"
+      ],
+      "standard_inside_id_1_templates": 1,
+      "static_standard_template_proven": true
+    },
+    {
+      "flow": "CastleFlow",
+      "package": "Tolian-Scoopy_Castle",
+      "c3f9_result": "FLOW_MEMBERSHIP_PROVEN_TEMPLATE_SURFACE_UNRESOLVED",
+      "indirect_membership": "positive-weight serialized DunGen.Doorway.BlockerPrefabWeights[n].GameObject from target-flow tile hierarchy",
+      "candidate_count": 2,
+      "candidate_owner_path_ids": [
+        7026907986598001000,
+        7589351885311468000
+      ],
+      "candidate_link_counts": [
+        35,
+        1
+      ],
+      "candidate_weights": [
+        1
+      ],
+      "spawned_root_name": "EntranceTeleportB",
+      "spawned_root_path_id": 5074757608980209000,
+      "spawned_template_component_surface": [
+        "Transform"
+      ],
+      "standard_inside_id_1_templates": 0,
+      "static_standard_template_proven": false,
+      "remaining_gate": "Establish an authoritative loader/reference-restoration path that supplies the missing entrance component surface."
+    },
+    {
+      "flow": "CircusFacilityFlow",
+      "package": "LethalMatt-Bozoros",
+      "c3f9_result": "FLOW_MEMBERSHIP_PROVEN_TEMPLATE_SURFACE_UNRESOLVED",
+      "indirect_membership": "positive-weight serialized DunGen.Doorway.BlockerPrefabWeights[n].GameObject from target-flow tile hierarchy",
+      "candidate_count": 2,
+      "candidate_owner_path_ids": [
+        -5236772594597242000,
+        7276348563370557000
+      ],
+      "candidate_link_counts": [
+        1,
+        1
+      ],
+      "candidate_weights": [
+        1
+      ],
+      "spawned_root_name": "EntranceTeleportB",
+      "spawned_root_path_id": 5135690199907647000,
+      "spawned_template_component_surface": [
+        "Transform"
+      ],
+      "standard_inside_id_1_templates": 0,
+      "static_standard_template_proven": false,
+      "remaining_gate": "Establish an authoritative loader/reference-restoration path that supplies the missing entrance component surface."
+    }
+  ],
+  "proof_boundary": "Exact static package/object-graph evidence only. Twenty flows now satisfy the standard serialized-template predicate, but no count-three generation, traversal, routing/NavMesh, B3 matrix promotion, gameplay build, or runtime-test authorization follows."
+}

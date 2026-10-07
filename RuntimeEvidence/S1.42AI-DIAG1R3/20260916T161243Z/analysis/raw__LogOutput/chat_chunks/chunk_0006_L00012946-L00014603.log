@@ -1,0 +1,1658 @@
+[16:07:10.3498604] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:10.3498604] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:10.3498604] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:10.3498604] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:10.3498604] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:10.3508597] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:07:10.3599208] [Debug  :PizzaTowerEscapeMusic GameEventListener] Dungeon done generating
+[16:07:10.4801897] [Info   : Unity Log] Players finished generating the new floor
+[16:07:10.7601008] [Debug  :Matty's Fixes] Vanilla/Radar-booster(334) is computing vertical offset
+[16:07:10.7621000] [Debug  :Matty's Fixes] Vanilla/Radar-booster new offset is 0.01262835
+[16:07:10.7621000] [Debug  :Matty's Fixes] Vanilla/Radar-booster(334) position updated [(51.23, -9.77, -53.93)] -> [(51.23, -9.88, -53.93)]
+[16:07:10.8063633] [Info   : Unity Log] Spawning synced props on server. Length: 37
+[16:07:10.8063633] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8078893] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8078893] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8078893] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8078893] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8078893] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8088977] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8088977] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8088977] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8088977] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8098981] [Info   : LethalMin] Created Item Arrival Zone of type Exit on object EntranceTeleportB(Clone)
+[16:07:10.8118971] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8118971] [Info   : LethalMin] Created Item Arrival Zone of type Exit on object EntranceTeleportA
+[16:07:10.8128972] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8128972] [Debug  :ReXuvination] Optimised Collider layers in DoorLock for Object: Cube (UnityEngine.GameObject)
+[16:07:10.8148983] [Info   : Unity Log] clientRPC scrap values length: 0
+[16:07:10.9797401] [Info   :KawaiiBone.Remnants] Patching remnant items spawns.
+[16:07:10.9837466] [Info   : Unity Log] Number of scrap to spawn: 14. minTotalScrapValue: 100. Total value of items: 0.
+[16:07:11.0381735] [Info   :KawaiiBone.Remnants] Patching remnant items.
+[16:07:11.0401825] [Info   :KawaiiBone.Remnants] Randomizing items batteries.
+[16:07:11.0401825] [Info   :KawaiiBone.Remnants] Spawning bodies.
+[16:07:11.0401825] [Warning:KawaiiBone.Remnants] List to spawn bodies on, is null or is empty!
+[16:07:11.0411825] [Info   :KawaiiBone.Remnants] Patching spawn remnant items.
+[16:07:11.0466843] [Info   :KawaiiBone.Remnants] Has updated Pinger charge to 0.18
+[16:07:11.0577395] [Info   :KawaiiBone.Remnants] Patching end of Spawn Scrap.
+[16:07:11.0577395] [Info   : LethalMin] Spawing Onion items
+[16:07:11.1220364] [Info   : Unity Log] Anomaly random yrotation farthest: 14
+[16:07:11.1220364] [Info   : Unity Log] Anomaly random yrotation farthest: 5
+[16:07:11.1230364] [Info   : Unity Log] Anomaly random yrotation farthest: 53
+[16:07:11.1240375] [Debug  :ainavt.lc.lethalconfig] Registered config "Matty's Fixes/Unknown/Medic Bag"
+[16:07:11.1721812] [Info   : Unity Log] Anomaly random yrotation farthest: 186
+[16:07:11.1731863] [Info   : Unity Log] Anomaly random yrotation farthest: -7
+[16:07:11.1741855] [Info   : Unity Log] Anomaly random yrotation farthest: 299
+[16:07:11.1827522] [Debug  :ReXuvination] Optimised Collider layers in PlayerPhysicsRegion for Object: PlayerPhysicsRegion (UnityEngine.GameObject)
+[16:07:11.1952652] [Info   :LethalFixes] Cached 0 Outside Map Objects
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Door Interact (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: EntranceTeleportB(Clone) (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Door Interact (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Door Interact (1) (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Door Interact (2) (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Door Interact (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: EntranceTeleportA (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Cube (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Door Interact (1) (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Door Interact (1) (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2088866] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Interract thigny (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: InteractTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Trigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: HoardingBugEggs(Clone) (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: DataPC(Clone) (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: Pentagram(Clone) (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: SerialDisplay (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: RedTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: RedTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: RedTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: RedTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: GreenTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: GreenTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: GreenTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: GreenTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: BlueTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: BlueTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: BlueTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: BlueTrigger (UnityEngine.GameObject)
+[16:07:11.2098868] [Debug  :Matty's Fixes] LethalLib/ChillaxScraps/Ocarina(373) needs to compute vertical offset - scheduled
+[16:07:11.2113938] [Info   :LethalPerformance.Patcher] Saved 1 config(s)
+[16:07:11.2342652] [Debug  :Matty's Fixes] LethalLib/com.github.biodiversitylc.Biodiversity/Autumnis Iron Dog(374) needs to compute vertical offset - scheduled
+[16:07:11.2549072] [Debug  :Matty's Fixes] LethalLevelLoader/ImmersiveScraps/IFan(375) needs to compute vertical offset - scheduled
+[16:07:11.2739820] [Debug  :Matty's Fixes] LethalLevelLoader/ImmersiveScraps/Wine bottle(376) needs to compute vertical offset - scheduled
+[16:07:11.2931129] [Debug  :Matty's Fixes] Vanilla/Homemade flashbang(377) needs to compute vertical offset - scheduled
+[16:07:11.3132307] [Debug  :Matty's Fixes] LethalLevelLoader/ImmersiveScraps/Bucket(378) needs to compute vertical offset - scheduled
+[16:07:11.3353120] [Debug  :Matty's Fixes] DawnLib/unknown_lib/Train(379) needs to compute vertical offset - scheduled
+[16:07:11.3538497] [Debug  :Matty's Fixes] LethalLevelLoader/Lethalthings/Cookie Fumo(380) needs to compute vertical offset - scheduled
+[16:07:11.3729451] [Debug  :Matty's Fixes] LethalLevelLoader/CodeRebirth/Brrreaker(381) needs to compute vertical offset - scheduled
+[16:07:11.3729451] [Warning: LethalMin] Item Brrreaker(Clone) is not valid for Pikmin! Skipping...
+[16:07:11.3919919] [Debug  :Matty's Fixes] DawnLib/lethalcompany/Big screw(382) needs to compute vertical offset - scheduled
+[16:07:11.4312506] [Debug  :Matty's Fixes] Vanilla/Stop sign(384) needs to compute vertical offset - scheduled
+[16:07:11.4530432] [Debug  :Matty's Fixes] LethalLib/MonsterPlushies/Bracken Plushie(385) needs to compute vertical offset - scheduled
+[16:07:11.4721215] [Debug  :Matty's Fixes] LethalLib/ChillaxScraps/Boink(386) needs to compute vertical offset - scheduled
+[16:07:11.4921670] [Debug  :Matty's Fixes] DawnLib/unknown_lib/Pinger(387) needs to compute vertical offset - scheduled
+[16:07:11.5644553] [Debug  :Matty's Fixes] Vanilla/Spray paint(388) needs to compute vertical offset - scheduled
+[16:07:11.5911350] [Debug  :Matty's Fixes] Vanilla/Belt bag(389) needs to compute vertical offset - scheduled
+[16:07:11.6112023] [Debug  :Matty's Fixes] Unknown/Medic Bag(396) needs to compute vertical offset - scheduled
+[16:07:11.6311326] [Debug  :Matty's Fixes] Unknown/Medic Bag(397) needs to compute vertical offset - scheduled
+[16:07:11.6512310] [Debug  :Matty's Fixes] Unknown/Medic Bag(398) needs to compute vertical offset - scheduled
+[16:07:11.6699034] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Lost Scavenger(399) needs to compute vertical offset - scheduled
+[16:07:11.6894990] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Hoarding Bug Eggs(400) needs to compute vertical offset - scheduled
+[16:07:11.6894990] [Warning: LethalMin] Item HoardingBugEggs(Clone) is not valid for Pikmin! Skipping...
+[16:07:11.9049968] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Data PC(401) needs to compute vertical offset - scheduled
+[16:07:11.9049968] [Warning: LethalMin] Item DataPC(Clone) is not valid for Pikmin! Skipping...
+[16:07:11.9265443] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Heart(402) needs to compute vertical offset - scheduled
+[16:07:11.9871922] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Heart(403) needs to compute vertical offset - scheduled
+[16:07:12.0067117] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Heart(404) needs to compute vertical offset - scheduled
+[16:07:12.0267496] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Crucifix(405) needs to compute vertical offset - scheduled
+[16:07:12.0527785] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Crucifix(406) needs to compute vertical offset - scheduled
+[16:07:12.0718021] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Crucifix(407) needs to compute vertical offset - scheduled
+[16:07:12.0933968] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Candelabra(408) needs to compute vertical offset - scheduled
+[16:07:12.7348948] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Candelabra(409) needs to compute vertical offset - scheduled
+[16:07:12.7620127] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Candelabra(410) needs to compute vertical offset - scheduled
+[16:07:12.7810620] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Teddy Bear(411) needs to compute vertical offset - scheduled
+[16:07:12.8000915] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Teddy Bear(412) needs to compute vertical offset - scheduled
+[16:07:12.8181779] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Teddy Bear(413) needs to compute vertical offset - scheduled
+[16:07:12.8382367] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Bones(414) needs to compute vertical offset - scheduled
+[16:07:12.8567512] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Bones(415) needs to compute vertical offset - scheduled
+[16:07:12.8747818] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Bones(416) needs to compute vertical offset - scheduled
+[16:07:12.8933098] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Pentagram(417) needs to compute vertical offset - scheduled
+[16:07:12.8933098] [Warning: LethalMin] Item Pentagram(Clone) is not valid for Pikmin! Skipping...
+[16:07:12.9113299] [Debug  :Matty's Fixes] LethalLib/MoreShipUpgrades/Bomb(418) needs to compute vertical offset - scheduled
+[16:07:12.9113299] [Warning: LethalMin] Item Bomb(Clone) is not valid for Pikmin! Skipping...
+[16:07:13.3465908] [Debug  : LethalMin] Initializing PikminItem Ocarina(Clone) with item Ocarina(Clone) (True)
+[16:07:13.3465908] [Debug  : LethalMin] Initializing PikminItem IronDogPrefab(Clone) with item IronDogPrefab(Clone) (True)
+[16:07:13.3465908] [Debug  : LethalMin] Initializing PikminItem FanPrefab(Clone) with item FanPrefab(Clone) (True)
+[16:07:13.3465908] [Debug  : LethalMin] Initializing PikminItem WinebottlePrefab(Clone) with item WinebottlePrefab(Clone) (True)
+[16:07:13.3465908] [Debug  : LethalMin] Initializing PikminItem DiyFlashbang(Clone) with item DiyFlashbang(Clone) (True)
+[16:07:13.3465908] [Debug  : LethalMin] Initializing PikminItem BucketPrefab(Clone) with item BucketPrefab(Clone) (True)
+[16:07:13.3465908] [Debug  : LethalMin] Initializing PikminItem ToyTrain(Clone) with item ToyTrain(Clone) (True)
+[16:07:13.3465908] [Debug  : LethalMin] Initializing PikminItem CookieFumo(Clone) with item CookieFumo(Clone) (True)
+[16:07:13.3465908] [Debug  : LethalMin] Initializing PikminItem BigBolt(Clone) with item BigBolt(Clone) (True)
+[16:07:13.3465908] [Debug  : LethalMin] Initializing PikminItem FirehydrantPrefab(Clone) with item FirehydrantPrefab(Clone) (True)
+[16:07:13.3465908] [Debug  : LethalMin] Initializing PikminItem StopSign(Clone) with item StopSign(Clone) (True)
+[16:07:13.3481116] [Debug  : LethalMin] Initializing PikminItem BrackenPlush(Clone) with item BrackenPlush(Clone) (True)
+[16:07:13.3481116] [Debug  : LethalMin] Initializing PikminItem Boink(Clone) with item Boink(Clone) (True)
+[16:07:13.3481116] [Debug  : LethalMin] Initializing PikminItem PingTool(Clone) with item PingTool(Clone) (True)
+[16:07:13.3481116] [Debug  : LethalMin] Initializing PikminItem SprayPaintItem(Clone) with item SprayPaintItem(Clone) (True)
+[16:07:13.3481116] [Debug  : LethalMin] Initializing PikminItem BeltBagItem(Clone) with item BeltBagItem(Clone) (True)
+[16:07:13.3501175] [Info   : Unity Log] Landmine creating doorcode object in parent MapScreenUIWorldSpace (UnityEngine.RectTransform): DoorCodeUIObject(Clone)
+[16:07:13.3511165] [Debug  :Buttery Fixes] Landmine #-440428: Nudged radar dot upwards
+[16:07:13.3521186] [Debug  :ReXuvination] Optimised Collider layers in Landmine for Object: Landmine (UnityEngine.GameObject)
+[16:07:13.3541162] [Info   : Unity Log] Landmine creating doorcode object in parent MapScreenUIWorldSpace (UnityEngine.RectTransform): DoorCodeUIObject(Clone)
+[16:07:13.3541162] [Debug  :Buttery Fixes] Landmine #-440562: Nudged radar dot upwards
+[16:07:13.3541162] [Debug  :ReXuvination] Optimised Collider layers in Landmine for Object: Landmine (UnityEngine.GameObject)
+[16:07:13.3541162] [Info   : Unity Log] Landmine creating doorcode object in parent MapScreenUIWorldSpace (UnityEngine.RectTransform): DoorCodeUIObject(Clone)
+[16:07:13.3541162] [Debug  :Buttery Fixes] Landmine #-440696: Nudged radar dot upwards
+[16:07:13.3541162] [Debug  :ReXuvination] Optimised Collider layers in Landmine for Object: Landmine (UnityEngine.GameObject)
+[16:07:13.3551164] [Info   : Unity Log] TurretScript creating doorcode object in parent MapScreenUIWorldSpace (UnityEngine.RectTransform): DoorCodeUIObject(Clone)
+[16:07:13.3566212] [Info   : Unity Log] TurretScript creating doorcode object in parent MapScreenUIWorldSpace (UnityEngine.RectTransform): DoorCodeUIObject(Clone)
+[16:07:13.3566212] [Info   : Unity Log] TurretScript creating doorcode object in parent MapScreenUIWorldSpace (UnityEngine.RectTransform): DoorCodeUIObject(Clone)
+[16:07:13.3581418] [Warning: LethalMin] Pikmin Item MedKitMap(Clone) does not exist in the PikminManager.
+[16:07:13.3581418] [Warning: LethalMin] Pikmin Item MedKitMap(Clone) does not exist in the PikminManager.
+[16:07:13.3581418] [Warning: LethalMin] Pikmin Item MedKitMap(Clone) does not exist in the PikminManager.
+[16:07:13.3581418] [Warning: LethalMin] Pikmin Item ScavExtract(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Heart(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Heart(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Heart(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Crucifix(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Crucifix(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Crucifix(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item candelabra(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item candelabra(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item candelabra(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Teddy Bear(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Teddy Bear(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Teddy Bear(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Bones(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Bones(Clone) does not exist in the PikminManager.
+[16:07:13.3591463] [Warning: LethalMin] Pikmin Item Bones(Clone) does not exist in the PikminManager.
+[16:07:13.3781910] [Debug  :Matty's Fixes] LethalLevelLoader/CodeRebirth/Charred Fork(449) needs to compute vertical offset - scheduled
+[16:07:13.3791952] [Warning: LethalMin] Item MicrowaveFork(Clone) is not valid for Pikmin! Skipping...
+[16:07:13.4207637] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[16:07:13.4207637] [Info   : Unity Log] Interact trigger destroying! name: HoardingBugEggs(Clone)
+[16:07:13.4207637] [Info   : Unity Log] Interact trigger destroying! name: DataPC(Clone)
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: Pentagram(Clone)
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: SerialDisplay
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: RedTrigger
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: RedTrigger
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: RedTrigger
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: RedTrigger
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: GreenTrigger
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: GreenTrigger
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: GreenTrigger
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: GreenTrigger
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: BlueTrigger
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: BlueTrigger
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: BlueTrigger
+[16:07:13.4217637] [Info   : Unity Log] Interact trigger destroying! name: BlueTrigger
+[16:07:13.5105350] [Debug  : LethalMin] IsClientRpcPrefixValid (No): RpcExecStage is Send, IsClient: True, IsHost: True FinishGeneratingNewLevelClientRpcPrefix
+[16:07:13.5105350] [Debug  : LethalMin] IsClientRpcPrefixValid (Yes): RpcExecStage is Execute, IsClient: True, IsHost: True FinishGeneratingNewLevelClientRpcPrefix
+[16:07:13.5115353] [Info   :BrutalCompanyMinusExtraReborn] Active State: True
+[16:07:13.5375952] [Debug  :PathfindingLib] EntranceTeleportA (EntranceTeleport) (277) connects to EntranceTeleportA (EntranceTeleport) (364)
+[16:07:13.5405951] [Debug  :PathfindingLib] EntranceTeleportB (EntranceTeleport) (278) connects to EntranceTeleportB(Clone) (EntranceTeleport) (354)
+[16:07:13.5405951] [Debug  :PathfindingLib] EntranceTeleportB(Clone) (EntranceTeleport) (354) connects to EntranceTeleportB (EntranceTeleport) (278)
+[16:07:13.5405951] [Debug  :PathfindingLib] EntranceTeleportA (EntranceTeleport) (364) connects to EntranceTeleportA (EntranceTeleport) (277)
+[16:07:13.5435961] [Debug  : LethalMin] Found 4 entrances:
+ - EntranceTeleportA <=> EntranceTeleportA
+ - EntranceTeleportB <=> EntranceTeleportB(Clone)
+[16:07:13.5435961] [Info   :CullFactory] Generation has completed with seed 33605037.
+[16:07:13.6097527] [Info   :CullFactory] Preparing tile information for TowerFlow took 43.243ms
+[16:07:13.6167522] [Warning:LethalPerformance] GrabbableObject search called with inactive objects, probably will cause incompatibility!
+[16:07:13.6584271] [Debug  :ButteRyBalance] Barber - Dynamic Spawn Settings: 2/8 (Interior ID: 16)
+[16:07:13.6950261] [Info   :S1.42AI-DIAG1 ShyGuy Isolation] [DIAG1_IDENTITY_RESOLVED] asset='ShyGuyDef', enemyName='Shy guy', aiType='ShyGuy.AI.ShyGuyAI', instanceId=246032.
+[16:07:13.6950261] [Info   :S1.42AI-DIAG1 ShyGuy Isolation] [DIAG1_POOL_GUARD] PredictAllOutsideEnemies/Prefix: allowed=ShyGuyDef/Shy guy; removed indoor=37, outside=16, daytime=8, weed=1.
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawn wave at time 100
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Base amount is -2.838085
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Adjusted amount is -1.588085 (1 days left)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawning 0 enemies
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawn wave at time 180
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Base amount is -2.615933
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Adjusted amount is -1.365933 (1 days left)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawning 0 enemies
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawn wave at time 300
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Base amount is -2.215615
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Adjusted amount is -0.9656146 (1 days left)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawning 0 enemies
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawn wave at time 420
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Base amount is -1.474799
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Adjusted amount is -0.2247989 (1 days left)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawning 0 enemies
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawn wave at time 540
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Base amount is -0.134636
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Adjusted amount is 1.115364 (1 days left)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawning 1 enemies
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: 0 total weight
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawn wave at time 660
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Base amount is 0.5946491
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Adjusted amount is 1.844649 (1 days left)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawning 1 enemies
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: 0 total weight
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawn wave at time 780
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Base amount is 1.126973
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Adjusted amount is 2.376973 (1 days left)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawning 0 enemies
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawn wave at time 900
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Base amount is 1.779541
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Adjusted amount is 3.029541 (1 days left)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawning 3 enemies
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: 0 total weight
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: 0 total weight
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: 0 total weight
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawn wave at time 1020
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Base amount is 3.103928
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Adjusted amount is 4.353928 (1 days left)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Spawning 2 enemies
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: 0 total weight
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Processing "ShyGuyDef"
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: "ShyGuyDef" at 0 weight (0 spawned)
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: 0 total weight
+[16:07:13.6965301] [Debug  :Spawn Cycle Fixes] Predictor: Complete
+[16:07:13.7651310] [Info   :GeneralImprovements] Disabling ship scan node until landed.
+[16:07:13.7666353] [Info   :GeneralImprovements] Updated remaining scrap display.
+[16:07:13.7871888] [Debug  :UniversalRadar] Interior radar check complete (0.006446838s)
+[16:07:13.7871888] [Info   :WaterAssetRestorer] Swapping water materials...
+[16:07:14.0394870] [Info   : LethalMin] __ LethalMin On Game Loaded __
+[16:07:14.1037733] [Info   : LethalMin] Added Pikmin Effect Trigger to: WaterTrigger
+[16:07:14.1504645] [Info   : LethalMin] Wild Spawn Falloff is disabled.
+[16:07:14.1549665] [Info   : LethalMin] -- Spawning Sprouts --
+[16:07:14.1574808] [Info   : LethalMin] Base spawn chance: 0, Map Pikmin Spawn Chance: 0
+[16:07:14.1584815] [Info   : LethalMin] === Pikmin Spawning Odds [Offense] (None) ===
+[16:07:14.1584815] [Info   : LethalMin]   [Blue Pikmin]: base=0.500 = 0.500
+[16:07:14.1594812] [Info   : LethalMin]   [Ice Pikmin]: base=0.500 * moonType(Offense)=0.250 = 0.125
+[16:07:14.1594812] [Info   : LethalMin]   [Red Pikmin]: base=0.500 = 0.500
+[16:07:14.1594812] [Info   : LethalMin]   [Rock Pikmin]: base=0.500 = 0.500
+[16:07:14.1594812] [Info   : LethalMin]   [Winged Pikmin]: base=0.500 = 0.500
+[16:07:14.1594812] [Info   : LethalMin]   [Yellow Pikmin]: base=0.500 = 0.500
+[16:07:14.1594812] [Info   : LethalMin] =================================
+[16:07:14.1594812] [Debug  : LethalMin] Sprouts Odds: Blue Pikmin: 0.5, Ice Pikmin: 0.125, Red Pikmin: 0.5, Rock Pikmin: 0.5, Winged Pikmin: 0.5, Yellow Pikmin: 0.5
+[16:07:14.1594812] [Info   : LethalMin] -- Spawned 0 sprouts on the map. --
+[16:07:14.1649814] [Info   : LethalMin] -- Spawning Map Pikmin --
+[16:07:14.1885252] [Info   : LethalMin] Map Possible Spawn Amount: 177
+[16:07:14.1885252] [Info   : LethalMin] Base spawn chance: 0, Map Pikmin Spawn Chance: 0
+[16:07:14.1885252] [Info   : LethalMin] === Pikmin Spawning Odds [Offense] (None) ===
+[16:07:14.1885252] [Info   : LethalMin]   [Bulbmin]: base=0.500 = 0.500
+[16:07:14.1885252] [Info   : LethalMin]   [Purple Pikmin]: base=0.500 = 0.500
+[16:07:14.1885252] [Info   : LethalMin]   [White Pikmin]: base=0.500 = 0.500
+[16:07:14.1885252] [Info   : LethalMin] =================================
+[16:07:14.1885252] [Info   : LethalMin] Map Pikmin Odds: Bulbmin: 0.5, Purple Pikmin: 0.5, White Pikmin: 0.5
+[16:07:14.1885252] [Info   : LethalMin] -- Finished spawning map pikmin, total spawned: 0 --
+[16:07:14.1946187] [Debug  : LethalMin] Found 4 entrances:
+ - EntranceTeleportA <=> EntranceTeleportA
+ - (EntranceTeleportB -> Pikmin Teleport Destination) <=> EntranceTeleportB(Clone) [Manually Added]
+[16:07:14.1973147] [Info   : LethalMin] Can path on moon: True True
+[16:07:14.1973147] [Info   : LethalMin] __ LethalMin On Game Loaded Finished __
+[16:07:14.1983170] [Info   :S1.42AI-DIAG1 ShyGuy Isolation] [DIAG1_POOL_GUARD] FinishGeneratingNewLevelClientRpc/Postfix: allowed=ShyGuyDef/Shy guy; removed indoor=0, outside=0, daytime=0, weed=0.
+[16:07:14.4177876] [Info   :WaterAssetRestorer] Swapping water materials...
+[16:07:14.6236523] [Info   :S1.42AI-DIAG1 ShyGuy Isolation] [DIAG1_POOL_GUARD] FinishGeneratingNewLevelClientRpc/Postfix: allowed=ShyGuyDef/Shy guy; removed indoor=0, outside=0, daytime=0, weed=0.
+[16:07:14.8517692] [Debug  :Matty's Fixes] LethalLib/ChillaxScraps/Ocarina(373) is computing vertical offset
+[16:07:14.8527673] [Debug  :Matty's Fixes] LethalLib/ChillaxScraps/Ocarina new offset is 0.0006816536
+[16:07:14.8527673] [Debug  :Matty's Fixes] LethalLib/ChillaxScraps/Ocarina(373) position updated [(0.00, 0.00, 0.00)] -> [(0.00, 0.00, 0.00)]
+[16:07:14.8537668] [Debug  :Matty's Fixes] LethalLib/com.github.biodiversitylc.Biodiversity/Autumnis Iron Dog(374) is computing vertical offset
+[16:07:14.8537668] [Debug  :Matty's Fixes] LethalLib/com.github.biodiversitylc.Biodiversity/Autumnis Iron Dog new offset is 0.01758966
+[16:07:14.8537668] [Debug  :Matty's Fixes] LethalLib/com.github.biodiversitylc.Biodiversity/Autumnis Iron Dog(374) position updated [(0.00, 0.00, 0.00)] -> [(0.00, 0.02, 0.00)]
+[16:07:14.8537668] [Debug  :Matty's Fixes] LethalLevelLoader/ImmersiveScraps/IFan(375) is computing vertical offset
+[16:07:14.8537668] [Debug  :Matty's Fixes] LethalLevelLoader/ImmersiveScraps/IFan original offset is 0
+[16:07:14.8537668] [Debug  :Matty's Fixes] LethalLevelLoader/ImmersiveScraps/Wine bottle(376) is computing vertical offset
+[16:07:14.8537668] [Debug  :Matty's Fixes] LethalLevelLoader/ImmersiveScraps/Wine bottle original offset is 0
+[16:07:14.8537668] [Debug  :Matty's Fixes] LethalLevelLoader/ImmersiveScraps/Bucket(378) is computing vertical offset
+[16:07:14.8537668] [Debug  :Matty's Fixes] LethalLevelLoader/ImmersiveScraps/Bucket new offset is 0.0004191697
+[16:07:14.8537668] [Debug  :Matty's Fixes] LethalLevelLoader/ImmersiveScraps/Bucket(378) position updated [(0.00, 0.00, 0.00)] -> [(0.00, 0.00, 0.00)]
+[16:07:14.8552700] [Debug  :Matty's Fixes] DawnLib/unknown_lib/Train(379) is computing vertical offset
+[16:07:14.8552700] [Debug  :Matty's Fixes] DawnLib/unknown_lib/Train new offset is 0.145297
+[16:07:14.8552700] [Debug  :Matty's Fixes] DawnLib/unknown_lib/Train(379) position updated [(0.00, 0.00, 0.00)] -> [(0.00, 0.05, 0.00)]
+[16:07:14.8552700] [Debug  :Matty's Fixes] LethalLevelLoader/Lethalthings/Cookie Fumo(380) is computing vertical offset
+[16:07:14.8567765] [Debug  :Matty's Fixes] LethalLevelLoader/Lethalthings/Cookie Fumo new offset is 0.0001453608
+[16:07:14.8567765] [Debug  :Matty's Fixes] LethalLevelLoader/Lethalthings/Cookie Fumo(380) position updated [(0.00, 0.00, 0.00)] -> [(0.00, 0.00, 0.00)]
+[16:07:14.8567765] [Debug  :Matty's Fixes] LethalLevelLoader/CodeRebirth/Brrreaker(381) is computing vertical offset
+[16:07:14.8567765] [Debug  :Matty's Fixes] LethalLevelLoader/CodeRebirth/Brrreaker new offset is 0.08727818
+[16:07:14.8567765] [Debug  :Matty's Fixes] LethalLevelLoader/CodeRebirth/Brrreaker(381) position updated [(0.00, 0.00, 0.00)] -> [(0.00, 0.09, 0.00)]
+[16:07:14.8567765] [Debug  :Matty's Fixes] DawnLib/lethalcompany/Big screw(382) is computing vertical offset
+[16:07:14.8567765] [Debug  :Matty's Fixes] DawnLib/lethalcompany/Big screw new offset is 0.2002165
+[16:07:14.8567765] [Debug  :Matty's Fixes] DawnLib/lethalcompany/Big screw(382) position updated [(0.00, 0.00, 0.00)] -> [(0.00, -0.01, 0.00)]
+[16:07:14.8567765] [Debug  :Matty's Fixes] Vanilla/Stop sign(384) is computing vertical offset
+[16:07:14.8567765] [Debug  :Matty's Fixes] Vanilla/Stop sign new offset is 0.1118711
+[16:07:14.8567765] [Debug  :Matty's Fixes] Vanilla/Stop sign(384) position updated [(0.00, 0.00, 0.00)] -> [(0.00, 0.04, 0.00)]
+[16:07:14.8567765] [Debug  :Matty's Fixes] LethalLib/ChillaxScraps/Boink(386) is computing vertical offset
+[16:07:14.8577811] [Debug  :Matty's Fixes] LethalLib/ChillaxScraps/Boink new offset is 0.003714606
+[16:07:14.8577811] [Debug  :Matty's Fixes] LethalLib/ChillaxScraps/Boink(386) position updated [(0.00, 0.00, 0.00)] -> [(0.00, 0.00, 0.00)]
+[16:07:14.8577811] [Debug  :Matty's Fixes] Vanilla/Spray paint(388) is computing vertical offset
+[16:07:14.8577811] [Debug  :Matty's Fixes] Vanilla/Spray paint new offset is 0.07112347
+[16:07:14.8577811] [Debug  :Matty's Fixes] Vanilla/Spray paint(388) position updated [(0.00, 0.00, 0.00)] -> [(0.00, -0.05, 0.00)]
+[16:07:14.9576095] [Debug  :Starlancer AI Fix] Finding outside AI nodes.
+[16:07:14.9576095] [Debug  :Starlancer AI Fix] Finding inside AI nodes.
+[16:07:14.9586105] [Debug  :GeneralImprovements] Updated danger level display.
+[16:07:14.9786420] [Debug  : LethalMin] Initializing PikminItem Key(Clone) with item Key(Clone) (True)
+[16:07:14.9786420] [Debug  : LethalMin] Initializing PikminItem Key(Clone) with item Key(Clone) (True)
+[16:07:14.9796405] [Debug  : LethalMin] Initializing PikminItem Key(Clone) with item Key(Clone) (True)
+[16:07:14.9796405] [Debug  : LethalMin] Initializing PikminItem Key(Clone) with item Key(Clone) (True)
+[16:07:15.1227218] [Info   :GeneralImprovements] Updated remaining scrap display.
+[16:07:15.1237198] [Debug  :Matty's Fixes] LethalLevelLoader/CodeRebirth/Charred Fork(449) is computing vertical offset
+[16:07:15.1247209] [Debug  :Matty's Fixes] LethalLevelLoader/CodeRebirth/Charred Fork new offset is 0.01167512
+[16:07:15.1247209] [Debug  :Matty's Fixes] LethalLevelLoader/CodeRebirth/Charred Fork(449) position updated [(0.00, 0.00, 0.00)] -> [(0.00, 0.01, 0.00)]
+[16:07:15.1267318] [Debug  :Matty's Fixes] Vanilla/Belt bag(389) is computing vertical offset
+[16:07:15.1277403] [Debug  :Matty's Fixes] Vanilla/Belt bag new offset is 0.1446404
+[16:07:15.1277403] [Debug  :Matty's Fixes] Vanilla/Belt bag(389) position updated [(-11.32, -191.49, 56.83)] -> [(-11.32, -191.45, 56.83)]
+[16:07:15.2102996] [Info   : LethalMin] Generating Floor Data for 1 Dungeons.
+[16:07:15.2112991] [Debug  : LethalMin] did not find any flor data
+[16:07:15.3266766] [Debug  :Matty's Fixes] Vanilla/Homemade flashbang(377) is computing vertical offset
+[16:07:15.3276817] [Debug  :Matty's Fixes] Vanilla/Homemade flashbang new offset is 0.09182268
+[16:07:15.3276817] [Debug  :Matty's Fixes] Vanilla/Homemade flashbang(377) position updated [(31.33, -190.83, 44.65)] -> [(31.33, -190.86, 44.65)]
+[16:07:15.3276817] [Debug  :Matty's Fixes] DawnLib/unknown_lib/Pinger(387) is computing vertical offset
+[16:07:15.3286833] [Debug  :Matty's Fixes] DawnLib/unknown_lib/Pinger new offset is 0.07227661
+[16:07:15.3286833] [Debug  :Matty's Fixes] DawnLib/unknown_lib/Pinger(387) position updated [(-28.32, -198.43, 149.67)] -> [(-28.32, -198.52, 149.67)]
+[16:07:15.3742614] [Debug  :Matty's Fixes] LethalLib/MonsterPlushies/Bracken Plushie(385) is computing vertical offset
+[16:07:15.3767629] [Debug  :Matty's Fixes] LethalLib/MonsterPlushies/Bracken Plushie new offset is 0.005978793
+[16:07:15.3767629] [Debug  :Matty's Fixes] LethalLib/MonsterPlushies/Bracken Plushie(385) position updated [(-44.59, -196.41, 124.83)] -> [(-44.59, -196.40, 124.83)]
+[16:07:15.6605102] [Debug  :Buttery Fixes] Cleared "profitable" stat for all employees
+[16:07:15.6605102] [Info   : Unity Log] Start audios played from highandlowaudio; False ; False
+[16:07:15.7107261] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7107261] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7107261] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7117248] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7117248] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7127229] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7127229] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7247379] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7247379] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7477794] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7477794] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7477794] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7477794] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7477794] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7477794] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7477794] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7477794] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7477794] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7477794] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7487792] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7487792] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7749364] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7749364] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7749364] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.7749364] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:07:15.7749364] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:07:15.7749364] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:07:15.8907813] [Debug  :GeneralImprovements] Updated time display.
+[16:07:15.9038108] [Info   :S1.42AI-DIAG1 ShyGuy Isolation] [DIAG1_POOL_GUARD] BeginEnemySpawning/Prefix: allowed=ShyGuyDef/Shy guy; removed indoor=0, outside=0, daytime=0, weed=0.
+[16:07:15.9038108] [Debug  :Spawn Cycle Fixes] First spawn cycle occurring - force timer for next spawn cycle
+[16:07:15.9038108] [Debug  :Spawn Cycle Fixes] Early daytime spawn cycle (for bees/sapsucker)
+[16:07:15.9038108] [Debug  :Spawn Cycle Fixes] Early outside spawn cycle (for eclipses)
+[16:07:15.9038108] [Debug  :Spawn Cycle Fixes] Early outside spawn cycle (for weeds)
+[16:07:15.9038108] [Info   :S1.42AI-DIAG1 ShyGuy Isolation] [DIAG1_POOL_GUARD] PlotOutEnemiesForNextHour/Prefix: allowed=ShyGuyDef/Shy guy; removed indoor=0.
+[16:07:15.9296049] [Info   : Unity Log] startofround: 8; 0
+[16:07:16.7806622] [Warning:S1.39 Compatibility Fixes] [DoorAudit] Hangar state changed -> OPEN; doorPower=1.000; landed=False; leaving=False; living=1; livingInsideShip=1
+[16:07:18.9007802] [Debug  :GeneralImprovements] Updated time display.
+[16:07:20.6597892] [Info   : Unity Log] Turning lights on at start
+[16:07:21.9137719] [Debug  :GeneralImprovements] Updated time display.
+[16:07:23.5450911] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[16:07:23.5542240] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[16:07:23.5707500] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[16:07:24.6699349] [Info   : LethalMin] Spawing Onion
+[16:07:24.6789509] [Info   : LethalMin] Pos: (-4.05, -2.78, 2.75), Angle: 40, IDs: 0, 4, 8, 5, 1, 7
+[16:07:24.6819529] [Info   : LethalMin] Waiting for 1 onions to load... Total: 0
+[16:07:24.6849506] [Debug  :ReXuvination] Optimised Collider layers in InteractTrigger for Object: trigger (UnityEngine.GameObject)
+[16:07:24.9251731] [Debug  :GeneralImprovements] Updated time display.
+[16:07:25.3320172] [Info   : Unity Log] clientRPC scrap values length: 14
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Ocarina(Clone)" worth $49
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "IronDogPrefab(Clone)" worth $20
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "FanPrefab(Clone)" worth $42
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "WinebottlePrefab(Clone)" worth $122
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "DiyFlashbang(Clone)" worth $16
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "BucketPrefab(Clone)" worth $48
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "ToyTrain(Clone)" worth $43
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "CookieFumo(Clone)" worth $96
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Brrreaker(Clone)" worth $42
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "BigBolt(Clone)" worth $26
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "FirehydrantPrefab(Clone)" worth $88
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "StopSign(Clone)" worth $48
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "BrackenPlush(Clone)" worth $57
+[16:07:25.3330165] [Debug  :Buttery Fixes] Scrap tracker: Tracking "Boink(Clone)" worth $34
+[16:07:25.4538079] [Info   : Unity Log] clientRPC scrap values length: 3
+[16:07:25.4538079] [Debug  :Buttery Fixes] Scrap tracker: Tracking "PingTool(Clone)" worth $5
+[16:07:25.4538079] [Debug  :Buttery Fixes] Scrap tracker: Tracking "SprayPaintItem(Clone)" worth $42
+[16:07:25.4538079] [Debug  :Buttery Fixes] Scrap tracker: Tracking "BeltBagItem(Clone)" worth $14
+[16:07:25.7755164] [Info   : LethalMin] 1/1 onions loaded, loading data
+[16:07:25.7790262] [Info   : LethalMin] Restored 38 pikmin to onion 2 in 1 batches
+[16:07:25.7790262] [Info   : LethalMin] Restored 2 pikmin to onion -1 in 1 batches
+[16:07:25.7790262] [Info   : LethalMin] Restored 1 pikmin to onion -1 in 1 batches
+[16:07:25.7815357] [Info   : LethalMin] Restored 57 pikmin to onion -1 in 2 batches
+[16:07:25.7815357] [Info   : LethalMin] Restored 5 pikmin to onion -1 in 1 batches
+[16:07:25.7815357] [Info   : LethalMin] Restored 3 pikmin to onion -1 in 1 batches
+[16:07:27.9404996] [Debug  :GeneralImprovements] Updated time display.
+[16:07:28.7761735] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered ship
+[16:07:30.9518767] [Debug  :GeneralImprovements] Updated time display.
+[16:07:31.0312835] [Info   : Unity Log] Update used by player client rpc has been called for interact trigger: TerminalScript
+[16:07:31.0322836] [Info   : Unity Log] Set interminalmenu to true: True
+[16:07:31.0352846] [Message:darmuhsTerminalStuff] Mode set to - [ None ] OnUpdateCamsEvent
+[16:07:31.0448122] [Error  : Unity Log] Trying to add Caret (TMPro.TMP_SelectionCaret) for graphic rebuild while we are already inside a graphic rebuild loop. This is not supported.
+[16:07:31.7390006] [Debug  :GeneralImprovements] Updated time display.
+[16:07:32.9771241] [Info   : Unity Log] Parsed word: enemies
+[16:07:32.9771241] [Info   : Unity Log] noun keyword: enemies ; verb keyword: list ; result null? : False
+[16:07:32.9771241] [Info   : Unity Log] result: 
+[16:07:33.0036464] [Message:darmuhsTerminalStuff] Mode set to - [ None ] OnUpdateCamsEvent
+[16:07:33.0071512] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MHELP
+[16:07:33.0071512] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MEVENT
+[16:07:33.0071512] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MCLEAR
+[16:07:33.0071512] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MEVENTS
+[16:07:33.0071512] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MRANDOM
+[16:07:33.0071512] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MPAY
+[16:07:33.0071512] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MENEMIES
+[16:07:33.0071512] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MITEMS
+[16:07:33.0071512] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MMOONS
+[16:07:33.0071512] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MSCAN
+[16:07:33.0071512] [Debug  :BrutalCompanyMinusExtraReborn] Checking command: MHAZARDS
+[16:07:33.7205682] [Info   : Unity Log] Stop special animation F
+[16:07:33.7205682] [Info   : Unity Log] Stop special animation G
+[16:07:33.7205682] [Info   : Unity Log] Quit terminal; inTerminalMenu true?: {playerScript.inTerminalMenu}
+[16:07:33.9601912] [Debug  :GeneralImprovements] Updated time display.
+[16:07:35.7448174] [Info   :GeneralImprovements] Enabling ship scan node again and parenting it to the terminal.
+[16:07:35.7448174] [Info   :GeneralImprovements] Updated remaining scrap display.
+[16:07:35.7516300] [Info   :LethalPerformance] Saved 1 save(s)
+[16:07:35.7594290] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship has landed
+[16:07:35.7594290] [Debug  :PizzaTowerEscapeMusic GameEventListener] Checking for docked Apparatus...
+[16:07:35.7834693] [Debug  :PizzaTowerEscapeMusic GameEventListener] Could not find docked Apparatus
+[16:07:35.7844661] [Info   :MrHat.BasedDecorPlacement] Build mode available after landing
+[16:07:36.6591095] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited ship
+[16:07:36.9704202] [Debug  :GeneralImprovements] Updated time display.
+[16:07:38.6127671] [Debug  :   Coroner] Querying target player parameters pre-death...
+[16:07:38.6127671] [Debug  :   Coroner] Query successful!True
+[16:08:13.0461273] [Info   :S1.42AI-DIAG1 ShyGuy Isolation] [DIAG1_POOL_GUARD] PlotOutEnemiesForNextHour/Prefix: allowed=ShyGuyDef/Shy guy; removed indoor=0.
+[16:08:23.2937118] [Info   : Unity Log] Finished snapping to ladder
+[16:08:25.5663735] [Info   : Unity Log] Finished ladder sequence
+[16:08:25.5844103] [Debug  :   Coroner] Querying target player parameters pre-death...
+[16:08:25.5844103] [Debug  :   Coroner] Query successful!True
+[16:08:28.5225968] [Info   : Unity Log] Called finishopeningentrance (False)
+[16:08:28.5225968] [Info   : Unity Log] 'EntranceTeleportA' STOPPING entrancePointAudio
+[16:08:28.5326672] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player entered facility
+[16:08:28.5326672] [Debug  : LethalMin] Setting pikmin to entrance: True
+[16:08:28.5336689] [Debug  : LethalMin] Setting pikmin to entrance: True
+[16:08:29.7582210] [Debug  :GeneralImprovements] Toggling helmet light on.
+[16:08:37.4427349] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:08:41.9149357] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:08:45.0807668] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:08:55.8451549] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:08:55.8451549] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:08:55.8451549] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:08:55.8671989] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:08:55.8671989] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:08:55.8671989] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:09:03.2808077] [Info   : Unity Log] Finished snapping to ladder
+[16:09:05.0544758] [Info   : Unity Log] Finished ladder sequence
+[16:09:05.0986871] [Debug  :   Coroner] Querying target player parameters pre-death...
+[16:09:05.0986871] [Debug  :   Coroner] Query successful!True
+[16:09:06.5332234] [Debug  :   Coroner] Querying target player parameters pre-death...
+[16:09:06.5332234] [Debug  :   Coroner] Query successful!True
+[16:09:22.7646024] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:09:26.0275421] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:09:38.7581307] [Info   :S1.42AI-DIAG1 ShyGuy Isolation] [DIAG1_POOL_GUARD] PlotOutEnemiesForNextHour/Prefix: allowed=ShyGuyDef/Shy guy; removed indoor=0.
+[16:09:43.0130325] [Info   :ReservedItemSlotCore-2.0.41] Focusing reserved hotbar slots. NewIndex: 10 OldIndex: 0 ReservedStartIndex: 4
+[16:09:43.3281447] [Info   : Unity Log] Unlocking door
+[16:09:43.3296520] [Info   : Unity Log] Destroying item in slot 10; 10; is currentlyheldobjectserver null: False
+[16:09:43.3296520] [Info   : Unity Log] currentlyHeldObjectServer: Key
+[16:09:43.3306603] [Debug  : LightsOut] DiscardItem Key
+[16:09:43.3306603] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[16:09:43.8731850] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:09:47.3862410] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:09:48.7940191] [Info   :ReservedItemSlotCore-2.0.41] Beginning grab on reserved item: Key Previous item slot: 10
+[16:09:48.7940191] [Info   : Unity Log] Picked up scrap Key was not in the normal places; reparenting it now
+[16:09:48.7940191] [Info   : Unity Log] Picked up scrap Key is not in the elevator; parenting it to spawnedScrapContainer
+[16:09:48.8988715] [Debug  : LightsOut] GrabItem Key
+[16:09:48.8988715] [Debug  : LightsOut] KeyItem is not in ship room
+[16:09:57.2907797] [Info   :ReservedItemSlotCore-2.0.41] Focusing reserved hotbar slots. NewIndex: 10 OldIndex: 0 ReservedStartIndex: 4
+[16:09:57.4857184] [Info   : Unity Log] Unlocking door
+[16:09:57.4867176] [Info   : Unity Log] Destroying item in slot 10; 10; is currentlyheldobjectserver null: False
+[16:09:57.4867176] [Info   : Unity Log] currentlyHeldObjectServer: Key
+[16:09:57.4867176] [Debug  : LightsOut] DiscardItem Key
+[16:09:57.4867176] [Warning: Unity Log] Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+[16:09:58.0080167] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:10:20.2406390] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:10:23.0724110] [Debug  :   Coroner] Querying target player parameters pre-death...
+[16:10:23.0724110] [Debug  :   Coroner] Query successful!True
+[16:10:23.7739219] [Debug  :   Coroner] Querying target player parameters pre-death...
+[16:10:23.7739219] [Debug  :   Coroner] Query successful!True
+[16:10:29.4792376] [Info   : Unity Log] Finished snapping to ladder
+[16:10:30.9046437] [Info   : Unity Log] Finished ladder sequence
+[16:10:32.9242217] [Debug  :   Coroner] Querying target player parameters pre-death...
+[16:10:32.9242217] [Debug  :   Coroner] Query successful!True
+[16:10:40.2320431] [Debug  :   Coroner] Querying target player parameters pre-death...
+[16:10:40.2320431] [Debug  :   Coroner] Query successful!True
+[16:10:42.0101091] [Debug  :   Coroner] Querying target player parameters pre-death...
+[16:10:42.0101091] [Debug  :   Coroner] Query successful!True
+[16:10:42.0665838] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:10:42.0665838] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:10:42.0665838] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:10:42.0862778] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:10:42.0862778] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:10:42.0862778] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:10:42.9693278] [Debug  :   Coroner] Querying target player parameters pre-death...
+[16:10:42.9693278] [Debug  :   Coroner] Query successful!True
+[16:10:44.7769430] [Debug  :   Coroner] Querying target player parameters pre-death...
+[16:10:44.7769430] [Debug  :   Coroner] Query successful!True
+[16:10:53.3063201] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:10:53.3063201] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:10:53.3063201] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:10:53.3063201] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:10:53.3063201] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:10:53.3063201] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:10:58.8225357] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:10:58.8225357] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:10:58.8225357] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:10:58.8225357] [Warning:   Coroner] Could not access dying player: Collider was not a player!
+[16:10:58.8225357] [Warning:   Coroner] Could not access dying player: Index not assigned!
+[16:10:58.8225357] [Debug  :   Coroner] Handling Out of Bounds death...
+[16:11:04.4742666] [Info   :S1.42AI-DIAG1 ShyGuy Isolation] [DIAG1_POOL_GUARD] PlotOutEnemiesForNextHour/Prefix: allowed=ShyGuyDef/Shy guy; removed indoor=0.
+[16:11:04.4752696] [Info   :S1.42AI-DIAG1 ShyGuy Isolation] [DIAG1_POOL_GUARD] AssignRandomEnemyToVent/Prefix: allowed=ShyGuyDef/Shy guy; removed indoor=0.
+[16:11:04.4752696] [Info   : Unity Log] enemy rush index is -1; current index 0
+[16:11:04.4752696] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #0 'Shy guy' : probability: 3
+[16:11:04.4752696] [Info   : Unity Log] enemy rush index is -1; current index 1
+[16:11:04.4752696] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #1 'Shy guy' : probability: 6
+[16:11:04.4752696] [Info   : Unity Log] enemy rush index is -1; current index 2
+[16:11:04.4762704] [Info   : Unity Log] Hours: 420 ; Time: 0.3888889 | Enemy #2 'Shy guy' : probability: 6
+[16:11:04.4762704] [Info   : Unity Log] ADDING ENEMY #1: Shy guy
+[16:11:04.4762704] [Info   : Unity Log] Adding 3 to power level, enemy: Shy guy
+[16:11:04.4762704] [Info   : Unity Log] Adding 0 to diversity level for enemy 'Shy guy'
+[16:11:04.4772686] [Info   :S1.42AI-DIAG1 ShyGuy Isolation] [DIAG1_POOL_GUARD] AssignRandomEnemyToVent/Prefix: allowed=ShyGuyDef/Shy guy; removed indoor=0.
+[16:11:12.0899848] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:11:19.7529711] [Debug  : LethalMin] IsServerRpcNoOwnershipPrefixValid (No): RpcExecStage is Send, IsServer: True, IsHost: True when calling ScanNewCreatureServerRpcPrefix
+[16:11:19.7529711] [Debug  : LethalMin] IsServerRpcNoOwnershipPrefixValid (Yes): RpcExecStage is Execute, IsServer: True, IsHost: True when calling ScanNewCreatureServerRpcPrefix
+[16:11:19.7529711] [Debug  : LethalMin] IsClientRpcPrefixValid (No): RpcExecStage is Send, IsClient: True, IsHost: True ScanNewCreatureClientRpcPrefix
+[16:11:19.7529711] [Debug  : LethalMin] IsClientRpcPrefixValid (Yes): RpcExecStage is Execute, IsClient: True, IsHost: True ScanNewCreatureClientRpcPrefix
+[16:11:43.7557491] [Info   : Unity Log] Found enemy vent which has its time up: VentEntrance(Clone). Spawning Shy guy from vent.
+[16:11:43.7587503] [Info   : Unity Log] Spawned enemy from vent
+[16:11:50.5282694] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:12:00.7944930] [Info   : Unity Log] Triggering animated object trigger bool: setting to True
+[16:12:02.9112128] [Info   :GoldenKitten.FairAI] Turret: Detected player, entering charging mode.
+[16:12:04.4184068] [Info   :GoldenKitten.FairAI] Turret: Lost LOS during charge wind-up, returning to detection.
+[16:12:06.1408686] [Info   :GoldenKitten.FairAI] Turret: Detected player, entering charging mode.
+[16:12:07.6501306] [Info   :GoldenKitten.FairAI] Turret: Lost LOS during charge wind-up, returning to detection.
+[16:12:09.2857610] [Info   :GeneralImprovements] Server disconnecting - dropping FlashlightItem(Clone)
+[16:12:09.2887620] [Info   : Unity Log] Leaving current lobby
+[16:12:09.2887620] [Info   : Unity Log] Disconnecting and setting networkobjects to destroy with owner
+[16:12:09.3149652] [Info   :mrgrm7.LethalCasino] Player disconnected.
+[16:12:09.3149652] [Info   :Dreamweave.CompanyBuildingEnhancements] Disconnected From Lobby: Config Sync Reverted.
+[16:12:09.3149652] [Info   :Rolling Giant] [RandomlyMoveWhileLooking]: moveSpeed: 2, moveAcceleration: 1, moveDeceleration: 0.5, rotateToLookAtPlayer: True, delayBeforeLookingAtPlayer: 2, lookAtPlayerDuration: 3, waitTimeMin: 1, waitTimeMax: 3, randomMoveTimeMin: 1, randomMoveTimeMax: 3, lookTimeBeforeAgro: 0
+[16:12:09.3149652] [Info   :Rolling Giant] Resetting all rolling giants!
+[16:12:09.3149652] [Message:Rolling Giant] Reverting sync
+[16:12:09.3169684] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Saving the LGU upgrades unto a json file...
+[16:12:09.3169684] [Debug  :MrHat.BasedItemSaving] Saved 26 exact item poses
+[16:12:09.3179679] [Info   : Unity Log] Shutting down and disconnecting from server. Is host?: True
+[16:12:09.3189690] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...
+[16:12:09.3199669] [Debug  :More Ship Upgrades] [UpgradeBus] Resetting MasaeAhmya's attributes
+[16:12:09.3487074] [Info   :LethalPerformance] Saved 2 save(s)
+[16:12:09.3578195] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[16:12:09.4072059] [Info   : LethalMin] ShipOnion: saved 38 pikmin to disk on despawn.
+[16:12:09.4327516] [Info   :LobbyControl] 0 disconnected
+[16:12:09.4337599] [Info   : Unity Log] Disconnect callback called
+[16:12:09.4337599] [Info   : Unity Log] Is server: True; ishost: True; isConnectedClient: False
+[16:12:09.4337599] [Info   : Unity Log] Disconnect callback called in gamenetworkmanager; disconnecting clientId: 0
+[16:12:09.4337599] [Info   : Unity Log] Disconnect callback called for local client; ignoring.
+[16:12:09.4377557] [Debug  :Starlancer AI Fix] ShyGuy(Clone) from the interior enemy list has died; 
+Previous interior power level is 3
+[16:12:09.4377557] [Debug  :Starlancer AI Fix] Removing ShyGuy(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 0
+[16:12:09.5359412] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[16:12:09.5359412] [Debug  :Starlancer AI Fix] ShyGuy(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[16:12:09.5359412] [Debug  :Starlancer AI Fix] Removing ShyGuy(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 0
+[16:12:09.5369415] [Debug  :Starlancer AI Fix] ShyGuy(Clone) from the interior enemy list has died; 
+Previous interior power level is 0
+[16:12:09.5369415] [Debug  :Starlancer AI Fix] Removing ShyGuy(Clone)'s power (3) from the RoundManager; 
+Current interior power level is 0
+[16:12:09.5399413] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Door Interact (1)
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Door Interact (1)
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5429409] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[16:12:09.5441867] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5441867] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5441867] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5441867] [Info   : Unity Log] Interact trigger destroying! name: Door Interact
+[16:12:09.5441867] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5441867] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5441867] [Info   : Unity Log] Interact trigger destroying! name: Door Interact (2)
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Door Interact (1)
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Door Interact
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB(Clone)
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Interract thigny
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Door Interact
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5451866] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5461855] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5461855] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5461855] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5461855] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5461855] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5461855] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.5461855] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:12:09.5461855] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:12:09.5461855] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:12:09.5461855] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:12:09.5461855] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: DropTrigger
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: DropTrigger
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: Metal Crate(Clone)
+[16:12:09.5471839] [Info   : Unity Log] Interact trigger destroying! name: Metal Crate(Clone)
+[16:12:09.5572275] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5572275] [Debug  :suitsTerminal] Destroying SuitAttribute! [Smile]
+[16:12:09.5572275] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5572275] [Debug  :suitsTerminal] Destroying SuitAttribute! [Slayer]
+[16:12:09.5572275] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5572275] [Debug  :suitsTerminal] Destroying SuitAttribute! [Skeleton]
+[16:12:09.5572275] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5572275] [Debug  :suitsTerminal] Destroying SuitAttribute! [Minion]
+[16:12:09.5572275] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5572275] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mario]
+[16:12:09.5572275] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5572275] [Debug  :suitsTerminal] Destroying SuitAttribute! [Luigi]
+[16:12:09.5572275] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5572275] [Debug  :suitsTerminal] Destroying SuitAttribute! [Knuckles]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kirby]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Glow]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [White Suit]]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [School]]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Zero Two [Red Suit]]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yang Xiao Long [Timeskip]]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Yae Sakura [Neon Shade]]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weiss Schnee [Timeskip]]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Weedy]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Theresa [Lunar Vow]]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Sparkle]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Silence Suzuka [School]]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Ruby Rose [Timeskip]]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Roland]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mostima [Maid]]
+[16:12:09.5582250] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5582250] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mejiro McQueen [School]]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Mayano Top Gun [School]]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Kiana [Finality]]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Faust]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Cheval Grand [School]]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Blake Belladonna [Timeskip]]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Anby]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: ChangableSuit(Clone)
+[16:12:09.5592244] [Debug  :suitsTerminal] Destroying SuitAttribute! [Orange suit]
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: LeverContainer
+[16:12:09.5592244] [Info   : Unity Log] Interact trigger destroying! name: InteractTrigger
+[16:12:09.5602282] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[16:12:09.5612270] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[16:12:09.5807561] [Info   : Unity Log] Resetting unlockables list!
+[16:12:09.5817590] [Info   :BrutalCompanyMinusExtraReborn] Executing OnLocalDisconnect for all events()
+[16:12:09.5839413] [Info   :HotbarPlus-1.8.5] Finished receiving OnUpdatePurchasedHotbarSlots update. New purchased hotbar slots: 0
+[16:12:09.5839413] [Info   : Unity Log] Scene manager is null
+[16:12:09.5914456] [Info   :LethalPerformance] Saved 1 save(s)
+[16:12:09.6449641] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.6559838] [Info   : Unity Log] Interact trigger destroying! name: StoryLogCollectable (3)
+[16:12:09.6665510] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[16:12:09.6665510] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[16:12:09.6665510] [Info   : Unity Log] Interact trigger destroying! name: stinger trigger random
+[16:12:09.6665510] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.6665510] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.6675500] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.6675500] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.6835675] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.6835675] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.6835675] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportB
+[16:12:09.6835675] [Info   : Unity Log] Interact trigger destroying! name: EntranceTeleportA
+[16:12:09.6875665] [Info   : Unity Log] DISABLING connection callbacks in round manager
+[16:12:09.7025822] [Info   : Unity Log] Terminal disabled, disabling ESC key listener
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: Cube (1)
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: trigger
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: LadderTrigger
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: TerminalScript
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: StartGameLever
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: Trigger
+[16:12:09.7071302] [Info   : Unity Log] Interact trigger destroying! name: Cube
+[16:12:09.7101315] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[16:12:09.7101315] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[16:12:09.7101315] [Info   : Unity Log] Interact trigger destroying! name: Cube (2)
+[16:12:09.7101315] [Info   : Unity Log] Interact trigger destroying! name: Cube (3)
+[16:12:09.7101315] [Info   : Unity Log] Interact trigger destroying! name: LightSwitch
+[16:12:09.7101315] [Info   : Unity Log] Interact trigger destroying! name: KillTrigger
+[16:12:09.7101315] [Info   : Unity Log] Interact trigger destroying! name: MagnetLever
+[16:12:09.7271537] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[16:12:09.7398231] [Warning:LethalPerformance] EntranceTeleport search called with inactive objects, probably will cause incompatibility!
+[16:12:09.7471031] [Info   :MoreCompany] LANMenu startLAN Patched
+[16:12:10.0428565] [Debug  :LCUltrawide_Community] NOT setting PixelResolution to [0]
+[16:12:11.6311673] [Info   : Unity Log] Returning week num: 144
+[16:12:11.6311673] [Info   : Unity Log] week num: 144
+[16:12:11.6371802] [Debug  :Buttery Fixes] Menu: Override volumes on camera CanvasCam
+[16:12:11.6381851] [Message:LethalSponge] Calling initial Resources.UnloadUnusedAssets().
+[16:12:11.6486974] [Debug  :PizzaTowerEscapeMusic GameEventListener] Sound Manager destroyed
+[16:12:11.6580364] [Info   :PizzaTowerEscapeMusic MusicManager] All music clips unloaded
+[16:12:11.6590379] [Debug  :PizzaTowerEscapeMusic GameEventListener] Ship returned to orbit
+[16:12:11.6590379] [Debug  :PizzaTowerEscapeMusic GameEventListener] Player exited facility
+[16:12:11.6610361] [Info   :LethalPerformance] Saved 1 save(s)
+[16:12:13.1393707] [Debug  :ainavt.lc.lethalconfig] Injecting mod config menu into main menu...
+[16:12:13.1513866] [Info   :TestAccountCore] TestAccountCore is running on version v81!
+[16:12:13.9827582] [Debug  :LethalNetworkAPI] Disposing of UnnamedMessageHandler.
+[16:12:13.9839847] [Warning: Unity Log] [SpectateEnemies]: Config saved
+[16:12:13.9839847] [Debug  :More Ship Upgrades] [GameNetworkManagerPatcher] Resetting the Upgrade Bus due to disconnecting...

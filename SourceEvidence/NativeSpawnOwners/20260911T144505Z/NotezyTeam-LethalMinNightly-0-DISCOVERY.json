@@ -1,0 +1,4442 @@
+{
+  "package": "NotezyTeam-LethalMinNightly",
+  "version": "1.1.108",
+  "member": "NoteBoxz.LethalMin.dll",
+  "assembly_sha256": "9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df",
+  "source_sha256": "6eb8f99dc6b6d72a705959aa2dfd452638561e1b4376b3c1e662ddd7d8c67939",
+  "source_line_count": 63495,
+  "class_listing": [
+    "Class <Module>",
+    "Class <>f__AnonymousType0`2",
+    "Class Microsoft.CodeAnalysis.EmbeddedAttribute",
+    "Class System.Runtime.CompilerServices.NullableAttribute",
+    "Class System.Runtime.CompilerServices.NullableContextAttribute",
+    "Class System.Runtime.CompilerServices.RefSafetyRulesAttribute",
+    "Class InputClassWithUtils",
+    "Class OnionAnimEvents",
+    "Class Lethalm.Utils.LookAtMainCamera",
+    "Class LethalMin.LethalMin",
+    "Class LethalMin.LethalMin+<>O",
+    "Class LethalMin.LethalMin+<>c",
+    "Class LethalMin.LethalMin+<>c__DisplayClass124_0",
+    "Class LethalMin.LethalMin+<>c__DisplayClass89_0`1",
+    "Class LethalMin.AssetBundleLoader",
+    "Class LethalMin.AssetBundleLoader+BundleInfo",
+    "Class LethalMin.AssetBundleLoader+<>c",
+    "Class LethalMin.AssetBundleLoader+<LoadBundleCoroutine>d__19",
+    "Class LethalMin.AssetBundleLoader+<LoadBundlesWithDependencies>d__15",
+    "Class LethalMin.AssetBundleLoader+<ProcessBundle>d__18",
+    "Class LethalMin.AssetBundleLoader+<WaitToRegister>d__20",
+    "Class LethalMin.PikminAnimatorController",
+    "Class LethalMin.PikminAnimatorController+AnimationCondition",
+    "Class LethalMin.PikminAnimatorController+<>c",
+    "Class LethalMin.PikminAnimatorController+<>c__DisplayClass33_0",
+    "Class LethalMin.PikminAnimatorController+<CheckIfAnimationHasFinished>d__38",
+    "Class LethalMin.BaseOnion",
+    "Class LethalMin.BaseOnion+<>c",
+    "Class LethalMin.BaseOnion+<>c__DisplayClass17_0",
+    "Class LethalMin.BaseOnion+<AnimateItemIntoOnion>d__17",
+    "Class LethalMin.BaseOnion+<SproutSpawnRoutine>d__19",
+    "Class LethalMin.BaseOnion+<WaitToShow>d__14",
+    "Class LethalMin.BaseOnionFusionProperties",
+    "Class LethalMin.BoomBoxPikminInteraction",
+    "Class LethalMin.BoomBoxPikminInteraction+<>c",
+    "Class LethalMin.CompatClassAttribute",
+    "Class LethalMin.ConfigItem`1",
+    "Class LethalMin.ConfigItemAuthorityManager",
+    "Class LethalMin.CustomPlayerAnimationManager",
+    "Class LethalMin.CustomPlayerAnimationManager+<>c",
+    "Class LethalMin.CustomPlayerAnimationManager+<AutoRevert>d__17",
+    "Class LethalMin.DirectlyPathZone",
+    "Class LethalMin.BaboonBirdPikminEnemy",
+    "Class LethalMin.BlobLatchTrigger",
+    "Class LethalMin.BlobPikminEnemy",
+    "Class LethalMin.BlobPikminEnemy+<>c",
+    "Class LethalMin.BushWolfPikminEnemy",
+    "Class LethalMin.BushWolfPikminEnemy+<>c",
+    "Class LethalMin.ButlerEnemyPikminEnemy",
+    "Class LethalMin.CaveDwellerPikminEnemy",
+    "Class LethalMin.CaveDwellerPikminItem",
+    "Class LethalMin.ClaySurgeonPikminEnemy",
+    "Class LethalMin.CompanyPikminEnemy",
+    "Class LethalMin.CompanyPikminEnemy+<>c",
+    "Class LethalMin.CrawlerPikminEnemy",
+    "Class LethalMin.CustomMaskedAnimationManager",
+    "Class LethalMin.CustomMaskedAnimationManager+<DeSetWhistleToOverride>d__10",
+    "Class LethalMin.CustomMaskedAnimationManager+<SetWhistleToOverride>d__9",
+    "Class LethalMin.CustomPikminEnemyOverrideDef",
+    "Class LethalMin.ForestGiantLatchTrigger",
+    "Class LethalMin.ForestGiantPikminEnemy",
+    "Class LethalMin.ForestGiantPikminEnemy+<EatPikminAnimation>d__7",
+    "Class LethalMin.HoarderBugPikminEnemy",
+    "Class LethalMin.HoarderBugPikminEnemy+<>c__DisplayClass11_0",
+    "Class LethalMin.JesterPikminEnemy",
+    "Class LethalMin.MaskedPlayerPikminEnemy",
+    "Class LethalMin.MaskedPlayerPikminEnemy+<>c__DisplayClass10_0",
+    "Class LethalMin.MaskedPlayerPikminEnemy+<DoWhistle>d__9",
+    "Class LethalMin.MaskedPlayerPikminEnemy+<WaitForMimicToSpawn>d__10",
+    "Class LethalMin.MouthDogPikminEnemy",
+    "Class LethalMin.MouthDogPikminEnemy+<DoBiteAnim>d__12",
+    "Class LethalMin.PumaPikminEnemy",
+    "Class LethalMin.RadMechLatchTrigger",
+    "Class LethalMin.RadMechPikminEnemy",
+    "Class LethalMin.RadMechPikminEnemy+<>c__DisplayClass19_0",
+    "Class LethalMin.RadMechPikminEnemy+<TorchPikminAnimation>d__19",
+    "Class LethalMin.RedLocustBeesPikminEnemy",
+    "Class LethalMin.SandSpiderPikminEnemy",
+    "Class LethalMin.StingrayPikminEnemy",
+    "Class LethalMin.EnemyGrabbableObject",
+    "Class LethalMin.GenerationManager",
+    "Class LethalMin.Glowmob",
+    "Class LethalMin.Glowmob+<>c",
+    "Class LethalMin.Glowmob+<GlowmobHold>d__62",
+    "Class LethalMin.Glowmob+<HomingAnim>d__78",
+    "Class LethalMin.Glowmob+<SetPikminInSquadToMob>d__68",
+    "Class LethalMin.GlowPikminAI",
+    "Class LethalMin.GlowPikminAI+<GlowBurstAnim>d__37",
+    "Class LethalMin.GlowPikminAI+<GlowMobAnim>d__39",
+    "Class LethalMin.GlowPikminAI+<TeleportTo>d__50",
+    "Class LethalMin.GlowPikminAI+<WaitForBurst>d__46",
+    "Class LethalMin.GlowPikminAI+<WaitForSpawn>d__20",
+    "Class LethalMin.GlowPikminAI+<WaitToReturn>d__31",
+    "Class LethalMin.GlowSeed",
+    "Class LethalMin.GlowSeed+<WaitForBurst>d__23",
+    "Class LethalMin.GlowSeed+<WaitToSpawnGhost>d__28",
+    "Class LethalMin.Lumiknull",
+    "Class LethalMin.Lumiknull+<DoGlowSpawn>d__28",
+    "Class LethalMin.Lumiknull+<TweenMaterial>d__20",
+    "Class LethalMin.Lumiknull+<TweenMaterialDeactive>d__23",
+    "Class LethalMin.Triknull",
+    "Class LethalMin.Triknull+<DoGlowSpawn>d__24",
+    "Class LethalMin.Triknull+<TweenMaterial>d__18",
+    "Class LethalMin.Triknull+<TweenMaterialDeactive>d__19",
+    "Class LethalMin.OnionHUDAnimEvents",
+    "Class LethalMin.FreezeableWater",
+    "Class LethalMin.FreezeableWater+<>c",
+    "Class LethalMin.IcePikminAI",
+    "Class LethalMin.IcePikminAI+<>c__DisplayClass10_0",
+    "Class LethalMin.IcePikminCollisionDetect",
+    "Class LethalMin.InputClass",
+    "Class LethalMin.ItemArrivalZone",
+    "Class LethalMin.Leader",
+    "Class LethalMin.Leader+<>c",
+    "Class LethalMin.Leader+<OnThrowCancledBuffer>d__77",
+    "Class LethalMin.Leader+<RemovePikminsFromSquad>d__95",
+    "Class LethalMin.LeaderFormationManager",
+    "Class LethalMin.LeaderFormationTarget",
+    "Class LethalMin.MoonSpawnConfig",
+    "Class LethalMin.MoonSpawnConfig+<>c__DisplayClass32_0",
+    "Class LethalMin.NoticeZoneOnlyDetect",
+    "Class LethalMin.Onion",
+    "Class LethalMin.Onion+<>c",
+    "Class LethalMin.Onion+<>c__DisplayClass26_0",
+    "Class LethalMin.Onion+<>c__DisplayClass35_0",
+    "Class LethalMin.Onion+<>c__DisplayClass38_0",
+    "Class LethalMin.Onion+<>c__DisplayClass39_0",
+    "Class LethalMin.Onion+<SendPikminToOnion>d__25",
+    "Class LethalMin.Onion+<SpawnedInterval>d__24",
+    "Class LethalMin.Onion+<SproutSpawnRoutine>d__48",
+    "Class LethalMin.Onion+<WaitForFieldCapacity>d__28",
+    "Class LethalMin.Onion+<WithdrawPikminFromOnion>d__26",
+    "Class LethalMin.OnionItem",
+    "Class LethalMin.OnionItem+<DoCollectAnim>d__20",
+    "Class LethalMin.OnionSoundPack",
+    "Class LethalMin.OwnerNetworkAnimator",
+    "Class LethalMin.P2FusionProperties",
+    "Class LethalMin.P2FusionProperties+<>c",
+    "Class LethalMin.P3FusionProperties",
+    "Class LethalMin.P3FusionProperties+<>c",
+    "Class LethalMin.P4FusionProperties",
+    "Class LethalMin.P4FusionProperties+<>c",
+    "Class LethalMin.PHeyFusionProperties",
+    "Class LethalMin.PHeyFusionProperties+<>c",
+    "Class LethalMin.PikCaller",
+    "Class LethalMin.PikCaller+<CallPikminToBaseCoroutine>d__17",
+    "Class LethalMin.PiklopediaEntry",
+    "Class LethalMin.PikminAI",
+    "Class LethalMin.PikminAI+<>c__DisplayClass181_0",
+    "Class LethalMin.PikminAI+<>c__DisplayClass181_1",
+    "Class LethalMin.PikminAI+<>c__DisplayClass181_2",
+    "Class LethalMin.PikminAI+<>c__DisplayClass181_3",
+    "Class LethalMin.PikminAI+<>c__DisplayClass181_4",
+    "Class LethalMin.PikminAI+<>c__DisplayClass181_5",
+    "Class LethalMin.PikminAI+<>c__DisplayClass181_6",
+    "Class LethalMin.PikminAI+<AttackRoutine>d__232",
+    "Class LethalMin.PikminAI+<DelayMovement>d__294",
+    "Class LethalMin.PikminAI+<DelayedYay>d__299",
+    "Class LethalMin.PikminAI+<DelayedYayUntilGrounded>d__300",
+    "Class LethalMin.PikminAI+<DisableColiderAfterJump>d__208",
+    "Class LethalMin.PikminAI+<DoCharge>d__145",
+    "Class LethalMin.PikminAI+<HitEnemyStanding>d__227",
+    "Class LethalMin.PikminAI+<PlayDelayedAnimation>d__295",
+    "Class LethalMin.PikminAI+<PlayDelayedSound>d__291",
+    "Class LethalMin.PikminAI+<PlayRandomPanicSoundOnInterval>d__221",
+    "Class LethalMin.PikminAI+<SpawnGhostAfterDelay>d__258",
+    "Class LethalMin.PikminBridgeTrigger",
+    "Class LethalMin.PikminCollisionDetect",
+    "Class LethalMin.PikminDamageTrigger",
+    "Class LethalMin.PikminEffectTrigger",
+    "Class LethalMin.PikminEnemy",
+    "Class LethalMin.PikminEnemy+<>c",
+    "Class LethalMin.PikminEnemy+<DestroyAfterDelay>d__47",
+    "Class LethalMin.PikminEnemy+<GetNearbyPikmin>d__18",
+    "Class LethalMin.PikminGhost",
+    "Class LethalMin.PikminItem",
+    "Class LethalMin.PikminItem+<>c",
+    "Class LethalMin.PikminItem+<>c__DisplayClass50_0",
+    "Class LethalMin.PikminItem+<>c__DisplayClass50_1",
+    "Class LethalMin.PikminItem+<>c__DisplayClass50_2",
+    "Class LethalMin.PikminItem+<>c__DisplayClass50_3",
+    "Class LethalMin.PikminItem+<CarryNumerator>d__71",
+    "Class LethalMin.PikminItem+<DespawnNextFrame>d__69",
+    "Class LethalMin.PikminItem+<DoYays>d__84",
+    "Class LethalMin.PikminItemCounter",
+    "Class LethalMin.PikminItemSettings",
+    "Class LethalMin.PikminLatchTrigger",
+    "Class LethalMin.PikminLatchTriggerNetworkAddon",
+    "Class LethalMin.PikminManager",
+    "Class LethalMin.PikminManager+<>c",
+    "Class LethalMin.PikminManager+<>c__DisplayClass147_0",
+    "Class LethalMin.PikminManager+<>c__DisplayClass147_1",
+    "Class LethalMin.PikminManager+<>c__DisplayClass157_0",
+    "Class LethalMin.PikminManager+<>c__DisplayClass171_0",
+    "Class LethalMin.PikminManager+<>c__DisplayClass41_0",
+    "Class LethalMin.PikminManager+<LoadSproutData>d__185",
+    "Class LethalMin.PikminManager+<SingingSequence>d__40",
+    "Class LethalMin.PikminManager+<SpawnOnionsAfterDelay>d__165",
+    "Class LethalMin.PikminManager+<SpawnPikminIntervalled>d__155",
+    "Class LethalMin.PikminManager+<TweenChargeWeight>d__37",
+    "Class LethalMin.PikminManager+<WaitForAllOnionsToInitalize>d__167",
+    "Class LethalMin.PikminManager+<WaitToDespawnObjects>d__189",
+    "Class LethalMin.PikminNetworkRigidbody",
+    "Class LethalMin.PikminNetworkTransfrom",
+    "Class LethalMin.PikminNoticeZone",
+    "Class LethalMin.PikminEnemyCollisionDetector",
+    "Class LethalMin.PikminScanNodeProperties",
+    "Class LethalMin.PikminTypeResolver",
+    "Class LethalMin.PikminTypeResolver+<>c",
+    "Class LethalMin.PikminVehicleController",
+    "Class LethalMin.PikminZap",
+    "Class LethalMin.PikminZap+<SpawnGhost>d__4",
+    "Class LethalMin.PikminSproutFXManager",
+    "Class LethalMin.PikminTeleportTrigger",
+    "Class LethalMin.PlayerGhost",
+    "Class LethalMin.PuffminAI",
+    "Class LethalMin.PuffminAI+<LatchedOnRoutine>d__55",
+    "Class LethalMin.PuffminAI+<SpawnGhostAfterDelay>d__75",
+    "Class LethalMin.PuffminAI+<TryHitPlayer>d__52",
+    "Class LethalMin.PuffminAI+<TweenColors>d__87",
+    "Class LethalMin.PuffminLeader",
+    "Class LethalMin.PuffminLeader+<TweenSize>d__27",
+    "Class LethalMin.PuffminNoticeZone",
+    "Class LethalMin.PurplePikminAI",
+    "Class LethalMin.PurplePikminAI+<SlamAfterDelay>d__8",
+    "Class LethalMin.PurplePikminTrajectoryModifier",
+    "Class LethalMin.RockPikminAI",
+    "Class LethalMin.RockPikminAI+<WaitToGetUp>d__20",
+    "Class LethalMin.RockPikminAI+<WaitToUnembed>d__25",
+    "Class LethalMin.SaveManager",
+    "Class LethalMin.ShipOnion",
+    "Class LethalMin.ShipOnion+<>c",
+    "Class LethalMin.ShipPhaseOnionContainer",
+    "Class LethalMin.ShipPhaseOnionContainer+ShipPhaseOnion",
+    "Class LethalMin.SofaChairPikminInteraction",
+    "Class LethalMin.SpecialPikminIdleInteraction",
+    "Class LethalMin.Sprout",
+    "Class LethalMin.Sprout+<>c__DisplayClass35_0",
+    "Class LethalMin.Sprout+<>c__DisplayClass37_0",
+    "Class LethalMin.Sprout+<AnimateSprout>d__28",
+    "Class LethalMin.Sprout+<DespawnRoutine>d__51",
+    "Class LethalMin.Sprout+<PluckRoutine>d__46",
+    "Class LethalMin.TrajectoryPredictor",
+    "Class LethalMin.WeatherSpawnConfig",
+    "Class LethalMin.WhistleItem",
+    "Class LethalMin.WhistleItem+<StartWhistAudio>d__47",
+    "Class LethalMin.WhistleItem+<TweenSize>d__48",
+    "Class LethalMin.WhistleSoundPack",
+    "Class LethalMin.FlyingNavAgentController",
+    "Class LethalMin.WingedPikminAI",
+    "Class LethalMin.MyPluginInfo",
+    "Class LethalMin.Utils.AnimStateVisualizer",
+    "Class LethalMin.Utils.BetterButton",
+    "Class LethalMin.Utils.BoolValue",
+    "Class LethalMin.Utils.GradientTextureGenerator",
+    "Class LethalMin.Utils.GrowthObjectCache",
+    "Class LethalMin.Utils.MeshNoiseDistorter",
+    "Class LethalMin.Utils.NavMeshPathVisualizer",
+    "Class LethalMin.Utils.NavMeshVisualizer",
+    "Class LethalMin.Utils.PerlinNoiseGenerator",
+    "Class LethalMin.Utils.PikChecks",
+    "Class LethalMin.Utils.PikChecks+<>c",
+    "Class LethalMin.Utils.PikChecks+<>c__DisplayClass11_0",
+    "Class LethalMin.Utils.PikUtils",
+    "Class LethalMin.Utils.PikUtils+EqualityComparer`1",
+    "Class LethalMin.Utils.PikUtils+<>c",
+    "Class LethalMin.Utils.PikUtils+<>c__DisplayClass14_0",
+    "Class LethalMin.Utils.PikUtils+<>c__DisplayClass30_0",
+    "Class LethalMin.Utils.RemoveAfterDelay",
+    "Class LethalMin.Utils.RemoveAfterDelay+<RemoveAfterDelayRoutine>d__2",
+    "Class LethalMin.Utils.RemoveCopyOnPrefab",
+    "Class LethalMin.Utils.WhistleLineRender",
+    "Class LethalMin.Routeing.FloorData",
+    "Class LethalMin.Routeing.FloorDataGenerator",
+    "Class LethalMin.Routeing.FloorDataGenerator+<>c__DisplayClass7_0",
+    "Class LethalMin.Routeing.FloorDataGenerator+<>c__DisplayClass8_1",
+    "Class LethalMin.Routeing.FloorDataGenerator+<>c__DisplayClass9_0",
+    "Class LethalMin.Routeing.PikminRoute",
+    "Class LethalMin.Routeing.PikminRouteManager",
+    "Class LethalMin.Routeing.PikminRouteManager+<>c",
+    "Class LethalMin.Routeing.PikminRouteManager+<>c__DisplayClass20_0",
+    "Class LethalMin.Routeing.PikminRouteManager+<>c__DisplayClass22_0",
+    "Class LethalMin.Routeing.PikminRouteManager+<>c__DisplayClass33_0",
+    "Class LethalMin.Routeing.PikminRouteManager+<GetFloorData>d__17",
+    "Class LethalMin.Routeing.PikminRouteRequest",
+    "Class LethalMin.Routeing.RouteContext",
+    "Class LethalMin.Routeing.RouteGenerationStrategy",
+    "Class LethalMin.Routeing.RouteGenerationStrategy+<>c__DisplayClass10_0",
+    "Class LethalMin.Routeing.RouteGenerationStrategy+<>c__DisplayClass11_0",
+    "Class LethalMin.Routeing.RouteGenerationStrategy+<>c__DisplayClass8_0",
+    "Class LethalMin.Routeing.DirectOutdoorStrategy",
+    "Class LethalMin.Routeing.IndoorToOutdoorStrategy",
+    "Class LethalMin.Routeing.DirectIndoorStrategy",
+    "Class LethalMin.Routeing.OutdoorToIndoorStrategy",
+    "Class LethalMin.Routeing.MoonOverrideStrategy",
+    "Class LethalMin.Routeing.RouteNode",
+    "Class LethalMin.Routeing.RouteNode+FloatOrCollider",
+    "Class LethalMin.Routeing.RouteValidation",
+    "Class LethalMin.HUD.GlowMobHUD",
+    "Class LethalMin.HUD.CarouselEffect",
+    "Class LethalMin.HUD.CarouselEffect+<SlideCoroutine>d__23",
+    "Class LethalMin.HUD.OnionHUDManager",
+    "Class LethalMin.HUD.OnionHUDManager+<>c",
+    "Class LethalMin.HUD.OnionHUDSlot",
+    "Class LethalMin.HUD.PikminCounter",
+    "Class LethalMin.HUD.PikminCounter+<FlashAlpha>d__16",
+    "Class LethalMin.HUD.PikminEndOfGameStatUIElements",
+    "Class LethalMin.HUD.PikminFrame",
+    "Class LethalMin.HUD.PikminHUDElement",
+    "Class LethalMin.HUD.PikminHUDManager",
+    "Class LethalMin.HUD.PikminHUDManager+<>c__DisplayClass37_0",
+    "Class LethalMin.HUD.PikminHUDManager+<TemporarlyHideSelectedPikmin>d__41",
+    "Class LethalMin.HUD.PikminRaisedTextBox",
+    "Class LethalMin.Pikmin.PikminAnimationPack",
+    "Class LethalMin.Pikmin.AttackEnemyTask",
+    "Class LethalMin.Pikmin.CarryItemTask",
+    "Class LethalMin.Pikmin.LungPropPikmin",
+    "Class LethalMin.Pikmin.MoonSettings",
+    "Class LethalMin.Pikmin.OnionFuseRules",
+    "Class LethalMin.Pikmin.OnionType",
+    "Class LethalMin.Pikmin.PikminGrowStage",
+    "Class LethalMin.Pikmin.PikminLinkAnimation",
+    "Class LethalMin.Pikmin.PikminOnlyZone",
+    "Class LethalMin.Pikmin.PikminSnapPoint",
+    "Class LethalMin.Pikmin.PikminSnapPriority",
+    "Class LethalMin.Pikmin.PikminSoundPack",
+    "Class LethalMin.Pikmin.PikminSoundPack+<>c",
+    "Class LethalMin.Pikmin.PikminTask",
+    "Class LethalMin.Pikmin.PikminTaskRegistry",
+    "Class LethalMin.Pikmin.PikminType",
+    "Class LethalMin.Pikmin.ReturnToShipTask",
+    "Class LethalMin.Pikmin.OnionItemModelGeneration",
+    "Class LethalMin.Pikmin.OnionItemModelRefernces",
+    "Class LethalMin.Pikmin.OnionModelGeneration",
+    "Class LethalMin.Pikmin.OnionModelRefernces",
+    "Class LethalMin.Pikmin.PikminModelGeneration",
+    "Class LethalMin.Pikmin.PikminModelRefernces",
+    "Class LethalMin.Pikmin.PuffminModelGeneration",
+    "Class LethalMin.Pikmin.PuffminModelRefernces",
+    "Class LethalMin.Pikmin.SproutModelGeneration",
+    "Class LethalMin.Pikmin.SproutModelRefences",
+    "Class LethalMin.Patches.BoomboxItemPatch",
+    "Class LethalMin.Patches.BridgeTriggerPatch",
+    "Class LethalMin.Patches.BridgeTriggerType2Patch",
+    "Class LethalMin.Patches.DeleteFileButtonPatch",
+    "Class LethalMin.Patches.DepositItemsDeskPatch",
+    "Class LethalMin.Patches.DungeonPatch",
+    "Class LethalMin.Patches.EnemyAIPatch",
+    "Class LethalMin.Patches.EnemyAIPatch+<>c",
+    "Class LethalMin.Patches.EntranceTeleportPatch",
+    "Class LethalMin.Patches.GameNetworkManagerPatch",
+    "Class LethalMin.Patches.GrabbableObjectPatch",
+    "Class LethalMin.Patches.HUDManagerPatch",
+    "Class LethalMin.Patches.LandminePatch",
+    "Class LethalMin.Patches.LungPropPatch",
+    "Class LethalMin.Patches.MenuManagerPatch",
+    "Class LethalMin.Patches.MineshaftElevatorControllerPatch",
+    "Class LethalMin.Patches.PlayerControllerBPatch",
+    "Class LethalMin.Patches.PlayerControllerBPatch+<>c__DisplayClass3_0",
+    "Class LethalMin.Patches.PlayerControllerBPatch+<>c__DisplayClass4_0",
+    "Class LethalMin.Patches.PlayerControllerBPatch+<DeactivateBodyAfterDeath>d__3",
+    "Class LethalMin.Patches.PlayerControllerBPatch+<RemoveBodyAfterDeath>d__4",
+    "Class LethalMin.Patches.RoundManagerPatch",
+    "Class LethalMin.Patches.ShipTeleporterPatch",
+    "Class LethalMin.Patches.ShipTeleporterPatch+<WaitForBeamUp>d__1",
+    "Class LethalMin.Patches.SpikeRoofTrapPatch",
+    "Class LethalMin.Patches.StartOfRoundPatch",
+    "Class LethalMin.Patches.StormyWeatherPatch",
+    "Class LethalMin.Patches.StunGrenadeItemPatch",
+    "Class LethalMin.Patches.TerminalPatch",
+    "Class LethalMin.Patches.TurretPatch",
+    "Class LethalMin.Patches.VehicleCollisionTriggerPatch",
+    "Class LethalMin.Patches.VehicleControllerPatch",
+    "Class LethalMin.Patches.AI.BaboonBirdAIPatch",
+    "Class LethalMin.Patches.AI.CaveDwellerAIPatch",
+    "Class LethalMin.Patches.AI.CaveDwellerAIPatch+<>c__DisplayClass2_0",
+    "Class LethalMin.Patches.AI.CaveDwellerAIPatch+<WaitToDisable>d__2",
+    "Class LethalMin.Patches.AI.CompanyMonsterCollisionDetectPatch",
+    "Class LethalMin.Patches.AI.DepositItemsDeskPatch",
+    "Class LethalMin.Patches.AI.ForestGiantAIPatch",
+    "Class LethalMin.Patches.AI.HoarderBugAIPatch",
+    "Class LethalMin.Patches.AI.MaskedPlayerEnemyPatch",
+    "Class LethalMin.Patches.AI.MouthDogAIPatch",
+    "Class LethalMin.Patches.AI.PufferAIPatch",
+    "Class LethalMin.Patches.AI.RedLocustBeesPatch",
+    "Class LethalMin.Library.TypeConverter",
+    "Class LethalMin.Library.TypeConverter+<>c",
+    "Class LethalMin.Library.TypeConverter+<>c__DisplayClass2_0`2",
+    "Class LethalMin.Library.TypeConverter+<>c__DisplayClass40_0",
+    "Class LethalMin.Library.TypeConverter+<>c__DisplayClass40_1",
+    "Class LethalMin.Library.TypeConverter+<>c__DisplayClass7_0`2",
+    "Class LethalMin.Library.DepsManager",
+    "Class LethalMin.Library.LibAssetBundleLoader",
+    "Class LethalMin.Library.LibOnionFuseRulesPatch",
+    "Class LethalMin.Library.LibPikminTypePatch",
+    "Class LethalMin.Library.ReplaceableComponetPatch",
+    "Class LethalMin.ConfigPatches.DontTouchMeUpdateTranspiler",
+    "Class LethalMin.ConfigPatches.DontTouchMeUpdateTranspiler+<UpdateTranspiler>d__0",
+    "Class LethalMin.ConfigPatches.ShotgunItemPatch",
+    "Class LethalMin.Compat.DontTouchMeCompat",
+    "Class LethalMin.Compat.DontTouchMeCompatBridge",
+    "Class LethalMin.Compat.DontTouchMeCompatBridge+<>c__DisplayClass10_0",
+    "Class LethalMin.Compat.DontTouchMeCompatBridge+<DeferredReveal>d__13",
+    "Class LethalMin.Compat.DontTouchMeCompatBridge+<WaitAndConfigureProxy>d__10",
+    "Class LethalMin.Compat.MimicPikminKillZone",
+    "Class LethalMin.Compat.MimicPikminKillZone+<KillRoutine>d__4",
+    "Class LethalMin.Compat.MimicsCompat",
+    "Class LethalMin.Compat.MimicsCompat+<PikminAttackAnimation>d__6",
+    "Class LethalMin.Compat.MimicsCompatBridge",
+    "Class LethalMin.Compat.MimicsCompatBridge+<>c__DisplayClass21_0",
+    "Class LethalMin.Compats.AirControlUnityPatch",
+    "Class LethalMin.Compats.AirUnitBulletPatch",
+    "Class LethalMin.Compats.AutonomousCranePatch",
+    "Class LethalMin.Compats.CompactorTobyPatch",
+    "Class LethalMin.Compats.CompactorTobyPatch+<>c",
+    "Class LethalMin.Compats.CompactorTobyPatch+<DelayedTobyFix>d__1",
+    "Class LethalMin.Compats.FlashTurretPatch",
+    "Class LethalMin.Compats.FunctionalMicrowavePatch",
+    "Class LethalMin.Compats.IndustrialFanPatch",
+    "Class LethalMin.Compats.LaserTurretPatch",
+    "Class LethalMin.Compats.OxydideStrategyPatch",
+    "Class LethalMin.Compats.SellingSallyPatch",
+    "Class LethalMin.Compats.SellingSallyPatch+<>c",
+    "Class LethalMin.Compats.TornadosPatch",
+    "Class LethalMin.Compats.ImperiuEnemyAICollisionDetectPatch",
+    "Class LethalMin.Compats.ImperiumEnemyAIPatch",
+    "Class LethalMin.Compats.ImperiumRoundManagerPatch",
+    "Class LethalMin.Compats.SpawningUIPatch",
+    "Class LethalMin.Compats.MimicsAttackPatch",
+    "Class LethalMin.Compats.PiggyElevatorSystemPatch",
+    "Class LethalMin.Compats.PiggyMetalDetectorPatch",
+    "Class LethalMin.Compats.CustomTouchInteractTriggerPatch",
+    "Class LethalMin.Compats.PiggyTeslaKillTriggerPatch",
+    "Class LethalMin.Compats.EndlessElevatorPatch",
+    "Class LethalMin.Compats.EndlessElevatorPatch+<>O",
+    "Class LethalMin.Compats.EndlessElevatorPatch+<>c",
+    "Class LethalMin.Compats.EndlessElevatorPatch+<WaitRespawnPikmin>d__9",
+    "Class LethalMin.Compats.EndlessElevatorPatch+<WaitWarpOnElevatorStop>d__11",
+    "Class LethalMin.Compats.ZelevatorStrategyPatch",
+    "Class System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute",
+    "Class <PrivateImplementationDetails>",
+    "Class __GEN.NetworkVariableSerializationHelper",
+    "Class NoteBoxz.LethalMin.NetcodePatcher.NetcodePatchedAssemblyAttribute"
+  ],
+  "declarations": [
+    {
+      "line": 187,
+      "text": "namespace Microsoft.CodeAnalysis"
+    },
+    {
+      "line": 191,
+      "text": "\tinternal sealed class EmbeddedAttribute : Attribute"
+    },
+    {
+      "line": 195,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 200,
+      "text": "\tinternal sealed class NullableAttribute : Attribute"
+    },
+    {
+      "line": 217,
+      "text": "\tinternal sealed class NullableContextAttribute : Attribute"
+    },
+    {
+      "line": 229,
+      "text": "\tinternal sealed class RefSafetyRulesAttribute : Attribute"
+    },
+    {
+      "line": 239,
+      "text": "public class InputClassWithUtils : LcInputActions"
+    },
+    {
+      "line": 271,
+      "text": "public class OnionAnimEvents : MonoBehaviour"
+    },
+    {
+      "line": 348,
+      "text": "namespace Lethalm.Utils"
+    },
+    {
+      "line": 350,
+      "text": "\tpublic class LookAtMainCamera : MonoBehaviour"
+    },
+    {
+      "line": 383,
+      "text": "namespace LethalMin"
+    },
+    {
+      "line": 406,
+      "text": "\tpublic class LethalMin : BaseUnityPlugin"
+    },
+    {
+      "line": 2837,
+      "text": "\tpublic class AssetBundleLoader : MonoBehaviour"
+    },
+    {
+      "line": 2839,
+      "text": "\t\tprivate class BundleInfo"
+    },
+    {
+      "line": 3220,
+      "text": "\tpublic class PikminAnimatorController : MonoBehaviour"
+    },
+    {
+      "line": 3222,
+      "text": "\t\tpublic class AnimationCondition"
+    },
+    {
+      "line": 3640,
+      "text": "\tpublic class BaseOnion : Onion, IGenerationSwitchable"
+    },
+    {
+      "line": 4060,
+      "text": "\tpublic abstract class BaseOnionFusionProperties : MonoBehaviour"
+    },
+    {
+      "line": 4068,
+      "text": "\tpublic class BoomBoxPikminInteraction : MonoBehaviour"
+    },
+    {
+      "line": 4162,
+      "text": "\tpublic class CompatClassAttribute : Attribute"
+    },
+    {
+      "line": 4171,
+      "text": "\tpublic class ConfigItem<T>"
+    },
+    {
+      "line": 4872,
+      "text": "\tpublic class ConfigItemAuthorityManager : NetworkBehaviour"
+    },
+    {
+      "line": 4890,
+      "text": "\tpublic class CustomPlayerAnimationManager : MonoBehaviour"
+    },
+    {
+      "line": 5098,
+      "text": "\tpublic class DirectlyPathZone : MonoBehaviour"
+    },
+    {
+      "line": 5140,
+      "text": "\tpublic class BaboonBirdPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 5329,
+      "text": "\tpublic class BlobLatchTrigger : PikminLatchTrigger"
+    },
+    {
+      "line": 5425,
+      "text": "\tpublic class BlobPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 5849,
+      "text": "\tpublic class BushWolfPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 6377,
+      "text": "\tpublic class ButlerEnemyPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 6666,
+      "text": "\tpublic class CaveDwellerPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 6983,
+      "text": "\tpublic class CaveDwellerPikminItem : PikminItem"
+    },
+    {
+      "line": 7320,
+      "text": "\tpublic class ClaySurgeonPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 7634,
+      "text": "\tpublic class CompanyPikminEnemy : NetworkBehaviour"
+    },
+    {
+      "line": 7790,
+      "text": "\tpublic class CrawlerPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 8080,
+      "text": "\tpublic class CustomMaskedAnimationManager : MonoBehaviour"
+    },
+    {
+      "line": 8188,
+      "text": "\tpublic class CustomPikminEnemyOverrideDef : MonoBehaviour"
+    },
+    {
+      "line": 8192,
+      "text": "\tpublic class ForestGiantLatchTrigger : PikminLatchTrigger"
+    },
+    {
+      "line": 8222,
+      "text": "\tpublic class ForestGiantPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 8498,
+      "text": "\tpublic class HoarderBugPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 8983,
+      "text": "\tpublic class JesterPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 9271,
+      "text": "\tpublic class MaskedPlayerPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 9792,
+      "text": "\tpublic class MouthDogPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 10111,
+      "text": "\tpublic class PumaPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 10394,
+      "text": "\tpublic class RadMechLatchTrigger : PikminLatchTrigger"
+    },
+    {
+      "line": 10428,
+      "text": "\tpublic class RadMechPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 11059,
+      "text": "\tpublic class RedLocustBeesPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 11662,
+      "text": "\tpublic class SandSpiderPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 11952,
+      "text": "\tpublic class StingrayPikminEnemy : PikminEnemy"
+    },
+    {
+      "line": 12271,
+      "text": "\tpublic class EnemyGrabbableObject : MonoBehaviour"
+    },
+    {
+      "line": 12335,
+      "text": "\tpublic class GenerationManager : MonoBehaviour"
+    },
+    {
+      "line": 12376,
+      "text": "\tpublic class Glowmob : NetworkBehaviour"
+    },
+    {
+      "line": 13758,
+      "text": "\tpublic class GlowPikminAI : PikminAI"
+    },
+    {
+      "line": 14858,
+      "text": "\tpublic class GlowSeed : GrabbableObject"
+    },
+    {
+      "line": 15274,
+      "text": "\tpublic class Lumiknull : NetworkBehaviour"
+    },
+    {
+      "line": 15761,
+      "text": "\tpublic class Triknull : NetworkBehaviour"
+    },
+    {
+      "line": 16218,
+      "text": "\tpublic class OnionHUDAnimEvents : MonoBehaviour"
+    },
+    {
+      "line": 16227,
+      "text": "\tpublic class FreezeableWater : MonoBehaviour"
+    },
+    {
+      "line": 16552,
+      "text": "\tpublic class IcePikminAI : PikminAI"
+    },
+    {
+      "line": 17114,
+      "text": "\tpublic class IcePikminCollisionDetect : MonoBehaviour"
+    },
+    {
+      "line": 17148,
+      "text": "\tpublic class InputClass"
+    },
+    {
+      "line": 17204,
+      "text": "\tpublic class ItemArrivalZone : MonoBehaviour"
+    },
+    {
+      "line": 17336,
+      "text": "\tpublic class Leader : NetworkBehaviour"
+    },
+    {
+      "line": 19488,
+      "text": "\tpublic class LeaderFormationManager : MonoBehaviour"
+    },
+    {
+      "line": 19589,
+      "text": "\tpublic class LeaderFormationTarget : MonoBehaviour"
+    },
+    {
+      "line": 19642,
+      "text": "\tpublic class MoonSpawnConfig"
+    },
+    {
+      "line": 19737,
+      "text": "\tpublic class NoticeZoneOnlyDetect : MonoBehaviour"
+    },
+    {
+      "line": 19761,
+      "text": "\tpublic abstract class Onion : NetworkBehaviour"
+    },
+    {
+      "line": 21032,
+      "text": "\tpublic class OnionItem : GrabbableObject, IGenerationSwitchable"
+    },
+    {
+      "line": 21460,
+      "text": "\tpublic class OnionSoundPack : MonoBehaviour"
+    },
+    {
+      "line": 21494,
+      "text": "\tpublic class OwnerNetworkAnimator : NetworkAnimator"
+    },
+    {
+      "line": 21517,
+      "text": "\tpublic class P2FusionProperties : BaseOnionFusionProperties"
+    },
+    {
+      "line": 21537,
+      "text": "\tpublic class P3FusionProperties : BaseOnionFusionProperties"
+    },
+    {
+      "line": 21608,
+      "text": "\tpublic class P4FusionProperties : BaseOnionFusionProperties"
+    },
+    {
+      "line": 21640,
+      "text": "\tpublic class PHeyFusionProperties : BaseOnionFusionProperties"
+    },
+    {
+      "line": 21662,
+      "text": "\tpublic class PikCaller : NetworkBehaviour"
+    },
+    {
+      "line": 21921,
+      "text": "\tpublic class PiklopediaEntry : ScriptableObject"
+    },
+    {
+      "line": 21960,
+      "text": "\tpublic class PikminAI : EnemyAI, IGenerationSwitchable"
+    },
+    {
+      "line": 30811,
+      "text": "\tpublic class PikminBridgeTrigger : MonoBehaviour"
+    },
+    {
+      "line": 30861,
+      "text": "\tpublic class PikminCollisionDetect : EnemyAICollisionDetect"
+    },
+    {
+      "line": 30956,
+      "text": "\tpublic class PikminDamageTrigger : MonoBehaviour"
+    },
+    {
+      "line": 31101,
+      "text": "\tpublic class PikminEffectTrigger : MonoBehaviour"
+    },
+    {
+      "line": 31133,
+      "text": "\tpublic class PikminEnemy : NetworkBehaviour"
+    },
+    {
+      "line": 32922,
+      "text": "\tpublic class PikminGhost : MonoBehaviour"
+    },
+    {
+      "line": 33055,
+      "text": "\tpublic class PikminItem : NetworkBehaviour"
+    },
+    {
+      "line": 35515,
+      "text": "\tpublic class PikminItemCounter : MonoBehaviour"
+    },
+    {
+      "line": 35606,
+      "text": "\tpublic class PikminItemSettings : MonoBehaviour"
+    },
+    {
+      "line": 35669,
+      "text": "\tpublic class PikminLatchTrigger : MonoBehaviour"
+    },
+    {
+      "line": 35892,
+      "text": "\tpublic class PikminLatchTriggerNetworkAddon : NetworkBehaviour"
+    },
+    {
+      "line": 36164,
+      "text": "\tpublic class PikminManager : NetworkBehaviour"
+    },
+    {
+      "line": 40407,
+      "text": "\tpublic class PikminNetworkRigidbody : NetworkBehaviour"
+    },
+    {
+      "line": 40732,
+      "text": "\tpublic class PikminNetworkTransfrom : NetworkBehaviour"
+    },
+    {
+      "line": 41114,
+      "text": "\tpublic class PikminNoticeZone : NetworkBehaviour"
+    },
+    {
+      "line": 41198,
+      "text": "\tpublic class PikminEnemyCollisionDetector : MonoBehaviour"
+    },
+    {
+      "line": 41230,
+      "text": "\tpublic class PikminScanNodeProperties : ScanNodeProperties"
+    },
+    {
+      "line": 41253,
+      "text": "\tpublic class PikminTypeResolver : NetworkBehaviour"
+    },
+    {
+      "line": 41565,
+      "text": "\tpublic class PikminVehicleController : MonoBehaviour"
+    },
+    {
+      "line": 41817,
+      "text": "\tpublic class PikminZap : MonoBehaviour"
+    },
+    {
+      "line": 41864,
+      "text": "\tpublic class PikminSproutFXManager : MonoBehaviour"
+    },
+    {
+      "line": 41941,
+      "text": "\tpublic class PikminTeleportTrigger : MonoBehaviour"
+    },
+    {
+      "line": 41965,
+      "text": "\tpublic class PlayerGhost : MonoBehaviour"
+    },
+    {
+      "line": 42052,
+      "text": "\tpublic class PuffminAI : EnemyAI, IGenerationSwitchable"
+    },
+    {
+      "line": 44286,
+      "text": "\tpublic class PuffminLeader : NetworkBehaviour"
+    },
+    {
+      "line": 45230,
+      "text": "\tpublic class PuffminNoticeZone : MonoBehaviour"
+    },
+    {
+      "line": 45324,
+      "text": "\tpublic class PurplePikminAI : PikminAI"
+    },
+    {
+      "line": 45448,
+      "text": "\tpublic class PurplePikminTrajectoryModifier : ITrajectoryModifier"
+    },
+    {
+      "line": 45541,
+      "text": "\tpublic class RockPikminAI : PikminAI"
+    },
+    {
+      "line": 46282,
+      "text": "\tpublic static class SaveManager"
+    },
+    {
+      "line": 46414,
+      "text": "\tpublic class ShipOnion : Onion"
+    },
+    {
+      "line": 46513,
+      "text": "\tpublic class ShipPhaseOnionContainer : MonoBehaviour, IGenerationSwitchable"
+    },
+    {
+      "line": 46515,
+      "text": "\t\tpublic class ShipPhaseOnion"
+    },
+    {
+      "line": 46673,
+      "text": "\tpublic class SofaChairPikminInteraction : SpecialPikminIdleInteraction"
+    },
+    {
+      "line": 46800,
+      "text": "\tpublic class SpecialPikminIdleInteraction : NetworkBehaviour"
+    },
+    {
+      "line": 47310,
+      "text": "\tpublic class Sprout : NetworkBehaviour, IGenerationSwitchable"
+    },
+    {
+      "line": 48552,
+      "text": "\tpublic class TrajectoryPredictor : MonoBehaviour"
+    },
+    {
+      "line": 48747,
+      "text": "\tpublic class WeatherSpawnConfig"
+    },
+    {
+      "line": 48805,
+      "text": "\tpublic class WhistleItem : GrabbableObject"
+    },
+    {
+      "line": 49941,
+      "text": "\tpublic class WhistleSoundPack : ScriptableObject"
+    },
+    {
+      "line": 49949,
+      "text": "\tpublic class FlyingNavAgentController : MonoBehaviour"
+    },
+    {
+      "line": 50352,
+      "text": "\tpublic class WingedPikminAI : PikminAI"
+    },
+    {
+      "line": 50732,
+      "text": "\tpublic static class MyPluginInfo"
+    },
+    {
+      "line": 50741,
+      "text": "namespace LethalMin.Utils"
+    },
+    {
+      "line": 50743,
+      "text": "\tpublic class AnimStateVisualizer : MonoBehaviour"
+    },
+    {
+      "line": 50746,
+      "text": "\tpublic class BetterButton : MonoBehaviour, IPointerDownHandler, IEventSystemHandler, IPointerUpHandler"
+    },
+    {
+      "line": 50861,
+      "text": "\tpublic class BoolValue : MonoBehaviour"
+    },
+    {
+      "line": 50865,
+      "text": "\tpublic static class GradientTextureGenerator"
+    },
+    {
+      "line": 51009,
+      "text": "\tpublic class GrowthObjectCache : MonoBehaviour"
+    },
+    {
+      "line": 51043,
+      "text": "\tpublic class MeshNoiseDistorter : MonoBehaviour"
+    },
+    {
+      "line": 51120,
+      "text": "\tpublic class NavMeshPathVisualizer : MonoBehaviour"
+    },
+    {
+      "line": 51229,
+      "text": "\tpublic class NavMeshVisualizer : MonoBehaviour"
+    },
+    {
+      "line": 51265,
+      "text": "\tpublic class PerlinNoiseGenerator : MonoBehaviour"
+    },
+    {
+      "line": 51329,
+      "text": "\tpublic static class PikChecks"
+    },
+    {
+      "line": 51682,
+      "text": "\tpublic static class PikUtils"
+    },
+    {
+      "line": 51684,
+      "text": "\t\tprivate class EqualityComparer<T> : IEqualityComparer<T>"
+    },
+    {
+      "line": 52536,
+      "text": "\tpublic class RemoveAfterDelay : MonoBehaviour"
+    },
+    {
+      "line": 52551,
+      "text": "\tpublic class RemoveCopyOnPrefab : MonoBehaviour"
+    },
+    {
+      "line": 52563,
+      "text": "\tpublic class WhistleLineRender : MonoBehaviour"
+    },
+    {
+      "line": 52641,
+      "text": "namespace LethalMin.Routeing"
+    },
+    {
+      "line": 52643,
+      "text": "\tpublic class FloorData"
+    },
+    {
+      "line": 52653,
+      "text": "\tpublic static class FloorDataGenerator"
+    },
+    {
+      "line": 53064,
+      "text": "\tpublic class PikminRoute"
+    },
+    {
+      "line": 53205,
+      "text": "\tpublic class PikminRouteManager : MonoBehaviour"
+    },
+    {
+      "line": 53655,
+      "text": "\tpublic class PikminRouteRequest"
+    },
+    {
+      "line": 53710,
+      "text": "\tpublic class RouteContext"
+    },
+    {
+      "line": 53726,
+      "text": "\tpublic abstract class RouteGenerationStrategy"
+    },
+    {
+      "line": 54033,
+      "text": "\tpublic class DirectOutdoorStrategy : RouteGenerationStrategy"
+    },
+    {
+      "line": 54109,
+      "text": "\tpublic class IndoorToOutdoorStrategy : RouteGenerationStrategy"
+    },
+    {
+      "line": 54173,
+      "text": "\tpublic class DirectIndoorStrategy : RouteGenerationStrategy"
+    },
+    {
+      "line": 54230,
+      "text": "\tpublic class OutdoorToIndoorStrategy : RouteGenerationStrategy"
+    },
+    {
+      "line": 54270,
+      "text": "\tpublic class MoonOverrideStrategy : RouteGenerationStrategy"
+    },
+    {
+      "line": 54286,
+      "text": "\tpublic class RouteNode"
+    },
+    {
+      "line": 54296,
+      "text": "\t\tpublic class FloatOrCollider"
+    },
+    {
+      "line": 54570,
+      "text": "\tpublic class RouteValidation"
+    },
+    {
+      "line": 54620,
+      "text": "namespace LethalMin.HUD"
+    },
+    {
+      "line": 54622,
+      "text": "\tpublic class GlowMobHUD : MonoBehaviour"
+    },
+    {
+      "line": 54678,
+      "text": "\tpublic class CarouselEffect : MonoBehaviour"
+    },
+    {
+      "line": 54812,
+      "text": "\tpublic class OnionHUDManager : MonoBehaviour"
+    },
+    {
+      "line": 55039,
+      "text": "\tpublic class OnionHUDSlot : MonoBehaviour"
+    },
+    {
+      "line": 55275,
+      "text": "\tpublic class PikminCounter : MonoBehaviour"
+    },
+    {
+      "line": 55371,
+      "text": "\tpublic class PikminEndOfGameStatUIElements : MonoBehaviour"
+    },
+    {
+      "line": 55430,
+      "text": "\tpublic class PikminFrame : MonoBehaviour"
+    },
+    {
+      "line": 55482,
+      "text": "\tpublic class PikminHUDElement : MonoBehaviour"
+    },
+    {
+      "line": 55511,
+      "text": "\tpublic class PikminHUDManager : MonoBehaviour"
+    },
+    {
+      "line": 55996,
+      "text": "\tpublic class PikminRaisedTextBox : MonoBehaviour"
+    },
+    {
+      "line": 56001,
+      "text": "namespace LethalMin.Pikmin"
+    },
+    {
+      "line": 56004,
+      "text": "\tpublic class PikminAnimationPack : ScriptableObject"
+    },
+    {
+      "line": 56067,
+      "text": "\tpublic class AttackEnemyTask : PikminTask"
+    },
+    {
+      "line": 56136,
+      "text": "\tpublic class CarryItemTask : PikminTask"
+    },
+    {
+      "line": 56235,
+      "text": "\tpublic class LungPropPikmin : MonoBehaviour"
+    },
+    {
+      "line": 56271,
+      "text": "\tpublic class MoonSettings : ScriptableObject"
+    },
+    {
+      "line": 56285,
+      "text": "\tpublic class OnionFuseRules : ScriptableObject"
+    },
+    {
+      "line": 56294,
+      "text": "\tpublic class OnionType : ScriptableObject"
+    },
+    {
+      "line": 56504,
+      "text": "\tpublic class PikminGrowStage"
+    },
+    {
+      "line": 56520,
+      "text": "\tpublic class PikminLinkAnimation : MonoBehaviour"
+    },
+    {
+      "line": 56789,
+      "text": "\tpublic class PikminOnlyZone : MonoBehaviour"
+    },
+    {
+      "line": 56832,
+      "text": "\tpublic class PikminSnapPoint"
+    },
+    {
+      "line": 56850,
+      "text": "\tpublic static class PikminSnapPriority"
+    },
+    {
+      "line": 56948,
+      "text": "\tpublic class PikminSoundPack : ScriptableObject"
+    },
+    {
+      "line": 57195,
+      "text": "\tpublic abstract class PikminTask"
+    },
+    {
+      "line": 57253,
+      "text": "\tpublic static class PikminTaskRegistry"
+    },
+    {
+      "line": 57292,
+      "text": "\tpublic class PikminType : ScriptableObject"
+    },
+    {
+      "line": 57731,
+      "text": "\tpublic class ReturnToShipTask(PikminAI pikminAssigningTo) : PikminTask(pikminAssigningTo)"
+    },
+    {
+      "line": 57778,
+      "text": "\tpublic class OnionItemModelGeneration : MonoBehaviour"
+    },
+    {
+      "line": 57792,
+      "text": "\tpublic class OnionItemModelRefernces : MonoBehaviour"
+    },
+    {
+      "line": 57806,
+      "text": "\tpublic class OnionModelGeneration : MonoBehaviour"
+    },
+    {
+      "line": 57841,
+      "text": "\tpublic class OnionModelRefernces : MonoBehaviour"
+    },
+    {
+      "line": 57876,
+      "text": "\tpublic class PikminModelGeneration : MonoBehaviour"
+    },
+    {
+      "line": 57955,
+      "text": "\tpublic class PikminModelRefernces : MonoBehaviour"
+    },
+    {
+      "line": 58001,
+      "text": "\tpublic class PuffminModelGeneration : MonoBehaviour"
+    },
+    {
+      "line": 58018,
+      "text": "\tpublic class PuffminModelRefernces : MonoBehaviour"
+    },
+    {
+      "line": 58035,
+      "text": "\tpublic class SproutModelGeneration : MonoBehaviour"
+    },
+    {
+      "line": 58064,
+      "text": "\tpublic class SproutModelRefences : MonoBehaviour"
+    },
+    {
+      "line": 58094,
+      "text": "namespace LethalMin.Patches"
+    },
+    {
+      "line": 58097,
+      "text": "\tpublic class BoomboxItemPatch"
+    },
+    {
+      "line": 58111,
+      "text": "\tinternal class BridgeTriggerPatch"
+    },
+    {
+      "line": 58125,
+      "text": "\tinternal class BridgeTriggerType2Patch"
+    },
+    {
+      "line": 58139,
+      "text": "\tpublic class DeleteFileButtonPatch"
+    },
+    {
+      "line": 58156,
+      "text": "\tpublic class DepositItemsDeskPatch"
+    },
+    {
+      "line": 58173,
+      "text": "\tpublic class DungeonPatch"
+    },
+    {
+      "line": 58193,
+      "text": "\tpublic class EnemyAIPatch"
+    },
+    {
+      "line": 58368,
+      "text": "\tpublic class EntranceTeleportPatch"
+    },
+    {
+      "line": 58388,
+      "text": "\tpublic class GameNetworkManagerPatch"
+    },
+    {
+      "line": 58430,
+      "text": "\tpublic class GrabbableObjectPatch"
+    },
+    {
+      "line": 58587,
+      "text": "\tpublic class HUDManagerPatch"
+    },
+    {
+      "line": 58760,
+      "text": "\tpublic class LandminePatch"
+    },
+    {
+      "line": 58846,
+      "text": "\tpublic class LungPropPatch"
+    },
+    {
+      "line": 58863,
+      "text": "\tpublic class MenuManagerPatch"
+    },
+    {
+      "line": 58908,
+      "text": "\tpublic class MineshaftElevatorControllerPatch"
+    },
+    {
+      "line": 58939,
+      "text": "\tpublic class PlayerControllerBPatch"
+    },
+    {
+      "line": 59108,
+      "text": "\tpublic class RoundManagerPatch"
+    },
+    {
+      "line": 59172,
+      "text": "\tinternal class ShipTeleporterPatch"
+    },
+    {
+      "line": 59200,
+      "text": "\tpublic class SpikeRoofTrapPatch"
+    },
+    {
+      "line": 59233,
+      "text": "\tpublic class StartOfRoundPatch"
+    },
+    {
+      "line": 59408,
+      "text": "\tinternal class StormyWeatherPatch"
+    },
+    {
+      "line": 59464,
+      "text": "\tinternal class StunGrenadeItemPatch"
+    },
+    {
+      "line": 59512,
+      "text": "\tpublic class TerminalPatch"
+    },
+    {
+      "line": 59599,
+      "text": "\tpublic class TurretPatch"
+    },
+    {
+      "line": 59711,
+      "text": "\tpublic class VehicleCollisionTriggerPatch"
+    },
+    {
+      "line": 59734,
+      "text": "\tpublic class VehicleControllerPatch"
+    },
+    {
+      "line": 59755,
+      "text": "namespace LethalMin.Patches.AI"
+    },
+    {
+      "line": 59758,
+      "text": "\tpublic class BaboonBirdAIPatch"
+    },
+    {
+      "line": 59785,
+      "text": "\tinternal class CaveDwellerAIPatch"
+    },
+    {
+      "line": 59837,
+      "text": "\tpublic class CompanyMonsterCollisionDetectPatch"
+    },
+    {
+      "line": 59861,
+      "text": "\tpublic class DepositItemsDeskPatch"
+    },
+    {
+      "line": 59875,
+      "text": "\tpublic class ForestGiantAIPatch"
+    },
+    {
+      "line": 59923,
+      "text": "\tpublic class HoarderBugAIPatch"
+    },
+    {
+      "line": 59949,
+      "text": "\tpublic class MaskedPlayerEnemyPatch"
+    },
+    {
+      "line": 60014,
+      "text": "\tinternal class MouthDogAIPatch"
+    },
+    {
+      "line": 60028,
+      "text": "\tinternal class PufferAIPatch"
+    },
+    {
+      "line": 60060,
+      "text": "\tinternal class RedLocustBeesPatch"
+    },
+    {
+      "line": 60116,
+      "text": "namespace LethalMin.Library"
+    },
+    {
+      "line": 60118,
+      "text": "\tpublic static class TypeConverter"
+    },
+    {
+      "line": 61138,
+      "text": "\tpublic static class DepsManager"
+    },
+    {
+      "line": 61248,
+      "text": "\tpublic class LibAssetBundleLoader : MonoBehaviour"
+    },
+    {
+      "line": 61493,
+      "text": "\tinternal class LibOnionFuseRulesPatch"
+    },
+    {
+      "line": 61506,
+      "text": "\tinternal class LibPikminTypePatch"
+    },
+    {
+      "line": 61519,
+      "text": "\tinternal class ReplaceableComponetPatch"
+    },
+    {
+      "line": 61586,
+      "text": "namespace LethalMin.ConfigPatches"
+    },
+    {
+      "line": 61590,
+      "text": "\tinternal static class DontTouchMeUpdateTranspiler"
+    },
+    {
+      "line": 61632,
+      "text": "\tpublic class ShotgunItemPatch"
+    },
+    {
+      "line": 61669,
+      "text": "namespace LethalMin.Compat"
+    },
+    {
+      "line": 61673,
+      "text": "\tinternal static class DontTouchMeCompat"
+    },
+    {
+      "line": 61699,
+      "text": "\tpublic static class DontTouchMeCompatBridge"
+    },
+    {
+      "line": 61916,
+      "text": "\tpublic class MimicPikminKillZone : MonoBehaviour"
+    },
+    {
+      "line": 61958,
+      "text": "\tinternal static class MimicsCompat"
+    },
+    {
+      "line": 62116,
+      "text": "\tpublic static class MimicsCompatBridge"
+    },
+    {
+      "line": 62240,
+      "text": "namespace LethalMin.Compats"
+    },
+    {
+      "line": 62244,
+      "text": "\tpublic static class AirControlUnityPatch"
+    },
+    {
+      "line": 62337,
+      "text": "\tpublic static class AirUnitBulletPatch"
+    },
+    {
+      "line": 62372,
+      "text": "\tpublic static class AutonomousCranePatch"
+    },
+    {
+      "line": 62464,
+      "text": "\tpublic static class CompactorTobyPatch"
+    },
+    {
+      "line": 62490,
+      "text": "\tpublic static class FlashTurretPatch"
+    },
+    {
+      "line": 62536,
+      "text": "\tpublic static class FunctionalMicrowavePatch"
+    },
+    {
+      "line": 62589,
+      "text": "\tpublic static class IndustrialFanPatch"
+    },
+    {
+      "line": 62683,
+      "text": "\tpublic static class LaserTurretPatch"
+    },
+    {
+      "line": 62739,
+      "text": "\tpublic static class OxydideStrategyPatch"
+    },
+    {
+      "line": 62765,
+      "text": "\tpublic static class SellingSallyPatch"
+    },
+    {
+      "line": 62796,
+      "text": "\tpublic static class TornadosPatch"
+    },
+    {
+      "line": 62865,
+      "text": "\tpublic static class ImperiuEnemyAICollisionDetectPatch"
+    },
+    {
+      "line": 62880,
+      "text": "\tpublic static class ImperiumEnemyAIPatch"
+    },
+    {
+      "line": 62896,
+      "text": "\tpublic static class ImperiumRoundManagerPatch"
+    },
+    {
+      "line": 62911,
+      "text": "\tpublic class SpawningUIPatch"
+    },
+    {
+      "line": 62937,
+      "text": "\tpublic static class MimicsAttackPatch"
+    },
+    {
+      "line": 62970,
+      "text": "\tpublic static class PiggyElevatorSystemPatch"
+    },
+    {
+      "line": 62999,
+      "text": "\tpublic static class PiggyMetalDetectorPatch"
+    },
+    {
+      "line": 63044,
+      "text": "\tpublic static class CustomTouchInteractTriggerPatch"
+    },
+    {
+      "line": 63138,
+      "text": "\tpublic static class PiggyTeslaKillTriggerPatch"
+    },
+    {
+      "line": 63165,
+      "text": "\tpublic static class EndlessElevatorPatch"
+    },
+    {
+      "line": 63175,
+      "text": "\t\tprivate static class <>O"
+    },
+    {
+      "line": 63447,
+      "text": "\tpublic static class ZelevatorStrategyPatch"
+    },
+    {
+      "line": 63465,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 63468,
+      "text": "\tinternal sealed class IgnoresAccessChecksToAttribute : Attribute"
+    },
+    {
+      "line": 63475,
+      "text": "namespace __GEN"
+    },
+    {
+      "line": 63477,
+      "text": "\tinternal class NetworkVariableSerializationHelper"
+    },
+    {
+      "line": 63489,
+      "text": "namespace NoteBoxz.LethalMin.NetcodePatcher"
+    },
+    {
+      "line": 63492,
+      "text": "\tinternal class NetcodePatchedAssemblyAttribute : Attribute"
+    }
+  ],
+  "spawn_surface_hits": [
+    {
+      "line": 1356,
+      "text": "\t\t\tEnemies.RegisterEnemy(val, (Dictionary<LevelTypes, int>)null, (Dictionary<string, int>)null, val2, (TerminalKeyword)null);"
+    },
+    {
+      "line": 1363,
+      "text": "\t\t\tEnemies.RegisterEnemy(val3, (Dictionary<LevelTypes, int>)null, (Dictionary<string, int>)null, val4, (TerminalKeyword)null);"
+    },
+    {
+      "line": 3679,
+      "text": "\t\t\t\tOnionMesh = Object.Instantiate<GameObject>(LethalMin.DefultOnionMesh, MeshConatiner);"
+    },
+    {
+      "line": 3683,
+      "text": "\t\t\t\tOnionMesh = Object.Instantiate<GameObject>(onionType.OnionOverrideModelPrefab, MeshConatiner);"
+    },
+    {
+      "line": 3898,
+      "text": "\t\t\t\t\t\tSprout sprout = Object.Instantiate<GameObject>(prefab, spawnPos, Quaternion.identity).GetComponent<Sprout>();"
+    },
+    {
+      "line": 3901,
+      "text": "\t\t\t\t\t\t((NetworkBehaviour)sprout).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 8121,
+      "text": "\t\t\t\t\t\tChainIKConstraint val3 = Object.Instantiate<ChainIKConstraint>(val2);"
+    },
+    {
+      "line": 9450,
+      "text": "\t\t\t\tSpawnSproutOnMaskedServerRpc(((NetworkBehaviour)maskedPlayerEnemy.mimickingPlayer).OwnerClientId);"
+    },
+    {
+      "line": 9485,
+      "text": "\t\tpublic void SpawnSproutOnMaskedServerRpc(ulong PlayerID)"
+    },
+    {
+      "line": 9510,
+      "text": "\t\t\t\t\tSpawnSproutOnMaskedClientRpc(PlayerID);"
+    },
+    {
+      "line": 9516,
+      "text": "\t\tpublic void SpawnSproutOnMaskedClientRpc(ulong PlayerID)"
+    },
+    {
+      "line": 9571,
+      "text": "\t\t\tGameObject val = Object.Instantiate<GameObject>(LethalMin.assetBundle.LoadAsset<GameObject>(\"Assets/LethalMin/MaskedSprout.prefab\"));"
+    },
+    {
+      "line": 9646,
+      "text": "\t\t\t\t\tGameObject val4 = Object.Instantiate<GameObject>(LethalMin.assetBundle.LoadAsset<GameObject>(\"Assets/LethalMin/PlayerGhostPrefab.prefab\"), ((Component)this).transform.position, Quaternion.identity);"
+    },
+    {
+      "line": 9739,
+      "text": "\t\t\t\t((MaskedPlayerPikminEnemy)(object)target).SpawnSproutOnMaskedServerRpc(playerID);"
+    },
+    {
+      "line": 9755,
+      "text": "\t\t\t\t((MaskedPlayerPikminEnemy)(object)target).SpawnSproutOnMaskedClientRpc(playerID);"
+    },
+    {
+      "line": 14466,
+      "text": "\t\t\t\tGlowSeed component = Object.Instantiate<GameObject>(LethalMin.GlowSeedPrefab, ((Component)this).transform.position + Vector3.up * 2f, Quaternion.identity).GetComponent<GlowSeed>();"
+    },
+    {
+      "line": 14467,
+      "text": "\t\t\t\t((NetworkBehaviour)component).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 15022,
+      "text": "\t\t\t\t\tSpawnGlowPikminServerRpc(((NetworkBehaviour)this).OwnerClientId);"
+    },
+    {
+      "line": 15028,
+      "text": "\t\tpublic void SpawnGlowPikminServerRpc(ulong ThrowerID)"
+    },
+    {
+      "line": 15053,
+      "text": "\t\t\t\t\tSpawnGlowPikminClientRpc(ThrowerID);"
+    },
+    {
+      "line": 15059,
+      "text": "\t\tpublic void SpawnGlowPikminClientRpc(ulong ThrowerID)"
+    },
+    {
+      "line": 15176,
+      "text": "\t\t\tPikminGhost ghost = Object.Instantiate<GameObject>(LethalMin.PikminGhostPrefab, sellPosition, ((Component)this).transform.rotation).GetComponent<PikminGhost>();"
+    },
+    {
+      "line": 15234,
+      "text": "\t\t\t\t((GlowSeed)(object)target).SpawnGlowPikminServerRpc(throwerID);"
+    },
+    {
+      "line": 15250,
+      "text": "\t\t\t\t((GlowSeed)(object)target).SpawnGlowPikminClientRpc(throwerID);"
+    },
+    {
+      "line": 16296,
+      "text": "\t\t\tFrozenWater = Object.Instantiate<GameObject>(LethalMin.assetBundle.LoadAsset<GameObject>(\"Assets/LethalMin/Types/Ice Pikmin/FrozenWater.prefab\"), ((Component)this).transform);"
+    },
+    {
+      "line": 16509,
+      "text": "\t\t\tWaterCounter = Object.Instantiate<GameObject>(LethalMin.assetBundle.LoadAsset<GameObject>(\"Assets/LethalMin/Types/Ice Pikmin/IceWaterCounter.prefab\"));"
+    },
+    {
+      "line": 17556,
+      "text": "\t\t\tPikminNoticeZone component = Object.Instantiate<GameObject>(val, ((Component)this).transform).GetComponent<PikminNoticeZone>();"
+    },
+    {
+      "line": 17557,
+      "text": "\t\t\t((NetworkBehaviour)component).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 17565,
+      "text": "\t\t\tglowmob = Object.Instantiate<GameObject>(val, ((Component)this).transform).GetComponent<Glowmob>();"
+    },
+    {
+      "line": 17566,
+      "text": "\t\t\t((NetworkBehaviour)glowmob).NetworkObject.SpawnWithOwnership(ID, false);"
+    },
+    {
+      "line": 17595,
+      "text": "\t\t\tpredictor = Object.Instantiate<GameObject>(LethalMin.assetBundle.LoadAsset<GameObject>(\"Assets/LethalMin/TrajectoryPredictor.prefab\"), ((Component)this).transform).GetComponent<TrajectoryPredictor>();"
+    },
+    {
+      "line": 17604,
+      "text": "\t\t\tLeaflingSprout = Object.Instantiate<GameObject>(LethalMin.PlayerSproutPrefab, ((Component)Controller.headCostumeContainer).transform.parent);"
+    },
+    {
+      "line": 19515,
+      "text": "\t\t\t\ttargetTransform = Object.Instantiate<GameObject>(val, (Transform)null).transform;"
+    },
+    {
+      "line": 19841,
+      "text": "\t\t\t\t\tSpawnSproutsClientRpc();"
+    },
+    {
+      "line": 20588,
+      "text": "\t\tpublic void SpawnSproutsClientRpc()"
+    },
+    {
+      "line": 20658,
+      "text": "\t\t\t\t\tSprout sprout = Object.Instantiate<GameObject>(prefab, spawnPos, Quaternion.identity).GetComponent<Sprout>();"
+    },
+    {
+      "line": 20661,
+      "text": "\t\t\t\t\t((NetworkBehaviour)sprout).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 21021,
+      "text": "\t\t\t\t((Onion)(object)target).SpawnSproutsClientRpc();"
+    },
+    {
+      "line": 21081,
+      "text": "\t\t\t\tGameObject val = Object.Instantiate<GameObject>(LethalMin.DefultOnionItemModel, ModelContainer);"
+    },
+    {
+      "line": 21086,
+      "text": "\t\t\t\tGameObject val2 = Object.Instantiate<GameObject>(onionType.OnionItemOverrideModelPrefab, ModelContainer);"
+    },
+    {
+      "line": 21852,
+      "text": "\t\t\t\t\tWhistleInstance = Object.Instantiate<GameObject>(val, ((Component)this).transform.position, Quaternion.identity);"
+    },
+    {
+      "line": 22354,
+      "text": "\t\t\tObject.Instantiate<GameObject>(type.ModelPrefab, modelContainer);"
+    },
+    {
+      "line": 26978,
+      "text": "\t\t\t\tPikminZap component = Object.Instantiate<GameObject>(LethalMin.PikminZapPrefab, ((Component)this).transform.position, ((Component)this).transform.rotation).GetComponent<PikminZap>();"
+    },
+    {
+      "line": 27032,
+      "text": "\t\t\t\tSpawnGhostClientRpc();"
+    },
+    {
+      "line": 27076,
+      "text": "\t\tpublic void SpawnGhostServerRpc()"
+    },
+    {
+      "line": 27111,
+      "text": "\t\t\t\tSpawnGhostClientRpc();"
+    },
+    {
+      "line": 27116,
+      "text": "\t\tpublic void SpawnGhostClientRpc()"
+    },
+    {
+      "line": 27151,
+      "text": "\t\t\t\tPikminGhost component = Object.Instantiate<GameObject>(LethalMin.PikminGhostPrefab, ((Component)this).transform.position, ((Component)this).transform.rotation).GetComponent<PikminGhost>();"
+    },
+    {
+      "line": 28365,
+      "text": "\t\t\t\t\tPuffminAI component = Object.Instantiate<GameObject>(LethalMin.PuffminEnemyType.enemyPrefab, ((Component)this).transform.position, ((Component)this).transform.rotation).GetComponent<PuffminAI>();"
+    },
+    {
+      "line": 28366,
+      "text": "\t\t\t\t\t((NetworkBehaviour)component).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 30426,
+      "text": "\t\t\t\t((PikminAI)(object)target).SpawnGhostServerRpc();"
+    },
+    {
+      "line": 30439,
+      "text": "\t\t\t\t((PikminAI)(object)target).SpawnGhostClientRpc();"
+    },
+    {
+      "line": 32969,
+      "text": "\t\t\t\tObject.Instantiate<GameObject>(LostType.PikminGhostOverrideModel, ((Component)this).transform);"
+    },
+    {
+      "line": 33311,
+      "text": "\t\t\t\tGameObject val2 = Object.Instantiate<GameObject>(LethalMin.GrabPosPrefab);"
+    },
+    {
+      "line": 33340,
+      "text": "\t\t\t\tPikminCounter = Object.Instantiate<GameObject>(LethalMin.ItemCounterPrefab).GetComponent<PikminItemCounter>();"
+    },
+    {
+      "line": 36328,
+      "text": "\t\t\tChargeVolume = Object.Instantiate<GameObject>(val2).gameObject.GetComponentInChildren<Volume>();"
+    },
+    {
+      "line": 36330,
+      "text": "\t\t\tshipPhaseOnionContainer = Object.Instantiate<GameObject>(LethalMin.assetBundle.LoadAsset<GameObject>(\"Assets/LethalMin/ShipPhaseOnionContainer.prefab\")).GetComponent<ShipPhaseOnionContainer>();"
+    },
+    {
+      "line": 36946,
+      "text": "\t\t\t\t\tGameObject val2 = Object.Instantiate<GameObject>(LethalMin.assetBundle.LoadAsset<GameObject>(\"Assets/LethalMin/CompanyPikminEnemyScript.prefab\"));"
+    },
+    {
+      "line": 36949,
+      "text": "\t\t\t\t\tcomponent.Spawn(false);"
+    },
+    {
+      "line": 37224,
+      "text": "\t\t\t\tGameObject val3 = Object.Instantiate<GameObject>(LethalMin.SproutPrefab, val, val2);"
+    },
+    {
+      "line": 37232,
+      "text": "\t\t\t\t\t((NetworkBehaviour)component).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 37575,
+      "text": "\t\t\t\tGameObject val5 = Object.Instantiate<GameObject>(LethalMin.EnemyItemNode, ((Component)val4).transform.position, ((Component)val4).transform.rotation);"
+    },
+    {
+      "line": 37578,
+      "text": "\t\t\t\tcomponent.Spawn(false);"
+    },
+    {
+      "line": 38087,
+      "text": "\t\t\tGameObject val4 = Object.Instantiate<GameObject>(val, position, Quaternion.identity);"
+    },
+    {
+      "line": 38089,
+      "text": "\t\t\t((NetworkBehaviour)component).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 38201,
+      "text": "\t\t\t\tSpawnPikminServerRpc(pikminType.PikminTypeID, Quantity, spawnPosition, spawnRotation);"
+    },
+    {
+      "line": 38206,
+      "text": "\t\tpublic void SpawnPikminServerRpc(int PikminID, int quantity, Vector3 SpawnPos, Quaternion SpawnRot)"
+    },
+    {
+      "line": 38273,
+      "text": "\t\t\tPikminAI component = Object.Instantiate<GameObject>(pikminEnemyType.enemyPrefab, SpawnPos, SpawnRot).GetComponent<PikminAI>();"
+    },
+    {
+      "line": 38277,
+      "text": "\t\t\t\t((NetworkBehaviour)component).NetworkObject.SpawnWithOwnership(props.PlayerID, false);"
+    },
+    {
+      "line": 38281,
+      "text": "\t\t\t\t((NetworkBehaviour)component).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 38315,
+      "text": "\t\t\t\tPikminAI component = Object.Instantiate<GameObject>(pikminEnemyType.enemyPrefab, SpawnPos, SpawnRot).GetComponent<PikminAI>();"
+    },
+    {
+      "line": 38316,
+      "text": "\t\t\t\t((NetworkBehaviour)component).NetworkObject.Spawn(true);"
+    },
+    {
+      "line": 38636,
+      "text": "\t\t\t\tOnionItem component = Object.Instantiate<GameObject>(onionItemPrefab, ((Component)val2).transform.position, ((Component)val2).transform.rotation).GetComponent<OnionItem>();"
+    },
+    {
+      "line": 38638,
+      "text": "\t\t\t\t((NetworkBehaviour)component).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 38889,
+      "text": "\t\t\tGameObject val4 = Object.Instantiate<GameObject>(LethalMin.OnionPrefab, val, identity);"
+    },
+    {
+      "line": 38890,
+      "text": "\t\t\t((NetworkBehaviour)val4.GetComponent<Onion>()).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 38945,
+      "text": "\t\t\tGameObject val4 = Object.Instantiate<GameObject>(LethalMin.OnionPrefab, val, identity);"
+    },
+    {
+      "line": 38946,
+      "text": "\t\t\t((NetworkBehaviour)val4.GetComponent<Onion>()).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 39028,
+      "text": "\t\tpublic void SpawnShipPhaseOnionServerRpc(int OnionID)"
+    },
+    {
+      "line": 39065,
+      "text": "\t\t\t\tSpawnShipPhaseOnionClientRpc(OnionID);"
+    },
+    {
+      "line": 39070,
+      "text": "\t\tpublic void SpawnShipPhaseOnionClientRpc(int OnionID)"
+    },
+    {
+      "line": 39104,
+      "text": "\t\t\t\tval3 = ((!((Object)(object)onionTypeByID.OnionOverrideModelPrefab == (Object)null)) ? Object.Instantiate<GameObject>(onionTypeByID.OnionOverrideModelPrefab, ((Component)shipPhaseOnionContainer).transform) : Object.Instantiate<GameObject>(LethalMin.DefultOnionMesh, ((Component)shipPhaseOnionContainer).transform));"
+    },
+    {
+      "line": 39112,
+      "text": "\t\tpublic void SpawnShipPhaseOnionServerRpc(int[] OnionID)"
+    },
+    {
+      "line": 39157,
+      "text": "\t\t\t\tSpawnShipPhaseOnionClientRpc(OnionID);"
+    },
+    {
+      "line": 39162,
+      "text": "\t\tpublic void SpawnShipPhaseOnionClientRpc(int[] OnionID)"
+    },
+    {
+      "line": 39218,
+      "text": "\t\t\tval3 = Object.Instantiate<GameObject>(LethalMin.DefultOnionMesh, ((Component)shipPhaseOnionContainer).transform);"
+    },
+    {
+      "line": 39471,
+      "text": "\t\t\t\t\tGameObject sproutObj = Object.Instantiate<GameObject>(LethalMin.SproutPrefab, sproutData.Position, sproutData.Rotaion);"
+    },
+    {
+      "line": 39474,
+      "text": "\t\t\t\t\t((NetworkBehaviour)sproutComponent).NetworkObject.Spawn(false);"
+    },
+    {
+      "line": 40231,
+      "text": "\t\t\t\t((PikminManager)(object)target).SpawnPikminServerRpc(pikminID, quantity, spawnPos, spawnRot);"
+    },
+    {
+      "line": 40305,
+      "text": "\t\t\t\t((PikminManager)(object)target).SpawnShipPhaseOnionServerRpc(onionID);"
+    },
+    {
+      "line": 40321,
+      "text": "\t\t\t\t((PikminManager)(object)target).SpawnShipPhaseOnionClientRpc(onionID);"
+    },
+    {
+      "line": 40360,
+      "text": "\t\t\t((PikminManager)(object)target).SpawnShipPhaseOnionServerRpc(onionID);"
+    },
+    {
+      "line": 40383,
+      "text": "\t\t\t\t((PikminManager)(object)target).SpawnShipPhaseOnionClientRpc(onionID);"
+    },
+    {
+      "line": 41167,
+      "text": "\t\t\t\t\tsprout.SpawnPikminServerRpc(Despawn: true, (long)((NetworkBehaviour)LeaderScript.Controller).OwnerClientId);"
+    },
+    {
+      "line": 41833,
+      "text": "\t\t\tPikminGhost ghost = Object.Instantiate<GameObject>(LethalMin.PikminGhostPrefab, ((Component)this).transform.position, ((Component)this).transform.rotation).GetComponent<PikminGhost>();"
+    },
+    {
+      "line": 41886,
+      "text": "\t\t\t\tGameObject val = Object.Instantiate<GameObject>(LethalMin.PikminFirePrefab, Top);"
+    },
+    {
+      "line": 41891,
+      "text": "\t\t\t\tGameObject val2 = Object.Instantiate<GameObject>(LethalMin.PikminGasPrefab, Top);"
+    },
+    {
+      "line": 41896,
+      "text": "\t\t\t\tGameObject val3 = Object.Instantiate<GameObject>(LethalMin.GlowPrefab, Top);"
+    },
+    {
+      "line": 42159,
+      "text": "\t\t\tObject.Instantiate<GameObject>(PuffminMeshes, MeshContainer);"
+    },
+    {
+      "line": 43371,
+      "text": "\t\t\t\tSpawnGhostClientRpc();"
+    },
+    {
+      "line": 43385,
+      "text": "\t\tpublic void SpawnGhostClientRpc()"
+    },
+    {
+      "line": 43439,
+      "text": "\t\t\tPikminGhost component = Object.Instantiate<GameObject>(LethalMin.PikminGhostPrefab, ((Component)this).transform.position, ((Component)this).transform.rotation).GetComponent<PikminGhost>();"
+    },
+    {
+      "line": 44142,
+      "text": "\t\t\t\t((PuffminAI)(object)target).SpawnGhostClientRpc();"
+    },
+    {
+      "line": 46566,
+      "text": "\t\t\t\t\tPikminManager.instance.SpawnShipPhaseOnionServerRpc(dictionary[key].ToArray());"
+    },
+    {
+      "line": 46585,
+      "text": "\t\t\t\t\tPikminManager.instance.SpawnShipPhaseOnionServerRpc(item);"
+    },
+    {
+      "line": 47493,
+      "text": "\t\t\t\tval = Object.Instantiate<GameObject>(LethalMin.DefultPikminSproutMesh, ModelContainer);"
+    },
+    {
+      "line": 47497,
+      "text": "\t\t\t\tval = Object.Instantiate<GameObject>(pikminType.SproutOverrideModel, ModelContainer);"
+    },
+    {
+      "line": 48046,
+      "text": "\t\t\t\tSpawnPikminServerRpc(Despawn: false, -1L);"
+    },
+    {
+      "line": 48130,
+      "text": "\t\tpublic void SpawnPikminServerRpc(bool Despawn = false, long ID = -1L)"
+    },
+    {
+      "line": 48482,
+      "text": "\t\t\t\t((Sprout)(object)target).SpawnPikminServerRpc(despawn, iD);"
+    },
+    {
+      "line": 48595,
+      "text": "\t\t\thitMarker = Object.Instantiate<GameObject>(LethalMin.assetBundle.LoadAsset<GameObject>(\"Assets/LethalMin/Target.prefab\")).transform;"
+    },
+    {
+      "line": 50396,
+      "text": "\t\t\tGameObject val3 = Object.Instantiate<GameObject>(((Component)((Component)this).gameObject.GetComponentInChildren<PikminCollisionDetect>()).gameObject, ((Component)this).transform);"
+    },
+    {
+      "line": 51198,
+      "text": "\t\t\t\t\tGameObject val2 = Object.Instantiate<GameObject>(Point, val, Quaternion.identity);"
+    },
+    {
+      "line": 52140,
+      "text": "\t\t\tGameObject val = Object.Instantiate<GameObject>(ai.enemyType.enemyPrefab, RevivePos, Quaternion.Euler(new Vector3(0f, 0f, 0f)));"
+    },
+    {
+      "line": 52141,
+      "text": "\t\t\tval.GetComponentInChildren<NetworkObject>().Spawn(true);"
+    },
+    {
+      "line": 55016,
+      "text": "\t\t\t\tGameObject val = Object.Instantiate<GameObject>(singleOnionHUDSlotPrefab, SingleContainer);"
+    },
+    {
+      "line": 55029,
+      "text": "\t\t\t\tGameObject val2 = Object.Instantiate<GameObject>(onionHUDSlotPrefab, SlotContainer);"
+    },
+    {
+      "line": 58529,
+      "text": "\t\t\t\tGameObject val2 = Object.Instantiate<GameObject>(val, ((Component)__instance).transform);"
+    },
+    {
+      "line": 58532,
+      "text": "\t\t\t\tcomponent.Spawn(false);"
+    },
+    {
+      "line": 58612,
+      "text": "\t\t\tinstance.InstanceDanger = Object.Instantiate<GameObject>(val, ((Component)__instance.shipLeavingEarlyIcon).transform);"
+    },
+    {
+      "line": 58625,
+      "text": "\t\t\tGameObject val2 = Object.Instantiate<GameObject>(val, __instance.HUDContainer.transform);"
+    },
+    {
+      "line": 58637,
+      "text": "\t\t\tGameObject val2 = Object.Instantiate<GameObject>(val, __instance.HUDContainer.transform.parent);"
+    },
+    {
+      "line": 58655,
+      "text": "\t\t\t\tGameObject val2 = Object.Instantiate<GameObject>(val, parent);"
+    },
+    {
+      "line": 58660,
+      "text": "\t\t\tGameObject val4 = Object.Instantiate<GameObject>(val3, ((Component)__instance.endgameStatsAnimator).transform.Find(\"Text\"));"
+    },
+    {
+      "line": 58666,
+      "text": "\t\t\tGameObject val6 = Object.Instantiate<GameObject>(val5, ((Component)__instance.playerLevelBoxAnimator).transform);"
+    },
+    {
+      "line": 58978,
+      "text": "\t\t\t\t\t\tval = Object.Instantiate<GameObject>(LethalMin.assetBundle.LoadAsset<GameObject>(\"Assets/LethalMin/PlayerGhostPrefab.prefab\"), ((Component)__instance).transform.position, Quaternion.identity);"
+    },
+    {
+      "line": 59262,
+      "text": "\t\t\t\t\t\tNetworkObject component = Object.Instantiate<GameObject>(val2).GetComponent<NetworkObject>();"
+    },
+    {
+      "line": 59263,
+      "text": "\t\t\t\t\t\tcomponent.Spawn(false);"
+    },
+    {
+      "line": 59986,
+      "text": "\t\t\tPuffminNoticeZone component2 = Object.Instantiate<GameObject>(LethalMin.NoticeZonePrefab).GetComponent<PuffminNoticeZone>();"
+    },
+    {
+      "line": 62252,
+      "text": "\t\t\t\t((NetworkBehaviour)__instance).NetworkObject.Spawn(false);"
+    }
+  ],
+  "owner_or_patch_hits": [
+    {
+      "line": 1077,
+      "text": "\t\tpublic static bool OnCompany => (Object)(object)RoundManager.Instance != (Object)null && (RoundManager.Instance.currentLevel.sceneName == \"CompanyBuilding\" || RoundManager.Instance.currentLevel.sceneName == \"MusemaScene\" || RoundManager.Instance.currentLevel.sceneName == \"Oxyde\");"
+    },
+    {
+      "line": 5151,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 5264,
+      "text": "\t\t\t((EnemyAI)baboonBirdAI).creatureAnimator.ResetTrigger(\"Hit\");"
+    },
+    {
+      "line": 5265,
+      "text": "\t\t\t((EnemyAI)baboonBirdAI).creatureAnimator.SetTrigger(\"Hit\");"
+    },
+    {
+      "line": 5266,
+      "text": "\t\t\t((EnemyAI)baboonBirdAI).creatureSFX.PlayOneShot(((EnemyAI)baboonBirdAI).enemyType.audioClips[5]);"
+    },
+    {
+      "line": 5267,
+      "text": "\t\t\tWalkieTalkie.TransmitOneShotAudio(((EnemyAI)baboonBirdAI).creatureSFX, ((EnemyAI)baboonBirdAI).enemyType.audioClips[5], 1f);"
+    },
+    {
+      "line": 5268,
+      "text": "\t\t\tRoundManager.Instance.PlayAudibleNoise(((Component)((EnemyAI)baboonBirdAI).creatureSFX).transform.position, 8f, 0.7f, 0, false, 0);"
+    },
+    {
+      "line": 5354,
+      "text": "\t\t\t\t((EnemyAI)pikminCollisionDetect.mainPikmin).KillEnemyServerRpc(false);"
+    },
+    {
+      "line": 5411,
+      "text": "\t\t\t((EnemyAI)pikmin).creatureAnimator.Play(\"Pikmin_Lay\");"
+    },
+    {
+      "line": 5440,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 5868,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 6120,
+      "text": "\t\t\tif (((EnemyAI)bushWolfAI).currentBehaviourStateIndex == 2)"
+    },
+    {
+      "line": 6394,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 6408,
+      "text": "\t\t\tif (!((NetworkBehaviour)this).IsOwner || enemyScript.isEnemyDead || ((EnemyAI)butlerEnemyAI).currentBehaviourStateIndex != 2)"
+    },
+    {
+      "line": 6428,
+      "text": "\t\t\tCheckInterval = ((EnemyAI)butlerEnemyAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);"
+    },
+    {
+      "line": 6575,
+      "text": "\t\t\t\t\t((EnemyAI)Pikmin).HitEnemy(1, (PlayerControllerB)null, false, -1);"
+    },
+    {
+      "line": 6578,
+      "text": "\t\t\t((EnemyAI)butlerEnemyAI).creatureAnimator.SetTrigger(\"Stab\");"
+    },
+    {
+      "line": 6579,
+      "text": "\t\t\t((EnemyAI)butlerEnemyAI).creatureSFX.PlayOneShot(((EnemyAI)butlerEnemyAI).enemyType.audioClips[0]);"
+    },
+    {
+      "line": 6682,
+      "text": "\t\tpublic override void OnAddedToEnemy(EnemyAI enemy)"
+    },
+    {
+      "line": 6706,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 6728,
+      "text": "\t\t\tCanBeAttacked = ((EnemyAI)caveDwellerAI).currentBehaviourStateIndex != 0 || (bool)LethalMin.CaveDweller_AttackAsBaby;"
+    },
+    {
+      "line": 6729,
+      "text": "\t\t\tif (!((NetworkBehaviour)this).IsOwner || caveDwellerAI.inKillAnimation || ((EnemyAI)caveDwellerAI).inSpecialAnimation || enemyScript.isEnemyDead || caveDwellerAI.leapTimer < 0.02f || ((EnemyAI)caveDwellerAI).currentBehaviourStateIndex != 3)"
+    },
+    {
+      "line": 6749,
+      "text": "\t\t\tCheckInterval = ((EnemyAI)caveDwellerAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);"
+    },
+    {
+      "line": 6998,
+      "text": "\t\t\t\t((EnemyAI)caveDwellerAI).isOutside = !PrimaryLeader.Controller.isInsideFactory;"
+    },
+    {
+      "line": 7008,
+      "text": "\t\t\t((EnemyAI)caveDwellerAI).ChangeOwnershipOfEnemy(PrimaryLeader.Controller.playerClientId);"
+    },
+    {
+      "line": 7009,
+      "text": "\t\t\t((EnemyAI)caveDwellerAI).currentOwnershipOnThisClient = (int)PrimaryLeader.Controller.playerClientId;"
+    },
+    {
+      "line": 7010,
+      "text": "\t\t\t((EnemyAI)caveDwellerAI).inSpecialAnimation = true;"
+    },
+    {
+      "line": 7011,
+      "text": "\t\t\t((Behaviour)((EnemyAI)caveDwellerAI).agent).enabled = false;"
+    },
+    {
+      "line": 7184,
+      "text": "\t\t\tif (((EnemyAI)caveDwellerAI).currentBehaviourStateIndex != 0)"
+    },
+    {
+      "line": 7186,
+      "text": "\t\t\t\tLethalMin.Logger.LogWarning((object)$\"Drop baby B; currentBehaviourStateIndex: {((EnemyAI)caveDwellerAI).currentBehaviourStateIndex}\");"
+    },
+    {
+      "line": 7191,
+      "text": "\t\t\t\tLethalMin.Logger.LogInfo((object)$\"Set ownership of creature. Currentownershiponthisclient: {((EnemyAI)caveDwellerAI).currentOwnershipOnThisClient}\");"
+    },
+    {
+      "line": 7192,
+      "text": "\t\t\t\t((EnemyAI)caveDwellerAI).ChangeOwnershipOfEnemy(StartOfRound.Instance.allPlayerScripts[0].actualClientId);"
+    },
+    {
+      "line": 7194,
+      "text": "\t\t\t((EnemyAI)caveDwellerAI).serverPosition = ((Component)this).transform.position;"
+    },
+    {
+      "line": 7197,
+      "text": "\t\t\tVector3 navMeshPosition = RoundManager.Instance.GetNavMeshPosition(itemFloorPosition, default(NavMeshHit), 10f, -1);"
+    },
+    {
+      "line": 7201,
+      "text": "\t\t\tif (!RoundManager.Instance.GotNavMeshPositionResult || ((EnemyAI)caveDwellerAI).DebugEnemy)"
+    },
+    {
+      "line": 7212,
+      "text": "\t\t\t\tnavMeshPosition = RoundManager.Instance.GetNavMeshPosition(((Component)val).transform.position, default(NavMeshHit), 5f, -1);"
+    },
+    {
+      "line": 7213,
+      "text": "\t\t\t\tLethalMin.Logger.LogInfo((object)$\"Got nav mesh position : {RoundManager.Instance.GotNavMeshPositionResult}; {navMeshPosition}; dist: {Vector3.Distance(((Component)this).transform.position, ((Component)val).transform.position)}\");"
+    },
+    {
+      "line": 7238,
+      "text": "\t\t\t\t((EnemyAI)caveDwellerAI).inSpecialAnimation = false;"
+    },
+    {
+      "line": 7337,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 7371,
+      "text": "\t\t\tCheckInterval = ((EnemyAI)claySurgeonAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);"
+    },
+    {
+      "line": 7540,
+      "text": "\t\t\t((EnemyAI)claySurgeonAI).creatureAnimator.SetTrigger(\"snip\");"
+    },
+    {
+      "line": 7541,
+      "text": "\t\t\t((EnemyAI)claySurgeonAI).creatureSFX.PlayOneShot(claySurgeonAI.snipScissors);"
+    },
+    {
+      "line": 7717,
+      "text": "\t\t\t\t\t((EnemyAI)pikminAI).KillEnemy(false);"
+    },
+    {
+      "line": 7807,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 7841,
+      "text": "\t\t\tCheckInterval = ((EnemyAI)crawlerAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);"
+    },
+    {
+      "line": 7989,
+      "text": "\t\t\tif (!((EnemyAI)crawlerAI).inSpecialAnimation)"
+    },
+    {
+      "line": 7991,
+      "text": "\t\t\t\t((EnemyAI)crawlerAI).creatureAnimator.SetTrigger(\"HitPlayer\");"
+    },
+    {
+      "line": 7993,
+      "text": "\t\t\t((EnemyAI)crawlerAI).creatureVoice.PlayOneShot(crawlerAI.bitePlayerSFX);"
+    },
+    {
+      "line": 8237,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 8276,
+      "text": "\t\t\t\t\t((EnemyAI)pik).KillEnemy(true);"
+    },
+    {
+      "line": 8515,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 8549,
+      "text": "\t\t\tCheckInterval = ((EnemyAI)hoarderBugAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);"
+    },
+    {
+      "line": 8700,
+      "text": "\t\t\t((EnemyAI)hoarderBugAI).SwitchToBehaviourStateOnLocalClient(2);"
+    },
+    {
+      "line": 8826,
+      "text": "\t\t\t((EnemyAI)hoarderBugAI).creatureAnimator.SetTrigger(\"HitPlayer\");"
+    },
+    {
+      "line": 8827,
+      "text": "\t\t\t((EnemyAI)hoarderBugAI).creatureSFX.PlayOneShot(hoarderBugAI.hitPlayerSFX);"
+    },
+    {
+      "line": 8828,
+      "text": "\t\t\tWalkieTalkie.TransmitOneShotAudio(((EnemyAI)hoarderBugAI).creatureSFX, hoarderBugAI.hitPlayerSFX, 1f);"
+    },
+    {
+      "line": 9000,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 9014,
+      "text": "\t\t\tif (!((NetworkBehaviour)this).IsOwner || enemyScript.isEnemyDead || jesterAI.inKillAnimation || ((EnemyAI)jesterAI).currentBehaviourStateIndex != 2)"
+    },
+    {
+      "line": 9034,
+      "text": "\t\t\tCheckInterval = ((EnemyAI)jesterAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);"
+    },
+    {
+      "line": 9181,
+      "text": "\t\t\t\t((EnemyAI)Pikmin).HitEnemy(999, (PlayerControllerB)null, false, -1);"
+    },
+    {
+      "line": 9183,
+      "text": "\t\t\t((EnemyAI)jesterAI).creatureAnimator.SetTrigger(\"KillPlayer\");"
+    },
+    {
+      "line": 9184,
+      "text": "\t\t\t((EnemyAI)jesterAI).creatureSFX.PlayOneShot(jesterAI.killPlayerSFX);"
+    },
+    {
+      "line": 9288,
+      "text": "\t\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 9311,
+      "text": "\t\t\t\tCheckInterval = ((EnemyAI)maskedPlayerEnemy).AIIntervalTime + Random.Range(-0.015f, 0.015f);"
+    },
+    {
+      "line": 9325,
+      "text": "\t\t\tif (!LethalMin.MaskedPlayerEnemy_ConvertPikmin || ((EnemyAI)maskedPlayerEnemy).isEnemyDead)"
+    },
+    {
+      "line": 9334,
+      "text": "\t\t\tswitch (((EnemyAI)maskedPlayerEnemy).currentBehaviourStateIndex)"
+    },
+    {
+      "line": 9355,
+      "text": "\t\t\t\t\tVector3 val = ((Component)((EnemyAI)maskedPlayerEnemy).targetPlayer).transform.position - ((Component)leader).transform.position;"
+    },
+    {
+      "line": 9460,
+      "text": "\t\t\t\tif (Vector3.Distance(Pos, ((Component)pikminAI).transform.position) > range || !((Object)(object)pikminAI != (Object)null) || ((EnemyAI)pikminAI).currentBehaviourStateIndex != 0 || pikminAI.IsDeadOrDying || PikChecks.IsPikminResistantToHazard(pikminAI, PikminHazard.Spore, CallOnResist: false))"
+    },
+    {
+      "line": 9475,
+      "text": "\t\t\t\tif (Vector3.Distance(Pos, ((Component)puffminAI).transform.position) > range || !((Object)(object)puffminAI != (Object)null) || ((EnemyAI)puffminAI).currentBehaviourStateIndex != 0 || puffminAI.IsDeadOrDying || !(puffminAI.WhistleBuffer <= 0f) || !((Object)(object)puffminAI.Leader == (Object)null))"
+    },
+    {
+      "line": 9809,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 9843,
+      "text": "\t\t\tCheckInterval = ((EnemyAI)mouthDogAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);"
+    },
+    {
+      "line": 9999,
+      "text": "\t\t\t\t((EnemyAI)mouthDogAI).agent.speed = Mathf.Clamp(((EnemyAI)mouthDogAI).agent.speed, 2f, 0f);"
+    },
+    {
+      "line": 10002,
+      "text": "\t\t\t((EnemyAI)mouthDogAI).creatureVoice.pitch = Random.Range(0.96f, 1.04f);"
+    },
+    {
+      "line": 10003,
+      "text": "\t\t\t((EnemyAI)mouthDogAI).creatureVoice.PlayOneShot(mouthDogAI.killPlayerSFX, 1f);"
+    },
+    {
+      "line": 10004,
+      "text": "\t\t\t((EnemyAI)mouthDogAI).creatureAnimator.SetTrigger(\"EndLungeKill\");"
+    },
+    {
+      "line": 10008,
+      "text": "\t\t\tQuaternion rotateTo = Quaternion.Euler(new Vector3(0f, RoundManager.Instance.YRotationThatFacesTheFarthestFromPosition(((Component)this).transform.position + Vector3.up * 0.6f, 25f, 6), 0f));"
+    },
+    {
+      "line": 10020,
+      "text": "\t\t\t((EnemyAI)mouthDogAI).SwitchToBehaviourStateOnLocalClient(2);"
+    },
+    {
+      "line": 10126,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 10145,
+      "text": "\t\t\tif (((EnemyAI)pumaAI).currentBehaviourStateIndex == 2)"
+    },
+    {
+      "line": 10312,
+      "text": "\t\t\t\t\t\t((EnemyAI)pikminAI).HitEnemy(1, (PlayerControllerB)null, false, -1);"
+    },
+    {
+      "line": 10451,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 10477,
+      "text": "\t\t\tif (((EnemyAI)radMechAI).isEnemyDead || StartOfRound.Instance.allPlayersDead || !((EnemyAI)radMechAI).ventAnimationFinished || !((NetworkBehaviour)radMechAI).IsServer || (((EnemyAI)radMechAI).currentBehaviourStateIndex == 2 && radMechAI.finishingFlight && (!radMechAI.inSky || radMechAI.flyTimer > 10f)) || ((bool)LethalMin.UseConfigsForEnemies && !LethalMin.RadMech_GrabsPikmin))"
+    },
+    {
+      "line": 10497,
+      "text": "\t\t\tif (!((EnemyAI)radMechAI).inSpecialAnimation)"
+    },
+    {
+      "line": 10507,
+      "text": "\t\t\tif (!((NetworkBehaviour)radMechAI).IsServer || ((EnemyAI)radMechAI).inSpecialAnimation || ((EnemyAI)radMechAI).currentBehaviourStateIndex == 2 || radMechAI.waitingToAttemptGrab || radMechAI.inTorchPlayerAnimation || (radMechAI.attemptingGrab && !attemptingPikminGrab))"
+    },
+    {
+      "line": 10698,
+      "text": "\t\t\t\t((EnemyAI)radMechAI).inSpecialAnimation = true;"
+    },
+    {
+      "line": 10699,
+      "text": "\t\t\t\t((Behaviour)((EnemyAI)radMechAI).agent).enabled = false;"
+    },
+    {
+      "line": 10706,
+      "text": "\t\t\t\t\tnum = (int)RoundManager.Instance.YRotationThatFacesTheFarthestFromPosition(radMechAI.centerPosition.position, 20f, 5);"
+    },
+    {
+      "line": 10757,
+      "text": "\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"AttemptingGrab\", true);"
+    },
+    {
+      "line": 10758,
+      "text": "\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"GrabSuccessful\", true);"
+    },
+    {
+      "line": 10759,
+      "text": "\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"GrabUnsuccessful\", false);"
+    },
+    {
+      "line": 10773,
+      "text": "\t\t\t\t\t\t((EnemyAI)pikmin).KillEnemy(true);"
+    },
+    {
+      "line": 10785,
+      "text": "\t\t\t\t((EnemyAI)radMechAI).inSpecialAnimation = false;"
+    },
+    {
+      "line": 10786,
+      "text": "\t\t\t\t((Behaviour)((EnemyAI)radMechAI).agent).enabled = true;"
+    },
+    {
+      "line": 10795,
+      "text": "\t\t\t((EnemyAI)radMechAI).inSpecialAnimation = false;"
+    },
+    {
+      "line": 10801,
+      "text": "\t\t\t\t((Behaviour)((EnemyAI)radMechAI).agent).enabled = true;"
+    },
+    {
+      "line": 10803,
+      "text": "\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"GrabSuccessful\", false);"
+    },
+    {
+      "line": 10804,
+      "text": "\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"AttemptingGrab\", false);"
+    },
+    {
+      "line": 10805,
+      "text": "\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"GrabUnsuccessful\", false);"
+    },
+    {
+      "line": 10832,
+      "text": "\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"AttemptingGrab\", true);"
+    },
+    {
+      "line": 10833,
+      "text": "\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"GrabUnsuccessful\", false);"
+    },
+    {
+      "line": 10834,
+      "text": "\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"GrabSuccessful\", false);"
+    },
+    {
+      "line": 10866,
+      "text": "\t\t\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"AttemptingGrab\", true);"
+    },
+    {
+      "line": 10867,
+      "text": "\t\t\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"GrabUnsuccessful\", false);"
+    },
+    {
+      "line": 10868,
+      "text": "\t\t\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"GrabSuccessful\", false);"
+    },
+    {
+      "line": 10882,
+      "text": "\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"GrabUnsuccessful\", true);"
+    },
+    {
+      "line": 10883,
+      "text": "\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"AttemptingGrab\", false);"
+    },
+    {
+      "line": 10915,
+      "text": "\t\t\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"GrabUnsuccessful\", true);"
+    },
+    {
+      "line": 10916,
+      "text": "\t\t\t\t\t((EnemyAI)radMechAI).creatureAnimator.SetBool(\"AttemptingGrab\", false);"
+    },
+    {
+      "line": 11075,
+      "text": "\t\tpublic override void OnAddedToEnemy(EnemyAI enemy)"
+    },
+    {
+      "line": 11079,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 11087,
+      "text": "\t\t\tfor (int i = 0; i < ((EnemyAI)redLocustBees).enemyBehaviourStates.Length; i++)"
+    },
+    {
+      "line": 11089,
+      "text": "\t\t\t\tEnemyBehaviourState val = ((EnemyAI)redLocustBees).enemyBehaviourStates[i];"
+    },
+    {
+      "line": 11096,
+      "text": "\t\t\tEnemyBehaviourState[] array = ((EnemyAI)redLocustBees).enemyBehaviourStates;"
+    },
+    {
+      "line": 11099,
+      "text": "\t\t\t((EnemyAI)redLocustBees).enemyBehaviourStates = array;"
+    },
+    {
+      "line": 11107,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 11120,
+      "text": "\t\t\t((EnemyAI)redLocustBees).SwitchToBehaviourState(ChasePikminStateIndex);"
+    },
+    {
+      "line": 11131,
+      "text": "\t\t\tif (StartOfRound.Instance.allPlayersDead || ((EnemyAI)redLocustBees).daytimeEnemyLeaving)"
+    },
+    {
+      "line": 11143,
+      "text": "\t\t\tif (((EnemyAI)redLocustBees).currentBehaviourStateIndex == ChasePikminStateIndex)"
+    },
+    {
+      "line": 11146,
+      "text": "\t\t\t\tif (redLocustBees.previousState != ((EnemyAI)redLocustBees).currentBehaviourStateIndex)"
+    },
+    {
+      "line": 11148,
+      "text": "\t\t\t\t\tredLocustBees.previousState = ((EnemyAI)redLocustBees).currentBehaviourStateIndex;"
+    },
+    {
+      "line": 11161,
+      "text": "\t\t\t\t((EnemyAI)redLocustBees).agent.speed = 6f;"
+    },
+    {
+      "line": 11162,
+      "text": "\t\t\t\t((EnemyAI)redLocustBees).agent.acceleration = 13f;"
+    },
+    {
+      "line": 11191,
+      "text": "\t\t\t\tCheckInterval = ((EnemyAI)redLocustBees).AIIntervalTime + Random.Range(-0.015f, 0.015f);"
+    },
+    {
+      "line": 11201,
+      "text": "\t\t\tif (((EnemyAI)redLocustBees).currentBehaviourStateIndex == ChasePikminStateIndex)"
+    },
+    {
+      "line": 11208,
+      "text": "\t\t\t\t\t\t((EnemyAI)redLocustBees).SwitchToBehaviourState(2);"
+    },
+    {
+      "line": 11212,
+      "text": "\t\t\t\t\t\t((EnemyAI)redLocustBees).SwitchToBehaviourState(0);"
+    },
+    {
+      "line": 11217,
+      "text": "\t\t\t\t\t((EnemyAI)redLocustBees).SwitchToBehaviourState(2);"
+    },
+    {
+      "line": 11221,
+      "text": "\t\t\t\t\t((EnemyAI)redLocustBees).SetDestinationToPosition(((Component)TargetPikmin).transform.position, false);"
+    },
+    {
+      "line": 11224,
+      "text": "\t\t\tif (!(ZapCooldown > 0f) && (((EnemyAI)redLocustBees).currentBehaviourStateIndex == 1 || ((EnemyAI)redLocustBees).currentBehaviourStateIndex == 2 || ((EnemyAI)redLocustBees).currentBehaviourStateIndex == ChasePikminStateIndex))"
+    },
+    {
+      "line": 11679,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 11713,
+      "text": "\t\t\tCheckInterval = ((EnemyAI)sandSpiderAI).AIIntervalTime + Random.Range(-0.015f, 0.015f);"
+    },
+    {
+      "line": 11860,
+      "text": "\t\t\t\t((EnemyAI)Pikmin).HitEnemy(1, (PlayerControllerB)null, false, -1);"
+    },
+    {
+      "line": 11862,
+      "text": "\t\t\t((EnemyAI)sandSpiderAI).creatureAnimator.SetTrigger(\"attack\");"
+    },
+    {
+      "line": 11864,
+      "text": "\t\t\t((EnemyAI)sandSpiderAI).creatureSFX.PlayOneShot(sandSpiderAI.attackSFX);"
+    },
+    {
+      "line": 11865,
+      "text": "\t\t\tWalkieTalkie.TransmitOneShotAudio(((EnemyAI)sandSpiderAI).creatureSFX, sandSpiderAI.attackSFX, 1f);"
+    },
+    {
+      "line": 11971,
+      "text": "\t\t\tEnemyAI obj = enemyScript;"
+    },
+    {
+      "line": 12083,
+      "text": "\t\t\t\tif (((EnemyAI)stingrayAI).currentBehaviourStateIndex == 1)"
+    },
+    {
+      "line": 12085,
+      "text": "\t\t\t\t\t((EnemyAI)stingrayAI).SwitchToBehaviourState(0);"
+    },
+    {
+      "line": 12131,
+      "text": "\t\t\t\t\t((EnemyAI)stingrayAI).creatureSFX.PlayOneShot(stingrayAI.spitSFX);"
+    },
+    {
+      "line": 12132,
+      "text": "\t\t\t\t\tWalkieTalkie.TransmitOneShotAudio(((EnemyAI)stingrayAI).creatureSFX, stingrayAI.spitSFX, 1f);"
+    },
+    {
+      "line": 12273,
+      "text": "\t\tpublic EnemyAI ai;"
+    },
+    {
+      "line": 12283,
+      "text": "\t\t\tai = ((Component)this).GetComponent<EnemyAI>();"
+    },
+    {
+      "line": 13823,
+      "text": "\t\t\t\t((EnemyAI)this).creatureVoice.PlayOneShot(BornBallVoice[enemyRandom.Next(0, BornBallVoice.Length)]);"
+    },
+    {
+      "line": 13852,
+      "text": "\t\t\t\tTeleportToClientRpc(RoundManager.Instance.GetRandomNavMeshPositionInRadius(((Component)StartOfRound.Instance.shipInnerRoomBounds).transform.position, 3f, default(NavMeshHit)));"
+    },
+    {
+      "line": 13912,
+      "text": "\t\t\tif (((Behaviour)((EnemyAI)this).agent).enabled || !((Object)(object)TargetGlowMob != (Object)null))"
+    },
+    {
+      "line": 14036,
+      "text": "\t\t\t\t\t((EnemyAI)this).ChangeOwnershipOfEnemy(((NetworkBehaviour)leader).OwnerClientId);"
+    },
+    {
+      "line": 14111,
+      "text": "\t\t\t((MonoBehaviour)this).StartCoroutine(TeleportTo(RoundManager.Instance.GetRandomNavMeshPositionInRadius(((Component)leader).transform.position, 5f, default(NavMeshHit))));"
+    },
+    {
+      "line": 14114,
+      "text": "\t\t\t((EnemyAI)this).isOutside = !leader.Controller.isInsideFactory;"
+    },
+    {
+      "line": 14169,
+      "text": "\t\t\t((EnemyAI)this).creatureVoice.PlayOneShot(FlashBangStartVoice[enemyRandom.Next(0, FlashBangStartVoice.Length)]);"
+    },
+    {
+      "line": 14256,
+      "text": "\t\t\tif (!pikminType.CanLatchOnToObjects || !((Object)(object)enemy != (Object)null) || !((Object)(object)enemy.enemyScript.enemyType != (Object)(object)((EnemyAI)this).enemyType) || enemy.enemyScript.isEnemyDead)"
+    },
+    {
+      "line": 14403,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(4);"
+    },
+    {
+      "line": 14407,
+      "text": "\t\t\t\t((EnemyAI)this).agent.Warp(((Component)StartOfRound.Instance.shipInnerRoomBounds).transform.position);"
+    },
+    {
+      "line": 14534,
+      "text": "\t\t\t((EnemyAI)this).creatureSFX.PlayOneShot(TransformSeedSFX);"
+    },
+    {
+      "line": 14566,
+      "text": "\t\t\t\t((EnemyAI)this).isOutside = true;"
+    },
+    {
+      "line": 14656,
+      "text": "\t\t\t((EnemyAI)this).creatureVoice.PlayOneShot(clip);"
+    },
+    {
+      "line": 14660,
+      "text": "\t\t\t\t((EnemyAI)this).agent.Warp(pos);"
+    },
+    {
+      "line": 14668,
+      "text": "\t\t\t((EnemyAI)this).creatureVoice.PlayOneShot(clip2);"
+    },
+    {
+      "line": 16427,
+      "text": "\t\t\t\t((Behaviour)((EnemyAI)item).agent).enabled = false;"
+    },
+    {
+      "line": 16498,
+      "text": "\t\t\t\t\tVector3 navMeshPosition = RoundManager.Instance.GetNavMeshPosition(((Component)val).transform.position, default(NavMeshHit), 25f, -1);"
+    },
+    {
+      "line": 16632,
+      "text": "\t\t\tif (((EnemyAI)this).currentBehaviourStateIndex == 0 && !base.IsDeadOrDying && !base.IsAirborn)"
+    },
+    {
+      "line": 18172,
+      "text": "\t\t\t\tif (((EnemyAI)item).currentBehaviourStateIndex == 1)"
+    },
+    {
+      "line": 18198,
+      "text": "\t\t\t\tif (!((Object)(object)item.pikminType != (Object)(object)type) && ((EnemyAI)item).currentBehaviourStateIndex == 1 && !item.Unselectable)"
+    },
+    {
+      "line": 18308,
+      "text": "\t\t\t\t((EnemyAI)pikminHolding).creatureVoice.Stop();"
+    },
+    {
+      "line": 18484,
+      "text": "\t\t\t\t\t((EnemyAI)pikminAI).creatureVoice.Stop();"
+    },
+    {
+      "line": 18506,
+      "text": "\t\t\t\t((EnemyAI)pikminHolding).creatureVoice.Stop();"
+    },
+    {
+      "line": 20567,
+      "text": "\t\t\tEnemyAI val = PikUtils.ReviveEnemy(enemyGrab.ai, ((Component)this).transform.position);"
+    },
+    {
+      "line": 21807,
+      "text": "\t\t\t\t\t((EnemyAI)ai).SwitchToBehaviourStateOnLocalClient(2);"
+    },
+    {
+      "line": 21960,
+      "text": "\tpublic class PikminAI : EnemyAI, IGenerationSwitchable"
+    },
+    {
+      "line": 22230,
+      "text": "\t\t\t((EnemyAI)this).Start();"
+    },
+    {
+      "line": 22231,
+      "text": "\t\t\tif (((NetworkBehaviour)this).IsServer && !RoundManager.Instance.SpawnedEnemies.Contains((EnemyAI)(object)this))"
+    },
+    {
+      "line": 22233,
+      "text": "\t\t\t\tRoundManager.Instance.SpawnedEnemies.Add((EnemyAI)(object)this);"
+    },
+    {
+      "line": 22267,
+      "text": "\t\t\t\t((EnemyAI)this).EnableEnemyMesh(false, false, false);"
+    },
+    {
+      "line": 22332,
+      "text": "\t\t\t\t((EnemyAI)this).EnableEnemyMesh(true, false, false);"
+    },
+    {
+      "line": 22494,
+      "text": "\t\t\t((EnemyAI)this).OnDestroy();"
+    },
+    {
+      "line": 22657,
+      "text": "\t\t\t\t\t((EnemyAI)this).KillEnemyOnOwnerClient(true);"
+    },
+    {
+      "line": 22668,
+      "text": "\t\t\t\t\t((EnemyAI)this).KillEnemyOnOwnerClient(true);"
+    },
+    {
+      "line": 22742,
+      "text": "\t\t\t\t((EnemyAI)this).CheckTimeOfDayToLeave();"
+    },
+    {
+      "line": 22759,
+      "text": "\t\t\tif (!base.ventAnimationFinished && base.timeSinceSpawn < base.exitVentAnimationTime + 0.005f * (float)RoundManager.Instance.numberOfEnemiesInScene)"
+    },
+    {
+      "line": 22772,
+      "text": "\t\t\t((EnemyAI)this).DisableAnimatorWhenNotVisible();"
+    },
+    {
+      "line": 22777,
+      "text": "\t\t\t\t\t((EnemyAI)this).StopSearch(base.currentSearch, true);"
+    },
+    {
+      "line": 22789,
+      "text": "\t\t\t\t((EnemyAI)this).NavigateTowardsTargetPlayer();"
+    },
+    {
+      "line": 22798,
+      "text": "\t\t\t\t((EnemyAI)this).DoAIInterval();"
+    },
+    {
+      "line": 22970,
+      "text": "\t\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(2);"
+    },
+    {
+      "line": 23815,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(0);"
+    },
+    {
+      "line": 23989,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(4);"
+    },
+    {
+      "line": 24216,
+      "text": "\t\t\t\t\t((EnemyAI)this).ChangeOwnershipOfEnemy(((NetworkBehaviour)leader).OwnerClientId);"
+    },
+    {
+      "line": 24321,
+      "text": "\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(1);"
+    },
+    {
+      "line": 24413,
+      "text": "\t\t\t\t\t((EnemyAI)this).ChangeOwnershipOfEnemy(0uL);"
+    },
+    {
+      "line": 24749,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(0);"
+    },
+    {
+      "line": 24786,
+      "text": "\t\tpublic override void OnCollideWithEnemy(Collider other, EnemyAI collidedEnemy = null)"
+    },
+    {
+      "line": 24788,
+      "text": "\t\t\t((EnemyAI)this).OnCollideWithEnemy(other, collidedEnemy);"
+    },
+    {
+      "line": 25169,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(0);"
+    },
+    {
+      "line": 25293,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(latchTrigger.GetPikminState().Item2);"
+    },
+    {
+      "line": 25631,
+      "text": "\t\t\t\tVector3 navMeshPosition = RoundManager.Instance.GetNavMeshPosition(((Component)leader).transform.position, default(NavMeshHit), 5f, -1);"
+    },
+    {
+      "line": 25637,
+      "text": "\t\t\t\tVector3 navMeshPosition2 = RoundManager.Instance.GetNavMeshPosition(((Component)previousLeader).transform.position, default(NavMeshHit), 5f, -1);"
+    },
+    {
+      "line": 25786,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(3);"
+    },
+    {
+      "line": 26055,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(2);"
+    },
+    {
+      "line": 26517,
+      "text": "\t\t\t((EnemyAI)this).HitEnemy(force, playerWhoHit, playHitSFX, hitID);"
+    },
+    {
+      "line": 26539,
+      "text": "\t\t\t\t\t((EnemyAI)this).KillEnemy(false);"
+    },
+    {
+      "line": 26570,
+      "text": "\t\t\t((EnemyAI)this).KillEnemy(false);"
+    },
+    {
+      "line": 26739,
+      "text": "\t\t\t\t\t((EnemyAI)this).KillEnemy(false);"
+    },
+    {
+      "line": 26759,
+      "text": "\t\t\t\t\t((EnemyAI)this).KillEnemy(false);"
+    },
+    {
+      "line": 26869,
+      "text": "\t\t\t\t\t((EnemyAI)this).KillEnemy(false);"
+    },
+    {
+      "line": 26979,
+      "text": "\t\t\t\t((EnemyAI)this).EnableEnemyMesh(false, true, false);"
+    },
+    {
+      "line": 27033,
+      "text": "\t\t\t\t((EnemyAI)this).KillEnemy(destroy);"
+    },
+    {
+      "line": 27036,
+      "text": "\t\t\t((EnemyAI)this).KillEnemy(destroy);"
+    },
+    {
+      "line": 27550,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(2);"
+    },
+    {
+      "line": 27759,
+      "text": "\t\t\t\t\ttransform2.TeleportOnLocalClient(RoundManager.Instance.GetNavMeshPosition(((Component)TargetItemPoint).transform.position, default(NavMeshHit), 5f, -1));"
+    },
+    {
+      "line": 27949,
+      "text": "\t\t\t\t\tbase.agent.Warp(RoundManager.Instance.GetNavMeshPosition(val3, default(NavMeshHit), 5f, -1));"
+    },
+    {
+      "line": 27953,
+      "text": "\t\t\t\t\tbase.agent.Warp(RoundManager.Instance.GetNavMeshPosition(((Component)leader).transform.position, default(NavMeshHit), 5f, -1));"
+    },
+    {
+      "line": 28113,
+      "text": "\t\t\t\tRoundManager.Instance.PlayAudibleNoise(((Component)this).transform.position, 10f, num, 0, IsInShip && StartOfRound.Instance.hangarDoorsClosed, PikminSoundID);"
+    },
+    {
+      "line": 28124,
+      "text": "\t\t\t\tif (!((Object)(object)pikminAI == (Object)null) && (Object)(object)pikminAI != (Object)(object)this && Vector3.Distance(((Component)this).transform.position, ((Component)pikminAI).transform.position) <= maxAudioClusterDistance && (((EnemyAI)pikminAI).creatureSFX.isPlaying || ((EnemyAI)pikminAI).creatureVoice.isPlaying) && pikminAI.CurrentPlayingKey == soundName)"
+    },
+    {
+      "line": 28148,
+      "text": "\t\t\t\t\tRoundManager.Instance.PlayAudibleNoise(((Component)this).transform.position, 10f, 0.5f, 0, IsInShip && StartOfRound.Instance.hangarDoorsClosed, PikminSoundID);"
+    },
+    {
+      "line": 28931,
+      "text": "\t\t\t((EnemyAI)this)..ctor();"
+    },
+    {
+      "line": 28936,
+      "text": "\t\t\t((EnemyAI)this).__initializeVariables();"
+    },
+    {
+      "line": 29145,
+      "text": "\t\t\t((EnemyAI)this).__initializeRpcs();"
+    },
+    {
+      "line": 30873,
+      "text": "\t\t\t\tbase.mainScript = ((Component)this).GetComponentInParent<EnemyAI>();"
+    },
+    {
+      "line": 30889,
+      "text": "\t\t\tif (((EnemyAI)mainPikmin).currentBehaviourStateIndex == 3 && (Object)(object)mainPikmin.LeaderWhistling == (Object)null && ((Component)other).TryGetComponent<PikminNoticeZone>(ref pikminNoticeZone) && (Object)(object)pikminNoticeZone.LeaderScript != (Object)null && pikminNoticeZone.CanSavePikmin && pikminNoticeZone.Active)"
+    },
+    {
+      "line": 30900,
+      "text": "\t\t\tif (((Behaviour)((EnemyAI)mainPikmin).agent).enabled && ((Component)other).TryGetComponent<PikminEffectTrigger>(ref pikminEffectTrigger) && pikminEffectTrigger.Mode == PikminEffectMode.Persitant && !CurFXtriggers.Contains(pikminEffectTrigger) && !pikminEffectTrigger.IsPikminResistantToTrigger(mainPikmin))"
+    },
+    {
+      "line": 30936,
+      "text": "\t\t\t\tif (((EnemyAI)mainPikmin).currentBehaviourStateIndex == 3 && (Object)(object)mainPikmin.LeaderWhistling != (Object)null && ((Component)other).TryGetComponent<PikminNoticeZone>(ref pikminNoticeZone) && (Object)(object)mainPikmin.LeaderWhistling == (Object)(object)pikminNoticeZone.LeaderScript && pikminNoticeZone.Active)"
+    },
+    {
+      "line": 30942,
+      "text": "\t\t\t\tif (((Behaviour)((EnemyAI)mainPikmin).agent).enabled && ((Component)other).TryGetComponent<PikminEffectTrigger>(ref pikminEffectTrigger) && pikminEffectTrigger.Mode == PikminEffectMode.Persitant && CurFXtriggers.Contains(pikminEffectTrigger))"
+    },
+    {
+      "line": 31005,
+      "text": "\t\t\t\t\t((EnemyAI)pikminCollisionDetect.mainPikmin).KillEnemyOnOwnerClient(DestoryOnDeath);"
+    },
+    {
+      "line": 31009,
+      "text": "\t\t\t\t\t((EnemyAI)pikminCollisionDetect.mainPikmin).HitEnemyOnLocalClient(DamageDelt, default(Vector3), (PlayerControllerB)null, false, -1);"
+    },
+    {
+      "line": 31013,
+      "text": "\t\t\t\tif (InstaDeath || ((EnemyAI)pikminCollisionDetect.mainPikmin).enemyHP - DamageDelt <= 0)"
+    },
+    {
+      "line": 31020,
+      "text": "\t\t\t\t\t((EnemyAI)pikminCollisionDetect.mainPikmin).HitEnemyOnLocalClient(DamageDelt, default(Vector3), (PlayerControllerB)null, false, -1);"
+    },
+    {
+      "line": 31024,
+      "text": "\t\t\t\tif (InstaDeath || ((EnemyAI)pikminCollisionDetect.mainPikmin).enemyHP - DamageDelt <= 0)"
+    },
+    {
+      "line": 31031,
+      "text": "\t\t\t\t\t((EnemyAI)pikminCollisionDetect.mainPikmin).HitEnemyOnLocalClient(DamageDelt, default(Vector3), (PlayerControllerB)null, false, -1);"
+    },
+    {
+      "line": 31135,
+      "text": "\t\tpublic EnemyAI enemyScript;"
+    },
+    {
+      "line": 31199,
+      "text": "\t\t\t\tLethalMin.Logger.LogWarning((object)(\"EnemyAI component not found on the GameObject (\" + ((Object)((Component)this).gameObject).name + \")\"));"
+    },
+    {
+      "line": 31200,
+      "text": "\t\t\t\tenemyScript = ((Component)this).GetComponent<EnemyAI>();"
+    },
+    {
+      "line": 31204,
+      "text": "\t\t\t\tLethalMin.Logger.LogFatal((object)(\"EnemyAI component not found on the GameObject fallback failed (\" + ((Object)((Component)this).gameObject).name + \")\"));"
+    },
+    {
+      "line": 31945,
+      "text": "\t\tpublic virtual void OnAddedToEnemy(EnemyAI enemy)"
+    },
+    {
+      "line": 33526,
+      "text": "\t\t\tItemScript.GrabItemFromEnemy((EnemyAI)(object)PrimaryPikminOnItem);"
+    },
+    {
+      "line": 33681,
+      "text": "\t\t\t\tItemScript.GrabItemFromEnemy((EnemyAI)(object)PrimaryPikminOnItem);"
+    },
+    {
+      "line": 33682,
+      "text": "\t\t\t\tif (!((Behaviour)((EnemyAI)PrimaryPikminOnItem).agent).enabled)"
+    },
+    {
+      "line": 33770,
+      "text": "\t\t\tVector3 val2 = RoundManager.Instance.RandomlyOffsetPosition(ItemScript.GetItemFloorPosition(default(Vector3)), 1.2f, 0.4f);"
+    },
+    {
+      "line": 33962,
+      "text": "\t\t\t\t\t\tRoundManager.Instance.CollectNewScrapForThisRound(ItemScript);"
+    },
+    {
+      "line": 33994,
+      "text": "\t\t\t\t\t\tRoundManager.Instance.CollectNewScrapForThisRound(ItemScript);"
+    },
+    {
+      "line": 34714,
+      "text": "\t\t\tVector3 val = (((EnemyAI)PrimaryPikminOnItem).isOutside ? ((Component)ItemScript).transform.position : PikminRouteManager.Instance.EntranceExitPoints[PikminRouteManager.GetClosestEntrance(((Component)ItemScript).transform.position, CompareOutside: false)].position);"
+    },
+    {
+      "line": 34729,
+      "text": "\t\t\tif (!((EnemyAI)PrimaryPikminOnItem).isOutside)"
+    },
+    {
+      "line": 36263,
+      "text": "\t\tpublic HashSet<EnemyAI> EnemyAIs { get; private set; } = new HashSet<EnemyAI>();"
+    },
+    {
+      "line": 36265,
+      "text": "\t\tpublic HashSet<EnemyAI> ConvertedAIs { get; private set; } = new HashSet<EnemyAI>();"
+    },
+    {
+      "line": 36942,
+      "text": "\t\t\t\tSceneManager.MoveGameObjectToScene(val, SceneManager.GetSceneByName(RoundManager.Instance.currentLevel.sceneName));"
+    },
+    {
+      "line": 36943,
+      "text": "\t\t\t\tval.transform.position = RoundManager.Instance.GetNavMeshPosition(new Vector3(0f, 0f, 0f), default(NavMeshHit), 5f, -1);"
+    },
+    {
+      "line": 36948,
+      "text": "\t\t\t\t\tSceneManager.MoveGameObjectToScene(val2, SceneManager.GetSceneByName(RoundManager.Instance.currentLevel.sceneName));"
+    },
+    {
+      "line": 36962,
+      "text": "\t\t\t\tif (!((EnemyAI)pikminAI).isOutside || pikminAI.IsWildPikmin || pikminAI.IsDeadOrDying)"
+    },
+    {
+      "line": 37022,
+      "text": "\t\t\t\tif ((Object)(object)moonSettings.Level == (Object)(object)RoundManager.Instance.currentLevel)"
+    },
+    {
+      "line": 37222,
+      "text": "\t\t\t\t\tval = RoundManager.Instance.GetRandomNavMeshPositionInRadius(array2[random.Next(0, array2.Length)].transform.position, 50f, default(NavMeshHit));"
+    },
+    {
+      "line": 37417,
+      "text": "\t\t\t\tval = RoundManager.Instance.GetRandomNavMeshPositionInBoxPredictable(val, flag ? 8f : 35f, default(NavMeshHit), new Random(StartOfRound.Instance.randomMapSeed), -1, 1f);"
+    },
+    {
+      "line": 37423,
+      "text": "\t\t\t\t\tval = RoundManager.Instance.GetRandomNavMeshPositionInBoxPredictable(val3, flag ? 8f : 35f, default(NavMeshHit), new Random(StartOfRound.Instance.randomMapSeed + num15 + 1), -1, 1f);"
+    },
+    {
+      "line": 37472,
+      "text": "\t\t\tif (RoundManager.Instance.currentLevel.sceneName == \"Level7Offense\")"
+    },
+    {
+      "line": 37476,
+      "text": "\t\t\tif (RoundManager.Instance.currentLevel.sceneName == \"Level2Assurance\")"
+    },
+    {
+      "line": 37480,
+      "text": "\t\t\tif (RoundManager.Instance.currentLevel.sceneName == \"Level4March\")"
+    },
+    {
+      "line": 37483,
+      "text": "\t\t\tif (RoundManager.Instance.currentLevel.sceneName == \"Level11Embrion\")"
+    },
+    {
+      "line": 37499,
+      "text": "\t\t\t\tScene sceneByName = SceneManager.GetSceneByName(RoundManager.Instance.currentLevel.sceneName);"
+    },
+    {
+      "line": 37568,
+      "text": "\t\t\t\tEnemyAI val4 = default(EnemyAI);"
+    },
+    {
+      "line": 37569,
+      "text": "\t\t\t\tif (!((Component)val3).TryGetComponent<EnemyAI>(ref val4))"
+    },
+    {
+      "line": 37571,
+      "text": "\t\t\t\t\tLethalMin.Logger.LogWarning((object)\"Failed to get EnemyAI component from object\");"
+    },
+    {
+      "line": 37629,
+      "text": "\t\t\tEnemyAI val4 = default(EnemyAI);"
+    },
+    {
+      "line": 37630,
+      "text": "\t\t\tif (!((Component)val3).TryGetComponent<EnemyAI>(ref val4))"
+    },
+    {
+      "line": 37632,
+      "text": "\t\t\t\tLethalMin.Logger.LogWarning((object)\"Failed to get EnemyAI component from object\");"
+    },
+    {
+      "line": 38039,
+      "text": "\t\t\tentrancePositions.Add(RoundManager.FindMainEntrancePosition(false, true));"
+    },
+    {
+      "line": 38072,
+      "text": "\t\t\t\t\treturn Vector3.Distance(sp.transform.position, RoundManager.FindMainEntrancePosition(false, true)) < 15f;"
+    },
+    {
+      "line": 38086,
+      "text": "\t\t\tposition = RoundManager.Instance.GetRandomNavMeshPositionInRadius(position, 20f, default(NavMeshHit));"
+    },
+    {
+      "line": 39623,
+      "text": "\t\t\t\torderby !p.IsWildPikmin, ((EnemyAI)p).currentBehaviourStateIndex != 0, ((EnemyAI)p).currentBehaviourStateIndex != 1, ((EnemyAI)p).currentBehaviourStateIndex != 2"
+    },
+    {
+      "line": 39640,
+      "text": "\t\t\t\telse if (((EnemyAI)item).currentBehaviourStateIndex == 0)"
+    },
+    {
+      "line": 39644,
+      "text": "\t\t\t\telse if (((EnemyAI)item).currentBehaviourStateIndex == 1)"
+    },
+    {
+      "line": 39648,
+      "text": "\t\t\t\telse if (((EnemyAI)item).currentBehaviourStateIndex == 2)"
+    },
+    {
+      "line": 41175,
+      "text": "\t\t\t\tif (!(pikminAI.LeaderAssesmentDelay > 0f) && !((Object)(object)pikminAI.leader == (Object)(object)LeaderScript) && !((Object)(object)pikminAI.leader != (Object)null) && !pikminAI.IsAirborn && ((EnemyAI)pikminAI).currentBehaviourStateIndex != 3 && ((EnemyAI)pikminAI).currentBehaviourStateIndex != 4 && pikminAI.HasBeenInitalized && Enumerable.Contains(ValidStates, pikminAI.CurrentIntention))"
+    },
+    {
+      "line": 41427,
+      "text": "\t\t\t\t\t((EnemyAICollisionDetect)detect).mainScript = (EnemyAI)(object)pikminAI;"
+    },
+    {
+      "line": 41912,
+      "text": "\t\t\tGlowAnim.SetBool(\"Glow\", (((EnemyAI)minmin).currentBehaviourStateIndex == 0 && minmin.CurrentIntention == Pintent.Idle && !minmin.Laying) || minmin.ForceSproutGlow);"
+    },
+    {
+      "line": 41957,
+      "text": "\t\t\t\tif (!((Object)(object)mainPikmin == (Object)null) && ((NetworkBehaviour)mainPikmin).IsOwner && ((EnemyAI)mainPikmin).currentBehaviourStateIndex == 2)"
+    },
+    {
+      "line": 41959,
+      "text": "\t\t\t\t\t((EnemyAI)mainPikmin).agent.Warp(Destination.position);"
+    },
+    {
+      "line": 42052,
+      "text": "\tpublic class PuffminAI : EnemyAI, IGenerationSwitchable"
+    },
+    {
+      "line": 42148,
+      "text": "\t\t\t((EnemyAI)this).Start();"
+    },
+    {
+      "line": 42287,
+      "text": "\t\t\t\t((EnemyAI)this).CheckTimeOfDayToLeave();"
+    },
+    {
+      "line": 42304,
+      "text": "\t\t\tif (!base.ventAnimationFinished && base.timeSinceSpawn < base.exitVentAnimationTime + 0.005f * (float)RoundManager.Instance.numberOfEnemiesInScene)"
+    },
+    {
+      "line": 42317,
+      "text": "\t\t\t((EnemyAI)this).DisableAnimatorWhenNotVisible();"
+    },
+    {
+      "line": 42322,
+      "text": "\t\t\t\t\t((EnemyAI)this).StopSearch(base.currentSearch, true);"
+    },
+    {
+      "line": 42334,
+      "text": "\t\t\t\t((EnemyAI)this).NavigateTowardsTargetPlayer();"
+    },
+    {
+      "line": 42343,
+      "text": "\t\t\t\t((EnemyAI)this).DoAIInterval();"
+    },
+    {
+      "line": 42350,
+      "text": "\t\t\t((EnemyAI)this).DoAIInterval();"
+    },
+    {
+      "line": 42466,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(0);"
+    },
+    {
+      "line": 42540,
+      "text": "\t\t\t\t\t\t((EnemyAI)this).SwitchToBehaviourState(0);"
+    },
+    {
+      "line": 42589,
+      "text": "\t\t\t\tVector3 navMeshPosition = RoundManager.Instance.GetNavMeshPosition(((Component)Leader).transform.position, default(NavMeshHit), 5f, -1);"
+    },
+    {
+      "line": 42595,
+      "text": "\t\t\t\tVector3 navMeshPosition2 = RoundManager.Instance.GetNavMeshPosition(((Component)PreviousLeader).transform.position, default(NavMeshHit), 5f, -1);"
+    },
+    {
+      "line": 42601,
+      "text": "\t\t\t\tVector3 navMeshPosition3 = RoundManager.Instance.GetNavMeshPosition(((Component)this).transform.position, default(NavMeshHit), 100f, -1);"
+    },
+    {
+      "line": 42658,
+      "text": "\t\t\t\t\t((EnemyAI)this).ChangeOwnershipOfEnemy(PlayerID);"
+    },
+    {
+      "line": 42709,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(2);"
+    },
+    {
+      "line": 42738,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(2);"
+    },
+    {
+      "line": 42974,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(0);"
+    },
+    {
+      "line": 43019,
+      "text": "\t\t\t((EnemyAI)this).OnCollideWithPlayer(other);"
+    },
+    {
+      "line": 43073,
+      "text": "\t\t\t\t\t((EnemyAI)this).ChangeOwnershipOfEnemy(LeaderID);"
+    },
+    {
+      "line": 43318,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(0);"
+    },
+    {
+      "line": 43344,
+      "text": "\t\t\t((EnemyAI)this).HitEnemy(force, playerWhoHit, playHitSFX, hitID);"
+    },
+    {
+      "line": 43362,
+      "text": "\t\t\t\t((EnemyAI)this).KillEnemy(false);"
+    },
+    {
+      "line": 43372,
+      "text": "\t\t\t\t((EnemyAI)this).KillEnemy(destroy);"
+    },
+    {
+      "line": 43376,
+      "text": "\t\t\t\t((EnemyAI)this).KillEnemy(destroy);"
+    },
+    {
+      "line": 43543,
+      "text": "\t\t\t\t\t((EnemyAI)this).ChangeOwnershipOfEnemy(val3.OwnerClientId);"
+    },
+    {
+      "line": 43610,
+      "text": "\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(1);"
+    },
+    {
+      "line": 43810,
+      "text": "\t\t\t((EnemyAI)this).__initializeVariables();"
+    },
+    {
+      "line": 43872,
+      "text": "\t\t\t((EnemyAI)this).__initializeRpcs();"
+    },
+    {
+      "line": 44288,
+      "text": "\t\tpublic EnemyAI AI;"
+    },
+    {
+      "line": 44324,
+      "text": "\t\t\t\tAI = ((Component)this).GetComponent<EnemyAI>();"
+    },
+    {
+      "line": 44918,
+      "text": "\t\t\t\t((EnemyAI)item).isOutside = isOutside;"
+    },
+    {
+      "line": 44921,
+      "text": "\t\t\t\t\t((EnemyAI)item).agent.Warp(((Component)this).transform.position);"
+    },
+    {
+      "line": 45260,
+      "text": "\t\t\t\tif (((EnemyAI)puffminAI).currentBehaviourStateIndex == 1)"
+    },
+    {
+      "line": 45301,
+      "text": "\t\t\t\tif (((EnemyAI)pikminCollisionDetect.mainPikmin).currentBehaviourStateIndex == 4)"
+    },
+    {
+      "line": 45305,
+      "text": "\t\t\t\tif (((EnemyAI)pikminCollisionDetect.mainPikmin).currentBehaviourStateIndex == 5)"
+    },
+    {
+      "line": 45363,
+      "text": "\t\t\t\t\t((EnemyAI)this).creatureSFX.PlayOneShot(SlamSound);"
+    },
+    {
+      "line": 45405,
+      "text": "\t\t\t((EnemyAI)this).creatureSFX.PlayOneShot(LandSound);"
+    },
+    {
+      "line": 45406,
+      "text": "\t\t\tWalkieTalkie.TransmitOneShotAudio(((EnemyAI)this).creatureSFX, LandSound, 1f);"
+    },
+    {
+      "line": 45407,
+      "text": "\t\t\tRoundManager.Instance.PlayAudibleNoise(((Component)this).transform.position, 10f, 0.5f, 0, false, 0);"
+    },
+    {
+      "line": 45419,
+      "text": "\t\t\t\t((EnemyAI)this).creatureSFX.PlayOneShot(LandSound);"
+    },
+    {
+      "line": 45422,
+      "text": "\t\t\t\tRoundManager.Instance.PlayAudibleNoise(((Component)this).transform.position, 10f, 0.5f, 0, false, 0);"
+    },
+    {
+      "line": 45560,
+      "text": "\t\t\t\t((EnemyAI)this).agent.speed = 0f;"
+    },
+    {
+      "line": 45583,
+      "text": "\t\t\tif (!((Object)(object)TargetEnemy == (Object)null) && !Stunned && !IsEmbeded && !hasBounced && ((Behaviour)((EnemyAI)this).agent).enabled && Vector3.Distance(((Component)this).transform.position, ((Component)TargetEnemy).transform.position) < 5f + TargetEnemy.enemyScript.agent.radius + ((EnemyAI)this).agent.radius)"
+    },
+    {
+      "line": 45593,
+      "text": "\t\t\tif (!((NetworkBehaviour)this).IsOwner || CurrentIntention != Pintent.Thrown || ((EnemyAI)this).currentBehaviourStateIndex == 3)"
+    },
+    {
+      "line": 45614,
+      "text": "\t\tpublic override void OnCollideWithEnemy(Collider other, EnemyAI collidedEnemy = null)"
+    },
+    {
+      "line": 45625,
+      "text": "\t\t\telse if ((Object)(object)collidedEnemy != (Object)null && (Object)(object)collidedEnemy.enemyType != (Object)(object)((EnemyAI)this).enemyType && !collidedEnemy.isEnemyDead)"
+    },
+    {
+      "line": 45855,
+      "text": "\t\t\t\t\t((EnemyAI)this).creatureSFX.PlayOneShot(bounceSounds[Random.Range(0, bounceSounds.Length)], 1f);"
+    },
+    {
+      "line": 46049,
+      "text": "\t\t\t\t((EnemyAI)this).SwitchToBehaviourStateOnLocalClient(0);"
+    },
+    {
+      "line": 46053,
+      "text": "\t\t\t\t((Behaviour)((EnemyAI)this).agent).enabled = false;"
+    },
+    {
+      "line": 46070,
+      "text": "\t\t\t\t\t((Behaviour)((EnemyAI)this).agent).enabled = true;"
+    },
+    {
+      "line": 49641,
+      "text": "\t\t\tRoundManager.Instance.PlayAudibleNoise(LethalMin.WhistleMakesNoiseAtNoticeZoneCheat ? ((Component)noticeZone).transform.position : ((Component)this).transform.position, maxWhistleZoneRadius, 0.5f, 0, false, WhistleAudioID);"
+    },
+    {
+      "line": 50392,
+      "text": "\t\t\tObject.Destroy((Object)(object)((EnemyAI)this).agent);"
+    },
+    {
+      "line": 50393,
+      "text": "\t\t\t((EnemyAI)this).agent = val2;"
+    },
+    {
+      "line": 50422,
+      "text": "\t\t\t((Behaviour)FlyingNavAgentController).enabled = ((Behaviour)((EnemyAI)this).agent).enabled;"
+    },
+    {
+      "line": 50423,
+      "text": "\t\t\t((Component)NoticeZoneOnlyDetect).transform.position = ((Component)((EnemyAI)this).agent).transform.position;"
+    },
+    {
+      "line": 50424,
+      "text": "\t\t\tif (!((Behaviour)((EnemyAI)this).agent).enabled)"
+    },
+    {
+      "line": 50426,
+      "text": "\t\t\t\t((Component)((EnemyAI)this).agent).transform.position = ((Component)this).transform.position;"
+    },
+    {
+      "line": 50439,
+      "text": "\t\t\t\tif (((Behaviour)((EnemyAI)this).agent).enabled && ((EnemyAI)this).agent.isOnNavMesh)"
+    },
+    {
+      "line": 50441,
+      "text": "\t\t\t\t\t((EnemyAI)this).agent.Warp(value);"
+    },
+    {
+      "line": 50454,
+      "text": "\t\t\t\tshortcutCooldown -= ((EnemyAI)this).AIIntervalTime + 0.015f;"
+    },
+    {
+      "line": 50498,
+      "text": "\t\t\telse if (!((Behaviour)((EnemyAI)this).agent).enabled || !((EnemyAI)this).agent.isOnNavMesh)"
+    },
+    {
+      "line": 50504,
+      "text": "\t\t\t\tif (((EnemyAI)this).agent.pathPending || shortcutCooldown > 0f)"
+    },
+    {
+      "line": 50511,
+      "text": "\t\t\t\t\tif (!(Vector3.Distance(value, ((EnemyAI)this).agent.destination) > 12f) && IsFlightLineClear(((Component)this).transform.position, value))"
+    },
+    {
+      "line": 50517,
+      "text": "\t\t\t\tVector3 destination = ((EnemyAI)this).agent.destination;"
+    },
+    {
+      "line": 50524,
+      "text": "\t\t\t\tbool flag = ((EnemyAI)this).agent.hasPath && (int)((EnemyAI)this).agent.pathStatus == 0;"
+    },
+    {
+      "line": 50525,
+      "text": "\t\t\t\tfloat num2 = (flag ? ComputePathLength(((EnemyAI)this).agent.path) : float.PositiveInfinity);"
+    },
+    {
+      "line": 50527,
+      "text": "\t\t\t\tif ((!flag || !(num2 < num * 1.6f)) && NavMesh.SamplePosition(destination, ref val, 8f, ((EnemyAI)this).agent.areaMask))"
+    },
+    {
+      "line": 50530,
+      "text": "\t\t\t\t\tif (Vector3.Distance(position2, ((Component)((EnemyAI)this).agent).transform.position) < 2f)"
+    },
+    {
+      "line": 50618,
+      "text": "\t\t\tif (((EnemyAI)this).currentBehaviourStateIndex == 3)"
+    },
+    {
+      "line": 50640,
+      "text": "\t\t\tVector3 position = ((Component)((EnemyAI)this).agent).transform.position;"
+    },
+    {
+      "line": 50658,
+      "text": "\t\t\tif (((EnemyAI)this).currentBehaviourStateIndex == 1)"
+    },
+    {
+      "line": 50662,
+      "text": "\t\t\tif (((EnemyAI)this).currentBehaviourStateIndex == 2 && (Object)(object)TargetItem != (Object)null && !TargetItem.PikminOnItem.Contains(this))"
+    },
+    {
+      "line": 50666,
+      "text": "\t\t\tif (((EnemyAI)this).currentBehaviourStateIndex == 2 && (Object)(object)TargetItem != (Object)null && (Object)(object)TargetItem.PrimaryPikminOnItem == (Object)(object)this && TargetItem.CurrentRoute != null)"
+    },
+    {
+      "line": 50670,
+      "text": "\t\t\tif (((EnemyAI)this).currentBehaviourStateIndex == 2 && (Object)(object)TargetEnemy != (Object)null)"
+    },
+    {
+      "line": 50673,
+      "text": "\t\t\t\tfloat y2 = ((Component)((EnemyAI)this).agent).transform.position.y;"
+    },
+    {
+      "line": 50681,
+      "text": "\t\t\tif (NoFlyOffsetStates.Contains(((EnemyAI)this).currentBehaviourStateIndex))"
+    },
+    {
+      "line": 51517,
+      "text": "\t\t\tEnemyAI enemyScript = Penemy.enemyScript;"
+    },
+    {
+      "line": 51525,
+      "text": "\t\tpublic static bool LETHALMON_ISENEMYTAMED(EnemyAI enemy)"
+    },
+    {
+      "line": 51543,
+      "text": "\t\tpublic static bool IsEnemyBlackListed(EnemyAI enemy)"
+    },
+    {
+      "line": 52134,
+      "text": "\t\tpublic static EnemyAI ReviveEnemy(EnemyAI ai, Vector3 RevivePos)"
+    },
+    {
+      "line": 52142,
+      "text": "\t\t\tRoundManager.Instance.SpawnedEnemies.Add(val.GetComponent<EnemyAI>());"
+    },
+    {
+      "line": 52143,
+      "text": "\t\t\treturn val.GetComponent<EnemyAI>();"
+    },
+    {
+      "line": 52380,
+      "text": "\t\t\tforeach (EnemyAI enemyAI in PikminManager.instance.EnemyAIs)"
+    },
+    {
+      "line": 52432,
+      "text": "\t\tpublic static List<EnemyAI> GetAliveEnemiesNearPosition(Vector3 position, float radius)"
+    },
+    {
+      "line": 52436,
+      "text": "\t\t\tList<EnemyAI> list = new List<EnemyAI>();"
+    },
+    {
+      "line": 52437,
+      "text": "\t\t\tforeach (EnemyAI enemyAI in PikminManager.instance.EnemyAIs)"
+    },
+    {
+      "line": 52828,
+      "text": "\t\t\tScene currentScene = SceneManager.GetSceneByName(RoundManager.Instance.currentLevel.sceneName);"
+    },
+    {
+      "line": 52896,
+      "text": "\t\t\tRouteNode routeNode = new RouteNode(\"Main\", RoundManager.FindMainEntranceScript(true), 0.45f);"
+    },
+    {
+      "line": 53375,
+      "text": "\t\t\trouteContext.IsInside = !((EnemyAI)request.Pikmin).isOutside;"
+    },
+    {
+      "line": 53500,
+      "text": "\t\t\t\tVector3 point = ((RoundManager.Instance.currentLevel.sceneName == \"CompanyBuilding\") ? position2 : FindPathableCounterPosition(position2, position));"
+    },
+    {
+      "line": 54030,
+      "text": "\t\t\treturn req.StartOverride.HasValue ? req.StartOverride.Value : ((Component)((EnemyAI)req.Pikmin).agent).transform.position;"
+    },
+    {
+      "line": 54478,
+      "text": "\t\t\t\treturn ((Bounds)(ref bounds)).Contains(((Component)((EnemyAI)ai).agent).transform.position) && (!flag || Vector3.Distance(((Component)((EnemyAI)ai).agent).transform.position, position) <= CheckDistance);"
+    },
+    {
+      "line": 54480,
+      "text": "\t\t\treturn Vector3.Distance(((Component)((EnemyAI)ai).agent).transform.position, position) <= CheckDistance;"
+    },
+    {
+      "line": 54490,
+      "text": "\t\t\treturn Vector3.Distance(((Component)((EnemyAI)ai).agent).transform.position, position) <= distance;"
+    },
+    {
+      "line": 54596,
+      "text": "\t\t\tif (!IsDestinationReachable(((Component)((EnemyAI)route.Pikmin).agent).transform.position, routeNode.GetPosition()))"
+    },
+    {
+      "line": 56090,
+      "text": "\t\t\t((EnemyAI)base.pikmin).agent.stoppingDistance = 0f;"
+    },
+    {
+      "line": 56113,
+      "text": "\t\t\t\telse if (Vector3.Distance(base.transform.position, ((Component)enemy).transform.position) > base.pikmin.pikminType.EnemyDetectionRange * 4f + enemy.enemyScript.agent.radius + ((EnemyAI)base.pikmin).agent.radius)"
+    },
+    {
+      "line": 56165,
+      "text": "\t\t\tNavMeshAgent agent = ((EnemyAI)base.pikmin).agent;"
+    },
+    {
+      "line": 58096,
+      "text": "\t[HarmonyPatch(typeof(BoomboxItem))]"
+    },
+    {
+      "line": 58099,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 58110,
+      "text": "\t[HarmonyPatch(typeof(BridgeTrigger))]"
+    },
+    {
+      "line": 58113,
+      "text": "\t\t[HarmonyPatch(\"BridgeFallClientRpc\")]"
+    },
+    {
+      "line": 58124,
+      "text": "\t[HarmonyPatch(typeof(BridgeTriggerType2))]"
+    },
+    {
+      "line": 58127,
+      "text": "\t\t[HarmonyPatch(\"AddToBridgeInstabilityServerRpc\")]"
+    },
+    {
+      "line": 58138,
+      "text": "\t[HarmonyPatch(typeof(DeleteFileButton))]"
+    },
+    {
+      "line": 58141,
+      "text": "\t\t[HarmonyPatch(\"DeleteFile\")]"
+    },
+    {
+      "line": 58155,
+      "text": "\t[HarmonyPatch(typeof(DepositItemsDesk))]"
+    },
+    {
+      "line": 58158,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 58172,
+      "text": "\t[HarmonyPatch(typeof(Dungeon))]"
+    },
+    {
+      "line": 58175,
+      "text": "\t\t[HarmonyPatch(\"PostGenerateDungeon\")]"
+    },
+    {
+      "line": 58192,
+      "text": "\t[HarmonyPatch(typeof(EnemyAI))]"
+    },
+    {
+      "line": 58199,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 58201,
+      "text": "\t\tprivate static void start(EnemyAI __instance)"
+    },
+    {
+      "line": 58221,
+      "text": "\t\t[HarmonyPatch(\"OnDestroy\")]"
+    },
+    {
+      "line": 58223,
+      "text": "\t\tprivate static void destory(EnemyAI __instance)"
+    },
+    {
+      "line": 58249,
+      "text": "\t\t\tEnemyAI componentInChildren = enemy.enemyPrefab.GetComponentInChildren<EnemyAI>();"
+    },
+    {
+      "line": 58252,
+      "text": "\t\t\t\tLethalMin.Logger.LogError((object)(\"Failed to get EnemyAI for \" + enemy.enemyName));"
+    },
+    {
+      "line": 58344,
+      "text": "\t\t\t\t\t\tEnemyHPs.Add(enemyType, enemyType.enemyPrefab.GetComponent<EnemyAI>().enemyHP);"
+    },
+    {
+      "line": 58367,
+      "text": "\t[HarmonyPatch(typeof(EntranceTeleport))]"
+    },
+    {
+      "line": 58370,
+      "text": "\t\t[HarmonyPatch(\"Awake\")]"
+    },
+    {
+      "line": 58387,
+      "text": "\t[HarmonyPatch(typeof(GameNetworkManager))]"
+    },
+    {
+      "line": 58392,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 58419,
+      "text": "\t\t[HarmonyPatch(\"SaveGame\")]"
+    },
+    {
+      "line": 58429,
+      "text": "\t[HarmonyPatch(typeof(GrabbableObject))]"
+    },
+    {
+      "line": 58434,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 58586,
+      "text": "\t[HarmonyPatch(typeof(HUDManager))]"
+    },
+    {
+      "line": 58589,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 58676,
+      "text": "\t\t[HarmonyPatch(\"UpdateScanNodes\")]"
+    },
+    {
+      "line": 58700,
+      "text": "\t\t[HarmonyPatch(\"ScanNewCreatureServerRpc\")]"
+    },
+    {
+      "line": 58719,
+      "text": "\t\t[HarmonyPatch(\"ScanNewCreatureClientRpc\")]"
+    },
+    {
+      "line": 58737,
+      "text": "\t\t[HarmonyPatch(\"DisplayGlobalNotification\")]"
+    },
+    {
+      "line": 58752,
+      "text": "\t\t[HarmonyPatch(\"FillEndGameStats\")]"
+    },
+    {
+      "line": 58759,
+      "text": "\t[HarmonyPatch(typeof(Landmine))]"
+    },
+    {
+      "line": 58764,
+      "text": "\t\t[HarmonyPatch(\"OnTriggerEnter\")]"
+    },
+    {
+      "line": 58776,
+      "text": "\t\t[HarmonyPatch(\"OnTriggerExit\")]"
+    },
+    {
+      "line": 58787,
+      "text": "\t\t[HarmonyPatch(\"SpawnExplosion\")]"
+    },
+    {
+      "line": 58830,
+      "text": "\t\t[HarmonyPatch(\"SpawnExplosion\")]"
+    },
+    {
+      "line": 58845,
+      "text": "\t[HarmonyPatch(typeof(LungProp))]"
+    },
+    {
+      "line": 58848,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 58862,
+      "text": "\t[HarmonyPatch(typeof(MenuManager))]"
+    },
+    {
+      "line": 58867,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 58907,
+      "text": "\t[HarmonyPatch(typeof(MineshaftElevatorController))]"
+    },
+    {
+      "line": 58910,
+      "text": "\t\t[HarmonyPatch(\"OnEnable\")]"
+    },
+    {
+      "line": 58938,
+      "text": "\t[HarmonyPatch(typeof(PlayerControllerB))]"
+    },
+    {
+      "line": 58941,
+      "text": "\t\t[HarmonyPatch(\"Awake\")]"
+    },
+    {
+      "line": 58958,
+      "text": "\t\t[HarmonyPatch(\"KillPlayerClientRpc\")]"
+    },
+    {
+      "line": 58999,
+      "text": "\t\t[HarmonyPatch(\"KillPlayer\")]"
+    },
+    {
+      "line": 59090,
+      "text": "\t\t[HarmonyPatch(\"ConnectClientToPlayerObject\")]"
+    },
+    {
+      "line": 59107,
+      "text": "\t[HarmonyPatch(typeof(RoundManager))]"
+    },
+    {
+      "line": 59112,
+      "text": "\t\t[HarmonyPatch(\"FinishGeneratingNewLevelClientRpc\")]"
+    },
+    {
+      "line": 59114,
+      "text": "\t\tprivate static void FinishGeneratingNewLevelClientRpcPrefix(RoundManager __instance)"
+    },
+    {
+      "line": 59129,
+      "text": "\t\t[HarmonyPatch(\"FinishGeneratingNewLevelClientRpc\")]"
+    },
+    {
+      "line": 59132,
+      "text": "\t\tpublic static void FinishGeneratingNewLevelClientRpcPostfix(RoundManager __instance)"
+    },
+    {
+      "line": 59148,
+      "text": "\t\t[HarmonyPatch(\"SetExitIDs\")]"
+    },
+    {
+      "line": 59151,
+      "text": "\t\tprivate static void SetExitIDs(RoundManager __instance)"
+    },
+    {
+      "line": 59164,
+      "text": "\t\t[HarmonyPatch(\"SpawnScrapInLevel\")]"
+    },
+    {
+      "line": 59166,
+      "text": "\t\tprivate static void SpawnOnionsInLevel(RoundManager __instance)"
+    },
+    {
+      "line": 59171,
+      "text": "\t[HarmonyPatch(typeof(ShipTeleporter))]"
+    },
+    {
+      "line": 59174,
+      "text": "\t\t[HarmonyPatch(\"beamUpPlayer\")]"
+    },
+    {
+      "line": 59199,
+      "text": "\t[HarmonyPatch(typeof(SpikeRoofTrap))]"
+    },
+    {
+      "line": 59202,
+      "text": "\t\t[HarmonyPatch(\"OnTriggerStay\")]"
+    },
+    {
+      "line": 59213,
+      "text": "\t\t\t\tif ((Object)(object)component != (Object)null && (Object)(object)component.mainPikmin != (Object)null && ((NetworkBehaviour)component.mainPikmin).IsOwner && !((EnemyAI)component.mainPikmin).isEnemyDead)"
+    },
+    {
+      "line": 59232,
+      "text": "\t[HarmonyPatch(typeof(StartOfRound))]"
+    },
+    {
+      "line": 59235,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 59277,
+      "text": "\t\t[HarmonyPatch(\"SetShipReadyToLand\")]"
+    },
+    {
+      "line": 59284,
+      "text": "\t\t[HarmonyPatch(\"SceneManager_OnLoadComplete1\")]"
+    },
+    {
+      "line": 59294,
+      "text": "\t\t[HarmonyPatch(\"ShipLeave\")]"
+    },
+    {
+      "line": 59301,
+      "text": "\t\t[HarmonyPatch(\"SetShipReadyToLand\")]"
+    },
+    {
+      "line": 59308,
+      "text": "\t\t[HarmonyPatch(\"EndOfGameClientRpc\")]"
+    },
+    {
+      "line": 59344,
+      "text": "\t\t[HarmonyPatch(\"EndPlayersFiredSequenceClientRpc\")]"
+    },
+    {
+      "line": 59354,
+      "text": "\t\t[HarmonyPatch(\"unloadSceneForAllPlayers\")]"
+    },
+    {
+      "line": 59364,
+      "text": "\t\t[HarmonyPatch(\"FirePlayersAfterDeadlineClientRpc\")]"
+    },
+    {
+      "line": 59377,
+      "text": "\t\t[HarmonyPatch(\"SetPlayerSafeInShip\")]"
+    },
+    {
+      "line": 59398,
+      "text": "\t\t\t\t\t((EnemyAI)pikminAI).EnableEnemyMesh(true, false, false);"
+    },
+    {
+      "line": 59407,
+      "text": "\t[HarmonyPatch(typeof(StormyWeather))]"
+    },
+    {
+      "line": 59412,
+      "text": "\t\t[HarmonyPatch(\"LightningStrike\")]"
+    },
+    {
+      "line": 59420,
+      "text": "\t\t[HarmonyPatch(\"LightningStrike\")]"
+    },
+    {
+      "line": 59463,
+      "text": "\t[HarmonyPatch(typeof(StunGrenadeItem))]"
+    },
+    {
+      "line": 59466,
+      "text": "\t\t[HarmonyPatch(\"StunExplosion\")]"
+    },
+    {
+      "line": 59511,
+      "text": "\t[HarmonyPatch(typeof(Terminal))]"
+    },
+    {
+      "line": 59518,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 59553,
+      "text": "\t\t[HarmonyPatch(\"LoadNewNode\")]"
+    },
+    {
+      "line": 59570,
+      "text": "\t\t[HarmonyPatch(\"TextPostProcess\")]"
+    },
+    {
+      "line": 59598,
+      "text": "\t[HarmonyPatch(typeof(Turret))]"
+    },
+    {
+      "line": 59601,
+      "text": "\t\t[HarmonyPatch(\"Update\")]"
+    },
+    {
+      "line": 59635,
+      "text": "\t\t\t\t\t\t\t((EnemyAI)pikminAI).HitEnemyOnLocalClient(2, val2, (PlayerControllerB)null, false, -1);"
+    },
+    {
+      "line": 59645,
+      "text": "\t\t\t\t\t\t((EnemyAI)pikminAI2).HitEnemyOnLocalClient(2, val3, (PlayerControllerB)null, false, -1);"
+    },
+    {
+      "line": 59710,
+      "text": "\t[HarmonyPatch(typeof(VehicleCollisionTrigger))]"
+    },
+    {
+      "line": 59713,
+      "text": "\t\t[HarmonyPatch(\"OnTriggerEnter\")]"
+    },
+    {
+      "line": 59733,
+      "text": "\t[HarmonyPatch(typeof(VehicleController))]"
+    },
+    {
+      "line": 59736,
+      "text": "\t\t[HarmonyPatch(\"Awake\")]"
+    },
+    {
+      "line": 59757,
+      "text": "\t[HarmonyPatch(typeof(BaboonBirdAI))]"
+    },
+    {
+      "line": 59760,
+      "text": "\t\t[HarmonyPatch(\"OnCollideWithEnemy\")]"
+    },
+    {
+      "line": 59762,
+      "text": "\t\tpublic static bool OnCollideWithEnemyPatch(BaboonBirdAI __instance, Collider other, EnemyAI enemyScript = null)"
+    },
+    {
+      "line": 59784,
+      "text": "\t[HarmonyPatch(typeof(CaveDwellerAI))]"
+    },
+    {
+      "line": 59787,
+      "text": "\t\t[HarmonyPatch(\"DetectNoise\")]"
+    },
+    {
+      "line": 59798,
+      "text": "\t\t[HarmonyPatch(\"StartTransformationAnim\")]"
+    },
+    {
+      "line": 59836,
+      "text": "\t[HarmonyPatch(typeof(CompanyMonsterCollisionDetect))]"
+    },
+    {
+      "line": 59839,
+      "text": "\t\t[HarmonyPatch(\"OnTriggerEnter\")]"
+    },
+    {
+      "line": 59860,
+      "text": "\t[HarmonyPatch(typeof(DepositItemsDesk))]"
+    },
+    {
+      "line": 59863,
+      "text": "\t\t[HarmonyPatch(\"INoiseListener.DetectNoise\")]"
+    },
+    {
+      "line": 59874,
+      "text": "\t[HarmonyPatch(typeof(ForestGiantAI))]"
+    },
+    {
+      "line": 59877,
+      "text": "\t\t[HarmonyPatch(\"BeginEatPlayer\")]"
+    },
+    {
+      "line": 59911,
+      "text": "\t\t[HarmonyPatch(\"StopKillAnimation\")]"
+    },
+    {
+      "line": 59922,
+      "text": "\t[HarmonyPatch(typeof(HoarderBugAI))]"
+    },
+    {
+      "line": 59925,
+      "text": "\t\t[HarmonyPatch(\"GrabItem\")]"
+    },
+    {
+      "line": 59948,
+      "text": "\t[HarmonyPatch(typeof(MaskedPlayerEnemy))]"
+    },
+    {
+      "line": 59984,
+      "text": "\t\t\tpuffminLeader.AI = (EnemyAI)(object)__instance;"
+    },
+    {
+      "line": 59996,
+      "text": "\t\t\tpuffminLeader.WhistleAudioSource = ((EnemyAI)__instance).creatureSFX;"
+    },
+    {
+      "line": 60002,
+      "text": "\t\t[HarmonyPatch(\"KillEnemy\")]"
+    },
+    {
+      "line": 60013,
+      "text": "\t[HarmonyPatch(typeof(MouthDogAI))]"
+    },
+    {
+      "line": 60016,
+      "text": "\t\t[HarmonyPatch(\"OnCollideWithEnemy\")]"
+    },
+    {
+      "line": 60018,
+      "text": "\t\tprivate static bool OnCollideWithPikmin(MouthDogAI __instance, Collider other, EnemyAI collidedEnemy)"
+    },
+    {
+      "line": 60027,
+      "text": "\t[HarmonyPatch(typeof(PufferAI))]"
+    },
+    {
+      "line": 60032,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 60059,
+      "text": "\t[HarmonyPatch(typeof(RedLocustBees))]"
+    },
+    {
+      "line": 60062,
+      "text": "\t\t[HarmonyPatch(\"DoAIInterval\")]"
+    },
+    {
+      "line": 60070,
+      "text": "\t\t\t\tif (StartOfRound.Instance.allPlayersDead || !__instance.hasSpawnedHive || ((EnemyAI)__instance).daytimeEnemyLeaving || ((EnemyAI)__instance).currentBehaviourStateIndex != 0 || __instance.IsHiveMissing())"
+    },
+    {
+      "line": 61492,
+      "text": "\t[HarmonyPatch(typeof(LibOnionFuseRules))]"
+    },
+    {
+      "line": 61495,
+      "text": "\t\t[HarmonyPatch(\"OnEnable\")]"
+    },
+    {
+      "line": 61505,
+      "text": "\t[HarmonyPatch(typeof(LibPikminType))]"
+    },
+    {
+      "line": 61508,
+      "text": "\t\t[HarmonyPatch(\"OnEnable\")]"
+    },
+    {
+      "line": 61518,
+      "text": "\t[HarmonyPatch(typeof(ReplaceableComponet))]"
+    },
+    {
+      "line": 61537,
+      "text": "\t\t[HarmonyPatch(\"Initialize\")]"
+    },
+    {
+      "line": 61589,
+      "text": "\t[HarmonyPatch(typeof(DTMEntityAI))]"
+    },
+    {
+      "line": 61592,
+      "text": "\t\t[HarmonyPatch(\"Update\")]"
+    },
+    {
+      "line": 61619,
+      "text": "\t\t\tEnemyAI component = ((Component)networkObject).GetComponent<EnemyAI>();"
+    },
+    {
+      "line": 61631,
+      "text": "\t[HarmonyPatch(typeof(ShotgunItem))]"
+    },
+    {
+      "line": 61634,
+      "text": "\t\t[HarmonyPatch(\"ShootGun\")]"
+    },
+    {
+      "line": 61672,
+      "text": "\t[HarmonyPatch(typeof(DTMEntityAI))]"
+    },
+    {
+      "line": 61675,
+      "text": "\t\tpublic static void Reveal(EnemyAI enemy)"
+    },
+    {
+      "line": 61680,
+      "text": "\t\t\t\tval.StartAttack(((EnemyAI)val).isOutside);"
+    },
+    {
+      "line": 61684,
+      "text": "\t\t[HarmonyPatch(\"UpdateDisguise\")]"
+    },
+    {
+      "line": 61689,
+      "text": "\t\t\tDontTouchMeCompatBridge.OnDisguiseStateChanged((EnemyAI)(object)__instance, disguisedAsItem);"
+    },
+    {
+      "line": 61692,
+      "text": "\t\t[HarmonyPatch(\"AttackClientRpc\")]"
+    },
+    {
+      "line": 61696,
+      "text": "\t\t\tDontTouchMeCompatBridge.Disarm((EnemyAI)(object)__instance);"
+    },
+    {
+      "line": 61705,
+      "text": "\t\tprivate static readonly HashSet<EnemyAI> _armed = new HashSet<EnemyAI>();"
+    },
+    {
+      "line": 61716,
+      "text": "\t\tpublic static void OnDisguiseStateChanged(EnemyAI enemy, bool disguisedAsItem)"
+    },
+    {
+      "line": 61737,
+      "text": "\t\tprivate static void Arm(EnemyAI enemy)"
+    },
+    {
+      "line": 61756,
+      "text": "\t\tprivate static IEnumerator WaitAndConfigureProxy(EnemyAI enemy)"
+    },
+    {
+      "line": 61801,
+      "text": "\t\t\tEnemyAI captured = enemy;"
+    },
+    {
+      "line": 61822,
+      "text": "\t\tprivate static void OnProxyGrabbed(PikminItem item, EnemyAI enemy)"
+    },
+    {
+      "line": 61862,
+      "text": "\t\t\t\t\t((EnemyAI)item2).KillEnemyOnOwnerClient(false);"
+    },
+    {
+      "line": 61871,
+      "text": "\t\tprivate static IEnumerator DeferredReveal(EnemyAI enemy)"
+    },
+    {
+      "line": 61880,
+      "text": "\t\tpublic static void Disarm(EnemyAI enemy)"
+    },
+    {
+      "line": 61906,
+      "text": "\t\tprivate static PikminItem? TryGetProxy(EnemyAI enemy)"
+    },
+    {
+      "line": 61949,
+      "text": "\t\t\t\t\t\t((EnemyAI)pikmin).KillEnemyOnOwnerClient(false);"
+    },
+    {
+      "line": 62243,
+      "text": "\t[HarmonyPatch(typeof(AirControlUnit))]"
+    },
+    {
+      "line": 62246,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 62257,
+      "text": "\t\t[HarmonyPatch(\"Update\")]"
+    },
+    {
+      "line": 62303,
+      "text": "\t\t\t\tif (!((Object)(object)pikminAI == (Object)null) && !((EnemyAI)pikminAI).isEnemyDead && !pikminAI.IsDeadOrDying && pikminAI is WingedPikminAI wingedPikminAI)"
+    },
+    {
+      "line": 62336,
+      "text": "\t[HarmonyPatch(typeof(AirUnitProjectile))]"
+    },
+    {
+      "line": 62339,
+      "text": "\t\t[HarmonyPatch(\"OnTriggerEnter\")]"
+    },
+    {
+      "line": 62357,
+      "text": "\t\t\tif (!((Object)(object)componentInParent == (Object)null) && !((EnemyAI)componentInParent).isEnemyDead && !componentInParent.IsDeadOrDying)"
+    },
+    {
+      "line": 62371,
+      "text": "\t[HarmonyPatch(typeof(AutonomousCrane))]"
+    },
+    {
+      "line": 62374,
+      "text": "\t\t[HarmonyPatch(\"DoIdleBehaviour\")]"
+    },
+    {
+      "line": 62412,
+      "text": "\t\t\t\tif (!((Object)(object)pikminAI == (Object)null) && !((EnemyAI)pikminAI).isEnemyDead && !pikminAI.IsDeadOrDying)"
+    },
+    {
+      "line": 62435,
+      "text": "\t\t[HarmonyPatch(\"CraneHitBottomServerRpc\")]"
+    },
+    {
+      "line": 62451,
+      "text": "\t\t\t\tif (!((Object)(object)pikminAI == (Object)null) && !((EnemyAI)pikminAI).isEnemyDead && !pikminAI.IsDeadOrDying)"
+    },
+    {
+      "line": 62463,
+      "text": "\t[HarmonyPatch(typeof(CompactorToby))]"
+    },
+    {
+      "line": 62466,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 62489,
+      "text": "\t[HarmonyPatch(typeof(FlashTurret))]"
+    },
+    {
+      "line": 62492,
+      "text": "\t\t[HarmonyPatch(\"TriggerFlash\")]"
+    },
+    {
+      "line": 62519,
+      "text": "\t\t\t\tif (!((Object)(object)pikminAI == (Object)null) && !((EnemyAI)pikminAI).isEnemyDead && !pikminAI.IsDeadOrDying)"
+    },
+    {
+      "line": 62535,
+      "text": "\t[HarmonyPatch(typeof(FunctionalMicrowave))]"
+    },
+    {
+      "line": 62538,
+      "text": "\t\t[HarmonyPatch(\"Update\")]"
+    },
+    {
+      "line": 62567,
+      "text": "\t\t\t\tif ((Object)(object)pikminAI == (Object)null || ((EnemyAI)pikminAI).isEnemyDead || pikminAI.IsDeadOrDying)"
+    },
+    {
+      "line": 62588,
+      "text": "\t[HarmonyPatch(typeof(IndustrialFan))]"
+    },
+    {
+      "line": 62593,
+      "text": "\t\t[HarmonyPatch(\"FixedUpdate\")]"
+    },
+    {
+      "line": 62631,
+      "text": "\t\t\t\tif ((Object)(object)pikminAI == (Object)null || ((EnemyAI)pikminAI).isEnemyDead || pikminAI.IsDeadOrDying)"
+    },
+    {
+      "line": 62682,
+      "text": "\t[HarmonyPatch(typeof(LaserTurret))]"
+    },
+    {
+      "line": 62685,
+      "text": "\t\t[HarmonyPatch(\"Update\")]"
+    },
+    {
+      "line": 62718,
+      "text": "\t\t\t\tif ((Object)(object)pikminAI == (Object)null || ((EnemyAI)pikminAI).isEnemyDead || pikminAI.IsDeadOrDying)"
+    },
+    {
+      "line": 62738,
+      "text": "\t[HarmonyPatch(typeof(MoonOverrideStrategy))]"
+    },
+    {
+      "line": 62741,
+      "text": "\t\t[HarmonyPatch(\"GenerateRoute\")]"
+    },
+    {
+      "line": 62764,
+      "text": "\t[HarmonyPatch(typeof(SellingSally))]"
+    },
+    {
+      "line": 62775,
+      "text": "\t\t[HarmonyPatch(\"OnNetworkSpawn\")]"
+    },
+    {
+      "line": 62795,
+      "text": "\t[HarmonyPatch(typeof(Tornados))]"
+    },
+    {
+      "line": 62798,
+      "text": "\t\t[HarmonyPatch(\"FixedUpdate\")]"
+    },
+    {
+      "line": 62828,
+      "text": "\t\t\tif (!LethalMin.CR_TornadoPullsPikmin.InternalValue || (Object)(object)PikminManager.instance == (Object)null || ((EnemyAI)__instance).isEnemyDead || StartOfRound.Instance.allPlayersDead)"
+    },
+    {
+      "line": 62836,
+      "text": "\t\t\t\tif ((Object)(object)pikminAI == (Object)null || ((EnemyAI)pikminAI).isEnemyDead || pikminAI.IsDeadOrDying || ((Object)(object)pikminAI.TargetItem != (Object)null && pikminAI.CurrentIntention == Pintent.Carry) || pikminAI.CurrentCarryStrength >= internalValue)"
+    },
+    {
+      "line": 62864,
+      "text": "\t[HarmonyPatch(typeof(EnemyAICollisionDetectPatch))]"
+    },
+    {
+      "line": 62867,
+      "text": "\t\t[HarmonyPatch(\"DetectNoisePatch\")]"
+    },
+    {
+      "line": 62879,
+      "text": "\t[HarmonyPatch(typeof(EnemyAIPatch))]"
+    },
+    {
+      "line": 62882,
+      "text": "\t\t[HarmonyPatch(\"KillEnemyPatch\")]"
+    },
+    {
+      "line": 62884,
+      "text": "\t\tprivate static bool KillEnemyPatchPrefix(EnemyAI __0)"
+    },
+    {
+      "line": 62895,
+      "text": "\t[HarmonyPatch(typeof(RoundManagerPatch))]"
+    },
+    {
+      "line": 62898,
+      "text": "\t\t[HarmonyPatch(\"PlayAudibleNoisePatch\")]"
+    },
+    {
+      "line": 62910,
+      "text": "\t[HarmonyPatch(typeof(SpawningUI))]"
+    },
+    {
+      "line": 62913,
+      "text": "\t\t[HarmonyPatch(\"GenerateItems\")]"
+    },
+    {
+      "line": 62936,
+      "text": "\t[HarmonyPatch(typeof(MimicNetworker))]"
+    },
+    {
+      "line": 62939,
+      "text": "\t\t[HarmonyPatch(\"MimicAttackClientRpc\")]"
+    },
+    {
+      "line": 62969,
+      "text": "\t[HarmonyPatch(typeof(ElevatorSystem))]"
+    },
+    {
+      "line": 62980,
+      "text": "\t\t[HarmonyPatch(\"OnNetworkSpawn\")]"
+    },
+    {
+      "line": 62998,
+      "text": "\t[HarmonyPatch(typeof(MetalDetector))]"
+    },
+    {
+      "line": 63001,
+      "text": "\t\t[HarmonyPatch(\"OnTriggerStay\")]"
+    },
+    {
+      "line": 63043,
+      "text": "\t[HarmonyPatch(typeof(CustomTouchInteractTrigger))]"
+    },
+    {
+      "line": 63046,
+      "text": "\t\t[HarmonyPatch(\"OnTriggerEnter\")]"
+    },
+    {
+      "line": 63067,
+      "text": "\t\t\t\t\t\tif (((EnemyAI)component.mainPikmin).enemyHP <= 5 && ((NetworkBehaviour)component.mainPikmin).IsOwner)"
+    },
+    {
+      "line": 63077,
+      "text": "\t\t\t\t\t\t\t((EnemyAI)component.mainPikmin).HitEnemyOnLocalClient(5, default(Vector3), (PlayerControllerB)null, false, -1);"
+    },
+    {
+      "line": 63091,
+      "text": "\t\t[HarmonyPatch(\"OnTriggerStay\")]"
+    },
+    {
+      "line": 63112,
+      "text": "\t\t\t\t\t\tif (((EnemyAI)component.mainPikmin).enemyHP <= 5 && ((NetworkBehaviour)component.mainPikmin).IsOwner)"
+    },
+    {
+      "line": 63122,
+      "text": "\t\t\t\t\t\t\t((EnemyAI)component.mainPikmin).HitEnemyOnLocalClient(5, default(Vector3), (PlayerControllerB)null, false, -1);"
+    },
+    {
+      "line": 63137,
+      "text": "\t[HarmonyPatch(typeof(TeslaKillTrigger))]"
+    },
+    {
+      "line": 63140,
+      "text": "\t\t[HarmonyPatch(\"OnEnemyTrigger\")]"
+    },
+    {
+      "line": 63141,
+      "text": "\t\tpublic static bool Prefix(EnemyAI enemyAI)"
+    },
+    {
+      "line": 63164,
+      "text": "\t[HarmonyPatch(typeof(EndlessElevator))]"
+    },
+    {
+      "line": 63190,
+      "text": "\t\t[HarmonyPatch(\"Start\")]"
+    },
+    {
+      "line": 63274,
+      "text": "\t\t\t\tScene sceneByName = SceneManager.GetSceneByName(RoundManager.Instance.currentLevel.sceneName);"
+    },
+    {
+      "line": 63333,
+      "text": "\t\t[HarmonyPatch(\"Update\")]"
+    },
+    {
+      "line": 63343,
+      "text": "\t\t[HarmonyPatch(\"GenerateNewFloor\")]"
+    },
+    {
+      "line": 63428,
+      "text": "\t\t\t\t\t\t((EnemyAI)ai).agent.Warp(((Component)__instance.playerPhysicsRegion_elevator).transform.position);"
+    },
+    {
+      "line": 63433,
+      "text": "\t\t\t\t\t\t((EnemyAI)ai).isOutside = !StartOfRound.Instance.allPlayerScripts[0].isInsideFactory;"
+    },
+    {
+      "line": 63437,
+      "text": "\t\t\t\t\t\t((EnemyAI)ai).isOutside = !leader.Controller.isInsideFactory;"
+    },
+    {
+      "line": 63446,
+      "text": "\t[HarmonyPatch(typeof(MoonOverrideStrategy))]"
+    },
+    {
+      "line": 63449,
+      "text": "\t\t[HarmonyPatch(\"GenerateRoute\")]"
+    }
+  ],
+  "decompiler_stderr": "",
+  "decompiler_annotation_count": 9335,
+  "qualification": "Source token discovery only: hits include non-enemy spawns, declarations and inactive code. No patch approval or exhaustive game/mod coverage. Dependencies may remain unresolved."
+}

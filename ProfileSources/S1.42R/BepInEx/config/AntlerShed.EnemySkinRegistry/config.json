@@ -1,0 +1,390 @@
+{
+  "knownSkins": [
+    "LethalMatt.Bozoros.GoofyPuffer",
+    "LethalMatt.Bozoros.ClownGiant",
+    "LethalMatt.Bozoros.SantaButler"
+  ],
+  "knownMoons": [
+    "41 Experimentation",
+    "220 Assurance",
+    "56 Vow",
+    "21 Offense",
+    "61 March",
+    "85 Rend",
+    "7 Dine",
+    "8 Titan",
+    "20 Adamance",
+    "68 Artifice",
+    "5 Embrion",
+    "10 EGypt",
+    "31 Arcadia",
+    "161 Abaddon",
+    "198 Cabal",
+    "556 Flicker",
+    "The Iris",
+    "551 Lament",
+    "823 Bozoros",
+    "559 Pareidolia",
+    "556 Shutter",
+    "32 Argent",
+    "111 PsychSanctum",
+    "Sanguine",
+    "Spectralis",
+    "37 Zenit",
+    "607 Vigilance"
+  ],
+  "version": "1.4.6",
+  "mapConfigurations": {
+    "enemyConfigs": [
+      {
+        "enemyId": "LethalCompany.BaboonHawk",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Barber",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Bracken",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.BunkerSpider",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Butler",
+        "activeSkins": [
+          "LethalMatt.Bozoros.SantaButler"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "LethalMatt.Bozoros.SantaButler",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            }
+          ]
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.CircuitBees",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Coilhead",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.EarthLeviathan",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.EyelessDog",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.ForestKeeper",
+        "activeSkins": [
+          "LethalMatt.Bozoros.ClownGiant"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "LethalMatt.Bozoros.ClownGiant",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            }
+          ]
+        },
+        "mapConfigurations": [
+          {
+            "mapId": "circus",
+            "outdoorVanillaFrequency": 0.0,
+            "indoorVanillaFrequency": 0.0,
+            "skinDistribution": [
+              {
+                "skinId": "LethalMatt.Bozoros.ClownGiant",
+                "indoorFrequency": 1.0,
+                "outdoorFrequency": 1.0
+              }
+            ]
+          },
+          {
+            "mapId": "fun",
+            "outdoorVanillaFrequency": 0.0,
+            "indoorVanillaFrequency": 0.0,
+            "skinDistribution": [
+              {
+                "skinId": "LethalMatt.Bozoros.ClownGiant",
+                "indoorFrequency": 1.0,
+                "outdoorFrequency": 1.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "enemyId": "LethalCompany.GhostGirl",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.GiantKiwi",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.HoarderBug",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Hygrodere",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Jester",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.KidnapperFox",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Maneater",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Manticoil",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.Nutcracker",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.OldBird",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.RoamingLocust",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.SnareFlea",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.SporeLizard",
+        "activeSkins": [
+          "LethalMatt.Bozoros.GoofyPuffer"
+        ],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": [
+            {
+              "skinId": "LethalMatt.Bozoros.GoofyPuffer",
+              "indoorFrequency": 0.0,
+              "outdoorFrequency": 0.0
+            }
+          ]
+        },
+        "mapConfigurations": [
+          {
+            "mapId": "circus",
+            "outdoorVanillaFrequency": 0.0,
+            "indoorVanillaFrequency": 0.0,
+            "skinDistribution": [
+              {
+                "skinId": "LethalMatt.Bozoros.GoofyPuffer",
+                "indoorFrequency": 1.0,
+                "outdoorFrequency": 1.0
+              }
+            ]
+          },
+          {
+            "mapId": "fun",
+            "outdoorVanillaFrequency": 0.0,
+            "indoorVanillaFrequency": 0.0,
+            "skinDistribution": [
+              {
+                "skinId": "LethalMatt.Bozoros.GoofyPuffer",
+                "indoorFrequency": 1.0,
+                "outdoorFrequency": 1.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "enemyId": "LethalCompany.Thumper",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      },
+      {
+        "enemyId": "LethalCompany.TulipSnake",
+        "activeSkins": [],
+        "defaultConfiguration": {
+          "mapId": "",
+          "outdoorVanillaFrequency": 0.0,
+          "indoorVanillaFrequency": 0.0,
+          "skinDistribution": []
+        },
+        "mapConfigurations": []
+      }
+    ]
+  }
+}

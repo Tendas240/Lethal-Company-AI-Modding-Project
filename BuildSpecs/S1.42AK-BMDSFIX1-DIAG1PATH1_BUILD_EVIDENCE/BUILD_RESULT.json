@@ -1,0 +1,21 @@
+{
+  "build_id": "S1.42AK-BMDSFIX1-DIAG1PATH1",
+  "profile_name": "LC V1 S1.42AK-D1P1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1-DIAG1 Deterministic Deep Sewers Selector.r2z",
+  "base_sha256": "31c24a3752aefe040b74c5dc2c3b7f677c17068a91f8c8e2893ace615050b78e",
+  "output_profile": "Profiles/LC V1 S1.42AK-D1P1.r2z",
+  "output_sha256": "0d4fc0b2031099617a43770b29ab1908a2be18a262df70a3322904f458cff5c6",
+  "zip_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [],
+  "mod_state_changes": [],
+  "mod_additions": [],
+  "mod_removals": [],
+  "snapshot_dir": "ProfileSources/S1.42AK-BMDSFIX1-DIAG1PATH1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  }
+}

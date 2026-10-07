@@ -1,0 +1,81 @@
+{
+  "package": "TeamXiaolan-DawnLib",
+  "version": "0.9.25",
+  "member": "BepInEx/plugins/DawnLib/com.github.teamxiaolan.dawnlib.interfaces.dll",
+  "assembly_sha256": "cc60c29da1057597dc51a2bba9eec3b895e4cfaff894384b1eb58b5b1ef12960",
+  "source_sha256": "e9040de62ea17db9868367204fb84e87e3e39ed9b9de6514bab293803d3c7239",
+  "source_line_count": 227,
+  "class_listing": [
+    "Class <Module>",
+    "Class Microsoft.CodeAnalysis.EmbeddedAttribute",
+    "Class System.Runtime.CompilerServices.NullableAttribute",
+    "Class System.Runtime.CompilerServices.NullableContextAttribute",
+    "Class System.Runtime.CompilerServices.RefSafetyRulesAttribute",
+    "Class Dawn.MyPluginInfo",
+    "Class System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute"
+  ],
+  "declarations": [
+    {
+      "line": 35,
+      "text": "namespace Microsoft.CodeAnalysis"
+    },
+    {
+      "line": 39,
+      "text": "\tinternal sealed class EmbeddedAttribute : Attribute"
+    },
+    {
+      "line": 43,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 48,
+      "text": "\tinternal sealed class NullableAttribute : Attribute"
+    },
+    {
+      "line": 65,
+      "text": "\tinternal sealed class NullableContextAttribute : Attribute"
+    },
+    {
+      "line": 77,
+      "text": "\tinternal sealed class RefSafetyRulesAttribute : Attribute"
+    },
+    {
+      "line": 87,
+      "text": "namespace Dawn"
+    },
+    {
+      "line": 129,
+      "text": "\tinternal static class MyPluginInfo"
+    },
+    {
+      "line": 138,
+      "text": "namespace Dawn.Interfaces"
+    },
+    {
+      "line": 218,
+      "text": "namespace System.Runtime.CompilerServices"
+    },
+    {
+      "line": 221,
+      "text": "\tinternal sealed class IgnoresAccessChecksToAttribute : Attribute"
+    }
+  ],
+  "spawn_surface_hits": [],
+  "owner_or_patch_hits": [
+    {
+      "line": 141,
+      "text": "\t[InjectInterface(typeof(EnemyAINestSpawnObject))]"
+    },
+    {
+      "line": 150,
+      "text": "\t[InjectInterface(typeof(EnemyAI))]"
+    },
+    {
+      "line": 152,
+      "text": "\t[InjectInterface(typeof(EnemyAINestSpawnObject))]"
+    }
+  ],
+  "decompiler_stderr": "",
+  "decompiler_annotation_count": 3,
+  "qualification": "Source token discovery only: hits include non-enemy spawns, declarations and inactive code. No patch approval or exhaustive game/mod coverage. Dependencies may remain unresolved."
+}

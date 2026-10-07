@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C3E3G",
+  "inspection_date": "2026-09-20",
+  "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+  "pr_number": 138,
+  "parent_commit": "a50916d8ebafba2c91e53f1494adadd14a0177e4",
+  "verified_main_commit": "56355ff518ae4301a38d370be9561251f6f963c1",
+  "accepted_baseline": "S1.42AK",
+  "status": "INSTALLED_V81_FALSE_FLAG_GENERATENEWFLOOR_CALLSITE_NOT_REACHED",
+  "capture": {
+    "branch": "source-evidence/roundmanager-generation-v81-20260920t095502z-fa6b63a6",
+    "commit": "9cc0525087eb109c0f04d6dcfcf5a942200135fa",
+    "commit_parent": "56355ff518ae4301a38d370be9561251f6f963c1",
+    "directory": "SourceEvidence/VanillaV81/RoundManagerGeneration/20260920T095502Z-fa6b63a6",
+    "report_git_blob_sha1": "c30e58659a1e5ae218f47b908fb193ad3d54b7bd",
+    "manifest_git_blob_sha1": "a54617350d73cedabc403802e485e74c2384446e",
+    "report_sha256_manifest_bound": "7905f5d56846db1b019a046ff45608598adfd25e6ed151c2081fa523fa052b0a",
+    "source_assembly_sha256": "5f7db5538b78dc408845a3002907619785ac9f9c6b6059d13dc9a602d9b65731",
+    "game_executable_sha256": "24f39cbf2060834e8b648833c0c31ed82506ea633a9e8e5609e01102c7d6e8f1",
+    "steam_app_id": "1966720",
+    "steam_build_id": "22825947",
+    "appmanifest_sha256": "132fafc473ec39e9a0e3a0f84dba9966f7ccf3088389220fae63ae681c0ed58e",
+    "ilspy_version": "11.0.0.9375"
+  },
+  "selected_signatures": [
+    "public void GenerateNewFloor()",
+    "private IEnumerator LoadNewLevelWait(int randomSeed)",
+    "public void GenerateNewLevelClientRpc(int randomSeed, int levelID, int moldIterations = 0, int moldStartPosition = -1, int[] syncDestroyedMold = null)",
+    "private static void __rpc_handler_3073943002(NetworkBehaviour target, FastBufferReader reader, __RpcParams rpcParams)"
+  ],
+  "result": {
+    "false_flag_guard": "GENERATENEWLEVELCLIENTRPC_RETURNS_BEFORE_DUNGEON_GENERATOR_LOOKUP",
+    "spawnEnemiesAndScrap_false_generateNewFloor_callsite": "NOT_REACHED",
+    "lll_replaced_callsite_when_false": "NOT_REACHED_BECAUSE_ENCLOSING_VANILLA_GUARD_RETURNS_FIRST",
+    "dawn_downstream_generation_chain_when_false_via_this_path": "NOT_ENTERED",
+    "generateNewFloor_internal_spawnEnemiesAndScrap_guard": "NONE",
+    "ordinary_inspected_oxyde_generation_path": "BLOCKED_WHILE_PACKAGED_FALSE_FLAG_IS_PRESERVED",
+    "runtime_oxyde_generation": "NOT_PROVEN",
+    "runtime_entrance_construction": "NOT_PROVEN",
+    "matrix_change_authorized": false
+  },
+  "prior_checkpoint_reconciliation": {
+    "c3e3c_packaged_oxyde_spawnEnemiesAndScrap": false,
+    "c3e3d_direct_owner_write_or_address_take": "NONE_FOUND_IN_SIX_EXACT_OWNER_ASSEMBLIES",
+    "c3e3e_downstream_guard_after_generateNewFloor_entry": "NONE_IN_INSPECTED_DAWN_LLL_CHAIN"
+  },
+  "unchanged": {
+    "authoritative_b3_matrix": true,
+    "selection_supported_external_pairings": 46,
+    "build_enabled": false,
+    "build_state": "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS",
+    "active_build": "S1.42AK",
+    "runtime_test_outstanding": false,
+    "candidate": null
+  },
+  "proof_boundary": "Exact installed-V81 control flow proves spawnEnemiesAndScrap=false returns before the ordinary GenerateNewFloor callsite. This does not prove zero Oxyde runtime entrances, absence of independent/static owner topology, gameplay incompatibility, Black Mesa topology or general entrance-ID/pairing semantics.",
+  "next_segment": "C3E3H: resolve Oxyde External-row applicability/topology boundary using existing exact package/scene/owner evidence first; do not assume normal generated-interior entrances and do not change the B3 matrix from source evidence alone."
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-06",
+  "build": "S1.42AF",
+  "title": "Path-Length-Safe Microwave Packaging",
+  "status": "ACCEPTED_FULL_NORMAL_STACK",
+  "profile": "Profiles/LC V1 S1.42AF Microwave Fix.r2z",
+  "profile_sha256": "6a82a42bfe010767f4f39aab4d108fa45268407d9658a3e2410162cf9f6f47d0",
+  "plugin_dll_sha256": "41ae2442983d89d9b317b3930f1f53aefaa63e56bfeae0cdb198f43b0bac089f",
+  "build_workflow_run": 33993880634,
+  "build_commit": "2cab9044579e74739669440699c763a32f0fe379",
+  "acceptance_record": "Current/128_S1.42AF_RUNTIME_ACCEPTANCE_PATH_LENGTH_SAFE_MICROWAVE_PACKAGING.md",
+  "runtime_evidence": "RuntimeEvidence/S1.42AF/20260905T223738Z/",
+  "runtime_log_sha256": "63df88a3acb0c455bab914fd844767cb50b7384ab4b1ede8bd7cbcb63537d956",
+  "previous_accepted_baseline": "S1.42AC",
+  "path_gate": {
+    "binding_exists": true,
+    "binding_bytes": 40960,
+    "binding_path_chars": 226,
+    "below_legacy_260_boundary": true
+  },
+  "functional_microwave_runtime_contract": {
+    "coderebirth_version": "1.6.9",
+    "dawnlib_version": "0.9.25",
+    "dawnlib_dusk_version": "0.9.25",
+    "prioritise_moons": true,
+    "moon_curves": 18,
+    "interior_curves": 18,
+    "moon_spawn_scale": 0.5,
+    "interior_curves_mutated": false
+  },
+  "separate_open_compatibility_finding": "Current/129_MOUTHDOG_PIKMIN_BASELINE_COMPATIBILITY_FINDING.md",
+  "runtime_test_outstanding": false,
+  "successor_armed": false,
+  "next_action": "Analyze the confirmed MouthDog/EyelessDog -> Pikmin targeting/bite/grab path under Knowledge/PIKMIN_ENEMY_COMPATIBILITY.md and Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md. Inspect the exact LethalMin owner/method/inheritance/config contract and the existing PikminAI.GrabPikmin prevention-only guard before authorizing any successor build."
+}

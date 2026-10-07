@@ -1,0 +1,35 @@
+name: S1.42AJ DIAG1 build and static gate
+on:
+  pull_request:
+    paths:
+      - 'Patches/S142AJDiag1OfficeSelection/**'
+      - 'BuildSpecs/S1.42AJ-DIAG1.json'
+      - 'AnalysisTools/validate_s142aj_diag1_static.py'
+      - '.github/workflows/s142aj-diag1-static.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Test diagnostic selection boundaries
+        run: dotnet run --project Patches/S142AJDiag1OfficeSelection/Tests/SelectionPolicy.Tests.csproj -c Release
+      - name: Build isolated diagnostic with repository builder
+        run: python BuildSystem/profile_builder.py BuildSpecs/S1.42AJ-DIAG1.json
+      - name: Verify exact archive delta
+        run: python AnalysisTools/validate_s142aj_diag1_static.py
+      - name: Upload unarmed diagnostic review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: S1.42AJ-DIAG1-review
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            Profiles/LC V1 S1.42AJ-DIAG1 LC Office Diagnostic.r2z
+            ProfileSources/S1.42AJ-DIAG1/
+            BuildSpecs/S1.42AJ-DIAG1_BUILD_EVIDENCE/

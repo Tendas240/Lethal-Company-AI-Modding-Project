@@ -1,0 +1,634 @@
+[
+  {
+    "source": "LethalMin",
+    "count": 5152
+  },
+  {
+    "source": "Unity Log",
+    "count": 3448
+  },
+  {
+    "source": "Coroner",
+    "count": 3140
+  },
+  {
+    "source": "ainavt.lc.lethalconfig",
+    "count": 1813
+  },
+  {
+    "source": "DawnLib",
+    "count": 1655
+  },
+  {
+    "source": "Buttery Fixes",
+    "count": 936
+  },
+  {
+    "source": "BrutalCompanyMinusExtraReborn",
+    "count": 910
+  },
+  {
+    "source": "ReXuvination",
+    "count": 864
+  },
+  {
+    "source": "TestAccountCore",
+    "count": 499
+  },
+  {
+    "source": "GeneralImprovements",
+    "count": 486
+  },
+  {
+    "source": "Matty's Fixes",
+    "count": 353
+  },
+  {
+    "source": "Spawn Cycle Fixes",
+    "count": 328
+  },
+  {
+    "source": "ButteRyBalance",
+    "count": 299
+  },
+  {
+    "source": "LethalLevelLoader",
+    "count": 275
+  },
+  {
+    "source": "ImmersiveScrap",
+    "count": 261
+  },
+  {
+    "source": "Starlancer AI Fix",
+    "count": 238
+  },
+  {
+    "source": "More Ship Upgrades",
+    "count": 223
+  },
+  {
+    "source": "KawaiiBone.Remnants",
+    "count": 212
+  },
+  {
+    "source": "ScienceBirdTweaks",
+    "count": 183
+  },
+  {
+    "source": "BepInEx",
+    "count": 175
+  },
+  {
+    "source": "Enemy Sound Fixes",
+    "count": 166
+  },
+  {
+    "source": "PathfindingLib",
+    "count": 130
+  },
+  {
+    "source": "suitsTerminal",
+    "count": 130
+  },
+  {
+    "source": "ReservedItemSlotCore-2.0.41",
+    "count": 111
+  },
+  {
+    "source": "LightsOut",
+    "count": 107
+  },
+  {
+    "source": "Rolling Giant",
+    "count": 90
+  },
+  {
+    "source": "Jetpack Fixes",
+    "count": 82
+  },
+  {
+    "source": "PizzaTowerEscapeMusic GameEventListener",
+    "count": 78
+  },
+  {
+    "source": "SlendermanMod",
+    "count": 62
+  },
+  {
+    "source": "Mask Fixes",
+    "count": 59
+  },
+  {
+    "source": "TheCabinet",
+    "count": 58
+  },
+  {
+    "source": "TooManyEmotes-2.3.17",
+    "count": 55
+  },
+  {
+    "source": "MoreCompany",
+    "count": 54
+  },
+  {
+    "source": "darmuhsTerminalStuff",
+    "count": 50
+  },
+  {
+    "source": "ScandalsTweaks",
+    "count": 48
+  },
+  {
+    "source": "LCUltrawide_Community",
+    "count": 44
+  },
+  {
+    "source": "LethalPerformance",
+    "count": 40
+  },
+  {
+    "source": "WaterAssetRestorer",
+    "count": 37
+  },
+  {
+    "source": "dev.ladyalice.dungenplus",
+    "count": 33
+  },
+  {
+    "source": "ManuLib",
+    "count": 33
+  },
+  {
+    "source": "meow.ModelReplacementAPI",
+    "count": 32
+  },
+  {
+    "source": "LobbyControl",
+    "count": 32
+  },
+  {
+    "source": "S1.39 Compatibility Fixes",
+    "count": 32
+  },
+  {
+    "source": "me.loaforc.soundapi",
+    "count": 31
+  },
+  {
+    "source": "LethalHUD",
+    "count": 31
+  },
+  {
+    "source": "LethalSponge",
+    "count": 29
+  },
+  {
+    "source": "qwbarch.Mirage",
+    "count": 29
+  },
+  {
+    "source": "HotbarPlus-1.8.5",
+    "count": 28
+  },
+  {
+    "source": "Sell Bodies",
+    "count": 27
+  },
+  {
+    "source": "PizzaTowerEscapeMusic MusicManager",
+    "count": 27
+  },
+  {
+    "source": "ShipWindows",
+    "count": 24
+  },
+  {
+    "source": "DawnLib.DuskMod",
+    "count": 22
+  },
+  {
+    "source": "MrHat.BasedDecorPlacement",
+    "count": 22
+  },
+  {
+    "source": "GoldenKitten.FairAI",
+    "count": 21
+  },
+  {
+    "source": "Biodiversity|0.2.9",
+    "count": 20
+  },
+  {
+    "source": "UniversalRadar",
+    "count": 20
+  },
+  {
+    "source": "LethalLib",
+    "count": 18
+  },
+  {
+    "source": "mrgrm7.LethalCasino",
+    "count": 15
+  },
+  {
+    "source": "HerobrineMod",
+    "count": 15
+  },
+  {
+    "source": "S1.42AB Interior Weight Normalization",
+    "count": 15
+  },
+  {
+    "source": "com.github.zehsteam.SellMyScrap",
+    "count": 14
+  },
+  {
+    "source": "FixCameraResolutions",
+    "count": 13
+  },
+  {
+    "source": "AdditionalNetworking",
+    "count": 12
+  },
+  {
+    "source": "Barber Fixes",
+    "count": 11
+  },
+  {
+    "source": "OpenBodyCams",
+    "count": 11
+  },
+  {
+    "source": "SpiderPositionFix",
+    "count": 10
+  },
+  {
+    "source": "MoreBattery",
+    "count": 10
+  },
+  {
+    "source": "ZetaArcade.LCAlwaysHearActiveWalkieFork",
+    "count": 10
+  },
+  {
+    "source": "LethalPerformance.Patcher",
+    "count": 10
+  },
+  {
+    "source": "JacobG5.JLL",
+    "count": 9
+  },
+  {
+    "source": "MaxWasUnavailable.LethalModDataLib",
+    "count": 9
+  },
+  {
+    "source": "MrHat.MisideItems.Internals",
+    "count": 9
+  },
+  {
+    "source": "SoftMaskKiller",
+    "count": 9
+  },
+  {
+    "source": "Jordo.NeedyCats",
+    "count": 8
+  },
+  {
+    "source": "LethalNetworkAPI",
+    "count": 8
+  },
+  {
+    "source": "rectorado.JKConfig",
+    "count": 8
+  },
+  {
+    "source": "S1.42AE CodeRebirth Microwave Spawn Tuning",
+    "count": 8
+  },
+  {
+    "source": "SirenHead",
+    "count": 7
+  },
+  {
+    "source": "CullFactory",
+    "count": 7
+  },
+  {
+    "source": "Cat",
+    "count": 7
+  },
+  {
+    "source": "MrHat.BasedItemSaving",
+    "count": 7
+  },
+  {
+    "source": "Scopophobia",
+    "count": 7
+  },
+  {
+    "source": "S1.42Z CodeRebirth Aerial Defense Spawn Tuning",
+    "count": 7
+  },
+  {
+    "source": "LethalFixes",
+    "count": 6
+  },
+  {
+    "source": "OpenLib",
+    "count": 6
+  },
+  {
+    "source": "ReservedSprayPaintSlot-1.1.3",
+    "count": 6
+  },
+  {
+    "source": "CSync",
+    "count": 5
+  },
+  {
+    "source": "SellMyScrap v73+",
+    "count": 5
+  },
+  {
+    "source": "Locker",
+    "count": 5
+  },
+  {
+    "source": "ImmortalSnailFork",
+    "count": 5
+  },
+  {
+    "source": "LethalThingsReloaded",
+    "count": 5
+  },
+  {
+    "source": "HauntedHarpist|1.3.24",
+    "count": 5
+  },
+  {
+    "source": "LCMaxSoundsFix",
+    "count": 4
+  },
+  {
+    "source": "PizzaTowerEscapeMusic ScriptManager",
+    "count": 4
+  },
+  {
+    "source": "Dreamweave.CompanyBuildingEnhancements",
+    "count": 4
+  },
+  {
+    "source": "MrHat.Lib",
+    "count": 4
+  },
+  {
+    "source": "Slaughterhouse Scripts",
+    "count": 4
+  },
+  {
+    "source": "SnowyLib",
+    "count": 4
+  },
+  {
+    "source": "S1.42Z Jetpack Acceleration",
+    "count": 4
+  },
+  {
+    "source": "LobbyImprovements",
+    "count": 4
+  },
+  {
+    "source": "CodeRebirth",
+    "count": 3
+  },
+  {
+    "source": "StaticNetcodeLib",
+    "count": 3
+  },
+  {
+    "source": "LethalCasino",
+    "count": 3
+  },
+  {
+    "source": "ReservedFlashlightSlot-2.0.10",
+    "count": 3
+  },
+  {
+    "source": "ReservedUtilitySlot-1.0.7",
+    "count": 3
+  },
+  {
+    "source": "ReservedWalkieSlot-2.0.7",
+    "count": 3
+  },
+  {
+    "source": "ReservedWeaponSlot-1.1.5",
+    "count": 3
+  },
+  {
+    "source": "Project1",
+    "count": 3
+  },
+  {
+    "source": "EnemyHealthBars",
+    "count": 3
+  },
+  {
+    "source": "Rozebud.FovAdjust",
+    "count": 3
+  },
+  {
+    "source": "MaskedInvisFix",
+    "count": 3
+  },
+  {
+    "source": "CruiserImproved",
+    "count": 3
+  },
+  {
+    "source": "HarmonyX",
+    "count": 3
+  },
+  {
+    "source": "ArcadiaMoonPlugin",
+    "count": 2
+  },
+  {
+    "source": "Lethal Company Input Utils",
+    "count": 2
+  },
+  {
+    "source": "Lethal Casino v81 Patch",
+    "count": 2
+  },
+  {
+    "source": "Interactive Terminal API",
+    "count": 2
+  },
+  {
+    "source": "dev.45x.45xanimemodels",
+    "count": 2
+  },
+  {
+    "source": "BetterStamina-1.5.7",
+    "count": 2
+  },
+  {
+    "source": "FasterItemDropship",
+    "count": 2
+  },
+  {
+    "source": "LCSoundTool",
+    "count": 2
+  },
+  {
+    "source": "me.loaforc.soundapi.lethalcompany",
+    "count": 2
+  },
+  {
+    "source": "KenjiLib",
+    "count": 2
+  },
+  {
+    "source": "BetterVehicleControls",
+    "count": 2
+  },
+  {
+    "source": "RandomEnemiesSize",
+    "count": 2
+  },
+  {
+    "source": "PathfindingLagFix",
+    "count": 2
+  },
+  {
+    "source": "<none>",
+    "count": 1
+  },
+  {
+    "source": "Terminal Api",
+    "count": 1
+  },
+  {
+    "source": "Jester Free",
+    "count": 1
+  },
+  {
+    "source": "BetterSprayPaint",
+    "count": 1
+  },
+  {
+    "source": "BetterSprayPaint v80 Fix",
+    "count": 1
+  },
+  {
+    "source": "PizzaTowerEscapeMusic",
+    "count": 1
+  },
+  {
+    "source": "347956.JPOGRaptor",
+    "count": 1
+  },
+  {
+    "source": "347956.JPOGTrex",
+    "count": 1
+  },
+  {
+    "source": "HQ_Team.LethalThingsReloaded",
+    "count": 1
+  },
+  {
+    "source": "MrHat.MisideItems",
+    "count": 1
+  },
+  {
+    "source": "Black Mesa Team.Black Mesa Half Life Moon Interior",
+    "count": 1
+  },
+  {
+    "source": "Poltergeist",
+    "count": 1
+  },
+  {
+    "source": "DawnLib.Compatibility",
+    "count": 1
+  },
+  {
+    "source": "com.github.zehsteam.SellMyScrap.v40-v72",
+    "count": 1
+  },
+  {
+    "source": "More Suits",
+    "count": 1
+  },
+  {
+    "source": "Console",
+    "count": 1
+  },
+  {
+    "source": "Lethal Doors Fixed",
+    "count": 1
+  },
+  {
+    "source": "NoJumpDelay",
+    "count": 1
+  },
+  {
+    "source": "JacobG5.WesleyMoonScripts",
+    "count": 1
+  },
+  {
+    "source": "JPOGRaptor",
+    "count": 1
+  },
+  {
+    "source": "JPOGTrex",
+    "count": 1
+  },
+  {
+    "source": "itolib",
+    "count": 1
+  },
+  {
+    "source": "BozorosPlugin",
+    "count": 1
+  },
+  {
+    "source": "PSCPLibrary",
+    "count": 1
+  },
+  {
+    "source": "PSCPLibrary.IT",
+    "count": 1
+  },
+  {
+    "source": "voxx.TerraMesh",
+    "count": 1
+  },
+  {
+    "source": "Monster Plushies",
+    "count": 1
+  },
+  {
+    "source": "menstalker_yaboiduckisnickerbar",
+    "count": 1
+  },
+  {
+    "source": "SpectateEnemy",
+    "count": 1
+  },
+  {
+    "source": "Swaggies.BetterPaycheck",
+    "count": 1
+  },
+  {
+    "source": "PremiumScraps",
+    "count": 1
+  },
+  {
+    "source": "ChillaxScraps",
+    "count": 1
+  }
+]

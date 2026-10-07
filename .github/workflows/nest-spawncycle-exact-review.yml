@@ -1,0 +1,29 @@
+name: Inspect exact NestFix and SpawnCycleFixes patches
+on:
+  push:
+    branches: [analysis/s142ai-nest-spawncycle-exact]
+    paths:
+      - 'AnalysisTools/inspect_nest_spawncycle_exact.py'
+      - '.github/workflows/nest-spawncycle-exact-review.yml'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Install pinned ILSpy
+        run: dotnet tool install --global ilspycmd --version 11.0.0.9375
+      - name: Capture complete exact patch assemblies
+        run: python AnalysisTools/inspect_nest_spawncycle_exact.py
+      - name: Upload exact review evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: s142ai-nest-spawncycle-exact
+          path: nest-spawncycle-exact-output/
+          if-no-files-found: error
+          retention-days: 90

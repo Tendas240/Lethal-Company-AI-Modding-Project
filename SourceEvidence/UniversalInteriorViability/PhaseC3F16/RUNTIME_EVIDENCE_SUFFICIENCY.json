@@ -1,0 +1,66 @@
+{
+  "schema_version": "c3f16-runtime-evidence-sufficiency-1",
+  "working_pr": 138,
+  "source_head": "9d965e0c5aa8dddf30d9445558936e0625f7cb77",
+  "accepted_baseline": "S1.42AK",
+  "pair": {
+    "moon": "Black Mesa",
+    "flow": "GreenhouseFlow"
+  },
+  "trusted_repository_runtime_result": "ABSENT_FOR_EXACT_PAIR",
+  "evidence": {
+    "c1_authority": "Current/168_S1.42AK_UNIVERSAL_INTERIOR_PHASE_C1_EXISTING_RUNTIME_COMPATIBILITY_TRIAGE.md",
+    "c1_scope": "trusted runtime-pass / accepted / accepted-focused evidence plus authorized LC Office DIAG2 A/B",
+    "c1_all_observed_generation_moon": "Offense",
+    "greenhouse_existing_session": {
+      "path": "RuntimeEvidence/S1.42AH/20260909T162513Z/raw/LogOutput.log",
+      "sha256": "ae57fb71a38952936e9056150240e2eaa70be9d89253b15644b3f5d35dd09729",
+      "moon": "Offense",
+      "classification": "GENERATED_ONLY",
+      "four_entrance_connections": true,
+      "player_entry_recorded": false
+    },
+    "c3f1_historical_runtime_recheck": {
+      "authority": "SourceEvidence/UniversalInteriorViability/PhaseC3F1/FINDINGS.md",
+      "s1_42aa_moon": "Offense",
+      "s1_42ac_planet_signal": "21 Offense",
+      "black_mesa_topology_runtime_use": false
+    },
+    "pr138_contains_runtime_evidence_changes": false
+  },
+  "static_clearance_preserved": {
+    "c3f15": "SourceEvidence/UniversalInteriorViability/PhaseC3F15/FINDINGS.md",
+    "greenhouse_static_count_three_lower_bound": 8,
+    "black_mesa_required_alternate_entrance_count": 3,
+    "count_three_capacity_proven": true,
+    "exact_v81_pairing_numbering_proven": true,
+    "standard_greenhouse_fire_exit_template_proven": true
+  },
+  "remaining_runtime_obligation": {
+    "identity": "Black Mesa moon and GreenhouseFlow selected/generated",
+    "generation": "successful DunGen completion without exhausted retries/fatal generation abort",
+    "entrance_materialization": "main plus three alternate connections present",
+    "player_traversal": "successful normal player interior entry and exit",
+    "alternate_exit_practicality": "all three alternate pairs exercised sufficiently to rule out stranded/mismatched targets",
+    "geometry": "no severe clipping or inaccessible required entrance geometry",
+    "routing_navmesh": "no new severe/persistent target-attributable routing/NavMesh failure; expected entrance-connection signals present",
+    "black_mesa_pikmin_repair_required": false
+  },
+  "future_candidate_constraints": {
+    "base": "exact accepted S1.42AK or later accepted baseline",
+    "deterministic_pair": "Black Mesa x GreenhouseFlow",
+    "owner_supported_selection_path_required": true,
+    "duplicate_black_mesa_lll_registration": false,
+    "normalizer_change": false,
+    "unrelated_changes": false
+  },
+  "lifecycle": {
+    "b3_matrix_change": false,
+    "pair_classification": "NOT_YET_PROVEN",
+    "known_technical_restriction_inferred": false,
+    "gameplay_candidate": false,
+    "runtime_test_authorized": false,
+    "build_controller_change": false
+  },
+  "next_checkpoint": "C3F17 targeted Black Mesa x Greenhouse diagnostic-candidate design"
+}

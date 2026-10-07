@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "status": "PROVEN_OPTIONAL_COMPAT_APPLICABILITY_CONTRACT",
+  "applicability": "NOT_APPLICABLE_DEPENDENCY_ABSENT",
+  "dependency_guid": "kite.ZelevatorCode",
+  "provider_assembly": "kite.ZelevatorCode",
+  "provider_assembly_runtime_identity": "kite.ZelevatorCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "provider_type": "ElevatorMod.Patches.EndlessElevator",
+  "owner_package": "NotezyTeam-LethalMinNightly",
+  "owner_package_version": "1.1.108",
+  "owner_assembly": "NoteBoxz.LethalMin.dll",
+  "owner_assembly_sha256": "9f7338a6a45d09e97b56965fc6efde7ab31476483d9d528ff0ce11563154a0df",
+  "owner_type": "LethalMin.Compats.EndlessElevatorPatch",
+  "owner_method": "WaitRespawnPikmin",
+  "compat_attribute": "CompatClass(kite.ZelevatorCode)",
+  "dependency_gate": "Chainloader.PluginInfos.ContainsKey(pluginGUID)",
+  "source_evidence_workflow_run": 34616289395,
+  "source_evidence_artifact": 10270990899,
+  "r1_profile_sha256": "b83165ae27d9fa3b926c3f66701ba5c7a5db57b29f6136ab212c0fa2d2cfecdd",
+  "r1_runtime_log_sha256": "173eefaea3a81f84e82f210066a2b034655220d951b5a66c7bb7614895737635",
+  "r1_runtime_evidence": "RuntimeEvidence/S1.42AI-DIAG1R1/20260914T110719Z/",
+  "r1_build_workflow_run": 34822019162,
+  "contract": {
+    "dependency_absent": "NOT_APPLICABLE; do not resolve the foreign type and do not invalidate the complex-owner layer",
+    "dependency_present": "REQUIRED; resolve exact provider assembly/type and exact LethalMin owner signature, fail closed on any drift",
+    "generic_missing_target_fallback": false
+  },
+  "package_name_qualification": "The concrete Thunderstore package name for kite.ZelevatorCode is not proven and is intentionally not guessed; package name is not required by LethalMin's runtime applicability contract."
+}

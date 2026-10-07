@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-TWDIAG1",
+  "profile_path": "Profiles/LC V1 S1.42AK-TWD1.r2z",
+  "profile_name": "LC V1 S1.42AK-TWD1",
+  "sha256": "a5561b26ae5efe17b53239a0fc8a81020eec64ea59b5e3a7cca3481e6b3d7857",
+  "zip_members": 338,
+  "snapshot_dir": "ProfileSources/S1.42AK-TWDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}

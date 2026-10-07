@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-16",
+  "build_id": "S1.42AI-DIAG1R3",
+  "status": "RUNTIME_DIAGNOSTIC_PASS_EXACT_IDENTITY_ISOLATION_PROVEN_EXTERIOR_VISIBILITY_NOT_EXERCISED_NOT_ACCEPTED",
+  "accepted_baseline": "S1.42AH",
+  "parent_full_normal": "S1.42AI",
+  "profile": "Profiles/LC V1 S1.42AI-DIAG1R3 ShyGuy Identity Repair.r2z",
+  "sha256": "13d73d8aa1b651bccfb80d8b242efe63eae7def3639df1ad949bfdf724424768",
+  "candidate_record": "Current/150_S1.42AI-DIAG1R3_BUILD_CANDIDATE_EXACT_IDENTITY_REPAIR.md",
+  "runtime_decision": "Current/151_S1.42AI-DIAG1R3_RUNTIME_DIAGNOSTIC_PASS.md",
+  "runtime_evidence": "RuntimeEvidence/S1.42AI-DIAG1R3/20260916T161243Z/",
+  "runtime_log_sha256": "37493170b9f6368bc4700161b8f0759ffaaff57925aed9784bec9a9a65c68084",
+  "identity_result": "PASS_EXACT_SHYGUYDEF_SHY_GUY_SHYGUYAI_ORDINAL",
+  "isolation_result": "PASS_NO_NON_SHYGUY_BYPASS_AND_ONLY_SHYGUY_ACTUAL_ADD",
+  "interior_visibility_result": "PASS_VISIBLE_INTERIOR_SHYGUY_OBSERVED",
+  "exterior_visibility_result": "NOT_EXERCISED_NO_EXTERIOR_SHYGUY_OBSERVED",
+  "terminal_enemies_command": "NOT_REPEATED_NOT_REQUIRED_FOR_R3_GATE",
+  "runtime_test_outstanding": false,
+  "gameplay_accepted": false,
+  "next_runtime_candidate": "S1.42AI",
+  "full_normal_s142ai_gate": "ACTIVE_RUNTIME_GATE_NOT_WAIVED"
+}

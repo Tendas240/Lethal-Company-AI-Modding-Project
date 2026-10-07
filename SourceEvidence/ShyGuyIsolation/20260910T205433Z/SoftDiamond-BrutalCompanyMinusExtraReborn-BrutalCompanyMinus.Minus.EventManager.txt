@@ -1,0 +1,418 @@
+9: using BrutalCompanyMinus.Minus.Handlers;
+10: using HarmonyLib;
+11: using Unity.Netcode;
+12: using UnityEngine;
+13: 
+14: namespace BrutalCompanyMinus.Minus;
+15: 
+16: [HarmonyPatch]
+17: public class EventManager
+18: {
+19: 	public struct DifficultyTransition : IComparable<DifficultyTransition>
+20: 	{
+21: 		internal const uint byteMask = 255u;
+22: 
+23: 		public string name;
+24: 
+25: 		public string hex;
+26: 
+27: 		public float above;
+28: 
+29: 		public uint[] rgb;
+30: 
+31: 		public DifficultyTransition(string name, string hex, float above)
+32: 		{
+33: 			this.name = name;
+34: 			this.hex = hex;
+35: 			this.above = above;
+36: 			rgb = new uint[3];
+37: 			uint num = 0u;
+38: 			try
+39: 			{
+40: 				num = uint.Parse(hex, NumberStyles.HexNumber);
+41: 			}
+42: 			catch
+43: 			{
+44: 				Log.LogError("Failed to parse hex.");
+45: 			}
+46: 			rgb[0] = (num >> 16) & 0xFF;
+47: 			rgb[1] = (num >> 8) & 0xFF;
+48: 			rgb[2] = num & 0xFF;
+49: 		}
+50: 
+51: 		public string GetTransitionHex(DifficultyTransition next)
+52: 		{
+63: 		}
+64: 
+65: 		public int CompareTo(DifficultyTransition other)
+66: 		{
+67: 			return above.CompareTo(other.above);
+68: 		}
+69: 	}
+70: 
+71: 	internal class CustomEvents
+72: 	{
+73: 		public ConfigFile configFile;
+74: 
+75: 		public List<MEvent> events;
+76: 
+77: 		public CustomEvents(ConfigFile configFile, List<MEvent> events)
+78: 		{
+79: 			this.configFile = configFile;
+80: 			this.events = events;
+81: 		}
+82: 	}
+83: 
+84: 	internal static List<MEvent> vanillaEvents = new List<MEvent>
+85: 	{
+86: 		new SID(),
+87: 		new BigBonus(),
+88: 		new ScrapGalore(),
+89: 		new GoldenBars(),
+90: 		new BigDelivery(),
+91: 		new PlentyOutsideScrap(),
+92: 		new BlackFriday(),
+93: 		new BrutalCompanyMinus.Minus.Events.SafeOutside(),
+94: 		new VeryEarlyShip(),
+95: 		new TrapsFailure(),
+96: 		new BrutalCompanyMinus.Minus.Events.Bounty(),
+97: 		new Bonus(),
+98: 		new SmallerMap(),
+99: 		new MoreScrap(),
+100: 		new HigherScrapValue(),
+101: 		new GoldenFacility(),
+102: 		new Dentures(),
+103: 		new Pickles(),
+104: 		new Honk(),
+105: 		new TransmuteScrapSmall(),
+106: 		new SmallDelivery(),
+278: 		new Forsaken(),
+279: 		new MobileTurrets(),
+280: 		new Mantitoil(),
+281: 		new ToilSlayer(),
+282: 		new MantiToilSlayer(),
+283: 		new AllSlayers(),
+284: 		new BadDice(),
+285: 		new Herobrine(),
+286: 		new ShyGuy(),
+287: 		new SirenHead(),
+288: 		new SlenderMan(),
+289: 		new TheFiend(),
+290: 		new ToilHead(),
+291: 		new GiantShowdown(),
+292: 		new MoaiEnemy(),
+293: 		new Meltdown(),
+294: 		new SkullEnemy(),
+295: 		new Critters(),
+296: 		new PlaytimeBig(),
+297: 		new ItsPlaytime(),
+298: 		new Walkers(),
+299: 		new SoulDev(),
+300: 		new MajoraMoon(),
+301: 		new BloodMoon(),
+302: 		new Hurricane(),
+303: 		new Bertha(),
+304: 		new NoMantitoil(),
+305: 		new NoToilSlayer(),
+306: 		new NoMantiToilSlayer(),
+307: 		new NoSlayers(),
+308: 		new NoFiend(),
+309: 		new NoImmortalSnails(),
+310: 		new NoLockers(),
+311: 		new NoShyGuy(),
+312: 		new NoPeepers()
+313: 	};
+314: 
+315: 	internal static List<MEvent> customEvents = new List<MEvent>();
+316: 
+317: 	internal static List<MEvent> events = new List<MEvent>();
+318: 
+319: 	internal static List<MEvent> disabledEvents = new List<MEvent>();
+320: 
+321: 	internal static List<MEvent> currentEvents = new List<MEvent>();
+322: 
+323: 	internal static List<MEvent> forcedEvents = new List<MEvent>();
+324: 
+325: 	internal static List<MEvent> allVeryGood = new List<MEvent>();
+326: 
+327: 	internal static List<MEvent> allGood = new List<MEvent>();
+328: 
+329: 	internal static List<MEvent> allNeutral = new List<MEvent>();
+330: 
+331: 	internal static List<MEvent> allBad = new List<MEvent>();
+332: 
+333: 	internal static List<MEvent> allVeryBad = new List<MEvent>();
+334: 
+335: 	internal static List<MEvent> allRemove = new List<MEvent>();
+336: 
+337: 	internal static List<MEvent> allInsane = new List<MEvent>();
+338: 
+339: 	internal static List<MEvent> allRare = new List<MEvent>();
+340: 
+341: 	internal static List<MEvent> allSpecial = new List<MEvent>();
+342: 
+343: 	internal static List<MEvent> allBeta = new List<MEvent>();
+344: 
+345: 	internal static List<MEvent> sideEvents = new List<MEvent>();
+346: 
+347: 	private static List<MEvent> tipEventsToDo = new List<MEvent>();
+348: 
+349: 	internal static List<string> currentEventDescriptions = new List<string>();
+350: 
+351: 	internal static float eventTypeSum = 0f;
+352: 
+353: 	internal static float[] eventTypeCount = new float[0];
+354: 
+355: 	internal static float[] eventTypeRarities = new float[0];
+356: 
+357: 	public static List<IndoorMapHazard> hazards = new List<IndoorMapHazard>();
+358: 
+359: 	internal static MEvent RandomWeightedEvent(List<MEvent> _events, Random rng)
+360: 	{
+361: 		if (_events.Count == 0)
+362: 		{
+363: 			return new Nothing();
+364: 		}
+365: 		ulong num = 0uL;
+366: 		foreach (MEvent _event in _events)
+367: 		{
+368: 			num += (ulong)_event.Weight;
+369: 		}
+370: 		foreach (MEvent _event2 in _events)
+371: 		{
+372: 			if (num == 0)
+373: 			{
+374: 				break;
+375: 			}
+376: 			if ((ulong)(rng.NextDouble() * (double)num) < (ulong)_event2.Weight)
+377: 			{
+378: 				return _event2;
+379: 			}
+380: 			num -= (ulong)_event2.Weight;
+381: 		}
+382: 		return _events[_events.Count - 1];
+383: 	}
+384: 
+385: 	internal static List<MEvent> ChooseEvents(out List<MEvent> additionalEvents)
+386: 	{
+387: 		currentEvents.Clear();
+388: 		sideEvents.Clear();
+389: 		List<MEvent> list = new List<MEvent>();
+390: 		List<MEvent> list2 = new List<MEvent>();
+391: 		foreach (MEvent @event in events)
+392: 		{
+393: 			list2.Add(@event);
+394: 		}
+395: 		Random random = new Random(StartOfRound.Instance.randomMapSeed + 32345 + Environment.TickCount);
+396: 		int num = (int)MEvent.Scale.Compute(Configuration.eventsToSpawn) + RoundManager.Instance.GetRandomWeightedIndex(Configuration.weightsForExtraEvents.IntArray(), random);
+397: 		if (Configuration.scaleHeat.Value)
+398: 		{
+399: 			float num2 = currentHeatDifficulty();
+400: 			if (num2 == Configuration.heatMaxCap.Value && Configuration.heatForceEventAtMax.Value)
+401: 			{
+402: 				Log.LogInfo("Current heat has hit max cap, now forcing events");
+403: 				Log.LogInfo("Attempting to force events: " + Configuration.heatEventsToForce.Value);
+404: 				string[] names = (from s in Configuration.heatEventsToForce.Value.Split(new char[1] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+405: 					select s.Trim()).ToArray();
+406: 				forcedEvents.AddRange(GetEventsByName(names));
+407: 			}
+408: 		}
+409: 		foreach (MEvent forcedEvent in forcedEvents)
+410: 		{
+411: 			list2.RemoveAll((MEvent x) => x.Name() == forcedEvent.Name());
+412: 			foreach (string item in forcedEvent.EventsToRemove)
+413: 			{
+414: 				list2.RemoveAll((MEvent x) => x.Name() == forcedEvent.Name());
+415: 			}
+416: 		}
+417: 		int num3;
+418: 		for (num3 = 0; num3 < num; num3++)
+419: 		{
+420: 			MEvent newEvent = RandomWeightedEvent(list2, random);
+421: 			if (!newEvent.AddEventIfOnly())
+422: 			{
+423: 				num3--;
+424: 				list2.RemoveAll((MEvent x) => x.Name() == newEvent.Name());
+425: 			}
+426: 			else
+427: 			{
+428: 				bool flag = (newEvent.MoonMode ? IsEventOnMoonWhitelist(newEvent) : (!IsIgnoredEventByMoonBlacklist(newEvent)));
+429: 				Log.LogInfo("Checking " + (newEvent.MoonMode ? "whitelist" : "blacklist") + " for event " + newEvent.Name());
+430: 				if (!flag)
+431: 				{
+432: 					Log.LogInfo("Event " + newEvent.Name() + " is " + (newEvent.MoonMode ? "not whitelisted" : "blacklisted") + " on moon " + Manager.currentLevel.PlanetName + ", skipping.");
+433: 				}
+434: 				if (flag && (newEvent.isSpecialEvent || newEvent.isBetaEvent))
+435: 				{
+436: 					bool flag2 = newEvent.isSpecialEvent && !Configuration.enableSpecialEvents.Value;
+437: 					bool flag3 = newEvent.isBetaEvent && !Configuration.enableBetaEvents.Value;
+438: 					flag = !(flag2 | flag3);
+439: 				}
+440: 				if (!flag)
+441: 				{
+442: 					num3--;
+443: 					list2.RemoveAll((MEvent x) => x.Name() == newEvent.Name());
+444: 				}
+445: 				else if (flag)
+446: 				{
+447: 					list.Add(newEvent);
+448: 					list2.RemoveAll((MEvent x) => x.Name() == newEvent.Name());
+449: 					int num4 = 0;
+450: 					foreach (string eventToRemove in newEvent.EventsToRemove)
+451: 					{
+452: 						list2.RemoveAll((MEvent x) => x.Name() == eventToRemove);
+453: 						num4 += list.RemoveAll((MEvent x) => x.Name() == eventToRemove);
+454: 					}
+455: 					foreach (string eventToSpawnWith in newEvent.EventsToSpawnWith)
+456: 					{
+457: 						list2.RemoveAll((MEvent x) => x.Name() == eventToSpawnWith);
+458: 						num4 += list.RemoveAll((MEvent x) => x.Name() == eventToSpawnWith);
+459: 					}
+460: 					num3 -= num4;
+461: 				}
+462: 				else
+463: 				{
+464: 					num3--;
+465: 				}
+466: 			}
+467: 		}
+468: 		List<MEvent> list3 = new List<MEvent>();
+469: 		for (int num5 = 0; num5 < list.Count; num5++)
+470: 		{
+471: 			foreach (string eventToSpawnWith2 in list[num5].EventsToSpawnWith)
+472: 			{
+473: 				int num6 = list3.FindIndex((MEvent x) => x.Name() == eventToSpawnWith2);
+474: 				if (num6 == -1)
+475: 				{
+476: 					list3.Add(MEvent.GetEvent(eventToSpawnWith2));
+477: 				}
+478: 				num6 = sideEvents.FindIndex((MEvent x) => x.Name() == eventToSpawnWith2);
+479: 				if (num6 == -1)
+480: 				{
+481: 					sideEvents.Add(MEvent.GetEvent(eventToSpawnWith2));
+482: 				}
+483: 			}
+484: 		}
+485: 		foreach (MEvent e in disabledEvents)
+486: 		{
+487: 			int num7 = list3.FindIndex((MEvent x) => x.Name() == e.Name());
+488: 			if (num7 != -1)
+489: 			{
+490: 				list3.RemoveAt(num7);
+491: 			}
+492: 		}
+493: 		additionalEvents = list3;
+494: 		currentEvents = list;
+495: 		return list;
+496: 	}
+497: 
+498: 	internal static void ApplyEvents(List<MEvent> currentEvents)
+499: 	{
+500: 		foreach (MEvent currentEvent in currentEvents)
+501: 		{
+502: 			if (!currentEvent.Executed)
+503: 			{
+504: 				currentEvent.Executed = true;
+505: 				currentEvent.Execute();
+506: 			}
+507: 		}
+508: 	}
+509: 
+510: 	[HarmonyPrefix]
+511: 	[HarmonyPatch(typeof(StartOfRound), "ShipLeave")]
+512: 	public static void FixHazardsOnLeave()
+513: 	{
+514: 		if (((NetworkBehaviour)RoundManager.Instance).IsHost && RoundManager.Instance?.currentLevel?.indoorMapHazards != null)
+515: 		{
+516: 			List<IndoorMapHazard> list = RoundManager.Instance.currentLevel.indoorMapHazards.ToList();
+517: 			list.RemoveAll((IndoorMapHazard hazard) => hazards.Contains(hazard));
+518: 			RoundManager.Instance.currentLevel.indoorMapHazards = list.ToArray();
+519: 			hazards.Clear();
+520: 		}
+521: 	}
+522: 
+523: 	[HarmonyPrefix]
+524: 	[HarmonyPatch(typeof(StartOfRound), "OnLocalDisconnect")]
+525: 	public static void FixHazardsOnLeaveLocalDisconnect()
+526: 	{
+527: 		FixHazardsOnLeave();
+528: 	}
+529: 
+530: 	internal static void ExecuteOnShipLeave()
+531: 	{
+532: 		Log.LogInfo("Executing OnShipLeave for all events()");
+533: 		foreach (MEvent @event in events)
+534: 		{
+535: 			@event.OnShipLeave();
+536: 		}
+537: 		foreach (MEvent vanillaEvent in vanillaEvents)
+538: 		{
+539: 			vanillaEvent.OnShipLeave();
+540: 		}
+949: 			flag14 = true;
+950: 		}
+951: 		if (!flag14)
+952: 		{
+953: 			if (!Configuration.useCustomWeights.Value)
+954: 			{
+955: 				UpdateAllEventWeights();
+956: 			}
+957: 			list = ChooseEvents(out additionalEvents);
+958: 			foreach (MEvent item2 in list)
+959: 			{
+960: 				Log.LogInfo("Event chosen: " + item2.Name());
+961: 				Manager.scrapValueMultiplier *= MEvent.Scale.Compute(Configuration.scrapValueByEventTypeScale[item2.Type]);
+962: 				Manager.scrapAmountMultiplier *= MEvent.Scale.Compute(Configuration.scrapAmountByEventTypeScale[item2.Type]);
+963: 			}
+964: 			foreach (MEvent item3 in additionalEvents)
+965: 			{
+966: 				Log.LogInfo("Additional events: " + item3.Name());
+967: 			}
+968: 			ApplyEvents(list);
+969: 			ApplyEvents(additionalEvents);
+970: 		}
+971: 		foreach (MEvent forcedEvent in forcedEvents)
+972: 		{
+973: 			forcedEvent.Execute();
+974: 			foreach (string item4 in forcedEvent.EventsToSpawnWith)
+975: 			{
+976: 				MEvent.GetEvent(item4).Execute();
+977: 			}
+978: 		}
+979: 		list.AddRange(forcedEvents);
+980: 		forcedEvents.Clear();
+981: 		UpdateEventDescriptions(list);
+982: 		if (Configuration.showEventsInChat.Value && !Configuration.DisplayUIAfterShipLeaves.Value)
+983: 		{
+984: 			HUDManager.Instance.AddTextToChatOnServer("<color=#FFFFFF>Events:</color>", -1);
+985: 			foreach (string currentEventDescription in currentEventDescriptions)
+986: 			{
+987: 				HUDManager.Instance.AddTextToChatOnServer(currentEventDescription, -1);
+988: 			}
+989: 		}
+990: 		if (tipEventsToDo.Count > 0)
+991: 		{
+992: 			tipEventsToDo.Clear();
+993: 		}
+994: 		tipEventsToDo.AddRange(list);
+995: 		RoundManager.Instance.currentLevel.maxEnemyPowerCount = (int)((float)(RoundManager.Instance.currentLevel.maxEnemyPowerCount + Manager.bonusMaxInsidePowerCount) * Manager.spawncapMultipler);
+996: 		if (Configuration.scaleHeat.Value && (Configuration.heatSettingsToAffect.Value.HasFlag(Configuration.HeatSettingsFlags.InsidePower) || Configuration.heatSettingsToAffect.Value.HasFlag(Configuration.HeatSettingsFlags.All)))
+997: 		{
+998: 			float num = currentHeatDifficulty();
+999: 			if (num > 0f && Configuration.AffectPropertiesOutOfEvents.Value)
+1000: 			{
+1001: 				SelectableLevel currentLevel = RoundManager.Instance.currentLevel;
+1002: 				currentLevel.maxEnemyPowerCount *= (int)((double)(Configuration.heatMultiplierOtherCalculations.Value * (float)RoundManager.Instance.currentLevel.maxEnemyPowerCount / Configuration.heatDampening.Value) * Math.Pow(1f + Configuration.heatDampening.Value, num) + 1.0);
+1003: 			}
+1004: 		}
+1005: 		RoundManager.Instance.currentLevel.maxOutsideEnemyPowerCount = (int)((float)(RoundManager.Instance.currentLevel.maxOutsideEnemyPowerCount + Manager.bonusMaxOutsidePowerCount) * Manager.spawncapMultipler);
+1006: 		if (Configuration.scaleHeat.Value && (Configuration.heatSettingsToAffect.Value.HasFlag(Configuration.HeatSettingsFlags.OutsidePower) || Configuration.heatSettingsToAffect.Value.HasFlag(Configuration.HeatSettingsFlags.All)))
+1007: 		{
+1008: 			float num2 = currentHeatDifficulty();
+1009: 			if (num2 > 0f && Configuration.AffectPropertiesOutOfEvents.Value)
+1010: 			{
+1011: 				SelectableLevel currentLevel2 = RoundManager.Instance.currentLevel;
+1012: 				currentLevel2.maxOutsideEnemyPowerCount *= (int)((double)(Configuration.heatMultiplierOtherCalculations.Value * (float)RoundManager.Instance.currentLevel.maxOutsideEnemyPowerCount / Configuration.heatDampening.Value) * Math.Pow(1f + Configuration.heatDampening.Value, num2) + 1.0);
+1013: 			}
+1014: 		}
+1015: 		Manager.scrapValueMultiplier = Mathf.Clamp(Manager.scrapValueMultiplier, 0f, Configuration.scrapValueMax.Value);

@@ -1,0 +1,62 @@
+{
+  "modAuthor": "COREsEND",
+  "modName": "Castellum Carnis",
+  "configOptions": [
+    {
+      "configName": "Abandoned Bodies",
+      "configCategory": "Core",
+      "configDescription": "Makes Employee bodies appear as detailing in the halls",
+      "type": "bool",
+      "defaultValue": "true"
+    },
+    {
+      "configName": "Skylight Time Sync",
+      "configCategory": "Core",
+      "configDescription": "Makes the skylights in various rooms sync with the passage of time outside",
+      "type": "bool",
+      "defaultValue": "true"
+    },
+    {
+      "configName": "Entrance Stinger",
+      "configCategory": "Core",
+      "configDescription": "0 = Never plays, 1 = Occasionally plays, 2 = Always plays",
+      "type": "int",
+      "defaultValue": "1"
+    },
+    {
+      "configName": "Saliva Particles",
+      "configCategory": "Core",
+      "configDescription": "Toggles the particle droplets",
+      "type": "bool",
+      "defaultValue": "true"
+    },
+    {
+      "configName": "Extra Scrap",
+      "configCategory": "Core",
+      "configDescription": "Adds the 6 extra scrap spawns",
+      "type": "bool",
+      "defaultValue": "true"
+    },
+    {
+      "configName": "Content Tag Lock for Terrain Room",
+      "configCategory": "Core",
+      "configDescription": "(LOADSTONE MOD REQUIRED IF ENABLED) Makes the terrain room try to match the biome of the current moon",
+      "type": "bool",
+      "defaultValue": "false"
+    },
+    {
+      "configName": "Apparatus Pull Color Correction",
+      "configCategory": "Core",
+      "configDescription": "Toggles the color correction effect when the Apparatus is pulled",
+      "type": "bool",
+      "defaultValue": "true"
+    },
+    {
+      "configName": "Gutless Mode",
+      "configCategory": "Core",
+      "configDescription": "For those who don't have the guts to explore the guts.  Loosely censors the entire interior as a cave",
+      "type": "bool",
+      "defaultValue": "false"
+    }
+  ]
+}
