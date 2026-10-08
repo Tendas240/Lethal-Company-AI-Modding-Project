@@ -4,7 +4,7 @@
 **Authority:** mandatory execution procedure for every ChatGPT chat working on this repository  
 **Canonical-For:** `chatgpt_segmented_execution`, `project_task_segmentation`, `continuation_gate`  
 **Applies to:** every user request that causes ChatGPT to perform project work, repository actions, research, analysis, build/runtime work, code/config changes, audits, migrations, or other non-trivial task execution  
-**Last-Validated:** 2026-10-02
+**Last-Validated:** 2026-10-08
 
 ## Purpose
 
@@ -83,6 +83,17 @@ At the end of every non-final segment, ChatGPT must provide a concise checkpoint
 - an explicit statement that ChatGPT is stopping and waiting for the user's continuation signal.
 
 At the end of the final segment, state that the requested task is complete and summarize the final verified state.
+
+## Mandatory "Weiter" continuation button (when supported)
+
+At the end of **every non-final project execution segment**, including segmented handover work, provide a visible and functional **"Weiter"** button in addition to the required `Completed / Findings / Remaining / Next segment` checkpoint and the explicit stop statement, **whenever the chat client supports interactive buttons**.
+
+- Label the button `Weiter` or `Weiter – Segment X/Y starten`, identifying the upcoming segment when useful.
+- Its click must submit a **new user continuation message** (`weiter` or equivalent) through the chat interface. Where supported, use the native button action that submits a new turn, e.g. `GenUI.issueNewTurn("weiter")`. Do not use an inert, decorative or merely Markdown-styled pseudo-button.
+- The button **does not** execute the following segment by itself within the current assistant turn. Only the user's explicit click/new message opens the next execution segment; re-check repository authority and the temporary GPT-6 escalation rule before starting it.
+- If interactive buttons are unavailable in the current client or response format, state plainly: `Zum Fortfahren "weiter" senden.` This is a compatibility fallback, not permission to omit a supported button.
+- Do not display a continuation button once the requested work is fully complete or when there is no authorized next segment.
+- This is a chat-execution UX rule only. It does not change repository, build, runtime, acceptance or CI authority. Future chats reading this canonical policy must follow it without requiring another user reminder.
 
 ## User continuation signal
 
