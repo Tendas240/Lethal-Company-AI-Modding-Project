@@ -117,6 +117,14 @@ The new-chat prompt must:
 
 Do not copy the entire live-state object into the ready-to-copy prompt. The new chat is required to read `Current/CURRENT_STATE.json`, which is the canonical volatile state.
 
+ 
+### Final handover action buttons
+
+After **PART 2** contains the complete start prompt, show two functional controls: `Weiter – <next permitted project step>` and **`Übergabe-Prompt kopieren`**. The second control must perform a real clipboard-copy action on click (for example `GenUI.copy(fullNewChatStartPrompt)`), copying **exactly all of PART 2's new-chat prompt**, not PART 1, explanatory text, formatting controls or an abbreviated variant. Do **not** show `Übergabe an neuen Chat` or `Übergabe erneut vorbereiten` after the final handover is already prepared. Neither button opens a new ChatGPT chat; the user pastes the copied text into a separate new conversation. Do not claim a clipboard copy happened until confirmed by the host. If native copy actions are unsupported, present the prompt as directly selectable text for manual copying instead of a fake button; keep the `Weiter` action available.
+
+At all **ordinary non-handover segment checkpoints**, keep the established `Weiter` + `Übergabe an neuen Chat` pair. This is a handover-UX change only; all PR, CI, controller and segmented-execution requirements remain in force.
+
+
 ## Integrity rules
 
 During handover:
