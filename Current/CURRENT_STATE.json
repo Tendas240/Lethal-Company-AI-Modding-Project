@@ -1794,7 +1794,7 @@
       "storage_complex_scdiag1_source_static_validation_pending": true,
       "storage_complex_scdiag1_source_checkpoint": "Current/343_S1.42AK_PHASE_C_STORAGE_COMPLEX_SCDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md",
       "storage_complex_scdiag1_implementation_findings": "SourceEvidence/UniversalInteriorViability/SCDIAG1SourceStatic/FINDINGS.md",
-      "storage_complex_scdiag1_source_pr": null
+      "storage_complex_scdiag1_source_pr": 372
     },
     "diagnostic_build_plan": "BuildSpecs/S1.42AK-AGDIAG1_PLAN.md",
     "diagnostic_static_evidence": "BuildSpecs/S1.42AK-AGDIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
