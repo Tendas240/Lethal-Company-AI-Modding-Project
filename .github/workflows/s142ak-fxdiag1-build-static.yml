@@ -43,17 +43,42 @@ jobs:
               for name in ('zip_sha256', 'profile_sha256', 'dll_sha256'):
                   assert re.fullmatch(r'[0-9a-f]{64}', record[name]), name
               subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', head], check=True)
-              subprocess.run(['git', 'diff', '--exit-code', head, 'HEAD', '--',
+              # Exact-byte publication may ONLY extend the static source
+              # validator with a pinned profile-byte presence guard; it must
+              # never reopen compilation/archive creation or mutate the
+              # original source, recipe, builder, or compiled artifact.
+              phase = json.loads(pathlib.Path('Current/CURRENT_STATE.json').read_text(
+                  encoding='utf-8'))['selected_scope']['phase_c']
+              publication = phase.get('fractured_complex_fxdiag1_publication_branch_materialized') is True
+              protected = [
                   'Patches/S142AKFXDiag1',
                   'BuildSpecs/S1.42AK-FXDIAG1.json',
                   'BuildSpecs/S1.42AK-FXDIAG1_PLAN.md',
                   'BuildSystem/fxdiag1_review_build.py',
                   'AnalysisTools/validate_s142ak_fxdiag1_build.py',
-                  'AnalysisTools/validate_s142ak_fxdiag1_source.py',
                   '.github/workflows/s142ak-fxdiag1-source-static.yml',
                   'SourceEvidence/UniversalInteriorViability/FXDIAG1SourceStatic/FINDINGS.md',
-                  '.github/workflows/s142ak-fxdiag1-build-static.yml',
-                  'RepositoryTools/gale_profile_path_length_guard.py'], check=True)
+                  'RepositoryTools/gale_profile_path_length_guard.py']
+              if publication:
+                  import hashlib
+                  assert phase.get('fractured_complex_fxdiag1_publication_pr') == 362
+                  assert phase.get('fractured_complex_fxdiag1_publication_authorized_artifact_id') == 11561251337
+                  profile = pathlib.Path('Profiles/LC V1 S1.42AK-FXD1.r2z')
+                  assert profile.is_file()
+                  assert hashlib.sha256(profile.read_bytes()).hexdigest() == 'b2491e10811310661de76b71e7bf42cf259065e4b363e36d18abfa8457a14435'
+                  assert not pathlib.Path('ProfileSources/S1.42AK-FXDIAG1/PROFILE_INDEX_RESULT.json').exists()
+                  validator_blob = subprocess.check_output(
+                      ['git', 'hash-object', 'AnalysisTools/validate_s142ak_fxdiag1_source.py'],
+                      text=True).strip()
+                  assert validator_blob == '1d4571351007bc7dcef199bf094221839a06fc4a', 'unapproved source-validator modification'
+                  # This frozen-review guard is changed ONLY to recognize
+                  # the publication stage; every other original reviewed
+                  # source/recipe/build input remains byte-identical.
+              else:
+                  protected.extend([
+                      'AnalysisTools/validate_s142ak_fxdiag1_source.py',
+                      '.github/workflows/s142ak-fxdiag1-build-static.yml'])
+              subprocess.run(['git', 'diff', '--exit-code', head, 'HEAD', '--', *protected], check=True)
               print('Exact reviewed FXDIAG1 source/recipe frozen; no repeat compilation, review-profile reconstruction, or artifact upload.')
               print('This lock is not a substitute for the recorded independent artifact download and SHA-256 verification.')
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
