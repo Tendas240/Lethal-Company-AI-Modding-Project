@@ -40,7 +40,27 @@ require(build["enabled"] is False and build["build_id"] == "IDLE_UNIVERSAL_INTER
 require(build["base_sha256"] == "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0", "parent drift")
 require(build["local_plugin_builds"] == [] and build["mod_additions"] == [] and build["config_patches"] == [], "live builder change")
 require(active == "S1.42AK-BMDSFIX1", "runtime pointer drift")
-require(not (ROOT / "Profiles/LC V1 S1.42AK-FXD1.r2z").exists(), "profile must not exist")
+# Source safety remains mandatory after frozen publication: a profile is permitted
+# only when the exact reviewed bytes are pinned to the separate transport gate.
+profile_path = ROOT / "Profiles/LC V1 S1.42AK-FXD1.r2z"
+if phase.get("fractured_complex_fxdiag1_publication_branch_materialized") is True:
+    import hashlib
+    require(phase.get("fractured_complex_fxdiag1_publication_pr") == 362,
+            "publication PR provenance drift")
+    require(phase.get("fractured_complex_fxdiag1_publication_authorized_artifact_id") == 11561251337,
+            "unauthorized publication artifact")
+    require(profile_path.is_file(), "reviewed publication profile missing")
+    require(hashlib.sha256(profile_path.read_bytes()).hexdigest() ==
+            "b2491e10811310661de76b71e7bf42cf259065e4b363e36d18abfa8457a14435",
+            "published profile deviates from frozen reviewed bytes")
+    require(phase.get("fractured_complex_fxdiag1_published_profile_sha256") ==
+            "b2491e10811310661de76b71e7bf42cf259065e4b363e36d18abfa8457a14435",
+            "canonical publication byte identity drift")
+    if phase.get("fractured_complex_fxdiag1_indexed") is False:
+        require(not (ROOT / "ProfileSources/S1.42AK-FXDIAG1/PROFILE_INDEX_RESULT.json").exists(),
+                "canonical indexing is not authorized in publication stage")
+else:
+    require(not profile_path.exists(), "unrecorded profile publication")
 
 for word in (
     "S142AKFXDiag1", "tendas.lethalcompany.s142akfxdiag1",
