@@ -1,0 +1,93 @@
+{
+  "total_signatures": 10163,
+  "chunks": [
+    {
+      "file": "signatures/signatures_0001.jsonl",
+      "records": 889,
+      "rank_start": 1,
+      "rank_end": 889,
+      "size": 500427,
+      "sha256": "46d498d79339d6bcee3da6455a2aa2faa68151465bc531ead78f5b7e5e920fae"
+    },
+    {
+      "file": "signatures/signatures_0002.jsonl",
+      "records": 878,
+      "rank_start": 890,
+      "rank_end": 1767,
+      "size": 523950,
+      "sha256": "35d320e93f9ed2439da44afa6d2d4c4560203a68959944bd18a671de0bac7b30"
+    },
+    {
+      "file": "signatures/signatures_0003.jsonl",
+      "records": 805,
+      "rank_start": 1768,
+      "rank_end": 2572,
+      "size": 524133,
+      "sha256": "6dffbdb1c865083bf45c50e50f44191e88cfc337c2615e475e78e5945aade609"
+    },
+    {
+      "file": "signatures/signatures_0004.jsonl",
+      "records": 899,
+      "rank_start": 2573,
+      "rank_end": 3471,
+      "size": 523912,
+      "sha256": "7c7175cf00d1ffccdaa21044f92213d3c6f4969fc46116d1b704de4ca0dac9c1"
+    },
+    {
+      "file": "signatures/signatures_0005.jsonl",
+      "records": 991,
+      "rank_start": 3472,
+      "rank_end": 4462,
+      "size": 523877,
+      "sha256": "0ba4cbab596e5067cd28366f08a1cc37f2bac715ac08a2b75b25a352a28933be"
+    },
+    {
+      "file": "signatures/signatures_0006.jsonl",
+      "records": 1007,
+      "rank_start": 4463,
+      "rank_end": 5469,
+      "size": 524112,
+      "sha256": "4951d83ef5a411248c69fe5efa4b1f51a60eb668abab0d9abc3edecfb6660e39"
+    },
+    {
+      "file": "signatures/signatures_0007.jsonl",
+      "records": 953,
+      "rank_start": 5470,
+      "rank_end": 6422,
+      "size": 524223,
+      "sha256": "0f54b1b581dd8a025be65619a860c47fac8818834f726f30dc20054e48aa2c72"
+    },
+    {
+      "file": "signatures/signatures_0008.jsonl",
+      "records": 1008,
+      "rank_start": 6423,
+      "rank_end": 7430,
+      "size": 524168,
+      "sha256": "f42a4e742d93571fa5de9a63657dbdb40d77ac26d58dd4fef8f62e7310dd7c90"
+    },
+    {
+      "file": "signatures/signatures_0009.jsonl",
+      "records": 991,
+      "rank_start": 7431,
+      "rank_end": 8421,
+      "size": 523648,
+      "sha256": "5ff8d40cf2229c10be0f3b980b0c0eb83c49adb95dbf9379a5f01a4fa49bf644"
+    },
+    {
+      "file": "signatures/signatures_0010.jsonl",
+      "records": 875,
+      "rank_start": 8422,
+      "rank_end": 9296,
+      "size": 523852,
+      "sha256": "afbee81d4d994a38e7468ae955400d63142eaad85da8c685ffa36be00b549f7b"
+    },
+    {
+      "file": "signatures/signatures_0011.jsonl",
+      "records": 867,
+      "rank_start": 9297,
+      "rank_end": 10163,
+      "size": 516949,
+      "sha256": "043cedb3341983da00d85e0fad407c65010efe18e0dde1e8eda7ca2e67fbe416"
+    }
+  ]
+}
