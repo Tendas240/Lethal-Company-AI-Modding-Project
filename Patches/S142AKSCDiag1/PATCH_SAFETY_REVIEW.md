@@ -3,7 +3,7 @@
 **Stage:** Source / Pure Static only  
 **Disposition:** DIAGNOSTIC ONLY / NEVER ACCEPT  
 **Authority:** `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md`  
-**Implementation authority:** `Current/327_S1.42AK_PHASE_C_FRACTURED_COMPLEX_SCDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md`
+**Implementation authority:** `Current/342_S1.42AK_PHASE_C_STORAGE_COMPLEX_SCDIAG1_SOURCE_STATIC_IMPLEMENTATION_AUTHORIZATION.md`
 
 ## Surface inventory
 
