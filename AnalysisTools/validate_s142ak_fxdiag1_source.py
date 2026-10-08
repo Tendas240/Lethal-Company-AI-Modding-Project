@@ -29,7 +29,30 @@ require(state["runtime_test_outstanding"] is True, "passive BMDSFIX1 gate drift"
 phase = state["selected_scope"]["phase_c"]
 require(phase["fractured_complex_fxdiag1_implemented"] is True, "source checkpoint marker missing")
 require(phase["fractured_complex_fxdiag1_built"] is False, "source checkpoint cannot build a profile")
-require(phase["fractured_complex_fxdiag1_runtime_authorized"] is False, "runtime not authorized")
+runtime_authorized = phase["fractured_complex_fxdiag1_runtime_authorized"] is True
+if runtime_authorized:
+    require(phase["fractured_complex_fxdiag1_runtime_armed"] is True, "runtime authorized but not armed")
+    require(phase["fractured_complex_fxdiag1_published"] is True and phase["fractured_complex_fxdiag1_indexed"] is True,
+            "runtime activation requires published canonical index")
+    diagnostic = state["selected_scope"]["diagnostic_revision"]
+    require(diagnostic["build_id"] == "S1.42AK-FXDIAG1" and
+            diagnostic["status"] == "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED" and
+            diagnostic["classification"] == "DIAGNOSTIC_ONLY_NEVER_ACCEPT", "diagnostic activation identity drift")
+    require(diagnostic["sha256"] == "b2491e10811310661de76b71e7bf42cf259065e4b363e36d18abfa8457a14435"
+            and diagnostic["base_sha256"] == "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+            "diagnostic/parent provenance drift")
+    require(diagnostic["build_result"] == "BuildSpecs/S1.42AK-FXDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json"
+            and diagnostic["activation_record"] == "Current/338_S1.42AK_FXDIAG1_RUNTIME_ACTIVATION.md",
+            "activation evidence references drift")
+    build_result = json.loads(read(diagnostic["build_result"]))
+    require(build_result["build_id"] == diagnostic["build_id"] and
+            build_result["output_profile"] == diagnostic["profile"] and
+            build_result["output_sha256"] == diagnostic["sha256"] and
+            build_result["base_profile"] == diagnostic["base_profile"] and
+            build_result["base_sha256"] == diagnostic["base_sha256"], "runtime-routing build-result mismatch")
+else:
+    require(phase["fractured_complex_fxdiag1_runtime_authorized"] is False
+            and phase["fractured_complex_fxdiag1_runtime_armed"] is False, "unapproved runtime state")
 require(phase["fractured_complex_fxdiag1_source_static_validation_pending"] is False, "reviewed source static CI must be reconciled")
 require(phase["fractured_complex_fxdiag1_source_static_validated"] is True, "reviewed source static PASS missing")
 require(phase["fractured_complex_fxdiag1_source_pr"] == 354, "source PR authority drift")
@@ -39,7 +62,11 @@ require(phase["fractured_complex_fxdiag1_source_knowledge_architecture_run"] == 
 require(build["enabled"] is False and build["build_id"] == "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS", "live build changed")
 require(build["base_sha256"] == "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0", "parent drift")
 require(build["local_plugin_builds"] == [] and build["mod_additions"] == [] and build["config_patches"] == [], "live builder change")
-require(active == "S1.42AK-BMDSFIX1", "runtime pointer drift")
+if runtime_authorized:
+    require(active == "S1.42AK-FXDIAG1" and state["controllers"]["runtime_active_build"] == active,
+            "active FXDIAG1 runtime target drift")
+else:
+    require(active == "S1.42AK-BMDSFIX1", "inactive runtime pointer drift")
 # Source safety remains mandatory after frozen publication: a profile is permitted
 # only when the exact reviewed bytes are pinned to the separate transport gate.
 profile_path = ROOT / "Profiles/LC V1 S1.42AK-FXD1.r2z"

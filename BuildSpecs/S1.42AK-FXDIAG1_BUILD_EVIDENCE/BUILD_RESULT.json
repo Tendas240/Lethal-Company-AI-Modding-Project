@@ -1,0 +1,55 @@
+{
+  "status": "PASS_INACTIVE_REVIEW_BUILD_INDEPENDENTLY_REHASHED",
+  "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+  "build_id": "S1.42AK-FXDIAG1",
+  "source_main_commit": "949193e774d1e3a6754c603472d2be046083f1d5",
+  "build_head": "1c2e9d100f6f34a2946489a555d07da39a841c83",
+  "provenance": "Runtime routing metadata derived exclusively from original frozen REVIEW_BUILD_CHECKPOINT.json plus canonically indexed profile; NOT a new compile/build.",
+  "authoritative_review_artifact_id": 11561251337,
+  "authoritative_review_artifact_zip_sha256": "2805967a866ad8d88c4d80221c5bbd354a1a59adeaf1d7decfaa634d725c4b89",
+  "parent_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "review_profile": "Profiles/LC V1 S1.42AK-FXD1.r2z",
+  "profile_sha256": "b2491e10811310661de76b71e7bf42cf259065e4b363e36d18abfa8457a14435",
+  "dll_member": "BepInEx/plugins/S142AKFXDiag1/S142AKFXDiag1.dll",
+  "dll_sha256": "322774f531f87dc9b253e712e63d69ed39fb998017af75b6545cdc904d0b7705",
+  "parent_members": 337,
+  "review_members": 338,
+  "profile_name": "LC V1 S1.42AK-FXD1",
+  "base_build_id": "S1.42AK-BMDSFIX1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "output_profile": "Profiles/LC V1 S1.42AK-FXD1.r2z",
+  "output_sha256": "b2491e10811310661de76b71e7bf42cf259065e4b363e36d18abfa8457a14435",
+  "zip_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKFXDiag1/S142AKFXDiag1.dll"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "snapshot_dir": "ProfileSources/S1.42AK-FXDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "published": true,
+  "indexed": true,
+  "runtime_armed": true,
+  "runtime_proof": false,
+  "runtime_target_metadata": {
+    "activation_record": "Current/338_S1.42AK_FXDIAG1_RUNTIME_ACTIVATION.md",
+    "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+    "authority_parent_build_id": "S1.42AK-BMDSFIX1",
+    "authority_parent_runtime_status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "authority_parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+    "runtime_controller_target": "S1.42AK-FXDIAG1",
+    "runtime_attempts_authorized": 1,
+    "runtime_target_moon": "Offense",
+    "runtime_target_dungeon_name": "Fractured Complex",
+    "runtime_target_flow": "FracturedComplexFlow"
+  }
+}
