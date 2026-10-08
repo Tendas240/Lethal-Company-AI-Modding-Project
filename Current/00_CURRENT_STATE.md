@@ -36,11 +36,11 @@ A historical rejection can remain preserved even when a later explicit decision 
 - Successor armed: **no**
 - `BuildSpecs/current.json`: disabled (`IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS`)
 - Guarded build base: `Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z` / `3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0`
-- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-CFDIAG1`
+- `RuntimeInbox/ACTIVE_BUILD.txt = S1.42AK-BMDSFIX1`
 
 ## Exact next action
 
-After this CFDIAG1 runtime activation is integrated to main and permanent exact-main-head Knowledge Architecture is green, replace/import the exact repository-authorized S1.42AK-CFDIAG1 Gale profile and execute exactly one bounded Offense diagnostic generation attempt. Require the [CFDIAG1] ARMED marker and the deterministic [CFDIAG1] SELECTED Offense Circus Facility / CircusFacilityFlow marker, then verify the Current/314 generation/materialization contract from the resulting log. Any REFUSED marker, missing ARMED/SELECTED marker, persistent generation failure, incomplete exact CircusFacilityFlow materialization/entrance proof, or unexpected [BMDSFIX1] APPLIED on Offense is a bounded diagnostic finding; do not reroll automatically. Upload the resulting exact LogOutput.log once with the build-specific uploader. Do not accept CFDIAG1 or S1.42AK-BMDSFIX1, do not waive the passive BMDSFIX1 Black Mesa x DeepSewersFlow gate, and do not rerun or retarget TWDIAG1, SHDIAG1, LFDIAG1, DRDIAG1 or AGDIAG1.
+Perform one bounded Phase-C residual-24 interior-proof priority reassessment using Current/313_S1.42AK_PHASE_C_RESIDUAL_25_PRIORITY_REASSESSMENT.md and Current/324_S1.42AK_CFDIAG1_CIRCUS_FACILITY_RUNTIME_EVIDENCE_RECONCILIATION.md. Preserve Circus Facility / CircusFacilityFlow as PASS at the diagnostic-generated generation/materialization tier without inferring natural selection, the remaining 24 proof gaps as 12 viable/equal-100 plus 12 unchanged owner-hard-block, and the completed-unresolved Current/312 array attribution boundary. Select exactly one next evidence target or prerequisite from existing repository authority. No new runtime test, implementation, profile/DLL/config/package change, build, availability/owner override, completed-diagnostic rerun, CFDIAG1/BMDSFIX1 acceptance, or waiver/dedicated BMDSFIX1 Black Mesa x DeepSewersFlow reroll is authorized. Preserve separate Oxyde, Shatteredrooms/CullFactory, BCMER x all-Pikmin, Herobrine and BMAFR1I1 scopes.
 
 A runtime test is pending for S1.42AK-BMDSFIX1. `RuntimeInbox/ACTIVE_BUILD.txt` controls runtime-evidence attribution and does not itself promote a build.
 
