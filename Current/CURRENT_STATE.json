@@ -61,7 +61,7 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C_FRACTURED_COMPLEX_FXDIAG1_INACTIVE_REVIEW_BUILD_MAIN_INTEGRATED_FROZEN_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION_NEXT_BMDSFIX1_ACTIVE_NOT_ACCEPTED",
+    "status": "PHASE_C_FRACTURED_COMPLEX_FXDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZED_MAIN_INTEGRATED_POST_AUTHORIZATION_STATE_RECONCILIATION_PENDING_THEN_SEPARATE_PUBLICATION_CHECKPOINT_BMDSFIX1_ACTIVE_NOT_ACCEPTED",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
@@ -1678,7 +1678,21 @@
       "fractured_complex_fxdiag1_review_main_knowledge_architecture_run_number": 1404,
       "fractured_complex_fxdiag1_review_main_canonical_build_run": 37802988910,
       "fractured_complex_fxdiag1_review_main_canonical_build_run_number": 152,
-      "fractured_complex_fxdiag1_review_post_merge_reconciliation": "Current/332_S1.42AK_FXDIAG1_INACTIVE_REVIEW_BUILD_POST_MERGE_RECONCILIATION.md"
+      "fractured_complex_fxdiag1_review_post_merge_reconciliation": "Current/332_S1.42AK_FXDIAG1_INACTIVE_REVIEW_BUILD_POST_MERGE_RECONCILIATION.md",
+      "fractured_complex_fxdiag1_publication_authorization": "Current/333_S1.42AK_FXDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md",
+      "fractured_complex_fxdiag1_publication_authorized": true,
+      "fractured_complex_fxdiag1_publication_authorized_artifact_id": 11561251337,
+      "fractured_complex_fxdiag1_publication_authorization_pr": 360,
+      "fractured_complex_fxdiag1_publication_authorization_final_pr_head": "347ba211ae84d034627d48601f7aa063c135ba25",
+      "fractured_complex_fxdiag1_publication_authorization_final_pr_knowledge_architecture_run": 37805788770,
+      "fractured_complex_fxdiag1_publication_authorization_final_pr_knowledge_architecture_run_number": 1407,
+      "fractured_complex_fxdiag1_publication_authorization_main_integration_commit": "d7bfed54f79573856b86f5829b6ff73f8bf5b861",
+      "fractured_complex_fxdiag1_publication_authorization_main_knowledge_architecture_run": 37808337507,
+      "fractured_complex_fxdiag1_publication_authorization_main_knowledge_architecture_run_number": 1408,
+      "fractured_complex_fxdiag1_publication_authorization_post_merge_reconciliation": "Current/334_S1.42AK_FXDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_POST_MERGE_RECONCILIATION.md",
+      "fractured_complex_fxdiag1_published": false,
+      "fractured_complex_fxdiag1_indexed": false,
+      "fractured_complex_fxdiag1_runtime_armed": false
     },
     "diagnostic_build_plan": "BuildSpecs/S1.42AK-AGDIAG1_PLAN.md",
     "diagnostic_static_evidence": "BuildSpecs/S1.42AK-AGDIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
@@ -2074,7 +2088,7 @@
     "drdiag1_runtime_index": "RuntimeEvidence/S1.42AK-DRDIAG1/20261005T170546Z/INDEX.json",
     "drdiag1_runtime_log_sha256": "103b33eedf7d7580858ff42024a8c59ed6f4719cb27adf83d23275854654da64"
   },
-  "next_action": "Perform one separately bounded S1.42AK-FXDIAG1 exact-byte publication-authorization decision ONLY, using Current/332_S1.42AK_FXDIAG1_INACTIVE_REVIEW_BUILD_POST_MERGE_RECONCILIATION.md, Current/331_S1.42AK_FXDIAG1_INACTIVE_REVIEW_BUILD_CHECKPOINT.md and the sole independently rehashed frozen GitHub Actions artifact 11561251337 (ZIP SHA-256 2805967a866ad8d88c4d80221c5bbd354a1a59adeaf1d7decfaa634d725c4b89; profile b2491e10811310661de76b71e7bf42cf259065e4b363e36d18abfa8457a14435; DLL 322774f531f87dc9b253e712e63d69ed39fb998017af75b6545cdc904d0b7705). Decide whether a later, separately bounded exact-byte publication checkpoint may be authorized; do not rebuild, construct a replacement artifact, commit/publish/index/import/activate/run FXDIAG1 or change controllers/gameplay/availability/owner restrictions. Preserve S1.42AK accepted, S1.42AK-BMDSFIX1 active NOT ACCEPTED, the unwaived passive selector-free Black Mesa x DeepSewersFlow gate, Phase-C residual 24 = 12 viable/equal-100 + 12 owner hard-block and all completed/deferred scopes.",
+  "next_action": "After the S1.42AK-FXDIAG1 exact-byte publication-authorization post-merge state/handover reconciliation has passed exact-final-PR-head CI, merged to main, and permanent exact-main-head Knowledge Architecture push CI is successful, perform ONE separately bounded S1.42AK-FXDIAG1 Exact-Byte Publication Checkpoint under Current/333_S1.42AK_FXDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_DECISION.md and Current/334_S1.42AK_FXDIAG1_EXACT_BYTE_PUBLICATION_AUTHORIZATION_POST_MERGE_RECONCILIATION.md. Transport/materialize ONLY the independently rehashed frozen GitHub Actions artifact ID 11561251337 (ZIP SHA-256 2805967a866ad8d88c4d80221c5bbd354a1a59adeaf1d7decfaa634d725c4b89; profile b2491e10811310661de76b71e7bf42cf259065e4b363e36d18abfa8457a14435; DLL 322774f531f87dc9b253e712e63d69ed39fb998017af75b6545cdc904d0b7705) after freshly retrieving by EXACT artifact ID, independently rehashing all three and enforcing exact immutable BMDSFIX1 parent (3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0), one-DLL plus export.r2x-only 337-to-338 member delta, inherited hashes and 255-character Gale path limit. Fail closed on any mismatch; never rebuild, construct replacement profile/DLL/archive, select newest artifact, canonically index ProfileSources or EXPECTED_HASHES, Gale-import, activate, run/test, accept FXDIAG1/BMDSFIX1, change controllers/gameplay/availability/owner rules, waive the passive selector-free BMDSFIX1 DeepSewersFlow gate, modify Phase-C residual 24=12 viable/equal-100 + 12 owner-hard-block or reopen completed/deferred scopes. Publication only: later index mapping/runtime decisions remain separate.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
