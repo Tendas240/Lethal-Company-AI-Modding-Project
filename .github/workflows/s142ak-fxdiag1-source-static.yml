@@ -1,0 +1,31 @@
+name: S1.42AK FXDIAG1 source and pure static gate
+on:
+  pull_request:
+    paths:
+      - 'Patches/S142AKFXDiag1/**'
+      - 'AnalysisTools/validate_s142ak_fxdiag1_source.py'
+      - 'SourceEvidence/UniversalInteriorViability/FXDIAG1SourceStatic/**'
+      - 'Current/328_S1.42AK_PHASE_C_FRACTURED_COMPLEX_FXDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
+      - 'Current/CURRENT_STATE.json'
+      - 'Knowledge/INTERIORS_AND_LLL.md'
+      - '.github/workflows/s142ak-fxdiag1-source-static.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Test pure Fractured Complex fail-closed selection policy
+        run: dotnet run --project Patches/S142AKFXDiag1/Tests/Policy.Tests.csproj -c Release
+      - name: Compile diagnostic plugin source only
+        working-directory: Patches/S142AKFXDiag1
+        run: dotnet build S142AKFXDiag1.csproj -c Release
+      - name: Verify one-postfix identity and unchanged controllers
+        run: python AnalysisTools/validate_s142ak_fxdiag1_source.py
