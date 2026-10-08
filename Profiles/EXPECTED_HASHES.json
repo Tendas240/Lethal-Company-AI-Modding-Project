@@ -111,5 +111,10 @@
     "build_id": "S1.42AK-CFDIAG1",
     "sha256": "a4ebbed30e530153e3f3dc92b97b676729eada94e602ccf29a4ca63a64f3ce4c",
     "note": "Diagnostic-only active runtime target for one bounded deterministic Offense Circus Facility / CircusFacilityFlow generation-materialization proof; exact reviewed bytes are published/indexed and the canonical readable snapshot is ProfileSources/S1.42AK-CFDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT and never a gameplay base. Runtime activation changes only repository runtime/evidence authority; profile/DLL/config/package bytes remain frozen."
+  },
+  "Profiles/LC V1 S1.42AK-FXD1.r2z": {
+    "build_id": "S1.42AK-FXDIAG1",
+    "sha256": "b2491e10811310661de76b71e7bf42cf259065e4b363e36d18abfa8457a14435",
+    "note": "Inactive diagnostic-only exact frozen reviewed Fractured Complex / FracturedComplexFlow profile over immutable S1.42AK-BMDSFIX1; published/main-integrated, canonical readable snapshot is ProfileSources/S1.42AK-FXDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT, not a gameplay base, and indexing does not Gale-import, runtime-arm, test or accept it."
   }
 }
