@@ -89,10 +89,12 @@ At the end of the final segment, state that the requested task is complete and s
 At the end of **each project execution segment**, including final segments and bounded handover-preparation segments, **prefer a compact graphical representation of the checkpoint** when the chat client supports it and producing it is straightforward, proportionate and genuinely useful.
 
 - Choose the visualization to match the available facts: for example, a progress bar for completed versus planned **execution segments**, a short milestone/status timeline, or a simple chart of relevant verified counts.
+- **Where meaningful and supported, optionally add interactive elements** to the checkpoint or visualization, such as expandable verification details, selectable milestone/status views or interactive charts. Use functional native controls with clearly described behavior; never present inert or decorative pseudo-interactions.
+- Keep interactivity proportionate: add it only when it brings a concrete benefit without significant extra implementation work, latency or complexity. An informational interaction must not silently execute repository changes, launch gameplay/tests, advance to another segment or trigger handover. Those actions remain subject to explicit user authorization and the mandatory continuation/handover buttons below.
 - Use only accurate, currently supported values. Clearly label what a quantity or progress bar measures; `3/4 segments` must not be mistaken for `75% of the whole project`. Never invent progress percentages, completion claims or measurements where none are available.
-- Keep the visual lightweight and readable. Prefer supported native UI over separate images, generated assets, external dependencies or repository files.
-- Skip the visual without blocking completion if the client does not support a suitable display, if reliable values are unavailable, or if creating it would add significant work, delay, complexity or merely decorative clutter.
-- **Always retain** the required textual `Completed / Findings / Remaining / Next segment` checkpoint, its explicit stop/continuation gate and the functional action buttons described below. A visual is supplementary, never a replacement and never a reason to bypass safety or verification.
+- Keep visual and interactive elements lightweight and readable. Prefer supported native UI over separate images, generated assets, external dependencies or repository files.
+- Skip either the visual or interactive elements without blocking completion if the client does not support suitable controls, reliable values are unavailable, or creating them would add significant work, delay, complexity or merely decorative clutter.
+- **Always retain** the required textual `Completed / Findings / Remaining / Next segment` checkpoint, its explicit stop/continuation gate and the functional action buttons described below. Visuals and interactive elements are supplementary, never replacements and never a reason to bypass safety or verification.
 
 ## Mandatory checkpoint action buttons (when supported)
 
