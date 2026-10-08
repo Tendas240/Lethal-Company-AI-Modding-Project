@@ -30,8 +30,12 @@ phase = state["selected_scope"]["phase_c"]
 require(phase["fractured_complex_fxdiag1_implemented"] is True, "source checkpoint marker missing")
 require(phase["fractured_complex_fxdiag1_built"] is False, "source checkpoint cannot build a profile")
 require(phase["fractured_complex_fxdiag1_runtime_authorized"] is False, "runtime not authorized")
-require(phase["fractured_complex_fxdiag1_source_static_validation_pending"] is True, "CI pending indicator missing")
-require(phase["fractured_complex_fxdiag1_source_static_validated"] is False, "false static validation PASS")
+require(phase["fractured_complex_fxdiag1_source_static_validation_pending"] is False, "reviewed source static CI must be reconciled")
+require(phase["fractured_complex_fxdiag1_source_static_validated"] is True, "reviewed source static PASS missing")
+require(phase["fractured_complex_fxdiag1_source_pr"] == 354, "source PR authority drift")
+require(phase["fractured_complex_fxdiag1_source_validated_head"] == "ccba2a774dcb99e2b3f88a2c1ed595af12627d31", "source reviewed head drift")
+require(phase["fractured_complex_fxdiag1_source_static_run"] == 37784693536, "dedicated source run drift")
+require(phase["fractured_complex_fxdiag1_source_knowledge_architecture_run"] == 37784693474, "knowledge architecture run drift")
 require(build["enabled"] is False and build["build_id"] == "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS", "live build changed")
 require(build["base_sha256"] == "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0", "parent drift")
 require(build["local_plugin_builds"] == [] and build["mod_additions"] == [] and build["config_patches"] == [], "live builder change")
@@ -90,13 +94,15 @@ m = re.search(r"<RestoreAdditionalProjectSources>\s*(.*?)\s*</RestoreAdditionalP
 require(m is not None and [x.strip() for x in m.group(1).split(";")] ==
     ["https://api.nuget.org/v3/index.json", "https://nuget.bepinex.dev/v3/index.json"], "restore feed drift")
 require("Exactly one Harmony surface exists" in safety and "LLL remains owner" in safety, "Patch Safety Review incomplete")
-require("VALIDATION PENDING" in findings and "VALIDATION PENDING" in checkpoint, "staged records cannot claim PASS")
+require("SOURCE / PURE-STATIC PASS" in findings and "SOURCE / PURE-STATIC PASS" in checkpoint, "reviewed source CI evidence missing")
+for evidence in ("ccba2a774dcb99e2b3f88a2c1ed595af12627d31", "37784693536", "37784693474"):
+    require(evidence in findings and evidence in checkpoint, "exact reviewed-head CI evidence missing: " + evidence)
 require("LC V1 S1.42AK-FXD1" in findings and "LC V1 S1.42AK-FXD1" in checkpoint, "short identity drift")
 require("profile_builder.py" not in workflow, "profile builder forbidden")
 require("ref: ${{ github.event.pull_request.head.sha }}" in workflow, "CI must pin PR head")
 require("dotnet run --project Patches/S142AKFXDiag1/Tests/Policy.Tests.csproj -c Release" in workflow, "pure test missing")
 require("dotnet build S142AKFXDiag1.csproj -c Release" in workflow, "compile gate missing")
 require("python AnalysisTools/validate_s142ak_fxdiag1_source.py" in workflow, "validator missing")
-print(json.dumps({"status":"FXDIAG1_SOURCE_STATIC_CONTRACT_PASS_VALIDATION_PENDING",
+print(json.dumps({"status":"FXDIAG1_SOURCE_STATIC_CONTRACT_PASS_REVIEWED_PR_HEAD_GREEN",
     "harmony_surfaces":1,"target":"Offense / FracturedComplexFlow / rarity 100",
     "profile_build_authorized":False,"runtime_authorized":False,"active":active}, indent=2))
