@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-FXDIAG1",
+  "profile_path": "Profiles/LC V1 S1.42AK-FXD1.r2z",
+  "profile_name": "LC V1 S1.42AK-FXD1",
+  "sha256": "b2491e10811310661de76b71e7bf42cf259065e4b363e36d18abfa8457a14435",
+  "zip_members": 338,
+  "snapshot_dir": "ProfileSources/S1.42AK-FXDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}
