@@ -39,8 +39,30 @@ require(p["storage_complex_selector_source_implementation_authorized"] is True, 
 require(p["storage_complex_scdiag1_implemented"] is True, "source implementation not recorded")
 require(p["storage_complex_scdiag1_built"] is False and p["storage_complex_scdiag1_runtime_armed"] is False,
         "unapproved build/runtime activation")
-require(p["storage_complex_scdiag1_source_static_validated"] is False,
-        "do not pre-claim source static CI success before exact-PR-head gate and integration")
+# Stage-aware: a PR-local implementation must not pre-claim validation, but once
+# the exact PR-head and permanent main-head CI have succeeded, canonical state
+# must retain the independently verified evidence rather than remain pending.
+if p["storage_complex_scdiag1_source_static_validated"] is True:
+    require(p["storage_complex_scdiag1_source_static_validation_pending"] is False,
+            "integrated source cannot be both verified and pending")
+    require(p["storage_complex_scdiag1_source_pr"] == 372, "wrong original source PR")
+    require(p["storage_complex_scdiag1_source_pr_final_head"] ==
+            "973b8648644bcfc9fb42ff4943b3ca38b5d82a5e",
+            "source validation must pin exact final PR head")
+    require(p["storage_complex_scdiag1_source_static_run"] == 37843419333 and
+            p["storage_complex_scdiag1_source_knowledge_architecture_run"] == 37843419371,
+            "original exact-head CI evidence mismatch")
+    require(p["storage_complex_scdiag1_source_main_integration_commit"] ==
+            "3f69dac8b09844bc3112122675580bc0e33ee679" and
+            p["storage_complex_scdiag1_source_main_knowledge_architecture_run"] == 37845920307,
+            "permanent exact-main-head CI integration evidence mismatch")
+    require(p["storage_complex_scdiag1_source_integration_reconciliation"] ==
+            "Current/344_S1.42AK_SCDIAG1_SOURCE_STATIC_POST_MERGE_RECONCILIATION.md",
+            "integrated source reconciliation reference missing")
+else:
+    require(p["storage_complex_scdiag1_source_static_validated"] is False and
+            p["storage_complex_scdiag1_source_static_validation_pending"] is True,
+            "staged source must remain CI pending and not pre-claim PASS")
 require(p["storage_complex_scdiag1_source_checkpoint"] ==
         "Current/343_S1.42AK_PHASE_C_STORAGE_COMPLEX_SCDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md",
         "checkpoint routing mismatch")
