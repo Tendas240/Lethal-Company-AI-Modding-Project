@@ -510,6 +510,25 @@
       "runtime_evidence_required": false,
       "partial_runtime_evidence_present": false,
       "note": "Exact published/indexed TWDIAG1 bytes are runtime-armed solely for one bounded deterministic Offense Tower / TowerFlow generation-materialization proof. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED and its passive Deep Sewers gate remains unwaived."
+    },
+    {
+      "build_id": "S1.42AK-CFDIAG1",
+      "role": "ACTIVE_RUNTIME_DIAGNOSTIC_PENDING",
+      "profile": "Profiles/LC V1 S1.42AK-CFD1.r2z",
+      "profile_sha256": "a4ebbed30e530153e3f3dc92b97b676729eada94e602ccf29a4ca63a64f3ce4c",
+      "profile_sources": "ProfileSources/S1.42AK-CFDIAG1/",
+      "file_index": "ProfileSources/S1.42AK-CFDIAG1/FILE_INDEX.json",
+      "export": "ProfileSources/S1.42AK-CFDIAG1/export.r2x",
+      "build_plan": "BuildSpecs/S1.42AK-CFDIAG1_PLAN.md",
+      "build_result": "BuildSpecs/S1.42AK-CFDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json",
+      "static_evidence": "BuildSpecs/S1.42AK-CFDIAG1_BUILD_EVIDENCE/STATIC_VERIFICATION.json",
+      "publication_evidence": "BuildSpecs/S1.42AK-CFDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+      "activation_record": "Current/323_S1.42AK_CFDIAG1_RUNTIME_ACTIVATION.md",
+      "diagnostic_dll_sha256": "00ea72dff35512779b5c24d64bb481db21be7f6d9365d1ec947245e5505c6776",
+      "inherited_bmdsfix1_dll_sha256": "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
+      "runtime_evidence_required": false,
+      "partial_runtime_evidence_present": false,
+      "note": "Exact published/indexed CFDIAG1 bytes are runtime-armed solely for one bounded deterministic Offense Circus Facility / CircusFacilityFlow generation-materialization proof. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED and its passive Deep Sewers gate remains unwaived."
     }
   ],
   "important_project_dlls": [
@@ -576,7 +595,8 @@
     "S1.42AK-AGDIAG1 exact published/indexed profile SHA-256 e62e3c41f4f78105f1dc9ac789d71fd54e8d7f796aa7b46f5fd5615a68f91081 is runtime-armed solely as the active deterministic Offense Art Gallery / MuseumInteriorFlow diagnostic; AGDIAG1 DLL SHA-256 23a90b8b2bffd1f08a1391319b0e48215e3ef231b43a68ebdbf637128bfbb131 remains exact. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED.",
     "S1.42AK-LFDIAG1 exact published/indexed profile SHA-256 ce6835944f90e1972caebf52dc344bdf660283c9a074ac07899486ce0b4564f4 is runtime-armed solely as the active deterministic Offense Liminal Facility / BackroomsFlow diagnostic; LFDIAG1 DLL SHA-256 13fd01cba6d30a0c9044d43df813b17adf352139f723c9444f8db14403a0a474 remains exact. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED.",
     "S1.42AK-SHDIAG1 exact published/indexed profile SHA-256 787a7baf441ec0ccc2af1295ccc3e94b70ca3bff17e026fb90985733efcb957e is runtime-armed solely as the active deterministic Offense Storehouse / SHFlow diagnostic; SHDIAG1 DLL SHA-256 e78e0eb6483d332e3b2a05be772173036c90e9fccd2c1fc9d52980a5d516d062 remains exact. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED.",
-    "S1.42AK-TWDIAG1 exact published/indexed profile SHA-256 a5561b26ae5efe17b53239a0fc8a81020eec64ea59b5e3a7cca3481e6b3d7857 is runtime-armed solely as the active deterministic Offense Tower / TowerFlow diagnostic; TWDIAG1 DLL SHA-256 80c8f7615e6eeba59333160db5b7f3d40c6a97f2aafeaa01953cb4ce19e40499 remains exact. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED."
+    "S1.42AK-TWDIAG1 exact published/indexed profile SHA-256 a5561b26ae5efe17b53239a0fc8a81020eec64ea59b5e3a7cca3481e6b3d7857 is runtime-armed solely as the active deterministic Offense Tower / TowerFlow diagnostic; TWDIAG1 DLL SHA-256 80c8f7615e6eeba59333160db5b7f3d40c6a97f2aafeaa01953cb4ce19e40499 remains exact. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED.",
+    "S1.42AK-CFDIAG1 exact published/indexed profile SHA-256 a4ebbed30e530153e3f3dc92b97b676729eada94e602ccf29a4ca63a64f3ce4c is runtime-armed solely as the active deterministic Offense Circus Facility / CircusFacilityFlow diagnostic; CFDIAG1 DLL SHA-256 00ea72dff35512779b5c24d64bb481db21be7f6d9365d1ec947245e5505c6776 remains exact. DIAGNOSTIC ONLY / NEVER ACCEPT; BMDSFIX1 remains the separate active gameplay candidate / NOT ACCEPTED."
   ],
-  "last_validated": "2026-10-06"
+  "last_validated": "2026-10-08"
 }
