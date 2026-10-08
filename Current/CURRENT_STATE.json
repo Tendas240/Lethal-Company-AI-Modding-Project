@@ -1791,7 +1791,8 @@
       "target_moon": "Offense",
       "target_dungeon_name": "Fractured Complex",
       "target_flow_asset": "FracturedComplexFlow",
-      "target_rarity": 100
+      "target_rarity": 100,
+      "static_evidence": "BuildSpecs/S1.42AK-FXDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json"
     },
     "diagnostic_runtime_finding": "Current/199_S1.42AK_BMGHDIAG3_RUNTIME_COMPATIBILITY_PASS.md",
     "bmdsfix1_source_repair": {
