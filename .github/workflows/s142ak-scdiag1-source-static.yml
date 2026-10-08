@@ -1,0 +1,31 @@
+name: S1.42AK SCDIAG1 source and pure static gate
+on:
+  pull_request:
+    paths:
+      - 'Patches/S142AKSCDiag1/**'
+      - 'AnalysisTools/validate_s142ak_scdiag1_source.py'
+      - 'SourceEvidence/UniversalInteriorViability/SCDIAG1SourceStatic/**'
+      - 'Current/343_S1.42AK_PHASE_C_STORAGE_COMPLEX_SCDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
+      - 'Current/CURRENT_STATE.json'
+      - 'Knowledge/INTERIORS_AND_LLL.md'
+      - '.github/workflows/s142ak-scdiag1-source-static.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Test pure Storage Complex fail-closed selection policy
+        run: dotnet run --project Patches/S142AKSCDiag1/Tests/Policy.Tests.csproj -c Release
+      - name: Compile diagnostic source only (no profile construction)
+        working-directory: Patches/S142AKSCDiag1
+        run: dotnet build S142AKSCDiag1.csproj -c Release
+      - name: Validate selector surface and unchanged live controllers
+        run: python AnalysisTools/validate_s142ak_scdiag1_source.py
