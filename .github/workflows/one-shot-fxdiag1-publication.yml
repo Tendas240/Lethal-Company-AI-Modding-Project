@@ -69,7 +69,7 @@ jobs:
           echo "${ARTIFACT_SHA256}  .publication-artifact/review.zip" | sha256sum --check --strict
           unzip -q .publication-artifact/review.zip -d .publication-artifact/extracted
           echo "${PROFILE_SHA256}  .publication-artifact/extracted/${PROFILE_PATH}" | sha256sum --check --strict
-          echo "${DLL_SHA256}  .publication-artifact/extracted/DLL/S142AKDRDiag1.dll" | sha256sum --check --strict
+          echo "${DLL_SHA256}  .publication-artifact/extracted/DLL/S142AKFXDiag1.dll" | sha256sum --check --strict
 
           python - <<'PY'
           import hashlib, json, os, pathlib, shutil, zipfile
@@ -127,7 +127,7 @@ jobs:
               if len(parent_paths) != 337:
                   raise SystemExit(f'parent snapshot row count mismatch: {len(parent_paths)}')
 
-              added = 'BepInEx/plugins/S142AKDRDiag1/S142AKDRDiag1.dll'
+              added = 'BepInEx/plugins/S142AKFXDiag1/S142AKFXDiag1.dll'
               if names[:337] != parent_paths or names[337:] != [added]:
                   raise SystemExit('review member order/delta differs from exact indexed parent')
 
@@ -160,7 +160,7 @@ jobs:
               dll = z.read(added)
               if sha(dll) != os.environ['DLL_SHA256']:
                   raise SystemExit('FXDIAG1 DLL SHA mismatch inside profile')
-              if dll != (artifact / 'DLL/S142AKDRDiag1.dll').read_bytes():
+              if dll != (artifact / 'DLL/S142AKFXDiag1.dll').read_bytes():
                   raise SystemExit('profile DLL differs from separately frozen DLL')
 
               first_line = z.read('export.r2x').decode('utf-8-sig').splitlines()[0]
