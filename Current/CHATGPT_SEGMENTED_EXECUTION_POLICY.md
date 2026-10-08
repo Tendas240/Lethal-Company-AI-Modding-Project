@@ -117,6 +117,14 @@ At the end of **every project execution segment**, including each bounded handov
 - If functional native buttons are unavailable, offer the same choice as explicit text instructions **after every segment, including the final segment**: `Zum Fortfahren mit dem nächsten zulässigen Projektschritt "weiter" senden; für die Übergabe "Übergabe an neuen Chat" senden.` Never omit the `weiter` option just because the current work package ended. Never claim a text link or dummy button provides one-click execution.
 - These button rules govern **chat UX and explicit user choice only**. They do not modify runtime/build/acceptance authorities, override atomicity, waive CI gates or silently consume GPT-6 quota. Every future chat must obey them after reading this canonical policy.
 
+### Completed final handover: copy prompt instead of re-preparing it
+
+**Specific mandatory exception to the generic second-button rule above:** When the response already provides the final complete new-chat start prompt from `Current/HANDOVER_PREPARATION_PROMPT.md` (PART 1 handover completion + PART 2 ready-to-copy prompt), the two functional buttons must be **`Weiter`** and **`Übergabe-Prompt kopieren`** — **not** `Übergabe an neuen Chat` or `Übergabe erneut vorbereiten`. This applies to **every final handover output** and takes precedence over the general rule above that normally requires the handover-initiation button at other checkpoints. Keep `Weiter` even though this handover work package is finished; its click still requests only the next authorized, bounded segment.
+
+The copy button must use a real clipboard action initiated by the user's click, for example `GenUI.copy(fullNewChatStartPrompt)`, with the exact, entire text of PART 2 as its argument. Preserve every URL, SHA, PR/CI reference, instruction and constraint; do not omit, summarize, regenerate or include PART 1/status text, UI labels or formatting markup. The button must **not** issue a new turn, re-run the completed handover, or claim to open a new chat. The user opens the new chat and pastes the copied prompt there. Do not claim clipboard success without platform confirmation.
+
+If native clipboard controls are unsupported, provide PART 2 in a clearly selectable prompt block for manual copying rather than an inert pseudo-button, and still show/provide `Weiter`. Ordinary non-handover checkpoints continue to show `Weiter` + `Übergabe an neuen Chat`. This is only a chat-UX exception; no build, runtime, CI, PR or acceptance authority changes.
+
 ## User continuation signal
 
 The user does not need a special exact phrase. Any clear instruction to proceed is sufficient, including:
