@@ -79,7 +79,6 @@ for literal in (
     "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06",
     "GetValidExtendedDungeonFlows", "GetRandomExtendedDungeonFlowServerRpc",
     "GetSimulationResultsText", "NumberlessPlanetName",
-    '"Storage Complex"', '"StorageComplex"',
     "after = new[] { NormalizerGuid }", "priority = Priority.Last",
     "diagnostic.priority == Priority.Last",
     "prior.Postfixes.Count(p => p.owner == NormalizerGuid) == 1",
