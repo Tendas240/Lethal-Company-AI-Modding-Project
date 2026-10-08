@@ -61,7 +61,7 @@
   "selected_scope": {
     "scope_id": "UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY",
     "title": "Universal Interior Viability / Equal Availability",
-    "status": "PHASE_C_RESIDUAL_23_STORAGE_COMPLEX_SCDIAG1_SOURCE_STATIC_INTEGRATED_REVIEW_BUILD_DECISION_NEXT_BMDSFIX1_ACTIVE_NOT_ACCEPTED",
+    "status": "PHASE_C_RESIDUAL_23_STORAGE_COMPLEX_SCDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZED_NOT_BUILT_BMDSFIX1_ACTIVE_NOT_ACCEPTED",
     "accepted_baseline": "S1.42AK",
     "plan": "BuildSpecs/UNIVERSAL_INTERIOR_VIABILITY_EQUAL_AVAILABILITY_PLAN.md",
     "topic_authority": "Knowledge/INTERIORS_AND_LLL.md",
@@ -2203,7 +2203,7 @@
     "drdiag1_runtime_index": "RuntimeEvidence/S1.42AK-DRDIAG1/20261005T170546Z/INDEX.json",
     "drdiag1_runtime_log_sha256": "103b33eedf7d7580858ff42024a8c59ed6f4719cb27adf83d23275854654da64"
   },
-  "next_action": "Perform a separately bounded S1.42AK-SCDIAG1 inactive review-build authorization and frozen-recipe decision under Current/344_S1.42AK_SCDIAG1_SOURCE_STATIC_POST_MERGE_RECONCILIATION.md. Assess integrated source/static evidence, Patch Safety Review, exact BMDSFIX1 parent hash, restricted one-DLL-plus-export.r2x future delta, reproducible recipe and short Windows paths. Decide whether to authorize a later separate review-build only. Do not execute a build or profile, publish, index, import into Gale, activate/test runtime, promote gameplay, alter build/runtime controllers, LLL/normalizer/availability/RNG or revisit closed workstreams. The no-generation-proof residual remains 23 = 11 viable/equal-100 plus 12 owner-hard-block. BMDSFIX1 remains NOT ACCEPTED with passive Black Mesa x DeepSewersFlow gate unwaived.",
+  "next_action": "Execute only the separately bounded S1.42AK-SCDIAG1 inactive review-build checkpoint authorized by Current/345_S1.42AK_SCDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md, using BuildSpecs/S1.42AK-SCDIAG1_PLAN.md and frozen non-live BuildSpecs/S1.42AK-SCDIAG1.json. Introduce the dedicated exact-PR-head build validator/workflow, compile only SCDIAG1 and verify the exact BMDSFIX1 parent SHA-256 3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0 and the strict 337-to-338 new-DLL-plus-export.r2x identity-only archive delta. Record source/DLL/profile/Actions artifact provenance, independent downloaded ZIP hash/CRC, 255-character Windows path guard and required CI. This is an INACTIVE review only: no profile/DLL publication, canonical indexing, Gale import, activation, runtime test, acceptance, live controller or owner/LLL/normalizer/RNG/gameplay modifications. Storage Complex remains generation-unproven; residual remains 23 = 11 viable/equal-100 plus 12 owner-hard-block; BMDSFIX1 remains NOT ACCEPTED and its selector-free Black Mesa x DeepSewersFlow gate stays passive/unwaived.",
   "controllers": {
     "buildspec": "BuildSpecs/current.json",
     "build_enabled": false,
