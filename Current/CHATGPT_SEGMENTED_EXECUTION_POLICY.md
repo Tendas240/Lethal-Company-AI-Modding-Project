@@ -84,16 +84,16 @@ At the end of every non-final segment, ChatGPT must provide a concise checkpoint
 
 At the end of the final segment, state that the requested task is complete and summarize the final verified state.
 
-## Mandatory "Weiter" continuation button (when supported)
+## Mandatory checkpoint action buttons (when supported)
 
-At the end of **every non-final project execution segment**, including segmented handover work, provide a visible and functional **"Weiter"** button in addition to the required `Completed / Findings / Remaining / Next segment` checkpoint and the explicit stop statement, **whenever the chat client supports interactive buttons**.
+At the end of **every project execution segment**, including each bounded handover-preparation segment, offer the user an explicit choice between continuing project work and requesting a fresh-chat handover. Use **functional, visible, native interactive buttons** when the chat client supports them; do not show inert or decorative pseudo-buttons.
 
-- Label the button `Weiter` or `Weiter – Segment X/Y starten`, identifying the upcoming segment when useful.
-- Its click must submit a **new user continuation message** (`weiter` or equivalent) through the chat interface. Where supported, use the native button action that submits a new turn, e.g. `GenUI.issueNewTurn("weiter")`. Do not use an inert, decorative or merely Markdown-styled pseudo-button.
-- The button **does not** execute the following segment by itself within the current assistant turn. Only the user's explicit click/new message opens the next execution segment; re-check repository authority and the temporary GPT-6 escalation rule before starting it.
-- If interactive buttons are unavailable in the current client or response format, state plainly: `Zum Fortfahren "weiter" senden.` This is a compatibility fallback, not permission to omit a supported button.
-- Do not display a continuation button once the requested work is fully complete or when there is no authorized next segment.
-- This is a chat-execution UX rule only. It does not change repository, build, runtime, acceptance or CI authority. Future chats reading this canonical policy must follow it without requiring another user reminder.
+- **"Weiter"**: At each **non-final** segment checkpoint, label a button `Weiter` or `Weiter – Segment X/Y starten`. Clicking it must submit a **new user continuation turn** (for example `GenUI.issueNewTurn("weiter")`) and thereby authorize **only the next bounded segment**. Never proceed automatically. Re-read mandatory fresh repository authorities and reassess the temporary GPT-6 escalation rule before the next segment. Do **not** show "Weiter" when the task has reached its final segment or there is no authorized next segment.
+- **"Übergabe an neuen Chat"**: At the end of **every segment, including the final segment**, also show a separate button labeled `Übergabe an neuen Chat`. Its click must submit a **new explicit user request to initiate the repository-native handover preparation in this current chat**, for example `GenUI.issueNewTurn("Bereite jetzt eine Übergabe an einen neuen Chat gemäß Current/HANDOVER_PREPARATION_PROMPT.md vor.")`. This is an alternative to "Weiter", not an additional project segment to execute automatically. Follow the handover file and this segmented-execution policy, freshly verifying repository/PR/CI/controllers before producing a ready-to-copy new-chat starting prompt. Do not silently merge pending PRs or mutate project state merely because the user requested handover.
+- The handover button **does not itself create, open or populate a new ChatGPT conversation**. The current chat prepares and supplies the start prompt, and the user opens a new chat and transfers that prompt. Do not claim otherwise.
+- Keep the required `Completed / Findings / Remaining / Next segment` report and explicit stop statement for every non-final segment. When work is fully complete, summarize the final verified state and show **only** the handover action, not an unauthorized next-segment button.
+- If functional native buttons are unavailable, offer the same choice as explicit text instructions: `Zum Fortfahren "weiter" senden; für die Übergabe "Übergabe an neuen Chat" senden.` After a final segment, omit the no-longer-applicable "weiter" option. Never claim a text link or dummy button provides one-click execution.
+- These button rules govern **chat UX and explicit user choice only**. They do not modify runtime/build/acceptance authorities, override atomicity, waive CI gates or silently consume GPT-6 quota. Every future chat must obey them after reading this canonical policy.
 
 ## User continuation signal
 
