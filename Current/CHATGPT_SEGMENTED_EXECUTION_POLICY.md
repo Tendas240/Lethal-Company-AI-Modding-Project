@@ -84,6 +84,16 @@ At the end of every non-final segment, ChatGPT must provide a concise checkpoint
 
 At the end of the final segment, state that the requested task is complete and summarize the final verified state.
 
+## Optional graphical segment checkpoint (when practical)
+
+At the end of **each project execution segment**, including final segments and bounded handover-preparation segments, **prefer a compact graphical representation of the checkpoint** when the chat client supports it and producing it is straightforward, proportionate and genuinely useful.
+
+- Choose the visualization to match the available facts: for example, a progress bar for completed versus planned **execution segments**, a short milestone/status timeline, or a simple chart of relevant verified counts.
+- Use only accurate, currently supported values. Clearly label what a quantity or progress bar measures; `3/4 segments` must not be mistaken for `75% of the whole project`. Never invent progress percentages, completion claims or measurements where none are available.
+- Keep the visual lightweight and readable. Prefer supported native UI over separate images, generated assets, external dependencies or repository files.
+- Skip the visual without blocking completion if the client does not support a suitable display, if reliable values are unavailable, or if creating it would add significant work, delay, complexity or merely decorative clutter.
+- **Always retain** the required textual `Completed / Findings / Remaining / Next segment` checkpoint, its explicit stop/continuation gate and the functional action buttons described below. A visual is supplementary, never a replacement and never a reason to bypass safety or verification.
+
 ## Mandatory checkpoint action buttons (when supported)
 
 At the end of **every project execution segment**, including each bounded handover-preparation segment, offer the user an explicit choice between continuing project work and requesting a fresh-chat handover. Use **functional, visible, native interactive buttons** when the chat client supports them; do not show inert or decorative pseudo-buttons.
