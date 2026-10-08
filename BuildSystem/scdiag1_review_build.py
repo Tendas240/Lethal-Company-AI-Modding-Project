@@ -13,7 +13,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_MAIN = "3f69dac8b09844bc3112122675580bc0e33ee679"
+SOURCE_MAIN = "6faf075cf0a5786ca4aee0bbfa3b3f5202aa6af4"
 SPEC_PATH = ROOT / "BuildSpecs/S1.42AK-SCDIAG1.json"
 PARENT_REL = "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z"
 PARENT_SHA = "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0"
