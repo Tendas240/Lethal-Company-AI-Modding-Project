@@ -58,7 +58,7 @@ jobs:
               subprocess.run(['git', 'diff', '--exit-code', head, 'HEAD', '--', *protected], check=True)
               print('Frozen SCDIAG1 review bytes preserved; no recompilation or re-upload')
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
-              output.write('exists=' + str(frozen).lower() + '\\n')
+              output.write('exists=' + str(frozen).lower() + '\n')
           PY
       - uses: actions/setup-python@v5
         if: steps.frozen.outputs.exists != 'true'
