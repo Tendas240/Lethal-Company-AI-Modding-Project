@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-SCDIAG1",
+  "profile_path": "Profiles/LC V1 S1.42AK-SCD1.r2z",
+  "profile_name": "LC V1 S1.42AK-SCD1",
+  "sha256": "6be6865a7fde205280439503680ac910401c20b997f757ffbedbddc963c704f4",
+  "zip_members": 338,
+  "snapshot_dir": "ProfileSources/S1.42AK-SCDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}
