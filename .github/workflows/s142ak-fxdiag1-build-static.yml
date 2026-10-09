@@ -110,6 +110,17 @@ jobs:
                   else:
                       assert phase.get('fractured_complex_fxdiag1_runtime_authorized') is False
                       assert phase.get('fractured_complex_fxdiag1_runtime_armed') is False
+                  if phase.get('storage_complex_scdiag1_runtime_armed') is True:
+                      # Different, authorized successor runtime attribution. FXDIAG1 is
+                      # historically completed/inactive and is NOT rebuilt or retested.
+                      runtime_state = json.loads(pathlib.Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+                      assert runtime_state['controllers']['runtime_active_build'] == 'S1.42AK-SCDIAG1'
+                      assert phase.get('fractured_complex_fxdiag1_runtime_authorized') is False
+                      assert phase.get('fractured_complex_fxdiag1_runtime_armed') is False
+                      assert validator_blob == '062f3ce79b00b657dcb49ff4b536ddb5c7bfa812'
+                      assert subprocess.check_output(['git','hash-object','.github/workflows/s142ak-fxdiag1-source-static.yml'],text=True).strip() == 'e3356b99e18571c999230653d889cbc6c73d8f9b'
+                      protected.remove('.github/workflows/s142ak-fxdiag1-source-static.yml')
+                  else:
                       assert validator_blob == '1d4571351007bc7dcef199bf094221839a06fc4a', 'unapproved source-validator modification'
                   # This frozen-review guard is changed ONLY to recognize
                   # the publication stage; every other original reviewed

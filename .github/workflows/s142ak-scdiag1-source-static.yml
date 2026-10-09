@@ -19,13 +19,40 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+      - name: Classify exact frozen activation checkpoint (no profile compilation)
+        id: runtime_stage
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, pathlib, os
+          state = json.loads(pathlib.Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          phase = state['selected_scope']['phase_c']
+          active = pathlib.Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip()
+          runtime = phase['storage_complex_scdiag1_runtime_armed'] is True
+          if runtime:
+              assert phase['storage_complex_scdiag1_runtime_activation_checkpoint_authorized_conditional'] is True
+              assert phase['storage_complex_scdiag1_runtime_activation'] == 'Current/355_S1.42AK_SCDIAG1_RUNTIME_ACTIVATION.md'
+              assert state['controllers']['runtime_active_build'] == active == 'S1.42AK-SCDIAG1'
+              assert state['selected_scope']['diagnostic_revision']['sha256'] == '6be6865a7fde205280439503680ac910401c20b997f757ffbedbddc963c704f4'
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as f:
+              f.write('runtime=' + str(runtime).lower() + '\n')
+          PY
       - uses: actions/setup-dotnet@v4
+        if: steps.runtime_stage.outputs.runtime != 'true'
         with:
           dotnet-version: '8.0.x'
       - name: Test pure Storage Complex fail-closed selection policy
+        if: steps.runtime_stage.outputs.runtime != 'true'
         run: dotnet run --project Patches/S142AKSCDiag1/Tests/Policy.Tests.csproj -c Release
       - name: Compile diagnostic source only (no profile construction)
+        if: steps.runtime_stage.outputs.runtime != 'true'
         working-directory: Patches/S142AKSCDiag1
         run: dotnet build S142AKSCDiag1.csproj -c Release
       - name: Validate selector surface and unchanged live controllers
         run: python AnalysisTools/validate_s142ak_scdiag1_source.py
+      - name: Verify exact SCDIAG1 activation and frozen Gale routing without compile
+        if: steps.runtime_stage.outputs.runtime == 'true'
+        run: python AnalysisTools/validate_s142ak_scdiag1_activation.py
+      - name: Verify short Gale path-budget without rebuilding
+        if: steps.runtime_stage.outputs.runtime == 'true'
+        run: python RepositoryTools/gale_profile_path_length_guard.py --spec BuildSpecs/S1.42AK-SCDIAG1.json --self-test

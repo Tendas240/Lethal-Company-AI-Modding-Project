@@ -55,6 +55,26 @@ jobs:
                   'SourceEvidence/UniversalInteriorViability/SCDIAG1SourceStatic/FINDINGS.md',
                   'RepositoryTools/gale_profile_path_length_guard.py',
               ]
+              state_now = json.loads(pathlib.Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+              phase = state_now['selected_scope']['phase_c']
+              activation = phase.get('storage_complex_scdiag1_runtime_armed') is True
+              if activation:
+                  # Only the exact reviewed source remains frozen; stage-aware validators/workflow
+                  # are independently pinned to the new Git object IDs. No rebuilding is allowed.
+                  assert phase.get('storage_complex_scdiag1_runtime_activation_checkpoint_authorized_conditional') is True
+                  assert phase.get('storage_complex_scdiag1_runtime_activation') == 'Current/355_S1.42AK_SCDIAG1_RUNTIME_ACTIVATION.md'
+                  assert phase.get('storage_complex_runtime_test_authorized') is True
+                  assert state_now['controllers']['runtime_active_build'] == 'S1.42AK-SCDIAG1'
+                  assert pathlib.Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-SCDIAG1'
+                  diag = state_now['selected_scope']['diagnostic_revision']
+                  assert diag['build_id'] == 'S1.42AK-SCDIAG1' and diag['classification'] == 'DIAGNOSTIC_ONLY_NEVER_ACCEPT'
+                  assert diag['sha256'] == '6be6865a7fde205280439503680ac910401c20b997f757ffbedbddc963c704f4' and diag['base_sha256'] == '3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
+                  assert subprocess.check_output(['git', 'hash-object', 'AnalysisTools/validate_s142ak_scdiag1_source.py'], text=True).strip() == 'db92613bae89bc183b5bba1c0caf8a740ff14b09', 'unapproved source validator change'
+                  assert subprocess.check_output(['git', 'hash-object', '.github/workflows/s142ak-scdiag1-source-static.yml'], text=True).strip() == '5d4c07e17fd17e5f4f55f66cdef2f0e48b0d4926', 'unapproved source workflow change'
+                  assert subprocess.check_output(['git', 'hash-object', 'AnalysisTools/validate_s142ak_scdiag1_activation.py'], text=True).strip() == '3529e8b8ec648b7e2aeef0d2a24813669bdcb0e7', 'unapproved activation gate change'
+                  assert "if: steps.runtime_stage.outputs.runtime != 'true'" in pathlib.Path('.github/workflows/s142ak-scdiag1-source-static.yml').read_text(encoding='utf-8')
+                  protected = [name for name in protected if name not in (
+                      'AnalysisTools/validate_s142ak_scdiag1_source.py', '.github/workflows/s142ak-scdiag1-source-static.yml', '.github/workflows/s142ak-scdiag1-build-static.yml')]
               subprocess.run(['git', 'diff', '--exit-code', head, 'HEAD', '--', *protected], check=True)
               print('Frozen SCDIAG1 review bytes preserved; no recompilation or re-upload')
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:

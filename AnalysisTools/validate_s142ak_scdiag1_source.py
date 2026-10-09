@@ -37,8 +37,34 @@ require(state["runtime_test_outstanding"] is True, "passive Black Mesa runtime g
 p = state["selected_scope"]["phase_c"]
 require(p["storage_complex_selector_source_implementation_authorized"] is True, "source authorization absent")
 require(p["storage_complex_scdiag1_implemented"] is True, "source implementation not recorded")
-require(p["storage_complex_scdiag1_built"] is False and p["storage_complex_scdiag1_runtime_armed"] is False,
-        "unapproved build/runtime activation")
+require(p["storage_complex_scdiag1_built"] is False, "profile construction incorrectly claimed")
+runtime_stage = p["storage_complex_scdiag1_runtime_armed"] is True
+if runtime_stage:
+    require(p["storage_complex_runtime_test_authorized"] is True, "runtime stage not authorized")
+    require(p["storage_complex_scdiag1_runtime_activation"] == "Current/355_S1.42AK_SCDIAG1_RUNTIME_ACTIVATION.md",
+            "wrong exact diagnostic activation record")
+    require(p["storage_complex_scdiag1_profile_index_status"] ==
+            "PROFILE_INDEX_GREEN_CANONICALLY_INDEXED_RUNTIME_INACTIVE", "published/indexed source gate missing")
+    diag = state["selected_scope"]["diagnostic_revision"]
+    require(diag["build_id"] == "S1.42AK-SCDIAG1" and
+            diag["status"] == "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED" and
+            diag["classification"] == "DIAGNOSTIC_ONLY_NEVER_ACCEPT" and
+            diag["runtime_armed"] is True, "diagnostic stage/identity drift")
+    require(diag["sha256"] == "6be6865a7fde205280439503680ac910401c20b997f757ffbedbddc963c704f4" and
+            diag["base_sha256"] == "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+            "exact reviewed diagnostic/parent hash drift")
+    require(diag["build_result"] == "BuildSpecs/S1.42AK-SCDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json",
+            "runtime-routing build metadata missing")
+    metadata = json.loads(read(diag["build_result"]))
+    require(metadata["build_id"] == diag["build_id"] and
+            metadata["output_profile"] == diag["profile"] and
+            metadata["output_sha256"] == diag["sha256"] and
+            metadata["base_profile"] == diag["base_profile"] and
+            metadata["base_sha256"] == diag["base_sha256"], "direct Gale routing mismatch")
+else:
+    require(p["storage_complex_scdiag1_runtime_armed"] is False and
+            p["storage_complex_runtime_test_authorized"] is False,
+            "unauthorized source-stage runtime mutation")
 # Stage-aware: a PR-local implementation must not pre-claim validation, but once
 # the exact PR-head and permanent main-head CI have succeeded, canonical state
 # must retain the independently verified evidence rather than remain pending.
@@ -89,8 +115,9 @@ require(build["base_sha256"] == "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab
 require(build["local_plugin_builds"] == [] and build["config_patches"] == [] and
         build["mod_additions"] == [] and build["mod_removals"] == [],
         "build controller injected changes")
-require(active == "S1.42AK-BMDSFIX1" and state["controllers"]["runtime_active_build"] == active,
-        "runtime pointer changed")
+require(active == ("S1.42AK-SCDIAG1" if runtime_stage else "S1.42AK-BMDSFIX1") and
+        state["controllers"]["runtime_active_build"] == active,
+        "runtime pointer is inconsistent with exact frozen lifecycle stage")
 require("DIAGNOSTIC ONLY / NEVER ACCEPT" in authority, "authorization class absent")
 for literal in (
     "namespace S142AKSCDiag1", "tendas.lethalcompany.s142akscdiag1",
