@@ -6,7 +6,6 @@ on:
       - 'AnalysisTools/validate_s142ak_fxdiag1_source.py'
       - 'SourceEvidence/UniversalInteriorViability/FXDIAG1SourceStatic/**'
       - 'Current/328_S1.42AK_PHASE_C_FRACTURED_COMPLEX_FXDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
-      - 'Current/CURRENT_STATE.json'
       - 'Knowledge/INTERIORS_AND_LLL.md'
       - '.github/workflows/s142ak-fxdiag1-source-static.yml'
 permissions:

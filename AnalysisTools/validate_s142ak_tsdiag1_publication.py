@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Stage-aware fail-closed TSDIAG1 ORIGINAL-BYTE publication/index boundary."""
 from __future__ import annotations
+import copy
 import hashlib
 import json
+import re
+import sys
 from pathlib import Path
 import zipfile
 
@@ -31,6 +34,166 @@ def digest(value):
     return hashlib.sha256(value).hexdigest()
 
 
+
+def check_derived_lineage(metadata, parent):
+    """The immutable derivative never impersonates the original 915-byte report."""
+    source = metadata["original_review_evidence"]
+    require(metadata["metadata_kind"] == "DERIVED_RUNTIME_BUILD_RESULT" and
+            metadata["classification"] == "DIAGNOSTIC_ONLY_NEVER_ACCEPT" and
+            metadata["build_id"] == BUILD and metadata["base_build_id"] == "S1.42AK-BMDSFIX1" and
+            metadata["base_profile"] == PARENT and metadata["base_sha256"] == HASH_PARENT and
+            metadata["output_profile"] == PROFILE and metadata["output_sha256"] == HASH_PROFILE and
+            metadata["profile_sha256"] == HASH_PROFILE and metadata["dll_sha256"] == HASH_DLL and
+            metadata["authoritative_review_artifact_id"] == 11615262607 and
+            metadata["authoritative_review_artifact_zip_sha256"] == HASH_ZIP and
+            metadata["published"] is True and metadata["indexed"] is True and
+            metadata["runtime_armed"] is False and metadata["runtime_proof"] is False,
+            "DERIVED runtime metadata must retain exact immutable original lineage")
+    require(source["artifact_id"] == 11615262607 and
+            source["producer_head"] == "24105017a0d98ccc05b878c809f84f93f4e87e37" and
+            source["outer_zip_sha256"] == HASH_ZIP and
+            source["original_build_result_member"] == "Evidence/BUILD_RESULT.json" and
+            source["original_build_result_size_bytes"] == 915 and
+            source["original_build_result_sha256"] ==
+            "9a34b7f1d7b5dd910913e1a39ed033de98f76d8542065f244e64e6f7f400235a" and
+            source["original_build_result_status"] ==
+            "COMPILE_INPUT_PRESENT_ARCHIVE_AWAITS_INDEPENDENT_VALIDATION" and
+            source["original_stage_published"] is False and
+            source["original_stage_indexed"] is False and
+            source["original_stage_runtime_armed"] is False,
+            "original 915-byte prevalidation report was altered/relabeled")
+    require(parent["build_id"] == "S1.42AK-BMDSFIX1" and
+            parent["output_profile"] == PARENT and parent["output_sha256"] == HASH_PARENT,
+            "independent AUTO-parent routing and hash mismatch")
+
+
+def check_lifecycle_route(state, p, metadata, parent, active, activation_text=None):
+    check_derived_lineage(metadata, parent)
+    controls = state["controllers"]
+    demand_build = read_json("BuildSpecs/current.json")
+    require(demand_build["enabled"] is False and
+            demand_build["build_id"] == "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS",
+            "build controller must stay disabled/IDLE")
+    runtime_flags = (
+        p["toy_store_tsdiag1_runtime_armed"],
+        p["toy_store_runtime_test_authorized"],
+        p["toy_store_tsdiag1_runtime_activation_checkpoint_executed"],
+    )
+    new_stage = active == BUILD or controls["runtime_active_build"] == BUILD or any(runtime_flags)
+    if not new_stage:
+        require(runtime_flags == (False, False, False) and
+                active == controls["runtime_active_build"] == "S1.42AK-BMDSFIX1" and
+                state["selected_scope"]["diagnostic_revision"]["build_id"] == "S1.42AK-SCDIAG1" and
+                state["selected_scope"]["diagnostic_revision"]["runtime_armed"] is False,
+                "inactive-original publication stage altered or mixed with active diagnostic")
+        return "INACTIVE_ORIGINAL_PUBLICATION_INDEXED"
+
+    require(runtime_flags == (True, True, True),
+            "no partially armed/test-authorized diagnostic lifecycle")
+    require(p["toy_store_tsdiag1_runtime_activation_authorization_pr"] == 405 and
+            p["toy_store_tsdiag1_runtime_activation_authorization_main_commit"] ==
+            "46096717993039e3b7b2b7cb8579fc4bcec9151c" and
+            p["toy_store_tsdiag1_runtime_activation_authorization_main_knowledge_architecture_run"] ==
+            37960835253 and p["toy_store_tsdiag1_profile_indexed"] is True,
+            "independently integrated runtime-activation decision/index missing")
+    diag = state["selected_scope"]["diagnostic_revision"]
+    require(active == controls["runtime_active_build"] == diag["build_id"] == BUILD and
+            diag["status"] == "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED" and
+            diag["classification"] == "DIAGNOSTIC_ONLY_NEVER_ACCEPT" and
+            diag["runtime_armed"] is True and
+            diag["base_build_id"] == "S1.42AK-BMDSFIX1" and
+            diag["base_profile"] == PARENT and diag["base_sha256"] == HASH_PARENT and
+            diag["profile"] == PROFILE and diag["sha256"] == HASH_PROFILE and
+            diag["build_result"] == "BuildSpecs/S1.42AK-TSDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json",
+            "diagnostic/runtime controller or original-byte routing inconsistent")
+    record = p.get("toy_store_tsdiag1_runtime_activation")
+    require(isinstance(record, str) and
+            re.fullmatch(r"Current/[0-9]+_S1\.42AK_TSDIAG1_RUNTIME_ACTIVATION\.md", record) is not None,
+            "distinct versioned activation record is missing")
+    if activation_text is None:
+        activation_path = ROOT / record
+        require(activation_path.is_file(), "activation record not actually committed")
+        activation_text = activation_path.read_text(encoding="utf-8")
+    for token in (BUILD, PROFILE, HASH_PROFILE, HASH_DLL, HASH_PARENT,
+                  "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+                  "DIAGNOSTIC_ONLY_NEVER_ACCEPT"):
+        require(token in activation_text, "explicit activation record lacks exact token: " + token)
+    return "EXACT_ORIGINAL_DIAGNOSTIC_RUNTIME_AUTHORIZED"
+
+
+def route_self_test(state, metadata, parent):
+    """Pure synthetic mutations: NEVER edit current runtime controllers on disk."""
+    p = state["selected_scope"]["phase_c"]
+    active = "S1.42AK-BMDSFIX1"
+    proof = read_json("BuildSpecs/S1.42AK-TSDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json")
+    assert check_lifecycle_route(state, p, metadata, parent, active) == "INACTIVE_ORIGINAL_PUBLICATION_INDEXED"
+    def rejects(s, m, a, note, text=None):
+        try:
+            check_lifecycle_route(s, s["selected_scope"]["phase_c"], m, parent, a, text)
+        except (RuntimeError, KeyError, TypeError):
+            return
+        raise AssertionError("negative mutation unexpectedly accepted: " + note)
+    for key in ("toy_store_tsdiag1_runtime_armed", "toy_store_runtime_test_authorized",
+                "toy_store_tsdiag1_runtime_activation_checkpoint_executed"):
+        bad = copy.deepcopy(state)
+        bad["selected_scope"]["phase_c"][key] = True
+        rejects(bad, metadata, active, "unauthorized " + key)
+    for key in ("metadata_kind", "base_sha256", "output_sha256", "dll_sha256",
+                "authoritative_review_artifact_id", "published", "indexed", "runtime_armed"):
+        bad = copy.deepcopy(metadata)
+        bad[key] = "MUTATED"
+        rejects(state, bad, active, "DERIVED " + key)
+    for key in ("original_build_result_size_bytes", "original_build_result_sha256",
+                "original_build_result_status", "producer_head", "original_stage_runtime_armed"):
+        bad = copy.deepcopy(metadata)
+        bad["original_review_evidence"][key] = "MUTATED"
+        rejects(state, bad, active, "original prevalidation " + key)
+    bad = copy.deepcopy(state)
+    bad["controllers"]["runtime_active_build"] = BUILD
+    rejects(bad, metadata, active, "mixed controller")
+    bad = copy.deepcopy(state)
+    bad["selected_scope"]["diagnostic_revision"] = {"build_id": BUILD}
+    rejects(bad, metadata, active, "wrong dormant diagnostic")
+    # Fully synthetic consistent activation branch, with exact published bytes.
+    armed = copy.deepcopy(state)
+    ap = armed["selected_scope"]["phase_c"]
+    ap["toy_store_tsdiag1_runtime_armed"] = True
+    ap["toy_store_runtime_test_authorized"] = True
+    ap["toy_store_tsdiag1_runtime_activation_checkpoint_executed"] = True
+    ap["toy_store_tsdiag1_runtime_activation"] = "Current/999_S1.42AK_TSDIAG1_RUNTIME_ACTIVATION.md"
+    armed["controllers"]["runtime_active_build"] = BUILD
+    armed["selected_scope"]["diagnostic_revision"] = {
+        "build_id": BUILD, "status": "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+        "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT", "runtime_armed": True,
+        "base_build_id": "S1.42AK-BMDSFIX1", "base_profile": PARENT,
+        "base_sha256": HASH_PARENT, "profile": PROFILE, "sha256": HASH_PROFILE,
+        "build_result": "BuildSpecs/S1.42AK-TSDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json",
+    }
+    doc = " ".join((BUILD, PROFILE, HASH_PROFILE, HASH_DLL, HASH_PARENT,
+                    "PUBLISHED_ACTIVE_DIAGNOSTIC_RUNTIME_TARGET_NOT_ACCEPTED",
+                    "DIAGNOSTIC_ONLY_NEVER_ACCEPT"))
+    assert check_lifecycle_route(armed, ap, metadata, parent, BUILD, doc) == "EXACT_ORIGINAL_DIAGNOSTIC_RUNTIME_AUTHORIZED"
+    for mutate in ("wrong status", "mixed controller", "missing record", "wrong class",
+                   "wrong parent", "unauthorized test"):
+        bad = copy.deepcopy(armed)
+        bp = bad["selected_scope"]["phase_c"]
+        d = bad["selected_scope"]["diagnostic_revision"]
+        if mutate == "wrong status":
+            d["status"] = "ACCEPTED"
+        elif mutate == "mixed controller":
+            bad["controllers"]["runtime_active_build"] = "S1.42AK-BMDSFIX1"
+        elif mutate == "missing record":
+            bp["toy_store_tsdiag1_runtime_activation"] = "Current/UNKNOWN.md"
+        elif mutate == "wrong class":
+            d["classification"] = "ACCEPTED"
+        elif mutate == "wrong parent":
+            d["base_sha256"] = "0" * 64
+        else:
+            bp["toy_store_runtime_test_authorized"] = False
+        rejects(bad, metadata, BUILD, "active " + mutate, doc)
+    print("PASS: 24 synthetic negative mutations; inactive and exactly coherent activation-stage fixtures")
+
+
 def validate():
     state = read_json("Current/CURRENT_STATE.json")
     p = state["selected_scope"]["phase_c"]
@@ -44,9 +207,7 @@ def validate():
             p["residual_owner_hard_block"] == 12, "residual changed")
     require(p["toy_store_tsdiag1_publication_authorized"] is True and
             p["toy_store_tsdiag1_publication_completed"] is True and
-            p["toy_store_tsdiag1_built"] is False and
-            p["toy_store_tsdiag1_runtime_armed"] is False and
-            p["toy_store_runtime_test_authorized"] is False, "publication/activation boundary")
+            p["toy_store_tsdiag1_built"] is False, "original publication boundary")
     require(p["toy_store_tsdiag1_publication_profile"] == PROFILE and
             p["toy_store_tsdiag1_publication_profile_sha256"] == HASH_PROFILE and
             p["toy_store_tsdiag1_publication_pr"] == 399 and
@@ -69,8 +230,14 @@ def validate():
     build = read_json("BuildSpecs/current.json")
     require(build["enabled"] is False and
             build["build_id"] == "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS" and
-            (ROOT / "RuntimeInbox/ACTIVE_BUILD.txt").read_text().strip() == "S1.42AK-BMDSFIX1",
-            "live build/runtime controller drift")
+            state["controllers"]["build_enabled"] is False,
+            "live build controller drift")
+    derived = read_json("BuildSpecs/S1.42AK-TSDIAG1_BUILD_EVIDENCE/BUILD_RESULT.json")
+    parent_auto = read_json("Current/AUTO_BUILD_RESULT.json")
+    active = (ROOT / "RuntimeInbox/ACTIVE_BUILD.txt").read_text(encoding="utf-8").strip()
+    route = check_lifecycle_route(state, p, derived, parent_auto, active)
+    if "--self-test" in sys.argv[1:]:
+        route_self_test(state, derived, parent_auto)
     require(not (ROOT / ".github/workflows/one-shot-tsdiag1-publication.yml").exists(),
             "one-shot transport workflow must not persist")
     profile_data = (ROOT / PROFILE).read_bytes()
@@ -123,7 +290,7 @@ def validate():
         require(result.get("sha256") == HASH_PROFILE, "canonical index SHA mismatch")
     else:
         require(not result_file.exists(), "unindexed stage must not claim canonical index result")
-    print("PASS: TSDIAG1 stage-aware original-byte publication integrity / no unauthorized index or runtime")
+    print("PASS: TSDIAG1 original-byte publication/index integrity and fail-closed " + route)
 
 
 if __name__ == "__main__":

@@ -6,7 +6,6 @@ on:
       - 'AnalysisTools/validate_s142ak_scdiag1_source.py'
       - 'SourceEvidence/UniversalInteriorViability/SCDIAG1SourceStatic/**'
       - 'Current/343_S1.42AK_PHASE_C_STORAGE_COMPLEX_SCDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
-      - 'Current/CURRENT_STATE.json'
       - 'Knowledge/INTERIORS_AND_LLL.md'
       - '.github/workflows/s142ak-scdiag1-source-static.yml'
 permissions:
