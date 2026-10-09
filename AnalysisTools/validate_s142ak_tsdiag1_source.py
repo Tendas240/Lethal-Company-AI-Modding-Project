@@ -47,9 +47,49 @@ require(p["toy_store_source_implementation_authorized"] is True and
         p["toy_store_tsdiag1_runtime_armed"] is False and
         p["toy_store_runtime_test_authorized"] is False,
         "source-only stage boundaries")
-require(p["toy_store_tsdiag1_source_static_validated"] is False and
-        p["toy_store_tsdiag1_source_static_validation_pending"] is True,
-        "cannot claim PR head CI in advance")
+# Fail closed in both PR-staged and independently exact-CI-validated stages.
+if p["toy_store_tsdiag1_source_static_validated"] is True:
+    require(p["toy_store_tsdiag1_source_static_validation_pending"] is False,
+            "source validated/pending conflict")
+    require(p["toy_store_tsdiag1_source_pr"] == 392 and
+            p["toy_store_tsdiag1_source_pr_final_head"] ==
+            "332bfb2c53d3052e8af15db93b0554722ac0fce9",
+            "original PR/head provenance")
+    require(p["toy_store_tsdiag1_source_static_run"] == 37922570863 and
+            p["toy_store_tsdiag1_source_knowledge_architecture_run"] == 37922570675,
+            "original exact-head PR CI provenance")
+    require(p["toy_store_tsdiag1_source_main_integration_commit"] ==
+            "253873eda94b9e7775c7eb4ca9176ef810f56d00" and
+            p["toy_store_tsdiag1_source_main_knowledge_architecture_run"] == 37924201026,
+            "exact-main-head permanent push provenance")
+    if p.get("toy_store_tsdiag1_review_build_authorized", False):
+        recipe_path = "BuildSpecs/S1.42AK-TSDIAG1.json"
+        recipe = json.loads(read(recipe_path))
+        require(p["toy_store_tsdiag1_review_build_authorization"] ==
+                "Current/362_S1.42AK_TSDIAG1_INACTIVE_REVIEW_BUILD_AUTHORIZATION_DECISION.md" and
+                p["toy_store_tsdiag1_review_build_recipe"] == recipe_path and
+                p["toy_store_tsdiag1_review_build_plan"] ==
+                "BuildSpecs/S1.42AK-TSDIAG1_PLAN.md", "review-only decision references")
+        require(p["toy_store_tsdiag1_review_build_executed"] is False and
+                p["toy_store_tsdiag1_review_build_pass"] is False and
+                p["toy_store_tsdiag1_built"] is False, "review output falsely claimed")
+        require(recipe["enabled"] is True and recipe["review_only"] is True and
+                recipe["build_id"] == "S1.42AK-TSDIAG1" and
+                recipe["base_sha256"] == "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0" and
+                recipe["output_profile"] == "Profiles/LC V1 S1.42AK-TS1.r2z" and
+                recipe["profile_name"] == "LC V1 S1.42AK-TS1" and
+                recipe["overwrite"] is False and
+                len(recipe["local_plugin_builds"]) == 1 and
+                recipe["local_plugin_builds"][0]["archive_path"] ==
+                "BepInEx/plugins/S142AKTSDiag1/S142AKTSDiag1.dll" and
+                all(recipe[x] == [] for x in
+                    ("mod_state_changes", "mod_additions", "mod_removals",
+                     "config_patches", "file_injections")), "review recipe boundary")
+else:
+    require(p["toy_store_tsdiag1_source_static_validated"] is False and
+            p["toy_store_tsdiag1_source_static_validation_pending"] is True and
+            p.get("toy_store_tsdiag1_review_build_authorized") is not True,
+            "staged source cannot claim proof or review authorization")
 expected = {
     "toy_store_tsdiag1_build_id": "S1.42AK-TSDIAG1",
     "toy_store_tsdiag1_source_root": root,
