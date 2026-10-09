@@ -71,7 +71,7 @@ jobs:
                   assert diag['sha256'] == '6be6865a7fde205280439503680ac910401c20b997f757ffbedbddc963c704f4' and diag['base_sha256'] == '3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0'
                   assert subprocess.check_output(['git', 'hash-object', 'AnalysisTools/validate_s142ak_scdiag1_source.py'], text=True).strip() == 'db92613bae89bc183b5bba1c0caf8a740ff14b09', 'unapproved source validator change'
                   assert subprocess.check_output(['git', 'hash-object', '.github/workflows/s142ak-scdiag1-source-static.yml'], text=True).strip() == '5d4c07e17fd17e5f4f55f66cdef2f0e48b0d4926', 'unapproved source workflow change'
-                  assert subprocess.check_output(['git', 'hash-object', 'AnalysisTools/validate_s142ak_scdiag1_activation.py'], text=True).strip() == '3855f117a8fc5872183b2bb087376a7252767c98', 'unapproved activation gate change'
+                  assert subprocess.check_output(['git', 'hash-object', 'AnalysisTools/validate_s142ak_scdiag1_activation.py'], text=True).strip() == '3529e8b8ec648b7e2aeef0d2a24813669bdcb0e7', 'unapproved activation gate change'
                   assert "if: steps.runtime_stage.outputs.runtime != 'true'" in pathlib.Path('.github/workflows/s142ak-scdiag1-source-static.yml').read_text(encoding='utf-8')
                   protected = [name for name in protected if name not in (
                       'AnalysisTools/validate_s142ak_scdiag1_source.py', '.github/workflows/s142ak-scdiag1-source-static.yml', '.github/workflows/s142ak-scdiag1-build-static.yml')]

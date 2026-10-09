@@ -82,10 +82,18 @@ must(indexed[new]["sha256"]==dh and indexed[new]["size"]==18944 and
      indexed["BepInEx/plugins/S142AKBMDSFix1/S142AKBMDSFix1.dll"]["sha256"]==
      "f337da49f4a0e75bf2753e17e3abc52cdbea56ba37eddec5f1065b17f4d75a92",
      "DLL/normalizer/BMDSFIX1 frozen hashes mismatch")
-lll=[x for x in members if x["path"].lower().endswith("/lethallevelloader.dll")]
-must(len(lll)==1 and lll[0]["sha256"]==
+# LLL is a Gale/Thunderstore managed package, not a loose plugin member of
+# the .r2z user-override archive. It must NOT be invented in FILE_INDEX.
+# The exact runtime GUID/version/hash remain mandatory plugin arming guards.
+must(not any(x["path"].lower().endswith("/lethallevelloader.dll") for x in members),
+     "unexpected loose LLL DLL override in frozen diagnostic archive")
+source=(ROOT/"Patches/S142AKSCDiag1/Plugin.cs").read_text(encoding="utf-8")
+must(all(x in source for x in (
+     "imabatby.lethallevelloader", "1.7.12",
      "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c",
-     "LLL 1.7.12 identity mismatch")
+     "tendas.lethalcompany.s142abinteriorweightnormalization",
+     "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06")),
+     "exact external LLL/normalizer arming identity missing")
 with ZipFile(ROOT/profile) as z, ZipFile(ROOT/parent) as base:
     child={n:z.read(n) for n in z.namelist()}
     inherited={n:base.read(n) for n in base.namelist()}
