@@ -19,13 +19,41 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+      - name: Identify completed FXDIAG1 out-of-scope SCDIAG1 attribution
+        id: scope
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, pathlib, subprocess, os
+          state = json.loads(pathlib.Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
+          phase = state['selected_scope']['phase_c']
+          other = state['controllers']['runtime_active_build'] == 'S1.42AK-SCDIAG1'
+          if other:
+              assert phase['storage_complex_scdiag1_runtime_armed'] is True
+              assert phase['fractured_complex_fxdiag1_runtime_armed'] is False
+              assert phase['fractured_complex_fxdiag1_runtime_authorized'] is False
+              assert state['selected_scope']['diagnostic_revision']['build_id'] == 'S1.42AK-SCDIAG1'
+              # Reject any FXDIAG1 source/validator drift before skipping historical source-only work.
+              subprocess.run(['git','fetch','--no-tags','--depth=1','origin','main'], check=True)
+              subprocess.run(['git','diff','--exit-code','origin/main','HEAD','--',
+                  'Patches/S142AKFXDiag1',
+                  'AnalysisTools/validate_s142ak_fxdiag1_source.py',
+                  'SourceEvidence/UniversalInteriorViability/FXDIAG1SourceStatic',
+                  'Current/328_S1.42AK_PHASE_C_FRACTURED_COMPLEX_FXDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'],check=True)
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as f:
+              f.write('other=' + str(other).lower() + '\n')
+          PY
       - uses: actions/setup-dotnet@v4
+        if: steps.scope.outputs.other != 'true'
         with:
           dotnet-version: '8.0.x'
       - name: Test pure Fractured Complex fail-closed selection policy
+        if: steps.scope.outputs.other != 'true'
         run: dotnet run --project Patches/S142AKFXDiag1/Tests/Policy.Tests.csproj -c Release
       - name: Compile diagnostic plugin source only
+        if: steps.scope.outputs.other != 'true'
         working-directory: Patches/S142AKFXDiag1
         run: dotnet build S142AKFXDiag1.csproj -c Release
       - name: Verify one-postfix identity and unchanged controllers
+        if: steps.scope.outputs.other != 'true'
         run: python AnalysisTools/validate_s142ak_fxdiag1_source.py
