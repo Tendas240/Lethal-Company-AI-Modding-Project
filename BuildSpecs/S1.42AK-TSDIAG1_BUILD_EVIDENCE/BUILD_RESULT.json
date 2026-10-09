@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "metadata_kind": "DERIVED_RUNTIME_BUILD_RESULT",
+  "status": "DERIVED_RUNTIME_METADATA_ORIGINAL_FROZEN_REVIEW_PUBLISHED_INDEXED_NO_REBUILD",
+  "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+  "build_id": "S1.42AK-TSDIAG1",
+  "source_main_commit": "4056ccdfd2ec42b9b3378a438d4f996f8d78e828",
+  "build_head": "24105017a0d98ccc05b878c809f84f93f4e87e37",
+  "provenance": "DERIVED only: independently rehashed original frozen inactive review artifact plus later independently verified exact-byte publication and canonical index; original 915-byte prevalidation report is unchanged. No recompilation, archive construction, repack, replacement, upload or runtime activation.",
+  "original_review_evidence": {
+    "artifact_id": 11615262607,
+    "producer_run_id": 37929246619,
+    "producer_run_number": 2,
+    "producer_head": "24105017a0d98ccc05b878c809f84f93f4e87e37",
+    "outer_zip_sha256": "010b84c1ffaea1d5cda2e14cdb9580c049da2cd1790e929491e44d13e2c4f39f",
+    "original_build_result_member": "Evidence/BUILD_RESULT.json",
+    "original_build_result_size_bytes": 915,
+    "original_build_result_sha256": "9a34b7f1d7b5dd910913e1a39ed033de98f76d8542065f244e64e6f7f400235a",
+    "original_build_result_status": "COMPILE_INPUT_PRESENT_ARCHIVE_AWAITS_INDEPENDENT_VALIDATION",
+    "independent_review_status": "PASS_INACTIVE_REVIEW_BUILD_INDEPENDENTLY_REHASHED",
+    "original_stage_published": false,
+    "original_stage_indexed": false,
+    "original_stage_runtime_armed": false
+  },
+  "authoritative_review_artifact_id": 11615262607,
+  "authoritative_review_artifact_zip_sha256": "010b84c1ffaea1d5cda2e14cdb9580c049da2cd1790e929491e44d13e2c4f39f",
+  "parent_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "review_profile": "Profiles/LC V1 S1.42AK-TS1.r2z",
+  "profile_sha256": "d6bf5e5c185945e6aad85ec0dc1c4cda5628ff7d9335b93f53f7097c5a19b57e",
+  "dll_member": "BepInEx/plugins/S142AKTSDiag1/S142AKTSDiag1.dll",
+  "dll_sha256": "fff3b148fca3bc0bf6c175f38060a432a2992e7d6de4121df9a2556bb82ca201",
+  "parent_members": 337,
+  "review_members": 338,
+  "profile_name": "LC V1 S1.42AK-TS1",
+  "base_build_id": "S1.42AK-BMDSFIX1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "output_profile": "Profiles/LC V1 S1.42AK-TS1.r2z",
+  "output_sha256": "d6bf5e5c185945e6aad85ec0dc1c4cda5628ff7d9335b93f53f7097c5a19b57e",
+  "zip_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKTSDiag1/S142AKTSDiag1.dll"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "snapshot_dir": "ProfileSources/S1.42AK-TSDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "published": true,
+  "indexed": true,
+  "runtime_armed": false,
+  "runtime_proof": false,
+  "lineage_sources": {
+    "original_provenance": "Current/376_S1.42AK_TSDIAG1_FROZEN_ORIGINAL_PROVENANCE_AND_CI_STAGE_PREFLIGHT.md",
+    "review_checkpoint": "BuildSpecs/S1.42AK-TSDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json",
+    "exact_byte_publication": "BuildSpecs/S1.42AK-TSDIAG1_BUILD_EVIDENCE/PUBLICATION_VERIFICATION.md",
+    "canonical_hashes": "Profiles/EXPECTED_HASHES.json",
+    "canonical_index": "ProfileSources/S1.42AK-TSDIAG1/PROFILE_INDEX_RESULT.json",
+    "canonical_file_index": "ProfileSources/S1.42AK-TSDIAG1/FILE_INDEX.json",
+    "parent_auto_build_result": "Current/AUTO_BUILD_RESULT.json"
+  }
+}
