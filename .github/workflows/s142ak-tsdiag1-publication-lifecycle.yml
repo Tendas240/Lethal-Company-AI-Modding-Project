@@ -1,0 +1,35 @@
+name: S1.42AK TSDIAG1 original-byte publication lifecycle guard
+
+on:
+  pull_request:
+    paths:
+      - 'Current/CURRENT_STATE.json'
+      - 'Current/368_S1.42AK_TSDIAG1_PUBLICATION_INTEGRATION_RECONCILIATION.md'
+      - 'AnalysisTools/validate_s142ak_tsdiag1_publication.py'
+      - 'Profiles/LC V1 S1.42AK-TS1.r2z'
+      - 'Profiles/EXPECTED_HASHES.json'
+      - 'ProfileSources/S1.42AK-TSDIAG1/**'
+      - '.github/workflows/s142ak-tsdiag1-publication-lifecycle.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-original-publication:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Assert exact frozen original profile, 337-to-338 byte diff and stage-aware canonical index boundary
+        run: python AnalysisTools/validate_s142ak_tsdiag1_publication.py
+      - name: Re-run permanent Gale Windows path guard without building
+        run: |
+          python RepositoryTools/gale_profile_path_length_guard.py --self-test
+          python RepositoryTools/gale_profile_path_length_guard.py --spec BuildSpecs/S1.42AK-TSDIAG1.json
