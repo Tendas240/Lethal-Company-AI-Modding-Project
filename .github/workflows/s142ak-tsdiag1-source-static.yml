@@ -6,7 +6,6 @@ on:
       - 'AnalysisTools/validate_s142ak_tsdiag1_source.py'
       - 'SourceEvidence/UniversalInteriorViability/TSDIAG1SourceStatic/**'
       - 'Current/361_S1.42AK_PHASE_C_TOY_STORE_TSDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
-      - 'Current/CURRENT_STATE.json'
       - 'Knowledge/INTERIORS_AND_LLL.md'
       - '.github/workflows/s142ak-tsdiag1-source-static.yml'
 permissions:
