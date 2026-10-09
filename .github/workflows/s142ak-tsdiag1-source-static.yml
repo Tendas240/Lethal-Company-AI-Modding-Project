@@ -1,0 +1,31 @@
+name: S1.42AK TSDIAG1 source and pure static gate
+on:
+  pull_request:
+    paths:
+      - 'Patches/S142AKTSDiag1/**'
+      - 'AnalysisTools/validate_s142ak_tsdiag1_source.py'
+      - 'SourceEvidence/UniversalInteriorViability/TSDIAG1SourceStatic/**'
+      - 'Current/361_S1.42AK_PHASE_C_TOY_STORE_TSDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
+      - 'Current/CURRENT_STATE.json'
+      - 'Knowledge/INTERIORS_AND_LLL.md'
+      - '.github/workflows/s142ak-tsdiag1-source-static.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Test pure Toy Store fail-closed selection policy
+        run: dotnet run --project Patches/S142AKTSDiag1/Tests/Policy.Tests.csproj -c Release
+      - name: Compile diagnostic source only (no profile construction)
+        working-directory: Patches/S142AKTSDiag1
+        run: dotnet build S142AKTSDiag1.csproj -c Release
+      - name: Validate sole postfix and unchanged live controllers
+        run: python AnalysisTools/validate_s142ak_tsdiag1_source.py
