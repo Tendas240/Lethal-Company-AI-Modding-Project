@@ -191,7 +191,7 @@ def route_self_test(state, metadata, parent):
         else:
             bp["toy_store_runtime_test_authorized"] = False
         rejects(bad, metadata, BUILD, "active " + mutate, doc)
-    print("PASS: 25+ synthetic negative mutations; inactive and exactly coherent activation-stage fixtures")
+    print("PASS: 24 synthetic negative mutations; inactive and exactly coherent activation-stage fixtures")
 
 
 def validate():
