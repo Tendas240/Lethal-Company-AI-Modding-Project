@@ -49,12 +49,20 @@ jobs:
                   'BuildSpecs/S1.42AK-TSDIAG1_PLAN.md',
                   'BuildSystem/tsdiag1_review_build.py',
                   'AnalysisTools/validate_s142ak_tsdiag1_build.py',
-                  'AnalysisTools/validate_s142ak_tsdiag1_source.py',
-                  '.github/workflows/s142ak-tsdiag1-build-static.yml',
                   '.github/workflows/s142ak-tsdiag1-source-static.yml',
                   'SourceEvidence/UniversalInteriorViability/TSDIAG1SourceStatic/FINDINGS.md',
                   'RepositoryTools/gale_profile_path_length_guard.py',
               ]
+              # Whitelist only the exact lifecycle-aware source-validator stage transition.
+              # The original isolated review builder, build validator and source bytes remain hash-pinned.
+              original_validator = subprocess.check_output(
+                  ['git', 'show', f'{head}:AnalysisTools/validate_s142ak_tsdiag1_source.py'],
+                  text=True)
+              current_validator = pathlib.Path('AnalysisTools/validate_s142ak_tsdiag1_source.py').read_text(encoding='utf-8')
+              old_stage = "        require(p[\"toy_store_tsdiag1_review_build_executed\"] is False and\n                p[\"toy_store_tsdiag1_review_build_pass\"] is False and\n                p[\"toy_store_tsdiag1_built\"] is False, \"review output falsely claimed\")\n"
+              new_stage = "        if p[\"toy_store_tsdiag1_review_build_executed\"] is True:\n            evidence = json.loads(read(\"BuildSpecs/S1.42AK-TSDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json\"))\n            require(p[\"toy_store_tsdiag1_review_build_pass\"] is True and\n                    p[\"toy_store_tsdiag1_review_build_pr_final_head\"] ==\n                    \"27101277280a6d243c904a59268ab2f5656f234e\" and\n                    p[\"toy_store_tsdiag1_review_build_main_integration_commit\"] ==\n                    \"d0ab1ad5458478f9e21289f60c65f4d66cb74bb6\" and\n                    p[\"toy_store_tsdiag1_review_build_main_knowledge_architecture_run\"] == 37930226519 and\n                    evidence[\"build_head\"] == \"24105017a0d98ccc05b878c809f84f93f4e87e37\" and\n                    evidence[\"artifact_id\"] == 11615262607 and\n                    evidence[\"profile_sha256\"] == \"d6bf5e5c185945e6aad85ec0dc1c4cda5628ff7d9335b93f53f7097c5a19b57e\" and\n                    evidence[\"dll_sha256\"] == \"fff3b148fca3bc0bf6c175f38060a432a2992e7d6de4121df9a2556bb82ca201\" and\n                    evidence[\"independent_artifact_rehash_match\"] is True,\n                    \"main-integrated frozen review provenance\")\n        else:\n            require(p[\"toy_store_tsdiag1_review_build_pass\"] is False,\n                    \"unintegrated review must not claim a pass\")\n        require(p[\"toy_store_tsdiag1_built\"] is False, \"no published diagnostic candidate\")\n"
+              assert original_validator.count(old_stage) == 1
+              assert current_validator == original_validator.replace(old_stage, new_stage, 1), 'Unexpected source-validator drift'
               subprocess.run(['git', 'diff', '--exit-code', head, 'HEAD', '--', *protected], check=True)
               current = json.loads(pathlib.Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
               phase = current['selected_scope']['phase_c']
