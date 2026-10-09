@@ -54,10 +54,10 @@ def check_pins(found: dict[str, str]) -> None:
 def check_workflows(workflows: dict[str, str]) -> None:
     for path, required in SOURCE_WORKFLOWS.items():
         body = workflows[path]
-        demand("'Current/CURRENT_STATE.json'" not in body, "volatile source trigger: " + path)
+        demand("      - 'Current/CURRENT_STATE.json'" not in body, "volatile source trigger: " + path)
         for token in (*required, path):
             demand("'" + token + "'" in body, "missing source path trigger: " + token)
-        demand("ref: \${{ github.event.pull_request.head.sha }}" in body,
+        demand("ref: ${{ github.event.pull_request.head.sha }}" in body,
                "source checkout not exact PR head: " + path)
         demand("dotnet run --project" in body and "dotnet build" in body and
                "python AnalysisTools/validate_s142ak_" in body,
