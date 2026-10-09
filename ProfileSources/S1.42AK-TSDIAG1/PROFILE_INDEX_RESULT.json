@@ -1,0 +1,13 @@
+{
+  "build_id": "S1.42AK-TSDIAG1",
+  "profile_path": "Profiles/LC V1 S1.42AK-TS1.r2z",
+  "profile_name": "LC V1 S1.42AK-TS1",
+  "sha256": "d6bf5e5c185945e6aad85ec0dc1c4cda5628ff7d9335b93f53f7097c5a19b57e",
+  "zip_members": 338,
+  "snapshot_dir": "ProfileSources/S1.42AK-TSDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "build_id_resolution": "EXPECTED_HASHES"
+}
