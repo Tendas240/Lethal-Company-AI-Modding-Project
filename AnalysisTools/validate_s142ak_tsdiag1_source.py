@@ -70,9 +70,24 @@ if p["toy_store_tsdiag1_source_static_validated"] is True:
                 p["toy_store_tsdiag1_review_build_recipe"] == recipe_path and
                 p["toy_store_tsdiag1_review_build_plan"] ==
                 "BuildSpecs/S1.42AK-TSDIAG1_PLAN.md", "review-only decision references")
-        require(p["toy_store_tsdiag1_review_build_executed"] is False and
-                p["toy_store_tsdiag1_review_build_pass"] is False and
-                p["toy_store_tsdiag1_built"] is False, "review output falsely claimed")
+        if p["toy_store_tsdiag1_review_build_executed"] is True:
+            evidence = json.loads(read("BuildSpecs/S1.42AK-TSDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json"))
+            require(p["toy_store_tsdiag1_review_build_pass"] is True and
+                    p["toy_store_tsdiag1_review_build_pr_final_head"] ==
+                    "27101277280a6d243c904a59268ab2f5656f234e" and
+                    p["toy_store_tsdiag1_review_build_main_integration_commit"] ==
+                    "d0ab1ad5458478f9e21289f60c65f4d66cb74bb6" and
+                    p["toy_store_tsdiag1_review_build_main_knowledge_architecture_run"] == 37930226519 and
+                    evidence["build_head"] == "24105017a0d98ccc05b878c809f84f93f4e87e37" and
+                    evidence["artifact_id"] == 11615262607 and
+                    evidence["profile_sha256"] == "d6bf5e5c185945e6aad85ec0dc1c4cda5628ff7d9335b93f53f7097c5a19b57e" and
+                    evidence["dll_sha256"] == "fff3b148fca3bc0bf6c175f38060a432a2992e7d6de4121df9a2556bb82ca201" and
+                    evidence["independent_artifact_rehash_match"] is True,
+                    "main-integrated frozen review provenance")
+        else:
+            require(p["toy_store_tsdiag1_review_build_pass"] is False,
+                    "unintegrated review must not claim a pass")
+        require(p["toy_store_tsdiag1_built"] is False, "no published diagnostic candidate")
         require(recipe["enabled"] is True and recipe["review_only"] is True and
                 recipe["build_id"] == "S1.42AK-TSDIAG1" and
                 recipe["base_sha256"] == "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0" and
