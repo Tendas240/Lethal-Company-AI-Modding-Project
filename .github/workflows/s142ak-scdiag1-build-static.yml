@@ -75,6 +75,28 @@ jobs:
                   assert "if: steps.runtime_stage.outputs.runtime != 'true'" in pathlib.Path('.github/workflows/s142ak-scdiag1-source-static.yml').read_text(encoding='utf-8')
                   protected = [name for name in protected if name not in (
                       'AnalysisTools/validate_s142ak_scdiag1_source.py', '.github/workflows/s142ak-scdiag1-source-static.yml', '.github/workflows/s142ak-scdiag1-build-static.yml')]
+              elif phase.get('storage_complex_target_generation_status') == 'PASS_DIAGNOSTIC_GENERATED_STORAGECOMPLEX_GENERATION_MATERIALIZATION_PROOF_NATURAL_SELECTION_NOT_PROVEN':
+                  # This is a completed, already-ingested runtime proof, not a new
+                  # review or activation. Permit ONLY the pinned source gate's
+                  # narrowly stage-aware evidence check and this guard's change.
+                  # Freeze all C# source, recipes, packaging, and review builder bytes.
+                  assert activation is False
+                  assert phase.get('storage_complex_runtime_test_authorized') is False
+                  assert phase.get('storage_complex_scdiag1_runtime_attempts_consumed') == 1
+                  assert phase.get('storage_complex_scdiag1_runtime_attempts_authorized') == 1
+                  assert phase.get('storage_complex_scdiag1_runtime_status') == 'RUNTIME_COMPLETE_PASS_DIAGNOSTIC_GENERATION_MATERIALIZATION_PROOF_NEVER_ACCEPT'
+                  assert phase.get('storage_complex_scdiag1_runtime_evidence') == 'RuntimeEvidence/S1.42AK-SCDIAG1/20261009T093411Z/'
+                  assert phase.get('storage_complex_scdiag1_runtime_log_sha256') == '39dfe45721befd6e256a341497100534c45d37868de14dc29ba6a58c08ce207e'
+                  assert state_now['controllers']['runtime_active_build'] == 'S1.42AK-BMDSFIX1'
+                  assert pathlib.Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-BMDSFIX1'
+                  assert state_now['selected_scope']['diagnostic_revision']['runtime_armed'] is False
+                  assert subprocess.check_output(['git', 'hash-object', 'AnalysisTools/validate_s142ak_scdiag1_source.py'], text=True).strip() == '8606dd816185a6b0872d6e2288d133c29db8312c', 'unreviewed completed-runtime source validator drift'
+                  assert subprocess.check_output(['git', 'hash-object', '.github/workflows/s142ak-scdiag1-source-static.yml'], text=True).strip() == '5d4c07e17fd17e5f4f55f66cdef2f0e48b0d4926', 'changed original source workflow'
+                  assert subprocess.check_output(['git', 'hash-object', 'AnalysisTools/validate_s142ak_scdiag1_activation.py'], text=True).strip() == '3529e8b8ec648b7e2aeef0d2a24813669bdcb0e7', 'changed original activation gate'
+                  assert "if: steps.frozen.outputs.exists != 'true'" in pathlib.Path('.github/workflows/s142ak-scdiag1-build-static.yml').read_text(encoding='utf-8')
+                  assert pathlib.Path('RuntimeEvidence/S1.42AK-SCDIAG1/20261009T093411Z/INDEX.json').is_file()
+                  protected = [name for name in protected if name not in (
+                      'AnalysisTools/validate_s142ak_scdiag1_source.py', '.github/workflows/s142ak-scdiag1-build-static.yml')]
               subprocess.run(['git', 'diff', '--exit-code', head, 'HEAD', '--', *protected], check=True)
               print('Frozen SCDIAG1 review bytes preserved; no recompilation or re-upload')
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
