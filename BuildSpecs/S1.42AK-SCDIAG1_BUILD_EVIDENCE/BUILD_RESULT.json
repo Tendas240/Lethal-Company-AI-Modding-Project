@@ -1,0 +1,55 @@
+{
+  "status": "PASS_INACTIVE_REVIEW_BUILD_INDEPENDENTLY_REHASHED",
+  "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+  "build_id": "S1.42AK-SCDIAG1",
+  "source_main_commit": "6faf075cf0a5786ca4aee0bbfa3b3f5202aa6af4",
+  "build_head": "3e1680298b794d392a6938c9b734ecb649b2eea1",
+  "provenance": "Runtime metadata derived from original frozen independent review checkpoint and published/indexed original bytes; no compilation, archive reconstruction or new artifact.",
+  "authoritative_review_artifact_id": 11581745624,
+  "authoritative_review_artifact_zip_sha256": "9971c22f162ef61177b57f2e350bba5289f5fa09dd78cff65ccd82fcadb0d730",
+  "parent_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "review_profile": "Profiles/LC V1 S1.42AK-SCD1.r2z",
+  "profile_sha256": "6be6865a7fde205280439503680ac910401c20b997f757ffbedbddc963c704f4",
+  "dll_member": "BepInEx/plugins/S142AKSCDiag1/S142AKSCDiag1.dll",
+  "dll_sha256": "2bd49852973c04c89dceea5b8dc9e75b051bc9a95c16850af08fb37dc3113131",
+  "parent_members": 337,
+  "review_members": 338,
+  "profile_name": "LC V1 S1.42AK-SCD1",
+  "base_build_id": "S1.42AK-BMDSFIX1",
+  "base_profile": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+  "base_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+  "output_profile": "Profiles/LC V1 S1.42AK-SCD1.r2z",
+  "output_sha256": "6be6865a7fde205280439503680ac910401c20b997f757ffbedbddc963c704f4",
+  "zip_members": 338,
+  "changed_existing_members": [
+    "export.r2x"
+  ],
+  "added_members": [
+    "BepInEx/plugins/S142AKSCDiag1/S142AKSCDiag1.dll"
+  ],
+  "removed_members": [],
+  "package_changes": 0,
+  "config_changes": 0,
+  "snapshot_dir": "ProfileSources/S1.42AK-SCDIAG1",
+  "snapshot": {
+    "entries": 338,
+    "text_entries": 331
+  },
+  "published": true,
+  "indexed": true,
+  "runtime_armed": true,
+  "runtime_proof": false,
+  "runtime_target_metadata": {
+    "activation_record": "Current/355_S1.42AK_SCDIAG1_RUNTIME_ACTIVATION.md",
+    "classification": "DIAGNOSTIC_ONLY_NEVER_ACCEPT",
+    "authority_parent_build_id": "S1.42AK-BMDSFIX1",
+    "authority_parent_runtime_status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+    "authority_parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
+    "runtime_controller_target": "S1.42AK-SCDIAG1",
+    "runtime_attempts_authorized": 1,
+    "runtime_target_moon": "Offense",
+    "runtime_target_dungeon_name": "Storage Complex",
+    "runtime_target_flow": "StorageComplex"
+  }
+}
