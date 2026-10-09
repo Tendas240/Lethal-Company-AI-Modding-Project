@@ -121,5 +121,10 @@
     "build_id": "S1.42AK-SCDIAG1",
     "sha256": "6be6865a7fde205280439503680ac910401c20b997f757ffbedbddc963c704f4",
     "note": "Inactive exact-original-byte Storage Complex / StorageComplex diagnostic profile over immutable S1.42AK-BMDSFIX1; published and main-integrated, with readable static snapshot already at ProfileSources/S1.42AK-SCDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT, not a gameplay base; mapping/indexing does not Gale-import, runtime-arm, run, test or accept it. Separate passive selector-free BMDSFIX1 DeepSewersFlow proof remains outstanding."
+  },
+  "Profiles/LC V1 S1.42AK-TS1.r2z": {
+    "build_id": "S1.42AK-TSDIAG1",
+    "sha256": "d6bf5e5c185945e6aad85ec0dc1c4cda5628ff7d9335b93f53f7097c5a19b57e",
+    "note": "Inactive exact-original-byte Toy Store / ToystoreFlow diagnostic over immutable S1.42AK-BMDSFIX1; published and main-integrated, with readable static snapshot already at ProfileSources/S1.42AK-TSDIAG1/. DIAGNOSTIC ONLY / NEVER ACCEPT, not a gameplay base; mapping/indexing does not Gale-import, runtime-arm, run, test or accept it. Separate passive selector-free BMDSFIX1 DeepSewersFlow proof remains outstanding."
   }
 }
