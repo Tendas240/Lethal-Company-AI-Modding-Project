@@ -165,8 +165,8 @@ def main() -> None:
     require(current_state["active_candidate"]["sha256"] == PARENT_SHA, "Active candidate profile hash drift")
     require(current_state["runtime_test_outstanding"] is True, "BMDSFIX1 regular runtime gate must remain outstanding")
     phase = current_state["selected_scope"]["phase_c"]
-    require(phase["storage_complex_tsdiag1_source_static_validated"] is True, "TSDIAG1 source/static integration missing")
-    require(phase["storage_complex_tsdiag1_built"] is False, "TSDIAG1 canonical built flag must remain false")
+    require(phase["toy_store_tsdiag1_source_static_validated"] is True, "TSDIAG1 source/static integration missing")
+    require(phase["toy_store_tsdiag1_built"] is False, "TSDIAG1 canonical built flag must remain false")
     require(phase["toy_store_runtime_test_authorized"] is False, "TSDIAG1 runtime must remain unauthorized")
     require(phase["toy_store_tsdiag1_review_build_authorized"] is True and
             phase["toy_store_tsdiag1_review_build_executed"] is False and
