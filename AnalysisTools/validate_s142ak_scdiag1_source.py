@@ -107,8 +107,51 @@ for name, value in {
     "storage_complex_scdiag1_parent_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
 }.items():
     require(p[name] == value, "frozen independent identity drift: " + name)
-require(p["storage_complex_target_generation_status"] == "STILL_NO_TRUSTED_ACTUAL_GENERATION_PROOF",
-        "unearned Storage Complex generation proof")
+# Fail closed across both lifecycle stages. The original no-proof requirement
+# remains binding until a single canonical, ingested, exact-byte SCDIAG1 run
+# is reconciled, and a completed proof must not reopen runtime authorization.
+completed_proof = p["storage_complex_target_generation_status"] == (
+    "PASS_DIAGNOSTIC_GENERATED_STORAGECOMPLEX_GENERATION_MATERIALIZATION_PROOF_NATURAL_SELECTION_NOT_PROVEN"
+)
+if completed_proof:
+    require(runtime_stage is False and p["storage_complex_runtime_test_authorized"] is False,
+            "completed SCDIAG1 cannot stay armed or authorize another runtime")
+    require(p["storage_complex_scdiag1_runtime_status"] ==
+            "RUNTIME_COMPLETE_PASS_DIAGNOSTIC_GENERATION_MATERIALIZATION_PROOF_NEVER_ACCEPT",
+            "completed proof status/classification drift")
+    require(p["storage_complex_scdiag1_runtime_attempts_consumed"] == 1 and
+            p["storage_complex_scdiag1_runtime_attempts_authorized"] == 1,
+            "exactly one diagnostic attempt must be consumed")
+    evidence = "RuntimeEvidence/S1.42AK-SCDIAG1/20261009T093411Z/"
+    require(p["storage_complex_scdiag1_runtime_reconciliation"] ==
+            "Current/357_S1.42AK_SCDIAG1_STORAGE_COMPLEX_RUNTIME_EVIDENCE_RECONCILIATION.md" and
+            p["storage_complex_scdiag1_runtime_evidence"] == evidence and
+            p["storage_complex_scdiag1_runtime_index"] == evidence + "INDEX.json",
+            "completed proof not bound to canonical reconciliation and evidence")
+    index = json.loads(read(evidence + "INDEX.json"))
+    expected_hash = "39dfe45721befd6e256a341497100534c45d37868de14dc29ba6a58c08ce207e"
+    require(index["build_id"] == "S1.42AK-SCDIAG1" and
+            len(index["files"]) == 1 and index["files"][0]["name"] == "LogOutput.log" and
+            index["files"][0]["sha256"] == expected_hash and
+            p["storage_complex_scdiag1_runtime_log_sha256"] == expected_hash,
+            "completed proof has inconsistent exact original log provenance")
+    require(p["storage_complex_scdiag1_runtime_proof_status"] ==
+            "PASS_DIAGNOSTIC_GENERATED_STORAGE_COMPLEX_STORAGECOMPLEX_GENERATION_MATERIALIZATION" and
+            p["storage_complex_scdiag1_runtime_seed"] == 75941614 and
+            p["storage_complex_scdiag1_runtime_pathfinding_logical_connections"] == 4 and
+            p["storage_complex_scdiag1_runtime_refused_to_arm_count"] == 0 and
+            p["storage_complex_scdiag1_runtime_selection_refusal_count"] == 0 and
+            p["storage_complex_scdiag1_runtime_bmdsfix1_applied_count"] == 0,
+            "completed proof witness markers incomplete or invalid")
+    require(p["residual_no_trusted_actual_generation_proof"] == 22 and
+            p["residual_viable_equal_100"] == 10 and
+            p["residual_owner_hard_block"] == 12,
+            "reconciled proof-gap count mismatch")
+    require(state["selected_scope"]["diagnostic_revision"]["runtime_armed"] is False,
+            "completed diagnostic still armed in canonical state")
+else:
+    require(p["storage_complex_target_generation_status"] == "STILL_NO_TRUSTED_ACTUAL_GENERATION_PROOF",
+            "unearned Storage Complex generation proof")
 require(build["enabled"] is False and build["build_id"] == "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS", "live build controller armed")
 require(build["base_sha256"] == "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0",
         "guarded parent hash changed")
