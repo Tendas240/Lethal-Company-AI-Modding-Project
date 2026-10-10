@@ -123,10 +123,20 @@ def check_lifecycle_route(state, p, metadata, parent, active, activation_text=No
 
 def route_self_test(state, metadata, parent):
     """Pure synthetic mutations: NEVER edit current runtime controllers on disk."""
-    p = state["selected_scope"]["phase_c"]
+    # validate() already checks the actual on-disk runtime stage. The negative
+    # matrix must not inherit that stage: use a coherent, isolated inactive fixture
+    # regardless of whether the live repository is inactive or TSDIAG1-active.
+    inactive = copy.deepcopy(state)
+    ip = inactive["selected_scope"]["phase_c"]
+    for flag in ("toy_store_tsdiag1_runtime_armed", "toy_store_runtime_test_authorized",
+                 "toy_store_tsdiag1_runtime_activation_checkpoint_executed"):
+        ip[flag] = False
+    inactive["controllers"]["runtime_active_build"] = "S1.42AK-BMDSFIX1"
+    inactive["selected_scope"]["diagnostic_revision"] = {
+        "build_id": "S1.42AK-SCDIAG1", "runtime_armed": False,
+    }
     active = "S1.42AK-BMDSFIX1"
-    proof = read_json("BuildSpecs/S1.42AK-TSDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json")
-    assert check_lifecycle_route(state, p, metadata, parent, active) == "INACTIVE_ORIGINAL_PUBLICATION_INDEXED"
+    assert check_lifecycle_route(inactive, ip, metadata, parent, active) == "INACTIVE_ORIGINAL_PUBLICATION_INDEXED"
     def rejects(s, m, a, note, text=None):
         try:
             check_lifecycle_route(s, s["selected_scope"]["phase_c"], m, parent, a, text)
@@ -135,27 +145,27 @@ def route_self_test(state, metadata, parent):
         raise AssertionError("negative mutation unexpectedly accepted: " + note)
     for key in ("toy_store_tsdiag1_runtime_armed", "toy_store_runtime_test_authorized",
                 "toy_store_tsdiag1_runtime_activation_checkpoint_executed"):
-        bad = copy.deepcopy(state)
+        bad = copy.deepcopy(inactive)
         bad["selected_scope"]["phase_c"][key] = True
         rejects(bad, metadata, active, "unauthorized " + key)
     for key in ("metadata_kind", "base_sha256", "output_sha256", "dll_sha256",
                 "authoritative_review_artifact_id", "published", "indexed", "runtime_armed"):
         bad = copy.deepcopy(metadata)
         bad[key] = "MUTATED"
-        rejects(state, bad, active, "DERIVED " + key)
+        rejects(inactive, bad, active, "DERIVED " + key)
     for key in ("original_build_result_size_bytes", "original_build_result_sha256",
                 "original_build_result_status", "producer_head", "original_stage_runtime_armed"):
         bad = copy.deepcopy(metadata)
         bad["original_review_evidence"][key] = "MUTATED"
-        rejects(state, bad, active, "original prevalidation " + key)
-    bad = copy.deepcopy(state)
+        rejects(inactive, bad, active, "original prevalidation " + key)
+    bad = copy.deepcopy(inactive)
     bad["controllers"]["runtime_active_build"] = BUILD
     rejects(bad, metadata, active, "mixed controller")
-    bad = copy.deepcopy(state)
+    bad = copy.deepcopy(inactive)
     bad["selected_scope"]["diagnostic_revision"] = {"build_id": BUILD}
     rejects(bad, metadata, active, "wrong dormant diagnostic")
     # Fully synthetic consistent activation branch, with exact published bytes.
-    armed = copy.deepcopy(state)
+    armed = copy.deepcopy(inactive)
     ap = armed["selected_scope"]["phase_c"]
     ap["toy_store_tsdiag1_runtime_armed"] = True
     ap["toy_store_runtime_test_authorized"] = True
