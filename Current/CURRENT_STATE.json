@@ -2200,7 +2200,8 @@
       "target_moon": "Offense",
       "target_dungeon_name": "Toy Store",
       "target_flow_asset": "ToystoreFlow",
-      "target_rarity": 100
+      "target_rarity": 100,
+      "static_evidence": "BuildSpecs/S1.42AK-TSDIAG1_BUILD_EVIDENCE/REVIEW_BUILD_CHECKPOINT.json"
     },
     "diagnostic_runtime_finding": "Current/357_S1.42AK_SCDIAG1_STORAGE_COMPLEX_RUNTIME_EVIDENCE_RECONCILIATION.md",
     "bmdsfix1_source_repair": {
