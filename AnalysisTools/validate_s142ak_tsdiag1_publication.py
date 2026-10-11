@@ -79,6 +79,73 @@ def check_lifecycle_route(state, p, metadata, parent, active, activation_text=No
         p["toy_store_runtime_test_authorized"],
         p["toy_store_tsdiag1_runtime_activation_checkpoint_executed"],
     )
+    # One-shot completed diagnostic: activation-executed history stays true while
+    # the two live authorization flags and runtime route return to BMDSFIX1.
+    complete_stage = runtime_flags == (False, False, True) and \
+        state["selected_scope"]["diagnostic_revision"].get("build_id") == BUILD
+    if complete_stage:
+        diag = state["selected_scope"]["diagnostic_revision"]
+        require(active == controls["runtime_active_build"] == "S1.42AK-BMDSFIX1" and
+                parent["build_id"] == "S1.42AK-BMDSFIX1" and
+                diag["status"] == "PUBLISHED_DIAGNOSTIC_RUNTIME_COMPLETE_PASS_NOT_ACCEPTED" and
+                diag["classification"] == "DIAGNOSTIC_ONLY_NEVER_ACCEPT" and
+                diag["runtime_armed"] is False and
+                diag["base_build_id"] == "S1.42AK-BMDSFIX1" and
+                diag["base_profile"] == PARENT and diag["base_sha256"] == HASH_PARENT and
+                diag["profile"] == PROFILE and diag["sha256"] == HASH_PROFILE and
+                diag["runtime_validation_status"] ==
+                "RUNTIME_COMPLETE_PASS_DIAGNOSTIC_GENERATION_MATERIALIZATION_NEVER_ACCEPT",
+                "completed original-byte diagnostic state/controller mismatch")
+        root = "RuntimeEvidence/S1.42AK-TSDIAG1/20261011T231328Z/"
+        record = "Current/393_S1.42AK_TSDIAG1_TOY_STORE_RUNTIME_EVIDENCE_RECONCILIATION.md"
+        raw_sha = "d964ea75b357a50bc942480576899ef00f1bc1cb984597afd2c4eaf7c06b9155"
+        require(p["toy_store_tsdiag1_runtime_evidence_reconciled"] is True and
+                p["toy_store_tsdiag1_runtime_attempt_consumed"] is True and
+                p["toy_store_tsdiag1_runtime_reconciliation"] == record and
+                p["toy_store_tsdiag1_runtime_evidence"] == root and
+                p["toy_store_tsdiag1_runtime_index"] == root + "INDEX.json" and
+                p["toy_store_tsdiag1_runtime_log_sha256"] == raw_sha and
+                diag["runtime_evidence"] == root and diag["runtime_index"] == root + "INDEX.json" and
+                diag["runtime_log_sha256"] == raw_sha and
+                diag["runtime_evidence_reconciliation"] == record and
+                p["residual_no_trusted_actual_generation_proof"] == 21 and
+                p["residual_viable_equal_100"] == 9 and
+                p["residual_owner_hard_block"] == 12 and
+                p["toy_store_runtime_unique_wrapper_verified"] is True and
+                "DIAGNOSTIC_GENERATED" in p["toy_store_generation_proof_status"],
+                "completed runtime provenance, safety or residual changed")
+        idx = read_json(root + "INDEX.json")
+        require(idx["build_id"] == BUILD and idx["files"][0]["name"] == "LogOutput.log" and
+                idx["files"][0]["sha256"] == raw_sha and
+                idx["files"][0]["size"] == 1537121 and
+                idx["analysis"][0]["stats"]["line_count"] == 15494,
+                "ingested original runtime index identity changed")
+        raw_bytes = (ROOT / root / "raw/LogOutput.log").read_bytes()
+        require(len(raw_bytes) == 1537121 and digest(raw_bytes) == raw_sha,
+                "ingested raw original byte/hash changed")
+        log = raw_bytes.decode("utf-8-sig", errors="replace")
+        proof_markers = (
+            "[TSDIAG1] ARMED exact LLL 1.7.12",
+            "[TSDIAG1] Selection postfix owners: tendas.lethalcompany.s142abinteriorweightnormalization, tendas.lethalcompany.s142aktsdiag1",
+            "[TSDIAG1] SELECTED Offense Toy Store / ToystoreFlow; normalized rarity=100; pool=41->1; same viable wrapper;",
+            "Created New Day History Log! PlanetName: Offense ,Toy Store",
+            "Dungeon has finished generating on this client after multiple frames",
+            "Players finished generating the new floor",
+            "EntranceTeleportA (EntranceTeleport) (268) connects to EntranceTeleportA(Clone) (EntranceTeleport) (423)",
+            "EntranceTeleportB (EntranceTeleport) (269) connects to EntranceTeleportB(Clone) (EntranceTeleport) (407)",
+            "EntranceTeleportB(Clone) (EntranceTeleport) (407) connects to EntranceTeleportB (EntranceTeleport) (269)",
+            "EntranceTeleportA(Clone) (EntranceTeleport) (423) connects to EntranceTeleportA (EntranceTeleport) (268)",
+            "Generation has completed with seed 95445419.",
+            "Preparing tile information for ToystoreFlow took 89.989ms",
+        )
+        require(all(token in log for token in proof_markers) and
+                "[TSDIAG1] REFUSED" not in log and "[BMDSFIX1] APPLIED" not in log,
+                "original log cannot support bounded completed-runtime proof")
+        text = (ROOT / record).read_text(encoding="utf-8")
+        require(all(token in text for token in (BUILD, PROFILE, HASH_PROFILE, HASH_DLL,
+                HASH_PARENT, raw_sha, "DIAGNOSTIC ONLY, NEVER ACCEPT")),
+                "post-runtime original-byte reconciliation record incomplete")
+        return "ORIGINAL_DIAGNOSTIC_RUNTIME_COMPLETE_PASS"
     new_stage = active == BUILD or controls["runtime_active_build"] == BUILD or any(runtime_flags)
     if not new_stage:
         require(runtime_flags == (False, False, False) and
@@ -201,7 +268,48 @@ def route_self_test(state, metadata, parent):
         else:
             bp["toy_store_runtime_test_authorized"] = False
         rejects(bad, metadata, BUILD, "active " + mutate, doc)
-    print("PASS: 24 synthetic negative mutations; inactive and exactly coherent activation-stage fixtures")
+    # Explicitly exercise the completed-but-inactive one-shot path and its refusals.
+    completed = copy.deepcopy(armed)
+    cp = completed["selected_scope"]["phase_c"]
+    cp["toy_store_tsdiag1_runtime_armed"] = False
+    cp["toy_store_runtime_test_authorized"] = False
+    completed["controllers"]["runtime_active_build"] = "S1.42AK-BMDSFIX1"
+    cd = completed["selected_scope"]["diagnostic_revision"]
+    cd.update({"status": "PUBLISHED_DIAGNOSTIC_RUNTIME_COMPLETE_PASS_NOT_ACCEPTED",
+               "runtime_armed": False,
+               "runtime_validation_status": "RUNTIME_COMPLETE_PASS_DIAGNOSTIC_GENERATION_MATERIALIZATION_NEVER_ACCEPT",
+               "runtime_evidence": "RuntimeEvidence/S1.42AK-TSDIAG1/20261011T231328Z/",
+               "runtime_index": "RuntimeEvidence/S1.42AK-TSDIAG1/20261011T231328Z/INDEX.json",
+               "runtime_log_sha256": "d964ea75b357a50bc942480576899ef00f1bc1cb984597afd2c4eaf7c06b9155",
+               "runtime_evidence_reconciliation": "Current/393_S1.42AK_TSDIAG1_TOY_STORE_RUNTIME_EVIDENCE_RECONCILIATION.md"})
+    cp.update({"toy_store_tsdiag1_runtime_evidence_reconciled": True,
+               "toy_store_tsdiag1_runtime_attempt_consumed": True,
+               "toy_store_tsdiag1_runtime_reconciliation": cd["runtime_evidence_reconciliation"],
+               "toy_store_tsdiag1_runtime_evidence": cd["runtime_evidence"],
+               "toy_store_tsdiag1_runtime_index": cd["runtime_index"],
+               "toy_store_tsdiag1_runtime_log_sha256": cd["runtime_log_sha256"],
+               "residual_no_trusted_actual_generation_proof": 21,
+               "residual_viable_equal_100": 9,
+               "residual_owner_hard_block": 12,
+               "toy_store_runtime_unique_wrapper_verified": True,
+               "toy_store_generation_proof_status": "PASS_DIAGNOSTIC_GENERATED_ACTUAL_GENERATION_AND_MATERIALIZATION_NATURAL_SELECTION_UNPROVEN"})
+    assert check_lifecycle_route(completed, cp, metadata, parent, "S1.42AK-BMDSFIX1") == "ORIGINAL_DIAGNOSTIC_RUNTIME_COMPLETE_PASS"
+    for key, val in (("toy_store_tsdiag1_runtime_armed", True),
+                     ("toy_store_runtime_test_authorized", True),
+                     ("toy_store_tsdiag1_runtime_activation_checkpoint_executed", False),
+                     ("toy_store_tsdiag1_runtime_log_sha256", "0" * 64),
+                     ("residual_no_trusted_actual_generation_proof", 22),
+                     ("residual_owner_hard_block", 11)):
+        bad = copy.deepcopy(completed)
+        bad["selected_scope"]["phase_c"][key] = val
+        rejects(bad, metadata, "S1.42AK-BMDSFIX1", "completed "+key)
+    bad = copy.deepcopy(completed)
+    bad["controllers"]["runtime_active_build"] = BUILD
+    rejects(bad, metadata, "S1.42AK-BMDSFIX1", "completed mixed controller")
+    bad = copy.deepcopy(completed)
+    bad["selected_scope"]["diagnostic_revision"]["classification"] = "ACCEPTED"
+    rejects(bad, metadata, "S1.42AK-BMDSFIX1", "completed gameplay acceptance")
+    print("PASS: 32 synthetic negative mutations; inactive, active, and exact original-evidence complete fixtures")
 
 
 def validate():
@@ -212,9 +320,10 @@ def validate():
     require(state["active_candidate"]["build_id"] == "S1.42AK-BMDSFIX1" and
             state["active_candidate"]["status"] == "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED" and
             state["runtime_test_outstanding"] is True, "unwaived BMDSFIX1 passive gate")
-    require(p["residual_no_trusted_actual_generation_proof"] == 22 and
-            p["residual_viable_equal_100"] == 10 and
-            p["residual_owner_hard_block"] == 12, "residual changed")
+    expected_residual = (21, 9, 12) if p.get("toy_store_tsdiag1_runtime_evidence_reconciled") is True else (22, 10, 12)
+    require((p["residual_no_trusted_actual_generation_proof"],
+             p["residual_viable_equal_100"], p["residual_owner_hard_block"]) == expected_residual,
+            "residual changed outside exact runtime reconciliation")
     require(p["toy_store_tsdiag1_publication_authorized"] is True and
             p["toy_store_tsdiag1_publication_completed"] is True and
             p["toy_store_tsdiag1_built"] is False, "original publication boundary")
