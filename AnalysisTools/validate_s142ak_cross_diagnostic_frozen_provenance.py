@@ -70,9 +70,27 @@ def check_closed_proof(state: dict) -> None:
            state["active_candidate"]["build_id"] == "S1.42AK-BMDSFIX1" and
            state["active_candidate"]["status"] == "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED" and
            state["runtime_test_outstanding"] is True, "gameplay baseline/passive gate changed")
-    demand(p["residual_no_trusted_actual_generation_proof"] == 22 and
-           p["residual_viable_equal_100"] == 10 and
-           p["residual_owner_hard_block"] == 12, "residual proof count changed")
+    # Only the exact independently ingested TSDIAG1 one-shot proof can change
+    # today's Phase-C count; never couple the frozen SCDIAG1/FXDIAG1 proof to
+    # the active runtime pointer or a new live diagnostic selection.
+    ts_complete = (
+        p.get("toy_store_tsdiag1_runtime_evidence_reconciled") is True and
+        p.get("toy_store_tsdiag1_runtime_attempt_consumed") is True and
+        p.get("toy_store_tsdiag1_runtime_armed") is False and
+        p.get("toy_store_runtime_test_authorized") is False and
+        p.get("toy_store_tsdiag1_runtime_log_sha256") ==
+        "d964ea75b357a50bc942480576899ef00f1bc1cb984597afd2c4eaf7c06b9155" and
+        p.get("toy_store_tsdiag1_runtime_evidence") ==
+        "RuntimeEvidence/S1.42AK-TSDIAG1/20261011T231328Z/" and
+        p.get("toy_store_tsdiag1_runtime_reconciliation") ==
+        "Current/393_S1.42AK_TSDIAG1_TOY_STORE_RUNTIME_EVIDENCE_RECONCILIATION.md" and
+        p.get("toy_store_generation_proof_status") ==
+        "PASS_DIAGNOSTIC_GENERATED_ACTUAL_GENERATION_AND_MATERIALIZATION_NATURAL_SELECTION_UNPROVEN"
+    )
+    expected = (21, 9, 12) if ts_complete else (22, 10, 12)
+    demand((p["residual_no_trusted_actual_generation_proof"],
+            p["residual_viable_equal_100"], p["residual_owner_hard_block"]) == expected,
+           "residual proof count changed without exact independent TSDIAG1 completed evidence")
     demand(p["storage_complex_scdiag1_source_static_validated"] is True and
            p["storage_complex_scdiag1_source_pr_final_head"] ==
            "973b8648644bcfc9fb42ff4943b3ca38b5d82a5e" and
@@ -132,7 +150,23 @@ def self_test(state: dict, workflows: dict[str, str]) -> None:
         bad = copy.deepcopy(state)
         bad["selected_scope"]["phase_c"][key] = True if key.endswith("runtime_armed") else "MUTATED"
         expect_reject(lambda: check_closed_proof(bad), "closed proof mutation " + key)
-    # Synthetic newer TS target: no historical pointer or diagnostic-revision dependency.
+    # Reconciliation-specific negatives: frozen source/proof guards still fail
+    # closed if the claimed completed Toy Store evidence is altered.
+    if state["selected_scope"]["phase_c"].get("toy_store_tsdiag1_runtime_evidence_reconciled") is True:
+        for key in ("toy_store_tsdiag1_runtime_log_sha256",
+                    "toy_store_tsdiag1_runtime_evidence",
+                    "toy_store_tsdiag1_runtime_reconciliation",
+                    "toy_store_generation_proof_status",
+                    "toy_store_tsdiag1_runtime_attempt_consumed",
+                    "toy_store_runtime_test_authorized"):
+            bad = copy.deepcopy(state)
+            bad["selected_scope"]["phase_c"][key] = "MUTATED"
+            expect_reject(lambda: check_closed_proof(bad),
+                          "TSDIAG1 finished-proof guard mutation " + key)
+        bad = copy.deepcopy(state)
+        bad["selected_scope"]["phase_c"]["residual_viable_equal_100"] = 10
+        expect_reject(lambda: check_closed_proof(bad), "TSDIAG1 residual without proof")
+        # Synthetic newer TS target: no historical pointer or diagnostic-revision dependency.
     allowed = copy.deepcopy(state)
     allowed["controllers"]["runtime_active_build"] = "S1.42AK-TSDIAG1"
     allowed["selected_scope"]["diagnostic_revision"] = {"build_id": "S1.42AK-TSDIAG1"}
