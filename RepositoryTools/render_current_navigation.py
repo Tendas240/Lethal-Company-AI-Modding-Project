@@ -28,15 +28,26 @@ def active_candidate_id(s):
 
 
 def runtime_target_id(s):
+    # When a diagnostic is explicitly armed and matches the live controller,
+    # runtime-test attribution follows that diagnostic, not the gameplay candidate.
+    scope = s.get("selected_scope", {})
+    controllers = s.get("controllers", {})
+    if isinstance(scope, dict) and isinstance(controllers, dict):
+        diagnostic = scope.get("diagnostic_revision")
+        if (
+            isinstance(diagnostic, dict)
+            and diagnostic.get("runtime_armed") is True
+            and diagnostic.get("build_id")
+            and diagnostic["build_id"] == controllers.get("runtime_active_build")
+        ):
+            return str(diagnostic["build_id"])
     candidate = active_candidate_id(s)
     if candidate != "none":
         return candidate
-    scope = s.get("selected_scope", {})
     if isinstance(scope, dict):
         diagnostic = scope.get("diagnostic_revision")
         if isinstance(diagnostic, dict) and diagnostic.get("build_id"):
             return str(diagnostic["build_id"])
-    controllers = s.get("controllers", {})
     if isinstance(controllers, dict) and controllers.get("runtime_active_build"):
         return str(controllers["runtime_active_build"])
     return "none"
