@@ -18,9 +18,9 @@ The authoritative Phase-B3 30x53 availability/effective-weight matrix remains an
 
 ## Exact next selected-scope action
 
-Perform one separately bounded **BMAFR1I1 post-runtime attribution decision**. Decide whether the completed negative-reproduction run and missing Janitor/SpringMan target coverage justify a specifically targeted follow-up attempt, or whether the array-emitter attribution remains unresolved and Phase C3 should proceed without another BMAFR1I1 run.
+**Current user-directed priority (2026-10-12):** Stay on Universal Interior Viability / Equal Availability until a separately evidenced formal completion decision. Record: `Current/412_S1.42AK_PHASE_C_INTERIOR_FIRST_COMPLETION_PRIORITY_DECISION.md`; volatile authority: `Current/CURRENT_STATE.json`. Immediately after a separately verified merge of the policy PR, review the **nine** currently viable/equal-100 but generation-unproven Offense flows against already-ingested evidence and safer test strategies; do not rerun blocked CKDIAG1 evidence/source loops. Then evaluate **twelve** separately owner-hard-blocked Offense flows without an owner bypass. All-moons matrix/exception closure follows with targeted evidence rather than mandated exhaustive runtime testing.
 
-Do not begin another BMAFR1I1 gameplay run before that decision. Do not accept BMDSFIX1 or waive/release its passive DeepSewersFlow gate as a side effect.
+The former BMAFR1I1 attribution-decision action in this section is historical: `Current/241` already closed another run as unauthorized. Herobrine disablement (superseded PR #450), BCMER x all Pikmin and other independent roadmap tasks remain deferred until formal Interior-subproject completion. **No** build, runtime run, owner/weight/config edit or BMDSFIX1 acceptance is authorized. BMDSFIX1's distinct selector-free Black Mesa x DeepSewersFlow proof remains passive, outstanding and unwaived, not converted into a dedicated reroll.
 
 ## Newly preserved independent findings
 
