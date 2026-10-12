@@ -6,6 +6,14 @@
 **Topic authority:** `Knowledge/INTERIORS_AND_LLL.md`  
 **Lifecycle authority:** `Current/CURRENT_STATE.json`
 
+## User-directed execution priority and completion gate (2026-10-12)
+
+**Priority:** Stay exclusively on this selected Universal Interior Viability / Equal Availability subproject until an explicitly evidenced, separately authorized formal completion decision. Do **not** select or promote independent roadmap targets because a particular Interior diagnostic is blocked. Route to `Current/412_S1.42AK_PHASE_C_INTERIOR_FIRST_COMPLETION_PRIORITY_DECISION.md` and the current machine `Current/CURRENT_STATE.json` for the exact live next gate.
+
+**Ordered residual:** first reconcile the nine currently eligible/equal-100 Offense flow generation-proof gaps using existing evidence and safer method candidates; then investigate the twelve Offense owner-hard-blocked flows without bypassing owner rules; then close outstanding moon-flow applicability, topology/traversal, route/NavMesh and exceptional External semantics evidence to the extent required for an honest **all interiors on all target moons** claim. The old 30×53 matrix is historical availability/effective-weight evidence; do not treat it as all-pair generation proof. Prefer targeted/evidence-class verification over brute-force one-runtime-test-per-cell, but do not infer all-moon pass from one Offense generation.
+
+**Closure:** Do not label complete merely because equal effective rarity 100 is accepted or no safe immediate diagnostic is available. Every open restriction/proof gap must be resolved by evidence or explicitly disposed of under user-approved scope change; preserve uncertainty rather than silently waiving it. Keep BMDSFIX1's separate passive outstanding/unwaived selector-free Black Mesa × DeepSewersFlow candidate-acceptance gate without launching a dedicated reroll; CKDIAG1 remains blocked/refused, TSDIAG1 complete/inactive/NEVER ACCEPT. New independent goals (e.g. Herobrine, BCMER/Pikmin) are eligible for selection **only after** formal Interior-subproject completion. This block documents priority, **not** a new build, patch, owner-config, runtime-test or acceptance authorization.
+
 ## Objective
 
 Reach the project's long-term interior-selection target: every registered interior should be available on every gameplay moon with equal effective probability whenever that pairing is technically safe.
