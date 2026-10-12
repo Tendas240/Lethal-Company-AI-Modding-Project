@@ -1,0 +1,73 @@
+name: GoldenHotel locked original static capture
+
+on:
+  pull_request:
+    paths:
+      - 'AnalysisTools/inspect_universal_interior_goldenhotel.py'
+      - 'AnalysisTools/test_inspect_universal_interior_goldenhotel.py'
+      - 'SourceEvidence/UniversalInteriorViability/GoldstayHotelOriginalAssetCapture/**'
+      - '.github/workflows/universal-interior-goldenhotel-static-capture.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact pinned static reader and owner inventory dependencies
+        run: python -m pip install --disable-pip-version-check UnityPy==1.25.3 PyYAML==6.0.2
+      - name: Bind exact source head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+      - name: Compile and test GoldenHotel-only pure fail-closed rules
+        run: |
+          python -m py_compile AnalysisTools/inspect_universal_interior_goldenhotel.py
+          python -m py_compile AnalysisTools/test_inspect_universal_interior_goldenhotel.py
+          python -m unittest discover -s AnalysisTools -p 'test_inspect_universal_interior_goldenhotel.py' -v
+
+  capture:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact pinned static reader and owner inventory dependencies
+        run: python -m pip install --disable-pip-version-check UnityPy==1.25.3 PyYAML==6.0.2
+      - name: Bind exact source head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+      - name: Capture exact locked GoldenHotel original object graph
+        id: acquire
+        continue-on-error: true
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          mkdir -p goldenhotel-static-output
+          python AnalysisTools/inspect_universal_interior_goldenhotel.py --out goldenhotel-static-output
+      - name: Upload derived JSON only, never original ZIP or UnityFS bytes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goldenhotel-original-static-${{ github.event.pull_request.head.sha || github.sha }}
+          path: goldenhotel-static-output/*.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Reject any incomplete/failed capture
+        if: steps.acquire.outcome != 'success'
+        run: exit 1
