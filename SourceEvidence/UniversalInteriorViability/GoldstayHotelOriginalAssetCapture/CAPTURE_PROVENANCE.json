@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "classification": "INDEPENDENT_ARTIFACT_BYTE_RECONCILIATION / STATIC_SERIALIZED_ONLY / NOT_GENERATION_PASS",
+  "source_capture": {
+    "repository": "Tendas240/Lethal-Company-AI-Modding-Project",
+    "source_pr": 453,
+    "source_pr_final_head_sha": "93582c2844ad08c483fb4205fc702a84c7ecf5dd",
+    "source_pr_main_merge_sha": "99fa9f33564c607bb8ae30e64b868d75ac4a64fa",
+    "source_main_knowledge_architecture_push_run_id": 38304029346,
+    "source_main_knowledge_architecture_status": "completed/success",
+    "capture_workflow_run_id": 38302364814,
+    "capture_workflow_run_number": 3,
+    "capture_workflow_run_status": "completed/success",
+    "capture_workflow_head_sha": "93582c2844ad08c483fb4205fc702a84c7ecf5dd",
+    "knowledge_architecture_pr_run_id": 38302364887,
+    "knowledge_architecture_pr_status": "completed/success",
+    "github_actions_artifact_id": 11770647482,
+    "github_actions_artifact_name": "goldenhotel-original-static-93582c2844ad08c483fb4205fc702a84c7ecf5dd",
+    "downloaded_artifact_zip_sha256": "faf75ccfdcf9347a6b3b5aa1d26441085dbb7ddee92aaa153becd66977a0cd0e",
+    "downloaded_artifact_zip_member_count": 1,
+    "downloaded_artifact_zip_member_name": "GOLDENHOTEL_CAPTURE.json",
+    "downloaded_capture_json_bytes": 6657,
+    "downloaded_capture_json_sha256": "fe92fe0767fe3789d6c53ece6d0fe8768c3275c117cd52216eaeebfc678e6bef"
+  },
+  "ingested_capture": {
+    "path": "SourceEvidence/UniversalInteriorViability/GoldstayHotelOriginalAssetCapture/GOLDENHOTEL_CAPTURE.json",
+    "sha256": "fe92fe0767fe3789d6c53ece6d0fe8768c3275c117cd52216eaeebfc678e6bef",
+    "byte_equal_to_downloaded_artifact_json": true,
+    "verification": "Independently extracted the real Actions ZIP and re-hashed its sole JSON member; repository file re-fetched and exact SHA-256 rechecked."
+  },
+  "historical_authority": {
+    "immutable_package_lock": "SourceEvidence/UniversalInteriorViability/PhaseC3OwnerMatching/PACKAGE_LOCK.json",
+    "immutable_legacy_capture": "SourceEvidence/UniversalInteriorViability/PhaseC3OwnerMatching/LEAD_INTERIORS_CAPTURE.json",
+    "immutable_legacy_provenance": "SourceEvidence/UniversalInteriorViability/PhaseC3OwnerMatching/CAPTURE_PROVENANCE.json",
+    "legacy_lead_flows": [
+      "BellevilleApp",
+      "CrimsonKeep"
+    ],
+    "original_package": "BLB_Thunderstore_Mods_LOL-Lead_Interiors",
+    "original_package_version": "0.0.7",
+    "original_package_zip_sha256": "0e605a7280b3c14d52049c5b42c7a85d3001dc98a7fa61f5822364686d13e16b",
+    "original_unityfs_member": "BepInEx/plugins/boomsinterior.lethalbundle",
+    "original_unityfs_member_sha256": "bf3ddb70d42084c5847a1038abffb759956fe3e9cb4cfc1bbb657b746a14895b",
+    "review_limit": "The independent reconciliation verifies the downloaded JSON and strict historical lock equality, not an independently repeated download and re-hash of the 208MB upstream original ZIP/UnityFS bytes."
+  },
+  "result": "STATIC_SERIALIZED_ORIGINAL_ASSET_ONLY / NOT_GENERATION_PASS",
+  "prohibited_inference": "No new selection probability, owner bypass, actual DungeonFlow generation, CullFactory, entrance topology, traversal, NavMesh, runtime behavior or compatibility acceptance; Offense residual remains 21 (9 viable generation-proof gaps plus 12 owner-hard-blocks)."
+}
