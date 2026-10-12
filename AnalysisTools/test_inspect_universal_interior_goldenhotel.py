@@ -93,6 +93,7 @@ class FakeIndex:
             "currentWeather": [],
             "planetNames": [{"_name": "Vow", "_rarity": 15}],
             "m_GameObject": ptr(0),
+            "m_Script": ptr(-909),  # MonoScript metadata is excluded from content-reference ledger
         }
 
     def class_is(self, key, cls, namespace, assembly):
@@ -132,6 +133,11 @@ class GoldenHotelObjectGraphTests(unittest.TestCase):
         change()
         with self.assertRaises(c7.CaptureError):
             probe.validated_target(self.idx)
+
+    def test_script_metadata_pointer_not_counted_as_content_reference(self):
+        capture = probe.validated_target(self.idx)
+        fields = [row["field"] for row in capture["level_matching_properties"]["direct_references"]]
+        self.assertNotIn("m_Script", fields)
 
     def test_exact_static_graph(self):
         result = probe.validated_target(self.idx)
