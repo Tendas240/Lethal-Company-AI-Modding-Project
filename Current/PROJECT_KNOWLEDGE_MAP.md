@@ -32,6 +32,12 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 | What rules govern local patches? | `patch_safety_policy` | `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` |
 | Which build introduced/rejected/fixed something? | `build_lineage` | `Current/BUILD_LINEAGE.md` |
 
+## 2026-10-12 — User-directed Interior-first completion priority (PR proposal)
+
+`Current/412_S1.42AK_PHASE_C_INTERIOR_FIRST_COMPLETION_PRIORITY_DECISION.md` proposes the explicit **Interior-first** project order: finish the selected Universal Interior Viability / Equal Availability subproject before choosing any *independent* roadmap goal. This supersedes the post-#449 instruction to choose a different target **only after this proposal is merged and exact-main CI is verified**; until then `Current/CURRENT_STATE.json` on the actually checked branch remains the lifecycle authority.
+
+The 21 remaining **Offense flow-level** proof/owner cases are **9 viable/equal-100 with no trusted basic generation proof + 12 owner-hard-blocked**; this is not the entire all-moons matrix. The immediate substantive gate after integration is one bounded existing-evidence/safe-method re-evaluation of those nine, without another CKDIAG1 source-availability loop. Handle the 12 owner blocks separately afterwards, and preserve all-moon pairing evidence, Oxyde/Shatteredrooms special cases and NavMesh/entrance safety distinctions. No automatic nine-run or every-pair runtime campaign, no silent completion of unproven applicability and no independent Herobrine/BCMER goal before formal Interior closure. PR #450 Herobrine target is superseded and must stay unmerged. BMDSFIX1's separate passive selector-free DeepSewersFlow proof remains unwaived. No gameplay, profile, owner, build or runtime authorization.
+
 ## Current lifecycle anchor
 
 Accepted gameplay baseline: **S1.42AK — LC Office Camera Enemy Balance — ACCEPTED FULL NORMAL STACK**. Active gameplay candidate / latest built gameplay artifact: **S1.42AK-BMDSFIX1 — not accepted**.
