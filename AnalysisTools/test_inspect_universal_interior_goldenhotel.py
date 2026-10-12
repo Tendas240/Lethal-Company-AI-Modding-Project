@@ -184,5 +184,43 @@ class GoldenHotelObjectGraphTests(unittest.TestCase):
                                .update(raw_sha256="not-sha256"))
 
 
+    def test_missing_flow(self):
+        self.mutate_and_refuse(lambda: self.idx.scripts.pop(self.idx.keys[0]))
+
+    def test_ambiguous_exact_flow(self):
+        newkey = (probe.MEMBER, "CAB-test", 404)
+        self.idx.objects[newkey] = copy.deepcopy(self.idx.objects[self.idx.keys[0]])
+        self.idx.scripts[newkey] = copy.deepcopy(self.idx.scripts[self.idx.keys[0]])
+        with self.assertRaises(c7.CaptureError):
+            probe.validated_target(self.idx)
+
+    def test_ambiguous_original_owner(self):
+        newkey = (probe.MEMBER, "CAB-test", 505)
+        self.idx.objects[newkey] = copy.deepcopy(self.idx.objects[self.idx.keys[1]])
+        self.idx.scripts[newkey] = copy.deepcopy(self.idx.scripts[self.idx.keys[1]])
+        with self.assertRaises(c7.CaptureError):
+            probe.validated_target(self.idx)
+
+    def test_two_matching_assets(self):
+        newkey = (probe.MEMBER, "CAB-test", 606)
+        self.idx.objects[newkey] = copy.deepcopy(self.idx.objects[self.idx.keys[2]])
+        self.idx.scripts[newkey] = copy.deepcopy(self.idx.scripts[self.idx.keys[2]])
+        self.mutate_and_refuse(lambda: self.idx.objects[self.idx.keys[1]]
+                               ["tree"].update(otherMatching=ptr(606)))
+
+    def test_wrong_owner_reference_type(self):
+        self.mutate_and_refuse(lambda: self.idx.objects[self.idx.keys[0]]
+                               .update(type="GameObject"))
+
+    def test_wrong_matching_tag_type(self):
+        self.mutate_and_refuse(lambda: self.idx.objects[self.idx.keys[2]]
+                               ["tree"]["levelTags"][0].update(_rarity="20"))
+
+    def test_wrong_owner_namespace(self):
+        self.mutate_and_refuse(lambda: self.idx.scripts[self.idx.keys[1]]
+                               .update(m_Namespace="UnrelatedMod"))
+
+
+
 if __name__ == "__main__":
     unittest.main()
