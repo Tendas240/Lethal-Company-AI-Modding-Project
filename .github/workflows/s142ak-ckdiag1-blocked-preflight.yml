@@ -1,0 +1,26 @@
+name: S1.42AK CKDIAG1 blocked source-gate preflight
+on:
+  pull_request:
+    paths:
+      - 'Current/402_S1.42AK_PHASE_C_CKDIAG1_SOURCE_GATES_BLOCKED_CHECKPOINT.md'
+      - 'SourceEvidence/UniversalInteriorViability/CKDIAG1BlockedSourcePreflight/**'
+      - 'AnalysisTools/validate_s142ak_ckdiag1_blocked_checkpoint.py'
+      - '.github/workflows/s142ak-ckdiag1-blocked-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  verify-blocked-original-profile-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Verify CKDIAG1 stays source-absent and inspect all original archives
+        run: python AnalysisTools/validate_s142ak_ckdiag1_blocked_checkpoint.py
+      - name: Confirm forbidden build and runtime work did not occur
+        run: |
+          test ! -e Patches/S142AKCKDiag1
+          test ! -e .github/workflows/s142ak-ckdiag1-source-static.yml
+          test ! -e BuildSpecs/S1.42AK-CKDIAG1.json
+          test ! -e 'Profiles/LC V1 S1.42AK-CKD1.r2z'
