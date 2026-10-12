@@ -128,7 +128,9 @@ def validated_target(idx):
     check_matching_fields(matching["serialized_fields"])
     require(isinstance(matching.get("direct_references"), list),
             "Missing matching pointer inventory")
-    actual = list(c7.pointers(matching["serialized_fields"]))
+    # Match the inherited reader: m_Script is class metadata, not a direct content reference.
+    actual = [(field, ptr) for field, ptr in c7.pointers(matching["serialized_fields"])
+              if field != "m_Script"]
     require(len(actual) == len(matching["direct_references"]),
             "Matching direct-reference inventory incomplete")
     for row in matching["direct_references"]:
