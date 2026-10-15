@@ -15,7 +15,7 @@
 3. Read `Current/PROJECT_KNOWLEDGE_MAP.md`.
 4. Route the request to the registered canonical topic and open only linked evidence/config/code that is actually needed.
 
-For non-trivial work, execute one bounded segment per assistant turn, report the checkpoint, stop, and wait for explicit user continuation before the next segment. Short atomic work may be Segment 1/1; never create a knowingly inconsistent checkpoint.
+For non-trivial work, execute bounded sequential segments with visible chat-local ordinals. Within an already expressly authorized finite work package, at most two segments may run in one assistant response, with a brief internal checkpoint and full end-of-response checkpoint before stopping for explicit user continuation. Never cross a separate merge/build/runtime or other authorization boundary automatically. Recommend a user-requested new-chat handover at six accumulated chat-local segments or earlier if context grows unusually large. Short atomic work may be Segment 1/1; never create a knowingly inconsistent checkpoint.
 
 Use `Current/DOCUMENT_AUTHORITY.md` only when old/current wording conflicts, and `Current/BUILD_LINEAGE.md` only for build-history questions. Human-readable state is available in `Current/00_CURRENT_STATE.md` but does not need to be reread when `Current/CURRENT_STATE.json` already answers the task.
 
