@@ -48,16 +48,21 @@ def main() -> int:
 
     policy_required = [
         "CURRENT / CANONICAL PROJECT-WIDE CHATGPT EXECUTION POLICY",
-        "For every user request that requires ChatGPT to **perform work**",
-        "execute only that segment",
-        "wait for an explicit user continuation signal",
-        "Do not automatically continue into the next segment",
-        "A genuinely short and atomic task may be `Segment 1/1`",
-        "Atomicity and safety exception",
+        "For every user request that requires ChatGPT to perform project work",
+        "at most two consecutive bounded segments",
+        "within an existing authorization only",
+        "Never cross an authorization boundary automatically",
+        "Before entering the second segment, reassess scope",
+        "approximately four minutes",
+        "six project execution segments",
+        "does not automatically create",
+        "At the end of each assistant response",
         "Completed:",
         "Findings:",
         "Remaining:",
         "Next segment:",
+        "Mandatory dual visualizations",
+        "Weiter – Segment N+1:",
         "Message Delivery timed out",
         "connection interrupted. waiting for the complete answer",
         "Do not rely on ChatGPT Memory",
@@ -86,16 +91,16 @@ def main() -> int:
         "START_HERE_ChatGPT_Masterprompt.txt",
         [
             "SEGMENTED EXECUTION RULE",
-            "Execute only the current segment",
-            "STOP and wait for the user's explicit continuation signal",
+            "up to two bounded segments may run in the same assistant response",
+            "then STOP and wait for the user's next message",
             "Segment 1/1",
         ],
     )
     require_fragments(
         "Current/01_HANDOVER_CORE.md",
         [
-            "one bounded segment per assistant turn",
-            "wait for explicit user continuation",
+            "at most two segments may run in one assistant response",
+            "explicit user continuation",
         ],
     )
 
@@ -130,10 +135,32 @@ def main() -> int:
         [
             POLICY,
             "Mandatory segmented execution",
-            "stop, and wait for the user's explicit continuation signal",
+            "Up to two already-authorized handover preparation segments",
+            "stop and wait for the user's explicit continuation signal",
             "instruct the new chat to read `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` before performing project work",
         ],
     )
+
+    # Reject legacy unconditional one-segment-per-turn instructions in the
+    # current bootstrap/handover authorities, while retaining a hard response stop.
+    legacy_statements = {
+        "START_HERE_ChatGPT_Masterprompt.txt": [
+            "Execute only the current segment, report Completed",
+        ],
+        "Current/01_HANDOVER_CORE.md": [
+            "one bounded segment per assistant turn",
+        ],
+        "Current/HANDOVER_PREPARATION_PROMPT.md": [
+            "execute one bounded segment, report Completed",
+        ],
+    }
+    for rel, phrases in legacy_statements.items():
+        path = ROOT / rel
+        if path.is_file():
+            content = path.read_text(encoding="utf-8", errors="replace").lower()
+            for phrase in phrases:
+                if phrase.lower() in content:
+                    fail(f"stale unconditional stop rule remains in {rel}: {phrase}")
 
     print("Segmented ChatGPT execution policy validation")
     print(f"errors={len(ERRORS)}")
