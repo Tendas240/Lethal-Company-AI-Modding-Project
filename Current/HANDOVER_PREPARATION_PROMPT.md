@@ -18,7 +18,7 @@ This workflow deliberately does **not** hard-code the current accepted build, ca
 
 The handover is subject to `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`.
 
-For non-trivial handover work, execute one bounded segment, report Completed / Findings / Remaining / Next segment, then stop, and wait for the user's explicit continuation signal before beginning the next non-final segment. A genuinely short atomic handover may be one segment. Do not split an atomic repository repair into a knowingly inconsistent checkpoint.
+For non-trivial handover work, execute bounded segments with numbered checkpoints. Up to two already-authorized handover preparation segments may run within a single assistant response, with a brief internal checkpoint, provided all time/context and authorization guards in the segmented policy hold. At the end of each assistant response report Completed / Findings / Remaining / Next segment with both required visualizations and functional controls, then stop and wait for the user's explicit continuation signal. Never automatically create a new chat or infer permission for repository mutations from a handover request. A genuinely short atomic handover may be one segment. Do not split an atomic repository repair into a knowingly inconsistent checkpoint.
 
 ## Step 1 — Minimal authority read
 
