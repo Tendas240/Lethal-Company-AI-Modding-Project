@@ -90,7 +90,7 @@ Then route the request through the Knowledge Map and open only the canonical top
 
 Human-readable live-state mirror: `Current/00_CURRENT_STATE.md`.
 
-Current-chat handover procedure: `{h}`. Every project task, including handover work, remains continuation-gated by `{p}`.
+Current-chat handover procedure: `{h}`. Every project task, including handover work, follows the bounded two-segment-per-response continuation and safety/context guards in `{p}`; a new user turn is needed after each response.
 
 No local repository clone or local profile build should be required from the user while repository-native infrastructure is sufficient.
 """
@@ -114,7 +114,7 @@ READ FIRST:
 3. Current/PROJECT_KNOWLEDGE_MAP.md
 
 SEGMENTED EXECUTION RULE
-For every project request that requires work, follow {p}. Execute only the current segment, report Completed / Findings / Remaining / Next segment, then STOP and wait for the user's explicit continuation signal before beginning the next non-final segment. A genuinely short atomic task may be Segment 1/1. Never split an atomic change so the repository/controllers are knowingly left inconsistent.
+For every project request that requires work, follow {p}. Execute sequential bounded segments with chat-local numbering. Within an already expressly authorized finite work package, up to two bounded segments may run in the same assistant response without another user message; show an internal checkpoint between them. At the end of the response, report Completed / Findings / Remaining / Next segment, show required build/runtime visualizations and functional buttons, then STOP and wait for the user's next message. No automatic authorization of new actions. A genuinely short atomic task may be Segment 1/1. Never split an atomic change so the repository/controllers are knowingly left inconsistent.
 
 ROUTING RULE
 Use Current/CURRENT_STATE.json for volatile live project state. Route the user's question through Current/PROJECT_KNOWLEDGE_MAP.md and read only the registered canonical topic plus linked evidence/config/code needed for the task. Human-readable live-state mirror: Current/00_CURRENT_STATE.md; it is optional when the machine state already answers the task. Use Current/DOCUMENT_AUTHORITY.md only when current-vs-history precedence is actually in question. Use Current/BUILD_LINEAGE.md only for build-history questions.
@@ -218,7 +218,7 @@ def render_handover(s):
 3. Read `Current/PROJECT_KNOWLEDGE_MAP.md`.
 4. Route the request to the registered canonical topic and open only linked evidence/config/code that is actually needed.
 
-For non-trivial work, execute one bounded segment per assistant turn, report the checkpoint, stop, and wait for explicit user continuation before the next segment. Short atomic work may be Segment 1/1; never create a knowingly inconsistent checkpoint.
+For non-trivial work, execute bounded sequential segments with visible chat-local ordinals. Within an already expressly authorized finite work package, at most two segments may run in one assistant response, with a brief internal checkpoint and full end-of-response checkpoint before stopping for explicit user continuation. Never cross a separate merge/build/runtime or other authorization boundary automatically. Recommend a user-requested new-chat handover at six accumulated chat-local segments or earlier if context grows unusually large. Short atomic work may be Segment 1/1; never create a knowingly inconsistent checkpoint.
 
 Use `Current/DOCUMENT_AUTHORITY.md` only when old/current wording conflicts, and `Current/BUILD_LINEAGE.md` only for build-history questions. Human-readable state is available in `Current/00_CURRENT_STATE.md` but does not need to be reread when `Current/CURRENT_STATE.json` already answers the task.
 

@@ -16,6 +16,6 @@ Then route the request through the Knowledge Map and open only the canonical top
 
 Human-readable live-state mirror: `Current/00_CURRENT_STATE.md`.
 
-Current-chat handover procedure: `Current/HANDOVER_PREPARATION_PROMPT.md`. Every project task, including handover work, remains continuation-gated by `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`.
+Current-chat handover procedure: `Current/HANDOVER_PREPARATION_PROMPT.md`. Every project task, including handover work, follows the bounded two-segment-per-response continuation and safety/context guards in `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`; a new user turn is needed after each response.
 
 No local repository clone or local profile build should be required from the user while repository-native infrastructure is sufficient.
