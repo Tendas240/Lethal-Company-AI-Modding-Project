@@ -24,7 +24,7 @@ A later explicit acceptance or rejection may supersede an older lifecycle verdic
 
 ## Global current authority
 
-- `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` — mandatory project-wide ChatGPT execution cadence: segment work, report numbered checkpoints, allow at most two consecutive already-authorized bounded segments within one assistant response, and stop for explicit continuation at each end-of-response checkpoint; early-stop/context and safety/authorization guards apply.
+- `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` — mandatory project-wide ChatGPT execution cadence: segment work, report numbered checkpoints, allow at most two consecutive already-authorized bounded segments within one assistant response, and stop for explicit user continuation at each end-of-response checkpoint; early-stop/context and safety/authorization guards apply.
 - `Current/CURRENT_STATE.json` — single machine-readable global state object.
 - `Current/00_CURRENT_STATE.md` — single concise human global state declaration.
 - `Current/01_HANDOVER_CORE.md` — fresh-session takeover router.
