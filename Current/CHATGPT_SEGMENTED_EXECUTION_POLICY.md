@@ -31,7 +31,7 @@ For each segment:
 4. if another authorized segment fits the two-segment response budget and the safety/time/context guards below, continue within this **same** response, showing the next ordinal;
 5. otherwise finish a full user-visible checkpoint and stop for an explicit user continuation signal.
 
-The user's ability to say "stop", change direction, or request an immediate checkpoint always takes precedence at the next safe interruption point. There is no autonomous background continuation, no unattended repeat loop and no automatic creation of a new chat. Once an assistant response ends, further project execution requires another user message.
+The user's ability to say "stop", change direction, or request an immediate checkpoint always takes precedence at the next safe interruption point. There is no autonomous background continuation, no unattended repeat loop and no automatic creation of a new chat. Once an assistant response ends, further project execution requires another user message. At the end of each assistant response, stop after the full checkpoint until the user sends another message. The handover button does not automatically create a new chat.
 
 ## Mandatory chat-local segment ordinal (since the new-chat handover prompt)
 
