@@ -56,6 +56,12 @@ Before the final handover output, verify directly:
 
 For a bot-generated follow-up from `.github/workflows/profile-index.yml` **or** `.github/workflows/runtime-ingest.yml`, verify the explicitly registered exact-head `workflow_dispatch` run rather than pretending a `push` run exists. Both workflows must fail closed if `main` moves before dispatch or if no Knowledge Architecture run is registered for the exact generated head. `RuntimeInbox/ACTIVE_BUILD.txt` is runtime-active/evidence-attribution state, not acceptance authority. Do not claim CI proves runtime/gameplay behavior beyond documented validator coverage.
 
+### Cross-chat attachment inventory (required for the immediate next task)
+
+Before producing PART 2, identify only attachments/original-byte inputs **actually needed for the next authorized segment**. Prior-chat uploaded ZIP/DLL/log/other files and sandbox paths **do not transfer to new chats by default**. Classify each as **repository-accessible original bytes (path verified)**, **current-chat-only attachment (NOT TRANSFERRED)**, or **metadata/derived evidence only (original bytes unavailable)**. Preserve filename, exact version and pinned SHA-256 for any material input, and distinguish independently verified current bytes from historical chat evidence.
+
+If the next action needs a current-chat-only original, explicitly instruct the new chat to check repository/current-chat byte access first and, if missing, **immediately ask the user to re-upload that specific file** before attempting the byte-dependent work. If repository evidence already suffices, do not require an unnecessary upload. Never suggest that copying a filename, hash or previous sandbox link transfers an attachment. Do not silently initiate a new download; respect separate acquisition and mutation authorizations.
+
 ## Step 3 — Repair only genuine drift
 
 If the repository is already internally consistent and a fresh chat can continue from the current authorities, do not create a cosmetic handover commit.
@@ -113,6 +119,7 @@ The new-chat prompt must:
 - tell the new chat not to perform a full-repository audit by default and not to treat historical "current" wording as live authority;
 - preserve the runtime import/uploader rule and the completed-log rule;
 - tell the new chat not to require local clone/build work while repository-native infrastructure is sufficient;
+- identify any exact next-segment original ZIP/DLL/log or other attachment that existed only in the previous chat; mark it **NOT TRANSFERRED** and include required filename/version/SHA-256, instructing the new chat to verify accessible repository/current-chat bytes first and, if genuinely missing and needed, **actively ask the user to re-upload it** before byte-dependent work (do not substitute provenance-only records, previous sandbox paths or unapproved downloads);
 - explicitly state that when the user later signals another handover, it must execute `Current/HANDOVER_PREPARATION_PROMPT.md` under the segmented-execution policy.
 
 Do not copy the entire live-state object into the ready-to-copy prompt. The new chat is required to read `Current/CURRENT_STATE.json`, which is the canonical volatile state.
