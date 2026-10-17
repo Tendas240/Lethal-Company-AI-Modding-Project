@@ -82,12 +82,9 @@ jobs:
         env:
           TARGET_PACKAGE: ${{ inputs.package }}
         run: |
+          test -f SourceEvidence/UniversalInteriorViability/PhaseC3OwnerMatching/PACKAGE_LOCK.json
           mkdir -p c3-owner-output
-          if test -f SourceEvidence/UniversalInteriorViability/PhaseC3OwnerMatching/PACKAGE_LOCK.json; then
-            python AnalysisTools/inspect_universal_interior_owner_matching.py --package "$TARGET_PACKAGE" --out c3-owner-output
-          else
-            python AnalysisTools/inspect_universal_interior_owner_matching.py --package "$TARGET_PACKAGE" --out c3-owner-output --record-provenance
-          fi
+          python AnalysisTools/inspect_universal_interior_owner_matching.py --package "$TARGET_PACKAGE" --out c3-owner-output
       - name: Upload derived JSON only
         if: always()
         uses: actions/upload-artifact@v4
