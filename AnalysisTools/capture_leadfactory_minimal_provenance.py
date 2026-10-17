@@ -193,8 +193,9 @@ def verify_workflow_boundary():
         fail("unreviewed artifact publication or provenance fallback")
     if "options:\n          - LeadFactory" not in content:
         fail("workflow capture target is not exclusively LeadFactory")
-    if "BLB_Thunderstore_Mods_LOL-Lead_Interiors" not in content:
-        fail("package pin absent")
+    # The package is hardcoded in this source module, not a workflow input.
+    if PACKAGE != "BLB_Thunderstore_Mods_LOL-Lead_Interiors":
+        fail("source package pin drift")
     if "source_capture_authorization" not in content or "expected_head_sha" not in content:
         fail("missing independent capture authorization/commit pin")
     if capture.index("Fail closed on missing independent authorization") > capture.index("pip install"):
