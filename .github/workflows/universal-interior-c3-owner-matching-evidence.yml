@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'AnalysisTools/inspect_universal_interior_owner_matching.py'
+      - 'AnalysisTools/capture_leadfactory_minimal_provenance.py'
       - 'SourceEvidence/UniversalInteriorViability/PhaseC3OwnerMatching/**'
       - 'Current/164_S1.42AK_UNIVERSAL_INTERIOR_PHASE_A_REGISTERED_OWNER_INVENTORY.md'
       - 'ProfileSources/S1.42AK/export.r2x'
@@ -12,13 +13,12 @@ on:
   # pull_request runs execute only stdlib source/static validation.
   workflow_dispatch:
     inputs:
-      package:
-        description: One pinned owner-matching package per authorized invocation
+      target:
+        description: Only the exact pinned LeadFactory static provenance target
         required: true
         type: choice
         options:
-          - Piggy-LC_Office
-          - BLB_Thunderstore_Mods_LOL-Lead_Interiors
+          - LeadFactory
       expected_head_sha:
         description: Exact reviewed 40-character workflow/code commit SHA
         required: true
@@ -45,8 +45,9 @@ jobs:
       # No package installs, Thunderstore requests or capture artifacts on PRs.
       - name: Compile and self-test bounded owner-matching probe
         run: |
-          python -m py_compile AnalysisTools/inspect_universal_interior_owner_matching.py
+          python -m py_compile AnalysisTools/inspect_universal_interior_owner_matching.py AnalysisTools/capture_leadfactory_minimal_provenance.py
           python AnalysisTools/inspect_universal_interior_owner_matching.py --self-test
+          python AnalysisTools/capture_leadfactory_minimal_provenance.py --self-test
 
   capture:
     if: github.event_name == 'workflow_dispatch'
@@ -64,35 +65,22 @@ jobs:
         env:
           EXPECTED_HEAD: ${{ inputs.expected_head_sha }}
           CAPTURE_APPROVAL: ${{ inputs.source_capture_authorization }}
-          TARGET_PACKAGE: ${{ inputs.package }}
+          TARGET_CAPTURE: ${{ inputs.target }}
         run: |
           test "$CAPTURE_APPROVAL" = "I_AUTHORIZE_ONE_PINNED_C3_OWNER_SOURCE_CAPTURE"
           [[ "$EXPECTED_HEAD" =~ ^[0-9a-f]{40}$ ]]
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           test "$GITHUB_SHA" = "$EXPECTED_HEAD"
-          case "$TARGET_PACKAGE" in
-            Piggy-LC_Office|BLB_Thunderstore_Mods_LOL-Lead_Interiors) ;;
-            *) exit 1 ;;
-          esac
+          test "$TARGET_CAPTURE" = "LeadFactory"
+          test -f SourceEvidence/UniversalInteriorViability/PhaseC3OwnerMatching/PACKAGE_LOCK.json
       # Network dependencies and exact original download are manual-dispatch only.
       - run: python -m pip install --disable-pip-version-check UnityPy==1.25.3 PyYAML==6.0.2
-      - name: Acquire exact package and capture bounded static evidence
-        id: capture
-        continue-on-error: true
+      - name: Capture strictly allowlisted local-only LeadFactory provenance
         env:
-          TARGET_PACKAGE: ${{ inputs.package }}
+          LEADFACTORY_CAPTURE_AUTHORIZATION: ${{ inputs.source_capture_authorization }}
         run: |
-          test -f SourceEvidence/UniversalInteriorViability/PhaseC3OwnerMatching/PACKAGE_LOCK.json
           mkdir -p c3-owner-output
-          python AnalysisTools/inspect_universal_interior_owner_matching.py --package "$TARGET_PACKAGE" --out c3-owner-output
-      - name: Upload derived JSON only
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: c3-owner-${{ inputs.package }}-${{ github.sha }}
-          path: c3-owner-output/*.json
-          if-no-files-found: error
-          retention-days: 14
-      - name: Enforce fail-closed capture
-        if: steps.capture.outcome != 'success'
-        run: exit 1
+          python AnalysisTools/capture_leadfactory_minimal_provenance.py --target LeadFactory --out c3-owner-output
+      # No upload-artifact action, workflow output, cache publication,
+      # job summary with raw data, repository commit or release attachment.
+      # Derived JSON is ephemeral on a separately authorized runner only.
