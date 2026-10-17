@@ -14,6 +14,10 @@
 
 **Closure:** Do not label complete merely because equal effective rarity 100 is accepted or no safe immediate diagnostic is available. Every open restriction/proof gap must be resolved by evidence or explicitly disposed of under user-approved scope change; preserve uncertainty rather than silently waiving it. Keep BMDSFIX1's separate passive outstanding/unwaived selector-free Black Mesa × DeepSewersFlow candidate-acceptance gate without launching a dedicated reroll; CKDIAG1 remains blocked/refused, TSDIAG1 complete/inactive/NEVER ACCEPT. New independent goals (e.g. Herobrine, BCMER/Pikmin) are eligible for selection **only after** formal Interior-subproject completion. This block documents priority, **not** a new build, patch, owner-config, runtime-test or acceptance authorization.
 
+## Conditional Shatteredrooms-only CullFactory dependency (2026-10-17 documentation Draft proposal)
+
+See `Current/417_S1.42AK_PHASE_C_SHATTEREDROOMS_CULLFACTORY_207_DEPENDENCY_SCOPE_DECISION.md`. The exact C1 #41 `shatteredrooms` CullFactory 2.0.7 parser/live-matching/safety question can be treated as a separate **compatibility** evidence prerequisite inside Interior-first, subject to exact-version authenticated implementation evidence and later independent scope/PR/integration/build/runtime approvals. `junkrooms` remains deferred; owner exclusions on Experimentation and Embrion persist. The potential one-value exception is not implemented and cannot substitute for actual Shatteredrooms generation, entrance, traversal, NavMesh or acceptance evidence. Current `CURRENT_STATE.json.next_action`, all lifecycle/controller gates and the Residual 21 remain unchanged.
+
 ## Objective
 
 Reach the project's long-term interior-selection target: every registered interior should be available on every gameplay moon with equal effective probability whenever that pairing is technically safe.
