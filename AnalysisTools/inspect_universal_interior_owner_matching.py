@@ -50,8 +50,7 @@ def write_json(path, value):
     path.write_text(json.dumps(c7.json_safe(value), indent=2, allow_nan=False) + "\n", encoding="utf-8")
 
 
-def verify_authority():
-    existing = c7.verify_authority()
+def verify_leadfactory_registration():
     rows = (ROOT / AUTHORITY).read_text(encoding="utf-8").splitlines()
     # The existing hash in PACKAGE_LOCK already covers this exact inventory.
     qualified = [
@@ -63,6 +62,11 @@ def verify_authority():
     ]
     if len(qualified) != 1:
         raise c7.CaptureError("LeadFactory authoritative package/LLL registration drift")
+
+
+def verify_authority():
+    existing = c7.verify_authority()
+    verify_leadfactory_registration()
     return existing
 
 
@@ -344,7 +348,7 @@ def self_test_leadfactory():
     assert lock["packages"]["BLB_Thunderstore_Mods_LOL-Lead_Interiors"]["flows"] == ["BellevilleApp", "CrimsonKeep"]
     assert lock["packages"]["BLB_Thunderstore_Mods_LOL-Lead_Interiors"]["zip_sha256"] == "0e605a7280b3c14d52049c5b42c7a85d3001dc98a7fa61f5822364686d13e16b"
     assert lock["packages"]["BLB_Thunderstore_Mods_LOL-Lead_Interiors"]["unityfs_members"][0]["sha256"] == "bf3ddb70d42084c5847a1038abffb759956fe3e9cb4cfc1bbb657b746a14895b"
-    verify_authority()
+    verify_leadfactory_registration()
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
