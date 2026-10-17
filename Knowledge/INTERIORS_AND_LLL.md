@@ -227,8 +227,6 @@ Historically generated/confirmed exact interior IDs:
 
 The deferred CullFactory compatibility scope is to add/validate disable-culling exceptions for those exact IDs. Do not guess alternate identifiers.
 
-**2026-10-17 Shatteredrooms-only dependency proposal (documentation Draft PR):** `Current/417_S1.42AK_PHASE_C_SHATTEREDROOMS_CULLFACTORY_207_DEPENDENCY_SCOPE_DECISION.md` conditionally routes *only* exact `shatteredrooms` / C1 #41 through a dedicated CullFactory 2.0.7 matching/safety evidence gate as a dependency of the already selected Interior-first work. This does not re-open the `junkrooms` exception, change a profile/config, supersede the current machine `next_action`, or satisfy generation/entrance/traversal/NavMesh/gameplay proof. Exact-version parser and live-flow matching remain BLOCKED pending authenticated evidence and separate authorizations; Experimentation/Embrion exclusions remain unwaived.
-
 ## Black Mesa ownership
 
 Black Mesa uses its own DawnLib/native owner path. Do not duplicate-register it through LLL merely to force equal weighting. S1.42AB runtime confirms it remains single-registered and receives final effective rarity 100 in the viable list.
