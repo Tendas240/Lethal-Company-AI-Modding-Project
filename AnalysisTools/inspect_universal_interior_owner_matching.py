@@ -24,6 +24,23 @@ COHORT = {
     "BLB_Thunderstore_Mods_LOL-Lead_Interiors": ("0.0.7", ["BellevilleApp", "CrimsonKeep"]),
 }
 
+# Original byte-lock cohort is immutable: the historical two-flow lock and
+# existing BellevilleApp/CrimsonKeep JSON remain untouched. LeadFactory is an
+# additional capture target, not a rewrite of historical PACKAGE_LOCK metadata.
+ADDITIONAL_TARGETS = {
+    "BLB_Thunderstore_Mods_LOL-Lead_Interiors": ("LeadFactory",),
+}
+LEAD_BUNDLE = "BepInEx/plugins/boomsinterior.lethalbundle"
+LEAD_CAB = "CAB-38a1e9912a4e0bf00320c85779ae5f69"
+# Previously handed-over candidate object pins, NOT new independently observed bytes.
+# Every pin MUST be independently verified on a later, separately authorized capture.
+LEAD_FACTORY_PINS = {
+    "extended_mod": ("LeadInteriors", "ExtendedMod", -5675661616573147864, "b7bbafab52d59bfd3b5ac0f342db7250dcaf6c63e53112f1448fc93754f738e1"),
+    "extended_flow": ("LFExtended", "ExtendedDungeonFlow", -3701692716072040616, "6d02f4b61c8e0e380e1267d32c7f972da37280dbb4843792be6b5e17af9f8ecd"),
+    "dungeon_flow": ("LeadFactory", "DungeonFlow", 6083446938328665743, "3e248637eea8633ccd9934276343d57bed62c6ac551970e07cac401b51fa0406"),
+    "matching": ("LFMatchingProperties", "LevelMatchingProperties", 7848904247385245749, "f5aa37562c665a6018548a7df248f7a9c4683cd28149010e96338202d0624b49"),
+}
+
 # Reuse only the already-reviewed static acquisition/parser implementation.
 c7.COHORT = COHORT
 
@@ -34,7 +51,19 @@ def write_json(path, value):
 
 
 def verify_authority():
-    return c7.verify_authority()
+    existing = c7.verify_authority()
+    rows = (ROOT / AUTHORITY).read_text(encoding="utf-8").splitlines()
+    # The existing hash in PACKAGE_LOCK already covers this exact inventory.
+    qualified = [
+        line for line in rows
+        if "| `LeadFactory` |" in line
+        and "| `leadinteriors:leadfactory` |" in line
+        and "| BLB_Thunderstore_Mods_LOL-Lead_Interiors 0.0.7 |" in line
+        and "| Custom #24 |" in line
+    ]
+    if len(qualified) != 1:
+        raise c7.CaptureError("LeadFactory authoritative package/LLL registration drift")
+    return existing
 
 
 def script_is(idx, key, class_name, namespace=None):
@@ -161,12 +190,61 @@ def describe_matching(idx, matching):
     }
 
 
+
+def require_lead_pin(idx, key, label):
+    name, cls, path_id, raw_sha = LEAD_FACTORY_PINS[label]
+    if not script_is(idx, key, cls, "DunGen.Graph" if cls == "DungeonFlow" else "LethalLevelLoader"):
+        raise c7.CaptureError("LeadFactory serialized class drift: " + label)
+    d = idx.descriptor(key)
+    if (d.get("bundle_member"), d.get("serialized_file"), d.get("path_id"), d.get("raw_object_sha256")) != (
+        LEAD_BUNDLE, LEAD_CAB, path_id, raw_sha
+    ):
+        raise c7.CaptureError("LeadFactory historical candidate object pin mismatch: " + label)
+    if idx.objects[key]["tree"].get("m_Name") != name:
+        raise c7.CaptureError("LeadFactory serialized name mismatch: " + label)
+
+
+def leadfactory_owner_provenance(idx, flow, owner, matching):
+    if matching is None:
+        raise c7.CaptureError("LeadFactory requires exact LevelMatchingProperties reference")
+    require_lead_pin(idx, flow, "dungeon_flow")
+    require_lead_pin(idx, owner, "extended_flow")
+    require_lead_pin(idx, matching, "matching")
+    mods = [
+        key for key in idx.scripts
+        if script_is(idx, key, "ExtendedMod", "LethalLevelLoader")
+        and idx.objects[key]["tree"].get("m_Name") == "LeadInteriors"
+    ]
+    if len(mods) != 1:
+        raise c7.CaptureError("LeadFactory requires exactly one LeadInteriors ExtendedMod")
+    mod = mods[0]
+    require_lead_pin(idx, mod, "extended_mod")
+    owner_fields = []
+    for field, ptr in c7.pointers(idx.objects[mod]["tree"]):
+        if field == "m_Script":
+            continue
+        # Unresolved non-null references cannot be silently interpreted as safe.
+        target = idx.resolve(mod, ptr)
+        if target == owner:
+            owner_fields.append(field)
+    if not owner_fields:
+        raise c7.CaptureError("LeadInteriors ExtendedMod has no exact LFExtended reference")
+    return {
+        **idx.descriptor(mod),
+        "name": "LeadInteriors",
+        "fields_referencing_exact_extended_flow": sorted(owner_fields),
+        "historical_pins_status": "CANDIDATE_ONLY_UNTIL_EXACT_AUTHORIZED_ORIGINAL_RECAPTURE",
+        "proof_boundary": "Serialized ExtendedMod-to-ExtendedDungeonFlow-to-DungeonFlow and matching-asset links only; not managed registration, Offense applicability, normalization, generation, selector safety or runtime PASS.",
+    }
+
 def capture_target(idx, flow_name):
     flow = exact_flow(idx, flow_name)
     owner, owner_flow_fields = owner_for_flow(idx, flow)
     owner_tree = idx.objects[owner]["tree"]
     matching, matching_fields = matching_asset(idx, owner)
+    extra = {"extended_mod": leadfactory_owner_provenance(idx, flow, owner, matching)} if flow_name == "LeadFactory" else {}
     return {
+        **extra,
         "flow_name": flow_name,
         "dungeon_flow": idx.descriptor(flow),
         "extended_dungeon_flow": {
@@ -188,10 +266,85 @@ def verify_lock(lock, authority, key, observed):
         raise c7.CaptureError("Owner-matching authority hash drift")
     packages = lock.get("packages")
     if not isinstance(packages, dict) or set(packages) != set(COHORT):
-        raise c7.CaptureError("Owner-matching lock must contain exactly the two target packages")
+        raise c7.CaptureError("Owner-matching lock must contain exactly the two originally locked packages")
     if packages.get(key) != observed:
         raise c7.CaptureError("ZIP/member provenance drift: " + key)
 
+
+
+def self_test_leadfactory():
+    # No network, UnityPy import, original bytes, game load or managed code.
+    assert ADDITIONAL_TARGETS == {"BLB_Thunderstore_Mods_LOL-Lead_Interiors": ("LeadFactory",)}
+    assert COHORT["BLB_Thunderstore_Mods_LOL-Lead_Interiors"][1] == ["BellevilleApp", "CrimsonKeep"]
+    pins = LEAD_FACTORY_PINS
+    keys = {n: (LEAD_BUNDLE, LEAD_CAB, p[2]) for n, p in pins.items()}
+    def ptr(label):
+        return {"m_FileID": 0, "m_PathID": keys[label][2]}
+    class FakeIndex:
+        def __init__(self):
+            self.scripts = {}
+            self.objects = {}
+            for label, key in keys.items():
+                name, cls, _, raw = pins[label]
+                ns = "DunGen.Graph" if cls == "DungeonFlow" else "LethalLevelLoader"
+                assembly = "DunGen.dll" if cls == "DungeonFlow" else "LethalLevelLoader.dll"
+                self.scripts[key] = {"m_ClassName": cls, "m_Namespace": ns, "m_AssemblyName": assembly}
+                tree = {"m_Name": name}
+                if label == "extended_mod":
+                    tree["m_ExtendedDungeonFlows"] = [ptr("extended_flow")]
+                if label == "extended_flow":
+                    tree["<DungeonFlow>k__BackingField"] = ptr("dungeon_flow")
+                    tree["<LevelMatchingProperties>k__BackingField"] = ptr("matching")
+                self.objects[key] = {"tree": tree, "type": "MonoBehaviour", "raw_sha256": raw}
+        def resolve(self, origin, pointer):
+            if pointer["m_PathID"] == 0:
+                return None
+            key = (origin[0], origin[1], pointer["m_PathID"])
+            if key not in self.objects:
+                raise c7.CaptureError("Unresolved synthetic pointer")
+            return key
+        def class_is(self, key, cls, ns, assembly):
+            row = self.scripts.get(key, {})
+            return (row.get("m_ClassName"), row.get("m_Namespace"), row.get("m_AssemblyName")) == (cls, ns, assembly)
+        def descriptor(self, key):
+            rec = self.objects[key]
+            return {"bundle_member": key[0], "serialized_file": key[1], "path_id": key[2],
+                    "type": rec["type"], "raw_object_sha256": rec["raw_sha256"], "script": self.scripts[key]}
+    good = capture_target(FakeIndex(), "LeadFactory")
+    assert good["extended_mod"]["fields_referencing_exact_extended_flow"] == ["m_ExtendedDungeonFlows[0]"]
+    assert good["extended_dungeon_flow"]["fields_referencing_exact_flow"] == ["<DungeonFlow>k__BackingField"]
+    assert good["extended_dungeon_flow"]["fields_referencing_level_matching_properties"] == ["<LevelMatchingProperties>k__BackingField"]
+    for label in ("extended_mod", "extended_flow", "dungeon_flow", "matching"):
+        bad = FakeIndex()
+        bad.objects[keys[label]]["raw_sha256"] = "0" * 64
+        try:
+            capture_target(bad, "LeadFactory")
+        except c7.CaptureError:
+            pass
+        else:
+            raise AssertionError("Unpinned " + label + " silently passed")
+    bad = FakeIndex()
+    bad.objects[keys["extended_mod"]]["tree"]["m_ExtendedDungeonFlows"] = []
+    try:
+        capture_target(bad, "LeadFactory")
+    except c7.CaptureError:
+        pass
+    else:
+        raise AssertionError("Missing ExtendedMod edge silently passed")
+    bad = FakeIndex()
+    bad.objects[keys["extended_flow"]]["tree"]["<LevelMatchingProperties>k__BackingField"] = {"m_FileID": 0, "m_PathID": 0}
+    try:
+        capture_target(bad, "LeadFactory")
+    except c7.CaptureError:
+        pass
+    else:
+        raise AssertionError("Missing matching-asset edge silently passed")
+    # This full self-test uses only existing checked-in source/lock bytes.
+    lock = json.loads(LOCK.read_text(encoding="utf-8"))
+    assert lock["packages"]["BLB_Thunderstore_Mods_LOL-Lead_Interiors"]["flows"] == ["BellevilleApp", "CrimsonKeep"]
+    assert lock["packages"]["BLB_Thunderstore_Mods_LOL-Lead_Interiors"]["zip_sha256"] == "0e605a7280b3c14d52049c5b42c7a85d3001dc98a7fa61f5822364686d13e16b"
+    assert lock["packages"]["BLB_Thunderstore_Mods_LOL-Lead_Interiors"]["unityfs_members"][0]["sha256"] == "bf3ddb70d42084c5847a1038abffb759956fe3e9cb4cfc1bbb657b746a14895b"
+    verify_authority()
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
@@ -207,7 +360,8 @@ def main():
         assert set(COHORT) == {"Piggy-LC_Office", "BLB_Thunderstore_Mods_LOL-Lead_Interiors"}
         assert COHORT["Piggy-LC_Office"] == ("2.3.4", ["OfficeDungeonFlow"])
         assert COHORT["BLB_Thunderstore_Mods_LOL-Lead_Interiors"] == ("0.0.7", ["BellevilleApp", "CrimsonKeep"])
-        print("owner-matching self-test passed")
+        self_test_leadfactory()
+        print("owner-matching source-only LeadFactory self-test passed")
         return 0
     if not args.package or not args.out:
         p.error("--package and --out are required outside --self-test")
@@ -236,12 +390,14 @@ def main():
             raise c7.CaptureError("UnityPy version drift")
         idx = c7.AssetIndex()
         idx.load(path, observed)
-        captures = {flow: capture_target(idx, flow) for flow in COHORT[key][1]}
+        capture_names = list(COHORT[key][1]) + list(ADDITIONAL_TARGETS.get(key, ()))
+        captures = {flow: capture_target(idx, flow) for flow in capture_names}
         write_json(args.out / "CAPTURE.json", {
             "schema_version": 1,
             "authority": authority,
             "package": observed,
             "unitypy_version": importlib.metadata.version("UnityPy"),
+            "capture_target_names": capture_names,
             "targets": captures,
             "proof_boundary": "Exact static package/object-graph serialization only. No Unity/game/mod managed code execution and no Phase-C3 applicability conclusion in this capture.",
         })
