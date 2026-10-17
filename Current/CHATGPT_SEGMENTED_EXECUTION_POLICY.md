@@ -14,6 +14,17 @@ It does not guarantee that platform/network interruptions can never occur. It de
 
 This policy is stored in the repository and is part of the project contract. Do not rely on ChatGPT Memory to preserve it.
 
+## Cross-chat attachment and original-byte continuity
+
+**Default: no inherited attachments.** Files uploaded to one ChatGPT conversation (including ZIPs, DLLs, logs and other attachments), conversation-local extracted files, and local/sandbox paths must **not** be assumed accessible in a new chat. A prior upload name, prior tool success, checksum cited in a handover or a path copied from a different chat is evidence *about* a file, not proof that its bytes exist in the new execution environment.
+
+**Verify actual access at the point of use.** For each original-byte-dependent next task, first identify the exact required artifact (filename, package/version, source and expected SHA-256 when known) and distinguish: (a) original bytes actually present and readable in the current chat, (b) original bytes independently accessible in the repository or other currently authorized source, and (c) repository-only provenance/derived JSON/hash references without the underlying original bytes. A repository entry that records an uploaded ZIP hash does not mean that ZIP is stored there. Only classify an artifact as available after opening/verifying its concrete current source, and re-check pinned hashes before a byte-specific analysis. Never reuse a previous chat's sandbox path as though it were a cross-chat file transfer.
+
+**Ask for missing originals only when material.** If the upcoming authorized action genuinely requires original bytes absent from accessible repository/current-chat sources, ask the user directly and promptly to **re-upload the named exact artifact**, including version and expected hashes if available. Do not run redundant acquisition attempts or historical analyses instead, and do not request a file when current repository-native evidence already suffices. Treat a prior-chats' successful byte analysis as handed-over historical evidence, not as fresh independent verification. On a new upload, verify all binding hashes and fail closed on mismatch. A new download, release/publication, PR, build or runtime action still requires its own applicable authorization; handover does not carry permissions forward automatically.
+
+**Handover requirement:** Include each task-critical conversation-local-only attachment as explicitly **NOT TRANSFERRED / availability unverified in new chat**, alongside its exact identity, required use, expected hashes, and the new chat's first conditional action: verify actual accessibility through the repository/current conversation; if missing and needed, actively request re-upload before byte-dependent work. Do not claim that merely mentioning an attachment in PART 2 transfers the file.
+
+
 ## Core rule
 
 For every user request that requires ChatGPT to perform project work, divide the authorized task into sensible, bounded execution segments and process them sequentially. Preserve the consecutive chat-local segment ordinal.
