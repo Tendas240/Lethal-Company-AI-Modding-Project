@@ -42,6 +42,12 @@ Use these only when relevant:
 - `Current/BUILD_LINEAGE.md/.json` for build-history questions;
 - `Knowledge/BUILD_AND_RUNTIME_PIPELINE.md` and `Knowledge/GALE_PROFILE_WORKFLOW.md` for runtime import/upload semantics.
 
+### Evidence-event continuity and anti-dead-end entry gate
+
+When the handover follows an exhausted or blocked evidence path, preserve a compact **last-verified evidence-event checkpoint**, not a generic task to search again. Record the pinned main SHA; the latest actually authenticated, relevant evidence event (commit/log/index/source/user artifact with exact identifier and provenance), or **"no new evidence-bearing event since <baseline>"**; the exact parked target/method/source/guarantee fingerprints and unproven proof tiers; and the smallest qualified re-entry trigger. Distinguish a new relevant event from unchanged CI, a mere elapsed date, and a handover-created new chat. A narrow GitHub delta may establish that the event has not occurred; do not re-run historical evidence queries, speculative source searches or exhausted safety arguments.
+
+If no qualified trigger exists, **do not prescribe renewed evidence searching as the next chat's automatic first task**. Route the next decision, if materially new and safe, to a bounded **evidence-acquisition planning** choice under the segmented policy: target, actual missing proof, authentic source/provenance, rights/storage/retention, intervention class and STOP criteria, smallest required user action, and independently authorized downstream gates. If that planning route also matches a parked fingerprint, explicitly mark no lawful forward action and STOP until an identified event or separately permissible decision exists. Neither a handover nor the plan authorizes implementation, source download, runtime, gameplay or publication.
+
 ## Step 2 — Verify repository, CI and controllers
 
 Before the final handover output, verify directly:
@@ -121,6 +127,8 @@ The new-chat prompt must:
 - tell the new chat not to require local clone/build work while repository-native infrastructure is sufficient;
 - identify any exact next-segment original ZIP/DLL/log or other attachment that existed only in the previous chat; mark it **NOT TRANSFERRED** and include required filename/version/SHA-256, instructing the new chat to verify accessible repository/current-chat bytes first and, if genuinely missing and needed, **actively ask the user to re-upload it** before byte-dependent work (do not substitute provenance-only records, previous sandbox paths or unapproved downloads);
 - explicitly state that when the user later signals another handover, it must execute `Current/HANDOVER_PREPARATION_PROMPT.md` under the segmented-execution policy.
+- carry forward the pinned last evidence-bearing event or explicit **no new event since baseline**, all relevant parked target/method/source/guarantee fingerprints, unresolved proof tier and exact qualified re-entry trigger; never automatically start with another evidence search absent such a trigger;
+- when evidence is missing, identify a materially distinct safe evidence-acquisition planning decision if available, including required user participation and independent approvals; if no new safe route exists, say **STOP** rather than generating another identical BLOCKED loop.
 
 Do not copy the entire live-state object into the ready-to-copy prompt. The new chat is required to read `Current/CURRENT_STATE.json`, which is the canonical volatile state.
 
