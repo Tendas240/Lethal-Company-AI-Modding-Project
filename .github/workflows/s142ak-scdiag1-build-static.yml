@@ -91,7 +91,9 @@ jobs:
                   assert pathlib.Path('RuntimeInbox/ACTIVE_BUILD.txt').read_text(encoding='utf-8').strip() == 'S1.42AK-BMDSFIX1'
                   assert state_now['selected_scope']['diagnostic_revision']['runtime_armed'] is False
                   assert subprocess.check_output(['git', 'hash-object', 'AnalysisTools/validate_s142ak_scdiag1_source.py'], text=True).strip() == '8606dd816185a6b0872d6e2288d133c29db8312c', 'unreviewed completed-runtime source validator drift'
-                  assert subprocess.check_output(['git', 'hash-object', '.github/workflows/s142ak-scdiag1-source-static.yml'], text=True).strip() == '5d4c07e17fd17e5f4f55f66cdef2f0e48b0d4926', 'changed original source workflow'
+                  # Only exact new versioned workflow + adapter bytes are accepted; original source remains frozen.
+                  assert subprocess.check_output(['git', 'hash-object', '.github/workflows/s142ak-scdiag1-source-static.yml'], text=True).strip() == '0ca7eabb3a29c351afddf5a6f1f51ec3e1d11dd4', 'unreviewed completed-runtime source workflow lifecycle drift'
+                  assert subprocess.check_output(['git', 'hash-object', 'AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py'], text=True).strip() == '66f946de347b98931b6037057458ebfb416ebcf9', 'unreviewed Residual-21 lifecycle adapter drift'
                   assert subprocess.check_output(['git', 'hash-object', 'AnalysisTools/validate_s142ak_scdiag1_activation.py'], text=True).strip() == '3529e8b8ec648b7e2aeef0d2a24813669bdcb0e7', 'changed original activation gate'
                   assert "if: steps.frozen.outputs.exists != 'true'" in pathlib.Path('.github/workflows/s142ak-scdiag1-build-static.yml').read_text(encoding='utf-8')
                   assert pathlib.Path('RuntimeEvidence/S1.42AK-SCDIAG1/20261009T093411Z/INDEX.json').is_file()
