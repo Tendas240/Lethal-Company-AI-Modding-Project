@@ -70,7 +70,9 @@ jobs:
               current_source_workflow = pathlib.Path('.github/workflows/s142ak-tsdiag1-source-static.yml').read_text(encoding='utf-8')
               volatile_source_trigger = "      - 'Current/CURRENT_STATE.json'\n"
               assert original_source_workflow.count(volatile_source_trigger) == 1, 'Unexpected producer source trigger'
-              assert current_source_workflow == original_source_workflow.replace(volatile_source_trigger, '', 1), 'Source workflow changed beyond unique trigger deletion'
+              # Only exact new versioned workflow + adapter bytes are accepted; original source remains frozen.
+              assert subprocess.check_output(['git', 'hash-object', '.github/workflows/s142ak-tsdiag1-source-static.yml'], text=True).strip() == '4af4327be51c84571d824421ceaa0ab19b9f052d', 'unreviewed TSDIAG1 source workflow lifecycle drift'
+              assert subprocess.check_output(['git', 'hash-object', 'AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py'], text=True).strip() == '66f946de347b98931b6037057458ebfb416ebcf9', 'unreviewed Residual-21 lifecycle adapter drift'
               subprocess.run(['python', 'AnalysisTools/validate_s142ak_tsdiag1_derived_build_result.py', '--self-test'], check=True)
               subprocess.run(['git', 'diff', '--exit-code', head, 'HEAD', '--', *protected], check=True)
               current = json.loads(pathlib.Path('Current/CURRENT_STATE.json').read_text(encoding='utf-8'))
