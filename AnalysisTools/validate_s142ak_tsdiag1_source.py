@@ -16,6 +16,96 @@ def require(ok, reason):
     if not ok:
         raise RuntimeError("TSDIAG1 source contract: " + reason)
 
+
+# Historical SCDIAG1 22=10+12 is superseded only by the independently
+# ingested and main-merged one-shot Toy Store diagnostic-generation proof.
+# This remains a strict 21=9+12 guard; no unproven residual can pass.
+def require_reconciled_toy_store_residual(phase, evidence_index):
+    expected = {
+        "residual_no_trusted_actual_generation_proof": 21,
+        "residual_viable_equal_100": 9,
+        "residual_owner_hard_block": 12,
+        "toy_store_generation_proof_status":
+            "PASS_DIAGNOSTIC_GENERATED_ACTUAL_GENERATION_AND_MATERIALIZATION_NATURAL_SELECTION_UNPROVEN",
+        "toy_store_tsdiag1_runtime_evidence_reconciled": True,
+        "toy_store_tsdiag1_runtime_attempt_consumed": True,
+        "toy_store_tsdiag1_runtime_armed": False,
+        "toy_store_runtime_test_authorized": False,
+        "toy_store_tsdiag1_runtime_reconciliation":
+            "Current/393_S1.42AK_TSDIAG1_TOY_STORE_RUNTIME_EVIDENCE_RECONCILIATION.md",
+        "toy_store_tsdiag1_runtime_evidence":
+            "RuntimeEvidence/S1.42AK-TSDIAG1/20261011T231328Z/",
+        "toy_store_tsdiag1_runtime_index":
+            "RuntimeEvidence/S1.42AK-TSDIAG1/20261011T231328Z/INDEX.json",
+        "toy_store_tsdiag1_runtime_log_sha256":
+            "d964ea75b357a50bc942480576899ef00f1bc1cb984597afd2c4eaf7c06b9155",
+        "toy_store_tsdiag1_runtime_reconciliation_pr": 429,
+        "toy_store_tsdiag1_runtime_reconciliation_pr_final_head":
+            "f4d1714b7113d1383b2178dca05a426212885c6b",
+        "toy_store_tsdiag1_runtime_reconciliation_main_commit":
+            "e5c5fabbe6f60caa24e3a63b4e282c6594a4bd7f",
+        "toy_store_tsdiag1_runtime_reconciliation_main_knowledge_architecture_push_run":
+            38184195902,
+    }
+    for key, value in expected.items():
+        require(type(phase[key]) is type(value) and phase[key] == value,
+                "post-429 Toy Store residual/provenance drift: " + key)
+    files = evidence_index["files"]
+    require(evidence_index["build_id"] == "S1.42AK-TSDIAG1" and
+            len(files) == 1 and files[0]["name"] == "LogOutput.log" and
+            files[0]["size"] == 1537121 and
+            files[0]["sha256"] == expected["toy_store_tsdiag1_runtime_log_sha256"],
+            "exact Toy Store original log INDEX mismatch")
+    original = read("Current/393_S1.42AK_TSDIAG1_TOY_STORE_RUNTIME_EVIDENCE_RECONCILIATION.md")
+    integration = read("Current/394_S1.42AK_TSDIAG1_POST_429_RUNTIME_EVIDENCE_HANDOVER_AUTHORITY_RECONCILIATION.md")
+    require("22 → 21" in original and "ToystoreFlow" in original and
+            "one actual diagnostic-generated" in original and
+            expected["toy_store_tsdiag1_runtime_log_sha256"] in original,
+            "Toy Store generation proof source provenance mismatch")
+    require("[PR #429]" in integration and
+            expected["toy_store_tsdiag1_runtime_reconciliation_pr_final_head"] in integration and
+            expected["toy_store_tsdiag1_runtime_reconciliation_main_commit"] in integration and
+            str(expected["toy_store_tsdiag1_runtime_reconciliation_main_knowledge_architecture_push_run"]) in integration and
+            "21 = 9 viable/equal-100 + 12 owner-hard-block" in integration,
+            "post-429 main integration/CI provenance mismatch")
+
+
+def test_reconciled_residual_fail_closed(phase, evidence_index):
+    # Synthetic negative assertions run on every ordinary source-static CI call.
+    negatives = {
+        "residual_no_trusted_actual_generation_proof": 22,
+        "residual_viable_equal_100": 10,
+        "residual_owner_hard_block": 11,
+        "toy_store_generation_proof_status": "STILL_NO_TRUSTED_ACTUAL_GENERATION_PROOF",
+        "toy_store_tsdiag1_runtime_evidence_reconciled": False,
+        "toy_store_tsdiag1_runtime_attempt_consumed": False,
+        "toy_store_tsdiag1_runtime_armed": True,
+        "toy_store_runtime_test_authorized": True,
+        "toy_store_tsdiag1_runtime_log_sha256": "0" * 64,
+        "toy_store_tsdiag1_runtime_reconciliation_pr": 0,
+        "toy_store_tsdiag1_runtime_reconciliation_pr_final_head": "0" * 40,
+        "toy_store_tsdiag1_runtime_reconciliation_main_commit": "0" * 40,
+        "toy_store_tsdiag1_runtime_reconciliation_main_knowledge_architecture_push_run": 0,
+    }
+    for key, invalid in negatives.items():
+        mutated = dict(phase)
+        mutated[key] = invalid
+        try:
+            require_reconciled_toy_store_residual(mutated, evidence_index)
+        except RuntimeError:
+            pass
+        else:
+            raise RuntimeError("Toy Store negative mutation not rejected: " + key)
+    corrupt_index = dict(evidence_index)
+    corrupt_index["files"] = [dict(evidence_index["files"][0], sha256="0" * 64)]
+    try:
+        require_reconciled_toy_store_residual(phase, corrupt_index)
+    except RuntimeError:
+        pass
+    else:
+        raise RuntimeError("Toy Store changed original-log hash not rejected")
+
+
 root = "Patches/S142AKTSDiag1/"
 plugin = read(root + "Plugin.cs")
 policy = read(root + "SelectionPolicy.cs")
@@ -38,9 +128,9 @@ require(state["active_candidate"]["build_id"] == "S1.42AK-BMDSFIX1" and
         state["active_candidate"]["status"] == "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
         "active gameplay promotion")
 require(state["runtime_test_outstanding"] is True, "independent passive proof waived")
-require(p["residual_no_trusted_actual_generation_proof"] == 22 and
-        p["residual_viable_equal_100"] == 10 and p["residual_owner_hard_block"] == 12,
-        "residual changed without runtime proof")
+toy_store_index = json.loads(read("RuntimeEvidence/S1.42AK-TSDIAG1/20261011T231328Z/INDEX.json"))
+require_reconciled_toy_store_residual(p, toy_store_index)
+test_reconciled_residual_fail_closed(p, toy_store_index)
 require(p["toy_store_source_implementation_authorized"] is True and
         p["toy_store_tsdiag1_source_implemented"] is True and
         p["toy_store_tsdiag1_built"] is False and
@@ -206,5 +296,5 @@ require("ref: ${{ github.event.pull_request.head.sha }}" in workflow and
 require("profile_builder.py" not in workflow, "profile builder prohibited")
 print(json.dumps({"status": "TSDIAG1_SOURCE_STATIC_PASS",
                   "postfix_count": 1, "profile_build": False,
-                  "runtime_armed": False, "residual": 22,
+                  "runtime_armed": False, "residual": p["residual_no_trusted_actual_generation_proof"],
                   "active_runtime": active}, indent=2))
