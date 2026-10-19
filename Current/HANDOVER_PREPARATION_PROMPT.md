@@ -122,6 +122,7 @@ The new-chat prompt must:
 - instruct the new chat to read `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md` before performing project work;
 - require bounded segments, checkpoint reporting and waiting for user continuation between non-final segments;
 - use this initial read order: `Current/CHATGPT_SEGMENTED_EXECUTION_POLICY.md`, `Current/CURRENT_STATE.json`, `Current/PROJECT_KNOWLEDGE_MAP.md`;
+- **require a segment-free landing checkpoint when PART 2 is pasted without an independently authorized executable task**: before STOP, show the carried-forward baseline explicitly as not freshly verified in the new chat, separate next-build and next-runtime readiness, both exact-titled visualizations "Fortschritt bis zum nächsten Runtime-Test" and "Pipeline als Ablaufkette bis zum nächsten Runtime-Test", and functional Weiter / Übergabe / precisely scoped Freigabe controls as applicable. Do not start Segment 1, perform no-input polling, imply a new approval, or advance the ordinal; start the ordered bootstrap and Segment 1 only on a later concrete project-work request.
 - include the final verified `main` commit and relevant green exact-head CI run; if the exact-head run is the allowed bot-follow-up `workflow_dispatch`, state that event type explicitly rather than describing it as a push run;
 - tell the new chat to route the task through the Topic Router and read only the required canonical topic/evidence;
 - tell the new chat not to perform a full-repository audit by default and not to treat historical "current" wording as live authority;
