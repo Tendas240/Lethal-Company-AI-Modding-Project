@@ -25,3 +25,16 @@ A GitHub Actions workflow automatically:
 5. clears the inbox files after the evidence is committed.
 
 After upload, the evidence is online and readable from GitHub. The user should not need to convert CFG files to TXT just for ChatGPT.
+
+## Reserved historical S1.42AK Offense original (no current upload permission)
+
+After a separate explicit approval of the single-use uploader, **only**
+`RuntimeInbox/Current/S1.42AK_OFFENSE_20261020_LogOutput.log`
+may hold the historical completed S1.42AK original named in
+`Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json`.
+Never upload that original as `RuntimeInbox/Current/LogOutput.log`
+while `RuntimeInbox/ACTIVE_BUILD.txt` names BMDSFIX1.
+The contract checks exact SHA-256 and size, consumes once and persists the
+raw under S1.42AK. A completed run does not require new gameplay.
+This documentation is not permission to upload, build, import, merge,
+activate or test anything.

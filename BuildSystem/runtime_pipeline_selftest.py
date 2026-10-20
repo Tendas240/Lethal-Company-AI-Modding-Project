@@ -2,6 +2,10 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import os
+import importlib.util
+import runtime_ingest as one_shot_ingest
 import subprocess
 import sys
 import tempfile
@@ -144,6 +148,170 @@ def assert_prepare_helper(tmp: Path, sample: Path) -> None:
     assert manifest["upload_files"], manifest
 
 
+
+def assert_historical_one_shot(tmp: Path) -> None:
+    """Synthetic-only tests; never access real user bytes or modify repository."""
+    original_expected = one_shot_ingest.ONESHOT_EXPECTED
+    original_cwd = Path.cwd()
+    spec = importlib.util.spec_from_file_location(
+        "one_shot_byte_validator", ROOT / "RepositoryTools/artifact_byte_integrity_validator.py"
+    )
+    validator = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(validator)
+
+    def fixture(name: str):
+        root = tmp / name
+        (root / "RuntimeInbox/Current").mkdir(parents=True)
+        (root / "Current").mkdir()
+        (root / "BuildSpecs").mkdir()
+        (root / "RuntimeEvidence").mkdir()
+        data = (b"[12:00:01.000] [Info   :SelfTest] historical log line\n"
+                b"[12:00:02.000] [Info   :SelfTest] second line\n")
+        expected = dict(original_expected)
+        expected.update(size=len(data), sha256=hashlib.sha256(data).hexdigest(), lines=2)
+        state = {
+            "accepted_baseline": {
+                "build_id": expected["build_id"], "profile": expected["accepted_profile"],
+                "sha256": expected["accepted_profile_sha256"], "status": "ACCEPTED_FULL_NORMAL_STACK"
+            },
+            "active_candidate": {
+                "build_id": expected["runtime_active_build"],
+                "status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+                "profile": "Profiles/SyntheticBMDS.r2z", "sha256": "a" * 64
+            },
+            "latest_built_artifact": {"build_id": expected["runtime_active_build"]},
+            "controllers": {
+                "runtime_active_build": expected["runtime_active_build"], "build_enabled": False,
+                "build_id": "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS"
+            }
+        }
+        buildspec = {
+            "enabled": False, "build_id": "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS",
+            "base_profile": "Profiles/SyntheticBMDS.r2z", "base_sha256": "a" * 64,
+            "output_profile": "Profiles/DO_NOT_BUILD.r2z"
+        }
+        manifest = {
+            "schema_version": 1, "status": "PENDING", "expected": expected, "receipt": None,
+            "provenance": "PRIOR_CHAT_USER_ORIGINAL_LOG_PROFILE_BYTE_IDENTITY_P0_PARTIAL"
+        }
+        (root / "Current/CURRENT_STATE.json").write_text(json.dumps(state), encoding="utf-8")
+        (root / "BuildSpecs/current.json").write_text(json.dumps(buildspec), encoding="utf-8")
+        (root / "Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json").write_text(
+            json.dumps(manifest), encoding="utf-8")
+        (root / "RuntimeInbox/ACTIVE_BUILD.txt").write_text(
+            expected["runtime_active_build"] + "\n", encoding="utf-8")
+        (root / "RuntimeInbox/Current" / expected["inbox_filename"]).write_bytes(data)
+        return root, expected, data
+
+    def call(root: Path, expected: dict):
+        os.chdir(root)
+        one_shot_ingest.ONESHOT_EXPECTED = expected
+        return one_shot_ingest.main()
+
+    def refuse(root: Path, expected: dict):
+        try:
+            call(root, expected)
+        except RuntimeError as exc:
+            assert "ONESHOT_REFUSED" in str(exc), str(exc)
+        else:
+            raise AssertionError("One-shot negative test unexpectedly accepted input")
+        assert not any((root / "RuntimeEvidence").rglob("INDEX.json")), "failed preflight wrote evidence"
+
+    def read_manifest(root: Path):
+        return json.loads((root / "Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json").read_text())
+
+    try:
+        root, expected, data = fixture("valid")
+        errors = []
+        validator.verify_one_shot_contract(root, errors, expected_override=expected)
+        assert not errors, errors
+        assert call(root, expected) == 0
+        consumed = read_manifest(root)
+        assert consumed["status"] == "CONSUMED"
+        receipt = consumed["receipt"]
+        assert receipt["build_id"] == "S1.42AK"
+        assert receipt["runtime_active_build_at_ingest"] == "S1.42AK-BMDSFIX1"
+        assert (root / receipt["raw_path"]).read_bytes() == data
+        index = json.loads((root / receipt["evidence_index"]).read_text())
+        assert index["files"][0]["name"] == "LogOutput.log"
+        assert index["build_id"] == "S1.42AK"
+        assert not (root / "RuntimeInbox/Current" / expected["inbox_filename"]).exists()
+        errors = []
+        validator.verify_one_shot_contract(root, errors, expected_override=expected)
+        assert not errors, errors
+        # The persisted contract blocks a second upload.
+        (root / "RuntimeInbox/Current" / expected["inbox_filename"]).write_bytes(data)
+        try:
+            call(root, expected)
+        except RuntimeError as exc:
+            assert "ONESHOT_REFUSED" in str(exc)
+        else:
+            raise AssertionError("CONSUMED replay unexpectedly succeeded")
+        # Even resetting PENDING is not enough: existing indexed SHA wins.
+        reverted = dict(consumed, status="PENDING", receipt=None)
+        (root / "Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json").write_text(
+            json.dumps(reverted), encoding="utf-8")
+        try:
+            call(root, expected)
+        except RuntimeError as exc:
+            assert "replay" in str(exc)
+        else:
+            raise AssertionError("INDEX replay guard failed")
+        # Byte-integrity check must independently reject altered raw after consume.
+        (root / "Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json").write_text(
+            json.dumps(consumed), encoding="utf-8")
+        (root / receipt["raw_path"]).write_bytes(data + b"tamper")
+        errors = []
+        validator.verify_one_shot_contract(root, errors, expected_override=expected)
+        assert any("raw original byte identity" in x for x in errors), errors
+
+        root, expected, data = fixture("bad-hash")
+        (root / "RuntimeInbox/Current" / expected["inbox_filename"]).write_bytes(data+b"alter")
+        refuse(root, expected)
+        root, expected, data = fixture("wrong-size")
+        other = dict(expected, size=len(data)+1)
+        refuse(root, other)
+        root, expected, data = fixture("wrong-controller")
+        (root / "RuntimeInbox/ACTIVE_BUILD.txt").write_text("S1.42AK\n")
+        refuse(root, expected)
+        root, expected, data = fixture("wrong-profile")
+        state_file = root / "Current/CURRENT_STATE.json"
+        state = json.loads(state_file.read_text())
+        state["accepted_baseline"]["sha256"] = "b" * 64
+        state_file.write_text(json.dumps(state), encoding="utf-8")
+        refuse(root, expected)
+        root, expected, data = fixture("additional-inbox-file")
+        (root / "RuntimeInbox/Current/other.txt").write_text("not allowed")
+        refuse(root, expected)
+        root, expected, data = fixture("bad-manifest")
+        mpath = root / "Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json"
+        m = json.loads(mpath.read_text())
+        m["expected"]["build_id"] = "S1.42AK-BMDSFIX1"
+        mpath.write_text(json.dumps(m))
+        refuse(root, expected)
+        root, expected, data = fixture("already-consumed")
+        mpath = root / "Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json"
+        m = json.loads(mpath.read_text())
+        m["status"] = "CONSUMED"
+        mpath.write_text(json.dumps(m))
+        refuse(root, expected)
+        root, expected, data = fixture("misnamed-original")
+        (root / "RuntimeInbox/Current" / expected["inbox_filename"]).rename(
+            root / "RuntimeInbox/Current/LogOutput.log")
+        refuse(root, expected)
+        root, expected, data = fixture("unrelated-normal-upload")
+        (root / "RuntimeInbox/Current" / expected["inbox_filename"]).rename(
+            root / "RuntimeInbox/Current/LogOutput.log")
+        (root / "RuntimeInbox/Current/LogOutput.log").write_bytes(b"unrelated historical ordinary file\n")
+        assert call(root, expected) == 0
+        ids = list((root / "RuntimeEvidence/S1.42AK-BMDSFIX1").glob("*/INDEX.json"))
+        assert len(ids) == 1
+        assert json.loads(ids[0].read_text())["build_id"] == "S1.42AK-BMDSFIX1"
+    finally:
+        one_shot_ingest.ONESHOT_EXPECTED = original_expected
+        os.chdir(original_cwd)
+
 def main() -> int:
     with tempfile.TemporaryDirectory(prefix="runtime-pipeline-selftest-") as td:
         tmp = Path(td)
@@ -152,6 +320,7 @@ def main() -> int:
         assert_analyzer(tmp, sample)
         assert_large_ingest_and_queries(tmp, sample)
         assert_prepare_helper(tmp, sample)
+        assert_historical_one_shot(tmp)
     print("runtime pipeline self-test: PASS")
     return 0
 

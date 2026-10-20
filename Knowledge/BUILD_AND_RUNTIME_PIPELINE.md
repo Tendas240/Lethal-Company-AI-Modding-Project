@@ -132,3 +132,40 @@ A valid publication checkpoint must:
 
 The future publication branch may materialize the exact short-name AGDIAG1 review profile in the repository's Profiles area plus a deterministic readable AGDIAG1 snapshot/evidence set in the established ProfileSources namespace. Canonical profile-index mapping and `Profiles/EXPECTED_HASHES.json` remain outside that checkpoint, as do Gale import, controller changes, runtime activation and gameplay.
 
+
+## One-time historical S1.42AK Offense original (versioned, not upload approval)
+
+The independent exception `Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json`
+is bound only to the completed 2026-10-20 Offense log, SHA-256
+`7c7b02af7891b97b48078432ca8bf8d26d051a533cc15810d012950c44fac6c9`,
+3,173,316 bytes. It is **not** a runtime activation, acceptance or modification
+of either `RuntimeInbox/ACTIVE_BUILD.txt` or `Current/CURRENT_STATE.json`.
+
+Only after a separately authorized upload, the exact reserved inbox filename is
+`S1.42AK_OFFENSE_20261020_LogOutput.log`, as the sole payload in
+`RuntimeInbox/Current/`. The ordinary filename `LogOutput.log`
+must NOT be used for these bytes while the active pointer says BMDSFIX1.
+Preflight validates the pinned source SHA, bytes, accepted S1.42AK profile
+identity, current BMDSFIX1 candidate/controller/build guards, unconsumed
+contract, and absence of indexed replay before writing any evidence.
+A mismatch fails closed, without guessing a destination namespace.
+
+Only the reserved verified upload is canonically renamed to
+`RuntimeEvidence/S1.42AK/<timestamp>/raw/LogOutput.log`; the
+regular upload path retains its existing active-build behavior. The bot workflow
+commits the raw original, INDEX, streaming analysis, contract CONSUMED receipt
+and consumed inbox deletion **atomically as a single Git commit**; if push
+fails because main moved, no consumption is committed. The existing
+Knowledge Architecture exact-head workflow dispatch remains mandatory.
+
+The permanent byte-integrity validator checks PENDING contract invariants,
+then after CONSUMED verifies actual raw SHA, size, canonical INDEX, analysis
+and receipt correspondence. Duplicate exact original SHA is refused on
+the ordinary path, even if a user accidentally chooses its normal filename.
+Preserve the raw until separate P0–P6 and retention decisions.
+
+The historical user-uploaded log path and hash are evidence about the session,
+not an independently revalidated identity between installed local Gale bytes
+and canonical S1.42AK profile archive bytes. P0 remains PARTIAL, P2–P6 are
+preliminary supported; neither runtime acceptance nor reduced technical
+Residual 21 follows from this ingestion alone.

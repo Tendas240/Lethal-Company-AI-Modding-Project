@@ -16,6 +16,25 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 INTEGRITY_PATH = ROOT / "Current/ARTIFACT_EVIDENCE_INTEGRITY.json"
+
+ONE_SHOT_REL = "Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json"
+# Independently pinned constants: a modified manifest must not redefine evidence truth.
+ONE_SHOT_EXPECTED = {
+    "contract_id": "S1.42AK-OFFENSE-MINESHAFT-20261020-V1",
+    "build_id": "S1.42AK",
+    "inbox_filename": "S1.42AK_OFFENSE_20261020_LogOutput.log",
+    "raw_filename": "LogOutput.log",
+    "size": 3173316,
+    "sha256": "7c7b02af7891b97b48078432ca8bf8d26d051a533cc15810d012950c44fac6c9",
+    "accepted_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+    "accepted_profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+    "runtime_active_build": "S1.42AK-BMDSFIX1",
+    "moon": "Offense",
+    "flow": "Level3Flow",
+    "seed": 43291983,
+    "lines": 31886
+}
+
 PENDING_ROLES = {
     "ACTIVE_RUNTIME_CANDIDATE_PENDING",
     "ACTIVE_RUNTIME_DIAGNOSTIC_PENDING",
@@ -156,6 +175,98 @@ def verify_runtime(entry: dict[str, Any], errors: list[str]) -> bool:
     return True
 
 
+
+def verify_one_shot_contract(root: Path, errors: list[str], *,
+                             expected_override: dict[str, Any] | None = None) -> None:
+    """Validate the complete one-time receipt and original bytes independently."""
+    expected = ONE_SHOT_EXPECTED if expected_override is None else expected_override
+    path = root / ONE_SHOT_REL
+    if not path.is_file():
+        errors.append("S1.42AK one-shot: versioned contract missing")
+        return
+    try:
+        contract = load_json(path)
+    except (OSError, ValueError) as exc:
+        errors.append(f"S1.42AK one-shot: invalid contract JSON: {exc}")
+        return
+    if (set(contract) != {"schema_version", "status", "expected", "receipt", "provenance"}
+            or type(contract["schema_version"]) is not int or contract["schema_version"] != 1
+            or contract["expected"] != expected
+            or contract["provenance"] != "PRIOR_CHAT_USER_ORIGINAL_LOG_PROFILE_BYTE_IDENTITY_P0_PARTIAL"):
+        errors.append("S1.42AK one-shot: altered contract schema/expected provenance")
+        return
+    status = contract.get("status")
+    receipt = contract.get("receipt")
+    if status == "PENDING":
+        if receipt is not None:
+            errors.append("S1.42AK one-shot: PENDING must not contain a receipt")
+        return
+    if status != "CONSUMED" or not isinstance(receipt, dict):
+        errors.append("S1.42AK one-shot: invalid consumption status/receipt")
+        return
+
+    stamp = receipt.get("ingested_utc")
+    if (not isinstance(stamp, str) or len(stamp) != 16
+            or stamp[8] != "T" or stamp[-1] != "Z"
+            or not stamp[:8].isdigit() or not stamp[9:-1].isdigit()):
+        errors.append("S1.42AK one-shot: unsafe/malformed ingest stamp")
+        return
+    directory = Path("RuntimeEvidence") / expected["build_id"] / stamp
+    index_rel = (directory / "INDEX.json").as_posix()
+    raw_rel = (directory / "raw" / expected["raw_filename"]).as_posix()
+    required = {
+        "contract_id": expected["contract_id"],
+        "ingested_utc": stamp,
+        "evidence_index": index_rel,
+        "raw_path": raw_rel,
+        "sha256": expected["sha256"],
+        "size": expected["size"],
+        "build_id": expected["build_id"],
+        "source_inbox_name": expected["inbox_filename"],
+        "runtime_active_build_at_ingest": expected["runtime_active_build"],
+        "original_profile_bytes_independently_verified": False,
+    }
+    if receipt != required:
+        errors.append("S1.42AK one-shot: consumed receipt drift")
+        return
+    index_path, raw_path = root / index_rel, root / raw_rel
+    if not index_path.is_file() or not raw_path.is_file() or raw_path.is_symlink():
+        errors.append("S1.42AK one-shot: original raw evidence or index absent")
+        return
+    try:
+        index = load_json(index_path)
+    except (OSError, ValueError) as exc:
+        errors.append(f"S1.42AK one-shot: invalid evidence INDEX: {exc}")
+        return
+    attribution = {
+        "mode": "COMPLETED_S1_42AK_ONE_SHOT_NOT_RUNTIME_ACTIVATION",
+        "contract_id": expected["contract_id"],
+        "source_inbox_name": expected["inbox_filename"],
+        "runtime_active_build_at_ingest": expected["runtime_active_build"],
+        "original_profile_bytes_independently_verified": False,
+    }
+    files = index.get("files", [])
+    if (index.get("build_id") != expected["build_id"]
+            or index.get("ingested_utc") != stamp
+            or index.get("attribution") != attribution
+            or not isinstance(files, list) or len(files) != 1
+            or files[0].get("name") != expected["raw_filename"]
+            or files[0].get("sha256") != expected["sha256"]
+            or files[0].get("size") != expected["size"]):
+        errors.append("S1.42AK one-shot: INDEX attribution/byte metadata drift")
+    if raw_path.stat().st_size != expected["size"] or sha256_file(raw_path) != expected["sha256"]:
+        errors.append("S1.42AK one-shot: raw original byte identity mismatch")
+    analysis = index.get("analysis", [])
+    if not isinstance(analysis, list) or len(analysis) != 1 or (
+            analysis[0].get("stats", {}).get("source_sha256") != expected["sha256"]
+            or analysis[0].get("stats", {}).get("line_count") != expected["lines"]):
+        errors.append("S1.42AK one-shot: analysis SHA/line-count disagreement")
+    for rel in ("STATS.json", "MARKERS.json", "CHAT_CHUNKS_MANIFEST.json"):
+        analyzed = directory / "analysis" / "raw__S1.42AK_OFFENSE_20261020_LogOutput" / rel
+        if not (root / analyzed).is_file():
+            errors.append(f"S1.42AK one-shot: missing analysis {analyzed}")
+
+
 def main() -> int:
     errors: list[str] = []
     if not INTEGRITY_PATH.is_file():
@@ -201,6 +312,8 @@ def main() -> int:
 
         if verify_profile(entry, errors):
             pending_profiles_checked += 1
+
+    verify_one_shot_contract(ROOT, errors)
 
     for error in errors:
         print("ERROR:", error)
