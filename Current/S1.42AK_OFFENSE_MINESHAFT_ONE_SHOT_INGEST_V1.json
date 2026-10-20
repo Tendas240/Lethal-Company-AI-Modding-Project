@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "PENDING",
+  "expected": {
+    "contract_id": "S1.42AK-OFFENSE-MINESHAFT-20261020-V1",
+    "build_id": "S1.42AK",
+    "inbox_filename": "S1.42AK_OFFENSE_20261020_LogOutput.log",
+    "raw_filename": "LogOutput.log",
+    "size": 3173316,
+    "sha256": "7c7b02af7891b97b48078432ca8bf8d26d051a533cc15810d012950c44fac6c9",
+    "accepted_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+    "accepted_profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+    "runtime_active_build": "S1.42AK-BMDSFIX1",
+    "moon": "Offense",
+    "flow": "Level3Flow",
+    "seed": 43291983,
+    "lines": 31886
+  },
+  "receipt": null,
+  "provenance": "PRIOR_CHAT_USER_ORIGINAL_LOG_PROFILE_BYTE_IDENTITY_P0_PARTIAL"
+}

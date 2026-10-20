@@ -15,6 +15,26 @@ ACTIVE = Path("RuntimeInbox/ACTIVE_BUILD.txt")
 EVIDENCE = Path("RuntimeEvidence")
 PERSIST_EXTRACTED_LIMIT = 16 * 1024 * 1024
 
+ONESHOT_CONTRACT = Path("Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json")
+ONESHOT_STATE = Path("Current/CURRENT_STATE.json")
+ONESHOT_BUILDSPEC = Path("BuildSpecs/current.json")
+ONESHOT_EXPECTED = {
+    "contract_id": "S1.42AK-OFFENSE-MINESHAFT-20261020-V1",
+    "build_id": "S1.42AK",
+    "inbox_filename": "S1.42AK_OFFENSE_20261020_LogOutput.log",
+    "raw_filename": "LogOutput.log",
+    "size": 3173316,
+    "sha256": "7c7b02af7891b97b48078432ca8bf8d26d051a533cc15810d012950c44fac6c9",
+    "accepted_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+    "accepted_profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+    "runtime_active_build": "S1.42AK-BMDSFIX1",
+    "moon": "Offense",
+    "flow": "Level3Flow",
+    "seed": 43291983,
+    "lines": 31886
+}
+
+
 
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
@@ -59,6 +79,83 @@ def analyze_candidate(path: Path, analysis_root: Path, label: str) -> dict | Non
     }
 
 
+
+def require_one_shot(source: Path, active: str, files: list[Path]) -> dict:
+    """Fail-closed before any evidence write; never promotes or activates a profile."""
+    expected = ONESHOT_EXPECTED
+    if len(files) != 1 or files[0] != source:
+        raise RuntimeError("ONESHOT_REFUSED: reserved upload must be the sole inbox evidence")
+    if source.is_symlink() or not source.is_file() or source.name != expected["inbox_filename"]:
+        raise RuntimeError("ONESHOT_REFUSED: wrong source type or reserved name")
+    if source.stat().st_size != expected["size"] or sha256(source) != expected["sha256"]:
+        raise RuntimeError("ONESHOT_REFUSED: original log size/SHA-256 mismatch")
+    if active != expected["runtime_active_build"]:
+        raise RuntimeError("ONESHOT_REFUSED: runtime controller changed; no fallback")
+    if not ONESHOT_CONTRACT.is_file():
+        raise RuntimeError("ONESHOT_REFUSED: versioned contract missing")
+    contract = json.loads(ONESHOT_CONTRACT.read_text(encoding="utf-8"))
+    if (set(contract) != {"schema_version", "status", "expected", "receipt", "provenance"}
+            or type(contract["schema_version"]) is not int or contract["schema_version"] != 1
+            or contract["status"] != "PENDING" or contract["receipt"] is not None
+            or contract["expected"] != expected
+            or contract["provenance"] != "PRIOR_CHAT_USER_ORIGINAL_LOG_PROFILE_BYTE_IDENTITY_P0_PARTIAL"):
+        raise RuntimeError("ONESHOT_REFUSED: contract mismatch or already consumed")
+    state = json.loads(ONESHOT_STATE.read_text(encoding="utf-8"))
+    accepted = state.get("accepted_baseline", {})
+    candidate = state.get("active_candidate", {})
+    latest = state.get("latest_built_artifact", {})
+    controllers = state.get("controllers", {})
+    buildspec = json.loads(ONESHOT_BUILDSPEC.read_text(encoding="utf-8"))
+    if not (accepted.get("build_id") == expected["build_id"]
+            and accepted.get("profile") == expected["accepted_profile"]
+            and accepted.get("sha256") == expected["accepted_profile_sha256"]
+            and accepted.get("status") == "ACCEPTED_FULL_NORMAL_STACK"
+            and candidate.get("build_id") == expected["runtime_active_build"]
+            and candidate.get("status") == "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED"
+            and latest.get("build_id") == candidate.get("build_id")
+            and controllers.get("runtime_active_build") == active
+            and controllers.get("build_enabled") is False
+            and buildspec.get("enabled") is False
+            and buildspec.get("build_id") == controllers.get("build_id")
+            and buildspec.get("base_profile") == candidate.get("profile")
+            and buildspec.get("base_sha256") == candidate.get("sha256")
+            and buildspec.get("output_profile") == "Profiles/DO_NOT_BUILD.r2z"):
+        raise RuntimeError("ONESHOT_REFUSED: state/profile/controller drift")
+    target = EVIDENCE / expected["build_id"]
+    if target.exists():
+        for index_path in sorted(target.glob("*/INDEX.json")):
+            index = json.loads(index_path.read_text(encoding="utf-8"))
+            if (index.get("attribution", {}).get("contract_id") == expected["contract_id"]
+                    or any(e.get("sha256") == expected["sha256"] for e in index.get("files", []))):
+                raise RuntimeError("ONESHOT_REFUSED: already indexed; replay")
+    return contract
+
+
+def refuse_misattributed_original(files: list[Path]) -> None:
+    """Never route these exact original bytes to the active BMDSFIX1 namespace."""
+    for source in files:
+        if source.stat().st_size == ONESHOT_EXPECTED["size"] and sha256(source) == ONESHOT_EXPECTED["sha256"]:
+            raise RuntimeError("ONESHOT_REFUSED: exact original requires reserved inbox filename")
+
+
+def consume_one_shot(contract: dict, run_dir: Path, stamp: str, active: str) -> None:
+    expected = ONESHOT_EXPECTED
+    contract["status"] = "CONSUMED"
+    contract["receipt"] = {
+        "contract_id": expected["contract_id"],
+        "ingested_utc": stamp,
+        "evidence_index": (run_dir / "INDEX.json").as_posix(),
+        "raw_path": (run_dir / "raw" / expected["raw_filename"]).as_posix(),
+        "sha256": expected["sha256"],
+        "size": expected["size"],
+        "build_id": expected["build_id"],
+        "source_inbox_name": expected["inbox_filename"],
+        "runtime_active_build_at_ingest": active,
+        "original_profile_bytes_independently_verified": False,
+    }
+    # Workflow commits receipt + INDEX + raw + inbox deletion as one Git commit.
+    ONESHOT_CONTRACT.write_text(json.dumps(contract, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
 def main() -> int:
     if not ACTIVE.exists():
         raise RuntimeError("RuntimeInbox/ACTIVE_BUILD.txt is missing")
@@ -66,10 +163,18 @@ def main() -> int:
     if not build_id:
         raise RuntimeError("ACTIVE_BUILD.txt is empty")
 
-    files = sorted(p for p in INBOX.iterdir() if p.is_file() and p.name != ".gitkeep")
+    files = sorted(p for p in INBOX.iterdir() if p.name != ".gitkeep")
     if not files:
         print("No runtime evidence waiting in RuntimeInbox/Current.")
         return 0
+    if any(p.is_symlink() or not p.is_file() for p in files):
+        raise RuntimeError("Runtime inbox contains unsupported file type")
+    one_shot = any(p.name == ONESHOT_EXPECTED["inbox_filename"] for p in files)
+    contract = require_one_shot(next(p for p in files if p.name == ONESHOT_EXPECTED["inbox_filename"]), build_id, files) if one_shot else None
+    if one_shot:
+        build_id = ONESHOT_EXPECTED["build_id"]
+    else:
+        refuse_misattributed_original(files)
 
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     run_dir = EVIDENCE / build_id / stamp
@@ -99,11 +204,19 @@ def main() -> int:
         },
     }
 
+    if one_shot:
+        index["attribution"] = {
+            "mode": "COMPLETED_S1_42AK_ONE_SHOT_NOT_RUNTIME_ACTIVATION",
+            "contract_id": ONESHOT_EXPECTED["contract_id"],
+            "source_inbox_name": ONESHOT_EXPECTED["inbox_filename"],
+            "runtime_active_build_at_ingest": ONESHOT_EXPECTED["runtime_active_build"],
+            "original_profile_bytes_independently_verified": False,
+        }
     for source in files:
-        dest = raw_dir / source.name
+        dest = raw_dir / (ONESHOT_EXPECTED["raw_filename"] if one_shot else source.name)
         shutil.copy2(source, dest)
         record = {
-            "name": source.name,
+            "name": dest.name,
             "size": dest.stat().st_size,
             "sha256": sha256(dest),
             "extracted": [],
@@ -138,6 +251,8 @@ def main() -> int:
         encoding="utf-8",
     )
 
+    if one_shot:
+        consume_one_shot(contract, run_dir, stamp, ONESHOT_EXPECTED["runtime_active_build"])
     for source in files:
         source.unlink()
 
