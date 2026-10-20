@@ -217,6 +217,7 @@ def assert_historical_one_shot(tmp: Path) -> None:
         else:
             raise AssertionError("One-shot negative test unexpectedly accepted input")
         assert not any((root / "RuntimeEvidence").rglob("INDEX.json")), "failed preflight wrote evidence"
+        assert not any((root / "RuntimeEvidence").iterdir()), "failed preflight mutated evidence tree"
 
     def read_manifest(root: Path):
         return json.loads((root / "Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json").read_text())
@@ -267,8 +268,16 @@ def assert_historical_one_shot(tmp: Path) -> None:
         assert any("raw original byte identity" in x for x in errors), errors
 
         root, expected, data = fixture("bad-hash")
-        (root / "RuntimeInbox/Current" / expected["inbox_filename"]).write_bytes(data+b"alter")
+        source = root / "RuntimeInbox/Current" / expected["inbox_filename"]
+        changed = bytearray(data)
+        changed[0] ^= 1  # Equal size, changed SHA-256: isolate the hash-only gate.
+        assert len(changed) == expected["size"]
+        assert hashlib.sha256(changed).hexdigest() != expected["sha256"]
+        source.write_bytes(changed)
+        contract_before = (root / "Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json").read_bytes()
         refuse(root, expected)
+        assert source.read_bytes() == changed, "failed preflight changed or consumed source"
+        assert (root / "Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json").read_bytes() == contract_before, "failed preflight changed contract"
         root, expected, data = fixture("wrong-size")
         other = dict(expected, size=len(data)+1)
         refuse(root, other)
