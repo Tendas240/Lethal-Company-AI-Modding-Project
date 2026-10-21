@@ -38,3 +38,19 @@ The contract checks exact SHA-256 and size, consumes once and persists the
 raw under S1.42AK. A completed run does not require new gameplay.
 This documentation is not permission to upload, build, import, merge,
 activate or test anything.
+
+## S1.42AK Offense random-batch V2 (contract only, NOT upload approval)
+
+The separately versioned contract is `Current/S1.42AK_OFFENSE_RANDOM_BATCH_V2_INGEST_V1.json`.
+It is bound to exactly 10,906,072 original bytes with SHA-256
+`969044ab459387c3a509134c4c56a10ae1736b46af9fc76d3ac8cf0e125ce07d`,
+user-attested unchanged S1.42AK profile and unchanged S1.42AK-BMDSFIX1 runtime pointer.
+Only after **separate express raw/public repository upload approval**, the reserved inbox
+the reserved filename `S1.42AK_OFFENSE_RANDOM_BATCH_20261021_LogOutput.log` inside the existing `RuntimeInbox/Current/` directory
+may hold these verified bytes as the **only inbox source**. Do not use ordinary
+`RuntimeInbox/Current/LogOutput.log` or the disposable `runtime-large` pipeline.
+A completed gameplay batch must not be replayed merely to upload evidence.
+Pre-publication review for secrets/personal information, local hash/size re-check,
+current contract/controller/head preflight and separate retention decision are required.
+The V2 raw must be retained until a separate P0-P6/retention decision; a successful
+Ingest/CI does not certify any Interior generation, P0/P1, or baseline acceptance.
